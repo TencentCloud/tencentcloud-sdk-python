@@ -308,6 +308,52 @@ class MnaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DownloadActiveDeviceCount(self, request):
+        """下载活跃设备数量统计
+
+        :param request: Request instance for DownloadActiveDeviceCount.
+        :type request: :class:`tencentcloud.mna.v20210119.models.DownloadActiveDeviceCountRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.DownloadActiveDeviceCountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DownloadActiveDeviceCount", params, headers=headers)
+            response = json.loads(body)
+            model = models.DownloadActiveDeviceCountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetActiveDeviceCount(self, request):
+        """活跃设备数量统计
+
+        :param request: Request instance for GetActiveDeviceCount.
+        :type request: :class:`tencentcloud.mna.v20210119.models.GetActiveDeviceCountRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.GetActiveDeviceCountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetActiveDeviceCount", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetActiveDeviceCountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetDevice(self, request):
         """通过指定设备的ID查找设备详细信息
 

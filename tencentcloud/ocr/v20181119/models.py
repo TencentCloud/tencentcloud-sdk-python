@@ -21593,12 +21593,15 @@ class QuestionSplitOCRRequest(AbstractModel):
         :type PdfPageNumber: int
         :param _EnableImageCrop: 是否开启切边增强和弯曲矫正,默认为false不开启
         :type EnableImageCrop: bool
+        :param _EnableOnlyDetectBorder: 是否只返回检测框，默认false
+        :type EnableOnlyDetectBorder: bool
         """
         self._ImageUrl = None
         self._ImageBase64 = None
         self._IsPdf = None
         self._PdfPageNumber = None
         self._EnableImageCrop = None
+        self._EnableOnlyDetectBorder = None
 
     @property
     def ImageUrl(self):
@@ -21655,6 +21658,17 @@ class QuestionSplitOCRRequest(AbstractModel):
     def EnableImageCrop(self, EnableImageCrop):
         self._EnableImageCrop = EnableImageCrop
 
+    @property
+    def EnableOnlyDetectBorder(self):
+        """是否只返回检测框，默认false
+        :rtype: bool
+        """
+        return self._EnableOnlyDetectBorder
+
+    @EnableOnlyDetectBorder.setter
+    def EnableOnlyDetectBorder(self, EnableOnlyDetectBorder):
+        self._EnableOnlyDetectBorder = EnableOnlyDetectBorder
+
 
     def _deserialize(self, params):
         self._ImageUrl = params.get("ImageUrl")
@@ -21662,6 +21676,7 @@ class QuestionSplitOCRRequest(AbstractModel):
         self._IsPdf = params.get("IsPdf")
         self._PdfPageNumber = params.get("PdfPageNumber")
         self._EnableImageCrop = params.get("EnableImageCrop")
+        self._EnableOnlyDetectBorder = params.get("EnableOnlyDetectBorder")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

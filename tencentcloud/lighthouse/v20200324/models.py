@@ -5575,9 +5575,9 @@ class DescribeDockerContainerConfigurationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID。
+        :param _InstanceId: 实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
         :type InstanceId: str
-        :param _ContainerId: 容器ID。
+        :param _ContainerId: 容器ID。可通过[DescribeDockerContainers](https://cloud.tencent.com/document/product/1207/95473)接口返回值中的ContainerId获取。
         :type ContainerId: str
         """
         self._InstanceId = None
@@ -5585,7 +5585,7 @@ class DescribeDockerContainerConfigurationRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID。
+        """实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
         :rtype: str
         """
         return self._InstanceId
@@ -5596,7 +5596,7 @@ class DescribeDockerContainerConfigurationRequest(AbstractModel):
 
     @property
     def ContainerId(self):
-        """容器ID。
+        """容器ID。可通过[DescribeDockerContainers](https://cloud.tencent.com/document/product/1207/95473)接口返回值中的ContainerId获取。
         :rtype: str
         """
         return self._ContainerId
@@ -13704,7 +13704,6 @@ class KeyPair(AbstractModel):
         :param _PublicKey: 密钥对的纯文本公钥。
         :type PublicKey: str
         :param _AssociatedInstanceIds: 密钥对关联的实例 ID 列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AssociatedInstanceIds: list of str
         :param _CreatedTime: 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ
 注意：此字段可能返回 null，表示取不到有效值。
@@ -13756,7 +13755,6 @@ class KeyPair(AbstractModel):
     @property
     def AssociatedInstanceIds(self):
         """密钥对关联的实例 ID 列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._AssociatedInstanceIds
@@ -14046,7 +14044,6 @@ class ModifyBundle(AbstractModel):
         :param _Bundle: 套餐信息。
         :type Bundle: :class:`tencentcloud.lighthouse.v20200324.models.Bundle`
         :param _NotSupportModifyMessage: 不支持套餐变更原因信息。变更套餐状态为"AVAILABLE"时, 该信息为空
-注意：此字段可能返回 null，表示取不到有效值。
         :type NotSupportModifyMessage: str
         """
         self._ModifyPrice = None
@@ -14093,7 +14090,6 @@ class ModifyBundle(AbstractModel):
     @property
     def NotSupportModifyMessage(self):
         """不支持套餐变更原因信息。变更套餐状态为"AVAILABLE"时, 该信息为空
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NotSupportModifyMessage
@@ -17293,20 +17289,16 @@ class Snapshot(AbstractModel):
         :type Percent: int
         :param _LatestOperation: 快照的最新操作，只有创建、回滚快照时记录。
 取值如 CreateInstanceSnapshot，RollbackInstanceSnapshot。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LatestOperation: str
         :param _LatestOperationState: 快照的最新操作状态，只有创建、回滚快照时记录。
 取值范围：
 <li>SUCCESS：表示操作成功</li>
 <li>OPERATING：表示操作执行中</li>
 <li>FAILED：表示操作失败</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type LatestOperationState: str
         :param _LatestOperationRequestId: 快照最新操作的唯一请求 ID，只有创建、回滚快照时记录。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LatestOperationRequestId: str
         :param _CreatedTime: 快照的创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedTime: str
         """
         self._SnapshotId = None
@@ -17405,7 +17397,6 @@ class Snapshot(AbstractModel):
     def LatestOperation(self):
         """快照的最新操作，只有创建、回滚快照时记录。
 取值如 CreateInstanceSnapshot，RollbackInstanceSnapshot。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LatestOperation
@@ -17421,7 +17412,6 @@ class Snapshot(AbstractModel):
 <li>SUCCESS：表示操作成功</li>
 <li>OPERATING：表示操作执行中</li>
 <li>FAILED：表示操作失败</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LatestOperationState
@@ -17433,7 +17423,6 @@ class Snapshot(AbstractModel):
     @property
     def LatestOperationRequestId(self):
         """快照最新操作的唯一请求 ID，只有创建、回滚快照时记录。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LatestOperationRequestId
@@ -17445,7 +17434,6 @@ class Snapshot(AbstractModel):
     @property
     def CreatedTime(self):
         """快照的创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreatedTime

@@ -49,31 +49,6 @@ class BillingClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CreateSavingPlanOrder(self, request):
-        """接口迁移到其他业务
-
-        创建节省计划订单，创建订单完成需调用PayDeals接口完成订单支付
-
-        :param request: Request instance for CreateSavingPlanOrder.
-        :type request: :class:`tencentcloud.billing.v20180709.models.CreateSavingPlanOrderRequest`
-        :rtype: :class:`tencentcloud.billing.v20180709.models.CreateSavingPlanOrderResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateSavingPlanOrder", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateSavingPlanOrderResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DeleteAllocationTag(self, request):
         """批量取消设置分账标签
 
@@ -932,31 +907,6 @@ class BillingClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeSavingPlanOverview(self, request):
-        """接口迁移到其他业务
-
-        查用当前用户明细节省计划总览查询时段内的使用情况
-
-        :param request: Request instance for DescribeSavingPlanOverview.
-        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeSavingPlanOverviewRequest`
-        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeSavingPlanOverviewResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeSavingPlanOverview", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeSavingPlanOverviewResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeSavingPlanResourceInfo(self, request):
         """查询节省计划详情
 
@@ -971,31 +921,6 @@ class BillingClient(AbstractClient):
             body = self.call("DescribeSavingPlanResourceInfo", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSavingPlanResourceInfoResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeSavingPlanUsage(self, request):
-        """接口迁移到其他业务
-
-        查用当前用户明细节省计划查询时段内的使用情况
-
-        :param request: Request instance for DescribeSavingPlanUsage.
-        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeSavingPlanUsageRequest`
-        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeSavingPlanUsageResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeSavingPlanUsage", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeSavingPlanUsageResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

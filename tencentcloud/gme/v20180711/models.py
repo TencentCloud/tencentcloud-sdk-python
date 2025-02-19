@@ -5466,22 +5466,16 @@ class ServiceStatus(AbstractModel):
     def __init__(self):
         r"""
         :param _RealTimeSpeech: 实时语音服务开关状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type RealTimeSpeech: :class:`tencentcloud.gme.v20180711.models.StatusInfo`
         :param _VoiceMessage: 语音消息服务开关状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type VoiceMessage: :class:`tencentcloud.gme.v20180711.models.StatusInfo`
         :param _Porn: 语音内容安全服务开关状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Porn: :class:`tencentcloud.gme.v20180711.models.StatusInfo`
         :param _Live: 语音录制服务开关状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Live: :class:`tencentcloud.gme.v20180711.models.StatusInfo`
         :param _RealTimeAsr: 语音转文本服务开关状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type RealTimeAsr: :class:`tencentcloud.gme.v20180711.models.StatusInfo`
         :param _TextTranslate: 文本翻译服务开关状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type TextTranslate: :class:`tencentcloud.gme.v20180711.models.StatusInfo`
         """
         self._RealTimeSpeech = None
@@ -5494,7 +5488,6 @@ class ServiceStatus(AbstractModel):
     @property
     def RealTimeSpeech(self):
         """实时语音服务开关状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.gme.v20180711.models.StatusInfo`
         """
         return self._RealTimeSpeech
@@ -5506,7 +5499,6 @@ class ServiceStatus(AbstractModel):
     @property
     def VoiceMessage(self):
         """语音消息服务开关状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.gme.v20180711.models.StatusInfo`
         """
         return self._VoiceMessage
@@ -5518,7 +5510,6 @@ class ServiceStatus(AbstractModel):
     @property
     def Porn(self):
         """语音内容安全服务开关状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.gme.v20180711.models.StatusInfo`
         """
         return self._Porn
@@ -5530,7 +5521,6 @@ class ServiceStatus(AbstractModel):
     @property
     def Live(self):
         """语音录制服务开关状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.gme.v20180711.models.StatusInfo`
         """
         return self._Live
@@ -5542,7 +5532,6 @@ class ServiceStatus(AbstractModel):
     @property
     def RealTimeAsr(self):
         """语音转文本服务开关状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.gme.v20180711.models.StatusInfo`
         """
         return self._RealTimeAsr
@@ -5554,7 +5543,6 @@ class ServiceStatus(AbstractModel):
     @property
     def TextTranslate(self):
         """文本翻译服务开关状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.gme.v20180711.models.StatusInfo`
         """
         return self._TextTranslate

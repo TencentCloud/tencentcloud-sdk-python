@@ -26,6 +26,29 @@ class WedataClient(AbstractClient):
     _service = 'wedata'
 
 
+    def AddProjectUserRole(self, request):
+        """添加项目用户角色
+
+        :param request: Request instance for AddProjectUserRole.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.AddProjectUserRoleRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.AddProjectUserRoleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddProjectUserRole", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddProjectUserRoleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def BatchCreateIntegrationTaskAlarms(self, request):
         """批量创建任务告警规则
 

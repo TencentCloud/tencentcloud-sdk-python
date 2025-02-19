@@ -518,10 +518,9 @@ class Choice(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FinishReason: 结束标志位，可能为 stop、 sensitive或者tool_calls。
+        :param _FinishReason: 结束标志位，可能为 stop、 content_filter。
 stop 表示输出正常结束。
-sensitive 只在开启流式输出审核时会出现，表示安全审核未通过。
-tool_calls 标识函数调用。
+content_filter 只在开启流式输出审核时会出现，表示安全审核未通过。
         :type FinishReason: str
         :param _Delta: 增量返回值，流式调用时使用该字段。
         :type Delta: :class:`tencentcloud.lkeap.v20240522.models.Delta`
@@ -537,10 +536,9 @@ tool_calls 标识函数调用。
 
     @property
     def FinishReason(self):
-        """结束标志位，可能为 stop、 sensitive或者tool_calls。
+        """结束标志位，可能为 stop、 content_filter。
 stop 表示输出正常结束。
-sensitive 只在开启流式输出审核时会出现，表示安全审核未通过。
-tool_calls 标识函数调用。
+content_filter 只在开启流式输出审核时会出现，表示安全审核未通过。
         :rtype: str
         """
         return self._FinishReason

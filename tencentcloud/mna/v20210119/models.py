@@ -303,6 +303,57 @@ class ActivateHardwareResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ActiveDeviceList(AbstractModel):
+    """激活设备数统计
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Count: 数量
+        :type Count: int
+        :param _Time: 时间
+        :type Time: str
+        """
+        self._Count = None
+        self._Time = None
+
+    @property
+    def Count(self):
+        """数量
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def Time(self):
+        """时间
+        :rtype: str
+        """
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+
+    def _deserialize(self, params):
+        self._Count = params.get("Count")
+        self._Time = params.get("Time")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AddDeviceRequest(AbstractModel):
     """AddDevice请求参数结构体
 
@@ -2563,6 +2614,145 @@ class DevicePayModeInfo(AbstractModel):
         
 
 
+class DownloadActiveDeviceCountRequest(AbstractModel):
+    """DownloadActiveDeviceCount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Period: 查询粒度。0:day, 1:week, 2:month, 不传默认为day
+        :type Period: int
+        :param _StartTime: 开始时间。单位秒
+        :type StartTime: int
+        :param _EndTime: 结束时间。单位秒
+        :type EndTime: int
+        :param _DevGroup: 设备组, 不传查询全部
+        :type DevGroup: str
+        :param _LicenseType: license类型, 不传查询全部, 1: 租户月付，2：厂商月付，3：永久授权
+        :type LicenseType: int
+        """
+        self._Period = None
+        self._StartTime = None
+        self._EndTime = None
+        self._DevGroup = None
+        self._LicenseType = None
+
+    @property
+    def Period(self):
+        """查询粒度。0:day, 1:week, 2:month, 不传默认为day
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def StartTime(self):
+        """开始时间。单位秒
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """结束时间。单位秒
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def DevGroup(self):
+        """设备组, 不传查询全部
+        :rtype: str
+        """
+        return self._DevGroup
+
+    @DevGroup.setter
+    def DevGroup(self, DevGroup):
+        self._DevGroup = DevGroup
+
+    @property
+    def LicenseType(self):
+        """license类型, 不传查询全部, 1: 租户月付，2：厂商月付，3：永久授权
+        :rtype: int
+        """
+        return self._LicenseType
+
+    @LicenseType.setter
+    def LicenseType(self, LicenseType):
+        self._LicenseType = LicenseType
+
+
+    def _deserialize(self, params):
+        self._Period = params.get("Period")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._DevGroup = params.get("DevGroup")
+        self._LicenseType = params.get("LicenseType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DownloadActiveDeviceCountResponse(AbstractModel):
+    """DownloadActiveDeviceCount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FilePath: URL地址
+        :type FilePath: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FilePath = None
+        self._RequestId = None
+
+    @property
+    def FilePath(self):
+        """URL地址
+        :rtype: str
+        """
+        return self._FilePath
+
+    @FilePath.setter
+    def FilePath(self, FilePath):
+        self._FilePath = FilePath
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FilePath = params.get("FilePath")
+        self._RequestId = params.get("RequestId")
+
+
 class ExpectedThreshold(AbstractModel):
     """用户期望门限
 
@@ -2977,6 +3167,240 @@ DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class GetActiveDeviceCountRequest(AbstractModel):
+    """GetActiveDeviceCount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Period: 查询粒度。0:day, 1:week, 2:month, 不传默认为day
+        :type Period: int
+        :param _StartTime: 开始时间。单位秒
+        :type StartTime: int
+        :param _EndTime: 结束时间。单位秒
+        :type EndTime: int
+        :param _DevGroup: 设备组, 不传查询全部
+        :type DevGroup: str
+        :param _LicenseType: license类型, 不传查询全部, 1: 租户月付，2：厂商月付，3：永久授权
+        :type LicenseType: int
+        """
+        self._Period = None
+        self._StartTime = None
+        self._EndTime = None
+        self._DevGroup = None
+        self._LicenseType = None
+
+    @property
+    def Period(self):
+        """查询粒度。0:day, 1:week, 2:month, 不传默认为day
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def StartTime(self):
+        """开始时间。单位秒
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """结束时间。单位秒
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def DevGroup(self):
+        """设备组, 不传查询全部
+        :rtype: str
+        """
+        return self._DevGroup
+
+    @DevGroup.setter
+    def DevGroup(self, DevGroup):
+        self._DevGroup = DevGroup
+
+    @property
+    def LicenseType(self):
+        """license类型, 不传查询全部, 1: 租户月付，2：厂商月付，3：永久授权
+        :rtype: int
+        """
+        return self._LicenseType
+
+    @LicenseType.setter
+    def LicenseType(self, LicenseType):
+        self._LicenseType = LicenseType
+
+
+    def _deserialize(self, params):
+        self._Period = params.get("Period")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._DevGroup = params.get("DevGroup")
+        self._LicenseType = params.get("LicenseType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetActiveDeviceCountResponse(AbstractModel):
+    """GetActiveDeviceCount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ActiveDeviceList: 激活设备统计
+        :type ActiveDeviceList: list of ActiveDeviceList
+        :param _Period: 查询粒度，0:day, 1:week, 2:month, 不传默认为day
+        :type Period: int
+        :param _StartTime: 开始时间
+        :type StartTime: str
+        :param _EndTime: 结束时间
+        :type EndTime: str
+        :param _DevGroup: 设备组
+        :type DevGroup: str
+        :param _LicenseType: license类型, 不传查询全部, 1: 租户月付，2：厂商月付，3：永久授权
+        :type LicenseType: str
+        :param _AppId: 租户ID
+        :type AppId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ActiveDeviceList = None
+        self._Period = None
+        self._StartTime = None
+        self._EndTime = None
+        self._DevGroup = None
+        self._LicenseType = None
+        self._AppId = None
+        self._RequestId = None
+
+    @property
+    def ActiveDeviceList(self):
+        """激活设备统计
+        :rtype: list of ActiveDeviceList
+        """
+        return self._ActiveDeviceList
+
+    @ActiveDeviceList.setter
+    def ActiveDeviceList(self, ActiveDeviceList):
+        self._ActiveDeviceList = ActiveDeviceList
+
+    @property
+    def Period(self):
+        """查询粒度，0:day, 1:week, 2:month, 不传默认为day
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def StartTime(self):
+        """开始时间
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """结束时间
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def DevGroup(self):
+        """设备组
+        :rtype: str
+        """
+        return self._DevGroup
+
+    @DevGroup.setter
+    def DevGroup(self, DevGroup):
+        self._DevGroup = DevGroup
+
+    @property
+    def LicenseType(self):
+        """license类型, 不传查询全部, 1: 租户月付，2：厂商月付，3：永久授权
+        :rtype: str
+        """
+        return self._LicenseType
+
+    @LicenseType.setter
+    def LicenseType(self, LicenseType):
+        self._LicenseType = LicenseType
+
+    @property
+    def AppId(self):
+        """租户ID
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ActiveDeviceList") is not None:
+            self._ActiveDeviceList = []
+            for item in params.get("ActiveDeviceList"):
+                obj = ActiveDeviceList()
+                obj._deserialize(item)
+                self._ActiveDeviceList.append(obj)
+        self._Period = params.get("Period")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._DevGroup = params.get("DevGroup")
+        self._LicenseType = params.get("LicenseType")
+        self._AppId = params.get("AppId")
+        self._RequestId = params.get("RequestId")
 
 
 class GetDevicePayModeRequest(AbstractModel):

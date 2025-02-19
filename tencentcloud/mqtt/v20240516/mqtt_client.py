@@ -26,6 +26,29 @@ class MqttClient(AbstractClient):
     _service = 'mqtt'
 
 
+    def ActivateCaCertificate(self, request):
+        """激活Ca证书
+
+        :param request: Request instance for ActivateCaCertificate.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.ActivateCaCertificateRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.ActivateCaCertificateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ActivateCaCertificate", params, headers=headers)
+            response = json.loads(body)
+            model = models.ActivateCaCertificateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ActivateDeviceCertificate(self, request):
         """生效设备证书
 
@@ -40,6 +63,29 @@ class MqttClient(AbstractClient):
             body = self.call("ActivateDeviceCertificate", params, headers=headers)
             response = json.loads(body)
             model = models.ActivateDeviceCertificateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ApplyRegistrationCode(self, request):
+        """申请ca注册码
+
+        :param request: Request instance for ApplyRegistrationCode.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.ApplyRegistrationCodeRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.ApplyRegistrationCodeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ApplyRegistrationCode", params, headers=headers)
+            response = json.loads(body)
+            model = models.ApplyRegistrationCodeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -210,6 +256,29 @@ class MqttClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeactivateCaCertificate(self, request):
+        """失效Ca证书
+
+        :param request: Request instance for DeactivateCaCertificate.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.DeactivateCaCertificateRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.DeactivateCaCertificateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeactivateCaCertificate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeactivateCaCertificateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeactivateDeviceCertificate(self, request):
         """失效Ca证书
 
@@ -270,6 +339,29 @@ class MqttClient(AbstractClient):
             body = self.call("DeleteAuthorizationPolicy", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteAuthorizationPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteCaCertificate(self, request):
+        """删除Ca证书
+
+        :param request: Request instance for DeleteCaCertificate.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.DeleteCaCertificateRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.DeleteCaCertificateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCaCertificate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCaCertificateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -431,6 +523,52 @@ class MqttClient(AbstractClient):
             body = self.call("DescribeAuthorizationPolicies", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAuthorizationPoliciesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCaCertificate(self, request):
+        """查询Ca证书详情接口
+
+        :param request: Request instance for DescribeCaCertificate.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeCaCertificateRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.DescribeCaCertificateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCaCertificate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCaCertificateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCaCertificates(self, request):
+        """查询集群下的ca证书信息
+
+        :param request: Request instance for DescribeCaCertificates.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeCaCertificatesRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.DescribeCaCertificatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCaCertificates", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCaCertificatesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -703,6 +841,30 @@ class MqttClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyInstanceCertBinding(self, request):
+        """更新MQTT集群绑定证书
+        参数传空，则为删除证书
+
+        :param request: Request instance for ModifyInstanceCertBinding.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.ModifyInstanceCertBindingRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.ModifyInstanceCertBindingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstanceCertBinding", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstanceCertBindingResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyJWKSAuthenticator(self, request):
         """修改MQTT JWKS 认证器
 
@@ -786,6 +948,29 @@ class MqttClient(AbstractClient):
             body = self.call("ModifyUser", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RegisterCaCertificate(self, request):
+        """注册ca证书
+
+        :param request: Request instance for RegisterCaCertificate.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.RegisterCaCertificateRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.RegisterCaCertificateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RegisterCaCertificate", params, headers=headers)
+            response = json.loads(body)
+            model = models.RegisterCaCertificateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -49,29 +49,6 @@ class VclmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def ConfirmVideoTranslateJob(self, request):
-        """确认视频转译结果
-
-        :param request: Request instance for ConfirmVideoTranslateJob.
-        :type request: :class:`tencentcloud.vclm.v20240523.models.ConfirmVideoTranslateJobRequest`
-        :rtype: :class:`tencentcloud.vclm.v20240523.models.ConfirmVideoTranslateJobResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ConfirmVideoTranslateJob", params, headers=headers)
-            response = json.loads(body)
-            model = models.ConfirmVideoTranslateJobResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeImageAnimateJob(self, request):
         """用于查询图片跳舞任务。图片跳舞能力支持舞蹈动作结合图片生成跳舞视频，满足社交娱乐、互动营销等场景的需求。
 
@@ -142,29 +119,6 @@ class VclmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeVideoTranslateJob(self, request):
-        """查询视频转译任务
-
-        :param request: Request instance for DescribeVideoTranslateJob.
-        :type request: :class:`tencentcloud.vclm.v20240523.models.DescribeVideoTranslateJobRequest`
-        :rtype: :class:`tencentcloud.vclm.v20240523.models.DescribeVideoTranslateJobResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeVideoTranslateJob", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeVideoTranslateJobResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def SubmitImageAnimateJob(self, request):
         """用于提交图片跳舞任务。图片跳舞能力支持舞蹈动作结合图片生成跳舞视频，满足社交娱乐、互动营销等场景的需求。
 
@@ -226,64 +180,6 @@ class VclmClient(AbstractClient):
             body = self.call("SubmitVideoStylizationJob", params, headers=headers)
             response = json.loads(body)
             model = models.SubmitVideoStylizationJobResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def SubmitVideoTranslateJob(self, request):
-        """### 支持音色种别列表。
-        每个音色都支持：英语（美国）、阿拉伯语、德语、西班牙语、法语、印尼语、意大利语、日语、韩语、马来语、葡萄牙语、俄语、泰语、土耳其语、越南语。
-
-        | 音色名称    | 性别 | 音色ID |
-        | ----------- | ---- | ------ |
-        | Seraphina   | 女   | 701002 |
-        | Ada         | 女   | 701003 |
-        | Emma        | 女   | 701007 |
-        | Brian       | 男   | 701008 |
-        | Amanda      | 女   | 701013 |
-        | Brandon     | 男   | 701014 |
-        | Christopher | 男   | 701015 |
-        | Davis       | 男   | 701017 |
-        | Derek       | 男   | 701018 |
-        | Dustin      | 男   | 701019 |
-        | Evelyn      | 女   | 701020 |
-        | Lewis       | 男   | 701021 |
-        | Lola        | 女   | 701022 |
-        | Samuel      | 男   | 701026 |
-        | Steffan     | 男   | 701028 |
-        | Arabella    | 女   | 701029 |
-        | Isidora     | 女   | 701030 |
-        | Tristan     | 男   | 701031 |
-        | Vivienne    | 女   | 701034 |
-        | Lucien      | 男   | 701035 |
-        | Alessio     | 男   | 701036 |
-        | Giuseppe    | 男   | 701037 |
-        | Isabella    | 女   | 701038 |
-        | Marcello    | 男   | 701039 |
-        | Masaru      | 男   | 701040 |
-        | Macerio     | 男   | 701042 |
-        | Thalita     | 女   | 701043 |
-        | 晓晓         | 女   | 701045 |
-        | 晓宇         | 女   | 701046 |
-        | 云逸         | 男   | 701047 |
-        | Yunfan       | 男   | 701048 |
-
-        :param request: Request instance for SubmitVideoTranslateJob.
-        :type request: :class:`tencentcloud.vclm.v20240523.models.SubmitVideoTranslateJobRequest`
-        :rtype: :class:`tencentcloud.vclm.v20240523.models.SubmitVideoTranslateJobResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("SubmitVideoTranslateJob", params, headers=headers)
-            response = json.loads(body)
-            model = models.SubmitVideoTranslateJobResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

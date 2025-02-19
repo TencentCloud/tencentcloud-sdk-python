@@ -1305,10 +1305,8 @@ class BatchUserInfo(AbstractModel):
 
         :type SdkAppId: int
         :param _UserId: 用户ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserId: str
         :param _OriginId: 用户在客户系统的Id。 若用户注册时该字段为空，则默认为 UserId 值一致。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OriginId: str
         """
         self._SdkAppId = None
@@ -1330,7 +1328,6 @@ class BatchUserInfo(AbstractModel):
     @property
     def UserId(self):
         """用户ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UserId
@@ -1342,7 +1339,6 @@ class BatchUserInfo(AbstractModel):
     @property
     def OriginId(self):
         """用户在客户系统的Id。 若用户注册时该字段为空，则默认为 UserId 值一致。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OriginId

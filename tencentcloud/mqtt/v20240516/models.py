@@ -18,6 +18,85 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class ActivateCaCertificateRequest(AbstractModel):
+    """ActivateCaCertificate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        :param _CaSn: 证书序列号
+        :type CaSn: str
+        """
+        self._InstanceId = None
+        self._CaSn = None
+
+    @property
+    def InstanceId(self):
+        """集群id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def CaSn(self):
+        """证书序列号
+        :rtype: str
+        """
+        return self._CaSn
+
+    @CaSn.setter
+    def CaSn(self, CaSn):
+        self._CaSn = CaSn
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._CaSn = params.get("CaSn")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ActivateCaCertificateResponse(AbstractModel):
+    """ActivateCaCertificate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ActivateDeviceCertificateRequest(AbstractModel):
     """ActivateDeviceCertificate请求参数结构体
 
@@ -94,6 +173,100 @@ class ActivateDeviceCertificateResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ApplyRegistrationCodeRequest(AbstractModel):
+    """ApplyRegistrationCode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        """集群id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApplyRegistrationCodeResponse(AbstractModel):
+    """ApplyRegistrationCode返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群ID
+        :type InstanceId: str
+        :param _RegistrationCode: 注册码
+        :type RegistrationCode: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceId = None
+        self._RegistrationCode = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        """集群ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RegistrationCode(self):
+        """注册码
+        :rtype: str
+        """
+        return self._RegistrationCode
+
+    @RegistrationCode.setter
+    def RegistrationCode(self, RegistrationCode):
+        self._RegistrationCode = RegistrationCode
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._RegistrationCode = params.get("RegistrationCode")
         self._RequestId = params.get("RequestId")
 
 
@@ -431,6 +604,238 @@ class AuthorizationPolicyPriority(AbstractModel):
     def _deserialize(self, params):
         self._Id = params.get("Id")
         self._Priority = params.get("Priority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CaCertificateItem(AbstractModel):
+    """CA证书信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CaCn: common name
+        :type CaCn: str
+        :param _CaCertificate: 证书内容
+        :type CaCertificate: str
+        :param _CaSn: 证书序列号
+        :type CaSn: str
+        :param _Format: 证书格式
+        :type Format: str
+        :param _VerificationCertificate: 验证证书内容
+        :type VerificationCertificate: str
+        :param _Status: ca状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _LastActivationTime: 上次激活时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastActivationTime: int
+        :param _CreatedTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedTime: int
+        :param _UpdateTime: 预销毁时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: int
+        :param _LastInactivationTime: 上次去激活时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastInactivationTime: int
+        :param _CaIssuerCn: Ca证书颁发者CN
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CaIssuerCn: str
+        :param _NotBeforeTime: 生效时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NotBeforeTime: int
+        :param _NotAfterTime: 失效时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NotAfterTime: int
+        """
+        self._CaCn = None
+        self._CaCertificate = None
+        self._CaSn = None
+        self._Format = None
+        self._VerificationCertificate = None
+        self._Status = None
+        self._LastActivationTime = None
+        self._CreatedTime = None
+        self._UpdateTime = None
+        self._LastInactivationTime = None
+        self._CaIssuerCn = None
+        self._NotBeforeTime = None
+        self._NotAfterTime = None
+
+    @property
+    def CaCn(self):
+        """common name
+        :rtype: str
+        """
+        return self._CaCn
+
+    @CaCn.setter
+    def CaCn(self, CaCn):
+        self._CaCn = CaCn
+
+    @property
+    def CaCertificate(self):
+        """证书内容
+        :rtype: str
+        """
+        return self._CaCertificate
+
+    @CaCertificate.setter
+    def CaCertificate(self, CaCertificate):
+        self._CaCertificate = CaCertificate
+
+    @property
+    def CaSn(self):
+        """证书序列号
+        :rtype: str
+        """
+        return self._CaSn
+
+    @CaSn.setter
+    def CaSn(self, CaSn):
+        self._CaSn = CaSn
+
+    @property
+    def Format(self):
+        """证书格式
+        :rtype: str
+        """
+        return self._Format
+
+    @Format.setter
+    def Format(self, Format):
+        self._Format = Format
+
+    @property
+    def VerificationCertificate(self):
+        """验证证书内容
+        :rtype: str
+        """
+        return self._VerificationCertificate
+
+    @VerificationCertificate.setter
+    def VerificationCertificate(self, VerificationCertificate):
+        self._VerificationCertificate = VerificationCertificate
+
+    @property
+    def Status(self):
+        """ca状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def LastActivationTime(self):
+        """上次激活时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._LastActivationTime
+
+    @LastActivationTime.setter
+    def LastActivationTime(self, LastActivationTime):
+        self._LastActivationTime = LastActivationTime
+
+    @property
+    def CreatedTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def UpdateTime(self):
+        """预销毁时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def LastInactivationTime(self):
+        """上次去激活时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._LastInactivationTime
+
+    @LastInactivationTime.setter
+    def LastInactivationTime(self, LastInactivationTime):
+        self._LastInactivationTime = LastInactivationTime
+
+    @property
+    def CaIssuerCn(self):
+        """Ca证书颁发者CN
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CaIssuerCn
+
+    @CaIssuerCn.setter
+    def CaIssuerCn(self, CaIssuerCn):
+        self._CaIssuerCn = CaIssuerCn
+
+    @property
+    def NotBeforeTime(self):
+        """生效时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._NotBeforeTime
+
+    @NotBeforeTime.setter
+    def NotBeforeTime(self, NotBeforeTime):
+        self._NotBeforeTime = NotBeforeTime
+
+    @property
+    def NotAfterTime(self):
+        """失效时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._NotAfterTime
+
+    @NotAfterTime.setter
+    def NotAfterTime(self, NotAfterTime):
+        self._NotAfterTime = NotAfterTime
+
+
+    def _deserialize(self, params):
+        self._CaCn = params.get("CaCn")
+        self._CaCertificate = params.get("CaCertificate")
+        self._CaSn = params.get("CaSn")
+        self._Format = params.get("Format")
+        self._VerificationCertificate = params.get("VerificationCertificate")
+        self._Status = params.get("Status")
+        self._LastActivationTime = params.get("LastActivationTime")
+        self._CreatedTime = params.get("CreatedTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._LastInactivationTime = params.get("LastInactivationTime")
+        self._CaIssuerCn = params.get("CaIssuerCn")
+        self._NotBeforeTime = params.get("NotBeforeTime")
+        self._NotAfterTime = params.get("NotAfterTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1592,6 +1997,85 @@ class CreateUserResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeactivateCaCertificateRequest(AbstractModel):
+    """DeactivateCaCertificate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        :param _CaSn: 证书序列号
+        :type CaSn: str
+        """
+        self._InstanceId = None
+        self._CaSn = None
+
+    @property
+    def InstanceId(self):
+        """集群id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def CaSn(self):
+        """证书序列号
+        :rtype: str
+        """
+        return self._CaSn
+
+    @CaSn.setter
+    def CaSn(self, CaSn):
+        self._CaSn = CaSn
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._CaSn = params.get("CaSn")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeactivateCaCertificateResponse(AbstractModel):
+    """DeactivateCaCertificate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeactivateDeviceCertificateRequest(AbstractModel):
     """DeactivateDeviceCertificate请求参数结构体
 
@@ -1809,6 +2293,85 @@ class DeleteAuthorizationPolicyRequest(AbstractModel):
 
 class DeleteAuthorizationPolicyResponse(AbstractModel):
     """DeleteAuthorizationPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteCaCertificateRequest(AbstractModel):
+    """DeleteCaCertificate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        :param _CaSn: 证书序列号
+        :type CaSn: str
+        """
+        self._InstanceId = None
+        self._CaSn = None
+
+    @property
+    def InstanceId(self):
+        """集群id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def CaSn(self):
+        """证书序列号
+        :rtype: str
+        """
+        return self._CaSn
+
+    @CaSn.setter
+    def CaSn(self, CaSn):
+        self._CaSn = CaSn
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._CaSn = params.get("CaSn")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCaCertificateResponse(AbstractModel):
+    """DeleteCaCertificate返回参数结构体
 
     """
 
@@ -2378,6 +2941,351 @@ class DescribeAuthorizationPoliciesResponse(AbstractModel):
             self._Data = []
             for item in params.get("Data"):
                 obj = AuthorizationPolicyItem()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCaCertificateRequest(AbstractModel):
+    """DescribeCaCertificate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CaSn: ca证书sn
+        :type CaSn: str
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        """
+        self._CaSn = None
+        self._InstanceId = None
+
+    @property
+    def CaSn(self):
+        """ca证书sn
+        :rtype: str
+        """
+        return self._CaSn
+
+    @CaSn.setter
+    def CaSn(self, CaSn):
+        self._CaSn = CaSn
+
+    @property
+    def InstanceId(self):
+        """集群id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._CaSn = params.get("CaSn")
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCaCertificateResponse(AbstractModel):
+    """DescribeCaCertificate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CreatedTime: 创建时间
+        :type CreatedTime: int
+        :param _UpdateTime: 上次更新时间
+        :type UpdateTime: int
+        :param _NotAfterTime: 失效日期
+        :type NotAfterTime: int
+        :param _LastActivationTime: 上次激活时间
+        :type LastActivationTime: int
+        :param _LastInactivationTime: 上次吊销时间
+        :type LastInactivationTime: int
+        :param _Status: 证书状态
+        :type Status: str
+        :param _CaSn: 证书序列号
+        :type CaSn: str
+        :param _CaCn: common name
+        :type CaCn: str
+        :param _CaCertificate: 证书内容
+        :type CaCertificate: str
+        :param _Format: 证书格式
+        :type Format: str
+        :param _CaIssuerCn: Ca证书颁发者CN
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CaIssuerCn: str
+        :param _NotBeforeTime: 生效开始时间
+        :type NotBeforeTime: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CreatedTime = None
+        self._UpdateTime = None
+        self._NotAfterTime = None
+        self._LastActivationTime = None
+        self._LastInactivationTime = None
+        self._Status = None
+        self._CaSn = None
+        self._CaCn = None
+        self._CaCertificate = None
+        self._Format = None
+        self._CaIssuerCn = None
+        self._NotBeforeTime = None
+        self._RequestId = None
+
+    @property
+    def CreatedTime(self):
+        """创建时间
+        :rtype: int
+        """
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def UpdateTime(self):
+        """上次更新时间
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def NotAfterTime(self):
+        """失效日期
+        :rtype: int
+        """
+        return self._NotAfterTime
+
+    @NotAfterTime.setter
+    def NotAfterTime(self, NotAfterTime):
+        self._NotAfterTime = NotAfterTime
+
+    @property
+    def LastActivationTime(self):
+        """上次激活时间
+        :rtype: int
+        """
+        return self._LastActivationTime
+
+    @LastActivationTime.setter
+    def LastActivationTime(self, LastActivationTime):
+        self._LastActivationTime = LastActivationTime
+
+    @property
+    def LastInactivationTime(self):
+        """上次吊销时间
+        :rtype: int
+        """
+        return self._LastInactivationTime
+
+    @LastInactivationTime.setter
+    def LastInactivationTime(self, LastInactivationTime):
+        self._LastInactivationTime = LastInactivationTime
+
+    @property
+    def Status(self):
+        """证书状态
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CaSn(self):
+        """证书序列号
+        :rtype: str
+        """
+        return self._CaSn
+
+    @CaSn.setter
+    def CaSn(self, CaSn):
+        self._CaSn = CaSn
+
+    @property
+    def CaCn(self):
+        """common name
+        :rtype: str
+        """
+        return self._CaCn
+
+    @CaCn.setter
+    def CaCn(self, CaCn):
+        self._CaCn = CaCn
+
+    @property
+    def CaCertificate(self):
+        """证书内容
+        :rtype: str
+        """
+        return self._CaCertificate
+
+    @CaCertificate.setter
+    def CaCertificate(self, CaCertificate):
+        self._CaCertificate = CaCertificate
+
+    @property
+    def Format(self):
+        """证书格式
+        :rtype: str
+        """
+        return self._Format
+
+    @Format.setter
+    def Format(self, Format):
+        self._Format = Format
+
+    @property
+    def CaIssuerCn(self):
+        """Ca证书颁发者CN
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CaIssuerCn
+
+    @CaIssuerCn.setter
+    def CaIssuerCn(self, CaIssuerCn):
+        self._CaIssuerCn = CaIssuerCn
+
+    @property
+    def NotBeforeTime(self):
+        """生效开始时间
+        :rtype: int
+        """
+        return self._NotBeforeTime
+
+    @NotBeforeTime.setter
+    def NotBeforeTime(self, NotBeforeTime):
+        self._NotBeforeTime = NotBeforeTime
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._CreatedTime = params.get("CreatedTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._NotAfterTime = params.get("NotAfterTime")
+        self._LastActivationTime = params.get("LastActivationTime")
+        self._LastInactivationTime = params.get("LastInactivationTime")
+        self._Status = params.get("Status")
+        self._CaSn = params.get("CaSn")
+        self._CaCn = params.get("CaCn")
+        self._CaCertificate = params.get("CaCertificate")
+        self._Format = params.get("Format")
+        self._CaIssuerCn = params.get("CaIssuerCn")
+        self._NotBeforeTime = params.get("NotBeforeTime")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCaCertificatesRequest(AbstractModel):
+    """DescribeCaCertificates请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群ID
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        """集群ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCaCertificatesResponse(AbstractModel):
+    """DescribeCaCertificates返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: ca证书列表
+        :type Data: list of CaCertificateItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """ca证书列表
+        :rtype: list of CaCertificateItem
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = CaCertificateItem()
                 obj._deserialize(item)
                 self._Data.append(obj)
         self._RequestId = params.get("RequestId")
@@ -5546,6 +6454,155 @@ class ModifyInsPublicEndpointResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyInstanceCertBindingRequest(AbstractModel):
+    """ModifyInstanceCertBinding请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _SSLServerCertId: 服务端证书id
+        :type SSLServerCertId: str
+        :param _SSLCaCertId: CA证书id
+        :type SSLCaCertId: str
+        :param _X509Mode: 加密通信方式
+TLS：单向证书认证
+mTLS：双向证书认证
+BYOC：一设备一证书认证
+        :type X509Mode: str
+        :param _DeviceCertificateProvisionType: 设备证书注册类型：
+JITP，自动注册；
+MANUAL 手动注册
+        :type DeviceCertificateProvisionType: str
+        :param _AutomaticActivation: 是否自动激活，默认为false
+        :type AutomaticActivation: bool
+        """
+        self._InstanceId = None
+        self._SSLServerCertId = None
+        self._SSLCaCertId = None
+        self._X509Mode = None
+        self._DeviceCertificateProvisionType = None
+        self._AutomaticActivation = None
+
+    @property
+    def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def SSLServerCertId(self):
+        """服务端证书id
+        :rtype: str
+        """
+        return self._SSLServerCertId
+
+    @SSLServerCertId.setter
+    def SSLServerCertId(self, SSLServerCertId):
+        self._SSLServerCertId = SSLServerCertId
+
+    @property
+    def SSLCaCertId(self):
+        """CA证书id
+        :rtype: str
+        """
+        return self._SSLCaCertId
+
+    @SSLCaCertId.setter
+    def SSLCaCertId(self, SSLCaCertId):
+        self._SSLCaCertId = SSLCaCertId
+
+    @property
+    def X509Mode(self):
+        """加密通信方式
+TLS：单向证书认证
+mTLS：双向证书认证
+BYOC：一设备一证书认证
+        :rtype: str
+        """
+        return self._X509Mode
+
+    @X509Mode.setter
+    def X509Mode(self, X509Mode):
+        self._X509Mode = X509Mode
+
+    @property
+    def DeviceCertificateProvisionType(self):
+        """设备证书注册类型：
+JITP，自动注册；
+MANUAL 手动注册
+        :rtype: str
+        """
+        return self._DeviceCertificateProvisionType
+
+    @DeviceCertificateProvisionType.setter
+    def DeviceCertificateProvisionType(self, DeviceCertificateProvisionType):
+        self._DeviceCertificateProvisionType = DeviceCertificateProvisionType
+
+    @property
+    def AutomaticActivation(self):
+        """是否自动激活，默认为false
+        :rtype: bool
+        """
+        return self._AutomaticActivation
+
+    @AutomaticActivation.setter
+    def AutomaticActivation(self, AutomaticActivation):
+        self._AutomaticActivation = AutomaticActivation
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._SSLServerCertId = params.get("SSLServerCertId")
+        self._SSLCaCertId = params.get("SSLCaCertId")
+        self._X509Mode = params.get("X509Mode")
+        self._DeviceCertificateProvisionType = params.get("DeviceCertificateProvisionType")
+        self._AutomaticActivation = params.get("AutomaticActivation")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceCertBindingResponse(AbstractModel):
+    """ModifyInstanceCertBinding返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyInstanceRequest(AbstractModel):
     """ModifyInstance请求参数结构体
 
@@ -6259,6 +7316,138 @@ class PublicAccessRule(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class RegisterCaCertificateRequest(AbstractModel):
+    """RegisterCaCertificate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        :param _CaCertificate: CA证书
+        :type CaCertificate: str
+        :param _VerificationCertificate: 验证证书
+        :type VerificationCertificate: str
+        :param _Format: 证书格式，不传默认PEM格式
+        :type Format: str
+        :param _Status: 证书状态，不传默认ACTIVE状态
+    ACTIVE,//激活
+    INACTIVE,//未激活
+    REVOKED,//吊销
+    PENDING_ACTIVATION,//注册待激活
+        :type Status: str
+        """
+        self._InstanceId = None
+        self._CaCertificate = None
+        self._VerificationCertificate = None
+        self._Format = None
+        self._Status = None
+
+    @property
+    def InstanceId(self):
+        """集群id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def CaCertificate(self):
+        """CA证书
+        :rtype: str
+        """
+        return self._CaCertificate
+
+    @CaCertificate.setter
+    def CaCertificate(self, CaCertificate):
+        self._CaCertificate = CaCertificate
+
+    @property
+    def VerificationCertificate(self):
+        """验证证书
+        :rtype: str
+        """
+        return self._VerificationCertificate
+
+    @VerificationCertificate.setter
+    def VerificationCertificate(self, VerificationCertificate):
+        self._VerificationCertificate = VerificationCertificate
+
+    @property
+    def Format(self):
+        """证书格式，不传默认PEM格式
+        :rtype: str
+        """
+        return self._Format
+
+    @Format.setter
+    def Format(self, Format):
+        self._Format = Format
+
+    @property
+    def Status(self):
+        """证书状态，不传默认ACTIVE状态
+    ACTIVE,//激活
+    INACTIVE,//未激活
+    REVOKED,//吊销
+    PENDING_ACTIVATION,//注册待激活
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._CaCertificate = params.get("CaCertificate")
+        self._VerificationCertificate = params.get("VerificationCertificate")
+        self._Format = params.get("Format")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RegisterCaCertificateResponse(AbstractModel):
+    """RegisterCaCertificate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class RegisterDeviceCertificateRequest(AbstractModel):
