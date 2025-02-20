@@ -9100,6 +9100,7 @@ class CreatePrefetchTaskRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _ZoneId: 站点 ID。
+若您希望快速提交不同站点下的 Targets Url，可以将其填写为 *，但前提是调用该 API 的账号必须具备主账号下全部站点资源的权限。
         :type ZoneId: str
         :param _Targets: 要预热的资源列表，每个元素格式类似如下:
 http://www.example.com/example.txt。参数值当前必填。
@@ -9118,6 +9119,7 @@ http://www.example.com/example.txt。参数值当前必填。
     @property
     def ZoneId(self):
         """站点 ID。
+若您希望快速提交不同站点下的 Targets Url，可以将其填写为 *，但前提是调用该 API 的账号必须具备主账号下全部站点资源的权限。
         :rtype: str
         """
         return self._ZoneId
@@ -9141,6 +9143,8 @@ http://www.example.com/example.txt。参数值当前必填。
 
     @property
     def EncodeUrl(self):
+        warnings.warn("parameter `EncodeUrl` is deprecated", DeprecationWarning) 
+
         """是否对url进行encode，若内容含有非 ASCII 字符集的字符，请开启此开关进行编码转换（编码规则遵循 RFC3986）。
         :rtype: bool
         """
@@ -9148,6 +9152,8 @@ http://www.example.com/example.txt。参数值当前必填。
 
     @EncodeUrl.setter
     def EncodeUrl(self, EncodeUrl):
+        warnings.warn("parameter `EncodeUrl` is deprecated", DeprecationWarning) 
+
         self._EncodeUrl = EncodeUrl
 
     @property

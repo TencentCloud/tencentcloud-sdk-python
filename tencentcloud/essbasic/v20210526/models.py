@@ -9342,7 +9342,7 @@ class ChannelDescribeEmployeesResponse(AbstractModel):
         r"""
         :param _Employees: 员工信息列表。
         :type Employees: list of Staff
-        :param _Offset: 指定分页返回第几页的数据。页码从 0 开始，即首页为 0，最大20000。
+        :param _Offset: 偏移量，默认为0，最大20000。关于<code>Offset</code>的更进一步介绍请参考 API <a href="https://cloud.tencent.com/document/api/213/15688" target="_blank">简介</a>中的相关小节。
         :type Offset: int
         :param _Limit: 指定分页每页返回的数据条数，单页最大支持 20。
         :type Limit: int
@@ -9370,7 +9370,7 @@ class ChannelDescribeEmployeesResponse(AbstractModel):
 
     @property
     def Offset(self):
-        """指定分页返回第几页的数据。页码从 0 开始，即首页为 0，最大20000。
+        """偏移量，默认为0，最大20000。关于<code>Offset</code>的更进一步介绍请参考 API <a href="https://cloud.tencent.com/document/api/213/15688" target="_blank">简介</a>中的相关小节。
         :rtype: int
         """
         return self._Offset

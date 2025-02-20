@@ -7090,31 +7090,6 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeSecurityProtectionStat(self, request):
-        """接口已无效
-
-        获取安全防护状态汇总
-
-        :param request: Request instance for DescribeSecurityProtectionStat.
-        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeSecurityProtectionStatRequest`
-        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeSecurityProtectionStatResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeSecurityProtectionStat", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeSecurityProtectionStatResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeSecurityTrends(self, request):
         """本接口 (DescribeSecurityTrends) 用于获取安全事件统计数据。
 

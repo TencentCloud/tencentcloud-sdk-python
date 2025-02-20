@@ -95,6 +95,29 @@ class DcdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CancelOnlineDDLJob(self, request):
+        """取消 Online DDL 任务
+
+        :param request: Request instance for CancelOnlineDDLJob.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.CancelOnlineDDLJobRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.CancelOnlineDDLJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CancelOnlineDDLJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.CancelOnlineDDLJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CloneAccount(self, request):
         """本接口（CloneAccount）用于克隆实例账户。
 
@@ -940,6 +963,29 @@ class DcdbClient(AbstractClient):
             body = self.call("DescribeLogFileRetentionPeriod", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeLogFileRetentionPeriodResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeOnlineDDLJob(self, request):
+        """查询Online DDL 任务详情
+
+        :param request: Request instance for DescribeOnlineDDLJob.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeOnlineDDLJobRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.DescribeOnlineDDLJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOnlineDDLJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOnlineDDLJobResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

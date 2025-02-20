@@ -4492,6 +4492,79 @@ API：通过API手动注册
         self._RequestId = params.get("RequestId")
 
 
+class DescribeProductSKUListRequest(AbstractModel):
+    """DescribeProductSKUList请求参数结构体
+
+    """
+
+
+class DescribeProductSKUListResponse(AbstractModel):
+    """DescribeProductSKUList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 查询总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _MQTTProductSkuList: mqtt商品配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MQTTProductSkuList: list of ProductSkuItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._MQTTProductSkuList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """查询总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def MQTTProductSkuList(self):
+        """mqtt商品配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ProductSkuItem
+        """
+        return self._MQTTProductSkuList
+
+    @MQTTProductSkuList.setter
+    def MQTTProductSkuList(self, MQTTProductSkuList):
+        self._MQTTProductSkuList = MQTTProductSkuList
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("MQTTProductSkuList") is not None:
+            self._MQTTProductSkuList = []
+            for item in params.get("MQTTProductSkuList"):
+                obj = ProductSkuItem()
+                obj._deserialize(item)
+                self._MQTTProductSkuList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTopicListRequest(AbstractModel):
     """DescribeTopicList请求参数结构体
 
@@ -7244,6 +7317,272 @@ class ModifyUserResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class PriceTag(AbstractModel):
+    """价格标签信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 计价名称
+        :type Name: str
+        :param _Category: 计价类别
+        :type Category: str
+        :param _Code: 计费项标签
+        :type Code: str
+        :param _Step: 步长
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Step: int
+        """
+        self._Name = None
+        self._Category = None
+        self._Code = None
+        self._Step = None
+
+    @property
+    def Name(self):
+        """计价名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Category(self):
+        """计价类别
+        :rtype: str
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def Code(self):
+        """计费项标签
+        :rtype: str
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Step(self):
+        """步长
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Step
+
+    @Step.setter
+    def Step(self, Step):
+        self._Step = Step
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Category = params.get("Category")
+        self._Code = params.get("Code")
+        self._Step = params.get("Step")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProductSkuItem(AbstractModel):
+    """MQTT ProductSkuItem
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceType: 规格类型
+BASIC：基础版
+PRO ：专业版
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceType: str
+        :param _SkuCode: 规格代码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SkuCode: str
+        :param _OnSale: 是否售卖
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OnSale: bool
+        :param _TopicNumLimit: topic num限制
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicNumLimit: int
+        :param _TpsLimit: tps
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TpsLimit: int
+        :param _ClientNumLimit: 客户端连接数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientNumLimit: int
+        :param _MaxSubscriptionPerClient: 单客户端最大订阅数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxSubscriptionPerClient: int
+        :param _AuthorizationPolicyLimit: 授权规则条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthorizationPolicyLimit: int
+        :param _PriceTags: 计费项信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PriceTags: list of PriceTag
+        """
+        self._InstanceType = None
+        self._SkuCode = None
+        self._OnSale = None
+        self._TopicNumLimit = None
+        self._TpsLimit = None
+        self._ClientNumLimit = None
+        self._MaxSubscriptionPerClient = None
+        self._AuthorizationPolicyLimit = None
+        self._PriceTags = None
+
+    @property
+    def InstanceType(self):
+        """规格类型
+BASIC：基础版
+PRO ：专业版
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def SkuCode(self):
+        """规格代码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SkuCode
+
+    @SkuCode.setter
+    def SkuCode(self, SkuCode):
+        self._SkuCode = SkuCode
+
+    @property
+    def OnSale(self):
+        """是否售卖
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._OnSale
+
+    @OnSale.setter
+    def OnSale(self, OnSale):
+        self._OnSale = OnSale
+
+    @property
+    def TopicNumLimit(self):
+        """topic num限制
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TopicNumLimit
+
+    @TopicNumLimit.setter
+    def TopicNumLimit(self, TopicNumLimit):
+        self._TopicNumLimit = TopicNumLimit
+
+    @property
+    def TpsLimit(self):
+        """tps
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TpsLimit
+
+    @TpsLimit.setter
+    def TpsLimit(self, TpsLimit):
+        self._TpsLimit = TpsLimit
+
+    @property
+    def ClientNumLimit(self):
+        """客户端连接数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ClientNumLimit
+
+    @ClientNumLimit.setter
+    def ClientNumLimit(self, ClientNumLimit):
+        self._ClientNumLimit = ClientNumLimit
+
+    @property
+    def MaxSubscriptionPerClient(self):
+        """单客户端最大订阅数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MaxSubscriptionPerClient
+
+    @MaxSubscriptionPerClient.setter
+    def MaxSubscriptionPerClient(self, MaxSubscriptionPerClient):
+        self._MaxSubscriptionPerClient = MaxSubscriptionPerClient
+
+    @property
+    def AuthorizationPolicyLimit(self):
+        """授权规则条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AuthorizationPolicyLimit
+
+    @AuthorizationPolicyLimit.setter
+    def AuthorizationPolicyLimit(self, AuthorizationPolicyLimit):
+        self._AuthorizationPolicyLimit = AuthorizationPolicyLimit
+
+    @property
+    def PriceTags(self):
+        """计费项信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PriceTag
+        """
+        return self._PriceTags
+
+    @PriceTags.setter
+    def PriceTags(self, PriceTags):
+        self._PriceTags = PriceTags
+
+
+    def _deserialize(self, params):
+        self._InstanceType = params.get("InstanceType")
+        self._SkuCode = params.get("SkuCode")
+        self._OnSale = params.get("OnSale")
+        self._TopicNumLimit = params.get("TopicNumLimit")
+        self._TpsLimit = params.get("TpsLimit")
+        self._ClientNumLimit = params.get("ClientNumLimit")
+        self._MaxSubscriptionPerClient = params.get("MaxSubscriptionPerClient")
+        self._AuthorizationPolicyLimit = params.get("AuthorizationPolicyLimit")
+        if params.get("PriceTags") is not None:
+            self._PriceTags = []
+            for item in params.get("PriceTags"):
+                obj = PriceTag()
+                obj._deserialize(item)
+                self._PriceTags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class PublicAccessRule(AbstractModel):

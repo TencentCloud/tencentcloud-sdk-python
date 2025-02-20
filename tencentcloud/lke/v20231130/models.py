@@ -15457,6 +15457,8 @@ class ListQARequest(AbstractModel):
         :type Source: int
         :param _QueryAnswer: 查询答案
         :type QueryAnswer: str
+        :param _CateBizId: 分类ID
+        :type CateBizId: str
         :param _QaBizIds: QA业务ID列表
         :type QaBizIds: list of str
         :param _QueryType: 查询类型 filename 名称、 attribute 标签
@@ -15471,6 +15473,7 @@ class ListQARequest(AbstractModel):
         self._DocBizId = None
         self._Source = None
         self._QueryAnswer = None
+        self._CateBizId = None
         self._QaBizIds = None
         self._QueryType = None
 
@@ -15574,6 +15577,17 @@ class ListQARequest(AbstractModel):
         self._QueryAnswer = QueryAnswer
 
     @property
+    def CateBizId(self):
+        """分类ID
+        :rtype: str
+        """
+        return self._CateBizId
+
+    @CateBizId.setter
+    def CateBizId(self, CateBizId):
+        self._CateBizId = CateBizId
+
+    @property
     def QaBizIds(self):
         """QA业务ID列表
         :rtype: list of str
@@ -15606,6 +15620,7 @@ class ListQARequest(AbstractModel):
         self._DocBizId = params.get("DocBizId")
         self._Source = params.get("Source")
         self._QueryAnswer = params.get("QueryAnswer")
+        self._CateBizId = params.get("CateBizId")
         self._QaBizIds = params.get("QaBizIds")
         self._QueryType = params.get("QueryType")
         memeber_set = set(params.keys())

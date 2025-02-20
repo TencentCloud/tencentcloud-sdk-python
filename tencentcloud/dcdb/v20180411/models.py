@@ -605,6 +605,85 @@ class CancelDcnJobResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CancelOnlineDDLJobRequest(AbstractModel):
+    """CancelOnlineDDLJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例Id
+        :type InstanceId: str
+        :param _FlowId: 要暂停的 Online DDL 任务对应的流程Id。创建任务时，CreateOnlineDDLJob 会返回此流程Id
+        :type FlowId: int
+        """
+        self._InstanceId = None
+        self._FlowId = None
+
+    @property
+    def InstanceId(self):
+        """实例Id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def FlowId(self):
+        """要暂停的 Online DDL 任务对应的流程Id。创建任务时，CreateOnlineDDLJob 会返回此流程Id
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._FlowId = params.get("FlowId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CancelOnlineDDLJobResponse(AbstractModel):
+    """CancelOnlineDDLJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CloneAccountRequest(AbstractModel):
     """CloneAccount请求参数结构体
 
@@ -4609,6 +4688,162 @@ class DCDBShardInfo(AbstractModel):
         self._ShardSlaveZones = params.get("ShardSlaveZones")
         self._Cpu = params.get("Cpu")
         self._Range = params.get("Range")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DDLDetail(AbstractModel):
+    """DDL任务执行详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ShardSerialId: 分片Id
+        :type ShardSerialId: str
+        :param _DbName: 数据库
+        :type DbName: str
+        :param _Table: 表
+        :type Table: str
+        :param _Alter: 执行的DDL任务内容
+        :type Alter: str
+        :param _BeginTime: 开始执行时间
+        :type BeginTime: str
+        :param _Status: 当前任务状态。0 成功； 1失败；  2进行中
+        :type Status: int
+        :param _Desc: 任务详细描述信息
+        :type Desc: str
+        :param _Stage: 任务当前所处阶段
+        :type Stage: str
+        :param _SwitchStatus: 切换状态：1: 未到切换阶段；2：正在等待进行表切换；3: 正在进行切换；4: 切换成功；5: 切换失败
+        :type SwitchStatus: int
+        """
+        self._ShardSerialId = None
+        self._DbName = None
+        self._Table = None
+        self._Alter = None
+        self._BeginTime = None
+        self._Status = None
+        self._Desc = None
+        self._Stage = None
+        self._SwitchStatus = None
+
+    @property
+    def ShardSerialId(self):
+        """分片Id
+        :rtype: str
+        """
+        return self._ShardSerialId
+
+    @ShardSerialId.setter
+    def ShardSerialId(self, ShardSerialId):
+        self._ShardSerialId = ShardSerialId
+
+    @property
+    def DbName(self):
+        """数据库
+        :rtype: str
+        """
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+    @property
+    def Table(self):
+        """表
+        :rtype: str
+        """
+        return self._Table
+
+    @Table.setter
+    def Table(self, Table):
+        self._Table = Table
+
+    @property
+    def Alter(self):
+        """执行的DDL任务内容
+        :rtype: str
+        """
+        return self._Alter
+
+    @Alter.setter
+    def Alter(self, Alter):
+        self._Alter = Alter
+
+    @property
+    def BeginTime(self):
+        """开始执行时间
+        :rtype: str
+        """
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def Status(self):
+        """当前任务状态。0 成功； 1失败；  2进行中
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Desc(self):
+        """任务详细描述信息
+        :rtype: str
+        """
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
+
+    @property
+    def Stage(self):
+        """任务当前所处阶段
+        :rtype: str
+        """
+        return self._Stage
+
+    @Stage.setter
+    def Stage(self, Stage):
+        self._Stage = Stage
+
+    @property
+    def SwitchStatus(self):
+        """切换状态：1: 未到切换阶段；2：正在等待进行表切换；3: 正在进行切换；4: 切换成功；5: 切换失败
+        :rtype: int
+        """
+        return self._SwitchStatus
+
+    @SwitchStatus.setter
+    def SwitchStatus(self, SwitchStatus):
+        self._SwitchStatus = SwitchStatus
+
+
+    def _deserialize(self, params):
+        self._ShardSerialId = params.get("ShardSerialId")
+        self._DbName = params.get("DbName")
+        self._Table = params.get("Table")
+        self._Alter = params.get("Alter")
+        self._BeginTime = params.get("BeginTime")
+        self._Status = params.get("Status")
+        self._Desc = params.get("Desc")
+        self._Stage = params.get("Stage")
+        self._SwitchStatus = params.get("SwitchStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10374,6 +10609,150 @@ class DescribeLogFileRetentionPeriodResponse(AbstractModel):
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._Days = params.get("Days")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeOnlineDDLJobRequest(AbstractModel):
+    """DescribeOnlineDDLJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例Id
+        :type InstanceId: str
+        :param _FlowId: Online DDL 对应的流程Id。创建任务时，CreateOnlineDDLJob 会返回此流程Id
+        :type FlowId: int
+        """
+        self._InstanceId = None
+        self._FlowId = None
+
+    @property
+    def InstanceId(self):
+        """实例Id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def FlowId(self):
+        """Online DDL 对应的流程Id。创建任务时，CreateOnlineDDLJob 会返回此流程Id
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._FlowId = params.get("FlowId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOnlineDDLJobResponse(AbstractModel):
+    """DescribeOnlineDDLJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 任务状态。0：成功；1：失败；大于1：进行中
+        :type Status: int
+        :param _Process: 任务进度百分比
+        :type Process: int
+        :param _ErrorMessage: 错误信息或提示信息
+        :type ErrorMessage: str
+        :param _DDLDetails: 各分片DDL执行详情
+        :type DDLDetails: list of DDLDetail
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._Process = None
+        self._ErrorMessage = None
+        self._DDLDetails = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        """任务状态。0：成功；1：失败；大于1：进行中
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Process(self):
+        """任务进度百分比
+        :rtype: int
+        """
+        return self._Process
+
+    @Process.setter
+    def Process(self, Process):
+        self._Process = Process
+
+    @property
+    def ErrorMessage(self):
+        """错误信息或提示信息
+        :rtype: str
+        """
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+    @property
+    def DDLDetails(self):
+        """各分片DDL执行详情
+        :rtype: list of DDLDetail
+        """
+        return self._DDLDetails
+
+    @DDLDetails.setter
+    def DDLDetails(self, DDLDetails):
+        self._DDLDetails = DDLDetails
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._Process = params.get("Process")
+        self._ErrorMessage = params.get("ErrorMessage")
+        if params.get("DDLDetails") is not None:
+            self._DDLDetails = []
+            for item in params.get("DDLDetails"):
+                obj = DDLDetail()
+                obj._deserialize(item)
+                self._DDLDetails.append(obj)
         self._RequestId = params.get("RequestId")
 
 

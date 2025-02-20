@@ -1557,19 +1557,14 @@ class ClassScoreItem(AbstractModel):
     def __init__(self):
         r"""
         :param _RoomId: 课堂iD
-注意：此字段可能返回 null，表示取不到有效值。
         :type RoomId: int
         :param _UserId: 用户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserId: str
         :param _CreateTime: 评分时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: int
         :param _Score: 课堂评分
-注意：此字段可能返回 null，表示取不到有效值。
         :type Score: int
         :param _ScoreMsg: 课堂评价
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScoreMsg: str
         """
         self._RoomId = None
@@ -1581,7 +1576,6 @@ class ClassScoreItem(AbstractModel):
     @property
     def RoomId(self):
         """课堂iD
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RoomId
@@ -1593,7 +1587,6 @@ class ClassScoreItem(AbstractModel):
     @property
     def UserId(self):
         """用户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UserId
@@ -1605,7 +1598,6 @@ class ClassScoreItem(AbstractModel):
     @property
     def CreateTime(self):
         """评分时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CreateTime
@@ -1617,7 +1609,6 @@ class ClassScoreItem(AbstractModel):
     @property
     def Score(self):
         """课堂评分
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Score
@@ -1629,7 +1620,6 @@ class ClassScoreItem(AbstractModel):
     @property
     def ScoreMsg(self):
         """课堂评价
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ScoreMsg
@@ -2780,13 +2770,10 @@ class CustomMsgContent(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 自定义消息数据。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: str
         :param _Desc: 自定义消息描述信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Desc: str
         :param _Ext: 扩展字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ext: str
         """
         self._Data = None
@@ -2796,7 +2783,6 @@ class CustomMsgContent(AbstractModel):
     @property
     def Data(self):
         """自定义消息数据。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Data
@@ -2808,7 +2794,6 @@ class CustomMsgContent(AbstractModel):
     @property
     def Desc(self):
         """自定义消息描述信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Desc
@@ -2820,7 +2805,6 @@ class CustomMsgContent(AbstractModel):
     @property
     def Ext(self):
         """扩展字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Ext
@@ -7456,67 +7440,46 @@ class DocumentInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _DocumentId: 文档Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type DocumentId: str
         :param _DocumentUrl: 文档原址url
-注意：此字段可能返回 null，表示取不到有效值。
         :type DocumentUrl: str
         :param _DocumentName: 文档名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type DocumentName: str
         :param _Owner: 文档所有者UserId
-注意：此字段可能返回 null，表示取不到有效值。
         :type Owner: str
         :param _SdkAppId: 应用Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type SdkAppId: int
         :param _Permission: 文档权限，0：私有课件 1：公共课件
-注意：此字段可能返回 null，表示取不到有效值。
         :type Permission: int
         :param _TranscodeResult: 转码结果，无需转码为空，转码成功为结果url，转码失败为错误码
-注意：此字段可能返回 null，表示取不到有效值。
         :type TranscodeResult: str
         :param _TranscodeType: 转码类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type TranscodeType: int
         :param _TranscodeProgress: 转码进度， 0 - 100 表示（0% - 100%）
-注意：此字段可能返回 null，表示取不到有效值。
         :type TranscodeProgress: int
         :param _TranscodeState: 转码状态，0为无需转码，1为正在转码，2为转码失败，3为转码成功
-注意：此字段可能返回 null，表示取不到有效值。
         :type TranscodeState: int
         :param _TranscodeInfo: 转码失败后的错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type TranscodeInfo: str
         :param _DocumentType: 文档类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type DocumentType: str
         :param _DocumentSize: 文档大小，单位：字节
-注意：此字段可能返回 null，表示取不到有效值。
         :type DocumentSize: int
         :param _UpdateTime: 更新的UNIX时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: int
         :param _Pages: 课件页数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Pages: int
         :param _Width: 宽，仅在静态转码的课件有效
-注意：此字段可能返回 null，表示取不到有效值。
         :type Width: int
         :param _Height: 高，仅在静态转码的课件有效
-注意：此字段可能返回 null，表示取不到有效值。
         :type Height: int
         :param _Cover: 封面，仅转码的课件会生成封面
-注意：此字段可能返回 null，表示取不到有效值。
         :type Cover: str
         :param _Preview: 课件预览地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type Preview: str
         :param _Resolution: 文档的分辨率
-注意：此字段可能返回 null，表示取不到有效值。
         :type Resolution: str
         :param _MinScaleResolution: 转码后文档的最小分辨率，和创建文档时传入的参数一致。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MinScaleResolution: str
         """
         self._DocumentId = None
@@ -7544,7 +7507,6 @@ class DocumentInfo(AbstractModel):
     @property
     def DocumentId(self):
         """文档Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DocumentId
@@ -7556,7 +7518,6 @@ class DocumentInfo(AbstractModel):
     @property
     def DocumentUrl(self):
         """文档原址url
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DocumentUrl
@@ -7568,7 +7529,6 @@ class DocumentInfo(AbstractModel):
     @property
     def DocumentName(self):
         """文档名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DocumentName
@@ -7580,7 +7540,6 @@ class DocumentInfo(AbstractModel):
     @property
     def Owner(self):
         """文档所有者UserId
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Owner
@@ -7592,7 +7551,6 @@ class DocumentInfo(AbstractModel):
     @property
     def SdkAppId(self):
         """应用Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SdkAppId
@@ -7604,7 +7562,6 @@ class DocumentInfo(AbstractModel):
     @property
     def Permission(self):
         """文档权限，0：私有课件 1：公共课件
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Permission
@@ -7616,7 +7573,6 @@ class DocumentInfo(AbstractModel):
     @property
     def TranscodeResult(self):
         """转码结果，无需转码为空，转码成功为结果url，转码失败为错误码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TranscodeResult
@@ -7628,7 +7584,6 @@ class DocumentInfo(AbstractModel):
     @property
     def TranscodeType(self):
         """转码类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TranscodeType
@@ -7640,7 +7595,6 @@ class DocumentInfo(AbstractModel):
     @property
     def TranscodeProgress(self):
         """转码进度， 0 - 100 表示（0% - 100%）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TranscodeProgress
@@ -7652,7 +7606,6 @@ class DocumentInfo(AbstractModel):
     @property
     def TranscodeState(self):
         """转码状态，0为无需转码，1为正在转码，2为转码失败，3为转码成功
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TranscodeState
@@ -7664,7 +7617,6 @@ class DocumentInfo(AbstractModel):
     @property
     def TranscodeInfo(self):
         """转码失败后的错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TranscodeInfo
@@ -7676,7 +7628,6 @@ class DocumentInfo(AbstractModel):
     @property
     def DocumentType(self):
         """文档类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DocumentType
@@ -7688,7 +7639,6 @@ class DocumentInfo(AbstractModel):
     @property
     def DocumentSize(self):
         """文档大小，单位：字节
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DocumentSize
@@ -7700,7 +7650,6 @@ class DocumentInfo(AbstractModel):
     @property
     def UpdateTime(self):
         """更新的UNIX时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._UpdateTime
@@ -7712,7 +7661,6 @@ class DocumentInfo(AbstractModel):
     @property
     def Pages(self):
         """课件页数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Pages
@@ -7724,7 +7672,6 @@ class DocumentInfo(AbstractModel):
     @property
     def Width(self):
         """宽，仅在静态转码的课件有效
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Width
@@ -7736,7 +7683,6 @@ class DocumentInfo(AbstractModel):
     @property
     def Height(self):
         """高，仅在静态转码的课件有效
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Height
@@ -7748,7 +7694,6 @@ class DocumentInfo(AbstractModel):
     @property
     def Cover(self):
         """封面，仅转码的课件会生成封面
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Cover
@@ -7760,7 +7705,6 @@ class DocumentInfo(AbstractModel):
     @property
     def Preview(self):
         """课件预览地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Preview
@@ -7772,7 +7716,6 @@ class DocumentInfo(AbstractModel):
     @property
     def Resolution(self):
         """文档的分辨率
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Resolution
@@ -7784,7 +7727,6 @@ class DocumentInfo(AbstractModel):
     @property
     def MinScaleResolution(self):
         """转码后文档的最小分辨率，和创建文档时传入的参数一致。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MinScaleResolution
@@ -7898,22 +7840,16 @@ class EventDataInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _RoomId: 事件发生的房间号。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RoomId: int
         :param _UserId: 事件发生的用户。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserId: str
         :param _Device: 用户设备类型。0: Unknown; 1: Windows; 2: macOS; 3: Android; 4: iOS; 5: Web; 6: Mobile webpage; 7: Weixin Mini Program.
-注意：此字段可能返回 null，表示取不到有效值。
         :type Device: int
         :param _Duration: 录制时长。单位：秒
-注意：此字段可能返回 null，表示取不到有效值。
         :type Duration: int
         :param _RecordSize: 录制文件大小
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecordSize: int
         :param _RecordUrl: 录制url
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecordUrl: str
         """
         self._RoomId = None
@@ -7926,7 +7862,6 @@ class EventDataInfo(AbstractModel):
     @property
     def RoomId(self):
         """事件发生的房间号。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RoomId
@@ -7938,7 +7873,6 @@ class EventDataInfo(AbstractModel):
     @property
     def UserId(self):
         """事件发生的用户。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UserId
@@ -7950,7 +7884,6 @@ class EventDataInfo(AbstractModel):
     @property
     def Device(self):
         """用户设备类型。0: Unknown; 1: Windows; 2: macOS; 3: Android; 4: iOS; 5: Web; 6: Mobile webpage; 7: Weixin Mini Program.
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Device
@@ -7962,7 +7895,6 @@ class EventDataInfo(AbstractModel):
     @property
     def Duration(self):
         """录制时长。单位：秒
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Duration
@@ -7974,7 +7906,6 @@ class EventDataInfo(AbstractModel):
     @property
     def RecordSize(self):
         """录制文件大小
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RecordSize
@@ -7986,7 +7917,6 @@ class EventDataInfo(AbstractModel):
     @property
     def RecordUrl(self):
         """录制url
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RecordUrl
@@ -8034,7 +7964,6 @@ VisibleOn: 页面可见
 VisibleOff: 页面不可见
         :type EventType: str
         :param _EventData: 事件详细内容，包含房间号,成员类型事件包含用户Id。
-注意：此字段可能返回 null，表示取不到有效值。
         :type EventData: :class:`tencentcloud.lcic.v20220817.models.EventDataInfo`
         """
         self._Timestamp = None
@@ -8075,7 +8004,6 @@ VisibleOff: 页面不可见
     @property
     def EventData(self):
         """事件详细内容，包含房间号,成员类型事件包含用户Id。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.lcic.v20220817.models.EventDataInfo`
         """
         return self._EventData
@@ -8944,18 +8872,14 @@ class GroupInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _GroupId: 群组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupId: str
         :param _GroupName: 群组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupName: str
         :param _TeacherId: 群组主讲人ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TeacherId: str
         :param _GroupType: 群组类型 
 0-基础群组 
 1-组合群组，若为1时会返回子群组ID列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupType: int
         :param _SubGroupIds: 子群组ID列表，如有。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -8970,7 +8894,6 @@ class GroupInfo(AbstractModel):
     @property
     def GroupId(self):
         """群组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupId
@@ -8982,7 +8905,6 @@ class GroupInfo(AbstractModel):
     @property
     def GroupName(self):
         """群组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupName
@@ -8994,7 +8916,6 @@ class GroupInfo(AbstractModel):
     @property
     def TeacherId(self):
         """群组主讲人ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TeacherId
@@ -9008,7 +8929,6 @@ class GroupInfo(AbstractModel):
         """群组类型 
 0-基础群组 
 1-组合群组，若为1时会返回子群组ID列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._GroupType
@@ -9612,10 +9532,8 @@ class MemberRecord(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubGroupId: list of str
         :param _Stage: 用户的上台状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Stage: int
         :param _CurrentState: 用户状态。0为未到，1为在线，2为离线，3为被踢，4为永久被踢，5为暂时掉线
-注意：此字段可能返回 null，表示取不到有效值。
         :type CurrentState: int
         """
         self._UserId = None
@@ -9854,7 +9772,6 @@ class MemberRecord(AbstractModel):
     @property
     def Stage(self):
         """用户的上台状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Stage
@@ -9866,7 +9783,6 @@ class MemberRecord(AbstractModel):
     @property
     def CurrentState(self):
         """用户状态。0为未到，1为在线，2为离线，3为被踢，4为永久被踢，5为暂时掉线
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CurrentState
@@ -9916,16 +9832,12 @@ class MessageItem(AbstractModel):
     def __init__(self):
         r"""
         :param _MessageType: 消息类型。0表示文本消息，1表示图片消息
-注意：此字段可能返回 null，表示取不到有效值。
         :type MessageType: int
         :param _TextMessage: 文本消息内容。message type为0时有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TextMessage: str
         :param _ImageMessage: 图片消息URL。 message type为1时有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImageMessage: str
         :param _CustomMessage: 自定义消息内容。message type为2时有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CustomMessage: :class:`tencentcloud.lcic.v20220817.models.CustomMsgContent`
         """
         self._MessageType = None
@@ -9936,7 +9848,6 @@ class MessageItem(AbstractModel):
     @property
     def MessageType(self):
         """消息类型。0表示文本消息，1表示图片消息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MessageType
@@ -9948,7 +9859,6 @@ class MessageItem(AbstractModel):
     @property
     def TextMessage(self):
         """文本消息内容。message type为0时有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TextMessage
@@ -9960,7 +9870,6 @@ class MessageItem(AbstractModel):
     @property
     def ImageMessage(self):
         """图片消息URL。 message type为1时有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ImageMessage
@@ -9972,7 +9881,6 @@ class MessageItem(AbstractModel):
     @property
     def CustomMessage(self):
         """自定义消息内容。message type为2时有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.lcic.v20220817.models.CustomMsgContent`
         """
         return self._CustomMessage
@@ -10007,16 +9915,12 @@ class MessageList(AbstractModel):
     def __init__(self):
         r"""
         :param _Timestamp: 消息时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type Timestamp: int
         :param _FromAccount: 消息发送者
-注意：此字段可能返回 null，表示取不到有效值。
         :type FromAccount: str
         :param _Seq: 消息序列号，当前课堂内唯一且单调递增
-注意：此字段可能返回 null，表示取不到有效值。
         :type Seq: int
         :param _MessageBody: 历史消息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type MessageBody: list of MessageItem
         """
         self._Timestamp = None
@@ -10027,7 +9931,6 @@ class MessageList(AbstractModel):
     @property
     def Timestamp(self):
         """消息时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Timestamp
@@ -10039,7 +9942,6 @@ class MessageList(AbstractModel):
     @property
     def FromAccount(self):
         """消息发送者
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FromAccount
@@ -10051,7 +9953,6 @@ class MessageList(AbstractModel):
     @property
     def Seq(self):
         """消息序列号，当前课堂内唯一且单调递增
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Seq
@@ -10063,7 +9964,6 @@ class MessageList(AbstractModel):
     @property
     def MessageBody(self):
         """历史消息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of MessageItem
         """
         return self._MessageBody
@@ -11021,10 +10921,8 @@ class MutedAccountList(AbstractModel):
     def __init__(self):
         r"""
         :param _MemberAccount: 用户 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type MemberAccount: str
         :param _MutedUntil: 禁言到的时间（使用 UTC 时间，即世界协调时间）
-注意：此字段可能返回 null，表示取不到有效值。
         :type MutedUntil: int
         """
         self._MemberAccount = None
@@ -11033,7 +10931,6 @@ class MutedAccountList(AbstractModel):
     @property
     def MemberAccount(self):
         """用户 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MemberAccount
@@ -11045,7 +10942,6 @@ class MutedAccountList(AbstractModel):
     @property
     def MutedUntil(self):
         """禁言到的时间（使用 UTC 时间，即世界协调时间）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MutedUntil
@@ -11084,7 +10980,6 @@ class QuestionInfo(AbstractModel):
         :param _CorrectAnswer: 正确答案（按照位表示是否选择，如0x1表示选择A，0x11表示选择AB）
         :type CorrectAnswer: int
         :param _AnswerStats: 每个选项答题人数统计
-注意：此字段可能返回 null，表示取不到有效值。
         :type AnswerStats: list of AnswerStat
         """
         self._QuestionId = None
@@ -11140,7 +11035,6 @@ class QuestionInfo(AbstractModel):
     @property
     def AnswerStats(self):
         """每个选项答题人数统计
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AnswerStat
         """
         return self._AnswerStats
@@ -12227,16 +12121,12 @@ class SceneItem(AbstractModel):
         :param _Scene: 场景名称
         :type Scene: str
         :param _LogoUrl: logo地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogoUrl: str
         :param _HomeUrl: 主页地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type HomeUrl: str
         :param _JSUrl: 自定义的js
-注意：此字段可能返回 null，表示取不到有效值。
         :type JSUrl: str
         :param _CSSUrl: 自定义的css
-注意：此字段可能返回 null，表示取不到有效值。
         :type CSSUrl: str
         """
         self._Scene = None
@@ -12259,7 +12149,6 @@ class SceneItem(AbstractModel):
     @property
     def LogoUrl(self):
         """logo地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LogoUrl
@@ -12271,7 +12160,6 @@ class SceneItem(AbstractModel):
     @property
     def HomeUrl(self):
         """主页地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HomeUrl
@@ -12283,7 +12171,6 @@ class SceneItem(AbstractModel):
     @property
     def JSUrl(self):
         """自定义的js
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._JSUrl
@@ -12295,7 +12182,6 @@ class SceneItem(AbstractModel):
     @property
     def CSSUrl(self):
         """自定义的css
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CSSUrl
@@ -13158,31 +13044,22 @@ class SingleStreamInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _UserId: 用户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserId: str
         :param _StartTime: 开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: int
         :param _StopTime: 结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type StopTime: int
         :param _Duration: 总时长
-注意：此字段可能返回 null，表示取不到有效值。
         :type Duration: int
         :param _FileFormat: 文件格式
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileFormat: str
         :param _RecordUrl: 流url
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecordUrl: str
         :param _RecordSize: 流大小
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecordSize: int
         :param _VideoId: 流ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type VideoId: str
         :param _Role: 流类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Role: str
         """
         self._UserId = None
@@ -13198,7 +13075,6 @@ class SingleStreamInfo(AbstractModel):
     @property
     def UserId(self):
         """用户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UserId
@@ -13210,7 +13086,6 @@ class SingleStreamInfo(AbstractModel):
     @property
     def StartTime(self):
         """开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._StartTime
@@ -13222,7 +13097,6 @@ class SingleStreamInfo(AbstractModel):
     @property
     def StopTime(self):
         """结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._StopTime
@@ -13234,7 +13108,6 @@ class SingleStreamInfo(AbstractModel):
     @property
     def Duration(self):
         """总时长
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Duration
@@ -13246,7 +13119,6 @@ class SingleStreamInfo(AbstractModel):
     @property
     def FileFormat(self):
         """文件格式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FileFormat
@@ -13258,7 +13130,6 @@ class SingleStreamInfo(AbstractModel):
     @property
     def RecordUrl(self):
         """流url
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RecordUrl
@@ -13270,7 +13141,6 @@ class SingleStreamInfo(AbstractModel):
     @property
     def RecordSize(self):
         """流大小
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RecordSize
@@ -13282,7 +13152,6 @@ class SingleStreamInfo(AbstractModel):
     @property
     def VideoId(self):
         """流ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VideoId
@@ -13294,7 +13163,6 @@ class SingleStreamInfo(AbstractModel):
     @property
     def Role(self):
         """流类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Role
@@ -13584,10 +13452,8 @@ class TextMarkConfig(AbstractModel):
     def __init__(self):
         r"""
         :param _Text: 文字水印内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         :param _Color: 文字水印颜色
-注意：此字段可能返回 null，表示取不到有效值。
         :type Color: str
         """
         self._Text = None
@@ -13596,7 +13462,6 @@ class TextMarkConfig(AbstractModel):
     @property
     def Text(self):
         """文字水印内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -13608,7 +13473,6 @@ class TextMarkConfig(AbstractModel):
     @property
     def Color(self):
         """文字水印颜色
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Color
@@ -13886,19 +13750,14 @@ class UserInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _SdkAppId: 应用Id。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SdkAppId: int
         :param _UserId: 用户Id。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserId: str
         :param _Name: 用户昵称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Avatar: 用户头像Url。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Avatar: str
         :param _OriginId: 用户在客户系统的Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type OriginId: str
         """
         self._SdkAppId = None
@@ -13910,7 +13769,6 @@ class UserInfo(AbstractModel):
     @property
     def SdkAppId(self):
         """应用Id。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SdkAppId
@@ -13922,7 +13780,6 @@ class UserInfo(AbstractModel):
     @property
     def UserId(self):
         """用户Id。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UserId
@@ -13934,7 +13791,6 @@ class UserInfo(AbstractModel):
     @property
     def Name(self):
         """用户昵称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -13946,7 +13802,6 @@ class UserInfo(AbstractModel):
     @property
     def Avatar(self):
         """用户头像Url。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Avatar
@@ -13958,7 +13813,6 @@ class UserInfo(AbstractModel):
     @property
     def OriginId(self):
         """用户在客户系统的Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OriginId
@@ -13992,19 +13846,14 @@ class WatermarkConfig(AbstractModel):
     def __init__(self):
         r"""
         :param _Url: 水印图片的url
-注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
         :param _Width: 水印宽。为比例值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Width: float
         :param _Height: 水印高。为比例值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Height: float
         :param _LocationX: 水印X偏移, 取值:0-100, 表示区域X方向的百分比。比如50，则表示位于X轴中间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LocationX: float
         :param _LocationY: 水印Y偏移, 取值:0-100, 表示区域Y方向的百分比。比如50，则表示位于Y轴中间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LocationY: float
         """
         self._Url = None
@@ -14016,7 +13865,6 @@ class WatermarkConfig(AbstractModel):
     @property
     def Url(self):
         """水印图片的url
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Url
@@ -14028,7 +13876,6 @@ class WatermarkConfig(AbstractModel):
     @property
     def Width(self):
         """水印宽。为比例值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Width
@@ -14040,7 +13887,6 @@ class WatermarkConfig(AbstractModel):
     @property
     def Height(self):
         """水印高。为比例值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Height
@@ -14052,7 +13898,6 @@ class WatermarkConfig(AbstractModel):
     @property
     def LocationX(self):
         """水印X偏移, 取值:0-100, 表示区域X方向的百分比。比如50，则表示位于X轴中间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._LocationX
@@ -14064,7 +13909,6 @@ class WatermarkConfig(AbstractModel):
     @property
     def LocationY(self):
         """水印Y偏移, 取值:0-100, 表示区域Y方向的百分比。比如50，则表示位于Y轴中间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._LocationY

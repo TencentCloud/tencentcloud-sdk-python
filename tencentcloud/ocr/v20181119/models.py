@@ -678,7 +678,7 @@ class AirTransport(AbstractModel):
         :type DomesticInternationalTag: str
         :param _DateStart: 客票生效日期
         :type DateStart: str
-        :param _DateEnd: 有效截至日期
+        :param _DateEnd: 有效截止日期
         :type DateEnd: str
         :param _Endorsement: 签注
         :type Endorsement: str
@@ -955,7 +955,7 @@ class AirTransport(AbstractModel):
 
     @property
     def DateEnd(self):
-        """有效截至日期
+        """有效截止日期
         :rtype: str
         """
         return self._DateEnd
@@ -9640,6 +9640,10 @@ class FlightItemInfo(AbstractModel):
         :type FareBasis: str
         :param _Allow: 免费行李额
         :type Allow: str
+        :param _DateStart: 客票生效日期
+        :type DateStart: str
+        :param _DateEnd: 有效截止日期
+        :type DateEnd: str
         """
         self._TerminalGetOn = None
         self._TerminalGetOff = None
@@ -9650,6 +9654,8 @@ class FlightItemInfo(AbstractModel):
         self._TimeGetOn = None
         self._FareBasis = None
         self._Allow = None
+        self._DateStart = None
+        self._DateEnd = None
 
     @property
     def TerminalGetOn(self):
@@ -9750,6 +9756,28 @@ class FlightItemInfo(AbstractModel):
     def Allow(self, Allow):
         self._Allow = Allow
 
+    @property
+    def DateStart(self):
+        """客票生效日期
+        :rtype: str
+        """
+        return self._DateStart
+
+    @DateStart.setter
+    def DateStart(self, DateStart):
+        self._DateStart = DateStart
+
+    @property
+    def DateEnd(self):
+        """有效截止日期
+        :rtype: str
+        """
+        return self._DateEnd
+
+    @DateEnd.setter
+    def DateEnd(self, DateEnd):
+        self._DateEnd = DateEnd
+
 
     def _deserialize(self, params):
         self._TerminalGetOn = params.get("TerminalGetOn")
@@ -9761,6 +9789,8 @@ class FlightItemInfo(AbstractModel):
         self._TimeGetOn = params.get("TimeGetOn")
         self._FareBasis = params.get("FareBasis")
         self._Allow = params.get("Allow")
+        self._DateStart = params.get("DateStart")
+        self._DateEnd = params.get("DateEnd")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -36499,6 +36529,14 @@ class VatElectronicItemInfo(AbstractModel):
         :type EstateNumber: str
         :param _AreaUnit: 面积单位，仅不动产经营租赁服务发票返回
         :type AreaUnit: str
+        :param _Traveler: 出行人，仅旅客运输服务发票返回
+        :type Traveler: str
+        :param _TravelerID: 有效身份证件号，仅旅客运输服务发票返回
+        :type TravelerID: str
+        :param _TravelDate: 出行日期，仅旅客运输服务发票返回
+        :type TravelDate: str
+        :param _TravelLevel: 等级，仅旅客运输服务发票返回
+        :type TravelLevel: str
         """
         self._Name = None
         self._Quantity = None
@@ -36517,6 +36555,10 @@ class VatElectronicItemInfo(AbstractModel):
         self._BuildingName = None
         self._EstateNumber = None
         self._AreaUnit = None
+        self._Traveler = None
+        self._TravelerID = None
+        self._TravelDate = None
+        self._TravelLevel = None
 
     @property
     def Name(self):
@@ -36705,6 +36747,50 @@ class VatElectronicItemInfo(AbstractModel):
     def AreaUnit(self, AreaUnit):
         self._AreaUnit = AreaUnit
 
+    @property
+    def Traveler(self):
+        """出行人，仅旅客运输服务发票返回
+        :rtype: str
+        """
+        return self._Traveler
+
+    @Traveler.setter
+    def Traveler(self, Traveler):
+        self._Traveler = Traveler
+
+    @property
+    def TravelerID(self):
+        """有效身份证件号，仅旅客运输服务发票返回
+        :rtype: str
+        """
+        return self._TravelerID
+
+    @TravelerID.setter
+    def TravelerID(self, TravelerID):
+        self._TravelerID = TravelerID
+
+    @property
+    def TravelDate(self):
+        """出行日期，仅旅客运输服务发票返回
+        :rtype: str
+        """
+        return self._TravelDate
+
+    @TravelDate.setter
+    def TravelDate(self, TravelDate):
+        self._TravelDate = TravelDate
+
+    @property
+    def TravelLevel(self):
+        """等级，仅旅客运输服务发票返回
+        :rtype: str
+        """
+        return self._TravelLevel
+
+    @TravelLevel.setter
+    def TravelLevel(self, TravelLevel):
+        self._TravelLevel = TravelLevel
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -36724,6 +36810,10 @@ class VatElectronicItemInfo(AbstractModel):
         self._BuildingName = params.get("BuildingName")
         self._EstateNumber = params.get("EstateNumber")
         self._AreaUnit = params.get("AreaUnit")
+        self._Traveler = params.get("Traveler")
+        self._TravelerID = params.get("TravelerID")
+        self._TravelDate = params.get("TravelDate")
+        self._TravelLevel = params.get("TravelLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

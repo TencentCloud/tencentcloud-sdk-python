@@ -698,6 +698,29 @@ class MqttClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeProductSKUList(self, request):
+        """获取产品售卖规格
+
+        :param request: Request instance for DescribeProductSKUList.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeProductSKUListRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.DescribeProductSKUListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeProductSKUList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeProductSKUListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTopic(self, request):
         """查询mqtt主题详情
 

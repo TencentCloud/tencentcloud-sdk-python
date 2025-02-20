@@ -176,6 +176,33 @@ class AiartClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def QueryGlamPicJob(self, request):
+        """AI 美照接口将根据模板为用户生成精美照片。分为提交任务和查询任务2个接口。
+        - 提交任务：提交一个美照生成异步任务，获得任务 ID。
+        - 查询任务：根据任务 ID 查询任务的处理状态、处理结果，任务处理完成后可获得生成图像结果。
+
+        AI 美照默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后才能开始处理下一个任务。
+
+        :param request: Request instance for QueryGlamPicJob.
+        :type request: :class:`tencentcloud.aiart.v20221229.models.QueryGlamPicJobRequest`
+        :rtype: :class:`tencentcloud.aiart.v20221229.models.QueryGlamPicJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryGlamPicJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryGlamPicJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def QueryMemeJob(self, request):
         """表情动图生成接口将静态照片制作成动态的表情包。分为提交任务和查询任务2个接口。
         - 提交任务：提交一个表情动图生成异步任务，获得任务 ID。
@@ -330,6 +357,33 @@ class AiartClient(AbstractClient):
             body = self.call("SubmitDrawPortraitJob", params, headers=headers)
             response = json.loads(body)
             model = models.SubmitDrawPortraitJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SubmitGlamPicJob(self, request):
+        """AI 美照接口将根据模板为用户生成精美照片。分为提交任务和查询任务2个接口。
+        - 提交任务：提交一个美照生成异步任务，获得任务 ID。
+        - 查询任务：根据任务 ID 查询任务的处理状态、处理结果，任务处理完成后可获得生成图像结果。
+
+        AI 美照默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后才能开始处理下一个任务。
+
+        :param request: Request instance for SubmitGlamPicJob.
+        :type request: :class:`tencentcloud.aiart.v20221229.models.SubmitGlamPicJobRequest`
+        :rtype: :class:`tencentcloud.aiart.v20221229.models.SubmitGlamPicJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SubmitGlamPicJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.SubmitGlamPicJobResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -14640,6 +14640,163 @@ class DataSourceConnectStatus(AbstractModel):
         
 
 
+class DataSourceEnvInfo(AbstractModel):
+    """数据源环境信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Env: 环境
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Env: str
+        :param _DataSourceType: 数据源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataSourceType: str
+        :param _ClusterId: 集群id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param _Params: 配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Params: str
+        :param _ProjectId: 项目id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: str
+        :param _DataSourceId: 数据源id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataSourceId: str
+        :param _EnvDataSourceId: env环境的数据源id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnvDataSourceId: str
+        :param _BizParams: 配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BizParams: str
+        """
+        self._Env = None
+        self._DataSourceType = None
+        self._ClusterId = None
+        self._Params = None
+        self._ProjectId = None
+        self._DataSourceId = None
+        self._EnvDataSourceId = None
+        self._BizParams = None
+
+    @property
+    def Env(self):
+        """环境
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Env
+
+    @Env.setter
+    def Env(self, Env):
+        self._Env = Env
+
+    @property
+    def DataSourceType(self):
+        """数据源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DataSourceType
+
+    @DataSourceType.setter
+    def DataSourceType(self, DataSourceType):
+        self._DataSourceType = DataSourceType
+
+    @property
+    def ClusterId(self):
+        """集群id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Params(self):
+        """配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Params
+
+    @Params.setter
+    def Params(self, Params):
+        self._Params = Params
+
+    @property
+    def ProjectId(self):
+        """项目id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def DataSourceId(self):
+        """数据源id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DataSourceId
+
+    @DataSourceId.setter
+    def DataSourceId(self, DataSourceId):
+        self._DataSourceId = DataSourceId
+
+    @property
+    def EnvDataSourceId(self):
+        """env环境的数据源id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EnvDataSourceId
+
+    @EnvDataSourceId.setter
+    def EnvDataSourceId(self, EnvDataSourceId):
+        self._EnvDataSourceId = EnvDataSourceId
+
+    @property
+    def BizParams(self):
+        """配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BizParams
+
+    @BizParams.setter
+    def BizParams(self, BizParams):
+        self._BizParams = BizParams
+
+
+    def _deserialize(self, params):
+        self._Env = params.get("Env")
+        self._DataSourceType = params.get("DataSourceType")
+        self._ClusterId = params.get("ClusterId")
+        self._Params = params.get("Params")
+        self._ProjectId = params.get("ProjectId")
+        self._DataSourceId = params.get("DataSourceId")
+        self._EnvDataSourceId = params.get("EnvDataSourceId")
+        self._BizParams = params.get("BizParams")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DataSourceInfo(AbstractModel):
     """数据源对象
 
@@ -14752,6 +14909,21 @@ class DataSourceInfo(AbstractModel):
         :param _ConnectStatus: 数据源连接状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConnectStatus: :class:`tencentcloud.wedata.v20210820.models.DataSourceConnectStatus`
+        :param _DisplayType: 数据源展示类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DisplayType: str
+        :param _Env: 数据源环境
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Env: str
+        :param _DatasourceUrn: 数据源唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceUrn: str
+        :param _Model: 是否标准模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Model: str
+        :param _DataSourceEnvInfos:  数据源环境信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataSourceEnvInfos: list of DataSourceEnvInfo
         """
         self._DatabaseName = None
         self._Description = None
@@ -14788,6 +14960,11 @@ class DataSourceInfo(AbstractModel):
         self._DevelopmentId = None
         self._DevelopmentParams = None
         self._ConnectStatus = None
+        self._DisplayType = None
+        self._Env = None
+        self._DatasourceUrn = None
+        self._Model = None
+        self._DataSourceEnvInfos = None
 
     @property
     def DatabaseName(self):
@@ -15209,6 +15386,66 @@ class DataSourceInfo(AbstractModel):
     def ConnectStatus(self, ConnectStatus):
         self._ConnectStatus = ConnectStatus
 
+    @property
+    def DisplayType(self):
+        """数据源展示类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DisplayType
+
+    @DisplayType.setter
+    def DisplayType(self, DisplayType):
+        self._DisplayType = DisplayType
+
+    @property
+    def Env(self):
+        """数据源环境
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Env
+
+    @Env.setter
+    def Env(self, Env):
+        self._Env = Env
+
+    @property
+    def DatasourceUrn(self):
+        """数据源唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatasourceUrn
+
+    @DatasourceUrn.setter
+    def DatasourceUrn(self, DatasourceUrn):
+        self._DatasourceUrn = DatasourceUrn
+
+    @property
+    def Model(self):
+        """是否标准模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def DataSourceEnvInfos(self):
+        """ 数据源环境信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DataSourceEnvInfo
+        """
+        return self._DataSourceEnvInfos
+
+    @DataSourceEnvInfos.setter
+    def DataSourceEnvInfos(self, DataSourceEnvInfos):
+        self._DataSourceEnvInfos = DataSourceEnvInfos
+
 
     def _deserialize(self, params):
         self._DatabaseName = params.get("DatabaseName")
@@ -15248,6 +15485,16 @@ class DataSourceInfo(AbstractModel):
         if params.get("ConnectStatus") is not None:
             self._ConnectStatus = DataSourceConnectStatus()
             self._ConnectStatus._deserialize(params.get("ConnectStatus"))
+        self._DisplayType = params.get("DisplayType")
+        self._Env = params.get("Env")
+        self._DatasourceUrn = params.get("DatasourceUrn")
+        self._Model = params.get("Model")
+        if params.get("DataSourceEnvInfos") is not None:
+            self._DataSourceEnvInfos = []
+            for item in params.get("DataSourceEnvInfos"):
+                obj = DataSourceEnvInfo()
+                obj._deserialize(item)
+                self._DataSourceEnvInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -59973,6 +60220,9 @@ class Project(AbstractModel):
         :param _Model: 项目类型，SIMPLE：简单模式 STANDARD：标准模式
 注意：此字段可能返回 null，表示取不到有效值。
         :type Model: str
+        :param _SecondModuleList: 二级菜单
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecondModuleList: list of str
         """
         self._TenantId = None
         self._ProjectId = None
@@ -59988,6 +60238,7 @@ class Project(AbstractModel):
         self._Params = None
         self._Status = None
         self._Model = None
+        self._SecondModuleList = None
 
     @property
     def TenantId(self):
@@ -60156,6 +60407,18 @@ class Project(AbstractModel):
     def Model(self, Model):
         self._Model = Model
 
+    @property
+    def SecondModuleList(self):
+        """二级菜单
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._SecondModuleList
+
+    @SecondModuleList.setter
+    def SecondModuleList(self, SecondModuleList):
+        self._SecondModuleList = SecondModuleList
+
 
     def _deserialize(self, params):
         self._TenantId = params.get("TenantId")
@@ -60186,6 +60449,7 @@ class Project(AbstractModel):
         self._Params = params.get("Params")
         self._Status = params.get("Status")
         self._Model = params.get("Model")
+        self._SecondModuleList = params.get("SecondModuleList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

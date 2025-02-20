@@ -20565,6 +20565,8 @@ class InstanceAttributesResponse(AbstractModel):
         :type ElasticFloatBandwidth: int
         :param _CustomCertId: ssl自定义证书id
         :type CustomCertId: str
+        :param _UncleanLeaderElectionEnable: 集群topic默认 unclean.leader.election.enable配置: 1 开启 0 关闭
+        :type UncleanLeaderElectionEnable: int
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -20606,6 +20608,7 @@ class InstanceAttributesResponse(AbstractModel):
         self._FreePartitionNumber = None
         self._ElasticFloatBandwidth = None
         self._CustomCertId = None
+        self._UncleanLeaderElectionEnable = None
 
     @property
     def InstanceId(self):
@@ -21065,6 +21068,17 @@ class InstanceAttributesResponse(AbstractModel):
     def CustomCertId(self, CustomCertId):
         self._CustomCertId = CustomCertId
 
+    @property
+    def UncleanLeaderElectionEnable(self):
+        """集群topic默认 unclean.leader.election.enable配置: 1 开启 0 关闭
+        :rtype: int
+        """
+        return self._UncleanLeaderElectionEnable
+
+    @UncleanLeaderElectionEnable.setter
+    def UncleanLeaderElectionEnable(self, UncleanLeaderElectionEnable):
+        self._UncleanLeaderElectionEnable = UncleanLeaderElectionEnable
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -21123,6 +21137,7 @@ class InstanceAttributesResponse(AbstractModel):
         self._FreePartitionNumber = params.get("FreePartitionNumber")
         self._ElasticFloatBandwidth = params.get("ElasticFloatBandwidth")
         self._CustomCertId = params.get("CustomCertId")
+        self._UncleanLeaderElectionEnable = params.get("UncleanLeaderElectionEnable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

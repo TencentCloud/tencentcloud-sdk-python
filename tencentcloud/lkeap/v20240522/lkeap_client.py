@@ -669,7 +669,7 @@ class LkeapClient(AbstractClient):
 
 
     def UploadDoc(self, request):
-        """用于上传文档内容。上传的文档将存储在知识库中，可以通过SearchKnowledge知识库内容检索接口进行检索。
+        """用于上传文档内容。上传的文档将存储在知识库中，可以通过RetrieveKnowledge[知识库内容检索接口](https://cloud.tencent.com/document/product/1772/115349)进行检索。
         使用场景：适用于需要长期存储和检索的文档内容，如产品手册、用户指南等。
 
         :param request: Request instance for UploadDoc.

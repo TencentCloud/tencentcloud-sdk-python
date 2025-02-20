@@ -292,11 +292,14 @@ class AlterDMSDatabaseRequest(AbstractModel):
         :type Location: str
         :param _Asset: 基础对象
         :type Asset: :class:`tencentcloud.dlc.v20210125.models.Asset`
+        :param _DatasourceConnectionName: 数据源连接名
+        :type DatasourceConnectionName: str
         """
         self._CurrentName = None
         self._SchemaName = None
         self._Location = None
         self._Asset = None
+        self._DatasourceConnectionName = None
 
     @property
     def CurrentName(self):
@@ -342,6 +345,17 @@ class AlterDMSDatabaseRequest(AbstractModel):
     def Asset(self, Asset):
         self._Asset = Asset
 
+    @property
+    def DatasourceConnectionName(self):
+        """数据源连接名
+        :rtype: str
+        """
+        return self._DatasourceConnectionName
+
+    @DatasourceConnectionName.setter
+    def DatasourceConnectionName(self, DatasourceConnectionName):
+        self._DatasourceConnectionName = DatasourceConnectionName
+
 
     def _deserialize(self, params):
         self._CurrentName = params.get("CurrentName")
@@ -350,6 +364,7 @@ class AlterDMSDatabaseRequest(AbstractModel):
         if params.get("Asset") is not None:
             self._Asset = Asset()
             self._Asset._deserialize(params.get("Asset"))
+        self._DatasourceConnectionName = params.get("DatasourceConnectionName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -403,11 +418,14 @@ class AlterDMSPartitionRequest(AbstractModel):
         :type CurrentValues: str
         :param _Partition: 分区
         :type Partition: :class:`tencentcloud.dlc.v20210125.models.DMSPartition`
+        :param _DatasourceConnectionName: 数据源连接名
+        :type DatasourceConnectionName: str
         """
         self._CurrentDbName = None
         self._CurrentTableName = None
         self._CurrentValues = None
         self._Partition = None
+        self._DatasourceConnectionName = None
 
     @property
     def CurrentDbName(self):
@@ -453,6 +471,17 @@ class AlterDMSPartitionRequest(AbstractModel):
     def Partition(self, Partition):
         self._Partition = Partition
 
+    @property
+    def DatasourceConnectionName(self):
+        """数据源连接名
+        :rtype: str
+        """
+        return self._DatasourceConnectionName
+
+    @DatasourceConnectionName.setter
+    def DatasourceConnectionName(self, DatasourceConnectionName):
+        self._DatasourceConnectionName = DatasourceConnectionName
+
 
     def _deserialize(self, params):
         self._CurrentDbName = params.get("CurrentDbName")
@@ -461,6 +490,7 @@ class AlterDMSPartitionRequest(AbstractModel):
         if params.get("Partition") is not None:
             self._Partition = DMSPartition()
             self._Partition._deserialize(params.get("Partition"))
+        self._DatasourceConnectionName = params.get("DatasourceConnectionName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -542,6 +572,8 @@ class AlterDMSTableRequest(AbstractModel):
         :type Partitions: list of DMSPartition
         :param _Name: 当前表名
         :type Name: str
+        :param _DatasourceConnectionName: 数据源连接名
+        :type DatasourceConnectionName: str
         """
         self._CurrentName = None
         self._CurrentDbName = None
@@ -561,6 +593,7 @@ class AlterDMSTableRequest(AbstractModel):
         self._ViewExpandedText = None
         self._Partitions = None
         self._Name = None
+        self._DatasourceConnectionName = None
 
     @property
     def CurrentName(self):
@@ -760,6 +793,17 @@ class AlterDMSTableRequest(AbstractModel):
     def Name(self, Name):
         self._Name = Name
 
+    @property
+    def DatasourceConnectionName(self):
+        """数据源连接名
+        :rtype: str
+        """
+        return self._DatasourceConnectionName
+
+    @DatasourceConnectionName.setter
+    def DatasourceConnectionName(self, DatasourceConnectionName):
+        self._DatasourceConnectionName = DatasourceConnectionName
+
 
     def _deserialize(self, params):
         self._CurrentName = params.get("CurrentName")
@@ -799,6 +843,7 @@ class AlterDMSTableRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Partitions.append(obj)
         self._Name = params.get("Name")
+        self._DatasourceConnectionName = params.get("DatasourceConnectionName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3620,11 +3665,14 @@ class CreateDMSDatabaseRequest(AbstractModel):
         :type Location: str
         :param _Name: 数据库名称
         :type Name: str
+        :param _DatasourceConnectionName: 数据源连接名
+        :type DatasourceConnectionName: str
         """
         self._Asset = None
         self._SchemaName = None
         self._Location = None
         self._Name = None
+        self._DatasourceConnectionName = None
 
     @property
     def Asset(self):
@@ -3670,6 +3718,17 @@ class CreateDMSDatabaseRequest(AbstractModel):
     def Name(self, Name):
         self._Name = Name
 
+    @property
+    def DatasourceConnectionName(self):
+        """数据源连接名
+        :rtype: str
+        """
+        return self._DatasourceConnectionName
+
+    @DatasourceConnectionName.setter
+    def DatasourceConnectionName(self, DatasourceConnectionName):
+        self._DatasourceConnectionName = DatasourceConnectionName
+
 
     def _deserialize(self, params):
         if params.get("Asset") is not None:
@@ -3678,6 +3737,7 @@ class CreateDMSDatabaseRequest(AbstractModel):
         self._SchemaName = params.get("SchemaName")
         self._Location = params.get("Location")
         self._Name = params.get("Name")
+        self._DatasourceConnectionName = params.get("DatasourceConnectionName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3755,6 +3815,8 @@ class CreateDMSTableRequest(AbstractModel):
         :type Partitions: list of DMSPartition
         :param _Name: 表名称
         :type Name: str
+        :param _DatasourceConnectionName: 数据源连接名
+        :type DatasourceConnectionName: str
         """
         self._Asset = None
         self._Type = None
@@ -3772,6 +3834,7 @@ class CreateDMSTableRequest(AbstractModel):
         self._ViewExpandedText = None
         self._Partitions = None
         self._Name = None
+        self._DatasourceConnectionName = None
 
     @property
     def Asset(self):
@@ -3949,6 +4012,17 @@ class CreateDMSTableRequest(AbstractModel):
     def Name(self, Name):
         self._Name = Name
 
+    @property
+    def DatasourceConnectionName(self):
+        """数据源连接名
+        :rtype: str
+        """
+        return self._DatasourceConnectionName
+
+    @DatasourceConnectionName.setter
+    def DatasourceConnectionName(self, DatasourceConnectionName):
+        self._DatasourceConnectionName = DatasourceConnectionName
+
 
     def _deserialize(self, params):
         if params.get("Asset") is not None:
@@ -3986,6 +4060,7 @@ class CreateDMSTableRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Partitions.append(obj)
         self._Name = params.get("Name")
+        self._DatasourceConnectionName = params.get("DatasourceConnectionName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8054,6 +8129,8 @@ class DMSPartition(AbstractModel):
         :type Params: list of KVPair
         :param _Sds: 存储对象
         :type Sds: :class:`tencentcloud.dlc.v20210125.models.DMSSds`
+        :param _DatasourceConnectionName: 数据源连接名
+        :type DatasourceConnectionName: str
         """
         self._DatabaseName = None
         self._SchemaName = None
@@ -8068,6 +8145,7 @@ class DMSPartition(AbstractModel):
         self._LastAccessTime = None
         self._Params = None
         self._Sds = None
+        self._DatasourceConnectionName = None
 
     @property
     def DatabaseName(self):
@@ -8212,6 +8290,17 @@ class DMSPartition(AbstractModel):
     def Sds(self, Sds):
         self._Sds = Sds
 
+    @property
+    def DatasourceConnectionName(self):
+        """数据源连接名
+        :rtype: str
+        """
+        return self._DatasourceConnectionName
+
+    @DatasourceConnectionName.setter
+    def DatasourceConnectionName(self, DatasourceConnectionName):
+        self._DatasourceConnectionName = DatasourceConnectionName
+
 
     def _deserialize(self, params):
         self._DatabaseName = params.get("DatabaseName")
@@ -8234,6 +8323,7 @@ class DMSPartition(AbstractModel):
         if params.get("Sds") is not None:
             self._Sds = DMSSds()
             self._Sds._deserialize(params.get("Sds"))
+        self._DatasourceConnectionName = params.get("DatasourceConnectionName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12801,12 +12891,15 @@ class DescribeDMSDatabaseRequest(AbstractModel):
         :type Name: str
         :param _SchemaName: schema名称
         :type SchemaName: str
-        :param _Pattern: 匹配规则
+        :param _Pattern: 匹配规则，只支持填*
         :type Pattern: str
+        :param _DatasourceConnectionName: 数据源连接名
+        :type DatasourceConnectionName: str
         """
         self._Name = None
         self._SchemaName = None
         self._Pattern = None
+        self._DatasourceConnectionName = None
 
     @property
     def Name(self):
@@ -12832,7 +12925,7 @@ class DescribeDMSDatabaseRequest(AbstractModel):
 
     @property
     def Pattern(self):
-        """匹配规则
+        """匹配规则，只支持填*
         :rtype: str
         """
         return self._Pattern
@@ -12841,11 +12934,23 @@ class DescribeDMSDatabaseRequest(AbstractModel):
     def Pattern(self, Pattern):
         self._Pattern = Pattern
 
+    @property
+    def DatasourceConnectionName(self):
+        """数据源连接名
+        :rtype: str
+        """
+        return self._DatasourceConnectionName
+
+    @DatasourceConnectionName.setter
+    def DatasourceConnectionName(self, DatasourceConnectionName):
+        self._DatasourceConnectionName = DatasourceConnectionName
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._SchemaName = params.get("SchemaName")
         self._Pattern = params.get("Pattern")
+        self._DatasourceConnectionName = params.get("DatasourceConnectionName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12985,6 +13090,8 @@ class DescribeDMSPartitionsRequest(AbstractModel):
         :type Limit: int
         :param _Expression: 表达式
         :type Expression: str
+        :param _DatasourceConnectionName: 数据源连接名
+        :type DatasourceConnectionName: str
         """
         self._DatabaseName = None
         self._TableName = None
@@ -12998,6 +13105,7 @@ class DescribeDMSPartitionsRequest(AbstractModel):
         self._Offset = None
         self._Limit = None
         self._Expression = None
+        self._DatasourceConnectionName = None
 
     @property
     def DatabaseName(self):
@@ -13131,6 +13239,17 @@ class DescribeDMSPartitionsRequest(AbstractModel):
     def Expression(self, Expression):
         self._Expression = Expression
 
+    @property
+    def DatasourceConnectionName(self):
+        """数据源连接名
+        :rtype: str
+        """
+        return self._DatasourceConnectionName
+
+    @DatasourceConnectionName.setter
+    def DatasourceConnectionName(self, DatasourceConnectionName):
+        self._DatasourceConnectionName = DatasourceConnectionName
+
 
     def _deserialize(self, params):
         self._DatabaseName = params.get("DatabaseName")
@@ -13145,6 +13264,7 @@ class DescribeDMSPartitionsRequest(AbstractModel):
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._Expression = params.get("Expression")
+        self._DatasourceConnectionName = params.get("DatasourceConnectionName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13231,14 +13351,16 @@ class DescribeDMSTableRequest(AbstractModel):
         :type SchemaName: str
         :param _Name: 表名称
         :type Name: str
-        :param _Catalog: 数据目录
+        :param _Catalog: catalog类型
         :type Catalog: str
         :param _Keyword: 查询关键词
         :type Keyword: str
-        :param _Pattern: 查询模式
+        :param _Pattern: 查询模式，只支持填*
         :type Pattern: str
         :param _Type: 表类型
         :type Type: str
+        :param _DatasourceConnectionName: 数据源连接名
+        :type DatasourceConnectionName: str
         """
         self._DbName = None
         self._SchemaName = None
@@ -13247,6 +13369,7 @@ class DescribeDMSTableRequest(AbstractModel):
         self._Keyword = None
         self._Pattern = None
         self._Type = None
+        self._DatasourceConnectionName = None
 
     @property
     def DbName(self):
@@ -13283,7 +13406,7 @@ class DescribeDMSTableRequest(AbstractModel):
 
     @property
     def Catalog(self):
-        """数据目录
+        """catalog类型
         :rtype: str
         """
         return self._Catalog
@@ -13305,7 +13428,7 @@ class DescribeDMSTableRequest(AbstractModel):
 
     @property
     def Pattern(self):
-        """查询模式
+        """查询模式，只支持填*
         :rtype: str
         """
         return self._Pattern
@@ -13325,6 +13448,17 @@ class DescribeDMSTableRequest(AbstractModel):
     def Type(self, Type):
         self._Type = Type
 
+    @property
+    def DatasourceConnectionName(self):
+        """数据源连接名
+        :rtype: str
+        """
+        return self._DatasourceConnectionName
+
+    @DatasourceConnectionName.setter
+    def DatasourceConnectionName(self, DatasourceConnectionName):
+        self._DatasourceConnectionName = DatasourceConnectionName
+
 
     def _deserialize(self, params):
         self._DbName = params.get("DbName")
@@ -13334,6 +13468,7 @@ class DescribeDMSTableRequest(AbstractModel):
         self._Keyword = params.get("Keyword")
         self._Pattern = params.get("Pattern")
         self._Type = params.get("Type")
+        self._DatasourceConnectionName = params.get("DatasourceConnectionName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13710,11 +13845,11 @@ class DescribeDMSTablesRequest(AbstractModel):
         :type SchemaName: str
         :param _Name: 表名称
         :type Name: str
-        :param _Catalog: 数据目录
+        :param _Catalog: catalog类型
         :type Catalog: str
         :param _Keyword: 查询关键词
         :type Keyword: str
-        :param _Pattern: 查询模式
+        :param _Pattern: 查询模式，只支持填*
         :type Pattern: str
         :param _Type: 表类型
         :type Type: str
@@ -13730,6 +13865,8 @@ class DescribeDMSTablesRequest(AbstractModel):
         :type Sort: str
         :param _Asc: 排序字段：true：升序（默认），false：降序
         :type Asc: bool
+        :param _DatasourceConnectionName: 数据源连接名
+        :type DatasourceConnectionName: str
         """
         self._DbName = None
         self._SchemaName = None
@@ -13744,6 +13881,7 @@ class DescribeDMSTablesRequest(AbstractModel):
         self._Offset = None
         self._Sort = None
         self._Asc = None
+        self._DatasourceConnectionName = None
 
     @property
     def DbName(self):
@@ -13780,7 +13918,7 @@ class DescribeDMSTablesRequest(AbstractModel):
 
     @property
     def Catalog(self):
-        """数据目录
+        """catalog类型
         :rtype: str
         """
         return self._Catalog
@@ -13802,7 +13940,7 @@ class DescribeDMSTablesRequest(AbstractModel):
 
     @property
     def Pattern(self):
-        """查询模式
+        """查询模式，只支持填*
         :rtype: str
         """
         return self._Pattern
@@ -13888,6 +14026,17 @@ class DescribeDMSTablesRequest(AbstractModel):
     def Asc(self, Asc):
         self._Asc = Asc
 
+    @property
+    def DatasourceConnectionName(self):
+        """数据源连接名
+        :rtype: str
+        """
+        return self._DatasourceConnectionName
+
+    @DatasourceConnectionName.setter
+    def DatasourceConnectionName(self, DatasourceConnectionName):
+        self._DatasourceConnectionName = DatasourceConnectionName
+
 
     def _deserialize(self, params):
         self._DbName = params.get("DbName")
@@ -13903,6 +14052,7 @@ class DescribeDMSTablesRequest(AbstractModel):
         self._Offset = params.get("Offset")
         self._Sort = params.get("Sort")
         self._Asc = params.get("Asc")
+        self._DatasourceConnectionName = params.get("DatasourceConnectionName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21474,10 +21624,13 @@ class DropDMSDatabaseRequest(AbstractModel):
         :type DeleteData: bool
         :param _Cascade: 是否级联删除
         :type Cascade: bool
+        :param _DatasourceConnectionName: 数据源连接名
+        :type DatasourceConnectionName: str
         """
         self._Name = None
         self._DeleteData = None
         self._Cascade = None
+        self._DatasourceConnectionName = None
 
     @property
     def Name(self):
@@ -21512,11 +21665,23 @@ class DropDMSDatabaseRequest(AbstractModel):
     def Cascade(self, Cascade):
         self._Cascade = Cascade
 
+    @property
+    def DatasourceConnectionName(self):
+        """数据源连接名
+        :rtype: str
+        """
+        return self._DatasourceConnectionName
+
+    @DatasourceConnectionName.setter
+    def DatasourceConnectionName(self, DatasourceConnectionName):
+        self._DatasourceConnectionName = DatasourceConnectionName
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._DeleteData = params.get("DeleteData")
         self._Cascade = params.get("Cascade")
+        self._DatasourceConnectionName = params.get("DatasourceConnectionName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21574,6 +21739,8 @@ class DropDMSPartitionsRequest(AbstractModel):
         :type Values: list of str
         :param _DeleteData: 是否删除分区数据
         :type DeleteData: bool
+        :param _DatasourceConnectionName: 数据源连接名
+        :type DatasourceConnectionName: str
         """
         self._DatabaseName = None
         self._SchemaName = None
@@ -21581,6 +21748,7 @@ class DropDMSPartitionsRequest(AbstractModel):
         self._Name = None
         self._Values = None
         self._DeleteData = None
+        self._DatasourceConnectionName = None
 
     @property
     def DatabaseName(self):
@@ -21648,6 +21816,17 @@ class DropDMSPartitionsRequest(AbstractModel):
     def DeleteData(self, DeleteData):
         self._DeleteData = DeleteData
 
+    @property
+    def DatasourceConnectionName(self):
+        """数据源连接名
+        :rtype: str
+        """
+        return self._DatasourceConnectionName
+
+    @DatasourceConnectionName.setter
+    def DatasourceConnectionName(self, DatasourceConnectionName):
+        self._DatasourceConnectionName = DatasourceConnectionName
+
 
     def _deserialize(self, params):
         self._DatabaseName = params.get("DatabaseName")
@@ -21656,6 +21835,7 @@ class DropDMSPartitionsRequest(AbstractModel):
         self._Name = params.get("Name")
         self._Values = params.get("Values")
         self._DeleteData = params.get("DeleteData")
+        self._DatasourceConnectionName = params.get("DatasourceConnectionName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21724,11 +21904,14 @@ class DropDMSTableRequest(AbstractModel):
         :type DeleteData: bool
         :param _EnvProps: 环境属性
         :type EnvProps: :class:`tencentcloud.dlc.v20210125.models.KVPair`
+        :param _DatasourceConnectionName: 数据目录信息
+        :type DatasourceConnectionName: str
         """
         self._DbName = None
         self._Name = None
         self._DeleteData = None
         self._EnvProps = None
+        self._DatasourceConnectionName = None
 
     @property
     def DbName(self):
@@ -21774,6 +21957,17 @@ class DropDMSTableRequest(AbstractModel):
     def EnvProps(self, EnvProps):
         self._EnvProps = EnvProps
 
+    @property
+    def DatasourceConnectionName(self):
+        """数据目录信息
+        :rtype: str
+        """
+        return self._DatasourceConnectionName
+
+    @DatasourceConnectionName.setter
+    def DatasourceConnectionName(self, DatasourceConnectionName):
+        self._DatasourceConnectionName = DatasourceConnectionName
+
 
     def _deserialize(self, params):
         self._DbName = params.get("DbName")
@@ -21782,6 +21976,7 @@ class DropDMSTableRequest(AbstractModel):
         if params.get("EnvProps") is not None:
             self._EnvProps = KVPair()
             self._EnvProps._deserialize(params.get("EnvProps"))
+        self._DatasourceConnectionName = params.get("DatasourceConnectionName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

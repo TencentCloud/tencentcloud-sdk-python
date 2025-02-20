@@ -13361,6 +13361,8 @@ class Pod(AbstractModel):
         :param _CrossTenantENIInfo: 容器调用信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type CrossTenantENIInfo: :class:`tencentcloud.tione.v20211111.models.CrossTenantENIInfo`
+        :param _Status: 实例的状态信息
+        :type Status: str
         """
         self._Name = None
         self._Uid = None
@@ -13371,6 +13373,7 @@ class Pod(AbstractModel):
         self._Containers = None
         self._ContainerInfos = None
         self._CrossTenantENIInfo = None
+        self._Status = None
 
     @property
     def Name(self):
@@ -13446,6 +13449,8 @@ class Pod(AbstractModel):
 
     @property
     def Containers(self):
+        warnings.warn("parameter `Containers` is deprecated", DeprecationWarning) 
+
         """容器列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tione.v20211111.models.Container`
@@ -13454,6 +13459,8 @@ class Pod(AbstractModel):
 
     @Containers.setter
     def Containers(self, Containers):
+        warnings.warn("parameter `Containers` is deprecated", DeprecationWarning) 
+
         self._Containers = Containers
 
     @property
@@ -13480,6 +13487,17 @@ class Pod(AbstractModel):
     def CrossTenantENIInfo(self, CrossTenantENIInfo):
         self._CrossTenantENIInfo = CrossTenantENIInfo
 
+    @property
+    def Status(self):
+        """实例的状态信息
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -13500,6 +13518,7 @@ class Pod(AbstractModel):
         if params.get("CrossTenantENIInfo") is not None:
             self._CrossTenantENIInfo = CrossTenantENIInfo()
             self._CrossTenantENIInfo._deserialize(params.get("CrossTenantENIInfo"))
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

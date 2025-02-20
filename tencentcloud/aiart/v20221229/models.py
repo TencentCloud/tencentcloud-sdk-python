@@ -216,6 +216,59 @@ class ChangeClothesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class FaceInfo(AbstractModel):
+    """融合信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageUrls: 用户图 URL 列表
+        :type ImageUrls: list of str
+        :param _TemplateFaceRect: 模版图人脸坐标。
+        :type TemplateFaceRect: :class:`tencentcloud.aiart.v20221229.models.Rect`
+        """
+        self._ImageUrls = None
+        self._TemplateFaceRect = None
+
+    @property
+    def ImageUrls(self):
+        """用户图 URL 列表
+        :rtype: list of str
+        """
+        return self._ImageUrls
+
+    @ImageUrls.setter
+    def ImageUrls(self, ImageUrls):
+        self._ImageUrls = ImageUrls
+
+    @property
+    def TemplateFaceRect(self):
+        """模版图人脸坐标。
+        :rtype: :class:`tencentcloud.aiart.v20221229.models.Rect`
+        """
+        return self._TemplateFaceRect
+
+    @TemplateFaceRect.setter
+    def TemplateFaceRect(self, TemplateFaceRect):
+        self._TemplateFaceRect = TemplateFaceRect
+
+
+    def _deserialize(self, params):
+        self._ImageUrls = params.get("ImageUrls")
+        if params.get("TemplateFaceRect") is not None:
+            self._TemplateFaceRect = Rect()
+            self._TemplateFaceRect._deserialize(params.get("TemplateFaceRect"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Filter(AbstractModel):
     """训练图像质量过滤开关配置。
     支持开启或关闭对训练图像分辨率下限、脸部区域大小、脸部遮挡、脸部角度的过滤，默认开启以上过滤。
@@ -1521,6 +1574,172 @@ URL 有效期1小时，请及时保存。
         self._RequestId = params.get("RequestId")
 
 
+class QueryGlamPicJobRequest(AbstractModel):
+    """QueryGlamPicJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 任务ID。
+        :type JobId: str
+        """
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        """任务ID。
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryGlamPicJobResponse(AbstractModel):
+    """QueryGlamPicJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobStatusCode: 当前任务状态码：
+1：等待中、2：运行中、4：处理失败、5：处理完成。
+        :type JobStatusCode: str
+        :param _JobStatusMsg: 当前任务状态：排队中、处理中、处理失败或者处理完成。
+
+        :type JobStatusMsg: str
+        :param _JobErrorCode: 任务处理失败错误码。
+
+        :type JobErrorCode: str
+        :param _JobErrorMsg: 任务处理失败错误信息。
+
+        :type JobErrorMsg: str
+        :param _ResultImage: 生成图 URL 列表，有效期1小时，请及时保存。
+
+        :type ResultImage: list of str
+        :param _ResultDetails: 结果 detail 数组，Success 代表成功。
+
+        :type ResultDetails: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobStatusCode = None
+        self._JobStatusMsg = None
+        self._JobErrorCode = None
+        self._JobErrorMsg = None
+        self._ResultImage = None
+        self._ResultDetails = None
+        self._RequestId = None
+
+    @property
+    def JobStatusCode(self):
+        """当前任务状态码：
+1：等待中、2：运行中、4：处理失败、5：处理完成。
+        :rtype: str
+        """
+        return self._JobStatusCode
+
+    @JobStatusCode.setter
+    def JobStatusCode(self, JobStatusCode):
+        self._JobStatusCode = JobStatusCode
+
+    @property
+    def JobStatusMsg(self):
+        """当前任务状态：排队中、处理中、处理失败或者处理完成。
+
+        :rtype: str
+        """
+        return self._JobStatusMsg
+
+    @JobStatusMsg.setter
+    def JobStatusMsg(self, JobStatusMsg):
+        self._JobStatusMsg = JobStatusMsg
+
+    @property
+    def JobErrorCode(self):
+        """任务处理失败错误码。
+
+        :rtype: str
+        """
+        return self._JobErrorCode
+
+    @JobErrorCode.setter
+    def JobErrorCode(self, JobErrorCode):
+        self._JobErrorCode = JobErrorCode
+
+    @property
+    def JobErrorMsg(self):
+        """任务处理失败错误信息。
+
+        :rtype: str
+        """
+        return self._JobErrorMsg
+
+    @JobErrorMsg.setter
+    def JobErrorMsg(self, JobErrorMsg):
+        self._JobErrorMsg = JobErrorMsg
+
+    @property
+    def ResultImage(self):
+        """生成图 URL 列表，有效期1小时，请及时保存。
+
+        :rtype: list of str
+        """
+        return self._ResultImage
+
+    @ResultImage.setter
+    def ResultImage(self, ResultImage):
+        self._ResultImage = ResultImage
+
+    @property
+    def ResultDetails(self):
+        """结果 detail 数组，Success 代表成功。
+
+        :rtype: list of str
+        """
+        return self._ResultDetails
+
+    @ResultDetails.setter
+    def ResultDetails(self, ResultDetails):
+        self._ResultDetails = ResultDetails
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobStatusCode = params.get("JobStatusCode")
+        self._JobStatusMsg = params.get("JobStatusMsg")
+        self._JobErrorCode = params.get("JobErrorCode")
+        self._JobErrorMsg = params.get("JobErrorMsg")
+        self._ResultImage = params.get("ResultImage")
+        self._ResultDetails = params.get("ResultDetails")
+        self._RequestId = params.get("RequestId")
+
+
 class QueryMemeJobRequest(AbstractModel):
     """QueryMemeJob请求参数结构体
 
@@ -1973,6 +2192,87 @@ INIT: 初始化、WAIT：等待中、RUN：运行中、FAIL：处理失败、DON
         self._JobErrorCode = params.get("JobErrorCode")
         self._JobErrorMsg = params.get("JobErrorMsg")
         self._RequestId = params.get("RequestId")
+
+
+class Rect(AbstractModel):
+    """人脸框坐标
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _X: 人脸框左上角横坐标。
+        :type X: int
+        :param _Y: 人脸框左上角纵坐标。
+        :type Y: int
+        :param _Width: 人脸框宽度。
+        :type Width: int
+        :param _Height: 人脸框高度。
+        :type Height: int
+        """
+        self._X = None
+        self._Y = None
+        self._Width = None
+        self._Height = None
+
+    @property
+    def X(self):
+        """人脸框左上角横坐标。
+        :rtype: int
+        """
+        return self._X
+
+    @X.setter
+    def X(self, X):
+        self._X = X
+
+    @property
+    def Y(self):
+        """人脸框左上角纵坐标。
+        :rtype: int
+        """
+        return self._Y
+
+    @Y.setter
+    def Y(self, Y):
+        self._Y = Y
+
+    @property
+    def Width(self):
+        """人脸框宽度。
+        :rtype: int
+        """
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        """人脸框高度。
+        :rtype: int
+        """
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+
+    def _deserialize(self, params):
+        self._X = params.get("X")
+        self._Y = params.get("Y")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ReplaceBackgroundRequest(AbstractModel):
@@ -2625,6 +2925,229 @@ class SubmitDrawPortraitJobResponse(AbstractModel):
     def JobId(self):
         """提交生成写真图片任务 ID。
 
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._RequestId = params.get("RequestId")
+
+
+class SubmitGlamPicJobRequest(AbstractModel):
+    """SubmitGlamPicJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateUrl: 美照模板图 URL。
+图片限制：模板图中最多出现5张人脸，单边分辨率大于300，转成 Base64 字符串后小于 10MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+        :type TemplateUrl: str
+        :param _FaceInfos: 用户图 URL 列表，以及模板图中需要替换成用户的人脸框信息。
+一张美照中可包含1 ~ 5个用户形象。每个用户需上传1 ~ 6张照片，如果图中存在多个人脸将取最大人脸。
+模板图中的人脸数量需要大于等于用户个数。如果不传每个用户在模板图中的人脸框位置，默认按照模板图人脸框从大到小的顺序进行替换。如需自定义顺序，需要依次上传每个用户在模板图中的人脸框位置。
+图片限制：每张图片转成 Base64 字符串后小于 10MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。建议使用单人、正脸、脸部区域占比较大、脸部清晰无遮挡、无大角度偏转、无夸张表情的用户图。
+        :type FaceInfos: list of FaceInfo
+        :param _Num: 美照生成数量。
+支持1 ~ 4张，默认生成4张。
+        :type Num: int
+        :param _Style: 美照生成风格。
+仅对单人美照生效，单人可支持选择不同风格。需按照美照生成数量，在数组中逐一填入每张美照的风格名称。如果不传，默认取不重复的随机风格顺序。
+多人美照只支持 balanced 一种风格，该参数不生效。
+可选风格：<ul><li>real：面部相似度更高。</li><li>balanced：平衡面部真实感和美观度。</li><li>extured：脸部皮肤更具真实感。</li><li>beautiful：脸部美观度更高。</li></ul>
+        :type Style: list of str
+        :param _Similarity: 相似度系数，越高越像用户图。
+取值范围[0, 1]，默认为0.6。
+        :type Similarity: float
+        :param _Clarity: 超分选项，默认不做超分，可选开启。
+x2：2倍超分
+x4：4倍超分
+        :type Clarity: str
+        :param _LogoAdd: 为生成结果图添加标识的开关，默认为1。
+1：添加标识。
+0：不添加标识。
+其他数值：默认按1处理。
+建议您使用显著标识来提示结果图是 AI 生成的图片。
+        :type LogoAdd: int
+        :param _LogoParam: 标识内容设置。
+默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+        :type LogoParam: :class:`tencentcloud.aiart.v20221229.models.LogoParam`
+        """
+        self._TemplateUrl = None
+        self._FaceInfos = None
+        self._Num = None
+        self._Style = None
+        self._Similarity = None
+        self._Clarity = None
+        self._LogoAdd = None
+        self._LogoParam = None
+
+    @property
+    def TemplateUrl(self):
+        """美照模板图 URL。
+图片限制：模板图中最多出现5张人脸，单边分辨率大于300，转成 Base64 字符串后小于 10MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+        :rtype: str
+        """
+        return self._TemplateUrl
+
+    @TemplateUrl.setter
+    def TemplateUrl(self, TemplateUrl):
+        self._TemplateUrl = TemplateUrl
+
+    @property
+    def FaceInfos(self):
+        """用户图 URL 列表，以及模板图中需要替换成用户的人脸框信息。
+一张美照中可包含1 ~ 5个用户形象。每个用户需上传1 ~ 6张照片，如果图中存在多个人脸将取最大人脸。
+模板图中的人脸数量需要大于等于用户个数。如果不传每个用户在模板图中的人脸框位置，默认按照模板图人脸框从大到小的顺序进行替换。如需自定义顺序，需要依次上传每个用户在模板图中的人脸框位置。
+图片限制：每张图片转成 Base64 字符串后小于 10MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。建议使用单人、正脸、脸部区域占比较大、脸部清晰无遮挡、无大角度偏转、无夸张表情的用户图。
+        :rtype: list of FaceInfo
+        """
+        return self._FaceInfos
+
+    @FaceInfos.setter
+    def FaceInfos(self, FaceInfos):
+        self._FaceInfos = FaceInfos
+
+    @property
+    def Num(self):
+        """美照生成数量。
+支持1 ~ 4张，默认生成4张。
+        :rtype: int
+        """
+        return self._Num
+
+    @Num.setter
+    def Num(self, Num):
+        self._Num = Num
+
+    @property
+    def Style(self):
+        """美照生成风格。
+仅对单人美照生效，单人可支持选择不同风格。需按照美照生成数量，在数组中逐一填入每张美照的风格名称。如果不传，默认取不重复的随机风格顺序。
+多人美照只支持 balanced 一种风格，该参数不生效。
+可选风格：<ul><li>real：面部相似度更高。</li><li>balanced：平衡面部真实感和美观度。</li><li>extured：脸部皮肤更具真实感。</li><li>beautiful：脸部美观度更高。</li></ul>
+        :rtype: list of str
+        """
+        return self._Style
+
+    @Style.setter
+    def Style(self, Style):
+        self._Style = Style
+
+    @property
+    def Similarity(self):
+        """相似度系数，越高越像用户图。
+取值范围[0, 1]，默认为0.6。
+        :rtype: float
+        """
+        return self._Similarity
+
+    @Similarity.setter
+    def Similarity(self, Similarity):
+        self._Similarity = Similarity
+
+    @property
+    def Clarity(self):
+        """超分选项，默认不做超分，可选开启。
+x2：2倍超分
+x4：4倍超分
+        :rtype: str
+        """
+        return self._Clarity
+
+    @Clarity.setter
+    def Clarity(self, Clarity):
+        self._Clarity = Clarity
+
+    @property
+    def LogoAdd(self):
+        """为生成结果图添加标识的开关，默认为1。
+1：添加标识。
+0：不添加标识。
+其他数值：默认按1处理。
+建议您使用显著标识来提示结果图是 AI 生成的图片。
+        :rtype: int
+        """
+        return self._LogoAdd
+
+    @LogoAdd.setter
+    def LogoAdd(self, LogoAdd):
+        self._LogoAdd = LogoAdd
+
+    @property
+    def LogoParam(self):
+        """标识内容设置。
+默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+        :rtype: :class:`tencentcloud.aiart.v20221229.models.LogoParam`
+        """
+        return self._LogoParam
+
+    @LogoParam.setter
+    def LogoParam(self, LogoParam):
+        self._LogoParam = LogoParam
+
+
+    def _deserialize(self, params):
+        self._TemplateUrl = params.get("TemplateUrl")
+        if params.get("FaceInfos") is not None:
+            self._FaceInfos = []
+            for item in params.get("FaceInfos"):
+                obj = FaceInfo()
+                obj._deserialize(item)
+                self._FaceInfos.append(obj)
+        self._Num = params.get("Num")
+        self._Style = params.get("Style")
+        self._Similarity = params.get("Similarity")
+        self._Clarity = params.get("Clarity")
+        self._LogoAdd = params.get("LogoAdd")
+        if params.get("LogoParam") is not None:
+            self._LogoParam = LogoParam()
+            self._LogoParam._deserialize(params.get("LogoParam"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubmitGlamPicJobResponse(AbstractModel):
+    """SubmitGlamPicJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 任务ID。
+        :type JobId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobId = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        """任务ID。
         :rtype: str
         """
         return self._JobId
