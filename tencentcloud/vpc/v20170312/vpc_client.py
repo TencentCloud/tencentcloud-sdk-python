@@ -3438,6 +3438,29 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAddressBandwidthRange(self, request):
+        """查询指定EIP的带宽上下限范围。
+
+        :param request: Request instance for DescribeAddressBandwidthRange.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeAddressBandwidthRangeRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeAddressBandwidthRangeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAddressBandwidthRange", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAddressBandwidthRangeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAddressQuota(self, request):
         """本接口 (DescribeAddressQuota) 用于查询您账户的[弹性公网IP](https://cloud.tencent.com/document/product/213/1941)（简称 EIP）在当前地域的配额信息。配额详情可参见 [EIP 产品简介](https://cloud.tencent.com/document/product/213/5733)。
 
@@ -3545,6 +3568,29 @@ class VpcClient(AbstractClient):
             body = self.call("DescribeAssistantCidr", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAssistantCidrResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeBandwidthPackageBandwidthRange(self, request):
+        """查询指定带宽包的带宽上下限范围
+
+        :param request: Request instance for DescribeBandwidthPackageBandwidthRange.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeBandwidthPackageBandwidthRangeRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeBandwidthPackageBandwidthRangeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBandwidthPackageBandwidthRange", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBandwidthPackageBandwidthRangeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

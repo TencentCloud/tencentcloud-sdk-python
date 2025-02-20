@@ -32842,6 +32842,11 @@ class OriginDetail(AbstractModel):
         :type VodeoDistributionRange: str
         :param _VodeoBucketId: MO 存储桶 ID，分发范围(DistributionRange)为存储桶(Bucket)时必填
         :type VodeoBucketId: str
+        :param _VodOriginScope: 云点播回源范围，当 OriginType = VOD 时该参数会返回值。取值有:<li>all：当前源站对应的云点播应用内所有文件，默认值为 all；</li> <li>bucket：当前源站对应的云点播应用下指定某一个存储桶内的文件。通过参数 VodBucketId 来指定存储桶。
+</li>
+        :type VodOriginScope: str
+        :param _VodBucketId: 云点播存储桶 ID，该参数当 OriginType = VOD 且 VodOriginScope = bucket 时必填。数据来源：云点播专业版应用下存储桶的存储 ID 。
+        :type VodBucketId: str
         """
         self._OriginType = None
         self._Origin = None
@@ -32853,6 +32858,8 @@ class OriginDetail(AbstractModel):
         self._VodeoSubAppId = None
         self._VodeoDistributionRange = None
         self._VodeoBucketId = None
+        self._VodOriginScope = None
+        self._VodBucketId = None
 
     @property
     def OriginType(self):
@@ -32992,6 +32999,29 @@ class OriginDetail(AbstractModel):
 
         self._VodeoBucketId = VodeoBucketId
 
+    @property
+    def VodOriginScope(self):
+        """云点播回源范围，当 OriginType = VOD 时该参数会返回值。取值有:<li>all：当前源站对应的云点播应用内所有文件，默认值为 all；</li> <li>bucket：当前源站对应的云点播应用下指定某一个存储桶内的文件。通过参数 VodBucketId 来指定存储桶。
+</li>
+        :rtype: str
+        """
+        return self._VodOriginScope
+
+    @VodOriginScope.setter
+    def VodOriginScope(self, VodOriginScope):
+        self._VodOriginScope = VodOriginScope
+
+    @property
+    def VodBucketId(self):
+        """云点播存储桶 ID，该参数当 OriginType = VOD 且 VodOriginScope = bucket 时必填。数据来源：云点播专业版应用下存储桶的存储 ID 。
+        :rtype: str
+        """
+        return self._VodBucketId
+
+    @VodBucketId.setter
+    def VodBucketId(self, VodBucketId):
+        self._VodBucketId = VodBucketId
+
 
     def _deserialize(self, params):
         self._OriginType = params.get("OriginType")
@@ -33009,6 +33039,8 @@ class OriginDetail(AbstractModel):
         self._VodeoSubAppId = params.get("VodeoSubAppId")
         self._VodeoDistributionRange = params.get("VodeoDistributionRange")
         self._VodeoBucketId = params.get("VodeoBucketId")
+        self._VodOriginScope = params.get("VodOriginScope")
+        self._VodBucketId = params.get("VodBucketId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33589,6 +33621,11 @@ class OriginInfo(AbstractModel):
         :type VodeoDistributionRange: str
         :param _VodeoBucketId: VODEO 存储桶 ID，该参数当 OriginType = VODEO 且 VodeoDistributionRange = Bucket 时必填。
         :type VodeoBucketId: str
+        :param _VodOriginScope: 云点播回源范围，该参数当 OriginType = VOD 时生效。取值有：<li>all：当前源站对应的云点播应用内所有文件，默认值为 all；</li><li>bucket：当前源站对应的云点播应用下指定某一个存储桶内的文件。通过参数 VodBucketId 来指定存储桶。
+</li>
+        :type VodOriginScope: str
+        :param _VodBucketId: VOD 存储桶 ID，该参数当 OriginType = VOD 且 VodOriginScope = bucket 时必填。数据来源：云点播专业版应用下存储桶的存储 ID 。
+        :type VodBucketId: str
         """
         self._OriginType = None
         self._Origin = None
@@ -33598,6 +33635,8 @@ class OriginInfo(AbstractModel):
         self._VodeoSubAppId = None
         self._VodeoDistributionRange = None
         self._VodeoBucketId = None
+        self._VodOriginScope = None
+        self._VodBucketId = None
 
     @property
     def OriginType(self):
@@ -33718,6 +33757,29 @@ class OriginInfo(AbstractModel):
 
         self._VodeoBucketId = VodeoBucketId
 
+    @property
+    def VodOriginScope(self):
+        """云点播回源范围，该参数当 OriginType = VOD 时生效。取值有：<li>all：当前源站对应的云点播应用内所有文件，默认值为 all；</li><li>bucket：当前源站对应的云点播应用下指定某一个存储桶内的文件。通过参数 VodBucketId 来指定存储桶。
+</li>
+        :rtype: str
+        """
+        return self._VodOriginScope
+
+    @VodOriginScope.setter
+    def VodOriginScope(self, VodOriginScope):
+        self._VodOriginScope = VodOriginScope
+
+    @property
+    def VodBucketId(self):
+        """VOD 存储桶 ID，该参数当 OriginType = VOD 且 VodOriginScope = bucket 时必填。数据来源：云点播专业版应用下存储桶的存储 ID 。
+        :rtype: str
+        """
+        return self._VodBucketId
+
+    @VodBucketId.setter
+    def VodBucketId(self, VodBucketId):
+        self._VodBucketId = VodBucketId
+
 
     def _deserialize(self, params):
         self._OriginType = params.get("OriginType")
@@ -33733,6 +33795,8 @@ class OriginInfo(AbstractModel):
         self._VodeoSubAppId = params.get("VodeoSubAppId")
         self._VodeoDistributionRange = params.get("VodeoDistributionRange")
         self._VodeoBucketId = params.get("VodeoBucketId")
+        self._VodOriginScope = params.get("VodOriginScope")
+        self._VodBucketId = params.get("VodBucketId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

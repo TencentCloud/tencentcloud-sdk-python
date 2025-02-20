@@ -4787,6 +4787,72 @@ class BandwidthPackageBillBandwidth(AbstractModel):
         
 
 
+class BandwidthRange(AbstractModel):
+    """带宽上下限。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: 资源ID。
+        :type ResourceId: str
+        :param _BandwidthLowerLimit: 带宽下限，单位：Mbps。
+        :type BandwidthLowerLimit: int
+        :param _BandwidthUpperLimit: 带宽上限，单位：Mbps。
+        :type BandwidthUpperLimit: int
+        """
+        self._ResourceId = None
+        self._BandwidthLowerLimit = None
+        self._BandwidthUpperLimit = None
+
+    @property
+    def ResourceId(self):
+        """资源ID。
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def BandwidthLowerLimit(self):
+        """带宽下限，单位：Mbps。
+        :rtype: int
+        """
+        return self._BandwidthLowerLimit
+
+    @BandwidthLowerLimit.setter
+    def BandwidthLowerLimit(self, BandwidthLowerLimit):
+        self._BandwidthLowerLimit = BandwidthLowerLimit
+
+    @property
+    def BandwidthUpperLimit(self):
+        """带宽上限，单位：Mbps。
+        :rtype: int
+        """
+        return self._BandwidthUpperLimit
+
+    @BandwidthUpperLimit.setter
+    def BandwidthUpperLimit(self, BandwidthUpperLimit):
+        self._BandwidthUpperLimit = BandwidthUpperLimit
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        self._BandwidthLowerLimit = params.get("BandwidthLowerLimit")
+        self._BandwidthUpperLimit = params.get("BandwidthUpperLimit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BatchModifySnapshotPolicy(AbstractModel):
     """批量修改快照策略信息
 
@@ -21700,6 +21766,90 @@ class DescribeAccountAttributesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeAddressBandwidthRangeRequest(AbstractModel):
+    """DescribeAddressBandwidthRange请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AddressIds: EIP资源ID列表，单次查询上限20。
+        :type AddressIds: list of str
+        """
+        self._AddressIds = None
+
+    @property
+    def AddressIds(self):
+        """EIP资源ID列表，单次查询上限20。
+        :rtype: list of str
+        """
+        return self._AddressIds
+
+    @AddressIds.setter
+    def AddressIds(self, AddressIds):
+        self._AddressIds = AddressIds
+
+
+    def _deserialize(self, params):
+        self._AddressIds = params.get("AddressIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAddressBandwidthRangeResponse(AbstractModel):
+    """DescribeAddressBandwidthRange返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BandwidthRangeSet: EIP带宽上下限详细信息。
+        :type BandwidthRangeSet: list of BandwidthRange
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._BandwidthRangeSet = None
+        self._RequestId = None
+
+    @property
+    def BandwidthRangeSet(self):
+        """EIP带宽上下限详细信息。
+        :rtype: list of BandwidthRange
+        """
+        return self._BandwidthRangeSet
+
+    @BandwidthRangeSet.setter
+    def BandwidthRangeSet(self, BandwidthRangeSet):
+        self._BandwidthRangeSet = BandwidthRangeSet
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("BandwidthRangeSet") is not None:
+            self._BandwidthRangeSet = []
+            for item in params.get("BandwidthRangeSet"):
+                obj = BandwidthRange()
+                obj._deserialize(item)
+                self._BandwidthRangeSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeAddressQuotaRequest(AbstractModel):
     """DescribeAddressQuota请求参数结构体
 
@@ -22507,6 +22657,90 @@ class DescribeAssistantCidrResponse(AbstractModel):
                 obj._deserialize(item)
                 self._AssistantCidrSet.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBandwidthPackageBandwidthRangeRequest(AbstractModel):
+    """DescribeBandwidthPackageBandwidthRange请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BandwidthPackageIds: 带宽包资源ID列表，单次查询上限20。
+        :type BandwidthPackageIds: list of str
+        """
+        self._BandwidthPackageIds = None
+
+    @property
+    def BandwidthPackageIds(self):
+        """带宽包资源ID列表，单次查询上限20。
+        :rtype: list of str
+        """
+        return self._BandwidthPackageIds
+
+    @BandwidthPackageIds.setter
+    def BandwidthPackageIds(self, BandwidthPackageIds):
+        self._BandwidthPackageIds = BandwidthPackageIds
+
+
+    def _deserialize(self, params):
+        self._BandwidthPackageIds = params.get("BandwidthPackageIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBandwidthPackageBandwidthRangeResponse(AbstractModel):
+    """DescribeBandwidthPackageBandwidthRange返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BandwidthRangeSet: 带宽包带宽上下限详细信息。
+        :type BandwidthRangeSet: list of BandwidthRange
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._BandwidthRangeSet = None
+        self._RequestId = None
+
+    @property
+    def BandwidthRangeSet(self):
+        """带宽包带宽上下限详细信息。
+        :rtype: list of BandwidthRange
+        """
+        return self._BandwidthRangeSet
+
+    @BandwidthRangeSet.setter
+    def BandwidthRangeSet(self, BandwidthRangeSet):
+        self._BandwidthRangeSet = BandwidthRangeSet
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("BandwidthRangeSet") is not None:
+            self._BandwidthRangeSet = []
+            for item in params.get("BandwidthRangeSet"):
+                obj = BandwidthRange()
+                obj._deserialize(item)
+                self._BandwidthRangeSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 

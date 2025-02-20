@@ -1156,10 +1156,8 @@ class SavingPlanOverviewDetail(AbstractModel):
         :param _Region: 地域
         :type Region: list of str
         :param _PayType: 支付类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type PayType: int
         :param _BuyTime: 购买时间 yyyy-mm-dd HH:mm:ss格式
-注意：此字段可能返回 null，表示取不到有效值。
         :type BuyTime: str
         """
         self._SpType = None
@@ -1252,7 +1250,6 @@ class SavingPlanOverviewDetail(AbstractModel):
     @property
     def PayType(self):
         """支付类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PayType
@@ -1264,7 +1261,6 @@ class SavingPlanOverviewDetail(AbstractModel):
     @property
     def BuyTime(self):
         """购买时间 yyyy-mm-dd HH:mm:ss格式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BuyTime
@@ -1320,7 +1316,6 @@ class SavingPlanUsageDetail(AbstractModel):
         :param _CostAmount: 累计成本金额（单位：元）
         :type CostAmount: str
         :param _Region: 地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: list of str
         """
         self._SpType = None
@@ -1436,7 +1431,6 @@ class SavingPlanUsageDetail(AbstractModel):
     @property
     def Region(self):
         """地域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Region

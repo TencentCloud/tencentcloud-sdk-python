@@ -107,6 +107,57 @@ class AdvancedRetentionPolicy(AbstractModel):
         
 
 
+class ApplyDisk(AbstractModel):
+    """本参数用于快照组回滚接口的入参，表示回滚的云盘、快照列表。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SnapshotId: 快照组关联的快照ID。
+        :type SnapshotId: str
+        :param _DiskId: 快照组关联快照对应的原云硬盘ID。
+        :type DiskId: str
+        """
+        self._SnapshotId = None
+        self._DiskId = None
+
+    @property
+    def SnapshotId(self):
+        """快照组关联的快照ID。
+        :rtype: str
+        """
+        return self._SnapshotId
+
+    @SnapshotId.setter
+    def SnapshotId(self, SnapshotId):
+        self._SnapshotId = SnapshotId
+
+    @property
+    def DiskId(self):
+        """快照组关联快照对应的原云硬盘ID。
+        :rtype: str
+        """
+        return self._DiskId
+
+    @DiskId.setter
+    def DiskId(self, DiskId):
+        self._DiskId = DiskId
+
+
+    def _deserialize(self, params):
+        self._SnapshotId = params.get("SnapshotId")
+        self._DiskId = params.get("DiskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ApplyDiskBackupRequest(AbstractModel):
     """ApplyDiskBackup请求参数结构体
 
@@ -190,6 +241,120 @@ class ApplyDiskBackupRequest(AbstractModel):
 
 class ApplyDiskBackupResponse(AbstractModel):
     """ApplyDiskBackup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ApplySnapshotGroupRequest(AbstractModel):
+    """ApplySnapshotGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SnapshotGroupId: 回滚的快照组ID。
+        :type SnapshotGroupId: str
+        :param _ApplyDisks: 回滚的快照组关联的快照ID，及快照对应的原云硬盘ID列表。
+        :type ApplyDisks: list of ApplyDisk
+        :param _AutoStopInstance: 回滚前是否执行自动关机。
+        :type AutoStopInstance: bool
+        :param _AutoStartInstance: 回滚完成后是否自动开机。
+        :type AutoStartInstance: bool
+        """
+        self._SnapshotGroupId = None
+        self._ApplyDisks = None
+        self._AutoStopInstance = None
+        self._AutoStartInstance = None
+
+    @property
+    def SnapshotGroupId(self):
+        """回滚的快照组ID。
+        :rtype: str
+        """
+        return self._SnapshotGroupId
+
+    @SnapshotGroupId.setter
+    def SnapshotGroupId(self, SnapshotGroupId):
+        self._SnapshotGroupId = SnapshotGroupId
+
+    @property
+    def ApplyDisks(self):
+        """回滚的快照组关联的快照ID，及快照对应的原云硬盘ID列表。
+        :rtype: list of ApplyDisk
+        """
+        return self._ApplyDisks
+
+    @ApplyDisks.setter
+    def ApplyDisks(self, ApplyDisks):
+        self._ApplyDisks = ApplyDisks
+
+    @property
+    def AutoStopInstance(self):
+        """回滚前是否执行自动关机。
+        :rtype: bool
+        """
+        return self._AutoStopInstance
+
+    @AutoStopInstance.setter
+    def AutoStopInstance(self, AutoStopInstance):
+        self._AutoStopInstance = AutoStopInstance
+
+    @property
+    def AutoStartInstance(self):
+        """回滚完成后是否自动开机。
+        :rtype: bool
+        """
+        return self._AutoStartInstance
+
+    @AutoStartInstance.setter
+    def AutoStartInstance(self, AutoStartInstance):
+        self._AutoStartInstance = AutoStartInstance
+
+
+    def _deserialize(self, params):
+        self._SnapshotGroupId = params.get("SnapshotGroupId")
+        if params.get("ApplyDisks") is not None:
+            self._ApplyDisks = []
+            for item in params.get("ApplyDisks"):
+                obj = ApplyDisk()
+                obj._deserialize(item)
+                self._ApplyDisks.append(obj)
+        self._AutoStopInstance = params.get("AutoStopInstance")
+        self._AutoStartInstance = params.get("AutoStartInstance")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApplySnapshotGroupResponse(AbstractModel):
+    """ApplySnapshotGroup返回参数结构体
 
     """
 
@@ -1948,6 +2113,120 @@ class CreateDisksResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateSnapshotGroupRequest(AbstractModel):
+    """CreateSnapshotGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DiskIds: 需要创建快照组的云硬盘ID列表，必须选择挂载在同一实例上的盘列表。
+        :type DiskIds: list of str
+        :param _SnapshotGroupName: 快照组名称，快照组关联的快照也会继承快照组的名称。例如：快照组名称为testSnapshotGroup，快照组关联两个快照，则两个快照的名称分别为testSnapshotGroup_0，testSnapshotGroup_1。
+        :type SnapshotGroupName: str
+        :param _Tags: 快照组需要绑定的标签列表。
+        :type Tags: list of Tag
+        """
+        self._DiskIds = None
+        self._SnapshotGroupName = None
+        self._Tags = None
+
+    @property
+    def DiskIds(self):
+        """需要创建快照组的云硬盘ID列表，必须选择挂载在同一实例上的盘列表。
+        :rtype: list of str
+        """
+        return self._DiskIds
+
+    @DiskIds.setter
+    def DiskIds(self, DiskIds):
+        self._DiskIds = DiskIds
+
+    @property
+    def SnapshotGroupName(self):
+        """快照组名称，快照组关联的快照也会继承快照组的名称。例如：快照组名称为testSnapshotGroup，快照组关联两个快照，则两个快照的名称分别为testSnapshotGroup_0，testSnapshotGroup_1。
+        :rtype: str
+        """
+        return self._SnapshotGroupName
+
+    @SnapshotGroupName.setter
+    def SnapshotGroupName(self, SnapshotGroupName):
+        self._SnapshotGroupName = SnapshotGroupName
+
+    @property
+    def Tags(self):
+        """快照组需要绑定的标签列表。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._DiskIds = params.get("DiskIds")
+        self._SnapshotGroupName = params.get("SnapshotGroupName")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSnapshotGroupResponse(AbstractModel):
+    """CreateSnapshotGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SnapshotGroupId: 创建成功的快照组ID。
+        :type SnapshotGroupId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SnapshotGroupId = None
+        self._RequestId = None
+
+    @property
+    def SnapshotGroupId(self):
+        """创建成功的快照组ID。
+        :rtype: str
+        """
+        return self._SnapshotGroupId
+
+    @SnapshotGroupId.setter
+    def SnapshotGroupId(self, SnapshotGroupId):
+        self._SnapshotGroupId = SnapshotGroupId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SnapshotGroupId = params.get("SnapshotGroupId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateSnapshotRequest(AbstractModel):
     """CreateSnapshot请求参数结构体
 
@@ -2196,6 +2475,100 @@ class DeleteDiskBackupsRequest(AbstractModel):
 
 class DeleteDiskBackupsResponse(AbstractModel):
     """DeleteDiskBackups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteSnapshotGroupRequest(AbstractModel):
+    """DeleteSnapshotGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SnapshotGroupId: 快照组ID。
+        :type SnapshotGroupId: str
+        :param _SnapshotGroupIds: 快照组ID 列表。此参数与快照组 ID 至少传 1 个，同时传会与快照组 ID 合并。
+        :type SnapshotGroupIds: list of str
+        :param _DeleteBindImages: 是否同时删除快照组关联的镜像；取值为false，表示不删除快照组绑定的镜像，此时，如果快照组有绑定的镜像，删除会失败；取值为true，表示同时删除快照组绑定的镜像；默认值为false。
+        :type DeleteBindImages: bool
+        """
+        self._SnapshotGroupId = None
+        self._SnapshotGroupIds = None
+        self._DeleteBindImages = None
+
+    @property
+    def SnapshotGroupId(self):
+        """快照组ID。
+        :rtype: str
+        """
+        return self._SnapshotGroupId
+
+    @SnapshotGroupId.setter
+    def SnapshotGroupId(self, SnapshotGroupId):
+        self._SnapshotGroupId = SnapshotGroupId
+
+    @property
+    def SnapshotGroupIds(self):
+        """快照组ID 列表。此参数与快照组 ID 至少传 1 个，同时传会与快照组 ID 合并。
+        :rtype: list of str
+        """
+        return self._SnapshotGroupIds
+
+    @SnapshotGroupIds.setter
+    def SnapshotGroupIds(self, SnapshotGroupIds):
+        self._SnapshotGroupIds = SnapshotGroupIds
+
+    @property
+    def DeleteBindImages(self):
+        """是否同时删除快照组关联的镜像；取值为false，表示不删除快照组绑定的镜像，此时，如果快照组有绑定的镜像，删除会失败；取值为true，表示同时删除快照组绑定的镜像；默认值为false。
+        :rtype: bool
+        """
+        return self._DeleteBindImages
+
+    @DeleteBindImages.setter
+    def DeleteBindImages(self, DeleteBindImages):
+        self._DeleteBindImages = DeleteBindImages
+
+
+    def _deserialize(self, params):
+        self._SnapshotGroupId = params.get("SnapshotGroupId")
+        self._SnapshotGroupIds = params.get("SnapshotGroupIds")
+        self._DeleteBindImages = params.get("DeleteBindImages")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteSnapshotGroupResponse(AbstractModel):
+    """DeleteSnapshotGroup返回参数结构体
 
     """
 
@@ -3406,6 +3779,140 @@ class DescribeInstancesDiskNumResponse(AbstractModel):
                 obj = AttachDetail()
                 obj._deserialize(item)
                 self._AttachDetail.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSnapshotGroupsRequest(AbstractModel):
+    """DescribeSnapshotGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: 过滤条件。<br><li>snapshot-group-id - Array of String - 是否必填：否 -（过滤条件）按快照组ID过滤 <br><li>snapshot-group-state - Array of String - 是否必填：否 -（过滤条件）按快照组状态过滤。(NORMAL: 正常 | CREATING:创建中 | ROLLBACKING:回滚中) <br><li>snapshot-group-name - Array of String - 是否必填：否 -（过滤条件）按快照组名称过滤 <br><li>snapshot-id - Array of String - 是否必填：否 -（过滤条件）按快照组内的快照ID过滤
+        :type Filters: list of Filter
+        :param _Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param _Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        """
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Filters(self):
+        """过滤条件。<br><li>snapshot-group-id - Array of String - 是否必填：否 -（过滤条件）按快照组ID过滤 <br><li>snapshot-group-state - Array of String - 是否必填：否 -（过滤条件）按快照组状态过滤。(NORMAL: 正常 | CREATING:创建中 | ROLLBACKING:回滚中) <br><li>snapshot-group-name - Array of String - 是否必填：否 -（过滤条件）按快照组名称过滤 <br><li>snapshot-id - Array of String - 是否必填：否 -（过滤条件）按快照组内的快照ID过滤
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """返回数量，默认为20，最大值为100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSnapshotGroupsResponse(AbstractModel):
+    """DescribeSnapshotGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 符合条件的总数量。
+        :type TotalCount: int
+        :param _SnapshotGroupSet: 快照组列表详情。
+        :type SnapshotGroupSet: list of SnapshotGroup
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._SnapshotGroupSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """符合条件的总数量。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def SnapshotGroupSet(self):
+        """快照组列表详情。
+        :rtype: list of SnapshotGroup
+        """
+        return self._SnapshotGroupSet
+
+    @SnapshotGroupSet.setter
+    def SnapshotGroupSet(self, SnapshotGroupSet):
+        self._SnapshotGroupSet = SnapshotGroupSet
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("SnapshotGroupSet") is not None:
+            self._SnapshotGroupSet = []
+            for item in params.get("SnapshotGroupSet"):
+                obj = SnapshotGroup()
+                obj._deserialize(item)
+                self._SnapshotGroupSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -7603,7 +8110,7 @@ class ResizeDiskRequest(AbstractModel):
         r"""
         :param _DiskSize: 云硬盘扩容后的大小，单位为GB，必须大于当前云硬盘大小。云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
         :type DiskSize: int
-        :param _DiskId: 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
+        :param _DiskId: 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。该字段仅供单块云硬盘扩容时传入。
         :type DiskId: str
         """
         self._DiskSize = None
@@ -7622,7 +8129,7 @@ class ResizeDiskRequest(AbstractModel):
 
     @property
     def DiskId(self):
-        """云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
+        """云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。该字段仅供单块云硬盘扩容时传入。
         :rtype: str
         """
         return self._DiskId
@@ -8178,6 +8685,229 @@ class SnapshotCopyResult(AbstractModel):
         self._Message = params.get("Message")
         self._Code = params.get("Code")
         self._DestinationRegion = params.get("DestinationRegion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SnapshotGroup(AbstractModel):
+    """描述快照组详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SnapshotGroupId: 快照组ID。
+        :type SnapshotGroupId: str
+        :param _SnapshotGroupType: 快照组类型。NORMAL: 普通快照组，非一致性快照。
+        :type SnapshotGroupType: str
+        :param _ContainRootSnapshot: 快照组是否包含系统盘快照。
+        :type ContainRootSnapshot: bool
+        :param _SnapshotIdSet: 快照组包含的快照ID列表。
+        :type SnapshotIdSet: list of str
+        :param _SnapshotGroupState: 快照组状态。<br><li>NORMAL: 正常<br><li>CREATING:创建中<br><li>ROLLBACKING:回滚中
+        :type SnapshotGroupState: str
+        :param _Percent: 快照组创建进度。
+        :type Percent: int
+        :param _CreateTime: 快照组创建时间。
+        :type CreateTime: str
+        :param _ModifyTime: 快照组最新修改时间
+        :type ModifyTime: str
+        :param _Images: 快照组关联的镜像列表。
+        :type Images: list of Image
+        :param _SnapshotGroupName: 快照组名称。
+        :type SnapshotGroupName: str
+        :param _ImageCount: 快照组关联的镜像数量。
+        :type ImageCount: int
+        :param _IsPermanent: 快照组是否永久保留
+        :type IsPermanent: bool
+        :param _DeadlineTime: 快照组到期时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeadlineTime: str
+        """
+        self._SnapshotGroupId = None
+        self._SnapshotGroupType = None
+        self._ContainRootSnapshot = None
+        self._SnapshotIdSet = None
+        self._SnapshotGroupState = None
+        self._Percent = None
+        self._CreateTime = None
+        self._ModifyTime = None
+        self._Images = None
+        self._SnapshotGroupName = None
+        self._ImageCount = None
+        self._IsPermanent = None
+        self._DeadlineTime = None
+
+    @property
+    def SnapshotGroupId(self):
+        """快照组ID。
+        :rtype: str
+        """
+        return self._SnapshotGroupId
+
+    @SnapshotGroupId.setter
+    def SnapshotGroupId(self, SnapshotGroupId):
+        self._SnapshotGroupId = SnapshotGroupId
+
+    @property
+    def SnapshotGroupType(self):
+        """快照组类型。NORMAL: 普通快照组，非一致性快照。
+        :rtype: str
+        """
+        return self._SnapshotGroupType
+
+    @SnapshotGroupType.setter
+    def SnapshotGroupType(self, SnapshotGroupType):
+        self._SnapshotGroupType = SnapshotGroupType
+
+    @property
+    def ContainRootSnapshot(self):
+        """快照组是否包含系统盘快照。
+        :rtype: bool
+        """
+        return self._ContainRootSnapshot
+
+    @ContainRootSnapshot.setter
+    def ContainRootSnapshot(self, ContainRootSnapshot):
+        self._ContainRootSnapshot = ContainRootSnapshot
+
+    @property
+    def SnapshotIdSet(self):
+        """快照组包含的快照ID列表。
+        :rtype: list of str
+        """
+        return self._SnapshotIdSet
+
+    @SnapshotIdSet.setter
+    def SnapshotIdSet(self, SnapshotIdSet):
+        self._SnapshotIdSet = SnapshotIdSet
+
+    @property
+    def SnapshotGroupState(self):
+        """快照组状态。<br><li>NORMAL: 正常<br><li>CREATING:创建中<br><li>ROLLBACKING:回滚中
+        :rtype: str
+        """
+        return self._SnapshotGroupState
+
+    @SnapshotGroupState.setter
+    def SnapshotGroupState(self, SnapshotGroupState):
+        self._SnapshotGroupState = SnapshotGroupState
+
+    @property
+    def Percent(self):
+        """快照组创建进度。
+        :rtype: int
+        """
+        return self._Percent
+
+    @Percent.setter
+    def Percent(self, Percent):
+        self._Percent = Percent
+
+    @property
+    def CreateTime(self):
+        """快照组创建时间。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifyTime(self):
+        """快照组最新修改时间
+        :rtype: str
+        """
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def Images(self):
+        """快照组关联的镜像列表。
+        :rtype: list of Image
+        """
+        return self._Images
+
+    @Images.setter
+    def Images(self, Images):
+        self._Images = Images
+
+    @property
+    def SnapshotGroupName(self):
+        """快照组名称。
+        :rtype: str
+        """
+        return self._SnapshotGroupName
+
+    @SnapshotGroupName.setter
+    def SnapshotGroupName(self, SnapshotGroupName):
+        self._SnapshotGroupName = SnapshotGroupName
+
+    @property
+    def ImageCount(self):
+        """快照组关联的镜像数量。
+        :rtype: int
+        """
+        return self._ImageCount
+
+    @ImageCount.setter
+    def ImageCount(self, ImageCount):
+        self._ImageCount = ImageCount
+
+    @property
+    def IsPermanent(self):
+        """快照组是否永久保留
+        :rtype: bool
+        """
+        return self._IsPermanent
+
+    @IsPermanent.setter
+    def IsPermanent(self, IsPermanent):
+        self._IsPermanent = IsPermanent
+
+    @property
+    def DeadlineTime(self):
+        """快照组到期时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DeadlineTime
+
+    @DeadlineTime.setter
+    def DeadlineTime(self, DeadlineTime):
+        self._DeadlineTime = DeadlineTime
+
+
+    def _deserialize(self, params):
+        self._SnapshotGroupId = params.get("SnapshotGroupId")
+        self._SnapshotGroupType = params.get("SnapshotGroupType")
+        self._ContainRootSnapshot = params.get("ContainRootSnapshot")
+        self._SnapshotIdSet = params.get("SnapshotIdSet")
+        self._SnapshotGroupState = params.get("SnapshotGroupState")
+        self._Percent = params.get("Percent")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifyTime = params.get("ModifyTime")
+        if params.get("Images") is not None:
+            self._Images = []
+            for item in params.get("Images"):
+                obj = Image()
+                obj._deserialize(item)
+                self._Images.append(obj)
+        self._SnapshotGroupName = params.get("SnapshotGroupName")
+        self._ImageCount = params.get("ImageCount")
+        self._IsPermanent = params.get("IsPermanent")
+        self._DeadlineTime = params.get("DeadlineTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

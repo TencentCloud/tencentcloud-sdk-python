@@ -80,6 +80,32 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ApplySnapshotGroup(self, request):
+        """本接口（ApplySnapshotGroup）用于回滚快照组，将实例恢复到创建快照组时刻的状态。
+        * 1.可选择快照组全部或部分盘进行回滚；
+        * 2.如果回滚的盘中包含已挂载的盘，要求这些盘必须挂载在同一实例上，且要求该实例已关机才能回滚；
+        * 3.回滚为异步操作，接口返回成功不代表回滚成功，可通过调DescribeSnapshotGroups接口查询快照组的状态。
+
+        :param request: Request instance for ApplySnapshotGroup.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.ApplySnapshotGroupRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.ApplySnapshotGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ApplySnapshotGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.ApplySnapshotGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def AttachDisks(self, request):
         """本接口（AttachDisks）用于挂载云硬盘。
 
@@ -261,6 +287,31 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateSnapshotGroup(self, request):
+        """本接口（CreateSnapshotGroup）用于创建快照组。
+        * 创建快照组的云硬盘列表必须挂载在同一实例上；
+        * 可选择挂载在实例上的全部或部分盘创建快照组。
+
+        :param request: Request instance for CreateSnapshotGroup.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.CreateSnapshotGroupRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.CreateSnapshotGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSnapshotGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSnapshotGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteAutoSnapshotPolicies(self, request):
         """本接口（DeleteAutoSnapshotPolicies）用于删除定期快照策略。
 
@@ -300,6 +351,31 @@ class CbsClient(AbstractClient):
             body = self.call("DeleteDiskBackups", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteDiskBackupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteSnapshotGroup(self, request):
+        """本接口（DeleteSnapshotGroup）用于删除快照组，一次调用仅支持删除一个快照组。
+        * 默认会删除快照组内的所有快照；
+        * 如果快照组内的快照有关联镜像，则删除失败，所有快照均不会删除；如果需要同时删除快照绑定的镜像，可传入参数DeleteBindImages等于true。
+
+        :param request: Request instance for DeleteSnapshotGroup.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.DeleteSnapshotGroupRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.DeleteSnapshotGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteSnapshotGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteSnapshotGroupResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -501,6 +577,31 @@ class CbsClient(AbstractClient):
             body = self.call("DescribeInstancesDiskNum", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeInstancesDiskNumResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSnapshotGroups(self, request):
+        """本接口（DescribeSnapshotGroups）用于查询快照组列表。
+        * 可以根据快照组ID、快照组状态、快照组关联的快照ID等来查询快照组列表，不同条件之间为与(AND)的关系，过滤信息详细请见过滤器`Filter`。
+        * 如果参数为空，返回当前用户一定数量（`Limit`所指定的数量，默认为20）的快照组列表。
+
+        :param request: Request instance for DescribeSnapshotGroups.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.DescribeSnapshotGroupsRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.DescribeSnapshotGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSnapshotGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSnapshotGroupsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

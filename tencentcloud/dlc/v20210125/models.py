@@ -9017,18 +9017,14 @@ class DataEngineBasicInfo(AbstractModel):
         :param _UpdateTime: 更新时间
         :type UpdateTime: int
         :param _Message: 返回信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param _DataEngineId: 引擎id
         :type DataEngineId: str
         :param _DataEngineType: 引擎类型，有效值：PrestoSQL/SparkSQL/SparkBatch
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataEngineType: str
         :param _AppId: 用户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: int
         :param _UserUin: 账号ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserUin: str
         """
         self._DataEngineName = None
@@ -9088,7 +9084,6 @@ class DataEngineBasicInfo(AbstractModel):
     @property
     def Message(self):
         """返回信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Message
@@ -9111,7 +9106,6 @@ class DataEngineBasicInfo(AbstractModel):
     @property
     def DataEngineType(self):
         """引擎类型，有效值：PrestoSQL/SparkSQL/SparkBatch
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DataEngineType
@@ -9123,7 +9117,6 @@ class DataEngineBasicInfo(AbstractModel):
     @property
     def AppId(self):
         """用户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AppId
@@ -9135,7 +9128,6 @@ class DataEngineBasicInfo(AbstractModel):
     @property
     def UserUin(self):
         """账号ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UserUin
@@ -9248,10 +9240,8 @@ class DataEngineConfigPair(AbstractModel):
     def __init__(self):
         r"""
         :param _ConfigItem: 配置项
-注意：此字段可能返回 null，表示取不到有效值。
         :type ConfigItem: str
         :param _ConfigValue: 配置值
-注意：此字段可能返回 null，表示取不到有效值。
         :type ConfigValue: str
         """
         self._ConfigItem = None
@@ -9260,7 +9250,6 @@ class DataEngineConfigPair(AbstractModel):
     @property
     def ConfigItem(self):
         """配置项
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ConfigItem
@@ -9272,7 +9261,6 @@ class DataEngineConfigPair(AbstractModel):
     @property
     def ConfigValue(self):
         """配置值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ConfigValue
@@ -10478,13 +10466,10 @@ class DataEngineScaleInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _DataEngineId: 引擎ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataEngineId: str
         :param _DataEngineName: 引擎名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataEngineName: str
         :param _ScaleDetail: 引擎规格详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScaleDetail: list of DataEngineScaleInfoDetail
         """
         self._DataEngineId = None
@@ -10494,7 +10479,6 @@ class DataEngineScaleInfo(AbstractModel):
     @property
     def DataEngineId(self):
         """引擎ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DataEngineId
@@ -10506,7 +10490,6 @@ class DataEngineScaleInfo(AbstractModel):
     @property
     def DataEngineName(self):
         """引擎名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DataEngineName
@@ -10518,7 +10501,6 @@ class DataEngineScaleInfo(AbstractModel):
     @property
     def ScaleDetail(self):
         """引擎规格详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DataEngineScaleInfoDetail
         """
         return self._ScaleDetail
@@ -10555,13 +10537,10 @@ class DataEngineScaleInfoDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _StartTime: 统计开始时间，格式为：yyyy-MM-dd HH:mm:ss
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
         :param _EndTime: 统计结束时间，格式为：yyyy-MM-dd HH:mm:ss
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         :param _CU: 当前统计时间段，引擎规格
-注意：此字段可能返回 null，表示取不到有效值。
         :type CU: int
         """
         self._StartTime = None
@@ -10571,7 +10550,6 @@ class DataEngineScaleInfoDetail(AbstractModel):
     @property
     def StartTime(self):
         """统计开始时间，格式为：yyyy-MM-dd HH:mm:ss
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StartTime
@@ -10583,7 +10561,6 @@ class DataEngineScaleInfoDetail(AbstractModel):
     @property
     def EndTime(self):
         """统计结束时间，格式为：yyyy-MM-dd HH:mm:ss
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndTime
@@ -10595,7 +10572,6 @@ class DataEngineScaleInfoDetail(AbstractModel):
     @property
     def CU(self):
         """当前统计时间段，引擎规格
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CU

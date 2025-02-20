@@ -1909,12 +1909,15 @@ class EmailIdentity(AbstractModel):
         :type CurrentReputationLevel: int
         :param _DailyQuota: 当日最高发信量
         :type DailyQuota: int
+        :param _SendIp: 域名配置的独立ip
+        :type SendIp: list of str
         """
         self._IdentityName = None
         self._IdentityType = None
         self._SendingEnabled = None
         self._CurrentReputationLevel = None
         self._DailyQuota = None
+        self._SendIp = None
 
     @property
     def IdentityName(self):
@@ -1971,6 +1974,17 @@ class EmailIdentity(AbstractModel):
     def DailyQuota(self, DailyQuota):
         self._DailyQuota = DailyQuota
 
+    @property
+    def SendIp(self):
+        """域名配置的独立ip
+        :rtype: list of str
+        """
+        return self._SendIp
+
+    @SendIp.setter
+    def SendIp(self, SendIp):
+        self._SendIp = SendIp
+
 
     def _deserialize(self, params):
         self._IdentityName = params.get("IdentityName")
@@ -1978,6 +1992,7 @@ class EmailIdentity(AbstractModel):
         self._SendingEnabled = params.get("SendingEnabled")
         self._CurrentReputationLevel = params.get("CurrentReputationLevel")
         self._DailyQuota = params.get("DailyQuota")
+        self._SendIp = params.get("SendIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -14,11 +14,6 @@
 # limitations under the License.
 
 
-def test_import_aa():
-    from tencentcloud.aa.v20200224 import aa_client
-    from tencentcloud.aa.v20200224 import models
-
-
 def test_import_aai():
     from tencentcloud.aai.v20180522 import aai_client
     from tencentcloud.aai.v20180522 import models

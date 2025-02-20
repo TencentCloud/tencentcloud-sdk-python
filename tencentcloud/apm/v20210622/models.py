@@ -680,7 +680,8 @@ class ApmInstanceDetail(AbstractModel):
         :type Name: str
         :param _Description: 业务系统描述信息
         :type Description: str
-        :param _Status: 业务系统状态
+        :param _Status: 业务系统状态。{
+1: 初始化中; 2: 运行中; 4: 限流}
         :type Status: int
         :param _Region: 业务系统所属地域
         :type Region: str
@@ -746,6 +747,13 @@ class ApmInstanceDetail(AbstractModel):
         :type IsInstrumentationVulnerabilityScan: int
         :param _IsSqlInjectionAnalysis: 是否开启 SQL 注入分析（0=关， 1=开）
         :type IsSqlInjectionAnalysis: int
+        :param _StopReason: 限流原因。{
+1: 正式版限额;
+2: 试用版限额;
+4: 试用版到期;
+8: 账号欠费
+}
+        :type StopReason: int
         """
         self._InstanceId = None
         self._Name = None
@@ -783,6 +791,7 @@ class ApmInstanceDetail(AbstractModel):
         self._DashboardTopicID = None
         self._IsInstrumentationVulnerabilityScan = None
         self._IsSqlInjectionAnalysis = None
+        self._StopReason = None
 
     @property
     def InstanceId(self):
@@ -819,7 +828,8 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def Status(self):
-        """业务系统状态
+        """业务系统状态。{
+1: 初始化中; 2: 运行中; 4: 限流}
         :rtype: int
         """
         return self._Status
@@ -1180,6 +1190,22 @@ class ApmInstanceDetail(AbstractModel):
     def IsSqlInjectionAnalysis(self, IsSqlInjectionAnalysis):
         self._IsSqlInjectionAnalysis = IsSqlInjectionAnalysis
 
+    @property
+    def StopReason(self):
+        """限流原因。{
+1: 正式版限额;
+2: 试用版限额;
+4: 试用版到期;
+8: 账号欠费
+}
+        :rtype: int
+        """
+        return self._StopReason
+
+    @StopReason.setter
+    def StopReason(self, StopReason):
+        self._StopReason = StopReason
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -1223,6 +1249,7 @@ class ApmInstanceDetail(AbstractModel):
         self._DashboardTopicID = params.get("DashboardTopicID")
         self._IsInstrumentationVulnerabilityScan = params.get("IsInstrumentationVulnerabilityScan")
         self._IsSqlInjectionAnalysis = params.get("IsSqlInjectionAnalysis")
+        self._StopReason = params.get("StopReason")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

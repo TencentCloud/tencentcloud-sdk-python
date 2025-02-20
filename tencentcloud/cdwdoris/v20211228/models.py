@@ -4376,16 +4376,19 @@ class DescribeClusterConfigsRequest(AbstractModel):
         :type ConfigType: int
         :param _FileName: 模糊搜索关键字文件
         :type FileName: str
-        :param _ClusterConfigType: 0集群维度 1节点维度
+        :param _ClusterConfigType: 0集群维度 1节点维度 2启动脚本 3计算组维度
         :type ClusterConfigType: int
         :param _IPAddress: eth0的ip地址
         :type IPAddress: str
+        :param _ComputeGroupId: 计算组id
+        :type ComputeGroupId: str
         """
         self._InstanceId = None
         self._ConfigType = None
         self._FileName = None
         self._ClusterConfigType = None
         self._IPAddress = None
+        self._ComputeGroupId = None
 
     @property
     def InstanceId(self):
@@ -4422,7 +4425,7 @@ class DescribeClusterConfigsRequest(AbstractModel):
 
     @property
     def ClusterConfigType(self):
-        """0集群维度 1节点维度
+        """0集群维度 1节点维度 2启动脚本 3计算组维度
         :rtype: int
         """
         return self._ClusterConfigType
@@ -4442,6 +4445,17 @@ class DescribeClusterConfigsRequest(AbstractModel):
     def IPAddress(self, IPAddress):
         self._IPAddress = IPAddress
 
+    @property
+    def ComputeGroupId(self):
+        """计算组id
+        :rtype: str
+        """
+        return self._ComputeGroupId
+
+    @ComputeGroupId.setter
+    def ComputeGroupId(self, ComputeGroupId):
+        self._ComputeGroupId = ComputeGroupId
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -4449,6 +4463,7 @@ class DescribeClusterConfigsRequest(AbstractModel):
         self._FileName = params.get("FileName")
         self._ClusterConfigType = params.get("ClusterConfigType")
         self._IPAddress = params.get("IPAddress")
+        self._ComputeGroupId = params.get("ComputeGroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

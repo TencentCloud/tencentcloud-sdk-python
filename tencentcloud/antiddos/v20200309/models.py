@@ -9373,7 +9373,7 @@ class DescribeCCLevelPolicyRequest(AbstractModel):
         :type Ip: str
         :param _Domain: 域名
         :type Domain: str
-        :param _Protocol: 协议，可取值HTTP，HTTPS
+        :param _Protocol: 协议，可取值http、https、http/https
         :type Protocol: str
         """
         self._InstanceId = None
@@ -9416,7 +9416,7 @@ class DescribeCCLevelPolicyRequest(AbstractModel):
 
     @property
     def Protocol(self):
-        """协议，可取值HTTP，HTTPS
+        """协议，可取值http、https、http/https
         :rtype: str
         """
         return self._Protocol
@@ -11906,8 +11906,7 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         :type FilterAssetIpList: list of str
         :param _FilterBasicPlusFlag: 是否包含基础防护增强版 0: 不包含 1: 包含
         :type FilterBasicPlusFlag: int
-        :param _FilterPlanCntFlag: 是否商业模式优化-普惠版 0: 包含商业模式优化-普惠版 1: 只查询商业模式优化-普惠版 
-
+        :param _FilterPlanCntFlag: 是否标准版2.0 0: 包含标准版2.0 0 1: 只查询标准版2.0 0 2: 不查标准版2.0
         :type FilterPlanCntFlag: int
         :param _FilterTransRegionFlag: 是否跨区域产品 0: 不包含跨区域产品 1: 中国大陆跨区域产品 2: 非中国大陆跨区域产品 3: 包含全部
         :type FilterTransRegionFlag: int
@@ -12148,8 +12147,7 @@ class DescribeListBGPInstancesRequest(AbstractModel):
 
     @property
     def FilterPlanCntFlag(self):
-        """是否商业模式优化-普惠版 0: 包含商业模式优化-普惠版 1: 只查询商业模式优化-普惠版 
-
+        """是否标准版2.0 0: 包含标准版2.0 0 1: 只查询标准版2.0 0 2: 不查标准版2.0
         :rtype: int
         """
         return self._FilterPlanCntFlag
@@ -17704,7 +17702,7 @@ class ModifyCCLevelPolicyRequest(AbstractModel):
         :type Ip: str
         :param _Domain: 域名
         :type Domain: str
-        :param _Protocol: 协议，可取值HTTP，HTTPS
+        :param _Protocol: 协议，可取值http、https、http/https
         :type Protocol: str
         :param _Level: CC防护等级，可取值loose表示宽松，strict表示严格，normal表示适中， emergency表示攻击紧急， sup_loose表示超级宽松，default表示默认策略（无频控配置下发），customized表示自定义策略
         :type Level: str
@@ -17750,7 +17748,7 @@ class ModifyCCLevelPolicyRequest(AbstractModel):
 
     @property
     def Protocol(self):
-        """协议，可取值HTTP，HTTPS
+        """协议，可取值http、https、http/https
         :rtype: str
         """
         return self._Protocol
@@ -19386,8 +19384,12 @@ class NewL7RuleEntry(AbstractModel):
         :type CCStatus: int
         :param _CCEnable: HTTPS协议的CC防护状态，取值[0(关闭), 1(开启)]
         :type CCEnable: int
-        :param _CCThreshold: HTTPS协议的CC防护阈值
+        :param _CCThreshold: HTTPS协议的CC防护阈值（已废弃）
         :type CCThreshold: int
+        :param _CCThresholdNew: HTTPS协议的CC防护阈值 -1：默认防御阈值
+0: 关闭
+大于0：自定义防护阈值
+        :type CCThresholdNew: int
         :param _CCLevel: HTTPS协议的CC防护等级
         :type CCLevel: str
         :param _ModifyTime: 修改时间
@@ -19425,6 +19427,7 @@ class NewL7RuleEntry(AbstractModel):
         self._CCStatus = None
         self._CCEnable = None
         self._CCThreshold = None
+        self._CCThresholdNew = None
         self._CCLevel = None
         self._ModifyTime = None
         self._HttpsToHttpEnable = None
@@ -19644,7 +19647,7 @@ class NewL7RuleEntry(AbstractModel):
 
     @property
     def CCThreshold(self):
-        """HTTPS协议的CC防护阈值
+        """HTTPS协议的CC防护阈值（已废弃）
         :rtype: int
         """
         return self._CCThreshold
@@ -19652,6 +19655,19 @@ class NewL7RuleEntry(AbstractModel):
     @CCThreshold.setter
     def CCThreshold(self, CCThreshold):
         self._CCThreshold = CCThreshold
+
+    @property
+    def CCThresholdNew(self):
+        """HTTPS协议的CC防护阈值 -1：默认防御阈值
+0: 关闭
+大于0：自定义防护阈值
+        :rtype: int
+        """
+        return self._CCThresholdNew
+
+    @CCThresholdNew.setter
+    def CCThresholdNew(self, CCThresholdNew):
+        self._CCThresholdNew = CCThresholdNew
 
     @property
     def CCLevel(self):
@@ -19759,6 +19775,7 @@ class NewL7RuleEntry(AbstractModel):
         self._CCStatus = params.get("CCStatus")
         self._CCEnable = params.get("CCEnable")
         self._CCThreshold = params.get("CCThreshold")
+        self._CCThresholdNew = params.get("CCThresholdNew")
         self._CCLevel = params.get("CCLevel")
         self._ModifyTime = params.get("ModifyTime")
         self._HttpsToHttpEnable = params.get("HttpsToHttpEnable")

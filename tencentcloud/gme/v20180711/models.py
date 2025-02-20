@@ -2833,7 +2833,6 @@ class DescribeRecordInfoResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _RecordInfo: 录制信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecordInfo: list of RecordInfo
         :param _RecordMode: 录制类型：1代表单流 2代表混流 3代表单流和混流。
         :type RecordMode: int
@@ -2850,7 +2849,6 @@ class DescribeRecordInfoResponse(AbstractModel):
     @property
     def RecordInfo(self):
         """录制信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RecordInfo
         """
         return self._RecordInfo
@@ -2979,10 +2977,8 @@ class DescribeRoomInfoResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 操作结果, 0成功, 非0失败
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: int
         :param _RoomUsers: 房间用户信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type RoomUsers: list of RoomUser
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2994,7 +2990,6 @@ class DescribeRoomInfoResponse(AbstractModel):
     @property
     def Result(self):
         """操作结果, 0成功, 非0失败
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Result
@@ -3006,7 +3001,6 @@ class DescribeRoomInfoResponse(AbstractModel):
     @property
     def RoomUsers(self):
         """房间用户信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RoomUser
         """
         return self._RoomUsers
@@ -3339,7 +3333,6 @@ class DescribeScanResultListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 要查询的语音检测任务的结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of DescribeScanResult
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3350,7 +3343,6 @@ class DescribeScanResultListResponse(AbstractModel):
     @property
     def Data(self):
         """要查询的语音检测任务的结果
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DescribeScanResult
         """
         return self._Data
@@ -3440,13 +3432,10 @@ class DescribeTaskInfoResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TaskId: 进行中的任务taskid（StartRecord接口返回）。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: int
         :param _RecordMode: 录制类型：1代表单流 2代表混流 3代表单流和混流。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecordMode: int
         :param _SubscribeRecordUserIds: 指定订阅流白名单或者黑名单。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubscribeRecordUserIds: :class:`tencentcloud.gme.v20180711.models.SubscribeRecordUserIds`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3459,7 +3448,6 @@ class DescribeTaskInfoResponse(AbstractModel):
     @property
     def TaskId(self):
         """进行中的任务taskid（StartRecord接口返回）。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TaskId
@@ -3471,7 +3459,6 @@ class DescribeTaskInfoResponse(AbstractModel):
     @property
     def RecordMode(self):
         """录制类型：1代表单流 2代表混流 3代表单流和混流。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RecordMode
@@ -3483,7 +3470,6 @@ class DescribeTaskInfoResponse(AbstractModel):
     @property
     def SubscribeRecordUserIds(self):
         """指定订阅流白名单或者黑名单。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.gme.v20180711.models.SubscribeRecordUserIds`
         """
         return self._SubscribeRecordUserIds
@@ -3767,7 +3753,6 @@ class GetCustomizationListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _CustomizationConfigs: 语音消息转文本热句模型配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type CustomizationConfigs: list of CustomizationConfigs
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3778,7 +3763,6 @@ class GetCustomizationListResponse(AbstractModel):
     @property
     def CustomizationConfigs(self):
         """语音消息转文本热句模型配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CustomizationConfigs
         """
         return self._CustomizationConfigs
@@ -6170,7 +6154,6 @@ class UpdateScanRoomsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ErrorCode: 返回结果码
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorCode: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6181,7 +6164,6 @@ class UpdateScanRoomsResponse(AbstractModel):
     @property
     def ErrorCode(self):
         """返回结果码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ErrorCode

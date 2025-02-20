@@ -269,10 +269,8 @@ class Chain(AbstractModel):
     def __init__(self):
         r"""
         :param _Code: 码url
-注意：此字段可能返回 null，表示取不到有效值。
         :type Code: str
         :param _Data: 上链数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of ChainValue
         """
         self._Code = None
@@ -281,7 +279,6 @@ class Chain(AbstractModel):
     @property
     def Code(self):
         """码url
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Code
@@ -293,7 +290,6 @@ class Chain(AbstractModel):
     @property
     def Data(self):
         """上链数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ChainValue
         """
         return self._Data
@@ -329,13 +325,10 @@ class ChainData(AbstractModel):
     def __init__(self):
         r"""
         :param _BlockHash: 区块hash
-注意：此字段可能返回 null，表示取不到有效值。
         :type BlockHash: str
         :param _BlockHeight: 区块高度
-注意：此字段可能返回 null，表示取不到有效值。
         :type BlockHeight: str
         :param _BlockTime: 区块时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type BlockTime: str
         """
         self._BlockHash = None
@@ -345,7 +338,6 @@ class ChainData(AbstractModel):
     @property
     def BlockHash(self):
         """区块hash
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BlockHash
@@ -357,7 +349,6 @@ class ChainData(AbstractModel):
     @property
     def BlockHeight(self):
         """区块高度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BlockHeight
@@ -369,7 +360,6 @@ class ChainData(AbstractModel):
     @property
     def BlockTime(self):
         """区块时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BlockTime
@@ -401,13 +391,10 @@ class ChainValue(AbstractModel):
     def __init__(self):
         r"""
         :param _Label: 标题名字
-注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
         :param _Type: 类型，文字："text"，图片："image"
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Value: 值，文字类型："abc"，图片类型：""/images/img.png"
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Label = None
@@ -417,7 +404,6 @@ class ChainValue(AbstractModel):
     @property
     def Label(self):
         """标题名字
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Label
@@ -429,7 +415,6 @@ class ChainValue(AbstractModel):
     @property
     def Type(self):
         """类型，文字："text"，图片："image"
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -441,7 +426,6 @@ class ChainValue(AbstractModel):
     @property
     def Value(self):
         """值，文字类型："abc"，图片类型：""/images/img.png"
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -473,52 +457,37 @@ class CodeBatch(AbstractModel):
     def __init__(self):
         r"""
         :param _BatchId: 批次号
-注意：此字段可能返回 null，表示取不到有效值。
         :type BatchId: str
         :param _CorpId: 企业ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type CorpId: int
         :param _BatchCode: 批次编码(未使用)
-注意：此字段可能返回 null，表示取不到有效值。
         :type BatchCode: str
         :param _CodeCnt: 码数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type CodeCnt: int
         :param _MerchantId: 所属商户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type MerchantId: str
         :param _ProductId: 产品ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductId: str
         :param _BatchType: 批次类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type BatchType: int
         :param _Remark: 备注
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _MpTpl: 微信模板
-注意：此字段可能返回 null，表示取不到有效值。
         :type MpTpl: str
         :param _Status: 批次状态 0: 未激活 1: 已激活 -1: 已冻结
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _UpdateTime: 修改时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param _MerchantName: 所属商户名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type MerchantName: str
         :param _ProductName: 产品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductName: str
         :param _Ext: 未使用
 注意：此字段可能返回 null，表示取不到有效值。
         :type Ext: :class:`tencentcloud.trp.v20210515.models.Ext`
         :param _TplName: 模板名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TplName: str
         :param _Job: 调度任务
 注意：此字段可能返回 null，表示取不到有效值。
@@ -556,7 +525,6 @@ class CodeBatch(AbstractModel):
     @property
     def BatchId(self):
         """批次号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BatchId
@@ -568,7 +536,6 @@ class CodeBatch(AbstractModel):
     @property
     def CorpId(self):
         """企业ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CorpId
@@ -580,7 +547,6 @@ class CodeBatch(AbstractModel):
     @property
     def BatchCode(self):
         """批次编码(未使用)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BatchCode
@@ -592,7 +558,6 @@ class CodeBatch(AbstractModel):
     @property
     def CodeCnt(self):
         """码数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CodeCnt
@@ -604,7 +569,6 @@ class CodeBatch(AbstractModel):
     @property
     def MerchantId(self):
         """所属商户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MerchantId
@@ -616,7 +580,6 @@ class CodeBatch(AbstractModel):
     @property
     def ProductId(self):
         """产品ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductId
@@ -628,7 +591,6 @@ class CodeBatch(AbstractModel):
     @property
     def BatchType(self):
         """批次类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._BatchType
@@ -640,7 +602,6 @@ class CodeBatch(AbstractModel):
     @property
     def Remark(self):
         """备注
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -652,7 +613,6 @@ class CodeBatch(AbstractModel):
     @property
     def MpTpl(self):
         """微信模板
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MpTpl
@@ -664,7 +624,6 @@ class CodeBatch(AbstractModel):
     @property
     def Status(self):
         """批次状态 0: 未激活 1: 已激活 -1: 已冻结
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -676,7 +635,6 @@ class CodeBatch(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -688,7 +646,6 @@ class CodeBatch(AbstractModel):
     @property
     def UpdateTime(self):
         """修改时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime
@@ -700,7 +657,6 @@ class CodeBatch(AbstractModel):
     @property
     def MerchantName(self):
         """所属商户名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MerchantName
@@ -712,7 +668,6 @@ class CodeBatch(AbstractModel):
     @property
     def ProductName(self):
         """产品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductName
@@ -740,7 +695,6 @@ class CodeBatch(AbstractModel):
     @property
     def TplName(self):
         """模板名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TplName
@@ -881,91 +835,63 @@ class CodePack(AbstractModel):
     def __init__(self):
         r"""
         :param _PackId: 码id
-注意：此字段可能返回 null，表示取不到有效值。
         :type PackId: str
         :param _CorpId: 企业id
-注意：此字段可能返回 null，表示取不到有效值。
         :type CorpId: int
         :param _MerchantId: 商户id
-注意：此字段可能返回 null，表示取不到有效值。
         :type MerchantId: str
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _UpdateTime: 更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param _Status: 制码状态 init: 初始化, pending: 执行中, done: 完成, error: 失败
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _Log: 执行日志
-注意：此字段可能返回 null，表示取不到有效值。
         :type Log: str
         :param _CreateUser: 创建人
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateUser: str
         :param _Amount: 码数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Amount: int
         :param _CodeLength: 防伪码长度
-注意：此字段可能返回 null，表示取不到有效值。
         :type CodeLength: int
         :param _CodeType: 码类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type CodeType: str
         :param _Cipher: 是否暗码
-注意：此字段可能返回 null，表示取不到有效值。
         :type Cipher: int
         :param _TextUrl: [弃用] 文字码地址，通过另一个接口查
-注意：此字段可能返回 null，表示取不到有效值。
         :type TextUrl: str
         :param _PackUrl: [弃用] 二维码地址，通过另一个接口查
-注意：此字段可能返回 null，表示取不到有效值。
         :type PackUrl: str
         :param _MerchantName: 商户名
-注意：此字段可能返回 null，表示取不到有效值。
         :type MerchantName: str
         :param _RuleType: 码规则类型 0: 默认, 1: 自定义
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleType: int
         :param _CustomId: 自定义码规则ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type CustomId: str
         :param _PackType: 码包类型 0: 普通码包 1: 层级码包
-注意：此字段可能返回 null，表示取不到有效值。
         :type PackType: int
         :param _PackLevel: 生码层级
-注意：此字段可能返回 null，表示取不到有效值。
         :type PackLevel: int
         :param _PackSpec: 层级码配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type PackSpec: list of PackSpec
         :param _ProductName: 商品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductName: str
         :param _ProductSpecification: 商品规格
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductSpecification: str
         :param _ProductId: 商品ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductId: str
         :param _RelateType: 码关系是否预关联
 0:否, 1:是
         :type RelateType: int
         :param _SceneCode: 场景码
-注意：此字段可能返回 null，表示取不到有效值。
         :type SceneCode: int
         :param _CodeRule: 码规则
-注意：此字段可能返回 null，表示取不到有效值。
         :type CodeRule: str
         :param _UsedAmount: 已使用码数
-注意：此字段可能返回 null，表示取不到有效值。
         :type UsedAmount: int
         :param _SerialStart: 开始流水号
-注意：此字段可能返回 null，表示取不到有效值。
         :type SerialStart: int
         :param _SerialEnd: 结束流水号
-注意：此字段可能返回 null，表示取不到有效值。
         :type SerialEnd: int
         """
         self._PackId = None
@@ -1001,7 +927,6 @@ class CodePack(AbstractModel):
     @property
     def PackId(self):
         """码id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PackId
@@ -1013,7 +938,6 @@ class CodePack(AbstractModel):
     @property
     def CorpId(self):
         """企业id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CorpId
@@ -1025,7 +949,6 @@ class CodePack(AbstractModel):
     @property
     def MerchantId(self):
         """商户id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MerchantId
@@ -1037,7 +960,6 @@ class CodePack(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -1049,7 +971,6 @@ class CodePack(AbstractModel):
     @property
     def UpdateTime(self):
         """更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime
@@ -1061,7 +982,6 @@ class CodePack(AbstractModel):
     @property
     def Status(self):
         """制码状态 init: 初始化, pending: 执行中, done: 完成, error: 失败
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -1073,7 +993,6 @@ class CodePack(AbstractModel):
     @property
     def Log(self):
         """执行日志
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Log
@@ -1085,7 +1004,6 @@ class CodePack(AbstractModel):
     @property
     def CreateUser(self):
         """创建人
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateUser
@@ -1097,7 +1015,6 @@ class CodePack(AbstractModel):
     @property
     def Amount(self):
         """码数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Amount
@@ -1109,7 +1026,6 @@ class CodePack(AbstractModel):
     @property
     def CodeLength(self):
         """防伪码长度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CodeLength
@@ -1121,7 +1037,6 @@ class CodePack(AbstractModel):
     @property
     def CodeType(self):
         """码类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CodeType
@@ -1133,7 +1048,6 @@ class CodePack(AbstractModel):
     @property
     def Cipher(self):
         """是否暗码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Cipher
@@ -1145,7 +1059,6 @@ class CodePack(AbstractModel):
     @property
     def TextUrl(self):
         """[弃用] 文字码地址，通过另一个接口查
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TextUrl
@@ -1157,7 +1070,6 @@ class CodePack(AbstractModel):
     @property
     def PackUrl(self):
         """[弃用] 二维码地址，通过另一个接口查
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PackUrl
@@ -1169,7 +1081,6 @@ class CodePack(AbstractModel):
     @property
     def MerchantName(self):
         """商户名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MerchantName
@@ -1181,7 +1092,6 @@ class CodePack(AbstractModel):
     @property
     def RuleType(self):
         """码规则类型 0: 默认, 1: 自定义
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RuleType
@@ -1193,7 +1103,6 @@ class CodePack(AbstractModel):
     @property
     def CustomId(self):
         """自定义码规则ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CustomId
@@ -1205,7 +1114,6 @@ class CodePack(AbstractModel):
     @property
     def PackType(self):
         """码包类型 0: 普通码包 1: 层级码包
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PackType
@@ -1217,7 +1125,6 @@ class CodePack(AbstractModel):
     @property
     def PackLevel(self):
         """生码层级
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PackLevel
@@ -1229,7 +1136,6 @@ class CodePack(AbstractModel):
     @property
     def PackSpec(self):
         """层级码配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PackSpec
         """
         return self._PackSpec
@@ -1241,7 +1147,6 @@ class CodePack(AbstractModel):
     @property
     def ProductName(self):
         """商品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductName
@@ -1253,7 +1158,6 @@ class CodePack(AbstractModel):
     @property
     def ProductSpecification(self):
         """商品规格
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductSpecification
@@ -1265,7 +1169,6 @@ class CodePack(AbstractModel):
     @property
     def ProductId(self):
         """商品ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductId
@@ -1289,7 +1192,6 @@ class CodePack(AbstractModel):
     @property
     def SceneCode(self):
         """场景码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SceneCode
@@ -1301,7 +1203,6 @@ class CodePack(AbstractModel):
     @property
     def CodeRule(self):
         """码规则
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CodeRule
@@ -1313,7 +1214,6 @@ class CodePack(AbstractModel):
     @property
     def UsedAmount(self):
         """已使用码数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._UsedAmount
@@ -1325,7 +1225,6 @@ class CodePack(AbstractModel):
     @property
     def SerialStart(self):
         """开始流水号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SerialStart
@@ -1337,7 +1236,6 @@ class CodePack(AbstractModel):
     @property
     def SerialEnd(self):
         """结束流水号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SerialEnd
@@ -1400,18 +1298,14 @@ class CodePart(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 码段名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Type: 码段类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Value: 码段内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         :param _Length: 码段长度
         :type Length: int
         :param _Ext: 扩展字段
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ext: str
         """
         self._Name = None
@@ -1423,7 +1317,6 @@ class CodePart(AbstractModel):
     @property
     def Name(self):
         """码段名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -1435,7 +1328,6 @@ class CodePart(AbstractModel):
     @property
     def Type(self):
         """码段类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -1447,7 +1339,6 @@ class CodePart(AbstractModel):
     @property
     def Value(self):
         """码段内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -1470,7 +1361,6 @@ class CodePart(AbstractModel):
     @property
     def Ext(self):
         """扩展字段
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Ext
@@ -2322,7 +2212,6 @@ class CreateCorporationOrderResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _CorpId: 企业ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type CorpId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2333,7 +2222,6 @@ class CreateCorporationOrderResponse(AbstractModel):
     @property
     def CorpId(self):
         """企业ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CorpId
@@ -2741,7 +2629,6 @@ class CreateCustomRuleResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _CustomId: 码规则ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type CustomId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2752,7 +2639,6 @@ class CreateCustomRuleResponse(AbstractModel):
     @property
     def CustomId(self):
         """码规则ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CustomId
@@ -2882,7 +2768,6 @@ class CreateMerchantResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _MerchantId: 商户标识码
-注意：此字段可能返回 null，表示取不到有效值。
         :type MerchantId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2893,7 +2778,6 @@ class CreateMerchantResponse(AbstractModel):
     @property
     def MerchantId(self):
         """商户标识码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MerchantId
@@ -3070,7 +2954,6 @@ class CreateProductResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ProductId: 商品ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3081,7 +2964,6 @@ class CreateProductResponse(AbstractModel):
     @property
     def ProductId(self):
         """商品ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductId
@@ -3275,7 +3157,6 @@ class CreateTraceCodesAsyncResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _BatchId: 批次ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type BatchId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3286,7 +3167,6 @@ class CreateTraceCodesAsyncResponse(AbstractModel):
     @property
     def BatchId(self):
         """批次ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BatchId
@@ -3740,13 +3620,10 @@ class CustomRule(AbstractModel):
         :param _CustomId: 码规则ID
         :type CustomId: str
         :param _Name: 码规则名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _CorpId: 企业ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type CorpId: int
         :param _MerchantId: 商户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type MerchantId: str
         :param _CodeLength: 码ID长度
         :type CodeLength: int
@@ -3783,7 +3660,6 @@ class CustomRule(AbstractModel):
     @property
     def Name(self):
         """码规则名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -3795,7 +3671,6 @@ class CustomRule(AbstractModel):
     @property
     def CorpId(self):
         """企业ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CorpId
@@ -3807,7 +3682,6 @@ class CustomRule(AbstractModel):
     @property
     def MerchantId(self):
         """商户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MerchantId
@@ -4050,7 +3924,6 @@ class DeleteMerchantResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _MerchantId: 商户标识码
-注意：此字段可能返回 null，表示取不到有效值。
         :type MerchantId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4061,7 +3934,6 @@ class DeleteMerchantResponse(AbstractModel):
     @property
     def MerchantId(self):
         """商户标识码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MerchantId
@@ -4146,7 +4018,6 @@ class DeleteProductResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ProductId: 商品ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4157,7 +4028,6 @@ class DeleteProductResponse(AbstractModel):
     @property
     def ProductId(self):
         """商品ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductId
@@ -4242,7 +4112,6 @@ class DeleteTraceDataResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TraceId: 溯源id
-注意：此字段可能返回 null，表示取不到有效值。
         :type TraceId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4253,7 +4122,6 @@ class DeleteTraceDataResponse(AbstractModel):
     @property
     def TraceId(self):
         """溯源id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TraceId
@@ -4837,10 +4705,8 @@ class DescribeCodeBatchsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _CodeBatchs: 批次列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type CodeBatchs: list of CodeBatch
         :param _TotalCount: 总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4852,7 +4718,6 @@ class DescribeCodeBatchsResponse(AbstractModel):
     @property
     def CodeBatchs(self):
         """批次列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CodeBatch
         """
         return self._CodeBatchs
@@ -4864,7 +4729,6 @@ class DescribeCodeBatchsResponse(AbstractModel):
     @property
     def TotalCount(self):
         """总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -4955,7 +4819,6 @@ class DescribeCodePackStatusResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Status: 码包状态 init: 初始化, pending: 执行中, done: 完成, error: 失败
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4966,7 +4829,6 @@ class DescribeCodePackStatusResponse(AbstractModel):
     @property
     def Status(self):
         """码包状态 init: 初始化, pending: 执行中, done: 完成, error: 失败
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -5051,13 +4913,10 @@ class DescribeCodePackUrlResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Url: 文字码包地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
         :param _ImgUrl: 图片码包地址，可能为空
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImgUrl: str
         :param _FileKey: 文字码包Key，用于上传导入
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileKey: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5070,7 +4929,6 @@ class DescribeCodePackUrlResponse(AbstractModel):
     @property
     def Url(self):
         """文字码包地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Url
@@ -5082,7 +4940,6 @@ class DescribeCodePackUrlResponse(AbstractModel):
     @property
     def ImgUrl(self):
         """图片码包地址，可能为空
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ImgUrl
@@ -5094,7 +4951,6 @@ class DescribeCodePackUrlResponse(AbstractModel):
     @property
     def FileKey(self):
         """文字码包Key，用于上传导入
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FileKey
@@ -5404,7 +5260,6 @@ class DescribeCodesByPackResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Codes: 码列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Codes: list of CodeItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5415,7 +5270,6 @@ class DescribeCodesByPackResponse(AbstractModel):
     @property
     def Codes(self):
         """码列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CodeItem
         """
         return self._Codes
@@ -5535,10 +5389,8 @@ class DescribeCorpQuotasResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _CorpQuotas: 子企业额度使用情况
-注意：此字段可能返回 null，表示取不到有效值。
         :type CorpQuotas: list of CorpQuota
         :param _Total: 记录总数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5550,7 +5402,6 @@ class DescribeCorpQuotasResponse(AbstractModel):
     @property
     def CorpQuotas(self):
         """子企业额度使用情况
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CorpQuota
         """
         return self._CorpQuotas
@@ -5562,7 +5413,6 @@ class DescribeCorpQuotasResponse(AbstractModel):
     @property
     def Total(self):
         """记录总数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -5653,7 +5503,6 @@ class DescribeCustomRuleByIdResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _CustomRule: 码规则信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type CustomRule: :class:`tencentcloud.trp.v20210515.models.CustomRule`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5664,7 +5513,6 @@ class DescribeCustomRuleByIdResponse(AbstractModel):
     @property
     def CustomRule(self):
         """码规则信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.trp.v20210515.models.CustomRule`
         """
         return self._CustomRule
@@ -5811,10 +5659,8 @@ class DescribeCustomRulesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _CustomRules: 码规则列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type CustomRules: list of CustomRule
         :param _TotalCount: 总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5826,7 +5672,6 @@ class DescribeCustomRulesResponse(AbstractModel):
     @property
     def CustomRules(self):
         """码规则列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CustomRule
         """
         return self._CustomRules
@@ -5838,7 +5683,6 @@ class DescribeCustomRulesResponse(AbstractModel):
     @property
     def TotalCount(self):
         """总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -5929,7 +5773,6 @@ class DescribeJobFileUrlResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Url: 码包地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5940,7 +5783,6 @@ class DescribeJobFileUrlResponse(AbstractModel):
     @property
     def Url(self):
         """码包地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Url
@@ -6025,7 +5867,6 @@ class DescribeMerchantByIdResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Merchant: 商户信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Merchant: :class:`tencentcloud.trp.v20210515.models.Merchant`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6036,7 +5877,6 @@ class DescribeMerchantByIdResponse(AbstractModel):
     @property
     def Merchant(self):
         """商户信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.trp.v20210515.models.Merchant`
         """
         return self._Merchant
@@ -6168,10 +6008,8 @@ class DescribeMerchantsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Merchants: 商户列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Merchants: list of Merchant
         :param _TotalCount: 总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6183,7 +6021,6 @@ class DescribeMerchantsResponse(AbstractModel):
     @property
     def Merchants(self):
         """商户列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Merchant
         """
         return self._Merchants
@@ -6195,7 +6032,6 @@ class DescribeMerchantsResponse(AbstractModel):
     @property
     def TotalCount(self):
         """总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -6619,7 +6455,6 @@ class DescribeProductByIdResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Product: 商品信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Product: :class:`tencentcloud.trp.v20210515.models.Product`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6630,7 +6465,6 @@ class DescribeProductByIdResponse(AbstractModel):
     @property
     def Product(self):
         """商品信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.trp.v20210515.models.Product`
         """
         return self._Product
@@ -6777,10 +6611,8 @@ class DescribeProductsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Products: 商品列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Products: list of Product
         :param _TotalCount: 总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6792,7 +6624,6 @@ class DescribeProductsResponse(AbstractModel):
     @property
     def Products(self):
         """商品列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Product
         """
         return self._Products
@@ -6804,7 +6635,6 @@ class DescribeProductsResponse(AbstractModel):
     @property
     def TotalCount(self):
         """总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -7400,7 +7230,6 @@ class DescribeTmpTokenResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Token: 临时token
-注意：此字段可能返回 null，表示取不到有效值。
         :type Token: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7411,7 +7240,6 @@ class DescribeTmpTokenResponse(AbstractModel):
     @property
     def Token(self):
         """临时token
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Token
@@ -7652,10 +7480,8 @@ class DescribeTraceCodesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TraceCodes: 标识列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type TraceCodes: list of TraceCode
         :param _TotalCount: 条数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7667,7 +7493,6 @@ class DescribeTraceCodesResponse(AbstractModel):
     @property
     def TraceCodes(self):
         """标识列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TraceCode
         """
         return self._TraceCodes
@@ -7679,7 +7504,6 @@ class DescribeTraceCodesResponse(AbstractModel):
     @property
     def TotalCount(self):
         """条数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -8305,7 +8129,6 @@ class Merchant(AbstractModel):
         :param _Name: 商户名称
         :type Name: str
         :param _Remark: 备注
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _CreateTime: 创建时间
         :type CreateTime: str
@@ -8316,7 +8139,6 @@ class Merchant(AbstractModel):
         :param _CodeType: 码来源类型 0: 安心平台 1: 第三方码
         :type CodeType: int
         :param _CodeUrl: 第三方码域名前缀
-注意：此字段可能返回 null，表示取不到有效值。
         :type CodeUrl: str
         """
         self._MerchantId = None
@@ -8365,7 +8187,6 @@ class Merchant(AbstractModel):
     @property
     def Remark(self):
         """备注
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -8421,7 +8242,6 @@ class Merchant(AbstractModel):
     @property
     def CodeUrl(self):
         """第三方码域名前缀
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CodeUrl
@@ -8774,7 +8594,6 @@ class ModifyCustomRuleResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _CustomId: 码规则ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type CustomId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8785,7 +8604,6 @@ class ModifyCustomRuleResponse(AbstractModel):
     @property
     def CustomId(self):
         """码规则ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CustomId
@@ -8885,7 +8703,6 @@ class ModifyCustomRuleStatusResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _CustomId: 码规则ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type CustomId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8896,7 +8713,6 @@ class ModifyCustomRuleStatusResponse(AbstractModel):
     @property
     def CustomId(self):
         """码规则ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CustomId
@@ -9041,7 +8857,6 @@ class ModifyMerchantResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _MerchantId: 商户标识码
-注意：此字段可能返回 null，表示取不到有效值。
         :type MerchantId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9052,7 +8867,6 @@ class ModifyMerchantResponse(AbstractModel):
     @property
     def MerchantId(self):
         """商户标识码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MerchantId
@@ -9214,7 +9028,6 @@ class ModifyProductResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ProductId: 商品ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9225,7 +9038,6 @@ class ModifyProductResponse(AbstractModel):
     @property
     def ProductId(self):
         """商品ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductId
@@ -9573,7 +9385,6 @@ class ModifyTraceDataRanksResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _BatchId: 批次ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type BatchId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9584,7 +9395,6 @@ class ModifyTraceDataRanksResponse(AbstractModel):
     @property
     def BatchId(self):
         """批次ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BatchId
@@ -9946,13 +9756,10 @@ class OutputAuthorizedTransfer(AbstractModel):
     def __init__(self):
         r"""
         :param _Code: 推送状态，0表示成功。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Code: int
         :param _Message: 错误码。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param _Value: 错误信息描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Code = None
@@ -9962,7 +9769,6 @@ class OutputAuthorizedTransfer(AbstractModel):
     @property
     def Code(self):
         """推送状态，0表示成功。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Code
@@ -9974,7 +9780,6 @@ class OutputAuthorizedTransfer(AbstractModel):
     @property
     def Message(self):
         """错误码。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Message
@@ -9986,7 +9791,6 @@ class OutputAuthorizedTransfer(AbstractModel):
     @property
     def Value(self):
         """错误信息描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -10024,16 +9828,12 @@ class PackSpec(AbstractModel):
         :param _Amount: 数量
         :type Amount: int
         :param _CustomId: 码规则ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type CustomId: str
         :param _CodeParts: 码段配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type CodeParts: list of CodePart
         :param _Unit: 包装单位
-注意：此字段可能返回 null，表示取不到有效值。
         :type Unit: str
         :param _SceneCode: 场景值
-注意：此字段可能返回 null，表示取不到有效值。
         :type SceneCode: int
         """
         self._Level = None
@@ -10080,7 +9880,6 @@ class PackSpec(AbstractModel):
     @property
     def CustomId(self):
         """码规则ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CustomId
@@ -10092,7 +9891,6 @@ class PackSpec(AbstractModel):
     @property
     def CodeParts(self):
         """码段配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CodePart
         """
         return self._CodeParts
@@ -10104,7 +9902,6 @@ class PackSpec(AbstractModel):
     @property
     def Unit(self):
         """包装单位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Unit
@@ -10116,7 +9913,6 @@ class PackSpec(AbstractModel):
     @property
     def SceneCode(self):
         """场景值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SceneCode
@@ -10157,22 +9953,16 @@ class PhaseData(AbstractModel):
     def __init__(self):
         r"""
         :param _HeadEnabled: 启用头
-注意：此字段可能返回 null，表示取不到有效值。
         :type HeadEnabled: bool
         :param _HeadTitle: 标题
-注意：此字段可能返回 null，表示取不到有效值。
         :type HeadTitle: str
         :param _Key: 标识符
-注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
         :param _AppId: 小程序AppId
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: str
         :param _AppPath: 小程序AppPath
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppPath: str
         :param _AppName: 小程序名称AppName
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppName: str
         """
         self._HeadEnabled = None
@@ -10185,7 +9975,6 @@ class PhaseData(AbstractModel):
     @property
     def HeadEnabled(self):
         """启用头
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._HeadEnabled
@@ -10197,7 +9986,6 @@ class PhaseData(AbstractModel):
     @property
     def HeadTitle(self):
         """标题
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HeadTitle
@@ -10209,7 +9997,6 @@ class PhaseData(AbstractModel):
     @property
     def Key(self):
         """标识符
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Key
@@ -10221,7 +10008,6 @@ class PhaseData(AbstractModel):
     @property
     def AppId(self):
         """小程序AppId
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AppId
@@ -10233,7 +10019,6 @@ class PhaseData(AbstractModel):
     @property
     def AppPath(self):
         """小程序AppPath
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AppPath
@@ -10245,7 +10030,6 @@ class PhaseData(AbstractModel):
     @property
     def AppName(self):
         """小程序名称AppName
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AppName
@@ -10280,10 +10064,8 @@ class PlanQRCode(AbstractModel):
     def __init__(self):
         r"""
         :param _Url: 二维码
-注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
         :param _Status: 状态，0:未激活 1:已激活 2:已冻结
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         """
         self._Url = None
@@ -10292,7 +10074,6 @@ class PlanQRCode(AbstractModel):
     @property
     def Url(self):
         """二维码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Url
@@ -10304,7 +10085,6 @@ class PlanQRCode(AbstractModel):
     @property
     def Status(self):
         """状态，0:未激活 1:已激活 2:已冻结
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -10335,25 +10115,18 @@ class PlanQRCodeRecord(AbstractModel):
     def __init__(self):
         r"""
         :param _Url: 二维码
-注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
         :param _OpenId: OpenID
-注意：此字段可能返回 null，表示取不到有效值。
         :type OpenId: str
         :param _ScanTime: 扫码时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScanTime: str
         :param _Ip: IP 地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ip: str
         :param _Country: 国家
-注意：此字段可能返回 null，表示取不到有效值。
         :type Country: str
         :param _Province: 省份
-注意：此字段可能返回 null，表示取不到有效值。
         :type Province: str
         :param _City: 城市
-注意：此字段可能返回 null，表示取不到有效值。
         :type City: str
         """
         self._Url = None
@@ -10367,7 +10140,6 @@ class PlanQRCodeRecord(AbstractModel):
     @property
     def Url(self):
         """二维码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Url
@@ -10379,7 +10151,6 @@ class PlanQRCodeRecord(AbstractModel):
     @property
     def OpenId(self):
         """OpenID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OpenId
@@ -10391,7 +10162,6 @@ class PlanQRCodeRecord(AbstractModel):
     @property
     def ScanTime(self):
         """扫码时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ScanTime
@@ -10403,7 +10173,6 @@ class PlanQRCodeRecord(AbstractModel):
     @property
     def Ip(self):
         """IP 地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Ip
@@ -10415,7 +10184,6 @@ class PlanQRCodeRecord(AbstractModel):
     @property
     def Country(self):
         """国家
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Country
@@ -10427,7 +10195,6 @@ class PlanQRCodeRecord(AbstractModel):
     @property
     def Province(self):
         """省份
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Province
@@ -10439,7 +10206,6 @@ class PlanQRCodeRecord(AbstractModel):
     @property
     def City(self):
         """城市
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._City
@@ -10485,25 +10251,20 @@ class Product(AbstractModel):
         :param _ProductCode: 商品编号
         :type ProductCode: str
         :param _Specification: 商品规格
-注意：此字段可能返回 null，表示取不到有效值。
         :type Specification: str
         :param _Remark: 备注
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _Logo: 商品图片
-注意：此字段可能返回 null，表示取不到有效值。
         :type Logo: list of str
         :param _CreateTime: 创建时间
         :type CreateTime: str
         :param _UpdateTime: 修改时间
         :type UpdateTime: str
         :param _Ext: 预留字段
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ext: :class:`tencentcloud.trp.v20210515.models.Ext`
         :param _MerchantName: 商户名称
         :type MerchantName: str
         :param _CertState: 认证状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type CertState: int
         """
         self._MerchantId = None
@@ -10578,7 +10339,6 @@ class Product(AbstractModel):
     @property
     def Specification(self):
         """商品规格
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Specification
@@ -10590,7 +10350,6 @@ class Product(AbstractModel):
     @property
     def Remark(self):
         """备注
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -10602,7 +10361,6 @@ class Product(AbstractModel):
     @property
     def Logo(self):
         """商品图片
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Logo
@@ -10636,7 +10394,6 @@ class Product(AbstractModel):
     @property
     def Ext(self):
         """预留字段
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.trp.v20210515.models.Ext`
         """
         return self._Ext
@@ -10659,7 +10416,6 @@ class Product(AbstractModel):
     @property
     def CertState(self):
         """认证状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CertState
@@ -10703,52 +10459,36 @@ class Quota(AbstractModel):
     def __init__(self):
         r"""
         :param _StartTime: 服务开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
         :param _EndTime: 服务结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         :param _QuotaId: 配额ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type QuotaId: int
         :param _CorpId: 企业ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type CorpId: int
         :param _Services: 开通服务
-注意：此字段可能返回 null，表示取不到有效值。
         :type Services: list of str
         :param _FactoryQuota: 商户配额
-注意：此字段可能返回 null，表示取不到有效值。
         :type FactoryQuota: int
         :param _ItemQuota: 商品配额
-注意：此字段可能返回 null，表示取不到有效值。
         :type ItemQuota: int
         :param _TrackQuota: 溯源码配额
-注意：此字段可能返回 null，表示取不到有效值。
         :type TrackQuota: int
         :param _SaleQuota: 销售码配额
-注意：此字段可能返回 null，表示取不到有效值。
         :type SaleQuota: int
         :param _ChainQuota: 上链配额
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChainQuota: int
         :param _RiskQuota: 风控配额
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskQuota: int
         :param _AigcTextQuota: AI文字数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type AigcTextQuota: int
         :param _AigcImageQuota: AI图片数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type AigcImageQuota: int
         :param _TrackType: 溯源类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type TrackType: int
         :param _Version: 开通版本 lite:轻量版, basic:基础版, standard:标准版
-注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
         :param _ProductCertify: 是否开启企业认证
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductCertify: int
         """
         self._StartTime = None
@@ -10771,7 +10511,6 @@ class Quota(AbstractModel):
     @property
     def StartTime(self):
         """服务开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StartTime
@@ -10783,7 +10522,6 @@ class Quota(AbstractModel):
     @property
     def EndTime(self):
         """服务结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndTime
@@ -10795,7 +10533,6 @@ class Quota(AbstractModel):
     @property
     def QuotaId(self):
         """配额ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._QuotaId
@@ -10807,7 +10544,6 @@ class Quota(AbstractModel):
     @property
     def CorpId(self):
         """企业ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CorpId
@@ -10819,7 +10555,6 @@ class Quota(AbstractModel):
     @property
     def Services(self):
         """开通服务
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Services
@@ -10831,7 +10566,6 @@ class Quota(AbstractModel):
     @property
     def FactoryQuota(self):
         """商户配额
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FactoryQuota
@@ -10843,7 +10577,6 @@ class Quota(AbstractModel):
     @property
     def ItemQuota(self):
         """商品配额
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ItemQuota
@@ -10855,7 +10588,6 @@ class Quota(AbstractModel):
     @property
     def TrackQuota(self):
         """溯源码配额
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TrackQuota
@@ -10867,7 +10599,6 @@ class Quota(AbstractModel):
     @property
     def SaleQuota(self):
         """销售码配额
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SaleQuota
@@ -10879,7 +10610,6 @@ class Quota(AbstractModel):
     @property
     def ChainQuota(self):
         """上链配额
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ChainQuota
@@ -10891,7 +10621,6 @@ class Quota(AbstractModel):
     @property
     def RiskQuota(self):
         """风控配额
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RiskQuota
@@ -10903,7 +10632,6 @@ class Quota(AbstractModel):
     @property
     def AigcTextQuota(self):
         """AI文字数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AigcTextQuota
@@ -10915,7 +10643,6 @@ class Quota(AbstractModel):
     @property
     def AigcImageQuota(self):
         """AI图片数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AigcImageQuota
@@ -10927,7 +10654,6 @@ class Quota(AbstractModel):
     @property
     def TrackType(self):
         """溯源类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TrackType
@@ -10939,7 +10665,6 @@ class Quota(AbstractModel):
     @property
     def Version(self):
         """开通版本 lite:轻量版, basic:基础版, standard:标准版
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Version
@@ -10951,7 +10676,6 @@ class Quota(AbstractModel):
     @property
     def ProductCertify(self):
         """是否开启企业认证
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ProductCertify
@@ -10998,7 +10722,6 @@ class RawScanLog(AbstractModel):
         :param _LogId: 日志ID
         :type LogId: int
         :param _Openid: 微信小程序openid
-注意：此字段可能返回 null，表示取不到有效值。
         :type Openid: str
         :param _CreateTime: 扫码时间
         :type CreateTime: str
@@ -11007,22 +10730,16 @@ class RawScanLog(AbstractModel):
         :param _CorpId: 企业ID
         :type CorpId: int
         :param _MerchantId: 商户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type MerchantId: str
         :param _ProductId: 商品ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductId: str
         :param _BatchId: 批次ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type BatchId: str
         :param _Province: 省份
-注意：此字段可能返回 null，表示取不到有效值。
         :type Province: str
         :param _City: 地市
-注意：此字段可能返回 null，表示取不到有效值。
         :type City: str
         :param _District: 区/县
-注意：此字段可能返回 null，表示取不到有效值。
         :type District: str
         """
         self._LogId = None
@@ -11051,7 +10768,6 @@ class RawScanLog(AbstractModel):
     @property
     def Openid(self):
         """微信小程序openid
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Openid
@@ -11096,7 +10812,6 @@ class RawScanLog(AbstractModel):
     @property
     def MerchantId(self):
         """商户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MerchantId
@@ -11108,7 +10823,6 @@ class RawScanLog(AbstractModel):
     @property
     def ProductId(self):
         """商品ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductId
@@ -11120,7 +10834,6 @@ class RawScanLog(AbstractModel):
     @property
     def BatchId(self):
         """批次ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BatchId
@@ -11132,7 +10845,6 @@ class RawScanLog(AbstractModel):
     @property
     def Province(self):
         """省份
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Province
@@ -11144,7 +10856,6 @@ class RawScanLog(AbstractModel):
     @property
     def City(self):
         """地市
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._City
@@ -11156,7 +10867,6 @@ class RawScanLog(AbstractModel):
     @property
     def District(self):
         """区/县
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._District
@@ -11281,60 +10991,42 @@ class ScanLog(AbstractModel):
         :param _LogId: 行ID
         :type LogId: int
         :param _Openid: 微信openid
-注意：此字段可能返回 null，表示取不到有效值。
         :type Openid: str
         :param _Nickname: 微信昵称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Nickname: str
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _Code: 码
-注意：此字段可能返回 null，表示取不到有效值。
         :type Code: str
         :param _CorpId: 企业ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type CorpId: int
         :param _MerchantId: 商户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type MerchantId: str
         :param _ProductId: 商品ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductId: str
         :param _Ip: ip地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ip: str
         :param _Country: 国家
-注意：此字段可能返回 null，表示取不到有效值。
         :type Country: str
         :param _Province: 省份
-注意：此字段可能返回 null，表示取不到有效值。
         :type Province: str
         :param _City: 城市
-注意：此字段可能返回 null，表示取不到有效值。
         :type City: str
         :param _District: 县/区
-注意：此字段可能返回 null，表示取不到有效值。
         :type District: str
         :param _Unionid: 微信 unionid
-注意：此字段可能返回 null，表示取不到有效值。
         :type Unionid: str
         :param _First: 首次扫码 0:否, 1:是
-注意：此字段可能返回 null，表示取不到有效值。
         :type First: int
         :param _BatchId: 批次ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type BatchId: str
         :param _Type: 扫码类型 0:无效扫码 1: 小程序扫码 2: 商家扫码
         :type Type: int
         :param _MerchantName: 商户名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type MerchantName: str
         :param _ProductName: 产品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductName: str
         :param _ProductLogo: 产品Logo
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductLogo: str
         :param _Status: 风险状态
 0: 未知, 1:通过, 2:失败/风险, 3:存疑
@@ -11380,7 +11072,6 @@ class ScanLog(AbstractModel):
     @property
     def Openid(self):
         """微信openid
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Openid
@@ -11392,7 +11083,6 @@ class ScanLog(AbstractModel):
     @property
     def Nickname(self):
         """微信昵称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Nickname
@@ -11404,7 +11094,6 @@ class ScanLog(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -11416,7 +11105,6 @@ class ScanLog(AbstractModel):
     @property
     def Code(self):
         """码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Code
@@ -11428,7 +11116,6 @@ class ScanLog(AbstractModel):
     @property
     def CorpId(self):
         """企业ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CorpId
@@ -11440,7 +11127,6 @@ class ScanLog(AbstractModel):
     @property
     def MerchantId(self):
         """商户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MerchantId
@@ -11452,7 +11138,6 @@ class ScanLog(AbstractModel):
     @property
     def ProductId(self):
         """商品ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductId
@@ -11464,7 +11149,6 @@ class ScanLog(AbstractModel):
     @property
     def Ip(self):
         """ip地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Ip
@@ -11476,7 +11160,6 @@ class ScanLog(AbstractModel):
     @property
     def Country(self):
         """国家
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Country
@@ -11488,7 +11171,6 @@ class ScanLog(AbstractModel):
     @property
     def Province(self):
         """省份
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Province
@@ -11500,7 +11182,6 @@ class ScanLog(AbstractModel):
     @property
     def City(self):
         """城市
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._City
@@ -11512,7 +11193,6 @@ class ScanLog(AbstractModel):
     @property
     def District(self):
         """县/区
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._District
@@ -11524,7 +11204,6 @@ class ScanLog(AbstractModel):
     @property
     def Unionid(self):
         """微信 unionid
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Unionid
@@ -11536,7 +11215,6 @@ class ScanLog(AbstractModel):
     @property
     def First(self):
         """首次扫码 0:否, 1:是
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._First
@@ -11548,7 +11226,6 @@ class ScanLog(AbstractModel):
     @property
     def BatchId(self):
         """批次ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BatchId
@@ -11571,7 +11248,6 @@ class ScanLog(AbstractModel):
     @property
     def MerchantName(self):
         """商户名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MerchantName
@@ -11583,7 +11259,6 @@ class ScanLog(AbstractModel):
     @property
     def ProductName(self):
         """产品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductName
@@ -11595,7 +11270,6 @@ class ScanLog(AbstractModel):
     @property
     def ProductLogo(self):
         """产品Logo
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductLogo
@@ -11882,13 +11556,10 @@ class TraceCode(AbstractModel):
         :param _Level: 码层级 0: 最小级, 1: 一级, 2: 二级
         :type Level: int
         :param _PackSpec: 码层级详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type PackSpec: list of PackSpec
         :param _SceneCode: 场景码
-注意：此字段可能返回 null，表示取不到有效值。
         :type SceneCode: int
         :param _SerialCode: 流水码
-注意：此字段可能返回 null，表示取不到有效值。
         :type SerialCode: int
         """
         self._Code = None
@@ -12054,7 +11725,6 @@ class TraceCode(AbstractModel):
     @property
     def PackSpec(self):
         """码层级详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PackSpec
         """
         return self._PackSpec
@@ -12066,7 +11736,6 @@ class TraceCode(AbstractModel):
     @property
     def SceneCode(self):
         """场景码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SceneCode
@@ -12078,7 +11747,6 @@ class TraceCode(AbstractModel):
     @property
     def SerialCode(self):
         """流水码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SerialCode
@@ -12134,7 +11802,6 @@ class TraceData(AbstractModel):
         :param _Type: 码类型 0: 批次, 1: 码, 2: 生产任务
         :type Type: int
         :param _Code: 码值，跟码类型一一对应
-注意：此字段可能返回 null，表示取不到有效值。
         :type Code: str
         :param _Rank: 排序，在Phase相同情况下，值越小排名靠前
         :type Rank: int
@@ -12143,22 +11810,16 @@ class TraceData(AbstractModel):
         :param _PhaseName: 溯源环节名称
         :type PhaseName: str
         :param _TraceTime: 溯源时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type TraceTime: str
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _ChainStatus: 上链状态 0: 未上链 1: 上链中 2: 已上链 -1: 异常
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChainStatus: int
         :param _ChainTime: 上链时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChainTime: str
         :param _ChainData: 上链数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChainData: :class:`tencentcloud.trp.v20210515.models.ChainData`
         :param _PhaseData: 溯源阶段配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type PhaseData: :class:`tencentcloud.trp.v20210515.models.PhaseData`
         :param _Status: 溯源阶段状态 0: 无效, 1: 有效
         :type Status: int
@@ -12217,7 +11878,6 @@ class TraceData(AbstractModel):
     @property
     def Code(self):
         """码值，跟码类型一一对应
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Code
@@ -12262,7 +11922,6 @@ class TraceData(AbstractModel):
     @property
     def TraceTime(self):
         """溯源时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TraceTime
@@ -12274,7 +11933,6 @@ class TraceData(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -12286,7 +11944,6 @@ class TraceData(AbstractModel):
     @property
     def ChainStatus(self):
         """上链状态 0: 未上链 1: 上链中 2: 已上链 -1: 异常
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ChainStatus
@@ -12298,7 +11955,6 @@ class TraceData(AbstractModel):
     @property
     def ChainTime(self):
         """上链时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ChainTime
@@ -12310,7 +11966,6 @@ class TraceData(AbstractModel):
     @property
     def ChainData(self):
         """上链数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.trp.v20210515.models.ChainData`
         """
         return self._ChainData
@@ -12322,7 +11977,6 @@ class TraceData(AbstractModel):
     @property
     def PhaseData(self):
         """溯源阶段配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.trp.v20210515.models.PhaseData`
         """
         return self._PhaseData
@@ -12596,28 +12250,21 @@ class UsageQuota(AbstractModel):
     def __init__(self):
         r"""
         :param _CorpId: 企业ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type CorpId: int
         :param _FactoryCnt: 商户配额
-注意：此字段可能返回 null，表示取不到有效值。
         :type FactoryCnt: int
         :param _ItemCnt: 商品数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type ItemCnt: int
         :param _TrackCnt: 溯源码量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TrackCnt: int
         :param _SaleCnt: 营销码额度
-注意：此字段可能返回 null，表示取不到有效值。
         :type SaleCnt: int
         :param _ChainCnt: 区块链上链次数
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChainCnt: int
         :param _RiskCnt: 风险检测次数
 注意：此字段可能返回 null，表示取不到有效值。
         :type RiskCnt: int
         :param _UpdateTime: 时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         """
         self._CorpId = None
@@ -12632,7 +12279,6 @@ class UsageQuota(AbstractModel):
     @property
     def CorpId(self):
         """企业ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CorpId
@@ -12644,7 +12290,6 @@ class UsageQuota(AbstractModel):
     @property
     def FactoryCnt(self):
         """商户配额
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FactoryCnt
@@ -12656,7 +12301,6 @@ class UsageQuota(AbstractModel):
     @property
     def ItemCnt(self):
         """商品数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ItemCnt
@@ -12668,7 +12312,6 @@ class UsageQuota(AbstractModel):
     @property
     def TrackCnt(self):
         """溯源码量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TrackCnt
@@ -12680,7 +12323,6 @@ class UsageQuota(AbstractModel):
     @property
     def SaleCnt(self):
         """营销码额度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SaleCnt
@@ -12692,7 +12334,6 @@ class UsageQuota(AbstractModel):
     @property
     def ChainCnt(self):
         """区块链上链次数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ChainCnt
@@ -12720,7 +12361,6 @@ class UsageQuota(AbstractModel):
     @property
     def UpdateTime(self):
         """时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime

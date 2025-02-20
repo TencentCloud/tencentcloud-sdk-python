@@ -4271,6 +4271,62 @@ class CreateAIFormTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CustomsPaymentReceipt(AbstractModel):
+    """海关缴款书
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Title: 发票名称
+        :type Title: str
+        :param _Content: 识别出的字段名称(关键字)，支持以下字段： 税号 、纳税人识别号 、纳税人名称 、金额合计大写 、金额合计小写 、填发日期 、税务机关 、填票人。 示例值：纳税人识别号
+        :type Content: list of OtherInvoiceItem
+        """
+        self._Title = None
+        self._Content = None
+
+    @property
+    def Title(self):
+        """发票名称
+        :rtype: str
+        """
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Content(self):
+        """识别出的字段名称(关键字)，支持以下字段： 税号 、纳税人识别号 、纳税人名称 、金额合计大写 、金额合计小写 、填发日期 、税务机关 、填票人。 示例值：纳税人识别号
+        :rtype: list of OtherInvoiceItem
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._Title = params.get("Title")
+        if params.get("Content") is not None:
+            self._Content = []
+            for item in params.get("Content"):
+                obj = OtherInvoiceItem()
+                obj._deserialize(item)
+                self._Content.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DetailInformationOfAirTicketTupleList(AbstractModel):
     """机票详细信息元组
 
@@ -14327,6 +14383,8 @@ FailedOperation.UnKnowError：表示识别失败；
 15：非税发票
 16：全电发票
 17：医疗发票
+18：完税凭证
+19：海关缴款书
         :type Type: int
         :param _Polygon: 该发票在原图片中的四点坐标。
         :type Polygon: :class:`tencentcloud.ocr.v20181119.models.Polygon`
@@ -14391,6 +14449,8 @@ FailedOperation.UnKnowError：表示识别失败；
 15：非税发票
 16：全电发票
 17：医疗发票
+18：完税凭证
+19：海关缴款书
         :rtype: int
         """
         return self._Type
@@ -29054,6 +29114,12 @@ class SingleInvoiceItem(AbstractModel):
         :param _ElectronicFlightTicketFull: 电子发票（机票行程单）
 注意：此字段可能返回 null，表示取不到有效值。
         :type ElectronicFlightTicketFull: :class:`tencentcloud.ocr.v20181119.models.ElectronicFlightTicketFull`
+        :param _TaxPayment: 完税凭证
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaxPayment: :class:`tencentcloud.ocr.v20181119.models.TaxPayment`
+        :param _CustomsPaymentReceipt: 海关缴款
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomsPaymentReceipt: :class:`tencentcloud.ocr.v20181119.models.CustomsPaymentReceipt`
         """
         self._VatSpecialInvoice = None
         self._VatCommonInvoice = None
@@ -29082,6 +29148,8 @@ class SingleInvoiceItem(AbstractModel):
         self._VatSalesList = None
         self._ElectronicTrainTicketFull = None
         self._ElectronicFlightTicketFull = None
+        self._TaxPayment = None
+        self._CustomsPaymentReceipt = None
 
     @property
     def VatSpecialInvoice(self):
@@ -29407,6 +29475,30 @@ class SingleInvoiceItem(AbstractModel):
     def ElectronicFlightTicketFull(self, ElectronicFlightTicketFull):
         self._ElectronicFlightTicketFull = ElectronicFlightTicketFull
 
+    @property
+    def TaxPayment(self):
+        """完税凭证
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.TaxPayment`
+        """
+        return self._TaxPayment
+
+    @TaxPayment.setter
+    def TaxPayment(self, TaxPayment):
+        self._TaxPayment = TaxPayment
+
+    @property
+    def CustomsPaymentReceipt(self):
+        """海关缴款
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.CustomsPaymentReceipt`
+        """
+        return self._CustomsPaymentReceipt
+
+    @CustomsPaymentReceipt.setter
+    def CustomsPaymentReceipt(self, CustomsPaymentReceipt):
+        self._CustomsPaymentReceipt = CustomsPaymentReceipt
+
 
     def _deserialize(self, params):
         if params.get("VatSpecialInvoice") is not None:
@@ -29490,6 +29582,12 @@ class SingleInvoiceItem(AbstractModel):
         if params.get("ElectronicFlightTicketFull") is not None:
             self._ElectronicFlightTicketFull = ElectronicFlightTicketFull()
             self._ElectronicFlightTicketFull._deserialize(params.get("ElectronicFlightTicketFull"))
+        if params.get("TaxPayment") is not None:
+            self._TaxPayment = TaxPayment()
+            self._TaxPayment._deserialize(params.get("TaxPayment"))
+        if params.get("CustomsPaymentReceipt") is not None:
+            self._CustomsPaymentReceipt = CustomsPaymentReceipt()
+            self._CustomsPaymentReceipt._deserialize(params.get("CustomsPaymentReceipt"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31063,6 +31161,66 @@ class TableTitle(AbstractModel):
 
     def _deserialize(self, params):
         self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaxPayment(AbstractModel):
+    """完税凭证
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Title: 发票名称
+        :type Title: str
+        :param _Content: 识别出的字段名称(关键字)，支持以下字段：
+税号 、纳税人识别号 、纳税人名称 、金额合计大写 、金额合计小写 、填发日期 、税务机关 、填票人。
+示例值：纳税人识别号
+        :type Content: list of OtherInvoiceItem
+        """
+        self._Title = None
+        self._Content = None
+
+    @property
+    def Title(self):
+        """发票名称
+        :rtype: str
+        """
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Content(self):
+        """识别出的字段名称(关键字)，支持以下字段：
+税号 、纳税人识别号 、纳税人名称 、金额合计大写 、金额合计小写 、填发日期 、税务机关 、填票人。
+示例值：纳税人识别号
+        :rtype: list of OtherInvoiceItem
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._Title = params.get("Title")
+        if params.get("Content") is not None:
+            self._Content = []
+            for item in params.get("Content"):
+                obj = OtherInvoiceItem()
+                obj._deserialize(item)
+                self._Content.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

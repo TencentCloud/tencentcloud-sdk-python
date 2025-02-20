@@ -20194,6 +20194,8 @@ class LogRechargeRuleInfo(AbstractModel):
         :param _Keys: 日志Key列表，RechargeType为full_regex_log时必填
 注意：此字段可能返回 null，表示取不到有效值。
         :type Keys: list of str
+        :param _ParseArray: json解析模式，开启首层数据解析
+        :type ParseArray: bool
         """
         self._RechargeType = None
         self._EncodingFormat = None
@@ -20209,6 +20211,7 @@ class LogRechargeRuleInfo(AbstractModel):
         self._TimeZone = None
         self._Metadata = None
         self._Keys = None
+        self._ParseArray = None
 
     @property
     def RechargeType(self):
@@ -20374,6 +20377,17 @@ class LogRechargeRuleInfo(AbstractModel):
     def Keys(self, Keys):
         self._Keys = Keys
 
+    @property
+    def ParseArray(self):
+        """json解析模式，开启首层数据解析
+        :rtype: bool
+        """
+        return self._ParseArray
+
+    @ParseArray.setter
+    def ParseArray(self, ParseArray):
+        self._ParseArray = ParseArray
+
 
     def _deserialize(self, params):
         self._RechargeType = params.get("RechargeType")
@@ -20390,6 +20404,7 @@ class LogRechargeRuleInfo(AbstractModel):
         self._TimeZone = params.get("TimeZone")
         self._Metadata = params.get("Metadata")
         self._Keys = params.get("Keys")
+        self._ParseArray = params.get("ParseArray")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
