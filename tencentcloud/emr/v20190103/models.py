@@ -18605,9 +18605,24 @@ class LoadAutoScaleStrategy(AbstractModel):
 "CPU"表示按照机器的核数计算。
 "MEMORYGB"表示按照机器内存数计算。
         :type MeasureMethod: str
+        :param _SoftDeployDesc: 节点部署服务列表，例如["HDFS-3.1.2","YARN-3.1.2"]。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SoftDeployDesc: list of str
+        :param _ServiceNodeDesc: 启动进程列表，例如["NodeManager"]。
+        :type ServiceNodeDesc: str
+        :param _ServiceNodeInfo: 启动进程列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceNodeInfo: list of int
+        :param _SoftDeployInfo: 节点部署服务列表。部署服务仅填写HDFS、YARN。[组件名对应的映射关系表](https://cloud.tencent.com/document/product/589/98760)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SoftDeployInfo: list of int
         :param _LoadMetricsConditions: 多指标触发条件
 注意：此字段可能返回 null，表示取不到有效值。
         :type LoadMetricsConditions: :class:`tencentcloud.emr.v20190103.models.LoadMetricsConditions`
+        :param _GroupId: 伸缩组Id
+        :type GroupId: int
+        :param _Soft: soft例如yarn
+        :type Soft: str
         """
         self._StrategyId = None
         self._StrategyName = None
@@ -18624,7 +18639,13 @@ class LoadAutoScaleStrategy(AbstractModel):
         self._Tags = None
         self._ConfigGroupAssigned = None
         self._MeasureMethod = None
+        self._SoftDeployDesc = None
+        self._ServiceNodeDesc = None
+        self._ServiceNodeInfo = None
+        self._SoftDeployInfo = None
         self._LoadMetricsConditions = None
+        self._GroupId = None
+        self._Soft = None
 
     @property
     def StrategyId(self):
@@ -18797,6 +18818,53 @@ class LoadAutoScaleStrategy(AbstractModel):
         self._MeasureMethod = MeasureMethod
 
     @property
+    def SoftDeployDesc(self):
+        """节点部署服务列表，例如["HDFS-3.1.2","YARN-3.1.2"]。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._SoftDeployDesc
+
+    @SoftDeployDesc.setter
+    def SoftDeployDesc(self, SoftDeployDesc):
+        self._SoftDeployDesc = SoftDeployDesc
+
+    @property
+    def ServiceNodeDesc(self):
+        """启动进程列表，例如["NodeManager"]。
+        :rtype: str
+        """
+        return self._ServiceNodeDesc
+
+    @ServiceNodeDesc.setter
+    def ServiceNodeDesc(self, ServiceNodeDesc):
+        self._ServiceNodeDesc = ServiceNodeDesc
+
+    @property
+    def ServiceNodeInfo(self):
+        """启动进程列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
+        return self._ServiceNodeInfo
+
+    @ServiceNodeInfo.setter
+    def ServiceNodeInfo(self, ServiceNodeInfo):
+        self._ServiceNodeInfo = ServiceNodeInfo
+
+    @property
+    def SoftDeployInfo(self):
+        """节点部署服务列表。部署服务仅填写HDFS、YARN。[组件名对应的映射关系表](https://cloud.tencent.com/document/product/589/98760)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
+        return self._SoftDeployInfo
+
+    @SoftDeployInfo.setter
+    def SoftDeployInfo(self, SoftDeployInfo):
+        self._SoftDeployInfo = SoftDeployInfo
+
+    @property
     def LoadMetricsConditions(self):
         """多指标触发条件
 注意：此字段可能返回 null，表示取不到有效值。
@@ -18807,6 +18875,28 @@ class LoadAutoScaleStrategy(AbstractModel):
     @LoadMetricsConditions.setter
     def LoadMetricsConditions(self, LoadMetricsConditions):
         self._LoadMetricsConditions = LoadMetricsConditions
+
+    @property
+    def GroupId(self):
+        """伸缩组Id
+        :rtype: int
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def Soft(self):
+        """soft例如yarn
+        :rtype: str
+        """
+        return self._Soft
+
+    @Soft.setter
+    def Soft(self, Soft):
+        self._Soft = Soft
 
 
     def _deserialize(self, params):
@@ -18830,9 +18920,15 @@ class LoadAutoScaleStrategy(AbstractModel):
                 self._Tags.append(obj)
         self._ConfigGroupAssigned = params.get("ConfigGroupAssigned")
         self._MeasureMethod = params.get("MeasureMethod")
+        self._SoftDeployDesc = params.get("SoftDeployDesc")
+        self._ServiceNodeDesc = params.get("ServiceNodeDesc")
+        self._ServiceNodeInfo = params.get("ServiceNodeInfo")
+        self._SoftDeployInfo = params.get("SoftDeployInfo")
         if params.get("LoadMetricsConditions") is not None:
             self._LoadMetricsConditions = LoadMetricsConditions()
             self._LoadMetricsConditions._deserialize(params.get("LoadMetricsConditions"))
+        self._GroupId = params.get("GroupId")
+        self._Soft = params.get("Soft")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -2543,7 +2543,6 @@ class DevicePayModeInfo(AbstractModel):
         :param _PayModeDesc: 付费模式描述
         :type PayModeDesc: str
         :param _ResourceId: 流量包ID，仅当付费模式为流量包类型时才有。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceId: str
         """
         self._DeviceId = None
@@ -2589,7 +2588,6 @@ class DevicePayModeInfo(AbstractModel):
     @property
     def ResourceId(self):
         """流量包ID，仅当付费模式为流量包类型时才有。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceId
@@ -2944,7 +2942,6 @@ DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
         :param _Status: 流量包状态，0：未生效，1：有效期内，2：已过期
         :type Status: int
         :param _CreateTime: 购买时间，Unix时间戳格式，单位：秒
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: int
         :param _ActiveTime: 生效时间，Unix时间戳格式，单位：秒
         :type ActiveTime: int
@@ -3035,7 +3032,6 @@ DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
     @property
     def CreateTime(self):
         """购买时间，Unix时间戳格式，单位：秒
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CreateTime
@@ -6185,7 +6181,6 @@ class GroupInfo(AbstractModel):
         :param _UpdateTime: 分组更新的时间，单位：ms	
         :type UpdateTime: str
         :param _Description: 分组描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _DeviceNum: 分组中的设备数量
         :type DeviceNum: int
@@ -6244,7 +6239,6 @@ class GroupInfo(AbstractModel):
     @property
     def Description(self):
         """分组描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -6290,19 +6284,15 @@ class Hardware(AbstractModel):
     def __init__(self):
         r"""
         :param _SN: 硬件序列号
-注意：此字段可能返回 null，表示取不到有效值。
         :type SN: str
         :param _LicenseChargingMode: license计费模式：
 1，租户付费
 2，厂商月付费
 3，厂商永久授权
-注意：此字段可能返回 null，表示取不到有效值。
         :type LicenseChargingMode: int
         :param _Description: 设备描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _HardwareId: 硬件ID，入参无需传递
-注意：此字段可能返回 null，表示取不到有效值。
         :type HardwareId: str
         """
         self._SN = None
@@ -6313,7 +6303,6 @@ class Hardware(AbstractModel):
     @property
     def SN(self):
         """硬件序列号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SN
@@ -6328,7 +6317,6 @@ class Hardware(AbstractModel):
 1，租户付费
 2，厂商月付费
 3，厂商永久授权
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LicenseChargingMode
@@ -6340,7 +6328,6 @@ class Hardware(AbstractModel):
     @property
     def Description(self):
         """设备描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -6352,7 +6339,6 @@ class Hardware(AbstractModel):
     @property
     def HardwareId(self):
         """硬件ID，入参无需传递
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HardwareId
@@ -6385,51 +6371,37 @@ class HardwareInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _DeviceId: 设备ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceId: str
         :param _DeviceName: 设备名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceName: str
         :param _ActiveTime: 激活时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActiveTime: str
         :param _LastOnlineTime: 最后在线时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type LastOnlineTime: str
         :param _Description: 备注
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _VendorDescription: 厂商备注
-注意：此字段可能返回 null，表示取不到有效值。
         :type VendorDescription: str
         :param _LicenseChargingMode: license计费模式： 1，租户月付费 2，厂商月付费 3，license永久授权
 注：后续将废弃此参数，新接入请使用LicensePayMode和Payer
-注意：此字段可能返回 null，表示取不到有效值。
         :type LicenseChargingMode: int
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _SN: 硬件序列号
-注意：此字段可能返回 null，表示取不到有效值。
         :type SN: str
         :param _LicensePayMode: license授权有效期 
 0：月度授权 
 1：永久授权
-注意：此字段可能返回 null，表示取不到有效值。
         :type LicensePayMode: int
         :param _Payer: 付费方 
 0：客户付费 
 1：厂商付费
-注意：此字段可能返回 null，表示取不到有效值。
         :type Payer: int
         :param _GroupId: 设备分组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupId: str
         :param _GroupName: 设备分组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupName: str
         :param _FlowTrunc: 设备无流量包处理方式，0: 按量付费，1: 截断加速	
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowTrunc: int
         """
         self._DeviceId = None
@@ -6450,7 +6422,6 @@ class HardwareInfo(AbstractModel):
     @property
     def DeviceId(self):
         """设备ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceId
@@ -6462,7 +6433,6 @@ class HardwareInfo(AbstractModel):
     @property
     def DeviceName(self):
         """设备名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceName
@@ -6474,7 +6444,6 @@ class HardwareInfo(AbstractModel):
     @property
     def ActiveTime(self):
         """激活时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ActiveTime
@@ -6486,7 +6455,6 @@ class HardwareInfo(AbstractModel):
     @property
     def LastOnlineTime(self):
         """最后在线时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LastOnlineTime
@@ -6498,7 +6466,6 @@ class HardwareInfo(AbstractModel):
     @property
     def Description(self):
         """备注
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -6510,7 +6477,6 @@ class HardwareInfo(AbstractModel):
     @property
     def VendorDescription(self):
         """厂商备注
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VendorDescription
@@ -6523,7 +6489,6 @@ class HardwareInfo(AbstractModel):
     def LicenseChargingMode(self):
         """license计费模式： 1，租户月付费 2，厂商月付费 3，license永久授权
 注：后续将废弃此参数，新接入请使用LicensePayMode和Payer
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LicenseChargingMode
@@ -6535,7 +6500,6 @@ class HardwareInfo(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -6547,7 +6511,6 @@ class HardwareInfo(AbstractModel):
     @property
     def SN(self):
         """硬件序列号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SN
@@ -6561,7 +6524,6 @@ class HardwareInfo(AbstractModel):
         """license授权有效期 
 0：月度授权 
 1：永久授权
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LicensePayMode
@@ -6575,7 +6537,6 @@ class HardwareInfo(AbstractModel):
         """付费方 
 0：客户付费 
 1：厂商付费
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Payer
@@ -6587,7 +6548,6 @@ class HardwareInfo(AbstractModel):
     @property
     def GroupId(self):
         """设备分组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupId
@@ -6599,7 +6559,6 @@ class HardwareInfo(AbstractModel):
     @property
     def GroupName(self):
         """设备分组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupName
@@ -6611,7 +6570,6 @@ class HardwareInfo(AbstractModel):
     @property
     def FlowTrunc(self):
         """设备无流量包处理方式，0: 按量付费，1: 截断加速	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FlowTrunc
@@ -6666,7 +6624,6 @@ class L3ConnInfo(AbstractModel):
         :param _Enable: 互通规则启用状态
         :type Enable: bool
         :param _Description: 互通规则描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         """
         self._L3ConnId = None
@@ -6746,7 +6703,6 @@ class L3ConnInfo(AbstractModel):
     @property
     def Description(self):
         """互通规则描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -6863,10 +6819,8 @@ class MonitorData(AbstractModel):
         :param _Time: 时间点：s
         :type Time: str
         :param _BusinessMetrics: 业务指标（bps/ms/%）
-注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessMetrics: float
         :param _SlotNetInfo: 网卡状态信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type SlotNetInfo: list of SlotNetInfo
         """
         self._Time = None
@@ -6887,7 +6841,6 @@ class MonitorData(AbstractModel):
     @property
     def BusinessMetrics(self):
         """业务指标（bps/ms/%）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._BusinessMetrics
@@ -6899,7 +6852,6 @@ class MonitorData(AbstractModel):
     @property
     def SlotNetInfo(self):
         """网卡状态信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SlotNetInfo
         """
         return self._SlotNetInfo
@@ -7502,13 +7454,10 @@ class SlotNetInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _NetInfoName: 网卡名
-注意：此字段可能返回 null，表示取不到有效值。
         :type NetInfoName: str
         :param _PublicIP: 公网IP
-注意：此字段可能返回 null，表示取不到有效值。
         :type PublicIP: str
         :param _Current: 指标数据（bps/ms/%）
-注意：此字段可能返回 null，表示取不到有效值。
         :type Current: float
         """
         self._NetInfoName = None
@@ -7518,7 +7467,6 @@ class SlotNetInfo(AbstractModel):
     @property
     def NetInfoName(self):
         """网卡名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NetInfoName
@@ -7530,7 +7478,6 @@ class SlotNetInfo(AbstractModel):
     @property
     def PublicIP(self):
         """公网IP
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PublicIP
@@ -7542,7 +7489,6 @@ class SlotNetInfo(AbstractModel):
     @property
     def Current(self):
         """指标数据（bps/ms/%）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Current
@@ -8332,7 +8278,6 @@ class VendorHardware(AbstractModel):
         :param _Status: 激活状态， 空：全部； 1:待激活； 2:已激活
         :type Status: int
         :param _ActiveTime: 激活时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActiveTime: str
         :param _Description: 厂商备注
         :type Description: str
@@ -8342,7 +8287,6 @@ class VendorHardware(AbstractModel):
 注：设备为租户付费且未激活（未选择月付还是永久付费）时，此参数返回1，仅代表租户付费。后续将废弃此参数，新接入请使用LicensePayMode和Payer
         :type LicenseChargingMode: int
         :param _LastOnlineTime: 最后在线时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type LastOnlineTime: str
         :param _LicensePayMode: license授权有效期
 0：月度授权
@@ -8413,7 +8357,6 @@ class VendorHardware(AbstractModel):
     @property
     def ActiveTime(self):
         """激活时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ActiveTime
@@ -8459,7 +8402,6 @@ class VendorHardware(AbstractModel):
     @property
     def LastOnlineTime(self):
         """最后在线时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LastOnlineTime

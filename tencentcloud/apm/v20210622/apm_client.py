@@ -142,6 +142,29 @@ class ApmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeGeneralOTSpanList(self, request):
+        """通用查询 OpenTelemetry 调用链列表
+
+        :param request: Request instance for DescribeGeneralOTSpanList.
+        :type request: :class:`tencentcloud.apm.v20210622.models.DescribeGeneralOTSpanListRequest`
+        :rtype: :class:`tencentcloud.apm.v20210622.models.DescribeGeneralOTSpanListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGeneralOTSpanList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeGeneralOTSpanListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeGeneralSpanList(self, request):
         """通用查询调用链列表
 

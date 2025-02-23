@@ -2176,6 +2176,232 @@ class DescribeGeneralMetricDataResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeGeneralOTSpanListRequest(AbstractModel):
+    """DescribeGeneralOTSpanList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 业务系统 ID
+        :type InstanceId: str
+        :param _StartTime: Span 查询开始时间戳（单位：秒）
+        :type StartTime: int
+        :param _EndTime: Span 查询结束时间戳（单位：秒）
+        :type EndTime: int
+        :param _Filters: 通用过滤参数
+        :type Filters: list of Filter
+        :param _OrderBy: 排序
+现支持的 Key 有：
+
+- startTime(开始时间)
+- endTime(结束时间)
+- duration(响应时间)
+
+现支持的 Value 有：
+
+- desc(降序排序)
+- asc(升序排序)
+        :type OrderBy: :class:`tencentcloud.apm.v20210622.models.OrderBy`
+        :param _BusinessName: 业务自身服务名，控制台用户请填写taw
+        :type BusinessName: str
+        :param _Limit: 单页项目个数，默认为10000，合法取值范围为0～10000
+        :type Limit: int
+        :param _Offset: 分页
+        :type Offset: int
+        """
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Filters = None
+        self._OrderBy = None
+        self._BusinessName = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def InstanceId(self):
+        """业务系统 ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        """Span 查询开始时间戳（单位：秒）
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """Span 查询结束时间戳（单位：秒）
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Filters(self):
+        """通用过滤参数
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def OrderBy(self):
+        """排序
+现支持的 Key 有：
+
+- startTime(开始时间)
+- endTime(结束时间)
+- duration(响应时间)
+
+现支持的 Value 有：
+
+- desc(降序排序)
+- asc(升序排序)
+        :rtype: :class:`tencentcloud.apm.v20210622.models.OrderBy`
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def BusinessName(self):
+        """业务自身服务名，控制台用户请填写taw
+        :rtype: str
+        """
+        return self._BusinessName
+
+    @BusinessName.setter
+    def BusinessName(self, BusinessName):
+        self._BusinessName = BusinessName
+
+    @property
+    def Limit(self):
+        """单页项目个数，默认为10000，合法取值范围为0～10000
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """分页
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        if params.get("OrderBy") is not None:
+            self._OrderBy = OrderBy()
+            self._OrderBy._deserialize(params.get("OrderBy"))
+        self._BusinessName = params.get("BusinessName")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGeneralOTSpanListResponse(AbstractModel):
+    """DescribeGeneralOTSpanList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数量
+        :type TotalCount: int
+        :param _Spans: 装有查询结果 Spans 的 Trace 结构体。OpenTelemetry 标准 Trace 结构体哈希后的字符串，先将 Trace 利用 ptrace.JSONMarshaler 转换成 Json 字符串，再用 gzip 压缩，最后转换成 base64 标准的字符串。
+        :type Spans: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Spans = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """总数量
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Spans(self):
+        """装有查询结果 Spans 的 Trace 结构体。OpenTelemetry 标准 Trace 结构体哈希后的字符串，先将 Trace 利用 ptrace.JSONMarshaler 转换成 Json 字符串，再用 gzip 压缩，最后转换成 base64 标准的字符串。
+        :rtype: str
+        """
+        return self._Spans
+
+    @Spans.setter
+    def Spans(self, Spans):
+        self._Spans = Spans
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._Spans = params.get("Spans")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeGeneralSpanListRequest(AbstractModel):
     """DescribeGeneralSpanList请求参数结构体
 

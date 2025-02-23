@@ -113,6 +113,8 @@ class AccessPoint(AbstractModel):
         :type AccessPointType: str
         :param _AvailablePortInfo: 端口规格信息。
         :type AvailablePortInfo: list of PortSpecification
+        :param _Address: 接入点地址。
+        :type Address: str
         """
         self._AccessPointName = None
         self._AccessPointId = None
@@ -126,6 +128,7 @@ class AccessPoint(AbstractModel):
         self._Area = None
         self._AccessPointType = None
         self._AvailablePortInfo = None
+        self._Address = None
 
     @property
     def AccessPointName(self):
@@ -259,6 +262,17 @@ class AccessPoint(AbstractModel):
     def AvailablePortInfo(self, AvailablePortInfo):
         self._AvailablePortInfo = AvailablePortInfo
 
+    @property
+    def Address(self):
+        """接入点地址。
+        :rtype: str
+        """
+        return self._Address
+
+    @Address.setter
+    def Address(self, Address):
+        self._Address = Address
+
 
     def _deserialize(self, params):
         self._AccessPointName = params.get("AccessPointName")
@@ -280,6 +294,7 @@ class AccessPoint(AbstractModel):
                 obj = PortSpecification()
                 obj._deserialize(item)
                 self._AvailablePortInfo.append(obj)
+        self._Address = params.get("Address")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
