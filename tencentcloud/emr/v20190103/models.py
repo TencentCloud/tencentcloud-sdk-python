@@ -6026,6 +6026,72 @@ class CustomServiceDefine(AbstractModel):
         
 
 
+class DAGInfo(AbstractModel):
+    """DAG信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 查询ID
+        :type ID: str
+        :param _Type: DAG类型，目前只支持starrocks
+        :type Type: str
+        :param _Content: 返回的DAG的JSON字符串
+        :type Content: str
+        """
+        self._ID = None
+        self._Type = None
+        self._Content = None
+
+    @property
+    def ID(self):
+        """查询ID
+        :rtype: str
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Type(self):
+        """DAG类型，目前只支持starrocks
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Content(self):
+        """返回的DAG的JSON字符串
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Type = params.get("Type")
+        self._Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DayRepeatStrategy(AbstractModel):
     """弹性扩缩容按天重复任务描述
 
@@ -7740,6 +7806,137 @@ class DescribeCvmQuotaResponse(AbstractModel):
                 obj = PodSaleSpec()
                 obj._deserialize(item)
                 self._EksQuotaSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDAGInfoRequest(AbstractModel):
+    """DescribeDAGInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceID: 集群ID
+        :type InstanceID: str
+        :param _Type: DAG类型，目前只支持STARROCKS
+        :type Type: str
+        :param _IDList: 查询ID列表,最大长度为1
+        :type IDList: list of str
+        """
+        self._InstanceID = None
+        self._Type = None
+        self._IDList = None
+
+    @property
+    def InstanceID(self):
+        """集群ID
+        :rtype: str
+        """
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+    @property
+    def Type(self):
+        """DAG类型，目前只支持STARROCKS
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def IDList(self):
+        """查询ID列表,最大长度为1
+        :rtype: list of str
+        """
+        return self._IDList
+
+    @IDList.setter
+    def IDList(self, IDList):
+        self._IDList = IDList
+
+
+    def _deserialize(self, params):
+        self._InstanceID = params.get("InstanceID")
+        self._Type = params.get("Type")
+        self._IDList = params.get("IDList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDAGInfoResponse(AbstractModel):
+    """DescribeDAGInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数，分页查询时使用
+        :type TotalCount: int
+        :param _DAGInfoList: Starrocks 查询信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DAGInfoList: list of DAGInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._DAGInfoList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """总数，分页查询时使用
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def DAGInfoList(self):
+        """Starrocks 查询信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DAGInfo
+        """
+        return self._DAGInfoList
+
+    @DAGInfoList.setter
+    def DAGInfoList(self, DAGInfoList):
+        self._DAGInfoList = DAGInfoList
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("DAGInfoList") is not None:
+            self._DAGInfoList = []
+            for item in params.get("DAGInfoList"):
+                obj = DAGInfo()
+                obj._deserialize(item)
+                self._DAGInfoList.append(obj)
         self._RequestId = params.get("RequestId")
 
 

@@ -443,6 +443,29 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDAGInfo(self, request):
+        """查询DAG信息
+
+        :param request: Request instance for DescribeDAGInfo.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeDAGInfoRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeDAGInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDAGInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDAGInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeEmrApplicationStatics(self, request):
         """yarn application 统计接口查询
 

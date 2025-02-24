@@ -1420,6 +1420,8 @@ class AddCustomRuleRequest(AbstractModel):
         :type Status: int
         :param _PageId: 拦截页面id
         :type PageId: str
+        :param _LogicalOp: 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+        :type LogicalOp: str
         """
         self._Name = None
         self._SortId = None
@@ -1437,6 +1439,7 @@ class AddCustomRuleRequest(AbstractModel):
         self._Label = None
         self._Status = None
         self._PageId = None
+        self._LogicalOp = None
 
     @property
     def Name(self):
@@ -1528,6 +1531,8 @@ class AddCustomRuleRequest(AbstractModel):
 
     @property
     def Bypass(self):
+        warnings.warn("parameter `Bypass` is deprecated", DeprecationWarning) 
+
         """放行时是否继续执行其它检查逻辑，继续执行地域封禁防护：geoip、继续执行CC策略防护：cc、继续执行WEB应用防护：owasp、继续执行AI引擎防护：ai、继续执行信息防泄漏防护：antileakage。如果多个勾选那么以,串接。默认是"geoip,cc,owasp,ai,antileakage"
         :rtype: str
         """
@@ -1535,6 +1540,8 @@ class AddCustomRuleRequest(AbstractModel):
 
     @Bypass.setter
     def Bypass(self, Bypass):
+        warnings.warn("parameter `Bypass` is deprecated", DeprecationWarning) 
+
         self._Bypass = Bypass
 
     @property
@@ -1614,6 +1621,17 @@ class AddCustomRuleRequest(AbstractModel):
     def PageId(self, PageId):
         self._PageId = PageId
 
+    @property
+    def LogicalOp(self):
+        """匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+        :rtype: str
+        """
+        return self._LogicalOp
+
+    @LogicalOp.setter
+    def LogicalOp(self, LogicalOp):
+        self._LogicalOp = LogicalOp
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -1639,6 +1657,7 @@ class AddCustomRuleRequest(AbstractModel):
         self._Label = params.get("Label")
         self._Status = params.get("Status")
         self._PageId = params.get("PageId")
+        self._LogicalOp = params.get("LogicalOp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1720,14 +1739,14 @@ class AddCustomWhiteRuleRequest(AbstractModel):
         :type Name: str
         :param _SortId: 优先级
         :type SortId: str
-        :param _ExpireTime: 过期时间
-        :type ExpireTime: str
         :param _Strategies: 策略详情
         :type Strategies: list of Strategy
         :param _Domain: 需要添加策略的域名
         :type Domain: str
-        :param _Bypass: 放行的详情
+        :param _Bypass: 放行的模块，多个模块之间用逗号连接。支持的模块：acl（自定义规则）、owasp（规则引擎）、webshell（恶意文件检测）、geoip（地域封禁）、bwip（IP黑白名单）、cc、botrpc（BOT防护）、antileakage（信息防泄露）、api（API安全）、ai（AI引擎）、ip_auto_deny（IP封禁）、applet（小程序流量风控）
         :type Bypass: str
+        :param _ExpireTime: 如果没有设置JobDateTime字段则用此字段，0表示永久生效，其它表示定时生效的截止时间（单位为秒）
+        :type ExpireTime: str
         :param _JobType: 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
         :type JobType: str
         :param _JobDateTime: 定时任务配置
@@ -1735,10 +1754,10 @@ class AddCustomWhiteRuleRequest(AbstractModel):
         """
         self._Name = None
         self._SortId = None
-        self._ExpireTime = None
         self._Strategies = None
         self._Domain = None
         self._Bypass = None
+        self._ExpireTime = None
         self._JobType = None
         self._JobDateTime = None
 
@@ -1765,17 +1784,6 @@ class AddCustomWhiteRuleRequest(AbstractModel):
         self._SortId = SortId
 
     @property
-    def ExpireTime(self):
-        """过期时间
-        :rtype: str
-        """
-        return self._ExpireTime
-
-    @ExpireTime.setter
-    def ExpireTime(self, ExpireTime):
-        self._ExpireTime = ExpireTime
-
-    @property
     def Strategies(self):
         """策略详情
         :rtype: list of Strategy
@@ -1799,7 +1807,7 @@ class AddCustomWhiteRuleRequest(AbstractModel):
 
     @property
     def Bypass(self):
-        """放行的详情
+        """放行的模块，多个模块之间用逗号连接。支持的模块：acl（自定义规则）、owasp（规则引擎）、webshell（恶意文件检测）、geoip（地域封禁）、bwip（IP黑白名单）、cc、botrpc（BOT防护）、antileakage（信息防泄露）、api（API安全）、ai（AI引擎）、ip_auto_deny（IP封禁）、applet（小程序流量风控）
         :rtype: str
         """
         return self._Bypass
@@ -1807,6 +1815,17 @@ class AddCustomWhiteRuleRequest(AbstractModel):
     @Bypass.setter
     def Bypass(self, Bypass):
         self._Bypass = Bypass
+
+    @property
+    def ExpireTime(self):
+        """如果没有设置JobDateTime字段则用此字段，0表示永久生效，其它表示定时生效的截止时间（单位为秒）
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
 
     @property
     def JobType(self):
@@ -1834,7 +1853,6 @@ class AddCustomWhiteRuleRequest(AbstractModel):
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._SortId = params.get("SortId")
-        self._ExpireTime = params.get("ExpireTime")
         if params.get("Strategies") is not None:
             self._Strategies = []
             for item in params.get("Strategies"):
@@ -1843,6 +1861,7 @@ class AddCustomWhiteRuleRequest(AbstractModel):
                 self._Strategies.append(obj)
         self._Domain = params.get("Domain")
         self._Bypass = params.get("Bypass")
+        self._ExpireTime = params.get("ExpireTime")
         self._JobType = params.get("JobType")
         if params.get("JobDateTime") is not None:
             self._JobDateTime = JobDateTime()
@@ -2193,6 +2212,10 @@ cdn-waf：CDN上的Web防护能力
         :type GmEncPrivateKey: str
         :param _GmSSLId: GmCertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id
         :type GmSSLId: str
+        :param _UpstreamPolicy: 回源策略，支持负载均衡回源和分流回源两种方式。0：默认值，负载均衡回源；1：分流回源
+        :type UpstreamPolicy: int
+        :param _UpstreamRules: 分流回源时生效，分流回源的规则。
+        :type UpstreamRules: list of UpstreamRule
         """
         self._Domain = None
         self._CertType = None
@@ -2239,6 +2262,8 @@ cdn-waf：CDN上的Web防护能力
         self._GmEncCert = None
         self._GmEncPrivateKey = None
         self._GmSSLId = None
+        self._UpstreamPolicy = None
+        self._UpstreamRules = None
 
     @property
     def Domain(self):
@@ -2775,6 +2800,28 @@ cdn-waf：CDN上的Web防护能力
     def GmSSLId(self, GmSSLId):
         self._GmSSLId = GmSSLId
 
+    @property
+    def UpstreamPolicy(self):
+        """回源策略，支持负载均衡回源和分流回源两种方式。0：默认值，负载均衡回源；1：分流回源
+        :rtype: int
+        """
+        return self._UpstreamPolicy
+
+    @UpstreamPolicy.setter
+    def UpstreamPolicy(self, UpstreamPolicy):
+        self._UpstreamPolicy = UpstreamPolicy
+
+    @property
+    def UpstreamRules(self):
+        """分流回源时生效，分流回源的规则。
+        :rtype: list of UpstreamRule
+        """
+        return self._UpstreamRules
+
+    @UpstreamRules.setter
+    def UpstreamRules(self, UpstreamRules):
+        self._UpstreamRules = UpstreamRules
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -2827,6 +2874,13 @@ cdn-waf：CDN上的Web防护能力
         self._GmEncCert = params.get("GmEncCert")
         self._GmEncPrivateKey = params.get("GmEncPrivateKey")
         self._GmSSLId = params.get("GmSSLId")
+        self._UpstreamPolicy = params.get("UpstreamPolicy")
+        if params.get("UpstreamRules") is not None:
+            self._UpstreamRules = []
+            for item in params.get("UpstreamRules"):
+                obj = UpstreamRule()
+                obj._deserialize(item)
+                self._UpstreamRules.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4113,7 +4167,7 @@ class BatchIpAccessControlItem(AbstractModel):
         :type Ip: str
         :param _Note: 备注
         :type Note: str
-        :param _Source: 添加路径
+        :param _Source: batch为批量域名，batch-group为防护对象组
         :type Source: str
         :param _TsVersion: 修改时间
         :type TsVersion: int
@@ -4135,6 +4189,8 @@ class BatchIpAccessControlItem(AbstractModel):
         :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
         :param _ValidStatus: 生效状态
         :type ValidStatus: int
+        :param _GroupIds: 防护对象组ID列表，如果绑定的是防护对象组
+        :type GroupIds: list of int non-negative
         """
         self._Id = None
         self._ActionType = None
@@ -4151,9 +4207,12 @@ class BatchIpAccessControlItem(AbstractModel):
         self._CronType = None
         self._JobDateTime = None
         self._ValidStatus = None
+        self._GroupIds = None
 
     @property
     def Id(self):
+        warnings.warn("parameter `Id` is deprecated", DeprecationWarning) 
+
         """mongo表自增Id
         :rtype: str
         """
@@ -4161,6 +4220,8 @@ class BatchIpAccessControlItem(AbstractModel):
 
     @Id.setter
     def Id(self, Id):
+        warnings.warn("parameter `Id` is deprecated", DeprecationWarning) 
+
         self._Id = Id
 
     @property
@@ -4176,6 +4237,8 @@ class BatchIpAccessControlItem(AbstractModel):
 
     @property
     def Ip(self):
+        warnings.warn("parameter `Ip` is deprecated", DeprecationWarning) 
+
         """黑白名单的IP
         :rtype: str
         """
@@ -4183,6 +4246,8 @@ class BatchIpAccessControlItem(AbstractModel):
 
     @Ip.setter
     def Ip(self, Ip):
+        warnings.warn("parameter `Ip` is deprecated", DeprecationWarning) 
+
         self._Ip = Ip
 
     @property
@@ -4198,7 +4263,7 @@ class BatchIpAccessControlItem(AbstractModel):
 
     @property
     def Source(self):
-        """添加路径
+        """batch为批量域名，batch-group为防护对象组
         :rtype: str
         """
         return self._Source
@@ -4317,6 +4382,17 @@ class BatchIpAccessControlItem(AbstractModel):
     def ValidStatus(self, ValidStatus):
         self._ValidStatus = ValidStatus
 
+    @property
+    def GroupIds(self):
+        """防护对象组ID列表，如果绑定的是防护对象组
+        :rtype: list of int non-negative
+        """
+        return self._GroupIds
+
+    @GroupIds.setter
+    def GroupIds(self, GroupIds):
+        self._GroupIds = GroupIds
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -4336,6 +4412,7 @@ class BatchIpAccessControlItem(AbstractModel):
             self._JobDateTime = JobDateTime()
             self._JobDateTime._deserialize(params.get("JobDateTime"))
         self._ValidStatus = params.get("ValidStatus")
+        self._GroupIds = params.get("GroupIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12153,7 +12230,7 @@ class DescribeBatchIpAccessControlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: 筛选条件，支持 ActionType，可选的值为40（白名单）42（黑名单），ValidStatus，可选的值为1（生效）0（过期）
+        :param _Filters: 筛选条件，支持 ActionType（可选的值为40：白名单，42：黑名单），ValidStatus（可选的值0：全部，1：生效，2：过期），Ip，Domains（域名列表），GroupId（防护对象组ID），GroupName（防护对象组名），RuleId（规则ID），TimerType（生效方式，1：永久生效，2：定时生效，3：按周周期生效，4：按月周期生效）
         :type Filters: list of FiltersItemNew
         :param _OffSet: 偏移
         :type OffSet: int
@@ -12169,7 +12246,7 @@ class DescribeBatchIpAccessControlRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """筛选条件，支持 ActionType，可选的值为40（白名单）42（黑名单），ValidStatus，可选的值为1（生效）0（过期）
+        """筛选条件，支持 ActionType（可选的值为40：白名单，42：黑名单），ValidStatus（可选的值0：全部，1：生效，2：过期），Ip，Domains（域名列表），GroupId（防护对象组ID），GroupName（防护对象组名），RuleId（规则ID），TimerType（生效方式，1：永久生效，2：定时生效，3：按周周期生效，4：按月周期生效）
         :rtype: list of FiltersItemNew
         """
         return self._Filters
@@ -13254,6 +13331,8 @@ class DescribeCustomRulesRspRuleListItem(AbstractModel):
         :type PageId: str
         :param _Domain: 域名
         :type Domain: str
+        :param _LogicalOp: 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+        :type LogicalOp: str
         """
         self._ActionType = None
         self._Bypass = None
@@ -13275,6 +13354,7 @@ class DescribeCustomRulesRspRuleListItem(AbstractModel):
         self._Label = None
         self._PageId = None
         self._Domain = None
+        self._LogicalOp = None
 
     @property
     def ActionType(self):
@@ -13496,6 +13576,17 @@ class DescribeCustomRulesRspRuleListItem(AbstractModel):
     def Domain(self, Domain):
         self._Domain = Domain
 
+    @property
+    def LogicalOp(self):
+        """匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+        :rtype: str
+        """
+        return self._LogicalOp
+
+    @LogicalOp.setter
+    def LogicalOp(self, LogicalOp):
+        self._LogicalOp = LogicalOp
+
 
     def _deserialize(self, params):
         self._ActionType = params.get("ActionType")
@@ -13525,6 +13616,7 @@ class DescribeCustomRulesRspRuleListItem(AbstractModel):
         self._Label = params.get("Label")
         self._PageId = params.get("PageId")
         self._Domain = params.get("Domain")
+        self._LogicalOp = params.get("LogicalOp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15581,7 +15673,7 @@ class DescribeIpAccessControlRequest(AbstractModel):
         :type Sort: str
         :param _Ip: IP
         :type Ip: str
-        :param _ValidStatus: 生效状态
+        :param _ValidStatus: 生效状态，1表示生效中，2表示过期，0表示全部
         :type ValidStatus: int
         :param _ValidTimeStampMin: 最小有效时间的时间戳
         :type ValidTimeStampMin: str
@@ -15589,7 +15681,7 @@ class DescribeIpAccessControlRequest(AbstractModel):
         :type ValidTimeStampMax: str
         :param _RuleId: 规则ID
         :type RuleId: int
-        :param _TimerType: 定时任务类型筛选0 1 2 3 4
+        :param _TimerType: 0表示全部，1表示永久生效，2表示定时生效，3表示周粒度生效，4表示月粒度生效
         :type TimerType: int
         """
         self._Domain = None
@@ -15752,7 +15844,7 @@ class DescribeIpAccessControlRequest(AbstractModel):
 
     @property
     def ValidStatus(self):
-        """生效状态
+        """生效状态，1表示生效中，2表示过期，0表示全部
         :rtype: int
         """
         return self._ValidStatus
@@ -15796,7 +15888,7 @@ class DescribeIpAccessControlRequest(AbstractModel):
 
     @property
     def TimerType(self):
-        """定时任务类型筛选0 1 2 3 4
+        """0表示全部，1表示永久生效，2表示定时生效，3表示周粒度生效，4表示月粒度生效
         :rtype: int
         """
         return self._TimerType
@@ -15917,13 +16009,13 @@ class DescribeIpHitItemsRequest(AbstractModel):
         :type CtsMax: int
         :param _Skip: 偏移参数
         :type Skip: int
-        :param _Limit: 限制数目
+        :param _Limit: 限制数目，category不等于threat_intelligence时，该值需要必传
         :type Limit: int
         :param _Name: 策略名称
         :type Name: str
         :param _Sort: 排序参数
         :type Sort: str
-        :param _Ip: IP
+        :param _Ip: IP,category传threat_intelligence的时候，该值必传
         :type Ip: str
         :param _ValidTimeStampMin: 有效时间最小时间戳
         :type ValidTimeStampMin: int
@@ -16043,7 +16135,7 @@ class DescribeIpHitItemsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """限制数目
+        """限制数目，category不等于threat_intelligence时，该值需要必传
         :rtype: int
         """
         return self._Limit
@@ -16076,7 +16168,7 @@ class DescribeIpHitItemsRequest(AbstractModel):
 
     @property
     def Ip(self):
-        """IP
+        """IP,category传threat_intelligence的时候，该值必传
         :rtype: str
         """
         return self._Ip
@@ -20579,6 +20671,12 @@ https：使用https协议回源
         :type Labels: list of str
         :param _ProbeStatus: 拨测状态。 0: 禁用拨测, 1: 启用拨测
         :type ProbeStatus: int
+        :param _UpstreamPolicy: 回源策略。
+0：负载均衡回源
+1：分流回源
+        :type UpstreamPolicy: int
+        :param _UpstreamRules: 分流回源策略
+        :type UpstreamRules: list of UpstreamRule
         """
         self._Domain = None
         self._DomainId = None
@@ -20631,6 +20729,8 @@ https：使用https协议回源
         self._GmSSLId = None
         self._Labels = None
         self._ProbeStatus = None
+        self._UpstreamPolicy = None
+        self._UpstreamRules = None
 
     @property
     def Domain(self):
@@ -21238,6 +21338,30 @@ https：使用https协议回源
     def ProbeStatus(self, ProbeStatus):
         self._ProbeStatus = ProbeStatus
 
+    @property
+    def UpstreamPolicy(self):
+        """回源策略。
+0：负载均衡回源
+1：分流回源
+        :rtype: int
+        """
+        return self._UpstreamPolicy
+
+    @UpstreamPolicy.setter
+    def UpstreamPolicy(self, UpstreamPolicy):
+        self._UpstreamPolicy = UpstreamPolicy
+
+    @property
+    def UpstreamRules(self):
+        """分流回源策略
+        :rtype: list of UpstreamRule
+        """
+        return self._UpstreamRules
+
+    @UpstreamRules.setter
+    def UpstreamRules(self, UpstreamRules):
+        self._UpstreamRules = UpstreamRules
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -21296,6 +21420,13 @@ https：使用https协议回源
         self._GmSSLId = params.get("GmSSLId")
         self._Labels = params.get("Labels")
         self._ProbeStatus = params.get("ProbeStatus")
+        self._UpstreamPolicy = params.get("UpstreamPolicy")
+        if params.get("UpstreamRules") is not None:
+            self._UpstreamRules = []
+            for item in params.get("UpstreamRules"):
+                obj = UpstreamRule()
+                obj._deserialize(item)
+                self._UpstreamRules.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25547,10 +25678,13 @@ class JobDateTime(AbstractModel):
     def __init__(self):
         r"""
         :param _Timed: 定时执行的时间参数
+注意：此字段可能返回 null，表示取不到有效值。
         :type Timed: list of TimedJob
         :param _Cron: 周期执行的时间参数
+注意：此字段可能返回 null，表示取不到有效值。
         :type Cron: list of CronJob
         :param _TimeTZone: 时区
+注意：此字段可能返回 null，表示取不到有效值。
         :type TimeTZone: str
         """
         self._Timed = None
@@ -25560,6 +25694,7 @@ class JobDateTime(AbstractModel):
     @property
     def Timed(self):
         """定时执行的时间参数
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TimedJob
         """
         return self._Timed
@@ -25571,6 +25706,7 @@ class JobDateTime(AbstractModel):
     @property
     def Cron(self):
         """周期执行的时间参数
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CronJob
         """
         return self._Cron
@@ -25582,6 +25718,7 @@ class JobDateTime(AbstractModel):
     @property
     def TimeTZone(self):
         """时区
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TimeTZone
@@ -28166,6 +28303,8 @@ class ModifyCustomRuleRequest(AbstractModel):
         :type Status: int
         :param _PageId: 拦截页面id
         :type PageId: str
+        :param _LogicalOp: 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+        :type LogicalOp: str
         """
         self._Domain = None
         self._RuleId = None
@@ -28182,6 +28321,7 @@ class ModifyCustomRuleRequest(AbstractModel):
         self._Source = None
         self._Status = None
         self._PageId = None
+        self._LogicalOp = None
 
     @property
     def Domain(self):
@@ -28262,6 +28402,8 @@ class ModifyCustomRuleRequest(AbstractModel):
 
     @property
     def Bypass(self):
+        warnings.warn("parameter `Bypass` is deprecated", DeprecationWarning) 
+
         """放行时是否继续执行其它检查逻辑，继续执行地域封禁防护：geoip、继续执行CC策略防护：cc、继续执行WEB应用防护：owasp、继续执行AI引擎防护：ai、继续执行信息防泄漏防护：antileakage。如果多个勾选那么以,串接。
 默认是"geoip,cc,owasp,ai,antileakage"
         :rtype: str
@@ -28270,6 +28412,8 @@ class ModifyCustomRuleRequest(AbstractModel):
 
     @Bypass.setter
     def Bypass(self, Bypass):
+        warnings.warn("parameter `Bypass` is deprecated", DeprecationWarning) 
+
         self._Bypass = Bypass
 
     @property
@@ -28351,6 +28495,17 @@ class ModifyCustomRuleRequest(AbstractModel):
     def PageId(self, PageId):
         self._PageId = PageId
 
+    @property
+    def LogicalOp(self):
+        """匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+        :rtype: str
+        """
+        return self._LogicalOp
+
+    @LogicalOp.setter
+    def LogicalOp(self, LogicalOp):
+        self._LogicalOp = LogicalOp
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -28375,6 +28530,7 @@ class ModifyCustomRuleRequest(AbstractModel):
         self._Source = params.get("Source")
         self._Status = params.get("Status")
         self._PageId = params.get("PageId")
+        self._LogicalOp = params.get("LogicalOp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28593,7 +28749,7 @@ class ModifyCustomWhiteRuleRequest(AbstractModel):
         :type Bypass: str
         :param _SortId: 优先级，1~100的整数，数字越小，代表这条规则的执行优先级越高。
         :type SortId: int
-        :param _ExpireTime: 规则生效截止时间，0：永久生效，其它值为对应时间的时间戳。
+        :param _ExpireTime: 如果没有设置JobDateTime字段则用此字段，0表示永久生效，其它表示定时生效的截止时间（单位为秒）
         :type ExpireTime: int
         :param _Strategies: 匹配条件数组
         :type Strategies: list of Strategy
@@ -28669,7 +28825,7 @@ class ModifyCustomWhiteRuleRequest(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """规则生效截止时间，0：永久生效，其它值为对应时间的时间戳。
+        """如果没有设置JobDateTime字段则用此字段，0表示永久生效，其它表示定时生效的截止时间（单位为秒）
         :rtype: int
         """
         return self._ExpireTime
@@ -31123,6 +31279,10 @@ https：使用https协议回源
         :type GmEncPrivateKey: str
         :param _GmSSLId: GmCertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id
         :type GmSSLId: str
+        :param _UpstreamPolicy: 回源策略，支持负载均衡回源和分流回源两种方式。0：默认值，负载均衡回源；1：分流回源
+        :type UpstreamPolicy: int
+        :param _UpstreamRules: 分流回源时生效，分流回源的规则。
+        :type UpstreamRules: list of UpstreamRule
         """
         self._Domain = None
         self._DomainId = None
@@ -31168,6 +31328,8 @@ https：使用https协议回源
         self._GmEncCert = None
         self._GmEncPrivateKey = None
         self._GmSSLId = None
+        self._UpstreamPolicy = None
+        self._UpstreamRules = None
 
     @property
     def Domain(self):
@@ -31659,6 +31821,28 @@ https：使用https协议回源
     def GmSSLId(self, GmSSLId):
         self._GmSSLId = GmSSLId
 
+    @property
+    def UpstreamPolicy(self):
+        """回源策略，支持负载均衡回源和分流回源两种方式。0：默认值，负载均衡回源；1：分流回源
+        :rtype: int
+        """
+        return self._UpstreamPolicy
+
+    @UpstreamPolicy.setter
+    def UpstreamPolicy(self, UpstreamPolicy):
+        self._UpstreamPolicy = UpstreamPolicy
+
+    @property
+    def UpstreamRules(self):
+        """分流回源时生效，分流回源的规则。
+        :rtype: list of UpstreamRule
+        """
+        return self._UpstreamRules
+
+    @UpstreamRules.setter
+    def UpstreamRules(self, UpstreamRules):
+        self._UpstreamRules = UpstreamRules
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -31710,6 +31894,13 @@ https：使用https协议回源
         self._GmEncCert = params.get("GmEncCert")
         self._GmEncPrivateKey = params.get("GmEncPrivateKey")
         self._GmSSLId = params.get("GmSSLId")
+        self._UpstreamPolicy = params.get("UpstreamPolicy")
+        if params.get("UpstreamRules") is not None:
+            self._UpstreamRules = []
+            for item in params.get("UpstreamRules"):
+                obj = UpstreamRule()
+                obj._deserialize(item)
+                self._UpstreamRules.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -35006,7 +35197,8 @@ class Strategy(AbstractModel):
         :param _Field: 匹配字段
 
     匹配字段不同，相应的匹配参数、逻辑符号、匹配内容有所不同具体如下所示：
-<table><thead><tr><th>匹配字段</th><th>匹配参数</th><th>逻辑符号</th><th>匹配内容</th></tr></thead><tbody><tr><td>IP（来源IP）</td><td>不支持参数</td><td>ipmatch（匹配）<br/>ipnmatch（不匹配）</td><td>多个IP以英文逗号隔开,最多20个</td></tr><tr><td>IPV6（来源IPv6）</td><td>不支持参数</td><td>ipmatch（匹配）<br/>ipnmatch（不匹配）</td><td>支持单个IPV6地址</td></tr><tr><td>Referer（Referer）</td><td>不支持参数</td><td>empty（内容为空）<br/>null（不存在）<br/>eq（等于）<br/>neq（不等于）<br/>contains（包含）<br/>ncontains（不包含）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）<br/>rematch（正则匹配）</td><td>请输入内容,512个字符以内</td></tr><tr><td>URL（请求路径）</td><td>不支持参数</td><td>eq（等于）<br/>neq（不等于）<br/>contains（包含）<br/>ncontains（不包含）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）<br/>rematch（正则匹配）<br/></td><td>请以/开头,512个字符以内</td></tr><tr><td>UserAgent（UserAgent）</td><td>不支持参数</td><td>同匹配字段<font color="Red">Referer</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>HTTP_METHOD（HTTP请求方法）</td><td>不支持参数</td><td>eq（等于）<br/>neq（不等于）</td><td>请输入方法名称,建议大写</td></tr><tr><td>QUERY_STRING（请求字符串）</td><td>不支持参数</td><td>同匹配字段<font color="Red">请求路径</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>GET（GET参数值）</td><td>支持参数录入</td><td>contains（包含）<br/>ncontains（不包含）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）</td><td>请输入内容,512个字符以内</td></tr><tr><td>GET_PARAMS_NAMES（GET参数名）</td><td>不支持参数</td><td>exsit（存在参数）<br/>nexsit（不存在参数）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）</td><td>请输入内容,512个字符以内</td></tr><tr><td>POST（POST参数值）</td><td>支持参数录入</td><td>同匹配字段<font color="Red">GET参数值</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>GET_POST_NAMES（POST参数名）</td><td>不支持参数</td><td>同匹配字段<font color="Red">GET参数名</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>POST_BODY（完整BODY）</td><td>不支持参数</td><td>同匹配字段<font color="Red">请求路径</font>逻辑符号</td><td>请输入BODY内容,512个字符以内</td></tr><tr><td>COOKIE（Cookie）</td><td>不支持参数</td><td>empty（内容为空）<br/>null（不存在）<br/>rematch（正则匹配）</td><td><font color="Red">暂不支持</font></td></tr><tr><td>GET_COOKIES_NAMES（Cookie参数名）</td><td>不支持参数</td><td>同匹配字段<font color="Red">GET参数名</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>ARGS_COOKIE（Cookie参数值）</td><td>支持参数录入</td><td>同匹配字段<font color="Red">GET参数值</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>GET_HEADERS_NAMES（Header参数名）</td><td>不支持参数</td><td>exsit（存在参数）<br/>nexsit（不存在参数）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）<br/>rematch（正则匹配）</td><td>请输入内容,建议小写,512个字符以内</td></tr><tr><td>ARGS_HEADER（Header参数值）</td><td>支持参数录入</td><td>contains（包含）<br/>ncontains（不包含）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）<br/>rematch（正则匹配）</td><td>请输入内容,512个字符以内</td></tr></tbody></table>
+<table><thead><tr><th>匹配字段</th><th>匹配参数</th><th>逻辑符号</th><th>匹配内容</th></tr></thead><tbody><tr><td>IP（来源IP）</td><td>不支持参数</td><td>ipmatch（匹配）<br/>ipnmatch（不匹配）</td><td>多个IP以英文逗号隔开,最多20个</td></tr><tr><td>IPV6（来源IPv6）</td><td>不支持参数</td><td>ipmatch（匹配）<br/>ipnmatch（不匹配）</td><td>支持单个IPV6地址</td></tr><tr><td>Referer（Referer）</td><td>不支持参数</td><td>empty（内容为空）<br/>null（不存在）<br/>eq（等于）<br/>neq（不等于）<br/>contains（包含）<br/>ncontains（不包含）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）<br/>rematch（正则匹配）</td><td>请输入内容,512个字符以内</td></tr><tr><td>URL（请求路径）</td><td>不支持参数</td><td>eq（等于）<br/>neq（不等于）<br/>contains（包含）<br/>ncontains（不包含）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）<br/>rematch（正则匹配）<br/></td><td>请以/开头,512个字符以内</td></tr><tr><td>UserAgent（UserAgent）</td><td>不支持参数</td><td>同匹配字段<font color="Red">Referer</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>HTTP_METHOD（HTTP请求方法）</td><td>不支持参数</td><td>eq（等于）<br/>neq（不等于）</td><td>请输入方法名称,建议大写</td></tr><tr><td>QUERY_STRING（请求字符串）</td><td>不支持参数</td><td>同匹配字段<font color="Red">请求路径</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>GET（GET参数值）</td><td>支持参数录入</td><td>contains（包含）<br/>ncontains（不包含）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）</td><td>请输入内容,512个字符以内</td></tr><tr><td>GET_PARAMS_NAMES（GET参数名）</td><td>不支持参数</td><td>exsit（存在参数）<br/>nexsit（不存在参数）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）</td><td>请输入内容,512个字符以内</td></tr><tr><td>POST（POST参数值）</td><td>支持参数录入</td><td>同匹配字段<font color="Red">GET参数值</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>GET_POST_NAMES（POST参数名）</td><td>不支持参数</td><td>同匹配字段<font color="Red">GET参数名</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>POST_BODY（完整BODY）</td><td>不支持参数</td><td>同匹配字段<font color="Red">请求路径</font>逻辑符号</td><td>请输入BODY内容,512个字符以内</td></tr><tr><td>COOKIE（Cookie）</td><td>不支持参数</td><td>empty（内容为空）<br/>null（不存在）<br/>rematch（正则匹配）</td><td><font color="Red">暂不支持</font></td></tr><tr><td>GET_COOKIES_NAMES（Cookie参数名）</td><td>不支持参数</td><td>同匹配字段<font color="Red">GET参数名</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>ARGS_COOKIE（Cookie参数值）</td><td>支持参数录入</td><td>同匹配字段<font color="Red">GET参数值</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>GET_HEADERS_NAMES（Header参数名）</td><td>不支持参数</td><td>exsit（存在参数）<br/>nexsit（不存在参数）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）<br/>rematch（正则匹配）</td><td>请输入内容,建议小写,512个字符以内</td></tr><tr><td>ARGS_HEADER（Header参数值）</td><td>支持参数录入</td><td>contains（包含）<br/>ncontains（不包含）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）<br/>rematch（正则匹配）</td><td>请输入内容,512个字符以内</td></tr><tr><td>CONTENT_LENGTH（Content-length）</td><td>支持参数录入</td><td>numgt（数值大于）<br/>numlt（数值小于）<br/>numeq（数值等于）<br/></td><td>请输入0-9999999999999之间的整数</td></tr><tr><td>IP_GEO（来源IP归属地）</td><td>支持参数录入</td><td>geo_in（属于）<br/>geo_not_in（不属于）<br/></td><td>请输入内容,10240字符以内，格式为序列化的JSON，格式为：[{"Country":"中国","Region":"广东","City":"深圳"}]</td></tr>
+</tbody></table>
         :type Field: str
         :param _CompareFunc: 逻辑符号 
 
@@ -35024,6 +35216,11 @@ class Strategy(AbstractModel):
         len_lt （ 长度小于）
         ipmatch （ 属于）
         ipnmatch （ 不属于）
+        numgt （ 数值大于）
+        numlt （ 数值小于）
+        numeq （ 数值等于）
+        geo_in （ IP地理属于）
+        geo_not_in （ IP地理不属于）
     各匹配字段对应的逻辑符号不同，详见上述匹配字段表格
 
         :type CompareFunc: str
@@ -35057,7 +35254,8 @@ class Strategy(AbstractModel):
         """匹配字段
 
     匹配字段不同，相应的匹配参数、逻辑符号、匹配内容有所不同具体如下所示：
-<table><thead><tr><th>匹配字段</th><th>匹配参数</th><th>逻辑符号</th><th>匹配内容</th></tr></thead><tbody><tr><td>IP（来源IP）</td><td>不支持参数</td><td>ipmatch（匹配）<br/>ipnmatch（不匹配）</td><td>多个IP以英文逗号隔开,最多20个</td></tr><tr><td>IPV6（来源IPv6）</td><td>不支持参数</td><td>ipmatch（匹配）<br/>ipnmatch（不匹配）</td><td>支持单个IPV6地址</td></tr><tr><td>Referer（Referer）</td><td>不支持参数</td><td>empty（内容为空）<br/>null（不存在）<br/>eq（等于）<br/>neq（不等于）<br/>contains（包含）<br/>ncontains（不包含）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）<br/>rematch（正则匹配）</td><td>请输入内容,512个字符以内</td></tr><tr><td>URL（请求路径）</td><td>不支持参数</td><td>eq（等于）<br/>neq（不等于）<br/>contains（包含）<br/>ncontains（不包含）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）<br/>rematch（正则匹配）<br/></td><td>请以/开头,512个字符以内</td></tr><tr><td>UserAgent（UserAgent）</td><td>不支持参数</td><td>同匹配字段<font color="Red">Referer</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>HTTP_METHOD（HTTP请求方法）</td><td>不支持参数</td><td>eq（等于）<br/>neq（不等于）</td><td>请输入方法名称,建议大写</td></tr><tr><td>QUERY_STRING（请求字符串）</td><td>不支持参数</td><td>同匹配字段<font color="Red">请求路径</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>GET（GET参数值）</td><td>支持参数录入</td><td>contains（包含）<br/>ncontains（不包含）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）</td><td>请输入内容,512个字符以内</td></tr><tr><td>GET_PARAMS_NAMES（GET参数名）</td><td>不支持参数</td><td>exsit（存在参数）<br/>nexsit（不存在参数）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）</td><td>请输入内容,512个字符以内</td></tr><tr><td>POST（POST参数值）</td><td>支持参数录入</td><td>同匹配字段<font color="Red">GET参数值</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>GET_POST_NAMES（POST参数名）</td><td>不支持参数</td><td>同匹配字段<font color="Red">GET参数名</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>POST_BODY（完整BODY）</td><td>不支持参数</td><td>同匹配字段<font color="Red">请求路径</font>逻辑符号</td><td>请输入BODY内容,512个字符以内</td></tr><tr><td>COOKIE（Cookie）</td><td>不支持参数</td><td>empty（内容为空）<br/>null（不存在）<br/>rematch（正则匹配）</td><td><font color="Red">暂不支持</font></td></tr><tr><td>GET_COOKIES_NAMES（Cookie参数名）</td><td>不支持参数</td><td>同匹配字段<font color="Red">GET参数名</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>ARGS_COOKIE（Cookie参数值）</td><td>支持参数录入</td><td>同匹配字段<font color="Red">GET参数值</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>GET_HEADERS_NAMES（Header参数名）</td><td>不支持参数</td><td>exsit（存在参数）<br/>nexsit（不存在参数）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）<br/>rematch（正则匹配）</td><td>请输入内容,建议小写,512个字符以内</td></tr><tr><td>ARGS_HEADER（Header参数值）</td><td>支持参数录入</td><td>contains（包含）<br/>ncontains（不包含）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）<br/>rematch（正则匹配）</td><td>请输入内容,512个字符以内</td></tr></tbody></table>
+<table><thead><tr><th>匹配字段</th><th>匹配参数</th><th>逻辑符号</th><th>匹配内容</th></tr></thead><tbody><tr><td>IP（来源IP）</td><td>不支持参数</td><td>ipmatch（匹配）<br/>ipnmatch（不匹配）</td><td>多个IP以英文逗号隔开,最多20个</td></tr><tr><td>IPV6（来源IPv6）</td><td>不支持参数</td><td>ipmatch（匹配）<br/>ipnmatch（不匹配）</td><td>支持单个IPV6地址</td></tr><tr><td>Referer（Referer）</td><td>不支持参数</td><td>empty（内容为空）<br/>null（不存在）<br/>eq（等于）<br/>neq（不等于）<br/>contains（包含）<br/>ncontains（不包含）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）<br/>rematch（正则匹配）</td><td>请输入内容,512个字符以内</td></tr><tr><td>URL（请求路径）</td><td>不支持参数</td><td>eq（等于）<br/>neq（不等于）<br/>contains（包含）<br/>ncontains（不包含）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）<br/>rematch（正则匹配）<br/></td><td>请以/开头,512个字符以内</td></tr><tr><td>UserAgent（UserAgent）</td><td>不支持参数</td><td>同匹配字段<font color="Red">Referer</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>HTTP_METHOD（HTTP请求方法）</td><td>不支持参数</td><td>eq（等于）<br/>neq（不等于）</td><td>请输入方法名称,建议大写</td></tr><tr><td>QUERY_STRING（请求字符串）</td><td>不支持参数</td><td>同匹配字段<font color="Red">请求路径</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>GET（GET参数值）</td><td>支持参数录入</td><td>contains（包含）<br/>ncontains（不包含）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）</td><td>请输入内容,512个字符以内</td></tr><tr><td>GET_PARAMS_NAMES（GET参数名）</td><td>不支持参数</td><td>exsit（存在参数）<br/>nexsit（不存在参数）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）</td><td>请输入内容,512个字符以内</td></tr><tr><td>POST（POST参数值）</td><td>支持参数录入</td><td>同匹配字段<font color="Red">GET参数值</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>GET_POST_NAMES（POST参数名）</td><td>不支持参数</td><td>同匹配字段<font color="Red">GET参数名</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>POST_BODY（完整BODY）</td><td>不支持参数</td><td>同匹配字段<font color="Red">请求路径</font>逻辑符号</td><td>请输入BODY内容,512个字符以内</td></tr><tr><td>COOKIE（Cookie）</td><td>不支持参数</td><td>empty（内容为空）<br/>null（不存在）<br/>rematch（正则匹配）</td><td><font color="Red">暂不支持</font></td></tr><tr><td>GET_COOKIES_NAMES（Cookie参数名）</td><td>不支持参数</td><td>同匹配字段<font color="Red">GET参数名</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>ARGS_COOKIE（Cookie参数值）</td><td>支持参数录入</td><td>同匹配字段<font color="Red">GET参数值</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>GET_HEADERS_NAMES（Header参数名）</td><td>不支持参数</td><td>exsit（存在参数）<br/>nexsit（不存在参数）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）<br/>rematch（正则匹配）</td><td>请输入内容,建议小写,512个字符以内</td></tr><tr><td>ARGS_HEADER（Header参数值）</td><td>支持参数录入</td><td>contains（包含）<br/>ncontains（不包含）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）<br/>rematch（正则匹配）</td><td>请输入内容,512个字符以内</td></tr><tr><td>CONTENT_LENGTH（Content-length）</td><td>支持参数录入</td><td>numgt（数值大于）<br/>numlt（数值小于）<br/>numeq（数值等于）<br/></td><td>请输入0-9999999999999之间的整数</td></tr><tr><td>IP_GEO（来源IP归属地）</td><td>支持参数录入</td><td>geo_in（属于）<br/>geo_not_in（不属于）<br/></td><td>请输入内容,10240字符以内，格式为序列化的JSON，格式为：[{"Country":"中国","Region":"广东","City":"深圳"}]</td></tr>
+</tbody></table>
         :rtype: str
         """
         return self._Field
@@ -35084,6 +35282,11 @@ class Strategy(AbstractModel):
         len_lt （ 长度小于）
         ipmatch （ 属于）
         ipnmatch （ 不属于）
+        numgt （ 数值大于）
+        numlt （ 数值小于）
+        numeq （ 数值等于）
+        geo_in （ IP地理属于）
+        geo_not_in （ IP地理不属于）
     各匹配字段对应的逻辑符号不同，详见上述匹配字段表格
 
         :rtype: str
@@ -35839,7 +36042,7 @@ class UpsertCCRuleRequest(AbstractModel):
         :type Interval: str
         :param _Url: 检测Url
         :type Url: str
-        :param _MatchFunc: 匹配方法，0表示等于，1表示前缀匹配，2表示包含
+        :param _MatchFunc: 匹配方法，0表示等于，1表示前缀匹配，2表示包含，3表示不等于，6表示后缀匹配，7表示不包含
         :type MatchFunc: int
         :param _ActionType: 动作，20表示观察，21表示人机识别，22表示拦截，23表示精准拦截，26表示精准人机识别，27表示JS校验
         :type ActionType: str
@@ -35847,7 +36050,7 @@ class UpsertCCRuleRequest(AbstractModel):
         :type Priority: int
         :param _ValidTime: 动作有效时间
         :type ValidTime: int
-        :param _OptionsArr: 附加参数
+        :param _OptionsArr: [{\"key\":\"Method\",\"args\":[\"=R0VU\"],\"match\":\"0\",\"encodeflag\":true}] Key可选值为 Method、Post、Referer、Cookie、User-Agent、CustomHeader match可选值为，当Key为Method的时候可选值为0（等于）、3（不等于）。 Key为Post的时候可选值为0（等于）、3（不等于），Key为Cookie的时候可选值为0（等于）、2（包含），3（不等于）、7（不包含）、 当Key为Referer的时候可选值为0（等于）、3（不等于）、1（前缀匹配）、6（后缀匹配）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为Cookie的时候可选值为0（等于）、3（不等于）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为User-Agent的时候可选值为0（等于）、3（不等于）、1（前缀匹配）、6（后缀匹配）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为CustomHeader的时候可选值为0（等于）、3（不等于）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）。 args用来表示匹配内容，需要设置encodeflag为true，当Key为Post、Cookie、CustomHeader时，用等号=来分别串接Key和Value，并分别用Base64编码，类似YWJj=YWJj。当Key为Referer、User-Agent时，用等号=来串接Value，类似=YWJj。
         :type OptionsArr: str
         :param _Edition: waf版本，sparta-waf或者clb-waf
         :type Edition: str
@@ -35963,7 +36166,7 @@ class UpsertCCRuleRequest(AbstractModel):
 
     @property
     def MatchFunc(self):
-        """匹配方法，0表示等于，1表示前缀匹配，2表示包含
+        """匹配方法，0表示等于，1表示前缀匹配，2表示包含，3表示不等于，6表示后缀匹配，7表示不包含
         :rtype: int
         """
         return self._MatchFunc
@@ -36007,7 +36210,7 @@ class UpsertCCRuleRequest(AbstractModel):
 
     @property
     def OptionsArr(self):
-        """附加参数
+        """[{\"key\":\"Method\",\"args\":[\"=R0VU\"],\"match\":\"0\",\"encodeflag\":true}] Key可选值为 Method、Post、Referer、Cookie、User-Agent、CustomHeader match可选值为，当Key为Method的时候可选值为0（等于）、3（不等于）。 Key为Post的时候可选值为0（等于）、3（不等于），Key为Cookie的时候可选值为0（等于）、2（包含），3（不等于）、7（不包含）、 当Key为Referer的时候可选值为0（等于）、3（不等于）、1（前缀匹配）、6（后缀匹配）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为Cookie的时候可选值为0（等于）、3（不等于）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为User-Agent的时候可选值为0（等于）、3（不等于）、1（前缀匹配）、6（后缀匹配）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为CustomHeader的时候可选值为0（等于）、3（不等于）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）。 args用来表示匹配内容，需要设置encodeflag为true，当Key为Post、Cookie、CustomHeader时，用等号=来分别串接Key和Value，并分别用Base64编码，类似YWJj=YWJj。当Key为Referer、User-Agent时，用等号=来串接Value，类似=YWJj。
         :rtype: str
         """
         return self._OptionsArr
@@ -36580,6 +36783,114 @@ class UpsertSessionResponse(AbstractModel):
         self._Data = params.get("Data")
         self._SessionID = params.get("SessionID")
         self._RequestId = params.get("RequestId")
+
+
+class UpstreamRule(AbstractModel):
+    """SAASWAF规则回源时的规则数据结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KeyName: 匹配的关键字。目前支持host、uri两种
+        :type KeyName: str
+        :param _Symbol: 逻辑符号。
+equal：等于
+not equal：不等于
+belong：属于
+not belong：不属于
+        :type Symbol: str
+        :param _ContentList: 匹配的内容。equal和not equal时，数组只能有一个元素
+        :type ContentList: list of str
+        :param _AddressList: 规则匹配后生效的回源地址。
+        :type AddressList: list of str
+        :param _BalanceType: 回源负载均衡类型，仅多个回源地址时生效。
+0：轮询
+1：IP_HASH
+        :type BalanceType: int
+        """
+        self._KeyName = None
+        self._Symbol = None
+        self._ContentList = None
+        self._AddressList = None
+        self._BalanceType = None
+
+    @property
+    def KeyName(self):
+        """匹配的关键字。目前支持host、uri两种
+        :rtype: str
+        """
+        return self._KeyName
+
+    @KeyName.setter
+    def KeyName(self, KeyName):
+        self._KeyName = KeyName
+
+    @property
+    def Symbol(self):
+        """逻辑符号。
+equal：等于
+not equal：不等于
+belong：属于
+not belong：不属于
+        :rtype: str
+        """
+        return self._Symbol
+
+    @Symbol.setter
+    def Symbol(self, Symbol):
+        self._Symbol = Symbol
+
+    @property
+    def ContentList(self):
+        """匹配的内容。equal和not equal时，数组只能有一个元素
+        :rtype: list of str
+        """
+        return self._ContentList
+
+    @ContentList.setter
+    def ContentList(self, ContentList):
+        self._ContentList = ContentList
+
+    @property
+    def AddressList(self):
+        """规则匹配后生效的回源地址。
+        :rtype: list of str
+        """
+        return self._AddressList
+
+    @AddressList.setter
+    def AddressList(self, AddressList):
+        self._AddressList = AddressList
+
+    @property
+    def BalanceType(self):
+        """回源负载均衡类型，仅多个回源地址时生效。
+0：轮询
+1：IP_HASH
+        :rtype: int
+        """
+        return self._BalanceType
+
+    @BalanceType.setter
+    def BalanceType(self, BalanceType):
+        self._BalanceType = BalanceType
+
+
+    def _deserialize(self, params):
+        self._KeyName = params.get("KeyName")
+        self._Symbol = params.get("Symbol")
+        self._ContentList = params.get("ContentList")
+        self._AddressList = params.get("AddressList")
+        self._BalanceType = params.get("BalanceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class UserDomainInfo(AbstractModel):

@@ -204,14 +204,10 @@ class DataAuthorizationInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _DataProviderName: 数据委托方、需求方：客户主体名称。
-
-示例值：某某有限公司。
         :type DataProviderName: str
         :param _DataRecipientName: 数据受托方、提供方：腾讯云主体名称。
 
 固定填：腾讯云计算（北京）有限责任公司
-
-示例值：腾讯云计算（北京）有限责任公司
         :type DataRecipientName: str
         :param _UserDataType: 客户请求RCE所提供的用户数据类型，支持多选。实际以接口请求传参为准。
 
@@ -224,33 +220,23 @@ class DataAuthorizationInfo(AbstractModel):
 4-IP地址；
 
 999-其它；
-
-示例值：[1, 4]
         :type UserDataType: list of int non-negative
         :param _IsAuthorize: 客户是否已按[合规指南](https://rule.tencent.com/rule/202409130001)要求获取用户授权，同意客户委托腾讯云处理入参信息
 1-已授权；其它值为未授权。
-示例值：1
         :type IsAuthorize: int
         :param _IsOrderHandling: 客户是否已按[合规指南](https://rule.tencent.com/rule/202409130001)要求获取用户授权，同意腾讯云结合客户提供的信息，对已合法收集的用户数据进行必要处理得出服务结果，并返回给客户。
 1-已授权；其它值为未授权。
-示例值：1
         :type IsOrderHandling: int
         :param _AuthorizationTerm: 客户获得的用户授权期限时间戳（单位秒）。
 
 不填默认无固定期限。
-
-示例值：1719805604
         :type AuthorizationTerm: int
         :param _PrivacyPolicyLink: 	
 客户获得用户授权所依赖的协议地址。
-
-示例值：https://www.*****.com/*
         :type PrivacyPolicyLink: str
         :param _IsPersonalData: 是否是用户个人敏感数据（不推荐使用）。
 
 固定填：1。
-
-示例值：1
         :type IsPersonalData: int
         """
         self._DataProviderName = None
@@ -265,8 +251,6 @@ class DataAuthorizationInfo(AbstractModel):
     @property
     def DataProviderName(self):
         """数据委托方、需求方：客户主体名称。
-
-示例值：某某有限公司。
         :rtype: str
         """
         return self._DataProviderName
@@ -280,8 +264,6 @@ class DataAuthorizationInfo(AbstractModel):
         """数据受托方、提供方：腾讯云主体名称。
 
 固定填：腾讯云计算（北京）有限责任公司
-
-示例值：腾讯云计算（北京）有限责任公司
         :rtype: str
         """
         return self._DataRecipientName
@@ -303,8 +285,6 @@ class DataAuthorizationInfo(AbstractModel):
 4-IP地址；
 
 999-其它；
-
-示例值：[1, 4]
         :rtype: list of int non-negative
         """
         return self._UserDataType
@@ -317,7 +297,6 @@ class DataAuthorizationInfo(AbstractModel):
     def IsAuthorize(self):
         """客户是否已按[合规指南](https://rule.tencent.com/rule/202409130001)要求获取用户授权，同意客户委托腾讯云处理入参信息
 1-已授权；其它值为未授权。
-示例值：1
         :rtype: int
         """
         return self._IsAuthorize
@@ -330,7 +309,6 @@ class DataAuthorizationInfo(AbstractModel):
     def IsOrderHandling(self):
         """客户是否已按[合规指南](https://rule.tencent.com/rule/202409130001)要求获取用户授权，同意腾讯云结合客户提供的信息，对已合法收集的用户数据进行必要处理得出服务结果，并返回给客户。
 1-已授权；其它值为未授权。
-示例值：1
         :rtype: int
         """
         return self._IsOrderHandling
@@ -344,8 +322,6 @@ class DataAuthorizationInfo(AbstractModel):
         """客户获得的用户授权期限时间戳（单位秒）。
 
 不填默认无固定期限。
-
-示例值：1719805604
         :rtype: int
         """
         return self._AuthorizationTerm
@@ -358,8 +334,6 @@ class DataAuthorizationInfo(AbstractModel):
     def PrivacyPolicyLink(self):
         """	
 客户获得用户授权所依赖的协议地址。
-
-示例值：https://www.*****.com/*
         :rtype: str
         """
         return self._PrivacyPolicyLink
@@ -373,8 +347,6 @@ class DataAuthorizationInfo(AbstractModel):
         """是否是用户个人敏感数据（不推荐使用）。
 
 固定填：1。
-
-示例值：1
         :rtype: int
         """
         return self._IsPersonalData
@@ -414,9 +386,9 @@ class DataContentInfo(AbstractModel):
         :type DataContent: str
         :param _DataRemark: 名单数据描述
         :type DataRemark: str
-        :param _StartTime: 名单数据开始时间，时间格式示例"2024-05-05 12:10:15"
+        :param _StartTime: 名单数据开始时间
         :type StartTime: str
-        :param _EndTime: 名单数据结束时间，时间格式示例"2024-05-05 12:10:15"
+        :param _EndTime: 名单数据结束时间
         :type EndTime: str
         """
         self._DataContent = None
@@ -448,7 +420,7 @@ class DataContentInfo(AbstractModel):
 
     @property
     def StartTime(self):
-        """名单数据开始时间，时间格式示例"2024-05-05 12:10:15"
+        """名单数据开始时间
         :rtype: str
         """
         return self._StartTime
@@ -459,7 +431,7 @@ class DataContentInfo(AbstractModel):
 
     @property
     def EndTime(self):
-        """名单数据结束时间，时间格式示例"2024-05-05 12:10:15"
+        """名单数据结束时间
         :rtype: str
         """
         return self._EndTime
@@ -2154,9 +2126,9 @@ class InputModifyNameListDataFront(AbstractModel):
         :type NameListDataId: int
         :param _DataContent: 名单数据内容
         :type DataContent: str
-        :param _StartTime: 名单数据开始时间，时间格式示例"2024-05-05 12:10:15"
+        :param _StartTime: 名单数据开始时间
         :type StartTime: str
-        :param _EndTime: 名单数据结束时间，时间格式示例"2024-05-05 12:10:15"
+        :param _EndTime: 名单数据结束时间
         :type EndTime: str
         :param _Status: 记录状态 [1 启用 2 停用]
         :type Status: int
@@ -2194,7 +2166,7 @@ class InputModifyNameListDataFront(AbstractModel):
 
     @property
     def StartTime(self):
-        """名单数据开始时间，时间格式示例"2024-05-05 12:10:15"
+        """名单数据开始时间
         :rtype: str
         """
         return self._StartTime
@@ -2205,7 +2177,7 @@ class InputModifyNameListDataFront(AbstractModel):
 
     @property
     def EndTime(self):
-        """名单数据结束时间，时间格式示例"2024-05-05 12:10:15"
+        """名单数据结束时间
         :rtype: str
         """
         return self._EndTime
@@ -2578,7 +2550,9 @@ class OnlineScamInfo(AbstractModel):
 0：对话。
 1：广播。
         :type ContentType: int
-        :param _FraudType: 类型
+        :param _FraudType: 账号类型
+1：手机号
+2：uin账号
         :type FraudType: int
         :param _FraudAccount: 账号
         :type FraudAccount: str
@@ -2628,7 +2602,9 @@ class OnlineScamInfo(AbstractModel):
 
     @property
     def FraudType(self):
-        """类型
+        """账号类型
+1：手机号
+2：uin账号
         :rtype: int
         """
         return self._FraudType
@@ -2753,7 +2729,6 @@ class OuntputDescribeDataListInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Count: 数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Count: int
         :param _List: 列表
 注意：此字段可能返回 null，表示取不到有效值。
@@ -2765,7 +2740,6 @@ class OuntputDescribeDataListInfo(AbstractModel):
     @property
     def Count(self):
         """数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Count
@@ -2881,10 +2855,8 @@ class OutputDeleteNameListData(AbstractModel):
     def __init__(self):
         r"""
         :param _Code: 错误码，0 表示成功，非0表示失败错误码。 0：成功 1002：参数错误 4300：未开通服务 6000：系统内部错误
-注意：此字段可能返回 null，表示取不到有效值。
         :type Code: int
         :param _Message: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param _Value: 空数组
 注意：此字段可能返回 null，表示取不到有效值。
@@ -2897,7 +2869,6 @@ class OutputDeleteNameListData(AbstractModel):
     @property
     def Code(self):
         """错误码，0 表示成功，非0表示失败错误码。 0：成功 1002：参数错误 4300：未开通服务 6000：系统内部错误
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Code
@@ -2909,7 +2880,6 @@ class OutputDeleteNameListData(AbstractModel):
     @property
     def Message(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Message
@@ -3028,23 +2998,19 @@ class OutputDescribeDataListFront(AbstractModel):
         :type DataContent: str
         :param _DataSource: 数据来源，固定传2（手工录入）
         :type DataSource: int
-        :param _StartTime: 名单数据开始时间，时间格式示例"2024-05-05 12:10:15"
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _StartTime: 名单数据开始时间
         :type StartTime: str
-        :param _EndTime: 名单数据结束时间，时间格式示例"2024-05-05 12:10:15"
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _EndTime: 名单数据结束时间
         :type EndTime: str
         :param _Status: 名单数据状态 [1 启用 2 停用]
         :type Status: int
         :param _Remark: 名单数据描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
-        :param _CreateTime: 名单数据创建时间，时间格式示例"2024-05-05 12:10:15"
+        :param _CreateTime: 名单数据创建时间
         :type CreateTime: str
-        :param _UpdateTime: 名单数据更新时间，时间格式示例"2024-05-05 12:10:15"
+        :param _UpdateTime: 名单数据更新时间
         :type UpdateTime: str
         :param _EncryptDataContent: 加密名单数据内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type EncryptDataContent: str
         """
         self._NameListDataId = None
@@ -3105,8 +3071,7 @@ class OutputDescribeDataListFront(AbstractModel):
 
     @property
     def StartTime(self):
-        """名单数据开始时间，时间格式示例"2024-05-05 12:10:15"
-注意：此字段可能返回 null，表示取不到有效值。
+        """名单数据开始时间
         :rtype: str
         """
         return self._StartTime
@@ -3117,8 +3082,7 @@ class OutputDescribeDataListFront(AbstractModel):
 
     @property
     def EndTime(self):
-        """名单数据结束时间，时间格式示例"2024-05-05 12:10:15"
-注意：此字段可能返回 null，表示取不到有效值。
+        """名单数据结束时间
         :rtype: str
         """
         return self._EndTime
@@ -3141,7 +3105,6 @@ class OutputDescribeDataListFront(AbstractModel):
     @property
     def Remark(self):
         """名单数据描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -3152,7 +3115,7 @@ class OutputDescribeDataListFront(AbstractModel):
 
     @property
     def CreateTime(self):
-        """名单数据创建时间，时间格式示例"2024-05-05 12:10:15"
+        """名单数据创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -3163,7 +3126,7 @@ class OutputDescribeDataListFront(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """名单数据更新时间，时间格式示例"2024-05-05 12:10:15"
+        """名单数据更新时间
         :rtype: str
         """
         return self._UpdateTime
@@ -3175,7 +3138,6 @@ class OutputDescribeDataListFront(AbstractModel):
     @property
     def EncryptDataContent(self):
         """加密名单数据内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EncryptDataContent
@@ -3309,10 +3271,10 @@ class OutputDescribeNameListDetail(AbstractModel):
         :param _Remark: 描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
-        :param _CreateTime: 创建时间，时间格式示例"2024-05-05 12:10:15"
+        :param _CreateTime: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param _UpdateTime: 更新时间，时间格式示例"2024-05-05 12:10:15"
+        :param _UpdateTime: 更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param _EncryptionType: 加密类型 [0 无需加密，1 MD5加密，2 SHA256加密]
@@ -3416,7 +3378,7 @@ class OutputDescribeNameListDetail(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间，时间格式示例"2024-05-05 12:10:15"
+        """创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3428,7 +3390,7 @@ class OutputDescribeNameListDetail(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """更新时间，时间格式示例"2024-05-05 12:10:15"
+        """更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3568,9 +3530,9 @@ class OutputDescribeNameListFrontFix(AbstractModel):
         :param _Remark: 描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
-        :param _CreateTime: 创建时间，时间格式示例"2024-05-05 12:10:15"
+        :param _CreateTime: 创建时间
         :type CreateTime: str
-        :param _UpdateTime: 更新时间，时间格式示例"2024-05-05 12:10:15"
+        :param _UpdateTime: 更新时间
         :type UpdateTime: str
         :param _EffectCount: 有效数据/数据总数
         :type EffectCount: str
@@ -3664,7 +3626,7 @@ class OutputDescribeNameListFrontFix(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间，时间格式示例"2024-05-05 12:10:15"
+        """创建时间
         :rtype: str
         """
         return self._CreateTime
@@ -3675,7 +3637,7 @@ class OutputDescribeNameListFrontFix(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """更新时间，时间格式示例"2024-05-05 12:10:15"
+        """更新时间
         :rtype: str
         """
         return self._UpdateTime

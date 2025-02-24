@@ -27530,6 +27530,8 @@ class LiveStreamMonitorInputInfo(AbstractModel):
         :type CasterInputIndex: int
         :param _NeedMonitor: 该输入源是否正在监播
         :type NeedMonitor: bool
+        :param _CdnStreamId: 导播台pvw pgm的cdn流id
+        :type CdnStreamId: str
         """
         self._InputStreamName = None
         self._InputDomain = None
@@ -27538,6 +27540,7 @@ class LiveStreamMonitorInputInfo(AbstractModel):
         self._Description = None
         self._CasterInputIndex = None
         self._NeedMonitor = None
+        self._CdnStreamId = None
 
     @property
     def InputStreamName(self):
@@ -27621,6 +27624,17 @@ class LiveStreamMonitorInputInfo(AbstractModel):
     def NeedMonitor(self, NeedMonitor):
         self._NeedMonitor = NeedMonitor
 
+    @property
+    def CdnStreamId(self):
+        """导播台pvw pgm的cdn流id
+        :rtype: str
+        """
+        return self._CdnStreamId
+
+    @CdnStreamId.setter
+    def CdnStreamId(self, CdnStreamId):
+        self._CdnStreamId = CdnStreamId
+
 
     def _deserialize(self, params):
         self._InputStreamName = params.get("InputStreamName")
@@ -27630,6 +27644,7 @@ class LiveStreamMonitorInputInfo(AbstractModel):
         self._Description = params.get("Description")
         self._CasterInputIndex = params.get("CasterInputIndex")
         self._NeedMonitor = params.get("NeedMonitor")
+        self._CdnStreamId = params.get("CdnStreamId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
