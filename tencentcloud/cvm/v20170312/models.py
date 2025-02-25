@@ -8934,13 +8934,10 @@ class Externals(AbstractModel):
     def __init__(self):
         r"""
         :param _ReleaseAddress: 释放地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReleaseAddress: bool
         :param _UnsupportNetworks: 不支持的网络类型，取值范围：<br><li>BASIC：基础网络</li><li>VPC1.0：私有网络VPC1.0</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type UnsupportNetworks: list of str
         :param _StorageBlockAttr: HDD本地存储属性
-注意：此字段可能返回 null，表示取不到有效值。
         :type StorageBlockAttr: :class:`tencentcloud.cvm.v20170312.models.StorageBlock`
         """
         self._ReleaseAddress = None
@@ -8950,7 +8947,6 @@ class Externals(AbstractModel):
     @property
     def ReleaseAddress(self):
         """释放地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._ReleaseAddress
@@ -8962,7 +8958,6 @@ class Externals(AbstractModel):
     @property
     def UnsupportNetworks(self):
         """不支持的网络类型，取值范围：<br><li>BASIC：基础网络</li><li>VPC1.0：私有网络VPC1.0</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._UnsupportNetworks
@@ -8974,7 +8969,6 @@ class Externals(AbstractModel):
     @property
     def StorageBlockAttr(self):
         """HDD本地存储属性
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cvm.v20170312.models.StorageBlock`
         """
         return self._StorageBlockAttr
@@ -13348,7 +13342,6 @@ class InstanceTypeQuotaItem(AbstractModel):
         :param _NetworkCard: 网卡类型，例如：25代表25G网卡
         :type NetworkCard: int
         :param _Externals: 扩展属性。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Externals: :class:`tencentcloud.cvm.v20170312.models.Externals`
         :param _Cpu: 实例的CPU核数，单位：核。
         :type Cpu: int
@@ -13365,7 +13358,6 @@ class InstanceTypeQuotaItem(AbstractModel):
         :param _Price: 实例的售卖价格。
         :type Price: :class:`tencentcloud.cvm.v20170312.models.ItemPrice`
         :param _SoldOutReason: 售罄原因。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SoldOutReason: str
         :param _InstanceBandwidth: 内网带宽，单位Gbps。
         :type InstanceBandwidth: float
@@ -13390,7 +13382,6 @@ class InstanceTypeQuotaItem(AbstractModel):
 <li>NormalStock：表示对应库存供应有保障</li>
 <li> UnderStock：表示对应库存即将售罄</li> 
 <li>WithoutStock：表示对应库存已经售罄</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type StatusCategory: str
         """
         self._Zone = None
@@ -13464,7 +13455,6 @@ class InstanceTypeQuotaItem(AbstractModel):
     @property
     def Externals(self):
         """扩展属性。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cvm.v20170312.models.Externals`
         """
         return self._Externals
@@ -13553,7 +13543,6 @@ class InstanceTypeQuotaItem(AbstractModel):
     @property
     def SoldOutReason(self):
         """售罄原因。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SoldOutReason
@@ -13668,7 +13657,6 @@ class InstanceTypeQuotaItem(AbstractModel):
 <li>NormalStock：表示对应库存供应有保障</li>
 <li> UnderStock：表示对应库存即将售罄</li> 
 <li>WithoutStock：表示对应库存已经售罄</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StatusCategory
@@ -13933,69 +13921,50 @@ class ItemPrice(AbstractModel):
     def __init__(self):
         r"""
         :param _UnitPrice: 后续合计费用的原价，后付费模式使用，单位：元。<br><li>如返回了其他时间区间项，如UnitPriceSecondStep，则本项代表时间区间在(0, 96)小时；若未返回其他时间区间项，则本项代表全时段，即(0, ∞)小时</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type UnitPrice: float
         :param _ChargeUnit: 后续计价单元，后付费模式使用，可取值范围： <br><li>HOUR：表示计价单元是按每小时来计算。当前涉及该计价单元的场景有：实例按小时后付费（POSTPAID_BY_HOUR）、带宽按小时后付费（BANDWIDTH_POSTPAID_BY_HOUR）：</li><li>GB：表示计价单元是按每GB来计算。当前涉及该计价单元的场景有：流量按小时后付费（TRAFFIC_POSTPAID_BY_HOUR）。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChargeUnit: str
         :param _OriginalPrice: 预支合计费用的原价，预付费模式使用，单位：元。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OriginalPrice: float
         :param _DiscountPrice: 预支合计费用的折扣价，预付费模式使用，单位：元。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiscountPrice: float
         :param _Discount: 折扣，如20.0代表2折。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Discount: float
         :param _UnitPriceDiscount: 后续合计费用的折扣价，后付费模式使用，单位：元<br><li>如返回了其他时间区间项，如UnitPriceDiscountSecondStep，则本项代表时间区间在(0, 96)小时；若未返回其他时间区间项，则本项代表全时段，即(0, ∞)小时</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type UnitPriceDiscount: float
         :param _UnitPriceSecondStep: 使用时间区间在(96, 360)小时的后续合计费用的原价，后付费模式使用，单位：元。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UnitPriceSecondStep: float
         :param _UnitPriceDiscountSecondStep: 使用时间区间在(96, 360)小时的后续合计费用的折扣价，后付费模式使用，单位：元
-注意：此字段可能返回 null，表示取不到有效值。
         :type UnitPriceDiscountSecondStep: float
         :param _UnitPriceThirdStep: 使用时间区间在(360, ∞)小时的后续合计费用的原价，后付费模式使用，单位：元。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UnitPriceThirdStep: float
         :param _UnitPriceDiscountThirdStep: 使用时间区间在(360, ∞)小时的后续合计费用的折扣价，后付费模式使用，单位：元
-注意：此字段可能返回 null，表示取不到有效值。
         :type UnitPriceDiscountThirdStep: float
         :param _OriginalPriceThreeYear: 预支三年合计费用的原价，预付费模式使用，单位：元。
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OriginalPriceThreeYear: float
         :param _DiscountPriceThreeYear: 预支三年合计费用的折扣价，预付费模式使用，单位：元。
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiscountPriceThreeYear: float
         :param _DiscountThreeYear: 预支三年应用的折扣，如20.0代表2折。
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DiscountThreeYear: float
         :param _OriginalPriceFiveYear: 预支五年合计费用的原价，预付费模式使用，单位：元。
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OriginalPriceFiveYear: float
         :param _DiscountPriceFiveYear: 预支五年合计费用的折扣价，预付费模式使用，单位：元。
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DiscountPriceFiveYear: float
         :param _DiscountFiveYear: 预支五年应用的折扣，如20.0代表2折。
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiscountFiveYear: float
         :param _OriginalPriceOneYear: 预支一年合计费用的原价，预付费模式使用，单位：元。
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OriginalPriceOneYear: float
         :param _DiscountPriceOneYear: 预支一年合计费用的折扣价，预付费模式使用，单位：元。
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiscountPriceOneYear: float
         :param _DiscountOneYear: 预支一年应用的折扣，如20.0代表2折。
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DiscountOneYear: float
         """
@@ -14022,7 +13991,6 @@ class ItemPrice(AbstractModel):
     @property
     def UnitPrice(self):
         """后续合计费用的原价，后付费模式使用，单位：元。<br><li>如返回了其他时间区间项，如UnitPriceSecondStep，则本项代表时间区间在(0, 96)小时；若未返回其他时间区间项，则本项代表全时段，即(0, ∞)小时</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._UnitPrice
@@ -14034,7 +14002,6 @@ class ItemPrice(AbstractModel):
     @property
     def ChargeUnit(self):
         """后续计价单元，后付费模式使用，可取值范围： <br><li>HOUR：表示计价单元是按每小时来计算。当前涉及该计价单元的场景有：实例按小时后付费（POSTPAID_BY_HOUR）、带宽按小时后付费（BANDWIDTH_POSTPAID_BY_HOUR）：</li><li>GB：表示计价单元是按每GB来计算。当前涉及该计价单元的场景有：流量按小时后付费（TRAFFIC_POSTPAID_BY_HOUR）。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ChargeUnit
@@ -14046,7 +14013,6 @@ class ItemPrice(AbstractModel):
     @property
     def OriginalPrice(self):
         """预支合计费用的原价，预付费模式使用，单位：元。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._OriginalPrice
@@ -14058,7 +14024,6 @@ class ItemPrice(AbstractModel):
     @property
     def DiscountPrice(self):
         """预支合计费用的折扣价，预付费模式使用，单位：元。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._DiscountPrice
@@ -14070,7 +14035,6 @@ class ItemPrice(AbstractModel):
     @property
     def Discount(self):
         """折扣，如20.0代表2折。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Discount
@@ -14082,7 +14046,6 @@ class ItemPrice(AbstractModel):
     @property
     def UnitPriceDiscount(self):
         """后续合计费用的折扣价，后付费模式使用，单位：元<br><li>如返回了其他时间区间项，如UnitPriceDiscountSecondStep，则本项代表时间区间在(0, 96)小时；若未返回其他时间区间项，则本项代表全时段，即(0, ∞)小时</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._UnitPriceDiscount
@@ -14094,7 +14057,6 @@ class ItemPrice(AbstractModel):
     @property
     def UnitPriceSecondStep(self):
         """使用时间区间在(96, 360)小时的后续合计费用的原价，后付费模式使用，单位：元。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._UnitPriceSecondStep
@@ -14106,7 +14068,6 @@ class ItemPrice(AbstractModel):
     @property
     def UnitPriceDiscountSecondStep(self):
         """使用时间区间在(96, 360)小时的后续合计费用的折扣价，后付费模式使用，单位：元
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._UnitPriceDiscountSecondStep
@@ -14118,7 +14079,6 @@ class ItemPrice(AbstractModel):
     @property
     def UnitPriceThirdStep(self):
         """使用时间区间在(360, ∞)小时的后续合计费用的原价，后付费模式使用，单位：元。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._UnitPriceThirdStep
@@ -14130,7 +14090,6 @@ class ItemPrice(AbstractModel):
     @property
     def UnitPriceDiscountThirdStep(self):
         """使用时间区间在(360, ∞)小时的后续合计费用的折扣价，后付费模式使用，单位：元
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._UnitPriceDiscountThirdStep
@@ -14142,7 +14101,6 @@ class ItemPrice(AbstractModel):
     @property
     def OriginalPriceThreeYear(self):
         """预支三年合计费用的原价，预付费模式使用，单位：元。
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -14156,7 +14114,6 @@ class ItemPrice(AbstractModel):
     def DiscountPriceThreeYear(self):
         """预支三年合计费用的折扣价，预付费模式使用，单位：元。
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._DiscountPriceThreeYear
@@ -14168,7 +14125,6 @@ class ItemPrice(AbstractModel):
     @property
     def DiscountThreeYear(self):
         """预支三年应用的折扣，如20.0代表2折。
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -14182,7 +14138,6 @@ class ItemPrice(AbstractModel):
     def OriginalPriceFiveYear(self):
         """预支五年合计费用的原价，预付费模式使用，单位：元。
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._OriginalPriceFiveYear
@@ -14194,7 +14149,6 @@ class ItemPrice(AbstractModel):
     @property
     def DiscountPriceFiveYear(self):
         """预支五年合计费用的折扣价，预付费模式使用，单位：元。
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -14208,7 +14162,6 @@ class ItemPrice(AbstractModel):
     def DiscountFiveYear(self):
         """预支五年应用的折扣，如20.0代表2折。
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._DiscountFiveYear
@@ -14220,7 +14173,6 @@ class ItemPrice(AbstractModel):
     @property
     def OriginalPriceOneYear(self):
         """预支一年合计费用的原价，预付费模式使用，单位：元。
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -14234,7 +14186,6 @@ class ItemPrice(AbstractModel):
     def DiscountPriceOneYear(self):
         """预支一年合计费用的折扣价，预付费模式使用，单位：元。
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._DiscountPriceOneYear
@@ -14246,7 +14197,6 @@ class ItemPrice(AbstractModel):
     @property
     def DiscountOneYear(self):
         """预支一年应用的折扣，如20.0代表2折。
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -20398,13 +20348,10 @@ class StorageBlock(AbstractModel):
     def __init__(self):
         r"""
         :param _Type: HDD本地存储类型，值为：LOCAL_PRO.
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _MinSize: HDD本地存储的最小容量
-注意：此字段可能返回 null，表示取不到有效值。
         :type MinSize: int
         :param _MaxSize: HDD本地存储的最大容量
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxSize: int
         """
         self._Type = None
@@ -20414,7 +20361,6 @@ class StorageBlock(AbstractModel):
     @property
     def Type(self):
         """HDD本地存储类型，值为：LOCAL_PRO.
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -20426,7 +20372,6 @@ class StorageBlock(AbstractModel):
     @property
     def MinSize(self):
         """HDD本地存储的最小容量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MinSize
@@ -20438,7 +20383,6 @@ class StorageBlock(AbstractModel):
     @property
     def MaxSize(self):
         """HDD本地存储的最大容量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxSize

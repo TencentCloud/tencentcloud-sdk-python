@@ -14444,7 +14444,6 @@ class RegistryCondition(AbstractModel):
         :param _Status: 实例创建过程状态
         :type Status: str
         :param _Reason: 转换到该过程的简明原因
-注意：此字段可能返回 null，表示取不到有效值。
         :type Reason: str
         """
         self._Type = None
@@ -14476,7 +14475,6 @@ class RegistryCondition(AbstractModel):
     @property
     def Reason(self):
         """转换到该过程的简明原因
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Reason
@@ -14743,22 +14741,16 @@ class ReplicationLog(AbstractModel):
     def __init__(self):
         r"""
         :param _ResourceType: 资源类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceType: str
         :param _Source: 源资源
-注意：此字段可能返回 null，表示取不到有效值。
         :type Source: str
         :param _Destination: 目的资源
-注意：此字段可能返回 null，表示取不到有效值。
         :type Destination: str
         :param _Status: 同步状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _StartTime: 开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
         :param _EndTime: 结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         """
         self._ResourceType = None
@@ -14771,7 +14763,6 @@ class ReplicationLog(AbstractModel):
     @property
     def ResourceType(self):
         """资源类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceType
@@ -14783,7 +14774,6 @@ class ReplicationLog(AbstractModel):
     @property
     def Source(self):
         """源资源
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Source
@@ -14795,7 +14785,6 @@ class ReplicationLog(AbstractModel):
     @property
     def Destination(self):
         """目的资源
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Destination
@@ -14807,7 +14796,6 @@ class ReplicationLog(AbstractModel):
     @property
     def Status(self):
         """同步状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -14819,7 +14807,6 @@ class ReplicationLog(AbstractModel):
     @property
     def StartTime(self):
         """开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StartTime
@@ -14831,7 +14818,6 @@ class ReplicationLog(AbstractModel):
     @property
     def EndTime(self):
         """结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndTime

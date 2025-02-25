@@ -3177,13 +3177,10 @@ class OutputDescribeDataListFrontData(AbstractModel):
     def __init__(self):
         r"""
         :param _Code: 错误码，0 表示成功，非0表示失败错误码。 0：成功 1002：参数错误 4300：未开通服务 6000：系统内部错误
-注意：此字段可能返回 null，表示取不到有效值。
         :type Code: int
         :param _Message: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param _Value: 黑白名单数据信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: :class:`tencentcloud.rce.v20201103.models.OuntputDescribeDataListInfo`
         """
         self._Code = None
@@ -3193,7 +3190,6 @@ class OutputDescribeDataListFrontData(AbstractModel):
     @property
     def Code(self):
         """错误码，0 表示成功，非0表示失败错误码。 0：成功 1002：参数错误 4300：未开通服务 6000：系统内部错误
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Code
@@ -3205,7 +3201,6 @@ class OutputDescribeDataListFrontData(AbstractModel):
     @property
     def Message(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Message
@@ -3217,7 +3212,6 @@ class OutputDescribeDataListFrontData(AbstractModel):
     @property
     def Value(self):
         """黑白名单数据信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.rce.v20201103.models.OuntputDescribeDataListInfo`
         """
         return self._Value
@@ -3251,34 +3245,24 @@ class OutputDescribeNameListDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _NameListId: 名单ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type NameListId: int
         :param _ListName: 名单名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ListName: str
         :param _ListType: 名单类型 [1 黑名单 2 白名单]
-注意：此字段可能返回 null，表示取不到有效值。
         :type ListType: int
         :param _DataType: 数据类型[1 手机号 2 qqOpenId 3 2echatOpenId 4 ip 6 idfa 7 imei]
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataType: int
         :param _SceneCode: 场景Code
-注意：此字段可能返回 null，表示取不到有效值。
         :type SceneCode: str
         :param _Status: 名单列表状态 [1 启用 2 停用]
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _Remark: 描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _UpdateTime: 更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param _EncryptionType: 加密类型 [0 无需加密，1 MD5加密，2 SHA256加密]
-注意：此字段可能返回 null，表示取不到有效值。
         :type EncryptionType: int
         """
         self._NameListId = None
@@ -3295,7 +3279,6 @@ class OutputDescribeNameListDetail(AbstractModel):
     @property
     def NameListId(self):
         """名单ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._NameListId
@@ -3307,7 +3290,6 @@ class OutputDescribeNameListDetail(AbstractModel):
     @property
     def ListName(self):
         """名单名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ListName
@@ -3319,7 +3301,6 @@ class OutputDescribeNameListDetail(AbstractModel):
     @property
     def ListType(self):
         """名单类型 [1 黑名单 2 白名单]
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ListType
@@ -3331,7 +3312,6 @@ class OutputDescribeNameListDetail(AbstractModel):
     @property
     def DataType(self):
         """数据类型[1 手机号 2 qqOpenId 3 2echatOpenId 4 ip 6 idfa 7 imei]
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DataType
@@ -3343,7 +3323,6 @@ class OutputDescribeNameListDetail(AbstractModel):
     @property
     def SceneCode(self):
         """场景Code
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SceneCode
@@ -3355,7 +3334,6 @@ class OutputDescribeNameListDetail(AbstractModel):
     @property
     def Status(self):
         """名单列表状态 [1 启用 2 停用]
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -3367,7 +3345,6 @@ class OutputDescribeNameListDetail(AbstractModel):
     @property
     def Remark(self):
         """描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -3379,7 +3356,6 @@ class OutputDescribeNameListDetail(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -3391,7 +3367,6 @@ class OutputDescribeNameListDetail(AbstractModel):
     @property
     def UpdateTime(self):
         """更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime
@@ -3403,7 +3378,6 @@ class OutputDescribeNameListDetail(AbstractModel):
     @property
     def EncryptionType(self):
         """加密类型 [0 无需加密，1 MD5加密，2 SHA256加密]
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._EncryptionType
@@ -3442,10 +3416,8 @@ class OutputDescribeNameListDetailFront(AbstractModel):
     def __init__(self):
         r"""
         :param _Code: 错误码，0 表示成功，非0表示失败错误码。 0：成功 1002：参数错误 4300：未开通服务 6000：系统内部错误
-注意：此字段可能返回 null，表示取不到有效值。
         :type Code: int
         :param _Message: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param _Value: 列表详情信息
 注意：此字段可能返回 null，表示取不到有效值。
@@ -3458,7 +3430,6 @@ class OutputDescribeNameListDetailFront(AbstractModel):
     @property
     def Code(self):
         """错误码，0 表示成功，非0表示失败错误码。 0：成功 1002：参数错误 4300：未开通服务 6000：系统内部错误
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Code
@@ -3470,7 +3441,6 @@ class OutputDescribeNameListDetailFront(AbstractModel):
     @property
     def Message(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Message
@@ -3518,17 +3488,14 @@ class OutputDescribeNameListFrontFix(AbstractModel):
         :param _NameListId: 名单ID
         :type NameListId: int
         :param _ListName: 名单名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ListName: str
         :param _ListType: 名单类型 [1 黑名单 2 白名单]
-注意：此字段可能返回 null，表示取不到有效值。
         :type ListType: int
         :param _DataType: 数据类型[1 手机号 2 qqOpenId 3 2echatOpenId 4 ip 6 idfa 7 imei]
         :type DataType: int
         :param _Status: 记录状态 [1 启用 2 停用]
         :type Status: int
         :param _Remark: 描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _CreateTime: 创建时间
         :type CreateTime: str
@@ -3537,10 +3504,8 @@ class OutputDescribeNameListFrontFix(AbstractModel):
         :param _EffectCount: 有效数据/数据总数
         :type EffectCount: str
         :param _EncryptionType: 加密类型[0 无需加密 1 MD5加密 2 SHA256加密]
-注意：此字段可能返回 null，表示取不到有效值。
         :type EncryptionType: int
         :param _SceneCode: 场景Code，all_scene代表全部场景
-注意：此字段可能返回 null，表示取不到有效值。
         :type SceneCode: str
         """
         self._NameListId = None
@@ -3569,7 +3534,6 @@ class OutputDescribeNameListFrontFix(AbstractModel):
     @property
     def ListName(self):
         """名单名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ListName
@@ -3581,7 +3545,6 @@ class OutputDescribeNameListFrontFix(AbstractModel):
     @property
     def ListType(self):
         """名单类型 [1 黑名单 2 白名单]
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ListType
@@ -3615,7 +3578,6 @@ class OutputDescribeNameListFrontFix(AbstractModel):
     @property
     def Remark(self):
         """描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -3660,7 +3622,6 @@ class OutputDescribeNameListFrontFix(AbstractModel):
     @property
     def EncryptionType(self):
         """加密类型[0 无需加密 1 MD5加密 2 SHA256加密]
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._EncryptionType
@@ -3672,7 +3633,6 @@ class OutputDescribeNameListFrontFix(AbstractModel):
     @property
     def SceneCode(self):
         """场景Code，all_scene代表全部场景
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SceneCode
@@ -3713,13 +3673,10 @@ class OutputDescribeNameListFrontFixListData(AbstractModel):
         r"""
         :param _Code: 错误码，0 表示成功，非0表示失败错误码。 0：成功 1002：参数错误 4300：未开通服务 6000：系统内部错误
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type Code: int
         :param _Message: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param _Value: 黑白名单列表信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: :class:`tencentcloud.rce.v20201103.models.OutputDescribeNameListInfo`
         """
         self._Code = None
@@ -3730,7 +3687,6 @@ class OutputDescribeNameListFrontFixListData(AbstractModel):
     def Code(self):
         """错误码，0 表示成功，非0表示失败错误码。 0：成功 1002：参数错误 4300：未开通服务 6000：系统内部错误
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Code
@@ -3742,7 +3698,6 @@ class OutputDescribeNameListFrontFixListData(AbstractModel):
     @property
     def Message(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Message
@@ -3754,7 +3709,6 @@ class OutputDescribeNameListFrontFixListData(AbstractModel):
     @property
     def Value(self):
         """黑白名单列表信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.rce.v20201103.models.OutputDescribeNameListInfo`
         """
         return self._Value
@@ -3788,7 +3742,6 @@ class OutputDescribeNameListInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Count: 总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Count: int
         :param _List: 列表
 注意：此字段可能返回 null，表示取不到有效值。
@@ -3800,7 +3753,6 @@ class OutputDescribeNameListInfo(AbstractModel):
     @property
     def Count(self):
         """总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Count
@@ -3848,25 +3800,18 @@ class OutputDescribeUserUsageCnt(AbstractModel):
     def __init__(self):
         r"""
         :param _PayMode: 当前付费模式，0 后付费 1 预付费
-注意：此字段可能返回 null，表示取不到有效值。
         :type PayMode: int
         :param _AfterPayModeThisMonthUsedCnt: 后付费本月使用量
-注意：此字段可能返回 null，表示取不到有效值。
         :type AfterPayModeThisMonthUsedCnt: int
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _ExpireTime: 超出时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireTime: str
         :param _AfterPayModeLastMonthUsedCnt: 后付费上月使用量
-注意：此字段可能返回 null，表示取不到有效值。
         :type AfterPayModeLastMonthUsedCnt: int
         :param _BeforePayModeTotalUsedCnt: 预付费总量
-注意：此字段可能返回 null，表示取不到有效值。
         :type BeforePayModeTotalUsedCnt: int
         :param _BeforePayModeRemainUsedCnt: 预付费剩余用量
-注意：此字段可能返回 null，表示取不到有效值。
         :type BeforePayModeRemainUsedCnt: int
         """
         self._PayMode = None
@@ -3880,7 +3825,6 @@ class OutputDescribeUserUsageCnt(AbstractModel):
     @property
     def PayMode(self):
         """当前付费模式，0 后付费 1 预付费
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PayMode
@@ -3892,7 +3836,6 @@ class OutputDescribeUserUsageCnt(AbstractModel):
     @property
     def AfterPayModeThisMonthUsedCnt(self):
         """后付费本月使用量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AfterPayModeThisMonthUsedCnt
@@ -3904,7 +3847,6 @@ class OutputDescribeUserUsageCnt(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -3916,7 +3858,6 @@ class OutputDescribeUserUsageCnt(AbstractModel):
     @property
     def ExpireTime(self):
         """超出时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ExpireTime
@@ -3928,7 +3869,6 @@ class OutputDescribeUserUsageCnt(AbstractModel):
     @property
     def AfterPayModeLastMonthUsedCnt(self):
         """后付费上月使用量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AfterPayModeLastMonthUsedCnt
@@ -3940,7 +3880,6 @@ class OutputDescribeUserUsageCnt(AbstractModel):
     @property
     def BeforePayModeTotalUsedCnt(self):
         """预付费总量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._BeforePayModeTotalUsedCnt
@@ -3952,7 +3891,6 @@ class OutputDescribeUserUsageCnt(AbstractModel):
     @property
     def BeforePayModeRemainUsedCnt(self):
         """预付费剩余用量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._BeforePayModeRemainUsedCnt

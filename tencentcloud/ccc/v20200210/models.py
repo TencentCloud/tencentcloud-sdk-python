@@ -3636,7 +3636,7 @@ class CreateCallOutSessionRequest(AbstractModel):
         r"""
         :param _SdkAppId: 应用 ID
         :type SdkAppId: int
-        :param _UserId: 客服用户 ID，一般为客服邮箱
+        :param _UserId: 客服用户 ID，一般为客服邮箱，确保已经绑定了手机号 https://cloud.tencent.com/document/product/679/76067#.E6.AD.A5.E9.AA.A42.EF.BC.9A.E5.AE.8C.E5.96.84.E8.B4.A6.E5.8F.B7.E4.BF.A1.E6.81.AF
         :type UserId: str
         :param _Callee: 被叫号码，须带 0086 前缀
         :type Callee: str
@@ -3644,7 +3644,7 @@ class CreateCallOutSessionRequest(AbstractModel):
         :type Caller: str
         :param _Callers: 指定主叫号码列表，如果前面的号码失败了会自动换成下一个号码，须带 0086 前缀
         :type Callers: list of str
-        :param _IsForceUseMobile: 是否强制使用手机外呼，当前只支持 true，若为 true 请确保已配置白名单
+        :param _IsForceUseMobile: 是否强制使用手机外呼，当前只支持 true，若为 true 请确保已配置白名单 https://cloud.tencent.com/document/product/679/76744#.E6.93.8D.E4.BD.9C.E6.AD.A5.E9.AA.A4
         :type IsForceUseMobile: bool
         :param _Uui: 自定义数据，长度限制 1024 字节
         :type Uui: str
@@ -3673,7 +3673,7 @@ class CreateCallOutSessionRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """客服用户 ID，一般为客服邮箱
+        """客服用户 ID，一般为客服邮箱，确保已经绑定了手机号 https://cloud.tencent.com/document/product/679/76067#.E6.AD.A5.E9.AA.A42.EF.BC.9A.E5.AE.8C.E5.96.84.E8.B4.A6.E5.8F.B7.E4.BF.A1.E6.81.AF
         :rtype: str
         """
         return self._UserId
@@ -3717,7 +3717,7 @@ class CreateCallOutSessionRequest(AbstractModel):
 
     @property
     def IsForceUseMobile(self):
-        """是否强制使用手机外呼，当前只支持 true，若为 true 请确保已配置白名单
+        """是否强制使用手机外呼，当前只支持 true，若为 true 请确保已配置白名单 https://cloud.tencent.com/document/product/679/76744#.E6.93.8D.E4.BD.9C.E6.AD.A5.E9.AA.A4
         :rtype: bool
         """
         return self._IsForceUseMobile

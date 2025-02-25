@@ -27,10 +27,13 @@ class LkeapClient(AbstractClient):
 
 
     def ChatCompletions(self, request):
-        """#### 接口功能
+        """### 接口功能
 
-        调用接口，发起一次对话请求。
+        调用接口，发起一次对话请求。单账号限制接口并发上限为5。
         如需使用OpenAI兼容接口， 请参考文档：[Deepseek OpenAI对话接口](https://cloud.tencent.com/document/product/1772/115969)
+
+        #### 在线体验
+        如您希望在网页内直接体验 DeepSeek 模型对话，推荐您前往[腾讯云大模型知识引擎](https://cloud.tencent.com/product/lke)，使用[ DeepSeek 联网助手](https://lke.cloud.tencent.com/webim_exp/#/chat/wQrAwR)。
 
         #### 已支持的模型
         - DeepSeek-V3（model 参数值为**deepseek-v3**）
@@ -40,10 +43,10 @@ class LkeapClient(AbstractClient):
             - DeepSeek-R1为671B模型，使用强化学习训练，推理过程包含大量反思和验证，思维链长度可达数万字。 该系列模型在数学、代码以及各种复杂逻辑推理任务上推理效果优异，并为用户展现了完整的思考过程。
             -  支持64K上下文长度，最大输入56k，最大输出8k（不含思维链）。
 
-        #### 计费说明
+        ### 计费说明
         - 限时免费
 
-        本接口调用DeepSeek系列模型限时免费。即日至北京时间2025年2月25日23:59:59，所有腾讯云用户均可享受DeepSeek-V3、DeepSeek-R1模型限时免费服务，单账号限制接口并发上限为5。在此之后，模型价格将恢复至原价。
+        本接口调用DeepSeek系列模型限时免费。即日至北京时间2025年2月25日23:59:59，所有腾讯云用户均可享受DeepSeek-V3、DeepSeek-R1模型限时免费服务，单账号限制接口并发上限为5。在此之后，模型价格将恢复至原价，单账号限制接口并发上限为5。
         - 标准计费（2025年2月26日起生效）
 
          ![image](https://cdn.xiaowei.qq.com/static/lke/deekseep-token0212.png)
@@ -55,7 +58,7 @@ class LkeapClient(AbstractClient):
         > api_key的获取请参考[API KEY管理](https://cloud.tencent.com/document/product/1772/115970)
 
 
-        #### 快速接入
+        ### 快速接入
         1. 完成[实名认证](https://console.cloud.tencent.com/developer/auth)。
         2. 主账户前往[控制台](https://console.cloud.tencent.com/lkeap)开通服务。若为子账户，需由主账号在[权限管理](https://console.cloud.tencent.com/cam)中为子账号授权，关联预设策略，策略名称：QcloudLKEAPFullAccess。
         3. 通过API Explorer[在线调试](https://console.cloud.tencent.com/api/explorer?Product=lkeap&Version=2024-05-22&Action=ChatCompletions)。

@@ -26,6 +26,52 @@ class ClbClient(AbstractClient):
     _service = 'clb'
 
 
+    def AddCustomizedConfig(self, request):
+        """新增个性化配置，准备下线，请使用SetCustomizedConfigForLoadBalancer。
+
+        :param request: Request instance for AddCustomizedConfig.
+        :type request: :class:`tencentcloud.clb.v20180317.models.AddCustomizedConfigRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.AddCustomizedConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddCustomizedConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddCustomizedConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def AssociateCustomizedConfig(self, request):
+        """关联配置到server或location，根据配置类型关联到server或location。准备下线，请使用SetCustomizedConfigForLoadBalancer。
+
+        :param request: Request instance for AssociateCustomizedConfig.
+        :type request: :class:`tencentcloud.clb.v20180317.models.AssociateCustomizedConfigRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.AssociateCustomizedConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AssociateCustomizedConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.AssociateCustomizedConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def AssociateTargetGroups(self, request):
         """本接口(AssociateTargetGroups)用来将目标组绑定到负载均衡的监听器（四层协议）或转发规则（七层协议）上。
         本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
@@ -366,6 +412,29 @@ class ClbClient(AbstractClient):
             body = self.call("CreateTopic", params, headers=headers)
             response = json.loads(body)
             model = models.CreateTopicResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteCustomizedConfig(self, request):
+        """删除个性化配置，准备下线，请使用SetCustomizedConfigForLoadBalancer。
+
+        :param request: Request instance for DeleteCustomizedConfig.
+        :type request: :class:`tencentcloud.clb.v20180317.models.DeleteCustomizedConfigRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DeleteCustomizedConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCustomizedConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCustomizedConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1314,6 +1383,29 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DisassociateCustomizedConfig(self, request):
+        """去关联个性化配置，准备下线，请使用SetCustomizedConfigForLoadBalancer。
+
+        :param request: Request instance for DisassociateCustomizedConfig.
+        :type request: :class:`tencentcloud.clb.v20180317.models.DisassociateCustomizedConfigRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DisassociateCustomizedConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DisassociateCustomizedConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DisassociateCustomizedConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DisassociateTargetGroups(self, request):
         """解除规则的目标组关联关系。
         本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
@@ -1493,6 +1585,29 @@ class ClbClient(AbstractClient):
             body = self.call("ModifyBlockIPList", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyBlockIPListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyCustomizedConfig(self, request):
+        """修改个性化配置。如果配置已经绑定clb、server或location，同时更新。准备下线，请使用SetCustomizedConfigForLoadBalancer。
+
+        :param request: Request instance for ModifyCustomizedConfig.
+        :type request: :class:`tencentcloud.clb.v20180317.models.ModifyCustomizedConfigRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.ModifyCustomizedConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCustomizedConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCustomizedConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
