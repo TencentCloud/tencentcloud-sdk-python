@@ -24659,6 +24659,245 @@ class GetPrometheusAgentManagementCommandResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetTopNMonitorDataRequest(AbstractModel):
+    """GetTopNMonitorData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _N: topN
+        :type N: int
+        :param _StartTime: 起始时间
+        :type StartTime: str
+        :param _EndTime: 截止时间
+        :type EndTime: str
+        :param _Instances: 实例对象的维度组合，格式为key-value键值对形式的集合。不同类型的实例字段完全不同，如CVM为[{"Name":"InstanceId","Value":"ins-j0hk02zo"}]，Ckafka为[{"Name":"instanceId","Value":"ckafka-l49k54dd"}]，COS为[{"Name":"appid","Value":"1258344699"},{"Name":"bucket","Value":"rig-1258344699"}]。各个云产品的维度请参阅各个产品监控指标文档，对应的维度列即为维度组合的key，value为key对应的值。单请求最多支持批量拉取50个实例的监控数据。
+        :type Instances: list of Instance
+        :param _MetricName: 指标名称，如Bwpresourcebandwidthin，仅支持单指标拉取。各个云产品的详细指标说明请参阅各个产品监控指标文档，对应的指标英文名即为MetricName
+        :type MetricName: str
+        :param _Namespace: 命名空间，如QCE/CVM。各个云产品的详细命名空间说明请参阅各个产品监控指标文档
+        :type Namespace: str
+        :param _Period: 监控统计周期，如60。默认为取值为60，单位为s。每个指标支持的统计周期不一定相同，各个云产品支持的统计周期请参阅各个产品监控指标文档，对应的统计周期列即为支持的统计周期。
+        :type Period: int
+        """
+        self._N = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Instances = None
+        self._MetricName = None
+        self._Namespace = None
+        self._Period = None
+
+    @property
+    def N(self):
+        """topN
+        :rtype: int
+        """
+        return self._N
+
+    @N.setter
+    def N(self, N):
+        self._N = N
+
+    @property
+    def StartTime(self):
+        """起始时间
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """截止时间
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Instances(self):
+        """实例对象的维度组合，格式为key-value键值对形式的集合。不同类型的实例字段完全不同，如CVM为[{"Name":"InstanceId","Value":"ins-j0hk02zo"}]，Ckafka为[{"Name":"instanceId","Value":"ckafka-l49k54dd"}]，COS为[{"Name":"appid","Value":"1258344699"},{"Name":"bucket","Value":"rig-1258344699"}]。各个云产品的维度请参阅各个产品监控指标文档，对应的维度列即为维度组合的key，value为key对应的值。单请求最多支持批量拉取50个实例的监控数据。
+        :rtype: list of Instance
+        """
+        return self._Instances
+
+    @Instances.setter
+    def Instances(self, Instances):
+        self._Instances = Instances
+
+    @property
+    def MetricName(self):
+        """指标名称，如Bwpresourcebandwidthin，仅支持单指标拉取。各个云产品的详细指标说明请参阅各个产品监控指标文档，对应的指标英文名即为MetricName
+        :rtype: str
+        """
+        return self._MetricName
+
+    @MetricName.setter
+    def MetricName(self, MetricName):
+        self._MetricName = MetricName
+
+    @property
+    def Namespace(self):
+        """命名空间，如QCE/CVM。各个云产品的详细命名空间说明请参阅各个产品监控指标文档
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Period(self):
+        """监控统计周期，如60。默认为取值为60，单位为s。每个指标支持的统计周期不一定相同，各个云产品支持的统计周期请参阅各个产品监控指标文档，对应的统计周期列即为支持的统计周期。
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+
+    def _deserialize(self, params):
+        self._N = params.get("N")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        if params.get("Instances") is not None:
+            self._Instances = []
+            for item in params.get("Instances"):
+                obj = Instance()
+                obj._deserialize(item)
+                self._Instances.append(obj)
+        self._MetricName = params.get("MetricName")
+        self._Namespace = params.get("Namespace")
+        self._Period = params.get("Period")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetTopNMonitorDataResponse(AbstractModel):
+    """GetTopNMonitorData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MetricName: 指标名	
+        :type MetricName: str
+        :param _Period: 统计周期	
+        :type Period: int
+        :param _N: topN
+        :type N: int
+        :param _OrderedDataPoints: 排序的监控数据	
+        :type OrderedDataPoints: list of SingleOrderedDataPoint
+        :param _Msg: 返回信息
+        :type Msg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._MetricName = None
+        self._Period = None
+        self._N = None
+        self._OrderedDataPoints = None
+        self._Msg = None
+        self._RequestId = None
+
+    @property
+    def MetricName(self):
+        """指标名	
+        :rtype: str
+        """
+        return self._MetricName
+
+    @MetricName.setter
+    def MetricName(self, MetricName):
+        self._MetricName = MetricName
+
+    @property
+    def Period(self):
+        """统计周期	
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def N(self):
+        """topN
+        :rtype: int
+        """
+        return self._N
+
+    @N.setter
+    def N(self, N):
+        self._N = N
+
+    @property
+    def OrderedDataPoints(self):
+        """排序的监控数据	
+        :rtype: list of SingleOrderedDataPoint
+        """
+        return self._OrderedDataPoints
+
+    @OrderedDataPoints.setter
+    def OrderedDataPoints(self, OrderedDataPoints):
+        self._OrderedDataPoints = OrderedDataPoints
+
+    @property
+    def Msg(self):
+        """返回信息
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._MetricName = params.get("MetricName")
+        self._Period = params.get("Period")
+        self._N = params.get("N")
+        if params.get("OrderedDataPoints") is not None:
+            self._OrderedDataPoints = []
+            for item in params.get("OrderedDataPoints"):
+                obj = SingleOrderedDataPoint()
+                obj._deserialize(item)
+                self._OrderedDataPoints.append(obj)
+        self._Msg = params.get("Msg")
+        self._RequestId = params.get("RequestId")
+
+
 class GrafanaAccountInfo(AbstractModel):
     """Grafana可视化服务 授权账户信息
 
@@ -35762,6 +36001,100 @@ class SetDefaultAlarmPolicyResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class SingleOrderedDataPoint(AbstractModel):
+    """单个有序数据点
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Dimensions: 实例对象维度组合	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Dimensions: list of Dimension
+        :param _Value: 监控数据值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: float
+        :param _Timestamp: 监控数据时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timestamp: int
+        :param _Order: 排序序号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Order: int
+        """
+        self._Dimensions = None
+        self._Value = None
+        self._Timestamp = None
+        self._Order = None
+
+    @property
+    def Dimensions(self):
+        """实例对象维度组合	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Dimension
+        """
+        return self._Dimensions
+
+    @Dimensions.setter
+    def Dimensions(self, Dimensions):
+        self._Dimensions = Dimensions
+
+    @property
+    def Value(self):
+        """监控数据值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Timestamp(self):
+        """监控数据时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def Order(self):
+        """排序序号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+
+    def _deserialize(self, params):
+        if params.get("Dimensions") is not None:
+            self._Dimensions = []
+            for item in params.get("Dimensions"):
+                obj = Dimension()
+                obj._deserialize(item)
+                self._Dimensions.append(obj)
+        self._Value = params.get("Value")
+        self._Timestamp = params.get("Timestamp")
+        self._Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SyncPrometheusTempRequest(AbstractModel):

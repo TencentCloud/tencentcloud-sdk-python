@@ -229,7 +229,6 @@ class AddClusterInstancesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 添加云主机的返回列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.AddInstanceResult`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -240,7 +239,6 @@ class AddClusterInstancesResponse(AbstractModel):
     @property
     def Result(self):
         """添加云主机的返回列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.AddInstanceResult`
         """
         return self._Result
@@ -521,7 +519,6 @@ class AddInstancesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 添加云主机是否成功
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -532,7 +529,6 @@ class AddInstancesResponse(AbstractModel):
     @property
     def Result(self):
         """添加云主机是否成功
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Result
@@ -3012,7 +3008,6 @@ class AssociateBusinessLogConfigResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 操作结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3023,7 +3018,6 @@ class AssociateBusinessLogConfigResponse(AbstractModel):
     @property
     def Result(self):
         """操作结果
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Result
@@ -3173,7 +3167,6 @@ class AssociateConfigWithGroupResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 绑定是否成功
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3184,7 +3177,6 @@ class AssociateConfigWithGroupResponse(AbstractModel):
     @property
     def Result(self):
         """绑定是否成功
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Result
@@ -10240,7 +10232,6 @@ class CreateApplicationResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 应用ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10251,7 +10242,6 @@ class CreateApplicationResponse(AbstractModel):
     @property
     def Result(self):
         """应用ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Result
@@ -10561,7 +10551,6 @@ class CreateClusterResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 集群ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10572,7 +10561,6 @@ class CreateClusterResponse(AbstractModel):
     @property
     def Result(self):
         """集群ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Result
@@ -12419,7 +12407,6 @@ class CreateGroupResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: groupId， null表示创建失败
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12430,7 +12417,6 @@ class CreateGroupResponse(AbstractModel):
     @property
     def Result(self):
         """groupId， null表示创建失败
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Result
@@ -13134,7 +13120,6 @@ class CreateNamespaceResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 成功时为命名空间ID，失败为null
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13145,7 +13130,6 @@ class CreateNamespaceResponse(AbstractModel):
     @property
     def Result(self):
         """成功时为命名空间ID，失败为null
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Result
@@ -13915,7 +13899,6 @@ class CreateRepositoryResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 创建仓库是否成功
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13926,7 +13909,6 @@ class CreateRepositoryResponse(AbstractModel):
     @property
     def Result(self):
         """创建仓库是否成功
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Result
@@ -14063,7 +14045,6 @@ class CreateTaskFlowResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 工作流 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14074,7 +14055,6 @@ class CreateTaskFlowResponse(AbstractModel):
     @property
     def Result(self):
         """工作流 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Result
@@ -14378,7 +14358,6 @@ class CreateTaskResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14389,7 +14368,6 @@ class CreateTaskResponse(AbstractModel):
     @property
     def Result(self):
         """任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Result
@@ -15829,7 +15807,6 @@ class DeleteGroupResponse(AbstractModel):
         :param _Result: 删除部署组操作是否成功。
 true：操作成功。
 false：操作失败。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15842,7 +15819,6 @@ false：操作失败。
         """删除部署组操作是否成功。
 true：操作成功。
 false：操作失败。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Result
@@ -16676,7 +16652,6 @@ class DeleteRepositoryResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 删除仓库是否成功
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16687,7 +16662,6 @@ class DeleteRepositoryResponse(AbstractModel):
     @property
     def Result(self):
         """删除仓库是否成功
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Result
@@ -18516,7 +18490,6 @@ class DeployGroupResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TaskId`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18527,7 +18500,6 @@ class DeployGroupResponse(AbstractModel):
     @property
     def Result(self):
         """任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TaskId`
         """
         return self._Result
@@ -19649,7 +19621,6 @@ class DescribeApplicationsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 应用分页列表信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageApplication`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -19660,7 +19631,6 @@ class DescribeApplicationsResponse(AbstractModel):
     @property
     def Result(self):
         """应用分页列表信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TsfPageApplication`
         """
         return self._Result
@@ -20116,7 +20086,6 @@ class DescribeClusterInstancesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 集群机器实例分页信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageInstance`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -20127,7 +20096,6 @@ class DescribeClusterInstancesResponse(AbstractModel):
     @property
     def Result(self):
         """集群机器实例分页信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TsfPageInstance`
         """
         return self._Result
@@ -20289,7 +20257,6 @@ class DescribeClustersResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: Cluster分页信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageClusterV2`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -20300,7 +20267,6 @@ class DescribeClustersResponse(AbstractModel):
     @property
     def Result(self):
         """Cluster分页信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TsfPageClusterV2`
         """
         return self._Result
@@ -21378,7 +21344,6 @@ class DescribeContainerEventsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: events 分页列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageContainerEvent`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -21389,7 +21354,6 @@ class DescribeContainerEventsResponse(AbstractModel):
     @property
     def Result(self):
         """events 分页列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TsfPageContainerEvent`
         """
         return self._Result
@@ -22208,7 +22172,6 @@ class DescribeDeliveryConfigsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 投递项关联部署组信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.DeliveryConfigBindGroups`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -22219,7 +22182,6 @@ class DescribeDeliveryConfigsResponse(AbstractModel):
     @property
     def Result(self):
         """投递项关联部署组信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.DeliveryConfigBindGroups`
         """
         return self._Result
@@ -23275,7 +23237,6 @@ class DescribeGroupAttributeResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 虚拟机部署组信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.VmGroupOther`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -23286,7 +23247,6 @@ class DescribeGroupAttributeResponse(AbstractModel):
     @property
     def Result(self):
         """虚拟机部署组信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.VmGroupOther`
         """
         return self._Result
@@ -23768,7 +23728,6 @@ class DescribeGroupInstancesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 部署组机器信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageInstance`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -23779,7 +23738,6 @@ class DescribeGroupInstancesResponse(AbstractModel):
     @property
     def Result(self):
         """部署组机器信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TsfPageInstance`
         """
         return self._Result
@@ -24308,7 +24266,6 @@ class DescribeGroupsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 虚拟机部署组分页信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageVmGroup`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -24319,7 +24276,6 @@ class DescribeGroupsResponse(AbstractModel):
     @property
     def Result(self):
         """虚拟机部署组分页信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TsfPageVmGroup`
         """
         return self._Result
@@ -25191,7 +25147,6 @@ class DescribeInstancesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 机器列表信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.InstanceEnrichedInfoPage`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -25202,7 +25157,6 @@ class DescribeInstancesResponse(AbstractModel):
     @property
     def Result(self):
         """机器列表信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.InstanceEnrichedInfoPage`
         """
         return self._Result
@@ -25374,7 +25328,6 @@ class DescribeInvocationMetricDataCurveResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 指标监控数据曲线集合
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: list of MetricDataCurve
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -25385,7 +25338,6 @@ class DescribeInvocationMetricDataCurveResponse(AbstractModel):
     @property
     def Result(self):
         """指标监控数据曲线集合
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of MetricDataCurve
         """
         return self._Result
@@ -25706,7 +25658,6 @@ class DescribeInvocationMetricDataPointResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 单值指标列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: list of MetricDataSingleValue
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -25717,7 +25668,6 @@ class DescribeInvocationMetricDataPointResponse(AbstractModel):
     @property
     def Result(self):
         """单值指标列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of MetricDataSingleValue
         """
         return self._Result
@@ -28780,7 +28730,6 @@ class DescribeRepositoryResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 查询的仓库信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.RepositoryInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -28791,7 +28740,6 @@ class DescribeRepositoryResponse(AbstractModel):
     @property
     def Result(self):
         """查询的仓库信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.RepositoryInfo`
         """
         return self._Result
@@ -29064,7 +29012,6 @@ class DescribeSimpleApplicationsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 简单应用分页对象
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageSimpleApplication`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -29075,7 +29022,6 @@ class DescribeSimpleApplicationsResponse(AbstractModel):
     @property
     def Result(self):
         """简单应用分页对象
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TsfPageSimpleApplication`
         """
         return self._Result
@@ -29222,7 +29168,6 @@ class DescribeSimpleClustersResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: TSF集群分页对象
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageCluster`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -29233,7 +29178,6 @@ class DescribeSimpleClustersResponse(AbstractModel):
     @property
     def Result(self):
         """TSF集群分页对象
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TsfPageCluster`
         """
         return self._Result
@@ -29425,7 +29369,6 @@ class DescribeSimpleGroupsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 简单部署组列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageSimpleGroup`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -29436,7 +29379,6 @@ class DescribeSimpleGroupsResponse(AbstractModel):
     @property
     def Result(self):
         """简单部署组列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TsfPageSimpleGroup`
         """
         return self._Result
@@ -29658,7 +29600,6 @@ class DescribeSimpleNamespacesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 命名空间分页列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageNamespace`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -29669,7 +29610,6 @@ class DescribeSimpleNamespacesResponse(AbstractModel):
     @property
     def Result(self):
         """命名空间分页列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TsfPageNamespace`
         """
         return self._Result
@@ -29971,7 +29911,6 @@ class DescribeStatisticsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 查询服务统计结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.ServiceStatisticsResults`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -29982,7 +29921,6 @@ class DescribeStatisticsResponse(AbstractModel):
     @property
     def Result(self):
         """查询服务统计结果
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.ServiceStatisticsResults`
         """
         return self._Result
@@ -30336,7 +30274,6 @@ class DescribeTaskRecordsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 任务记录列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TaskRecordPage`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -30347,7 +30284,6 @@ class DescribeTaskRecordsResponse(AbstractModel):
     @property
     def Result(self):
         """任务记录列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TaskRecordPage`
         """
         return self._Result
@@ -31820,7 +31756,6 @@ class DisassociateBusinessLogConfigResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 操作结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -31831,7 +31766,6 @@ class DisassociateBusinessLogConfigResponse(AbstractModel):
     @property
     def Result(self):
         """操作结果
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Result
@@ -31916,7 +31850,6 @@ class DisassociateKafkaConfigResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 解除绑定是否成功
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -31927,7 +31860,6 @@ class DisassociateKafkaConfigResponse(AbstractModel):
     @property
     def Result(self):
         """解除绑定是否成功
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Result
@@ -32932,7 +32864,6 @@ class ExpandGroupResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TaskId`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -32943,7 +32874,6 @@ class ExpandGroupResponse(AbstractModel):
     @property
     def Result(self):
         """任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TaskId`
         """
         return self._Result
@@ -40627,7 +40557,6 @@ class ModifyApplicationResponse(AbstractModel):
         r"""
         :param _Result: true：操作成功
 false：操作失败
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -40639,7 +40568,6 @@ false：操作失败
     def Result(self):
         """true：操作成功
 false：操作失败
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Result
@@ -41188,7 +41116,6 @@ class ModifyGroupResponse(AbstractModel):
         :param _Result: 更新部署组详情是否成功。
 true：操作成功。
 false：操作失败。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -41201,7 +41128,6 @@ false：操作失败。
         """更新部署组详情是否成功。
 true：操作成功。
 false：操作失败。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Result
@@ -41699,7 +41625,6 @@ class ModifyNamespaceResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: Result
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -41710,7 +41635,6 @@ class ModifyNamespaceResponse(AbstractModel):
     @property
     def Result(self):
         """Result
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Result
@@ -42312,7 +42236,6 @@ class ModifyTaskResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 更新是否成功
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -42323,7 +42246,6 @@ class ModifyTaskResponse(AbstractModel):
     @property
     def Result(self):
         """更新是否成功
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Result
@@ -46257,7 +46179,6 @@ class RemoveInstancesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 集群移除机器是否成功
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -46268,7 +46189,6 @@ class RemoveInstancesResponse(AbstractModel):
     @property
     def Result(self):
         """集群移除机器是否成功
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Result
@@ -49372,7 +49292,6 @@ class ShrinkGroupResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TaskId`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -49383,7 +49302,6 @@ class ShrinkGroupResponse(AbstractModel):
     @property
     def Result(self):
         """任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TaskId`
         """
         return self._Result
@@ -50173,7 +50091,6 @@ class StartGroupResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TaskId`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -50184,7 +50101,6 @@ class StartGroupResponse(AbstractModel):
     @property
     def Result(self):
         """任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TaskId`
         """
         return self._Result
@@ -50428,7 +50344,6 @@ class StopGroupResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TaskId`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -50439,7 +50354,6 @@ class StopGroupResponse(AbstractModel):
     @property
     def Result(self):
         """任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TaskId`
         """
         return self._Result
@@ -55502,7 +55416,6 @@ class UpdateRepositoryResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 更新仓库是否成功
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -55513,7 +55426,6 @@ class UpdateRepositoryResponse(AbstractModel):
     @property
     def Result(self):
         """更新仓库是否成功
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Result

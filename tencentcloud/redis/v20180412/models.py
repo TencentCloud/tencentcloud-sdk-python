@@ -26,33 +26,26 @@ class Account(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceId: 实例 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _AccountName: 账号名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AccountName: str
         :param _Remark: 账号描述信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _Privilege: 读写权限策略。
 - r：只读。
 - w：只写。
 - rw：读写。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Privilege: str
         :param _ReadonlyPolicy: 只读路由策略。
 - master：主节点。
 - replication：从节点。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReadonlyPolicy: list of str
         :param _Status: 子账号状态.
 - 1：账号变更中。
 - 2：账号有效。
 - 4：账号已删除。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         """
         self._InstanceId = None
@@ -66,7 +59,6 @@ class Account(AbstractModel):
     @property
     def InstanceId(self):
         """实例 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -78,7 +70,6 @@ class Account(AbstractModel):
     @property
     def AccountName(self):
         """账号名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AccountName
@@ -90,7 +81,6 @@ class Account(AbstractModel):
     @property
     def Remark(self):
         """账号描述信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -105,7 +95,6 @@ class Account(AbstractModel):
 - r：只读。
 - w：只写。
 - rw：读写。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Privilege
@@ -119,7 +108,6 @@ class Account(AbstractModel):
         """只读路由策略。
 - master：主节点。
 - replication：从节点。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._ReadonlyPolicy
@@ -134,7 +122,6 @@ class Account(AbstractModel):
 - 1：账号变更中。
 - 2：账号有效。
 - 4：账号已删除。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -146,7 +133,6 @@ class Account(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -573,10 +559,8 @@ class AvailableRegion(AbstractModel):
     def __init__(self):
         r"""
         :param _Region: 地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         :param _AvailableZones: 可用区信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type AvailableZones: list of str
         """
         self._Region = None
@@ -585,7 +569,6 @@ class AvailableRegion(AbstractModel):
     @property
     def Region(self):
         """地域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Region
@@ -597,7 +580,6 @@ class AvailableRegion(AbstractModel):
     @property
     def AvailableZones(self):
         """可用区信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._AvailableZones
@@ -5449,28 +5431,20 @@ class DescribeInstanceDTSInstanceInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _RegionId: 地域 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionId: int
         :param _InstanceId: 实例 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _SetId: 仓库ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SetId: int
         :param _ZoneId: 可用区ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneId: int
         :param _Type: 实例类型。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: int
         :param _InstanceName: 实例名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceName: str
         :param _Vip: 实例访问地址。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Vip: str
         :param _Status: 状态。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         """
         self._RegionId = None
@@ -5485,7 +5459,6 @@ class DescribeInstanceDTSInstanceInfo(AbstractModel):
     @property
     def RegionId(self):
         """地域 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RegionId
@@ -5497,7 +5470,6 @@ class DescribeInstanceDTSInstanceInfo(AbstractModel):
     @property
     def InstanceId(self):
         """实例 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -5509,7 +5481,6 @@ class DescribeInstanceDTSInstanceInfo(AbstractModel):
     @property
     def SetId(self):
         """仓库ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SetId
@@ -5521,7 +5492,6 @@ class DescribeInstanceDTSInstanceInfo(AbstractModel):
     @property
     def ZoneId(self):
         """可用区ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ZoneId
@@ -5533,7 +5503,6 @@ class DescribeInstanceDTSInstanceInfo(AbstractModel):
     @property
     def Type(self):
         """实例类型。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Type
@@ -5545,7 +5514,6 @@ class DescribeInstanceDTSInstanceInfo(AbstractModel):
     @property
     def InstanceName(self):
         """实例名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceName
@@ -5557,7 +5525,6 @@ class DescribeInstanceDTSInstanceInfo(AbstractModel):
     @property
     def Vip(self):
         """实例访问地址。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Vip
@@ -5569,7 +5536,6 @@ class DescribeInstanceDTSInstanceInfo(AbstractModel):
     @property
     def Status(self):
         """状态。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -11561,7 +11527,6 @@ class Groups(AbstractModel):
         :param _GroupId: 复制组 ID。格式如：crs-rpl-deind****。
         :type GroupId: str
         :param _GroupName: 复制组名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupName: str
         :param _Status: 复制组状态。
 - 37：绑定复制组中。
@@ -11573,10 +11538,8 @@ class Groups(AbstractModel):
         :param _InstanceCount: 复制组数量。
         :type InstanceCount: int
         :param _Instances: 复制组中的实例信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Instances: list of Instances
         :param _Remark: 备注信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         """
         self._AppId = None
@@ -11640,7 +11603,6 @@ class Groups(AbstractModel):
     @property
     def GroupName(self):
         """复制组名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupName
@@ -11679,7 +11641,6 @@ class Groups(AbstractModel):
     @property
     def Instances(self):
         """复制组中的实例信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Instances
         """
         return self._Instances
@@ -11691,7 +11652,6 @@ class Groups(AbstractModel):
     @property
     def Remark(self):
         """备注信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -12997,7 +12957,6 @@ class InstanceIntegerParam(AbstractModel):
         :param _Status: 参数状态, 1: 修改中， 2：修改完成
         :type Status: int
         :param _Unit: 参数单位
-注意：此字段可能返回 null，表示取不到有效值。
         :type Unit: str
         """
         self._ParamName = None
@@ -13113,7 +13072,6 @@ class InstanceIntegerParam(AbstractModel):
     @property
     def Unit(self):
         """参数单位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Unit
@@ -13743,85 +13701,58 @@ class InstanceSet(AbstractModel):
         :param _SlaveReadWeight: 从节点读取权重。
         :type SlaveReadWeight: int
         :param _InstanceTags: 实例关联的标签信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceTags: list of InstanceTagInfo
         :param _ProjectName: 项目名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectName: str
         :param _NoAuth: 是否为免密实例。<ul><li>true：免密实例。</li><li>false：非免密实例。</li></ul>
-注意：此字段可能返回 null，表示取不到有效值。
         :type NoAuth: bool
         :param _ClientLimit: 客户端连接数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClientLimit: int
         :param _DtsStatus: DTS状态（内部参数，用户可忽略）。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DtsStatus: int
         :param _NetLimit: 分片带宽上限，单位MB。
-注意：此字段可能返回 null，表示取不到有效值。
         :type NetLimit: int
         :param _PasswordFree: 免密实例标识（内部参数，用户可忽略）。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PasswordFree: int
         :param _Vip6: 该参数存在命名不规范问题，建议用参数IPv6取代。内部参数，用户可忽略。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Vip6: str
         :param _IPv6: 内部参数，用户可忽略。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IPv6: str
         :param _ReadOnly: 实例只读标识（内部参数，用户可忽略）。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReadOnly: int
         :param _RemainBandwidthDuration: 内部参数，用户可忽略。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RemainBandwidthDuration: str
         :param _DiskSize: Redis实例请忽略该参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiskSize: int
         :param _MonitorVersion: 监控版本。<ul><li>1m：1分钟粒度监控。目前该监控粒度已下线，具体信息，请参见[云数据库 Redis 1分钟粒度下线公告](https://cloud.tencent.com/document/product/239/80653)。</li><li>5s：5秒粒度监控。</li></ul>
-注意：此字段可能返回 null，表示取不到有效值。
         :type MonitorVersion: str
         :param _ClientLimitMin: 客户端最大连接数可设置的最小值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClientLimitMin: int
         :param _ClientLimitMax: 客户端最大连接数可设置的最大值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClientLimitMax: int
         :param _NodeSet: 实例的节点详细信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type NodeSet: list of RedisNodeInfo
         :param _Region: 实例所在的地域信息，比如ap-guangzhou。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         :param _WanAddress: 外网地址。
-注意：此字段可能返回 null，表示取不到有效值。
         :type WanAddress: str
         :param _PolarisServer: 北极星服务地址，内部使用。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PolarisServer: str
         :param _RedisClusterId: CDC Redis集群ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RedisClusterId: str
         :param _DedicatedClusterId: CDC 集群ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DedicatedClusterId: str
         :param _ProductVersion: 产品版本。<ul><li>local：本地盘。</li><li>cloud：云盘版。</li><li>cdc：CDC 集群版本。</li></ul>
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductVersion: str
         :param _CurrentProxyVersion: 实例当前Proxy版本。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CurrentProxyVersion: str
         :param _CurrentRedisVersion: 实例当前Cache小版本。如果实例加入全球复制组，显示全球复制的内核版本。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CurrentRedisVersion: str
         :param _UpgradeProxyVersion: 实例可升级Proxy版本。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpgradeProxyVersion: str
         :param _UpgradeRedisVersion: 实例可升级Cache小版本。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpgradeRedisVersion: str
         :param _BackupMode: 备份模式：- SecondLevelBackup   秒级备份- NormalLevelBackup    普通备份
-注意：此字段可能返回 null，表示取不到有效值。
         :type BackupMode: str
         """
         self._InstanceName = None
@@ -14266,7 +14197,6 @@ class InstanceSet(AbstractModel):
     @property
     def InstanceTags(self):
         """实例关联的标签信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of InstanceTagInfo
         """
         return self._InstanceTags
@@ -14278,7 +14208,6 @@ class InstanceSet(AbstractModel):
     @property
     def ProjectName(self):
         """项目名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProjectName
@@ -14290,7 +14219,6 @@ class InstanceSet(AbstractModel):
     @property
     def NoAuth(self):
         """是否为免密实例。<ul><li>true：免密实例。</li><li>false：非免密实例。</li></ul>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._NoAuth
@@ -14302,7 +14230,6 @@ class InstanceSet(AbstractModel):
     @property
     def ClientLimit(self):
         """客户端连接数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ClientLimit
@@ -14314,7 +14241,6 @@ class InstanceSet(AbstractModel):
     @property
     def DtsStatus(self):
         """DTS状态（内部参数，用户可忽略）。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DtsStatus
@@ -14326,7 +14252,6 @@ class InstanceSet(AbstractModel):
     @property
     def NetLimit(self):
         """分片带宽上限，单位MB。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._NetLimit
@@ -14338,7 +14263,6 @@ class InstanceSet(AbstractModel):
     @property
     def PasswordFree(self):
         """免密实例标识（内部参数，用户可忽略）。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PasswordFree
@@ -14350,7 +14274,6 @@ class InstanceSet(AbstractModel):
     @property
     def Vip6(self):
         """该参数存在命名不规范问题，建议用参数IPv6取代。内部参数，用户可忽略。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Vip6
@@ -14362,7 +14285,6 @@ class InstanceSet(AbstractModel):
     @property
     def IPv6(self):
         """内部参数，用户可忽略。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IPv6
@@ -14374,7 +14296,6 @@ class InstanceSet(AbstractModel):
     @property
     def ReadOnly(self):
         """实例只读标识（内部参数，用户可忽略）。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ReadOnly
@@ -14386,7 +14307,6 @@ class InstanceSet(AbstractModel):
     @property
     def RemainBandwidthDuration(self):
         """内部参数，用户可忽略。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RemainBandwidthDuration
@@ -14398,7 +14318,6 @@ class InstanceSet(AbstractModel):
     @property
     def DiskSize(self):
         """Redis实例请忽略该参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DiskSize
@@ -14410,7 +14329,6 @@ class InstanceSet(AbstractModel):
     @property
     def MonitorVersion(self):
         """监控版本。<ul><li>1m：1分钟粒度监控。目前该监控粒度已下线，具体信息，请参见[云数据库 Redis 1分钟粒度下线公告](https://cloud.tencent.com/document/product/239/80653)。</li><li>5s：5秒粒度监控。</li></ul>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MonitorVersion
@@ -14422,7 +14340,6 @@ class InstanceSet(AbstractModel):
     @property
     def ClientLimitMin(self):
         """客户端最大连接数可设置的最小值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ClientLimitMin
@@ -14434,7 +14351,6 @@ class InstanceSet(AbstractModel):
     @property
     def ClientLimitMax(self):
         """客户端最大连接数可设置的最大值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ClientLimitMax
@@ -14446,7 +14362,6 @@ class InstanceSet(AbstractModel):
     @property
     def NodeSet(self):
         """实例的节点详细信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RedisNodeInfo
         """
         return self._NodeSet
@@ -14458,7 +14373,6 @@ class InstanceSet(AbstractModel):
     @property
     def Region(self):
         """实例所在的地域信息，比如ap-guangzhou。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Region
@@ -14470,7 +14384,6 @@ class InstanceSet(AbstractModel):
     @property
     def WanAddress(self):
         """外网地址。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._WanAddress
@@ -14482,7 +14395,6 @@ class InstanceSet(AbstractModel):
     @property
     def PolarisServer(self):
         """北极星服务地址，内部使用。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PolarisServer
@@ -14494,7 +14406,6 @@ class InstanceSet(AbstractModel):
     @property
     def RedisClusterId(self):
         """CDC Redis集群ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RedisClusterId
@@ -14506,7 +14417,6 @@ class InstanceSet(AbstractModel):
     @property
     def DedicatedClusterId(self):
         """CDC 集群ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DedicatedClusterId
@@ -14518,7 +14428,6 @@ class InstanceSet(AbstractModel):
     @property
     def ProductVersion(self):
         """产品版本。<ul><li>local：本地盘。</li><li>cloud：云盘版。</li><li>cdc：CDC 集群版本。</li></ul>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductVersion
@@ -14530,7 +14439,6 @@ class InstanceSet(AbstractModel):
     @property
     def CurrentProxyVersion(self):
         """实例当前Proxy版本。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CurrentProxyVersion
@@ -14542,7 +14450,6 @@ class InstanceSet(AbstractModel):
     @property
     def CurrentRedisVersion(self):
         """实例当前Cache小版本。如果实例加入全球复制组，显示全球复制的内核版本。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CurrentRedisVersion
@@ -14554,7 +14461,6 @@ class InstanceSet(AbstractModel):
     @property
     def UpgradeProxyVersion(self):
         """实例可升级Proxy版本。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpgradeProxyVersion
@@ -14566,7 +14472,6 @@ class InstanceSet(AbstractModel):
     @property
     def UpgradeRedisVersion(self):
         """实例可升级Cache小版本。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpgradeRedisVersion
@@ -14578,7 +14483,6 @@ class InstanceSet(AbstractModel):
     @property
     def BackupMode(self):
         """备份模式：- SecondLevelBackup   秒级备份- NormalLevelBackup    普通备份
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BackupMode
@@ -15009,7 +14913,6 @@ class Instances(AbstractModel):
         :param _RedisShardSize: 分片内存大小。
         :type RedisShardSize: int
         :param _DiskSize: 实例的磁盘大小。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiskSize: int
         :param _Engine: 引擎：社区版Redis、腾讯云CKV。
         :type Engine: str
@@ -15018,10 +14921,8 @@ class Instances(AbstractModel):
         :param _Vip: 实例 VIP 地址。
         :type Vip: str
         :param _Vip6: 该参数存在命名不规范问题，建议用参数IPv6取代。内部参数，用户可忽略。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Vip6: str
         :param _IPv6: 内部参数，用户可忽略。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IPv6: str
         :param _VpcID: VPC 网络ID，如：75101。
         :type VpcID: int
@@ -15161,7 +15062,6 @@ class Instances(AbstractModel):
     @property
     def DiskSize(self):
         """实例的磁盘大小。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DiskSize
@@ -15206,7 +15106,6 @@ class Instances(AbstractModel):
     @property
     def Vip6(self):
         """该参数存在命名不规范问题，建议用参数IPv6取代。内部参数，用户可忽略。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Vip6
@@ -15218,7 +15117,6 @@ class Instances(AbstractModel):
     @property
     def IPv6(self):
         """内部参数，用户可忽略。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IPv6
@@ -15470,16 +15368,12 @@ class LogDeliveryInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Enabled: 日志投递开启状态，开启：true，关闭：false
-注意：此字段可能返回 null，表示取不到有效值。
         :type Enabled: bool
         :param _LogsetId: 日志集ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogsetId: str
         :param _TopicId: 日志主题ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TopicId: str
         :param _LogRegion: 日志集所在地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogRegion: str
         """
         self._Enabled = None
@@ -15490,7 +15384,6 @@ class LogDeliveryInfo(AbstractModel):
     @property
     def Enabled(self):
         """日志投递开启状态，开启：true，关闭：false
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Enabled
@@ -15502,7 +15395,6 @@ class LogDeliveryInfo(AbstractModel):
     @property
     def LogsetId(self):
         """日志集ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LogsetId
@@ -15514,7 +15406,6 @@ class LogDeliveryInfo(AbstractModel):
     @property
     def TopicId(self):
         """日志主题ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TopicId
@@ -15526,7 +15417,6 @@ class LogDeliveryInfo(AbstractModel):
     @property
     def LogRegion(self):
         """日志集所在地域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LogRegion

@@ -2628,6 +2628,29 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetTopNMonitorData(self, request):
+        """支持TopN查询，对于给定的监控指标和时间区间，按照指标大小按序返回不同维度组合及数据。
+
+        :param request: Request instance for GetTopNMonitorData.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.GetTopNMonitorDataRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.GetTopNMonitorDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetTopNMonitorData", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetTopNMonitorDataResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def InstallPlugins(self, request):
         """安装 Grafana Plugin
 

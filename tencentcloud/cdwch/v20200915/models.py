@@ -4931,6 +4931,20 @@ class InstanceNode(AbstractModel):
         :param _IsCHProxy: ture的时候表示该节点上部署了chproxy进程
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsCHProxy: bool
+        :param _Status: 节点状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _UUID: 节点uuid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UUID: str
+        :param _Zone: 区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
+        :param _ZoneDesc: 区描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneDesc: str
+        :param _RealResourceId: 真实资源id
+        :type RealResourceId: str
         """
         self._Ip = None
         self._Spec = None
@@ -4942,6 +4956,11 @@ class InstanceNode(AbstractModel):
         self._NodeGroups = None
         self._Rip = None
         self._IsCHProxy = None
+        self._Status = None
+        self._UUID = None
+        self._Zone = None
+        self._ZoneDesc = None
+        self._RealResourceId = None
 
     @property
     def Ip(self):
@@ -5055,6 +5074,65 @@ class InstanceNode(AbstractModel):
     def IsCHProxy(self, IsCHProxy):
         self._IsCHProxy = IsCHProxy
 
+    @property
+    def Status(self):
+        """节点状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def UUID(self):
+        """节点uuid
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UUID
+
+    @UUID.setter
+    def UUID(self, UUID):
+        self._UUID = UUID
+
+    @property
+    def Zone(self):
+        """区
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def ZoneDesc(self):
+        """区描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ZoneDesc
+
+    @ZoneDesc.setter
+    def ZoneDesc(self, ZoneDesc):
+        self._ZoneDesc = ZoneDesc
+
+    @property
+    def RealResourceId(self):
+        """真实资源id
+        :rtype: str
+        """
+        return self._RealResourceId
+
+    @RealResourceId.setter
+    def RealResourceId(self, RealResourceId):
+        self._RealResourceId = RealResourceId
+
 
     def _deserialize(self, params):
         self._Ip = params.get("Ip")
@@ -5072,6 +5150,11 @@ class InstanceNode(AbstractModel):
                 self._NodeGroups.append(obj)
         self._Rip = params.get("Rip")
         self._IsCHProxy = params.get("IsCHProxy")
+        self._Status = params.get("Status")
+        self._UUID = params.get("UUID")
+        self._Zone = params.get("Zone")
+        self._ZoneDesc = params.get("ZoneDesc")
+        self._RealResourceId = params.get("RealResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

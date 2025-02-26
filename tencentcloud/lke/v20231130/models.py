@@ -1126,6 +1126,9 @@ class AppModel(AbstractModel):
         :param _TopP: 模型TopP
 注意：此字段可能返回 null，表示取不到有效值。
         :type TopP: str
+        :param _ResourceStatus: 模型资源状态 1：资源可用；2：资源已用尽
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceStatus: int
         """
         self._Name = None
         self._Desc = None
@@ -1137,6 +1140,7 @@ class AppModel(AbstractModel):
         self._UsageType = None
         self._Temperature = None
         self._TopP = None
+        self._ResourceStatus = None
 
     @property
     def Name(self):
@@ -1258,6 +1262,18 @@ class AppModel(AbstractModel):
     def TopP(self, TopP):
         self._TopP = TopP
 
+    @property
+    def ResourceStatus(self):
+        """模型资源状态 1：资源可用；2：资源已用尽
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ResourceStatus
+
+    @ResourceStatus.setter
+    def ResourceStatus(self, ResourceStatus):
+        self._ResourceStatus = ResourceStatus
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -1270,6 +1286,7 @@ class AppModel(AbstractModel):
         self._UsageType = params.get("UsageType")
         self._Temperature = params.get("Temperature")
         self._TopP = params.get("TopP")
+        self._ResourceStatus = params.get("ResourceStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3495,7 +3512,7 @@ class CreateQACateRequest(AbstractModel):
         r"""
         :param _BotBizId: 应用ID
         :type BotBizId: str
-        :param _ParentBizId: 父级业务ID
+        :param _ParentBizId: 父级业务ID，创建顶级分类时传字符串"0"
         :type ParentBizId: str
         :param _Name: 分类名称
 
@@ -3518,7 +3535,7 @@ class CreateQACateRequest(AbstractModel):
 
     @property
     def ParentBizId(self):
-        """父级业务ID
+        """父级业务ID，创建顶级分类时传字符串"0"
         :rtype: str
         """
         return self._ParentBizId
@@ -6113,18 +6130,29 @@ class DescribeCorpResponse(AbstractModel):
         :param _CorpBizId: 企业ID
 
         :type CorpBizId: str
-        :param _RobotQuota: 机器人配额
-
+        :param _RobotQuota: 应用配额
         :type RobotQuota: int
         :param _FullName: 企业全称
 
         :type FullName: str
+        :param _IsTrial: 是否试用
+        :type IsTrial: bool
+        :param _IsTrialExpired: 是否试用过期
+        :type IsTrialExpired: bool
+        :param _AvailableAppQuota: 可用应用数量
+        :type AvailableAppQuota: int
+        :param _IsSupportCustomModel: 是否支持自定义模型配置
+        :type IsSupportCustomModel: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CorpBizId = None
         self._RobotQuota = None
         self._FullName = None
+        self._IsTrial = None
+        self._IsTrialExpired = None
+        self._AvailableAppQuota = None
+        self._IsSupportCustomModel = None
         self._RequestId = None
 
     @property
@@ -6141,8 +6169,7 @@ class DescribeCorpResponse(AbstractModel):
 
     @property
     def RobotQuota(self):
-        """机器人配额
-
+        """应用配额
         :rtype: int
         """
         return self._RobotQuota
@@ -6164,6 +6191,50 @@ class DescribeCorpResponse(AbstractModel):
         self._FullName = FullName
 
     @property
+    def IsTrial(self):
+        """是否试用
+        :rtype: bool
+        """
+        return self._IsTrial
+
+    @IsTrial.setter
+    def IsTrial(self, IsTrial):
+        self._IsTrial = IsTrial
+
+    @property
+    def IsTrialExpired(self):
+        """是否试用过期
+        :rtype: bool
+        """
+        return self._IsTrialExpired
+
+    @IsTrialExpired.setter
+    def IsTrialExpired(self, IsTrialExpired):
+        self._IsTrialExpired = IsTrialExpired
+
+    @property
+    def AvailableAppQuota(self):
+        """可用应用数量
+        :rtype: int
+        """
+        return self._AvailableAppQuota
+
+    @AvailableAppQuota.setter
+    def AvailableAppQuota(self, AvailableAppQuota):
+        self._AvailableAppQuota = AvailableAppQuota
+
+    @property
+    def IsSupportCustomModel(self):
+        """是否支持自定义模型配置
+        :rtype: bool
+        """
+        return self._IsSupportCustomModel
+
+    @IsSupportCustomModel.setter
+    def IsSupportCustomModel(self, IsSupportCustomModel):
+        self._IsSupportCustomModel = IsSupportCustomModel
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -6179,6 +6250,10 @@ class DescribeCorpResponse(AbstractModel):
         self._CorpBizId = params.get("CorpBizId")
         self._RobotQuota = params.get("RobotQuota")
         self._FullName = params.get("FullName")
+        self._IsTrial = params.get("IsTrial")
+        self._IsTrialExpired = params.get("IsTrialExpired")
+        self._AvailableAppQuota = params.get("AvailableAppQuota")
+        self._IsSupportCustomModel = params.get("IsSupportCustomModel")
         self._RequestId = params.get("RequestId")
 
 
@@ -14590,6 +14665,12 @@ class ListDocItem(AbstractModel):
         :param _IsAllowRetry: 是否允许重试，0：否，1：是
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsAllowRetry: bool
+        :param _Processing: 0:文档比对处理 1:文档生成问答
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Processing: list of int
+        :param _CreateTime: 文档创建落库时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
         """
         self._DocBizId = None
         self._FileName = None
@@ -14620,6 +14701,8 @@ class ListDocItem(AbstractModel):
         self._ExpireStart = None
         self._ExpireEnd = None
         self._IsAllowRetry = None
+        self._Processing = None
+        self._CreateTime = None
 
     @property
     def DocBizId(self):
@@ -14969,6 +15052,30 @@ class ListDocItem(AbstractModel):
     def IsAllowRetry(self, IsAllowRetry):
         self._IsAllowRetry = IsAllowRetry
 
+    @property
+    def Processing(self):
+        """0:文档比对处理 1:文档生成问答
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
+        return self._Processing
+
+    @Processing.setter
+    def Processing(self, Processing):
+        self._Processing = Processing
+
+    @property
+    def CreateTime(self):
+        """文档创建落库时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
 
     def _deserialize(self, params):
         self._DocBizId = params.get("DocBizId")
@@ -15005,6 +15112,8 @@ class ListDocItem(AbstractModel):
         self._ExpireStart = params.get("ExpireStart")
         self._ExpireEnd = params.get("ExpireEnd")
         self._IsAllowRetry = params.get("IsAllowRetry")
+        self._Processing = params.get("Processing")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -180,11 +180,14 @@ class CreateDisclosedCredentialRequest(AbstractModel):
         :type PolicyJson: str
         :param _DAPId: DID应用ID
         :type DAPId: int
+        :param _UAPId: 用户应用ID
+        :type UAPId: int
         """
         self._PolicyId = None
         self._CredentialData = None
         self._PolicyJson = None
         self._DAPId = None
+        self._UAPId = None
 
     @property
     def PolicyId(self):
@@ -230,12 +233,24 @@ class CreateDisclosedCredentialRequest(AbstractModel):
     def DAPId(self, DAPId):
         self._DAPId = DAPId
 
+    @property
+    def UAPId(self):
+        """用户应用ID
+        :rtype: int
+        """
+        return self._UAPId
+
+    @UAPId.setter
+    def UAPId(self, UAPId):
+        self._UAPId = UAPId
+
 
     def _deserialize(self, params):
         self._PolicyId = params.get("PolicyId")
         self._CredentialData = params.get("CredentialData")
         self._PolicyJson = params.get("PolicyJson")
         self._DAPId = params.get("DAPId")
+        self._UAPId = params.get("UAPId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -298,6 +313,8 @@ class CreatePresentationRequest(AbstractModel):
         r"""
         :param _DAPId: DID应用id
         :type DAPId: int
+        :param _UAPId: 用户应用id
+        :type UAPId: int
         :param _Credentials: 凭证列表
         :type Credentials: list of str
         :param _Did: VP持有人的DID标识
@@ -312,6 +329,7 @@ class CreatePresentationRequest(AbstractModel):
         :type CredentialList: list of CredentialProof
         """
         self._DAPId = None
+        self._UAPId = None
         self._Credentials = None
         self._Did = None
         self._VerifyCode = None
@@ -329,6 +347,17 @@ class CreatePresentationRequest(AbstractModel):
     @DAPId.setter
     def DAPId(self, DAPId):
         self._DAPId = DAPId
+
+    @property
+    def UAPId(self):
+        """用户应用id
+        :rtype: int
+        """
+        return self._UAPId
+
+    @UAPId.setter
+    def UAPId(self, UAPId):
+        self._UAPId = UAPId
 
     @property
     def Credentials(self):
@@ -399,6 +428,7 @@ class CreatePresentationRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._DAPId = params.get("DAPId")
+        self._UAPId = params.get("UAPId")
         self._Credentials = params.get("Credentials")
         self._Did = params.get("Did")
         self._VerifyCode = params.get("VerifyCode")
@@ -922,6 +952,72 @@ class CredentialState(AbstractModel):
         
 
 
+class CredentialStatusInfo(AbstractModel):
+    """设置凭证状态信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 凭证唯一id
+        :type Id: str
+        :param _Issuer: 凭证状态（0：吊销；1：有效）
+        :type Issuer: str
+        :param _Status: 凭证颁发者Did
+        :type Status: int
+        """
+        self._Id = None
+        self._Issuer = None
+        self._Status = None
+
+    @property
+    def Id(self):
+        """凭证唯一id
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Issuer(self):
+        """凭证状态（0：吊销；1：有效）
+        :rtype: str
+        """
+        return self._Issuer
+
+    @Issuer.setter
+    def Issuer(self, Issuer):
+        self._Issuer = Issuer
+
+    @property
+    def Status(self):
+        """凭证颁发者Did
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Issuer = params.get("Issuer")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeactivateTDidRequest(AbstractModel):
     """DeactivateTDid请求参数结构体
 
@@ -1143,10 +1239,8 @@ class GetAppSummaryResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _AppCounter: 用户参与应用的统计指标 
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppCounter: :class:`tencentcloud.tdid.v20210519.models.ResourceCounterData`
         :param _UserCounter: 用户创建资源的统计指标
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserCounter: :class:`tencentcloud.tdid.v20210519.models.ResourceCounterData`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1158,7 +1252,6 @@ class GetAppSummaryResponse(AbstractModel):
     @property
     def AppCounter(self):
         """用户参与应用的统计指标 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tdid.v20210519.models.ResourceCounterData`
         """
         return self._AppCounter
@@ -1170,7 +1263,6 @@ class GetAppSummaryResponse(AbstractModel):
     @property
     def UserCounter(self):
         """用户创建资源的统计指标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tdid.v20210519.models.ResourceCounterData`
         """
         return self._UserCounter
@@ -1260,7 +1352,6 @@ class GetCredentialStateResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _CredentialState: 凭证状态信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type CredentialState: :class:`tencentcloud.tdid.v20210519.models.CredentialState`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1271,7 +1362,6 @@ class GetCredentialStateResponse(AbstractModel):
     @property
     def CredentialState(self):
         """凭证状态信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tdid.v20210519.models.CredentialState`
         """
         return self._CredentialState
@@ -1481,7 +1571,6 @@ class GetTDidByObjectIdResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Did: DID标识
-注意：此字段可能返回 null，表示取不到有效值。
         :type Did: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1492,7 +1581,6 @@ class GetTDidByObjectIdResponse(AbstractModel):
     @property
     def Did(self):
         """DID标识
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Did
@@ -2088,19 +2176,14 @@ class ResourceCounterData(AbstractModel):
     def __init__(self):
         r"""
         :param _DidCnt: DID总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type DidCnt: int
         :param _VCCnt: VC总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type VCCnt: int
         :param _CPTCnt: CPT总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type CPTCnt: int
         :param _VerifyCnt:  VC验证总数 
-注意：此字段可能返回 null，表示取不到有效值。
         :type VerifyCnt: int
         :param _AuthCnt: 权威机构数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type AuthCnt: int
         """
         self._DidCnt = None
@@ -2112,7 +2195,6 @@ class ResourceCounterData(AbstractModel):
     @property
     def DidCnt(self):
         """DID总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DidCnt
@@ -2124,7 +2206,6 @@ class ResourceCounterData(AbstractModel):
     @property
     def VCCnt(self):
         """VC总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._VCCnt
@@ -2136,7 +2217,6 @@ class ResourceCounterData(AbstractModel):
     @property
     def CPTCnt(self):
         """CPT总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CPTCnt
@@ -2148,7 +2228,6 @@ class ResourceCounterData(AbstractModel):
     @property
     def VerifyCnt(self):
         """ VC验证总数 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._VerifyCnt
@@ -2160,7 +2239,6 @@ class ResourceCounterData(AbstractModel):
     @property
     def AuthCnt(self):
         """权威机构数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AuthCnt
@@ -2326,11 +2404,17 @@ class UpdateCredentialStateRequest(AbstractModel):
         r"""
         :param _DAPId: DID应用Id
         :type DAPId: int
-        :param _OperateCredential: 更新VC状态的临时凭证内容，通过创建凭证接口(CreateCredential)生成并签名，凭证类型为：OperateCredential, 为安全起见凭证过期时间不适合太长，建议设置为1分钟内
+        :param _OperateCredential: 更新VC状态的临时凭证内容，通过创建凭证接口(CreateCredential)生成并签名，凭证类型为：OperateCredential, 为安全起见凭证过期时间不适合太长，如设置为1分钟内
         :type OperateCredential: str
+        :param _OriginCredential: 待更新凭证状态的原始凭证内容
+        :type OriginCredential: str
+        :param _CredentialStatus: 凭证状态信息
+        :type CredentialStatus: :class:`tencentcloud.tdid.v20210519.models.CredentialStatusInfo`
         """
         self._DAPId = None
         self._OperateCredential = None
+        self._OriginCredential = None
+        self._CredentialStatus = None
 
     @property
     def DAPId(self):
@@ -2345,7 +2429,7 @@ class UpdateCredentialStateRequest(AbstractModel):
 
     @property
     def OperateCredential(self):
-        """更新VC状态的临时凭证内容，通过创建凭证接口(CreateCredential)生成并签名，凭证类型为：OperateCredential, 为安全起见凭证过期时间不适合太长，建议设置为1分钟内
+        """更新VC状态的临时凭证内容，通过创建凭证接口(CreateCredential)生成并签名，凭证类型为：OperateCredential, 为安全起见凭证过期时间不适合太长，如设置为1分钟内
         :rtype: str
         """
         return self._OperateCredential
@@ -2354,10 +2438,36 @@ class UpdateCredentialStateRequest(AbstractModel):
     def OperateCredential(self, OperateCredential):
         self._OperateCredential = OperateCredential
 
+    @property
+    def OriginCredential(self):
+        """待更新凭证状态的原始凭证内容
+        :rtype: str
+        """
+        return self._OriginCredential
+
+    @OriginCredential.setter
+    def OriginCredential(self, OriginCredential):
+        self._OriginCredential = OriginCredential
+
+    @property
+    def CredentialStatus(self):
+        """凭证状态信息
+        :rtype: :class:`tencentcloud.tdid.v20210519.models.CredentialStatusInfo`
+        """
+        return self._CredentialStatus
+
+    @CredentialStatus.setter
+    def CredentialStatus(self, CredentialStatus):
+        self._CredentialStatus = CredentialStatus
+
 
     def _deserialize(self, params):
         self._DAPId = params.get("DAPId")
         self._OperateCredential = params.get("OperateCredential")
+        self._OriginCredential = params.get("OriginCredential")
+        if params.get("CredentialStatus") is not None:
+            self._CredentialStatus = CredentialStatusInfo()
+            self._CredentialStatus._deserialize(params.get("CredentialStatus"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2376,7 +2486,6 @@ class UpdateCredentialStateResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 更新是否成功
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2387,7 +2496,6 @@ class UpdateCredentialStateResponse(AbstractModel):
     @property
     def Result(self):
         """更新是否成功
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Result

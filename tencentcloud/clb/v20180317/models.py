@@ -5192,6 +5192,8 @@ class CreateTargetGroupRequest(AbstractModel):
         :type Port: int
         :param _TargetGroupInstances: 目标组绑定的后端服务器
         :type TargetGroupInstances: list of TargetGroupInstance
+        :param _Type: 目标组类型，当前支持v1(旧版目标组), v2(新版目标组), 默认为v1(旧版目标组)。
+        :type Type: str
         :param _Tags: 标签。
         :type Tags: list of TagInfo
         :param _Weight: 后端服务默认权重。
@@ -5206,6 +5208,7 @@ class CreateTargetGroupRequest(AbstractModel):
         self._VpcId = None
         self._Port = None
         self._TargetGroupInstances = None
+        self._Type = None
         self._Tags = None
         self._Weight = None
 
@@ -5255,6 +5258,17 @@ class CreateTargetGroupRequest(AbstractModel):
         self._TargetGroupInstances = TargetGroupInstances
 
     @property
+    def Type(self):
+        """目标组类型，当前支持v1(旧版目标组), v2(新版目标组), 默认为v1(旧版目标组)。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
     def Tags(self):
         """标签。
         :rtype: list of TagInfo
@@ -5292,6 +5306,7 @@ class CreateTargetGroupRequest(AbstractModel):
                 obj = TargetGroupInstance()
                 obj._deserialize(item)
                 self._TargetGroupInstances.append(obj)
+        self._Type = params.get("Type")
         if params.get("Tags") is not None:
             self._Tags = []
             for item in params.get("Tags"):

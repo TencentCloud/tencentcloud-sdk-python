@@ -2404,7 +2404,12 @@ class GetReconstructDocumentResultResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: 任务状态。- `Success`：执行完成- `Processing`：执行中- `Pause`: 暂停- `Failed`：执行失败- `WaitExecute`：等待执行
+        :param _Status: 任务状态。
+- `Success`：执行完成
+- `Processing`：执行中
+-  `Pause`: 暂停
+-  `Failed`：执行失败
+-  `WaitExecute`：等待执行
         :type Status: str
         :param _DocumentRecognizeResultUrl: 解析结果的临时下载地址。文件类型为zip压缩包，下载链接有效期30分钟
         :type DocumentRecognizeResultUrl: str
@@ -2420,7 +2425,12 @@ class GetReconstructDocumentResultResponse(AbstractModel):
 
     @property
     def Status(self):
-        """任务状态。- `Success`：执行完成- `Processing`：执行中- `Pause`: 暂停- `Failed`：执行失败- `WaitExecute`：等待执行
+        """任务状态。
+- `Success`：执行完成
+- `Processing`：执行中
+-  `Pause`: 暂停
+-  `Failed`：执行失败
+-  `WaitExecute`：等待执行
         :rtype: str
         """
         return self._Status

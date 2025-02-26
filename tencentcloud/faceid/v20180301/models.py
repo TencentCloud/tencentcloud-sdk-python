@@ -6405,11 +6405,17 @@ class GetWeChatBillDetailsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Date: 拉取的日期（YYYY-MM-DD）。最大可追溯到365天前。当天6点后才能拉取前一天的数据。
+        :param _Date: 拉取的日期（YYYY-MM-DD）。
+- 最大可追溯到365天前。
+- 当天6点后才能拉取前一天的数据。
         :type Date: str
-        :param _Cursor: 游标。用于分页，取第一页时传0，取后续页面时，传入本接口响应中返回的NextCursor字段的值。
+        :param _Cursor: 游标。
+- 用于分页。
+- 取第一页时传0，取后续页面时，传入本接口响应中返回的NextCursor字段的值。
         :type Cursor: int
-        :param _RuleId: 需要拉取账单详情业务对应的RuleId。不传会返回所有RuleId数据。默认为空字符串。
+        :param _RuleId: 需要拉取账单详情业务对应的RuleId。
+- 不传会返回所有RuleId数据。
+- 默认为空字符串。
         :type RuleId: str
         """
         self._Date = None
@@ -6418,7 +6424,9 @@ class GetWeChatBillDetailsRequest(AbstractModel):
 
     @property
     def Date(self):
-        """拉取的日期（YYYY-MM-DD）。最大可追溯到365天前。当天6点后才能拉取前一天的数据。
+        """拉取的日期（YYYY-MM-DD）。
+- 最大可追溯到365天前。
+- 当天6点后才能拉取前一天的数据。
         :rtype: str
         """
         return self._Date
@@ -6429,7 +6437,9 @@ class GetWeChatBillDetailsRequest(AbstractModel):
 
     @property
     def Cursor(self):
-        """游标。用于分页，取第一页时传0，取后续页面时，传入本接口响应中返回的NextCursor字段的值。
+        """游标。
+- 用于分页。
+- 取第一页时传0，取后续页面时，传入本接口响应中返回的NextCursor字段的值。
         :rtype: int
         """
         return self._Cursor
@@ -6440,7 +6450,9 @@ class GetWeChatBillDetailsRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        """需要拉取账单详情业务对应的RuleId。不传会返回所有RuleId数据。默认为空字符串。
+        """需要拉取账单详情业务对应的RuleId。
+- 不传会返回所有RuleId数据。
+- 默认为空字符串。
         :rtype: str
         """
         return self._RuleId
@@ -6471,11 +6483,12 @@ class GetWeChatBillDetailsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HasNextPage: 是否还有下一页。该字段为true时，需要将NextCursor的值作为入参Cursor继续调用本接口。
+        :param _HasNextPage: 是否还有下一页。
+- 该字段为true时，需要将NextCursor的值作为入参Cursor继续调用本接口。
         :type HasNextPage: bool
-        :param _NextCursor: 下一页的游标。用于分页。
+        :param _NextCursor: 下一页的游标，用于分页。
         :type NextCursor: int
-        :param _WeChatBillDetails: 数据
+        :param _WeChatBillDetails: 数据。
         :type WeChatBillDetails: list of WeChatBillDetail
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6487,7 +6500,8 @@ class GetWeChatBillDetailsResponse(AbstractModel):
 
     @property
     def HasNextPage(self):
-        """是否还有下一页。该字段为true时，需要将NextCursor的值作为入参Cursor继续调用本接口。
+        """是否还有下一页。
+- 该字段为true时，需要将NextCursor的值作为入参Cursor继续调用本接口。
         :rtype: bool
         """
         return self._HasNextPage
@@ -6498,7 +6512,7 @@ class GetWeChatBillDetailsResponse(AbstractModel):
 
     @property
     def NextCursor(self):
-        """下一页的游标。用于分页。
+        """下一页的游标，用于分页。
         :rtype: int
         """
         return self._NextCursor
@@ -6509,7 +6523,7 @@ class GetWeChatBillDetailsResponse(AbstractModel):
 
     @property
     def WeChatBillDetails(self):
-        """数据
+        """数据。
         :rtype: list of WeChatBillDetail
         """
         return self._WeChatBillDetails

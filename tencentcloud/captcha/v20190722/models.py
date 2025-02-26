@@ -869,7 +869,6 @@ class DescribeCaptchaAppIdInfoResponse(AbstractModel):
         :param _CaptchaCode: 成功返回0 其它失败
         :type CaptchaCode: int
         :param _CaptchaMsg: 返回操作信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type CaptchaMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1049,7 +1048,6 @@ class DescribeCaptchaAppIdInfoResponse(AbstractModel):
     @property
     def CaptchaMsg(self):
         """返回操作信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CaptchaMsg
@@ -1180,10 +1178,8 @@ class DescribeCaptchaDataResponse(AbstractModel):
         :param _CaptchaCode: 返回码 0 成功 其它失败
         :type CaptchaCode: int
         :param _Data: 数据数组
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of CaptchaQueryData
         :param _CaptchaMsg: 返回信息描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type CaptchaMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1207,7 +1203,6 @@ class DescribeCaptchaDataResponse(AbstractModel):
     @property
     def Data(self):
         """数据数组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CaptchaQueryData
         """
         return self._Data
@@ -1219,7 +1214,6 @@ class DescribeCaptchaDataResponse(AbstractModel):
     @property
     def CaptchaMsg(self):
         """返回信息描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CaptchaMsg
@@ -1334,7 +1328,6 @@ class DescribeCaptchaDataSumResponse(AbstractModel):
         :param _AttackSum: 拦截攻击量
         :type AttackSum: int
         :param _CaptchaMsg: 返回信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type CaptchaMsg: str
         :param _CaptchaCode: 成功返回0  其它失败
         :type CaptchaCode: int
@@ -1405,7 +1398,6 @@ class DescribeCaptchaDataSumResponse(AbstractModel):
     @property
     def CaptchaMsg(self):
         """返回信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CaptchaMsg
@@ -1574,10 +1566,8 @@ class DescribeCaptchaMiniDataResponse(AbstractModel):
         :param _CaptchaCode: 返回码 0 成功 其它失败
         :type CaptchaCode: int
         :param _Data: 数据数组
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of CaptchaQueryData
         :param _CaptchaMsg: 返回信息描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type CaptchaMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1601,7 +1591,6 @@ class DescribeCaptchaMiniDataResponse(AbstractModel):
     @property
     def Data(self):
         """数据数组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CaptchaQueryData
         """
         return self._Data
@@ -1613,7 +1602,6 @@ class DescribeCaptchaMiniDataResponse(AbstractModel):
     @property
     def CaptchaMsg(self):
         """返回信息描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CaptchaMsg
@@ -1720,31 +1708,22 @@ class DescribeCaptchaMiniDataSumResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _GetSum: 请求总量
-注意：此字段可能返回 null，表示取不到有效值。
         :type GetSum: int
         :param _VfySuccSum: 请求验证成功量
-注意：此字段可能返回 null，表示取不到有效值。
         :type VfySuccSum: int
         :param _VfySum: 请求验证量
-注意：此字段可能返回 null，表示取不到有效值。
         :type VfySum: int
         :param _AttackSum: 拦截攻击量
-注意：此字段可能返回 null，表示取不到有效值。
         :type AttackSum: int
         :param _CaptchaMsg: 返回信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type CaptchaMsg: str
         :param _CaptchaCode: 成功返回0  其它失败
-注意：此字段可能返回 null，表示取不到有效值。
         :type CaptchaCode: int
         :param _CheckTicketSum: 票据校验总量
-注意：此字段可能返回 null，表示取不到有效值。
         :type CheckTicketSum: int
         :param _TicketThroughputSum: 票据验证通过量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TicketThroughputSum: int
         :param _TicketInterceptSum: 票据验证拦截量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TicketInterceptSum: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1763,7 +1742,6 @@ class DescribeCaptchaMiniDataSumResponse(AbstractModel):
     @property
     def GetSum(self):
         """请求总量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._GetSum
@@ -1775,7 +1753,6 @@ class DescribeCaptchaMiniDataSumResponse(AbstractModel):
     @property
     def VfySuccSum(self):
         """请求验证成功量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._VfySuccSum
@@ -1787,7 +1764,6 @@ class DescribeCaptchaMiniDataSumResponse(AbstractModel):
     @property
     def VfySum(self):
         """请求验证量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._VfySum
@@ -1799,7 +1775,6 @@ class DescribeCaptchaMiniDataSumResponse(AbstractModel):
     @property
     def AttackSum(self):
         """拦截攻击量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AttackSum
@@ -1811,7 +1786,6 @@ class DescribeCaptchaMiniDataSumResponse(AbstractModel):
     @property
     def CaptchaMsg(self):
         """返回信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CaptchaMsg
@@ -1823,7 +1797,6 @@ class DescribeCaptchaMiniDataSumResponse(AbstractModel):
     @property
     def CaptchaCode(self):
         """成功返回0  其它失败
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CaptchaCode
@@ -1835,7 +1808,6 @@ class DescribeCaptchaMiniDataSumResponse(AbstractModel):
     @property
     def CheckTicketSum(self):
         """票据校验总量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CheckTicketSum
@@ -1847,7 +1819,6 @@ class DescribeCaptchaMiniDataSumResponse(AbstractModel):
     @property
     def TicketThroughputSum(self):
         """票据验证通过量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TicketThroughputSum
@@ -1859,7 +1830,6 @@ class DescribeCaptchaMiniDataSumResponse(AbstractModel):
     @property
     def TicketInterceptSum(self):
         """票据验证拦截量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TicketInterceptSum
@@ -1984,10 +1954,8 @@ class DescribeCaptchaMiniOperDataResponse(AbstractModel):
         :param _CaptchaCode: 成功返回 0 其它失败
         :type CaptchaCode: int
         :param _CaptchaMsg: 返回信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type CaptchaMsg: str
         :param _Data: 用户操作数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.captcha.v20190722.models.CaptchaOperDataRes`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2011,7 +1979,6 @@ class DescribeCaptchaMiniOperDataResponse(AbstractModel):
     @property
     def CaptchaMsg(self):
         """返回信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CaptchaMsg
@@ -2023,7 +1990,6 @@ class DescribeCaptchaMiniOperDataResponse(AbstractModel):
     @property
     def Data(self):
         """用户操作数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.captcha.v20190722.models.CaptchaOperDataRes`
         """
         return self._Data
@@ -2667,10 +2633,8 @@ class DescribeCaptchaOperDataResponse(AbstractModel):
         :param _CaptchaCode: 成功返回 0 其它失败
         :type CaptchaCode: int
         :param _CaptchaMsg: 返回信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type CaptchaMsg: str
         :param _Data: 用户操作数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.captcha.v20190722.models.CaptchaOperDataRes`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2694,7 +2658,6 @@ class DescribeCaptchaOperDataResponse(AbstractModel):
     @property
     def CaptchaMsg(self):
         """返回信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CaptchaMsg
@@ -2706,7 +2669,6 @@ class DescribeCaptchaOperDataResponse(AbstractModel):
     @property
     def Data(self):
         """用户操作数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.captcha.v20190722.models.CaptchaOperDataRes`
         """
         return self._Data
@@ -3508,10 +3470,8 @@ class DescribeCaptchaTicketDataResponse(AbstractModel):
         :param _CaptchaCode: 成功返回 0 其它失败
         :type CaptchaCode: int
         :param _CaptchaMsg: 返回信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type CaptchaMsg: str
         :param _Data: 验证码票据信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.captcha.v20190722.models.CaptchaTicketDataRes`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3535,7 +3495,6 @@ class DescribeCaptchaTicketDataResponse(AbstractModel):
     @property
     def CaptchaMsg(self):
         """返回信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CaptchaMsg
@@ -3547,7 +3506,6 @@ class DescribeCaptchaTicketDataResponse(AbstractModel):
     @property
     def Data(self):
         """验证码票据信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.captcha.v20190722.models.CaptchaTicketDataRes`
         """
         return self._Data
@@ -3591,12 +3549,10 @@ class DescribeCaptchaUserAllAppIdResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 用户注册的所有Appid和应用名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of CaptchaUserAllAppId
         :param _CaptchaCode: 成功返回 0  其它失败
         :type CaptchaCode: int
         :param _CaptchaMsg: 返回操作信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type CaptchaMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3609,7 +3565,6 @@ class DescribeCaptchaUserAllAppIdResponse(AbstractModel):
     @property
     def Data(self):
         """用户注册的所有Appid和应用名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CaptchaUserAllAppId
         """
         return self._Data
@@ -3632,7 +3587,6 @@ class DescribeCaptchaUserAllAppIdResponse(AbstractModel):
     @property
     def CaptchaMsg(self):
         """返回操作信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CaptchaMsg
@@ -5252,7 +5206,6 @@ class UpdateCaptchaAppIdInfoResponse(AbstractModel):
         :param _CaptchaCode: 返回码 0 成功，其它失败
         :type CaptchaCode: int
         :param _CaptchaMsg: 返回操作信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type CaptchaMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5275,7 +5228,6 @@ class UpdateCaptchaAppIdInfoResponse(AbstractModel):
     @property
     def CaptchaMsg(self):
         """返回操作信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CaptchaMsg
