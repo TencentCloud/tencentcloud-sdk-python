@@ -819,11 +819,6 @@ def test_import_lowcode():
     from tencentcloud.lowcode.v20210108 import models
 
 
-def test_import_lp():
-    from tencentcloud.lp.v20200224 import lp_client
-    from tencentcloud.lp.v20200224 import models
-
-
 def test_import_mall():
     from tencentcloud.mall.v20230518 import mall_client
     from tencentcloud.mall.v20230518 import models
@@ -987,16 +982,6 @@ def test_import_redis():
 def test_import_region():
     from tencentcloud.region.v20220627 import region_client
     from tencentcloud.region.v20220627 import models
-
-
-def test_import_rkp():
-    from tencentcloud.rkp.v20191209 import rkp_client
-    from tencentcloud.rkp.v20191209 import models
-
-
-def test_import_rp():
-    from tencentcloud.rp.v20200224 import rp_client
-    from tencentcloud.rp.v20200224 import models
 
 
 def test_import_rum():

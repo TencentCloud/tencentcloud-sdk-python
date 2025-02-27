@@ -14858,6 +14858,8 @@ class OrgMember(AbstractModel):
         :type PermissionStatus: str
         :param _Tags: 成员标签列表
         :type Tags: list of Tag
+        :param _NickName: 腾讯云昵称
+        :type NickName: str
         """
         self._MemberUin = None
         self._Name = None
@@ -14877,6 +14879,7 @@ class OrgMember(AbstractModel):
         self._BindStatus = None
         self._PermissionStatus = None
         self._Tags = None
+        self._NickName = None
 
     @property
     def MemberUin(self):
@@ -15076,6 +15079,17 @@ class OrgMember(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def NickName(self):
+        """腾讯云昵称
+        :rtype: str
+        """
+        return self._NickName
+
+    @NickName.setter
+    def NickName(self, NickName):
+        self._NickName = NickName
+
 
     def _deserialize(self, params):
         self._MemberUin = params.get("MemberUin")
@@ -15111,6 +15125,7 @@ class OrgMember(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._NickName = params.get("NickName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19821,6 +19836,8 @@ class UpdateOrganizationMemberRequest(AbstractModel):
         :type IsAllowQuit: str
         :param _PayUin: 代付者Uin。成员财务权限有代付费时需要，取值为成员对应主体的主体管理员Uin
         :type PayUin: str
+        :param _IsModifyNickName: 是否同步组织成员名称到成员账号昵称。取值： 1-同步 0-不同步
+        :type IsModifyNickName: int
         """
         self._MemberUin = None
         self._Name = None
@@ -19829,6 +19846,7 @@ class UpdateOrganizationMemberRequest(AbstractModel):
         self._PermissionIds = None
         self._IsAllowQuit = None
         self._PayUin = None
+        self._IsModifyNickName = None
 
     @property
     def MemberUin(self):
@@ -19908,6 +19926,17 @@ class UpdateOrganizationMemberRequest(AbstractModel):
     def PayUin(self, PayUin):
         self._PayUin = PayUin
 
+    @property
+    def IsModifyNickName(self):
+        """是否同步组织成员名称到成员账号昵称。取值： 1-同步 0-不同步
+        :rtype: int
+        """
+        return self._IsModifyNickName
+
+    @IsModifyNickName.setter
+    def IsModifyNickName(self, IsModifyNickName):
+        self._IsModifyNickName = IsModifyNickName
+
 
     def _deserialize(self, params):
         self._MemberUin = params.get("MemberUin")
@@ -19917,6 +19946,7 @@ class UpdateOrganizationMemberRequest(AbstractModel):
         self._PermissionIds = params.get("PermissionIds")
         self._IsAllowQuit = params.get("IsAllowQuit")
         self._PayUin = params.get("PayUin")
+        self._IsModifyNickName = params.get("IsModifyNickName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

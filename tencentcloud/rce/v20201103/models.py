@@ -4166,7 +4166,7 @@ class OutputManageMarketingRiskValue(AbstractModel):
         :type UserId: str
         :param _PostTime: 操作时间戳，单位秒（对应输入参数）。
         :type PostTime: int
-        :param _AssociateAccount: 业务参数。
+        :param _AssociateAccount: 业务预留参数（暂无实际业务含义， 无需关注返回值）
         :type AssociateAccount: str
         :param _UserIp: 操作来源的外网IP（对应输入参数）。
         :type UserIp: str
@@ -4237,7 +4237,7 @@ reject：高风险，建议拦截
 
     @property
     def AssociateAccount(self):
-        """业务参数。
+        """业务预留参数（暂无实际业务含义， 无需关注返回值）
         :rtype: str
         """
         return self._AssociateAccount

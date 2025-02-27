@@ -1375,7 +1375,6 @@ class DescribeClusterInstancesResponse(AbstractModel):
         :param _InstanceSet: 集群中实例列表
         :type InstanceSet: list of Instance
         :param _Errors: 错误信息集合
-注意：此字段可能返回 null，表示取不到有效值。
         :type Errors: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1410,7 +1409,6 @@ class DescribeClusterInstancesResponse(AbstractModel):
     @property
     def Errors(self):
         """错误信息集合
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Errors
@@ -1546,7 +1544,6 @@ class DescribeHealthCheckPoliciesResponse(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type HealthCheckPolicies: list of HealthCheckPolicy
         :param _TotalCount: 数组总数目
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1570,7 +1567,6 @@ class DescribeHealthCheckPoliciesResponse(AbstractModel):
     @property
     def TotalCount(self):
         """数组总数目
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -1705,7 +1701,6 @@ class DescribeHealthCheckPolicyBindingsResponse(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type HealthCheckPolicyBindings: list of HealthCheckPolicyBinding
         :param _TotalCount: 健康检测规则数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1729,7 +1724,6 @@ class DescribeHealthCheckPolicyBindingsResponse(AbstractModel):
     @property
     def TotalCount(self):
         """健康检测规则数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -1944,7 +1938,6 @@ class DescribeNodePoolsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _NodePools: 节点池列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type NodePools: list of NodePool
         :param _TotalCount: 资源总数
         :type TotalCount: int
@@ -1958,7 +1951,6 @@ class DescribeNodePoolsResponse(AbstractModel):
     @property
     def NodePools(self):
         """节点池列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of NodePool
         """
         return self._NodePools

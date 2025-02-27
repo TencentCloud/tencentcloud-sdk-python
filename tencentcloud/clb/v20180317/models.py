@@ -1831,6 +1831,8 @@ class CertificateInput(AbstractModel):
         r"""
         :param _SSLMode: 认证类型，UNIDIRECTIONAL：单向认证，MUTUAL：双向认证
         :type SSLMode: str
+        :param _SSLVerifyClient: 双向认证时，是否开启客户端认证，ON:开启，OPTIONAL:自适应，默认ON。
+        :type SSLVerifyClient: str
         :param _CertId: 服务端证书的 ID，如果不填写此项则必须上传证书，包括 CertContent，CertKey，CertName。
         :type CertId: str
         :param _CertCaId: 客户端证书的 ID，当监听器采用双向认证，即 SSLMode=MUTUAL 时，如果不填写此项则必须上传客户端证书，包括 CertCaContent，CertCaName。
@@ -1847,6 +1849,7 @@ class CertificateInput(AbstractModel):
         :type CertCaContent: str
         """
         self._SSLMode = None
+        self._SSLVerifyClient = None
         self._CertId = None
         self._CertCaId = None
         self._CertName = None
@@ -1865,6 +1868,17 @@ class CertificateInput(AbstractModel):
     @SSLMode.setter
     def SSLMode(self, SSLMode):
         self._SSLMode = SSLMode
+
+    @property
+    def SSLVerifyClient(self):
+        """双向认证时，是否开启客户端认证，ON:开启，OPTIONAL:自适应，默认ON。
+        :rtype: str
+        """
+        return self._SSLVerifyClient
+
+    @SSLVerifyClient.setter
+    def SSLVerifyClient(self, SSLVerifyClient):
+        self._SSLVerifyClient = SSLVerifyClient
 
     @property
     def CertId(self):
@@ -1946,6 +1960,7 @@ class CertificateInput(AbstractModel):
 
     def _deserialize(self, params):
         self._SSLMode = params.get("SSLMode")
+        self._SSLVerifyClient = params.get("SSLVerifyClient")
         self._CertId = params.get("CertId")
         self._CertCaId = params.get("CertCaId")
         self._CertName = params.get("CertName")
@@ -1972,6 +1987,8 @@ class CertificateOutput(AbstractModel):
         r"""
         :param _SSLMode: 认证类型，UNIDIRECTIONAL：单向认证，MUTUAL：双向认证
         :type SSLMode: str
+        :param _SSLVerifyClient: 是否开启客户端证书验证，只在双向认证时生效。
+        :type SSLVerifyClient: str
         :param _CertId: 服务端证书的ID。
         :type CertId: str
         :param _CertCaId: 客户端证书的 ID。
@@ -1982,6 +1999,7 @@ class CertificateOutput(AbstractModel):
         :type ExtCertIds: list of str
         """
         self._SSLMode = None
+        self._SSLVerifyClient = None
         self._CertId = None
         self._CertCaId = None
         self._ExtCertIds = None
@@ -1996,6 +2014,17 @@ class CertificateOutput(AbstractModel):
     @SSLMode.setter
     def SSLMode(self, SSLMode):
         self._SSLMode = SSLMode
+
+    @property
+    def SSLVerifyClient(self):
+        """是否开启客户端证书验证，只在双向认证时生效。
+        :rtype: str
+        """
+        return self._SSLVerifyClient
+
+    @SSLVerifyClient.setter
+    def SSLVerifyClient(self, SSLVerifyClient):
+        self._SSLVerifyClient = SSLVerifyClient
 
     @property
     def CertId(self):
@@ -2035,6 +2064,7 @@ class CertificateOutput(AbstractModel):
 
     def _deserialize(self, params):
         self._SSLMode = params.get("SSLMode")
+        self._SSLVerifyClient = params.get("SSLVerifyClient")
         self._CertId = params.get("CertId")
         self._CertCaId = params.get("CertCaId")
         self._ExtCertIds = params.get("ExtCertIds")
@@ -17767,9 +17797,12 @@ class MultiCertInfo(AbstractModel):
         :type SSLMode: str
         :param _CertList: 监听器或规则证书列表，单双向认证，多本服务端证书算法类型不能重复;若SSLMode为双向认证，证书列表必须包含一本ca证书。
         :type CertList: list of CertInfo
+        :param _SSLVerifyClient: 双向认证时，是否开启客户端认证，ON:开启，OPTIONAL:自适应，默认ON
+        :type SSLVerifyClient: str
         """
         self._SSLMode = None
         self._CertList = None
+        self._SSLVerifyClient = None
 
     @property
     def SSLMode(self):
@@ -17793,6 +17826,17 @@ class MultiCertInfo(AbstractModel):
     def CertList(self, CertList):
         self._CertList = CertList
 
+    @property
+    def SSLVerifyClient(self):
+        """双向认证时，是否开启客户端认证，ON:开启，OPTIONAL:自适应，默认ON
+        :rtype: str
+        """
+        return self._SSLVerifyClient
+
+    @SSLVerifyClient.setter
+    def SSLVerifyClient(self, SSLVerifyClient):
+        self._SSLVerifyClient = SSLVerifyClient
+
 
     def _deserialize(self, params):
         self._SSLMode = params.get("SSLMode")
@@ -17802,6 +17846,7 @@ class MultiCertInfo(AbstractModel):
                 obj = CertInfo()
                 obj._deserialize(item)
                 self._CertList.append(obj)
+        self._SSLVerifyClient = params.get("SSLVerifyClient")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

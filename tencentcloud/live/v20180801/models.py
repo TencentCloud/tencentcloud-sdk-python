@@ -2009,11 +2009,11 @@ class CallbackEventInfo(AbstractModel):
 2）yyyy-MM-dd HH:mm:ss：使用此格式时，默认代表北京时间。
 接口返回的时间格式和查询请求传入的时间格式一致。
         :type EventTime: str
-        :param _EventType: 事件类型
+        :param _EventType: 事件类型。
         :type EventType: int
-        :param _Request: 回调请求
+        :param _Request: 回调请求。
         :type Request: str
-        :param _Response: 回调响应
+        :param _Response: 回调响应。
         :type Response: str
         :param _ResponseTime: 客户接口响应时间。
 接口返回支持两种时间格式：
@@ -2021,9 +2021,9 @@ class CallbackEventInfo(AbstractModel):
 2）yyyy-MM-dd HH:mm:ss：使用此格式时，默认代表北京时间。
 接口返回的时间格式和查询请求传入的时间格式一致。
         :type ResponseTime: str
-        :param _ResultCode: 回调结果
+        :param _ResultCode: 回调结果。
         :type ResultCode: int
-        :param _StreamId: 流名称
+        :param _StreamId: 流名称。
         :type StreamId: str
         """
         self._EventTime = None
@@ -2051,7 +2051,7 @@ class CallbackEventInfo(AbstractModel):
 
     @property
     def EventType(self):
-        """事件类型
+        """事件类型。
         :rtype: int
         """
         return self._EventType
@@ -2062,7 +2062,7 @@ class CallbackEventInfo(AbstractModel):
 
     @property
     def Request(self):
-        """回调请求
+        """回调请求。
         :rtype: str
         """
         return self._Request
@@ -2073,7 +2073,7 @@ class CallbackEventInfo(AbstractModel):
 
     @property
     def Response(self):
-        """回调响应
+        """回调响应。
         :rtype: str
         """
         return self._Response
@@ -2099,7 +2099,7 @@ class CallbackEventInfo(AbstractModel):
 
     @property
     def ResultCode(self):
-        """回调结果
+        """回调结果。
         :rtype: int
         """
         return self._ResultCode
@@ -2110,7 +2110,7 @@ class CallbackEventInfo(AbstractModel):
 
     @property
     def StreamId(self):
-        """流名称
+        """流名称。
         :rtype: str
         """
         return self._StreamId
@@ -2214,34 +2214,26 @@ class CasterBriefInfo(AbstractModel):
         :param _CasterId: 导播台ID
         :type CasterId: int
         :param _CasterName: 导播台名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type CasterName: str
         :param _Description: 导播台的描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _StartBillingTime: 开始计费时间，值为unix时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartBillingTime: int
         :param _StopBillingTime: 结束计费时间，值为unix时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type StopBillingTime: int
         :param _CreateTime: 创建时间，值为unix时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: int
         :param _Status: 导播台状态
 0：停止状态，无预监，无主监
 1：无预监，有主监
 2：有预监，无主监
 3：有预监，有主监
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _ExpireTime: 导播台的过期时间，值为-1或unix时间戳。
 当值为-1时，代表永不过期。
 当值为特定unix时间戳时，代表过期时间为对应的时间，导播台在该时间自动停止。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireTime: int
         :param _FeeType: 计费字段，该字段暂无作用
-注意：此字段可能返回 null，表示取不到有效值。
         :type FeeType: int
         """
         self._CasterId = None
@@ -2268,7 +2260,6 @@ class CasterBriefInfo(AbstractModel):
     @property
     def CasterName(self):
         """导播台名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CasterName
@@ -2280,7 +2271,6 @@ class CasterBriefInfo(AbstractModel):
     @property
     def Description(self):
         """导播台的描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -2292,7 +2282,6 @@ class CasterBriefInfo(AbstractModel):
     @property
     def StartBillingTime(self):
         """开始计费时间，值为unix时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._StartBillingTime
@@ -2304,7 +2293,6 @@ class CasterBriefInfo(AbstractModel):
     @property
     def StopBillingTime(self):
         """结束计费时间，值为unix时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._StopBillingTime
@@ -2316,7 +2304,6 @@ class CasterBriefInfo(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间，值为unix时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CreateTime
@@ -2332,7 +2319,6 @@ class CasterBriefInfo(AbstractModel):
 1：无预监，有主监
 2：有预监，无主监
 3：有预监，有主监
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -2346,7 +2332,6 @@ class CasterBriefInfo(AbstractModel):
         """导播台的过期时间，值为-1或unix时间戳。
 当值为-1时，代表永不过期。
 当值为特定unix时间戳时，代表过期时间为对应的时间，导播台在该时间自动停止。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ExpireTime
@@ -2358,7 +2343,6 @@ class CasterBriefInfo(AbstractModel):
     @property
     def FeeType(self):
         """计费字段，该字段暂无作用
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FeeType
@@ -2398,37 +2382,30 @@ class CasterDisplayInfo(AbstractModel):
         :param _LayoutIndex: 布局Index。
 如果使用自定义布局，为自定义布局下标。
 如果使用单输入布局，如使用输入1，则LayoutIndexType=1， 且LayoutIndex=1，以此类推。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LayoutIndex: int
         :param _MarkPicIndexList: 使用的水印Index列表。
 注：当作为入参使用时，列表中的水印Index需要已经存在。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MarkPicIndexList: list of int non-negative
         :param _MarkWordIndexList: 使用的文字水印Index列表。
 注：作为入参使用时，列表中的Index需要已经存在。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MarkWordIndexList: list of int non-negative
         :param _TransitionType: 使用的转场类型。
 注：支持的转场类型可通过DescribeCasterTransitionTypes接口获取。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TransitionType: str
         :param _AudioIndexList: 使用的音频输入Index列表。
 注：当该字段非空时，表示使用布局中对应的输入源的视频，AudioIndexList中对应的输入源的音频。且这些输入源需已存在。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AudioIndexList: list of int non-negative
         :param _InputStartType: 作为入参时，表示使用点播输入源，单画面输入时，点播文件是否从头开始播放。
 默认为0。
 有效值，0,1。
 0代表不从头播放
 1代表从头播放
-注意：此字段可能返回 null，表示取不到有效值。
         :type InputStartType: int
         :param _LayoutIndexType: LayoutIndex类型，
 默认值:0
 可选值[0,1]
 0:默认类型，代表普通布局
 1:单输入类型，代表单输入布局
-注意：此字段可能返回 null，表示取不到有效值。
         :type LayoutIndexType: int
         """
         self._LayoutIndex = None
@@ -2444,7 +2421,6 @@ class CasterDisplayInfo(AbstractModel):
         """布局Index。
 如果使用自定义布局，为自定义布局下标。
 如果使用单输入布局，如使用输入1，则LayoutIndexType=1， 且LayoutIndex=1，以此类推。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LayoutIndex
@@ -2457,7 +2433,6 @@ class CasterDisplayInfo(AbstractModel):
     def MarkPicIndexList(self):
         """使用的水印Index列表。
 注：当作为入参使用时，列表中的水印Index需要已经存在。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int non-negative
         """
         return self._MarkPicIndexList
@@ -2470,7 +2445,6 @@ class CasterDisplayInfo(AbstractModel):
     def MarkWordIndexList(self):
         """使用的文字水印Index列表。
 注：作为入参使用时，列表中的Index需要已经存在。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int non-negative
         """
         return self._MarkWordIndexList
@@ -2483,7 +2457,6 @@ class CasterDisplayInfo(AbstractModel):
     def TransitionType(self):
         """使用的转场类型。
 注：支持的转场类型可通过DescribeCasterTransitionTypes接口获取。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TransitionType
@@ -2496,7 +2469,6 @@ class CasterDisplayInfo(AbstractModel):
     def AudioIndexList(self):
         """使用的音频输入Index列表。
 注：当该字段非空时，表示使用布局中对应的输入源的视频，AudioIndexList中对应的输入源的音频。且这些输入源需已存在。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int non-negative
         """
         return self._AudioIndexList
@@ -2512,7 +2484,6 @@ class CasterDisplayInfo(AbstractModel):
 有效值，0,1。
 0代表不从头播放
 1代表从头播放
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._InputStartType
@@ -2528,7 +2499,6 @@ class CasterDisplayInfo(AbstractModel):
 可选值[0,1]
 0:默认类型，代表普通布局
 1:单输入类型，代表单输入布局
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LayoutIndexType
@@ -2878,37 +2848,30 @@ class CasterInputInfo(AbstractModel):
 最大允许长度512。
 当InputType为0（推流地址），2（直播拉流地址），3（图片地址）,4（webrtc推流地址）这几种类型时，URL需填入该字段。
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type InputUrl: str
         :param _Description: 输入源描述。
 最大允许长度256字符。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _InputUrls: 点播地址列表。仅当input type为1（点播地址）时，将一个或多个点播地址，填入该字段。
 单个地址最大允许长度512字符。
 最多允许同时填入5个地址。
 注：此时需保持InputUrl字段为空。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InputUrls: list of str
         :param _LoopEnable: 是否启用点播无限循环播放。
 注：当前该字段未生效，默认为True。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LoopEnable: bool
         :param _LoopNumber: 点播循环次数。
 允许值-1或正整数。
 当值为-1时，表示无限循环。
 当值为其他正整数时，表示循环对应次数。
 注：该字段暂未生效。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LoopNumber: int
         :param _PullPushEnable: 是否启用拉取到导播台。
 注：该字段默认强制为true。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PullPushEnable: bool
         :param _Volume: 输入源音量百分比。
 默认为100。表示音量为原始大小。
 允许值[0,200]。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Volume: int
         """
         self._InputIndex = None
@@ -2956,7 +2919,6 @@ class CasterInputInfo(AbstractModel):
 最大允许长度512。
 当InputType为0（推流地址），2（直播拉流地址），3（图片地址）,4（webrtc推流地址）这几种类型时，URL需填入该字段。
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InputUrl
@@ -2969,7 +2931,6 @@ class CasterInputInfo(AbstractModel):
     def Description(self):
         """输入源描述。
 最大允许长度256字符。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -2984,7 +2945,6 @@ class CasterInputInfo(AbstractModel):
 单个地址最大允许长度512字符。
 最多允许同时填入5个地址。
 注：此时需保持InputUrl字段为空。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._InputUrls
@@ -2997,7 +2957,6 @@ class CasterInputInfo(AbstractModel):
     def LoopEnable(self):
         """是否启用点播无限循环播放。
 注：当前该字段未生效，默认为True。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._LoopEnable
@@ -3013,7 +2972,6 @@ class CasterInputInfo(AbstractModel):
 当值为-1时，表示无限循环。
 当值为其他正整数时，表示循环对应次数。
 注：该字段暂未生效。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LoopNumber
@@ -3026,7 +2984,6 @@ class CasterInputInfo(AbstractModel):
     def PullPushEnable(self):
         """是否启用拉取到导播台。
 注：该字段默认强制为true。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._PullPushEnable
@@ -3040,7 +2997,6 @@ class CasterInputInfo(AbstractModel):
         """输入源音量百分比。
 默认为100。表示音量为原始大小。
 允许值[0,200]。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Volume
@@ -3092,11 +3048,9 @@ class CasterLayoutInfo(AbstractModel):
         :param _LayoutWidth: 布局输出的宽度，单位为像素。
 默认为1280像素。
 注：该值仅在画中画布局，且未设置PgmWidth时生效。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LayoutWidth: int
         :param _LayoutHeight: 布局输出的高度，单位为像素。
 注：该参数仅在画中画布局，且未设置PgmHeight时生效。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LayoutHeight: int
         """
         self._LayoutIndex = None
@@ -3159,7 +3113,6 @@ class CasterLayoutInfo(AbstractModel):
         """布局输出的宽度，单位为像素。
 默认为1280像素。
 注：该值仅在画中画布局，且未设置PgmWidth时生效。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LayoutWidth
@@ -3172,7 +3125,6 @@ class CasterLayoutInfo(AbstractModel):
     def LayoutHeight(self):
         """布局输出的高度，单位为像素。
 注：该参数仅在画中画布局，且未设置PgmHeight时生效。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LayoutHeight
@@ -3231,7 +3183,6 @@ class CasterLayoutParam(AbstractModel):
 当该值为小于1大于0的小数时，单位为百分比，表示该层在最终画面Y坐标上所占的比例值。
         :type LayerLocationY: float
         :param _UsePortraitSegment: 是否启用抠图。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UsePortraitSegment: bool
         """
         self._LayerId = None
@@ -3308,7 +3259,6 @@ class CasterLayoutParam(AbstractModel):
     @property
     def UsePortraitSegment(self):
         """是否启用抠图。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._UsePortraitSegment
@@ -3345,7 +3295,6 @@ class CasterMarkPicInfo(AbstractModel):
         :param _MarkPicIndex: 水印图片Index。
         :type MarkPicIndex: int
         :param _MarkPicId: 注：该字段已废弃。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MarkPicId: int
         :param _MarkPicWidth: 水印图片在输出时的宽度。
 当该值为大于1的整数值时，单位为像素，允许范围[1,1920]。 
@@ -3365,15 +3314,12 @@ class CasterMarkPicInfo(AbstractModel):
         :type MarkPicLocationY: float
         :param _MarkPicUrl: 水印地址。
 最大长度256字符，且url需以jpg、jpeg、png、bmp、gif后缀结尾。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MarkPicUrl: str
         :param _Description: 水印描述。
 最大允许长度为256。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _IsEqualProportion: 是否启用了等比例缩放。
 注：该字段仅做状态保存，无实际效果。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsEqualProportion: bool
         """
         self._MarkPicIndex = None
@@ -3400,7 +3346,6 @@ class CasterMarkPicInfo(AbstractModel):
     @property
     def MarkPicId(self):
         """注：该字段已废弃。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MarkPicId
@@ -3465,7 +3410,6 @@ class CasterMarkPicInfo(AbstractModel):
     def MarkPicUrl(self):
         """水印地址。
 最大长度256字符，且url需以jpg、jpeg、png、bmp、gif后缀结尾。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MarkPicUrl
@@ -3478,7 +3422,6 @@ class CasterMarkPicInfo(AbstractModel):
     def Description(self):
         """水印描述。
 最大允许长度为256。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -3491,7 +3434,6 @@ class CasterMarkPicInfo(AbstractModel):
     def IsEqualProportion(self):
         """是否启用了等比例缩放。
 注：该字段仅做状态保存，无实际效果。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsEqualProportion
@@ -3531,54 +3473,43 @@ class CasterMarkWordInfo(AbstractModel):
         :param _MarkWordIndex: 文字水印Index。
         :type MarkWordIndex: int
         :param _MarkWordText: 文字水印内容。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MarkWordText: str
         :param _MarkWordFontSize: 文字水印的字号。
 范围[16, 60]
-注意：此字段可能返回 null，表示取不到有效值。
         :type MarkWordFontSize: int
         :param _MarkWordFontColor: 文字水印的颜色，值为HEX颜色代码
-注意：此字段可能返回 null，表示取不到有效值。
         :type MarkWordFontColor: str
         :param _MarkWordFontType: 文字水印的字体类型。
 范围[1,2]。
 1. 宋体
 2. 黑体
-注意：此字段可能返回 null，表示取不到有效值。
         :type MarkWordFontType: int
         :param _MarkWordLocationX: 文字水印的x坐标位置，单位百分比。
 范围[0.0, 1.0]
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type MarkWordLocationX: float
         :param _MarkWordLocationY: 文字水印的Y坐标位置，单位百分比。
 范围[0.0, 1.0]
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type MarkWordLocationY: float
         :param _MarkWordRollEnable: 是否开启文字跑马灯功能。
 默认为false。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MarkWordRollEnable: bool
         :param _MarkWordRollOnceTime: 跑马灯文字显示一遍的时间，单位为秒。
 默认为5s。
 范围[5, 600]。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MarkWordRollOnceTime: int
         :param _MarkWordRollDirection: 跑马灯文字的方向。
 默认值为0。
 范围[0,1]。
 0 从左到右
 1 从右到左
-注意：此字段可能返回 null，表示取不到有效值。
         :type MarkWordRollDirection: int
         :param _MarkWordRollStartLocationX: 跑马灯文字显示的起始x坐标，单位百分比。
 范围[0.0, 1.0]
-注意：此字段可能返回 null，表示取不到有效值。
         :type MarkWordRollStartLocationX: float
         :param _MarkWordRollEndLocationX: 跑马灯文字显示的截止x坐标，单位百分比。
 范围[0.0, 1.0]
-注意：此字段可能返回 null，表示取不到有效值。
         :type MarkWordRollEndLocationX: float
         """
         self._MarkWordIndex = None
@@ -3608,7 +3539,6 @@ class CasterMarkWordInfo(AbstractModel):
     @property
     def MarkWordText(self):
         """文字水印内容。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MarkWordText
@@ -3621,7 +3551,6 @@ class CasterMarkWordInfo(AbstractModel):
     def MarkWordFontSize(self):
         """文字水印的字号。
 范围[16, 60]
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MarkWordFontSize
@@ -3633,7 +3562,6 @@ class CasterMarkWordInfo(AbstractModel):
     @property
     def MarkWordFontColor(self):
         """文字水印的颜色，值为HEX颜色代码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MarkWordFontColor
@@ -3648,7 +3576,6 @@ class CasterMarkWordInfo(AbstractModel):
 范围[1,2]。
 1. 宋体
 2. 黑体
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MarkWordFontType
@@ -3662,7 +3589,6 @@ class CasterMarkWordInfo(AbstractModel):
         """文字水印的x坐标位置，单位百分比。
 范围[0.0, 1.0]
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._MarkWordLocationX
@@ -3676,7 +3602,6 @@ class CasterMarkWordInfo(AbstractModel):
         """文字水印的Y坐标位置，单位百分比。
 范围[0.0, 1.0]
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._MarkWordLocationY
@@ -3689,7 +3614,6 @@ class CasterMarkWordInfo(AbstractModel):
     def MarkWordRollEnable(self):
         """是否开启文字跑马灯功能。
 默认为false。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._MarkWordRollEnable
@@ -3703,7 +3627,6 @@ class CasterMarkWordInfo(AbstractModel):
         """跑马灯文字显示一遍的时间，单位为秒。
 默认为5s。
 范围[5, 600]。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MarkWordRollOnceTime
@@ -3719,7 +3642,6 @@ class CasterMarkWordInfo(AbstractModel):
 范围[0,1]。
 0 从左到右
 1 从右到左
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MarkWordRollDirection
@@ -3732,7 +3654,6 @@ class CasterMarkWordInfo(AbstractModel):
     def MarkWordRollStartLocationX(self):
         """跑马灯文字显示的起始x坐标，单位百分比。
 范围[0.0, 1.0]
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._MarkWordRollStartLocationX
@@ -3745,7 +3666,6 @@ class CasterMarkWordInfo(AbstractModel):
     def MarkWordRollEndLocationX(self):
         """跑马灯文字显示的截止x坐标，单位百分比。
 范围[0.0, 1.0]
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._MarkWordRollEndLocationX
@@ -3794,12 +3714,10 @@ class CasterOutputInfo(AbstractModel):
 最大允许长度512字符。
         :type OutputUrl: str
         :param _Description: 描述信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _OutputStreamId: 推流到腾讯云直播源站时，使用的流ID。
 仅当OutputType为1时生效。
 最大允许128字符。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OutputStreamId: str
         :param _OutputType: 推流类型。
 范围[1,2]
@@ -3809,17 +3727,14 @@ class CasterOutputInfo(AbstractModel):
         :param _OutputDomainName: 推到腾讯云直播源站时，使用的域名。
 最大允许128字符，且域名需属于当前账号绑定的云直播推流域名。
 仅在OutputType为1时生效。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OutputDomainName: str
         :param _OutputAppName: 推到腾讯云直播源站时，使用的AppName。
 最大允许64字符。
 仅在OutputType为1时生效。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OutputAppName: str
         :param _OutputParam: 推到腾讯云直播源站时需要添加的推流参数。
 最大允许长度256字符。
 仅在OutputType为1时生效。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OutputParam: str
         """
         self._OutputIndex = None
@@ -3859,7 +3774,6 @@ class CasterOutputInfo(AbstractModel):
     @property
     def Description(self):
         """描述信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -3873,7 +3787,6 @@ class CasterOutputInfo(AbstractModel):
         """推流到腾讯云直播源站时，使用的流ID。
 仅当OutputType为1时生效。
 最大允许128字符。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OutputStreamId
@@ -3901,7 +3814,6 @@ class CasterOutputInfo(AbstractModel):
         """推到腾讯云直播源站时，使用的域名。
 最大允许128字符，且域名需属于当前账号绑定的云直播推流域名。
 仅在OutputType为1时生效。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OutputDomainName
@@ -3915,7 +3827,6 @@ class CasterOutputInfo(AbstractModel):
         """推到腾讯云直播源站时，使用的AppName。
 最大允许64字符。
 仅在OutputType为1时生效。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OutputAppName
@@ -3929,7 +3840,6 @@ class CasterOutputInfo(AbstractModel):
         """推到腾讯云直播源站时需要添加的推流参数。
 最大允许长度256字符。
 仅在OutputType为1时生效。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OutputParam
@@ -34272,7 +34182,6 @@ class PushQualityData(AbstractModel):
         :param _Flux: 流量，单位MB。
         :type Flux: float
         :param _ServerIp: 推流服务端 IP。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServerIp: str
         """
         self._Time = None
@@ -34546,7 +34455,6 @@ class PushQualityData(AbstractModel):
     @property
     def ServerIp(self):
         """推流服务端 IP。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ServerIp
@@ -37140,7 +37048,6 @@ class StreamOnlineInfo(AbstractModel):
         :param _PushToDelay: 流是否推送到延播。
 0 - 无延播，
 1 - 有延播。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PushToDelay: int
         """
         self._StreamName = None
@@ -37198,7 +37105,6 @@ class StreamOnlineInfo(AbstractModel):
         """流是否推送到延播。
 0 - 无延播，
 1 - 有延播。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PushToDelay
@@ -38995,13 +38901,10 @@ class TransitionTypeInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _TransitionType: 转场名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TransitionType: str
         :param _SourceUrl: 素材url
-注意：此字段可能返回 null，表示取不到有效值。
         :type SourceUrl: str
         :param _Index: 转场的下标，可用来排序，从1开始递增
-注意：此字段可能返回 null，表示取不到有效值。
         :type Index: int
         """
         self._TransitionType = None
@@ -39011,7 +38914,6 @@ class TransitionTypeInfo(AbstractModel):
     @property
     def TransitionType(self):
         """转场名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TransitionType
@@ -39023,7 +38925,6 @@ class TransitionTypeInfo(AbstractModel):
     @property
     def SourceUrl(self):
         """素材url
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SourceUrl
@@ -39035,7 +38936,6 @@ class TransitionTypeInfo(AbstractModel):
     @property
     def Index(self):
         """转场的下标，可用来排序，从1开始递增
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Index

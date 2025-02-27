@@ -1394,7 +1394,6 @@ class CancelClusterReleaseResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Release: 应用信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Release: :class:`tencentcloud.tke.v20180525.models.PendingRelease`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1405,7 +1404,6 @@ class CancelClusterReleaseResponse(AbstractModel):
     @property
     def Release(self):
         """应用信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20180525.models.PendingRelease`
         """
         return self._Release
@@ -1801,10 +1799,8 @@ class CheckInstancesUpgradeAbleResponse(AbstractModel):
         :param _LatestVersion: 集群master对应的大版本目前最新小版本
         :type LatestVersion: str
         :param _UpgradeAbleInstances: 可升级节点列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpgradeAbleInstances: list of UpgradeAbleInstancesItem
         :param _Total: 总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _UnavailableVersionReason: 不可升级原因
 注意：此字段可能返回 null，表示取不到有效值。
@@ -1844,7 +1840,6 @@ class CheckInstancesUpgradeAbleResponse(AbstractModel):
     @property
     def UpgradeAbleInstances(self):
         """可升级节点列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of UpgradeAbleInstancesItem
         """
         return self._UpgradeAbleInstances
@@ -1856,7 +1851,6 @@ class CheckInstancesUpgradeAbleResponse(AbstractModel):
     @property
     def Total(self):
         """总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -6346,7 +6340,6 @@ class CreateClusterReleaseResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Release: 应用详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type Release: :class:`tencentcloud.tke.v20180525.models.PendingRelease`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6357,7 +6350,6 @@ class CreateClusterReleaseResponse(AbstractModel):
     @property
     def Release(self):
         """应用详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20180525.models.PendingRelease`
         """
         return self._Release
@@ -11966,7 +11958,6 @@ class DeleteLogConfigsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Message: 删除采集规则遇到错误时返回错误原因
-注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11977,7 +11968,6 @@ class DeleteLogConfigsResponse(AbstractModel):
     @property
     def Message(self):
         """删除采集规则遇到错误时返回错误原因
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Message
@@ -13202,7 +13192,6 @@ class DescribeAvailableClusterVersionResponse(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Versions: list of str
         :param _Clusters: 集群信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Clusters: list of ClusterVersion
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13226,7 +13215,6 @@ class DescribeAvailableClusterVersionResponse(AbstractModel):
     @property
     def Clusters(self):
         """集群信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ClusterVersion
         """
         return self._Clusters
@@ -13501,13 +13489,11 @@ class DescribeBatchModifyTagsStatusResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _FailedResources: 失败资源列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailedResources: list of FailedResource
         :param _Status: 任务状态：
 - running 运行中
 - failed 失败
 - done 成功
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _SyncSubresource: 是否同步集群内子资源标签
         :type SyncSubresource: bool
@@ -13525,7 +13511,6 @@ class DescribeBatchModifyTagsStatusResponse(AbstractModel):
     @property
     def FailedResources(self):
         """失败资源列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of FailedResource
         """
         return self._FailedResources
@@ -13540,7 +13525,6 @@ class DescribeBatchModifyTagsStatusResponse(AbstractModel):
 - running 运行中
 - failed 失败
 - done 成功
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -13645,7 +13629,6 @@ class DescribeClusterAsGroupOptionResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ClusterAsGroupOption: 集群弹性伸缩属性
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterAsGroupOption: :class:`tencentcloud.tke.v20180525.models.ClusterAsGroupOption`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13656,7 +13639,6 @@ class DescribeClusterAsGroupOptionResponse(AbstractModel):
     @property
     def ClusterAsGroupOption(self):
         """集群弹性伸缩属性
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20180525.models.ClusterAsGroupOption`
         """
         return self._ClusterAsGroupOption
@@ -13872,13 +13854,10 @@ class DescribeClusterAuthenticationOptionsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ServiceAccounts: ServiceAccount认证配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceAccounts: :class:`tencentcloud.tke.v20180525.models.ServiceAccountAuthenticationOptions`
         :param _LatestOperationState: 最近一次修改操作结果，返回值可能为：Updating，Success，Failed，TimeOut
-注意：此字段可能返回 null，表示取不到有效值。
         :type LatestOperationState: str
         :param _OIDCConfig: OIDC认证配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type OIDCConfig: :class:`tencentcloud.tke.v20180525.models.OIDCConfigAuthenticationOptions`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13891,7 +13870,6 @@ class DescribeClusterAuthenticationOptionsResponse(AbstractModel):
     @property
     def ServiceAccounts(self):
         """ServiceAccount认证配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20180525.models.ServiceAccountAuthenticationOptions`
         """
         return self._ServiceAccounts
@@ -13903,7 +13881,6 @@ class DescribeClusterAuthenticationOptionsResponse(AbstractModel):
     @property
     def LatestOperationState(self):
         """最近一次修改操作结果，返回值可能为：Updating，Success，Failed，TimeOut
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LatestOperationState
@@ -13915,7 +13892,6 @@ class DescribeClusterAuthenticationOptionsResponse(AbstractModel):
     @property
     def OIDCConfig(self):
         """OIDC认证配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20180525.models.OIDCConfigAuthenticationOptions`
         """
         return self._OIDCConfig
@@ -14204,10 +14180,8 @@ class DescribeClusterEndpointStatusResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Status: 查询集群访问端口状态（Created 开启成功，Creating 开启中，NotFound 未开启）
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _ErrorMsg: 开启访问入口失败信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14219,7 +14193,6 @@ class DescribeClusterEndpointStatusResponse(AbstractModel):
     @property
     def Status(self):
         """查询集群访问端口状态（Created 开启成功，Creating 开启中，NotFound 未开启）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -14231,7 +14204,6 @@ class DescribeClusterEndpointStatusResponse(AbstractModel):
     @property
     def ErrorMsg(self):
         """开启访问入口失败信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorMsg
@@ -14304,7 +14276,6 @@ class DescribeClusterEndpointVipStatusResponse(AbstractModel):
         :param _Status: 端口操作状态 (Creating 创建中  CreateFailed 创建失败 Created 创建完成 Deleting 删除中 DeletedFailed 删除失败 Deleted 已删除 NotFound 未发现操作 )
         :type Status: str
         :param _ErrorMsg: 操作失败的原因
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14327,7 +14298,6 @@ class DescribeClusterEndpointVipStatusResponse(AbstractModel):
     @property
     def ErrorMsg(self):
         """操作失败的原因
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorMsg
@@ -14404,22 +14374,17 @@ class DescribeClusterEndpointsResponse(AbstractModel):
         :param _ClusterIntranetEndpoint: 集群APIServer的内网访问地址
         :type ClusterIntranetEndpoint: str
         :param _ClusterDomain: 集群APIServer的域名
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterDomain: str
         :param _ClusterExternalACL: 集群APIServer的外网访问ACL列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterExternalACL: list of str
         :param _ClusterExternalDomain: 外网域名
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterExternalDomain: str
         :param _ClusterIntranetDomain: 内网域名
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterIntranetDomain: str
         :param _SecurityGroup: 外网安全组
-注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityGroup: str
         :param _ClusterIntranetSubnetId: 内网访问所属子网
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterIntranetSubnetId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14471,7 +14436,6 @@ class DescribeClusterEndpointsResponse(AbstractModel):
     @property
     def ClusterDomain(self):
         """集群APIServer的域名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterDomain
@@ -14495,7 +14459,6 @@ class DescribeClusterEndpointsResponse(AbstractModel):
     @property
     def ClusterExternalDomain(self):
         """外网域名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterExternalDomain
@@ -14507,7 +14470,6 @@ class DescribeClusterEndpointsResponse(AbstractModel):
     @property
     def ClusterIntranetDomain(self):
         """内网域名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterIntranetDomain
@@ -14519,7 +14481,6 @@ class DescribeClusterEndpointsResponse(AbstractModel):
     @property
     def SecurityGroup(self):
         """外网安全组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SecurityGroup
@@ -14531,7 +14492,6 @@ class DescribeClusterEndpointsResponse(AbstractModel):
     @property
     def ClusterIntranetSubnetId(self):
         """内网访问所属子网
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterIntranetSubnetId
@@ -14609,7 +14569,6 @@ class DescribeClusterExtraArgsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ClusterExtraArgs: 集群自定义参数
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterExtraArgs: :class:`tencentcloud.tke.v20180525.models.ClusterExtraArgs`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14620,7 +14579,6 @@ class DescribeClusterExtraArgsResponse(AbstractModel):
     @property
     def ClusterExtraArgs(self):
         """集群自定义参数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20180525.models.ClusterExtraArgs`
         """
         return self._ClusterExtraArgs
@@ -15516,7 +15474,6 @@ class DescribeClusterNodePoolsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _NodePoolSet: NodePools（节点池列表）
-注意：此字段可能返回 null，表示取不到有效值。
         :type NodePoolSet: list of NodePool
         :param _TotalCount: 资源总数
         :type TotalCount: int
@@ -15530,7 +15487,6 @@ class DescribeClusterNodePoolsResponse(AbstractModel):
     @property
     def NodePoolSet(self):
         """NodePools（节点池列表）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of NodePool
         """
         return self._NodePoolSet
@@ -15662,16 +15618,12 @@ class DescribeClusterPendingReleasesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ReleaseSet: 正在安装中应用列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReleaseSet: list of PendingRelease
         :param _Limit: 每页返回数量限制
-注意：此字段可能返回 null，表示取不到有效值。
         :type Limit: int
         :param _Offset: 页偏移量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Offset: int
         :param _Total: 总数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15685,7 +15637,6 @@ class DescribeClusterPendingReleasesResponse(AbstractModel):
     @property
     def ReleaseSet(self):
         """正在安装中应用列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PendingRelease
         """
         return self._ReleaseSet
@@ -15697,7 +15648,6 @@ class DescribeClusterPendingReleasesResponse(AbstractModel):
     @property
     def Limit(self):
         """每页返回数量限制
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Limit
@@ -15709,7 +15659,6 @@ class DescribeClusterPendingReleasesResponse(AbstractModel):
     @property
     def Offset(self):
         """页偏移量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Offset
@@ -15721,7 +15670,6 @@ class DescribeClusterPendingReleasesResponse(AbstractModel):
     @property
     def Total(self):
         """总数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -15844,7 +15792,6 @@ class DescribeClusterReleaseDetailsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Release: 应用详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type Release: :class:`tencentcloud.tke.v20180525.models.ReleaseDetails`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15855,7 +15802,6 @@ class DescribeClusterReleaseDetailsResponse(AbstractModel):
     @property
     def Release(self):
         """应用详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20180525.models.ReleaseDetails`
         """
         return self._Release
@@ -15972,10 +15918,8 @@ class DescribeClusterReleaseHistoryResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ReleaseHistorySet: 已安装应用版本历史
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReleaseHistorySet: list of ReleaseHistory
         :param _Total: 总数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15987,7 +15931,6 @@ class DescribeClusterReleaseHistoryResponse(AbstractModel):
     @property
     def ReleaseHistorySet(self):
         """已安装应用版本历史
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ReleaseHistory
         """
         return self._ReleaseHistorySet
@@ -15999,7 +15942,6 @@ class DescribeClusterReleaseHistoryResponse(AbstractModel):
     @property
     def Total(self):
         """总数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -16165,16 +16107,12 @@ class DescribeClusterReleasesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Limit: 数量限制
-注意：此字段可能返回 null，表示取不到有效值。
         :type Limit: int
         :param _Offset: 偏移量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Offset: int
         :param _ReleaseSet: 已安装应用列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReleaseSet: list of Release
         :param _Total: 已安装应用总数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16188,7 +16126,6 @@ class DescribeClusterReleasesResponse(AbstractModel):
     @property
     def Limit(self):
         """数量限制
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Limit
@@ -16200,7 +16137,6 @@ class DescribeClusterReleasesResponse(AbstractModel):
     @property
     def Offset(self):
         """偏移量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Offset
@@ -16212,7 +16148,6 @@ class DescribeClusterReleasesResponse(AbstractModel):
     @property
     def ReleaseSet(self):
         """已安装应用列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Release
         """
         return self._ReleaseSet
@@ -16224,7 +16159,6 @@ class DescribeClusterReleasesResponse(AbstractModel):
     @property
     def Total(self):
         """已安装应用总数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -16505,7 +16439,6 @@ class DescribeClusterSecurityResponse(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityPolicy: list of str
         :param _Kubeconfig: 集群Kubeconfig文件
-注意：此字段可能返回 null，表示取不到有效值。
         :type Kubeconfig: str
         :param _JnsGwEndpoint: 集群JnsGw的访问地址
 注意：此字段可能返回 null，表示取不到有效值。
@@ -16605,7 +16538,6 @@ class DescribeClusterSecurityResponse(AbstractModel):
     @property
     def Kubeconfig(self):
         """集群Kubeconfig文件
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Kubeconfig
@@ -16794,10 +16726,8 @@ class DescribeClusterVirtualNodePoolsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 节点池总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _NodePoolSet: 虚拟节点池列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type NodePoolSet: list of VirtualNodePool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16809,7 +16739,6 @@ class DescribeClusterVirtualNodePoolsResponse(AbstractModel):
     @property
     def TotalCount(self):
         """节点池总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -16821,7 +16750,6 @@ class DescribeClusterVirtualNodePoolsResponse(AbstractModel):
     @property
     def NodePoolSet(self):
         """虚拟节点池列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of VirtualNodePool
         """
         return self._NodePoolSet
@@ -16927,10 +16855,8 @@ class DescribeClusterVirtualNodeResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Nodes: 节点列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Nodes: list of VirtualNode
         :param _TotalCount: 节点总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16942,7 +16868,6 @@ class DescribeClusterVirtualNodeResponse(AbstractModel):
     @property
     def Nodes(self):
         """节点列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of VirtualNode
         """
         return self._Nodes
@@ -16954,7 +16879,6 @@ class DescribeClusterVirtualNodeResponse(AbstractModel):
     @property
     def TotalCount(self):
         """节点总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -18876,7 +18800,6 @@ class DescribeEnableVpcCniProgressResponse(AbstractModel):
         :param _Status: 任务进度的描述：Running/Succeed/Failed
         :type Status: str
         :param _ErrorMessage: 当任务进度为Failed时，对任务状态的进一步描述，例如IPAMD组件安装失败
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMessage: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18899,7 +18822,6 @@ class DescribeEnableVpcCniProgressResponse(AbstractModel):
     @property
     def ErrorMessage(self):
         """当任务进度为Failed时，对任务状态的进一步描述，例如IPAMD组件安装失败
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorMessage
@@ -19174,7 +19096,6 @@ class DescribeExistedInstancesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ExistedInstanceSet: 已经存在的实例信息数组。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExistedInstanceSet: list of ExistedInstance
         :param _TotalCount: 符合条件的实例数量。
         :type TotalCount: int
@@ -19188,7 +19109,6 @@ class DescribeExistedInstancesResponse(AbstractModel):
     @property
     def ExistedInstanceSet(self):
         """已经存在的实例信息数组。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ExistedInstance
         """
         return self._ExistedInstanceSet
@@ -19578,25 +19498,19 @@ class DescribeIPAMDResponse(AbstractModel):
         :param _EnableIPAMD: 是否安装了eniipamd组件
         :type EnableIPAMD: bool
         :param _EnableCustomizedPodCidr: 是否开启自定义podcidr，默认为false，已安装eniipamd组件才意义
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnableCustomizedPodCidr: bool
         :param _DisableVpcCniMode: 是否不开启vpccni模式，默认为false，已安装eniipamd组件才意义
-注意：此字段可能返回 null，表示取不到有效值。
         :type DisableVpcCniMode: bool
         :param _Phase: 组件状态，已安装eniipamd组件才会有值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Phase: str
         :param _Reason: 错误信息，已安装eniipamd组件且状态为非running才会有错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Reason: str
         :param _SubnetIds: 子网信息，已安装eniipamd组件才会有值
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetIds: list of str
         :param _ClaimExpiredDuration: 固定ip回收时间，已安装eniipamd组件才会有值
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClaimExpiredDuration: str
         :param _EnableTrunkingENI: 是否开启了中继网卡模式
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnableTrunkingENI: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -19625,7 +19539,6 @@ class DescribeIPAMDResponse(AbstractModel):
     @property
     def EnableCustomizedPodCidr(self):
         """是否开启自定义podcidr，默认为false，已安装eniipamd组件才意义
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._EnableCustomizedPodCidr
@@ -19637,7 +19550,6 @@ class DescribeIPAMDResponse(AbstractModel):
     @property
     def DisableVpcCniMode(self):
         """是否不开启vpccni模式，默认为false，已安装eniipamd组件才意义
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._DisableVpcCniMode
@@ -19649,7 +19561,6 @@ class DescribeIPAMDResponse(AbstractModel):
     @property
     def Phase(self):
         """组件状态，已安装eniipamd组件才会有值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Phase
@@ -19661,7 +19572,6 @@ class DescribeIPAMDResponse(AbstractModel):
     @property
     def Reason(self):
         """错误信息，已安装eniipamd组件且状态为非running才会有错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Reason
@@ -19685,7 +19595,6 @@ class DescribeIPAMDResponse(AbstractModel):
     @property
     def ClaimExpiredDuration(self):
         """固定ip回收时间，已安装eniipamd组件才会有值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClaimExpiredDuration
@@ -19697,7 +19606,6 @@ class DescribeIPAMDResponse(AbstractModel):
     @property
     def EnableTrunkingENI(self):
         """是否开启了中继网卡模式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._EnableTrunkingENI
@@ -19914,10 +19822,8 @@ class DescribeImagesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 镜像数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _ImageInstanceSet: 镜像信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImageInstanceSet: list of ImageInstance
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -19929,7 +19835,6 @@ class DescribeImagesResponse(AbstractModel):
     @property
     def TotalCount(self):
         """镜像数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -19941,7 +19846,6 @@ class DescribeImagesResponse(AbstractModel):
     @property
     def ImageInstanceSet(self):
         """镜像信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ImageInstance
         """
         return self._ImageInstanceSet
@@ -20077,13 +19981,10 @@ class DescribeLogConfigsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Total: 分页查找时返回采集规则总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _Message: 指定采集规则名称查找，部分失败时返回失败采集规则名称及最后一个失败原因
-注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param _LogConfigs: 采集规则查询结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogConfigs: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -20096,7 +19997,6 @@ class DescribeLogConfigsResponse(AbstractModel):
     @property
     def Total(self):
         """分页查找时返回采集规则总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -20108,7 +20008,6 @@ class DescribeLogConfigsResponse(AbstractModel):
     @property
     def Message(self):
         """指定采集规则名称查找，部分失败时返回失败采集规则名称及最后一个失败原因
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Message
@@ -20120,7 +20019,6 @@ class DescribeLogConfigsResponse(AbstractModel):
     @property
     def LogConfigs(self):
         """采集规则查询结果
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LogConfigs
@@ -23750,10 +23648,8 @@ class DescribeRegionsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 地域的数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RegionInstanceSet: 地域列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionInstanceSet: list of RegionInstance
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -23765,7 +23661,6 @@ class DescribeRegionsResponse(AbstractModel):
     @property
     def TotalCount(self):
         """地域的数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -23777,7 +23672,6 @@ class DescribeRegionsResponse(AbstractModel):
     @property
     def RegionInstanceSet(self):
         """地域列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RegionInstance
         """
         return self._RegionInstanceSet
@@ -24433,7 +24327,6 @@ class DescribeRouteTableConflictsResponse(AbstractModel):
         :param _HasConflict: 路由表是否冲突。
         :type HasConflict: bool
         :param _RouteTableConflictSet: 路由表冲突列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RouteTableConflictSet: list of RouteTableConflict
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -24456,7 +24349,6 @@ class DescribeRouteTableConflictsResponse(AbstractModel):
     @property
     def RouteTableConflictSet(self):
         """路由表冲突列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RouteTableConflict
         """
         return self._RouteTableConflictSet
@@ -24532,7 +24424,6 @@ class DescribeSupportedRuntimeResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _OptionalRuntimes: 可选运行时列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type OptionalRuntimes: list of OptionalRuntimes
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -24543,7 +24434,6 @@ class DescribeSupportedRuntimeResponse(AbstractModel):
     @property
     def OptionalRuntimes(self):
         """可选运行时列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of OptionalRuntimes
         """
         return self._OptionalRuntimes
@@ -25315,10 +25205,8 @@ class DescribeVersionsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 版本数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _VersionInstanceSet: 版本列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type VersionInstanceSet: list of VersionInstance
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -25330,7 +25218,6 @@ class DescribeVersionsResponse(AbstractModel):
     @property
     def TotalCount(self):
         """版本数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -25342,7 +25229,6 @@ class DescribeVersionsResponse(AbstractModel):
     @property
     def VersionInstanceSet(self):
         """版本列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of VersionInstance
         """
         return self._VersionInstanceSet
@@ -25448,10 +25334,8 @@ class DescribeVpcCniPodLimitsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 机型数据数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _PodLimitsInstanceSet: 机型信息及其可支持的最大VPC-CNI模式Pod数量信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type PodLimitsInstanceSet: list of PodLimitsInstance
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -25463,7 +25347,6 @@ class DescribeVpcCniPodLimitsResponse(AbstractModel):
     @property
     def TotalCount(self):
         """机型数据数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -25475,7 +25358,6 @@ class DescribeVpcCniPodLimitsResponse(AbstractModel):
     @property
     def PodLimitsInstanceSet(self):
         """机型信息及其可支持的最大VPC-CNI模式Pod数量信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PodLimitsInstance
         """
         return self._PodLimitsInstanceSet
@@ -33849,25 +33731,18 @@ class ModifyClusterAttributeResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ProjectId: 集群所属项目
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: int
         :param _ClusterName: 集群名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterName: str
         :param _ClusterDesc: 集群描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterDesc: str
         :param _ClusterLevel: 集群等级
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterLevel: str
         :param _AutoUpgradeClusterLevel: 自动变配集群等级
-注意：此字段可能返回 null，表示取不到有效值。
         :type AutoUpgradeClusterLevel: :class:`tencentcloud.tke.v20180525.models.AutoUpgradeClusterLevel`
         :param _QGPUShareEnable: 是否开启QGPU共享
-注意：此字段可能返回 null，表示取不到有效值。
         :type QGPUShareEnable: bool
         :param _ClusterProperty: 集群属性
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterProperty: :class:`tencentcloud.tke.v20180525.models.ClusterProperty`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -33884,7 +33759,6 @@ class ModifyClusterAttributeResponse(AbstractModel):
     @property
     def ProjectId(self):
         """集群所属项目
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ProjectId
@@ -33896,7 +33770,6 @@ class ModifyClusterAttributeResponse(AbstractModel):
     @property
     def ClusterName(self):
         """集群名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterName
@@ -33908,7 +33781,6 @@ class ModifyClusterAttributeResponse(AbstractModel):
     @property
     def ClusterDesc(self):
         """集群描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterDesc
@@ -33920,7 +33792,6 @@ class ModifyClusterAttributeResponse(AbstractModel):
     @property
     def ClusterLevel(self):
         """集群等级
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterLevel
@@ -33932,7 +33803,6 @@ class ModifyClusterAttributeResponse(AbstractModel):
     @property
     def AutoUpgradeClusterLevel(self):
         """自动变配集群等级
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20180525.models.AutoUpgradeClusterLevel`
         """
         return self._AutoUpgradeClusterLevel
@@ -33944,7 +33814,6 @@ class ModifyClusterAttributeResponse(AbstractModel):
     @property
     def QGPUShareEnable(self):
         """是否开启QGPU共享
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._QGPUShareEnable
@@ -33956,7 +33825,6 @@ class ModifyClusterAttributeResponse(AbstractModel):
     @property
     def ClusterProperty(self):
         """集群属性
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20180525.models.ClusterProperty`
         """
         return self._ClusterProperty
@@ -44091,7 +43959,6 @@ class RollbackClusterReleaseResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Release: 应用详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type Release: :class:`tencentcloud.tke.v20180525.models.PendingRelease`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -44102,7 +43969,6 @@ class RollbackClusterReleaseResponse(AbstractModel):
     @property
     def Release(self):
         """应用详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20180525.models.PendingRelease`
         """
         return self._Release
@@ -45170,7 +45036,6 @@ class SetNodePoolNodeProtectionResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _SucceedInstanceIds: 成功设置的节点id
-注意：此字段可能返回 null，表示取不到有效值。
         :type SucceedInstanceIds: list of str
         :param _FailedInstanceIds: 没有成功设置的节点id
 注意：此字段可能返回 null，表示取不到有效值。
@@ -45185,7 +45050,6 @@ class SetNodePoolNodeProtectionResponse(AbstractModel):
     @property
     def SucceedInstanceIds(self):
         """成功设置的节点id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._SucceedInstanceIds
@@ -46468,7 +46332,6 @@ class UninstallClusterReleaseResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Release: 应用详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type Release: :class:`tencentcloud.tke.v20180525.models.PendingRelease`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -46479,7 +46342,6 @@ class UninstallClusterReleaseResponse(AbstractModel):
     @property
     def Release(self):
         """应用详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20180525.models.PendingRelease`
         """
         return self._Release
@@ -46833,7 +46695,6 @@ class UpdateClusterKubeconfigResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _UpdatedSubAccounts: 已更新的子账户Uin列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedSubAccounts: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -46844,7 +46705,6 @@ class UpdateClusterKubeconfigResponse(AbstractModel):
     @property
     def UpdatedSubAccounts(self):
         """已更新的子账户Uin列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._UpdatedSubAccounts
@@ -48430,7 +48290,6 @@ class UpgradeClusterReleaseResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Release: 应用详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type Release: :class:`tencentcloud.tke.v20180525.models.PendingRelease`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -48441,7 +48300,6 @@ class UpgradeClusterReleaseResponse(AbstractModel):
     @property
     def Release(self):
         """应用详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20180525.models.PendingRelease`
         """
         return self._Release

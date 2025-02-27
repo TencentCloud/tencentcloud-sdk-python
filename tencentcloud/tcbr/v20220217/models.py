@@ -1041,10 +1041,16 @@ class DescribeCloudRunServersRequest(AbstractModel):
         :type PageSize: int
         :param _PageNum: 不传或传0时 会默认为1
         :type PageNum: int
+        :param _ServerName: 服务名
+        :type ServerName: str
+        :param _ServerType: 服务类型：function | container
+        :type ServerType: str
         """
         self._EnvId = None
         self._PageSize = None
         self._PageNum = None
+        self._ServerName = None
+        self._ServerType = None
 
     @property
     def EnvId(self):
@@ -1081,11 +1087,35 @@ class DescribeCloudRunServersRequest(AbstractModel):
     def PageNum(self, PageNum):
         self._PageNum = PageNum
 
+    @property
+    def ServerName(self):
+        """服务名
+        :rtype: str
+        """
+        return self._ServerName
+
+    @ServerName.setter
+    def ServerName(self, ServerName):
+        self._ServerName = ServerName
+
+    @property
+    def ServerType(self):
+        """服务类型：function | container
+        :rtype: str
+        """
+        return self._ServerType
+
+    @ServerType.setter
+    def ServerType(self, ServerType):
+        self._ServerType = ServerType
+
 
     def _deserialize(self, params):
         self._EnvId = params.get("EnvId")
         self._PageSize = params.get("PageSize")
         self._PageNum = params.get("PageNum")
+        self._ServerName = params.get("ServerName")
+        self._ServerType = params.get("ServerType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

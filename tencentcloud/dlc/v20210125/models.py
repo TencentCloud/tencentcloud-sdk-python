@@ -7738,13 +7738,10 @@ class CrontabResumeSuspendStrategy(AbstractModel):
     def __init__(self):
         r"""
         :param _ResumeTime: 定时拉起时间：如：周一&周三8点
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResumeTime: str
         :param _SuspendTime: 定时挂起时间：如：周一&周三20点
-注意：此字段可能返回 null，表示取不到有效值。
         :type SuspendTime: str
         :param _SuspendStrategy: 挂起配置：0（默认）：等待任务结束后挂起、1：强制挂起
-注意：此字段可能返回 null，表示取不到有效值。
         :type SuspendStrategy: int
         """
         self._ResumeTime = None
@@ -7754,7 +7751,6 @@ class CrontabResumeSuspendStrategy(AbstractModel):
     @property
     def ResumeTime(self):
         """定时拉起时间：如：周一&周三8点
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResumeTime
@@ -7766,7 +7762,6 @@ class CrontabResumeSuspendStrategy(AbstractModel):
     @property
     def SuspendTime(self):
         """定时挂起时间：如：周一&周三20点
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SuspendTime
@@ -7778,7 +7773,6 @@ class CrontabResumeSuspendStrategy(AbstractModel):
     @property
     def SuspendStrategy(self):
         """挂起配置：0（默认）：等待任务结束后挂起、1：强制挂起
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SuspendStrategy
@@ -32351,10 +32345,8 @@ class TagInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _TagKey: 标签键
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagKey: str
         :param _TagValue: 标签值
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagValue: str
         """
         self._TagKey = None
@@ -32363,7 +32355,6 @@ class TagInfo(AbstractModel):
     @property
     def TagKey(self):
         """标签键
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TagKey
@@ -32375,7 +32366,6 @@ class TagInfo(AbstractModel):
     @property
     def TagValue(self):
         """标签值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TagValue

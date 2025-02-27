@@ -10630,11 +10630,14 @@ class GeneralEfficientOCRResponse(AbstractModel):
         :type TextDetections: list of TextDetection
         :param _Angel: 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
         :type Angel: float
+        :param _Angle: 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
+        :type Angle: float
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TextDetections = None
         self._Angel = None
+        self._Angle = None
         self._RequestId = None
 
     @property
@@ -10650,6 +10653,8 @@ class GeneralEfficientOCRResponse(AbstractModel):
 
     @property
     def Angel(self):
+        warnings.warn("parameter `Angel` is deprecated", DeprecationWarning) 
+
         """图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
         :rtype: float
         """
@@ -10657,7 +10662,20 @@ class GeneralEfficientOCRResponse(AbstractModel):
 
     @Angel.setter
     def Angel(self, Angel):
+        warnings.warn("parameter `Angel` is deprecated", DeprecationWarning) 
+
         self._Angel = Angel
+
+    @property
+    def Angle(self):
+        """图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
+        :rtype: float
+        """
+        return self._Angle
+
+    @Angle.setter
+    def Angle(self, Angle):
+        self._Angle = Angle
 
     @property
     def RequestId(self):
@@ -10679,6 +10697,7 @@ class GeneralEfficientOCRResponse(AbstractModel):
                 obj._deserialize(item)
                 self._TextDetections.append(obj)
         self._Angel = params.get("Angel")
+        self._Angle = params.get("Angle")
         self._RequestId = params.get("RequestId")
 
 
@@ -24100,6 +24119,8 @@ class RecognizeGeneralInvoiceRequest(AbstractModel):
 15：非税发票
 16：全电发票
 17：医疗发票
+18：完税凭证
+19：海关缴款书
 -1：其他发票
         :type Types: list of int
         :param _EnableOther: 是否开启其他票识别，默认值为true，开启后可支持其他发票的智能识别。	
@@ -24174,6 +24195,8 @@ class RecognizeGeneralInvoiceRequest(AbstractModel):
 15：非税发票
 16：全电发票
 17：医疗发票
+18：完税凭证
+19：海关缴款书
 -1：其他发票
         :rtype: list of int
         """

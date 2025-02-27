@@ -18609,7 +18609,6 @@ class SaveDeviceGroupRes(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: 保存or修改设备分组回包信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
         """
         self._Id = None
@@ -18617,7 +18616,6 @@ class SaveDeviceGroupRes(AbstractModel):
     @property
     def Id(self):
         """保存or修改设备分组回包信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Id
@@ -18692,13 +18690,10 @@ class SceneInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _SceneId: 场景id
-注意：此字段可能返回 null，表示取不到有效值。
         :type SceneId: str
         :param _SceneName: 场景名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type SceneName: str
         :param _Version: 场景版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
         """
         self._SceneId = None
@@ -18708,7 +18703,6 @@ class SceneInfo(AbstractModel):
     @property
     def SceneId(self):
         """场景id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SceneId
@@ -18720,7 +18714,6 @@ class SceneInfo(AbstractModel):
     @property
     def SceneName(self):
         """场景名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SceneName
@@ -18732,7 +18725,6 @@ class SceneInfo(AbstractModel):
     @property
     def Version(self):
         """场景版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Version
@@ -18850,16 +18842,12 @@ class SpaceDataStats(AbstractModel):
     def __init__(self):
         r"""
         :param _WorkspaceId: 工作空间ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type WorkspaceId: str
         :param _WorkspaceName: 工作空间名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type WorkspaceName: str
         :param _BuildingCount: 楼栋数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type BuildingCount: int
         :param _BuildingArea: 建筑面积
-注意：此字段可能返回 null，表示取不到有效值。
         :type BuildingArea: float
         """
         self._WorkspaceId = None
@@ -18870,7 +18858,6 @@ class SpaceDataStats(AbstractModel):
     @property
     def WorkspaceId(self):
         """工作空间ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._WorkspaceId
@@ -18882,7 +18869,6 @@ class SpaceDataStats(AbstractModel):
     @property
     def WorkspaceName(self):
         """工作空间名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._WorkspaceName
@@ -18894,7 +18880,6 @@ class SpaceDataStats(AbstractModel):
     @property
     def BuildingCount(self):
         """楼栋数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._BuildingCount
@@ -18906,7 +18891,6 @@ class SpaceDataStats(AbstractModel):
     @property
     def BuildingArea(self):
         """建筑面积
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._BuildingArea
@@ -18939,10 +18923,8 @@ class SpaceDataTotalStatsRes(AbstractModel):
     def __init__(self):
         r"""
         :param _BuildingCount: 总楼栋数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type BuildingCount: int
         :param _BuildingArea: 总建筑面积
-注意：此字段可能返回 null，表示取不到有效值。
         :type BuildingArea: float
         """
         self._BuildingCount = None
@@ -18951,7 +18933,6 @@ class SpaceDataTotalStatsRes(AbstractModel):
     @property
     def BuildingCount(self):
         """总楼栋数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._BuildingCount
@@ -18963,7 +18944,6 @@ class SpaceDataTotalStatsRes(AbstractModel):
     @property
     def BuildingArea(self):
         """总建筑面积
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._BuildingArea

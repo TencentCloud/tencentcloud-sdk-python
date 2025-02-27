@@ -1210,6 +1210,8 @@ class ClusterConfigsHistory(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ComputeGroupId: 计算组id
+        :type ComputeGroupId: str
         :param _FileName: 配置文件名称
         :type FileName: str
         :param _NewConfValue: 修改后的配置文件内容，base64编码
@@ -1223,12 +1225,24 @@ class ClusterConfigsHistory(AbstractModel):
         :param _UserUin: 修改子账号id
         :type UserUin: str
         """
+        self._ComputeGroupId = None
         self._FileName = None
         self._NewConfValue = None
         self._OldConfValue = None
         self._Remark = None
         self._ModifyTime = None
         self._UserUin = None
+
+    @property
+    def ComputeGroupId(self):
+        """计算组id
+        :rtype: str
+        """
+        return self._ComputeGroupId
+
+    @ComputeGroupId.setter
+    def ComputeGroupId(self, ComputeGroupId):
+        self._ComputeGroupId = ComputeGroupId
 
     @property
     def FileName(self):
@@ -1298,6 +1312,7 @@ class ClusterConfigsHistory(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._ComputeGroupId = params.get("ComputeGroupId")
         self._FileName = params.get("FileName")
         self._NewConfValue = params.get("NewConfValue")
         self._OldConfValue = params.get("OldConfValue")
@@ -4207,6 +4222,8 @@ class DescribeClusterConfigsHistoryRequest(AbstractModel):
         :param _ConfigFileNames: 需要查询的配置文件名称数组，如果为空则查询全部历史记录。目前支持的配置文件名称有：
 apache_hdfs_broker.conf、be.conf、fe.conf、core-site.xml、hdfs-site.xml、odbcinst.ini
         :type ConfigFileNames: list of str
+        :param _ComputeGroupIds: 需要查询的计算组列表
+        :type ComputeGroupIds: list of str
         """
         self._InstanceId = None
         self._Offset = None
@@ -4214,6 +4231,7 @@ apache_hdfs_broker.conf、be.conf、fe.conf、core-site.xml、hdfs-site.xml、od
         self._StartTime = None
         self._EndTime = None
         self._ConfigFileNames = None
+        self._ComputeGroupIds = None
 
     @property
     def InstanceId(self):
@@ -4282,6 +4300,17 @@ apache_hdfs_broker.conf、be.conf、fe.conf、core-site.xml、hdfs-site.xml、od
     def ConfigFileNames(self, ConfigFileNames):
         self._ConfigFileNames = ConfigFileNames
 
+    @property
+    def ComputeGroupIds(self):
+        """需要查询的计算组列表
+        :rtype: list of str
+        """
+        return self._ComputeGroupIds
+
+    @ComputeGroupIds.setter
+    def ComputeGroupIds(self, ComputeGroupIds):
+        self._ComputeGroupIds = ComputeGroupIds
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -4290,6 +4319,7 @@ apache_hdfs_broker.conf、be.conf、fe.conf、core-site.xml、hdfs-site.xml、od
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
         self._ConfigFileNames = params.get("ConfigFileNames")
+        self._ComputeGroupIds = params.get("ComputeGroupIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
