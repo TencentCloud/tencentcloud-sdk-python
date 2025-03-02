@@ -677,6 +677,59 @@ class CLBMultiRegion(AbstractModel):
         
 
 
+class CanaryPriorityRule(AbstractModel):
+    """灰度规则 Priority - Rule
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Priority: 优先级
+        :type Priority: int
+        :param _CanaryRule: 灰度规则配置
+        :type CanaryRule: :class:`tencentcloud.tse.v20201207.models.CloudNativeAPIGatewayCanaryRule`
+        """
+        self._Priority = None
+        self._CanaryRule = None
+
+    @property
+    def Priority(self):
+        """优先级
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def CanaryRule(self):
+        """灰度规则配置
+        :rtype: :class:`tencentcloud.tse.v20201207.models.CloudNativeAPIGatewayCanaryRule`
+        """
+        return self._CanaryRule
+
+    @CanaryRule.setter
+    def CanaryRule(self, CanaryRule):
+        self._CanaryRule = CanaryRule
+
+
+    def _deserialize(self, params):
+        self._Priority = params.get("Priority")
+        if params.get("CanaryRule") is not None:
+            self._CanaryRule = CloudNativeAPIGatewayCanaryRule()
+            self._CanaryRule._deserialize(params.get("CanaryRule"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CertificateInfo(AbstractModel):
     """证书信息
 
@@ -5151,10 +5204,13 @@ class CreateCloudNativeAPIGatewayCanaryRuleRequest(AbstractModel):
         :type ServiceId: str
         :param _CanaryRule: 灰度规则配置
         :type CanaryRule: :class:`tencentcloud.tse.v20201207.models.CloudNativeAPIGatewayCanaryRule`
+        :param _CanaryRuleList: 灰度规则配置列表，如果配置了此参数，将以此参数为准，忽略CanaryRule参数
+        :type CanaryRuleList: list of CloudNativeAPIGatewayCanaryRule
         """
         self._GatewayId = None
         self._ServiceId = None
         self._CanaryRule = None
+        self._CanaryRuleList = None
 
     @property
     def GatewayId(self):
@@ -5189,6 +5245,17 @@ class CreateCloudNativeAPIGatewayCanaryRuleRequest(AbstractModel):
     def CanaryRule(self, CanaryRule):
         self._CanaryRule = CanaryRule
 
+    @property
+    def CanaryRuleList(self):
+        """灰度规则配置列表，如果配置了此参数，将以此参数为准，忽略CanaryRule参数
+        :rtype: list of CloudNativeAPIGatewayCanaryRule
+        """
+        return self._CanaryRuleList
+
+    @CanaryRuleList.setter
+    def CanaryRuleList(self, CanaryRuleList):
+        self._CanaryRuleList = CanaryRuleList
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
@@ -5196,6 +5263,12 @@ class CreateCloudNativeAPIGatewayCanaryRuleRequest(AbstractModel):
         if params.get("CanaryRule") is not None:
             self._CanaryRule = CloudNativeAPIGatewayCanaryRule()
             self._CanaryRule._deserialize(params.get("CanaryRule"))
+        if params.get("CanaryRuleList") is not None:
+            self._CanaryRuleList = []
+            for item in params.get("CanaryRuleList"):
+                obj = CloudNativeAPIGatewayCanaryRule()
+                obj._deserialize(item)
+                self._CanaryRuleList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6052,6 +6125,8 @@ class CreateCloudNativeAPIGatewayRouteRequest(AbstractModel):
         :type RequestBuffering: bool
         :param _ResponseBuffering: 是否缓存响应body，默认true
         :type ResponseBuffering: bool
+        :param _RegexPriority: 正则优先级
+        :type RegexPriority: int
         """
         self._GatewayId = None
         self._ServiceID = None
@@ -6068,6 +6143,7 @@ class CreateCloudNativeAPIGatewayRouteRequest(AbstractModel):
         self._Headers = None
         self._RequestBuffering = None
         self._ResponseBuffering = None
+        self._RegexPriority = None
 
     @property
     def GatewayId(self):
@@ -6256,6 +6332,17 @@ class CreateCloudNativeAPIGatewayRouteRequest(AbstractModel):
     def ResponseBuffering(self, ResponseBuffering):
         self._ResponseBuffering = ResponseBuffering
 
+    @property
+    def RegexPriority(self):
+        """正则优先级
+        :rtype: int
+        """
+        return self._RegexPriority
+
+    @RegexPriority.setter
+    def RegexPriority(self, RegexPriority):
+        self._RegexPriority = RegexPriority
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
@@ -6278,6 +6365,7 @@ class CreateCloudNativeAPIGatewayRouteRequest(AbstractModel):
                 self._Headers.append(obj)
         self._RequestBuffering = params.get("RequestBuffering")
         self._ResponseBuffering = params.get("ResponseBuffering")
+        self._RegexPriority = params.get("RegexPriority")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8662,10 +8750,13 @@ class DeleteCloudNativeAPIGatewayCanaryRuleRequest(AbstractModel):
         :type ServiceId: str
         :param _Priority: 优先级
         :type Priority: int
+        :param _PriorityList: 优先级列表，如果配置了此参数，将以此参数为准，忽略Priority参数
+        :type PriorityList: list of int
         """
         self._GatewayId = None
         self._ServiceId = None
         self._Priority = None
+        self._PriorityList = None
 
     @property
     def GatewayId(self):
@@ -8700,11 +8791,23 @@ class DeleteCloudNativeAPIGatewayCanaryRuleRequest(AbstractModel):
     def Priority(self, Priority):
         self._Priority = Priority
 
+    @property
+    def PriorityList(self):
+        """优先级列表，如果配置了此参数，将以此参数为准，忽略Priority参数
+        :rtype: list of int
+        """
+        return self._PriorityList
+
+    @PriorityList.setter
+    def PriorityList(self, PriorityList):
+        self._PriorityList = PriorityList
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
         self._ServiceId = params.get("ServiceId")
         self._Priority = params.get("Priority")
+        self._PriorityList = params.get("PriorityList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22453,6 +22556,8 @@ class KongRoutePreview(AbstractModel):
         :type RequestBuffering: bool
         :param _ResponseBuffering: 是否缓存响应body，默认true
         :type ResponseBuffering: bool
+        :param _RegexPriority: 正则优先级
+        :type RegexPriority: int
         """
         self._ID = None
         self._Name = None
@@ -22471,6 +22576,7 @@ class KongRoutePreview(AbstractModel):
         self._Headers = None
         self._RequestBuffering = None
         self._ResponseBuffering = None
+        self._RegexPriority = None
 
     @property
     def ID(self):
@@ -22678,6 +22784,17 @@ class KongRoutePreview(AbstractModel):
     def ResponseBuffering(self, ResponseBuffering):
         self._ResponseBuffering = ResponseBuffering
 
+    @property
+    def RegexPriority(self):
+        """正则优先级
+        :rtype: int
+        """
+        return self._RegexPriority
+
+    @RegexPriority.setter
+    def RegexPriority(self, RegexPriority):
+        self._RegexPriority = RegexPriority
+
 
     def _deserialize(self, params):
         self._ID = params.get("ID")
@@ -22702,6 +22819,7 @@ class KongRoutePreview(AbstractModel):
                 self._Headers.append(obj)
         self._RequestBuffering = params.get("RequestBuffering")
         self._ResponseBuffering = params.get("ResponseBuffering")
+        self._RegexPriority = params.get("RegexPriority")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24580,11 +24698,14 @@ class ModifyCloudNativeAPIGatewayCanaryRuleRequest(AbstractModel):
         :type Priority: int
         :param _CanaryRule: 灰度规则配置
         :type CanaryRule: :class:`tencentcloud.tse.v20201207.models.CloudNativeAPIGatewayCanaryRule`
+        :param _CanaryRuleList: 灰度规则配置列表，如果配置了此参数，将以此参数为准，忽略Priority和CanaryRule参数
+        :type CanaryRuleList: list of CanaryPriorityRule
         """
         self._GatewayId = None
         self._ServiceId = None
         self._Priority = None
         self._CanaryRule = None
+        self._CanaryRuleList = None
 
     @property
     def GatewayId(self):
@@ -24630,6 +24751,17 @@ class ModifyCloudNativeAPIGatewayCanaryRuleRequest(AbstractModel):
     def CanaryRule(self, CanaryRule):
         self._CanaryRule = CanaryRule
 
+    @property
+    def CanaryRuleList(self):
+        """灰度规则配置列表，如果配置了此参数，将以此参数为准，忽略Priority和CanaryRule参数
+        :rtype: list of CanaryPriorityRule
+        """
+        return self._CanaryRuleList
+
+    @CanaryRuleList.setter
+    def CanaryRuleList(self, CanaryRuleList):
+        self._CanaryRuleList = CanaryRuleList
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
@@ -24638,6 +24770,12 @@ class ModifyCloudNativeAPIGatewayCanaryRuleRequest(AbstractModel):
         if params.get("CanaryRule") is not None:
             self._CanaryRule = CloudNativeAPIGatewayCanaryRule()
             self._CanaryRule._deserialize(params.get("CanaryRule"))
+        if params.get("CanaryRuleList") is not None:
+            self._CanaryRuleList = []
+            for item in params.get("CanaryRuleList"):
+                obj = CanaryPriorityRule()
+                obj._deserialize(item)
+                self._CanaryRuleList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25138,6 +25276,8 @@ class ModifyCloudNativeAPIGatewayRouteRequest(AbstractModel):
         :type RequestBuffering: bool
         :param _ResponseBuffering: 是否缓存响应body，默认true
         :type ResponseBuffering: bool
+        :param _RegexPriority: 增加优先级
+        :type RegexPriority: int
         """
         self._GatewayId = None
         self._ServiceID = None
@@ -25155,6 +25295,7 @@ class ModifyCloudNativeAPIGatewayRouteRequest(AbstractModel):
         self._Headers = None
         self._RequestBuffering = None
         self._ResponseBuffering = None
+        self._RegexPriority = None
 
     @property
     def GatewayId(self):
@@ -25354,6 +25495,17 @@ class ModifyCloudNativeAPIGatewayRouteRequest(AbstractModel):
     def ResponseBuffering(self, ResponseBuffering):
         self._ResponseBuffering = ResponseBuffering
 
+    @property
+    def RegexPriority(self):
+        """增加优先级
+        :rtype: int
+        """
+        return self._RegexPriority
+
+    @RegexPriority.setter
+    def RegexPriority(self, RegexPriority):
+        self._RegexPriority = RegexPriority
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
@@ -25377,6 +25529,7 @@ class ModifyCloudNativeAPIGatewayRouteRequest(AbstractModel):
                 self._Headers.append(obj)
         self._RequestBuffering = params.get("RequestBuffering")
         self._ResponseBuffering = params.get("ResponseBuffering")
+        self._RegexPriority = params.get("RegexPriority")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

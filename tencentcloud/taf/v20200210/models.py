@@ -94,7 +94,6 @@ class ManagePortraitRiskOutput(AbstractModel):
         :param _Code: 返回码（0，成功，其他失败）
         :type Code: int
         :param _Message: 返回码对应的信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param _Value: 结果
 注意：此字段可能返回 null，表示取不到有效值。
@@ -118,7 +117,6 @@ class ManagePortraitRiskOutput(AbstractModel):
     @property
     def Message(self):
         """返回码对应的信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Message

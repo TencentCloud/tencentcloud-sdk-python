@@ -326,7 +326,9 @@ class CfwClient(AbstractClient):
 
 
     def CreateIdsWhiteRule(self, request):
-        """创建入侵防御规则白名单接口
+        """CreateIdsWhiteRule
+
+        创建入侵防御规则白名单接口
 
         :param request: Request instance for CreateIdsWhiteRule.
         :type request: :class:`tencentcloud.cfw.v20190904.models.CreateIdsWhiteRuleRequest`
@@ -556,7 +558,9 @@ class CfwClient(AbstractClient):
 
 
     def DeleteIdsWhiteRule(self, request):
-        """删除入侵防御规则白名单接口
+        """历史方案，业务已迁移，接口不再适用
+
+        删除入侵防御规则白名单接口
 
         :param request: Request instance for DeleteIdsWhiteRule.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DeleteIdsWhiteRuleRequest`
@@ -1108,7 +1112,9 @@ class CfwClient(AbstractClient):
 
 
     def DescribeIdsWhiteRule(self, request):
-        """查询入侵防御规则白名单接口
+        """历史方案，业务已迁移，接口不再适用
+
+        查询入侵防御规则白名单接口
 
         :param request: Request instance for DescribeIdsWhiteRule.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeIdsWhiteRuleRequest`

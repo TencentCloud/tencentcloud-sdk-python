@@ -14651,7 +14651,7 @@ class EmrProductConfigOutter(AbstractModel):
         :param _SecurityOn: 是否支持安全模式
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityOn: bool
-        :param _SecurityGroup: 安全组名称
+        :param _SecurityGroup: 集群初始安全组id
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityGroup: str
         :param _CbsEncrypt: 是否开启Cbs加密
@@ -14660,7 +14660,7 @@ class EmrProductConfigOutter(AbstractModel):
         :param _ApplicationRole: 自定义应用角色。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationRole: str
-        :param _SecurityGroups: 安全组
+        :param _SecurityGroups: 安全组id
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityGroups: list of str
         :param _PublicKeyId: SSH密钥Id
@@ -14857,7 +14857,7 @@ class EmrProductConfigOutter(AbstractModel):
 
     @property
     def SecurityGroup(self):
-        """安全组名称
+        """集群初始安全组id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14893,7 +14893,7 @@ class EmrProductConfigOutter(AbstractModel):
 
     @property
     def SecurityGroups(self):
-        """安全组
+        """安全组id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """

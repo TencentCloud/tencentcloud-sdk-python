@@ -204,15 +204,12 @@ class ApproverItem(AbstractModel):
         :param _SignId: 签署方唯一编号
 
 在<a href="https://qian.tencent.com/developers/company/dynamic_signer" target="_blank">动态补充签署人</a>场景下，可以用此编号确定参与方
-注意：此字段可能返回 null，表示取不到有效值。
         :type SignId: str
         :param _RecipientId: 签署方角色编号
 
 在<a href="https://qian.tencent.com/developers/company/dynamic_signer" target="_blank">动态补充签署人</a>场景下，可以用此编号确定参与方
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecipientId: str
         :param _ApproverRoleName: 签署方角色名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApproverRoleName: str
         """
         self._SignId = None
@@ -224,7 +221,6 @@ class ApproverItem(AbstractModel):
         """签署方唯一编号
 
 在<a href="https://qian.tencent.com/developers/company/dynamic_signer" target="_blank">动态补充签署人</a>场景下，可以用此编号确定参与方
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SignId
@@ -238,7 +234,6 @@ class ApproverItem(AbstractModel):
         """签署方角色编号
 
 在<a href="https://qian.tencent.com/developers/company/dynamic_signer" target="_blank">动态补充签署人</a>场景下，可以用此编号确定参与方
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RecipientId
@@ -250,7 +245,6 @@ class ApproverItem(AbstractModel):
     @property
     def ApproverRoleName(self):
         """签署方角色名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApproverRoleName
@@ -701,22 +695,16 @@ class AuthInfoDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _Type: 扩展服务类型，和入参一致	
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Name: 扩展服务名称	
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _HasAuthUserList: 授权员工列表	
-注意：此字段可能返回 null，表示取不到有效值。
         :type HasAuthUserList: list of HasAuthUser
         :param _HasAuthOrganizationList: 授权企业列表（企业自动签时，该字段有值）	
-注意：此字段可能返回 null，表示取不到有效值。
         :type HasAuthOrganizationList: list of HasAuthOrganization
         :param _AuthUserTotal: 授权员工列表总数	
-注意：此字段可能返回 null，表示取不到有效值。
         :type AuthUserTotal: int
         :param _AuthOrganizationTotal: 授权企业列表总数	
-注意：此字段可能返回 null，表示取不到有效值。
         :type AuthOrganizationTotal: int
         """
         self._Type = None
@@ -729,7 +717,6 @@ class AuthInfoDetail(AbstractModel):
     @property
     def Type(self):
         """扩展服务类型，和入参一致	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -741,7 +728,6 @@ class AuthInfoDetail(AbstractModel):
     @property
     def Name(self):
         """扩展服务名称	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -753,7 +739,6 @@ class AuthInfoDetail(AbstractModel):
     @property
     def HasAuthUserList(self):
         """授权员工列表	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of HasAuthUser
         """
         return self._HasAuthUserList
@@ -765,7 +750,6 @@ class AuthInfoDetail(AbstractModel):
     @property
     def HasAuthOrganizationList(self):
         """授权企业列表（企业自动签时，该字段有值）	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of HasAuthOrganization
         """
         return self._HasAuthOrganizationList
@@ -777,7 +761,6 @@ class AuthInfoDetail(AbstractModel):
     @property
     def AuthUserTotal(self):
         """授权员工列表总数	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AuthUserTotal
@@ -789,7 +772,6 @@ class AuthInfoDetail(AbstractModel):
     @property
     def AuthOrganizationTotal(self):
         """授权企业列表总数	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AuthOrganizationTotal
@@ -11292,17 +11274,14 @@ class ChannelRole(AbstractModel):
     def __init__(self):
         r"""
         :param _RoleId: 角色ID,为32位字符串
-注意：此字段可能返回 null，表示取不到有效值。
         :type RoleId: str
         :param _RoleName: 角色的名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type RoleName: str
         :param _RoleStatus: 此角色状态
 1: 已经启用
 2: 已经禁用
         :type RoleStatus: int
         :param _PermissionGroups: 此角色对应的权限列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type PermissionGroups: list of PermissionGroup
         """
         self._RoleId = None
@@ -11313,7 +11292,6 @@ class ChannelRole(AbstractModel):
     @property
     def RoleId(self):
         """角色ID,为32位字符串
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RoleId
@@ -11325,7 +11303,6 @@ class ChannelRole(AbstractModel):
     @property
     def RoleName(self):
         """角色的名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RoleName
@@ -11350,7 +11327,6 @@ class ChannelRole(AbstractModel):
     @property
     def PermissionGroups(self):
         """此角色对应的权限列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PermissionGroup
         """
         return self._PermissionGroups
@@ -12432,17 +12408,14 @@ ChildrenComponent结构体定义:
         :type KeywordIndexes: list of int
         :param _Placeholder: 填写控件在腾讯电子签小程序填写界面展示的提示信息，例如，在身份证号码填写控件中，提示信息可以设置成“请输入18位身份证号码”。
 注：`签署控件设置此字段无效`
-注意：此字段可能返回 null，表示取不到有效值。
         :type Placeholder: str
         :param _LockComponentValue: **web嵌入发起合同场景下**， 是否锁定填写和签署控件值不允许嵌入页面进行编辑
 <ul><li>false（默认）：不锁定控件值，允许在页面编辑控件值</li>
 <li>true：锁定控件值，在页面编辑控件值</li></ul>
-注意：此字段可能返回 null，表示取不到有效值。
         :type LockComponentValue: bool
         :param _ForbidMoveAndDelete: **web嵌入发起合同场景下**，是否禁止移动和删除填写和签署控件
 <ul><li> <b>false（默认）</b> :不禁止移动和删除控件</li>
 <li> <b>true</b> : 可以移动和删除控件</li></ul>
-注意：此字段可能返回 null，表示取不到有效值。
         :type ForbidMoveAndDelete: bool
         """
         self._ComponentId = None
@@ -12955,7 +12928,6 @@ ChildrenComponent结构体定义:
     def Placeholder(self):
         """填写控件在腾讯电子签小程序填写界面展示的提示信息，例如，在身份证号码填写控件中，提示信息可以设置成“请输入18位身份证号码”。
 注：`签署控件设置此字段无效`
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Placeholder
@@ -12969,7 +12941,6 @@ ChildrenComponent结构体定义:
         """**web嵌入发起合同场景下**， 是否锁定填写和签署控件值不允许嵌入页面进行编辑
 <ul><li>false（默认）：不锁定控件值，允许在页面编辑控件值</li>
 <li>true：锁定控件值，在页面编辑控件值</li></ul>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._LockComponentValue
@@ -12983,7 +12954,6 @@ ChildrenComponent结构体定义:
         """**web嵌入发起合同场景下**，是否禁止移动和删除填写和签署控件
 <ul><li> <b>false（默认）</b> :不禁止移动和删除控件</li>
 <li> <b>true</b> : 可以移动和删除控件</li></ul>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._ForbidMoveAndDelete
@@ -14916,6 +14886,152 @@ class CreateConsoleLoginUrlResponse(AbstractModel):
         self._ConsoleUrl = params.get("ConsoleUrl")
         self._IsActivated = params.get("IsActivated")
         self._ProxyOperatorIsVerified = params.get("ProxyOperatorIsVerified")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateEmployeeChangeUrlRequest(AbstractModel):
+    """CreateEmployeeChangeUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+
+此接口下面信息必填。
+<ul>
+<li>渠道应用标识:  Agent.AppId</li>
+<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+<li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+</ul>
+第三方平台子客企业和员工必须已经经过实名认证
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param _OpenId: 待修改的员工OpenId
+        :type OpenId: str
+        :param _NewMobile: 待修改的员工手机号，支持海外格式
+        :type NewMobile: str
+        """
+        self._Agent = None
+        self._OpenId = None
+        self._NewMobile = None
+
+    @property
+    def Agent(self):
+        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+
+此接口下面信息必填。
+<ul>
+<li>渠道应用标识:  Agent.AppId</li>
+<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+<li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+</ul>
+第三方平台子客企业和员工必须已经经过实名认证
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def OpenId(self):
+        """待修改的员工OpenId
+        :rtype: str
+        """
+        return self._OpenId
+
+    @OpenId.setter
+    def OpenId(self, OpenId):
+        self._OpenId = OpenId
+
+    @property
+    def NewMobile(self):
+        """待修改的员工手机号，支持海外格式
+        :rtype: str
+        """
+        return self._NewMobile
+
+    @NewMobile.setter
+    def NewMobile(self, NewMobile):
+        self._NewMobile = NewMobile
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._OpenId = params.get("OpenId")
+        self._NewMobile = params.get("NewMobile")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateEmployeeChangeUrlResponse(AbstractModel):
+    """CreateEmployeeChangeUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MiniAppPath: 修改员工信息的小程序链接<br>跳转到腾讯电子签小程序的实现可以参考微信的官方文档:<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/launchApp.html" target="_blank">开放能力/打开 App</a> 
+        :type MiniAppPath: str
+        :param _ExpireTime: 链接过期时间以 Unix 时间戳格式表示，从生成链接时间起，往后7天有效期。过期后短链将失效，无法打开。
+
+
+        :type ExpireTime: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._MiniAppPath = None
+        self._ExpireTime = None
+        self._RequestId = None
+
+    @property
+    def MiniAppPath(self):
+        """修改员工信息的小程序链接<br>跳转到腾讯电子签小程序的实现可以参考微信的官方文档:<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/launchApp.html" target="_blank">开放能力/打开 App</a> 
+        :rtype: str
+        """
+        return self._MiniAppPath
+
+    @MiniAppPath.setter
+    def MiniAppPath(self, MiniAppPath):
+        self._MiniAppPath = MiniAppPath
+
+    @property
+    def ExpireTime(self):
+        """链接过期时间以 Unix 时间戳格式表示，从生成链接时间起，往后7天有效期。过期后短链将失效，无法打开。
+
+
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._MiniAppPath = params.get("MiniAppPath")
+        self._ExpireTime = params.get("ExpireTime")
         self._RequestId = params.get("RequestId")
 
 
@@ -17557,10 +17673,8 @@ class Department(AbstractModel):
     def __init__(self):
         r"""
         :param _DepartmentId: 部门id
-注意：此字段可能返回 null，表示取不到有效值。
         :type DepartmentId: str
         :param _DepartmentName: 部门名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type DepartmentName: str
         """
         self._DepartmentId = None
@@ -17569,7 +17683,6 @@ class Department(AbstractModel):
     @property
     def DepartmentId(self):
         """部门id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DepartmentId
@@ -17581,7 +17694,6 @@ class Department(AbstractModel):
     @property
     def DepartmentName(self):
         """部门名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DepartmentName
@@ -19671,7 +19783,6 @@ class DetectInfoVideoData(AbstractModel):
         :param _LiveNessVideo: 活体视频的base64编码，mp4格式
 
 注:`需进行base64解码获取活体视频文件`
-注意：此字段可能返回 null，表示取不到有效值。
         :type LiveNessVideo: str
         """
         self._LiveNessVideo = None
@@ -19681,7 +19792,6 @@ class DetectInfoVideoData(AbstractModel):
         """活体视频的base64编码，mp4格式
 
 注:`需进行base64解码获取活体视频文件`
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LiveNessVideo
@@ -20074,10 +20184,8 @@ class ExtentServiceAuthInfo(AbstractModel):
 **DISABLE**：未开通	
         :type Status: str
         :param _OperatorOpenId: 操作扩展服务的操作人第三方应用平台的用户openid
-注意：此字段可能返回 null，表示取不到有效值。
         :type OperatorOpenId: str
         :param _OperateOn: 扩展服务的操作时间，格式为Unix标准时间戳（秒）。	
-注意：此字段可能返回 null，表示取不到有效值。
         :type OperateOn: int
         """
         self._Type = None
@@ -20132,7 +20240,6 @@ class ExtentServiceAuthInfo(AbstractModel):
     @property
     def OperatorOpenId(self):
         """操作扩展服务的操作人第三方应用平台的用户openid
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OperatorOpenId
@@ -20144,7 +20251,6 @@ class ExtentServiceAuthInfo(AbstractModel):
     @property
     def OperateOn(self):
         """扩展服务的操作时间，格式为Unix标准时间戳（秒）。	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._OperateOn
@@ -20178,10 +20284,8 @@ class FailedCreateRoleData(AbstractModel):
     def __init__(self):
         r"""
         :param _UserId: 用户userId
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserId: str
         :param _RoleIds: 角色RoleId列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type RoleIds: list of str
         """
         self._UserId = None
@@ -20190,7 +20294,6 @@ class FailedCreateRoleData(AbstractModel):
     @property
     def UserId(self):
         """用户userId
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UserId
@@ -20202,7 +20305,6 @@ class FailedCreateRoleData(AbstractModel):
     @property
     def RoleIds(self):
         """角色RoleId列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._RoleIds
@@ -20436,13 +20538,10 @@ class FillError(AbstractModel):
     def __init__(self):
         r"""
         :param _RecipientId: 为签署方经办人在签署合同中的参与方ID，与控件绑定，是控件的归属方，ID为32位字符串。与入参中补充的签署人角色ID对应，批量补充部分失败返回对应的错误信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecipientId: str
         :param _ErrMessage: 补充失败错误说明
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrMessage: str
         :param _FlowId: 合同流程ID，为32位字符串。	
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowId: str
         """
         self._RecipientId = None
@@ -20452,7 +20551,6 @@ class FillError(AbstractModel):
     @property
     def RecipientId(self):
         """为签署方经办人在签署合同中的参与方ID，与控件绑定，是控件的归属方，ID为32位字符串。与入参中补充的签署人角色ID对应，批量补充部分失败返回对应的错误信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RecipientId
@@ -20464,7 +20562,6 @@ class FillError(AbstractModel):
     @property
     def ErrMessage(self):
         """补充失败错误说明
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrMessage
@@ -20476,7 +20573,6 @@ class FillError(AbstractModel):
     @property
     def FlowId(self):
         """合同流程ID，为32位字符串。	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FlowId
@@ -20665,7 +20761,6 @@ class FlowApproverDetail(AbstractModel):
         :param _ReceiptId: 模板配置时候的签署人角色ID(用PDF文件发起也可以指定,如果不指定则自动生成此角色ID), 所有的填写控件和签署控件都归属不同的角色
         :type ReceiptId: str
         :param _ProxyOrganizationOpenId: 第三方平台子客企业的唯一标识，定义Agent中的ProxyOrganizationOpenId一样, 可以参考<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#agent" target="_blank">Agent结构体</a>
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyOrganizationOpenId: str
         :param _ProxyOperatorOpenId: 第三方平台子客企业员工的唯一标识
         :type ProxyOperatorOpenId: str
@@ -20677,7 +20772,6 @@ class FlowApproverDetail(AbstractModel):
         :type SignOrder: int
         :param _ApproveName: 签署方经办人的姓名。
 经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApproveName: str
         :param _ApproveStatus: 当前签署人的状态, 状态如下
 <ul><li> **PENDING** :待签署</li>
@@ -20692,23 +20786,18 @@ class FlowApproverDetail(AbstractModel):
 <li> **FORWARD** :已经转他人处理</li>
 <li> **STOP** :流程已终止</li>
 <li> **RELIEVED** :解除协议（已解除）</li></ul>
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApproveStatus: str
         :param _ApproveMessage: 签署人拒签等情况的时候填写的原因
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApproveMessage: str
         :param _ApproveTime: 签署人签署时间戳，单位秒
         :type ApproveTime: int
         :param _ApproveType: 参与者类型 
 <ul><li> **ORGANIZATION** :企业签署人</li>
 <li> **PERSON** :个人签署人</li></ul>
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApproveType: str
         :param _ApproverRoleName: 自定义签署人的角色名, 如: 收款人、开具人、见证人等
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApproverRoleName: str
         :param _SignId: 签署参与人在本流程中的编号ID（每个流程不同），可用此ID来定位签署参与人在本流程的签署节点。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SignId: str
         :param _RecipientId: 模板配置时候的签署人角色ID(用PDF文件发起也可以指定,如果不指定则自动生成此角色ID), 所有的填写控件和签署控件都归属不同的角色
         :type RecipientId: str
@@ -20746,7 +20835,6 @@ class FlowApproverDetail(AbstractModel):
     @property
     def ProxyOrganizationOpenId(self):
         """第三方平台子客企业的唯一标识，定义Agent中的ProxyOrganizationOpenId一样, 可以参考<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#agent" target="_blank">Agent结构体</a>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProxyOrganizationOpenId
@@ -20803,7 +20891,6 @@ class FlowApproverDetail(AbstractModel):
     def ApproveName(self):
         """签署方经办人的姓名。
 经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApproveName
@@ -20827,7 +20914,6 @@ class FlowApproverDetail(AbstractModel):
 <li> **FORWARD** :已经转他人处理</li>
 <li> **STOP** :流程已终止</li>
 <li> **RELIEVED** :解除协议（已解除）</li></ul>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApproveStatus
@@ -20839,7 +20925,6 @@ class FlowApproverDetail(AbstractModel):
     @property
     def ApproveMessage(self):
         """签署人拒签等情况的时候填写的原因
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApproveMessage
@@ -20864,7 +20949,6 @@ class FlowApproverDetail(AbstractModel):
         """参与者类型 
 <ul><li> **ORGANIZATION** :企业签署人</li>
 <li> **PERSON** :个人签署人</li></ul>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApproveType
@@ -20876,7 +20960,6 @@ class FlowApproverDetail(AbstractModel):
     @property
     def ApproverRoleName(self):
         """自定义签署人的角色名, 如: 收款人、开具人、见证人等
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApproverRoleName
@@ -20888,7 +20971,6 @@ class FlowApproverDetail(AbstractModel):
     @property
     def SignId(self):
         """签署参与人在本流程中的编号ID（每个流程不同），可用此ID来定位签署参与人在本流程的签署节点。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SignId
@@ -21650,10 +21732,8 @@ class FlowApproverItem(AbstractModel):
     def __init__(self):
         r"""
         :param _FlowId: 合同编号
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowId: str
         :param _Approvers: 签署方信息，如角色ID、角色名称等
-注意：此字段可能返回 null，表示取不到有效值。
         :type Approvers: list of ApproverItem
         """
         self._FlowId = None
@@ -21662,7 +21742,6 @@ class FlowApproverItem(AbstractModel):
     @property
     def FlowId(self):
         """合同编号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FlowId
@@ -21674,7 +21753,6 @@ class FlowApproverItem(AbstractModel):
     @property
     def Approvers(self):
         """签署方信息，如角色ID、角色名称等
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ApproverItem
         """
         return self._Approvers
@@ -21729,7 +21807,6 @@ class FlowApproverUrlInfo(AbstractModel):
 1. 该链接有效期为**30分钟**，同时需要注意保密，不要外泄给无关用户。
 2. 该链接不支持小程序嵌入，仅支持**移动端浏览器**打开。
 3. <font color="red">生成的链路后面不能再增加参数</font>（会出现覆盖链接中已有参数导致错误）
-注意：此字段可能返回 null，表示取不到有效值。
         :type LongUrl: str
         """
         self._SignUrl = None
@@ -21796,7 +21873,6 @@ class FlowApproverUrlInfo(AbstractModel):
 1. 该链接有效期为**30分钟**，同时需要注意保密，不要外泄给无关用户。
 2. 该链接不支持小程序嵌入，仅支持**移动端浏览器**打开。
 3. <font color="red">生成的链路后面不能再增加参数</font>（会出现覆盖链接中已有参数导致错误）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LongUrl
@@ -22421,10 +22497,8 @@ class FlowGroupApprovers(AbstractModel):
     def __init__(self):
         r"""
         :param _FlowId: 合同流程ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowId: str
         :param _Approvers: 签署方信息，包含合同ID和角色ID用于定位RecipientId。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Approvers: list of ApproverItem
         """
         self._FlowId = None
@@ -22433,7 +22507,6 @@ class FlowGroupApprovers(AbstractModel):
     @property
     def FlowId(self):
         """合同流程ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FlowId
@@ -22445,7 +22518,6 @@ class FlowGroupApprovers(AbstractModel):
     @property
     def Approvers(self):
         """签署方信息，包含合同ID和角色ID用于定位RecipientId。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ApproverItem
         """
         return self._Approvers
@@ -22944,10 +23016,8 @@ class FlowResourceUrlInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _FlowId: 合同流程的ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowId: str
         :param _ResourceUrlInfos: 对应的合同流程的PDF下载链接
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceUrlInfos: list of ResourceUrlInfo
         """
         self._FlowId = None
@@ -22956,7 +23026,6 @@ class FlowResourceUrlInfo(AbstractModel):
     @property
     def FlowId(self):
         """合同流程的ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FlowId
@@ -22968,7 +23037,6 @@ class FlowResourceUrlInfo(AbstractModel):
     @property
     def ResourceUrlInfos(self):
         """对应的合同流程的PDF下载链接
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ResourceUrlInfo
         """
         return self._ResourceUrlInfos
@@ -23251,15 +23319,12 @@ class FormField(AbstractModel):
 CreateFlowsByTemplates 接口不使用此字段。
 
 <a href="https://dyn.ess.tencent.cn/guide/apivideo/channel_component_name.mp4" target="_blank">点击此处查看模板上控件ID的获取方式</a>
-注意：此字段可能返回 null，表示取不到有效值。
         :type ComponentId: str
         :param _ComponentName: 控件的名字，跟ComponentId二选一，不能全为空
 
 <a href="https://dyn.ess.tencent.cn/guide/apivideo/channel_component_name.mp4" target="_blank">点击此处查看模板上控件名字的获取方式</a>
-注意：此字段可能返回 null，表示取不到有效值。
         :type ComponentName: str
         :param _LockComponentValue: 是否锁定模板控件值，锁定后无法修改（用于嵌入式发起合同），true-锁定，false-不锁定
-注意：此字段可能返回 null，表示取不到有效值。
         :type LockComponentValue: bool
         """
         self._ComponentValue = None
@@ -23298,7 +23363,6 @@ CreateFlowsByTemplates 接口不使用此字段。
 CreateFlowsByTemplates 接口不使用此字段。
 
 <a href="https://dyn.ess.tencent.cn/guide/apivideo/channel_component_name.mp4" target="_blank">点击此处查看模板上控件ID的获取方式</a>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ComponentId
@@ -23312,7 +23376,6 @@ CreateFlowsByTemplates 接口不使用此字段。
         """控件的名字，跟ComponentId二选一，不能全为空
 
 <a href="https://dyn.ess.tencent.cn/guide/apivideo/channel_component_name.mp4" target="_blank">点击此处查看模板上控件名字的获取方式</a>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ComponentName
@@ -23324,7 +23387,6 @@ CreateFlowsByTemplates 接口不使用此字段。
     @property
     def LockComponentValue(self):
         """是否锁定模板控件值，锁定后无法修改（用于嵌入式发起合同），true-锁定，false-不锁定
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._LockComponentValue
@@ -23509,19 +23571,14 @@ class HasAuthOrganization(AbstractModel):
     def __init__(self):
         r"""
         :param _OrganizationOpenId: 授权企业openid，
-注意：此字段可能返回 null，表示取不到有效值。
         :type OrganizationOpenId: str
         :param _OrganizationName: 授权企业名称	
-注意：此字段可能返回 null，表示取不到有效值。
         :type OrganizationName: str
         :param _AuthorizedOrganizationOpenId: 被授权企业openid，
-注意：此字段可能返回 null，表示取不到有效值。
         :type AuthorizedOrganizationOpenId: str
         :param _AuthorizedOrganizationName: 被授权企业名称	
-注意：此字段可能返回 null，表示取不到有效值。
         :type AuthorizedOrganizationName: str
         :param _AuthorizeTime: 授权时间，格式为时间戳，单位s	
-注意：此字段可能返回 null，表示取不到有效值。
         :type AuthorizeTime: int
         """
         self._OrganizationOpenId = None
@@ -23533,7 +23590,6 @@ class HasAuthOrganization(AbstractModel):
     @property
     def OrganizationOpenId(self):
         """授权企业openid，
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OrganizationOpenId
@@ -23545,7 +23601,6 @@ class HasAuthOrganization(AbstractModel):
     @property
     def OrganizationName(self):
         """授权企业名称	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OrganizationName
@@ -23557,7 +23612,6 @@ class HasAuthOrganization(AbstractModel):
     @property
     def AuthorizedOrganizationOpenId(self):
         """被授权企业openid，
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AuthorizedOrganizationOpenId
@@ -23569,7 +23623,6 @@ class HasAuthOrganization(AbstractModel):
     @property
     def AuthorizedOrganizationName(self):
         """被授权企业名称	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AuthorizedOrganizationName
@@ -23581,7 +23634,6 @@ class HasAuthOrganization(AbstractModel):
     @property
     def AuthorizeTime(self):
         """授权时间，格式为时间戳，单位s	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AuthorizeTime
@@ -23617,7 +23669,6 @@ class HasAuthUser(AbstractModel):
         :param _OpenId: 第三方应用平台自定义，对应第三方平台子客企业员工的唯一标识。
 
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type OpenId: str
         """
         self._OpenId = None
@@ -23627,7 +23678,6 @@ class HasAuthUser(AbstractModel):
         """第三方应用平台自定义，对应第三方平台子客企业员工的唯一标识。
 
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OpenId
@@ -23787,7 +23837,6 @@ class IntentionActionResult(AbstractModel):
     def __init__(self):
         r"""
         :param _Details: 意愿核身结果详细数据，与每段点头确认过程一一对应
-注意：此字段可能返回 null，表示取不到有效值。
         :type Details: list of IntentionActionResultDetail
         """
         self._Details = None
@@ -23795,7 +23844,6 @@ class IntentionActionResult(AbstractModel):
     @property
     def Details(self):
         """意愿核身结果详细数据，与每段点头确认过程一一对应
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of IntentionActionResultDetail
         """
         return self._Details
@@ -23830,7 +23878,6 @@ class IntentionActionResultDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _Video: 视频base64编码（其中包含全程提示文本和点头音频，mp4格式）
-注意：此字段可能返回 null，表示取不到有效值。
         :type Video: str
         """
         self._Video = None
@@ -23838,7 +23885,6 @@ class IntentionActionResultDetail(AbstractModel):
     @property
     def Video(self):
         """视频base64编码（其中包含全程提示文本和点头音频，mp4格式）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Video
@@ -23921,13 +23967,10 @@ class IntentionQuestionResult(AbstractModel):
         :param _Video: 视频base64（其中包含全程问题和回答音频，mp4格式）
 
 注：`需进行base64解码获取视频文件`
-注意：此字段可能返回 null，表示取不到有效值。
         :type Video: str
         :param _ResultCode:  和答案匹配结果列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResultCode: list of str
         :param _AsrResult: 回答问题语音识别结果列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type AsrResult: list of str
         """
         self._Video = None
@@ -23939,7 +23982,6 @@ class IntentionQuestionResult(AbstractModel):
         """视频base64（其中包含全程问题和回答音频，mp4格式）
 
 注：`需进行base64解码获取视频文件`
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Video
@@ -23951,7 +23993,6 @@ class IntentionQuestionResult(AbstractModel):
     @property
     def ResultCode(self):
         """ 和答案匹配结果列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._ResultCode
@@ -23963,7 +24004,6 @@ class IntentionQuestionResult(AbstractModel):
     @property
     def AsrResult(self):
         """回答问题语音识别结果列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._AsrResult
@@ -24459,7 +24499,6 @@ class OccupiedSeal(AbstractModel):
         :param _SealStatus: 印章状态，有以下六种：CHECKING（审核中）SUCCESS（已启用）FAIL（审核拒绝）CHECKING-SADM（待超管审核）DISABLE（已停用）STOPPED（已终止）
         :type SealStatus: str
         :param _FailReason: 审核失败原因
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailReason: str
         :param _Url: 印章图片url，5分钟内有效
         :type Url: str
@@ -24557,7 +24596,6 @@ class OccupiedSeal(AbstractModel):
     @property
     def FailReason(self):
         """审核失败原因
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FailReason
@@ -25109,49 +25147,36 @@ class OrganizationCommonInfo(AbstractModel):
         :param _OrganizationName: 组织机构名称。
 请确认该名称与企业营业执照中注册的名称一致。
 如果名称中包含英文括号()，请使用中文括号（）代替。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OrganizationName: str
         :param _UniformSocialCreditCode: 组织机构企业统一社会信用代码。
 请确认该企业统一社会信用代码与企业营业执照中注册的统一社会信用代码一致。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UniformSocialCreditCode: str
         :param _LegalName: 组织机构法人的姓名。
 请确认该企业统一社会信用代码与企业营业执照中注册的法人姓名一致。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LegalName: str
         :param _LegalIdCardType: 组织机构法人的证件类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type LegalIdCardType: str
         :param _LegalIdCardNumber: 组织机构法人的证件号码
-注意：此字段可能返回 null，表示取不到有效值。
         :type LegalIdCardNumber: str
         :param _AdminName: 组织机构超管姓名。
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type AdminName: str
         :param _AdminMobile: 组织机构超管手机号。
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type AdminMobile: str
         :param _AdminIdCardType: 组织机构超管证件类型
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type AdminIdCardType: str
         :param _AdminIdCardNumber: 组织机构超管证件号码
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type AdminIdCardNumber: str
         :param _OldAdminName: 原超管姓名
-注意：此字段可能返回 null，表示取不到有效值。
         :type OldAdminName: str
         :param _OldAdminMobile: 原超管手机号
-注意：此字段可能返回 null，表示取不到有效值。
         :type OldAdminMobile: str
         :param _OldAdminIdCardType: 原超管证件类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type OldAdminIdCardType: str
         :param _OldAdminIdCardNumber: 原超管证件号码
-注意：此字段可能返回 null，表示取不到有效值。
         :type OldAdminIdCardNumber: str
         """
         self._OrganizationName = None
@@ -25173,7 +25198,6 @@ class OrganizationCommonInfo(AbstractModel):
         """组织机构名称。
 请确认该名称与企业营业执照中注册的名称一致。
 如果名称中包含英文括号()，请使用中文括号（）代替。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OrganizationName
@@ -25186,7 +25210,6 @@ class OrganizationCommonInfo(AbstractModel):
     def UniformSocialCreditCode(self):
         """组织机构企业统一社会信用代码。
 请确认该企业统一社会信用代码与企业营业执照中注册的统一社会信用代码一致。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UniformSocialCreditCode
@@ -25199,7 +25222,6 @@ class OrganizationCommonInfo(AbstractModel):
     def LegalName(self):
         """组织机构法人的姓名。
 请确认该企业统一社会信用代码与企业营业执照中注册的法人姓名一致。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LegalName
@@ -25211,7 +25233,6 @@ class OrganizationCommonInfo(AbstractModel):
     @property
     def LegalIdCardType(self):
         """组织机构法人的证件类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LegalIdCardType
@@ -25223,7 +25244,6 @@ class OrganizationCommonInfo(AbstractModel):
     @property
     def LegalIdCardNumber(self):
         """组织机构法人的证件号码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LegalIdCardNumber
@@ -25236,7 +25256,6 @@ class OrganizationCommonInfo(AbstractModel):
     def AdminName(self):
         """组织机构超管姓名。
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AdminName
@@ -25249,7 +25268,6 @@ class OrganizationCommonInfo(AbstractModel):
     def AdminMobile(self):
         """组织机构超管手机号。
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AdminMobile
@@ -25262,7 +25280,6 @@ class OrganizationCommonInfo(AbstractModel):
     def AdminIdCardType(self):
         """组织机构超管证件类型
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AdminIdCardType
@@ -25275,7 +25292,6 @@ class OrganizationCommonInfo(AbstractModel):
     def AdminIdCardNumber(self):
         """组织机构超管证件号码
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AdminIdCardNumber
@@ -25287,7 +25303,6 @@ class OrganizationCommonInfo(AbstractModel):
     @property
     def OldAdminName(self):
         """原超管姓名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OldAdminName
@@ -25299,7 +25314,6 @@ class OrganizationCommonInfo(AbstractModel):
     @property
     def OldAdminMobile(self):
         """原超管手机号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OldAdminMobile
@@ -25311,7 +25325,6 @@ class OrganizationCommonInfo(AbstractModel):
     @property
     def OldAdminIdCardType(self):
         """原超管证件类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OldAdminIdCardType
@@ -25323,7 +25336,6 @@ class OrganizationCommonInfo(AbstractModel):
     @property
     def OldAdminIdCardNumber(self):
         """原超管证件号码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OldAdminIdCardNumber
@@ -25730,37 +25742,26 @@ class Permission(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 权限名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Key: 权限key
-注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
         :param _Type: 权限类型 1前端，2后端
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: int
         :param _Hide: 是否隐藏
-注意：此字段可能返回 null，表示取不到有效值。
         :type Hide: int
         :param _DataLabel: 数据权限标签 1:表示根节点，2:表示叶子结点
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataLabel: int
         :param _DataType: 数据权限独有，1:关联其他模块鉴权，2:表示关联自己模块鉴权
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataType: int
         :param _DataRange: 数据权限独有，表示数据范围，1：全公司，2:部门及下级部门，3:自己
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataRange: int
         :param _DataTo: 关联权限, 表示这个功能权限要受哪个数据权限管控
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataTo: str
         :param _ParentKey: 父级权限key
-注意：此字段可能返回 null，表示取不到有效值。
         :type ParentKey: str
         :param _IsChecked: 是否选中
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsChecked: bool
         :param _Children: 子权限集合
-注意：此字段可能返回 null，表示取不到有效值。
         :type Children: list of Permission
         """
         self._Name = None
@@ -25778,7 +25779,6 @@ class Permission(AbstractModel):
     @property
     def Name(self):
         """权限名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -25790,7 +25790,6 @@ class Permission(AbstractModel):
     @property
     def Key(self):
         """权限key
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Key
@@ -25802,7 +25801,6 @@ class Permission(AbstractModel):
     @property
     def Type(self):
         """权限类型 1前端，2后端
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Type
@@ -25814,7 +25812,6 @@ class Permission(AbstractModel):
     @property
     def Hide(self):
         """是否隐藏
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Hide
@@ -25826,7 +25823,6 @@ class Permission(AbstractModel):
     @property
     def DataLabel(self):
         """数据权限标签 1:表示根节点，2:表示叶子结点
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DataLabel
@@ -25838,7 +25834,6 @@ class Permission(AbstractModel):
     @property
     def DataType(self):
         """数据权限独有，1:关联其他模块鉴权，2:表示关联自己模块鉴权
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DataType
@@ -25850,7 +25845,6 @@ class Permission(AbstractModel):
     @property
     def DataRange(self):
         """数据权限独有，表示数据范围，1：全公司，2:部门及下级部门，3:自己
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DataRange
@@ -25862,7 +25856,6 @@ class Permission(AbstractModel):
     @property
     def DataTo(self):
         """关联权限, 表示这个功能权限要受哪个数据权限管控
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DataTo
@@ -25874,7 +25867,6 @@ class Permission(AbstractModel):
     @property
     def ParentKey(self):
         """父级权限key
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ParentKey
@@ -25886,7 +25878,6 @@ class Permission(AbstractModel):
     @property
     def IsChecked(self):
         """是否选中
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsChecked
@@ -25898,7 +25889,6 @@ class Permission(AbstractModel):
     @property
     def Children(self):
         """子权限集合
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Permission
         """
         return self._Children
@@ -25943,16 +25933,12 @@ class PermissionGroup(AbstractModel):
     def __init__(self):
         r"""
         :param _GroupName: 权限组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupName: str
         :param _GroupKey: 权限组key
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupKey: str
         :param _Hide: 是否隐藏分组，0否1是
-注意：此字段可能返回 null，表示取不到有效值。
         :type Hide: int
         :param _Permissions: 权限集合
-注意：此字段可能返回 null，表示取不到有效值。
         :type Permissions: list of Permission
         """
         self._GroupName = None
@@ -25963,7 +25949,6 @@ class PermissionGroup(AbstractModel):
     @property
     def GroupName(self):
         """权限组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupName
@@ -25975,7 +25960,6 @@ class PermissionGroup(AbstractModel):
     @property
     def GroupKey(self):
         """权限组key
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupKey
@@ -25987,7 +25971,6 @@ class PermissionGroup(AbstractModel):
     @property
     def Hide(self):
         """是否隐藏分组，0否1是
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Hide
@@ -25999,7 +25982,6 @@ class PermissionGroup(AbstractModel):
     @property
     def Permissions(self):
         """权限集合
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Permission
         """
         return self._Permissions
@@ -26548,10 +26530,8 @@ class RecipientComponentInfo(AbstractModel):
 
 <ul><li> **true** : 是发起方角色</li>
 <li> **false** : 不是发起方角色</li></ul>
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsPromoter: bool
         :param _Components: 此角色的填写控件列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Components: list of FilledComponent
         """
         self._RecipientId = None
@@ -26590,7 +26570,6 @@ class RecipientComponentInfo(AbstractModel):
 
 <ul><li> **true** : 是发起方角色</li>
 <li> **false** : 不是发起方角色</li></ul>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsPromoter
@@ -26602,7 +26581,6 @@ class RecipientComponentInfo(AbstractModel):
     @property
     def Components(self):
         """此角色的填写控件列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of FilledComponent
         """
         return self._Components
@@ -27361,13 +27339,10 @@ class ResourceUrlInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Url: 资源链接地址，过期时间5分钟
-注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
         :param _Name: 资源名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Type: 资源类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         """
         self._Url = None
@@ -27377,7 +27352,6 @@ class ResourceUrlInfo(AbstractModel):
     @property
     def Url(self):
         """资源链接地址，过期时间5分钟
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Url
@@ -27389,7 +27363,6 @@ class ResourceUrlInfo(AbstractModel):
     @property
     def Name(self):
         """资源名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -27401,7 +27374,6 @@ class ResourceUrlInfo(AbstractModel):
     @property
     def Type(self):
         """资源类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -27588,48 +27560,35 @@ class SignUrlInfo(AbstractModel):
         :param _SignUrl: 签署链接，过期时间为90天
 
 注：<font color="red">生成的链路后面不能再增加参数</font>（会出现覆盖链接中已有参数导致错误）
-注意：此字段可能返回 null，表示取不到有效值。
         :type SignUrl: str
         :param _Deadline: 合同过期时间戳，单位秒
-注意：此字段可能返回 null，表示取不到有效值。
         :type Deadline: int
         :param _SignOrder: 当流程为顺序签署此参数有效时，数字越小优先级越高，暂不支持并行签署 可选
-注意：此字段可能返回 null，表示取不到有效值。
         :type SignOrder: int
         :param _SignId: 签署人编号
-注意：此字段可能返回 null，表示取不到有效值。
         :type SignId: str
         :param _CustomUserId: 自定义用户编号
 注意：此字段可能返回 null，表示取不到有效值。
         :type CustomUserId: str
         :param _Name: 用户姓名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Mobile: 用户手机号码
-注意：此字段可能返回 null，表示取不到有效值。
         :type Mobile: str
         :param _OrganizationName: 签署参与者机构名字
-注意：此字段可能返回 null，表示取不到有效值。
         :type OrganizationName: str
         :param _ApproverType: 参与者类型, 类型如下:
 **ORGANIZATION**:企业经办人
 **PERSON**: 自然人
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApproverType: str
         :param _IdCardNumber: 经办人身份证号
-注意：此字段可能返回 null，表示取不到有效值。
         :type IdCardNumber: str
         :param _FlowId: 签署链接对应流程Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowId: str
         :param _OpenId: 企业经办人 用户在渠道的编号
-注意：此字段可能返回 null，表示取不到有效值。
         :type OpenId: str
         :param _FlowGroupId: 合同组签署链接对应的合同组id
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowGroupId: str
         :param _SignQrcodeUrl: 二维码，在生成动态签署人跳转封面页链接时返回
-注意：此字段可能返回 null，表示取不到有效值。
         :type SignQrcodeUrl: str
         """
         self._SignUrl = None
@@ -27652,7 +27611,6 @@ class SignUrlInfo(AbstractModel):
         """签署链接，过期时间为90天
 
 注：<font color="red">生成的链路后面不能再增加参数</font>（会出现覆盖链接中已有参数导致错误）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SignUrl
@@ -27664,7 +27622,6 @@ class SignUrlInfo(AbstractModel):
     @property
     def Deadline(self):
         """合同过期时间戳，单位秒
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Deadline
@@ -27676,7 +27633,6 @@ class SignUrlInfo(AbstractModel):
     @property
     def SignOrder(self):
         """当流程为顺序签署此参数有效时，数字越小优先级越高，暂不支持并行签署 可选
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SignOrder
@@ -27688,7 +27644,6 @@ class SignUrlInfo(AbstractModel):
     @property
     def SignId(self):
         """签署人编号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SignId
@@ -27716,7 +27671,6 @@ class SignUrlInfo(AbstractModel):
     @property
     def Name(self):
         """用户姓名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -27728,7 +27682,6 @@ class SignUrlInfo(AbstractModel):
     @property
     def Mobile(self):
         """用户手机号码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Mobile
@@ -27740,7 +27693,6 @@ class SignUrlInfo(AbstractModel):
     @property
     def OrganizationName(self):
         """签署参与者机构名字
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OrganizationName
@@ -27754,7 +27706,6 @@ class SignUrlInfo(AbstractModel):
         """参与者类型, 类型如下:
 **ORGANIZATION**:企业经办人
 **PERSON**: 自然人
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApproverType
@@ -27766,7 +27717,6 @@ class SignUrlInfo(AbstractModel):
     @property
     def IdCardNumber(self):
         """经办人身份证号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IdCardNumber
@@ -27778,7 +27728,6 @@ class SignUrlInfo(AbstractModel):
     @property
     def FlowId(self):
         """签署链接对应流程Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FlowId
@@ -27790,7 +27739,6 @@ class SignUrlInfo(AbstractModel):
     @property
     def OpenId(self):
         """企业经办人 用户在渠道的编号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OpenId
@@ -27802,7 +27750,6 @@ class SignUrlInfo(AbstractModel):
     @property
     def FlowGroupId(self):
         """合同组签署链接对应的合同组id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FlowGroupId
@@ -27814,7 +27761,6 @@ class SignUrlInfo(AbstractModel):
     @property
     def SignQrcodeUrl(self):
         """二维码，在生成动态签署人跳转封面页链接时返回
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SignQrcodeUrl
@@ -27865,16 +27811,12 @@ class Staff(AbstractModel):
 注意：2024-07-08 及之后创建的应用号，该字段返回的是打码信息
         :type Mobile: str
         :param _Email: 员工邮箱
-注意：此字段可能返回 null，表示取不到有效值。
         :type Email: str
         :param _OpenId: 员工在第三方应用平台的用户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type OpenId: str
         :param _Roles: 员工角色
-注意：此字段可能返回 null，表示取不到有效值。
         :type Roles: list of StaffRole
         :param _Department: 员工部门
-注意：此字段可能返回 null，表示取不到有效值。
         :type Department: :class:`tencentcloud.essbasic.v20210526.models.Department`
         :param _Verified: 员工是否实名
         :type Verified: bool
@@ -27935,7 +27877,6 @@ class Staff(AbstractModel):
     @property
     def Email(self):
         """员工邮箱
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Email
@@ -27947,7 +27888,6 @@ class Staff(AbstractModel):
     @property
     def OpenId(self):
         """员工在第三方应用平台的用户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OpenId
@@ -27959,7 +27899,6 @@ class Staff(AbstractModel):
     @property
     def Roles(self):
         """员工角色
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of StaffRole
         """
         return self._Roles
@@ -27971,7 +27910,6 @@ class Staff(AbstractModel):
     @property
     def Department(self):
         """员工部门
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.Department`
         """
         return self._Department
@@ -28062,10 +28000,8 @@ class StaffRole(AbstractModel):
     def __init__(self):
         r"""
         :param _RoleId: 角色id
-注意：此字段可能返回 null，表示取不到有效值。
         :type RoleId: str
         :param _RoleName: 角色名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type RoleName: str
         """
         self._RoleId = None
@@ -28074,7 +28010,6 @@ class StaffRole(AbstractModel):
     @property
     def RoleId(self):
         """角色id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RoleId
@@ -28086,7 +28021,6 @@ class StaffRole(AbstractModel):
     @property
     def RoleName(self):
         """角色名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RoleName
@@ -28119,7 +28053,6 @@ class SyncFailReason(AbstractModel):
         :param _Id: 企业员工标识(即OpenId)
         :type Id: str
         :param _Message: 新增员工或者员工离职失败原因, 可能存证ID不符合规范、证件号码不合法等原因
-注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         """
         self._Id = None
@@ -28139,7 +28072,6 @@ class SyncFailReason(AbstractModel):
     @property
     def Message(self):
         """新增员工或者员工离职失败原因, 可能存证ID不符合规范、证件号码不合法等原因
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Message
@@ -28571,10 +28503,8 @@ class TaskInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _TaskId: 合成任务Id，可以通过 ChannelGetTaskResultApi 接口获取任务信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
         :param _TaskStatus: 任务状态：READY - 任务已完成；NOTREADY - 任务未完成；
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskStatus: str
         """
         self._TaskId = None
@@ -28583,7 +28513,6 @@ class TaskInfo(AbstractModel):
     @property
     def TaskId(self):
         """合成任务Id，可以通过 ChannelGetTaskResultApi 接口获取任务信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskId
@@ -28595,7 +28524,6 @@ class TaskInfo(AbstractModel):
     @property
     def TaskStatus(self):
         """任务状态：READY - 任务已完成；NOTREADY - 任务未完成；
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskStatus
@@ -28668,31 +28596,25 @@ class TemplateInfo(AbstractModel):
 您可以通过浏览器直接打开此链接预览模板，或将其嵌入到 iframe 中进行预览。
 
 注意：只有在请求接口时将 <b>WithPreviewUrl </b>参数设置为 true，才会生成预览链接。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PreviewUrl: str
         :param _PdfUrl: 第三方应用集成-模板PDF文件链接，有效期5分钟。
 请求参数WithPdfUrl=true时返回
 （此功能开放需要联系客户经理）。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PdfUrl: str
         :param _ChannelTemplateId: 本模板关联的第三方应用平台企业模板ID
         :type ChannelTemplateId: str
         :param _ChannelTemplateName: 本模板关联的三方应用平台平台企业模板名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChannelTemplateName: str
         :param _ChannelAutoSave: 0-需要子客企业手动领取平台企业的模板(默认); 
 1-平台自动设置子客模板
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChannelAutoSave: int
         :param _TemplateVersion: 模板版本，由全数字字符组成。
 默认为空，模板版本号由日期和序号组成，初始版本为yyyyMMdd001，yyyyMMdd002表示第二个版本，以此类推。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateVersion: str
         :param _Available: 模板可用状态的取值通常为以下两种：
 
 <ul><li>1：启用（默认），表示模板处于启用状态，可以被用户正常使用。</li>
 <li>2：停用，表示模板处于停用状态，禁止用户使用该模板。</li></ul>
-注意：此字段可能返回 null，表示取不到有效值。
         :type Available: int
         """
         self._TemplateId = None
@@ -28844,7 +28766,6 @@ class TemplateInfo(AbstractModel):
 您可以通过浏览器直接打开此链接预览模板，或将其嵌入到 iframe 中进行预览。
 
 注意：只有在请求接口时将 <b>WithPreviewUrl </b>参数设置为 true，才会生成预览链接。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PreviewUrl
@@ -28858,7 +28779,6 @@ class TemplateInfo(AbstractModel):
         """第三方应用集成-模板PDF文件链接，有效期5分钟。
 请求参数WithPdfUrl=true时返回
 （此功能开放需要联系客户经理）。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PdfUrl
@@ -28881,7 +28801,6 @@ class TemplateInfo(AbstractModel):
     @property
     def ChannelTemplateName(self):
         """本模板关联的三方应用平台平台企业模板名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ChannelTemplateName
@@ -28894,7 +28813,6 @@ class TemplateInfo(AbstractModel):
     def ChannelAutoSave(self):
         """0-需要子客企业手动领取平台企业的模板(默认); 
 1-平台自动设置子客模板
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ChannelAutoSave
@@ -28907,7 +28825,6 @@ class TemplateInfo(AbstractModel):
     def TemplateVersion(self):
         """模板版本，由全数字字符组成。
 默认为空，模板版本号由日期和序号组成，初始版本为yyyyMMdd001，yyyyMMdd002表示第二个版本，以此类推。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TemplateVersion
@@ -28922,7 +28839,6 @@ class TemplateInfo(AbstractModel):
 
 <ul><li>1：启用（默认），表示模板处于启用状态，可以被用户正常使用。</li>
 <li>2：停用，表示模板处于停用状态，禁止用户使用该模板。</li></ul>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Available
@@ -29239,18 +29155,14 @@ class UsageDetail(AbstractModel):
         :param _ProxyOrganizationOpenId: 子客企业标识
         :type ProxyOrganizationOpenId: str
         :param _ProxyOrganizationName: 子客企业名
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyOrganizationName: str
         :param _Date: 对应的消耗日期, **如果是汇总数据则为1970-01-01**
-注意：此字段可能返回 null，表示取不到有效值。
         :type Date: str
         :param _Usage: 消耗合同数量
         :type Usage: int
         :param _Cancel: 撤回合同数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Cancel: int
         :param _FlowChannel: 消耗渠道
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowChannel: str
         """
         self._ProxyOrganizationOpenId = None
@@ -29274,7 +29186,6 @@ class UsageDetail(AbstractModel):
     @property
     def ProxyOrganizationName(self):
         """子客企业名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProxyOrganizationName
@@ -29286,7 +29197,6 @@ class UsageDetail(AbstractModel):
     @property
     def Date(self):
         """对应的消耗日期, **如果是汇总数据则为1970-01-01**
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Date
@@ -29309,7 +29219,6 @@ class UsageDetail(AbstractModel):
     @property
     def Cancel(self):
         """撤回合同数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Cancel
@@ -29321,7 +29230,6 @@ class UsageDetail(AbstractModel):
     @property
     def FlowChannel(self):
         """消耗渠道
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FlowChannel

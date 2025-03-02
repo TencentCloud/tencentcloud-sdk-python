@@ -205,20 +205,13 @@ class DataAuthorizationInfo(AbstractModel):
         r"""
         :param _DataProviderName: 数据委托方、需求方：客户主体名称。
         :type DataProviderName: str
-        :param _DataRecipientName: 数据受托方、提供方：腾讯云主体名称。
-
-固定填：腾讯云计算（北京）有限责任公司
+        :param _DataRecipientName: 数据受托方、提供方：腾讯云主体名称。固定填：腾讯云计算（北京）有限责任公司
         :type DataRecipientName: str
         :param _UserDataType: 客户请求RCE所提供的用户数据类型，支持多选。实际以接口请求传参为准。
-
 1-手机号；
-
 2-微信开放账号；
-
 3-QQ开放账号；
-
 4-IP地址；
-
 999-其它；
         :type UserDataType: list of int non-negative
         :param _IsAuthorize: 客户是否已按[合规指南](https://rule.tencent.com/rule/202409130001)要求获取用户授权，同意客户委托腾讯云处理入参信息
@@ -227,16 +220,11 @@ class DataAuthorizationInfo(AbstractModel):
         :param _IsOrderHandling: 客户是否已按[合规指南](https://rule.tencent.com/rule/202409130001)要求获取用户授权，同意腾讯云结合客户提供的信息，对已合法收集的用户数据进行必要处理得出服务结果，并返回给客户。
 1-已授权；其它值为未授权。
         :type IsOrderHandling: int
-        :param _AuthorizationTerm: 客户获得的用户授权期限时间戳（单位秒）。
-
-不填默认无固定期限。
+        :param _AuthorizationTerm: 客户获得的用户授权期限时间戳（单位秒）。不填默认无固定期限。
         :type AuthorizationTerm: int
-        :param _PrivacyPolicyLink: 	
-客户获得用户授权所依赖的协议地址。
+        :param _PrivacyPolicyLink: 客户获得用户授权所依赖的协议地址。
         :type PrivacyPolicyLink: str
-        :param _IsPersonalData: 是否是用户个人敏感数据（不推荐使用）。
-
-固定填：1。
+        :param _IsPersonalData: 是否是用户个人敏感数据（不推荐使用）。固定填：1。
         :type IsPersonalData: int
         """
         self._DataProviderName = None
@@ -261,9 +249,7 @@ class DataAuthorizationInfo(AbstractModel):
 
     @property
     def DataRecipientName(self):
-        """数据受托方、提供方：腾讯云主体名称。
-
-固定填：腾讯云计算（北京）有限责任公司
+        """数据受托方、提供方：腾讯云主体名称。固定填：腾讯云计算（北京）有限责任公司
         :rtype: str
         """
         return self._DataRecipientName
@@ -275,15 +261,10 @@ class DataAuthorizationInfo(AbstractModel):
     @property
     def UserDataType(self):
         """客户请求RCE所提供的用户数据类型，支持多选。实际以接口请求传参为准。
-
 1-手机号；
-
 2-微信开放账号；
-
 3-QQ开放账号；
-
 4-IP地址；
-
 999-其它；
         :rtype: list of int non-negative
         """
@@ -319,9 +300,7 @@ class DataAuthorizationInfo(AbstractModel):
 
     @property
     def AuthorizationTerm(self):
-        """客户获得的用户授权期限时间戳（单位秒）。
-
-不填默认无固定期限。
+        """客户获得的用户授权期限时间戳（单位秒）。不填默认无固定期限。
         :rtype: int
         """
         return self._AuthorizationTerm
@@ -332,8 +311,7 @@ class DataAuthorizationInfo(AbstractModel):
 
     @property
     def PrivacyPolicyLink(self):
-        """	
-客户获得用户授权所依赖的协议地址。
+        """客户获得用户授权所依赖的协议地址。
         :rtype: str
         """
         return self._PrivacyPolicyLink
@@ -344,9 +322,7 @@ class DataAuthorizationInfo(AbstractModel):
 
     @property
     def IsPersonalData(self):
-        """是否是用户个人敏感数据（不推荐使用）。
-
-固定填：1。
+        """是否是用户个人敏感数据（不推荐使用）。固定填：1。
         :rtype: int
         """
         return self._IsPersonalData
@@ -1124,12 +1100,9 @@ class InputCryptoManageMarketingRisk(AbstractModel):
     def __init__(self):
         r"""
         :param _IsAuthorized: 是否授权：1已授权，否则未授权。
- 调用全栈式风控引擎接口服务时，客户需先明确授权
-
-
+ 调用全栈式风控引擎接口服务时，客户需先明确授权。
         :type IsAuthorized: str
         :param _CryptoType: 加密类型：1AES加密
-
         :type CryptoType: str
         :param _CryptoContent: 加密内容，非空时接口采用加密模式。
         :type CryptoContent: str
@@ -1141,9 +1114,7 @@ class InputCryptoManageMarketingRisk(AbstractModel):
     @property
     def IsAuthorized(self):
         """是否授权：1已授权，否则未授权。
- 调用全栈式风控引擎接口服务时，客户需先明确授权
-
-
+ 调用全栈式风控引擎接口服务时，客户需先明确授权。
         :rtype: str
         """
         return self._IsAuthorized
@@ -1155,7 +1126,6 @@ class InputCryptoManageMarketingRisk(AbstractModel):
     @property
     def CryptoType(self):
         """加密类型：1AES加密
-
         :rtype: str
         """
         return self._CryptoType
@@ -1690,7 +1660,6 @@ class InputManageMarketingRisk(AbstractModel):
 2：iOS
 3：H5
 4：小程序
-
         :type Platform: str
         :param _DataAuthorization: 数据授权信息。
         :type DataAuthorization: :class:`tencentcloud.rce.v20201103.models.DataAuthorizationInfo`
@@ -1966,7 +1935,6 @@ class InputManageMarketingRisk(AbstractModel):
 2：iOS
 3：H5
 4：小程序
-
         :rtype: str
         """
         return self._Platform
@@ -3671,12 +3639,11 @@ class OutputDescribeNameListFrontFixListData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Code: 错误码，0 表示成功，非0表示失败错误码。 0：成功 1002：参数错误 4300：未开通服务 6000：系统内部错误
-
+        :param _Code: 错误码，0 表示成功，非0表示失败错误码。 0：成功 1002：参数错误 4300：未开通服务 6000：系统内部错误。
         :type Code: int
-        :param _Message: 错误信息
+        :param _Message: 错误信息。
         :type Message: str
-        :param _Value: 黑白名单列表信息
+        :param _Value: 黑白名单列表信息。
         :type Value: :class:`tencentcloud.rce.v20201103.models.OutputDescribeNameListInfo`
         """
         self._Code = None
@@ -3685,8 +3652,7 @@ class OutputDescribeNameListFrontFixListData(AbstractModel):
 
     @property
     def Code(self):
-        """错误码，0 表示成功，非0表示失败错误码。 0：成功 1002：参数错误 4300：未开通服务 6000：系统内部错误
-
+        """错误码，0 表示成功，非0表示失败错误码。 0：成功 1002：参数错误 4300：未开通服务 6000：系统内部错误。
         :rtype: int
         """
         return self._Code
@@ -3697,7 +3663,7 @@ class OutputDescribeNameListFrontFixListData(AbstractModel):
 
     @property
     def Message(self):
-        """错误信息
+        """错误信息。
         :rtype: str
         """
         return self._Message
@@ -3708,7 +3674,7 @@ class OutputDescribeNameListFrontFixListData(AbstractModel):
 
     @property
     def Value(self):
-        """黑白名单列表信息
+        """黑白名单列表信息。
         :rtype: :class:`tencentcloud.rce.v20201103.models.OutputDescribeNameListInfo`
         """
         return self._Value
@@ -4496,7 +4462,6 @@ class QQAccountInfo(AbstractModel):
      支持标准中国大陆11位手机号SHA256加密后位的64位小写字符串。
         :type MobilePhone: str
         :param _DeviceId: 用户设备号（已不推荐使用）。
-
         :type DeviceId: str
         """
         self._QQOpenId = None
@@ -4554,7 +4519,6 @@ class QQAccountInfo(AbstractModel):
     @property
     def DeviceId(self):
         """用户设备号（已不推荐使用）。
-
         :rtype: str
         """
         return self._DeviceId

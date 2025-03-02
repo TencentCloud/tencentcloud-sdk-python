@@ -3924,7 +3924,7 @@ class DescribeBlueprintsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BlueprintIds: 镜像 ID 列表。
+        :param _BlueprintIds: 镜像 ID 列表。可通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回值字段BlueprintSet获取。列表长度最大值为100。
         :type BlueprintIds: list of str
         :param _Offset: 偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
         :type Offset: int
@@ -3962,7 +3962,7 @@ class DescribeBlueprintsRequest(AbstractModel):
 
     @property
     def BlueprintIds(self):
-        """镜像 ID 列表。
+        """镜像 ID 列表。可通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回值字段BlueprintSet获取。列表长度最大值为100。
         :rtype: list of str
         """
         return self._BlueprintIds
@@ -4550,7 +4550,7 @@ class DescribeDiskBackupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskBackupIds: 查询的云硬盘备份点ID列表。最大支持 100 个。参数不支持同时指定 DiskBackupIds 和 Filters。
+        :param _DiskBackupIds: 查询的云硬盘备份点ID列表。可通过[DescribeDiskBackups](https://cloud.tencent.com/document/product/1207/84379)接口返回值字段DiskBackupSet获取。列表长度最大值为100。参数不支持同时指定 DiskBackupIds 和 Filters。
         :type DiskBackupIds: list of str
         :param _Filters: 过滤器列表。
 <li>disk-backup-id</li>按照【云硬盘备份点 ID】进行过滤。
@@ -4582,7 +4582,7 @@ class DescribeDiskBackupsRequest(AbstractModel):
 
     @property
     def DiskBackupIds(self):
-        """查询的云硬盘备份点ID列表。最大支持 100 个。参数不支持同时指定 DiskBackupIds 和 Filters。
+        """查询的云硬盘备份点ID列表。可通过[DescribeDiskBackups](https://cloud.tencent.com/document/product/1207/84379)接口返回值字段DiskBackupSet获取。列表长度最大值为100。参数不支持同时指定 DiskBackupIds 和 Filters。
         :rtype: list of str
         """
         return self._DiskBackupIds
@@ -5039,7 +5039,7 @@ class DescribeDisksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskIds: 云硬盘ID列表。每次批量请求云硬盘的上限为 100。
+        :param _DiskIds: 云硬盘ID列表。可通过[DescribeDisks](https://cloud.tencent.com/document/product/1207/66093)接口返回值字段KeyPairSet获取。列表长度最大值为100。
         :type DiskIds: list of str
         :param _Filters: 过滤器列表。
 disk-id
@@ -5088,7 +5088,7 @@ disk-state
 
     @property
     def DiskIds(self):
-        """云硬盘ID列表。每次批量请求云硬盘的上限为 100。
+        """云硬盘ID列表。可通过[DescribeDisks](https://cloud.tencent.com/document/product/1207/66093)接口返回值字段KeyPairSet获取。列表长度最大值为100。
         :rtype: list of str
         """
         return self._DiskIds
@@ -6413,9 +6413,9 @@ class DescribeFirewallTemplateRulesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: 防火墙模板ID。
+        :param _TemplateId: 防火墙模板ID列表。可通过[DescribeFirewallTemplates](https://cloud.tencent.com/document/product/1207/96874)接口返回值字段TemplateSet获取。列表长度最大值为100。
         :type TemplateId: str
-        :param _TemplateRuleIds: 防火墙模板规则ID列表。
+        :param _TemplateRuleIds: 防火墙模板规则ID列表。可通过[DescribeFirewallTemplateRules](https://cloud.tencent.com/document/product/1207/96875)接口返回值字段TemplateRuleSet获取。列表长度最大值为100。
         :type TemplateRuleIds: list of str
         :param _Offset: 偏移量，默认为 0。
         :type Offset: int
@@ -6429,7 +6429,7 @@ class DescribeFirewallTemplateRulesRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """防火墙模板ID。
+        """防火墙模板ID列表。可通过[DescribeFirewallTemplates](https://cloud.tencent.com/document/product/1207/96874)接口返回值字段TemplateSet获取。列表长度最大值为100。
         :rtype: str
         """
         return self._TemplateId
@@ -6440,7 +6440,7 @@ class DescribeFirewallTemplateRulesRequest(AbstractModel):
 
     @property
     def TemplateRuleIds(self):
-        """防火墙模板规则ID列表。
+        """防火墙模板规则ID列表。可通过[DescribeFirewallTemplateRules](https://cloud.tencent.com/document/product/1207/96875)接口返回值字段TemplateRuleSet获取。列表长度最大值为100。
         :rtype: list of str
         """
         return self._TemplateRuleIds
@@ -7676,7 +7676,7 @@ class DescribeKeyPairsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _KeyIds: 密钥对 ID 列表，每次请求批量密钥对的上限为 100。
+        :param _KeyIds: 密钥对 ID 列表。可通过[DescribeKeyPairs](https://cloud.tencent.com/document/product/1207/55540)接口返回值字段KeyPairSet获取。列表长度最大值为100。
         :type KeyIds: list of str
         :param _Offset: 偏移量，默认为 0。
         :type Offset: int
@@ -7699,7 +7699,7 @@ class DescribeKeyPairsRequest(AbstractModel):
 
     @property
     def KeyIds(self):
-        """密钥对 ID 列表，每次请求批量密钥对的上限为 100。
+        """密钥对 ID 列表。可通过[DescribeKeyPairs](https://cloud.tencent.com/document/product/1207/55540)接口返回值字段KeyPairSet获取。列表长度最大值为100。
         :rtype: list of str
         """
         return self._KeyIds

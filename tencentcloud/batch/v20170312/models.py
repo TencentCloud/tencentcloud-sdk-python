@@ -1880,10 +1880,8 @@ class DataDisk(AbstractModel):
   默认取值：true<br />
   该参数目前仅用于 `RunInstances` 接口。
 </li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeleteWithInstance: bool
         :param _SnapshotId: 数据盘快照ID。选择的数据盘快照大小需小于数据盘大小。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotId: str
         :param _Encrypt: 数据盘是加密。取值范围：
 <li>true：加密</li>
@@ -1892,23 +1890,18 @@ class DataDisk(AbstractModel):
   默认取值：false<br />
   该参数目前仅用于 `RunInstances` 接口。
 </li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type Encrypt: bool
         :param _KmsKeyId: 自定义CMK对应的ID，取值为UUID或者类似kms-abcd1234。用于加密云盘。
 
 该参数目前仅用于 `RunInstances` 接口。
-注意：此字段可能返回 null，表示取不到有效值。
         :type KmsKeyId: str
         :param _ThroughputPerformance: 云硬盘性能，单位：MB/s
-注意：此字段可能返回 null，表示取不到有效值。
         :type ThroughputPerformance: int
         :param _CdcId: 所属的独享集群ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CdcId: str
         :param _BurstPerformance: 突发性能
 
  <b>注：内测中。</b>
-注意：此字段可能返回 null，表示取不到有效值。
         :type BurstPerformance: bool
         :param _DiskName: 磁盘名称，长度不超过128 个字符。
 
@@ -1970,7 +1963,6 @@ class DataDisk(AbstractModel):
   默认取值：true<br />
   该参数目前仅用于 `RunInstances` 接口。
 </li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._DeleteWithInstance
@@ -1982,7 +1974,6 @@ class DataDisk(AbstractModel):
     @property
     def SnapshotId(self):
         """数据盘快照ID。选择的数据盘快照大小需小于数据盘大小。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SnapshotId
@@ -2000,7 +1991,6 @@ class DataDisk(AbstractModel):
   默认取值：false<br />
   该参数目前仅用于 `RunInstances` 接口。
 </li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Encrypt
@@ -2014,7 +2004,6 @@ class DataDisk(AbstractModel):
         """自定义CMK对应的ID，取值为UUID或者类似kms-abcd1234。用于加密云盘。
 
 该参数目前仅用于 `RunInstances` 接口。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._KmsKeyId
@@ -2026,7 +2015,6 @@ class DataDisk(AbstractModel):
     @property
     def ThroughputPerformance(self):
         """云硬盘性能，单位：MB/s
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ThroughputPerformance
@@ -2038,7 +2026,6 @@ class DataDisk(AbstractModel):
     @property
     def CdcId(self):
         """所属的独享集群ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CdcId
@@ -2052,7 +2039,6 @@ class DataDisk(AbstractModel):
         """突发性能
 
  <b>注：内测中。</b>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._BurstPerformance
@@ -6286,10 +6272,8 @@ class InstanceMarketOptionsRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _SpotOptions: 竞价相关选项
-注意：此字段可能返回 null，表示取不到有效值。
         :type SpotOptions: :class:`tencentcloud.batch.v20170312.models.SpotMarketOptions`
         :param _MarketType: 市场选项类型，当前只支持取值：spot
-注意：此字段可能返回 null，表示取不到有效值。
         :type MarketType: str
         """
         self._SpotOptions = None
@@ -6298,7 +6282,6 @@ class InstanceMarketOptionsRequest(AbstractModel):
     @property
     def SpotOptions(self):
         """竞价相关选项
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.batch.v20170312.models.SpotMarketOptions`
         """
         return self._SpotOptions
@@ -6310,7 +6293,6 @@ class InstanceMarketOptionsRequest(AbstractModel):
     @property
     def MarketType(self):
         """市场选项类型，当前只支持取值：spot
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MarketType
@@ -9331,16 +9313,14 @@ class RunMonitorServiceEnabled(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Enabled: 是否开启[云监控](/document/product/248)服务。取值范围：<br><li>true：表示开启云监控服务<br><li>false：表示不开启云监控服务<br><br>默认取值：true。
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _Enabled: 是否开启[云监控](/document/product/248)服务。取值范围：<br><li>true：表示开启云监控服务</li><li>false：表示不开启云监控服务</li><br>默认取值：true。
         :type Enabled: bool
         """
         self._Enabled = None
 
     @property
     def Enabled(self):
-        """是否开启[云监控](/document/product/248)服务。取值范围：<br><li>true：表示开启云监控服务<br><li>false：表示不开启云监控服务<br><br>默认取值：true。
-注意：此字段可能返回 null，表示取不到有效值。
+        """是否开启[云监控](/document/product/248)服务。取值范围：<br><li>true：表示开启云监控服务</li><li>false：表示不开启云监控服务</li><br>默认取值：true。
         :rtype: bool
         """
         return self._Enabled
@@ -9406,10 +9386,8 @@ class SpotMarketOptions(AbstractModel):
     def __init__(self):
         r"""
         :param _MaxPrice: 竞价出价
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxPrice: str
         :param _SpotInstanceType: 竞价请求类型，当前仅支持类型：one-time
-注意：此字段可能返回 null，表示取不到有效值。
         :type SpotInstanceType: str
         """
         self._MaxPrice = None
@@ -9418,7 +9396,6 @@ class SpotMarketOptions(AbstractModel):
     @property
     def MaxPrice(self):
         """竞价出价
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MaxPrice
@@ -9430,7 +9407,6 @@ class SpotMarketOptions(AbstractModel):
     @property
     def SpotInstanceType(self):
         """竞价请求类型，当前仅支持类型：one-time
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SpotInstanceType

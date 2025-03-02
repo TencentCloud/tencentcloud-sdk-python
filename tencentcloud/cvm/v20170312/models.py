@@ -200,13 +200,10 @@ class ActionTimer(AbstractModel):
     def __init__(self):
         r"""
         :param _TimerAction: 定时器动作，目前仅支持销毁一个值：TerminateInstances。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimerAction: str
         :param _ActionTime: 执行时间，按照ISO8601标准表示，并且使用UTC时间。格式为 YYYY-MM-DDThh:mm:ssZ。例如 2018-05-29T11:26:40Z，执行时间必须大于当前时间5分钟。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActionTime: str
         :param _Externals: 扩展数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type Externals: :class:`tencentcloud.cvm.v20170312.models.Externals`
         :param _ActionTimerId: 定时器ID。
         :type ActionTimerId: str
@@ -230,7 +227,6 @@ DONE：已经触发
     @property
     def TimerAction(self):
         """定时器动作，目前仅支持销毁一个值：TerminateInstances。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TimerAction
@@ -242,7 +238,6 @@ DONE：已经触发
     @property
     def ActionTime(self):
         """执行时间，按照ISO8601标准表示，并且使用UTC时间。格式为 YYYY-MM-DDThh:mm:ssZ。例如 2018-05-29T11:26:40Z，执行时间必须大于当前时间5分钟。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ActionTime
@@ -254,7 +249,6 @@ DONE：已经触发
     @property
     def Externals(self):
         """扩展数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cvm.v20170312.models.Externals`
         """
         return self._Externals
@@ -2777,6 +2771,8 @@ false（默认）：发送正常请求，通过检查后直接创建实例。
         :type InstanceChargePrepaid: :class:`tencentcloud.cvm.v20170312.models.InstanceChargePrepaid`
         :param _DisableApiTermination: 实例销毁保护标志，表示是否允许通过api接口删除实例。取值范围：<br><li>TRUE：表示开启实例保护，不允许通过api接口删除实例</li><li>FALSE：表示关闭实例保护，允许通过api接口删除实例<br></li>默认取值：FALSE。
         :type DisableApiTermination: bool
+        :param _LaunchTemplateTagSpecification: 标签描述列表。通过指定该参数可以绑定标签到实例启动模板。
+        :type LaunchTemplateTagSpecification: list of TagSpecification
         """
         self._LaunchTemplateName = None
         self._Placement = None
@@ -2805,6 +2801,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例。
         self._InstanceChargeType = None
         self._InstanceChargePrepaid = None
         self._DisableApiTermination = None
+        self._LaunchTemplateTagSpecification = None
 
     @property
     def LaunchTemplateName(self):
@@ -3108,6 +3105,17 @@ false（默认）：发送正常请求，通过检查后直接创建实例。
     def DisableApiTermination(self, DisableApiTermination):
         self._DisableApiTermination = DisableApiTermination
 
+    @property
+    def LaunchTemplateTagSpecification(self):
+        """标签描述列表。通过指定该参数可以绑定标签到实例启动模板。
+        :rtype: list of TagSpecification
+        """
+        return self._LaunchTemplateTagSpecification
+
+    @LaunchTemplateTagSpecification.setter
+    def LaunchTemplateTagSpecification(self, LaunchTemplateTagSpecification):
+        self._LaunchTemplateTagSpecification = LaunchTemplateTagSpecification
+
 
     def _deserialize(self, params):
         self._LaunchTemplateName = params.get("LaunchTemplateName")
@@ -3165,6 +3173,12 @@ false（默认）：发送正常请求，通过检查后直接创建实例。
             self._InstanceChargePrepaid = InstanceChargePrepaid()
             self._InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
         self._DisableApiTermination = params.get("DisableApiTermination")
+        if params.get("LaunchTemplateTagSpecification") is not None:
+            self._LaunchTemplateTagSpecification = []
+            for item in params.get("LaunchTemplateTagSpecification"):
+                obj = TagSpecification()
+                obj._deserialize(item)
+                self._LaunchTemplateTagSpecification.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3761,10 +3775,8 @@ class DataDisk(AbstractModel):
   默认取值：true<br />
   该参数目前仅用于 `RunInstances` 接口。
 </li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeleteWithInstance: bool
         :param _SnapshotId: 数据盘快照ID。选择的数据盘快照大小需小于数据盘大小。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotId: str
         :param _Encrypt: 数据盘是加密。取值范围：
 <li>true：加密</li>
@@ -3773,23 +3785,18 @@ class DataDisk(AbstractModel):
   默认取值：false<br />
   该参数目前仅用于 `RunInstances` 接口。
 </li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type Encrypt: bool
         :param _KmsKeyId: 自定义CMK对应的ID，取值为UUID或者类似kms-abcd1234。用于加密云盘。
 
 该参数目前仅用于 `RunInstances` 接口。
-注意：此字段可能返回 null，表示取不到有效值。
         :type KmsKeyId: str
         :param _ThroughputPerformance: 云硬盘性能，单位：MB/s
-注意：此字段可能返回 null，表示取不到有效值。
         :type ThroughputPerformance: int
         :param _CdcId: 所属的独享集群ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CdcId: str
         :param _BurstPerformance: 突发性能
 
  <b>注：内测中。</b>
-注意：此字段可能返回 null，表示取不到有效值。
         :type BurstPerformance: bool
         :param _DiskName: 磁盘名称，长度不超过128 个字符。
 
@@ -3851,7 +3858,6 @@ class DataDisk(AbstractModel):
   默认取值：true<br />
   该参数目前仅用于 `RunInstances` 接口。
 </li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._DeleteWithInstance
@@ -3863,7 +3869,6 @@ class DataDisk(AbstractModel):
     @property
     def SnapshotId(self):
         """数据盘快照ID。选择的数据盘快照大小需小于数据盘大小。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SnapshotId
@@ -3881,7 +3886,6 @@ class DataDisk(AbstractModel):
   默认取值：false<br />
   该参数目前仅用于 `RunInstances` 接口。
 </li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Encrypt
@@ -3895,7 +3899,6 @@ class DataDisk(AbstractModel):
         """自定义CMK对应的ID，取值为UUID或者类似kms-abcd1234。用于加密云盘。
 
 该参数目前仅用于 `RunInstances` 接口。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._KmsKeyId
@@ -3907,7 +3910,6 @@ class DataDisk(AbstractModel):
     @property
     def ThroughputPerformance(self):
         """云硬盘性能，单位：MB/s
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ThroughputPerformance
@@ -3919,7 +3921,6 @@ class DataDisk(AbstractModel):
     @property
     def CdcId(self):
         """所属的独享集群ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CdcId
@@ -3933,7 +3934,6 @@ class DataDisk(AbstractModel):
         """突发性能
 
  <b>注：内测中。</b>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._BurstPerformance
@@ -12943,10 +12943,8 @@ class InstanceMarketOptionsRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _SpotOptions: 竞价相关选项
-注意：此字段可能返回 null，表示取不到有效值。
         :type SpotOptions: :class:`tencentcloud.cvm.v20170312.models.SpotMarketOptions`
         :param _MarketType: 市场选项类型，当前只支持取值：spot
-注意：此字段可能返回 null，表示取不到有效值。
         :type MarketType: str
         """
         self._SpotOptions = None
@@ -12955,7 +12953,6 @@ class InstanceMarketOptionsRequest(AbstractModel):
     @property
     def SpotOptions(self):
         """竞价相关选项
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cvm.v20170312.models.SpotMarketOptions`
         """
         return self._SpotOptions
@@ -12967,7 +12964,6 @@ class InstanceMarketOptionsRequest(AbstractModel):
     @property
     def MarketType(self):
         """市场选项类型，当前只支持取值：spot
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MarketType
@@ -15299,7 +15295,6 @@ class LoginSettings(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type KeyIds: list of str
         :param _KeepImageLogin: 保持镜像的原始设置。该参数与Password或KeyIds.N不能同时指定。只有使用自定义镜像、共享镜像或外部导入镜像创建实例时才能指定该参数为true。取值范围：<li>true：表示保持镜像的登录设置</li><li>false：表示不保持镜像的登录设置</li>默认取值：false。
-注意：此字段可能返回 null，表示取不到有效值。
         :type KeepImageLogin: str
         """
         self._Password = None
@@ -15332,7 +15327,6 @@ class LoginSettings(AbstractModel):
     @property
     def KeepImageLogin(self):
         """保持镜像的原始设置。该参数与Password或KeyIds.N不能同时指定。只有使用自定义镜像、共享镜像或外部导入镜像创建实例时才能指定该参数为true。取值范围：<li>true：表示保持镜像的登录设置</li><li>false：表示不保持镜像的登录设置</li>默认取值：false。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._KeepImageLogin
@@ -19839,16 +19833,14 @@ class RunMonitorServiceEnabled(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Enabled: 是否开启[云监控](/document/product/248)服务。取值范围：<br><li>true：表示开启云监控服务<br><li>false：表示不开启云监控服务<br><br>默认取值：true。
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _Enabled: 是否开启[云监控](/document/product/248)服务。取值范围：<br><li>true：表示开启云监控服务</li><li>false：表示不开启云监控服务</li><br>默认取值：true。
         :type Enabled: bool
         """
         self._Enabled = None
 
     @property
     def Enabled(self):
-        """是否开启[云监控](/document/product/248)服务。取值范围：<br><li>true：表示开启云监控服务<br><li>false：表示不开启云监控服务<br><br>默认取值：true。
-注意：此字段可能返回 null，表示取不到有效值。
+        """是否开启[云监控](/document/product/248)服务。取值范围：<br><li>true：表示开启云监控服务</li><li>false：表示不开启云监控服务</li><br>默认取值：true。
         :rtype: bool
         """
         return self._Enabled
@@ -20035,10 +20027,8 @@ class SpotMarketOptions(AbstractModel):
     def __init__(self):
         r"""
         :param _MaxPrice: 竞价出价
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxPrice: str
         :param _SpotInstanceType: 竞价请求类型，当前仅支持类型：one-time
-注意：此字段可能返回 null，表示取不到有效值。
         :type SpotInstanceType: str
         """
         self._MaxPrice = None
@@ -20047,7 +20037,6 @@ class SpotMarketOptions(AbstractModel):
     @property
     def MaxPrice(self):
         """竞价出价
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MaxPrice
@@ -20059,7 +20048,6 @@ class SpotMarketOptions(AbstractModel):
     @property
     def SpotInstanceType(self):
         """竞价请求类型，当前仅支持类型：one-time
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SpotInstanceType
@@ -20822,10 +20810,8 @@ class TagSpecification(AbstractModel):
     def __init__(self):
         r"""
         :param _ResourceType: 标签绑定的资源类型，云服务器为“instance”，专用宿主机为“host”，镜像为“image”，密钥为“keypair”
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceType: str
         :param _Tags: 标签对列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
         """
         self._ResourceType = None
@@ -20834,7 +20820,6 @@ class TagSpecification(AbstractModel):
     @property
     def ResourceType(self):
         """标签绑定的资源类型，云服务器为“instance”，专用宿主机为“host”，镜像为“image”，密钥为“keypair”
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceType
@@ -20846,7 +20831,6 @@ class TagSpecification(AbstractModel):
     @property
     def Tags(self):
         """标签对列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._Tags

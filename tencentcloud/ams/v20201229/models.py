@@ -2192,6 +2192,92 @@ class DescribeTasksResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class HitInfo(AbstractModel):
+    """关键词命中位置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 标识模型命中还是关键词命中
+        :type Type: str
+        :param _Keyword: 命中关键词
+        :type Keyword: str
+        :param _LibName: 自定义词库名称
+        :type LibName: str
+        :param _Positions: 	位置信息
+        :type Positions: list of Position
+        """
+        self._Type = None
+        self._Keyword = None
+        self._LibName = None
+        self._Positions = None
+
+    @property
+    def Type(self):
+        """标识模型命中还是关键词命中
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Keyword(self):
+        """命中关键词
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def LibName(self):
+        """自定义词库名称
+        :rtype: str
+        """
+        return self._LibName
+
+    @LibName.setter
+    def LibName(self, LibName):
+        self._LibName = LibName
+
+    @property
+    def Positions(self):
+        """	位置信息
+        :rtype: list of Position
+        """
+        return self._Positions
+
+    @Positions.setter
+    def Positions(self, Positions):
+        self._Positions = Positions
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Keyword = params.get("Keyword")
+        self._LibName = params.get("LibName")
+        if params.get("Positions") is not None:
+            self._Positions = []
+            for item in params.get("Positions"):
+                obj = Position()
+                obj._deserialize(item)
+                self._Positions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InputInfo(AbstractModel):
     """输入信息详情
 
@@ -2613,6 +2699,57 @@ class MoanResult(AbstractModel):
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
         self._SubLabel = params.get("SubLabel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Position(AbstractModel):
+    """标识命中的违规关键词位置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Start: 关键词起始位置
+        :type Start: int
+        :param _End: 关键词结束位置
+        :type End: int
+        """
+        self._Start = None
+        self._End = None
+
+    @property
+    def Start(self):
+        """关键词起始位置
+        :rtype: int
+        """
+        return self._Start
+
+    @Start.setter
+    def Start(self, Start):
+        self._Start = Start
+
+    @property
+    def End(self):
+        """关键词结束位置
+        :rtype: int
+        """
+        return self._End
+
+    @End.setter
+    def End(self, End):
+        self._End = End
+
+
+    def _deserialize(self, params):
+        self._Start = params.get("Start")
+        self._End = params.get("End")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3530,6 +3667,8 @@ class TextResult(AbstractModel):
 注意：此字段可能返回null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubLabel: str
+        :param _HitInfos: 该字段用于返回违规文本命中信息
+        :type HitInfos: list of HitInfo
         """
         self._Label = None
         self._Keywords = None
@@ -3539,6 +3678,7 @@ class TextResult(AbstractModel):
         self._Suggestion = None
         self._LibType = None
         self._SubLabel = None
+        self._HitInfos = None
 
     @property
     def Label(self):
@@ -3645,6 +3785,17 @@ class TextResult(AbstractModel):
     def SubLabel(self, SubLabel):
         self._SubLabel = SubLabel
 
+    @property
+    def HitInfos(self):
+        """该字段用于返回违规文本命中信息
+        :rtype: list of HitInfo
+        """
+        return self._HitInfos
+
+    @HitInfos.setter
+    def HitInfos(self, HitInfos):
+        self._HitInfos = HitInfos
+
 
     def _deserialize(self, params):
         self._Label = params.get("Label")
@@ -3655,6 +3806,12 @@ class TextResult(AbstractModel):
         self._Suggestion = params.get("Suggestion")
         self._LibType = params.get("LibType")
         self._SubLabel = params.get("SubLabel")
+        if params.get("HitInfos") is not None:
+            self._HitInfos = []
+            for item in params.get("HitInfos"):
+                obj = HitInfo()
+                obj._deserialize(item)
+                self._HitInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

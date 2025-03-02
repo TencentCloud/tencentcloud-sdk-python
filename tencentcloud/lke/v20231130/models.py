@@ -11882,9 +11882,9 @@ class GetWsTokenRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 接入类型
+        :param _Type: 接入类型，当前请填写5
         :type Type: int
-        :param _BotAppKey: 应用AppKey（应用发布后在应用页面[发布管理]-[调用信息]-[API管理]处获取）
+        :param _BotAppKey: 当Type=5时，必填；应用AppKey（应用发布后在应用页面[发布管理]-[调用信息]-[API管理]处获取）
         :type BotAppKey: str
         :param _VisitorBizId: 访客ID（外部输入，建议唯一，标识当前接入会话的用户）
         :type VisitorBizId: str
@@ -11898,7 +11898,7 @@ class GetWsTokenRequest(AbstractModel):
 
     @property
     def Type(self):
-        """接入类型
+        """接入类型，当前请填写5
         :rtype: int
         """
         return self._Type
@@ -11909,7 +11909,7 @@ class GetWsTokenRequest(AbstractModel):
 
     @property
     def BotAppKey(self):
-        """应用AppKey（应用发布后在应用页面[发布管理]-[调用信息]-[API管理]处获取）
+        """当Type=5时，必填；应用AppKey（应用发布后在应用页面[发布管理]-[调用信息]-[API管理]处获取）
         :rtype: str
         """
         return self._BotAppKey
@@ -23266,6 +23266,130 @@ class ReleaseRejectedQuestion(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class RenameDocRequest(AbstractModel):
+    """RenameDoc请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LoginUin: 登录用户主账号(集成商模式必填)	
+        :type LoginUin: str
+        :param _LoginSubAccountUin: 登录用户子账号(集成商模式必填)	
+        :type LoginSubAccountUin: str
+        :param _BotBizId: 应用ID
+        :type BotBizId: str
+        :param _DocBizId: 文档ID
+        :type DocBizId: str
+        :param _NewName: 新文档名，需要带上后缀
+        :type NewName: str
+        """
+        self._LoginUin = None
+        self._LoginSubAccountUin = None
+        self._BotBizId = None
+        self._DocBizId = None
+        self._NewName = None
+
+    @property
+    def LoginUin(self):
+        """登录用户主账号(集成商模式必填)	
+        :rtype: str
+        """
+        return self._LoginUin
+
+    @LoginUin.setter
+    def LoginUin(self, LoginUin):
+        self._LoginUin = LoginUin
+
+    @property
+    def LoginSubAccountUin(self):
+        """登录用户子账号(集成商模式必填)	
+        :rtype: str
+        """
+        return self._LoginSubAccountUin
+
+    @LoginSubAccountUin.setter
+    def LoginSubAccountUin(self, LoginSubAccountUin):
+        self._LoginSubAccountUin = LoginSubAccountUin
+
+    @property
+    def BotBizId(self):
+        """应用ID
+        :rtype: str
+        """
+        return self._BotBizId
+
+    @BotBizId.setter
+    def BotBizId(self, BotBizId):
+        self._BotBizId = BotBizId
+
+    @property
+    def DocBizId(self):
+        """文档ID
+        :rtype: str
+        """
+        return self._DocBizId
+
+    @DocBizId.setter
+    def DocBizId(self, DocBizId):
+        self._DocBizId = DocBizId
+
+    @property
+    def NewName(self):
+        """新文档名，需要带上后缀
+        :rtype: str
+        """
+        return self._NewName
+
+    @NewName.setter
+    def NewName(self, NewName):
+        self._NewName = NewName
+
+
+    def _deserialize(self, params):
+        self._LoginUin = params.get("LoginUin")
+        self._LoginSubAccountUin = params.get("LoginSubAccountUin")
+        self._BotBizId = params.get("BotBizId")
+        self._DocBizId = params.get("DocBizId")
+        self._NewName = params.get("NewName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RenameDocResponse(AbstractModel):
+    """RenameDoc返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class ResetSessionRequest(AbstractModel):

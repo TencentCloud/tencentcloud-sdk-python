@@ -32400,7 +32400,6 @@ class PlayStatInfo(AbstractModel):
         :param _Time: 数据时间点。
         :type Time: str
         :param _Value: 带宽/流量/请求数/并发连接数/下载速度的值，若没数据返回时该值为0。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: float
         """
         self._Time = None
@@ -32420,7 +32419,6 @@ class PlayStatInfo(AbstractModel):
     @property
     def Value(self):
         """带宽/流量/请求数/并发连接数/下载速度的值，若没数据返回时该值为0。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Value

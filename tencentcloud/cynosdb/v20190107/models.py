@@ -13908,6 +13908,9 @@ class DescribeBackupConfigResponse(AbstractModel):
         :param _LogicCrossRegionsConfigUpdateTime: 跨地域逻辑备份配置修改时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type LogicCrossRegionsConfigUpdateTime: str
+        :param _LogicBackupConfig: 自动逻辑备份配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogicBackupConfig: :class:`tencentcloud.cynosdb.v20190107.models.LogicBackupConfigInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -13917,6 +13920,7 @@ class DescribeBackupConfigResponse(AbstractModel):
         self._BackupFreq = None
         self._BackupType = None
         self._LogicCrossRegionsConfigUpdateTime = None
+        self._LogicBackupConfig = None
         self._RequestId = None
 
     @property
@@ -13989,6 +13993,18 @@ class DescribeBackupConfigResponse(AbstractModel):
         self._LogicCrossRegionsConfigUpdateTime = LogicCrossRegionsConfigUpdateTime
 
     @property
+    def LogicBackupConfig(self):
+        """自动逻辑备份配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.LogicBackupConfigInfo`
+        """
+        return self._LogicBackupConfig
+
+    @LogicBackupConfig.setter
+    def LogicBackupConfig(self, LogicBackupConfig):
+        self._LogicBackupConfig = LogicBackupConfig
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -14007,6 +14023,9 @@ class DescribeBackupConfigResponse(AbstractModel):
         self._BackupFreq = params.get("BackupFreq")
         self._BackupType = params.get("BackupType")
         self._LogicCrossRegionsConfigUpdateTime = params.get("LogicCrossRegionsConfigUpdateTime")
+        if params.get("LogicBackupConfig") is not None:
+            self._LogicBackupConfig = LogicBackupConfigInfo()
+            self._LogicBackupConfig._deserialize(params.get("LogicBackupConfig"))
         self._RequestId = params.get("RequestId")
 
 
@@ -16544,9 +16563,9 @@ class DescribeDBSecurityGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 实例ID（InstanceId与InstanceGroupId必须任选一个传入）
         :type InstanceId: str
-        :param _InstanceGroupId: 实例组ID
+        :param _InstanceGroupId: 实例组ID（InstanceId与InstanceGroupId必须任选一个传入）
         :type InstanceGroupId: str
         """
         self._InstanceId = None
@@ -16556,7 +16575,7 @@ class DescribeDBSecurityGroupsRequest(AbstractModel):
     def InstanceId(self):
         warnings.warn("parameter `InstanceId` is deprecated", DeprecationWarning) 
 
-        """实例ID
+        """实例ID（InstanceId与InstanceGroupId必须任选一个传入）
         :rtype: str
         """
         return self._InstanceId
@@ -16569,7 +16588,7 @@ class DescribeDBSecurityGroupsRequest(AbstractModel):
 
     @property
     def InstanceGroupId(self):
-        """实例组ID
+        """实例组ID（InstanceId与InstanceGroupId必须任选一个传入）
         :rtype: str
         """
         return self._InstanceGroupId

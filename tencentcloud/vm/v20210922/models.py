@@ -26,45 +26,42 @@ class AudioResult(AbstractModel):
     def __init__(self):
         r"""
         :param _HitFlag: 该字段用于返回审核内容是否命中审核模型；取值：0（**未命中**）、1（**命中**）。
-注意：此字段可能返回 null，表示取不到有效值。
         :type HitFlag: int
         :param _Label: 该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
         :param _Suggestion: 该字段用于返回后续操作建议。当您获取到判定结果后，返回值表示具体的后续建议操作。<br>
 返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
-注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
         :param _Score: 该字段用于返回当前标签下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Score: int
         :param _Text: 该字段用于返回音频文件经ASR识别后的文本信息。最长可识别**5小时**的音频文件，若超出时长限制，接口将会报错。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         :param _Url: 该字段用于返回审核结果的访问链接（URL）。<br>备注：链接默认有效期为12小时。如果您需要更长时效的链接，请使用[COS预签名](https://cloud.tencent.com/document/product/1265/104001)功能更新签名时效。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
         :param _Duration: 该字段用于返回音频文件的时长，单位为毫秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Duration: str
         :param _Extra: 该字段用于返回输入参数中的额外附加信息（Extra），如未配置则默认返回值为空。<br>备注：不同客户或Biztype下返回信息不同，如需配置该字段请提交工单咨询或联系售后专员处理。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Extra: str
         :param _TextResults: 该字段用于返回音频文件经ASR识别后产生的文本的详细审核结果。具体结果内容请参见AudioResultDetailLanguageResult数据结构的细节描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TextResults: list of AudioResultDetailTextResult
         :param _MoanResults: 该字段用于返回音频文件呻吟检测的详细审核结果。具体结果内容请参见AudioResultDetailMoanResult数据结构的细节描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MoanResults: list of AudioResultDetailMoanResult
         :param _LanguageResults: 该字段用于返回音频小语种检测的详细审核结果。具体结果内容请参见AudioResultDetailLanguageResult数据结构的细节描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LanguageResults: list of AudioResultDetailLanguageResult
         :param _SubLabel: 该字段用于返回当前标签（Lable）下的二级标签。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubLabel: str
         :param _RecognitionResults: 识别类标签结果信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecognitionResults: list of RecognitionResult
+        :param _SpeakerResults: 该字段用于返回音频文件说话人检测的详细审核结果
+        :type SpeakerResults: list of SpeakerResult
+        :param _TravelResults: 该字段用于返回音频文件出行检测的详细审核结果
+        :type TravelResults: list of TravelResult
+        :param _SubTag: 该字段用于返回音频文件的三级标签
+        :type SubTag: str
+        :param _SubTagCode: 该字段用于返回音频文件的三级标签码
+        :type SubTagCode: str
+        :param _LabelResults: 该字段用于返回音频文件歌曲识别的详细审核结果
+        :type LabelResults: list of LabelResult
         """
         self._HitFlag = None
         self._Label = None
@@ -79,11 +76,15 @@ class AudioResult(AbstractModel):
         self._LanguageResults = None
         self._SubLabel = None
         self._RecognitionResults = None
+        self._SpeakerResults = None
+        self._TravelResults = None
+        self._SubTag = None
+        self._SubTagCode = None
+        self._LabelResults = None
 
     @property
     def HitFlag(self):
         """该字段用于返回审核内容是否命中审核模型；取值：0（**未命中**）、1（**命中**）。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._HitFlag
@@ -95,7 +96,6 @@ class AudioResult(AbstractModel):
     @property
     def Label(self):
         """该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Label
@@ -108,7 +108,6 @@ class AudioResult(AbstractModel):
     def Suggestion(self):
         """该字段用于返回后续操作建议。当您获取到判定结果后，返回值表示具体的后续建议操作。<br>
 返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Suggestion
@@ -120,7 +119,6 @@ class AudioResult(AbstractModel):
     @property
     def Score(self):
         """该字段用于返回当前标签下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Score
@@ -132,7 +130,6 @@ class AudioResult(AbstractModel):
     @property
     def Text(self):
         """该字段用于返回音频文件经ASR识别后的文本信息。最长可识别**5小时**的音频文件，若超出时长限制，接口将会报错。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -144,7 +141,6 @@ class AudioResult(AbstractModel):
     @property
     def Url(self):
         """该字段用于返回审核结果的访问链接（URL）。<br>备注：链接默认有效期为12小时。如果您需要更长时效的链接，请使用[COS预签名](https://cloud.tencent.com/document/product/1265/104001)功能更新签名时效。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Url
@@ -156,7 +152,6 @@ class AudioResult(AbstractModel):
     @property
     def Duration(self):
         """该字段用于返回音频文件的时长，单位为毫秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Duration
@@ -168,7 +163,6 @@ class AudioResult(AbstractModel):
     @property
     def Extra(self):
         """该字段用于返回输入参数中的额外附加信息（Extra），如未配置则默认返回值为空。<br>备注：不同客户或Biztype下返回信息不同，如需配置该字段请提交工单咨询或联系售后专员处理。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Extra
@@ -180,7 +174,6 @@ class AudioResult(AbstractModel):
     @property
     def TextResults(self):
         """该字段用于返回音频文件经ASR识别后产生的文本的详细审核结果。具体结果内容请参见AudioResultDetailLanguageResult数据结构的细节描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AudioResultDetailTextResult
         """
         return self._TextResults
@@ -192,7 +185,6 @@ class AudioResult(AbstractModel):
     @property
     def MoanResults(self):
         """该字段用于返回音频文件呻吟检测的详细审核结果。具体结果内容请参见AudioResultDetailMoanResult数据结构的细节描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AudioResultDetailMoanResult
         """
         return self._MoanResults
@@ -204,7 +196,6 @@ class AudioResult(AbstractModel):
     @property
     def LanguageResults(self):
         """该字段用于返回音频小语种检测的详细审核结果。具体结果内容请参见AudioResultDetailLanguageResult数据结构的细节描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AudioResultDetailLanguageResult
         """
         return self._LanguageResults
@@ -216,7 +207,6 @@ class AudioResult(AbstractModel):
     @property
     def SubLabel(self):
         """该字段用于返回当前标签（Lable）下的二级标签。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubLabel
@@ -228,7 +218,6 @@ class AudioResult(AbstractModel):
     @property
     def RecognitionResults(self):
         """识别类标签结果信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RecognitionResult
         """
         return self._RecognitionResults
@@ -236,6 +225,61 @@ class AudioResult(AbstractModel):
     @RecognitionResults.setter
     def RecognitionResults(self, RecognitionResults):
         self._RecognitionResults = RecognitionResults
+
+    @property
+    def SpeakerResults(self):
+        """该字段用于返回音频文件说话人检测的详细审核结果
+        :rtype: list of SpeakerResult
+        """
+        return self._SpeakerResults
+
+    @SpeakerResults.setter
+    def SpeakerResults(self, SpeakerResults):
+        self._SpeakerResults = SpeakerResults
+
+    @property
+    def TravelResults(self):
+        """该字段用于返回音频文件出行检测的详细审核结果
+        :rtype: list of TravelResult
+        """
+        return self._TravelResults
+
+    @TravelResults.setter
+    def TravelResults(self, TravelResults):
+        self._TravelResults = TravelResults
+
+    @property
+    def SubTag(self):
+        """该字段用于返回音频文件的三级标签
+        :rtype: str
+        """
+        return self._SubTag
+
+    @SubTag.setter
+    def SubTag(self, SubTag):
+        self._SubTag = SubTag
+
+    @property
+    def SubTagCode(self):
+        """该字段用于返回音频文件的三级标签码
+        :rtype: str
+        """
+        return self._SubTagCode
+
+    @SubTagCode.setter
+    def SubTagCode(self, SubTagCode):
+        self._SubTagCode = SubTagCode
+
+    @property
+    def LabelResults(self):
+        """该字段用于返回音频文件歌曲识别的详细审核结果
+        :rtype: list of LabelResult
+        """
+        return self._LabelResults
+
+    @LabelResults.setter
+    def LabelResults(self, LabelResults):
+        self._LabelResults = LabelResults
 
 
     def _deserialize(self, params):
@@ -272,6 +316,26 @@ class AudioResult(AbstractModel):
                 obj = RecognitionResult()
                 obj._deserialize(item)
                 self._RecognitionResults.append(obj)
+        if params.get("SpeakerResults") is not None:
+            self._SpeakerResults = []
+            for item in params.get("SpeakerResults"):
+                obj = SpeakerResult()
+                obj._deserialize(item)
+                self._SpeakerResults.append(obj)
+        if params.get("TravelResults") is not None:
+            self._TravelResults = []
+            for item in params.get("TravelResults"):
+                obj = TravelResult()
+                obj._deserialize(item)
+                self._TravelResults.append(obj)
+        self._SubTag = params.get("SubTag")
+        self._SubTagCode = params.get("SubTagCode")
+        if params.get("LabelResults") is not None:
+            self._LabelResults = []
+            for item in params.get("LabelResults"):
+                obj = LabelResult()
+                obj._deserialize(item)
+                self._LabelResults.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -524,30 +588,24 @@ class AudioResultDetailTextResult(AbstractModel):
     def __init__(self):
         r"""
         :param _Label: 该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
         :param _Keywords: 该字段用于返回ASR识别出的文本内容命中的关键词信息，用于标注内容违规的具体原因（如：加我微信）。该参数可能会有多个返回值，代表命中的多个关键词；若返回值为空，Score不为空，则代表识别结果所对应的恶意标签（Label）来自于语义模型判断的返回值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Keywords: list of str
         :param _LibId: 该字段**仅当Label为Custom：自定义关键词时该参数有效**,用于返回自定义库的ID，以方便自定义库管理和配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LibId: str
         :param _LibName: 该字段**仅当Label为Custom：自定义关键词时该参数有效**,用于返回自定义库的名称,以方便自定义库管理和配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LibName: str
         :param _Score: 该字段用于返回当前标签下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高**），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Score: int
         :param _LibType: 该字段用于返回自定义关键词对应的词库类型，取值为**1**（黑白库）和**2**（自定义关键词库），若未配置自定义关键词库,则默认值为1（黑白库匹配）。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LibType: int
         :param _Suggestion: 该字段用于返回后续操作建议。当您获取到判定结果后，返回值表示具体的后续建议操作。<br>
 返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
-注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
         :param _SubLabel: 该字段用于返回当前标签（Lable）下的二级标签。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubLabel: str
+        :param _HitInfos: 该字段用于返回命中的关键词信息
+        :type HitInfos: list of OcrHitInfo
         """
         self._Label = None
         self._Keywords = None
@@ -557,11 +615,11 @@ class AudioResultDetailTextResult(AbstractModel):
         self._LibType = None
         self._Suggestion = None
         self._SubLabel = None
+        self._HitInfos = None
 
     @property
     def Label(self):
         """该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Label
@@ -573,7 +631,6 @@ class AudioResultDetailTextResult(AbstractModel):
     @property
     def Keywords(self):
         """该字段用于返回ASR识别出的文本内容命中的关键词信息，用于标注内容违规的具体原因（如：加我微信）。该参数可能会有多个返回值，代表命中的多个关键词；若返回值为空，Score不为空，则代表识别结果所对应的恶意标签（Label）来自于语义模型判断的返回值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Keywords
@@ -585,7 +642,6 @@ class AudioResultDetailTextResult(AbstractModel):
     @property
     def LibId(self):
         """该字段**仅当Label为Custom：自定义关键词时该参数有效**,用于返回自定义库的ID，以方便自定义库管理和配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LibId
@@ -597,7 +653,6 @@ class AudioResultDetailTextResult(AbstractModel):
     @property
     def LibName(self):
         """该字段**仅当Label为Custom：自定义关键词时该参数有效**,用于返回自定义库的名称,以方便自定义库管理和配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LibName
@@ -609,7 +664,6 @@ class AudioResultDetailTextResult(AbstractModel):
     @property
     def Score(self):
         """该字段用于返回当前标签下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高**），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Score
@@ -621,7 +675,6 @@ class AudioResultDetailTextResult(AbstractModel):
     @property
     def LibType(self):
         """该字段用于返回自定义关键词对应的词库类型，取值为**1**（黑白库）和**2**（自定义关键词库），若未配置自定义关键词库,则默认值为1（黑白库匹配）。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LibType
@@ -634,7 +687,6 @@ class AudioResultDetailTextResult(AbstractModel):
     def Suggestion(self):
         """该字段用于返回后续操作建议。当您获取到判定结果后，返回值表示具体的后续建议操作。<br>
 返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Suggestion
@@ -646,7 +698,6 @@ class AudioResultDetailTextResult(AbstractModel):
     @property
     def SubLabel(self):
         """该字段用于返回当前标签（Lable）下的二级标签。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubLabel
@@ -654,6 +705,17 @@ class AudioResultDetailTextResult(AbstractModel):
     @SubLabel.setter
     def SubLabel(self, SubLabel):
         self._SubLabel = SubLabel
+
+    @property
+    def HitInfos(self):
+        """该字段用于返回命中的关键词信息
+        :rtype: list of OcrHitInfo
+        """
+        return self._HitInfos
+
+    @HitInfos.setter
+    def HitInfos(self, HitInfos):
+        self._HitInfos = HitInfos
 
 
     def _deserialize(self, params):
@@ -665,6 +727,12 @@ class AudioResultDetailTextResult(AbstractModel):
         self._LibType = params.get("LibType")
         self._Suggestion = params.get("Suggestion")
         self._SubLabel = params.get("SubLabel")
+        if params.get("HitInfos") is not None:
+            self._HitInfos = []
+            for item in params.get("HitInfos"):
+                obj = OcrHitInfo()
+                obj._deserialize(item)
+                self._HitInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -685,21 +753,21 @@ class AudioSegments(AbstractModel):
         :param _OffsetTime: 截帧时间。
 点播文件：该值为相对于视频偏移时间，单位为秒，例如：0，5，10
 直播流：该值为时间戳，例如：1594650717
-注意：此字段可能返回 null，表示取不到有效值。
         :type OffsetTime: str
         :param _Result: 结果集
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.vm.v20210922.models.AudioResult`
+        :param _CreatedAt: 创建时间
+        :type CreatedAt: str
         """
         self._OffsetTime = None
         self._Result = None
+        self._CreatedAt = None
 
     @property
     def OffsetTime(self):
         """截帧时间。
 点播文件：该值为相对于视频偏移时间，单位为秒，例如：0，5，10
 直播流：该值为时间戳，例如：1594650717
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OffsetTime
@@ -711,7 +779,6 @@ class AudioSegments(AbstractModel):
     @property
     def Result(self):
         """结果集
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vm.v20210922.models.AudioResult`
         """
         return self._Result
@@ -720,12 +787,24 @@ class AudioSegments(AbstractModel):
     def Result(self, Result):
         self._Result = Result
 
+    @property
+    def CreatedAt(self):
+        """创建时间
+        :rtype: str
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
 
     def _deserialize(self, params):
         self._OffsetTime = params.get("OffsetTime")
         if params.get("Result") is not None:
             self._Result = AudioResult()
             self._Result._deserialize(params.get("Result"))
+        self._CreatedAt = params.get("CreatedAt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1720,7 +1799,6 @@ class ImageResult(AbstractModel):
         :param _HitFlag: 违规标志
 0 未命中
 1 命中
-注意：此字段可能返回 null，表示取不到有效值。
         :type HitFlag: int
         :param _Label: 命中的标签
 Porn 色情
@@ -1730,26 +1808,24 @@ Illegal 违法
 Abuse 谩骂
 Terror 暴恐
 Ad 广告
-注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
         :param _Suggestion: 审核建议，可选值：
 Pass 通过，
 Review 建议人审，
 Block 确认违规
-注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
         :param _Score: 得分
-注意：此字段可能返回 null，表示取不到有效值。
         :type Score: int
         :param _Results: 画面截帧图片结果集
-注意：此字段可能返回 null，表示取不到有效值。
         :type Results: list of ImageResultResult
         :param _Url: 该字段用于返回审核结果的访问链接（URL）。<br>备注：链接默认有效期为12小时。如果您需要更长时效的链接，请使用[COS预签名](https://cloud.tencent.com/document/product/1265/104001)功能更新签名时效。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
         :param _Extra: 附加字段
-注意：此字段可能返回 null，表示取不到有效值。
         :type Extra: str
+        :param _SubLabel: 二级标签
+        :type SubLabel: str
+        :param _RecognitionResults: 场景结果
+        :type RecognitionResults: list of RecognitionResult
         """
         self._HitFlag = None
         self._Label = None
@@ -1758,13 +1834,14 @@ Block 确认违规
         self._Results = None
         self._Url = None
         self._Extra = None
+        self._SubLabel = None
+        self._RecognitionResults = None
 
     @property
     def HitFlag(self):
         """违规标志
 0 未命中
 1 命中
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._HitFlag
@@ -1783,7 +1860,6 @@ Illegal 违法
 Abuse 谩骂
 Terror 暴恐
 Ad 广告
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Label
@@ -1798,7 +1874,6 @@ Ad 广告
 Pass 通过，
 Review 建议人审，
 Block 确认违规
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Suggestion
@@ -1810,7 +1885,6 @@ Block 确认违规
     @property
     def Score(self):
         """得分
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Score
@@ -1822,7 +1896,6 @@ Block 确认违规
     @property
     def Results(self):
         """画面截帧图片结果集
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ImageResultResult
         """
         return self._Results
@@ -1834,7 +1907,6 @@ Block 确认违规
     @property
     def Url(self):
         """该字段用于返回审核结果的访问链接（URL）。<br>备注：链接默认有效期为12小时。如果您需要更长时效的链接，请使用[COS预签名](https://cloud.tencent.com/document/product/1265/104001)功能更新签名时效。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Url
@@ -1846,7 +1918,6 @@ Block 确认违规
     @property
     def Extra(self):
         """附加字段
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Extra
@@ -1854,6 +1925,28 @@ Block 确认违规
     @Extra.setter
     def Extra(self, Extra):
         self._Extra = Extra
+
+    @property
+    def SubLabel(self):
+        """二级标签
+        :rtype: str
+        """
+        return self._SubLabel
+
+    @SubLabel.setter
+    def SubLabel(self, SubLabel):
+        self._SubLabel = SubLabel
+
+    @property
+    def RecognitionResults(self):
+        """场景结果
+        :rtype: list of RecognitionResult
+        """
+        return self._RecognitionResults
+
+    @RecognitionResults.setter
+    def RecognitionResults(self, RecognitionResults):
+        self._RecognitionResults = RecognitionResults
 
 
     def _deserialize(self, params):
@@ -1869,6 +1962,13 @@ Block 确认违规
                 self._Results.append(obj)
         self._Url = params.get("Url")
         self._Extra = params.get("Extra")
+        self._SubLabel = params.get("SubLabel")
+        if params.get("RecognitionResults") is not None:
+            self._RecognitionResults = []
+            for item in params.get("RecognitionResults"):
+                obj = RecognitionResult()
+                obj._deserialize(item)
+                self._RecognitionResults.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2119,6 +2219,10 @@ class ImageResultsResultDetail(AbstractModel):
         :param _SubLabelCode: 子标签码
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubLabelCode: str
+        :param _SubLabel: 子标签
+        :type SubLabel: str
+        :param _OcrHitInfos: Ocr文本命中信息
+        :type OcrHitInfos: list of OcrHitInfo
         """
         self._Name = None
         self._Text = None
@@ -2130,6 +2234,8 @@ class ImageResultsResultDetail(AbstractModel):
         self._Suggestion = None
         self._Score = None
         self._SubLabelCode = None
+        self._SubLabel = None
+        self._OcrHitInfos = None
 
     @property
     def Name(self):
@@ -2251,6 +2357,28 @@ class ImageResultsResultDetail(AbstractModel):
     def SubLabelCode(self, SubLabelCode):
         self._SubLabelCode = SubLabelCode
 
+    @property
+    def SubLabel(self):
+        """子标签
+        :rtype: str
+        """
+        return self._SubLabel
+
+    @SubLabel.setter
+    def SubLabel(self, SubLabel):
+        self._SubLabel = SubLabel
+
+    @property
+    def OcrHitInfos(self):
+        """Ocr文本命中信息
+        :rtype: list of OcrHitInfo
+        """
+        return self._OcrHitInfos
+
+    @OcrHitInfos.setter
+    def OcrHitInfos(self, OcrHitInfos):
+        self._OcrHitInfos = OcrHitInfos
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -2265,6 +2393,13 @@ class ImageResultsResultDetail(AbstractModel):
         self._Suggestion = params.get("Suggestion")
         self._Score = params.get("Score")
         self._SubLabelCode = params.get("SubLabelCode")
+        self._SubLabel = params.get("SubLabel")
+        if params.get("OcrHitInfos") is not None:
+            self._OcrHitInfos = []
+            for item in params.get("OcrHitInfos"):
+                obj = OcrHitInfo()
+                obj._deserialize(item)
+                self._OcrHitInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2394,9 +2529,15 @@ class ImageSegments(AbstractModel):
         :type OffsetTime: str
         :param _Result: 画面截帧结果详情
         :type Result: :class:`tencentcloud.vm.v20210922.models.ImageResult`
+        :param _CreatedAt: 时间
+        :type CreatedAt: str
+        :param _OffsetusTime: 截帧毫秒时间
+        :type OffsetusTime: str
         """
         self._OffsetTime = None
         self._Result = None
+        self._CreatedAt = None
+        self._OffsetusTime = None
 
     @property
     def OffsetTime(self):
@@ -2422,12 +2563,36 @@ class ImageSegments(AbstractModel):
     def Result(self, Result):
         self._Result = Result
 
+    @property
+    def CreatedAt(self):
+        """时间
+        :rtype: str
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def OffsetusTime(self):
+        """截帧毫秒时间
+        :rtype: str
+        """
+        return self._OffsetusTime
+
+    @OffsetusTime.setter
+    def OffsetusTime(self, OffsetusTime):
+        self._OffsetusTime = OffsetusTime
+
 
     def _deserialize(self, params):
         self._OffsetTime = params.get("OffsetTime")
         if params.get("Result") is not None:
             self._Result = ImageResult()
             self._Result._deserialize(params.get("Result"))
+        self._CreatedAt = params.get("CreatedAt")
+        self._OffsetusTime = params.get("OffsetusTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2500,6 +2665,132 @@ class InputInfo(AbstractModel):
         self._Type = params.get("Type")
         self._Url = params.get("Url")
         self._BucketInfo = params.get("BucketInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LabelResult(AbstractModel):
+    """歌曲识别结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Scene: 场景
+        :type Scene: str
+        :param _Suggestion: 建议
+        :type Suggestion: int
+        :param _Label: 标签
+        :type Label: str
+        :param _Name: 名字
+        :type Name: str
+        :param _Score: 分数
+        :type Score: int
+        :param _StartTime: 开始时间
+        :type StartTime: float
+        :param _EndTime: 结束时间
+        :type EndTime: float
+        """
+        self._Scene = None
+        self._Suggestion = None
+        self._Label = None
+        self._Name = None
+        self._Score = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def Scene(self):
+        """场景
+        :rtype: str
+        """
+        return self._Scene
+
+    @Scene.setter
+    def Scene(self, Scene):
+        self._Scene = Scene
+
+    @property
+    def Suggestion(self):
+        """建议
+        :rtype: int
+        """
+        return self._Suggestion
+
+    @Suggestion.setter
+    def Suggestion(self, Suggestion):
+        self._Suggestion = Suggestion
+
+    @property
+    def Label(self):
+        """标签
+        :rtype: str
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Name(self):
+        """名字
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Score(self):
+        """分数
+        :rtype: int
+        """
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def StartTime(self):
+        """开始时间
+        :rtype: float
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """结束时间
+        :rtype: float
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._Scene = params.get("Scene")
+        self._Suggestion = params.get("Suggestion")
+        self._Label = params.get("Label")
+        self._Name = params.get("Name")
+        self._Score = params.get("Score")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2598,6 +2889,92 @@ class MediaInfo(AbstractModel):
         self._Width = params.get("Width")
         self._Height = params.get("Height")
         self._Thumbnail = params.get("Thumbnail")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OcrHitInfo(AbstractModel):
+    """Ocr命中信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 关键词
+        :type Type: str
+        :param _Keyword: 关键词内容
+        :type Keyword: str
+        :param _LibName: 自定义库名
+        :type LibName: str
+        :param _Positions: 位置信息
+        :type Positions: list of TextPosition
+        """
+        self._Type = None
+        self._Keyword = None
+        self._LibName = None
+        self._Positions = None
+
+    @property
+    def Type(self):
+        """关键词
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Keyword(self):
+        """关键词内容
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def LibName(self):
+        """自定义库名
+        :rtype: str
+        """
+        return self._LibName
+
+    @LibName.setter
+    def LibName(self, LibName):
+        self._LibName = LibName
+
+    @property
+    def Positions(self):
+        """位置信息
+        :rtype: list of TextPosition
+        """
+        return self._Positions
+
+    @Positions.setter
+    def Positions(self, Positions):
+        self._Positions = Positions
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Keyword = params.get("Keyword")
+        self._LibName = params.get("LibName")
+        if params.get("Positions") is not None:
+            self._Positions = []
+            for item in params.get("Positions"):
+                obj = TextPosition()
+                obj._deserialize(item)
+                self._Positions.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2819,6 +3196,87 @@ class SegmentCosUrlList(AbstractModel):
         self._ImageBlockUrl = params.get("ImageBlockUrl")
         self._AudioBlockUrl = params.get("AudioBlockUrl")
         self._AsrUrl = params.get("AsrUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SpeakerResult(AbstractModel):
+    """说话人结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Label: 标签
+        :type Label: str
+        :param _Score: 分数
+        :type Score: int
+        :param _StartTime: 开始时间
+        :type StartTime: float
+        :param _EndTime: 结束时间
+        :type EndTime: float
+        """
+        self._Label = None
+        self._Score = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def Label(self):
+        """标签
+        :rtype: str
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Score(self):
+        """分数
+        :rtype: int
+        """
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def StartTime(self):
+        """开始时间
+        :rtype: float
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """结束时间
+        :rtype: float
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._Label = params.get("Label")
+        self._Score = params.get("Score")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3565,6 +4023,183 @@ class TaskResult(AbstractModel):
         self._TaskId = params.get("TaskId")
         self._Code = params.get("Code")
         self._Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TextPosition(AbstractModel):
+    """文本关键词命中的位置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Start: 命中关键词在文本中的起始位置
+        :type Start: int
+        :param _End: 命中关键词在文本中的结束位置
+        :type End: int
+        """
+        self._Start = None
+        self._End = None
+
+    @property
+    def Start(self):
+        """命中关键词在文本中的起始位置
+        :rtype: int
+        """
+        return self._Start
+
+    @Start.setter
+    def Start(self, Start):
+        self._Start = Start
+
+    @property
+    def End(self):
+        """命中关键词在文本中的结束位置
+        :rtype: int
+        """
+        return self._End
+
+    @End.setter
+    def End(self, End):
+        self._End = End
+
+
+    def _deserialize(self, params):
+        self._Start = params.get("Start")
+        self._End = params.get("End")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TravelResult(AbstractModel):
+    """出行结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Label: 一级标签
+        :type Label: str
+        :param _SubLabel: 二级标签
+        :type SubLabel: str
+        :param _RiskLevel: 风险等级
+        :type RiskLevel: str
+        :param _AudioRole: 出行音频角色
+        :type AudioRole: str
+        :param _AudioText: 出行语音文本
+        :type AudioText: str
+        :param _StartTime: 开始时间
+        :type StartTime: float
+        :param _EndTime: 结束时间
+        :type EndTime: float
+        """
+        self._Label = None
+        self._SubLabel = None
+        self._RiskLevel = None
+        self._AudioRole = None
+        self._AudioText = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def Label(self):
+        """一级标签
+        :rtype: str
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def SubLabel(self):
+        """二级标签
+        :rtype: str
+        """
+        return self._SubLabel
+
+    @SubLabel.setter
+    def SubLabel(self, SubLabel):
+        self._SubLabel = SubLabel
+
+    @property
+    def RiskLevel(self):
+        """风险等级
+        :rtype: str
+        """
+        return self._RiskLevel
+
+    @RiskLevel.setter
+    def RiskLevel(self, RiskLevel):
+        self._RiskLevel = RiskLevel
+
+    @property
+    def AudioRole(self):
+        """出行音频角色
+        :rtype: str
+        """
+        return self._AudioRole
+
+    @AudioRole.setter
+    def AudioRole(self, AudioRole):
+        self._AudioRole = AudioRole
+
+    @property
+    def AudioText(self):
+        """出行语音文本
+        :rtype: str
+        """
+        return self._AudioText
+
+    @AudioText.setter
+    def AudioText(self, AudioText):
+        self._AudioText = AudioText
+
+    @property
+    def StartTime(self):
+        """开始时间
+        :rtype: float
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """结束时间
+        :rtype: float
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._Label = params.get("Label")
+        self._SubLabel = params.get("SubLabel")
+        self._RiskLevel = params.get("RiskLevel")
+        self._AudioRole = params.get("AudioRole")
+        self._AudioText = params.get("AudioText")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -539,6 +539,33 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateEmployeeChangeUrl(self, request):
+        """生成员工信息变更链接，当前仅支持变更手机号
+
+        注:
+        1. 目前仅支持修改员工手机号，待修改员工必须已经实名且在职
+        2. 仅支持返回小程序链接
+
+        :param request: Request instance for CreateEmployeeChangeUrl.
+        :type request: :class:`tencentcloud.ess.v20201111.models.CreateEmployeeChangeUrlRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.CreateEmployeeChangeUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateEmployeeChangeUrl", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateEmployeeChangeUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateEmployeeQualificationSealQrCode(self, request):
         """该接口用于获取个人授权执业章给企业的微信二维码，需要个人用户通过微信扫码。
 
