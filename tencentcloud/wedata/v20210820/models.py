@@ -61553,9 +61553,9 @@ class RegisterEventRequest(AbstractModel):
         :type TimeUnit: str
         :param _Owner: 事件所属人
         :type Owner: str
-        :param _EventType: 事件类型，默认值：TIME_SERIES
+        :param _EventType: 必填，事件类型，默认值：TIME_SERIES
         :type EventType: str
-        :param _DimensionFormat: 对应day： yyyyMMdd，对应HOUR：yyyyMMddHH，对应MIN：yyyyMMddHHmm，对应SECOND：yyyyMMddHHmmss
+        :param _DimensionFormat: 必填，对应day： yyyyMMdd，对应HOUR：yyyyMMddHH，对应MIN：yyyyMMddHHmm，对应SECOND：yyyyMMddHHmmss，默认值：yyyyMMdd
         :type DimensionFormat: str
         :param _TimeToLive: 存活时间
         :type TimeToLive: int
@@ -61641,7 +61641,7 @@ class RegisterEventRequest(AbstractModel):
 
     @property
     def EventType(self):
-        """事件类型，默认值：TIME_SERIES
+        """必填，事件类型，默认值：TIME_SERIES
         :rtype: str
         """
         return self._EventType
@@ -61652,7 +61652,7 @@ class RegisterEventRequest(AbstractModel):
 
     @property
     def DimensionFormat(self):
-        """对应day： yyyyMMdd，对应HOUR：yyyyMMddHH，对应MIN：yyyyMMddHHmm，对应SECOND：yyyyMMddHHmmss
+        """必填，对应day： yyyyMMdd，对应HOUR：yyyyMMddHH，对应MIN：yyyyMMddHHmm，对应SECOND：yyyyMMddHHmmss，默认值：yyyyMMdd
         :rtype: str
         """
         return self._DimensionFormat
@@ -61937,6 +61937,8 @@ class RenewWorkflowSchedulerInfoDsRequest(AbstractModel):
         :type CalendarName: str
         :param _CalendarId: 日历id
         :type CalendarId: str
+        :param _ScheduleTimeZone: 时区
+        :type ScheduleTimeZone: str
         """
         self._ProjectId = None
         self._WorkflowId = None
@@ -61957,6 +61959,7 @@ class RenewWorkflowSchedulerInfoDsRequest(AbstractModel):
         self._CalendarOpen = None
         self._CalendarName = None
         self._CalendarId = None
+        self._ScheduleTimeZone = None
 
     @property
     def ProjectId(self):
@@ -62168,6 +62171,17 @@ class RenewWorkflowSchedulerInfoDsRequest(AbstractModel):
     def CalendarId(self, CalendarId):
         self._CalendarId = CalendarId
 
+    @property
+    def ScheduleTimeZone(self):
+        """时区
+        :rtype: str
+        """
+        return self._ScheduleTimeZone
+
+    @ScheduleTimeZone.setter
+    def ScheduleTimeZone(self, ScheduleTimeZone):
+        self._ScheduleTimeZone = ScheduleTimeZone
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -62189,6 +62203,7 @@ class RenewWorkflowSchedulerInfoDsRequest(AbstractModel):
         self._CalendarOpen = params.get("CalendarOpen")
         self._CalendarName = params.get("CalendarName")
         self._CalendarId = params.get("CalendarId")
+        self._ScheduleTimeZone = params.get("ScheduleTimeZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

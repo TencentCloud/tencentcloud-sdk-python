@@ -912,6 +912,36 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateFlowForwards(self, request):
+        """该接口用于将合同中本企业当前经办人转为本企业其他员工进行操作。
+
+        注意：
+        1. 转交的目标经办人需要已经加入企业，且完成实名。
+        2. 仅企业拥有`超管`、`法人`或者`合同管理员`角色的员工才有调用本接口的权限。如果使用主带子方式调用，请确保您已经加入子企业，且账号在子企业中担任任一上述角色。
+        3. 仅支持当前经办人为待签署或待填写状态时进行转交操作。
+        4. 若原合同有填写控件，且当前经办人已经完成填写，则不支持进行转交。
+        5. 若当前经办人已签署完成，或者处于签署流程中，则不支持进行转交。
+
+        :param request: Request instance for CreateFlowForwards.
+        :type request: :class:`tencentcloud.ess.v20201111.models.CreateFlowForwardsRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.CreateFlowForwardsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateFlowForwards", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateFlowForwardsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateFlowGroupByFiles(self, request):
         """此接口（CreateFlowGroupByFiles）可用于通过多个文件创建合同组签署流程。使用该接口需要先依赖[多文件上传](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口返回的FileIds。
 

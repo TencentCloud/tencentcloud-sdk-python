@@ -24863,13 +24863,10 @@ class DiagnoseResult(AbstractModel):
     def __init__(self):
         r"""
         :param _StreamBrokenResults: 断流信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type StreamBrokenResults: list of str
         :param _LowFrameRateResults: 低帧率信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type LowFrameRateResults: list of str
         :param _StreamFormatResults: 流格式诊断信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type StreamFormatResults: list of str
         """
         self._StreamBrokenResults = None
@@ -24879,7 +24876,6 @@ class DiagnoseResult(AbstractModel):
     @property
     def StreamBrokenResults(self):
         """断流信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._StreamBrokenResults
@@ -24891,7 +24887,6 @@ class DiagnoseResult(AbstractModel):
     @property
     def LowFrameRateResults(self):
         """低帧率信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._LowFrameRateResults
@@ -24903,7 +24898,6 @@ class DiagnoseResult(AbstractModel):
     @property
     def StreamFormatResults(self):
         """流格式诊断信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._StreamFormatResults
@@ -27014,68 +27008,48 @@ class LiveStreamMonitorInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _MonitorId: 监播任务ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MonitorId: str
         :param _MonitorName: 监播任务名称。128字节以内。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MonitorName: str
         :param _OutputInfo: 监播任务输出信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OutputInfo: :class:`tencentcloud.live.v20180801.models.LiveStreamMonitorOutputInfo`
         :param _InputList: 待监播的输入流信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InputList: list of LiveStreamMonitorInputInfo
         :param _Status: 监播任务状态。
 0： 代表空闲
 1： 代表监播中。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _StartTime: 上一次的启动时间，unix时间戳。
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: int
         :param _StopTime: 上一次的停止时间，unix时间戳。
-注意：此字段可能返回 null，表示取不到有效值。
         :type StopTime: int
         :param _CreateTime: 监播任务创建时间，unix时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: int
         :param _UpdateTime: 监播任务更新时间，unix时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: int
         :param _NotifyPolicy: 监播事件通知策略。
-注意：此字段可能返回 null，表示取不到有效值。
         :type NotifyPolicy: :class:`tencentcloud.live.v20180801.models.LiveStreamMonitorNotifyPolicy`
         :param _AudibleInputIndexList: 输出音频的输入Index列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AudibleInputIndexList: list of int non-negative
         :param _AiAsrInputIndexList: 开启智能语音识别的输入Index列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type AiAsrInputIndexList: list of int non-negative
         :param _CheckStreamBroken: 是否开启断流检测
-注意：此字段可能返回 null，表示取不到有效值。
         :type CheckStreamBroken: int
         :param _CheckStreamLowFrameRate: 是否开启低帧率检测
-注意：此字段可能返回 null，表示取不到有效值。
         :type CheckStreamLowFrameRate: int
         :param _AsrLanguage: 智能语音识别语种：
 0 关闭 1 中文 2 英文 3日文 4 韩文
-注意：此字段可能返回 null，表示取不到有效值。
         :type AsrLanguage: int
         :param _OcrLanguage: 智能文字识别语种：
 0 关闭 1 中、英文
-注意：此字段可能返回 null，表示取不到有效值。
         :type OcrLanguage: int
         :param _AiOcrInputIndexList: 开启智能文字识别的输入Index列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type AiOcrInputIndexList: list of int non-negative
         :param _AllowMonitorReport: 是否存储监播事件到监播报告，以及是否允许查询监播报告
-注意：此字段可能返回 null，表示取不到有效值。
         :type AllowMonitorReport: int
         :param _AiFormatDiagnose: 是否开启格式诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :type AiFormatDiagnose: int
         :param _AiQualityControl: 是否开启内容质检。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AiQualityControl: int
         :param _CasterId: 导播台监播对应的导播台场次id
         :type CasterId: str
@@ -27108,7 +27082,6 @@ class LiveStreamMonitorInfo(AbstractModel):
     @property
     def MonitorId(self):
         """监播任务ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MonitorId
@@ -27120,7 +27093,6 @@ class LiveStreamMonitorInfo(AbstractModel):
     @property
     def MonitorName(self):
         """监播任务名称。128字节以内。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MonitorName
@@ -27132,7 +27104,6 @@ class LiveStreamMonitorInfo(AbstractModel):
     @property
     def OutputInfo(self):
         """监播任务输出信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.live.v20180801.models.LiveStreamMonitorOutputInfo`
         """
         return self._OutputInfo
@@ -27144,7 +27115,6 @@ class LiveStreamMonitorInfo(AbstractModel):
     @property
     def InputList(self):
         """待监播的输入流信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LiveStreamMonitorInputInfo
         """
         return self._InputList
@@ -27158,7 +27128,6 @@ class LiveStreamMonitorInfo(AbstractModel):
         """监播任务状态。
 0： 代表空闲
 1： 代表监播中。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -27170,7 +27139,6 @@ class LiveStreamMonitorInfo(AbstractModel):
     @property
     def StartTime(self):
         """上一次的启动时间，unix时间戳。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._StartTime
@@ -27182,7 +27150,6 @@ class LiveStreamMonitorInfo(AbstractModel):
     @property
     def StopTime(self):
         """上一次的停止时间，unix时间戳。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._StopTime
@@ -27194,7 +27161,6 @@ class LiveStreamMonitorInfo(AbstractModel):
     @property
     def CreateTime(self):
         """监播任务创建时间，unix时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CreateTime
@@ -27206,7 +27172,6 @@ class LiveStreamMonitorInfo(AbstractModel):
     @property
     def UpdateTime(self):
         """监播任务更新时间，unix时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._UpdateTime
@@ -27218,7 +27183,6 @@ class LiveStreamMonitorInfo(AbstractModel):
     @property
     def NotifyPolicy(self):
         """监播事件通知策略。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.live.v20180801.models.LiveStreamMonitorNotifyPolicy`
         """
         return self._NotifyPolicy
@@ -27230,7 +27194,6 @@ class LiveStreamMonitorInfo(AbstractModel):
     @property
     def AudibleInputIndexList(self):
         """输出音频的输入Index列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int non-negative
         """
         return self._AudibleInputIndexList
@@ -27242,7 +27205,6 @@ class LiveStreamMonitorInfo(AbstractModel):
     @property
     def AiAsrInputIndexList(self):
         """开启智能语音识别的输入Index列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int non-negative
         """
         return self._AiAsrInputIndexList
@@ -27254,7 +27216,6 @@ class LiveStreamMonitorInfo(AbstractModel):
     @property
     def CheckStreamBroken(self):
         """是否开启断流检测
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CheckStreamBroken
@@ -27266,7 +27227,6 @@ class LiveStreamMonitorInfo(AbstractModel):
     @property
     def CheckStreamLowFrameRate(self):
         """是否开启低帧率检测
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CheckStreamLowFrameRate
@@ -27279,7 +27239,6 @@ class LiveStreamMonitorInfo(AbstractModel):
     def AsrLanguage(self):
         """智能语音识别语种：
 0 关闭 1 中文 2 英文 3日文 4 韩文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AsrLanguage
@@ -27292,7 +27251,6 @@ class LiveStreamMonitorInfo(AbstractModel):
     def OcrLanguage(self):
         """智能文字识别语种：
 0 关闭 1 中、英文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._OcrLanguage
@@ -27304,7 +27262,6 @@ class LiveStreamMonitorInfo(AbstractModel):
     @property
     def AiOcrInputIndexList(self):
         """开启智能文字识别的输入Index列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int non-negative
         """
         return self._AiOcrInputIndexList
@@ -27316,7 +27273,6 @@ class LiveStreamMonitorInfo(AbstractModel):
     @property
     def AllowMonitorReport(self):
         """是否存储监播事件到监播报告，以及是否允许查询监播报告
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AllowMonitorReport
@@ -27328,7 +27284,6 @@ class LiveStreamMonitorInfo(AbstractModel):
     @property
     def AiFormatDiagnose(self):
         """是否开启格式诊断
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AiFormatDiagnose
@@ -27340,7 +27295,6 @@ class LiveStreamMonitorInfo(AbstractModel):
     @property
     def AiQualityControl(self):
         """是否开启内容质检。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AiQualityControl
@@ -27422,19 +27376,14 @@ class LiveStreamMonitorInputInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _InputStreamName: 待监播的输入流名称。256字节以内，只允许包含字母、数字、‘-’，‘_’，'.'字符。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InputStreamName: str
         :param _InputDomain: 待监播的输入流推流域名。128字节以内，只允许填处于启用状态的推流域名。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InputDomain: str
         :param _InputApp: 待监播的输入流推流路径。32字节以内，只允许包含字母、数字、‘-’，‘_’，'.'字符。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InputApp: str
         :param _InputUrl: 待监播的输入流推流url。一般场景下，无需该参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InputUrl: str
         :param _Description: 描述。256字节以内。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _CasterInputIndex: 导播台输入源索引（10000 pvw， 10001 pgm， 其余代表输入下标）
         :type CasterInputIndex: int
@@ -27455,7 +27404,6 @@ class LiveStreamMonitorInputInfo(AbstractModel):
     @property
     def InputStreamName(self):
         """待监播的输入流名称。256字节以内，只允许包含字母、数字、‘-’，‘_’，'.'字符。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InputStreamName
@@ -27467,7 +27415,6 @@ class LiveStreamMonitorInputInfo(AbstractModel):
     @property
     def InputDomain(self):
         """待监播的输入流推流域名。128字节以内，只允许填处于启用状态的推流域名。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InputDomain
@@ -27479,7 +27426,6 @@ class LiveStreamMonitorInputInfo(AbstractModel):
     @property
     def InputApp(self):
         """待监播的输入流推流路径。32字节以内，只允许包含字母、数字、‘-’，‘_’，'.'字符。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InputApp
@@ -27491,7 +27437,6 @@ class LiveStreamMonitorInputInfo(AbstractModel):
     @property
     def InputUrl(self):
         """待监播的输入流推流url。一般场景下，无需该参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InputUrl
@@ -27503,7 +27448,6 @@ class LiveStreamMonitorInputInfo(AbstractModel):
     @property
     def Description(self):
         """描述。256字节以内。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -27575,11 +27519,9 @@ class LiveStreamMonitorNotifyPolicy(AbstractModel):
         :param _NotifyPolicyType: 通知策略类型：范围[0,1]
 0:代表不使用任何通知策略
 1:代表使用全局回调策略，所有事件通知到CallbackUrl。
-注意：此字段可能返回 null，表示取不到有效值。
         :type NotifyPolicyType: int
         :param _CallbackUrl: 回调URL：长度[0,512]
 只支持http和https类型的url。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CallbackUrl: str
         """
         self._NotifyPolicyType = None
@@ -27590,7 +27532,6 @@ class LiveStreamMonitorNotifyPolicy(AbstractModel):
         """通知策略类型：范围[0,1]
 0:代表不使用任何通知策略
 1:代表使用全局回调策略，所有事件通知到CallbackUrl。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._NotifyPolicyType
@@ -27603,7 +27544,6 @@ class LiveStreamMonitorNotifyPolicy(AbstractModel):
     def CallbackUrl(self):
         """回调URL：长度[0,512]
 只支持http和https类型的url。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CallbackUrl
@@ -27634,21 +27574,16 @@ class LiveStreamMonitorOutputInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _OutputStreamWidth: 监播任务输出流宽度像素。范围[1,1920]。建议至少大于100像素。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OutputStreamWidth: int
         :param _OutputStreamHeight: 监播任务输出流长度像素。范围[1,1080]，建议至少大于100像素。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OutputStreamHeight: int
         :param _OutputStreamName: 监播任务输出流名称。
 不填时，系统会自动生成。
 256字节以内，只允许包含字母、数字、‘-’，‘_’，'.'字符。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OutputStreamName: str
         :param _OutputDomain: 监播任务播放域名。128字节以内，只允许填处于启用状态的播放域名。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OutputDomain: str
         :param _OutputApp: 监播任务播放路径。32字节以内，只允许包含字母、数字、‘-’，‘_’，'.'字符。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OutputApp: str
         """
         self._OutputStreamWidth = None
@@ -27660,7 +27595,6 @@ class LiveStreamMonitorOutputInfo(AbstractModel):
     @property
     def OutputStreamWidth(self):
         """监播任务输出流宽度像素。范围[1,1920]。建议至少大于100像素。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._OutputStreamWidth
@@ -27672,7 +27606,6 @@ class LiveStreamMonitorOutputInfo(AbstractModel):
     @property
     def OutputStreamHeight(self):
         """监播任务输出流长度像素。范围[1,1080]，建议至少大于100像素。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._OutputStreamHeight
@@ -27686,7 +27619,6 @@ class LiveStreamMonitorOutputInfo(AbstractModel):
         """监播任务输出流名称。
 不填时，系统会自动生成。
 256字节以内，只允许包含字母、数字、‘-’，‘_’，'.'字符。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OutputStreamName
@@ -27698,7 +27630,6 @@ class LiveStreamMonitorOutputInfo(AbstractModel):
     @property
     def OutputDomain(self):
         """监播任务播放域名。128字节以内，只允许填处于启用状态的播放域名。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OutputDomain
@@ -27710,7 +27641,6 @@ class LiveStreamMonitorOutputInfo(AbstractModel):
     @property
     def OutputApp(self):
         """监播任务播放路径。32字节以内，只允许包含字母、数字、‘-’，‘_’，'.'字符。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OutputApp
@@ -27827,13 +27757,10 @@ class MPSResult(AbstractModel):
     def __init__(self):
         r"""
         :param _AiAsrResults: 智能语音识别结果。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AiAsrResults: list of str
         :param _AiOcrResults: 智能文字识别结果。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AiOcrResults: list of str
         :param _StreamQuaCtrlResults: 内容质检结果。
-注意：此字段可能返回 null，表示取不到有效值。
         :type StreamQuaCtrlResults: list of str
         """
         self._AiAsrResults = None
@@ -27843,7 +27770,6 @@ class MPSResult(AbstractModel):
     @property
     def AiAsrResults(self):
         """智能语音识别结果。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._AiAsrResults
@@ -27855,7 +27781,6 @@ class MPSResult(AbstractModel):
     @property
     def AiOcrResults(self):
         """智能文字识别结果。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._AiOcrResults
@@ -27867,7 +27792,6 @@ class MPSResult(AbstractModel):
     @property
     def StreamQuaCtrlResults(self):
         """内容质检结果。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._StreamQuaCtrlResults

@@ -14798,11 +14798,14 @@ class UpdateStreamIngestRequest(AbstractModel):
         :type StreamUrl: str
         :param _Volume: 音量，取值范围[0, 100]，默认100，表示原音量。
         :type Volume: int
+        :param _IsPause: 是否暂停，默认false表示不暂停。暂停期间任务仍在进行中仍会计费，如果要销毁任务请调用停止接口。
+        :type IsPause: bool
         """
         self._SdkAppId = None
         self._TaskId = None
         self._StreamUrl = None
         self._Volume = None
+        self._IsPause = None
 
     @property
     def SdkAppId(self):
@@ -14848,12 +14851,24 @@ class UpdateStreamIngestRequest(AbstractModel):
     def Volume(self, Volume):
         self._Volume = Volume
 
+    @property
+    def IsPause(self):
+        """是否暂停，默认false表示不暂停。暂停期间任务仍在进行中仍会计费，如果要销毁任务请调用停止接口。
+        :rtype: bool
+        """
+        return self._IsPause
+
+    @IsPause.setter
+    def IsPause(self, IsPause):
+        self._IsPause = IsPause
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
         self._TaskId = params.get("TaskId")
         self._StreamUrl = params.get("StreamUrl")
         self._Volume = params.get("Volume")
+        self._IsPause = params.get("IsPause")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

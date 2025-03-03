@@ -2017,10 +2017,13 @@ class CreateDisasterRecoverGroupRequest(AbstractModel):
         :type Type: str
         :param _ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。<br>更多详细信息请参阅：如何保证幂等性。
         :type ClientToken: str
+        :param _Affinity: 置放群组的亲和度，在置放群组的实例会按该亲和度分布，亲和度的取值范围是：1-10，默认为1
+        :type Affinity: int
         """
         self._Name = None
         self._Type = None
         self._ClientToken = None
+        self._Affinity = None
 
     @property
     def Name(self):
@@ -2055,11 +2058,23 @@ class CreateDisasterRecoverGroupRequest(AbstractModel):
     def ClientToken(self, ClientToken):
         self._ClientToken = ClientToken
 
+    @property
+    def Affinity(self):
+        """置放群组的亲和度，在置放群组的实例会按该亲和度分布，亲和度的取值范围是：1-10，默认为1
+        :rtype: int
+        """
+        return self._Affinity
+
+    @Affinity.setter
+    def Affinity(self, Affinity):
+        self._Affinity = Affinity
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Type = params.get("Type")
         self._ClientToken = params.get("ClientToken")
+        self._Affinity = params.get("Affinity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

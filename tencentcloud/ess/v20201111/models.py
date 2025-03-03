@@ -8006,6 +8006,163 @@ class CreateFlowEvidenceReportResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateFlowForwardsRequest(AbstractModel):
+    """CreateFlowForwards请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _TargetUserId: 合同对应参与方需要修改的目标经办人。其UserId可在企业控制台中组织管理里面找到。或者使用获取员工信息接口得到。
+
+注意：`需要保证目标经办人已经加入企业且已实名`
+        :type TargetUserId: str
+        :param _FlowForwardInfos: 企业签署方的合同及对应签署方
+        :type FlowForwardInfos: list of FlowForwardInfo
+        :param _Agent: 代理企业和员工的信息。在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        self._Operator = None
+        self._TargetUserId = None
+        self._FlowForwardInfos = None
+        self._Agent = None
+
+    @property
+    def Operator(self):
+        """执行本接口操作的员工信息。注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def TargetUserId(self):
+        """合同对应参与方需要修改的目标经办人。其UserId可在企业控制台中组织管理里面找到。或者使用获取员工信息接口得到。
+
+注意：`需要保证目标经办人已经加入企业且已实名`
+        :rtype: str
+        """
+        return self._TargetUserId
+
+    @TargetUserId.setter
+    def TargetUserId(self, TargetUserId):
+        self._TargetUserId = TargetUserId
+
+    @property
+    def FlowForwardInfos(self):
+        """企业签署方的合同及对应签署方
+        :rtype: list of FlowForwardInfo
+        """
+        return self._FlowForwardInfos
+
+    @FlowForwardInfos.setter
+    def FlowForwardInfos(self, FlowForwardInfos):
+        self._FlowForwardInfos = FlowForwardInfos
+
+    @property
+    def Agent(self):
+        """代理企业和员工的信息。在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._TargetUserId = params.get("TargetUserId")
+        if params.get("FlowForwardInfos") is not None:
+            self._FlowForwardInfos = []
+            for item in params.get("FlowForwardInfos"):
+                obj = FlowForwardInfo()
+                obj._deserialize(item)
+                self._FlowForwardInfos.append(obj)
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateFlowForwardsResponse(AbstractModel):
+    """CreateFlowForwards返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FailedFlows: 失败的合同id以及错误详情
+        :type FailedFlows: list of FlowForwardResult
+        :param _SuccessFlows: 成功的合同id
+        :type SuccessFlows: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FailedFlows = None
+        self._SuccessFlows = None
+        self._RequestId = None
+
+    @property
+    def FailedFlows(self):
+        """失败的合同id以及错误详情
+        :rtype: list of FlowForwardResult
+        """
+        return self._FailedFlows
+
+    @FailedFlows.setter
+    def FailedFlows(self, FailedFlows):
+        self._FailedFlows = FailedFlows
+
+    @property
+    def SuccessFlows(self):
+        """成功的合同id
+        :rtype: list of str
+        """
+        return self._SuccessFlows
+
+    @SuccessFlows.setter
+    def SuccessFlows(self, SuccessFlows):
+        self._SuccessFlows = SuccessFlows
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("FailedFlows") is not None:
+            self._FailedFlows = []
+            for item in params.get("FailedFlows"):
+                obj = FlowForwardResult()
+                obj._deserialize(item)
+                self._FailedFlows.append(obj)
+        self._SuccessFlows = params.get("SuccessFlows")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateFlowGroupByFilesRequest(AbstractModel):
     """CreateFlowGroupByFiles请求参数结构体
 
@@ -22511,10 +22668,8 @@ class FailedDeleteStaffData(AbstractModel):
     def __init__(self):
         r"""
         :param _UserId: 员工在电子签的userId
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserId: str
         :param _OpenId: 员工在第三方平台的openId
-注意：此字段可能返回 null，表示取不到有效值。
         :type OpenId: str
         :param _Reason: 失败原因
         :type Reason: str
@@ -22526,7 +22681,6 @@ class FailedDeleteStaffData(AbstractModel):
     @property
     def UserId(self):
         """员工在电子签的userId
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UserId
@@ -22538,7 +22692,6 @@ class FailedDeleteStaffData(AbstractModel):
     @property
     def OpenId(self):
         """员工在第三方平台的openId
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OpenId
@@ -24817,6 +24970,108 @@ class FlowDetailInfo(AbstractModel):
         
 
 
+class FlowForwardInfo(AbstractModel):
+    """合同转交相关信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 合同流程ID，为32位字符串。此接口的合同流程ID需要由[创建签署流程](https://qian.tencent.com/developers/companyApis/startFlows/CreateFlow)接口创建得到。
+        :type FlowId: str
+        :param _RecipientId: 签署方经办人在合同中的参与方ID，为32位字符串。
+        :type RecipientId: str
+        """
+        self._FlowId = None
+        self._RecipientId = None
+
+    @property
+    def FlowId(self):
+        """合同流程ID，为32位字符串。此接口的合同流程ID需要由[创建签署流程](https://qian.tencent.com/developers/companyApis/startFlows/CreateFlow)接口创建得到。
+        :rtype: str
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RecipientId(self):
+        """签署方经办人在合同中的参与方ID，为32位字符串。
+        :rtype: str
+        """
+        return self._RecipientId
+
+    @RecipientId.setter
+    def RecipientId(self, RecipientId):
+        self._RecipientId = RecipientId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RecipientId = params.get("RecipientId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlowForwardResult(AbstractModel):
+    """转交合同结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 合同流程ID为32位字符串。您可以登录腾讯电子签控制台，在 "合同" -> "合同中心" 中查看某个合同的FlowId（在页面中展示为合同ID）。[点击查看FlowId在控制台中的位置](https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png)。
+        :type FlowId: str
+        :param _ErrorDetail: 如果失败，返回的错误细节。
+        :type ErrorDetail: str
+        """
+        self._FlowId = None
+        self._ErrorDetail = None
+
+    @property
+    def FlowId(self):
+        """合同流程ID为32位字符串。您可以登录腾讯电子签控制台，在 "合同" -> "合同中心" 中查看某个合同的FlowId（在页面中展示为合同ID）。[点击查看FlowId在控制台中的位置](https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png)。
+        :rtype: str
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def ErrorDetail(self):
+        """如果失败，返回的错误细节。
+        :rtype: str
+        """
+        return self._ErrorDetail
+
+    @ErrorDetail.setter
+    def ErrorDetail(self, ErrorDetail):
+        self._ErrorDetail = ErrorDetail
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._ErrorDetail = params.get("ErrorDetail")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FlowGroupApproverInfo(AbstractModel):
     """合同组相关信息，指定合同组子合同和签署方的信息，用于补充动态签署人。
 
@@ -26670,7 +26925,6 @@ class IntentionActionResult(AbstractModel):
     def __init__(self):
         r"""
         :param _Details: 意愿核身结果详细数据，与每段点头确认过程一一对应
-注意：此字段可能返回 null，表示取不到有效值。
         :type Details: list of IntentionActionResultDetail
         """
         self._Details = None
@@ -26678,7 +26932,6 @@ class IntentionActionResult(AbstractModel):
     @property
     def Details(self):
         """意愿核身结果详细数据，与每段点头确认过程一一对应
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of IntentionActionResultDetail
         """
         return self._Details

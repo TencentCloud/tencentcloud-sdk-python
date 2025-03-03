@@ -41,6 +41,9 @@ FAILEDOPERATION_EMPTYIMAGEERROR = 'FailedOperation.EmptyImageError'
 # 引擎识别超时。
 FAILEDOPERATION_ENGINERECOGNIZETIMEOUT = 'FailedOperation.EngineRecognizeTimeout'
 
+# 字段值不符合预期
+FAILEDOPERATION_FIELDEXCEPTION = 'FailedOperation.FieldException'
+
 # 文件解码失败
 FAILEDOPERATION_FILEDECODEFAILED = 'FailedOperation.FileDecodeFailed'
 
@@ -73,6 +76,9 @@ FAILEDOPERATION_IMAGENOTEXT = 'FailedOperation.ImageNoText'
 
 # 图片尺寸过大，请参考输入参数中关于图片大小限制的说明。
 FAILEDOPERATION_IMAGESIZETOOLARGE = 'FailedOperation.ImageSizeTooLarge'
+
+# 视读区信息与机读区信息不一致
+FAILEDOPERATION_INCONSISTENCYBETWEENMRZANDVRZ = 'FailedOperation.InconsistencyBetweenMRZAndVRZ'
 
 # 发票数据不一致。温馨提示：新版发票核验接口功能更完整，请尽快切换，如已切换请忽略。
 FAILEDOPERATION_INVOICEMISMATCH = 'FailedOperation.InvoiceMismatch'

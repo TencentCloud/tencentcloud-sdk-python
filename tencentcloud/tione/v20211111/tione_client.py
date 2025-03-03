@@ -464,7 +464,9 @@ class TioneClient(AbstractClient):
 
 
     def DescribeInferTemplates(self, request):
-        """查询推理镜像模板
+        """已废弃，收敛到统一接口
+
+        查询推理镜像模板
 
         :param request: Request instance for DescribeInferTemplates.
         :type request: :class:`tencentcloud.tione.v20211111.models.DescribeInferTemplatesRequest`

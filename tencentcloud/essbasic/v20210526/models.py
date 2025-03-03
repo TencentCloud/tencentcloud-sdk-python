@@ -15278,6 +15278,146 @@ class CreateFlowBlockchainEvidenceUrlResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateFlowForwardsRequest(AbstractModel):
+    """CreateFlowForwards请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TargetOpenId: 合同对应参与方需要修改的目标经办人对应的OpenId。
+
+注意：`需要保证目标经办人已经加入企业且已实名`
+        :type TargetOpenId: str
+        :param _FlowForwardInfos: 企业签署方的合同及对应签署方
+        :type FlowForwardInfos: list of FlowForwardInfo
+        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。此接口下面信息必填。<ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        """
+        self._TargetOpenId = None
+        self._FlowForwardInfos = None
+        self._Agent = None
+
+    @property
+    def TargetOpenId(self):
+        """合同对应参与方需要修改的目标经办人对应的OpenId。
+
+注意：`需要保证目标经办人已经加入企业且已实名`
+        :rtype: str
+        """
+        return self._TargetOpenId
+
+    @TargetOpenId.setter
+    def TargetOpenId(self, TargetOpenId):
+        self._TargetOpenId = TargetOpenId
+
+    @property
+    def FlowForwardInfos(self):
+        """企业签署方的合同及对应签署方
+        :rtype: list of FlowForwardInfo
+        """
+        return self._FlowForwardInfos
+
+    @FlowForwardInfos.setter
+    def FlowForwardInfos(self, FlowForwardInfos):
+        self._FlowForwardInfos = FlowForwardInfos
+
+    @property
+    def Agent(self):
+        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。此接口下面信息必填。<ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+
+    def _deserialize(self, params):
+        self._TargetOpenId = params.get("TargetOpenId")
+        if params.get("FlowForwardInfos") is not None:
+            self._FlowForwardInfos = []
+            for item in params.get("FlowForwardInfos"):
+                obj = FlowForwardInfo()
+                obj._deserialize(item)
+                self._FlowForwardInfos.append(obj)
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateFlowForwardsResponse(AbstractModel):
+    """CreateFlowForwards返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FailedFlows: 失败的合同id以及错误详情
+        :type FailedFlows: list of FlowForwardResult
+        :param _SuccessFlows: 成功的合同id
+        :type SuccessFlows: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FailedFlows = None
+        self._SuccessFlows = None
+        self._RequestId = None
+
+    @property
+    def FailedFlows(self):
+        """失败的合同id以及错误详情
+        :rtype: list of FlowForwardResult
+        """
+        return self._FailedFlows
+
+    @FailedFlows.setter
+    def FailedFlows(self, FailedFlows):
+        self._FailedFlows = FailedFlows
+
+    @property
+    def SuccessFlows(self):
+        """成功的合同id
+        :rtype: list of str
+        """
+        return self._SuccessFlows
+
+    @SuccessFlows.setter
+    def SuccessFlows(self, SuccessFlows):
+        self._SuccessFlows = SuccessFlows
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("FailedFlows") is not None:
+            self._FailedFlows = []
+            for item in params.get("FailedFlows"):
+                obj = FlowForwardResult()
+                obj._deserialize(item)
+                self._FailedFlows.append(obj)
+        self._SuccessFlows = params.get("SuccessFlows")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateFlowGroupSignReviewRequest(AbstractModel):
     """CreateFlowGroupSignReview请求参数结构体
 
@@ -22428,6 +22568,108 @@ class FlowFileInfo(AbstractModel):
         self._CustomShowMap = params.get("CustomShowMap")
         self._NeedSignReview = params.get("NeedSignReview")
         self._FlowDisplayType = params.get("FlowDisplayType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlowForwardInfo(AbstractModel):
+    """合同转交相关信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 合同流程ID，为32位字符串。此接口的合同流程ID需要由[创建签署流程](https://qian.tencent.com/developers/companyApis/startFlows/CreateFlow)接口创建得到。
+        :type FlowId: str
+        :param _RecipientId: 签署方经办人在合同中的参与方ID，为32位字符串。
+        :type RecipientId: str
+        """
+        self._FlowId = None
+        self._RecipientId = None
+
+    @property
+    def FlowId(self):
+        """合同流程ID，为32位字符串。此接口的合同流程ID需要由[创建签署流程](https://qian.tencent.com/developers/companyApis/startFlows/CreateFlow)接口创建得到。
+        :rtype: str
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RecipientId(self):
+        """签署方经办人在合同中的参与方ID，为32位字符串。
+        :rtype: str
+        """
+        return self._RecipientId
+
+    @RecipientId.setter
+    def RecipientId(self, RecipientId):
+        self._RecipientId = RecipientId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RecipientId = params.get("RecipientId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlowForwardResult(AbstractModel):
+    """转交合同结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 合同流程ID为32位字符串。您可以登录腾讯电子签控制台，在 "合同" -> "合同中心" 中查看某个合同的FlowId（在页面中展示为合同ID）。[点击查看FlowId在控制台中的位置](https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png)。
+        :type FlowId: str
+        :param _ErrorDetail: 如果失败，返回的错误细节。
+        :type ErrorDetail: str
+        """
+        self._FlowId = None
+        self._ErrorDetail = None
+
+    @property
+    def FlowId(self):
+        """合同流程ID为32位字符串。您可以登录腾讯电子签控制台，在 "合同" -> "合同中心" 中查看某个合同的FlowId（在页面中展示为合同ID）。[点击查看FlowId在控制台中的位置](https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png)。
+        :rtype: str
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def ErrorDetail(self):
+        """如果失败，返回的错误细节。
+        :rtype: str
+        """
+        return self._ErrorDetail
+
+    @ErrorDetail.setter
+    def ErrorDetail(self, ErrorDetail):
+        self._ErrorDetail = ErrorDetail
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._ErrorDetail = params.get("ErrorDetail")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
