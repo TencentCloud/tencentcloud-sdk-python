@@ -2019,11 +2019,14 @@ class CreateDisasterRecoverGroupRequest(AbstractModel):
         :type ClientToken: str
         :param _Affinity: 置放群组的亲和度，在置放群组的实例会按该亲和度分布，亲和度的取值范围是：1-10，默认为1
         :type Affinity: int
+        :param _TagSpecification: 标签描述列表。通过指定该参数可以绑定标签到置放群组。
+        :type TagSpecification: list of TagSpecification
         """
         self._Name = None
         self._Type = None
         self._ClientToken = None
         self._Affinity = None
+        self._TagSpecification = None
 
     @property
     def Name(self):
@@ -2069,12 +2072,29 @@ class CreateDisasterRecoverGroupRequest(AbstractModel):
     def Affinity(self, Affinity):
         self._Affinity = Affinity
 
+    @property
+    def TagSpecification(self):
+        """标签描述列表。通过指定该参数可以绑定标签到置放群组。
+        :rtype: list of TagSpecification
+        """
+        return self._TagSpecification
+
+    @TagSpecification.setter
+    def TagSpecification(self, TagSpecification):
+        self._TagSpecification = TagSpecification
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Type = params.get("Type")
         self._ClientToken = params.get("ClientToken")
         self._Affinity = params.get("Affinity")
+        if params.get("TagSpecification") is not None:
+            self._TagSpecification = []
+            for item in params.get("TagSpecification"):
+                obj = TagSpecification()
+                obj._deserialize(item)
+                self._TagSpecification.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4976,11 +4996,18 @@ class DescribeDisasterRecoverGroupsRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
         :type Limit: int
+        :param _Filters: <li><strong>tag-key</strong></li>
+<p style="padding-left: 30px;">按照【<strong>标签键</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+<li><strong>tag-value</strong></li> <p style="padding-left: 30px;">按照【<strong>标签值</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+<li><strong>tag:tag-key</strong></li> <p style="padding-left: 30px;">按照【<strong>标签键值对</strong>】进行过滤。tag-key使用具体的标签键进行替换。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。
+        :type Filters: list of Filter
         """
         self._DisasterRecoverGroupIds = None
         self._Name = None
         self._Offset = None
         self._Limit = None
+        self._Filters = None
 
     @property
     def DisasterRecoverGroupIds(self):
@@ -5026,12 +5053,33 @@ class DescribeDisasterRecoverGroupsRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def Filters(self):
+        """<li><strong>tag-key</strong></li>
+<p style="padding-left: 30px;">按照【<strong>标签键</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+<li><strong>tag-value</strong></li> <p style="padding-left: 30px;">按照【<strong>标签值</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+<li><strong>tag:tag-key</strong></li> <p style="padding-left: 30px;">按照【<strong>标签键值对</strong>】进行过滤。tag-key使用具体的标签键进行替换。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
 
     def _deserialize(self, params):
         self._DisasterRecoverGroupIds = params.get("DisasterRecoverGroupIds")
         self._Name = params.get("Name")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8301,11 +8349,11 @@ class DisasterRecoverGroup(AbstractModel):
         :param _CurrentNum: 分散置放群组内云服务器当前数量。
         :type CurrentNum: int
         :param _InstanceIds: 分散置放群组内，云服务器id列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceIds: list of str
         :param _CreateTime: 分散置放群组创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
+        :param _Tags: 置放群组关联的标签列表。
+        :type Tags: list of Tag
         """
         self._DisasterRecoverGroupId = None
         self._Name = None
@@ -8314,6 +8362,7 @@ class DisasterRecoverGroup(AbstractModel):
         self._CurrentNum = None
         self._InstanceIds = None
         self._CreateTime = None
+        self._Tags = None
 
     @property
     def DisasterRecoverGroupId(self):
@@ -8376,7 +8425,6 @@ class DisasterRecoverGroup(AbstractModel):
     @property
     def InstanceIds(self):
         """分散置放群组内，云服务器id列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._InstanceIds
@@ -8388,7 +8436,6 @@ class DisasterRecoverGroup(AbstractModel):
     @property
     def CreateTime(self):
         """分散置放群组创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -8396,6 +8443,17 @@ class DisasterRecoverGroup(AbstractModel):
     @CreateTime.setter
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
+
+    @property
+    def Tags(self):
+        """置放群组关联的标签列表。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
 
     def _deserialize(self, params):
@@ -8406,6 +8464,12 @@ class DisasterRecoverGroup(AbstractModel):
         self._CurrentNum = params.get("CurrentNum")
         self._InstanceIds = params.get("InstanceIds")
         self._CreateTime = params.get("CreateTime")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

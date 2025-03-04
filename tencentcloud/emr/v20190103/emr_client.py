@@ -1459,6 +1459,29 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifySLInstanceBasic(self, request):
+        """serverless hbase修改实例名称
+
+        :param request: Request instance for ModifySLInstanceBasic.
+        :type request: :class:`tencentcloud.emr.v20190103.models.ModifySLInstanceBasicRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ModifySLInstanceBasicResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySLInstanceBasic", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifySLInstanceBasicResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyUserManagerPwd(self, request):
         """修改用户密码（用户管理）
 
