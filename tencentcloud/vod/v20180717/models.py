@@ -872,9 +872,9 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
         :type Definition: int
         :param _WatermarkSet: 水印列表，支持多张图片或文字水印，最大可支持 10 张。
         :type WatermarkSet: list of WatermarkInput
-        :param _TraceWatermark: 溯源水印，该功能已不再支持使用。
+        :param _TraceWatermark: 溯源水印。
         :type TraceWatermark: :class:`tencentcloud.vod.v20180717.models.TraceWatermarkInput`
-        :param _CopyRightWatermark: 版权水印，该功能已不再支持使用。
+        :param _CopyRightWatermark: 版权水印。
         :type CopyRightWatermark: :class:`tencentcloud.vod.v20180717.models.CopyRightWatermarkInput`
         :param _SubtitleSet: 字幕列表，元素为字幕 ID，支持多个字幕，最大可支持16个。
         :type SubtitleSet: list of str
@@ -909,7 +909,7 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
 
     @property
     def TraceWatermark(self):
-        """溯源水印，该功能已不再支持使用。
+        """溯源水印。
         :rtype: :class:`tencentcloud.vod.v20180717.models.TraceWatermarkInput`
         """
         return self._TraceWatermark
@@ -920,7 +920,7 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
 
     @property
     def CopyRightWatermark(self):
-        """版权水印，该功能已不再支持使用。
+        """版权水印。
         :rtype: :class:`tencentcloud.vod.v20180717.models.CopyRightWatermarkInput`
         """
         return self._CopyRightWatermark
@@ -71788,9 +71788,9 @@ class TranscodeTaskInput(AbstractModel):
         :type Definition: int
         :param _WatermarkSet: 水印列表，支持多张图片或文字水印，最大可支持 10 张。
         :type WatermarkSet: list of WatermarkInput
-        :param _TraceWatermark: 溯源水印，该功能已不再支持使用。
+        :param _TraceWatermark: 溯源水印。
         :type TraceWatermark: :class:`tencentcloud.vod.v20180717.models.TraceWatermarkInput`
-        :param _CopyRightWatermark: 版权水印，该功能已不再支持使用。
+        :param _CopyRightWatermark: 版权水印。
         :type CopyRightWatermark: :class:`tencentcloud.vod.v20180717.models.CopyRightWatermarkInput`
         :param _MosaicSet: 马赛克列表，最大可支持 10 张。
         :type MosaicSet: list of MosaicInput
@@ -71840,7 +71840,7 @@ class TranscodeTaskInput(AbstractModel):
 
     @property
     def TraceWatermark(self):
-        """溯源水印，该功能已不再支持使用。
+        """溯源水印。
         :rtype: :class:`tencentcloud.vod.v20180717.models.TraceWatermarkInput`
         """
         return self._TraceWatermark
@@ -71851,7 +71851,7 @@ class TranscodeTaskInput(AbstractModel):
 
     @property
     def CopyRightWatermark(self):
-        """版权水印，该功能已不再支持使用。
+        """版权水印。
         :rtype: :class:`tencentcloud.vod.v20180717.models.CopyRightWatermarkInput`
         """
         return self._CopyRightWatermark

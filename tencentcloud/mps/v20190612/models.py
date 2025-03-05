@@ -3635,7 +3635,11 @@ class AiAnalysisTaskInput(AbstractModel):
         :param _Definition: 视频内容分析模板 ID。
         :type Definition: int
         :param _ExtendedParameter: 扩展参数，其值为序列化的 json字符串。
-注意：此参数为定制需求参数，需要线下对接。
+注意：此参数为定制需求参数，参考如下：
+智能檫除：https://cloud.tencent.com/document/product/862/101530
+智能拆条：https://cloud.tencent.com/document/product/862/112098
+高光集锦：https://cloud.tencent.com/document/product/862/107280
+智能横转竖：https://cloud.tencent.com/document/product/862/112112
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtendedParameter: str
         """
@@ -3656,7 +3660,11 @@ class AiAnalysisTaskInput(AbstractModel):
     @property
     def ExtendedParameter(self):
         """扩展参数，其值为序列化的 json字符串。
-注意：此参数为定制需求参数，需要线下对接。
+注意：此参数为定制需求参数，参考如下：
+智能檫除：https://cloud.tencent.com/document/product/862/101530
+智能拆条：https://cloud.tencent.com/document/product/862/112098
+高光集锦：https://cloud.tencent.com/document/product/862/107280
+智能横转竖：https://cloud.tencent.com/document/product/862/112112
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -29456,6 +29464,9 @@ class DrmInfo(AbstractModel):
         r"""
         :param _Type: 加密类型：
 <li> simpleaes: aes-128 加密</li>
+<li> widevine</li>
+<li> fairplay：Dash不支持fairplay加密</li>  
+<li> playready</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _SimpleAesDrm: SimpleAes 加密信息。
@@ -29469,6 +29480,9 @@ class DrmInfo(AbstractModel):
     def Type(self):
         """加密类型：
 <li> simpleaes: aes-128 加密</li>
+<li> widevine</li>
+<li> fairplay：Dash不支持fairplay加密</li>  
+<li> playready</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -47703,6 +47717,8 @@ class ProcessMediaRequest(AbstractModel):
 <li> Online：实时任务</li>
 <li> Offline：闲时任务，不保证实效性，默认3天内处理完</li>
         :type TaskType: str
+        :param _ResourceId: 资源ID，需要保证对应资源是开启状态。默认为帐号主资源ID。
+        :type ResourceId: str
         """
         self._InputInfo = None
         self._OutputStorage = None
@@ -47718,6 +47734,7 @@ class ProcessMediaRequest(AbstractModel):
         self._SessionId = None
         self._SessionContext = None
         self._TaskType = None
+        self._ResourceId = None
 
     @property
     def InputInfo(self):
@@ -47884,6 +47901,17 @@ class ProcessMediaRequest(AbstractModel):
     def TaskType(self, TaskType):
         self._TaskType = TaskType
 
+    @property
+    def ResourceId(self):
+        """资源ID，需要保证对应资源是开启状态。默认为帐号主资源ID。
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
 
     def _deserialize(self, params):
         if params.get("InputInfo") is not None:
@@ -47916,6 +47944,7 @@ class ProcessMediaRequest(AbstractModel):
         self._SessionId = params.get("SessionId")
         self._SessionContext = params.get("SessionContext")
         self._TaskType = params.get("TaskType")
+        self._ResourceId = params.get("ResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

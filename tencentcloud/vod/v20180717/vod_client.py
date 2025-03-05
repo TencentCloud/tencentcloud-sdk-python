@@ -2916,7 +2916,7 @@ class VodClient(AbstractClient):
 
 
     def ExtractCopyRightWatermark(self, request):
-        """该 API 已经<font color='red'>不再维护</font>。如果有盗录溯源需求，请参考 [幽灵水印](https://cloud.tencent.com/document/product/266/94228)。
+        """如果有盗录溯源需求，请参考 [幽灵水印](https://cloud.tencent.com/document/product/266/94228)。
 
         :param request: Request instance for ExtractCopyRightWatermark.
         :type request: :class:`tencentcloud.vod.v20180717.models.ExtractCopyRightWatermarkRequest`
@@ -2939,7 +2939,7 @@ class VodClient(AbstractClient):
 
 
     def ExtractTraceWatermark(self, request):
-        """该 API 已经<font color='red'>不再维护</font>。如果有盗录溯源需求，请参考 [幽灵水印](https://cloud.tencent.com/document/product/266/94228)。
+        """如果有盗录溯源需求，推荐使用 [幽灵水印](https://cloud.tencent.com/document/product/266/94228)。
 
         :param request: Request instance for ExtractTraceWatermark.
         :type request: :class:`tencentcloud.vod.v20180717.models.ExtractTraceWatermarkRequest`

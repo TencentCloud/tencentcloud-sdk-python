@@ -5142,10 +5142,8 @@ class DescribeCodePacksResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _CodePacks: 码列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type CodePacks: list of CodePack
         :param _TotalCount: 总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5157,7 +5155,6 @@ class DescribeCodePacksResponse(AbstractModel):
     @property
     def CodePacks(self):
         """码列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CodePack
         """
         return self._CodePacks
@@ -5169,7 +5166,6 @@ class DescribeCodePacksResponse(AbstractModel):
     @property
     def TotalCount(self):
         """总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -8059,7 +8055,6 @@ class Job(AbstractModel):
         :param _Status: 执行状态 init:初始化, pending: 执行中, done: 执行成功, error: 执行失败
         :type Status: str
         :param _ErrorMessage: 任务错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMessage: str
         """
         self._JobId = None
@@ -8091,7 +8086,6 @@ class Job(AbstractModel):
     @property
     def ErrorMessage(self):
         """任务错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorMessage

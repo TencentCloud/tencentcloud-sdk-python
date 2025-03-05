@@ -49,6 +49,98 @@ class CdwpgClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAccounts(self, request):
+        """获取云原生实例对应的账号列表
+
+        :param request: Request instance for DescribeAccounts.
+        :type request: :class:`tencentcloud.cdwpg.v20201230.models.DescribeAccountsRequest`
+        :rtype: :class:`tencentcloud.cdwpg.v20201230.models.DescribeAccountsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAccounts", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAccountsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDBConfigHistory(self, request):
+        """DescribeDBConfigHistory1
+
+        :param request: Request instance for DescribeDBConfigHistory.
+        :type request: :class:`tencentcloud.cdwpg.v20201230.models.DescribeDBConfigHistoryRequest`
+        :rtype: :class:`tencentcloud.cdwpg.v20201230.models.DescribeDBConfigHistoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBConfigHistory", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBConfigHistoryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDBParams(self, request):
+        """配置描述
+
+        :param request: Request instance for DescribeDBParams.
+        :type request: :class:`tencentcloud.cdwpg.v20201230.models.DescribeDBParamsRequest`
+        :rtype: :class:`tencentcloud.cdwpg.v20201230.models.DescribeDBParamsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBParams", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBParamsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeErrorLog(self, request):
+        """查询错误日志
+
+        :param request: Request instance for DescribeErrorLog.
+        :type request: :class:`tencentcloud.cdwpg.v20201230.models.DescribeErrorLogRequest`
+        :rtype: :class:`tencentcloud.cdwpg.v20201230.models.DescribeErrorLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeErrorLog", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeErrorLogResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeInstance(self, request):
         """根据实例ID查询某个实例的具体信息
 
@@ -86,6 +178,52 @@ class CdwpgClient(AbstractClient):
             body = self.call("DescribeInstanceInfo", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeInstanceInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeInstanceNodes(self, request):
+        """节点list
+
+        :param request: Request instance for DescribeInstanceNodes.
+        :type request: :class:`tencentcloud.cdwpg.v20201230.models.DescribeInstanceNodesRequest`
+        :rtype: :class:`tencentcloud.cdwpg.v20201230.models.DescribeInstanceNodesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceNodes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceNodesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeInstanceOperations(self, request):
+        """在集群详情页面，拉取该集群的操作
+
+        :param request: Request instance for DescribeInstanceOperations.
+        :type request: :class:`tencentcloud.cdwpg.v20201230.models.DescribeInstanceOperationsRequest`
+        :rtype: :class:`tencentcloud.cdwpg.v20201230.models.DescribeInstanceOperationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceOperations", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceOperationsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -164,6 +302,75 @@ class CdwpgClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSlowLog(self, request):
+        """查询慢SQL日志
+
+        :param request: Request instance for DescribeSlowLog.
+        :type request: :class:`tencentcloud.cdwpg.v20201230.models.DescribeSlowLogRequest`
+        :rtype: :class:`tencentcloud.cdwpg.v20201230.models.DescribeSlowLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSlowLog", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSlowLogResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeUpgradeList(self, request):
+        """升级记录
+
+        :param request: Request instance for DescribeUpgradeList.
+        :type request: :class:`tencentcloud.cdwpg.v20201230.models.DescribeUpgradeListRequest`
+        :rtype: :class:`tencentcloud.cdwpg.v20201230.models.DescribeUpgradeListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUpgradeList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUpgradeListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeUserHbaConfig(self, request):
+        """user_hba
+
+        :param request: Request instance for DescribeUserHbaConfig.
+        :type request: :class:`tencentcloud.cdwpg.v20201230.models.DescribeUserHbaConfigRequest`
+        :rtype: :class:`tencentcloud.cdwpg.v20201230.models.DescribeUserHbaConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUserHbaConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUserHbaConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DestroyInstanceByApi(self, request):
         """销毁集群
 
@@ -187,6 +394,29 @@ class CdwpgClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyDBParameters(self, request):
+        """集群配置下发
+
+        :param request: Request instance for ModifyDBParameters.
+        :type request: :class:`tencentcloud.cdwpg.v20201230.models.ModifyDBParametersRequest`
+        :rtype: :class:`tencentcloud.cdwpg.v20201230.models.ModifyDBParametersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDBParameters", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDBParametersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyInstance(self, request):
         """修改实例信息，目前为实例名称
 
@@ -201,6 +431,144 @@ class CdwpgClient(AbstractClient):
             body = self.call("ModifyInstance", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyUserHba(self, request):
+        """修改用户Hba配置
+
+        :param request: Request instance for ModifyUserHba.
+        :type request: :class:`tencentcloud.cdwpg.v20201230.models.ModifyUserHbaRequest`
+        :rtype: :class:`tencentcloud.cdwpg.v20201230.models.ModifyUserHbaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyUserHba", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyUserHbaResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ResetAccountPassword(self, request):
+        """修改账号密码
+
+        :param request: Request instance for ResetAccountPassword.
+        :type request: :class:`tencentcloud.cdwpg.v20201230.models.ResetAccountPasswordRequest`
+        :rtype: :class:`tencentcloud.cdwpg.v20201230.models.ResetAccountPasswordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResetAccountPassword", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResetAccountPasswordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RestartInstance(self, request):
+        """用户在控制台主动发起重启实例
+
+        :param request: Request instance for RestartInstance.
+        :type request: :class:`tencentcloud.cdwpg.v20201230.models.RestartInstanceRequest`
+        :rtype: :class:`tencentcloud.cdwpg.v20201230.models.RestartInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RestartInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.RestartInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ScaleOutInstance(self, request):
+        """水平扩容
+
+        :param request: Request instance for ScaleOutInstance.
+        :type request: :class:`tencentcloud.cdwpg.v20201230.models.ScaleOutInstanceRequest`
+        :rtype: :class:`tencentcloud.cdwpg.v20201230.models.ScaleOutInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ScaleOutInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.ScaleOutInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ScaleUpInstance(self, request):
+        """控制台垂直变配集群
+
+        :param request: Request instance for ScaleUpInstance.
+        :type request: :class:`tencentcloud.cdwpg.v20201230.models.ScaleUpInstanceRequest`
+        :rtype: :class:`tencentcloud.cdwpg.v20201230.models.ScaleUpInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ScaleUpInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.ScaleUpInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpgradeInstance(self, request):
+        """在线升级
+
+        :param request: Request instance for UpgradeInstance.
+        :type request: :class:`tencentcloud.cdwpg.v20201230.models.UpgradeInstanceRequest`
+        :rtype: :class:`tencentcloud.cdwpg.v20201230.models.UpgradeInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpgradeInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpgradeInstanceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
