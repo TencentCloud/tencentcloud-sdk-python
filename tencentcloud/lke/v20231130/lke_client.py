@@ -307,6 +307,29 @@ class LkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateVar(self, request):
+        """创建变量
+
+        :param request: Request instance for CreateVar.
+        :type request: :class:`tencentcloud.lke.v20231130.models.CreateVarRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.CreateVarResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateVar", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateVarResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteApp(self, request):
         """删除应用
 
@@ -1219,6 +1242,29 @@ class LkeClient(AbstractClient):
             body = self.call("GetTaskStatus", params, headers=headers)
             response = json.loads(body)
             model = models.GetTaskStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetVarList(self, request):
+        """查询自定义变量列表
+
+        :param request: Request instance for GetVarList.
+        :type request: :class:`tencentcloud.lke.v20231130.models.GetVarListRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.GetVarListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetVarList", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetVarListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -744,6 +744,7 @@ class DescribeGatewayLoadBalancersRequest(AbstractModel):
 Filter.Name和Filter.Values皆为必填项。详细的过滤条件如下：
 - VpcId - String - 是否必填：否 - （过滤条件）按照网关负载均衡实例所属的私有网络过滤，如“vpc-bhqk****”。
 - Vips - String  - 是否必填：否 - （过滤条件）按照网关负载均衡实例所属的私有网络过滤，如“10.1.1.1”
+- tag:tag-key - String - 是否必填：否 - （过滤条件）按照GWLB标签键值对进行过滤，tag-key使用具体的标签键进行替换。
 
         :type Filters: list of Filter
         :param _SearchKey: 搜索字段，模糊匹配名称、VIP。
@@ -794,6 +795,7 @@ Filter.Name和Filter.Values皆为必填项。详细的过滤条件如下：
 Filter.Name和Filter.Values皆为必填项。详细的过滤条件如下：
 - VpcId - String - 是否必填：否 - （过滤条件）按照网关负载均衡实例所属的私有网络过滤，如“vpc-bhqk****”。
 - Vips - String  - 是否必填：否 - （过滤条件）按照网关负载均衡实例所属的私有网络过滤，如“10.1.1.1”
+- tag:tag-key - String - 是否必填：否 - （过滤条件）按照GWLB标签键值对进行过滤，tag-key使用具体的标签键进行替换。
 
         :rtype: list of Filter
         """
@@ -1730,8 +1732,10 @@ class GatewayLoadBalancer(AbstractModel):
         :type ChargeType: str
         :param _Isolation: 0：表示未被隔离，1：表示被隔离。
         :type Isolation: int
-        :param _IsolatedTime: 负载均衡实例被隔离的时间
+        :param _IsolatedTime: 网关负载均衡实例被隔离的时间
         :type IsolatedTime: str
+        :param _OperateProtect: 是否开启配置修改保护功能。
+        :type OperateProtect: bool
         """
         self._LoadBalancerId = None
         self._LoadBalancerName = None
@@ -1746,6 +1750,7 @@ class GatewayLoadBalancer(AbstractModel):
         self._ChargeType = None
         self._Isolation = None
         self._IsolatedTime = None
+        self._OperateProtect = None
 
     @property
     def LoadBalancerId(self):
@@ -1882,7 +1887,7 @@ class GatewayLoadBalancer(AbstractModel):
 
     @property
     def IsolatedTime(self):
-        """负载均衡实例被隔离的时间
+        """网关负载均衡实例被隔离的时间
         :rtype: str
         """
         return self._IsolatedTime
@@ -1890,6 +1895,17 @@ class GatewayLoadBalancer(AbstractModel):
     @IsolatedTime.setter
     def IsolatedTime(self, IsolatedTime):
         self._IsolatedTime = IsolatedTime
+
+    @property
+    def OperateProtect(self):
+        """是否开启配置修改保护功能。
+        :rtype: bool
+        """
+        return self._OperateProtect
+
+    @OperateProtect.setter
+    def OperateProtect(self, OperateProtect):
+        self._OperateProtect = OperateProtect
 
 
     def _deserialize(self, params):
@@ -1911,6 +1927,7 @@ class GatewayLoadBalancer(AbstractModel):
         self._ChargeType = params.get("ChargeType")
         self._Isolation = params.get("Isolation")
         self._IsolatedTime = params.get("IsolatedTime")
+        self._OperateProtect = params.get("OperateProtect")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2136,9 +2153,12 @@ class ModifyGatewayLoadBalancerAttributeRequest(AbstractModel):
         :type LoadBalancerId: str
         :param _LoadBalancerName: 网关负载均衡实例名称。可支持输入1-60个字符。
         :type LoadBalancerName: str
+        :param _DeleteProtect: 是否开启删除保护。
+        :type DeleteProtect: bool
         """
         self._LoadBalancerId = None
         self._LoadBalancerName = None
+        self._DeleteProtect = None
 
     @property
     def LoadBalancerId(self):
@@ -2162,10 +2182,22 @@ class ModifyGatewayLoadBalancerAttributeRequest(AbstractModel):
     def LoadBalancerName(self, LoadBalancerName):
         self._LoadBalancerName = LoadBalancerName
 
+    @property
+    def DeleteProtect(self):
+        """是否开启删除保护。
+        :rtype: bool
+        """
+        return self._DeleteProtect
+
+    @DeleteProtect.setter
+    def DeleteProtect(self, DeleteProtect):
+        self._DeleteProtect = DeleteProtect
+
 
     def _deserialize(self, params):
         self._LoadBalancerId = params.get("LoadBalancerId")
         self._LoadBalancerName = params.get("LoadBalancerName")
+        self._DeleteProtect = params.get("DeleteProtect")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

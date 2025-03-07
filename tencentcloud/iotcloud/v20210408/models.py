@@ -2083,27 +2083,16 @@ class DeleteDeviceResourceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProductID: 产品ID
-        :type ProductID: str
         :param _Name: 资源名称
         :type Name: str
         :param _DeviceName: 设备名称
         :type DeviceName: str
+        :param _ProductID: 产品ID
+        :type ProductID: str
         """
-        self._ProductID = None
         self._Name = None
         self._DeviceName = None
-
-    @property
-    def ProductID(self):
-        """产品ID
-        :rtype: str
-        """
-        return self._ProductID
-
-    @ProductID.setter
-    def ProductID(self, ProductID):
-        self._ProductID = ProductID
+        self._ProductID = None
 
     @property
     def Name(self):
@@ -2127,11 +2116,22 @@ class DeleteDeviceResourceRequest(AbstractModel):
     def DeviceName(self, DeviceName):
         self._DeviceName = DeviceName
 
+    @property
+    def ProductID(self):
+        """产品ID
+        :rtype: str
+        """
+        return self._ProductID
+
+    @ProductID.setter
+    def ProductID(self, ProductID):
+        self._ProductID = ProductID
+
 
     def _deserialize(self, params):
-        self._ProductID = params.get("ProductID")
         self._Name = params.get("Name")
         self._DeviceName = params.get("DeviceName")
+        self._ProductID = params.get("ProductID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

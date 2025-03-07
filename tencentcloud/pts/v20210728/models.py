@@ -5877,7 +5877,7 @@ class DescribeSampleLogsRequest(AbstractModel):
         :type ScenarioId: str
         :param _JobId: 测试任务ID
         :type JobId: str
-        :param _Context: 加载更多日志时使用，透传上次返回的Context值，获取后续的日志内容。过期时间1小时
+        :param _Context: 加载更多日志时使用，透传上次返回的Context值，获取后续的日志内容。过期时间1小时，不与 Offset  参数同时使用
         :type Context: str
         :param _From: 日志开始时间
         :type From: str
@@ -5885,12 +5885,14 @@ class DescribeSampleLogsRequest(AbstractModel):
         :type To: str
         :param _SeverityText: 日志级别debug,info,error
         :type SeverityText: str
-        :param _InstanceRegion: ap-shanghai, ap-guangzhou
+        :param _InstanceRegion: 地域
         :type InstanceRegion: str
         :param _Instance: 施压引擎节点IP
         :type Instance: str
-        :param _LogType: request 代表采样日志,可为不填
+        :param _LogType: request 代表采样日志,engine 代表引擎日志，console 代表用户打印日志
         :type LogType: str
+        :param _Offset: 日志偏移量，不与Context 参数同时使用
+        :type Offset: int
         :param _Limit: 返回日志条数，最大100
         :type Limit: int
         :param _ReactionTimeRange: 采样日志响应时间范围
@@ -5914,6 +5916,7 @@ class DescribeSampleLogsRequest(AbstractModel):
         self._InstanceRegion = None
         self._Instance = None
         self._LogType = None
+        self._Offset = None
         self._Limit = None
         self._ReactionTimeRange = None
         self._Status = None
@@ -5956,7 +5959,7 @@ class DescribeSampleLogsRequest(AbstractModel):
 
     @property
     def Context(self):
-        """加载更多日志时使用，透传上次返回的Context值，获取后续的日志内容。过期时间1小时
+        """加载更多日志时使用，透传上次返回的Context值，获取后续的日志内容。过期时间1小时，不与 Offset  参数同时使用
         :rtype: str
         """
         return self._Context
@@ -6000,7 +6003,7 @@ class DescribeSampleLogsRequest(AbstractModel):
 
     @property
     def InstanceRegion(self):
-        """ap-shanghai, ap-guangzhou
+        """地域
         :rtype: str
         """
         return self._InstanceRegion
@@ -6022,7 +6025,7 @@ class DescribeSampleLogsRequest(AbstractModel):
 
     @property
     def LogType(self):
-        """request 代表采样日志,可为不填
+        """request 代表采样日志,engine 代表引擎日志，console 代表用户打印日志
         :rtype: str
         """
         return self._LogType
@@ -6030,6 +6033,17 @@ class DescribeSampleLogsRequest(AbstractModel):
     @LogType.setter
     def LogType(self, LogType):
         self._LogType = LogType
+
+    @property
+    def Offset(self):
+        """日志偏移量，不与Context 参数同时使用
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
     @property
     def Limit(self):
@@ -6109,6 +6123,7 @@ class DescribeSampleLogsRequest(AbstractModel):
         self._InstanceRegion = params.get("InstanceRegion")
         self._Instance = params.get("Instance")
         self._LogType = params.get("LogType")
+        self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         if params.get("ReactionTimeRange") is not None:
             self._ReactionTimeRange = ReactionTimeRange()
@@ -6222,11 +6237,14 @@ class DescribeSampleMatrixBatchQueryRequest(AbstractModel):
         :type ScenarioId: str
         :param _Queries: 查询语句
         :type Queries: list of InternalMetricQuery
+        :param _MaxPoint: 最多返回的数据点个数
+        :type MaxPoint: int
         """
         self._JobId = None
         self._ProjectId = None
         self._ScenarioId = None
         self._Queries = None
+        self._MaxPoint = None
 
     @property
     def JobId(self):
@@ -6272,6 +6290,17 @@ class DescribeSampleMatrixBatchQueryRequest(AbstractModel):
     def Queries(self, Queries):
         self._Queries = Queries
 
+    @property
+    def MaxPoint(self):
+        """最多返回的数据点个数
+        :rtype: int
+        """
+        return self._MaxPoint
+
+    @MaxPoint.setter
+    def MaxPoint(self, MaxPoint):
+        self._MaxPoint = MaxPoint
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -6283,6 +6312,7 @@ class DescribeSampleMatrixBatchQueryRequest(AbstractModel):
                 obj = InternalMetricQuery()
                 obj._deserialize(item)
                 self._Queries.append(obj)
+        self._MaxPoint = params.get("MaxPoint")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6364,6 +6394,8 @@ class DescribeSampleMatrixQueryRequest(AbstractModel):
         :type Filters: list of Filter
         :param _GroupBy: 分组；取值范围参见 DescribeMetricLabelWithValues 接口返回的指标及其支持的标签名
         :type GroupBy: list of str
+        :param _MaxPoint: 返回的最大数据点个数
+        :type MaxPoint: int
         """
         self._JobId = None
         self._ProjectId = None
@@ -6372,6 +6404,7 @@ class DescribeSampleMatrixQueryRequest(AbstractModel):
         self._Aggregation = None
         self._Filters = None
         self._GroupBy = None
+        self._MaxPoint = None
 
     @property
     def JobId(self):
@@ -6450,6 +6483,17 @@ class DescribeSampleMatrixQueryRequest(AbstractModel):
     def GroupBy(self, GroupBy):
         self._GroupBy = GroupBy
 
+    @property
+    def MaxPoint(self):
+        """返回的最大数据点个数
+        :rtype: int
+        """
+        return self._MaxPoint
+
+    @MaxPoint.setter
+    def MaxPoint(self, MaxPoint):
+        self._MaxPoint = MaxPoint
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -6464,6 +6508,7 @@ class DescribeSampleMatrixQueryRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Filters.append(obj)
         self._GroupBy = params.get("GroupBy")
+        self._MaxPoint = params.get("MaxPoint")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11671,6 +11716,9 @@ class ScriptInfo(AbstractModel):
         :type LoadWeight: int
         :param _FileId: 文件 ID
         :type FileId: str
+        :param _Uploaded: 文件是否已上传，如果已上传，则可以不必填写 EncodedContent,EncodedHar 等内容。
+主要用于较大长度脚本上传。
+        :type Uploaded: bool
         """
         self._Name = None
         self._Size = None
@@ -11680,6 +11728,7 @@ class ScriptInfo(AbstractModel):
         self._EncodedHttpArchive = None
         self._LoadWeight = None
         self._FileId = None
+        self._Uploaded = None
 
     @property
     def Name(self):
@@ -11770,6 +11819,18 @@ class ScriptInfo(AbstractModel):
     def FileId(self, FileId):
         self._FileId = FileId
 
+    @property
+    def Uploaded(self):
+        """文件是否已上传，如果已上传，则可以不必填写 EncodedContent,EncodedHar 等内容。
+主要用于较大长度脚本上传。
+        :rtype: bool
+        """
+        return self._Uploaded
+
+    @Uploaded.setter
+    def Uploaded(self, Uploaded):
+        self._Uploaded = Uploaded
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -11780,6 +11841,7 @@ class ScriptInfo(AbstractModel):
         self._EncodedHttpArchive = params.get("EncodedHttpArchive")
         self._LoadWeight = params.get("LoadWeight")
         self._FileId = params.get("FileId")
+        self._Uploaded = params.get("Uploaded")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

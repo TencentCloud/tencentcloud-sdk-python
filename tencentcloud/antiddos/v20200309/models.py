@@ -2757,7 +2757,7 @@ class CCPrecisionPlyRecord(AbstractModel):
         :type FieldName: str
         :param _Value: 配置取值
         :type Value: str
-        :param _ValueOperator: 配置项值比对方式，可取值equal ，not_equal， include
+        :param _ValueOperator: 配置项值比对方式，可取值equal：相等，not_equal：不相等， include：包含
         :type ValueOperator: str
         """
         self._FieldType = None
@@ -2800,7 +2800,7 @@ class CCPrecisionPlyRecord(AbstractModel):
 
     @property
     def ValueOperator(self):
-        """配置项值比对方式，可取值equal ，not_equal， include
+        """配置项值比对方式，可取值equal：相等，not_equal：不相等， include：包含
         :rtype: str
         """
         return self._ValueOperator

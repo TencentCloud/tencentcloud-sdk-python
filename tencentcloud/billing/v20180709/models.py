@@ -199,25 +199,19 @@ class AdjustInfoDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _PayerUin: 支付者UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识
-注意：此字段可能返回 null，表示取不到有效值。
         :type PayerUin: str
         :param _Month: 账单月份，格式：yyyy-MM
-注意：此字段可能返回 null，表示取不到有效值。
         :type Month: str
         :param _AdjustType: 调整类型
 调账：manualAdjustment
 补结算：supplementarySettlement
 重结算：reSettlement
-注意：此字段可能返回 null，表示取不到有效值。
         :type AdjustType: str
         :param _AdjustNum: 调整单号
-注意：此字段可能返回 null，表示取不到有效值。
         :type AdjustNum: str
         :param _AdjustCompletionTime: 异常调整完成时间，格式：yyyy-MM-dd HH:mm:ss
-注意：此字段可能返回 null，表示取不到有效值。
         :type AdjustCompletionTime: str
         :param _AdjustAmount: 调整金额
-注意：此字段可能返回 null，表示取不到有效值。
         :type AdjustAmount: float
         """
         self._PayerUin = None
@@ -230,7 +224,6 @@ class AdjustInfoDetail(AbstractModel):
     @property
     def PayerUin(self):
         """支付者UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PayerUin
@@ -242,7 +235,6 @@ class AdjustInfoDetail(AbstractModel):
     @property
     def Month(self):
         """账单月份，格式：yyyy-MM
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Month
@@ -257,7 +249,6 @@ class AdjustInfoDetail(AbstractModel):
 调账：manualAdjustment
 补结算：supplementarySettlement
 重结算：reSettlement
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AdjustType
@@ -269,7 +260,6 @@ class AdjustInfoDetail(AbstractModel):
     @property
     def AdjustNum(self):
         """调整单号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AdjustNum
@@ -281,7 +271,6 @@ class AdjustInfoDetail(AbstractModel):
     @property
     def AdjustCompletionTime(self):
         """异常调整完成时间，格式：yyyy-MM-dd HH:mm:ss
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AdjustCompletionTime
@@ -293,7 +282,6 @@ class AdjustInfoDetail(AbstractModel):
     @property
     def AdjustAmount(self):
         """调整金额
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._AdjustAmount
@@ -1760,13 +1748,11 @@ class AllocationMonthOverviewDetail(AbstractModel):
         :param _Ratio: 占比(折后总额)：本分账单元合计费用(折后总额)/合计费用(折后总额)*100%
         :type Ratio: str
         :param _Trend: 环比(折后总额)：[本月分账单元合计费用(折后总额) - 上月分账单元合计费用(折后总额)] / 上月分账单元合计费用(折后总额) * 100%
-注意：此字段可能返回 null，表示取不到有效值。
         :type Trend: str
         :param _TrendType: 环比箭头
 upward -上升
 downward - 下降
 none - 平稳
-注意：此字段可能返回 null，表示取不到有效值。
         :type TrendType: str
         """
         self._GatherCashPayAmount = None
@@ -1967,7 +1953,6 @@ none - 平稳
     @property
     def Trend(self):
         """环比(折后总额)：[本月分账单元合计费用(折后总额) - 上月分账单元合计费用(折后总额)] / 上月分账单元合计费用(折后总额) * 100%
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Trend
@@ -1982,7 +1967,6 @@ none - 平稳
 upward -上升
 downward - 下降
 none - 平稳
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TrendType
@@ -2029,13 +2013,10 @@ class AllocationOverviewDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _TreeNodeUniqKey: 分账单元唯一标识
-注意：此字段可能返回 null，表示取不到有效值。
         :type TreeNodeUniqKey: str
         :param _TreeNodeUniqKeyName: 分账单元名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TreeNodeUniqKeyName: str
         :param _BillDate: 日期：结算日期
-注意：此字段可能返回 null，表示取不到有效值。
         :type BillDate: str
         :param _GatherCashPayAmount: 归集费用(现金)：基于归集规则直接归集到分账单元的现金
         :type GatherCashPayAmount: str
@@ -2070,13 +2051,11 @@ class AllocationOverviewDetail(AbstractModel):
         :param _Ratio: 占比(折后总额)：本分账单元合计费用(折后总额)/合计费用(折后总额)*100%
         :type Ratio: str
         :param _Trend: 环比(折后总额)：[本月分账单元合计费用(折后总额) - 上月分账单元合计费用(折后总额)] / 上月分账单元合计费用(折后总额) * 100%
-注意：此字段可能返回 null，表示取不到有效值。
         :type Trend: str
         :param _TrendType: 环比箭头
 upward -上升
 downward - 下降
 none - 平稳
-注意：此字段可能返回 null，表示取不到有效值。
         :type TrendType: str
         """
         self._TreeNodeUniqKey = None
@@ -2104,7 +2083,6 @@ none - 平稳
     @property
     def TreeNodeUniqKey(self):
         """分账单元唯一标识
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TreeNodeUniqKey
@@ -2116,7 +2094,6 @@ none - 平稳
     @property
     def TreeNodeUniqKeyName(self):
         """分账单元名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TreeNodeUniqKeyName
@@ -2128,7 +2105,6 @@ none - 平稳
     @property
     def BillDate(self):
         """日期：结算日期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BillDate
@@ -2316,7 +2292,6 @@ none - 平稳
     @property
     def Trend(self):
         """环比(折后总额)：[本月分账单元合计费用(折后总额) - 上月分账单元合计费用(折后总额)] / 上月分账单元合计费用(折后总额) * 100%
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Trend
@@ -2331,7 +2306,6 @@ none - 平稳
 upward -上升
 downward - 下降
 none - 平稳
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TrendType
@@ -2381,26 +2355,20 @@ class AllocationOverviewNode(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: 分账单元ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
         :param _Name: 分账单元名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _TreeNodeUniqKey: 分账单元唯一标识
-注意：此字段可能返回 null，表示取不到有效值。
         :type TreeNodeUniqKey: str
         :param _Symbol: 分账单元包含规则标志
 0 - 不存在规则
 1 - 同时存在归集规则和公摊规则
 2 - 仅存在归集规则
 3 - 仅存在公摊规则
-注意：此字段可能返回 null，表示取不到有效值。
         :type Symbol: int
         :param _Children: 子单元月概览详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type Children: list of AllocationOverviewNode
         :param _Detail: 分账账单月概览金额明细
-注意：此字段可能返回 null，表示取不到有效值。
         :type Detail: :class:`tencentcloud.billing.v20180709.models.AllocationMonthOverviewDetail`
         """
         self._Id = None
@@ -2413,7 +2381,6 @@ class AllocationOverviewNode(AbstractModel):
     @property
     def Id(self):
         """分账单元ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Id
@@ -2425,7 +2392,6 @@ class AllocationOverviewNode(AbstractModel):
     @property
     def Name(self):
         """分账单元名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -2437,7 +2403,6 @@ class AllocationOverviewNode(AbstractModel):
     @property
     def TreeNodeUniqKey(self):
         """分账单元唯一标识
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TreeNodeUniqKey
@@ -2453,7 +2418,6 @@ class AllocationOverviewNode(AbstractModel):
 1 - 同时存在归集规则和公摊规则
 2 - 仅存在归集规则
 3 - 仅存在公摊规则
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Symbol
@@ -2465,7 +2429,6 @@ class AllocationOverviewNode(AbstractModel):
     @property
     def Children(self):
         """子单元月概览详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AllocationOverviewNode
         """
         return self._Children
@@ -2477,7 +2440,6 @@ class AllocationOverviewNode(AbstractModel):
     @property
     def Detail(self):
         """分账账单月概览金额明细
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationMonthOverviewDetail`
         """
         return self._Detail
@@ -2680,7 +2642,6 @@ class AllocationStat(AbstractModel):
     def __init__(self):
         r"""
         :param _Average: 费用平均信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Average: :class:`tencentcloud.billing.v20180709.models.AllocationAverageData`
         """
         self._Average = None
@@ -2688,7 +2649,6 @@ class AllocationStat(AbstractModel):
     @property
     def Average(self):
         """费用平均信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationAverageData`
         """
         return self._Average
@@ -2720,13 +2680,10 @@ class AllocationSummaryByBusiness(AbstractModel):
     def __init__(self):
         r"""
         :param _TreeNodeUniqKey: 分账单元唯一标识
-注意：此字段可能返回 null，表示取不到有效值。
         :type TreeNodeUniqKey: str
         :param _TreeNodeUniqKeyName: 分账单元名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TreeNodeUniqKeyName: str
         :param _BillDate: 日期：结算日期
-注意：此字段可能返回 null，表示取不到有效值。
         :type BillDate: str
         :param _GatherCashPayAmount: 归集费用(现金)：基于归集规则直接归集到分账单元的现金
         :type GatherCashPayAmount: str
@@ -2761,19 +2718,15 @@ class AllocationSummaryByBusiness(AbstractModel):
         :param _Ratio: 占比(折后总额)：本分账单元合计费用(折后总额)/合计费用(折后总额)*100%
         :type Ratio: str
         :param _Trend: 环比(折后总额)：[本月分账单元合计费用(折后总额) - 上月分账单元合计费用(折后总额)] / 上月分账单元合计费用(折后总额) * 100%
-注意：此字段可能返回 null，表示取不到有效值。
         :type Trend: str
         :param _TrendType: 环比箭头
 upward -上升
 downward - 下降
 none - 平稳
-注意：此字段可能返回 null，表示取不到有效值。
         :type TrendType: str
         :param _BusinessCode: 产品编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessCode: str
         :param _BusinessCodeName: 产品名称：用户所采购的各类云产品
-注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessCodeName: str
         :param _TotalCost: 组件原价：原价 = 组件刊例价 * 组件用量 * 使用时长（如客户享受一口价/合同价则默认不展示，退费类场景也默认不展示），指定价模式
         :type TotalCost: str
@@ -2828,7 +2781,6 @@ none - 平稳
     @property
     def TreeNodeUniqKey(self):
         """分账单元唯一标识
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TreeNodeUniqKey
@@ -2840,7 +2792,6 @@ none - 平稳
     @property
     def TreeNodeUniqKeyName(self):
         """分账单元名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TreeNodeUniqKeyName
@@ -2852,7 +2803,6 @@ none - 平稳
     @property
     def BillDate(self):
         """日期：结算日期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BillDate
@@ -3040,7 +2990,6 @@ none - 平稳
     @property
     def Trend(self):
         """环比(折后总额)：[本月分账单元合计费用(折后总额) - 上月分账单元合计费用(折后总额)] / 上月分账单元合计费用(折后总额) * 100%
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Trend
@@ -3055,7 +3004,6 @@ none - 平稳
 upward -上升
 downward - 下降
 none - 平稳
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TrendType
@@ -3067,7 +3015,6 @@ none - 平稳
     @property
     def BusinessCode(self):
         """产品编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BusinessCode
@@ -3079,7 +3026,6 @@ none - 平稳
     @property
     def BusinessCodeName(self):
         """产品名称：用户所采购的各类云产品
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BusinessCodeName
@@ -3228,121 +3174,83 @@ class AllocationSummaryByItem(AbstractModel):
     def __init__(self):
         r"""
         :param _TreeNodeUniqKey: 分账单元唯一标识
-注意：此字段可能返回 null，表示取不到有效值。
         :type TreeNodeUniqKey: str
         :param _TreeNodeUniqKeyName: 分账单元名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TreeNodeUniqKeyName: str
         :param _BillDate: 日期：结算日期
-注意：此字段可能返回 null，表示取不到有效值。
         :type BillDate: str
         :param _PayerUin: 支付者 UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识
-注意：此字段可能返回 null，表示取不到有效值。
         :type PayerUin: str
         :param _OwnerUin: 使用者 UIN：实际使用资源的账号 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type OwnerUin: str
         :param _OperateUin: 操作者 UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的ID或者角色 ID）
-注意：此字段可能返回 null，表示取不到有效值。
         :type OperateUin: str
         :param _PayMode: 计费模式编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type PayMode: str
         :param _PayModeName: 计费模式：资源的计费模式，区分为包年包月和按量计费
-注意：此字段可能返回 null，表示取不到有效值。
         :type PayModeName: str
         :param _ActionType: 交易类型编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActionType: str
         :param _ActionTypeName: 交易类型：明细交易类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActionTypeName: str
         :param _BusinessCode: 产品编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessCode: str
         :param _BusinessCodeName: 产品名称：用户所采购的各类云产品
-注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessCodeName: str
         :param _ProductCode: 子产品编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductCode: str
         :param _ProductCodeName: 子产品名称：用户采购的具体产品细分类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductCodeName: str
         :param _RegionId: 地域ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionId: int
         :param _RegionName: 地域名称：资源所属地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionName: str
         :param _ZoneId: 可用区ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneId: int
         :param _ZoneName: 可用区：资源所属可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneName: str
         :param _InstanceType: 实例类型编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceType: str
         :param _InstanceTypeName: 实例类型：购买的产品服务对应的实例类型，包括资源包、RI、SP、竞价实例。常规实例默认展示“-”
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceTypeName: str
         :param _ResourceId: 资源ID：不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID； 若该产品被分拆，则展示产品分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceId: str
         :param _ResourceName: 实例名称：用户在控制台为资源设置的名称，如未设置默认为空；若该产品被分拆，则展示分拆产品分拆后的分拆项资源别名
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceName: str
         :param _Tag: 分账标签：资源绑定的标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tag: list of BillTag
         :param _ProjectId: 项目ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: int
         :param _ProjectName: 项目名称：资源归属的项目，用户在控制台给资源自主分配项目，未分配则是默认项目
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectName: str
         :param _AllocationType: 费用归集类型：费用来源类型，分摊、归集、未分配
 0 - 分摊
 1 - 归集
 -1 - 未分配
-注意：此字段可能返回 null，表示取不到有效值。
         :type AllocationType: int
         :param _TotalCost: 组件原价：原价 = 组件刊例价 * 组件用量 * 使用时长（如客户享受一口价/合同价则默认不展示，退费类场景也默认不展示），指定价模式
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCost: str
         :param _RiTimeSpan: 预留实例抵扣时长：本产品或服务使用预留实例抵扣的使用时长
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiTimeSpan: str
         :param _RiCost: 预留实例抵扣原价：本产品或服务使用预留实例抵扣的组件原价金额
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiCost: str
         :param _RealTotalCost: 优惠后总价：优惠后总价 =（原价 - 预留实例抵扣原价 - 节省计划抵扣原价）* 折扣率
-注意：此字段可能返回 null，表示取不到有效值。
         :type RealTotalCost: str
         :param _CashPayAmount: 现金账户支出(元)：通过现金账户支付的金额
-注意：此字段可能返回 null，表示取不到有效值。
         :type CashPayAmount: str
         :param _VoucherPayAmount: 代金券支出(元)：使用各类优惠券（如代金券、现金券等）支付的金额
-注意：此字段可能返回 null，表示取不到有效值。
         :type VoucherPayAmount: str
         :param _IncentivePayAmount: 赠送账户支出(元)：使用赠送金支付的金额
-注意：此字段可能返回 null，表示取不到有效值。
         :type IncentivePayAmount: str
         :param _TransferPayAmount: 分成账户支出(元)：通过分成金账户支付的金额
-注意：此字段可能返回 null，表示取不到有效值。
         :type TransferPayAmount: str
         :param _ItemCode: 组件名称编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type ItemCode: str
         :param _ItemCodeName: 组件名称：用户购买的产品或服务，所包含的具体组件
-注意：此字段可能返回 null，表示取不到有效值。
         :type ItemCodeName: str
         :param _ComponentCode: 组件类型编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type ComponentCode: str
         :param _ComponentCodeName: 组件类型：用户购买的产品或服务对应的组件大类
-注意：此字段可能返回 null，表示取不到有效值。
         :type ComponentCodeName: str
         :param _SplitItemId: 分拆项 ID：涉及分拆产品的分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名
 注意：此字段可能返回 null，表示取不到有效值。
@@ -3351,90 +3259,62 @@ class AllocationSummaryByItem(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type SplitItemName: str
         :param _FeeBeginTime: 开始使用时间：产品服务开始使用时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type FeeBeginTime: str
         :param _FeeEndTime: 结束使用时间：产品服务结束使用时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type FeeEndTime: str
         :param _SPCost: 节省计划抵扣原价：节省计划抵扣原价 = 节省计划包抵扣面值 / 节省计划抵扣率
-注意：此字段可能返回 null，表示取不到有效值。
         :type SPCost: str
         :param _RegionType: 国内国际编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionType: str
         :param _RegionTypeName: 国内国际：资源所属区域类型（国内、国际）
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionTypeName: str
         :param _SinglePrice: 组件刊例价：组件的官网原始单价（如客户享受一口价/合同价则默认不展示）
-注意：此字段可能返回 null，表示取不到有效值。
         :type SinglePrice: str
         :param _ContractPrice: 组件单价：组件的折后单价，组件单价 = 刊例价 * 折扣
-注意：此字段可能返回 null，表示取不到有效值。
         :type ContractPrice: str
         :param _SinglePriceUnit: 组件价格单位：组件价格的单位，单位构成：元/用量单位/时长单位
-注意：此字段可能返回 null，表示取不到有效值。
         :type SinglePriceUnit: str
         :param _UsedAmount: 组件用量：该组件实际结算用量，组件用量=组件原始用量-抵扣用量（含资源包）
-注意：此字段可能返回 null，表示取不到有效值。
         :type UsedAmount: str
         :param _UsedAmountUnit: 组件用量单位：组件用量对应的单位
-注意：此字段可能返回 null，表示取不到有效值。
         :type UsedAmountUnit: str
         :param _TimeSpan: 使用时长：资源使用的时长，组件用量=组件原始使用时长-抵扣时长（含资源包）
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimeSpan: str
         :param _TimeUnit: 时长单位：资源使用时长的单位
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimeUnit: str
         :param _ReserveDetail: 备注属性（实例配置）：其他备注信息，如预留实例的预留实例类型和交易类型、CCN 产品的两端地域信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReserveDetail: str
         :param _RealTotalMeasure: 原始用量/时长：组件被资源包抵扣前的原始用量
 （目前仅实时音视频、弹性微服务、云呼叫中心及专属可用区产品支持该信息外显，其他产品尚在接入中）
-注意：此字段可能返回 null，表示取不到有效值。
         :type RealTotalMeasure: str
         :param _DeductedMeasure: 抵扣用量/时长（含资源包）：组件被资源包抵扣的用量
 （目前仅实时音视频、弹性微服务、云呼叫中心及专属可用区产品支持该信息外显，其他产品尚在接入中）
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeductedMeasure: str
         :param _Discount: 折扣率：本资源享受的折扣率（如客户享受一口价/合同价则默认不展示，退费场景也默认不展示）
-注意：此字段可能返回 null，表示取不到有效值。
         :type Discount: str
         :param _BlendedDiscount: 混合折扣率：综合各类折扣抵扣信息后的最终折扣率，混合折扣率=优惠后总价/原价
-注意：此字段可能返回 null，表示取不到有效值。
         :type BlendedDiscount: str
         :param _PriceInfo: 价格属性：该组件除单价、时长外的其他影响折扣定价的属性信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type PriceInfo: list of str
         :param _Formula: 计算规则说明：特殊交易类型计费结算的详细计算说明，如退费及变配
-注意：此字段可能返回 null，表示取不到有效值。
         :type Formula: str
         :param _FormulaUrl: 计费规则：各产品详细的计费规则官网说明链接
-注意：此字段可能返回 null，表示取不到有效值。
         :type FormulaUrl: str
         :param _ComponentConfig: 配置描述：资源配置规格信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ComponentConfig: str
         :param _SPDeduction: SPDeduction
-注意：此字段可能返回 null，表示取不到有效值。
         :type SPDeduction: str
         :param _SPDeductionRate: 节省计划抵扣率：节省计划可用余额额度范围内，节省计划对于此组件打的折扣率
-注意：此字段可能返回 null，表示取不到有效值。
         :type SPDeductionRate: str
         :param _AssociatedOrder: AssociatedOrder
-注意：此字段可能返回 null，表示取不到有效值。
         :type AssociatedOrder: str
         :param _DiscountObject: 当前消费项的优惠对象，例如：官网折扣、用户折扣、活动折扣。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiscountObject: str
         :param _DiscountType: 当前消费项的优惠类型，例如：折扣、合同价。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiscountType: str
         :param _DiscountContent: 对优惠类型的补充描述，例如：商务折扣8折，则优惠类型为“折扣”，优惠内容为“0.8”。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiscountContent: str
         :param _BillMonth: 账单月
-注意：此字段可能返回 null，表示取不到有效值。
         :type BillMonth: str
         """
         self._TreeNodeUniqKey = None
@@ -3509,7 +3389,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def TreeNodeUniqKey(self):
         """分账单元唯一标识
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TreeNodeUniqKey
@@ -3521,7 +3400,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def TreeNodeUniqKeyName(self):
         """分账单元名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TreeNodeUniqKeyName
@@ -3533,7 +3411,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def BillDate(self):
         """日期：结算日期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BillDate
@@ -3545,7 +3422,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def PayerUin(self):
         """支付者 UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PayerUin
@@ -3557,7 +3433,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def OwnerUin(self):
         """使用者 UIN：实际使用资源的账号 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OwnerUin
@@ -3569,7 +3444,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def OperateUin(self):
         """操作者 UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的ID或者角色 ID）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OperateUin
@@ -3581,7 +3455,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def PayMode(self):
         """计费模式编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PayMode
@@ -3593,7 +3466,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def PayModeName(self):
         """计费模式：资源的计费模式，区分为包年包月和按量计费
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PayModeName
@@ -3605,7 +3477,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def ActionType(self):
         """交易类型编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ActionType
@@ -3617,7 +3488,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def ActionTypeName(self):
         """交易类型：明细交易类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ActionTypeName
@@ -3629,7 +3499,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def BusinessCode(self):
         """产品编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BusinessCode
@@ -3641,7 +3510,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def BusinessCodeName(self):
         """产品名称：用户所采购的各类云产品
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BusinessCodeName
@@ -3653,7 +3521,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def ProductCode(self):
         """子产品编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductCode
@@ -3665,7 +3532,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def ProductCodeName(self):
         """子产品名称：用户采购的具体产品细分类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductCodeName
@@ -3677,7 +3543,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def RegionId(self):
         """地域ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RegionId
@@ -3689,7 +3554,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def RegionName(self):
         """地域名称：资源所属地域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RegionName
@@ -3701,7 +3565,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def ZoneId(self):
         """可用区ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ZoneId
@@ -3713,7 +3576,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def ZoneName(self):
         """可用区：资源所属可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ZoneName
@@ -3725,7 +3587,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def InstanceType(self):
         """实例类型编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceType
@@ -3737,7 +3598,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def InstanceTypeName(self):
         """实例类型：购买的产品服务对应的实例类型，包括资源包、RI、SP、竞价实例。常规实例默认展示“-”
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceTypeName
@@ -3749,7 +3609,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def ResourceId(self):
         """资源ID：不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID； 若该产品被分拆，则展示产品分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceId
@@ -3761,7 +3620,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def ResourceName(self):
         """实例名称：用户在控制台为资源设置的名称，如未设置默认为空；若该产品被分拆，则展示分拆产品分拆后的分拆项资源别名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceName
@@ -3773,7 +3631,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def Tag(self):
         """分账标签：资源绑定的标签
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BillTag
         """
         return self._Tag
@@ -3785,7 +3642,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def ProjectId(self):
         """项目ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ProjectId
@@ -3797,7 +3653,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def ProjectName(self):
         """项目名称：资源归属的项目，用户在控制台给资源自主分配项目，未分配则是默认项目
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProjectName
@@ -3812,7 +3667,6 @@ class AllocationSummaryByItem(AbstractModel):
 0 - 分摊
 1 - 归集
 -1 - 未分配
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AllocationType
@@ -3824,7 +3678,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def TotalCost(self):
         """组件原价：原价 = 组件刊例价 * 组件用量 * 使用时长（如客户享受一口价/合同价则默认不展示，退费类场景也默认不展示），指定价模式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TotalCost
@@ -3836,7 +3689,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def RiTimeSpan(self):
         """预留实例抵扣时长：本产品或服务使用预留实例抵扣的使用时长
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RiTimeSpan
@@ -3848,7 +3700,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def RiCost(self):
         """预留实例抵扣原价：本产品或服务使用预留实例抵扣的组件原价金额
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RiCost
@@ -3860,7 +3711,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def RealTotalCost(self):
         """优惠后总价：优惠后总价 =（原价 - 预留实例抵扣原价 - 节省计划抵扣原价）* 折扣率
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RealTotalCost
@@ -3872,7 +3722,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def CashPayAmount(self):
         """现金账户支出(元)：通过现金账户支付的金额
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CashPayAmount
@@ -3884,7 +3733,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def VoucherPayAmount(self):
         """代金券支出(元)：使用各类优惠券（如代金券、现金券等）支付的金额
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -3896,7 +3744,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def IncentivePayAmount(self):
         """赠送账户支出(元)：使用赠送金支付的金额
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -3908,7 +3755,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def TransferPayAmount(self):
         """分成账户支出(元)：通过分成金账户支付的金额
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TransferPayAmount
@@ -3920,7 +3766,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def ItemCode(self):
         """组件名称编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ItemCode
@@ -3932,7 +3777,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def ItemCodeName(self):
         """组件名称：用户购买的产品或服务，所包含的具体组件
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ItemCodeName
@@ -3944,7 +3788,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def ComponentCode(self):
         """组件类型编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ComponentCode
@@ -3956,7 +3799,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def ComponentCodeName(self):
         """组件类型：用户购买的产品或服务对应的组件大类
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ComponentCodeName
@@ -4000,7 +3842,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def FeeBeginTime(self):
         """开始使用时间：产品服务开始使用时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FeeBeginTime
@@ -4012,7 +3853,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def FeeEndTime(self):
         """结束使用时间：产品服务结束使用时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FeeEndTime
@@ -4024,7 +3864,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def SPCost(self):
         """节省计划抵扣原价：节省计划抵扣原价 = 节省计划包抵扣面值 / 节省计划抵扣率
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SPCost
@@ -4036,7 +3875,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def RegionType(self):
         """国内国际编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RegionType
@@ -4048,7 +3886,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def RegionTypeName(self):
         """国内国际：资源所属区域类型（国内、国际）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RegionTypeName
@@ -4060,7 +3897,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def SinglePrice(self):
         """组件刊例价：组件的官网原始单价（如客户享受一口价/合同价则默认不展示）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SinglePrice
@@ -4072,7 +3908,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def ContractPrice(self):
         """组件单价：组件的折后单价，组件单价 = 刊例价 * 折扣
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ContractPrice
@@ -4084,7 +3919,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def SinglePriceUnit(self):
         """组件价格单位：组件价格的单位，单位构成：元/用量单位/时长单位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SinglePriceUnit
@@ -4096,7 +3930,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def UsedAmount(self):
         """组件用量：该组件实际结算用量，组件用量=组件原始用量-抵扣用量（含资源包）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UsedAmount
@@ -4108,7 +3941,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def UsedAmountUnit(self):
         """组件用量单位：组件用量对应的单位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UsedAmountUnit
@@ -4120,7 +3952,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def TimeSpan(self):
         """使用时长：资源使用的时长，组件用量=组件原始使用时长-抵扣时长（含资源包）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TimeSpan
@@ -4132,7 +3963,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def TimeUnit(self):
         """时长单位：资源使用时长的单位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TimeUnit
@@ -4144,7 +3974,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def ReserveDetail(self):
         """备注属性（实例配置）：其他备注信息，如预留实例的预留实例类型和交易类型、CCN 产品的两端地域信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ReserveDetail
@@ -4157,7 +3986,6 @@ class AllocationSummaryByItem(AbstractModel):
     def RealTotalMeasure(self):
         """原始用量/时长：组件被资源包抵扣前的原始用量
 （目前仅实时音视频、弹性微服务、云呼叫中心及专属可用区产品支持该信息外显，其他产品尚在接入中）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RealTotalMeasure
@@ -4170,7 +3998,6 @@ class AllocationSummaryByItem(AbstractModel):
     def DeductedMeasure(self):
         """抵扣用量/时长（含资源包）：组件被资源包抵扣的用量
 （目前仅实时音视频、弹性微服务、云呼叫中心及专属可用区产品支持该信息外显，其他产品尚在接入中）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeductedMeasure
@@ -4182,7 +4009,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def Discount(self):
         """折扣率：本资源享受的折扣率（如客户享受一口价/合同价则默认不展示，退费场景也默认不展示）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Discount
@@ -4194,7 +4020,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def BlendedDiscount(self):
         """混合折扣率：综合各类折扣抵扣信息后的最终折扣率，混合折扣率=优惠后总价/原价
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BlendedDiscount
@@ -4206,7 +4031,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def PriceInfo(self):
         """价格属性：该组件除单价、时长外的其他影响折扣定价的属性信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._PriceInfo
@@ -4218,7 +4042,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def Formula(self):
         """计算规则说明：特殊交易类型计费结算的详细计算说明，如退费及变配
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Formula
@@ -4230,7 +4053,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def FormulaUrl(self):
         """计费规则：各产品详细的计费规则官网说明链接
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FormulaUrl
@@ -4242,7 +4064,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def ComponentConfig(self):
         """配置描述：资源配置规格信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ComponentConfig
@@ -4254,7 +4075,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def SPDeduction(self):
         """SPDeduction
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SPDeduction
@@ -4266,7 +4086,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def SPDeductionRate(self):
         """节省计划抵扣率：节省计划可用余额额度范围内，节省计划对于此组件打的折扣率
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SPDeductionRate
@@ -4278,7 +4097,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def AssociatedOrder(self):
         """AssociatedOrder
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AssociatedOrder
@@ -4290,7 +4108,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def DiscountObject(self):
         """当前消费项的优惠对象，例如：官网折扣、用户折扣、活动折扣。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DiscountObject
@@ -4302,7 +4119,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def DiscountType(self):
         """当前消费项的优惠类型，例如：折扣、合同价。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DiscountType
@@ -4314,7 +4130,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def DiscountContent(self):
         """对优惠类型的补充描述，例如：商务折扣8折，则优惠类型为“折扣”，优惠内容为“0.8”。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DiscountContent
@@ -4326,7 +4141,6 @@ class AllocationSummaryByItem(AbstractModel):
     @property
     def BillMonth(self):
         """账单月
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BillMonth
@@ -9923,10 +9737,8 @@ class BillZoneId(AbstractModel):
     def __init__(self):
         r"""
         :param _ZoneId: 可用区ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneId: int
         :param _ZoneName: 可用区：资源所属可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneName: str
         """
         self._ZoneId = None
@@ -9935,7 +9747,6 @@ class BillZoneId(AbstractModel):
     @property
     def ZoneId(self):
         """可用区ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ZoneId
@@ -9947,7 +9758,6 @@ class BillZoneId(AbstractModel):
     @property
     def ZoneName(self):
         """可用区：资源所属可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ZoneName
@@ -9982,7 +9792,6 @@ class BusinessSummaryInfo(AbstractModel):
         :param _BusinessCodeName: 产品名称：用户所采购的各类云产品，例如：云服务器 CVM
         :type BusinessCodeName: str
         :param _TotalCost: 原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCost: str
         :param _RealTotalCost: 优惠后总价
         :type RealTotalCost: str
@@ -9993,7 +9802,6 @@ class BusinessSummaryInfo(AbstractModel):
         :param _VoucherPayAmount: 优惠券支出：使用各类优惠券（如代金券、现金券等）支付的金额
         :type VoucherPayAmount: str
         :param _TransferPayAmount: 分成金账户支出：通过分成金账户支付的金额
-注意：此字段可能返回 null，表示取不到有效值。
         :type TransferPayAmount: str
         """
         self._BusinessCode = None
@@ -10030,7 +9838,6 @@ class BusinessSummaryInfo(AbstractModel):
     @property
     def TotalCost(self):
         """原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TotalCost
@@ -10086,7 +9893,6 @@ class BusinessSummaryInfo(AbstractModel):
     @property
     def TransferPayAmount(self):
         """分成金账户支出：通过分成金账户支付的金额
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TransferPayAmount
@@ -10123,7 +9929,6 @@ class BusinessSummaryOverviewItem(AbstractModel):
     def __init__(self):
         r"""
         :param _BusinessCode: 产品编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessCode: str
         :param _BusinessCodeName: 产品名称：用户所采购的各类云产品，例如：云服务器 CVM
         :type BusinessCodeName: str
@@ -10158,7 +9963,6 @@ class BusinessSummaryOverviewItem(AbstractModel):
     @property
     def BusinessCode(self):
         """产品编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BusinessCode
@@ -10927,19 +10731,14 @@ class ConsumptionBusinessSummaryDataItem(AbstractModel):
         :param _Trend: 费用趋势
         :type Trend: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTrend`
         :param _CashPayAmount: 现金
-注意：此字段可能返回 null，表示取不到有效值。
         :type CashPayAmount: str
         :param _IncentivePayAmount: 赠送金
-注意：此字段可能返回 null，表示取不到有效值。
         :type IncentivePayAmount: str
         :param _VoucherPayAmount: 代金券
-注意：此字段可能返回 null，表示取不到有效值。
         :type VoucherPayAmount: str
         :param _TransferPayAmount: 分成金
-注意：此字段可能返回 null，表示取不到有效值。
         :type TransferPayAmount: str
         :param _RegionName: 地域名称（仅在地域汇总总展示）
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionName: str
         """
         self._BusinessCode = None
@@ -10999,7 +10798,6 @@ class ConsumptionBusinessSummaryDataItem(AbstractModel):
     @property
     def CashPayAmount(self):
         """现金
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CashPayAmount
@@ -11011,7 +10809,6 @@ class ConsumptionBusinessSummaryDataItem(AbstractModel):
     @property
     def IncentivePayAmount(self):
         """赠送金
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -11023,7 +10820,6 @@ class ConsumptionBusinessSummaryDataItem(AbstractModel):
     @property
     def VoucherPayAmount(self):
         """代金券
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -11035,7 +10831,6 @@ class ConsumptionBusinessSummaryDataItem(AbstractModel):
     @property
     def TransferPayAmount(self):
         """分成金
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TransferPayAmount
@@ -11047,7 +10842,6 @@ class ConsumptionBusinessSummaryDataItem(AbstractModel):
     @property
     def RegionName(self):
         """地域名称（仅在地域汇总总展示）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RegionName
@@ -11556,85 +11350,58 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
         :param _ConsumptionTypeName: 消耗类型
         :type ConsumptionTypeName: str
         :param _RealCost: 折前价
-注意：此字段可能返回 null，表示取不到有效值。
         :type RealCost: str
         :param _FeeBeginTime: 费用起始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type FeeBeginTime: str
         :param _FeeEndTime: 费用结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type FeeEndTime: str
         :param _DayDiff: 天数
-注意：此字段可能返回 null，表示取不到有效值。
         :type DayDiff: str
         :param _DailyTotalCost: 每日消耗
-注意：此字段可能返回 null，表示取不到有效值。
         :type DailyTotalCost: str
         :param _OrderId: 订单号
-注意：此字段可能返回 null，表示取不到有效值。
         :type OrderId: str
         :param _VoucherPayAmount: 代金券
-注意：此字段可能返回 null，表示取不到有效值。
         :type VoucherPayAmount: str
         :param _IncentivePayAmount: 赠送金
-注意：此字段可能返回 null，表示取不到有效值。
         :type IncentivePayAmount: str
         :param _TransferPayAmount: 分成金
-注意：此字段可能返回 null，表示取不到有效值。
         :type TransferPayAmount: str
         :param _PayerUin: 支付者UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识
-注意：此字段可能返回 null，表示取不到有效值。
         :type PayerUin: str
         :param _OwnerUin: 使用者UIN：实际使用资源的账号 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type OwnerUin: str
         :param _OperateUin: 操作者UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的 ID 或者角色 ID ）
-注意：此字段可能返回 null，表示取不到有效值。
         :type OperateUin: str
         :param _ProductCode: 子产品编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductCode: str
         :param _ProductCodeName: 子产品名称：用户采购的具体产品细分类型，例如：云服务器 CVM-标准型 S1
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductCodeName: str
         :param _RegionType: 地域类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionType: str
         :param _RegionTypeName: 地域类型名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionTypeName: str
         :param _Extend1: 扩展字段1
-注意：此字段可能返回 null，表示取不到有效值。
         :type Extend1: str
         :param _Extend2: 扩展字段2
-注意：此字段可能返回 null，表示取不到有效值。
         :type Extend2: str
         :param _Extend3: 扩展字段3
-注意：此字段可能返回 null，表示取不到有效值。
         :type Extend3: str
         :param _Extend4: 扩展字段4
-注意：此字段可能返回 null，表示取不到有效值。
         :type Extend4: str
         :param _Extend5: 扩展字段5
-注意：此字段可能返回 null，表示取不到有效值。
         :type Extend5: str
         :param _InstanceType: 实例类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceType: str
         :param _InstanceTypeName: 实例类型名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceTypeName: str
         :param _PayTime: 扣费时间：结算扣费时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type PayTime: str
         :param _ZoneName: 可用区：资源所属可用区，如广州三区
-注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneName: str
         :param _ComponentConfig: 配置描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type ComponentConfig: str
         :param _Tags: 标签信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: str
         """
         self._ResourceId = None
@@ -11824,7 +11591,6 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
     @property
     def RealCost(self):
         """折前价
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RealCost
@@ -11836,7 +11602,6 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
     @property
     def FeeBeginTime(self):
         """费用起始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FeeBeginTime
@@ -11848,7 +11613,6 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
     @property
     def FeeEndTime(self):
         """费用结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FeeEndTime
@@ -11860,7 +11624,6 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
     @property
     def DayDiff(self):
         """天数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DayDiff
@@ -11872,7 +11635,6 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
     @property
     def DailyTotalCost(self):
         """每日消耗
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DailyTotalCost
@@ -11884,7 +11646,6 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
     @property
     def OrderId(self):
         """订单号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OrderId
@@ -11896,7 +11657,6 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
     @property
     def VoucherPayAmount(self):
         """代金券
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -11908,7 +11668,6 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
     @property
     def IncentivePayAmount(self):
         """赠送金
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -11920,7 +11679,6 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
     @property
     def TransferPayAmount(self):
         """分成金
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TransferPayAmount
@@ -11932,7 +11690,6 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
     @property
     def PayerUin(self):
         """支付者UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PayerUin
@@ -11944,7 +11701,6 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
     @property
     def OwnerUin(self):
         """使用者UIN：实际使用资源的账号 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OwnerUin
@@ -11956,7 +11712,6 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
     @property
     def OperateUin(self):
         """操作者UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的 ID 或者角色 ID ）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OperateUin
@@ -11968,7 +11723,6 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
     @property
     def ProductCode(self):
         """子产品编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductCode
@@ -11980,7 +11734,6 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
     @property
     def ProductCodeName(self):
         """子产品名称：用户采购的具体产品细分类型，例如：云服务器 CVM-标准型 S1
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductCodeName
@@ -11992,7 +11745,6 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
     @property
     def RegionType(self):
         """地域类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RegionType
@@ -12004,7 +11756,6 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
     @property
     def RegionTypeName(self):
         """地域类型名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RegionTypeName
@@ -12016,7 +11767,6 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
     @property
     def Extend1(self):
         """扩展字段1
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Extend1
@@ -12028,7 +11778,6 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
     @property
     def Extend2(self):
         """扩展字段2
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Extend2
@@ -12040,7 +11789,6 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
     @property
     def Extend3(self):
         """扩展字段3
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Extend3
@@ -12052,7 +11800,6 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
     @property
     def Extend4(self):
         """扩展字段4
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Extend4
@@ -12064,7 +11811,6 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
     @property
     def Extend5(self):
         """扩展字段5
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Extend5
@@ -12076,7 +11822,6 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
     @property
     def InstanceType(self):
         """实例类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceType
@@ -12088,7 +11833,6 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
     @property
     def InstanceTypeName(self):
         """实例类型名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceTypeName
@@ -12100,7 +11844,6 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
     @property
     def PayTime(self):
         """扣费时间：结算扣费时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PayTime
@@ -12112,7 +11855,6 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
     @property
     def ZoneName(self):
         """可用区：资源所属可用区，如广州三区
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ZoneName
@@ -12124,7 +11866,6 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
     @property
     def ComponentConfig(self):
         """配置描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ComponentConfig
@@ -12136,7 +11877,6 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
     @property
     def Tags(self):
         """标签信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Tags
@@ -12243,7 +11983,6 @@ class ConsumptionSummaryTrend(AbstractModel):
         :param _Type: 趋势类型，upward上升/downward下降/none无
         :type Type: str
         :param _Value: 趋势值，Type为none是该字段值为null
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Type = None
@@ -12263,7 +12002,6 @@ class ConsumptionSummaryTrend(AbstractModel):
     @property
     def Value(self):
         """趋势值，Type为none是该字段值为null
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -12639,7 +12377,6 @@ class CostDetail(AbstractModel):
         :param _ResourceName: 资源名称
         :type ResourceName: str
         :param _ActionTypeName: 类型名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActionTypeName: str
         :param _OrderId: 订单id
         :type OrderId: str
@@ -12773,7 +12510,6 @@ class CostDetail(AbstractModel):
     @property
     def ActionTypeName(self):
         """类型名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ActionTypeName
@@ -12985,17 +12721,14 @@ class Deal(AbstractModel):
         :param _TotalCost: 原价（分）
         :type TotalCost: float
         :param _ProductCode: 产品编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductCode: str
         :param _SubProductCode: 子产品编码
         :type SubProductCode: str
         :param _BigDealId: 大订单号
         :type BigDealId: str
         :param _Formula: 退费公式
-注意：此字段可能返回 null，表示取不到有效值。
         :type Formula: str
         :param _RefReturnDeals: 退费涉及订单信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type RefReturnDeals: str
         :param _PayMode: 付费模式：prePay 预付费 postPay后付费 riPay预留实例
         :type PayMode: str
@@ -13012,13 +12745,10 @@ preMoveIn 包年包月迁入资源
 preToPost 预付费转后付费
 postMoveOut 按量计费迁出资源
 postMoveIn 按量计费迁入资源
-注意：此字段可能返回 null，表示取不到有效值。
         :type Action: str
         :param _ProductName: 产品编码中文名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductName: str
         :param _SubProductName: 子产品编码中文名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubProductName: str
         :param _ResourceId: 订单对应的资源id, 查询参数Limit超过200，将返回null
 注意：此字段可能返回 null，表示取不到有效值。
@@ -13230,7 +12960,6 @@ postMoveIn 按量计费迁入资源
     @property
     def ProductCode(self):
         """产品编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductCode
@@ -13264,7 +12993,6 @@ postMoveIn 按量计费迁入资源
     @property
     def Formula(self):
         """退费公式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Formula
@@ -13276,7 +13004,6 @@ postMoveIn 按量计费迁入资源
     @property
     def RefReturnDeals(self):
         """退费涉及订单信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RefReturnDeals
@@ -13311,7 +13038,6 @@ preMoveIn 包年包月迁入资源
 preToPost 预付费转后付费
 postMoveOut 按量计费迁出资源
 postMoveIn 按量计费迁入资源
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Action
@@ -13323,7 +13049,6 @@ postMoveIn 按量计费迁入资源
     @property
     def ProductName(self):
         """产品编码中文名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductName
@@ -13335,7 +13060,6 @@ postMoveIn 按量计费迁入资源
     @property
     def SubProductName(self):
         """子产品编码中文名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubProductName
@@ -13744,37 +13468,26 @@ class DescribeAllocateConditionsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Business: 产品筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Business: list of BillBusinessLink
         :param _Product: 子产品筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Product: list of BillProduct
         :param _Item: 组件名称筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Item: list of BillItem
         :param _Region: 地域筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: list of BillRegion
         :param _InstanceType: 实例类型筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceType: list of BillInstanceType
         :param _PayMode: 计费模式筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type PayMode: list of BillPayMode
         :param _Project: 项目筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Project: list of BillProject
         :param _Tag: 标签筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tag: list of BillTag
         :param _OwnerUin: 使用者 UIN 筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type OwnerUin: list of BillOwnerUin
         :param _OperateUin: 操作者 UIN 筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type OperateUin: list of BillOperateUin
         :param _ActionType: 交易类型筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActionType: list of BillActionType
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13795,7 +13508,6 @@ class DescribeAllocateConditionsResponse(AbstractModel):
     @property
     def Business(self):
         """产品筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BillBusinessLink
         """
         return self._Business
@@ -13807,7 +13519,6 @@ class DescribeAllocateConditionsResponse(AbstractModel):
     @property
     def Product(self):
         """子产品筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BillProduct
         """
         return self._Product
@@ -13819,7 +13530,6 @@ class DescribeAllocateConditionsResponse(AbstractModel):
     @property
     def Item(self):
         """组件名称筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BillItem
         """
         return self._Item
@@ -13831,7 +13541,6 @@ class DescribeAllocateConditionsResponse(AbstractModel):
     @property
     def Region(self):
         """地域筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BillRegion
         """
         return self._Region
@@ -13843,7 +13552,6 @@ class DescribeAllocateConditionsResponse(AbstractModel):
     @property
     def InstanceType(self):
         """实例类型筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BillInstanceType
         """
         return self._InstanceType
@@ -13855,7 +13563,6 @@ class DescribeAllocateConditionsResponse(AbstractModel):
     @property
     def PayMode(self):
         """计费模式筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BillPayMode
         """
         return self._PayMode
@@ -13867,7 +13574,6 @@ class DescribeAllocateConditionsResponse(AbstractModel):
     @property
     def Project(self):
         """项目筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BillProject
         """
         return self._Project
@@ -13879,7 +13585,6 @@ class DescribeAllocateConditionsResponse(AbstractModel):
     @property
     def Tag(self):
         """标签筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BillTag
         """
         return self._Tag
@@ -13891,7 +13596,6 @@ class DescribeAllocateConditionsResponse(AbstractModel):
     @property
     def OwnerUin(self):
         """使用者 UIN 筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BillOwnerUin
         """
         return self._OwnerUin
@@ -13903,7 +13607,6 @@ class DescribeAllocateConditionsResponse(AbstractModel):
     @property
     def OperateUin(self):
         """操作者 UIN 筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BillOperateUin
         """
         return self._OperateUin
@@ -13915,7 +13618,6 @@ class DescribeAllocateConditionsResponse(AbstractModel):
     @property
     def ActionType(self):
         """交易类型筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BillActionType
         """
         return self._ActionType
@@ -14305,52 +14007,36 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Business: 产品筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Business: list of BillBusiness
         :param _Product: 子产品筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Product: list of BillProduct
         :param _Item: 组件名称筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Item: list of BillItem
         :param _Region: 地域筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: list of BillRegion
         :param _InstanceType: 实例类型筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceType: list of BillInstanceType
         :param _PayMode: 计费模式筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type PayMode: list of BillPayMode
         :param _Project: 项目筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Project: list of BillProject
         :param _Tag: 标签筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tag: list of BillTag
         :param _OwnerUin: 使用者 UIN 筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type OwnerUin: list of BillOwnerUin
         :param _OperateUin: 操作者 UIN 筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type OperateUin: list of BillOperateUin
         :param _BillDay: 日期筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type BillDay: list of BillDays
         :param _ActionType: 交易类型筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActionType: list of BillActionType
         :param _Component: 组件类型筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Component: list of BillComponent
         :param _Zone: 可用区筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Zone: list of BillZoneId
         :param _AllocationTreeNode: 分账单元筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type AllocationTreeNode: list of AllocationTreeNode
         :param _TagKey: 分账标签键
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagKey: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14376,7 +14062,6 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
     @property
     def Business(self):
         """产品筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BillBusiness
         """
         return self._Business
@@ -14388,7 +14073,6 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
     @property
     def Product(self):
         """子产品筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BillProduct
         """
         return self._Product
@@ -14400,7 +14084,6 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
     @property
     def Item(self):
         """组件名称筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BillItem
         """
         return self._Item
@@ -14412,7 +14095,6 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
     @property
     def Region(self):
         """地域筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BillRegion
         """
         return self._Region
@@ -14424,7 +14106,6 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
     @property
     def InstanceType(self):
         """实例类型筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BillInstanceType
         """
         return self._InstanceType
@@ -14436,7 +14117,6 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
     @property
     def PayMode(self):
         """计费模式筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BillPayMode
         """
         return self._PayMode
@@ -14448,7 +14128,6 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
     @property
     def Project(self):
         """项目筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BillProject
         """
         return self._Project
@@ -14460,7 +14139,6 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
     @property
     def Tag(self):
         """标签筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BillTag
         """
         return self._Tag
@@ -14472,7 +14150,6 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
     @property
     def OwnerUin(self):
         """使用者 UIN 筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BillOwnerUin
         """
         return self._OwnerUin
@@ -14484,7 +14161,6 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
     @property
     def OperateUin(self):
         """操作者 UIN 筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BillOperateUin
         """
         return self._OperateUin
@@ -14496,7 +14172,6 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
     @property
     def BillDay(self):
         """日期筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BillDays
         """
         return self._BillDay
@@ -14508,7 +14183,6 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
     @property
     def ActionType(self):
         """交易类型筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BillActionType
         """
         return self._ActionType
@@ -14520,7 +14194,6 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
     @property
     def Component(self):
         """组件类型筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BillComponent
         """
         return self._Component
@@ -14532,7 +14205,6 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
     @property
     def Zone(self):
         """可用区筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BillZoneId
         """
         return self._Zone
@@ -14544,7 +14216,6 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
     @property
     def AllocationTreeNode(self):
         """分账单元筛选列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AllocationTreeNode
         """
         return self._AllocationTreeNode
@@ -14556,7 +14227,6 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
     @property
     def TagKey(self):
         """分账标签键
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._TagKey
@@ -15021,10 +14691,8 @@ class DescribeAllocationBillDetailResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _RecordNum: 总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecordNum: int
         :param _Total: 分账账单概览金额汇总
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
         :param _Detail: 分账账单明细
         :type Detail: list of AllocationDetail
@@ -15039,7 +14707,6 @@ class DescribeAllocationBillDetailResponse(AbstractModel):
     @property
     def RecordNum(self):
         """总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RecordNum
@@ -15051,7 +14718,6 @@ class DescribeAllocationBillDetailResponse(AbstractModel):
     @property
     def Total(self):
         """分账账单概览金额汇总
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
         """
         return self._Total
@@ -15141,10 +14807,8 @@ class DescribeAllocationMonthOverviewResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Detail: 分账账单月概览详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type Detail: list of AllocationOverviewNode
         :param _Total: 分账账单概览金额汇总
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15156,7 +14820,6 @@ class DescribeAllocationMonthOverviewResponse(AbstractModel):
     @property
     def Detail(self):
         """分账账单月概览详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AllocationOverviewNode
         """
         return self._Detail
@@ -15168,7 +14831,6 @@ class DescribeAllocationMonthOverviewResponse(AbstractModel):
     @property
     def Total(self):
         """分账账单概览金额汇总
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
         """
         return self._Total
@@ -15391,13 +15053,10 @@ class DescribeAllocationOverviewResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _RecordNum: 总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecordNum: int
         :param _Total: 分账账单概览金额汇总
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
         :param _Detail: 分账概览明细
-注意：此字段可能返回 null，表示取不到有效值。
         :type Detail: list of AllocationOverviewDetail
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15410,7 +15069,6 @@ class DescribeAllocationOverviewResponse(AbstractModel):
     @property
     def RecordNum(self):
         """总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RecordNum
@@ -15422,7 +15080,6 @@ class DescribeAllocationOverviewResponse(AbstractModel):
     @property
     def Total(self):
         """分账账单概览金额汇总
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
         """
         return self._Total
@@ -15434,7 +15091,6 @@ class DescribeAllocationOverviewResponse(AbstractModel):
     @property
     def Detail(self):
         """分账概览明细
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AllocationOverviewDetail
         """
         return self._Detail
@@ -15702,14 +15358,11 @@ class DescribeAllocationSummaryByBusinessResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _RecordNum: 总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecordNum: int
         :param _Total: 分账账单概览金额汇总
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
         :param _Detail: 分账账单按产品汇总明细
-注意：此字段可能返回 null，表示取不到有效值。
         :type Detail: list of AllocationSummaryByBusiness
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15722,7 +15375,6 @@ class DescribeAllocationSummaryByBusinessResponse(AbstractModel):
     @property
     def RecordNum(self):
         """总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RecordNum
@@ -15735,7 +15387,6 @@ class DescribeAllocationSummaryByBusinessResponse(AbstractModel):
     def Total(self):
         """分账账单概览金额汇总
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
         """
         return self._Total
@@ -15747,7 +15398,6 @@ class DescribeAllocationSummaryByBusinessResponse(AbstractModel):
     @property
     def Detail(self):
         """分账账单按产品汇总明细
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AllocationSummaryByBusiness
         """
         return self._Detail
@@ -16217,14 +15867,11 @@ class DescribeAllocationSummaryByItemResponse(AbstractModel):
         r"""
         :param _RecordNum: 总条数
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecordNum: int
         :param _Total: 分账账单概览金额汇总
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
         :param _Detail: 分账账单按组件汇总明细
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type Detail: list of AllocationSummaryByItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16238,7 +15885,6 @@ class DescribeAllocationSummaryByItemResponse(AbstractModel):
     def RecordNum(self):
         """总条数
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RecordNum
@@ -16250,7 +15896,6 @@ class DescribeAllocationSummaryByItemResponse(AbstractModel):
     @property
     def Total(self):
         """分账账单概览金额汇总
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
         """
         return self._Total
@@ -16263,7 +15908,6 @@ class DescribeAllocationSummaryByItemResponse(AbstractModel):
     def Detail(self):
         """分账账单按组件汇总明细
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AllocationSummaryByItem
         """
         return self._Detail
@@ -16677,15 +16321,12 @@ class DescribeAllocationSummaryByResourceResponse(AbstractModel):
         r"""
         :param _RecordNum: 总条数
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecordNum: int
         :param _Total: 分账账单概览金额汇总
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
         :param _Detail: 分账账单按资源汇总明细
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type Detail: list of AllocationSummaryByResource
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16699,7 +16340,6 @@ class DescribeAllocationSummaryByResourceResponse(AbstractModel):
     def RecordNum(self):
         """总条数
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RecordNum
@@ -16712,7 +16352,6 @@ class DescribeAllocationSummaryByResourceResponse(AbstractModel):
     def Total(self):
         """分账账单概览金额汇总
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
         """
         return self._Total
@@ -16725,7 +16364,6 @@ class DescribeAllocationSummaryByResourceResponse(AbstractModel):
     def Detail(self):
         """分账账单按资源汇总明细
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AllocationSummaryByResource
         """
         return self._Detail
@@ -16834,13 +16472,10 @@ class DescribeAllocationTrendByMonthResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Current: 当月费用信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Current: :class:`tencentcloud.billing.v20180709.models.AllocationBillTrendDetail`
         :param _Previous: 之前月份费用信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Previous: list of AllocationBillTrendDetail
         :param _Stat: 费用统计信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Stat: :class:`tencentcloud.billing.v20180709.models.AllocationStat`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16853,7 +16488,6 @@ class DescribeAllocationTrendByMonthResponse(AbstractModel):
     @property
     def Current(self):
         """当月费用信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationBillTrendDetail`
         """
         return self._Current
@@ -16865,7 +16499,6 @@ class DescribeAllocationTrendByMonthResponse(AbstractModel):
     @property
     def Previous(self):
         """之前月份费用信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AllocationBillTrendDetail
         """
         return self._Previous
@@ -16877,7 +16510,6 @@ class DescribeAllocationTrendByMonthResponse(AbstractModel):
     @property
     def Stat(self):
         """费用统计信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationStat`
         """
         return self._Stat
@@ -20669,10 +20301,8 @@ class DescribeCostSummaryByProductResponse(AbstractModel):
         :param _Total: 消耗详情
         :type Total: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTotal`
         :param _Data: 消耗按产品汇总详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of ConsumptionBusinessSummaryDataItem
         :param _RecordNum: 记录数量，NeedRecordNum为0时返回null
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecordNum: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -20708,7 +20338,6 @@ class DescribeCostSummaryByProductResponse(AbstractModel):
     @property
     def Data(self):
         """消耗按产品汇总详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ConsumptionBusinessSummaryDataItem
         """
         return self._Data
@@ -20720,7 +20349,6 @@ class DescribeCostSummaryByProductResponse(AbstractModel):
     @property
     def RecordNum(self):
         """记录数量，NeedRecordNum为0时返回null
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RecordNum
@@ -21087,7 +20715,6 @@ class DescribeCostSummaryByRegionResponse(AbstractModel):
         :param _Data: 消耗按地域汇总详情
         :type Data: list of ConsumptionRegionSummaryDataItem
         :param _RecordNum: 记录数量，NeedRecordNum为0时返回null
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecordNum: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -21134,7 +20761,6 @@ class DescribeCostSummaryByRegionResponse(AbstractModel):
     @property
     def RecordNum(self):
         """记录数量，NeedRecordNum为0时返回null
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RecordNum
@@ -21323,7 +20949,6 @@ class DescribeCostSummaryByResourceResponse(AbstractModel):
         :param _Ready: 数据是否准备好，0未准备好，1准备好
         :type Ready: int
         :param _Total: 消耗详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTotal`
         :param _ConditionValue: 过滤条件
 注意：此字段可能返回 null，表示取不到有效值。
@@ -21332,7 +20957,6 @@ class DescribeCostSummaryByResourceResponse(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecordNum: int
         :param _Data: 资源消耗详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of ConsumptionResourceSummaryDataItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -21358,7 +20982,6 @@ class DescribeCostSummaryByResourceResponse(AbstractModel):
     @property
     def Total(self):
         """消耗详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTotal`
         """
         return self._Total
@@ -21394,7 +21017,6 @@ class DescribeCostSummaryByResourceResponse(AbstractModel):
     @property
     def Data(self):
         """资源消耗详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ConsumptionResourceSummaryDataItem
         """
         return self._Data
@@ -22912,7 +22534,6 @@ class DescribeGatherResourceResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _RecordNum: 总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecordNum: int
         :param _GatherResourceSummary: 资源归集汇总
 注意：此字段可能返回 null，表示取不到有效值。
@@ -22931,7 +22552,6 @@ class DescribeGatherResourceResponse(AbstractModel):
     @property
     def RecordNum(self):
         """总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RecordNum
@@ -24219,39 +23839,28 @@ class DistributionBillDetail(AbstractModel):
         :param _OperateUin: 操作者UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的 ID 或者角色 ID ）
         :type OperateUin: str
         :param _Tags: 标签信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of BillTagInfo
         :param _BusinessCode: 产品编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessCode: str
         :param _ProductCode: 子产品编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductCode: str
         :param _ActionType: 交易类型编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActionType: str
         :param _RegionId: 地域ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionId: str
         :param _ProjectId: 项目ID
         :type ProjectId: int
         :param _PriceInfo: 价格属性：该组件除单价、时长外的其他影响折扣定价的属性信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type PriceInfo: list of str
         :param _AssociatedOrder: 关联交易单据ID：和本笔交易关联单据 ID，如，冲销订单，记录原订单、重结订单，退费单记录对应的原购买订单号
-注意：此字段可能返回 null，表示取不到有效值。
         :type AssociatedOrder: :class:`tencentcloud.billing.v20180709.models.BillDetailAssociatedOrder`
         :param _Formula: 计算说明：特殊交易类型计费结算的详细计算说明，如退费及变配
-注意：此字段可能返回 null，表示取不到有效值。
         :type Formula: str
         :param _FormulaUrl: 计费规则：各产品详细的计费规则官网说明链接
-注意：此字段可能返回 null，表示取不到有效值。
         :type FormulaUrl: str
         :param _BillMonth: 账单归属月
-注意：此字段可能返回 null，表示取不到有效值。
         :type BillMonth: str
         :param _BillDay: 账单归属日
-注意：此字段可能返回 null，表示取不到有效值。
         :type BillDay: str
         """
         self._BusinessCodeName = None
@@ -24474,7 +24083,6 @@ class DistributionBillDetail(AbstractModel):
     @property
     def Tags(self):
         """标签信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BillTagInfo
         """
         return self._Tags
@@ -24486,7 +24094,6 @@ class DistributionBillDetail(AbstractModel):
     @property
     def BusinessCode(self):
         """产品编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BusinessCode
@@ -24498,7 +24105,6 @@ class DistributionBillDetail(AbstractModel):
     @property
     def ProductCode(self):
         """子产品编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductCode
@@ -24510,7 +24116,6 @@ class DistributionBillDetail(AbstractModel):
     @property
     def ActionType(self):
         """交易类型编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ActionType
@@ -24522,7 +24127,6 @@ class DistributionBillDetail(AbstractModel):
     @property
     def RegionId(self):
         """地域ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RegionId
@@ -24545,7 +24149,6 @@ class DistributionBillDetail(AbstractModel):
     @property
     def PriceInfo(self):
         """价格属性：该组件除单价、时长外的其他影响折扣定价的属性信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._PriceInfo
@@ -24557,7 +24160,6 @@ class DistributionBillDetail(AbstractModel):
     @property
     def AssociatedOrder(self):
         """关联交易单据ID：和本笔交易关联单据 ID，如，冲销订单，记录原订单、重结订单，退费单记录对应的原购买订单号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.billing.v20180709.models.BillDetailAssociatedOrder`
         """
         return self._AssociatedOrder
@@ -24569,7 +24171,6 @@ class DistributionBillDetail(AbstractModel):
     @property
     def Formula(self):
         """计算说明：特殊交易类型计费结算的详细计算说明，如退费及变配
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Formula
@@ -24581,7 +24182,6 @@ class DistributionBillDetail(AbstractModel):
     @property
     def FormulaUrl(self):
         """计费规则：各产品详细的计费规则官网说明链接
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FormulaUrl
@@ -24593,7 +24193,6 @@ class DistributionBillDetail(AbstractModel):
     @property
     def BillMonth(self):
         """账单归属月
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BillMonth
@@ -24605,7 +24204,6 @@ class DistributionBillDetail(AbstractModel):
     @property
     def BillDay(self):
         """账单归属日
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BillDay
@@ -24726,115 +24324,79 @@ class GatherResourceSummary(AbstractModel):
     def __init__(self):
         r"""
         :param _PayerUin: 支付者 UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识
-注意：此字段可能返回 null，表示取不到有效值。
         :type PayerUin: str
         :param _OwnerUin: 使用者 UIN：实际使用资源的账号 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type OwnerUin: str
         :param _OperateUin: 操作者 UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的ID或者角色 ID）
-注意：此字段可能返回 null，表示取不到有效值。
         :type OperateUin: str
         :param _InstanceType: 实例类型编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceType: str
         :param _InstanceTypeName: 实例类型：购买的产品服务对应的实例类型，包括资源包、RI、SP、竞价实例。常规实例默认展示“-”
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceTypeName: str
         :param _ResourceId: 资源ID：不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID； 若该产品被分拆，则展示产品分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceId: str
         :param _ResourceName: 实例名称：用户在控制台为资源设置的名称，如未设置默认为空；若该产品被分拆，则展示分拆产品分拆后的分拆项资源别名
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceName: str
         :param _TreeNodeUniqKey: 分账单元唯一标识
-注意：此字段可能返回 null，表示取不到有效值。
         :type TreeNodeUniqKey: str
         :param _TreeNodeUniqKeyName: 分账单元名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TreeNodeUniqKeyName: str
         :param _RuleId: 资源命中公摊规则ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleId: int
         :param _RuleName: 资源命中公摊规则名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleName: str
         :param _BusinessCode: 产品编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessCode: str
         :param _BusinessCodeName: 产品名称：用户所采购的各类云产品
-注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessCodeName: str
         :param _ItemCode: 组件名称编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type ItemCode: str
         :param _ItemCodeName: 组件名称：用户购买的产品或服务，所包含的具体组件
-注意：此字段可能返回 null，表示取不到有效值。
         :type ItemCodeName: str
         :param _RegionId: 地域ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionId: int
         :param _RegionName: 地域名称：资源所属地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionName: str
         :param _Tag: 分账标签：资源绑定的标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tag: list of BillTag
         :param _RealTotalCost: 优惠后总价：优惠后总价 =（原价 - 预留实例抵扣原价 - 节省计划抵扣原价）* 折扣率
-注意：此字段可能返回 null，表示取不到有效值。
         :type RealTotalCost: str
         :param _CashPayAmount: 现金账户支出(元)：通过现金账户支付的金额
-注意：此字段可能返回 null，表示取不到有效值。
         :type CashPayAmount: str
         :param _VoucherPayAmount: 代金券支出(元)：使用各类优惠券（如代金券、现金券等）支付的金额
-注意：此字段可能返回 null，表示取不到有效值。
         :type VoucherPayAmount: str
         :param _IncentivePayAmount: 赠送账户支出(元)：使用赠送金支付的金额
-注意：此字段可能返回 null，表示取不到有效值。
         :type IncentivePayAmount: str
         :param _TransferPayAmount: 分成账户支出(元)：通过分成金账户支付的金额
-注意：此字段可能返回 null，表示取不到有效值。
         :type TransferPayAmount: str
         :param _AllocationType: 费用归集类型：费用来源类型，分摊、归集、未分配
 0 - 分摊
 1 - 归集
 -1 - 未分配
-注意：此字段可能返回 null，表示取不到有效值。
         :type AllocationType: int
         :param _BelongTreeNodeUniqKey: 当前归属单元信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type BelongTreeNodeUniqKey: :class:`tencentcloud.billing.v20180709.models.AllocationTreeNode`
         :param _BelongRule: 当前资源命中公摊规则信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type BelongRule: :class:`tencentcloud.billing.v20180709.models.AllocationRule`
         :param _OtherTreeNodeUniqKeys: 其它归属单元信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type OtherTreeNodeUniqKeys: list of AllocationTreeNode
         :param _OtherRules: 其他命中规则信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type OtherRules: list of AllocationRule
         :param _ProjectId: 项目ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: int
         :param _ProjectName: 项目名称：资源归属的项目，用户在控制台给资源自主分配项目，未分配则是默认项目
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectName: str
         :param _ProductCode: 子产品编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductCode: str
         :param _ProductCodeName: 子产品名称：用户采购的具体产品细分类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductCodeName: str
         :param _PayMode: 计费模式编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type PayMode: str
         :param _PayModeName: 计费模式：资源的计费模式，区分为包年包月和按量计费
-注意：此字段可能返回 null，表示取不到有效值。
         :type PayModeName: str
         :param _ActionType: 交易类型编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActionType: str
         :param _ActionTypeName: 交易类型：明细交易类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActionTypeName: str
         :param _SplitItemId: 分拆项 ID：涉及分拆产品的分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名
 注意：此字段可能返回 null，表示取不到有效值。
@@ -24885,7 +24447,6 @@ class GatherResourceSummary(AbstractModel):
     @property
     def PayerUin(self):
         """支付者 UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PayerUin
@@ -24897,7 +24458,6 @@ class GatherResourceSummary(AbstractModel):
     @property
     def OwnerUin(self):
         """使用者 UIN：实际使用资源的账号 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OwnerUin
@@ -24909,7 +24469,6 @@ class GatherResourceSummary(AbstractModel):
     @property
     def OperateUin(self):
         """操作者 UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的ID或者角色 ID）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OperateUin
@@ -24921,7 +24480,6 @@ class GatherResourceSummary(AbstractModel):
     @property
     def InstanceType(self):
         """实例类型编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceType
@@ -24933,7 +24491,6 @@ class GatherResourceSummary(AbstractModel):
     @property
     def InstanceTypeName(self):
         """实例类型：购买的产品服务对应的实例类型，包括资源包、RI、SP、竞价实例。常规实例默认展示“-”
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceTypeName
@@ -24945,7 +24502,6 @@ class GatherResourceSummary(AbstractModel):
     @property
     def ResourceId(self):
         """资源ID：不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID； 若该产品被分拆，则展示产品分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceId
@@ -24957,7 +24513,6 @@ class GatherResourceSummary(AbstractModel):
     @property
     def ResourceName(self):
         """实例名称：用户在控制台为资源设置的名称，如未设置默认为空；若该产品被分拆，则展示分拆产品分拆后的分拆项资源别名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceName
@@ -24969,7 +24524,6 @@ class GatherResourceSummary(AbstractModel):
     @property
     def TreeNodeUniqKey(self):
         """分账单元唯一标识
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TreeNodeUniqKey
@@ -24981,7 +24535,6 @@ class GatherResourceSummary(AbstractModel):
     @property
     def TreeNodeUniqKeyName(self):
         """分账单元名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TreeNodeUniqKeyName
@@ -24993,7 +24546,6 @@ class GatherResourceSummary(AbstractModel):
     @property
     def RuleId(self):
         """资源命中公摊规则ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RuleId
@@ -25005,7 +24557,6 @@ class GatherResourceSummary(AbstractModel):
     @property
     def RuleName(self):
         """资源命中公摊规则名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RuleName
@@ -25017,7 +24568,6 @@ class GatherResourceSummary(AbstractModel):
     @property
     def BusinessCode(self):
         """产品编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BusinessCode
@@ -25029,7 +24579,6 @@ class GatherResourceSummary(AbstractModel):
     @property
     def BusinessCodeName(self):
         """产品名称：用户所采购的各类云产品
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BusinessCodeName
@@ -25041,7 +24590,6 @@ class GatherResourceSummary(AbstractModel):
     @property
     def ItemCode(self):
         """组件名称编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ItemCode
@@ -25053,7 +24601,6 @@ class GatherResourceSummary(AbstractModel):
     @property
     def ItemCodeName(self):
         """组件名称：用户购买的产品或服务，所包含的具体组件
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ItemCodeName
@@ -25065,7 +24612,6 @@ class GatherResourceSummary(AbstractModel):
     @property
     def RegionId(self):
         """地域ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RegionId
@@ -25077,7 +24623,6 @@ class GatherResourceSummary(AbstractModel):
     @property
     def RegionName(self):
         """地域名称：资源所属地域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RegionName
@@ -25089,7 +24634,6 @@ class GatherResourceSummary(AbstractModel):
     @property
     def Tag(self):
         """分账标签：资源绑定的标签
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BillTag
         """
         return self._Tag
@@ -25101,7 +24645,6 @@ class GatherResourceSummary(AbstractModel):
     @property
     def RealTotalCost(self):
         """优惠后总价：优惠后总价 =（原价 - 预留实例抵扣原价 - 节省计划抵扣原价）* 折扣率
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RealTotalCost
@@ -25113,7 +24656,6 @@ class GatherResourceSummary(AbstractModel):
     @property
     def CashPayAmount(self):
         """现金账户支出(元)：通过现金账户支付的金额
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CashPayAmount
@@ -25125,7 +24667,6 @@ class GatherResourceSummary(AbstractModel):
     @property
     def VoucherPayAmount(self):
         """代金券支出(元)：使用各类优惠券（如代金券、现金券等）支付的金额
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -25137,7 +24678,6 @@ class GatherResourceSummary(AbstractModel):
     @property
     def IncentivePayAmount(self):
         """赠送账户支出(元)：使用赠送金支付的金额
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -25149,7 +24689,6 @@ class GatherResourceSummary(AbstractModel):
     @property
     def TransferPayAmount(self):
         """分成账户支出(元)：通过分成金账户支付的金额
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TransferPayAmount
@@ -25164,7 +24703,6 @@ class GatherResourceSummary(AbstractModel):
 0 - 分摊
 1 - 归集
 -1 - 未分配
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AllocationType
@@ -25176,7 +24714,6 @@ class GatherResourceSummary(AbstractModel):
     @property
     def BelongTreeNodeUniqKey(self):
         """当前归属单元信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationTreeNode`
         """
         return self._BelongTreeNodeUniqKey
@@ -25188,7 +24725,6 @@ class GatherResourceSummary(AbstractModel):
     @property
     def BelongRule(self):
         """当前资源命中公摊规则信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationRule`
         """
         return self._BelongRule
@@ -25200,7 +24736,6 @@ class GatherResourceSummary(AbstractModel):
     @property
     def OtherTreeNodeUniqKeys(self):
         """其它归属单元信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AllocationTreeNode
         """
         return self._OtherTreeNodeUniqKeys
@@ -25212,7 +24747,6 @@ class GatherResourceSummary(AbstractModel):
     @property
     def OtherRules(self):
         """其他命中规则信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AllocationRule
         """
         return self._OtherRules
@@ -25224,7 +24758,6 @@ class GatherResourceSummary(AbstractModel):
     @property
     def ProjectId(self):
         """项目ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ProjectId
@@ -25236,7 +24769,6 @@ class GatherResourceSummary(AbstractModel):
     @property
     def ProjectName(self):
         """项目名称：资源归属的项目，用户在控制台给资源自主分配项目，未分配则是默认项目
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProjectName
@@ -25248,7 +24780,6 @@ class GatherResourceSummary(AbstractModel):
     @property
     def ProductCode(self):
         """子产品编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductCode
@@ -25260,7 +24791,6 @@ class GatherResourceSummary(AbstractModel):
     @property
     def ProductCodeName(self):
         """子产品名称：用户采购的具体产品细分类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductCodeName
@@ -25272,7 +24802,6 @@ class GatherResourceSummary(AbstractModel):
     @property
     def PayMode(self):
         """计费模式编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PayMode
@@ -25284,7 +24813,6 @@ class GatherResourceSummary(AbstractModel):
     @property
     def PayModeName(self):
         """计费模式：资源的计费模式，区分为包年包月和按量计费
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PayModeName
@@ -25296,7 +24824,6 @@ class GatherResourceSummary(AbstractModel):
     @property
     def ActionType(self):
         """交易类型编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ActionType
@@ -25308,7 +24835,6 @@ class GatherResourceSummary(AbstractModel):
     @property
     def ActionTypeName(self):
         """交易类型：明细交易类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ActionTypeName
@@ -25484,11 +25010,17 @@ class PayDealsRequest(AbstractModel):
         :type VoucherIds: list of str
         :param _BigDealIds: 需要支付的一个或者多个大订单号，与OrderIds字段两者必须且仅传一个参数
         :type BigDealIds: list of str
+        :param _AgentPay: 0非代理，1代理商代付，3集团代理，4代理商为代客下产品级代付单，默认0
+        :type AgentPay: int
+        :param _CpsUin: 推荐者，用于返利
+        :type CpsUin: str
         """
         self._OrderIds = None
         self._AutoVoucher = None
         self._VoucherIds = None
         self._BigDealIds = None
+        self._AgentPay = None
+        self._CpsUin = None
 
     @property
     def OrderIds(self):
@@ -25534,12 +25066,36 @@ class PayDealsRequest(AbstractModel):
     def BigDealIds(self, BigDealIds):
         self._BigDealIds = BigDealIds
 
+    @property
+    def AgentPay(self):
+        """0非代理，1代理商代付，3集团代理，4代理商为代客下产品级代付单，默认0
+        :rtype: int
+        """
+        return self._AgentPay
+
+    @AgentPay.setter
+    def AgentPay(self, AgentPay):
+        self._AgentPay = AgentPay
+
+    @property
+    def CpsUin(self):
+        """推荐者，用于返利
+        :rtype: str
+        """
+        return self._CpsUin
+
+    @CpsUin.setter
+    def CpsUin(self, CpsUin):
+        self._CpsUin = CpsUin
+
 
     def _deserialize(self, params):
         self._OrderIds = params.get("OrderIds")
         self._AutoVoucher = params.get("AutoVoucher")
         self._VoucherIds = params.get("VoucherIds")
         self._BigDealIds = params.get("BigDealIds")
+        self._AgentPay = params.get("AgentPay")
+        self._CpsUin = params.get("CpsUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

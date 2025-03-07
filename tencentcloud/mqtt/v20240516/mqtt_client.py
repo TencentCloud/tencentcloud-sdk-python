@@ -980,6 +980,29 @@ class MqttClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def PublishMessage(self, request):
+        """发布 MQTT 消息到消息主题或客户端
+
+        :param request: Request instance for PublishMessage.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.PublishMessageRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.PublishMessageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("PublishMessage", params, headers=headers)
+            response = json.loads(body)
+            model = models.PublishMessageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RegisterCaCertificate(self, request):
         """注册ca证书
 

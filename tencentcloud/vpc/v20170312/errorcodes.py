@@ -839,6 +839,9 @@ UNSUPPORTEDOPERATION_CCNNOTENABLECOMMUNITY = 'UnsupportedOperation.CcnNotEnableC
 # 跨账号场景下不支持自驾云账号实例 关联普通账号云联网。
 UNSUPPORTEDOPERATION_CCNORDINARYACCOUNTREFUSEATTACH = 'UnsupportedOperation.CcnOrdinaryAccountRefuseAttach'
 
+# 当前路由与已有路由的CIDR重叠，仅能开启其中一条路由。
+UNSUPPORTEDOPERATION_CCNROUTECIDROVERLAP = 'UnsupportedOperation.CcnRouteCidrOverlap'
+
 # 指定的路由表不存在。
 UNSUPPORTEDOPERATION_CCNROUTETABLENOTEXIST = 'UnsupportedOperation.CcnRouteTableNotExist'
 

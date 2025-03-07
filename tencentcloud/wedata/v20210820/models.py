@@ -10715,6 +10715,8 @@ class CreateHiveTableByDDLRequest(AbstractModel):
         :type SmartOptimizerWritten: str
         :param _TableName: 数据优化表名
         :type TableName: str
+        :param _ResourceGroupName: 数据优化资源组
+        :type ResourceGroupName: str
         """
         self._DatasourceId = None
         self._Database = None
@@ -10728,6 +10730,7 @@ class CreateHiveTableByDDLRequest(AbstractModel):
         self._DataOptimizationResource = None
         self._SmartOptimizerWritten = None
         self._TableName = None
+        self._ResourceGroupName = None
 
     @property
     def DatasourceId(self):
@@ -10861,6 +10864,17 @@ class CreateHiveTableByDDLRequest(AbstractModel):
     def TableName(self, TableName):
         self._TableName = TableName
 
+    @property
+    def ResourceGroupName(self):
+        """数据优化资源组
+        :rtype: str
+        """
+        return self._ResourceGroupName
+
+    @ResourceGroupName.setter
+    def ResourceGroupName(self, ResourceGroupName):
+        self._ResourceGroupName = ResourceGroupName
+
 
     def _deserialize(self, params):
         self._DatasourceId = params.get("DatasourceId")
@@ -10875,6 +10889,7 @@ class CreateHiveTableByDDLRequest(AbstractModel):
         self._DataOptimizationResource = params.get("DataOptimizationResource")
         self._SmartOptimizerWritten = params.get("SmartOptimizerWritten")
         self._TableName = params.get("TableName")
+        self._ResourceGroupName = params.get("ResourceGroupName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10968,6 +10983,8 @@ class CreateHiveTableRequest(AbstractModel):
         :type SmartOptimizerWritten: str
         :param _TableName: 数据优化针对的表
         :type TableName: str
+        :param _ResourceGroupName: 数据优化资源组
+        :type ResourceGroupName: str
         """
         self._DatasourceId = None
         self._Database = None
@@ -10978,6 +10995,7 @@ class CreateHiveTableRequest(AbstractModel):
         self._DataOptimizationResource = None
         self._SmartOptimizerWritten = None
         self._TableName = None
+        self._ResourceGroupName = None
 
     @property
     def DatasourceId(self):
@@ -11078,6 +11096,17 @@ class CreateHiveTableRequest(AbstractModel):
     def TableName(self, TableName):
         self._TableName = TableName
 
+    @property
+    def ResourceGroupName(self):
+        """数据优化资源组
+        :rtype: str
+        """
+        return self._ResourceGroupName
+
+    @ResourceGroupName.setter
+    def ResourceGroupName(self, ResourceGroupName):
+        self._ResourceGroupName = ResourceGroupName
+
 
     def _deserialize(self, params):
         self._DatasourceId = params.get("DatasourceId")
@@ -11089,6 +11118,7 @@ class CreateHiveTableRequest(AbstractModel):
         self._DataOptimizationResource = params.get("DataOptimizationResource")
         self._SmartOptimizerWritten = params.get("SmartOptimizerWritten")
         self._TableName = params.get("TableName")
+        self._ResourceGroupName = params.get("ResourceGroupName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28432,6 +28462,10 @@ class DescribeOperateOpsTasksRequest(AbstractModel):
         :type RequestResourceTypes: list of str
         :param _ProjectIds: 项目ID列表
         :type ProjectIds: list of str
+        :param _BlackTaskIdList: 黑名单任务ID列表，传了该值在筛选的时候会将列表中的任务ID剔除
+        :type BlackTaskIdList: list of str
+        :param _ScheduleTimeZone: 时区
+        :type ScheduleTimeZone: str
         """
         self._ProjectId = None
         self._FolderIdList = None
@@ -28459,6 +28493,8 @@ class DescribeOperateOpsTasksRequest(AbstractModel):
         self._InitStrategy = None
         self._RequestResourceTypes = None
         self._ProjectIds = None
+        self._BlackTaskIdList = None
+        self._ScheduleTimeZone = None
 
     @property
     def ProjectId(self):
@@ -28746,6 +28782,28 @@ class DescribeOperateOpsTasksRequest(AbstractModel):
     def ProjectIds(self, ProjectIds):
         self._ProjectIds = ProjectIds
 
+    @property
+    def BlackTaskIdList(self):
+        """黑名单任务ID列表，传了该值在筛选的时候会将列表中的任务ID剔除
+        :rtype: list of str
+        """
+        return self._BlackTaskIdList
+
+    @BlackTaskIdList.setter
+    def BlackTaskIdList(self, BlackTaskIdList):
+        self._BlackTaskIdList = BlackTaskIdList
+
+    @property
+    def ScheduleTimeZone(self):
+        """时区
+        :rtype: str
+        """
+        return self._ScheduleTimeZone
+
+    @ScheduleTimeZone.setter
+    def ScheduleTimeZone(self, ScheduleTimeZone):
+        self._ScheduleTimeZone = ScheduleTimeZone
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -28779,6 +28837,8 @@ class DescribeOperateOpsTasksRequest(AbstractModel):
         self._InitStrategy = params.get("InitStrategy")
         self._RequestResourceTypes = params.get("RequestResourceTypes")
         self._ProjectIds = params.get("ProjectIds")
+        self._BlackTaskIdList = params.get("BlackTaskIdList")
+        self._ScheduleTimeZone = params.get("ScheduleTimeZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -45758,6 +45818,8 @@ class InstanceApiOpsRequest(AbstractModel):
         :type ExecutorGroupIdList: list of str
         :param _OnlyRerun: true 只过滤重跑过的实例，false 忽略此过滤条件，结果集过滤条件中不包括是否重跑
         :type OnlyRerun: bool
+        :param _ScheduleTimeZone: 时区
+        :type ScheduleTimeZone: str
         """
         self._Instance = None
         self._SortCol = None
@@ -45791,6 +45853,7 @@ class InstanceApiOpsRequest(AbstractModel):
         self._DataTimeCycle = None
         self._ExecutorGroupIdList = None
         self._OnlyRerun = None
+        self._ScheduleTimeZone = None
 
     @property
     def Instance(self):
@@ -46144,6 +46207,17 @@ class InstanceApiOpsRequest(AbstractModel):
     def OnlyRerun(self, OnlyRerun):
         self._OnlyRerun = OnlyRerun
 
+    @property
+    def ScheduleTimeZone(self):
+        """时区
+        :rtype: str
+        """
+        return self._ScheduleTimeZone
+
+    @ScheduleTimeZone.setter
+    def ScheduleTimeZone(self, ScheduleTimeZone):
+        self._ScheduleTimeZone = ScheduleTimeZone
+
 
     def _deserialize(self, params):
         if params.get("Instance") is not None:
@@ -46185,6 +46259,7 @@ class InstanceApiOpsRequest(AbstractModel):
         self._DataTimeCycle = params.get("DataTimeCycle")
         self._ExecutorGroupIdList = params.get("ExecutorGroupIdList")
         self._OnlyRerun = params.get("OnlyRerun")
+        self._ScheduleTimeZone = params.get("ScheduleTimeZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -52429,6 +52504,10 @@ NORMAL： 正常
 ORDER ： 按照实例时间顺序执行
 REVERSE： 实例数据时间逆序
         :type MakeDataTimeOrder: str
+        :param _ScheduleTimeZone: 补录时间范围的时区
+        :type ScheduleTimeZone: str
+        :param _AppParam: 执行应用参数
+        :type AppParam: str
         """
         self._PlanId = None
         self._MakeName = None
@@ -52458,6 +52537,8 @@ REVERSE： 实例数据时间逆序
         self._SameSelfWorkflowDependType = None
         self._SelfWorkflowDependency = None
         self._MakeDataTimeOrder = None
+        self._ScheduleTimeZone = None
+        self._AppParam = None
 
     @property
     def PlanId(self):
@@ -52800,6 +52881,28 @@ REVERSE： 实例数据时间逆序
     def MakeDataTimeOrder(self, MakeDataTimeOrder):
         self._MakeDataTimeOrder = MakeDataTimeOrder
 
+    @property
+    def ScheduleTimeZone(self):
+        """补录时间范围的时区
+        :rtype: str
+        """
+        return self._ScheduleTimeZone
+
+    @ScheduleTimeZone.setter
+    def ScheduleTimeZone(self, ScheduleTimeZone):
+        self._ScheduleTimeZone = ScheduleTimeZone
+
+    @property
+    def AppParam(self):
+        """执行应用参数
+        :rtype: str
+        """
+        return self._AppParam
+
+    @AppParam.setter
+    def AppParam(self, AppParam):
+        self._AppParam = AppParam
+
 
     def _deserialize(self, params):
         self._PlanId = params.get("PlanId")
@@ -52840,6 +52943,8 @@ REVERSE： 实例数据时间逆序
         self._SameSelfWorkflowDependType = params.get("SameSelfWorkflowDependType")
         self._SelfWorkflowDependency = params.get("SelfWorkflowDependency")
         self._MakeDataTimeOrder = params.get("MakeDataTimeOrder")
+        self._ScheduleTimeZone = params.get("ScheduleTimeZone")
+        self._AppParam = params.get("AppParam")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -61939,6 +62044,8 @@ class RenewWorkflowSchedulerInfoDsRequest(AbstractModel):
         :type CalendarId: str
         :param _ScheduleTimeZone: 时区
         :type ScheduleTimeZone: str
+        :param _ClearLink: 是否自动清理不支持的任务链接
+        :type ClearLink: bool
         """
         self._ProjectId = None
         self._WorkflowId = None
@@ -61960,6 +62067,7 @@ class RenewWorkflowSchedulerInfoDsRequest(AbstractModel):
         self._CalendarName = None
         self._CalendarId = None
         self._ScheduleTimeZone = None
+        self._ClearLink = None
 
     @property
     def ProjectId(self):
@@ -62182,6 +62290,17 @@ class RenewWorkflowSchedulerInfoDsRequest(AbstractModel):
     def ScheduleTimeZone(self, ScheduleTimeZone):
         self._ScheduleTimeZone = ScheduleTimeZone
 
+    @property
+    def ClearLink(self):
+        """是否自动清理不支持的任务链接
+        :rtype: bool
+        """
+        return self._ClearLink
+
+    @ClearLink.setter
+    def ClearLink(self, ClearLink):
+        self._ClearLink = ClearLink
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -62204,6 +62323,7 @@ class RenewWorkflowSchedulerInfoDsRequest(AbstractModel):
         self._CalendarName = params.get("CalendarName")
         self._CalendarId = params.get("CalendarId")
         self._ScheduleTimeZone = params.get("ScheduleTimeZone")
+        self._ClearLink = params.get("ClearLink")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -79318,6 +79438,11 @@ class TaskOpsDto(AbstractModel):
         :param _NewParentTaskInfos: 父任务simple信息(新)
 注意：此字段可能返回 null，表示取不到有效值。
         :type NewParentTaskInfos: list of AiopsSimpleTaskDto
+        :param _SelfWorkFlowDependType: 任务自依赖类型：
+yes： 任务需满足自依赖
+no：任务无需满足自依赖
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SelfWorkFlowDependType: str
         """
         self._TaskId = None
         self._VirtualTaskId = None
@@ -79408,6 +79533,7 @@ class TaskOpsDto(AbstractModel):
         self._ParentTaskInfos = None
         self._ExtResourceFlag = None
         self._NewParentTaskInfos = None
+        self._SelfWorkFlowDependType = None
 
     @property
     def TaskId(self):
@@ -80477,6 +80603,20 @@ class TaskOpsDto(AbstractModel):
     def NewParentTaskInfos(self, NewParentTaskInfos):
         self._NewParentTaskInfos = NewParentTaskInfos
 
+    @property
+    def SelfWorkFlowDependType(self):
+        """任务自依赖类型：
+yes： 任务需满足自依赖
+no：任务无需满足自依赖
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SelfWorkFlowDependType
+
+    @SelfWorkFlowDependType.setter
+    def SelfWorkFlowDependType(self, SelfWorkFlowDependType):
+        self._SelfWorkFlowDependType = SelfWorkFlowDependType
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -80590,6 +80730,7 @@ class TaskOpsDto(AbstractModel):
                 obj = AiopsSimpleTaskDto()
                 obj._deserialize(item)
                 self._NewParentTaskInfos.append(obj)
+        self._SelfWorkFlowDependType = params.get("SelfWorkFlowDependType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -81808,10 +81949,13 @@ class TriggerDsEventRequest(AbstractModel):
         :type EventCaseList: list of EventCaseDTO
         :param _EventBatchCaseList: 事件实例信息(连续时间)
         :type EventBatchCaseList: list of EventBatchCaseDTO
+        :param _ScheduleTimeZone: 触发时区
+        :type ScheduleTimeZone: str
         """
         self._ProjectId = None
         self._EventCaseList = None
         self._EventBatchCaseList = None
+        self._ScheduleTimeZone = None
 
     @property
     def ProjectId(self):
@@ -81846,6 +81990,17 @@ class TriggerDsEventRequest(AbstractModel):
     def EventBatchCaseList(self, EventBatchCaseList):
         self._EventBatchCaseList = EventBatchCaseList
 
+    @property
+    def ScheduleTimeZone(self):
+        """触发时区
+        :rtype: str
+        """
+        return self._ScheduleTimeZone
+
+    @ScheduleTimeZone.setter
+    def ScheduleTimeZone(self, ScheduleTimeZone):
+        self._ScheduleTimeZone = ScheduleTimeZone
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -81861,6 +82016,7 @@ class TriggerDsEventRequest(AbstractModel):
                 obj = EventBatchCaseDTO()
                 obj._deserialize(item)
                 self._EventBatchCaseList.append(obj)
+        self._ScheduleTimeZone = params.get("ScheduleTimeZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -84844,6 +85000,9 @@ class WorkflowScheduleDtoDs(AbstractModel):
         :param _CalendarId: 日历调度id
 注意：此字段可能返回 null，表示取不到有效值。
         :type CalendarId: str
+        :param _ScheduleTimeZone: 时区配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScheduleTimeZone: str
         """
         self._ProjectId = None
         self._WorkflowId = None
@@ -84869,6 +85028,7 @@ class WorkflowScheduleDtoDs(AbstractModel):
         self._CalendarOpen = None
         self._CalendarName = None
         self._CalendarId = None
+        self._ScheduleTimeZone = None
 
     @property
     def ProjectId(self):
@@ -85158,6 +85318,18 @@ class WorkflowScheduleDtoDs(AbstractModel):
     def CalendarId(self, CalendarId):
         self._CalendarId = CalendarId
 
+    @property
+    def ScheduleTimeZone(self):
+        """时区配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ScheduleTimeZone
+
+    @ScheduleTimeZone.setter
+    def ScheduleTimeZone(self, ScheduleTimeZone):
+        self._ScheduleTimeZone = ScheduleTimeZone
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -85184,6 +85356,7 @@ class WorkflowScheduleDtoDs(AbstractModel):
         self._CalendarOpen = params.get("CalendarOpen")
         self._CalendarName = params.get("CalendarName")
         self._CalendarId = params.get("CalendarId")
+        self._ScheduleTimeZone = params.get("ScheduleTimeZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -389,7 +389,6 @@ class ChargeAttribute(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type CurDeadline: str
         :param _PayMode: 付费方式
-注意：此字段可能返回 null，表示取不到有效值。
         :type PayMode: str
         :param _AutoRenewFlag: 自动付费标识：0:默认未设置 1:自动续费 2 不自动续费
 注意：此字段可能返回 null，表示取不到有效值。
@@ -418,7 +417,6 @@ class ChargeAttribute(AbstractModel):
     @property
     def PayMode(self):
         """付费方式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PayMode
@@ -2241,7 +2239,6 @@ class FSAttribute(AbstractModel):
         :param _CreateTime: 创建时间
         :type CreateTime: str
         :param _GooseFSxAttribute: GooseFSx文件系统属性
-注意：此字段可能返回 null，表示取不到有效值。
         :type GooseFSxAttribute: :class:`tencentcloud.goosefs.v20220519.models.GooseFSxAttribute`
         :param _Status: 文件系统状态 ACTIVE(运行中), CREATING(创建中), DESTROYING(销毁中), FAIL(创建失败),EXPANDING(扩容中),PROBING(容灾中)
         :type Status: str
@@ -2256,12 +2253,10 @@ class FSAttribute(AbstractModel):
         :param _Zone: 子网所在的可用区
         :type Zone: str
         :param _Tag: Tag数组
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tag: list of Tag
         :param _ModifyTime: 更新属性时间
         :type ModifyTime: str
         :param _ChargeAttribute: 文件系统付费信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChargeAttribute: :class:`tencentcloud.goosefs.v20220519.models.ChargeAttribute`
         """
         self._Type = None
@@ -2314,7 +2309,6 @@ class FSAttribute(AbstractModel):
     @property
     def GooseFSxAttribute(self):
         """GooseFSx文件系统属性
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.goosefs.v20220519.models.GooseFSxAttribute`
         """
         return self._GooseFSxAttribute
@@ -2392,7 +2386,6 @@ class FSAttribute(AbstractModel):
     @property
     def Tag(self):
         """Tag数组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._Tag
@@ -2415,7 +2408,6 @@ class FSAttribute(AbstractModel):
     @property
     def ChargeAttribute(self):
         """文件系统付费信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.goosefs.v20220519.models.ChargeAttribute`
         """
         return self._ChargeAttribute
@@ -2735,7 +2727,6 @@ class MappedBucket(AbstractModel):
 
 周期沉降(PeriodExport)
 立即沉降(ImmediateExport)
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataRepositoryTaskAutoStrategy: list of str
         :param _RuleId: 绑定bucket的数据流动策略ID
 注意：此字段可能返回 null，表示取不到有效值。
@@ -2797,7 +2788,6 @@ class MappedBucket(AbstractModel):
 
 周期沉降(PeriodExport)
 立即沉降(ImmediateExport)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._DataRepositoryTaskAutoStrategy

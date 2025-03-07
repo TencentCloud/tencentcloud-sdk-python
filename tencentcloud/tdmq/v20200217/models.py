@@ -18791,6 +18791,149 @@ class DescribeRocketMQSubscriptionsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRocketMQTopUsagesRequest(AbstractModel):
+    """DescribeRocketMQTopUsages请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _MetricName: 指标名称，支持以下：
+consumeLag，消费组堆积数量
+deadLetterCount，死信数量
+topicRateIn,   Topic生产速率
+topicRateOut，Topic消费速率
+topicStorageSize，Topic存储空间
+topicApiCalls，Topic API调用次数
+        :type MetricName: str
+        :param _Limit: 排序数量，最大20
+        :type Limit: int
+        """
+        self._ClusterId = None
+        self._MetricName = None
+        self._Limit = None
+
+    @property
+    def ClusterId(self):
+        """集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def MetricName(self):
+        """指标名称，支持以下：
+consumeLag，消费组堆积数量
+deadLetterCount，死信数量
+topicRateIn,   Topic生产速率
+topicRateOut，Topic消费速率
+topicStorageSize，Topic存储空间
+topicApiCalls，Topic API调用次数
+        :rtype: str
+        """
+        return self._MetricName
+
+    @MetricName.setter
+    def MetricName(self, MetricName):
+        self._MetricName = MetricName
+
+    @property
+    def Limit(self):
+        """排序数量，最大20
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._MetricName = params.get("MetricName")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRocketMQTopUsagesResponse(AbstractModel):
+    """DescribeRocketMQTopUsages返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Values: 指标值列表
+        :type Values: list of int
+        :param _Dimensions: 指标值对应的维度组合，本接口存在以下几个维度：
+tenant，namespace，group，topic
+        :type Dimensions: list of DimensionInstance
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Values = None
+        self._Dimensions = None
+        self._RequestId = None
+
+    @property
+    def Values(self):
+        """指标值列表
+        :rtype: list of int
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+    @property
+    def Dimensions(self):
+        """指标值对应的维度组合，本接口存在以下几个维度：
+tenant，namespace，group，topic
+        :rtype: list of DimensionInstance
+        """
+        return self._Dimensions
+
+    @Dimensions.setter
+    def Dimensions(self, Dimensions):
+        self._Dimensions = Dimensions
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Values = params.get("Values")
+        if params.get("Dimensions") is not None:
+            self._Dimensions = []
+            for item in params.get("Dimensions"):
+                obj = DimensionInstance()
+                obj._deserialize(item)
+                self._Dimensions.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRocketMQTopicMsgsRequest(AbstractModel):
     """DescribeRocketMQTopicMsgs请求参数结构体
 
@@ -20690,6 +20833,55 @@ class DetailedRolePerm(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DimensionInstance(AbstractModel):
+    """实例维度组合数组
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Dimensions: 实例的维度组合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Dimensions: list of DimensionOpt
+        """
+        self._Dimensions = None
+
+    @property
+    def Dimensions(self):
+        """实例的维度组合
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DimensionOpt
+        """
+        return self._Dimensions
+
+    @Dimensions.setter
+    def Dimensions(self, Dimensions):
+        self._Dimensions = Dimensions
+
+
+    def _deserialize(self, params):
+        if params.get("Dimensions") is not None:
+            self._Dimensions = []
+            for item in params.get("Dimensions"):
+                obj = DimensionOpt()
+                obj._deserialize(item)
+                self._Dimensions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DimensionOpt(AbstractModel):
+    """指标维度对象
+
+    """
 
 
 class Environment(AbstractModel):

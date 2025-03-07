@@ -239,7 +239,6 @@ class BinlogInfo(AbstractModel):
         :param _Filename: 备份文件名。
         :type Filename: str
         :param _FileSize: 备份文件大小，单位：Byte。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileSize: int
         """
         self._StartTime = None
@@ -295,7 +294,6 @@ class BinlogInfo(AbstractModel):
     @property
     def FileSize(self):
         """备份文件大小，单位：Byte。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FileSize
@@ -1318,10 +1316,8 @@ class DescribeConnectionConfigResponse(AbstractModel):
         :param _ClientLimit: 实例当前单分片连接数限制。
         :type ClientLimit: int
         :param _ClientLimitMin: 单分片连接数限制最小值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClientLimitMin: int
         :param _ClientLimitMax: 单分片连接数限制最大值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClientLimitMax: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1369,7 +1365,6 @@ class DescribeConnectionConfigResponse(AbstractModel):
     @property
     def ClientLimitMin(self):
         """单分片连接数限制最小值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ClientLimitMin
@@ -1381,7 +1376,6 @@ class DescribeConnectionConfigResponse(AbstractModel):
     @property
     def ClientLimitMax(self):
         """单分片连接数限制最大值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ClientLimitMax
@@ -1663,7 +1657,6 @@ class DescribeInstanceBackupsResponse(AbstractModel):
         :param _TotalCount: 备份文件总数。
         :type TotalCount: int
         :param _BackupSet: 废弃字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :type BackupSet: list of BinlogInfo
         :param _BackupRecord: 实例备份信息列表。
         :type BackupRecord: list of BackupInfo
@@ -1689,7 +1682,6 @@ class DescribeInstanceBackupsResponse(AbstractModel):
     @property
     def BackupSet(self):
         """废弃字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BinlogInfo
         """
         return self._BackupSet
@@ -2057,23 +2049,18 @@ class DescribeInstanceNodeInfoResponse(AbstractModel):
         :param _ProxyCount: Proxy 节点数量。
         :type ProxyCount: int
         :param _Proxy: Proxy 节点信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Proxy: list of ProxyNodeInfo
         :param _RedisCount: Redis 节点数量。该参数仅为产品兼容性而保留，并不具有实际意义，可忽略。
         :type RedisCount: int
         :param _Redis: Redis 节点信息。该参数仅为产品兼容性而保留，并不具有实际意义，可忽略。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Redis: list of RedisNodeInfo
         :param _TendisCount: Tendis 节点数量。该参数仅为产品兼容性而保留，并不具有实际意义，可忽略。
         :type TendisCount: int
         :param _Tendis: Tendis 节点信息。该参数仅为产品兼容性而保留，并不具有实际意义，可忽略。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tendis: list of InstanceNodeInfo
         :param _KeeWiDBCount: KeewiDB 节点数量。
-注意：此字段可能返回 null，表示取不到有效值。
         :type KeeWiDBCount: int
         :param _KeeWiDB: KeewiDB 节点信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type KeeWiDB: list of InstanceNodeInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2102,7 +2089,6 @@ class DescribeInstanceNodeInfoResponse(AbstractModel):
     @property
     def Proxy(self):
         """Proxy 节点信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ProxyNodeInfo
         """
         return self._Proxy
@@ -2125,7 +2111,6 @@ class DescribeInstanceNodeInfoResponse(AbstractModel):
     @property
     def Redis(self):
         """Redis 节点信息。该参数仅为产品兼容性而保留，并不具有实际意义，可忽略。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RedisNodeInfo
         """
         return self._Redis
@@ -2148,7 +2133,6 @@ class DescribeInstanceNodeInfoResponse(AbstractModel):
     @property
     def Tendis(self):
         """Tendis 节点信息。该参数仅为产品兼容性而保留，并不具有实际意义，可忽略。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of InstanceNodeInfo
         """
         return self._Tendis
@@ -2160,7 +2144,6 @@ class DescribeInstanceNodeInfoResponse(AbstractModel):
     @property
     def KeeWiDBCount(self):
         """KeewiDB 节点数量。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._KeeWiDBCount
@@ -2172,7 +2155,6 @@ class DescribeInstanceNodeInfoResponse(AbstractModel):
     @property
     def KeeWiDB(self):
         """KeewiDB 节点信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of InstanceNodeInfo
         """
         return self._KeeWiDB
@@ -4634,55 +4616,39 @@ class InstanceInfo(AbstractModel):
         :param _SlaveReadWeight: 从节点读取权重。
         :type SlaveReadWeight: int
         :param _InstanceTags: 实例关联的标签信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceTags: list of InstanceTagInfo
         :param _ProjectName: 项目名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectName: str
         :param _NoAuth: 是否为免密实例；<ul><li>true：免密实例。</li><li>false：非免密实例。</li></ul>
-注意：此字段可能返回 null，表示取不到有效值。
         :type NoAuth: bool
         :param _ClientLimit: 客户端连接数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClientLimit: int
         :param _DtsStatus: DTS状态（内部参数，用户可忽略）。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DtsStatus: int
         :param _NetLimit: 分片带宽上限，单位 MB。
-注意：此字段可能返回 null，表示取不到有效值。
         :type NetLimit: int
         :param _PasswordFree: 免密实例标识（内部参数，用户可忽略）。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PasswordFree: int
         :param _ReadOnly: 实例只读标识（内部参数，用户可忽略）。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReadOnly: int
         :param _Vip6: 内部参数，用户可忽略。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Vip6: str
         :param _RemainBandwidthDuration: 内部参数，用户可忽略。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RemainBandwidthDuration: str
         :param _DiskSize: 实例的磁盘容量大小。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiskSize: int
         :param _MonitorVersion: 监控版本。<ul><li>1m：分钟粒度监控。</li><li>5s：5秒粒度监控。</li></ul>
-注意：此字段可能返回 null，表示取不到有效值。
         :type MonitorVersion: str
         :param _ClientLimitMin: 客户端最大连接数可设置的最小值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClientLimitMin: int
         :param _ClientLimitMax: 客户端最大连接数可设置的最大值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClientLimitMax: int
         :param _NodeSet: 实例的节点详细信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type NodeSet: list of NodeInfo
         :param _Region: 实例所在的地域信息，比如ap-guangzhou。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         :param _MachineMemory: 实例内存容量，单位：GB。KeeWiDB 内存容量
-注意：此字段可能返回 null，表示取不到有效值。
         :type MachineMemory: int
         :param _DiskShardSize: 单分片磁盘大小，单位：MB
         :type DiskShardSize: int
@@ -4691,7 +4657,6 @@ class InstanceInfo(AbstractModel):
         :param _DiskReplicasNum: 1
         :type DiskReplicasNum: int
         :param _Compression: 数据压缩开关。<ul><li>ON：开启。</li><li>OFF：关闭。</li></ul>
-注意：此字段可能返回 null，表示取不到有效值。
         :type Compression: str
         """
         self._InstanceName = None
@@ -5091,7 +5056,6 @@ class InstanceInfo(AbstractModel):
     @property
     def InstanceTags(self):
         """实例关联的标签信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of InstanceTagInfo
         """
         return self._InstanceTags
@@ -5103,7 +5067,6 @@ class InstanceInfo(AbstractModel):
     @property
     def ProjectName(self):
         """项目名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProjectName
@@ -5115,7 +5078,6 @@ class InstanceInfo(AbstractModel):
     @property
     def NoAuth(self):
         """是否为免密实例；<ul><li>true：免密实例。</li><li>false：非免密实例。</li></ul>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._NoAuth
@@ -5127,7 +5089,6 @@ class InstanceInfo(AbstractModel):
     @property
     def ClientLimit(self):
         """客户端连接数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ClientLimit
@@ -5139,7 +5100,6 @@ class InstanceInfo(AbstractModel):
     @property
     def DtsStatus(self):
         """DTS状态（内部参数，用户可忽略）。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DtsStatus
@@ -5151,7 +5111,6 @@ class InstanceInfo(AbstractModel):
     @property
     def NetLimit(self):
         """分片带宽上限，单位 MB。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._NetLimit
@@ -5163,7 +5122,6 @@ class InstanceInfo(AbstractModel):
     @property
     def PasswordFree(self):
         """免密实例标识（内部参数，用户可忽略）。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PasswordFree
@@ -5175,7 +5133,6 @@ class InstanceInfo(AbstractModel):
     @property
     def ReadOnly(self):
         """实例只读标识（内部参数，用户可忽略）。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ReadOnly
@@ -5187,7 +5144,6 @@ class InstanceInfo(AbstractModel):
     @property
     def Vip6(self):
         """内部参数，用户可忽略。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Vip6
@@ -5199,7 +5155,6 @@ class InstanceInfo(AbstractModel):
     @property
     def RemainBandwidthDuration(self):
         """内部参数，用户可忽略。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RemainBandwidthDuration
@@ -5211,7 +5166,6 @@ class InstanceInfo(AbstractModel):
     @property
     def DiskSize(self):
         """实例的磁盘容量大小。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DiskSize
@@ -5223,7 +5177,6 @@ class InstanceInfo(AbstractModel):
     @property
     def MonitorVersion(self):
         """监控版本。<ul><li>1m：分钟粒度监控。</li><li>5s：5秒粒度监控。</li></ul>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MonitorVersion
@@ -5235,7 +5188,6 @@ class InstanceInfo(AbstractModel):
     @property
     def ClientLimitMin(self):
         """客户端最大连接数可设置的最小值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ClientLimitMin
@@ -5247,7 +5199,6 @@ class InstanceInfo(AbstractModel):
     @property
     def ClientLimitMax(self):
         """客户端最大连接数可设置的最大值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ClientLimitMax
@@ -5271,7 +5222,6 @@ class InstanceInfo(AbstractModel):
     @property
     def Region(self):
         """实例所在的地域信息，比如ap-guangzhou。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Region
@@ -5283,7 +5233,6 @@ class InstanceInfo(AbstractModel):
     @property
     def MachineMemory(self):
         """实例内存容量，单位：GB。KeeWiDB 内存容量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MachineMemory
@@ -5328,7 +5277,6 @@ class InstanceInfo(AbstractModel):
     @property
     def Compression(self):
         """数据压缩开关。<ul><li>ON：开启。</li><li>OFF：关闭。</li></ul>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Compression
@@ -5437,7 +5385,6 @@ class InstanceIntegerParam(AbstractModel):
         :param _Status: 参数状态, 1: 修改中， 2：修改完成
         :type Status: int
         :param _Unit: 参数单位
-注意：此字段可能返回 null，表示取不到有效值。
         :type Unit: str
         """
         self._ParamName = None
@@ -5553,7 +5500,6 @@ class InstanceIntegerParam(AbstractModel):
     @property
     def Unit(self):
         """参数单位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Unit
@@ -7597,7 +7543,6 @@ class ProxyNodeInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _NodeId: 节点ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type NodeId: str
         """
         self._NodeId = None
@@ -7605,7 +7550,6 @@ class ProxyNodeInfo(AbstractModel):
     @property
     def NodeId(self):
         """节点ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NodeId
@@ -8376,34 +8320,24 @@ class TaskInfoDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _TaskId: 任务Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: int
         :param _StartTime: 开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
         :param _TaskType: 任务类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskType: str
         :param _InstanceName: 实例名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceName: str
         :param _InstanceId: 实例Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _ProjectId: 项目Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: int
         :param _Progress: 任务进度
-注意：此字段可能返回 null，表示取不到有效值。
         :type Progress: float
         :param _EndTime: 结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         :param _Result: 任务状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: int
         :param _OperatorUin: 操作者用户uin
-注意：此字段可能返回 null，表示取不到有效值。
         :type OperatorUin: str
         """
         self._TaskId = None
@@ -8420,7 +8354,6 @@ class TaskInfoDetail(AbstractModel):
     @property
     def TaskId(self):
         """任务Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TaskId
@@ -8432,7 +8365,6 @@ class TaskInfoDetail(AbstractModel):
     @property
     def StartTime(self):
         """开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StartTime
@@ -8444,7 +8376,6 @@ class TaskInfoDetail(AbstractModel):
     @property
     def TaskType(self):
         """任务类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskType
@@ -8456,7 +8387,6 @@ class TaskInfoDetail(AbstractModel):
     @property
     def InstanceName(self):
         """实例名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceName
@@ -8468,7 +8398,6 @@ class TaskInfoDetail(AbstractModel):
     @property
     def InstanceId(self):
         """实例Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -8480,7 +8409,6 @@ class TaskInfoDetail(AbstractModel):
     @property
     def ProjectId(self):
         """项目Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ProjectId
@@ -8492,7 +8420,6 @@ class TaskInfoDetail(AbstractModel):
     @property
     def Progress(self):
         """任务进度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Progress
@@ -8504,7 +8431,6 @@ class TaskInfoDetail(AbstractModel):
     @property
     def EndTime(self):
         """结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndTime
@@ -8516,7 +8442,6 @@ class TaskInfoDetail(AbstractModel):
     @property
     def Result(self):
         """任务状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Result
@@ -8528,7 +8453,6 @@ class TaskInfoDetail(AbstractModel):
     @property
     def OperatorUin(self):
         """操作者用户uin
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OperatorUin

@@ -2353,7 +2353,11 @@ class DescribeGeneralOTSpanListResponse(AbstractModel):
         r"""
         :param _TotalCount: 总数量
         :type TotalCount: int
-        :param _Spans: 装有查询结果 Spans 的 Trace 结构体。OpenTelemetry 标准 Trace 结构体哈希后的字符串，先将 Trace 利用 ptrace.JSONMarshaler 转换成 Json 字符串，再用 gzip 压缩，最后转换成 base64 标准的字符串。
+        :param _Spans: Spans字段中包含了链路数据的全部内容，由于数据经过了压缩，需要对结果进行如下三步转换，以还原始的文本。
+1. 将Spans字段中的文本进行 Base64 解码，得到经过压缩后字节数组。
+2. 使用 gzip 对压缩后的字节数组进行解压，得到压缩前的字节数组。
+3. 使用 UTF-8 字符集，将压缩前的字节数组转换为文本。
+
         :type Spans: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2375,7 +2379,11 @@ class DescribeGeneralOTSpanListResponse(AbstractModel):
 
     @property
     def Spans(self):
-        """装有查询结果 Spans 的 Trace 结构体。OpenTelemetry 标准 Trace 结构体哈希后的字符串，先将 Trace 利用 ptrace.JSONMarshaler 转换成 Json 字符串，再用 gzip 压缩，最后转换成 base64 标准的字符串。
+        """Spans字段中包含了链路数据的全部内容，由于数据经过了压缩，需要对结果进行如下三步转换，以还原始的文本。
+1. 将Spans字段中的文本进行 Base64 解码，得到经过压缩后字节数组。
+2. 使用 gzip 对压缩后的字节数组进行解压，得到压缩前的字节数组。
+3. 使用 UTF-8 字符集，将压缩前的字节数组转换为文本。
+
         :rtype: str
         """
         return self._Spans
@@ -2971,14 +2979,14 @@ class DescribeServiceOverviewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Metrics: 指标列表
-        :type Metrics: list of QueryMetricItem
         :param _InstanceId: 业务系统 ID
         :type InstanceId: str
-        :param _Filters: 过滤条件
-        :type Filters: list of Filter
+        :param _Metrics: 指标列表
+        :type Metrics: list of QueryMetricItem
         :param _GroupBy: 聚合维度
         :type GroupBy: list of str
+        :param _Filters: 过滤条件
+        :type Filters: list of Filter
         :param _StartTime: 开始时间（单位：秒）
         :type StartTime: int
         :param _EndTime: 结束时间（单位：秒）
@@ -2993,26 +3001,15 @@ Value 填写：
         :param _Offset: 分页起始点
         :type Offset: int
         """
-        self._Metrics = None
         self._InstanceId = None
-        self._Filters = None
+        self._Metrics = None
         self._GroupBy = None
+        self._Filters = None
         self._StartTime = None
         self._EndTime = None
         self._OrderBy = None
         self._Limit = None
         self._Offset = None
-
-    @property
-    def Metrics(self):
-        """指标列表
-        :rtype: list of QueryMetricItem
-        """
-        return self._Metrics
-
-    @Metrics.setter
-    def Metrics(self, Metrics):
-        self._Metrics = Metrics
 
     @property
     def InstanceId(self):
@@ -3026,15 +3023,15 @@ Value 填写：
         self._InstanceId = InstanceId
 
     @property
-    def Filters(self):
-        """过滤条件
-        :rtype: list of Filter
+    def Metrics(self):
+        """指标列表
+        :rtype: list of QueryMetricItem
         """
-        return self._Filters
+        return self._Metrics
 
-    @Filters.setter
-    def Filters(self, Filters):
-        self._Filters = Filters
+    @Metrics.setter
+    def Metrics(self, Metrics):
+        self._Metrics = Metrics
 
     @property
     def GroupBy(self):
@@ -3046,6 +3043,17 @@ Value 填写：
     @GroupBy.setter
     def GroupBy(self, GroupBy):
         self._GroupBy = GroupBy
+
+    @property
+    def Filters(self):
+        """过滤条件
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
     @property
     def StartTime(self):
@@ -3107,20 +3115,20 @@ Value 填写：
 
 
     def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
         if params.get("Metrics") is not None:
             self._Metrics = []
             for item in params.get("Metrics"):
                 obj = QueryMetricItem()
                 obj._deserialize(item)
                 self._Metrics.append(obj)
-        self._InstanceId = params.get("InstanceId")
+        self._GroupBy = params.get("GroupBy")
         if params.get("Filters") is not None:
             self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
-        self._GroupBy = params.get("GroupBy")
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
         if params.get("OrderBy") is not None:
@@ -3193,39 +3201,28 @@ class DescribeTagValuesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TagKey: 维度名
-        :type TagKey: str
         :param _InstanceId: 业务系统 ID
         :type InstanceId: str
-        :param _Filters: 过滤条件
-        :type Filters: list of Filter
+        :param _TagKey: 维度名
+        :type TagKey: str
         :param _StartTime: 开始时间（单位为秒）
         :type StartTime: int
         :param _EndTime: 结束时间（单位为秒）
         :type EndTime: int
+        :param _Filters: 过滤条件
+        :type Filters: list of Filter
         :param _OrFilters: Or 过滤条件
         :type OrFilters: list of Filter
         :param _Type: 使用类型
         :type Type: str
         """
-        self._TagKey = None
         self._InstanceId = None
-        self._Filters = None
+        self._TagKey = None
         self._StartTime = None
         self._EndTime = None
+        self._Filters = None
         self._OrFilters = None
         self._Type = None
-
-    @property
-    def TagKey(self):
-        """维度名
-        :rtype: str
-        """
-        return self._TagKey
-
-    @TagKey.setter
-    def TagKey(self, TagKey):
-        self._TagKey = TagKey
 
     @property
     def InstanceId(self):
@@ -3239,15 +3236,15 @@ class DescribeTagValuesRequest(AbstractModel):
         self._InstanceId = InstanceId
 
     @property
-    def Filters(self):
-        """过滤条件
-        :rtype: list of Filter
+    def TagKey(self):
+        """维度名
+        :rtype: str
         """
-        return self._Filters
+        return self._TagKey
 
-    @Filters.setter
-    def Filters(self, Filters):
-        self._Filters = Filters
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
 
     @property
     def StartTime(self):
@@ -3270,6 +3267,17 @@ class DescribeTagValuesRequest(AbstractModel):
     @EndTime.setter
     def EndTime(self, EndTime):
         self._EndTime = EndTime
+
+    @property
+    def Filters(self):
+        """过滤条件
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
     @property
     def OrFilters(self):
@@ -3295,16 +3303,16 @@ class DescribeTagValuesRequest(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._TagKey = params.get("TagKey")
         self._InstanceId = params.get("InstanceId")
+        self._TagKey = params.get("TagKey")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         if params.get("Filters") is not None:
             self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
-        self._StartTime = params.get("StartTime")
-        self._EndTime = params.get("EndTime")
         if params.get("OrFilters") is not None:
             self._OrFilters = []
             for item in params.get("OrFilters"):

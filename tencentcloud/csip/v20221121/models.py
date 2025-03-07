@@ -3824,7 +3824,7 @@ class AssetViewPortRisk(AbstractModel):
         :type FirstTime: str
         :param _Suggestion: 处置建议,0保持现状、1限制访问、2封禁端口
         :type Suggestion: int
-        :param _Status: 状态，0未处理、1已处置、2已忽略
+        :param _Status: 状态，0未处理、1已处置、2已忽略、3云防已防护
         :type Status: int
         :param _Id: 风险ID
         :type Id: str
@@ -3842,6 +3842,10 @@ class AssetViewPortRisk(AbstractModel):
         :type Uin: str
         :param _From: 识别来源，详细看枚举返回。
         :type From: str
+        :param _ServiceJudge: 服务判定,high_risk_service 高危服务 web_service web服务 other_service 其他服务
+        :type ServiceJudge: str
+        :param _XspmStatus: 状态，0未处理、1已处置、2已忽略、3云防已防护、4无需处理
+        :type XspmStatus: int
         """
         self._Port = None
         self._AffectAsset = None
@@ -3862,6 +3866,8 @@ class AssetViewPortRisk(AbstractModel):
         self._Nick = None
         self._Uin = None
         self._From = None
+        self._ServiceJudge = None
+        self._XspmStatus = None
 
     @property
     def Port(self):
@@ -3975,7 +3981,7 @@ class AssetViewPortRisk(AbstractModel):
 
     @property
     def Status(self):
-        """状态，0未处理、1已处置、2已忽略
+        """状态，0未处理、1已处置、2已忽略、3云防已防护
         :rtype: int
         """
         return self._Status
@@ -4072,6 +4078,28 @@ class AssetViewPortRisk(AbstractModel):
     def From(self, From):
         self._From = From
 
+    @property
+    def ServiceJudge(self):
+        """服务判定,high_risk_service 高危服务 web_service web服务 other_service 其他服务
+        :rtype: str
+        """
+        return self._ServiceJudge
+
+    @ServiceJudge.setter
+    def ServiceJudge(self, ServiceJudge):
+        self._ServiceJudge = ServiceJudge
+
+    @property
+    def XspmStatus(self):
+        """状态，0未处理、1已处置、2已忽略、3云防已防护、4无需处理
+        :rtype: int
+        """
+        return self._XspmStatus
+
+    @XspmStatus.setter
+    def XspmStatus(self, XspmStatus):
+        self._XspmStatus = XspmStatus
+
 
     def _deserialize(self, params):
         self._Port = params.get("Port")
@@ -4093,6 +4121,8 @@ class AssetViewPortRisk(AbstractModel):
         self._Nick = params.get("Nick")
         self._Uin = params.get("Uin")
         self._From = params.get("From")
+        self._ServiceJudge = params.get("ServiceJudge")
+        self._XspmStatus = params.get("XspmStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4708,6 +4738,8 @@ class AssetViewVULRiskData(AbstractModel):
         :type TvdID: str
         :param _IsOneClick: 是否可以一键体检，1-可以，0-不可以
         :type IsOneClick: int
+        :param _IsPOC: 是否POC扫描，0-非POC，1-POC
+        :type IsPOC: int
         """
         self._AffectAsset = None
         self._Level = None
@@ -4749,6 +4781,7 @@ class AssetViewVULRiskData(AbstractModel):
         self._VulRiskId = None
         self._TvdID = None
         self._IsOneClick = None
+        self._IsPOC = None
 
     @property
     def AffectAsset(self):
@@ -5190,6 +5223,17 @@ class AssetViewVULRiskData(AbstractModel):
     def IsOneClick(self, IsOneClick):
         self._IsOneClick = IsOneClick
 
+    @property
+    def IsPOC(self):
+        """是否POC扫描，0-非POC，1-POC
+        :rtype: int
+        """
+        return self._IsPOC
+
+    @IsPOC.setter
+    def IsPOC(self, IsPOC):
+        self._IsPOC = IsPOC
+
 
     def _deserialize(self, params):
         self._AffectAsset = params.get("AffectAsset")
@@ -5232,6 +5276,7 @@ class AssetViewVULRiskData(AbstractModel):
         self._VulRiskId = params.get("VulRiskId")
         self._TvdID = params.get("TvdID")
         self._IsOneClick = params.get("IsOneClick")
+        self._IsPOC = params.get("IsPOC")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5291,6 +5336,8 @@ class AssetViewWeakPassRisk(AbstractModel):
         :type Fix: str
         :param _Payload: 证明
         :type Payload: str
+        :param _Port: 端口
+        :type Port: int
         """
         self._AffectAsset = None
         self._Level = None
@@ -5313,6 +5360,7 @@ class AssetViewWeakPassRisk(AbstractModel):
         self._VULURL = None
         self._Fix = None
         self._Payload = None
+        self._Port = None
 
     @property
     def AffectAsset(self):
@@ -5545,6 +5593,17 @@ class AssetViewWeakPassRisk(AbstractModel):
     def Payload(self, Payload):
         self._Payload = Payload
 
+    @property
+    def Port(self):
+        """端口
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
 
     def _deserialize(self, params):
         self._AffectAsset = params.get("AffectAsset")
@@ -5568,6 +5627,7 @@ class AssetViewWeakPassRisk(AbstractModel):
         self._VULURL = params.get("VULURL")
         self._Fix = params.get("Fix")
         self._Payload = params.get("Payload")
+        self._Port = params.get("Port")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21403,7 +21463,7 @@ class ServerRisk(AbstractModel):
         :type RiskDetails: str
         :param _Suggestion: 处置建议
         :type Suggestion: str
-        :param _Status: 状态，0未处理、1已处置、2已忽略
+        :param _Status: 状态，0未处理、1已处置、2已忽略、3云防已防护
         :type Status: int
         :param _Id: 资产唯一id
         :type Id: str
@@ -21425,6 +21485,10 @@ class ServerRisk(AbstractModel):
         :type SuggestionList: list of ServerRiskSuggestion
         :param _StatusCode: HTTP响应状态码
         :type StatusCode: str
+        :param _NewLevel: 新风险等级,high_risk 高危 suspect 疑似 Normal 暂无风险
+        :type NewLevel: str
+        :param _XspmStatus: 状态，0未处理、1已处置、2已忽略、3云防已防护、4无需处理
+        :type XspmStatus: int
         """
         self._ServiceTag = None
         self._Port = None
@@ -21451,6 +21515,8 @@ class ServerRisk(AbstractModel):
         self._RiskList = None
         self._SuggestionList = None
         self._StatusCode = None
+        self._NewLevel = None
+        self._XspmStatus = None
 
     @property
     def ServiceTag(self):
@@ -21608,7 +21674,7 @@ class ServerRisk(AbstractModel):
 
     @property
     def Status(self):
-        """状态，0未处理、1已处置、2已忽略
+        """状态，0未处理、1已处置、2已忽略、3云防已防护
         :rtype: int
         """
         return self._Status
@@ -21727,6 +21793,28 @@ class ServerRisk(AbstractModel):
     def StatusCode(self, StatusCode):
         self._StatusCode = StatusCode
 
+    @property
+    def NewLevel(self):
+        """新风险等级,high_risk 高危 suspect 疑似 Normal 暂无风险
+        :rtype: str
+        """
+        return self._NewLevel
+
+    @NewLevel.setter
+    def NewLevel(self, NewLevel):
+        self._NewLevel = NewLevel
+
+    @property
+    def XspmStatus(self):
+        """状态，0未处理、1已处置、2已忽略、3云防已防护、4无需处理
+        :rtype: int
+        """
+        return self._XspmStatus
+
+    @XspmStatus.setter
+    def XspmStatus(self, XspmStatus):
+        self._XspmStatus = XspmStatus
+
 
     def _deserialize(self, params):
         self._ServiceTag = params.get("ServiceTag")
@@ -21764,6 +21852,8 @@ class ServerRisk(AbstractModel):
                 obj._deserialize(item)
                 self._SuggestionList.append(obj)
         self._StatusCode = params.get("StatusCode")
+        self._NewLevel = params.get("NewLevel")
+        self._XspmStatus = params.get("XspmStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

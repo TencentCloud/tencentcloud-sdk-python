@@ -1102,29 +1102,23 @@ class BackupStreamDetailData(AbstractModel):
     def __init__(self):
         r"""
         :param _DomainName: 推流域名。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DomainName: str
         :param _AppName: 推流路径。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppName: str
         :param _PublishTime:  UTC 格式，例如：2018-06-29T19:00:00Z。
 注意：和北京时间相差8小时。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PublishTime: str
         :param _UpstreamSequence: 推流唯一标识。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpstreamSequence: str
         :param _SourceFrom: 推流来源。示例：
 直推流；
 拉流转推(1234)；
 注意：拉流转推来源括号中为拉流转推的任务 
  ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SourceFrom: str
         :param _MasterFlag: 主备标识。
 当前流为主流：1，
 当前流为备流: 0。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MasterFlag: int
         """
         self._DomainName = None
@@ -1137,7 +1131,6 @@ class BackupStreamDetailData(AbstractModel):
     @property
     def DomainName(self):
         """推流域名。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DomainName
@@ -1149,7 +1142,6 @@ class BackupStreamDetailData(AbstractModel):
     @property
     def AppName(self):
         """推流路径。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AppName
@@ -1162,7 +1154,6 @@ class BackupStreamDetailData(AbstractModel):
     def PublishTime(self):
         """ UTC 格式，例如：2018-06-29T19:00:00Z。
 注意：和北京时间相差8小时。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PublishTime
@@ -1174,7 +1165,6 @@ class BackupStreamDetailData(AbstractModel):
     @property
     def UpstreamSequence(self):
         """推流唯一标识。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpstreamSequence
@@ -1190,7 +1180,6 @@ class BackupStreamDetailData(AbstractModel):
 拉流转推(1234)；
 注意：拉流转推来源括号中为拉流转推的任务 
  ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SourceFrom
@@ -1204,7 +1193,6 @@ class BackupStreamDetailData(AbstractModel):
         """主备标识。
 当前流为主流：1，
 当前流为备流: 0。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MasterFlag
@@ -1239,18 +1227,14 @@ class BackupStreamGroupInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _StreamName: 流名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type StreamName: str
         :param _BackupList: 主备流信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type BackupList: list of BackupStreamDetailData
         :param _OptimalEnable: 是否对该流开启了择优调度。
 0 - 未开启。
 1 - 已开启。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OptimalEnable: int
         :param _HostGroupName: 域名分组的分组名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type HostGroupName: str
         """
         self._StreamName = None
@@ -1261,7 +1245,6 @@ class BackupStreamGroupInfo(AbstractModel):
     @property
     def StreamName(self):
         """流名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StreamName
@@ -1273,7 +1256,6 @@ class BackupStreamGroupInfo(AbstractModel):
     @property
     def BackupList(self):
         """主备流信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BackupStreamDetailData
         """
         return self._BackupList
@@ -1287,7 +1269,6 @@ class BackupStreamGroupInfo(AbstractModel):
         """是否对该流开启了择优调度。
 0 - 未开启。
 1 - 已开启。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._OptimalEnable
@@ -1299,7 +1280,6 @@ class BackupStreamGroupInfo(AbstractModel):
     @property
     def HostGroupName(self):
         """域名分组的分组名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HostGroupName
@@ -17956,13 +17936,9 @@ class DescribeLiveStreamEventListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: 起始时间。 
-UTC 格式，例如：2018-12-29T19:00:00Z。
-支持查询60天内的历史记录。
+        :param _StartTime: 起始时间。 UTC 格式，例如：2018-12-29T19:00:00Z。支持查询2个月内的历史记录。
         :type StartTime: str
-        :param _EndTime: 结束时间。
-UTC 格式，例如：2018-12-29T20:00:00Z。
-不超过当前时间，且和起始时间相差不得超过30天。
+        :param _EndTime: 结束时间。UTC 格式，例如：2018-12-29T20:00:00Z。不超过当前时间，且和起始时间相差不得超过1个月。
         :type EndTime: str
         :param _AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
         :type AppName: str
@@ -18008,9 +17984,7 @@ UTC 格式，例如：2018-12-29T20:00:00Z。
 
     @property
     def StartTime(self):
-        """起始时间。 
-UTC 格式，例如：2018-12-29T19:00:00Z。
-支持查询60天内的历史记录。
+        """起始时间。 UTC 格式，例如：2018-12-29T19:00:00Z。支持查询2个月内的历史记录。
         :rtype: str
         """
         return self._StartTime
@@ -18021,9 +17995,7 @@ UTC 格式，例如：2018-12-29T19:00:00Z。
 
     @property
     def EndTime(self):
-        """结束时间。
-UTC 格式，例如：2018-12-29T20:00:00Z。
-不超过当前时间，且和起始时间相差不得超过30天。
+        """结束时间。UTC 格式，例如：2018-12-29T20:00:00Z。不超过当前时间，且和起始时间相差不得超过1个月。
         :rtype: str
         """
         return self._EndTime
@@ -18676,14 +18648,9 @@ class DescribeLiveStreamPublishedListRequest(AbstractModel):
         r"""
         :param _DomainName: 您的推流域名。
         :type DomainName: str
-        :param _EndTime: 结束时间。
-UTC 格式，例如：2016-06-30T19:00:00Z。
-不超过当前时间。
-注意：EndTime和StartTime相差不可超过30天。
+        :param _EndTime: 结束时间。UTC 格式，例如：2016-06-30T19:00:00Z。不超过当前时间。注意：EndTime和StartTime相差不可超过1个月。
         :type EndTime: str
-        :param _StartTime: 起始时间。 
-UTC 格式，例如：2016-06-29T19:00:00Z。
-最长支持查询60天内数据。
+        :param _StartTime: 起始时间。 UTC 格式，例如：2016-06-29T19:00:00Z。最长支持查询2个月内数据。
         :type StartTime: str
         :param _AppName: 推流路径，与推流和播放地址中的 AppName 保持一致，默认为 live。不支持模糊匹配。
         :type AppName: str
@@ -18719,10 +18686,7 @@ UTC 格式，例如：2016-06-29T19:00:00Z。
 
     @property
     def EndTime(self):
-        """结束时间。
-UTC 格式，例如：2016-06-30T19:00:00Z。
-不超过当前时间。
-注意：EndTime和StartTime相差不可超过30天。
+        """结束时间。UTC 格式，例如：2016-06-30T19:00:00Z。不超过当前时间。注意：EndTime和StartTime相差不可超过1个月。
         :rtype: str
         """
         return self._EndTime
@@ -18733,9 +18697,7 @@ UTC 格式，例如：2016-06-30T19:00:00Z。
 
     @property
     def StartTime(self):
-        """起始时间。 
-UTC 格式，例如：2016-06-29T19:00:00Z。
-最长支持查询60天内数据。
+        """起始时间。 UTC 格式，例如：2016-06-29T19:00:00Z。最长支持查询2个月内数据。
         :rtype: str
         """
         return self._StartTime
@@ -24952,10 +24914,8 @@ class DomainCertInfo(AbstractModel):
         :type Status: int
         :param _CertDomains: 证书本身标识的域名列表。
 比如: ["*.x.com"]
-注意：此字段可能返回 null，表示取不到有效值。
         :type CertDomains: list of str
         :param _CloudCertId: 腾讯云ssl的证书Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type CloudCertId: str
         """
         self._CertId = None
@@ -25077,7 +25037,6 @@ class DomainCertInfo(AbstractModel):
     def CertDomains(self):
         """证书本身标识的域名列表。
 比如: ["*.x.com"]
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._CertDomains
@@ -25089,7 +25048,6 @@ class DomainCertInfo(AbstractModel):
     @property
     def CloudCertId(self):
         """腾讯云ssl的证书Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CloudCertId
@@ -25265,7 +25223,6 @@ class DomainInfo(AbstractModel):
         :type RentExpireTime: str
         :param _IsMiniProgramLive: 0: 标准直播。
 1: 小程序直播。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsMiniProgramLive: int
         """
         self._Name = None
@@ -25419,7 +25376,6 @@ class DomainInfo(AbstractModel):
     def IsMiniProgramLive(self):
         """0: 标准直播。
 1: 小程序直播。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IsMiniProgramLive
@@ -39372,13 +39328,10 @@ class XP2PDetailInfo(AbstractModel):
         :param _Time: 时间，一分钟粒度，utc格式：yyyy-mm-ddTHH:MM:SSZ，参考https://cloud.tencent.com/document/product/266/11732#I。。
         :type Time: str
         :param _Type: 类型，分live和vod两种。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _StreamName: 流ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type StreamName: str
         :param _AppId: AppId。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: str
         """
         self._CdnBytes = None
@@ -39484,7 +39437,6 @@ class XP2PDetailInfo(AbstractModel):
     @property
     def Type(self):
         """类型，分live和vod两种。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -39496,7 +39448,6 @@ class XP2PDetailInfo(AbstractModel):
     @property
     def StreamName(self):
         """流ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StreamName
@@ -39508,7 +39459,6 @@ class XP2PDetailInfo(AbstractModel):
     @property
     def AppId(self):
         """AppId。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AppId

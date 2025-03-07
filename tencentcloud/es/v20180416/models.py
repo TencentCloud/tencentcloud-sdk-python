@@ -16613,9 +16613,12 @@ class ServerlessIndexSettingsField(AbstractModel):
         :param _RefreshInterval: 索引刷新频率
 注意：此字段可能返回 null，表示取不到有效值。
         :type RefreshInterval: str
+        :param _CustomSetting: 自定义参数
+        :type CustomSetting: str
         """
         self._NumberOfShards = None
         self._RefreshInterval = None
+        self._CustomSetting = None
 
     @property
     def NumberOfShards(self):
@@ -16641,10 +16644,22 @@ class ServerlessIndexSettingsField(AbstractModel):
     def RefreshInterval(self, RefreshInterval):
         self._RefreshInterval = RefreshInterval
 
+    @property
+    def CustomSetting(self):
+        """自定义参数
+        :rtype: str
+        """
+        return self._CustomSetting
+
+    @CustomSetting.setter
+    def CustomSetting(self, CustomSetting):
+        self._CustomSetting = CustomSetting
+
 
     def _deserialize(self, params):
         self._NumberOfShards = params.get("NumberOfShards")
         self._RefreshInterval = params.get("RefreshInterval")
+        self._CustomSetting = params.get("CustomSetting")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

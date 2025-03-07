@@ -4140,7 +4140,7 @@ class ModifyResourcesTagValueRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ServiceType: 业务类型，示例 cvm 。资源所属业务名称（资源六段式中的第三段）
+        :param _ServiceType: 业务类型，示例 cvm。资源所属业务名称（资源六段式中的第三段）
         :type ServiceType: str
         :param _ResourceIds: 资源ID数组，资源个数最多为50
         :type ResourceIds: list of str
@@ -4162,7 +4162,7 @@ class ModifyResourcesTagValueRequest(AbstractModel):
 
     @property
     def ServiceType(self):
-        """业务类型，示例 cvm 。资源所属业务名称（资源六段式中的第三段）
+        """业务类型，示例 cvm。资源所属业务名称（资源六段式中的第三段）
         :rtype: str
         """
         return self._ServiceType

@@ -2293,6 +2293,7 @@ class ReplaceBackgroundRequest(AbstractModel):
 最多支持256个 utf-8 字符，支持中、英文。
         :type NegativePrompt: str
         :param _Product: 商品图中的商品主体名称。
+最多支持50个 utf-8 字符，支持中、英文。
 建议说明商品主体，否则影响生成效果。
         :type Product: str
         :param _BackgroundTemplate: 背景模板。
@@ -2371,6 +2372,7 @@ class ReplaceBackgroundRequest(AbstractModel):
     @property
     def Product(self):
         """商品图中的商品主体名称。
+最多支持50个 utf-8 字符，支持中、英文。
 建议说明商品主体，否则影响生成效果。
         :rtype: str
         """

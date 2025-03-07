@@ -20166,7 +20166,6 @@ class DescribeOpenPolicyListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _OpenPolicyInfoList: 策略信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type OpenPolicyInfoList: list of OpenPolicyInfo
         :param _GatekeeperStatus: 集群内是否安装了gatekeeper addon
         :type GatekeeperStatus: int
@@ -20180,7 +20179,6 @@ class DescribeOpenPolicyListResponse(AbstractModel):
     @property
     def OpenPolicyInfoList(self):
         """策略信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of OpenPolicyInfo
         """
         return self._OpenPolicyInfoList
@@ -36900,31 +36898,22 @@ class OpenPolicyInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _PolicyCategory: 策略分类：cluster集群策略、node节点策略、namespace命名空间策略、configuration配置相关策略、compute计算资源策略、storage存储资源策略、network网络资源策略
-注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyCategory: str
         :param _PolicyName: 策略中文名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyName: str
         :param _PolicyDesc: 策略描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyDesc: str
         :param _EnforcementAction: 策略运行模式：dryrun空跑不生效，deny拦截生效
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnforcementAction: str
         :param _EventNums: 关联的事件数量(最近7d)
-注意：此字段可能返回 null，表示取不到有效值。
         :type EventNums: int
         :param _Name: 策略英文名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Kind: 策略模板类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Kind: str
         :param _EnabledStatus: 策略开关状态：open打开，close关闭
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnabledStatus: str
         :param _ConstraintYamlExample: 策略的实例的yaml示例base64编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type ConstraintYamlExample: str
         :param _OpenConstraintInfoList: 策略关联的实例列表
 注意：此字段可能返回 null，表示取不到有效值。
@@ -36944,7 +36933,6 @@ class OpenPolicyInfo(AbstractModel):
     @property
     def PolicyCategory(self):
         """策略分类：cluster集群策略、node节点策略、namespace命名空间策略、configuration配置相关策略、compute计算资源策略、storage存储资源策略、network网络资源策略
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PolicyCategory
@@ -36956,7 +36944,6 @@ class OpenPolicyInfo(AbstractModel):
     @property
     def PolicyName(self):
         """策略中文名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PolicyName
@@ -36968,7 +36955,6 @@ class OpenPolicyInfo(AbstractModel):
     @property
     def PolicyDesc(self):
         """策略描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PolicyDesc
@@ -36980,7 +36966,6 @@ class OpenPolicyInfo(AbstractModel):
     @property
     def EnforcementAction(self):
         """策略运行模式：dryrun空跑不生效，deny拦截生效
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EnforcementAction
@@ -36992,7 +36977,6 @@ class OpenPolicyInfo(AbstractModel):
     @property
     def EventNums(self):
         """关联的事件数量(最近7d)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._EventNums
@@ -37004,7 +36988,6 @@ class OpenPolicyInfo(AbstractModel):
     @property
     def Name(self):
         """策略英文名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -37016,7 +36999,6 @@ class OpenPolicyInfo(AbstractModel):
     @property
     def Kind(self):
         """策略模板类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Kind
@@ -37028,7 +37010,6 @@ class OpenPolicyInfo(AbstractModel):
     @property
     def EnabledStatus(self):
         """策略开关状态：open打开，close关闭
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EnabledStatus
@@ -37040,7 +37021,6 @@ class OpenPolicyInfo(AbstractModel):
     @property
     def ConstraintYamlExample(self):
         """策略的实例的yaml示例base64编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ConstraintYamlExample

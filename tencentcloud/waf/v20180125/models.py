@@ -25678,13 +25678,10 @@ class JobDateTime(AbstractModel):
     def __init__(self):
         r"""
         :param _Timed: 定时执行的时间参数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Timed: list of TimedJob
         :param _Cron: 周期执行的时间参数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Cron: list of CronJob
         :param _TimeTZone: 时区
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimeTZone: str
         """
         self._Timed = None
@@ -25694,7 +25691,6 @@ class JobDateTime(AbstractModel):
     @property
     def Timed(self):
         """定时执行的时间参数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TimedJob
         """
         return self._Timed
@@ -25706,7 +25702,6 @@ class JobDateTime(AbstractModel):
     @property
     def Cron(self):
         """周期执行的时间参数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CronJob
         """
         return self._Cron
@@ -25718,7 +25713,6 @@ class JobDateTime(AbstractModel):
     @property
     def TimeTZone(self):
         """时区
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TimeTZone

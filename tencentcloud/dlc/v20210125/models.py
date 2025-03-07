@@ -16070,10 +16070,13 @@ class DescribeNotebookSessionStatementSqlResultRequest(AbstractModel):
         :type MaxResults: int
         :param _NextToken: 上一次请求响应返回的分页信息。第一次可以不带，从头开始返回数据，每次返回MaxResults字段设置的数据量。
         :type NextToken: str
+        :param _BatchId: 批次Id
+        :type BatchId: str
         """
         self._TaskId = None
         self._MaxResults = None
         self._NextToken = None
+        self._BatchId = None
 
     @property
     def TaskId(self):
@@ -16108,11 +16111,23 @@ class DescribeNotebookSessionStatementSqlResultRequest(AbstractModel):
     def NextToken(self, NextToken):
         self._NextToken = NextToken
 
+    @property
+    def BatchId(self):
+        """批次Id
+        :rtype: str
+        """
+        return self._BatchId
+
+    @BatchId.setter
+    def BatchId(self, BatchId):
+        self._BatchId = BatchId
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
         self._MaxResults = params.get("MaxResults")
         self._NextToken = params.get("NextToken")
+        self._BatchId = params.get("BatchId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16151,6 +16166,9 @@ class DescribeNotebookSessionStatementSqlResultResponse(AbstractModel):
         :param _DataAmount: 数据扫描量
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataAmount: int
+        :param _UiUrl: spark ui地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UiUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -16162,6 +16180,7 @@ class DescribeNotebookSessionStatementSqlResultResponse(AbstractModel):
         self._UseTime = None
         self._AffectRows = None
         self._DataAmount = None
+        self._UiUrl = None
         self._RequestId = None
 
     @property
@@ -16258,6 +16277,18 @@ class DescribeNotebookSessionStatementSqlResultResponse(AbstractModel):
         self._DataAmount = DataAmount
 
     @property
+    def UiUrl(self):
+        """spark ui地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UiUrl
+
+    @UiUrl.setter
+    def UiUrl(self, UiUrl):
+        self._UiUrl = UiUrl
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -16283,6 +16314,7 @@ class DescribeNotebookSessionStatementSqlResultResponse(AbstractModel):
         self._UseTime = params.get("UseTime")
         self._AffectRows = params.get("AffectRows")
         self._DataAmount = params.get("DataAmount")
+        self._UiUrl = params.get("UiUrl")
         self._RequestId = params.get("RequestId")
 
 

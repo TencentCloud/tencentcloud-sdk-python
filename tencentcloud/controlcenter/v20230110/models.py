@@ -26,10 +26,8 @@ class BaselineConfigItem(AbstractModel):
     def __init__(self):
         r"""
         :param _Identifier: 账号工厂基线项唯一标识,只能包含英文字母、数字和@、,._[]-:()（）【】+=，。，长度2-128个字符。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Identifier: str
         :param _Configuration: 账号工厂基线项配置，不同基线项配置参数不同。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Configuration: str
         """
         self._Identifier = None
@@ -38,7 +36,6 @@ class BaselineConfigItem(AbstractModel):
     @property
     def Identifier(self):
         """账号工厂基线项唯一标识,只能包含英文字母、数字和@、,._[]-:()（）【】+=，。，长度2-128个字符。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Identifier
@@ -50,7 +47,6 @@ class BaselineConfigItem(AbstractModel):
     @property
     def Configuration(self):
         """账号工厂基线项配置，不同基线项配置参数不同。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Configuration

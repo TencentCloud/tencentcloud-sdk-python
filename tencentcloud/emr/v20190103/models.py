@@ -17824,6 +17824,9 @@ TEZ-TezTaskGC:TasksGC
         :type ScheduleTaskName: str
         :param _JobConf: Yarn任务的部分核心配置
         :type JobConf: str
+        :param _Context: 洞察结构化信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Context: str
         """
         self._ID = None
         self._Type = None
@@ -17837,6 +17840,7 @@ TEZ-TezTaskGC:TasksGC
         self._ScheduleFlowName = None
         self._ScheduleTaskName = None
         self._JobConf = None
+        self._Context = None
 
     @property
     def ID(self):
@@ -17998,6 +18002,18 @@ TEZ-TezTaskGC:TasksGC
     def JobConf(self, JobConf):
         self._JobConf = JobConf
 
+    @property
+    def Context(self):
+        """洞察结构化信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
+
 
     def _deserialize(self, params):
         self._ID = params.get("ID")
@@ -18012,6 +18028,7 @@ TEZ-TezTaskGC:TasksGC
         self._ScheduleFlowName = params.get("ScheduleFlowName")
         self._ScheduleTaskName = params.get("ScheduleTaskName")
         self._JobConf = params.get("JobConf")
+        self._Context = params.get("Context")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

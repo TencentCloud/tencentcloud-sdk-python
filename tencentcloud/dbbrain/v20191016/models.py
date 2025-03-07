@@ -1049,7 +1049,6 @@ class DescribeAllUserContactResponse(AbstractModel):
         :param _TotalCount: 联系人的总数量。
         :type TotalCount: int
         :param _Contacts: 联系人的信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Contacts: list of ContactItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1072,7 +1071,6 @@ class DescribeAllUserContactResponse(AbstractModel):
     @property
     def Contacts(self):
         """联系人的信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ContactItem
         """
         return self._Contacts
@@ -1165,7 +1163,6 @@ class DescribeAllUserGroupResponse(AbstractModel):
         :param _TotalCount: 组总数。
         :type TotalCount: int
         :param _Groups: 组信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Groups: list of GroupItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1188,7 +1185,6 @@ class DescribeAllUserGroupResponse(AbstractModel):
     @property
     def Groups(self):
         """组信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of GroupItem
         """
         return self._Groups
@@ -1312,7 +1308,6 @@ class DescribeDBDiagEventResponse(AbstractModel):
         :param _Suggestions: 建议。
         :type Suggestions: str
         :param _Metric: 保留字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Metric: str
         :param _EndTime: 结束时间。
         :type EndTime: str
@@ -1434,7 +1429,6 @@ class DescribeDBDiagEventResponse(AbstractModel):
     @property
     def Metric(self):
         """保留字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Metric

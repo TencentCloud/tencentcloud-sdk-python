@@ -725,16 +725,12 @@ class ChcDeployExtraConfig(AbstractModel):
     def __init__(self):
         r"""
         :param _MiniOsType: minos类型。是使用腾讯云的minios，还是客户自己的minios。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MiniOsType: str
         :param _BootType: 服务器的架构和启动方式。取值为x86_legacy, arm_uefi。
-注意：此字段可能返回 null，表示取不到有效值。
         :type BootType: str
         :param _BootFile: PXE使用的引导文件。默认为pxelinux.0。
-注意：此字段可能返回 null，表示取不到有效值。
         :type BootFile: str
         :param _NextServerAddress: tftp服务器的ip地址。
-注意：此字段可能返回 null，表示取不到有效值。
         :type NextServerAddress: str
         """
         self._MiniOsType = None
@@ -745,7 +741,6 @@ class ChcDeployExtraConfig(AbstractModel):
     @property
     def MiniOsType(self):
         """minos类型。是使用腾讯云的minios，还是客户自己的minios。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MiniOsType
@@ -757,7 +752,6 @@ class ChcDeployExtraConfig(AbstractModel):
     @property
     def BootType(self):
         """服务器的架构和启动方式。取值为x86_legacy, arm_uefi。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BootType
@@ -769,7 +763,6 @@ class ChcDeployExtraConfig(AbstractModel):
     @property
     def BootFile(self):
         """PXE使用的引导文件。默认为pxelinux.0。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BootFile
@@ -781,7 +774,6 @@ class ChcDeployExtraConfig(AbstractModel):
     @property
     def NextServerAddress(self):
         """tftp服务器的ip地址。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NextServerAddress
@@ -830,82 +822,58 @@ class ChcHost(AbstractModel):
 </ul>
         :type InstanceState: str
         :param _DeviceType: 设备类型。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceType: str
         :param _Placement: 所属可用区
         :type Placement: :class:`tencentcloud.cvm.v20170312.models.Placement`
         :param _BmcVirtualPrivateCloud: 带外网络。
-注意：此字段可能返回 null，表示取不到有效值。
         :type BmcVirtualPrivateCloud: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
         :param _BmcIp: 带外网络Ip。
-注意：此字段可能返回 null，表示取不到有效值。
         :type BmcIp: str
         :param _BmcSecurityGroupIds: 带外网络安全组Id。
-注意：此字段可能返回 null，表示取不到有效值。
         :type BmcSecurityGroupIds: list of str
         :param _DeployVirtualPrivateCloud: 部署网络。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeployVirtualPrivateCloud: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
         :param _DeployIp: 部署网络Ip。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeployIp: str
         :param _DeploySecurityGroupIds: 部署网络安全组Id。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeploySecurityGroupIds: list of str
         :param _CvmInstanceId: 关联的云主机Id。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CvmInstanceId: str
         :param _CreatedTime: 服务器导入的时间。
         :type CreatedTime: str
         :param _HardwareDescription: 机型的硬件描述，分别为CPU核数，内存容量和磁盘容量
-注意：此字段可能返回 null，表示取不到有效值。
         :type HardwareDescription: str
         :param _CPU: CHC物理服务器的CPU核数
-注意：此字段可能返回 null，表示取不到有效值。
         :type CPU: int
         :param _Memory: CHC物理服务器的内存大小，单位为GB
-注意：此字段可能返回 null，表示取不到有效值。
         :type Memory: int
         :param _Disk: CHC物理服务器的磁盘信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Disk: str
         :param _BmcMAC: 带外网络下分配的MAC地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type BmcMAC: str
         :param _DeployMAC: 部署网络下分配的MAC地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeployMAC: str
         :param _TenantType: 设备托管类型。
 HOSTING: 托管
 TENANT: 租赁
-注意：此字段可能返回 null，表示取不到有效值。
         :type TenantType: str
         :param _DeployExtraConfig: chc dhcp选项，用于minios调试。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeployExtraConfig: :class:`tencentcloud.cvm.v20170312.models.ChcDeployExtraConfig`
         :param _Gpu: GPU型号。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Gpu: str
         :param _NetworkCard: 网卡型号。主要指RDMA网卡。
-注意：此字段可能返回 null，表示取不到有效值。
         :type NetworkCard: str
         :param _IsPredefinedType: 是否是预定义机型。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsPredefinedType: bool
         :param _ChcInstanceType: CHC云主机机型。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChcInstanceType: str
         :param _ChcInstanceFamily: CHC云主机机型簇。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChcInstanceFamily: str
         :param _ChcInstanceFamilyName: CHC云主机机型簇名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChcInstanceFamilyName: str
         :param _ResaleAppId: 转售客户的AppId。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResaleAppId: str
         :param _ResaleAccountId: 转售客户的账号ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResaleAccountId: str
         :param _SaleStatus: 售卖状态。<br/>
 <ul>
@@ -914,10 +882,8 @@ TENANT: 租赁
 <li>SOLD: 已售卖</li>
 </ul>
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type SaleStatus: str
         :param _Tags: CHC物理服务器关联的标签列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
         :param _LatestOperation: 最近操作
         :type LatestOperation: str
@@ -1023,7 +989,6 @@ TENANT: 租赁
     @property
     def DeviceType(self):
         """设备类型。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceType
@@ -1046,7 +1011,6 @@ TENANT: 租赁
     @property
     def BmcVirtualPrivateCloud(self):
         """带外网络。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
         """
         return self._BmcVirtualPrivateCloud
@@ -1058,7 +1022,6 @@ TENANT: 租赁
     @property
     def BmcIp(self):
         """带外网络Ip。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BmcIp
@@ -1070,7 +1033,6 @@ TENANT: 租赁
     @property
     def BmcSecurityGroupIds(self):
         """带外网络安全组Id。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._BmcSecurityGroupIds
@@ -1082,7 +1044,6 @@ TENANT: 租赁
     @property
     def DeployVirtualPrivateCloud(self):
         """部署网络。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
         """
         return self._DeployVirtualPrivateCloud
@@ -1094,7 +1055,6 @@ TENANT: 租赁
     @property
     def DeployIp(self):
         """部署网络Ip。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeployIp
@@ -1106,7 +1066,6 @@ TENANT: 租赁
     @property
     def DeploySecurityGroupIds(self):
         """部署网络安全组Id。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._DeploySecurityGroupIds
@@ -1118,7 +1077,6 @@ TENANT: 租赁
     @property
     def CvmInstanceId(self):
         """关联的云主机Id。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CvmInstanceId
@@ -1141,7 +1099,6 @@ TENANT: 租赁
     @property
     def HardwareDescription(self):
         """机型的硬件描述，分别为CPU核数，内存容量和磁盘容量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HardwareDescription
@@ -1153,7 +1110,6 @@ TENANT: 租赁
     @property
     def CPU(self):
         """CHC物理服务器的CPU核数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CPU
@@ -1165,7 +1121,6 @@ TENANT: 租赁
     @property
     def Memory(self):
         """CHC物理服务器的内存大小，单位为GB
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Memory
@@ -1177,7 +1132,6 @@ TENANT: 租赁
     @property
     def Disk(self):
         """CHC物理服务器的磁盘信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Disk
@@ -1189,7 +1143,6 @@ TENANT: 租赁
     @property
     def BmcMAC(self):
         """带外网络下分配的MAC地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BmcMAC
@@ -1201,7 +1154,6 @@ TENANT: 租赁
     @property
     def DeployMAC(self):
         """部署网络下分配的MAC地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeployMAC
@@ -1215,7 +1167,6 @@ TENANT: 租赁
         """设备托管类型。
 HOSTING: 托管
 TENANT: 租赁
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TenantType
@@ -1227,7 +1178,6 @@ TENANT: 租赁
     @property
     def DeployExtraConfig(self):
         """chc dhcp选项，用于minios调试。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cvm.v20170312.models.ChcDeployExtraConfig`
         """
         return self._DeployExtraConfig
@@ -1239,7 +1189,6 @@ TENANT: 租赁
     @property
     def Gpu(self):
         """GPU型号。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Gpu
@@ -1251,7 +1200,6 @@ TENANT: 租赁
     @property
     def NetworkCard(self):
         """网卡型号。主要指RDMA网卡。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NetworkCard
@@ -1263,7 +1211,6 @@ TENANT: 租赁
     @property
     def IsPredefinedType(self):
         """是否是预定义机型。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsPredefinedType
@@ -1275,7 +1222,6 @@ TENANT: 租赁
     @property
     def ChcInstanceType(self):
         """CHC云主机机型。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ChcInstanceType
@@ -1287,7 +1233,6 @@ TENANT: 租赁
     @property
     def ChcInstanceFamily(self):
         """CHC云主机机型簇。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ChcInstanceFamily
@@ -1299,7 +1244,6 @@ TENANT: 租赁
     @property
     def ChcInstanceFamilyName(self):
         """CHC云主机机型簇名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ChcInstanceFamilyName
@@ -1311,7 +1255,6 @@ TENANT: 租赁
     @property
     def ResaleAppId(self):
         """转售客户的AppId。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResaleAppId
@@ -1323,7 +1266,6 @@ TENANT: 租赁
     @property
     def ResaleAccountId(self):
         """转售客户的账号ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResaleAccountId
@@ -1341,7 +1283,6 @@ TENANT: 租赁
 <li>SOLD: 已售卖</li>
 </ul>
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SaleStatus
@@ -1353,7 +1294,6 @@ TENANT: 租赁
     @property
     def Tags(self):
         """CHC物理服务器关联的标签列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._Tags
@@ -1892,10 +1832,8 @@ class ConvertOperatingSystemsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _SupportTargetOSList: 转换的目标操系统信息，仅在入参 DryRun 为 true 时返回。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SupportTargetOSList: list of TargetOS
         :param _TaskId: 操作系统转换的任务 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1907,7 +1845,6 @@ class ConvertOperatingSystemsResponse(AbstractModel):
     @property
     def SupportTargetOSList(self):
         """转换的目标操系统信息，仅在入参 DryRun 为 true 时返回。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TargetOS
         """
         return self._SupportTargetOSList
@@ -1919,7 +1856,6 @@ class ConvertOperatingSystemsResponse(AbstractModel):
     @property
     def TaskId(self):
         """操作系统转换的任务 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskId
@@ -2347,7 +2283,6 @@ class CreateHpcClusterResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _HpcClusterSet: 高性能计算集群信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type HpcClusterSet: list of HpcClusterInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2358,7 +2293,6 @@ class CreateHpcClusterResponse(AbstractModel):
     @property
     def HpcClusterSet(self):
         """高性能计算集群信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of HpcClusterInfo
         """
         return self._HpcClusterSet
@@ -2581,7 +2515,6 @@ class CreateImageResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ImageId: 镜像ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImageId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2592,7 +2525,6 @@ class CreateImageResponse(AbstractModel):
     @property
     def ImageId(self):
         """镜像ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ImageId
@@ -4895,6 +4827,8 @@ class DescribeDisasterRecoverGroupQuotaResponse(AbstractModel):
         :type CvmInSwGroupQuota: int
         :param _CvmInRackGroupQuota: 机架类型容灾组内实例的配额数。
         :type CvmInRackGroupQuota: int
+        :param _CvmInSwitchGroupQuota: 交换机类型容灾组内实例的配额数。
+        :type CvmInSwitchGroupQuota: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4903,6 +4837,7 @@ class DescribeDisasterRecoverGroupQuotaResponse(AbstractModel):
         self._CvmInHostGroupQuota = None
         self._CvmInSwGroupQuota = None
         self._CvmInRackGroupQuota = None
+        self._CvmInSwitchGroupQuota = None
         self._RequestId = None
 
     @property
@@ -4940,6 +4875,8 @@ class DescribeDisasterRecoverGroupQuotaResponse(AbstractModel):
 
     @property
     def CvmInSwGroupQuota(self):
+        warnings.warn("parameter `CvmInSwGroupQuota` is deprecated", DeprecationWarning) 
+
         """交换机类型容灾组内实例的配额数。
         :rtype: int
         """
@@ -4947,6 +4884,8 @@ class DescribeDisasterRecoverGroupQuotaResponse(AbstractModel):
 
     @CvmInSwGroupQuota.setter
     def CvmInSwGroupQuota(self, CvmInSwGroupQuota):
+        warnings.warn("parameter `CvmInSwGroupQuota` is deprecated", DeprecationWarning) 
+
         self._CvmInSwGroupQuota = CvmInSwGroupQuota
 
     @property
@@ -4959,6 +4898,17 @@ class DescribeDisasterRecoverGroupQuotaResponse(AbstractModel):
     @CvmInRackGroupQuota.setter
     def CvmInRackGroupQuota(self, CvmInRackGroupQuota):
         self._CvmInRackGroupQuota = CvmInRackGroupQuota
+
+    @property
+    def CvmInSwitchGroupQuota(self):
+        """交换机类型容灾组内实例的配额数。
+        :rtype: int
+        """
+        return self._CvmInSwitchGroupQuota
+
+    @CvmInSwitchGroupQuota.setter
+    def CvmInSwitchGroupQuota(self, CvmInSwitchGroupQuota):
+        self._CvmInSwitchGroupQuota = CvmInSwitchGroupQuota
 
     @property
     def RequestId(self):
@@ -4978,6 +4928,7 @@ class DescribeDisasterRecoverGroupQuotaResponse(AbstractModel):
         self._CvmInHostGroupQuota = params.get("CvmInHostGroupQuota")
         self._CvmInSwGroupQuota = params.get("CvmInSwGroupQuota")
         self._CvmInRackGroupQuota = params.get("CvmInRackGroupQuota")
+        self._CvmInSwitchGroupQuota = params.get("CvmInSwitchGroupQuota")
         self._RequestId = params.get("RequestId")
 
 
@@ -7416,7 +7367,12 @@ class DescribeLaunchTemplatesRequest(AbstractModel):
         r"""
         :param _LaunchTemplateIds: 启动模板ID，一个或者多个启动模板ID。若未指定，则显示用户所有模板。
         :type LaunchTemplateIds: list of str
-        :param _Filters: <p style="padding-left: 30px;">按照【<strong>LaunchTemplateName</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+        :param _Filters: <li><strong>LaunchTemplateName</strong></li>
+<p style="padding-left: 30px;">按照【<strong>实例启动模板名称</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+<li><strong>tag-key</strong></li>
+<p style="padding-left: 30px;">按照【<strong>标签键</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+<li><strong>tag-value</strong></li> <p style="padding-left: 30px;">按照【<strong>标签值</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+<li><strong>tag:tag-key</strong></li> <p style="padding-left: 30px;">按照【<strong>标签键值对</strong>】进行过滤。tag-key使用具体的标签键进行替换。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`LaunchTemplateIds`和`Filters`。
         :type Filters: list of Filter
         :param _Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
@@ -7442,7 +7398,12 @@ class DescribeLaunchTemplatesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """<p style="padding-left: 30px;">按照【<strong>LaunchTemplateName</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+        """<li><strong>LaunchTemplateName</strong></li>
+<p style="padding-left: 30px;">按照【<strong>实例启动模板名称</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+<li><strong>tag-key</strong></li>
+<p style="padding-left: 30px;">按照【<strong>标签键</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+<li><strong>tag-value</strong></li> <p style="padding-left: 30px;">按照【<strong>标签值</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+<li><strong>tag:tag-key</strong></li> <p style="padding-left: 30px;">按照【<strong>标签键值对</strong>】进行过滤。tag-key使用具体的标签键进行替换。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`LaunchTemplateIds`和`Filters`。
         :rtype: list of Filter
         """
@@ -7503,10 +7464,8 @@ class DescribeLaunchTemplatesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 符合条件的实例模板数量。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _LaunchTemplateSet: 实例详细信息列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LaunchTemplateSet: list of LaunchTemplateInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7518,7 +7477,6 @@ class DescribeLaunchTemplatesResponse(AbstractModel):
     @property
     def TotalCount(self):
         """符合条件的实例模板数量。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -7530,7 +7488,6 @@ class DescribeLaunchTemplatesResponse(AbstractModel):
     @property
     def LaunchTemplateSet(self):
         """实例详细信息列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LaunchTemplateInfo
         """
         return self._LaunchTemplateSet
@@ -8830,7 +8787,7 @@ class ExportImagesRequest(AbstractModel):
         r"""
         :param _BucketName: COS存储桶名称
         :type BucketName: str
-        :param _ImageIds: 镜像ID列表
+        :param _ImageIds: 镜像ID列表。调用 ExportImages 接口时，参数 ImageIds 和 SnapshotIds 为二选一必填参数，目前参数 SnapshotIds 暂未对外开放。
         :type ImageIds: list of str
         :param _ExportFormat: 镜像文件导出格式。取值范围：RAW，QCOW2，VHD，VMDK。默认为RAW
         :type ExportFormat: str
@@ -8864,7 +8821,7 @@ class ExportImagesRequest(AbstractModel):
 
     @property
     def ImageIds(self):
-        """镜像ID列表
+        """镜像ID列表。调用 ExportImages 接口时，参数 ImageIds 和 SnapshotIds 为二选一必填参数，目前参数 SnapshotIds 暂未对外开放。
         :rtype: list of str
         """
         return self._ImageIds
@@ -9143,13 +9100,10 @@ class GPUInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _GPUCount: 实例GPU个数。值小于1代表VGPU类型，大于1代表GPU直通类型。
-注意：此字段可能返回 null，表示取不到有效值。
         :type GPUCount: float
         :param _GPUId: 实例GPU地址。
-注意：此字段可能返回 null，表示取不到有效值。
         :type GPUId: list of str
         :param _GPUType: 实例GPU类型。
-注意：此字段可能返回 null，表示取不到有效值。
         :type GPUType: str
         """
         self._GPUCount = None
@@ -9159,7 +9113,6 @@ class GPUInfo(AbstractModel):
     @property
     def GPUCount(self):
         """实例GPU个数。值小于1代表VGPU类型，大于1代表GPU直通类型。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._GPUCount
@@ -9171,7 +9124,6 @@ class GPUInfo(AbstractModel):
     @property
     def GPUId(self):
         """实例GPU地址。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._GPUId
@@ -9183,7 +9135,6 @@ class GPUInfo(AbstractModel):
     @property
     def GPUType(self):
         """实例GPU类型。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GPUType
@@ -9239,10 +9190,8 @@ class HostItem(AbstractModel):
         :param _HostResource: 专用宿主机实例资源信息
         :type HostResource: :class:`tencentcloud.cvm.v20170312.models.HostResource`
         :param _CageId: 专用宿主机所属的围笼ID。该字段仅对金融专区围笼内的专用宿主机有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CageId: str
         :param _Tags: 专用宿主机关联的标签列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
         """
         self._Placement = None
@@ -9395,7 +9344,6 @@ class HostItem(AbstractModel):
     @property
     def CageId(self):
         """专用宿主机所属的围笼ID。该字段仅对金融专区围笼内的专用宿主机有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CageId
@@ -9407,7 +9355,6 @@ class HostItem(AbstractModel):
     @property
     def Tags(self):
         """专用宿主机关联的标签列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._Tags
@@ -9515,7 +9462,6 @@ class HostResource(AbstractModel):
         :param _GpuAvailable: 专用宿主机实例可用GPU卡数
         :type GpuAvailable: int
         :param _ExclusiveOwner: CDH owner
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExclusiveOwner: str
         """
         self._CpuTotal = None
@@ -9631,7 +9577,6 @@ class HostResource(AbstractModel):
     @property
     def ExclusiveOwner(self):
         """CDH owner
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ExclusiveOwner
@@ -9672,10 +9617,8 @@ class HpcClusterInfo(AbstractModel):
         :param _HpcClusterId: 高性能计算集群ID
         :type HpcClusterId: str
         :param _Name: 高性能计算集群名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Remark: 高性能计算集群备注
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _CvmQuotaTotal: 集群下设备容量
         :type CvmQuotaTotal: int
@@ -9684,16 +9627,12 @@ class HpcClusterInfo(AbstractModel):
         :param _CurrentNum: 集群当前已有设备量
         :type CurrentNum: int
         :param _CreateTime: 集群创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _InstanceIds: 集群内实例ID列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceIds: list of str
         :param _HpcClusterType: 高性能计算集群类型。
-注意：此字段可能返回 null，表示取不到有效值。
         :type HpcClusterType: str
         :param _HpcClusterBusinessId: 高性能计算集群对应的业务场景标识，当前只支持CDC。	
-注意：此字段可能返回 null，表示取不到有效值。
         :type HpcClusterBusinessId: str
         :param _HpcClusterNetMode: 高性能计算集群网络模式
         :type HpcClusterNetMode: int
@@ -9727,7 +9666,6 @@ class HpcClusterInfo(AbstractModel):
     @property
     def Name(self):
         """高性能计算集群名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -9739,7 +9677,6 @@ class HpcClusterInfo(AbstractModel):
     @property
     def Remark(self):
         """高性能计算集群备注
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -9784,7 +9721,6 @@ class HpcClusterInfo(AbstractModel):
     @property
     def CreateTime(self):
         """集群创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -9796,7 +9732,6 @@ class HpcClusterInfo(AbstractModel):
     @property
     def InstanceIds(self):
         """集群内实例ID列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._InstanceIds
@@ -9808,7 +9743,6 @@ class HpcClusterInfo(AbstractModel):
     @property
     def HpcClusterType(self):
         """高性能计算集群类型。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HpcClusterType
@@ -9820,7 +9754,6 @@ class HpcClusterInfo(AbstractModel):
     @property
     def HpcClusterBusinessId(self):
         """高性能计算集群对应的业务场景标识，当前只支持CDC。	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HpcClusterBusinessId
@@ -9922,18 +9855,14 @@ IMPORTFAILED-导入失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type SyncPercent: int
         :param _IsSupportCloudinit: 镜像是否支持cloud-init
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsSupportCloudinit: bool
         :param _SnapshotSet: 镜像关联的快照信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotSet: list of Snapshot
         :param _Tags: 镜像关联的标签列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
         :param _LicenseType: 镜像许可类型
         :type LicenseType: str
         :param _ImageFamily: 镜像族
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImageFamily: str
         :param _ImageDeprecated: 镜像是否废弃
         :type ImageDeprecated: bool
@@ -10112,7 +10041,6 @@ IMPORTFAILED-导入失败
     @property
     def IsSupportCloudinit(self):
         """镜像是否支持cloud-init
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsSupportCloudinit
@@ -10124,7 +10052,6 @@ IMPORTFAILED-导入失败
     @property
     def SnapshotSet(self):
         """镜像关联的快照信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Snapshot
         """
         return self._SnapshotSet
@@ -10136,7 +10063,6 @@ IMPORTFAILED-导入失败
     @property
     def Tags(self):
         """镜像关联的标签列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._Tags
@@ -10159,7 +10085,6 @@ IMPORTFAILED-导入失败
     @property
     def ImageFamily(self):
         """镜像族
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ImageFamily
@@ -10228,10 +10153,8 @@ class ImageOsList(AbstractModel):
     def __init__(self):
         r"""
         :param _Windows: 支持的Windows操作系统。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Windows: list of str
         :param _Linux: 支持的Linux操作系统
-注意：此字段可能返回 null，表示取不到有效值。
         :type Linux: list of str
         """
         self._Windows = None
@@ -10240,7 +10163,6 @@ class ImageOsList(AbstractModel):
     @property
     def Windows(self):
         """支持的Windows操作系统。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Windows
@@ -10252,7 +10174,6 @@ class ImageOsList(AbstractModel):
     @property
     def Linux(self):
         """支持的Linux操作系统
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Linux
@@ -12293,7 +12214,6 @@ class Instance(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type LatestOperationRequestId: str
         :param _DisasterRecoverGroupId: 分散置放群组ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DisasterRecoverGroupId: str
         :param _IPv6Addresses: 实例的IPv6地址。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -12302,19 +12222,15 @@ class Instance(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type CamRoleName: str
         :param _HpcClusterId: 高性能计算集群`ID`。
-注意：此字段可能返回 null，表示取不到有效值。
         :type HpcClusterId: str
         :param _RdmaIpAddresses: 高性能计算集群`IP`列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RdmaIpAddresses: list of str
         :param _DedicatedClusterId: 实例所在的专用集群`ID`。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DedicatedClusterId: str
         :param _IsolatedSource: 实例隔离类型。取值范围：<br><li>ARREAR：表示欠费隔离<br></li><li>EXPIRE：表示到期隔离<br></li><li>MANMADE：表示主动退还隔离<br></li><li>NOTISOLATED：表示未隔离<br></li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsolatedSource: str
         :param _GPUInfo: GPU信息。如果是gpu类型子机，该值会返回GPU信息，如果是其他类型子机则不返回。
-注意：此字段可能返回 null，表示取不到有效值。
         :type GPUInfo: :class:`tencentcloud.cvm.v20170312.models.GPUInfo`
         :param _LicenseType: 实例的操作系统许可类型，默认为TencentCloud
         :type LicenseType: str
@@ -12687,7 +12603,6 @@ class Instance(AbstractModel):
     @property
     def DisasterRecoverGroupId(self):
         """分散置放群组ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DisasterRecoverGroupId
@@ -12723,7 +12638,6 @@ class Instance(AbstractModel):
     @property
     def HpcClusterId(self):
         """高性能计算集群`ID`。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HpcClusterId
@@ -12747,7 +12661,6 @@ class Instance(AbstractModel):
     @property
     def DedicatedClusterId(self):
         """实例所在的专用集群`ID`。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DedicatedClusterId
@@ -12759,7 +12672,6 @@ class Instance(AbstractModel):
     @property
     def IsolatedSource(self):
         """实例隔离类型。取值范围：<br><li>ARREAR：表示欠费隔离<br></li><li>EXPIRE：表示到期隔离<br></li><li>MANMADE：表示主动退还隔离<br></li><li>NOTISOLATED：表示未隔离<br></li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IsolatedSource
@@ -12771,7 +12683,6 @@ class Instance(AbstractModel):
     @property
     def GPUInfo(self):
         """GPU信息。如果是gpu类型子机，该值会返回GPU信息，如果是其他类型子机则不返回。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cvm.v20170312.models.GPUInfo`
         """
         return self._GPUInfo
@@ -13075,13 +12986,10 @@ class InstanceRefund(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceId: 实例Id。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _Refunds: 退款数额。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Refunds: float
         :param _PriceDetail: 退款详情。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PriceDetail: str
         """
         self._InstanceId = None
@@ -13091,7 +12999,6 @@ class InstanceRefund(AbstractModel):
     @property
     def InstanceId(self):
         """实例Id。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -13103,7 +13010,6 @@ class InstanceRefund(AbstractModel):
     @property
     def Refunds(self):
         """退款数额。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Refunds
@@ -13115,7 +13021,6 @@ class InstanceRefund(AbstractModel):
     @property
     def PriceDetail(self):
         """退款详情。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PriceDetail
@@ -13341,7 +13246,6 @@ class InstanceTypeConfigStatus(AbstractModel):
         :param _Status: 状态描述
         :type Status: str
         :param _Message: 状态描述信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param _InstanceTypeConfig: 配置信息
         :type InstanceTypeConfig: :class:`tencentcloud.cvm.v20170312.models.InstanceTypeConfig`
@@ -13364,7 +13268,6 @@ class InstanceTypeConfigStatus(AbstractModel):
     @property
     def Message(self):
         """状态描述信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Message
@@ -13941,10 +13844,8 @@ class InternetChargeTypeConfig(AbstractModel):
     def __init__(self):
         r"""
         :param _InternetChargeType: 网络计费模式。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InternetChargeType: str
         :param _Description: 网络计费模式描述信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         """
         self._InternetChargeType = None
@@ -13953,7 +13854,6 @@ class InternetChargeTypeConfig(AbstractModel):
     @property
     def InternetChargeType(self):
         """网络计费模式。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InternetChargeType
@@ -13965,7 +13865,6 @@ class InternetChargeTypeConfig(AbstractModel):
     @property
     def Description(self):
         """网络计费模式描述信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -14336,7 +14235,6 @@ class KeyPair(AbstractModel):
         :param _CreatedTime: 创建时间。按照`ISO8601`标准表示，并且使用`UTC`时间。格式为：`YYYY-MM-DDThh:mm:ssZ`。
         :type CreatedTime: str
         :param _Tags: 密钥关联的标签列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
         """
         self._KeyId = None
@@ -14440,7 +14338,6 @@ class KeyPair(AbstractModel):
     @property
     def Tags(self):
         """密钥关联的标签列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._Tags
@@ -14534,25 +14431,18 @@ class LaunchTemplateInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _LatestVersionNumber: 实例启动模版本号。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LatestVersionNumber: int
         :param _LaunchTemplateId: 实例启动模板ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LaunchTemplateId: str
         :param _LaunchTemplateName: 实例启动模板名。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LaunchTemplateName: str
         :param _DefaultVersionNumber: 实例启动模板默认版本号。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DefaultVersionNumber: int
         :param _LaunchTemplateVersionCount: 实例启动模板包含的版本总数量。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LaunchTemplateVersionCount: int
         :param _CreatedBy: 创建该模板的用户UIN。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedBy: str
         :param _CreationTime: 创建该模板的时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreationTime: str
         """
         self._LatestVersionNumber = None
@@ -14566,7 +14456,6 @@ class LaunchTemplateInfo(AbstractModel):
     @property
     def LatestVersionNumber(self):
         """实例启动模版本号。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LatestVersionNumber
@@ -14578,7 +14467,6 @@ class LaunchTemplateInfo(AbstractModel):
     @property
     def LaunchTemplateId(self):
         """实例启动模板ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LaunchTemplateId
@@ -14590,7 +14478,6 @@ class LaunchTemplateInfo(AbstractModel):
     @property
     def LaunchTemplateName(self):
         """实例启动模板名。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LaunchTemplateName
@@ -14602,7 +14489,6 @@ class LaunchTemplateInfo(AbstractModel):
     @property
     def DefaultVersionNumber(self):
         """实例启动模板默认版本号。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DefaultVersionNumber
@@ -14614,7 +14500,6 @@ class LaunchTemplateInfo(AbstractModel):
     @property
     def LaunchTemplateVersionCount(self):
         """实例启动模板包含的版本总数量。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LaunchTemplateVersionCount
@@ -14626,7 +14511,6 @@ class LaunchTemplateInfo(AbstractModel):
     @property
     def CreatedBy(self):
         """创建该模板的用户UIN。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreatedBy
@@ -14638,7 +14522,6 @@ class LaunchTemplateInfo(AbstractModel):
     @property
     def CreationTime(self):
         """创建该模板的时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreationTime
@@ -14674,81 +14557,61 @@ class LaunchTemplateVersionData(AbstractModel):
     def __init__(self):
         r"""
         :param _Placement: 实例所在的位置。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Placement: :class:`tencentcloud.cvm.v20170312.models.Placement`
         :param _InstanceType: 实例机型。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceType: str
         :param _InstanceName: 实例名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceName: str
-        :param _InstanceChargeType: 实例计费模式。取值范围：<br><li>`PREPAID`：表示预付费，即包年包月<br><li>`POSTPAID_BY_HOUR`：表示后付费，即按量计费<br><li>`CDHPAID`：`专用宿主机`付费，即只对`专用宿主机`计费，不对`专用宿主机`上的实例计费。<br><li>`SPOTPAID`：表示竞价实例付费。
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _InstanceChargeType: 实例计费模式。取值范围：
+<li>`PREPAID`：表示预付费，即包年包月</li>
+<li>`POSTPAID_BY_HOUR`：表示后付费，即按量计费</li>
+<li>`CDHPAID`：`专用宿主机`付费，即只对`专用宿主机`计费，不对`专用宿主机`上的实例计费。</li>
+<li>`SPOTPAID`：表示竞价实例付费。</li>
         :type InstanceChargeType: str
         :param _SystemDisk: 实例系统盘信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SystemDisk: :class:`tencentcloud.cvm.v20170312.models.SystemDisk`
         :param _DataDisks: 实例数据盘信息。只包含随实例购买的数据盘。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataDisks: list of DataDisk
         :param _InternetAccessible: 实例带宽信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InternetAccessible: :class:`tencentcloud.cvm.v20170312.models.InternetAccessible`
         :param _VirtualPrivateCloud: 实例所属虚拟私有网络信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type VirtualPrivateCloud: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
         :param _ImageId: 生产实例所使用的镜像`ID`。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImageId: str
         :param _SecurityGroupIds: 实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来获取。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityGroupIds: list of str
         :param _LoginSettings: 实例登录设置。目前只返回实例所关联的密钥。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LoginSettings: :class:`tencentcloud.cvm.v20170312.models.LoginSettings`
         :param _CamRoleName: CAM角色名。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CamRoleName: str
         :param _HpcClusterId: 高性能计算集群`ID`。
-注意：此字段可能返回 null，表示取不到有效值。
         :type HpcClusterId: str
         :param _InstanceCount: 购买实例数量。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceCount: int
         :param _EnhancedService: 增强服务。
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnhancedService: :class:`tencentcloud.cvm.v20170312.models.EnhancedService`
         :param _UserData: 提供给实例使用的用户数据，需要以 base64 方式编码，支持的最大数据大小为 16KB。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserData: str
         :param _DisasterRecoverGroupIds: 置放群组ID，仅支持指定一个。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DisasterRecoverGroupIds: list of str
         :param _ActionTimer: 定时任务。通过该参数可以为实例指定定时任务，目前仅支持定时销毁。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActionTimer: :class:`tencentcloud.cvm.v20170312.models.ActionTimer`
         :param _InstanceMarketOptions: 实例的市场相关选项，如竞价实例相关参数，若指定实例的付费模式为竞价付费则该参数必传。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceMarketOptions: :class:`tencentcloud.cvm.v20170312.models.InstanceMarketOptionsRequest`
         :param _HostName: 云服务器的主机名。
-注意：此字段可能返回 null，表示取不到有效值。
         :type HostName: str
         :param _ClientToken: 用于保证请求幂等性的字符串。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClientToken: str
         :param _InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceChargePrepaid: :class:`tencentcloud.cvm.v20170312.models.InstanceChargePrepaid`
         :param _TagSpecification: 标签描述列表。通过指定该参数可以同时绑定标签到相应的云服务器、云硬盘实例。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagSpecification: list of TagSpecification
         :param _DisableApiTermination: 实例销毁保护标志，表示是否允许通过api接口删除实例。取值范围：
 
-TRUE：表示开启实例保护，不允许通过api接口删除实例
-FALSE：表示关闭实例保护，允许通过api接口删除实例
+true：表示开启实例保护，不允许通过api接口删除实例
+false：表示关闭实例保护，允许通过api接口删除实例
 
-默认取值：FALSE。
-注意：此字段可能返回 null，表示取不到有效值。
+默认取值：false。
         :type DisableApiTermination: bool
         """
         self._Placement = None
@@ -14779,7 +14642,6 @@ FALSE：表示关闭实例保护，允许通过api接口删除实例
     @property
     def Placement(self):
         """实例所在的位置。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cvm.v20170312.models.Placement`
         """
         return self._Placement
@@ -14791,7 +14653,6 @@ FALSE：表示关闭实例保护，允许通过api接口删除实例
     @property
     def InstanceType(self):
         """实例机型。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceType
@@ -14803,7 +14664,6 @@ FALSE：表示关闭实例保护，允许通过api接口删除实例
     @property
     def InstanceName(self):
         """实例名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceName
@@ -14814,8 +14674,11 @@ FALSE：表示关闭实例保护，允许通过api接口删除实例
 
     @property
     def InstanceChargeType(self):
-        """实例计费模式。取值范围：<br><li>`PREPAID`：表示预付费，即包年包月<br><li>`POSTPAID_BY_HOUR`：表示后付费，即按量计费<br><li>`CDHPAID`：`专用宿主机`付费，即只对`专用宿主机`计费，不对`专用宿主机`上的实例计费。<br><li>`SPOTPAID`：表示竞价实例付费。
-注意：此字段可能返回 null，表示取不到有效值。
+        """实例计费模式。取值范围：
+<li>`PREPAID`：表示预付费，即包年包月</li>
+<li>`POSTPAID_BY_HOUR`：表示后付费，即按量计费</li>
+<li>`CDHPAID`：`专用宿主机`付费，即只对`专用宿主机`计费，不对`专用宿主机`上的实例计费。</li>
+<li>`SPOTPAID`：表示竞价实例付费。</li>
         :rtype: str
         """
         return self._InstanceChargeType
@@ -14827,7 +14690,6 @@ FALSE：表示关闭实例保护，允许通过api接口删除实例
     @property
     def SystemDisk(self):
         """实例系统盘信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cvm.v20170312.models.SystemDisk`
         """
         return self._SystemDisk
@@ -14839,7 +14701,6 @@ FALSE：表示关闭实例保护，允许通过api接口删除实例
     @property
     def DataDisks(self):
         """实例数据盘信息。只包含随实例购买的数据盘。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DataDisk
         """
         return self._DataDisks
@@ -14851,7 +14712,6 @@ FALSE：表示关闭实例保护，允许通过api接口删除实例
     @property
     def InternetAccessible(self):
         """实例带宽信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cvm.v20170312.models.InternetAccessible`
         """
         return self._InternetAccessible
@@ -14863,7 +14723,6 @@ FALSE：表示关闭实例保护，允许通过api接口删除实例
     @property
     def VirtualPrivateCloud(self):
         """实例所属虚拟私有网络信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
         """
         return self._VirtualPrivateCloud
@@ -14875,7 +14734,6 @@ FALSE：表示关闭实例保护，允许通过api接口删除实例
     @property
     def ImageId(self):
         """生产实例所使用的镜像`ID`。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ImageId
@@ -14887,7 +14745,6 @@ FALSE：表示关闭实例保护，允许通过api接口删除实例
     @property
     def SecurityGroupIds(self):
         """实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来获取。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -14899,7 +14756,6 @@ FALSE：表示关闭实例保护，允许通过api接口删除实例
     @property
     def LoginSettings(self):
         """实例登录设置。目前只返回实例所关联的密钥。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cvm.v20170312.models.LoginSettings`
         """
         return self._LoginSettings
@@ -14911,7 +14767,6 @@ FALSE：表示关闭实例保护，允许通过api接口删除实例
     @property
     def CamRoleName(self):
         """CAM角色名。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CamRoleName
@@ -14923,7 +14778,6 @@ FALSE：表示关闭实例保护，允许通过api接口删除实例
     @property
     def HpcClusterId(self):
         """高性能计算集群`ID`。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HpcClusterId
@@ -14935,7 +14789,6 @@ FALSE：表示关闭实例保护，允许通过api接口删除实例
     @property
     def InstanceCount(self):
         """购买实例数量。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._InstanceCount
@@ -14947,7 +14800,6 @@ FALSE：表示关闭实例保护，允许通过api接口删除实例
     @property
     def EnhancedService(self):
         """增强服务。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cvm.v20170312.models.EnhancedService`
         """
         return self._EnhancedService
@@ -14959,7 +14811,6 @@ FALSE：表示关闭实例保护，允许通过api接口删除实例
     @property
     def UserData(self):
         """提供给实例使用的用户数据，需要以 base64 方式编码，支持的最大数据大小为 16KB。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UserData
@@ -14971,7 +14822,6 @@ FALSE：表示关闭实例保护，允许通过api接口删除实例
     @property
     def DisasterRecoverGroupIds(self):
         """置放群组ID，仅支持指定一个。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._DisasterRecoverGroupIds
@@ -14983,7 +14833,6 @@ FALSE：表示关闭实例保护，允许通过api接口删除实例
     @property
     def ActionTimer(self):
         """定时任务。通过该参数可以为实例指定定时任务，目前仅支持定时销毁。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cvm.v20170312.models.ActionTimer`
         """
         return self._ActionTimer
@@ -14995,7 +14844,6 @@ FALSE：表示关闭实例保护，允许通过api接口删除实例
     @property
     def InstanceMarketOptions(self):
         """实例的市场相关选项，如竞价实例相关参数，若指定实例的付费模式为竞价付费则该参数必传。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cvm.v20170312.models.InstanceMarketOptionsRequest`
         """
         return self._InstanceMarketOptions
@@ -15007,7 +14855,6 @@ FALSE：表示关闭实例保护，允许通过api接口删除实例
     @property
     def HostName(self):
         """云服务器的主机名。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HostName
@@ -15019,7 +14866,6 @@ FALSE：表示关闭实例保护，允许通过api接口删除实例
     @property
     def ClientToken(self):
         """用于保证请求幂等性的字符串。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClientToken
@@ -15031,7 +14877,6 @@ FALSE：表示关闭实例保护，允许通过api接口删除实例
     @property
     def InstanceChargePrepaid(self):
         """预付费模式，即包年包月相关参数设置。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cvm.v20170312.models.InstanceChargePrepaid`
         """
         return self._InstanceChargePrepaid
@@ -15043,7 +14888,6 @@ FALSE：表示关闭实例保护，允许通过api接口删除实例
     @property
     def TagSpecification(self):
         """标签描述列表。通过指定该参数可以同时绑定标签到相应的云服务器、云硬盘实例。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TagSpecification
         """
         return self._TagSpecification
@@ -15056,11 +14900,10 @@ FALSE：表示关闭实例保护，允许通过api接口删除实例
     def DisableApiTermination(self):
         """实例销毁保护标志，表示是否允许通过api接口删除实例。取值范围：
 
-TRUE：表示开启实例保护，不允许通过api接口删除实例
-FALSE：表示关闭实例保护，允许通过api接口删除实例
+true：表示开启实例保护，不允许通过api接口删除实例
+false：表示关闭实例保护，允许通过api接口删除实例
 
-默认取值：FALSE。
-注意：此字段可能返回 null，表示取不到有效值。
+默认取值：false。
         :rtype: bool
         """
         return self._DisableApiTermination
@@ -17683,13 +17526,10 @@ class RegionInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Region: 地域名称，例如，ap-guangzhou
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         :param _RegionName: 地域描述，例如，华南地区(广州)
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionName: str
         :param _RegionState: 地域是否可用状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionState: str
         """
         self._Region = None
@@ -17699,7 +17539,6 @@ class RegionInfo(AbstractModel):
     @property
     def Region(self):
         """地域名称，例如，ap-guangzhou
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Region
@@ -17711,7 +17550,6 @@ class RegionInfo(AbstractModel):
     @property
     def RegionName(self):
         """地域描述，例如，华南地区(广州)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RegionName
@@ -17723,7 +17561,6 @@ class RegionInfo(AbstractModel):
     @property
     def RegionState(self):
         """地域是否可用状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RegionState

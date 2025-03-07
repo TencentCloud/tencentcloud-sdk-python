@@ -2307,6 +2307,29 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRocketMQTopUsages(self, request):
+        """用于获取RocketMQ指标排序列表，比如集群实例下占用存储空间最多的主题排序。
+
+        :param request: Request instance for DescribeRocketMQTopUsages.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQTopUsagesRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQTopUsagesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRocketMQTopUsages", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRocketMQTopUsagesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRocketMQTopicMsgs(self, request):
         """rocketmq 消息查询
 

@@ -10862,6 +10862,22 @@ class ModifyProjectRequest(AbstractModel):
         :type Type: str
         :param _Desc: 应用描述(可选，最长为 1000字符)
         :type Desc: str
+        :param _EnableKafka: 启动kafka配置
+        :type EnableKafka: int
+        :param _KafkaHost: kafka_host
+        :type KafkaHost: str
+        :param _KafkaTopic: topic
+        :type KafkaTopic: str
+        :param _KafkaVersion: kafka_version
+        :type KafkaVersion: str
+        :param _SaslUserName: kafka_username
+        :type SaslUserName: str
+        :param _SaslPassword: kafka_pwd
+        :type SaslPassword: str
+        :param _SaslMechanism: SaslMechanism
+        :type SaslMechanism: str
+        :param _SinkId: sink_id，日知汇算子id
+        :type SinkId: int
         """
         self._ID = None
         self._Name = None
@@ -10872,6 +10888,14 @@ class ModifyProjectRequest(AbstractModel):
         self._EnableURLGroup = None
         self._Type = None
         self._Desc = None
+        self._EnableKafka = None
+        self._KafkaHost = None
+        self._KafkaTopic = None
+        self._KafkaVersion = None
+        self._SaslUserName = None
+        self._SaslPassword = None
+        self._SaslMechanism = None
+        self._SinkId = None
 
     @property
     def ID(self):
@@ -10972,6 +10996,94 @@ class ModifyProjectRequest(AbstractModel):
     def Desc(self, Desc):
         self._Desc = Desc
 
+    @property
+    def EnableKafka(self):
+        """启动kafka配置
+        :rtype: int
+        """
+        return self._EnableKafka
+
+    @EnableKafka.setter
+    def EnableKafka(self, EnableKafka):
+        self._EnableKafka = EnableKafka
+
+    @property
+    def KafkaHost(self):
+        """kafka_host
+        :rtype: str
+        """
+        return self._KafkaHost
+
+    @KafkaHost.setter
+    def KafkaHost(self, KafkaHost):
+        self._KafkaHost = KafkaHost
+
+    @property
+    def KafkaTopic(self):
+        """topic
+        :rtype: str
+        """
+        return self._KafkaTopic
+
+    @KafkaTopic.setter
+    def KafkaTopic(self, KafkaTopic):
+        self._KafkaTopic = KafkaTopic
+
+    @property
+    def KafkaVersion(self):
+        """kafka_version
+        :rtype: str
+        """
+        return self._KafkaVersion
+
+    @KafkaVersion.setter
+    def KafkaVersion(self, KafkaVersion):
+        self._KafkaVersion = KafkaVersion
+
+    @property
+    def SaslUserName(self):
+        """kafka_username
+        :rtype: str
+        """
+        return self._SaslUserName
+
+    @SaslUserName.setter
+    def SaslUserName(self, SaslUserName):
+        self._SaslUserName = SaslUserName
+
+    @property
+    def SaslPassword(self):
+        """kafka_pwd
+        :rtype: str
+        """
+        return self._SaslPassword
+
+    @SaslPassword.setter
+    def SaslPassword(self, SaslPassword):
+        self._SaslPassword = SaslPassword
+
+    @property
+    def SaslMechanism(self):
+        """SaslMechanism
+        :rtype: str
+        """
+        return self._SaslMechanism
+
+    @SaslMechanism.setter
+    def SaslMechanism(self, SaslMechanism):
+        self._SaslMechanism = SaslMechanism
+
+    @property
+    def SinkId(self):
+        """sink_id，日知汇算子id
+        :rtype: int
+        """
+        return self._SinkId
+
+    @SinkId.setter
+    def SinkId(self, SinkId):
+        self._SinkId = SinkId
+
 
     def _deserialize(self, params):
         self._ID = params.get("ID")
@@ -10983,6 +11095,14 @@ class ModifyProjectRequest(AbstractModel):
         self._EnableURLGroup = params.get("EnableURLGroup")
         self._Type = params.get("Type")
         self._Desc = params.get("Desc")
+        self._EnableKafka = params.get("EnableKafka")
+        self._KafkaHost = params.get("KafkaHost")
+        self._KafkaTopic = params.get("KafkaTopic")
+        self._KafkaVersion = params.get("KafkaVersion")
+        self._SaslUserName = params.get("SaslUserName")
+        self._SaslPassword = params.get("SaslPassword")
+        self._SaslMechanism = params.get("SaslMechanism")
+        self._SinkId = params.get("SinkId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11252,8 +11372,11 @@ class ResumeInstanceRequest(AbstractModel):
         r"""
         :param _InstanceId: 需要恢复的实例id
         :type InstanceId: str
+        :param _IsModifyAll: 修改是否包括白名单
+        :type IsModifyAll: bool
         """
         self._InstanceId = None
+        self._IsModifyAll = None
 
     @property
     def InstanceId(self):
@@ -11266,9 +11389,21 @@ class ResumeInstanceRequest(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def IsModifyAll(self):
+        """修改是否包括白名单
+        :rtype: bool
+        """
+        return self._IsModifyAll
+
+    @IsModifyAll.setter
+    def IsModifyAll(self, IsModifyAll):
+        self._IsModifyAll = IsModifyAll
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
+        self._IsModifyAll = params.get("IsModifyAll")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12473,8 +12608,11 @@ class StopInstanceRequest(AbstractModel):
         r"""
         :param _InstanceId: 需要停止的实例id
         :type InstanceId: str
+        :param _IsModifyAll: 修改是否包括白名单
+        :type IsModifyAll: bool
         """
         self._InstanceId = None
+        self._IsModifyAll = None
 
     @property
     def InstanceId(self):
@@ -12487,9 +12625,21 @@ class StopInstanceRequest(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def IsModifyAll(self):
+        """修改是否包括白名单
+        :rtype: bool
+        """
+        return self._IsModifyAll
+
+    @IsModifyAll.setter
+    def IsModifyAll(self, IsModifyAll):
+        self._IsModifyAll = IsModifyAll
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
+        self._IsModifyAll = params.get("IsModifyAll")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

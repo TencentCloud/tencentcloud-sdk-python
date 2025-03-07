@@ -797,12 +797,15 @@ class TextModerationRequest(AbstractModel):
         :type User: :class:`tencentcloud.tms.v20201229.models.User`
         :param _Device: 该字段表示待检测对象对应的设备相关信息，传入后可便于甄别相应违规风险设备
         :type Device: :class:`tencentcloud.tms.v20201229.models.Device`
+        :param _SourceLanguage: Content的原始语种，比如en,zh
+        :type SourceLanguage: str
         """
         self._Content = None
         self._BizType = None
         self._DataId = None
         self._User = None
         self._Device = None
+        self._SourceLanguage = None
 
     @property
     def Content(self):
@@ -859,6 +862,17 @@ class TextModerationRequest(AbstractModel):
     def Device(self, Device):
         self._Device = Device
 
+    @property
+    def SourceLanguage(self):
+        """Content的原始语种，比如en,zh
+        :rtype: str
+        """
+        return self._SourceLanguage
+
+    @SourceLanguage.setter
+    def SourceLanguage(self, SourceLanguage):
+        self._SourceLanguage = SourceLanguage
+
 
     def _deserialize(self, params):
         self._Content = params.get("Content")
@@ -870,6 +884,7 @@ class TextModerationRequest(AbstractModel):
         if params.get("Device") is not None:
             self._Device = Device()
             self._Device._deserialize(params.get("Device"))
+        self._SourceLanguage = params.get("SourceLanguage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

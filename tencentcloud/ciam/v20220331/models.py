@@ -26,13 +26,10 @@ class AppAssociatedUserGroupIds(AbstractModel):
     def __init__(self):
         r"""
         :param _UserGroupId: 用户组id
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserGroupId: str
         :param _ApplicationId: 应用id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationId: str
         :param _ApplicationName: 应用名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationName: str
         """
         self._UserGroupId = None
@@ -42,7 +39,6 @@ class AppAssociatedUserGroupIds(AbstractModel):
     @property
     def UserGroupId(self):
         """用户组id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UserGroupId
@@ -54,7 +50,6 @@ class AppAssociatedUserGroupIds(AbstractModel):
     @property
     def ApplicationId(self):
         """应用id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApplicationId
@@ -66,7 +61,6 @@ class AppAssociatedUserGroupIds(AbstractModel):
     @property
     def ApplicationName(self):
         """应用名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApplicationName
@@ -707,7 +701,6 @@ class CreateUserResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _User: 创建的用户信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type User: :class:`tencentcloud.ciam.v20220331.models.User`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -718,7 +711,6 @@ class CreateUserResponse(AbstractModel):
     @property
     def User(self):
         """创建的用户信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ciam.v20220331.models.User`
         """
         return self._User
@@ -914,7 +906,6 @@ class DeleteUserGroupsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _UserGroupDeletedInfo: 删除的用户组关联的应用信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserGroupDeletedInfo: :class:`tencentcloud.ciam.v20220331.models.UserGroupDeleteResp`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -925,7 +916,6 @@ class DeleteUserGroupsResponse(AbstractModel):
     @property
     def UserGroupDeletedInfo(self):
         """删除的用户组关联的应用信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ciam.v20220331.models.UserGroupDeleteResp`
         """
         return self._UserGroupDeletedInfo
@@ -1328,13 +1318,11 @@ class DescribeUserResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Total: 总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _Pageable: 分页对象
 注意：此字段可能返回 null，表示取不到有效值。
         :type Pageable: :class:`tencentcloud.ciam.v20220331.models.Pageable`
         :param _Content: 用户列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Content: list of User
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1347,7 +1335,6 @@ class DescribeUserResponse(AbstractModel):
     @property
     def Total(self):
         """总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -1371,7 +1358,6 @@ class DescribeUserResponse(AbstractModel):
     @property
     def Content(self):
         """用户列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of User
         """
         return self._Content
@@ -1414,7 +1400,6 @@ class ErrorDetails(AbstractModel):
     def __init__(self):
         r"""
         :param _UserId: 用户信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserId: str
         :param _Error: 失败原因
         :type Error: str
@@ -1425,7 +1410,6 @@ class ErrorDetails(AbstractModel):
     @property
     def UserId(self):
         """用户信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UserId
@@ -1518,10 +1502,8 @@ class FailedUsers(AbstractModel):
     def __init__(self):
         r"""
         :param _FailedUserIdentification: 失败用户标识
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailedUserIdentification: str
         :param _FailedReason: 导入的用户失败原因
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailedReason: str
         """
         self._FailedUserIdentification = None
@@ -1530,7 +1512,6 @@ class FailedUsers(AbstractModel):
     @property
     def FailedUserIdentification(self):
         """失败用户标识
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FailedUserIdentification
@@ -1542,7 +1523,6 @@ class FailedUsers(AbstractModel):
     @property
     def FailedReason(self):
         """导入的用户失败原因
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FailedReason
@@ -2178,7 +2158,6 @@ class Job(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Location: str
         :param _ErrorDetails: 失败详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorDetails: list of ErrorDetails
         :param _FailedUsers: 失败的用户
 注意：此字段可能返回 null，表示取不到有效值。
@@ -2275,7 +2254,6 @@ class Job(AbstractModel):
     @property
     def ErrorDetails(self):
         """失败详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ErrorDetails
         """
         return self._ErrorDetails
@@ -2500,7 +2478,6 @@ class ListJobsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _JobSet: 任务列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type JobSet: list of Job
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2511,7 +2488,6 @@ class ListJobsResponse(AbstractModel):
     @property
     def JobSet(self):
         """任务列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Job
         """
         return self._JobSet
@@ -2646,7 +2622,6 @@ class ListLogMessageByConditionResponse(AbstractModel):
         :param _Pageable: 分页对象
         :type Pageable: :class:`tencentcloud.ciam.v20220331.models.Pageable`
         :param _Content: 日志列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Content: list of LogMessage
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2681,7 +2656,6 @@ class ListLogMessageByConditionResponse(AbstractModel):
     @property
     def Content(self):
         """日志列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LogMessage
         """
         return self._Content
@@ -2811,7 +2785,6 @@ class ListUserByPropertyResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Users: 用户列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Users: list of User
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2822,7 +2795,6 @@ class ListUserByPropertyResponse(AbstractModel):
     @property
     def Users(self):
         """用户列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of User
         """
         return self._Users
@@ -2938,13 +2910,10 @@ class ListUserGroupsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Content: 用户组列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Content: list of UserGroup
         :param _Total: 总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _Pageable: 分页
-注意：此字段可能返回 null，表示取不到有效值。
         :type Pageable: :class:`tencentcloud.ciam.v20220331.models.Pageable`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2957,7 +2926,6 @@ class ListUserGroupsResponse(AbstractModel):
     @property
     def Content(self):
         """用户组列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of UserGroup
         """
         return self._Content
@@ -2969,7 +2937,6 @@ class ListUserGroupsResponse(AbstractModel):
     @property
     def Total(self):
         """总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -2981,7 +2948,6 @@ class ListUserGroupsResponse(AbstractModel):
     @property
     def Pageable(self):
         """分页
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ciam.v20220331.models.Pageable`
         """
         return self._Pageable
@@ -3118,13 +3084,11 @@ class ListUserResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Total: 总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _Pageable: 分页对象
 注意：此字段可能返回 null，表示取不到有效值。
         :type Pageable: :class:`tencentcloud.ciam.v20220331.models.Pageable`
         :param _Content: 用户列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Content: list of User
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3137,7 +3101,6 @@ class ListUserResponse(AbstractModel):
     @property
     def Total(self):
         """总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -3161,7 +3124,6 @@ class ListUserResponse(AbstractModel):
     @property
     def Content(self):
         """用户列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of User
         """
         return self._Content
@@ -3262,16 +3224,12 @@ class LogMessage(AbstractModel):
         :param _LogId: 日志标识
         :type LogId: str
         :param _TenantId: 租户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TenantId: str
         :param _UserStoreId: 用户池ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserStoreId: str
         :param _EventCode: 事件编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type EventCode: str
         :param _EventDate: 事件发生时间戳，单位：毫秒
-注意：此字段可能返回 null，表示取不到有效值。
         :type EventDate: int
         :param _Description: 描述
 注意：此字段可能返回 null，表示取不到有效值。
@@ -3280,34 +3238,24 @@ class LogMessage(AbstractModel):
 
 <li> **TENANT** </li>  租户
 <li> **USER** </li>  用户
-注意：此字段可能返回 null，表示取不到有效值。
         :type Participant: str
         :param _ApplicationClientId: 应用clientId
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationClientId: str
         :param _ApplicationName: 应用名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationName: str
         :param _AuthSourceId: 认证源ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type AuthSourceId: str
         :param _AuthSourceName: 认证源名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type AuthSourceName: str
         :param _AuthSourceType: 认证源类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type AuthSourceType: str
         :param _AuthSourceCategory: 认证源类别
-注意：此字段可能返回 null，表示取不到有效值。
         :type AuthSourceCategory: str
         :param _Ip: IP地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ip: str
         :param _UserAgent: 用户代理
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserAgent: str
         :param _UserId: 用户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserId: str
         :param _Detail: 详情
 注意：此字段可能返回 null，表示取不到有效值。
@@ -3349,7 +3297,6 @@ class LogMessage(AbstractModel):
     @property
     def TenantId(self):
         """租户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TenantId
@@ -3361,7 +3308,6 @@ class LogMessage(AbstractModel):
     @property
     def UserStoreId(self):
         """用户池ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UserStoreId
@@ -3373,7 +3319,6 @@ class LogMessage(AbstractModel):
     @property
     def EventCode(self):
         """事件编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EventCode
@@ -3385,7 +3330,6 @@ class LogMessage(AbstractModel):
     @property
     def EventDate(self):
         """事件发生时间戳，单位：毫秒
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._EventDate
@@ -3412,7 +3356,6 @@ class LogMessage(AbstractModel):
 
 <li> **TENANT** </li>  租户
 <li> **USER** </li>  用户
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Participant
@@ -3424,7 +3367,6 @@ class LogMessage(AbstractModel):
     @property
     def ApplicationClientId(self):
         """应用clientId
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApplicationClientId
@@ -3436,7 +3378,6 @@ class LogMessage(AbstractModel):
     @property
     def ApplicationName(self):
         """应用名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApplicationName
@@ -3448,7 +3389,6 @@ class LogMessage(AbstractModel):
     @property
     def AuthSourceId(self):
         """认证源ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AuthSourceId
@@ -3460,7 +3400,6 @@ class LogMessage(AbstractModel):
     @property
     def AuthSourceName(self):
         """认证源名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AuthSourceName
@@ -3472,7 +3411,6 @@ class LogMessage(AbstractModel):
     @property
     def AuthSourceType(self):
         """认证源类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AuthSourceType
@@ -3484,7 +3422,6 @@ class LogMessage(AbstractModel):
     @property
     def AuthSourceCategory(self):
         """认证源类别
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AuthSourceCategory
@@ -3496,7 +3433,6 @@ class LogMessage(AbstractModel):
     @property
     def Ip(self):
         """IP地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Ip
@@ -3508,7 +3444,6 @@ class LogMessage(AbstractModel):
     @property
     def UserAgent(self):
         """用户代理
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UserAgent
@@ -3520,7 +3455,6 @@ class LogMessage(AbstractModel):
     @property
     def UserId(self):
         """用户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UserId
@@ -3595,7 +3529,6 @@ class MemberMap(AbstractModel):
         :param _Value: 值
         :type Value: str
         :param _Type: 类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         """
         self._Name = None
@@ -3627,7 +3560,6 @@ class MemberMap(AbstractModel):
     @property
     def Type(self):
         """类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -4532,7 +4464,6 @@ class UpdateUserResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _User: 更新之后的用户信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type User: :class:`tencentcloud.ciam.v20220331.models.User`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4543,7 +4474,6 @@ class UpdateUserResponse(AbstractModel):
     @property
     def User(self):
         """更新之后的用户信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ciam.v20220331.models.User`
         """
         return self._User
@@ -4825,7 +4755,6 @@ class User(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastModifiedDate: int
         :param _CustomAttributes: 自定义属性
-注意：此字段可能返回 null，表示取不到有效值。
         :type CustomAttributes: list of MemberMap
         :param _ResidentIdentityCard: 身份证号
 注意：此字段可能返回 null，表示取不到有效值。
@@ -4864,7 +4793,6 @@ class User(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type IdentityVerificationMethod: str
         :param _IdentityVerified: 是否已经实名核验
-注意：此字段可能返回 null，表示取不到有效值。
         :type IdentityVerified: bool
         :param _Job: 工作
 注意：此字段可能返回 null，表示取不到有效值。
@@ -4873,19 +4801,15 @@ class User(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Nationality: str
         :param _Primary: 是否主账号（进行过账号融合后，主账号为true，从账号为false）
-注意：此字段可能返回 null，表示取不到有效值。
         :type Primary: bool
         :param _Zone: 时区
 注意：此字段可能返回 null，表示取不到有效值。
         :type Zone: str
         :param _AlreadyFirstLogin: 是否已经首次登录
-注意：此字段可能返回 null，表示取不到有效值。
         :type AlreadyFirstLogin: bool
         :param _TenantId: 租户id
-注意：此字段可能返回 null，表示取不到有效值。
         :type TenantId: str
         :param _UserStoreId: 用户目录id
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserStoreId: str
         :param _Version: 版本
 注意：此字段可能返回 null，表示取不到有效值。
@@ -5110,7 +5034,6 @@ class User(AbstractModel):
     @property
     def CustomAttributes(self):
         """自定义属性
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of MemberMap
         """
         return self._CustomAttributes
@@ -5266,7 +5189,6 @@ class User(AbstractModel):
     @property
     def IdentityVerified(self):
         """是否已经实名核验
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IdentityVerified
@@ -5302,7 +5224,6 @@ class User(AbstractModel):
     @property
     def Primary(self):
         """是否主账号（进行过账号融合后，主账号为true，从账号为false）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Primary
@@ -5326,7 +5247,6 @@ class User(AbstractModel):
     @property
     def AlreadyFirstLogin(self):
         """是否已经首次登录
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._AlreadyFirstLogin
@@ -5338,7 +5258,6 @@ class User(AbstractModel):
     @property
     def TenantId(self):
         """租户id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TenantId
@@ -5350,7 +5269,6 @@ class User(AbstractModel):
     @property
     def UserStoreId(self):
         """用户目录id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UserStoreId
@@ -5650,10 +5568,8 @@ class UserGroupDeleteResp(AbstractModel):
     def __init__(self):
         r"""
         :param _ErrorMessage: 错误详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMessage: str
         :param _AppAssociatedUserGroupIds: 用户组关联的应用信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppAssociatedUserGroupIds: list of AppAssociatedUserGroupIds
         """
         self._ErrorMessage = None
@@ -5662,7 +5578,6 @@ class UserGroupDeleteResp(AbstractModel):
     @property
     def ErrorMessage(self):
         """错误详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorMessage
@@ -5674,7 +5589,6 @@ class UserGroupDeleteResp(AbstractModel):
     @property
     def AppAssociatedUserGroupIds(self):
         """用户组关联的应用信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AppAssociatedUserGroupIds
         """
         return self._AppAssociatedUserGroupIds
@@ -5726,13 +5640,10 @@ class UserStore(AbstractModel):
         :param _AppNum: 应用数量
         :type AppNum: int
         :param _LastStatus: 上次切换的用户池
-注意：此字段可能返回 null，表示取不到有效值。
         :type LastStatus: bool
         :param _DefaultStatus: 默认用户池
-注意：此字段可能返回 null，表示取不到有效值。
         :type DefaultStatus: bool
         :param _CreateDate: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateDate: int
         :param _LastStatusTime: 上次切换时间
 注意：此字段可能返回 null，表示取不到有效值。
@@ -5836,7 +5747,6 @@ class UserStore(AbstractModel):
     @property
     def LastStatus(self):
         """上次切换的用户池
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._LastStatus
@@ -5848,7 +5758,6 @@ class UserStore(AbstractModel):
     @property
     def DefaultStatus(self):
         """默认用户池
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._DefaultStatus
@@ -5860,7 +5769,6 @@ class UserStore(AbstractModel):
     @property
     def CreateDate(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CreateDate

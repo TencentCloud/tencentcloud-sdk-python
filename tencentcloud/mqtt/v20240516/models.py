@@ -7657,6 +7657,160 @@ class PublicAccessRule(AbstractModel):
         
 
 
+class PublishMessageRequest(AbstractModel):
+    """PublishMessage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _Payload: 消息 payload，需要按 encoding 指定的编码方式进行编码
+        :type Payload: str
+        :param _TargetTopic: 消息目的主题，该参数与 TargetClientId 二选一
+        :type TargetTopic: str
+        :param _TargetClientId: 消息目的客户端 ID，该参数与 TargetTopic 二选一
+        :type TargetClientId: str
+        :param _Encoding: 消息 payload 编码，可选 plain 或 base64，默认为 plain（即不编码）
+        :type Encoding: str
+        :param _Qos: 消息的服务质量等级，默认为 1
+        :type Qos: int
+        :param _Retain: 是否为保留消息，默认为 false，且仅支持发布到主题的消息设置为 true
+        :type Retain: bool
+        """
+        self._InstanceId = None
+        self._Payload = None
+        self._TargetTopic = None
+        self._TargetClientId = None
+        self._Encoding = None
+        self._Qos = None
+        self._Retain = None
+
+    @property
+    def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Payload(self):
+        """消息 payload，需要按 encoding 指定的编码方式进行编码
+        :rtype: str
+        """
+        return self._Payload
+
+    @Payload.setter
+    def Payload(self, Payload):
+        self._Payload = Payload
+
+    @property
+    def TargetTopic(self):
+        """消息目的主题，该参数与 TargetClientId 二选一
+        :rtype: str
+        """
+        return self._TargetTopic
+
+    @TargetTopic.setter
+    def TargetTopic(self, TargetTopic):
+        self._TargetTopic = TargetTopic
+
+    @property
+    def TargetClientId(self):
+        """消息目的客户端 ID，该参数与 TargetTopic 二选一
+        :rtype: str
+        """
+        return self._TargetClientId
+
+    @TargetClientId.setter
+    def TargetClientId(self, TargetClientId):
+        self._TargetClientId = TargetClientId
+
+    @property
+    def Encoding(self):
+        """消息 payload 编码，可选 plain 或 base64，默认为 plain（即不编码）
+        :rtype: str
+        """
+        return self._Encoding
+
+    @Encoding.setter
+    def Encoding(self, Encoding):
+        self._Encoding = Encoding
+
+    @property
+    def Qos(self):
+        """消息的服务质量等级，默认为 1
+        :rtype: int
+        """
+        return self._Qos
+
+    @Qos.setter
+    def Qos(self, Qos):
+        self._Qos = Qos
+
+    @property
+    def Retain(self):
+        """是否为保留消息，默认为 false，且仅支持发布到主题的消息设置为 true
+        :rtype: bool
+        """
+        return self._Retain
+
+    @Retain.setter
+    def Retain(self, Retain):
+        self._Retain = Retain
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Payload = params.get("Payload")
+        self._TargetTopic = params.get("TargetTopic")
+        self._TargetClientId = params.get("TargetClientId")
+        self._Encoding = params.get("Encoding")
+        self._Qos = params.get("Qos")
+        self._Retain = params.get("Retain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PublishMessageResponse(AbstractModel):
+    """PublishMessage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class RegisterCaCertificateRequest(AbstractModel):
     """RegisterCaCertificate请求参数结构体
 

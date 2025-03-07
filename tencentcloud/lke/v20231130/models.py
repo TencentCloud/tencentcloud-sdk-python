@@ -4352,6 +4352,130 @@ class CreateReleaseResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateVarRequest(AbstractModel):
+    """CreateVar请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppBizId: 应用ID
+        :type AppBizId: str
+        :param _VarName: 变量名称，不允许重复，最大支持50个字符
+        :type VarName: str
+        :param _VarDesc: 变量描述，最大支持120个字符
+        :type VarDesc: str
+        :param _VarType: 变量类型定义，支持类型如下：(STRING,INT,FLOAT,BOOL,OBJECT,ARRAY_STRING,ARRAY_INT,ARRAY_FLOAT,ARRAY_BOOL,ARRAY_OBJECT,FILE,DOCUMENT,IMAGE,AUDIO);传输过程是json字符串，标签中仅支持"STRING"类型使用
+        :type VarType: str
+        """
+        self._AppBizId = None
+        self._VarName = None
+        self._VarDesc = None
+        self._VarType = None
+
+    @property
+    def AppBizId(self):
+        """应用ID
+        :rtype: str
+        """
+        return self._AppBizId
+
+    @AppBizId.setter
+    def AppBizId(self, AppBizId):
+        self._AppBizId = AppBizId
+
+    @property
+    def VarName(self):
+        """变量名称，不允许重复，最大支持50个字符
+        :rtype: str
+        """
+        return self._VarName
+
+    @VarName.setter
+    def VarName(self, VarName):
+        self._VarName = VarName
+
+    @property
+    def VarDesc(self):
+        """变量描述，最大支持120个字符
+        :rtype: str
+        """
+        return self._VarDesc
+
+    @VarDesc.setter
+    def VarDesc(self, VarDesc):
+        self._VarDesc = VarDesc
+
+    @property
+    def VarType(self):
+        """变量类型定义，支持类型如下：(STRING,INT,FLOAT,BOOL,OBJECT,ARRAY_STRING,ARRAY_INT,ARRAY_FLOAT,ARRAY_BOOL,ARRAY_OBJECT,FILE,DOCUMENT,IMAGE,AUDIO);传输过程是json字符串，标签中仅支持"STRING"类型使用
+        :rtype: str
+        """
+        return self._VarType
+
+    @VarType.setter
+    def VarType(self, VarType):
+        self._VarType = VarType
+
+
+    def _deserialize(self, params):
+        self._AppBizId = params.get("AppBizId")
+        self._VarName = params.get("VarName")
+        self._VarDesc = params.get("VarDesc")
+        self._VarType = params.get("VarType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateVarResponse(AbstractModel):
+    """CreateVar返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VarId: 变量ID
+        :type VarId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._VarId = None
+        self._RequestId = None
+
+    @property
+    def VarId(self):
+        """变量ID
+        :rtype: str
+        """
+        return self._VarId
+
+    @VarId.setter
+    def VarId(self, VarId):
+        self._VarId = VarId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._VarId = params.get("VarId")
+        self._RequestId = params.get("RequestId")
+
+
 class Credentials(AbstractModel):
     """临时密钥结构
 
@@ -11821,6 +11945,180 @@ class GetTaskStatusResponse(AbstractModel):
         if params.get("Params") is not None:
             self._Params = TaskParams()
             self._Params._deserialize(params.get("Params"))
+        self._RequestId = params.get("RequestId")
+
+
+class GetVarListRequest(AbstractModel):
+    """GetVarList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppBizId: 应用ID
+        :type AppBizId: str
+        :param _VarIds: 变量ID数组
+        :type VarIds: list of str
+        :param _Keyword: 按变量名称关键词搜索
+        :type Keyword: str
+        :param _Offset: 起始偏移量（默认0）
+        :type Offset: int
+        :param _Limit: 限定数量（默认15）
+        :type Limit: int
+        :param _VarType: 按变量类型过滤，默认查询所有类型(STRING,INT,FLOAT,BOOL,OBJECT,ARRAY_STRING,ARRAY_INT,ARRAY_FLOAT,ARRAY_BOOL,ARRAY_OBJECT,FILE,DOCUMENT,IMAGE,AUDIO)
+        :type VarType: str
+        """
+        self._AppBizId = None
+        self._VarIds = None
+        self._Keyword = None
+        self._Offset = None
+        self._Limit = None
+        self._VarType = None
+
+    @property
+    def AppBizId(self):
+        """应用ID
+        :rtype: str
+        """
+        return self._AppBizId
+
+    @AppBizId.setter
+    def AppBizId(self, AppBizId):
+        self._AppBizId = AppBizId
+
+    @property
+    def VarIds(self):
+        """变量ID数组
+        :rtype: list of str
+        """
+        return self._VarIds
+
+    @VarIds.setter
+    def VarIds(self, VarIds):
+        self._VarIds = VarIds
+
+    @property
+    def Keyword(self):
+        """按变量名称关键词搜索
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def Offset(self):
+        """起始偏移量（默认0）
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """限定数量（默认15）
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def VarType(self):
+        """按变量类型过滤，默认查询所有类型(STRING,INT,FLOAT,BOOL,OBJECT,ARRAY_STRING,ARRAY_INT,ARRAY_FLOAT,ARRAY_BOOL,ARRAY_OBJECT,FILE,DOCUMENT,IMAGE,AUDIO)
+        :rtype: str
+        """
+        return self._VarType
+
+    @VarType.setter
+    def VarType(self, VarType):
+        self._VarType = VarType
+
+
+    def _deserialize(self, params):
+        self._AppBizId = params.get("AppBizId")
+        self._VarIds = params.get("VarIds")
+        self._Keyword = params.get("Keyword")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._VarType = params.get("VarType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetVarListResponse(AbstractModel):
+    """GetVarList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 变量总数
+        :type Total: int
+        :param _List: 变量信息列表
+        :type List: list of TaskFLowVar
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        """变量总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def List(self):
+        """变量信息列表
+        :rtype: list of TaskFLowVar
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = TaskFLowVar()
+                obj._deserialize(item)
+                self._List.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -25074,6 +25372,93 @@ class SummaryOutput(AbstractModel):
         self._Method = params.get("Method")
         self._Requirement = params.get("Requirement")
         self._RequireCommand = params.get("RequireCommand")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskFLowVar(AbstractModel):
+    """变量详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VarId: 变量ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VarId: str
+        :param _VarName: 变量名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VarName: str
+        :param _VarDesc: 变量描述（默认为"-"）
+        :type VarDesc: str
+        :param _VarType: 变量类型 (STRING,INT,FLOAT,BOOL,OBJECT,ARRAY_STRING,ARRAY_INT,ARRAY_FLOAT,ARRAY_BOOL,ARRAY_OBJECT,FILE,DOCUMENT,IMAGE,AUDIO)
+
+        :type VarType: str
+        """
+        self._VarId = None
+        self._VarName = None
+        self._VarDesc = None
+        self._VarType = None
+
+    @property
+    def VarId(self):
+        """变量ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VarId
+
+    @VarId.setter
+    def VarId(self, VarId):
+        self._VarId = VarId
+
+    @property
+    def VarName(self):
+        """变量名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VarName
+
+    @VarName.setter
+    def VarName(self, VarName):
+        self._VarName = VarName
+
+    @property
+    def VarDesc(self):
+        """变量描述（默认为"-"）
+        :rtype: str
+        """
+        return self._VarDesc
+
+    @VarDesc.setter
+    def VarDesc(self, VarDesc):
+        self._VarDesc = VarDesc
+
+    @property
+    def VarType(self):
+        """变量类型 (STRING,INT,FLOAT,BOOL,OBJECT,ARRAY_STRING,ARRAY_INT,ARRAY_FLOAT,ARRAY_BOOL,ARRAY_OBJECT,FILE,DOCUMENT,IMAGE,AUDIO)
+
+        :rtype: str
+        """
+        return self._VarType
+
+    @VarType.setter
+    def VarType(self, VarType):
+        self._VarType = VarType
+
+
+    def _deserialize(self, params):
+        self._VarId = params.get("VarId")
+        self._VarName = params.get("VarName")
+        self._VarDesc = params.get("VarDesc")
+        self._VarType = params.get("VarType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

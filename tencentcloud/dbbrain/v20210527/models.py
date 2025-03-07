@@ -3722,7 +3722,6 @@ class DescribeAllUserContactResponse(AbstractModel):
         :param _TotalCount: 联系人的总数量。
         :type TotalCount: int
         :param _Contacts: 联系人的信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Contacts: list of ContactItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3745,7 +3744,6 @@ class DescribeAllUserContactResponse(AbstractModel):
     @property
     def Contacts(self):
         """联系人的信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ContactItem
         """
         return self._Contacts
@@ -3838,7 +3836,6 @@ class DescribeAllUserGroupResponse(AbstractModel):
         :param _TotalCount: 组总数。
         :type TotalCount: int
         :param _Groups: 组信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Groups: list of GroupItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3861,7 +3858,6 @@ class DescribeAllUserGroupResponse(AbstractModel):
     @property
     def Groups(self):
         """组信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of GroupItem
         """
         return self._Groups
@@ -4329,7 +4325,6 @@ class DescribeDBDiagEventResponse(AbstractModel):
         :param _Suggestions: 诊断建议，若无建议则输出为空。
         :type Suggestions: str
         :param _Metric: 保留字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Metric: str
         :param _EndTime: 结束时间。
         :type EndTime: str
@@ -4451,7 +4446,6 @@ class DescribeDBDiagEventResponse(AbstractModel):
     @property
     def Metric(self):
         """保留字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Metric
@@ -5593,7 +5587,6 @@ class DescribeIndexRecommendAggregationSlowLogsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Aggregation: 查询实例慢查询聚合结果。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Aggregation: :class:`tencentcloud.dbbrain.v20210527.models.Aggregation`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5604,7 +5597,6 @@ class DescribeIndexRecommendAggregationSlowLogsResponse(AbstractModel):
     @property
     def Aggregation(self):
         """查询实例慢查询聚合结果。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dbbrain.v20210527.models.Aggregation`
         """
         return self._Aggregation
@@ -6185,7 +6177,6 @@ class DescribeMySqlProcessListResponse(AbstractModel):
         :param _ProcessList: 实时线程列表。
         :type ProcessList: list of MySqlProcess
         :param _Statistics: sql会话统计信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Statistics: list of StatisticInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6208,7 +6199,6 @@ class DescribeMySqlProcessListResponse(AbstractModel):
     @property
     def Statistics(self):
         """sql会话统计信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of StatisticInfo
         """
         return self._Statistics
@@ -11798,7 +11788,6 @@ class KillMySqlThreadsResponse(AbstractModel):
         :param _Threads: kill完成的sql会话ID列表。
         :type Threads: list of int
         :param _SqlExecId: 执行ID， Prepare阶段的任务输出，用于Commit阶段中指定执行kill操作的会话ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SqlExecId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11821,7 +11810,6 @@ class KillMySqlThreadsResponse(AbstractModel):
     @property
     def SqlExecId(self):
         """执行ID， Prepare阶段的任务输出，用于Commit阶段中指定执行kill操作的会话ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SqlExecId

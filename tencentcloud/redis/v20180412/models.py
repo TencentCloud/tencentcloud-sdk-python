@@ -18381,13 +18381,10 @@ class ParameterDetail(AbstractModel):
 - 1：需要重启。
         :type NeedReboot: int
         :param _Max: 参数允许的最大值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Max: str
         :param _Min: 参数允许的最小值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Min: str
         :param _EnumValue: 参数可选枚举值。如果为非枚举参数，则为空。
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnumValue: list of str
         """
         self._Name = None
@@ -18471,7 +18468,6 @@ class ParameterDetail(AbstractModel):
     @property
     def Max(self):
         """参数允许的最大值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Max
@@ -18483,7 +18479,6 @@ class ParameterDetail(AbstractModel):
     @property
     def Min(self):
         """参数允许的最小值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Min
@@ -18495,7 +18490,6 @@ class ParameterDetail(AbstractModel):
     @property
     def EnumValue(self):
         """参数可选枚举值。如果为非枚举参数，则为空。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._EnumValue
@@ -18577,7 +18571,6 @@ class ProductConf(AbstractModel):
         :param _EnableReplicaReadOnly: 是否支持副本只读。
 - true：支持副本只读。
 - false：不支持。
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnableReplicaReadOnly: bool
         """
         self._Type = None
@@ -18759,7 +18752,6 @@ class ProductConf(AbstractModel):
         """是否支持副本只读。
 - true：支持副本只读。
 - false：不支持。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._EnableReplicaReadOnly
@@ -18802,10 +18794,8 @@ class ProxyNodes(AbstractModel):
     def __init__(self):
         r"""
         :param _NodeId: 节点 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type NodeId: str
         :param _ZoneId: 可用区 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneId: int
         """
         self._NodeId = None
@@ -18814,7 +18804,6 @@ class ProxyNodes(AbstractModel):
     @property
     def NodeId(self):
         """节点 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NodeId
@@ -18826,7 +18815,6 @@ class ProxyNodes(AbstractModel):
     @property
     def ZoneId(self):
         """可用区 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ZoneId
@@ -18878,13 +18866,10 @@ class RedisBackupSet(AbstractModel):
 - 1：已被锁定。
         :type Locked: int
         :param _BackupSize: 内部字段，用户可忽略。
-注意：此字段可能返回 null，表示取不到有效值。
         :type BackupSize: int
         :param _FullBackup: 内部字段，用户可忽略。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FullBackup: int
         :param _InstanceType: 内部字段，用户可忽略。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceType: int
         :param _InstanceId: 实例 ID。
         :type InstanceId: str
@@ -18993,7 +18978,6 @@ class RedisBackupSet(AbstractModel):
     @property
     def BackupSize(self):
         """内部字段，用户可忽略。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._BackupSize
@@ -19005,7 +18989,6 @@ class RedisBackupSet(AbstractModel):
     @property
     def FullBackup(self):
         """内部字段，用户可忽略。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FullBackup
@@ -19017,7 +19000,6 @@ class RedisBackupSet(AbstractModel):
     @property
     def InstanceType(self):
         """内部字段，用户可忽略。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._InstanceType
@@ -19376,51 +19358,38 @@ class RedisInstanceEvent(AbstractModel):
     def __init__(self):
         r"""
         :param _ID: 事件 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ID: int
         :param _InstanceId: 实例 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _InstanceName: 实例名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceName: str
         :param _Type: 事件类型，当前仅支持配置实例迁移、资源腾挪、机房裁撤相关的运维操作。该参数仅支持配置为 **InstanceMigration**。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Grade: 事件等级根据其影响严重程度和紧急程度进行分级，由重至轻依次为关键、重要、中等、一般。
 - Critical：关键
 - High：重要
 - Middle：中等
 - Low：一般
-注意：此字段可能返回 null，表示取不到有效值。
         :type Grade: str
         :param _ExecutionDate: 事件计划执行日期。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutionDate: str
         :param _StartTime: 事件计划执行开始时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
         :param _EndTime: 事件计划执行结束时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         :param _LatestExecutionDate: 运维事件最迟执行的日期，即该事件必须在该日期之前完成，否则可能会对业务产生影响。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LatestExecutionDate: str
         :param _Status: 事件当前状态。
 - Waiting：未到达执行日期或不在维护时间窗内的事件。
 - Running：在维护时间窗内，正在执行维护的事件。
 - Finished：已全部完成维护的事件。
 - Canceled：已取消执行的事件。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _TaskEndTime: 事件执行任务完成时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskEndTime: str
         :param _EffectInfo: 事件影响信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type EffectInfo: str
         :param _InitialExecutionDate: 事件最初计划执行日期。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InitialExecutionDate: str
         """
         self._ID = None
@@ -19440,7 +19409,6 @@ class RedisInstanceEvent(AbstractModel):
     @property
     def ID(self):
         """事件 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ID
@@ -19452,7 +19420,6 @@ class RedisInstanceEvent(AbstractModel):
     @property
     def InstanceId(self):
         """实例 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -19464,7 +19431,6 @@ class RedisInstanceEvent(AbstractModel):
     @property
     def InstanceName(self):
         """实例名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceName
@@ -19476,7 +19442,6 @@ class RedisInstanceEvent(AbstractModel):
     @property
     def Type(self):
         """事件类型，当前仅支持配置实例迁移、资源腾挪、机房裁撤相关的运维操作。该参数仅支持配置为 **InstanceMigration**。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -19492,7 +19457,6 @@ class RedisInstanceEvent(AbstractModel):
 - High：重要
 - Middle：中等
 - Low：一般
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Grade
@@ -19504,7 +19468,6 @@ class RedisInstanceEvent(AbstractModel):
     @property
     def ExecutionDate(self):
         """事件计划执行日期。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ExecutionDate
@@ -19516,7 +19479,6 @@ class RedisInstanceEvent(AbstractModel):
     @property
     def StartTime(self):
         """事件计划执行开始时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StartTime
@@ -19528,7 +19490,6 @@ class RedisInstanceEvent(AbstractModel):
     @property
     def EndTime(self):
         """事件计划执行结束时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndTime
@@ -19540,7 +19501,6 @@ class RedisInstanceEvent(AbstractModel):
     @property
     def LatestExecutionDate(self):
         """运维事件最迟执行的日期，即该事件必须在该日期之前完成，否则可能会对业务产生影响。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LatestExecutionDate
@@ -19556,7 +19516,6 @@ class RedisInstanceEvent(AbstractModel):
 - Running：在维护时间窗内，正在执行维护的事件。
 - Finished：已全部完成维护的事件。
 - Canceled：已取消执行的事件。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -19568,7 +19527,6 @@ class RedisInstanceEvent(AbstractModel):
     @property
     def TaskEndTime(self):
         """事件执行任务完成时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskEndTime
@@ -19580,7 +19538,6 @@ class RedisInstanceEvent(AbstractModel):
     @property
     def EffectInfo(self):
         """事件影响信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EffectInfo
@@ -19592,7 +19549,6 @@ class RedisInstanceEvent(AbstractModel):
     @property
     def InitialExecutionDate(self):
         """事件最初计划执行日期。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InitialExecutionDate
@@ -20751,10 +20707,8 @@ class SecondLevelBackupMissingTimestamps(AbstractModel):
     def __init__(self):
         r"""
         :param _StartTimeStamp: 开始时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTimeStamp: int
         :param _EndTimeStamp: 结束时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTimeStamp: int
         """
         self._StartTimeStamp = None
@@ -20763,7 +20717,6 @@ class SecondLevelBackupMissingTimestamps(AbstractModel):
     @property
     def StartTimeStamp(self):
         """开始时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._StartTimeStamp
@@ -20775,7 +20728,6 @@ class SecondLevelBackupMissingTimestamps(AbstractModel):
     @property
     def EndTimeStamp(self):
         """结束时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._EndTimeStamp
@@ -21647,10 +21599,8 @@ class TaskInfoDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _TaskId: 任务 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: int
         :param _StartTime: 任务开始时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
         :param _TaskType: 任务类型。
 - FLOW_CREATE: "001"，新建实例
@@ -21708,22 +21658,16 @@ class TaskInfoDetail(AbstractModel):
 - FLOW_UPGRADE_INSTANCE_CACHE_AND_PROXY： "067"，实例版本升级中。
 - FLOW_MODIFY_PROXY_NUM："069"，加（减）Proxy 节点。
 - FLOW_MODIFYBACKUPMOD："070"，变更实例备份模式。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskType: str
         :param _InstanceName: 实例名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceName: str
         :param _InstanceId: 实例 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _ProjectId: 项目 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: int
         :param _Progress: 任务进度。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Progress: float
         :param _EndTime: 任务执行结束时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         :param _Result: 任务执行状态。
 
@@ -21731,7 +21675,6 @@ class TaskInfoDetail(AbstractModel):
 1：执行中。
 2：完成。
 4：失败。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: int
         """
         self._TaskId = None
@@ -21747,7 +21690,6 @@ class TaskInfoDetail(AbstractModel):
     @property
     def TaskId(self):
         """任务 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TaskId
@@ -21759,7 +21701,6 @@ class TaskInfoDetail(AbstractModel):
     @property
     def StartTime(self):
         """任务开始时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StartTime
@@ -21826,7 +21767,6 @@ class TaskInfoDetail(AbstractModel):
 - FLOW_UPGRADE_INSTANCE_CACHE_AND_PROXY： "067"，实例版本升级中。
 - FLOW_MODIFY_PROXY_NUM："069"，加（减）Proxy 节点。
 - FLOW_MODIFYBACKUPMOD："070"，变更实例备份模式。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskType
@@ -21838,7 +21778,6 @@ class TaskInfoDetail(AbstractModel):
     @property
     def InstanceName(self):
         """实例名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceName
@@ -21850,7 +21789,6 @@ class TaskInfoDetail(AbstractModel):
     @property
     def InstanceId(self):
         """实例 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -21862,7 +21800,6 @@ class TaskInfoDetail(AbstractModel):
     @property
     def ProjectId(self):
         """项目 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ProjectId
@@ -21874,7 +21811,6 @@ class TaskInfoDetail(AbstractModel):
     @property
     def Progress(self):
         """任务进度。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Progress
@@ -21886,7 +21822,6 @@ class TaskInfoDetail(AbstractModel):
     @property
     def EndTime(self):
         """任务执行结束时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndTime
@@ -21903,7 +21838,6 @@ class TaskInfoDetail(AbstractModel):
 1：执行中。
 2：完成。
 4：失败。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Result
