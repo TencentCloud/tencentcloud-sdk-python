@@ -15459,7 +15459,6 @@ class LaunchTemplateVersionInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _LaunchTemplateVersion: 实例启动模板版本号。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LaunchTemplateVersion: int
         :param _LaunchTemplateVersionData: 实例启动模板版本数据详情。
         :type LaunchTemplateVersionData: :class:`tencentcloud.cvm.v20170312.models.LaunchTemplateVersionData`
@@ -15470,7 +15469,6 @@ class LaunchTemplateVersionInfo(AbstractModel):
         :param _IsDefaultVersion: 是否为默认启动模板版本。
         :type IsDefaultVersion: bool
         :param _LaunchTemplateVersionDescription: 实例启动模板版本描述信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LaunchTemplateVersionDescription: str
         :param _CreatedBy: 创建者。
         :type CreatedBy: str
@@ -15486,7 +15484,6 @@ class LaunchTemplateVersionInfo(AbstractModel):
     @property
     def LaunchTemplateVersion(self):
         """实例启动模板版本号。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LaunchTemplateVersion
@@ -15542,7 +15539,6 @@ class LaunchTemplateVersionInfo(AbstractModel):
     @property
     def LaunchTemplateVersionDescription(self):
         """实例启动模板版本描述信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LaunchTemplateVersionDescription
@@ -19333,10 +19329,8 @@ class ReservedInstancePrice(AbstractModel):
         :param _DiscountUsagePrice: 后续合计费用的折扣价，单位：元/小时
         :type DiscountUsagePrice: float
         :param _FixedPriceDiscount: 预支费用的折扣，如20.0代表2折。 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FixedPriceDiscount: float
         :param _UsagePriceDiscount: 后续费用的折扣，如20.0代表2折。 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UsagePriceDiscount: float
         """
         self._OriginalFixedPrice = None
@@ -19393,7 +19387,6 @@ class ReservedInstancePrice(AbstractModel):
     @property
     def FixedPriceDiscount(self):
         """预支费用的折扣，如20.0代表2折。 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._FixedPriceDiscount
@@ -19405,7 +19398,6 @@ class ReservedInstancePrice(AbstractModel):
     @property
     def UsagePriceDiscount(self):
         """后续费用的折扣，如20.0代表2折。 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._UsagePriceDiscount

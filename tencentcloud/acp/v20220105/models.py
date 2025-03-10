@@ -952,7 +952,6 @@ class CreateAppScanTaskResponse(AbstractModel):
         :param _Result: 返回值, 0:成功, 其他值请查看“返回值”定义
         :type Result: int
         :param _TaskID: 任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskID: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -975,7 +974,6 @@ class CreateAppScanTaskResponse(AbstractModel):
     @property
     def TaskID(self):
         """任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskID
@@ -1812,13 +1810,10 @@ class DescribeScanTaskReportUrlResponse(AbstractModel):
         :param _Result: 返回值, 0:成功, 其他值请查看“返回值”定义
         :type Result: int
         :param _ReportUrl: 诊断报告/堆栈信息/报告json结果下载链接
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReportUrl: str
         :param _ReportTitle: 诊断报告/堆栈/报告json结果的名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReportTitle: str
         :param _ReportResult: 诊断json结果内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReportResult: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1843,7 +1838,6 @@ class DescribeScanTaskReportUrlResponse(AbstractModel):
     @property
     def ReportUrl(self):
         """诊断报告/堆栈信息/报告json结果下载链接
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ReportUrl
@@ -1855,7 +1849,6 @@ class DescribeScanTaskReportUrlResponse(AbstractModel):
     @property
     def ReportTitle(self):
         """诊断报告/堆栈/报告json结果的名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ReportTitle
@@ -1867,7 +1860,6 @@ class DescribeScanTaskReportUrlResponse(AbstractModel):
     @property
     def ReportResult(self):
         """诊断json结果内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ReportResult

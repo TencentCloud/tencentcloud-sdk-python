@@ -27350,6 +27350,9 @@ class Policy(AbstractModel):
         :param _Id: 策略ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
+        :param _EngineGeneration: 引擎类型
+
+        :type EngineGeneration: str
         """
         self._Database = None
         self._Catalog = None
@@ -27368,6 +27371,7 @@ class Policy(AbstractModel):
         self._SourceId = None
         self._SourceName = None
         self._Id = None
+        self._EngineGeneration = None
 
     @property
     def Database(self):
@@ -27568,6 +27572,18 @@ class Policy(AbstractModel):
     def Id(self, Id):
         self._Id = Id
 
+    @property
+    def EngineGeneration(self):
+        """引擎类型
+
+        :rtype: str
+        """
+        return self._EngineGeneration
+
+    @EngineGeneration.setter
+    def EngineGeneration(self, EngineGeneration):
+        self._EngineGeneration = EngineGeneration
+
 
     def _deserialize(self, params):
         self._Database = params.get("Database")
@@ -27587,6 +27603,7 @@ class Policy(AbstractModel):
         self._SourceId = params.get("SourceId")
         self._SourceName = params.get("SourceName")
         self._Id = params.get("Id")
+        self._EngineGeneration = params.get("EngineGeneration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

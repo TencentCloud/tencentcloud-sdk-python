@@ -287,6 +287,30 @@ class AiartClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RefineImage(self, request):
+        """将图像变清晰，增强图像细节。变清晰后的图片将保持原图比例，长边为2048。
+        默认提供1个并发，代表最多能同时处理1个已提交的任务。
+
+        :param request: Request instance for RefineImage.
+        :type request: :class:`tencentcloud.aiart.v20221229.models.RefineImageRequest`
+        :rtype: :class:`tencentcloud.aiart.v20221229.models.RefineImageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RefineImage", params, headers=headers)
+            response = json.loads(body)
+            model = models.RefineImageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ReplaceBackground(self, request):
         """商品背景生成接口根据指定的背景描述 Prompt，将商品图中的原背景替换为自定义的新背景并保留商品主体形象，实现商品背景的自由生成与更换。
 

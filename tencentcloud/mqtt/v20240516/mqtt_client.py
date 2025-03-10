@@ -578,6 +578,29 @@ class MqttClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeClientList(self, request):
+        """查询 MQTT 客户端详情
+
+        :param request: Request instance for DescribeClientList.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeClientListRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.DescribeClientListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClientList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeClientListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDeviceCertificate(self, request):
         """查询设备证书详情接口
 
@@ -721,6 +744,29 @@ class MqttClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeMessageList(self, request):
+        """查询消息列表，如查询死信，请设置ConsumerGroup参数
+
+        :param request: Request instance for DescribeMessageList.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeMessageListRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.DescribeMessageListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMessageList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMessageListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeProductSKUList(self, request):
         """获取产品售卖规格
 
@@ -735,6 +781,29 @@ class MqttClient(AbstractClient):
             body = self.call("DescribeProductSKUList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeProductSKUListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSharedSubscriptionLag(self, request):
+        """查询共享订阅消息堆积量
+
+        :param request: Request instance for DescribeSharedSubscriptionLag.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeSharedSubscriptionLagRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.DescribeSharedSubscriptionLagResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSharedSubscriptionLag", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSharedSubscriptionLagResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -1834,6 +1834,8 @@ class CloudStorageAIServiceTask(AbstractModel):
         :type Result: str
         :param _Files: 任务输出文件列表
         :type Files: list of str
+        :param _FilesInfo: 任务输出文件信息列表
+        :type FilesInfo: list of CloudStorageAIServiceTaskFileInfo
         :param _CreateTime: 创建时间
         :type CreateTime: int
         :param _UpdateTime: 最后更新时间
@@ -1851,6 +1853,7 @@ class CloudStorageAIServiceTask(AbstractModel):
         self._Status = None
         self._Result = None
         self._Files = None
+        self._FilesInfo = None
         self._CreateTime = None
         self._UpdateTime = None
         self._CustomId = None
@@ -1970,6 +1973,17 @@ class CloudStorageAIServiceTask(AbstractModel):
         self._Files = Files
 
     @property
+    def FilesInfo(self):
+        """任务输出文件信息列表
+        :rtype: list of CloudStorageAIServiceTaskFileInfo
+        """
+        return self._FilesInfo
+
+    @FilesInfo.setter
+    def FilesInfo(self, FilesInfo):
+        self._FilesInfo = FilesInfo
+
+    @property
     def CreateTime(self):
         """创建时间
         :rtype: int
@@ -2014,9 +2028,164 @@ class CloudStorageAIServiceTask(AbstractModel):
         self._Status = params.get("Status")
         self._Result = params.get("Result")
         self._Files = params.get("Files")
+        if params.get("FilesInfo") is not None:
+            self._FilesInfo = []
+            for item in params.get("FilesInfo"):
+                obj = CloudStorageAIServiceTaskFileInfo()
+                obj._deserialize(item)
+                self._FilesInfo.append(obj)
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         self._CustomId = params.get("CustomId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloudStorageAIServiceTaskFileInfo(AbstractModel):
+    """云存 AI 任务输出文件信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileName: 文件名称（含扩展名）
+        :type FileName: str
+        :param _FileSize: 文件大小（单位：bytes）
+        :type FileSize: int
+        :param _DownloadURL: 文件下载 URL
+        :type DownloadURL: str
+        :param _MimeType: 文件的 MIME Type
+        :type MimeType: str
+        :param _VideoMetaInfo: 视频文件元数据（仅当文件为视频类型时包含该字段）
+        :type VideoMetaInfo: :class:`tencentcloud.iotexplorer.v20190423.models.CloudStorageAIServiceTaskVideoMetaInfo`
+        """
+        self._FileName = None
+        self._FileSize = None
+        self._DownloadURL = None
+        self._MimeType = None
+        self._VideoMetaInfo = None
+
+    @property
+    def FileName(self):
+        """文件名称（含扩展名）
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def FileSize(self):
+        """文件大小（单位：bytes）
+        :rtype: int
+        """
+        return self._FileSize
+
+    @FileSize.setter
+    def FileSize(self, FileSize):
+        self._FileSize = FileSize
+
+    @property
+    def DownloadURL(self):
+        """文件下载 URL
+        :rtype: str
+        """
+        return self._DownloadURL
+
+    @DownloadURL.setter
+    def DownloadURL(self, DownloadURL):
+        self._DownloadURL = DownloadURL
+
+    @property
+    def MimeType(self):
+        """文件的 MIME Type
+        :rtype: str
+        """
+        return self._MimeType
+
+    @MimeType.setter
+    def MimeType(self, MimeType):
+        self._MimeType = MimeType
+
+    @property
+    def VideoMetaInfo(self):
+        """视频文件元数据（仅当文件为视频类型时包含该字段）
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.CloudStorageAIServiceTaskVideoMetaInfo`
+        """
+        return self._VideoMetaInfo
+
+    @VideoMetaInfo.setter
+    def VideoMetaInfo(self, VideoMetaInfo):
+        self._VideoMetaInfo = VideoMetaInfo
+
+
+    def _deserialize(self, params):
+        self._FileName = params.get("FileName")
+        self._FileSize = params.get("FileSize")
+        self._DownloadURL = params.get("DownloadURL")
+        self._MimeType = params.get("MimeType")
+        if params.get("VideoMetaInfo") is not None:
+            self._VideoMetaInfo = CloudStorageAIServiceTaskVideoMetaInfo()
+            self._VideoMetaInfo._deserialize(params.get("VideoMetaInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloudStorageAIServiceTaskVideoMetaInfo(AbstractModel):
+    """云存 AI 任务输出视频文件元数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ThumbnailFileName: 视频对应的缩略图的文件名称（含扩展名）
+        :type ThumbnailFileName: str
+        :param _DurationMilliSeconds: 视频时长（单位：毫秒）
+        :type DurationMilliSeconds: int
+        """
+        self._ThumbnailFileName = None
+        self._DurationMilliSeconds = None
+
+    @property
+    def ThumbnailFileName(self):
+        """视频对应的缩略图的文件名称（含扩展名）
+        :rtype: str
+        """
+        return self._ThumbnailFileName
+
+    @ThumbnailFileName.setter
+    def ThumbnailFileName(self, ThumbnailFileName):
+        self._ThumbnailFileName = ThumbnailFileName
+
+    @property
+    def DurationMilliSeconds(self):
+        """视频时长（单位：毫秒）
+        :rtype: int
+        """
+        return self._DurationMilliSeconds
+
+    @DurationMilliSeconds.setter
+    def DurationMilliSeconds(self, DurationMilliSeconds):
+        self._DurationMilliSeconds = DurationMilliSeconds
+
+
+    def _deserialize(self, params):
+        self._ThumbnailFileName = params.get("ThumbnailFileName")
+        self._DurationMilliSeconds = params.get("DurationMilliSeconds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7475,6 +7644,18 @@ class DescribeCloudStorageAIServiceTasksRequest(AbstractModel):
         :type UserId: str
         :param _ChannelId: 通道 ID
         :type ChannelId: int
+        :param _DeviceNames: 设备名称列表。
+
+当需要同时查询多台设备的任务列表时传入，优先级高于参数 `DeviceName`
+        :type DeviceNames: list of str
+        :param _StartTime: 查询任务时间范围的起始时间（秒级 UNIX 时间戳）
+        :type StartTime: int
+        :param _EndTime: 查询任务时间范围的结束时间（秒级 UNIX 时间戳）
+        :type EndTime: int
+        :param _FileURLExpireTime: 下载 URL 的过期时间。
+
+若传入该参数，则响应中将包含所有文件的下载 URL
+        :type FileURLExpireTime: int
         """
         self._ProductId = None
         self._DeviceName = None
@@ -7484,6 +7665,10 @@ class DescribeCloudStorageAIServiceTasksRequest(AbstractModel):
         self._Status = None
         self._UserId = None
         self._ChannelId = None
+        self._DeviceNames = None
+        self._StartTime = None
+        self._EndTime = None
+        self._FileURLExpireTime = None
 
     @property
     def ProductId(self):
@@ -7581,6 +7766,54 @@ class DescribeCloudStorageAIServiceTasksRequest(AbstractModel):
     def ChannelId(self, ChannelId):
         self._ChannelId = ChannelId
 
+    @property
+    def DeviceNames(self):
+        """设备名称列表。
+
+当需要同时查询多台设备的任务列表时传入，优先级高于参数 `DeviceName`
+        :rtype: list of str
+        """
+        return self._DeviceNames
+
+    @DeviceNames.setter
+    def DeviceNames(self, DeviceNames):
+        self._DeviceNames = DeviceNames
+
+    @property
+    def StartTime(self):
+        """查询任务时间范围的起始时间（秒级 UNIX 时间戳）
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """查询任务时间范围的结束时间（秒级 UNIX 时间戳）
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def FileURLExpireTime(self):
+        """下载 URL 的过期时间。
+
+若传入该参数，则响应中将包含所有文件的下载 URL
+        :rtype: int
+        """
+        return self._FileURLExpireTime
+
+    @FileURLExpireTime.setter
+    def FileURLExpireTime(self, FileURLExpireTime):
+        self._FileURLExpireTime = FileURLExpireTime
+
 
     def _deserialize(self, params):
         self._ProductId = params.get("ProductId")
@@ -7591,6 +7824,10 @@ class DescribeCloudStorageAIServiceTasksRequest(AbstractModel):
         self._Status = params.get("Status")
         self._UserId = params.get("UserId")
         self._ChannelId = params.get("ChannelId")
+        self._DeviceNames = params.get("DeviceNames")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._FileURLExpireTime = params.get("FileURLExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

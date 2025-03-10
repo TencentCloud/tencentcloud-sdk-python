@@ -279,6 +279,29 @@ class OrganizationClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def BindOrganizationPolicySubAccount(self, request):
+        """绑定成员访问授权策略和组织管理员子账号
+
+        :param request: Request instance for BindOrganizationPolicySubAccount.
+        :type request: :class:`tencentcloud.organization.v20210331.models.BindOrganizationPolicySubAccountRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.BindOrganizationPolicySubAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BindOrganizationPolicySubAccount", params, headers=headers)
+            response = json.loads(body)
+            model = models.BindOrganizationPolicySubAccountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CancelOrganizationMemberAuthAccount(self, request):
         """取消组织成员和组织管理员子账号的授权关系
 
@@ -293,6 +316,29 @@ class OrganizationClient(AbstractClient):
             body = self.call("CancelOrganizationMemberAuthAccount", params, headers=headers)
             response = json.loads(body)
             model = models.CancelOrganizationMemberAuthAccountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CancelOrganizationPolicySubAccount(self, request):
+        """解绑成员访问授权策略和组织管理员子账号
+
+        :param request: Request instance for CancelOrganizationPolicySubAccount.
+        :type request: :class:`tencentcloud.organization.v20210331.models.CancelOrganizationPolicySubAccountRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.CancelOrganizationPolicySubAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CancelOrganizationPolicySubAccount", params, headers=headers)
+            response = json.loads(body)
+            model = models.CancelOrganizationPolicySubAccountResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

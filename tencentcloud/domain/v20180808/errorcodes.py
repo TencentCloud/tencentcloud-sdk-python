@@ -218,7 +218,7 @@ INVALIDPARAMETER_NAMECNISINVALID = 'InvalidParameter.NameCnIsInvalid'
 # 联系人(中文)不能包含XML保留字符
 INVALIDPARAMETER_NAMECNXMLINVALID = 'InvalidParameter.NameCnXmlInvalid'
 
-# 联系人(英文)不符合ASCII规范
+# 联系人(英文)不符合ASCII规范 [查看规范](https://cloud.tencent.com/document/product/242/66269)
 INVALIDPARAMETER_NAMEENASCIIINVALID = 'InvalidParameter.NameEnASCIIInvalid'
 
 # 联系人(英文)不能包含中文
@@ -239,7 +239,7 @@ INVALIDPARAMETER_NAMEISINVALID = 'InvalidParameter.NameIsInvalid'
 # 联系人填写有误，或因其他原因无法使用，请更换其他联系人。
 INVALIDPARAMETER_NAMEISKEYWORD = 'InvalidParameter.NameIsKeyword'
 
-# 域名所有者(英文)不符合ASCII规范
+# 域名所有者(英文)不符合ASCII规范 [查看规范](https://cloud.tencent.com/document/product/242/66269)
 INVALIDPARAMETER_ORGASCIIINVALID = 'InvalidParameter.OrgASCIIInvalid'
 
 # 域名所有者(中文)不能包含空格与英文

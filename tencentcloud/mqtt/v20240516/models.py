@@ -3291,6 +3291,120 @@ class DescribeCaCertificatesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeClientListRequest(AbstractModel):
+    """DescribeClientList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _ClientId: 客户端名
+        :type ClientId: str
+        :param _Number: 客户端数量限制,最大1024，默认1024
+        :type Number: str
+        """
+        self._InstanceId = None
+        self._ClientId = None
+        self._Number = None
+
+    @property
+    def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ClientId(self):
+        """客户端名
+        :rtype: str
+        """
+        return self._ClientId
+
+    @ClientId.setter
+    def ClientId(self, ClientId):
+        self._ClientId = ClientId
+
+    @property
+    def Number(self):
+        """客户端数量限制,最大1024，默认1024
+        :rtype: str
+        """
+        return self._Number
+
+    @Number.setter
+    def Number(self, Number):
+        self._Number = Number
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ClientId = params.get("ClientId")
+        self._Number = params.get("Number")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClientListResponse(AbstractModel):
+    """DescribeClientList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Clients: 客户端列表
+        :type Clients: list of MQTTClientInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Clients = None
+        self._RequestId = None
+
+    @property
+    def Clients(self):
+        """客户端列表
+        :rtype: list of MQTTClientInfo
+        """
+        return self._Clients
+
+    @Clients.setter
+    def Clients(self, Clients):
+        self._Clients = Clients
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Clients") is not None:
+            self._Clients = []
+            for item in params.get("Clients"):
+                obj = MQTTClientInfo()
+                obj._deserialize(item)
+                self._Clients.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDeviceCertificateRequest(AbstractModel):
     """DescribeDeviceCertificate请求参数结构体
 
@@ -4576,6 +4690,214 @@ API：通过API手动注册
         self._RequestId = params.get("RequestId")
 
 
+class DescribeMessageListRequest(AbstractModel):
+    """DescribeMessageList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _Topic: 主题
+        :type Topic: str
+        :param _StartTime: 开始时间
+        :type StartTime: int
+        :param _EndTime: 结束时间
+        :type EndTime: int
+        :param _TaskRequestId: 请求任务id
+        :type TaskRequestId: str
+        :param _Offset: 查询起始位置
+        :type Offset: int
+        :param _Limit: 查询结果限制数量
+        :type Limit: int
+        """
+        self._InstanceId = None
+        self._Topic = None
+        self._StartTime = None
+        self._EndTime = None
+        self._TaskRequestId = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Topic(self):
+        """主题
+        :rtype: str
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def StartTime(self):
+        """开始时间
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """结束时间
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def TaskRequestId(self):
+        """请求任务id
+        :rtype: str
+        """
+        return self._TaskRequestId
+
+    @TaskRequestId.setter
+    def TaskRequestId(self, TaskRequestId):
+        self._TaskRequestId = TaskRequestId
+
+    @property
+    def Offset(self):
+        """查询起始位置
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """查询结果限制数量
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Topic = params.get("Topic")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._TaskRequestId = params.get("TaskRequestId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMessageListResponse(AbstractModel):
+    """DescribeMessageList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 查询总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _Data: 消息记录列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of MQTTMessageItem
+        :param _TaskRequestId: 请求任务id
+        :type TaskRequestId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Data = None
+        self._TaskRequestId = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """查询总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Data(self):
+        """消息记录列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MQTTMessageItem
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def TaskRequestId(self):
+        """请求任务id
+        :rtype: str
+        """
+        return self._TaskRequestId
+
+    @TaskRequestId.setter
+    def TaskRequestId(self, TaskRequestId):
+        self._TaskRequestId = TaskRequestId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = MQTTMessageItem()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._TaskRequestId = params.get("TaskRequestId")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeProductSKUListRequest(AbstractModel):
     """DescribeProductSKUList请求参数结构体
 
@@ -4646,6 +4968,100 @@ class DescribeProductSKUListResponse(AbstractModel):
                 obj = ProductSkuItem()
                 obj._deserialize(item)
                 self._MQTTProductSkuList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSharedSubscriptionLagRequest(AbstractModel):
+    """DescribeSharedSubscriptionLag请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群id	
+        :type InstanceId: str
+        :param _SharedSubscription: 共享订阅表达式
+        :type SharedSubscription: str
+        """
+        self._InstanceId = None
+        self._SharedSubscription = None
+
+    @property
+    def InstanceId(self):
+        """集群id	
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def SharedSubscription(self):
+        """共享订阅表达式
+        :rtype: str
+        """
+        return self._SharedSubscription
+
+    @SharedSubscription.setter
+    def SharedSubscription(self, SharedSubscription):
+        self._SharedSubscription = SharedSubscription
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._SharedSubscription = params.get("SharedSubscription")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSharedSubscriptionLagResponse(AbstractModel):
+    """DescribeSharedSubscriptionLag返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Lag: 堆积值
+        :type Lag: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Lag = None
+        self._RequestId = None
+
+    @property
+    def Lag(self):
+        """堆积值
+        :rtype: int
+        """
+        return self._Lag
+
+    @Lag.setter
+    def Lag(self, Lag):
+        self._Lag = Lag
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Lag = params.get("Lag")
         self._RequestId = params.get("RequestId")
 
 
@@ -5576,6 +5992,266 @@ class MQTTAuthenticatorItem(AbstractModel):
         
 
 
+class MQTTClientInfo(AbstractModel):
+    """MQTT客户端信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClientId: 客户端唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientId: str
+        :param _ClientAddress: 客户端网络地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientAddress: str
+        :param _ProtocolVersion: MQTT 协议版本，4 表示 MQTT 3.1.1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProtocolVersion: int
+        :param _Keepalive: 保持连接时间，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Keepalive: int
+        :param _ConnectionStatus: 连接状态，CONNECTED 已连接，DISCONNECTED 未连接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConnectionStatus: str
+        :param _CreateTime: 客户端创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
+        :param _ConnectTime: 上次建立连接时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConnectTime: int
+        :param _DisconnectTime: 上次断开连接时间，仅对持久会话（cleanSession=false）并且客户端当前未连接时有意义
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DisconnectTime: int
+        :param _MQTTClientSubscriptions: 客户端的订阅列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MQTTClientSubscriptions: list of MQTTClientSubscription
+        """
+        self._ClientId = None
+        self._ClientAddress = None
+        self._ProtocolVersion = None
+        self._Keepalive = None
+        self._ConnectionStatus = None
+        self._CreateTime = None
+        self._ConnectTime = None
+        self._DisconnectTime = None
+        self._MQTTClientSubscriptions = None
+
+    @property
+    def ClientId(self):
+        """客户端唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClientId
+
+    @ClientId.setter
+    def ClientId(self, ClientId):
+        self._ClientId = ClientId
+
+    @property
+    def ClientAddress(self):
+        """客户端网络地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClientAddress
+
+    @ClientAddress.setter
+    def ClientAddress(self, ClientAddress):
+        self._ClientAddress = ClientAddress
+
+    @property
+    def ProtocolVersion(self):
+        """MQTT 协议版本，4 表示 MQTT 3.1.1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ProtocolVersion
+
+    @ProtocolVersion.setter
+    def ProtocolVersion(self, ProtocolVersion):
+        self._ProtocolVersion = ProtocolVersion
+
+    @property
+    def Keepalive(self):
+        """保持连接时间，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Keepalive
+
+    @Keepalive.setter
+    def Keepalive(self, Keepalive):
+        self._Keepalive = Keepalive
+
+    @property
+    def ConnectionStatus(self):
+        """连接状态，CONNECTED 已连接，DISCONNECTED 未连接
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ConnectionStatus
+
+    @ConnectionStatus.setter
+    def ConnectionStatus(self, ConnectionStatus):
+        self._ConnectionStatus = ConnectionStatus
+
+    @property
+    def CreateTime(self):
+        """客户端创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ConnectTime(self):
+        """上次建立连接时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ConnectTime
+
+    @ConnectTime.setter
+    def ConnectTime(self, ConnectTime):
+        self._ConnectTime = ConnectTime
+
+    @property
+    def DisconnectTime(self):
+        """上次断开连接时间，仅对持久会话（cleanSession=false）并且客户端当前未连接时有意义
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DisconnectTime
+
+    @DisconnectTime.setter
+    def DisconnectTime(self, DisconnectTime):
+        self._DisconnectTime = DisconnectTime
+
+    @property
+    def MQTTClientSubscriptions(self):
+        """客户端的订阅列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MQTTClientSubscription
+        """
+        return self._MQTTClientSubscriptions
+
+    @MQTTClientSubscriptions.setter
+    def MQTTClientSubscriptions(self, MQTTClientSubscriptions):
+        self._MQTTClientSubscriptions = MQTTClientSubscriptions
+
+
+    def _deserialize(self, params):
+        self._ClientId = params.get("ClientId")
+        self._ClientAddress = params.get("ClientAddress")
+        self._ProtocolVersion = params.get("ProtocolVersion")
+        self._Keepalive = params.get("Keepalive")
+        self._ConnectionStatus = params.get("ConnectionStatus")
+        self._CreateTime = params.get("CreateTime")
+        self._ConnectTime = params.get("ConnectTime")
+        self._DisconnectTime = params.get("DisconnectTime")
+        if params.get("MQTTClientSubscriptions") is not None:
+            self._MQTTClientSubscriptions = []
+            for item in params.get("MQTTClientSubscriptions"):
+                obj = MQTTClientSubscription()
+                obj._deserialize(item)
+                self._MQTTClientSubscriptions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MQTTClientSubscription(AbstractModel):
+    """MQTT 订阅关系
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicFilter: topic 订阅
+        :type TopicFilter: str
+        :param _Qos: 服务质量等级
+        :type Qos: int
+        :param _Lag: 堆积数量
+        :type Lag: int
+        :param _Inflight: 投递未确认数量
+        :type Inflight: int
+        """
+        self._TopicFilter = None
+        self._Qos = None
+        self._Lag = None
+        self._Inflight = None
+
+    @property
+    def TopicFilter(self):
+        """topic 订阅
+        :rtype: str
+        """
+        return self._TopicFilter
+
+    @TopicFilter.setter
+    def TopicFilter(self, TopicFilter):
+        self._TopicFilter = TopicFilter
+
+    @property
+    def Qos(self):
+        """服务质量等级
+        :rtype: int
+        """
+        return self._Qos
+
+    @Qos.setter
+    def Qos(self, Qos):
+        self._Qos = Qos
+
+    @property
+    def Lag(self):
+        """堆积数量
+        :rtype: int
+        """
+        return self._Lag
+
+    @Lag.setter
+    def Lag(self, Lag):
+        self._Lag = Lag
+
+    @property
+    def Inflight(self):
+        """投递未确认数量
+        :rtype: int
+        """
+        return self._Inflight
+
+    @Inflight.setter
+    def Inflight(self, Inflight):
+        self._Inflight = Inflight
+
+
+    def _deserialize(self, params):
+        self._TopicFilter = params.get("TopicFilter")
+        self._Qos = params.get("Qos")
+        self._Lag = params.get("Lag")
+        self._Inflight = params.get("Inflight")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MQTTEndpointItem(AbstractModel):
     """MQTTEndpoint
 
@@ -6079,6 +6755,180 @@ DELETING，删除中
         self._AuthorizationPolicyLimit = params.get("AuthorizationPolicyLimit")
         self._MaxCaNum = params.get("MaxCaNum")
         self._MaxSubscription = params.get("MaxSubscription")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MQTTMessageItem(AbstractModel):
+    """消息记录
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MsgId: 消息ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MsgId: str
+        :param _Tags: 消息tag
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: str
+        :param _Keys: 消息key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Keys: str
+        :param _ProducerAddr: 客户端地址	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProducerAddr: str
+        :param _ProduceTime: 消息发送时间	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProduceTime: str
+        :param _DeadLetterResendTimes: 死信重发次数	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeadLetterResendTimes: int
+        :param _DeadLetterResendSuccessTimes: 死信重发成功次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeadLetterResendSuccessTimes: int
+        :param _SubTopic: 子topic
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubTopic: str
+        :param _Qos: 消息质量等级
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Qos: str
+        """
+        self._MsgId = None
+        self._Tags = None
+        self._Keys = None
+        self._ProducerAddr = None
+        self._ProduceTime = None
+        self._DeadLetterResendTimes = None
+        self._DeadLetterResendSuccessTimes = None
+        self._SubTopic = None
+        self._Qos = None
+
+    @property
+    def MsgId(self):
+        """消息ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MsgId
+
+    @MsgId.setter
+    def MsgId(self, MsgId):
+        self._MsgId = MsgId
+
+    @property
+    def Tags(self):
+        """消息tag
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Keys(self):
+        """消息key
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Keys
+
+    @Keys.setter
+    def Keys(self, Keys):
+        self._Keys = Keys
+
+    @property
+    def ProducerAddr(self):
+        """客户端地址	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProducerAddr
+
+    @ProducerAddr.setter
+    def ProducerAddr(self, ProducerAddr):
+        self._ProducerAddr = ProducerAddr
+
+    @property
+    def ProduceTime(self):
+        """消息发送时间	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProduceTime
+
+    @ProduceTime.setter
+    def ProduceTime(self, ProduceTime):
+        self._ProduceTime = ProduceTime
+
+    @property
+    def DeadLetterResendTimes(self):
+        """死信重发次数	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DeadLetterResendTimes
+
+    @DeadLetterResendTimes.setter
+    def DeadLetterResendTimes(self, DeadLetterResendTimes):
+        self._DeadLetterResendTimes = DeadLetterResendTimes
+
+    @property
+    def DeadLetterResendSuccessTimes(self):
+        """死信重发成功次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DeadLetterResendSuccessTimes
+
+    @DeadLetterResendSuccessTimes.setter
+    def DeadLetterResendSuccessTimes(self, DeadLetterResendSuccessTimes):
+        self._DeadLetterResendSuccessTimes = DeadLetterResendSuccessTimes
+
+    @property
+    def SubTopic(self):
+        """子topic
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SubTopic
+
+    @SubTopic.setter
+    def SubTopic(self, SubTopic):
+        self._SubTopic = SubTopic
+
+    @property
+    def Qos(self):
+        """消息质量等级
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Qos
+
+    @Qos.setter
+    def Qos(self, Qos):
+        self._Qos = Qos
+
+
+    def _deserialize(self, params):
+        self._MsgId = params.get("MsgId")
+        self._Tags = params.get("Tags")
+        self._Keys = params.get("Keys")
+        self._ProducerAddr = params.get("ProducerAddr")
+        self._ProduceTime = params.get("ProduceTime")
+        self._DeadLetterResendTimes = params.get("DeadLetterResendTimes")
+        self._DeadLetterResendSuccessTimes = params.get("DeadLetterResendSuccessTimes")
+        self._SubTopic = params.get("SubTopic")
+        self._Qos = params.get("Qos")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

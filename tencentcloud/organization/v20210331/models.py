@@ -1343,6 +1343,85 @@ class BindOrganizationMemberAuthAccountResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class BindOrganizationPolicySubAccountRequest(AbstractModel):
+    """BindOrganizationPolicySubAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicyId: 策略ID。
+        :type PolicyId: int
+        :param _OrgSubAccountUins: 组织管理员子账号Uin列表。最大5个
+        :type OrgSubAccountUins: list of int
+        """
+        self._PolicyId = None
+        self._OrgSubAccountUins = None
+
+    @property
+    def PolicyId(self):
+        """策略ID。
+        :rtype: int
+        """
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def OrgSubAccountUins(self):
+        """组织管理员子账号Uin列表。最大5个
+        :rtype: list of int
+        """
+        return self._OrgSubAccountUins
+
+    @OrgSubAccountUins.setter
+    def OrgSubAccountUins(self, OrgSubAccountUins):
+        self._OrgSubAccountUins = OrgSubAccountUins
+
+
+    def _deserialize(self, params):
+        self._PolicyId = params.get("PolicyId")
+        self._OrgSubAccountUins = params.get("OrgSubAccountUins")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindOrganizationPolicySubAccountResponse(AbstractModel):
+    """BindOrganizationPolicySubAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CancelOrganizationMemberAuthAccountRequest(AbstractModel):
     """CancelOrganizationMemberAuthAccount请求参数结构体
 
@@ -1411,6 +1490,85 @@ class CancelOrganizationMemberAuthAccountRequest(AbstractModel):
 
 class CancelOrganizationMemberAuthAccountResponse(AbstractModel):
     """CancelOrganizationMemberAuthAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CancelOrganizationPolicySubAccountRequest(AbstractModel):
+    """CancelOrganizationPolicySubAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicyId: 策略ID。
+        :type PolicyId: int
+        :param _OrgSubAccountUins: 组织管理员子账号Uin列表。最大5个
+        :type OrgSubAccountUins: list of int
+        """
+        self._PolicyId = None
+        self._OrgSubAccountUins = None
+
+    @property
+    def PolicyId(self):
+        """策略ID。
+        :rtype: int
+        """
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def OrgSubAccountUins(self):
+        """组织管理员子账号Uin列表。最大5个
+        :rtype: list of int
+        """
+        return self._OrgSubAccountUins
+
+    @OrgSubAccountUins.setter
+    def OrgSubAccountUins(self, OrgSubAccountUins):
+        self._OrgSubAccountUins = OrgSubAccountUins
+
+
+    def _deserialize(self, params):
+        self._PolicyId = params.get("PolicyId")
+        self._OrgSubAccountUins = params.get("OrgSubAccountUins")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CancelOrganizationPolicySubAccountResponse(AbstractModel):
+    """CancelOrganizationPolicySubAccount返回参数结构体
 
     """
 

@@ -2564,6 +2564,8 @@ HoaiMy
         :type VadSilenceTime: int
         :param _ExtractConfig: 通话内容提取配置
         :type ExtractConfig: list of AICallExtractConfigElement
+        :param _Temperature: 模型温度控制
+        :type Temperature: float
         """
         self._SdkAppId = None
         self._Callee = None
@@ -2592,6 +2594,7 @@ HoaiMy
         self._PromptVariables = None
         self._VadSilenceTime = None
         self._ExtractConfig = None
+        self._Temperature = None
 
     @property
     def SdkAppId(self):
@@ -3056,6 +3059,17 @@ HoaiMy
     def ExtractConfig(self, ExtractConfig):
         self._ExtractConfig = ExtractConfig
 
+    @property
+    def Temperature(self):
+        """模型温度控制
+        :rtype: float
+        """
+        return self._Temperature
+
+    @Temperature.setter
+    def Temperature(self, Temperature):
+        self._Temperature = Temperature
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -3100,6 +3114,7 @@ HoaiMy
                 obj = AICallExtractConfigElement()
                 obj._deserialize(item)
                 self._ExtractConfig.append(obj)
+        self._Temperature = params.get("Temperature")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

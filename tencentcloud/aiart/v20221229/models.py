@@ -2275,6 +2275,127 @@ class Rect(AbstractModel):
         
 
 
+class RefineImageRequest(AbstractModel):
+    """RefineImage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InputUrl: 输入图 Url。
+Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
+图片限制：转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+        :type InputUrl: str
+        :param _InputImage: 输入图 Base64 数据。
+Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
+图片限制：转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+        :type InputImage: str
+        :param _RspImgType: 返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。 示例值：url
+        :type RspImgType: str
+        """
+        self._InputUrl = None
+        self._InputImage = None
+        self._RspImgType = None
+
+    @property
+    def InputUrl(self):
+        """输入图 Url。
+Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
+图片限制：转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+        :rtype: str
+        """
+        return self._InputUrl
+
+    @InputUrl.setter
+    def InputUrl(self, InputUrl):
+        self._InputUrl = InputUrl
+
+    @property
+    def InputImage(self):
+        """输入图 Base64 数据。
+Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
+图片限制：转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+        :rtype: str
+        """
+        return self._InputImage
+
+    @InputImage.setter
+    def InputImage(self, InputImage):
+        self._InputImage = InputImage
+
+    @property
+    def RspImgType(self):
+        """返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。 示例值：url
+        :rtype: str
+        """
+        return self._RspImgType
+
+    @RspImgType.setter
+    def RspImgType(self, RspImgType):
+        self._RspImgType = RspImgType
+
+
+    def _deserialize(self, params):
+        self._InputUrl = params.get("InputUrl")
+        self._InputImage = params.get("InputImage")
+        self._RspImgType = params.get("RspImgType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RefineImageResponse(AbstractModel):
+    """RefineImage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResultImage: 根据入参 RspImgType 填入不同，返回不同的内容。
+如果传入 base64 则返回生成图 Base64 编码。
+如果传入 url 则返回的生成图 URL , 有效期1小时，请及时保存。
+        :type ResultImage: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ResultImage = None
+        self._RequestId = None
+
+    @property
+    def ResultImage(self):
+        """根据入参 RspImgType 填入不同，返回不同的内容。
+如果传入 base64 则返回生成图 Base64 编码。
+如果传入 url 则返回的生成图 URL , 有效期1小时，请及时保存。
+        :rtype: str
+        """
+        return self._ResultImage
+
+    @ResultImage.setter
+    def ResultImage(self, ResultImage):
+        self._ResultImage = ResultImage
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ResultImage = params.get("ResultImage")
+        self._RequestId = params.get("RequestId")
+
+
 class ReplaceBackgroundRequest(AbstractModel):
     """ReplaceBackground请求参数结构体
 
