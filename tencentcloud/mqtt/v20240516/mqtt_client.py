@@ -647,6 +647,29 @@ class MqttClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeInsVPCEndpoints(self, request):
+        """查询MQTT实例公网接入点
+
+        :param request: Request instance for DescribeInsVPCEndpoints.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeInsVPCEndpointsRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.DescribeInsVPCEndpointsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInsVPCEndpoints", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInsVPCEndpointsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeInstance(self, request):
         """查询实例信息
 

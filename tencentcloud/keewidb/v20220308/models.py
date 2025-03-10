@@ -4644,7 +4644,6 @@ class InstanceInfo(AbstractModel):
         :param _ClientLimitMax: 客户端最大连接数可设置的最大值。
         :type ClientLimitMax: int
         :param _NodeSet: 实例的节点详细信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type NodeSet: list of NodeInfo
         :param _Region: 实例所在的地域信息，比如ap-guangzhou。
         :type Region: str
@@ -5210,7 +5209,6 @@ class InstanceInfo(AbstractModel):
     @property
     def NodeSet(self):
         """实例的节点详细信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of NodeInfo
         """
         return self._NodeSet

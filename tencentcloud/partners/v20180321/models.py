@@ -1741,6 +1741,119 @@ class AuditApplyClientResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ClientIncreaseInfoList(AbstractModel):
+    """客户增量激励考核信息列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClientUin: 客户UIN
+        :type ClientUin: str
+        :param _IsJoinIncrease: 是否参与增量政策，
+Y：是，N：否
+        :type IsJoinIncrease: str
+        :param _IncreaseUseAssociateDate: 增量考核关联时间
+        :type IncreaseUseAssociateDate: str
+        :param _TLevel: 参与增量考核的原始客户等级
+        :type TLevel: str
+        :param _IncreaseGoal: 增量考核目标,分
+        :type IncreaseGoal: str
+        :param _TotalBaseAmt: 完成订单金额,分
+        :type TotalBaseAmt: str
+        """
+        self._ClientUin = None
+        self._IsJoinIncrease = None
+        self._IncreaseUseAssociateDate = None
+        self._TLevel = None
+        self._IncreaseGoal = None
+        self._TotalBaseAmt = None
+
+    @property
+    def ClientUin(self):
+        """客户UIN
+        :rtype: str
+        """
+        return self._ClientUin
+
+    @ClientUin.setter
+    def ClientUin(self, ClientUin):
+        self._ClientUin = ClientUin
+
+    @property
+    def IsJoinIncrease(self):
+        """是否参与增量政策，
+Y：是，N：否
+        :rtype: str
+        """
+        return self._IsJoinIncrease
+
+    @IsJoinIncrease.setter
+    def IsJoinIncrease(self, IsJoinIncrease):
+        self._IsJoinIncrease = IsJoinIncrease
+
+    @property
+    def IncreaseUseAssociateDate(self):
+        """增量考核关联时间
+        :rtype: str
+        """
+        return self._IncreaseUseAssociateDate
+
+    @IncreaseUseAssociateDate.setter
+    def IncreaseUseAssociateDate(self, IncreaseUseAssociateDate):
+        self._IncreaseUseAssociateDate = IncreaseUseAssociateDate
+
+    @property
+    def TLevel(self):
+        """参与增量考核的原始客户等级
+        :rtype: str
+        """
+        return self._TLevel
+
+    @TLevel.setter
+    def TLevel(self, TLevel):
+        self._TLevel = TLevel
+
+    @property
+    def IncreaseGoal(self):
+        """增量考核目标,分
+        :rtype: str
+        """
+        return self._IncreaseGoal
+
+    @IncreaseGoal.setter
+    def IncreaseGoal(self, IncreaseGoal):
+        self._IncreaseGoal = IncreaseGoal
+
+    @property
+    def TotalBaseAmt(self):
+        """完成订单金额,分
+        :rtype: str
+        """
+        return self._TotalBaseAmt
+
+    @TotalBaseAmt.setter
+    def TotalBaseAmt(self, TotalBaseAmt):
+        self._TotalBaseAmt = TotalBaseAmt
+
+
+    def _deserialize(self, params):
+        self._ClientUin = params.get("ClientUin")
+        self._IsJoinIncrease = params.get("IsJoinIncrease")
+        self._IncreaseUseAssociateDate = params.get("IncreaseUseAssociateDate")
+        self._TLevel = params.get("TLevel")
+        self._IncreaseGoal = params.get("IncreaseGoal")
+        self._TotalBaseAmt = params.get("TotalBaseAmt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreatePayRelationForClientRequest(AbstractModel):
     """CreatePayRelationForClient请求参数结构体
 
@@ -3494,6 +3607,90 @@ class DescribeClientBalanceNewResponse(AbstractModel):
     def _deserialize(self, params):
         self._Balance = params.get("Balance")
         self._Cash = params.get("Cash")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeClientJoinIncreaseListRequest(AbstractModel):
+    """DescribeClientJoinIncreaseList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClientUins: 客户UIN列表
+        :type ClientUins: list of str
+        """
+        self._ClientUins = None
+
+    @property
+    def ClientUins(self):
+        """客户UIN列表
+        :rtype: list of str
+        """
+        return self._ClientUins
+
+    @ClientUins.setter
+    def ClientUins(self, ClientUins):
+        self._ClientUins = ClientUins
+
+
+    def _deserialize(self, params):
+        self._ClientUins = params.get("ClientUins")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClientJoinIncreaseListResponse(AbstractModel):
+    """DescribeClientJoinIncreaseList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: 已审核代客列表
+        :type List: list of ClientIncreaseInfoList
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        """已审核代客列表
+        :rtype: list of ClientIncreaseInfoList
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = ClientIncreaseInfoList()
+                obj._deserialize(item)
+                self._List.append(obj)
         self._RequestId = params.get("RequestId")
 
 

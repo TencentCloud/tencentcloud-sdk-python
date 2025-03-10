@@ -686,13 +686,10 @@ class Addon(AbstractModel):
         :param _AddonVersion: addon的版本
         :type AddonVersion: str
         :param _RawValues: addon的参数，是一个json格式的base64转码后的字符串
-注意：此字段可能返回 null，表示取不到有效值。
         :type RawValues: str
         :param _Phase: addon的状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Phase: str
         :param _Reason: addon失败的原因
-注意：此字段可能返回 null，表示取不到有效值。
         :type Reason: str
         :param _CreateTime: addon的创建时间
         :type CreateTime: str
@@ -729,7 +726,6 @@ class Addon(AbstractModel):
     @property
     def RawValues(self):
         """addon的参数，是一个json格式的base64转码后的字符串
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RawValues
@@ -741,7 +737,6 @@ class Addon(AbstractModel):
     @property
     def Phase(self):
         """addon的状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Phase
@@ -753,7 +748,6 @@ class Addon(AbstractModel):
     @property
     def Reason(self):
         """addon失败的原因
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Reason
@@ -852,7 +846,6 @@ class AppChart(AbstractModel):
         :param _Name: chart名称
         :type Name: str
         :param _Label: chart的标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
         :param _LatestVersion: chart的版本
         :type LatestVersion: str
@@ -875,7 +868,6 @@ class AppChart(AbstractModel):
     @property
     def Label(self):
         """chart的标签
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Label
@@ -1090,22 +1082,16 @@ class BackupStorageLocation(AbstractModel):
         :param _StorageRegion: 存储仓库所属地域，比如COS广州(ap-guangzhou)	
         :type StorageRegion: str
         :param _Provider: 存储服务提供方，默认腾讯云	
-注意：此字段可能返回 null，表示取不到有效值。
         :type Provider: str
         :param _Bucket: 对象存储桶名称，如果是COS必须是tke-backup-前缀开头	
-注意：此字段可能返回 null，表示取不到有效值。
         :type Bucket: str
         :param _Path: 对象存储桶路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type Path: str
         :param _State: 存储仓库状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type State: str
         :param _Message: 详细状态信息	
-注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param _LastValidationTime: 最后一次检查时间	
-注意：此字段可能返回 null，表示取不到有效值。
         :type LastValidationTime: str
         """
         self._Name = None
@@ -1142,7 +1128,6 @@ class BackupStorageLocation(AbstractModel):
     @property
     def Provider(self):
         """存储服务提供方，默认腾讯云	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Provider
@@ -1154,7 +1139,6 @@ class BackupStorageLocation(AbstractModel):
     @property
     def Bucket(self):
         """对象存储桶名称，如果是COS必须是tke-backup-前缀开头	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Bucket
@@ -1166,7 +1150,6 @@ class BackupStorageLocation(AbstractModel):
     @property
     def Path(self):
         """对象存储桶路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Path
@@ -1178,7 +1161,6 @@ class BackupStorageLocation(AbstractModel):
     @property
     def State(self):
         """存储仓库状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._State
@@ -1190,7 +1172,6 @@ class BackupStorageLocation(AbstractModel):
     @property
     def Message(self):
         """详细状态信息	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Message
@@ -1202,7 +1183,6 @@ class BackupStorageLocation(AbstractModel):
     @property
     def LastValidationTime(self):
         """最后一次检查时间	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LastValidationTime
@@ -1239,16 +1219,12 @@ class CUDNN(AbstractModel):
     def __init__(self):
         r"""
         :param _Version: cuDNN的版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
         :param _Name: cuDNN的名字
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _DocName: cuDNN的Doc名字
-注意：此字段可能返回 null，表示取不到有效值。
         :type DocName: str
         :param _DevName: cuDNN的Dev名字
-注意：此字段可能返回 null，表示取不到有效值。
         :type DevName: str
         """
         self._Version = None
@@ -1259,7 +1235,6 @@ class CUDNN(AbstractModel):
     @property
     def Version(self):
         """cuDNN的版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Version
@@ -1271,7 +1246,6 @@ class CUDNN(AbstractModel):
     @property
     def Name(self):
         """cuDNN的名字
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -1283,7 +1257,6 @@ class CUDNN(AbstractModel):
     @property
     def DocName(self):
         """cuDNN的Doc名字
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DocName
@@ -1295,7 +1268,6 @@ class CUDNN(AbstractModel):
     @property
     def DevName(self):
         """cuDNN的Dev名字
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DevName
@@ -2639,10 +2611,8 @@ class ClusterAsGroup(AbstractModel):
         :param _Status: 伸缩组状态(开启 enabled 开启中 enabling 关闭 disabled 关闭中 disabling 更新中 updating 删除中 deleting 开启缩容中 scaleDownEnabling 关闭缩容中 scaleDownDisabling)
         :type Status: str
         :param _IsUnschedulable: 节点是否设置成不可调度
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsUnschedulable: bool
         :param _Labels: 伸缩组的label列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Labels: list of Label
         :param _CreatedTime: 创建时间
         :type CreatedTime: str
@@ -2678,7 +2648,6 @@ class ClusterAsGroup(AbstractModel):
     @property
     def IsUnschedulable(self):
         """节点是否设置成不可调度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsUnschedulable
@@ -2690,7 +2659,6 @@ class ClusterAsGroup(AbstractModel):
     @property
     def Labels(self):
         """伸缩组的label列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Label
         """
         return self._Labels
@@ -3727,7 +3695,6 @@ class ClusterLevelAttribute(AbstractModel):
         :param _Enable: 是否启用
         :type Enable: bool
         :param _OtherCount: 其他资源数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type OtherCount: int
         """
         self._Name = None
@@ -3831,7 +3798,6 @@ class ClusterLevelAttribute(AbstractModel):
     @property
     def OtherCount(self):
         """其他资源数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._OtherCount
@@ -4275,7 +4241,6 @@ class ClusterProperty(AbstractModel):
     def __init__(self):
         r"""
         :param _NodeNameType: 节点hostname命名模式
-注意：此字段可能返回 null，表示取不到有效值。
         :type NodeNameType: str
         """
         self._NodeNameType = None
@@ -4283,7 +4248,6 @@ class ClusterProperty(AbstractModel):
     @property
     def NodeNameType(self):
         """节点hostname命名模式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NodeNameType
@@ -4433,16 +4397,12 @@ class ClusterStatus(AbstractModel):
         :param _ClusterFailedNodeNum: 集群异常的节点数，-1表示获取节点状态超时，-2表示获取节点状态失败
         :type ClusterFailedNodeNum: int
         :param _ClusterClosedNodeNum: 集群已关机的节点数，-1表示获取节点状态超时，-2表示获取节点状态失败
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterClosedNodeNum: int
         :param _ClusterClosingNodeNum: 集群关机中的节点数，-1表示获取节点状态超时，-2表示获取节点状态失败
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterClosingNodeNum: int
         :param _ClusterDeletionProtection: 集群是否开启删除保护
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterDeletionProtection: bool
         :param _ClusterAuditEnabled: 集群是否可审计
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterAuditEnabled: bool
         """
         self._ClusterId = None
@@ -4537,7 +4497,6 @@ class ClusterStatus(AbstractModel):
     @property
     def ClusterClosedNodeNum(self):
         """集群已关机的节点数，-1表示获取节点状态超时，-2表示获取节点状态失败
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ClusterClosedNodeNum
@@ -4549,7 +4508,6 @@ class ClusterStatus(AbstractModel):
     @property
     def ClusterClosingNodeNum(self):
         """集群关机中的节点数，-1表示获取节点状态超时，-2表示获取节点状态失败
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ClusterClosingNodeNum
@@ -4561,7 +4519,6 @@ class ClusterStatus(AbstractModel):
     @property
     def ClusterDeletionProtection(self):
         """集群是否开启删除保护
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._ClusterDeletionProtection
@@ -4573,7 +4530,6 @@ class ClusterStatus(AbstractModel):
     @property
     def ClusterAuditEnabled(self):
         """集群是否可审计
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._ClusterAuditEnabled
@@ -10036,7 +9992,6 @@ class CustomDriver(AbstractModel):
     def __init__(self):
         r"""
         :param _Address: 自定义GPU驱动地址链接
-注意：此字段可能返回 null，表示取不到有效值。
         :type Address: str
         """
         self._Address = None
@@ -10044,7 +9999,6 @@ class CustomDriver(AbstractModel):
     @property
     def Address(self):
         """自定义GPU驱动地址链接
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Address
@@ -10206,22 +10160,16 @@ class DataDisk(AbstractModel):
     def __init__(self):
         r"""
         :param _DiskType: 云盘类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiskType: str
         :param _FileSystem: 文件系统(ext3/ext4/xfs)
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileSystem: str
         :param _DiskSize: 云盘大小(G）
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiskSize: int
         :param _AutoFormatAndMount: 是否自动化格式盘并挂载
-注意：此字段可能返回 null，表示取不到有效值。
         :type AutoFormatAndMount: bool
         :param _MountTarget: 挂载目录
-注意：此字段可能返回 null，表示取不到有效值。
         :type MountTarget: str
         :param _DiskPartition: 挂载设备名或分区名，当且仅当添加已有节点时需要
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiskPartition: str
         """
         self._DiskType = None
@@ -10234,7 +10182,6 @@ class DataDisk(AbstractModel):
     @property
     def DiskType(self):
         """云盘类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DiskType
@@ -10246,7 +10193,6 @@ class DataDisk(AbstractModel):
     @property
     def FileSystem(self):
         """文件系统(ext3/ext4/xfs)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FileSystem
@@ -10258,7 +10204,6 @@ class DataDisk(AbstractModel):
     @property
     def DiskSize(self):
         """云盘大小(G）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DiskSize
@@ -10270,7 +10215,6 @@ class DataDisk(AbstractModel):
     @property
     def AutoFormatAndMount(self):
         """是否自动化格式盘并挂载
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._AutoFormatAndMount
@@ -10282,7 +10226,6 @@ class DataDisk(AbstractModel):
     @property
     def MountTarget(self):
         """挂载目录
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MountTarget
@@ -10294,7 +10237,6 @@ class DataDisk(AbstractModel):
     @property
     def DiskPartition(self):
         """挂载设备名或分区名，当且仅当添加已有节点时需要
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DiskPartition
@@ -13252,10 +13194,8 @@ class DescribeAvailableTKEEdgeVersionResponse(AbstractModel):
         :param _Versions: 版本列表
         :type Versions: list of str
         :param _EdgeVersionLatest: 边缘集群最新版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type EdgeVersionLatest: str
         :param _EdgeVersionCurrent: 边缘集群当前版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type EdgeVersionCurrent: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13279,7 +13219,6 @@ class DescribeAvailableTKEEdgeVersionResponse(AbstractModel):
     @property
     def EdgeVersionLatest(self):
         """边缘集群最新版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EdgeVersionLatest
@@ -13291,7 +13230,6 @@ class DescribeAvailableTKEEdgeVersionResponse(AbstractModel):
     @property
     def EdgeVersionCurrent(self):
         """边缘集群当前版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EdgeVersionCurrent
@@ -17886,7 +17824,6 @@ class DescribeEdgeAvailableExtraArgsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ClusterVersion: 集群版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterVersion: str
         :param _AvailableExtraArgs: 可用的自定义参数
 注意：此字段可能返回 null，表示取不到有效值。
@@ -17901,7 +17838,6 @@ class DescribeEdgeAvailableExtraArgsResponse(AbstractModel):
     @property
     def ClusterVersion(self):
         """集群版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterVersion
@@ -18102,7 +18038,6 @@ class DescribeEdgeClusterExtraArgsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ClusterExtraArgs: 集群自定义参数
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterExtraArgs: :class:`tencentcloud.tke.v20180525.models.EdgeClusterExtraArgs`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18113,7 +18048,6 @@ class DescribeEdgeClusterExtraArgsResponse(AbstractModel):
     @property
     def ClusterExtraArgs(self):
         """集群自定义参数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20180525.models.EdgeClusterExtraArgs`
         """
         return self._ClusterExtraArgs
@@ -18344,19 +18278,14 @@ class DescribeEdgeClusterUpgradeInfoResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ComponentVersion: 可升级的集群组件及其版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type ComponentVersion: str
         :param _EdgeVersionCurrent: 边缘集群当前版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type EdgeVersionCurrent: str
         :param _RegistryPrefix: 边缘组件镜像仓库地址前缀，包含域名和命名空间
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegistryPrefix: str
         :param _ClusterUpgradeStatus: 集群升级状态，可能值：running、updating、failed
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterUpgradeStatus: str
         :param _ClusterUpgradeStatusReason: 集群升级中状态或者失败原因
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterUpgradeStatusReason: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18371,7 +18300,6 @@ class DescribeEdgeClusterUpgradeInfoResponse(AbstractModel):
     @property
     def ComponentVersion(self):
         """可升级的集群组件及其版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ComponentVersion
@@ -18383,7 +18311,6 @@ class DescribeEdgeClusterUpgradeInfoResponse(AbstractModel):
     @property
     def EdgeVersionCurrent(self):
         """边缘集群当前版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EdgeVersionCurrent
@@ -18395,7 +18322,6 @@ class DescribeEdgeClusterUpgradeInfoResponse(AbstractModel):
     @property
     def RegistryPrefix(self):
         """边缘组件镜像仓库地址前缀，包含域名和命名空间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RegistryPrefix
@@ -18407,7 +18333,6 @@ class DescribeEdgeClusterUpgradeInfoResponse(AbstractModel):
     @property
     def ClusterUpgradeStatus(self):
         """集群升级状态，可能值：running、updating、failed
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterUpgradeStatus
@@ -18419,7 +18344,6 @@ class DescribeEdgeClusterUpgradeInfoResponse(AbstractModel):
     @property
     def ClusterUpgradeStatusReason(self):
         """集群升级中状态或者失败原因
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterUpgradeStatusReason
@@ -18493,7 +18417,6 @@ class DescribeEdgeLogSwitchesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _SwitchSet: 集群日志开关集合
-注意：此字段可能返回 null，表示取不到有效值。
         :type SwitchSet: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18504,7 +18427,6 @@ class DescribeEdgeLogSwitchesResponse(AbstractModel):
     @property
     def SwitchSet(self):
         """集群日志开关集合
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._SwitchSet
@@ -19155,33 +19077,24 @@ class DescribeExternalNodeSupportConfigResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ClusterCIDR: 用于分配集群容器和服务 IP 的 CIDR，不得与 VPC CIDR 冲突，也不得与同 VPC 内其他集群 CIDR 冲突。且网段范围必须在内网网段内，例如:10.1.0.0/14, 192.168.0.1/18,172.16.0.0/16。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterCIDR: str
         :param _NetworkType: 集群网络插件类型，支持：CiliumBGP、CiliumVXLan
-注意：此字段可能返回 null，表示取不到有效值。
         :type NetworkType: str
         :param _SubnetId: 子网ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetId: str
         :param _Enabled: 是否开启第三方节点专线连接支持
-注意：此字段可能返回 null，表示取不到有效值。
         :type Enabled: bool
         :param _AS: 节点所属交换机的BGP AS 号
-注意：此字段可能返回 null，表示取不到有效值。
         :type AS: str
         :param _SwitchIP: 节点所属交换机的交换机 IP
-注意：此字段可能返回 null，表示取不到有效值。
         :type SwitchIP: str
         :param _Status: 开启第三方节点池状态
         :type Status: str
         :param _FailedReason: 如果开启失败原因
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailedReason: str
         :param _Master: 内网访问地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type Master: str
         :param _Proxy: 镜像仓库代理地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type Proxy: str
         :param _Progress: 用于记录开启第三方节点的过程进行到哪一步了
 注意：此字段可能返回 null，表示取不到有效值。
@@ -19191,7 +19104,6 @@ class DescribeExternalNodeSupportConfigResponse(AbstractModel):
         :param _PublicConnectUrl: 注册节点公网版公网连接地址
         :type PublicConnectUrl: str
         :param _PublicCustomDomain: 注册节点公网版自定义域名
-注意：此字段可能返回 null，表示取不到有效值。
         :type PublicCustomDomain: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -19215,7 +19127,6 @@ class DescribeExternalNodeSupportConfigResponse(AbstractModel):
     @property
     def ClusterCIDR(self):
         """用于分配集群容器和服务 IP 的 CIDR，不得与 VPC CIDR 冲突，也不得与同 VPC 内其他集群 CIDR 冲突。且网段范围必须在内网网段内，例如:10.1.0.0/14, 192.168.0.1/18,172.16.0.0/16。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterCIDR
@@ -19227,7 +19138,6 @@ class DescribeExternalNodeSupportConfigResponse(AbstractModel):
     @property
     def NetworkType(self):
         """集群网络插件类型，支持：CiliumBGP、CiliumVXLan
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NetworkType
@@ -19239,7 +19149,6 @@ class DescribeExternalNodeSupportConfigResponse(AbstractModel):
     @property
     def SubnetId(self):
         """子网ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubnetId
@@ -19251,7 +19160,6 @@ class DescribeExternalNodeSupportConfigResponse(AbstractModel):
     @property
     def Enabled(self):
         """是否开启第三方节点专线连接支持
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Enabled
@@ -19263,7 +19171,6 @@ class DescribeExternalNodeSupportConfigResponse(AbstractModel):
     @property
     def AS(self):
         """节点所属交换机的BGP AS 号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AS
@@ -19275,7 +19182,6 @@ class DescribeExternalNodeSupportConfigResponse(AbstractModel):
     @property
     def SwitchIP(self):
         """节点所属交换机的交换机 IP
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SwitchIP
@@ -19298,7 +19204,6 @@ class DescribeExternalNodeSupportConfigResponse(AbstractModel):
     @property
     def FailedReason(self):
         """如果开启失败原因
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FailedReason
@@ -19310,7 +19215,6 @@ class DescribeExternalNodeSupportConfigResponse(AbstractModel):
     @property
     def Master(self):
         """内网访问地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Master
@@ -19322,7 +19226,6 @@ class DescribeExternalNodeSupportConfigResponse(AbstractModel):
     @property
     def Proxy(self):
         """镜像仓库代理地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Proxy
@@ -19368,7 +19271,6 @@ class DescribeExternalNodeSupportConfigResponse(AbstractModel):
     @property
     def PublicCustomDomain(self):
         """注册节点公网版自定义域名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PublicCustomDomain
@@ -25835,10 +25737,8 @@ class DriverVersion(AbstractModel):
     def __init__(self):
         r"""
         :param _Version: GPU驱动或者CUDA的版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
         :param _Name: GPU驱动或者CUDA的名字
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         """
         self._Version = None
@@ -25847,7 +25747,6 @@ class DriverVersion(AbstractModel):
     @property
     def Version(self):
         """GPU驱动或者CUDA的版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Version
@@ -25859,7 +25758,6 @@ class DriverVersion(AbstractModel):
     @property
     def Name(self):
         """GPU驱动或者CUDA的名字
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -26098,19 +25996,14 @@ class EdgeArgsFlag(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 参数名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Type: 参数类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Usage: 参数描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Usage: str
         :param _Default: 参数默认值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Default: str
         :param _Constraint: 参数可选范围（目前包含range和in两种，"[]"代表range，如"[1, 5]"表示参数必须>=1且 <=5, "()"代表in， 如"('aa', 'bb')"表示参数只能为字符串'aa'或者'bb'，该参数为空表示不校验）
-注意：此字段可能返回 null，表示取不到有效值。
         :type Constraint: str
         """
         self._Name = None
@@ -26122,7 +26015,6 @@ class EdgeArgsFlag(AbstractModel):
     @property
     def Name(self):
         """参数名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -26134,7 +26026,6 @@ class EdgeArgsFlag(AbstractModel):
     @property
     def Type(self):
         """参数类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -26146,7 +26037,6 @@ class EdgeArgsFlag(AbstractModel):
     @property
     def Usage(self):
         """参数描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Usage
@@ -26158,7 +26048,6 @@ class EdgeArgsFlag(AbstractModel):
     @property
     def Default(self):
         """参数默认值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Default
@@ -26170,7 +26059,6 @@ class EdgeArgsFlag(AbstractModel):
     @property
     def Constraint(self):
         """参数可选范围（目前包含range和in两种，"[]"代表range，如"[1, 5]"表示参数必须>=1且 <=5, "()"代表in， 如"('aa', 'bb')"表示参数只能为字符串'aa'或者'bb'，该参数为空表示不校验）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Constraint
@@ -26204,16 +26092,12 @@ class EdgeAvailableExtraArgs(AbstractModel):
     def __init__(self):
         r"""
         :param _KubeAPIServer: kube-apiserver可用的自定义参数
-注意：此字段可能返回 null，表示取不到有效值。
         :type KubeAPIServer: list of EdgeArgsFlag
         :param _KubeControllerManager: kube-controller-manager可用的自定义参数
-注意：此字段可能返回 null，表示取不到有效值。
         :type KubeControllerManager: list of EdgeArgsFlag
         :param _KubeScheduler: kube-scheduler可用的自定义参数
-注意：此字段可能返回 null，表示取不到有效值。
         :type KubeScheduler: list of EdgeArgsFlag
         :param _Kubelet: kubelet可用的自定义参数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Kubelet: list of EdgeArgsFlag
         """
         self._KubeAPIServer = None
@@ -26224,7 +26108,6 @@ class EdgeAvailableExtraArgs(AbstractModel):
     @property
     def KubeAPIServer(self):
         """kube-apiserver可用的自定义参数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of EdgeArgsFlag
         """
         return self._KubeAPIServer
@@ -26236,7 +26119,6 @@ class EdgeAvailableExtraArgs(AbstractModel):
     @property
     def KubeControllerManager(self):
         """kube-controller-manager可用的自定义参数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of EdgeArgsFlag
         """
         return self._KubeControllerManager
@@ -26248,7 +26130,6 @@ class EdgeAvailableExtraArgs(AbstractModel):
     @property
     def KubeScheduler(self):
         """kube-scheduler可用的自定义参数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of EdgeArgsFlag
         """
         return self._KubeScheduler
@@ -26260,7 +26141,6 @@ class EdgeAvailableExtraArgs(AbstractModel):
     @property
     def Kubelet(self):
         """kubelet可用的自定义参数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of EdgeArgsFlag
         """
         return self._Kubelet
@@ -26333,22 +26213,16 @@ class EdgeCluster(AbstractModel):
         :param _EdgeClusterVersion: 边缘集群版本
         :type EdgeClusterVersion: str
         :param _MaxNodePodNum: 节点最大Pod数
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxNodePodNum: int
         :param _ClusterAdvancedSettings: 集群高级设置
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.EdgeClusterAdvancedSettings`
         :param _Level: 边缘容器集群级别
-注意：此字段可能返回 null，表示取不到有效值。
         :type Level: str
         :param _AutoUpgradeClusterLevel: 是否支持自动提升集群配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type AutoUpgradeClusterLevel: bool
         :param _ChargeType: 集群付费模式，支持POSTPAID_BY_HOUR或者PREPAID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChargeType: str
         :param _EdgeVersion: 边缘集群组件的版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type EdgeVersion: str
         :param _TagSpecification: 集群绑定的云标签
 注意：此字段可能返回 null，表示取不到有效值。
@@ -26485,7 +26359,6 @@ class EdgeCluster(AbstractModel):
     @property
     def MaxNodePodNum(self):
         """节点最大Pod数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxNodePodNum
@@ -26497,7 +26370,6 @@ class EdgeCluster(AbstractModel):
     @property
     def ClusterAdvancedSettings(self):
         """集群高级设置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20180525.models.EdgeClusterAdvancedSettings`
         """
         return self._ClusterAdvancedSettings
@@ -26509,7 +26381,6 @@ class EdgeCluster(AbstractModel):
     @property
     def Level(self):
         """边缘容器集群级别
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Level
@@ -26521,7 +26392,6 @@ class EdgeCluster(AbstractModel):
     @property
     def AutoUpgradeClusterLevel(self):
         """是否支持自动提升集群配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._AutoUpgradeClusterLevel
@@ -26533,7 +26403,6 @@ class EdgeCluster(AbstractModel):
     @property
     def ChargeType(self):
         """集群付费模式，支持POSTPAID_BY_HOUR或者PREPAID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ChargeType
@@ -26545,7 +26414,6 @@ class EdgeCluster(AbstractModel):
     @property
     def EdgeVersion(self):
         """边缘集群组件的版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EdgeVersion
@@ -26610,10 +26478,8 @@ class EdgeClusterAdvancedSettings(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtraArgs: :class:`tencentcloud.tke.v20180525.models.EdgeClusterExtraArgs`
         :param _Runtime: 运行时类型，支持"docker"和"containerd"，默认为docker
-注意：此字段可能返回 null，表示取不到有效值。
         :type Runtime: str
         :param _ProxyMode: 集群kube-proxy转发模式，支持"iptables"和"ipvs"，默认为iptables
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyMode: str
         """
         self._ExtraArgs = None
@@ -26635,7 +26501,6 @@ class EdgeClusterAdvancedSettings(AbstractModel):
     @property
     def Runtime(self):
         """运行时类型，支持"docker"和"containerd"，默认为docker
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Runtime
@@ -26647,7 +26512,6 @@ class EdgeClusterAdvancedSettings(AbstractModel):
     @property
     def ProxyMode(self):
         """集群kube-proxy转发模式，支持"iptables"和"ipvs"，默认为iptables
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProxyMode
@@ -26681,13 +26545,10 @@ class EdgeClusterExtraArgs(AbstractModel):
     def __init__(self):
         r"""
         :param _KubeAPIServer: kube-apiserver自定义参数，参数格式为["k1=v1", "k1=v2"]， 例如["max-requests-inflight=500","feature-gates=PodShareProcessNamespace=true,DynamicKubeletConfig=true"]
-注意：此字段可能返回 null，表示取不到有效值。
         :type KubeAPIServer: list of str
         :param _KubeControllerManager: kube-controller-manager自定义参数
-注意：此字段可能返回 null，表示取不到有效值。
         :type KubeControllerManager: list of str
         :param _KubeScheduler: kube-scheduler自定义参数
-注意：此字段可能返回 null，表示取不到有效值。
         :type KubeScheduler: list of str
         """
         self._KubeAPIServer = None
@@ -26697,7 +26558,6 @@ class EdgeClusterExtraArgs(AbstractModel):
     @property
     def KubeAPIServer(self):
         """kube-apiserver自定义参数，参数格式为["k1=v1", "k1=v2"]， 例如["max-requests-inflight=500","feature-gates=PodShareProcessNamespace=true,DynamicKubeletConfig=true"]
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._KubeAPIServer
@@ -26709,7 +26569,6 @@ class EdgeClusterExtraArgs(AbstractModel):
     @property
     def KubeControllerManager(self):
         """kube-controller-manager自定义参数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._KubeControllerManager
@@ -26721,7 +26580,6 @@ class EdgeClusterExtraArgs(AbstractModel):
     @property
     def KubeScheduler(self):
         """kube-scheduler自定义参数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._KubeScheduler
@@ -26753,10 +26611,8 @@ class EdgeClusterInternalLB(AbstractModel):
     def __init__(self):
         r"""
         :param _Enabled: 是否开启内网访问LB
-注意：此字段可能返回 null，表示取不到有效值。
         :type Enabled: bool
         :param _SubnetId: 内网访问LB关联的子网Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetId: list of str
         """
         self._Enabled = None
@@ -26765,7 +26621,6 @@ class EdgeClusterInternalLB(AbstractModel):
     @property
     def Enabled(self):
         """是否开启内网访问LB
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Enabled
@@ -26777,7 +26632,6 @@ class EdgeClusterInternalLB(AbstractModel):
     @property
     def SubnetId(self):
         """内网访问LB关联的子网Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._SubnetId
@@ -26808,10 +26662,8 @@ class EdgeClusterPublicLB(AbstractModel):
     def __init__(self):
         r"""
         :param _Enabled: 是否开启公网访问LB
-注意：此字段可能返回 null，表示取不到有效值。
         :type Enabled: bool
         :param _AllowFromCidrs: 允许访问的公网cidr
-注意：此字段可能返回 null，表示取不到有效值。
         :type AllowFromCidrs: list of str
         """
         self._Enabled = None
@@ -26820,7 +26672,6 @@ class EdgeClusterPublicLB(AbstractModel):
     @property
     def Enabled(self):
         """是否开启公网访问LB
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Enabled
@@ -26832,7 +26683,6 @@ class EdgeClusterPublicLB(AbstractModel):
     @property
     def AllowFromCidrs(self):
         """允许访问的公网cidr
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._AllowFromCidrs
@@ -29026,10 +28876,8 @@ class FailedResource(AbstractModel):
     def __init__(self):
         r"""
         :param _Resource: 资源六段式
-注意：此字段可能返回 null，表示取不到有效值。
         :type Resource: str
         :param _Error: 执行失败的原因
-注意：此字段可能返回 null，表示取不到有效值。
         :type Error: str
         """
         self._Resource = None
@@ -29038,7 +28886,6 @@ class FailedResource(AbstractModel):
     @property
     def Resource(self):
         """资源六段式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Resource
@@ -29050,7 +28897,6 @@ class FailedResource(AbstractModel):
     @property
     def Error(self):
         """执行失败的原因
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Error
@@ -29470,18 +29316,14 @@ class GPUArgs(AbstractModel):
     def __init__(self):
         r"""
         :param _MIGEnable: 是否启用MIG特性
-注意：此字段可能返回 null，表示取不到有效值。
         :type MIGEnable: bool
         :param _Driver: GPU驱动版本信息
         :type Driver: :class:`tencentcloud.tke.v20180525.models.DriverVersion`
         :param _CUDA: CUDA版本信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type CUDA: :class:`tencentcloud.tke.v20180525.models.DriverVersion`
         :param _CUDNN: cuDNN版本信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type CUDNN: :class:`tencentcloud.tke.v20180525.models.CUDNN`
         :param _CustomDriver: 自定义GPU驱动信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type CustomDriver: :class:`tencentcloud.tke.v20180525.models.CustomDriver`
         """
         self._MIGEnable = None
@@ -29493,7 +29335,6 @@ class GPUArgs(AbstractModel):
     @property
     def MIGEnable(self):
         """是否启用MIG特性
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._MIGEnable
@@ -29516,7 +29357,6 @@ class GPUArgs(AbstractModel):
     @property
     def CUDA(self):
         """CUDA版本信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20180525.models.DriverVersion`
         """
         return self._CUDA
@@ -29528,7 +29368,6 @@ class GPUArgs(AbstractModel):
     @property
     def CUDNN(self):
         """cuDNN版本信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20180525.models.CUDNN`
         """
         return self._CUDNN
@@ -29540,7 +29379,6 @@ class GPUArgs(AbstractModel):
     @property
     def CustomDriver(self):
         """自定义GPU驱动信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20180525.models.CustomDriver`
         """
         return self._CustomDriver
@@ -29855,7 +29693,6 @@ class GetTkeAppChartListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _AppCharts: 所支持的chart列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppCharts: list of AppChart
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -29866,7 +29703,6 @@ class GetTkeAppChartListResponse(AbstractModel):
     @property
     def AppCharts(self):
         """所支持的chart列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AppChart
         """
         return self._AppCharts
@@ -30530,16 +30366,12 @@ class ImageInstance(AbstractModel):
     def __init__(self):
         r"""
         :param _Alias: 镜像别名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Alias: str
         :param _OsName: 操作系统名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type OsName: str
         :param _ImageId: 镜像ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImageId: str
         :param _OsCustomizeType: 容器的镜像版本，"DOCKER_CUSTOMIZE"(容器定制版),"GENERAL"(普通版本，默认值)
-注意：此字段可能返回 null，表示取不到有效值。
         :type OsCustomizeType: str
         """
         self._Alias = None
@@ -30550,7 +30382,6 @@ class ImageInstance(AbstractModel):
     @property
     def Alias(self):
         """镜像别名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Alias
@@ -30562,7 +30393,6 @@ class ImageInstance(AbstractModel):
     @property
     def OsName(self):
         """操作系统名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OsName
@@ -30574,7 +30404,6 @@ class ImageInstance(AbstractModel):
     @property
     def ImageId(self):
         """镜像ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ImageId
@@ -30586,7 +30415,6 @@ class ImageInstance(AbstractModel):
     @property
     def OsCustomizeType(self):
         """容器的镜像版本，"DOCKER_CUSTOMIZE"(容器定制版),"GENERAL"(普通版本，默认值)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OsCustomizeType
@@ -30990,21 +30818,16 @@ class Instance(AbstractModel):
         :param _InstanceState: 实例的状态（running 运行中，initializing 初始化中，failed 异常）
         :type InstanceState: str
         :param _DrainStatus: 实例是否封锁状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type DrainStatus: str
         :param _InstanceAdvancedSettings: 节点配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
         :param _CreatedTime: 添加时间
         :type CreatedTime: str
         :param _LanIP: 节点内网IP
-注意：此字段可能返回 null，表示取不到有效值。
         :type LanIP: str
         :param _NodePoolId: 资源池ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type NodePoolId: str
         :param _AutoscalingGroupId: 自动伸缩组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type AutoscalingGroupId: str
         """
         self._InstanceId = None
@@ -31065,7 +30888,6 @@ class Instance(AbstractModel):
     @property
     def DrainStatus(self):
         """实例是否封锁状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DrainStatus
@@ -31077,7 +30899,6 @@ class Instance(AbstractModel):
     @property
     def InstanceAdvancedSettings(self):
         """节点配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
         """
         return self._InstanceAdvancedSettings
@@ -31100,7 +30921,6 @@ class Instance(AbstractModel):
     @property
     def LanIP(self):
         """节点内网IP
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LanIP
@@ -31112,7 +30932,6 @@ class Instance(AbstractModel):
     @property
     def NodePoolId(self):
         """资源池ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NodePoolId
@@ -31124,7 +30943,6 @@ class Instance(AbstractModel):
     @property
     def AutoscalingGroupId(self):
         """自动伸缩组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AutoscalingGroupId
@@ -31794,10 +31612,8 @@ aborted 已取消
 pending 还未开始
         :type LifeState: str
         :param _StartAt: 升级开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartAt: str
         :param _EndAt: 升级结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndAt: str
         :param _CheckResult: 升级前检查结果
         :type CheckResult: :class:`tencentcloud.tke.v20180525.models.InstanceUpgradePreCheckResult`
@@ -31843,7 +31659,6 @@ pending 还未开始
     @property
     def StartAt(self):
         """升级开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StartAt
@@ -31855,7 +31670,6 @@ pending 还未开始
     @property
     def EndAt(self):
         """升级结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndAt
@@ -36056,10 +35870,8 @@ class NodeCountSummary(AbstractModel):
     def __init__(self):
         r"""
         :param _ManuallyAdded: 手动管理的节点
-注意：此字段可能返回 null，表示取不到有效值。
         :type ManuallyAdded: :class:`tencentcloud.tke.v20180525.models.ManuallyAdded`
         :param _AutoscalingAdded: 自动管理的节点
-注意：此字段可能返回 null，表示取不到有效值。
         :type AutoscalingAdded: :class:`tencentcloud.tke.v20180525.models.AutoscalingAdded`
         """
         self._ManuallyAdded = None
@@ -36068,7 +35880,6 @@ class NodeCountSummary(AbstractModel):
     @property
     def ManuallyAdded(self):
         """手动管理的节点
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20180525.models.ManuallyAdded`
         """
         return self._ManuallyAdded
@@ -36080,7 +35891,6 @@ class NodeCountSummary(AbstractModel):
     @property
     def AutoscalingAdded(self):
         """自动管理的节点
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20180525.models.AutoscalingAdded`
         """
         return self._AutoscalingAdded
@@ -36665,16 +36475,12 @@ class NodePoolRuntime(AbstractModel):
     def __init__(self):
         r"""
         :param _NodePoolId: 节点池ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type NodePoolId: str
         :param _RuntimeType: 运行时类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuntimeType: str
         :param _RuntimeVersion: 运行时版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuntimeVersion: str
         :param _NodePoolName: 节点池名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type NodePoolName: str
         """
         self._NodePoolId = None
@@ -36685,7 +36491,6 @@ class NodePoolRuntime(AbstractModel):
     @property
     def NodePoolId(self):
         """节点池ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NodePoolId
@@ -36697,7 +36502,6 @@ class NodePoolRuntime(AbstractModel):
     @property
     def RuntimeType(self):
         """运行时类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RuntimeType
@@ -36709,7 +36513,6 @@ class NodePoolRuntime(AbstractModel):
     @property
     def RuntimeVersion(self):
         """运行时版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RuntimeVersion
@@ -36721,7 +36524,6 @@ class NodePoolRuntime(AbstractModel):
     @property
     def NodePoolName(self):
         """节点池名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NodePoolName
@@ -37177,13 +36979,10 @@ class OptionalRuntimes(AbstractModel):
     def __init__(self):
         r"""
         :param _RuntimeType: 运行时类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuntimeType: str
         :param _RuntimeVersions: 运行时版本列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuntimeVersions: list of str
         :param _DefaultVersion: 该类型的默认运行时版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type DefaultVersion: str
         """
         self._RuntimeType = None
@@ -37193,7 +36992,6 @@ class OptionalRuntimes(AbstractModel):
     @property
     def RuntimeType(self):
         """运行时类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RuntimeType
@@ -37205,7 +37003,6 @@ class OptionalRuntimes(AbstractModel):
     @property
     def RuntimeVersions(self):
         """运行时版本列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._RuntimeVersions
@@ -37217,7 +37014,6 @@ class OptionalRuntimes(AbstractModel):
     @property
     def DefaultVersion(self):
         """该类型的默认运行时版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DefaultVersion
@@ -37666,16 +37462,12 @@ class PodLimitsByType(AbstractModel):
     def __init__(self):
         r"""
         :param _TKERouteENINonStaticIP: TKE共享网卡非固定IP模式可支持的Pod数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TKERouteENINonStaticIP: int
         :param _TKERouteENIStaticIP: TKE共享网卡固定IP模式可支持的Pod数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TKERouteENIStaticIP: int
         :param _TKEDirectENI: TKE独立网卡模式可支持的Pod数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TKEDirectENI: int
         :param _TKESubENI: TKE中继网卡模式可支持的Pod数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TKESubENI: int
         """
         self._TKERouteENINonStaticIP = None
@@ -37686,7 +37478,6 @@ class PodLimitsByType(AbstractModel):
     @property
     def TKERouteENINonStaticIP(self):
         """TKE共享网卡非固定IP模式可支持的Pod数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TKERouteENINonStaticIP
@@ -37698,7 +37489,6 @@ class PodLimitsByType(AbstractModel):
     @property
     def TKERouteENIStaticIP(self):
         """TKE共享网卡固定IP模式可支持的Pod数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TKERouteENIStaticIP
@@ -37710,7 +37500,6 @@ class PodLimitsByType(AbstractModel):
     @property
     def TKEDirectENI(self):
         """TKE独立网卡模式可支持的Pod数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TKEDirectENI
@@ -37722,7 +37511,6 @@ class PodLimitsByType(AbstractModel):
     @property
     def TKESubENI(self):
         """TKE中继网卡模式可支持的Pod数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TKESubENI
@@ -37755,16 +37543,12 @@ class PodLimitsInstance(AbstractModel):
     def __init__(self):
         r"""
         :param _Zone: 机型所在可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :type Zone: str
         :param _InstanceFamily: 机型所属机型族
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceFamily: str
         :param _InstanceType: 实例机型名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceType: str
         :param _PodLimits: 机型可支持的最大VPC-CNI模式Pod数量信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type PodLimits: :class:`tencentcloud.tke.v20180525.models.PodLimitsByType`
         """
         self._Zone = None
@@ -37775,7 +37559,6 @@ class PodLimitsInstance(AbstractModel):
     @property
     def Zone(self):
         """机型所在可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Zone
@@ -37787,7 +37570,6 @@ class PodLimitsInstance(AbstractModel):
     @property
     def InstanceFamily(self):
         """机型所属机型族
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceFamily
@@ -37799,7 +37581,6 @@ class PodLimitsInstance(AbstractModel):
     @property
     def InstanceType(self):
         """实例机型名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceType
@@ -37811,7 +37592,6 @@ class PodLimitsInstance(AbstractModel):
     @property
     def PodLimits(self):
         """机型可支持的最大VPC-CNI模式Pod数量信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20180525.models.PodLimitsByType`
         """
         return self._PodLimits
@@ -42413,22 +42193,16 @@ class ReleaseHistory(AbstractModel):
         :param _Namespace: 应用命名空间
         :type Namespace: str
         :param _Revision: 应用版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Revision: int
         :param _Status: 应用状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _Chart: 应用制品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Chart: str
         :param _AppVersion: 应用制品版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppVersion: str
         :param _UpdatedTime: 应用更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedTime: str
         :param _Description: 应用描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         """
         self._Name = None
@@ -42465,7 +42239,6 @@ class ReleaseHistory(AbstractModel):
     @property
     def Revision(self):
         """应用版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Revision
@@ -42477,7 +42250,6 @@ class ReleaseHistory(AbstractModel):
     @property
     def Status(self):
         """应用状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -42489,7 +42261,6 @@ class ReleaseHistory(AbstractModel):
     @property
     def Chart(self):
         """应用制品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Chart
@@ -42501,7 +42272,6 @@ class ReleaseHistory(AbstractModel):
     @property
     def AppVersion(self):
         """应用制品版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AppVersion
@@ -42513,7 +42283,6 @@ class ReleaseHistory(AbstractModel):
     @property
     def UpdatedTime(self):
         """应用更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdatedTime
@@ -42525,7 +42294,6 @@ class ReleaseHistory(AbstractModel):
     @property
     def Description(self):
         """应用描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -43878,13 +43646,10 @@ class RouteTableConflict(AbstractModel):
         :param _RouteTableType: 路由表类型。
         :type RouteTableType: str
         :param _RouteTableCidrBlock: 路由表CIDR。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RouteTableCidrBlock: str
         :param _RouteTableName: 路由表名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RouteTableName: str
         :param _RouteTableId: 路由表ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RouteTableId: str
         """
         self._RouteTableType = None
@@ -43906,7 +43671,6 @@ class RouteTableConflict(AbstractModel):
     @property
     def RouteTableCidrBlock(self):
         """路由表CIDR。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RouteTableCidrBlock
@@ -43918,7 +43682,6 @@ class RouteTableConflict(AbstractModel):
     @property
     def RouteTableName(self):
         """路由表名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RouteTableName
@@ -43930,7 +43693,6 @@ class RouteTableConflict(AbstractModel):
     @property
     def RouteTableId(self):
         """路由表ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RouteTableId
@@ -44287,10 +44049,8 @@ class RuntimeConfig(AbstractModel):
     def __init__(self):
         r"""
         :param _RuntimeType: 运行时类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuntimeType: str
         :param _RuntimeVersion: 运行时版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuntimeVersion: str
         """
         self._RuntimeType = None
@@ -44299,7 +44059,6 @@ class RuntimeConfig(AbstractModel):
     @property
     def RuntimeType(self):
         """运行时类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RuntimeType
@@ -44311,7 +44070,6 @@ class RuntimeConfig(AbstractModel):
     @property
     def RuntimeVersion(self):
         """运行时版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RuntimeVersion
@@ -44902,16 +44660,12 @@ class Step(AbstractModel):
         :param _Name: 名称
         :type Name: str
         :param _StartAt: 开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartAt: str
         :param _EndAt: 结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndAt: str
         :param _Status: 当前状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _Message: 执行信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         """
         self._Name = None
@@ -44934,7 +44688,6 @@ class Step(AbstractModel):
     @property
     def StartAt(self):
         """开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StartAt
@@ -44946,7 +44699,6 @@ class Step(AbstractModel):
     @property
     def EndAt(self):
         """结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndAt
@@ -44958,7 +44710,6 @@ class Step(AbstractModel):
     @property
     def Status(self):
         """当前状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -44970,7 +44721,6 @@ class Step(AbstractModel):
     @property
     def Message(self):
         """执行信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Message
@@ -45208,16 +44958,12 @@ class Switch(AbstractModel):
         :param _ClusterId: 集群ID
         :type ClusterId: str
         :param _Audit: 审计开关的详细信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Audit: :class:`tencentcloud.tke.v20180525.models.SwitchInfo`
         :param _Event: 事件开关的详细信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Event: :class:`tencentcloud.tke.v20180525.models.SwitchInfo`
         :param _Log: 普通日志的详细信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Log: :class:`tencentcloud.tke.v20180525.models.SwitchInfo`
         :param _MasterLog: master 日志详细信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type MasterLog: :class:`tencentcloud.tke.v20180525.models.SwitchInfo`
         """
         self._ClusterId = None
@@ -45240,7 +44986,6 @@ class Switch(AbstractModel):
     @property
     def Audit(self):
         """审计开关的详细信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20180525.models.SwitchInfo`
         """
         return self._Audit
@@ -45252,7 +44997,6 @@ class Switch(AbstractModel):
     @property
     def Event(self):
         """事件开关的详细信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20180525.models.SwitchInfo`
         """
         return self._Event
@@ -45264,7 +45008,6 @@ class Switch(AbstractModel):
     @property
     def Log(self):
         """普通日志的详细信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20180525.models.SwitchInfo`
         """
         return self._Log
@@ -45276,7 +45019,6 @@ class Switch(AbstractModel):
     @property
     def MasterLog(self):
         """master 日志详细信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20180525.models.SwitchInfo`
         """
         return self._MasterLog
@@ -45318,22 +45060,16 @@ class SwitchInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Enable: 开启标识符 true代表开启
-注意：此字段可能返回 null，表示取不到有效值。
         :type Enable: bool
         :param _LogsetId: CLS日志集ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogsetId: str
         :param _TopicId: CLS日志主题ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TopicId: str
         :param _Version: 当前log-agent版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
         :param _UpgradeAble: 是否可升级
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpgradeAble: bool
         :param _TopicRegion: CLS日志主题所属region
-注意：此字段可能返回 null，表示取不到有效值。
         :type TopicRegion: str
         """
         self._Enable = None
@@ -45346,7 +45082,6 @@ class SwitchInfo(AbstractModel):
     @property
     def Enable(self):
         """开启标识符 true代表开启
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Enable
@@ -45358,7 +45093,6 @@ class SwitchInfo(AbstractModel):
     @property
     def LogsetId(self):
         """CLS日志集ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LogsetId
@@ -45370,7 +45104,6 @@ class SwitchInfo(AbstractModel):
     @property
     def TopicId(self):
         """CLS日志主题ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TopicId
@@ -45382,7 +45115,6 @@ class SwitchInfo(AbstractModel):
     @property
     def Version(self):
         """当前log-agent版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Version
@@ -45394,7 +45126,6 @@ class SwitchInfo(AbstractModel):
     @property
     def UpgradeAble(self):
         """是否可升级
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._UpgradeAble
@@ -45406,7 +45137,6 @@ class SwitchInfo(AbstractModel):
     @property
     def TopicRegion(self):
         """CLS日志主题所属region
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TopicRegion
@@ -45660,7 +45390,6 @@ class TagSpecification(AbstractModel):
     def __init__(self):
         r"""
         :param _ResourceType: 标签绑定的资源类型，当前支持类型："cluster"
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceType: str
         :param _Tags: 标签对列表
 注意：此字段可能返回 null，表示取不到有效值。
@@ -45672,7 +45401,6 @@ class TagSpecification(AbstractModel):
     @property
     def ResourceType(self):
         """标签绑定的资源类型，当前支持类型："cluster"
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceType
@@ -45794,13 +45522,10 @@ success: 步骤成功完成
 failed: 步骤失败
         :type LifeState: str
         :param _StartAt: 步骤开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartAt: str
         :param _EndAt: 步骤结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndAt: str
         :param _FailedMsg: 若步骤生命周期为failed,则此字段显示错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailedMsg: str
         """
         self._Step = None
@@ -45838,7 +45563,6 @@ failed: 步骤失败
     @property
     def StartAt(self):
         """步骤开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StartAt
@@ -45850,7 +45574,6 @@ failed: 步骤失败
     @property
     def EndAt(self):
         """步骤结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndAt
@@ -45862,7 +45585,6 @@ failed: 步骤失败
     @property
     def FailedMsg(self):
         """若步骤生命周期为failed,则此字段显示错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FailedMsg
@@ -46000,10 +45722,8 @@ class UnavailableReason(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceId: 实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _Reason: 原因
-注意：此字段可能返回 null，表示取不到有效值。
         :type Reason: str
         """
         self._InstanceId = None
@@ -46012,7 +45732,6 @@ class UnavailableReason(AbstractModel):
     @property
     def InstanceId(self):
         """实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -46024,7 +45743,6 @@ class UnavailableReason(AbstractModel):
     @property
     def Reason(self):
         """原因
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Reason
@@ -47614,7 +47332,6 @@ class UpgradeAbleInstancesItem(AbstractModel):
         :param _Version: 节点的当前版本
         :type Version: str
         :param _LatestVersion: 当前版本的最新小版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type LatestVersion: str
         :param _RuntimeVersion: RuntimeVersion
         :type RuntimeVersion: str
@@ -47652,7 +47369,6 @@ class UpgradeAbleInstancesItem(AbstractModel):
     @property
     def LatestVersion(self):
         """当前版本的最新小版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LatestVersion
@@ -48226,13 +47942,10 @@ class VersionInstance(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 版本名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Version: 版本信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
         :param _Remark: Remark
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         """
         self._Name = None
@@ -48242,7 +47955,6 @@ class VersionInstance(AbstractModel):
     @property
     def Name(self):
         """版本名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -48254,7 +47966,6 @@ class VersionInstance(AbstractModel):
     @property
     def Version(self):
         """版本信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Version
@@ -48266,7 +47977,6 @@ class VersionInstance(AbstractModel):
     @property
     def Remark(self):
         """Remark
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -48304,7 +48014,6 @@ class VirtualNode(AbstractModel):
         :param _Phase: 虚拟节点状态
         :type Phase: str
         :param _CreatedTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedTime: str
         """
         self._Name = None
@@ -48348,7 +48057,6 @@ class VirtualNode(AbstractModel):
     @property
     def CreatedTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreatedTime

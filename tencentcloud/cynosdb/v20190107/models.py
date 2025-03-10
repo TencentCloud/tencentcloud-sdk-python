@@ -8528,6 +8528,8 @@ pausing
         :param _SlaveZoneAttr: 备可用区属性
 注意：此字段可能返回 null，表示取不到有效值。
         :type SlaveZoneAttr: list of SlaveZoneAttrItem
+        :param _CynosVersionTag: 版本标签
+        :type CynosVersionTag: str
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -8579,6 +8581,7 @@ pausing
         self._RenewFlag = None
         self._NetworkType = None
         self._SlaveZoneAttr = None
+        self._CynosVersionTag = None
 
     @property
     def ClusterId(self):
@@ -9160,6 +9163,17 @@ pausing
     def SlaveZoneAttr(self, SlaveZoneAttr):
         self._SlaveZoneAttr = SlaveZoneAttr
 
+    @property
+    def CynosVersionTag(self):
+        """版本标签
+        :rtype: str
+        """
+        return self._CynosVersionTag
+
+    @CynosVersionTag.setter
+    def CynosVersionTag(self, CynosVersionTag):
+        self._CynosVersionTag = CynosVersionTag
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -9244,6 +9258,7 @@ pausing
                 obj = SlaveZoneAttrItem()
                 obj._deserialize(item)
                 self._SlaveZoneAttr.append(obj)
+        self._CynosVersionTag = params.get("CynosVersionTag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18864,7 +18879,7 @@ class DescribeProxiesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID（该参数必传，例如cynosdbmysql-xxxxxx）
+        :param _ClusterId: 集群 ID（该参数必传，例如 cynosdbmysql-2u2mh111）。
         :type ClusterId: str
         :param _Limit: 返回数量，默认为 20，最大值为 100
         :type Limit: int
@@ -18890,7 +18905,7 @@ class DescribeProxiesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID（该参数必传，例如cynosdbmysql-xxxxxx）
+        """集群 ID（该参数必传，例如 cynosdbmysql-2u2mh111）。
         :rtype: str
         """
         return self._ClusterId

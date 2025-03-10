@@ -2221,6 +2221,8 @@ video 纯视频
         :type RecordLang: str
         :param _RecordStream: 录制类型 0 仅录制混流（默认） ;1 录制混流+单流，该模式下除混流录制基础上，分别录制老师、台上学生的音视频流，每路录制都会产生相应的录制费用 。示例：0
         :type RecordStream: int
+        :param _WhiteBoardSnapshotMode: 板书截图生成类型。0 不生成板书；1 全量模式；2 单页去重模式
+        :type WhiteBoardSnapshotMode: int
         """
         self._Name = None
         self._StartTime = None
@@ -2252,6 +2254,7 @@ video 纯视频
         self._RecordScene = None
         self._RecordLang = None
         self._RecordStream = None
+        self._WhiteBoardSnapshotMode = None
 
     @property
     def Name(self):
@@ -2608,6 +2611,17 @@ video 纯视频
     def RecordStream(self, RecordStream):
         self._RecordStream = RecordStream
 
+    @property
+    def WhiteBoardSnapshotMode(self):
+        """板书截图生成类型。0 不生成板书；1 全量模式；2 单页去重模式
+        :rtype: int
+        """
+        return self._WhiteBoardSnapshotMode
+
+    @WhiteBoardSnapshotMode.setter
+    def WhiteBoardSnapshotMode(self, WhiteBoardSnapshotMode):
+        self._WhiteBoardSnapshotMode = WhiteBoardSnapshotMode
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -2640,6 +2654,7 @@ video 纯视频
         self._RecordScene = params.get("RecordScene")
         self._RecordLang = params.get("RecordLang")
         self._RecordStream = params.get("RecordStream")
+        self._WhiteBoardSnapshotMode = params.get("WhiteBoardSnapshotMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6153,16 +6168,12 @@ video 纯视频
 注：如果该配置取值为0，录制将从上课后开始，课堂结束后停止。
         :type DisableRecord: int
         :param _Assistants: 助教UserId列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Assistants: list of str
         :param _RecordUrl: 录制地址（协议为https)。仅在房间结束后存在。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecordUrl: str
         :param _Status: 课堂状态。0为未开始，1为已开始，2为已结束，3为已过期。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _GroupId: 房间绑定的群组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupId: str
         :param _EnableDirectControl: 打开学生麦克风/摄像头的授权开关
         :type EnableDirectControl: int
@@ -6199,6 +6210,8 @@ video 纯视频
         :type RecordStream: int
         :param _RecordLayout: 录制模板。房间子类型为视频+白板（SubType=videodoc）时默认为3，房间子类型为纯视频（SubType=video）时默认为0。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
         :type RecordLayout: int
+        :param _WhiteBoardSnapshotMode: 板书截图生成类型。0 不生成板书；1 全量模式；2 单页去重模式
+        :type WhiteBoardSnapshotMode: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -6234,6 +6247,7 @@ video 纯视频
         self._RecordLang = None
         self._RecordStream = None
         self._RecordLayout = None
+        self._WhiteBoardSnapshotMode = None
         self._RequestId = None
 
     @property
@@ -6383,7 +6397,6 @@ video 纯视频
     @property
     def Assistants(self):
         """助教UserId列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Assistants
@@ -6395,7 +6408,6 @@ video 纯视频
     @property
     def RecordUrl(self):
         """录制地址（协议为https)。仅在房间结束后存在。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RecordUrl
@@ -6407,7 +6419,6 @@ video 纯视频
     @property
     def Status(self):
         """课堂状态。0为未开始，1为已开始，2为已结束，3为已过期。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -6419,7 +6430,6 @@ video 纯视频
     @property
     def GroupId(self):
         """房间绑定的群组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupId
@@ -6608,6 +6618,17 @@ video 纯视频
         self._RecordLayout = RecordLayout
 
     @property
+    def WhiteBoardSnapshotMode(self):
+        """板书截图生成类型。0 不生成板书；1 全量模式；2 单页去重模式
+        :rtype: int
+        """
+        return self._WhiteBoardSnapshotMode
+
+    @WhiteBoardSnapshotMode.setter
+    def WhiteBoardSnapshotMode(self, WhiteBoardSnapshotMode):
+        self._WhiteBoardSnapshotMode = WhiteBoardSnapshotMode
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -6652,6 +6673,7 @@ video 纯视频
         self._RecordLang = params.get("RecordLang")
         self._RecordStream = params.get("RecordStream")
         self._RecordLayout = params.get("RecordLayout")
+        self._WhiteBoardSnapshotMode = params.get("WhiteBoardSnapshotMode")
         self._RequestId = params.get("RequestId")
 
 
@@ -10314,6 +10336,8 @@ video 纯视频
         :type RecordScene: str
         :param _RecordLang: 录制自定义语言，仅recordlayout=9的时候此参数有效
         :type RecordLang: str
+        :param _WhiteBoardSnapshotMode: 板书截图生成类型。0 不生成板书；1 全量模式；2 单页去重模式
+        :type WhiteBoardSnapshotMode: int
         """
         self._RoomId = None
         self._SdkAppId = None
@@ -10341,6 +10365,7 @@ video 纯视频
         self._EnableAutoStart = None
         self._RecordScene = None
         self._RecordLang = None
+        self._WhiteBoardSnapshotMode = None
 
     @property
     def RoomId(self):
@@ -10651,6 +10676,17 @@ video 纯视频
 
         self._RecordLang = RecordLang
 
+    @property
+    def WhiteBoardSnapshotMode(self):
+        """板书截图生成类型。0 不生成板书；1 全量模式；2 单页去重模式
+        :rtype: int
+        """
+        return self._WhiteBoardSnapshotMode
+
+    @WhiteBoardSnapshotMode.setter
+    def WhiteBoardSnapshotMode(self, WhiteBoardSnapshotMode):
+        self._WhiteBoardSnapshotMode = WhiteBoardSnapshotMode
+
 
     def _deserialize(self, params):
         self._RoomId = params.get("RoomId")
@@ -10679,6 +10715,7 @@ video 纯视频
         self._EnableAutoStart = params.get("EnableAutoStart")
         self._RecordScene = params.get("RecordScene")
         self._RecordLang = params.get("RecordLang")
+        self._WhiteBoardSnapshotMode = params.get("WhiteBoardSnapshotMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11283,6 +11320,8 @@ class RoomInfo(AbstractModel):
         :type RecordLang: str
         :param _RecordStream: 录制类型 0 仅录制混流（默认） ;1 录制混流+单流，该模式下除混流录制基础上，分别录制老师、台上学生的音视频流，每路录制都会产生相应的录制费用 。示例：0
         :type RecordStream: int
+        :param _WhiteBoardSnapshotMode: 板书截图生成类型。0 不生成板书；1 全量模式；2 单页去重模式
+        :type WhiteBoardSnapshotMode: int
         """
         self._Name = None
         self._StartTime = None
@@ -11313,6 +11352,7 @@ class RoomInfo(AbstractModel):
         self._RecordScene = None
         self._RecordLang = None
         self._RecordStream = None
+        self._WhiteBoardSnapshotMode = None
 
     @property
     def Name(self):
@@ -11645,6 +11685,17 @@ class RoomInfo(AbstractModel):
     def RecordStream(self, RecordStream):
         self._RecordStream = RecordStream
 
+    @property
+    def WhiteBoardSnapshotMode(self):
+        """板书截图生成类型。0 不生成板书；1 全量模式；2 单页去重模式
+        :rtype: int
+        """
+        return self._WhiteBoardSnapshotMode
+
+    @WhiteBoardSnapshotMode.setter
+    def WhiteBoardSnapshotMode(self, WhiteBoardSnapshotMode):
+        self._WhiteBoardSnapshotMode = WhiteBoardSnapshotMode
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -11676,6 +11727,7 @@ class RoomInfo(AbstractModel):
         self._RecordScene = params.get("RecordScene")
         self._RecordLang = params.get("RecordLang")
         self._RecordStream = params.get("RecordStream")
+        self._WhiteBoardSnapshotMode = params.get("WhiteBoardSnapshotMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11694,80 +11746,59 @@ class RoomItem(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _RoomId: 房间ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type RoomId: int
         :param _Status: 房间状态。0 未开始 ；1进行中  ；2 已结束；3已过期
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _StartTime: 开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: int
         :param _EndTime: 结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: int
         :param _RealStartTime: 实际开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type RealStartTime: int
         :param _RealEndTime: 实际结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type RealEndTime: int
         :param _Resolution: 头像区域，摄像头视频画面的分辨率。可以有如下取值：
 1 标清
 2 高清
 3 全高清
-注意：此字段可能返回 null，表示取不到有效值。
         :type Resolution: int
         :param _MaxRTCMember: 最大允许连麦人数。已废弃，使用字段 MaxMicNumber
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxRTCMember: int
         :param _ReplayUrl: 房间录制地址。已废弃，使用新字段 RecordUrl
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReplayUrl: str
         :param _RecordUrl: 录制地址（协议为https)。仅在房间结束后存在。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecordUrl: str
         :param _MaxMicNumber: 课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxMicNumber: int
         :param _EnableDirectControl: 打开学生麦克风/摄像头的授权开关 
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnableDirectControl: int
         :param _InteractionMode: 开启专注模式。 0 收看全部角色音视频(默认) 1 只看老师和助教
-注意：此字段可能返回 null，表示取不到有效值。
         :type InteractionMode: int
         :param _VideoOrientation: 横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type VideoOrientation: int
         :param _IsGradingRequiredPostClass: 开启课后评分。 0：不开启(默认)  1：开启
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsGradingRequiredPostClass: int
         :param _RoomType: 房间类型。0:小班课（默认值）；1:大班课；2:1V1（后续扩展）
 注：大班课的布局(layout)只有三分屏
-注意：此字段可能返回 null，表示取不到有效值。
         :type RoomType: int
         :param _EndDelayTime: 拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndDelayTime: int
         :param _LiveType: 直播类型：0 常规（默认）1 伪直播
-注意：此字段可能返回 null，表示取不到有效值。
         :type LiveType: int
         :param _RecordLiveUrl: 伪直播回放链接	
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecordLiveUrl: str
         :param _EnableAutoStart: 是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1的时候有效	
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnableAutoStart: int
         :param _RecordBackground: 录制文件背景图片，支持png、jpg、jpeg、bmp格式，暂不支持透明通道
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecordBackground: str
         :param _RecordScene: 录制自定义场景，仅recordlayout=9的时候此参数有效,数据内容为用户自定义场景参数，数据格式为json键值对方式，其中键值对的value为string类型。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecordScene: str
         :param _RecordLang: 录制自定义语言，仅recordlayout=9的时候此参数有效
         :type RecordLang: str
+        :param _WhiteBoardSnapshotMode: 板书截图生成类型。0 不生成板书；1 全量模式；2 单页去重模式
+        :type WhiteBoardSnapshotMode: int
         """
         self._Name = None
         self._RoomId = None
@@ -11793,11 +11824,11 @@ class RoomItem(AbstractModel):
         self._RecordBackground = None
         self._RecordScene = None
         self._RecordLang = None
+        self._WhiteBoardSnapshotMode = None
 
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -11809,7 +11840,6 @@ class RoomItem(AbstractModel):
     @property
     def RoomId(self):
         """房间ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RoomId
@@ -11821,7 +11851,6 @@ class RoomItem(AbstractModel):
     @property
     def Status(self):
         """房间状态。0 未开始 ；1进行中  ；2 已结束；3已过期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -11833,7 +11862,6 @@ class RoomItem(AbstractModel):
     @property
     def StartTime(self):
         """开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._StartTime
@@ -11845,7 +11873,6 @@ class RoomItem(AbstractModel):
     @property
     def EndTime(self):
         """结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._EndTime
@@ -11857,7 +11884,6 @@ class RoomItem(AbstractModel):
     @property
     def RealStartTime(self):
         """实际开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RealStartTime
@@ -11869,7 +11895,6 @@ class RoomItem(AbstractModel):
     @property
     def RealEndTime(self):
         """实际结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RealEndTime
@@ -11884,7 +11909,6 @@ class RoomItem(AbstractModel):
 1 标清
 2 高清
 3 全高清
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Resolution
@@ -11896,7 +11920,6 @@ class RoomItem(AbstractModel):
     @property
     def MaxRTCMember(self):
         """最大允许连麦人数。已废弃，使用字段 MaxMicNumber
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxRTCMember
@@ -11908,7 +11931,6 @@ class RoomItem(AbstractModel):
     @property
     def ReplayUrl(self):
         """房间录制地址。已废弃，使用新字段 RecordUrl
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ReplayUrl
@@ -11920,7 +11942,6 @@ class RoomItem(AbstractModel):
     @property
     def RecordUrl(self):
         """录制地址（协议为https)。仅在房间结束后存在。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RecordUrl
@@ -11932,7 +11953,6 @@ class RoomItem(AbstractModel):
     @property
     def MaxMicNumber(self):
         """课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxMicNumber
@@ -11944,7 +11964,6 @@ class RoomItem(AbstractModel):
     @property
     def EnableDirectControl(self):
         """打开学生麦克风/摄像头的授权开关 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._EnableDirectControl
@@ -11956,7 +11975,6 @@ class RoomItem(AbstractModel):
     @property
     def InteractionMode(self):
         """开启专注模式。 0 收看全部角色音视频(默认) 1 只看老师和助教
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._InteractionMode
@@ -11968,7 +11986,6 @@ class RoomItem(AbstractModel):
     @property
     def VideoOrientation(self):
         """横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._VideoOrientation
@@ -11980,7 +11997,6 @@ class RoomItem(AbstractModel):
     @property
     def IsGradingRequiredPostClass(self):
         """开启课后评分。 0：不开启(默认)  1：开启
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IsGradingRequiredPostClass
@@ -11993,7 +12009,6 @@ class RoomItem(AbstractModel):
     def RoomType(self):
         """房间类型。0:小班课（默认值）；1:大班课；2:1V1（后续扩展）
 注：大班课的布局(layout)只有三分屏
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RoomType
@@ -12005,7 +12020,6 @@ class RoomItem(AbstractModel):
     @property
     def EndDelayTime(self):
         """拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._EndDelayTime
@@ -12017,7 +12031,6 @@ class RoomItem(AbstractModel):
     @property
     def LiveType(self):
         """直播类型：0 常规（默认）1 伪直播
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LiveType
@@ -12029,7 +12042,6 @@ class RoomItem(AbstractModel):
     @property
     def RecordLiveUrl(self):
         """伪直播回放链接	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RecordLiveUrl
@@ -12041,7 +12053,6 @@ class RoomItem(AbstractModel):
     @property
     def EnableAutoStart(self):
         """是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1的时候有效	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._EnableAutoStart
@@ -12053,7 +12064,6 @@ class RoomItem(AbstractModel):
     @property
     def RecordBackground(self):
         """录制文件背景图片，支持png、jpg、jpeg、bmp格式，暂不支持透明通道
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RecordBackground
@@ -12065,7 +12075,6 @@ class RoomItem(AbstractModel):
     @property
     def RecordScene(self):
         """录制自定义场景，仅recordlayout=9的时候此参数有效,数据内容为用户自定义场景参数，数据格式为json键值对方式，其中键值对的value为string类型。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RecordScene
@@ -12084,6 +12093,17 @@ class RoomItem(AbstractModel):
     @RecordLang.setter
     def RecordLang(self, RecordLang):
         self._RecordLang = RecordLang
+
+    @property
+    def WhiteBoardSnapshotMode(self):
+        """板书截图生成类型。0 不生成板书；1 全量模式；2 单页去重模式
+        :rtype: int
+        """
+        return self._WhiteBoardSnapshotMode
+
+    @WhiteBoardSnapshotMode.setter
+    def WhiteBoardSnapshotMode(self, WhiteBoardSnapshotMode):
+        self._WhiteBoardSnapshotMode = WhiteBoardSnapshotMode
 
 
     def _deserialize(self, params):
@@ -12111,6 +12131,7 @@ class RoomItem(AbstractModel):
         self._RecordBackground = params.get("RecordBackground")
         self._RecordScene = params.get("RecordScene")
         self._RecordLang = params.get("RecordLang")
+        self._WhiteBoardSnapshotMode = params.get("WhiteBoardSnapshotMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

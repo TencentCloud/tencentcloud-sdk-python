@@ -351,6 +351,29 @@ class PartnersClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeClientJoinIncreaseList(self, request):
+        """查询合作伙伴名下客户的参与增量激励考核信息列表
+
+        :param request: Request instance for DescribeClientJoinIncreaseList.
+        :type request: :class:`tencentcloud.partners.v20180321.models.DescribeClientJoinIncreaseListRequest`
+        :rtype: :class:`tencentcloud.partners.v20180321.models.DescribeClientJoinIncreaseListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClientJoinIncreaseList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeClientJoinIncreaseListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRebateInfos(self, request):
         """【该接口已下线，请切换使用升级版本DescribeRebateInfosNew】代理商可查询自己名下全部返佣信息
 

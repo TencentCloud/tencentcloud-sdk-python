@@ -2186,7 +2186,6 @@ class ExternalNodePoolInfo(AbstractModel):
         :param _RuntimeConfig: 第三方节点Runtime配置
         :type RuntimeConfig: :class:`tencentcloud.tke.v20220501.models.RuntimeConfig`
         :param _NodesNum: 节点数
-注意：此字段可能返回 null，表示取不到有效值。
         :type NodesNum: int
         """
         self._RuntimeConfig = None
@@ -2206,7 +2205,6 @@ class ExternalNodePoolInfo(AbstractModel):
     @property
     def NodesNum(self):
         """节点数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._NodesNum

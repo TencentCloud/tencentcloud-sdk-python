@@ -2010,56 +2010,6 @@ class LkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def ParseDoc(self, request):
-        """接口已迁移到新接口了，无调用量
-
-        接口即将下线，请切换使用新接口：[文档解析](https://cloud.tencent.com/document/product/1759/107504)
-
-        :param request: Request instance for ParseDoc.
-        :type request: :class:`tencentcloud.lke.v20231130.models.ParseDocRequest`
-        :rtype: :class:`tencentcloud.lke.v20231130.models.ParseDocResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ParseDoc", params, headers=headers)
-            response = json.loads(body)
-            model = models.ParseDocResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def QueryParseDocResult(self, request):
-        """接口已迁移到新接口了，无调用量
-
-        查询文档解析结果。该接口需开通文档解析原子能力后调用。文档解析原子能力内测中，如有需要请联系架构师或[联系客服](https://cloud.tencent.com/act/event/Online_service) 。
-
-        :param request: Request instance for QueryParseDocResult.
-        :type request: :class:`tencentcloud.lke.v20231130.models.QueryParseDocResultRequest`
-        :rtype: :class:`tencentcloud.lke.v20231130.models.QueryParseDocResultResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("QueryParseDocResult", params, headers=headers)
-            response = json.loads(body)
-            model = models.QueryParseDocResultResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def QueryRewrite(self, request):
         """多轮改写（QueryRewrite）主要用于多轮对话中，进行指代消解和省略补全。使用本接口，无需输入prompt描述，根据对话历史即可生成更精确的用户查询。在应用场景上，本接口可应用于智能问答、对话式搜索等多种场景。
         本接口（QueryRewrite）有单账号调用上限控制，如您有提高并发限制的需求请 [联系我们](https://cloud.tencent.com/act/event/Online_service) 。

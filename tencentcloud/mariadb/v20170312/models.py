@@ -1020,15 +1020,15 @@ class CreateAccountRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例 ID，形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。
         :type InstanceId: str
-        :param _UserName: 登录用户名，由字母、数字、下划线和连字符组成，长度为1~32位。
+        :param _UserName: 账号名，账号名需要1-32个字符，由字母、数字或特殊字符组成；以字母开头；特殊字符为_-
         :type UserName: str
         :param _Host: 可以登录的主机，与mysql 账号的 host 格式一致，可以支持通配符，例如 %，10.%，10.20.%。
         :type Host: str
-        :param _Password: 账号密码，密码需要 8-32 个字符，不能以 '/' 开头，并且必须包含小写字母、大写字母、数字和符号()~!@#$%^&*-+=_|{}[]:<>,.?/。
+        :param _Password: 账号密码，密码需要 8\~32 个字符，不能以 '/' 开头，并且至少包含字母、数字和特殊字符 ()~!@#$%^&*-+=_|{}[]:<>,.?/ 中的两项
         :type Password: str
         :param _ReadOnly: 是否创建为只读账号，0：否； 1：只读账号，该账号的sql请求优先选择备机执行，备机延迟时选择主机执行；2：只读账号，优先选择备机执行，备机延迟时操作报错；3：只读账号，优先选择备机执行，忽略备机延迟只读备机；
         :type ReadOnly: int
-        :param _Description: 账号备注，可以包含中文、英文字符、常见符号和数字，长度为0~256字符
+        :param _Description: 账号备注，可以包含中文、英文字符、常见符号和数字，最多256个字符
         :type Description: str
         :param _DelayThresh: 根据传入时间判断备机不可用
         :type DelayThresh: int
@@ -1063,7 +1063,7 @@ class CreateAccountRequest(AbstractModel):
 
     @property
     def UserName(self):
-        """登录用户名，由字母、数字、下划线和连字符组成，长度为1~32位。
+        """账号名，账号名需要1-32个字符，由字母、数字或特殊字符组成；以字母开头；特殊字符为_-
         :rtype: str
         """
         return self._UserName
@@ -1085,7 +1085,7 @@ class CreateAccountRequest(AbstractModel):
 
     @property
     def Password(self):
-        """账号密码，密码需要 8-32 个字符，不能以 '/' 开头，并且必须包含小写字母、大写字母、数字和符号()~!@#$%^&*-+=_|{}[]:<>,.?/。
+        """账号密码，密码需要 8\~32 个字符，不能以 '/' 开头，并且至少包含字母、数字和特殊字符 ()~!@#$%^&*-+=_|{}[]:<>,.?/ 中的两项
         :rtype: str
         """
         return self._Password
@@ -1107,7 +1107,7 @@ class CreateAccountRequest(AbstractModel):
 
     @property
     def Description(self):
-        """账号备注，可以包含中文、英文字符、常见符号和数字，长度为0~256字符
+        """账号备注，可以包含中文、英文字符、常见符号和数字，最多256个字符
         :rtype: str
         """
         return self._Description
@@ -13265,7 +13265,7 @@ class OpenDBExtranetAccessRequest(AbstractModel):
         r"""
         :param _InstanceId: 待开放外网访问的实例ID。形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。
         :type InstanceId: str
-        :param _Ipv6Flag: 是否IPv6，默认0
+        :param _Ipv6Flag: 是否为IPV6网络类型实例，0:否，1:是，不传默认为0表示实例为IPV4网络类型
         :type Ipv6Flag: int
         """
         self._InstanceId = None
@@ -13284,7 +13284,7 @@ class OpenDBExtranetAccessRequest(AbstractModel):
 
     @property
     def Ipv6Flag(self):
-        """是否IPv6，默认0
+        """是否为IPV6网络类型实例，0:否，1:是，不传默认为0表示实例为IPV4网络类型
         :rtype: int
         """
         return self._Ipv6Flag
@@ -14025,7 +14025,7 @@ class ResetAccountPasswordRequest(AbstractModel):
         :type UserName: str
         :param _Host: 用户允许的访问 host，用户名+host唯一确定一个账号。
         :type Host: str
-        :param _Password: 新密码，由字母、数字或常见符号组成，不能包含分号、单引号和双引号，长度为6~32位。
+        :param _Password: 密码需要 8\~32 个字符，不能以 '/' 开头，并且至少包含字母、数字和特殊字符 ()~!@#$%^&*-+=_|{}[]:<>,.?/ 中的两项
         :type Password: str
         :param _EncryptedPassword: 使用GetPublicKey返回的RSA2048公钥加密后的密码
         :type EncryptedPassword: str
@@ -14071,7 +14071,7 @@ class ResetAccountPasswordRequest(AbstractModel):
 
     @property
     def Password(self):
-        """新密码，由字母、数字或常见符号组成，不能包含分号、单引号和双引号，长度为6~32位。
+        """密码需要 8\~32 个字符，不能以 '/' 开头，并且至少包含字母、数字和特殊字符 ()~!@#$%^&*-+=_|{}[]:<>,.?/ 中的两项
         :rtype: str
         """
         return self._Password

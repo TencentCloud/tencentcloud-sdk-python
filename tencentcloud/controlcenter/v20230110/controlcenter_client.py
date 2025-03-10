@@ -47,3 +47,95 @@ class ControlcenterClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetAccountFactoryBaseline(self, request):
+        """获取用户基线配置数据
+
+        :param request: Request instance for GetAccountFactoryBaseline.
+        :type request: :class:`tencentcloud.controlcenter.v20230110.models.GetAccountFactoryBaselineRequest`
+        :rtype: :class:`tencentcloud.controlcenter.v20230110.models.GetAccountFactoryBaselineResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetAccountFactoryBaseline", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetAccountFactoryBaselineResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListAccountFactoryBaselineItems(self, request):
+        """获取账号工厂系统基线项
+
+        :param request: Request instance for ListAccountFactoryBaselineItems.
+        :type request: :class:`tencentcloud.controlcenter.v20230110.models.ListAccountFactoryBaselineItemsRequest`
+        :rtype: :class:`tencentcloud.controlcenter.v20230110.models.ListAccountFactoryBaselineItemsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListAccountFactoryBaselineItems", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListAccountFactoryBaselineItemsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListDeployStepTasks(self, request):
+        """获取某个基线项历史应用信息
+
+        :param request: Request instance for ListDeployStepTasks.
+        :type request: :class:`tencentcloud.controlcenter.v20230110.models.ListDeployStepTasksRequest`
+        :rtype: :class:`tencentcloud.controlcenter.v20230110.models.ListDeployStepTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListDeployStepTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListDeployStepTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateAccountFactoryBaseline(self, request):
+        """更新用户当前基线项配置，基线配置会覆盖更新为当前配置。新增基线项时需要将新增的基线配置加到现有配置，删除基线项时需要将删除的基线配置从现有配置移除，然后保存最新基线配置。
+
+        :param request: Request instance for UpdateAccountFactoryBaseline.
+        :type request: :class:`tencentcloud.controlcenter.v20230110.models.UpdateAccountFactoryBaselineRequest`
+        :rtype: :class:`tencentcloud.controlcenter.v20230110.models.UpdateAccountFactoryBaselineResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateAccountFactoryBaseline", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateAccountFactoryBaselineResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))

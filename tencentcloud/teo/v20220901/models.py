@@ -36552,9 +36552,14 @@ class ResponseSpeedLimitParameters(AbstractModel):
 <li>LimitAfterSpecificBytesDownloaded：全速下载特定字节后开始限速；</li>
 <li>LimitAfterSpecificSecondsDownloaded：全速下载特定时间后开始限速。</li>
         :type Mode: str
-        :param _MaxSpeed: 限速值，单位为：KB/s，填写数值，指定限速大小。
+        :param _MaxSpeed: 限速值，指定限速大小，填写含单位的数值或变量。当前支持单位有：KB/s。
         :type MaxSpeed: str
-        :param _StartAt: 限速开始值，可以为下载大小或指定时长，单位为：KB或s，当 Mode 取值为 LimitAfterSpecificBytesDownloaded 或 LimitAfterSpecificSecondsDownloaded 时，该参数必填。填写数值，指定下载大小或指定时长。
+        :param _StartAt: 限速开始值，可以为下载大小或指定时长，填写含单位的数值或变量，指定下载大小或指定时长。
+
+- 当Mode 取值为 LimitAfterSpecificBytesDownloaded 时，单位取值有： KB；
+
+- 当Mode 取值为 LimitAfterSpecificSecondsDownloaded 时，单位取值有： s。
+
         :type StartAt: str
         """
         self._Mode = None
@@ -36577,7 +36582,7 @@ class ResponseSpeedLimitParameters(AbstractModel):
 
     @property
     def MaxSpeed(self):
-        """限速值，单位为：KB/s，填写数值，指定限速大小。
+        """限速值，指定限速大小，填写含单位的数值或变量。当前支持单位有：KB/s。
         :rtype: str
         """
         return self._MaxSpeed
@@ -36588,7 +36593,12 @@ class ResponseSpeedLimitParameters(AbstractModel):
 
     @property
     def StartAt(self):
-        """限速开始值，可以为下载大小或指定时长，单位为：KB或s，当 Mode 取值为 LimitAfterSpecificBytesDownloaded 或 LimitAfterSpecificSecondsDownloaded 时，该参数必填。填写数值，指定下载大小或指定时长。
+        """限速开始值，可以为下载大小或指定时长，填写含单位的数值或变量，指定下载大小或指定时长。
+
+- 当Mode 取值为 LimitAfterSpecificBytesDownloaded 时，单位取值有： KB；
+
+- 当Mode 取值为 LimitAfterSpecificSecondsDownloaded 时，单位取值有： s。
+
         :rtype: str
         """
         return self._StartAt

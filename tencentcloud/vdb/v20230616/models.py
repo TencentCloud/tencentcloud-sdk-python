@@ -1456,16 +1456,12 @@ class Network(AbstractModel):
     def __init__(self):
         r"""
         :param _VpcId: VpcId(VPC网络下有效)
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
         :param _SubnetId: 子网Id(VPC网络下有效)。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetId: str
         :param _Vip: 内网访问IP。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Vip: str
         :param _Port: 内网访问Port。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
         :param _PreserveDuration: 旧 ip 保留时长，单位天
         :type PreserveDuration: int
@@ -1482,7 +1478,6 @@ class Network(AbstractModel):
     @property
     def VpcId(self):
         """VpcId(VPC网络下有效)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VpcId
@@ -1494,7 +1489,6 @@ class Network(AbstractModel):
     @property
     def SubnetId(self):
         """子网Id(VPC网络下有效)。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubnetId
@@ -1506,7 +1500,6 @@ class Network(AbstractModel):
     @property
     def Vip(self):
         """内网访问IP。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Vip
@@ -1518,7 +1511,6 @@ class Network(AbstractModel):
     @property
     def Port(self):
         """内网访问Port。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Port
@@ -1905,10 +1897,8 @@ class Tag(AbstractModel):
     def __init__(self):
         r"""
         :param _TagKey: 标签键
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagKey: str
         :param _TagValue: 标签值
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagValue: str
         """
         self._TagKey = None
@@ -1917,7 +1907,6 @@ class Tag(AbstractModel):
     @property
     def TagKey(self):
         """标签键
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TagKey
@@ -1929,7 +1918,6 @@ class Tag(AbstractModel):
     @property
     def TagValue(self):
         """标签值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TagValue

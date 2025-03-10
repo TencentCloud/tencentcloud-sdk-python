@@ -25,16 +25,33 @@ class CreateKnowledgeSetRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _EnvId: 环境ID
+        :type EnvId: str
         :param _Name: 知识库标识
         :type Name: str
         :param _Title: 知识库名称
         :type Title: str
         :param _Desc: 描述
         :type Desc: str
+        :param _Meta: 知识库的meta信息
+        :type Meta: str
         """
+        self._EnvId = None
         self._Name = None
         self._Title = None
         self._Desc = None
+        self._Meta = None
+
+    @property
+    def EnvId(self):
+        """环境ID
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
 
     @property
     def Name(self):
@@ -69,11 +86,24 @@ class CreateKnowledgeSetRequest(AbstractModel):
     def Desc(self, Desc):
         self._Desc = Desc
 
+    @property
+    def Meta(self):
+        """知识库的meta信息
+        :rtype: str
+        """
+        return self._Meta
+
+    @Meta.setter
+    def Meta(self, Meta):
+        self._Meta = Meta
+
 
     def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
         self._Name = params.get("Name")
         self._Title = params.get("Title")
         self._Desc = params.get("Desc")
+        self._Meta = params.get("Meta")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -988,13 +1018,27 @@ class DeleteKnowledgeDocumentSetRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _EnvId: 环境ID
+        :type EnvId: str
         :param _CollectionView: 知识库标识
         :type CollectionView: str
         :param _Query: 删除时制定的条件
         :type Query: :class:`tencentcloud.lowcode.v20210108.models.DocumentQuery`
         """
+        self._EnvId = None
         self._CollectionView = None
         self._Query = None
+
+    @property
+    def EnvId(self):
+        """环境ID
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
 
     @property
     def CollectionView(self):
@@ -1020,6 +1064,7 @@ class DeleteKnowledgeDocumentSetRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
         self._CollectionView = params.get("CollectionView")
         if params.get("Query") is not None:
             self._Query = DocumentQuery()
@@ -1124,10 +1169,24 @@ class DeleteKnowledgeSetRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _EnvId: 环境ID
+        :type EnvId: str
         :param _Name: 知识库标识
         :type Name: str
         """
+        self._EnvId = None
         self._Name = None
+
+    @property
+    def EnvId(self):
+        """环境ID
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
 
     @property
     def Name(self):
@@ -1142,6 +1201,7 @@ class DeleteKnowledgeSetRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
         self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -1526,6 +1586,8 @@ class DescribeKnowledgeDocumentSetDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _EnvId: 环境ID
+        :type EnvId: str
         :param _CollectionView: 知识库标识
         :type CollectionView: str
         :param _DocumentSetName: 文件名
@@ -1533,9 +1595,21 @@ class DescribeKnowledgeDocumentSetDetailRequest(AbstractModel):
         :param _DocumentSetId: 文件id
         :type DocumentSetId: str
         """
+        self._EnvId = None
         self._CollectionView = None
         self._DocumentSetName = None
         self._DocumentSetId = None
+
+    @property
+    def EnvId(self):
+        """环境ID
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
 
     @property
     def CollectionView(self):
@@ -1572,6 +1646,7 @@ class DescribeKnowledgeDocumentSetDetailRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
         self._CollectionView = params.get("CollectionView")
         self._DocumentSetName = params.get("DocumentSetName")
         self._DocumentSetId = params.get("DocumentSetId")
@@ -1694,13 +1769,27 @@ class DescribeKnowledgeDocumentSetListRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _EnvId: 环境ID
+        :type EnvId: str
         :param _CollectionView: 知识库标识
         :type CollectionView: str
         :param _Query: 查询条件
         :type Query: :class:`tencentcloud.lowcode.v20210108.models.PageQuery`
         """
+        self._EnvId = None
         self._CollectionView = None
         self._Query = None
+
+    @property
+    def EnvId(self):
+        """环境ID
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
 
     @property
     def CollectionView(self):
@@ -1726,6 +1815,7 @@ class DescribeKnowledgeDocumentSetListRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
         self._CollectionView = params.get("CollectionView")
         if params.get("Query") is not None:
             self._Query = PageQuery()
@@ -1852,19 +1942,36 @@ class DescribeKnowledgeSetListRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _EnvId: 环境ID
+        :type EnvId: str
         :param _Name: 知识库标识，精准查询
         :type Name: str
         :param _Title: 知识库名称，精准查询
         :type Title: str
+        :param _Offset: 分页起始位
+        :type Offset: int
         :param _Limit: 查询条数
         :type Limit: int
         :param _QueryMode: NoPage标识不分页
         :type QueryMode: str
         """
+        self._EnvId = None
         self._Name = None
         self._Title = None
+        self._Offset = None
         self._Limit = None
         self._QueryMode = None
+
+    @property
+    def EnvId(self):
+        """环境ID
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
 
     @property
     def Name(self):
@@ -1887,6 +1994,17 @@ class DescribeKnowledgeSetListRequest(AbstractModel):
     @Title.setter
     def Title(self, Title):
         self._Title = Title
+
+    @property
+    def Offset(self):
+        """分页起始位
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
     @property
     def Limit(self):
@@ -1912,8 +2030,10 @@ class DescribeKnowledgeSetListRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
         self._Name = params.get("Name")
         self._Title = params.get("Title")
+        self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._QueryMode = params.get("QueryMode")
         memeber_set = set(params.keys())
@@ -2411,6 +2531,8 @@ ENABLED 已启用
         :param _UpdateTime: 更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
+        :param _Meta: 知识库的meta信息
+        :type Meta: str
         """
         self._Name = None
         self._Title = None
@@ -2418,6 +2540,7 @@ ENABLED 已启用
         self._Active = None
         self._CreateTime = None
         self._UpdateTime = None
+        self._Meta = None
 
     @property
     def Name(self):
@@ -2493,6 +2616,17 @@ ENABLED 已启用
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
 
+    @property
+    def Meta(self):
+        """知识库的meta信息
+        :rtype: str
+        """
+        return self._Meta
+
+    @Meta.setter
+    def Meta(self, Meta):
+        self._Meta = Meta
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -2501,6 +2635,7 @@ ENABLED 已启用
         self._Active = params.get("Active")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        self._Meta = params.get("Meta")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3564,6 +3699,8 @@ class UpdateKnowledgeSetRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _EnvId: 环境ID
+        :type EnvId: str
         :param _Name: 知识库标识
         :type Name: str
         :param _Title: 知识库名称
@@ -3572,11 +3709,26 @@ class UpdateKnowledgeSetRequest(AbstractModel):
         :type Desc: str
         :param _Active: 状态;ENABLED启用；NOT_ENABLED不启用
         :type Active: str
+        :param _Meta: 知识库的meta信息
+        :type Meta: str
         """
+        self._EnvId = None
         self._Name = None
         self._Title = None
         self._Desc = None
         self._Active = None
+        self._Meta = None
+
+    @property
+    def EnvId(self):
+        """环境ID
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
 
     @property
     def Name(self):
@@ -3622,12 +3774,25 @@ class UpdateKnowledgeSetRequest(AbstractModel):
     def Active(self, Active):
         self._Active = Active
 
+    @property
+    def Meta(self):
+        """知识库的meta信息
+        :rtype: str
+        """
+        return self._Meta
+
+    @Meta.setter
+    def Meta(self, Meta):
+        self._Meta = Meta
+
 
     def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
         self._Name = params.get("Name")
         self._Title = params.get("Title")
         self._Desc = params.get("Desc")
         self._Active = params.get("Active")
+        self._Meta = params.get("Meta")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3673,11 +3838,13 @@ class UploadKnowledgeDocumentSetRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _EnvId: 环境ID
+        :type EnvId: str
         :param _CollectionView: 知识库标识
         :type CollectionView: str
         :param _FileName: 状态;ENABLED启用；NOT_ENABLED不启用
         :type FileName: str
-        :param _CosUrl: 文件存储位置的可读地址
+        :param _CosUrl: 腾讯云文件存储位置的可读地址
         :type CosUrl: str
         :param _DocumentType: 文件类型，例如: .docx, .md
         :type DocumentType: str
@@ -3690,6 +3857,7 @@ class UploadKnowledgeDocumentSetRequest(AbstractModel):
         :param _DocumentSetId: 文件id
         :type DocumentSetId: str
         """
+        self._EnvId = None
         self._CollectionView = None
         self._FileName = None
         self._CosUrl = None
@@ -3698,6 +3866,17 @@ class UploadKnowledgeDocumentSetRequest(AbstractModel):
         self._FileTitle = None
         self._FileMetaData = None
         self._DocumentSetId = None
+
+    @property
+    def EnvId(self):
+        """环境ID
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
 
     @property
     def CollectionView(self):
@@ -3723,7 +3902,7 @@ class UploadKnowledgeDocumentSetRequest(AbstractModel):
 
     @property
     def CosUrl(self):
-        """文件存储位置的可读地址
+        """腾讯云文件存储位置的可读地址
         :rtype: str
         """
         return self._CosUrl
@@ -3789,6 +3968,7 @@ class UploadKnowledgeDocumentSetRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
         self._CollectionView = params.get("CollectionView")
         self._FileName = params.get("FileName")
         self._CosUrl = params.get("CosUrl")
