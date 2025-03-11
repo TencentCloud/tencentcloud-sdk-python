@@ -4378,7 +4378,7 @@ class CreateCCPrecisionPolicyRequest(AbstractModel):
         :type Protocol: str
         :param _Domain: 域名
         :type Domain: str
-        :param _PolicyAction: 策略方式，可取值alg表示验证码，drop表示丢弃
+        :param _PolicyAction: 策略方式，可取值alg表示验证码，drop表示丢弃，trans表示放行
         :type PolicyAction: str
         :param _PolicyList: 策略记录
         :type PolicyList: list of CCPrecisionPlyRecord
@@ -4436,7 +4436,7 @@ class CreateCCPrecisionPolicyRequest(AbstractModel):
 
     @property
     def PolicyAction(self):
-        """策略方式，可取值alg表示验证码，drop表示丢弃
+        """策略方式，可取值alg表示验证码，drop表示丢弃，trans表示放行
         :rtype: str
         """
         return self._PolicyAction

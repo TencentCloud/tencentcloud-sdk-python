@@ -1666,22 +1666,16 @@ class DescribeFileSystemResponse(AbstractModel):
         :param _FileSystem: 文件系统
         :type FileSystem: :class:`tencentcloud.chdfs.v20201112.models.FileSystem`
         :param _CapacityUsed: 文件系统已使用容量（byte）
-注意：此字段可能返回 null，表示取不到有效值。
         :type CapacityUsed: int
         :param _ArchiveCapacityUsed: 已使用COS归档存储容量（byte）
-注意：此字段可能返回 null，表示取不到有效值。
         :type ArchiveCapacityUsed: int
         :param _StandardCapacityUsed: 已使用COS标准存储容量（byte）
-注意：此字段可能返回 null，表示取不到有效值。
         :type StandardCapacityUsed: int
         :param _DegradeCapacityUsed: 已使用COS低频存储容量（byte）
-注意：此字段可能返回 null，表示取不到有效值。
         :type DegradeCapacityUsed: int
         :param _DeepArchiveCapacityUsed: 已使用COS深度归档存储容量（byte）
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeepArchiveCapacityUsed: int
         :param _IntelligentCapacityUsed: 已使用COS智能分层存储容量（byte）
-注意：此字段可能返回 null，表示取不到有效值。
         :type IntelligentCapacityUsed: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1709,7 +1703,6 @@ class DescribeFileSystemResponse(AbstractModel):
     @property
     def CapacityUsed(self):
         """文件系统已使用容量（byte）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CapacityUsed
@@ -1721,7 +1714,6 @@ class DescribeFileSystemResponse(AbstractModel):
     @property
     def ArchiveCapacityUsed(self):
         """已使用COS归档存储容量（byte）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ArchiveCapacityUsed
@@ -1733,7 +1725,6 @@ class DescribeFileSystemResponse(AbstractModel):
     @property
     def StandardCapacityUsed(self):
         """已使用COS标准存储容量（byte）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._StandardCapacityUsed
@@ -1745,7 +1736,6 @@ class DescribeFileSystemResponse(AbstractModel):
     @property
     def DegradeCapacityUsed(self):
         """已使用COS低频存储容量（byte）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DegradeCapacityUsed
@@ -1757,7 +1747,6 @@ class DescribeFileSystemResponse(AbstractModel):
     @property
     def DeepArchiveCapacityUsed(self):
         """已使用COS深度归档存储容量（byte）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DeepArchiveCapacityUsed
@@ -1769,7 +1758,6 @@ class DescribeFileSystemResponse(AbstractModel):
     @property
     def IntelligentCapacityUsed(self):
         """已使用COS智能分层存储容量（byte）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IntelligentCapacityUsed

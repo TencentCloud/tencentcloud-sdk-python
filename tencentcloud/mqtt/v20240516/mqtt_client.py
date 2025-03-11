@@ -118,6 +118,29 @@ class MqttClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateHttpAuthenticator(self, request):
+        """创建一个HTTP的认证器
+
+        :param request: Request instance for CreateHttpAuthenticator.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.CreateHttpAuthenticatorRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.CreateHttpAuthenticatorResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateHttpAuthenticator", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateHttpAuthenticatorResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateInsPublicEndpoint(self, request):
         """为MQTT实例创建公网接入点
 
@@ -901,6 +924,29 @@ class MqttClient(AbstractClient):
             body = self.call("ModifyAuthorizationPolicy", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyAuthorizationPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyHttpAuthenticator(self, request):
+        """修改MQTT HTTP 认证器
+
+        :param request: Request instance for ModifyHttpAuthenticator.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.ModifyHttpAuthenticatorRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.ModifyHttpAuthenticatorResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyHttpAuthenticator", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyHttpAuthenticatorResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

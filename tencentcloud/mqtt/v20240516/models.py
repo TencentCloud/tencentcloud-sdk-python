@@ -282,42 +282,30 @@ class AuthorizationPolicyItem(AbstractModel):
         :param _InstanceId: 集群ID
         :type InstanceId: str
         :param _PolicyName: 规则名
-注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyName: str
         :param _Version: 规则语法版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Version: int
         :param _Priority: 越小越优先
-注意：此字段可能返回 null，表示取不到有效值。
         :type Priority: int
         :param _Effect: allow/deny
-注意：此字段可能返回 null，表示取不到有效值。
         :type Effect: str
         :param _Actions: connect、pub、sub
-注意：此字段可能返回 null，表示取不到有效值。
         :type Actions: str
         :param _Resources: 资源
-注意：此字段可能返回 null，表示取不到有效值。
         :type Resources: str
         :param _ClientId: client
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClientId: str
         :param _Username: 用户
-注意：此字段可能返回 null，表示取不到有效值。
         :type Username: str
         :param _Ip: IP地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ip: str
         :param _Qos: 0，1，2
-注意：此字段可能返回 null，表示取不到有效值。
         :type Qos: str
         :param _Retain: 1：表示匹配retain消息
 2：表示匹配非retain消息
 3：表示匹配retain和非retain消息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Retain: int
         :param _Remark: 描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _CreatedTime: 1713164969433
         :type CreatedTime: int
@@ -366,7 +354,6 @@ class AuthorizationPolicyItem(AbstractModel):
     @property
     def PolicyName(self):
         """规则名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PolicyName
@@ -378,7 +365,6 @@ class AuthorizationPolicyItem(AbstractModel):
     @property
     def Version(self):
         """规则语法版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Version
@@ -390,7 +376,6 @@ class AuthorizationPolicyItem(AbstractModel):
     @property
     def Priority(self):
         """越小越优先
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Priority
@@ -402,7 +387,6 @@ class AuthorizationPolicyItem(AbstractModel):
     @property
     def Effect(self):
         """allow/deny
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Effect
@@ -414,7 +398,6 @@ class AuthorizationPolicyItem(AbstractModel):
     @property
     def Actions(self):
         """connect、pub、sub
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Actions
@@ -426,7 +409,6 @@ class AuthorizationPolicyItem(AbstractModel):
     @property
     def Resources(self):
         """资源
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Resources
@@ -438,7 +420,6 @@ class AuthorizationPolicyItem(AbstractModel):
     @property
     def ClientId(self):
         """client
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClientId
@@ -450,7 +431,6 @@ class AuthorizationPolicyItem(AbstractModel):
     @property
     def Username(self):
         """用户
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Username
@@ -462,7 +442,6 @@ class AuthorizationPolicyItem(AbstractModel):
     @property
     def Ip(self):
         """IP地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Ip
@@ -474,7 +453,6 @@ class AuthorizationPolicyItem(AbstractModel):
     @property
     def Qos(self):
         """0，1，2
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Qos
@@ -488,7 +466,6 @@ class AuthorizationPolicyItem(AbstractModel):
         """1：表示匹配retain消息
 2：表示匹配非retain消息
 3：表示匹配retain和非retain消息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Retain
@@ -500,7 +477,6 @@ class AuthorizationPolicyItem(AbstractModel):
     @property
     def Remark(self):
         """描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -567,10 +543,8 @@ class AuthorizationPolicyPriority(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: 策略id
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
         :param _Priority: 优先级
-注意：此字段可能返回 null，表示取不到有效值。
         :type Priority: int
         """
         self._Id = None
@@ -579,7 +553,6 @@ class AuthorizationPolicyPriority(AbstractModel):
     @property
     def Id(self):
         """策略id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Id
@@ -591,7 +564,6 @@ class AuthorizationPolicyPriority(AbstractModel):
     @property
     def Priority(self):
         """优先级
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Priority
@@ -604,6 +576,57 @@ class AuthorizationPolicyPriority(AbstractModel):
     def _deserialize(self, params):
         self._Id = params.get("Id")
         self._Priority = params.get("Priority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BodyItem(AbstractModel):
+    """HTTP 认证器body
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: body key
+        :type Key: str
+        :param _Value: body key
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        """body key
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        """body key
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -632,28 +655,20 @@ class CaCertificateItem(AbstractModel):
         :param _VerificationCertificate: 验证证书内容
         :type VerificationCertificate: str
         :param _Status: ca状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _LastActivationTime: 上次激活时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type LastActivationTime: int
         :param _CreatedTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedTime: int
         :param _UpdateTime: 预销毁时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: int
         :param _LastInactivationTime: 上次去激活时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type LastInactivationTime: int
         :param _CaIssuerCn: Ca证书颁发者CN
-注意：此字段可能返回 null，表示取不到有效值。
         :type CaIssuerCn: str
         :param _NotBeforeTime: 生效时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type NotBeforeTime: int
         :param _NotAfterTime: 失效时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type NotAfterTime: int
         """
         self._CaCn = None
@@ -728,7 +743,6 @@ class CaCertificateItem(AbstractModel):
     @property
     def Status(self):
         """ca状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -740,7 +754,6 @@ class CaCertificateItem(AbstractModel):
     @property
     def LastActivationTime(self):
         """上次激活时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LastActivationTime
@@ -752,7 +765,6 @@ class CaCertificateItem(AbstractModel):
     @property
     def CreatedTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CreatedTime
@@ -764,7 +776,6 @@ class CaCertificateItem(AbstractModel):
     @property
     def UpdateTime(self):
         """预销毁时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._UpdateTime
@@ -776,7 +787,6 @@ class CaCertificateItem(AbstractModel):
     @property
     def LastInactivationTime(self):
         """上次去激活时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LastInactivationTime
@@ -788,7 +798,6 @@ class CaCertificateItem(AbstractModel):
     @property
     def CaIssuerCn(self):
         """Ca证书颁发者CN
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CaIssuerCn
@@ -800,7 +809,6 @@ class CaCertificateItem(AbstractModel):
     @property
     def NotBeforeTime(self):
         """生效时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._NotBeforeTime
@@ -812,7 +820,6 @@ class CaCertificateItem(AbstractModel):
     @property
     def NotAfterTime(self):
         """失效时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._NotAfterTime
@@ -1064,6 +1071,215 @@ class CreateAuthorizationPolicyRequest(AbstractModel):
 
 class CreateAuthorizationPolicyResponse(AbstractModel):
     """CreateAuthorizationPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreateHttpAuthenticatorRequest(AbstractModel):
+    """CreateHttpAuthenticator请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _Endpoint: jwks端点
+        :type Endpoint: str
+        :param _Concurrency: 最大并发连接数，默认8，范围：1-20
+        :type Concurrency: int
+        :param _Method: 网络请求方法 Get 或 Post，默认post
+        :type Method: str
+        :param _Status: 认证器是否开启：open-启用；close-关闭
+        :type Status: str
+        :param _Remark: 说明
+        :type Remark: str
+        :param _ConnectTimeout: 连接超时时间，单位：秒，范围：1-30
+        :type ConnectTimeout: int
+        :param _ReadTimeout: 请求超时时间，单位：秒，范围：1-30
+        :type ReadTimeout: int
+        :param _Header: 转发请求header
+        :type Header: list of HeaderItem
+        :param _Body: 转发请求body
+        :type Body: list of BodyItem
+        """
+        self._InstanceId = None
+        self._Endpoint = None
+        self._Concurrency = None
+        self._Method = None
+        self._Status = None
+        self._Remark = None
+        self._ConnectTimeout = None
+        self._ReadTimeout = None
+        self._Header = None
+        self._Body = None
+
+    @property
+    def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Endpoint(self):
+        """jwks端点
+        :rtype: str
+        """
+        return self._Endpoint
+
+    @Endpoint.setter
+    def Endpoint(self, Endpoint):
+        self._Endpoint = Endpoint
+
+    @property
+    def Concurrency(self):
+        """最大并发连接数，默认8，范围：1-20
+        :rtype: int
+        """
+        return self._Concurrency
+
+    @Concurrency.setter
+    def Concurrency(self, Concurrency):
+        self._Concurrency = Concurrency
+
+    @property
+    def Method(self):
+        """网络请求方法 Get 或 Post，默认post
+        :rtype: str
+        """
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
+
+    @property
+    def Status(self):
+        """认证器是否开启：open-启用；close-关闭
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Remark(self):
+        """说明
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def ConnectTimeout(self):
+        """连接超时时间，单位：秒，范围：1-30
+        :rtype: int
+        """
+        return self._ConnectTimeout
+
+    @ConnectTimeout.setter
+    def ConnectTimeout(self, ConnectTimeout):
+        self._ConnectTimeout = ConnectTimeout
+
+    @property
+    def ReadTimeout(self):
+        """请求超时时间，单位：秒，范围：1-30
+        :rtype: int
+        """
+        return self._ReadTimeout
+
+    @ReadTimeout.setter
+    def ReadTimeout(self, ReadTimeout):
+        self._ReadTimeout = ReadTimeout
+
+    @property
+    def Header(self):
+        """转发请求header
+        :rtype: list of HeaderItem
+        """
+        return self._Header
+
+    @Header.setter
+    def Header(self, Header):
+        self._Header = Header
+
+    @property
+    def Body(self):
+        """转发请求body
+        :rtype: list of BodyItem
+        """
+        return self._Body
+
+    @Body.setter
+    def Body(self, Body):
+        self._Body = Body
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Endpoint = params.get("Endpoint")
+        self._Concurrency = params.get("Concurrency")
+        self._Method = params.get("Method")
+        self._Status = params.get("Status")
+        self._Remark = params.get("Remark")
+        self._ConnectTimeout = params.get("ConnectTimeout")
+        self._ReadTimeout = params.get("ReadTimeout")
+        if params.get("Header") is not None:
+            self._Header = []
+            for item in params.get("Header"):
+                obj = HeaderItem()
+                obj._deserialize(item)
+                self._Header.append(obj)
+        if params.get("Body") is not None:
+            self._Body = []
+            for item in params.get("Body"):
+                obj = BodyItem()
+                obj._deserialize(item)
+                self._Body.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateHttpAuthenticatorResponse(AbstractModel):
+    """CreateHttpAuthenticator返回参数结构体
 
     """
 
@@ -3025,7 +3241,6 @@ class DescribeCaCertificateResponse(AbstractModel):
         :param _Format: 证书格式
         :type Format: str
         :param _CaIssuerCn: Ca证书颁发者CN
-注意：此字段可能返回 null，表示取不到有效值。
         :type CaIssuerCn: str
         :param _NotBeforeTime: 生效开始时间
         :type NotBeforeTime: int
@@ -3159,7 +3374,6 @@ class DescribeCaCertificateResponse(AbstractModel):
     @property
     def CaIssuerCn(self):
         """Ca证书颁发者CN
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CaIssuerCn
@@ -3486,13 +3700,14 @@ class DescribeDeviceCertificateResponse(AbstractModel):
         :param _Format: 证书格式
         :type Format: str
         :param _ClientId: 客户端id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClientId: str
         :param _CertificateSource:     API, 手动注册   
     JITP 自动注册
         :type CertificateSource: str
         :param _NotBeforeTime: 证书生效开始时间
         :type NotBeforeTime: int
+        :param _OrganizationalUnit: 组织单位
+        :type OrganizationalUnit: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3510,6 +3725,7 @@ class DescribeDeviceCertificateResponse(AbstractModel):
         self._ClientId = None
         self._CertificateSource = None
         self._NotBeforeTime = None
+        self._OrganizationalUnit = None
         self._RequestId = None
 
     @property
@@ -3636,7 +3852,6 @@ class DescribeDeviceCertificateResponse(AbstractModel):
     @property
     def ClientId(self):
         """客户端id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClientId
@@ -3669,6 +3884,17 @@ class DescribeDeviceCertificateResponse(AbstractModel):
         self._NotBeforeTime = NotBeforeTime
 
     @property
+    def OrganizationalUnit(self):
+        """组织单位
+        :rtype: str
+        """
+        return self._OrganizationalUnit
+
+    @OrganizationalUnit.setter
+    def OrganizationalUnit(self, OrganizationalUnit):
+        self._OrganizationalUnit = OrganizationalUnit
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -3695,6 +3921,7 @@ class DescribeDeviceCertificateResponse(AbstractModel):
         self._ClientId = params.get("ClientId")
         self._CertificateSource = params.get("CertificateSource")
         self._NotBeforeTime = params.get("NotBeforeTime")
+        self._OrganizationalUnit = params.get("OrganizationalUnit")
         self._RequestId = params.get("RequestId")
 
 
@@ -4216,7 +4443,6 @@ class DescribeInstanceListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 查询总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _Data: 实例列表
         :type Data: list of MQTTInstanceItem
@@ -4230,7 +4456,6 @@ class DescribeInstanceListResponse(AbstractModel):
     @property
     def TotalCount(self):
         """查询总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -4824,10 +5049,8 @@ class DescribeMessageListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 查询总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _Data: 消息记录列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of MQTTMessageItem
         :param _TaskRequestId: 请求任务id
         :type TaskRequestId: str
@@ -4842,7 +5065,6 @@ class DescribeMessageListResponse(AbstractModel):
     @property
     def TotalCount(self):
         """查询总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -4854,7 +5076,6 @@ class DescribeMessageListResponse(AbstractModel):
     @property
     def Data(self):
         """消息记录列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of MQTTMessageItem
         """
         return self._Data
@@ -4912,10 +5133,8 @@ class DescribeProductSKUListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 查询总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _MQTTProductSkuList: mqtt商品配置信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type MQTTProductSkuList: list of ProductSkuItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4927,7 +5146,6 @@ class DescribeProductSKUListResponse(AbstractModel):
     @property
     def TotalCount(self):
         """查询总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -4939,7 +5157,6 @@ class DescribeProductSKUListResponse(AbstractModel):
     @property
     def MQTTProductSkuList(self):
         """mqtt商品配置信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ProductSkuItem
         """
         return self._MQTTProductSkuList
@@ -5161,7 +5378,6 @@ class DescribeTopicListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 查询总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _Data: 主题列表
         :type Data: list of MQTTTopicItem
@@ -5175,7 +5391,6 @@ class DescribeTopicListResponse(AbstractModel):
     @property
     def TotalCount(self):
         """查询总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -5453,7 +5668,6 @@ class DescribeUserListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 查询总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _Data: 角色信息列表
         :type Data: list of MQTTUserItem
@@ -5467,7 +5681,6 @@ class DescribeUserListResponse(AbstractModel):
     @property
     def TotalCount(self):
         """查询总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -5518,7 +5731,6 @@ class DeviceCertificateItem(AbstractModel):
     def __init__(self):
         r"""
         :param _ClientId: 客户端id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClientId: str
         :param _DeviceCertificate: 设备证书
         :type DeviceCertificate: str
@@ -5536,27 +5748,23 @@ class DeviceCertificateItem(AbstractModel):
     REVOKED,//吊销
     PENDING_ACTIVATION,//注册待激活
         :type Status: str
+        :param _OrganizationalUnit: 组织单位
+        :type OrganizationalUnit: str
         :param _LastActivationTime: 上次激活时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type LastActivationTime: int
         :param _LastInactivationTime: 上次取消激活时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type LastInactivationTime: int
         :param _CreatedTime: 创建时间
         :type CreatedTime: int
         :param _UpdateTime: 预销毁时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: int
         :param _CertificateSource: 证书来源：
 API, 手动注册   
 JITP 自动注册
-注意：此字段可能返回 null，表示取不到有效值。
         :type CertificateSource: str
         :param _NotAfterTime: 证书失效日期
-注意：此字段可能返回 null，表示取不到有效值。
         :type NotAfterTime: int
         :param _NotBeforeTime: 证书生效开始日期
-注意：此字段可能返回 null，表示取不到有效值。
         :type NotBeforeTime: int
         """
         self._ClientId = None
@@ -5566,6 +5774,7 @@ JITP 自动注册
         self._CaSn = None
         self._Format = None
         self._Status = None
+        self._OrganizationalUnit = None
         self._LastActivationTime = None
         self._LastInactivationTime = None
         self._CreatedTime = None
@@ -5577,7 +5786,6 @@ JITP 自动注册
     @property
     def ClientId(self):
         """客户端id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClientId
@@ -5657,9 +5865,19 @@ JITP 自动注册
         self._Status = Status
 
     @property
+    def OrganizationalUnit(self):
+        """组织单位
+        :rtype: str
+        """
+        return self._OrganizationalUnit
+
+    @OrganizationalUnit.setter
+    def OrganizationalUnit(self, OrganizationalUnit):
+        self._OrganizationalUnit = OrganizationalUnit
+
+    @property
     def LastActivationTime(self):
         """上次激活时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LastActivationTime
@@ -5671,7 +5889,6 @@ JITP 自动注册
     @property
     def LastInactivationTime(self):
         """上次取消激活时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LastInactivationTime
@@ -5694,7 +5911,6 @@ JITP 自动注册
     @property
     def UpdateTime(self):
         """预销毁时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._UpdateTime
@@ -5708,7 +5924,6 @@ JITP 自动注册
         """证书来源：
 API, 手动注册   
 JITP 自动注册
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CertificateSource
@@ -5720,7 +5935,6 @@ JITP 自动注册
     @property
     def NotAfterTime(self):
         """证书失效日期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._NotAfterTime
@@ -5732,7 +5946,6 @@ JITP 自动注册
     @property
     def NotBeforeTime(self):
         """证书生效开始日期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._NotBeforeTime
@@ -5750,6 +5963,7 @@ JITP 自动注册
         self._CaSn = params.get("CaSn")
         self._Format = params.get("Format")
         self._Status = params.get("Status")
+        self._OrganizationalUnit = params.get("OrganizationalUnit")
         self._LastActivationTime = params.get("LastActivationTime")
         self._LastInactivationTime = params.get("LastInactivationTime")
         self._CreatedTime = params.get("CreatedTime")
@@ -5818,6 +6032,57 @@ class Filter(AbstractModel):
         
 
 
+class HeaderItem(AbstractModel):
+    """HTTP 认证器header
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: header key
+        :type Key: str
+        :param _Value: header value
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        """header key
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        """header value
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class IpRule(AbstractModel):
     """IP规则
 
@@ -5830,7 +6095,6 @@ class IpRule(AbstractModel):
         :param _Allow: 是否允许放行
         :type Allow: bool
         :param _Remark: 备注信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         """
         self._Ip = None
@@ -5862,7 +6126,6 @@ class IpRule(AbstractModel):
     @property
     def Remark(self):
         """备注信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -5894,19 +6157,14 @@ class MQTTAuthenticatorItem(AbstractModel):
     def __init__(self):
         r"""
         :param _Type: 认证器类型: JWT：JWT认证器 JWKS：JWKS认证器 BYOC：一端一证认证器
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Config: 认证器配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type Config: str
         :param _Status: 认证器状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: int
         :param _Remark: 说明
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         """
         self._Type = None
@@ -5918,7 +6176,6 @@ class MQTTAuthenticatorItem(AbstractModel):
     @property
     def Type(self):
         """认证器类型: JWT：JWT认证器 JWKS：JWKS认证器 BYOC：一端一证认证器
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -5930,7 +6187,6 @@ class MQTTAuthenticatorItem(AbstractModel):
     @property
     def Config(self):
         """认证器配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Config
@@ -5942,7 +6198,6 @@ class MQTTAuthenticatorItem(AbstractModel):
     @property
     def Status(self):
         """认证器状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -5954,7 +6209,6 @@ class MQTTAuthenticatorItem(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CreateTime
@@ -5966,7 +6220,6 @@ class MQTTAuthenticatorItem(AbstractModel):
     @property
     def Remark(self):
         """说明
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -6000,31 +6253,22 @@ class MQTTClientInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _ClientId: 客户端唯一标识
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClientId: str
         :param _ClientAddress: 客户端网络地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClientAddress: str
         :param _ProtocolVersion: MQTT 协议版本，4 表示 MQTT 3.1.1
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProtocolVersion: int
         :param _Keepalive: 保持连接时间，单位：秒
-注意：此字段可能返回 null，表示取不到有效值。
         :type Keepalive: int
         :param _ConnectionStatus: 连接状态，CONNECTED 已连接，DISCONNECTED 未连接
-注意：此字段可能返回 null，表示取不到有效值。
         :type ConnectionStatus: str
         :param _CreateTime: 客户端创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: int
         :param _ConnectTime: 上次建立连接时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ConnectTime: int
         :param _DisconnectTime: 上次断开连接时间，仅对持久会话（cleanSession=false）并且客户端当前未连接时有意义
-注意：此字段可能返回 null，表示取不到有效值。
         :type DisconnectTime: int
         :param _MQTTClientSubscriptions: 客户端的订阅列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type MQTTClientSubscriptions: list of MQTTClientSubscription
         """
         self._ClientId = None
@@ -6040,7 +6284,6 @@ class MQTTClientInfo(AbstractModel):
     @property
     def ClientId(self):
         """客户端唯一标识
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClientId
@@ -6052,7 +6295,6 @@ class MQTTClientInfo(AbstractModel):
     @property
     def ClientAddress(self):
         """客户端网络地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClientAddress
@@ -6064,7 +6306,6 @@ class MQTTClientInfo(AbstractModel):
     @property
     def ProtocolVersion(self):
         """MQTT 协议版本，4 表示 MQTT 3.1.1
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ProtocolVersion
@@ -6076,7 +6317,6 @@ class MQTTClientInfo(AbstractModel):
     @property
     def Keepalive(self):
         """保持连接时间，单位：秒
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Keepalive
@@ -6088,7 +6328,6 @@ class MQTTClientInfo(AbstractModel):
     @property
     def ConnectionStatus(self):
         """连接状态，CONNECTED 已连接，DISCONNECTED 未连接
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ConnectionStatus
@@ -6100,7 +6339,6 @@ class MQTTClientInfo(AbstractModel):
     @property
     def CreateTime(self):
         """客户端创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CreateTime
@@ -6112,7 +6350,6 @@ class MQTTClientInfo(AbstractModel):
     @property
     def ConnectTime(self):
         """上次建立连接时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ConnectTime
@@ -6124,7 +6361,6 @@ class MQTTClientInfo(AbstractModel):
     @property
     def DisconnectTime(self):
         """上次断开连接时间，仅对持久会话（cleanSession=false）并且客户端当前未连接时有意义
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DisconnectTime
@@ -6136,7 +6372,6 @@ class MQTTClientInfo(AbstractModel):
     @property
     def MQTTClientSubscriptions(self):
         """客户端的订阅列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of MQTTClientSubscription
         """
         return self._MQTTClientSubscriptions
@@ -6260,25 +6495,18 @@ class MQTTEndpointItem(AbstractModel):
     def __init__(self):
         r"""
         :param _Type: 类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Url: 接入点
-注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
         :param _VpcId: vpc信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
         :param _SubnetId: 子网信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetId: str
         :param _Host: 主机
-注意：此字段可能返回 null，表示取不到有效值。
         :type Host: str
         :param _Port: 端口
-注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
         :param _Ip: 接入点ip
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ip: str
         """
         self._Type = None
@@ -6292,7 +6520,6 @@ class MQTTEndpointItem(AbstractModel):
     @property
     def Type(self):
         """类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -6304,7 +6531,6 @@ class MQTTEndpointItem(AbstractModel):
     @property
     def Url(self):
         """接入点
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Url
@@ -6316,7 +6542,6 @@ class MQTTEndpointItem(AbstractModel):
     @property
     def VpcId(self):
         """vpc信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VpcId
@@ -6328,7 +6553,6 @@ class MQTTEndpointItem(AbstractModel):
     @property
     def SubnetId(self):
         """子网信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubnetId
@@ -6340,7 +6564,6 @@ class MQTTEndpointItem(AbstractModel):
     @property
     def Host(self):
         """主机
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Host
@@ -6352,7 +6575,6 @@ class MQTTEndpointItem(AbstractModel):
     @property
     def Port(self):
         """端口
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Port
@@ -6364,7 +6586,6 @@ class MQTTEndpointItem(AbstractModel):
     @property
     def Ip(self):
         """接入点ip
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Ip
@@ -6426,44 +6647,32 @@ DELETING，删除中
         :param _TopicNumLimit: 实例主题数上限
         :type TopicNumLimit: int
         :param _Remark: 备注信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _TopicNum: 主题数量
         :type TopicNum: int
         :param _SkuCode: 商品规格
         :type SkuCode: str
         :param _TpsLimit: 弹性TPS限流值
-注意：此字段可能返回 null，表示取不到有效值。
         :type TpsLimit: int
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: int
         :param _MaxSubscriptionPerClient: 单客户端最大订阅数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxSubscriptionPerClient: int
         :param _ClientNumLimit: 客户端连接数上线
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClientNumLimit: int
         :param _RenewFlag: 是否自动续费
-注意：此字段可能返回 null，表示取不到有效值。
         :type RenewFlag: int
         :param _PayMode: 计费模式， POSTPAID，按量计费 PREPAID，包年包月
-注意：此字段可能返回 null，表示取不到有效值。
         :type PayMode: str
         :param _ExpiryTime: 到期时间，秒为单位
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExpiryTime: int
         :param _DestroyTime: 预销毁时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type DestroyTime: int
         :param _AuthorizationPolicyLimit: 授权规则条数限制
-注意：此字段可能返回 null，表示取不到有效值。
         :type AuthorizationPolicyLimit: int
         :param _MaxCaNum: 最大ca配额
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxCaNum: int
         :param _MaxSubscription: 最大订阅数
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxSubscription: int
         """
         self._InstanceId = None
@@ -6570,7 +6779,6 @@ DELETING，删除中
     @property
     def Remark(self):
         """备注信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -6604,7 +6812,6 @@ DELETING，删除中
     @property
     def TpsLimit(self):
         """弹性TPS限流值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TpsLimit
@@ -6616,7 +6823,6 @@ DELETING，删除中
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CreateTime
@@ -6628,7 +6834,6 @@ DELETING，删除中
     @property
     def MaxSubscriptionPerClient(self):
         """单客户端最大订阅数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxSubscriptionPerClient
@@ -6640,7 +6845,6 @@ DELETING，删除中
     @property
     def ClientNumLimit(self):
         """客户端连接数上线
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ClientNumLimit
@@ -6652,7 +6856,6 @@ DELETING，删除中
     @property
     def RenewFlag(self):
         """是否自动续费
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RenewFlag
@@ -6664,7 +6867,6 @@ DELETING，删除中
     @property
     def PayMode(self):
         """计费模式， POSTPAID，按量计费 PREPAID，包年包月
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PayMode
@@ -6676,7 +6878,6 @@ DELETING，删除中
     @property
     def ExpiryTime(self):
         """到期时间，秒为单位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ExpiryTime
@@ -6688,7 +6889,6 @@ DELETING，删除中
     @property
     def DestroyTime(self):
         """预销毁时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DestroyTime
@@ -6700,7 +6900,6 @@ DELETING，删除中
     @property
     def AuthorizationPolicyLimit(self):
         """授权规则条数限制
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AuthorizationPolicyLimit
@@ -6712,7 +6911,6 @@ DELETING，删除中
     @property
     def MaxCaNum(self):
         """最大ca配额
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxCaNum
@@ -6724,7 +6922,6 @@ DELETING，删除中
     @property
     def MaxSubscription(self):
         """最大订阅数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxSubscription
@@ -6773,31 +6970,22 @@ class MQTTMessageItem(AbstractModel):
     def __init__(self):
         r"""
         :param _MsgId: 消息ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type MsgId: str
         :param _Tags: 消息tag
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: str
         :param _Keys: 消息key
-注意：此字段可能返回 null，表示取不到有效值。
         :type Keys: str
         :param _ProducerAddr: 客户端地址	
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProducerAddr: str
         :param _ProduceTime: 消息发送时间	
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProduceTime: str
         :param _DeadLetterResendTimes: 死信重发次数	
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeadLetterResendTimes: int
         :param _DeadLetterResendSuccessTimes: 死信重发成功次数
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeadLetterResendSuccessTimes: int
         :param _SubTopic: 子topic
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubTopic: str
         :param _Qos: 消息质量等级
-注意：此字段可能返回 null，表示取不到有效值。
         :type Qos: str
         """
         self._MsgId = None
@@ -6813,7 +7001,6 @@ class MQTTMessageItem(AbstractModel):
     @property
     def MsgId(self):
         """消息ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MsgId
@@ -6825,7 +7012,6 @@ class MQTTMessageItem(AbstractModel):
     @property
     def Tags(self):
         """消息tag
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Tags
@@ -6837,7 +7023,6 @@ class MQTTMessageItem(AbstractModel):
     @property
     def Keys(self):
         """消息key
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Keys
@@ -6849,7 +7034,6 @@ class MQTTMessageItem(AbstractModel):
     @property
     def ProducerAddr(self):
         """客户端地址	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProducerAddr
@@ -6861,7 +7045,6 @@ class MQTTMessageItem(AbstractModel):
     @property
     def ProduceTime(self):
         """消息发送时间	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProduceTime
@@ -6873,7 +7056,6 @@ class MQTTMessageItem(AbstractModel):
     @property
     def DeadLetterResendTimes(self):
         """死信重发次数	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DeadLetterResendTimes
@@ -6885,7 +7067,6 @@ class MQTTMessageItem(AbstractModel):
     @property
     def DeadLetterResendSuccessTimes(self):
         """死信重发成功次数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DeadLetterResendSuccessTimes
@@ -6897,7 +7078,6 @@ class MQTTMessageItem(AbstractModel):
     @property
     def SubTopic(self):
         """子topic
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubTopic
@@ -6909,7 +7089,6 @@ class MQTTMessageItem(AbstractModel):
     @property
     def Qos(self):
         """消息质量等级
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Qos
@@ -6951,7 +7130,6 @@ class MQTTTopicItem(AbstractModel):
         :param _Topic: 主题名称
         :type Topic: str
         :param _Remark: 主题描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         """
         self._InstanceId = None
@@ -6983,7 +7161,6 @@ class MQTTTopicItem(AbstractModel):
     @property
     def Remark(self):
         """主题描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -7336,6 +7513,215 @@ class ModifyAuthorizationPolicyRequest(AbstractModel):
 
 class ModifyAuthorizationPolicyResponse(AbstractModel):
     """ModifyAuthorizationPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyHttpAuthenticatorRequest(AbstractModel):
+    """ModifyHttpAuthenticator请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _Endpoint: 端点
+        :type Endpoint: str
+        :param _Status: 认证器状态：open-启用；close-关闭
+        :type Status: str
+        :param _Concurrency: 最大并发连接数，默认8，范围：1-20
+        :type Concurrency: int
+        :param _ConnectTimeout: 连接超时时间，单位：秒，范围：1-30
+        :type ConnectTimeout: int
+        :param _ReadTimeout: 请求超时时间，单位：秒，范围：1-30
+        :type ReadTimeout: int
+        :param _Remark: 说明
+        :type Remark: str
+        :param _Method: 请求方法，GET 或者 POST
+        :type Method: str
+        :param _Header: 请求header
+        :type Header: list of HeaderItem
+        :param _Body: 请求body
+        :type Body: list of BodyItem
+        """
+        self._InstanceId = None
+        self._Endpoint = None
+        self._Status = None
+        self._Concurrency = None
+        self._ConnectTimeout = None
+        self._ReadTimeout = None
+        self._Remark = None
+        self._Method = None
+        self._Header = None
+        self._Body = None
+
+    @property
+    def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Endpoint(self):
+        """端点
+        :rtype: str
+        """
+        return self._Endpoint
+
+    @Endpoint.setter
+    def Endpoint(self, Endpoint):
+        self._Endpoint = Endpoint
+
+    @property
+    def Status(self):
+        """认证器状态：open-启用；close-关闭
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Concurrency(self):
+        """最大并发连接数，默认8，范围：1-20
+        :rtype: int
+        """
+        return self._Concurrency
+
+    @Concurrency.setter
+    def Concurrency(self, Concurrency):
+        self._Concurrency = Concurrency
+
+    @property
+    def ConnectTimeout(self):
+        """连接超时时间，单位：秒，范围：1-30
+        :rtype: int
+        """
+        return self._ConnectTimeout
+
+    @ConnectTimeout.setter
+    def ConnectTimeout(self, ConnectTimeout):
+        self._ConnectTimeout = ConnectTimeout
+
+    @property
+    def ReadTimeout(self):
+        """请求超时时间，单位：秒，范围：1-30
+        :rtype: int
+        """
+        return self._ReadTimeout
+
+    @ReadTimeout.setter
+    def ReadTimeout(self, ReadTimeout):
+        self._ReadTimeout = ReadTimeout
+
+    @property
+    def Remark(self):
+        """说明
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def Method(self):
+        """请求方法，GET 或者 POST
+        :rtype: str
+        """
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
+
+    @property
+    def Header(self):
+        """请求header
+        :rtype: list of HeaderItem
+        """
+        return self._Header
+
+    @Header.setter
+    def Header(self, Header):
+        self._Header = Header
+
+    @property
+    def Body(self):
+        """请求body
+        :rtype: list of BodyItem
+        """
+        return self._Body
+
+    @Body.setter
+    def Body(self, Body):
+        self._Body = Body
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Endpoint = params.get("Endpoint")
+        self._Status = params.get("Status")
+        self._Concurrency = params.get("Concurrency")
+        self._ConnectTimeout = params.get("ConnectTimeout")
+        self._ReadTimeout = params.get("ReadTimeout")
+        self._Remark = params.get("Remark")
+        self._Method = params.get("Method")
+        if params.get("Header") is not None:
+            self._Header = []
+            for item in params.get("Header"):
+                obj = HeaderItem()
+                obj._deserialize(item)
+                self._Header.append(obj)
+        if params.get("Body") is not None:
+            self._Body = []
+            for item in params.get("Body"):
+                obj = BodyItem()
+                obj._deserialize(item)
+                self._Body.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyHttpAuthenticatorResponse(AbstractModel):
+    """ModifyHttpAuthenticator返回参数结构体
 
     """
 
@@ -8267,7 +8653,6 @@ class PriceTag(AbstractModel):
         :param _Code: 计费项标签
         :type Code: str
         :param _Step: 步长
-注意：此字段可能返回 null，表示取不到有效值。
         :type Step: int
         """
         self._Name = None
@@ -8311,7 +8696,6 @@ class PriceTag(AbstractModel):
     @property
     def Step(self):
         """步长
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Step
@@ -8346,31 +8730,22 @@ class ProductSkuItem(AbstractModel):
         :param _InstanceType: 规格类型
 BASIC：基础版
 PRO ：专业版
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceType: str
         :param _SkuCode: 规格代码
-注意：此字段可能返回 null，表示取不到有效值。
         :type SkuCode: str
         :param _OnSale: 是否售卖
-注意：此字段可能返回 null，表示取不到有效值。
         :type OnSale: bool
         :param _TopicNumLimit: topic num限制
-注意：此字段可能返回 null，表示取不到有效值。
         :type TopicNumLimit: int
         :param _TpsLimit: tps
-注意：此字段可能返回 null，表示取不到有效值。
         :type TpsLimit: int
         :param _ClientNumLimit: 客户端连接数
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClientNumLimit: int
         :param _MaxSubscriptionPerClient: 单客户端最大订阅数
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxSubscriptionPerClient: int
         :param _AuthorizationPolicyLimit: 授权规则条数
-注意：此字段可能返回 null，表示取不到有效值。
         :type AuthorizationPolicyLimit: int
         :param _PriceTags: 计费项信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type PriceTags: list of PriceTag
         """
         self._InstanceType = None
@@ -8388,7 +8763,6 @@ PRO ：专业版
         """规格类型
 BASIC：基础版
 PRO ：专业版
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceType
@@ -8400,7 +8774,6 @@ PRO ：专业版
     @property
     def SkuCode(self):
         """规格代码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SkuCode
@@ -8412,7 +8785,6 @@ PRO ：专业版
     @property
     def OnSale(self):
         """是否售卖
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._OnSale
@@ -8424,7 +8796,6 @@ PRO ：专业版
     @property
     def TopicNumLimit(self):
         """topic num限制
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TopicNumLimit
@@ -8436,7 +8807,6 @@ PRO ：专业版
     @property
     def TpsLimit(self):
         """tps
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TpsLimit
@@ -8448,7 +8818,6 @@ PRO ：专业版
     @property
     def ClientNumLimit(self):
         """客户端连接数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ClientNumLimit
@@ -8460,7 +8829,6 @@ PRO ：专业版
     @property
     def MaxSubscriptionPerClient(self):
         """单客户端最大订阅数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxSubscriptionPerClient
@@ -8472,7 +8840,6 @@ PRO ：专业版
     @property
     def AuthorizationPolicyLimit(self):
         """授权规则条数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AuthorizationPolicyLimit
@@ -8484,7 +8851,6 @@ PRO ：专业版
     @property
     def PriceTags(self):
         """计费项信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PriceTag
         """
         return self._PriceTags
@@ -8527,13 +8893,10 @@ class PublicAccessRule(AbstractModel):
     def __init__(self):
         r"""
         :param _IpRule: ip网段信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type IpRule: str
         :param _Allow: 允许或者拒绝
-注意：此字段可能返回 null，表示取不到有效值。
         :type Allow: bool
         :param _Remark: 备注信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         """
         self._IpRule = None
@@ -8543,7 +8906,6 @@ class PublicAccessRule(AbstractModel):
     @property
     def IpRule(self):
         """ip网段信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IpRule
@@ -8555,7 +8917,6 @@ class PublicAccessRule(AbstractModel):
     @property
     def Allow(self):
         """允许或者拒绝
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Allow
@@ -8567,7 +8928,6 @@ class PublicAccessRule(AbstractModel):
     @property
     def Remark(self):
         """备注信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -9103,10 +9463,8 @@ class Tag(AbstractModel):
     def __init__(self):
         r"""
         :param _TagKey: 标签名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagKey: str
         :param _TagValue: 标签值
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagValue: str
         """
         self._TagKey = None
@@ -9115,7 +9473,6 @@ class Tag(AbstractModel):
     @property
     def TagKey(self):
         """标签名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TagKey
@@ -9127,7 +9484,6 @@ class Tag(AbstractModel):
     @property
     def TagValue(self):
         """标签值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TagValue

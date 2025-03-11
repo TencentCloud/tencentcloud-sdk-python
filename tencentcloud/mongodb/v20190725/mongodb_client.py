@@ -675,7 +675,7 @@ class MongodbClient(AbstractClient):
 
 
     def EnableTransparentDataEncryption(self, request):
-        """本接口(EnableTransparentDataEncryption)用于开启云数据库 MongoDB 的透明加密能力。
+        """本接口（EnableTransparentDataEncryption）用于开启云数据库 MongoDB 的透明加密能力。
 
         :param request: Request instance for EnableTransparentDataEncryption.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.EnableTransparentDataEncryptionRequest`

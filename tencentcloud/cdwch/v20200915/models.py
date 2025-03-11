@@ -2567,7 +2567,7 @@ class DescribeInstanceNodesRequest(AbstractModel):
         r"""
         :param _InstanceId: 集群实例ID
         :type InstanceId: str
-        :param _NodeRole: 集群角色类型，默认为 "data"数据节点
+        :param _NodeRole: 集群角色类型，“DATA” 为数据节点、“COMMON” 为 ZooKeeper 节点，默认为 "DATA" 数据节点。
         :type NodeRole: str
         :param _Offset: 分页参数，第一页为0，第二页为10
         :type Offset: int
@@ -2598,7 +2598,7 @@ class DescribeInstanceNodesRequest(AbstractModel):
 
     @property
     def NodeRole(self):
-        """集群角色类型，默认为 "data"数据节点
+        """集群角色类型，“DATA” 为数据节点、“COMMON” 为 ZooKeeper 节点，默认为 "DATA" 数据节点。
         :rtype: str
         """
         return self._NodeRole

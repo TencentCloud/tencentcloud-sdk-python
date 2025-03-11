@@ -3171,6 +3171,8 @@ class CreateJobRequest(AbstractModel):
         :type Tags: list of Tag
         :param _Description: 作业描述
         :type Description: str
+        :param _OpenJobDefaultAlarm: 开启默认告警
+        :type OpenJobDefaultAlarm: int
         """
         self._Name = None
         self._JobType = None
@@ -3183,6 +3185,7 @@ class CreateJobRequest(AbstractModel):
         self._WorkSpaceId = None
         self._Tags = None
         self._Description = None
+        self._OpenJobDefaultAlarm = None
 
     @property
     def Name(self):
@@ -3305,6 +3308,17 @@ class CreateJobRequest(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def OpenJobDefaultAlarm(self):
+        """开启默认告警
+        :rtype: int
+        """
+        return self._OpenJobDefaultAlarm
+
+    @OpenJobDefaultAlarm.setter
+    def OpenJobDefaultAlarm(self, OpenJobDefaultAlarm):
+        self._OpenJobDefaultAlarm = OpenJobDefaultAlarm
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -3323,6 +3337,7 @@ class CreateJobRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._Description = params.get("Description")
+        self._OpenJobDefaultAlarm = params.get("OpenJobDefaultAlarm")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9459,6 +9474,12 @@ class JobV1(AbstractModel):
         :param _RunningMem: 使用内存数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type RunningMem: float
+        :param _OpenJobDefaultAlarm: 是否开了默认告警
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OpenJobDefaultAlarm: int
+        :param _ProgressDesc: 操作中描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProgressDesc: str
         """
         self._JobId = None
         self._Region = None
@@ -9497,6 +9518,8 @@ class JobV1(AbstractModel):
         self._ScalingType = None
         self._RunningCpu = None
         self._RunningMem = None
+        self._OpenJobDefaultAlarm = None
+        self._ProgressDesc = None
 
     @property
     def JobId(self):
@@ -9943,6 +9966,30 @@ class JobV1(AbstractModel):
     def RunningMem(self, RunningMem):
         self._RunningMem = RunningMem
 
+    @property
+    def OpenJobDefaultAlarm(self):
+        """是否开了默认告警
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._OpenJobDefaultAlarm
+
+    @OpenJobDefaultAlarm.setter
+    def OpenJobDefaultAlarm(self, OpenJobDefaultAlarm):
+        self._OpenJobDefaultAlarm = OpenJobDefaultAlarm
+
+    @property
+    def ProgressDesc(self):
+        """操作中描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProgressDesc
+
+    @ProgressDesc.setter
+    def ProgressDesc(self, ProgressDesc):
+        self._ProgressDesc = ProgressDesc
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -9989,6 +10036,8 @@ class JobV1(AbstractModel):
         self._ScalingType = params.get("ScalingType")
         self._RunningCpu = params.get("RunningCpu")
         self._RunningMem = params.get("RunningMem")
+        self._OpenJobDefaultAlarm = params.get("OpenJobDefaultAlarm")
+        self._ProgressDesc = params.get("ProgressDesc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14048,9 +14097,14 @@ class TreeJobSets(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScalingType: int
         :param _RunningCpu: RunningCpu
+注意：此字段可能返回 null，表示取不到有效值。
         :type RunningCpu: float
         :param _RunningMem: RunningMem
+注意：此字段可能返回 null，表示取不到有效值。
         :type RunningMem: float
+        :param _DecodeSqlCode: sql
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DecodeSqlCode: str
         """
         self._JobId = None
         self._Name = None
@@ -14060,6 +14114,7 @@ class TreeJobSets(AbstractModel):
         self._ScalingType = None
         self._RunningCpu = None
         self._RunningMem = None
+        self._DecodeSqlCode = None
 
     @property
     def JobId(self):
@@ -14137,6 +14192,7 @@ class TreeJobSets(AbstractModel):
     @property
     def RunningCpu(self):
         """RunningCpu
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._RunningCpu
@@ -14148,6 +14204,7 @@ class TreeJobSets(AbstractModel):
     @property
     def RunningMem(self):
         """RunningMem
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._RunningMem
@@ -14155,6 +14212,18 @@ class TreeJobSets(AbstractModel):
     @RunningMem.setter
     def RunningMem(self, RunningMem):
         self._RunningMem = RunningMem
+
+    @property
+    def DecodeSqlCode(self):
+        """sql
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DecodeSqlCode
+
+    @DecodeSqlCode.setter
+    def DecodeSqlCode(self, DecodeSqlCode):
+        self._DecodeSqlCode = DecodeSqlCode
 
 
     def _deserialize(self, params):
@@ -14166,6 +14235,7 @@ class TreeJobSets(AbstractModel):
         self._ScalingType = params.get("ScalingType")
         self._RunningCpu = params.get("RunningCpu")
         self._RunningMem = params.get("RunningMem")
+        self._DecodeSqlCode = params.get("DecodeSqlCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
