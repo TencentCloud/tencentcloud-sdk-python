@@ -327,7 +327,6 @@ class CreateDBDiagReportTaskResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _AsyncRequestId: 异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AsyncRequestId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -338,7 +337,6 @@ class CreateDBDiagReportTaskResponse(AbstractModel):
     @property
     def AsyncRequestId(self):
         """异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AsyncRequestId
@@ -4736,7 +4734,6 @@ class HealthStatus(AbstractModel):
         :param _ScoreLost: 总扣分分数。
         :type ScoreLost: int
         :param _ScoreDetails: 扣分详情。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScoreDetails: list of ScoreDetail
         """
         self._HealthScore = None
@@ -4780,7 +4777,6 @@ class HealthStatus(AbstractModel):
     @property
     def ScoreDetails(self):
         """扣分详情。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ScoreDetail
         """
         return self._ScoreDetails
@@ -5053,18 +5049,14 @@ class InstanceInfo(AbstractModel):
         :param _AuditRunningStatus: 实例审计日志运行状态：normal： 运行中； paused： 欠费暂停。
         :type AuditRunningStatus: str
         :param _InternalVip: 内网vip。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InternalVip: str
         :param _InternalVport: 内网port。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InternalVport: int
         :param _CreateTime: 创建时间。
         :type CreateTime: str
         :param _ClusterId: 所属集群ID（仅对集群数据库产品该字段非空，如TDSQL-C）。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterId: str
         :param _ClusterName: 所属集群名称（仅对集群数据库产品该字段非空，如TDSQL-C）。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterName: str
         """
         self._InstanceId = None
@@ -5412,7 +5404,6 @@ class InstanceInfo(AbstractModel):
     @property
     def InternalVip(self):
         """内网vip。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InternalVip
@@ -5424,7 +5415,6 @@ class InstanceInfo(AbstractModel):
     @property
     def InternalVport(self):
         """内网port。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._InternalVport
@@ -5447,7 +5437,6 @@ class InstanceInfo(AbstractModel):
     @property
     def ClusterId(self):
         """所属集群ID（仅对集群数据库产品该字段非空，如TDSQL-C）。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterId
@@ -5459,7 +5448,6 @@ class InstanceInfo(AbstractModel):
     @property
     def ClusterName(self):
         """所属集群名称（仅对集群数据库产品该字段非空，如TDSQL-C）。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterName

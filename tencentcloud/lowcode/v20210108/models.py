@@ -1132,7 +1132,6 @@ class DeleteKnowledgeDocumentSetRsp(AbstractModel):
     def __init__(self):
         r"""
         :param _AffectedCount: 删除文档数量。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AffectedCount: int
         """
         self._AffectedCount = None
@@ -1140,7 +1139,6 @@ class DeleteKnowledgeDocumentSetRsp(AbstractModel):
     @property
     def AffectedCount(self):
         """删除文档数量。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AffectedCount
@@ -1713,10 +1711,8 @@ class DescribeKnowledgeDocumentSetDetailRsp(AbstractModel):
     def __init__(self):
         r"""
         :param _Count: 获取的数量。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Count: int
         :param _DocumentSet: 文档信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type DocumentSet: :class:`tencentcloud.lowcode.v20210108.models.KnowledgeDocumentSet`
         """
         self._Count = None
@@ -1725,7 +1721,6 @@ class DescribeKnowledgeDocumentSetDetailRsp(AbstractModel):
     @property
     def Count(self):
         """获取的数量。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Count
@@ -1737,7 +1732,6 @@ class DescribeKnowledgeDocumentSetDetailRsp(AbstractModel):
     @property
     def DocumentSet(self):
         """文档信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.lowcode.v20210108.models.KnowledgeDocumentSet`
         """
         return self._DocumentSet
@@ -1883,10 +1877,8 @@ class DescribeKnowledgeDocumentSetListRsp(AbstractModel):
     def __init__(self):
         r"""
         :param _DocumentSets: 文件集
-注意：此字段可能返回 null，表示取不到有效值。
         :type DocumentSets: list of QureyKnowledgeDocumentSet
         :param _Count: 条数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Count: int
         """
         self._DocumentSets = None
@@ -1895,7 +1887,6 @@ class DescribeKnowledgeDocumentSetListRsp(AbstractModel):
     @property
     def DocumentSets(self):
         """文件集
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of QureyKnowledgeDocumentSet
         """
         return self._DocumentSets
@@ -1907,7 +1898,6 @@ class DescribeKnowledgeDocumentSetListRsp(AbstractModel):
     @property
     def Count(self):
         """条数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Count
@@ -2167,34 +2157,24 @@ class KnowledgeDocumentSet(AbstractModel):
     def __init__(self):
         r"""
         :param _DocumentSetId: 文档id
-注意：此字段可能返回 null，表示取不到有效值。
         :type DocumentSetId: str
         :param _DocumentSetName: 文档名
-注意：此字段可能返回 null，表示取不到有效值。
         :type DocumentSetName: str
         :param _Text: 文件完整内容。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
         :param _TextPrefix: 文件内容前 200个字符。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TextPrefix: str
         :param _DocumentSetInfo: 文件详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type DocumentSetInfo: :class:`tencentcloud.lowcode.v20210108.models.KnowledgeDocumentSetInfo`
         :param _SplitterPreprocess: 文件拆分信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type SplitterPreprocess: :class:`tencentcloud.lowcode.v20210108.models.KnowledgeSplitterPreprocess`
         :param _Name: 未使用
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _FileTitle: 文档标题
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileTitle: str
         :param _FileMetaData: 文档元信息，必须为jsonstring
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileMetaData: str
         :param _Author: 作者
-注意：此字段可能返回 null，表示取不到有效值。
         :type Author: str
         """
         self._DocumentSetId = None
@@ -2211,7 +2191,6 @@ class KnowledgeDocumentSet(AbstractModel):
     @property
     def DocumentSetId(self):
         """文档id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DocumentSetId
@@ -2223,7 +2202,6 @@ class KnowledgeDocumentSet(AbstractModel):
     @property
     def DocumentSetName(self):
         """文档名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DocumentSetName
@@ -2235,7 +2213,6 @@ class KnowledgeDocumentSet(AbstractModel):
     @property
     def Text(self):
         """文件完整内容。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Text
@@ -2247,7 +2224,6 @@ class KnowledgeDocumentSet(AbstractModel):
     @property
     def TextPrefix(self):
         """文件内容前 200个字符。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TextPrefix
@@ -2259,7 +2235,6 @@ class KnowledgeDocumentSet(AbstractModel):
     @property
     def DocumentSetInfo(self):
         """文件详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.lowcode.v20210108.models.KnowledgeDocumentSetInfo`
         """
         return self._DocumentSetInfo
@@ -2271,7 +2246,6 @@ class KnowledgeDocumentSet(AbstractModel):
     @property
     def SplitterPreprocess(self):
         """文件拆分信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.lowcode.v20210108.models.KnowledgeSplitterPreprocess`
         """
         return self._SplitterPreprocess
@@ -2283,7 +2257,6 @@ class KnowledgeDocumentSet(AbstractModel):
     @property
     def Name(self):
         """未使用
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -2295,7 +2268,6 @@ class KnowledgeDocumentSet(AbstractModel):
     @property
     def FileTitle(self):
         """文档标题
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FileTitle
@@ -2307,7 +2279,6 @@ class KnowledgeDocumentSet(AbstractModel):
     @property
     def FileMetaData(self):
         """文档元信息，必须为jsonstring
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FileMetaData
@@ -2319,7 +2290,6 @@ class KnowledgeDocumentSet(AbstractModel):
     @property
     def Author(self):
         """作者
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Author
@@ -2362,13 +2332,10 @@ class KnowledgeDocumentSetInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _TextLength: 文件的字符数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TextLength: int
         :param _ByteLength: 文件的字节数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ByteLength: int
         :param _IndexedProgress: 文件被预处理、Embedding 向量化的进度。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IndexedProgress: int
         :param _IndexedStatus: 文件预处理、Embedding 向量化的状态。
 New：等待解析。
@@ -2376,16 +2343,12 @@ Loading：文件解析中。
 Failure：文件解析、写入出错。
 Ready：文件解析、写入完成。
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type IndexedStatus: str
         :param _CreateTime: 文件创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _LastUpdateTime: 文件最后更新时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LastUpdateTime: str
         :param _Keywords: 文件关键字。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Keywords: str
         """
         self._TextLength = None
@@ -2399,7 +2362,6 @@ Ready：文件解析、写入完成。
     @property
     def TextLength(self):
         """文件的字符数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TextLength
@@ -2411,7 +2373,6 @@ Ready：文件解析、写入完成。
     @property
     def ByteLength(self):
         """文件的字节数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ByteLength
@@ -2423,7 +2384,6 @@ Ready：文件解析、写入完成。
     @property
     def IndexedProgress(self):
         """文件被预处理、Embedding 向量化的进度。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IndexedProgress
@@ -2440,7 +2400,6 @@ Loading：文件解析中。
 Failure：文件解析、写入出错。
 Ready：文件解析、写入完成。
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IndexedStatus
@@ -2452,7 +2411,6 @@ Ready：文件解析、写入完成。
     @property
     def CreateTime(self):
         """文件创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -2464,7 +2422,6 @@ Ready：文件解析、写入完成。
     @property
     def LastUpdateTime(self):
         """文件最后更新时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LastUpdateTime
@@ -2476,7 +2433,6 @@ Ready：文件解析、写入完成。
     @property
     def Keywords(self):
         """文件关键字。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Keywords
@@ -2512,24 +2468,18 @@ class KnowledgeSet(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 知识库标识
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Title: 知识库名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Title: str
         :param _Desc: 描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Desc: str
         :param _Active: 状态，
 NOT_ENABLED未启用
 ENABLED 已启用
-注意：此字段可能返回 null，表示取不到有效值。
         :type Active: str
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _UpdateTime: 更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param _Meta: 知识库的meta信息
         :type Meta: str
@@ -2545,7 +2495,6 @@ ENABLED 已启用
     @property
     def Name(self):
         """知识库标识
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -2557,7 +2506,6 @@ ENABLED 已启用
     @property
     def Title(self):
         """知识库名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Title
@@ -2569,7 +2517,6 @@ ENABLED 已启用
     @property
     def Desc(self):
         """描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Desc
@@ -2583,7 +2530,6 @@ ENABLED 已启用
         """状态，
 NOT_ENABLED未启用
 ENABLED 已启用
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Active
@@ -2595,7 +2541,6 @@ ENABLED 已启用
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -2607,7 +2552,6 @@ ENABLED 已启用
     @property
     def UpdateTime(self):
         """更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime
@@ -2654,10 +2598,8 @@ class KnowledgeSetRsp(AbstractModel):
     def __init__(self):
         r"""
         :param _Total: 总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _KnowledgeSets: 知识库列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type KnowledgeSets: list of KnowledgeSet
         """
         self._Total = None
@@ -2666,7 +2608,6 @@ class KnowledgeSetRsp(AbstractModel):
     @property
     def Total(self):
         """总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -2678,7 +2619,6 @@ class KnowledgeSetRsp(AbstractModel):
     @property
     def KnowledgeSets(self):
         """知识库列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KnowledgeSet
         """
         return self._KnowledgeSets
@@ -2717,13 +2657,11 @@ class KnowledgeSplitterPreprocess(AbstractModel):
 false：不追加。
 true：将段落 Title 追加到切分后的段落。
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppendTitleToChunk: bool
         :param _AppendKeywordsToChunk: 在对文件拆分时，配置是否将关键字 keywords 追加到切分后的段落一并 Embedding。取值如下所示：
 false：不追加。
 true：将全文的 keywords 追加到切分后的段落。
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppendKeywordsToChunk: bool
         """
         self._AppendTitleToChunk = None
@@ -2735,7 +2673,6 @@ true：将全文的 keywords 追加到切分后的段落。
 false：不追加。
 true：将段落 Title 追加到切分后的段落。
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._AppendTitleToChunk
@@ -2750,7 +2687,6 @@ true：将段落 Title 追加到切分后的段落。
 false：不追加。
 true：将全文的 keywords 追加到切分后的段落。
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._AppendKeywordsToChunk
@@ -2900,31 +2836,22 @@ class QureyKnowledgeDocumentSet(AbstractModel):
     def __init__(self):
         r"""
         :param _DocumentSetId: 文件id
-注意：此字段可能返回 null，表示取不到有效值。
         :type DocumentSetId: str
         :param _DocumentSetName: 文件名
-注意：此字段可能返回 null，表示取不到有效值。
         :type DocumentSetName: str
         :param _TextPrefix: 文件内容前 200个字符。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TextPrefix: str
         :param _SplitterPreprocess: 文件拆分信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type SplitterPreprocess: :class:`tencentcloud.lowcode.v20210108.models.KnowledgeSplitterPreprocess`
         :param _DocumentSetInfo: 文件详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type DocumentSetInfo: :class:`tencentcloud.lowcode.v20210108.models.QureyKnowledgeDocumentSetInfo`
         :param _FileTitle: 文件标题
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileTitle: str
         :param _FileMetaData: 文件元信息，必须为jsonstring
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileMetaData: str
         :param _Name: name
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Author: 作者
-注意：此字段可能返回 null，表示取不到有效值。
         :type Author: str
         """
         self._DocumentSetId = None
@@ -2940,7 +2867,6 @@ class QureyKnowledgeDocumentSet(AbstractModel):
     @property
     def DocumentSetId(self):
         """文件id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DocumentSetId
@@ -2952,7 +2878,6 @@ class QureyKnowledgeDocumentSet(AbstractModel):
     @property
     def DocumentSetName(self):
         """文件名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DocumentSetName
@@ -2964,7 +2889,6 @@ class QureyKnowledgeDocumentSet(AbstractModel):
     @property
     def TextPrefix(self):
         """文件内容前 200个字符。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TextPrefix
@@ -2976,7 +2900,6 @@ class QureyKnowledgeDocumentSet(AbstractModel):
     @property
     def SplitterPreprocess(self):
         """文件拆分信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.lowcode.v20210108.models.KnowledgeSplitterPreprocess`
         """
         return self._SplitterPreprocess
@@ -2988,7 +2911,6 @@ class QureyKnowledgeDocumentSet(AbstractModel):
     @property
     def DocumentSetInfo(self):
         """文件详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.lowcode.v20210108.models.QureyKnowledgeDocumentSetInfo`
         """
         return self._DocumentSetInfo
@@ -3000,7 +2922,6 @@ class QureyKnowledgeDocumentSet(AbstractModel):
     @property
     def FileTitle(self):
         """文件标题
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FileTitle
@@ -3012,7 +2933,6 @@ class QureyKnowledgeDocumentSet(AbstractModel):
     @property
     def FileMetaData(self):
         """文件元信息，必须为jsonstring
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FileMetaData
@@ -3024,7 +2944,6 @@ class QureyKnowledgeDocumentSet(AbstractModel):
     @property
     def Name(self):
         """name
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -3036,7 +2955,6 @@ class QureyKnowledgeDocumentSet(AbstractModel):
     @property
     def Author(self):
         """作者
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Author
@@ -3078,13 +2996,10 @@ class QureyKnowledgeDocumentSetInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _TextLength: 文件的字符数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TextLength: int
         :param _ByteLength: 文件的字节数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ByteLength: int
         :param _IndexedProgress: 文件被预处理、Embedding 向量化的进度。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IndexedProgress: int
         :param _IndexedStatus: 文件预处理、Embedding 向量化的状态。
 New：等待解析。
@@ -3092,19 +3007,14 @@ Loading：文件解析中。
 Failure：文件解析、写入出错。
 Ready：文件解析、写入完成。
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type IndexedStatus: str
         :param _IndexedErrorMsg: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type IndexedErrorMsg: str
         :param _CreateTime: 文件创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _LastUpdateTime: 文件最后更新时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LastUpdateTime: str
         :param _Keywords: 文件关键字。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Keywords: str
         """
         self._TextLength = None
@@ -3119,7 +3029,6 @@ Ready：文件解析、写入完成。
     @property
     def TextLength(self):
         """文件的字符数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TextLength
@@ -3131,7 +3040,6 @@ Ready：文件解析、写入完成。
     @property
     def ByteLength(self):
         """文件的字节数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ByteLength
@@ -3143,7 +3051,6 @@ Ready：文件解析、写入完成。
     @property
     def IndexedProgress(self):
         """文件被预处理、Embedding 向量化的进度。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IndexedProgress
@@ -3160,7 +3067,6 @@ Loading：文件解析中。
 Failure：文件解析、写入出错。
 Ready：文件解析、写入完成。
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IndexedStatus
@@ -3172,7 +3078,6 @@ Ready：文件解析、写入完成。
     @property
     def IndexedErrorMsg(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IndexedErrorMsg
@@ -3184,7 +3089,6 @@ Ready：文件解析、写入完成。
     @property
     def CreateTime(self):
         """文件创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -3196,7 +3100,6 @@ Ready：文件解析、写入完成。
     @property
     def LastUpdateTime(self):
         """文件最后更新时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LastUpdateTime
@@ -3208,7 +3111,6 @@ Ready：文件解析、写入完成。
     @property
     def Keywords(self):
         """文件关键字。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Keywords
@@ -4040,16 +3942,12 @@ class UploadKnowledgeDocumentSetRsp(AbstractModel):
     def __init__(self):
         r"""
         :param _DocumentSetId: 给文件分配的 ID 信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DocumentSetId: str
         :param _DocumentSetName: 文件名
-注意：此字段可能返回 null，表示取不到有效值。
         :type DocumentSetName: str
         :param _FileTitle: 文件标题
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileTitle: str
         :param _FileMetaData: 文件元信息，为jsonstring
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileMetaData: str
         """
         self._DocumentSetId = None
@@ -4060,7 +3958,6 @@ class UploadKnowledgeDocumentSetRsp(AbstractModel):
     @property
     def DocumentSetId(self):
         """给文件分配的 ID 信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DocumentSetId
@@ -4072,7 +3969,6 @@ class UploadKnowledgeDocumentSetRsp(AbstractModel):
     @property
     def DocumentSetName(self):
         """文件名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DocumentSetName
@@ -4084,7 +3980,6 @@ class UploadKnowledgeDocumentSetRsp(AbstractModel):
     @property
     def FileTitle(self):
         """文件标题
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FileTitle
@@ -4096,7 +3991,6 @@ class UploadKnowledgeDocumentSetRsp(AbstractModel):
     @property
     def FileMetaData(self):
         """文件元信息，为jsonstring
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FileMetaData

@@ -1845,31 +1845,6 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeRabbitMQVirtualHostList(self, request):
-        """消息队列TDMQ RabbitMQ 有一个存量旧接口没下线，目前实际上已经不在产品中使用：DescribeRabbitMQVirtualHostList，这个接口很久前已经被 DescribeRabbitMQVirtualHost 替换掉。已无用户在调用。
-
-        RabbitMQ专享版查询虚拟主机列表
-
-        :param request: Request instance for DescribeRabbitMQVirtualHostList.
-        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRabbitMQVirtualHostListRequest`
-        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeRabbitMQVirtualHostListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeRabbitMQVirtualHostList", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeRabbitMQVirtualHostListResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeRocketMQCluster(self, request):
         """获取单个RocketMQ集群信息
 

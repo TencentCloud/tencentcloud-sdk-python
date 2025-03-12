@@ -2694,6 +2694,29 @@ class OrganizationClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def UpdateOrganizationMembersPolicy(self, request):
+        """修改组织成员访问策略
+
+        :param request: Request instance for UpdateOrganizationMembersPolicy.
+        :type request: :class:`tencentcloud.organization.v20210331.models.UpdateOrganizationMembersPolicyRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.UpdateOrganizationMembersPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateOrganizationMembersPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateOrganizationMembersPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def UpdateOrganizationNode(self, request):
         """更新企业组织节点
 

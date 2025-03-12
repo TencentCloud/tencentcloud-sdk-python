@@ -2772,6 +2772,33 @@ class EssbasicClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeUserFlowType(self, request):
+        """查询用户模版类型，分为两种模式：
+        <ul>
+        <li>QueryBindTemplate:false，查询用户合同模版类型，返回用户合同模版类型ID，用户合同模版类型名称，用户合同模版类型描述信息</li>
+        <li>QueryBindTemplate:false，查询用户合同模版类型，返回用户合同模版类型ID，用户合同模版类型名称，用户合同模版类型描述信息，被绑定的模版数量</li>
+        </ul>
+
+        :param request: Request instance for DescribeUserFlowType.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.DescribeUserFlowTypeRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.DescribeUserFlowTypeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUserFlowType", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUserFlowTypeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetDownloadFlowUrl(self, request):
         """此接口（GetDownloadFlowUrl）用户获取合同控制台下载页面链接,  点击链接后会跳转至本企业合同管理控制台(会筛选出传入的合同列表), 点击**下载**按钮后就会下载传入的合同列表, 下载页面如下图
         ![image](https://dyn.ess.tencent.cn/guide/capi/channel_GetDownloadFlowUrl.png)

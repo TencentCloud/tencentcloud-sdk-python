@@ -1247,10 +1247,8 @@ class DescribeFileTicketResponse(AbstractModel):
         :param _UploadUrl: 上传url(任务来源为2时:Post方法（100:apk,101:txt）, 任务来源为1时:put方法)
         :type UploadUrl: str
         :param _UploadSign: 上传url鉴权信息(任务来源为1时上传需要, Authorization参数值)
-注意：此字段可能返回 null，表示取不到有效值。
         :type UploadSign: str
         :param _FildID: 上传文件ID(任务来源为1时提交诊断任务需要)
-注意：此字段可能返回 null，表示取不到有效值。
         :type FildID: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1286,7 +1284,6 @@ class DescribeFileTicketResponse(AbstractModel):
     @property
     def UploadSign(self):
         """上传url鉴权信息(任务来源为1时上传需要, Authorization参数值)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UploadSign
@@ -1298,7 +1295,6 @@ class DescribeFileTicketResponse(AbstractModel):
     @property
     def FildID(self):
         """上传文件ID(任务来源为1时提交诊断任务需要)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FildID
@@ -1636,7 +1632,6 @@ class DescribeScanTaskListResponse(AbstractModel):
         :param _Total: 任务总数量
         :type Total: int
         :param _Data: 诊断任务数据列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of AppTaskData
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1671,7 +1666,6 @@ class DescribeScanTaskListResponse(AbstractModel):
     @property
     def Data(self):
         """诊断任务数据列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AppTaskData
         """
         return self._Data
@@ -1981,10 +1975,8 @@ class DescribeScanTaskStatusResponse(AbstractModel):
         :param _Status: 0:默认值(待检测/待咨询), 1.检测中,  4:任务完成/咨询完成, 5:任务失败, 6:咨询中;
         :type Status: int
         :param _ErrMsg: 诊断失败的错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrMsg: str
         :param _FlowSteps: 任务流详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowSteps: list of TaskFlowStepsInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2020,7 +2012,6 @@ class DescribeScanTaskStatusResponse(AbstractModel):
     @property
     def ErrMsg(self):
         """诊断失败的错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrMsg
@@ -2032,7 +2023,6 @@ class DescribeScanTaskStatusResponse(AbstractModel):
     @property
     def FlowSteps(self):
         """任务流详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TaskFlowStepsInfo
         """
         return self._FlowSteps

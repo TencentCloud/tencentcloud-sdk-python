@@ -1815,7 +1815,6 @@ class CreateDBDiagReportTaskResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _AsyncRequestId: 异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AsyncRequestId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1826,7 +1825,6 @@ class CreateDBDiagReportTaskResponse(AbstractModel):
     @property
     def AsyncRequestId(self):
         """异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AsyncRequestId
@@ -4013,7 +4011,6 @@ class DescribeAuditInstanceListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 符合条件的实例个数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _Items: 实例详情。
         :type Items: list of AuditInstance
@@ -4027,7 +4024,6 @@ class DescribeAuditInstanceListResponse(AbstractModel):
     @property
     def TotalCount(self):
         """符合条件的实例个数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -6828,7 +6824,6 @@ class DescribeRedisBigKeyAnalysisTasksResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 任务总数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _Tasks: 任务列表。
         :type Tasks: list of RedisBigKeyTask
@@ -6842,7 +6837,6 @@ class DescribeRedisBigKeyAnalysisTasksResponse(AbstractModel):
     @property
     def TotalCount(self):
         """任务总数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -10495,7 +10489,6 @@ class HealthStatus(AbstractModel):
         :param _ScoreLost: 总扣分分数。
         :type ScoreLost: int
         :param _ScoreDetails: 扣分详情。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScoreDetails: list of ScoreDetail
         """
         self._HealthScore = None
@@ -10539,7 +10532,6 @@ class HealthStatus(AbstractModel):
     @property
     def ScoreDetails(self):
         """扣分详情。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ScoreDetail
         """
         return self._ScoreDetails
@@ -11104,18 +11096,14 @@ class InstanceInfo(AbstractModel):
         :param _AuditRunningStatus: 实例审计日志运行状态：normal： 运行中； paused： 欠费暂停。
         :type AuditRunningStatus: str
         :param _InternalVip: 内网vip。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InternalVip: str
         :param _InternalVport: 内网port。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InternalVport: int
         :param _CreateTime: 创建时间。
         :type CreateTime: str
         :param _ClusterId: 所属集群ID（仅对集群数据库产品该字段非空，如TDSQL-C）。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterId: str
         :param _ClusterName: 所属集群名称（仅对集群数据库产品该字段非空，如TDSQL-C）。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterName: str
         :param _AgentStatus: 自建MySQL的Agent状态，"not_deployed" - 未部署，"deploying" - 部署中，"connected" - 连接正常，"deploy_failed" - 连接失败，"monitoring" - 连接正常，"stopped" - 暂停连接，"connect_failed" - 连接失败，unknown - 未知。
         :type AgentStatus: str
@@ -11469,7 +11457,6 @@ class InstanceInfo(AbstractModel):
     @property
     def InternalVip(self):
         """内网vip。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InternalVip
@@ -11481,7 +11468,6 @@ class InstanceInfo(AbstractModel):
     @property
     def InternalVport(self):
         """内网port。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._InternalVport
@@ -11504,7 +11490,6 @@ class InstanceInfo(AbstractModel):
     @property
     def ClusterId(self):
         """所属集群ID（仅对集群数据库产品该字段非空，如TDSQL-C）。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterId
@@ -11516,7 +11501,6 @@ class InstanceInfo(AbstractModel):
     @property
     def ClusterName(self):
         """所属集群名称（仅对集群数据库产品该字段非空，如TDSQL-C）。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterName

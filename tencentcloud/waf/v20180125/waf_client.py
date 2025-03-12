@@ -3111,6 +3111,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyUserSignatureClass(self, request):
+        """切换Tiga引擎规则类型的生效开关
+
+        :param request: Request instance for ModifyUserSignatureClass.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyUserSignatureClassRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyUserSignatureClassResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyUserSignatureClass", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyUserSignatureClassResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyUserSignatureRule(self, request):
         """修改用户防护规则，开启关闭具体的某条规则
 
@@ -3355,6 +3378,29 @@ class WafClient(AbstractClient):
             body = self.call("SwitchElasticMode", params, headers=headers)
             response = json.loads(body)
             model = models.SwitchElasticModeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateProtectionModes(self, request):
+        """更新Tiga引擎下大类规则的防护模式
+
+        :param request: Request instance for UpdateProtectionModes.
+        :type request: :class:`tencentcloud.waf.v20180125.models.UpdateProtectionModesRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.UpdateProtectionModesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateProtectionModes", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateProtectionModesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

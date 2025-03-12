@@ -272,7 +272,6 @@ class DescribeInstanceNodesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Items: 实例pod列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of NodeInfo
         :param _TotalCount: 查询结果总数量。
         :type TotalCount: int
@@ -286,7 +285,6 @@ class DescribeInstanceNodesResponse(AbstractModel):
     @property
     def Items(self):
         """实例pod列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of NodeInfo
         """
         return self._Items
@@ -426,6 +424,8 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def EngineNames(self):
+        warnings.warn("parameter `EngineNames` is deprecated", DeprecationWarning) 
+
         """按照引擎筛选实例。
         :rtype: list of str
         """
@@ -433,6 +433,8 @@ class DescribeInstancesRequest(AbstractModel):
 
     @EngineNames.setter
     def EngineNames(self, EngineNames):
+        warnings.warn("parameter `EngineNames` is deprecated", DeprecationWarning) 
+
         self._EngineNames = EngineNames
 
     @property
@@ -470,6 +472,8 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Zones(self):
+        warnings.warn("parameter `Zones` is deprecated", DeprecationWarning) 
+
         """按照可用区筛选实例。
         :rtype: list of str
         """
@@ -477,6 +481,8 @@ class DescribeInstancesRequest(AbstractModel):
 
     @Zones.setter
     def Zones(self, Zones):
+        warnings.warn("parameter `Zones` is deprecated", DeprecationWarning) 
+
         self._Zones = Zones
 
     @property
@@ -573,7 +579,6 @@ class DescribeInstancesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Items: 实例列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of InstanceInfo
         :param _TotalCount: 实例总数。
         :type TotalCount: int
@@ -587,7 +592,6 @@ class DescribeInstancesResponse(AbstractModel):
     @property
     def Items(self):
         """实例列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of InstanceInfo
         """
         return self._Items
@@ -858,40 +862,28 @@ class InstanceInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceId: 实例ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _Name: 实例自定义名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _AppId: 用户APPID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: int
         :param _Region: 地域。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         :param _Zone: 可用区。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Zone: str
         :param _Product: 产品。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Product: str
         :param _Networks: 网络信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Networks: list of Network
         :param _ShardNum: 分片信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ShardNum: int
         :param _ReplicaNum: 副本数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReplicaNum: int
         :param _Cpu: CPU.
-注意：此字段可能返回 null，表示取不到有效值。
         :type Cpu: float
         :param _Memory: 内存。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Memory: float
         :param _Disk: 磁盘。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Disk: int
         :param _HealthScore: 健康得分。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -903,43 +895,30 @@ class InstanceInfo(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Project: str
         :param _ResourceTags: 所属标签。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceTags: list of Tag
         :param _CreatedAt: 创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedAt: str
         :param _Status: 资源状态。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _EngineName: 引擎名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type EngineName: str
         :param _EngineVersion: 引擎版本。
-注意：此字段可能返回 null，表示取不到有效值。
         :type EngineVersion: str
         :param _ApiVersion: api版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApiVersion: str
         :param _PayMode: 计费模式。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PayMode: int
         :param _Extend: 差异化扩展信息, json格式。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Extend: str
         :param _ExpiredAt: 过期时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExpiredAt: str
         :param _IsNoExpired: 是否不过期(永久)。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsNoExpired: bool
         :param _WanAddress: 外网地址。
-注意：此字段可能返回 null，表示取不到有效值。
         :type WanAddress: str
         :param _IsolateAt: 隔离时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsolateAt: str
         :param _AutoRenew: 是否自动续费。0: 不自动续费(可以支持特权不停服)；1:自动续费；2:到期不续费.
-注意：此字段可能返回 null，表示取不到有效值。
         :type AutoRenew: int
         """
         self._InstanceId = None
@@ -974,7 +953,6 @@ class InstanceInfo(AbstractModel):
     @property
     def InstanceId(self):
         """实例ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -986,7 +964,6 @@ class InstanceInfo(AbstractModel):
     @property
     def Name(self):
         """实例自定义名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -998,7 +975,6 @@ class InstanceInfo(AbstractModel):
     @property
     def AppId(self):
         """用户APPID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AppId
@@ -1010,7 +986,6 @@ class InstanceInfo(AbstractModel):
     @property
     def Region(self):
         """地域。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Region
@@ -1022,7 +997,6 @@ class InstanceInfo(AbstractModel):
     @property
     def Zone(self):
         """可用区。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Zone
@@ -1034,7 +1008,6 @@ class InstanceInfo(AbstractModel):
     @property
     def Product(self):
         """产品。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Product
@@ -1046,7 +1019,6 @@ class InstanceInfo(AbstractModel):
     @property
     def Networks(self):
         """网络信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Network
         """
         return self._Networks
@@ -1058,7 +1030,6 @@ class InstanceInfo(AbstractModel):
     @property
     def ShardNum(self):
         """分片信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ShardNum
@@ -1070,7 +1041,6 @@ class InstanceInfo(AbstractModel):
     @property
     def ReplicaNum(self):
         """副本数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ReplicaNum
@@ -1082,7 +1052,6 @@ class InstanceInfo(AbstractModel):
     @property
     def Cpu(self):
         """CPU.
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Cpu
@@ -1094,7 +1063,6 @@ class InstanceInfo(AbstractModel):
     @property
     def Memory(self):
         """内存。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Memory
@@ -1106,7 +1074,6 @@ class InstanceInfo(AbstractModel):
     @property
     def Disk(self):
         """磁盘。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Disk
@@ -1166,7 +1133,6 @@ class InstanceInfo(AbstractModel):
     @property
     def ResourceTags(self):
         """所属标签。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._ResourceTags
@@ -1178,7 +1144,6 @@ class InstanceInfo(AbstractModel):
     @property
     def CreatedAt(self):
         """创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreatedAt
@@ -1190,7 +1155,6 @@ class InstanceInfo(AbstractModel):
     @property
     def Status(self):
         """资源状态。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -1202,7 +1166,6 @@ class InstanceInfo(AbstractModel):
     @property
     def EngineName(self):
         """引擎名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EngineName
@@ -1214,7 +1177,6 @@ class InstanceInfo(AbstractModel):
     @property
     def EngineVersion(self):
         """引擎版本。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EngineVersion
@@ -1226,7 +1188,6 @@ class InstanceInfo(AbstractModel):
     @property
     def ApiVersion(self):
         """api版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApiVersion
@@ -1238,7 +1199,6 @@ class InstanceInfo(AbstractModel):
     @property
     def PayMode(self):
         """计费模式。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PayMode
@@ -1250,7 +1210,6 @@ class InstanceInfo(AbstractModel):
     @property
     def Extend(self):
         """差异化扩展信息, json格式。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Extend
@@ -1262,7 +1221,6 @@ class InstanceInfo(AbstractModel):
     @property
     def ExpiredAt(self):
         """过期时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ExpiredAt
@@ -1274,7 +1232,6 @@ class InstanceInfo(AbstractModel):
     @property
     def IsNoExpired(self):
         """是否不过期(永久)。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsNoExpired
@@ -1286,7 +1243,6 @@ class InstanceInfo(AbstractModel):
     @property
     def WanAddress(self):
         """外网地址。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._WanAddress
@@ -1298,7 +1254,6 @@ class InstanceInfo(AbstractModel):
     @property
     def IsolateAt(self):
         """隔离时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IsolateAt
@@ -1310,7 +1265,6 @@ class InstanceInfo(AbstractModel):
     @property
     def AutoRenew(self):
         """是否自动续费。0: 不自动续费(可以支持特权不停服)；1:自动续费；2:到期不续费.
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AutoRenew
@@ -1560,14 +1514,13 @@ class Network(AbstractModel):
 
 
 class NodeInfo(AbstractModel):
-    """实例pod信息，仅包含 pod 名称
+    """实例pod信息， pod 名称
 
     """
 
     def __init__(self):
         r"""
         :param _Name: Pod名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         """
         self._Name = None
@@ -1575,7 +1528,6 @@ class NodeInfo(AbstractModel):
     @property
     def Name(self):
         """Pod名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name

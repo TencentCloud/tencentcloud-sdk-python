@@ -277,13 +277,10 @@ class CheckStepInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _StartAt: 任务开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartAt: str
         :param _EndAt: 任务结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndAt: str
         :param _Progress: 任务步骤信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Progress: :class:`tencentcloud.dts.v20211206.models.ProcessProgress`
         """
         self._StartAt = None
@@ -293,7 +290,6 @@ class CheckStepInfo(AbstractModel):
     @property
     def StartAt(self):
         """任务开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StartAt
@@ -305,7 +301,6 @@ class CheckStepInfo(AbstractModel):
     @property
     def EndAt(self):
         """任务结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndAt
@@ -317,7 +312,6 @@ class CheckStepInfo(AbstractModel):
     @property
     def Progress(self):
         """任务步骤信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dts.v20211206.models.ProcessProgress`
         """
         return self._Progress
@@ -669,7 +663,6 @@ class CompareColumnItem(AbstractModel):
     def __init__(self):
         r"""
         :param _ColumnName: 列名
-注意：此字段可能返回 null，表示取不到有效值。
         :type ColumnName: str
         """
         self._ColumnName = None
@@ -677,7 +670,6 @@ class CompareColumnItem(AbstractModel):
     @property
     def ColumnName(self):
         """列名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ColumnName
@@ -823,13 +815,10 @@ class CompareObject(AbstractModel):
     def __init__(self):
         r"""
         :param _ObjectMode: 对象模式 整实例-all,部分对象-partial
-注意：此字段可能返回 null，表示取不到有效值。
         :type ObjectMode: str
         :param _ObjectItems: 对象列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type ObjectItems: list of CompareObjectItem
         :param _AdvancedObjects: 高级对象类型，目前只支持mongodb链路。如index(索引),shardkey(片键),schema(库表)
-注意：此字段可能返回 null，表示取不到有效值。
         :type AdvancedObjects: list of str
         """
         self._ObjectMode = None
@@ -839,7 +828,6 @@ class CompareObject(AbstractModel):
     @property
     def ObjectMode(self):
         """对象模式 整实例-all,部分对象-partial
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ObjectMode
@@ -851,7 +839,6 @@ class CompareObject(AbstractModel):
     @property
     def ObjectItems(self):
         """对象列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CompareObjectItem
         """
         return self._ObjectItems
@@ -863,7 +850,6 @@ class CompareObject(AbstractModel):
     @property
     def AdvancedObjects(self):
         """高级对象类型，目前只支持mongodb链路。如index(索引),shardkey(片键),schema(库表)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._AdvancedObjects
@@ -900,22 +886,16 @@ class CompareObjectItem(AbstractModel):
     def __init__(self):
         r"""
         :param _DbName: 数据库名
-注意：此字段可能返回 null，表示取不到有效值。
         :type DbName: str
         :param _DbMode: 数据库选择模式: all 为当前对象下的所有对象,partial 为部分对象
-注意：此字段可能返回 null，表示取不到有效值。
         :type DbMode: str
         :param _SchemaName: schema名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type SchemaName: str
         :param _TableMode: 表选择模式: all 为当前对象下的所有表对象,partial 为部分表对象
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableMode: str
         :param _Tables: 用于一致性校验的表配置，当 TableMode 为 partial 时，需要填写
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tables: list of CompareTableItem
         :param _ViewMode: 视图选择模式: all 为当前对象下的所有视图对象,partial 为部分视图对象(一致性校验不校验视图，当前参数未启作用)
-注意：此字段可能返回 null，表示取不到有效值。
         :type ViewMode: str
         :param _Views: 用于一致性校验的视图配置，当 ViewMode 为 partial 时， 需要填写(一致性校验不校验视图，当前参数未启作用)
 注意：此字段可能返回 null，表示取不到有效值。
@@ -932,7 +912,6 @@ class CompareObjectItem(AbstractModel):
     @property
     def DbName(self):
         """数据库名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DbName
@@ -944,7 +923,6 @@ class CompareObjectItem(AbstractModel):
     @property
     def DbMode(self):
         """数据库选择模式: all 为当前对象下的所有对象,partial 为部分对象
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DbMode
@@ -956,7 +934,6 @@ class CompareObjectItem(AbstractModel):
     @property
     def SchemaName(self):
         """schema名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SchemaName
@@ -968,7 +945,6 @@ class CompareObjectItem(AbstractModel):
     @property
     def TableMode(self):
         """表选择模式: all 为当前对象下的所有表对象,partial 为部分表对象
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TableMode
@@ -980,7 +956,6 @@ class CompareObjectItem(AbstractModel):
     @property
     def Tables(self):
         """用于一致性校验的表配置，当 TableMode 为 partial 时，需要填写
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CompareTableItem
         """
         return self._Tables
@@ -992,7 +967,6 @@ class CompareObjectItem(AbstractModel):
     @property
     def ViewMode(self):
         """视图选择模式: all 为当前对象下的所有视图对象,partial 为部分视图对象(一致性校验不校验视图，当前参数未启作用)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ViewMode
@@ -1050,13 +1024,10 @@ class CompareOptions(AbstractModel):
     def __init__(self):
         r"""
         :param _Method: 对比方式：dataCheck(完整数据对比)、sampleDataCheck(抽样数据对比)、rowsCount(行数对比), 默认为dataCheck
-注意：此字段可能返回 null，表示取不到有效值。
         :type Method: str
         :param _SampleRate: 抽样比例;范围0,100。默认为100
-注意：此字段可能返回 null，表示取不到有效值。
         :type SampleRate: int
         :param _ThreadCount: 线程数，取值1-5，默认为1
-注意：此字段可能返回 null，表示取不到有效值。
         :type ThreadCount: int
         """
         self._Method = None
@@ -1066,7 +1037,6 @@ class CompareOptions(AbstractModel):
     @property
     def Method(self):
         """对比方式：dataCheck(完整数据对比)、sampleDataCheck(抽样数据对比)、rowsCount(行数对比), 默认为dataCheck
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Method
@@ -1078,7 +1048,6 @@ class CompareOptions(AbstractModel):
     @property
     def SampleRate(self):
         """抽样比例;范围0,100。默认为100
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SampleRate
@@ -1090,7 +1059,6 @@ class CompareOptions(AbstractModel):
     @property
     def ThreadCount(self):
         """线程数，取值1-5，默认为1
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ThreadCount
@@ -1122,13 +1090,10 @@ class CompareTableItem(AbstractModel):
     def __init__(self):
         r"""
         :param _TableName: 表名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableName: str
         :param _ColumnMode: column 模式，all 为全部，partial 表示部分(该参数仅对数据同步任务有效)
-注意：此字段可能返回 null，表示取不到有效值。
         :type ColumnMode: str
         :param _Columns: 当 ColumnMode 为 partial 时必填(该参数仅对数据同步任务有效)
-注意：此字段可能返回 null，表示取不到有效值。
         :type Columns: list of CompareColumnItem
         """
         self._TableName = None
@@ -1138,7 +1103,6 @@ class CompareTableItem(AbstractModel):
     @property
     def TableName(self):
         """表名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TableName
@@ -1150,7 +1114,6 @@ class CompareTableItem(AbstractModel):
     @property
     def ColumnMode(self):
         """column 模式，all 为全部，partial 表示部分(该参数仅对数据同步任务有效)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ColumnMode
@@ -1162,7 +1125,6 @@ class CompareTableItem(AbstractModel):
     @property
     def Columns(self):
         """当 ColumnMode 为 partial 时必填(该参数仅对数据同步任务有效)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CompareColumnItem
         """
         return self._Columns
@@ -1199,10 +1161,8 @@ class CompareTaskInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _CompareTaskId: 一致性校验任务Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type CompareTaskId: str
         :param _Status: 一致性校验结果，包括：unstart(未启动)、running(校验中)、canceled(已终止)、failed(校验任务失败)、inconsistent(不一致)、consistent(一致)、notexist(不存在校验任务)
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         """
         self._CompareTaskId = None
@@ -1211,7 +1171,6 @@ class CompareTaskInfo(AbstractModel):
     @property
     def CompareTaskId(self):
         """一致性校验任务Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CompareTaskId
@@ -1223,7 +1182,6 @@ class CompareTaskInfo(AbstractModel):
     @property
     def Status(self):
         """一致性校验结果，包括：unstart(未启动)、running(校验中)、canceled(已终止)、failed(校验任务失败)、inconsistent(不一致)、consistent(一致)、notexist(不存在校验任务)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -1521,7 +1479,6 @@ class CompareViewItem(AbstractModel):
     def __init__(self):
         r"""
         :param _ViewName: 视图名
-注意：此字段可能返回 null，表示取不到有效值。
         :type ViewName: str
         """
         self._ViewName = None
@@ -1529,7 +1486,6 @@ class CompareViewItem(AbstractModel):
     @property
     def ViewName(self):
         """视图名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ViewName
@@ -2238,7 +2194,6 @@ class ConsistencyOption(AbstractModel):
     def __init__(self):
         r"""
         :param _Mode: 一致性检测类型: full(全量检测迁移对象)、noCheck(不检测)、notConfigured(未配置)
-注意：此字段可能返回 null，表示取不到有效值。
         :type Mode: str
         """
         self._Mode = None
@@ -2246,7 +2201,6 @@ class ConsistencyOption(AbstractModel):
     @property
     def Mode(self):
         """一致性检测类型: full(全量检测迁移对象)、noCheck(不检测)、notConfigured(未配置)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Mode
@@ -3560,32 +3514,23 @@ class DBEndpointInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Region: 实例所在地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         :param _AccessType: 实例网络接入类型，如：extranet(外网)、ipv6(公网ipv6)、cvm(云主机自建)、dcg(专线接入)、vpncloud(vpn接入的实例)、cdb(云数据库)、ccn(云联网)、intranet(自研上云)、vpc(私有网络)等，注意具体可选值依赖当前链路
-注意：此字段可能返回 null，表示取不到有效值。
         :type AccessType: str
         :param _DatabaseType: 实例数据库类型，如：mysql,redis,mongodb,postgresql,mariadb,percona 等
-注意：此字段可能返回 null，表示取不到有效值。
         :type DatabaseType: str
         :param _NodeType: 节点类型，为空或者simple表示普通节点、cluster表示集群节点；对于mongo业务，取值为replicaset(mongodb副本集)、standalone(mongodb单节点)、cluster(mongodb集群)；对于redis实例，为空或simple(单节点)、cluster(集群)、cluster-cache(cache集群)、cluster-proxy(代理集群)
-注意：此字段可能返回 null，表示取不到有效值。
         :type NodeType: str
         :param _Info: 数据库信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Info: list of DBInfo
         :param _Supplier: 实例服务提供商，如:"aliyun","others"
-注意：此字段可能返回 null，表示取不到有效值。
         :type Supplier: str
         :param _ExtraAttr: MongoDB可定义如下的参数: 	['AuthDatabase':'admin', 
 'AuthFlag': "1",	'AuthMechanism':"SCRAM-SHA-1"]
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExtraAttr: list of KeyValuePairOption
         :param _DatabaseNetEnv: 数据库所属网络环境，AccessType为云联网(ccn)时必填， UserIDC表示用户IDC、TencentVPC表示腾讯云VPC；
-注意：此字段可能返回 null，表示取不到有效值。
         :type DatabaseNetEnv: str
         :param _ConnectType: tdsql连接方式：proxy-通过tdsql proxy主机访问各个set节点，注意只有在自研上云的网络环境下才能通过这种方式连接，Info中只需要提供proxy主机信息。set-直连set节点，如选择直连set方式，Info中需要正确填写proxy主机信息及所有set节点信息。源端是tdsqlmysql类型必填。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ConnectType: str
         """
         self._Region = None
@@ -3601,7 +3546,6 @@ class DBEndpointInfo(AbstractModel):
     @property
     def Region(self):
         """实例所在地域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Region
@@ -3613,7 +3557,6 @@ class DBEndpointInfo(AbstractModel):
     @property
     def AccessType(self):
         """实例网络接入类型，如：extranet(外网)、ipv6(公网ipv6)、cvm(云主机自建)、dcg(专线接入)、vpncloud(vpn接入的实例)、cdb(云数据库)、ccn(云联网)、intranet(自研上云)、vpc(私有网络)等，注意具体可选值依赖当前链路
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AccessType
@@ -3625,7 +3568,6 @@ class DBEndpointInfo(AbstractModel):
     @property
     def DatabaseType(self):
         """实例数据库类型，如：mysql,redis,mongodb,postgresql,mariadb,percona 等
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DatabaseType
@@ -3637,7 +3579,6 @@ class DBEndpointInfo(AbstractModel):
     @property
     def NodeType(self):
         """节点类型，为空或者simple表示普通节点、cluster表示集群节点；对于mongo业务，取值为replicaset(mongodb副本集)、standalone(mongodb单节点)、cluster(mongodb集群)；对于redis实例，为空或simple(单节点)、cluster(集群)、cluster-cache(cache集群)、cluster-proxy(代理集群)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NodeType
@@ -3649,7 +3590,6 @@ class DBEndpointInfo(AbstractModel):
     @property
     def Info(self):
         """数据库信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DBInfo
         """
         return self._Info
@@ -3661,7 +3601,6 @@ class DBEndpointInfo(AbstractModel):
     @property
     def Supplier(self):
         """实例服务提供商，如:"aliyun","others"
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Supplier
@@ -3674,7 +3613,6 @@ class DBEndpointInfo(AbstractModel):
     def ExtraAttr(self):
         """MongoDB可定义如下的参数: 	['AuthDatabase':'admin', 
 'AuthFlag': "1",	'AuthMechanism':"SCRAM-SHA-1"]
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KeyValuePairOption
         """
         return self._ExtraAttr
@@ -3686,7 +3624,6 @@ class DBEndpointInfo(AbstractModel):
     @property
     def DatabaseNetEnv(self):
         """数据库所属网络环境，AccessType为云联网(ccn)时必填， UserIDC表示用户IDC、TencentVPC表示腾讯云VPC；
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DatabaseNetEnv
@@ -3698,7 +3635,6 @@ class DBEndpointInfo(AbstractModel):
     @property
     def ConnectType(self):
         """tdsql连接方式：proxy-通过tdsql proxy主机访问各个set节点，注意只有在自研上云的网络环境下才能通过这种方式连接，Info中只需要提供proxy主机信息。set-直连set节点，如选择直连set方式，Info中需要正确填写proxy主机信息及所有set节点信息。源端是tdsqlmysql类型必填。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ConnectType
@@ -3746,67 +3682,46 @@ class DBInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Role: 表示节点角色，针对分布式数据库，如mongodb中的mongos节点。tdsqlmysql的可选项：proxy表示节点类型为主机，set表示节点类型为节点。proxy类型必须填在数组第一项。tdsqlmysql类型的源/目标配置必填。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Role: str
         :param _DbKernel: 内核版本，针对mariadb的不同内核版本等
-注意：此字段可能返回 null，表示取不到有效值。
         :type DbKernel: str
         :param _Host: 实例的IP地址，对于公网、专线、VPN、云联网、自研上云、VPC等接入方式此项必填
-注意：此字段可能返回 null，表示取不到有效值。
         :type Host: str
         :param _Port: 实例的端口，对于公网、云主机自建、专线、VPN、云联网、自研上云、VPC等接入方式此项必填
-注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
         :param _User: 实例的用户名
-注意：此字段可能返回 null，表示取不到有效值。
         :type User: str
         :param _Password: 实例的密码
-注意：此字段可能返回 null，表示取不到有效值。
         :type Password: str
         :param _CvmInstanceId: CVM实例短ID，格式如：ins-olgl39y8；与云服务器控制台页面显示的实例ID相同；如果接入类型为云主机自建的方式，此项必填
-注意：此字段可能返回 null，表示取不到有效值。
         :type CvmInstanceId: str
         :param _UniqVpnGwId: VPN网关ID，格式如：vpngw-9ghexg7q；如果接入类型为vpncloud的方式，此项必填
-注意：此字段可能返回 null，表示取不到有效值。
         :type UniqVpnGwId: str
         :param _UniqDcgId: 专线网关ID，格式如：dcg-0rxtqqxb；如果接入类型为专线接入的方式，此项必填
-注意：此字段可能返回 null，表示取不到有效值。
         :type UniqDcgId: str
         :param _InstanceId: 数据库实例ID，格式如：cdb-powiqx8q；如果接入类型为云数据库的方式，此项必填
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _CcnGwId: 云联网ID，如：ccn-afp6kltc 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CcnGwId: str
         :param _VpcId: 私有网络ID，格式如：vpc-92jblxto；如果接入类型为vpc、vpncloud、ccn、dcg的方式，此项必填
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
         :param _SubnetId: 私有网络下的子网ID，格式如：subnet-3paxmkdz；如果接入类型为vpc、vpncloud、ccn、dcg的方式，此项必填
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetId: str
         :param _EngineVersion: 数据库版本，当实例为RDS实例时才有效，格式如：5.6或者5.7，默认为5.6
-注意：此字段可能返回 null，表示取不到有效值。
         :type EngineVersion: str
         :param _Account: 实例所属账号
-注意：此字段可能返回 null，表示取不到有效值。
         :type Account: str
         :param _AccountRole: 跨账号迁移时的角色,只允许[a-zA-Z0-9\-\_]+
-注意：此字段可能返回 null，表示取不到有效值。
         :type AccountRole: str
         :param _AccountMode: 资源所属账号 为空或self(表示本账号内资源)、other(表示其他账户资源)
-注意：此字段可能返回 null，表示取不到有效值。
         :type AccountMode: str
         :param _TmpSecretId: 临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号迁移文档(https://cloud.tencent.com/document/product/571/54117)第4节中关于角色的定义。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TmpSecretId: str
         :param _TmpSecretKey: 临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号迁移文档(https://cloud.tencent.com/document/product/571/54117)第4节中关于角色的定义。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TmpSecretKey: str
         :param _TmpToken: 临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号迁移文档(https://cloud.tencent.com/document/product/571/54117)第4节中关于角色的定义。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TmpToken: str
         :param _SetId: tdsql的分片id。如节点类型为set必填。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SetId: str
         """
         self._Role = None
@@ -3834,7 +3749,6 @@ class DBInfo(AbstractModel):
     @property
     def Role(self):
         """表示节点角色，针对分布式数据库，如mongodb中的mongos节点。tdsqlmysql的可选项：proxy表示节点类型为主机，set表示节点类型为节点。proxy类型必须填在数组第一项。tdsqlmysql类型的源/目标配置必填。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Role
@@ -3846,7 +3760,6 @@ class DBInfo(AbstractModel):
     @property
     def DbKernel(self):
         """内核版本，针对mariadb的不同内核版本等
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DbKernel
@@ -3858,7 +3771,6 @@ class DBInfo(AbstractModel):
     @property
     def Host(self):
         """实例的IP地址，对于公网、专线、VPN、云联网、自研上云、VPC等接入方式此项必填
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Host
@@ -3870,7 +3782,6 @@ class DBInfo(AbstractModel):
     @property
     def Port(self):
         """实例的端口，对于公网、云主机自建、专线、VPN、云联网、自研上云、VPC等接入方式此项必填
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Port
@@ -3882,7 +3793,6 @@ class DBInfo(AbstractModel):
     @property
     def User(self):
         """实例的用户名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._User
@@ -3894,7 +3804,6 @@ class DBInfo(AbstractModel):
     @property
     def Password(self):
         """实例的密码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Password
@@ -3906,7 +3815,6 @@ class DBInfo(AbstractModel):
     @property
     def CvmInstanceId(self):
         """CVM实例短ID，格式如：ins-olgl39y8；与云服务器控制台页面显示的实例ID相同；如果接入类型为云主机自建的方式，此项必填
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CvmInstanceId
@@ -3918,7 +3826,6 @@ class DBInfo(AbstractModel):
     @property
     def UniqVpnGwId(self):
         """VPN网关ID，格式如：vpngw-9ghexg7q；如果接入类型为vpncloud的方式，此项必填
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UniqVpnGwId
@@ -3930,7 +3837,6 @@ class DBInfo(AbstractModel):
     @property
     def UniqDcgId(self):
         """专线网关ID，格式如：dcg-0rxtqqxb；如果接入类型为专线接入的方式，此项必填
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UniqDcgId
@@ -3942,7 +3848,6 @@ class DBInfo(AbstractModel):
     @property
     def InstanceId(self):
         """数据库实例ID，格式如：cdb-powiqx8q；如果接入类型为云数据库的方式，此项必填
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -3954,7 +3859,6 @@ class DBInfo(AbstractModel):
     @property
     def CcnGwId(self):
         """云联网ID，如：ccn-afp6kltc 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CcnGwId
@@ -3966,7 +3870,6 @@ class DBInfo(AbstractModel):
     @property
     def VpcId(self):
         """私有网络ID，格式如：vpc-92jblxto；如果接入类型为vpc、vpncloud、ccn、dcg的方式，此项必填
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VpcId
@@ -3978,7 +3881,6 @@ class DBInfo(AbstractModel):
     @property
     def SubnetId(self):
         """私有网络下的子网ID，格式如：subnet-3paxmkdz；如果接入类型为vpc、vpncloud、ccn、dcg的方式，此项必填
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubnetId
@@ -3990,7 +3892,6 @@ class DBInfo(AbstractModel):
     @property
     def EngineVersion(self):
         """数据库版本，当实例为RDS实例时才有效，格式如：5.6或者5.7，默认为5.6
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EngineVersion
@@ -4002,7 +3903,6 @@ class DBInfo(AbstractModel):
     @property
     def Account(self):
         """实例所属账号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Account
@@ -4014,7 +3914,6 @@ class DBInfo(AbstractModel):
     @property
     def AccountRole(self):
         """跨账号迁移时的角色,只允许[a-zA-Z0-9\-\_]+
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AccountRole
@@ -4026,7 +3925,6 @@ class DBInfo(AbstractModel):
     @property
     def AccountMode(self):
         """资源所属账号 为空或self(表示本账号内资源)、other(表示其他账户资源)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AccountMode
@@ -4038,7 +3936,6 @@ class DBInfo(AbstractModel):
     @property
     def TmpSecretId(self):
         """临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号迁移文档(https://cloud.tencent.com/document/product/571/54117)第4节中关于角色的定义。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TmpSecretId
@@ -4050,7 +3947,6 @@ class DBInfo(AbstractModel):
     @property
     def TmpSecretKey(self):
         """临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号迁移文档(https://cloud.tencent.com/document/product/571/54117)第4节中关于角色的定义。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TmpSecretKey
@@ -4062,7 +3958,6 @@ class DBInfo(AbstractModel):
     @property
     def TmpToken(self):
         """临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号迁移文档(https://cloud.tencent.com/document/product/571/54117)第4节中关于角色的定义。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TmpToken
@@ -4074,7 +3969,6 @@ class DBInfo(AbstractModel):
     @property
     def SetId(self):
         """tdsql的分片id。如节点类型为set必填。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SetId
@@ -4124,64 +4018,44 @@ class DBItem(AbstractModel):
     def __init__(self):
         r"""
         :param _DbName: 需要迁移或同步的库名，当ObjectMode为partial时，此项必填
-注意：此字段可能返回 null，表示取不到有效值。
         :type DbName: str
         :param _NewDbName: 迁移或同步后的库名，默认与源库相同
-注意：此字段可能返回 null，表示取不到有效值。
         :type NewDbName: str
         :param _SchemaName: 迁移或同步的 schema
-注意：此字段可能返回 null，表示取不到有效值。
         :type SchemaName: str
         :param _NewSchemaName: 迁移或同步后的 schema name
-注意：此字段可能返回 null，表示取不到有效值。
         :type NewSchemaName: str
         :param _DBMode: DB选择模式: all(为当前对象下的所有对象)，partial(部分对象)，当ObjectMode为partial时，此项必填
-注意：此字段可能返回 null，表示取不到有效值。
         :type DBMode: str
         :param _SchemaMode: schema选择模式: all(为当前对象下的所有对象)，partial(部分对象)
-注意：此字段可能返回 null，表示取不到有效值。
         :type SchemaMode: str
         :param _TableMode: 表选择模式: all(为当前对象下的所有对象)，partial(部分对象)，当DBMode为partial时此项必填
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableMode: str
         :param _Tables: 表图对象集合，当 TableMode 为 partial 时，此项需要填写
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tables: list of TableItem
         :param _ViewMode: 视图选择模式: all 为当前对象下的所有视图对象,partial 为部分视图对象
-注意：此字段可能返回 null，表示取不到有效值。
         :type ViewMode: str
         :param _Views: 视图对象集合，当 ViewMode 为 partial 时， 此项需要填写
-注意：此字段可能返回 null，表示取不到有效值。
         :type Views: list of ViewItem
         :param _RoleMode: postgresql独有参数，角色选择模式: all 为当前对象下的所有角色对象,partial 为部分角色对象
-注意：此字段可能返回 null，表示取不到有效值。
         :type RoleMode: str
         :param _Roles: postgresql独有参数，当 RoleMode 为 partial 时， 此项需要填写
-注意：此字段可能返回 null，表示取不到有效值。
         :type Roles: list of RoleItem
         :param _FunctionMode: 选择要同步的模式，partial为部分，all为整选
-注意：此字段可能返回 null，表示取不到有效值。
         :type FunctionMode: str
         :param _TriggerMode: 选择要同步的模式，partial为部分，all为整选
-注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerMode: str
         :param _EventMode: 选择要同步的模式，partial为部分，all为整选
-注意：此字段可能返回 null，表示取不到有效值。
         :type EventMode: str
         :param _ProcedureMode: 选择要同步的模式，partial为部分，all为整选
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProcedureMode: str
         :param _Functions: FunctionMode取值为partial时需要填写
-注意：此字段可能返回 null，表示取不到有效值。
         :type Functions: list of str
         :param _Procedures: ProcedureMode取值为partial时需要填写
-注意：此字段可能返回 null，表示取不到有效值。
         :type Procedures: list of str
         :param _Events: EventMode取值为partial时需要填写
-注意：此字段可能返回 null，表示取不到有效值。
         :type Events: list of str
         :param _Triggers: TriggerMode取值为partial时需要填写
-注意：此字段可能返回 null，表示取不到有效值。
         :type Triggers: list of str
         """
         self._DbName = None
@@ -4208,7 +4082,6 @@ class DBItem(AbstractModel):
     @property
     def DbName(self):
         """需要迁移或同步的库名，当ObjectMode为partial时，此项必填
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DbName
@@ -4220,7 +4093,6 @@ class DBItem(AbstractModel):
     @property
     def NewDbName(self):
         """迁移或同步后的库名，默认与源库相同
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NewDbName
@@ -4232,7 +4104,6 @@ class DBItem(AbstractModel):
     @property
     def SchemaName(self):
         """迁移或同步的 schema
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SchemaName
@@ -4244,7 +4115,6 @@ class DBItem(AbstractModel):
     @property
     def NewSchemaName(self):
         """迁移或同步后的 schema name
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NewSchemaName
@@ -4256,7 +4126,6 @@ class DBItem(AbstractModel):
     @property
     def DBMode(self):
         """DB选择模式: all(为当前对象下的所有对象)，partial(部分对象)，当ObjectMode为partial时，此项必填
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DBMode
@@ -4268,7 +4137,6 @@ class DBItem(AbstractModel):
     @property
     def SchemaMode(self):
         """schema选择模式: all(为当前对象下的所有对象)，partial(部分对象)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SchemaMode
@@ -4280,7 +4148,6 @@ class DBItem(AbstractModel):
     @property
     def TableMode(self):
         """表选择模式: all(为当前对象下的所有对象)，partial(部分对象)，当DBMode为partial时此项必填
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TableMode
@@ -4292,7 +4159,6 @@ class DBItem(AbstractModel):
     @property
     def Tables(self):
         """表图对象集合，当 TableMode 为 partial 时，此项需要填写
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TableItem
         """
         return self._Tables
@@ -4304,7 +4170,6 @@ class DBItem(AbstractModel):
     @property
     def ViewMode(self):
         """视图选择模式: all 为当前对象下的所有视图对象,partial 为部分视图对象
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ViewMode
@@ -4316,7 +4181,6 @@ class DBItem(AbstractModel):
     @property
     def Views(self):
         """视图对象集合，当 ViewMode 为 partial 时， 此项需要填写
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ViewItem
         """
         return self._Views
@@ -4328,7 +4192,6 @@ class DBItem(AbstractModel):
     @property
     def RoleMode(self):
         """postgresql独有参数，角色选择模式: all 为当前对象下的所有角色对象,partial 为部分角色对象
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RoleMode
@@ -4340,7 +4203,6 @@ class DBItem(AbstractModel):
     @property
     def Roles(self):
         """postgresql独有参数，当 RoleMode 为 partial 时， 此项需要填写
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RoleItem
         """
         return self._Roles
@@ -4352,7 +4214,6 @@ class DBItem(AbstractModel):
     @property
     def FunctionMode(self):
         """选择要同步的模式，partial为部分，all为整选
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FunctionMode
@@ -4364,7 +4225,6 @@ class DBItem(AbstractModel):
     @property
     def TriggerMode(self):
         """选择要同步的模式，partial为部分，all为整选
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TriggerMode
@@ -4376,7 +4236,6 @@ class DBItem(AbstractModel):
     @property
     def EventMode(self):
         """选择要同步的模式，partial为部分，all为整选
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EventMode
@@ -4388,7 +4247,6 @@ class DBItem(AbstractModel):
     @property
     def ProcedureMode(self):
         """选择要同步的模式，partial为部分，all为整选
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProcedureMode
@@ -4400,7 +4258,6 @@ class DBItem(AbstractModel):
     @property
     def Functions(self):
         """FunctionMode取值为partial时需要填写
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Functions
@@ -4412,7 +4269,6 @@ class DBItem(AbstractModel):
     @property
     def Procedures(self):
         """ProcedureMode取值为partial时需要填写
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Procedures
@@ -4424,7 +4280,6 @@ class DBItem(AbstractModel):
     @property
     def Events(self):
         """EventMode取值为partial时需要填写
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Events
@@ -4436,7 +4291,6 @@ class DBItem(AbstractModel):
     @property
     def Triggers(self):
         """TriggerMode取值为partial时需要填写
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Triggers
@@ -4820,10 +4674,8 @@ class DatabaseTableObject(AbstractModel):
     def __init__(self):
         r"""
         :param _ObjectMode: 迁移对象类型 all(全实例)，partial(部分对象)
-注意：此字段可能返回 null，表示取不到有效值。
         :type ObjectMode: str
         :param _Databases: 迁移对象，当 ObjectMode 为 partial 时，不为空
-注意：此字段可能返回 null，表示取不到有效值。
         :type Databases: list of DBItem
         :param _AdvancedObjects: 高级对象类型，如trigger、function、procedure、event。注意：如果要迁移同步高级对象，此配置中应该包含对应的高级对象类型
 注意：此字段可能返回 null，表示取不到有效值。
@@ -4836,7 +4688,6 @@ class DatabaseTableObject(AbstractModel):
     @property
     def ObjectMode(self):
         """迁移对象类型 all(全实例)，partial(部分对象)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ObjectMode
@@ -4848,7 +4699,6 @@ class DatabaseTableObject(AbstractModel):
     @property
     def Databases(self):
         """迁移对象，当 ObjectMode 为 partial 时，不为空
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DBItem
         """
         return self._Databases
@@ -9578,13 +9428,10 @@ class DistributeRule(AbstractModel):
     def __init__(self):
         r"""
         :param _RuleType: 规则类型。非mongo产品的枚举值为: table-按表名分区，pk-按表名+主键分区，cols-按列名分区。mongo的枚举值为：collection-按集合名分区、collectionAndObjectId-按集合+主键分区。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleType: str
         :param _DbPattern: 库名匹配规则，请填写正则表达式
-注意：此字段可能返回 null，表示取不到有效值。
         :type DbPattern: str
         :param _TablePattern: 表名匹配规则，如果 DatabaseType 为 mongodb，则匹配集合名
-注意：此字段可能返回 null，表示取不到有效值。
         :type TablePattern: str
         :param _Columns: 列名。如果 RuleType 为 cols，此项必填。订阅任务会用该列的值计算分区。mongo没有按列分区，因此也不用传这个字段。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -9598,7 +9445,6 @@ class DistributeRule(AbstractModel):
     @property
     def RuleType(self):
         """规则类型。非mongo产品的枚举值为: table-按表名分区，pk-按表名+主键分区，cols-按列名分区。mongo的枚举值为：collection-按集合名分区、collectionAndObjectId-按集合+主键分区。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RuleType
@@ -9610,7 +9456,6 @@ class DistributeRule(AbstractModel):
     @property
     def DbPattern(self):
         """库名匹配规则，请填写正则表达式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DbPattern
@@ -9622,7 +9467,6 @@ class DistributeRule(AbstractModel):
     @property
     def TablePattern(self):
         """表名匹配规则，如果 DatabaseType 为 mongodb，则匹配集合名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TablePattern
@@ -9763,94 +9607,64 @@ class Endpoint(AbstractModel):
     def __init__(self):
         r"""
         :param _Region: 地域英文名，如：ap-guangzhou
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         :param _Role: 节点类型，proxy表示节点类型为主机，set表示节点类型为节点。proxy类型必须填在数组第一项。tdsqlmysql类型的源/目标配置必填
-注意：此字段可能返回 null，表示取不到有效值。
         :type Role: str
         :param _DbKernel: 数据库内核类型，tdsql中用于区分不同内核：percona,mariadb,mysql。注意TDSQL-C MySQL、TDSQL PostgreSQL无需填写此项值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DbKernel: str
         :param _InstanceId: 数据库实例ID，格式如：cdb-powiqx8q
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _Ip: 实例的IP地址，接入类型为非cdb时此项必填
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ip: str
         :param _Port: 实例端口，接入类型为非cdb时此项必填
-注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
         :param _User: 用户名，对于访问需要用户名密码认证的实例必填
-注意：此字段可能返回 null，表示取不到有效值。
         :type User: str
         :param _Password: 密码，对于访问需要用户名密码认证的实例必填
-注意：此字段可能返回 null，表示取不到有效值。
         :type Password: str
         :param _DbName: 数据库名，数据库为cdwpg时，需要提供
-注意：此字段可能返回 null，表示取不到有效值。
         :type DbName: str
         :param _VpcId: 私有网络ID，对于私有网络、专线、VPN的接入方式此项必填，格式如：vpc-92jblxto
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
         :param _SubnetId: 私有网络下的子网ID，对于私有网络、专线、VPN的接入方式此项必填，格式如：subnet-3paxmkdz
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetId: str
         :param _CvmInstanceId: CVM实例短ID，格式如：ins-olgl39y8，与云服务器控制台页面显示的实例ID相同。如果是CVM自建实例，需要传递此字段
-注意：此字段可能返回 null，表示取不到有效值。
         :type CvmInstanceId: str
         :param _UniqDcgId: 专线网关ID，对于专线接入类型此项必填，格式如：dcg-0rxtqqxb
-注意：此字段可能返回 null，表示取不到有效值。
         :type UniqDcgId: str
         :param _UniqVpnGwId: VPN网关ID，对于vpn接入类型此项必填，格式如：vpngw-9ghexg7q
-注意：此字段可能返回 null，表示取不到有效值。
         :type UniqVpnGwId: str
         :param _CcnId: 云联网ID，对于云联网接入类型此项必填，如：ccn-afp6kltc
-注意：此字段可能返回 null，表示取不到有效值。
         :type CcnId: str
         :param _Supplier: 云厂商类型，当实例为RDS实例时，填写为aliyun, 其他情况均填写others，默认为others
-注意：此字段可能返回 null，表示取不到有效值。
         :type Supplier: str
         :param _EngineVersion: 数据库版本，当实例为RDS实例时才有效，其他实例忽略，格式如：5.6或者5.7，默认为5.6
-注意：此字段可能返回 null，表示取不到有效值。
         :type EngineVersion: str
         :param _Account: 实例所属账号，如果为跨账号实例此项必填
-注意：此字段可能返回 null，表示取不到有效值。
         :type Account: str
         :param _AccountMode: 资源所属账号 为空或self(表示本账号内资源)、other(表示跨账号资源)
-注意：此字段可能返回 null，表示取不到有效值。
         :type AccountMode: str
         :param _AccountRole: 跨账号同步时的角色，只允许[a-zA-Z0-9\-\_]+，如果为跨账号实例此项必填
-注意：此字段可能返回 null，表示取不到有效值。
         :type AccountRole: str
         :param _RoleExternalId: 外部角色id
-注意：此字段可能返回 null，表示取不到有效值。
         :type RoleExternalId: str
         :param _TmpSecretId: 临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号同步文档(https://cloud.tencent.com/document/product/571/68729)第4节中关于角色的定义。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TmpSecretId: str
         :param _TmpSecretKey: 临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号同步文档(https://cloud.tencent.com/document/product/571/68729)第4节中关于角色的定义。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TmpSecretKey: str
         :param _TmpToken: 临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号同步文档(https://cloud.tencent.com/document/product/571/68729)第4节中关于角色的定义。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TmpToken: str
         :param _EncryptConn: 是否走加密传输、UnEncrypted表示不走加密传输，Encrypted表示走加密传输，默认UnEncrypted
-注意：此字段可能返回 null，表示取不到有效值。
         :type EncryptConn: str
         :param _DatabaseNetEnv: 数据库所属网络环境，AccessType为云联网(ccn)时必填， UserIDC表示用户IDC、TencentVPC表示腾讯云VPC；
-注意：此字段可能返回 null，表示取不到有效值。
         :type DatabaseNetEnv: str
         :param _CcnOwnerUin: 数据库为跨账号云联网下的实例时、表示云联网所属主账号
-注意：此字段可能返回 null，表示取不到有效值。
         :type CcnOwnerUin: str
         :param _ChildInstanceId: 数据库为cynos、且是cynos集群内的一个子数据库实例时、该参数为该子实例的ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChildInstanceId: str
         :param _ChildInstanceType: 数据库为cynos、且是cynos集群内的一个子数据库实例时、该参数为该子实例的类型、例如：只读实例传ro、读写实例传rw
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChildInstanceType: str
         :param _SetId: tdsql的分片id。如节点类型为set必填。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SetId: str
         """
         self._Region = None
@@ -9887,7 +9701,6 @@ class Endpoint(AbstractModel):
     @property
     def Region(self):
         """地域英文名，如：ap-guangzhou
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Region
@@ -9899,7 +9712,6 @@ class Endpoint(AbstractModel):
     @property
     def Role(self):
         """节点类型，proxy表示节点类型为主机，set表示节点类型为节点。proxy类型必须填在数组第一项。tdsqlmysql类型的源/目标配置必填
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Role
@@ -9911,7 +9723,6 @@ class Endpoint(AbstractModel):
     @property
     def DbKernel(self):
         """数据库内核类型，tdsql中用于区分不同内核：percona,mariadb,mysql。注意TDSQL-C MySQL、TDSQL PostgreSQL无需填写此项值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DbKernel
@@ -9923,7 +9734,6 @@ class Endpoint(AbstractModel):
     @property
     def InstanceId(self):
         """数据库实例ID，格式如：cdb-powiqx8q
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -9935,7 +9745,6 @@ class Endpoint(AbstractModel):
     @property
     def Ip(self):
         """实例的IP地址，接入类型为非cdb时此项必填
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Ip
@@ -9947,7 +9756,6 @@ class Endpoint(AbstractModel):
     @property
     def Port(self):
         """实例端口，接入类型为非cdb时此项必填
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Port
@@ -9959,7 +9767,6 @@ class Endpoint(AbstractModel):
     @property
     def User(self):
         """用户名，对于访问需要用户名密码认证的实例必填
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._User
@@ -9971,7 +9778,6 @@ class Endpoint(AbstractModel):
     @property
     def Password(self):
         """密码，对于访问需要用户名密码认证的实例必填
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Password
@@ -9983,7 +9789,6 @@ class Endpoint(AbstractModel):
     @property
     def DbName(self):
         """数据库名，数据库为cdwpg时，需要提供
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DbName
@@ -9995,7 +9800,6 @@ class Endpoint(AbstractModel):
     @property
     def VpcId(self):
         """私有网络ID，对于私有网络、专线、VPN的接入方式此项必填，格式如：vpc-92jblxto
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VpcId
@@ -10007,7 +9811,6 @@ class Endpoint(AbstractModel):
     @property
     def SubnetId(self):
         """私有网络下的子网ID，对于私有网络、专线、VPN的接入方式此项必填，格式如：subnet-3paxmkdz
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubnetId
@@ -10019,7 +9822,6 @@ class Endpoint(AbstractModel):
     @property
     def CvmInstanceId(self):
         """CVM实例短ID，格式如：ins-olgl39y8，与云服务器控制台页面显示的实例ID相同。如果是CVM自建实例，需要传递此字段
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CvmInstanceId
@@ -10031,7 +9833,6 @@ class Endpoint(AbstractModel):
     @property
     def UniqDcgId(self):
         """专线网关ID，对于专线接入类型此项必填，格式如：dcg-0rxtqqxb
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UniqDcgId
@@ -10043,7 +9844,6 @@ class Endpoint(AbstractModel):
     @property
     def UniqVpnGwId(self):
         """VPN网关ID，对于vpn接入类型此项必填，格式如：vpngw-9ghexg7q
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UniqVpnGwId
@@ -10055,7 +9855,6 @@ class Endpoint(AbstractModel):
     @property
     def CcnId(self):
         """云联网ID，对于云联网接入类型此项必填，如：ccn-afp6kltc
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CcnId
@@ -10067,7 +9866,6 @@ class Endpoint(AbstractModel):
     @property
     def Supplier(self):
         """云厂商类型，当实例为RDS实例时，填写为aliyun, 其他情况均填写others，默认为others
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Supplier
@@ -10079,7 +9877,6 @@ class Endpoint(AbstractModel):
     @property
     def EngineVersion(self):
         """数据库版本，当实例为RDS实例时才有效，其他实例忽略，格式如：5.6或者5.7，默认为5.6
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EngineVersion
@@ -10091,7 +9888,6 @@ class Endpoint(AbstractModel):
     @property
     def Account(self):
         """实例所属账号，如果为跨账号实例此项必填
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Account
@@ -10103,7 +9899,6 @@ class Endpoint(AbstractModel):
     @property
     def AccountMode(self):
         """资源所属账号 为空或self(表示本账号内资源)、other(表示跨账号资源)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AccountMode
@@ -10115,7 +9910,6 @@ class Endpoint(AbstractModel):
     @property
     def AccountRole(self):
         """跨账号同步时的角色，只允许[a-zA-Z0-9\-\_]+，如果为跨账号实例此项必填
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AccountRole
@@ -10127,7 +9921,6 @@ class Endpoint(AbstractModel):
     @property
     def RoleExternalId(self):
         """外部角色id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RoleExternalId
@@ -10139,7 +9932,6 @@ class Endpoint(AbstractModel):
     @property
     def TmpSecretId(self):
         """临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号同步文档(https://cloud.tencent.com/document/product/571/68729)第4节中关于角色的定义。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TmpSecretId
@@ -10151,7 +9943,6 @@ class Endpoint(AbstractModel):
     @property
     def TmpSecretKey(self):
         """临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号同步文档(https://cloud.tencent.com/document/product/571/68729)第4节中关于角色的定义。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TmpSecretKey
@@ -10163,7 +9954,6 @@ class Endpoint(AbstractModel):
     @property
     def TmpToken(self):
         """临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号同步文档(https://cloud.tencent.com/document/product/571/68729)第4节中关于角色的定义。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TmpToken
@@ -10175,7 +9965,6 @@ class Endpoint(AbstractModel):
     @property
     def EncryptConn(self):
         """是否走加密传输、UnEncrypted表示不走加密传输，Encrypted表示走加密传输，默认UnEncrypted
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EncryptConn
@@ -10187,7 +9976,6 @@ class Endpoint(AbstractModel):
     @property
     def DatabaseNetEnv(self):
         """数据库所属网络环境，AccessType为云联网(ccn)时必填， UserIDC表示用户IDC、TencentVPC表示腾讯云VPC；
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DatabaseNetEnv
@@ -10199,7 +9987,6 @@ class Endpoint(AbstractModel):
     @property
     def CcnOwnerUin(self):
         """数据库为跨账号云联网下的实例时、表示云联网所属主账号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CcnOwnerUin
@@ -10211,7 +9998,6 @@ class Endpoint(AbstractModel):
     @property
     def ChildInstanceId(self):
         """数据库为cynos、且是cynos集群内的一个子数据库实例时、该参数为该子实例的ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ChildInstanceId
@@ -10223,7 +10009,6 @@ class Endpoint(AbstractModel):
     @property
     def ChildInstanceType(self):
         """数据库为cynos、且是cynos集群内的一个子数据库实例时、该参数为该子实例的类型、例如：只读实例传ro、读写实例传rw
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ChildInstanceType
@@ -10235,7 +10020,6 @@ class Endpoint(AbstractModel):
     @property
     def SetId(self):
         """tdsql的分片id。如节点类型为set必填。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SetId
@@ -10294,61 +10078,43 @@ class EndpointItem(AbstractModel):
     def __init__(self):
         r"""
         :param _DatabaseRegion: 源库所在地域。如果 AccessType 为 ccn，请填vpc所在地域，因为此时不知道源库在哪个地域。其他接入方式，请填订阅任务所在地域，因为确保订阅任务与源库在同一地域是最优的网络方案。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DatabaseRegion: str
         :param _User: 用户名
-注意：此字段可能返回 null，表示取不到有效值。
         :type User: str
         :param _Password: 密码。作为入参时必填，作为出参时为空。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Password: str
         :param _InstanceId: 目标实例ID。如果 AccessType 为 cdb，此项必填。配置InstanceId时会查询并校验实例信息。mysql的查询接口经过了鉴权，请确保子用户有 cdb:DescribeDBInstances 的接口权限。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _CvmInstanceId: 云主机ID。如果 AccessType 为 cvm，此项必填。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CvmInstanceId: str
         :param _UniqDcgId: 专线网关ID。如果 AccessType 为 dcg，此项必填。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UniqDcgId: str
         :param _CcnId: 云联网ID。如果 AccessType 为 ccn，此项必填。 
-注意：此字段可能返回 null，表示取不到有效值。
         :type CcnId: str
         :param _UniqVpnGwId: vpn网关ID。如果 AccessType 为 vpncloud，此项必填。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UniqVpnGwId: str
         :param _VpcId: VpcID。如果 AccessType 为 dcg\ccn\vpncloud\vpc，此项必填。
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
         :param _SubnetId: 子网ID。如果 AccessType 为 dcg\ccn\vpncloud\vpc，此项必填。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetId: str
         :param _HostName: 数据库地址，支持域名与IP。如果 AccessType 为 dcg\ccn\vpncloud\vpc\extranet\intranet，此项必填。
-注意：此字段可能返回 null，表示取不到有效值。
         :type HostName: str
         :param _Port: 数据库端口。如果 AccessType 为 dcg\ccn\vpncloud\vpc\extranet\intranet\cvm，此项必填。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
         :param _EncryptConn: 是否走加密传输，枚举值：UnEncrypted-不加密，Encrypted-加密。只有mysql支持，不填默认不加密，其他产品不填。
-注意：此字段可能返回 null，表示取不到有效值。
         :type EncryptConn: str
         :param _DatabaseNetEnv: 数据库网络环境。如果 AccessType 为 ccn 此项必填。枚举值：UserIDC-自建idc，TencentVPC-腾讯云，Aws-aws，AliYun-阿里云，Others-其他。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DatabaseNetEnv: str
         :param _CcnOwnerUin: 云联网网关所属的主账号uin、跨账号云联网需要。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CcnOwnerUin: str
         :param _ExtraAttr: 为业务添加的额外信息。参数名作key，参数值作value。 
 tdpg必填参数：PgDatabase-订阅的库名；
 mongo选填参数：InstanceType-实例类型：replicaset-副本集，cluster-分片集，主要用于控制台跳转到mongo实例页面，如不填不影响任务运行；
 全业务选填参数：EngineVersion-内核版本。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExtraAttr: list of KeyValuePairOption
         :param _ChildInstanceId: 数据库为cynos、且是cynos集群内的一个子数据库实例时、该参数为该子实例的ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChildInstanceId: str
         :param _ChildInstanceType: 数据库为cynos、且是cynos集群内的一个子数据库实例时、该参数为该子实例的类型、例如：只读实例传ro、读写实例传rw
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChildInstanceType: str
         """
         self._DatabaseRegion = None
@@ -10373,7 +10139,6 @@ mongo选填参数：InstanceType-实例类型：replicaset-副本集，cluster-�
     @property
     def DatabaseRegion(self):
         """源库所在地域。如果 AccessType 为 ccn，请填vpc所在地域，因为此时不知道源库在哪个地域。其他接入方式，请填订阅任务所在地域，因为确保订阅任务与源库在同一地域是最优的网络方案。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DatabaseRegion
@@ -10385,7 +10150,6 @@ mongo选填参数：InstanceType-实例类型：replicaset-副本集，cluster-�
     @property
     def User(self):
         """用户名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._User
@@ -10397,7 +10161,6 @@ mongo选填参数：InstanceType-实例类型：replicaset-副本集，cluster-�
     @property
     def Password(self):
         """密码。作为入参时必填，作为出参时为空。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Password
@@ -10409,7 +10172,6 @@ mongo选填参数：InstanceType-实例类型：replicaset-副本集，cluster-�
     @property
     def InstanceId(self):
         """目标实例ID。如果 AccessType 为 cdb，此项必填。配置InstanceId时会查询并校验实例信息。mysql的查询接口经过了鉴权，请确保子用户有 cdb:DescribeDBInstances 的接口权限。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -10421,7 +10183,6 @@ mongo选填参数：InstanceType-实例类型：replicaset-副本集，cluster-�
     @property
     def CvmInstanceId(self):
         """云主机ID。如果 AccessType 为 cvm，此项必填。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CvmInstanceId
@@ -10433,7 +10194,6 @@ mongo选填参数：InstanceType-实例类型：replicaset-副本集，cluster-�
     @property
     def UniqDcgId(self):
         """专线网关ID。如果 AccessType 为 dcg，此项必填。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UniqDcgId
@@ -10445,7 +10205,6 @@ mongo选填参数：InstanceType-实例类型：replicaset-副本集，cluster-�
     @property
     def CcnId(self):
         """云联网ID。如果 AccessType 为 ccn，此项必填。 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CcnId
@@ -10457,7 +10216,6 @@ mongo选填参数：InstanceType-实例类型：replicaset-副本集，cluster-�
     @property
     def UniqVpnGwId(self):
         """vpn网关ID。如果 AccessType 为 vpncloud，此项必填。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UniqVpnGwId
@@ -10469,7 +10227,6 @@ mongo选填参数：InstanceType-实例类型：replicaset-副本集，cluster-�
     @property
     def VpcId(self):
         """VpcID。如果 AccessType 为 dcg\ccn\vpncloud\vpc，此项必填。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VpcId
@@ -10481,7 +10238,6 @@ mongo选填参数：InstanceType-实例类型：replicaset-副本集，cluster-�
     @property
     def SubnetId(self):
         """子网ID。如果 AccessType 为 dcg\ccn\vpncloud\vpc，此项必填。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubnetId
@@ -10493,7 +10249,6 @@ mongo选填参数：InstanceType-实例类型：replicaset-副本集，cluster-�
     @property
     def HostName(self):
         """数据库地址，支持域名与IP。如果 AccessType 为 dcg\ccn\vpncloud\vpc\extranet\intranet，此项必填。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HostName
@@ -10505,7 +10260,6 @@ mongo选填参数：InstanceType-实例类型：replicaset-副本集，cluster-�
     @property
     def Port(self):
         """数据库端口。如果 AccessType 为 dcg\ccn\vpncloud\vpc\extranet\intranet\cvm，此项必填。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Port
@@ -10517,7 +10271,6 @@ mongo选填参数：InstanceType-实例类型：replicaset-副本集，cluster-�
     @property
     def EncryptConn(self):
         """是否走加密传输，枚举值：UnEncrypted-不加密，Encrypted-加密。只有mysql支持，不填默认不加密，其他产品不填。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EncryptConn
@@ -10529,7 +10282,6 @@ mongo选填参数：InstanceType-实例类型：replicaset-副本集，cluster-�
     @property
     def DatabaseNetEnv(self):
         """数据库网络环境。如果 AccessType 为 ccn 此项必填。枚举值：UserIDC-自建idc，TencentVPC-腾讯云，Aws-aws，AliYun-阿里云，Others-其他。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DatabaseNetEnv
@@ -10541,7 +10293,6 @@ mongo选填参数：InstanceType-实例类型：replicaset-副本集，cluster-�
     @property
     def CcnOwnerUin(self):
         """云联网网关所属的主账号uin、跨账号云联网需要。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CcnOwnerUin
@@ -10556,7 +10307,6 @@ mongo选填参数：InstanceType-实例类型：replicaset-副本集，cluster-�
 tdpg必填参数：PgDatabase-订阅的库名；
 mongo选填参数：InstanceType-实例类型：replicaset-副本集，cluster-分片集，主要用于控制台跳转到mongo实例页面，如不填不影响任务运行；
 全业务选填参数：EngineVersion-内核版本。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KeyValuePairOption
         """
         return self._ExtraAttr
@@ -10568,7 +10318,6 @@ mongo选填参数：InstanceType-实例类型：replicaset-副本集，cluster-�
     @property
     def ChildInstanceId(self):
         """数据库为cynos、且是cynos集群内的一个子数据库实例时、该参数为该子实例的ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ChildInstanceId
@@ -10580,7 +10329,6 @@ mongo选填参数：InstanceType-实例类型：replicaset-副本集，cluster-�
     @property
     def ChildInstanceType(self):
         """数据库为cynos、且是cynos集群内的一个子数据库实例时、该参数为该子实例的类型、例如：只读实例传ro、读写实例传rw
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ChildInstanceType
@@ -10634,10 +10382,8 @@ class ErrInfo(AbstractModel):
         :param _Reason: 错误原因
         :type Reason: str
         :param _Message: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param _Solution: 解决方案
-注意：此字段可能返回 null，表示取不到有效值。
         :type Solution: str
         """
         self._Reason = None
@@ -10658,7 +10404,6 @@ class ErrInfo(AbstractModel):
     @property
     def Message(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Message
@@ -10670,7 +10415,6 @@ class ErrInfo(AbstractModel):
     @property
     def Solution(self):
         """解决方案
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Solution
@@ -10702,16 +10446,12 @@ class ErrorInfoItem(AbstractModel):
     def __init__(self):
         r"""
         :param _Code: 错误码
-注意：此字段可能返回 null，表示取不到有效值。
         :type Code: str
         :param _Solution: 解决方案
-注意：此字段可能返回 null，表示取不到有效值。
         :type Solution: str
         :param _ErrorLog: 错误日志信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorLog: str
         :param _HelpDoc: 文档提示
-注意：此字段可能返回 null，表示取不到有效值。
         :type HelpDoc: str
         """
         self._Code = None
@@ -10722,7 +10462,6 @@ class ErrorInfoItem(AbstractModel):
     @property
     def Code(self):
         """错误码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Code
@@ -10734,7 +10473,6 @@ class ErrorInfoItem(AbstractModel):
     @property
     def Solution(self):
         """解决方案
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Solution
@@ -10746,7 +10484,6 @@ class ErrorInfoItem(AbstractModel):
     @property
     def ErrorLog(self):
         """错误日志信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorLog
@@ -10758,7 +10495,6 @@ class ErrorInfoItem(AbstractModel):
     @property
     def HelpDoc(self):
         """文档提示
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HelpDoc
@@ -10795,7 +10531,6 @@ class GroupInfo(AbstractModel):
         :param _ConsumerGroupName: 消费者组名称
         :type ConsumerGroupName: str
         :param _Description: 消费者组备注
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _ConsumerGroupOffset: 消费组偏移量。该字段是为了兼容以前单Partition的情况，取值为最后一个分区的偏移量。各分区的偏移量详见StateOfPartition字段
         :type ConsumerGroupOffset: int
@@ -10812,7 +10547,6 @@ class GroupInfo(AbstractModel):
         :param _ConsumerGroupState: 消费者组状态，包括Dead、Empty、Stable等，只有Dead和Empty两种状态可以执行reset操作
         :type ConsumerGroupState: str
         :param _PartitionAssignment: 每个消费者正在消费的分区
-注意：此字段可能返回 null，表示取不到有效值。
         :type PartitionAssignment: list of PartitionAssignment
         """
         self._Account = None
@@ -10852,7 +10586,6 @@ class GroupInfo(AbstractModel):
     @property
     def Description(self):
         """消费者组备注
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -10941,7 +10674,6 @@ class GroupInfo(AbstractModel):
     @property
     def PartitionAssignment(self):
         """每个消费者正在消费的分区
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PartitionAssignment
         """
         return self._PartitionAssignment
@@ -11634,10 +11366,8 @@ class KeyValuePairOption(AbstractModel):
     def __init__(self):
         r"""
         :param _Key: 选项key
-注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
         :param _Value: 选项value
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Key = None
@@ -11646,7 +11376,6 @@ class KeyValuePairOption(AbstractModel):
     @property
     def Key(self):
         """选项key
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Key
@@ -11658,7 +11387,6 @@ class KeyValuePairOption(AbstractModel):
     @property
     def Value(self):
         """选项value
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -11689,10 +11417,8 @@ class MigrateAction(AbstractModel):
     def __init__(self):
         r"""
         :param _AllAction: 任务的所有操作列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type AllAction: list of str
         :param _AllowedAction: 任务在当前状态下允许的操作列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type AllowedAction: list of str
         """
         self._AllAction = None
@@ -11701,7 +11427,6 @@ class MigrateAction(AbstractModel):
     @property
     def AllAction(self):
         """任务的所有操作列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._AllAction
@@ -11713,7 +11438,6 @@ class MigrateAction(AbstractModel):
     @property
     def AllowedAction(self):
         """任务在当前状态下允许的操作列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._AllowedAction
@@ -11855,19 +11579,14 @@ class MigrateDetailInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _StepAll: 总步骤数
-注意：此字段可能返回 null，表示取不到有效值。
         :type StepAll: int
         :param _StepNow: 当前步骤
-注意：此字段可能返回 null，表示取不到有效值。
         :type StepNow: int
         :param _MasterSlaveDistance: 主从差距，MB；只在任务正常，迁移或者同步的最后一步（追Binlog的阶段才有校），如果是非法值，返回-1
-注意：此字段可能返回 null，表示取不到有效值。
         :type MasterSlaveDistance: int
         :param _SecondsBehindMaster: 主从差距，秒；只在任务正常，迁移或者同步的最后一步（追Binlog的阶段才有校），如果是非法值，返回-1
-注意：此字段可能返回 null，表示取不到有效值。
         :type SecondsBehindMaster: int
         :param _StepInfo: 步骤信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type StepInfo: list of StepDetailInfo
         """
         self._StepAll = None
@@ -11879,7 +11598,6 @@ class MigrateDetailInfo(AbstractModel):
     @property
     def StepAll(self):
         """总步骤数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._StepAll
@@ -11891,7 +11609,6 @@ class MigrateDetailInfo(AbstractModel):
     @property
     def StepNow(self):
         """当前步骤
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._StepNow
@@ -11903,7 +11620,6 @@ class MigrateDetailInfo(AbstractModel):
     @property
     def MasterSlaveDistance(self):
         """主从差距，MB；只在任务正常，迁移或者同步的最后一步（追Binlog的阶段才有校），如果是非法值，返回-1
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MasterSlaveDistance
@@ -11915,7 +11631,6 @@ class MigrateDetailInfo(AbstractModel):
     @property
     def SecondsBehindMaster(self):
         """主从差距，秒；只在任务正常，迁移或者同步的最后一步（追Binlog的阶段才有校），如果是非法值，返回-1
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SecondsBehindMaster
@@ -11927,7 +11642,6 @@ class MigrateDetailInfo(AbstractModel):
     @property
     def StepInfo(self):
         """步骤信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of StepDetailInfo
         """
         return self._StepInfo
@@ -11966,29 +11680,21 @@ class MigrateOption(AbstractModel):
     def __init__(self):
         r"""
         :param _DatabaseTable: 迁移对象选项，需要告知迁移服务迁移哪些库表对象
-注意：此字段可能返回 null，表示取不到有效值。
         :type DatabaseTable: :class:`tencentcloud.dts.v20211206.models.DatabaseTableObject`
         :param _MigrateType: 迁移类型，full(全量迁移)，structure(结构迁移)，fullAndIncrement(全量加增量迁移)， 默认为fullAndIncrement;注意redis,keewidb产品只支持fullAndIncrement类型。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MigrateType: str
         :param _Consistency: 数据一致性校验选项， 默认为不开启一致性校验
-注意：此字段可能返回 null，表示取不到有效值。
         :type Consistency: :class:`tencentcloud.dts.v20211206.models.ConsistencyOption`
         :param _IsMigrateAccount: 是否迁移账号，true(迁移账号)，false(不迁移账号)
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsMigrateAccount: bool
         :param _IsOverrideRoot: 是否用源库Root账户覆盖目标库，值包括：false-不覆盖，true-覆盖，选择库表或者结构迁移时应该为false，注意只对旧版迁移有效
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsOverrideRoot: bool
         :param _IsDstReadOnly: 是否在迁移时设置目标库只读(仅对mysql有效)，true(设置只读)、false(不设置只读，默认此值)
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsDstReadOnly: bool
         :param _ExtraAttr: 其他附加信息，对于特定库可设置额外参数，Redis可定义如下的参数: 
 ["DstWriteMode":normal, 	目标库写入模式,可取值clearData(清空目标实例数据)、overwrite(以覆盖写的方式执行任务)、normal(跟正常流程一样，不做额外动作) 	"IsDstReadOnly":true, 	是否在迁移时设置目标库只读,true(设置只读)、false(不设置只读) 	"ClientOutputBufferHardLimit":512, 	从机缓冲区的硬性容量限制(MB) 	"ClientOutputBufferSoftLimit":512, 	从机缓冲区的软性容量限制(MB) 	"ClientOutputBufferPersistTime":60, 从机缓冲区的软性限制持续时间(秒) 	"ReplBacklogSize":512, 	环形缓冲区容量限制(MB) 	"ReplTimeout":120，		复制超时时间(秒) 	"IsExpireKey":"true",过期key自动淘汰]
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExtraAttr: list of KeyValuePairOption
         :param _MigrateWay: pgsql迁移分类：logical(逻辑迁移)、physical(物理迁移)
-注意：此字段可能返回 null，表示取不到有效值。
         :type MigrateWay: str
         """
         self._DatabaseTable = None
@@ -12003,7 +11709,6 @@ class MigrateOption(AbstractModel):
     @property
     def DatabaseTable(self):
         """迁移对象选项，需要告知迁移服务迁移哪些库表对象
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dts.v20211206.models.DatabaseTableObject`
         """
         return self._DatabaseTable
@@ -12015,7 +11720,6 @@ class MigrateOption(AbstractModel):
     @property
     def MigrateType(self):
         """迁移类型，full(全量迁移)，structure(结构迁移)，fullAndIncrement(全量加增量迁移)， 默认为fullAndIncrement;注意redis,keewidb产品只支持fullAndIncrement类型。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MigrateType
@@ -12027,7 +11731,6 @@ class MigrateOption(AbstractModel):
     @property
     def Consistency(self):
         """数据一致性校验选项， 默认为不开启一致性校验
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dts.v20211206.models.ConsistencyOption`
         """
         return self._Consistency
@@ -12039,7 +11742,6 @@ class MigrateOption(AbstractModel):
     @property
     def IsMigrateAccount(self):
         """是否迁移账号，true(迁移账号)，false(不迁移账号)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsMigrateAccount
@@ -12051,7 +11753,6 @@ class MigrateOption(AbstractModel):
     @property
     def IsOverrideRoot(self):
         """是否用源库Root账户覆盖目标库，值包括：false-不覆盖，true-覆盖，选择库表或者结构迁移时应该为false，注意只对旧版迁移有效
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsOverrideRoot
@@ -12063,7 +11764,6 @@ class MigrateOption(AbstractModel):
     @property
     def IsDstReadOnly(self):
         """是否在迁移时设置目标库只读(仅对mysql有效)，true(设置只读)、false(不设置只读，默认此值)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsDstReadOnly
@@ -12076,7 +11776,6 @@ class MigrateOption(AbstractModel):
     def ExtraAttr(self):
         """其他附加信息，对于特定库可设置额外参数，Redis可定义如下的参数: 
 ["DstWriteMode":normal, 	目标库写入模式,可取值clearData(清空目标实例数据)、overwrite(以覆盖写的方式执行任务)、normal(跟正常流程一样，不做额外动作) 	"IsDstReadOnly":true, 	是否在迁移时设置目标库只读,true(设置只读)、false(不设置只读) 	"ClientOutputBufferHardLimit":512, 	从机缓冲区的硬性容量限制(MB) 	"ClientOutputBufferSoftLimit":512, 	从机缓冲区的软性容量限制(MB) 	"ClientOutputBufferPersistTime":60, 从机缓冲区的软性限制持续时间(秒) 	"ReplBacklogSize":512, 	环形缓冲区容量限制(MB) 	"ReplTimeout":120，		复制超时时间(秒) 	"IsExpireKey":"true",过期key自动淘汰]
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KeyValuePairOption
         """
         return self._ExtraAttr
@@ -12088,7 +11787,6 @@ class MigrateOption(AbstractModel):
     @property
     def MigrateWay(self):
         """pgsql迁移分类：logical(逻辑迁移)、physical(物理迁移)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MigrateWay
@@ -12135,13 +11833,10 @@ class ModifiedSubscribeObject(AbstractModel):
         r"""
         :param _ObjectsType: 订阅对象的类型，枚举值为：0-库，1-表(该值对于mongo任务来说，是集合) 。
 注意：mongo只支持全实例、单库或者单集合订阅，因此该字段不要与SubscribeObjectType冲突。如：SubscribeObjectType=4，表示mongo单库订阅，那么该字段应该传0。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ObjectsType: int
         :param _DatabaseName: 订阅数据库的名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type DatabaseName: str
         :param _TableNames: 订阅数据库中表(或集合)的名称。如果 ObjectsType 为 1，那么此字段为必填，且不为空；
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableNames: list of str
         """
         self._ObjectsType = None
@@ -12152,7 +11847,6 @@ class ModifiedSubscribeObject(AbstractModel):
     def ObjectsType(self):
         """订阅对象的类型，枚举值为：0-库，1-表(该值对于mongo任务来说，是集合) 。
 注意：mongo只支持全实例、单库或者单集合订阅，因此该字段不要与SubscribeObjectType冲突。如：SubscribeObjectType=4，表示mongo单库订阅，那么该字段应该传0。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ObjectsType
@@ -12164,7 +11858,6 @@ class ModifiedSubscribeObject(AbstractModel):
     @property
     def DatabaseName(self):
         """订阅数据库的名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DatabaseName
@@ -12176,7 +11869,6 @@ class ModifiedSubscribeObject(AbstractModel):
     @property
     def TableNames(self):
         """订阅数据库中表(或集合)的名称。如果 ObjectsType 为 1，那么此字段为必填，且不为空；
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._TableNames
@@ -13988,10 +13680,8 @@ class OffsetTimeMap(AbstractModel):
     def __init__(self):
         r"""
         :param _PartitionNo: kafka分区编号
-注意：此字段可能返回 null，表示取不到有效值。
         :type PartitionNo: int
         :param _Offset: kafka offset
-注意：此字段可能返回 null，表示取不到有效值。
         :type Offset: int
         """
         self._PartitionNo = None
@@ -14000,7 +13690,6 @@ class OffsetTimeMap(AbstractModel):
     @property
     def PartitionNo(self):
         """kafka分区编号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PartitionNo
@@ -14012,7 +13701,6 @@ class OffsetTimeMap(AbstractModel):
     @property
     def Offset(self):
         """kafka offset
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Offset
@@ -14515,10 +14203,8 @@ class PipelineInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _AggOp: 聚合运算符：$addFields、$match、$project、$replaceRoot、$redact、$replaceWith、$set、$unset。其中 $replaceWith、$set、$unset 只有当订阅实例是4.2及以上版本可选。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AggOp: str
         :param _AggCmd: 聚合表达式。必须是json格式
-注意：此字段可能返回 null，表示取不到有效值。
         :type AggCmd: str
         """
         self._AggOp = None
@@ -14527,7 +14213,6 @@ class PipelineInfo(AbstractModel):
     @property
     def AggOp(self):
         """聚合运算符：$addFields、$match、$project、$replaceRoot、$redact、$replaceWith、$set、$unset。其中 $replaceWith、$set、$unset 只有当订阅实例是4.2及以上版本可选。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AggOp
@@ -14539,7 +14224,6 @@ class PipelineInfo(AbstractModel):
     @property
     def AggCmd(self):
         """聚合表达式。必须是json格式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AggCmd
@@ -14570,22 +14254,16 @@ class ProcessProgress(AbstractModel):
     def __init__(self):
         r"""
         :param _Status: 步骤的状态， 包括：notStarted(未开始)、running(运行中)、success(成功)、failed(失败)等
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _Percent: 进度信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Percent: int
         :param _StepAll: 总的步骤数
-注意：此字段可能返回 null，表示取不到有效值。
         :type StepAll: int
         :param _StepNow: 当前进行的步骤
-注意：此字段可能返回 null，表示取不到有效值。
         :type StepNow: int
         :param _Message: 当前步骤输出提示信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param _Steps: 步骤信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Steps: list of StepDetailInfo
         """
         self._Status = None
@@ -14598,7 +14276,6 @@ class ProcessProgress(AbstractModel):
     @property
     def Status(self):
         """步骤的状态， 包括：notStarted(未开始)、running(运行中)、success(成功)、failed(失败)等
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -14610,7 +14287,6 @@ class ProcessProgress(AbstractModel):
     @property
     def Percent(self):
         """进度信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Percent
@@ -14622,7 +14298,6 @@ class ProcessProgress(AbstractModel):
     @property
     def StepAll(self):
         """总的步骤数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._StepAll
@@ -14634,7 +14309,6 @@ class ProcessProgress(AbstractModel):
     @property
     def StepNow(self):
         """当前进行的步骤
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._StepNow
@@ -14646,7 +14320,6 @@ class ProcessProgress(AbstractModel):
     @property
     def Message(self):
         """当前步骤输出提示信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Message
@@ -14658,7 +14331,6 @@ class ProcessProgress(AbstractModel):
     @property
     def Steps(self):
         """步骤信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of StepDetailInfo
         """
         return self._Steps
@@ -14698,13 +14370,10 @@ class ProcessStepTip(AbstractModel):
     def __init__(self):
         r"""
         :param _Message: 提示信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param _Solution: 解决方案
-注意：此字段可能返回 null，表示取不到有效值。
         :type Solution: str
         :param _HelpDoc: 文档提示
-注意：此字段可能返回 null，表示取不到有效值。
         :type HelpDoc: str
         """
         self._Message = None
@@ -14714,7 +14383,6 @@ class ProcessStepTip(AbstractModel):
     @property
     def Message(self):
         """提示信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Message
@@ -14726,7 +14394,6 @@ class ProcessStepTip(AbstractModel):
     @property
     def Solution(self):
         """解决方案
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Solution
@@ -14738,7 +14405,6 @@ class ProcessStepTip(AbstractModel):
     @property
     def HelpDoc(self):
         """文档提示
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HelpDoc
@@ -14770,37 +14436,26 @@ class RateLimitOption(AbstractModel):
     def __init__(self):
         r"""
         :param _CurrentDumpThread: 当前生效的全量导出线程数，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为16
-注意：此字段可能返回 null，表示取不到有效值。
         :type CurrentDumpThread: int
         :param _DefaultDumpThread: 默认的全量导出线程数，该字段仅在出参有意义
-注意：此字段可能返回 null，表示取不到有效值。
         :type DefaultDumpThread: int
         :param _CurrentDumpRps: 当前生效的全量导出Rps，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为50000000
-注意：此字段可能返回 null，表示取不到有效值。
         :type CurrentDumpRps: int
         :param _DefaultDumpRps: 默认的全量导出Rps，该字段仅在出参有意义
-注意：此字段可能返回 null，表示取不到有效值。
         :type DefaultDumpRps: int
         :param _CurrentLoadThread: 当前生效的全量导入线程数，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为16
-注意：此字段可能返回 null，表示取不到有效值。
         :type CurrentLoadThread: int
         :param _DefaultLoadThread: 默认的全量导入线程数，该字段仅在出参有意义
-注意：此字段可能返回 null，表示取不到有效值。
         :type DefaultLoadThread: int
         :param _CurrentLoadRps: 当前生效的全量导入Rps，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为50000000	
-注意：此字段可能返回 null，表示取不到有效值。
         :type CurrentLoadRps: int
         :param _DefaultLoadRps: 默认的全量导入Rps，该字段仅在出参有意义	
-注意：此字段可能返回 null，表示取不到有效值。
         :type DefaultLoadRps: int
         :param _CurrentSinkerThread: 当前生效的增量导入线程数，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为128
-注意：此字段可能返回 null，表示取不到有效值。
         :type CurrentSinkerThread: int
         :param _DefaultSinkerThread: 默认的增量导入线程数，该字段仅在出参有意义
-注意：此字段可能返回 null，表示取不到有效值。
         :type DefaultSinkerThread: int
         :param _HasUserSetRateLimit: enum:"no"/"yes"、no表示用户未设置过限速、yes表示设置过限速，该字段仅在出参有意义
-注意：此字段可能返回 null，表示取不到有效值。
         :type HasUserSetRateLimit: str
         """
         self._CurrentDumpThread = None
@@ -14818,7 +14473,6 @@ class RateLimitOption(AbstractModel):
     @property
     def CurrentDumpThread(self):
         """当前生效的全量导出线程数，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为16
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CurrentDumpThread
@@ -14830,7 +14484,6 @@ class RateLimitOption(AbstractModel):
     @property
     def DefaultDumpThread(self):
         """默认的全量导出线程数，该字段仅在出参有意义
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DefaultDumpThread
@@ -14842,7 +14495,6 @@ class RateLimitOption(AbstractModel):
     @property
     def CurrentDumpRps(self):
         """当前生效的全量导出Rps，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为50000000
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CurrentDumpRps
@@ -14854,7 +14506,6 @@ class RateLimitOption(AbstractModel):
     @property
     def DefaultDumpRps(self):
         """默认的全量导出Rps，该字段仅在出参有意义
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DefaultDumpRps
@@ -14866,7 +14517,6 @@ class RateLimitOption(AbstractModel):
     @property
     def CurrentLoadThread(self):
         """当前生效的全量导入线程数，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为16
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CurrentLoadThread
@@ -14878,7 +14528,6 @@ class RateLimitOption(AbstractModel):
     @property
     def DefaultLoadThread(self):
         """默认的全量导入线程数，该字段仅在出参有意义
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DefaultLoadThread
@@ -14890,7 +14539,6 @@ class RateLimitOption(AbstractModel):
     @property
     def CurrentLoadRps(self):
         """当前生效的全量导入Rps，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为50000000	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CurrentLoadRps
@@ -14902,7 +14550,6 @@ class RateLimitOption(AbstractModel):
     @property
     def DefaultLoadRps(self):
         """默认的全量导入Rps，该字段仅在出参有意义	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DefaultLoadRps
@@ -14914,7 +14561,6 @@ class RateLimitOption(AbstractModel):
     @property
     def CurrentSinkerThread(self):
         """当前生效的增量导入线程数，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为128
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CurrentSinkerThread
@@ -14926,7 +14572,6 @@ class RateLimitOption(AbstractModel):
     @property
     def DefaultSinkerThread(self):
         """默认的增量导入线程数，该字段仅在出参有意义
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DefaultSinkerThread
@@ -14938,7 +14583,6 @@ class RateLimitOption(AbstractModel):
     @property
     def HasUserSetRateLimit(self):
         """enum:"no"/"yes"、no表示用户未设置过限速、yes表示设置过限速，该字段仅在出参有意义
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HasUserSetRateLimit
@@ -15595,10 +15239,8 @@ class RoleItem(AbstractModel):
     def __init__(self):
         r"""
         :param _RoleName: 角色名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type RoleName: str
         :param _NewRoleName: 迁移后的角色名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type NewRoleName: str
         """
         self._RoleName = None
@@ -15607,7 +15249,6 @@ class RoleItem(AbstractModel):
     @property
     def RoleName(self):
         """角色名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RoleName
@@ -15619,7 +15260,6 @@ class RoleItem(AbstractModel):
     @property
     def NewRoleName(self):
         """迁移后的角色名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NewRoleName
@@ -16396,31 +16036,22 @@ class StepDetailInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _StepNo: 步骤序列
-注意：此字段可能返回 null，表示取不到有效值。
         :type StepNo: int
         :param _StepName: 步骤展现名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type StepName: str
         :param _StepId: 步骤英文标识
-注意：此字段可能返回 null，表示取不到有效值。
         :type StepId: str
         :param _Status: 步骤状态:success(成功)、failed(失败)、running(执行中)、notStarted(未执行)、默认为notStarted
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _StartTime: 当前步骤开始的时间，格式为"yyyy-mm-dd hh:mm:ss"，该字段不存在或者为空是无意义 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
         :param _StepMessage: 步骤错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type StepMessage: str
         :param _Percent: 执行进度
-注意：此字段可能返回 null，表示取不到有效值。
         :type Percent: int
         :param _Errors: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Errors: list of ProcessStepTip
         :param _Warnings: 告警提示
-注意：此字段可能返回 null，表示取不到有效值。
         :type Warnings: list of ProcessStepTip
         """
         self._StepNo = None
@@ -16436,7 +16067,6 @@ class StepDetailInfo(AbstractModel):
     @property
     def StepNo(self):
         """步骤序列
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._StepNo
@@ -16448,7 +16078,6 @@ class StepDetailInfo(AbstractModel):
     @property
     def StepName(self):
         """步骤展现名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StepName
@@ -16460,7 +16089,6 @@ class StepDetailInfo(AbstractModel):
     @property
     def StepId(self):
         """步骤英文标识
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StepId
@@ -16472,7 +16100,6 @@ class StepDetailInfo(AbstractModel):
     @property
     def Status(self):
         """步骤状态:success(成功)、failed(失败)、running(执行中)、notStarted(未执行)、默认为notStarted
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -16484,7 +16111,6 @@ class StepDetailInfo(AbstractModel):
     @property
     def StartTime(self):
         """当前步骤开始的时间，格式为"yyyy-mm-dd hh:mm:ss"，该字段不存在或者为空是无意义 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StartTime
@@ -16496,7 +16122,6 @@ class StepDetailInfo(AbstractModel):
     @property
     def StepMessage(self):
         """步骤错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StepMessage
@@ -16508,7 +16133,6 @@ class StepDetailInfo(AbstractModel):
     @property
     def Percent(self):
         """执行进度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Percent
@@ -16520,7 +16144,6 @@ class StepDetailInfo(AbstractModel):
     @property
     def Errors(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ProcessStepTip
         """
         return self._Errors
@@ -16532,7 +16155,6 @@ class StepDetailInfo(AbstractModel):
     @property
     def Warnings(self):
         """告警提示
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ProcessStepTip
         """
         return self._Warnings
@@ -17141,25 +16763,18 @@ class SubscribeCheckStepInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _StepName: 步骤名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type StepName: str
         :param _StepId: 步骤Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type StepId: str
         :param _StepNo: 步骤编号，从 1 开始
-注意：此字段可能返回 null，表示取不到有效值。
         :type StepNo: int
         :param _Status: 当前步骤状态，可能值为 notStarted,running,finished,failed
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _Percent: 当前步骤进度
-注意：此字段可能返回 null，表示取不到有效值。
         :type Percent: int
         :param _Errors: 错误提示
-注意：此字段可能返回 null，表示取不到有效值。
         :type Errors: list of SubscribeCheckStepTip
         :param _Warnings: 告警提示
-注意：此字段可能返回 null，表示取不到有效值。
         :type Warnings: list of SubscribeCheckStepTip
         """
         self._StepName = None
@@ -17173,7 +16788,6 @@ class SubscribeCheckStepInfo(AbstractModel):
     @property
     def StepName(self):
         """步骤名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StepName
@@ -17185,7 +16799,6 @@ class SubscribeCheckStepInfo(AbstractModel):
     @property
     def StepId(self):
         """步骤Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StepId
@@ -17197,7 +16810,6 @@ class SubscribeCheckStepInfo(AbstractModel):
     @property
     def StepNo(self):
         """步骤编号，从 1 开始
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._StepNo
@@ -17209,7 +16821,6 @@ class SubscribeCheckStepInfo(AbstractModel):
     @property
     def Status(self):
         """当前步骤状态，可能值为 notStarted,running,finished,failed
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -17221,7 +16832,6 @@ class SubscribeCheckStepInfo(AbstractModel):
     @property
     def Percent(self):
         """当前步骤进度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Percent
@@ -17233,7 +16843,6 @@ class SubscribeCheckStepInfo(AbstractModel):
     @property
     def Errors(self):
         """错误提示
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SubscribeCheckStepTip
         """
         return self._Errors
@@ -17245,7 +16854,6 @@ class SubscribeCheckStepInfo(AbstractModel):
     @property
     def Warnings(self):
         """告警提示
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SubscribeCheckStepTip
         """
         return self._Warnings
@@ -17291,10 +16899,8 @@ class SubscribeCheckStepTip(AbstractModel):
     def __init__(self):
         r"""
         :param _Message: 错误或告警的详细信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param _HelpDoc: 帮助文档
-注意：此字段可能返回 null，表示取不到有效值。
         :type HelpDoc: str
         """
         self._Message = None
@@ -17303,7 +16909,6 @@ class SubscribeCheckStepTip(AbstractModel):
     @property
     def Message(self):
         """错误或告警的详细信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Message
@@ -17315,7 +16920,6 @@ class SubscribeCheckStepTip(AbstractModel):
     @property
     def HelpDoc(self):
         """帮助文档
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HelpDoc
@@ -17350,34 +16954,26 @@ class SubscribeInfo(AbstractModel):
         :param _SubscribeName: 数据订阅实例的名称
         :type SubscribeName: str
         :param _Topic: 订阅实例发送数据的kafka topic
-注意：此字段可能返回 null，表示取不到有效值。
         :type Topic: str
         :param _Product: 订阅实例的类型，目前支持 cynosdbmysql,mariadb,mongodb,mysql,percona,tdpg,tdsqlpercona(tdsqlmysql)
         :type Product: str
         :param _InstanceId: 订阅的数据库实例ID（如果订阅的是云数据库）如果实例不是腾讯云上的，此值为空。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _InstanceStatus: 云数据库状态：running 运行中，isolated 已隔离，offline 已下线。如果不是云上，此值为空
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceStatus: str
         :param _Status: 数据订阅生命周期状态，可能的值为：正常 normal, 隔离中 isolating, 已隔离 isolated, 下线中 offlining, 按量转包年包月中 post2PrePayIng
         :type Status: str
         :param _SubsStatus: 数据订阅状态，可能的值为：未启动 notStarted, 校验中 checking, 校验不通过 checkNotPass, 校验通过 checkPass, 启动中 starting, 运行中 running, 异常出错 error
         :type SubsStatus: str
         :param _ModifyTime: 上次修改时间，时间格式如：Y-m-d h:m:s
-注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyTime: str
         :param _CreateTime: 创建时间，时间格式如：Y-m-d h:m:s
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _IsolateTime: 隔离时间，时间格式如：Y-m-d h:m:s。默认：0000-00-00 00:00:00
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsolateTime: str
         :param _ExpireTime: 包年包月任务的到期时间，时间格式如：Y-m-d h:m:s。默认：0000-00-00 00:00:00
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireTime: str
         :param _OfflineTime: 下线时间，时间格式如：Y-m-d h:m:s。默认：0000-00-00 00:00:00
-注意：此字段可能返回 null，表示取不到有效值。
         :type OfflineTime: str
         :param _PayType: 计费方式，0 - 包年包月，1 - 按量计费
         :type PayType: int
@@ -17386,13 +16982,10 @@ class SubscribeInfo(AbstractModel):
         :param _Region: 数据订阅实例所属地域
         :type Region: str
         :param _AccessType: 接入方式。枚举值：extranet(公网) vpncloud(vpn接入) dcg(专线接入) ccn(云联网) cdb(云数据库) cvm(云主机自建) intranet(自研上云) vpc(私有网络vpc)
-注意：此字段可能返回 null，表示取不到有效值。
         :type AccessType: str
         :param _Endpoints: 数据库节点信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Endpoints: list of EndpointItem
         :param _SubscribeVersion: 数据订阅版本, 当前只支持 kafka 版本。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubscribeVersion: str
         :param _Tags: 标签
 注意：此字段可能返回 null，表示取不到有效值。
@@ -17448,7 +17041,6 @@ class SubscribeInfo(AbstractModel):
     @property
     def Topic(self):
         """订阅实例发送数据的kafka topic
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Topic
@@ -17471,7 +17063,6 @@ class SubscribeInfo(AbstractModel):
     @property
     def InstanceId(self):
         """订阅的数据库实例ID（如果订阅的是云数据库）如果实例不是腾讯云上的，此值为空。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -17483,7 +17074,6 @@ class SubscribeInfo(AbstractModel):
     @property
     def InstanceStatus(self):
         """云数据库状态：running 运行中，isolated 已隔离，offline 已下线。如果不是云上，此值为空
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceStatus
@@ -17517,7 +17107,6 @@ class SubscribeInfo(AbstractModel):
     @property
     def ModifyTime(self):
         """上次修改时间，时间格式如：Y-m-d h:m:s
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ModifyTime
@@ -17529,7 +17118,6 @@ class SubscribeInfo(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间，时间格式如：Y-m-d h:m:s
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -17541,7 +17129,6 @@ class SubscribeInfo(AbstractModel):
     @property
     def IsolateTime(self):
         """隔离时间，时间格式如：Y-m-d h:m:s。默认：0000-00-00 00:00:00
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IsolateTime
@@ -17553,7 +17140,6 @@ class SubscribeInfo(AbstractModel):
     @property
     def ExpireTime(self):
         """包年包月任务的到期时间，时间格式如：Y-m-d h:m:s。默认：0000-00-00 00:00:00
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ExpireTime
@@ -17565,7 +17151,6 @@ class SubscribeInfo(AbstractModel):
     @property
     def OfflineTime(self):
         """下线时间，时间格式如：Y-m-d h:m:s。默认：0000-00-00 00:00:00
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OfflineTime
@@ -17610,7 +17195,6 @@ class SubscribeInfo(AbstractModel):
     @property
     def AccessType(self):
         """接入方式。枚举值：extranet(公网) vpncloud(vpn接入) dcg(专线接入) ccn(云联网) cdb(云数据库) cvm(云主机自建) intranet(自研上云) vpc(私有网络vpc)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AccessType
@@ -17622,7 +17206,6 @@ class SubscribeInfo(AbstractModel):
     @property
     def Endpoints(self):
         """数据库节点信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of EndpointItem
         """
         return self._Endpoints
@@ -17634,7 +17217,6 @@ class SubscribeInfo(AbstractModel):
     @property
     def SubscribeVersion(self):
         """数据订阅版本, 当前只支持 kafka 版本。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubscribeVersion
@@ -17723,15 +17305,12 @@ class SubscribeKafkaConfig(AbstractModel):
     def __init__(self):
         r"""
         :param _NumberOfPartitions: kafka分区数量，枚举值为1，4，8
-注意：此字段可能返回 null，表示取不到有效值。
         :type NumberOfPartitions: int
         :param _DistributeRules: 分区规则。当NumberOfPartitions > 1时，该项必填。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DistributeRules: list of DistributeRule
         :param _DefaultRuleType: 默认分区策略。当NumberOfPartitions > 1时，该项必填。不满足DistributeRules中正则表达式的数据，将按照默认分区策略计算分区。
 非mongo产品的枚举值为: table-按表名分区，pk-按表名+主键分区。mongo的枚举值为：collection-按集合名分区。
 该字段与DistributeRules搭配使用，如果配置了该字段，视为配置了一条DistributeRules。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DefaultRuleType: str
         """
         self._NumberOfPartitions = None
@@ -17741,7 +17320,6 @@ class SubscribeKafkaConfig(AbstractModel):
     @property
     def NumberOfPartitions(self):
         """kafka分区数量，枚举值为1，4，8
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._NumberOfPartitions
@@ -17753,7 +17331,6 @@ class SubscribeKafkaConfig(AbstractModel):
     @property
     def DistributeRules(self):
         """分区规则。当NumberOfPartitions > 1时，该项必填。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DistributeRule
         """
         return self._DistributeRules
@@ -17767,7 +17344,6 @@ class SubscribeKafkaConfig(AbstractModel):
         """默认分区策略。当NumberOfPartitions > 1时，该项必填。不满足DistributeRules中正则表达式的数据，将按照默认分区策略计算分区。
 非mongo产品的枚举值为: table-按表名分区，pk-按表名+主键分区。mongo的枚举值为：collection-按集合名分区。
 该字段与DistributeRules搭配使用，如果配置了该字段，视为配置了一条DistributeRules。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DefaultRuleType
@@ -17804,10 +17380,8 @@ class SubscribeObject(AbstractModel):
     def __init__(self):
         r"""
         :param _ObjectType: 订阅数据的类型，枚举值：database-数据库，table-数据库的表(如果 DatabaseType 为 mongodb，则表示集合)
-注意：此字段可能返回 null，表示取不到有效值。
         :type ObjectType: str
         :param _Database: 订阅的数据库名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Database: str
         :param _Tables: 订阅数据库中表的名称。如果 DatabaseType 为 mongodb，填集合名。mongodb只支持订阅单库或者单集合。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -17820,7 +17394,6 @@ class SubscribeObject(AbstractModel):
     @property
     def ObjectType(self):
         """订阅数据的类型，枚举值：database-数据库，table-数据库的表(如果 DatabaseType 为 mongodb，则表示集合)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ObjectType
@@ -17832,7 +17405,6 @@ class SubscribeObject(AbstractModel):
     @property
     def Database(self):
         """订阅的数据库名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Database
@@ -17876,13 +17448,10 @@ class SyncDBEndpointInfos(AbstractModel):
     def __init__(self):
         r"""
         :param _Region: 数据库所在地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         :param _AccessType: 实例网络接入类型，如：extranet(外网)、ipv6(公网ipv6)、cvm(云主机自建)、dcg(专线接入)、vpncloud(vpn接入的实例)、cdb(云数据库)、ccn(云联网)、intranet(自研上云)、vpc(私有网络)等，注意具体可选值依赖当前链路
-注意：此字段可能返回 null，表示取不到有效值。
         :type AccessType: str
         :param _DatabaseType: 实例数据库类型，如：mysql,redis,mongodb,postgresql,mariadb,percona 等
-注意：此字段可能返回 null，表示取不到有效值。
         :type DatabaseType: str
         :param _Info: 数据库信息。注意：如果数据库类型为tdsqlmysql，此处Endpoint数组的顺序应满足规则：proxy节点放在set节点之前。如果SrcConnectType选择proxy接入则只需要填写proxy节点即可。如果选择set接入，数组中第一个set节点必须是shardkey范围起始为0的分片
 注意：此字段可能返回 null，表示取不到有效值。
@@ -17896,7 +17465,6 @@ class SyncDBEndpointInfos(AbstractModel):
     @property
     def Region(self):
         """数据库所在地域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Region
@@ -17908,7 +17476,6 @@ class SyncDBEndpointInfos(AbstractModel):
     @property
     def AccessType(self):
         """实例网络接入类型，如：extranet(外网)、ipv6(公网ipv6)、cvm(云主机自建)、dcg(专线接入)、vpncloud(vpn接入的实例)、cdb(云数据库)、ccn(云联网)、intranet(自研上云)、vpc(私有网络)等，注意具体可选值依赖当前链路
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AccessType
@@ -17920,7 +17487,6 @@ class SyncDBEndpointInfos(AbstractModel):
     @property
     def DatabaseType(self):
         """实例数据库类型，如：mysql,redis,mongodb,postgresql,mariadb,percona 等
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DatabaseType
@@ -18965,16 +18531,12 @@ class TableItem(AbstractModel):
     def __init__(self):
         r"""
         :param _TableName: 迁移的表名，大小写敏感
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableName: str
         :param _NewTableName: 迁移后的表名，当TableEditMode为rename时此项必填，注意此配置与TmpTables互斥，只能使用其中一种
-注意：此字段可能返回 null，表示取不到有效值。
         :type NewTableName: str
         :param _TmpTables: 迁移临时表，注意此配置与NewTableName互斥，只能使用其中一种。当配置的同步对象为表级别且TableEditMode为pt时此项有意义，针对pt-osc等工具在迁移过程中产生的临时表进行同步，需要提前将可能的临时表配置在这里，否则不会同步任何临时表。示例，如要对t1进行pt-osc操作，此项配置应该为["\_t1\_new","\_t1\_old"]；如要对t1进行gh-ost操作，此项配置应该为["\_t1\_ghc","\_t1\_gho","\_t1\_del"]，pt-osc与gh-ost产生的临时表可同时配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TmpTables: list of str
         :param _TableEditMode: 编辑表类型，rename(表映射)，pt(同步附加表)
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableEditMode: str
         """
         self._TableName = None
@@ -18985,7 +18547,6 @@ class TableItem(AbstractModel):
     @property
     def TableName(self):
         """迁移的表名，大小写敏感
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TableName
@@ -18997,7 +18558,6 @@ class TableItem(AbstractModel):
     @property
     def NewTableName(self):
         """迁移后的表名，当TableEditMode为rename时此项必填，注意此配置与TmpTables互斥，只能使用其中一种
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NewTableName
@@ -19009,7 +18569,6 @@ class TableItem(AbstractModel):
     @property
     def TmpTables(self):
         """迁移临时表，注意此配置与NewTableName互斥，只能使用其中一种。当配置的同步对象为表级别且TableEditMode为pt时此项有意义，针对pt-osc等工具在迁移过程中产生的临时表进行同步，需要提前将可能的临时表配置在这里，否则不会同步任何临时表。示例，如要对t1进行pt-osc操作，此项配置应该为["\_t1\_new","\_t1\_old"]；如要对t1进行gh-ost操作，此项配置应该为["\_t1\_ghc","\_t1\_gho","\_t1\_del"]，pt-osc与gh-ost产生的临时表可同时配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._TmpTables
@@ -19021,7 +18580,6 @@ class TableItem(AbstractModel):
     @property
     def TableEditMode(self):
         """编辑表类型，rename(表映射)，pt(同步附加表)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TableEditMode
@@ -19105,10 +18663,8 @@ class TagItem(AbstractModel):
     def __init__(self):
         r"""
         :param _TagKey: 标签键
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagKey: str
         :param _TagValue: 标签值
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagValue: str
         """
         self._TagKey = None
@@ -19117,7 +18673,6 @@ class TagItem(AbstractModel):
     @property
     def TagKey(self):
         """标签键
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TagKey
@@ -19129,7 +18684,6 @@ class TagItem(AbstractModel):
     @property
     def TagValue(self):
         """标签值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TagValue
@@ -19288,37 +18842,26 @@ class TradeInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _DealName: 交易订单号
-注意：此字段可能返回 null，表示取不到有效值。
         :type DealName: str
         :param _LastDealName: 上一次交易订单号
-注意：此字段可能返回 null，表示取不到有效值。
         :type LastDealName: str
         :param _InstanceClass: 实例规格，包括：micro、small、medium、large、xlarge、2xlarge等
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceClass: str
         :param _TradeStatus: 计费任务状态， normal(计费或待计费)、resizing(变配中)、reversing(冲正中，比较短暂的状态)、isolating(隔离中，比较短暂的状态)、isolated(已隔离)、offlining(下线中)、offlined(已下线)、notBilled(未计费)
-注意：此字段可能返回 null，表示取不到有效值。
         :type TradeStatus: str
         :param _ExpireTime: 到期时间，格式为"yyyy-mm-dd hh:mm:ss"
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireTime: str
         :param _OfflineTime: 下线时间，格式为"yyyy-mm-dd hh:mm:ss"
-注意：此字段可能返回 null，表示取不到有效值。
         :type OfflineTime: str
         :param _IsolateTime: 隔离时间，格式为"yyyy-mm-dd hh:mm:ss"
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsolateTime: str
         :param _OfflineReason: 下线原因
-注意：此字段可能返回 null，表示取不到有效值。
         :type OfflineReason: str
         :param _IsolateReason: 隔离原因
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsolateReason: str
         :param _PayType: 付费类型，包括：postpay(后付费)、prepay(预付费)
-注意：此字段可能返回 null，表示取不到有效值。
         :type PayType: str
         :param _BillingType: 任务计费类型，包括：billing(计费)、notBilling(不计费)、 promotions(促销活动中)
-注意：此字段可能返回 null，表示取不到有效值。
         :type BillingType: str
         """
         self._DealName = None
@@ -19336,7 +18879,6 @@ class TradeInfo(AbstractModel):
     @property
     def DealName(self):
         """交易订单号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DealName
@@ -19348,7 +18890,6 @@ class TradeInfo(AbstractModel):
     @property
     def LastDealName(self):
         """上一次交易订单号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LastDealName
@@ -19360,7 +18901,6 @@ class TradeInfo(AbstractModel):
     @property
     def InstanceClass(self):
         """实例规格，包括：micro、small、medium、large、xlarge、2xlarge等
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceClass
@@ -19372,7 +18912,6 @@ class TradeInfo(AbstractModel):
     @property
     def TradeStatus(self):
         """计费任务状态， normal(计费或待计费)、resizing(变配中)、reversing(冲正中，比较短暂的状态)、isolating(隔离中，比较短暂的状态)、isolated(已隔离)、offlining(下线中)、offlined(已下线)、notBilled(未计费)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TradeStatus
@@ -19384,7 +18923,6 @@ class TradeInfo(AbstractModel):
     @property
     def ExpireTime(self):
         """到期时间，格式为"yyyy-mm-dd hh:mm:ss"
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ExpireTime
@@ -19396,7 +18934,6 @@ class TradeInfo(AbstractModel):
     @property
     def OfflineTime(self):
         """下线时间，格式为"yyyy-mm-dd hh:mm:ss"
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OfflineTime
@@ -19408,7 +18945,6 @@ class TradeInfo(AbstractModel):
     @property
     def IsolateTime(self):
         """隔离时间，格式为"yyyy-mm-dd hh:mm:ss"
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IsolateTime
@@ -19420,7 +18956,6 @@ class TradeInfo(AbstractModel):
     @property
     def OfflineReason(self):
         """下线原因
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OfflineReason
@@ -19432,7 +18967,6 @@ class TradeInfo(AbstractModel):
     @property
     def IsolateReason(self):
         """隔离原因
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IsolateReason
@@ -19444,7 +18978,6 @@ class TradeInfo(AbstractModel):
     @property
     def PayType(self):
         """付费类型，包括：postpay(后付费)、prepay(预付费)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PayType
@@ -19456,7 +18989,6 @@ class TradeInfo(AbstractModel):
     @property
     def BillingType(self):
         """任务计费类型，包括：billing(计费)、notBilling(不计费)、 promotions(促销活动中)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BillingType
@@ -19551,10 +19083,8 @@ class ViewItem(AbstractModel):
     def __init__(self):
         r"""
         :param _ViewName: 视图名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ViewName: str
         :param _NewViewName: 迁移后的视图名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type NewViewName: str
         """
         self._ViewName = None
@@ -19563,7 +19093,6 @@ class ViewItem(AbstractModel):
     @property
     def ViewName(self):
         """视图名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ViewName
@@ -19575,7 +19104,6 @@ class ViewItem(AbstractModel):
     @property
     def NewViewName(self):
         """迁移后的视图名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NewViewName

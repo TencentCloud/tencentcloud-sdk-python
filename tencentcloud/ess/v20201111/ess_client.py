@@ -2794,6 +2794,33 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeUserFlowType(self, request):
+        """查询用户模版类型，分为两种模式：
+        <ul>
+        <li>QueryBindTemplate:false，查询用户合同模版类型，返回用户合同模版类型ID，用户合同模版类型名称，用户合同模版类型描述信息</li>
+        <li>QueryBindTemplate:false，查询用户合同模版类型，返回用户合同模版类型ID，用户合同模版类型名称，用户合同模版类型描述信息，被绑定的模版数量</li>
+        </ul>
+
+        :param request: Request instance for DescribeUserFlowType.
+        :type request: :class:`tencentcloud.ess.v20201111.models.DescribeUserFlowTypeRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.DescribeUserFlowTypeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUserFlowType", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUserFlowTypeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeUserVerifyStatus(self, request):
         """检测个人用户是否已经实名。
 

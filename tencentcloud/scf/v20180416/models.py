@@ -1245,12 +1245,15 @@ class CreateCustomDomainRequest(AbstractModel):
         :type CertConfig: :class:`tencentcloud.scf.v20180416.models.CertConf`
         :param _WafConfig: web 应用防火墙配置
         :type WafConfig: :class:`tencentcloud.scf.v20180416.models.WafConf`
+        :param _Tags: 标签
+        :type Tags: list of Tag
         """
         self._Domain = None
         self._Protocol = None
         self._EndpointsConfig = None
         self._CertConfig = None
         self._WafConfig = None
+        self._Tags = None
 
     @property
     def Domain(self):
@@ -1307,6 +1310,17 @@ class CreateCustomDomainRequest(AbstractModel):
     def WafConfig(self, WafConfig):
         self._WafConfig = WafConfig
 
+    @property
+    def Tags(self):
+        """标签
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -1323,6 +1337,12 @@ class CreateCustomDomainRequest(AbstractModel):
         if params.get("WafConfig") is not None:
             self._WafConfig = WafConf()
             self._WafConfig._deserialize(params.get("WafConfig"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3139,12 +3159,15 @@ class DomainInfo(AbstractModel):
         :type CertConfig: :class:`tencentcloud.scf.v20180416.models.CertConf`
         :param _WafConfig: web 应用防火墙配置
         :type WafConfig: :class:`tencentcloud.scf.v20180416.models.WafConf`
+        :param _Tags: 标签
+        :type Tags: list of Tag
         """
         self._Domain = None
         self._Protocol = None
         self._EndpointsConfig = None
         self._CertConfig = None
         self._WafConfig = None
+        self._Tags = None
 
     @property
     def Domain(self):
@@ -3201,6 +3224,17 @@ class DomainInfo(AbstractModel):
     def WafConfig(self, WafConfig):
         self._WafConfig = WafConfig
 
+    @property
+    def Tags(self):
+        """标签
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -3217,6 +3251,12 @@ class DomainInfo(AbstractModel):
         if params.get("WafConfig") is not None:
             self._WafConfig = WafConf()
             self._WafConfig._deserialize(params.get("WafConfig"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4561,6 +4601,8 @@ class GetCustomDomainResponse(AbstractModel):
         :type CertConfig: :class:`tencentcloud.scf.v20180416.models.CertConf`
         :param _WafConfig: web 应用防火墙配置
         :type WafConfig: :class:`tencentcloud.scf.v20180416.models.WafConf`
+        :param _Tags: 标签
+        :type Tags: list of Tag
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4569,6 +4611,7 @@ class GetCustomDomainResponse(AbstractModel):
         self._EndpointsConfig = None
         self._CertConfig = None
         self._WafConfig = None
+        self._Tags = None
         self._RequestId = None
 
     @property
@@ -4627,6 +4670,17 @@ class GetCustomDomainResponse(AbstractModel):
         self._WafConfig = WafConfig
 
     @property
+    def Tags(self):
+        """标签
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -4653,6 +4707,12 @@ class GetCustomDomainResponse(AbstractModel):
         if params.get("WafConfig") is not None:
             self._WafConfig = WafConf()
             self._WafConfig._deserialize(params.get("WafConfig"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -12256,6 +12316,8 @@ class TriggerInfo(AbstractModel):
         :param _Description: 客户自定义触发器描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
+        :param _BoundResources: 与此触发器关联的资源。目前仅函数URL关联的自定义域名会返回
+        :type BoundResources: str
         """
         self._Enable = None
         self._Qualifier = None
@@ -12270,6 +12332,7 @@ class TriggerInfo(AbstractModel):
         self._BindStatus = None
         self._TriggerAttribute = None
         self._Description = None
+        self._BoundResources = None
 
     @property
     def Enable(self):
@@ -12428,6 +12491,17 @@ class TriggerInfo(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def BoundResources(self):
+        """与此触发器关联的资源。目前仅函数URL关联的自定义域名会返回
+        :rtype: str
+        """
+        return self._BoundResources
+
+    @BoundResources.setter
+    def BoundResources(self, BoundResources):
+        self._BoundResources = BoundResources
+
 
     def _deserialize(self, params):
         self._Enable = params.get("Enable")
@@ -12443,6 +12517,7 @@ class TriggerInfo(AbstractModel):
         self._BindStatus = params.get("BindStatus")
         self._TriggerAttribute = params.get("TriggerAttribute")
         self._Description = params.get("Description")
+        self._BoundResources = params.get("BoundResources")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

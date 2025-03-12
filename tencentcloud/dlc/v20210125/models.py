@@ -6497,9 +6497,12 @@ class CreateSparkAppTaskRequest(AbstractModel):
         :type JobName: str
         :param _CmdArgs: spark作业程序入参，以空格分隔；一般用于周期性调用使用
         :type CmdArgs: str
+        :param _SourceInfo: 任务来源信息
+        :type SourceInfo: list of KVPair
         """
         self._JobName = None
         self._CmdArgs = None
+        self._SourceInfo = None
 
     @property
     def JobName(self):
@@ -6523,10 +6526,27 @@ class CreateSparkAppTaskRequest(AbstractModel):
     def CmdArgs(self, CmdArgs):
         self._CmdArgs = CmdArgs
 
+    @property
+    def SourceInfo(self):
+        """任务来源信息
+        :rtype: list of KVPair
+        """
+        return self._SourceInfo
+
+    @SourceInfo.setter
+    def SourceInfo(self, SourceInfo):
+        self._SourceInfo = SourceInfo
+
 
     def _deserialize(self, params):
         self._JobName = params.get("JobName")
         self._CmdArgs = params.get("CmdArgs")
+        if params.get("SourceInfo") is not None:
+            self._SourceInfo = []
+            for item in params.get("SourceInfo"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self._SourceInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6628,6 +6648,8 @@ class CreateSparkSessionBatchSQLRequest(AbstractModel):
         :type IsInherit: int
         :param _CustomKey: 用户自定义主键，需唯一
         :type CustomKey: str
+        :param _SourceInfo: 任务来源信息
+        :type SourceInfo: list of KVPair
         """
         self._DataEngineName = None
         self._ExecuteSQL = None
@@ -6641,6 +6663,7 @@ class CreateSparkSessionBatchSQLRequest(AbstractModel):
         self._Arguments = None
         self._IsInherit = None
         self._CustomKey = None
+        self._SourceInfo = None
 
     @property
     def DataEngineName(self):
@@ -6776,6 +6799,17 @@ class CreateSparkSessionBatchSQLRequest(AbstractModel):
     def CustomKey(self, CustomKey):
         self._CustomKey = CustomKey
 
+    @property
+    def SourceInfo(self):
+        """任务来源信息
+        :rtype: list of KVPair
+        """
+        return self._SourceInfo
+
+    @SourceInfo.setter
+    def SourceInfo(self, SourceInfo):
+        self._SourceInfo = SourceInfo
+
 
     def _deserialize(self, params):
         self._DataEngineName = params.get("DataEngineName")
@@ -6795,6 +6829,12 @@ class CreateSparkSessionBatchSQLRequest(AbstractModel):
                 self._Arguments.append(obj)
         self._IsInherit = params.get("IsInherit")
         self._CustomKey = params.get("CustomKey")
+        if params.get("SourceInfo") is not None:
+            self._SourceInfo = []
+            for item in params.get("SourceInfo"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self._SourceInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7034,12 +7074,15 @@ class CreateTaskRequest(AbstractModel):
         :type DataEngineName: str
         :param _ResourceGroupName: 标准spark执行任务resourceGroupName
         :type ResourceGroupName: str
+        :param _SourceInfo: 任务来源信息
+        :type SourceInfo: list of KVPair
         """
         self._Task = None
         self._DatabaseName = None
         self._DatasourceConnectionName = None
         self._DataEngineName = None
         self._ResourceGroupName = None
+        self._SourceInfo = None
 
     @property
     def Task(self):
@@ -7096,6 +7139,17 @@ class CreateTaskRequest(AbstractModel):
     def ResourceGroupName(self, ResourceGroupName):
         self._ResourceGroupName = ResourceGroupName
 
+    @property
+    def SourceInfo(self):
+        """任务来源信息
+        :rtype: list of KVPair
+        """
+        return self._SourceInfo
+
+    @SourceInfo.setter
+    def SourceInfo(self, SourceInfo):
+        self._SourceInfo = SourceInfo
+
 
     def _deserialize(self, params):
         if params.get("Task") is not None:
@@ -7105,6 +7159,12 @@ class CreateTaskRequest(AbstractModel):
         self._DatasourceConnectionName = params.get("DatasourceConnectionName")
         self._DataEngineName = params.get("DataEngineName")
         self._ResourceGroupName = params.get("ResourceGroupName")
+        if params.get("SourceInfo") is not None:
+            self._SourceInfo = []
+            for item in params.get("SourceInfo"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self._SourceInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7305,6 +7365,8 @@ class CreateTasksRequest(AbstractModel):
         :type ResourceGroupName: str
         :param _IsMultiStatement: 是否使用multi- statement方式运行一批次任务，true: 是，false: 否
         :type IsMultiStatement: bool
+        :param _SourceInfo: 任务来源信息
+        :type SourceInfo: list of KVPair
         """
         self._DatabaseName = None
         self._Tasks = None
@@ -7312,6 +7374,7 @@ class CreateTasksRequest(AbstractModel):
         self._DataEngineName = None
         self._ResourceGroupName = None
         self._IsMultiStatement = None
+        self._SourceInfo = None
 
     @property
     def DatabaseName(self):
@@ -7379,6 +7442,17 @@ class CreateTasksRequest(AbstractModel):
     def IsMultiStatement(self, IsMultiStatement):
         self._IsMultiStatement = IsMultiStatement
 
+    @property
+    def SourceInfo(self):
+        """任务来源信息
+        :rtype: list of KVPair
+        """
+        return self._SourceInfo
+
+    @SourceInfo.setter
+    def SourceInfo(self, SourceInfo):
+        self._SourceInfo = SourceInfo
+
 
     def _deserialize(self, params):
         self._DatabaseName = params.get("DatabaseName")
@@ -7389,6 +7463,12 @@ class CreateTasksRequest(AbstractModel):
         self._DataEngineName = params.get("DataEngineName")
         self._ResourceGroupName = params.get("ResourceGroupName")
         self._IsMultiStatement = params.get("IsMultiStatement")
+        if params.get("SourceInfo") is not None:
+            self._SourceInfo = []
+            for item in params.get("SourceInfo"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self._SourceInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14113,10 +14193,13 @@ class DescribeDataEngineEventsRequest(AbstractModel):
         :type Limit: int
         :param _Offset: 偏移量，默认为0
         :type Offset: int
+        :param _SessionId: 资源组id
+        :type SessionId: str
         """
         self._DataEngineName = None
         self._Limit = None
         self._Offset = None
+        self._SessionId = None
 
     @property
     def DataEngineName(self):
@@ -14151,11 +14234,23 @@ class DescribeDataEngineEventsRequest(AbstractModel):
     def Offset(self, Offset):
         self._Offset = Offset
 
+    @property
+    def SessionId(self):
+        """资源组id
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
 
     def _deserialize(self, params):
         self._DataEngineName = params.get("DataEngineName")
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
+        self._SessionId = params.get("SessionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16072,11 +16167,14 @@ class DescribeNotebookSessionStatementSqlResultRequest(AbstractModel):
         :type NextToken: str
         :param _BatchId: 批次Id
         :type BatchId: str
+        :param _DataFieldCutLen: 返回结果集中字段值长度截取，如果超过该长度则截取到该长度
+        :type DataFieldCutLen: int
         """
         self._TaskId = None
         self._MaxResults = None
         self._NextToken = None
         self._BatchId = None
+        self._DataFieldCutLen = None
 
     @property
     def TaskId(self):
@@ -16122,12 +16220,24 @@ class DescribeNotebookSessionStatementSqlResultRequest(AbstractModel):
     def BatchId(self, BatchId):
         self._BatchId = BatchId
 
+    @property
+    def DataFieldCutLen(self):
+        """返回结果集中字段值长度截取，如果超过该长度则截取到该长度
+        :rtype: int
+        """
+        return self._DataFieldCutLen
+
+    @DataFieldCutLen.setter
+    def DataFieldCutLen(self, DataFieldCutLen):
+        self._DataFieldCutLen = DataFieldCutLen
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
         self._MaxResults = params.get("MaxResults")
         self._NextToken = params.get("NextToken")
         self._BatchId = params.get("BatchId")
+        self._DataFieldCutLen = params.get("DataFieldCutLen")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18925,11 +19035,14 @@ class DescribeTaskResultRequest(AbstractModel):
         :type MaxResults: int
         :param _IsTransformDataType: 是否转化数据类型
         :type IsTransformDataType: bool
+        :param _DataFieldCutLen: 返回结果集中字段长度截取，如果字段值长度超过该长度则截取到该长度
+        :type DataFieldCutLen: int
         """
         self._TaskId = None
         self._NextToken = None
         self._MaxResults = None
         self._IsTransformDataType = None
+        self._DataFieldCutLen = None
 
     @property
     def TaskId(self):
@@ -18975,12 +19088,24 @@ class DescribeTaskResultRequest(AbstractModel):
     def IsTransformDataType(self, IsTransformDataType):
         self._IsTransformDataType = IsTransformDataType
 
+    @property
+    def DataFieldCutLen(self):
+        """返回结果集中字段长度截取，如果字段值长度超过该长度则截取到该长度
+        :rtype: int
+        """
+        return self._DataFieldCutLen
+
+    @DataFieldCutLen.setter
+    def DataFieldCutLen(self, DataFieldCutLen):
+        self._DataFieldCutLen = DataFieldCutLen
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
         self._NextToken = params.get("NextToken")
         self._MaxResults = params.get("MaxResults")
         self._IsTransformDataType = params.get("IsTransformDataType")
+        self._DataFieldCutLen = params.get("DataFieldCutLen")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19448,11 +19573,14 @@ class DescribeTasksOverviewRequest(AbstractModel):
         :type Filters: list of Filter
         :param _DataEngineName: 引擎名
         :type DataEngineName: str
+        :param _HouseIds: DataEngine-dm8bjs29
+        :type HouseIds: list of str
         """
         self._StartTime = None
         self._EndTime = None
         self._Filters = None
         self._DataEngineName = None
+        self._HouseIds = None
 
     @property
     def StartTime(self):
@@ -19498,6 +19626,17 @@ class DescribeTasksOverviewRequest(AbstractModel):
     def DataEngineName(self, DataEngineName):
         self._DataEngineName = DataEngineName
 
+    @property
+    def HouseIds(self):
+        """DataEngine-dm8bjs29
+        :rtype: list of str
+        """
+        return self._HouseIds
+
+    @HouseIds.setter
+    def HouseIds(self, HouseIds):
+        self._HouseIds = HouseIds
+
 
     def _deserialize(self, params):
         self._StartTime = params.get("StartTime")
@@ -19509,6 +19648,7 @@ class DescribeTasksOverviewRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Filters.append(obj)
         self._DataEngineName = params.get("DataEngineName")
+        self._HouseIds = params.get("HouseIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23235,10 +23375,8 @@ class KVPair(AbstractModel):
     def __init__(self):
         r"""
         :param _Key: 配置的key值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
         :param _Value: 配置的value值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Key = None
@@ -23247,7 +23385,6 @@ class KVPair(AbstractModel):
     @property
     def Key(self):
         """配置的key值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Key
@@ -23259,7 +23396,6 @@ class KVPair(AbstractModel):
     @property
     def Value(self):
         """配置的value值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -26497,13 +26633,10 @@ class NotebookSessionStatementInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Completed: 完成时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type Completed: int
         :param _Started: 开始时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type Started: int
         :param _Progress: 完成进度，百分制
-注意：此字段可能返回 null，表示取不到有效值。
         :type Progress: float
         :param _StatementId: Session Statement唯一标识
         :type StatementId: str
@@ -26516,10 +26649,8 @@ class NotebookSessionStatementInfo(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type BatchId: str
         :param _Code: 运行语句
-注意：此字段可能返回 null，表示取不到有效值。
         :type Code: str
         :param _TaskId: 任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
         """
         self._Completed = None
@@ -26535,7 +26666,6 @@ class NotebookSessionStatementInfo(AbstractModel):
     @property
     def Completed(self):
         """完成时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Completed
@@ -26547,7 +26677,6 @@ class NotebookSessionStatementInfo(AbstractModel):
     @property
     def Started(self):
         """开始时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Started
@@ -26559,7 +26688,6 @@ class NotebookSessionStatementInfo(AbstractModel):
     @property
     def Progress(self):
         """完成进度，百分制
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Progress
@@ -26617,7 +26745,6 @@ class NotebookSessionStatementInfo(AbstractModel):
     @property
     def Code(self):
         """运行语句
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Code
@@ -26629,7 +26756,6 @@ class NotebookSessionStatementInfo(AbstractModel):
     @property
     def TaskId(self):
         """任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskId
@@ -30682,10 +30808,8 @@ class StatementInformation(AbstractModel):
     def __init__(self):
         r"""
         :param _TaskId: SQL任务唯一ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
         :param _SQL: SQL内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type SQL: str
         """
         self._TaskId = None
@@ -30694,7 +30818,6 @@ class StatementInformation(AbstractModel):
     @property
     def TaskId(self):
         """SQL任务唯一ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskId
@@ -30706,7 +30829,6 @@ class StatementInformation(AbstractModel):
     @property
     def SQL(self):
         """SQL内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SQL
@@ -30737,16 +30859,13 @@ class StatementOutput(AbstractModel):
     def __init__(self):
         r"""
         :param _ExecutionCount: 执行总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutionCount: int
         :param _Data: Statement数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of KVPair
         :param _Status: Statement状态:ok,error
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _ErrorName: 错误名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorName: str
         :param _ErrorValue: 错误类型
 注意：此字段可能返回 null，表示取不到有效值。
@@ -30755,7 +30874,6 @@ class StatementOutput(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMessage: list of str
         :param _SQLResult: SQL类型任务结果返回
-注意：此字段可能返回 null，表示取不到有效值。
         :type SQLResult: str
         """
         self._ExecutionCount = None
@@ -30769,7 +30887,6 @@ class StatementOutput(AbstractModel):
     @property
     def ExecutionCount(self):
         """执行总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ExecutionCount
@@ -30793,7 +30910,6 @@ class StatementOutput(AbstractModel):
     @property
     def Status(self):
         """Statement状态:ok,error
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -30805,7 +30921,6 @@ class StatementOutput(AbstractModel):
     @property
     def ErrorName(self):
         """错误名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorName
@@ -30841,7 +30956,6 @@ class StatementOutput(AbstractModel):
     @property
     def SQLResult(self):
         """SQL类型任务结果返回
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SQLResult
@@ -33230,10 +33344,8 @@ class TaskResultInfo(AbstractModel):
         :param _TaskId: 任务唯一ID
         :type TaskId: str
         :param _DatasourceConnectionName: 数据源名称，当前任务执行时候选中的默认数据源
-注意：此字段可能返回 null，表示取不到有效值。
         :type DatasourceConnectionName: str
         :param _DatabaseName: 数据库名称，当前任务执行时候选中的默认数据库
-注意：此字段可能返回 null，表示取不到有效值。
         :type DatabaseName: str
         :param _SQL: 当前执行的SQL，一个任务包含一个SQL
         :type SQL: str
@@ -33257,7 +33369,6 @@ class TaskResultInfo(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResultSchema: list of Column
         :param _ResultSet: 结果信息，反转义后，外层数组的每个元素为一行数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResultSet: str
         :param _NextToken: 分页信息，如果没有更多结果数据，nextToken为空
         :type NextToken: str
@@ -33270,7 +33381,6 @@ class TaskResultInfo(AbstractModel):
         :param _TotalTime: 任务耗时，单位： ms
         :type TotalTime: int
         :param _QueryResultTime: 获取结果消耗的时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type QueryResultTime: float
         """
         self._TaskId = None
@@ -33308,7 +33418,6 @@ class TaskResultInfo(AbstractModel):
     @property
     def DatasourceConnectionName(self):
         """数据源名称，当前任务执行时候选中的默认数据源
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DatasourceConnectionName
@@ -33320,7 +33429,6 @@ class TaskResultInfo(AbstractModel):
     @property
     def DatabaseName(self):
         """数据库名称，当前任务执行时候选中的默认数据库
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DatabaseName
@@ -33443,7 +33551,6 @@ class TaskResultInfo(AbstractModel):
     @property
     def ResultSet(self):
         """结果信息，反转义后，外层数组的每个元素为一行数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResultSet
@@ -33510,7 +33617,6 @@ class TaskResultInfo(AbstractModel):
     @property
     def QueryResultTime(self):
         """获取结果消耗的时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._QueryResultTime

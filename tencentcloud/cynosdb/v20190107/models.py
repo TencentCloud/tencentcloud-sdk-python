@@ -21264,10 +21264,13 @@ class ExportInstanceErrorLogsResponse(AbstractModel):
         :param _ErrorLogItems: 错误日志导出内容
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorLogItems: list of ErrorLogItemExport
+        :param _FileContent: 错误日志字符串
+        :type FileContent: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ErrorLogItems = None
+        self._FileContent = None
         self._RequestId = None
 
     @property
@@ -21281,6 +21284,17 @@ class ExportInstanceErrorLogsResponse(AbstractModel):
     @ErrorLogItems.setter
     def ErrorLogItems(self, ErrorLogItems):
         self._ErrorLogItems = ErrorLogItems
+
+    @property
+    def FileContent(self):
+        """错误日志字符串
+        :rtype: str
+        """
+        return self._FileContent
+
+    @FileContent.setter
+    def FileContent(self, FileContent):
+        self._FileContent = FileContent
 
     @property
     def RequestId(self):
@@ -21301,6 +21315,7 @@ class ExportInstanceErrorLogsResponse(AbstractModel):
                 obj = ErrorLogItemExport()
                 obj._deserialize(item)
                 self._ErrorLogItems.append(obj)
+        self._FileContent = params.get("FileContent")
         self._RequestId = params.get("RequestId")
 
 

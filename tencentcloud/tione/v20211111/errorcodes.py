@@ -263,6 +263,9 @@ INVALIDPARAMETERVALUE_BADNAME = 'InvalidParameterValue.BadName'
 # 云联网未被关联VPC
 INVALIDPARAMETERVALUE_CCNHASNOATTACHEDVPC = 'InvalidParameterValue.CcnHasNoAttachedVpc'
 
+# CFS路径与现存的数据有冲突
+INVALIDPARAMETERVALUE_CFSPATHCOLLISION = 'InvalidParameterValue.CfsPathCollision'
+
 # 请设置日志集、日志主题ID。
 INVALIDPARAMETERVALUE_CLSCONFIGREQUIRED = 'InvalidParameterValue.ClsConfigRequired'
 

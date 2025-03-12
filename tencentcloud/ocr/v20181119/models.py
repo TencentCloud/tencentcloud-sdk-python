@@ -41082,8 +41082,7 @@ class VerifyOfdVatInvoiceOCRRequest(AbstractModel):
         r"""
         :param _OfdFileUrl: OFD文件的 Url 地址。
         :type OfdFileUrl: str
-        :param _OfdFileBase64: OFD文件的 Base64 值。
-OfdFileUrl 和 OfdFileBase64 必传其一，若两者都传，只解析OfdFileBase64。
+        :param _OfdFileBase64: OFD文件的 Base64 值。OfdFileUrl 和 OfdFileBase64 必传其一，若两者都传，只使用OfdFileUrl。
         :type OfdFileBase64: str
         :param _OfdPageNumber: 需要识别的OFD发票页面的对应页码，默认值为1。 示例值：1
         :type OfdPageNumber: int
@@ -41105,8 +41104,7 @@ OfdFileUrl 和 OfdFileBase64 必传其一，若两者都传，只解析OfdFileBa
 
     @property
     def OfdFileBase64(self):
-        """OFD文件的 Base64 值。
-OfdFileUrl 和 OfdFileBase64 必传其一，若两者都传，只解析OfdFileBase64。
+        """OFD文件的 Base64 值。OfdFileUrl 和 OfdFileBase64 必传其一，若两者都传，只使用OfdFileUrl。
         :rtype: str
         """
         return self._OfdFileBase64

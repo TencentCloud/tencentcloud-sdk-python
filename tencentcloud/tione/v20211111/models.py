@@ -3358,6 +3358,12 @@ class DatasetGroup(AbstractModel):
         :param _AnnotationSchemaConfigured: 标注Schema是否配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type AnnotationSchemaConfigured: bool
+        :param _CreatorNickname: 创建者名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatorNickname: str
+        :param _IsCfsUpdated: cfs路径是否有修改
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsCfsUpdated: bool
         """
         self._DatasetId = None
         self._DatasetName = None
@@ -3391,6 +3397,8 @@ class DatasetGroup(AbstractModel):
         self._NumAnnotated = None
         self._AnnotationSpecification = None
         self._AnnotationSchemaConfigured = None
+        self._CreatorNickname = None
+        self._IsCfsUpdated = None
 
     @property
     def DatasetId(self):
@@ -3776,6 +3784,30 @@ class DatasetGroup(AbstractModel):
     def AnnotationSchemaConfigured(self, AnnotationSchemaConfigured):
         self._AnnotationSchemaConfigured = AnnotationSchemaConfigured
 
+    @property
+    def CreatorNickname(self):
+        """创建者名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreatorNickname
+
+    @CreatorNickname.setter
+    def CreatorNickname(self, CreatorNickname):
+        self._CreatorNickname = CreatorNickname
+
+    @property
+    def IsCfsUpdated(self):
+        """cfs路径是否有修改
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsCfsUpdated
+
+    @IsCfsUpdated.setter
+    def IsCfsUpdated(self, IsCfsUpdated):
+        self._IsCfsUpdated = IsCfsUpdated
+
 
     def _deserialize(self, params):
         self._DatasetId = params.get("DatasetId")
@@ -3826,6 +3858,8 @@ class DatasetGroup(AbstractModel):
         self._NumAnnotated = params.get("NumAnnotated")
         self._AnnotationSpecification = params.get("AnnotationSpecification")
         self._AnnotationSchemaConfigured = params.get("AnnotationSchemaConfigured")
+        self._CreatorNickname = params.get("CreatorNickname")
+        self._IsCfsUpdated = params.get("IsCfsUpdated")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3936,6 +3970,12 @@ class DatasetInfo(AbstractModel):
         :param _AnnotationSchemaConfigured: 标注Schema是否配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type AnnotationSchemaConfigured: bool
+        :param _CreatorNickname: 创建者名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatorNickname: str
+        :param _IsCfsUpdated: cfs路径是否有修改
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsCfsUpdated: bool
         """
         self._DatasetId = None
         self._DatasetName = None
@@ -3968,6 +4008,8 @@ class DatasetInfo(AbstractModel):
         self._NumAnnotated = None
         self._AnnotationSpecification = None
         self._AnnotationSchemaConfigured = None
+        self._CreatorNickname = None
+        self._IsCfsUpdated = None
 
     @property
     def DatasetId(self):
@@ -4341,6 +4383,30 @@ class DatasetInfo(AbstractModel):
     def AnnotationSchemaConfigured(self, AnnotationSchemaConfigured):
         self._AnnotationSchemaConfigured = AnnotationSchemaConfigured
 
+    @property
+    def CreatorNickname(self):
+        """创建者名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreatorNickname
+
+    @CreatorNickname.setter
+    def CreatorNickname(self, CreatorNickname):
+        self._CreatorNickname = CreatorNickname
+
+    @property
+    def IsCfsUpdated(self):
+        """cfs路径是否有修改
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsCfsUpdated
+
+    @IsCfsUpdated.setter
+    def IsCfsUpdated(self, IsCfsUpdated):
+        self._IsCfsUpdated = IsCfsUpdated
+
 
     def _deserialize(self, params):
         self._DatasetId = params.get("DatasetId")
@@ -4385,6 +4451,8 @@ class DatasetInfo(AbstractModel):
         self._NumAnnotated = params.get("NumAnnotated")
         self._AnnotationSpecification = params.get("AnnotationSpecification")
         self._AnnotationSchemaConfigured = params.get("AnnotationSchemaConfigured")
+        self._CreatorNickname = params.get("CreatorNickname")
+        self._IsCfsUpdated = params.get("IsCfsUpdated")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

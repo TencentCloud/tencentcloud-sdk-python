@@ -32012,6 +32012,130 @@ class ModifyUserLevelResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyUserSignatureClassRequest(AbstractModel):
+    """ModifyUserSignatureClass请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _TypeID: 规则类型ID
+        :type TypeID: str
+        :param _Status: 规则类型状态，0:关闭，1:开启
+        :type Status: int
+        """
+        self._Domain = None
+        self._TypeID = None
+        self._Status = None
+
+    @property
+    def Domain(self):
+        """域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def TypeID(self):
+        """规则类型ID
+        :rtype: str
+        """
+        return self._TypeID
+
+    @TypeID.setter
+    def TypeID(self, TypeID):
+        self._TypeID = TypeID
+
+    @property
+    def Status(self):
+        """规则类型状态，0:关闭，1:开启
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._TypeID = params.get("TypeID")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyUserSignatureClassResponse(AbstractModel):
+    """ModifyUserSignatureClass返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TypeID: 规则类型ID
+        :type TypeID: str
+        :param _Status: 规则类型状态，0：关闭，1：开启
+        :type Status: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TypeID = None
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def TypeID(self):
+        """规则类型ID
+        :rtype: str
+        """
+        return self._TypeID
+
+    @TypeID.setter
+    def TypeID(self, TypeID):
+        self._TypeID = TypeID
+
+    @property
+    def Status(self):
+        """规则类型状态，0：关闭，1：开启
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TypeID = params.get("TypeID")
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyUserSignatureRuleRequest(AbstractModel):
     """ModifyUserSignatureRule请求参数结构体
 
@@ -35904,6 +36028,134 @@ class TimedJob(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UpdateProtectionModesRequest(AbstractModel):
+    """UpdateProtectionModes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _Edition: 资源类型
+        :type Edition: str
+        :param _TypeIDs: 大类规则ID
+        :type TypeIDs: list of str
+        :param _Mode: 0表示观察，1表示拦截
+        :type Mode: int
+        """
+        self._Domain = None
+        self._Edition = None
+        self._TypeIDs = None
+        self._Mode = None
+
+    @property
+    def Domain(self):
+        """域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Edition(self):
+        """资源类型
+        :rtype: str
+        """
+        return self._Edition
+
+    @Edition.setter
+    def Edition(self, Edition):
+        self._Edition = Edition
+
+    @property
+    def TypeIDs(self):
+        """大类规则ID
+        :rtype: list of str
+        """
+        return self._TypeIDs
+
+    @TypeIDs.setter
+    def TypeIDs(self, TypeIDs):
+        self._TypeIDs = TypeIDs
+
+    @property
+    def Mode(self):
+        """0表示观察，1表示拦截
+        :rtype: int
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Edition = params.get("Edition")
+        self._TypeIDs = params.get("TypeIDs")
+        self._Mode = params.get("Mode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateProtectionModesResponse(AbstractModel):
+    """UpdateProtectionModes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CommonRsp: 操作结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CommonRsp: :class:`tencentcloud.waf.v20180125.models.CommonRspData`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CommonRsp = None
+        self._RequestId = None
+
+    @property
+    def CommonRsp(self):
+        """操作结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.waf.v20180125.models.CommonRspData`
+        """
+        return self._CommonRsp
+
+    @CommonRsp.setter
+    def CommonRsp(self, CommonRsp):
+        self._CommonRsp = CommonRsp
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CommonRsp") is not None:
+            self._CommonRsp = CommonRspData()
+            self._CommonRsp._deserialize(params.get("CommonRsp"))
+        self._RequestId = params.get("RequestId")
 
 
 class UpsertCCAutoStatusRequest(AbstractModel):

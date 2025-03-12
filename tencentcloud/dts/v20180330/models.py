@@ -2986,7 +2986,6 @@ class MigrateStepDetailInfo(AbstractModel):
         :param _Status: 步骤状态:0-默认值,1-成功,2-失败,3-执行中,4-未执行
         :type Status: int
         :param _StartTime: 当前步骤开始的时间，格式为"yyyy-mm-dd hh:mm:ss"，该字段不存在或者为空是无意义
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
         """
         self._StepNo = None
@@ -3042,7 +3041,6 @@ class MigrateStepDetailInfo(AbstractModel):
     @property
     def StartTime(self):
         """当前步骤开始的时间，格式为"yyyy-mm-dd hh:mm:ss"，该字段不存在或者为空是无意义
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StartTime
@@ -4279,7 +4277,6 @@ class SubsErr(AbstractModel):
     def __init__(self):
         r"""
         :param _Message: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         """
         self._Message = None
@@ -4287,7 +4284,6 @@ class SubsErr(AbstractModel):
     @property
     def Message(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Message
@@ -4343,7 +4339,6 @@ class SubscribeInfo(AbstractModel):
         :param _ConsumeStartTime: 最近一次修改的消费时间起点，如果从未修改则为零值
         :type ConsumeStartTime: str
         :param _AutoRenewFlag: 自动续费标识。只有当 PayType=0，该值才有意义。枚举值：0-不自动续费，1-自动续费
-注意：此字段可能返回 null，表示取不到有效值。
         :type AutoRenewFlag: int
         :param _Region: 数据订阅实例所属地域
         :type Region: str
@@ -4365,7 +4360,6 @@ class SubscribeInfo(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of TagItem
         :param _SubscribeVersion: 订阅实例版本；txdts-旧版数据订阅,kafka-kafka版本数据订阅
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubscribeVersion: str
         """
         self._SubscribeId = None
@@ -4539,7 +4533,6 @@ class SubscribeInfo(AbstractModel):
     @property
     def AutoRenewFlag(self):
         """自动续费标识。只有当 PayType=0，该值才有意义。枚举值：0-不自动续费，1-自动续费
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -4651,7 +4644,6 @@ class SubscribeInfo(AbstractModel):
     @property
     def SubscribeVersion(self):
         """订阅实例版本；txdts-旧版数据订阅,kafka-kafka版本数据订阅
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubscribeVersion
@@ -4709,13 +4701,10 @@ class SubscribeObject(AbstractModel):
     def __init__(self):
         r"""
         :param _ObjectsType: 数据订阅对象的类型，0-数据库，1-数据库内的表
-注意：此字段可能返回 null，表示取不到有效值。
         :type ObjectsType: int
         :param _DatabaseName: 订阅数据库的名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type DatabaseName: str
         :param _TableNames: 订阅数据库中表名称数组
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableNames: list of str
         """
         self._ObjectsType = None
@@ -4725,7 +4714,6 @@ class SubscribeObject(AbstractModel):
     @property
     def ObjectsType(self):
         """数据订阅对象的类型，0-数据库，1-数据库内的表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ObjectsType
@@ -4737,7 +4725,6 @@ class SubscribeObject(AbstractModel):
     @property
     def DatabaseName(self):
         """订阅数据库的名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DatabaseName
@@ -4749,7 +4736,6 @@ class SubscribeObject(AbstractModel):
     @property
     def TableNames(self):
         """订阅数据库中表名称数组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._TableNames
@@ -4834,7 +4820,6 @@ class TagItem(AbstractModel):
         :param _TagKey: 标签键值
         :type TagKey: str
         :param _TagValue: 标签值
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagValue: str
         """
         self._TagKey = None
@@ -4854,7 +4839,6 @@ class TagItem(AbstractModel):
     @property
     def TagValue(self):
         """标签值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TagValue

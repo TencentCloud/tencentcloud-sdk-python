@@ -386,15 +386,12 @@ class ChargeAttribute(AbstractModel):
     def __init__(self):
         r"""
         :param _CurDeadline: 到期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CurDeadline: str
         :param _PayMode: 付费方式
         :type PayMode: str
         :param _AutoRenewFlag: 自动付费标识：0:默认未设置 1:自动续费 2 不自动续费
-注意：此字段可能返回 null，表示取不到有效值。
         :type AutoRenewFlag: int
         :param _ResourceId: 资源ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceId: str
         """
         self._CurDeadline = None
@@ -405,7 +402,6 @@ class ChargeAttribute(AbstractModel):
     @property
     def CurDeadline(self):
         """到期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CurDeadline
@@ -428,7 +424,6 @@ class ChargeAttribute(AbstractModel):
     @property
     def AutoRenewFlag(self):
         """自动付费标识：0:默认未设置 1:自动续费 2 不自动续费
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -440,7 +435,6 @@ class ChargeAttribute(AbstractModel):
     @property
     def ResourceId(self):
         """资源ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceId
@@ -551,7 +545,6 @@ class ClientNodeAttribute(AbstractModel):
         :param _InstanceId: cvmId
         :type InstanceId: str
         :param _MountPoint: 自定义挂载点
-注意：此字段可能返回 null，表示取不到有效值。
         :type MountPoint: str
         """
         self._ClientNodeIp = None
@@ -631,7 +624,6 @@ class ClientNodeAttribute(AbstractModel):
     @property
     def MountPoint(self):
         """自定义挂载点
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MountPoint
@@ -2729,21 +2721,16 @@ class MappedBucket(AbstractModel):
 立即沉降(ImmediateExport)
         :type DataRepositoryTaskAutoStrategy: list of str
         :param _RuleId: 绑定bucket的数据流动策略ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleId: str
         :param _RuleDescription: 规则备注与描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleDescription: str
         :param _Status: 桶关联状态 0：关联中 1：关联完成
         :type Status: int
         :param _AccelerateFlag: 是否使用全球加速域名
-注意：此字段可能返回 null，表示取不到有效值。
         :type AccelerateFlag: bool
         :param _BucketRegion: 桶所在的园区
-注意：此字段可能返回 null，表示取不到有效值。
         :type BucketRegion: str
         :param _Endpoint: 自定义Endpoint
-注意：此字段可能返回 null，表示取不到有效值。
         :type Endpoint: str
         """
         self._BucketName = None
@@ -2799,7 +2786,6 @@ class MappedBucket(AbstractModel):
     @property
     def RuleId(self):
         """绑定bucket的数据流动策略ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RuleId
@@ -2811,7 +2797,6 @@ class MappedBucket(AbstractModel):
     @property
     def RuleDescription(self):
         """规则备注与描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RuleDescription
@@ -2834,7 +2819,6 @@ class MappedBucket(AbstractModel):
     @property
     def AccelerateFlag(self):
         """是否使用全球加速域名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._AccelerateFlag
@@ -2846,7 +2830,6 @@ class MappedBucket(AbstractModel):
     @property
     def BucketRegion(self):
         """桶所在的园区
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BucketRegion
@@ -2858,7 +2841,6 @@ class MappedBucket(AbstractModel):
     @property
     def Endpoint(self):
         """自定义Endpoint
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Endpoint
@@ -3221,10 +3203,8 @@ class SubnetInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _VpcId: vpc id
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
         :param _SubnetId: 子网ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetId: str
         """
         self._VpcId = None
@@ -3233,7 +3213,6 @@ class SubnetInfo(AbstractModel):
     @property
     def VpcId(self):
         """vpc id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VpcId
@@ -3245,7 +3224,6 @@ class SubnetInfo(AbstractModel):
     @property
     def SubnetId(self):
         """子网ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubnetId

@@ -6890,6 +6890,8 @@ class DescribeSlowQueryRecordsDownloadRequest(AbstractModel):
         :type SortField: str
         :param _SortOrder: 排序方式
         :type SortOrder: str
+        :param _UserName: user
+        :type UserName: str
         """
         self._InstanceId = None
         self._QueryDurationMs = None
@@ -6905,6 +6907,7 @@ class DescribeSlowQueryRecordsDownloadRequest(AbstractModel):
         self._CatalogName = None
         self._SortField = None
         self._SortOrder = None
+        self._UserName = None
 
     @property
     def InstanceId(self):
@@ -7060,6 +7063,17 @@ class DescribeSlowQueryRecordsDownloadRequest(AbstractModel):
     def SortOrder(self, SortOrder):
         self._SortOrder = SortOrder
 
+    @property
+    def UserName(self):
+        """user
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -7076,6 +7090,7 @@ class DescribeSlowQueryRecordsDownloadRequest(AbstractModel):
         self._CatalogName = params.get("CatalogName")
         self._SortField = params.get("SortField")
         self._SortOrder = params.get("SortOrder")
+        self._UserName = params.get("UserName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7168,6 +7183,8 @@ class DescribeSlowQueryRecordsRequest(AbstractModel):
         :type SortField: str
         :param _SortOrder: 排序方式
         :type SortOrder: str
+        :param _UserName: user
+        :type UserName: str
         """
         self._InstanceId = None
         self._QueryDurationMs = None
@@ -7185,6 +7202,7 @@ class DescribeSlowQueryRecordsRequest(AbstractModel):
         self._MemoryUsage = None
         self._SortField = None
         self._SortOrder = None
+        self._UserName = None
 
     @property
     def InstanceId(self):
@@ -7362,6 +7380,17 @@ class DescribeSlowQueryRecordsRequest(AbstractModel):
     def SortOrder(self, SortOrder):
         self._SortOrder = SortOrder
 
+    @property
+    def UserName(self):
+        """user
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -7380,6 +7409,7 @@ class DescribeSlowQueryRecordsRequest(AbstractModel):
         self._MemoryUsage = params.get("MemoryUsage")
         self._SortField = params.get("SortField")
         self._SortOrder = params.get("SortOrder")
+        self._UserName = params.get("UserName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -3174,50 +3174,39 @@ class ConfigFile(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: 配置文件id
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
         :param _Name: 配置文件名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Namespace: 配置文件命名空间
-注意：此字段可能返回 null，表示取不到有效值。
         :type Namespace: str
         :param _Group: 配置文件组
-注意：此字段可能返回 null，表示取不到有效值。
         :type Group: str
         :param _Content: 配置文件内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type Content: str
         :param _Format: 配置文件格式
-注意：此字段可能返回 null，表示取不到有效值。
         :type Format: str
         :param _Comment: 配置文件注释
-注意：此字段可能返回 null，表示取不到有效值。
         :type Comment: str
         :param _Status: 配置文件状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _Tags: 配置文件标签数组
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of ConfigFileTag
         :param _CreateTime: 配置文件创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _CreateBy: 配置文件创建者
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateBy: str
         :param _ModifyTime: 配置文件修改时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyTime: str
         :param _ModifyBy: 配置文件修改者
-注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyBy: str
         :param _ReleaseTime: 配置文件发布时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReleaseTime: str
         :param _ReleaseBy: 配置文件发布者
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReleaseBy: str
+        :param _ConfigFileSupportedClient: 配置文件类型
+        :type ConfigFileSupportedClient: int
+        :param _ConfigFilePersistent: 配置文件持久化
+        :type ConfigFilePersistent: :class:`tencentcloud.tse.v20201207.models.ConfigFilePersistent`
         """
         self._Id = None
         self._Name = None
@@ -3234,11 +3223,12 @@ class ConfigFile(AbstractModel):
         self._ModifyBy = None
         self._ReleaseTime = None
         self._ReleaseBy = None
+        self._ConfigFileSupportedClient = None
+        self._ConfigFilePersistent = None
 
     @property
     def Id(self):
         """配置文件id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Id
@@ -3250,7 +3240,6 @@ class ConfigFile(AbstractModel):
     @property
     def Name(self):
         """配置文件名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -3262,7 +3251,6 @@ class ConfigFile(AbstractModel):
     @property
     def Namespace(self):
         """配置文件命名空间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Namespace
@@ -3274,7 +3262,6 @@ class ConfigFile(AbstractModel):
     @property
     def Group(self):
         """配置文件组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Group
@@ -3286,7 +3273,6 @@ class ConfigFile(AbstractModel):
     @property
     def Content(self):
         """配置文件内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Content
@@ -3298,7 +3284,6 @@ class ConfigFile(AbstractModel):
     @property
     def Format(self):
         """配置文件格式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Format
@@ -3310,7 +3295,6 @@ class ConfigFile(AbstractModel):
     @property
     def Comment(self):
         """配置文件注释
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Comment
@@ -3322,7 +3306,6 @@ class ConfigFile(AbstractModel):
     @property
     def Status(self):
         """配置文件状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -3334,7 +3317,6 @@ class ConfigFile(AbstractModel):
     @property
     def Tags(self):
         """配置文件标签数组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ConfigFileTag
         """
         return self._Tags
@@ -3346,7 +3328,6 @@ class ConfigFile(AbstractModel):
     @property
     def CreateTime(self):
         """配置文件创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -3358,7 +3339,6 @@ class ConfigFile(AbstractModel):
     @property
     def CreateBy(self):
         """配置文件创建者
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateBy
@@ -3370,7 +3350,6 @@ class ConfigFile(AbstractModel):
     @property
     def ModifyTime(self):
         """配置文件修改时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ModifyTime
@@ -3382,7 +3361,6 @@ class ConfigFile(AbstractModel):
     @property
     def ModifyBy(self):
         """配置文件修改者
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ModifyBy
@@ -3394,7 +3372,6 @@ class ConfigFile(AbstractModel):
     @property
     def ReleaseTime(self):
         """配置文件发布时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ReleaseTime
@@ -3406,7 +3383,6 @@ class ConfigFile(AbstractModel):
     @property
     def ReleaseBy(self):
         """配置文件发布者
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ReleaseBy
@@ -3414,6 +3390,28 @@ class ConfigFile(AbstractModel):
     @ReleaseBy.setter
     def ReleaseBy(self, ReleaseBy):
         self._ReleaseBy = ReleaseBy
+
+    @property
+    def ConfigFileSupportedClient(self):
+        """配置文件类型
+        :rtype: int
+        """
+        return self._ConfigFileSupportedClient
+
+    @ConfigFileSupportedClient.setter
+    def ConfigFileSupportedClient(self, ConfigFileSupportedClient):
+        self._ConfigFileSupportedClient = ConfigFileSupportedClient
+
+    @property
+    def ConfigFilePersistent(self):
+        """配置文件持久化
+        :rtype: :class:`tencentcloud.tse.v20201207.models.ConfigFilePersistent`
+        """
+        return self._ConfigFilePersistent
+
+    @ConfigFilePersistent.setter
+    def ConfigFilePersistent(self, ConfigFilePersistent):
+        self._ConfigFilePersistent = ConfigFilePersistent
 
 
     def _deserialize(self, params):
@@ -3437,6 +3435,10 @@ class ConfigFile(AbstractModel):
         self._ModifyBy = params.get("ModifyBy")
         self._ReleaseTime = params.get("ReleaseTime")
         self._ReleaseBy = params.get("ReleaseBy")
+        self._ConfigFileSupportedClient = params.get("ConfigFileSupportedClient")
+        if params.get("ConfigFilePersistent") is not None:
+            self._ConfigFilePersistent = ConfigFilePersistent()
+            self._ConfigFilePersistent._deserialize(params.get("ConfigFilePersistent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3834,6 +3836,72 @@ class ConfigFileGroupTag(AbstractModel):
         
 
 
+class ConfigFilePersistent(AbstractModel):
+    """配置文件持久化
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Encoding: 文件编码
+        :type Encoding: str
+        :param _Path: 文件下发路径
+        :type Path: str
+        :param _PostCmd: 文件后置命令
+        :type PostCmd: str
+        """
+        self._Encoding = None
+        self._Path = None
+        self._PostCmd = None
+
+    @property
+    def Encoding(self):
+        """文件编码
+        :rtype: str
+        """
+        return self._Encoding
+
+    @Encoding.setter
+    def Encoding(self, Encoding):
+        self._Encoding = Encoding
+
+    @property
+    def Path(self):
+        """文件下发路径
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def PostCmd(self):
+        """文件后置命令
+        :rtype: str
+        """
+        return self._PostCmd
+
+    @PostCmd.setter
+    def PostCmd(self, PostCmd):
+        self._PostCmd = PostCmd
+
+
+    def _deserialize(self, params):
+        self._Encoding = params.get("Encoding")
+        self._Path = params.get("Path")
+        self._PostCmd = params.get("PostCmd")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ConfigFilePublishInfo(AbstractModel):
     """发布详情
 
@@ -4018,56 +4086,43 @@ class ConfigFileRelease(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: 配置文件发布id
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
         :param _Name: 配置文件发布名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Namespace: 配置文件发布命名空间
-注意：此字段可能返回 null，表示取不到有效值。
         :type Namespace: str
         :param _Group: 配置文件发布组
-注意：此字段可能返回 null，表示取不到有效值。
         :type Group: str
         :param _FileName: 配置文件发布文件名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileName: str
         :param _Content: 配置文件发布内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type Content: str
         :param _Comment: 配置文件发布注释
-注意：此字段可能返回 null，表示取不到有效值。
         :type Comment: str
         :param _Md5: 配置文件发布Md5
-注意：此字段可能返回 null，表示取不到有效值。
         :type Md5: str
         :param _Version: 配置文件发布版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Version: int
         :param _CreateTime: 配置文件发布创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _CreateBy: 配置文件发布创建者
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateBy: str
         :param _ModifyTime: 配置文件发布修改时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyTime: str
         :param _ModifyBy: 配置文件发布修改者
-注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyBy: str
         :param _ReleaseDescription: 发布描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReleaseDescription: str
         :param _Active: 是否生效
-注意：此字段可能返回 null，表示取不到有效值。
         :type Active: bool
         :param _Format: 格式
-注意：此字段可能返回 null，表示取不到有效值。
         :type Format: str
         :param _ConfigFileId: 配置文件ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ConfigFileId: str
+        :param _ConfigFileSupportedClient: 配置文件类型
+        :type ConfigFileSupportedClient: int
+        :param _ConfigFilePersistent: 配置文件持久化
+        :type ConfigFilePersistent: :class:`tencentcloud.tse.v20201207.models.ConfigFilePersistent`
         """
         self._Id = None
         self._Name = None
@@ -4086,11 +4141,12 @@ class ConfigFileRelease(AbstractModel):
         self._Active = None
         self._Format = None
         self._ConfigFileId = None
+        self._ConfigFileSupportedClient = None
+        self._ConfigFilePersistent = None
 
     @property
     def Id(self):
         """配置文件发布id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Id
@@ -4102,7 +4158,6 @@ class ConfigFileRelease(AbstractModel):
     @property
     def Name(self):
         """配置文件发布名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -4114,7 +4169,6 @@ class ConfigFileRelease(AbstractModel):
     @property
     def Namespace(self):
         """配置文件发布命名空间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Namespace
@@ -4126,7 +4180,6 @@ class ConfigFileRelease(AbstractModel):
     @property
     def Group(self):
         """配置文件发布组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Group
@@ -4138,7 +4191,6 @@ class ConfigFileRelease(AbstractModel):
     @property
     def FileName(self):
         """配置文件发布文件名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FileName
@@ -4150,7 +4202,6 @@ class ConfigFileRelease(AbstractModel):
     @property
     def Content(self):
         """配置文件发布内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Content
@@ -4162,7 +4213,6 @@ class ConfigFileRelease(AbstractModel):
     @property
     def Comment(self):
         """配置文件发布注释
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Comment
@@ -4174,7 +4224,6 @@ class ConfigFileRelease(AbstractModel):
     @property
     def Md5(self):
         """配置文件发布Md5
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Md5
@@ -4186,7 +4235,6 @@ class ConfigFileRelease(AbstractModel):
     @property
     def Version(self):
         """配置文件发布版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Version
@@ -4198,7 +4246,6 @@ class ConfigFileRelease(AbstractModel):
     @property
     def CreateTime(self):
         """配置文件发布创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -4210,7 +4257,6 @@ class ConfigFileRelease(AbstractModel):
     @property
     def CreateBy(self):
         """配置文件发布创建者
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateBy
@@ -4222,7 +4268,6 @@ class ConfigFileRelease(AbstractModel):
     @property
     def ModifyTime(self):
         """配置文件发布修改时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ModifyTime
@@ -4234,7 +4279,6 @@ class ConfigFileRelease(AbstractModel):
     @property
     def ModifyBy(self):
         """配置文件发布修改者
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ModifyBy
@@ -4246,7 +4290,6 @@ class ConfigFileRelease(AbstractModel):
     @property
     def ReleaseDescription(self):
         """发布描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ReleaseDescription
@@ -4258,7 +4301,6 @@ class ConfigFileRelease(AbstractModel):
     @property
     def Active(self):
         """是否生效
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Active
@@ -4270,7 +4312,6 @@ class ConfigFileRelease(AbstractModel):
     @property
     def Format(self):
         """格式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Format
@@ -4282,7 +4323,6 @@ class ConfigFileRelease(AbstractModel):
     @property
     def ConfigFileId(self):
         """配置文件ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ConfigFileId
@@ -4290,6 +4330,28 @@ class ConfigFileRelease(AbstractModel):
     @ConfigFileId.setter
     def ConfigFileId(self, ConfigFileId):
         self._ConfigFileId = ConfigFileId
+
+    @property
+    def ConfigFileSupportedClient(self):
+        """配置文件类型
+        :rtype: int
+        """
+        return self._ConfigFileSupportedClient
+
+    @ConfigFileSupportedClient.setter
+    def ConfigFileSupportedClient(self, ConfigFileSupportedClient):
+        self._ConfigFileSupportedClient = ConfigFileSupportedClient
+
+    @property
+    def ConfigFilePersistent(self):
+        """配置文件持久化
+        :rtype: :class:`tencentcloud.tse.v20201207.models.ConfigFilePersistent`
+        """
+        return self._ConfigFilePersistent
+
+    @ConfigFilePersistent.setter
+    def ConfigFilePersistent(self, ConfigFilePersistent):
+        self._ConfigFilePersistent = ConfigFilePersistent
 
 
     def _deserialize(self, params):
@@ -4310,6 +4372,10 @@ class ConfigFileRelease(AbstractModel):
         self._Active = params.get("Active")
         self._Format = params.get("Format")
         self._ConfigFileId = params.get("ConfigFileId")
+        self._ConfigFileSupportedClient = params.get("ConfigFileSupportedClient")
+        if params.get("ConfigFilePersistent") is not None:
+            self._ConfigFilePersistent = ConfigFilePersistent()
+            self._ConfigFilePersistent._deserialize(params.get("ConfigFilePersistent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4434,59 +4500,46 @@ class ConfigFileReleaseHistory(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: 配置文件发布历史记录id
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
         :param _Name: 配置文件发布历史名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Namespace: 配置文件发布历史命名空间
-注意：此字段可能返回 null，表示取不到有效值。
         :type Namespace: str
         :param _Group: 配置文件发布历史组
-注意：此字段可能返回 null，表示取不到有效值。
         :type Group: str
         :param _FileName: 配置文件发布历史名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileName: str
         :param _Content: 配置文件发布历史内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type Content: str
         :param _Format: 配置文件发布历史格式
-注意：此字段可能返回 null，表示取不到有效值。
         :type Format: str
         :param _Comment: 配置文件发布历史注释
-注意：此字段可能返回 null，表示取不到有效值。
         :type Comment: str
         :param _Md5: 配置文件发布历史Md5
-注意：此字段可能返回 null，表示取不到有效值。
         :type Md5: str
         :param _Type: 配置文件发布历史类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Status: 配置文件发布历史状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _Tags: 配置文件发布历史标签组
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of ConfigFileTag
         :param _CreateTime: 配置文件发布创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _CreateBy: 配置文件发布创建者
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateBy: str
         :param _ModifyTime: 配置文件发布修改时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyTime: str
         :param _ModifyBy: 配置文件发布修改者
-注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyBy: str
         :param _ReleaseDescription: 发布描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReleaseDescription: str
         :param _ReleaseReason: 原因，用于失败时原因展示
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReleaseReason: str
+        :param _ConfigFileSupportedClient: 配置文件类型
+
+        :type ConfigFileSupportedClient: int
+        :param _ConfigFilePersistent: 配置文件持久化
+        :type ConfigFilePersistent: :class:`tencentcloud.tse.v20201207.models.ConfigFilePersistent`
         """
         self._Id = None
         self._Name = None
@@ -4506,11 +4559,12 @@ class ConfigFileReleaseHistory(AbstractModel):
         self._ModifyBy = None
         self._ReleaseDescription = None
         self._ReleaseReason = None
+        self._ConfigFileSupportedClient = None
+        self._ConfigFilePersistent = None
 
     @property
     def Id(self):
         """配置文件发布历史记录id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Id
@@ -4522,7 +4576,6 @@ class ConfigFileReleaseHistory(AbstractModel):
     @property
     def Name(self):
         """配置文件发布历史名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -4534,7 +4587,6 @@ class ConfigFileReleaseHistory(AbstractModel):
     @property
     def Namespace(self):
         """配置文件发布历史命名空间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Namespace
@@ -4546,7 +4598,6 @@ class ConfigFileReleaseHistory(AbstractModel):
     @property
     def Group(self):
         """配置文件发布历史组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Group
@@ -4558,7 +4609,6 @@ class ConfigFileReleaseHistory(AbstractModel):
     @property
     def FileName(self):
         """配置文件发布历史名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FileName
@@ -4570,7 +4620,6 @@ class ConfigFileReleaseHistory(AbstractModel):
     @property
     def Content(self):
         """配置文件发布历史内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Content
@@ -4582,7 +4631,6 @@ class ConfigFileReleaseHistory(AbstractModel):
     @property
     def Format(self):
         """配置文件发布历史格式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Format
@@ -4594,7 +4642,6 @@ class ConfigFileReleaseHistory(AbstractModel):
     @property
     def Comment(self):
         """配置文件发布历史注释
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Comment
@@ -4606,7 +4653,6 @@ class ConfigFileReleaseHistory(AbstractModel):
     @property
     def Md5(self):
         """配置文件发布历史Md5
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Md5
@@ -4618,7 +4664,6 @@ class ConfigFileReleaseHistory(AbstractModel):
     @property
     def Type(self):
         """配置文件发布历史类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -4630,7 +4675,6 @@ class ConfigFileReleaseHistory(AbstractModel):
     @property
     def Status(self):
         """配置文件发布历史状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -4642,7 +4686,6 @@ class ConfigFileReleaseHistory(AbstractModel):
     @property
     def Tags(self):
         """配置文件发布历史标签组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ConfigFileTag
         """
         return self._Tags
@@ -4654,7 +4697,6 @@ class ConfigFileReleaseHistory(AbstractModel):
     @property
     def CreateTime(self):
         """配置文件发布创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -4666,7 +4708,6 @@ class ConfigFileReleaseHistory(AbstractModel):
     @property
     def CreateBy(self):
         """配置文件发布创建者
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateBy
@@ -4678,7 +4719,6 @@ class ConfigFileReleaseHistory(AbstractModel):
     @property
     def ModifyTime(self):
         """配置文件发布修改时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ModifyTime
@@ -4690,7 +4730,6 @@ class ConfigFileReleaseHistory(AbstractModel):
     @property
     def ModifyBy(self):
         """配置文件发布修改者
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ModifyBy
@@ -4702,7 +4741,6 @@ class ConfigFileReleaseHistory(AbstractModel):
     @property
     def ReleaseDescription(self):
         """发布描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ReleaseDescription
@@ -4714,7 +4752,6 @@ class ConfigFileReleaseHistory(AbstractModel):
     @property
     def ReleaseReason(self):
         """原因，用于失败时原因展示
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ReleaseReason
@@ -4722,6 +4759,29 @@ class ConfigFileReleaseHistory(AbstractModel):
     @ReleaseReason.setter
     def ReleaseReason(self, ReleaseReason):
         self._ReleaseReason = ReleaseReason
+
+    @property
+    def ConfigFileSupportedClient(self):
+        """配置文件类型
+
+        :rtype: int
+        """
+        return self._ConfigFileSupportedClient
+
+    @ConfigFileSupportedClient.setter
+    def ConfigFileSupportedClient(self, ConfigFileSupportedClient):
+        self._ConfigFileSupportedClient = ConfigFileSupportedClient
+
+    @property
+    def ConfigFilePersistent(self):
+        """配置文件持久化
+        :rtype: :class:`tencentcloud.tse.v20201207.models.ConfigFilePersistent`
+        """
+        return self._ConfigFilePersistent
+
+    @ConfigFilePersistent.setter
+    def ConfigFilePersistent(self, ConfigFilePersistent):
+        self._ConfigFilePersistent = ConfigFilePersistent
 
 
     def _deserialize(self, params):
@@ -4748,6 +4808,10 @@ class ConfigFileReleaseHistory(AbstractModel):
         self._ModifyBy = params.get("ModifyBy")
         self._ReleaseDescription = params.get("ReleaseDescription")
         self._ReleaseReason = params.get("ReleaseReason")
+        self._ConfigFileSupportedClient = params.get("ConfigFileSupportedClient")
+        if params.get("ConfigFilePersistent") is not None:
+            self._ConfigFilePersistent = ConfigFilePersistent()
+            self._ConfigFilePersistent._deserialize(params.get("ConfigFilePersistent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4766,10 +4830,8 @@ class ConfigFileTag(AbstractModel):
     def __init__(self):
         r"""
         :param _Key: key-value 键
-注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
         :param _Value: key-value 值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Key = None
@@ -4778,7 +4840,6 @@ class ConfigFileTag(AbstractModel):
     @property
     def Key(self):
         """key-value 键
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Key
@@ -4790,7 +4851,6 @@ class ConfigFileTag(AbstractModel):
     @property
     def Value(self):
         """key-value 值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value

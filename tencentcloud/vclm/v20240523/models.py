@@ -38,13 +38,22 @@ class CheckAnimateImageJobRequest(AbstractModel):
 图片大小：不超过10M；
 图片宽高比：【宽：高】数值在 1:2 到 1:1.2 范围内
         :type ImageBase64: str
-        :param _EnableBodyJoins: 是否检测输入图人体12个身体部位（头部、颈部、右肩、右肘、右腕、左肩、左肘、左腕、右髋、左髋,、左膝、右膝）。默认不检测。
+        :param _EnableBodyJoins: 是否对输入图采用加强检测方案。
+
+默认不加强检测（false），仅对输入图做必要的基础检测。
+
+开启加强检测（true）有助于提升效果稳定性，将根据选择的动作模板提取建议的人体关键点，并判断输入图中是否包含这些人体关键点。加强检测仅对人像输入图生效，对非人输入图不生效。
         :type EnableBodyJoins: bool
+        :param _EnableFace: 是否开启人脸检测。
+
+默认开启人脸检测（true），拦截主体为人像但无人脸、人脸不完整或被遮挡的输入图。可选关闭人脸检测（false）。
+        :type EnableFace: bool
         """
         self._TemplateId = None
         self._ImageUrl = None
         self._ImageBase64 = None
         self._EnableBodyJoins = None
+        self._EnableFace = None
 
     @property
     def TemplateId(self):
@@ -88,7 +97,11 @@ class CheckAnimateImageJobRequest(AbstractModel):
 
     @property
     def EnableBodyJoins(self):
-        """是否检测输入图人体12个身体部位（头部、颈部、右肩、右肘、右腕、左肩、左肘、左腕、右髋、左髋,、左膝、右膝）。默认不检测。
+        """是否对输入图采用加强检测方案。
+
+默认不加强检测（false），仅对输入图做必要的基础检测。
+
+开启加强检测（true）有助于提升效果稳定性，将根据选择的动作模板提取建议的人体关键点，并判断输入图中是否包含这些人体关键点。加强检测仅对人像输入图生效，对非人输入图不生效。
         :rtype: bool
         """
         return self._EnableBodyJoins
@@ -97,12 +110,26 @@ class CheckAnimateImageJobRequest(AbstractModel):
     def EnableBodyJoins(self, EnableBodyJoins):
         self._EnableBodyJoins = EnableBodyJoins
 
+    @property
+    def EnableFace(self):
+        """是否开启人脸检测。
+
+默认开启人脸检测（true），拦截主体为人像但无人脸、人脸不完整或被遮挡的输入图。可选关闭人脸检测（false）。
+        :rtype: bool
+        """
+        return self._EnableFace
+
+    @EnableFace.setter
+    def EnableFace(self, EnableFace):
+        self._EnableFace = EnableFace
+
 
     def _deserialize(self, params):
         self._TemplateId = params.get("TemplateId")
         self._ImageUrl = params.get("ImageUrl")
         self._ImageBase64 = params.get("ImageBase64")
         self._EnableBodyJoins = params.get("EnableBodyJoins")
+        self._EnableFace = params.get("EnableFace")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -773,7 +800,11 @@ class SubmitImageAnimateJobRequest(AbstractModel):
         :type TemplateId: str
         :param _EnableAudio: 结果视频是否保留模板音频。默认为true
         :type EnableAudio: bool
-        :param _EnableBodyJoins: 是否检测输入图人体12个身体部位（头部、颈部、右肩、右肘、右腕、左肩、左肘、左腕、右髋、左髋,、左膝、右膝）。默认不检测。
+        :param _EnableBodyJoins: 是否对输入图采用加强检测方案。
+
+默认不加强检测（false），仅对输入图做必要的基础检测。
+
+开启加强检测（true）有助于提升效果稳定性，将根据选择的动作模板提取建议的人体关键点，并判断输入图中是否包含这些人体关键点。加强检测仅对人像输入图生效，对非人输入图不生效。
         :type EnableBodyJoins: bool
         :param _EnableSegment: 是否对结果视频背景进行分割，默认值为false。
 true：分割结果视频，结果视频（ResultVideoUrl）将为去除背景的绿幕视频，并返回掩码视频（MaskVideoUrl）；
@@ -788,6 +819,10 @@ false：不分割结果视频，结果视频（ResultVideoUrl）为带背景的�
         :param _LogoParam: 标识内容设置。
 默认在生成视频的右下角添加“视频由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
         :type LogoParam: :class:`tencentcloud.vclm.v20240523.models.LogoParam`
+        :param _EnableFace: 是否开启人脸检测。
+
+默认开启人脸检测（true），拦截主体为人像但无人脸、人脸不完整或被遮挡的输入图。可选关闭人脸检测（false）。
+        :type EnableFace: bool
         """
         self._ImageUrl = None
         self._ImageBase64 = None
@@ -797,6 +832,7 @@ false：不分割结果视频，结果视频（ResultVideoUrl）为带背景的�
         self._EnableSegment = None
         self._LogoAdd = None
         self._LogoParam = None
+        self._EnableFace = None
 
     @property
     def ImageUrl(self):
@@ -852,7 +888,11 @@ false：不分割结果视频，结果视频（ResultVideoUrl）为带背景的�
 
     @property
     def EnableBodyJoins(self):
-        """是否检测输入图人体12个身体部位（头部、颈部、右肩、右肘、右腕、左肩、左肘、左腕、右髋、左髋,、左膝、右膝）。默认不检测。
+        """是否对输入图采用加强检测方案。
+
+默认不加强检测（false），仅对输入图做必要的基础检测。
+
+开启加强检测（true）有助于提升效果稳定性，将根据选择的动作模板提取建议的人体关键点，并判断输入图中是否包含这些人体关键点。加强检测仅对人像输入图生效，对非人输入图不生效。
         :rtype: bool
         """
         return self._EnableBodyJoins
@@ -901,6 +941,19 @@ false：不分割结果视频，结果视频（ResultVideoUrl）为带背景的�
     def LogoParam(self, LogoParam):
         self._LogoParam = LogoParam
 
+    @property
+    def EnableFace(self):
+        """是否开启人脸检测。
+
+默认开启人脸检测（true），拦截主体为人像但无人脸、人脸不完整或被遮挡的输入图。可选关闭人脸检测（false）。
+        :rtype: bool
+        """
+        return self._EnableFace
+
+    @EnableFace.setter
+    def EnableFace(self, EnableFace):
+        self._EnableFace = EnableFace
+
 
     def _deserialize(self, params):
         self._ImageUrl = params.get("ImageUrl")
@@ -913,6 +966,7 @@ false：不分割结果视频，结果视频（ResultVideoUrl）为带背景的�
         if params.get("LogoParam") is not None:
             self._LogoParam = LogoParam()
             self._LogoParam._deserialize(params.get("LogoParam"))
+        self._EnableFace = params.get("EnableFace")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

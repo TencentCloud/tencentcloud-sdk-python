@@ -19374,6 +19374,8 @@ class DescribeTemplatesRequest(AbstractModel):
         :type WithPdfUrl: bool
         :param _Operator: 操作者的信息
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param _UserFlowTypeId: 用户合同类型id
+        :type UserFlowTypeId: str
         """
         self._Agent = None
         self._TemplateId = None
@@ -19387,6 +19389,7 @@ class DescribeTemplatesRequest(AbstractModel):
         self._WithPreviewUrl = None
         self._WithPdfUrl = None
         self._Operator = None
+        self._UserFlowTypeId = None
 
     @property
     def Agent(self):
@@ -19569,6 +19572,17 @@ class DescribeTemplatesRequest(AbstractModel):
 
         self._Operator = Operator
 
+    @property
+    def UserFlowTypeId(self):
+        """用户合同类型id
+        :rtype: str
+        """
+        return self._UserFlowTypeId
+
+    @UserFlowTypeId.setter
+    def UserFlowTypeId(self, UserFlowTypeId):
+        self._UserFlowTypeId = UserFlowTypeId
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
@@ -19587,6 +19601,7 @@ class DescribeTemplatesRequest(AbstractModel):
         if params.get("Operator") is not None:
             self._Operator = UserInfo()
             self._Operator._deserialize(params.get("Operator"))
+        self._UserFlowTypeId = params.get("UserFlowTypeId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19916,6 +19931,135 @@ class DescribeUsageResponse(AbstractModel):
                 obj = UsageDetail()
                 obj._deserialize(item)
                 self._Details.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeUserFlowTypeRequest(AbstractModel):
+    """DescribeUserFlowType请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。 此接口下面信息必填。 <ul> <li>渠道应用标识: Agent.AppId</li> <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li> <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li> </ul> 第三方平台子客企业和员工必须已经经过实名认证	
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param _Filters: 搜索过滤的条件，本字段允许您通过指定模板 ID 或模板名称来进行查询。 <ul><li><strong>模板的用户合同类型</strong>：<strong>Key</strong>设置为 <code>user-flow-type-id</code> ，<strong>Values</strong>为您想要查询的用户模版类型id列表。</li></ul>	
+        :type Filters: list of Filter
+        :param _QueryBindTemplate: 查询绑定了模版的用户合同类型
+<ul>
+<li>false（默认值），查询用户合同类型</li>
+<li>true，查询绑定了模版的用户合同类型</li>
+</ul>
+        :type QueryBindTemplate: bool
+        """
+        self._Agent = None
+        self._Filters = None
+        self._QueryBindTemplate = None
+
+    @property
+    def Agent(self):
+        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。 此接口下面信息必填。 <ul> <li>渠道应用标识: Agent.AppId</li> <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li> <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li> </ul> 第三方平台子客企业和员工必须已经经过实名认证	
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def Filters(self):
+        """搜索过滤的条件，本字段允许您通过指定模板 ID 或模板名称来进行查询。 <ul><li><strong>模板的用户合同类型</strong>：<strong>Key</strong>设置为 <code>user-flow-type-id</code> ，<strong>Values</strong>为您想要查询的用户模版类型id列表。</li></ul>	
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def QueryBindTemplate(self):
+        """查询绑定了模版的用户合同类型
+<ul>
+<li>false（默认值），查询用户合同类型</li>
+<li>true，查询绑定了模版的用户合同类型</li>
+</ul>
+        :rtype: bool
+        """
+        return self._QueryBindTemplate
+
+    @QueryBindTemplate.setter
+    def QueryBindTemplate(self, QueryBindTemplate):
+        self._QueryBindTemplate = QueryBindTemplate
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._QueryBindTemplate = params.get("QueryBindTemplate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUserFlowTypeResponse(AbstractModel):
+    """DescribeUserFlowType返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AllUserFlowTypes: 查询到的所有用户合同类型列表
+        :type AllUserFlowTypes: list of TemplateUserFlowType
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AllUserFlowTypes = None
+        self._RequestId = None
+
+    @property
+    def AllUserFlowTypes(self):
+        """查询到的所有用户合同类型列表
+        :rtype: list of TemplateUserFlowType
+        """
+        return self._AllUserFlowTypes
+
+    @AllUserFlowTypes.setter
+    def AllUserFlowTypes(self, AllUserFlowTypes):
+        self._AllUserFlowTypes = AllUserFlowTypes
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("AllUserFlowTypes") is not None:
+            self._AllUserFlowTypes = []
+            for item in params.get("AllUserFlowTypes"):
+                obj = TemplateUserFlowType()
+                obj._deserialize(item)
+                self._AllUserFlowTypes.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -28864,6 +29008,8 @@ class TemplateInfo(AbstractModel):
 <ul><li>1：启用（默认），表示模板处于启用状态，可以被用户正常使用。</li>
 <li>2：停用，表示模板处于停用状态，禁止用户使用该模板。</li></ul>
         :type Available: int
+        :param _UserFlowType: 模版的用户合同类型
+        :type UserFlowType: :class:`tencentcloud.essbasic.v20210526.models.UserFlowType`
         """
         self._TemplateId = None
         self._TemplateName = None
@@ -28882,6 +29028,7 @@ class TemplateInfo(AbstractModel):
         self._ChannelAutoSave = None
         self._TemplateVersion = None
         self._Available = None
+        self._UserFlowType = None
 
     @property
     def TemplateId(self):
@@ -29095,6 +29242,17 @@ class TemplateInfo(AbstractModel):
     def Available(self, Available):
         self._Available = Available
 
+    @property
+    def UserFlowType(self):
+        """模版的用户合同类型
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserFlowType`
+        """
+        return self._UserFlowType
+
+    @UserFlowType.setter
+    def UserFlowType(self, UserFlowType):
+        self._UserFlowType = UserFlowType
+
 
     def _deserialize(self, params):
         self._TemplateId = params.get("TemplateId")
@@ -29129,6 +29287,90 @@ class TemplateInfo(AbstractModel):
         self._ChannelAutoSave = params.get("ChannelAutoSave")
         self._TemplateVersion = params.get("TemplateVersion")
         self._Available = params.get("Available")
+        if params.get("UserFlowType") is not None:
+            self._UserFlowType = UserFlowType()
+            self._UserFlowType._deserialize(params.get("UserFlowType"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TemplateUserFlowType(AbstractModel):
+    """模版对应的合同类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserFlowTypeId: 合同类型id
+        :type UserFlowTypeId: str
+        :param _Name: 用户合同类型名称
+        :type Name: str
+        :param _TemplateNum: 每个合同类型绑定的模版数量	
+        :type TemplateNum: int
+        :param _Description: 合同类型的具体描述
+        :type Description: str
+        """
+        self._UserFlowTypeId = None
+        self._Name = None
+        self._TemplateNum = None
+        self._Description = None
+
+    @property
+    def UserFlowTypeId(self):
+        """合同类型id
+        :rtype: str
+        """
+        return self._UserFlowTypeId
+
+    @UserFlowTypeId.setter
+    def UserFlowTypeId(self, UserFlowTypeId):
+        self._UserFlowTypeId = UserFlowTypeId
+
+    @property
+    def Name(self):
+        """用户合同类型名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def TemplateNum(self):
+        """每个合同类型绑定的模版数量	
+        :rtype: int
+        """
+        return self._TemplateNum
+
+    @TemplateNum.setter
+    def TemplateNum(self, TemplateNum):
+        self._TemplateNum = TemplateNum
+
+    @property
+    def Description(self):
+        """合同类型的具体描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._UserFlowTypeId = params.get("UserFlowTypeId")
+        self._Name = params.get("Name")
+        self._TemplateNum = params.get("TemplateNum")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29494,6 +29736,72 @@ class UsageDetail(AbstractModel):
         self._Usage = params.get("Usage")
         self._Cancel = params.get("Cancel")
         self._FlowChannel = params.get("FlowChannel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserFlowType(AbstractModel):
+    """用户合同类型信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserFlowTypeId: 用户合同类型id
+        :type UserFlowTypeId: str
+        :param _Name: 用户合同类型名称
+        :type Name: str
+        :param _Description: 用户合同类型的描述信息
+        :type Description: str
+        """
+        self._UserFlowTypeId = None
+        self._Name = None
+        self._Description = None
+
+    @property
+    def UserFlowTypeId(self):
+        """用户合同类型id
+        :rtype: str
+        """
+        return self._UserFlowTypeId
+
+    @UserFlowTypeId.setter
+    def UserFlowTypeId(self, UserFlowTypeId):
+        self._UserFlowTypeId = UserFlowTypeId
+
+    @property
+    def Name(self):
+        """用户合同类型名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        """用户合同类型的描述信息
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._UserFlowTypeId = params.get("UserFlowTypeId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

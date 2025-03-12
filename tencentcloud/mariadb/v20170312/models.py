@@ -5467,11 +5467,14 @@ class DescribeBackupFilesResponse(AbstractModel):
         :type Files: list of InstanceBackupFileItem
         :param _TotalCount: 总条目数
         :type TotalCount: int
+        :param _UrlPrefix: 文件下载链接路径前缀
+        :type UrlPrefix: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Files = None
         self._TotalCount = None
+        self._UrlPrefix = None
         self._RequestId = None
 
     @property
@@ -5497,6 +5500,17 @@ class DescribeBackupFilesResponse(AbstractModel):
         self._TotalCount = TotalCount
 
     @property
+    def UrlPrefix(self):
+        """文件下载链接路径前缀
+        :rtype: str
+        """
+        return self._UrlPrefix
+
+    @UrlPrefix.setter
+    def UrlPrefix(self, UrlPrefix):
+        self._UrlPrefix = UrlPrefix
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -5516,6 +5530,7 @@ class DescribeBackupFilesResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Files.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._UrlPrefix = params.get("UrlPrefix")
         self._RequestId = params.get("RequestId")
 
 

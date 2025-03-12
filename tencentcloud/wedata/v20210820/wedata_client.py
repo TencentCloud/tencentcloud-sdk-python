@@ -2949,6 +2949,52 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeReportTaskDetail(self, request):
+        """查询上报任务详情
+
+        :param request: Request instance for DescribeReportTaskDetail.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeReportTaskDetailRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeReportTaskDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeReportTaskDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeReportTaskDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeReportTaskList(self, request):
+        """查询上报任务列表
+
+        :param request: Request instance for DescribeReportTaskList.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeReportTaskListRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeReportTaskListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeReportTaskList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeReportTaskListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeResourceManagePathTrees(self, request):
         """获取资源管理目录树
 

@@ -4602,7 +4602,6 @@ class DescribeCustomDnsHostSetResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _DnsHostSet: 自定义DNS Host 列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type DnsHostSet: list of CustomDnsHost
         :param _TotalCount: 自定义DNS Host总数
         :type TotalCount: int
@@ -4616,7 +4615,6 @@ class DescribeCustomDnsHostSetResponse(AbstractModel):
     @property
     def DnsHostSet(self):
         """自定义DNS Host 列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CustomDnsHost
         """
         return self._DnsHostSet

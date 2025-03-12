@@ -4022,12 +4022,8 @@ class CreateListenerRequest(AbstractModel):
         :param _HealthCheck: 健康检查相关参数，此参数仅适用于TCP/UDP/TCP_SSL/QUIC监听器。
         :type HealthCheck: :class:`tencentcloud.clb.v20180317.models.HealthCheck`
         :param _Certificate: 证书相关信息。参数限制如下：
-<li>
-此参数仅适用于TCP_SSL监听器和未开启SNI特性的HTTPS监听器。
-</li>
-<li>
-创建TCP_SSL监听器和未开启SNI特性的HTTPS监听器时，此参数和参数MultiCertInfo至少需要传一个， 但不能同时传入。
-</li>
+<li>此参数仅适用于TCP_SSL监听器和未开启SNI特性的HTTPS监听器。</li>
+<li>创建TCP_SSL监听器和未开启SNI特性的HTTPS监听器时，此参数和参数MultiCertInfo至少需要传一个， 但不能同时传入。</li>
         :type Certificate: :class:`tencentcloud.clb.v20180317.models.CertificateInput`
         :param _SessionExpireTime: 会话保持时间，单位：秒。可选值：30~3600，默认 0，表示不开启。此参数仅适用于TCP/UDP监听器。
         :type SessionExpireTime: int
@@ -4047,12 +4043,8 @@ class CreateListenerRequest(AbstractModel):
         :param _DeregisterTargetRst: 解绑后端目标时，是否发RST给客户端，此参数仅适用于TCP监听器。
         :type DeregisterTargetRst: bool
         :param _MultiCertInfo: 证书信息，支持同时传入不同算法类型的多本服务端证书，参数限制如下：
-<li>
-此参数仅适用于TCP_SSL监听器和未开启SNI特性的HTTPS监听器。
-</li>
-<li>
-创建TCP_SSL监听器和未开启SNI特性的HTTPS监听器时，此参数和参数Certificate至少需要传一个， 但不能同时传入。
-</li>
+<li>此参数仅适用于TCP_SSL监听器和未开启SNI特性的HTTPS监听器。</li>
+<li>创建TCP_SSL监听器和未开启SNI特性的HTTPS监听器时，此参数和参数Certificate至少需要传一个， 但不能同时传入。</li>
         :type MultiCertInfo: :class:`tencentcloud.clb.v20180317.models.MultiCertInfo`
         :param _MaxConn: 监听器最大连接数，当前仅性能容量型实例且仅TCP/UDP/TCP_SSL/QUIC监听器支持，不传或者传-1表示监听器维度不限速。基础网络实例不支持该参数。
         :type MaxConn: int
@@ -4068,6 +4060,8 @@ class CreateListenerRequest(AbstractModel):
         :type H2cSwitch: bool
         :param _SslCloseSwitch: TCP_SSL监听器支持关闭SSL后仍然支持混绑，此参数为关闭开关
         :type SslCloseSwitch: bool
+        :param _DataCompressMode: 数据压缩模式
+        :type DataCompressMode: str
         """
         self._LoadBalancerId = None
         self._Ports = None
@@ -4091,6 +4085,7 @@ class CreateListenerRequest(AbstractModel):
         self._FullEndPorts = None
         self._H2cSwitch = None
         self._SslCloseSwitch = None
+        self._DataCompressMode = None
 
     @property
     def LoadBalancerId(self):
@@ -4150,12 +4145,8 @@ class CreateListenerRequest(AbstractModel):
     @property
     def Certificate(self):
         """证书相关信息。参数限制如下：
-<li>
-此参数仅适用于TCP_SSL监听器和未开启SNI特性的HTTPS监听器。
-</li>
-<li>
-创建TCP_SSL监听器和未开启SNI特性的HTTPS监听器时，此参数和参数MultiCertInfo至少需要传一个， 但不能同时传入。
-</li>
+<li>此参数仅适用于TCP_SSL监听器和未开启SNI特性的HTTPS监听器。</li>
+<li>创建TCP_SSL监听器和未开启SNI特性的HTTPS监听器时，此参数和参数MultiCertInfo至少需要传一个， 但不能同时传入。</li>
         :rtype: :class:`tencentcloud.clb.v20180317.models.CertificateInput`
         """
         return self._Certificate
@@ -4256,12 +4247,8 @@ class CreateListenerRequest(AbstractModel):
     @property
     def MultiCertInfo(self):
         """证书信息，支持同时传入不同算法类型的多本服务端证书，参数限制如下：
-<li>
-此参数仅适用于TCP_SSL监听器和未开启SNI特性的HTTPS监听器。
-</li>
-<li>
-创建TCP_SSL监听器和未开启SNI特性的HTTPS监听器时，此参数和参数Certificate至少需要传一个， 但不能同时传入。
-</li>
+<li>此参数仅适用于TCP_SSL监听器和未开启SNI特性的HTTPS监听器。</li>
+<li>创建TCP_SSL监听器和未开启SNI特性的HTTPS监听器时，此参数和参数Certificate至少需要传一个， 但不能同时传入。</li>
         :rtype: :class:`tencentcloud.clb.v20180317.models.MultiCertInfo`
         """
         return self._MultiCertInfo
@@ -4347,6 +4334,17 @@ class CreateListenerRequest(AbstractModel):
     def SslCloseSwitch(self, SslCloseSwitch):
         self._SslCloseSwitch = SslCloseSwitch
 
+    @property
+    def DataCompressMode(self):
+        """数据压缩模式
+        :rtype: str
+        """
+        return self._DataCompressMode
+
+    @DataCompressMode.setter
+    def DataCompressMode(self, DataCompressMode):
+        self._DataCompressMode = DataCompressMode
+
 
     def _deserialize(self, params):
         self._LoadBalancerId = params.get("LoadBalancerId")
@@ -4377,6 +4375,7 @@ class CreateListenerRequest(AbstractModel):
         self._FullEndPorts = params.get("FullEndPorts")
         self._H2cSwitch = params.get("H2cSwitch")
         self._SslCloseSwitch = params.get("SslCloseSwitch")
+        self._DataCompressMode = params.get("DataCompressMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5912,8 +5911,11 @@ class DeleteLoadBalancerRequest(AbstractModel):
         r"""
         :param _LoadBalancerIds: 要删除的负载均衡实例 ID数组，数组大小最大支持20。
         :type LoadBalancerIds: list of str
+        :param _ForceDelete: 是否强制删除clb。为true表示强制删除，为false表示不是强制删除，需要做拦截校验。
+        :type ForceDelete: bool
         """
         self._LoadBalancerIds = None
+        self._ForceDelete = None
 
     @property
     def LoadBalancerIds(self):
@@ -5926,9 +5928,21 @@ class DeleteLoadBalancerRequest(AbstractModel):
     def LoadBalancerIds(self, LoadBalancerIds):
         self._LoadBalancerIds = LoadBalancerIds
 
+    @property
+    def ForceDelete(self):
+        """是否强制删除clb。为true表示强制删除，为false表示不是强制删除，需要做拦截校验。
+        :rtype: bool
+        """
+        return self._ForceDelete
+
+    @ForceDelete.setter
+    def ForceDelete(self, ForceDelete):
+        self._ForceDelete = ForceDelete
+
 
     def _deserialize(self, params):
         self._LoadBalancerIds = params.get("LoadBalancerIds")
+        self._ForceDelete = params.get("ForceDelete")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
