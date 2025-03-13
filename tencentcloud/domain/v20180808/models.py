@@ -26,16 +26,12 @@ class AuctionInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Bidder: 竞拍人
-注意：此字段可能返回 null，表示取不到有效值。
         :type Bidder: str
         :param _AuctionTime: 竞拍时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type AuctionTime: str
         :param _AuctionPrice: 竞拍价格
-注意：此字段可能返回 null，表示取不到有效值。
         :type AuctionPrice: float
         :param _Status: 状态 up: 领先 down: 落后
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         """
         self._Bidder = None
@@ -46,7 +42,6 @@ class AuctionInfo(AbstractModel):
     @property
     def Bidder(self):
         """竞拍人
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Bidder
@@ -58,7 +53,6 @@ class AuctionInfo(AbstractModel):
     @property
     def AuctionTime(self):
         """竞拍时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AuctionTime
@@ -70,7 +64,6 @@ class AuctionInfo(AbstractModel):
     @property
     def AuctionPrice(self):
         """竞拍价格
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._AuctionPrice
@@ -82,7 +75,6 @@ class AuctionInfo(AbstractModel):
     @property
     def Status(self):
         """状态 up: 领先 down: 落后
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -544,25 +536,18 @@ class BiddingAppointResult(AbstractModel):
     def __init__(self):
         r"""
         :param _BusinessID: business_id
-注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessID: str
         :param _Domain: 域名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Domain: str
         :param _AppointPrice: 预定价格
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppointPrice: int
         :param _AppointBondPrice: 预约保证金
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppointBondPrice: int
         :param _AppointEndTime: 预约结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppointEndTime: str
         :param _AppointNum: 预约人数
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppointNum: int
         :param _Status: 1 已预约，2 竞价中，3 等待出价 4 竞价失败 5 等待支付 6 等待转移，7 转移中 8 交易成功 9 预约持有者赎回 10 竞价持有者赎回 11 其他阶段持有者赎回 12 违约
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         """
         self._BusinessID = None
@@ -576,7 +561,6 @@ class BiddingAppointResult(AbstractModel):
     @property
     def BusinessID(self):
         """business_id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BusinessID
@@ -588,7 +572,6 @@ class BiddingAppointResult(AbstractModel):
     @property
     def Domain(self):
         """域名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Domain
@@ -600,7 +583,6 @@ class BiddingAppointResult(AbstractModel):
     @property
     def AppointPrice(self):
         """预定价格
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AppointPrice
@@ -612,7 +594,6 @@ class BiddingAppointResult(AbstractModel):
     @property
     def AppointBondPrice(self):
         """预约保证金
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AppointBondPrice
@@ -624,7 +605,6 @@ class BiddingAppointResult(AbstractModel):
     @property
     def AppointEndTime(self):
         """预约结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AppointEndTime
@@ -636,7 +616,6 @@ class BiddingAppointResult(AbstractModel):
     @property
     def AppointNum(self):
         """预约人数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AppointNum
@@ -648,7 +627,6 @@ class BiddingAppointResult(AbstractModel):
     @property
     def Status(self):
         """1 已预约，2 竞价中，3 等待出价 4 竞价失败 5 等待支付 6 等待转移，7 转移中 8 交易成功 9 预约持有者赎回 10 竞价持有者赎回 11 其他阶段持有者赎回 12 违约
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -793,34 +771,24 @@ class BiddingResult(AbstractModel):
     def __init__(self):
         r"""
         :param _BusinessID: business_id
-注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessID: str
         :param _Domain: 域名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Domain: str
         :param _CurrentPrice: 当前价格
-注意：此字段可能返回 null，表示取不到有效值。
         :type CurrentPrice: int
         :param _CurrentNickname: 当前用户昵称
-注意：此字段可能返回 null，表示取不到有效值。
         :type CurrentNickname: str
         :param _BiddingPrice: 我的出价
-注意：此字段可能返回 null，表示取不到有效值。
         :type BiddingPrice: int
         :param _BiddingBondPrice: 竞价保证金
-注意：此字段可能返回 null，表示取不到有效值。
         :type BiddingBondPrice: int
         :param _BiddingEndTime: 竞价结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type BiddingEndTime: str
         :param _BiddingFlag: 竞价标识，1 领先，2 落后
-注意：此字段可能返回 null，表示取不到有效值。
         :type BiddingFlag: int
         :param _BiddingNum: 出价次数
-注意：此字段可能返回 null，表示取不到有效值。
         :type BiddingNum: int
         :param _Status: 2 竞价中  3 等待出价 4 竞价失败 10 竞价持有者赎回
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         """
         self._BusinessID = None
@@ -837,7 +805,6 @@ class BiddingResult(AbstractModel):
     @property
     def BusinessID(self):
         """business_id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BusinessID
@@ -849,7 +816,6 @@ class BiddingResult(AbstractModel):
     @property
     def Domain(self):
         """域名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Domain
@@ -861,7 +827,6 @@ class BiddingResult(AbstractModel):
     @property
     def CurrentPrice(self):
         """当前价格
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CurrentPrice
@@ -873,7 +838,6 @@ class BiddingResult(AbstractModel):
     @property
     def CurrentNickname(self):
         """当前用户昵称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CurrentNickname
@@ -885,7 +849,6 @@ class BiddingResult(AbstractModel):
     @property
     def BiddingPrice(self):
         """我的出价
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._BiddingPrice
@@ -897,7 +860,6 @@ class BiddingResult(AbstractModel):
     @property
     def BiddingBondPrice(self):
         """竞价保证金
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._BiddingBondPrice
@@ -909,7 +871,6 @@ class BiddingResult(AbstractModel):
     @property
     def BiddingEndTime(self):
         """竞价结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BiddingEndTime
@@ -921,7 +882,6 @@ class BiddingResult(AbstractModel):
     @property
     def BiddingFlag(self):
         """竞价标识，1 领先，2 落后
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._BiddingFlag
@@ -933,7 +893,6 @@ class BiddingResult(AbstractModel):
     @property
     def BiddingNum(self):
         """出价次数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._BiddingNum
@@ -945,7 +904,6 @@ class BiddingResult(AbstractModel):
     @property
     def Status(self):
         """2 竞价中  3 等待出价 4 竞价失败 10 竞价持有者赎回
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -984,7 +942,6 @@ class BiddingSuccessfulResult(AbstractModel):
     def __init__(self):
         r"""
         :param _PayEndTime: 支付结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type PayEndTime: str
         """
         self._PayEndTime = None
@@ -992,7 +949,6 @@ class BiddingSuccessfulResult(AbstractModel):
     @property
     def PayEndTime(self):
         """支付结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PayEndTime
@@ -5438,7 +5394,6 @@ class DescribePreAuctionListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _PreAuctionList: 预释放竞价列表
 注意：此字段可能返回 null，表示取不到有效值。
@@ -5453,7 +5408,6 @@ class DescribePreAuctionListResponse(AbstractModel):
     @property
     def TotalCount(self):
         """总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -6000,7 +5954,6 @@ class DescribePreReleaseListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _PreReleaseList: 预释放列表
 注意：此字段可能返回 null，表示取不到有效值。
@@ -6015,7 +5968,6 @@ class DescribePreReleaseListResponse(AbstractModel):
     @property
     def TotalCount(self):
         """数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -7265,14 +7217,12 @@ failed 操作失败。
 success  操作成功。
         :type Status: str
         :param _Reason: 失败原因
-注意：此字段可能返回 null，表示取不到有效值。
         :type Reason: str
         :param _CreatedOn: 创建时间
         :type CreatedOn: str
         :param _UpdatedOn: 更新时间
         :type UpdatedOn: str
         :param _BigDealId: 订单号
-注意：此字段可能返回 null，表示取不到有效值。
         :type BigDealId: str
         """
         self._Id = None
@@ -7334,7 +7284,6 @@ success  操作成功。
     @property
     def Reason(self):
         """失败原因
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Reason
@@ -7368,7 +7317,6 @@ success  操作成功。
     @property
     def BigDealId(self):
         """订单号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BigDealId
@@ -7736,7 +7684,6 @@ Reject：实名审核失败
 NoAudit: 无需实名认证
         :type RealNameAuditStatus: str
         :param _RealNameAuditUnpassReason: 域名实名认证不通过原因。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RealNameAuditUnpassReason: str
         :param _DomainNameAuditStatus: 域名命名审核状态。
 NotAudit：命名审核未上传
@@ -7746,7 +7693,6 @@ Approved：域名命名审核通过
 Rejected：域名命名审核拒绝
         :type DomainNameAuditStatus: str
         :param _DomainNameAuditUnpassReason: 域名命名审核不通过原因。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DomainNameAuditUnpassReason: str
         :param _CreationDate: 注册时间。
         :type CreationDate: str
@@ -7868,7 +7814,6 @@ NoAudit: 无需实名认证
     @property
     def RealNameAuditUnpassReason(self):
         """域名实名认证不通过原因。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RealNameAuditUnpassReason
@@ -7896,7 +7841,6 @@ Rejected：域名命名审核拒绝
     @property
     def DomainNameAuditUnpassReason(self):
         """域名命名审核不通过原因。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DomainNameAuditUnpassReason
@@ -8119,10 +8063,8 @@ class FailReservedDomainInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Domain: 域名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Domain: str
         :param _FailReason: 预约失败原因
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailReason: str
         """
         self._Domain = None
@@ -8131,7 +8073,6 @@ class FailReservedDomainInfo(AbstractModel):
     @property
     def Domain(self):
         """域名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Domain
@@ -8143,7 +8084,6 @@ class FailReservedDomainInfo(AbstractModel):
     @property
     def FailReason(self):
         """预约失败原因
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FailReason
@@ -8806,22 +8746,16 @@ class PreAuctionInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Domain: 域名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Domain: str
         :param _BiddingTime: 竞价倒计时
-注意：此字段可能返回 null，表示取不到有效值。
         :type BiddingTime: str
         :param _BidCount: 出价次数
-注意：此字段可能返回 null，表示取不到有效值。
         :type BidCount: int
         :param _Price: 当前价格
-注意：此字段可能返回 null，表示取不到有效值。
         :type Price: float
         :param _Op: 用户操作 bid：出价 "noAction"：无法操作
-注意：此字段可能返回 null，表示取不到有效值。
         :type Op: str
         :param _BusinessId: 业务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessId: str
         """
         self._Domain = None
@@ -8834,7 +8768,6 @@ class PreAuctionInfo(AbstractModel):
     @property
     def Domain(self):
         """域名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Domain
@@ -8846,7 +8779,6 @@ class PreAuctionInfo(AbstractModel):
     @property
     def BiddingTime(self):
         """竞价倒计时
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BiddingTime
@@ -8858,7 +8790,6 @@ class PreAuctionInfo(AbstractModel):
     @property
     def BidCount(self):
         """出价次数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._BidCount
@@ -8870,7 +8801,6 @@ class PreAuctionInfo(AbstractModel):
     @property
     def Price(self):
         """当前价格
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Price
@@ -8882,7 +8812,6 @@ class PreAuctionInfo(AbstractModel):
     @property
     def Op(self):
         """用户操作 bid：出价 "noAction"：无法操作
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Op
@@ -8894,7 +8823,6 @@ class PreAuctionInfo(AbstractModel):
     @property
     def BusinessId(self):
         """业务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BusinessId
@@ -8929,34 +8857,24 @@ class PreReleaseInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Domain: 域名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Domain: str
         :param _ReservationTime: 预订倒计时
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReservationTime: str
         :param _RegTime: 域名注册时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegTime: str
         :param _DelTime: 域名删除时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type DelTime: str
         :param _CurrentPeople: 当前人数
-注意：此字段可能返回 null，表示取不到有效值。
         :type CurrentPeople: int
         :param _Price: 当前价格
-注意：此字段可能返回 null，表示取不到有效值。
         :type Price: float
         :param _IsFollow: 是否收藏
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsFollow: bool
         :param _IsAppoint: 是否已经预约
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsAppoint: bool
         :param _BusinessId: 业务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessId: str
         :param _IsDomainUser: 是否为原持有者
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsDomainUser: bool
         """
         self._Domain = None
@@ -8973,7 +8891,6 @@ class PreReleaseInfo(AbstractModel):
     @property
     def Domain(self):
         """域名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Domain
@@ -8985,7 +8902,6 @@ class PreReleaseInfo(AbstractModel):
     @property
     def ReservationTime(self):
         """预订倒计时
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ReservationTime
@@ -8997,7 +8913,6 @@ class PreReleaseInfo(AbstractModel):
     @property
     def RegTime(self):
         """域名注册时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RegTime
@@ -9009,7 +8924,6 @@ class PreReleaseInfo(AbstractModel):
     @property
     def DelTime(self):
         """域名删除时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DelTime
@@ -9021,7 +8935,6 @@ class PreReleaseInfo(AbstractModel):
     @property
     def CurrentPeople(self):
         """当前人数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CurrentPeople
@@ -9033,7 +8946,6 @@ class PreReleaseInfo(AbstractModel):
     @property
     def Price(self):
         """当前价格
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Price
@@ -9045,7 +8957,6 @@ class PreReleaseInfo(AbstractModel):
     @property
     def IsFollow(self):
         """是否收藏
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsFollow
@@ -9057,7 +8968,6 @@ class PreReleaseInfo(AbstractModel):
     @property
     def IsAppoint(self):
         """是否已经预约
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsAppoint
@@ -9069,7 +8979,6 @@ class PreReleaseInfo(AbstractModel):
     @property
     def BusinessId(self):
         """业务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BusinessId
@@ -9081,7 +8990,6 @@ class PreReleaseInfo(AbstractModel):
     @property
     def IsDomainUser(self):
         """是否为原持有者
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsDomainUser
@@ -9216,16 +9124,12 @@ class PriceScopeConf(AbstractModel):
     def __init__(self):
         r"""
         :param _MaxPrice: 最高价格
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxPrice: float
         :param _MinPrice: 最低价格
-注意：此字段可能返回 null，表示取不到有效值。
         :type MinPrice: float
         :param _Price: 价格幅度
-注意：此字段可能返回 null，表示取不到有效值。
         :type Price: float
         :param _DepositPrice: 保证金
-注意：此字段可能返回 null，表示取不到有效值。
         :type DepositPrice: float
         """
         self._MaxPrice = None
@@ -9236,7 +9140,6 @@ class PriceScopeConf(AbstractModel):
     @property
     def MaxPrice(self):
         """最高价格
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._MaxPrice
@@ -9248,7 +9151,6 @@ class PriceScopeConf(AbstractModel):
     @property
     def MinPrice(self):
         """最低价格
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._MinPrice
@@ -9260,7 +9162,6 @@ class PriceScopeConf(AbstractModel):
     @property
     def Price(self):
         """价格幅度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Price
@@ -9272,7 +9173,6 @@ class PriceScopeConf(AbstractModel):
     @property
     def DepositPrice(self):
         """保证金
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._DepositPrice
@@ -9495,16 +9395,12 @@ class ReserveBidInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _User: 用户
-注意：此字段可能返回 null，表示取不到有效值。
         :type User: str
         :param _Price: 出价
-注意：此字段可能返回 null，表示取不到有效值。
         :type Price: int
         :param _BidTime: 出价时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type BidTime: str
         :param _BidStatus: 当前状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type BidStatus: str
         """
         self._User = None
@@ -9515,7 +9411,6 @@ class ReserveBidInfo(AbstractModel):
     @property
     def User(self):
         """用户
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._User
@@ -9527,7 +9422,6 @@ class ReserveBidInfo(AbstractModel):
     @property
     def Price(self):
         """出价
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Price
@@ -9539,7 +9433,6 @@ class ReserveBidInfo(AbstractModel):
     @property
     def BidTime(self):
         """出价时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BidTime
@@ -9551,7 +9444,6 @@ class ReserveBidInfo(AbstractModel):
     @property
     def BidStatus(self):
         """当前状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BidStatus
@@ -9699,22 +9591,16 @@ class ReservedPreDomainInfo(AbstractModel):
         :param _ReservedStatus: 1. 预定成功 2. 预定失败（预定失败Reason字段将会被赋值）3. 域名交割中 4. 域名交割完成
         :type ReservedStatus: int
         :param _FailReason: 域名预定失败原因
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailReason: str
         :param _ChangeOwnerTime: 预计变更所有权时间（仅用于参考，实际时间会存在误差）
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChangeOwnerTime: str
         :param _RegTime: 注册时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegTime: str
         :param _ExpireTime: 到期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireTime: str
         :param _ResourceId: 资源ID，用于删除资源信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceId: str
         :param _BusinessId: 业务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessId: str
         """
         self._Domain = None
@@ -9751,7 +9637,6 @@ class ReservedPreDomainInfo(AbstractModel):
     @property
     def FailReason(self):
         """域名预定失败原因
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FailReason
@@ -9763,7 +9648,6 @@ class ReservedPreDomainInfo(AbstractModel):
     @property
     def ChangeOwnerTime(self):
         """预计变更所有权时间（仅用于参考，实际时间会存在误差）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ChangeOwnerTime
@@ -9775,7 +9659,6 @@ class ReservedPreDomainInfo(AbstractModel):
     @property
     def RegTime(self):
         """注册时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RegTime
@@ -9787,7 +9670,6 @@ class ReservedPreDomainInfo(AbstractModel):
     @property
     def ExpireTime(self):
         """到期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ExpireTime
@@ -9799,7 +9681,6 @@ class ReservedPreDomainInfo(AbstractModel):
     @property
     def ResourceId(self):
         """资源ID，用于删除资源信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceId
@@ -9811,7 +9692,6 @@ class ReservedPreDomainInfo(AbstractModel):
     @property
     def BusinessId(self):
         """业务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BusinessId
@@ -10176,10 +10056,8 @@ class SucDomainInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Domain: 域名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Domain: str
         :param _BusinessId: 业务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessId: str
         """
         self._Domain = None
@@ -10188,7 +10066,6 @@ class SucDomainInfo(AbstractModel):
     @property
     def Domain(self):
         """域名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Domain
@@ -10200,7 +10077,6 @@ class SucDomainInfo(AbstractModel):
     @property
     def BusinessId(self):
         """业务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BusinessId

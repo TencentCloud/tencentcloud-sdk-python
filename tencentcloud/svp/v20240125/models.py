@@ -217,6 +217,185 @@ class CreateSavingPlanOrderResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSavingPlanCoverageRequest(AbstractModel):
+    """DescribeSavingPlanCoverage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartDate: 费用起始日期，格式yyyy-MM-dd
+        :type StartDate: str
+        :param _EndDate: 费用结束日期，格式yyyy-MM-dd
+        :type EndDate: str
+        :param _Offset: 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
+        :type Offset: int
+        :param _Limit: 数量，最大值为200
+        :type Limit: int
+        :param _PeriodType: 取值包括1（缺省值）和2，1表示按天统计覆盖率，2表示按月统计覆盖率，此参数仅影响返回的RateSet聚合粒度，不影响返回的DetailSet
+        :type PeriodType: int
+        """
+        self._StartDate = None
+        self._EndDate = None
+        self._Offset = None
+        self._Limit = None
+        self._PeriodType = None
+
+    @property
+    def StartDate(self):
+        """费用起始日期，格式yyyy-MM-dd
+        :rtype: str
+        """
+        return self._StartDate
+
+    @StartDate.setter
+    def StartDate(self, StartDate):
+        self._StartDate = StartDate
+
+    @property
+    def EndDate(self):
+        """费用结束日期，格式yyyy-MM-dd
+        :rtype: str
+        """
+        return self._EndDate
+
+    @EndDate.setter
+    def EndDate(self, EndDate):
+        self._EndDate = EndDate
+
+    @property
+    def Offset(self):
+        """分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """数量，最大值为200
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def PeriodType(self):
+        """取值包括1（缺省值）和2，1表示按天统计覆盖率，2表示按月统计覆盖率，此参数仅影响返回的RateSet聚合粒度，不影响返回的DetailSet
+        :rtype: int
+        """
+        return self._PeriodType
+
+    @PeriodType.setter
+    def PeriodType(self, PeriodType):
+        self._PeriodType = PeriodType
+
+
+    def _deserialize(self, params):
+        self._StartDate = params.get("StartDate")
+        self._EndDate = params.get("EndDate")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._PeriodType = params.get("PeriodType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSavingPlanCoverageResponse(AbstractModel):
+    """DescribeSavingPlanCoverage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DetailSet: 节省计划覆盖率明细数据
+        :type DetailSet: list of SavingPlanCoverageDetail
+        :param _RateSet: 节省计划覆盖率聚合数据
+        :type RateSet: list of SavingPlanCoverageRate
+        :param _TotalCount: 查询命中的节省计划覆盖率明细数据总条数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DetailSet = None
+        self._RateSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def DetailSet(self):
+        """节省计划覆盖率明细数据
+        :rtype: list of SavingPlanCoverageDetail
+        """
+        return self._DetailSet
+
+    @DetailSet.setter
+    def DetailSet(self, DetailSet):
+        self._DetailSet = DetailSet
+
+    @property
+    def RateSet(self):
+        """节省计划覆盖率聚合数据
+        :rtype: list of SavingPlanCoverageRate
+        """
+        return self._RateSet
+
+    @RateSet.setter
+    def RateSet(self, RateSet):
+        self._RateSet = RateSet
+
+    @property
+    def TotalCount(self):
+        """查询命中的节省计划覆盖率明细数据总条数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DetailSet") is not None:
+            self._DetailSet = []
+            for item in params.get("DetailSet"):
+                obj = SavingPlanCoverageDetail()
+                obj._deserialize(item)
+                self._DetailSet.append(obj)
+        if params.get("RateSet") is not None:
+            self._RateSet = []
+            for item in params.get("RateSet"):
+                obj = SavingPlanCoverageRate()
+                obj._deserialize(item)
+                self._RateSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSavingPlanDeductRequest(AbstractModel):
     """DescribeSavingPlanDeduct请求参数结构体
 
@@ -771,6 +950,333 @@ class DescribeSavingPlanUsageResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Usages.append(obj)
         self._RequestId = params.get("RequestId")
+
+
+class SavingPlanCoverageDetail(AbstractModel):
+    """节省计划覆盖率数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: 资源 ID：账单中出账对象 ID，不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID
+        :type ResourceId: str
+        :param _RegionId: 地域ID
+        :type RegionId: int
+        :param _ProductCode: 产品编码
+        :type ProductCode: str
+        :param _SubProductCode: 子产品编码
+        :type SubProductCode: str
+        :param _StartDate: 费用起始日期，格式yyyy-MM-dd
+        :type StartDate: str
+        :param _EndDate: 费用结束日期，格式yyyy-MM-dd，目前与StartDate相等
+        :type EndDate: str
+        :param _SpCoveredAmount: 节省计划覆盖金额（即节省计划支付金额）
+        :type SpCoveredAmount: float
+        :param _SpUncoveredAmount: 节省计划未覆盖金额（即优惠后总价）
+        :type SpUncoveredAmount: float
+        :param _TotalRealAmount: 总支出（即节省计划未覆盖金额 + 节省计划覆盖金额）
+        :type TotalRealAmount: float
+        :param _ExpectedAmount: 按量计费预期金额（即折前价 * 折扣）
+        :type ExpectedAmount: float
+        :param _SpCoverage: 覆盖率结果，取值[0, 100]
+        :type SpCoverage: float
+        :param _PayerUinName: 支付者昵称
+        :type PayerUinName: str
+        :param _OwnerUinName: 使用者昵称
+        :type OwnerUinName: str
+        :param _PayerUin: 支付者uin
+        :type PayerUin: str
+        :param _SubBillingItemName: 计费项名称
+        :type SubBillingItemName: str
+        :param _BillingItemName: 计费细项名称
+        :type BillingItemName: str
+        :param _SubProductName: 子产品名称
+        :type SubProductName: str
+        """
+        self._ResourceId = None
+        self._RegionId = None
+        self._ProductCode = None
+        self._SubProductCode = None
+        self._StartDate = None
+        self._EndDate = None
+        self._SpCoveredAmount = None
+        self._SpUncoveredAmount = None
+        self._TotalRealAmount = None
+        self._ExpectedAmount = None
+        self._SpCoverage = None
+        self._PayerUinName = None
+        self._OwnerUinName = None
+        self._PayerUin = None
+        self._SubBillingItemName = None
+        self._BillingItemName = None
+        self._SubProductName = None
+
+    @property
+    def ResourceId(self):
+        """资源 ID：账单中出账对象 ID，不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def RegionId(self):
+        """地域ID
+        :rtype: int
+        """
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def ProductCode(self):
+        """产品编码
+        :rtype: str
+        """
+        return self._ProductCode
+
+    @ProductCode.setter
+    def ProductCode(self, ProductCode):
+        self._ProductCode = ProductCode
+
+    @property
+    def SubProductCode(self):
+        """子产品编码
+        :rtype: str
+        """
+        return self._SubProductCode
+
+    @SubProductCode.setter
+    def SubProductCode(self, SubProductCode):
+        self._SubProductCode = SubProductCode
+
+    @property
+    def StartDate(self):
+        """费用起始日期，格式yyyy-MM-dd
+        :rtype: str
+        """
+        return self._StartDate
+
+    @StartDate.setter
+    def StartDate(self, StartDate):
+        self._StartDate = StartDate
+
+    @property
+    def EndDate(self):
+        """费用结束日期，格式yyyy-MM-dd，目前与StartDate相等
+        :rtype: str
+        """
+        return self._EndDate
+
+    @EndDate.setter
+    def EndDate(self, EndDate):
+        self._EndDate = EndDate
+
+    @property
+    def SpCoveredAmount(self):
+        """节省计划覆盖金额（即节省计划支付金额）
+        :rtype: float
+        """
+        return self._SpCoveredAmount
+
+    @SpCoveredAmount.setter
+    def SpCoveredAmount(self, SpCoveredAmount):
+        self._SpCoveredAmount = SpCoveredAmount
+
+    @property
+    def SpUncoveredAmount(self):
+        """节省计划未覆盖金额（即优惠后总价）
+        :rtype: float
+        """
+        return self._SpUncoveredAmount
+
+    @SpUncoveredAmount.setter
+    def SpUncoveredAmount(self, SpUncoveredAmount):
+        self._SpUncoveredAmount = SpUncoveredAmount
+
+    @property
+    def TotalRealAmount(self):
+        """总支出（即节省计划未覆盖金额 + 节省计划覆盖金额）
+        :rtype: float
+        """
+        return self._TotalRealAmount
+
+    @TotalRealAmount.setter
+    def TotalRealAmount(self, TotalRealAmount):
+        self._TotalRealAmount = TotalRealAmount
+
+    @property
+    def ExpectedAmount(self):
+        """按量计费预期金额（即折前价 * 折扣）
+        :rtype: float
+        """
+        return self._ExpectedAmount
+
+    @ExpectedAmount.setter
+    def ExpectedAmount(self, ExpectedAmount):
+        self._ExpectedAmount = ExpectedAmount
+
+    @property
+    def SpCoverage(self):
+        """覆盖率结果，取值[0, 100]
+        :rtype: float
+        """
+        return self._SpCoverage
+
+    @SpCoverage.setter
+    def SpCoverage(self, SpCoverage):
+        self._SpCoverage = SpCoverage
+
+    @property
+    def PayerUinName(self):
+        """支付者昵称
+        :rtype: str
+        """
+        return self._PayerUinName
+
+    @PayerUinName.setter
+    def PayerUinName(self, PayerUinName):
+        self._PayerUinName = PayerUinName
+
+    @property
+    def OwnerUinName(self):
+        """使用者昵称
+        :rtype: str
+        """
+        return self._OwnerUinName
+
+    @OwnerUinName.setter
+    def OwnerUinName(self, OwnerUinName):
+        self._OwnerUinName = OwnerUinName
+
+    @property
+    def PayerUin(self):
+        """支付者uin
+        :rtype: str
+        """
+        return self._PayerUin
+
+    @PayerUin.setter
+    def PayerUin(self, PayerUin):
+        self._PayerUin = PayerUin
+
+    @property
+    def SubBillingItemName(self):
+        """计费项名称
+        :rtype: str
+        """
+        return self._SubBillingItemName
+
+    @SubBillingItemName.setter
+    def SubBillingItemName(self, SubBillingItemName):
+        self._SubBillingItemName = SubBillingItemName
+
+    @property
+    def BillingItemName(self):
+        """计费细项名称
+        :rtype: str
+        """
+        return self._BillingItemName
+
+    @BillingItemName.setter
+    def BillingItemName(self, BillingItemName):
+        self._BillingItemName = BillingItemName
+
+    @property
+    def SubProductName(self):
+        """子产品名称
+        :rtype: str
+        """
+        return self._SubProductName
+
+    @SubProductName.setter
+    def SubProductName(self, SubProductName):
+        self._SubProductName = SubProductName
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        self._RegionId = params.get("RegionId")
+        self._ProductCode = params.get("ProductCode")
+        self._SubProductCode = params.get("SubProductCode")
+        self._StartDate = params.get("StartDate")
+        self._EndDate = params.get("EndDate")
+        self._SpCoveredAmount = params.get("SpCoveredAmount")
+        self._SpUncoveredAmount = params.get("SpUncoveredAmount")
+        self._TotalRealAmount = params.get("TotalRealAmount")
+        self._ExpectedAmount = params.get("ExpectedAmount")
+        self._SpCoverage = params.get("SpCoverage")
+        self._PayerUinName = params.get("PayerUinName")
+        self._OwnerUinName = params.get("OwnerUinName")
+        self._PayerUin = params.get("PayerUin")
+        self._SubBillingItemName = params.get("SubBillingItemName")
+        self._BillingItemName = params.get("BillingItemName")
+        self._SubProductName = params.get("SubProductName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SavingPlanCoverageRate(AbstractModel):
+    """节省计划覆盖率聚合数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DatePoint: 聚合时间维度，按天聚合格式为yyyy-MM-dd，按月聚合格式为yyyy-MM
+        :type DatePoint: str
+        :param _Rate: 覆盖率结果，取值[0, 100]
+        :type Rate: float
+        """
+        self._DatePoint = None
+        self._Rate = None
+
+    @property
+    def DatePoint(self):
+        """聚合时间维度，按天聚合格式为yyyy-MM-dd，按月聚合格式为yyyy-MM
+        :rtype: str
+        """
+        return self._DatePoint
+
+    @DatePoint.setter
+    def DatePoint(self, DatePoint):
+        self._DatePoint = DatePoint
+
+    @property
+    def Rate(self):
+        """覆盖率结果，取值[0, 100]
+        :rtype: float
+        """
+        return self._Rate
+
+    @Rate.setter
+    def Rate(self, Rate):
+        self._Rate = Rate
+
+
+    def _deserialize(self, params):
+        self._DatePoint = params.get("DatePoint")
+        self._Rate = params.get("Rate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SavingPlanDeductDetail(AbstractModel):

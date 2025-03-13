@@ -4139,6 +4139,8 @@ Modify 集群变更中；
         :param _BindSGs: 绑定的安全组
 注意：此字段可能返回 null，表示取不到有效值。
         :type BindSGs: list of str
+        :param _HasPublicCloudClb: 是否开启公网clb
+        :type HasPublicCloudClb: bool
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -4192,6 +4194,7 @@ Modify 集群变更中；
         self._Details = None
         self._IsWhiteSGs = None
         self._BindSGs = None
+        self._HasPublicCloudClb = None
 
     @property
     def InstanceId(self):
@@ -4820,6 +4823,17 @@ Modify 集群变更中；
     def BindSGs(self, BindSGs):
         self._BindSGs = BindSGs
 
+    @property
+    def HasPublicCloudClb(self):
+        """是否开启公网clb
+        :rtype: bool
+        """
+        return self._HasPublicCloudClb
+
+    @HasPublicCloudClb.setter
+    def HasPublicCloudClb(self, HasPublicCloudClb):
+        self._HasPublicCloudClb = HasPublicCloudClb
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -4892,6 +4906,7 @@ Modify 集群变更中；
             self._Details._deserialize(params.get("Details"))
         self._IsWhiteSGs = params.get("IsWhiteSGs")
         self._BindSGs = params.get("BindSGs")
+        self._HasPublicCloudClb = params.get("HasPublicCloudClb")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

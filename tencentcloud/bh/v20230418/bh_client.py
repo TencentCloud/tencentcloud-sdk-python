@@ -26,6 +26,29 @@ class BhClient(AbstractClient):
     _service = 'bh'
 
 
+    def AccessDevices(self, request):
+        """外部客户访问资产
+
+        :param request: Request instance for AccessDevices.
+        :type request: :class:`tencentcloud.bh.v20230418.models.AccessDevicesRequest`
+        :rtype: :class:`tencentcloud.bh.v20230418.models.AccessDevicesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AccessDevices", params, headers=headers)
+            response = json.loads(body)
+            model = models.AccessDevicesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def AddDeviceGroupMembers(self, request):
         """添加资产组成员
 

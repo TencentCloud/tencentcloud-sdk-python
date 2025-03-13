@@ -5540,6 +5540,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def TriggerManualTasks(self, request):
+        """手动任务触发运行
+
+        :param request: Request instance for TriggerManualTasks.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.TriggerManualTasksRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.TriggerManualTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TriggerManualTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.TriggerManualTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def UnlockIntegrationTask(self, request):
         """解锁集成任务
 

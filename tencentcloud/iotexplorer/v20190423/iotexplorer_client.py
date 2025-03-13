@@ -49,31 +49,6 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def AssignTWeCallLicense(self, request):
-        """微信VOIP功能调整下线
-
-        分配License
-
-        :param request: Request instance for AssignTWeCallLicense.
-        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.AssignTWeCallLicenseRequest`
-        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.AssignTWeCallLicenseResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("AssignTWeCallLicense", params, headers=headers)
-            response = json.loads(body)
-            model = models.AssignTWeCallLicenseResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def BindCloudStorageUser(self, request):
         """绑定云存用户
 
@@ -2595,31 +2570,6 @@ class IotexplorerClient(AbstractClient):
             body = self.call("GetTWeCallActiveStatus", params, headers=headers)
             response = json.loads(body)
             model = models.GetTWeCallActiveStatusResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def GetTWeCallPkgList(self, request):
-        """微信VOIP功能调整下线
-
-        查询TWeCall包列表
-
-        :param request: Request instance for GetTWeCallPkgList.
-        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.GetTWeCallPkgListRequest`
-        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.GetTWeCallPkgListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("GetTWeCallPkgList", params, headers=headers)
-            response = json.loads(body)
-            model = models.GetTWeCallPkgListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

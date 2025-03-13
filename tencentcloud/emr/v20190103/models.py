@@ -18039,6 +18039,122 @@ TEZ-TezTaskGC:TasksGC
         
 
 
+class InspectionTaskSettings(AbstractModel):
+    """设置巡检任务配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskType: 巡检任务的唯一标记
+        :type TaskType: str
+        :param _Group: 巡检任务组名称
+        :type Group: str
+        :param _Name: 巡检任务名称
+        :type Name: str
+        :param _TaskSettings: 巡检任务参数设置
+        :type TaskSettings: list of TaskSettings
+        :param _Selected: 是否选中，”true“ ”false“
+        :type Selected: str
+        :param _Enable: 是否开启监控
+        :type Enable: str
+        """
+        self._TaskType = None
+        self._Group = None
+        self._Name = None
+        self._TaskSettings = None
+        self._Selected = None
+        self._Enable = None
+
+    @property
+    def TaskType(self):
+        """巡检任务的唯一标记
+        :rtype: str
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def Group(self):
+        """巡检任务组名称
+        :rtype: str
+        """
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+    @property
+    def Name(self):
+        """巡检任务名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def TaskSettings(self):
+        """巡检任务参数设置
+        :rtype: list of TaskSettings
+        """
+        return self._TaskSettings
+
+    @TaskSettings.setter
+    def TaskSettings(self, TaskSettings):
+        self._TaskSettings = TaskSettings
+
+    @property
+    def Selected(self):
+        """是否选中，”true“ ”false“
+        :rtype: str
+        """
+        return self._Selected
+
+    @Selected.setter
+    def Selected(self, Selected):
+        self._Selected = Selected
+
+    @property
+    def Enable(self):
+        """是否开启监控
+        :rtype: str
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+
+    def _deserialize(self, params):
+        self._TaskType = params.get("TaskType")
+        self._Group = params.get("Group")
+        self._Name = params.get("Name")
+        if params.get("TaskSettings") is not None:
+            self._TaskSettings = []
+            for item in params.get("TaskSettings"):
+                obj = TaskSettings()
+                obj._deserialize(item)
+                self._TaskSettings.append(obj)
+        self._Selected = params.get("Selected")
+        self._Enable = params.get("Enable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InstanceChargePrepaid(AbstractModel):
     """实例预付费参数，只有在付费类型为PREPAID时生效。
 
@@ -19809,6 +19925,240 @@ class ModifyGlobalConfigResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyInspectionSettingsRequest(AbstractModel):
+    """ModifyInspectionSettings请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _Type: 巡检类型，FixedTime/RealTime
+        :type Type: str
+        :param _Settings: 任务配置
+        :type Settings: list of InspectionTaskSettings
+        :param _StartTime: 开始时间戳
+        :type StartTime: int
+        :param _EndTime: 结束时间戳
+        :type EndTime: int
+        :param _Strategy: 巡检周期，eg EveryDay EveryWeek EveryMonth
+        :type Strategy: str
+        :param _Clock: 每天的开始的时间
+        :type Clock: str
+        :param _DayOfWeek: 每周的周几
+        :type DayOfWeek: str
+        :param _DayOfMonth: 每月的第几号
+        :type DayOfMonth: str
+        :param _JobId: 巡检作业Id
+        :type JobId: str
+        """
+        self._InstanceId = None
+        self._Type = None
+        self._Settings = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Strategy = None
+        self._Clock = None
+        self._DayOfWeek = None
+        self._DayOfMonth = None
+        self._JobId = None
+
+    @property
+    def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Type(self):
+        """巡检类型，FixedTime/RealTime
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Settings(self):
+        """任务配置
+        :rtype: list of InspectionTaskSettings
+        """
+        return self._Settings
+
+    @Settings.setter
+    def Settings(self, Settings):
+        self._Settings = Settings
+
+    @property
+    def StartTime(self):
+        """开始时间戳
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """结束时间戳
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Strategy(self):
+        """巡检周期，eg EveryDay EveryWeek EveryMonth
+        :rtype: str
+        """
+        return self._Strategy
+
+    @Strategy.setter
+    def Strategy(self, Strategy):
+        self._Strategy = Strategy
+
+    @property
+    def Clock(self):
+        """每天的开始的时间
+        :rtype: str
+        """
+        return self._Clock
+
+    @Clock.setter
+    def Clock(self, Clock):
+        self._Clock = Clock
+
+    @property
+    def DayOfWeek(self):
+        """每周的周几
+        :rtype: str
+        """
+        return self._DayOfWeek
+
+    @DayOfWeek.setter
+    def DayOfWeek(self, DayOfWeek):
+        self._DayOfWeek = DayOfWeek
+
+    @property
+    def DayOfMonth(self):
+        """每月的第几号
+        :rtype: str
+        """
+        return self._DayOfMonth
+
+    @DayOfMonth.setter
+    def DayOfMonth(self, DayOfMonth):
+        self._DayOfMonth = DayOfMonth
+
+    @property
+    def JobId(self):
+        """巡检作业Id
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Type = params.get("Type")
+        if params.get("Settings") is not None:
+            self._Settings = []
+            for item in params.get("Settings"):
+                obj = InspectionTaskSettings()
+                obj._deserialize(item)
+                self._Settings.append(obj)
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Strategy = params.get("Strategy")
+        self._Clock = params.get("Clock")
+        self._DayOfWeek = params.get("DayOfWeek")
+        self._DayOfMonth = params.get("DayOfMonth")
+        self._JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInspectionSettingsResponse(AbstractModel):
+    """ModifyInspectionSettings返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Info: 返回值描述
+        :type Info: str
+        :param _JobId: 返回成功修改的巡检任务Id
+        :type JobId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Info = None
+        self._JobId = None
+        self._RequestId = None
+
+    @property
+    def Info(self):
+        """返回值描述
+        :rtype: str
+        """
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def JobId(self):
+        """返回成功修改的巡检任务Id
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Info = params.get("Info")
+        self._JobId = params.get("JobId")
         self._RequestId = params.get("RequestId")
 
 
@@ -31838,6 +32188,87 @@ class Tag(AbstractModel):
     def _deserialize(self, params):
         self._TagKey = params.get("TagKey")
         self._TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskSettings(AbstractModel):
+    """巡检任务参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 参数名称
+        :type Name: str
+        :param _Value: 参数值
+        :type Value: str
+        :param _Key: 参数唯一标记
+        :type Key: str
+        :param _Editable: 是否可编辑，”true" "false"
+        :type Editable: str
+        """
+        self._Name = None
+        self._Value = None
+        self._Key = None
+        self._Editable = None
+
+    @property
+    def Name(self):
+        """参数名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        """参数值
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Key(self):
+        """参数唯一标记
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Editable(self):
+        """是否可编辑，”true" "false"
+        :rtype: str
+        """
+        return self._Editable
+
+    @Editable.setter
+    def Editable(self, Editable):
+        self._Editable = Editable
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
+        self._Key = params.get("Key")
+        self._Editable = params.get("Editable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

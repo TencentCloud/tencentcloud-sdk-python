@@ -84,6 +84,348 @@ class ACTemplate(AbstractModel):
         
 
 
+class AccessDevicesRequest(AbstractModel):
+    """AccessDevices请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 资源id
+        :type InstanceId: str
+        :param _Account: 账号
+        :type Account: str
+        :param _LoginAccount: 运维端登录账号
+        :type LoginAccount: str
+        :param _LoginPassword: 运维端登录密码
+        :type LoginPassword: str
+        :param _Password: 密码
+        :type Password: str
+        :param _PrivateKey: 私钥
+        :type PrivateKey: str
+        :param _PrivateKeyPassword: 私钥密码
+        :type PrivateKeyPassword: str
+        :param _Exe: 客户端工具
+        :type Exe: str
+        :param _Drivers: RDP挂载盘符驱动（mstsc支持）
+        :type Drivers: list of str
+        :param _Width: 窗口宽度（RDP支持）
+        :type Width: int
+        :param _Height: 窗口高度（RDP支持）
+        :type Height: int
+        :param _IntranetAccess: 是否内网访问（默认不是）
+        :type IntranetAccess: bool
+        """
+        self._InstanceId = None
+        self._Account = None
+        self._LoginAccount = None
+        self._LoginPassword = None
+        self._Password = None
+        self._PrivateKey = None
+        self._PrivateKeyPassword = None
+        self._Exe = None
+        self._Drivers = None
+        self._Width = None
+        self._Height = None
+        self._IntranetAccess = None
+
+    @property
+    def InstanceId(self):
+        """资源id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Account(self):
+        """账号
+        :rtype: str
+        """
+        return self._Account
+
+    @Account.setter
+    def Account(self, Account):
+        self._Account = Account
+
+    @property
+    def LoginAccount(self):
+        """运维端登录账号
+        :rtype: str
+        """
+        return self._LoginAccount
+
+    @LoginAccount.setter
+    def LoginAccount(self, LoginAccount):
+        self._LoginAccount = LoginAccount
+
+    @property
+    def LoginPassword(self):
+        """运维端登录密码
+        :rtype: str
+        """
+        return self._LoginPassword
+
+    @LoginPassword.setter
+    def LoginPassword(self, LoginPassword):
+        self._LoginPassword = LoginPassword
+
+    @property
+    def Password(self):
+        """密码
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def PrivateKey(self):
+        """私钥
+        :rtype: str
+        """
+        return self._PrivateKey
+
+    @PrivateKey.setter
+    def PrivateKey(self, PrivateKey):
+        self._PrivateKey = PrivateKey
+
+    @property
+    def PrivateKeyPassword(self):
+        """私钥密码
+        :rtype: str
+        """
+        return self._PrivateKeyPassword
+
+    @PrivateKeyPassword.setter
+    def PrivateKeyPassword(self, PrivateKeyPassword):
+        self._PrivateKeyPassword = PrivateKeyPassword
+
+    @property
+    def Exe(self):
+        """客户端工具
+        :rtype: str
+        """
+        return self._Exe
+
+    @Exe.setter
+    def Exe(self, Exe):
+        self._Exe = Exe
+
+    @property
+    def Drivers(self):
+        """RDP挂载盘符驱动（mstsc支持）
+        :rtype: list of str
+        """
+        return self._Drivers
+
+    @Drivers.setter
+    def Drivers(self, Drivers):
+        self._Drivers = Drivers
+
+    @property
+    def Width(self):
+        """窗口宽度（RDP支持）
+        :rtype: int
+        """
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        """窗口高度（RDP支持）
+        :rtype: int
+        """
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def IntranetAccess(self):
+        """是否内网访问（默认不是）
+        :rtype: bool
+        """
+        return self._IntranetAccess
+
+    @IntranetAccess.setter
+    def IntranetAccess(self, IntranetAccess):
+        self._IntranetAccess = IntranetAccess
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Account = params.get("Account")
+        self._LoginAccount = params.get("LoginAccount")
+        self._LoginPassword = params.get("LoginPassword")
+        self._Password = params.get("Password")
+        self._PrivateKey = params.get("PrivateKey")
+        self._PrivateKeyPassword = params.get("PrivateKeyPassword")
+        self._Exe = params.get("Exe")
+        self._Drivers = params.get("Drivers")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        self._IntranetAccess = params.get("IntranetAccess")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AccessDevicesResponse(AbstractModel):
+    """AccessDevices返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AccessInfo: 认证信息
+        :type AccessInfo: :class:`tencentcloud.bh.v20230418.models.AccessInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AccessInfo = None
+        self._RequestId = None
+
+    @property
+    def AccessInfo(self):
+        """认证信息
+        :rtype: :class:`tencentcloud.bh.v20230418.models.AccessInfo`
+        """
+        return self._AccessInfo
+
+    @AccessInfo.setter
+    def AccessInfo(self, AccessInfo):
+        self._AccessInfo = AccessInfo
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("AccessInfo") is not None:
+            self._AccessInfo = AccessInfo()
+            self._AccessInfo._deserialize(params.get("AccessInfo"))
+        self._RequestId = params.get("RequestId")
+
+
+class AccessInfo(AbstractModel):
+    """认证信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ip: 地址
+        :type Ip: str
+        :param _Port: 端口
+        :type Port: int
+        :param _User: 账号
+        :type User: str
+        :param _Password: 密码
+        :type Password: str
+        :param _AccessURL: 唤起链接｜wss链接
+        :type AccessURL: str
+        """
+        self._Ip = None
+        self._Port = None
+        self._User = None
+        self._Password = None
+        self._AccessURL = None
+
+    @property
+    def Ip(self):
+        """地址
+        :rtype: str
+        """
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def Port(self):
+        """端口
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def User(self):
+        """账号
+        :rtype: str
+        """
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Password(self):
+        """密码
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def AccessURL(self):
+        """唤起链接｜wss链接
+        :rtype: str
+        """
+        return self._AccessURL
+
+    @AccessURL.setter
+    def AccessURL(self, AccessURL):
+        self._AccessURL = AccessURL
+
+
+    def _deserialize(self, params):
+        self._Ip = params.get("Ip")
+        self._Port = params.get("Port")
+        self._User = params.get("User")
+        self._Password = params.get("Password")
+        self._AccessURL = params.get("AccessURL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Acl(AbstractModel):
     """访问权限
 

@@ -3598,6 +3598,70 @@ class DeleteUserResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteWhiteBoardSnapshotRequest(AbstractModel):
+    """DeleteWhiteBoardSnapshot请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoomId: 房间ID
+        :type RoomId: int
+        """
+        self._RoomId = None
+
+    @property
+    def RoomId(self):
+        """房间ID
+        :rtype: int
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+
+    def _deserialize(self, params):
+        self._RoomId = params.get("RoomId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteWhiteBoardSnapshotResponse(AbstractModel):
+    """DeleteWhiteBoardSnapshot返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeAnswerListRequest(AbstractModel):
     """DescribeAnswerList请求参数结构体
 
@@ -7461,6 +7525,130 @@ class DescribeUserResponse(AbstractModel):
         self._Name = params.get("Name")
         self._Avatar = params.get("Avatar")
         self._OriginId = params.get("OriginId")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeWhiteBoardSnapshotRequest(AbstractModel):
+    """DescribeWhiteBoardSnapshot请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoomId: 房间ID
+        :type RoomId: int
+        """
+        self._RoomId = None
+
+    @property
+    def RoomId(self):
+        """房间ID
+        :rtype: int
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+
+    def _deserialize(self, params):
+        self._RoomId = params.get("RoomId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeWhiteBoardSnapshotResponse(AbstractModel):
+    """DescribeWhiteBoardSnapshot返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WhiteBoardSnapshotMode: 板书截图生成类型。0 不生成板书；1 全量模式；2 单页去重模式
+        :type WhiteBoardSnapshotMode: int
+        :param _Status: 板书任务状态，0：未开始，1：进行中，2：失败，3：成功，4：已删除
+        :type Status: int
+        :param _Result: 板书截图链接
+        :type Result: list of str
+        :param _Total: 总数
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._WhiteBoardSnapshotMode = None
+        self._Status = None
+        self._Result = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def WhiteBoardSnapshotMode(self):
+        """板书截图生成类型。0 不生成板书；1 全量模式；2 单页去重模式
+        :rtype: int
+        """
+        return self._WhiteBoardSnapshotMode
+
+    @WhiteBoardSnapshotMode.setter
+    def WhiteBoardSnapshotMode(self, WhiteBoardSnapshotMode):
+        self._WhiteBoardSnapshotMode = WhiteBoardSnapshotMode
+
+    @property
+    def Status(self):
+        """板书任务状态，0：未开始，1：进行中，2：失败，3：成功，4：已删除
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Result(self):
+        """板书截图链接
+        :rtype: list of str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Total(self):
+        """总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._WhiteBoardSnapshotMode = params.get("WhiteBoardSnapshotMode")
+        self._Status = params.get("Status")
+        self._Result = params.get("Result")
+        self._Total = params.get("Total")
         self._RequestId = params.get("RequestId")
 
 

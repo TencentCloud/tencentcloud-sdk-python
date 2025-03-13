@@ -305,6 +305,9 @@ FAILEDOPERATION_TSFCMONITORCTSDBCLIENTREQUESTFAIL = 'FailedOperation.TsfCmonitor
 # TSF监控统计等待超时, 请稍后重试。
 FAILEDOPERATION_TSFMONITORWAITEDTIMEOUT = 'FailedOperation.TsfMonitorWaitedTimeout'
 
+# TSF服务管理通用异常。
+FAILEDOPERATION_TSFMSERROR = 'FailedOperation.TsfMsError'
+
 # 调用ms server失败。
 FAILEDOPERATION_TSFMSSERVERERROR = 'FailedOperation.TsfMsServerError'
 
@@ -451,6 +454,9 @@ INTERNALERROR_TSFMONITORDATEPARSEFAILED = 'InternalError.TsfMonitorDateParseFail
 
 # TSF监控统计内部异常, 请稍后重试。
 INTERNALERROR_TSFMONITORINTERNALERROR = 'InternalError.TsfMonitorInternalError'
+
+# TSF服务管理通用异常。
+INTERNALERROR_TSFMSERROR = 'InternalError.TsfMsError'
 
 # [%s]模块未处理异常。。
 INTERNALERROR_UNHANDLEDEXCEPTION = 'InternalError.UnhandledException'

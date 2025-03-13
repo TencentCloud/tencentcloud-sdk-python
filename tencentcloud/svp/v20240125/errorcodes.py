@@ -14,5 +14,8 @@
 # limitations under the License.
 
 
+# 未定义异常。
+INTERNALERROR_UNKNOWNERROR = 'InternalError.UnknownError'
+
 # 账号没有cam授权。
 UNAUTHORIZEDOPERATION_CAMNOAUTH = 'UnauthorizedOperation.CamNoAuth'

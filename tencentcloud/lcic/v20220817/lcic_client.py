@@ -552,6 +552,29 @@ class LcicClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteWhiteBoardSnapshot(self, request):
+        """删除白板板书截图
+
+        :param request: Request instance for DeleteWhiteBoardSnapshot.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.DeleteWhiteBoardSnapshotRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.DeleteWhiteBoardSnapshotResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteWhiteBoardSnapshot", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteWhiteBoardSnapshotResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAnswerList(self, request):
         """获取房间答题详情
 
@@ -1051,6 +1074,29 @@ class LcicClient(AbstractClient):
             body = self.call("DescribeUser", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeWhiteBoardSnapshot(self, request):
+        """查询白板板书截图
+
+        :param request: Request instance for DescribeWhiteBoardSnapshot.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeWhiteBoardSnapshotRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.DescribeWhiteBoardSnapshotResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeWhiteBoardSnapshot", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeWhiteBoardSnapshotResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

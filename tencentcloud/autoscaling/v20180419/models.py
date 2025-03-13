@@ -850,7 +850,6 @@ class AutoScalingGroup(AbstractModel):
 <li> FALSE，不开启该功能，则 AS 等待竞价实例被销毁后才会去扩容补齐伸缩组期望实例数。</li>
         :type CapacityRebalance: bool
         :param _InstanceNameIndexSettings: 实例名称序号相关设置。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceNameIndexSettings: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameIndexSettings`
         """
         self._AutoScalingGroupId = None
@@ -1249,7 +1248,6 @@ class AutoScalingGroup(AbstractModel):
     @property
     def InstanceNameIndexSettings(self):
         """实例名称序号相关设置。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameIndexSettings`
         """
         return self._InstanceNameIndexSettings
@@ -3920,10 +3918,8 @@ class DataDisk(AbstractModel):
 <li>CLOUD_HSSD：增强型SSD云硬盘</li>
 <li>CLOUD_TSSD：极速型SSD云硬盘</li>
 默认取值与系统盘类型（SystemDisk.DiskType）保持一致。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiskType: str
         :param _DiskSize: 数据盘大小，单位：GB。最小调整步长为10G，不同数据盘类型取值范围不同，具体限制详见：[CVM实例配置](https://cloud.tencent.com/document/product/213/2177)。默认值为0，表示不购买数据盘。更多限制详见产品文档。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiskSize: int
         :param _SnapshotId: 数据盘快照 ID，类似 `snap-l8psqwnt`。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -3967,7 +3963,6 @@ class DataDisk(AbstractModel):
 <li>CLOUD_HSSD：增强型SSD云硬盘</li>
 <li>CLOUD_TSSD：极速型SSD云硬盘</li>
 默认取值与系统盘类型（SystemDisk.DiskType）保持一致。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DiskType
@@ -3979,7 +3974,6 @@ class DataDisk(AbstractModel):
     @property
     def DiskSize(self):
         """数据盘大小，单位：GB。最小调整步长为10G，不同数据盘类型取值范围不同，具体限制详见：[CVM实例配置](https://cloud.tencent.com/document/product/213/2177)。默认值为0，表示不购买数据盘。更多限制详见产品文档。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DiskSize
@@ -6903,7 +6897,6 @@ class ExitStandbyResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ActivityId: 伸缩活动ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActivityId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6914,7 +6907,6 @@ class ExitStandbyResponse(AbstractModel):
     @property
     def ActivityId(self):
         """伸缩活动ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ActivityId
@@ -7350,26 +7342,26 @@ class Instance(AbstractModel):
         :type LaunchConfigurationId: str
         :param _LaunchConfigurationName: 启动配置名称
         :type LaunchConfigurationName: str
-        :param _LifeCycleState: 生命周期状态，取值如下：<br>
-<li>IN_SERVICE：运行中
-<li>CREATING：创建中
-<li>CREATION_FAILED：创建失败
-<li>TERMINATING：中止中
-<li>TERMINATION_FAILED：中止失败
-<li>ATTACHING：绑定中
-<li>ATTACH_FAILED：绑定失败
-<li>DETACHING：解绑中
-<li>DETACH_FAILED：解绑失败
-<li>ATTACHING_LB：绑定LB中
-<li>DETACHING_LB：解绑LB中
-<li>MODIFYING_LB：修改LB中
-<li>STARTING：开机中
-<li>START_FAILED：开机失败
-<li>STOPPING：关机中
-<li>STOP_FAILED：关机失败
-<li>STOPPED：已关机
-<li>IN_LAUNCHING_HOOK：扩容生命周期挂钩中
-<li>IN_TERMINATING_HOOK：缩容生命周期挂钩中
+        :param _LifeCycleState: 生命周期状态，取值如下：
+<li>IN_SERVICE：运行中</li>
+<li>CREATING：创建中</li>
+<li>CREATION_FAILED：创建失败</li>
+<li>TERMINATING：中止中</li>
+<li>TERMINATION_FAILED：中止失败</li>
+<li>ATTACHING：绑定中</li>
+<li>ATTACH_FAILED：绑定失败</li>
+<li>DETACHING：解绑中</li>
+<li>DETACH_FAILED：解绑失败</li>
+<li>ATTACHING_LB：绑定LB中</li>
+<li>DETACHING_LB：解绑LB中</li>
+<li>MODIFYING_LB：修改LB中</li>
+<li>STARTING：开机中</li>
+<li>START_FAILED：开机失败</li>
+<li>STOPPING：关机中</li>
+<li>STOP_FAILED：关机失败</li>
+<li>STOPPED：已关机</li>
+<li>IN_LAUNCHING_HOOK：扩容生命周期挂钩中</li>
+<li>IN_TERMINATING_HOOK：缩容生命周期挂钩中</li>
         :type LifeCycleState: str
         :param _HealthStatus: 健康状态，取值包括HEALTHY和UNHEALTHY
         :type HealthStatus: str
@@ -7388,13 +7380,12 @@ class Instance(AbstractModel):
         :param _AutoScalingGroupName: 伸缩组名称
         :type AutoScalingGroupName: str
         :param _WarmupStatus: 预热状态，取值如下：
-<li>WAITING_ENTER_WARMUP：等待进入预热
-<li>NO_NEED_WARMUP：无需预热
-<li>IN_WARMUP：预热中
-<li>AFTER_WARMUP：完成预热
+<li>WAITING_ENTER_WARMUP：等待进入预热</li>
+<li>NO_NEED_WARMUP：无需预热</li>
+<li>IN_WARMUP：预热中</li>
+<li>AFTER_WARMUP：完成预热</li>
         :type WarmupStatus: str
         :param _DisasterRecoverGroupIds: 置放群组id，仅支持指定一个。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DisasterRecoverGroupIds: list of str
         """
         self._InstanceId = None
@@ -7459,26 +7450,26 @@ class Instance(AbstractModel):
 
     @property
     def LifeCycleState(self):
-        """生命周期状态，取值如下：<br>
-<li>IN_SERVICE：运行中
-<li>CREATING：创建中
-<li>CREATION_FAILED：创建失败
-<li>TERMINATING：中止中
-<li>TERMINATION_FAILED：中止失败
-<li>ATTACHING：绑定中
-<li>ATTACH_FAILED：绑定失败
-<li>DETACHING：解绑中
-<li>DETACH_FAILED：解绑失败
-<li>ATTACHING_LB：绑定LB中
-<li>DETACHING_LB：解绑LB中
-<li>MODIFYING_LB：修改LB中
-<li>STARTING：开机中
-<li>START_FAILED：开机失败
-<li>STOPPING：关机中
-<li>STOP_FAILED：关机失败
-<li>STOPPED：已关机
-<li>IN_LAUNCHING_HOOK：扩容生命周期挂钩中
-<li>IN_TERMINATING_HOOK：缩容生命周期挂钩中
+        """生命周期状态，取值如下：
+<li>IN_SERVICE：运行中</li>
+<li>CREATING：创建中</li>
+<li>CREATION_FAILED：创建失败</li>
+<li>TERMINATING：中止中</li>
+<li>TERMINATION_FAILED：中止失败</li>
+<li>ATTACHING：绑定中</li>
+<li>ATTACH_FAILED：绑定失败</li>
+<li>DETACHING：解绑中</li>
+<li>DETACH_FAILED：解绑失败</li>
+<li>ATTACHING_LB：绑定LB中</li>
+<li>DETACHING_LB：解绑LB中</li>
+<li>MODIFYING_LB：修改LB中</li>
+<li>STARTING：开机中</li>
+<li>START_FAILED：开机失败</li>
+<li>STOPPING：关机中</li>
+<li>STOP_FAILED：关机失败</li>
+<li>STOPPED：已关机</li>
+<li>IN_LAUNCHING_HOOK：扩容生命周期挂钩中</li>
+<li>IN_TERMINATING_HOOK：缩容生命周期挂钩中</li>
         :rtype: str
         """
         return self._LifeCycleState
@@ -7578,10 +7569,10 @@ class Instance(AbstractModel):
     @property
     def WarmupStatus(self):
         """预热状态，取值如下：
-<li>WAITING_ENTER_WARMUP：等待进入预热
-<li>NO_NEED_WARMUP：无需预热
-<li>IN_WARMUP：预热中
-<li>AFTER_WARMUP：完成预热
+<li>WAITING_ENTER_WARMUP：等待进入预热</li>
+<li>NO_NEED_WARMUP：无需预热</li>
+<li>IN_WARMUP：预热中</li>
+<li>AFTER_WARMUP：完成预热</li>
         :rtype: str
         """
         return self._WarmupStatus
@@ -7593,7 +7584,6 @@ class Instance(AbstractModel):
     @property
     def DisasterRecoverGroupIds(self):
         """置放群组id，仅支持指定一个。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._DisasterRecoverGroupIds
@@ -7690,7 +7680,6 @@ class InstanceMarketOptionsRequest(AbstractModel):
         :param _SpotOptions: 竞价相关选项
         :type SpotOptions: :class:`tencentcloud.autoscaling.v20180419.models.SpotMarketOptions`
         :param _MarketType: 市场选项类型，当前只支持取值：spot
-注意：此字段可能返回 null，表示取不到有效值。
         :type MarketType: str
         """
         self._SpotOptions = None
@@ -7710,7 +7699,6 @@ class InstanceMarketOptionsRequest(AbstractModel):
     @property
     def MarketType(self):
         """市场选项类型，当前只支持取值：spot
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MarketType
@@ -8018,22 +8006,16 @@ class InvocationResult(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceId: 实例ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _InvocationId: 执行活动ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InvocationId: str
         :param _InvocationTaskId: 执行任务ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InvocationTaskId: str
         :param _CommandId: 命令ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CommandId: str
         :param _TaskStatus: 执行任务状态。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskStatus: str
         :param _ErrorMessage: 执行异常信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMessage: str
         """
         self._InstanceId = None
@@ -8046,7 +8028,6 @@ class InvocationResult(AbstractModel):
     @property
     def InstanceId(self):
         """实例ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -8058,7 +8039,6 @@ class InvocationResult(AbstractModel):
     @property
     def InvocationId(self):
         """执行活动ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InvocationId
@@ -8070,7 +8050,6 @@ class InvocationResult(AbstractModel):
     @property
     def InvocationTaskId(self):
         """执行任务ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InvocationTaskId
@@ -8082,7 +8061,6 @@ class InvocationResult(AbstractModel):
     @property
     def CommandId(self):
         """命令ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CommandId
@@ -8094,7 +8072,6 @@ class InvocationResult(AbstractModel):
     @property
     def TaskStatus(self):
         """执行任务状态。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskStatus
@@ -8106,7 +8083,6 @@ class InvocationResult(AbstractModel):
     @property
     def ErrorMessage(self):
         """执行异常信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorMessage
@@ -8181,7 +8157,6 @@ class LaunchConfiguration(AbstractModel):
         :param _InstanceTags: 实例标签列表。扩容出来的实例会自动带上标签，最多支持10个标签。
         :type InstanceTags: list of InstanceTag
         :param _Tags: 标签列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
         :param _VersionNumber: 版本号。
         :type VersionNumber: int
@@ -8207,7 +8182,6 @@ class LaunchConfiguration(AbstractModel):
         :param _DisasterRecoverGroupIds: 置放群组id，仅支持指定一个。
         :type DisasterRecoverGroupIds: list of str
         :param _ImageFamily: 镜像族名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImageFamily: str
         :param _DedicatedClusterId: 本地专用集群 ID。
         :type DedicatedClusterId: str
@@ -8460,7 +8434,6 @@ class LaunchConfiguration(AbstractModel):
     @property
     def Tags(self):
         """标签列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._Tags
@@ -8594,7 +8567,6 @@ class LaunchConfiguration(AbstractModel):
     @property
     def ImageFamily(self):
         """镜像族名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ImageFamily
@@ -8859,13 +8831,11 @@ class LifecycleCommand(AbstractModel):
     def __init__(self):
         r"""
         :param _CommandId: 远程命令ID。若选择执行命令，则此项必填。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CommandId: str
         :param _Parameters: 自定义参数。字段类型为 json encoded string。如：{"varA": "222"}。
 key为自定义参数名称，value为该参数的默认取值。kv均为字符串型。
 如果未提供该参数取值，将使用 Command 的 DefaultParameters 进行替换。
 自定义参数最多20个。自定义参数名称需符合以下规范：字符数目上限64，可选范围【a-zA-Z0-9-_】。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Parameters: str
         """
         self._CommandId = None
@@ -8874,7 +8844,6 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
     @property
     def CommandId(self):
         """远程命令ID。若选择执行命令，则此项必填。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CommandId
@@ -8889,7 +8858,6 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 key为自定义参数名称，value为该参数的默认取值。kv均为字符串型。
 如果未提供该参数取值，将使用 Command 的 DefaultParameters 进行替换。
 自定义参数最多20个。自定义参数名称需符合以下规范：字符数目上限64，可选范围【a-zA-Z0-9-_】。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Parameters
@@ -8940,7 +8908,6 @@ class LifecycleHook(AbstractModel):
         :param _LifecycleTransitionType: 生命周期挂钩适用场景
         :type LifecycleTransitionType: str
         :param _LifecycleCommand: 远程命令执行对象
-注意：此字段可能返回 null，表示取不到有效值。
         :type LifecycleCommand: :class:`tencentcloud.autoscaling.v20180419.models.LifecycleCommand`
         """
         self._LifecycleHookId = None
@@ -9068,7 +9035,6 @@ class LifecycleHook(AbstractModel):
     @property
     def LifecycleCommand(self):
         """远程命令执行对象
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.LifecycleCommand`
         """
         return self._LifecycleCommand
@@ -11553,7 +11519,6 @@ class RefreshActivity(AbstractModel):
         :param _RefreshActivityId: 刷新活动 ID。
         :type RefreshActivityId: str
         :param _OriginRefreshActivityId: 原始刷新活动ID，仅在回滚刷新活动中存在。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OriginRefreshActivityId: str
         :param _RefreshBatchSet: 刷新批次信息列表。
         :type RefreshBatchSet: list of RefreshBatch
@@ -11576,7 +11541,6 @@ class RefreshActivity(AbstractModel):
 <li>FAILED：活动失败</li>
         :type Status: str
         :param _CurrentRefreshBatchNum: 当前刷新批次序号。例如，2 表示当前活动正在刷新第二批次的实例。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CurrentRefreshBatchNum: int
         :param _StartTime: 刷新活动开始时间。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -11585,7 +11549,6 @@ class RefreshActivity(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         :param _CreatedTime: 刷新活动创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedTime: str
         """
         self._AutoScalingGroupId = None
@@ -11626,7 +11589,6 @@ class RefreshActivity(AbstractModel):
     @property
     def OriginRefreshActivityId(self):
         """原始刷新活动ID，仅在回滚刷新活动中存在。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OriginRefreshActivityId
@@ -11703,7 +11665,6 @@ class RefreshActivity(AbstractModel):
     @property
     def CurrentRefreshBatchNum(self):
         """当前刷新批次序号。例如，2 表示当前活动正在刷新第二批次的实例。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CurrentRefreshBatchNum
@@ -11739,7 +11700,6 @@ class RefreshActivity(AbstractModel):
     @property
     def CreatedTime(self):
         """刷新活动创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreatedTime
@@ -11893,14 +11853,12 @@ class RefreshBatchRelatedInstance(AbstractModel):
         r"""
         :param _InstanceId: 实例 ID。
         :type InstanceId: str
-        :param _InstanceStatus: 刷新实例状态。如果在刷新时实例被移出或销毁，状态会更新为 NOT_FOUND。取值如下：<br><li>WAITING：待刷新</li><li>INIT：初始化中</li><li>RUNNING：刷新中</li><li>FAILED：刷新失败</li><li>CANCELLED：已取消</li><li>SUCCESSFUL：刷新成功</li><li>NOT_FOUND：实例不存在
+        :param _InstanceStatus: 刷新实例状态。如果在刷新时实例被移出或销毁，状态会更新为 NOT_FOUND。取值如下：<li>WAITING：待刷新</li><li>INIT：初始化中</li><li>RUNNING：刷新中</li><li>FAILED：刷新失败</li><li>CANCELLED：已取消</li><li>SUCCESSFUL：刷新成功</li><li>NOT_FOUND：实例不存在</li>
         :type InstanceStatus: str
         :param _LastActivityId: 实例刷新中最近一次伸缩活动 ID，可通过 DescribeAutoScalingActivities 接口查询。
 需注意伸缩活动与实例刷新活动不同，一次实例刷新活动可能包括多次伸缩活动。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LastActivityId: str
         :param _InstanceStatusMessage: 实例刷新状态信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceStatusMessage: str
         """
         self._InstanceId = None
@@ -11921,7 +11879,7 @@ class RefreshBatchRelatedInstance(AbstractModel):
 
     @property
     def InstanceStatus(self):
-        """刷新实例状态。如果在刷新时实例被移出或销毁，状态会更新为 NOT_FOUND。取值如下：<br><li>WAITING：待刷新</li><li>INIT：初始化中</li><li>RUNNING：刷新中</li><li>FAILED：刷新失败</li><li>CANCELLED：已取消</li><li>SUCCESSFUL：刷新成功</li><li>NOT_FOUND：实例不存在
+        """刷新实例状态。如果在刷新时实例被移出或销毁，状态会更新为 NOT_FOUND。取值如下：<li>WAITING：待刷新</li><li>INIT：初始化中</li><li>RUNNING：刷新中</li><li>FAILED：刷新失败</li><li>CANCELLED：已取消</li><li>SUCCESSFUL：刷新成功</li><li>NOT_FOUND：实例不存在</li>
         :rtype: str
         """
         return self._InstanceStatus
@@ -11934,7 +11892,6 @@ class RefreshBatchRelatedInstance(AbstractModel):
     def LastActivityId(self):
         """实例刷新中最近一次伸缩活动 ID，可通过 DescribeAutoScalingActivities 接口查询。
 需注意伸缩活动与实例刷新活动不同，一次实例刷新活动可能包括多次伸缩活动。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LastActivityId
@@ -11946,7 +11903,6 @@ class RefreshBatchRelatedInstance(AbstractModel):
     @property
     def InstanceStatusMessage(self):
         """实例刷新状态信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceStatusMessage
@@ -11979,7 +11935,6 @@ class RefreshSettings(AbstractModel):
     def __init__(self):
         r"""
         :param _RollingUpdateSettings: 滚动更新设置参数。RefreshMode 为滚动更新该参数必须填写。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RollingUpdateSettings: :class:`tencentcloud.autoscaling.v20180419.models.RollingUpdateSettings`
         :param _CheckInstanceTargetHealth: 实例后端服务健康状态检查，默认为 FALSE。仅针对绑定应用型负载均衡器的伸缩组生效，开启该检查后，如刷新后实例未通过检查，负载均衡器端口权重始终为 0，且标记为刷新失败。取值范围如下：<li>TRUE：开启检查</li><li>FALSE：不开启检查</li>
         :type CheckInstanceTargetHealth: bool
@@ -11990,7 +11945,6 @@ class RefreshSettings(AbstractModel):
     @property
     def RollingUpdateSettings(self):
         """滚动更新设置参数。RefreshMode 为滚动更新该参数必须填写。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.RollingUpdateSettings`
         """
         return self._RollingUpdateSettings
@@ -12543,7 +12497,6 @@ class RunMonitorServiceEnabled(AbstractModel):
 <li>TRUE：表示开启云监控服务</li>
 <li>FALSE：表示不开启云监控服务</li>
 默认取值：TRUE。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Enabled: bool
         """
         self._Enabled = None
@@ -12554,7 +12507,6 @@ class RunMonitorServiceEnabled(AbstractModel):
 <li>TRUE：表示开启云监控服务</li>
 <li>FALSE：表示不开启云监控服务</li>
 默认取值：TRUE。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Enabled
@@ -12587,7 +12539,6 @@ class RunSecurityServiceEnabled(AbstractModel):
 <li>TRUE：表示开启云安全服务</li>
 <li>FALSE：表示不开启云安全服务</li>
 默认取值：TRUE。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Enabled: bool
         """
         self._Enabled = None
@@ -12598,7 +12549,6 @@ class RunSecurityServiceEnabled(AbstractModel):
 <li>TRUE：表示开启云安全服务</li>
 <li>FALSE：表示不开启云安全服务</li>
 默认取值：TRUE。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Enabled
@@ -13270,7 +13220,6 @@ WAKE_UP_STOPPED_SCALING：扩容优先开机。扩容时优先对已关机的实
 RECREATE：重建实例替代原有不健康实例；
 RESET：对原有不健康实例进行重装系统操作，可保持数据盘、内网IP、实例id等信息不发生变化，实例登录设置、主机名、增强服务和 UserData 与当前启动配置保持一致。
 默认取值：RECREATE
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReplaceMode: str
         :param _AutoUpdateInstanceTags: 自动更新实例标签。默认取值为 False，配置后如伸缩组标签发生更新，会同步更新（同步更新仅支持新增、修改标签，暂不支持删除标签）伸缩组内运行中状态实例的标签，同步更新非立即生效，存在一定延迟。
         :type AutoUpdateInstanceTags: bool
@@ -13328,7 +13277,6 @@ WAKE_UP_STOPPED_SCALING：扩容优先开机。扩容时优先对已关机的实
 RECREATE：重建实例替代原有不健康实例；
 RESET：对原有不健康实例进行重装系统操作，可保持数据盘、内网IP、实例id等信息不发生变化，实例登录设置、主机名、增强服务和 UserData 与当前启动配置保持一致。
 默认取值：RECREATE
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ReplaceMode
@@ -13483,7 +13431,6 @@ class SpotMarketOptions(AbstractModel):
         :param _MaxPrice: 竞价出价，例如“1.05”
         :type MaxPrice: str
         :param _SpotInstanceType: 竞价请求类型，当前仅支持类型：one-time，默认值为one-time
-注意：此字段可能返回 null，表示取不到有效值。
         :type SpotInstanceType: str
         """
         self._MaxPrice = None
@@ -13503,7 +13450,6 @@ class SpotMarketOptions(AbstractModel):
     @property
     def SpotInstanceType(self):
         """竞价请求类型，当前仅支持类型：one-time，默认值为one-time
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SpotInstanceType
@@ -14039,11 +13985,15 @@ class SystemDisk(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskType: 系统盘类型。系统盘类型限制详见[云硬盘类型](https://cloud.tencent.com/document/product/362/2353)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><br>默认取值：CLOUD_PREMIUM。
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _DiskType: 系统盘类型。系统盘类型限制详见[云硬盘类型](https://cloud.tencent.com/document/product/362/2353)。取值范围
+<li>LOCAL_BASIC：本地硬盘</li>
+<li>LOCAL_SSD：本地SSD硬盘</li>
+<li>CLOUD_BASIC：普通云硬盘</li>
+<li>CLOUD_PREMIUM：高性能云硬盘</li>
+<li>CLOUD_SSD：SSD云硬盘</li>
+<li>默认取值：CLOUD_PREMIUM。</li>
         :type DiskType: str
         :param _DiskSize: 系统盘大小，单位：GB。默认值为 50
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiskSize: int
         """
         self._DiskType = None
@@ -14051,8 +14001,13 @@ class SystemDisk(AbstractModel):
 
     @property
     def DiskType(self):
-        """系统盘类型。系统盘类型限制详见[云硬盘类型](https://cloud.tencent.com/document/product/362/2353)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><br>默认取值：CLOUD_PREMIUM。
-注意：此字段可能返回 null，表示取不到有效值。
+        """系统盘类型。系统盘类型限制详见[云硬盘类型](https://cloud.tencent.com/document/product/362/2353)。取值范围
+<li>LOCAL_BASIC：本地硬盘</li>
+<li>LOCAL_SSD：本地SSD硬盘</li>
+<li>CLOUD_BASIC：普通云硬盘</li>
+<li>CLOUD_PREMIUM：高性能云硬盘</li>
+<li>CLOUD_SSD：SSD云硬盘</li>
+<li>默认取值：CLOUD_PREMIUM。</li>
         :rtype: str
         """
         return self._DiskType
@@ -14064,7 +14019,6 @@ class SystemDisk(AbstractModel):
     @property
     def DiskSize(self):
         """系统盘大小，单位：GB。默认值为 50
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DiskSize
@@ -14099,7 +14053,6 @@ class Tag(AbstractModel):
         :param _Value: 标签值
         :type Value: str
         :param _ResourceType: 标签绑定的资源类型，当前支持类型："auto-scaling-group", "launch-configuration"
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceType: str
         """
         self._Key = None
@@ -14131,7 +14084,6 @@ class Tag(AbstractModel):
     @property
     def ResourceType(self):
         """标签绑定的资源类型，当前支持类型："auto-scaling-group", "launch-configuration"
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceType

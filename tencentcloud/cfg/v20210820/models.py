@@ -1724,7 +1724,6 @@ class DescribePolicy(AbstractModel):
         :param _TaskPolicyRule: 策略规则
         :type TaskPolicyRule: str
         :param _TaskPolicyDealType: 护栏策略生效处理策略 1:顺序执行，2:暂停
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskPolicyDealType: int
         """
         self._TaskPolicyIdList = None
@@ -1768,7 +1767,6 @@ class DescribePolicy(AbstractModel):
     @property
     def TaskPolicyDealType(self):
         """护栏策略生效处理策略 1:顺序执行，2:暂停
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TaskPolicyDealType
@@ -3131,6 +3129,8 @@ class ObjectType(AbstractModel):
         :type ObjectSupportType: int
         :param _ArchLayer: 1.接入层 2.逻辑层 3. 数据层
         :type ArchLayer: int
+        :param _IsArchSvg: 是否支持演练生图
+        :type IsArchSvg: bool
         """
         self._ObjectTypeId = None
         self._ObjectTypeTitle = None
@@ -3141,6 +3141,7 @@ class ObjectType(AbstractModel):
         self._ObjectPlatformName = None
         self._ObjectSupportType = None
         self._ArchLayer = None
+        self._IsArchSvg = None
 
     @property
     def ObjectTypeId(self):
@@ -3245,6 +3246,17 @@ class ObjectType(AbstractModel):
     def ArchLayer(self, ArchLayer):
         self._ArchLayer = ArchLayer
 
+    @property
+    def IsArchSvg(self):
+        """是否支持演练生图
+        :rtype: bool
+        """
+        return self._IsArchSvg
+
+    @IsArchSvg.setter
+    def IsArchSvg(self, IsArchSvg):
+        self._IsArchSvg = IsArchSvg
+
 
     def _deserialize(self, params):
         self._ObjectTypeId = params.get("ObjectTypeId")
@@ -3260,6 +3272,7 @@ class ObjectType(AbstractModel):
         self._ObjectPlatformName = params.get("ObjectPlatformName")
         self._ObjectSupportType = params.get("ObjectSupportType")
         self._ArchLayer = params.get("ArchLayer")
+        self._IsArchSvg = params.get("IsArchSvg")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3895,6 +3908,8 @@ class Task(AbstractModel):
         :param _TaskRegionName: region信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskRegionName: str
+        :param _TaskArchId: 架构ID
+        :type TaskArchId: str
         """
         self._TaskId = None
         self._TaskTitle = None
@@ -3930,6 +3945,7 @@ class Task(AbstractModel):
         self._TaskOrg = None
         self._TaskIssue = None
         self._TaskRegionName = None
+        self._TaskArchId = None
 
     @property
     def TaskId(self):
@@ -4328,6 +4344,17 @@ class Task(AbstractModel):
     def TaskRegionName(self, TaskRegionName):
         self._TaskRegionName = TaskRegionName
 
+    @property
+    def TaskArchId(self):
+        """架构ID
+        :rtype: str
+        """
+        return self._TaskArchId
+
+    @TaskArchId.setter
+    def TaskArchId(self, TaskArchId):
+        self._TaskArchId = TaskArchId
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -4391,6 +4418,7 @@ class Task(AbstractModel):
                 self._TaskOrg.append(obj)
         self._TaskIssue = params.get("TaskIssue")
         self._TaskRegionName = params.get("TaskRegionName")
+        self._TaskArchId = params.get("TaskArchId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6157,7 +6185,6 @@ class TaskReportInfo(AbstractModel):
         :param _Expired: 是否有效
         :type Expired: bool
         :param _CosUrl: 演练报告cos文件地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type CosUrl: str
         :param _Log: 演练报告导出日志
 注意：此字段可能返回 null，表示取不到有效值。
@@ -6167,7 +6194,6 @@ class TaskReportInfo(AbstractModel):
         :param _ArchiveTime: 归档时间
         :type ArchiveTime: str
         :param _ArchiveUuid: 归档ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ArchiveUuid: str
         """
         self._Stage = None
@@ -6227,7 +6253,6 @@ class TaskReportInfo(AbstractModel):
     @property
     def CosUrl(self):
         """演练报告cos文件地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CosUrl
@@ -6273,7 +6298,6 @@ class TaskReportInfo(AbstractModel):
     @property
     def ArchiveUuid(self):
         """归档ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ArchiveUuid

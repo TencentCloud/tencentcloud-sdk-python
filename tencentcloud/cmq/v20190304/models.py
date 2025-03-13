@@ -26,19 +26,14 @@ class DeadLetterPolicy(AbstractModel):
     def __init__(self):
         r"""
         :param _DeadLetterQueue: 死信队列。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeadLetterQueue: str
         :param _DeadLetterQueueName: 死信队列名字。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeadLetterQueueName: str
         :param _MaxTimeToLive: 最大未消费过期时间。Policy为1时必选。范围300-43200，单位秒，需要小于消息最大保留时间MsgRetentionSeconds。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxTimeToLive: int
         :param _Policy: 死信队列策略。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Policy: int
         :param _MaxReceiveCount: 最大接收次数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxReceiveCount: int
         """
         self._DeadLetterQueue = None
@@ -50,7 +45,6 @@ class DeadLetterPolicy(AbstractModel):
     @property
     def DeadLetterQueue(self):
         """死信队列。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeadLetterQueue
@@ -62,7 +56,6 @@ class DeadLetterPolicy(AbstractModel):
     @property
     def DeadLetterQueueName(self):
         """死信队列名字。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeadLetterQueueName
@@ -74,7 +67,6 @@ class DeadLetterPolicy(AbstractModel):
     @property
     def MaxTimeToLive(self):
         """最大未消费过期时间。Policy为1时必选。范围300-43200，单位秒，需要小于消息最大保留时间MsgRetentionSeconds。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxTimeToLive
@@ -86,7 +78,6 @@ class DeadLetterPolicy(AbstractModel):
     @property
     def Policy(self):
         """死信队列策略。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Policy
@@ -98,7 +89,6 @@ class DeadLetterPolicy(AbstractModel):
     @property
     def MaxReceiveCount(self):
         """最大接收次数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxReceiveCount
@@ -132,10 +122,8 @@ class DeadLetterSource(AbstractModel):
     def __init__(self):
         r"""
         :param _QueueId: 消息队列ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type QueueId: str
         :param _QueueName: 消息队列名字。
-注意：此字段可能返回 null，表示取不到有效值。
         :type QueueName: str
         """
         self._QueueId = None
@@ -144,7 +132,6 @@ class DeadLetterSource(AbstractModel):
     @property
     def QueueId(self):
         """消息队列ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._QueueId
@@ -156,7 +143,6 @@ class DeadLetterSource(AbstractModel):
     @property
     def QueueName(self):
         """消息队列名字。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._QueueName
@@ -568,78 +554,57 @@ class QueueSet(AbstractModel):
         :param _QueueId: 消息队列ID。
         :type QueueId: str
         :param _RewindSeconds: 回溯队列的消息回溯时间最大值，取值范围0 - 43200秒，0表示不开启消息回溯。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RewindSeconds: int
         :param _CreateUin: 创建者Uin。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateUin: int
         :param _LastModifyTime: 最后一次修改队列属性的时间。返回 Unix 时间戳，精确到秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LastModifyTime: int
         :param _VisibilityTimeout: 消息可见性超时。取值范围1 - 43200秒（即12小时内），默认值30。
-注意：此字段可能返回 null，表示取不到有效值。
         :type VisibilityTimeout: int
         :param _QueueName: 消息队列名字。
         :type QueueName: str
         :param _Trace: 消息轨迹。true表示开启，false表示不开启。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Trace: bool
         :param _Tags: 关联的标签。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
         :param _RewindMsgNum: 已调用 DelMsg 接口删除，但还在回溯保留时间内的消息数量。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RewindMsgNum: int
         :param _MaxDelaySeconds: 飞行消息最大保留时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxDelaySeconds: int
         :param _TransactionPolicy: 事务消息策略。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TransactionPolicy: :class:`tencentcloud.cmq.v20190304.models.TransactionPolicy`
         :param _MsgRetentionSeconds: 消息保留周期。取值范围60-1296000秒（1min-15天），默认值345600秒（4 天）。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MsgRetentionSeconds: int
         :param _DelayMsgNum: 延迟消息数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DelayMsgNum: int
         :param _MaxMsgHeapNum: 最大堆积消息数。取值范围在公测期间为 1,000,000 - 10,000,000，正式上线后范围可达到 1000,000-1000,000,000。默认取值在公测期间为 10,000,000，正式上线后为 100,000,000。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxMsgHeapNum: int
         :param _PollingWaitSeconds: 消息接收长轮询等待时间。取值范围0 - 30秒，默认值0。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PollingWaitSeconds: int
         :param _Bps: 带宽限制。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Bps: int
         :param _InactiveMsgNum: 在队列中处于 Inactive 状态（正处于被消费状态）的消息总数，为近似值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InactiveMsgNum: int
         :param _DeadLetterPolicy: 死信队列策略。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeadLetterPolicy: :class:`tencentcloud.cmq.v20190304.models.DeadLetterPolicy`
         :param _ActiveMsgNum: 在队列中处于 Active 状态（不处于被消费状态）的消息总数，为近似值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActiveMsgNum: int
         :param _MaxMsgSize: 消息最大长度。取值范围1024 - 1048576 Byte（即1K - 1024K），默认值65536。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxMsgSize: int
         :param _MinMsgTime: 消息最小未消费时间，单位为秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MinMsgTime: int
         :param _DeadLetterSource: 死信队列。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeadLetterSource: list of DeadLetterSource
         :param _Transaction: 事务消息队列。true表示是事务消息，false表示不是事务消息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Transaction: bool
         :param _Qps: 每秒钟生产消息条数的限制，消费消息的大小是该值的1.1倍。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Qps: int
         :param _CreateTime: 队列的创建时间。返回 Unix 时间戳，精确到秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: int
         :param _Migrate: 是否迁移到新版本。0 表示仅同步元数据，1 表示迁移中，2 表示已经迁移完毕，3 表示回切状态，曾经迁移过，4 未迁移。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Migrate: int
         """
         self._QueueId = None
@@ -683,7 +648,6 @@ class QueueSet(AbstractModel):
     @property
     def RewindSeconds(self):
         """回溯队列的消息回溯时间最大值，取值范围0 - 43200秒，0表示不开启消息回溯。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RewindSeconds
@@ -695,7 +659,6 @@ class QueueSet(AbstractModel):
     @property
     def CreateUin(self):
         """创建者Uin。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CreateUin
@@ -707,7 +670,6 @@ class QueueSet(AbstractModel):
     @property
     def LastModifyTime(self):
         """最后一次修改队列属性的时间。返回 Unix 时间戳，精确到秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LastModifyTime
@@ -719,7 +681,6 @@ class QueueSet(AbstractModel):
     @property
     def VisibilityTimeout(self):
         """消息可见性超时。取值范围1 - 43200秒（即12小时内），默认值30。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._VisibilityTimeout
@@ -742,7 +703,6 @@ class QueueSet(AbstractModel):
     @property
     def Trace(self):
         """消息轨迹。true表示开启，false表示不开启。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Trace
@@ -754,7 +714,6 @@ class QueueSet(AbstractModel):
     @property
     def Tags(self):
         """关联的标签。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._Tags
@@ -766,7 +725,6 @@ class QueueSet(AbstractModel):
     @property
     def RewindMsgNum(self):
         """已调用 DelMsg 接口删除，但还在回溯保留时间内的消息数量。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RewindMsgNum
@@ -778,7 +736,6 @@ class QueueSet(AbstractModel):
     @property
     def MaxDelaySeconds(self):
         """飞行消息最大保留时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxDelaySeconds
@@ -802,7 +759,6 @@ class QueueSet(AbstractModel):
     @property
     def MsgRetentionSeconds(self):
         """消息保留周期。取值范围60-1296000秒（1min-15天），默认值345600秒（4 天）。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MsgRetentionSeconds
@@ -814,7 +770,6 @@ class QueueSet(AbstractModel):
     @property
     def DelayMsgNum(self):
         """延迟消息数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DelayMsgNum
@@ -826,7 +781,6 @@ class QueueSet(AbstractModel):
     @property
     def MaxMsgHeapNum(self):
         """最大堆积消息数。取值范围在公测期间为 1,000,000 - 10,000,000，正式上线后范围可达到 1000,000-1000,000,000。默认取值在公测期间为 10,000,000，正式上线后为 100,000,000。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxMsgHeapNum
@@ -838,7 +792,6 @@ class QueueSet(AbstractModel):
     @property
     def PollingWaitSeconds(self):
         """消息接收长轮询等待时间。取值范围0 - 30秒，默认值0。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PollingWaitSeconds
@@ -850,7 +803,6 @@ class QueueSet(AbstractModel):
     @property
     def Bps(self):
         """带宽限制。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Bps
@@ -862,7 +814,6 @@ class QueueSet(AbstractModel):
     @property
     def InactiveMsgNum(self):
         """在队列中处于 Inactive 状态（正处于被消费状态）的消息总数，为近似值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._InactiveMsgNum
@@ -886,7 +837,6 @@ class QueueSet(AbstractModel):
     @property
     def ActiveMsgNum(self):
         """在队列中处于 Active 状态（不处于被消费状态）的消息总数，为近似值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ActiveMsgNum
@@ -898,7 +848,6 @@ class QueueSet(AbstractModel):
     @property
     def MaxMsgSize(self):
         """消息最大长度。取值范围1024 - 1048576 Byte（即1K - 1024K），默认值65536。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxMsgSize
@@ -910,7 +859,6 @@ class QueueSet(AbstractModel):
     @property
     def MinMsgTime(self):
         """消息最小未消费时间，单位为秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MinMsgTime
@@ -922,7 +870,6 @@ class QueueSet(AbstractModel):
     @property
     def DeadLetterSource(self):
         """死信队列。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DeadLetterSource
         """
         return self._DeadLetterSource
@@ -946,7 +893,6 @@ class QueueSet(AbstractModel):
     @property
     def Qps(self):
         """每秒钟生产消息条数的限制，消费消息的大小是该值的1.1倍。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Qps
@@ -958,7 +904,6 @@ class QueueSet(AbstractModel):
     @property
     def CreateTime(self):
         """队列的创建时间。返回 Unix 时间戳，精确到秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CreateTime
@@ -970,7 +915,6 @@ class QueueSet(AbstractModel):
     @property
     def Migrate(self):
         """是否迁移到新版本。0 表示仅同步元数据，1 表示迁移中，2 表示已经迁移完毕，3 表示回切状态，曾经迁移过，4 未迁移。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Migrate
@@ -1039,10 +983,8 @@ class Tag(AbstractModel):
     def __init__(self):
         r"""
         :param _TagKey: 标签Key
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagKey: str
         :param _TagValue: 标签值
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagValue: str
         """
         self._TagKey = None
@@ -1051,7 +993,6 @@ class Tag(AbstractModel):
     @property
     def TagKey(self):
         """标签Key
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TagKey
@@ -1063,7 +1004,6 @@ class Tag(AbstractModel):
     @property
     def TagValue(self):
         """标签值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TagValue
@@ -1094,45 +1034,32 @@ class TopicSet(AbstractModel):
     def __init__(self):
         r"""
         :param _MsgCount: 当前该主题中消息数目（消息堆积数）。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MsgCount: int
         :param _TopicId: 主题的 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TopicId: str
         :param _MaxMsgSize: 消息最大长度。取值范围1024 - 1048576Byte（即1 - 1024K），默认值为65536。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxMsgSize: int
         :param _Trace: 消息轨迹。true表示开启，false表示不开启。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Trace: bool
         :param _Tags: 关联的标签。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
         :param _CreateUin: 创建者 Uin，CAM 鉴权 resource 由该字段组合而成。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateUin: int
         :param _FilterType: 描述用户创建订阅时选择的过滤策略：
 FilterType = 1表示用户使用 FilterTag 标签过滤;
 FilterType = 2表示用户使用 BindingKey 过滤。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FilterType: int
         :param _TopicName: 主题名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TopicName: str
         :param _LastModifyTime: 最后一次修改主题属性的时间。返回 Unix 时间戳，精确到秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LastModifyTime: int
         :param _MsgRetentionSeconds: 消息在主题中最长存活时间，从发送到该主题开始经过此参数指定的时间后，不论消息是否被成功推送给用户都将被删除，单位为秒。固定为一天（86400秒），该属性不能修改。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MsgRetentionSeconds: int
         :param _Qps: 每秒钟发布消息的条数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Qps: int
         :param _CreateTime: 主题的创建时间。返回 Unix 时间戳，精确到秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: int
         :param _Migrate: 是否迁移到新版本。0 表示未迁移，1 表示迁移中，2 表示已经迁移完毕，3 表示回切状态，曾经迁移过，4 未知状态。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Migrate: int
         """
         self._MsgCount = None
@@ -1152,7 +1079,6 @@ FilterType = 2表示用户使用 BindingKey 过滤。
     @property
     def MsgCount(self):
         """当前该主题中消息数目（消息堆积数）。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MsgCount
@@ -1164,7 +1090,6 @@ FilterType = 2表示用户使用 BindingKey 过滤。
     @property
     def TopicId(self):
         """主题的 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TopicId
@@ -1176,7 +1101,6 @@ FilterType = 2表示用户使用 BindingKey 过滤。
     @property
     def MaxMsgSize(self):
         """消息最大长度。取值范围1024 - 1048576Byte（即1 - 1024K），默认值为65536。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxMsgSize
@@ -1188,7 +1112,6 @@ FilterType = 2表示用户使用 BindingKey 过滤。
     @property
     def Trace(self):
         """消息轨迹。true表示开启，false表示不开启。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Trace
@@ -1200,7 +1123,6 @@ FilterType = 2表示用户使用 BindingKey 过滤。
     @property
     def Tags(self):
         """关联的标签。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._Tags
@@ -1212,7 +1134,6 @@ FilterType = 2表示用户使用 BindingKey 过滤。
     @property
     def CreateUin(self):
         """创建者 Uin，CAM 鉴权 resource 由该字段组合而成。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CreateUin
@@ -1226,7 +1147,6 @@ FilterType = 2表示用户使用 BindingKey 过滤。
         """描述用户创建订阅时选择的过滤策略：
 FilterType = 1表示用户使用 FilterTag 标签过滤;
 FilterType = 2表示用户使用 BindingKey 过滤。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FilterType
@@ -1238,7 +1158,6 @@ FilterType = 2表示用户使用 BindingKey 过滤。
     @property
     def TopicName(self):
         """主题名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TopicName
@@ -1250,7 +1169,6 @@ FilterType = 2表示用户使用 BindingKey 过滤。
     @property
     def LastModifyTime(self):
         """最后一次修改主题属性的时间。返回 Unix 时间戳，精确到秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LastModifyTime
@@ -1262,7 +1180,6 @@ FilterType = 2表示用户使用 BindingKey 过滤。
     @property
     def MsgRetentionSeconds(self):
         """消息在主题中最长存活时间，从发送到该主题开始经过此参数指定的时间后，不论消息是否被成功推送给用户都将被删除，单位为秒。固定为一天（86400秒），该属性不能修改。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MsgRetentionSeconds
@@ -1274,7 +1191,6 @@ FilterType = 2表示用户使用 BindingKey 过滤。
     @property
     def Qps(self):
         """每秒钟发布消息的条数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Qps
@@ -1286,7 +1202,6 @@ FilterType = 2表示用户使用 BindingKey 过滤。
     @property
     def CreateTime(self):
         """主题的创建时间。返回 Unix 时间戳，精确到秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CreateTime
@@ -1298,7 +1213,6 @@ FilterType = 2表示用户使用 BindingKey 过滤。
     @property
     def Migrate(self):
         """是否迁移到新版本。0 表示未迁移，1 表示迁移中，2 表示已经迁移完毕，3 表示回切状态，曾经迁移过，4 未知状态。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Migrate
@@ -1345,10 +1259,8 @@ class TransactionPolicy(AbstractModel):
     def __init__(self):
         r"""
         :param _MaxQueryCount: 最大查询次数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxQueryCount: int
         :param _FirstQueryInterval: 第一次回查时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FirstQueryInterval: int
         """
         self._MaxQueryCount = None
@@ -1357,7 +1269,6 @@ class TransactionPolicy(AbstractModel):
     @property
     def MaxQueryCount(self):
         """最大查询次数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxQueryCount
@@ -1369,7 +1280,6 @@ class TransactionPolicy(AbstractModel):
     @property
     def FirstQueryInterval(self):
         """第一次回查时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FirstQueryInterval

@@ -49,56 +49,6 @@ class FmuClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def BeautifyVideo(self, request):
-        """产品不再维护，准备下线。
-
-        视频美颜(此接口目前已下线)
-
-        :param request: Request instance for BeautifyVideo.
-        :type request: :class:`tencentcloud.fmu.v20191213.models.BeautifyVideoRequest`
-        :rtype: :class:`tencentcloud.fmu.v20191213.models.BeautifyVideoResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("BeautifyVideo", params, headers=headers)
-            response = json.loads(body)
-            model = models.BeautifyVideoResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def CancelBeautifyVideoJob(self, request):
-        """产品不再维护，准备下线。
-
-        撤销视频美颜任务请求
-
-        :param request: Request instance for CancelBeautifyVideoJob.
-        :type request: :class:`tencentcloud.fmu.v20191213.models.CancelBeautifyVideoJobRequest`
-        :rtype: :class:`tencentcloud.fmu.v20191213.models.CancelBeautifyVideoJobResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CancelBeautifyVideoJob", params, headers=headers)
-            response = json.loads(body)
-            model = models.CancelBeautifyVideoJobResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def CreateModel(self, request):
         """在使用LUT素材的modelid实现试唇色前，您需要先上传 LUT 格式的cube文件注册唇色ID。查看 [LUT文件的使用说明](https://cloud.tencent.com/document/product/1172/41701)。
 
@@ -161,31 +111,6 @@ class FmuClient(AbstractClient):
             body = self.call("GetModelList", params, headers=headers)
             response = json.loads(body)
             model = models.GetModelListResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def QueryBeautifyVideoJob(self, request):
-        """产品不再维护，准备下线。
-
-        查询视频美颜处理进度
-
-        :param request: Request instance for QueryBeautifyVideoJob.
-        :type request: :class:`tencentcloud.fmu.v20191213.models.QueryBeautifyVideoJobRequest`
-        :rtype: :class:`tencentcloud.fmu.v20191213.models.QueryBeautifyVideoJobResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("QueryBeautifyVideoJob", params, headers=headers)
-            response = json.loads(body)
-            model = models.QueryBeautifyVideoJobResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

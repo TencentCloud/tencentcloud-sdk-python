@@ -395,6 +395,29 @@ class MongodbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDBInstanceNamespace(self, request):
+        """本接口（DescribeDBInstanceNamespace）用于查询数据库的表信息。
+
+        :param request: Request instance for DescribeDBInstanceNamespace.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeDBInstanceNamespaceRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.DescribeDBInstanceNamespaceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBInstanceNamespace", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBInstanceNamespaceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDBInstanceNodeProperty(self, request):
         """本接口用于查询节点的属性，包括节点所在可用区、节点名称、地址、角色、状态、主从延迟、优先级、投票权、标签等属性。
 

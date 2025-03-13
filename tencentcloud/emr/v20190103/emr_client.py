@@ -1273,6 +1273,29 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyInspectionSettings(self, request):
+        """设置巡检任务配置
+
+        :param request: Request instance for ModifyInspectionSettings.
+        :type request: :class:`tencentcloud.emr.v20190103.models.ModifyInspectionSettingsRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ModifyInspectionSettingsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInspectionSettings", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInspectionSettingsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyInstanceBasic(self, request):
         """修改集群名称
 

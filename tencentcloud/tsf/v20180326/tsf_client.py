@@ -2885,6 +2885,29 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeMicroservicesByGroupIds(self, request):
+        """通过部署组ID获取微服务
+
+        :param request: Request instance for DescribeMicroservicesByGroupIds.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeMicroservicesByGroupIdsRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeMicroservicesByGroupIdsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMicroservicesByGroupIds", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMicroservicesByGroupIdsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeMsApiList(self, request):
         """查询服务API列表
 

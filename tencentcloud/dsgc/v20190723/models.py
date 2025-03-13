@@ -8796,6 +8796,8 @@ class DescribeBindDBListRequest(AbstractModel):
 
     @property
     def DataSourceType(self):
+        warnings.warn("parameter `DataSourceType` is deprecated", DeprecationWarning) 
+
         """数据源类型
         :rtype: str
         """
@@ -8803,10 +8805,14 @@ class DescribeBindDBListRequest(AbstractModel):
 
     @DataSourceType.setter
     def DataSourceType(self, DataSourceType):
+        warnings.warn("parameter `DataSourceType` is deprecated", DeprecationWarning) 
+
         self._DataSourceType = DataSourceType
 
     @property
     def DataSourceId(self):
+        warnings.warn("parameter `DataSourceId` is deprecated", DeprecationWarning) 
+
         """数据源ID
         :rtype: str
         """
@@ -8814,6 +8820,8 @@ class DescribeBindDBListRequest(AbstractModel):
 
     @DataSourceId.setter
     def DataSourceId(self, DataSourceId):
+        warnings.warn("parameter `DataSourceId` is deprecated", DeprecationWarning) 
+
         self._DataSourceId = DataSourceId
 
 

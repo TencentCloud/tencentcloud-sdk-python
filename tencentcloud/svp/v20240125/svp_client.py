@@ -49,6 +49,29 @@ class SvpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSavingPlanCoverage(self, request):
+        """查询当前用户节省计划覆盖率明细数据，如无特别说明，金额单位均为元（国内站）或者美元（国际站）。
+
+        :param request: Request instance for DescribeSavingPlanCoverage.
+        :type request: :class:`tencentcloud.svp.v20240125.models.DescribeSavingPlanCoverageRequest`
+        :rtype: :class:`tencentcloud.svp.v20240125.models.DescribeSavingPlanCoverageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSavingPlanCoverage", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSavingPlanCoverageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSavingPlanDeduct(self, request):
         """查询节省计划抵扣明细
 

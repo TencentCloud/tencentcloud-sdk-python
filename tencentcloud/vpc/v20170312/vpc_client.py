@@ -725,6 +725,29 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CheckGatewayFlowMonitor(self, request):
+        """本接口（CheckGatewayFlowMonitor）用于查询网关是否启用流量监控。
+
+        :param request: Request instance for CheckGatewayFlowMonitor.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CheckGatewayFlowMonitorRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CheckGatewayFlowMonitorResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckGatewayFlowMonitor", params, headers=headers)
+            response = json.loads(body)
+            model = models.CheckGatewayFlowMonitorResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CheckNetDetectState(self, request):
         """本接口（CheckNetDetectState）用于验证网络探测。
 

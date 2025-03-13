@@ -4075,6 +4075,115 @@ class DescribeDBInstanceDealResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDBInstanceNamespaceRequest(AbstractModel):
+    """DescribeDBInstanceNamespace请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 指定查询数据库所属的实例 ID，支持批量查询。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+        :type InstanceId: str
+        :param _DbName: 指定查询的数据库名。为空时，返回当前实例的全部数据库列表。
+        :type DbName: str
+        """
+        self._InstanceId = None
+        self._DbName = None
+
+    @property
+    def InstanceId(self):
+        """指定查询数据库所属的实例 ID，支持批量查询。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DbName(self):
+        """指定查询的数据库名。为空时，返回当前实例的全部数据库列表。
+        :rtype: str
+        """
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._DbName = params.get("DbName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBInstanceNamespaceResponse(AbstractModel):
+    """DescribeDBInstanceNamespace返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Databases: 查询实例的数据库列表。若未使用 DbName 指定具体查询的数据库，则仅返回查询实例所有的数据库列表，而不返回 Collections 集合信息。
+        :type Databases: list of str
+        :param _Collections: 查询的集合信息。指定 DbName 时，则仅返回该数据库下的集合列表。
+        :type Collections: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Databases = None
+        self._Collections = None
+        self._RequestId = None
+
+    @property
+    def Databases(self):
+        """查询实例的数据库列表。若未使用 DbName 指定具体查询的数据库，则仅返回查询实例所有的数据库列表，而不返回 Collections 集合信息。
+        :rtype: list of str
+        """
+        return self._Databases
+
+    @Databases.setter
+    def Databases(self, Databases):
+        self._Databases = Databases
+
+    @property
+    def Collections(self):
+        """查询的集合信息。指定 DbName 时，则仅返回该数据库下的集合列表。
+        :rtype: list of str
+        """
+        return self._Collections
+
+    @Collections.setter
+    def Collections(self, Collections):
+        self._Collections = Collections
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Databases = params.get("Databases")
+        self._Collections = params.get("Collections")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDBInstanceNodePropertyRequest(AbstractModel):
     """DescribeDBInstanceNodeProperty请求参数结构体
 

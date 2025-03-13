@@ -758,59 +758,41 @@ class AddDeviceData(AbstractModel):
     def __init__(self):
         r"""
         :param _DeviceId: 设备iD
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceId: str
         :param _Code: 设备编码（国标设备即我们为设备生成的20位国标编码，rtmp 设备为10 位设备编码）
-注意：此字段可能返回 null，表示取不到有效值。
         :type Code: str
         :param _Name: 设备名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _AccessProtocol: 设备接入协议，1:RTMP,2:GB,3:GW 
-注意：此字段可能返回 null，表示取不到有效值。
         :type AccessProtocol: int
         :param _Type: 设备类型，1:IPC,2:NVR
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: int
         :param _ClusterId: 设备接入服务节点ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterId: str
         :param _ClusterName: 设备接入服务节点名称
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterName: str
         :param _TransportProtocol: 设备流传输协议，1:UDP,2:TCP 
-注意：此字段可能返回 null，表示取不到有效值。
         :type TransportProtocol: int
         :param _Password: 设备密码
-注意：此字段可能返回 null，表示取不到有效值。
         :type Password: str
         :param _Description: 设备描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _Status: 设备状态，0:未注册,1:在线,2:离线,3:禁用
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _OrganizationId: 设备所属组织ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type OrganizationId: int
         :param _GatewayId: 设备接入网关ID，从查询网关列表接口中获取（仅网关接入需要）
-注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayId: str
         :param _ProtocolType: 网关接入协议类型，1.海康SDK，2.大华SDK，3.宇视SDK，4.Onvif（仅网关接入需要）
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProtocolType: int
         :param _Ip: 设备接入IP（仅网关接入需要）
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ip: str
         :param _Port: 设备Port（仅网关接入需要）
-注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
         :param _Username: 设备用户名（仅网关接入需要）
-注意：此字段可能返回 null，表示取不到有效值。
         :type Username: str
         :param _AppId: 用户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: int
         """
         self._DeviceId = None
@@ -835,7 +817,6 @@ class AddDeviceData(AbstractModel):
     @property
     def DeviceId(self):
         """设备iD
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceId
@@ -847,7 +828,6 @@ class AddDeviceData(AbstractModel):
     @property
     def Code(self):
         """设备编码（国标设备即我们为设备生成的20位国标编码，rtmp 设备为10 位设备编码）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Code
@@ -859,7 +839,6 @@ class AddDeviceData(AbstractModel):
     @property
     def Name(self):
         """设备名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -871,7 +850,6 @@ class AddDeviceData(AbstractModel):
     @property
     def AccessProtocol(self):
         """设备接入协议，1:RTMP,2:GB,3:GW 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AccessProtocol
@@ -883,7 +861,6 @@ class AddDeviceData(AbstractModel):
     @property
     def Type(self):
         """设备类型，1:IPC,2:NVR
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Type
@@ -895,7 +872,6 @@ class AddDeviceData(AbstractModel):
     @property
     def ClusterId(self):
         """设备接入服务节点ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterId
@@ -908,7 +884,6 @@ class AddDeviceData(AbstractModel):
     def ClusterName(self):
         """设备接入服务节点名称
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterName
@@ -920,7 +895,6 @@ class AddDeviceData(AbstractModel):
     @property
     def TransportProtocol(self):
         """设备流传输协议，1:UDP,2:TCP 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TransportProtocol
@@ -932,7 +906,6 @@ class AddDeviceData(AbstractModel):
     @property
     def Password(self):
         """设备密码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Password
@@ -944,7 +917,6 @@ class AddDeviceData(AbstractModel):
     @property
     def Description(self):
         """设备描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -956,7 +928,6 @@ class AddDeviceData(AbstractModel):
     @property
     def Status(self):
         """设备状态，0:未注册,1:在线,2:离线,3:禁用
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -968,7 +939,6 @@ class AddDeviceData(AbstractModel):
     @property
     def OrganizationId(self):
         """设备所属组织ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._OrganizationId
@@ -980,7 +950,6 @@ class AddDeviceData(AbstractModel):
     @property
     def GatewayId(self):
         """设备接入网关ID，从查询网关列表接口中获取（仅网关接入需要）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GatewayId
@@ -992,7 +961,6 @@ class AddDeviceData(AbstractModel):
     @property
     def ProtocolType(self):
         """网关接入协议类型，1.海康SDK，2.大华SDK，3.宇视SDK，4.Onvif（仅网关接入需要）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ProtocolType
@@ -1004,7 +972,6 @@ class AddDeviceData(AbstractModel):
     @property
     def Ip(self):
         """设备接入IP（仅网关接入需要）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Ip
@@ -1016,7 +983,6 @@ class AddDeviceData(AbstractModel):
     @property
     def Port(self):
         """设备Port（仅网关接入需要）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Port
@@ -1028,7 +994,6 @@ class AddDeviceData(AbstractModel):
     @property
     def Username(self):
         """设备用户名（仅网关接入需要）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Username
@@ -1040,7 +1005,6 @@ class AddDeviceData(AbstractModel):
     @property
     def AppId(self):
         """用户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AppId
@@ -1087,28 +1051,20 @@ class AddOrgData(AbstractModel):
     def __init__(self):
         r"""
         :param _OrganizationId: 组织 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type OrganizationId: str
         :param _Name: 组织名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _ParentId: 组织父节点 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ParentId: str
         :param _Level: 组织层级
-注意：此字段可能返回 null，表示取不到有效值。
         :type Level: int
         :param _AppId: 用户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: int
         :param _ParentIds: 组织结构
-注意：此字段可能返回 null，表示取不到有效值。
         :type ParentIds: str
         :param _Total: 设备总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _Online: 设备在线数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Online: int
         """
         self._OrganizationId = None
@@ -1123,7 +1079,6 @@ class AddOrgData(AbstractModel):
     @property
     def OrganizationId(self):
         """组织 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OrganizationId
@@ -1135,7 +1090,6 @@ class AddOrgData(AbstractModel):
     @property
     def Name(self):
         """组织名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -1147,7 +1101,6 @@ class AddOrgData(AbstractModel):
     @property
     def ParentId(self):
         """组织父节点 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ParentId
@@ -1159,7 +1112,6 @@ class AddOrgData(AbstractModel):
     @property
     def Level(self):
         """组织层级
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Level
@@ -1171,7 +1123,6 @@ class AddOrgData(AbstractModel):
     @property
     def AppId(self):
         """用户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AppId
@@ -1183,7 +1134,6 @@ class AddOrgData(AbstractModel):
     @property
     def ParentIds(self):
         """组织结构
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ParentIds
@@ -1195,7 +1145,6 @@ class AddOrgData(AbstractModel):
     @property
     def Total(self):
         """设备总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -1207,7 +1156,6 @@ class AddOrgData(AbstractModel):
     @property
     def Online(self):
         """设备在线数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Online
@@ -1661,25 +1609,18 @@ class AddRecordBackupTemplateData(AbstractModel):
     def __init__(self):
         r"""
         :param _TemplateId: 模板ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateId: str
         :param _TemplateName: 模板名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateName: str
         :param _TimeSections: 上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimeSections: list of RecordTemplateTimeSections
         :param _DevTimeSections: 录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
-注意：此字段可能返回 null，表示取不到有效值。
         :type DevTimeSections: list of RecordTemplateTimeSections
         :param _Scale: 上云倍速（支持1，2，4倍速）
-注意：此字段可能返回 null，表示取不到有效值。
         :type Scale: int
         :param _CreateAt: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateAt: str
         :param _UpdateAt: 更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateAt: str
         """
         self._TemplateId = None
@@ -1693,7 +1634,6 @@ class AddRecordBackupTemplateData(AbstractModel):
     @property
     def TemplateId(self):
         """模板ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TemplateId
@@ -1705,7 +1645,6 @@ class AddRecordBackupTemplateData(AbstractModel):
     @property
     def TemplateName(self):
         """模板名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TemplateName
@@ -1717,7 +1656,6 @@ class AddRecordBackupTemplateData(AbstractModel):
     @property
     def TimeSections(self):
         """上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RecordTemplateTimeSections
         """
         return self._TimeSections
@@ -1729,7 +1667,6 @@ class AddRecordBackupTemplateData(AbstractModel):
     @property
     def DevTimeSections(self):
         """录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RecordTemplateTimeSections
         """
         return self._DevTimeSections
@@ -1741,7 +1678,6 @@ class AddRecordBackupTemplateData(AbstractModel):
     @property
     def Scale(self):
         """上云倍速（支持1，2，4倍速）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Scale
@@ -1753,7 +1689,6 @@ class AddRecordBackupTemplateData(AbstractModel):
     @property
     def CreateAt(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateAt
@@ -1765,7 +1700,6 @@ class AddRecordBackupTemplateData(AbstractModel):
     @property
     def UpdateAt(self):
         """更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateAt
@@ -2156,7 +2090,6 @@ class AddRecordRetrieveTaskData(AbstractModel):
         :param _Capacity: 取回容量，单位MB
         :type Capacity: float
         :param _Describe: 任务描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Describe: str
         """
         self._TaskId = None
@@ -2260,7 +2193,6 @@ class AddRecordRetrieveTaskData(AbstractModel):
     @property
     def Describe(self):
         """任务描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Describe
@@ -2575,28 +2507,20 @@ class AddStreamAuthData(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: 鉴权配置ID（uuid）
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
         :param _PullState: 是否开播放鉴权（1:开启,0:关闭）
-注意：此字段可能返回 null，表示取不到有效值。
         :type PullState: int
         :param _PullSecret: 播放密钥（仅支持字母数字，长度0-10位）
-注意：此字段可能返回 null，表示取不到有效值。
         :type PullSecret: str
         :param _PullExpired: 播放过期时间（单位：分钟）
-注意：此字段可能返回 null，表示取不到有效值。
         :type PullExpired: int
         :param _PushState: 是否开启推流鉴权（1:开启,0:关闭）
-注意：此字段可能返回 null，表示取不到有效值。
         :type PushState: int
         :param _PushSecret: 推流密钥（仅支持字母数字，长度0-10位）
-注意：此字段可能返回 null，表示取不到有效值。
         :type PushSecret: str
         :param _PushExpired: 推流过期时间（单位：分钟）
-注意：此字段可能返回 null，表示取不到有效值。
         :type PushExpired: int
         :param _AppId: 用户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: int
         """
         self._Id = None
@@ -2611,7 +2535,6 @@ class AddStreamAuthData(AbstractModel):
     @property
     def Id(self):
         """鉴权配置ID（uuid）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Id
@@ -2623,7 +2546,6 @@ class AddStreamAuthData(AbstractModel):
     @property
     def PullState(self):
         """是否开播放鉴权（1:开启,0:关闭）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PullState
@@ -2635,7 +2557,6 @@ class AddStreamAuthData(AbstractModel):
     @property
     def PullSecret(self):
         """播放密钥（仅支持字母数字，长度0-10位）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PullSecret
@@ -2647,7 +2568,6 @@ class AddStreamAuthData(AbstractModel):
     @property
     def PullExpired(self):
         """播放过期时间（单位：分钟）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PullExpired
@@ -2659,7 +2579,6 @@ class AddStreamAuthData(AbstractModel):
     @property
     def PushState(self):
         """是否开启推流鉴权（1:开启,0:关闭）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PushState
@@ -2671,7 +2590,6 @@ class AddStreamAuthData(AbstractModel):
     @property
     def PushSecret(self):
         """推流密钥（仅支持字母数字，长度0-10位）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PushSecret
@@ -2683,7 +2601,6 @@ class AddStreamAuthData(AbstractModel):
     @property
     def PushExpired(self):
         """推流过期时间（单位：分钟）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PushExpired
@@ -2695,7 +2612,6 @@ class AddStreamAuthData(AbstractModel):
     @property
     def AppId(self):
         """用户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AppId
@@ -3277,7 +3193,6 @@ class BatchOperateDeviceData(AbstractModel):
     def __init__(self):
         r"""
         :param _TaskId: 任务 ID（用于在查询任务的子任务列表接口ListSubTasks中查询任务进度）
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
         """
         self._TaskId = None
@@ -3285,7 +3200,6 @@ class BatchOperateDeviceData(AbstractModel):
     @property
     def TaskId(self):
         """任务 ID（用于在查询任务的子任务列表接口ListSubTasks中查询任务进度）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskId
@@ -3411,10 +3325,8 @@ class BitRateInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _ChannelId: 通道Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChannelId: str
         :param _Bitrate: 码率,单位:kbps
-注意：此字段可能返回 null，表示取不到有效值。
         :type Bitrate: float
         """
         self._ChannelId = None
@@ -3423,7 +3335,6 @@ class BitRateInfo(AbstractModel):
     @property
     def ChannelId(self):
         """通道Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ChannelId
@@ -3435,7 +3346,6 @@ class BitRateInfo(AbstractModel):
     @property
     def Bitrate(self):
         """码率,单位:kbps
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Bitrate
@@ -3795,12 +3705,10 @@ class ChannelAttrInfo(AbstractModel):
         :param _DeviceId: 设备通道所属的设备ID
         :type DeviceId: str
         :param _DeviceName: 设备通道所属的设备名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceName: str
         :param _ChannelId: 设备通道ID
         :type ChannelId: str
         :param _ChannelName: 设备通道名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChannelName: str
         """
         self._DeviceId = None
@@ -3822,7 +3730,6 @@ class ChannelAttrInfo(AbstractModel):
     @property
     def DeviceName(self):
         """设备通道所属的设备名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceName
@@ -3845,7 +3752,6 @@ class ChannelAttrInfo(AbstractModel):
     @property
     def ChannelName(self):
         """设备通道名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ChannelName
@@ -4271,13 +4177,10 @@ class ControlDeviceStreamData(AbstractModel):
     def __init__(self):
         r"""
         :param _Flv: flv 流地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type Flv: str
         :param _Hls: hls 流地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type Hls: str
         :param _Rtmp: rtmp 流地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type Rtmp: str
         """
         self._Flv = None
@@ -4287,7 +4190,6 @@ class ControlDeviceStreamData(AbstractModel):
     @property
     def Flv(self):
         """flv 流地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Flv
@@ -4299,7 +4201,6 @@ class ControlDeviceStreamData(AbstractModel):
     @property
     def Hls(self):
         """hls 流地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Hls
@@ -4311,7 +4212,6 @@ class ControlDeviceStreamData(AbstractModel):
     @property
     def Rtmp(self):
         """rtmp 流地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Rtmp
@@ -5743,34 +5643,24 @@ class DescribeDeviceChannelData(AbstractModel):
     def __init__(self):
         r"""
         :param _DeviceId: 设备 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceId: str
         :param _ChannelId: 通道 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChannelId: str
         :param _ChannelCode: 通道编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChannelCode: str
         :param _Name: 通道名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Status: 流状态（0:未传输,1:传输中）
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _PTZType: 是否可控 Ptz（0:不可控,1:可控）
-注意：此字段可能返回 null，表示取不到有效值。
         :type PTZType: int
         :param _Manufacturer: 通道厂商
-注意：此字段可能返回 null，表示取不到有效值。
         :type Manufacturer: str
         :param _Resolution: 通道支持分辨率（分辨率列表由‘/’隔开，国标协议样例（6/3），自定义样例（12800960/640480））
-注意：此字段可能返回 null，表示取不到有效值。
         :type Resolution: str
         :param _State: 通道在离线状态（0:离线,1:在线）
-注意：此字段可能返回 null，表示取不到有效值。
         :type State: int
         :param _Region: 所在地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         """
         self._DeviceId = None
@@ -5787,7 +5677,6 @@ class DescribeDeviceChannelData(AbstractModel):
     @property
     def DeviceId(self):
         """设备 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceId
@@ -5799,7 +5688,6 @@ class DescribeDeviceChannelData(AbstractModel):
     @property
     def ChannelId(self):
         """通道 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ChannelId
@@ -5811,7 +5699,6 @@ class DescribeDeviceChannelData(AbstractModel):
     @property
     def ChannelCode(self):
         """通道编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ChannelCode
@@ -5823,7 +5710,6 @@ class DescribeDeviceChannelData(AbstractModel):
     @property
     def Name(self):
         """通道名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -5835,7 +5721,6 @@ class DescribeDeviceChannelData(AbstractModel):
     @property
     def Status(self):
         """流状态（0:未传输,1:传输中）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -5847,7 +5732,6 @@ class DescribeDeviceChannelData(AbstractModel):
     @property
     def PTZType(self):
         """是否可控 Ptz（0:不可控,1:可控）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PTZType
@@ -5859,7 +5743,6 @@ class DescribeDeviceChannelData(AbstractModel):
     @property
     def Manufacturer(self):
         """通道厂商
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Manufacturer
@@ -5871,7 +5754,6 @@ class DescribeDeviceChannelData(AbstractModel):
     @property
     def Resolution(self):
         """通道支持分辨率（分辨率列表由‘/’隔开，国标协议样例（6/3），自定义样例（12800960/640480））
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Resolution
@@ -5883,7 +5765,6 @@ class DescribeDeviceChannelData(AbstractModel):
     @property
     def State(self):
         """通道在离线状态（0:离线,1:在线）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._State
@@ -5895,7 +5776,6 @@ class DescribeDeviceChannelData(AbstractModel):
     @property
     def Region(self):
         """所在地域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Region
@@ -6018,98 +5898,67 @@ class DescribeDeviceData(AbstractModel):
     def __init__(self):
         r"""
         :param _DeviceId: 设备ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceId: str
         :param _Code: 设备编码（国标设备即我们为设备生成的20位国标编码，rtmp 设备为10 位设备编码）
-注意：此字段可能返回 null，表示取不到有效值。
         :type Code: str
         :param _Name: 设备名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _AccessProtocol: 设备接入协议，1:RTMP,2:GB,3:GW 
-注意：此字段可能返回 null，表示取不到有效值。
         :type AccessProtocol: int
         :param _Type: 设备类型，1:IPC,2:NVR
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: int
         :param _ClusterId: 设备接入服务节点id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterId: str
         :param _ClusterName: 设备接入服务节点名称
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterName: str
         :param _TransportProtocol: 设备流传输协议，1:UDP,2:TCP 
-注意：此字段可能返回 null，表示取不到有效值。
         :type TransportProtocol: int
         :param _Password: 设备密码
-注意：此字段可能返回 null，表示取不到有效值。
         :type Password: str
         :param _Description: 设备描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _SipId: sip服务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type SipId: str
         :param _SipDomain: sip服务域
-注意：此字段可能返回 null，表示取不到有效值。
         :type SipDomain: str
         :param _SipIp: sip服务IP地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type SipIp: str
         :param _SipPort: sip服务端口
-注意：此字段可能返回 null，表示取不到有效值。
         :type SipPort: int
         :param _PushStreamUrl: Rtmp设备推流地址(仅rtmp设备有效)
-注意：此字段可能返回 null，表示取不到有效值。
         :type PushStreamUrl: str
         :param _Status: 设备状态，0:未注册,1:在线,2:离线,3:禁用
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _OrganizationId: 设备所属组织ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type OrganizationId: str
         :param _GatewayId: 设备接入网关ID，从查询网关列表接口中获取（仅网关接入需要）
-注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayId: str
         :param _GatewayName: 设备所属网关名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayName: str
         :param _ProtocolTypeName: 设备网关协议名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProtocolTypeName: str
         :param _ProtocolType: 网关接入协议类型，1.海康SDK，2.大华SDK，3.宇视SDK，4.Onvif（仅网关接入需要）
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProtocolType: int
         :param _Ip: 设备接入IP
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ip: str
         :param _Port: 设备Port
-注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
         :param _Username: 设备用户名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Username: str
         :param _Region: 设备地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         :param _Manufacturer: 设备厂商
-注意：此字段可能返回 null，表示取不到有效值。
         :type Manufacturer: str
         :param _AudioSwitch: 音频关开（0：关闭；1：开启）关闭时丢弃音频	
-注意：此字段可能返回 null，表示取不到有效值。
         :type AudioSwitch: int
         :param _SubscribeSwitch: 订阅开关（0：关闭；1：开启）默认开启，开启状态下会订阅设备通道变化，仅国标NVR设备有效	
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubscribeSwitch: int
         :param _AppName: RTMP推流地址自定义appName
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppName: str
         :param _StreamName: RTMP推流地址自定义streamName
-注意：此字段可能返回 null，表示取不到有效值。
         :type StreamName: str
         :param _SilentFrameSwitch: 是否开启静音帧（0：关闭；1 开启）
-注意：此字段可能返回 null，表示取不到有效值。
         :type SilentFrameSwitch: int
         """
         self._DeviceId = None
@@ -6147,7 +5996,6 @@ class DescribeDeviceData(AbstractModel):
     @property
     def DeviceId(self):
         """设备ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceId
@@ -6159,7 +6007,6 @@ class DescribeDeviceData(AbstractModel):
     @property
     def Code(self):
         """设备编码（国标设备即我们为设备生成的20位国标编码，rtmp 设备为10 位设备编码）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Code
@@ -6171,7 +6018,6 @@ class DescribeDeviceData(AbstractModel):
     @property
     def Name(self):
         """设备名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -6183,7 +6029,6 @@ class DescribeDeviceData(AbstractModel):
     @property
     def AccessProtocol(self):
         """设备接入协议，1:RTMP,2:GB,3:GW 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AccessProtocol
@@ -6195,7 +6040,6 @@ class DescribeDeviceData(AbstractModel):
     @property
     def Type(self):
         """设备类型，1:IPC,2:NVR
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Type
@@ -6207,7 +6051,6 @@ class DescribeDeviceData(AbstractModel):
     @property
     def ClusterId(self):
         """设备接入服务节点id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterId
@@ -6220,7 +6063,6 @@ class DescribeDeviceData(AbstractModel):
     def ClusterName(self):
         """设备接入服务节点名称
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterName
@@ -6232,7 +6074,6 @@ class DescribeDeviceData(AbstractModel):
     @property
     def TransportProtocol(self):
         """设备流传输协议，1:UDP,2:TCP 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TransportProtocol
@@ -6244,7 +6085,6 @@ class DescribeDeviceData(AbstractModel):
     @property
     def Password(self):
         """设备密码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Password
@@ -6256,7 +6096,6 @@ class DescribeDeviceData(AbstractModel):
     @property
     def Description(self):
         """设备描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -6268,7 +6107,6 @@ class DescribeDeviceData(AbstractModel):
     @property
     def SipId(self):
         """sip服务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SipId
@@ -6280,7 +6118,6 @@ class DescribeDeviceData(AbstractModel):
     @property
     def SipDomain(self):
         """sip服务域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SipDomain
@@ -6292,7 +6129,6 @@ class DescribeDeviceData(AbstractModel):
     @property
     def SipIp(self):
         """sip服务IP地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SipIp
@@ -6304,7 +6140,6 @@ class DescribeDeviceData(AbstractModel):
     @property
     def SipPort(self):
         """sip服务端口
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SipPort
@@ -6316,7 +6151,6 @@ class DescribeDeviceData(AbstractModel):
     @property
     def PushStreamUrl(self):
         """Rtmp设备推流地址(仅rtmp设备有效)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PushStreamUrl
@@ -6328,7 +6162,6 @@ class DescribeDeviceData(AbstractModel):
     @property
     def Status(self):
         """设备状态，0:未注册,1:在线,2:离线,3:禁用
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -6340,7 +6173,6 @@ class DescribeDeviceData(AbstractModel):
     @property
     def OrganizationId(self):
         """设备所属组织ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OrganizationId
@@ -6352,7 +6184,6 @@ class DescribeDeviceData(AbstractModel):
     @property
     def GatewayId(self):
         """设备接入网关ID，从查询网关列表接口中获取（仅网关接入需要）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GatewayId
@@ -6364,7 +6195,6 @@ class DescribeDeviceData(AbstractModel):
     @property
     def GatewayName(self):
         """设备所属网关名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GatewayName
@@ -6376,7 +6206,6 @@ class DescribeDeviceData(AbstractModel):
     @property
     def ProtocolTypeName(self):
         """设备网关协议名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProtocolTypeName
@@ -6388,7 +6217,6 @@ class DescribeDeviceData(AbstractModel):
     @property
     def ProtocolType(self):
         """网关接入协议类型，1.海康SDK，2.大华SDK，3.宇视SDK，4.Onvif（仅网关接入需要）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ProtocolType
@@ -6400,7 +6228,6 @@ class DescribeDeviceData(AbstractModel):
     @property
     def Ip(self):
         """设备接入IP
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Ip
@@ -6412,7 +6239,6 @@ class DescribeDeviceData(AbstractModel):
     @property
     def Port(self):
         """设备Port
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Port
@@ -6424,7 +6250,6 @@ class DescribeDeviceData(AbstractModel):
     @property
     def Username(self):
         """设备用户名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Username
@@ -6436,7 +6261,6 @@ class DescribeDeviceData(AbstractModel):
     @property
     def Region(self):
         """设备地域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Region
@@ -6448,7 +6272,6 @@ class DescribeDeviceData(AbstractModel):
     @property
     def Manufacturer(self):
         """设备厂商
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Manufacturer
@@ -6460,7 +6283,6 @@ class DescribeDeviceData(AbstractModel):
     @property
     def AudioSwitch(self):
         """音频关开（0：关闭；1：开启）关闭时丢弃音频	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AudioSwitch
@@ -6472,7 +6294,6 @@ class DescribeDeviceData(AbstractModel):
     @property
     def SubscribeSwitch(self):
         """订阅开关（0：关闭；1：开启）默认开启，开启状态下会订阅设备通道变化，仅国标NVR设备有效	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SubscribeSwitch
@@ -6484,7 +6305,6 @@ class DescribeDeviceData(AbstractModel):
     @property
     def AppName(self):
         """RTMP推流地址自定义appName
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AppName
@@ -6496,7 +6316,6 @@ class DescribeDeviceData(AbstractModel):
     @property
     def StreamName(self):
         """RTMP推流地址自定义streamName
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StreamName
@@ -6508,7 +6327,6 @@ class DescribeDeviceData(AbstractModel):
     @property
     def SilentFrameSwitch(self):
         """是否开启静音帧（0：关闭；1 开启）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SilentFrameSwitch
@@ -6568,10 +6386,8 @@ class DescribeDevicePresetData(AbstractModel):
     def __init__(self):
         r"""
         :param _Index: 预置位索引    只支持1-10的索引
-注意：此字段可能返回 null，表示取不到有效值。
         :type Index: int
         :param _Name: 预置位名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         """
         self._Index = None
@@ -6580,7 +6396,6 @@ class DescribeDevicePresetData(AbstractModel):
     @property
     def Index(self):
         """预置位索引    只支持1-10的索引
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Index
@@ -6592,7 +6407,6 @@ class DescribeDevicePresetData(AbstractModel):
     @property
     def Name(self):
         """预置位名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -6707,13 +6521,10 @@ class DescribeDeviceRegion(AbstractModel):
     def __init__(self):
         r"""
         :param _Label: 服务节点描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
         :param _Value: 服务节点 ID（对应为其他接口中所需的 ClusterId）
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         :param _Region: 地域信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         """
         self._Label = None
@@ -6723,7 +6534,6 @@ class DescribeDeviceRegion(AbstractModel):
     @property
     def Label(self):
         """服务节点描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Label
@@ -6735,7 +6545,6 @@ class DescribeDeviceRegion(AbstractModel):
     @property
     def Value(self):
         """服务节点 ID（对应为其他接口中所需的 ClusterId）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -6747,7 +6556,6 @@ class DescribeDeviceRegion(AbstractModel):
     @property
     def Region(self):
         """地域信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Region
@@ -6833,31 +6641,22 @@ class DescribeDomainData(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: 域名ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
         :param _PlayDomain: 播放域名
-注意：此字段可能返回 null，表示取不到有效值。
         :type PlayDomain: str
         :param _InternalDomain: CNAME 记录值
-注意：此字段可能返回 null，表示取不到有效值。
         :type InternalDomain: str
         :param _HaveCert: 是否上传证书（0：否，1：是）
-注意：此字段可能返回 null，表示取不到有效值。
         :type HaveCert: int
         :param _ClusterId: 服务节点 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterId: str
         :param _ClusterName: 服务节点名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterName: str
         :param _AppId: 用户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: int
         :param _CertId: 证书ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type CertId: str
         :param _DomainType: 域名类型 0:拉流域名 1:推流域名
-注意：此字段可能返回 null，表示取不到有效值。
         :type DomainType: int
         """
         self._Id = None
@@ -6873,7 +6672,6 @@ class DescribeDomainData(AbstractModel):
     @property
     def Id(self):
         """域名ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Id
@@ -6885,7 +6683,6 @@ class DescribeDomainData(AbstractModel):
     @property
     def PlayDomain(self):
         """播放域名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PlayDomain
@@ -6897,7 +6694,6 @@ class DescribeDomainData(AbstractModel):
     @property
     def InternalDomain(self):
         """CNAME 记录值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InternalDomain
@@ -6909,7 +6705,6 @@ class DescribeDomainData(AbstractModel):
     @property
     def HaveCert(self):
         """是否上传证书（0：否，1：是）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._HaveCert
@@ -6921,7 +6716,6 @@ class DescribeDomainData(AbstractModel):
     @property
     def ClusterId(self):
         """服务节点 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterId
@@ -6933,7 +6727,6 @@ class DescribeDomainData(AbstractModel):
     @property
     def ClusterName(self):
         """服务节点名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterName
@@ -6945,7 +6738,6 @@ class DescribeDomainData(AbstractModel):
     @property
     def AppId(self):
         """用户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AppId
@@ -6957,7 +6749,6 @@ class DescribeDomainData(AbstractModel):
     @property
     def CertId(self):
         """证书ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CertId
@@ -6969,7 +6760,6 @@ class DescribeDomainData(AbstractModel):
     @property
     def DomainType(self):
         """域名类型 0:拉流域名 1:推流域名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DomainType
@@ -7007,13 +6797,10 @@ class DescribeDomainRegionData(AbstractModel):
     def __init__(self):
         r"""
         :param _Label: 服务节点描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
         :param _Value: 服务节点 ID（对应为其他接口中所需的 ClusterId）
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         :param _Region: 地域信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         """
         self._Label = None
@@ -7023,7 +6810,6 @@ class DescribeDomainRegionData(AbstractModel):
     @property
     def Label(self):
         """服务节点描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Label
@@ -7035,7 +6821,6 @@ class DescribeDomainRegionData(AbstractModel):
     @property
     def Value(self):
         """服务节点 ID（对应为其他接口中所需的 ClusterId）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -7047,7 +6832,6 @@ class DescribeDomainRegionData(AbstractModel):
     @property
     def Region(self):
         """地域信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Region
@@ -7187,37 +6971,27 @@ class DescribeGatewayData(AbstractModel):
     def __init__(self):
         r"""
         :param _GatewayId: 网关索引ID，用于网关查询，更新，删除操作
-注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayId: str
         :param _GwId: 网关编码，由网关设备生成的唯一编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type GwId: str
         :param _Name: 网关名称，仅支持中文、英文、数字、_、-，长度不超过32个字符
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Description: 网关描述，仅支持中文、英文、数字、_、-，长度不超过128个字符
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _ClusterId: 服务节点id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterId: str
         :param _ClusterName: 服务节点名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterName: str
         :param _Status: 网关状态，0：离线，1:在线
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _Version: 网关版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type Version: list of GatewayVersion
         :param _DeviceNum: 网关下挂设备数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceNum: int
         :param _CreatedAt: 激活时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedAt: str
         :param _Region: 所属地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         """
         self._GatewayId = None
@@ -7235,7 +7009,6 @@ class DescribeGatewayData(AbstractModel):
     @property
     def GatewayId(self):
         """网关索引ID，用于网关查询，更新，删除操作
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GatewayId
@@ -7247,7 +7020,6 @@ class DescribeGatewayData(AbstractModel):
     @property
     def GwId(self):
         """网关编码，由网关设备生成的唯一编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GwId
@@ -7259,7 +7031,6 @@ class DescribeGatewayData(AbstractModel):
     @property
     def Name(self):
         """网关名称，仅支持中文、英文、数字、_、-，长度不超过32个字符
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -7271,7 +7042,6 @@ class DescribeGatewayData(AbstractModel):
     @property
     def Description(self):
         """网关描述，仅支持中文、英文、数字、_、-，长度不超过128个字符
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -7283,7 +7053,6 @@ class DescribeGatewayData(AbstractModel):
     @property
     def ClusterId(self):
         """服务节点id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterId
@@ -7295,7 +7064,6 @@ class DescribeGatewayData(AbstractModel):
     @property
     def ClusterName(self):
         """服务节点名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterName
@@ -7307,7 +7075,6 @@ class DescribeGatewayData(AbstractModel):
     @property
     def Status(self):
         """网关状态，0：离线，1:在线
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -7331,7 +7098,6 @@ class DescribeGatewayData(AbstractModel):
     @property
     def DeviceNum(self):
         """网关下挂设备数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DeviceNum
@@ -7343,7 +7109,6 @@ class DescribeGatewayData(AbstractModel):
     @property
     def CreatedAt(self):
         """激活时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreatedAt
@@ -7355,7 +7120,6 @@ class DescribeGatewayData(AbstractModel):
     @property
     def Region(self):
         """所属地域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Region
@@ -7400,31 +7164,22 @@ class DescribeGatewayMonitor(AbstractModel):
     def __init__(self):
         r"""
         :param _DeviceTotal: 设备接入总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceTotal: int
         :param _DeviceOnline: 设备在线数
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceOnline: int
         :param _DeviceOffline: 设备离线数
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceOffline: int
         :param _ChannelTotal: 视频通道总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChannelTotal: int
         :param _ChannelOnline: 视频通道在线数
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChannelOnline: int
         :param _ChannelOffline: 视频通道离线数
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChannelOffline: int
         :param _UpFlow: 网关上行流量,单位kbps
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpFlow: int
         :param _ChannelPull: 流在传输中的通道数
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChannelPull: int
         :param _ChannelUnPull: 流未传输中的通道数
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChannelUnPull: int
         """
         self._DeviceTotal = None
@@ -7440,7 +7195,6 @@ class DescribeGatewayMonitor(AbstractModel):
     @property
     def DeviceTotal(self):
         """设备接入总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DeviceTotal
@@ -7452,7 +7206,6 @@ class DescribeGatewayMonitor(AbstractModel):
     @property
     def DeviceOnline(self):
         """设备在线数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DeviceOnline
@@ -7464,7 +7217,6 @@ class DescribeGatewayMonitor(AbstractModel):
     @property
     def DeviceOffline(self):
         """设备离线数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DeviceOffline
@@ -7476,7 +7228,6 @@ class DescribeGatewayMonitor(AbstractModel):
     @property
     def ChannelTotal(self):
         """视频通道总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ChannelTotal
@@ -7488,7 +7239,6 @@ class DescribeGatewayMonitor(AbstractModel):
     @property
     def ChannelOnline(self):
         """视频通道在线数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ChannelOnline
@@ -7500,7 +7250,6 @@ class DescribeGatewayMonitor(AbstractModel):
     @property
     def ChannelOffline(self):
         """视频通道离线数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ChannelOffline
@@ -7512,7 +7261,6 @@ class DescribeGatewayMonitor(AbstractModel):
     @property
     def UpFlow(self):
         """网关上行流量,单位kbps
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._UpFlow
@@ -7524,7 +7272,6 @@ class DescribeGatewayMonitor(AbstractModel):
     @property
     def ChannelPull(self):
         """流在传输中的通道数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ChannelPull
@@ -7536,7 +7283,6 @@ class DescribeGatewayMonitor(AbstractModel):
     @property
     def ChannelUnPull(self):
         """流未传输中的通道数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ChannelUnPull
@@ -7655,23 +7401,22 @@ class DescribeGatewayProtocolData(AbstractModel):
     def __init__(self):
         r"""
         :param _TypeCode: 接入协议的字典码
-注意：此字段可能返回 null，表示取不到有效值。
         :type TypeCode: str
         :param _Value: 接入协议类型值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: int
         :param _Label: 接入协议的类型描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
+        :param _ValueText: 协议值文本
+        :type ValueText: str
         """
         self._TypeCode = None
         self._Value = None
         self._Label = None
+        self._ValueText = None
 
     @property
     def TypeCode(self):
         """接入协议的字典码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TypeCode
@@ -7683,7 +7428,6 @@ class DescribeGatewayProtocolData(AbstractModel):
     @property
     def Value(self):
         """接入协议类型值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Value
@@ -7695,7 +7439,6 @@ class DescribeGatewayProtocolData(AbstractModel):
     @property
     def Label(self):
         """接入协议的类型描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Label
@@ -7704,11 +7447,23 @@ class DescribeGatewayProtocolData(AbstractModel):
     def Label(self, Label):
         self._Label = Label
 
+    @property
+    def ValueText(self):
+        """协议值文本
+        :rtype: str
+        """
+        return self._ValueText
+
+    @ValueText.setter
+    def ValueText(self, ValueText):
+        self._ValueText = ValueText
+
 
     def _deserialize(self, params):
         self._TypeCode = params.get("TypeCode")
         self._Value = params.get("Value")
         self._Label = params.get("Label")
+        self._ValueText = params.get("ValueText")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7862,19 +7617,14 @@ class DescribeGatewayVersion(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 服务名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Version: 服务版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
         :param _LatestVersion: 服务最新版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type LatestVersion: str
         :param _IsUpdate: 是否需要更新
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsUpdate: bool
         :param _UpgradeInfo: 升级信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpgradeInfo: list of str
         """
         self._Name = None
@@ -7886,7 +7636,6 @@ class DescribeGatewayVersion(AbstractModel):
     @property
     def Name(self):
         """服务名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -7898,7 +7647,6 @@ class DescribeGatewayVersion(AbstractModel):
     @property
     def Version(self):
         """服务版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Version
@@ -7910,7 +7658,6 @@ class DescribeGatewayVersion(AbstractModel):
     @property
     def LatestVersion(self):
         """服务最新版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LatestVersion
@@ -7922,7 +7669,6 @@ class DescribeGatewayVersion(AbstractModel):
     @property
     def IsUpdate(self):
         """是否需要更新
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsUpdate
@@ -7934,7 +7680,6 @@ class DescribeGatewayVersion(AbstractModel):
     @property
     def UpgradeInfo(self):
         """升级信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._UpgradeInfo
@@ -7968,7 +7713,6 @@ class DescribeGatewayVersionData(AbstractModel):
     def __init__(self):
         r"""
         :param _Services: 网关服务列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Services: list of DescribeGatewayVersion
         """
         self._Services = None
@@ -7976,7 +7720,6 @@ class DescribeGatewayVersionData(AbstractModel):
     @property
     def Services(self):
         """网关服务列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DescribeGatewayVersion
         """
         return self._Services
@@ -8092,28 +7835,20 @@ class DescribeOrganizationData(AbstractModel):
     def __init__(self):
         r"""
         :param _OrganizationId: 组织 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type OrganizationId: str
         :param _Name: 组织名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _ParentId: 组织父节点 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ParentId: str
         :param _Level: 组织层级
-注意：此字段可能返回 null，表示取不到有效值。
         :type Level: int
         :param _AppId: 用户id
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: int
         :param _ParentIds: 组织结构
-注意：此字段可能返回 null，表示取不到有效值。
         :type ParentIds: str
         :param _Total: 设备总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _Online: 设备在线数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Online: int
         """
         self._OrganizationId = None
@@ -8128,7 +7863,6 @@ class DescribeOrganizationData(AbstractModel):
     @property
     def OrganizationId(self):
         """组织 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OrganizationId
@@ -8140,7 +7874,6 @@ class DescribeOrganizationData(AbstractModel):
     @property
     def Name(self):
         """组织名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -8152,7 +7885,6 @@ class DescribeOrganizationData(AbstractModel):
     @property
     def ParentId(self):
         """组织父节点 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ParentId
@@ -8164,7 +7896,6 @@ class DescribeOrganizationData(AbstractModel):
     @property
     def Level(self):
         """组织层级
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Level
@@ -8176,7 +7907,6 @@ class DescribeOrganizationData(AbstractModel):
     @property
     def AppId(self):
         """用户id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AppId
@@ -8188,7 +7918,6 @@ class DescribeOrganizationData(AbstractModel):
     @property
     def ParentIds(self):
         """组织结构
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ParentIds
@@ -8200,7 +7929,6 @@ class DescribeOrganizationData(AbstractModel):
     @property
     def Total(self):
         """设备总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -8212,7 +7940,6 @@ class DescribeOrganizationData(AbstractModel):
     @property
     def Online(self):
         """设备在线数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Online
@@ -8542,25 +8269,18 @@ class DescribeRecordBackupTemplateData(AbstractModel):
     def __init__(self):
         r"""
         :param _TemplateId: 模板ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateId: str
         :param _TemplateName: 模板名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateName: str
         :param _TimeSections: 上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimeSections: list of RecordTemplateTimeSections
         :param _DevTimeSections: 录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
-注意：此字段可能返回 null，表示取不到有效值。
         :type DevTimeSections: list of RecordTemplateTimeSections
         :param _Scale: 上云倍速（支持1，2，4倍速）
-注意：此字段可能返回 null，表示取不到有效值。
         :type Scale: int
         :param _CreateAt: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateAt: str
         :param _UpdateAt: 更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateAt: str
         """
         self._TemplateId = None
@@ -8574,7 +8294,6 @@ class DescribeRecordBackupTemplateData(AbstractModel):
     @property
     def TemplateId(self):
         """模板ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TemplateId
@@ -8586,7 +8305,6 @@ class DescribeRecordBackupTemplateData(AbstractModel):
     @property
     def TemplateName(self):
         """模板名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TemplateName
@@ -8598,7 +8316,6 @@ class DescribeRecordBackupTemplateData(AbstractModel):
     @property
     def TimeSections(self):
         """上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RecordTemplateTimeSections
         """
         return self._TimeSections
@@ -8610,7 +8327,6 @@ class DescribeRecordBackupTemplateData(AbstractModel):
     @property
     def DevTimeSections(self):
         """录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RecordTemplateTimeSections
         """
         return self._DevTimeSections
@@ -8622,7 +8338,6 @@ class DescribeRecordBackupTemplateData(AbstractModel):
     @property
     def Scale(self):
         """上云倍速（支持1，2，4倍速）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Scale
@@ -8634,7 +8349,6 @@ class DescribeRecordBackupTemplateData(AbstractModel):
     @property
     def CreateAt(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateAt
@@ -8646,7 +8360,6 @@ class DescribeRecordBackupTemplateData(AbstractModel):
     @property
     def UpdateAt(self):
         """更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateAt
@@ -9212,7 +8925,6 @@ class DescribeRecordRetrieveTaskData(AbstractModel):
         :param _Channels: 任务的设备通道id
         :type Channels: list of RecordRetrieveTaskChannelInfo
         :param _Describe: 任务描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Describe: str
         :param _ChannelCount: 任务通道数量
         :type ChannelCount: int
@@ -9331,7 +9043,6 @@ class DescribeRecordRetrieveTaskData(AbstractModel):
     @property
     def Describe(self):
         """任务描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Describe
@@ -9665,28 +9376,20 @@ class DescribeStreamAuthData(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: 鉴权配置ID（uuid）
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
         :param _PullState: 是否开播放鉴权（1:开启,0:关闭）
-注意：此字段可能返回 null，表示取不到有效值。
         :type PullState: int
         :param _PullSecret: 播放密钥（仅支持字母数字，长度0-10位）
-注意：此字段可能返回 null，表示取不到有效值。
         :type PullSecret: str
         :param _PullExpired: 播放过期时间（单位：分钟）
-注意：此字段可能返回 null，表示取不到有效值。
         :type PullExpired: int
         :param _PushState: 是否开启推流鉴权（1:开启,0:关闭）
-注意：此字段可能返回 null，表示取不到有效值。
         :type PushState: int
         :param _PushSecret: 推流密钥（仅支持字母数字，长度0-10位）
-注意：此字段可能返回 null，表示取不到有效值。
         :type PushSecret: str
         :param _PushExpired: 推流过期时间（单位：分钟）
-注意：此字段可能返回 null，表示取不到有效值。
         :type PushExpired: int
         :param _AppId: 用户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: int
         """
         self._Id = None
@@ -9701,7 +9404,6 @@ class DescribeStreamAuthData(AbstractModel):
     @property
     def Id(self):
         """鉴权配置ID（uuid）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Id
@@ -9713,7 +9415,6 @@ class DescribeStreamAuthData(AbstractModel):
     @property
     def PullState(self):
         """是否开播放鉴权（1:开启,0:关闭）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PullState
@@ -9725,7 +9426,6 @@ class DescribeStreamAuthData(AbstractModel):
     @property
     def PullSecret(self):
         """播放密钥（仅支持字母数字，长度0-10位）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PullSecret
@@ -9737,7 +9437,6 @@ class DescribeStreamAuthData(AbstractModel):
     @property
     def PullExpired(self):
         """播放过期时间（单位：分钟）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PullExpired
@@ -9749,7 +9448,6 @@ class DescribeStreamAuthData(AbstractModel):
     @property
     def PushState(self):
         """是否开启推流鉴权（1:开启,0:关闭）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PushState
@@ -9761,7 +9459,6 @@ class DescribeStreamAuthData(AbstractModel):
     @property
     def PushSecret(self):
         """推流密钥（仅支持字母数字，长度0-10位）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PushSecret
@@ -9773,7 +9470,6 @@ class DescribeStreamAuthData(AbstractModel):
     @property
     def PushExpired(self):
         """推流过期时间（单位：分钟）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PushExpired
@@ -9785,7 +9481,6 @@ class DescribeStreamAuthData(AbstractModel):
     @property
     def AppId(self):
         """用户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AppId
@@ -10035,7 +9730,6 @@ class DescribeVideoBitRateList(AbstractModel):
     def __init__(self):
         r"""
         :param _BitRates: 通道码率列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type BitRates: list of BitRateInfo
         """
         self._BitRates = None
@@ -10043,7 +9737,6 @@ class DescribeVideoBitRateList(AbstractModel):
     @property
     def BitRates(self):
         """通道码率列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BitRateInfo
         """
         return self._BitRates
@@ -10506,31 +10199,22 @@ class GatewayDevice(AbstractModel):
     def __init__(self):
         r"""
         :param _DeviceId: 设备ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceId: str
         :param _ProtocolType: 网关接入协议类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProtocolType: int
         :param _ProtocolTypeName: 网关接入协议名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProtocolTypeName: str
         :param _Name: 设备名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Type: 设备类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: int
         :param _Ip: 设备内网IP
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ip: str
         :param _Port: 设备端口
-注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
         :param _ChannelNum: 设备下通道数
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChannelNum: int
         :param _Status: 设备状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         """
         self._DeviceId = None
@@ -10546,7 +10230,6 @@ class GatewayDevice(AbstractModel):
     @property
     def DeviceId(self):
         """设备ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceId
@@ -10558,7 +10241,6 @@ class GatewayDevice(AbstractModel):
     @property
     def ProtocolType(self):
         """网关接入协议类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ProtocolType
@@ -10570,7 +10252,6 @@ class GatewayDevice(AbstractModel):
     @property
     def ProtocolTypeName(self):
         """网关接入协议名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProtocolTypeName
@@ -10582,7 +10263,6 @@ class GatewayDevice(AbstractModel):
     @property
     def Name(self):
         """设备名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -10594,7 +10274,6 @@ class GatewayDevice(AbstractModel):
     @property
     def Type(self):
         """设备类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Type
@@ -10606,7 +10285,6 @@ class GatewayDevice(AbstractModel):
     @property
     def Ip(self):
         """设备内网IP
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Ip
@@ -10618,7 +10296,6 @@ class GatewayDevice(AbstractModel):
     @property
     def Port(self):
         """设备端口
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Port
@@ -10630,7 +10307,6 @@ class GatewayDevice(AbstractModel):
     @property
     def ChannelNum(self):
         """设备下通道数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ChannelNum
@@ -10642,7 +10318,6 @@ class GatewayDevice(AbstractModel):
     @property
     def Status(self):
         """设备状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -10680,10 +10355,8 @@ class GatewayVersion(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 服务名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Version: 服务版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
         """
         self._Name = None
@@ -10692,7 +10365,6 @@ class GatewayVersion(AbstractModel):
     @property
     def Name(self):
         """服务名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -10704,7 +10376,6 @@ class GatewayVersion(AbstractModel):
     @property
     def Version(self):
         """服务版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Version
@@ -10735,34 +10406,24 @@ class GatewaysData(AbstractModel):
     def __init__(self):
         r"""
         :param _GatewayId: 网关索引ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayId: str
         :param _GwId: 网关编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type GwId: str
         :param _Name: 网关名称，仅支持中文、英文、数字、_、-，长度不超过32个字符
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Description: 网关描述，仅支持中文、英文、数字、_、-，长度不超过128个字符
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _ClusterId: 网关所属服务节点ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterId: str
         :param _ClusterName: 网关所属服务节点名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterName: str
         :param _Region: 网关所属地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         :param _Status: 网关状态，0：离线，1:在线
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _CreatedAt: 网关激活时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedAt: str
         :param _DeviceNum: 所属网关设备数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceNum: int
         """
         self._GatewayId = None
@@ -10779,7 +10440,6 @@ class GatewaysData(AbstractModel):
     @property
     def GatewayId(self):
         """网关索引ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GatewayId
@@ -10791,7 +10451,6 @@ class GatewaysData(AbstractModel):
     @property
     def GwId(self):
         """网关编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GwId
@@ -10803,7 +10462,6 @@ class GatewaysData(AbstractModel):
     @property
     def Name(self):
         """网关名称，仅支持中文、英文、数字、_、-，长度不超过32个字符
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -10815,7 +10473,6 @@ class GatewaysData(AbstractModel):
     @property
     def Description(self):
         """网关描述，仅支持中文、英文、数字、_、-，长度不超过128个字符
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -10827,7 +10484,6 @@ class GatewaysData(AbstractModel):
     @property
     def ClusterId(self):
         """网关所属服务节点ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterId
@@ -10839,7 +10495,6 @@ class GatewaysData(AbstractModel):
     @property
     def ClusterName(self):
         """网关所属服务节点名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterName
@@ -10851,7 +10506,6 @@ class GatewaysData(AbstractModel):
     @property
     def Region(self):
         """网关所属地域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Region
@@ -10863,7 +10517,6 @@ class GatewaysData(AbstractModel):
     @property
     def Status(self):
         """网关状态，0：离线，1:在线
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -10875,7 +10528,6 @@ class GatewaysData(AbstractModel):
     @property
     def CreatedAt(self):
         """网关激活时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreatedAt
@@ -10887,7 +10539,6 @@ class GatewaysData(AbstractModel):
     @property
     def DeviceNum(self):
         """所属网关设备数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DeviceNum
@@ -10926,7 +10577,6 @@ class ISAPIOutputData(AbstractModel):
     def __init__(self):
         r"""
         :param _OutputData: 输出参数
-注意：此字段可能返回 null，表示取不到有效值。
         :type OutputData: str
         """
         self._OutputData = None
@@ -10934,7 +10584,6 @@ class ISAPIOutputData(AbstractModel):
     @property
     def OutputData(self):
         """输出参数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OutputData
@@ -11756,10 +11405,8 @@ class ListGatewayDevicesData(AbstractModel):
     def __init__(self):
         r"""
         :param _List: 网关下设备列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of GatewayDevice
         :param _TotalCount: 网关下设备总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         """
         self._List = None
@@ -11768,7 +11415,6 @@ class ListGatewayDevicesData(AbstractModel):
     @property
     def List(self):
         """网关下设备列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of GatewayDevice
         """
         return self._List
@@ -11780,7 +11426,6 @@ class ListGatewayDevicesData(AbstractModel):
     @property
     def TotalCount(self):
         """网关下设备总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -11927,10 +11572,8 @@ class ListGatewaysData(AbstractModel):
     def __init__(self):
         r"""
         :param _List: 网关列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of GatewaysData
         :param _TotalCount: 网关数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         """
         self._List = None
@@ -11939,7 +11582,6 @@ class ListGatewaysData(AbstractModel):
     @property
     def List(self):
         """网关列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of GatewaysData
         """
         return self._List
@@ -11951,7 +11593,6 @@ class ListGatewaysData(AbstractModel):
     @property
     def TotalCount(self):
         """网关数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -12651,13 +12292,10 @@ class ListRecordBackupPlanDevicesData(AbstractModel):
     def __init__(self):
         r"""
         :param _PageNumber: 第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :type PageNumber: int
         :param _PageSize: 当前页的设备数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type PageSize: int
         :param _TotalCount: 本次查询的设备通道总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _List: 设备通道信息列表
 注意：此字段可能返回 null，表示取不到有效值。
@@ -12671,7 +12309,6 @@ class ListRecordBackupPlanDevicesData(AbstractModel):
     @property
     def PageNumber(self):
         """第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PageNumber
@@ -12683,7 +12320,6 @@ class ListRecordBackupPlanDevicesData(AbstractModel):
     @property
     def PageSize(self):
         """当前页的设备数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PageSize
@@ -12695,7 +12331,6 @@ class ListRecordBackupPlanDevicesData(AbstractModel):
     @property
     def TotalCount(self):
         """本次查询的设备通道总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -12955,25 +12590,18 @@ class ListRecordBackupTemplatesData(AbstractModel):
     def __init__(self):
         r"""
         :param _TemplateId: 模板ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateId: str
         :param _TemplateName: 模板名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateName: str
         :param _TimeSections: 上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimeSections: list of RecordTemplateTimeSections
         :param _DevTimeSections: 录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
-注意：此字段可能返回 null，表示取不到有效值。
         :type DevTimeSections: list of RecordTemplateTimeSections
         :param _Scale: 上云倍速（支持1，2，4倍速）
-注意：此字段可能返回 null，表示取不到有效值。
         :type Scale: int
         :param _CreateAt: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateAt: str
         :param _UpdateAt: 更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateAt: str
         """
         self._TemplateId = None
@@ -12987,7 +12615,6 @@ class ListRecordBackupTemplatesData(AbstractModel):
     @property
     def TemplateId(self):
         """模板ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TemplateId
@@ -12999,7 +12626,6 @@ class ListRecordBackupTemplatesData(AbstractModel):
     @property
     def TemplateName(self):
         """模板名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TemplateName
@@ -13011,7 +12637,6 @@ class ListRecordBackupTemplatesData(AbstractModel):
     @property
     def TimeSections(self):
         """上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RecordTemplateTimeSections
         """
         return self._TimeSections
@@ -13023,7 +12648,6 @@ class ListRecordBackupTemplatesData(AbstractModel):
     @property
     def DevTimeSections(self):
         """录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RecordTemplateTimeSections
         """
         return self._DevTimeSections
@@ -13035,7 +12659,6 @@ class ListRecordBackupTemplatesData(AbstractModel):
     @property
     def Scale(self):
         """上云倍速（支持1，2，4倍速）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Scale
@@ -13047,7 +12670,6 @@ class ListRecordBackupTemplatesData(AbstractModel):
     @property
     def CreateAt(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateAt
@@ -13059,7 +12681,6 @@ class ListRecordBackupTemplatesData(AbstractModel):
     @property
     def UpdateAt(self):
         """更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateAt
@@ -13848,10 +13469,8 @@ class ListTasksData(AbstractModel):
     def __init__(self):
         r"""
         :param _List: 任务列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of TaskData
         :param _TotalCount: 任务数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         """
         self._List = None
@@ -13860,7 +13479,6 @@ class ListTasksData(AbstractModel):
     @property
     def List(self):
         """任务列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TaskData
         """
         return self._List
@@ -13872,7 +13490,6 @@ class ListTasksData(AbstractModel):
     @property
     def TotalCount(self):
         """任务数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -14206,12 +13823,10 @@ class OrganizationChannelInfo(AbstractModel):
         :param _DeviceId: 设备通道所属的设备ID
         :type DeviceId: str
         :param _DeviceName: 设备通道所属的设备名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceName: str
         :param _ChannelId: 设备通道ID
         :type ChannelId: str
         :param _ChannelName: 设备通道名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChannelName: str
         :param _InPlan: 该通道是否在上云计划中，如果是，则不能在添加到其他上云计划|true：在上云计划中，false：不在上云计划中
         :type InPlan: bool
@@ -14236,7 +13851,6 @@ class OrganizationChannelInfo(AbstractModel):
     @property
     def DeviceName(self):
         """设备通道所属的设备名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceName
@@ -14259,7 +13873,6 @@ class OrganizationChannelInfo(AbstractModel):
     @property
     def ChannelName(self):
         """设备通道名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ChannelName
@@ -14529,7 +14142,6 @@ class PlayRecordData(AbstractModel):
     def __init__(self):
         r"""
         :param _Flv: 录像播放地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type Flv: str
         """
         self._Flv = None
@@ -14537,7 +14149,6 @@ class PlayRecordData(AbstractModel):
     @property
     def Flv(self):
         """录像播放地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Flv
@@ -14789,7 +14400,6 @@ class QueryForbidPlayChannelListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 返回结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.iss.v20230517.models.ListForbidplayChannelsData`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14800,7 +14410,6 @@ class QueryForbidPlayChannelListResponse(AbstractModel):
     @property
     def Data(self):
         """返回结果
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.iss.v20230517.models.ListForbidplayChannelsData`
         """
         return self._Data
@@ -14842,10 +14451,8 @@ class RecordPlanBaseInfo(AbstractModel):
         :param _TemplateId: 上云模板ID
         :type TemplateId: str
         :param _Describe: 上云计划描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Describe: str
         :param _StreamType: 码流类型，default:设备默认码流类型，main:主码流，sub:子码流，其他根据设备能力集自定义
-注意：此字段可能返回 null，表示取不到有效值。
         :type StreamType: str
         :param _LifeCycle: 云文件生命周期
         :type LifeCycle: :class:`tencentcloud.iss.v20230517.models.LifeCycleData`
@@ -14902,7 +14509,6 @@ class RecordPlanBaseInfo(AbstractModel):
     @property
     def Describe(self):
         """上云计划描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Describe
@@ -14914,7 +14520,6 @@ class RecordPlanBaseInfo(AbstractModel):
     @property
     def StreamType(self):
         """码流类型，default:设备默认码流类型，main:主码流，sub:子码流，其他根据设备能力集自定义
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StreamType
@@ -15000,15 +14605,12 @@ class RecordPlanChannelInfo(AbstractModel):
         :param _DeviceId: 设备通道所属的设备ID
         :type DeviceId: str
         :param _DeviceName: 设备通道所属的设备名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceName: str
         :param _ChannelId: 设备通道ID
         :type ChannelId: str
         :param _ChannelName: 设备通道名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChannelName: str
         :param _OrganizationName: 所属组织名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type OrganizationName: str
         :param _AccessProtocol: 通道所属设备的接入协议类型
         :type AccessProtocol: int
@@ -15034,7 +14636,6 @@ class RecordPlanChannelInfo(AbstractModel):
     @property
     def DeviceName(self):
         """设备通道所属的设备名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceName
@@ -15057,7 +14658,6 @@ class RecordPlanChannelInfo(AbstractModel):
     @property
     def ChannelName(self):
         """设备通道名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ChannelName
@@ -15069,7 +14669,6 @@ class RecordPlanChannelInfo(AbstractModel):
     @property
     def OrganizationName(self):
         """所属组织名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OrganizationName
@@ -15121,12 +14720,10 @@ class RecordPlanOptData(AbstractModel):
         :param _TemplateId: 上云模板ID
         :type TemplateId: str
         :param _Describe: 上云计划描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Describe: str
         :param _LifeCycle: 云文件生命周期
         :type LifeCycle: :class:`tencentcloud.iss.v20230517.models.LifeCycleData`
         :param _StreamType: 码流类型，default:设备默认码流类型，main:主码流，sub:子码流，其他根据设备能力集自定义
-注意：此字段可能返回 null，表示取不到有效值。
         :type StreamType: str
         :param _RepairMode: 录像补录模式（0:不启用，1:启用）
         :type RepairMode: int
@@ -15175,7 +14772,6 @@ class RecordPlanOptData(AbstractModel):
     @property
     def Describe(self):
         """上云计划描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Describe
@@ -15198,7 +14794,6 @@ class RecordPlanOptData(AbstractModel):
     @property
     def StreamType(self):
         """码流类型，default:设备默认码流类型，main:主码流，sub:子码流，其他根据设备能力集自定义
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StreamType
@@ -15395,7 +14990,6 @@ class RecordRetrieveTaskDetailsInfo(AbstractModel):
         :param _Capacity: 取回容量，单位MB
         :type Capacity: int
         :param _Describe: 任务描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Describe: str
         :param _ChannelCount: 任务通道数量
         :type ChannelCount: int
@@ -15502,7 +15096,6 @@ class RecordRetrieveTaskDetailsInfo(AbstractModel):
     @property
     def Describe(self):
         """任务描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Describe
@@ -15749,7 +15342,6 @@ class RecordTimeLine(AbstractModel):
         :param _End: 时间片段结束时间，UTC秒数，例如：1662114146
         :type End: int
         :param _HlsUrl: 对应时间片段的播放url
-注意：此字段可能返回 null，表示取不到有效值。
         :type HlsUrl: str
         """
         self._Begin = None
@@ -15781,7 +15373,6 @@ class RecordTimeLine(AbstractModel):
     @property
     def HlsUrl(self):
         """对应时间片段的播放url
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HlsUrl
@@ -16143,7 +15734,6 @@ class SubTaskData(AbstractModel):
         :param _Status: 任务状态1:NEW,2:RUNNING,3:COMPLETED ,4:FAILED
         :type Status: int
         :param _FailReason: 任务失败原因
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailReason: str
         :param _Progress: 任务进度
         :type Progress: float
@@ -16162,16 +15752,12 @@ class SubTaskData(AbstractModel):
         :param _Runtime: 任务运行时间，单位ms
         :type Runtime: int
         :param _DeviceId: 设备ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceId: str
         :param _DeviceName: 设备名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceName: str
         :param _ChannelId: 通道ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChannelId: str
         :param _ChannelName: 通道名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChannelName: str
         """
         self._SubTaskId = None
@@ -16215,7 +15801,6 @@ class SubTaskData(AbstractModel):
     @property
     def FailReason(self):
         """任务失败原因
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FailReason
@@ -16315,7 +15900,6 @@ class SubTaskData(AbstractModel):
     @property
     def DeviceId(self):
         """设备ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceId
@@ -16327,7 +15911,6 @@ class SubTaskData(AbstractModel):
     @property
     def DeviceName(self):
         """设备名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceName
@@ -16339,7 +15922,6 @@ class SubTaskData(AbstractModel):
     @property
     def ChannelId(self):
         """通道ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ChannelId
@@ -16351,7 +15933,6 @@ class SubTaskData(AbstractModel):
     @property
     def ChannelName(self):
         """通道名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ChannelName
@@ -16399,7 +15980,6 @@ class TaskData(AbstractModel):
         :param _Status: 任务状态1:NEW,2:RUNNING,3:COMPLETED ,4:FAILED
         :type Status: int
         :param _FailReason: 失败原因
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailReason: str
         :param _Progress: 进度（0-1）
         :type Progress: float
@@ -16428,16 +16008,12 @@ class TaskData(AbstractModel):
         :param _Runtime: 任务运行时间，单位ms
         :type Runtime: int
         :param _DeviceId: 设备ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceId: str
         :param _DeviceName: 设备名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceName: str
         :param _ChannelId: 通道ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChannelId: str
         :param _ChannelName:  通道名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChannelName: str
         """
         self._TaskId = None
@@ -16486,7 +16062,6 @@ class TaskData(AbstractModel):
     @property
     def FailReason(self):
         """失败原因
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FailReason
@@ -16641,7 +16216,6 @@ class TaskData(AbstractModel):
     @property
     def DeviceId(self):
         """设备ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceId
@@ -16653,7 +16227,6 @@ class TaskData(AbstractModel):
     @property
     def DeviceName(self):
         """设备名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceName
@@ -16665,7 +16238,6 @@ class TaskData(AbstractModel):
     @property
     def ChannelId(self):
         """通道ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ChannelId
@@ -16677,7 +16249,6 @@ class TaskData(AbstractModel):
     @property
     def ChannelName(self):
         """ 通道名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ChannelName
@@ -16726,10 +16297,8 @@ class Timeline(AbstractModel):
     def __init__(self):
         r"""
         :param _Begin: 分片起始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type Begin: int
         :param _End: 分片结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type End: int
         """
         self._Begin = None
@@ -16738,7 +16307,6 @@ class Timeline(AbstractModel):
     @property
     def Begin(self):
         """分片起始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Begin
@@ -16750,7 +16318,6 @@ class Timeline(AbstractModel):
     @property
     def End(self):
         """分片结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._End
@@ -17038,59 +16605,41 @@ class UpdateDeviceData(AbstractModel):
     def __init__(self):
         r"""
         :param _DeviceId: 设备ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceId: str
         :param _Code: 设备编码（国标设备即我们为设备生成的20位国标编码，rtmp 设备为10 位设备编码）
-注意：此字段可能返回 null，表示取不到有效值。
         :type Code: str
         :param _Name: 设备名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _AccessProtocol: 设备接入协议，1:RTMP,2:GB,3:GW 
-注意：此字段可能返回 null，表示取不到有效值。
         :type AccessProtocol: int
         :param _Type: 设备类型，1:IPC,2:NVR
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: int
         :param _ClusterId: 设备接入服务节点ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterId: str
         :param _ClusterName: 设备接入服务节点名称
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterName: str
         :param _TransportProtocol: 设备流传输协议，1:UDP,2:TCP 
-注意：此字段可能返回 null，表示取不到有效值。
         :type TransportProtocol: int
         :param _Password: 设备密码
-注意：此字段可能返回 null，表示取不到有效值。
         :type Password: str
         :param _Description: 设备描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _Status: 设备状态，0:未注册,1:在线,2:离线,3:禁用
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _OrganizationId: 设备所属组织ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type OrganizationId: int
         :param _GatewayId: 设备接入网关ID，从查询网关列表接口中获取（仅网关接入需要）
-注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayId: str
         :param _ProtocolType: 网关接入协议类型，1.海康SDK，2.大华SDK，3.宇视SDK，4.Onvif（仅网关接入需要）
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProtocolType: int
         :param _Ip: 设备接入IP
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ip: str
         :param _Port: 设备Port
-注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
         :param _Username: 设备用户名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Username: str
         :param _AppId: 用户Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: int
         """
         self._DeviceId = None
@@ -17115,7 +16664,6 @@ class UpdateDeviceData(AbstractModel):
     @property
     def DeviceId(self):
         """设备ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceId
@@ -17127,7 +16675,6 @@ class UpdateDeviceData(AbstractModel):
     @property
     def Code(self):
         """设备编码（国标设备即我们为设备生成的20位国标编码，rtmp 设备为10 位设备编码）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Code
@@ -17139,7 +16686,6 @@ class UpdateDeviceData(AbstractModel):
     @property
     def Name(self):
         """设备名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -17151,7 +16697,6 @@ class UpdateDeviceData(AbstractModel):
     @property
     def AccessProtocol(self):
         """设备接入协议，1:RTMP,2:GB,3:GW 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AccessProtocol
@@ -17163,7 +16708,6 @@ class UpdateDeviceData(AbstractModel):
     @property
     def Type(self):
         """设备类型，1:IPC,2:NVR
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Type
@@ -17175,7 +16719,6 @@ class UpdateDeviceData(AbstractModel):
     @property
     def ClusterId(self):
         """设备接入服务节点ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterId
@@ -17188,7 +16731,6 @@ class UpdateDeviceData(AbstractModel):
     def ClusterName(self):
         """设备接入服务节点名称
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterName
@@ -17200,7 +16742,6 @@ class UpdateDeviceData(AbstractModel):
     @property
     def TransportProtocol(self):
         """设备流传输协议，1:UDP,2:TCP 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TransportProtocol
@@ -17212,7 +16753,6 @@ class UpdateDeviceData(AbstractModel):
     @property
     def Password(self):
         """设备密码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Password
@@ -17224,7 +16764,6 @@ class UpdateDeviceData(AbstractModel):
     @property
     def Description(self):
         """设备描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -17236,7 +16775,6 @@ class UpdateDeviceData(AbstractModel):
     @property
     def Status(self):
         """设备状态，0:未注册,1:在线,2:离线,3:禁用
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -17248,7 +16786,6 @@ class UpdateDeviceData(AbstractModel):
     @property
     def OrganizationId(self):
         """设备所属组织ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._OrganizationId
@@ -17260,7 +16797,6 @@ class UpdateDeviceData(AbstractModel):
     @property
     def GatewayId(self):
         """设备接入网关ID，从查询网关列表接口中获取（仅网关接入需要）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GatewayId
@@ -17272,7 +16808,6 @@ class UpdateDeviceData(AbstractModel):
     @property
     def ProtocolType(self):
         """网关接入协议类型，1.海康SDK，2.大华SDK，3.宇视SDK，4.Onvif（仅网关接入需要）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ProtocolType
@@ -17284,7 +16819,6 @@ class UpdateDeviceData(AbstractModel):
     @property
     def Ip(self):
         """设备接入IP
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Ip
@@ -17296,7 +16830,6 @@ class UpdateDeviceData(AbstractModel):
     @property
     def Port(self):
         """设备Port
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Port
@@ -17308,7 +16841,6 @@ class UpdateDeviceData(AbstractModel):
     @property
     def Username(self):
         """设备用户名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Username
@@ -17320,7 +16852,6 @@ class UpdateDeviceData(AbstractModel):
     @property
     def AppId(self):
         """用户Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AppId
@@ -17525,34 +17056,24 @@ class UpdateGatewayData(AbstractModel):
     def __init__(self):
         r"""
         :param _GatewayId: 网关索引ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayId: str
         :param _GwId: 网关编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type GwId: str
         :param _Name: 网关名称，仅支持中文、英文、数字、_、-，长度不超过32个字符
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Description: 网关描述，仅支持中文、英文、数字、_、-，长度不超过128个字符
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _ClusterId: 服务节点ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterId: str
         :param _ClusterName: 服务节点名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterName: str
         :param _Status: 网关状态，0：离线，1:在线
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _CreatedAt: 激活时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedAt: int
         :param _Secret: 网关密钥
-注意：此字段可能返回 null，表示取不到有效值。
         :type Secret: str
         :param _Version: 网关版本信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
         """
         self._GatewayId = None
@@ -17569,7 +17090,6 @@ class UpdateGatewayData(AbstractModel):
     @property
     def GatewayId(self):
         """网关索引ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GatewayId
@@ -17581,7 +17101,6 @@ class UpdateGatewayData(AbstractModel):
     @property
     def GwId(self):
         """网关编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GwId
@@ -17593,7 +17112,6 @@ class UpdateGatewayData(AbstractModel):
     @property
     def Name(self):
         """网关名称，仅支持中文、英文、数字、_、-，长度不超过32个字符
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -17605,7 +17123,6 @@ class UpdateGatewayData(AbstractModel):
     @property
     def Description(self):
         """网关描述，仅支持中文、英文、数字、_、-，长度不超过128个字符
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -17617,7 +17134,6 @@ class UpdateGatewayData(AbstractModel):
     @property
     def ClusterId(self):
         """服务节点ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterId
@@ -17629,7 +17145,6 @@ class UpdateGatewayData(AbstractModel):
     @property
     def ClusterName(self):
         """服务节点名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterName
@@ -17641,7 +17156,6 @@ class UpdateGatewayData(AbstractModel):
     @property
     def Status(self):
         """网关状态，0：离线，1:在线
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -17653,7 +17167,6 @@ class UpdateGatewayData(AbstractModel):
     @property
     def CreatedAt(self):
         """激活时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CreatedAt
@@ -17665,7 +17178,6 @@ class UpdateGatewayData(AbstractModel):
     @property
     def Secret(self):
         """网关密钥
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Secret
@@ -17677,7 +17189,6 @@ class UpdateGatewayData(AbstractModel):
     @property
     def Version(self):
         """网关版本信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Version
@@ -17827,28 +17338,20 @@ class UpdateOrgData(AbstractModel):
     def __init__(self):
         r"""
         :param _OrganizationId: 组织 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type OrganizationId: str
         :param _Name: 组织名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _ParentId: 组织父节点 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ParentId: str
         :param _Level: 组织层级
-注意：此字段可能返回 null，表示取不到有效值。
         :type Level: int
         :param _AppId: 用户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: int
         :param _ParentIds: 组织结构
-注意：此字段可能返回 null，表示取不到有效值。
         :type ParentIds: str
         :param _Total: 设备总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _Online: 设备在线数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Online: int
         """
         self._OrganizationId = None
@@ -17863,7 +17366,6 @@ class UpdateOrgData(AbstractModel):
     @property
     def OrganizationId(self):
         """组织 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OrganizationId
@@ -17875,7 +17377,6 @@ class UpdateOrgData(AbstractModel):
     @property
     def Name(self):
         """组织名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -17887,7 +17388,6 @@ class UpdateOrgData(AbstractModel):
     @property
     def ParentId(self):
         """组织父节点 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ParentId
@@ -17899,7 +17399,6 @@ class UpdateOrgData(AbstractModel):
     @property
     def Level(self):
         """组织层级
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Level
@@ -17911,7 +17410,6 @@ class UpdateOrgData(AbstractModel):
     @property
     def AppId(self):
         """用户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AppId
@@ -17923,7 +17421,6 @@ class UpdateOrgData(AbstractModel):
     @property
     def ParentIds(self):
         """组织结构
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ParentIds
@@ -17935,7 +17432,6 @@ class UpdateOrgData(AbstractModel):
     @property
     def Total(self):
         """设备总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -17947,7 +17443,6 @@ class UpdateOrgData(AbstractModel):
     @property
     def Online(self):
         """设备在线数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Online
@@ -18469,25 +17964,18 @@ class UpdateRecordBackupTemplateData(AbstractModel):
     def __init__(self):
         r"""
         :param _TemplateId: 模板ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateId: str
         :param _TemplateName: 模板名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateName: str
         :param _TimeSections: 上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimeSections: list of RecordTemplateTimeSections
         :param _DevTimeSections: 录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
-注意：此字段可能返回 null，表示取不到有效值。
         :type DevTimeSections: list of RecordTemplateTimeSections
         :param _Scale: 上云倍速（支持1，2，4倍速）
-注意：此字段可能返回 null，表示取不到有效值。
         :type Scale: int
         :param _CreateAt: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateAt: str
         :param _UpdateAt: 更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateAt: str
         """
         self._TemplateId = None
@@ -18501,7 +17989,6 @@ class UpdateRecordBackupTemplateData(AbstractModel):
     @property
     def TemplateId(self):
         """模板ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TemplateId
@@ -18513,7 +18000,6 @@ class UpdateRecordBackupTemplateData(AbstractModel):
     @property
     def TemplateName(self):
         """模板名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TemplateName
@@ -18525,7 +18011,6 @@ class UpdateRecordBackupTemplateData(AbstractModel):
     @property
     def TimeSections(self):
         """上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RecordTemplateTimeSections
         """
         return self._TimeSections
@@ -18537,7 +18022,6 @@ class UpdateRecordBackupTemplateData(AbstractModel):
     @property
     def DevTimeSections(self):
         """录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RecordTemplateTimeSections
         """
         return self._DevTimeSections
@@ -18549,7 +18033,6 @@ class UpdateRecordBackupTemplateData(AbstractModel):
     @property
     def Scale(self):
         """上云倍速（支持1，2，4倍速）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Scale
@@ -18561,7 +18044,6 @@ class UpdateRecordBackupTemplateData(AbstractModel):
     @property
     def CreateAt(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateAt
@@ -18573,7 +18055,6 @@ class UpdateRecordBackupTemplateData(AbstractModel):
     @property
     def UpdateAt(self):
         """更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateAt

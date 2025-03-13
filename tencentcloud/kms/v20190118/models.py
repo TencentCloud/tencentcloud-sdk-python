@@ -3588,6 +3588,10 @@ class GetServiceStatusResponse(AbstractModel):
         :type ExclusiveHSMEnabled: bool
         :param _SubscriptionInfo: KMS 订阅信息。
         :type SubscriptionInfo: str
+        :param _CmkUserCount: 返回KMS用户密钥使用数量
+        :type CmkUserCount: int
+        :param _CmkLimit: 返回KMS用户密钥规格数量
+        :type CmkLimit: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3600,6 +3604,8 @@ class GetServiceStatusResponse(AbstractModel):
         self._ExclusiveVSMEnabled = None
         self._ExclusiveHSMEnabled = None
         self._SubscriptionInfo = None
+        self._CmkUserCount = None
+        self._CmkLimit = None
         self._RequestId = None
 
     @property
@@ -3702,6 +3708,28 @@ class GetServiceStatusResponse(AbstractModel):
         self._SubscriptionInfo = SubscriptionInfo
 
     @property
+    def CmkUserCount(self):
+        """返回KMS用户密钥使用数量
+        :rtype: int
+        """
+        return self._CmkUserCount
+
+    @CmkUserCount.setter
+    def CmkUserCount(self, CmkUserCount):
+        self._CmkUserCount = CmkUserCount
+
+    @property
+    def CmkLimit(self):
+        """返回KMS用户密钥规格数量
+        :rtype: int
+        """
+        return self._CmkLimit
+
+    @CmkLimit.setter
+    def CmkLimit(self, CmkLimit):
+        self._CmkLimit = CmkLimit
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -3723,6 +3751,8 @@ class GetServiceStatusResponse(AbstractModel):
         self._ExclusiveVSMEnabled = params.get("ExclusiveVSMEnabled")
         self._ExclusiveHSMEnabled = params.get("ExclusiveHSMEnabled")
         self._SubscriptionInfo = params.get("SubscriptionInfo")
+        self._CmkUserCount = params.get("CmkUserCount")
+        self._CmkLimit = params.get("CmkLimit")
         self._RequestId = params.get("RequestId")
 
 

@@ -9779,12 +9779,7 @@ class CreateApplicationRequest(AbstractModel):
         :type ProgramIdList: list of str
         :param _ApmInstanceId: apm业务系统id
         :type ApmInstanceId: str
-        :param _ProgramLanguage: 编程语言;
-J - JAVA；
-C - C/C++；
-P - Python；
-G - Go；
-O - Other；
+        :param _ProgramLanguage: 编程语言:  Java；C/C++；Python；Go；Other
         :type ProgramLanguage: str
         :param _FrameworkType: 开发框架-SpringCloud/Dubbo/Go-GRPC/Other
         :type FrameworkType: str
@@ -9944,12 +9939,7 @@ O - Other；
 
     @property
     def ProgramLanguage(self):
-        """编程语言;
-J - JAVA；
-C - C/C++；
-P - Python；
-G - Go；
-O - Other；
+        """编程语言:  Java；C/C++；Python；Go；Other
         :rtype: str
         """
         return self._ProgramLanguage
@@ -26239,6 +26229,87 @@ class DescribeMicroserviceResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Result") is not None:
             self._Result = TsfPageMsInstance()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeMicroservicesByGroupIdsRequest(AbstractModel):
+    """DescribeMicroservicesByGroupIds请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupIds: 部署组ID列表
+        :type GroupIds: list of str
+        """
+        self._GroupIds = None
+
+    @property
+    def GroupIds(self):
+        """部署组ID列表
+        :rtype: list of str
+        """
+        return self._GroupIds
+
+    @GroupIds.setter
+    def GroupIds(self, GroupIds):
+        self._GroupIds = GroupIds
+
+
+    def _deserialize(self, params):
+        self._GroupIds = params.get("GroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMicroservicesByGroupIdsResponse(AbstractModel):
+    """DescribeMicroservicesByGroupIds返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 微服务信息分页列表
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageMicroservice`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        """微服务信息分页列表
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.TsfPageMicroservice`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = TsfPageMicroservice()
             self._Result._deserialize(params.get("Result"))
         self._RequestId = params.get("RequestId")
 
@@ -47512,7 +47583,7 @@ class ServiceGovernanceConfig(AbstractModel):
         r"""
         :param _EnableGovernance: 是否开启服务注册治理
         :type EnableGovernance: bool
-        :param _GovernanceType: 服务治理类型
+        :param _GovernanceType: 服务治理类型（枚举：SHARE、EXCLUSIVE）
         :type GovernanceType: str
         :param _ExclusiveInstances: 独享实例列表
 注意：此字段可能返回 null，表示取不到有效值。
@@ -47535,7 +47606,7 @@ class ServiceGovernanceConfig(AbstractModel):
 
     @property
     def GovernanceType(self):
-        """服务治理类型
+        """服务治理类型（枚举：SHARE、EXCLUSIVE）
         :rtype: str
         """
         return self._GovernanceType

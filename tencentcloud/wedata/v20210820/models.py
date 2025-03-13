@@ -52096,6 +52096,61 @@ class JudgeResourceFileResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class KVPair(AbstractModel):
+    """键值对
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _K: 键名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type K: str
+        :param _V: 值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type V: str
+        """
+        self._K = None
+        self._V = None
+
+    @property
+    def K(self):
+        """键名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._K
+
+    @K.setter
+    def K(self, K):
+        self._K = K
+
+    @property
+    def V(self):
+        """值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._V
+
+    @V.setter
+    def V(self, V):
+        self._V = V
+
+
+    def _deserialize(self, params):
+        self._K = params.get("K")
+        self._V = params.get("V")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class KillOpsMakePlanInstancesRequest(AbstractModel):
     """KillOpsMakePlanInstances请求参数结构体
 
@@ -54180,6 +54235,318 @@ class MakePlanTaskOpsDtoCollection(AbstractModel):
                 obj = MakePlanTaskOpsDto()
                 obj._deserialize(item)
                 self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ManualTriggerRecordOpsDto(AbstractModel):
+    """手动工作流触发运行记录实体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TriggerId: 运行触发记录ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerId: str
+        :param _TriggerName: 用户提交运行时配置的运行名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerName: str
+        :param _Remark: 用户提交运行的备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param _DatetimeList: 数据时间列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatetimeList: list of str
+        :param _TaskCnt: 任务数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskCnt: int
+        :param _InstanceCnt: 实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceCnt: int
+        :param _FinishedInstanceCnt: 已完成的实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FinishedInstanceCnt: int
+        :param _SuccessInstanceCnt: 成功的实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SuccessInstanceCnt: int
+        :param _Status: 记录运行状态
+ INIT, RUNNING, FINISHED
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _TriggerParams: 用户提交运行时的入参，主要用于前端反显和记录原始提交信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerParams: str
+        :param _OwnerUin: 用户主账号ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnerUin: str
+        :param _UserUin: 用户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserUin: str
+        :param _UserName: 用户展示名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param _TenantId: 租户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TenantId: str
+        :param _ProjectId: 项目ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _ScheduleTimeZone: 数据实例时间的时区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScheduleTimeZone: str
+        """
+        self._TriggerId = None
+        self._TriggerName = None
+        self._Remark = None
+        self._DatetimeList = None
+        self._TaskCnt = None
+        self._InstanceCnt = None
+        self._FinishedInstanceCnt = None
+        self._SuccessInstanceCnt = None
+        self._Status = None
+        self._TriggerParams = None
+        self._OwnerUin = None
+        self._UserUin = None
+        self._UserName = None
+        self._TenantId = None
+        self._ProjectId = None
+        self._CreateTime = None
+        self._ScheduleTimeZone = None
+
+    @property
+    def TriggerId(self):
+        """运行触发记录ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TriggerId
+
+    @TriggerId.setter
+    def TriggerId(self, TriggerId):
+        self._TriggerId = TriggerId
+
+    @property
+    def TriggerName(self):
+        """用户提交运行时配置的运行名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TriggerName
+
+    @TriggerName.setter
+    def TriggerName(self, TriggerName):
+        self._TriggerName = TriggerName
+
+    @property
+    def Remark(self):
+        """用户提交运行的备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def DatetimeList(self):
+        """数据时间列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._DatetimeList
+
+    @DatetimeList.setter
+    def DatetimeList(self, DatetimeList):
+        self._DatetimeList = DatetimeList
+
+    @property
+    def TaskCnt(self):
+        """任务数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TaskCnt
+
+    @TaskCnt.setter
+    def TaskCnt(self, TaskCnt):
+        self._TaskCnt = TaskCnt
+
+    @property
+    def InstanceCnt(self):
+        """实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._InstanceCnt
+
+    @InstanceCnt.setter
+    def InstanceCnt(self, InstanceCnt):
+        self._InstanceCnt = InstanceCnt
+
+    @property
+    def FinishedInstanceCnt(self):
+        """已完成的实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._FinishedInstanceCnt
+
+    @FinishedInstanceCnt.setter
+    def FinishedInstanceCnt(self, FinishedInstanceCnt):
+        self._FinishedInstanceCnt = FinishedInstanceCnt
+
+    @property
+    def SuccessInstanceCnt(self):
+        """成功的实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SuccessInstanceCnt
+
+    @SuccessInstanceCnt.setter
+    def SuccessInstanceCnt(self, SuccessInstanceCnt):
+        self._SuccessInstanceCnt = SuccessInstanceCnt
+
+    @property
+    def Status(self):
+        """记录运行状态
+ INIT, RUNNING, FINISHED
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TriggerParams(self):
+        """用户提交运行时的入参，主要用于前端反显和记录原始提交信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TriggerParams
+
+    @TriggerParams.setter
+    def TriggerParams(self, TriggerParams):
+        self._TriggerParams = TriggerParams
+
+    @property
+    def OwnerUin(self):
+        """用户主账号ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def UserUin(self):
+        """用户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UserUin
+
+    @UserUin.setter
+    def UserUin(self, UserUin):
+        self._UserUin = UserUin
+
+    @property
+    def UserName(self):
+        """用户展示名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def TenantId(self):
+        """租户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TenantId
+
+    @TenantId.setter
+    def TenantId(self, TenantId):
+        self._TenantId = TenantId
+
+    @property
+    def ProjectId(self):
+        """项目ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def CreateTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ScheduleTimeZone(self):
+        """数据实例时间的时区
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ScheduleTimeZone
+
+    @ScheduleTimeZone.setter
+    def ScheduleTimeZone(self, ScheduleTimeZone):
+        self._ScheduleTimeZone = ScheduleTimeZone
+
+
+    def _deserialize(self, params):
+        self._TriggerId = params.get("TriggerId")
+        self._TriggerName = params.get("TriggerName")
+        self._Remark = params.get("Remark")
+        self._DatetimeList = params.get("DatetimeList")
+        self._TaskCnt = params.get("TaskCnt")
+        self._InstanceCnt = params.get("InstanceCnt")
+        self._FinishedInstanceCnt = params.get("FinishedInstanceCnt")
+        self._SuccessInstanceCnt = params.get("SuccessInstanceCnt")
+        self._Status = params.get("Status")
+        self._TriggerParams = params.get("TriggerParams")
+        self._OwnerUin = params.get("OwnerUin")
+        self._UserUin = params.get("UserUin")
+        self._UserName = params.get("UserName")
+        self._TenantId = params.get("TenantId")
+        self._ProjectId = params.get("ProjectId")
+        self._CreateTime = params.get("CreateTime")
+        self._ScheduleTimeZone = params.get("ScheduleTimeZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -83683,6 +84050,293 @@ class TriggerEventResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Data") is not None:
             self._Data = BatchReturn()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class TriggerManualTasksRequest(AbstractModel):
+    """TriggerManualTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _TriggerName: 触发运行名称
+        :type TriggerName: str
+        :param _TriggerScope: 运行范围 ENTIRE_WORKFLOW or SPECIFIED_TASK
+        :type TriggerScope: str
+        :param _DataTimeList: 运行数据时间列表
+        :type DataTimeList: list of str
+        :param _WorkflowId: 工作流ID
+        :type WorkflowId: str
+        :param _Remark: 备注
+        :type Remark: str
+        :param _TaskIds: 需要运行的任务列表
+TriggerScope=ENTIRE_WORKFLOW 时无需传此参数，TriggerScope=SPECIFIED_TASK此参数必传
+        :type TaskIds: list of str
+        :param _SchedulerResourceGroup: 用户提交运行时指定的调度资源组，未指定时使用任务配置的调度资源组
+        :type SchedulerResourceGroup: str
+        :param _IntegrationResourceGroup: 用户提交运行时指定的集成资源组，未指定时使用任务配置的集成资源组
+        :type IntegrationResourceGroup: str
+        :param _ExecOrder: 执行顺序 ASC、RAND、DESC
+        :type ExecOrder: str
+        :param _CustomParams: 自定义参数，最高优先级
+        :type CustomParams: list of KVPair
+        :param _ExtraParams: 页面反显使用，无业务含义
+        :type ExtraParams: str
+        :param _ScheduleTimeZone: 实例时间的时区
+        :type ScheduleTimeZone: str
+        """
+        self._ProjectId = None
+        self._TriggerName = None
+        self._TriggerScope = None
+        self._DataTimeList = None
+        self._WorkflowId = None
+        self._Remark = None
+        self._TaskIds = None
+        self._SchedulerResourceGroup = None
+        self._IntegrationResourceGroup = None
+        self._ExecOrder = None
+        self._CustomParams = None
+        self._ExtraParams = None
+        self._ScheduleTimeZone = None
+
+    @property
+    def ProjectId(self):
+        """项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def TriggerName(self):
+        """触发运行名称
+        :rtype: str
+        """
+        return self._TriggerName
+
+    @TriggerName.setter
+    def TriggerName(self, TriggerName):
+        self._TriggerName = TriggerName
+
+    @property
+    def TriggerScope(self):
+        """运行范围 ENTIRE_WORKFLOW or SPECIFIED_TASK
+        :rtype: str
+        """
+        return self._TriggerScope
+
+    @TriggerScope.setter
+    def TriggerScope(self, TriggerScope):
+        self._TriggerScope = TriggerScope
+
+    @property
+    def DataTimeList(self):
+        """运行数据时间列表
+        :rtype: list of str
+        """
+        return self._DataTimeList
+
+    @DataTimeList.setter
+    def DataTimeList(self, DataTimeList):
+        self._DataTimeList = DataTimeList
+
+    @property
+    def WorkflowId(self):
+        """工作流ID
+        :rtype: str
+        """
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+    @property
+    def Remark(self):
+        """备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def TaskIds(self):
+        """需要运行的任务列表
+TriggerScope=ENTIRE_WORKFLOW 时无需传此参数，TriggerScope=SPECIFIED_TASK此参数必传
+        :rtype: list of str
+        """
+        return self._TaskIds
+
+    @TaskIds.setter
+    def TaskIds(self, TaskIds):
+        self._TaskIds = TaskIds
+
+    @property
+    def SchedulerResourceGroup(self):
+        """用户提交运行时指定的调度资源组，未指定时使用任务配置的调度资源组
+        :rtype: str
+        """
+        return self._SchedulerResourceGroup
+
+    @SchedulerResourceGroup.setter
+    def SchedulerResourceGroup(self, SchedulerResourceGroup):
+        self._SchedulerResourceGroup = SchedulerResourceGroup
+
+    @property
+    def IntegrationResourceGroup(self):
+        """用户提交运行时指定的集成资源组，未指定时使用任务配置的集成资源组
+        :rtype: str
+        """
+        return self._IntegrationResourceGroup
+
+    @IntegrationResourceGroup.setter
+    def IntegrationResourceGroup(self, IntegrationResourceGroup):
+        self._IntegrationResourceGroup = IntegrationResourceGroup
+
+    @property
+    def ExecOrder(self):
+        """执行顺序 ASC、RAND、DESC
+        :rtype: str
+        """
+        return self._ExecOrder
+
+    @ExecOrder.setter
+    def ExecOrder(self, ExecOrder):
+        self._ExecOrder = ExecOrder
+
+    @property
+    def CustomParams(self):
+        """自定义参数，最高优先级
+        :rtype: list of KVPair
+        """
+        return self._CustomParams
+
+    @CustomParams.setter
+    def CustomParams(self, CustomParams):
+        self._CustomParams = CustomParams
+
+    @property
+    def ExtraParams(self):
+        """页面反显使用，无业务含义
+        :rtype: str
+        """
+        return self._ExtraParams
+
+    @ExtraParams.setter
+    def ExtraParams(self, ExtraParams):
+        self._ExtraParams = ExtraParams
+
+    @property
+    def ScheduleTimeZone(self):
+        """实例时间的时区
+        :rtype: str
+        """
+        return self._ScheduleTimeZone
+
+    @ScheduleTimeZone.setter
+    def ScheduleTimeZone(self, ScheduleTimeZone):
+        self._ScheduleTimeZone = ScheduleTimeZone
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._TriggerName = params.get("TriggerName")
+        self._TriggerScope = params.get("TriggerScope")
+        self._DataTimeList = params.get("DataTimeList")
+        self._WorkflowId = params.get("WorkflowId")
+        self._Remark = params.get("Remark")
+        self._TaskIds = params.get("TaskIds")
+        self._SchedulerResourceGroup = params.get("SchedulerResourceGroup")
+        self._IntegrationResourceGroup = params.get("IntegrationResourceGroup")
+        self._ExecOrder = params.get("ExecOrder")
+        if params.get("CustomParams") is not None:
+            self._CustomParams = []
+            for item in params.get("CustomParams"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self._CustomParams.append(obj)
+        self._ExtraParams = params.get("ExtraParams")
+        self._ScheduleTimeZone = params.get("ScheduleTimeZone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TriggerManualTasksResponse(AbstractModel):
+    """TriggerManualTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestFromSource: 请求来源，WEB 前端；CLIENT 客户端
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestFromSource: str
+        :param _Data: 详情结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.ManualTriggerRecordOpsDto`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestFromSource = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def RequestFromSource(self):
+        """请求来源，WEB 前端；CLIENT 客户端
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RequestFromSource
+
+    @RequestFromSource.setter
+    def RequestFromSource(self, RequestFromSource):
+        self._RequestFromSource = RequestFromSource
+
+    @property
+    def Data(self):
+        """详情结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.ManualTriggerRecordOpsDto`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestFromSource = params.get("RequestFromSource")
+        if params.get("Data") is not None:
+            self._Data = ManualTriggerRecordOpsDto()
             self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 

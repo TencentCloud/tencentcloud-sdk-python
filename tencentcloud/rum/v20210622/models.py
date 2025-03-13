@@ -11895,7 +11895,6 @@ class RumProject(AbstractModel):
         :param _AccessPoint: 日志接入点，用户忽略。
         :type AccessPoint: str
         :param _Kafka: kafka旁路配置信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Kafka: :class:`tencentcloud.rum.v20210622.models.Kafka`
         """
         self._Name = None
@@ -12107,7 +12106,6 @@ class RumProject(AbstractModel):
     @property
     def Kafka(self):
         """kafka旁路配置信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.rum.v20210622.models.Kafka`
         """
         return self._Kafka

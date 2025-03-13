@@ -16065,6 +16065,9 @@ class ServerlessIndexMetaField(AbstractModel):
         :param _IndexName: 索引名
 注意：此字段可能返回 null，表示取不到有效值。
         :type IndexName: str
+        :param _IndexMetaJson: 索引元数据JSON
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexMetaJson: str
         :param _IndexDocs: 索引文档数
 注意：此字段可能返回 null，表示取不到有效值。
         :type IndexDocs: int
@@ -16115,6 +16118,7 @@ class ServerlessIndexMetaField(AbstractModel):
         """
         self._AppId = None
         self._IndexName = None
+        self._IndexMetaJson = None
         self._IndexDocs = None
         self._IndexStorage = None
         self._IndexCreateTime = None
@@ -16155,6 +16159,18 @@ class ServerlessIndexMetaField(AbstractModel):
     @IndexName.setter
     def IndexName(self, IndexName):
         self._IndexName = IndexName
+
+    @property
+    def IndexMetaJson(self):
+        """索引元数据JSON
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._IndexMetaJson
+
+    @IndexMetaJson.setter
+    def IndexMetaJson(self, IndexMetaJson):
+        self._IndexMetaJson = IndexMetaJson
 
     @property
     def IndexDocs(self):
@@ -16351,6 +16367,7 @@ class ServerlessIndexMetaField(AbstractModel):
     def _deserialize(self, params):
         self._AppId = params.get("AppId")
         self._IndexName = params.get("IndexName")
+        self._IndexMetaJson = params.get("IndexMetaJson")
         self._IndexDocs = params.get("IndexDocs")
         self._IndexStorage = params.get("IndexStorage")
         self._IndexCreateTime = params.get("IndexCreateTime")
