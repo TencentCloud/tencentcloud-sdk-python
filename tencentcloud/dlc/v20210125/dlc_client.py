@@ -2119,6 +2119,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTaskMonitorInfos(self, request):
+        """查询任务监控指标信息
+
+        :param request: Request instance for DescribeTaskMonitorInfos.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeTaskMonitorInfosRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeTaskMonitorInfosResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTaskMonitorInfos", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTaskMonitorInfosResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTaskResult(self, request):
         """查询任务结果，仅支持30天以内的任务查询结果，且返回数据大小超过近50M会进行截断。
 

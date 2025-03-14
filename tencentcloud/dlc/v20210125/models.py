@@ -182,6 +182,86 @@ class AddOptimizerEnginesRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _Catalog: 数据目录名称
+        :type Catalog: str
+        :param _Engines: 引擎信息列表
+        :type Engines: list of OptimizerEngineInfo
+        :param _Database: 数据库名称
+        :type Database: str
+        :param _Table: 数据表名称
+        :type Table: str
+        """
+        self._Catalog = None
+        self._Engines = None
+        self._Database = None
+        self._Table = None
+
+    @property
+    def Catalog(self):
+        """数据目录名称
+        :rtype: str
+        """
+        return self._Catalog
+
+    @Catalog.setter
+    def Catalog(self, Catalog):
+        self._Catalog = Catalog
+
+    @property
+    def Engines(self):
+        """引擎信息列表
+        :rtype: list of OptimizerEngineInfo
+        """
+        return self._Engines
+
+    @Engines.setter
+    def Engines(self, Engines):
+        self._Engines = Engines
+
+    @property
+    def Database(self):
+        """数据库名称
+        :rtype: str
+        """
+        return self._Database
+
+    @Database.setter
+    def Database(self, Database):
+        self._Database = Database
+
+    @property
+    def Table(self):
+        """数据表名称
+        :rtype: str
+        """
+        return self._Table
+
+    @Table.setter
+    def Table(self, Table):
+        self._Table = Table
+
+
+    def _deserialize(self, params):
+        self._Catalog = params.get("Catalog")
+        if params.get("Engines") is not None:
+            self._Engines = []
+            for item in params.get("Engines"):
+                obj = OptimizerEngineInfo()
+                obj._deserialize(item)
+                self._Engines.append(obj)
+        self._Database = params.get("Database")
+        self._Table = params.get("Table")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class AddOptimizerEnginesResponse(AbstractModel):
     """AddOptimizerEngines返回参数结构体
@@ -19020,6 +19100,180 @@ class DescribeTaskLogResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTaskMonitorInfosRequest(AbstractModel):
+    """DescribeTaskMonitorInfos请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskIdList: 任务ID列表，上限50个
+        :type TaskIdList: list of str
+        :param _HouseName: 引擎名称
+        :type HouseName: str
+        :param _CreateTimeStart: 任务创建时间的起始时间
+        :type CreateTimeStart: str
+        :param _CreateTimeEnd: 任务创建时间的结束时间
+        :type CreateTimeEnd: str
+        :param _Limit: 每一页条数
+        :type Limit: int
+        :param _Offset: 偏移量
+        :type Offset: int
+        """
+        self._TaskIdList = None
+        self._HouseName = None
+        self._CreateTimeStart = None
+        self._CreateTimeEnd = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def TaskIdList(self):
+        """任务ID列表，上限50个
+        :rtype: list of str
+        """
+        return self._TaskIdList
+
+    @TaskIdList.setter
+    def TaskIdList(self, TaskIdList):
+        self._TaskIdList = TaskIdList
+
+    @property
+    def HouseName(self):
+        """引擎名称
+        :rtype: str
+        """
+        return self._HouseName
+
+    @HouseName.setter
+    def HouseName(self, HouseName):
+        self._HouseName = HouseName
+
+    @property
+    def CreateTimeStart(self):
+        """任务创建时间的起始时间
+        :rtype: str
+        """
+        return self._CreateTimeStart
+
+    @CreateTimeStart.setter
+    def CreateTimeStart(self, CreateTimeStart):
+        self._CreateTimeStart = CreateTimeStart
+
+    @property
+    def CreateTimeEnd(self):
+        """任务创建时间的结束时间
+        :rtype: str
+        """
+        return self._CreateTimeEnd
+
+    @CreateTimeEnd.setter
+    def CreateTimeEnd(self, CreateTimeEnd):
+        self._CreateTimeEnd = CreateTimeEnd
+
+    @property
+    def Limit(self):
+        """每一页条数
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """偏移量
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._TaskIdList = params.get("TaskIdList")
+        self._HouseName = params.get("HouseName")
+        self._CreateTimeStart = params.get("CreateTimeStart")
+        self._CreateTimeEnd = params.get("CreateTimeEnd")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTaskMonitorInfosResponse(AbstractModel):
+    """DescribeTaskMonitorInfos返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskMonitorInfoList: 任务监控信息列表
+        :type TaskMonitorInfoList: list of TaskMonitorInfo
+        :param _TotalCount: 任务总数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskMonitorInfoList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def TaskMonitorInfoList(self):
+        """任务监控信息列表
+        :rtype: list of TaskMonitorInfo
+        """
+        return self._TaskMonitorInfoList
+
+    @TaskMonitorInfoList.setter
+    def TaskMonitorInfoList(self, TaskMonitorInfoList):
+        self._TaskMonitorInfoList = TaskMonitorInfoList
+
+    @property
+    def TotalCount(self):
+        """任务总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TaskMonitorInfoList") is not None:
+            self._TaskMonitorInfoList = []
+            for item in params.get("TaskMonitorInfoList"):
+                obj = TaskMonitorInfo()
+                obj._deserialize(item)
+                self._TaskMonitorInfoList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTaskResultRequest(AbstractModel):
     """DescribeTaskResult请求参数结构体
 
@@ -27138,6 +27392,78 @@ class OpendThirdAccessUserInfo(AbstractModel):
         
 
 
+class OptimizerEngineInfo(AbstractModel):
+    """数据优化引擎信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HouseName: 引擎资源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HouseName: str
+        :param _HouseId: 引擎资源ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HouseId: str
+        :param _HouseSize: 该参数仅针对spark作业引擎有效，用于执行数据优化任务的资源大小，不填时将采用该引擎所有资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HouseSize: int
+        """
+        self._HouseName = None
+        self._HouseId = None
+        self._HouseSize = None
+
+    @property
+    def HouseName(self):
+        """引擎资源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._HouseName
+
+    @HouseName.setter
+    def HouseName(self, HouseName):
+        self._HouseName = HouseName
+
+    @property
+    def HouseId(self):
+        """引擎资源ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._HouseId
+
+    @HouseId.setter
+    def HouseId(self, HouseId):
+        self._HouseId = HouseId
+
+    @property
+    def HouseSize(self):
+        """该参数仅针对spark作业引擎有效，用于执行数据优化任务的资源大小，不填时将采用该引擎所有资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._HouseSize
+
+    @HouseSize.setter
+    def HouseSize(self, HouseSize):
+        self._HouseSize = HouseSize
+
+
+    def _deserialize(self, params):
+        self._HouseName = params.get("HouseName")
+        self._HouseId = params.get("HouseId")
+        self._HouseSize = params.get("HouseSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Other(AbstractModel):
     """数据格式其它类型。
 
@@ -32596,6 +32922,132 @@ class Task(AbstractModel):
         if params.get("SparkSQLTask") is not None:
             self._SparkSQLTask = SQLTask()
             self._SparkSQLTask._deserialize(params.get("SparkSQLTask"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskMonitorInfo(AbstractModel):
+    """任务监控信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务id
+        :type TaskId: str
+        :param _HouseName: 引擎名称
+        :type HouseName: str
+        :param _QuerySQL: sql语句
+        :type QuerySQL: str
+        :param _CreateTime: 任务时间
+        :type CreateTime: str
+        :param _UsedTime: 执行时间
+        :type UsedTime: str
+        :param _DataAmount: 数据扫描量
+        :type DataAmount: str
+        :param _QueryStats: 指标信息
+        :type QueryStats: str
+        """
+        self._TaskId = None
+        self._HouseName = None
+        self._QuerySQL = None
+        self._CreateTime = None
+        self._UsedTime = None
+        self._DataAmount = None
+        self._QueryStats = None
+
+    @property
+    def TaskId(self):
+        """任务id
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def HouseName(self):
+        """引擎名称
+        :rtype: str
+        """
+        return self._HouseName
+
+    @HouseName.setter
+    def HouseName(self, HouseName):
+        self._HouseName = HouseName
+
+    @property
+    def QuerySQL(self):
+        """sql语句
+        :rtype: str
+        """
+        return self._QuerySQL
+
+    @QuerySQL.setter
+    def QuerySQL(self, QuerySQL):
+        self._QuerySQL = QuerySQL
+
+    @property
+    def CreateTime(self):
+        """任务时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UsedTime(self):
+        """执行时间
+        :rtype: str
+        """
+        return self._UsedTime
+
+    @UsedTime.setter
+    def UsedTime(self, UsedTime):
+        self._UsedTime = UsedTime
+
+    @property
+    def DataAmount(self):
+        """数据扫描量
+        :rtype: str
+        """
+        return self._DataAmount
+
+    @DataAmount.setter
+    def DataAmount(self, DataAmount):
+        self._DataAmount = DataAmount
+
+    @property
+    def QueryStats(self):
+        """指标信息
+        :rtype: str
+        """
+        return self._QueryStats
+
+    @QueryStats.setter
+    def QueryStats(self, QueryStats):
+        self._QueryStats = QueryStats
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._HouseName = params.get("HouseName")
+        self._QuerySQL = params.get("QuerySQL")
+        self._CreateTime = params.get("CreateTime")
+        self._UsedTime = params.get("UsedTime")
+        self._DataAmount = params.get("DataAmount")
+        self._QueryStats = params.get("QueryStats")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
