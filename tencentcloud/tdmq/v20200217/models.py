@@ -186,10 +186,8 @@ class AMQPClusterDetail(AbstractModel):
         :param _Config: 集群配置信息
         :type Config: :class:`tencentcloud.tdmq.v20200217.models.AMQPClusterConfig`
         :param _Tags: 标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
         :param _Status: 集群状态，0:创建中，1:正常，2:销毁中，3:已删除，4: 隔离中，5:创建失败，6: 删除失败
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         """
         self._Info = None
@@ -222,7 +220,6 @@ class AMQPClusterDetail(AbstractModel):
     @property
     def Tags(self):
         """标签
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._Tags
@@ -234,7 +231,6 @@ class AMQPClusterDetail(AbstractModel):
     @property
     def Status(self):
         """集群状态，0:创建中，1:正常，2:销毁中，3:已删除，4: 隔离中，5:创建失败，6: 删除失败
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -4590,13 +4586,10 @@ class CreateRabbitMQBindingResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceId: 实例名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _VirtualHost: vhost名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type VirtualHost: str
         :param _BindingId: 路由关系Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type BindingId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4609,7 +4602,6 @@ class CreateRabbitMQBindingResponse(AbstractModel):
     @property
     def InstanceId(self):
         """实例名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -4621,7 +4613,6 @@ class CreateRabbitMQBindingResponse(AbstractModel):
     @property
     def VirtualHost(self):
         """vhost名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VirtualHost
@@ -4633,7 +4624,6 @@ class CreateRabbitMQBindingResponse(AbstractModel):
     @property
     def BindingId(self):
         """路由关系Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._BindingId
@@ -5106,10 +5096,8 @@ class CreateRabbitMQVipInstanceResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TranId: 订单号Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type TranId: str
         :param _InstanceId: 实例Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5121,7 +5109,6 @@ class CreateRabbitMQVipInstanceResponse(AbstractModel):
     @property
     def TranId(self):
         """订单号Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TranId
@@ -5133,7 +5120,6 @@ class CreateRabbitMQVipInstanceResponse(AbstractModel):
     @property
     def InstanceId(self):
         """实例Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -7629,13 +7615,10 @@ class DeleteRabbitMQBindingResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceId: 实例名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _VirtualHost: vhost参数
-注意：此字段可能返回 null，表示取不到有效值。
         :type VirtualHost: str
         :param _BindingId: 路由关系Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type BindingId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7648,7 +7631,6 @@ class DeleteRabbitMQBindingResponse(AbstractModel):
     @property
     def InstanceId(self):
         """实例名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -7660,7 +7642,6 @@ class DeleteRabbitMQBindingResponse(AbstractModel):
     @property
     def VirtualHost(self):
         """vhost参数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VirtualHost
@@ -7672,7 +7653,6 @@ class DeleteRabbitMQBindingResponse(AbstractModel):
     @property
     def BindingId(self):
         """路由关系Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._BindingId
@@ -7932,10 +7912,8 @@ class DeleteRabbitMQVipInstanceResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TranId: 订单号Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type TranId: str
         :param _InstanceId: 实例Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7947,7 +7925,6 @@ class DeleteRabbitMQVipInstanceResponse(AbstractModel):
     @property
     def TranId(self):
         """订单号Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TranId
@@ -7959,7 +7936,6 @@ class DeleteRabbitMQVipInstanceResponse(AbstractModel):
     @property
     def InstanceId(self):
         """实例Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -12760,10 +12736,8 @@ class DescribeRabbitMQBindingsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _BindingInfoList: 路由关系列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type BindingInfoList: list of RabbitMQBindingListInfo
         :param _TotalCount: 数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12775,7 +12749,6 @@ class DescribeRabbitMQBindingsResponse(AbstractModel):
     @property
     def BindingInfoList(self):
         """路由关系列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RabbitMQBindingListInfo
         """
         return self._BindingInfoList
@@ -12787,7 +12760,6 @@ class DescribeRabbitMQBindingsResponse(AbstractModel):
     @property
     def TotalCount(self):
         """数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -13004,10 +12976,8 @@ class DescribeRabbitMQExchangesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ExchangeInfoList: 策略列表信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExchangeInfoList: list of RabbitMQExchangeListInfo
         :param _TotalCount: 策略结果总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13019,7 +12989,6 @@ class DescribeRabbitMQExchangesResponse(AbstractModel):
     @property
     def ExchangeInfoList(self):
         """策略列表信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RabbitMQExchangeListInfo
         """
         return self._ExchangeInfoList
@@ -13031,7 +13000,6 @@ class DescribeRabbitMQExchangesResponse(AbstractModel):
     @property
     def TotalCount(self):
         """策略结果总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -13504,22 +13472,17 @@ class DescribeRabbitMQQueueDetailResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceId: 实例名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _VirtualHost: Vhost参数
-注意：此字段可能返回 null，表示取不到有效值。
         :type VirtualHost: str
         :param _QueueName: 队列名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type QueueName: str
         :param _QueueType: 队列类型,取值classic或quorum
-注意：此字段可能返回 null，表示取不到有效值。
         :type QueueType: str
         :param _Consumers: 在线消费者数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type Consumers: int
         :param _Durable: 持久标记
-注意：此字段可能返回 null，表示取不到有效值。
         :type Durable: bool
         :param _AutoDelete: 自动清除
 注意：此字段可能返回 null，表示取不到有效值。
@@ -13570,7 +13533,6 @@ class DescribeRabbitMQQueueDetailResponse(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxInMemoryBytes: int
         :param _CreateTime: 创建时间戳,单位秒
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: int
         :param _Node: 节点
 注意：此字段可能返回 null，表示取不到有效值。
@@ -13585,13 +13547,11 @@ class DescribeRabbitMQQueueDetailResponse(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type QuorumInitialGroupSize: int
         :param _Exclusive: 是否为独占队列
-注意：此字段可能返回 null，表示取不到有效值。
         :type Exclusive: bool
         :param _Policy: 生效的策略名
 注意：此字段可能返回 null，表示取不到有效值。
         :type Policy: str
         :param _Arguments: 扩展参数 key-value
-注意：此字段可能返回 null，表示取不到有效值。
         :type Arguments: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13631,7 +13591,6 @@ class DescribeRabbitMQQueueDetailResponse(AbstractModel):
     @property
     def InstanceId(self):
         """实例名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -13643,7 +13602,6 @@ class DescribeRabbitMQQueueDetailResponse(AbstractModel):
     @property
     def VirtualHost(self):
         """Vhost参数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VirtualHost
@@ -13655,7 +13613,6 @@ class DescribeRabbitMQQueueDetailResponse(AbstractModel):
     @property
     def QueueName(self):
         """队列名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._QueueName
@@ -13667,7 +13624,6 @@ class DescribeRabbitMQQueueDetailResponse(AbstractModel):
     @property
     def QueueType(self):
         """队列类型,取值classic或quorum
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._QueueType
@@ -13691,7 +13647,6 @@ class DescribeRabbitMQQueueDetailResponse(AbstractModel):
     @property
     def Durable(self):
         """持久标记
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Durable
@@ -13895,7 +13850,6 @@ class DescribeRabbitMQQueueDetailResponse(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间戳,单位秒
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CreateTime
@@ -13955,7 +13909,6 @@ class DescribeRabbitMQQueueDetailResponse(AbstractModel):
     @property
     def Exclusive(self):
         """是否为独占队列
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Exclusive
@@ -13979,7 +13932,6 @@ class DescribeRabbitMQQueueDetailResponse(AbstractModel):
     @property
     def Arguments(self):
         """扩展参数 key-value
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Arguments
@@ -14193,10 +14145,8 @@ class DescribeRabbitMQQueuesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _QueueInfoList: 列表信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type QueueInfoList: list of RabbitMQQueueListInfo
         :param _TotalCount: 数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14208,7 +14158,6 @@ class DescribeRabbitMQQueuesResponse(AbstractModel):
     @property
     def QueueInfoList(self):
         """列表信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RabbitMQQueueListInfo
         """
         return self._QueueInfoList
@@ -14220,7 +14169,6 @@ class DescribeRabbitMQQueuesResponse(AbstractModel):
     @property
     def TotalCount(self):
         """数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -14474,10 +14422,8 @@ class DescribeRabbitMQVipInstanceResponse(AbstractModel):
         :param _ClusterSpecInfo: 集群规格信息
         :type ClusterSpecInfo: :class:`tencentcloud.tdmq.v20200217.models.RabbitMQClusterSpecInfo`
         :param _ClusterNetInfo: 集群访问
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterNetInfo: :class:`tencentcloud.tdmq.v20200217.models.RabbitMQClusterAccessInfo`
         :param _ClusterWhiteListInfo: 集群白名单
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterWhiteListInfo: :class:`tencentcloud.tdmq.v20200217.models.RabbitMQClusterWhiteListInfo`
         :param _VirtualHostQuota: vhost配额信息
         :type VirtualHostQuota: :class:`tencentcloud.tdmq.v20200217.models.VirtualHostQuota`
@@ -14522,7 +14468,6 @@ class DescribeRabbitMQVipInstanceResponse(AbstractModel):
     @property
     def ClusterNetInfo(self):
         """集群访问
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tdmq.v20200217.models.RabbitMQClusterAccessInfo`
         """
         return self._ClusterNetInfo
@@ -14534,7 +14479,6 @@ class DescribeRabbitMQVipInstanceResponse(AbstractModel):
     @property
     def ClusterWhiteListInfo(self):
         """集群白名单
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tdmq.v20200217.models.RabbitMQClusterWhiteListInfo`
         """
         return self._ClusterWhiteListInfo
@@ -21004,7 +20948,6 @@ class ExchangeQuota(AbstractModel):
         :param _MaxExchange: 可创建最大exchange数
         :type MaxExchange: int
         :param _UsedExchange: 已创建exchange数
-注意：此字段可能返回 null，表示取不到有效值。
         :type UsedExchange: int
         """
         self._MaxExchange = None
@@ -21024,7 +20967,6 @@ class ExchangeQuota(AbstractModel):
     @property
     def UsedExchange(self):
         """已创建exchange数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._UsedExchange
@@ -24122,7 +24064,6 @@ class ModifyRabbitMQVipInstanceResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceId: 实例id
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -24133,7 +24074,6 @@ class ModifyRabbitMQVipInstanceResponse(AbstractModel):
     @property
     def InstanceId(self):
         """实例id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -27462,7 +27402,6 @@ class QueueQuota(AbstractModel):
         :param _MaxQueue: 可创建最大Queue数
         :type MaxQueue: int
         :param _UsedQueue: 已创建Queue数
-注意：此字段可能返回 null，表示取不到有效值。
         :type UsedQueue: int
         """
         self._MaxQueue = None
@@ -27482,7 +27421,6 @@ class QueueQuota(AbstractModel):
     @property
     def UsedQueue(self):
         """已创建Queue数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._UsedQueue
@@ -27513,31 +27451,22 @@ class RabbitMQBindingListInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _BindingId: 路由关系id
-注意：此字段可能返回 null，表示取不到有效值。
         :type BindingId: int
         :param _VirtualHost: Vhost参数
-注意：此字段可能返回 null，表示取不到有效值。
         :type VirtualHost: str
         :param _Source: 源exchange名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Source: str
         :param _DestinationType: 目标类型,queue或exchange
-注意：此字段可能返回 null，表示取不到有效值。
         :type DestinationType: str
         :param _Destination: 目标资源名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Destination: str
         :param _RoutingKey: 绑定key
-注意：此字段可能返回 null，表示取不到有效值。
         :type RoutingKey: str
         :param _SourceExchangeType: 源exchange类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type SourceExchangeType: str
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _ModifyTime: 修改时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyTime: str
         """
         self._BindingId = None
@@ -27553,7 +27482,6 @@ class RabbitMQBindingListInfo(AbstractModel):
     @property
     def BindingId(self):
         """路由关系id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._BindingId
@@ -27565,7 +27493,6 @@ class RabbitMQBindingListInfo(AbstractModel):
     @property
     def VirtualHost(self):
         """Vhost参数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VirtualHost
@@ -27577,7 +27504,6 @@ class RabbitMQBindingListInfo(AbstractModel):
     @property
     def Source(self):
         """源exchange名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Source
@@ -27589,7 +27515,6 @@ class RabbitMQBindingListInfo(AbstractModel):
     @property
     def DestinationType(self):
         """目标类型,queue或exchange
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DestinationType
@@ -27601,7 +27526,6 @@ class RabbitMQBindingListInfo(AbstractModel):
     @property
     def Destination(self):
         """目标资源名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Destination
@@ -27613,7 +27537,6 @@ class RabbitMQBindingListInfo(AbstractModel):
     @property
     def RoutingKey(self):
         """绑定key
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RoutingKey
@@ -27625,7 +27548,6 @@ class RabbitMQBindingListInfo(AbstractModel):
     @property
     def SourceExchangeType(self):
         """源exchange类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SourceExchangeType
@@ -27637,7 +27559,6 @@ class RabbitMQBindingListInfo(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -27649,7 +27570,6 @@ class RabbitMQBindingListInfo(AbstractModel):
     @property
     def ModifyTime(self):
         """修改时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ModifyTime
@@ -27704,21 +27624,18 @@ class RabbitMQClusterAccessInfo(AbstractModel):
         :param _VpcWebConsoleEndpoint: Vpc管控台访问地址，示例值，http://1.1.1.1:15672
         :type VpcWebConsoleEndpoint: str
         :param _PublicWebConsoleSwitchStatus: 公网管控台开关状态，示例值，OFF/ON/CREATING/DELETING
-注意：此字段可能返回 null，表示取不到有效值。
         :type PublicWebConsoleSwitchStatus: str
         :param _VpcWebConsoleSwitchStatus: Vpc管控台开关状态，示例值，
 OFF/ON/CREATING/DELETING
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcWebConsoleSwitchStatus: str
         :param _PublicDataStreamStatus: 公网管控台开关状态，示例值，OFF/ON/CREATING/DELETING
-注意：此字段可能返回 null，表示取不到有效值。
         :type PublicDataStreamStatus: str
         :param _PrometheusEndpointInfo: Prometheus信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type PrometheusEndpointInfo: :class:`tencentcloud.tdmq.v20200217.models.PrometheusEndpointInfo`
         :param _WebConsoleDomainEndpoint: 公网域名接入点
-注意：此字段可能返回 null，表示取不到有效值。
         :type WebConsoleDomainEndpoint: str
+        :param _ControlPlaneEndpointInfo: 控制面所使用的VPC信息
+        :type ControlPlaneEndpointInfo: :class:`tencentcloud.tdmq.v20200217.models.VpcEndpointInfo`
         """
         self._PublicAccessEndpoint = None
         self._WebConsoleEndpoint = None
@@ -27733,6 +27650,7 @@ OFF/ON/CREATING/DELETING
         self._PublicDataStreamStatus = None
         self._PrometheusEndpointInfo = None
         self._WebConsoleDomainEndpoint = None
+        self._ControlPlaneEndpointInfo = None
 
     @property
     def PublicAccessEndpoint(self):
@@ -27826,7 +27744,6 @@ OFF/ON/CREATING/DELETING
     @property
     def PublicWebConsoleSwitchStatus(self):
         """公网管控台开关状态，示例值，OFF/ON/CREATING/DELETING
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PublicWebConsoleSwitchStatus
@@ -27839,7 +27756,6 @@ OFF/ON/CREATING/DELETING
     def VpcWebConsoleSwitchStatus(self):
         """Vpc管控台开关状态，示例值，
 OFF/ON/CREATING/DELETING
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VpcWebConsoleSwitchStatus
@@ -27851,7 +27767,6 @@ OFF/ON/CREATING/DELETING
     @property
     def PublicDataStreamStatus(self):
         """公网管控台开关状态，示例值，OFF/ON/CREATING/DELETING
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PublicDataStreamStatus
@@ -27863,7 +27778,6 @@ OFF/ON/CREATING/DELETING
     @property
     def PrometheusEndpointInfo(self):
         """Prometheus信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tdmq.v20200217.models.PrometheusEndpointInfo`
         """
         return self._PrometheusEndpointInfo
@@ -27875,7 +27789,6 @@ OFF/ON/CREATING/DELETING
     @property
     def WebConsoleDomainEndpoint(self):
         """公网域名接入点
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._WebConsoleDomainEndpoint
@@ -27883,6 +27796,17 @@ OFF/ON/CREATING/DELETING
     @WebConsoleDomainEndpoint.setter
     def WebConsoleDomainEndpoint(self, WebConsoleDomainEndpoint):
         self._WebConsoleDomainEndpoint = WebConsoleDomainEndpoint
+
+    @property
+    def ControlPlaneEndpointInfo(self):
+        """控制面所使用的VPC信息
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.VpcEndpointInfo`
+        """
+        return self._ControlPlaneEndpointInfo
+
+    @ControlPlaneEndpointInfo.setter
+    def ControlPlaneEndpointInfo(self, ControlPlaneEndpointInfo):
+        self._ControlPlaneEndpointInfo = ControlPlaneEndpointInfo
 
 
     def _deserialize(self, params):
@@ -27901,6 +27825,9 @@ OFF/ON/CREATING/DELETING
             self._PrometheusEndpointInfo = PrometheusEndpointInfo()
             self._PrometheusEndpointInfo._deserialize(params.get("PrometheusEndpointInfo"))
         self._WebConsoleDomainEndpoint = params.get("WebConsoleDomainEndpoint")
+        if params.get("ControlPlaneEndpointInfo") is not None:
+            self._ControlPlaneEndpointInfo = VpcEndpointInfo()
+            self._ControlPlaneEndpointInfo._deserialize(params.get("ControlPlaneEndpointInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27927,12 +27854,10 @@ class RabbitMQClusterInfo(AbstractModel):
         :param _CreateTime: 创建时间，毫秒为单位
         :type CreateTime: int
         :param _Remark: 集群说明信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _Vpcs: VPC及网络信息
         :type Vpcs: list of VpcEndpointInfo
         :param _ZoneIds: 可用区信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneIds: list of int
         :param _VirtualHostNumber: 虚拟主机数量
         :type VirtualHostNumber: int
@@ -27958,19 +27883,14 @@ class RabbitMQClusterInfo(AbstractModel):
         :param _ClusterStatus: 实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败
         :type ClusterStatus: int
         :param _AutoRenewFlag: 自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)
-注意：此字段可能返回 null，表示取不到有效值。
         :type AutoRenewFlag: int
         :param _MirrorQueuePolicyFlag: 是否开启镜像队列策略。1表示开启，0表示没开启。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MirrorQueuePolicyFlag: int
         :param _MessageConsumeRate: 每秒消费消息数 单位：条/秒
-注意：此字段可能返回 null，表示取不到有效值。
         :type MessageConsumeRate: float
         :param _ClusterVersion: 集群版本信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterVersion: str
         :param _PayMode: 计费模式，0-后付费，1-预付费
-注意：此字段可能返回 null，表示取不到有效值。
         :type PayMode: int
         :param _InstanceType: 实例类型，0 专享版、1 Serverless 版
         :type InstanceType: int
@@ -28047,7 +27967,6 @@ class RabbitMQClusterInfo(AbstractModel):
     @property
     def Remark(self):
         """集群说明信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -28070,7 +27989,6 @@ class RabbitMQClusterInfo(AbstractModel):
     @property
     def ZoneIds(self):
         """可用区信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._ZoneIds
@@ -28204,7 +28122,6 @@ class RabbitMQClusterInfo(AbstractModel):
     @property
     def AutoRenewFlag(self):
         """自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -28216,7 +28133,6 @@ class RabbitMQClusterInfo(AbstractModel):
     @property
     def MirrorQueuePolicyFlag(self):
         """是否开启镜像队列策略。1表示开启，0表示没开启。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MirrorQueuePolicyFlag
@@ -28228,7 +28144,6 @@ class RabbitMQClusterInfo(AbstractModel):
     @property
     def MessageConsumeRate(self):
         """每秒消费消息数 单位：条/秒
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._MessageConsumeRate
@@ -28240,7 +28155,6 @@ class RabbitMQClusterInfo(AbstractModel):
     @property
     def ClusterVersion(self):
         """集群版本信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterVersion
@@ -28252,7 +28166,6 @@ class RabbitMQClusterInfo(AbstractModel):
     @property
     def PayMode(self):
         """计费模式，0-后付费，1-预付费
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PayMode
@@ -28432,13 +28345,10 @@ class RabbitMQClusterWhiteListInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _WhiteList: 废弃
-注意：此字段可能返回 null，表示取不到有效值。
         :type WhiteList: str
         :param _PublicControlConsoleWhiteList: 公网管控台白名单
-注意：此字段可能返回 null，表示取不到有效值。
         :type PublicControlConsoleWhiteList: str
         :param _PublicDataStreamWhiteList: 公网数据流白名单
-注意：此字段可能返回 null，表示取不到有效值。
         :type PublicDataStreamWhiteList: str
         :param _PublicControlConsoleWhiteListStatus: 公网管控台白名单状态
 注意：此字段可能返回 null，表示取不到有效值。
@@ -28456,7 +28366,6 @@ class RabbitMQClusterWhiteListInfo(AbstractModel):
     @property
     def WhiteList(self):
         """废弃
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._WhiteList
@@ -28468,7 +28377,6 @@ class RabbitMQClusterWhiteListInfo(AbstractModel):
     @property
     def PublicControlConsoleWhiteList(self):
         """公网管控台白名单
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PublicControlConsoleWhiteList
@@ -28480,7 +28388,6 @@ class RabbitMQClusterWhiteListInfo(AbstractModel):
     @property
     def PublicDataStreamWhiteList(self):
         """公网数据流白名单
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PublicDataStreamWhiteList
@@ -28545,16 +28452,12 @@ class RabbitMQExchangeListInfo(AbstractModel):
         :param _ExchangeType: exchange 类型, 支持 "fanout","direct","topic","headers"
         :type ExchangeType: str
         :param _VirtualHost: VHost参数
-注意：此字段可能返回 null，表示取不到有效值。
         :type VirtualHost: str
         :param _ExchangeCreator: exchange 创建者, "system":"系统创建", "user":"用户创建"
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExchangeCreator: str
         :param _CreateTimeStamp: exchange 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTimeStamp: str
         :param _ModTimeStamp: exchange 修改时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ModTimeStamp: str
         :param _MessageRateIn: 输入消息速率
 注意：此字段可能返回 null，表示取不到有效值。
@@ -28563,22 +28466,17 @@ class RabbitMQExchangeListInfo(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type MessageRateOut: float
         :param _Durable: 是否为持久化交换机，true 为持久化，false 为非持久化
-注意：此字段可能返回 null，表示取不到有效值。
         :type Durable: bool
         :param _AutoDelete: 是否为自动删除交换机，true 为自动删除，false 为非自动删除
-注意：此字段可能返回 null，表示取不到有效值。
         :type AutoDelete: bool
         :param _Internal: 是否为内部交换机，true 为内部交换机
-注意：此字段可能返回 null，表示取不到有效值。
         :type Internal: bool
         :param _InstanceId: 交换机所属实例 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _Policy: 生效的策略名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Policy: str
         :param _Arguments: 扩展参数 key-value 对象
-注意：此字段可能返回 null，表示取不到有效值。
         :type Arguments: str
         :param _MessagesDelayed: 未调度的延时消息数量
 注意：此字段可能返回 null，表示取不到有效值。
@@ -28638,7 +28536,6 @@ class RabbitMQExchangeListInfo(AbstractModel):
     @property
     def VirtualHost(self):
         """VHost参数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VirtualHost
@@ -28650,7 +28547,6 @@ class RabbitMQExchangeListInfo(AbstractModel):
     @property
     def ExchangeCreator(self):
         """exchange 创建者, "system":"系统创建", "user":"用户创建"
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ExchangeCreator
@@ -28662,7 +28558,6 @@ class RabbitMQExchangeListInfo(AbstractModel):
     @property
     def CreateTimeStamp(self):
         """exchange 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTimeStamp
@@ -28674,7 +28569,6 @@ class RabbitMQExchangeListInfo(AbstractModel):
     @property
     def ModTimeStamp(self):
         """exchange 修改时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ModTimeStamp
@@ -28710,7 +28604,6 @@ class RabbitMQExchangeListInfo(AbstractModel):
     @property
     def Durable(self):
         """是否为持久化交换机，true 为持久化，false 为非持久化
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Durable
@@ -28722,7 +28615,6 @@ class RabbitMQExchangeListInfo(AbstractModel):
     @property
     def AutoDelete(self):
         """是否为自动删除交换机，true 为自动删除，false 为非自动删除
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._AutoDelete
@@ -28734,7 +28626,6 @@ class RabbitMQExchangeListInfo(AbstractModel):
     @property
     def Internal(self):
         """是否为内部交换机，true 为内部交换机
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Internal
@@ -28746,7 +28637,6 @@ class RabbitMQExchangeListInfo(AbstractModel):
     @property
     def InstanceId(self):
         """交换机所属实例 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -28770,7 +28660,6 @@ class RabbitMQExchangeListInfo(AbstractModel):
     @property
     def Arguments(self):
         """扩展参数 key-value 对象
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Arguments
@@ -28833,19 +28722,14 @@ class RabbitMQPermission(AbstractModel):
         :param _VirtualHost: vhost名
         :type VirtualHost: str
         :param _ConfigRegexp: 权限类型，declare相关操作，该用户可操作该vhost下的资源名称正则表达式
-注意：此字段可能返回 null，表示取不到有效值。
         :type ConfigRegexp: str
         :param _WriteRegexp: 权限类型，消息写入相关操作，该用户可操作该vhost下的资源名称正则表达式
-注意：此字段可能返回 null，表示取不到有效值。
         :type WriteRegexp: str
         :param _ReadRegexp: 权限类型，消息读取相关操作，该用户可操作该vhost下的资源名称正则表达式
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReadRegexp: str
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _ModifyTime: 修改时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyTime: str
         """
         self._InstanceId = None
@@ -28893,7 +28777,6 @@ class RabbitMQPermission(AbstractModel):
     @property
     def ConfigRegexp(self):
         """权限类型，declare相关操作，该用户可操作该vhost下的资源名称正则表达式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ConfigRegexp
@@ -28905,7 +28788,6 @@ class RabbitMQPermission(AbstractModel):
     @property
     def WriteRegexp(self):
         """权限类型，消息写入相关操作，该用户可操作该vhost下的资源名称正则表达式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._WriteRegexp
@@ -28917,7 +28799,6 @@ class RabbitMQPermission(AbstractModel):
     @property
     def ReadRegexp(self):
         """权限类型，消息读取相关操作，该用户可操作该vhost下的资源名称正则表达式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ReadRegexp
@@ -28929,7 +28810,6 @@ class RabbitMQPermission(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -28941,7 +28821,6 @@ class RabbitMQPermission(AbstractModel):
     @property
     def ModifyTime(self):
         """修改时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ModifyTime
@@ -29144,10 +29023,8 @@ class RabbitMQQueueListInfo(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _ConsumerDetail: 消费者信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ConsumerDetail: :class:`tencentcloud.tdmq.v20200217.models.RabbitMQQueueListConsumerDetailInfo`
         :param _QueueType: 队列类型，取值 "classic"，"quorum"
-注意：此字段可能返回 null，表示取不到有效值。
         :type QueueType: str
         :param _MessageHeapCount: 消息堆积数
 注意：此字段可能返回 null，表示取不到有效值。
@@ -29159,34 +29036,25 @@ class RabbitMQQueueListInfo(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type MessageRateOut: float
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _ModifyTime: 修改时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyTime: str
         :param _Durable: 队列是否持久化，true 为持久化，false 为非持久化
-注意：此字段可能返回 null，表示取不到有效值。
         :type Durable: bool
         :param _AutoDelete: 队列是否为自动删除队列，true 为自动删除，false 为非自动删除
-注意：此字段可能返回 null，表示取不到有效值。
         :type AutoDelete: bool
         :param _InstanceId: 队列所属实例 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _VirtualHost: 队列所属虚拟主机名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type VirtualHost: str
         :param _Node: 队列所在主节点名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Node: str
         :param _Policy: 生效的策略名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Policy: str
         :param _Arguments: 扩展参数 key-value 对象
-注意：此字段可能返回 null，表示取不到有效值。
         :type Arguments: str
         :param _Exclusive: 是否独占队列
-注意：此字段可能返回 null，表示取不到有效值。
         :type Exclusive: bool
         """
         self._QueueName = None
@@ -29233,7 +29101,6 @@ class RabbitMQQueueListInfo(AbstractModel):
     @property
     def ConsumerDetail(self):
         """消费者信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tdmq.v20200217.models.RabbitMQQueueListConsumerDetailInfo`
         """
         return self._ConsumerDetail
@@ -29245,7 +29112,6 @@ class RabbitMQQueueListInfo(AbstractModel):
     @property
     def QueueType(self):
         """队列类型，取值 "classic"，"quorum"
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._QueueType
@@ -29293,7 +29159,6 @@ class RabbitMQQueueListInfo(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -29305,7 +29170,6 @@ class RabbitMQQueueListInfo(AbstractModel):
     @property
     def ModifyTime(self):
         """修改时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ModifyTime
@@ -29317,7 +29181,6 @@ class RabbitMQQueueListInfo(AbstractModel):
     @property
     def Durable(self):
         """队列是否持久化，true 为持久化，false 为非持久化
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Durable
@@ -29329,7 +29192,6 @@ class RabbitMQQueueListInfo(AbstractModel):
     @property
     def AutoDelete(self):
         """队列是否为自动删除队列，true 为自动删除，false 为非自动删除
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._AutoDelete
@@ -29341,7 +29203,6 @@ class RabbitMQQueueListInfo(AbstractModel):
     @property
     def InstanceId(self):
         """队列所属实例 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -29353,7 +29214,6 @@ class RabbitMQQueueListInfo(AbstractModel):
     @property
     def VirtualHost(self):
         """队列所属虚拟主机名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VirtualHost
@@ -29365,7 +29225,6 @@ class RabbitMQQueueListInfo(AbstractModel):
     @property
     def Node(self):
         """队列所在主节点名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Node
@@ -29389,7 +29248,6 @@ class RabbitMQQueueListInfo(AbstractModel):
     @property
     def Arguments(self):
         """扩展参数 key-value 对象
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Arguments
@@ -29401,7 +29259,6 @@ class RabbitMQQueueListInfo(AbstractModel):
     @property
     def Exclusive(self):
         """是否独占队列
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Exclusive
@@ -29455,10 +29312,8 @@ class RabbitMQUser(AbstractModel):
         :param _Password: 密码，登录时使用
         :type Password: str
         :param _Description: 用户描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _Tags: 用户标签，用于决定改用户访问RabbitMQ Management的权限范围
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of str
         :param _CreateTime: 用户创建时间
         :type CreateTime: str
@@ -29520,7 +29375,6 @@ class RabbitMQUser(AbstractModel):
     @property
     def Description(self):
         """用户描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -29532,7 +29386,6 @@ class RabbitMQUser(AbstractModel):
     @property
     def Tags(self):
         """用户标签，用于决定改用户访问RabbitMQ Management的权限范围
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Tags
@@ -29632,7 +29485,6 @@ class RabbitMQVipInstance(AbstractModel):
         :param _InstanceName: 实例名称
         :type InstanceName: str
         :param _InstanceVersion: 实例版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceVersion: str
         :param _Status: 实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败
         :type Status: int
@@ -29653,7 +29505,6 @@ class RabbitMQVipInstance(AbstractModel):
         :param _PayMode: 0-后付费，1-预付费
         :type PayMode: int
         :param _Remark: 备注信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _SpecName: 实例配置ID
         :type SpecName: str
@@ -29667,10 +29518,8 @@ class RabbitMQVipInstance(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type PublicAccessEndpoint: str
         :param _Vpcs: VPC 接入点列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Vpcs: list of VpcEndpointInfo
         :param _CreateTime: 创建时间，毫秒为单位
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: int
         :param _InstanceType: 实例类型，0 专享版、1 Serverless 版
         :type InstanceType: int
@@ -29721,7 +29570,6 @@ class RabbitMQVipInstance(AbstractModel):
     @property
     def InstanceVersion(self):
         """实例版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceVersion
@@ -29832,7 +29680,6 @@ class RabbitMQVipInstance(AbstractModel):
     @property
     def Remark(self):
         """备注信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -29891,7 +29738,6 @@ class RabbitMQVipInstance(AbstractModel):
     @property
     def Vpcs(self):
         """VPC 接入点列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of VpcEndpointInfo
         """
         return self._Vpcs
@@ -29903,7 +29749,6 @@ class RabbitMQVipInstance(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间，毫秒为单位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CreateTime
@@ -29972,37 +29817,26 @@ class RabbitMQVirtualHostInfo(AbstractModel):
         :param _VirtualHost: vhost名
         :type VirtualHost: str
         :param _Description: vhost描述信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _Tags: vhost标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of str
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _ModifyTime: 修改时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyTime: str
         :param _VirtualHostStatistics: vhost概览统计信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type VirtualHostStatistics: :class:`tencentcloud.tdmq.v20200217.models.RabbitMQVirtualHostStatistics`
         :param _TraceFlag: 消息轨迹开关,true打开,false关闭
-注意：此字段可能返回 null，表示取不到有效值。
         :type TraceFlag: bool
         :param _Status: vhost状态，与原生控制台对应，有running、partial、stopped、unknown
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _MessageHeapCount: 消息堆积数
-注意：此字段可能返回 null，表示取不到有效值。
         :type MessageHeapCount: int
         :param _MessageRateIn: 输入消息速率
-注意：此字段可能返回 null，表示取不到有效值。
         :type MessageRateIn: float
         :param _MessageRateOut: 输出消息速率
-注意：此字段可能返回 null，表示取不到有效值。
         :type MessageRateOut: float
         :param _MirrorQueuePolicyFlag: 是否存在镜像队列策略，true 为存在，false 为不存
-注意：此字段可能返回 null，表示取不到有效值。
         :type MirrorQueuePolicyFlag: bool
         """
         self._InstanceId = None
@@ -30044,7 +29878,6 @@ class RabbitMQVirtualHostInfo(AbstractModel):
     @property
     def Description(self):
         """vhost描述信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -30056,7 +29889,6 @@ class RabbitMQVirtualHostInfo(AbstractModel):
     @property
     def Tags(self):
         """vhost标签
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Tags
@@ -30068,7 +29900,6 @@ class RabbitMQVirtualHostInfo(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -30080,7 +29911,6 @@ class RabbitMQVirtualHostInfo(AbstractModel):
     @property
     def ModifyTime(self):
         """修改时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ModifyTime
@@ -30092,7 +29922,6 @@ class RabbitMQVirtualHostInfo(AbstractModel):
     @property
     def VirtualHostStatistics(self):
         """vhost概览统计信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tdmq.v20200217.models.RabbitMQVirtualHostStatistics`
         """
         return self._VirtualHostStatistics
@@ -30104,7 +29933,6 @@ class RabbitMQVirtualHostInfo(AbstractModel):
     @property
     def TraceFlag(self):
         """消息轨迹开关,true打开,false关闭
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._TraceFlag
@@ -30116,7 +29944,6 @@ class RabbitMQVirtualHostInfo(AbstractModel):
     @property
     def Status(self):
         """vhost状态，与原生控制台对应，有running、partial、stopped、unknown
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -30128,7 +29955,6 @@ class RabbitMQVirtualHostInfo(AbstractModel):
     @property
     def MessageHeapCount(self):
         """消息堆积数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MessageHeapCount
@@ -30140,7 +29966,6 @@ class RabbitMQVirtualHostInfo(AbstractModel):
     @property
     def MessageRateIn(self):
         """输入消息速率
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._MessageRateIn
@@ -30152,7 +29977,6 @@ class RabbitMQVirtualHostInfo(AbstractModel):
     @property
     def MessageRateOut(self):
         """输出消息速率
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._MessageRateOut
@@ -30164,7 +29988,6 @@ class RabbitMQVirtualHostInfo(AbstractModel):
     @property
     def MirrorQueuePolicyFlag(self):
         """是否存在镜像队列策略，true 为存在，false 为不存
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._MirrorQueuePolicyFlag
@@ -37237,7 +37060,6 @@ class VirtualHostQuota(AbstractModel):
         :param _MaxVirtualHost: 允许创建最大vhost数
         :type MaxVirtualHost: int
         :param _UsedVirtualHost: 已创建vhost数
-注意：此字段可能返回 null，表示取不到有效值。
         :type UsedVirtualHost: int
         """
         self._MaxVirtualHost = None
@@ -37257,7 +37079,6 @@ class VirtualHostQuota(AbstractModel):
     @property
     def UsedVirtualHost(self):
         """已创建vhost数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._UsedVirtualHost
@@ -37458,7 +37279,6 @@ class VpcEndpointInfo(AbstractModel):
         :param _VpcEndpoint: vpc接入点信息
         :type VpcEndpoint: str
         :param _VpcDataStreamEndpointStatus: vpc接入点状态 OFF/ON/CREATING/DELETING
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcDataStreamEndpointStatus: str
         """
         self._VpcId = None
@@ -37502,7 +37322,6 @@ class VpcEndpointInfo(AbstractModel):
     @property
     def VpcDataStreamEndpointStatus(self):
         """vpc接入点状态 OFF/ON/CREATING/DELETING
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VpcDataStreamEndpointStatus

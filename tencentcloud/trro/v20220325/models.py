@@ -3488,6 +3488,146 @@ class ModifyProjectResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyProjectSecModeRequest(AbstractModel):
+    """ModifyProjectSecMode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _Mode: 安全模式  
+0：关闭项目共享密钥 
+1：开启项目共享密钥
+        :type Mode: int
+        :param _Key: 项目密钥 32位 小写英文+数字；  项目密钥模式必填
+        :type Key: str
+        :param _AutoRegister: 自动注册方式
+0：关闭自动注册
+1：仅允许现场设备自动注册
+2：仅允许远端设备自动注册
+3：允许现场和远端设备均自动注册
+        :type AutoRegister: int
+        :param _FieldListEnable: 是否允许远端获取现场设备列表（getGwList）
+0：不允许
+1：允许
+        :type FieldListEnable: int
+        """
+        self._ProjectId = None
+        self._Mode = None
+        self._Key = None
+        self._AutoRegister = None
+        self._FieldListEnable = None
+
+    @property
+    def ProjectId(self):
+        """项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def Mode(self):
+        """安全模式  
+0：关闭项目共享密钥 
+1：开启项目共享密钥
+        :rtype: int
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def Key(self):
+        """项目密钥 32位 小写英文+数字；  项目密钥模式必填
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def AutoRegister(self):
+        """自动注册方式
+0：关闭自动注册
+1：仅允许现场设备自动注册
+2：仅允许远端设备自动注册
+3：允许现场和远端设备均自动注册
+        :rtype: int
+        """
+        return self._AutoRegister
+
+    @AutoRegister.setter
+    def AutoRegister(self, AutoRegister):
+        self._AutoRegister = AutoRegister
+
+    @property
+    def FieldListEnable(self):
+        """是否允许远端获取现场设备列表（getGwList）
+0：不允许
+1：允许
+        :rtype: int
+        """
+        return self._FieldListEnable
+
+    @FieldListEnable.setter
+    def FieldListEnable(self, FieldListEnable):
+        self._FieldListEnable = FieldListEnable
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._Mode = params.get("Mode")
+        self._Key = params.get("Key")
+        self._AutoRegister = params.get("AutoRegister")
+        self._FieldListEnable = params.get("FieldListEnable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyProjectSecModeResponse(AbstractModel):
+    """ModifyProjectSecMode返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class MultiNet(AbstractModel):
     """多网的网卡状态信息
 

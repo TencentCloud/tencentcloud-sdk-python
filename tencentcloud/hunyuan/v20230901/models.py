@@ -3581,6 +3581,57 @@ class History(AbstractModel):
         
 
 
+class Image(AbstractModel):
+    """图片信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageUrl: 图片Url。
+        :type ImageUrl: str
+        :param _ImageBase64: 图片Base64。
+        :type ImageBase64: str
+        """
+        self._ImageUrl = None
+        self._ImageBase64 = None
+
+    @property
+    def ImageUrl(self):
+        """图片Url。
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ImageBase64(self):
+        """图片Base64。
+        :rtype: str
+        """
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+
+    def _deserialize(self, params):
+        self._ImageUrl = params.get("ImageUrl")
+        self._ImageBase64 = params.get("ImageBase64")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ImageUrl(AbstractModel):
     """具体的图片内容
 
@@ -5573,23 +5624,29 @@ class SubmitHunyuanImageJobRequest(AbstractModel):
         :type Style: str
         :param _Resolution: 生成图分辨率。
 支持生成以下分辨率的图片：768:768（1:1）、768:1024（3:4）、1024:768（4:3）、1024:1024（1:1）、720:1280（9:16）、1280:720（16:9）、768:1280（3:5）、1280:768（5:3），不传默认使用1024:1024。
+如果上传 ContentImage 参考图，分辨率仅支持：768:768（1:1）、768:1024（3:4）、1024:768（4:3）、1024:1024（1:1），不传将自动适配分辨率。如果参考图被用于做风格转换，将生成保持原图长宽比例且长边为1024的图片，指定的分辨率不生效。
         :type Resolution: str
         :param _Num: 图片生成数量。
 支持1 ~ 4张，默认生成1张。
         :type Num: int
-        :param _Seed: 随机种子，默认随机。
-不传：随机种子生成。
-正数：固定种子生成。
-        :type Seed: int
         :param _Clarity: 超分选项，默认不做超分，可选开启。
  x2：2倍超分
  x4：4倍超分
+在 Resolution 的基础上按比例提高分辨率，例如1024:1024开启2倍超分后将得到2048:2048。
         :type Clarity: str
+        :param _ContentImage: 用于引导内容的参考图。
+图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 8MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+        :type ContentImage: :class:`tencentcloud.hunyuan.v20230901.models.Image`
         :param _Revise: prompt 扩写开关。1为开启，0为关闭，不传默认开启。
 开启扩写后，将自动扩写原始输入的 prompt 并使用扩写后的 prompt 生成图片，返回生成图片结果时将一并返回扩写后的 prompt 文本。
-如果关闭扩写，将直接使用原始输入的 prompt 生成图片。
+如果关闭扩写，将直接使用原始输入的 prompt 生成图片。如果上传了参考图，扩写关闭不生效，将保持开启。
 建议开启，在多数场景下可提升生成图片效果、丰富生成图片细节。
         :type Revise: int
+        :param _Seed: 随机种子，默认随机。
+不传：随机种子生成。
+正数：固定种子生成。
+扩写开启时固定种子不生效，将保持随机。
+        :type Seed: int
         :param _LogoAdd: 为生成结果图添加显式水印标识的开关，默认为1。  
 1：添加。  
 0：不添加。  
@@ -5605,9 +5662,10 @@ class SubmitHunyuanImageJobRequest(AbstractModel):
         self._Style = None
         self._Resolution = None
         self._Num = None
-        self._Seed = None
         self._Clarity = None
+        self._ContentImage = None
         self._Revise = None
+        self._Seed = None
         self._LogoAdd = None
         self._LogoParam = None
 
@@ -5653,6 +5711,7 @@ class SubmitHunyuanImageJobRequest(AbstractModel):
     def Resolution(self):
         """生成图分辨率。
 支持生成以下分辨率的图片：768:768（1:1）、768:1024（3:4）、1024:768（4:3）、1024:1024（1:1）、720:1280（9:16）、1280:720（16:9）、768:1280（3:5）、1280:768（5:3），不传默认使用1024:1024。
+如果上传 ContentImage 参考图，分辨率仅支持：768:768（1:1）、768:1024（3:4）、1024:768（4:3）、1024:1024（1:1），不传将自动适配分辨率。如果参考图被用于做风格转换，将生成保持原图长宽比例且长边为1024的图片，指定的分辨率不生效。
         :rtype: str
         """
         return self._Resolution
@@ -5674,23 +5733,11 @@ class SubmitHunyuanImageJobRequest(AbstractModel):
         self._Num = Num
 
     @property
-    def Seed(self):
-        """随机种子，默认随机。
-不传：随机种子生成。
-正数：固定种子生成。
-        :rtype: int
-        """
-        return self._Seed
-
-    @Seed.setter
-    def Seed(self, Seed):
-        self._Seed = Seed
-
-    @property
     def Clarity(self):
         """超分选项，默认不做超分，可选开启。
  x2：2倍超分
  x4：4倍超分
+在 Resolution 的基础上按比例提高分辨率，例如1024:1024开启2倍超分后将得到2048:2048。
         :rtype: str
         """
         return self._Clarity
@@ -5700,10 +5747,22 @@ class SubmitHunyuanImageJobRequest(AbstractModel):
         self._Clarity = Clarity
 
     @property
+    def ContentImage(self):
+        """用于引导内容的参考图。
+图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 8MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.Image`
+        """
+        return self._ContentImage
+
+    @ContentImage.setter
+    def ContentImage(self, ContentImage):
+        self._ContentImage = ContentImage
+
+    @property
     def Revise(self):
         """prompt 扩写开关。1为开启，0为关闭，不传默认开启。
 开启扩写后，将自动扩写原始输入的 prompt 并使用扩写后的 prompt 生成图片，返回生成图片结果时将一并返回扩写后的 prompt 文本。
-如果关闭扩写，将直接使用原始输入的 prompt 生成图片。
+如果关闭扩写，将直接使用原始输入的 prompt 生成图片。如果上传了参考图，扩写关闭不生效，将保持开启。
 建议开启，在多数场景下可提升生成图片效果、丰富生成图片细节。
         :rtype: int
         """
@@ -5712,6 +5771,20 @@ class SubmitHunyuanImageJobRequest(AbstractModel):
     @Revise.setter
     def Revise(self, Revise):
         self._Revise = Revise
+
+    @property
+    def Seed(self):
+        """随机种子，默认随机。
+不传：随机种子生成。
+正数：固定种子生成。
+扩写开启时固定种子不生效，将保持随机。
+        :rtype: int
+        """
+        return self._Seed
+
+    @Seed.setter
+    def Seed(self, Seed):
+        self._Seed = Seed
 
     @property
     def LogoAdd(self):
@@ -5747,9 +5820,12 @@ class SubmitHunyuanImageJobRequest(AbstractModel):
         self._Style = params.get("Style")
         self._Resolution = params.get("Resolution")
         self._Num = params.get("Num")
-        self._Seed = params.get("Seed")
         self._Clarity = params.get("Clarity")
+        if params.get("ContentImage") is not None:
+            self._ContentImage = Image()
+            self._ContentImage._deserialize(params.get("ContentImage"))
         self._Revise = params.get("Revise")
+        self._Seed = params.get("Seed")
         self._LogoAdd = params.get("LogoAdd")
         if params.get("LogoParam") is not None:
             self._LogoParam = LogoParam()

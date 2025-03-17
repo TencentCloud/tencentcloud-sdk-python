@@ -91,8 +91,7 @@ class BatchSendEmailRequest(AbstractModel):
         :param _Template: 使用模板发送时，填写的模板相关参数
 <dx-alert infotype="notice" title="注意"> 如您未申请过特殊配置，则该字段为必填 </dx-alert>
         :type Template: :class:`tencentcloud.ses.v20201002.models.Template`
-        :param _Simple: 已废弃
-<dx-alert infotype="notice" title="说明"> 仅部分历史上申请了特殊配置的客户需要使用。如您未申请过特殊配置，则不存在该字段。</dx-alert> 
+        :param _Simple: 已废弃<dx-alert infotype="notice" title="说明"> 仅部分历史上申请了特殊配置的客户需要使用。如您未申请过特殊配置，则不存在该字段。</dx-alert>
         :type Simple: :class:`tencentcloud.ses.v20201002.models.Simple`
         :param _Attachments: 需要发送附件时，填写附件相关参数（暂未支持）
         :type Attachments: list of Attachment
@@ -189,8 +188,7 @@ class BatchSendEmailRequest(AbstractModel):
 
     @property
     def Simple(self):
-        """已废弃
-<dx-alert infotype="notice" title="说明"> 仅部分历史上申请了特殊配置的客户需要使用。如您未申请过特殊配置，则不存在该字段。</dx-alert> 
+        """已废弃<dx-alert infotype="notice" title="说明"> 仅部分历史上申请了特殊配置的客户需要使用。如您未申请过特殊配置，则不存在该字段。</dx-alert>
         :rtype: :class:`tencentcloud.ses.v20201002.models.Simple`
         """
         return self._Simple

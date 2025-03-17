@@ -1348,3 +1348,26 @@ class TrocketClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ResetConsumerGroupOffset(self, request):
+        """重置消费位点
+
+        :param request: Request instance for ResetConsumerGroupOffset.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.ResetConsumerGroupOffsetRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.ResetConsumerGroupOffsetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResetConsumerGroupOffset", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResetConsumerGroupOffsetResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))

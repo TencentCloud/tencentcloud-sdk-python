@@ -3800,7 +3800,7 @@ class AssetMachineDetail(AbstractModel):
         :type CpuSize: int
         :param _CpuLoad: Cpu负载
         :type CpuLoad: str
-        :param _ProtectLevel: 防护级别：0基础版，1专业版，2旗舰版，3普惠版
+        :param _ProtectLevel: 防护级别：0基础版，1专业版，2旗舰版，3轻量版
         :type ProtectLevel: int
         :param _RiskStatus: 风险状态：UNKNOW-未知，RISK-风险，SAFT-安全
         :type RiskStatus: str
@@ -4044,7 +4044,7 @@ class AssetMachineDetail(AbstractModel):
 
     @property
     def ProtectLevel(self):
-        """防护级别：0基础版，1专业版，2旗舰版，3普惠版
+        """防护级别：0基础版，1专业版，2旗舰版，3轻量版
         :rtype: int
         """
         return self._ProtectLevel
@@ -18206,7 +18206,7 @@ class CreateRansomDefenseStrategyRequest(AbstractModel):
         :type IncludeDir: str
         :param _ExcludeDir: 排除目录，;分隔
         :type ExcludeDir: str
-        :param _BackupType: 备份模式： 0按周，1按天
+        :param _BackupType: 备份模式： 0按周，1按天，2不备份
         :type BackupType: int
         :param _Weekday: 定时任务执行星期天数（1-7）：1;2;7
         :type Weekday: str
@@ -18318,7 +18318,7 @@ class CreateRansomDefenseStrategyRequest(AbstractModel):
 
     @property
     def BackupType(self):
-        """备份模式： 0按周，1按天
+        """备份模式： 0按周，1按天，2不备份
         :rtype: int
         """
         return self._BackupType
@@ -49082,12 +49082,18 @@ class DescribeRansomDefenseEventsListRequest(AbstractModel):
         :type Order: str
         :param _By: 排序字段支持CreateTime
         :type By: str
+        :param _CreateBeginTime: 事件创建起始时间
+        :type CreateBeginTime: str
+        :param _CreateEndTime: 事件创建结束时间
+        :type CreateEndTime: str
         """
         self._Limit = None
         self._Offset = None
         self._Filters = None
         self._Order = None
         self._By = None
+        self._CreateBeginTime = None
+        self._CreateEndTime = None
 
     @property
     def Limit(self):
@@ -49147,6 +49153,28 @@ class DescribeRansomDefenseEventsListRequest(AbstractModel):
     def By(self, By):
         self._By = By
 
+    @property
+    def CreateBeginTime(self):
+        """事件创建起始时间
+        :rtype: str
+        """
+        return self._CreateBeginTime
+
+    @CreateBeginTime.setter
+    def CreateBeginTime(self, CreateBeginTime):
+        self._CreateBeginTime = CreateBeginTime
+
+    @property
+    def CreateEndTime(self):
+        """事件创建结束时间
+        :rtype: str
+        """
+        return self._CreateEndTime
+
+    @CreateEndTime.setter
+    def CreateEndTime(self, CreateEndTime):
+        self._CreateEndTime = CreateEndTime
+
 
     def _deserialize(self, params):
         self._Limit = params.get("Limit")
@@ -49159,6 +49187,8 @@ class DescribeRansomDefenseEventsListRequest(AbstractModel):
                 self._Filters.append(obj)
         self._Order = params.get("Order")
         self._By = params.get("By")
+        self._CreateBeginTime = params.get("CreateBeginTime")
+        self._CreateEndTime = params.get("CreateEndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -73736,6 +73766,8 @@ class HostTagInfo(AbstractModel):
         :type CloudTags: list of Tags
         :param _InstanceID: 主机instance ID
         :type InstanceID: str
+        :param _MachineType: 主机类型
+        :type MachineType: str
         """
         self._Quuid = None
         self._TagList = None
@@ -73749,6 +73781,7 @@ class HostTagInfo(AbstractModel):
         self._VulNum = None
         self._CloudTags = None
         self._InstanceID = None
+        self._MachineType = None
 
     @property
     def Quuid(self):
@@ -73882,6 +73915,17 @@ class HostTagInfo(AbstractModel):
     def InstanceID(self, InstanceID):
         self._InstanceID = InstanceID
 
+    @property
+    def MachineType(self):
+        """主机类型
+        :rtype: str
+        """
+        return self._MachineType
+
+    @MachineType.setter
+    def MachineType(self, MachineType):
+        self._MachineType = MachineType
+
 
     def _deserialize(self, params):
         self._Quuid = params.get("Quuid")
@@ -73901,6 +73945,7 @@ class HostTagInfo(AbstractModel):
                 obj._deserialize(item)
                 self._CloudTags.append(obj)
         self._InstanceID = params.get("InstanceID")
+        self._MachineType = params.get("MachineType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -76812,7 +76857,7 @@ class Machine(AbstractModel):
         :type MachineType: str
         :param _KernelVersion: 内核版本
         :type KernelVersion: str
-        :param _ProtectType: 防护版本：BASIC_VERSION 基础版， PRO_VERSION 专业版，Flagship 旗舰版，GENERAL_DISCOUNT 普惠版
+        :param _ProtectType: 防护版本：BASIC_VERSION 基础版， PRO_VERSION 专业版，Flagship 旗舰版，GENERAL_DISCOUNT 轻量版
         :type ProtectType: str
         :param _CloudTags: 云标签信息
         :type CloudTags: list of Tags
@@ -77127,7 +77172,7 @@ class Machine(AbstractModel):
 
     @property
     def ProtectType(self):
-        """防护版本：BASIC_VERSION 基础版， PRO_VERSION 专业版，Flagship 旗舰版，GENERAL_DISCOUNT 普惠版
+        """防护版本：BASIC_VERSION 基础版， PRO_VERSION 专业版，Flagship 旗舰版，GENERAL_DISCOUNT 轻量版
         :rtype: str
         """
         return self._ProtectType
@@ -77804,7 +77849,7 @@ https://cloud.tencent.com/document/api/213/15753#Instance
         :type MachineType: str
         :param _KernelVersion: 内核版本
         :type KernelVersion: str
-        :param _ProtectType: 防护版本 BASIC_VERSION 基础版， PRO_VERSION 专业版，Flagship 旗舰版，GENERAL_DISCOUNT 普惠版.
+        :param _ProtectType: 防护版本 BASIC_VERSION 基础版， PRO_VERSION 专业版，Flagship 旗舰版，GENERAL_DISCOUNT 轻量版.
         :type ProtectType: str
         :param _LicenseOrder: 授权订单对象
         :type LicenseOrder: :class:`tencentcloud.cwp.v20180228.models.LicenseOrder`
@@ -77993,7 +78038,7 @@ https://cloud.tencent.com/document/api/213/15753#Instance
 
     @property
     def ProtectType(self):
-        """防护版本 BASIC_VERSION 基础版， PRO_VERSION 专业版，Flagship 旗舰版，GENERAL_DISCOUNT 普惠版.
+        """防护版本 BASIC_VERSION 基础版， PRO_VERSION 专业版，Flagship 旗舰版，GENERAL_DISCOUNT 轻量版.
         :rtype: str
         """
         return self._ProtectType
@@ -86451,7 +86496,7 @@ class NetAttackEvent(AbstractModel):
         :type VulSupportDefense: int
         :param _VulDefenceStatus: 是否开启漏洞防御，0关1开
         :type VulDefenceStatus: int
-        :param _PayVersion: 机器付费版本，0 基础版，1专业版，2旗舰版，3普惠版
+        :param _PayVersion: 机器付费版本，0 基础版，1专业版，2旗舰版，3轻量版
         :type PayVersion: int
         :param _Quuid: cvm uuid
         :type Quuid: str
@@ -86623,7 +86668,7 @@ class NetAttackEvent(AbstractModel):
 
     @property
     def PayVersion(self):
-        """机器付费版本，0 基础版，1专业版，2旗舰版，3普惠版
+        """机器付费版本，0 基础版，1专业版，2旗舰版，3轻量版
         :rtype: int
         """
         return self._PayVersion
@@ -86737,7 +86782,7 @@ class NetAttackEventInfo(AbstractModel):
         :type DstPort: int
         :param _Count: 攻击次数
         :type Count: int
-        :param _PayVersion: 机器付费版本，0 基础版，1专业版，2旗舰版，3普惠版
+        :param _PayVersion: 机器付费版本，0 基础版，1专业版，2旗舰版，3轻量版
         :type PayVersion: int
         :param _Quuid: cvm uuid
         :type Quuid: str
@@ -86963,7 +87008,7 @@ class NetAttackEventInfo(AbstractModel):
 
     @property
     def PayVersion(self):
-        """机器付费版本，0 基础版，1专业版，2旗舰版，3普惠版
+        """机器付费版本，0 基础版，1专业版，2旗舰版，3轻量版
         :rtype: int
         """
         return self._PayVersion
@@ -89864,7 +89909,7 @@ class RansomDefenseBackup(AbstractModel):
         :type BackupTime: str
         :param _EventStatus: 勒索状态：0无告警, 1有告警
         :type EventStatus: int
-        :param _BackupStatus: 备份状态：0备份中，1正常，2、3失败，4快照已过期，9快照已删除
+        :param _BackupStatus: 备份状态：0备份中，1正常，2、3失败，4快照已过期，5快照数量超出限制，9快照已删除
         :type BackupStatus: int
         :param _DiskCount: 备份磁盘数量
         :type DiskCount: int
@@ -89913,7 +89958,7 @@ class RansomDefenseBackup(AbstractModel):
 
     @property
     def BackupStatus(self):
-        """备份状态：0备份中，1正常，2、3失败，4快照已过期，9快照已删除
+        """备份状态：0备份中，1正常，2、3失败，4快照已过期，5快照数量超出限制，9快照已删除
         :rtype: int
         """
         return self._BackupStatus
@@ -90665,7 +90710,7 @@ class RansomDefenseStrategy(AbstractModel):
         :type IncludeDir: str
         :param _ExcludeDir: 包含目录，用;分隔
         :type ExcludeDir: str
-        :param _BackupType: 备份模式： 0按周，1按天
+        :param _BackupType: 备份模式： 0按周，1按天，2不备份
         :type BackupType: int
         :param _Weekday: 备份星期天数（1-7）：1;2;3;4
         :type Weekday: str
@@ -90786,7 +90831,7 @@ class RansomDefenseStrategy(AbstractModel):
 
     @property
     def BackupType(self):
-        """备份模式： 0按周，1按天
+        """备份模式： 0按周，1按天，2不备份
         :rtype: int
         """
         return self._BackupType
@@ -91197,8 +91242,10 @@ class RansomDefenseStrategyMachineBackupInfo(AbstractModel):
         :type RollBackStatus: int
         :param _BackupSuccessCount: 备份成功次数
         :type BackupSuccessCount: int
-        :param _HostVersion: 版本信息：0-基础版 1-专业版 2-旗舰版 3-普惠版
+        :param _HostVersion: 版本信息：0-基础版 1-专业版 2-旗舰版 3-轻量版
         :type HostVersion: int
+        :param _MachineType: 机器所属专区类型 CVM 云服务器, BM 黑石, ECM 边缘计算, LH 轻量应用服务器 ,Other 混合云专区
+        :type MachineType: str
         """
         self._Uuid = None
         self._Quuid = None
@@ -91221,6 +91268,7 @@ class RansomDefenseStrategyMachineBackupInfo(AbstractModel):
         self._RollBackStatus = None
         self._BackupSuccessCount = None
         self._HostVersion = None
+        self._MachineType = None
 
     @property
     def Uuid(self):
@@ -91445,7 +91493,7 @@ class RansomDefenseStrategyMachineBackupInfo(AbstractModel):
 
     @property
     def HostVersion(self):
-        """版本信息：0-基础版 1-专业版 2-旗舰版 3-普惠版
+        """版本信息：0-基础版 1-专业版 2-旗舰版 3-轻量版
         :rtype: int
         """
         return self._HostVersion
@@ -91453,6 +91501,17 @@ class RansomDefenseStrategyMachineBackupInfo(AbstractModel):
     @HostVersion.setter
     def HostVersion(self, HostVersion):
         self._HostVersion = HostVersion
+
+    @property
+    def MachineType(self):
+        """机器所属专区类型 CVM 云服务器, BM 黑石, ECM 边缘计算, LH 轻量应用服务器 ,Other 混合云专区
+        :rtype: str
+        """
+        return self._MachineType
+
+    @MachineType.setter
+    def MachineType(self, MachineType):
+        self._MachineType = MachineType
 
 
     def _deserialize(self, params):
@@ -91489,6 +91548,7 @@ class RansomDefenseStrategyMachineBackupInfo(AbstractModel):
         self._RollBackStatus = params.get("RollBackStatus")
         self._BackupSuccessCount = params.get("BackupSuccessCount")
         self._HostVersion = params.get("HostVersion")
+        self._MachineType = params.get("MachineType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -91531,10 +91591,12 @@ class RansomDefenseStrategyMachineDetail(AbstractModel):
         :param _DiskInfo: 硬盘信息，为空时所有硬盘生效：
 ;分割 diskId1|diskName1;diskId2|diskName2
         :type DiskInfo: str
-        :param _HostVersion: 版本信息：0-基础版 1-专业版 2-旗舰版 3-普惠版
+        :param _HostVersion: 版本信息：0-基础版 1-专业版 2-旗舰版 3-轻量版
         :type HostVersion: int
         :param _StrategyName: 策略名称
         :type StrategyName: str
+        :param _MachineType: 机器所属专区类型 CVM 云服务器, BM 黑石, ECM 边缘计算, LH 轻量应用服务器 ,Other 混合云专区
+        :type MachineType: str
         """
         self._Uuid = None
         self._Quuid = None
@@ -91550,6 +91612,7 @@ class RansomDefenseStrategyMachineDetail(AbstractModel):
         self._DiskInfo = None
         self._HostVersion = None
         self._StrategyName = None
+        self._MachineType = None
 
     @property
     def Uuid(self):
@@ -91686,7 +91749,7 @@ class RansomDefenseStrategyMachineDetail(AbstractModel):
 
     @property
     def HostVersion(self):
-        """版本信息：0-基础版 1-专业版 2-旗舰版 3-普惠版
+        """版本信息：0-基础版 1-专业版 2-旗舰版 3-轻量版
         :rtype: int
         """
         return self._HostVersion
@@ -91705,6 +91768,17 @@ class RansomDefenseStrategyMachineDetail(AbstractModel):
     @StrategyName.setter
     def StrategyName(self, StrategyName):
         self._StrategyName = StrategyName
+
+    @property
+    def MachineType(self):
+        """机器所属专区类型 CVM 云服务器, BM 黑石, ECM 边缘计算, LH 轻量应用服务器 ,Other 混合云专区
+        :rtype: str
+        """
+        return self._MachineType
+
+    @MachineType.setter
+    def MachineType(self, MachineType):
+        self._MachineType = MachineType
 
 
     def _deserialize(self, params):
@@ -91734,6 +91808,7 @@ class RansomDefenseStrategyMachineDetail(AbstractModel):
         self._DiskInfo = params.get("DiskInfo")
         self._HostVersion = params.get("HostVersion")
         self._StrategyName = params.get("StrategyName")
+        self._MachineType = params.get("MachineType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -101831,7 +101906,7 @@ class VulDefenceEvent(AbstractModel):
         :type Count: int
         :param _Status: 状态 0: 待处理 1:已防御 2:已处理 3: 已忽略 4: 已删除
         :type Status: int
-        :param _UpgradeType: 0 专业版,1 旗舰版,2 LH普惠版（仅限LH使用）,3  CVM普惠版（仅限CVM使用）
+        :param _UpgradeType: 0 专业版,1 旗舰版,2 LH轻量版（仅限LH使用）,3  CVM轻量版（仅限CVM使用）
         :type UpgradeType: int
         :param _FixType: 0 不支持修复，1 支持修复
         :type FixType: int
@@ -102039,7 +102114,7 @@ class VulDefenceEvent(AbstractModel):
 
     @property
     def UpgradeType(self):
-        """0 专业版,1 旗舰版,2 LH普惠版（仅限LH使用）,3  CVM普惠版（仅限CVM使用）
+        """0 专业版,1 旗舰版,2 LH轻量版（仅限LH使用）,3  CVM轻量版（仅限CVM使用）
         :rtype: int
         """
         return self._UpgradeType
@@ -103200,7 +103275,7 @@ class VulEffectHostList(AbstractModel):
         :type Tags: list of str
         :param _Description: 说明
         :type Description: str
-        :param _HostVersion: 版本信息：0-基础版 1-专业版 2-旗舰版 3-普惠版
+        :param _HostVersion: 版本信息：0-基础版 1-专业版 2-旗舰版 3-轻量版
         :type HostVersion: int
         :param _IsSupportAutoFix: 是否能自动修复 0 :漏洞不可自动修复，  1：可自动修复， 2：客户端已离线， 3：主机不是旗舰版只能手动修复， 4：机型不允许 ，5：修复中 ，6：已修复， 7：检测中  9:修复失败，10:已忽略 11:漏洞只支持linux不支持Windows 12：漏洞只支持Windows不支持linux，13:修复失败但此时主机已离线，14:修复失败但此时主机不是旗舰版， 15:已手动修复
         :type IsSupportAutoFix: int
@@ -103348,7 +103423,7 @@ class VulEffectHostList(AbstractModel):
 
     @property
     def HostVersion(self):
-        """版本信息：0-基础版 1-专业版 2-旗舰版 3-普惠版
+        """版本信息：0-基础版 1-专业版 2-旗舰版 3-轻量版
         :rtype: int
         """
         return self._HostVersion

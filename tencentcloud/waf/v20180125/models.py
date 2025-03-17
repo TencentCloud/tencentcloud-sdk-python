@@ -7753,6 +7753,100 @@ class CreateIpAccessControlResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreatePostCLSFlowRequest(AbstractModel):
+    """CreatePostCLSFlow请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CLSRegion: 投递的CLS所在区域，默认为ap-shanghai
+        :type CLSRegion: str
+        :param _LogsetName: 投递的CLS所在日志集合名称，默认为 waf_post_logset
+        :type LogsetName: str
+        :param _LogType: 1-访问日志，2-攻击日志，默认为访问日志。
+        :type LogType: int
+        """
+        self._CLSRegion = None
+        self._LogsetName = None
+        self._LogType = None
+
+    @property
+    def CLSRegion(self):
+        """投递的CLS所在区域，默认为ap-shanghai
+        :rtype: str
+        """
+        return self._CLSRegion
+
+    @CLSRegion.setter
+    def CLSRegion(self, CLSRegion):
+        self._CLSRegion = CLSRegion
+
+    @property
+    def LogsetName(self):
+        """投递的CLS所在日志集合名称，默认为 waf_post_logset
+        :rtype: str
+        """
+        return self._LogsetName
+
+    @LogsetName.setter
+    def LogsetName(self, LogsetName):
+        self._LogsetName = LogsetName
+
+    @property
+    def LogType(self):
+        """1-访问日志，2-攻击日志，默认为访问日志。
+        :rtype: int
+        """
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+
+    def _deserialize(self, params):
+        self._CLSRegion = params.get("CLSRegion")
+        self._LogsetName = params.get("LogsetName")
+        self._LogType = params.get("LogType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePostCLSFlowResponse(AbstractModel):
+    """CreatePostCLSFlow返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CronJob(AbstractModel):
     """规则周期执行的数据结构
 
@@ -17153,6 +17247,90 @@ class DescribePortsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribePostCLSFlowsRequest(AbstractModel):
+    """DescribePostCLSFlows请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogType: 1-访问日志，2-攻击日志，默认为访问日志。
+        :type LogType: int
+        """
+        self._LogType = None
+
+    @property
+    def LogType(self):
+        """1-访问日志，2-攻击日志，默认为访问日志。
+        :rtype: int
+        """
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+
+    def _deserialize(self, params):
+        self._LogType = params.get("LogType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePostCLSFlowsResponse(AbstractModel):
+    """DescribePostCLSFlows返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PostCLSFlows: 客户的投递流列表
+        :type PostCLSFlows: list of PostCLSFlowInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PostCLSFlows = None
+        self._RequestId = None
+
+    @property
+    def PostCLSFlows(self):
+        """客户的投递流列表
+        :rtype: list of PostCLSFlowInfo
+        """
+        return self._PostCLSFlows
+
+    @PostCLSFlows.setter
+    def PostCLSFlows(self, PostCLSFlows):
+        self._PostCLSFlows = PostCLSFlows
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("PostCLSFlows") is not None:
+            self._PostCLSFlows = []
+            for item in params.get("PostCLSFlows"):
+                obj = PostCLSFlowInfo()
+                obj._deserialize(item)
+                self._PostCLSFlows.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeProtectionModesRequest(AbstractModel):
     """DescribeProtectionModes请求参数结构体
 
@@ -19576,6 +19754,85 @@ class DescribeWebshellStatusResponse(AbstractModel):
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
         self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
+class DestroyPostCLSFlowRequest(AbstractModel):
+    """DestroyPostCLSFlow请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 投递流的流ID
+        :type FlowId: int
+        :param _LogType: 1-访问日志，2-攻击日志，默认为访问日志。
+        :type LogType: int
+        """
+        self._FlowId = None
+        self._LogType = None
+
+    @property
+    def FlowId(self):
+        """投递流的流ID
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def LogType(self):
+        """1-访问日志，2-攻击日志，默认为访问日志。
+        :rtype: int
+        """
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._LogType = params.get("LogType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DestroyPostCLSFlowResponse(AbstractModel):
+    """DestroyPostCLSFlow返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -33432,6 +33689,147 @@ class PostAttackDownloadTaskResponse(AbstractModel):
     def _deserialize(self, params):
         self._Flow = params.get("Flow")
         self._RequestId = params.get("RequestId")
+
+
+class PostCLSFlowInfo(AbstractModel):
+    """CKafka投递流
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 投递流唯一ID
+        :type FlowId: int
+        :param _LogType: 1-访问日志 2-攻击日志
+        :type LogType: int
+        :param _Status: 状态 0-为关闭 1-为启用
+        :type Status: int
+        :param _CLSRegion: CLS所在区域
+        :type CLSRegion: str
+        :param _LogsetName: CLS日志集合名称
+        :type LogsetName: str
+        :param _LogsetID: CLS日志集合ID
+        :type LogsetID: str
+        :param _LogTopicName: CLS日志主题名称
+        :type LogTopicName: str
+        :param _LogTopicID: CLS日志集合ID
+        :type LogTopicID: str
+        """
+        self._FlowId = None
+        self._LogType = None
+        self._Status = None
+        self._CLSRegion = None
+        self._LogsetName = None
+        self._LogsetID = None
+        self._LogTopicName = None
+        self._LogTopicID = None
+
+    @property
+    def FlowId(self):
+        """投递流唯一ID
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def LogType(self):
+        """1-访问日志 2-攻击日志
+        :rtype: int
+        """
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def Status(self):
+        """状态 0-为关闭 1-为启用
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CLSRegion(self):
+        """CLS所在区域
+        :rtype: str
+        """
+        return self._CLSRegion
+
+    @CLSRegion.setter
+    def CLSRegion(self, CLSRegion):
+        self._CLSRegion = CLSRegion
+
+    @property
+    def LogsetName(self):
+        """CLS日志集合名称
+        :rtype: str
+        """
+        return self._LogsetName
+
+    @LogsetName.setter
+    def LogsetName(self, LogsetName):
+        self._LogsetName = LogsetName
+
+    @property
+    def LogsetID(self):
+        """CLS日志集合ID
+        :rtype: str
+        """
+        return self._LogsetID
+
+    @LogsetID.setter
+    def LogsetID(self, LogsetID):
+        self._LogsetID = LogsetID
+
+    @property
+    def LogTopicName(self):
+        """CLS日志主题名称
+        :rtype: str
+        """
+        return self._LogTopicName
+
+    @LogTopicName.setter
+    def LogTopicName(self, LogTopicName):
+        self._LogTopicName = LogTopicName
+
+    @property
+    def LogTopicID(self):
+        """CLS日志集合ID
+        :rtype: str
+        """
+        return self._LogTopicID
+
+    @LogTopicID.setter
+    def LogTopicID(self, LogTopicID):
+        self._LogTopicID = LogTopicID
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._LogType = params.get("LogType")
+        self._Status = params.get("Status")
+        self._CLSRegion = params.get("CLSRegion")
+        self._LogsetName = params.get("LogsetName")
+        self._LogsetID = params.get("LogsetID")
+        self._LogTopicName = params.get("LogTopicName")
+        self._LogTopicID = params.get("LogTopicID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ProductInfo(AbstractModel):

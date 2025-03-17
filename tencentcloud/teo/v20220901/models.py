@@ -21417,6 +21417,213 @@ class DetailHost(AbstractModel):
         
 
 
+class DetectLengthLimitCondition(AbstractModel):
+    """检测长度限制配置条件。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 匹配条件的参数名称，取值有：
+<li>body_depth：请求正文包部分的检测深度。</li>
+        :type Name: str
+        :param _Values: 匹配条件的参数值，取值与 Name 成对使用。
+当 Name 值为 body_depth 时， Values 只支持传入单个值，取值有：
+<li>8KB；</li>
+<li>64KB；</li>
+<li>128KB。</li>
+        :type Values: list of str
+        """
+        self._Name = None
+        self._Values = None
+
+    @property
+    def Name(self):
+        """匹配条件的参数名称，取值有：
+<li>body_depth：请求正文包部分的检测深度。</li>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Values(self):
+        """匹配条件的参数值，取值与 Name 成对使用。
+当 Name 值为 body_depth 时， Values 只支持传入单个值，取值有：
+<li>8KB；</li>
+<li>64KB；</li>
+<li>128KB。</li>
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DetectLengthLimitConfig(AbstractModel):
+    """检测长度限制
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DetectLengthLimitRules: 检测长度限制的规则列表。
+        :type DetectLengthLimitRules: list of DetectLengthLimitRule
+        """
+        self._DetectLengthLimitRules = None
+
+    @property
+    def DetectLengthLimitRules(self):
+        """检测长度限制的规则列表。
+        :rtype: list of DetectLengthLimitRule
+        """
+        return self._DetectLengthLimitRules
+
+    @DetectLengthLimitRules.setter
+    def DetectLengthLimitRules(self, DetectLengthLimitRules):
+        self._DetectLengthLimitRules = DetectLengthLimitRules
+
+
+    def _deserialize(self, params):
+        if params.get("DetectLengthLimitRules") is not None:
+            self._DetectLengthLimitRules = []
+            for item in params.get("DetectLengthLimitRules"):
+                obj = DetectLengthLimitRule()
+                obj._deserialize(item)
+                self._DetectLengthLimitRules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DetectLengthLimitRule(AbstractModel):
+    """检测长度限制规则详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: 规则Id。仅出参使用。
+        :type RuleId: int
+        :param _RuleName: 规则名称。仅出参使用。
+        :type RuleName: str
+        :param _Description: 规则描述，仅出参使用。
+        :type Description: str
+        :param _Conditions: 规则配置条件。仅出参使用。
+        :type Conditions: list of DetectLengthLimitCondition
+        :param _Action: 处置方式，取值有：
+<li>skip：当请求正文数据超过 Conditions 出参中 body_depth 设置的检测深度时，跳过所有请求正文内容的检测；</li>
+<li>scan：仅检测 Conditions 出参中 body_depth 设置的检测深度，对超出部分的请求正文内容直接截断处理，超出部分的请求正文不会经过安全检测。</li>仅出参使用。
+        :type Action: str
+        """
+        self._RuleId = None
+        self._RuleName = None
+        self._Description = None
+        self._Conditions = None
+        self._Action = None
+
+    @property
+    def RuleId(self):
+        """规则Id。仅出参使用。
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RuleName(self):
+        """规则名称。仅出参使用。
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def Description(self):
+        """规则描述，仅出参使用。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Conditions(self):
+        """规则配置条件。仅出参使用。
+        :rtype: list of DetectLengthLimitCondition
+        """
+        return self._Conditions
+
+    @Conditions.setter
+    def Conditions(self, Conditions):
+        self._Conditions = Conditions
+
+    @property
+    def Action(self):
+        """处置方式，取值有：
+<li>skip：当请求正文数据超过 Conditions 出参中 body_depth 设置的检测深度时，跳过所有请求正文内容的检测；</li>
+<li>scan：仅检测 Conditions 出参中 body_depth 设置的检测深度，对超出部分的请求正文内容直接截断处理，超出部分的请求正文不会经过安全检测。</li>仅出参使用。
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._RuleName = params.get("RuleName")
+        self._Description = params.get("Description")
+        if params.get("Conditions") is not None:
+            self._Conditions = []
+            for item in params.get("Conditions"):
+                obj = DetectLengthLimitCondition()
+                obj._deserialize(item)
+                self._Conditions.append(obj)
+        self._Action = params.get("Action")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DiffIPWhitelist(AbstractModel):
     """最新IP白名单列表相比于当前IP白名单列表的区别
 
@@ -39071,7 +39278,7 @@ class SecEntryValue(AbstractModel):
 
 
 class SecurityConfig(AbstractModel):
-    """安全配置
+    """Web安全配置
 
     """
 
@@ -39107,6 +39314,9 @@ class SecurityConfig(AbstractModel):
         :param _SlowPostConfig: 慢速攻击配置。如果入参为空或不填，默认使用历史配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SlowPostConfig: :class:`tencentcloud.teo.v20220901.models.SlowPostConfig`
+        :param _DetectLengthLimitConfig: 检测长度限制配置。仅出参使用。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DetectLengthLimitConfig: :class:`tencentcloud.teo.v20220901.models.DetectLengthLimitConfig`
         """
         self._WafConfig = None
         self._RateLimitConfig = None
@@ -39118,6 +39328,7 @@ class SecurityConfig(AbstractModel):
         self._DropPageConfig = None
         self._TemplateConfig = None
         self._SlowPostConfig = None
+        self._DetectLengthLimitConfig = None
 
     @property
     def WafConfig(self):
@@ -39239,6 +39450,18 @@ class SecurityConfig(AbstractModel):
     def SlowPostConfig(self, SlowPostConfig):
         self._SlowPostConfig = SlowPostConfig
 
+    @property
+    def DetectLengthLimitConfig(self):
+        """检测长度限制配置。仅出参使用。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DetectLengthLimitConfig`
+        """
+        return self._DetectLengthLimitConfig
+
+    @DetectLengthLimitConfig.setter
+    def DetectLengthLimitConfig(self, DetectLengthLimitConfig):
+        self._DetectLengthLimitConfig = DetectLengthLimitConfig
+
 
     def _deserialize(self, params):
         if params.get("WafConfig") is not None:
@@ -39271,6 +39494,9 @@ class SecurityConfig(AbstractModel):
         if params.get("SlowPostConfig") is not None:
             self._SlowPostConfig = SlowPostConfig()
             self._SlowPostConfig._deserialize(params.get("SlowPostConfig"))
+        if params.get("DetectLengthLimitConfig") is not None:
+            self._DetectLengthLimitConfig = DetectLengthLimitConfig()
+            self._DetectLengthLimitConfig._deserialize(params.get("DetectLengthLimitConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

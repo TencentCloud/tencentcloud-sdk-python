@@ -933,6 +933,29 @@ class CvmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeInstancesAttributes(self, request):
+        """获取指定实例的属性，目前支持查询实例自定义数据User-Data。
+
+        :param request: Request instance for DescribeInstancesAttributes.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeInstancesAttributesRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.DescribeInstancesAttributesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstancesAttributes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstancesAttributesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeInstancesModification(self, request):
         """本接口 (DescribeInstancesModification) 用于查询指定实例支持调整的机型配置。
 

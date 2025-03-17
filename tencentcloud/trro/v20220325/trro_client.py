@@ -553,3 +553,28 @@ class TrroClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyProjectSecMode(self, request):
+        """使用项目共享密钥可动态生成设备登录密钥，登录前无需对设备进行提前注册，适合希望简化业务流程的客户。由于是公共密钥，请务必注意保护项目共享密钥，并及时更新。建议项目共享密钥保存在服务器侧。由服务器生成设备登录密码下发给设备，避免密钥保存在客户端侧产生的密钥泄露风险。
+
+        开启项目共享密钥后，对于已注册的设备，仍可使用原设备密码登录。若希望仅能通过共享密钥生成密码登录，请通过云 API 将设备密码更新为"USEPROJECTKEYPWD"。
+
+        :param request: Request instance for ModifyProjectSecMode.
+        :type request: :class:`tencentcloud.trro.v20220325.models.ModifyProjectSecModeRequest`
+        :rtype: :class:`tencentcloud.trro.v20220325.models.ModifyProjectSecModeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyProjectSecMode", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyProjectSecModeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))

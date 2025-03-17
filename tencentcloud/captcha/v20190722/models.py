@@ -2195,7 +2195,6 @@ class DescribeCaptchaMiniResultResponse(AbstractModel):
 100   param err     参数校验错误
         :type CaptchaCode: int
         :param _CaptchaMsg: 状态描述及验证错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type CaptchaMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2228,7 +2227,6 @@ class DescribeCaptchaMiniResultResponse(AbstractModel):
     @property
     def CaptchaMsg(self):
         """状态描述及验证错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CaptchaMsg
@@ -2461,10 +2459,8 @@ class DescribeCaptchaMiniRiskResultResponse(AbstractModel):
         :type CaptchaCode: int
         :param _CaptchaMsg: 状态描述及验证错误信息
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CaptchaMsg: str
         :param _ManageMarketingRiskValue: 拦截策略返回信息
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ManageMarketingRiskValue: :class:`tencentcloud.captcha.v20190722.models.OutputManageMarketingRiskValue`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2499,7 +2495,6 @@ class DescribeCaptchaMiniRiskResultResponse(AbstractModel):
     def CaptchaMsg(self):
         """状态描述及验证错误信息
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CaptchaMsg
@@ -2511,7 +2506,6 @@ class DescribeCaptchaMiniRiskResultResponse(AbstractModel):
     @property
     def ManageMarketingRiskValue(self):
         """拦截策略返回信息
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.captcha.v20190722.models.OutputManageMarketingRiskValue`
         """
@@ -4322,26 +4316,20 @@ AccountType 是 8 时，对应 imei、idfa、imeiMD5 或者 idfaMD5。
 AccountType 是 0 时，对应账号信息。
 AccountType 是 10004 时，对应手机号的 MD5。
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserId: str
         :param _PostTime: 操作时间戳，单位秒（对应输入参数）。 
-注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
+
         :type PostTime: int
         :param _AssociateAccount: 对应输入参数，AccountType 是 QQ 或微信开放账号时，用于标识 QQ 或微信用户登录 后关联业务自身的账号 ID。
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AssociateAccount: str
-        :param _UserIp: 业务详情。 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _UserIp: 业务详情
         :type UserIp: str
         :param _RiskLevel: 风险值 pass : 无恶意
 review：需要人工审核
 reject：拒绝，高风险恶意
-注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskLevel: str
-        :param _RiskType: 风险类型，请查看下面详细说明 注意：此字段可能返回 null，表示取不到有效值。
+        :param _RiskType: 风险类型，请查看下面详细说明 
 账号风险	
         账号信用低	1	账号近期存在因恶意被处罚历史，网络低活跃，被举报等因素
 	疑似 低活跃账号	11	账号活跃度与正常用户有差异
@@ -4381,7 +4369,6 @@ AccountType 是 8 时，对应 imei、idfa、imeiMD5 或者 idfaMD5。
 AccountType 是 0 时，对应账号信息。
 AccountType 是 10004 时，对应手机号的 MD5。
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UserId
@@ -4393,8 +4380,7 @@ AccountType 是 10004 时，对应手机号的 MD5。
     @property
     def PostTime(self):
         """操作时间戳，单位秒（对应输入参数）。 
-注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
+
         :rtype: int
         """
         return self._PostTime
@@ -4407,7 +4393,6 @@ AccountType 是 10004 时，对应手机号的 MD5。
     def AssociateAccount(self):
         """对应输入参数，AccountType 是 QQ 或微信开放账号时，用于标识 QQ 或微信用户登录 后关联业务自身的账号 ID。
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AssociateAccount
@@ -4418,8 +4403,7 @@ AccountType 是 10004 时，对应手机号的 MD5。
 
     @property
     def UserIp(self):
-        """业务详情。 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
+        """业务详情
         :rtype: str
         """
         return self._UserIp
@@ -4433,8 +4417,6 @@ AccountType 是 10004 时，对应手机号的 MD5。
         """风险值 pass : 无恶意
 review：需要人工审核
 reject：拒绝，高风险恶意
-注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RiskLevel
@@ -4445,7 +4427,7 @@ reject：拒绝，高风险恶意
 
     @property
     def RiskType(self):
-        """风险类型，请查看下面详细说明 注意：此字段可能返回 null，表示取不到有效值。
+        """风险类型，请查看下面详细说明 
 账号风险	
         账号信用低	1	账号近期存在因恶意被处罚历史，网络低活跃，被举报等因素
 	疑似 低活跃账号	11	账号活跃度与正常用户有差异

@@ -13128,6 +13128,10 @@ class CreatePrepareFlowRequest(AbstractModel):
         :type InitiatorComponents: list of Component
         :param _FlowDisplayType: 在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
         :type FlowDisplayType: int
+        :param _SignComponentConfig: 签署控件的配置信息，用在嵌入式发起的页面配置，包括  
+
+- 签署控件 是否默认展示日期.
+        :type SignComponentConfig: :class:`tencentcloud.ess.v20201111.models.SignComponentConfig`
         """
         self._Operator = None
         self._ResourceId = None
@@ -13149,6 +13153,7 @@ class CreatePrepareFlowRequest(AbstractModel):
         self._Agent = None
         self._InitiatorComponents = None
         self._FlowDisplayType = None
+        self._SignComponentConfig = None
 
     @property
     def Operator(self):
@@ -13410,6 +13415,19 @@ class CreatePrepareFlowRequest(AbstractModel):
     def FlowDisplayType(self, FlowDisplayType):
         self._FlowDisplayType = FlowDisplayType
 
+    @property
+    def SignComponentConfig(self):
+        """签署控件的配置信息，用在嵌入式发起的页面配置，包括  
+
+- 签署控件 是否默认展示日期.
+        :rtype: :class:`tencentcloud.ess.v20201111.models.SignComponentConfig`
+        """
+        return self._SignComponentConfig
+
+    @SignComponentConfig.setter
+    def SignComponentConfig(self, SignComponentConfig):
+        self._SignComponentConfig = SignComponentConfig
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -13455,6 +13473,9 @@ class CreatePrepareFlowRequest(AbstractModel):
                 obj._deserialize(item)
                 self._InitiatorComponents.append(obj)
         self._FlowDisplayType = params.get("FlowDisplayType")
+        if params.get("SignComponentConfig") is not None:
+            self._SignComponentConfig = SignComponentConfig()
+            self._SignComponentConfig._deserialize(params.get("SignComponentConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25385,7 +25406,7 @@ false：有序签
         :param _AutoSignScene: 个人自动签场景。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
 
         :type AutoSignScene: str
-        :param _FlowDisplayType: 在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
+        :param _FlowDisplayType: 在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li><li> <b>3</b> :文书</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
         :type FlowDisplayType: int
         """
         self._FlowName = None
@@ -25577,7 +25598,7 @@ false：有序签
 
     @property
     def FlowDisplayType(self):
-        """在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
+        """在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li><li> <b>3</b> :文书</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
         :rtype: int
         """
         return self._FlowDisplayType
@@ -30796,6 +30817,52 @@ CONTRACT：合同专用章
         self._SealId = params.get("SealId")
         self._SealType = params.get("SealType")
         self._SealName = params.get("SealName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SignComponentConfig(AbstractModel):
+    """签署控件的配置信息，用在嵌入式发起的页面配置，包括
+
+    - 签署控件是否默认展示日期.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HideDate: 签署控件默认属性配置，是否默认展示签署日期， 在页面中可以进行修改。
+
+- false 展示签署日期（默认）
+- true 不展示签署日期 
+![image](https://qcloudimg.tencent-cloud.cn/raw/448514412e2f69f6129425beda4ff568.png)。
+        :type HideDate: bool
+        """
+        self._HideDate = None
+
+    @property
+    def HideDate(self):
+        """签署控件默认属性配置，是否默认展示签署日期， 在页面中可以进行修改。
+
+- false 展示签署日期（默认）
+- true 不展示签署日期 
+![image](https://qcloudimg.tencent-cloud.cn/raw/448514412e2f69f6129425beda4ff568.png)。
+        :rtype: bool
+        """
+        return self._HideDate
+
+    @HideDate.setter
+    def HideDate(self, HideDate):
+        self._HideDate = HideDate
+
+
+    def _deserialize(self, params):
+        self._HideDate = params.get("HideDate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

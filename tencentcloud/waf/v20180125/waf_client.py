@@ -348,6 +348,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreatePostCLSFlow(self, request):
+        """创建CLS投递流任务
+
+        :param request: Request instance for CreatePostCLSFlow.
+        :type request: :class:`tencentcloud.waf.v20180125.models.CreatePostCLSFlowRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.CreatePostCLSFlowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreatePostCLSFlow", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreatePostCLSFlowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteAccessExport(self, request):
         """本接口用于删除访问日志导出
 
@@ -1705,6 +1728,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribePostCLSFlows(self, request):
+        """获取CLS投递流任务列表
+
+        :param request: Request instance for DescribePostCLSFlows.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribePostCLSFlowsRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribePostCLSFlowsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePostCLSFlows", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePostCLSFlowsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeProtectionModes(self, request):
         """查询Tiga引擎大类规则及其防护模式
 
@@ -2135,6 +2181,29 @@ class WafClient(AbstractClient):
             body = self.call("DescribeWebshellStatus", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeWebshellStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DestroyPostCLSFlow(self, request):
+        """销毁CLS投递流任务
+
+        :param request: Request instance for DestroyPostCLSFlow.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DestroyPostCLSFlowRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DestroyPostCLSFlowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DestroyPostCLSFlow", params, headers=headers)
+            response = json.loads(body)
+            model = models.DestroyPostCLSFlowResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

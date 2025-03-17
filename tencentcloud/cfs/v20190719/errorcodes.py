@@ -149,6 +149,9 @@ INVALIDPARAMETERVALUE_INVALIDFSSIZELIMIT = 'InvalidParameterValue.InvalidFsSizeL
 # 无效的文件系统状态。
 INVALIDPARAMETERVALUE_INVALIDFSSTATUS = 'InvalidParameterValue.InvalidFsStatus'
 
+# MetaType 值无效
+INVALIDPARAMETERVALUE_INVALIDMETATYPE = 'InvalidParameterValue.InvalidMetaType'
+
 # 错误的挂载点IP。
 INVALIDPARAMETERVALUE_INVALIDMOUNTTARGETIP = 'InvalidParameterValue.InvalidMountTargetIp'
 

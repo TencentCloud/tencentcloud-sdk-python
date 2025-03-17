@@ -4905,7 +4905,6 @@ class CreateCloudBaseRunResourceResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 返回集群创建是否成功 succ为成功。并且中间无err
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4916,7 +4915,6 @@ class CreateCloudBaseRunResourceResponse(AbstractModel):
     @property
     def Result(self):
         """返回集群创建是否成功 succ为成功。并且中间无err
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Result
@@ -5666,13 +5664,10 @@ class CreateCloudBaseRunServerVersionResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 状态(creating/succ)
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
         :param _VersionName: 版本名称（只有Result为succ的时候，才会返回VersionName)
-注意：此字段可能返回 null，表示取不到有效值。
         :type VersionName: str
         :param _RunId: 操作记录id
-注意：此字段可能返回 null，表示取不到有效值。
         :type RunId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5685,7 +5680,6 @@ class CreateCloudBaseRunServerVersionResponse(AbstractModel):
     @property
     def Result(self):
         """状态(creating/succ)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Result
@@ -5697,7 +5691,6 @@ class CreateCloudBaseRunServerVersionResponse(AbstractModel):
     @property
     def VersionName(self):
         """版本名称（只有Result为succ的时候，才会返回VersionName)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VersionName
@@ -5709,7 +5702,6 @@ class CreateCloudBaseRunServerVersionResponse(AbstractModel):
     @property
     def RunId(self):
         """操作记录id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RunId
@@ -8278,13 +8270,10 @@ class DescribeCbrServerVersionResponse(AbstractModel):
         :param _VersionName: 版本名称
         :type VersionName: str
         :param _Remark: 备注
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _DockerfilePath: Dockefile的路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type DockerfilePath: str
         :param _BuildDir: DockerBuild的目录
-注意：此字段可能返回 null，表示取不到有效值。
         :type BuildDir: str
         :param _Cpu: Cpu大小
         :type Cpu: float
@@ -8295,71 +8284,50 @@ class DescribeCbrServerVersionResponse(AbstractModel):
         :param _MaxNum: 副本最大值
         :type MaxNum: int
         :param _EnvParams: 环境变量
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnvParams: str
         :param _CreatedTime: 创建时间
         :type CreatedTime: str
         :param _UpdatedTime: 更新时间
         :type UpdatedTime: str
         :param _VersionIP: 版本的IP
-注意：此字段可能返回 null，表示取不到有效值。
         :type VersionIP: str
         :param _VersionPort: 版本的端口号
-注意：此字段可能返回 null，表示取不到有效值。
         :type VersionPort: int
         :param _Status: 版本状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _UploadType: 枚举（package/repository/image)
-注意：此字段可能返回 null，表示取不到有效值。
         :type UploadType: str
         :param _ServerName: 服务名字
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServerName: str
         :param _IsPublic: 是否对于外网开放
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsPublic: bool
         :param _VpcId: vpc id
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
         :param _SubnetIds: 子网实例id
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetIds: list of str
         :param _CustomLogs: 日志采集路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type CustomLogs: str
         :param _ContainerPort: 监听端口
-注意：此字段可能返回 null，表示取不到有效值。
         :type ContainerPort: int
         :param _InitialDelaySeconds: 延迟多长时间开始健康检查（单位s）
-注意：此字段可能返回 null，表示取不到有效值。
         :type InitialDelaySeconds: int
         :param _ImageUrl: 镜像地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImageUrl: str
         :param _HasDockerfile: 是否有Dockerfile：0-default has, 1-has, 2-has not
-注意：此字段可能返回 null，表示取不到有效值。
         :type HasDockerfile: int
         :param _BaseImage: 基础镜像
-注意：此字段可能返回 null，表示取不到有效值。
         :type BaseImage: str
         :param _EntryPoint: 容器启动入口命令
-注意：此字段可能返回 null，表示取不到有效值。
         :type EntryPoint: str
         :param _PolicyDetail: 自动扩缩容策略组
-注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyDetail: list of HpaPolicy
         :param _TkeClusterInfo: Tke集群信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type TkeClusterInfo: :class:`tencentcloud.tcb.v20180608.models.TkeClusterInfo`
         :param _TkeWorkloadType: 版本工作负载类型；deployment/deamonset
-注意：此字段可能返回 null，表示取不到有效值。
         :type TkeWorkloadType: str
         :param _PackageInfo: 代码包信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type PackageInfo: :class:`tencentcloud.tcb.v20180608.models.CbrPackageInfo`
         :param _RepoInfo: 仓库信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type RepoInfo: :class:`tencentcloud.tcb.v20180608.models.CbrRepoInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8411,7 +8379,6 @@ class DescribeCbrServerVersionResponse(AbstractModel):
     @property
     def Remark(self):
         """备注
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -8423,7 +8390,6 @@ class DescribeCbrServerVersionResponse(AbstractModel):
     @property
     def DockerfilePath(self):
         """Dockefile的路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DockerfilePath
@@ -8435,7 +8401,6 @@ class DescribeCbrServerVersionResponse(AbstractModel):
     @property
     def BuildDir(self):
         """DockerBuild的目录
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BuildDir
@@ -8491,7 +8456,6 @@ class DescribeCbrServerVersionResponse(AbstractModel):
     @property
     def EnvParams(self):
         """环境变量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EnvParams
@@ -8525,7 +8489,6 @@ class DescribeCbrServerVersionResponse(AbstractModel):
     @property
     def VersionIP(self):
         """版本的IP
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VersionIP
@@ -8537,7 +8500,6 @@ class DescribeCbrServerVersionResponse(AbstractModel):
     @property
     def VersionPort(self):
         """版本的端口号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._VersionPort
@@ -8549,7 +8511,6 @@ class DescribeCbrServerVersionResponse(AbstractModel):
     @property
     def Status(self):
         """版本状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -8561,7 +8522,6 @@ class DescribeCbrServerVersionResponse(AbstractModel):
     @property
     def UploadType(self):
         """枚举（package/repository/image)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UploadType
@@ -8573,7 +8533,6 @@ class DescribeCbrServerVersionResponse(AbstractModel):
     @property
     def ServerName(self):
         """服务名字
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ServerName
@@ -8585,7 +8544,6 @@ class DescribeCbrServerVersionResponse(AbstractModel):
     @property
     def IsPublic(self):
         """是否对于外网开放
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsPublic
@@ -8597,7 +8555,6 @@ class DescribeCbrServerVersionResponse(AbstractModel):
     @property
     def VpcId(self):
         """vpc id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VpcId
@@ -8609,7 +8566,6 @@ class DescribeCbrServerVersionResponse(AbstractModel):
     @property
     def SubnetIds(self):
         """子网实例id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._SubnetIds
@@ -8621,7 +8577,6 @@ class DescribeCbrServerVersionResponse(AbstractModel):
     @property
     def CustomLogs(self):
         """日志采集路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CustomLogs
@@ -8633,7 +8588,6 @@ class DescribeCbrServerVersionResponse(AbstractModel):
     @property
     def ContainerPort(self):
         """监听端口
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ContainerPort
@@ -8645,7 +8599,6 @@ class DescribeCbrServerVersionResponse(AbstractModel):
     @property
     def InitialDelaySeconds(self):
         """延迟多长时间开始健康检查（单位s）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._InitialDelaySeconds
@@ -8657,7 +8610,6 @@ class DescribeCbrServerVersionResponse(AbstractModel):
     @property
     def ImageUrl(self):
         """镜像地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ImageUrl
@@ -8669,7 +8621,6 @@ class DescribeCbrServerVersionResponse(AbstractModel):
     @property
     def HasDockerfile(self):
         """是否有Dockerfile：0-default has, 1-has, 2-has not
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._HasDockerfile
@@ -8681,7 +8632,6 @@ class DescribeCbrServerVersionResponse(AbstractModel):
     @property
     def BaseImage(self):
         """基础镜像
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BaseImage
@@ -8693,7 +8643,6 @@ class DescribeCbrServerVersionResponse(AbstractModel):
     @property
     def EntryPoint(self):
         """容器启动入口命令
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EntryPoint
@@ -8705,7 +8654,6 @@ class DescribeCbrServerVersionResponse(AbstractModel):
     @property
     def PolicyDetail(self):
         """自动扩缩容策略组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of HpaPolicy
         """
         return self._PolicyDetail
@@ -8717,7 +8665,6 @@ class DescribeCbrServerVersionResponse(AbstractModel):
     @property
     def TkeClusterInfo(self):
         """Tke集群信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcb.v20180608.models.TkeClusterInfo`
         """
         return self._TkeClusterInfo
@@ -8729,7 +8676,6 @@ class DescribeCbrServerVersionResponse(AbstractModel):
     @property
     def TkeWorkloadType(self):
         """版本工作负载类型；deployment/deamonset
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TkeWorkloadType
@@ -8741,7 +8687,6 @@ class DescribeCbrServerVersionResponse(AbstractModel):
     @property
     def PackageInfo(self):
         """代码包信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcb.v20180608.models.CbrPackageInfo`
         """
         return self._PackageInfo
@@ -8753,7 +8698,6 @@ class DescribeCbrServerVersionResponse(AbstractModel):
     @property
     def RepoInfo(self):
         """仓库信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcb.v20180608.models.CbrRepoInfo`
         """
         return self._RepoInfo
@@ -8932,13 +8876,10 @@ class DescribeCloudBaseBuildServiceResponse(AbstractModel):
         :param _PackageVersion: 包版本
         :type PackageVersion: str
         :param _DownloadUrl: 下载链接
-注意：此字段可能返回 null，表示取不到有效值。
         :type DownloadUrl: str
         :param _DownloadHeaders: 下载Httpheader
-注意：此字段可能返回 null，表示取不到有效值。
         :type DownloadHeaders: list of KVPair
         :param _OutDate: 下载链接是否过期
-注意：此字段可能返回 null，表示取不到有效值。
         :type OutDate: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8999,7 +8940,6 @@ class DescribeCloudBaseBuildServiceResponse(AbstractModel):
     @property
     def DownloadUrl(self):
         """下载链接
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DownloadUrl
@@ -9011,7 +8951,6 @@ class DescribeCloudBaseBuildServiceResponse(AbstractModel):
     @property
     def DownloadHeaders(self):
         """下载Httpheader
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KVPair
         """
         return self._DownloadHeaders
@@ -9023,7 +8962,6 @@ class DescribeCloudBaseBuildServiceResponse(AbstractModel):
     @property
     def OutDate(self):
         """下载链接是否过期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._OutDate
@@ -9472,7 +9410,6 @@ class DescribeCloudBaseRunAllVpcsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Vpcs: 所有vpcid
-注意：此字段可能返回 null，表示取不到有效值。
         :type Vpcs: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9483,7 +9420,6 @@ class DescribeCloudBaseRunAllVpcsResponse(AbstractModel):
     @property
     def Vpcs(self):
         """所有vpcid
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Vpcs
@@ -9568,7 +9504,6 @@ class DescribeCloudBaseRunConfForGateWayResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _LastUpTime: 最近更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type LastUpTime: str
         :param _Data: 配置信息
 注意：此字段可能返回 null，表示取不到有效值。
@@ -9583,7 +9518,6 @@ class DescribeCloudBaseRunConfForGateWayResponse(AbstractModel):
     @property
     def LastUpTime(self):
         """最近更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LastUpTime
@@ -9949,10 +9883,8 @@ class DescribeCloudBaseRunOperationTypesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Action: 操作类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Action: list of str
         :param _ServerName: 服务名列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServerName: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9964,7 +9896,6 @@ class DescribeCloudBaseRunOperationTypesResponse(AbstractModel):
     @property
     def Action(self):
         """操作类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Action
@@ -9976,7 +9907,6 @@ class DescribeCloudBaseRunOperationTypesResponse(AbstractModel):
     @property
     def ServerName(self):
         """服务名列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._ServerName
@@ -10143,7 +10073,6 @@ class DescribeCloudBaseRunPodListResponse(AbstractModel):
         :param _TotalCount: 总数
         :type TotalCount: int
         :param _PodList: 容器列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type PodList: list of CloudBaseRunVersionPod
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10190,7 +10119,6 @@ class DescribeCloudBaseRunPodListResponse(AbstractModel):
     @property
     def PodList(self):
         """容器列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CloudBaseRunVersionPod
         """
         return self._PodList
@@ -10268,16 +10196,12 @@ class DescribeCloudBaseRunResourceForExtendResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ClusterStatus: 集群状态(creating/succ)
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterStatus: str
         :param _VirtualClusterId: 虚拟集群ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type VirtualClusterId: str
         :param _VpcId: vpc id信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
         :param _Region: 地域信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         :param _SubnetIds: 子网信息
 注意：此字段可能返回 null，表示取不到有效值。
@@ -10295,7 +10219,6 @@ class DescribeCloudBaseRunResourceForExtendResponse(AbstractModel):
     @property
     def ClusterStatus(self):
         """集群状态(creating/succ)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterStatus
@@ -10307,7 +10230,6 @@ class DescribeCloudBaseRunResourceForExtendResponse(AbstractModel):
     @property
     def VirtualClusterId(self):
         """虚拟集群ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VirtualClusterId
@@ -10319,7 +10241,6 @@ class DescribeCloudBaseRunResourceForExtendResponse(AbstractModel):
     @property
     def VpcId(self):
         """vpc id信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VpcId
@@ -10331,7 +10252,6 @@ class DescribeCloudBaseRunResourceForExtendResponse(AbstractModel):
     @property
     def Region(self):
         """地域信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Region
@@ -10422,16 +10342,12 @@ class DescribeCloudBaseRunResourceResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ClusterStatus: 集群状态(creating/succ)
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterStatus: str
         :param _VirtualClusterId: 虚拟集群ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type VirtualClusterId: str
         :param _VpcId: vpc id信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
         :param _Region: 地域信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         :param _SubnetIds: 子网信息
 注意：此字段可能返回 null，表示取不到有效值。
@@ -10449,7 +10365,6 @@ class DescribeCloudBaseRunResourceResponse(AbstractModel):
     @property
     def ClusterStatus(self):
         """集群状态(creating/succ)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterStatus
@@ -10461,7 +10376,6 @@ class DescribeCloudBaseRunResourceResponse(AbstractModel):
     @property
     def VirtualClusterId(self):
         """虚拟集群ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VirtualClusterId
@@ -10473,7 +10387,6 @@ class DescribeCloudBaseRunResourceResponse(AbstractModel):
     @property
     def VpcId(self):
         """vpc id信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VpcId
@@ -10485,7 +10398,6 @@ class DescribeCloudBaseRunResourceResponse(AbstractModel):
     @property
     def Region(self):
         """地域信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Region
@@ -10790,28 +10702,20 @@ class DescribeCloudBaseRunServerResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _VersionItems: 版本列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type VersionItems: list of CloudBaseRunServerVersionItem
         :param _ServerName: 服务名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServerName: str
         :param _IsPublic: 是否对于外网开放
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsPublic: bool
         :param _ImageRepo: 镜像仓库
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImageRepo: str
         :param _TrafficType: 流量配置的类型（FLOW,URL_PARAMS)
-注意：此字段可能返回 null，表示取不到有效值。
         :type TrafficType: str
         :param _SourceType: 服务创建类型，默认为空，一键部署为oneclick
-注意：此字段可能返回 null，表示取不到有效值。
         :type SourceType: str
         :param _Tag: 服务标签, function: 托管函数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tag: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10829,7 +10733,6 @@ class DescribeCloudBaseRunServerResponse(AbstractModel):
     @property
     def TotalCount(self):
         """个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -10841,7 +10744,6 @@ class DescribeCloudBaseRunServerResponse(AbstractModel):
     @property
     def VersionItems(self):
         """版本列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CloudBaseRunServerVersionItem
         """
         return self._VersionItems
@@ -10853,7 +10755,6 @@ class DescribeCloudBaseRunServerResponse(AbstractModel):
     @property
     def ServerName(self):
         """服务名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ServerName
@@ -10865,7 +10766,6 @@ class DescribeCloudBaseRunServerResponse(AbstractModel):
     @property
     def IsPublic(self):
         """是否对于外网开放
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsPublic
@@ -10877,7 +10777,6 @@ class DescribeCloudBaseRunServerResponse(AbstractModel):
     @property
     def ImageRepo(self):
         """镜像仓库
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ImageRepo
@@ -10889,7 +10788,6 @@ class DescribeCloudBaseRunServerResponse(AbstractModel):
     @property
     def TrafficType(self):
         """流量配置的类型（FLOW,URL_PARAMS)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TrafficType
@@ -10901,7 +10799,6 @@ class DescribeCloudBaseRunServerResponse(AbstractModel):
     @property
     def SourceType(self):
         """服务创建类型，默认为空，一键部署为oneclick
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SourceType
@@ -10913,7 +10810,6 @@ class DescribeCloudBaseRunServerResponse(AbstractModel):
     @property
     def Tag(self):
         """服务标签, function: 托管函数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Tag
@@ -11027,13 +10923,10 @@ class DescribeCloudBaseRunServerVersionResponse(AbstractModel):
         :param _VersionName: 版本名称
         :type VersionName: str
         :param _Remark: 备注
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _DockerfilePath: Dockefile的路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type DockerfilePath: str
         :param _BuildDir: DockerBuild的目录
-注意：此字段可能返回 null，表示取不到有效值。
         :type BuildDir: str
         :param _Cpu: 请使用CPUSize
         :type Cpu: float
@@ -11048,80 +10941,57 @@ class DescribeCloudBaseRunServerVersionResponse(AbstractModel):
         :param _PolicyThreshold: 策略阈值
         :type PolicyThreshold: float
         :param _EnvParams: 环境变量
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnvParams: str
         :param _CreatedTime: 创建时间
         :type CreatedTime: str
         :param _UpdatedTime: 更新时间
         :type UpdatedTime: str
         :param _VersionIP: 版本的IP
-注意：此字段可能返回 null，表示取不到有效值。
         :type VersionIP: str
         :param _VersionPort: 版本的端口号
-注意：此字段可能返回 null，表示取不到有效值。
         :type VersionPort: int
         :param _Status: 版本状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _PackageName: 代码包的名字
-注意：此字段可能返回 null，表示取不到有效值。
         :type PackageName: str
         :param _PackageVersion: 代码版本的名字
-注意：此字段可能返回 null，表示取不到有效值。
         :type PackageVersion: str
         :param _UploadType: 枚举（package/repository/image)
-注意：此字段可能返回 null，表示取不到有效值。
         :type UploadType: str
         :param _RepoType: Repo的类型(gitlab/github/coding)
-注意：此字段可能返回 null，表示取不到有效值。
         :type RepoType: str
         :param _Repo: 地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type Repo: str
         :param _Branch: 分支
-注意：此字段可能返回 null，表示取不到有效值。
         :type Branch: str
         :param _ServerName: 服务名字
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServerName: str
         :param _IsPublic: 是否对于外网开放
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsPublic: bool
         :param _VpcId: vpc id
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
         :param _SubnetIds: 子网实例id
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetIds: list of str
         :param _CustomLogs: 日志采集路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type CustomLogs: str
         :param _ContainerPort: 监听端口
-注意：此字段可能返回 null，表示取不到有效值。
         :type ContainerPort: int
         :param _InitialDelaySeconds: 延迟多长时间开始健康检查（单位s）
-注意：此字段可能返回 null，表示取不到有效值。
         :type InitialDelaySeconds: int
         :param _ImageUrl: 镜像地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImageUrl: str
         :param _CpuSize: CPU 大小
-注意：此字段可能返回 null，表示取不到有效值。
         :type CpuSize: float
         :param _MemSize: MEM 大小
-注意：此字段可能返回 null，表示取不到有效值。
         :type MemSize: float
         :param _HasDockerfile: 是否有Dockerfile：0-default has, 1-has, 2-has not
-注意：此字段可能返回 null，表示取不到有效值。
         :type HasDockerfile: int
         :param _BaseImage: 基础镜像
-注意：此字段可能返回 null，表示取不到有效值。
         :type BaseImage: str
         :param _EntryPoint: 容器启动入口命令
-注意：此字段可能返回 null，表示取不到有效值。
         :type EntryPoint: str
         :param _RepoLanguage: 仓库语言
-注意：此字段可能返回 null，表示取不到有效值。
         :type RepoLanguage: str
         :param _PolicyDetail: 自动扩缩容策略组
 注意：此字段可能返回 null，表示取不到有效值。
@@ -11130,7 +11000,6 @@ class DescribeCloudBaseRunServerVersionResponse(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type TkeClusterInfo: :class:`tencentcloud.tcb.v20180608.models.TkeClusterInfo`
         :param _TkeWorkloadType: 版本工作负载类型；deployment/deamonset
-注意：此字段可能返回 null，表示取不到有效值。
         :type TkeWorkloadType: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11190,7 +11059,6 @@ class DescribeCloudBaseRunServerVersionResponse(AbstractModel):
     @property
     def Remark(self):
         """备注
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -11202,7 +11070,6 @@ class DescribeCloudBaseRunServerVersionResponse(AbstractModel):
     @property
     def DockerfilePath(self):
         """Dockefile的路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DockerfilePath
@@ -11214,7 +11081,6 @@ class DescribeCloudBaseRunServerVersionResponse(AbstractModel):
     @property
     def BuildDir(self):
         """DockerBuild的目录
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BuildDir
@@ -11292,7 +11158,6 @@ class DescribeCloudBaseRunServerVersionResponse(AbstractModel):
     @property
     def EnvParams(self):
         """环境变量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EnvParams
@@ -11326,7 +11191,6 @@ class DescribeCloudBaseRunServerVersionResponse(AbstractModel):
     @property
     def VersionIP(self):
         """版本的IP
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VersionIP
@@ -11338,7 +11202,6 @@ class DescribeCloudBaseRunServerVersionResponse(AbstractModel):
     @property
     def VersionPort(self):
         """版本的端口号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._VersionPort
@@ -11350,7 +11213,6 @@ class DescribeCloudBaseRunServerVersionResponse(AbstractModel):
     @property
     def Status(self):
         """版本状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -11362,7 +11224,6 @@ class DescribeCloudBaseRunServerVersionResponse(AbstractModel):
     @property
     def PackageName(self):
         """代码包的名字
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PackageName
@@ -11374,7 +11235,6 @@ class DescribeCloudBaseRunServerVersionResponse(AbstractModel):
     @property
     def PackageVersion(self):
         """代码版本的名字
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PackageVersion
@@ -11386,7 +11246,6 @@ class DescribeCloudBaseRunServerVersionResponse(AbstractModel):
     @property
     def UploadType(self):
         """枚举（package/repository/image)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UploadType
@@ -11398,7 +11257,6 @@ class DescribeCloudBaseRunServerVersionResponse(AbstractModel):
     @property
     def RepoType(self):
         """Repo的类型(gitlab/github/coding)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RepoType
@@ -11410,7 +11268,6 @@ class DescribeCloudBaseRunServerVersionResponse(AbstractModel):
     @property
     def Repo(self):
         """地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Repo
@@ -11422,7 +11279,6 @@ class DescribeCloudBaseRunServerVersionResponse(AbstractModel):
     @property
     def Branch(self):
         """分支
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Branch
@@ -11434,7 +11290,6 @@ class DescribeCloudBaseRunServerVersionResponse(AbstractModel):
     @property
     def ServerName(self):
         """服务名字
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ServerName
@@ -11446,7 +11301,6 @@ class DescribeCloudBaseRunServerVersionResponse(AbstractModel):
     @property
     def IsPublic(self):
         """是否对于外网开放
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsPublic
@@ -11458,7 +11312,6 @@ class DescribeCloudBaseRunServerVersionResponse(AbstractModel):
     @property
     def VpcId(self):
         """vpc id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VpcId
@@ -11482,7 +11335,6 @@ class DescribeCloudBaseRunServerVersionResponse(AbstractModel):
     @property
     def CustomLogs(self):
         """日志采集路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CustomLogs
@@ -11494,7 +11346,6 @@ class DescribeCloudBaseRunServerVersionResponse(AbstractModel):
     @property
     def ContainerPort(self):
         """监听端口
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ContainerPort
@@ -11506,7 +11357,6 @@ class DescribeCloudBaseRunServerVersionResponse(AbstractModel):
     @property
     def InitialDelaySeconds(self):
         """延迟多长时间开始健康检查（单位s）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._InitialDelaySeconds
@@ -11518,7 +11368,6 @@ class DescribeCloudBaseRunServerVersionResponse(AbstractModel):
     @property
     def ImageUrl(self):
         """镜像地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ImageUrl
@@ -11530,7 +11379,6 @@ class DescribeCloudBaseRunServerVersionResponse(AbstractModel):
     @property
     def CpuSize(self):
         """CPU 大小
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._CpuSize
@@ -11542,7 +11390,6 @@ class DescribeCloudBaseRunServerVersionResponse(AbstractModel):
     @property
     def MemSize(self):
         """MEM 大小
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._MemSize
@@ -11554,7 +11401,6 @@ class DescribeCloudBaseRunServerVersionResponse(AbstractModel):
     @property
     def HasDockerfile(self):
         """是否有Dockerfile：0-default has, 1-has, 2-has not
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._HasDockerfile
@@ -11566,7 +11412,6 @@ class DescribeCloudBaseRunServerVersionResponse(AbstractModel):
     @property
     def BaseImage(self):
         """基础镜像
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BaseImage
@@ -11578,7 +11423,6 @@ class DescribeCloudBaseRunServerVersionResponse(AbstractModel):
     @property
     def EntryPoint(self):
         """容器启动入口命令
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EntryPoint
@@ -11590,7 +11434,6 @@ class DescribeCloudBaseRunServerVersionResponse(AbstractModel):
     @property
     def RepoLanguage(self):
         """仓库语言
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RepoLanguage
@@ -11626,7 +11469,6 @@ class DescribeCloudBaseRunServerVersionResponse(AbstractModel):
     @property
     def TkeWorkloadType(self):
         """版本工作负载类型；deployment/deamonset
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TkeWorkloadType
@@ -11773,13 +11615,10 @@ class DescribeCloudBaseRunVersionResponse(AbstractModel):
         :param _VersionName: 版本名称
         :type VersionName: str
         :param _Remark: 备注
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _DockerfilePath: Dockefile的路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type DockerfilePath: str
         :param _BuildDir: DockerBuild的目录
-注意：此字段可能返回 null，表示取不到有效值。
         :type BuildDir: str
         :param _MinNum: 副本最小值
         :type MinNum: int
@@ -11790,77 +11629,54 @@ class DescribeCloudBaseRunVersionResponse(AbstractModel):
         :param _PolicyThreshold: 策略阈值
         :type PolicyThreshold: float
         :param _EnvParams: 环境变量
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnvParams: str
         :param _CreatedTime: 创建时间
         :type CreatedTime: str
         :param _UpdatedTime: 更新时间
         :type UpdatedTime: str
         :param _VersionIP: 版本的IP
-注意：此字段可能返回 null，表示取不到有效值。
         :type VersionIP: str
         :param _VersionPort: 版本的端口号
-注意：此字段可能返回 null，表示取不到有效值。
         :type VersionPort: int
         :param _Status: 版本状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _PackageName: 代码包的名字
-注意：此字段可能返回 null，表示取不到有效值。
         :type PackageName: str
         :param _PackageVersion: 代码版本的名字
-注意：此字段可能返回 null，表示取不到有效值。
         :type PackageVersion: str
         :param _UploadType: 枚举（package/repository/image)
-注意：此字段可能返回 null，表示取不到有效值。
         :type UploadType: str
         :param _RepoType: Repo的类型(coding/gitlab/github/coding)
-注意：此字段可能返回 null，表示取不到有效值。
         :type RepoType: str
         :param _Repo: 地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type Repo: str
         :param _Branch: 分支
-注意：此字段可能返回 null，表示取不到有效值。
         :type Branch: str
         :param _ServerName: 服务名字
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServerName: str
         :param _IsPublic: 是否对于外网开放
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsPublic: bool
         :param _VpcId: vpc id
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
         :param _SubnetIds: 子网实例id
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetIds: list of str
         :param _CustomLogs: 日志采集路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type CustomLogs: str
         :param _ContainerPort: 监听端口
-注意：此字段可能返回 null，表示取不到有效值。
         :type ContainerPort: int
         :param _InitialDelaySeconds: 延迟多长时间开始健康检查（单位s）
-注意：此字段可能返回 null，表示取不到有效值。
         :type InitialDelaySeconds: int
         :param _ImageUrl: 镜像地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImageUrl: str
         :param _CpuSize: CPU 大小
-注意：此字段可能返回 null，表示取不到有效值。
         :type CpuSize: float
         :param _MemSize: MEM 大小
-注意：此字段可能返回 null，表示取不到有效值。
         :type MemSize: float
         :param _PolicyDetail: 扩缩容策略详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyDetail: list of HpaPolicy
         :param _Cpu: Cpu的Request值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Cpu: float
         :param _Mem: Mem的Request值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Mem: float
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11914,7 +11730,6 @@ class DescribeCloudBaseRunVersionResponse(AbstractModel):
     @property
     def Remark(self):
         """备注
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -11926,7 +11741,6 @@ class DescribeCloudBaseRunVersionResponse(AbstractModel):
     @property
     def DockerfilePath(self):
         """Dockefile的路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DockerfilePath
@@ -11938,7 +11752,6 @@ class DescribeCloudBaseRunVersionResponse(AbstractModel):
     @property
     def BuildDir(self):
         """DockerBuild的目录
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BuildDir
@@ -11994,7 +11807,6 @@ class DescribeCloudBaseRunVersionResponse(AbstractModel):
     @property
     def EnvParams(self):
         """环境变量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EnvParams
@@ -12028,7 +11840,6 @@ class DescribeCloudBaseRunVersionResponse(AbstractModel):
     @property
     def VersionIP(self):
         """版本的IP
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VersionIP
@@ -12040,7 +11851,6 @@ class DescribeCloudBaseRunVersionResponse(AbstractModel):
     @property
     def VersionPort(self):
         """版本的端口号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._VersionPort
@@ -12052,7 +11862,6 @@ class DescribeCloudBaseRunVersionResponse(AbstractModel):
     @property
     def Status(self):
         """版本状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -12064,7 +11873,6 @@ class DescribeCloudBaseRunVersionResponse(AbstractModel):
     @property
     def PackageName(self):
         """代码包的名字
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PackageName
@@ -12076,7 +11884,6 @@ class DescribeCloudBaseRunVersionResponse(AbstractModel):
     @property
     def PackageVersion(self):
         """代码版本的名字
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PackageVersion
@@ -12088,7 +11895,6 @@ class DescribeCloudBaseRunVersionResponse(AbstractModel):
     @property
     def UploadType(self):
         """枚举（package/repository/image)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UploadType
@@ -12100,7 +11906,6 @@ class DescribeCloudBaseRunVersionResponse(AbstractModel):
     @property
     def RepoType(self):
         """Repo的类型(coding/gitlab/github/coding)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RepoType
@@ -12112,7 +11917,6 @@ class DescribeCloudBaseRunVersionResponse(AbstractModel):
     @property
     def Repo(self):
         """地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Repo
@@ -12124,7 +11928,6 @@ class DescribeCloudBaseRunVersionResponse(AbstractModel):
     @property
     def Branch(self):
         """分支
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Branch
@@ -12136,7 +11939,6 @@ class DescribeCloudBaseRunVersionResponse(AbstractModel):
     @property
     def ServerName(self):
         """服务名字
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ServerName
@@ -12148,7 +11950,6 @@ class DescribeCloudBaseRunVersionResponse(AbstractModel):
     @property
     def IsPublic(self):
         """是否对于外网开放
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsPublic
@@ -12160,7 +11961,6 @@ class DescribeCloudBaseRunVersionResponse(AbstractModel):
     @property
     def VpcId(self):
         """vpc id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VpcId
@@ -12172,7 +11972,6 @@ class DescribeCloudBaseRunVersionResponse(AbstractModel):
     @property
     def SubnetIds(self):
         """子网实例id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._SubnetIds
@@ -12184,7 +11983,6 @@ class DescribeCloudBaseRunVersionResponse(AbstractModel):
     @property
     def CustomLogs(self):
         """日志采集路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CustomLogs
@@ -12196,7 +11994,6 @@ class DescribeCloudBaseRunVersionResponse(AbstractModel):
     @property
     def ContainerPort(self):
         """监听端口
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ContainerPort
@@ -12208,7 +12005,6 @@ class DescribeCloudBaseRunVersionResponse(AbstractModel):
     @property
     def InitialDelaySeconds(self):
         """延迟多长时间开始健康检查（单位s）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._InitialDelaySeconds
@@ -12220,7 +12016,6 @@ class DescribeCloudBaseRunVersionResponse(AbstractModel):
     @property
     def ImageUrl(self):
         """镜像地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ImageUrl
@@ -12232,7 +12027,6 @@ class DescribeCloudBaseRunVersionResponse(AbstractModel):
     @property
     def CpuSize(self):
         """CPU 大小
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._CpuSize
@@ -12244,7 +12038,6 @@ class DescribeCloudBaseRunVersionResponse(AbstractModel):
     @property
     def MemSize(self):
         """MEM 大小
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._MemSize
@@ -12256,7 +12049,6 @@ class DescribeCloudBaseRunVersionResponse(AbstractModel):
     @property
     def PolicyDetail(self):
         """扩缩容策略详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of HpaPolicy
         """
         return self._PolicyDetail
@@ -12268,7 +12060,6 @@ class DescribeCloudBaseRunVersionResponse(AbstractModel):
     @property
     def Cpu(self):
         """Cpu的Request值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Cpu
@@ -12280,7 +12071,6 @@ class DescribeCloudBaseRunVersionResponse(AbstractModel):
     @property
     def Mem(self):
         """Mem的Request值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Mem
@@ -12496,7 +12286,6 @@ class DescribeCloudBaseRunVersionSnapshotResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Snapshots: 版本历史
-注意：此字段可能返回 null，表示取不到有效值。
         :type Snapshots: list of CloudRunServiceSimpleVersionSnapshot
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12507,7 +12296,6 @@ class DescribeCloudBaseRunVersionSnapshotResponse(AbstractModel):
     @property
     def Snapshots(self):
         """版本历史
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CloudRunServiceSimpleVersionSnapshot
         """
         return self._Snapshots
@@ -18098,7 +17886,6 @@ class EstablishCloudBaseRunServerResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 创建服务是否成功
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18109,7 +17896,6 @@ class EstablishCloudBaseRunServerResponse(AbstractModel):
     @property
     def Result(self):
         """创建服务是否成功
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Result
@@ -18591,10 +18377,8 @@ class FreezeCloudBaseRunServersResponse(AbstractModel):
 失败：fail
 部分：partial（部分成功、部分失败）
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
         :param _FailServerList: 冻结失败服务列表
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FailServerList: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -18611,7 +18395,6 @@ class FreezeCloudBaseRunServersResponse(AbstractModel):
 失败：fail
 部分：partial（部分成功、部分失败）
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Result
@@ -18623,7 +18406,6 @@ class FreezeCloudBaseRunServersResponse(AbstractModel):
     @property
     def FailServerList(self):
         """冻结失败服务列表
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -19928,7 +19710,6 @@ class ModifyCloudBaseRunServerFlowConfResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 返回结果，succ代表成功
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -19939,7 +19720,6 @@ class ModifyCloudBaseRunServerFlowConfResponse(AbstractModel):
     @property
     def Result(self):
         """返回结果，succ代表成功
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Result
@@ -20174,7 +19954,6 @@ class ModifyCloudBaseRunServerVersionResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 返回结果（succ为成功）
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -20185,7 +19964,6 @@ class ModifyCloudBaseRunServerVersionResponse(AbstractModel):
     @property
     def Result(self):
         """返回结果（succ为成功）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Result
@@ -22201,10 +21979,8 @@ class RollUpdateCloudBaseRunServerVersionResponse(AbstractModel):
         :param _Result: succ为成功
         :type Result: str
         :param _VersionName: 滚动更新的VersionName
-注意：此字段可能返回 null，表示取不到有效值。
         :type VersionName: str
         :param _RunId: 操作记录id
-注意：此字段可能返回 null，表示取不到有效值。
         :type RunId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -22228,7 +22004,6 @@ class RollUpdateCloudBaseRunServerVersionResponse(AbstractModel):
     @property
     def VersionName(self):
         """滚动更新的VersionName
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VersionName
@@ -22240,7 +22015,6 @@ class RollUpdateCloudBaseRunServerVersionResponse(AbstractModel):
     @property
     def RunId(self):
         """操作记录id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RunId
@@ -23483,10 +23257,8 @@ class UnfreezeCloudBaseRunServersResponse(AbstractModel):
 失败：fail
 部分：partial（部分成功、部分失败）
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
         :param _FailServerList: 解冻失败列表
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FailServerList: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -23503,7 +23275,6 @@ class UnfreezeCloudBaseRunServersResponse(AbstractModel):
 失败：fail
 部分：partial（部分成功、部分失败）
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Result
@@ -23515,7 +23286,6 @@ class UnfreezeCloudBaseRunServersResponse(AbstractModel):
     @property
     def FailServerList(self):
         """解冻失败列表
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """

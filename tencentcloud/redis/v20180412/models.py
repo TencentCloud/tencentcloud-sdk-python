@@ -16772,13 +16772,13 @@ class ModifyInstanceLogDeliveryRequest(AbstractModel):
 - true：开启。
 - false：关闭。
         :type Enabled: bool
-        :param _LogsetId: 投递的日志集ID。通过接口[DescribeInstanceLogDelivery](https://cloud.tencent.com/document/product/239/110878)的返回参数 **SlowLog** 的子参数 **LogsetId** 获取。
+        :param _LogsetId: 投递的日志集ID。通过接口[DescribeLogsets](https://cloud.tencent.com/document/api/614/58624)获取到日志集ID。
         :type LogsetId: str
-        :param _TopicId: 投递的日志主题ID。请通过接口[DescribeInstanceLogDelivery](https://cloud.tencent.com/document/product/239/110878)的返回参数 **SlowLog** 的子参数 **TopicId** 获取。
+        :param _TopicId: 投递的日志主题ID。通过接口[DescribeTopics](https://cloud.tencent.com/document/api/614/56454)获取到日志主题ID。
         :type TopicId: str
-        :param _LogsetName: 日志集名称。若**LogsetId**未指定具体的日志集ID，请配置该参数，设置日志集名称，系统会以设置的日志集名称自动创建新的日志集。
+        :param _LogsetName: 日志集名称。**LogsetId**为空时必传，系统会以LogsetName为名称来创建新的日志集并投递日志。
         :type LogsetName: str
-        :param _TopicName: 日志主题名称，TopicId为空时必传，会自动创建新的日志主题。
+        :param _TopicName: 日志主题名称。**TopicId**为空时必传，系统会以TopicName为名称来创建新的日志主题并投递日志。
         :type TopicName: str
         :param _LogRegion: 日志集所在地域，不传默认使用实例所在地域。
         :type LogRegion: str
@@ -16835,7 +16835,7 @@ class ModifyInstanceLogDeliveryRequest(AbstractModel):
 
     @property
     def LogsetId(self):
-        """投递的日志集ID。通过接口[DescribeInstanceLogDelivery](https://cloud.tencent.com/document/product/239/110878)的返回参数 **SlowLog** 的子参数 **LogsetId** 获取。
+        """投递的日志集ID。通过接口[DescribeLogsets](https://cloud.tencent.com/document/api/614/58624)获取到日志集ID。
         :rtype: str
         """
         return self._LogsetId
@@ -16846,7 +16846,7 @@ class ModifyInstanceLogDeliveryRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        """投递的日志主题ID。请通过接口[DescribeInstanceLogDelivery](https://cloud.tencent.com/document/product/239/110878)的返回参数 **SlowLog** 的子参数 **TopicId** 获取。
+        """投递的日志主题ID。通过接口[DescribeTopics](https://cloud.tencent.com/document/api/614/56454)获取到日志主题ID。
         :rtype: str
         """
         return self._TopicId
@@ -16857,7 +16857,7 @@ class ModifyInstanceLogDeliveryRequest(AbstractModel):
 
     @property
     def LogsetName(self):
-        """日志集名称。若**LogsetId**未指定具体的日志集ID，请配置该参数，设置日志集名称，系统会以设置的日志集名称自动创建新的日志集。
+        """日志集名称。**LogsetId**为空时必传，系统会以LogsetName为名称来创建新的日志集并投递日志。
         :rtype: str
         """
         return self._LogsetName
@@ -16868,7 +16868,7 @@ class ModifyInstanceLogDeliveryRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        """日志主题名称，TopicId为空时必传，会自动创建新的日志主题。
+        """日志主题名称。**TopicId**为空时必传，系统会以TopicName为名称来创建新的日志主题并投递日志。
         :rtype: str
         """
         return self._TopicName

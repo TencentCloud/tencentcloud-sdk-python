@@ -810,10 +810,8 @@ class ConstraintRange(AbstractModel):
     def __init__(self):
         r"""
         :param _Min: 约束类型为section时的最小值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Min: str
         :param _Max: 约束类型为section时的最大值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Max: str
         """
         self._Min = None
@@ -822,7 +820,6 @@ class ConstraintRange(AbstractModel):
     @property
     def Min(self):
         """约束类型为section时的最小值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Min
@@ -834,7 +831,6 @@ class ConstraintRange(AbstractModel):
     @property
     def Max(self):
         """约束类型为section时的最大值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Max
@@ -2676,7 +2672,6 @@ class DBAccount(AbstractModel):
         :param _ReadOnly: 只读标记，0：否， 1：该账号的sql请求优先选择备机执行，备机不可用时选择主机执行，2：优先选择备机执行，备机不可用时操作失败。
         :type ReadOnly: int
         :param _DelayThresh: 该字段对只读账号有意义，表示选择主备延迟小于该值的备机
-注意：此字段可能返回 null，表示取不到有效值。
         :type DelayThresh: int
         :param _SlaveConst: 针对只读账号，设置策略是否固定备机，0：不固定备机，即备机不满足条件与客户端不断开连接，Proxy选择其他可用备机，1：备机不满足条件断开连接，确保一个连接固定备机。
         :type SlaveConst: int
@@ -2762,7 +2757,6 @@ class DBAccount(AbstractModel):
     @property
     def DelayThresh(self):
         """该字段对只读账号有意义，表示选择主备延迟小于该值的备机
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DelayThresh
@@ -3777,16 +3771,12 @@ class DCNReplicaConfig(AbstractModel):
     def __init__(self):
         r"""
         :param _RoReplicationMode: DCN 运行状态，START为正常运行，STOP为暂停
-注意：此字段可能返回 null，表示取不到有效值。
         :type RoReplicationMode: str
         :param _DelayReplicationType: 延迟复制的类型，DEFAULT为正常，DUE_TIME为指定时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type DelayReplicationType: str
         :param _DueTime: 延迟复制的指定时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type DueTime: str
         :param _ReplicationDelay: 延迟复制时的延迟秒数
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReplicationDelay: int
         """
         self._RoReplicationMode = None
@@ -3797,7 +3787,6 @@ class DCNReplicaConfig(AbstractModel):
     @property
     def RoReplicationMode(self):
         """DCN 运行状态，START为正常运行，STOP为暂停
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RoReplicationMode
@@ -3809,7 +3798,6 @@ class DCNReplicaConfig(AbstractModel):
     @property
     def DelayReplicationType(self):
         """延迟复制的类型，DEFAULT为正常，DUE_TIME为指定时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DelayReplicationType
@@ -3821,7 +3809,6 @@ class DCNReplicaConfig(AbstractModel):
     @property
     def DueTime(self):
         """延迟复制的指定时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DueTime
@@ -3833,7 +3820,6 @@ class DCNReplicaConfig(AbstractModel):
     @property
     def ReplicationDelay(self):
         """延迟复制时的延迟秒数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ReplicationDelay
@@ -10614,7 +10600,6 @@ class InstanceBackupFileItem(AbstractModel):
         :param _InstanceStatus: 实例状态
         :type InstanceStatus: int
         :param _ShardId: 分片ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ShardId: str
         :param _FilePath: 文件路径
         :type FilePath: str
@@ -10682,7 +10667,6 @@ class InstanceBackupFileItem(AbstractModel):
     @property
     def ShardId(self):
         """分片ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ShardId
@@ -10811,10 +10795,8 @@ class InstanceSpec(AbstractModel):
     def __init__(self):
         r"""
         :param _Machine: 设备型号
-注意：此字段可能返回 null，表示取不到有效值。
         :type Machine: str
         :param _SpecInfos: 该机型对应的可售卖规格列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type SpecInfos: list of SpecConfigInfo
         """
         self._Machine = None
@@ -10823,7 +10805,6 @@ class InstanceSpec(AbstractModel):
     @property
     def Machine(self):
         """设备型号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Machine
@@ -10835,7 +10816,6 @@ class InstanceSpec(AbstractModel):
     @property
     def SpecInfos(self):
         """该机型对应的可售卖规格列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SpecConfigInfo
         """
         return self._SpecInfos
@@ -13462,7 +13442,6 @@ class ParamDesc(AbstractModel):
         :param _Value: 当前参数值
         :type Value: str
         :param _SetValue: 设置过的值，参数生效后，该值和value一样。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SetValue: str
         :param _Default: 系统默认值
         :type Default: str
@@ -13507,7 +13486,6 @@ true:需要重启
     @property
     def SetValue(self):
         """设置过的值，参数生效后，该值和value一样。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SetValue
@@ -14555,7 +14533,6 @@ class SlowLogData(AbstractModel):
         :param _User: 账号
         :type User: str
         :param _ExampleSql: 样例Sql
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExampleSql: str
         :param _Host: 账户的域名
         :type Host: str
@@ -14770,7 +14747,6 @@ class SlowLogData(AbstractModel):
     @property
     def ExampleSql(self):
         """样例Sql
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ExampleSql

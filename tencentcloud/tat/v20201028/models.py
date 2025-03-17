@@ -2938,7 +2938,6 @@ class DescribeRegisterCodesResponse(AbstractModel):
         :param _TotalCount: 查询到的注册码总数。
         :type TotalCount: int
         :param _RegisterCodeSet: 注册码信息列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegisterCodeSet: list of RegisterCodeInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2961,7 +2960,6 @@ class DescribeRegisterCodesResponse(AbstractModel):
     @property
     def RegisterCodeSet(self):
         """注册码信息列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RegisterCodeInfo
         """
         return self._RegisterCodeSet
@@ -4112,6 +4110,9 @@ class InvocationTask(AbstractModel):
         :param _ErrorInfo: 执行任务失败时的错误信息。
         :type ErrorInfo: str
         :param _InvocationSource: 调用来源。
+
+- USER：来源于用户调用。
+- INVOKER：来源于定时执行。
         :type InvocationSource: str
         """
         self._InvocationId = None
@@ -4279,6 +4280,9 @@ class InvocationTask(AbstractModel):
     @property
     def InvocationSource(self):
         """调用来源。
+
+- USER：来源于用户调用。
+- INVOKER：来源于定时执行。
         :rtype: str
         """
         return self._InvocationSource
@@ -4646,7 +4650,6 @@ class Invoker(AbstractModel):
         :param _Enable: 执行器是否启用。
         :type Enable: bool
         :param _ScheduleSettings: 执行器周期计划。周期执行器会返回此字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScheduleSettings: :class:`tencentcloud.tat.v20201028.models.ScheduleSettings`
         :param _CreatedTime: 创建时间。格式为：YYYY-MM-DDThh:mm:ssZ
         :type CreatedTime: str
@@ -4756,7 +4759,6 @@ class Invoker(AbstractModel):
     @property
     def ScheduleSettings(self):
         """执行器周期计划。周期执行器会返回此字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tat.v20201028.models.ScheduleSettings`
         """
         return self._ScheduleSettings
@@ -5849,9 +5851,9 @@ class RegisterInstanceInfo(AbstractModel):
         r"""
         :param _RegisterCodeId: 注册码ID。
         :type RegisterCodeId: str
-        :param _InstanceId: 实例ID。
+        :param _InstanceId: 托管实例ID。
         :type InstanceId: str
-        :param _InstanceName: 实例名。
+        :param _InstanceName: 托管实例名。
         :type InstanceName: str
         :param _MachineId: 机器ID。
         :type MachineId: str
@@ -5899,7 +5901,7 @@ class RegisterInstanceInfo(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID。
+        """托管实例ID。
         :rtype: str
         """
         return self._InstanceId
@@ -5910,7 +5912,7 @@ class RegisterInstanceInfo(AbstractModel):
 
     @property
     def InstanceName(self):
-        """实例名。
+        """托管实例名。
         :rtype: str
         """
         return self._InstanceName

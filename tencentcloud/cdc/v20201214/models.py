@@ -314,7 +314,6 @@ class CreateDedicatedClusterOrderResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _DedicatedClusterOrderId: 专用集群订单id
-注意：此字段可能返回 null，表示取不到有效值。
         :type DedicatedClusterOrderId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -325,7 +324,6 @@ class CreateDedicatedClusterOrderResponse(AbstractModel):
     @property
     def DedicatedClusterOrderId(self):
         """专用集群订单id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DedicatedClusterOrderId
@@ -2876,7 +2874,6 @@ class DescribeDedicatedClusterHostsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _HostInfoSet: 宿主机信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type HostInfoSet: list of HostInfo
         :param _TotalCount: 宿主机总数
         :type TotalCount: int
@@ -2890,7 +2887,6 @@ class DescribeDedicatedClusterHostsResponse(AbstractModel):
     @property
     def HostInfoSet(self):
         """宿主机信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of HostInfo
         """
         return self._HostInfoSet
@@ -3254,16 +3250,12 @@ class DescribeDedicatedClusterOverviewResponse(AbstractModel):
         :param _HostCount: 宿主机数量
         :type HostCount: int
         :param _VpnConnectionState: vpn通道状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpnConnectionState: str
         :param _VpngwBandwidthData: vpn网关监控数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpngwBandwidthData: :class:`tencentcloud.cdc.v20201214.models.VpngwBandwidthData`
         :param _LocalNetInfo: 本地网关信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type LocalNetInfo: :class:`tencentcloud.cdc.v20201214.models.LocalNetInfo`
         :param _VpnConnectionBandwidthData: vpn网关通道监控数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpnConnectionBandwidthData: list of VpngwBandwidthData
         :param _HostDetailInfo: 宿主机资源概览信息
         :type HostDetailInfo: list of HostDetailInfo
@@ -3310,7 +3302,6 @@ class DescribeDedicatedClusterOverviewResponse(AbstractModel):
     @property
     def VpnConnectionState(self):
         """vpn通道状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VpnConnectionState
@@ -3322,7 +3313,6 @@ class DescribeDedicatedClusterOverviewResponse(AbstractModel):
     @property
     def VpngwBandwidthData(self):
         """vpn网关监控数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdc.v20201214.models.VpngwBandwidthData`
         """
         return self._VpngwBandwidthData
@@ -3334,7 +3324,6 @@ class DescribeDedicatedClusterOverviewResponse(AbstractModel):
     @property
     def LocalNetInfo(self):
         """本地网关信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdc.v20201214.models.LocalNetInfo`
         """
         return self._LocalNetInfo
@@ -3346,7 +3335,6 @@ class DescribeDedicatedClusterOverviewResponse(AbstractModel):
     @property
     def VpnConnectionBandwidthData(self):
         """vpn网关通道监控数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of VpngwBandwidthData
         """
         return self._VpnConnectionBandwidthData

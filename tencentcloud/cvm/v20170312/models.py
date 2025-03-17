@@ -666,6 +666,42 @@ class AssociateSecurityGroupsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class Attribute(AbstractModel):
+    """属性信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserData: 实例的自定义数据。
+        :type UserData: str
+        """
+        self._UserData = None
+
+    @property
+    def UserData(self):
+        """实例的自定义数据。
+        :rtype: str
+        """
+        return self._UserData
+
+    @UserData.setter
+    def UserData(self, UserData):
+        self._UserData = UserData
+
+
+    def _deserialize(self, params):
+        self._UserData = params.get("UserData")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ChargePrepaid(AbstractModel):
     """描述预付费模式，即包年包月相关参数。包括购买时长和自动续费逻辑等。
 
@@ -6446,6 +6482,107 @@ class DescribeInstancesActionTimerResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeInstancesAttributesRequest(AbstractModel):
+    """DescribeInstancesAttributes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Attributes: 需要获取的实例属性。可选值：
+UserData: 实例自定义数据
+        :type Attributes: list of str
+        :param _InstanceIds: 实例ID列表
+        :type InstanceIds: list of str
+        """
+        self._Attributes = None
+        self._InstanceIds = None
+
+    @property
+    def Attributes(self):
+        """需要获取的实例属性。可选值：
+UserData: 实例自定义数据
+        :rtype: list of str
+        """
+        return self._Attributes
+
+    @Attributes.setter
+    def Attributes(self, Attributes):
+        self._Attributes = Attributes
+
+    @property
+    def InstanceIds(self):
+        """实例ID列表
+        :rtype: list of str
+        """
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+
+    def _deserialize(self, params):
+        self._Attributes = params.get("Attributes")
+        self._InstanceIds = params.get("InstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstancesAttributesResponse(AbstractModel):
+    """DescribeInstancesAttributes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceSet: 指定的实例属性列表
+        :type InstanceSet: list of InstanceAttribute
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceSet = None
+        self._RequestId = None
+
+    @property
+    def InstanceSet(self):
+        """指定的实例属性列表
+        :rtype: list of InstanceAttribute
+        """
+        return self._InstanceSet
+
+    @InstanceSet.setter
+    def InstanceSet(self, InstanceSet):
+        self._InstanceSet = InstanceSet
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceSet") is not None:
+            self._InstanceSet = []
+            for item in params.get("InstanceSet"):
+                obj = InstanceAttribute()
+                obj._deserialize(item)
+                self._InstanceSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeInstancesModificationRequest(AbstractModel):
     """DescribeInstancesModification请求参数结构体
 
@@ -8213,7 +8350,6 @@ class DescribeTaskInfoResponse(AbstractModel):
         :param _TotalCount: 查询返回的维修任务总数量。
         :type TotalCount: int
         :param _RepairTaskInfoSet: 查询返回的维修任务列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RepairTaskInfoSet: list of RepairTaskInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8236,7 +8372,6 @@ class DescribeTaskInfoResponse(AbstractModel):
     @property
     def RepairTaskInfoSet(self):
         """查询返回的维修任务列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RepairTaskInfo
         """
         return self._RepairTaskInfoSet
@@ -8952,13 +9087,16 @@ class EnterRescueModeRequest(AbstractModel):
         :type Password: str
         :param _Username: 救援模式下系统用户名
         :type Username: str
-        :param _ForceStop: 是否强制关机
+        :param _ForceStop: 是否强制关机。本参数已弃用，推荐使用StopType，不可以与参数StopType同时使用。
         :type ForceStop: bool
+        :param _StopType: 实例的关闭模式。取值范围：<br><li>SOFT_FIRST：表示在正常关闭失败后进行强制关闭</li><br><li>HARD：直接强制关闭</li><br><li>SOFT：仅软关机</li><br>默认取值：SOFT。
+        :type StopType: str
         """
         self._InstanceId = None
         self._Password = None
         self._Username = None
         self._ForceStop = None
+        self._StopType = None
 
     @property
     def InstanceId(self):
@@ -8995,14 +9133,29 @@ class EnterRescueModeRequest(AbstractModel):
 
     @property
     def ForceStop(self):
-        """是否强制关机
+        warnings.warn("parameter `ForceStop` is deprecated", DeprecationWarning) 
+
+        """是否强制关机。本参数已弃用，推荐使用StopType，不可以与参数StopType同时使用。
         :rtype: bool
         """
         return self._ForceStop
 
     @ForceStop.setter
     def ForceStop(self, ForceStop):
+        warnings.warn("parameter `ForceStop` is deprecated", DeprecationWarning) 
+
         self._ForceStop = ForceStop
+
+    @property
+    def StopType(self):
+        """实例的关闭模式。取值范围：<br><li>SOFT_FIRST：表示在正常关闭失败后进行强制关闭</li><br><li>HARD：直接强制关闭</li><br><li>SOFT：仅软关机</li><br>默认取值：SOFT。
+        :rtype: str
+        """
+        return self._StopType
+
+    @StopType.setter
+    def StopType(self, StopType):
+        self._StopType = StopType
 
 
     def _deserialize(self, params):
@@ -9010,6 +9163,7 @@ class EnterRescueModeRequest(AbstractModel):
         self._Password = params.get("Password")
         self._Username = params.get("Username")
         self._ForceStop = params.get("ForceStop")
+        self._StopType = params.get("StopType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13287,6 +13441,59 @@ class Instance(AbstractModel):
         self._DefaultLoginUser = params.get("DefaultLoginUser")
         self._DefaultLoginPort = params.get("DefaultLoginPort")
         self._LatestOperationErrorMsg = params.get("LatestOperationErrorMsg")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceAttribute(AbstractModel):
+    """实例属性
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例 ID。
+        :type InstanceId: str
+        :param _Attributes: 实例属性信息。
+        :type Attributes: :class:`tencentcloud.cvm.v20170312.models.Attribute`
+        """
+        self._InstanceId = None
+        self._Attributes = None
+
+    @property
+    def InstanceId(self):
+        """实例 ID。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Attributes(self):
+        """实例属性信息。
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.Attribute`
+        """
+        return self._Attributes
+
+    @Attributes.setter
+    def Attributes(self, Attributes):
+        self._Attributes = Attributes
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("Attributes") is not None:
+            self._Attributes = Attribute()
+            self._Attributes._deserialize(params.get("Attributes"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

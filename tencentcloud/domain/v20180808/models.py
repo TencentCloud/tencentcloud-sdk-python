@@ -322,22 +322,17 @@ class BidDetailPageResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Domain: 域名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Domain: str
         :param _CurrentPrice: 当前域名价格
-注意：此字段可能返回 null，表示取不到有效值。
         :type CurrentPrice: float
         :param _BidPrice: 用户上次出价
-注意：此字段可能返回 null，表示取不到有效值。
         :type BidPrice: float
         :param _CurrentPriceScope: 当前加价幅度
-注意：此字段可能返回 null，表示取不到有效值。
         :type CurrentPriceScope: float
         :param _PriceScope: 加价幅度区间配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type PriceScope: list of PriceScopeConf
         :param _DepositPrice: 用户当前已经支付了的保证金
-注意：此字段可能返回 null，表示取不到有效值。
         :type DepositPrice: float
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -353,7 +348,6 @@ class BidDetailPageResponse(AbstractModel):
     @property
     def Domain(self):
         """域名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Domain
@@ -365,7 +359,6 @@ class BidDetailPageResponse(AbstractModel):
     @property
     def CurrentPrice(self):
         """当前域名价格
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._CurrentPrice
@@ -377,7 +370,6 @@ class BidDetailPageResponse(AbstractModel):
     @property
     def BidPrice(self):
         """用户上次出价
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._BidPrice
@@ -389,7 +381,6 @@ class BidDetailPageResponse(AbstractModel):
     @property
     def CurrentPriceScope(self):
         """当前加价幅度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._CurrentPriceScope
@@ -413,7 +404,6 @@ class BidDetailPageResponse(AbstractModel):
     @property
     def DepositPrice(self):
         """用户当前已经支付了的保证金
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._DepositPrice
@@ -2150,7 +2140,6 @@ class CreateDomainBatchResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _LogId: 批量日志ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2161,7 +2150,6 @@ class CreateDomainBatchResponse(AbstractModel):
     @property
     def LogId(self):
         """批量日志ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LogId
@@ -2935,10 +2923,8 @@ class DescribeAuctionListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _AuctionList: 竞拍详情列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type AuctionList: list of AuctionInfo
         :param _TotalCount: 总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2950,7 +2936,6 @@ class DescribeAuctionListResponse(AbstractModel):
     @property
     def AuctionList(self):
         """竞拍详情列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AuctionInfo
         """
         return self._AuctionList
@@ -2962,7 +2947,6 @@ class DescribeAuctionListResponse(AbstractModel):
     @property
     def TotalCount(self):
         """总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -3070,7 +3054,6 @@ class DescribeBatchOperationLogDetailsResponse(AbstractModel):
         :param _TotalCount: 总数量。
         :type TotalCount: int
         :param _DomainBatchDetailSet: 日志详情列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DomainBatchDetailSet: list of DomainBatchDetailSet
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3093,7 +3076,6 @@ class DescribeBatchOperationLogDetailsResponse(AbstractModel):
     @property
     def DomainBatchDetailSet(self):
         """日志详情列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DomainBatchDetailSet
         """
         return self._DomainBatchDetailSet
@@ -3186,7 +3168,6 @@ class DescribeBatchOperationLogsResponse(AbstractModel):
         :param _TotalCount: 总数量
         :type TotalCount: int
         :param _DomainBatchLogSet: 日志列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type DomainBatchLogSet: list of DomainBatchLogSet
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3209,7 +3190,6 @@ class DescribeBatchOperationLogsResponse(AbstractModel):
     @property
     def DomainBatchLogSet(self):
         """日志列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DomainBatchLogSet
         """
         return self._DomainBatchLogSet
@@ -4770,7 +4750,6 @@ class DescribeDomainNameListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _DomainSet: 域名信息集合
-注意：此字段可能返回 null，表示取不到有效值。
         :type DomainSet: list of DomainList
         :param _TotalCount: 域名总数量
         :type TotalCount: int
@@ -4784,7 +4763,6 @@ class DescribeDomainNameListResponse(AbstractModel):
     @property
     def DomainSet(self):
         """域名信息集合
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DomainList
         """
         return self._DomainSet
@@ -5956,7 +5934,6 @@ class DescribePreReleaseListResponse(AbstractModel):
         :param _TotalCount: 数量
         :type TotalCount: int
         :param _PreReleaseList: 预释放列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type PreReleaseList: list of PreReleaseInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5979,7 +5956,6 @@ class DescribePreReleaseListResponse(AbstractModel):
     @property
     def PreReleaseList(self):
         """预释放列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PreReleaseInfo
         """
         return self._PreReleaseList
@@ -7368,6 +7344,10 @@ done 执行完成。
         :type Doing: int
         :param _Failed: 批量操作失败个数
         :type Failed: int
+        :param _PayStatus: 是否付费
+        :type PayStatus: bool
+        :param _BigDealId: 大订单ID
+        :type BigDealId: str
         """
         self._LogId = None
         self._Number = None
@@ -7376,6 +7356,8 @@ done 执行完成。
         self._Success = None
         self._Doing = None
         self._Failed = None
+        self._PayStatus = None
+        self._BigDealId = None
 
     @property
     def LogId(self):
@@ -7456,6 +7438,28 @@ done 执行完成。
     def Failed(self, Failed):
         self._Failed = Failed
 
+    @property
+    def PayStatus(self):
+        """是否付费
+        :rtype: bool
+        """
+        return self._PayStatus
+
+    @PayStatus.setter
+    def PayStatus(self, PayStatus):
+        self._PayStatus = PayStatus
+
+    @property
+    def BigDealId(self):
+        """大订单ID
+        :rtype: str
+        """
+        return self._BigDealId
+
+    @BigDealId.setter
+    def BigDealId(self, BigDealId):
+        self._BigDealId = BigDealId
+
 
     def _deserialize(self, params):
         self._LogId = params.get("LogId")
@@ -7465,6 +7469,8 @@ done 执行完成。
         self._Success = params.get("Success")
         self._Doing = params.get("Doing")
         self._Failed = params.get("Failed")
+        self._PayStatus = params.get("PayStatus")
+        self._BigDealId = params.get("BigDealId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

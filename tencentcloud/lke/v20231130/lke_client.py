@@ -121,7 +121,7 @@ class LkeClient(AbstractClient):
 
 
     def CreateAttributeLabel(self, request):
-        """创建属性
+        """创建标签
 
         :param request: Request instance for CreateAttributeLabel.
         :type request: :class:`tencentcloud.lke.v20231130.models.CreateAttributeLabelRequest`
