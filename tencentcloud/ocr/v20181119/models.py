@@ -1668,6 +1668,69 @@ class BankCardOCRResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class BankSlip(AbstractModel):
+    """银行回单
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BankSlipInfos: 银行回单信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BankSlipInfos: list of BankSlipInfo
+        :param _CommonBankSlipInfos: 银行回单信息常用字段
+        :type CommonBankSlipInfos: list of BankSlipInfo
+        """
+        self._BankSlipInfos = None
+        self._CommonBankSlipInfos = None
+
+    @property
+    def BankSlipInfos(self):
+        """银行回单信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of BankSlipInfo
+        """
+        return self._BankSlipInfos
+
+    @BankSlipInfos.setter
+    def BankSlipInfos(self, BankSlipInfos):
+        self._BankSlipInfos = BankSlipInfos
+
+    @property
+    def CommonBankSlipInfos(self):
+        """银行回单信息常用字段
+        :rtype: list of BankSlipInfo
+        """
+        return self._CommonBankSlipInfos
+
+    @CommonBankSlipInfos.setter
+    def CommonBankSlipInfos(self, CommonBankSlipInfos):
+        self._CommonBankSlipInfos = CommonBankSlipInfos
+
+
+    def _deserialize(self, params):
+        if params.get("BankSlipInfos") is not None:
+            self._BankSlipInfos = []
+            for item in params.get("BankSlipInfos"):
+                obj = BankSlipInfo()
+                obj._deserialize(item)
+                self._BankSlipInfos.append(obj)
+        if params.get("CommonBankSlipInfos") is not None:
+            self._CommonBankSlipInfos = []
+            for item in params.get("CommonBankSlipInfos"):
+                obj = BankSlipInfo()
+                obj._deserialize(item)
+                self._CommonBankSlipInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BankSlipInfo(AbstractModel):
     """银行回单识别出的字段
 
@@ -29125,6 +29188,9 @@ class SingleInvoiceItem(AbstractModel):
         :param _CustomsPaymentReceipt: 海关缴款
 注意：此字段可能返回 null，表示取不到有效值。
         :type CustomsPaymentReceipt: :class:`tencentcloud.ocr.v20181119.models.CustomsPaymentReceipt`
+        :param _BankSlip: 银行回单
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BankSlip: :class:`tencentcloud.ocr.v20181119.models.BankSlip`
         """
         self._VatSpecialInvoice = None
         self._VatCommonInvoice = None
@@ -29155,6 +29221,7 @@ class SingleInvoiceItem(AbstractModel):
         self._ElectronicFlightTicketFull = None
         self._TaxPayment = None
         self._CustomsPaymentReceipt = None
+        self._BankSlip = None
 
     @property
     def VatSpecialInvoice(self):
@@ -29504,6 +29571,18 @@ class SingleInvoiceItem(AbstractModel):
     def CustomsPaymentReceipt(self, CustomsPaymentReceipt):
         self._CustomsPaymentReceipt = CustomsPaymentReceipt
 
+    @property
+    def BankSlip(self):
+        """银行回单
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.BankSlip`
+        """
+        return self._BankSlip
+
+    @BankSlip.setter
+    def BankSlip(self, BankSlip):
+        self._BankSlip = BankSlip
+
 
     def _deserialize(self, params):
         if params.get("VatSpecialInvoice") is not None:
@@ -29593,6 +29672,9 @@ class SingleInvoiceItem(AbstractModel):
         if params.get("CustomsPaymentReceipt") is not None:
             self._CustomsPaymentReceipt = CustomsPaymentReceipt()
             self._CustomsPaymentReceipt._deserialize(params.get("CustomsPaymentReceipt"))
+        if params.get("BankSlip") is not None:
+            self._BankSlip = BankSlip()
+            self._BankSlip._deserialize(params.get("BankSlip"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

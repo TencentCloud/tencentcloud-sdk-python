@@ -906,6 +906,32 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def EnterStandby(self, request):
+        """伸缩组内实例进入备用中状态。
+        * 备用中状态实例的 CLB 权重值为 0，不会被自动缩容、不健康替换、实例刷新操作选中
+        * 调用弹性伸缩开关机接口会使得备用中状态发生变化，而云服务器开关机接口不会影响
+        * 实例进入备用中状态后，伸缩组会尝试下调期望实例数，新期望数不会小于最小值
+
+        :param request: Request instance for EnterStandby.
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.EnterStandbyRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.EnterStandbyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EnterStandby", params, headers=headers)
+            response = json.loads(body)
+            model = models.EnterStandbyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ExecuteScalingPolicy(self, request):
         """本接口（ExecuteScalingPolicy）用于执行伸缩策略。
 

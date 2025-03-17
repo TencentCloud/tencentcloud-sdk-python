@@ -26,6 +26,30 @@ class TchdClient(AbstractClient):
     _service = 'tchd'
 
 
+    def DescribeEventStatistics(self, request):
+        """本接口用于查询腾讯云健康看板的实时可用性事件信息，可以通过产品列表、地域进行过滤查询。
+        可以参考健康看板历史事件页面来获取查询案例（链接：https://status.cloud.tencent.com/history）。
+
+        :param request: Request instance for DescribeEventStatistics.
+        :type request: :class:`tencentcloud.tchd.v20230306.models.DescribeEventStatisticsRequest`
+        :rtype: :class:`tencentcloud.tchd.v20230306.models.DescribeEventStatisticsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEventStatistics", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEventStatisticsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeEvents(self, request):
         """本接口用于查询腾讯云健康看板的可用性事件信息，可以通过产品列表、地域列表和事件发生日期进行过滤查询。
         当查询的产品对应时间内无事件时将返回空结果。

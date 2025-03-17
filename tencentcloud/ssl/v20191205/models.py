@@ -2448,6 +2448,7 @@ null：用户上传证书（没有套餐类型），
         :param _HostingResourceTypes: 托管资源类型列表
         :type HostingResourceTypes: list of str
         :param _HostingConfig: 托管配置信息
+注意：此字段可能返回 null，表示取不到有效值。
         :type HostingConfig: :class:`tencentcloud.ssl.v20191205.models.HostingConfig`
         """
         self._OwnerUin = None
@@ -3203,6 +3204,7 @@ null：用户上传证书（没有套餐类型），
     @property
     def HostingConfig(self):
         """托管配置信息
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ssl.v20191205.models.HostingConfig`
         """
         return self._HostingConfig
@@ -3533,7 +3535,6 @@ class CheckCertificateExistResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _RepeatCertId: 重复的证书ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type RepeatCertId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3544,7 +3545,6 @@ class CheckCertificateExistResponse(AbstractModel):
     @property
     def RepeatCertId(self):
         """重复的证书ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RepeatCertId
@@ -6073,7 +6073,6 @@ class DeployCertificateInstanceResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _DeployRecordId: 云资源部署任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeployRecordId: int
         :param _DeployStatus: 部署任务创建状态；1表示创建成功； 0表示当前存在部署中的任务，未创建新的部署任务；返回值DeployRecordId为部署中的任务ID
         :type DeployStatus: int
@@ -6087,7 +6086,6 @@ class DeployCertificateInstanceResponse(AbstractModel):
     @property
     def DeployRecordId(self):
         """云资源部署任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DeployRecordId
@@ -6984,44 +6982,32 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _CLB: 关联clb资源详情	
-注意：此字段可能返回 null，表示取不到有效值。
         :type CLB: list of ClbInstanceList
         :param _CDN: 关联cdn资源详情	
-注意：此字段可能返回 null，表示取不到有效值。
         :type CDN: list of CdnInstanceList
         :param _WAF: 关联waf资源详情	
-注意：此字段可能返回 null，表示取不到有效值。
         :type WAF: list of WafInstanceList
         :param _DDOS: 关联ddos资源详情	
-注意：此字段可能返回 null，表示取不到有效值。
         :type DDOS: list of DdosInstanceList
         :param _LIVE: 关联live资源详情	
-注意：此字段可能返回 null，表示取不到有效值。
         :type LIVE: list of LiveInstanceList
         :param _VOD: 关联vod资源详情	
-注意：此字段可能返回 null，表示取不到有效值。
         :type VOD: list of VODInstanceList
         :param _TKE: 关联tke资源详情	
-注意：此字段可能返回 null，表示取不到有效值。
         :type TKE: list of TkeInstanceList
         :param _APIGATEWAY: 关联apigateway资源详情	
-注意：此字段可能返回 null，表示取不到有效值。
         :type APIGATEWAY: list of ApiGatewayInstanceList
         :param _TCB: 关联tcb资源详情	
-注意：此字段可能返回 null，表示取不到有效值。
         :type TCB: list of TCBInstanceList
         :param _TEO: 关联teo资源详情	
-注意：此字段可能返回 null，表示取不到有效值。
         :type TEO: list of TeoInstanceList
         :param _Status: 关联云资源异步查询结果： 0表示查询中， 1表示查询成功。 2表示查询异常； 若状态为1，则查看BindResourceResult结果；若状态为2，则查看Error原因
         :type Status: int
         :param _CacheTime: 当前结果缓存时间
         :type CacheTime: str
         :param _TSE: 关联tse资源详情	
-注意：此字段可能返回 null，表示取不到有效值。
         :type TSE: list of TSEInstanceList
         :param _COS: 关联的COS资源详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type COS: list of COSInstanceList
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7045,7 +7031,6 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
     @property
     def CLB(self):
         """关联clb资源详情	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ClbInstanceList
         """
         return self._CLB
@@ -7057,7 +7042,6 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
     @property
     def CDN(self):
         """关联cdn资源详情	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CdnInstanceList
         """
         return self._CDN
@@ -7069,7 +7053,6 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
     @property
     def WAF(self):
         """关联waf资源详情	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of WafInstanceList
         """
         return self._WAF
@@ -7081,7 +7064,6 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
     @property
     def DDOS(self):
         """关联ddos资源详情	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DdosInstanceList
         """
         return self._DDOS
@@ -7093,7 +7075,6 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
     @property
     def LIVE(self):
         """关联live资源详情	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LiveInstanceList
         """
         return self._LIVE
@@ -7105,7 +7086,6 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
     @property
     def VOD(self):
         """关联vod资源详情	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of VODInstanceList
         """
         return self._VOD
@@ -7117,7 +7097,6 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
     @property
     def TKE(self):
         """关联tke资源详情	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TkeInstanceList
         """
         return self._TKE
@@ -7129,7 +7108,6 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
     @property
     def APIGATEWAY(self):
         """关联apigateway资源详情	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ApiGatewayInstanceList
         """
         return self._APIGATEWAY
@@ -7141,7 +7119,6 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
     @property
     def TCB(self):
         """关联tcb资源详情	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TCBInstanceList
         """
         return self._TCB
@@ -7153,7 +7130,6 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
     @property
     def TEO(self):
         """关联teo资源详情	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TeoInstanceList
         """
         return self._TEO
@@ -7187,7 +7163,6 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
     @property
     def TSE(self):
         """关联tse资源详情	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TSEInstanceList
         """
         return self._TSE
@@ -7199,7 +7174,6 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
     @property
     def COS(self):
         """关联的COS资源详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of COSInstanceList
         """
         return self._COS
@@ -7342,7 +7316,6 @@ class DescribeCertificateBindResourceTaskResultResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _SyncTaskBindResourceResult: 异步任务绑定关联云资源结果列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type SyncTaskBindResourceResult: list of SyncTaskBindResourceResult
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7353,7 +7326,6 @@ class DescribeCertificateBindResourceTaskResultResponse(AbstractModel):
     @property
     def SyncTaskBindResourceResult(self):
         """异步任务绑定关联云资源结果列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SyncTaskBindResourceResult
         """
         return self._SyncTaskBindResourceResult
@@ -7428,20 +7400,16 @@ class DescribeCertificateDetailResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _OwnerUin: 证书所属用户主账号 UIN。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OwnerUin: str
         :param _ProjectId: 项目 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: str
         :param _From: 证书来源：
 trustasia：亚洲诚信，
 upload：用户上传。
 wosign：沃通
 sheca：上海CA
-注意：此字段可能返回 null，表示取不到有效值。
         :type From: str
         :param _CertificateType: 证书类型：CA = 客户端证书，SVR = 服务器证书。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CertificateType: str
         :param _PackageType: 证书套餐类型：
 null：用户上传证书（没有套餐类型），
@@ -7531,16 +7499,12 @@ null：用户上传证书（没有套餐类型），
 注意：此字段可能返回 null，表示取不到有效值。
         :type PackageType: str
         :param _ProductZhName: 证书产品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductZhName: str
         :param _Domain: 证书绑定通用名称域名。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Domain: str
         :param _Alias: 备注名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Alias: str
         :param _Status: 证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 自动添加DNS记录，5 = 企业证书，待提交资料，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。14 = 证书已退款。 15 = 证书迁移中
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _StatusMsg: 状态信息。 取值范围：
 //通用状态信息
@@ -7561,7 +7525,6 @@ null：用户上传证书（没有套餐类型），
 注意：此字段可能返回 null，表示取不到有效值。
         :type VerifyType: str
         :param _VulnerabilityStatus: 漏洞扫描状态。
-注意：此字段可能返回 null，表示取不到有效值。
         :type VulnerabilityStatus: str
         :param _CertBeginTime: 证书生效时间。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -7570,16 +7533,13 @@ null：用户上传证书（没有套餐类型），
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertEndTime: str
         :param _ValidityPeriod: 证书有效期：单位（月）。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ValidityPeriod: str
         :param _InsertTime: 证书申请时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InsertTime: str
         :param _OrderId: CA订单 ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OrderId: str
         :param _CertificateExtra: 证书扩展信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CertificateExtra: :class:`tencentcloud.ssl.v20191205.models.CertificateExtra`
         :param _CertificatePrivateKey: 私钥证书， 国密证书则为签名证书中的私钥证书
 注意：此字段可能返回 null，表示取不到有效值。
@@ -7594,43 +7554,32 @@ null：用户上传证书（没有套餐类型），
 注意：此字段可能返回 null，表示取不到有效值。
         :type VulnerabilityReport: str
         :param _CertificateId: 证书 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CertificateId: str
         :param _TypeName: 证书类型名称。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TypeName: str
         :param _StatusName: 状态描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :type StatusName: str
         :param _SubjectAltName: 证书包含的多个域名（不包含主域名，主域名使用Domain字段）
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubjectAltName: list of str
         :param _IsVip: 是否为付费证书。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsVip: bool
         :param _IsWildcard: 是否为泛域名证书。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsWildcard: bool
         :param _IsDv: 是否为 DV 版证书。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsDv: bool
         :param _IsVulnerability: 是否启用了漏洞扫描功能。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsVulnerability: bool
         :param _SubmittedData: 付费证书提交的资料信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubmittedData: :class:`tencentcloud.ssl.v20191205.models.SubmittedData`
         :param _RenewAble: 是否可续费。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RenewAble: bool
         :param _Deployable: 是否可部署。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Deployable: bool
         :param _Tags: 关联标签列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tags
         :param _RootCert: 根证书。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RootCert: :class:`tencentcloud.ssl.v20191205.models.RootCertificates`
         :param _EncryptCert: 国密加密证书公钥， 仅国密证书有值
 注意：此字段可能返回 null，表示取不到有效值。
@@ -7645,7 +7594,6 @@ null：用户上传证书（没有套餐类型），
 注意：此字段可能返回 null，表示取不到有效值。
         :type EncryptCertFingerprint: str
         :param _EncryptAlgorithm: 证书加密算法（国密证书特有）
-注意：此字段可能返回 null，表示取不到有效值。
         :type EncryptAlgorithm: str
         :param _DvRevokeAuthDetail: DV证书吊销验证值
 注意：此字段可能返回 null，表示取不到有效值。
@@ -7703,7 +7651,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def OwnerUin(self):
         """证书所属用户主账号 UIN。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OwnerUin
@@ -7715,7 +7662,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def ProjectId(self):
         """项目 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProjectId
@@ -7731,7 +7677,6 @@ trustasia：亚洲诚信，
 upload：用户上传。
 wosign：沃通
 sheca：上海CA
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._From
@@ -7743,7 +7688,6 @@ sheca：上海CA
     @property
     def CertificateType(self):
         """证书类型：CA = 客户端证书，SVR = 服务器证书。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CertificateType
@@ -7851,7 +7795,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def ProductZhName(self):
         """证书产品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductZhName
@@ -7863,7 +7806,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def Domain(self):
         """证书绑定通用名称域名。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Domain
@@ -7875,7 +7817,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def Alias(self):
         """备注名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Alias
@@ -7887,7 +7828,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def Status(self):
         """证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 自动添加DNS记录，5 = 企业证书，待提交资料，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。14 = 证书已退款。 15 = 证书迁移中
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -7935,7 +7875,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def VulnerabilityStatus(self):
         """漏洞扫描状态。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VulnerabilityStatus
@@ -7971,7 +7910,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def ValidityPeriod(self):
         """证书有效期：单位（月）。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ValidityPeriod
@@ -7983,7 +7921,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def InsertTime(self):
         """证书申请时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InsertTime
@@ -8007,7 +7944,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def CertificateExtra(self):
         """证书扩展信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ssl.v20191205.models.CertificateExtra`
         """
         return self._CertificateExtra
@@ -8067,7 +8003,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def CertificateId(self):
         """证书 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CertificateId
@@ -8091,7 +8026,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def StatusName(self):
         """状态描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StatusName
@@ -8103,7 +8037,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def SubjectAltName(self):
         """证书包含的多个域名（不包含主域名，主域名使用Domain字段）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._SubjectAltName
@@ -8115,7 +8048,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def IsVip(self):
         """是否为付费证书。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsVip
@@ -8127,7 +8059,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def IsWildcard(self):
         """是否为泛域名证书。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsWildcard
@@ -8139,7 +8070,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def IsDv(self):
         """是否为 DV 版证书。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsDv
@@ -8151,7 +8081,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def IsVulnerability(self):
         """是否启用了漏洞扫描功能。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsVulnerability
@@ -8175,7 +8104,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def RenewAble(self):
         """是否可续费。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._RenewAble
@@ -8187,7 +8115,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def Deployable(self):
         """是否可部署。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Deployable
@@ -8199,7 +8126,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def Tags(self):
         """关联标签列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tags
         """
         return self._Tags
@@ -8211,7 +8137,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def RootCert(self):
         """根证书。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ssl.v20191205.models.RootCertificates`
         """
         return self._RootCert
@@ -8271,7 +8196,6 @@ null：用户上传证书（没有套餐类型），
     @property
     def EncryptAlgorithm(self):
         """证书加密算法（国密证书特有）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EncryptAlgorithm
@@ -8478,7 +8402,6 @@ class DescribeCertificateOperateLogsResponse(AbstractModel):
         :param _TotalCount: 本次请求返回的日志数量。
         :type TotalCount: int
         :param _OperateLogs: 证书操作日志列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OperateLogs: list of OperationLog
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8513,7 +8436,6 @@ class DescribeCertificateOperateLogsResponse(AbstractModel):
     @property
     def OperateLogs(self):
         """证书操作日志列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of OperationLog
         """
         return self._OperateLogs
@@ -9727,10 +9649,8 @@ class DescribeCertificatesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 总数量。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _Certificates: 列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Certificates: list of Certificates
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9742,7 +9662,6 @@ class DescribeCertificatesResponse(AbstractModel):
     @property
     def TotalCount(self):
         """总数量。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -9754,7 +9673,6 @@ class DescribeCertificatesResponse(AbstractModel):
     @property
     def Certificates(self):
         """列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Certificates
         """
         return self._Certificates
@@ -9959,7 +9877,6 @@ class DescribeDeleteCertificatesTaskResultResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _DeleteTaskResult: 批量删除证书异步任务结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeleteTaskResult: list of DeleteTaskResult
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9970,7 +9887,6 @@ class DescribeDeleteCertificatesTaskResultResponse(AbstractModel):
     @property
     def DeleteTaskResult(self):
         """批量删除证书异步任务结果
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DeleteTaskResult
         """
         return self._DeleteTaskResult
@@ -10352,7 +10268,6 @@ class DescribeHostApiGatewayInstanceListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceList: apiGateway实例列表,如取不到值返回空数组
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceList: list of ApiGatewayInstanceDetail
         :param _TotalCount: 总数，如取不到值返回0
         :type TotalCount: int
@@ -10366,7 +10281,6 @@ class DescribeHostApiGatewayInstanceListResponse(AbstractModel):
     @property
     def InstanceList(self):
         """apiGateway实例列表,如取不到值返回空数组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ApiGatewayInstanceDetail
         """
         return self._InstanceList
@@ -10567,19 +10481,14 @@ class DescribeHostCdnInstanceListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceList: CDN实例列表，如取不到值返回空数组
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceList: list of CdnInstanceDetail
         :param _TotalCount: CDN域名总数，如取不到值返回0
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _AsyncTotalNum: 异步刷新总数，如取不到值返回0
-注意：此字段可能返回 null，表示取不到有效值。
         :type AsyncTotalNum: int
         :param _AsyncOffset: 异步刷新当前执行数，如取不到值返回0
-注意：此字段可能返回 null，表示取不到有效值。
         :type AsyncOffset: int
         :param _AsyncCacheTime: 当前缓存读取时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type AsyncCacheTime: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10594,7 +10503,6 @@ class DescribeHostCdnInstanceListResponse(AbstractModel):
     @property
     def InstanceList(self):
         """CDN实例列表，如取不到值返回空数组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CdnInstanceDetail
         """
         return self._InstanceList
@@ -10606,7 +10514,6 @@ class DescribeHostCdnInstanceListResponse(AbstractModel):
     @property
     def TotalCount(self):
         """CDN域名总数，如取不到值返回0
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -10618,7 +10525,6 @@ class DescribeHostCdnInstanceListResponse(AbstractModel):
     @property
     def AsyncTotalNum(self):
         """异步刷新总数，如取不到值返回0
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AsyncTotalNum
@@ -10630,7 +10536,6 @@ class DescribeHostCdnInstanceListResponse(AbstractModel):
     @property
     def AsyncOffset(self):
         """异步刷新当前执行数，如取不到值返回0
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AsyncOffset
@@ -10642,7 +10547,6 @@ class DescribeHostCdnInstanceListResponse(AbstractModel):
     @property
     def AsyncCacheTime(self):
         """当前缓存读取时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AsyncCacheTime
@@ -10816,19 +10720,14 @@ class DescribeHostClbInstanceListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 总数，取不到值返回0
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _InstanceList: CLB实例监听器列表，取不到值返回空数组
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceList: list of ClbInstanceDetail
         :param _AsyncTotalNum: 异步刷新总数，取不到值返回0
-注意：此字段可能返回 null，表示取不到有效值。
         :type AsyncTotalNum: int
         :param _AsyncOffset: 异步刷新当前执行数，取不到值返回0
-注意：此字段可能返回 null，表示取不到有效值。
         :type AsyncOffset: int
         :param _AsyncCacheTime: 当前缓存读取时间，去不到值返回空
-注意：此字段可能返回 null，表示取不到有效值。
         :type AsyncCacheTime: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10843,7 +10742,6 @@ class DescribeHostClbInstanceListResponse(AbstractModel):
     @property
     def TotalCount(self):
         """总数，取不到值返回0
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -10855,7 +10753,6 @@ class DescribeHostClbInstanceListResponse(AbstractModel):
     @property
     def InstanceList(self):
         """CLB实例监听器列表，取不到值返回空数组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ClbInstanceDetail
         """
         return self._InstanceList
@@ -10867,7 +10764,6 @@ class DescribeHostClbInstanceListResponse(AbstractModel):
     @property
     def AsyncTotalNum(self):
         """异步刷新总数，取不到值返回0
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AsyncTotalNum
@@ -10879,7 +10775,6 @@ class DescribeHostClbInstanceListResponse(AbstractModel):
     @property
     def AsyncOffset(self):
         """异步刷新当前执行数，取不到值返回0
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AsyncOffset
@@ -10891,7 +10786,6 @@ class DescribeHostClbInstanceListResponse(AbstractModel):
     @property
     def AsyncCacheTime(self):
         """当前缓存读取时间，去不到值返回空
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AsyncCacheTime
@@ -11080,19 +10974,14 @@ class DescribeHostCosInstanceListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceList: COS实例列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceList: list of CosInstanceDetail
         :param _TotalCount: 总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _AsyncTotalNum: 异步刷新总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type AsyncTotalNum: int
         :param _AsyncOffset: 异步刷新当前执行数
-注意：此字段可能返回 null，表示取不到有效值。
         :type AsyncOffset: int
         :param _AsyncCacheTime: 当前缓存读取时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type AsyncCacheTime: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11107,7 +10996,6 @@ class DescribeHostCosInstanceListResponse(AbstractModel):
     @property
     def InstanceList(self):
         """COS实例列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CosInstanceDetail
         """
         return self._InstanceList
@@ -11119,7 +11007,6 @@ class DescribeHostCosInstanceListResponse(AbstractModel):
     @property
     def TotalCount(self):
         """总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -11131,7 +11018,6 @@ class DescribeHostCosInstanceListResponse(AbstractModel):
     @property
     def AsyncTotalNum(self):
         """异步刷新总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AsyncTotalNum
@@ -11143,7 +11029,6 @@ class DescribeHostCosInstanceListResponse(AbstractModel):
     @property
     def AsyncOffset(self):
         """异步刷新当前执行数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AsyncOffset
@@ -11155,7 +11040,6 @@ class DescribeHostCosInstanceListResponse(AbstractModel):
     @property
     def AsyncCacheTime(self):
         """当前缓存读取时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AsyncCacheTime
@@ -11329,10 +11213,8 @@ class DescribeHostDdosInstanceListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceList: DDOS实例列表,取不到值返回空数组
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceList: list of DdosInstanceDetail
         :param _TotalCount: 总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11344,7 +11226,6 @@ class DescribeHostDdosInstanceListResponse(AbstractModel):
     @property
     def InstanceList(self):
         """DDOS实例列表,取不到值返回空数组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DdosInstanceDetail
         """
         return self._InstanceList
@@ -11356,7 +11237,6 @@ class DescribeHostDdosInstanceListResponse(AbstractModel):
     @property
     def TotalCount(self):
         """总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -11462,19 +11342,14 @@ class DescribeHostDeployRecordDetailResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 部署记录总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _DeployRecordDetailList: 证书部署记录列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeployRecordDetailList: list of DeployRecordDetail
         :param _SuccessTotalCount: 成功总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type SuccessTotalCount: int
         :param _FailedTotalCount: 失败总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailedTotalCount: int
         :param _RunningTotalCount: 部署中总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type RunningTotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11489,7 +11364,6 @@ class DescribeHostDeployRecordDetailResponse(AbstractModel):
     @property
     def TotalCount(self):
         """部署记录总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -11501,7 +11375,6 @@ class DescribeHostDeployRecordDetailResponse(AbstractModel):
     @property
     def DeployRecordDetailList(self):
         """证书部署记录列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DeployRecordDetail
         """
         return self._DeployRecordDetailList
@@ -11513,7 +11386,6 @@ class DescribeHostDeployRecordDetailResponse(AbstractModel):
     @property
     def SuccessTotalCount(self):
         """成功总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SuccessTotalCount
@@ -11525,7 +11397,6 @@ class DescribeHostDeployRecordDetailResponse(AbstractModel):
     @property
     def FailedTotalCount(self):
         """失败总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FailedTotalCount
@@ -11537,7 +11408,6 @@ class DescribeHostDeployRecordDetailResponse(AbstractModel):
     @property
     def RunningTotalCount(self):
         """部署中总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RunningTotalCount
@@ -11661,10 +11531,8 @@ class DescribeHostDeployRecordResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _DeployRecordList: 证书部署记录列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeployRecordList: list of DeployRecordInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11676,7 +11544,6 @@ class DescribeHostDeployRecordResponse(AbstractModel):
     @property
     def TotalCount(self):
         """总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -11688,7 +11555,6 @@ class DescribeHostDeployRecordResponse(AbstractModel):
     @property
     def DeployRecordList(self):
         """证书部署记录列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DeployRecordInfo
         """
         return self._DeployRecordList
@@ -11818,10 +11684,8 @@ class DescribeHostLighthouseInstanceListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceList: Lighthouse实例列表,如取不到返回空数组
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceList: list of LighthouseInstanceDetail
         :param _TotalCount: 总数，如取不到返回0
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11833,7 +11697,6 @@ class DescribeHostLighthouseInstanceListResponse(AbstractModel):
     @property
     def InstanceList(self):
         """Lighthouse实例列表,如取不到返回空数组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LighthouseInstanceDetail
         """
         return self._InstanceList
@@ -11845,7 +11708,6 @@ class DescribeHostLighthouseInstanceListResponse(AbstractModel):
     @property
     def TotalCount(self):
         """总数，如取不到返回0
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -11990,7 +11852,6 @@ class DescribeHostLiveInstanceListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceList: live实例列表,如取不到值返回空数组
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceList: list of LiveInstanceDetail
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12001,7 +11862,6 @@ class DescribeHostLiveInstanceListResponse(AbstractModel):
     @property
     def InstanceList(self):
         """live实例列表,如取不到值返回空数组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LiveInstanceDetail
         """
         return self._InstanceList
@@ -12190,7 +12050,6 @@ class DescribeHostTeoInstanceListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceList: teo实例列表，如取不到值返回空数组
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceList: list of TeoInstanceDetail
         :param _TotalCount: 总数
         :type TotalCount: int
@@ -12204,7 +12063,6 @@ class DescribeHostTeoInstanceListResponse(AbstractModel):
     @property
     def InstanceList(self):
         """teo实例列表，如取不到值返回空数组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TeoInstanceDetail
         """
         return self._InstanceList
@@ -12386,19 +12244,14 @@ class DescribeHostTkeInstanceListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 总数，取不到值返回0
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _InstanceList: tke实例列表，取不到值返回空数组
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceList: list of TkeInstanceDetail
         :param _AsyncTotalNum: 异步刷新总数，取不到值返回0
-注意：此字段可能返回 null，表示取不到有效值。
         :type AsyncTotalNum: int
         :param _AsyncOffset: 异步刷新当前执行数，取不到值返回0
-注意：此字段可能返回 null，表示取不到有效值。
         :type AsyncOffset: int
         :param _AsyncCacheTime: 当前缓存读取时间	
-注意：此字段可能返回 null，表示取不到有效值。
         :type AsyncCacheTime: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12413,7 +12266,6 @@ class DescribeHostTkeInstanceListResponse(AbstractModel):
     @property
     def TotalCount(self):
         """总数，取不到值返回0
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -12425,7 +12277,6 @@ class DescribeHostTkeInstanceListResponse(AbstractModel):
     @property
     def InstanceList(self):
         """tke实例列表，取不到值返回空数组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TkeInstanceDetail
         """
         return self._InstanceList
@@ -12437,7 +12288,6 @@ class DescribeHostTkeInstanceListResponse(AbstractModel):
     @property
     def AsyncTotalNum(self):
         """异步刷新总数，取不到值返回0
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AsyncTotalNum
@@ -12449,7 +12299,6 @@ class DescribeHostTkeInstanceListResponse(AbstractModel):
     @property
     def AsyncOffset(self):
         """异步刷新当前执行数，取不到值返回0
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AsyncOffset
@@ -12461,7 +12310,6 @@ class DescribeHostTkeInstanceListResponse(AbstractModel):
     @property
     def AsyncCacheTime(self):
         """当前缓存读取时间	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AsyncCacheTime
@@ -12570,19 +12418,14 @@ class DescribeHostUpdateRecordDetailResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 总数,如果取不到返回0
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RecordDetailList: 证书部署记录列表，如果取不到值返回空数组
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecordDetailList: list of UpdateRecordDetails
         :param _SuccessTotalCount: 成功总数,如果取不到返回0
-注意：此字段可能返回 null，表示取不到有效值。
         :type SuccessTotalCount: int
         :param _FailedTotalCount: 失败总数,如果取不到返回0
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailedTotalCount: int
         :param _RunningTotalCount: 部署中总数,如果取不到返回0
-注意：此字段可能返回 null，表示取不到有效值。
         :type RunningTotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12597,7 +12440,6 @@ class DescribeHostUpdateRecordDetailResponse(AbstractModel):
     @property
     def TotalCount(self):
         """总数,如果取不到返回0
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -12609,7 +12451,6 @@ class DescribeHostUpdateRecordDetailResponse(AbstractModel):
     @property
     def RecordDetailList(self):
         """证书部署记录列表，如果取不到值返回空数组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of UpdateRecordDetails
         """
         return self._RecordDetailList
@@ -12621,7 +12462,6 @@ class DescribeHostUpdateRecordDetailResponse(AbstractModel):
     @property
     def SuccessTotalCount(self):
         """成功总数,如果取不到返回0
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SuccessTotalCount
@@ -12633,7 +12473,6 @@ class DescribeHostUpdateRecordDetailResponse(AbstractModel):
     @property
     def FailedTotalCount(self):
         """失败总数,如果取不到返回0
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FailedTotalCount
@@ -12645,7 +12484,6 @@ class DescribeHostUpdateRecordDetailResponse(AbstractModel):
     @property
     def RunningTotalCount(self):
         """部署中总数,如果取不到返回0
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RunningTotalCount
@@ -12769,10 +12607,8 @@ class DescribeHostUpdateRecordResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _DeployRecordList: 证书部署记录列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeployRecordList: list of UpdateRecordInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12784,7 +12620,6 @@ class DescribeHostUpdateRecordResponse(AbstractModel):
     @property
     def TotalCount(self):
         """总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -12796,7 +12631,6 @@ class DescribeHostUpdateRecordResponse(AbstractModel):
     @property
     def DeployRecordList(self):
         """证书部署记录列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of UpdateRecordInfo
         """
         return self._DeployRecordList
@@ -12941,10 +12775,8 @@ class DescribeHostVodInstanceListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceList: Vod实例列表，如果取不到值返回空数组
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceList: list of VodInstanceDetail
         :param _TotalCount: 总数,如果取不到值返回0
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12956,7 +12788,6 @@ class DescribeHostVodInstanceListResponse(AbstractModel):
     @property
     def InstanceList(self):
         """Vod实例列表，如果取不到值返回空数组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of VodInstanceDetail
         """
         return self._InstanceList
@@ -12968,7 +12799,6 @@ class DescribeHostVodInstanceListResponse(AbstractModel):
     @property
     def TotalCount(self):
         """总数,如果取不到值返回0
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -13113,8 +12943,7 @@ class DescribeHostWafInstanceListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceList: WAF实例列表，如果没有取到值返回空数组
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InstanceList: list of LiveInstanceDetail
+        :type InstanceList: list of WafInstanceDetail
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -13124,8 +12953,7 @@ class DescribeHostWafInstanceListResponse(AbstractModel):
     @property
     def InstanceList(self):
         """WAF实例列表，如果没有取到值返回空数组
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: list of LiveInstanceDetail
+        :rtype: list of WafInstanceDetail
         """
         return self._InstanceList
 
@@ -13149,7 +12977,7 @@ class DescribeHostWafInstanceListResponse(AbstractModel):
         if params.get("InstanceList") is not None:
             self._InstanceList = []
             for item in params.get("InstanceList"):
-                obj = LiveInstanceDetail()
+                obj = WafInstanceDetail()
                 obj._deserialize(item)
                 self._InstanceList.append(obj)
         self._RequestId = params.get("RequestId")
@@ -14153,10 +13981,8 @@ class DownloadCertificateResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Content: ZIP base64 编码内容，base64 解码后可保存为 ZIP 文件。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Content: str
         :param _ContentType: MIME 类型：application/zip = ZIP 压缩文件。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ContentType: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14168,7 +13994,6 @@ class DownloadCertificateResponse(AbstractModel):
     @property
     def Content(self):
         """ZIP base64 编码内容，base64 解码后可保存为 ZIP 文件。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Content
@@ -14180,7 +14005,6 @@ class DownloadCertificateResponse(AbstractModel):
     @property
     def ContentType(self):
         """MIME 类型：application/zip = ZIP 压缩文件。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ContentType
@@ -14343,25 +14167,19 @@ class DvAuths(AbstractModel):
     def __init__(self):
         r"""
         :param _DvAuthKey: 证书域名验证记录Key
-注意：此字段可能返回 null，表示取不到有效值。
         :type DvAuthKey: str
         :param _DvAuthValue: 证书域名验证记录值
-注意：此字段可能返回 null，表示取不到有效值。
         :type DvAuthValue: str
         :param _DvAuthDomain: 证书域名验证域名值
-注意：此字段可能返回 null，表示取不到有效值。
         :type DvAuthDomain: str
         :param _DvAuthPath: 证书域名验证文件路径， 仅FILE、FILE_PROXY使用
-注意：此字段可能返回 null，表示取不到有效值。
         :type DvAuthPath: str
         :param _DvAuthSubDomain: 证书域名验证子域名
-注意：此字段可能返回 null，表示取不到有效值。
         :type DvAuthSubDomain: str
         :param _DvAuthVerifyType: 证书域名验证类型，取值：
 TXT：DNS域名验证添加TXT记录
 FILE：域名文件验证
 CNAME：DNS域名验证添加CNAME记录
-注意：此字段可能返回 null，表示取不到有效值。
         :type DvAuthVerifyType: str
         """
         self._DvAuthKey = None
@@ -14374,7 +14192,6 @@ CNAME：DNS域名验证添加CNAME记录
     @property
     def DvAuthKey(self):
         """证书域名验证记录Key
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DvAuthKey
@@ -14386,7 +14203,6 @@ CNAME：DNS域名验证添加CNAME记录
     @property
     def DvAuthValue(self):
         """证书域名验证记录值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DvAuthValue
@@ -14398,7 +14214,6 @@ CNAME：DNS域名验证添加CNAME记录
     @property
     def DvAuthDomain(self):
         """证书域名验证域名值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DvAuthDomain
@@ -14410,7 +14225,6 @@ CNAME：DNS域名验证添加CNAME记录
     @property
     def DvAuthPath(self):
         """证书域名验证文件路径， 仅FILE、FILE_PROXY使用
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DvAuthPath
@@ -14422,7 +14236,6 @@ CNAME：DNS域名验证添加CNAME记录
     @property
     def DvAuthSubDomain(self):
         """证书域名验证子域名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DvAuthSubDomain
@@ -14437,7 +14250,6 @@ CNAME：DNS域名验证添加CNAME记录
 TXT：DNS域名验证添加TXT记录
 FILE：域名文件验证
 CNAME：DNS域名验证添加CNAME记录
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DvAuthVerifyType
@@ -14472,10 +14284,8 @@ class Error(AbstractModel):
     def __init__(self):
         r"""
         :param _Code: 异常错误码
-注意：此字段可能返回 null，表示取不到有效值。
         :type Code: str
         :param _Message: 异常错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         """
         self._Code = None
@@ -14484,7 +14294,6 @@ class Error(AbstractModel):
     @property
     def Code(self):
         """异常错误码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Code
@@ -14496,7 +14305,6 @@ class Error(AbstractModel):
     @property
     def Message(self):
         """异常错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Message
@@ -14578,19 +14386,14 @@ class GatewayCertificate(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: 网关证书ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
         :param _Name: 网关证书名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _BindDomains: 绑定域名
-注意：此字段可能返回 null，表示取不到有效值。
         :type BindDomains: list of str
         :param _CertSource: 证书来源
-注意：此字段可能返回 null，表示取不到有效值。
         :type CertSource: str
         :param _CertId: 当前绑定的SSL证书ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type CertId: str
         """
         self._Id = None
@@ -14602,7 +14405,6 @@ class GatewayCertificate(AbstractModel):
     @property
     def Id(self):
         """网关证书ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Id
@@ -14614,7 +14416,6 @@ class GatewayCertificate(AbstractModel):
     @property
     def Name(self):
         """网关证书名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -14626,7 +14427,6 @@ class GatewayCertificate(AbstractModel):
     @property
     def BindDomains(self):
         """绑定域名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._BindDomains
@@ -14638,7 +14438,6 @@ class GatewayCertificate(AbstractModel):
     @property
     def CertSource(self):
         """证书来源
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CertSource
@@ -14650,7 +14449,6 @@ class GatewayCertificate(AbstractModel):
     @property
     def CertId(self):
         """当前绑定的SSL证书ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CertId
@@ -14684,10 +14482,8 @@ class HostingConfig(AbstractModel):
     def __init__(self):
         r"""
         :param _ReplaceTime: 托管资源替换时间， 默认为证书过期前30天存在续费证书则替换
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReplaceTime: int
         :param _MessageTypes: 托管发送消息类型：0，托管开始前消息提醒（没有续费证书也会收到该提示消息）； 1， 托管开始消息提醒（存在续费证书才会收到消息提醒）； 2， 托管资源替换失败消息提醒； 3 托管资源替换成功消息提醒
-注意：此字段可能返回 null，表示取不到有效值。
         :type MessageTypes: list of int
         :param _ReplaceStartTime: 资源替换开始时间
         :type ReplaceStartTime: str
@@ -14702,7 +14498,6 @@ class HostingConfig(AbstractModel):
     @property
     def ReplaceTime(self):
         """托管资源替换时间， 默认为证书过期前30天存在续费证书则替换
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ReplaceTime
@@ -14714,7 +14509,6 @@ class HostingConfig(AbstractModel):
     @property
     def MessageTypes(self):
         """托管发送消息类型：0，托管开始前消息提醒（没有续费证书也会收到该提示消息）； 1， 托管开始消息提醒（存在续费证书才会收到消息提醒）； 2， 托管资源替换失败消息提醒； 3 托管资源替换成功消息提醒
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._MessageTypes
@@ -15032,7 +14826,6 @@ class ManagerInfo(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type StatusInfo: list of ManagerStatusInfo
         :param _Tags: 标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tags
         """
         self._Status = None
@@ -15225,7 +15018,6 @@ class ManagerInfo(AbstractModel):
     @property
     def Tags(self):
         """标签
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tags
         """
         return self._Tags
@@ -15279,17 +15071,13 @@ class ManagerStatusInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 审核类型，枚举值：ov,ev,cs,ev_cs
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _Type: 审核类型，枚举值：ov,ev
         :type Type: str
         :param _Status: 审核状态，枚举值：pending,completed,invalid,submitted,expiring,expired
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _ExpireTime: 过期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireTime: str
         """
         self._Type = None
@@ -15299,8 +15087,7 @@ class ManagerStatusInfo(AbstractModel):
 
     @property
     def Type(self):
-        """审核类型，枚举值：ov,ev,cs,ev_cs
-注意：此字段可能返回 null，表示取不到有效值。
+        """审核类型，枚举值：ov,ev
         :rtype: str
         """
         return self._Type
@@ -15312,7 +15099,6 @@ class ManagerStatusInfo(AbstractModel):
     @property
     def Status(self):
         """审核状态，枚举值：pending,completed,invalid,submitted,expiring,expired
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -15324,7 +15110,6 @@ class ManagerStatusInfo(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -15336,7 +15121,6 @@ class ManagerStatusInfo(AbstractModel):
     @property
     def ExpireTime(self):
         """过期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ExpireTime
@@ -15514,10 +15298,8 @@ class ModifyCertificateProjectResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _SuccessCertificates: 修改所属项目成功的证书集合。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SuccessCertificates: list of str
         :param _FailCertificates: 修改所属项目失败的证书集合。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailCertificates: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15529,7 +15311,6 @@ class ModifyCertificateProjectResponse(AbstractModel):
     @property
     def SuccessCertificates(self):
         """修改所属项目成功的证书集合。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._SuccessCertificates
@@ -15541,7 +15322,6 @@ class ModifyCertificateProjectResponse(AbstractModel):
     @property
     def FailCertificates(self):
         """修改所属项目失败的证书集合。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._FailCertificates
@@ -15753,13 +15533,10 @@ class OperationLog(AbstractModel):
         :param _CreatedOn: 操作时间。
         :type CreatedOn: str
         :param _Uin: 主账号
-注意：此字段可能返回 null，表示取不到有效值。
         :type Uin: str
         :param _SubAccountUin: 子账号
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubAccountUin: str
         :param _CertId: 证书ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type CertId: str
         :param _Type: 每个操作类型都对应一个具体的操作描述。以下是对每个操作类型及其描述的文字说明：
 1. apply - 表示申请一个免费的证书。
@@ -15788,7 +15565,6 @@ class OperationLog(AbstractModel):
 24. issued - 表示证书签发。
 25. domainValidationPassed - 表示域名验证完成。
 26. Resubmit - 表示证书重新申请。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         """
         self._Action = None
@@ -15823,7 +15599,6 @@ class OperationLog(AbstractModel):
     @property
     def Uin(self):
         """主账号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Uin
@@ -15835,7 +15610,6 @@ class OperationLog(AbstractModel):
     @property
     def SubAccountUin(self):
         """子账号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubAccountUin
@@ -15847,7 +15621,6 @@ class OperationLog(AbstractModel):
     @property
     def CertId(self):
         """证书ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CertId
@@ -15885,7 +15658,6 @@ class OperationLog(AbstractModel):
 24. issued - 表示证书签发。
 25. domainValidationPassed - 表示域名验证完成。
 26. Resubmit - 表示证书重新申请。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -16286,13 +16058,10 @@ class PreAuditInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalPeriod: 证书总年限
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalPeriod: int
         :param _NowPeriod: 证书当前年限
-注意：此字段可能返回 null，表示取不到有效值。
         :type NowPeriod: int
         :param _ManagerId: 证书预审核管理人ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ManagerId: str
         """
         self._TotalPeriod = None
@@ -16302,7 +16071,6 @@ class PreAuditInfo(AbstractModel):
     @property
     def TotalPeriod(self):
         """证书总年限
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalPeriod
@@ -16314,7 +16082,6 @@ class PreAuditInfo(AbstractModel):
     @property
     def NowPeriod(self):
         """证书当前年限
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._NowPeriod
@@ -16326,7 +16093,6 @@ class PreAuditInfo(AbstractModel):
     @property
     def ManagerId(self):
         """证书预审核管理人ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ManagerId
@@ -16358,22 +16124,16 @@ class ProjectInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _ProjectName: 项目名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectName: str
         :param _ProjectCreatorUin: 项目创建用户 UIN。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectCreatorUin: int
         :param _ProjectCreateTime: 项目创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectCreateTime: str
         :param _ProjectResume: 项目信息简述。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectResume: str
         :param _OwnerUin: 用户 UIN。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OwnerUin: int
         :param _ProjectId: 项目 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: str
         """
         self._ProjectName = None
@@ -16386,7 +16146,6 @@ class ProjectInfo(AbstractModel):
     @property
     def ProjectName(self):
         """项目名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProjectName
@@ -16398,7 +16157,6 @@ class ProjectInfo(AbstractModel):
     @property
     def ProjectCreatorUin(self):
         """项目创建用户 UIN。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ProjectCreatorUin
@@ -16410,7 +16168,6 @@ class ProjectInfo(AbstractModel):
     @property
     def ProjectCreateTime(self):
         """项目创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProjectCreateTime
@@ -16422,7 +16179,6 @@ class ProjectInfo(AbstractModel):
     @property
     def ProjectResume(self):
         """项目信息简述。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProjectResume
@@ -16434,7 +16190,6 @@ class ProjectInfo(AbstractModel):
     @property
     def OwnerUin(self):
         """用户 UIN。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._OwnerUin
@@ -16446,7 +16201,6 @@ class ProjectInfo(AbstractModel):
     @property
     def ProjectId(self):
         """项目 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProjectId
@@ -16769,7 +16523,6 @@ class RevokeCertificateResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _RevokeDomainValidateAuths: 吊销证书域名验证信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RevokeDomainValidateAuths: list of RevokeDomainValidateAuths
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16780,7 +16533,6 @@ class RevokeCertificateResponse(AbstractModel):
     @property
     def RevokeDomainValidateAuths(self):
         """吊销证书域名验证信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RevokeDomainValidateAuths
         """
         return self._RevokeDomainValidateAuths
@@ -16819,16 +16571,12 @@ class RevokeDomainValidateAuths(AbstractModel):
     def __init__(self):
         r"""
         :param _DomainValidateAuthPath: DV 认证值路径。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DomainValidateAuthPath: str
         :param _DomainValidateAuthKey: DV 认证 KEY。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DomainValidateAuthKey: str
         :param _DomainValidateAuthValue: DV 认证值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DomainValidateAuthValue: str
         :param _DomainValidateAuthDomain: DV 认证域名。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DomainValidateAuthDomain: str
         """
         self._DomainValidateAuthPath = None
@@ -16839,7 +16587,6 @@ class RevokeDomainValidateAuths(AbstractModel):
     @property
     def DomainValidateAuthPath(self):
         """DV 认证值路径。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DomainValidateAuthPath
@@ -16851,7 +16598,6 @@ class RevokeDomainValidateAuths(AbstractModel):
     @property
     def DomainValidateAuthKey(self):
         """DV 认证 KEY。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DomainValidateAuthKey
@@ -16863,7 +16609,6 @@ class RevokeDomainValidateAuths(AbstractModel):
     @property
     def DomainValidateAuthValue(self):
         """DV 认证值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DomainValidateAuthValue
@@ -16875,7 +16620,6 @@ class RevokeDomainValidateAuths(AbstractModel):
     @property
     def DomainValidateAuthDomain(self):
         """DV 认证域名。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DomainValidateAuthDomain
@@ -18108,7 +17852,6 @@ class SyncTaskBindResourceResult(AbstractModel):
         :param _TaskId: 任务ID
         :type TaskId: str
         :param _BindResourceResult: 关联云资源结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type BindResourceResult: list of BindResourceResult
         :param _Status: 关联云资源异步查询结果： 0表示查询中， 1表示查询成功。 2表示查询异常； 若状态为1，则查看BindResourceResult结果；若状态为2，则查看Error原因
         :type Status: int
@@ -18138,7 +17881,6 @@ class SyncTaskBindResourceResult(AbstractModel):
     @property
     def BindResourceResult(self):
         """关联云资源结果
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BindResourceResult
         """
         return self._BindResourceResult
@@ -18213,25 +17955,19 @@ class TCBAccessInstance(AbstractModel):
     def __init__(self):
         r"""
         :param _Domain: 域名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Domain: str
         :param _Status: 状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _UnionStatus: 统一域名状态
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type UnionStatus: int
         :param _IsPreempted: 是否被抢占, 被抢占表示域名被其他环境绑定了，需要解绑或者重新绑定。
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsPreempted: bool
         :param _ICPStatus: icp黑名单封禁状态，0-未封禁，1-封禁
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type ICPStatus: int
         :param _OldCertificateId: 已绑定证书ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type OldCertificateId: str
         """
         self._Domain = None
@@ -18244,7 +17980,6 @@ class TCBAccessInstance(AbstractModel):
     @property
     def Domain(self):
         """域名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Domain
@@ -18256,7 +17991,6 @@ class TCBAccessInstance(AbstractModel):
     @property
     def Status(self):
         """状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -18269,7 +18003,6 @@ class TCBAccessInstance(AbstractModel):
     def UnionStatus(self):
         """统一域名状态
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._UnionStatus
@@ -18282,7 +18015,6 @@ class TCBAccessInstance(AbstractModel):
     def IsPreempted(self):
         """是否被抢占, 被抢占表示域名被其他环境绑定了，需要解绑或者重新绑定。
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsPreempted
@@ -18295,7 +18027,6 @@ class TCBAccessInstance(AbstractModel):
     def ICPStatus(self):
         """icp黑名单封禁状态，0-未封禁，1-封禁
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ICPStatus
@@ -18307,7 +18038,6 @@ class TCBAccessInstance(AbstractModel):
     @property
     def OldCertificateId(self):
         """已绑定证书ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OldCertificateId
@@ -18342,10 +18072,8 @@ class TCBAccessService(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceList: 实例列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceList: list of TCBAccessInstance
         :param _TotalCount: 数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         """
         self._InstanceList = None
@@ -18354,7 +18082,6 @@ class TCBAccessService(AbstractModel):
     @property
     def InstanceList(self):
         """实例列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TCBAccessInstance
         """
         return self._InstanceList
@@ -18366,7 +18093,6 @@ class TCBAccessService(AbstractModel):
     @property
     def TotalCount(self):
         """数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -18402,16 +18128,12 @@ class TCBEnvironment(AbstractModel):
     def __init__(self):
         r"""
         :param _ID: 唯一ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ID: str
         :param _Source: 来源
-注意：此字段可能返回 null，表示取不到有效值。
         :type Source: str
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Status: 状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         """
         self._ID = None
@@ -18422,7 +18144,6 @@ class TCBEnvironment(AbstractModel):
     @property
     def ID(self):
         """唯一ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ID
@@ -18434,7 +18155,6 @@ class TCBEnvironment(AbstractModel):
     @property
     def Source(self):
         """来源
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Source
@@ -18446,7 +18166,6 @@ class TCBEnvironment(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -18458,7 +18177,6 @@ class TCBEnvironment(AbstractModel):
     @property
     def Status(self):
         """状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -18569,16 +18287,12 @@ class TCBHostInstance(AbstractModel):
     def __init__(self):
         r"""
         :param _Domain: 域名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Domain: str
         :param _Status: 状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _DNSStatus: 解析状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type DNSStatus: str
         :param _OldCertificateId: 已绑定证书ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type OldCertificateId: str
         """
         self._Domain = None
@@ -18589,7 +18303,6 @@ class TCBHostInstance(AbstractModel):
     @property
     def Domain(self):
         """域名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Domain
@@ -18601,7 +18314,6 @@ class TCBHostInstance(AbstractModel):
     @property
     def Status(self):
         """状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -18613,7 +18325,6 @@ class TCBHostInstance(AbstractModel):
     @property
     def DNSStatus(self):
         """解析状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DNSStatus
@@ -18625,7 +18336,6 @@ class TCBHostInstance(AbstractModel):
     @property
     def OldCertificateId(self):
         """已绑定证书ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OldCertificateId
@@ -18658,10 +18368,8 @@ class TCBHostService(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceList: 实例列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceList: list of TCBHostInstance
         :param _TotalCount: 数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         """
         self._InstanceList = None
@@ -18670,7 +18378,6 @@ class TCBHostService(AbstractModel):
     @property
     def InstanceList(self):
         """实例列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TCBHostInstance
         """
         return self._InstanceList
@@ -18682,7 +18389,6 @@ class TCBHostService(AbstractModel):
     @property
     def TotalCount(self):
         """数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -18793,13 +18499,10 @@ class TSEInstanceDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _GatewayId: 网关ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayId: str
         :param _GatewayName: 网关名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayName: str
         :param _CertificateList: 网关证书列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type CertificateList: list of GatewayCertificate
         """
         self._GatewayId = None
@@ -18809,7 +18512,6 @@ class TSEInstanceDetail(AbstractModel):
     @property
     def GatewayId(self):
         """网关ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GatewayId
@@ -18821,7 +18523,6 @@ class TSEInstanceDetail(AbstractModel):
     @property
     def GatewayName(self):
         """网关名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GatewayName
@@ -18833,7 +18534,6 @@ class TSEInstanceDetail(AbstractModel):
     @property
     def CertificateList(self):
         """网关证书列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of GatewayCertificate
         """
         return self._CertificateList
@@ -19795,7 +19495,6 @@ class UpdateCertificateInstanceResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _DeployRecordId: 云资源更新任务ID， DeployRecordId为0表示任务进行中， 重复请求这个接口， 当返回DeployRecordId大于0则表示任务创建成功。 未创建成功则会抛出异常
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeployRecordId: int
         :param _DeployStatus: 更新任务创建状态；1表示创建成功； 0表示当前存在更新中的任务，未创建新的更新任务；返回值DeployRecordId为更新中的任务ID
         :type DeployStatus: int
@@ -19813,7 +19512,6 @@ class UpdateCertificateInstanceResponse(AbstractModel):
     @property
     def DeployRecordId(self):
         """云资源更新任务ID， DeployRecordId为0表示任务进行中， 重复请求这个接口， 当返回DeployRecordId大于0则表示任务创建成功。 未创建成功则会抛出异常
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DeployRecordId
@@ -20107,13 +19805,10 @@ class UpdateRecordDetail(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecretName: str
         :param _EnvId: 环境ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnvId: str
         :param _TCBType: TCB部署类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type TCBType: str
         :param _Url: 监听器Url(clb专属)
-注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
         """
         self._Id = None
@@ -20395,7 +20090,6 @@ class UpdateRecordDetail(AbstractModel):
     @property
     def EnvId(self):
         """环境ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EnvId
@@ -20407,7 +20101,6 @@ class UpdateRecordDetail(AbstractModel):
     @property
     def TCBType(self):
         """TCB部署类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TCBType
@@ -20419,7 +20112,6 @@ class UpdateRecordDetail(AbstractModel):
     @property
     def Url(self):
         """监听器Url(clb专属)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Url
@@ -20574,7 +20266,6 @@ class UpdateRecordInfo(AbstractModel):
         :param _ResourceTypes: 部署资源类型列表
         :type ResourceTypes: list of str
         :param _Regions: 部署地域列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Regions: list of str
         :param _Status: 部署状态
         :type Status: int
@@ -20639,7 +20330,6 @@ class UpdateRecordInfo(AbstractModel):
     @property
     def Regions(self):
         """部署地域列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Regions
@@ -21023,7 +20713,6 @@ class UploadCertificateResponse(AbstractModel):
         :param _CertificateId: 证书 ID。
         :type CertificateId: str
         :param _RepeatCertId: 重复证书的ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type RepeatCertId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -21046,7 +20735,6 @@ class UploadCertificateResponse(AbstractModel):
     @property
     def RepeatCertId(self):
         """重复证书的ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RepeatCertId

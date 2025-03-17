@@ -82,6 +82,57 @@ class ActivateServiceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class Character(AbstractModel):
+    """人物描述
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 人物名称
+        :type Name: str
+        :param _SystemPrompt: 人物对应SystemPrompt
+        :type SystemPrompt: str
+        """
+        self._Name = None
+        self._SystemPrompt = None
+
+    @property
+    def Name(self):
+        """人物名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def SystemPrompt(self):
+        """人物对应SystemPrompt
+        :rtype: str
+        """
+        return self._SystemPrompt
+
+    @SystemPrompt.setter
+    def SystemPrompt(self, SystemPrompt):
+        self._SystemPrompt = SystemPrompt
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._SystemPrompt = params.get("SystemPrompt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ChatCompletionsRequest(AbstractModel):
     """ChatCompletions请求参数结构体
 
@@ -2958,6 +3009,487 @@ class GetTokenCountResponse(AbstractModel):
         self._CharacterCount = params.get("CharacterCount")
         self._Tokens = params.get("Tokens")
         self._RequestId = params.get("RequestId")
+
+
+class GroupChatCompletionsRequest(AbstractModel):
+    """GroupChatCompletions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Model: 模型名称，可选值包括 hunyuan-large-role-group。各模型介绍请阅读 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 中的说明。注意：不同的模型计费不同，请根据 [购买指南](https://cloud.tencent.com/document/product/1729/97731) 按需调用。
+        :type Model: str
+        :param _Messages: 聊天上下文信息。
+        :type Messages: list of GroupMessage
+        :param _Stream: 流式调用开关。
+说明：
+1. 未传值时默认为非流式调用（false）。
+2. 流式调用时以 SSE 协议增量返回结果（返回值取 Choices[n].Delta 中的值，需要拼接增量数据才能获得完整结果）。
+3. 非流式调用时：
+调用方式与普通 HTTP 请求无异。
+接口响应耗时较长，**如需更低时延建议设置为 true**。
+只返回一次最终结果（返回值取 Choices[n].Message 中的值）。
+
+注意：
+通过 SDK 调用时，流式和非流式调用需用**不同的方式**获取返回值，具体参考 SDK 中的注释或示例（在各语言 SDK 代码仓库的 examples/hunyuan/v20230901/ 目录中）。
+        :type Stream: bool
+        :param _TargetCharacterName: 目标人物名称
+        :type TargetCharacterName: str
+        :param _GroupChatConfig: 角色描述
+        :type GroupChatConfig: :class:`tencentcloud.hunyuan.v20230901.models.GroupChatConfig`
+        :param _UserId: 用户ID
+        :type UserId: str
+        :param _SessionId: 对话接口
+        :type SessionId: str
+        """
+        self._Model = None
+        self._Messages = None
+        self._Stream = None
+        self._TargetCharacterName = None
+        self._GroupChatConfig = None
+        self._UserId = None
+        self._SessionId = None
+
+    @property
+    def Model(self):
+        """模型名称，可选值包括 hunyuan-large-role-group。各模型介绍请阅读 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 中的说明。注意：不同的模型计费不同，请根据 [购买指南](https://cloud.tencent.com/document/product/1729/97731) 按需调用。
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def Messages(self):
+        """聊天上下文信息。
+        :rtype: list of GroupMessage
+        """
+        return self._Messages
+
+    @Messages.setter
+    def Messages(self, Messages):
+        self._Messages = Messages
+
+    @property
+    def Stream(self):
+        """流式调用开关。
+说明：
+1. 未传值时默认为非流式调用（false）。
+2. 流式调用时以 SSE 协议增量返回结果（返回值取 Choices[n].Delta 中的值，需要拼接增量数据才能获得完整结果）。
+3. 非流式调用时：
+调用方式与普通 HTTP 请求无异。
+接口响应耗时较长，**如需更低时延建议设置为 true**。
+只返回一次最终结果（返回值取 Choices[n].Message 中的值）。
+
+注意：
+通过 SDK 调用时，流式和非流式调用需用**不同的方式**获取返回值，具体参考 SDK 中的注释或示例（在各语言 SDK 代码仓库的 examples/hunyuan/v20230901/ 目录中）。
+        :rtype: bool
+        """
+        return self._Stream
+
+    @Stream.setter
+    def Stream(self, Stream):
+        self._Stream = Stream
+
+    @property
+    def TargetCharacterName(self):
+        """目标人物名称
+        :rtype: str
+        """
+        return self._TargetCharacterName
+
+    @TargetCharacterName.setter
+    def TargetCharacterName(self, TargetCharacterName):
+        self._TargetCharacterName = TargetCharacterName
+
+    @property
+    def GroupChatConfig(self):
+        """角色描述
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.GroupChatConfig`
+        """
+        return self._GroupChatConfig
+
+    @GroupChatConfig.setter
+    def GroupChatConfig(self, GroupChatConfig):
+        self._GroupChatConfig = GroupChatConfig
+
+    @property
+    def UserId(self):
+        """用户ID
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def SessionId(self):
+        """对话接口
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+
+    def _deserialize(self, params):
+        self._Model = params.get("Model")
+        if params.get("Messages") is not None:
+            self._Messages = []
+            for item in params.get("Messages"):
+                obj = GroupMessage()
+                obj._deserialize(item)
+                self._Messages.append(obj)
+        self._Stream = params.get("Stream")
+        self._TargetCharacterName = params.get("TargetCharacterName")
+        if params.get("GroupChatConfig") is not None:
+            self._GroupChatConfig = GroupChatConfig()
+            self._GroupChatConfig._deserialize(params.get("GroupChatConfig"))
+        self._UserId = params.get("UserId")
+        self._SessionId = params.get("SessionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GroupChatCompletionsResponse(AbstractModel):
+    """GroupChatCompletions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Created: Unix 时间戳，单位为秒。
+        :type Created: int
+        :param _Usage: Token 统计信息。
+按照总 Token 数量计费。
+        :type Usage: :class:`tencentcloud.hunyuan.v20230901.models.Usage`
+        :param _Note: 免责声明。
+        :type Note: str
+        :param _Id: 本次请求的 RequestId。
+        :type Id: str
+        :param _Choices: 回复内容。
+        :type Choices: list of Choice
+        :param _ErrorMsg: 错误信息。
+如果流式返回中服务处理异常，返回该错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: :class:`tencentcloud.hunyuan.v20230901.models.ErrorMsg`
+        :param _SearchInfo: 搜索结果信息
+        :type SearchInfo: :class:`tencentcloud.hunyuan.v20230901.models.SearchInfo`
+        :param _Replaces: 多媒体信息。
+说明：
+1. 可以用多媒体信息替换回复内容里的占位符，得到完整的消息。
+2. 可能会出现回复内容里存在占位符，但是因为审核等原因没有返回多媒体信息。
+        :type Replaces: list of Replace
+        :param _RecommendedQuestions: 推荐问答。
+        :type RecommendedQuestions: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        :type RequestId: str
+        """
+        self._Created = None
+        self._Usage = None
+        self._Note = None
+        self._Id = None
+        self._Choices = None
+        self._ErrorMsg = None
+        self._SearchInfo = None
+        self._Replaces = None
+        self._RecommendedQuestions = None
+        self._RequestId = None
+
+    @property
+    def Created(self):
+        """Unix 时间戳，单位为秒。
+        :rtype: int
+        """
+        return self._Created
+
+    @Created.setter
+    def Created(self, Created):
+        self._Created = Created
+
+    @property
+    def Usage(self):
+        """Token 统计信息。
+按照总 Token 数量计费。
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.Usage`
+        """
+        return self._Usage
+
+    @Usage.setter
+    def Usage(self, Usage):
+        self._Usage = Usage
+
+    @property
+    def Note(self):
+        """免责声明。
+        :rtype: str
+        """
+        return self._Note
+
+    @Note.setter
+    def Note(self, Note):
+        self._Note = Note
+
+    @property
+    def Id(self):
+        """本次请求的 RequestId。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Choices(self):
+        """回复内容。
+        :rtype: list of Choice
+        """
+        return self._Choices
+
+    @Choices.setter
+    def Choices(self, Choices):
+        self._Choices = Choices
+
+    @property
+    def ErrorMsg(self):
+        """错误信息。
+如果流式返回中服务处理异常，返回该错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.ErrorMsg`
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def SearchInfo(self):
+        """搜索结果信息
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.SearchInfo`
+        """
+        return self._SearchInfo
+
+    @SearchInfo.setter
+    def SearchInfo(self, SearchInfo):
+        self._SearchInfo = SearchInfo
+
+    @property
+    def Replaces(self):
+        """多媒体信息。
+说明：
+1. 可以用多媒体信息替换回复内容里的占位符，得到完整的消息。
+2. 可能会出现回复内容里存在占位符，但是因为审核等原因没有返回多媒体信息。
+        :rtype: list of Replace
+        """
+        return self._Replaces
+
+    @Replaces.setter
+    def Replaces(self, Replaces):
+        self._Replaces = Replaces
+
+    @property
+    def RecommendedQuestions(self):
+        """推荐问答。
+        :rtype: list of str
+        """
+        return self._RecommendedQuestions
+
+    @RecommendedQuestions.setter
+    def RecommendedQuestions(self, RecommendedQuestions):
+        self._RecommendedQuestions = RecommendedQuestions
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Created = params.get("Created")
+        if params.get("Usage") is not None:
+            self._Usage = Usage()
+            self._Usage._deserialize(params.get("Usage"))
+        self._Note = params.get("Note")
+        self._Id = params.get("Id")
+        if params.get("Choices") is not None:
+            self._Choices = []
+            for item in params.get("Choices"):
+                obj = Choice()
+                obj._deserialize(item)
+                self._Choices.append(obj)
+        if params.get("ErrorMsg") is not None:
+            self._ErrorMsg = ErrorMsg()
+            self._ErrorMsg._deserialize(params.get("ErrorMsg"))
+        if params.get("SearchInfo") is not None:
+            self._SearchInfo = SearchInfo()
+            self._SearchInfo._deserialize(params.get("SearchInfo"))
+        if params.get("Replaces") is not None:
+            self._Replaces = []
+            for item in params.get("Replaces"):
+                obj = Replace()
+                obj._deserialize(item)
+                self._Replaces.append(obj)
+        self._RecommendedQuestions = params.get("RecommendedQuestions")
+        self._RequestId = params.get("RequestId")
+
+
+class GroupChatConfig(AbstractModel):
+    """群聊配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserName: 人物名称
+        :type UserName: str
+        :param _Description: ### 主题：\n武道修炼与科技创新的碰撞\n\n### 地点：\n布尔玛的实验室\n\n### 故事背景：\n布尔玛正在研发一种新型的龙珠雷达，旨在更精确地定位龙珠的位置。她邀请了孙悟空、天津饭、饺子和雅木茶前来测试新设备。然而，这些武道家们对科技的理解有限，导致了一系列有趣的误解和互动。\n\n### 人物关系：\n- **布尔玛**：天才科学家，负责研发和解释新设备。\n- **孙悟空**：纯粹的战斗狂，对科技一窍不通，但对新事物充满好奇。\n- **天津饭**：严肃自律的武道家，对科技持谨慎态度，但愿意尝试。\n- **饺子**：内向单纯，依赖天津饭，对科技感到困惑和害怕。\n- **雅木茶**：幽默自嘲的前沙漠强盗，对科技有一定了解，但更倾向于轻松调侃。\n\n### 人物目标：\n- **布尔玛**：希望新龙珠雷达能够得到有效测试，并得到反馈以改进。\n- **孙悟空**：希望通过新设备找到更强的对手进行战斗。\n- **天津饭**：希望通过测试新设备提升自己的武道修炼。\n- **饺子**：希望在不引起麻烦的情况下完成任务，并得到天津饭的认可。\n- **雅木茶**：希望通过参与测试证明自己的价值，同时享受与朋友们的互动。\n\n### 场景描述：\n布尔玛在实验室中展示她的新龙珠雷达，解释其工作原理和优势。孙悟空对设备的功能感到兴奋，但完全无法理解技术细节，不断提出天真的问题。天津饭则严肃地询问设备的安全性和可靠性，表现出对科技的谨慎态度。饺子对复杂的设备感到害怕，不断向天津饭寻求确认和安慰。雅木茶则在一旁调侃大家的反应，试图缓解紧张气氛。布尔玛在解释过程中不断被孙悟空的问题打断，感到无奈，但也被他的热情所感染。最终，大家决定一起外出测试新设备，展开一场充满欢笑和冒险的旅程。
+        :type Description: str
+        :param _Characters: 角色描述
+        :type Characters: list of Character
+        """
+        self._UserName = None
+        self._Description = None
+        self._Characters = None
+
+    @property
+    def UserName(self):
+        """人物名称
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Description(self):
+        """### 主题：\n武道修炼与科技创新的碰撞\n\n### 地点：\n布尔玛的实验室\n\n### 故事背景：\n布尔玛正在研发一种新型的龙珠雷达，旨在更精确地定位龙珠的位置。她邀请了孙悟空、天津饭、饺子和雅木茶前来测试新设备。然而，这些武道家们对科技的理解有限，导致了一系列有趣的误解和互动。\n\n### 人物关系：\n- **布尔玛**：天才科学家，负责研发和解释新设备。\n- **孙悟空**：纯粹的战斗狂，对科技一窍不通，但对新事物充满好奇。\n- **天津饭**：严肃自律的武道家，对科技持谨慎态度，但愿意尝试。\n- **饺子**：内向单纯，依赖天津饭，对科技感到困惑和害怕。\n- **雅木茶**：幽默自嘲的前沙漠强盗，对科技有一定了解，但更倾向于轻松调侃。\n\n### 人物目标：\n- **布尔玛**：希望新龙珠雷达能够得到有效测试，并得到反馈以改进。\n- **孙悟空**：希望通过新设备找到更强的对手进行战斗。\n- **天津饭**：希望通过测试新设备提升自己的武道修炼。\n- **饺子**：希望在不引起麻烦的情况下完成任务，并得到天津饭的认可。\n- **雅木茶**：希望通过参与测试证明自己的价值，同时享受与朋友们的互动。\n\n### 场景描述：\n布尔玛在实验室中展示她的新龙珠雷达，解释其工作原理和优势。孙悟空对设备的功能感到兴奋，但完全无法理解技术细节，不断提出天真的问题。天津饭则严肃地询问设备的安全性和可靠性，表现出对科技的谨慎态度。饺子对复杂的设备感到害怕，不断向天津饭寻求确认和安慰。雅木茶则在一旁调侃大家的反应，试图缓解紧张气氛。布尔玛在解释过程中不断被孙悟空的问题打断，感到无奈，但也被他的热情所感染。最终，大家决定一起外出测试新设备，展开一场充满欢笑和冒险的旅程。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Characters(self):
+        """角色描述
+        :rtype: list of Character
+        """
+        return self._Characters
+
+    @Characters.setter
+    def Characters(self, Characters):
+        self._Characters = Characters
+
+
+    def _deserialize(self, params):
+        self._UserName = params.get("UserName")
+        self._Description = params.get("Description")
+        if params.get("Characters") is not None:
+            self._Characters = []
+            for item in params.get("Characters"):
+                obj = Character()
+                obj._deserialize(item)
+                self._Characters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GroupMessage(AbstractModel):
+    """群聊会话内容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Role: 角色，可选值包括 system、user、assistant、 tool。
+        :type Role: str
+        :param _Content: 文本内容
+        :type Content: str
+        :param _Name: 角色名称
+        :type Name: str
+        """
+        self._Role = None
+        self._Content = None
+        self._Name = None
+
+    @property
+    def Role(self):
+        """角色，可选值包括 system、user、assistant、 tool。
+        :rtype: str
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def Content(self):
+        """文本内容
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Name(self):
+        """角色名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._Role = params.get("Role")
+        self._Content = params.get("Content")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class History(AbstractModel):

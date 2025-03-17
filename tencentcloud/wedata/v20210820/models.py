@@ -31508,65 +31508,13 @@ class DescribeReportTaskDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PageNum: 页码
-        :type PageNum: int
-        :param _PageSize: 每页条数
-        :type PageSize: int
         :param _TenantId: 租户id
         :type TenantId: str
-        :param _ProjectId: 项目id
-        :type ProjectId: str
-        :param _TaskId: 任务id
-        :type TaskId: str
-        :param _InstanceId: 实例id
-        :type InstanceId: str
-        :param _JobId: 作业id
-        :type JobId: str
         :param _EngineTaskId: 引擎任务id
         :type EngineTaskId: str
-        :param _ProductSource: 产品模块
-        :type ProductSource: str
-        :param _OnwerUid: 主账号
-        :type OnwerUid: str
-        :param _StartTime: 开始时间
-        :type StartTime: str
-        :param _EndTime: 结束时间
-        :type EndTime: str
         """
-        self._PageNum = None
-        self._PageSize = None
         self._TenantId = None
-        self._ProjectId = None
-        self._TaskId = None
-        self._InstanceId = None
-        self._JobId = None
         self._EngineTaskId = None
-        self._ProductSource = None
-        self._OnwerUid = None
-        self._StartTime = None
-        self._EndTime = None
-
-    @property
-    def PageNum(self):
-        """页码
-        :rtype: int
-        """
-        return self._PageNum
-
-    @PageNum.setter
-    def PageNum(self, PageNum):
-        self._PageNum = PageNum
-
-    @property
-    def PageSize(self):
-        """每页条数
-        :rtype: int
-        """
-        return self._PageSize
-
-    @PageSize.setter
-    def PageSize(self, PageSize):
-        self._PageSize = PageSize
 
     @property
     def TenantId(self):
@@ -31580,50 +31528,6 @@ class DescribeReportTaskDetailRequest(AbstractModel):
         self._TenantId = TenantId
 
     @property
-    def ProjectId(self):
-        """项目id
-        :rtype: str
-        """
-        return self._ProjectId
-
-    @ProjectId.setter
-    def ProjectId(self, ProjectId):
-        self._ProjectId = ProjectId
-
-    @property
-    def TaskId(self):
-        """任务id
-        :rtype: str
-        """
-        return self._TaskId
-
-    @TaskId.setter
-    def TaskId(self, TaskId):
-        self._TaskId = TaskId
-
-    @property
-    def InstanceId(self):
-        """实例id
-        :rtype: str
-        """
-        return self._InstanceId
-
-    @InstanceId.setter
-    def InstanceId(self, InstanceId):
-        self._InstanceId = InstanceId
-
-    @property
-    def JobId(self):
-        """作业id
-        :rtype: str
-        """
-        return self._JobId
-
-    @JobId.setter
-    def JobId(self, JobId):
-        self._JobId = JobId
-
-    @property
     def EngineTaskId(self):
         """引擎任务id
         :rtype: str
@@ -31634,64 +31538,10 @@ class DescribeReportTaskDetailRequest(AbstractModel):
     def EngineTaskId(self, EngineTaskId):
         self._EngineTaskId = EngineTaskId
 
-    @property
-    def ProductSource(self):
-        """产品模块
-        :rtype: str
-        """
-        return self._ProductSource
-
-    @ProductSource.setter
-    def ProductSource(self, ProductSource):
-        self._ProductSource = ProductSource
-
-    @property
-    def OnwerUid(self):
-        """主账号
-        :rtype: str
-        """
-        return self._OnwerUid
-
-    @OnwerUid.setter
-    def OnwerUid(self, OnwerUid):
-        self._OnwerUid = OnwerUid
-
-    @property
-    def StartTime(self):
-        """开始时间
-        :rtype: str
-        """
-        return self._StartTime
-
-    @StartTime.setter
-    def StartTime(self, StartTime):
-        self._StartTime = StartTime
-
-    @property
-    def EndTime(self):
-        """结束时间
-        :rtype: str
-        """
-        return self._EndTime
-
-    @EndTime.setter
-    def EndTime(self, EndTime):
-        self._EndTime = EndTime
-
 
     def _deserialize(self, params):
-        self._PageNum = params.get("PageNum")
-        self._PageSize = params.get("PageSize")
         self._TenantId = params.get("TenantId")
-        self._ProjectId = params.get("ProjectId")
-        self._TaskId = params.get("TaskId")
-        self._InstanceId = params.get("InstanceId")
-        self._JobId = params.get("JobId")
         self._EngineTaskId = params.get("EngineTaskId")
-        self._ProductSource = params.get("ProductSource")
-        self._OnwerUid = params.get("OnwerUid")
-        self._StartTime = params.get("StartTime")
-        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31772,7 +31622,7 @@ class DescribeReportTaskListRequest(AbstractModel):
         :type JobId: str
         :param _EngineTaskId: 引擎任务id
         :type EngineTaskId: str
-        :param _ProductSource: 产品模块
+        :param _ProductSource: 数据来源,DATA_INTEGRATION、DATA_EXPLORATION、DATA_QUALITY、OM_CENTER等
         :type ProductSource: str
         :param _OnwerUid: 主账号
         :type OnwerUid: str
@@ -31884,7 +31734,7 @@ class DescribeReportTaskListRequest(AbstractModel):
 
     @property
     def ProductSource(self):
-        """产品模块
+        """数据来源,DATA_INTEGRATION、DATA_EXPLORATION、DATA_QUALITY、OM_CENTER等
         :rtype: str
         """
         return self._ProductSource
@@ -31957,7 +31807,7 @@ class DescribeReportTaskListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 1
+        :param _Data: 任务列表信息
         :type Data: :class:`tencentcloud.wedata.v20210820.models.ReportTaskListInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -31967,7 +31817,7 @@ class DescribeReportTaskListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """1
+        """任务列表信息
         :rtype: :class:`tencentcloud.wedata.v20210820.models.ReportTaskListInfo`
         """
         return self._Data
@@ -42214,64 +42064,69 @@ class EngineTaskInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EngineSubmitTime: 1
+        :param _EngineSubmitTime: 引擎提交时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type EngineSubmitTime: str
-        :param _EngineExeTime: 1
+        :param _EngineExeTime: 引擎执行时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type EngineExeTime: str
-        :param _EngineExeTimes: 1
+        :param _EngineExeTimes: 引擎执行总时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type EngineExeTimes: int
-        :param _CuConsume: 1
+        :param _CuConsume: cu消耗
 注意：此字段可能返回 null，表示取不到有效值。
         :type CuConsume: int
-        :param _ResourceUsage: 1
+        :param _ResourceUsage: 资源消耗
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceUsage: int
-        :param _EngineName: 1
+        :param _EngineName: 引擎名
 注意：此字段可能返回 null，表示取不到有效值。
         :type EngineName: str
-        :param _EngineExeStatus: 1
+        :param _EngineExeStatus: 引擎执行状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type EngineExeStatus: str
-        :param _TaskKind: 1
+        :param _TaskKind: 任务种类
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskKind: str
-        :param _TaskType: 1
+        :param _TaskType: 任务类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskType: str
-        :param _TaskContent: 1
+        :param _TaskContent: 任务SQL语句
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskContent: str
-        :param _InputBytesSum: 1
+        :param _InputBytesSum: 数据扫描总 bytes
+注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InputBytesSum: int
-        :param _ShuffleReadBytesSum: 1
+        :param _ShuffleReadBytesSum: shuffle read 总 bytes
+注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ShuffleReadBytesSum: int
-        :param _ShuffleReadRecordsSum: 1
+        :param _ShuffleReadRecordsSum: shuffle read 总行数
+注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ShuffleReadRecordsSum: int
-        :param _OutputRecordsSum: 1
+        :param _OutputRecordsSum: 输出总行数
+注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OutputRecordsSum: int
-        :param _OutputBytesSum: 1
+        :param _OutputBytesSum: 输出总 bytes
+注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OutputBytesSum: int
-        :param _OutputFilesNum: 1
+        :param _OutputFilesNum: 输出文件数
 注意：此字段可能返回 null，表示取不到有效值。
         :type OutputFilesNum: int
-        :param _OutputSmallFilesNum: 1
+        :param _OutputSmallFilesNum: 输出小文件数
 注意：此字段可能返回 null，表示取不到有效值。
         :type OutputSmallFilesNum: int
-        :param _WaitTime: 1
+        :param _WaitTime: 执行等待时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type WaitTime: int
-        :param _QueryResultTime: 1
+        :param _QueryResultTime: 查询结果时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type QueryResultTime: int
-        :param _CmdArgs: 1
+        :param _CmdArgs: 入参
 注意：此字段可能返回 null，表示取不到有效值。
         :type CmdArgs: str
         """
@@ -42298,7 +42153,7 @@ class EngineTaskInfo(AbstractModel):
 
     @property
     def EngineSubmitTime(self):
-        """1
+        """引擎提交时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -42310,7 +42165,7 @@ class EngineTaskInfo(AbstractModel):
 
     @property
     def EngineExeTime(self):
-        """1
+        """引擎执行时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -42322,7 +42177,7 @@ class EngineTaskInfo(AbstractModel):
 
     @property
     def EngineExeTimes(self):
-        """1
+        """引擎执行总时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -42334,7 +42189,7 @@ class EngineTaskInfo(AbstractModel):
 
     @property
     def CuConsume(self):
-        """1
+        """cu消耗
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -42346,7 +42201,7 @@ class EngineTaskInfo(AbstractModel):
 
     @property
     def ResourceUsage(self):
-        """1
+        """资源消耗
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -42358,7 +42213,7 @@ class EngineTaskInfo(AbstractModel):
 
     @property
     def EngineName(self):
-        """1
+        """引擎名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -42370,7 +42225,7 @@ class EngineTaskInfo(AbstractModel):
 
     @property
     def EngineExeStatus(self):
-        """1
+        """引擎执行状态
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -42382,7 +42237,7 @@ class EngineTaskInfo(AbstractModel):
 
     @property
     def TaskKind(self):
-        """1
+        """任务种类
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -42394,7 +42249,7 @@ class EngineTaskInfo(AbstractModel):
 
     @property
     def TaskType(self):
-        """1
+        """任务类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -42406,7 +42261,7 @@ class EngineTaskInfo(AbstractModel):
 
     @property
     def TaskContent(self):
-        """1
+        """任务SQL语句
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -42418,7 +42273,8 @@ class EngineTaskInfo(AbstractModel):
 
     @property
     def InputBytesSum(self):
-        """1
+        """数据扫描总 bytes
+注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -42430,7 +42286,8 @@ class EngineTaskInfo(AbstractModel):
 
     @property
     def ShuffleReadBytesSum(self):
-        """1
+        """shuffle read 总 bytes
+注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -42442,7 +42299,8 @@ class EngineTaskInfo(AbstractModel):
 
     @property
     def ShuffleReadRecordsSum(self):
-        """1
+        """shuffle read 总行数
+注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -42454,7 +42312,8 @@ class EngineTaskInfo(AbstractModel):
 
     @property
     def OutputRecordsSum(self):
-        """1
+        """输出总行数
+注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -42466,7 +42325,8 @@ class EngineTaskInfo(AbstractModel):
 
     @property
     def OutputBytesSum(self):
-        """1
+        """输出总 bytes
+注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -42478,7 +42338,7 @@ class EngineTaskInfo(AbstractModel):
 
     @property
     def OutputFilesNum(self):
-        """1
+        """输出文件数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -42490,7 +42350,7 @@ class EngineTaskInfo(AbstractModel):
 
     @property
     def OutputSmallFilesNum(self):
-        """1
+        """输出小文件数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -42502,7 +42362,7 @@ class EngineTaskInfo(AbstractModel):
 
     @property
     def WaitTime(self):
-        """1
+        """执行等待时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -42514,7 +42374,7 @@ class EngineTaskInfo(AbstractModel):
 
     @property
     def QueryResultTime(self):
-        """1
+        """查询结果时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -42526,7 +42386,7 @@ class EngineTaskInfo(AbstractModel):
 
     @property
     def CmdArgs(self):
-        """1
+        """入参
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -61566,6 +61426,9 @@ class Project(AbstractModel):
         :param _SecondModuleList: 二级菜单
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecondModuleList: list of str
+        :param _Owner: 项目负责人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Owner: :class:`tencentcloud.wedata.v20210820.models.BaseUser`
         """
         self._TenantId = None
         self._ProjectId = None
@@ -61582,6 +61445,7 @@ class Project(AbstractModel):
         self._Status = None
         self._Model = None
         self._SecondModuleList = None
+        self._Owner = None
 
     @property
     def TenantId(self):
@@ -61762,6 +61626,18 @@ class Project(AbstractModel):
     def SecondModuleList(self, SecondModuleList):
         self._SecondModuleList = SecondModuleList
 
+    @property
+    def Owner(self):
+        """项目负责人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.BaseUser`
+        """
+        return self._Owner
+
+    @Owner.setter
+    def Owner(self, Owner):
+        self._Owner = Owner
+
 
     def _deserialize(self, params):
         self._TenantId = params.get("TenantId")
@@ -61793,6 +61669,9 @@ class Project(AbstractModel):
         self._Status = params.get("Status")
         self._Model = params.get("Model")
         self._SecondModuleList = params.get("SecondModuleList")
+        if params.get("Owner") is not None:
+            self._Owner = BaseUser()
+            self._Owner._deserialize(params.get("Owner"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -63626,25 +63505,25 @@ class ReportTaskDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EngineTaskId: 1
+        :param _EngineTaskId: 引擎任务id
 注意：此字段可能返回 null，表示取不到有效值。
         :type EngineTaskId: str
-        :param _EngineExeStatus: 1
+        :param _EngineExeStatus: 引擎执行状态，枚举
 注意：此字段可能返回 null，表示取不到有效值。
         :type EngineExeStatus: str
-        :param _EngineExeStartTime: 1
+        :param _EngineExeStartTime: 引擎执行开始时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type EngineExeStartTime: str
-        :param _EngineExeEndTime: 1
+        :param _EngineExeEndTime: 引擎执行结束时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type EngineExeEndTime: str
-        :param _TaskTypeId: 1
+        :param _TaskTypeId: 任务类型id
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskTypeId: int
-        :param _BusinessInfo: 1
+        :param _BusinessInfo: 业务信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessInfo: str
-        :param _EngineTaskInfo: 1
+        :param _EngineTaskInfo: 引擎任务信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type EngineTaskInfo: :class:`tencentcloud.wedata.v20210820.models.EngineTaskInfo`
         """
@@ -63658,7 +63537,7 @@ class ReportTaskDetail(AbstractModel):
 
     @property
     def EngineTaskId(self):
-        """1
+        """引擎任务id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -63670,7 +63549,7 @@ class ReportTaskDetail(AbstractModel):
 
     @property
     def EngineExeStatus(self):
-        """1
+        """引擎执行状态，枚举
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -63682,7 +63561,7 @@ class ReportTaskDetail(AbstractModel):
 
     @property
     def EngineExeStartTime(self):
-        """1
+        """引擎执行开始时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -63694,7 +63573,7 @@ class ReportTaskDetail(AbstractModel):
 
     @property
     def EngineExeEndTime(self):
-        """1
+        """引擎执行结束时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -63706,7 +63585,7 @@ class ReportTaskDetail(AbstractModel):
 
     @property
     def TaskTypeId(self):
-        """1
+        """任务类型id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -63718,7 +63597,7 @@ class ReportTaskDetail(AbstractModel):
 
     @property
     def BusinessInfo(self):
-        """1
+        """业务信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -63730,7 +63609,7 @@ class ReportTaskDetail(AbstractModel):
 
     @property
     def EngineTaskInfo(self):
-        """1
+        """引擎任务信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.wedata.v20210820.models.EngineTaskInfo`
         """
@@ -63768,19 +63647,19 @@ class ReportTaskListInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Rows: 1
+        :param _Rows: 任务列表详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type Rows: list of TaskInfoVo
-        :param _PageNum: 1
+        :param _PageNum: 页码
 注意：此字段可能返回 null，表示取不到有效值。
         :type PageNum: int
-        :param _PageSize: 1
+        :param _PageSize: 每页条数
 注意：此字段可能返回 null，表示取不到有效值。
         :type PageSize: int
-        :param _TotalCount: 1
+        :param _TotalCount: 总记录数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param _TotalPageNumber: 1
+        :param _TotalPageNumber: 总页数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalPageNumber: int
         """
@@ -63792,7 +63671,7 @@ class ReportTaskListInfo(AbstractModel):
 
     @property
     def Rows(self):
-        """1
+        """任务列表详情
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TaskInfoVo
         """
@@ -63804,7 +63683,7 @@ class ReportTaskListInfo(AbstractModel):
 
     @property
     def PageNum(self):
-        """1
+        """页码
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -63816,7 +63695,7 @@ class ReportTaskListInfo(AbstractModel):
 
     @property
     def PageSize(self):
-        """1
+        """每页条数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -63828,7 +63707,7 @@ class ReportTaskListInfo(AbstractModel):
 
     @property
     def TotalCount(self):
-        """1
+        """总记录数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -63840,7 +63719,7 @@ class ReportTaskListInfo(AbstractModel):
 
     @property
     def TotalPageNumber(self):
-        """1
+        """总页数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -79961,58 +79840,58 @@ class TaskInfoVo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AppID: 1
+        :param _AppID: 租户id
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppID: str
-        :param _ProjectId: 1
+        :param _ProjectId: 项目id
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: str
-        :param _TaskId: 1
+        :param _TaskId: 任务id
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
-        :param _TaskName: 1
+        :param _TaskName: 任务名
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskName: str
-        :param _TaskTypeId: 1
+        :param _TaskTypeId: 任务类型id
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskTypeId: int
-        :param _OnwerUid: 1
+        :param _OnwerUid: 主账号id
 注意：此字段可能返回 null，表示取不到有效值。
         :type OnwerUid: str
-        :param _InChargeId: 1
+        :param _InChargeId: 负责人
 注意：此字段可能返回 null，表示取不到有效值。
         :type InChargeId: str
-        :param _InstanceId: 1
+        :param _InstanceId: 实例id
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
-        :param _JobId: 1
+        :param _JobId: jobId
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobId: str
-        :param _EngineType: 1
+        :param _EngineType: 引擎类型，DLC、EMR
 注意：此字段可能返回 null，表示取不到有效值。
         :type EngineType: str
-        :param _EngineName: 1
+        :param _EngineName: 引擎名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type EngineName: str
-        :param _EngineSubType: 1
+        :param _EngineSubType: 引擎子类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type EngineSubType: str
-        :param _EngineTaskId: 1
+        :param _EngineTaskId: 引擎taskId
 注意：此字段可能返回 null，表示取不到有效值。
         :type EngineTaskId: str
-        :param _EngineExeStatus: 1
+        :param _EngineExeStatus: 引擎执行状态，枚举
 注意：此字段可能返回 null，表示取不到有效值。
         :type EngineExeStatus: str
-        :param _EngineExeUser: 1
+        :param _EngineExeUser: 引擎执行用户
 注意：此字段可能返回 null，表示取不到有效值。
         :type EngineExeUser: str
-        :param _EngineExeStartTime: 1
+        :param _EngineExeStartTime: 引擎执行开始时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type EngineExeStartTime: str
-        :param _EngineExeEndTime: 1
+        :param _EngineExeEndTime: 引擎执行结束时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type EngineExeEndTime: str
-        :param _ProductSource: 1
+        :param _ProductSource: 数据来源,DATA_INTEGRATION、DATA_EXPLORATION、DATA_QUALITY、OM_CENTER等
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductSource: str
         """
@@ -80037,7 +79916,7 @@ class TaskInfoVo(AbstractModel):
 
     @property
     def AppID(self):
-        """1
+        """租户id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -80049,7 +79928,7 @@ class TaskInfoVo(AbstractModel):
 
     @property
     def ProjectId(self):
-        """1
+        """项目id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -80061,7 +79940,7 @@ class TaskInfoVo(AbstractModel):
 
     @property
     def TaskId(self):
-        """1
+        """任务id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -80073,7 +79952,7 @@ class TaskInfoVo(AbstractModel):
 
     @property
     def TaskName(self):
-        """1
+        """任务名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -80085,7 +79964,7 @@ class TaskInfoVo(AbstractModel):
 
     @property
     def TaskTypeId(self):
-        """1
+        """任务类型id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -80097,7 +79976,7 @@ class TaskInfoVo(AbstractModel):
 
     @property
     def OnwerUid(self):
-        """1
+        """主账号id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -80109,7 +79988,7 @@ class TaskInfoVo(AbstractModel):
 
     @property
     def InChargeId(self):
-        """1
+        """负责人
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -80121,7 +80000,7 @@ class TaskInfoVo(AbstractModel):
 
     @property
     def InstanceId(self):
-        """1
+        """实例id
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -80133,7 +80012,7 @@ class TaskInfoVo(AbstractModel):
 
     @property
     def JobId(self):
-        """1
+        """jobId
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -80145,7 +80024,7 @@ class TaskInfoVo(AbstractModel):
 
     @property
     def EngineType(self):
-        """1
+        """引擎类型，DLC、EMR
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -80157,7 +80036,7 @@ class TaskInfoVo(AbstractModel):
 
     @property
     def EngineName(self):
-        """1
+        """引擎名称
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -80169,7 +80048,7 @@ class TaskInfoVo(AbstractModel):
 
     @property
     def EngineSubType(self):
-        """1
+        """引擎子类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -80181,7 +80060,7 @@ class TaskInfoVo(AbstractModel):
 
     @property
     def EngineTaskId(self):
-        """1
+        """引擎taskId
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -80193,7 +80072,7 @@ class TaskInfoVo(AbstractModel):
 
     @property
     def EngineExeStatus(self):
-        """1
+        """引擎执行状态，枚举
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -80205,7 +80084,7 @@ class TaskInfoVo(AbstractModel):
 
     @property
     def EngineExeUser(self):
-        """1
+        """引擎执行用户
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -80217,7 +80096,7 @@ class TaskInfoVo(AbstractModel):
 
     @property
     def EngineExeStartTime(self):
-        """1
+        """引擎执行开始时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -80229,7 +80108,7 @@ class TaskInfoVo(AbstractModel):
 
     @property
     def EngineExeEndTime(self):
-        """1
+        """引擎执行结束时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -80241,7 +80120,7 @@ class TaskInfoVo(AbstractModel):
 
     @property
     def ProductSource(self):
-        """1
+        """数据来源,DATA_INTEGRATION、DATA_EXPLORATION、DATA_QUALITY、OM_CENTER等
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

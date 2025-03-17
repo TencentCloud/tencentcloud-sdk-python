@@ -4503,6 +4503,8 @@ class DescribeDBDiagEventsRequest(AbstractModel):
         :type Severities: list of int
         :param _InstanceIds: 实例ID列表。
         :type InstanceIds: list of str
+        :param _Product: 服务产品类型，支持值包括："mysql" - 云数据库 MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
+        :type Product: str
         :param _Offset: 偏移量，默认0。
         :type Offset: int
         :param _Limit: 返回数量，默认20，最大值为50。
@@ -4512,6 +4514,7 @@ class DescribeDBDiagEventsRequest(AbstractModel):
         self._EndTime = None
         self._Severities = None
         self._InstanceIds = None
+        self._Product = None
         self._Offset = None
         self._Limit = None
 
@@ -4560,6 +4563,17 @@ class DescribeDBDiagEventsRequest(AbstractModel):
         self._InstanceIds = InstanceIds
 
     @property
+    def Product(self):
+        """服务产品类型，支持值包括："mysql" - 云数据库 MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
     def Offset(self):
         """偏移量，默认0。
         :rtype: int
@@ -4587,6 +4601,7 @@ class DescribeDBDiagEventsRequest(AbstractModel):
         self._EndTime = params.get("EndTime")
         self._Severities = params.get("Severities")
         self._InstanceIds = params.get("InstanceIds")
+        self._Product = params.get("Product")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         memeber_set = set(params.keys())

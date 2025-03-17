@@ -7830,7 +7830,7 @@ class DescribeReleaseRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         :param _ReleaseBizId: 发布详情
         :type ReleaseBizId: str
@@ -7840,7 +7840,7 @@ class DescribeReleaseRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """机器人ID
+        """应用ID
         :rtype: str
         """
         return self._BotBizId
@@ -7885,7 +7885,7 @@ class DescribeReleaseResponse(AbstractModel):
         :type CreateTime: str
         :param _Description: 发布描述
         :type Description: str
-        :param _Status: 发布状态(1待发布 2发布中 3发布成功 4发布失败 5发布中 6发布中 7发布失败 9发布暂停)
+        :param _Status: 发布状态(1待发布 2发布中 3发布成功 4发布失败 5发布中(审核中) 6发布中(审核完成) 7发布失败(审核失败) 9发布暂停)
         :type Status: int
         :param _StatusDesc: 发布状态描述
         :type StatusDesc: str
@@ -7922,7 +7922,7 @@ class DescribeReleaseResponse(AbstractModel):
 
     @property
     def Status(self):
-        """发布状态(1待发布 2发布中 3发布成功 4发布失败 5发布中 6发布中 7发布失败 9发布暂停)
+        """发布状态(1待发布 2发布中 3发布成功 4发布失败 5发布中(审核中) 6发布中(审核完成) 7发布失败(审核失败) 9发布暂停)
         :rtype: int
         """
         return self._Status
@@ -23842,7 +23842,7 @@ class RunReRankRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Query: 模型名称, 必填，默认: lke-reranker-base
+        :param _Query: 查询内容，必填
         :type Query: str
         :param _Docs: 文档列表，必填，最多20个
         :type Docs: list of str
@@ -23861,7 +23861,7 @@ class RunReRankRequest(AbstractModel):
 
     @property
     def Query(self):
-        """模型名称, 必填，默认: lke-reranker-base
+        """查询内容，必填
         :rtype: str
         """
         return self._Query

@@ -421,7 +421,9 @@ class LighthouseClient(AbstractClient):
 
 
     def DeleteBlueprints(self, request):
-        """本接口 (DeleteBlueprints) 用于删除镜像。
+        """本接口 (DeleteBlueprints) 用于删除镜像。可删除的镜像应满足如下条件：
+        1、删除镜像接口需要镜像状态为NORMAL（正常）、ISOLATED（已隔离）、CREATEFAILED（创建失败）、SYNCING_FAILED（目的地域同步失败），其他状态下的镜像不支持删除操作。镜像状态，可通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回值中的BlueprintState获取。
+        2、仅支持删除自定义镜像。
 
         :param request: Request instance for DeleteBlueprints.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.DeleteBlueprintsRequest`
@@ -547,6 +549,7 @@ class LighthouseClient(AbstractClient):
 
     def DeleteKeyPairs(self, request):
         """本接口（DeleteKeyPairs）用于删除密钥对。
+        - 不能删除已被实例或镜像引用的密钥对，删除之前需要确保没有被任何实例和镜像引用。
 
         :param request: Request instance for DeleteKeyPairs.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.DeleteKeyPairsRequest`
@@ -639,7 +642,7 @@ class LighthouseClient(AbstractClient):
 
 
     def DescribeBlueprints(self, request):
-        """本接口（DescribeBlueprints）用于查询镜像信息。
+        """本接口（DescribeBlueprints）用于查询镜像信息。该接口返回的镜像类型有：自定义镜像、共享镜像、公共镜像。
 
         :param request: Request instance for DescribeBlueprints.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeBlueprintsRequest`
@@ -1197,7 +1200,7 @@ class LighthouseClient(AbstractClient):
     def DescribeInstanceVncUrl(self, request):
         """本接口 ( DescribeInstanceVncUrl ) 用于查询实例管理终端地址，获取的地址可用于实例的 VNC 登录。
 
-        * 处于 `STOPPED` 状态的机器无法使用此功能。
+        * 仅处于 `RUNNING`，`RESCUE_MODE` 状态的机器，且当前机器无变更中操作，才可使用此功能。
         * 管理终端地址的有效期为 15 秒，调用接口成功后如果 15 秒内不使用该链接进行访问，管理终端地址自动失效，您需要重新查询。
         * 管理终端地址一旦被访问，将自动失效，您需要重新查询。
         * 如果连接断开，每分钟内重新连接的次数不能超过 30 次。
@@ -1895,6 +1898,11 @@ class LighthouseClient(AbstractClient):
 
     def ModifyDisksRenewFlag(self, request):
         """本接口（ModifyDisksRenewFlag）用于修改云硬盘续费标识。
+        云硬盘需要处于以下状态：
+        <li> ATTACHED （已挂载）</li>
+        <li> UNATTACHED （待挂载）</li>
+        <li> ATTACHING （挂载中） </li>
+        <li> DETACHING （卸载中）</li>
 
         :param request: Request instance for ModifyDisksRenewFlag.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.ModifyDisksRenewFlagRequest`
@@ -2634,6 +2642,7 @@ class LighthouseClient(AbstractClient):
 
     def TerminateDisks(self, request):
         """本接口（TerminateDisks）用于销毁一个或多个云硬盘。
+        云硬盘状态必须处于SHUTDOWN（已隔离）状态。
 
         :param request: Request instance for TerminateDisks.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.TerminateDisksRequest`

@@ -912,7 +912,6 @@ class DedicatedCluster(AbstractModel):
         :param _Zone: 专用集群所属可用区名称。
         :type Zone: str
         :param _Description: 专用集群的描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _Name: 专用集群的名称。
         :type Name: str
@@ -922,6 +921,8 @@ class DedicatedCluster(AbstractModel):
         :type CreateTime: str
         :param _SiteId: 专用集群所属的站点id。
         :type SiteId: str
+        :param _RunningStatus: 专用集群的运营状态
+        :type RunningStatus: str
         """
         self._DedicatedClusterId = None
         self._Zone = None
@@ -930,6 +931,7 @@ class DedicatedCluster(AbstractModel):
         self._LifecycleStatus = None
         self._CreateTime = None
         self._SiteId = None
+        self._RunningStatus = None
 
     @property
     def DedicatedClusterId(self):
@@ -956,7 +958,6 @@ class DedicatedCluster(AbstractModel):
     @property
     def Description(self):
         """专用集群的描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -1009,6 +1010,17 @@ class DedicatedCluster(AbstractModel):
     def SiteId(self, SiteId):
         self._SiteId = SiteId
 
+    @property
+    def RunningStatus(self):
+        """专用集群的运营状态
+        :rtype: str
+        """
+        return self._RunningStatus
+
+    @RunningStatus.setter
+    def RunningStatus(self, RunningStatus):
+        self._RunningStatus = RunningStatus
+
 
     def _deserialize(self, params):
         self._DedicatedClusterId = params.get("DedicatedClusterId")
@@ -1018,6 +1030,7 @@ class DedicatedCluster(AbstractModel):
         self._LifecycleStatus = params.get("LifecycleStatus")
         self._CreateTime = params.get("CreateTime")
         self._SiteId = params.get("SiteId")
+        self._RunningStatus = params.get("RunningStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1304,45 +1317,43 @@ class DedicatedClusterOrder(AbstractModel):
         :param _Action: 订单类型，创建CREATE或扩容EXTEND
         :type Action: str
         :param _DedicatedClusterOrderItems: 子订单详情列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type DedicatedClusterOrderItems: list of DedicatedClusterOrderItem
         :param _Cpu: cpu值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Cpu: int
         :param _Mem: mem值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Mem: int
         :param _Gpu: gpu值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Gpu: int
         :param _PayStatus: 0代表未支付，1代表已支付
-注意：此字段可能返回 null，表示取不到有效值。
         :type PayStatus: int
         :param _PayType: 支付方式，一次性、按月、按年
-注意：此字段可能返回 null，表示取不到有效值。
         :type PayType: str
         :param _TimeUnit: 购买时长的单位
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimeUnit: str
         :param _TimeSpan: 购买时长
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimeSpan: int
         :param _OrderType: 订单类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type OrderType: str
         :param _CheckStatus: 验收状态
+注意：此字段可能返回 null，表示取不到有效值。
         :type CheckStatus: str
         :param _DeliverExpectTime: 交付预期时间
+注意：此字段可能返回 null，表示取不到有效值。
         :type DeliverExpectTime: str
         :param _DeliverFinishTime: 交付实际完成时间
+注意：此字段可能返回 null，表示取不到有效值。
         :type DeliverFinishTime: str
         :param _CheckExpectTime: 验收预期时间
+注意：此字段可能返回 null，表示取不到有效值。
         :type CheckExpectTime: str
         :param _CheckFinishTime: 验收实际完成时间
+注意：此字段可能返回 null，表示取不到有效值。
         :type CheckFinishTime: str
         :param _OrderSLA: 订单SLA
+注意：此字段可能返回 null，表示取不到有效值。
         :type OrderSLA: str
         :param _OrderPayPlan: 订单支付计划
+注意：此字段可能返回 null，表示取不到有效值。
         :type OrderPayPlan: str
         """
         self._DedicatedClusterId = None
@@ -1497,7 +1508,6 @@ class DedicatedClusterOrder(AbstractModel):
     @property
     def DedicatedClusterOrderItems(self):
         """子订单详情列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DedicatedClusterOrderItem
         """
         return self._DedicatedClusterOrderItems
@@ -1509,7 +1519,6 @@ class DedicatedClusterOrder(AbstractModel):
     @property
     def Cpu(self):
         """cpu值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Cpu
@@ -1521,7 +1530,6 @@ class DedicatedClusterOrder(AbstractModel):
     @property
     def Mem(self):
         """mem值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Mem
@@ -1533,7 +1541,6 @@ class DedicatedClusterOrder(AbstractModel):
     @property
     def Gpu(self):
         """gpu值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Gpu
@@ -1545,7 +1552,6 @@ class DedicatedClusterOrder(AbstractModel):
     @property
     def PayStatus(self):
         """0代表未支付，1代表已支付
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PayStatus
@@ -1557,7 +1563,6 @@ class DedicatedClusterOrder(AbstractModel):
     @property
     def PayType(self):
         """支付方式，一次性、按月、按年
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PayType
@@ -1569,7 +1574,6 @@ class DedicatedClusterOrder(AbstractModel):
     @property
     def TimeUnit(self):
         """购买时长的单位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TimeUnit
@@ -1581,7 +1585,6 @@ class DedicatedClusterOrder(AbstractModel):
     @property
     def TimeSpan(self):
         """购买时长
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TimeSpan
@@ -1593,7 +1596,6 @@ class DedicatedClusterOrder(AbstractModel):
     @property
     def OrderType(self):
         """订单类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OrderType
@@ -1605,6 +1607,7 @@ class DedicatedClusterOrder(AbstractModel):
     @property
     def CheckStatus(self):
         """验收状态
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CheckStatus
@@ -1616,6 +1619,7 @@ class DedicatedClusterOrder(AbstractModel):
     @property
     def DeliverExpectTime(self):
         """交付预期时间
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeliverExpectTime
@@ -1627,6 +1631,7 @@ class DedicatedClusterOrder(AbstractModel):
     @property
     def DeliverFinishTime(self):
         """交付实际完成时间
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeliverFinishTime
@@ -1638,6 +1643,7 @@ class DedicatedClusterOrder(AbstractModel):
     @property
     def CheckExpectTime(self):
         """验收预期时间
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CheckExpectTime
@@ -1649,6 +1655,7 @@ class DedicatedClusterOrder(AbstractModel):
     @property
     def CheckFinishTime(self):
         """验收实际完成时间
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CheckFinishTime
@@ -1660,6 +1667,7 @@ class DedicatedClusterOrder(AbstractModel):
     @property
     def OrderSLA(self):
         """订单SLA
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OrderSLA
@@ -1671,6 +1679,7 @@ class DedicatedClusterOrder(AbstractModel):
     @property
     def OrderPayPlan(self):
         """订单支付计划
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OrderPayPlan
@@ -1763,13 +1772,10 @@ class DedicatedClusterOrderItem(AbstractModel):
         :param _TypeName: 规格英文名
         :type TypeName: str
         :param _ComputeFormat: 规格展示
-注意：此字段可能返回 null，表示取不到有效值。
         :type ComputeFormat: str
         :param _TypeFamily: 规格类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type TypeFamily: str
         :param _SubOrderPayStatus: 0未支付，1已支付
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubOrderPayStatus: int
         """
         self._DedicatedClusterTypeId = None
@@ -1971,7 +1977,6 @@ class DedicatedClusterOrderItem(AbstractModel):
     @property
     def ComputeFormat(self):
         """规格展示
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ComputeFormat
@@ -1983,7 +1988,6 @@ class DedicatedClusterOrderItem(AbstractModel):
     @property
     def TypeFamily(self):
         """规格类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TypeFamily
@@ -1995,7 +1999,6 @@ class DedicatedClusterOrderItem(AbstractModel):
     @property
     def SubOrderPayStatus(self):
         """0未支付，1已支付
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SubOrderPayStatus
@@ -2045,7 +2048,6 @@ class DedicatedClusterType(AbstractModel):
         :param _DedicatedClusterTypeId: 配置id
         :type DedicatedClusterTypeId: str
         :param _Description: 配置描述，对应描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _Name: 配置名称，对应计算资源类型
         :type Name: str
@@ -2089,7 +2091,6 @@ class DedicatedClusterType(AbstractModel):
     @property
     def Description(self):
         """配置描述，对应描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -4321,7 +4322,6 @@ class HostInfo(AbstractModel):
         :param _ExpireTime: 到期时间
         :type ExpireTime: str
         :param _HostId: 宿主机id
-注意：此字段可能返回 null，表示取不到有效值。
         :type HostId: str
         """
         self._HostIp = None
@@ -4449,7 +4449,6 @@ class HostInfo(AbstractModel):
     @property
     def HostId(self):
         """宿主机id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HostId
@@ -4698,10 +4697,8 @@ class InBandwidth(AbstractModel):
     def __init__(self):
         r"""
         :param _Timestamps: 时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type Timestamps: list of float
         :param _Values: 时间对应的值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Values: list of float
         """
         self._Timestamps = None
@@ -4710,7 +4707,6 @@ class InBandwidth(AbstractModel):
     @property
     def Timestamps(self):
         """时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of float
         """
         return self._Timestamps
@@ -4722,7 +4718,6 @@ class InBandwidth(AbstractModel):
     @property
     def Values(self):
         """时间对应的值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of float
         """
         return self._Values
@@ -4753,16 +4748,12 @@ class LocalNetInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Protocol: 协议
-注意：此字段可能返回 null，表示取不到有效值。
         :type Protocol: str
         :param _VpcId: 网络id
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
         :param _BGPRoute: 路由信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type BGPRoute: str
         :param _LocalIp: 本地IP
-注意：此字段可能返回 null，表示取不到有效值。
         :type LocalIp: str
         """
         self._Protocol = None
@@ -4773,7 +4764,6 @@ class LocalNetInfo(AbstractModel):
     @property
     def Protocol(self):
         """协议
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Protocol
@@ -4785,7 +4775,6 @@ class LocalNetInfo(AbstractModel):
     @property
     def VpcId(self):
         """网络id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VpcId
@@ -4797,7 +4786,6 @@ class LocalNetInfo(AbstractModel):
     @property
     def BGPRoute(self):
         """路由信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BGPRoute
@@ -4809,7 +4797,6 @@ class LocalNetInfo(AbstractModel):
     @property
     def LocalIp(self):
         """本地IP
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LocalIp
@@ -5534,10 +5521,8 @@ class OutBandwidth(AbstractModel):
     def __init__(self):
         r"""
         :param _Timestamps: 时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type Timestamps: list of float
         :param _Values: 对应时间的值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Values: list of float
         """
         self._Timestamps = None
@@ -5546,7 +5531,6 @@ class OutBandwidth(AbstractModel):
     @property
     def Timestamps(self):
         """时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of float
         """
         return self._Timestamps
@@ -5558,7 +5542,6 @@ class OutBandwidth(AbstractModel):
     @property
     def Values(self):
         """对应时间的值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of float
         """
         return self._Values
@@ -5645,40 +5628,28 @@ class SetInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _SetId: 云硬盘仓库id
-注意：此字段可能返回 null，表示取不到有效值。
         :type SetId: str
         :param _SetName: 云硬盘仓库名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type SetName: str
         :param _SetType: 云硬盘仓库类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type SetType: str
         :param _SetSize: 云硬盘仓库容量
-注意：此字段可能返回 null，表示取不到有效值。
         :type SetSize: float
         :param _SetStatus: 云硬盘仓库状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type SetStatus: str
         :param _CreateTime: 云硬盘仓库创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _ReadTraffic: 读流量
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReadTraffic: :class:`tencentcloud.cdc.v20201214.models.DetailData`
         :param _WriteTraffic: 写流量
-注意：此字段可能返回 null，表示取不到有效值。
         :type WriteTraffic: :class:`tencentcloud.cdc.v20201214.models.DetailData`
         :param _ReadIO: 读IO
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReadIO: :class:`tencentcloud.cdc.v20201214.models.DetailData`
         :param _WriteIO: 写IO
-注意：此字段可能返回 null，表示取不到有效值。
         :type WriteIO: :class:`tencentcloud.cdc.v20201214.models.DetailData`
         :param _Await: 平均等待时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type Await: :class:`tencentcloud.cdc.v20201214.models.DetailData`
         :param _Util: 利用率
-注意：此字段可能返回 null，表示取不到有效值。
         :type Util: :class:`tencentcloud.cdc.v20201214.models.DetailData`
         """
         self._SetId = None
@@ -5697,7 +5668,6 @@ class SetInfo(AbstractModel):
     @property
     def SetId(self):
         """云硬盘仓库id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SetId
@@ -5709,7 +5679,6 @@ class SetInfo(AbstractModel):
     @property
     def SetName(self):
         """云硬盘仓库名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SetName
@@ -5721,7 +5690,6 @@ class SetInfo(AbstractModel):
     @property
     def SetType(self):
         """云硬盘仓库类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SetType
@@ -5733,7 +5701,6 @@ class SetInfo(AbstractModel):
     @property
     def SetSize(self):
         """云硬盘仓库容量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._SetSize
@@ -5745,7 +5712,6 @@ class SetInfo(AbstractModel):
     @property
     def SetStatus(self):
         """云硬盘仓库状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SetStatus
@@ -5757,7 +5723,6 @@ class SetInfo(AbstractModel):
     @property
     def CreateTime(self):
         """云硬盘仓库创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -5769,7 +5734,6 @@ class SetInfo(AbstractModel):
     @property
     def ReadTraffic(self):
         """读流量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdc.v20201214.models.DetailData`
         """
         return self._ReadTraffic
@@ -5781,7 +5745,6 @@ class SetInfo(AbstractModel):
     @property
     def WriteTraffic(self):
         """写流量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdc.v20201214.models.DetailData`
         """
         return self._WriteTraffic
@@ -5793,7 +5756,6 @@ class SetInfo(AbstractModel):
     @property
     def ReadIO(self):
         """读IO
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdc.v20201214.models.DetailData`
         """
         return self._ReadIO
@@ -5805,7 +5767,6 @@ class SetInfo(AbstractModel):
     @property
     def WriteIO(self):
         """写IO
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdc.v20201214.models.DetailData`
         """
         return self._WriteIO
@@ -5817,7 +5778,6 @@ class SetInfo(AbstractModel):
     @property
     def Await(self):
         """平均等待时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdc.v20201214.models.DetailData`
         """
         return self._Await
@@ -5829,7 +5789,6 @@ class SetInfo(AbstractModel):
     @property
     def Util(self):
         """利用率
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdc.v20201214.models.DetailData`
         """
         return self._Util
@@ -5886,7 +5845,6 @@ class Site(AbstractModel):
         :param _SiteId: 站点id
         :type SiteId: str
         :param _Description: 站点描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _CreateTime: 站点创建时间
         :type CreateTime: str
@@ -5921,7 +5879,6 @@ class Site(AbstractModel):
     @property
     def Description(self):
         """站点描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -6362,7 +6319,6 @@ class VpngwBandwidthData(AbstractModel):
     def __init__(self):
         r"""
         :param _OutBandwidth: 出带宽流量
-注意：此字段可能返回 null，表示取不到有效值。
         :type OutBandwidth: :class:`tencentcloud.cdc.v20201214.models.OutBandwidth`
         :param _InBandwidth: 入带宽流量
         :type InBandwidth: :class:`tencentcloud.cdc.v20201214.models.InBandwidth`
@@ -6373,7 +6329,6 @@ class VpngwBandwidthData(AbstractModel):
     @property
     def OutBandwidth(self):
         """出带宽流量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdc.v20201214.models.OutBandwidth`
         """
         return self._OutBandwidth

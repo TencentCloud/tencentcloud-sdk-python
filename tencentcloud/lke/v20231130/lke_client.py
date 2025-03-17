@@ -2198,7 +2198,7 @@ class LkeClient(AbstractClient):
 
 
     def RunReRank(self, request):
-        """基于知识引擎精调模型技术的rerank模型，支持对多路召回的结果进行重排序，根据query与切片内容的相关性，按分数由高到低对切片进行排序，并输出对应的打分结果。
+        """基于知识引擎精调模型技术的rerank模型，支持对多路召回的结果进行重排序，根据query与切片内容的相关性，按分数由高到低对切片进行排序，并输出对应的打分结果。（这个接口已下线，请使用新接口，接口文档：https://cloud.tencent.com/document/product/1772/115339）。
 
         :param request: Request instance for RunReRank.
         :type request: :class:`tencentcloud.lke.v20231130.models.RunReRankRequest`

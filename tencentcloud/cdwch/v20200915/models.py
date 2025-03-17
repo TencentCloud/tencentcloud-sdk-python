@@ -1089,6 +1089,8 @@ SpecName从DescribeSpec接口中返回的CommonSpec.Name（ZK节点）获取
         :type CommonSpec: :class:`tencentcloud.cdwch.v20200915.models.NodeSpec`
         :param _TagItems: 标签列表
         :type TagItems: list of Tag
+        :param _SecondaryZoneInfo: 副可用去信息
+        :type SecondaryZoneInfo: list of SecondaryZoneInfo
         """
         self._Zone = None
         self._HaFlag = None
@@ -1105,6 +1107,7 @@ SpecName从DescribeSpec接口中返回的CommonSpec.Name（ZK节点）获取
         self._HAZk = None
         self._CommonSpec = None
         self._TagItems = None
+        self._SecondaryZoneInfo = None
 
     @property
     def Zone(self):
@@ -1277,6 +1280,17 @@ SpecName从DescribeSpec接口中返回的CommonSpec.Name（ZK节点）获取
     def TagItems(self, TagItems):
         self._TagItems = TagItems
 
+    @property
+    def SecondaryZoneInfo(self):
+        """副可用去信息
+        :rtype: list of SecondaryZoneInfo
+        """
+        return self._SecondaryZoneInfo
+
+    @SecondaryZoneInfo.setter
+    def SecondaryZoneInfo(self, SecondaryZoneInfo):
+        self._SecondaryZoneInfo = SecondaryZoneInfo
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -1307,6 +1321,12 @@ SpecName从DescribeSpec接口中返回的CommonSpec.Name（ZK节点）获取
                 obj = Tag()
                 obj._deserialize(item)
                 self._TagItems.append(obj)
+        if params.get("SecondaryZoneInfo") is not None:
+            self._SecondaryZoneInfo = []
+            for item in params.get("SecondaryZoneInfo"):
+                obj = SecondaryZoneInfo()
+                obj._deserialize(item)
+                self._SecondaryZoneInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3094,6 +3114,8 @@ class DescribeInstancesNewRequest(AbstractModel):
         :type SearchTags: list of SearchTags
         :param _IsSimple: 信息详细与否
         :type IsSimple: bool
+        :param _Vips: vip列表
+        :type Vips: list of str
         """
         self._SearchInstanceId = None
         self._SearchInstanceName = None
@@ -3101,6 +3123,7 @@ class DescribeInstancesNewRequest(AbstractModel):
         self._Limit = None
         self._SearchTags = None
         self._IsSimple = None
+        self._Vips = None
 
     @property
     def SearchInstanceId(self):
@@ -3168,6 +3191,17 @@ class DescribeInstancesNewRequest(AbstractModel):
     def IsSimple(self, IsSimple):
         self._IsSimple = IsSimple
 
+    @property
+    def Vips(self):
+        """vip列表
+        :rtype: list of str
+        """
+        return self._Vips
+
+    @Vips.setter
+    def Vips(self, Vips):
+        self._Vips = Vips
+
 
     def _deserialize(self, params):
         self._SearchInstanceId = params.get("SearchInstanceId")
@@ -3181,6 +3215,7 @@ class DescribeInstancesNewRequest(AbstractModel):
                 obj._deserialize(item)
                 self._SearchTags.append(obj)
         self._IsSimple = params.get("IsSimple")
+        self._Vips = params.get("Vips")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7413,6 +7448,95 @@ class SearchTags(AbstractModel):
         self._TagKey = params.get("TagKey")
         self._TagValue = params.get("TagValue")
         self._AllValue = params.get("AllValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SecondaryZoneInfo(AbstractModel):
+    """副可用区详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SecondaryZone: 副可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecondaryZone: str
+        :param _SecondarySubnet: 可用区可用的子网id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecondarySubnet: str
+        :param _UserIpNum: 可用区可用的子网可用ip的数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserIpNum: str
+        :param _SecondaryUserSubnetIPNum: 可用区可用的子网可用ip的数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecondaryUserSubnetIPNum: int
+        """
+        self._SecondaryZone = None
+        self._SecondarySubnet = None
+        self._UserIpNum = None
+        self._SecondaryUserSubnetIPNum = None
+
+    @property
+    def SecondaryZone(self):
+        """副可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SecondaryZone
+
+    @SecondaryZone.setter
+    def SecondaryZone(self, SecondaryZone):
+        self._SecondaryZone = SecondaryZone
+
+    @property
+    def SecondarySubnet(self):
+        """可用区可用的子网id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SecondarySubnet
+
+    @SecondarySubnet.setter
+    def SecondarySubnet(self, SecondarySubnet):
+        self._SecondarySubnet = SecondarySubnet
+
+    @property
+    def UserIpNum(self):
+        """可用区可用的子网可用ip的数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UserIpNum
+
+    @UserIpNum.setter
+    def UserIpNum(self, UserIpNum):
+        self._UserIpNum = UserIpNum
+
+    @property
+    def SecondaryUserSubnetIPNum(self):
+        """可用区可用的子网可用ip的数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SecondaryUserSubnetIPNum
+
+    @SecondaryUserSubnetIPNum.setter
+    def SecondaryUserSubnetIPNum(self, SecondaryUserSubnetIPNum):
+        self._SecondaryUserSubnetIPNum = SecondaryUserSubnetIPNum
+
+
+    def _deserialize(self, params):
+        self._SecondaryZone = params.get("SecondaryZone")
+        self._SecondarySubnet = params.get("SecondarySubnet")
+        self._UserIpNum = params.get("UserIpNum")
+        self._SecondaryUserSubnetIPNum = params.get("SecondaryUserSubnetIPNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

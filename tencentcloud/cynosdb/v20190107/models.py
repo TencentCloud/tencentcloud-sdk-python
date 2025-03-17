@@ -836,16 +836,12 @@ class AddInstancesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TranId: 冻结流水，一次开通一个冻结流水。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TranId: str
         :param _DealNames: 后付费订单号。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DealNames: list of str
         :param _ResourceIds: 发货资源id列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceIds: list of str
         :param _BigDealIds: 大订单号
-注意：此字段可能返回 null，表示取不到有效值。
         :type BigDealIds: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -859,7 +855,6 @@ class AddInstancesResponse(AbstractModel):
     @property
     def TranId(self):
         """冻结流水，一次开通一个冻结流水。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TranId
@@ -871,7 +866,6 @@ class AddInstancesResponse(AbstractModel):
     @property
     def DealNames(self):
         """后付费订单号。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._DealNames
@@ -883,7 +877,6 @@ class AddInstancesResponse(AbstractModel):
     @property
     def ResourceIds(self):
         """发货资源id列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._ResourceIds
@@ -895,7 +888,6 @@ class AddInstancesResponse(AbstractModel):
     @property
     def BigDealIds(self):
         """大订单号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._BigDealIds
@@ -2738,15 +2730,12 @@ class BizTaskInfo(AbstractModel):
         :param _ClusterId: 集群id
         :type ClusterId: str
         :param _Region: 地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         :param _CreateTime: 任务创建时间
         :type CreateTime: str
         :param _DelayTime: 延迟执行时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type DelayTime: str
         :param _ErrMsg: 任务失败信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrMsg: str
         :param _FlowId: 异步任务流id
         :type FlowId: int
@@ -2788,22 +2777,17 @@ class BizTaskInfo(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyParamsData: list of ModifyParamsData
         :param _CreateClustersData: 创建集群任务信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateClustersData: :class:`tencentcloud.cynosdb.v20190107.models.CreateClustersData`
         :param _RollbackData: 集群回档任务信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type RollbackData: :class:`tencentcloud.cynosdb.v20190107.models.RollbackData`
         :param _ModifyInstanceData: 实例变配任务信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyInstanceData: :class:`tencentcloud.cynosdb.v20190107.models.ModifyInstanceData`
         :param _ManualBackupData: 手动备份任务信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ManualBackupData: :class:`tencentcloud.cynosdb.v20190107.models.ManualBackupData`
         :param _ModifyDbVersionData: 修改内核版本任务信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyDbVersionData: :class:`tencentcloud.cynosdb.v20190107.models.ModifyDbVersionData`
         :param _ClusterSlaveData: 集群可用区信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterSlaveData: :class:`tencentcloud.cynosdb.v20190107.models.ClusterSlaveData`
         :param _SwitchClusterLogBin: 转换集群日志
 注意：此字段可能返回 null，表示取不到有效值。
@@ -2812,11 +2796,9 @@ class BizTaskInfo(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyInstanceParamsData: :class:`tencentcloud.cynosdb.v20190107.models.BizTaskModifyParamsData`
         :param _TaskMaintainInfo: 维护时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskMaintainInfo: :class:`tencentcloud.cynosdb.v20190107.models.TaskMaintainInfo`
         :param _InstanceCLSDeliveryInfos: 实例日志投递信息
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceCLSDeliveryInfos: list of InstanceCLSDeliveryInfo
         :param _TaskProgressInfo: 任务进度信息
         :type TaskProgressInfo: :class:`tencentcloud.cynosdb.v20190107.models.TaskProgressInfo`
@@ -2895,7 +2877,6 @@ class BizTaskInfo(AbstractModel):
     @property
     def Region(self):
         """地域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Region
@@ -2918,7 +2899,6 @@ class BizTaskInfo(AbstractModel):
     @property
     def DelayTime(self):
         """延迟执行时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DelayTime
@@ -2930,7 +2910,6 @@ class BizTaskInfo(AbstractModel):
     @property
     def ErrMsg(self):
         """任务失败信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrMsg
@@ -3160,7 +3139,6 @@ class BizTaskInfo(AbstractModel):
     @property
     def CreateClustersData(self):
         """创建集群任务信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.CreateClustersData`
         """
         return self._CreateClustersData
@@ -3172,7 +3150,6 @@ class BizTaskInfo(AbstractModel):
     @property
     def RollbackData(self):
         """集群回档任务信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.RollbackData`
         """
         return self._RollbackData
@@ -3184,7 +3161,6 @@ class BizTaskInfo(AbstractModel):
     @property
     def ModifyInstanceData(self):
         """实例变配任务信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyInstanceData`
         """
         return self._ModifyInstanceData
@@ -3208,7 +3184,6 @@ class BizTaskInfo(AbstractModel):
     @property
     def ModifyDbVersionData(self):
         """修改内核版本任务信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyDbVersionData`
         """
         return self._ModifyDbVersionData
@@ -3220,7 +3195,6 @@ class BizTaskInfo(AbstractModel):
     @property
     def ClusterSlaveData(self):
         """集群可用区信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ClusterSlaveData`
         """
         return self._ClusterSlaveData
@@ -3256,7 +3230,6 @@ class BizTaskInfo(AbstractModel):
     @property
     def TaskMaintainInfo(self):
         """维护时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.TaskMaintainInfo`
         """
         return self._TaskMaintainInfo
@@ -3269,7 +3242,6 @@ class BizTaskInfo(AbstractModel):
     def InstanceCLSDeliveryInfos(self):
         """实例日志投递信息
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of InstanceCLSDeliveryInfo
         """
         return self._InstanceCLSDeliveryInfos
@@ -3378,7 +3350,6 @@ class BizTaskModifyInstanceParam(AbstractModel):
         :param _InstanceId: 实例ID
         :type InstanceId: str
         :param _ModifyInstanceParamList: 实例参数修改任务详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyInstanceParamList: list of ModifyParamItem
         """
         self._InstanceId = None
@@ -3398,7 +3369,6 @@ class BizTaskModifyInstanceParam(AbstractModel):
     @property
     def ModifyInstanceParamList(self):
         """实例参数修改任务详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ModifyParamItem
         """
         return self._ModifyInstanceParamList
@@ -3436,10 +3406,8 @@ class BizTaskModifyParamsData(AbstractModel):
         :param _ClusterId: 集群ID
         :type ClusterId: str
         :param _ClusterParamList: 集群参数修改数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterParamList: list of ModifyParamItem
         :param _ModifyInstanceParams: 实例参数修改数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyInstanceParams: list of BizTaskModifyInstanceParam
         """
         self._ClusterId = None
@@ -3460,7 +3428,6 @@ class BizTaskModifyParamsData(AbstractModel):
     @property
     def ClusterParamList(self):
         """集群参数修改数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ModifyParamItem
         """
         return self._ClusterParamList
@@ -3472,7 +3439,6 @@ class BizTaskModifyParamsData(AbstractModel):
     @property
     def ModifyInstanceParams(self):
         """实例参数修改数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BizTaskModifyInstanceParam
         """
         return self._ModifyInstanceParams
@@ -4159,25 +4125,18 @@ class ClusterInstanceDetail(AbstractModel):
         :param _InstanceRole: 实例角色
         :type InstanceRole: str
         :param _MaintainStartTime: 执行开始时间(距离0点的秒数)	
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaintainStartTime: int
         :param _MaintainDuration: 持续的时间(单位：秒)	
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaintainDuration: int
         :param _MaintainWeekDays: 可以执行的时间，枚举值：["Mon","Tue","Wed","Thu","Fri", "Sat", "Sun"]
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaintainWeekDays: list of str
         :param _ServerlessStatus: serverless实例子状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServerlessStatus: str
         :param _InstanceTasks: 实例任务信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceTasks: list of ObjectTask
         :param _InstanceDeviceType: 实例机器类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceDeviceType: str
         :param _InstanceStorageType: 实例存储类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceStorageType: str
         :param _DbMode: 数据库类型
         :type DbMode: str
@@ -4302,7 +4261,6 @@ class ClusterInstanceDetail(AbstractModel):
     @property
     def MaintainStartTime(self):
         """执行开始时间(距离0点的秒数)	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaintainStartTime
@@ -4314,7 +4272,6 @@ class ClusterInstanceDetail(AbstractModel):
     @property
     def MaintainDuration(self):
         """持续的时间(单位：秒)	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaintainDuration
@@ -4326,7 +4283,6 @@ class ClusterInstanceDetail(AbstractModel):
     @property
     def MaintainWeekDays(self):
         """可以执行的时间，枚举值：["Mon","Tue","Wed","Thu","Fri", "Sat", "Sun"]
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._MaintainWeekDays
@@ -4338,7 +4294,6 @@ class ClusterInstanceDetail(AbstractModel):
     @property
     def ServerlessStatus(self):
         """serverless实例子状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ServerlessStatus
@@ -4350,7 +4305,6 @@ class ClusterInstanceDetail(AbstractModel):
     @property
     def InstanceTasks(self):
         """实例任务信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ObjectTask
         """
         return self._InstanceTasks
@@ -4362,7 +4316,6 @@ class ClusterInstanceDetail(AbstractModel):
     @property
     def InstanceDeviceType(self):
         """实例机器类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceDeviceType
@@ -4374,7 +4327,6 @@ class ClusterInstanceDetail(AbstractModel):
     @property
     def InstanceStorageType(self):
         """实例存储类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceStorageType
@@ -6384,16 +6336,12 @@ class CreateClustersResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TranId: 冻结流水ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TranId: str
         :param _DealNames: 订单号
-注意：此字段可能返回 null，表示取不到有效值。
         :type DealNames: list of str
         :param _ResourceIds: 资源ID列表（该字段已不再维护，请使用dealNames字段查询接口DescribeResourcesByDealName获取资源ID）
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceIds: list of str
         :param _ClusterIds: 集群ID列表（该字段已不再维护，请使用dealNames字段查询接口DescribeResourcesByDealName获取集群ID）
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterIds: list of str
         :param _BigDealIds: 大订单号
 注意：此字段可能返回 null，表示取不到有效值。
@@ -6411,7 +6359,6 @@ class CreateClustersResponse(AbstractModel):
     @property
     def TranId(self):
         """冻结流水ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TranId
@@ -6423,7 +6370,6 @@ class CreateClustersResponse(AbstractModel):
     @property
     def DealNames(self):
         """订单号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._DealNames
@@ -6435,7 +6381,6 @@ class CreateClustersResponse(AbstractModel):
     @property
     def ResourceIds(self):
         """资源ID列表（该字段已不再维护，请使用dealNames字段查询接口DescribeResourcesByDealName获取资源ID）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._ResourceIds
@@ -6447,7 +6392,6 @@ class CreateClustersResponse(AbstractModel):
     @property
     def ClusterIds(self):
         """集群ID列表（该字段已不再维护，请使用dealNames字段查询接口DescribeResourcesByDealName获取集群ID）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._ClusterIds
@@ -7610,111 +7554,76 @@ deleted:已删除
         :param _InstanceNum: 实例数
         :type InstanceNum: int
         :param _Uin: 用户uin
-注意：此字段可能返回 null，表示取不到有效值。
         :type Uin: str
         :param _DbType: 引擎类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type DbType: str
         :param _AppId: 用户appid
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: int
         :param _StatusDesc: 集群状态描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type StatusDesc: str
         :param _CreateTime: 集群创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _PayMode: 付费模式。0-按量计费，1-包年包月
-注意：此字段可能返回 null，表示取不到有效值。
         :type PayMode: int
         :param _PeriodEndTime: 截止时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type PeriodEndTime: str
         :param _Vip: 集群读写vip
-注意：此字段可能返回 null，表示取不到有效值。
         :type Vip: str
         :param _Vport: 集群读写vport
-注意：此字段可能返回 null，表示取不到有效值。
         :type Vport: int
         :param _ProjectID: 项目id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectID: int
         :param _VpcId: 私有网络ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
         :param _SubnetId: 子网ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetId: str
         :param _CynosVersion: cynos内核版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type CynosVersion: str
         :param _StorageLimit: 存储容量
-注意：此字段可能返回 null，表示取不到有效值。
         :type StorageLimit: int
         :param _RenewFlag: 续费标志
-注意：此字段可能返回 null，表示取不到有效值。
         :type RenewFlag: int
         :param _ProcessingTask: 正在处理的任务
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProcessingTask: str
         :param _Tasks: 集群的任务数组
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tasks: list of ObjectTask
         :param _ResourceTags: 集群绑定的tag数组
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceTags: list of Tag
         :param _DbMode: Db类型(NORMAL, SERVERLESS)
-注意：此字段可能返回 null，表示取不到有效值。
         :type DbMode: str
         :param _ServerlessStatus: 当Db类型为SERVERLESS时，serverless集群状态，可选值:
 resume
 pause
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServerlessStatus: str
         :param _Storage: 集群预付费存储值大小
-注意：此字段可能返回 null，表示取不到有效值。
         :type Storage: int
         :param _StorageId: 集群存储为预付费时的存储ID，用于预付费存储变配
-注意：此字段可能返回 null，表示取不到有效值。
         :type StorageId: str
         :param _StoragePayMode: 集群存储付费模式。0-按量计费，1-包年包月
-注意：此字段可能返回 null，表示取不到有效值。
         :type StoragePayMode: int
         :param _MinStorageSize: 集群计算规格对应的最小存储值
-注意：此字段可能返回 null，表示取不到有效值。
         :type MinStorageSize: int
         :param _MaxStorageSize: 集群计算规格对应的最大存储值
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxStorageSize: int
         :param _NetAddrs: 集群网络信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type NetAddrs: list of NetAddr
         :param _PhysicalZone: 物理可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :type PhysicalZone: str
         :param _MasterZone: 主可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :type MasterZone: str
         :param _HasSlaveZone: 是否有从可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :type HasSlaveZone: str
         :param _SlaveZones: 从可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :type SlaveZones: list of str
         :param _BusinessType: 商业类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessType: str
         :param _IsFreeze: 是否冻结
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsFreeze: str
         :param _OrderSource: 订单来源
-注意：此字段可能返回 null，表示取不到有效值。
         :type OrderSource: str
         :param _Ability: 能力
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ability: :class:`tencentcloud.cynosdb.v20190107.models.Ability`
         :param _ResourcePackages: 实例绑定资源包信息（此处只返回存储资源包，即packageType=DISK）	
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourcePackages: list of ResourcePackage
         """
         self._Status = None
@@ -7861,7 +7770,6 @@ deleted:已删除
     @property
     def Uin(self):
         """用户uin
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Uin
@@ -7873,7 +7781,6 @@ deleted:已删除
     @property
     def DbType(self):
         """引擎类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DbType
@@ -7885,7 +7792,6 @@ deleted:已删除
     @property
     def AppId(self):
         """用户appid
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AppId
@@ -7897,7 +7803,6 @@ deleted:已删除
     @property
     def StatusDesc(self):
         """集群状态描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StatusDesc
@@ -7909,7 +7814,6 @@ deleted:已删除
     @property
     def CreateTime(self):
         """集群创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -7921,7 +7825,6 @@ deleted:已删除
     @property
     def PayMode(self):
         """付费模式。0-按量计费，1-包年包月
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PayMode
@@ -7933,7 +7836,6 @@ deleted:已删除
     @property
     def PeriodEndTime(self):
         """截止时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PeriodEndTime
@@ -7945,7 +7847,6 @@ deleted:已删除
     @property
     def Vip(self):
         """集群读写vip
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Vip
@@ -7957,7 +7858,6 @@ deleted:已删除
     @property
     def Vport(self):
         """集群读写vport
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Vport
@@ -7969,7 +7869,6 @@ deleted:已删除
     @property
     def ProjectID(self):
         """项目id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ProjectID
@@ -7981,7 +7880,6 @@ deleted:已删除
     @property
     def VpcId(self):
         """私有网络ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VpcId
@@ -7993,7 +7891,6 @@ deleted:已删除
     @property
     def SubnetId(self):
         """子网ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubnetId
@@ -8005,7 +7902,6 @@ deleted:已删除
     @property
     def CynosVersion(self):
         """cynos内核版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CynosVersion
@@ -8017,7 +7913,6 @@ deleted:已删除
     @property
     def StorageLimit(self):
         """存储容量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._StorageLimit
@@ -8029,7 +7924,6 @@ deleted:已删除
     @property
     def RenewFlag(self):
         """续费标志
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RenewFlag
@@ -8041,7 +7935,6 @@ deleted:已删除
     @property
     def ProcessingTask(self):
         """正在处理的任务
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProcessingTask
@@ -8053,7 +7946,6 @@ deleted:已删除
     @property
     def Tasks(self):
         """集群的任务数组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ObjectTask
         """
         return self._Tasks
@@ -8065,7 +7957,6 @@ deleted:已删除
     @property
     def ResourceTags(self):
         """集群绑定的tag数组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._ResourceTags
@@ -8077,7 +7968,6 @@ deleted:已删除
     @property
     def DbMode(self):
         """Db类型(NORMAL, SERVERLESS)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DbMode
@@ -8091,7 +7981,6 @@ deleted:已删除
         """当Db类型为SERVERLESS时，serverless集群状态，可选值:
 resume
 pause
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ServerlessStatus
@@ -8103,7 +7992,6 @@ pause
     @property
     def Storage(self):
         """集群预付费存储值大小
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Storage
@@ -8115,7 +8003,6 @@ pause
     @property
     def StorageId(self):
         """集群存储为预付费时的存储ID，用于预付费存储变配
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StorageId
@@ -8127,7 +8014,6 @@ pause
     @property
     def StoragePayMode(self):
         """集群存储付费模式。0-按量计费，1-包年包月
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._StoragePayMode
@@ -8139,7 +8025,6 @@ pause
     @property
     def MinStorageSize(self):
         """集群计算规格对应的最小存储值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MinStorageSize
@@ -8151,7 +8036,6 @@ pause
     @property
     def MaxStorageSize(self):
         """集群计算规格对应的最大存储值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxStorageSize
@@ -8163,7 +8047,6 @@ pause
     @property
     def NetAddrs(self):
         """集群网络信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of NetAddr
         """
         return self._NetAddrs
@@ -8175,7 +8058,6 @@ pause
     @property
     def PhysicalZone(self):
         """物理可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PhysicalZone
@@ -8187,7 +8069,6 @@ pause
     @property
     def MasterZone(self):
         """主可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MasterZone
@@ -8199,7 +8080,6 @@ pause
     @property
     def HasSlaveZone(self):
         """是否有从可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HasSlaveZone
@@ -8211,7 +8091,6 @@ pause
     @property
     def SlaveZones(self):
         """从可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._SlaveZones
@@ -8223,7 +8102,6 @@ pause
     @property
     def BusinessType(self):
         """商业类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BusinessType
@@ -8235,7 +8113,6 @@ pause
     @property
     def IsFreeze(self):
         """是否冻结
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IsFreeze
@@ -8247,7 +8124,6 @@ pause
     @property
     def OrderSource(self):
         """订单来源
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OrderSource
@@ -8259,7 +8135,6 @@ pause
     @property
     def Ability(self):
         """能力
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.Ability`
         """
         return self._Ability
@@ -8271,7 +8146,6 @@ pause
     @property
     def ResourcePackages(self):
         """实例绑定资源包信息（此处只返回存储资源包，即packageType=DISK）	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ResourcePackage
         """
         return self._ResourcePackages
@@ -8373,7 +8247,6 @@ class CynosdbClusterDetail(AbstractModel):
         :param _Zone: 可用区
         :type Zone: str
         :param _PhysicalZone: 物理可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :type PhysicalZone: str
         :param _Status: 状态
         :type Status: str
@@ -8386,19 +8259,14 @@ pause
 pausing
         :type ServerlessStatus: str
         :param _StorageId: 存储Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type StorageId: str
         :param _Storage: 存储大小，单位为G
-注意：此字段可能返回 null，表示取不到有效值。
         :type Storage: int
         :param _MaxStorageSize: 最大存储规格，单位为G
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxStorageSize: int
         :param _MinStorageSize: 最小存储规格，单位为G
-注意：此字段可能返回 null，表示取不到有效值。
         :type MinStorageSize: int
         :param _StoragePayMode: 存储付费类型，1为包年包月，0为按量计费
-注意：此字段可能返回 null，表示取不到有效值。
         :type StoragePayMode: int
         :param _VpcName: VPC名称
         :type VpcName: str
@@ -8415,12 +8283,10 @@ pausing
         :param _DbType: 数据库类型
         :type DbType: str
         :param _DbMode: Db类型：<li>NORMAL</li><li>SERVERLESS</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type DbMode: str
         :param _DbVersion: 数据库版本
         :type DbVersion: str
         :param _StorageLimit: 存储空间上限
-注意：此字段可能返回 null，表示取不到有效值。
         :type StorageLimit: int
         :param _UsedStorage: 使用容量
         :type UsedStorage: int
@@ -8431,28 +8297,20 @@ pausing
         :param _RoAddr: 集群只读实例的vip地址和vport端口
         :type RoAddr: list of Addr
         :param _Ability: 集群支持的功能
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ability: :class:`tencentcloud.cynosdb.v20190107.models.Ability`
         :param _CynosVersion: cynos版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type CynosVersion: str
         :param _BusinessType: 商业类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessType: str
         :param _HasSlaveZone: 是否有从可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :type HasSlaveZone: str
         :param _IsFreeze: 是否冻结
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsFreeze: str
         :param _Tasks: 任务列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tasks: list of ObjectTask
         :param _MasterZone: 主可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :type MasterZone: str
         :param _SlaveZones: 从可用区列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type SlaveZones: list of str
         :param _InstanceSet: 实例信息
         :type InstanceSet: list of ClusterInstanceDetail
@@ -8465,34 +8323,24 @@ pausing
         :param _ResourceTags: 实例绑定的tag数组信息
         :type ResourceTags: list of Tag
         :param _ProxyStatus: Proxy状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyStatus: str
         :param _LogBin: binlog开关，可选值：ON, OFF
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogBin: str
         :param _IsSkipTrade: 是否跳过交易
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsSkipTrade: str
         :param _PitrType: pitr类型，可选值：normal, redo_pitr
-注意：此字段可能返回 null，表示取不到有效值。
         :type PitrType: str
         :param _IsOpenPasswordComplexity: 是否打开密码复杂度
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsOpenPasswordComplexity: str
         :param _NetworkStatus: 网络类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type NetworkStatus: str
         :param _ResourcePackages: 集群绑定的资源包信息	
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourcePackages: list of ResourcePackage
         :param _RenewFlag: 自动续费标识，1为自动续费，0为到期不续
-注意：此字段可能返回 null，表示取不到有效值。
         :type RenewFlag: int
         :param _NetworkType: 节点网络类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type NetworkType: str
         :param _SlaveZoneAttr: 备可用区属性
-注意：此字段可能返回 null，表示取不到有效值。
         :type SlaveZoneAttr: list of SlaveZoneAttrItem
         :param _CynosVersionTag: 版本标签
         :type CynosVersionTag: str
@@ -8596,7 +8444,6 @@ pausing
     @property
     def PhysicalZone(self):
         """物理可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PhysicalZone
@@ -8645,7 +8492,6 @@ pausing
     @property
     def StorageId(self):
         """存储Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StorageId
@@ -8657,7 +8503,6 @@ pausing
     @property
     def Storage(self):
         """存储大小，单位为G
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Storage
@@ -8669,7 +8514,6 @@ pausing
     @property
     def MaxStorageSize(self):
         """最大存储规格，单位为G
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxStorageSize
@@ -8681,7 +8525,6 @@ pausing
     @property
     def MinStorageSize(self):
         """最小存储规格，单位为G
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MinStorageSize
@@ -8693,7 +8536,6 @@ pausing
     @property
     def StoragePayMode(self):
         """存储付费类型，1为包年包月，0为按量计费
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._StoragePayMode
@@ -8782,7 +8624,6 @@ pausing
     @property
     def DbMode(self):
         """Db类型：<li>NORMAL</li><li>SERVERLESS</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DbMode
@@ -8805,7 +8646,6 @@ pausing
     @property
     def StorageLimit(self):
         """存储空间上限
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._StorageLimit
@@ -8861,7 +8701,6 @@ pausing
     @property
     def Ability(self):
         """集群支持的功能
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.Ability`
         """
         return self._Ability
@@ -8873,7 +8712,6 @@ pausing
     @property
     def CynosVersion(self):
         """cynos版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CynosVersion
@@ -8885,7 +8723,6 @@ pausing
     @property
     def BusinessType(self):
         """商业类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BusinessType
@@ -8897,7 +8734,6 @@ pausing
     @property
     def HasSlaveZone(self):
         """是否有从可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HasSlaveZone
@@ -8909,7 +8745,6 @@ pausing
     @property
     def IsFreeze(self):
         """是否冻结
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IsFreeze
@@ -8921,7 +8756,6 @@ pausing
     @property
     def Tasks(self):
         """任务列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ObjectTask
         """
         return self._Tasks
@@ -8933,7 +8767,6 @@ pausing
     @property
     def MasterZone(self):
         """主可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MasterZone
@@ -8945,7 +8778,6 @@ pausing
     @property
     def SlaveZones(self):
         """从可用区列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._SlaveZones
@@ -9012,7 +8844,6 @@ pausing
     @property
     def ProxyStatus(self):
         """Proxy状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProxyStatus
@@ -9024,7 +8855,6 @@ pausing
     @property
     def LogBin(self):
         """binlog开关，可选值：ON, OFF
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LogBin
@@ -9036,7 +8866,6 @@ pausing
     @property
     def IsSkipTrade(self):
         """是否跳过交易
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IsSkipTrade
@@ -9048,7 +8877,6 @@ pausing
     @property
     def PitrType(self):
         """pitr类型，可选值：normal, redo_pitr
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PitrType
@@ -9060,7 +8888,6 @@ pausing
     @property
     def IsOpenPasswordComplexity(self):
         """是否打开密码复杂度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IsOpenPasswordComplexity
@@ -9072,7 +8899,6 @@ pausing
     @property
     def NetworkStatus(self):
         """网络类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NetworkStatus
@@ -9084,7 +8910,6 @@ pausing
     @property
     def ResourcePackages(self):
         """集群绑定的资源包信息	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ResourcePackage
         """
         return self._ResourcePackages
@@ -9096,7 +8921,6 @@ pausing
     @property
     def RenewFlag(self):
         """自动续费标识，1为自动续费，0为到期不续
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RenewFlag
@@ -9108,7 +8932,6 @@ pausing
     @property
     def NetworkType(self):
         """节点网络类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NetworkType
@@ -9120,7 +8943,6 @@ pausing
     @property
     def SlaveZoneAttr(self):
         """备可用区属性
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SlaveZoneAttrItem
         """
         return self._SlaveZoneAttr
@@ -9393,47 +9215,37 @@ resume
 pause
         :type ServerlessStatus: str
         :param _StorageId: 预付费存储Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type StorageId: str
         :param _StoragePayMode: 存储付费类型
         :type StoragePayMode: int
         :param _PhysicalZone: 物理区
         :type PhysicalZone: str
         :param _BusinessType: 商业类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessType: str
         :param _Tasks: 任务
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tasks: list of ObjectTask
         :param _IsFreeze: 是否冻结
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsFreeze: str
         :param _ResourceTags: 资源标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceTags: list of Tag
         :param _MasterZone: 主可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :type MasterZone: str
         :param _SlaveZones: 备可用区
 注意：此字段可能返回 null，表示取不到有效值。
         :type SlaveZones: list of str
         :param _InstanceNetInfo: 实例网络信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceNetInfo: list of InstanceNetInfo
         :param _ResourcePackages: 实例绑定资源包信息（此处只返回计算资源包，即packageType=CCU）
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourcePackages: list of ResourcePackage
         :param _InstanceIndexMode: 实例索引形态,可选值【mixedRowColumn（行列混存），onlyRowIndex（仅行存）】
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceIndexMode: str
         :param _InstanceAbility: 当前实例支持的能力
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceAbility: :class:`tencentcloud.cynosdb.v20190107.models.InstanceAbility`
         :param _DeviceType: 实例机器类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceType: str
         :param _InstanceStorageType: 实例存储类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceStorageType: str
         """
         self._Uin = None
@@ -9949,7 +9761,6 @@ pause
     @property
     def StorageId(self):
         """预付费存储Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StorageId
@@ -9983,7 +9794,6 @@ pause
     @property
     def BusinessType(self):
         """商业类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BusinessType
@@ -9995,7 +9805,6 @@ pause
     @property
     def Tasks(self):
         """任务
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ObjectTask
         """
         return self._Tasks
@@ -10007,7 +9816,6 @@ pause
     @property
     def IsFreeze(self):
         """是否冻结
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IsFreeze
@@ -10031,7 +9839,6 @@ pause
     @property
     def MasterZone(self):
         """主可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MasterZone
@@ -10055,7 +9862,6 @@ pause
     @property
     def InstanceNetInfo(self):
         """实例网络信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of InstanceNetInfo
         """
         return self._InstanceNetInfo
@@ -10079,7 +9885,6 @@ pause
     @property
     def InstanceIndexMode(self):
         """实例索引形态,可选值【mixedRowColumn（行列混存），onlyRowIndex（仅行存）】
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceIndexMode
@@ -10091,7 +9896,6 @@ pause
     @property
     def InstanceAbility(self):
         """当前实例支持的能力
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.InstanceAbility`
         """
         return self._InstanceAbility
@@ -10103,7 +9907,6 @@ pause
     @property
     def DeviceType(self):
         """实例机器类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceType
@@ -10115,7 +9918,6 @@ pause
     @property
     def InstanceStorageType(self):
         """实例存储类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceStorageType
@@ -10802,13 +10604,10 @@ class CynosdbInstanceGroup(AbstractModel):
         :param _InstanceSet: 实例组包含实例信息
         :type InstanceSet: list of CynosdbInstance
         :param _UniqVpcId: VPC的ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type UniqVpcId: str
         :param _UniqSubnetId: 子网ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type UniqSubnetId: str
         :param _OldAddrInfo: 正在回收IP信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type OldAddrInfo: :class:`tencentcloud.cynosdb.v20190107.models.OldAddrInfo`
         :param _ProcessingTasks: 正在进行的任务
         :type ProcessingTasks: list of str
@@ -11007,7 +10806,6 @@ class CynosdbInstanceGroup(AbstractModel):
     @property
     def UniqVpcId(self):
         """VPC的ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UniqVpcId
@@ -11019,7 +10817,6 @@ class CynosdbInstanceGroup(AbstractModel):
     @property
     def UniqSubnetId(self):
         """子网ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UniqSubnetId
@@ -11031,7 +10828,6 @@ class CynosdbInstanceGroup(AbstractModel):
     @property
     def OldAddrInfo(self):
         """正在回收IP信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.OldAddrInfo`
         """
         return self._OldAddrInfo
@@ -12533,16 +12329,12 @@ class DescribeAccountAllGrantPrivilegesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _PrivilegeStatements: 权限语句
-注意：此字段可能返回 null，表示取不到有效值。
         :type PrivilegeStatements: list of str
         :param _GlobalPrivileges: 全局权限
-注意：此字段可能返回 null，表示取不到有效值。
         :type GlobalPrivileges: list of str
         :param _DatabasePrivileges: 数据库权限
-注意：此字段可能返回 null，表示取不到有效值。
         :type DatabasePrivileges: list of DatabasePrivileges
         :param _TablePrivileges: 数据库表权限
-注意：此字段可能返回 null，表示取不到有效值。
         :type TablePrivileges: list of TablePrivileges
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12556,7 +12348,6 @@ class DescribeAccountAllGrantPrivilegesResponse(AbstractModel):
     @property
     def PrivilegeStatements(self):
         """权限语句
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._PrivilegeStatements
@@ -12568,7 +12359,6 @@ class DescribeAccountAllGrantPrivilegesResponse(AbstractModel):
     @property
     def GlobalPrivileges(self):
         """全局权限
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._GlobalPrivileges
@@ -12580,7 +12370,6 @@ class DescribeAccountAllGrantPrivilegesResponse(AbstractModel):
     @property
     def DatabasePrivileges(self):
         """数据库权限
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DatabasePrivileges
         """
         return self._DatabasePrivileges
@@ -12592,7 +12381,6 @@ class DescribeAccountAllGrantPrivilegesResponse(AbstractModel):
     @property
     def TablePrivileges(self):
         """数据库表权限
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TablePrivileges
         """
         return self._TablePrivileges
@@ -12923,7 +12711,6 @@ class DescribeAccountsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _AccountSet: 数据库账号列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type AccountSet: list of Account
         :param _TotalCount: 账号总数量
         :type TotalCount: int
@@ -12937,7 +12724,6 @@ class DescribeAccountsResponse(AbstractModel):
     @property
     def AccountSet(self):
         """数据库账号列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Account
         """
         return self._AccountSet
@@ -13853,16 +13639,12 @@ class DescribeBackupConfigResponse(AbstractModel):
         :param _ReserveDuration: 表示保留备份时长, 单位秒，超过该时间将被清理, 七天表示为3600*24*7=604800
         :type ReserveDuration: int
         :param _BackupFreq: 备份频率，长度为7的数组，分别对应周一到周日的备份方式，full-全量备份，increment-增量备份
-注意：此字段可能返回 null，表示取不到有效值。
         :type BackupFreq: list of str
         :param _BackupType: 备份方式，logic-逻辑备份，snapshot-快照备份
-注意：此字段可能返回 null，表示取不到有效值。
         :type BackupType: str
         :param _LogicCrossRegionsConfigUpdateTime: 跨地域逻辑备份配置修改时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogicCrossRegionsConfigUpdateTime: str
         :param _LogicBackupConfig: 自动逻辑备份配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogicBackupConfig: :class:`tencentcloud.cynosdb.v20190107.models.LogicBackupConfigInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13912,7 +13694,6 @@ class DescribeBackupConfigResponse(AbstractModel):
     @property
     def BackupFreq(self):
         """备份频率，长度为7的数组，分别对应周一到周日的备份方式，full-全量备份，increment-增量备份
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._BackupFreq
@@ -13924,7 +13705,6 @@ class DescribeBackupConfigResponse(AbstractModel):
     @property
     def BackupType(self):
         """备份方式，logic-逻辑备份，snapshot-快照备份
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BackupType
@@ -13936,7 +13716,6 @@ class DescribeBackupConfigResponse(AbstractModel):
     @property
     def LogicCrossRegionsConfigUpdateTime(self):
         """跨地域逻辑备份配置修改时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LogicCrossRegionsConfigUpdateTime
@@ -13948,7 +13727,6 @@ class DescribeBackupConfigResponse(AbstractModel):
     @property
     def LogicBackupConfig(self):
         """自动逻辑备份配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.LogicBackupConfigInfo`
         """
         return self._LogicBackupConfig
@@ -14431,10 +14209,8 @@ class DescribeBinlogConfigResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _BinlogCrossRegionsConfigUpdateTime: Binlog跨地域配置更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type BinlogCrossRegionsConfigUpdateTime: str
         :param _BinlogConfig: Binlog配置信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type BinlogConfig: :class:`tencentcloud.cynosdb.v20190107.models.BinlogConfigInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14446,7 +14222,6 @@ class DescribeBinlogConfigResponse(AbstractModel):
     @property
     def BinlogCrossRegionsConfigUpdateTime(self):
         """Binlog跨地域配置更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BinlogCrossRegionsConfigUpdateTime
@@ -14458,7 +14233,6 @@ class DescribeBinlogConfigResponse(AbstractModel):
     @property
     def BinlogConfig(self):
         """Binlog配置信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.BinlogConfigInfo`
         """
         return self._BinlogConfig
@@ -14766,7 +14540,6 @@ class DescribeBinlogsResponse(AbstractModel):
         :param _TotalCount: 记录总条数
         :type TotalCount: int
         :param _Binlogs: Binlog列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Binlogs: list of BinlogItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14789,7 +14562,6 @@ class DescribeBinlogsResponse(AbstractModel):
     @property
     def Binlogs(self):
         """Binlog列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BinlogItem
         """
         return self._Binlogs
@@ -20905,10 +20677,8 @@ class ExchangeInstanceInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _SrcInstanceInfo: 源实例信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type SrcInstanceInfo: :class:`tencentcloud.cynosdb.v20190107.models.RollbackInstanceInfo`
         :param _DstInstanceInfo: 目标实例信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type DstInstanceInfo: :class:`tencentcloud.cynosdb.v20190107.models.RollbackInstanceInfo`
         """
         self._SrcInstanceInfo = None
@@ -20917,7 +20687,6 @@ class ExchangeInstanceInfo(AbstractModel):
     @property
     def SrcInstanceInfo(self):
         """源实例信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.RollbackInstanceInfo`
         """
         return self._SrcInstanceInfo
@@ -20929,7 +20698,6 @@ class ExchangeInstanceInfo(AbstractModel):
     @property
     def DstInstanceInfo(self):
         """目标实例信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.RollbackInstanceInfo`
         """
         return self._DstInstanceInfo
@@ -20964,10 +20732,8 @@ class ExchangeRoGroupInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _SrcRoGroupInfo: 源RO组信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type SrcRoGroupInfo: :class:`tencentcloud.cynosdb.v20190107.models.RollbackRoGroupInfo`
         :param _DstRoGroupInfo: 目标RO组信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type DstRoGroupInfo: :class:`tencentcloud.cynosdb.v20190107.models.RollbackRoGroupInfo`
         """
         self._SrcRoGroupInfo = None
@@ -20976,7 +20742,6 @@ class ExchangeRoGroupInfo(AbstractModel):
     @property
     def SrcRoGroupInfo(self):
         """源RO组信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.RollbackRoGroupInfo`
         """
         return self._SrcRoGroupInfo
@@ -20988,7 +20753,6 @@ class ExchangeRoGroupInfo(AbstractModel):
     @property
     def DstRoGroupInfo(self):
         """目标RO组信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.RollbackRoGroupInfo`
         """
         return self._DstRoGroupInfo
@@ -23590,10 +23354,8 @@ class InstanceSpec(AbstractModel):
         :param _MaxIoBandWidth: 最大IO带宽
         :type MaxIoBandWidth: int
         :param _ZoneStockInfos: 地域库存信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneStockInfos: list of ZoneStockInfo
         :param _StockCount: 库存数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type StockCount: int
         """
         self._Cpu = None
@@ -23698,7 +23460,6 @@ class InstanceSpec(AbstractModel):
     @property
     def ZoneStockInfos(self):
         """地域库存信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ZoneStockInfo
         """
         return self._ZoneStockInfos
@@ -23710,7 +23471,6 @@ class InstanceSpec(AbstractModel):
     @property
     def StockCount(self):
         """库存数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._StockCount
@@ -30343,7 +30103,6 @@ class ParamDetail(AbstractModel):
         :param _Min: 参数容许的最小值
         :type Min: str
         :param _EnumValue: 参数的可选枚举值。如果为非枚举值，则为空
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnumValue: list of str
         :param _IsGlobal: 1：全局参数，0：非全局参数
         :type IsGlobal: int
@@ -30352,16 +30111,12 @@ class ParamDetail(AbstractModel):
         :param _MatchValue: 匹配目标值，当multiVal时，各个key用，分割
         :type MatchValue: str
         :param _IsFunc: true-为公式，false-非公式
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsFunc: bool
         :param _Func: 参数设置为公式时，Func返回设置的公式内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type Func: str
         :param _ModifiableInfo: 参数是否可修改
-注意：此字段可能返回 null，表示取不到有效值。
         :type ModifiableInfo: :class:`tencentcloud.cynosdb.v20190107.models.ModifiableInfo`
         :param _FuncPattern: 支持公式的参数的默认公式样式
-注意：此字段可能返回 null，表示取不到有效值。
         :type FuncPattern: str
         """
         self._ParamName = None
@@ -30484,7 +30239,6 @@ class ParamDetail(AbstractModel):
     @property
     def EnumValue(self):
         """参数的可选枚举值。如果为非枚举值，则为空
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._EnumValue
@@ -30529,7 +30283,6 @@ class ParamDetail(AbstractModel):
     @property
     def IsFunc(self):
         """true-为公式，false-非公式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsFunc
@@ -30541,7 +30294,6 @@ class ParamDetail(AbstractModel):
     @property
     def Func(self):
         """参数设置为公式时，Func返回设置的公式内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Func
@@ -30553,7 +30305,6 @@ class ParamDetail(AbstractModel):
     @property
     def ModifiableInfo(self):
         """参数是否可修改
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifiableInfo`
         """
         return self._ModifiableInfo
@@ -30565,7 +30316,6 @@ class ParamDetail(AbstractModel):
     @property
     def FuncPattern(self):
         """支持公式的参数的默认公式样式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FuncPattern
@@ -31828,22 +31578,18 @@ class ProxyGroupInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _ProxyGroup: 数据库代理组
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyGroup: :class:`tencentcloud.cynosdb.v20190107.models.ProxyGroup`
         :param _ProxyGroupRwInfo: 数据库代理组读写分离信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyGroupRwInfo: :class:`tencentcloud.cynosdb.v20190107.models.ProxyGroupRwInfo`
         :param _ProxyNodes: 数据库代理节点信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyNodes: list of ProxyNodeInfo
         :param _ConnectionPool: 数据库代理连接池信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ConnectionPool: :class:`tencentcloud.cynosdb.v20190107.models.ProxyConnectionPoolInfo`
         :param _NetAddrInfos: 数据库代理网络信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type NetAddrInfos: list of NetAddr
         :param _Tasks: 数据库代理任务集
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tasks: list of ObjectTask
         """
         self._ProxyGroup = None
@@ -31856,7 +31602,6 @@ class ProxyGroupInfo(AbstractModel):
     @property
     def ProxyGroup(self):
         """数据库代理组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ProxyGroup`
         """
         return self._ProxyGroup
@@ -31868,7 +31613,6 @@ class ProxyGroupInfo(AbstractModel):
     @property
     def ProxyGroupRwInfo(self):
         """数据库代理组读写分离信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ProxyGroupRwInfo`
         """
         return self._ProxyGroupRwInfo
@@ -31892,7 +31636,6 @@ class ProxyGroupInfo(AbstractModel):
     @property
     def ConnectionPool(self):
         """数据库代理连接池信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ProxyConnectionPoolInfo`
         """
         return self._ConnectionPool
@@ -31916,7 +31659,6 @@ class ProxyGroupInfo(AbstractModel):
     @property
     def Tasks(self):
         """数据库代理任务集
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ObjectTask
         """
         return self._Tasks
@@ -31984,7 +31726,6 @@ class ProxyGroupRwInfo(AbstractModel):
         :param _InstanceWeights: 实例权重数组
         :type InstanceWeights: list of ProxyInstanceWeight
         :param _OpenRw: 是否开通读写节点，yse-是，no-否
-注意：此字段可能返回 null，表示取不到有效值。
         :type OpenRw: str
         :param _RwType: 读写属性，可选值：READWRITE,READONLY
         :type RwType: str
@@ -32073,7 +31814,6 @@ class ProxyGroupRwInfo(AbstractModel):
     @property
     def OpenRw(self):
         """是否开通读写节点，yse-是，no-否
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OpenRw
@@ -33841,13 +33581,10 @@ class RollbackData(AbstractModel):
         :param _SnapshotTime: 快照时间
         :type SnapshotTime: str
         :param _MinCpu: 回档到serverlessls集群时最小CPU
-注意：此字段可能返回 null，表示取不到有效值。
         :type MinCpu: int
         :param _MaxCpu: 回档到serverlessls集群时最大CPU
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxCpu: int
         :param _SnapShotId: 快照ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type SnapShotId: int
         :param _RollbackDatabases: 回档数据库
 注意：此字段可能返回 null，表示取不到有效值。
@@ -33856,10 +33593,8 @@ class RollbackData(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type RollbackTables: list of RollbackTable
         :param _BackupFileName: 备份文件名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type BackupFileName: str
         :param _RollbackProcess: 回档进程
-注意：此字段可能返回 null，表示取不到有效值。
         :type RollbackProcess: :class:`tencentcloud.cynosdb.v20190107.models.RollbackProcessInfo`
         """
         self._Cpu = None
@@ -33957,7 +33692,6 @@ class RollbackData(AbstractModel):
     @property
     def MinCpu(self):
         """回档到serverlessls集群时最小CPU
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MinCpu
@@ -33969,7 +33703,6 @@ class RollbackData(AbstractModel):
     @property
     def MaxCpu(self):
         """回档到serverlessls集群时最大CPU
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxCpu
@@ -33981,7 +33714,6 @@ class RollbackData(AbstractModel):
     @property
     def SnapShotId(self):
         """快照ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SnapShotId
@@ -34017,7 +33749,6 @@ class RollbackData(AbstractModel):
     @property
     def BackupFileName(self):
         """备份文件名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BackupFileName
@@ -34029,7 +33760,6 @@ class RollbackData(AbstractModel):
     @property
     def RollbackProcess(self):
         """回档进程
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.RollbackProcessInfo`
         """
         return self._RollbackProcess
@@ -34336,10 +34066,8 @@ class RollbackProcessInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _IsVipSwitchable: 是否可以交换vip
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsVipSwitchable: bool
         :param _VipSwitchableTime: vip可交换时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type VipSwitchableTime: str
         :param _ExchangeInstanceInfoList: 交换实例列表
 注意：此字段可能返回 null，表示取不到有效值。
@@ -34348,13 +34076,10 @@ class RollbackProcessInfo(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExchangeRoGroupInfoList: list of ExchangeRoGroupInfo
         :param _CurrentStep: 当前步骤
-注意：此字段可能返回 null，表示取不到有效值。
         :type CurrentStep: str
         :param _CurrentStepProgress: 当前步骤进度
-注意：此字段可能返回 null，表示取不到有效值。
         :type CurrentStepProgress: int
         :param _CurrentStepRemainingTime: 当前步骤剩余时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CurrentStepRemainingTime: str
         """
         self._IsVipSwitchable = None
@@ -34368,7 +34093,6 @@ class RollbackProcessInfo(AbstractModel):
     @property
     def IsVipSwitchable(self):
         """是否可以交换vip
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsVipSwitchable
@@ -34380,7 +34104,6 @@ class RollbackProcessInfo(AbstractModel):
     @property
     def VipSwitchableTime(self):
         """vip可交换时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VipSwitchableTime
@@ -34416,7 +34139,6 @@ class RollbackProcessInfo(AbstractModel):
     @property
     def CurrentStep(self):
         """当前步骤
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CurrentStep
@@ -34428,7 +34150,6 @@ class RollbackProcessInfo(AbstractModel):
     @property
     def CurrentStepProgress(self):
         """当前步骤进度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CurrentStepProgress
@@ -34440,7 +34161,6 @@ class RollbackProcessInfo(AbstractModel):
     @property
     def CurrentStepRemainingTime(self):
         """当前步骤剩余时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CurrentStepRemainingTime
@@ -36439,16 +36159,12 @@ class ServerlessZoneStockInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Zone: 可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :type Zone: str
         :param _StockCount: 存储量
-注意：此字段可能返回 null，表示取不到有效值。
         :type StockCount: int
         :param _HasStock: 是否包含库存
-注意：此字段可能返回 null，表示取不到有效值。
         :type HasStock: bool
         :param _SlaveZoneStockInfos: 从可用区库存信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type SlaveZoneStockInfos: list of SlaveZoneStockInfo
         """
         self._Zone = None
@@ -36459,7 +36175,6 @@ class ServerlessZoneStockInfo(AbstractModel):
     @property
     def Zone(self):
         """可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Zone
@@ -36471,7 +36186,6 @@ class ServerlessZoneStockInfo(AbstractModel):
     @property
     def StockCount(self):
         """存储量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._StockCount
@@ -36483,7 +36197,6 @@ class ServerlessZoneStockInfo(AbstractModel):
     @property
     def HasStock(self):
         """是否包含库存
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._HasStock
@@ -36495,7 +36208,6 @@ class ServerlessZoneStockInfo(AbstractModel):
     @property
     def SlaveZoneStockInfos(self):
         """从可用区库存信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SlaveZoneStockInfo
         """
         return self._SlaveZoneStockInfos
@@ -39207,7 +38919,6 @@ class ZoneStockInfo(AbstractModel):
         :param _StockCount: 库存数量
         :type StockCount: int
         :param _SlaveZoneStockInfos: 备可用区库存信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type SlaveZoneStockInfos: list of SlaveZoneStockInfo
         """
         self._Zone = None
@@ -39251,7 +38962,6 @@ class ZoneStockInfo(AbstractModel):
     @property
     def SlaveZoneStockInfos(self):
         """备可用区库存信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SlaveZoneStockInfo
         """
         return self._SlaveZoneStockInfos

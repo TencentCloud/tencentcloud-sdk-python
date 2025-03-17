@@ -1437,7 +1437,7 @@ class CancelShareBlueprintAcrossAccountsRequest(AbstractModel):
         r"""
         :param _BlueprintId: 镜像ID, 可以通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回的BlueprintId获取。
         :type BlueprintId: str
-        :param _AccountIds: 接收共享镜像的账号ID列表。账号ID不同于QQ号，查询用户账号ID请查看账号信息中的账号ID栏。账号个数取值最大为10。
+        :param _AccountIds: 接收共享镜像的[账号ID](https://cloud.tencent.com/document/product/213/4944#.E8.8E.B7.E5.8F.96.E4.B8.BB.E8.B4.A6.E5.8F.B7.E7.9A.84.E8.B4.A6.E5.8F.B7-id)列表。账号ID不同于QQ号，查询用户账号ID请查看账号信息中的账号ID栏。账号个数取值最大为10。
         :type AccountIds: list of str
         """
         self._BlueprintId = None
@@ -1456,7 +1456,7 @@ class CancelShareBlueprintAcrossAccountsRequest(AbstractModel):
 
     @property
     def AccountIds(self):
-        """接收共享镜像的账号ID列表。账号ID不同于QQ号，查询用户账号ID请查看账号信息中的账号ID栏。账号个数取值最大为10。
+        """接收共享镜像的[账号ID](https://cloud.tencent.com/document/product/213/4944#.E8.8E.B7.E5.8F.96.E4.B8.BB.E8.B4.A6.E5.8F.B7.E7.9A.84.E8.B4.A6.E5.8F.B7-id)列表。账号ID不同于QQ号，查询用户账号ID请查看账号信息中的账号ID栏。账号个数取值最大为10。
         :rtype: list of str
         """
         return self._AccountIds
@@ -3566,14 +3566,14 @@ class DeleteSnapshotsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SnapshotIds: 要删除的快照 ID 列表，可通过 <a href="https://cloud.tencent.com/document/product/1207/54388" target="_blank">DescribeSnapshots</a>查询。
+        :param _SnapshotIds: 要删除的快照 ID 列表，每次请求批量快照的上限为10个，可通过 <a href="https://cloud.tencent.com/document/product/1207/54388" target="_blank">DescribeSnapshots</a>查询。
         :type SnapshotIds: list of str
         """
         self._SnapshotIds = None
 
     @property
     def SnapshotIds(self):
-        """要删除的快照 ID 列表，可通过 <a href="https://cloud.tencent.com/document/product/1207/54388" target="_blank">DescribeSnapshots</a>查询。
+        """要删除的快照 ID 列表，每次请求批量快照的上限为10个，可通过 <a href="https://cloud.tencent.com/document/product/1207/54388" target="_blank">DescribeSnapshots</a>查询。
         :rtype: list of str
         """
         return self._SnapshotIds
@@ -3934,6 +3934,7 @@ class DescribeBlueprintsRequest(AbstractModel):
 <li>blueprint-id</li>按照【镜像 ID】进行过滤。
 类型：String
 必选：否
+镜像 ID ，可通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回值字段BlueprintSet获取。
 <li>blueprint-type</li>按照【镜像类型】进行过滤。
 取值：APP_OS（应用镜像 ）；PURE_OS（系统镜像）；DOCKER（Docker容器镜像）；PRIVATE（自定义镜像）；SHARED（共享镜像）。
 类型：String
@@ -3951,8 +3952,9 @@ class DescribeBlueprintsRequest(AbstractModel):
 <li>scene-id</li>按照【使用场景Id】进行过滤。
 类型：String
 必选：否
+场景Id，可通过[查看使用场景列表](https://cloud.tencent.com/document/product/1207/83512)接口获取。
 
-每次请求的 Filters 的上限为 10，Filter.Values 的上限为 100。参数不支持同时指定 BlueprintIds 和 Filters 。
+每次请求的 Filters 的上限为 10，Filter.Values 的上限为 100。参数不支持同时指定 BlueprintIds (可通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回值字段BlueprintSet获取BlueprintId)和 Filters 。
         :type Filters: list of Filter
         """
         self._BlueprintIds = None
@@ -3999,6 +4001,7 @@ class DescribeBlueprintsRequest(AbstractModel):
 <li>blueprint-id</li>按照【镜像 ID】进行过滤。
 类型：String
 必选：否
+镜像 ID ，可通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回值字段BlueprintSet获取。
 <li>blueprint-type</li>按照【镜像类型】进行过滤。
 取值：APP_OS（应用镜像 ）；PURE_OS（系统镜像）；DOCKER（Docker容器镜像）；PRIVATE（自定义镜像）；SHARED（共享镜像）。
 类型：String
@@ -4016,8 +4019,9 @@ class DescribeBlueprintsRequest(AbstractModel):
 <li>scene-id</li>按照【使用场景Id】进行过滤。
 类型：String
 必选：否
+场景Id，可通过[查看使用场景列表](https://cloud.tencent.com/document/product/1207/83512)接口获取。
 
-每次请求的 Filters 的上限为 10，Filter.Values 的上限为 100。参数不支持同时指定 BlueprintIds 和 Filters 。
+每次请求的 Filters 的上限为 10，Filter.Values 的上限为 100。参数不支持同时指定 BlueprintIds (可通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回值字段BlueprintSet获取BlueprintId)和 Filters 。
         :rtype: list of Filter
         """
         return self._Filters
@@ -8413,14 +8417,14 @@ class DescribeSnapshotsDeniedActionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SnapshotIds: 快照 ID 列表, 可通过 <a href="https://cloud.tencent.com/document/product/1207/54388" target="_blank">DescribeSnapshots</a> 查询。
+        :param _SnapshotIds: 快照 ID 列表,每次请求批量快照的上限是100个。 可通过 <a href="https://cloud.tencent.com/document/product/1207/54388" target="_blank">DescribeSnapshots</a> 查询。
         :type SnapshotIds: list of str
         """
         self._SnapshotIds = None
 
     @property
     def SnapshotIds(self):
-        """快照 ID 列表, 可通过 <a href="https://cloud.tencent.com/document/product/1207/54388" target="_blank">DescribeSnapshots</a> 查询。
+        """快照 ID 列表,每次请求批量快照的上限是100个。 可通过 <a href="https://cloud.tencent.com/document/product/1207/54388" target="_blank">DescribeSnapshots</a> 查询。
         :rtype: list of str
         """
         return self._SnapshotIds
@@ -9125,7 +9129,10 @@ class DiscountDetail(AbstractModel):
         r"""
         :param _TimeSpan: 计费时长。
         :type TimeSpan: int
-        :param _TimeUnit: 计费单元。
+        :param _TimeUnit: 时间单位。
+取值为：
+- m - 月
+- d - 日
         :type TimeUnit: str
         :param _TotalCost: 总价。
         :type TotalCost: float
@@ -9156,7 +9163,10 @@ class DiscountDetail(AbstractModel):
 
     @property
     def TimeUnit(self):
-        """计费单元。
+        """时间单位。
+取值为：
+- m - 月
+- d - 日
         :rtype: str
         """
         return self._TimeUnit
@@ -9245,18 +9255,28 @@ class Disk(AbstractModel):
         :param _DiskName: 磁盘名称
         :type DiskName: str
         :param _DiskUsage: 磁盘类型
+枚举值：
+<li> SYSTEM_DISK: 系统盘 </li>
+<li> DATA_DISK: 数据盘 </li>
+
         :type DiskUsage: str
         :param _DiskType: 磁盘介质类型
+枚举值:
+<li> CLOUD_BASIC: 普通云硬盘 </li>
+<li> CLOUD_PREMIUM: 高性能云硬盘 </li>
+<li> CLOUD_SSD: SSD云硬盘 </li>
         :type DiskType: str
         :param _DiskChargeType: 磁盘付费类型
+<li> PREPAID: 预付费 </li>
+<li> POSTPAID_BY_HOUR: 按小时后付费 </li>
         :type DiskChargeType: str
-        :param _DiskSize: 磁盘大小
+        :param _DiskSize: 磁盘大小, 单位GB
         :type DiskSize: int
         :param _RenewFlag: 续费标识
         :type RenewFlag: str
         :param _DiskState: 磁盘状态，取值范围：
 <li>PENDING：创建中。 </li>
-<li>UNATTACHED：未挂载。</li>
+<li>UNATTACHED：待挂载。</li>
 <li>ATTACHING：挂载中。</li>
 <li>ATTACHED：已挂载。</li>
 <li>DETACHING：卸载中。 </li>
@@ -9361,6 +9381,10 @@ class Disk(AbstractModel):
     @property
     def DiskUsage(self):
         """磁盘类型
+枚举值：
+<li> SYSTEM_DISK: 系统盘 </li>
+<li> DATA_DISK: 数据盘 </li>
+
         :rtype: str
         """
         return self._DiskUsage
@@ -9372,6 +9396,10 @@ class Disk(AbstractModel):
     @property
     def DiskType(self):
         """磁盘介质类型
+枚举值:
+<li> CLOUD_BASIC: 普通云硬盘 </li>
+<li> CLOUD_PREMIUM: 高性能云硬盘 </li>
+<li> CLOUD_SSD: SSD云硬盘 </li>
         :rtype: str
         """
         return self._DiskType
@@ -9383,6 +9411,8 @@ class Disk(AbstractModel):
     @property
     def DiskChargeType(self):
         """磁盘付费类型
+<li> PREPAID: 预付费 </li>
+<li> POSTPAID_BY_HOUR: 按小时后付费 </li>
         :rtype: str
         """
         return self._DiskChargeType
@@ -9393,7 +9423,7 @@ class Disk(AbstractModel):
 
     @property
     def DiskSize(self):
-        """磁盘大小
+        """磁盘大小, 单位GB
         :rtype: int
         """
         return self._DiskSize
@@ -9417,7 +9447,7 @@ class Disk(AbstractModel):
     def DiskState(self):
         """磁盘状态，取值范围：
 <li>PENDING：创建中。 </li>
-<li>UNATTACHED：未挂载。</li>
+<li>UNATTACHED：待挂载。</li>
 <li>ATTACHING：挂载中。</li>
 <li>ATTACHED：已挂载。</li>
 <li>DETACHING：卸载中。 </li>
@@ -9842,10 +9872,18 @@ class DiskChargePrepaid(AbstractModel):
     def __init__(self):
         r"""
         :param _Period: 新购周期。
+可选值：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60。
         :type Period: int
-        :param _RenewFlag: 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费，用户需要手动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不自动续费，且不通知<br><br>默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，云硬盘到期后将按月自动续费。
+        :param _RenewFlag: 自动续费标识。取值范围：
+- NOTIFY_AND_AUTO_RENEW：通知过期且自动续费。
+- NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费，用户需要手动续费。
+- DISABLE_NOTIFY_AND_MANUAL_RENEW：不自动续费，且不通知。
+
+默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，云硬盘到期后将按月自动续费。
         :type RenewFlag: str
-        :param _TimeUnit: 新购单位. 默认值: "m"。
+        :param _TimeUnit: 新购单位.。
+可选值：m - 月。
+默认值：m - 月。
         :type TimeUnit: str
         """
         self._Period = None
@@ -9855,6 +9893,7 @@ class DiskChargePrepaid(AbstractModel):
     @property
     def Period(self):
         """新购周期。
+可选值：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60。
         :rtype: int
         """
         return self._Period
@@ -9865,7 +9904,12 @@ class DiskChargePrepaid(AbstractModel):
 
     @property
     def RenewFlag(self):
-        """自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费，用户需要手动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不自动续费，且不通知<br><br>默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，云硬盘到期后将按月自动续费。
+        """自动续费标识。取值范围：
+- NOTIFY_AND_AUTO_RENEW：通知过期且自动续费。
+- NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费，用户需要手动续费。
+- DISABLE_NOTIFY_AND_MANUAL_RENEW：不自动续费，且不通知。
+
+默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，云硬盘到期后将按月自动续费。
         :rtype: str
         """
         return self._RenewFlag
@@ -9876,7 +9920,9 @@ class DiskChargePrepaid(AbstractModel):
 
     @property
     def TimeUnit(self):
-        """新购单位. 默认值: "m"。
+        """新购单位.。
+可选值：m - 月。
+默认值：m - 月。
         :rtype: str
         """
         return self._TimeUnit
@@ -9909,7 +9955,11 @@ class DiskConfig(AbstractModel):
         r"""
         :param _Zone: 可用区。
         :type Zone: str
-        :param _DiskType: 云硬盘类型。
+        :param _DiskType: 云硬盘类型。枚举值如下：
+
+<li>CLOUD_BASIC：普通云硬盘</li>
+<li>CLOUD_PREMIUM：高性能云硬盘</li>
+<li>CLOUD_SSD：SSD云硬盘</li>
         :type DiskType: str
         :param _DiskSalesState: 云硬盘可售卖状态。
         :type DiskSalesState: str
@@ -9940,7 +9990,11 @@ class DiskConfig(AbstractModel):
 
     @property
     def DiskType(self):
-        """云硬盘类型。
+        """云硬盘类型。枚举值如下：
+
+<li>CLOUD_BASIC：普通云硬盘</li>
+<li>CLOUD_PREMIUM：高性能云硬盘</li>
+<li>CLOUD_SSD：SSD云硬盘</li>
         :rtype: str
         """
         return self._DiskType
@@ -11013,9 +11067,9 @@ class FirewallRuleInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AppType: 应用类型，取值：自定义，HTTP(80)，HTTPS(443)，Linux登录(22)，Windows登录(3389)，MySQL(3306)，SQL Server(1433)，全部TCP，全部UDP，Ping-ICMP，ALL。
+        :param _AppType: 应用类型，取值：自定义，HTTP(80)，HTTPS(443)，Linux登录(22)，Windows登录(3389)，MySQL(3306)，SQL Server(1433)，全部TCP，全部UDP，Ping-ICMP，Windows登录优化 (3389)，FTP (21)，Ping，Ping (IPv6)，ALL。
         :type AppType: str
-        :param _Protocol: 协议，取值：TCP，UDP，ICMP，ALL。
+        :param _Protocol: 协议，取值：TCP，UDP，ICMP，ICMPv6，ALL。
         :type Protocol: str
         :param _Port: 端口，取值：ALL，单独的端口，逗号分隔的离散端口，减号分隔的端口范围。
         :type Port: str
@@ -11044,7 +11098,7 @@ class FirewallRuleInfo(AbstractModel):
 
     @property
     def AppType(self):
-        """应用类型，取值：自定义，HTTP(80)，HTTPS(443)，Linux登录(22)，Windows登录(3389)，MySQL(3306)，SQL Server(1433)，全部TCP，全部UDP，Ping-ICMP，ALL。
+        """应用类型，取值：自定义，HTTP(80)，HTTPS(443)，Linux登录(22)，Windows登录(3389)，MySQL(3306)，SQL Server(1433)，全部TCP，全部UDP，Ping-ICMP，Windows登录优化 (3389)，FTP (21)，Ping，Ping (IPv6)，ALL。
         :rtype: str
         """
         return self._AppType
@@ -11055,7 +11109,7 @@ class FirewallRuleInfo(AbstractModel):
 
     @property
     def Protocol(self):
-        """协议，取值：TCP，UDP，ICMP，ALL。
+        """协议，取值：TCP，UDP，ICMP，ICMPv6，ALL。
         :rtype: str
         """
         return self._Protocol
@@ -12933,7 +12987,9 @@ class InstanceChargePrepaid(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Period: 购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60。
+        :param _Period: 购买实例的时长，单位：月。
+- 创建实例时，取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60。
+- 续费实例时，取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。
         :type Period: int
         :param _RenewFlag: 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li><br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费，用户需要手动续费</li><br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不自动续费，且不通知</li><br><br>默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
         :type RenewFlag: str
@@ -12943,7 +12999,9 @@ class InstanceChargePrepaid(AbstractModel):
 
     @property
     def Period(self):
-        """购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60。
+        """购买实例的时长，单位：月。
+- 创建实例时，取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60。
+- 续费实例时，取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。
         :rtype: int
         """
         return self._Period
@@ -13264,7 +13322,17 @@ class InstanceReturnable(AbstractModel):
         :type InstanceId: str
         :param _IsReturnable: 实例是否可退还。
         :type IsReturnable: bool
-        :param _ReturnFailCode: 实例退还失败错误码。
+        :param _ReturnFailCode: 实例退还失败错误码。取值:
+0: 可以退还
+1: 资源已退货。如为退货后续费资源，请于购买6小时后操作
+2: 资源已到期
+3: 资源购买超过5天不支持退款
+4: 非预付费资源不支持退款
+8: 退货数量超出限额
+9: 涉及活动订单不支持退款
+10: 资源不支持自助退，请走工单退款
+11: 涉及推广奖励渠道订单，请提工单咨询
+12: 根据业务侧产品规定，该资源不允许退款
         :type ReturnFailCode: int
         :param _ReturnFailMessage: 实例退还失败错误信息。
         :type ReturnFailMessage: str
@@ -13298,7 +13366,17 @@ class InstanceReturnable(AbstractModel):
 
     @property
     def ReturnFailCode(self):
-        """实例退还失败错误码。
+        """实例退还失败错误码。取值:
+0: 可以退还
+1: 资源已退货。如为退货后续费资源，请于购买6小时后操作
+2: 资源已到期
+3: 资源购买超过5天不支持退款
+4: 非预付费资源不支持退款
+8: 退货数量超出限额
+9: 涉及活动订单不支持退款
+10: 资源不支持自助退，请走工单退款
+11: 涉及推广奖励渠道订单，请提工单咨询
+12: 根据业务侧产品规定，该资源不允许退款
         :rtype: int
         """
         return self._ReturnFailCode
@@ -15004,7 +15082,7 @@ class ModifyInstancesBundleRequest(AbstractModel):
         r"""
         :param _InstanceIds: 实例ID列表。一个或多个待操作的实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。每次请求批量实例的上限为15。
         :type InstanceIds: list of str
-        :param _BundleId: 待变更的套餐Id。可通过[DescribeBundles](https://cloud.tencent.com/document/api/1207/47575)接口返回值中的BundleId获取。
+        :param _BundleId: 待变更的套餐Id。注意不可和当前要升配的实例套餐ID相同。可通过[DescribeBundles](https://cloud.tencent.com/document/api/1207/47575)接口返回值中的BundleId获取。
         :type BundleId: str
         :param _AutoVoucher: 是否自动抵扣代金券。取值范围：
 true：表示自动抵扣代金券
@@ -15029,7 +15107,7 @@ false：表示不自动抵扣代金券
 
     @property
     def BundleId(self):
-        """待变更的套餐Id。可通过[DescribeBundles](https://cloud.tencent.com/document/api/1207/47575)接口返回值中的BundleId获取。
+        """待变更的套餐Id。注意不可和当前要升配的实例套餐ID相同。可通过[DescribeBundles](https://cloud.tencent.com/document/api/1207/47575)接口返回值中的BundleId获取。
         :rtype: str
         """
         return self._BundleId
@@ -15833,7 +15911,7 @@ class RenameDockerContainerResponse(AbstractModel):
 
 
 class RenewDiskChargePrepaid(AbstractModel):
-    """续费云硬盘包年包月相关参数设置
+    """续费云硬盘包年包月相关参数设置。
 
     """
 
@@ -15841,11 +15919,18 @@ class RenewDiskChargePrepaid(AbstractModel):
         r"""
         :param _Period: 续费周期。
         :type Period: int
-        :param _RenewFlag: 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费，用户需要手动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不自动续费，且不通知<br><br>默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，云硬盘到期后将按月自动续费。
+        :param _RenewFlag: 自动续费标识。
+取值范围：
+<li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li>
+<li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费，用户需要手动续费</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不自动续费，且不通知</li>
+默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，云硬盘到期后将按月自动续费。
         :type RenewFlag: str
         :param _TimeUnit: 周期单位。取值范围：“m”(月)。默认值: "m"。
         :type TimeUnit: str
-        :param _CurInstanceDeadline: 当前实例到期时间。如“2018-01-01 00:00:00”。指定该参数即可对齐云硬盘所挂载的实例到期时间。该参数与Period必须指定其一，且不支持同时指定。
+        :param _CurInstanceDeadline: 当前实例到期时间。如“2018-01-01 00:00:00”。
+指定该参数即可对齐云硬盘所挂载的实例到期时间。
+该参数与Period必须指定其一，且不支持同时指定。
+该参数值必须大于入参中云硬盘的过期时间。
         :type CurInstanceDeadline: str
         """
         self._Period = None
@@ -15866,7 +15951,11 @@ class RenewDiskChargePrepaid(AbstractModel):
 
     @property
     def RenewFlag(self):
-        """自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费，用户需要手动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不自动续费，且不通知<br><br>默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，云硬盘到期后将按月自动续费。
+        """自动续费标识。
+取值范围：
+<li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li>
+<li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费，用户需要手动续费</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不自动续费，且不通知</li>
+默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，云硬盘到期后将按月自动续费。
         :rtype: str
         """
         return self._RenewFlag
@@ -15888,7 +15977,10 @@ class RenewDiskChargePrepaid(AbstractModel):
 
     @property
     def CurInstanceDeadline(self):
-        """当前实例到期时间。如“2018-01-01 00:00:00”。指定该参数即可对齐云硬盘所挂载的实例到期时间。该参数与Period必须指定其一，且不支持同时指定。
+        """当前实例到期时间。如“2018-01-01 00:00:00”。
+指定该参数即可对齐云硬盘所挂载的实例到期时间。
+该参数与Period必须指定其一，且不支持同时指定。
+该参数值必须大于入参中云硬盘的过期时间。
         :rtype: str
         """
         return self._CurInstanceDeadline
@@ -16511,7 +16603,10 @@ class ResetInstanceBlueprint(AbstractModel):
         r"""
         :param _BlueprintInfo: 镜像详细信息
         :type BlueprintInfo: :class:`tencentcloud.lighthouse.v20200324.models.Blueprint`
-        :param _IsResettable: 实例镜像是否可重置为目标镜像
+        :param _IsResettable: 实例镜像是否可重置为目标镜像。
+取值：
+true（允许）
+false（不允许）
         :type IsResettable: bool
         :param _NonResettableMessage: 不可重置信息.当镜像可重置时为""
         :type NonResettableMessage: str
@@ -16533,7 +16628,10 @@ class ResetInstanceBlueprint(AbstractModel):
 
     @property
     def IsResettable(self):
-        """实例镜像是否可重置为目标镜像
+        """实例镜像是否可重置为目标镜像。
+取值：
+true（允许）
+false（不允许）
         :rtype: bool
         """
         return self._IsResettable
@@ -17193,7 +17291,7 @@ class ShareBlueprintAcrossAccountsRequest(AbstractModel):
         r"""
         :param _BlueprintId: 镜像ID, 可以通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回的BlueprintId获取。
         :type BlueprintId: str
-        :param _AccountIds: 接收共享镜像的账号Id列表。账号ID不同于QQ号，查询用户账号ID请查看账号信息中的账号ID栏。账号个数取值最大为10。
+        :param _AccountIds: 接收共享镜像的[账号ID](https://cloud.tencent.com/document/product/213/4944#.E8.8E.B7.E5.8F.96.E4.B8.BB.E8.B4.A6.E5.8F.B7.E7.9A.84.E8.B4.A6.E5.8F.B7-id)列表。账号ID不同于QQ号，查询用户账号ID请查看账号信息中的账号ID栏。账号个数取值最大为10。
         :type AccountIds: list of str
         """
         self._BlueprintId = None
@@ -17212,7 +17310,7 @@ class ShareBlueprintAcrossAccountsRequest(AbstractModel):
 
     @property
     def AccountIds(self):
-        """接收共享镜像的账号Id列表。账号ID不同于QQ号，查询用户账号ID请查看账号信息中的账号ID栏。账号个数取值最大为10。
+        """接收共享镜像的[账号ID](https://cloud.tencent.com/document/product/213/4944#.E8.8E.B7.E5.8F.96.E4.B8.BB.E8.B4.A6.E5.8F.B7.E7.9A.84.E8.B4.A6.E5.8F.B7-id)列表。账号ID不同于QQ号，查询用户账号ID请查看账号信息中的账号ID栏。账号个数取值最大为10。
         :rtype: list of str
         """
         return self._AccountIds
@@ -18241,6 +18339,7 @@ class TerminateDisksRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _DiskIds: 云硬盘ID列表。可通过[DescribeDisks](https://cloud.tencent.com/document/product/1207/66093)接口返回值中的DiskId获取。
+每次批量请求云硬盘的上限数量为100。
         :type DiskIds: list of str
         """
         self._DiskIds = None
@@ -18248,6 +18347,7 @@ class TerminateDisksRequest(AbstractModel):
     @property
     def DiskIds(self):
         """云硬盘ID列表。可通过[DescribeDisks](https://cloud.tencent.com/document/product/1207/66093)接口返回值中的DiskId获取。
+每次批量请求云硬盘的上限数量为100。
         :rtype: list of str
         """
         return self._DiskIds

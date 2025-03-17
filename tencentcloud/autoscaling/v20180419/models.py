@@ -6729,6 +6729,100 @@ class EnhancedService(AbstractModel):
         
 
 
+class EnterStandbyRequest(AbstractModel):
+    """EnterStandby请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AutoScalingGroupId: 伸缩组 ID。
+        :type AutoScalingGroupId: str
+        :param _InstanceIds: 运行中状态实例列表，不支持传入非运行中状态实例。
+        :type InstanceIds: list of str
+        """
+        self._AutoScalingGroupId = None
+        self._InstanceIds = None
+
+    @property
+    def AutoScalingGroupId(self):
+        """伸缩组 ID。
+        :rtype: str
+        """
+        return self._AutoScalingGroupId
+
+    @AutoScalingGroupId.setter
+    def AutoScalingGroupId(self, AutoScalingGroupId):
+        self._AutoScalingGroupId = AutoScalingGroupId
+
+    @property
+    def InstanceIds(self):
+        """运行中状态实例列表，不支持传入非运行中状态实例。
+        :rtype: list of str
+        """
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+
+    def _deserialize(self, params):
+        self._AutoScalingGroupId = params.get("AutoScalingGroupId")
+        self._InstanceIds = params.get("InstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnterStandbyResponse(AbstractModel):
+    """EnterStandby返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ActivityId: 伸缩活动ID。
+        :type ActivityId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ActivityId = None
+        self._RequestId = None
+
+    @property
+    def ActivityId(self):
+        """伸缩活动ID。
+        :rtype: str
+        """
+        return self._ActivityId
+
+    @ActivityId.setter
+    def ActivityId(self, ActivityId):
+        self._ActivityId = ActivityId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ActivityId = params.get("ActivityId")
+        self._RequestId = params.get("RequestId")
+
+
 class ExecuteScalingPolicyRequest(AbstractModel):
     """ExecuteScalingPolicy请求参数结构体
 
