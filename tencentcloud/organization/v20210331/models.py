@@ -265,7 +265,6 @@ class AddOrganizationMemberEmailResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _BindId: 绑定Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type BindId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -276,7 +275,6 @@ class AddOrganizationMemberEmailResponse(AbstractModel):
     @property
     def BindId(self):
         """绑定Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._BindId
@@ -7366,21 +7364,16 @@ class DescribePolicyResponse(AbstractModel):
         :param _PolicyId: 策略Id。
         :type PolicyId: int
         :param _PolicyName: 策略名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyName: str
         :param _Type: 策略类型。1-自定义 2-预设策略
         :type Type: int
         :param _Description: 策略描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _PolicyDocument: 策略文档。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyDocument: str
         :param _UpdateTime: 策略更新时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param _AddTime: 策略创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AddTime: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7408,7 +7401,6 @@ class DescribePolicyResponse(AbstractModel):
     @property
     def PolicyName(self):
         """策略名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PolicyName
@@ -7431,7 +7423,6 @@ class DescribePolicyResponse(AbstractModel):
     @property
     def Description(self):
         """策略描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -7443,7 +7434,6 @@ class DescribePolicyResponse(AbstractModel):
     @property
     def PolicyDocument(self):
         """策略文档。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PolicyDocument
@@ -7455,7 +7445,6 @@ class DescribePolicyResponse(AbstractModel):
     @property
     def UpdateTime(self):
         """策略更新时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime
@@ -7467,7 +7456,6 @@ class DescribePolicyResponse(AbstractModel):
     @property
     def AddTime(self):
         """策略创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AddTime
@@ -9711,10 +9699,8 @@ class IdentityPolicy(AbstractModel):
         :param _PolicyName: CAM预设策略名称。PolicyType 为预设策略时有效且必选
         :type PolicyName: str
         :param _PolicyType: 策略类型。取值 1-自定义策略  2-预设策略；默认值2
-注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyType: int
         :param _PolicyDocument: 自定义策略内容，遵循CAM策略语法。PolicyType 为自定义策略时有效且必选
-注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyDocument: str
         """
         self._PolicyId = None
@@ -9747,7 +9733,6 @@ class IdentityPolicy(AbstractModel):
     @property
     def PolicyType(self):
         """策略类型。取值 1-自定义策略  2-预设策略；默认值2
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PolicyType
@@ -9759,7 +9744,6 @@ class IdentityPolicy(AbstractModel):
     @property
     def PolicyDocument(self):
         """自定义策略内容，遵循CAM策略语法。PolicyType 为自定义策略时有效且必选
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PolicyDocument
@@ -11600,23 +11584,18 @@ class ListPoliciesForTarget(AbstractModel):
         :param _StrategyName: 策略名称
         :type StrategyName: str
         :param _Remark: 备注信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _Uin: 关联的账号或节点
         :type Uin: int
         :param _Type: 关联类型 1-节点 2-用户
         :type Type: int
         :param _AddTime: 策略创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type AddTime: str
         :param _UpdateTime: 策略更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param _Name: 部门名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _AttachTime: 策略绑定时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type AttachTime: str
         """
         self._StrategyId = None
@@ -11654,7 +11633,6 @@ class ListPoliciesForTarget(AbstractModel):
     @property
     def Remark(self):
         """备注信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -11688,7 +11666,6 @@ class ListPoliciesForTarget(AbstractModel):
     @property
     def AddTime(self):
         """策略创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AddTime
@@ -11700,7 +11677,6 @@ class ListPoliciesForTarget(AbstractModel):
     @property
     def UpdateTime(self):
         """策略更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime
@@ -11712,7 +11688,6 @@ class ListPoliciesForTarget(AbstractModel):
     @property
     def Name(self):
         """部门名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -11724,7 +11699,6 @@ class ListPoliciesForTarget(AbstractModel):
     @property
     def AttachTime(self):
         """策略绑定时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AttachTime
@@ -12080,20 +12054,16 @@ class ListPolicyNode(AbstractModel):
     def __init__(self):
         r"""
         :param _AddTime: 策略创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type AddTime: str
         :param _AttachedTimes: 策略绑定次数
-注意：此字段可能返回 null，表示取不到有效值。
         :type AttachedTimes: int
         :param _Description: 策略描述信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _PolicyName: 策略名称
         :type PolicyName: str
         :param _PolicyId: 策略Id
         :type PolicyId: int
         :param _UpdateTime: 策略更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param _Type: 策略类型 1-自定义 2-预设
         :type Type: int
@@ -12109,7 +12079,6 @@ class ListPolicyNode(AbstractModel):
     @property
     def AddTime(self):
         """策略创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AddTime
@@ -12121,7 +12090,6 @@ class ListPolicyNode(AbstractModel):
     @property
     def AttachedTimes(self):
         """策略绑定次数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AttachedTimes
@@ -12133,7 +12101,6 @@ class ListPolicyNode(AbstractModel):
     @property
     def Description(self):
         """策略描述信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -12167,7 +12134,6 @@ class ListPolicyNode(AbstractModel):
     @property
     def UpdateTime(self):
         """策略更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime
@@ -13064,7 +13030,6 @@ class ListTargetsForPolicyNode(AbstractModel):
         :param _RelatedType: 关联类型 1-节点关联 2-用户关联
         :type RelatedType: int
         :param _Name: 账号或者节点名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _AddTime: 绑定时间
         :type AddTime: str
@@ -13099,7 +13064,6 @@ class ListTargetsForPolicyNode(AbstractModel):
     @property
     def Name(self):
         """账号或者节点名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -14134,19 +14098,14 @@ class ManagerShareUnit(AbstractModel):
         :param _Area: 共享单元地域。
         :type Area: str
         :param _Description: 描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _CreateTime: 创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _ShareResourceNum: 共享单元资源数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ShareResourceNum: int
         :param _ShareMemberNum: 共享单元成员数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ShareMemberNum: int
         :param _ShareScope: 共享范围。取值：1-仅允许集团组织内共享 2-允许共享给任意账号
-注意：此字段可能返回 null，表示取不到有效值。
         :type ShareScope: int
         """
         self._UnitId = None
@@ -14218,7 +14177,6 @@ class ManagerShareUnit(AbstractModel):
     @property
     def Description(self):
         """描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -14230,7 +14188,6 @@ class ManagerShareUnit(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -14242,7 +14199,6 @@ class ManagerShareUnit(AbstractModel):
     @property
     def ShareResourceNum(self):
         """共享单元资源数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ShareResourceNum
@@ -14254,7 +14210,6 @@ class ManagerShareUnit(AbstractModel):
     @property
     def ShareMemberNum(self):
         """共享单元成员数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ShareMemberNum
@@ -14266,7 +14221,6 @@ class ManagerShareUnit(AbstractModel):
     @property
     def ShareScope(self):
         """共享范围。取值：1-仅允许集团组织内共享 2-允许共享给任意账号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ShareScope
@@ -14486,10 +14440,8 @@ class NodeMainInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _NodeId: 部门ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type NodeId: int
         :param _NodeName: 部门名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type NodeName: str
         """
         self._NodeId = None
@@ -14498,7 +14450,6 @@ class NodeMainInfo(AbstractModel):
     @property
     def NodeId(self):
         """部门ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._NodeId
@@ -14510,7 +14461,6 @@ class NodeMainInfo(AbstractModel):
     @property
     def NodeName(self):
         """部门名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NodeName
@@ -14776,16 +14726,12 @@ class OrgFinancialByMonth(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: 记录ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
         :param _Month: 月份，格式：yyyy-mm，示例：2021-01。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Month: str
         :param _TotalCost: 消耗金额，单元：元。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCost: float
         :param _GrowthRate: 比上月增长率%。正数增长，负数下降，空值无法统计。
-注意：此字段可能返回 null，表示取不到有效值。
         :type GrowthRate: str
         """
         self._Id = None
@@ -14796,7 +14742,6 @@ class OrgFinancialByMonth(AbstractModel):
     @property
     def Id(self):
         """记录ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Id
@@ -14808,7 +14753,6 @@ class OrgFinancialByMonth(AbstractModel):
     @property
     def Month(self):
         """月份，格式：yyyy-mm，示例：2021-01。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Month
@@ -14820,7 +14764,6 @@ class OrgFinancialByMonth(AbstractModel):
     @property
     def TotalCost(self):
         """消耗金额，单元：元。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._TotalCost
@@ -14832,7 +14775,6 @@ class OrgFinancialByMonth(AbstractModel):
     @property
     def GrowthRate(self):
         """比上月增长率%。正数增长，负数下降，空值无法统计。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GrowthRate
@@ -16033,16 +15975,12 @@ class OrgProductFinancial(AbstractModel):
     def __init__(self):
         r"""
         :param _ProductName: 产品Code。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductName: str
         :param _ProductCode: 产品名。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductCode: str
         :param _TotalCost: 产品消耗，单位：元。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCost: float
         :param _Ratio: 占比%。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ratio: str
         """
         self._ProductName = None
@@ -16053,7 +15991,6 @@ class OrgProductFinancial(AbstractModel):
     @property
     def ProductName(self):
         """产品Code。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductName
@@ -16065,7 +16002,6 @@ class OrgProductFinancial(AbstractModel):
     @property
     def ProductCode(self):
         """产品名。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductCode
@@ -16077,7 +16013,6 @@ class OrgProductFinancial(AbstractModel):
     @property
     def TotalCost(self):
         """产品消耗，单位：元。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._TotalCost
@@ -16089,7 +16024,6 @@ class OrgProductFinancial(AbstractModel):
     @property
     def Ratio(self):
         """占比%。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Ratio
@@ -18842,7 +18776,6 @@ class ShareResource(AbstractModel):
         :param _ResourceId: 共享资源ID。
         :type ResourceId: str
         :param _ProductResourceId: 产品资源ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductResourceId: str
         """
         self._ResourceId = None
@@ -18866,7 +18799,6 @@ class ShareResource(AbstractModel):
     @property
     def ProductResourceId(self):
         """产品资源ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductResourceId
@@ -18899,7 +18831,6 @@ class ShareUnitMember(AbstractModel):
         :param _ShareMemberUin: 共享成员Uin。
         :type ShareMemberUin: int
         :param _CreateTime: 创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         """
         self._ShareMemberUin = None
@@ -18919,7 +18850,6 @@ class ShareUnitMember(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -18954,18 +18884,14 @@ class ShareUnitResource(AbstractModel):
         :param _Type: 共享资源类型。
         :type Type: str
         :param _CreateTime: 创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _ProductResourceId: 产品资源ID。
         :type ProductResourceId: str
         :param _SharedMemberNum: 共享单元成员数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SharedMemberNum: int
         :param _SharedMemberUseNum: 使用中共享单元成员数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SharedMemberUseNum: int
         :param _ShareManagerUin: 共享管理员OwnerUin。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ShareManagerUin: int
         """
         self._ResourceId = None
@@ -19001,7 +18927,6 @@ class ShareUnitResource(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -19024,7 +18949,6 @@ class ShareUnitResource(AbstractModel):
     @property
     def SharedMemberNum(self):
         """共享单元成员数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SharedMemberNum
@@ -19036,7 +18960,6 @@ class ShareUnitResource(AbstractModel):
     @property
     def SharedMemberUseNum(self):
         """使用中共享单元成员数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SharedMemberUseNum
@@ -19048,7 +18971,6 @@ class ShareUnitResource(AbstractModel):
     @property
     def ShareManagerUin(self):
         """共享管理员OwnerUin。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ShareManagerUin
@@ -19084,10 +19006,8 @@ class Tag(AbstractModel):
     def __init__(self):
         r"""
         :param _TagKey: 标签键
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagKey: str
         :param _TagValue: 标签值
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagValue: str
         """
         self._TagKey = None
@@ -19096,7 +19016,6 @@ class Tag(AbstractModel):
     @property
     def TagKey(self):
         """标签键
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TagKey
@@ -19108,7 +19027,6 @@ class Tag(AbstractModel):
     @property
     def TagValue(self):
         """标签值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TagValue

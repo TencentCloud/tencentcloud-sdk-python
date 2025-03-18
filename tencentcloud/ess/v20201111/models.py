@@ -4718,6 +4718,12 @@ class CreateBatchQuickSignUrlRequest(AbstractModel):
 
 注: `若参与方为企业员工时，暂不支持对参与方信息进行缓存`
         :type CacheApproverInfo: bool
+        :param _CanBatchReject: 是否允许此链接中签署方批量拒签。
+ <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>
+
+注：`合同组暂不支持批量拒签功能。`
+
+        :type CanBatchReject: bool
         """
         self._FlowApproverInfo = None
         self._Agent = None
@@ -4731,6 +4737,7 @@ class CreateBatchQuickSignUrlRequest(AbstractModel):
         self._FlowBatchUrlInfo = None
         self._Intention = None
         self._CacheApproverInfo = None
+        self._CanBatchReject = None
 
     @property
     def FlowApproverInfo(self):
@@ -4905,6 +4912,21 @@ class CreateBatchQuickSignUrlRequest(AbstractModel):
     def CacheApproverInfo(self, CacheApproverInfo):
         self._CacheApproverInfo = CacheApproverInfo
 
+    @property
+    def CanBatchReject(self):
+        """是否允许此链接中签署方批量拒签。
+ <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>
+
+注：`合同组暂不支持批量拒签功能。`
+
+        :rtype: bool
+        """
+        return self._CanBatchReject
+
+    @CanBatchReject.setter
+    def CanBatchReject(self, CanBatchReject):
+        self._CanBatchReject = CanBatchReject
+
 
     def _deserialize(self, params):
         if params.get("FlowApproverInfo") is not None:
@@ -4929,6 +4951,7 @@ class CreateBatchQuickSignUrlRequest(AbstractModel):
             self._Intention = Intention()
             self._Intention._deserialize(params.get("Intention"))
         self._CacheApproverInfo = params.get("CacheApproverInfo")
+        self._CanBatchReject = params.get("CanBatchReject")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5059,6 +5082,8 @@ class CreateBatchSignUrlRequest(AbstractModel):
 
 参考 [公众号 H5 跳转电子签小程序](https://qian.tencent.com/developers/company/openwxminiprogram/#23-%E5%85%AC%E4%BC%97%E5%8F%B7-h5-%E4%B8%AD%E8%B7%B3%E8%BD%AC)。
         :type UrlUseEnv: str
+        :param _CanBatchReject: 是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>注：`合同组暂不支持批量拒签功能。`
+        :type CanBatchReject: bool
         """
         self._Operator = None
         self._Name = None
@@ -5073,6 +5098,7 @@ class CreateBatchSignUrlRequest(AbstractModel):
         self._FlowBatchUrlInfo = None
         self._AutoJumpBack = None
         self._UrlUseEnv = None
+        self._CanBatchReject = None
 
     @property
     def Operator(self):
@@ -5259,6 +5285,17 @@ class CreateBatchSignUrlRequest(AbstractModel):
     def UrlUseEnv(self, UrlUseEnv):
         self._UrlUseEnv = UrlUseEnv
 
+    @property
+    def CanBatchReject(self):
+        """是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>注：`合同组暂不支持批量拒签功能。`
+        :rtype: bool
+        """
+        return self._CanBatchReject
+
+    @CanBatchReject.setter
+    def CanBatchReject(self, CanBatchReject):
+        self._CanBatchReject = CanBatchReject
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -5280,6 +5317,7 @@ class CreateBatchSignUrlRequest(AbstractModel):
             self._FlowBatchUrlInfo._deserialize(params.get("FlowBatchUrlInfo"))
         self._AutoJumpBack = params.get("AutoJumpBack")
         self._UrlUseEnv = params.get("UrlUseEnv")
+        self._CanBatchReject = params.get("CanBatchReject")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8854,6 +8892,9 @@ class CreateFlowOption(AbstractModel):
         :type ShowComponentTypes: list of str
         :param _ResultPageConfig: 发起流程的可嵌入页面结果页配置
         :type ResultPageConfig: list of CreateResultPageConfig
+        :param _SignComponentConfig: 签署控件的配置信息，用在嵌入式发起的页面配置，包括 
+ - 签署控件 是否默认展示日期.
+        :type SignComponentConfig: :class:`tencentcloud.ess.v20201111.models.SignComponentConfig`
         """
         self._CanEditFlow = None
         self._CanEditFormField = None
@@ -8869,6 +8910,7 @@ class CreateFlowOption(AbstractModel):
         self._HideComponentTypes = None
         self._ShowComponentTypes = None
         self._ResultPageConfig = None
+        self._SignComponentConfig = None
 
     @property
     def CanEditFlow(self):
@@ -9103,6 +9145,18 @@ class CreateFlowOption(AbstractModel):
     def ResultPageConfig(self, ResultPageConfig):
         self._ResultPageConfig = ResultPageConfig
 
+    @property
+    def SignComponentConfig(self):
+        """签署控件的配置信息，用在嵌入式发起的页面配置，包括 
+ - 签署控件 是否默认展示日期.
+        :rtype: :class:`tencentcloud.ess.v20201111.models.SignComponentConfig`
+        """
+        return self._SignComponentConfig
+
+    @SignComponentConfig.setter
+    def SignComponentConfig(self, SignComponentConfig):
+        self._SignComponentConfig = SignComponentConfig
+
 
     def _deserialize(self, params):
         self._CanEditFlow = params.get("CanEditFlow")
@@ -9124,6 +9178,9 @@ class CreateFlowOption(AbstractModel):
                 obj = CreateResultPageConfig()
                 obj._deserialize(item)
                 self._ResultPageConfig.append(obj)
+        if params.get("SignComponentConfig") is not None:
+            self._SignComponentConfig = SignComponentConfig()
+            self._SignComponentConfig._deserialize(params.get("SignComponentConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13126,9 +13183,11 @@ class CreatePrepareFlowRequest(AbstractModel):
         :param _InitiatorComponents: 模板或者合同中的填写控件列表，列表中可支持下列多种填写控件，控件的详细定义参考开发者中心的Component结构体
 
         :type InitiatorComponents: list of Component
-        :param _FlowDisplayType: 在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
+        :param _FlowDisplayType: 在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li><li> <b>3</b> :文书</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
         :type FlowDisplayType: int
-        :param _SignComponentConfig: 签署控件的配置信息，用在嵌入式发起的页面配置，包括  
+        :param _SignComponentConfig: <font color="red">此参数已经废弃，请使用 CreateFlowOption 里面的 SignComponentConfig</font>
+签署控件的配置信息，用在嵌入式发起的页面配置，
+包括  
 
 - 签署控件 是否默认展示日期.
         :type SignComponentConfig: :class:`tencentcloud.ess.v20201111.models.SignComponentConfig`
@@ -13406,7 +13465,7 @@ class CreatePrepareFlowRequest(AbstractModel):
 
     @property
     def FlowDisplayType(self):
-        """在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
+        """在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li><li> <b>3</b> :文书</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
         :rtype: int
         """
         return self._FlowDisplayType
@@ -13417,7 +13476,11 @@ class CreatePrepareFlowRequest(AbstractModel):
 
     @property
     def SignComponentConfig(self):
-        """签署控件的配置信息，用在嵌入式发起的页面配置，包括  
+        warnings.warn("parameter `SignComponentConfig` is deprecated", DeprecationWarning) 
+
+        """<font color="red">此参数已经废弃，请使用 CreateFlowOption 里面的 SignComponentConfig</font>
+签署控件的配置信息，用在嵌入式发起的页面配置，
+包括  
 
 - 签署控件 是否默认展示日期.
         :rtype: :class:`tencentcloud.ess.v20201111.models.SignComponentConfig`
@@ -13426,6 +13489,8 @@ class CreatePrepareFlowRequest(AbstractModel):
 
     @SignComponentConfig.setter
     def SignComponentConfig(self, SignComponentConfig):
+        warnings.warn("parameter `SignComponentConfig` is deprecated", DeprecationWarning) 
+
         self._SignComponentConfig = SignComponentConfig
 
 

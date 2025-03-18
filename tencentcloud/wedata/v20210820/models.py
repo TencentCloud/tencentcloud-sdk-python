@@ -46551,6 +46551,10 @@ class InstanceApiOpsRequest(AbstractModel):
         :type OnlyRerun: bool
         :param _ScheduleTimeZone: 时区
         :type ScheduleTimeZone: str
+        :param _ScheduleTimeFrom: 计划调度时间
+        :type ScheduleTimeFrom: str
+        :param _ScheduleTimeTo: 计划调度时间
+        :type ScheduleTimeTo: str
         """
         self._Instance = None
         self._SortCol = None
@@ -46585,6 +46589,8 @@ class InstanceApiOpsRequest(AbstractModel):
         self._ExecutorGroupIdList = None
         self._OnlyRerun = None
         self._ScheduleTimeZone = None
+        self._ScheduleTimeFrom = None
+        self._ScheduleTimeTo = None
 
     @property
     def Instance(self):
@@ -46949,6 +46955,28 @@ class InstanceApiOpsRequest(AbstractModel):
     def ScheduleTimeZone(self, ScheduleTimeZone):
         self._ScheduleTimeZone = ScheduleTimeZone
 
+    @property
+    def ScheduleTimeFrom(self):
+        """计划调度时间
+        :rtype: str
+        """
+        return self._ScheduleTimeFrom
+
+    @ScheduleTimeFrom.setter
+    def ScheduleTimeFrom(self, ScheduleTimeFrom):
+        self._ScheduleTimeFrom = ScheduleTimeFrom
+
+    @property
+    def ScheduleTimeTo(self):
+        """计划调度时间
+        :rtype: str
+        """
+        return self._ScheduleTimeTo
+
+    @ScheduleTimeTo.setter
+    def ScheduleTimeTo(self, ScheduleTimeTo):
+        self._ScheduleTimeTo = ScheduleTimeTo
+
 
     def _deserialize(self, params):
         if params.get("Instance") is not None:
@@ -46991,6 +47019,8 @@ class InstanceApiOpsRequest(AbstractModel):
         self._ExecutorGroupIdList = params.get("ExecutorGroupIdList")
         self._OnlyRerun = params.get("OnlyRerun")
         self._ScheduleTimeZone = params.get("ScheduleTimeZone")
+        self._ScheduleTimeFrom = params.get("ScheduleTimeFrom")
+        self._ScheduleTimeTo = params.get("ScheduleTimeTo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -53294,6 +53324,9 @@ REVERSE： 实例数据时间逆序
         :type ScheduleTimeZone: str
         :param _AppParam: 执行应用参数
         :type AppParam: str
+        :param _TimeType: 补录计划时间范围的类型： 
+DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
+        :type TimeType: str
         """
         self._PlanId = None
         self._MakeName = None
@@ -53325,6 +53358,7 @@ REVERSE： 实例数据时间逆序
         self._MakeDataTimeOrder = None
         self._ScheduleTimeZone = None
         self._AppParam = None
+        self._TimeType = None
 
     @property
     def PlanId(self):
@@ -53689,6 +53723,18 @@ REVERSE： 实例数据时间逆序
     def AppParam(self, AppParam):
         self._AppParam = AppParam
 
+    @property
+    def TimeType(self):
+        """补录计划时间范围的类型： 
+DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
+        :rtype: str
+        """
+        return self._TimeType
+
+    @TimeType.setter
+    def TimeType(self, TimeType):
+        self._TimeType = TimeType
+
 
     def _deserialize(self, params):
         self._PlanId = params.get("PlanId")
@@ -53731,6 +53777,7 @@ REVERSE： 实例数据时间逆序
         self._MakeDataTimeOrder = params.get("MakeDataTimeOrder")
         self._ScheduleTimeZone = params.get("ScheduleTimeZone")
         self._AppParam = params.get("AppParam")
+        self._TimeType = params.get("TimeType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -54164,6 +54211,8 @@ class ManualTriggerRecordOpsDto(AbstractModel):
         :param _ScheduleTimeZone: 数据实例时间的时区
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScheduleTimeZone: str
+        :param _TimeType: 时间类型，DATA_TIME：数据时间、SCHEDULE_TIME：计划调度时间, 为空时会被当成DATA_TIME处理
+        :type TimeType: str
         """
         self._TriggerId = None
         self._TriggerName = None
@@ -54182,6 +54231,7 @@ class ManualTriggerRecordOpsDto(AbstractModel):
         self._ProjectId = None
         self._CreateTime = None
         self._ScheduleTimeZone = None
+        self._TimeType = None
 
     @property
     def TriggerId(self):
@@ -54388,6 +54438,17 @@ class ManualTriggerRecordOpsDto(AbstractModel):
     def ScheduleTimeZone(self, ScheduleTimeZone):
         self._ScheduleTimeZone = ScheduleTimeZone
 
+    @property
+    def TimeType(self):
+        """时间类型，DATA_TIME：数据时间、SCHEDULE_TIME：计划调度时间, 为空时会被当成DATA_TIME处理
+        :rtype: str
+        """
+        return self._TimeType
+
+    @TimeType.setter
+    def TimeType(self, TimeType):
+        self._TimeType = TimeType
+
 
     def _deserialize(self, params):
         self._TriggerId = params.get("TriggerId")
@@ -54407,6 +54468,7 @@ class ManualTriggerRecordOpsDto(AbstractModel):
         self._ProjectId = params.get("ProjectId")
         self._CreateTime = params.get("CreateTime")
         self._ScheduleTimeZone = params.get("ScheduleTimeZone")
+        self._TimeType = params.get("TimeType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -83967,6 +84029,8 @@ TriggerScope=ENTIRE_WORKFLOW 时无需传此参数，TriggerScope=SPECIFIED_TASK
         :type ExtraParams: str
         :param _ScheduleTimeZone: 实例时间的时区
         :type ScheduleTimeZone: str
+        :param _TimeType: 时间类型，DATA_TIME：数据时间、SCHEDULE_TIME：计划调度时间, 为空时会被当成DATA_TIME处理
+        :type TimeType: str
         """
         self._ProjectId = None
         self._TriggerName = None
@@ -83981,6 +84045,7 @@ TriggerScope=ENTIRE_WORKFLOW 时无需传此参数，TriggerScope=SPECIFIED_TASK
         self._CustomParams = None
         self._ExtraParams = None
         self._ScheduleTimeZone = None
+        self._TimeType = None
 
     @property
     def ProjectId(self):
@@ -84126,6 +84191,17 @@ TriggerScope=ENTIRE_WORKFLOW 时无需传此参数，TriggerScope=SPECIFIED_TASK
     def ScheduleTimeZone(self, ScheduleTimeZone):
         self._ScheduleTimeZone = ScheduleTimeZone
 
+    @property
+    def TimeType(self):
+        """时间类型，DATA_TIME：数据时间、SCHEDULE_TIME：计划调度时间, 为空时会被当成DATA_TIME处理
+        :rtype: str
+        """
+        return self._TimeType
+
+    @TimeType.setter
+    def TimeType(self, TimeType):
+        self._TimeType = TimeType
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -84146,6 +84222,7 @@ TriggerScope=ENTIRE_WORKFLOW 时无需传此参数，TriggerScope=SPECIFIED_TASK
                 self._CustomParams.append(obj)
         self._ExtraParams = params.get("ExtraParams")
         self._ScheduleTimeZone = params.get("ScheduleTimeZone")
+        self._TimeType = params.get("TimeType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

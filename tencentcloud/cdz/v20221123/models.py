@@ -26,10 +26,8 @@ class CloudDedicatedZoneHostsInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _HostUuid: Host的唯一标识uuid
-注意：此字段可能返回 null，表示取不到有效值。
         :type HostUuid: str
         :param _InstancesInfo: 实例名称数组
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstancesInfo: list of str
         """
         self._HostUuid = None
@@ -38,7 +36,6 @@ class CloudDedicatedZoneHostsInfo(AbstractModel):
     @property
     def HostUuid(self):
         """Host的唯一标识uuid
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HostUuid
@@ -50,7 +47,6 @@ class CloudDedicatedZoneHostsInfo(AbstractModel):
     @property
     def InstancesInfo(self):
         """实例名称数组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._InstancesInfo

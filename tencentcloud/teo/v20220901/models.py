@@ -3294,6 +3294,42 @@ class BindZoneToPlanResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class BlockIPActionParameters(AbstractModel):
+    """Web安全IP封禁的附加参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Duration: 封禁 IP 的惩罚时长。支持的单位有：<li>s：秒，取值范围1～120；</li><li>m：分，取值范围1～120；</li><li>h：小时，取值范围1～48。</li>
+        :type Duration: str
+        """
+        self._Duration = None
+
+    @property
+    def Duration(self):
+        """封禁 IP 的惩罚时长。支持的单位有：<li>s：秒，取值范围1～120；</li><li>m：分，取值范围1～120；</li><li>h：小时，取值范围1～48。</li>
+        :rtype: str
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+
+    def _deserialize(self, params):
+        self._Duration = params.get("Duration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BotConfig(AbstractModel):
     """安全Bot配置
 
@@ -10703,6 +10739,175 @@ class CustomField(AbstractModel):
         self._Name = params.get("Name")
         self._Value = params.get("Value")
         self._Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomRule(AbstractModel):
+    """Web安全的自定义规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 自定义规则的名称。
+        :type Name: str
+        :param _Condition: 自定义规则的具体内容，需符合表达式语法，详细规范参见产品文档。
+        :type Condition: str
+        :param _Action: 自定义规则的执行动作。	SecurityAction 的 Name 取值支持：<li>Deny：拦截；</li><li>Monitor：观察；</li><li>ReturnCustomPage：使用指定页面拦截；</li><li>Redirect：重定向至 URL；</li><li>BlockIP：IP 封禁；</li><li>JSChallenge：JavaScript 挑战；</li><li>ManagedChallenge：托管挑战；</li><li>Allow：放行。</li>
+        :type Action: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
+        :param _Enabled: 自定义规则是否开启。取值有：<li>on：开启</li><li>off：关闭</li>
+        :type Enabled: str
+        :param _Id: 自定义规则的 ID。<br>通过规则 ID 可支持不同的规则配置操作：<br> - 增加新规则：ID 为空或不指定 ID 参数；<br> - 修改已有规则：指定需要更新/修改的规则 ID；<br> - 删除已有规则：CustomRules 参数中，Rules 列表中未包含的已有规则将被删除。
+        :type Id: str
+        :param _RuleType: 自定义规则的类型。取值有：<li>BasicAccessRule：基础访问管控；</li><li>PreciseMatchRule：精准匹配规则，默认；</li><li>ManagedAccessRule：专家定制规则，仅出参。</li><br/>默认为PreciseMatchRule。
+        :type RuleType: str
+        :param _Priority: 自定义规则的优先级，范围是 0 ~ 100，默认为 0，仅支持精准匹配规则（PreciseMatchRule）。
+        :type Priority: int
+        """
+        self._Name = None
+        self._Condition = None
+        self._Action = None
+        self._Enabled = None
+        self._Id = None
+        self._RuleType = None
+        self._Priority = None
+
+    @property
+    def Name(self):
+        """自定义规则的名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Condition(self):
+        """自定义规则的具体内容，需符合表达式语法，详细规范参见产品文档。
+        :rtype: str
+        """
+        return self._Condition
+
+    @Condition.setter
+    def Condition(self, Condition):
+        self._Condition = Condition
+
+    @property
+    def Action(self):
+        """自定义规则的执行动作。	SecurityAction 的 Name 取值支持：<li>Deny：拦截；</li><li>Monitor：观察；</li><li>ReturnCustomPage：使用指定页面拦截；</li><li>Redirect：重定向至 URL；</li><li>BlockIP：IP 封禁；</li><li>JSChallenge：JavaScript 挑战；</li><li>ManagedChallenge：托管挑战；</li><li>Allow：放行。</li>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def Enabled(self):
+        """自定义规则是否开启。取值有：<li>on：开启</li><li>off：关闭</li>
+        :rtype: str
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def Id(self):
+        """自定义规则的 ID。<br>通过规则 ID 可支持不同的规则配置操作：<br> - 增加新规则：ID 为空或不指定 ID 参数；<br> - 修改已有规则：指定需要更新/修改的规则 ID；<br> - 删除已有规则：CustomRules 参数中，Rules 列表中未包含的已有规则将被删除。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def RuleType(self):
+        """自定义规则的类型。取值有：<li>BasicAccessRule：基础访问管控；</li><li>PreciseMatchRule：精准匹配规则，默认；</li><li>ManagedAccessRule：专家定制规则，仅出参。</li><br/>默认为PreciseMatchRule。
+        :rtype: str
+        """
+        return self._RuleType
+
+    @RuleType.setter
+    def RuleType(self, RuleType):
+        self._RuleType = RuleType
+
+    @property
+    def Priority(self):
+        """自定义规则的优先级，范围是 0 ~ 100，默认为 0，仅支持精准匹配规则（PreciseMatchRule）。
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Condition = params.get("Condition")
+        if params.get("Action") is not None:
+            self._Action = SecurityAction()
+            self._Action._deserialize(params.get("Action"))
+        self._Enabled = params.get("Enabled")
+        self._Id = params.get("Id")
+        self._RuleType = params.get("RuleType")
+        self._Priority = params.get("Priority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomRules(AbstractModel):
+    """Web安全的自定义规则结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Rules: 自定义规则的定义列表。<br>使用 ModifySecurityPolicy 修改 Web 防护配置时: <br> -  若未指定 Rules 参数，或 Rules 参数长度为零：清空所有自定义规则配置。<br> - 若 SecurityPolicy 参数中，未指定 CustomRules 参数值：保持已有自定义规则配置，不做修改。
+        :type Rules: list of CustomRule
+        """
+        self._Rules = None
+
+    @property
+    def Rules(self):
+        """自定义规则的定义列表。<br>使用 ModifySecurityPolicy 修改 Web 防护配置时: <br> -  若未指定 Rules 参数，或 Rules 参数长度为零：清空所有自定义规则配置。<br> - 若 SecurityPolicy 参数中，未指定 CustomRules 参数值：保持已有自定义规则配置，不做修改。
+        :rtype: list of CustomRule
+        """
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+
+    def _deserialize(self, params):
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = CustomRule()
+                obj._deserialize(item)
+                self._Rules.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27884,6 +28089,485 @@ class LogFormat(AbstractModel):
         
 
 
+class ManagedRuleAction(AbstractModel):
+    """托管规则的项配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: 托管规则组下的具体项，用于改写此单条规则项配置的内容，具体参考产品文档。	
+        :type RuleId: str
+        :param _Action: RuleId 中指定托管规则项的处置动作。 SecurityAction 的 Name 取值支持：<li>Deny：拦截，响应拦截页面；</li><li>Monitor：观察，不处理请求记录安全事件到日志中；</li><li>Disabled：未启用，不扫描请求跳过该规则。</li>
+        :type Action: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
+        """
+        self._RuleId = None
+        self._Action = None
+
+    @property
+    def RuleId(self):
+        """托管规则组下的具体项，用于改写此单条规则项配置的内容，具体参考产品文档。	
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def Action(self):
+        """RuleId 中指定托管规则项的处置动作。 SecurityAction 的 Name 取值支持：<li>Deny：拦截，响应拦截页面；</li><li>Monitor：观察，不处理请求记录安全事件到日志中；</li><li>Disabled：未启用，不扫描请求跳过该规则。</li>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        if params.get("Action") is not None:
+            self._Action = SecurityAction()
+            self._Action._deserialize(params.get("Action"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ManagedRuleAutoUpdate(AbstractModel):
+    """托管规则自动更新选项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AutoUpdateToLatestVersion: 是否开启自动更新至最新版本。取值有：<li>on：开启</li><li>off：关闭</li>
+        :type AutoUpdateToLatestVersion: str
+        :param _RulesetVersion: 当前使用的版本，格式符合ISO 8601标准，如2023-12-21T12:00:32Z，默认为空，仅出参。
+        :type RulesetVersion: str
+        """
+        self._AutoUpdateToLatestVersion = None
+        self._RulesetVersion = None
+
+    @property
+    def AutoUpdateToLatestVersion(self):
+        """是否开启自动更新至最新版本。取值有：<li>on：开启</li><li>off：关闭</li>
+        :rtype: str
+        """
+        return self._AutoUpdateToLatestVersion
+
+    @AutoUpdateToLatestVersion.setter
+    def AutoUpdateToLatestVersion(self, AutoUpdateToLatestVersion):
+        self._AutoUpdateToLatestVersion = AutoUpdateToLatestVersion
+
+    @property
+    def RulesetVersion(self):
+        """当前使用的版本，格式符合ISO 8601标准，如2023-12-21T12:00:32Z，默认为空，仅出参。
+        :rtype: str
+        """
+        return self._RulesetVersion
+
+    @RulesetVersion.setter
+    def RulesetVersion(self, RulesetVersion):
+        self._RulesetVersion = RulesetVersion
+
+
+    def _deserialize(self, params):
+        self._AutoUpdateToLatestVersion = params.get("AutoUpdateToLatestVersion")
+        self._RulesetVersion = params.get("RulesetVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ManagedRuleDetail(AbstractModel):
+    """托管规则详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: 托管规则Id。
+        :type RuleId: str
+        :param _RiskLevel: 托管规则的防护级别。取值有：<li>low：低风险，此规则风险较低，适用于非常严格控制环境下的访问场景，该等级规则可能造成较多的误报；</li><li>medium：中风险，表示此条规则风险正常，适用较为严格的防护场景；</li><li>high：高风险，表示此条规则风险较高，大多数场景不会产生误报；</li><li>extreme：超高风险，表示此条规则风险极高，基本不会产生误报；</li>
+        :type RiskLevel: str
+        :param _Description: 规则描述。
+        :type Description: str
+        :param _Tags: 规则标签。部分类型的规则不存在标签。
+        :type Tags: list of str
+        :param _RuleVersion: 规则所属版本。
+        :type RuleVersion: str
+        """
+        self._RuleId = None
+        self._RiskLevel = None
+        self._Description = None
+        self._Tags = None
+        self._RuleVersion = None
+
+    @property
+    def RuleId(self):
+        """托管规则Id。
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RiskLevel(self):
+        """托管规则的防护级别。取值有：<li>low：低风险，此规则风险较低，适用于非常严格控制环境下的访问场景，该等级规则可能造成较多的误报；</li><li>medium：中风险，表示此条规则风险正常，适用较为严格的防护场景；</li><li>high：高风险，表示此条规则风险较高，大多数场景不会产生误报；</li><li>extreme：超高风险，表示此条规则风险极高，基本不会产生误报；</li>
+        :rtype: str
+        """
+        return self._RiskLevel
+
+    @RiskLevel.setter
+    def RiskLevel(self, RiskLevel):
+        self._RiskLevel = RiskLevel
+
+    @property
+    def Description(self):
+        """规则描述。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Tags(self):
+        """规则标签。部分类型的规则不存在标签。
+        :rtype: list of str
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def RuleVersion(self):
+        """规则所属版本。
+        :rtype: str
+        """
+        return self._RuleVersion
+
+    @RuleVersion.setter
+    def RuleVersion(self, RuleVersion):
+        self._RuleVersion = RuleVersion
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._RiskLevel = params.get("RiskLevel")
+        self._Description = params.get("Description")
+        self._Tags = params.get("Tags")
+        self._RuleVersion = params.get("RuleVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ManagedRuleGroup(AbstractModel):
+    """托管规则组配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: 托管规则的组名称，未指定配置的规则分组将按照默认配置处理，GroupId 的具体取值参考产品文档。
+        :type GroupId: str
+        :param _SensitivityLevel: 托管规则组的防护级别。取值有：<li>loose：宽松，只包含超高风险规则，此时需配置Action，且RuleActions配置无效；</li><li>normal：正常，包含超高风险和高风险规则，此时需配置Action，且RuleActions配置无效；</li><li>strict：严格，包含超高风险、高风险和中风险规则，此时需配置Action，且RuleActions配置无效；</li><li>extreme：超严格，包含超高风险、高风险、中风险和低风险规则，此时需配置Action，且RuleActions配置无效；</li><li>custom：自定义，精细化策略，按单条规则配置处置方式，此时Action字段无效，使用RuleActions配置单条规则的精细化策略。</li>	
+        :type SensitivityLevel: str
+        :param _Action: 托管规则组的处置动作。SecurityAction 的 Name 取值支持：<li>Deny：拦截，响应拦截页面；</li><li>Monitor：观察，不处理请求记录安全事件到日志中；</li><li>Disabled：未启用，不扫描请求跳过该规则。</li>
+        :type Action: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
+        :param _RuleActions: 托管规则组下规则项的具体配置，仅在 SensitivityLevel 为 custom 时配置生效。
+        :type RuleActions: list of ManagedRuleAction
+        :param _MetaData: 托管规则组信息，仅出参。	
+        :type MetaData: :class:`tencentcloud.teo.v20220901.models.ManagedRuleGroupMeta`
+        """
+        self._GroupId = None
+        self._SensitivityLevel = None
+        self._Action = None
+        self._RuleActions = None
+        self._MetaData = None
+
+    @property
+    def GroupId(self):
+        """托管规则的组名称，未指定配置的规则分组将按照默认配置处理，GroupId 的具体取值参考产品文档。
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def SensitivityLevel(self):
+        """托管规则组的防护级别。取值有：<li>loose：宽松，只包含超高风险规则，此时需配置Action，且RuleActions配置无效；</li><li>normal：正常，包含超高风险和高风险规则，此时需配置Action，且RuleActions配置无效；</li><li>strict：严格，包含超高风险、高风险和中风险规则，此时需配置Action，且RuleActions配置无效；</li><li>extreme：超严格，包含超高风险、高风险、中风险和低风险规则，此时需配置Action，且RuleActions配置无效；</li><li>custom：自定义，精细化策略，按单条规则配置处置方式，此时Action字段无效，使用RuleActions配置单条规则的精细化策略。</li>	
+        :rtype: str
+        """
+        return self._SensitivityLevel
+
+    @SensitivityLevel.setter
+    def SensitivityLevel(self, SensitivityLevel):
+        self._SensitivityLevel = SensitivityLevel
+
+    @property
+    def Action(self):
+        """托管规则组的处置动作。SecurityAction 的 Name 取值支持：<li>Deny：拦截，响应拦截页面；</li><li>Monitor：观察，不处理请求记录安全事件到日志中；</li><li>Disabled：未启用，不扫描请求跳过该规则。</li>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def RuleActions(self):
+        """托管规则组下规则项的具体配置，仅在 SensitivityLevel 为 custom 时配置生效。
+        :rtype: list of ManagedRuleAction
+        """
+        return self._RuleActions
+
+    @RuleActions.setter
+    def RuleActions(self, RuleActions):
+        self._RuleActions = RuleActions
+
+    @property
+    def MetaData(self):
+        """托管规则组信息，仅出参。	
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ManagedRuleGroupMeta`
+        """
+        return self._MetaData
+
+    @MetaData.setter
+    def MetaData(self, MetaData):
+        self._MetaData = MetaData
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        self._SensitivityLevel = params.get("SensitivityLevel")
+        if params.get("Action") is not None:
+            self._Action = SecurityAction()
+            self._Action._deserialize(params.get("Action"))
+        if params.get("RuleActions") is not None:
+            self._RuleActions = []
+            for item in params.get("RuleActions"):
+                obj = ManagedRuleAction()
+                obj._deserialize(item)
+                self._RuleActions.append(obj)
+        if params.get("MetaData") is not None:
+            self._MetaData = ManagedRuleGroupMeta()
+            self._MetaData._deserialize(params.get("MetaData"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ManagedRuleGroupMeta(AbstractModel):
+    """托管规则组信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupDetail: 托管规则组描述，仅出参。
+        :type GroupDetail: str
+        :param _GroupName: 托管规则组名称，仅出参。
+        :type GroupName: str
+        :param _RuleDetails: 当前托管规则组下的所有子规则信息，仅出参。
+        :type RuleDetails: list of ManagedRuleDetail
+        """
+        self._GroupDetail = None
+        self._GroupName = None
+        self._RuleDetails = None
+
+    @property
+    def GroupDetail(self):
+        """托管规则组描述，仅出参。
+        :rtype: str
+        """
+        return self._GroupDetail
+
+    @GroupDetail.setter
+    def GroupDetail(self, GroupDetail):
+        self._GroupDetail = GroupDetail
+
+    @property
+    def GroupName(self):
+        """托管规则组名称，仅出参。
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def RuleDetails(self):
+        """当前托管规则组下的所有子规则信息，仅出参。
+        :rtype: list of ManagedRuleDetail
+        """
+        return self._RuleDetails
+
+    @RuleDetails.setter
+    def RuleDetails(self, RuleDetails):
+        self._RuleDetails = RuleDetails
+
+
+    def _deserialize(self, params):
+        self._GroupDetail = params.get("GroupDetail")
+        self._GroupName = params.get("GroupName")
+        if params.get("RuleDetails") is not None:
+            self._RuleDetails = []
+            for item in params.get("RuleDetails"):
+                obj = ManagedRuleDetail()
+                obj._deserialize(item)
+                self._RuleDetails.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ManagedRules(AbstractModel):
+    """Web安全的托管规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: 托管规则是否开启。取值有：<li>on：开启，所有托管规则按配置生效；</li><li>off：关闭，所有托管规则不生效。</li>
+        :type Enabled: str
+        :param _DetectionOnly: 评估模式是否开启，仅在 Enabled 参数为 on 时有效。取值有：<li>on：开启，表示所有托管规则以观察模式生效；</li><li>off：关闭，表示所有托管规则以实际配置生效。</li>
+        :type DetectionOnly: str
+        :param _SemanticAnalysis: 托管规则语义分析选项是否开启，仅在 Enabled 参数为 on 时有效。取值有：<li>on：开启，对请求进行语义分析后进行处理；</li><li>off：关闭，对请求不进行语义分析，直接进行处理。</li> <br/>默认为 off。
+        :type SemanticAnalysis: str
+        :param _AutoUpdate: 托管规则自动更新选项。
+        :type AutoUpdate: :class:`tencentcloud.teo.v20220901.models.ManagedRuleAutoUpdate`
+        :param _ManagedRuleGroups: 托管规则组的配置。如果此结构传空数组或 GroupId 未包含在列表内将按照默认方式处理。
+        :type ManagedRuleGroups: list of ManagedRuleGroup
+        """
+        self._Enabled = None
+        self._DetectionOnly = None
+        self._SemanticAnalysis = None
+        self._AutoUpdate = None
+        self._ManagedRuleGroups = None
+
+    @property
+    def Enabled(self):
+        """托管规则是否开启。取值有：<li>on：开启，所有托管规则按配置生效；</li><li>off：关闭，所有托管规则不生效。</li>
+        :rtype: str
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def DetectionOnly(self):
+        """评估模式是否开启，仅在 Enabled 参数为 on 时有效。取值有：<li>on：开启，表示所有托管规则以观察模式生效；</li><li>off：关闭，表示所有托管规则以实际配置生效。</li>
+        :rtype: str
+        """
+        return self._DetectionOnly
+
+    @DetectionOnly.setter
+    def DetectionOnly(self, DetectionOnly):
+        self._DetectionOnly = DetectionOnly
+
+    @property
+    def SemanticAnalysis(self):
+        """托管规则语义分析选项是否开启，仅在 Enabled 参数为 on 时有效。取值有：<li>on：开启，对请求进行语义分析后进行处理；</li><li>off：关闭，对请求不进行语义分析，直接进行处理。</li> <br/>默认为 off。
+        :rtype: str
+        """
+        return self._SemanticAnalysis
+
+    @SemanticAnalysis.setter
+    def SemanticAnalysis(self, SemanticAnalysis):
+        self._SemanticAnalysis = SemanticAnalysis
+
+    @property
+    def AutoUpdate(self):
+        """托管规则自动更新选项。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ManagedRuleAutoUpdate`
+        """
+        return self._AutoUpdate
+
+    @AutoUpdate.setter
+    def AutoUpdate(self, AutoUpdate):
+        self._AutoUpdate = AutoUpdate
+
+    @property
+    def ManagedRuleGroups(self):
+        """托管规则组的配置。如果此结构传空数组或 GroupId 未包含在列表内将按照默认方式处理。
+        :rtype: list of ManagedRuleGroup
+        """
+        return self._ManagedRuleGroups
+
+    @ManagedRuleGroups.setter
+    def ManagedRuleGroups(self, ManagedRuleGroups):
+        self._ManagedRuleGroups = ManagedRuleGroups
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        self._DetectionOnly = params.get("DetectionOnly")
+        self._SemanticAnalysis = params.get("SemanticAnalysis")
+        if params.get("AutoUpdate") is not None:
+            self._AutoUpdate = ManagedRuleAutoUpdate()
+            self._AutoUpdate._deserialize(params.get("AutoUpdate"))
+        if params.get("ManagedRuleGroups") is not None:
+            self._ManagedRuleGroups = []
+            for item in params.get("ManagedRuleGroups"):
+                obj = ManagedRuleGroup()
+                obj._deserialize(item)
+                self._ManagedRuleGroups.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MaxAge(AbstractModel):
     """浏览器缓存规则配置，用于设置 MaxAge 默认值，默认为关闭状态
 
@@ -31796,29 +32480,29 @@ class ModifySecurityPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: 站点Id。
+        :param _ZoneId: 站点 ID。
         :type ZoneId: str
-        :param _SecurityConfig: 安全配置。
+        :param _SecurityConfig: 安全策略配置。<li>当 SecurityPolicy 参数中的 CustomRule 被设置时，SecurityConfig 参数中的 AclConfg、 IpTableConfg 将被忽略；</li><li>当 SecurityPolicy 参数中的 ManagedRule 被设置时，SecurityConfig 参数中的 WafConfig 将被忽略。</li><li>对于自定义规则以及托管规则策略配置建议使用 SecurityPolicy 参数进行设置。</li>
         :type SecurityConfig: :class:`tencentcloud.teo.v20220901.models.SecurityConfig`
-        :param _Entity: 子域名/应用名。
-
-注意：当同时指定本参数和 TemplateId 参数时，本参数不生效。请勿同时指定本参数和 TemplateId 参数。
+        :param _SecurityPolicy: 安全策略配置。对 Web 防护自定义策略和托管规则配置建议使用，支持表达式语法对安全策略进行配置。
+        :type SecurityPolicy: :class:`tencentcloud.teo.v20220901.models.SecurityPolicy`
+        :param _Entity: 安全策略类型，可使用以下参数值： <li>ZoneDefaultPolicy：用于指定站点级策略；</li><li>Template：用于指定策略模板，需要同时指定 TemplateId 参数；</li><li>Host：用于指定域名级策略（注意：当使用域名来指定域名服务策略时，仅支持已经应用了域名级策略的域名服务或者策略模板）。</li>
         :type Entity: str
-        :param _TemplateId: 指定模板策略 ID，或指定站点全局策略。
-- 如需配置策略模板，请指定策略模板 ID。
-- 如需配置站点全局策略，请使用 @ZoneLevel@Domain 参数值
-
-注意：当使用本参数时，Entity 参数不生效。请勿同时使用本参数和 Entity 参数。
+        :param _Host: 指定域名。当 Entity 参数值为 Host 时，使用本参数指定的域名级策略，例如：使用 www.example.com ，配置该域名的域名级策略。
+        :type Host: str
+        :param _TemplateId: 指定策略模板 ID。当 Entity 参数值为 Template 时，使用本参数指定策略模板的 ID。
         :type TemplateId: str
         """
         self._ZoneId = None
         self._SecurityConfig = None
+        self._SecurityPolicy = None
         self._Entity = None
+        self._Host = None
         self._TemplateId = None
 
     @property
     def ZoneId(self):
-        """站点Id。
+        """站点 ID。
         :rtype: str
         """
         return self._ZoneId
@@ -31829,7 +32513,7 @@ class ModifySecurityPolicyRequest(AbstractModel):
 
     @property
     def SecurityConfig(self):
-        """安全配置。
+        """安全策略配置。<li>当 SecurityPolicy 参数中的 CustomRule 被设置时，SecurityConfig 参数中的 AclConfg、 IpTableConfg 将被忽略；</li><li>当 SecurityPolicy 参数中的 ManagedRule 被设置时，SecurityConfig 参数中的 WafConfig 将被忽略。</li><li>对于自定义规则以及托管规则策略配置建议使用 SecurityPolicy 参数进行设置。</li>
         :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityConfig`
         """
         return self._SecurityConfig
@@ -31839,10 +32523,19 @@ class ModifySecurityPolicyRequest(AbstractModel):
         self._SecurityConfig = SecurityConfig
 
     @property
-    def Entity(self):
-        """子域名/应用名。
+    def SecurityPolicy(self):
+        """安全策略配置。对 Web 防护自定义策略和托管规则配置建议使用，支持表达式语法对安全策略进行配置。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityPolicy`
+        """
+        return self._SecurityPolicy
 
-注意：当同时指定本参数和 TemplateId 参数时，本参数不生效。请勿同时指定本参数和 TemplateId 参数。
+    @SecurityPolicy.setter
+    def SecurityPolicy(self, SecurityPolicy):
+        self._SecurityPolicy = SecurityPolicy
+
+    @property
+    def Entity(self):
+        """安全策略类型，可使用以下参数值： <li>ZoneDefaultPolicy：用于指定站点级策略；</li><li>Template：用于指定策略模板，需要同时指定 TemplateId 参数；</li><li>Host：用于指定域名级策略（注意：当使用域名来指定域名服务策略时，仅支持已经应用了域名级策略的域名服务或者策略模板）。</li>
         :rtype: str
         """
         return self._Entity
@@ -31852,12 +32545,19 @@ class ModifySecurityPolicyRequest(AbstractModel):
         self._Entity = Entity
 
     @property
-    def TemplateId(self):
-        """指定模板策略 ID，或指定站点全局策略。
-- 如需配置策略模板，请指定策略模板 ID。
-- 如需配置站点全局策略，请使用 @ZoneLevel@Domain 参数值
+    def Host(self):
+        """指定域名。当 Entity 参数值为 Host 时，使用本参数指定的域名级策略，例如：使用 www.example.com ，配置该域名的域名级策略。
+        :rtype: str
+        """
+        return self._Host
 
-注意：当使用本参数时，Entity 参数不生效。请勿同时使用本参数和 Entity 参数。
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def TemplateId(self):
+        """指定策略模板 ID。当 Entity 参数值为 Template 时，使用本参数指定策略模板的 ID。
         :rtype: str
         """
         return self._TemplateId
@@ -31872,7 +32572,11 @@ class ModifySecurityPolicyRequest(AbstractModel):
         if params.get("SecurityConfig") is not None:
             self._SecurityConfig = SecurityConfig()
             self._SecurityConfig._deserialize(params.get("SecurityConfig"))
+        if params.get("SecurityPolicy") is not None:
+            self._SecurityPolicy = SecurityPolicy()
+            self._SecurityPolicy._deserialize(params.get("SecurityPolicy"))
         self._Entity = params.get("Entity")
+        self._Host = params.get("Host")
         self._TemplateId = params.get("TemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -36345,6 +37049,42 @@ class RealtimeLogDeliveryTask(AbstractModel):
         
 
 
+class RedirectActionParameters(AbstractModel):
+    """Web安全重定向的附加参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _URL: 重定向的URL。
+        :type URL: str
+        """
+        self._URL = None
+
+    @property
+    def URL(self):
+        """重定向的URL。
+        :rtype: str
+        """
+        return self._URL
+
+    @URL.setter
+    def URL(self, URL):
+        self._URL = URL
+
+
+    def _deserialize(self, params):
+        self._URL = params.get("URL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RenewFlag(AbstractModel):
     """预付费套餐自动续费配置项。
 
@@ -36819,6 +37559,57 @@ class ResponseSpeedLimitParameters(AbstractModel):
         self._Mode = params.get("Mode")
         self._MaxSpeed = params.get("MaxSpeed")
         self._StartAt = params.get("StartAt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReturnCustomPageActionParameters(AbstractModel):
+    """Web安全自定义页面的附加参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResponseCode: 响应状态码。
+        :type ResponseCode: str
+        :param _ErrorPageId: 响应的自定义页面ID。
+        :type ErrorPageId: str
+        """
+        self._ResponseCode = None
+        self._ErrorPageId = None
+
+    @property
+    def ResponseCode(self):
+        """响应状态码。
+        :rtype: str
+        """
+        return self._ResponseCode
+
+    @ResponseCode.setter
+    def ResponseCode(self, ResponseCode):
+        self._ResponseCode = ResponseCode
+
+    @property
+    def ErrorPageId(self):
+        """响应的自定义页面ID。
+        :rtype: str
+        """
+        return self._ErrorPageId
+
+    @ErrorPageId.setter
+    def ErrorPageId(self, ErrorPageId):
+        self._ErrorPageId = ErrorPageId
+
+
+    def _deserialize(self, params):
+        self._ResponseCode = params.get("ResponseCode")
+        self._ErrorPageId = params.get("ErrorPageId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -39277,6 +40068,95 @@ class SecEntryValue(AbstractModel):
         
 
 
+class SecurityAction(AbstractModel):
+    """安全的执行动作
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 安全执行的具体动作。取值有：
+<li>Deny：拦截；</li><li>Monitor：观察；</li><li>ReturnCustomPage：使用指定页面拦截；</li><li>Redirect：重定向至 URL；</li><li>BlockIP：IP 封禁；</li><li>JSChallenge：JavaScript 挑战；</li><li>ManagedChallenge：托管挑战；</li><li>Disabled：未启用；</li><li>Allow：放行。</li>
+        :type Name: str
+        :param _BlockIPActionParameters: 当 Name 为 BlockIP 时的附加参数。
+        :type BlockIPActionParameters: :class:`tencentcloud.teo.v20220901.models.BlockIPActionParameters`
+        :param _ReturnCustomPageActionParameters: 当 Name 为 ReturnCustomPage 时的附加参数。
+        :type ReturnCustomPageActionParameters: :class:`tencentcloud.teo.v20220901.models.ReturnCustomPageActionParameters`
+        :param _RedirectActionParameters: 当 Name 为 Redirect 时的附加参数。
+        :type RedirectActionParameters: :class:`tencentcloud.teo.v20220901.models.RedirectActionParameters`
+        """
+        self._Name = None
+        self._BlockIPActionParameters = None
+        self._ReturnCustomPageActionParameters = None
+        self._RedirectActionParameters = None
+
+    @property
+    def Name(self):
+        """安全执行的具体动作。取值有：
+<li>Deny：拦截；</li><li>Monitor：观察；</li><li>ReturnCustomPage：使用指定页面拦截；</li><li>Redirect：重定向至 URL；</li><li>BlockIP：IP 封禁；</li><li>JSChallenge：JavaScript 挑战；</li><li>ManagedChallenge：托管挑战；</li><li>Disabled：未启用；</li><li>Allow：放行。</li>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def BlockIPActionParameters(self):
+        """当 Name 为 BlockIP 时的附加参数。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.BlockIPActionParameters`
+        """
+        return self._BlockIPActionParameters
+
+    @BlockIPActionParameters.setter
+    def BlockIPActionParameters(self, BlockIPActionParameters):
+        self._BlockIPActionParameters = BlockIPActionParameters
+
+    @property
+    def ReturnCustomPageActionParameters(self):
+        """当 Name 为 ReturnCustomPage 时的附加参数。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ReturnCustomPageActionParameters`
+        """
+        return self._ReturnCustomPageActionParameters
+
+    @ReturnCustomPageActionParameters.setter
+    def ReturnCustomPageActionParameters(self, ReturnCustomPageActionParameters):
+        self._ReturnCustomPageActionParameters = ReturnCustomPageActionParameters
+
+    @property
+    def RedirectActionParameters(self):
+        """当 Name 为 Redirect 时的附加参数。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.RedirectActionParameters`
+        """
+        return self._RedirectActionParameters
+
+    @RedirectActionParameters.setter
+    def RedirectActionParameters(self, RedirectActionParameters):
+        self._RedirectActionParameters = RedirectActionParameters
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        if params.get("BlockIPActionParameters") is not None:
+            self._BlockIPActionParameters = BlockIPActionParameters()
+            self._BlockIPActionParameters._deserialize(params.get("BlockIPActionParameters"))
+        if params.get("ReturnCustomPageActionParameters") is not None:
+            self._ReturnCustomPageActionParameters = ReturnCustomPageActionParameters()
+            self._ReturnCustomPageActionParameters._deserialize(params.get("ReturnCustomPageActionParameters"))
+        if params.get("RedirectActionParameters") is not None:
+            self._RedirectActionParameters = RedirectActionParameters()
+            self._RedirectActionParameters._deserialize(params.get("RedirectActionParameters"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SecurityConfig(AbstractModel):
     """Web安全配置
 
@@ -39497,6 +40377,61 @@ class SecurityConfig(AbstractModel):
         if params.get("DetectLengthLimitConfig") is not None:
             self._DetectLengthLimitConfig = DetectLengthLimitConfig()
             self._DetectLengthLimitConfig._deserialize(params.get("DetectLengthLimitConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SecurityPolicy(AbstractModel):
+    """安全策略配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CustomRules: 自定义规则配置。
+        :type CustomRules: :class:`tencentcloud.teo.v20220901.models.CustomRules`
+        :param _ManagedRules: 托管规则配置。
+        :type ManagedRules: :class:`tencentcloud.teo.v20220901.models.ManagedRules`
+        """
+        self._CustomRules = None
+        self._ManagedRules = None
+
+    @property
+    def CustomRules(self):
+        """自定义规则配置。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CustomRules`
+        """
+        return self._CustomRules
+
+    @CustomRules.setter
+    def CustomRules(self, CustomRules):
+        self._CustomRules = CustomRules
+
+    @property
+    def ManagedRules(self):
+        """托管规则配置。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ManagedRules`
+        """
+        return self._ManagedRules
+
+    @ManagedRules.setter
+    def ManagedRules(self, ManagedRules):
+        self._ManagedRules = ManagedRules
+
+
+    def _deserialize(self, params):
+        if params.get("CustomRules") is not None:
+            self._CustomRules = CustomRules()
+            self._CustomRules._deserialize(params.get("CustomRules"))
+        if params.get("ManagedRules") is not None:
+            self._ManagedRules = ManagedRules()
+            self._ManagedRules._deserialize(params.get("ManagedRules"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

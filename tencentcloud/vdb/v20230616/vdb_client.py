@@ -73,7 +73,7 @@ class VdbClient(AbstractClient):
 
 
     def DescribeInstanceNodes(self, request):
-        """实例节点列表
+        """查询实例pod列表
 
         :param request: Request instance for DescribeInstanceNodes.
         :type request: :class:`tencentcloud.vdb.v20230616.models.DescribeInstanceNodesRequest`

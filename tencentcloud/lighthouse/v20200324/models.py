@@ -1193,6 +1193,11 @@ class Bundle(AbstractModel):
 <li>HK_EXCLUSIVE_BUNDLE：香港专属型 </li>
 <li>CAREFREE_BUNDLE：无忧型</li>
 <li>BEFAST_BUNDLE：蜂驰型 </li>
+<li>EXCLUSIVE_BUNDLE_02：境外专属Ⅱ型</li>
+<li>NEWCOMER_BUNDLE：新客专享</li>
+<li>GAME_PORTAL_BUNDLE：游戏专区</li>
+<li>ECONOMY_BUNDLE：经济型</li>
+<li>RAZOR_SPEED_BUNDLE：锐驰型</li>
         :type BundleType: str
         :param _BundleTypeDescription: 套餐类型描述信息。
         :type BundleTypeDescription: str
@@ -1365,6 +1370,11 @@ class Bundle(AbstractModel):
 <li>HK_EXCLUSIVE_BUNDLE：香港专属型 </li>
 <li>CAREFREE_BUNDLE：无忧型</li>
 <li>BEFAST_BUNDLE：蜂驰型 </li>
+<li>EXCLUSIVE_BUNDLE_02：境外专属Ⅱ型</li>
+<li>NEWCOMER_BUNDLE：新客专享</li>
+<li>GAME_PORTAL_BUNDLE：游戏专区</li>
+<li>ECONOMY_BUNDLE：经济型</li>
+<li>RAZOR_SPEED_BUNDLE：锐驰型</li>
         :rtype: str
         """
         return self._BundleType
@@ -1774,7 +1784,7 @@ class CreateBlueprintRequest(AbstractModel):
         :type BlueprintName: str
         :param _Description: 镜像描述。最大长度60。
         :type Description: str
-        :param _InstanceId: 需要制作镜像的实例ID。
+        :param _InstanceId: 需要制作镜像的实例ID。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/1207/47573) 接口返回值中的 InstanceId 获取。
         :type InstanceId: str
         :param _ForcePowerOff: 是否执行强制关机以制作镜像。
 取值范围：
@@ -1813,7 +1823,7 @@ False：表示开机状态制作镜像
 
     @property
     def InstanceId(self):
-        """需要制作镜像的实例ID。
+        """需要制作镜像的实例ID。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/1207/47573) 接口返回值中的 InstanceId 获取。
         :rtype: str
         """
         return self._InstanceId
@@ -2608,6 +2618,7 @@ class CreateInstancesRequest(AbstractModel):
         :type InstanceCount: int
         :param _Zones: 可用区列表。
 不填此参数，表示为随机可用区。
+可通过 <a href="https://cloud.tencent.com/document/product/1207/57513" target="_blank">DescribeZones</a>接口获取指定地域下的可用区列表信息
         :type Zones: list of str
         :param _DryRun: 是否只预检此次请求。
 true：发送检查请求，不会创建实例。检查项包括是否填写了必需参数，请求格式，业务限制和库存。
@@ -2634,8 +2645,10 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         :param _InitCommand: 创建实例后自动执行的命令。
         :type InitCommand: :class:`tencentcloud.lighthouse.v20200324.models.Command`
         :param _DomainName: 主域名。
+注意：域名指定后，仅支持购买一台实例（参数InstanceCount=1）。
         :type DomainName: str
         :param _Subdomain: 子域名。
+注意：域名指定后，仅支持购买一台实例（参数InstanceCount=1）。
         :type Subdomain: str
         """
         self._BundleId = None
@@ -2714,6 +2727,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
     def Zones(self):
         """可用区列表。
 不填此参数，表示为随机可用区。
+可通过 <a href="https://cloud.tencent.com/document/product/1207/57513" target="_blank">DescribeZones</a>接口获取指定地域下的可用区列表信息
         :rtype: list of str
         """
         return self._Zones
@@ -2821,6 +2835,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
     @property
     def DomainName(self):
         """主域名。
+注意：域名指定后，仅支持购买一台实例（参数InstanceCount=1）。
         :rtype: str
         """
         return self._DomainName
@@ -2832,6 +2847,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
     @property
     def Subdomain(self):
         """子域名。
+注意：域名指定后，仅支持购买一台实例（参数InstanceCount=1）。
         :rtype: str
         """
         return self._Subdomain
@@ -2893,7 +2909,7 @@ class CreateInstancesResponse(AbstractModel):
         r"""
         :param _InstanceIdSet: 当通过本接口来创建实例时会返回该参数，表示一个或多个实例ID。返回实例ID列表并不代表实例创建成功。
 
-可根据 DescribeInstances 接口查询返回的InstancesSet中对应实例的ID的状态来判断创建是否完成；如果实例状态由“启动中”变为“运行中”，则为创建成功。
+可根据<a href="https://cloud.tencent.com/document/product/1207/47573" target="_blank">DescribeInstances</a> 接口查询返回的InstancesSet中对应实例的ID的状态来判断创建是否完成；如果实例状态由“启动中”变为“运行中”，则为创建成功。
         :type InstanceIdSet: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2905,7 +2921,7 @@ class CreateInstancesResponse(AbstractModel):
     def InstanceIdSet(self):
         """当通过本接口来创建实例时会返回该参数，表示一个或多个实例ID。返回实例ID列表并不代表实例创建成功。
 
-可根据 DescribeInstances 接口查询返回的InstancesSet中对应实例的ID的状态来判断创建是否完成；如果实例状态由“启动中”变为“运行中”，则为创建成功。
+可根据<a href="https://cloud.tencent.com/document/product/1207/47573" target="_blank">DescribeInstances</a> 接口查询返回的InstancesSet中对应实例的ID的状态来判断创建是否完成；如果实例状态由“启动中”变为“运行中”，则为创建成功。
         :rtype: list of str
         """
         return self._InstanceIdSet
@@ -3194,14 +3210,14 @@ class DeleteDiskBackupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskBackupIds: 云硬盘备份点ID列表，可通过 [DescribeDiskBackups](https://cloud.tencent.com/document/api/1207/84379)接口查询。
+        :param _DiskBackupIds: 云硬盘备份点ID列表，可通过 [DescribeDiskBackups](https://cloud.tencent.com/document/api/1207/84379)接口查询。列表长度最大值为100。
         :type DiskBackupIds: list of str
         """
         self._DiskBackupIds = None
 
     @property
     def DiskBackupIds(self):
-        """云硬盘备份点ID列表，可通过 [DescribeDiskBackups](https://cloud.tencent.com/document/api/1207/84379)接口查询。
+        """云硬盘备份点ID列表，可通过 [DescribeDiskBackups](https://cloud.tencent.com/document/api/1207/84379)接口查询。列表长度最大值为100。
         :rtype: list of str
         """
         return self._DiskBackupIds
@@ -4470,14 +4486,14 @@ class DescribeDiskBackupsDeniedActionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskBackupIds: 云硬盘备份点 ID 列表, 可通过<a href="https://cloud.tencent.com/document/product/1207/84379" target="_blank">DescribeDiskBackups</a>接口查询。
+        :param _DiskBackupIds: 云硬盘备份点 ID 列表, 可通过<a href="https://cloud.tencent.com/document/product/1207/84379" target="_blank">DescribeDiskBackups</a>接口查询。列表长度最大值为100。
         :type DiskBackupIds: list of str
         """
         self._DiskBackupIds = None
 
     @property
     def DiskBackupIds(self):
-        """云硬盘备份点 ID 列表, 可通过<a href="https://cloud.tencent.com/document/product/1207/84379" target="_blank">DescribeDiskBackups</a>接口查询。
+        """云硬盘备份点 ID 列表, 可通过<a href="https://cloud.tencent.com/document/product/1207/84379" target="_blank">DescribeDiskBackups</a>接口查询。列表长度最大值为100。
         :rtype: list of str
         """
         return self._DiskBackupIds
@@ -4566,12 +4582,14 @@ class DescribeDiskBackupsRequest(AbstractModel):
 <li>disk-backup-state</li>按照【云硬盘备份点状态】进行过滤。
 类型：String
 必选：否
-取值：参考数据结构 
-<a href="https://cloud.tencent.com/document/product/1207/47576#DiskBackup">DescribeSnapshots</a> 下的DiskBackupState取值。
+取值：参考数据结构 [DiskBackup](https://cloud.tencent.com/document/product/1207/47576#DiskBackup) 下的DiskBackupState取值。
 <li>disk-usage</li>按照【云硬盘类型】进行过滤。
 类型：String
 必选：否
-取值：SYSTEM_DISK或DATA_DISK
+取值：
+- SYSTEM_DISK - 系统盘
+- DATA_DISK - 数据盘
+
 每次请求的 Filters 的上限为 10，Filter.Values 的上限为5。参数不支持同时指定DiskBackupIds 和 Filters。
         :type Filters: list of Filter
         :param _Offset: 偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
@@ -4607,12 +4625,14 @@ class DescribeDiskBackupsRequest(AbstractModel):
 <li>disk-backup-state</li>按照【云硬盘备份点状态】进行过滤。
 类型：String
 必选：否
-取值：参考数据结构 
-<a href="https://cloud.tencent.com/document/product/1207/47576#DiskBackup">DescribeSnapshots</a> 下的DiskBackupState取值。
+取值：参考数据结构 [DiskBackup](https://cloud.tencent.com/document/product/1207/47576#DiskBackup) 下的DiskBackupState取值。
 <li>disk-usage</li>按照【云硬盘类型】进行过滤。
 类型：String
 必选：否
-取值：SYSTEM_DISK或DATA_DISK
+取值：
+- SYSTEM_DISK - 系统盘
+- DATA_DISK - 数据盘
+
 每次请求的 Filters 的上限为 10，Filter.Values 的上限为5。参数不支持同时指定DiskBackupIds 和 Filters。
         :rtype: list of Filter
         """
@@ -4834,7 +4854,7 @@ class DescribeDiskDiscountRequest(AbstractModel):
         :type DiskType: str
         :param _DiskSize: 云硬盘大小, 单位: GB。
         :type DiskSize: int
-        :param _DiskBackupQuota: 指定云硬盘备份点配额，不传时默认为不带备份点配额。目前只支持不带或设置1个云硬盘备份点配额。
+        :param _DiskBackupQuota: 指定云硬盘备份点配额，不传时默认为不带备份点配额。目前只支持不带或设置[0 - 500]个云硬盘备份点配额。
         :type DiskBackupQuota: int
         """
         self._DiskType = None
@@ -4865,7 +4885,7 @@ class DescribeDiskDiscountRequest(AbstractModel):
 
     @property
     def DiskBackupQuota(self):
-        """指定云硬盘备份点配额，不传时默认为不带备份点配额。目前只支持不带或设置1个云硬盘备份点配额。
+        """指定云硬盘备份点配额，不传时默认为不带备份点配额。目前只支持不带或设置[0 - 500]个云硬盘备份点配额。
         :rtype: int
         """
         return self._DiskBackupQuota
@@ -5771,7 +5791,7 @@ class DescribeDockerContainersRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
         :type InstanceId: str
-        :param _ContainerIds: 容器ID列表。可通过[DescribeDockerContainers](https://cloud.tencent.com/document/product/1207/95473)接口返回值中的ContainerId获取。
+        :param _ContainerIds: 容器ID列表。可通过[DescribeDockerContainers](https://cloud.tencent.com/document/product/1207/95473)接口返回值中的ContainerId获取。参数不支持同时指定 ContainerIds 和 Filters。
         :type ContainerIds: list of str
         :param _Limit: 返回数量，默认为 20，最大值为 100。
         :type Limit: int
@@ -5806,7 +5826,7 @@ class DescribeDockerContainersRequest(AbstractModel):
 
     @property
     def ContainerIds(self):
-        """容器ID列表。可通过[DescribeDockerContainers](https://cloud.tencent.com/document/product/1207/95473)接口返回值中的ContainerId获取。
+        """容器ID列表。可通过[DescribeDockerContainers](https://cloud.tencent.com/document/product/1207/95473)接口返回值中的ContainerId获取。参数不支持同时指定 ContainerIds 和 Filters。
         :rtype: list of str
         """
         return self._ContainerIds
@@ -6744,7 +6764,6 @@ class DescribeGeneralResourceQuotasRequest(AbstractModel):
 - BLUEPRINT 自定义镜像
 - FREE_BLUEPRINT 免费自定义镜像
 - DATA_DISK 数据盘
-- FIREWALL_RULE 防火墙规则
         :type ResourceNames: list of str
         """
         self._ResourceNames = None
@@ -6765,7 +6784,6 @@ class DescribeGeneralResourceQuotasRequest(AbstractModel):
 - BLUEPRINT 自定义镜像
 - FREE_BLUEPRINT 免费自定义镜像
 - DATA_DISK 数据盘
-- FIREWALL_RULE 防火墙规则
         :rtype: list of str
         """
         return self._ResourceNames
@@ -7855,7 +7873,7 @@ class DescribeModifyInstanceBundlesRequest(AbstractModel):
 类型：String
 必选：否
 <li>bundle-type</li>按照 【套餐类型进行过滤】。
-取值：GENERAL_BUNDLE (通用型套餐); STORAGE_BUNDLE(存储型套餐);ENTERPRISE_BUNDLE( 企业型套餐);EXCLUSIVE_BUNDLE(专属型套餐);BEFAST_BUNDLE(蜂驰型套餐);
+取值：GENERAL_BUNDLE (通用型套餐); STORAGE_BUNDLE(存储型套餐);ENTERPRISE_BUNDLE( 企业型套餐);EXCLUSIVE_BUNDLE(专属型套餐);BEFAST_BUNDLE(蜂驰型套餐);STARTER_BUNDLE(入门型套餐);ECONOMY_BUNDLE(经济型套餐);RAZOR_SPEED_BUNDLE(锐驰型套餐)
 类型：String
 必选：否
 <li>bundle-state</li>按照【套餐状态】进行过滤。
@@ -7897,7 +7915,7 @@ class DescribeModifyInstanceBundlesRequest(AbstractModel):
 类型：String
 必选：否
 <li>bundle-type</li>按照 【套餐类型进行过滤】。
-取值：GENERAL_BUNDLE (通用型套餐); STORAGE_BUNDLE(存储型套餐);ENTERPRISE_BUNDLE( 企业型套餐);EXCLUSIVE_BUNDLE(专属型套餐);BEFAST_BUNDLE(蜂驰型套餐);
+取值：GENERAL_BUNDLE (通用型套餐); STORAGE_BUNDLE(存储型套餐);ENTERPRISE_BUNDLE( 企业型套餐);EXCLUSIVE_BUNDLE(专属型套餐);BEFAST_BUNDLE(蜂驰型套餐);STARTER_BUNDLE(入门型套餐);ECONOMY_BUNDLE(经济型套餐);RAZOR_SPEED_BUNDLE(锐驰型套餐)
 类型：String
 必选：否
 <li>bundle-state</li>按照【套餐状态】进行过滤。
@@ -8107,7 +8125,7 @@ class DescribeResetInstanceBlueprintsRequest(AbstractModel):
 必选：否
 可通过 <a href="https://cloud.tencent.com/document/product/1207/47689">DescribeBlueprints</a> 接口返回值中的 BlueprintId 获取。
 <li>blueprint-type</li>按照【镜像类型】进行过滤。
-取值： APP_OS（应用镜像 ）；PURE_OS（ 系统镜像）；PRIVATE（自定义镜像）。
+取值： APP_OS（应用镜像 ）；PURE_OS（ 系统镜像）；PRIVATE（自定义镜像）;DOCKER（Docker容器镜像）；SHARED（共享镜像）。
 类型：String
 必选：否
 <li>platform-type</li>按照【镜像平台类型】进行过滤。
@@ -8123,7 +8141,7 @@ class DescribeResetInstanceBlueprintsRequest(AbstractModel):
 必选：否
 可通过 <a href="https://cloud.tencent.com/document/product/1207/47689">DescribeBlueprints</a> 接口返回值中的 BlueprintState 获取。
 
-每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 BlueprintIds 和 Filters 。
+每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。
         :type Filters: list of Filter
         """
         self._InstanceId = None
@@ -8172,7 +8190,7 @@ class DescribeResetInstanceBlueprintsRequest(AbstractModel):
 必选：否
 可通过 <a href="https://cloud.tencent.com/document/product/1207/47689">DescribeBlueprints</a> 接口返回值中的 BlueprintId 获取。
 <li>blueprint-type</li>按照【镜像类型】进行过滤。
-取值： APP_OS（应用镜像 ）；PURE_OS（ 系统镜像）；PRIVATE（自定义镜像）。
+取值： APP_OS（应用镜像 ）；PURE_OS（ 系统镜像）；PRIVATE（自定义镜像）;DOCKER（Docker容器镜像）；SHARED（共享镜像）。
 类型：String
 必选：否
 <li>platform-type</li>按照【镜像平台类型】进行过滤。
@@ -8188,7 +8206,7 @@ class DescribeResetInstanceBlueprintsRequest(AbstractModel):
 必选：否
 可通过 <a href="https://cloud.tencent.com/document/product/1207/47689">DescribeBlueprints</a> 接口返回值中的 BlueprintState 获取。
 
-每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 BlueprintIds 和 Filters 。
+每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。
         :rtype: list of Filter
         """
         return self._Filters
@@ -10454,7 +10472,8 @@ class DockerContainer(AbstractModel):
         :type Command: str
         :param _Status: 容器状态描述
         :type Status: str
-        :param _State: 容器状态，和docker的容器状态保持一致，当前取值有：created, restarting, running, removing, paused, exited, or dead
+        :param _State: 容器状态，和docker的容器状态保持一致，当前取值有：created（已创建）、restarting（重启中）、running（运行中）、removing（迁移中）、paused（暂停）、exited（停止）和dead（死亡）
+
         :type State: str
         :param _PublishPortSet: 容器端口主机端口映射列表
         :type PublishPortSet: list of DockerContainerPublishPort
@@ -10530,7 +10549,8 @@ class DockerContainer(AbstractModel):
 
     @property
     def State(self):
-        """容器状态，和docker的容器状态保持一致，当前取值有：created, restarting, running, removing, paused, exited, or dead
+        """容器状态，和docker的容器状态保持一致，当前取值有：created（已创建）、restarting（重启中）、running（运行中）、removing（迁移中）、paused（暂停）、exited（停止）和dead（死亡）
+
         :rtype: str
         """
         return self._State
@@ -10622,7 +10642,11 @@ class DockerContainerConfiguration(AbstractModel):
         :type Volumes: list of DockerContainerVolume
         :param _Command: 运行的命令
         :type Command: str
-        :param _RestartPolicy: 容器重启策略
+        :param _RestartPolicy: 容器重启策略。
+- no -默认策略，在容器退出时不重启容器
+- on-failure -在容器非正常退出时（退出状态非0），才会重启容器
+- on-failure:3 -在容器非正常退出时重启容器，最多重启3次
+- always -在容器退出时总是重启容器
         :type RestartPolicy: str
         """
         self._ContainerImage = None
@@ -10701,7 +10725,11 @@ class DockerContainerConfiguration(AbstractModel):
 
     @property
     def RestartPolicy(self):
-        """容器重启策略
+        """容器重启策略。
+- no -默认策略，在容器退出时不重启容器
+- on-failure -在容器非正常退出时（退出状态非0），才会重启容器
+- on-failure:3 -在容器非正常退出时重启容器，最多重启3次
+- always -在容器退出时总是重启容器
         :rtype: str
         """
         return self._RestartPolicy
@@ -10944,7 +10972,7 @@ class FirewallRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Protocol: 协议，取值：TCP，UDP，ICMP，ALL。
+        :param _Protocol: 协议，取值：TCP，UDP，ICMP，ALL，ICMPv6。
         :type Protocol: str
         :param _Port: 端口，取值：ALL，单独的端口，逗号分隔的离散端口，减号分隔的端口范围。
         :type Port: str
@@ -10972,7 +11000,7 @@ class FirewallRule(AbstractModel):
 
     @property
     def Protocol(self):
-        """协议，取值：TCP，UDP，ICMP，ALL。
+        """协议，取值：TCP，UDP，ICMP，ALL，ICMPv6。
         :rtype: str
         """
         return self._Protocol
@@ -11887,7 +11915,8 @@ class InquirePriceCreateDisksRequest(AbstractModel):
         :type DiskChargePrepaid: :class:`tencentcloud.lighthouse.v20200324.models.DiskChargePrepaid`
         :param _DiskCount: 云硬盘个数, 默认值: 1。
         :type DiskCount: int
-        :param _DiskBackupQuota: 指定云硬盘备份点配额，不传时默认为不带备份点配额。目前只支持不带或设置1个云硬盘备份点配额。
+        :param _DiskBackupQuota: 指定云硬盘备份点配额，不传时默认为不带备份点配额。
+取值范围：0 到 500
         :type DiskBackupQuota: int
         """
         self._DiskSize = None
@@ -11942,7 +11971,8 @@ class InquirePriceCreateDisksRequest(AbstractModel):
 
     @property
     def DiskBackupQuota(self):
-        """指定云硬盘备份点配额，不传时默认为不带备份点配额。目前只支持不带或设置1个云硬盘备份点配额。
+        """指定云硬盘备份点配额，不传时默认为不带备份点配额。
+取值范围：0 到 500
         :rtype: int
         """
         return self._DiskBackupQuota
@@ -14203,7 +14233,7 @@ class ModifyDiskBackupsAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskBackupIds: 云硬盘备份点ID，可通过 [DescribeDiskBackups](https://cloud.tencent.com/document/api/1207/84379) 接口返回值中的 DiskBackupId 获取。
+        :param _DiskBackupIds: 云硬盘备份点ID，可通过 [DescribeDiskBackups](https://cloud.tencent.com/document/api/1207/84379) 接口返回值中的 DiskBackupId 获取。列表长度最大值为100。
         :type DiskBackupIds: list of str
         :param _DiskBackupName: 云硬盘备份点名称，最大长度 90 。
         :type DiskBackupName: str
@@ -14213,7 +14243,7 @@ class ModifyDiskBackupsAttributeRequest(AbstractModel):
 
     @property
     def DiskBackupIds(self):
-        """云硬盘备份点ID，可通过 [DescribeDiskBackups](https://cloud.tencent.com/document/api/1207/84379) 接口返回值中的 DiskBackupId 获取。
+        """云硬盘备份点ID，可通过 [DescribeDiskBackups](https://cloud.tencent.com/document/api/1207/84379) 接口返回值中的 DiskBackupId 获取。列表长度最大值为100。
         :rtype: list of str
         """
         return self._DiskBackupIds
@@ -16680,6 +16710,7 @@ class ResetInstanceRequest(AbstractModel):
         :param _BlueprintId: 镜像 ID。可通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回值中的BlueprintId获取。
         :type BlueprintId: str
         :param _Containers: 要创建的容器配置列表。
+注意：仅重装的镜像类型为Docker时支持传入该参数。
         :type Containers: list of DockerContainerConfiguration
         :param _LoginConfiguration: 实例登录信息配置。默认缺失情况下代表用户选择实例创建后设置登录密码或绑定密钥。
         :type LoginConfiguration: :class:`tencentcloud.lighthouse.v20200324.models.LoginConfiguration`
@@ -16714,6 +16745,7 @@ class ResetInstanceRequest(AbstractModel):
     @property
     def Containers(self):
         """要创建的容器配置列表。
+注意：仅重装的镜像类型为Docker时支持传入该参数。
         :rtype: list of DockerContainerConfiguration
         """
         return self._Containers

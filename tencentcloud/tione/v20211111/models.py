@@ -1167,6 +1167,10 @@ HYBRID_PAID:
         :type DeployType: str
         :param _InstancePerReplicas: 单副本下的实例数，仅在部署类型为DIST时生效，默认1
         :type InstancePerReplicas: int
+        :param _TerminationGracePeriodSeconds: 30
+        :type TerminationGracePeriodSeconds: int
+        :param _PreStopCommand: ["sleep","60"]
+        :type PreStopCommand: list of str
         """
         self._ServiceGroupId = None
         self._ServiceGroupName = None
@@ -1203,6 +1207,8 @@ HYBRID_PAID:
         self._ServicePort = None
         self._DeployType = None
         self._InstancePerReplicas = None
+        self._TerminationGracePeriodSeconds = None
+        self._PreStopCommand = None
 
     @property
     def ServiceGroupId(self):
@@ -1612,6 +1618,28 @@ HYBRID_PAID:
     def InstancePerReplicas(self, InstancePerReplicas):
         self._InstancePerReplicas = InstancePerReplicas
 
+    @property
+    def TerminationGracePeriodSeconds(self):
+        """30
+        :rtype: int
+        """
+        return self._TerminationGracePeriodSeconds
+
+    @TerminationGracePeriodSeconds.setter
+    def TerminationGracePeriodSeconds(self, TerminationGracePeriodSeconds):
+        self._TerminationGracePeriodSeconds = TerminationGracePeriodSeconds
+
+    @property
+    def PreStopCommand(self):
+        """["sleep","60"]
+        :rtype: list of str
+        """
+        return self._PreStopCommand
+
+    @PreStopCommand.setter
+    def PreStopCommand(self, PreStopCommand):
+        self._PreStopCommand = PreStopCommand
+
 
     def _deserialize(self, params):
         self._ServiceGroupId = params.get("ServiceGroupId")
@@ -1682,6 +1710,8 @@ HYBRID_PAID:
         self._ServicePort = params.get("ServicePort")
         self._DeployType = params.get("DeployType")
         self._InstancePerReplicas = params.get("InstancePerReplicas")
+        self._TerminationGracePeriodSeconds = params.get("TerminationGracePeriodSeconds")
+        self._PreStopCommand = params.get("PreStopCommand")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11542,6 +11572,10 @@ HYBRID_PAID:
         :type ServicePort: int
         :param _InstancePerReplicas: 单副本下的实例数，仅在部署类型为DIST时生效，默认1
         :type InstancePerReplicas: int
+        :param _TerminationGracePeriodSeconds: 30
+        :type TerminationGracePeriodSeconds: int
+        :param _PreStopCommand: ["sleep","60"]
+        :type PreStopCommand: list of str
         """
         self._ServiceId = None
         self._ModelInfo = None
@@ -11569,6 +11603,8 @@ HYBRID_PAID:
         self._CommandBase64 = None
         self._ServicePort = None
         self._InstancePerReplicas = None
+        self._TerminationGracePeriodSeconds = None
+        self._PreStopCommand = None
 
     @property
     def ServiceId(self):
@@ -11879,6 +11915,28 @@ HYBRID_PAID:
     def InstancePerReplicas(self, InstancePerReplicas):
         self._InstancePerReplicas = InstancePerReplicas
 
+    @property
+    def TerminationGracePeriodSeconds(self):
+        """30
+        :rtype: int
+        """
+        return self._TerminationGracePeriodSeconds
+
+    @TerminationGracePeriodSeconds.setter
+    def TerminationGracePeriodSeconds(self, TerminationGracePeriodSeconds):
+        self._TerminationGracePeriodSeconds = TerminationGracePeriodSeconds
+
+    @property
+    def PreStopCommand(self):
+        """["sleep","60"]
+        :rtype: list of str
+        """
+        return self._PreStopCommand
+
+    @PreStopCommand.setter
+    def PreStopCommand(self, PreStopCommand):
+        self._PreStopCommand = PreStopCommand
+
 
     def _deserialize(self, params):
         self._ServiceId = params.get("ServiceId")
@@ -11935,6 +11993,8 @@ HYBRID_PAID:
         self._CommandBase64 = params.get("CommandBase64")
         self._ServicePort = params.get("ServicePort")
         self._InstancePerReplicas = params.get("InstancePerReplicas")
+        self._TerminationGracePeriodSeconds = params.get("TerminationGracePeriodSeconds")
+        self._PreStopCommand = params.get("PreStopCommand")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16369,6 +16429,10 @@ HYBRID_PAID:
         :param _ServicePort: 服务端口，默认为8501
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServicePort: int
+        :param _TerminationGracePeriodSeconds: 服务的优雅退出时限。单位为秒，默认值为30，最小为1
+        :type TerminationGracePeriodSeconds: int
+        :param _PreStopCommand: 服务实例停止前执行的命令，执行完毕或执行时间超过优雅退出时限后实例结束
+        :type PreStopCommand: list of str
         """
         self._Replicas = None
         self._ImageInfo = None
@@ -16402,6 +16466,8 @@ HYBRID_PAID:
         self._Command = None
         self._ServiceEIP = None
         self._ServicePort = None
+        self._TerminationGracePeriodSeconds = None
+        self._PreStopCommand = None
 
     @property
     def Replicas(self):
@@ -16802,6 +16868,28 @@ HYBRID_PAID:
     def ServicePort(self, ServicePort):
         self._ServicePort = ServicePort
 
+    @property
+    def TerminationGracePeriodSeconds(self):
+        """服务的优雅退出时限。单位为秒，默认值为30，最小为1
+        :rtype: int
+        """
+        return self._TerminationGracePeriodSeconds
+
+    @TerminationGracePeriodSeconds.setter
+    def TerminationGracePeriodSeconds(self, TerminationGracePeriodSeconds):
+        self._TerminationGracePeriodSeconds = TerminationGracePeriodSeconds
+
+    @property
+    def PreStopCommand(self):
+        """服务实例停止前执行的命令，执行完毕或执行时间超过优雅退出时限后实例结束
+        :rtype: list of str
+        """
+        return self._PreStopCommand
+
+    @PreStopCommand.setter
+    def PreStopCommand(self, PreStopCommand):
+        self._PreStopCommand = PreStopCommand
+
 
     def _deserialize(self, params):
         self._Replicas = params.get("Replicas")
@@ -16875,6 +16963,8 @@ HYBRID_PAID:
             self._ServiceEIP = ServiceEIP()
             self._ServiceEIP._deserialize(params.get("ServiceEIP"))
         self._ServicePort = params.get("ServicePort")
+        self._TerminationGracePeriodSeconds = params.get("TerminationGracePeriodSeconds")
+        self._PreStopCommand = params.get("PreStopCommand")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

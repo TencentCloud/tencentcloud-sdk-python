@@ -49,6 +49,29 @@ class DbbrainClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CancelDBAutonomyAction(self, request):
+        """自治中心-终止自治任务（单次）
+
+        :param request: Request instance for CancelDBAutonomyAction.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.CancelDBAutonomyActionRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.CancelDBAutonomyActionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CancelDBAutonomyAction", params, headers=headers)
+            response = json.loads(body)
+            model = models.CancelDBAutonomyActionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CancelKillTask(self, request):
         """终止中断会话任务。
 
@@ -63,6 +86,29 @@ class DbbrainClient(AbstractClient):
             body = self.call("CancelKillTask", params, headers=headers)
             response = json.loads(body)
             model = models.CancelKillTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CancelRedisBigKeyAnalysisTasks(self, request):
+        """自治中心-终止自治任务（单次）
+
+        :param request: Request instance for CancelRedisBigKeyAnalysisTasks.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.CancelRedisBigKeyAnalysisTasksRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.CancelRedisBigKeyAnalysisTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CancelRedisBigKeyAnalysisTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.CancelRedisBigKeyAnalysisTasksResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -325,6 +371,29 @@ class DbbrainClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateUserAutonomyProfile(self, request):
+        """自治中心-终止自治任务（单次）；注意：接口需要加白名单。
+
+        :param request: Request instance for CreateUserAutonomyProfile.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.CreateUserAutonomyProfileRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.CreateUserAutonomyProfileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateUserAutonomyProfile", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateUserAutonomyProfileResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteAuditLogFile(self, request):
         """用于删除云数据库实例的审计日志文件。
 
@@ -546,6 +615,52 @@ class DbbrainClient(AbstractClient):
             body = self.call("DescribeAuditLogFiles", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAuditLogFilesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDBAutonomyActions(self, request):
+        """自治中心-终止自治任务（单次）
+
+        :param request: Request instance for DescribeDBAutonomyActions.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeDBAutonomyActionsRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.DescribeDBAutonomyActionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBAutonomyActions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBAutonomyActionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDBAutonomyEvents(self, request):
+        """自治中心-终止自治任务（单次）
+
+        :param request: Request instance for DescribeDBAutonomyEvents.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeDBAutonomyEventsRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.DescribeDBAutonomyEventsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBAutonomyEvents", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBAutonomyEventsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1268,6 +1383,29 @@ class DbbrainClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeUserAutonomyProfile(self, request):
+        """自治中心-终止自治任务（单次）；注意： 接口调用需要加白名单。
+
+        :param request: Request instance for DescribeUserAutonomyProfile.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeUserAutonomyProfileRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.DescribeUserAutonomyProfileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUserAutonomyProfile", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUserAutonomyProfileResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeUserSqlAdvice(self, request):
         """获取SQL优化建议。【产品用户回馈，此接口限免开放，后续将并入dbbrain专业版】
 
@@ -1397,6 +1535,29 @@ class DbbrainClient(AbstractClient):
             body = self.call("ModifySqlFilters", params, headers=headers)
             response = json.loads(body)
             model = models.ModifySqlFiltersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyUserAutonomyProfile(self, request):
+        """自治中心-终止自治任务（单次）；注意：接口需要加白名单。
+
+        :param request: Request instance for ModifyUserAutonomyProfile.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.ModifyUserAutonomyProfileRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.ModifyUserAutonomyProfileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyUserAutonomyProfile", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyUserAutonomyProfileResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -2612,6 +2612,8 @@ class ChannelCreateBatchQuickSignUrlRequest(AbstractModel):
 
 注: `若参与方为企业员工时，暂不支持对参与方信息进行缓存`
         :type CacheApproverInfo: bool
+        :param _CanBatchReject: 是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>注：`合同组暂不支持批量拒签功能。`
+        :type CanBatchReject: bool
         """
         self._FlowApproverInfo = None
         self._Agent = None
@@ -2624,6 +2626,7 @@ class ChannelCreateBatchQuickSignUrlRequest(AbstractModel):
         self._FlowBatchUrlInfo = None
         self._Intention = None
         self._CacheApproverInfo = None
+        self._CanBatchReject = None
 
     @property
     def FlowApproverInfo(self):
@@ -2781,6 +2784,17 @@ class ChannelCreateBatchQuickSignUrlRequest(AbstractModel):
     def CacheApproverInfo(self, CacheApproverInfo):
         self._CacheApproverInfo = CacheApproverInfo
 
+    @property
+    def CanBatchReject(self):
+        """是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>注：`合同组暂不支持批量拒签功能。`
+        :rtype: bool
+        """
+        return self._CanBatchReject
+
+    @CanBatchReject.setter
+    def CanBatchReject(self, CanBatchReject):
+        self._CanBatchReject = CanBatchReject
+
 
     def _deserialize(self, params):
         if params.get("FlowApproverInfo") is not None:
@@ -2802,6 +2816,7 @@ class ChannelCreateBatchQuickSignUrlRequest(AbstractModel):
             self._Intention = Intention()
             self._Intention._deserialize(params.get("Intention"))
         self._CacheApproverInfo = params.get("CacheApproverInfo")
+        self._CanBatchReject = params.get("CanBatchReject")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2950,6 +2965,8 @@ class ChannelCreateBatchSignUrlRequest(AbstractModel):
 
 参考 [公众号 H5 跳转电子签小程序](https://qian.tencent.com/developers/company/openwxminiprogram/#23-%E5%85%AC%E4%BC%97%E5%8F%B7-h5-%E4%B8%AD%E8%B7%B3%E8%BD%AC)。
         :type UrlUseEnv: str
+        :param _CanBatchReject: 是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>注：`合同组暂不支持批量拒签功能。`
+        :type CanBatchReject: bool
         """
         self._Agent = None
         self._Name = None
@@ -2966,6 +2983,7 @@ class ChannelCreateBatchSignUrlRequest(AbstractModel):
         self._OrganizationOpenId = None
         self._AutoJumpBack = None
         self._UrlUseEnv = None
+        self._CanBatchReject = None
 
     @property
     def Agent(self):
@@ -3188,6 +3206,17 @@ class ChannelCreateBatchSignUrlRequest(AbstractModel):
     def UrlUseEnv(self, UrlUseEnv):
         self._UrlUseEnv = UrlUseEnv
 
+    @property
+    def CanBatchReject(self):
+        """是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>注：`合同组暂不支持批量拒签功能。`
+        :rtype: bool
+        """
+        return self._CanBatchReject
+
+    @CanBatchReject.setter
+    def CanBatchReject(self, CanBatchReject):
+        self._CanBatchReject = CanBatchReject
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
@@ -3211,6 +3240,7 @@ class ChannelCreateBatchSignUrlRequest(AbstractModel):
         self._OrganizationOpenId = params.get("OrganizationOpenId")
         self._AutoJumpBack = params.get("AutoJumpBack")
         self._UrlUseEnv = params.get("UrlUseEnv")
+        self._CanBatchReject = params.get("CanBatchReject")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6490,7 +6520,8 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
         :type Organization: :class:`tencentcloud.essbasic.v20210526.models.OrganizationInfo`
         :param _Operator: 操作人（用户）信息，不用传
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
-        :param _SignComponentConfig: 签署控件的配置信息，用在嵌入式发起的页面配置，包括
+        :param _SignComponentConfig: <font color="red">此参数已经废弃，请使用 CreateFlowOption 里面的 SignComponentConfig</font>
+签署控件的配置信息，用在嵌入式发起的页面配置，包括
 
 - 签署控件 是否默认展示日期.
         :type SignComponentConfig: :class:`tencentcloud.essbasic.v20210526.models.SignComponentConfig`
@@ -6647,7 +6678,10 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
 
     @property
     def SignComponentConfig(self):
-        """签署控件的配置信息，用在嵌入式发起的页面配置，包括
+        warnings.warn("parameter `SignComponentConfig` is deprecated", DeprecationWarning) 
+
+        """<font color="red">此参数已经废弃，请使用 CreateFlowOption 里面的 SignComponentConfig</font>
+签署控件的配置信息，用在嵌入式发起的页面配置，包括
 
 - 签署控件 是否默认展示日期.
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.SignComponentConfig`
@@ -6656,6 +6690,8 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
 
     @SignComponentConfig.setter
     def SignComponentConfig(self, SignComponentConfig):
+        warnings.warn("parameter `SignComponentConfig` is deprecated", DeprecationWarning) 
+
         self._SignComponentConfig = SignComponentConfig
 
 
@@ -15656,6 +15692,9 @@ class CreateFlowOption(AbstractModel):
 **true**：跳过
 **false**：（默认）不跳过，需要传ResourceId
         :type SkipUploadFile: bool
+        :param _SignComponentConfig: 签署控件的配置信息，用在嵌入式发起的页面配置，包括 
+ - 签署控件 是否默认展示日期.
+        :type SignComponentConfig: :class:`tencentcloud.essbasic.v20210526.models.SignComponentConfig`
         """
         self._CanEditFlow = None
         self._HideShowFlowName = None
@@ -15665,6 +15704,7 @@ class CreateFlowOption(AbstractModel):
         self._CustomCreateFlowDescription = None
         self._ForbidEditFillComponent = None
         self._SkipUploadFile = None
+        self._SignComponentConfig = None
 
     @property
     def CanEditFlow(self):
@@ -15770,6 +15810,18 @@ class CreateFlowOption(AbstractModel):
     def SkipUploadFile(self, SkipUploadFile):
         self._SkipUploadFile = SkipUploadFile
 
+    @property
+    def SignComponentConfig(self):
+        """签署控件的配置信息，用在嵌入式发起的页面配置，包括 
+ - 签署控件 是否默认展示日期.
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.SignComponentConfig`
+        """
+        return self._SignComponentConfig
+
+    @SignComponentConfig.setter
+    def SignComponentConfig(self, SignComponentConfig):
+        self._SignComponentConfig = SignComponentConfig
+
 
     def _deserialize(self, params):
         self._CanEditFlow = params.get("CanEditFlow")
@@ -15780,6 +15832,9 @@ class CreateFlowOption(AbstractModel):
         self._CustomCreateFlowDescription = params.get("CustomCreateFlowDescription")
         self._ForbidEditFillComponent = params.get("ForbidEditFillComponent")
         self._SkipUploadFile = params.get("SkipUploadFile")
+        if params.get("SignComponentConfig") is not None:
+            self._SignComponentConfig = SignComponentConfig()
+            self._SignComponentConfig._deserialize(params.get("SignComponentConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

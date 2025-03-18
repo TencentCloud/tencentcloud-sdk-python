@@ -8501,6 +8501,9 @@ class UserIdAndUserName(AbstractModel):
         :param _GlobalUserName: 全局角色
 注意：此字段可能返回 null，表示取不到有效值。
         :type GlobalUserName: str
+        :param _GlobalUserCode: 全局角色编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GlobalUserCode: str
         :param _Mobile: 手机号
 注意：此字段可能返回 null，表示取不到有效值。
         :type Mobile: str
@@ -8519,6 +8522,12 @@ class UserIdAndUserName(AbstractModel):
         :param _InValidateAppRange: 1
 注意：此字段可能返回 null，表示取不到有效值。
         :type InValidateAppRange: bool
+        :param _EmailActivationStatus: -1 免激活  0 未激活  1 已激活 空代表待绑定
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EmailActivationStatus: int
+        :param _Id: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
         """
         self._UserId = None
         self._UserName = None
@@ -8534,12 +8543,15 @@ class UserIdAndUserName(AbstractModel):
         self._UpdatedUser = None
         self._UpdatedAt = None
         self._GlobalUserName = None
+        self._GlobalUserCode = None
         self._Mobile = None
         self._AppId = None
         self._AppUserId = None
         self._AppUserAliasName = None
         self._AppUserName = None
         self._InValidateAppRange = None
+        self._EmailActivationStatus = None
+        self._Id = None
 
     @property
     def UserId(self):
@@ -8708,6 +8720,18 @@ class UserIdAndUserName(AbstractModel):
         self._GlobalUserName = GlobalUserName
 
     @property
+    def GlobalUserCode(self):
+        """全局角色编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._GlobalUserCode
+
+    @GlobalUserCode.setter
+    def GlobalUserCode(self, GlobalUserCode):
+        self._GlobalUserCode = GlobalUserCode
+
+    @property
     def Mobile(self):
         """手机号
 注意：此字段可能返回 null，表示取不到有效值。
@@ -8779,6 +8803,30 @@ class UserIdAndUserName(AbstractModel):
     def InValidateAppRange(self, InValidateAppRange):
         self._InValidateAppRange = InValidateAppRange
 
+    @property
+    def EmailActivationStatus(self):
+        """-1 免激活  0 未激活  1 已激活 空代表待绑定
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._EmailActivationStatus
+
+    @EmailActivationStatus.setter
+    def EmailActivationStatus(self, EmailActivationStatus):
+        self._EmailActivationStatus = EmailActivationStatus
+
+    @property
+    def Id(self):
+        """1
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
 
     def _deserialize(self, params):
         self._UserId = params.get("UserId")
@@ -8795,12 +8843,15 @@ class UserIdAndUserName(AbstractModel):
         self._UpdatedUser = params.get("UpdatedUser")
         self._UpdatedAt = params.get("UpdatedAt")
         self._GlobalUserName = params.get("GlobalUserName")
+        self._GlobalUserCode = params.get("GlobalUserCode")
         self._Mobile = params.get("Mobile")
         self._AppId = params.get("AppId")
         self._AppUserId = params.get("AppUserId")
         self._AppUserAliasName = params.get("AppUserAliasName")
         self._AppUserName = params.get("AppUserName")
         self._InValidateAppRange = params.get("InValidateAppRange")
+        self._EmailActivationStatus = params.get("EmailActivationStatus")
+        self._Id = params.get("Id")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9216,6 +9267,9 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
         :param _AppOpenUserId: 用户openid
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppOpenUserId: str
+        :param _EmailActivationStatus: 邮箱激活状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EmailActivationStatus: int
         """
         self._Id = None
         self._RoleList = None
@@ -9239,6 +9293,7 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
         self._AppUserName = None
         self._InValidateAppRange = None
         self._AppOpenUserId = None
+        self._EmailActivationStatus = None
 
     @property
     def Id(self):
@@ -9500,6 +9555,18 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
     def AppOpenUserId(self, AppOpenUserId):
         self._AppOpenUserId = AppOpenUserId
 
+    @property
+    def EmailActivationStatus(self):
+        """邮箱激活状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._EmailActivationStatus
+
+    @EmailActivationStatus.setter
+    def EmailActivationStatus(self, EmailActivationStatus):
+        self._EmailActivationStatus = EmailActivationStatus
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -9529,6 +9596,7 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
         self._AppUserName = params.get("AppUserName")
         self._InValidateAppRange = params.get("InValidateAppRange")
         self._AppOpenUserId = params.get("AppOpenUserId")
+        self._EmailActivationStatus = params.get("EmailActivationStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

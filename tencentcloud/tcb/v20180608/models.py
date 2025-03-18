@@ -7218,7 +7218,6 @@ class DeleteCloudBaseRunServerVersionResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 返回结果，succ为成功
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7229,7 +7228,6 @@ class DeleteCloudBaseRunServerVersionResponse(AbstractModel):
     @property
     def Result(self):
         """返回结果，succ为成功
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Result
@@ -10204,7 +10202,6 @@ class DescribeCloudBaseRunResourceForExtendResponse(AbstractModel):
         :param _Region: 地域信息
         :type Region: str
         :param _SubnetIds: 子网信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetIds: list of CloudBaseRunVpcSubnet
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10263,7 +10260,6 @@ class DescribeCloudBaseRunResourceForExtendResponse(AbstractModel):
     @property
     def SubnetIds(self):
         """子网信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CloudBaseRunVpcSubnet
         """
         return self._SubnetIds

@@ -24025,7 +24025,7 @@ class SaveDocRequest(AbstractModel):
         :type CosHash: str
         :param _Size: 文件大小
         :type Size: str
-        :param _AttrRange: 标签适用范围，默认填0即可
+        :param _AttrRange: 标签适用范围，需要传参为1
         :type AttrRange: int
         :param _Source: 来源(0 源文件导入 1 网页导入)
         :type Source: int
@@ -24144,7 +24144,7 @@ class SaveDocRequest(AbstractModel):
 
     @property
     def AttrRange(self):
-        """标签适用范围，默认填0即可
+        """标签适用范围，需要传参为1
         :rtype: int
         """
         return self._AttrRange

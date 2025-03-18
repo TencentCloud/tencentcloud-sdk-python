@@ -40004,8 +40004,7 @@ class DescribeImportMachineInfoRequest(AbstractModel):
         :type ImportType: str
         :param _IsQueryProMachine: 该参数已作废.
         :type IsQueryProMachine: bool
-        :param _Filters: 过滤条件：
-<li>Version - String  是否必填：否 - 当前防护版本（ PRO_VERSION：专业版 | BASIC_VERSION：基础版 | Flagship：旗舰版 | ProtectedMachines：专业版+旗舰版） | BASIC_PROPOST_GENERAL_DISCOUNT：普惠版+专业版按量计费+基础版主机 | UnFlagship：专业版预付费+专业版后付费+基础版+普惠版</li>
+        :param _Filters: 过滤条件：<li>Version - String  是否必填：否 - 当前防护版本（ PRO_VERSION：专业版 | BASIC_VERSION：基础版 | Flagship：旗舰版 | ProtectedMachines：专业版+旗舰版） | BASIC_PROPOST_GENERAL_DISCOUNT：轻量版+专业版按量计费+基础版主机 | UnFlagship：专业版预付费+专业版后付费+基础版+轻量版</li>
         :type Filters: list of Filters
         """
         self._MachineList = None
@@ -40048,8 +40047,7 @@ class DescribeImportMachineInfoRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤条件：
-<li>Version - String  是否必填：否 - 当前防护版本（ PRO_VERSION：专业版 | BASIC_VERSION：基础版 | Flagship：旗舰版 | ProtectedMachines：专业版+旗舰版） | BASIC_PROPOST_GENERAL_DISCOUNT：普惠版+专业版按量计费+基础版主机 | UnFlagship：专业版预付费+专业版后付费+基础版+普惠版</li>
+        """过滤条件：<li>Version - String  是否必填：否 - 当前防护版本（ PRO_VERSION：专业版 | BASIC_VERSION：基础版 | Flagship：旗舰版 | ProtectedMachines：专业版+旗舰版） | BASIC_PROPOST_GENERAL_DISCOUNT：轻量版+专业版按量计费+基础版主机 | UnFlagship：专业版预付费+专业版后付费+基础版+轻量版</li>
         :rtype: list of Filters
         """
         return self._Filters
@@ -41036,7 +41034,7 @@ class DescribeLicenseGeneralResponse(AbstractModel):
         :type FlagshipVersionLicenseCnt: int
         :param _ProVersionLicenseCnt: 专业版总授权数(有效订单)
         :type ProVersionLicenseCnt: int
-        :param _CwpVersionLicenseCnt: 普惠版总授权数(有效订单的授权数)
+        :param _CwpVersionLicenseCnt: 轻量版总授权数(有效订单的授权数)
         :type CwpVersionLicenseCnt: int
         :param _AvailableLHLicenseCnt: 可用惠普版授权数
         :type AvailableLHLicenseCnt: int
@@ -41217,7 +41215,7 @@ class DescribeLicenseGeneralResponse(AbstractModel):
 
     @property
     def CwpVersionLicenseCnt(self):
-        """普惠版总授权数(有效订单的授权数)
+        """轻量版总授权数(有效订单的授权数)
         :rtype: int
         """
         return self._CwpVersionLicenseCnt
@@ -41614,7 +41612,7 @@ class DescribeLicenseWhiteConfigResponse(AbstractModel):
         :type FlagShip: :class:`tencentcloud.cwp.v20180228.models.VersionWhiteConfig`
         :param _Professional: 专业版 配置信息
         :type Professional: :class:`tencentcloud.cwp.v20180228.models.VersionWhiteConfig`
-        :param _PrattWhitney: 普惠版 配置信息
+        :param _PrattWhitney: 轻量版 配置信息
         :type PrattWhitney: :class:`tencentcloud.cwp.v20180228.models.VersionWhiteConfig`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -41648,7 +41646,7 @@ class DescribeLicenseWhiteConfigResponse(AbstractModel):
 
     @property
     def PrattWhitney(self):
-        """普惠版 配置信息
+        """轻量版 配置信息
         :rtype: :class:`tencentcloud.cwp.v20180228.models.VersionWhiteConfig`
         """
         return self._PrattWhitney
@@ -43502,7 +43500,7 @@ class DescribeMachineGeneralResponse(AbstractModel):
         :type DeadlineMachineCnt: int
         :param _NotProtectMachineCnt: 未防护机器数
         :type NotProtectMachineCnt: int
-        :param _LHGeneralDiscountCnt: 已防护普惠版机器数（Lighthouse机器）
+        :param _LHGeneralDiscountCnt: 已防护轻量机器数（Lighthouse机器）
         :type LHGeneralDiscountCnt: int
         :param _CompareYesterdayMachineCnt: 比较昨日新增的主机数
         :type CompareYesterdayMachineCnt: int
@@ -43733,7 +43731,7 @@ class DescribeMachineGeneralResponse(AbstractModel):
 
     @property
     def LHGeneralDiscountCnt(self):
-        """已防护普惠版机器数（Lighthouse机器）
+        """已防护轻量机器数（Lighthouse机器）
         :rtype: int
         """
         return self._LHGeneralDiscountCnt
@@ -43923,7 +43921,7 @@ class DescribeMachineInfoResponse(AbstractModel):
         :type ProVersionDeadline: str
         :param _HasAssetScan: 是否有资产扫描记录，0无，1有
         :type HasAssetScan: int
-        :param _ProtectType: 防护版本：BASIC_VERSION 基础版，PRO_VERSION 专业版，Flagship 旗舰版，GENERAL_DISCOUNT 普惠版
+        :param _ProtectType: 防护版本：BASIC_VERSION 基础版，PRO_VERSION 专业版，Flagship 旗舰版，GENERAL_DISCOUNT 轻量版
         :type ProtectType: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -44172,7 +44170,7 @@ class DescribeMachineInfoResponse(AbstractModel):
 
     @property
     def ProtectType(self):
-        """防护版本：BASIC_VERSION 基础版，PRO_VERSION 专业版，Flagship 旗舰版，GENERAL_DISCOUNT 普惠版
+        """防护版本：BASIC_VERSION 基础版，PRO_VERSION 专业版，Flagship 旗舰版，GENERAL_DISCOUNT 轻量版
         :rtype: str
         """
         return self._ProtectType
@@ -53012,7 +53010,7 @@ class DescribeScanVulSettingResponse(AbstractModel):
         :type EndTime: str
         :param _ClickTimeout: 一键扫描超时时长，如：1800秒（s）
         :type ClickTimeout: int
-        :param _Uuids: 为空默认扫描全部专业版、旗舰版、普惠版主机，不为空只扫描选中主机
+        :param _Uuids: 为空默认扫描全部专业版、旗舰版、轻量版主机，不为空只扫描选中主机
         :type Uuids: list of str
         :param _ScanMethod: 0版本比对,2版本比对+poc
         :type ScanMethod: int
@@ -53133,7 +53131,7 @@ class DescribeScanVulSettingResponse(AbstractModel):
 
     @property
     def Uuids(self):
-        """为空默认扫描全部专业版、旗舰版、普惠版主机，不为空只扫描选中主机
+        """为空默认扫描全部专业版、旗舰版、轻量版主机，不为空只扫描选中主机
         :rtype: list of str
         """
         return self._Uuids
@@ -56681,7 +56679,7 @@ class DescribeVersionStatisticsResponse(AbstractModel):
         :type ProVersionNum: int
         :param _UltimateVersionNum: 旗舰版数量
         :type UltimateVersionNum: int
-        :param _GeneralVersionNum: 普惠版数量
+        :param _GeneralVersionNum: 轻量版数量
         :type GeneralVersionNum: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -56727,7 +56725,7 @@ class DescribeVersionStatisticsResponse(AbstractModel):
 
     @property
     def GeneralVersionNum(self):
-        """普惠版数量
+        """轻量版数量
         :rtype: int
         """
         return self._GeneralVersionNum
@@ -73768,6 +73766,10 @@ class HostTagInfo(AbstractModel):
         :type InstanceID: str
         :param _MachineType: 主机类型
         :type MachineType: str
+        :param _RegionName: 可用区名称
+        :type RegionName: str
+        :param _RegionId: 可用区ID
+        :type RegionId: int
         """
         self._Quuid = None
         self._TagList = None
@@ -73782,6 +73784,8 @@ class HostTagInfo(AbstractModel):
         self._CloudTags = None
         self._InstanceID = None
         self._MachineType = None
+        self._RegionName = None
+        self._RegionId = None
 
     @property
     def Quuid(self):
@@ -73926,6 +73930,28 @@ class HostTagInfo(AbstractModel):
     def MachineType(self, MachineType):
         self._MachineType = MachineType
 
+    @property
+    def RegionName(self):
+        """可用区名称
+        :rtype: str
+        """
+        return self._RegionName
+
+    @RegionName.setter
+    def RegionName(self, RegionName):
+        self._RegionName = RegionName
+
+    @property
+    def RegionId(self):
+        """可用区ID
+        :rtype: int
+        """
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
 
     def _deserialize(self, params):
         self._Quuid = params.get("Quuid")
@@ -73946,6 +73972,8 @@ class HostTagInfo(AbstractModel):
                 self._CloudTags.append(obj)
         self._InstanceID = params.get("InstanceID")
         self._MachineType = params.get("MachineType")
+        self._RegionName = params.get("RegionName")
+        self._RegionId = params.get("RegionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -90528,6 +90556,8 @@ class RansomDefenseRollbackTask(AbstractModel):
         :type RegionInfo: :class:`tencentcloud.cwp.v20180228.models.RegionInfo`
         :param _InstanceId: 主机示例ID
         :type InstanceId: str
+        :param _MachineType: 主机类型
+        :type MachineType: str
         """
         self._Id = None
         self._Uuid = None
@@ -90540,6 +90570,7 @@ class RansomDefenseRollbackTask(AbstractModel):
         self._ModifyTime = None
         self._RegionInfo = None
         self._InstanceId = None
+        self._MachineType = None
 
     @property
     def Id(self):
@@ -90662,6 +90693,17 @@ class RansomDefenseRollbackTask(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def MachineType(self):
+        """主机类型
+        :rtype: str
+        """
+        return self._MachineType
+
+    @MachineType.setter
+    def MachineType(self, MachineType):
+        self._MachineType = MachineType
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -90677,6 +90719,7 @@ class RansomDefenseRollbackTask(AbstractModel):
             self._RegionInfo = RegionInfo()
             self._RegionInfo._deserialize(params.get("RegionInfo"))
         self._InstanceId = params.get("InstanceId")
+        self._MachineType = params.get("MachineType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -96108,7 +96151,7 @@ class ScanVulSettingRequest(AbstractModel):
         :type EndTime: str
         :param _EnableScan: 是否开启扫描 1开启 0不开启
         :type EnableScan: int
-        :param _Uuids: 为空默认扫描全部专业版、旗舰版、普惠版主机，不为空只扫描选中主机
+        :param _Uuids: 为空默认扫描全部专业版、旗舰版、轻量版主机，不为空只扫描选中主机
         :type Uuids: list of str
         :param _ScanMethod: 0版本比对，2版本比对+poc
         :type ScanMethod: int
@@ -96214,7 +96257,7 @@ class ScanVulSettingRequest(AbstractModel):
 
     @property
     def Uuids(self):
-        """为空默认扫描全部专业版、旗舰版、普惠版主机，不为空只扫描选中主机
+        """为空默认扫描全部专业版、旗舰版、轻量版主机，不为空只扫描选中主机
         :rtype: list of str
         """
         return self._Uuids

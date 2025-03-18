@@ -362,6 +362,8 @@ class DescribeInstancesRequest(AbstractModel):
         :type Limit: int
         :param _ResourceTags: 按照标签筛选实例
         :type ResourceTags: list of Tag
+        :param _TaskStatus: 任务状态：1-待执行任务；2-密钥更新中；3-网络变更中；4-参数变更中；5-embedding变更中；6-ai套件变更中；7-滚动升级中；8-纵向扩容中；9-纵向缩容中；10-横向扩容中；11-横向缩容中
+        :type TaskStatus: list of int
         """
         self._InstanceIds = None
         self._InstanceNames = None
@@ -377,6 +379,7 @@ class DescribeInstancesRequest(AbstractModel):
         self._Offset = None
         self._Limit = None
         self._ResourceTags = None
+        self._TaskStatus = None
 
     @property
     def InstanceIds(self):
@@ -540,6 +543,17 @@ class DescribeInstancesRequest(AbstractModel):
     def ResourceTags(self, ResourceTags):
         self._ResourceTags = ResourceTags
 
+    @property
+    def TaskStatus(self):
+        """任务状态：1-待执行任务；2-密钥更新中；3-网络变更中；4-参数变更中；5-embedding变更中；6-ai套件变更中；7-滚动升级中；8-纵向扩容中；9-纵向缩容中；10-横向扩容中；11-横向缩容中
+        :rtype: list of int
+        """
+        return self._TaskStatus
+
+    @TaskStatus.setter
+    def TaskStatus(self, TaskStatus):
+        self._TaskStatus = TaskStatus
+
 
     def _deserialize(self, params):
         self._InstanceIds = params.get("InstanceIds")
@@ -561,6 +575,7 @@ class DescribeInstancesRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._ResourceTags.append(obj)
+        self._TaskStatus = params.get("TaskStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -920,6 +935,8 @@ class InstanceInfo(AbstractModel):
         :type IsolateAt: str
         :param _AutoRenew: 是否自动续费。0: 不自动续费(可以支持特权不停服)；1:自动续费；2:到期不续费.
         :type AutoRenew: int
+        :param _TaskStatus: 任务状态：0-无任务；1-待执行任务；2-密钥更新中；3-网络变更中；4-参数变更中；5-embedding变更中；6-ai套件变更中；7-滚动升级中；8-纵向扩容中；9-纵向缩容中；10-横向扩容中；11-横向缩容中
+        :type TaskStatus: int
         """
         self._InstanceId = None
         self._Name = None
@@ -949,6 +966,7 @@ class InstanceInfo(AbstractModel):
         self._WanAddress = None
         self._IsolateAt = None
         self._AutoRenew = None
+        self._TaskStatus = None
 
     @property
     def InstanceId(self):
@@ -1273,6 +1291,17 @@ class InstanceInfo(AbstractModel):
     def AutoRenew(self, AutoRenew):
         self._AutoRenew = AutoRenew
 
+    @property
+    def TaskStatus(self):
+        """任务状态：0-无任务；1-待执行任务；2-密钥更新中；3-网络变更中；4-参数变更中；5-embedding变更中；6-ai套件变更中；7-滚动升级中；8-纵向扩容中；9-纵向缩容中；10-横向扩容中；11-横向缩容中
+        :rtype: int
+        """
+        return self._TaskStatus
+
+    @TaskStatus.setter
+    def TaskStatus(self, TaskStatus):
+        self._TaskStatus = TaskStatus
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -1313,6 +1342,7 @@ class InstanceInfo(AbstractModel):
         self._WanAddress = params.get("WanAddress")
         self._IsolateAt = params.get("IsolateAt")
         self._AutoRenew = params.get("AutoRenew")
+        self._TaskStatus = params.get("TaskStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1522,8 +1552,11 @@ class NodeInfo(AbstractModel):
         r"""
         :param _Name: Pod名称。
         :type Name: str
+        :param _Status: pod状态
+        :type Status: str
         """
         self._Name = None
+        self._Status = None
 
     @property
     def Name(self):
@@ -1536,9 +1569,21 @@ class NodeInfo(AbstractModel):
     def Name(self, Name):
         self._Name = Name
 
+    @property
+    def Status(self):
+        """pod状态
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

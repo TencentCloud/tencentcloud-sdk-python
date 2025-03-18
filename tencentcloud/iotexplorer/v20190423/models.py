@@ -1596,6 +1596,100 @@ class CancelAssignTWeCallLicenseResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ChangeP2PRouteRequest(AbstractModel):
+    """ChangeP2PRoute请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品ID
+        :type ProductId: str
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        :param _RouteId: P2P线路
+        :type RouteId: int
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._RouteId = None
+
+    @property
+    def ProductId(self):
+        """产品ID
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        """设备名称
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def RouteId(self):
+        """P2P线路
+        :rtype: int
+        """
+        return self._RouteId
+
+    @RouteId.setter
+    def RouteId(self, RouteId):
+        self._RouteId = RouteId
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._RouteId = params.get("RouteId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChangeP2PRouteResponse(AbstractModel):
+    """ChangeP2PRoute返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CheckFirmwareUpdateRequest(AbstractModel):
     """CheckFirmwareUpdate请求参数结构体
 
@@ -12919,6 +13013,100 @@ class DescribeModelDefinitionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeP2PRouteRequest(AbstractModel):
+    """DescribeP2PRoute请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品ID
+        :type ProductId: str
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        """
+        self._ProductId = None
+        self._DeviceName = None
+
+    @property
+    def ProductId(self):
+        """产品ID
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        """设备名称
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeP2PRouteResponse(AbstractModel):
+    """DescribeP2PRoute返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RouteId: 当前p2p线路
+        :type RouteId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RouteId = None
+        self._RequestId = None
+
+    @property
+    def RouteId(self):
+        """当前p2p线路
+        :rtype: int
+        """
+        return self._RouteId
+
+    @RouteId.setter
+    def RouteId(self, RouteId):
+        self._RouteId = RouteId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RouteId = params.get("RouteId")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribePackageConsumeTaskRequest(AbstractModel):
     """DescribePackageConsumeTask请求参数结构体
 
@@ -19649,6 +19837,457 @@ class InvokeExternalSourceAIServiceTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class IotApplication(AbstractModel):
+    """应用信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IotAppID: 应用 ID
+        :type IotAppID: str
+        :param _AppName: 应用名称
+        :type AppName: str
+        :param _Description: 应用说明
+        :type Description: str
+        :param _DevMode: 开发模式
+        :type DevMode: int
+        :param _IOSAppKey: iOS 平台 AppKey
+        :type IOSAppKey: str
+        :param _IOSAppSecret: iOS 平台 AppSecret
+        :type IOSAppSecret: str
+        :param _AndroidAppKey: Android 平台 AppKey
+        :type AndroidAppKey: str
+        :param _AndroidAppSecret: Android 平台 AppSecret
+        :type AndroidAppSecret: str
+        :param _Products: 绑定的产品列表，数据为：ProdcutID 数组 JSON 序列化后的字符串
+        :type Products: str
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _PushSecretID: 信鸽推送APP ID
+        :type PushSecretID: str
+        :param _PushSecretKey: 信鸽推送SECRET KEY
+        :type PushSecretKey: str
+        :param _PushEnvironment: iOS平台推送环境
+        :type PushEnvironment: str
+        :param _MiniProgramAppKey: 小程序平台 AppKey
+        :type MiniProgramAppKey: str
+        :param _MiniProgramAppSecret: 小程序平台 AppSecret
+        :type MiniProgramAppSecret: str
+        :param _TPNSiOSAccessID: TPNS服务iOS应用AccessID，TPNS全称为腾讯移动推送（Tencent Push Notification Service），详见：https://cloud.tencent.com/document/product/548
+        :type TPNSiOSAccessID: str
+        :param _TPNSiOSSecretKey: TPNS服务iOS应用SecretKey
+        :type TPNSiOSSecretKey: str
+        :param _TPNSiOSPushEnvironment: TPNS服务iOS应用推送环境
+        :type TPNSiOSPushEnvironment: str
+        :param _TPNSAndroidAccessID: TPNS服务Android应用AccessID
+        :type TPNSAndroidAccessID: str
+        :param _TPNSAndroidSecretKey: TPNS服务Android应用SecretKey
+        :type TPNSAndroidSecretKey: str
+        :param _TPNSiOSRegion: TPNS服务iOS应用所属地域，详细说明参见 ModifyApplication 同名入参。
+        :type TPNSiOSRegion: str
+        :param _TPNSAndroidRegion: TPNS服务Android应用所属地域，详细说明参见 ModifyApplication 同名入参。
+        :type TPNSAndroidRegion: str
+        :param _SelfSmsAppId: 自主短信配置APPID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SelfSmsAppId: str
+        :param _SelfSmsAppKey: 自主短信配置APPKey
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SelfSmsAppKey: str
+        :param _SelfSmsSign: 自主短信配置签名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SelfSmsSign: str
+        :param _SelfSmsTemplateId: 自主短信配置模板ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SelfSmsTemplateId: int
+        :param _WechatNotifyStatus: 第三方小程序强提醒开关 0：关闭；1：开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WechatNotifyStatus: int
+        """
+        self._IotAppID = None
+        self._AppName = None
+        self._Description = None
+        self._DevMode = None
+        self._IOSAppKey = None
+        self._IOSAppSecret = None
+        self._AndroidAppKey = None
+        self._AndroidAppSecret = None
+        self._Products = None
+        self._CreateTime = None
+        self._ProjectId = None
+        self._PushSecretID = None
+        self._PushSecretKey = None
+        self._PushEnvironment = None
+        self._MiniProgramAppKey = None
+        self._MiniProgramAppSecret = None
+        self._TPNSiOSAccessID = None
+        self._TPNSiOSSecretKey = None
+        self._TPNSiOSPushEnvironment = None
+        self._TPNSAndroidAccessID = None
+        self._TPNSAndroidSecretKey = None
+        self._TPNSiOSRegion = None
+        self._TPNSAndroidRegion = None
+        self._SelfSmsAppId = None
+        self._SelfSmsAppKey = None
+        self._SelfSmsSign = None
+        self._SelfSmsTemplateId = None
+        self._WechatNotifyStatus = None
+
+    @property
+    def IotAppID(self):
+        """应用 ID
+        :rtype: str
+        """
+        return self._IotAppID
+
+    @IotAppID.setter
+    def IotAppID(self, IotAppID):
+        self._IotAppID = IotAppID
+
+    @property
+    def AppName(self):
+        """应用名称
+        :rtype: str
+        """
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def Description(self):
+        """应用说明
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def DevMode(self):
+        """开发模式
+        :rtype: int
+        """
+        return self._DevMode
+
+    @DevMode.setter
+    def DevMode(self, DevMode):
+        self._DevMode = DevMode
+
+    @property
+    def IOSAppKey(self):
+        """iOS 平台 AppKey
+        :rtype: str
+        """
+        return self._IOSAppKey
+
+    @IOSAppKey.setter
+    def IOSAppKey(self, IOSAppKey):
+        self._IOSAppKey = IOSAppKey
+
+    @property
+    def IOSAppSecret(self):
+        """iOS 平台 AppSecret
+        :rtype: str
+        """
+        return self._IOSAppSecret
+
+    @IOSAppSecret.setter
+    def IOSAppSecret(self, IOSAppSecret):
+        self._IOSAppSecret = IOSAppSecret
+
+    @property
+    def AndroidAppKey(self):
+        """Android 平台 AppKey
+        :rtype: str
+        """
+        return self._AndroidAppKey
+
+    @AndroidAppKey.setter
+    def AndroidAppKey(self, AndroidAppKey):
+        self._AndroidAppKey = AndroidAppKey
+
+    @property
+    def AndroidAppSecret(self):
+        """Android 平台 AppSecret
+        :rtype: str
+        """
+        return self._AndroidAppSecret
+
+    @AndroidAppSecret.setter
+    def AndroidAppSecret(self, AndroidAppSecret):
+        self._AndroidAppSecret = AndroidAppSecret
+
+    @property
+    def Products(self):
+        """绑定的产品列表，数据为：ProdcutID 数组 JSON 序列化后的字符串
+        :rtype: str
+        """
+        return self._Products
+
+    @Products.setter
+    def Products(self, Products):
+        self._Products = Products
+
+    @property
+    def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ProjectId(self):
+        """项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def PushSecretID(self):
+        """信鸽推送APP ID
+        :rtype: str
+        """
+        return self._PushSecretID
+
+    @PushSecretID.setter
+    def PushSecretID(self, PushSecretID):
+        self._PushSecretID = PushSecretID
+
+    @property
+    def PushSecretKey(self):
+        """信鸽推送SECRET KEY
+        :rtype: str
+        """
+        return self._PushSecretKey
+
+    @PushSecretKey.setter
+    def PushSecretKey(self, PushSecretKey):
+        self._PushSecretKey = PushSecretKey
+
+    @property
+    def PushEnvironment(self):
+        """iOS平台推送环境
+        :rtype: str
+        """
+        return self._PushEnvironment
+
+    @PushEnvironment.setter
+    def PushEnvironment(self, PushEnvironment):
+        self._PushEnvironment = PushEnvironment
+
+    @property
+    def MiniProgramAppKey(self):
+        """小程序平台 AppKey
+        :rtype: str
+        """
+        return self._MiniProgramAppKey
+
+    @MiniProgramAppKey.setter
+    def MiniProgramAppKey(self, MiniProgramAppKey):
+        self._MiniProgramAppKey = MiniProgramAppKey
+
+    @property
+    def MiniProgramAppSecret(self):
+        """小程序平台 AppSecret
+        :rtype: str
+        """
+        return self._MiniProgramAppSecret
+
+    @MiniProgramAppSecret.setter
+    def MiniProgramAppSecret(self, MiniProgramAppSecret):
+        self._MiniProgramAppSecret = MiniProgramAppSecret
+
+    @property
+    def TPNSiOSAccessID(self):
+        """TPNS服务iOS应用AccessID，TPNS全称为腾讯移动推送（Tencent Push Notification Service），详见：https://cloud.tencent.com/document/product/548
+        :rtype: str
+        """
+        return self._TPNSiOSAccessID
+
+    @TPNSiOSAccessID.setter
+    def TPNSiOSAccessID(self, TPNSiOSAccessID):
+        self._TPNSiOSAccessID = TPNSiOSAccessID
+
+    @property
+    def TPNSiOSSecretKey(self):
+        """TPNS服务iOS应用SecretKey
+        :rtype: str
+        """
+        return self._TPNSiOSSecretKey
+
+    @TPNSiOSSecretKey.setter
+    def TPNSiOSSecretKey(self, TPNSiOSSecretKey):
+        self._TPNSiOSSecretKey = TPNSiOSSecretKey
+
+    @property
+    def TPNSiOSPushEnvironment(self):
+        """TPNS服务iOS应用推送环境
+        :rtype: str
+        """
+        return self._TPNSiOSPushEnvironment
+
+    @TPNSiOSPushEnvironment.setter
+    def TPNSiOSPushEnvironment(self, TPNSiOSPushEnvironment):
+        self._TPNSiOSPushEnvironment = TPNSiOSPushEnvironment
+
+    @property
+    def TPNSAndroidAccessID(self):
+        """TPNS服务Android应用AccessID
+        :rtype: str
+        """
+        return self._TPNSAndroidAccessID
+
+    @TPNSAndroidAccessID.setter
+    def TPNSAndroidAccessID(self, TPNSAndroidAccessID):
+        self._TPNSAndroidAccessID = TPNSAndroidAccessID
+
+    @property
+    def TPNSAndroidSecretKey(self):
+        """TPNS服务Android应用SecretKey
+        :rtype: str
+        """
+        return self._TPNSAndroidSecretKey
+
+    @TPNSAndroidSecretKey.setter
+    def TPNSAndroidSecretKey(self, TPNSAndroidSecretKey):
+        self._TPNSAndroidSecretKey = TPNSAndroidSecretKey
+
+    @property
+    def TPNSiOSRegion(self):
+        """TPNS服务iOS应用所属地域，详细说明参见 ModifyApplication 同名入参。
+        :rtype: str
+        """
+        return self._TPNSiOSRegion
+
+    @TPNSiOSRegion.setter
+    def TPNSiOSRegion(self, TPNSiOSRegion):
+        self._TPNSiOSRegion = TPNSiOSRegion
+
+    @property
+    def TPNSAndroidRegion(self):
+        """TPNS服务Android应用所属地域，详细说明参见 ModifyApplication 同名入参。
+        :rtype: str
+        """
+        return self._TPNSAndroidRegion
+
+    @TPNSAndroidRegion.setter
+    def TPNSAndroidRegion(self, TPNSAndroidRegion):
+        self._TPNSAndroidRegion = TPNSAndroidRegion
+
+    @property
+    def SelfSmsAppId(self):
+        """自主短信配置APPID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SelfSmsAppId
+
+    @SelfSmsAppId.setter
+    def SelfSmsAppId(self, SelfSmsAppId):
+        self._SelfSmsAppId = SelfSmsAppId
+
+    @property
+    def SelfSmsAppKey(self):
+        """自主短信配置APPKey
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SelfSmsAppKey
+
+    @SelfSmsAppKey.setter
+    def SelfSmsAppKey(self, SelfSmsAppKey):
+        self._SelfSmsAppKey = SelfSmsAppKey
+
+    @property
+    def SelfSmsSign(self):
+        """自主短信配置签名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SelfSmsSign
+
+    @SelfSmsSign.setter
+    def SelfSmsSign(self, SelfSmsSign):
+        self._SelfSmsSign = SelfSmsSign
+
+    @property
+    def SelfSmsTemplateId(self):
+        """自主短信配置模板ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SelfSmsTemplateId
+
+    @SelfSmsTemplateId.setter
+    def SelfSmsTemplateId(self, SelfSmsTemplateId):
+        self._SelfSmsTemplateId = SelfSmsTemplateId
+
+    @property
+    def WechatNotifyStatus(self):
+        """第三方小程序强提醒开关 0：关闭；1：开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._WechatNotifyStatus
+
+    @WechatNotifyStatus.setter
+    def WechatNotifyStatus(self, WechatNotifyStatus):
+        self._WechatNotifyStatus = WechatNotifyStatus
+
+
+    def _deserialize(self, params):
+        self._IotAppID = params.get("IotAppID")
+        self._AppName = params.get("AppName")
+        self._Description = params.get("Description")
+        self._DevMode = params.get("DevMode")
+        self._IOSAppKey = params.get("IOSAppKey")
+        self._IOSAppSecret = params.get("IOSAppSecret")
+        self._AndroidAppKey = params.get("AndroidAppKey")
+        self._AndroidAppSecret = params.get("AndroidAppSecret")
+        self._Products = params.get("Products")
+        self._CreateTime = params.get("CreateTime")
+        self._ProjectId = params.get("ProjectId")
+        self._PushSecretID = params.get("PushSecretID")
+        self._PushSecretKey = params.get("PushSecretKey")
+        self._PushEnvironment = params.get("PushEnvironment")
+        self._MiniProgramAppKey = params.get("MiniProgramAppKey")
+        self._MiniProgramAppSecret = params.get("MiniProgramAppSecret")
+        self._TPNSiOSAccessID = params.get("TPNSiOSAccessID")
+        self._TPNSiOSSecretKey = params.get("TPNSiOSSecretKey")
+        self._TPNSiOSPushEnvironment = params.get("TPNSiOSPushEnvironment")
+        self._TPNSAndroidAccessID = params.get("TPNSAndroidAccessID")
+        self._TPNSAndroidSecretKey = params.get("TPNSAndroidSecretKey")
+        self._TPNSiOSRegion = params.get("TPNSiOSRegion")
+        self._TPNSAndroidRegion = params.get("TPNSAndroidRegion")
+        self._SelfSmsAppId = params.get("SelfSmsAppId")
+        self._SelfSmsAppKey = params.get("SelfSmsAppKey")
+        self._SelfSmsSign = params.get("SelfSmsSign")
+        self._SelfSmsTemplateId = params.get("SelfSmsTemplateId")
+        self._WechatNotifyStatus = params.get("WechatNotifyStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LicenseServiceNumInfo(AbstractModel):
     """增值服务数量统计
 
@@ -20650,6 +21289,297 @@ class LoRaGatewayLocation(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifyApplicationRequest(AbstractModel):
+    """ModifyApplication请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IotAppID: 应用ID
+        :type IotAppID: str
+        :param _AppName: 应用名称
+        :type AppName: str
+        :param _Description: 应用说明
+        :type Description: str
+        :param _Products: 关联的产品
+        :type Products: str
+        :param _PushSecretID: 信鸽推送APP ID
+        :type PushSecretID: str
+        :param _PushSecretKey: 信鸽推送SECRET KEY
+        :type PushSecretKey: str
+        :param _PushEnvironment: iOS平台推送环境
+        :type PushEnvironment: str
+        :param _TPNSiOSAccessID: TPNS服务iOS应用AccessID，TPNS全称为腾讯移动推送（Tencent Push Notification Service），详见：https://cloud.tencent.com/document/product/548
+        :type TPNSiOSAccessID: str
+        :param _TPNSiOSSecretKey: TPNS服务iOS应用SecretKey
+        :type TPNSiOSSecretKey: str
+        :param _TPNSiOSPushEnvironment: TPNS服务iOS应用推送环境
+        :type TPNSiOSPushEnvironment: str
+        :param _TPNSAndroidAccessID: TPNS服务Android应用AccessID
+        :type TPNSAndroidAccessID: str
+        :param _TPNSAndroidSecretKey: TPNS服务Android应用SecretKey
+        :type TPNSAndroidSecretKey: str
+        :param _TPNSiOSRegion: TPNS服务iOS应用所属地域，广州：ap-guangzhou，上海：ap-shanghai，中国香港：ap-hongkong，新加坡：ap-singapore。
+        :type TPNSiOSRegion: str
+        :param _TPNSAndroidRegion: TPNS服务Android应用所属地域，广州：ap-guangzhou，上海：ap-shanghai，中国香港：ap-hongkong，新加坡：ap-singapore。
+        :type TPNSAndroidRegion: str
+        :param _TurnKeySwitch: TurnKey小程序托管
+        :type TurnKeySwitch: int
+        """
+        self._IotAppID = None
+        self._AppName = None
+        self._Description = None
+        self._Products = None
+        self._PushSecretID = None
+        self._PushSecretKey = None
+        self._PushEnvironment = None
+        self._TPNSiOSAccessID = None
+        self._TPNSiOSSecretKey = None
+        self._TPNSiOSPushEnvironment = None
+        self._TPNSAndroidAccessID = None
+        self._TPNSAndroidSecretKey = None
+        self._TPNSiOSRegion = None
+        self._TPNSAndroidRegion = None
+        self._TurnKeySwitch = None
+
+    @property
+    def IotAppID(self):
+        """应用ID
+        :rtype: str
+        """
+        return self._IotAppID
+
+    @IotAppID.setter
+    def IotAppID(self, IotAppID):
+        self._IotAppID = IotAppID
+
+    @property
+    def AppName(self):
+        """应用名称
+        :rtype: str
+        """
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def Description(self):
+        """应用说明
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Products(self):
+        """关联的产品
+        :rtype: str
+        """
+        return self._Products
+
+    @Products.setter
+    def Products(self, Products):
+        self._Products = Products
+
+    @property
+    def PushSecretID(self):
+        """信鸽推送APP ID
+        :rtype: str
+        """
+        return self._PushSecretID
+
+    @PushSecretID.setter
+    def PushSecretID(self, PushSecretID):
+        self._PushSecretID = PushSecretID
+
+    @property
+    def PushSecretKey(self):
+        """信鸽推送SECRET KEY
+        :rtype: str
+        """
+        return self._PushSecretKey
+
+    @PushSecretKey.setter
+    def PushSecretKey(self, PushSecretKey):
+        self._PushSecretKey = PushSecretKey
+
+    @property
+    def PushEnvironment(self):
+        """iOS平台推送环境
+        :rtype: str
+        """
+        return self._PushEnvironment
+
+    @PushEnvironment.setter
+    def PushEnvironment(self, PushEnvironment):
+        self._PushEnvironment = PushEnvironment
+
+    @property
+    def TPNSiOSAccessID(self):
+        """TPNS服务iOS应用AccessID，TPNS全称为腾讯移动推送（Tencent Push Notification Service），详见：https://cloud.tencent.com/document/product/548
+        :rtype: str
+        """
+        return self._TPNSiOSAccessID
+
+    @TPNSiOSAccessID.setter
+    def TPNSiOSAccessID(self, TPNSiOSAccessID):
+        self._TPNSiOSAccessID = TPNSiOSAccessID
+
+    @property
+    def TPNSiOSSecretKey(self):
+        """TPNS服务iOS应用SecretKey
+        :rtype: str
+        """
+        return self._TPNSiOSSecretKey
+
+    @TPNSiOSSecretKey.setter
+    def TPNSiOSSecretKey(self, TPNSiOSSecretKey):
+        self._TPNSiOSSecretKey = TPNSiOSSecretKey
+
+    @property
+    def TPNSiOSPushEnvironment(self):
+        """TPNS服务iOS应用推送环境
+        :rtype: str
+        """
+        return self._TPNSiOSPushEnvironment
+
+    @TPNSiOSPushEnvironment.setter
+    def TPNSiOSPushEnvironment(self, TPNSiOSPushEnvironment):
+        self._TPNSiOSPushEnvironment = TPNSiOSPushEnvironment
+
+    @property
+    def TPNSAndroidAccessID(self):
+        """TPNS服务Android应用AccessID
+        :rtype: str
+        """
+        return self._TPNSAndroidAccessID
+
+    @TPNSAndroidAccessID.setter
+    def TPNSAndroidAccessID(self, TPNSAndroidAccessID):
+        self._TPNSAndroidAccessID = TPNSAndroidAccessID
+
+    @property
+    def TPNSAndroidSecretKey(self):
+        """TPNS服务Android应用SecretKey
+        :rtype: str
+        """
+        return self._TPNSAndroidSecretKey
+
+    @TPNSAndroidSecretKey.setter
+    def TPNSAndroidSecretKey(self, TPNSAndroidSecretKey):
+        self._TPNSAndroidSecretKey = TPNSAndroidSecretKey
+
+    @property
+    def TPNSiOSRegion(self):
+        """TPNS服务iOS应用所属地域，广州：ap-guangzhou，上海：ap-shanghai，中国香港：ap-hongkong，新加坡：ap-singapore。
+        :rtype: str
+        """
+        return self._TPNSiOSRegion
+
+    @TPNSiOSRegion.setter
+    def TPNSiOSRegion(self, TPNSiOSRegion):
+        self._TPNSiOSRegion = TPNSiOSRegion
+
+    @property
+    def TPNSAndroidRegion(self):
+        """TPNS服务Android应用所属地域，广州：ap-guangzhou，上海：ap-shanghai，中国香港：ap-hongkong，新加坡：ap-singapore。
+        :rtype: str
+        """
+        return self._TPNSAndroidRegion
+
+    @TPNSAndroidRegion.setter
+    def TPNSAndroidRegion(self, TPNSAndroidRegion):
+        self._TPNSAndroidRegion = TPNSAndroidRegion
+
+    @property
+    def TurnKeySwitch(self):
+        """TurnKey小程序托管
+        :rtype: int
+        """
+        return self._TurnKeySwitch
+
+    @TurnKeySwitch.setter
+    def TurnKeySwitch(self, TurnKeySwitch):
+        self._TurnKeySwitch = TurnKeySwitch
+
+
+    def _deserialize(self, params):
+        self._IotAppID = params.get("IotAppID")
+        self._AppName = params.get("AppName")
+        self._Description = params.get("Description")
+        self._Products = params.get("Products")
+        self._PushSecretID = params.get("PushSecretID")
+        self._PushSecretKey = params.get("PushSecretKey")
+        self._PushEnvironment = params.get("PushEnvironment")
+        self._TPNSiOSAccessID = params.get("TPNSiOSAccessID")
+        self._TPNSiOSSecretKey = params.get("TPNSiOSSecretKey")
+        self._TPNSiOSPushEnvironment = params.get("TPNSiOSPushEnvironment")
+        self._TPNSAndroidAccessID = params.get("TPNSAndroidAccessID")
+        self._TPNSAndroidSecretKey = params.get("TPNSAndroidSecretKey")
+        self._TPNSiOSRegion = params.get("TPNSiOSRegion")
+        self._TPNSAndroidRegion = params.get("TPNSAndroidRegion")
+        self._TurnKeySwitch = params.get("TurnKeySwitch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyApplicationResponse(AbstractModel):
+    """ModifyApplication返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Application: 应用信息
+        :type Application: :class:`tencentcloud.iotexplorer.v20190423.models.IotApplication`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Application = None
+        self._RequestId = None
+
+    @property
+    def Application(self):
+        """应用信息
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.IotApplication`
+        """
+        return self._Application
+
+    @Application.setter
+    def Application(self, Application):
+        self._Application = Application
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Application") is not None:
+            self._Application = IotApplication()
+            self._Application._deserialize(params.get("Application"))
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyCloudStorageAIServiceCallbackRequest(AbstractModel):

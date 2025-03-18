@@ -40,7 +40,6 @@ time   时间选择
         :param _Field: 组件唯一标识， 传回后端时的key
         :type Field: str
         :param _DefaultValue: 默认值
-注意：此字段可能返回 null，表示取不到有效值。
         :type DefaultValue: str
         :param _Config: 支持配置项如下,可根据需要选择配置项，不需要配置是设置空{}：
 
@@ -136,7 +135,6 @@ time   时间选择
     @property
     def DefaultValue(self):
         """默认值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DefaultValue
@@ -397,28 +395,20 @@ class ActionLibraryListResult(AbstractModel):
         :param _ActionContent: 自定义动作的参数，json string
         :type ActionContent: str
         :param _ResourceType: 二级分类
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceType: str
         :param _ActionDetail: 动作描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActionDetail: str
         :param _IsAllowed: 是否允许当前账号使用
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsAllowed: bool
         :param _ActionBestCase: 最佳实践案例的链接地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActionBestCase: str
         :param _ObjectType: 对象类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type ObjectType: str
         :param _MetricIdList: 监控指标ID列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type MetricIdList: list of int non-negative
         :param _IsNewAction: 是否是新动作
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsNewAction: bool
         :param _ObjectTypeId: 对象类型ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ObjectTypeId: int
         """
         self._ActionName = None
@@ -589,7 +579,6 @@ class ActionLibraryListResult(AbstractModel):
     @property
     def ResourceType(self):
         """二级分类
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceType
@@ -601,7 +590,6 @@ class ActionLibraryListResult(AbstractModel):
     @property
     def ActionDetail(self):
         """动作描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ActionDetail
@@ -613,7 +601,6 @@ class ActionLibraryListResult(AbstractModel):
     @property
     def IsAllowed(self):
         """是否允许当前账号使用
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsAllowed
@@ -625,7 +612,6 @@ class ActionLibraryListResult(AbstractModel):
     @property
     def ActionBestCase(self):
         """最佳实践案例的链接地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ActionBestCase
@@ -637,7 +623,6 @@ class ActionLibraryListResult(AbstractModel):
     @property
     def ObjectType(self):
         """对象类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ObjectType
@@ -649,7 +634,6 @@ class ActionLibraryListResult(AbstractModel):
     @property
     def MetricIdList(self):
         """监控指标ID列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int non-negative
         """
         return self._MetricIdList
@@ -661,7 +645,6 @@ class ActionLibraryListResult(AbstractModel):
     @property
     def IsNewAction(self):
         """是否是新动作
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsNewAction
@@ -673,7 +656,6 @@ class ActionLibraryListResult(AbstractModel):
     @property
     def ObjectTypeId(self):
         """对象类型ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ObjectTypeId
@@ -723,13 +705,10 @@ class ApmServiceInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceId: 业务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _ServiceNameList: 应用名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceNameList: list of str
         :param _RegionId: 地域ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionId: int
         """
         self._InstanceId = None
@@ -739,7 +718,6 @@ class ApmServiceInfo(AbstractModel):
     @property
     def InstanceId(self):
         """业务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -751,7 +729,6 @@ class ApmServiceInfo(AbstractModel):
     @property
     def ServiceNameList(self):
         """应用名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._ServiceNameList
@@ -763,7 +740,6 @@ class ApmServiceInfo(AbstractModel):
     @property
     def RegionId(self):
         """地域ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RegionId
@@ -1363,7 +1339,6 @@ class DescribeActionFieldConfigListResponse(AbstractModel):
         :param _Results: 动作栏位配置列表
         :type Results: list of ActionFieldConfigResult
         :param _ResourceOffline: 资源下线信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceOffline: list of ResourceOffline
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1398,7 +1373,6 @@ class DescribeActionFieldConfigListResponse(AbstractModel):
     @property
     def ResourceOffline(self):
         """资源下线信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ResourceOffline
         """
         return self._ResourceOffline
@@ -3116,16 +3090,12 @@ class ObjectType(AbstractModel):
         :param _ObjectTypeParams: 对象类型参数
         :type ObjectTypeParams: :class:`tencentcloud.cfg.v20210820.models.ObjectTypeConfig`
         :param _ObjectTypeJsonParse: tke接口json解析规则，null不需要解析
-注意：此字段可能返回 null，表示取不到有效值。
         :type ObjectTypeJsonParse: :class:`tencentcloud.cfg.v20210820.models.ObjectTypeJsonParse`
         :param _ObjectHasNewAction: 是否包含新动作
-注意：此字段可能返回 null，表示取不到有效值。
         :type ObjectHasNewAction: bool
         :param _ObjectPlatformName: 对应在平台架构图中的资源类型名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ObjectPlatformName: str
         :param _ObjectSupportType: 1：平台支持的对象 2：应用支持的部分对象
-注意：此字段可能返回 null，表示取不到有效值。
         :type ObjectSupportType: int
         :param _ArchLayer: 1.接入层 2.逻辑层 3. 数据层
         :type ArchLayer: int
@@ -3190,7 +3160,6 @@ class ObjectType(AbstractModel):
     @property
     def ObjectTypeJsonParse(self):
         """tke接口json解析规则，null不需要解析
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cfg.v20210820.models.ObjectTypeJsonParse`
         """
         return self._ObjectTypeJsonParse
@@ -3202,7 +3171,6 @@ class ObjectType(AbstractModel):
     @property
     def ObjectHasNewAction(self):
         """是否包含新动作
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._ObjectHasNewAction
@@ -3214,7 +3182,6 @@ class ObjectType(AbstractModel):
     @property
     def ObjectPlatformName(self):
         """对应在平台架构图中的资源类型名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ObjectPlatformName
@@ -3226,7 +3193,6 @@ class ObjectType(AbstractModel):
     @property
     def ObjectSupportType(self):
         """1：平台支持的对象 2：应用支持的部分对象
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ObjectSupportType
@@ -3351,10 +3317,8 @@ class ObjectTypeConfigFields(AbstractModel):
         :param _Header: 实例id
         :type Header: str
         :param _Transfer: 字段值是否需要转译，当不需要转译时，此字段返回null
-注意：此字段可能返回 null，表示取不到有效值。
         :type Transfer: str
         :param _JsonParse: tke的pod字段信息解析
-注意：此字段可能返回 null，表示取不到有效值。
         :type JsonParse: str
         :param _Type: 字段类型 0:str 1:list
         :type Type: int
@@ -3390,7 +3354,6 @@ class ObjectTypeConfigFields(AbstractModel):
     @property
     def Transfer(self):
         """字段值是否需要转译，当不需要转译时，此字段返回null
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Transfer
@@ -3402,7 +3365,6 @@ class ObjectTypeConfigFields(AbstractModel):
     @property
     def JsonParse(self):
         """tke的pod字段信息解析
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._JsonParse
@@ -3447,16 +3409,12 @@ class ObjectTypeJsonParse(AbstractModel):
     def __init__(self):
         r"""
         :param _NameSpace: 命名空间
-注意：此字段可能返回 null，表示取不到有效值。
         :type NameSpace: str
         :param _WorkloadName: 工作负载名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type WorkloadName: str
         :param _LanIP: 节点IP
-注意：此字段可能返回 null，表示取不到有效值。
         :type LanIP: str
         :param _InstanceId: 节点ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         """
         self._NameSpace = None
@@ -3467,7 +3425,6 @@ class ObjectTypeJsonParse(AbstractModel):
     @property
     def NameSpace(self):
         """命名空间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NameSpace
@@ -3479,7 +3436,6 @@ class ObjectTypeJsonParse(AbstractModel):
     @property
     def WorkloadName(self):
         """工作负载名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._WorkloadName
@@ -3491,7 +3447,6 @@ class ObjectTypeJsonParse(AbstractModel):
     @property
     def LanIP(self):
         """节点IP
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LanIP
@@ -3503,7 +3458,6 @@ class ObjectTypeJsonParse(AbstractModel):
     @property
     def InstanceId(self):
         """节点ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -3538,16 +3492,12 @@ class PolicyTriggerLog(AbstractModel):
         :param _TaskId: 演练ID
         :type TaskId: int
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _TriggerType: 类型，0--触发，1--恢复
-注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerType: int
         :param _Content: 内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type Content: str
         :param _CreatTime: 触发时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatTime: str
         """
         self._TaskId = None
@@ -3570,7 +3520,6 @@ class PolicyTriggerLog(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -3582,7 +3531,6 @@ class PolicyTriggerLog(AbstractModel):
     @property
     def TriggerType(self):
         """类型，0--触发，1--恢复
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TriggerType
@@ -3594,7 +3542,6 @@ class PolicyTriggerLog(AbstractModel):
     @property
     def Content(self):
         """内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Content
@@ -3606,7 +3553,6 @@ class PolicyTriggerLog(AbstractModel):
     @property
     def CreatTime(self):
         """触发时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreatTime
@@ -3640,13 +3586,10 @@ class ResourceOffline(AbstractModel):
     def __init__(self):
         r"""
         :param _ResourceId: 资源ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceId: int
         :param _ResourceDeleteTime: 资源下线时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceDeleteTime: str
         :param _ResourceDeleteMessage: 资源下线提示
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceDeleteMessage: str
         """
         self._ResourceId = None
@@ -3656,7 +3599,6 @@ class ResourceOffline(AbstractModel):
     @property
     def ResourceId(self):
         """资源ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ResourceId
@@ -3668,7 +3610,6 @@ class ResourceOffline(AbstractModel):
     @property
     def ResourceDeleteTime(self):
         """资源下线时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceDeleteTime
@@ -3680,7 +3621,6 @@ class ResourceOffline(AbstractModel):
     @property
     def ResourceDeleteMessage(self):
         """资源下线提示
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceDeleteMessage
@@ -3712,10 +3652,8 @@ class TagWithCreate(AbstractModel):
     def __init__(self):
         r"""
         :param _TagKey: 标签键
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagKey: str
         :param _TagValue: 标签值
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagValue: str
         """
         self._TagKey = None
@@ -3724,7 +3662,6 @@ class TagWithCreate(AbstractModel):
     @property
     def TagKey(self):
         """标签键
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TagKey
@@ -3736,7 +3673,6 @@ class TagWithCreate(AbstractModel):
     @property
     def TagValue(self):
         """标签值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TagValue
@@ -3824,10 +3760,8 @@ class Task(AbstractModel):
         :param _TaskDescription: 任务描述
         :type TaskDescription: str
         :param _TaskTag: 自定义标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskTag: str
         :param _TaskStatus: 任务状态，1001--未开始  1002--进行中（执行）1003--进行中（暂停）1004--执行结束
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskStatus: int
         :param _TaskStatusType: 任务结束状态，表明任务以何种状态结束: 0 -- 尚未结束，1 -- 成功，2-- 失败，3--终止
         :type TaskStatusType: int
@@ -3861,13 +3795,11 @@ class Task(AbstractModel):
         :param _TaskRegionId: 地域ID
         :type TaskRegionId: int
         :param _TaskMonitors: 监控指标列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskMonitors: list of TaskMonitor
         :param _TaskPolicy: 保护策略
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskPolicy: :class:`tencentcloud.cfg.v20210820.models.DescribePolicy`
         :param _Tags: 标签列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of TagWithDescribe
         :param _TaskPlanId: 关联的演练计划ID
 注意：此字段可能返回 null，表示取不到有效值。
@@ -3879,19 +3811,15 @@ class Task(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationId: str
         :param _ApplicationName: 关联的应用名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationName: str
         :param _AlarmPolicy: 关联的告警指标
-注意：此字段可能返回 null，表示取不到有效值。
         :type AlarmPolicy: list of str
         :param _ApmServiceList: 关联的APM服务
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApmServiceList: list of ApmServiceInfo
         :param _VerifyId: 关联的隐患验证项ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type VerifyId: int
         :param _PolicyDealType: 护栏处理方式，1--顺序回滚，2--演练暂停
-注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyDealType: int
         :param _TaskPlanStartTime: 计划开始时间
 注意：此字段可能返回 null，表示取不到有效值。
@@ -3906,7 +3834,6 @@ class Task(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskIssue: str
         :param _TaskRegionName: region信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskRegionName: str
         :param _TaskArchId: 架构ID
         :type TaskArchId: str
@@ -3983,7 +3910,6 @@ class Task(AbstractModel):
     @property
     def TaskTag(self):
         """自定义标签
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskTag
@@ -3995,7 +3921,6 @@ class Task(AbstractModel):
     @property
     def TaskStatus(self):
         """任务状态，1001--未开始  1002--进行中（执行）1003--进行中（暂停）1004--执行结束
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TaskStatus
@@ -4155,7 +4080,6 @@ class Task(AbstractModel):
     @property
     def TaskMonitors(self):
         """监控指标列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TaskMonitor
         """
         return self._TaskMonitors
@@ -4179,7 +4103,6 @@ class Task(AbstractModel):
     @property
     def Tags(self):
         """标签列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TagWithDescribe
         """
         return self._Tags
@@ -4227,7 +4150,6 @@ class Task(AbstractModel):
     @property
     def ApplicationName(self):
         """关联的应用名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApplicationName
@@ -4239,7 +4161,6 @@ class Task(AbstractModel):
     @property
     def AlarmPolicy(self):
         """关联的告警指标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._AlarmPolicy
@@ -4251,7 +4172,6 @@ class Task(AbstractModel):
     @property
     def ApmServiceList(self):
         """关联的APM服务
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ApmServiceInfo
         """
         return self._ApmServiceList
@@ -4275,7 +4195,6 @@ class Task(AbstractModel):
     @property
     def PolicyDealType(self):
         """护栏处理方式，1--顺序回滚，2--演练暂停
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PolicyDealType
@@ -4335,7 +4254,6 @@ class Task(AbstractModel):
     @property
     def TaskRegionName(self):
         """region信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskRegionName
@@ -4577,7 +4495,6 @@ class TaskGroup(AbstractModel):
         :param _TaskGroupTitle: 分组标题
         :type TaskGroupTitle: str
         :param _TaskGroupDescription: 分组描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskGroupDescription: str
         :param _TaskGroupOrder: 任务分组顺序
         :type TaskGroupOrder: int
@@ -4596,10 +4513,8 @@ class TaskGroup(AbstractModel):
         :param _TaskGroupDiscardInstanceList: 不参演的实例列表
         :type TaskGroupDiscardInstanceList: list of str
         :param _TaskGroupSelectedInstanceList: 参演实例列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskGroupSelectedInstanceList: list of str
         :param _TaskGroupInstancesExecuteRule: 机器选取规则
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskGroupInstancesExecuteRule: list of TaskGroupInstancesExecuteRules
         """
         self._TaskGroupId = None
@@ -4641,7 +4556,6 @@ class TaskGroup(AbstractModel):
     @property
     def TaskGroupDescription(self):
         """分组描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskGroupDescription
@@ -4741,7 +4655,6 @@ class TaskGroup(AbstractModel):
     @property
     def TaskGroupSelectedInstanceList(self):
         """参演实例列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._TaskGroupSelectedInstanceList
@@ -4753,7 +4666,6 @@ class TaskGroup(AbstractModel):
     @property
     def TaskGroupInstancesExecuteRule(self):
         """机器选取规则
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TaskGroupInstancesExecuteRules
         """
         return self._TaskGroupInstancesExecuteRule
@@ -4813,10 +4725,8 @@ class TaskGroupAction(AbstractModel):
         :param _TaskGroupActionOrder: 分组动作顺序
         :type TaskGroupActionOrder: int
         :param _TaskGroupActionGeneralConfiguration: 分组动作通用配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskGroupActionGeneralConfiguration: str
         :param _TaskGroupActionCustomConfiguration: 分组动作自定义配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskGroupActionCustomConfiguration: str
         :param _TaskGroupActionStatus: 分组动作状态
         :type TaskGroupActionStatus: int
@@ -4829,31 +4739,22 @@ class TaskGroupAction(AbstractModel):
         :param _TaskGroupActionStatusType: 状态类型: 0 -- 无状态，1 -- 成功，2-- 失败，3--终止，4--跳过
         :type TaskGroupActionStatusType: int
         :param _TaskGroupActionRandomId: RandomId
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskGroupActionRandomId: int
         :param _TaskGroupActionRecoverId: RecoverId
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskGroupActionRecoverId: int
         :param _TaskGroupActionExecuteId: ExecuteId
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskGroupActionExecuteId: int
         :param _ActionApiType: 调用api类型，0:tat, 1:云api
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActionApiType: int
         :param _ActionAttribute: 1:故障，2:恢复
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActionAttribute: int
         :param _ActionType: 动作类型：平台、自定义
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActionType: str
         :param _IsExecuteRedo: 是否可重试
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsExecuteRedo: bool
         :param _ActionRisk: 动作风险级别
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActionRisk: str
         :param _TaskGroupActionExecuteTime: 动作运行时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskGroupActionExecuteTime: int
         :param _TaskGroupActionStartTime: 动作开始执行时间
         :type TaskGroupActionStartTime: str
@@ -4927,7 +4828,6 @@ class TaskGroupAction(AbstractModel):
     @property
     def TaskGroupActionGeneralConfiguration(self):
         """分组动作通用配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskGroupActionGeneralConfiguration
@@ -4939,7 +4839,6 @@ class TaskGroupAction(AbstractModel):
     @property
     def TaskGroupActionCustomConfiguration(self):
         """分组动作自定义配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskGroupActionCustomConfiguration
@@ -5006,7 +4905,6 @@ class TaskGroupAction(AbstractModel):
     @property
     def TaskGroupActionRandomId(self):
         """RandomId
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TaskGroupActionRandomId
@@ -5018,7 +4916,6 @@ class TaskGroupAction(AbstractModel):
     @property
     def TaskGroupActionRecoverId(self):
         """RecoverId
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TaskGroupActionRecoverId
@@ -5030,7 +4927,6 @@ class TaskGroupAction(AbstractModel):
     @property
     def TaskGroupActionExecuteId(self):
         """ExecuteId
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TaskGroupActionExecuteId
@@ -5042,7 +4938,6 @@ class TaskGroupAction(AbstractModel):
     @property
     def ActionApiType(self):
         """调用api类型，0:tat, 1:云api
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ActionApiType
@@ -5054,7 +4949,6 @@ class TaskGroupAction(AbstractModel):
     @property
     def ActionAttribute(self):
         """1:故障，2:恢复
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ActionAttribute
@@ -5066,7 +4960,6 @@ class TaskGroupAction(AbstractModel):
     @property
     def ActionType(self):
         """动作类型：平台、自定义
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ActionType
@@ -5078,7 +4971,6 @@ class TaskGroupAction(AbstractModel):
     @property
     def IsExecuteRedo(self):
         """是否可重试
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsExecuteRedo
@@ -5090,7 +4982,6 @@ class TaskGroupAction(AbstractModel):
     @property
     def ActionRisk(self):
         """动作风险级别
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ActionRisk
@@ -5102,7 +4993,6 @@ class TaskGroupAction(AbstractModel):
     @property
     def TaskGroupActionExecuteTime(self):
         """动作运行时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TaskGroupActionExecuteTime
@@ -5441,7 +5331,6 @@ class TaskGroupInstance(AbstractModel):
         :param _TaskGroupInstanceId: 实例ID
         :type TaskGroupInstanceId: int
         :param _TaskGroupInstanceObjectId: 实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskGroupInstanceObjectId: str
         :param _TaskGroupInstanceStatus: 实例动作执行状态
         :type TaskGroupInstanceStatus: int
@@ -5452,19 +5341,15 @@ class TaskGroupInstance(AbstractModel):
         :param _TaskGroupInstanceStatusType: 状态类型: 0 -- 无状态，1 -- 成功，2-- 失败，3--终止，4--跳过
         :type TaskGroupInstanceStatusType: int
         :param _TaskGroupInstanceStartTime: 执行开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskGroupInstanceStartTime: str
         :param _TaskGroupInstanceEndTime: 执行结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskGroupInstanceEndTime: str
         :param _TaskGroupInstanceExecuteLog: 实例动作执行日志
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskGroupInstanceExecuteLog: str
         :param _TaskGroupInstanceIsRedo: 实例是否可重试
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskGroupInstanceIsRedo: bool
         :param _TaskGroupInstanceExecuteTime: 动作实例执行时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskGroupInstanceExecuteTime: int
         """
         self._TaskGroupInstanceId = None
@@ -5493,7 +5378,6 @@ class TaskGroupInstance(AbstractModel):
     @property
     def TaskGroupInstanceObjectId(self):
         """实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskGroupInstanceObjectId
@@ -5549,7 +5433,6 @@ class TaskGroupInstance(AbstractModel):
     @property
     def TaskGroupInstanceStartTime(self):
         """执行开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskGroupInstanceStartTime
@@ -5561,7 +5444,6 @@ class TaskGroupInstance(AbstractModel):
     @property
     def TaskGroupInstanceEndTime(self):
         """执行结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskGroupInstanceEndTime
@@ -5589,7 +5471,6 @@ class TaskGroupInstance(AbstractModel):
     @property
     def TaskGroupInstanceIsRedo(self):
         """实例是否可重试
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._TaskGroupInstanceIsRedo
@@ -5601,7 +5482,6 @@ class TaskGroupInstance(AbstractModel):
     @property
     def TaskGroupInstanceExecuteTime(self):
         """动作实例执行时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TaskGroupInstanceExecuteTime
@@ -5641,13 +5521,10 @@ class TaskGroupInstancesExecuteRules(AbstractModel):
     def __init__(self):
         r"""
         :param _TaskGroupInstancesExecuteMode: 实例选取模式
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskGroupInstancesExecuteMode: int
         :param _TaskGroupInstancesExecutePercent: 按比例选取模式下选取比例
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskGroupInstancesExecutePercent: int
         :param _TaskGroupInstancesExecuteNum: 按数量选取模式下选取数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskGroupInstancesExecuteNum: int
         """
         self._TaskGroupInstancesExecuteMode = None
@@ -5657,7 +5534,6 @@ class TaskGroupInstancesExecuteRules(AbstractModel):
     @property
     def TaskGroupInstancesExecuteMode(self):
         """实例选取模式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TaskGroupInstancesExecuteMode
@@ -5669,7 +5545,6 @@ class TaskGroupInstancesExecuteRules(AbstractModel):
     @property
     def TaskGroupInstancesExecutePercent(self):
         """按比例选取模式下选取比例
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TaskGroupInstancesExecutePercent
@@ -5681,7 +5556,6 @@ class TaskGroupInstancesExecuteRules(AbstractModel):
     @property
     def TaskGroupInstancesExecuteNum(self):
         """按数量选取模式下选取数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TaskGroupInstancesExecuteNum
@@ -5719,7 +5593,6 @@ class TaskListItem(AbstractModel):
         :param _TaskDescription: 任务描述
         :type TaskDescription: str
         :param _TaskTag: 任务标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskTag: str
         :param _TaskStatus: 任务状态(1001 -- 未开始   1002 -- 进行中  1003 -- 暂停中   1004 -- 任务结束)
         :type TaskStatus: int
@@ -5728,25 +5601,18 @@ class TaskListItem(AbstractModel):
         :param _TaskUpdateTime: 任务更新时间
         :type TaskUpdateTime: str
         :param _TaskPreCheckStatus: 0--未开始，1--进行中，2--已完成
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskPreCheckStatus: int
         :param _TaskPreCheckSuccess: 环境检查是否通过
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskPreCheckSuccess: bool
         :param _TaskExpect: 演练是否符合预期 1-符合预期 2-不符合预期
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskExpect: int
         :param _ApplicationId: 关联应用ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationId: str
         :param _ApplicationName: 关联应用名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationName: str
         :param _VerifyId: 验证项ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type VerifyId: int
         :param _TaskStatusType: 状态类型: 0 -- 无状态，1 -- 成功，2-- 失败，3--终止
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskStatusType: int
         :param _ArchId: 架构ID
         :type ArchId: str
@@ -5806,7 +5672,6 @@ class TaskListItem(AbstractModel):
     @property
     def TaskTag(self):
         """任务标签
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskTag
@@ -5851,7 +5716,6 @@ class TaskListItem(AbstractModel):
     @property
     def TaskPreCheckStatus(self):
         """0--未开始，1--进行中，2--已完成
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TaskPreCheckStatus
@@ -5863,7 +5727,6 @@ class TaskListItem(AbstractModel):
     @property
     def TaskPreCheckSuccess(self):
         """环境检查是否通过
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._TaskPreCheckSuccess
@@ -5875,7 +5738,6 @@ class TaskListItem(AbstractModel):
     @property
     def TaskExpect(self):
         """演练是否符合预期 1-符合预期 2-不符合预期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TaskExpect
@@ -5887,7 +5749,6 @@ class TaskListItem(AbstractModel):
     @property
     def ApplicationId(self):
         """关联应用ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApplicationId
@@ -5899,7 +5760,6 @@ class TaskListItem(AbstractModel):
     @property
     def ApplicationName(self):
         """关联应用名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApplicationName
@@ -5911,7 +5771,6 @@ class TaskListItem(AbstractModel):
     @property
     def VerifyId(self):
         """验证项ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._VerifyId
@@ -5923,7 +5782,6 @@ class TaskListItem(AbstractModel):
     @property
     def TaskStatusType(self):
         """状态类型: 0 -- 无状态，1 -- 成功，2-- 失败，3--终止
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TaskStatusType
@@ -5992,7 +5850,6 @@ class TaskMonitor(AbstractModel):
         :param _TaskMonitorId: 演练监控指标ID
         :type TaskMonitorId: int
         :param _MetricId: 监控指标ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type MetricId: int
         :param _TaskMonitorObjectTypeId: 监控指标对象类型ID
         :type TaskMonitorObjectTypeId: int
@@ -6001,10 +5858,8 @@ class TaskMonitor(AbstractModel):
         :param _InstancesIds: 实例ID列表
         :type InstancesIds: list of str
         :param _MetricChineseName: 中文指标
-注意：此字段可能返回 null，表示取不到有效值。
         :type MetricChineseName: str
         :param _Unit: 单位
-注意：此字段可能返回 null，表示取不到有效值。
         :type Unit: str
         """
         self._TaskMonitorId = None
@@ -6029,7 +5884,6 @@ class TaskMonitor(AbstractModel):
     @property
     def MetricId(self):
         """监控指标ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MetricId
@@ -6074,7 +5928,6 @@ class TaskMonitor(AbstractModel):
     @property
     def MetricChineseName(self):
         """中文指标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MetricChineseName
@@ -6086,7 +5939,6 @@ class TaskMonitor(AbstractModel):
     @property
     def Unit(self):
         """单位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Unit
@@ -6122,10 +5974,8 @@ class TaskOrg(AbstractModel):
     def __init__(self):
         r"""
         :param _TaskRole: 演练角色
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskRole: str
         :param _TaskOperator: 负责人
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskOperator: str
         """
         self._TaskRole = None
@@ -6134,7 +5984,6 @@ class TaskOrg(AbstractModel):
     @property
     def TaskRole(self):
         """演练角色
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskRole
@@ -6146,7 +5995,6 @@ class TaskOrg(AbstractModel):
     @property
     def TaskOperator(self):
         """负责人
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskOperator
@@ -6341,7 +6189,6 @@ class Template(AbstractModel):
         :param _TemplateDescription: 经验库描述
         :type TemplateDescription: str
         :param _TemplateTag: 自定义标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateTag: str
         :param _TemplateIsUsed: 使用状态。1 ---- 使用中，2 --- 停用
         :type TemplateIsUsed: int
@@ -6365,19 +6212,14 @@ class Template(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type TemplatePolicy: :class:`tencentcloud.cfg.v20210820.models.TemplatePolicy`
         :param _Tags: 标签列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of TagWithDescribe
         :param _TemplateSource: 经验来源 0-自建 1-专家推荐
-注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateSource: int
         :param _ApmServiceList: apm应用信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApmServiceList: list of ApmServiceInfo
         :param _AlarmPolicy: 告警指标
-注意：此字段可能返回 null，表示取不到有效值。
         :type AlarmPolicy: list of str
         :param _PolicyDealType: 护栏处理方式，1--顺序回滚，2--演练暂停
-注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyDealType: int
         """
         self._TemplateId = None
@@ -6436,7 +6278,6 @@ class Template(AbstractModel):
     @property
     def TemplateTag(self):
         """自定义标签
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TemplateTag
@@ -6559,7 +6400,6 @@ class Template(AbstractModel):
     @property
     def Tags(self):
         """标签列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TagWithDescribe
         """
         return self._Tags
@@ -6571,7 +6411,6 @@ class Template(AbstractModel):
     @property
     def TemplateSource(self):
         """经验来源 0-自建 1-专家推荐
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TemplateSource
@@ -6583,7 +6422,6 @@ class Template(AbstractModel):
     @property
     def ApmServiceList(self):
         """apm应用信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ApmServiceInfo
         """
         return self._ApmServiceList
@@ -6595,7 +6433,6 @@ class Template(AbstractModel):
     @property
     def AlarmPolicy(self):
         """告警指标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._AlarmPolicy
@@ -6607,7 +6444,6 @@ class Template(AbstractModel):
     @property
     def PolicyDealType(self):
         """护栏处理方式，1--顺序回滚，2--演练暂停
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PolicyDealType
@@ -6683,7 +6519,6 @@ class TemplateGroup(AbstractModel):
         :param _Title: 分组标题
         :type Title: str
         :param _Description: 分组描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _Order: 分组顺序
         :type Order: int
@@ -6742,7 +6577,6 @@ class TemplateGroup(AbstractModel):
     @property
     def Description(self):
         """分组描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -6846,10 +6680,8 @@ class TemplateGroupAction(AbstractModel):
         :param _Order: 分组动作顺序
         :type Order: int
         :param _GeneralConfiguration: 分组动作通用配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type GeneralConfiguration: str
         :param _CustomConfiguration: 分组动作自定义配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type CustomConfiguration: str
         :param _CreateTime: 动作分组创建时间
         :type CreateTime: str
@@ -6858,25 +6690,18 @@ class TemplateGroupAction(AbstractModel):
         :param _ActionTitle: 动作名称
         :type ActionTitle: str
         :param _RandomId: 自身随机id
-注意：此字段可能返回 null，表示取不到有效值。
         :type RandomId: int
         :param _RecoverId: 恢复动作id
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecoverId: int
         :param _ExecuteId: 执行动作id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExecuteId: int
         :param _ActionApiType: 调用api类型，0:tat, 1:云api
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActionApiType: int
         :param _ActionAttribute: 1:故障，2:恢复
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActionAttribute: int
         :param _ActionType: 动作类型：平台和自定义
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActionType: str
         :param _ActionRisk: 动作风险等级，1:低风险 2:中风险 3:高风险
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActionRisk: str
         :param _FailurePerformance: 故障表现
         :type FailurePerformance: str
@@ -6934,7 +6759,6 @@ class TemplateGroupAction(AbstractModel):
     @property
     def GeneralConfiguration(self):
         """分组动作通用配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GeneralConfiguration
@@ -6946,7 +6770,6 @@ class TemplateGroupAction(AbstractModel):
     @property
     def CustomConfiguration(self):
         """分组动作自定义配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CustomConfiguration
@@ -6991,7 +6814,6 @@ class TemplateGroupAction(AbstractModel):
     @property
     def RandomId(self):
         """自身随机id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RandomId
@@ -7003,7 +6825,6 @@ class TemplateGroupAction(AbstractModel):
     @property
     def RecoverId(self):
         """恢复动作id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RecoverId
@@ -7015,7 +6836,6 @@ class TemplateGroupAction(AbstractModel):
     @property
     def ExecuteId(self):
         """执行动作id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ExecuteId
@@ -7027,7 +6847,6 @@ class TemplateGroupAction(AbstractModel):
     @property
     def ActionApiType(self):
         """调用api类型，0:tat, 1:云api
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ActionApiType
@@ -7039,7 +6858,6 @@ class TemplateGroupAction(AbstractModel):
     @property
     def ActionAttribute(self):
         """1:故障，2:恢复
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ActionAttribute
@@ -7051,7 +6869,6 @@ class TemplateGroupAction(AbstractModel):
     @property
     def ActionType(self):
         """动作类型：平台和自定义
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ActionType
@@ -7063,7 +6880,6 @@ class TemplateGroupAction(AbstractModel):
     @property
     def ActionRisk(self):
         """动作风险等级，1:低风险 2:中风险 3:高风险
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ActionRisk
@@ -7125,7 +6941,6 @@ class TemplateListItem(AbstractModel):
         :param _TemplateDescription: 经验库描述
         :type TemplateDescription: str
         :param _TemplateTag: 经验库标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateTag: str
         :param _TemplateIsUsed: 经验库状态。1 -- 使用中，2 -- 停用
         :type TemplateIsUsed: int
@@ -7136,7 +6951,6 @@ class TemplateListItem(AbstractModel):
         :param _TemplateUsedNum: 经验库关联的任务数量
         :type TemplateUsedNum: int
         :param _TemplateSource: 经验库来源 0-自建经验 1-专家推荐
-注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateSource: int
         """
         self._TemplateId = None
@@ -7185,7 +6999,6 @@ class TemplateListItem(AbstractModel):
     @property
     def TemplateTag(self):
         """经验库标签
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TemplateTag
@@ -7241,7 +7054,6 @@ class TemplateListItem(AbstractModel):
     @property
     def TemplateSource(self):
         """经验库来源 0-自建经验 1-专家推荐
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TemplateSource
@@ -7281,14 +7093,12 @@ class TemplateMonitor(AbstractModel):
         :param _MonitorId: pk
         :type MonitorId: int
         :param _MetricId: 监控指标ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type MetricId: int
         :param _ObjectTypeId: 监控指标对象类型ID
         :type ObjectTypeId: int
         :param _MetricName: 指标名称
         :type MetricName: str
         :param _MetricChineseName: 中文指标
-注意：此字段可能返回 null，表示取不到有效值。
         :type MetricChineseName: str
         """
         self._MonitorId = None
@@ -7311,7 +7121,6 @@ class TemplateMonitor(AbstractModel):
     @property
     def MetricId(self):
         """监控指标ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MetricId
@@ -7345,7 +7154,6 @@ class TemplateMonitor(AbstractModel):
     @property
     def MetricChineseName(self):
         """中文指标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MetricChineseName

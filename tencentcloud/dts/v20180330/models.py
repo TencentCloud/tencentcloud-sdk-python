@@ -1408,10 +1408,8 @@ class DescribeSubscribeConfResponse(AbstractModel):
         :param _Region: 地域
         :type Region: str
         :param _Tags: 订阅实例的标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of TagItem
         :param _AutoRenewFlag: 自动续费标识,0-不自动续费，1-自动续费
-注意：此字段可能返回 null，表示取不到有效值。
         :type AutoRenewFlag: int
         :param _SubscribeVersion: 数据订阅版本。老版订阅填txdts，kafka版填kafka
         :type SubscribeVersion: str
@@ -1718,7 +1716,6 @@ class DescribeSubscribeConfResponse(AbstractModel):
     @property
     def Tags(self):
         """订阅实例的标签
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TagItem
         """
         return self._Tags
@@ -1730,7 +1727,6 @@ class DescribeSubscribeConfResponse(AbstractModel):
     @property
     def AutoRenewFlag(self):
         """自动续费标识,0-不自动续费，1-自动续费
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -3912,7 +3908,6 @@ class SrcInfo(AbstractModel):
         :param _Supplier: 当实例为RDS实例时，填写为aliyun, 其他情况均填写others
         :type Supplier: str
         :param _CcnId: 云联网ID，如：ccn-afp6kltc
-注意：此字段可能返回 null，表示取不到有效值。
         :type CcnId: str
         :param _EngineVersion: 数据库版本，当实例为RDS实例时才有效，格式如：5.6或者5.7，默认为5.6
         :type EngineVersion: str
@@ -4091,7 +4086,6 @@ class SrcInfo(AbstractModel):
     @property
     def CcnId(self):
         """云联网ID，如：ccn-afp6kltc
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CcnId

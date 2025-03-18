@@ -1256,6 +1256,525 @@ class AuditLogFilter(AbstractModel):
         
 
 
+class AutonomyActionVo(AbstractModel):
+    """redis自治事件任务详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ActionId: 自治任务ID。
+        :type ActionId: int
+        :param _EventId: 自治事件ID。
+        :type EventId: int
+        :param _Type: 类型：支持RedisAutoScaleUp
+        :type Type: str
+        :param _TriggerTime: 自治任务触发时间。
+        :type TriggerTime: str
+        :param _CreateTime: 自治任务创建时间。
+        :type CreateTime: str
+        :param _UpdateTime: 自治任务更新时间
+        :type UpdateTime: str
+        :param _FinishTime: 自治任务完成时间。
+        :type FinishTime: str
+        :param _ExpireTime: 剩余时间，单位：秒。
+        :type ExpireTime: int
+        :param _Reason: 触发原因。
+        :type Reason: str
+        :param _Status: 自治任务状态：支持 RUNNING，FINISHED，TERMINATED，CANCELLED
+        :type Status: str
+        """
+        self._ActionId = None
+        self._EventId = None
+        self._Type = None
+        self._TriggerTime = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._FinishTime = None
+        self._ExpireTime = None
+        self._Reason = None
+        self._Status = None
+
+    @property
+    def ActionId(self):
+        """自治任务ID。
+        :rtype: int
+        """
+        return self._ActionId
+
+    @ActionId.setter
+    def ActionId(self, ActionId):
+        self._ActionId = ActionId
+
+    @property
+    def EventId(self):
+        """自治事件ID。
+        :rtype: int
+        """
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
+    @property
+    def Type(self):
+        """类型：支持RedisAutoScaleUp
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def TriggerTime(self):
+        """自治任务触发时间。
+        :rtype: str
+        """
+        return self._TriggerTime
+
+    @TriggerTime.setter
+    def TriggerTime(self, TriggerTime):
+        self._TriggerTime = TriggerTime
+
+    @property
+    def CreateTime(self):
+        """自治任务创建时间。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        """自治任务更新时间
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def FinishTime(self):
+        """自治任务完成时间。
+        :rtype: str
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
+    @property
+    def ExpireTime(self):
+        """剩余时间，单位：秒。
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def Reason(self):
+        """触发原因。
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def Status(self):
+        """自治任务状态：支持 RUNNING，FINISHED，TERMINATED，CANCELLED
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._ActionId = params.get("ActionId")
+        self._EventId = params.get("EventId")
+        self._Type = params.get("Type")
+        self._TriggerTime = params.get("TriggerTime")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._FinishTime = params.get("FinishTime")
+        self._ExpireTime = params.get("ExpireTime")
+        self._Reason = params.get("Reason")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AutonomyEventVo(AbstractModel):
+    """自治事件详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EventId: 自治事件ID。
+        :type EventId: int
+        :param _Type: 自治事件类型：支持RunningAutoRecovery，RedisAutoScale
+        :type Type: str
+        :param _Status: 自治事件状态：支持 RUNNING，FINISHED，TERMINATED
+        :type Status: str
+        :param _Reason: 触发原因。	
+        :type Reason: str
+        :param _TriggerTime: 自治任务触发时间。
+        :type TriggerTime: int
+        :param _LastTriggerTime: 自治任务最后触发时间。
+        :type LastTriggerTime: int
+        :param _CreateTime: 自治任务创建时间。
+        :type CreateTime: int
+        :param _UpdateTime: 自治任务更新时间。
+        :type UpdateTime: int
+        :param _FinishTime: 自治任务完成时间；非结束状态的时候，该值无意义。
+        :type FinishTime: int
+        """
+        self._EventId = None
+        self._Type = None
+        self._Status = None
+        self._Reason = None
+        self._TriggerTime = None
+        self._LastTriggerTime = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._FinishTime = None
+
+    @property
+    def EventId(self):
+        """自治事件ID。
+        :rtype: int
+        """
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
+    @property
+    def Type(self):
+        """自治事件类型：支持RunningAutoRecovery，RedisAutoScale
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Status(self):
+        """自治事件状态：支持 RUNNING，FINISHED，TERMINATED
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Reason(self):
+        """触发原因。	
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def TriggerTime(self):
+        """自治任务触发时间。
+        :rtype: int
+        """
+        return self._TriggerTime
+
+    @TriggerTime.setter
+    def TriggerTime(self, TriggerTime):
+        self._TriggerTime = TriggerTime
+
+    @property
+    def LastTriggerTime(self):
+        """自治任务最后触发时间。
+        :rtype: int
+        """
+        return self._LastTriggerTime
+
+    @LastTriggerTime.setter
+    def LastTriggerTime(self, LastTriggerTime):
+        self._LastTriggerTime = LastTriggerTime
+
+    @property
+    def CreateTime(self):
+        """自治任务创建时间。
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        """自治任务更新时间。
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def FinishTime(self):
+        """自治任务完成时间；非结束状态的时候，该值无意义。
+        :rtype: int
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
+
+    def _deserialize(self, params):
+        self._EventId = params.get("EventId")
+        self._Type = params.get("Type")
+        self._Status = params.get("Status")
+        self._Reason = params.get("Reason")
+        self._TriggerTime = params.get("TriggerTime")
+        self._LastTriggerTime = params.get("LastTriggerTime")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._FinishTime = params.get("FinishTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AutonomyUserProfileInfo(AbstractModel):
+    """自治用户配置详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: 是否开启自治。
+        :type Enabled: bool
+        :param _Uin: 用户Uin。
+        :type Uin: str
+        :param _MemoryUpperLimit: 内存上限。
+        :type MemoryUpperLimit: int
+        :param _ThresholdRule: 指标阈值规则。
+        :type ThresholdRule: :class:`tencentcloud.dbbrain.v20210527.models.MetricThreshold`
+        :param _EnabledItems: 自治功能类型。
+        :type EnabledItems: list of str
+        """
+        self._Enabled = None
+        self._Uin = None
+        self._MemoryUpperLimit = None
+        self._ThresholdRule = None
+        self._EnabledItems = None
+
+    @property
+    def Enabled(self):
+        """是否开启自治。
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def Uin(self):
+        """用户Uin。
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def MemoryUpperLimit(self):
+        """内存上限。
+        :rtype: int
+        """
+        return self._MemoryUpperLimit
+
+    @MemoryUpperLimit.setter
+    def MemoryUpperLimit(self, MemoryUpperLimit):
+        self._MemoryUpperLimit = MemoryUpperLimit
+
+    @property
+    def ThresholdRule(self):
+        """指标阈值规则。
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.MetricThreshold`
+        """
+        return self._ThresholdRule
+
+    @ThresholdRule.setter
+    def ThresholdRule(self, ThresholdRule):
+        self._ThresholdRule = ThresholdRule
+
+    @property
+    def EnabledItems(self):
+        """自治功能类型。
+        :rtype: list of str
+        """
+        return self._EnabledItems
+
+    @EnabledItems.setter
+    def EnabledItems(self, EnabledItems):
+        self._EnabledItems = EnabledItems
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        self._Uin = params.get("Uin")
+        self._MemoryUpperLimit = params.get("MemoryUpperLimit")
+        if params.get("ThresholdRule") is not None:
+            self._ThresholdRule = MetricThreshold()
+            self._ThresholdRule._deserialize(params.get("ThresholdRule"))
+        self._EnabledItems = params.get("EnabledItems")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CancelDBAutonomyActionRequest(AbstractModel):
+    """CancelDBAutonomyAction请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ActionId: 自治任务ID。
+        :type ActionId: int
+        :param _InstanceId: 实列ID。
+        :type InstanceId: str
+        :param _Product: 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
+        :type Product: str
+        """
+        self._ActionId = None
+        self._InstanceId = None
+        self._Product = None
+
+    @property
+    def ActionId(self):
+        """自治任务ID。
+        :rtype: int
+        """
+        return self._ActionId
+
+    @ActionId.setter
+    def ActionId(self, ActionId):
+        self._ActionId = ActionId
+
+    @property
+    def InstanceId(self):
+        """实列ID。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Product(self):
+        """服务产品类型，支持值包括： "redis" - 云数据库 Redis。
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+
+    def _deserialize(self, params):
+        self._ActionId = params.get("ActionId")
+        self._InstanceId = params.get("InstanceId")
+        self._Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CancelDBAutonomyActionResponse(AbstractModel):
+    """CancelDBAutonomyAction返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CancelKillTaskRequest(AbstractModel):
     """CancelKillTask请求参数结构体
 
@@ -1325,6 +1844,115 @@ class CancelKillTaskResponse(AbstractModel):
     @property
     def Status(self):
         """kill会话任务终止成功返回1。
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
+class CancelRedisBigKeyAnalysisTasksRequest(AbstractModel):
+    """CancelRedisBigKeyAnalysisTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AsyncRequestIds: 自治任务ID。
+        :type AsyncRequestIds: list of int
+        :param _InstanceId: 实列ID。
+        :type InstanceId: str
+        :param _Product: 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
+        :type Product: str
+        """
+        self._AsyncRequestIds = None
+        self._InstanceId = None
+        self._Product = None
+
+    @property
+    def AsyncRequestIds(self):
+        """自治任务ID。
+        :rtype: list of int
+        """
+        return self._AsyncRequestIds
+
+    @AsyncRequestIds.setter
+    def AsyncRequestIds(self, AsyncRequestIds):
+        self._AsyncRequestIds = AsyncRequestIds
+
+    @property
+    def InstanceId(self):
+        """实列ID。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Product(self):
+        """服务产品类型，支持值包括： "redis" - 云数据库 Redis。
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+
+    def _deserialize(self, params):
+        self._AsyncRequestIds = params.get("AsyncRequestIds")
+        self._InstanceId = params.get("InstanceId")
+        self._Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CancelRedisBigKeyAnalysisTasksResponse(AbstractModel):
+    """CancelRedisBigKeyAnalysisTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 终止大Key任务结果；0-成功。
+        :type Status: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        """终止大Key任务结果；0-成功。
         :rtype: int
         """
         return self._Status
@@ -2983,6 +3611,115 @@ class CreateSqlFilterResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateUserAutonomyProfileRequest(AbstractModel):
+    """CreateUserAutonomyProfile请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProfileType: 配置类型，为需要配置的功能枚举值，目前包含一下枚举值：AutonomyGlobal（自治功能全局配置）、RedisAutoScaleUp（Redis自治扩容配置）
+        :type ProfileType: str
+        :param _InstanceId: 实列ID。
+        :type InstanceId: str
+        :param _Product: 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
+        :type Product: str
+        :param _ProfileInfo: 自治功能相关配置，标准JSON字符串格式。
+        :type ProfileInfo: str
+        """
+        self._ProfileType = None
+        self._InstanceId = None
+        self._Product = None
+        self._ProfileInfo = None
+
+    @property
+    def ProfileType(self):
+        """配置类型，为需要配置的功能枚举值，目前包含一下枚举值：AutonomyGlobal（自治功能全局配置）、RedisAutoScaleUp（Redis自治扩容配置）
+        :rtype: str
+        """
+        return self._ProfileType
+
+    @ProfileType.setter
+    def ProfileType(self, ProfileType):
+        self._ProfileType = ProfileType
+
+    @property
+    def InstanceId(self):
+        """实列ID。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Product(self):
+        """服务产品类型，支持值包括： "redis" - 云数据库 Redis。
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def ProfileInfo(self):
+        """自治功能相关配置，标准JSON字符串格式。
+        :rtype: str
+        """
+        return self._ProfileInfo
+
+    @ProfileInfo.setter
+    def ProfileInfo(self, ProfileInfo):
+        self._ProfileInfo = ProfileInfo
+
+
+    def _deserialize(self, params):
+        self._ProfileType = params.get("ProfileType")
+        self._InstanceId = params.get("InstanceId")
+        self._Product = params.get("Product")
+        self._ProfileInfo = params.get("ProfileInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateUserAutonomyProfileResponse(AbstractModel):
+    """CreateUserAutonomyProfile返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteAuditLogFileRequest(AbstractModel):
     """DeleteAuditLogFile请求参数结构体
 
@@ -4226,6 +4963,309 @@ class DescribeAuditLogFilesResponse(AbstractModel):
                 obj = AuditLogFile()
                 obj._deserialize(item)
                 self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDBAutonomyActionsRequest(AbstractModel):
+    """DescribeDBAutonomyActions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EventId: 事件ID。
+        :type EventId: int
+        :param _InstanceId: 实列ID。
+        :type InstanceId: str
+        :param _Product: 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
+        :type Product: str
+        """
+        self._EventId = None
+        self._InstanceId = None
+        self._Product = None
+
+    @property
+    def EventId(self):
+        """事件ID。
+        :rtype: int
+        """
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
+    @property
+    def InstanceId(self):
+        """实列ID。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Product(self):
+        """服务产品类型，支持值包括： "redis" - 云数据库 Redis。
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+
+    def _deserialize(self, params):
+        self._EventId = params.get("EventId")
+        self._InstanceId = params.get("InstanceId")
+        self._Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBAutonomyActionsResponse(AbstractModel):
+    """DescribeDBAutonomyActions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 自治事件总数。
+        :type TotalCount: int
+        :param _Actions: 自治事件列表。
+        :type Actions: list of AutonomyActionVo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Actions = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """自治事件总数。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Actions(self):
+        """自治事件列表。
+        :rtype: list of AutonomyActionVo
+        """
+        return self._Actions
+
+    @Actions.setter
+    def Actions(self, Actions):
+        self._Actions = Actions
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Actions") is not None:
+            self._Actions = []
+            for item in params.get("Actions"):
+                obj = AutonomyActionVo()
+                obj._deserialize(item)
+                self._Actions.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDBAutonomyEventsRequest(AbstractModel):
+    """DescribeDBAutonomyEvents请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Product: 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
+        :type Product: str
+        :param _InstanceId: 实列ID。
+        :type InstanceId: str
+        :param _StartTime: 开始时间。
+        :type StartTime: str
+        :param _EndTime: 结束时间。
+        :type EndTime: str
+        :param _Offset: 分页参数，默认值为0。
+        :type Offset: int
+        :param _Limit: 分页参数，默认值为20。
+        :type Limit: int
+        """
+        self._Product = None
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Product(self):
+        """服务产品类型，支持值包括： "redis" - 云数据库 Redis。
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def InstanceId(self):
+        """实列ID。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        """开始时间。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """结束时间。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Offset(self):
+        """分页参数，默认值为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """分页参数，默认值为20。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._Product = params.get("Product")
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBAutonomyEventsResponse(AbstractModel):
+    """DescribeDBAutonomyEvents返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 自治事件列表总数。
+        :type TotalCount: int
+        :param _Events: 自治事件列表。
+        :type Events: list of AutonomyEventVo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Events = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """自治事件列表总数。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Events(self):
+        """自治事件列表。
+        :rtype: list of AutonomyEventVo
+        """
+        return self._Events
+
+    @Events.setter
+    def Events(self, Events):
+        self._Events = Events
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Events") is not None:
+            self._Events = []
+            for item in params.get("Events"):
+                obj = AutonomyEventVo()
+                obj._deserialize(item)
+                self._Events.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -9650,6 +10690,147 @@ class DescribeTopSpaceTablesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeUserAutonomyProfileRequest(AbstractModel):
+    """DescribeUserAutonomyProfile请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProfileType: 配置类型，为需要配置的功能枚举值，目前包含一下枚举值：AutonomyGlobal（自治功能全局配置）、RedisAutoScaleUp（Redis自治扩容配置）。
+        :type ProfileType: str
+        :param _InstanceId: 实列ID。
+        :type InstanceId: str
+        :param _Product: 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
+        :type Product: str
+        """
+        self._ProfileType = None
+        self._InstanceId = None
+        self._Product = None
+
+    @property
+    def ProfileType(self):
+        """配置类型，为需要配置的功能枚举值，目前包含一下枚举值：AutonomyGlobal（自治功能全局配置）、RedisAutoScaleUp（Redis自治扩容配置）。
+        :rtype: str
+        """
+        return self._ProfileType
+
+    @ProfileType.setter
+    def ProfileType(self, ProfileType):
+        self._ProfileType = ProfileType
+
+    @property
+    def InstanceId(self):
+        """实列ID。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Product(self):
+        """服务产品类型，支持值包括： "redis" - 云数据库 Redis。
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+
+    def _deserialize(self, params):
+        self._ProfileType = params.get("ProfileType")
+        self._InstanceId = params.get("InstanceId")
+        self._Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUserAutonomyProfileResponse(AbstractModel):
+    """DescribeUserAutonomyProfile返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProfileType: 配置类型，为需要配置的功能枚举值，目前包含一下枚举值：AutonomyGlobal（自治功能全局配置）、RedisAutoScaleUp（Redis自治扩容配置）。
+        :type ProfileType: str
+        :param _UpdateTime: 更新时间。
+        :type UpdateTime: str
+        :param _ProfileInfo: 自治用户配置。
+        :type ProfileInfo: :class:`tencentcloud.dbbrain.v20210527.models.AutonomyUserProfileInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ProfileType = None
+        self._UpdateTime = None
+        self._ProfileInfo = None
+        self._RequestId = None
+
+    @property
+    def ProfileType(self):
+        """配置类型，为需要配置的功能枚举值，目前包含一下枚举值：AutonomyGlobal（自治功能全局配置）、RedisAutoScaleUp（Redis自治扩容配置）。
+        :rtype: str
+        """
+        return self._ProfileType
+
+    @ProfileType.setter
+    def ProfileType(self, ProfileType):
+        self._ProfileType = ProfileType
+
+    @property
+    def UpdateTime(self):
+        """更新时间。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def ProfileInfo(self):
+        """自治用户配置。
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.AutonomyUserProfileInfo`
+        """
+        return self._ProfileInfo
+
+    @ProfileInfo.setter
+    def ProfileInfo(self, ProfileInfo):
+        self._ProfileInfo = ProfileInfo
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ProfileType = params.get("ProfileType")
+        self._UpdateTime = params.get("UpdateTime")
+        if params.get("ProfileInfo") is not None:
+            self._ProfileInfo = AutonomyUserProfileInfo()
+            self._ProfileInfo._deserialize(params.get("ProfileInfo"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeUserSqlAdviceRequest(AbstractModel):
     """DescribeUserSqlAdvice请求参数结构体
 
@@ -11931,6 +13112,72 @@ class MailConfiguration(AbstractModel):
         
 
 
+class MetricThreshold(AbstractModel):
+    """自治指标阈值
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Metric: 指标。
+        :type Metric: str
+        :param _Threshold: 阈值。
+        :type Threshold: int
+        :param _Duration: 时间间隔。
+        :type Duration: int
+        """
+        self._Metric = None
+        self._Threshold = None
+        self._Duration = None
+
+    @property
+    def Metric(self):
+        """指标。
+        :rtype: str
+        """
+        return self._Metric
+
+    @Metric.setter
+    def Metric(self, Metric):
+        self._Metric = Metric
+
+    @property
+    def Threshold(self):
+        """阈值。
+        :rtype: int
+        """
+        return self._Threshold
+
+    @Threshold.setter
+    def Threshold(self, Threshold):
+        self._Threshold = Threshold
+
+    @property
+    def Duration(self):
+        """时间间隔。
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+
+    def _deserialize(self, params):
+        self._Metric = params.get("Metric")
+        self._Threshold = params.get("Threshold")
+        self._Duration = params.get("Duration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyAlarmPolicyRequest(AbstractModel):
     """ModifyAlarmPolicy请求参数结构体
 
@@ -12529,6 +13776,115 @@ class ModifySqlFiltersRequest(AbstractModel):
 
 class ModifySqlFiltersResponse(AbstractModel):
     """ModifySqlFilters返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyUserAutonomyProfileRequest(AbstractModel):
+    """ModifyUserAutonomyProfile请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProfileType: 配置类型，为需要配置的功能枚举值，目前包含一下枚举值：AutonomyGlobal（自治功能全局配置）、RedisAutoScaleUp（Redis自治扩容配置）
+        :type ProfileType: str
+        :param _InstanceId: 实列ID。
+        :type InstanceId: str
+        :param _Product: 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
+        :type Product: str
+        :param _NewProfileInfo: 自治功能相关配置，标准JSON字符串格式。
+        :type NewProfileInfo: str
+        """
+        self._ProfileType = None
+        self._InstanceId = None
+        self._Product = None
+        self._NewProfileInfo = None
+
+    @property
+    def ProfileType(self):
+        """配置类型，为需要配置的功能枚举值，目前包含一下枚举值：AutonomyGlobal（自治功能全局配置）、RedisAutoScaleUp（Redis自治扩容配置）
+        :rtype: str
+        """
+        return self._ProfileType
+
+    @ProfileType.setter
+    def ProfileType(self, ProfileType):
+        self._ProfileType = ProfileType
+
+    @property
+    def InstanceId(self):
+        """实列ID。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Product(self):
+        """服务产品类型，支持值包括： "redis" - 云数据库 Redis。
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def NewProfileInfo(self):
+        """自治功能相关配置，标准JSON字符串格式。
+        :rtype: str
+        """
+        return self._NewProfileInfo
+
+    @NewProfileInfo.setter
+    def NewProfileInfo(self, NewProfileInfo):
+        self._NewProfileInfo = NewProfileInfo
+
+
+    def _deserialize(self, params):
+        self._ProfileType = params.get("ProfileType")
+        self._InstanceId = params.get("InstanceId")
+        self._Product = params.get("Product")
+        self._NewProfileInfo = params.get("NewProfileInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyUserAutonomyProfileResponse(AbstractModel):
+    """ModifyUserAutonomyProfile返回参数结构体
 
     """
 

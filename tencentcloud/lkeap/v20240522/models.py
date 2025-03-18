@@ -902,7 +902,7 @@ class CreateReconstructDocumentFlowConfig(AbstractModel):
         :param _TableResultType: Markdown文件中表格返回的形式
 0，表格以MD形式返回
 1，表格以HTML形式返回
-默认为1
+默认为0
         :type TableResultType: str
         :param _ResultType: 智能文档解析返回结果的格式
 0：只返回全文MD；
@@ -910,9 +910,7 @@ class CreateReconstructDocumentFlowConfig(AbstractModel):
 2：只返回每一页的MD，
 3：返回全文MD + 每一页的OCR原始Json；
 4：返回全文MD + 每一页的MD，
-默认值为3（返回全文MD + 每一页的OCR原始Json）
-
-
+默认值为0
         :type ResultType: str
         """
         self._TableResultType = None
@@ -923,7 +921,7 @@ class CreateReconstructDocumentFlowConfig(AbstractModel):
         """Markdown文件中表格返回的形式
 0，表格以MD形式返回
 1，表格以HTML形式返回
-默认为1
+默认为0
         :rtype: str
         """
         return self._TableResultType
@@ -940,9 +938,7 @@ class CreateReconstructDocumentFlowConfig(AbstractModel):
 2：只返回每一页的MD，
 3：返回全文MD + 每一页的OCR原始Json；
 4：返回全文MD + 每一页的MD，
-默认值为3（返回全文MD + 每一页的OCR原始Json）
-
-
+默认值为0
         :rtype: str
         """
         return self._ResultType

@@ -122,25 +122,18 @@ class CheckStep(AbstractModel):
     def __init__(self):
         r"""
         :param _StepNo: 步骤编号
-注意：此字段可能返回 null，表示取不到有效值。
         :type StepNo: int
         :param _StepId: 步骤Id， 如：ConnectDBCheck、VersionCheck、SrcPrivilegeCheck等，具体校验项和源目标实例相关
-注意：此字段可能返回 null，表示取不到有效值。
         :type StepId: str
         :param _StepName: 步骤名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type StepName: str
         :param _StepStatus: 此检查步骤的结果，pass(校验通过)、failed(校验失败)、notStarted(校验还未开始进行)、blocked(检验阻塞)、warning(校验有告警，但仍通过)
-注意：此字段可能返回 null，表示取不到有效值。
         :type StepStatus: str
         :param _StepMessage: 此检查步骤的错误消息
-注意：此字段可能返回 null，表示取不到有效值。
         :type StepMessage: str
         :param _DetailCheckItems: 每个检查步骤里的具体检查项
-注意：此字段可能返回 null，表示取不到有效值。
         :type DetailCheckItems: list of DetailCheckItem
         :param _HasSkipped: 是否已跳过
-注意：此字段可能返回 null，表示取不到有效值。
         :type HasSkipped: bool
         """
         self._StepNo = None
@@ -154,7 +147,6 @@ class CheckStep(AbstractModel):
     @property
     def StepNo(self):
         """步骤编号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._StepNo
@@ -166,7 +158,6 @@ class CheckStep(AbstractModel):
     @property
     def StepId(self):
         """步骤Id， 如：ConnectDBCheck、VersionCheck、SrcPrivilegeCheck等，具体校验项和源目标实例相关
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StepId
@@ -178,7 +169,6 @@ class CheckStep(AbstractModel):
     @property
     def StepName(self):
         """步骤名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StepName
@@ -190,7 +180,6 @@ class CheckStep(AbstractModel):
     @property
     def StepStatus(self):
         """此检查步骤的结果，pass(校验通过)、failed(校验失败)、notStarted(校验还未开始进行)、blocked(检验阻塞)、warning(校验有告警，但仍通过)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StepStatus
@@ -202,7 +191,6 @@ class CheckStep(AbstractModel):
     @property
     def StepMessage(self):
         """此检查步骤的错误消息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StepMessage
@@ -214,7 +202,6 @@ class CheckStep(AbstractModel):
     @property
     def DetailCheckItems(self):
         """每个检查步骤里的具体检查项
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DetailCheckItem
         """
         return self._DetailCheckItems
@@ -226,7 +213,6 @@ class CheckStep(AbstractModel):
     @property
     def HasSkipped(self):
         """是否已跳过
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._HasSkipped
@@ -386,46 +372,32 @@ class CompareAbstractInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Options: 校验配置参数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Options: :class:`tencentcloud.dts.v20211206.models.CompareOptions`
         :param _Objects: 一致性校验对比对象
-注意：此字段可能返回 null，表示取不到有效值。
         :type Objects: :class:`tencentcloud.dts.v20211206.models.CompareObject`
         :param _Conclusion: 对比结论: same,different
-注意：此字段可能返回 null，表示取不到有效值。
         :type Conclusion: str
         :param _Status: 任务状态: success,failed
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _TotalTables: 总的表数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalTables: int
         :param _CheckedTables: 已校验的表数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type CheckedTables: int
         :param _DifferentTables: 不一致的表数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type DifferentTables: int
         :param _SkippedTables: 跳过校验的表数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type SkippedTables: int
         :param _NearlyTableCount: 预估表总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type NearlyTableCount: int
         :param _DifferentRows: 不一致的数据行数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type DifferentRows: int
         :param _SrcSampleRows: 源库行数，当对比类型为**行数对比**时此项有意义
-注意：此字段可能返回 null，表示取不到有效值。
         :type SrcSampleRows: int
         :param _DstSampleRows: 目标库行数，当对比类型为**行数对比**时此项有意义
-注意：此字段可能返回 null，表示取不到有效值。
         :type DstSampleRows: int
         :param _StartedAt: 开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartedAt: str
         :param _FinishedAt: 结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type FinishedAt: str
         """
         self._Options = None
@@ -446,7 +418,6 @@ class CompareAbstractInfo(AbstractModel):
     @property
     def Options(self):
         """校验配置参数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dts.v20211206.models.CompareOptions`
         """
         return self._Options
@@ -458,7 +429,6 @@ class CompareAbstractInfo(AbstractModel):
     @property
     def Objects(self):
         """一致性校验对比对象
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dts.v20211206.models.CompareObject`
         """
         return self._Objects
@@ -470,7 +440,6 @@ class CompareAbstractInfo(AbstractModel):
     @property
     def Conclusion(self):
         """对比结论: same,different
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Conclusion
@@ -482,7 +451,6 @@ class CompareAbstractInfo(AbstractModel):
     @property
     def Status(self):
         """任务状态: success,failed
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -494,7 +462,6 @@ class CompareAbstractInfo(AbstractModel):
     @property
     def TotalTables(self):
         """总的表数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalTables
@@ -506,7 +473,6 @@ class CompareAbstractInfo(AbstractModel):
     @property
     def CheckedTables(self):
         """已校验的表数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CheckedTables
@@ -518,7 +484,6 @@ class CompareAbstractInfo(AbstractModel):
     @property
     def DifferentTables(self):
         """不一致的表数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DifferentTables
@@ -530,7 +495,6 @@ class CompareAbstractInfo(AbstractModel):
     @property
     def SkippedTables(self):
         """跳过校验的表数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SkippedTables
@@ -542,7 +506,6 @@ class CompareAbstractInfo(AbstractModel):
     @property
     def NearlyTableCount(self):
         """预估表总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._NearlyTableCount
@@ -554,7 +517,6 @@ class CompareAbstractInfo(AbstractModel):
     @property
     def DifferentRows(self):
         """不一致的数据行数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DifferentRows
@@ -566,7 +528,6 @@ class CompareAbstractInfo(AbstractModel):
     @property
     def SrcSampleRows(self):
         """源库行数，当对比类型为**行数对比**时此项有意义
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SrcSampleRows
@@ -578,7 +539,6 @@ class CompareAbstractInfo(AbstractModel):
     @property
     def DstSampleRows(self):
         """目标库行数，当对比类型为**行数对比**时此项有意义
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DstSampleRows
@@ -590,7 +550,6 @@ class CompareAbstractInfo(AbstractModel):
     @property
     def StartedAt(self):
         """开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StartedAt
@@ -602,7 +561,6 @@ class CompareAbstractInfo(AbstractModel):
     @property
     def FinishedAt(self):
         """结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FinishedAt
@@ -685,19 +643,14 @@ class CompareDetailInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Difference: 数据不一致的表详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type Difference: :class:`tencentcloud.dts.v20211206.models.DifferenceDetail`
         :param _Skipped: 跳过校验的表详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type Skipped: :class:`tencentcloud.dts.v20211206.models.SkippedDetail`
         :param _DifferenceAdvancedObjects: 数据库不一致的详情，mongodb业务用到
-注意：此字段可能返回 null，表示取不到有效值。
         :type DifferenceAdvancedObjects: :class:`tencentcloud.dts.v20211206.models.DifferenceAdvancedObjectsDetail`
         :param _DifferenceData: 数据不一致的详情，mongodb业务用到
-注意：此字段可能返回 null，表示取不到有效值。
         :type DifferenceData: :class:`tencentcloud.dts.v20211206.models.DifferenceDataDetail`
         :param _DifferenceRow: 数据行不一致的详情，mongodb业务用到
-注意：此字段可能返回 null，表示取不到有效值。
         :type DifferenceRow: :class:`tencentcloud.dts.v20211206.models.DifferenceRowDetail`
         """
         self._Difference = None
@@ -709,7 +662,6 @@ class CompareDetailInfo(AbstractModel):
     @property
     def Difference(self):
         """数据不一致的表详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dts.v20211206.models.DifferenceDetail`
         """
         return self._Difference
@@ -721,7 +673,6 @@ class CompareDetailInfo(AbstractModel):
     @property
     def Skipped(self):
         """跳过校验的表详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dts.v20211206.models.SkippedDetail`
         """
         return self._Skipped
@@ -733,7 +684,6 @@ class CompareDetailInfo(AbstractModel):
     @property
     def DifferenceAdvancedObjects(self):
         """数据库不一致的详情，mongodb业务用到
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dts.v20211206.models.DifferenceAdvancedObjectsDetail`
         """
         return self._DifferenceAdvancedObjects
@@ -745,7 +695,6 @@ class CompareDetailInfo(AbstractModel):
     @property
     def DifferenceData(self):
         """数据不一致的详情，mongodb业务用到
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dts.v20211206.models.DifferenceDataDetail`
         """
         return self._DifferenceData
@@ -757,7 +706,6 @@ class CompareDetailInfo(AbstractModel):
     @property
     def DifferenceRow(self):
         """数据行不一致的详情，mongodb业务用到
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dts.v20211206.models.DifferenceRowDetail`
         """
         return self._DifferenceRow
@@ -805,6 +753,7 @@ class CompareObject(AbstractModel):
         :param _ObjectItems: 对象列表
         :type ObjectItems: list of CompareObjectItem
         :param _AdvancedObjects: 高级对象类型，目前只支持mongodb链路。如index(索引),shardkey(片键),schema(库表)
+注意：此字段可能返回 null，表示取不到有效值。
         :type AdvancedObjects: list of str
         """
         self._ObjectMode = None
@@ -836,6 +785,7 @@ class CompareObject(AbstractModel):
     @property
     def AdvancedObjects(self):
         """高级对象类型，目前只支持mongodb链路。如index(索引),shardkey(片键),schema(库表)
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._AdvancedObjects
@@ -1198,46 +1148,32 @@ class CompareTaskItem(AbstractModel):
     def __init__(self):
         r"""
         :param _JobId: 任务id
-注意：此字段可能返回 null，表示取不到有效值。
         :type JobId: str
         :param _CompareTaskId: 对比任务 Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type CompareTaskId: str
         :param _TaskName: 对比任务名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskName: str
         :param _Status: 对比任务状态, 可能的值：created - 创建完成；readyRun - 等待运行；running - 运行中；success - 成功；stopping - 结束中；failed - 失败；canceled - 已终止
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _Config: 对比任务配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type Config: :class:`tencentcloud.dts.v20211206.models.CompareObject`
         :param _CheckProcess: 对比任务校验详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type CheckProcess: :class:`tencentcloud.dts.v20211206.models.ProcessProgress`
         :param _CompareProcess: 对比任务运行详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type CompareProcess: :class:`tencentcloud.dts.v20211206.models.ProcessProgress`
         :param _Conclusion: 对比结果, 可能的值：same - 一致；different - 不一致；skipAll - 跳过
-注意：此字段可能返回 null，表示取不到有效值。
         :type Conclusion: str
         :param _CreatedAt: 任务创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedAt: str
         :param _StartedAt: 任务启动时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartedAt: str
         :param _FinishedAt: 对比结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type FinishedAt: str
         :param _Method: 对比类型，dataCheck(完整数据对比)、sampleDataCheck(抽样数据对比)、rowsCount(行数对比)
-注意：此字段可能返回 null，表示取不到有效值。
         :type Method: str
         :param _Options: 对比配置信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Options: :class:`tencentcloud.dts.v20211206.models.CompareOptions`
         :param _Message: 一致性校验提示信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         """
         self._JobId = None
@@ -1258,7 +1194,6 @@ class CompareTaskItem(AbstractModel):
     @property
     def JobId(self):
         """任务id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._JobId
@@ -1270,7 +1205,6 @@ class CompareTaskItem(AbstractModel):
     @property
     def CompareTaskId(self):
         """对比任务 Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CompareTaskId
@@ -1282,7 +1216,6 @@ class CompareTaskItem(AbstractModel):
     @property
     def TaskName(self):
         """对比任务名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskName
@@ -1294,7 +1227,6 @@ class CompareTaskItem(AbstractModel):
     @property
     def Status(self):
         """对比任务状态, 可能的值：created - 创建完成；readyRun - 等待运行；running - 运行中；success - 成功；stopping - 结束中；failed - 失败；canceled - 已终止
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -1306,7 +1238,6 @@ class CompareTaskItem(AbstractModel):
     @property
     def Config(self):
         """对比任务配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dts.v20211206.models.CompareObject`
         """
         return self._Config
@@ -1318,7 +1249,6 @@ class CompareTaskItem(AbstractModel):
     @property
     def CheckProcess(self):
         """对比任务校验详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dts.v20211206.models.ProcessProgress`
         """
         return self._CheckProcess
@@ -1330,7 +1260,6 @@ class CompareTaskItem(AbstractModel):
     @property
     def CompareProcess(self):
         """对比任务运行详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dts.v20211206.models.ProcessProgress`
         """
         return self._CompareProcess
@@ -1342,7 +1271,6 @@ class CompareTaskItem(AbstractModel):
     @property
     def Conclusion(self):
         """对比结果, 可能的值：same - 一致；different - 不一致；skipAll - 跳过
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Conclusion
@@ -1354,7 +1282,6 @@ class CompareTaskItem(AbstractModel):
     @property
     def CreatedAt(self):
         """任务创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreatedAt
@@ -1366,7 +1293,6 @@ class CompareTaskItem(AbstractModel):
     @property
     def StartedAt(self):
         """任务启动时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StartedAt
@@ -1378,7 +1304,6 @@ class CompareTaskItem(AbstractModel):
     @property
     def FinishedAt(self):
         """对比结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FinishedAt
@@ -1390,7 +1315,6 @@ class CompareTaskItem(AbstractModel):
     @property
     def Method(self):
         """对比类型，dataCheck(完整数据对比)、sampleDataCheck(抽样数据对比)、rowsCount(行数对比)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Method
@@ -1402,7 +1326,6 @@ class CompareTaskItem(AbstractModel):
     @property
     def Options(self):
         """对比配置信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dts.v20211206.models.CompareOptions`
         """
         return self._Options
@@ -1414,7 +1337,6 @@ class CompareTaskItem(AbstractModel):
     @property
     def Message(self):
         """一致性校验提示信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Message
@@ -2502,7 +2424,6 @@ class CreateCompareTaskResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _CompareTaskId: 数据对比任务 ID，形如：dts-8yv4w2i1-cmp-37skmii9
-注意：此字段可能返回 null，表示取不到有效值。
         :type CompareTaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2513,7 +2434,6 @@ class CreateCompareTaskResponse(AbstractModel):
     @property
     def CompareTaskId(self):
         """数据对比任务 ID，形如：dts-8yv4w2i1-cmp-37skmii9
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CompareTaskId
@@ -5238,10 +5158,8 @@ class DescribeCompareReportResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Abstract: 一致性校验摘要信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Abstract: :class:`tencentcloud.dts.v20211206.models.CompareAbstractInfo`
         :param _Detail: 一致性校验详细信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Detail: :class:`tencentcloud.dts.v20211206.models.CompareDetailInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5253,7 +5171,6 @@ class DescribeCompareReportResponse(AbstractModel):
     @property
     def Abstract(self):
         """一致性校验摘要信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dts.v20211206.models.CompareAbstractInfo`
         """
         return self._Abstract
@@ -5265,7 +5182,6 @@ class DescribeCompareReportResponse(AbstractModel):
     @property
     def Detail(self):
         """一致性校验详细信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dts.v20211206.models.CompareDetailInfo`
         """
         return self._Detail
@@ -5400,10 +5316,8 @@ class DescribeCompareTasksResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _Items: 一致性校验列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of CompareTaskItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5415,7 +5329,6 @@ class DescribeCompareTasksResponse(AbstractModel):
     @property
     def TotalCount(self):
         """数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -5427,7 +5340,6 @@ class DescribeCompareTasksResponse(AbstractModel):
     @property
     def Items(self):
         """一致性校验列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CompareTaskItem
         """
         return self._Items
@@ -5866,13 +5778,10 @@ class DescribeMigrationCheckJobResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Status: 校验任务执行状态，如：notStarted(未开始)、running(校验中)、failed(校验任务失败)、success(任务成功)
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _BriefMsg: 校验任务结果输出简要信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type BriefMsg: str
         :param _StepInfo: 检查步骤
-注意：此字段可能返回 null，表示取不到有效值。
         :type StepInfo: list of CheckStep
         :param _CheckFlag: 校验结果，如：checkPass(校验通过)、checkNotPass(校验未通过)
         :type CheckFlag: str
@@ -5888,7 +5797,6 @@ class DescribeMigrationCheckJobResponse(AbstractModel):
     @property
     def Status(self):
         """校验任务执行状态，如：notStarted(未开始)、running(校验中)、failed(校验任务失败)、success(任务成功)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -5900,7 +5808,6 @@ class DescribeMigrationCheckJobResponse(AbstractModel):
     @property
     def BriefMsg(self):
         """校验任务结果输出简要信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BriefMsg
@@ -5912,7 +5819,6 @@ class DescribeMigrationCheckJobResponse(AbstractModel):
     @property
     def StepInfo(self):
         """检查步骤
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CheckStep
         """
         return self._StepInfo
@@ -6657,10 +6563,8 @@ class DescribeMigrationJobsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 迁移任务数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _JobList: 迁移任务列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type JobList: list of JobItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6672,7 +6576,6 @@ class DescribeMigrationJobsResponse(AbstractModel):
     @property
     def TotalCount(self):
         """迁移任务数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -6684,7 +6587,6 @@ class DescribeMigrationJobsResponse(AbstractModel):
     @property
     def JobList(self):
         """迁移任务列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of JobItem
         """
         return self._JobList
@@ -8534,28 +8436,20 @@ class DetailCheckItem(AbstractModel):
     def __init__(self):
         r"""
         :param _CheckItemName: 检查项的名称，如：源实例权限检查
-注意：此字段可能返回 null，表示取不到有效值。
         :type CheckItemName: str
         :param _Description: 检查项详细内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _CheckResult: pass(通过)，failed(失败), warning(校验有警告，但仍通过)
-注意：此字段可能返回 null，表示取不到有效值。
         :type CheckResult: str
         :param _FailureReason: 检查项失败原因
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailureReason: str
         :param _Solution: 解决方案
-注意：此字段可能返回 null，表示取不到有效值。
         :type Solution: str
         :param _ErrorLog: 运行报错日志
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorLog: list of str
         :param _HelpDoc: 详细帮助的文档链接
-注意：此字段可能返回 null，表示取不到有效值。
         :type HelpDoc: list of str
         :param _SkipInfo: 跳过风险文案
-注意：此字段可能返回 null，表示取不到有效值。
         :type SkipInfo: str
         """
         self._CheckItemName = None
@@ -8570,7 +8464,6 @@ class DetailCheckItem(AbstractModel):
     @property
     def CheckItemName(self):
         """检查项的名称，如：源实例权限检查
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CheckItemName
@@ -8582,7 +8475,6 @@ class DetailCheckItem(AbstractModel):
     @property
     def Description(self):
         """检查项详细内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -8594,7 +8486,6 @@ class DetailCheckItem(AbstractModel):
     @property
     def CheckResult(self):
         """pass(通过)，failed(失败), warning(校验有警告，但仍通过)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CheckResult
@@ -8606,7 +8497,6 @@ class DetailCheckItem(AbstractModel):
     @property
     def FailureReason(self):
         """检查项失败原因
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FailureReason
@@ -8618,7 +8508,6 @@ class DetailCheckItem(AbstractModel):
     @property
     def Solution(self):
         """解决方案
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Solution
@@ -8630,7 +8519,6 @@ class DetailCheckItem(AbstractModel):
     @property
     def ErrorLog(self):
         """运行报错日志
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._ErrorLog
@@ -8642,7 +8530,6 @@ class DetailCheckItem(AbstractModel):
     @property
     def HelpDoc(self):
         """详细帮助的文档链接
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._HelpDoc
@@ -8654,7 +8541,6 @@ class DetailCheckItem(AbstractModel):
     @property
     def SkipInfo(self):
         """跳过风险文案
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SkipInfo
@@ -8749,25 +8635,18 @@ class DifferenceData(AbstractModel):
     def __init__(self):
         r"""
         :param _Db: 数据库名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Db: str
         :param _Table: 集合
-注意：此字段可能返回 null，表示取不到有效值。
         :type Table: str
         :param _SrcChunk: 源端ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type SrcChunk: str
         :param _DstChunk: 目标端ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type DstChunk: str
         :param _SrcItem: 源端值
-注意：此字段可能返回 null，表示取不到有效值。
         :type SrcItem: str
         :param _DstItem: 目标端值
-注意：此字段可能返回 null，表示取不到有效值。
         :type DstItem: str
         :param _UpdatedAt: 更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedAt: str
         """
         self._Db = None
@@ -8781,7 +8660,6 @@ class DifferenceData(AbstractModel):
     @property
     def Db(self):
         """数据库名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Db
@@ -8793,7 +8671,6 @@ class DifferenceData(AbstractModel):
     @property
     def Table(self):
         """集合
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Table
@@ -8805,7 +8682,6 @@ class DifferenceData(AbstractModel):
     @property
     def SrcChunk(self):
         """源端ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SrcChunk
@@ -8817,7 +8693,6 @@ class DifferenceData(AbstractModel):
     @property
     def DstChunk(self):
         """目标端ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DstChunk
@@ -8829,7 +8704,6 @@ class DifferenceData(AbstractModel):
     @property
     def SrcItem(self):
         """源端值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SrcItem
@@ -8841,7 +8715,6 @@ class DifferenceData(AbstractModel):
     @property
     def DstItem(self):
         """目标端值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DstItem
@@ -8853,7 +8726,6 @@ class DifferenceData(AbstractModel):
     @property
     def UpdatedAt(self):
         """更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdatedAt
@@ -8889,7 +8761,6 @@ class DifferenceDataDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _Items: mongo数据不一致详细列表
 注意：此字段可能返回 null，表示取不到有效值。
@@ -8901,7 +8772,6 @@ class DifferenceDataDetail(AbstractModel):
     @property
     def TotalCount(self):
         """总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -8949,7 +8819,6 @@ class DifferenceDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 数据不一致的表数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _Items: 校验不一致的表详情
 注意：此字段可能返回 null，表示取不到有效值。
@@ -8961,7 +8830,6 @@ class DifferenceDetail(AbstractModel):
     @property
     def TotalCount(self):
         """数据不一致的表数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -9009,34 +8877,24 @@ class DifferenceItem(AbstractModel):
     def __init__(self):
         r"""
         :param _Db: 数据库名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Db: str
         :param _Table: 表名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Table: str
         :param _Chunk: 分块号
-注意：此字段可能返回 null，表示取不到有效值。
         :type Chunk: int
         :param _SrcItem: 源库数值
-注意：此字段可能返回 null，表示取不到有效值。
         :type SrcItem: str
         :param _DstItem: 目标库数值
-注意：此字段可能返回 null，表示取不到有效值。
         :type DstItem: str
         :param _IndexName: 索引名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type IndexName: str
         :param _LowerBoundary: 索引下边界
-注意：此字段可能返回 null，表示取不到有效值。
         :type LowerBoundary: str
         :param _UpperBoundary: 索引上边界
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpperBoundary: str
         :param _CostTime: 对比消耗时间,单位为 ms
-注意：此字段可能返回 null，表示取不到有效值。
         :type CostTime: float
         :param _FinishedAt: 完成时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type FinishedAt: str
         """
         self._Db = None
@@ -9053,7 +8911,6 @@ class DifferenceItem(AbstractModel):
     @property
     def Db(self):
         """数据库名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Db
@@ -9065,7 +8922,6 @@ class DifferenceItem(AbstractModel):
     @property
     def Table(self):
         """表名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Table
@@ -9077,7 +8933,6 @@ class DifferenceItem(AbstractModel):
     @property
     def Chunk(self):
         """分块号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Chunk
@@ -9089,7 +8944,6 @@ class DifferenceItem(AbstractModel):
     @property
     def SrcItem(self):
         """源库数值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SrcItem
@@ -9101,7 +8955,6 @@ class DifferenceItem(AbstractModel):
     @property
     def DstItem(self):
         """目标库数值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DstItem
@@ -9113,7 +8966,6 @@ class DifferenceItem(AbstractModel):
     @property
     def IndexName(self):
         """索引名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IndexName
@@ -9125,7 +8977,6 @@ class DifferenceItem(AbstractModel):
     @property
     def LowerBoundary(self):
         """索引下边界
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LowerBoundary
@@ -9137,7 +8988,6 @@ class DifferenceItem(AbstractModel):
     @property
     def UpperBoundary(self):
         """索引上边界
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpperBoundary
@@ -9149,7 +8999,6 @@ class DifferenceItem(AbstractModel):
     @property
     def CostTime(self):
         """对比消耗时间,单位为 ms
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._CostTime
@@ -9161,7 +9010,6 @@ class DifferenceItem(AbstractModel):
     @property
     def FinishedAt(self):
         """完成时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FinishedAt
@@ -9200,7 +9048,6 @@ class DifferenceRowDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 不一致总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _Items: 不一致列表
 注意：此字段可能返回 null，表示取不到有效值。
@@ -9212,7 +9059,6 @@ class DifferenceRowDetail(AbstractModel):
     @property
     def TotalCount(self):
         """不一致总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -10739,63 +10585,44 @@ class JobItem(AbstractModel):
     def __init__(self):
         r"""
         :param _JobId: 数据迁移任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type JobId: str
         :param _JobName: 数据迁移任务名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type JobName: str
         :param _CreateTime: 任务创建(提交)时间，格式为 yyyy-mm-dd hh:mm:ss
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _UpdateTime: 任务更新时间，格式为 yyyy-mm-dd hh:mm:ss
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param _StartTime: 任务开始执行时间，格式为 yyyy-mm-dd hh:mm:ss
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
         :param _EndTime: 任务执行结束时间，格式为 yyyy-mm-dd hh:mm:ss
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         :param _BriefMsg: 迁移任务错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type BriefMsg: str
         :param _Status: 任务状态，取值为：creating(创建中)、created(创建完成)、checking(校验中)、checkPass(校验通过)、checkNotPass(校验不通过)、readyRun(准备运行)、running(任务运行)、readyComplete(准备完成)、success(任务成功)、failed(任务失败)、stopping(中止中)、completing(完成中)、
 pausing(暂停中)、
 manualPaused(已暂停)
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _RunMode: 任务运行模式，值包括：immediate(立即运行)，timed(定时运行)
-注意：此字段可能返回 null，表示取不到有效值。
         :type RunMode: str
         :param _ExpectRunTime: 期待启动时间，当RunMode取值为timed时，此值必填，形如：2022-07-11 16:20:49
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExpectRunTime: str
         :param _Action: 任务操作信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Action: :class:`tencentcloud.dts.v20211206.models.MigrateAction`
         :param _StepInfo: 迁移执行过程信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type StepInfo: :class:`tencentcloud.dts.v20211206.models.MigrateDetailInfo`
         :param _SrcInfo: 源实例信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type SrcInfo: :class:`tencentcloud.dts.v20211206.models.DBEndpointInfo`
         :param _DstInfo: 目标端信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type DstInfo: :class:`tencentcloud.dts.v20211206.models.DBEndpointInfo`
         :param _CompareTask: 数据一致性校验结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type CompareTask: :class:`tencentcloud.dts.v20211206.models.CompareTaskInfo`
         :param _TradeInfo: 计费状态信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type TradeInfo: :class:`tencentcloud.dts.v20211206.models.TradeInfo`
         :param _Tags: 标签信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of TagItem
         :param _AutoRetryTimeRangeMinutes: 自动重试时间段信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type AutoRetryTimeRangeMinutes: int
         :param _DumperResumeCtrl: 全量导出可重入标识：enum::"yes"/"no"。yes表示当前任务可重入、no表示当前任务处于全量导出且不可重入阶段；如果在该值为no时重启任务导出流程不支持断点续传
-注意：此字段可能返回 null，表示取不到有效值。
         :type DumperResumeCtrl: str
         """
         self._JobId = None
@@ -10821,7 +10648,6 @@ manualPaused(已暂停)
     @property
     def JobId(self):
         """数据迁移任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._JobId
@@ -10833,7 +10659,6 @@ manualPaused(已暂停)
     @property
     def JobName(self):
         """数据迁移任务名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._JobName
@@ -10845,7 +10670,6 @@ manualPaused(已暂停)
     @property
     def CreateTime(self):
         """任务创建(提交)时间，格式为 yyyy-mm-dd hh:mm:ss
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -10857,7 +10681,6 @@ manualPaused(已暂停)
     @property
     def UpdateTime(self):
         """任务更新时间，格式为 yyyy-mm-dd hh:mm:ss
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime
@@ -10869,7 +10692,6 @@ manualPaused(已暂停)
     @property
     def StartTime(self):
         """任务开始执行时间，格式为 yyyy-mm-dd hh:mm:ss
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StartTime
@@ -10881,7 +10703,6 @@ manualPaused(已暂停)
     @property
     def EndTime(self):
         """任务执行结束时间，格式为 yyyy-mm-dd hh:mm:ss
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndTime
@@ -10893,7 +10714,6 @@ manualPaused(已暂停)
     @property
     def BriefMsg(self):
         """迁移任务错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BriefMsg
@@ -10907,7 +10727,6 @@ manualPaused(已暂停)
         """任务状态，取值为：creating(创建中)、created(创建完成)、checking(校验中)、checkPass(校验通过)、checkNotPass(校验不通过)、readyRun(准备运行)、running(任务运行)、readyComplete(准备完成)、success(任务成功)、failed(任务失败)、stopping(中止中)、completing(完成中)、
 pausing(暂停中)、
 manualPaused(已暂停)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -10919,7 +10738,6 @@ manualPaused(已暂停)
     @property
     def RunMode(self):
         """任务运行模式，值包括：immediate(立即运行)，timed(定时运行)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RunMode
@@ -10931,7 +10749,6 @@ manualPaused(已暂停)
     @property
     def ExpectRunTime(self):
         """期待启动时间，当RunMode取值为timed时，此值必填，形如：2022-07-11 16:20:49
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ExpectRunTime
@@ -10943,7 +10760,6 @@ manualPaused(已暂停)
     @property
     def Action(self):
         """任务操作信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dts.v20211206.models.MigrateAction`
         """
         return self._Action
@@ -10955,7 +10771,6 @@ manualPaused(已暂停)
     @property
     def StepInfo(self):
         """迁移执行过程信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dts.v20211206.models.MigrateDetailInfo`
         """
         return self._StepInfo
@@ -10967,7 +10782,6 @@ manualPaused(已暂停)
     @property
     def SrcInfo(self):
         """源实例信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dts.v20211206.models.DBEndpointInfo`
         """
         return self._SrcInfo
@@ -10979,7 +10793,6 @@ manualPaused(已暂停)
     @property
     def DstInfo(self):
         """目标端信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dts.v20211206.models.DBEndpointInfo`
         """
         return self._DstInfo
@@ -10991,7 +10804,6 @@ manualPaused(已暂停)
     @property
     def CompareTask(self):
         """数据一致性校验结果
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dts.v20211206.models.CompareTaskInfo`
         """
         return self._CompareTask
@@ -11003,7 +10815,6 @@ manualPaused(已暂停)
     @property
     def TradeInfo(self):
         """计费状态信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dts.v20211206.models.TradeInfo`
         """
         return self._TradeInfo
@@ -11015,7 +10826,6 @@ manualPaused(已暂停)
     @property
     def Tags(self):
         """标签信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TagItem
         """
         return self._Tags
@@ -11027,7 +10837,6 @@ manualPaused(已暂停)
     @property
     def AutoRetryTimeRangeMinutes(self):
         """自动重试时间段信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AutoRetryTimeRangeMinutes
@@ -11039,7 +10848,6 @@ manualPaused(已暂停)
     @property
     def DumperResumeCtrl(self):
         """全量导出可重入标识：enum::"yes"/"no"。yes表示当前任务可重入、no表示当前任务处于全量导出且不可重入阶段；如果在该值为no时重启任务导出流程不支持断点续传
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DumperResumeCtrl
@@ -15084,16 +14892,12 @@ class RowsCountDifference(AbstractModel):
     def __init__(self):
         r"""
         :param _Db: 数据库名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Db: str
         :param _Table: 集合
-注意：此字段可能返回 null，表示取不到有效值。
         :type Table: str
         :param _SrcCount: 源端行数
-注意：此字段可能返回 null，表示取不到有效值。
         :type SrcCount: int
         :param _DstCount: 目标端行数
-注意：此字段可能返回 null，表示取不到有效值。
         :type DstCount: int
         """
         self._Db = None
@@ -15104,7 +14908,6 @@ class RowsCountDifference(AbstractModel):
     @property
     def Db(self):
         """数据库名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Db
@@ -15116,7 +14919,6 @@ class RowsCountDifference(AbstractModel):
     @property
     def Table(self):
         """集合
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Table
@@ -15128,7 +14930,6 @@ class RowsCountDifference(AbstractModel):
     @property
     def SrcCount(self):
         """源端行数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SrcCount
@@ -15140,7 +14941,6 @@ class RowsCountDifference(AbstractModel):
     @property
     def DstCount(self):
         """目标端行数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DstCount
@@ -15361,7 +15161,6 @@ class SkippedDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 跳过的表数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _Items: 跳过校验的表详情
 注意：此字段可能返回 null，表示取不到有效值。
@@ -15373,7 +15172,6 @@ class SkippedDetail(AbstractModel):
     @property
     def TotalCount(self):
         """跳过的表数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -15421,13 +15219,10 @@ class SkippedItem(AbstractModel):
     def __init__(self):
         r"""
         :param _Db: 数据库名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Db: str
         :param _Table: 表名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Table: str
         :param _Reason: 未发起检查的原因
-注意：此字段可能返回 null，表示取不到有效值。
         :type Reason: str
         """
         self._Db = None
@@ -15437,7 +15232,6 @@ class SkippedItem(AbstractModel):
     @property
     def Db(self):
         """数据库名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Db
@@ -15449,7 +15243,6 @@ class SkippedItem(AbstractModel):
     @property
     def Table(self):
         """表名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Table
@@ -15461,7 +15254,6 @@ class SkippedItem(AbstractModel):
     @property
     def Reason(self):
         """未发起检查的原因
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Reason

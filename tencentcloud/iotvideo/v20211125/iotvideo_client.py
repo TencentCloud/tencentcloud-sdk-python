@@ -210,6 +210,29 @@ class IotvideoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ChangeP2PRoute(self, request):
+        """p2p路线切换
+
+        :param request: Request instance for ChangeP2PRoute.
+        :type request: :class:`tencentcloud.iotvideo.v20211125.models.ChangeP2PRouteRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20211125.models.ChangeP2PRouteResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ChangeP2PRoute", params, headers=headers)
+            response = json.loads(body)
+            model = models.ChangeP2PRouteResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CheckForwardAuth(self, request):
         """判断是否开启转发的权限
 
@@ -1627,6 +1650,29 @@ class IotvideoClient(AbstractClient):
             body = self.call("DescribeP2PInfo", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeP2PInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeP2PRoute(self, request):
+        """当前p2p线路
+
+        :param request: Request instance for DescribeP2PRoute.
+        :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeP2PRouteRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20211125.models.DescribeP2PRouteResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeP2PRoute", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeP2PRouteResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

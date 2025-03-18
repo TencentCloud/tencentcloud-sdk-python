@@ -1542,9 +1542,9 @@ class DescribeInstanceInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SimpleInstanceInfo: 1
+        :param _SimpleInstanceInfo: 集群描述信息
         :type SimpleInstanceInfo: :class:`tencentcloud.cdwpg.v20201230.models.SimpleInstanceInfo`
-        :param _ErrorMsg: 1
+        :param _ErrorMsg: 错误信息
         :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1555,7 +1555,7 @@ class DescribeInstanceInfoResponse(AbstractModel):
 
     @property
     def SimpleInstanceInfo(self):
-        """1
+        """集群描述信息
         :rtype: :class:`tencentcloud.cdwpg.v20201230.models.SimpleInstanceInfo`
         """
         return self._SimpleInstanceInfo
@@ -1566,7 +1566,7 @@ class DescribeInstanceInfoResponse(AbstractModel):
 
     @property
     def ErrorMsg(self):
-        """1
+        """错误信息
         :rtype: str
         """
         return self._ErrorMsg
