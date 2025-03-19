@@ -21835,6 +21835,90 @@ class DescribePrometheusInstancesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribePrometheusIntegrationMetricsRequest(AbstractModel):
+    """DescribePrometheusIntegrationMetrics请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IntegrationCode: 集成类型标识。取值参考DescribePrometheusIntegrations接口返回中IntegrationSet[i].Code参数
+        :type IntegrationCode: str
+        """
+        self._IntegrationCode = None
+
+    @property
+    def IntegrationCode(self):
+        """集成类型标识。取值参考DescribePrometheusIntegrations接口返回中IntegrationSet[i].Code参数
+        :rtype: str
+        """
+        return self._IntegrationCode
+
+    @IntegrationCode.setter
+    def IntegrationCode(self, IntegrationCode):
+        self._IntegrationCode = IntegrationCode
+
+
+    def _deserialize(self, params):
+        self._IntegrationCode = params.get("IntegrationCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePrometheusIntegrationMetricsResponse(AbstractModel):
+    """DescribePrometheusIntegrationMetrics返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IntegrationMetricSet: 集成指标详情分组
+        :type IntegrationMetricSet: list of IntegrationMetricGroup
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._IntegrationMetricSet = None
+        self._RequestId = None
+
+    @property
+    def IntegrationMetricSet(self):
+        """集成指标详情分组
+        :rtype: list of IntegrationMetricGroup
+        """
+        return self._IntegrationMetricSet
+
+    @IntegrationMetricSet.setter
+    def IntegrationMetricSet(self, IntegrationMetricSet):
+        self._IntegrationMetricSet = IntegrationMetricSet
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("IntegrationMetricSet") is not None:
+            self._IntegrationMetricSet = []
+            for item in params.get("IntegrationMetricSet"):
+                obj = IntegrationMetricGroup()
+                obj._deserialize(item)
+                self._IntegrationMetricSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribePrometheusRecordRulesRequest(AbstractModel):
     """DescribePrometheusRecordRules请求参数结构体
 
@@ -26170,6 +26254,173 @@ class IntegrationConfiguration(AbstractModel):
         self._Category = params.get("Category")
         self._InstanceDesc = params.get("InstanceDesc")
         self._GrafanaDashboardURL = params.get("GrafanaDashboardURL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IntegrationMetric(AbstractModel):
+    """prometheus集成指标详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MetricName: 指标名
+        :type MetricName: str
+        :param _Name: 指标名称
+        :type Name: str
+        :param _MetricType: 统计类型
+        :type MetricType: str
+        :param _Unit: 单位
+        :type Unit: str
+        :param _Description: 指标详细描述
+        :type Description: str
+        """
+        self._MetricName = None
+        self._Name = None
+        self._MetricType = None
+        self._Unit = None
+        self._Description = None
+
+    @property
+    def MetricName(self):
+        """指标名
+        :rtype: str
+        """
+        return self._MetricName
+
+    @MetricName.setter
+    def MetricName(self, MetricName):
+        self._MetricName = MetricName
+
+    @property
+    def Name(self):
+        """指标名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def MetricType(self):
+        """统计类型
+        :rtype: str
+        """
+        return self._MetricType
+
+    @MetricType.setter
+    def MetricType(self, MetricType):
+        self._MetricType = MetricType
+
+    @property
+    def Unit(self):
+        """单位
+        :rtype: str
+        """
+        return self._Unit
+
+    @Unit.setter
+    def Unit(self, Unit):
+        self._Unit = Unit
+
+    @property
+    def Description(self):
+        """指标详细描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._MetricName = params.get("MetricName")
+        self._Name = params.get("Name")
+        self._MetricType = params.get("MetricType")
+        self._Unit = params.get("Unit")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IntegrationMetricGroup(AbstractModel):
+    """prometheus集成分组指标
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Group: 分组标识
+        :type Group: str
+        :param _Metrics: 指标详情
+        :type Metrics: list of IntegrationMetric
+        :param _GroupName: 分组名称
+        :type GroupName: str
+        """
+        self._Group = None
+        self._Metrics = None
+        self._GroupName = None
+
+    @property
+    def Group(self):
+        """分组标识
+        :rtype: str
+        """
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+    @property
+    def Metrics(self):
+        """指标详情
+        :rtype: list of IntegrationMetric
+        """
+        return self._Metrics
+
+    @Metrics.setter
+    def Metrics(self, Metrics):
+        self._Metrics = Metrics
+
+    @property
+    def GroupName(self):
+        """分组名称
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+
+    def _deserialize(self, params):
+        self._Group = params.get("Group")
+        if params.get("Metrics") is not None:
+            self._Metrics = []
+            for item in params.get("Metrics"):
+                obj = IntegrationMetric()
+                obj._deserialize(item)
+                self._Metrics.append(obj)
+        self._GroupName = params.get("GroupName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

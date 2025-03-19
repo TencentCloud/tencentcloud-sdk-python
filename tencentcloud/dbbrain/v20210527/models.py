@@ -11069,7 +11069,6 @@ class DiagHistoryEventItem(AbstractModel):
         :param _InstanceId: 实例 ID 。
         :type InstanceId: str
         :param _Metric: 保留字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Metric: str
         :param _Region: 地域。
         :type Region: str
@@ -11176,7 +11175,6 @@ class DiagHistoryEventItem(AbstractModel):
     @property
     def Metric(self):
         """保留字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Metric
@@ -12102,13 +12100,10 @@ class InstanceConfs(AbstractModel):
         :param _OverviewDisplay: 实例概览开关，Yes/No。
         :type OverviewDisplay: str
         :param _KeyDelimiters: redis大key分析的自定义分割符，仅redis使用
-注意：此字段可能返回 null，表示取不到有效值。
         :type KeyDelimiters: list of str
         :param _ShardNum: 分片节点数量。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ShardNum: str
         :param _AnalysisTopKey: 是否开启大key周期性分析，仅redis产品有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AnalysisTopKey: str
         """
         self._DailyInspection = None
@@ -12142,7 +12137,6 @@ class InstanceConfs(AbstractModel):
     @property
     def KeyDelimiters(self):
         """redis大key分析的自定义分割符，仅redis使用
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._KeyDelimiters
@@ -12154,7 +12148,6 @@ class InstanceConfs(AbstractModel):
     @property
     def ShardNum(self):
         """分片节点数量。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ShardNum
@@ -12166,7 +12159,6 @@ class InstanceConfs(AbstractModel):
     @property
     def AnalysisTopKey(self):
         """是否开启大key周期性分析，仅redis产品有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AnalysisTopKey
@@ -14063,7 +14055,6 @@ class MonitorFloatMetric(AbstractModel):
         :param _Unit: 指标单位。
         :type Unit: str
         :param _Values: 指标值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Values: list of float
         """
         self._Metric = None
@@ -14095,7 +14086,6 @@ class MonitorFloatMetric(AbstractModel):
     @property
     def Values(self):
         """指标值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of float
         """
         return self._Values
@@ -15664,7 +15654,6 @@ class SchemaSpaceData(AbstractModel):
         :param _TableRows: 行数。
         :type TableRows: int
         :param _PhysicalFileSize: 库中所有表对应的独立物理文件大小加和（MB）。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PhysicalFileSize: float
         """
         self._TableSchema = None
@@ -15756,7 +15745,6 @@ class SchemaSpaceData(AbstractModel):
     @property
     def PhysicalFileSize(self):
         """库中所有表对应的独立物理文件大小加和（MB）。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._PhysicalFileSize
@@ -15852,7 +15840,6 @@ class ScoreDetail(AbstractModel):
         :param _ScoreLostMax: 扣分总分上限。
         :type ScoreLostMax: int
         :param _Items: 扣分项列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of ScoreItem
         """
         self._IssueType = None
@@ -15896,7 +15883,6 @@ class ScoreDetail(AbstractModel):
     @property
     def Items(self):
         """扣分项列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ScoreItem
         """
         return self._Items

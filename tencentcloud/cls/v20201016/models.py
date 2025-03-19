@@ -109,13 +109,10 @@ class AdvanceFilterRuleInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Key: 过滤字段
-注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
         :param _Rule: 过滤规则，0:等于，1:字段存在，2:字段不存在
-注意：此字段可能返回 null，表示取不到有效值。
         :type Rule: int
         :param _Value: 过滤值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Key = None
@@ -125,7 +122,6 @@ class AdvanceFilterRuleInfo(AbstractModel):
     @property
     def Key(self):
         """过滤字段
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Key
@@ -137,7 +133,6 @@ class AdvanceFilterRuleInfo(AbstractModel):
     @property
     def Rule(self):
         """过滤规则，0:等于，1:字段存在，2:字段不存在
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Rule
@@ -149,7 +144,6 @@ class AdvanceFilterRuleInfo(AbstractModel):
     @property
     def Value(self):
         """过滤值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -187,7 +181,6 @@ CustomQuery：检索语句。 QueryIndex为-1时有效且必填，value示例：
 Fields：字段。value支持 __SOURCE__；__FILENAME__；__HOSTNAME__；__TIMESTAMP__；__INDEX_STATUS__；__PKG_LOGID__；__TOPIC__。
 Format：显示形式。value支持 1：每条日志一行；2：每条日志每个字段一行。
 Limit：最大日志条数。 value示例： 5。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
         :param _Value: 值。
 键对应值如下：
@@ -197,7 +190,6 @@ CustomQuery：检索语句。 QueryIndex为-1时有效且必填，value示例：
 Fields：字段。value支持 __SOURCE__；__FILENAME__；__HOSTNAME__；__TIMESTAMP__；__INDEX_STATUS__；__PKG_LOGID__；__TOPIC__。
 Format：显示形式。value支持 1：每条日志一行；2：每条日志每个字段一行。
 Limit：最大日志条数。 value示例： 5。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Key = None
@@ -212,7 +204,6 @@ CustomQuery：检索语句。 QueryIndex为-1时有效且必填，value示例：
 Fields：字段。value支持 __SOURCE__；__FILENAME__；__HOSTNAME__；__TIMESTAMP__；__INDEX_STATUS__；__PKG_LOGID__；__TOPIC__。
 Format：显示形式。value支持 1：每条日志一行；2：每条日志每个字段一行。
 Limit：最大日志条数。 value示例： 5。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Key
@@ -231,7 +222,6 @@ CustomQuery：检索语句。 QueryIndex为-1时有效且必填，value示例：
 Fields：字段。value支持 __SOURCE__；__FILENAME__；__HOSTNAME__；__TIMESTAMP__；__INDEX_STATUS__；__PKG_LOGID__；__TOPIC__。
 Format：显示形式。value支持 1：每条日志一行；2：每条日志每个字段一行。
 Limit：最大日志条数。 value示例： 5。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -338,29 +328,21 @@ class AlarmInfo(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type MessageTemplate: str
         :param _CallBack: 自定义回调模板
-注意：此字段可能返回 null，表示取不到有效值。
         :type CallBack: :class:`tencentcloud.cls.v20201016.models.CallBackInfo`
         :param _Analysis: 多维分析设置
-注意：此字段可能返回 null，表示取不到有效值。
         :type Analysis: list of AnalysisDimensional
-        :param _GroupTriggerStatus: 分组触发状态。1：开启，0：关闭（默认）
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _GroupTriggerStatus: 分组触发状态。true：开启，false：关闭（默认）
         :type GroupTriggerStatus: bool
         :param _GroupTriggerCondition: 分组触发条件。
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupTriggerCondition: list of str
         :param _MonitorObjectType: 监控对象类型。0:执行语句共用监控对象;1:每个执行语句单独选择监控对象。 
-注意：此字段可能返回 null，表示取不到有效值。
         :type MonitorObjectType: int
         :param _AlarmLevel: 告警级别。0:警告(Warn);1:提醒(Info);2:紧急 (Critical)。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AlarmLevel: int
         :param _Classifications: 告警附加分类字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Classifications: list of AlarmClassification
         :param _MultiConditions: 多触发条件。与
 Condition互斥。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MultiConditions: list of MultiCondition
         """
         self._Name = None
@@ -520,7 +502,6 @@ Condition互斥。
     @property
     def CallBack(self):
         """自定义回调模板
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cls.v20201016.models.CallBackInfo`
         """
         return self._CallBack
@@ -532,7 +513,6 @@ Condition互斥。
     @property
     def Analysis(self):
         """多维分析设置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AnalysisDimensional
         """
         return self._Analysis
@@ -543,8 +523,7 @@ Condition互斥。
 
     @property
     def GroupTriggerStatus(self):
-        """分组触发状态。1：开启，0：关闭（默认）
-注意：此字段可能返回 null，表示取不到有效值。
+        """分组触发状态。true：开启，false：关闭（默认）
         :rtype: bool
         """
         return self._GroupTriggerStatus
@@ -556,7 +535,6 @@ Condition互斥。
     @property
     def GroupTriggerCondition(self):
         """分组触发条件。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._GroupTriggerCondition
@@ -568,7 +546,6 @@ Condition互斥。
     @property
     def MonitorObjectType(self):
         """监控对象类型。0:执行语句共用监控对象;1:每个执行语句单独选择监控对象。 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MonitorObjectType
@@ -580,7 +557,6 @@ Condition互斥。
     @property
     def AlarmLevel(self):
         """告警级别。0:警告(Warn);1:提醒(Info);2:紧急 (Critical)。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AlarmLevel
@@ -592,7 +568,6 @@ Condition互斥。
     @property
     def Classifications(self):
         """告警附加分类字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AlarmClassification
         """
         return self._Classifications
@@ -605,7 +580,6 @@ Condition互斥。
     def MultiConditions(self):
         """多触发条件。与
 Condition互斥。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of MultiCondition
         """
         return self._MultiConditions
@@ -680,7 +654,6 @@ class AlarmNotice(AbstractModel):
         :param _Name: 告警通知渠道组名称。
         :type Name: str
         :param _Tags: 告警通知渠道组绑定的标签信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
         :param _Type: 告警模板的类型。可选值：
 <br><li> Trigger - 告警触发</li>
@@ -688,32 +661,24 @@ class AlarmNotice(AbstractModel):
 <br><li> All - 告警触发和告警恢复</li>
         :type Type: str
         :param _NoticeReceivers: 告警通知模板接收者信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type NoticeReceivers: list of NoticeReceiver
         :param _WebCallbacks: 告警通知模板回调信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type WebCallbacks: list of WebCallback
         :param _AlarmNoticeId: 告警通知模板ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AlarmNoticeId: str
         :param _NoticeRules: 通知规则。
-注意：此字段可能返回 null，表示取不到有效值。
         :type NoticeRules: list of NoticeRule
         :param _AlarmShieldStatus: 免登录操作告警开关。
 参数值： 1：关闭 2：开启（默认开启）
-注意：此字段可能返回 null，表示取不到有效值。
         :type AlarmShieldStatus: int
         :param _JumpDomain: 调用链接域名。http:// 或者 https:// 开头，不能/结尾
-注意：此字段可能返回 null，表示取不到有效值。
         :type JumpDomain: str
         :param _AlarmNoticeDeliverConfig: 投递相关信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlarmNoticeDeliverConfig: :class:`tencentcloud.cls.v20201016.models.AlarmNoticeDeliverConfig`
         :param _CreateTime: 创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _UpdateTime: 最近更新时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         """
         self._Name = None
@@ -743,7 +708,6 @@ class AlarmNotice(AbstractModel):
     @property
     def Tags(self):
         """告警通知渠道组绑定的标签信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._Tags
@@ -769,7 +733,6 @@ class AlarmNotice(AbstractModel):
     @property
     def NoticeReceivers(self):
         """告警通知模板接收者信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of NoticeReceiver
         """
         return self._NoticeReceivers
@@ -781,7 +744,6 @@ class AlarmNotice(AbstractModel):
     @property
     def WebCallbacks(self):
         """告警通知模板回调信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of WebCallback
         """
         return self._WebCallbacks
@@ -793,7 +755,6 @@ class AlarmNotice(AbstractModel):
     @property
     def AlarmNoticeId(self):
         """告警通知模板ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AlarmNoticeId
@@ -805,7 +766,6 @@ class AlarmNotice(AbstractModel):
     @property
     def NoticeRules(self):
         """通知规则。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of NoticeRule
         """
         return self._NoticeRules
@@ -818,7 +778,6 @@ class AlarmNotice(AbstractModel):
     def AlarmShieldStatus(self):
         """免登录操作告警开关。
 参数值： 1：关闭 2：开启（默认开启）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AlarmShieldStatus
@@ -830,7 +789,6 @@ class AlarmNotice(AbstractModel):
     @property
     def JumpDomain(self):
         """调用链接域名。http:// 或者 https:// 开头，不能/结尾
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._JumpDomain
@@ -854,7 +812,6 @@ class AlarmNotice(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -866,7 +823,6 @@ class AlarmNotice(AbstractModel):
     @property
     def UpdateTime(self):
         """最近更新时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime
@@ -931,7 +887,6 @@ class AlarmNoticeDeliverConfig(AbstractModel):
         :param _DeliverConfig: 通知渠道投递日志配置信息。
         :type DeliverConfig: :class:`tencentcloud.cls.v20201016.models.DeliverConfig`
         :param _ErrMsg: 投递失败原因。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrMsg: str
         """
         self._DeliverConfig = None
@@ -951,7 +906,6 @@ class AlarmNoticeDeliverConfig(AbstractModel):
     @property
     def ErrMsg(self):
         """投递失败原因。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrMsg
@@ -994,7 +948,6 @@ class AlarmShieldInfo(AbstractModel):
         :param _Type: 屏蔽类型。1：屏蔽所有通知，2：按照Rule参数屏蔽匹配规则的通知。
         :type Type: int
         :param _Rule: 屏蔽规则，当Type为2时必填。规则填写方式详见[产品文档](https://cloud.tencent.com/document/product/614/103178#rule)。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Rule: str
         :param _Reason: 屏蔽原因。
         :type Reason: str
@@ -1082,7 +1035,6 @@ class AlarmShieldInfo(AbstractModel):
     @property
     def Rule(self):
         """屏蔽规则，当Type为2时必填。规则填写方式详见[产品文档](https://cloud.tencent.com/document/product/614/103178#rule)。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Rule
@@ -1191,27 +1143,20 @@ class AlarmTarget(AbstractModel):
     def __init__(self):
         r"""
         :param _TopicId: 日志主题ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TopicId: str
         :param _Query: 查询语句。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Query: str
         :param _Number: 告警对象序号；从1开始递增。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Number: int
         :param _StartTimeOffset: 查询范围起始时间相对于告警执行时间的偏移，单位为分钟，取值为非正，最大值为0，最小值为-1440。
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTimeOffset: int
         :param _EndTimeOffset: 查询范围终止时间相对于告警执行时间的偏移，单位为分钟，取值为非正，须大于StartTimeOffset，最大值为0，最小值为-1440。
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTimeOffset: int
         :param _LogsetId: 日志集ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogsetId: str
         :param _SyntaxRule: 检索语法规则，默认值为0。
 0：Lucene语法，1：CQL语法。
 详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>
-注意：此字段可能返回 null，表示取不到有效值。
         :type SyntaxRule: int
         """
         self._TopicId = None
@@ -1225,7 +1170,6 @@ class AlarmTarget(AbstractModel):
     @property
     def TopicId(self):
         """日志主题ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TopicId
@@ -1237,7 +1181,6 @@ class AlarmTarget(AbstractModel):
     @property
     def Query(self):
         """查询语句。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Query
@@ -1249,7 +1192,6 @@ class AlarmTarget(AbstractModel):
     @property
     def Number(self):
         """告警对象序号；从1开始递增。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Number
@@ -1261,7 +1203,6 @@ class AlarmTarget(AbstractModel):
     @property
     def StartTimeOffset(self):
         """查询范围起始时间相对于告警执行时间的偏移，单位为分钟，取值为非正，最大值为0，最小值为-1440。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._StartTimeOffset
@@ -1273,7 +1214,6 @@ class AlarmTarget(AbstractModel):
     @property
     def EndTimeOffset(self):
         """查询范围终止时间相对于告警执行时间的偏移，单位为分钟，取值为非正，须大于StartTimeOffset，最大值为0，最小值为-1440。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._EndTimeOffset
@@ -1285,7 +1225,6 @@ class AlarmTarget(AbstractModel):
     @property
     def LogsetId(self):
         """日志集ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LogsetId
@@ -1299,7 +1238,6 @@ class AlarmTarget(AbstractModel):
         """检索语法规则，默认值为0。
 0：Lucene语法，1：CQL语法。
 详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SyntaxRule
@@ -1353,11 +1291,9 @@ class AlarmTargetInfo(AbstractModel):
         :param _SyntaxRule: 检索语法规则，默认值为0。
 0：Lucene语法，1：CQL语法。
 详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>
-注意：此字段可能返回 null，表示取不到有效值。
         :type SyntaxRule: int
         :param _BizType: 主题类型。
 0: 日志主题，1: 指标主题
-注意：此字段可能返回 null，表示取不到有效值。
         :type BizType: int
         """
         self._LogsetId = None
@@ -1464,7 +1400,6 @@ class AlarmTargetInfo(AbstractModel):
         """检索语法规则，默认值为0。
 0：Lucene语法，1：CQL语法。
 详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SyntaxRule
@@ -1477,7 +1412,6 @@ class AlarmTargetInfo(AbstractModel):
     def BizType(self):
         """主题类型。
 0: 日志主题，1: 指标主题
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._BizType
@@ -1593,14 +1527,11 @@ class AlertHistoryRecord(AbstractModel):
         :param _CreateTime: 告警发生时间，毫秒级Unix时间戳
         :type CreateTime: int
         :param _GroupTriggerCondition: 告警分组触发时对应的分组信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupTriggerCondition: list of GroupTriggerConditionInfo
         :param _AlarmLevel: 告警级别，0代表警告(Warn)，1代表提醒(Info)，2代表紧急 (Critical)
-注意：此字段可能返回 null，表示取不到有效值。
         :type AlarmLevel: int
         :param _MonitorObjectType: 监控对象类型。
 0:执行语句共用监控对象; 1:每个执行语句单独选择监控对象。 
-注意：此字段可能返回 null，表示取不到有效值。
         :type MonitorObjectType: int
         """
         self._RecordId = None
@@ -1766,7 +1697,6 @@ class AlertHistoryRecord(AbstractModel):
     @property
     def GroupTriggerCondition(self):
         """告警分组触发时对应的分组信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of GroupTriggerConditionInfo
         """
         return self._GroupTriggerCondition
@@ -1778,7 +1708,6 @@ class AlertHistoryRecord(AbstractModel):
     @property
     def AlarmLevel(self):
         """告警级别，0代表警告(Warn)，1代表提醒(Info)，2代表紧急 (Critical)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AlarmLevel
@@ -1791,7 +1720,6 @@ class AlertHistoryRecord(AbstractModel):
     def MonitorObjectType(self):
         """监控对象类型。
 0:执行语句共用监控对象; 1:每个执行语句单独选择监控对象。 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MonitorObjectType
@@ -1846,13 +1774,10 @@ class AnalysisDimensional(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 分析名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Type: 分析类型：query，field ，original
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Content: 分析内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type Content: str
         :param _ConfigInfo: 多维分析配置。
 
@@ -1905,7 +1830,6 @@ class AnalysisDimensional(AbstractModel):
     @property
     def Name(self):
         """分析名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -1917,7 +1841,6 @@ class AnalysisDimensional(AbstractModel):
     @property
     def Type(self):
         """分析类型：query，field ，original
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -1929,7 +1852,6 @@ class AnalysisDimensional(AbstractModel):
     @property
     def Content(self):
         """分析内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Content
@@ -2171,7 +2093,6 @@ class CallBackInfo(AbstractModel):
 ```
 "Content-Type: application/json"
 ```
-注意：此字段可能返回 null，表示取不到有效值。
         :type Headers: list of str
         """
         self._Body = None
@@ -2207,7 +2128,6 @@ class CallBackInfo(AbstractModel):
 ```
 "Content-Type: application/json"
 ```
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Headers
@@ -2469,7 +2389,6 @@ class CheckRechargeKafkaServerResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Status: Kafka集群可访问状态，0：可正常访问 ...
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2480,7 +2399,6 @@ class CheckRechargeKafkaServerResponse(AbstractModel):
     @property
     def Status(self):
         """Kafka集群可访问状态，0：可正常访问 ...
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -2697,11 +2615,11 @@ class CloudProductLogTaskInfo(AbstractModel):
         :param _TopicId: 日志主题ID
         :type TopicId: str
         :param _Extend: 日志配置拓展信息， 一般用于存储额外的日志投递配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type Extend: str
         :param _LogType: 日志类型，支持枚举：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、PostgreSQL-AUDIT、BH-FILELOG、BH-COMMANDLOG、APIS-ACCESS
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogType: str
+        :param _Status: 任务状态， 0创建中 1创建完成 2 删除中 
+        :type Status: int
         """
         self._ClsRegion = None
         self._InstanceId = None
@@ -2709,6 +2627,7 @@ class CloudProductLogTaskInfo(AbstractModel):
         self._TopicId = None
         self._Extend = None
         self._LogType = None
+        self._Status = None
 
     @property
     def ClsRegion(self):
@@ -2757,7 +2676,6 @@ class CloudProductLogTaskInfo(AbstractModel):
     @property
     def Extend(self):
         """日志配置拓展信息， 一般用于存储额外的日志投递配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Extend
@@ -2769,7 +2687,6 @@ class CloudProductLogTaskInfo(AbstractModel):
     @property
     def LogType(self):
         """日志类型，支持枚举：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、PostgreSQL-AUDIT、BH-FILELOG、BH-COMMANDLOG、APIS-ACCESS
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LogType
@@ -2777,6 +2694,17 @@ class CloudProductLogTaskInfo(AbstractModel):
     @LogType.setter
     def LogType(self, LogType):
         self._LogType = LogType
+
+    @property
+    def Status(self):
+        """任务状态， 0创建中 1创建完成 2 删除中 
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
 
 
     def _deserialize(self, params):
@@ -2786,6 +2714,7 @@ class CloudProductLogTaskInfo(AbstractModel):
         self._TopicId = params.get("TopicId")
         self._Extend = params.get("Extend")
         self._LogType = params.get("LogType")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2850,12 +2779,10 @@ class CollectInfo(AbstractModel):
         :param _Type: 采集类型，必填字段。
 <li>0：元数据配置。</li>
 <li>1：指定Pod Label。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: int
         :param _CollectConfigs: 指定采集类型的采集配置信息。
 <li>当Type为0时，CollectConfigs不允许为空。</li>
 <li>当Type为1时，CollectConfigs为空时，表示选择所有Pod Label；否则CollectConfigs为指定Pod Label。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type CollectConfigs: list of CollectConfig
         """
         self._Type = None
@@ -2866,7 +2793,6 @@ class CollectInfo(AbstractModel):
         """采集类型，必填字段。
 <li>0：元数据配置。</li>
 <li>1：指定Pod Label。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Type
@@ -2880,7 +2806,6 @@ class CollectInfo(AbstractModel):
         """指定采集类型的采集配置信息。
 <li>当Type为0时，CollectConfigs不允许为空。</li>
 <li>当Type为1时，CollectConfigs为空时，表示选择所有Pod Label；否则CollectConfigs为指定Pod Label。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CollectConfig
         """
         return self._CollectConfigs
@@ -3077,22 +3002,16 @@ class ConfigExtraInfo(AbstractModel):
         :param _Type: 类型：container_stdout、container_file、host_file
         :type Type: str
         :param _HostFile: 节点文件配置信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type HostFile: :class:`tencentcloud.cls.v20201016.models.HostFileInfo`
         :param _ContainerFile: 容器文件路径信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ContainerFile: :class:`tencentcloud.cls.v20201016.models.ContainerFileInfo`
         :param _ContainerStdout: 容器标准输出信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ContainerStdout: :class:`tencentcloud.cls.v20201016.models.ContainerStdoutInfo`
         :param _LogFormat: 日志格式化方式
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogFormat: str
         :param _LogType: 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表极简日志，multiline_log代表多行日志，fullregex_log代表完整正则，默认为minimalist_log
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogType: str
         :param _ExtractRule: 提取规则，如果设置了ExtractRule，则必须设置LogType
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExtractRule: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
         :param _ExcludePaths: 采集黑名单路径列表
 注意：此字段可能返回 null，表示取不到有效值。
@@ -3102,31 +3021,24 @@ class ConfigExtraInfo(AbstractModel):
         :param _CreateTime: 创建时间
         :type CreateTime: str
         :param _UserDefineRule: 用户自定义解析字符串
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserDefineRule: str
         :param _GroupId: 机器组ID
         :type GroupId: str
         :param _ConfigFlag: 自建采集配置标
-注意：此字段可能返回 null，表示取不到有效值。
         :type ConfigFlag: str
         :param _LogsetId: 日志集ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogsetId: str
         :param _LogsetName: 日志集name
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogsetName: str
         :param _TopicName: 日志主题name
-注意：此字段可能返回 null，表示取不到有效值。
         :type TopicName: str
         :param _CollectInfos: 采集相关配置信息。详情见 CollectInfo复杂类型配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CollectInfos: list of CollectInfo
         :param _AdvancedConfig: 高级采集配置。 Json字符串， Key/Value定义为如下：
 - ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
 - ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数
 - ClsAgentParseFailMerge(合并解析失败日志)，取值范围: true或false
 样例：{"ClsAgentFileTimeout":0,"ClsAgentMaxDepth":10,"ClsAgentParseFailMerge":true}
-注意：此字段可能返回 null，表示取不到有效值。
         :type AdvancedConfig: str
         """
         self._ConfigExtraId = None
@@ -3198,7 +3110,6 @@ class ConfigExtraInfo(AbstractModel):
     @property
     def HostFile(self):
         """节点文件配置信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cls.v20201016.models.HostFileInfo`
         """
         return self._HostFile
@@ -3210,7 +3121,6 @@ class ConfigExtraInfo(AbstractModel):
     @property
     def ContainerFile(self):
         """容器文件路径信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cls.v20201016.models.ContainerFileInfo`
         """
         return self._ContainerFile
@@ -3222,7 +3132,6 @@ class ConfigExtraInfo(AbstractModel):
     @property
     def ContainerStdout(self):
         """容器标准输出信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cls.v20201016.models.ContainerStdoutInfo`
         """
         return self._ContainerStdout
@@ -3234,7 +3143,6 @@ class ConfigExtraInfo(AbstractModel):
     @property
     def LogFormat(self):
         """日志格式化方式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LogFormat
@@ -3246,7 +3154,6 @@ class ConfigExtraInfo(AbstractModel):
     @property
     def LogType(self):
         """采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表极简日志，multiline_log代表多行日志，fullregex_log代表完整正则，默认为minimalist_log
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LogType
@@ -3258,7 +3165,6 @@ class ConfigExtraInfo(AbstractModel):
     @property
     def ExtractRule(self):
         """提取规则，如果设置了ExtractRule，则必须设置LogType
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
         """
         return self._ExtractRule
@@ -3304,7 +3210,6 @@ class ConfigExtraInfo(AbstractModel):
     @property
     def UserDefineRule(self):
         """用户自定义解析字符串
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UserDefineRule
@@ -3327,7 +3232,6 @@ class ConfigExtraInfo(AbstractModel):
     @property
     def ConfigFlag(self):
         """自建采集配置标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ConfigFlag
@@ -3339,7 +3243,6 @@ class ConfigExtraInfo(AbstractModel):
     @property
     def LogsetId(self):
         """日志集ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LogsetId
@@ -3351,7 +3254,6 @@ class ConfigExtraInfo(AbstractModel):
     @property
     def LogsetName(self):
         """日志集name
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LogsetName
@@ -3363,7 +3265,6 @@ class ConfigExtraInfo(AbstractModel):
     @property
     def TopicName(self):
         """日志主题name
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TopicName
@@ -3375,7 +3276,6 @@ class ConfigExtraInfo(AbstractModel):
     @property
     def CollectInfos(self):
         """采集相关配置信息。详情见 CollectInfo复杂类型配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CollectInfo
         """
         return self._CollectInfos
@@ -3391,7 +3291,6 @@ class ConfigExtraInfo(AbstractModel):
 - ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数
 - ClsAgentParseFailMerge(合并解析失败日志)，取值范围: true或false
 样例：{"ClsAgentFileTimeout":0,"ClsAgentMaxDepth":10,"ClsAgentParseFailMerge":true}
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AdvancedConfig
@@ -3461,13 +3360,10 @@ class ConfigInfo(AbstractModel):
         :param _ConfigId: 采集规则配置ID
         :type ConfigId: str
         :param _Name: 采集规则配置名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _LogFormat: 日志格式化方式
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogFormat: str
         :param _Path: 日志采集路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type Path: str
         :param _LogType: 采集的日志类型。
 - json_log代表：JSON-文件日志（详见[使用 JSON 提取模式采集日志](https://cloud.tencent.com/document/product/614/17419)）；
@@ -3479,10 +3375,8 @@ class ConfigInfo(AbstractModel):
 - user_define_log代表：组合解析（适用于多格式嵌套的日志，详见[使用组合解析提取模式采集日志](https://cloud.tencent.com/document/product/614/61310)）；
 - service_syslog代表：syslog 采集（详见[采集 Syslog](https://cloud.tencent.com/document/product/614/81454)）；
 - windows_event_log代表：Windows事件日志（详见[采集 Windows 事件日志](https://cloud.tencent.com/document/product/614/96678)）。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogType: str
         :param _ExtractRule: 提取规则，如果设置了ExtractRule，则必须设置LogType
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExtractRule: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
         :param _ExcludePaths: 采集黑名单路径列表
 注意：此字段可能返回 null，表示取不到有效值。
@@ -3490,12 +3384,10 @@ class ConfigInfo(AbstractModel):
         :param _Output: 采集配置所属日志主题ID即TopicId
         :type Output: str
         :param _UpdateTime: 更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param _CreateTime: 创建时间
         :type CreateTime: str
         :param _UserDefineRule: 用户自定义解析字符串，详见[使用组合解析提取模式采集日志](https://cloud.tencent.com/document/product/614/61310)。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserDefineRule: str
         :param _AdvancedConfig: 高级采集配置。 Json字符串， Key/Value定义为如下：
 - ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
@@ -3505,7 +3397,6 @@ class ConfigInfo(AbstractModel):
 `{\"ClsAgentFileTimeout\":0,\"ClsAgentMaxDepth\":10,\"ClsAgentParseFailMerge\":true}`
 
 控制台默认占位值：`{\"ClsAgentDefault\":0}`
-注意：此字段可能返回 null，表示取不到有效值。
         :type AdvancedConfig: str
         """
         self._ConfigId = None
@@ -3535,7 +3426,6 @@ class ConfigInfo(AbstractModel):
     @property
     def Name(self):
         """采集规则配置名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -3547,7 +3437,6 @@ class ConfigInfo(AbstractModel):
     @property
     def LogFormat(self):
         """日志格式化方式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LogFormat
@@ -3559,7 +3448,6 @@ class ConfigInfo(AbstractModel):
     @property
     def Path(self):
         """日志采集路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Path
@@ -3580,7 +3468,6 @@ class ConfigInfo(AbstractModel):
 - user_define_log代表：组合解析（适用于多格式嵌套的日志，详见[使用组合解析提取模式采集日志](https://cloud.tencent.com/document/product/614/61310)）；
 - service_syslog代表：syslog 采集（详见[采集 Syslog](https://cloud.tencent.com/document/product/614/81454)）；
 - windows_event_log代表：Windows事件日志（详见[采集 Windows 事件日志](https://cloud.tencent.com/document/product/614/96678)）。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LogType
@@ -3592,7 +3479,6 @@ class ConfigInfo(AbstractModel):
     @property
     def ExtractRule(self):
         """提取规则，如果设置了ExtractRule，则必须设置LogType
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
         """
         return self._ExtractRule
@@ -3627,7 +3513,6 @@ class ConfigInfo(AbstractModel):
     @property
     def UpdateTime(self):
         """更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime
@@ -3650,7 +3535,6 @@ class ConfigInfo(AbstractModel):
     @property
     def UserDefineRule(self):
         """用户自定义解析字符串，详见[使用组合解析提取模式采集日志](https://cloud.tencent.com/document/product/614/61310)。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UserDefineRule
@@ -3669,7 +3553,6 @@ class ConfigInfo(AbstractModel):
 `{\"ClsAgentFileTimeout\":0,\"ClsAgentMaxDepth\":10,\"ClsAgentParseFailMerge\":true}`
 
 控制台默认占位值：`{\"ClsAgentDefault\":0}`
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AdvancedConfig
@@ -4008,10 +3891,8 @@ class ConsumerContent(AbstractModel):
         r"""
         :param _EnableTag: 是否投递 TAG 信息。
 当EnableTag为true时，表示投递TAG元信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnableTag: bool
         :param _MetaFields: 需要投递的元数据列表，目前仅支持：\_\_SOURCE\_\_，\_\_FILENAME\_\_，\_\_TIMESTAMP\_\_，\_\_HOSTNAME\_\_和\_\_PKGID\_\_
-注意：此字段可能返回 null，表示取不到有效值。
         :type MetaFields: list of str
         :param _TagJsonNotTiled: 当EnableTag为true时，必须填写TagJsonNotTiled字段。
 TagJsonNotTiled用于标识tag信息是否json平铺。
@@ -4023,10 +3904,8 @@ TAG信息：`{"__TAG__":{"fieldA":200,"fieldB":"text"}}`
 TagJsonNotTiled为false时平铺，示例：
 TAG信息：`{"__TAG__":{"fieldA":200,"fieldB":"text"}}`
 平铺：`{"__TAG__.fieldA":200,"__TAG__.fieldB":"text"}`
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagJsonNotTiled: bool
         :param _TimestampAccuracy: 投递时间戳精度，可选项 [1：秒；2：毫秒] ，默认是1。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimestampAccuracy: int
         :param _JsonType: 投递Json格式。
 JsonType为0：和原始日志一致，不转义。示例：
@@ -4036,7 +3915,6 @@ JsonType为0：和原始日志一致，不转义。示例：
 JsonType为1：转义。示例：
 日志原文：`{"a":"aa", "b":{"b1":"b1b1", "c1":"c1c1"}}`
 投递到Ckafka：`{"a":"aa","b":"{\"b1\":\"b1b1\", \"c1\":\"c1c1\"}"}`
-注意：此字段可能返回 null，表示取不到有效值。
         :type JsonType: int
         """
         self._EnableTag = None
@@ -4049,7 +3927,6 @@ JsonType为1：转义。示例：
     def EnableTag(self):
         """是否投递 TAG 信息。
 当EnableTag为true时，表示投递TAG元信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._EnableTag
@@ -4061,7 +3938,6 @@ JsonType为1：转义。示例：
     @property
     def MetaFields(self):
         """需要投递的元数据列表，目前仅支持：\_\_SOURCE\_\_，\_\_FILENAME\_\_，\_\_TIMESTAMP\_\_，\_\_HOSTNAME\_\_和\_\_PKGID\_\_
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._MetaFields
@@ -4082,7 +3958,6 @@ TAG信息：`{"__TAG__":{"fieldA":200,"fieldB":"text"}}`
 TagJsonNotTiled为false时平铺，示例：
 TAG信息：`{"__TAG__":{"fieldA":200,"fieldB":"text"}}`
 平铺：`{"__TAG__.fieldA":200,"__TAG__.fieldB":"text"}`
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._TagJsonNotTiled
@@ -4094,7 +3969,6 @@ TAG信息：`{"__TAG__":{"fieldA":200,"fieldB":"text"}}`
     @property
     def TimestampAccuracy(self):
         """投递时间戳精度，可选项 [1：秒；2：毫秒] ，默认是1。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TimestampAccuracy
@@ -4113,7 +3987,6 @@ JsonType为0：和原始日志一致，不转义。示例：
 JsonType为1：转义。示例：
 日志原文：`{"a":"aa", "b":{"b1":"b1b1", "c1":"c1c1"}}`
 投递到Ckafka：`{"a":"aa","b":"{\"b1\":\"b1b1\", \"c1\":\"c1c1\"}"}`
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._JsonType
@@ -4160,10 +4033,8 @@ class ContainerFileInfo(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type IncludeLabels: list of str
         :param _WorkLoad: 工作负载信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type WorkLoad: :class:`tencentcloud.cls.v20201016.models.ContainerWorkLoadInfo`
         :param _ExcludeNamespace: 需要排除的namespace可以多个，用分隔号分割,例如A,B
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExcludeNamespace: str
         :param _ExcludeLabels: 需要排除的pod标签信息
 注意：此字段可能返回 null，表示取不到有效值。
@@ -4253,7 +4124,6 @@ class ContainerFileInfo(AbstractModel):
     @property
     def WorkLoad(self):
         """工作负载信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cls.v20201016.models.ContainerWorkLoadInfo`
         """
         return self._WorkLoad
@@ -4265,7 +4135,6 @@ class ContainerFileInfo(AbstractModel):
     @property
     def ExcludeNamespace(self):
         """需要排除的namespace可以多个，用分隔号分割,例如A,B
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ExcludeNamespace
@@ -4337,10 +4206,8 @@ class ContainerStdoutInfo(AbstractModel):
         :param _AllContainers: 是否所有容器
         :type AllContainers: bool
         :param _Container: container为空表所有的，不为空采集指定的容器
-注意：此字段可能返回 null，表示取不到有效值。
         :type Container: str
         :param _Namespace: namespace可以多个，用分隔号分割,例如A,B；为空或者没有这个字段，表示所有namespace
-注意：此字段可能返回 null，表示取不到有效值。
         :type Namespace: str
         :param _IncludeLabels: pod标签信息
 注意：此字段可能返回 null，表示取不到有效值。
@@ -4349,7 +4216,6 @@ class ContainerStdoutInfo(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkLoads: list of ContainerWorkLoadInfo
         :param _ExcludeNamespace: 需要排除的namespace可以多个，用分隔号分割,例如A,B
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExcludeNamespace: str
         :param _ExcludeLabels: 需要排除的pod标签信息
 注意：此字段可能返回 null，表示取不到有效值。
@@ -4381,7 +4247,6 @@ class ContainerStdoutInfo(AbstractModel):
     @property
     def Container(self):
         """container为空表所有的，不为空采集指定的容器
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Container
@@ -4393,7 +4258,6 @@ class ContainerStdoutInfo(AbstractModel):
     @property
     def Namespace(self):
         """namespace可以多个，用分隔号分割,例如A,B；为空或者没有这个字段，表示所有namespace
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Namespace
@@ -4429,7 +4293,6 @@ class ContainerStdoutInfo(AbstractModel):
     @property
     def ExcludeNamespace(self):
         """需要排除的namespace可以多个，用分隔号分割,例如A,B
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ExcludeNamespace
@@ -7150,7 +7013,6 @@ class CreateCosRechargeResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: COS导入任务id
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7161,7 +7023,6 @@ class CreateCosRechargeResponse(AbstractModel):
     @property
     def Id(self):
         """COS导入任务id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Id
@@ -12429,7 +12290,6 @@ class DescribeAlarmNoticesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _AlarmNotices: 告警通知模板列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AlarmNotices: list of AlarmNotice
         :param _TotalCount: 符合条件的告警通知模板总数。
         :type TotalCount: int
@@ -12443,7 +12303,6 @@ class DescribeAlarmNoticesResponse(AbstractModel):
     @property
     def AlarmNotices(self):
         """告警通知模板列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AlarmNotice
         """
         return self._AlarmNotices
@@ -13673,7 +13532,6 @@ class DescribeConsumerResponse(AbstractModel):
         :param _Ckafka: CKafka的描述
         :type Ckafka: :class:`tencentcloud.cls.v20201016.models.Ckafka`
         :param _Compression: 压缩方式[0:NONE；2:SNAPPY；3:LZ4]
-注意：此字段可能返回 null，表示取不到有效值。
         :type Compression: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13733,7 +13591,6 @@ class DescribeConsumerResponse(AbstractModel):
     @property
     def Compression(self):
         """压缩方式[0:NONE；2:SNAPPY；3:LZ4]
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Compression
@@ -13841,7 +13698,6 @@ class DescribeCosRechargesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 见: CosRechargeInfo 结构描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of CosRechargeInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13852,7 +13708,6 @@ class DescribeCosRechargesResponse(AbstractModel):
     @property
     def Data(self):
         """见: CosRechargeInfo 结构描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CosRechargeInfo
         """
         return self._Data
@@ -14550,13 +14405,11 @@ class DescribeIndexResponse(AbstractModel):
         :param _IncludeInternalFields: 内置保留字段（`__FILENAME__`，`__HOSTNAME__`及`__SOURCE__`）是否包含至全文索引
 * false:不包含
 * true:包含
-注意：此字段可能返回 null，表示取不到有效值。
         :type IncludeInternalFields: bool
         :param _MetadataFlag: 元数据字段（前缀为`__TAG__`的字段）是否包含至全文索引
 * 0:仅包含开启键值索引的元数据字段
 * 1:包含所有元数据字段
 * 2:不包含任何元数据字段
-注意：此字段可能返回 null，表示取不到有效值。
         :type MetadataFlag: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14619,7 +14472,6 @@ class DescribeIndexResponse(AbstractModel):
         """内置保留字段（`__FILENAME__`，`__HOSTNAME__`及`__SOURCE__`）是否包含至全文索引
 * false:不包含
 * true:包含
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IncludeInternalFields
@@ -14634,7 +14486,6 @@ class DescribeIndexResponse(AbstractModel):
 * 0:仅包含开启键值索引的元数据字段
 * 1:包含所有元数据字段
 * 2:不包含任何元数据字段
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MetadataFlag
@@ -15756,7 +15607,6 @@ class DescribeMachineGroupsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _MachineGroups: 机器组信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type MachineGroups: list of MachineGroupInfo
         :param _TotalCount: 分页的总数目
         :type TotalCount: int
@@ -15770,7 +15620,6 @@ class DescribeMachineGroupsResponse(AbstractModel):
     @property
     def MachineGroups(self):
         """机器组信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of MachineGroupInfo
         """
         return self._MachineGroups
@@ -15973,7 +15822,6 @@ class DescribeMachinesResponse(AbstractModel):
         :param _ServiceLogging: 是否开启服务日志
         :type ServiceLogging: bool
         :param _TotalCount: 总数目
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16056,7 +15904,6 @@ class DescribeMachinesResponse(AbstractModel):
     @property
     def TotalCount(self):
         """总数目
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -16192,7 +16039,6 @@ class DescribeNoticeContentsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _NoticeContents: 通知内容模板列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type NoticeContents: list of NoticeContentTemplate
         :param _TotalCount: 符合条件的通知内容模板总数。
         :type TotalCount: int
@@ -16206,7 +16052,6 @@ class DescribeNoticeContentsResponse(AbstractModel):
     @property
     def NoticeContents(self):
         """通知内容模板列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of NoticeContentTemplate
         """
         return self._NoticeContents
@@ -16755,7 +16600,6 @@ class DescribeShippersResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Shippers: 投递规则列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Shippers: list of ShipperInfo
         :param _TotalCount: 本次查询获取到的总数
         :type TotalCount: int
@@ -16769,7 +16613,6 @@ class DescribeShippersResponse(AbstractModel):
     @property
     def Shippers(self):
         """投递规则列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ShipperInfo
         """
         return self._Shippers
@@ -17111,7 +16954,6 @@ class DescribeWebCallbacksResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _WebCallbacks: 告警渠道回调配置列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type WebCallbacks: list of WebCallbackInfo
         :param _TotalCount: 符合条件的通知内容配置总数。
         :type TotalCount: int
@@ -17125,7 +16967,6 @@ class DescribeWebCallbacksResponse(AbstractModel):
     @property
     def WebCallbacks(self):
         """告警渠道回调配置列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of WebCallbackInfo
         """
         return self._WebCallbacks
@@ -26805,7 +26646,6 @@ class PreviewKafkaRechargeResponse(AbstractModel):
         :param _LogSample: 日志样例，PreviewType为2时返回
         :type LogSample: str
         :param _LogData: 日志预览结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogData: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -26828,7 +26668,6 @@ class PreviewKafkaRechargeResponse(AbstractModel):
     @property
     def LogData(self):
         """日志预览结果
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LogData
@@ -28148,15 +27987,12 @@ class SearchCosRechargeInfoResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 匹配到的存储桶下的某个文件的前几行数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of str
         :param _Sum: 匹配到的存储桶下的文件个数
         :type Sum: int
         :param _Path: 当前预览文件路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type Path: str
         :param _Msg: 预览获取数据失败原因
-注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
         :param _Status: 状态
         :type Status: int
@@ -28173,7 +28009,6 @@ class SearchCosRechargeInfoResponse(AbstractModel):
     @property
     def Data(self):
         """匹配到的存储桶下的某个文件的前几行数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Data
@@ -28196,7 +28031,6 @@ class SearchCosRechargeInfoResponse(AbstractModel):
     @property
     def Path(self):
         """当前预览文件路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Path
@@ -28208,7 +28042,6 @@ class SearchCosRechargeInfoResponse(AbstractModel):
     @property
     def Msg(self):
         """预览获取数据失败原因
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Msg
@@ -28812,7 +28645,6 @@ class SearchLogResponse(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Columns: list of Column
         :param _SamplingRate: 本次统计分析使用的采样率
-注意：此字段可能返回 null，表示取不到有效值。
         :type SamplingRate: float
         :param _Topics: 使用多日志主题检索时，各个日志主题的基本信息，例如报错信息。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -28935,7 +28767,6 @@ class SearchLogResponse(AbstractModel):
     @property
     def SamplingRate(self):
         """本次统计分析使用的采样率
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._SamplingRate

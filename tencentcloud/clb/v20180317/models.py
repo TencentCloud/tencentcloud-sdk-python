@@ -5223,6 +5223,8 @@ class CreateTargetGroupRequest(AbstractModel):
         :type TargetGroupInstances: list of TargetGroupInstance
         :param _Type: 目标组类型，当前支持v1(旧版目标组), v2(新版目标组), 默认为v1(旧版目标组)。
         :type Type: str
+        :param _Protocol: 目标组后端转发协议。v2新版目标组该项必填。目前支持tcp、udp。
+        :type Protocol: str
         :param _Tags: 标签。
         :type Tags: list of TagInfo
         :param _Weight: 后端服务默认权重。
@@ -5238,6 +5240,7 @@ class CreateTargetGroupRequest(AbstractModel):
         self._Port = None
         self._TargetGroupInstances = None
         self._Type = None
+        self._Protocol = None
         self._Tags = None
         self._Weight = None
 
@@ -5298,6 +5301,17 @@ class CreateTargetGroupRequest(AbstractModel):
         self._Type = Type
 
     @property
+    def Protocol(self):
+        """目标组后端转发协议。v2新版目标组该项必填。目前支持tcp、udp。
+        :rtype: str
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
     def Tags(self):
         """标签。
         :rtype: list of TagInfo
@@ -5336,6 +5350,7 @@ class CreateTargetGroupRequest(AbstractModel):
                 obj._deserialize(item)
                 self._TargetGroupInstances.append(obj)
         self._Type = params.get("Type")
+        self._Protocol = params.get("Protocol")
         if params.get("Tags") is not None:
             self._Tags = []
             for item in params.get("Tags"):
@@ -5409,7 +5424,9 @@ class CreateTopicRequest(AbstractModel):
         :type PartitionCount: int
         :param _TopicType: 日志类型，ACCESS：访问日志，HEALTH：健康检查日志，默认ACCESS。
         :type TopicType: str
-        :param _Period: 日志集的保存周期，单位：天，默认30天，范围[1, 3600]。
+        :param _Period: 存储时间，单位天
+- 日志接入标准存储时，支持1至3600天，值为3640时代表永久保存。
+- 日志接入低频存储时，支持7至3600天，值为3640时代表永久保存。
         :type Period: int
         :param _StorageType: 日志主题的存储类型，可选值 HOT（标准存储），COLD（低频存储）；默认为HOT。
         :type StorageType: str
@@ -5455,7 +5472,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def Period(self):
-        """日志集的保存周期，单位：天，默认30天，范围[1, 3600]。
+        """存储时间，单位天
+- 日志接入标准存储时，支持1至3600天，值为3640时代表永久保存。
+- 日志接入低频存储时，支持7至3600天，值为3640时代表永久保存。
         :rtype: int
         """
         return self._Period
@@ -13422,7 +13441,12 @@ OPEN：公网属性， INTERNAL：内网属性；对于内网属性的负载均�
         :param _NumericalVpcId: 数值形式的私有网络 ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type NumericalVpcId: int
-        :param _VipIsp: 负载均衡IP地址所属的运营商。取值范围（BGP、CMCC、CTCC、CUCC）
+        :param _VipIsp: 负载均衡IP地址所属的运营商。
+
+- BGP :  BGP（多线）
+- CMCC：中国移动单线
+- CTCC：中国电信单线
+- CUCC：中国联通单线
 注意：此字段可能返回 null，表示取不到有效值。
         :type VipIsp: str
         :param _MasterZone: 主可用区
@@ -13852,7 +13876,12 @@ OPEN：公网属性， INTERNAL：内网属性；对于内网属性的负载均�
 
     @property
     def VipIsp(self):
-        """负载均衡IP地址所属的运营商。取值范围（BGP、CMCC、CTCC、CUCC）
+        """负载均衡IP地址所属的运营商。
+
+- BGP :  BGP（多线）
+- CMCC：中国移动单线
+- CTCC：中国电信单线
+- CUCC：中国联通单线
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14377,7 +14406,7 @@ class LoadBalancerDetail(AbstractModel):
         :param _LoadBalancerName: 负载均衡实例的名称。
         :type LoadBalancerName: str
         :param _LoadBalancerType: 负载均衡实例的网络类型：
-OPEN：公网属性，INTERNAL：内网属性；对于内网属性的负载均衡，可通过绑定EIP出公网，具体可参考EIP文档。
+Public：公网属性，Private：内网属性；对于内网属性的负载均衡，可通过绑定EIP出公网，具体可参考EIP文档。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LoadBalancerType: str
         :param _Status: 负载均衡实例的状态，包括
@@ -14568,7 +14597,7 @@ OPEN：公网属性，INTERNAL：内网属性；对于内网属性的负载均�
     @property
     def LoadBalancerType(self):
         """负载均衡实例的网络类型：
-OPEN：公网属性，INTERNAL：内网属性；对于内网属性的负载均衡，可通过绑定EIP出公网，具体可参考EIP文档。
+Public：公网属性，Private：内网属性；对于内网属性的负载均衡，可通过绑定EIP出公网，具体可参考EIP文档。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -20317,11 +20346,11 @@ class SetLoadBalancerClsLogRequest(AbstractModel):
         :type LoadBalancerId: str
         :param _LogSetId: 日志服务(CLS)的日志集 ID。
 <li>增加和更新日志主题时可调用 [DescribeLogsets](https://cloud.tencent.com/document/product/614/58624) 接口获取日志集 ID。</li>
-<li>删除日志主题时，此参数填写为null即可。</li>
+<li>删除日志主题时，此参数填写为**空字符串**即可。</li>
         :type LogSetId: str
         :param _LogTopicId: 日志服务(CLS)的日志主题 ID。
 <li>增加和更新日志主题时可调用 [DescribeTopics](https://cloud.tencent.com/document/product/614/56454) 接口获取日志主题 ID。</li>
-<li>删除日志主题时，此参数填写为null即可。</li>
+<li>删除日志主题时，此参数填写为**空字符串**即可。</li>
         :type LogTopicId: str
         :param _LogType: 日志类型：
 <li>ACCESS：访问日志</li>
@@ -20349,7 +20378,7 @@ class SetLoadBalancerClsLogRequest(AbstractModel):
     def LogSetId(self):
         """日志服务(CLS)的日志集 ID。
 <li>增加和更新日志主题时可调用 [DescribeLogsets](https://cloud.tencent.com/document/product/614/58624) 接口获取日志集 ID。</li>
-<li>删除日志主题时，此参数填写为null即可。</li>
+<li>删除日志主题时，此参数填写为**空字符串**即可。</li>
         :rtype: str
         """
         return self._LogSetId
@@ -20362,7 +20391,7 @@ class SetLoadBalancerClsLogRequest(AbstractModel):
     def LogTopicId(self):
         """日志服务(CLS)的日志主题 ID。
 <li>增加和更新日志主题时可调用 [DescribeTopics](https://cloud.tencent.com/document/product/614/56454) 接口获取日志主题 ID。</li>
-<li>删除日志主题时，此参数填写为null即可。</li>
+<li>删除日志主题时，此参数填写为**空字符串**即可。</li>
         :rtype: str
         """
         return self._LogTopicId

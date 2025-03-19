@@ -3152,7 +3152,6 @@ class RoleToken(AbstractModel):
         :param _RoleName: 角色名
         :type RoleName: str
         :param _Token: 用于goosefs client/sdk等
-注意：此字段可能返回 null，表示取不到有效值。
         :type Token: str
         """
         self._RoleName = None
@@ -3172,7 +3171,6 @@ class RoleToken(AbstractModel):
     @property
     def Token(self):
         """用于goosefs client/sdk等
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Token

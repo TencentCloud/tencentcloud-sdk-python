@@ -2203,6 +2203,29 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribePrometheusIntegrationMetrics(self, request):
+        """获取prometheus集成指标
+
+        :param request: Request instance for DescribePrometheusIntegrationMetrics.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusIntegrationMetricsRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusIntegrationMetricsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePrometheusIntegrationMetrics", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePrometheusIntegrationMetricsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribePrometheusRecordRules(self, request):
         """获取聚合规则列表，包含关联集群内crd资源创建的record rule
 

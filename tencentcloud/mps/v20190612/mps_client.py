@@ -187,6 +187,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAsrHotwords(self, request):
+        """智能字幕新建热词库接口
+
+        :param request: Request instance for CreateAsrHotwords.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateAsrHotwordsRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateAsrHotwordsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAsrHotwords", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAsrHotwordsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateContentReviewTemplate(self, request):
         """创建用户自定义内容审核模板，数量上限：50。
 
@@ -350,6 +373,29 @@ class MpsClient(AbstractClient):
             body = self.call("CreateSchedule", params, headers=headers)
             response = json.loads(body)
             model = models.CreateScheduleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateSmartSubtitleTemplate(self, request):
+        """创建自定义智能字幕模板
+
+        :param request: Request instance for CreateSmartSubtitleTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateSmartSubtitleTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateSmartSubtitleTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSmartSubtitleTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSmartSubtitleTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -741,6 +787,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteAsrHotwords(self, request):
+        """删除智能字幕热词库
+
+        :param request: Request instance for DeleteAsrHotwords.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeleteAsrHotwordsRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeleteAsrHotwordsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAsrHotwords", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAsrHotwordsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteContentReviewTemplate(self, request):
         """删除用户自定义内容审核模板。
 
@@ -893,6 +962,29 @@ class MpsClient(AbstractClient):
             body = self.call("DeleteSchedule", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteScheduleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteSmartSubtitleTemplate(self, request):
+        """删除用户自定义智能字幕模板。
+
+        :param request: Request instance for DeleteSmartSubtitleTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeleteSmartSubtitleTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeleteSmartSubtitleTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteSmartSubtitleTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteSmartSubtitleTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1201,6 +1293,52 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAsrHotwords(self, request):
+        """查询智能字幕热词库
+
+        :param request: Request instance for DescribeAsrHotwords.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeAsrHotwordsRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeAsrHotwordsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAsrHotwords", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAsrHotwordsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAsrHotwordsList(self, request):
+        """获取热词库列表
+
+        :param request: Request instance for DescribeAsrHotwordsList.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeAsrHotwordsListRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeAsrHotwordsListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAsrHotwordsList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAsrHotwordsListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeContentReviewTemplates(self, request):
         """根据智能审核模板唯一标识，获取智能审核模板详情列表。返回结果包含符合条件的所有用户自定义模板及系统预置智能审核模板。
 
@@ -1399,6 +1537,29 @@ class MpsClient(AbstractClient):
             body = self.call("DescribeSchedules", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSchedulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSmartSubtitleTemplates(self, request):
+        """根据智能字幕 模板唯一标识，获取智能字幕模板详情列表。返回结果包含符合条件的所有用户自定义智能字幕模板及系统预置智能字幕模板
+
+        :param request: Request instance for DescribeSmartSubtitleTemplates.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeSmartSubtitleTemplatesRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeSmartSubtitleTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSmartSubtitleTemplates", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSmartSubtitleTemplatesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2206,6 +2367,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyAsrHotwords(self, request):
+        """智能字幕更新热词库接口
+
+        :param request: Request instance for ModifyAsrHotwords.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ModifyAsrHotwordsRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModifyAsrHotwordsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAsrHotwords", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAsrHotwordsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyContentReviewTemplate(self, request):
         """修改用户自定义内容审核模板。
 
@@ -2358,6 +2542,29 @@ class MpsClient(AbstractClient):
             body = self.call("ModifySchedule", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyScheduleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifySmartSubtitleTemplate(self, request):
+        """修改用户自定义智能字幕模板。
+
+        :param request: Request instance for ModifySmartSubtitleTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ModifySmartSubtitleTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModifySmartSubtitleTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySmartSubtitleTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifySmartSubtitleTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2690,6 +2897,7 @@ class MpsClient(AbstractClient):
         8. 智能内容分析（标签、分类、封面、按帧标签、拆条、集锦、片头片尾、游戏打点）；
         9. 智能内容识别（人脸、文本全文、文本关键词、语音全文、语音关键词、语音翻译、物体识别）。
         10. 媒体质检（直播流格式诊断、音画内容检测（抖动、模糊、低光照、过曝光、黑边、白边、黑屏、白屏、花屏、噪点、马赛克、二维码等）、无参考打分）
+        11. 智能字幕（语音全文、语音热词、语音翻译）
 
         :param request: Request instance for ProcessMedia.
         :type request: :class:`tencentcloud.mps.v20190612.models.ProcessMediaRequest`

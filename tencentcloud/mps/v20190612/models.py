@@ -492,6 +492,7 @@ class Activity(AbstractModel):
 <li>action-snapshotByTimeOffset: 时间点截图</li>
 <li>action-adaptive-substream：自适应码流</li>
 <li>action-AIQualityControl：媒体质检</li>
+<li>action-SmartSubtitles：智能字幕</li>
 
 
 
@@ -523,6 +524,7 @@ class Activity(AbstractModel):
 <li>action-snapshotByTimeOffset: 时间点截图</li>
 <li>action-adaptive-substream：自适应码流</li>
 <li>action-AIQualityControl：媒体质检</li>
+<li>action-SmartSubtitles：智能字幕</li>
 
 
 
@@ -613,6 +615,9 @@ class ActivityPara(AbstractModel):
         :param _QualityControlTask: 媒体质检任务
 注意：此字段可能返回 null，表示取不到有效值。
         :type QualityControlTask: :class:`tencentcloud.mps.v20190612.models.AiQualityControlTaskInput`
+        :param _SmartSubtitlesTask: 智能字幕任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SmartSubtitlesTask: :class:`tencentcloud.mps.v20190612.models.SmartSubtitlesTaskInput`
         """
         self._TranscodeTask = None
         self._AnimatedGraphicTask = None
@@ -624,6 +629,7 @@ class ActivityPara(AbstractModel):
         self._AiAnalysisTask = None
         self._AiRecognitionTask = None
         self._QualityControlTask = None
+        self._SmartSubtitlesTask = None
 
     @property
     def TranscodeTask(self):
@@ -745,6 +751,18 @@ class ActivityPara(AbstractModel):
     def QualityControlTask(self, QualityControlTask):
         self._QualityControlTask = QualityControlTask
 
+    @property
+    def SmartSubtitlesTask(self):
+        """智能字幕任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitlesTaskInput`
+        """
+        return self._SmartSubtitlesTask
+
+    @SmartSubtitlesTask.setter
+    def SmartSubtitlesTask(self, SmartSubtitlesTask):
+        self._SmartSubtitlesTask = SmartSubtitlesTask
+
 
     def _deserialize(self, params):
         if params.get("TranscodeTask") is not None:
@@ -777,6 +795,9 @@ class ActivityPara(AbstractModel):
         if params.get("QualityControlTask") is not None:
             self._QualityControlTask = AiQualityControlTaskInput()
             self._QualityControlTask._deserialize(params.get("QualityControlTask"))
+        if params.get("SmartSubtitlesTask") is not None:
+            self._SmartSubtitlesTask = SmartSubtitlesTaskInput()
+            self._SmartSubtitlesTask._deserialize(params.get("SmartSubtitlesTask"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -824,6 +845,9 @@ class ActivityResItem(AbstractModel):
         :param _QualityControlTask: 媒体质检任务输出
 注意：此字段可能返回 null，表示取不到有效值。
         :type QualityControlTask: :class:`tencentcloud.mps.v20190612.models.ScheduleQualityControlTaskResult`
+        :param _SmartSubtitlesTask: 智能字幕任务输出
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SmartSubtitlesTask: :class:`tencentcloud.mps.v20190612.models.ScheduleSmartSubtitleTaskResult`
         """
         self._TranscodeTask = None
         self._AnimatedGraphicTask = None
@@ -835,6 +859,7 @@ class ActivityResItem(AbstractModel):
         self._ReviewTask = None
         self._AnalysisTask = None
         self._QualityControlTask = None
+        self._SmartSubtitlesTask = None
 
     @property
     def TranscodeTask(self):
@@ -956,6 +981,18 @@ class ActivityResItem(AbstractModel):
     def QualityControlTask(self, QualityControlTask):
         self._QualityControlTask = QualityControlTask
 
+    @property
+    def SmartSubtitlesTask(self):
+        """智能字幕任务输出
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ScheduleSmartSubtitleTaskResult`
+        """
+        return self._SmartSubtitlesTask
+
+    @SmartSubtitlesTask.setter
+    def SmartSubtitlesTask(self, SmartSubtitlesTask):
+        self._SmartSubtitlesTask = SmartSubtitlesTask
+
 
     def _deserialize(self, params):
         if params.get("TranscodeTask") is not None:
@@ -988,6 +1025,9 @@ class ActivityResItem(AbstractModel):
         if params.get("QualityControlTask") is not None:
             self._QualityControlTask = ScheduleQualityControlTaskResult()
             self._QualityControlTask._deserialize(params.get("QualityControlTask"))
+        if params.get("SmartSubtitlesTask") is not None:
+            self._SmartSubtitlesTask = ScheduleSmartSubtitleTaskResult()
+            self._SmartSubtitlesTask._deserialize(params.get("SmartSubtitlesTask"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1016,6 +1056,7 @@ class ActivityResult(AbstractModel):
 <li>AIRecognition：智能识别。</li>
 <li>AIAnalysis：智能分析。</li>
 <li>AiQualityControl：媒体质检。</li>
+<li>SmartSubtitles：智能字幕。</li>
         :type ActivityType: str
         :param _ActivityResItem: 原子任务输出。
         :type ActivityResItem: :class:`tencentcloud.mps.v20190612.models.ActivityResItem`
@@ -1036,6 +1077,7 @@ class ActivityResult(AbstractModel):
 <li>AIRecognition：智能识别。</li>
 <li>AIAnalysis：智能分析。</li>
 <li>AiQualityControl：媒体质检。</li>
+<li>SmartSubtitles：智能字幕。</li>
         :rtype: str
         """
         return self._ActivityType
@@ -10797,6 +10839,296 @@ class AsrFullTextConfigureInfoForUpdate(AbstractModel):
         
 
 
+class AsrHotWordsConfigure(AbstractModel):
+    """智能字幕热词参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 热词开关
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Switch: str
+        :param _LibraryId: 热词库ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LibraryId: str
+        """
+        self._Switch = None
+        self._LibraryId = None
+
+    @property
+    def Switch(self):
+        """热词开关
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def LibraryId(self):
+        """热词库ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LibraryId
+
+    @LibraryId.setter
+    def LibraryId(self, LibraryId):
+        self._LibraryId = LibraryId
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._LibraryId = params.get("LibraryId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AsrHotwordsSet(AbstractModel):
+    """热词库查询返回结果集
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HotwordsId: 热词库 Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HotwordsId: str
+        :param _Status: 当前热词库状态，数值表示绑定该热词库的智能字幕模板数量。
+Status 为 0 ，表示该热词库没有被智能字幕模版引用可以删除；
+Status 不为 0，表示该热词库不能被删除。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _Name: 热词库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _WordCount: 热词库中的热词数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WordCount: int
+        :param _FileName: 热词文件上传时的文件名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileName: str
+        :param _CreateTime: 热词库创建时间 ISOUTC 时间格式  2006-01-02T15:04:05Z
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _UpdateTime: 热词库创建时间 ISOUTC 时间格式  2006-01-02T15:04:05Z
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param _Type: 0：临时热词库
+1：文件热词库
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: int
+        """
+        self._HotwordsId = None
+        self._Status = None
+        self._Name = None
+        self._WordCount = None
+        self._FileName = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._Type = None
+
+    @property
+    def HotwordsId(self):
+        """热词库 Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._HotwordsId
+
+    @HotwordsId.setter
+    def HotwordsId(self, HotwordsId):
+        self._HotwordsId = HotwordsId
+
+    @property
+    def Status(self):
+        """当前热词库状态，数值表示绑定该热词库的智能字幕模板数量。
+Status 为 0 ，表示该热词库没有被智能字幕模版引用可以删除；
+Status 不为 0，表示该热词库不能被删除。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Name(self):
+        """热词库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def WordCount(self):
+        """热词库中的热词数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._WordCount
+
+    @WordCount.setter
+    def WordCount(self, WordCount):
+        self._WordCount = WordCount
+
+    @property
+    def FileName(self):
+        """热词文件上传时的文件名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def CreateTime(self):
+        """热词库创建时间 ISOUTC 时间格式  2006-01-02T15:04:05Z
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        """热词库创建时间 ISOUTC 时间格式  2006-01-02T15:04:05Z
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Type(self):
+        """0：临时热词库
+1：文件热词库
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._HotwordsId = params.get("HotwordsId")
+        self._Status = params.get("Status")
+        self._Name = params.get("Name")
+        self._WordCount = params.get("WordCount")
+        self._FileName = params.get("FileName")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AsrHotwordsSetItem(AbstractModel):
+    """单个热词信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 热词的序号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        :param _Text: 热词文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        :param _Weight: 词语权重，取值范围 1-10,11,100
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Weight: int
+        """
+        self._Id = None
+        self._Text = None
+        self._Weight = None
+
+    @property
+    def Id(self):
+        """热词的序号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Text(self):
+        """热词文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Weight(self):
+        """词语权重，取值范围 1-10,11,100
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Text = params.get("Text")
+        self._Weight = params.get("Weight")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AsrWordsConfigureInfo(AbstractModel):
     """语音关键词识别控制参数。
 
@@ -15622,6 +15954,149 @@ class CreateAnimatedGraphicsTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateAsrHotwordsRequest(AbstractModel):
+    """CreateAsrHotwords请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 0 临时热词 1 文件热词
+        :type Type: int
+        :param _Name: 热词库名称
+        :type Name: str
+        :param _Content: 热词库文本，Type为 0 必选
+        :type Content: str
+        :param _FileContent: 热词库文件的 base64 的内容，Type 为 1 必选
+
+
+        :type FileContent: str
+        :param _FileName: 上传的文件名
+        :type FileName: str
+        """
+        self._Type = None
+        self._Name = None
+        self._Content = None
+        self._FileContent = None
+        self._FileName = None
+
+    @property
+    def Type(self):
+        """0 临时热词 1 文件热词
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        """热词库名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Content(self):
+        """热词库文本，Type为 0 必选
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def FileContent(self):
+        """热词库文件的 base64 的内容，Type 为 1 必选
+
+
+        :rtype: str
+        """
+        return self._FileContent
+
+    @FileContent.setter
+    def FileContent(self, FileContent):
+        self._FileContent = FileContent
+
+    @property
+    def FileName(self):
+        """上传的文件名
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        self._Content = params.get("Content")
+        self._FileContent = params.get("FileContent")
+        self._FileName = params.get("FileName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAsrHotwordsResponse(AbstractModel):
+    """CreateAsrHotwords返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HotwordsId: 热词库 id
+        :type HotwordsId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._HotwordsId = None
+        self._RequestId = None
+
+    @property
+    def HotwordsId(self):
+        """热词库 id
+        :rtype: str
+        """
+        return self._HotwordsId
+
+    @HotwordsId.setter
+    def HotwordsId(self, HotwordsId):
+        self._HotwordsId = HotwordsId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._HotwordsId = params.get("HotwordsId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateContentReviewTemplateRequest(AbstractModel):
     """CreateContentReviewTemplate请求参数结构体
 
@@ -15633,11 +16108,11 @@ class CreateContentReviewTemplateRequest(AbstractModel):
         :type Name: str
         :param _Comment: 内容审核模板描述信息，长度限制：256 个字符。
         :type Comment: str
-        :param _PornConfigure: 令人反感的信息的控制参数。
+        :param _PornConfigure: 鉴黄任务控制参数。
         :type PornConfigure: :class:`tencentcloud.mps.v20190612.models.PornConfigureInfo`
-        :param _TerrorismConfigure: 令人不安全的信息的控制参数。
+        :param _TerrorismConfigure: 涉暴任务控制参数。
         :type TerrorismConfigure: :class:`tencentcloud.mps.v20190612.models.TerrorismConfigureInfo`
-        :param _PoliticalConfigure: 令人不适宜的信息的控制参数。
+        :param _PoliticalConfigure: 涉敏任务控制参数。
         :type PoliticalConfigure: :class:`tencentcloud.mps.v20190612.models.PoliticalConfigureInfo`
         :param _ProhibitedConfigure: 违禁控制参数。违禁内容包括：
 <li>谩骂；</li>
@@ -15679,7 +16154,7 @@ class CreateContentReviewTemplateRequest(AbstractModel):
 
     @property
     def PornConfigure(self):
-        """令人反感的信息的控制参数。
+        """鉴黄任务控制参数。
         :rtype: :class:`tencentcloud.mps.v20190612.models.PornConfigureInfo`
         """
         return self._PornConfigure
@@ -15690,7 +16165,7 @@ class CreateContentReviewTemplateRequest(AbstractModel):
 
     @property
     def TerrorismConfigure(self):
-        """令人不安全的信息的控制参数。
+        """涉暴任务控制参数。
         :rtype: :class:`tencentcloud.mps.v20190612.models.TerrorismConfigureInfo`
         """
         return self._TerrorismConfigure
@@ -15701,7 +16176,7 @@ class CreateContentReviewTemplateRequest(AbstractModel):
 
     @property
     def PoliticalConfigure(self):
-        """令人不适宜的信息的控制参数。
+        """涉敏任务控制参数。
         :rtype: :class:`tencentcloud.mps.v20190612.models.PoliticalConfigureInfo`
         """
         return self._PoliticalConfigure
@@ -18310,6 +18785,294 @@ class CreateScheduleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateSmartSubtitleTemplateRequest(AbstractModel):
+    """CreateSmartSubtitleTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 智能字幕模板名称
+长度限制：64 个字符。
+        :type Name: str
+        :param _VideoSrcLanguage: 智能字幕视频源语言
+当前支持以下语言：
+zh：简体中文
+en：英语
+ja：日语
+ko：韩语
+zh-PY：中英粤
+zh-medical：中文医疗
+yue：中文粤语
+vi：越南语
+ms：马来语
+id：印度尼西亚语
+fil：菲律宾语
+th：泰语
+pt：葡萄牙语
+tr：土耳其语
+ar：阿拉伯语
+es：西班牙语
+hi：印地语
+fr：法语
+de：德语
+zh_dialect：中文方言
+        :type VideoSrcLanguage: str
+        :param _SubtitleType: 智能字幕字幕语言类型
+0: 源语言
+1: 翻译语言
+2: 源语言+翻译语言
+当TranslateSwitch为OFF时仅支持取0
+当TranslateSwitch为ON时仅支持取1或2
+        :type SubtitleType: int
+        :param _Comment: 智能字幕模板描述信息
+长度限制：256 个字符。
+        :type Comment: str
+        :param _SubtitleFormat: 智能字幕文件格式
+ vtt: WebVTT 格式
+不填或填空：不生成字幕文件
+        :type SubtitleFormat: str
+        :param _AsrHotWordsConfigure: ASR热词库参数
+        :type AsrHotWordsConfigure: :class:`tencentcloud.mps.v20190612.models.AsrHotWordsConfigure`
+        :param _TranslateSwitch: 字幕翻译开关
+ON: 开启翻译
+OFF: 关闭翻译
+        :type TranslateSwitch: str
+        :param _TranslateDstLanguage: 字幕翻译目标语言
+当TranslateSwitch为ON的时候生效
+当前支持以下语言：
+zh：简体中文
+en：英语
+ja：日语
+ko：韩语
+fr：法语
+es：西班牙语
+it：意大利语
+de：德语
+tr：土耳其语
+ru：俄语
+pt：葡萄牙语
+vi：越南语
+id：印度尼西亚语
+ms：马来语
+th：泰语
+ar：阿拉伯语
+hi：印地语
+        :type TranslateDstLanguage: str
+        """
+        self._Name = None
+        self._VideoSrcLanguage = None
+        self._SubtitleType = None
+        self._Comment = None
+        self._SubtitleFormat = None
+        self._AsrHotWordsConfigure = None
+        self._TranslateSwitch = None
+        self._TranslateDstLanguage = None
+
+    @property
+    def Name(self):
+        """智能字幕模板名称
+长度限制：64 个字符。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def VideoSrcLanguage(self):
+        """智能字幕视频源语言
+当前支持以下语言：
+zh：简体中文
+en：英语
+ja：日语
+ko：韩语
+zh-PY：中英粤
+zh-medical：中文医疗
+yue：中文粤语
+vi：越南语
+ms：马来语
+id：印度尼西亚语
+fil：菲律宾语
+th：泰语
+pt：葡萄牙语
+tr：土耳其语
+ar：阿拉伯语
+es：西班牙语
+hi：印地语
+fr：法语
+de：德语
+zh_dialect：中文方言
+        :rtype: str
+        """
+        return self._VideoSrcLanguage
+
+    @VideoSrcLanguage.setter
+    def VideoSrcLanguage(self, VideoSrcLanguage):
+        self._VideoSrcLanguage = VideoSrcLanguage
+
+    @property
+    def SubtitleType(self):
+        """智能字幕字幕语言类型
+0: 源语言
+1: 翻译语言
+2: 源语言+翻译语言
+当TranslateSwitch为OFF时仅支持取0
+当TranslateSwitch为ON时仅支持取1或2
+        :rtype: int
+        """
+        return self._SubtitleType
+
+    @SubtitleType.setter
+    def SubtitleType(self, SubtitleType):
+        self._SubtitleType = SubtitleType
+
+    @property
+    def Comment(self):
+        """智能字幕模板描述信息
+长度限制：256 个字符。
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def SubtitleFormat(self):
+        """智能字幕文件格式
+ vtt: WebVTT 格式
+不填或填空：不生成字幕文件
+        :rtype: str
+        """
+        return self._SubtitleFormat
+
+    @SubtitleFormat.setter
+    def SubtitleFormat(self, SubtitleFormat):
+        self._SubtitleFormat = SubtitleFormat
+
+    @property
+    def AsrHotWordsConfigure(self):
+        """ASR热词库参数
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AsrHotWordsConfigure`
+        """
+        return self._AsrHotWordsConfigure
+
+    @AsrHotWordsConfigure.setter
+    def AsrHotWordsConfigure(self, AsrHotWordsConfigure):
+        self._AsrHotWordsConfigure = AsrHotWordsConfigure
+
+    @property
+    def TranslateSwitch(self):
+        """字幕翻译开关
+ON: 开启翻译
+OFF: 关闭翻译
+        :rtype: str
+        """
+        return self._TranslateSwitch
+
+    @TranslateSwitch.setter
+    def TranslateSwitch(self, TranslateSwitch):
+        self._TranslateSwitch = TranslateSwitch
+
+    @property
+    def TranslateDstLanguage(self):
+        """字幕翻译目标语言
+当TranslateSwitch为ON的时候生效
+当前支持以下语言：
+zh：简体中文
+en：英语
+ja：日语
+ko：韩语
+fr：法语
+es：西班牙语
+it：意大利语
+de：德语
+tr：土耳其语
+ru：俄语
+pt：葡萄牙语
+vi：越南语
+id：印度尼西亚语
+ms：马来语
+th：泰语
+ar：阿拉伯语
+hi：印地语
+        :rtype: str
+        """
+        return self._TranslateDstLanguage
+
+    @TranslateDstLanguage.setter
+    def TranslateDstLanguage(self, TranslateDstLanguage):
+        self._TranslateDstLanguage = TranslateDstLanguage
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._VideoSrcLanguage = params.get("VideoSrcLanguage")
+        self._SubtitleType = params.get("SubtitleType")
+        self._Comment = params.get("Comment")
+        self._SubtitleFormat = params.get("SubtitleFormat")
+        if params.get("AsrHotWordsConfigure") is not None:
+            self._AsrHotWordsConfigure = AsrHotWordsConfigure()
+            self._AsrHotWordsConfigure._deserialize(params.get("AsrHotWordsConfigure"))
+        self._TranslateSwitch = params.get("TranslateSwitch")
+        self._TranslateDstLanguage = params.get("TranslateDstLanguage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSmartSubtitleTemplateResponse(AbstractModel):
+    """CreateSmartSubtitleTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 智能字幕模板唯一标识。
+        :type Definition: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Definition = None
+        self._RequestId = None
+
+    @property
+    def Definition(self):
+        """智能字幕模板唯一标识。
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateSnapshotByTimeOffsetTemplateRequest(AbstractModel):
     """CreateSnapshotByTimeOffsetTemplate请求参数结构体
 
@@ -20303,6 +21066,70 @@ class DeleteAnimatedGraphicsTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteAsrHotwordsRequest(AbstractModel):
+    """DeleteAsrHotwords请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HotwordsId: 删除的热词库 id
+        :type HotwordsId: str
+        """
+        self._HotwordsId = None
+
+    @property
+    def HotwordsId(self):
+        """删除的热词库 id
+        :rtype: str
+        """
+        return self._HotwordsId
+
+    @HotwordsId.setter
+    def HotwordsId(self, HotwordsId):
+        self._HotwordsId = HotwordsId
+
+
+    def _deserialize(self, params):
+        self._HotwordsId = params.get("HotwordsId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAsrHotwordsResponse(AbstractModel):
+    """DeleteAsrHotwords返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteContentReviewTemplateRequest(AbstractModel):
     """DeleteContentReviewTemplate请求参数结构体
 
@@ -20725,6 +21552,70 @@ class DeleteScheduleRequest(AbstractModel):
 
 class DeleteScheduleResponse(AbstractModel):
     """DeleteSchedule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteSmartSubtitleTemplateRequest(AbstractModel):
+    """DeleteSmartSubtitleTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 智能字幕模板唯一标识。
+        :type Definition: int
+        """
+        self._Definition = None
+
+    @property
+    def Definition(self):
+        """智能字幕模板唯一标识。
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteSmartSubtitleTemplateResponse(AbstractModel):
+    """DeleteSmartSubtitleTemplate返回参数结构体
 
     """
 
@@ -22008,6 +22899,611 @@ class DescribeAnimatedGraphicsTemplatesResponse(AbstractModel):
                 obj = AnimatedGraphicsTemplate()
                 obj._deserialize(item)
                 self._AnimatedGraphicsTemplateSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAsrHotwordsListRequest(AbstractModel):
+    """DescribeAsrHotwordsList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HotwordsId: 检索参数，根据热词库 id 查询
+        :type HotwordsId: str
+        :param _Name: 检索参数，根据热词库名称查询
+        :type Name: str
+        :param _Offset: 分页偏移量，默认值：0。
+        :type Offset: int
+        :param _Limit: 返回记录条数，默认返回所有热词库
+        :type Limit: int
+        :param _OrderType: 热词排序顺序
+
+0：升序（默认）
+1：降序
+        :type OrderType: int
+        :param _OrderBy: 根据某个字段排序，默认使用创建时间，使用非法字段视为默认情况
+
+- CreateTime：创建时间排序
+- UpdateTime：更新时间排序
+- Name：热词库名称排序
+- WordCount：热词数量排序
+- HotwordsId：热词库 id 排序
+        :type OrderBy: str
+        :param _Types: 0 临时热词 1 文件热词
+        :type Types: list of int non-negative
+        """
+        self._HotwordsId = None
+        self._Name = None
+        self._Offset = None
+        self._Limit = None
+        self._OrderType = None
+        self._OrderBy = None
+        self._Types = None
+
+    @property
+    def HotwordsId(self):
+        """检索参数，根据热词库 id 查询
+        :rtype: str
+        """
+        return self._HotwordsId
+
+    @HotwordsId.setter
+    def HotwordsId(self, HotwordsId):
+        self._HotwordsId = HotwordsId
+
+    @property
+    def Name(self):
+        """检索参数，根据热词库名称查询
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Offset(self):
+        """分页偏移量，默认值：0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """返回记录条数，默认返回所有热词库
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def OrderType(self):
+        """热词排序顺序
+
+0：升序（默认）
+1：降序
+        :rtype: int
+        """
+        return self._OrderType
+
+    @OrderType.setter
+    def OrderType(self, OrderType):
+        self._OrderType = OrderType
+
+    @property
+    def OrderBy(self):
+        """根据某个字段排序，默认使用创建时间，使用非法字段视为默认情况
+
+- CreateTime：创建时间排序
+- UpdateTime：更新时间排序
+- Name：热词库名称排序
+- WordCount：热词数量排序
+- HotwordsId：热词库 id 排序
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def Types(self):
+        """0 临时热词 1 文件热词
+        :rtype: list of int non-negative
+        """
+        return self._Types
+
+    @Types.setter
+    def Types(self, Types):
+        self._Types = Types
+
+
+    def _deserialize(self, params):
+        self._HotwordsId = params.get("HotwordsId")
+        self._Name = params.get("Name")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._OrderType = params.get("OrderType")
+        self._OrderBy = params.get("OrderBy")
+        self._Types = params.get("Types")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAsrHotwordsListResponse(AbstractModel):
+    """DescribeAsrHotwordsList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总热词库数量
+        :type TotalCount: int
+        :param _Offset: 分页偏移量，默认值：0。
+        :type Offset: int
+        :param _Limit: 返回记录条数，默认返回所有热词库
+        :type Limit: int
+        :param _AsrHotwordsSet: 热词库列表
+        :type AsrHotwordsSet: list of AsrHotwordsSet
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Offset = None
+        self._Limit = None
+        self._AsrHotwordsSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """总热词库数量
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Offset(self):
+        """分页偏移量，默认值：0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """返回记录条数，默认返回所有热词库
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def AsrHotwordsSet(self):
+        """热词库列表
+        :rtype: list of AsrHotwordsSet
+        """
+        return self._AsrHotwordsSet
+
+    @AsrHotwordsSet.setter
+    def AsrHotwordsSet(self, AsrHotwordsSet):
+        self._AsrHotwordsSet = AsrHotwordsSet
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("AsrHotwordsSet") is not None:
+            self._AsrHotwordsSet = []
+            for item in params.get("AsrHotwordsSet"):
+                obj = AsrHotwordsSet()
+                obj._deserialize(item)
+                self._AsrHotwordsSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAsrHotwordsRequest(AbstractModel):
+    """DescribeAsrHotwords请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HotwordsId: 需要查询的热词库 id
+**注意：HotwordsId 与 Name 必须选择填写一个，如果同时填写，HotwordsId 优先级高于 Name**
+        :type HotwordsId: str
+        :param _Name: 热词库名称，
+**注意：HotwordsId 与 Name 必须选择填写一个，如果同时填写，HotwordsId 优先级高于 Name**
+        :type Name: str
+        :param _Offset: 分页偏移量，默认值：0。
+
+        :type Offset: int
+        :param _Limit: 返回记录条数，默认值：10，最大值：100。
+        :type Limit: int
+        :param _OrderBy: 热词排序字段，目前可选值为
+
+- Default：默认文件中的顺序
+- Weight：权重排序
+- Lexical：热词文本排序
+        :type OrderBy: str
+        :param _OrderType: 热词排序顺序 0：升序（默认） 1：降序
+        :type OrderType: int
+        """
+        self._HotwordsId = None
+        self._Name = None
+        self._Offset = None
+        self._Limit = None
+        self._OrderBy = None
+        self._OrderType = None
+
+    @property
+    def HotwordsId(self):
+        """需要查询的热词库 id
+**注意：HotwordsId 与 Name 必须选择填写一个，如果同时填写，HotwordsId 优先级高于 Name**
+        :rtype: str
+        """
+        return self._HotwordsId
+
+    @HotwordsId.setter
+    def HotwordsId(self, HotwordsId):
+        self._HotwordsId = HotwordsId
+
+    @property
+    def Name(self):
+        """热词库名称，
+**注意：HotwordsId 与 Name 必须选择填写一个，如果同时填写，HotwordsId 优先级高于 Name**
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Offset(self):
+        """分页偏移量，默认值：0。
+
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """返回记录条数，默认值：10，最大值：100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def OrderBy(self):
+        """热词排序字段，目前可选值为
+
+- Default：默认文件中的顺序
+- Weight：权重排序
+- Lexical：热词文本排序
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def OrderType(self):
+        """热词排序顺序 0：升序（默认） 1：降序
+        :rtype: int
+        """
+        return self._OrderType
+
+    @OrderType.setter
+    def OrderType(self, OrderType):
+        self._OrderType = OrderType
+
+
+    def _deserialize(self, params):
+        self._HotwordsId = params.get("HotwordsId")
+        self._Name = params.get("Name")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._OrderBy = params.get("OrderBy")
+        self._OrderType = params.get("OrderType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAsrHotwordsResponse(AbstractModel):
+    """DescribeAsrHotwords返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HotwordsId: 需要查询的热词库 id
+        :type HotwordsId: str
+        :param _Status: 当前热词库 id 状态，为 0 表示查询的时刻，没有模板绑定这个热词库，可以删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _Name: 热词库的名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Type: 临时热词库为 0，返回创建时候的字符串
+文件热词库为 1，返回创建是上传的文件内容
+
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: int
+        :param _FileName: 热词文件上传时的文件名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileName: str
+        :param _HotWords: 查询返回的热词库列表
+        :type HotWords: list of AsrHotwordsSetItem
+        :param _Content: 热词库文本，根据 Type 区分
+如果 Type 为 0，是热词库字符串
+如果 Type 是 1，是热词库文本文件的文件内容 base64 编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: str
+        :param _WordCount: 当前热词库包含的词语数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WordCount: int
+        :param _Offset: 分页偏移量，默认值：0。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Offset: int
+        :param _Limit: 返回记录条数，默认值：10，最大值：100。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Limit: int
+        :param _CreateTime: 热词库创建时间 ISOUTC 格式 "2006-01-02T15:04:05Z"
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _UpdateTime: 热词库修改时间 ISOUTC 格式 "2006-01-02T15:04:05Z"
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._HotwordsId = None
+        self._Status = None
+        self._Name = None
+        self._Type = None
+        self._FileName = None
+        self._HotWords = None
+        self._Content = None
+        self._WordCount = None
+        self._Offset = None
+        self._Limit = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._RequestId = None
+
+    @property
+    def HotwordsId(self):
+        """需要查询的热词库 id
+        :rtype: str
+        """
+        return self._HotwordsId
+
+    @HotwordsId.setter
+    def HotwordsId(self, HotwordsId):
+        self._HotwordsId = HotwordsId
+
+    @property
+    def Status(self):
+        """当前热词库 id 状态，为 0 表示查询的时刻，没有模板绑定这个热词库，可以删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Name(self):
+        """热词库的名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        """临时热词库为 0，返回创建时候的字符串
+文件热词库为 1，返回创建是上传的文件内容
+
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def FileName(self):
+        """热词文件上传时的文件名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def HotWords(self):
+        """查询返回的热词库列表
+        :rtype: list of AsrHotwordsSetItem
+        """
+        return self._HotWords
+
+    @HotWords.setter
+    def HotWords(self, HotWords):
+        self._HotWords = HotWords
+
+    @property
+    def Content(self):
+        """热词库文本，根据 Type 区分
+如果 Type 为 0，是热词库字符串
+如果 Type 是 1，是热词库文本文件的文件内容 base64 编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def WordCount(self):
+        """当前热词库包含的词语数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._WordCount
+
+    @WordCount.setter
+    def WordCount(self, WordCount):
+        self._WordCount = WordCount
+
+    @property
+    def Offset(self):
+        """分页偏移量，默认值：0。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """返回记录条数，默认值：10，最大值：100。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def CreateTime(self):
+        """热词库创建时间 ISOUTC 格式 "2006-01-02T15:04:05Z"
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        """热词库修改时间 ISOUTC 格式 "2006-01-02T15:04:05Z"
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._HotwordsId = params.get("HotwordsId")
+        self._Status = params.get("Status")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._FileName = params.get("FileName")
+        if params.get("HotWords") is not None:
+            self._HotWords = []
+            for item in params.get("HotWords"):
+                obj = AsrHotwordsSetItem()
+                obj._deserialize(item)
+                self._HotWords.append(obj)
+        self._Content = params.get("Content")
+        self._WordCount = params.get("WordCount")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         self._RequestId = params.get("RequestId")
 
 
@@ -25672,6 +27168,169 @@ class DescribeSchedulesResponse(AbstractModel):
                 obj = SchedulesInfo()
                 obj._deserialize(item)
                 self._ScheduleInfoSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSmartSubtitleTemplatesRequest(AbstractModel):
+    """DescribeSmartSubtitleTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definitions: 智能字幕模板唯一标识过滤条件，数组长度限制：10。
+        :type Definitions: list of int
+        :param _Offset: 分页偏移量，默认值：0。
+        :type Offset: int
+        :param _Limit: 返回记录条数，默认值：10，最大值：100。
+        :type Limit: int
+        :param _Type: 模板类型过滤条件，不填则返回所有，可选值：
+* Preset：系统预置模板；
+* Custom：用户自定义模板。
+        :type Type: str
+        :param _Name: 智能字幕模板标识过滤条件，长度限制：64 个字符。
+        :type Name: str
+        """
+        self._Definitions = None
+        self._Offset = None
+        self._Limit = None
+        self._Type = None
+        self._Name = None
+
+    @property
+    def Definitions(self):
+        """智能字幕模板唯一标识过滤条件，数组长度限制：10。
+        :rtype: list of int
+        """
+        return self._Definitions
+
+    @Definitions.setter
+    def Definitions(self, Definitions):
+        self._Definitions = Definitions
+
+    @property
+    def Offset(self):
+        """分页偏移量，默认值：0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """返回记录条数，默认值：10，最大值：100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Type(self):
+        """模板类型过滤条件，不填则返回所有，可选值：
+* Preset：系统预置模板；
+* Custom：用户自定义模板。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        """智能字幕模板标识过滤条件，长度限制：64 个字符。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._Definitions = params.get("Definitions")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSmartSubtitleTemplatesResponse(AbstractModel):
+    """DescribeSmartSubtitleTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 符合过滤条件的记录总数。
+        :type TotalCount: int
+        :param _SmartSubtitleTemplateSet: 智能字幕模板详情列表。
+        :type SmartSubtitleTemplateSet: list of SmartSubtitleTemplateItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._SmartSubtitleTemplateSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """符合过滤条件的记录总数。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def SmartSubtitleTemplateSet(self):
+        """智能字幕模板详情列表。
+        :rtype: list of SmartSubtitleTemplateItem
+        """
+        return self._SmartSubtitleTemplateSet
+
+    @SmartSubtitleTemplateSet.setter
+    def SmartSubtitleTemplateSet(self, SmartSubtitleTemplateSet):
+        self._SmartSubtitleTemplateSet = SmartSubtitleTemplateSet
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("SmartSubtitleTemplateSet") is not None:
+            self._SmartSubtitleTemplateSet = []
+            for item in params.get("SmartSubtitleTemplateSet"):
+                obj = SmartSubtitleTemplateItem()
+                obj._deserialize(item)
+                self._SmartSubtitleTemplateSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -41745,6 +43404,136 @@ class ModifyAnimatedGraphicsTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyAsrHotwordsRequest(AbstractModel):
+    """ModifyAsrHotwords请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HotwordsId: 热词库 id
+        :type HotwordsId: str
+        :param _Name: 热词库名称
+        :type Name: str
+        :param _Content: 热词库文本
+        :type Content: str
+        :param _FileContent: 热词库文件的 base64 的内容，Type 为 1 必选
+
+
+
+        :type FileContent: str
+        :param _FileName: 热词文件上传时的文件名
+        :type FileName: str
+        """
+        self._HotwordsId = None
+        self._Name = None
+        self._Content = None
+        self._FileContent = None
+        self._FileName = None
+
+    @property
+    def HotwordsId(self):
+        """热词库 id
+        :rtype: str
+        """
+        return self._HotwordsId
+
+    @HotwordsId.setter
+    def HotwordsId(self, HotwordsId):
+        self._HotwordsId = HotwordsId
+
+    @property
+    def Name(self):
+        """热词库名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Content(self):
+        """热词库文本
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def FileContent(self):
+        """热词库文件的 base64 的内容，Type 为 1 必选
+
+
+
+        :rtype: str
+        """
+        return self._FileContent
+
+    @FileContent.setter
+    def FileContent(self, FileContent):
+        self._FileContent = FileContent
+
+    @property
+    def FileName(self):
+        """热词文件上传时的文件名
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+
+    def _deserialize(self, params):
+        self._HotwordsId = params.get("HotwordsId")
+        self._Name = params.get("Name")
+        self._Content = params.get("Content")
+        self._FileContent = params.get("FileContent")
+        self._FileName = params.get("FileName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAsrHotwordsResponse(AbstractModel):
+    """ModifyAsrHotwords返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyContentReviewTemplateRequest(AbstractModel):
     """ModifyContentReviewTemplate请求参数结构体
 
@@ -43531,6 +45320,294 @@ class ModifyScheduleRequest(AbstractModel):
 
 class ModifyScheduleResponse(AbstractModel):
     """ModifySchedule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifySmartSubtitleTemplateRequest(AbstractModel):
+    """ModifySmartSubtitleTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 智能字幕模板唯一标识
+        :type Definition: int
+        :param _TranslateSwitch: 字幕翻译开关
+ON: 开启翻译
+OFF: 关闭翻译
+        :type TranslateSwitch: str
+        :param _Name: 智能字幕模板名称
+长度限制：64 个字符。
+        :type Name: str
+        :param _Comment: 智能字幕模板描述信息
+长度限制：256 个字符。
+        :type Comment: str
+        :param _VideoSrcLanguage: 智能字幕视频源语言
+当前支持以下语言：
+zh：简体中文
+en：英语
+ja：日语
+ko：韩语
+zh-PY：中英粤
+zh-medical：中文医疗
+yue：中文粤语
+vi：越南语
+ms：马来语
+id：印度尼西亚语
+fil：菲律宾语
+th：泰语
+pt：葡萄牙语
+tr：土耳其语
+ar：阿拉伯语
+es：西班牙语
+hi：印地语
+fr：法语
+de：德语
+zh_dialect：中文方言
+        :type VideoSrcLanguage: str
+        :param _SubtitleFormat: 智能字幕文件格式
+ vtt: WebVTT 格式
+不填或填空：不生成字幕文件
+        :type SubtitleFormat: str
+        :param _SubtitleType: 智能字幕字幕语言类型
+0: 源语言
+1: 翻译语言
+2: 源语言+翻译语言
+当TranslateSwitch为OFF时仅支持取0
+当TranslateSwitch为ON时仅支持取1或2
+        :type SubtitleType: int
+        :param _AsrHotWordsConfigure: ASR热词库参数
+        :type AsrHotWordsConfigure: :class:`tencentcloud.mps.v20190612.models.AsrHotWordsConfigure`
+        :param _TranslateDstLanguage: 字幕翻译目标语言
+当TranslateSwitch为ON的时候生效
+当前支持以下语言：
+zh：简体中文
+en：英语
+ja：日语
+ko：韩语
+fr：法语
+es：西班牙语
+it：意大利语
+de：德语
+tr：土耳其语
+ru：俄语
+pt：葡萄牙语
+vi：越南语
+id：印度尼西亚语
+ms：马来语
+th：泰语
+ar：阿拉伯语
+hi：印地语
+        :type TranslateDstLanguage: str
+        """
+        self._Definition = None
+        self._TranslateSwitch = None
+        self._Name = None
+        self._Comment = None
+        self._VideoSrcLanguage = None
+        self._SubtitleFormat = None
+        self._SubtitleType = None
+        self._AsrHotWordsConfigure = None
+        self._TranslateDstLanguage = None
+
+    @property
+    def Definition(self):
+        """智能字幕模板唯一标识
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def TranslateSwitch(self):
+        """字幕翻译开关
+ON: 开启翻译
+OFF: 关闭翻译
+        :rtype: str
+        """
+        return self._TranslateSwitch
+
+    @TranslateSwitch.setter
+    def TranslateSwitch(self, TranslateSwitch):
+        self._TranslateSwitch = TranslateSwitch
+
+    @property
+    def Name(self):
+        """智能字幕模板名称
+长度限制：64 个字符。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        """智能字幕模板描述信息
+长度限制：256 个字符。
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def VideoSrcLanguage(self):
+        """智能字幕视频源语言
+当前支持以下语言：
+zh：简体中文
+en：英语
+ja：日语
+ko：韩语
+zh-PY：中英粤
+zh-medical：中文医疗
+yue：中文粤语
+vi：越南语
+ms：马来语
+id：印度尼西亚语
+fil：菲律宾语
+th：泰语
+pt：葡萄牙语
+tr：土耳其语
+ar：阿拉伯语
+es：西班牙语
+hi：印地语
+fr：法语
+de：德语
+zh_dialect：中文方言
+        :rtype: str
+        """
+        return self._VideoSrcLanguage
+
+    @VideoSrcLanguage.setter
+    def VideoSrcLanguage(self, VideoSrcLanguage):
+        self._VideoSrcLanguage = VideoSrcLanguage
+
+    @property
+    def SubtitleFormat(self):
+        """智能字幕文件格式
+ vtt: WebVTT 格式
+不填或填空：不生成字幕文件
+        :rtype: str
+        """
+        return self._SubtitleFormat
+
+    @SubtitleFormat.setter
+    def SubtitleFormat(self, SubtitleFormat):
+        self._SubtitleFormat = SubtitleFormat
+
+    @property
+    def SubtitleType(self):
+        """智能字幕字幕语言类型
+0: 源语言
+1: 翻译语言
+2: 源语言+翻译语言
+当TranslateSwitch为OFF时仅支持取0
+当TranslateSwitch为ON时仅支持取1或2
+        :rtype: int
+        """
+        return self._SubtitleType
+
+    @SubtitleType.setter
+    def SubtitleType(self, SubtitleType):
+        self._SubtitleType = SubtitleType
+
+    @property
+    def AsrHotWordsConfigure(self):
+        """ASR热词库参数
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AsrHotWordsConfigure`
+        """
+        return self._AsrHotWordsConfigure
+
+    @AsrHotWordsConfigure.setter
+    def AsrHotWordsConfigure(self, AsrHotWordsConfigure):
+        self._AsrHotWordsConfigure = AsrHotWordsConfigure
+
+    @property
+    def TranslateDstLanguage(self):
+        """字幕翻译目标语言
+当TranslateSwitch为ON的时候生效
+当前支持以下语言：
+zh：简体中文
+en：英语
+ja：日语
+ko：韩语
+fr：法语
+es：西班牙语
+it：意大利语
+de：德语
+tr：土耳其语
+ru：俄语
+pt：葡萄牙语
+vi：越南语
+id：印度尼西亚语
+ms：马来语
+th：泰语
+ar：阿拉伯语
+hi：印地语
+        :rtype: str
+        """
+        return self._TranslateDstLanguage
+
+    @TranslateDstLanguage.setter
+    def TranslateDstLanguage(self, TranslateDstLanguage):
+        self._TranslateDstLanguage = TranslateDstLanguage
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._TranslateSwitch = params.get("TranslateSwitch")
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        self._VideoSrcLanguage = params.get("VideoSrcLanguage")
+        self._SubtitleFormat = params.get("SubtitleFormat")
+        self._SubtitleType = params.get("SubtitleType")
+        if params.get("AsrHotWordsConfigure") is not None:
+            self._AsrHotWordsConfigure = AsrHotWordsConfigure()
+            self._AsrHotWordsConfigure._deserialize(params.get("AsrHotWordsConfigure"))
+        self._TranslateDstLanguage = params.get("TranslateDstLanguage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySmartSubtitleTemplateResponse(AbstractModel):
+    """ModifySmartSubtitleTemplate返回参数结构体
 
     """
 
@@ -47775,6 +49852,13 @@ class ProcessMediaRequest(AbstractModel):
         :type TaskType: str
         :param _ResourceId: 资源ID，需要保证对应资源是开启状态。默认为帐号主资源ID。
         :type ResourceId: str
+        :param _SmartSubtitlesTask: 智能字幕
+        :type SmartSubtitlesTask: :class:`tencentcloud.mps.v20190612.models.SmartSubtitlesTaskInput`
+        :param _SkipMateData: 是否跳过元信息获取，可选值： 
+0：表示不跳过 
+1：表示跳过 
+默认值：0	
+        :type SkipMateData: int
         """
         self._InputInfo = None
         self._OutputStorage = None
@@ -47791,6 +49875,8 @@ class ProcessMediaRequest(AbstractModel):
         self._SessionContext = None
         self._TaskType = None
         self._ResourceId = None
+        self._SmartSubtitlesTask = None
+        self._SkipMateData = None
 
     @property
     def InputInfo(self):
@@ -47968,6 +50054,31 @@ class ProcessMediaRequest(AbstractModel):
     def ResourceId(self, ResourceId):
         self._ResourceId = ResourceId
 
+    @property
+    def SmartSubtitlesTask(self):
+        """智能字幕
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitlesTaskInput`
+        """
+        return self._SmartSubtitlesTask
+
+    @SmartSubtitlesTask.setter
+    def SmartSubtitlesTask(self, SmartSubtitlesTask):
+        self._SmartSubtitlesTask = SmartSubtitlesTask
+
+    @property
+    def SkipMateData(self):
+        """是否跳过元信息获取，可选值： 
+0：表示不跳过 
+1：表示跳过 
+默认值：0	
+        :rtype: int
+        """
+        return self._SkipMateData
+
+    @SkipMateData.setter
+    def SkipMateData(self, SkipMateData):
+        self._SkipMateData = SkipMateData
+
 
     def _deserialize(self, params):
         if params.get("InputInfo") is not None:
@@ -48001,6 +50112,10 @@ class ProcessMediaRequest(AbstractModel):
         self._SessionContext = params.get("SessionContext")
         self._TaskType = params.get("TaskType")
         self._ResourceId = params.get("ResourceId")
+        if params.get("SmartSubtitlesTask") is not None:
+            self._SmartSubtitlesTask = SmartSubtitlesTaskInput()
+            self._SmartSubtitlesTask._deserialize(params.get("SmartSubtitlesTask"))
+        self._SkipMateData = params.get("SkipMateData")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -49417,6 +51532,240 @@ class RawImageWatermarkInput(AbstractModel):
         self._Width = params.get("Width")
         self._Height = params.get("Height")
         self._RepeatType = params.get("RepeatType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RawSmartSubtitleParameter(AbstractModel):
+    """自定义智能字幕参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubtitleType: 智能字幕字幕语言类型
+0: 源语言
+1: 翻译语言
+2: 源语言+翻译语言
+当TranslateSwitch为OFF时仅支持取0
+当TranslateSwitch为ON时仅支持取1或2
+        :type SubtitleType: int
+        :param _VideoSrcLanguage: 智能字幕视频源语言
+当前支持以下语言：
+zh：简体中文
+en：英语
+ja：日语
+ko：韩语
+zh-PY：中英粤
+zh-medical：中文医疗
+yue：中文粤语
+vi：越南语
+ms：马来语
+id：印度尼西亚语
+fil：菲律宾语
+th：泰语
+pt：葡萄牙语
+tr：土耳其语
+ar：阿拉伯语
+es：西班牙语
+hi：印地语
+fr：法语
+de：德语
+zh_dialect：中文方言
+        :type VideoSrcLanguage: str
+        :param _SubtitleFormat: 智能字幕文件格式
+ vtt: WebVTT 格式
+不填或填空：不生成字幕文件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubtitleFormat: str
+        :param _TranslateSwitch: 字幕翻译开关
+ON: 开启翻译
+OFF: 关闭翻译
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TranslateSwitch: str
+        :param _TranslateDstLanguage: 字幕翻译目标语言
+当TranslateSwitch为ON的时候生效
+当前支持以下语言：
+zh：简体中文
+en：英语
+ja：日语
+ko：韩语
+fr：法语
+es：西班牙语
+it：意大利语
+de：德语
+tr：土耳其语
+ru：俄语
+pt：葡萄牙语
+vi：越南语
+id：印度尼西亚语
+ms：马来语
+th：泰语
+ar：阿拉伯语
+hi：印地语
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TranslateDstLanguage: str
+        :param _AsrHotWordsConfigure: ASR热词库参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsrHotWordsConfigure: :class:`tencentcloud.mps.v20190612.models.AsrHotWordsConfigure`
+        :param _ExtInfo: 自定义参数
+        :type ExtInfo: str
+        """
+        self._SubtitleType = None
+        self._VideoSrcLanguage = None
+        self._SubtitleFormat = None
+        self._TranslateSwitch = None
+        self._TranslateDstLanguage = None
+        self._AsrHotWordsConfigure = None
+        self._ExtInfo = None
+
+    @property
+    def SubtitleType(self):
+        """智能字幕字幕语言类型
+0: 源语言
+1: 翻译语言
+2: 源语言+翻译语言
+当TranslateSwitch为OFF时仅支持取0
+当TranslateSwitch为ON时仅支持取1或2
+        :rtype: int
+        """
+        return self._SubtitleType
+
+    @SubtitleType.setter
+    def SubtitleType(self, SubtitleType):
+        self._SubtitleType = SubtitleType
+
+    @property
+    def VideoSrcLanguage(self):
+        """智能字幕视频源语言
+当前支持以下语言：
+zh：简体中文
+en：英语
+ja：日语
+ko：韩语
+zh-PY：中英粤
+zh-medical：中文医疗
+yue：中文粤语
+vi：越南语
+ms：马来语
+id：印度尼西亚语
+fil：菲律宾语
+th：泰语
+pt：葡萄牙语
+tr：土耳其语
+ar：阿拉伯语
+es：西班牙语
+hi：印地语
+fr：法语
+de：德语
+zh_dialect：中文方言
+        :rtype: str
+        """
+        return self._VideoSrcLanguage
+
+    @VideoSrcLanguage.setter
+    def VideoSrcLanguage(self, VideoSrcLanguage):
+        self._VideoSrcLanguage = VideoSrcLanguage
+
+    @property
+    def SubtitleFormat(self):
+        """智能字幕文件格式
+ vtt: WebVTT 格式
+不填或填空：不生成字幕文件
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SubtitleFormat
+
+    @SubtitleFormat.setter
+    def SubtitleFormat(self, SubtitleFormat):
+        self._SubtitleFormat = SubtitleFormat
+
+    @property
+    def TranslateSwitch(self):
+        """字幕翻译开关
+ON: 开启翻译
+OFF: 关闭翻译
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TranslateSwitch
+
+    @TranslateSwitch.setter
+    def TranslateSwitch(self, TranslateSwitch):
+        self._TranslateSwitch = TranslateSwitch
+
+    @property
+    def TranslateDstLanguage(self):
+        """字幕翻译目标语言
+当TranslateSwitch为ON的时候生效
+当前支持以下语言：
+zh：简体中文
+en：英语
+ja：日语
+ko：韩语
+fr：法语
+es：西班牙语
+it：意大利语
+de：德语
+tr：土耳其语
+ru：俄语
+pt：葡萄牙语
+vi：越南语
+id：印度尼西亚语
+ms：马来语
+th：泰语
+ar：阿拉伯语
+hi：印地语
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TranslateDstLanguage
+
+    @TranslateDstLanguage.setter
+    def TranslateDstLanguage(self, TranslateDstLanguage):
+        self._TranslateDstLanguage = TranslateDstLanguage
+
+    @property
+    def AsrHotWordsConfigure(self):
+        """ASR热词库参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AsrHotWordsConfigure`
+        """
+        return self._AsrHotWordsConfigure
+
+    @AsrHotWordsConfigure.setter
+    def AsrHotWordsConfigure(self, AsrHotWordsConfigure):
+        self._AsrHotWordsConfigure = AsrHotWordsConfigure
+
+    @property
+    def ExtInfo(self):
+        """自定义参数
+        :rtype: str
+        """
+        return self._ExtInfo
+
+    @ExtInfo.setter
+    def ExtInfo(self, ExtInfo):
+        self._ExtInfo = ExtInfo
+
+
+    def _deserialize(self, params):
+        self._SubtitleType = params.get("SubtitleType")
+        self._VideoSrcLanguage = params.get("VideoSrcLanguage")
+        self._SubtitleFormat = params.get("SubtitleFormat")
+        self._TranslateSwitch = params.get("TranslateSwitch")
+        self._TranslateDstLanguage = params.get("TranslateDstLanguage")
+        if params.get("AsrHotWordsConfigure") is not None:
+            self._AsrHotWordsConfigure = AsrHotWordsConfigure()
+            self._AsrHotWordsConfigure._deserialize(params.get("AsrHotWordsConfigure"))
+        self._ExtInfo = params.get("ExtInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -51426,6 +53775,162 @@ class ScheduleReviewTaskResult(AbstractModel):
         
 
 
+class ScheduleSmartSubtitleTaskResult(AbstractModel):
+    """编排智能字幕任务结果类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param _ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
+        :param _ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+        :type ErrCode: int
+        :param _Message: 错误信息。
+        :type Message: str
+        :param _Input: 识别任务的输入。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Input: :class:`tencentcloud.mps.v20190612.models.SmartSubtitlesTaskInput`
+        :param _Output: 识别任务的输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: list of SmartSubtitlesResult
+        :param _BeginProcessTime: 任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BeginProcessTime: str
+        :param _FinishTime: 任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FinishTime: str
+        """
+        self._Status = None
+        self._ErrCodeExt = None
+        self._ErrCode = None
+        self._Message = None
+        self._Input = None
+        self._Output = None
+        self._BeginProcessTime = None
+        self._FinishTime = None
+
+    @property
+    def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCodeExt(self):
+        """错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :rtype: str
+        """
+        return self._ErrCodeExt
+
+    @ErrCodeExt.setter
+    def ErrCodeExt(self, ErrCodeExt):
+        self._ErrCodeExt = ErrCodeExt
+
+    @property
+    def ErrCode(self):
+        """错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+        :rtype: int
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        """错误信息。
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Input(self):
+        """识别任务的输入。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitlesTaskInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        """识别任务的输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SmartSubtitlesResult
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def BeginProcessTime(self):
+        """任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BeginProcessTime
+
+    @BeginProcessTime.setter
+    def BeginProcessTime(self, BeginProcessTime):
+        self._BeginProcessTime = BeginProcessTime
+
+    @property
+    def FinishTime(self):
+        """任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrCodeExt = params.get("ErrCodeExt")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        if params.get("Input") is not None:
+            self._Input = SmartSubtitlesTaskInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = []
+            for item in params.get("Output"):
+                obj = SmartSubtitlesResult()
+                obj._deserialize(item)
+                self._Output.append(obj)
+        self._BeginProcessTime = params.get("BeginProcessTime")
+        self._FinishTime = params.get("FinishTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ScheduleTask(AbstractModel):
     """编排任务信息
 
@@ -52543,6 +55048,1179 @@ class SimpleAesDrm(AbstractModel):
         self._Uri = params.get("Uri")
         self._Key = params.get("Key")
         self._Vector = params.get("Vector")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SmartSubtitleTaskAsrFullTextResult(AbstractModel):
+    """语音全文识别结果。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param _ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
+        :param _ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+        :type ErrCode: int
+        :param _Message: 错误信息。
+        :type Message: str
+        :param _Input: 语音全文识别任务输入信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Input: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskResultInput`
+        :param _Output: 语音全文识别任务输出信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskAsrFullTextResultOutput`
+        :param _Progress: 任务进度。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Progress: int
+        """
+        self._Status = None
+        self._ErrCodeExt = None
+        self._ErrCode = None
+        self._Message = None
+        self._Input = None
+        self._Output = None
+        self._Progress = None
+
+    @property
+    def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCodeExt(self):
+        """错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :rtype: str
+        """
+        return self._ErrCodeExt
+
+    @ErrCodeExt.setter
+    def ErrCodeExt(self, ErrCodeExt):
+        self._ErrCodeExt = ErrCodeExt
+
+    @property
+    def ErrCode(self):
+        """错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+        :rtype: int
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        """错误信息。
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Input(self):
+        """语音全文识别任务输入信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskResultInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        """语音全文识别任务输出信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskAsrFullTextResultOutput`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def Progress(self):
+        """任务进度。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrCodeExt = params.get("ErrCodeExt")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        if params.get("Input") is not None:
+            self._Input = SmartSubtitleTaskResultInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = SmartSubtitleTaskAsrFullTextResultOutput()
+            self._Output._deserialize(params.get("Output"))
+        self._Progress = params.get("Progress")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SmartSubtitleTaskAsrFullTextResultOutput(AbstractModel):
+    """语音全文识别结果。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SegmentSet: 语音全文识别片段列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SegmentSet: list of SmartSubtitleTaskAsrFullTextSegmentItem
+        :param _SubtitlePath: 字幕文件地址。
+        :type SubtitlePath: str
+        """
+        self._SegmentSet = None
+        self._SubtitlePath = None
+
+    @property
+    def SegmentSet(self):
+        """语音全文识别片段列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SmartSubtitleTaskAsrFullTextSegmentItem
+        """
+        return self._SegmentSet
+
+    @SegmentSet.setter
+    def SegmentSet(self, SegmentSet):
+        self._SegmentSet = SegmentSet
+
+    @property
+    def SubtitlePath(self):
+        """字幕文件地址。
+        :rtype: str
+        """
+        return self._SubtitlePath
+
+    @SubtitlePath.setter
+    def SubtitlePath(self, SubtitlePath):
+        self._SubtitlePath = SubtitlePath
+
+
+    def _deserialize(self, params):
+        if params.get("SegmentSet") is not None:
+            self._SegmentSet = []
+            for item in params.get("SegmentSet"):
+                obj = SmartSubtitleTaskAsrFullTextSegmentItem()
+                obj._deserialize(item)
+                self._SegmentSet.append(obj)
+        self._SubtitlePath = params.get("SubtitlePath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SmartSubtitleTaskAsrFullTextSegmentItem(AbstractModel):
+    """语音全文识别片段。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Confidence: 识别片段置信度。取值：0~100。
+        :type Confidence: float
+        :param _StartTimeOffset: 识别片段起始的偏移时间，单位：秒。
+        :type StartTimeOffset: float
+        :param _EndTimeOffset: 识别片段终止的偏移时间，单位：秒。
+        :type EndTimeOffset: float
+        :param _Text: 识别文本。
+        :type Text: str
+        :param _Wordlist: 字词时间戳信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Wordlist: list of WordResult
+        """
+        self._Confidence = None
+        self._StartTimeOffset = None
+        self._EndTimeOffset = None
+        self._Text = None
+        self._Wordlist = None
+
+    @property
+    def Confidence(self):
+        """识别片段置信度。取值：0~100。
+        :rtype: float
+        """
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def StartTimeOffset(self):
+        """识别片段起始的偏移时间，单位：秒。
+        :rtype: float
+        """
+        return self._StartTimeOffset
+
+    @StartTimeOffset.setter
+    def StartTimeOffset(self, StartTimeOffset):
+        self._StartTimeOffset = StartTimeOffset
+
+    @property
+    def EndTimeOffset(self):
+        """识别片段终止的偏移时间，单位：秒。
+        :rtype: float
+        """
+        return self._EndTimeOffset
+
+    @EndTimeOffset.setter
+    def EndTimeOffset(self, EndTimeOffset):
+        self._EndTimeOffset = EndTimeOffset
+
+    @property
+    def Text(self):
+        """识别文本。
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Wordlist(self):
+        """字词时间戳信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of WordResult
+        """
+        return self._Wordlist
+
+    @Wordlist.setter
+    def Wordlist(self, Wordlist):
+        self._Wordlist = Wordlist
+
+
+    def _deserialize(self, params):
+        self._Confidence = params.get("Confidence")
+        self._StartTimeOffset = params.get("StartTimeOffset")
+        self._EndTimeOffset = params.get("EndTimeOffset")
+        self._Text = params.get("Text")
+        if params.get("Wordlist") is not None:
+            self._Wordlist = []
+            for item in params.get("Wordlist"):
+                obj = WordResult()
+                obj._deserialize(item)
+                self._Wordlist.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SmartSubtitleTaskResultInput(AbstractModel):
+    """智能字幕翻译的输入。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 智能字幕模板 ID。
+        :type Definition: int
+        :param _RawParameter: 智能字幕自定义参数，当 Definition 填 0 时有效。
+该参数用于高度定制场景，建议您优先使用 Definition 指定智能字幕参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RawParameter: :class:`tencentcloud.mps.v20190612.models.RawSmartSubtitleParameter`
+        """
+        self._Definition = None
+        self._RawParameter = None
+
+    @property
+    def Definition(self):
+        """智能字幕模板 ID。
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def RawParameter(self):
+        """智能字幕自定义参数，当 Definition 填 0 时有效。
+该参数用于高度定制场景，建议您优先使用 Definition 指定智能字幕参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.RawSmartSubtitleParameter`
+        """
+        return self._RawParameter
+
+    @RawParameter.setter
+    def RawParameter(self, RawParameter):
+        self._RawParameter = RawParameter
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        if params.get("RawParameter") is not None:
+            self._RawParameter = RawSmartSubtitleParameter()
+            self._RawParameter._deserialize(params.get("RawParameter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SmartSubtitleTaskTransTextResult(AbstractModel):
+    """翻译结果。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param _ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
+        :param _ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+        :type ErrCode: int
+        :param _Message: 错误信息。
+        :type Message: str
+        :param _Input: 翻译任务输入信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Input: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskResultInput`
+        :param _Output: 翻译任务输出信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskTransTextResultOutput`
+        :param _Progress: 任务进度。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Progress: int
+        """
+        self._Status = None
+        self._ErrCodeExt = None
+        self._ErrCode = None
+        self._Message = None
+        self._Input = None
+        self._Output = None
+        self._Progress = None
+
+    @property
+    def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCodeExt(self):
+        """错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :rtype: str
+        """
+        return self._ErrCodeExt
+
+    @ErrCodeExt.setter
+    def ErrCodeExt(self, ErrCodeExt):
+        self._ErrCodeExt = ErrCodeExt
+
+    @property
+    def ErrCode(self):
+        """错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+        :rtype: int
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        """错误信息。
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Input(self):
+        """翻译任务输入信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskResultInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        """翻译任务输出信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskTransTextResultOutput`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def Progress(self):
+        """任务进度。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrCodeExt = params.get("ErrCodeExt")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        if params.get("Input") is not None:
+            self._Input = SmartSubtitleTaskResultInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = SmartSubtitleTaskTransTextResultOutput()
+            self._Output._deserialize(params.get("Output"))
+        self._Progress = params.get("Progress")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SmartSubtitleTaskTransTextResultOutput(AbstractModel):
+    """翻译结果。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SegmentSet: 翻译片段列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SegmentSet: list of SmartSubtitleTaskTransTextSegmentItem
+        :param _SubtitlePath: 字幕文件地址。
+        :type SubtitlePath: str
+        """
+        self._SegmentSet = None
+        self._SubtitlePath = None
+
+    @property
+    def SegmentSet(self):
+        """翻译片段列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SmartSubtitleTaskTransTextSegmentItem
+        """
+        return self._SegmentSet
+
+    @SegmentSet.setter
+    def SegmentSet(self, SegmentSet):
+        self._SegmentSet = SegmentSet
+
+    @property
+    def SubtitlePath(self):
+        """字幕文件地址。
+        :rtype: str
+        """
+        return self._SubtitlePath
+
+    @SubtitlePath.setter
+    def SubtitlePath(self, SubtitlePath):
+        self._SubtitlePath = SubtitlePath
+
+
+    def _deserialize(self, params):
+        if params.get("SegmentSet") is not None:
+            self._SegmentSet = []
+            for item in params.get("SegmentSet"):
+                obj = SmartSubtitleTaskTransTextSegmentItem()
+                obj._deserialize(item)
+                self._SegmentSet.append(obj)
+        self._SubtitlePath = params.get("SubtitlePath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SmartSubtitleTaskTransTextSegmentItem(AbstractModel):
+    """翻译片段。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Confidence: 识别片段置信度。取值：0~100。
+        :type Confidence: float
+        :param _StartTimeOffset: 识别片段起始的偏移时间，单位：秒。
+        :type StartTimeOffset: float
+        :param _EndTimeOffset: 识别片段终止的偏移时间，单位：秒。
+        :type EndTimeOffset: float
+        :param _Text: 识别文本。
+        :type Text: str
+        :param _Trans: 翻译文本。
+        :type Trans: str
+        :param _Wordlist: 字词时间戳信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Wordlist: list of WordResult
+        """
+        self._Confidence = None
+        self._StartTimeOffset = None
+        self._EndTimeOffset = None
+        self._Text = None
+        self._Trans = None
+        self._Wordlist = None
+
+    @property
+    def Confidence(self):
+        """识别片段置信度。取值：0~100。
+        :rtype: float
+        """
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def StartTimeOffset(self):
+        """识别片段起始的偏移时间，单位：秒。
+        :rtype: float
+        """
+        return self._StartTimeOffset
+
+    @StartTimeOffset.setter
+    def StartTimeOffset(self, StartTimeOffset):
+        self._StartTimeOffset = StartTimeOffset
+
+    @property
+    def EndTimeOffset(self):
+        """识别片段终止的偏移时间，单位：秒。
+        :rtype: float
+        """
+        return self._EndTimeOffset
+
+    @EndTimeOffset.setter
+    def EndTimeOffset(self, EndTimeOffset):
+        self._EndTimeOffset = EndTimeOffset
+
+    @property
+    def Text(self):
+        """识别文本。
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Trans(self):
+        """翻译文本。
+        :rtype: str
+        """
+        return self._Trans
+
+    @Trans.setter
+    def Trans(self, Trans):
+        self._Trans = Trans
+
+    @property
+    def Wordlist(self):
+        """字词时间戳信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of WordResult
+        """
+        return self._Wordlist
+
+    @Wordlist.setter
+    def Wordlist(self, Wordlist):
+        self._Wordlist = Wordlist
+
+
+    def _deserialize(self, params):
+        self._Confidence = params.get("Confidence")
+        self._StartTimeOffset = params.get("StartTimeOffset")
+        self._EndTimeOffset = params.get("EndTimeOffset")
+        self._Text = params.get("Text")
+        self._Trans = params.get("Trans")
+        if params.get("Wordlist") is not None:
+            self._Wordlist = []
+            for item in params.get("Wordlist"):
+                obj = WordResult()
+                obj._deserialize(item)
+                self._Wordlist.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SmartSubtitleTemplateItem(AbstractModel):
+    """智能字幕模板详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 智能字幕模板唯一标识
+        :type Definition: int
+        :param _Name: 智能字幕模板名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Comment: 智能字幕模板描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Comment: str
+        :param _Type: 模板类型，取值范围：
+* Preset：系统预置模板；
+* Custom：用户自定义模板。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _AsrHotWordsConfigure: ASR热词库参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsrHotWordsConfigure: :class:`tencentcloud.mps.v20190612.models.AsrHotWordsConfigure`
+        :param _AsrHotWordsLibraryName: 模板关联热词库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsrHotWordsLibraryName: str
+        :param _VideoSrcLanguage: 智能字幕视频源语言
+当前支持以下语言：
+zh：简体中文
+en：英语
+ja：日语
+ko：韩语
+zh-PY：中英粤
+zh-medical：中文医疗
+yue：中文粤语
+vi：越南语
+ms：马来语
+id：印度尼西亚语
+fil：菲律宾语
+th：泰语
+pt：葡萄牙语
+tr：土耳其语
+ar：阿拉伯语
+es：西班牙语
+hi：印地语
+fr：法语
+de：德语
+zh_dialect：中文方言
+        :type VideoSrcLanguage: str
+        :param _SubtitleFormat: 智能字幕文件格式
+ vtt: WebVTT 格式
+不填或填空：不生成字幕文件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubtitleFormat: str
+        :param _SubtitleType: 智能字幕字幕语言类型
+0: 源语言
+1: 翻译语言
+2: 源语言+翻译语言
+当TranslateSwitch为OFF时仅支持取0
+当TranslateSwitch为ON时仅支持取1或2
+        :type SubtitleType: int
+        :param _TranslateSwitch: 字幕翻译开关
+ON: 开启翻译
+OFF: 关闭翻译
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TranslateSwitch: str
+        :param _TranslateDstLanguage: 字幕翻译目标语言
+当TranslateSwitch为ON的时候生效
+当前支持以下语言：
+zh：简体中文
+en：英语
+ja：日语
+ko：韩语
+fr：法语
+es：西班牙语
+it：意大利语
+de：德语
+tr：土耳其语
+ru：俄语
+pt：葡萄牙语
+vi：越南语
+id：印度尼西亚语
+ms：马来语
+th：泰语
+ar：阿拉伯语
+hi：印地语
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TranslateDstLanguage: str
+        :param _CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :type CreateTime: str
+        :param _UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :type UpdateTime: str
+        :param _AliasName: 智能字幕预设模板别名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AliasName: str
+        """
+        self._Definition = None
+        self._Name = None
+        self._Comment = None
+        self._Type = None
+        self._AsrHotWordsConfigure = None
+        self._AsrHotWordsLibraryName = None
+        self._VideoSrcLanguage = None
+        self._SubtitleFormat = None
+        self._SubtitleType = None
+        self._TranslateSwitch = None
+        self._TranslateDstLanguage = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._AliasName = None
+
+    @property
+    def Definition(self):
+        """智能字幕模板唯一标识
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def Name(self):
+        """智能字幕模板名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        """智能字幕模板描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def Type(self):
+        """模板类型，取值范围：
+* Preset：系统预置模板；
+* Custom：用户自定义模板。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def AsrHotWordsConfigure(self):
+        """ASR热词库参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AsrHotWordsConfigure`
+        """
+        return self._AsrHotWordsConfigure
+
+    @AsrHotWordsConfigure.setter
+    def AsrHotWordsConfigure(self, AsrHotWordsConfigure):
+        self._AsrHotWordsConfigure = AsrHotWordsConfigure
+
+    @property
+    def AsrHotWordsLibraryName(self):
+        """模板关联热词库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AsrHotWordsLibraryName
+
+    @AsrHotWordsLibraryName.setter
+    def AsrHotWordsLibraryName(self, AsrHotWordsLibraryName):
+        self._AsrHotWordsLibraryName = AsrHotWordsLibraryName
+
+    @property
+    def VideoSrcLanguage(self):
+        """智能字幕视频源语言
+当前支持以下语言：
+zh：简体中文
+en：英语
+ja：日语
+ko：韩语
+zh-PY：中英粤
+zh-medical：中文医疗
+yue：中文粤语
+vi：越南语
+ms：马来语
+id：印度尼西亚语
+fil：菲律宾语
+th：泰语
+pt：葡萄牙语
+tr：土耳其语
+ar：阿拉伯语
+es：西班牙语
+hi：印地语
+fr：法语
+de：德语
+zh_dialect：中文方言
+        :rtype: str
+        """
+        return self._VideoSrcLanguage
+
+    @VideoSrcLanguage.setter
+    def VideoSrcLanguage(self, VideoSrcLanguage):
+        self._VideoSrcLanguage = VideoSrcLanguage
+
+    @property
+    def SubtitleFormat(self):
+        """智能字幕文件格式
+ vtt: WebVTT 格式
+不填或填空：不生成字幕文件
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SubtitleFormat
+
+    @SubtitleFormat.setter
+    def SubtitleFormat(self, SubtitleFormat):
+        self._SubtitleFormat = SubtitleFormat
+
+    @property
+    def SubtitleType(self):
+        """智能字幕字幕语言类型
+0: 源语言
+1: 翻译语言
+2: 源语言+翻译语言
+当TranslateSwitch为OFF时仅支持取0
+当TranslateSwitch为ON时仅支持取1或2
+        :rtype: int
+        """
+        return self._SubtitleType
+
+    @SubtitleType.setter
+    def SubtitleType(self, SubtitleType):
+        self._SubtitleType = SubtitleType
+
+    @property
+    def TranslateSwitch(self):
+        """字幕翻译开关
+ON: 开启翻译
+OFF: 关闭翻译
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TranslateSwitch
+
+    @TranslateSwitch.setter
+    def TranslateSwitch(self, TranslateSwitch):
+        self._TranslateSwitch = TranslateSwitch
+
+    @property
+    def TranslateDstLanguage(self):
+        """字幕翻译目标语言
+当TranslateSwitch为ON的时候生效
+当前支持以下语言：
+zh：简体中文
+en：英语
+ja：日语
+ko：韩语
+fr：法语
+es：西班牙语
+it：意大利语
+de：德语
+tr：土耳其语
+ru：俄语
+pt：葡萄牙语
+vi：越南语
+id：印度尼西亚语
+ms：马来语
+th：泰语
+ar：阿拉伯语
+hi：印地语
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TranslateDstLanguage
+
+    @TranslateDstLanguage.setter
+    def TranslateDstLanguage(self, TranslateDstLanguage):
+        self._TranslateDstLanguage = TranslateDstLanguage
+
+    @property
+    def CreateTime(self):
+        """模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        """模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def AliasName(self):
+        """智能字幕预设模板别名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AliasName
+
+    @AliasName.setter
+    def AliasName(self, AliasName):
+        self._AliasName = AliasName
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        self._Type = params.get("Type")
+        if params.get("AsrHotWordsConfigure") is not None:
+            self._AsrHotWordsConfigure = AsrHotWordsConfigure()
+            self._AsrHotWordsConfigure._deserialize(params.get("AsrHotWordsConfigure"))
+        self._AsrHotWordsLibraryName = params.get("AsrHotWordsLibraryName")
+        self._VideoSrcLanguage = params.get("VideoSrcLanguage")
+        self._SubtitleFormat = params.get("SubtitleFormat")
+        self._SubtitleType = params.get("SubtitleType")
+        self._TranslateSwitch = params.get("TranslateSwitch")
+        self._TranslateDstLanguage = params.get("TranslateDstLanguage")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._AliasName = params.get("AliasName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SmartSubtitlesResult(AbstractModel):
+    """智能字幕结果。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 任务的类型，取值范围：
+<li>AsrFullTextRecognition：语音全文识别，</li>
+<li>TransTextRecognition：语音翻译。</li>
+        :type Type: str
+        :param _AsrFullTextTask: 语音全文识别结果，当 Type 为
+ AsrFullTextRecognition 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsrFullTextTask: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskAsrFullTextResult`
+        :param _TransTextTask: 翻译结果，当 Type 为
+
+TransTextRecognition 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransTextTask: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskTransTextResult`
+        """
+        self._Type = None
+        self._AsrFullTextTask = None
+        self._TransTextTask = None
+
+    @property
+    def Type(self):
+        """任务的类型，取值范围：
+<li>AsrFullTextRecognition：语音全文识别，</li>
+<li>TransTextRecognition：语音翻译。</li>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def AsrFullTextTask(self):
+        """语音全文识别结果，当 Type 为
+ AsrFullTextRecognition 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskAsrFullTextResult`
+        """
+        return self._AsrFullTextTask
+
+    @AsrFullTextTask.setter
+    def AsrFullTextTask(self, AsrFullTextTask):
+        self._AsrFullTextTask = AsrFullTextTask
+
+    @property
+    def TransTextTask(self):
+        """翻译结果，当 Type 为
+
+TransTextRecognition 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskTransTextResult`
+        """
+        return self._TransTextTask
+
+    @TransTextTask.setter
+    def TransTextTask(self, TransTextTask):
+        self._TransTextTask = TransTextTask
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        if params.get("AsrFullTextTask") is not None:
+            self._AsrFullTextTask = SmartSubtitleTaskAsrFullTextResult()
+            self._AsrFullTextTask._deserialize(params.get("AsrFullTextTask"))
+        if params.get("TransTextTask") is not None:
+            self._TransTextTask = SmartSubtitleTaskTransTextResult()
+            self._TransTextTask._deserialize(params.get("TransTextTask"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SmartSubtitlesTaskInput(AbstractModel):
+    """智能字幕输入结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 智能字幕模板 ID 。	
+        :type Definition: int
+        :param _UserExtPara: 用户扩展字段，一般场景不用填。
+        :type UserExtPara: str
+        :param _RawParameter: 智能字幕自定义参数，当 Definition 填 0 时有效。 该参数用于高度定制场景，建议您优先使用 Definition 指定智能字幕参数。	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RawParameter: :class:`tencentcloud.mps.v20190612.models.RawSmartSubtitleParameter`
+        """
+        self._Definition = None
+        self._UserExtPara = None
+        self._RawParameter = None
+
+    @property
+    def Definition(self):
+        """智能字幕模板 ID 。	
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def UserExtPara(self):
+        """用户扩展字段，一般场景不用填。
+        :rtype: str
+        """
+        return self._UserExtPara
+
+    @UserExtPara.setter
+    def UserExtPara(self, UserExtPara):
+        self._UserExtPara = UserExtPara
+
+    @property
+    def RawParameter(self):
+        """智能字幕自定义参数，当 Definition 填 0 时有效。 该参数用于高度定制场景，建议您优先使用 Definition 指定智能字幕参数。	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.RawSmartSubtitleParameter`
+        """
+        return self._RawParameter
+
+    @RawParameter.setter
+    def RawParameter(self, RawParameter):
+        self._RawParameter = RawParameter
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._UserExtPara = params.get("UserExtPara")
+        if params.get("RawParameter") is not None:
+            self._RawParameter = RawSmartSubtitleParameter()
+            self._RawParameter._deserialize(params.get("RawParameter"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -58958,6 +62636,9 @@ class WorkflowTask(AbstractModel):
         :param _AiQualityControlTaskResult: 媒体质检任务的执行状态与结果。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AiQualityControlTaskResult: :class:`tencentcloud.mps.v20190612.models.ScheduleQualityControlTaskResult`
+        :param _SmartSubtitlesTaskResult: 智能字幕任务的执行结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SmartSubtitlesTaskResult: list of SmartSubtitlesResult
         """
         self._TaskId = None
         self._Status = None
@@ -58970,6 +62651,7 @@ class WorkflowTask(AbstractModel):
         self._AiAnalysisResultSet = None
         self._AiRecognitionResultSet = None
         self._AiQualityControlTaskResult = None
+        self._SmartSubtitlesTaskResult = None
 
     @property
     def TaskId(self):
@@ -59097,6 +62779,18 @@ class WorkflowTask(AbstractModel):
     def AiQualityControlTaskResult(self, AiQualityControlTaskResult):
         self._AiQualityControlTaskResult = AiQualityControlTaskResult
 
+    @property
+    def SmartSubtitlesTaskResult(self):
+        """智能字幕任务的执行结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SmartSubtitlesResult
+        """
+        return self._SmartSubtitlesTaskResult
+
+    @SmartSubtitlesTaskResult.setter
+    def SmartSubtitlesTaskResult(self, SmartSubtitlesTaskResult):
+        self._SmartSubtitlesTaskResult = SmartSubtitlesTaskResult
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -59136,6 +62830,12 @@ class WorkflowTask(AbstractModel):
         if params.get("AiQualityControlTaskResult") is not None:
             self._AiQualityControlTaskResult = ScheduleQualityControlTaskResult()
             self._AiQualityControlTaskResult._deserialize(params.get("AiQualityControlTaskResult"))
+        if params.get("SmartSubtitlesTaskResult") is not None:
+            self._SmartSubtitlesTaskResult = []
+            for item in params.get("SmartSubtitlesTaskResult"):
+                obj = SmartSubtitlesResult()
+                obj._deserialize(item)
+                self._SmartSubtitlesTaskResult.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

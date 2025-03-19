@@ -2236,6 +2236,29 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RemoveReplicationGroup(self, request):
+        """删除复制组
+
+        :param request: Request instance for RemoveReplicationGroup.
+        :type request: :class:`tencentcloud.redis.v20180412.models.RemoveReplicationGroupRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.RemoveReplicationGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RemoveReplicationGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.RemoveReplicationGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RemoveReplicationInstance(self, request):
         """本接口（RemoveReplicationInstance）用于移除复制组中的实例。
 

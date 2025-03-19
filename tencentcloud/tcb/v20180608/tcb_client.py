@@ -1686,6 +1686,29 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def EditAuthConfig(self, request):
+        """修改登录配置
+
+        :param request: Request instance for EditAuthConfig.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.EditAuthConfigRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.EditAuthConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EditAuthConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.EditAuthConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def EstablishCloudBaseRunServer(self, request):
         """创建云应用服务
 

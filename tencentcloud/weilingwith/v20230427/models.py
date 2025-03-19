@@ -26,10 +26,8 @@ class Action(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: 动作id
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
         :param _Name: 动作名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         """
         self._Id = None
@@ -38,7 +36,6 @@ class Action(AbstractModel):
     @property
     def Id(self):
         """动作id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Id
@@ -50,7 +47,6 @@ class Action(AbstractModel):
     @property
     def Name(self):
         """动作名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -81,34 +77,24 @@ class ActionDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: 动作id
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
         :param _Name: 动作名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _ActionType: 动作类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActionType: str
         :param _ActionDesc: 动作说明
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActionDesc: str
         :param _MsgType: 消息类型，orgin/custom/model
-注意：此字段可能返回 null，表示取不到有效值。
         :type MsgType: str
         :param _MsgContent: 消息内容,有效值为x-json:后的字段
-注意：此字段可能返回 null，表示取不到有效值。
         :type MsgContent: str
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _WID: 设备唯一标识
-注意：此字段可能返回 null，表示取不到有效值。
         :type WID: str
         :param _LinkRuleSet: 关联故障列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type LinkRuleSet: list of LinkRule
         :param _SinkConfig: 动作下沉配置,有效值为x-json:后的字段
-注意：此字段可能返回 null，表示取不到有效值。
         :type SinkConfig: str
         """
         self._Id = None
@@ -125,7 +111,6 @@ class ActionDetail(AbstractModel):
     @property
     def Id(self):
         """动作id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Id
@@ -137,7 +122,6 @@ class ActionDetail(AbstractModel):
     @property
     def Name(self):
         """动作名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -149,7 +133,6 @@ class ActionDetail(AbstractModel):
     @property
     def ActionType(self):
         """动作类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ActionType
@@ -161,7 +144,6 @@ class ActionDetail(AbstractModel):
     @property
     def ActionDesc(self):
         """动作说明
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ActionDesc
@@ -173,7 +155,6 @@ class ActionDetail(AbstractModel):
     @property
     def MsgType(self):
         """消息类型，orgin/custom/model
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MsgType
@@ -185,7 +166,6 @@ class ActionDetail(AbstractModel):
     @property
     def MsgContent(self):
         """消息内容,有效值为x-json:后的字段
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MsgContent
@@ -197,7 +177,6 @@ class ActionDetail(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -209,7 +188,6 @@ class ActionDetail(AbstractModel):
     @property
     def WID(self):
         """设备唯一标识
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._WID
@@ -221,7 +199,6 @@ class ActionDetail(AbstractModel):
     @property
     def LinkRuleSet(self):
         """关联故障列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LinkRule
         """
         return self._LinkRuleSet
@@ -233,7 +210,6 @@ class ActionDetail(AbstractModel):
     @property
     def SinkConfig(self):
         """动作下沉配置,有效值为x-json:后的字段
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SinkConfig
@@ -277,31 +253,22 @@ class ActionObj(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: 动作id
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
         :param _Name: 动作名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Type: 动作类型。（app/推送消息至应用-携带空间设备：无,appWithNearbyDevices/推送至应用-携带空间设备：携带,device/推送消息至设备-指定设备,nearbyDevices/推送消息至设备-事件所在范围内的设备,toAlarm/转换为告警,toNotification/转换为通知）
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Desc: 动作说明
-注意：此字段可能返回 null，表示取不到有效值。
         :type Desc: str
         :param _MsgType: 消息类型，orgin/custom/model
-注意：此字段可能返回 null，表示取不到有效值。
         :type MsgType: str
         :param _MsgContent: 消息内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type MsgContent: str
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _SinkConfig: 动作下沉配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type SinkConfig: str
         :param _ApplyDevice:  具体应用（appid）/具体设备（DIN/subID）
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplyDevice: str
         """
         self._Id = None
@@ -317,7 +284,6 @@ class ActionObj(AbstractModel):
     @property
     def Id(self):
         """动作id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Id
@@ -329,7 +295,6 @@ class ActionObj(AbstractModel):
     @property
     def Name(self):
         """动作名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -341,7 +306,6 @@ class ActionObj(AbstractModel):
     @property
     def Type(self):
         """动作类型。（app/推送消息至应用-携带空间设备：无,appWithNearbyDevices/推送至应用-携带空间设备：携带,device/推送消息至设备-指定设备,nearbyDevices/推送消息至设备-事件所在范围内的设备,toAlarm/转换为告警,toNotification/转换为通知）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -353,7 +317,6 @@ class ActionObj(AbstractModel):
     @property
     def Desc(self):
         """动作说明
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Desc
@@ -365,7 +328,6 @@ class ActionObj(AbstractModel):
     @property
     def MsgType(self):
         """消息类型，orgin/custom/model
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MsgType
@@ -377,7 +339,6 @@ class ActionObj(AbstractModel):
     @property
     def MsgContent(self):
         """消息内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MsgContent
@@ -389,7 +350,6 @@ class ActionObj(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -401,7 +361,6 @@ class ActionObj(AbstractModel):
     @property
     def SinkConfig(self):
         """动作下沉配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SinkConfig
@@ -413,7 +372,6 @@ class ActionObj(AbstractModel):
     @property
     def ApplyDevice(self):
         """ 具体应用（appid）/具体设备（DIN/subID）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApplyDevice
@@ -680,10 +638,8 @@ class AdministrationData(AbstractModel):
     def __init__(self):
         r"""
         :param _AdministrationCode: 行政区划编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type AdministrationCode: str
         :param _AdministrationName: 行政区划名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type AdministrationName: str
         """
         self._AdministrationCode = None
@@ -692,7 +648,6 @@ class AdministrationData(AbstractModel):
     @property
     def AdministrationCode(self):
         """行政区划编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AdministrationCode
@@ -704,7 +659,6 @@ class AdministrationData(AbstractModel):
     @property
     def AdministrationName(self):
         """行政区划名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AdministrationName
@@ -735,13 +689,10 @@ class AdministrativeDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _AdministrativeTypeCode: 行政区域类型编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type AdministrativeTypeCode: str
         :param _AdministrativeCode: 行政区域编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type AdministrativeCode: str
         :param _AdministrativeName: 行政区域名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type AdministrativeName: str
         """
         self._AdministrativeTypeCode = None
@@ -751,7 +702,6 @@ class AdministrativeDetail(AbstractModel):
     @property
     def AdministrativeTypeCode(self):
         """行政区域类型编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AdministrativeTypeCode
@@ -763,7 +713,6 @@ class AdministrativeDetail(AbstractModel):
     @property
     def AdministrativeCode(self):
         """行政区域编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AdministrativeCode
@@ -775,7 +724,6 @@ class AdministrativeDetail(AbstractModel):
     @property
     def AdministrativeName(self):
         """行政区域名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AdministrativeName
@@ -807,70 +755,48 @@ class AlarmInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _WorkspaceId: 工作空间id
-注意：此字段可能返回 null，表示取不到有效值。
         :type WorkspaceId: int
         :param _Id: 告警ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
         :param _Status: 告警状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _Time: 告警时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type Time: int
         :param _Type: 告警业务类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _TypeName: 告警业务类型名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TypeName: str
         :param _SubType: 子告警类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubType: str
         :param _SubTypeName: 子告警类型名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubTypeName: str
         :param _Level: 告警级别id
-注意：此字段可能返回 null，表示取不到有效值。
         :type Level: int
         :param _LevelName: 告警级别名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type LevelName: str
         :param _AppId: 上报应用appid
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: int
         :param _WID: 设备wid
-注意：此字段可能返回 null，表示取不到有效值。
         :type WID: str
         :param _DeviceName: 设备名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceName: str
         :param _Position: 空间位置
-注意：此字段可能返回 null，表示取不到有效值。
         :type Position: str
         :param _ReportImg: 上报图片
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReportImg: :class:`tencentcloud.weilingwith.v20230427.models.ReportImg`
         :param _Desc: 告警描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Desc: str
         :param _HandlePersonSet: 处理人
-注意：此字段可能返回 null，表示取不到有效值。
         :type HandlePersonSet: list of HandlerPersonInfo
         :param _HandleRecordSet: 处理记录
-注意：此字段可能返回 null，表示取不到有效值。
         :type HandleRecordSet: list of HandleRecordInfo
         :param _Extend: 扩展信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Extend: str
         :param _ExtendOne: 应用扩展字段1
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExtendOne: str
         :param _ExtendTwo: 应用扩展字段2
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExtendTwo: str
         :param _Echo: 应用透传字段,有效字段为x-json后的字段
-注意：此字段可能返回 null，表示取不到有效值。
         :type Echo: str
         """
         self._WorkspaceId = None
@@ -899,7 +825,6 @@ class AlarmInfo(AbstractModel):
     @property
     def WorkspaceId(self):
         """工作空间id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._WorkspaceId
@@ -911,7 +836,6 @@ class AlarmInfo(AbstractModel):
     @property
     def Id(self):
         """告警ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Id
@@ -923,7 +847,6 @@ class AlarmInfo(AbstractModel):
     @property
     def Status(self):
         """告警状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -935,7 +858,6 @@ class AlarmInfo(AbstractModel):
     @property
     def Time(self):
         """告警时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Time
@@ -947,7 +869,6 @@ class AlarmInfo(AbstractModel):
     @property
     def Type(self):
         """告警业务类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -959,7 +880,6 @@ class AlarmInfo(AbstractModel):
     @property
     def TypeName(self):
         """告警业务类型名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TypeName
@@ -971,7 +891,6 @@ class AlarmInfo(AbstractModel):
     @property
     def SubType(self):
         """子告警类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubType
@@ -983,7 +902,6 @@ class AlarmInfo(AbstractModel):
     @property
     def SubTypeName(self):
         """子告警类型名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubTypeName
@@ -995,7 +913,6 @@ class AlarmInfo(AbstractModel):
     @property
     def Level(self):
         """告警级别id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Level
@@ -1007,7 +924,6 @@ class AlarmInfo(AbstractModel):
     @property
     def LevelName(self):
         """告警级别名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LevelName
@@ -1019,7 +935,6 @@ class AlarmInfo(AbstractModel):
     @property
     def AppId(self):
         """上报应用appid
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AppId
@@ -1031,7 +946,6 @@ class AlarmInfo(AbstractModel):
     @property
     def WID(self):
         """设备wid
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._WID
@@ -1043,7 +957,6 @@ class AlarmInfo(AbstractModel):
     @property
     def DeviceName(self):
         """设备名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceName
@@ -1055,7 +968,6 @@ class AlarmInfo(AbstractModel):
     @property
     def Position(self):
         """空间位置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Position
@@ -1067,7 +979,6 @@ class AlarmInfo(AbstractModel):
     @property
     def ReportImg(self):
         """上报图片
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.ReportImg`
         """
         return self._ReportImg
@@ -1079,7 +990,6 @@ class AlarmInfo(AbstractModel):
     @property
     def Desc(self):
         """告警描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Desc
@@ -1091,7 +1001,6 @@ class AlarmInfo(AbstractModel):
     @property
     def HandlePersonSet(self):
         """处理人
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of HandlerPersonInfo
         """
         return self._HandlePersonSet
@@ -1103,7 +1012,6 @@ class AlarmInfo(AbstractModel):
     @property
     def HandleRecordSet(self):
         """处理记录
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of HandleRecordInfo
         """
         return self._HandleRecordSet
@@ -1115,7 +1023,6 @@ class AlarmInfo(AbstractModel):
     @property
     def Extend(self):
         """扩展信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Extend
@@ -1127,7 +1034,6 @@ class AlarmInfo(AbstractModel):
     @property
     def ExtendOne(self):
         """应用扩展字段1
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ExtendOne
@@ -1139,7 +1045,6 @@ class AlarmInfo(AbstractModel):
     @property
     def ExtendTwo(self):
         """应用扩展字段2
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ExtendTwo
@@ -1151,7 +1056,6 @@ class AlarmInfo(AbstractModel):
     @property
     def Echo(self):
         """应用透传字段,有效字段为x-json后的字段
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Echo
@@ -1214,10 +1118,8 @@ class AlarmLevelInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _LevelId: 级别id
-注意：此字段可能返回 null，表示取不到有效值。
         :type LevelId: int
         :param _LevelName: 级别名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type LevelName: str
         """
         self._LevelId = None
@@ -1226,7 +1128,6 @@ class AlarmLevelInfo(AbstractModel):
     @property
     def LevelId(self):
         """级别id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LevelId
@@ -1238,7 +1139,6 @@ class AlarmLevelInfo(AbstractModel):
     @property
     def LevelName(self):
         """级别名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LevelName
@@ -1269,13 +1169,10 @@ class AlarmStatusData(AbstractModel):
     def __init__(self):
         r"""
         :param _StatusID: 告警状态ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type StatusID: str
         :param _StatusName: 告警状态名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type StatusName: str
         :param _StatusType: 告警状态类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type StatusType: str
         """
         self._StatusID = None
@@ -1285,7 +1182,6 @@ class AlarmStatusData(AbstractModel):
     @property
     def StatusID(self):
         """告警状态ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StatusID
@@ -1297,7 +1193,6 @@ class AlarmStatusData(AbstractModel):
     @property
     def StatusName(self):
         """告警状态名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StatusName
@@ -1309,7 +1204,6 @@ class AlarmStatusData(AbstractModel):
     @property
     def StatusType(self):
         """告警状态类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StatusType
@@ -1341,19 +1235,14 @@ class AlarmTypeDetailInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: 告警类型id
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
         :param _ParentId: 父节点id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ParentId: int
         :param _Type: 0-标准告警类型，1-自定义告警类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: int
         :param _Name: 告警名称类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _EnglishName: 告警类型英文名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnglishName: str
         """
         self._Id = None
@@ -1365,7 +1254,6 @@ class AlarmTypeDetailInfo(AbstractModel):
     @property
     def Id(self):
         """告警类型id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Id
@@ -1377,7 +1265,6 @@ class AlarmTypeDetailInfo(AbstractModel):
     @property
     def ParentId(self):
         """父节点id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ParentId
@@ -1389,7 +1276,6 @@ class AlarmTypeDetailInfo(AbstractModel):
     @property
     def Type(self):
         """0-标准告警类型，1-自定义告警类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Type
@@ -1401,7 +1287,6 @@ class AlarmTypeDetailInfo(AbstractModel):
     @property
     def Name(self):
         """告警名称类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -1413,7 +1298,6 @@ class AlarmTypeDetailInfo(AbstractModel):
     @property
     def EnglishName(self):
         """告警类型英文名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EnglishName
@@ -1498,25 +1382,18 @@ class ApiContent(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: 所属API的id
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
         :param _Name: 参数名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Type: 参数类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Dynamic: 是否为动态值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Dynamic: bool
         :param _Required: 是否必填
-注意：此字段可能返回 null，表示取不到有效值。
         :type Required: bool
         :param _Value: 参数值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         :param _DefaultValue: 默认值
-注意：此字段可能返回 null，表示取不到有效值。
         :type DefaultValue: str
         """
         self._Id = None
@@ -1530,7 +1407,6 @@ class ApiContent(AbstractModel):
     @property
     def Id(self):
         """所属API的id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Id
@@ -1542,7 +1418,6 @@ class ApiContent(AbstractModel):
     @property
     def Name(self):
         """参数名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -1554,7 +1429,6 @@ class ApiContent(AbstractModel):
     @property
     def Type(self):
         """参数类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -1566,7 +1440,6 @@ class ApiContent(AbstractModel):
     @property
     def Dynamic(self):
         """是否为动态值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Dynamic
@@ -1578,7 +1451,6 @@ class ApiContent(AbstractModel):
     @property
     def Required(self):
         """是否必填
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Required
@@ -1590,7 +1462,6 @@ class ApiContent(AbstractModel):
     @property
     def Value(self):
         """参数值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -1602,7 +1473,6 @@ class ApiContent(AbstractModel):
     @property
     def DefaultValue(self):
         """默认值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DefaultValue
@@ -1638,67 +1508,46 @@ class ApiInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _ApiId: API的id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApiId: str
         :param _Name: API名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _AppId: API所属应用的id
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: str
         :param _WorkspaceId: API所属的项目空间的id
-注意：此字段可能返回 null，表示取不到有效值。
         :type WorkspaceId: str
         :param _PoiCode: API所属目录的编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type PoiCode: str
         :param _Type:  接口分类0. 其他服务 1. IOT服务 2. 空间服务 3.微应用服务 4.场景服务 5.AI算法服务 6.任务算法服务 7.第三方服务
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: int
         :param _DataAudit: 数据授权 0:否 1:是
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataAudit: int
         :param _ApplyAudit: 是否需要申请 0:否 1:是
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplyAudit: int
         :param _Description: API详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _Address: API地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type Address: str
         :param _Method: 请求方法类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Method: str
         :param _Status: API状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _PreviewUrl: API预览地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type PreviewUrl: str
         :param _QueryParams: query参数
-注意：此字段可能返回 null，表示取不到有效值。
         :type QueryParams: list of ApiContent
         :param _PathParams: 路径参数
-注意：此字段可能返回 null，表示取不到有效值。
         :type PathParams: list of ApiContent
         :param _RequestHeaders: 请求头
-注意：此字段可能返回 null，表示取不到有效值。
         :type RequestHeaders: list of ApiContent
         :param _ResponseHeaders: 响应头
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResponseHeaders: list of ApiContent
         :param _IsCommonSpace: 是否为公共空间接口
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsCommonSpace: bool
         :param _Body: 请求体（base64编码）
-注意：此字段可能返回 null，表示取不到有效值。
         :type Body: str
         :param _ResponseBody: 响应体（base64编码）
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResponseBody: str
         :param _Style: 接口方式 1.http 2消息通知服务
-注意：此字段可能返回 null，表示取不到有效值。
         :type Style: int
         """
         self._ApiId = None
@@ -1726,7 +1575,6 @@ class ApiInfo(AbstractModel):
     @property
     def ApiId(self):
         """API的id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApiId
@@ -1738,7 +1586,6 @@ class ApiInfo(AbstractModel):
     @property
     def Name(self):
         """API名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -1750,7 +1597,6 @@ class ApiInfo(AbstractModel):
     @property
     def AppId(self):
         """API所属应用的id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AppId
@@ -1762,7 +1608,6 @@ class ApiInfo(AbstractModel):
     @property
     def WorkspaceId(self):
         """API所属的项目空间的id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._WorkspaceId
@@ -1774,7 +1619,6 @@ class ApiInfo(AbstractModel):
     @property
     def PoiCode(self):
         """API所属目录的编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PoiCode
@@ -1786,7 +1630,6 @@ class ApiInfo(AbstractModel):
     @property
     def Type(self):
         """ 接口分类0. 其他服务 1. IOT服务 2. 空间服务 3.微应用服务 4.场景服务 5.AI算法服务 6.任务算法服务 7.第三方服务
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Type
@@ -1798,7 +1641,6 @@ class ApiInfo(AbstractModel):
     @property
     def DataAudit(self):
         """数据授权 0:否 1:是
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DataAudit
@@ -1810,7 +1652,6 @@ class ApiInfo(AbstractModel):
     @property
     def ApplyAudit(self):
         """是否需要申请 0:否 1:是
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ApplyAudit
@@ -1822,7 +1663,6 @@ class ApiInfo(AbstractModel):
     @property
     def Description(self):
         """API详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -1834,7 +1674,6 @@ class ApiInfo(AbstractModel):
     @property
     def Address(self):
         """API地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Address
@@ -1846,7 +1685,6 @@ class ApiInfo(AbstractModel):
     @property
     def Method(self):
         """请求方法类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Method
@@ -1858,7 +1696,6 @@ class ApiInfo(AbstractModel):
     @property
     def Status(self):
         """API状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -1870,7 +1707,6 @@ class ApiInfo(AbstractModel):
     @property
     def PreviewUrl(self):
         """API预览地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PreviewUrl
@@ -1882,7 +1718,6 @@ class ApiInfo(AbstractModel):
     @property
     def QueryParams(self):
         """query参数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ApiContent
         """
         return self._QueryParams
@@ -1894,7 +1729,6 @@ class ApiInfo(AbstractModel):
     @property
     def PathParams(self):
         """路径参数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ApiContent
         """
         return self._PathParams
@@ -1906,7 +1740,6 @@ class ApiInfo(AbstractModel):
     @property
     def RequestHeaders(self):
         """请求头
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ApiContent
         """
         return self._RequestHeaders
@@ -1918,7 +1751,6 @@ class ApiInfo(AbstractModel):
     @property
     def ResponseHeaders(self):
         """响应头
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ApiContent
         """
         return self._ResponseHeaders
@@ -1930,7 +1762,6 @@ class ApiInfo(AbstractModel):
     @property
     def IsCommonSpace(self):
         """是否为公共空间接口
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsCommonSpace
@@ -1942,7 +1773,6 @@ class ApiInfo(AbstractModel):
     @property
     def Body(self):
         """请求体（base64编码）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Body
@@ -1954,7 +1784,6 @@ class ApiInfo(AbstractModel):
     @property
     def ResponseBody(self):
         """响应体（base64编码）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResponseBody
@@ -1966,7 +1795,6 @@ class ApiInfo(AbstractModel):
     @property
     def Style(self):
         """接口方式 1.http 2消息通知服务
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Style
@@ -2036,10 +1864,8 @@ class ApiInfoList(AbstractModel):
     def __init__(self):
         r"""
         :param _ApiInfo: API列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApiInfo: list of ApiInfo
         :param _TotalCount: 数据总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         """
         self._ApiInfo = None
@@ -2048,7 +1874,6 @@ class ApiInfoList(AbstractModel):
     @property
     def ApiInfo(self):
         """API列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ApiInfo
         """
         return self._ApiInfo
@@ -2060,7 +1885,6 @@ class ApiInfoList(AbstractModel):
     @property
     def TotalCount(self):
         """数据总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -2096,25 +1920,18 @@ class ApplicationInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _ApplicationId: 应用分配的appId
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationId: str
         :param _Name: 应用中文名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Address: 应用地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type Address: str
         :param _ApplicationLogo: 应用logo
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationLogo: :class:`tencentcloud.weilingwith.v20230427.models.ApplicationLogo`
         :param _Type: 应用类型，0:saas应用 1:平台应用
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: int
         :param _EnglishName: engine
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnglishName: str
         :param _Description: 能源管理应用
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         """
         self._ApplicationId = None
@@ -2128,7 +1945,6 @@ class ApplicationInfo(AbstractModel):
     @property
     def ApplicationId(self):
         """应用分配的appId
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApplicationId
@@ -2140,7 +1956,6 @@ class ApplicationInfo(AbstractModel):
     @property
     def Name(self):
         """应用中文名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -2152,7 +1967,6 @@ class ApplicationInfo(AbstractModel):
     @property
     def Address(self):
         """应用地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Address
@@ -2164,7 +1978,6 @@ class ApplicationInfo(AbstractModel):
     @property
     def ApplicationLogo(self):
         """应用logo
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.ApplicationLogo`
         """
         return self._ApplicationLogo
@@ -2176,7 +1989,6 @@ class ApplicationInfo(AbstractModel):
     @property
     def Type(self):
         """应用类型，0:saas应用 1:平台应用
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Type
@@ -2188,7 +2000,6 @@ class ApplicationInfo(AbstractModel):
     @property
     def EnglishName(self):
         """engine
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EnglishName
@@ -2200,7 +2011,6 @@ class ApplicationInfo(AbstractModel):
     @property
     def Description(self):
         """能源管理应用
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -2238,10 +2048,8 @@ class ApplicationList(AbstractModel):
     def __init__(self):
         r"""
         :param _ApplicationInfoList: 应用列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationInfoList: list of ApplicationInfo
         :param _TotalCount: 当前查询条件命中的数据总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: str
         """
         self._ApplicationInfoList = None
@@ -2250,7 +2058,6 @@ class ApplicationList(AbstractModel):
     @property
     def ApplicationInfoList(self):
         """应用列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ApplicationInfo
         """
         return self._ApplicationInfoList
@@ -2262,7 +2069,6 @@ class ApplicationList(AbstractModel):
     @property
     def TotalCount(self):
         """当前查询条件命中的数据总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TotalCount
@@ -2298,10 +2104,8 @@ class ApplicationLogo(AbstractModel):
     def __init__(self):
         r"""
         :param _FileId: logo图片对应的fileId
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileId: str
         :param _Url: logo图片地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
         """
         self._FileId = None
@@ -2310,7 +2114,6 @@ class ApplicationLogo(AbstractModel):
     @property
     def FileId(self):
         """logo图片对应的fileId
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FileId
@@ -2322,7 +2125,6 @@ class ApplicationLogo(AbstractModel):
     @property
     def Url(self):
         """logo图片地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Url
@@ -2353,7 +2155,6 @@ class ApplicationTokenInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Token: 应用申请调用API的令牌
-注意：此字段可能返回 null，表示取不到有效值。
         :type Token: str
         """
         self._Token = None
@@ -2361,7 +2162,6 @@ class ApplicationTokenInfo(AbstractModel):
     @property
     def Token(self):
         """应用申请调用API的令牌
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Token
@@ -2464,10 +2264,8 @@ class BatchCreateDeviceRes(AbstractModel):
     def __init__(self):
         r"""
         :param _SuccessSet: 新增成功的设备列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type SuccessSet: list of CreateDeviceSucceeded
         :param _FailSet: 新增失败的设备列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailSet: list of CreateDeviceFailed
         """
         self._SuccessSet = None
@@ -2476,7 +2274,6 @@ class BatchCreateDeviceRes(AbstractModel):
     @property
     def SuccessSet(self):
         """新增成功的设备列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CreateDeviceSucceeded
         """
         return self._SuccessSet
@@ -2488,7 +2285,6 @@ class BatchCreateDeviceRes(AbstractModel):
     @property
     def FailSet(self):
         """新增失败的设备列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CreateDeviceFailed
         """
         return self._FailSet
@@ -3029,13 +2825,10 @@ class BatchReportAppMessageRes(AbstractModel):
         r"""
         :param _TotalElements: 上报数量
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalElements: int
         :param _Commit: 提交数量（推送成功）
-注意：此字段可能返回 null，表示取不到有效值。
         :type Commit: int
         :param _SpanMap: 消息推送结果列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type SpanMap: list of ReportMsgRes
         """
         self._TotalElements = None
@@ -3046,7 +2839,6 @@ class BatchReportAppMessageRes(AbstractModel):
     def TotalElements(self):
         """上报数量
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalElements
@@ -3058,7 +2850,6 @@ class BatchReportAppMessageRes(AbstractModel):
     @property
     def Commit(self):
         """提交数量（推送成功）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Commit
@@ -3070,7 +2861,6 @@ class BatchReportAppMessageRes(AbstractModel):
     @property
     def SpanMap(self):
         """消息推送结果列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ReportMsgRes
         """
         return self._SpanMap
@@ -3152,7 +2942,6 @@ class BuildingListRes(AbstractModel):
     def __init__(self):
         r"""
         :param _BuildingProfileList: 建筑列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type BuildingProfileList: list of BuildingProfile
         """
         self._BuildingProfileList = None
@@ -3160,7 +2949,6 @@ class BuildingListRes(AbstractModel):
     @property
     def BuildingProfileList(self):
         """建筑列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BuildingProfile
         """
         return self._BuildingProfileList
@@ -3195,16 +2983,12 @@ class BuildingModel(AbstractModel):
     def __init__(self):
         r"""
         :param _ElementId: 构件ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ElementId: str
         :param _ElementName: 构件名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ElementName: str
         :param _ModelType: 模型类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type ModelType: str
         :param _ModelUrl: 模型URL
-注意：此字段可能返回 null，表示取不到有效值。
         :type ModelUrl: str
         """
         self._ElementId = None
@@ -3215,7 +2999,6 @@ class BuildingModel(AbstractModel):
     @property
     def ElementId(self):
         """构件ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ElementId
@@ -3227,7 +3010,6 @@ class BuildingModel(AbstractModel):
     @property
     def ElementName(self):
         """构件名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ElementName
@@ -3239,7 +3021,6 @@ class BuildingModel(AbstractModel):
     @property
     def ModelType(self):
         """模型类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ModelType
@@ -3251,7 +3032,6 @@ class BuildingModel(AbstractModel):
     @property
     def ModelUrl(self):
         """模型URL
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ModelUrl
@@ -3284,7 +3064,6 @@ class BuildingModelRes(AbstractModel):
     def __init__(self):
         r"""
         :param _Models: 建模模型信息出参
-注意：此字段可能返回 null，表示取不到有效值。
         :type Models: list of BuildingModel
         """
         self._Models = None
@@ -3292,7 +3071,6 @@ class BuildingModelRes(AbstractModel):
     @property
     def Models(self):
         """建模模型信息出参
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BuildingModel
         """
         return self._Models
@@ -3327,22 +3105,16 @@ class BuildingProfile(AbstractModel):
     def __init__(self):
         r"""
         :param _BuildingId: 建筑id
-注意：此字段可能返回 null，表示取不到有效值。
         :type BuildingId: str
         :param _BuildingName: 建筑名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type BuildingName: str
         :param _SpaceCode: 空间编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type SpaceCode: str
         :param _Longitude: 经度
-注意：此字段可能返回 null，表示取不到有效值。
         :type Longitude: float
         :param _Latitude: 纬度
-注意：此字段可能返回 null，表示取不到有效值。
         :type Latitude: float
         :param _Address: 地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type Address: str
         """
         self._BuildingId = None
@@ -3355,7 +3127,6 @@ class BuildingProfile(AbstractModel):
     @property
     def BuildingId(self):
         """建筑id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BuildingId
@@ -3367,7 +3138,6 @@ class BuildingProfile(AbstractModel):
     @property
     def BuildingName(self):
         """建筑名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BuildingName
@@ -3379,7 +3149,6 @@ class BuildingProfile(AbstractModel):
     @property
     def SpaceCode(self):
         """空间编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SpaceCode
@@ -3391,7 +3160,6 @@ class BuildingProfile(AbstractModel):
     @property
     def Longitude(self):
         """经度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Longitude
@@ -3403,7 +3171,6 @@ class BuildingProfile(AbstractModel):
     @property
     def Latitude(self):
         """纬度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Latitude
@@ -3415,7 +3182,6 @@ class BuildingProfile(AbstractModel):
     @property
     def Address(self):
         """地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Address
@@ -3450,7 +3216,6 @@ class BuildingProfileRes(AbstractModel):
     def __init__(self):
         r"""
         :param _BuildingProfile: 建筑概要信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type BuildingProfile: :class:`tencentcloud.weilingwith.v20230427.models.BuildingProfile`
         """
         self._BuildingProfile = None
@@ -3458,7 +3223,6 @@ class BuildingProfileRes(AbstractModel):
     @property
     def BuildingProfile(self):
         """建筑概要信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.BuildingProfile`
         """
         return self._BuildingProfile
@@ -3490,17 +3254,13 @@ class CameraExtendInfoRes(AbstractModel):
     def __init__(self):
         r"""
         :param _SaveType: 存储方式 (nvr或cosmtav)
-注意：此字段可能返回 null，表示取不到有效值。
         :type SaveType: str
         :param _SaveDay: 云存储天数（save_type是cosmtav时这个参数才有效）
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type SaveDay: int
         :param _LiveResolution: 实时分辨率
-注意：此字段可能返回 null，表示取不到有效值。
         :type LiveResolution: int
         :param _HistoryResolution: 历史分辨率
-注意：此字段可能返回 null，表示取不到有效值。
         :type HistoryResolution: int
         """
         self._SaveType = None
@@ -3511,7 +3271,6 @@ class CameraExtendInfoRes(AbstractModel):
     @property
     def SaveType(self):
         """存储方式 (nvr或cosmtav)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SaveType
@@ -3524,7 +3283,6 @@ class CameraExtendInfoRes(AbstractModel):
     def SaveDay(self):
         """云存储天数（save_type是cosmtav时这个参数才有效）
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SaveDay
@@ -3536,7 +3294,6 @@ class CameraExtendInfoRes(AbstractModel):
     @property
     def LiveResolution(self):
         """实时分辨率
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LiveResolution
@@ -3548,7 +3305,6 @@ class CameraExtendInfoRes(AbstractModel):
     @property
     def HistoryResolution(self):
         """历史分辨率
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._HistoryResolution
@@ -4086,16 +3842,12 @@ class ControlDeviceRes(AbstractModel):
     def __init__(self):
         r"""
         :param _WID: 设备Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type WID: str
         :param _Code: 指令接受, 0表示成功
-注意：此字段可能返回 null，表示取不到有效值。
         :type Code: int
         :param _Result: 控制结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
         :param _Seq: 批量大于1时，可用此seq进行链路追踪
-注意：此字段可能返回 null，表示取不到有效值。
         :type Seq: str
         """
         self._WID = None
@@ -4106,7 +3858,6 @@ class ControlDeviceRes(AbstractModel):
     @property
     def WID(self):
         """设备Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._WID
@@ -4118,7 +3869,6 @@ class ControlDeviceRes(AbstractModel):
     @property
     def Code(self):
         """指令接受, 0表示成功
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Code
@@ -4130,7 +3880,6 @@ class ControlDeviceRes(AbstractModel):
     @property
     def Result(self):
         """控制结果
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Result
@@ -4142,7 +3891,6 @@ class ControlDeviceRes(AbstractModel):
     @property
     def Seq(self):
         """批量大于1时，可用此seq进行链路追踪
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Seq
@@ -4220,7 +3968,6 @@ class ControlDeviceSet(AbstractModel):
     def __init__(self):
         r"""
         :param _Set: 设备控制后返回结果集合
-注意：此字段可能返回 null，表示取不到有效值。
         :type Set: list of ControlDeviceRes
         """
         self._Set = None
@@ -4228,7 +3975,6 @@ class ControlDeviceSet(AbstractModel):
     @property
     def Set(self):
         """设备控制后返回结果集合
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ControlDeviceRes
         """
         return self._Set
@@ -4404,16 +4150,12 @@ class CreateDeviceFailed(AbstractModel):
     def __init__(self):
         r"""
         :param _ProductId: 产品id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductId: int
         :param _ParentWID: 父设备wid，不为空表示导入自设备
-注意：此字段可能返回 null，表示取不到有效值。
         :type ParentWID: str
         :param _Reason: 失败原因
-注意：此字段可能返回 null，表示取不到有效值。
         :type Reason: str
         :param _SN: 设备sn序列号
-注意：此字段可能返回 null，表示取不到有效值。
         :type SN: str
         """
         self._ProductId = None
@@ -4424,7 +4166,6 @@ class CreateDeviceFailed(AbstractModel):
     @property
     def ProductId(self):
         """产品id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ProductId
@@ -4436,7 +4177,6 @@ class CreateDeviceFailed(AbstractModel):
     @property
     def ParentWID(self):
         """父设备wid，不为空表示导入自设备
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ParentWID
@@ -4448,7 +4188,6 @@ class CreateDeviceFailed(AbstractModel):
     @property
     def Reason(self):
         """失败原因
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Reason
@@ -4460,7 +4199,6 @@ class CreateDeviceFailed(AbstractModel):
     @property
     def SN(self):
         """设备sn序列号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SN
@@ -4493,16 +4231,12 @@ class CreateDeviceSucceeded(AbstractModel):
     def __init__(self):
         r"""
         :param _ProductId: 产品id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductId: int
         :param _ParentWID: 父设备wid，不为空表示导入自设备
-注意：此字段可能返回 null，表示取不到有效值。
         :type ParentWID: str
         :param _WID: 设备编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type WID: str
         :param _SN: 设备sn序列号
-注意：此字段可能返回 null，表示取不到有效值。
         :type SN: str
         """
         self._ProductId = None
@@ -4513,7 +4247,6 @@ class CreateDeviceSucceeded(AbstractModel):
     @property
     def ProductId(self):
         """产品id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ProductId
@@ -4525,7 +4258,6 @@ class CreateDeviceSucceeded(AbstractModel):
     @property
     def ParentWID(self):
         """父设备wid，不为空表示导入自设备
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ParentWID
@@ -4537,7 +4269,6 @@ class CreateDeviceSucceeded(AbstractModel):
     @property
     def WID(self):
         """设备编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._WID
@@ -4549,7 +4280,6 @@ class CreateDeviceSucceeded(AbstractModel):
     @property
     def SN(self):
         """设备sn序列号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SN
@@ -4633,16 +4363,12 @@ class CustomFieldInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: 字段id
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
         :param _Key: 字段key
-注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
         :param _Name: 字段名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Val: 字段值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Val: str
         """
         self._Id = None
@@ -4653,7 +4379,6 @@ class CustomFieldInfo(AbstractModel):
     @property
     def Id(self):
         """字段id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Id
@@ -4665,7 +4390,6 @@ class CustomFieldInfo(AbstractModel):
     @property
     def Key(self):
         """字段key
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Key
@@ -4677,7 +4401,6 @@ class CustomFieldInfo(AbstractModel):
     @property
     def Name(self):
         """字段名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -4689,7 +4412,6 @@ class CustomFieldInfo(AbstractModel):
     @property
     def Val(self):
         """字段值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Val
@@ -4944,19 +4666,14 @@ class DescribeActionListRes(AbstractModel):
     def __init__(self):
         r"""
         :param _PageNumber: 第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :type PageNumber: int
         :param _PageSize: 每页条数
-注意：此字段可能返回 null，表示取不到有效值。
         :type PageSize: int
         :param _TotalPage: 总页数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalPage: int
         :param _TotalRow: 总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalRow: int
         :param _ActionDetailSet: 动作列表查询集合
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActionDetailSet: list of ActionDetail
         """
         self._PageNumber = None
@@ -4968,7 +4685,6 @@ class DescribeActionListRes(AbstractModel):
     @property
     def PageNumber(self):
         """第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PageNumber
@@ -4980,7 +4696,6 @@ class DescribeActionListRes(AbstractModel):
     @property
     def PageSize(self):
         """每页条数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PageSize
@@ -4992,7 +4707,6 @@ class DescribeActionListRes(AbstractModel):
     @property
     def TotalPage(self):
         """总页数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalPage
@@ -5004,7 +4718,6 @@ class DescribeActionListRes(AbstractModel):
     @property
     def TotalRow(self):
         """总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalRow
@@ -5016,7 +4729,6 @@ class DescribeActionListRes(AbstractModel):
     @property
     def ActionDetailSet(self):
         """动作列表查询集合
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ActionDetail
         """
         return self._ActionDetailSet
@@ -5166,7 +4878,6 @@ class DescribeAdministrationByTagRes(AbstractModel):
     def __init__(self):
         r"""
         :param _List: 行政区划列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of AdministrationData
         """
         self._List = None
@@ -5174,7 +4885,6 @@ class DescribeAdministrationByTagRes(AbstractModel):
     @property
     def List(self):
         """行政区划列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AdministrationData
         """
         return self._List
@@ -5305,7 +5015,6 @@ class DescribeAlarmLevelListRes(AbstractModel):
     def __init__(self):
         r"""
         :param _AlarmLevelSet: 告警级别枚举获取数组
-注意：此字段可能返回 null，表示取不到有效值。
         :type AlarmLevelSet: list of AlarmLevelInfo
         """
         self._AlarmLevelSet = None
@@ -5313,7 +5022,6 @@ class DescribeAlarmLevelListRes(AbstractModel):
     @property
     def AlarmLevelSet(self):
         """告警级别枚举获取数组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AlarmLevelInfo
         """
         return self._AlarmLevelSet
@@ -5674,19 +5382,14 @@ class DescribeAlarmListRes(AbstractModel):
     def __init__(self):
         r"""
         :param _PageNumber: 第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :type PageNumber: int
         :param _PageSize: 每页条数
-注意：此字段可能返回 null，表示取不到有效值。
         :type PageSize: int
         :param _TotalPage: 总页数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalPage: int
         :param _TotalRow: 总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalRow: int
         :param _AlarmInfoSet: 告警列表集合
-注意：此字段可能返回 null，表示取不到有效值。
         :type AlarmInfoSet: list of AlarmInfo
         """
         self._PageNumber = None
@@ -5698,7 +5401,6 @@ class DescribeAlarmListRes(AbstractModel):
     @property
     def PageNumber(self):
         """第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PageNumber
@@ -5710,7 +5412,6 @@ class DescribeAlarmListRes(AbstractModel):
     @property
     def PageSize(self):
         """每页条数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PageSize
@@ -5722,7 +5423,6 @@ class DescribeAlarmListRes(AbstractModel):
     @property
     def TotalPage(self):
         """总页数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalPage
@@ -5734,7 +5434,6 @@ class DescribeAlarmListRes(AbstractModel):
     @property
     def TotalRow(self):
         """总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalRow
@@ -5746,7 +5445,6 @@ class DescribeAlarmListRes(AbstractModel):
     @property
     def AlarmInfoSet(self):
         """告警列表集合
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AlarmInfo
         """
         return self._AlarmInfoSet
@@ -5881,7 +5579,6 @@ class DescribeAlarmStatusListRes(AbstractModel):
     def __init__(self):
         r"""
         :param _List: 告警状态返回结构
-注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of AlarmStatusData
         """
         self._List = None
@@ -5889,7 +5586,6 @@ class DescribeAlarmStatusListRes(AbstractModel):
     @property
     def List(self):
         """告警状态返回结构
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AlarmStatusData
         """
         return self._List
@@ -6035,7 +5731,6 @@ class DescribeAlarmTypeListRes(AbstractModel):
     def __init__(self):
         r"""
         :param _AlarmTypeSet: 告警类型查询列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type AlarmTypeSet: list of AlarmTypeDetailInfo
         """
         self._AlarmTypeSet = None
@@ -6043,7 +5738,6 @@ class DescribeAlarmTypeListRes(AbstractModel):
     @property
     def AlarmTypeSet(self):
         """告警类型查询列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AlarmTypeDetailInfo
         """
         return self._AlarmTypeSet
@@ -6776,7 +6470,6 @@ class DescribeCityWorkspaceListRes(AbstractModel):
     def __init__(self):
         r"""
         :param _WorkspaceSet: 通过城市id查询工作空间列表结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type WorkspaceSet: list of WorkspaceInfo
         """
         self._WorkspaceSet = None
@@ -6784,7 +6477,6 @@ class DescribeCityWorkspaceListRes(AbstractModel):
     @property
     def WorkspaceSet(self):
         """通过城市id查询工作空间列表结果
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of WorkspaceInfo
         """
         return self._WorkspaceSet
@@ -6932,7 +6624,6 @@ class DescribeDeviceGroupListRes(AbstractModel):
     def __init__(self):
         r"""
         :param _List: 设备分组list
-注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of DescribeGroupInfo
         """
         self._List = None
@@ -6940,7 +6631,6 @@ class DescribeDeviceGroupListRes(AbstractModel):
     @property
     def List(self):
         """设备分组list
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DescribeGroupInfo
         """
         return self._List
@@ -7253,19 +6943,14 @@ class DescribeDeviceListRes(AbstractModel):
     def __init__(self):
         r"""
         :param _PageNumber: 第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :type PageNumber: int
         :param _PageSize: 每页条数
-注意：此字段可能返回 null，表示取不到有效值。
         :type PageSize: int
         :param _TotalPage: 总页数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalPage: int
         :param _TotalRow: 总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalRow: int
         :param _DeviceDataSet: 设备信息集合
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceDataSet: list of DeviceDataInfo
         """
         self._PageNumber = None
@@ -7277,7 +6962,6 @@ class DescribeDeviceListRes(AbstractModel):
     @property
     def PageNumber(self):
         """第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PageNumber
@@ -7289,7 +6973,6 @@ class DescribeDeviceListRes(AbstractModel):
     @property
     def PageSize(self):
         """每页条数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PageSize
@@ -7301,7 +6984,6 @@ class DescribeDeviceListRes(AbstractModel):
     @property
     def TotalPage(self):
         """总页数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalPage
@@ -7313,7 +6995,6 @@ class DescribeDeviceListRes(AbstractModel):
     @property
     def TotalRow(self):
         """总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalRow
@@ -7325,7 +7006,6 @@ class DescribeDeviceListRes(AbstractModel):
     @property
     def DeviceDataSet(self):
         """设备信息集合
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DeviceDataInfo
         """
         return self._DeviceDataSet
@@ -8881,19 +8561,14 @@ class DescribeEventListRes(AbstractModel):
     def __init__(self):
         r"""
         :param _PageNumber: 第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :type PageNumber: int
         :param _PageSize: 每页条数
-注意：此字段可能返回 null，表示取不到有效值。
         :type PageSize: int
         :param _TotalPage: 总页数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalPage: int
         :param _TotalRow: 总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalRow: int
         :param _EventDetailSet: 事件信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type EventDetailSet: list of EventDetail
         """
         self._PageNumber = None
@@ -8905,7 +8580,6 @@ class DescribeEventListRes(AbstractModel):
     @property
     def PageNumber(self):
         """第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PageNumber
@@ -8917,7 +8591,6 @@ class DescribeEventListRes(AbstractModel):
     @property
     def PageSize(self):
         """每页条数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PageSize
@@ -8929,7 +8602,6 @@ class DescribeEventListRes(AbstractModel):
     @property
     def TotalPage(self):
         """总页数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalPage
@@ -8941,7 +8613,6 @@ class DescribeEventListRes(AbstractModel):
     @property
     def TotalRow(self):
         """总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalRow
@@ -8953,7 +8624,6 @@ class DescribeEventListRes(AbstractModel):
     @property
     def EventDetailSet(self):
         """事件信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of EventDetail
         """
         return self._EventDetailSet
@@ -9340,10 +9010,8 @@ class DescribeGroupInfo(AbstractModel):
         :param _Name: 设备分组名称
         :type Name: str
         :param _Description: 分组描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _ParentId: 分组父级ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ParentId: int
         """
         self._Id = None
@@ -9376,7 +9044,6 @@ class DescribeGroupInfo(AbstractModel):
     @property
     def Description(self):
         """分组描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -9388,7 +9055,6 @@ class DescribeGroupInfo(AbstractModel):
     @property
     def ParentId(self):
         """分组父级ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ParentId
@@ -9688,19 +9354,14 @@ class DescribeLinkRuleListRes(AbstractModel):
     def __init__(self):
         r"""
         :param _PageNumber: 第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :type PageNumber: int
         :param _PageSize: 每页条数
-注意：此字段可能返回 null，表示取不到有效值。
         :type PageSize: int
         :param _TotalPage: 总页数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalPage: int
         :param _TotalRow: 总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalRow: int
         :param _LinkRuleSet: 联动规则列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type LinkRuleSet: list of LinkRuleInfo
         """
         self._PageNumber = None
@@ -9712,7 +9373,6 @@ class DescribeLinkRuleListRes(AbstractModel):
     @property
     def PageNumber(self):
         """第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PageNumber
@@ -9724,7 +9384,6 @@ class DescribeLinkRuleListRes(AbstractModel):
     @property
     def PageSize(self):
         """每页条数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PageSize
@@ -9736,7 +9395,6 @@ class DescribeLinkRuleListRes(AbstractModel):
     @property
     def TotalPage(self):
         """总页数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalPage
@@ -9748,7 +9406,6 @@ class DescribeLinkRuleListRes(AbstractModel):
     @property
     def TotalRow(self):
         """总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalRow
@@ -9760,7 +9417,6 @@ class DescribeLinkRuleListRes(AbstractModel):
     @property
     def LinkRuleSet(self):
         """联动规则列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LinkRuleInfo
         """
         return self._LinkRuleSet
@@ -12532,70 +12188,48 @@ class DeviceDataInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _WID: 设备ID， wid
-注意：此字段可能返回 null，表示取不到有效值。
         :type WID: str
         :param _DeviceName: 设备名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceName: str
         :param _DeviceTypeCode: 设备类型Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceTypeCode: str
         :param _DeviceTypeName: 设备类型名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceTypeName: str
         :param _ProductId: 产品Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductId: int
         :param _ProductName: 产品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductName: str
         :param _ProductAbility: 产品能力:信令数据、音视频。二进制数值中第0位表示信令数据、第1位表示音视频 。1（信令数据），3（具有信令数据以及音视频能力）。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductAbility: int
         :param _SpaceInfoSet: 设备位置信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type SpaceInfoSet: list of DeviceSpaceInfo
         :param _ModelId: 模型id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ModelId: str
         :param _ModelName: 模型名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ModelName: str
         :param _DeviceTagSet: 设备标签名，非必填
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceTagSet: list of str
         :param _IsActive: 激活状态（1激活、0未激活）
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsActive: int
         :param _ActiveTime:  激活时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActiveTime: str
         :param _IsLive: 推流状态（推流中、未推流） 仅摄像机有的状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsLive: bool
         :param _ParentWID: 设备所属父设备id（子设备才有）
-注意：此字段可能返回 null，表示取不到有效值。
         :type ParentWID: str
         :param _ParentWIDName: 设备所有父设备名称（子设备才有）
-注意：此字段可能返回 null，表示取不到有效值。
         :type ParentWIDName: str
         :param _SN: 序列号
-注意：此字段可能返回 null，表示取不到有效值。
         :type SN: str
         :param _Location: 设备点位坐标值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Location: :class:`tencentcloud.weilingwith.v20230427.models.DeviceLocation`
         :param _FieldList: 自定义字段
-注意：此字段可能返回 null，表示取不到有效值。
         :type FieldList: list of CustomFieldInfo
         :param _GroupInfo: 分组信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupInfo: str
         :param _DeviceStatus: 通信在/离线状态（online=normal+fault，offline）
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceStatus: str
         :param _Status: 设备业务状态（normal、fault、offline）
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         """
         self._WID = None
@@ -12624,7 +12258,6 @@ class DeviceDataInfo(AbstractModel):
     @property
     def WID(self):
         """设备ID， wid
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._WID
@@ -12636,7 +12269,6 @@ class DeviceDataInfo(AbstractModel):
     @property
     def DeviceName(self):
         """设备名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceName
@@ -12648,7 +12280,6 @@ class DeviceDataInfo(AbstractModel):
     @property
     def DeviceTypeCode(self):
         """设备类型Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceTypeCode
@@ -12660,7 +12291,6 @@ class DeviceDataInfo(AbstractModel):
     @property
     def DeviceTypeName(self):
         """设备类型名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceTypeName
@@ -12672,7 +12302,6 @@ class DeviceDataInfo(AbstractModel):
     @property
     def ProductId(self):
         """产品Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ProductId
@@ -12684,7 +12313,6 @@ class DeviceDataInfo(AbstractModel):
     @property
     def ProductName(self):
         """产品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductName
@@ -12696,7 +12324,6 @@ class DeviceDataInfo(AbstractModel):
     @property
     def ProductAbility(self):
         """产品能力:信令数据、音视频。二进制数值中第0位表示信令数据、第1位表示音视频 。1（信令数据），3（具有信令数据以及音视频能力）。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ProductAbility
@@ -12708,7 +12335,6 @@ class DeviceDataInfo(AbstractModel):
     @property
     def SpaceInfoSet(self):
         """设备位置信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DeviceSpaceInfo
         """
         return self._SpaceInfoSet
@@ -12720,7 +12346,6 @@ class DeviceDataInfo(AbstractModel):
     @property
     def ModelId(self):
         """模型id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ModelId
@@ -12732,7 +12357,6 @@ class DeviceDataInfo(AbstractModel):
     @property
     def ModelName(self):
         """模型名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ModelName
@@ -12744,7 +12368,6 @@ class DeviceDataInfo(AbstractModel):
     @property
     def DeviceTagSet(self):
         """设备标签名，非必填
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._DeviceTagSet
@@ -12756,7 +12379,6 @@ class DeviceDataInfo(AbstractModel):
     @property
     def IsActive(self):
         """激活状态（1激活、0未激活）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IsActive
@@ -12768,7 +12390,6 @@ class DeviceDataInfo(AbstractModel):
     @property
     def ActiveTime(self):
         """ 激活时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ActiveTime
@@ -12780,7 +12401,6 @@ class DeviceDataInfo(AbstractModel):
     @property
     def IsLive(self):
         """推流状态（推流中、未推流） 仅摄像机有的状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsLive
@@ -12792,7 +12412,6 @@ class DeviceDataInfo(AbstractModel):
     @property
     def ParentWID(self):
         """设备所属父设备id（子设备才有）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ParentWID
@@ -12804,7 +12423,6 @@ class DeviceDataInfo(AbstractModel):
     @property
     def ParentWIDName(self):
         """设备所有父设备名称（子设备才有）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ParentWIDName
@@ -12816,7 +12434,6 @@ class DeviceDataInfo(AbstractModel):
     @property
     def SN(self):
         """序列号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SN
@@ -12828,7 +12445,6 @@ class DeviceDataInfo(AbstractModel):
     @property
     def Location(self):
         """设备点位坐标值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.DeviceLocation`
         """
         return self._Location
@@ -12840,7 +12456,6 @@ class DeviceDataInfo(AbstractModel):
     @property
     def FieldList(self):
         """自定义字段
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CustomFieldInfo
         """
         return self._FieldList
@@ -12852,7 +12467,6 @@ class DeviceDataInfo(AbstractModel):
     @property
     def GroupInfo(self):
         """分组信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupInfo
@@ -12864,7 +12478,6 @@ class DeviceDataInfo(AbstractModel):
     @property
     def DeviceStatus(self):
         """通信在/离线状态（online=normal+fault，offline）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceStatus
@@ -12876,7 +12489,6 @@ class DeviceDataInfo(AbstractModel):
     @property
     def Status(self):
         """设备业务状态（normal、fault、offline）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -12939,13 +12551,10 @@ class DeviceLocation(AbstractModel):
     def __init__(self):
         r"""
         :param _X: 点位X坐标值
-注意：此字段可能返回 null，表示取不到有效值。
         :type X: float
         :param _Y: 点位Y坐标值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Y: float
         :param _Z: 点位Z坐标值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Z: float
         """
         self._X = None
@@ -12955,7 +12564,6 @@ class DeviceLocation(AbstractModel):
     @property
     def X(self):
         """点位X坐标值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._X
@@ -12967,7 +12575,6 @@ class DeviceLocation(AbstractModel):
     @property
     def Y(self):
         """点位Y坐标值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Y
@@ -12979,7 +12586,6 @@ class DeviceLocation(AbstractModel):
     @property
     def Z(self):
         """点位Z坐标值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Z
@@ -13062,13 +12668,10 @@ class DeviceShadowInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _WID: 设备ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type WID: str
         :param _DeviceShadow: 设备影子数据,返回有效数据为"x-json:"后字段
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceShadow: str
         :param _DeviceShadowUpdateTime: 设备影子更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceShadowUpdateTime: str
         """
         self._WID = None
@@ -13078,7 +12681,6 @@ class DeviceShadowInfo(AbstractModel):
     @property
     def WID(self):
         """设备ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._WID
@@ -13090,7 +12692,6 @@ class DeviceShadowInfo(AbstractModel):
     @property
     def DeviceShadow(self):
         """设备影子数据,返回有效数据为"x-json:"后字段
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceShadow
@@ -13102,7 +12703,6 @@ class DeviceShadowInfo(AbstractModel):
     @property
     def DeviceShadowUpdateTime(self):
         """设备影子更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceShadowUpdateTime
@@ -13134,19 +12734,14 @@ class DeviceShadowRes(AbstractModel):
     def __init__(self):
         r"""
         :param _PageNumber: 第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :type PageNumber: int
         :param _PageSize: 每页条数
-注意：此字段可能返回 null，表示取不到有效值。
         :type PageSize: int
         :param _TotalPage: 总页数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalPage: int
         :param _TotalRow: 总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalRow: int
         :param _Set: 设备影子列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Set: list of DeviceShadowInfo
         """
         self._PageNumber = None
@@ -13158,7 +12753,6 @@ class DeviceShadowRes(AbstractModel):
     @property
     def PageNumber(self):
         """第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PageNumber
@@ -13170,7 +12764,6 @@ class DeviceShadowRes(AbstractModel):
     @property
     def PageSize(self):
         """每页条数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PageSize
@@ -13182,7 +12775,6 @@ class DeviceShadowRes(AbstractModel):
     @property
     def TotalPage(self):
         """总页数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalPage
@@ -13194,7 +12786,6 @@ class DeviceShadowRes(AbstractModel):
     @property
     def TotalRow(self):
         """总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalRow
@@ -13206,7 +12797,6 @@ class DeviceShadowRes(AbstractModel):
     @property
     def Set(self):
         """设备影子列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DeviceShadowInfo
         """
         return self._Set
@@ -13245,16 +12835,12 @@ class DeviceSpaceInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: 空间Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
         :param _Name: 空间名字
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Level: 空间级别
-注意：此字段可能返回 null，表示取不到有效值。
         :type Level: int
         :param _Code: 空间编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type Code: str
         """
         self._Id = None
@@ -13265,7 +12851,6 @@ class DeviceSpaceInfo(AbstractModel):
     @property
     def Id(self):
         """空间Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Id
@@ -13277,7 +12862,6 @@ class DeviceSpaceInfo(AbstractModel):
     @property
     def Name(self):
         """空间名字
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -13289,7 +12873,6 @@ class DeviceSpaceInfo(AbstractModel):
     @property
     def Level(self):
         """空间级别
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Level
@@ -13301,7 +12884,6 @@ class DeviceSpaceInfo(AbstractModel):
     @property
     def Code(self):
         """空间编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Code
@@ -13334,25 +12916,18 @@ class DeviceSpaceInfoRes(AbstractModel):
     def __init__(self):
         r"""
         :param _BuildingId: 建筑id
-注意：此字段可能返回 null，表示取不到有效值。
         :type BuildingId: str
         :param _ElementId: 构件id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ElementId: str
         :param _EntityType: 构件类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type EntityType: str
         :param _ElementName: 构件名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ElementName: str
         :param _Level: 构件级别
-注意：此字段可能返回 null，表示取不到有效值。
         :type Level: int
         :param _BottomHeight: 底部标高（单位mm）
-注意：此字段可能返回 null，表示取不到有效值。
         :type BottomHeight: int
         :param _SpaceCode: 空间编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type SpaceCode: str
         """
         self._BuildingId = None
@@ -13366,7 +12941,6 @@ class DeviceSpaceInfoRes(AbstractModel):
     @property
     def BuildingId(self):
         """建筑id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BuildingId
@@ -13378,7 +12952,6 @@ class DeviceSpaceInfoRes(AbstractModel):
     @property
     def ElementId(self):
         """构件id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ElementId
@@ -13390,7 +12963,6 @@ class DeviceSpaceInfoRes(AbstractModel):
     @property
     def EntityType(self):
         """构件类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EntityType
@@ -13402,7 +12974,6 @@ class DeviceSpaceInfoRes(AbstractModel):
     @property
     def ElementName(self):
         """构件名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ElementName
@@ -13414,7 +12985,6 @@ class DeviceSpaceInfoRes(AbstractModel):
     @property
     def Level(self):
         """构件级别
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Level
@@ -13426,7 +12996,6 @@ class DeviceSpaceInfoRes(AbstractModel):
     @property
     def BottomHeight(self):
         """底部标高（单位mm）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._BottomHeight
@@ -13438,7 +13007,6 @@ class DeviceSpaceInfoRes(AbstractModel):
     @property
     def SpaceCode(self):
         """空间编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SpaceCode
@@ -13474,19 +13042,14 @@ class DeviceStatusInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _WID: 设备ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type WID: str
         :param _DeviceStatus: 设备状态（online=normal+fault、offline）
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceStatus: str
         :param _DeviceStatusUpdateTime: 设备状态更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceStatusUpdateTime: str
         :param _Status: 设备业务状态（normal、fault、offline）
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _IsAlive: 推流状态。推流中-true，未推流-false
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsAlive: bool
         """
         self._WID = None
@@ -13498,7 +13061,6 @@ class DeviceStatusInfo(AbstractModel):
     @property
     def WID(self):
         """设备ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._WID
@@ -13510,7 +13072,6 @@ class DeviceStatusInfo(AbstractModel):
     @property
     def DeviceStatus(self):
         """设备状态（online=normal+fault、offline）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceStatus
@@ -13522,7 +13083,6 @@ class DeviceStatusInfo(AbstractModel):
     @property
     def DeviceStatusUpdateTime(self):
         """设备状态更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceStatusUpdateTime
@@ -13534,7 +13094,6 @@ class DeviceStatusInfo(AbstractModel):
     @property
     def Status(self):
         """设备业务状态（normal、fault、offline）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -13546,7 +13105,6 @@ class DeviceStatusInfo(AbstractModel):
     @property
     def IsAlive(self):
         """推流状态。推流中-true，未推流-false
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsAlive
@@ -13580,19 +13138,14 @@ class DeviceStatusRes(AbstractModel):
     def __init__(self):
         r"""
         :param _PageNumber: 第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :type PageNumber: int
         :param _PageSize: 每页条数
-注意：此字段可能返回 null，表示取不到有效值。
         :type PageSize: int
         :param _TotalPage: 总页数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalPage: int
         :param _TotalRow: 总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalRow: int
         :param _DeviceStatusSet: 设备状态信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceStatusSet: list of DeviceStatusInfo
         """
         self._PageNumber = None
@@ -13604,7 +13157,6 @@ class DeviceStatusRes(AbstractModel):
     @property
     def PageNumber(self):
         """第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PageNumber
@@ -13616,7 +13168,6 @@ class DeviceStatusRes(AbstractModel):
     @property
     def PageSize(self):
         """每页条数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PageSize
@@ -13628,7 +13179,6 @@ class DeviceStatusRes(AbstractModel):
     @property
     def TotalPage(self):
         """总页数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalPage
@@ -13640,7 +13190,6 @@ class DeviceStatusRes(AbstractModel):
     @property
     def TotalRow(self):
         """总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalRow
@@ -13652,7 +13201,6 @@ class DeviceStatusRes(AbstractModel):
     @property
     def DeviceStatusSet(self):
         """设备状态信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DeviceStatusInfo
         """
         return self._DeviceStatusSet
@@ -13691,25 +13239,18 @@ class DeviceStatusStatRes(AbstractModel):
     def __init__(self):
         r"""
         :param _WorkspaceId: 工作空间Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type WorkspaceId: int
         :param _Total: 汇总数。在线（正常+故障） + 离线
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _NormalSum: 正常数
-注意：此字段可能返回 null，表示取不到有效值。
         :type NormalSum: int
         :param _OfflineSum: 离线数
-注意：此字段可能返回 null，表示取不到有效值。
         :type OfflineSum: int
         :param _FaultSum: 故障数
-注意：此字段可能返回 null，表示取不到有效值。
         :type FaultSum: int
         :param _DeviceTypeOverviewSet: 设备类型概览列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceTypeOverviewSet: list of DeviceTypeOverview
         :param _StatLevelSet: 设备类型统计列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type StatLevelSet: list of StatLevel
         """
         self._WorkspaceId = None
@@ -13723,7 +13264,6 @@ class DeviceStatusStatRes(AbstractModel):
     @property
     def WorkspaceId(self):
         """工作空间Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._WorkspaceId
@@ -13735,7 +13275,6 @@ class DeviceStatusStatRes(AbstractModel):
     @property
     def Total(self):
         """汇总数。在线（正常+故障） + 离线
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -13747,7 +13286,6 @@ class DeviceStatusStatRes(AbstractModel):
     @property
     def NormalSum(self):
         """正常数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._NormalSum
@@ -13759,7 +13297,6 @@ class DeviceStatusStatRes(AbstractModel):
     @property
     def OfflineSum(self):
         """离线数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._OfflineSum
@@ -13771,7 +13308,6 @@ class DeviceStatusStatRes(AbstractModel):
     @property
     def FaultSum(self):
         """故障数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FaultSum
@@ -13783,7 +13319,6 @@ class DeviceStatusStatRes(AbstractModel):
     @property
     def DeviceTypeOverviewSet(self):
         """设备类型概览列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DeviceTypeOverview
         """
         return self._DeviceTypeOverviewSet
@@ -13795,7 +13330,6 @@ class DeviceStatusStatRes(AbstractModel):
     @property
     def StatLevelSet(self):
         """设备类型统计列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of StatLevel
         """
         return self._StatLevelSet
@@ -13841,10 +13375,8 @@ class DeviceTagInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _TagId: 标签Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagId: int
         :param _TagName: 标签名字
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagName: str
         """
         self._TagId = None
@@ -13853,7 +13385,6 @@ class DeviceTagInfo(AbstractModel):
     @property
     def TagId(self):
         """标签Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TagId
@@ -13865,7 +13396,6 @@ class DeviceTagInfo(AbstractModel):
     @property
     def TagName(self):
         """标签名字
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TagName
@@ -13896,19 +13426,14 @@ class DeviceTagRes(AbstractModel):
     def __init__(self):
         r"""
         :param _PageNumber: 第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :type PageNumber: int
         :param _PageSize: 每页条数
-注意：此字段可能返回 null，表示取不到有效值。
         :type PageSize: int
         :param _TotalPage: 总页数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalPage: int
         :param _TotalRow: 总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalRow: int
         :param _Set: 设备标签列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Set: list of DeviceTagInfo
         """
         self._PageNumber = None
@@ -13920,7 +13445,6 @@ class DeviceTagRes(AbstractModel):
     @property
     def PageNumber(self):
         """第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PageNumber
@@ -13932,7 +13456,6 @@ class DeviceTagRes(AbstractModel):
     @property
     def PageSize(self):
         """每页条数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PageSize
@@ -13944,7 +13467,6 @@ class DeviceTagRes(AbstractModel):
     @property
     def TotalPage(self):
         """总页数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalPage
@@ -13956,7 +13478,6 @@ class DeviceTagRes(AbstractModel):
     @property
     def TotalRow(self):
         """总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalRow
@@ -13968,7 +13489,6 @@ class DeviceTagRes(AbstractModel):
     @property
     def Set(self):
         """设备标签列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DeviceTagInfo
         """
         return self._Set
@@ -14007,20 +13527,15 @@ class DeviceType(AbstractModel):
     def __init__(self):
         r"""
         :param _Code: 设备类型编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type Code: str
         :param _Name: 设备类型名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _ParentCode: 父设备类型编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type ParentCode: str
         :param _ParentName: 父设备类型名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ParentName: str
         :param _IsSubsystem: 是否子系统，1是
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsSubsystem: int
         """
         self._Code = None
@@ -14032,7 +13547,6 @@ class DeviceType(AbstractModel):
     @property
     def Code(self):
         """设备类型编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Code
@@ -14044,7 +13558,6 @@ class DeviceType(AbstractModel):
     @property
     def Name(self):
         """设备类型名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -14056,7 +13569,6 @@ class DeviceType(AbstractModel):
     @property
     def ParentCode(self):
         """父设备类型编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ParentCode
@@ -14068,7 +13580,6 @@ class DeviceType(AbstractModel):
     @property
     def ParentName(self):
         """父设备类型名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ParentName
@@ -14081,7 +13592,6 @@ class DeviceType(AbstractModel):
     def IsSubsystem(self):
         """是否子系统，1是
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IsSubsystem
@@ -14115,22 +13625,16 @@ class DeviceTypeOverview(AbstractModel):
     def __init__(self):
         r"""
         :param _DeviceType: 设备类型值
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceType: str
         :param _Name: 设备类型名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Total: 汇总数。在线（正常+故障） + 离线
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _Normal: 正常数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Normal: int
         :param _Offline: 离线数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Offline: int
         :param _Fault: 故障数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Fault: int
         """
         self._DeviceType = None
@@ -14143,7 +13647,6 @@ class DeviceTypeOverview(AbstractModel):
     @property
     def DeviceType(self):
         """设备类型值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceType
@@ -14155,7 +13658,6 @@ class DeviceTypeOverview(AbstractModel):
     @property
     def Name(self):
         """设备类型名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -14167,7 +13669,6 @@ class DeviceTypeOverview(AbstractModel):
     @property
     def Total(self):
         """汇总数。在线（正常+故障） + 离线
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -14179,7 +13680,6 @@ class DeviceTypeOverview(AbstractModel):
     @property
     def Normal(self):
         """正常数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Normal
@@ -14191,7 +13691,6 @@ class DeviceTypeOverview(AbstractModel):
     @property
     def Offline(self):
         """离线数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Offline
@@ -14203,7 +13702,6 @@ class DeviceTypeOverview(AbstractModel):
     @property
     def Fault(self):
         """故障数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Fault
@@ -14238,7 +13736,6 @@ class DeviceTypeSet(AbstractModel):
     def __init__(self):
         r"""
         :param _Set: 设备类型列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Set: list of DeviceType
         """
         self._Set = None
@@ -14246,7 +13743,6 @@ class DeviceTypeSet(AbstractModel):
     @property
     def Set(self):
         """设备类型列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DeviceType
         """
         return self._Set
@@ -14281,13 +13777,10 @@ class ElementCoordinates(AbstractModel):
     def __init__(self):
         r"""
         :param _Longitude: 经度
-注意：此字段可能返回 null，表示取不到有效值。
         :type Longitude: float
         :param _Latitude: 纬度
-注意：此字段可能返回 null，表示取不到有效值。
         :type Latitude: float
         :param _Altitude: 高程
-注意：此字段可能返回 null，表示取不到有效值。
         :type Altitude: float
         """
         self._Longitude = None
@@ -14297,7 +13790,6 @@ class ElementCoordinates(AbstractModel):
     @property
     def Longitude(self):
         """经度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Longitude
@@ -14309,7 +13801,6 @@ class ElementCoordinates(AbstractModel):
     @property
     def Latitude(self):
         """纬度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Latitude
@@ -14321,7 +13812,6 @@ class ElementCoordinates(AbstractModel):
     @property
     def Altitude(self):
         """高程
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Altitude
@@ -14353,46 +13843,32 @@ class ElementProfile(AbstractModel):
     def __init__(self):
         r"""
         :param _BuildingId: 建筑id
-注意：此字段可能返回 null，表示取不到有效值。
         :type BuildingId: str
         :param _ElementId: 构件id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ElementId: str
         :param _EntityType: 构件类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type EntityType: str
         :param _ElementName: 构件名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ElementName: str
         :param _Level: 构件空间级别
-注意：此字段可能返回 null，表示取不到有效值。
         :type Level: int
         :param _BottomHeight: 底部标高（单位mm）
-注意：此字段可能返回 null，表示取不到有效值。
         :type BottomHeight: int
         :param _Sort: 排序
-注意：此字段可能返回 null，表示取不到有效值。
         :type Sort: int
         :param _SpaceCode: 空间编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type SpaceCode: str
         :param _SpaceTypeCode: 空间分类编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type SpaceTypeCode: str
         :param _SpaceTypeName: 空间分类名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type SpaceTypeName: str
         :param _ParentElementId: 父级构件id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ParentElementId: str
         :param _SpacePoiId: 空间层级类型编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type SpacePoiId: str
         :param _ElementDesc: 构件描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type ElementDesc: str
         :param _IsDelete: 删除标记
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsDelete: int
         """
         self._BuildingId = None
@@ -14413,7 +13889,6 @@ class ElementProfile(AbstractModel):
     @property
     def BuildingId(self):
         """建筑id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BuildingId
@@ -14425,7 +13900,6 @@ class ElementProfile(AbstractModel):
     @property
     def ElementId(self):
         """构件id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ElementId
@@ -14437,7 +13911,6 @@ class ElementProfile(AbstractModel):
     @property
     def EntityType(self):
         """构件类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EntityType
@@ -14449,7 +13922,6 @@ class ElementProfile(AbstractModel):
     @property
     def ElementName(self):
         """构件名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ElementName
@@ -14461,7 +13933,6 @@ class ElementProfile(AbstractModel):
     @property
     def Level(self):
         """构件空间级别
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Level
@@ -14473,7 +13944,6 @@ class ElementProfile(AbstractModel):
     @property
     def BottomHeight(self):
         """底部标高（单位mm）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._BottomHeight
@@ -14485,7 +13955,6 @@ class ElementProfile(AbstractModel):
     @property
     def Sort(self):
         """排序
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Sort
@@ -14497,7 +13966,6 @@ class ElementProfile(AbstractModel):
     @property
     def SpaceCode(self):
         """空间编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SpaceCode
@@ -14509,7 +13977,6 @@ class ElementProfile(AbstractModel):
     @property
     def SpaceTypeCode(self):
         """空间分类编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SpaceTypeCode
@@ -14521,7 +13988,6 @@ class ElementProfile(AbstractModel):
     @property
     def SpaceTypeName(self):
         """空间分类名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SpaceTypeName
@@ -14533,7 +13999,6 @@ class ElementProfile(AbstractModel):
     @property
     def ParentElementId(self):
         """父级构件id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ParentElementId
@@ -14545,7 +14010,6 @@ class ElementProfile(AbstractModel):
     @property
     def SpacePoiId(self):
         """空间层级类型编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SpacePoiId
@@ -14557,7 +14021,6 @@ class ElementProfile(AbstractModel):
     @property
     def ElementDesc(self):
         """构件描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ElementDesc
@@ -14569,7 +14032,6 @@ class ElementProfile(AbstractModel):
     @property
     def IsDelete(self):
         """删除标记
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IsDelete
@@ -14612,10 +14074,8 @@ class ElementProfilePageRes(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 构件总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _List: 构件列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of ElementProfile
         """
         self._TotalCount = None
@@ -14624,7 +14084,6 @@ class ElementProfilePageRes(AbstractModel):
     @property
     def TotalCount(self):
         """构件总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -14636,7 +14095,6 @@ class ElementProfilePageRes(AbstractModel):
     @property
     def List(self):
         """构件列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ElementProfile
         """
         return self._List
@@ -14672,10 +14130,8 @@ class ElementProfileTreeNode(AbstractModel):
     def __init__(self):
         r"""
         :param _ElementProfile: 构件概要信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ElementProfile: :class:`tencentcloud.weilingwith.v20230427.models.ElementProfile`
         :param _Children: 子节点信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Children: list of ElementProfileTreeNode
         """
         self._ElementProfile = None
@@ -14684,7 +14140,6 @@ class ElementProfileTreeNode(AbstractModel):
     @property
     def ElementProfile(self):
         """构件概要信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.ElementProfile`
         """
         return self._ElementProfile
@@ -14696,7 +14151,6 @@ class ElementProfileTreeNode(AbstractModel):
     @property
     def Children(self):
         """子节点信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ElementProfileTreeNode
         """
         return self._Children
@@ -14734,13 +14188,10 @@ class ElementProfileTreeRes(AbstractModel):
     def __init__(self):
         r"""
         :param _BuildingId: 建筑id
-注意：此字段可能返回 null，表示取不到有效值。
         :type BuildingId: str
         :param _ParentElementId: 父级构件id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ParentElementId: str
         :param _Root: 构件树
-注意：此字段可能返回 null，表示取不到有效值。
         :type Root: :class:`tencentcloud.weilingwith.v20230427.models.ElementProfileTreeNode`
         """
         self._BuildingId = None
@@ -14750,7 +14201,6 @@ class ElementProfileTreeRes(AbstractModel):
     @property
     def BuildingId(self):
         """建筑id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BuildingId
@@ -14762,7 +14212,6 @@ class ElementProfileTreeRes(AbstractModel):
     @property
     def ParentElementId(self):
         """父级构件id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ParentElementId
@@ -14774,7 +14223,6 @@ class ElementProfileTreeRes(AbstractModel):
     @property
     def Root(self):
         """构件树
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.ElementProfileTreeNode`
         """
         return self._Root
@@ -14808,13 +14256,10 @@ class ElementProperty(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 属性名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Description: 属性描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _Content: 属性内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type Content: str
         """
         self._Name = None
@@ -14824,7 +14269,6 @@ class ElementProperty(AbstractModel):
     @property
     def Name(self):
         """属性名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -14836,7 +14280,6 @@ class ElementProperty(AbstractModel):
     @property
     def Description(self):
         """属性描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -14848,7 +14291,6 @@ class ElementProperty(AbstractModel):
     @property
     def Content(self):
         """属性内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Content
@@ -14880,28 +14322,20 @@ class ElementPropertyRes(AbstractModel):
     def __init__(self):
         r"""
         :param _BuildingId: 建筑id
-注意：此字段可能返回 null，表示取不到有效值。
         :type BuildingId: str
         :param _ElementId: 构件id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ElementId: str
         :param _PropertySet: 构件属性集合
-注意：此字段可能返回 null，表示取不到有效值。
         :type PropertySet: list of ElementProperty
         :param _Coordinates: 构件地理坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :type Coordinates: :class:`tencentcloud.weilingwith.v20230427.models.ElementCoordinates`
         :param _Translate: 构件偏移量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Translate: :class:`tencentcloud.weilingwith.v20230427.models.ElementTranslate`
         :param _ElementName: 构件名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ElementName: str
         :param _EntityTypeCode: 构件类型代码
-注意：此字段可能返回 null，表示取不到有效值。
         :type EntityTypeCode: str
         :param _EntityTypeName: 构件类型名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type EntityTypeName: str
         """
         self._BuildingId = None
@@ -14916,7 +14350,6 @@ class ElementPropertyRes(AbstractModel):
     @property
     def BuildingId(self):
         """建筑id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BuildingId
@@ -14928,7 +14361,6 @@ class ElementPropertyRes(AbstractModel):
     @property
     def ElementId(self):
         """构件id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ElementId
@@ -14940,7 +14372,6 @@ class ElementPropertyRes(AbstractModel):
     @property
     def PropertySet(self):
         """构件属性集合
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ElementProperty
         """
         return self._PropertySet
@@ -14952,7 +14383,6 @@ class ElementPropertyRes(AbstractModel):
     @property
     def Coordinates(self):
         """构件地理坐标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.ElementCoordinates`
         """
         return self._Coordinates
@@ -14964,7 +14394,6 @@ class ElementPropertyRes(AbstractModel):
     @property
     def Translate(self):
         """构件偏移量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.ElementTranslate`
         """
         return self._Translate
@@ -14976,7 +14405,6 @@ class ElementPropertyRes(AbstractModel):
     @property
     def ElementName(self):
         """构件名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ElementName
@@ -14988,7 +14416,6 @@ class ElementPropertyRes(AbstractModel):
     @property
     def EntityTypeCode(self):
         """构件类型代码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EntityTypeCode
@@ -15000,7 +14427,6 @@ class ElementPropertyRes(AbstractModel):
     @property
     def EntityTypeName(self):
         """构件类型名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EntityTypeName
@@ -15046,13 +14472,10 @@ class ElementTranslate(AbstractModel):
     def __init__(self):
         r"""
         :param _X: X方向偏移量
-注意：此字段可能返回 null，表示取不到有效值。
         :type X: float
         :param _Y: Y方向偏移量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Y: float
         :param _Z: Z方向偏移量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Z: float
         """
         self._X = None
@@ -15062,7 +14485,6 @@ class ElementTranslate(AbstractModel):
     @property
     def X(self):
         """X方向偏移量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._X
@@ -15074,7 +14496,6 @@ class ElementTranslate(AbstractModel):
     @property
     def Y(self):
         """Y方向偏移量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Y
@@ -15086,7 +14507,6 @@ class ElementTranslate(AbstractModel):
     @property
     def Z(self):
         """Z方向偏移量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Z
@@ -15118,7 +14538,6 @@ class EmptyRes(AbstractModel):
     def __init__(self):
         r"""
         :param _Msg: 返回请求状态,成功ok，失败error
-注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
         """
         self._Msg = None
@@ -15126,7 +14545,6 @@ class EmptyRes(AbstractModel):
     @property
     def Msg(self):
         """返回请求状态,成功ok，失败error
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Msg
@@ -15156,10 +14574,8 @@ class Event(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: 事件id或动作Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
         :param _Name: 事件名称或动作名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         """
         self._Id = None
@@ -15168,7 +14584,6 @@ class Event(AbstractModel):
     @property
     def Id(self):
         """事件id或动作Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Id
@@ -15180,7 +14595,6 @@ class Event(AbstractModel):
     @property
     def Name(self):
         """事件名称或动作名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -15211,31 +14625,22 @@ class EventDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: 事件id
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
         :param _Name: 事件名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _TriggerType: 事件触发类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerType: str
         :param _TriggerCondition: 事件触发条件，返回为x-json后的字段
-注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerCondition: str
         :param _ValidPeriod: 有效期
-注意：此字段可能返回 null，表示取不到有效值。
         :type ValidPeriod: str
         :param _LinkRuleSet: 关联规则列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type LinkRuleSet: list of LinkRule
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _DeviceType: 设备类型，当触发类型为deviceType时返回
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceType: str
         :param _WID: 设备的wid，当触发类型是device返回
-注意：此字段可能返回 null，表示取不到有效值。
         :type WID: str
         """
         self._Id = None
@@ -15251,7 +14656,6 @@ class EventDetail(AbstractModel):
     @property
     def Id(self):
         """事件id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Id
@@ -15263,7 +14667,6 @@ class EventDetail(AbstractModel):
     @property
     def Name(self):
         """事件名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -15275,7 +14678,6 @@ class EventDetail(AbstractModel):
     @property
     def TriggerType(self):
         """事件触发类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TriggerType
@@ -15287,7 +14689,6 @@ class EventDetail(AbstractModel):
     @property
     def TriggerCondition(self):
         """事件触发条件，返回为x-json后的字段
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TriggerCondition
@@ -15299,7 +14700,6 @@ class EventDetail(AbstractModel):
     @property
     def ValidPeriod(self):
         """有效期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ValidPeriod
@@ -15311,7 +14711,6 @@ class EventDetail(AbstractModel):
     @property
     def LinkRuleSet(self):
         """关联规则列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LinkRule
         """
         return self._LinkRuleSet
@@ -15323,7 +14722,6 @@ class EventDetail(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -15335,7 +14733,6 @@ class EventDetail(AbstractModel):
     @property
     def DeviceType(self):
         """设备类型，当触发类型为deviceType时返回
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceType
@@ -15347,7 +14744,6 @@ class EventDetail(AbstractModel):
     @property
     def WID(self):
         """设备的wid，当触发类型是device返回
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._WID
@@ -15390,16 +14786,12 @@ class EventObj(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: 事件id
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
         :param _Name: 事件名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Type: 事件触发类型名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Condition: 时间触发条件
-注意：此字段可能返回 null，表示取不到有效值。
         :type Condition: str
         """
         self._Id = None
@@ -15410,7 +14802,6 @@ class EventObj(AbstractModel):
     @property
     def Id(self):
         """事件id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Id
@@ -15422,7 +14813,6 @@ class EventObj(AbstractModel):
     @property
     def Name(self):
         """事件名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -15434,7 +14824,6 @@ class EventObj(AbstractModel):
     @property
     def Type(self):
         """事件触发类型名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -15446,7 +14835,6 @@ class EventObj(AbstractModel):
     @property
     def Condition(self):
         """时间触发条件
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Condition
@@ -15480,7 +14868,6 @@ class FileDownloadURL(AbstractModel):
         r"""
         :param _FileURL: 下载地址
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileURL: str
         """
         self._FileURL = None
@@ -15489,7 +14876,6 @@ class FileDownloadURL(AbstractModel):
     def FileURL(self):
         """下载地址
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FileURL
@@ -15520,10 +14906,8 @@ class FileInfo(AbstractModel):
         r"""
         :param _FileId: 文件id
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileId: str
         :param _ReportName: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReportName: str
         """
         self._FileId = None
@@ -15533,7 +14917,6 @@ class FileInfo(AbstractModel):
     def FileId(self):
         """文件id
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FileId
@@ -15545,7 +14928,6 @@ class FileInfo(AbstractModel):
     @property
     def ReportName(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ReportName
@@ -15576,13 +14958,10 @@ class FileUploadURL(AbstractModel):
     def __init__(self):
         r"""
         :param _UploadURL: 上传地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type UploadURL: str
         :param _FileId: 文件Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileId: str
         :param _DownloadURL: 下载地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type DownloadURL: str
         """
         self._UploadURL = None
@@ -15592,7 +14971,6 @@ class FileUploadURL(AbstractModel):
     @property
     def UploadURL(self):
         """上传地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UploadURL
@@ -15604,7 +14982,6 @@ class FileUploadURL(AbstractModel):
     @property
     def FileId(self):
         """文件Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FileId
@@ -15616,7 +14993,6 @@ class FileUploadURL(AbstractModel):
     @property
     def DownloadURL(self):
         """下载地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DownloadURL
@@ -15649,33 +15025,24 @@ class HandleRecordInfo(AbstractModel):
         r"""
         :param _Id: 告警处理记录id
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
         :param _Description: 描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _OperationType: 操作类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type OperationType: str
         :param _Time: 处理时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type Time: str
         :param _Type: 类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _FileSet: 文件列表
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileSet: list of FileInfo
         :param _AppId: 应用appid
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: int
         :param _ExtendOne: 扩展字段1，存非孪生中台用户id
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExtendOne: str
         """
         self._Id = None
@@ -15692,7 +15059,6 @@ class HandleRecordInfo(AbstractModel):
     def Id(self):
         """告警处理记录id
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Id
@@ -15704,7 +15070,6 @@ class HandleRecordInfo(AbstractModel):
     @property
     def Description(self):
         """描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -15716,7 +15081,6 @@ class HandleRecordInfo(AbstractModel):
     @property
     def Name(self):
         """名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -15728,7 +15092,6 @@ class HandleRecordInfo(AbstractModel):
     @property
     def OperationType(self):
         """操作类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OperationType
@@ -15740,7 +15103,6 @@ class HandleRecordInfo(AbstractModel):
     @property
     def Time(self):
         """处理时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Time
@@ -15752,7 +15114,6 @@ class HandleRecordInfo(AbstractModel):
     @property
     def Type(self):
         """类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -15765,7 +15126,6 @@ class HandleRecordInfo(AbstractModel):
     def FileSet(self):
         """文件列表
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of FileInfo
         """
         return self._FileSet
@@ -15777,7 +15137,6 @@ class HandleRecordInfo(AbstractModel):
     @property
     def AppId(self):
         """应用appid
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AppId
@@ -15790,7 +15149,6 @@ class HandleRecordInfo(AbstractModel):
     def ExtendOne(self):
         """扩展字段1，存非孪生中台用户id
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ExtendOne
@@ -15833,10 +15191,8 @@ class HandlerPersonInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: 用户id
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
         :param _Name: 用户名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         """
         self._Id = None
@@ -15845,7 +15201,6 @@ class HandlerPersonInfo(AbstractModel):
     @property
     def Id(self):
         """用户id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Id
@@ -15857,7 +15212,6 @@ class HandlerPersonInfo(AbstractModel):
     @property
     def Name(self):
         """用户名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -15888,10 +15242,8 @@ class LinkRule(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: 关联联动规则id
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
         :param _Name: 关联联动规则名字
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         """
         self._Id = None
@@ -15900,7 +15252,6 @@ class LinkRule(AbstractModel):
     @property
     def Id(self):
         """关联联动规则id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Id
@@ -15912,7 +15263,6 @@ class LinkRule(AbstractModel):
     @property
     def Name(self):
         """关联联动规则名字
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -15943,28 +15293,20 @@ class LinkRuleInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: 联动id
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
         :param _Name: 联动名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _EventSet: 事件列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type EventSet: list of Event
         :param _ActionSet: 动作列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActionSet: list of Action
         :param _Status: 状态：0开，-1关
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _BeginDate: 起始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type BeginDate: str
         :param _EndDate: 结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndDate: str
         :param _ValidPeriod: 有效周期内容,有效字段为x-json后的字段
-注意：此字段可能返回 null，表示取不到有效值。
         :type ValidPeriod: str
         """
         self._Id = None
@@ -15979,7 +15321,6 @@ class LinkRuleInfo(AbstractModel):
     @property
     def Id(self):
         """联动id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Id
@@ -15991,7 +15332,6 @@ class LinkRuleInfo(AbstractModel):
     @property
     def Name(self):
         """联动名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -16003,7 +15343,6 @@ class LinkRuleInfo(AbstractModel):
     @property
     def EventSet(self):
         """事件列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Event
         """
         return self._EventSet
@@ -16015,7 +15354,6 @@ class LinkRuleInfo(AbstractModel):
     @property
     def ActionSet(self):
         """动作列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Action
         """
         return self._ActionSet
@@ -16027,7 +15365,6 @@ class LinkRuleInfo(AbstractModel):
     @property
     def Status(self):
         """状态：0开，-1关
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -16039,7 +15376,6 @@ class LinkRuleInfo(AbstractModel):
     @property
     def BeginDate(self):
         """起始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BeginDate
@@ -16051,7 +15387,6 @@ class LinkRuleInfo(AbstractModel):
     @property
     def EndDate(self):
         """结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndDate
@@ -16063,7 +15398,6 @@ class LinkRuleInfo(AbstractModel):
     @property
     def ValidPeriod(self):
         """有效周期内容,有效字段为x-json后的字段
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ValidPeriod
@@ -16176,28 +15510,20 @@ class ModelInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _WorkspaceId: 工作空间id
-注意：此字段可能返回 null，表示取不到有效值。
         :type WorkspaceId: int
         :param _ModelName: 模型名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ModelName: str
         :param _ModelId: 物模型id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ModelId: str
         :param _RelatedProduct: 关联产品信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type RelatedProduct: list of RelatedProduct
         :param _DeviceTypeName: 设备类型名
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceTypeName: str
         :param _DeviceType: 设备类型id
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceType: str
         :param _ModelType: 物模型类型，产品模型/标准模型
-注意：此字段可能返回 null，表示取不到有效值。
         :type ModelType: int
         :param _ModelParams: 模型参数内容,有效字段为"x-json:"后的字段
-注意：此字段可能返回 null，表示取不到有效值。
         :type ModelParams: str
         """
         self._WorkspaceId = None
@@ -16212,7 +15538,6 @@ class ModelInfo(AbstractModel):
     @property
     def WorkspaceId(self):
         """工作空间id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._WorkspaceId
@@ -16224,7 +15549,6 @@ class ModelInfo(AbstractModel):
     @property
     def ModelName(self):
         """模型名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ModelName
@@ -16236,7 +15560,6 @@ class ModelInfo(AbstractModel):
     @property
     def ModelId(self):
         """物模型id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ModelId
@@ -16248,7 +15571,6 @@ class ModelInfo(AbstractModel):
     @property
     def RelatedProduct(self):
         """关联产品信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RelatedProduct
         """
         return self._RelatedProduct
@@ -16260,7 +15582,6 @@ class ModelInfo(AbstractModel):
     @property
     def DeviceTypeName(self):
         """设备类型名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceTypeName
@@ -16272,7 +15593,6 @@ class ModelInfo(AbstractModel):
     @property
     def DeviceType(self):
         """设备类型id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceType
@@ -16284,7 +15604,6 @@ class ModelInfo(AbstractModel):
     @property
     def ModelType(self):
         """物模型类型，产品模型/标准模型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ModelType
@@ -16296,7 +15615,6 @@ class ModelInfo(AbstractModel):
     @property
     def ModelParams(self):
         """模型参数内容,有效字段为"x-json:"后的字段
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ModelParams
@@ -16338,19 +15656,14 @@ class ModelSet(AbstractModel):
     def __init__(self):
         r"""
         :param _PageNumber: 第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :type PageNumber: int
         :param _PageSize: 每页条数
-注意：此字段可能返回 null，表示取不到有效值。
         :type PageSize: int
         :param _TotalPage: 总页数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalPage: int
         :param _TotalRow: 总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalRow: int
         :param _Set: 模型基础信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Set: list of ModelInfo
         """
         self._PageNumber = None
@@ -16362,7 +15675,6 @@ class ModelSet(AbstractModel):
     @property
     def PageNumber(self):
         """第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PageNumber
@@ -16374,7 +15686,6 @@ class ModelSet(AbstractModel):
     @property
     def PageSize(self):
         """每页条数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PageSize
@@ -16386,7 +15697,6 @@ class ModelSet(AbstractModel):
     @property
     def TotalPage(self):
         """总页数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalPage
@@ -16398,7 +15708,6 @@ class ModelSet(AbstractModel):
     @property
     def TotalRow(self):
         """总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalRow
@@ -16410,7 +15719,6 @@ class ModelSet(AbstractModel):
     @property
     def Set(self):
         """模型基础信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ModelInfo
         """
         return self._Set
@@ -17200,43 +16508,30 @@ class ProductInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _WorkspaceId: 工作空间id
-注意：此字段可能返回 null，表示取不到有效值。
         :type WorkspaceId: int
         :param _ProductId: 产品PID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductId: int
         :param _ProductName: 产品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductName: str
         :param _DeviceTypeName: 设备类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceTypeName: str
         :param _DeviceTypeId: 设备类型id
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceTypeId: str
         :param _Attribute: 产品属性，如：网关（1）、直连设备（2）、子设备（3）
-注意：此字段可能返回 null，表示取不到有效值。
         :type Attribute: int
         :param _ProductType: 产品型号
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductType: str
         :param _ProductAbility: 产品能力:信令数据、音视频。二进制数值中第0位表示信令数据、第1位表示音视频 。1（信令数据），3（具有信令数据以及音视频能力）。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductAbility: int
         :param _Manufacturer: 生产厂商
-注意：此字段可能返回 null，表示取不到有效值。
         :type Manufacturer: str
         :param _MaintenanceMfr: 维保厂商
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaintenanceMfr: str
         :param _ModelName: 物模型名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ModelName: str
         :param _ModelId: 物模型id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ModelId: str
         :param _ModelType: 物模型类型，产品模型/标准模型
-注意：此字段可能返回 null，表示取不到有效值。
         :type ModelType: int
         """
         self._WorkspaceId = None
@@ -17256,7 +16551,6 @@ class ProductInfo(AbstractModel):
     @property
     def WorkspaceId(self):
         """工作空间id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._WorkspaceId
@@ -17268,7 +16562,6 @@ class ProductInfo(AbstractModel):
     @property
     def ProductId(self):
         """产品PID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ProductId
@@ -17280,7 +16573,6 @@ class ProductInfo(AbstractModel):
     @property
     def ProductName(self):
         """产品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductName
@@ -17292,7 +16584,6 @@ class ProductInfo(AbstractModel):
     @property
     def DeviceTypeName(self):
         """设备类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceTypeName
@@ -17304,7 +16595,6 @@ class ProductInfo(AbstractModel):
     @property
     def DeviceTypeId(self):
         """设备类型id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceTypeId
@@ -17316,7 +16606,6 @@ class ProductInfo(AbstractModel):
     @property
     def Attribute(self):
         """产品属性，如：网关（1）、直连设备（2）、子设备（3）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Attribute
@@ -17328,7 +16617,6 @@ class ProductInfo(AbstractModel):
     @property
     def ProductType(self):
         """产品型号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductType
@@ -17340,7 +16628,6 @@ class ProductInfo(AbstractModel):
     @property
     def ProductAbility(self):
         """产品能力:信令数据、音视频。二进制数值中第0位表示信令数据、第1位表示音视频 。1（信令数据），3（具有信令数据以及音视频能力）。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ProductAbility
@@ -17352,7 +16639,6 @@ class ProductInfo(AbstractModel):
     @property
     def Manufacturer(self):
         """生产厂商
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Manufacturer
@@ -17364,7 +16650,6 @@ class ProductInfo(AbstractModel):
     @property
     def MaintenanceMfr(self):
         """维保厂商
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MaintenanceMfr
@@ -17376,7 +16661,6 @@ class ProductInfo(AbstractModel):
     @property
     def ModelName(self):
         """物模型名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ModelName
@@ -17388,7 +16672,6 @@ class ProductInfo(AbstractModel):
     @property
     def ModelId(self):
         """物模型id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ModelId
@@ -17400,7 +16683,6 @@ class ProductInfo(AbstractModel):
     @property
     def ModelType(self):
         """物模型类型，产品模型/标准模型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ModelType
@@ -17442,19 +16724,14 @@ class ProductSet(AbstractModel):
     def __init__(self):
         r"""
         :param _PageNumber: 第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :type PageNumber: int
         :param _PageSize: 每页条数
-注意：此字段可能返回 null，表示取不到有效值。
         :type PageSize: int
         :param _TotalPage: 总页数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalPage: int
         :param _TotalRow: 总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalRow: int
         :param _Product: 产品信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Product: list of ProductInfo
         """
         self._PageNumber = None
@@ -17466,7 +16743,6 @@ class ProductSet(AbstractModel):
     @property
     def PageNumber(self):
         """第几页
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PageNumber
@@ -17478,7 +16754,6 @@ class ProductSet(AbstractModel):
     @property
     def PageSize(self):
         """每页条数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PageSize
@@ -17490,7 +16765,6 @@ class ProductSet(AbstractModel):
     @property
     def TotalPage(self):
         """总页数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalPage
@@ -17502,7 +16776,6 @@ class ProductSet(AbstractModel):
     @property
     def TotalRow(self):
         """总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalRow
@@ -17514,7 +16787,6 @@ class ProductSet(AbstractModel):
     @property
     def Product(self):
         """产品信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ProductInfo
         """
         return self._Product
@@ -17553,25 +16825,18 @@ class RawInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _SM4Vector: 加密向量（如果视频网关选择流为非加密传输这个参数可忽略）
-注意：此字段可能返回 null，表示取不到有效值。
         :type SM4Vector: str
         :param _NATIP: 专线ip (非专线接入可忽略)
-注意：此字段可能返回 null，表示取不到有效值。
         :type NATIP: str
         :param _StreamToken: 客户端握手鉴权参数
-注意：此字段可能返回 null，表示取不到有效值。
         :type StreamToken: str
         :param _Port: 拉流端口
-注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
         :param _StreamEnKey: 视频流加密key,目前为AES128加密KEY（如果视频网关选择流为非加密传输这个参数可忽略）
-注意：此字段可能返回 null，表示取不到有效值。
         :type StreamEnKey: str
         :param _IP: 拉流公网地址（非公网接入时，这个地址是内网地址）
-注意：此字段可能返回 null，表示取不到有效值。
         :type IP: str
         :param _InnerIP: 拉流内网地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type InnerIP: str
         """
         self._SM4Vector = None
@@ -17585,7 +16850,6 @@ class RawInfo(AbstractModel):
     @property
     def SM4Vector(self):
         """加密向量（如果视频网关选择流为非加密传输这个参数可忽略）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SM4Vector
@@ -17597,7 +16861,6 @@ class RawInfo(AbstractModel):
     @property
     def NATIP(self):
         """专线ip (非专线接入可忽略)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NATIP
@@ -17609,7 +16872,6 @@ class RawInfo(AbstractModel):
     @property
     def StreamToken(self):
         """客户端握手鉴权参数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StreamToken
@@ -17621,7 +16883,6 @@ class RawInfo(AbstractModel):
     @property
     def Port(self):
         """拉流端口
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Port
@@ -17633,7 +16894,6 @@ class RawInfo(AbstractModel):
     @property
     def StreamEnKey(self):
         """视频流加密key,目前为AES128加密KEY（如果视频网关选择流为非加密传输这个参数可忽略）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StreamEnKey
@@ -17645,7 +16905,6 @@ class RawInfo(AbstractModel):
     @property
     def IP(self):
         """拉流公网地址（非公网接入时，这个地址是内网地址）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IP
@@ -17657,7 +16916,6 @@ class RawInfo(AbstractModel):
     @property
     def InnerIP(self):
         """拉流内网地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InnerIP
@@ -17693,13 +16951,10 @@ class RecordInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _StartTime: 本录像片段开始时间（s）
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: int
         :param _EndTime: 本录像片段结束时间（s）
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: int
         :param _VideoURL: 录像片段文件url
-注意：此字段可能返回 null，表示取不到有效值。
         :type VideoURL: str
         """
         self._StartTime = None
@@ -17709,7 +16964,6 @@ class RecordInfo(AbstractModel):
     @property
     def StartTime(self):
         """本录像片段开始时间（s）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._StartTime
@@ -17721,7 +16975,6 @@ class RecordInfo(AbstractModel):
     @property
     def EndTime(self):
         """本录像片段结束时间（s）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._EndTime
@@ -17733,7 +16986,6 @@ class RecordInfo(AbstractModel):
     @property
     def VideoURL(self):
         """录像片段文件url
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VideoURL
@@ -17765,10 +17017,8 @@ class RelatedProduct(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: 关联产品pid
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
         :param _Name: 关联产品名字
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         """
         self._Id = None
@@ -17777,7 +17027,6 @@ class RelatedProduct(AbstractModel):
     @property
     def Id(self):
         """关联产品pid
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Id
@@ -17789,7 +17038,6 @@ class RelatedProduct(AbstractModel):
     @property
     def Name(self):
         """关联产品名字
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -18166,10 +17414,8 @@ class ReportImg(AbstractModel):
     def __init__(self):
         r"""
         :param _Type: 类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: int
         :param _Data: 数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: str
         """
         self._Type = None
@@ -18178,7 +17424,6 @@ class ReportImg(AbstractModel):
     @property
     def Type(self):
         """类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Type
@@ -18190,7 +17435,6 @@ class ReportImg(AbstractModel):
     @property
     def Data(self):
         """数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Data
@@ -18222,11 +17466,9 @@ class ReportMsgRes(AbstractModel):
         r"""
         :param _ReportId: 上报消息对应下标的16位标识Id, 即第几个消息
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReportId: str
         :param _ReportStatus: 上报消息结果，1表示成功推送，0表示推送失败
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReportStatus: int
         """
         self._ReportId = None
@@ -18236,7 +17478,6 @@ class ReportMsgRes(AbstractModel):
     def ReportId(self):
         """上报消息对应下标的16位标识Id, 即第几个消息
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ReportId
@@ -18249,7 +17490,6 @@ class ReportMsgRes(AbstractModel):
     def ReportStatus(self):
         """上报消息结果，1表示成功推送，0表示推送失败
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ReportStatus
@@ -18280,37 +17520,26 @@ class RuleDetailRes(AbstractModel):
     def __init__(self):
         r"""
         :param _RuleId: 联动id
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleId: int
         :param _RuleName: 联动名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleName: str
         :param _RuleDesc: 联动说明
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleDesc: str
         :param _ValidType: 1 全天有效，0：固定时间段有效
-注意：此字段可能返回 null，表示取不到有效值。
         :type ValidType: int
         :param _ValidPeriod: 有效期，json字符串（全天有效时为空）
-注意：此字段可能返回 null，表示取不到有效值。
         :type ValidPeriod: str
         :param _BeginDate: 起始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type BeginDate: str
         :param _EndDate: 结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndDate: str
         :param _Status: 启用状态。1-启用，0-停用
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _EventRule: 触发规则，事件的组合
-注意：此字段可能返回 null，表示取不到有效值。
         :type EventRule: str
         :param _EventInfoSet: 事件对象集合
-注意：此字段可能返回 null，表示取不到有效值。
         :type EventInfoSet: list of EventObj
         :param _ActionInfoSet: 动作对象集合
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActionInfoSet: list of ActionObj
         """
         self._RuleId = None
@@ -18328,7 +17557,6 @@ class RuleDetailRes(AbstractModel):
     @property
     def RuleId(self):
         """联动id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RuleId
@@ -18340,7 +17568,6 @@ class RuleDetailRes(AbstractModel):
     @property
     def RuleName(self):
         """联动名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RuleName
@@ -18352,7 +17579,6 @@ class RuleDetailRes(AbstractModel):
     @property
     def RuleDesc(self):
         """联动说明
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RuleDesc
@@ -18364,7 +17590,6 @@ class RuleDetailRes(AbstractModel):
     @property
     def ValidType(self):
         """1 全天有效，0：固定时间段有效
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ValidType
@@ -18376,7 +17601,6 @@ class RuleDetailRes(AbstractModel):
     @property
     def ValidPeriod(self):
         """有效期，json字符串（全天有效时为空）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ValidPeriod
@@ -18388,7 +17612,6 @@ class RuleDetailRes(AbstractModel):
     @property
     def BeginDate(self):
         """起始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BeginDate
@@ -18400,7 +17623,6 @@ class RuleDetailRes(AbstractModel):
     @property
     def EndDate(self):
         """结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndDate
@@ -18412,7 +17634,6 @@ class RuleDetailRes(AbstractModel):
     @property
     def Status(self):
         """启用状态。1-启用，0-停用
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -18424,7 +17645,6 @@ class RuleDetailRes(AbstractModel):
     @property
     def EventRule(self):
         """触发规则，事件的组合
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EventRule
@@ -18436,7 +17656,6 @@ class RuleDetailRes(AbstractModel):
     @property
     def EventInfoSet(self):
         """事件对象集合
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of EventObj
         """
         return self._EventInfoSet
@@ -18448,7 +17667,6 @@ class RuleDetailRes(AbstractModel):
     @property
     def ActionInfoSet(self):
         """动作对象集合
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ActionObj
         """
         return self._ActionInfoSet
@@ -18756,7 +17974,6 @@ class SceneListRes(AbstractModel):
     def __init__(self):
         r"""
         :param _SceneList: 场景列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type SceneList: list of SceneInfo
         """
         self._SceneList = None
@@ -18764,7 +17981,6 @@ class SceneListRes(AbstractModel):
     @property
     def SceneList(self):
         """场景列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SceneInfo
         """
         return self._SceneList
@@ -18799,7 +18015,6 @@ class SpaceDataListStatsRes(AbstractModel):
     def __init__(self):
         r"""
         :param _List: 楼栋数量与建筑面积列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of SpaceDataStats
         """
         self._List = None
@@ -18807,7 +18022,6 @@ class SpaceDataListStatsRes(AbstractModel):
     @property
     def List(self):
         """楼栋数量与建筑面积列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SpaceDataStats
         """
         return self._List
@@ -18974,7 +18188,6 @@ class SpaceDeviceIdListRes(AbstractModel):
     def __init__(self):
         r"""
         :param _DeviceIds: 设备id列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceIds: list of str
         """
         self._DeviceIds = None
@@ -18982,7 +18195,6 @@ class SpaceDeviceIdListRes(AbstractModel):
     @property
     def DeviceIds(self):
         """设备id列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._DeviceIds
@@ -19012,10 +18224,8 @@ class SpaceDeviceRelation(AbstractModel):
     def __init__(self):
         r"""
         :param _DeviceId: 设备id
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceId: str
         :param _ElementId: 构件id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ElementId: str
         """
         self._DeviceId = None
@@ -19024,7 +18234,6 @@ class SpaceDeviceRelation(AbstractModel):
     @property
     def DeviceId(self):
         """设备id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceId
@@ -19036,7 +18245,6 @@ class SpaceDeviceRelation(AbstractModel):
     @property
     def ElementId(self):
         """构件id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ElementId
@@ -19067,7 +18275,6 @@ class SpaceDeviceRelationRes(AbstractModel):
     def __init__(self):
         r"""
         :param _SpaceDeviceRelationList: 设备空间绑定关系列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type SpaceDeviceRelationList: list of SpaceDeviceRelation
         """
         self._SpaceDeviceRelationList = None
@@ -19075,7 +18282,6 @@ class SpaceDeviceRelationRes(AbstractModel):
     @property
     def SpaceDeviceRelationList(self):
         """设备空间绑定关系列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SpaceDeviceRelation
         """
         return self._SpaceDeviceRelationList
@@ -19110,37 +18316,26 @@ class SpaceInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _WorkspaceId: 项目空间id
-注意：此字段可能返回 null，表示取不到有效值。
         :type WorkspaceId: int
         :param _TenantId: 租户id
-注意：此字段可能返回 null，表示取不到有效值。
         :type TenantId: int
         :param _EnglishName: 英文名
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnglishName: str
         :param _ChineseName: 中文名
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChineseName: str
         :param _Description: 项目空间描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _Status: 项目空间状态:0 启用 1 停用 -1 已删除
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _IsCommWorkspace: 是否是公共空间
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsCommWorkspace: bool
         :param _ValidityStartTime: 有效期开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ValidityStartTime: str
         :param _ValidityEndTime: 有效期结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ValidityEndTime: str
         :param _Selected: 选中状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Selected: int
         :param _IsSystem: 系统生成状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsSystem: int
         """
         self._WorkspaceId = None
@@ -19158,7 +18353,6 @@ class SpaceInfo(AbstractModel):
     @property
     def WorkspaceId(self):
         """项目空间id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._WorkspaceId
@@ -19170,7 +18364,6 @@ class SpaceInfo(AbstractModel):
     @property
     def TenantId(self):
         """租户id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TenantId
@@ -19182,7 +18375,6 @@ class SpaceInfo(AbstractModel):
     @property
     def EnglishName(self):
         """英文名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EnglishName
@@ -19194,7 +18386,6 @@ class SpaceInfo(AbstractModel):
     @property
     def ChineseName(self):
         """中文名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ChineseName
@@ -19206,7 +18397,6 @@ class SpaceInfo(AbstractModel):
     @property
     def Description(self):
         """项目空间描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -19218,7 +18408,6 @@ class SpaceInfo(AbstractModel):
     @property
     def Status(self):
         """项目空间状态:0 启用 1 停用 -1 已删除
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -19230,7 +18419,6 @@ class SpaceInfo(AbstractModel):
     @property
     def IsCommWorkspace(self):
         """是否是公共空间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsCommWorkspace
@@ -19242,7 +18430,6 @@ class SpaceInfo(AbstractModel):
     @property
     def ValidityStartTime(self):
         """有效期开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ValidityStartTime
@@ -19254,7 +18441,6 @@ class SpaceInfo(AbstractModel):
     @property
     def ValidityEndTime(self):
         """有效期结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ValidityEndTime
@@ -19266,7 +18452,6 @@ class SpaceInfo(AbstractModel):
     @property
     def Selected(self):
         """选中状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Selected
@@ -19278,7 +18463,6 @@ class SpaceInfo(AbstractModel):
     @property
     def IsSystem(self):
         """系统生成状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IsSystem
@@ -19318,22 +18502,16 @@ class SpaceRelation(AbstractModel):
     def __init__(self):
         r"""
         :param _ElementId: 构件id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ElementId: str
         :param _ElementName: 构件名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ElementName: str
         :param _Level: 空间层级
-注意：此字段可能返回 null，表示取不到有效值。
         :type Level: int
         :param _SpaceCode: 空间编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type SpaceCode: str
         :param _ParentSpaceCode: 父级空间编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type ParentSpaceCode: str
         :param _Children: 子构件信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Children: list of SpaceRelation
         """
         self._ElementId = None
@@ -19346,7 +18524,6 @@ class SpaceRelation(AbstractModel):
     @property
     def ElementId(self):
         """构件id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ElementId
@@ -19358,7 +18535,6 @@ class SpaceRelation(AbstractModel):
     @property
     def ElementName(self):
         """构件名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ElementName
@@ -19370,7 +18546,6 @@ class SpaceRelation(AbstractModel):
     @property
     def Level(self):
         """空间层级
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Level
@@ -19382,7 +18557,6 @@ class SpaceRelation(AbstractModel):
     @property
     def SpaceCode(self):
         """空间编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SpaceCode
@@ -19394,7 +18568,6 @@ class SpaceRelation(AbstractModel):
     @property
     def ParentSpaceCode(self):
         """父级空间编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ParentSpaceCode
@@ -19406,7 +18579,6 @@ class SpaceRelation(AbstractModel):
     @property
     def Children(self):
         """子构件信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SpaceRelation
         """
         return self._Children
@@ -19446,7 +18618,6 @@ class SpaceRelationRes(AbstractModel):
     def __init__(self):
         r"""
         :param _SpaceRelation: 空间层级关系
-注意：此字段可能返回 null，表示取不到有效值。
         :type SpaceRelation: :class:`tencentcloud.weilingwith.v20230427.models.SpaceRelation`
         """
         self._SpaceRelation = None
@@ -19454,7 +18625,6 @@ class SpaceRelationRes(AbstractModel):
     @property
     def SpaceRelation(self):
         """空间层级关系
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.SpaceRelation`
         """
         return self._SpaceRelation
@@ -19486,10 +18656,8 @@ class SpaceType(AbstractModel):
     def __init__(self):
         r"""
         :param _SpaceTypeCode: 空间分类编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type SpaceTypeCode: str
         :param _SpaceTypeName: 空间分类名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type SpaceTypeName: str
         """
         self._SpaceTypeCode = None
@@ -19498,7 +18666,6 @@ class SpaceType(AbstractModel):
     @property
     def SpaceTypeCode(self):
         """空间分类编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SpaceTypeCode
@@ -19510,7 +18677,6 @@ class SpaceType(AbstractModel):
     @property
     def SpaceTypeName(self):
         """空间分类名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SpaceTypeName
@@ -19541,7 +18707,6 @@ class SpaceTypeListRes(AbstractModel):
     def __init__(self):
         r"""
         :param _SpaceTypeList: 空间分类列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type SpaceTypeList: list of SpaceType
         """
         self._SpaceTypeList = None
@@ -19549,7 +18714,6 @@ class SpaceTypeListRes(AbstractModel):
     @property
     def SpaceTypeList(self):
         """空间分类列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SpaceType
         """
         return self._SpaceTypeList
@@ -19584,13 +18748,10 @@ class SsoDepartment(AbstractModel):
     def __init__(self):
         r"""
         :param _DepartmentId: 部门ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type DepartmentId: str
         :param _Name: 部门名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _ParentDepartmentId: 父级部门ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ParentDepartmentId: str
         """
         self._DepartmentId = None
@@ -19600,7 +18761,6 @@ class SsoDepartment(AbstractModel):
     @property
     def DepartmentId(self):
         """部门ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DepartmentId
@@ -19612,7 +18772,6 @@ class SsoDepartment(AbstractModel):
     @property
     def Name(self):
         """部门名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -19624,7 +18783,6 @@ class SsoDepartment(AbstractModel):
     @property
     def ParentDepartmentId(self):
         """父级部门ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ParentDepartmentId
@@ -19656,10 +18814,8 @@ class SsoDepartmentsResult(AbstractModel):
     def __init__(self):
         r"""
         :param _Total: 总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _Departments: 部门列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Departments: list of SsoDepartment
         """
         self._Total = None
@@ -19668,7 +18824,6 @@ class SsoDepartmentsResult(AbstractModel):
     @property
     def Total(self):
         """总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -19680,7 +18835,6 @@ class SsoDepartmentsResult(AbstractModel):
     @property
     def Departments(self):
         """部门列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SsoDepartment
         """
         return self._Departments
@@ -19716,37 +18870,26 @@ class SsoTeamUser(AbstractModel):
     def __init__(self):
         r"""
         :param _UserId: 用户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserId: str
         :param _RealName: 用户名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type RealName: str
         :param _UserType: 用户类型，1-超级管理员；2-1号管理员；3-普通管理员；99-普通用户
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserType: str
         :param _TenantId: 所属租户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TenantId: str
         :param _Email: 邮箱
-注意：此字段可能返回 null，表示取不到有效值。
         :type Email: str
         :param _Phone: 电话
-注意：此字段可能返回 null，表示取不到有效值。
         :type Phone: str
         :param _Status: 用户状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _CreateAt: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateAt: int
         :param _DepartmentId: 部门ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type DepartmentId: str
         :param _DepartmentName: 部门名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type DepartmentName: str
         :param _LinkFilter: 是否关联权限
-注意：此字段可能返回 null，表示取不到有效值。
         :type LinkFilter: int
         """
         self._UserId = None
@@ -19764,7 +18907,6 @@ class SsoTeamUser(AbstractModel):
     @property
     def UserId(self):
         """用户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UserId
@@ -19776,7 +18918,6 @@ class SsoTeamUser(AbstractModel):
     @property
     def RealName(self):
         """用户名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RealName
@@ -19788,7 +18929,6 @@ class SsoTeamUser(AbstractModel):
     @property
     def UserType(self):
         """用户类型，1-超级管理员；2-1号管理员；3-普通管理员；99-普通用户
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UserType
@@ -19800,7 +18940,6 @@ class SsoTeamUser(AbstractModel):
     @property
     def TenantId(self):
         """所属租户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TenantId
@@ -19812,7 +18951,6 @@ class SsoTeamUser(AbstractModel):
     @property
     def Email(self):
         """邮箱
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Email
@@ -19824,7 +18962,6 @@ class SsoTeamUser(AbstractModel):
     @property
     def Phone(self):
         """电话
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Phone
@@ -19836,7 +18973,6 @@ class SsoTeamUser(AbstractModel):
     @property
     def Status(self):
         """用户状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -19848,7 +18984,6 @@ class SsoTeamUser(AbstractModel):
     @property
     def CreateAt(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CreateAt
@@ -19860,7 +18995,6 @@ class SsoTeamUser(AbstractModel):
     @property
     def DepartmentId(self):
         """部门ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DepartmentId
@@ -19872,7 +19006,6 @@ class SsoTeamUser(AbstractModel):
     @property
     def DepartmentName(self):
         """部门名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DepartmentName
@@ -19884,7 +19017,6 @@ class SsoTeamUser(AbstractModel):
     @property
     def LinkFilter(self):
         """是否关联权限
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LinkFilter
@@ -19924,10 +19056,8 @@ class SsoTeamUserResult(AbstractModel):
     def __init__(self):
         r"""
         :param _Total: 总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _Users: 部门用户列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Users: list of SsoTeamUser
         """
         self._Total = None
@@ -19936,7 +19066,6 @@ class SsoTeamUserResult(AbstractModel):
     @property
     def Total(self):
         """总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -19948,7 +19077,6 @@ class SsoTeamUserResult(AbstractModel):
     @property
     def Users(self):
         """部门用户列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SsoTeamUser
         """
         return self._Users
@@ -19984,52 +19112,36 @@ class SsoUser(AbstractModel):
     def __init__(self):
         r"""
         :param _UserId: 用户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserId: str
         :param _UserName: 用户昵称
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserName: str
         :param _RealName: 用户名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type RealName: str
         :param _UserType: 用户类型，1-超级管理员；2-1号管理员；3-普通管理员；99-普通用户
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserType: str
         :param _TenantId: 所属租户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TenantId: str
         :param _UserGroup: 所属组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserGroup: str
         :param _Email: 邮箱
-注意：此字段可能返回 null，表示取不到有效值。
         :type Email: str
         :param _Phone: 电话
-注意：此字段可能返回 null，表示取不到有效值。
         :type Phone: str
         :param _Status: 用户状态，0待审核，1正常启用，2禁用
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _CreateAt: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateAt: int
         :param _UpdateAt: 更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateAt: int
         :param _BelongTeam: 是否属于团队，0不可用，1属于，2不属
-注意：此字段可能返回 null，表示取不到有效值。
         :type BelongTeam: int
         :param _DepartmentId: 部门ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type DepartmentId: str
         :param _DepartmentName: 部门名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type DepartmentName: str
         :param _DepartmentUserId: 子账户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type DepartmentUserId: int
         :param _Password: 密码
-注意：此字段可能返回 null，表示取不到有效值。
         :type Password: str
         """
         self._UserId = None
@@ -20052,7 +19164,6 @@ class SsoUser(AbstractModel):
     @property
     def UserId(self):
         """用户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UserId
@@ -20064,7 +19175,6 @@ class SsoUser(AbstractModel):
     @property
     def UserName(self):
         """用户昵称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UserName
@@ -20076,7 +19186,6 @@ class SsoUser(AbstractModel):
     @property
     def RealName(self):
         """用户名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RealName
@@ -20088,7 +19197,6 @@ class SsoUser(AbstractModel):
     @property
     def UserType(self):
         """用户类型，1-超级管理员；2-1号管理员；3-普通管理员；99-普通用户
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UserType
@@ -20100,7 +19208,6 @@ class SsoUser(AbstractModel):
     @property
     def TenantId(self):
         """所属租户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TenantId
@@ -20112,7 +19219,6 @@ class SsoUser(AbstractModel):
     @property
     def UserGroup(self):
         """所属组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UserGroup
@@ -20124,7 +19230,6 @@ class SsoUser(AbstractModel):
     @property
     def Email(self):
         """邮箱
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Email
@@ -20136,7 +19241,6 @@ class SsoUser(AbstractModel):
     @property
     def Phone(self):
         """电话
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Phone
@@ -20148,7 +19252,6 @@ class SsoUser(AbstractModel):
     @property
     def Status(self):
         """用户状态，0待审核，1正常启用，2禁用
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -20160,7 +19263,6 @@ class SsoUser(AbstractModel):
     @property
     def CreateAt(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CreateAt
@@ -20172,7 +19274,6 @@ class SsoUser(AbstractModel):
     @property
     def UpdateAt(self):
         """更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._UpdateAt
@@ -20184,7 +19285,6 @@ class SsoUser(AbstractModel):
     @property
     def BelongTeam(self):
         """是否属于团队，0不可用，1属于，2不属
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._BelongTeam
@@ -20196,7 +19296,6 @@ class SsoUser(AbstractModel):
     @property
     def DepartmentId(self):
         """部门ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DepartmentId
@@ -20208,7 +19307,6 @@ class SsoUser(AbstractModel):
     @property
     def DepartmentName(self):
         """部门名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DepartmentName
@@ -20220,7 +19318,6 @@ class SsoUser(AbstractModel):
     @property
     def DepartmentUserId(self):
         """子账户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DepartmentUserId
@@ -20232,7 +19329,6 @@ class SsoUser(AbstractModel):
     @property
     def Password(self):
         """密码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Password
@@ -20277,10 +19373,8 @@ class SsoUserResult(AbstractModel):
     def __init__(self):
         r"""
         :param _Total: 总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _Users: 租户人员数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type Users: list of SsoUser
         """
         self._Total = None
@@ -20289,7 +19383,6 @@ class SsoUserResult(AbstractModel):
     @property
     def Total(self):
         """总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -20301,7 +19394,6 @@ class SsoUserResult(AbstractModel):
     @property
     def Users(self):
         """租户人员数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SsoUser
         """
         return self._Users
@@ -20337,22 +19429,16 @@ class StatDeviceType(AbstractModel):
     def __init__(self):
         r"""
         :param _Total: 汇总数。在线（正常+故障） + 离线
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _Normal: 正常数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Normal: int
         :param _Offline: 离线数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Offline: int
         :param _Fault: 故障数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Fault: int
         :param _Name: 设备名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _DeviceType: 设备类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceType: str
         """
         self._Total = None
@@ -20365,7 +19451,6 @@ class StatDeviceType(AbstractModel):
     @property
     def Total(self):
         """汇总数。在线（正常+故障） + 离线
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -20377,7 +19462,6 @@ class StatDeviceType(AbstractModel):
     @property
     def Normal(self):
         """正常数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Normal
@@ -20389,7 +19473,6 @@ class StatDeviceType(AbstractModel):
     @property
     def Offline(self):
         """离线数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Offline
@@ -20401,7 +19484,6 @@ class StatDeviceType(AbstractModel):
     @property
     def Fault(self):
         """故障数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Fault
@@ -20413,7 +19495,6 @@ class StatDeviceType(AbstractModel):
     @property
     def Name(self):
         """设备名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -20425,7 +19506,6 @@ class StatDeviceType(AbstractModel):
     @property
     def DeviceType(self):
         """设备类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceType
@@ -20460,22 +19540,16 @@ class StatLevel(AbstractModel):
     def __init__(self):
         r"""
         :param _Total: 汇总数。在线（正常+故障） + 离线
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _NormalSum: 正常数
-注意：此字段可能返回 null，表示取不到有效值。
         :type NormalSum: int
         :param _OfflineSum: 离线数
-注意：此字段可能返回 null，表示取不到有效值。
         :type OfflineSum: int
         :param _FaultSum: 故障数
-注意：此字段可能返回 null，表示取不到有效值。
         :type FaultSum: int
         :param _SpaceCode: 空间id
-注意：此字段可能返回 null，表示取不到有效值。
         :type SpaceCode: str
         :param _StatDeviceTypeSet: 设备类型统计列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type StatDeviceTypeSet: list of StatDeviceType
         """
         self._Total = None
@@ -20488,7 +19562,6 @@ class StatLevel(AbstractModel):
     @property
     def Total(self):
         """汇总数。在线（正常+故障） + 离线
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -20500,7 +19573,6 @@ class StatLevel(AbstractModel):
     @property
     def NormalSum(self):
         """正常数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._NormalSum
@@ -20512,7 +19584,6 @@ class StatLevel(AbstractModel):
     @property
     def OfflineSum(self):
         """离线数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._OfflineSum
@@ -20524,7 +19595,6 @@ class StatLevel(AbstractModel):
     @property
     def FaultSum(self):
         """故障数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FaultSum
@@ -20536,7 +19606,6 @@ class StatLevel(AbstractModel):
     @property
     def SpaceCode(self):
         """空间id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SpaceCode
@@ -20548,7 +19617,6 @@ class StatLevel(AbstractModel):
     @property
     def StatDeviceTypeSet(self):
         """设备类型统计列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of StatDeviceType
         """
         return self._StatDeviceTypeSet
@@ -20842,10 +19910,8 @@ class VideoCloudRecordRes(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 录像信息总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RecordSet: 录像信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecordSet: list of RecordInfo
         """
         self._TotalCount = None
@@ -20854,7 +19920,6 @@ class VideoCloudRecordRes(AbstractModel):
     @property
     def TotalCount(self):
         """录像信息总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -20866,7 +19931,6 @@ class VideoCloudRecordRes(AbstractModel):
     @property
     def RecordSet(self):
         """录像信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RecordInfo
         """
         return self._RecordSet
@@ -20902,22 +19966,16 @@ class VideoRecordStreamRes(AbstractModel):
     def __init__(self):
         r"""
         :param _FLV: FLV协议格式视频流
-注意：此字段可能返回 null，表示取不到有效值。
         :type FLV: str
         :param _RTMP: RTMP协议格式视频流
-注意：此字段可能返回 null，表示取不到有效值。
         :type RTMP: str
         :param _HLS: HLS协议格式视频流
-注意：此字段可能返回 null，表示取不到有效值。
         :type HLS: str
         :param _WebRTC: WebRtc协议格式视频流
-注意：此字段可能返回 null，表示取不到有效值。
         :type WebRTC: str
         :param _RAW: RAW协议格式视频流
-注意：此字段可能返回 null，表示取不到有效值。
         :type RAW: :class:`tencentcloud.weilingwith.v20230427.models.RawInfo`
         :param _Stream: 视频流的唯一标识
-注意：此字段可能返回 null，表示取不到有效值。
         :type Stream: str
         """
         self._FLV = None
@@ -20930,7 +19988,6 @@ class VideoRecordStreamRes(AbstractModel):
     @property
     def FLV(self):
         """FLV协议格式视频流
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FLV
@@ -20942,7 +19999,6 @@ class VideoRecordStreamRes(AbstractModel):
     @property
     def RTMP(self):
         """RTMP协议格式视频流
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RTMP
@@ -20954,7 +20010,6 @@ class VideoRecordStreamRes(AbstractModel):
     @property
     def HLS(self):
         """HLS协议格式视频流
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HLS
@@ -20966,7 +20021,6 @@ class VideoRecordStreamRes(AbstractModel):
     @property
     def WebRTC(self):
         """WebRtc协议格式视频流
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._WebRTC
@@ -20978,7 +20032,6 @@ class VideoRecordStreamRes(AbstractModel):
     @property
     def RAW(self):
         """RAW协议格式视频流
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.weilingwith.v20230427.models.RawInfo`
         """
         return self._RAW
@@ -20990,7 +20043,6 @@ class VideoRecordStreamRes(AbstractModel):
     @property
     def Stream(self):
         """视频流的唯一标识
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Stream
@@ -21027,25 +20079,18 @@ class WorkspaceInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _WorkspaceId: 工作空间Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type WorkspaceId: int
         :param _ChineseName: 工作空间中文名字
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChineseName: str
         :param _Description: 工作空间描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _Status: 工作空间是否删除状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _ParkName: 该工作空间绑定的区/县的行政区名字
-注意：此字段可能返回 null，表示取不到有效值。
         :type ParkName: str
         :param _ParkNum: 该工作空间绑定的区/县的行政区编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type ParkNum: str
         :param _AdministrativeDetailSet: 获取该工作空间绑定的区/县的上级行政区划信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type AdministrativeDetailSet: list of AdministrativeDetail
         """
         self._WorkspaceId = None
@@ -21059,7 +20104,6 @@ class WorkspaceInfo(AbstractModel):
     @property
     def WorkspaceId(self):
         """工作空间Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._WorkspaceId
@@ -21071,7 +20115,6 @@ class WorkspaceInfo(AbstractModel):
     @property
     def ChineseName(self):
         """工作空间中文名字
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ChineseName
@@ -21083,7 +20126,6 @@ class WorkspaceInfo(AbstractModel):
     @property
     def Description(self):
         """工作空间描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -21095,7 +20137,6 @@ class WorkspaceInfo(AbstractModel):
     @property
     def Status(self):
         """工作空间是否删除状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -21107,7 +20148,6 @@ class WorkspaceInfo(AbstractModel):
     @property
     def ParkName(self):
         """该工作空间绑定的区/县的行政区名字
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ParkName
@@ -21119,7 +20159,6 @@ class WorkspaceInfo(AbstractModel):
     @property
     def ParkNum(self):
         """该工作空间绑定的区/县的行政区编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ParkNum
@@ -21131,7 +20170,6 @@ class WorkspaceInfo(AbstractModel):
     @property
     def AdministrativeDetailSet(self):
         """获取该工作空间绑定的区/县的上级行政区划信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AdministrativeDetail
         """
         return self._AdministrativeDetailSet
@@ -21172,7 +20210,6 @@ class WorkspaceInfoList(AbstractModel):
     def __init__(self):
         r"""
         :param _List: 项目空间列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of SpaceInfo
         """
         self._List = None
@@ -21180,7 +20217,6 @@ class WorkspaceInfoList(AbstractModel):
     @property
     def List(self):
         """项目空间列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SpaceInfo
         """
         return self._List

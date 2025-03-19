@@ -1428,6 +1428,29 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCPUExpandStrategyInfo(self, request):
+        """通过该 API 可以查询实例的 CPU 弹性扩容信息
+
+        :param request: Request instance for DescribeCPUExpandStrategyInfo.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeCPUExpandStrategyInfoRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeCPUExpandStrategyInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCPUExpandStrategyInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCPUExpandStrategyInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCdbProxyInfo(self, request):
         """本接口（DescribeCdbProxyInfo）用于查询数据库代理详情信息。
 

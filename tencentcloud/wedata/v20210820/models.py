@@ -10586,10 +10586,13 @@ class CreateDsFolderRequest(AbstractModel):
         :type FolderName: str
         :param _ParentsFolderId: 父文件夹ID
         :type ParentsFolderId: str
+        :param _FolderForm: 文件夹来源 template管理，orchestrationSpace 编排空间
+        :type FolderForm: str
         """
         self._ProjectId = None
         self._FolderName = None
         self._ParentsFolderId = None
+        self._FolderForm = None
 
     @property
     def ProjectId(self):
@@ -10624,11 +10627,23 @@ class CreateDsFolderRequest(AbstractModel):
     def ParentsFolderId(self, ParentsFolderId):
         self._ParentsFolderId = ParentsFolderId
 
+    @property
+    def FolderForm(self):
+        """文件夹来源 template管理，orchestrationSpace 编排空间
+        :rtype: str
+        """
+        return self._FolderForm
+
+    @FolderForm.setter
+    def FolderForm(self, FolderForm):
+        self._FolderForm = FolderForm
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
         self._FolderName = params.get("FolderName")
         self._ParentsFolderId = params.get("ParentsFolderId")
+        self._FolderForm = params.get("FolderForm")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23477,6 +23492,16 @@ false 否
 - cycle    周期工作流
 - manual    手动工作流
         :type WorkflowType: str
+        :param _TaskTypeIdList: 任务类型id列表
+        :type TaskTypeIdList: list of int
+        :param _InChargeIdList: 责任人id列表
+        :type InChargeIdList: list of str
+        :param _OnlyMe: 自身责任人
+        :type OnlyMe: bool
+        :param _IncludeCodeTemplate: 是否包含代码模版
+        :type IncludeCodeTemplate: bool
+        :param _FolderForm: 编排空间 或代码模版 orchestrationSpace 编排空间 template模版管理
+        :type FolderForm: str
         """
         self._ProjectId = None
         self._FirstLevelPull = None
@@ -23492,6 +23517,11 @@ false 否
         self._NewFolderTreeMode = None
         self._TaskNodeId = None
         self._WorkflowType = None
+        self._TaskTypeIdList = None
+        self._InChargeIdList = None
+        self._OnlyMe = None
+        self._IncludeCodeTemplate = None
+        self._FolderForm = None
 
     @property
     def ProjectId(self):
@@ -23654,6 +23684,61 @@ false 否
     def WorkflowType(self, WorkflowType):
         self._WorkflowType = WorkflowType
 
+    @property
+    def TaskTypeIdList(self):
+        """任务类型id列表
+        :rtype: list of int
+        """
+        return self._TaskTypeIdList
+
+    @TaskTypeIdList.setter
+    def TaskTypeIdList(self, TaskTypeIdList):
+        self._TaskTypeIdList = TaskTypeIdList
+
+    @property
+    def InChargeIdList(self):
+        """责任人id列表
+        :rtype: list of str
+        """
+        return self._InChargeIdList
+
+    @InChargeIdList.setter
+    def InChargeIdList(self, InChargeIdList):
+        self._InChargeIdList = InChargeIdList
+
+    @property
+    def OnlyMe(self):
+        """自身责任人
+        :rtype: bool
+        """
+        return self._OnlyMe
+
+    @OnlyMe.setter
+    def OnlyMe(self, OnlyMe):
+        self._OnlyMe = OnlyMe
+
+    @property
+    def IncludeCodeTemplate(self):
+        """是否包含代码模版
+        :rtype: bool
+        """
+        return self._IncludeCodeTemplate
+
+    @IncludeCodeTemplate.setter
+    def IncludeCodeTemplate(self, IncludeCodeTemplate):
+        self._IncludeCodeTemplate = IncludeCodeTemplate
+
+    @property
+    def FolderForm(self):
+        """编排空间 或代码模版 orchestrationSpace 编排空间 template模版管理
+        :rtype: str
+        """
+        return self._FolderForm
+
+    @FolderForm.setter
+    def FolderForm(self, FolderForm):
+        self._FolderForm = FolderForm
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -23670,6 +23755,11 @@ false 否
         self._NewFolderTreeMode = params.get("NewFolderTreeMode")
         self._TaskNodeId = params.get("TaskNodeId")
         self._WorkflowType = params.get("WorkflowType")
+        self._TaskTypeIdList = params.get("TaskTypeIdList")
+        self._InChargeIdList = params.get("InChargeIdList")
+        self._OnlyMe = params.get("OnlyMe")
+        self._IncludeCodeTemplate = params.get("IncludeCodeTemplate")
+        self._FolderForm = params.get("FolderForm")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

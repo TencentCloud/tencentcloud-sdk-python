@@ -6108,10 +6108,8 @@ class BillComponent(AbstractModel):
     def __init__(self):
         r"""
         :param _ComponentCode: 组件类型编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type ComponentCode: str
         :param _ComponentCodeName: 组件类型：用户购买的产品或服务对应的组件大类
-注意：此字段可能返回 null，表示取不到有效值。
         :type ComponentCodeName: str
         """
         self._ComponentCode = None
@@ -6120,7 +6118,6 @@ class BillComponent(AbstractModel):
     @property
     def ComponentCode(self):
         """组件类型编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ComponentCode
@@ -6132,7 +6129,6 @@ class BillComponent(AbstractModel):
     @property
     def ComponentCodeName(self):
         """组件类型：用户购买的产品或服务对应的组件大类
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ComponentCodeName
@@ -10704,16 +10700,12 @@ class ConsumptionRegionSummaryDataItem(AbstractModel):
         :param _Business: 产品消费详情
         :type Business: list of ConsumptionBusinessSummaryDataItem
         :param _CashPayAmount: 现金
-注意：此字段可能返回 null，表示取不到有效值。
         :type CashPayAmount: str
         :param _VoucherPayAmount: 代金券
-注意：此字段可能返回 null，表示取不到有效值。
         :type VoucherPayAmount: str
         :param _IncentivePayAmount: 赠送金
-注意：此字段可能返回 null，表示取不到有效值。
         :type IncentivePayAmount: str
         :param _TransferPayAmount: 分成金
-注意：此字段可能返回 null，表示取不到有效值。
         :type TransferPayAmount: str
         """
         self._RegionId = None
@@ -10784,7 +10776,6 @@ class ConsumptionRegionSummaryDataItem(AbstractModel):
     @property
     def CashPayAmount(self):
         """现金
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CashPayAmount
@@ -10796,7 +10787,6 @@ class ConsumptionRegionSummaryDataItem(AbstractModel):
     @property
     def VoucherPayAmount(self):
         """代金券
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -10808,7 +10798,6 @@ class ConsumptionRegionSummaryDataItem(AbstractModel):
     @property
     def IncentivePayAmount(self):
         """赠送金
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -10820,7 +10809,6 @@ class ConsumptionRegionSummaryDataItem(AbstractModel):
     @property
     def TransferPayAmount(self):
         """分成金
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TransferPayAmount
@@ -16616,7 +16604,6 @@ class DescribeBillDetailForOrganizationResponse(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _Context: 本次请求的上下文信息，可用于下一次请求的请求参数中，加快查询速度
-注意：此字段可能返回 null，表示取不到有效值。
         :type Context: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16652,7 +16639,6 @@ class DescribeBillDetailForOrganizationResponse(AbstractModel):
     @property
     def Context(self):
         """本次请求的上下文信息，可用于下一次请求的请求参数中，加快查询速度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Context

@@ -1002,10 +1002,8 @@ GZJGZY: 公证机构执业证。
         :param _ImgUrl: 证件照片地址。
         :type ImgUrl: str
         :param _OriginImgUrl: 原始照片地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type OriginImgUrl: str
         :param _RegistrantCertificateCode: 联系人证件号码。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegistrantCertificateCode: str
         :param _RegistrantCertificateType: 联系人证件类型。
 SFZ: 身份证。
@@ -1036,10 +1034,8 @@ GAJZZ: 中国港澳居住证。
 TWJZZ: 中国台湾居住证。
 QTTYDM: 其他-统一社会信用代码证书。
 GZJGZY: 公证机构执业证。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegistrantCertificateType: str
         :param _RegistrantImgUrl: 联系人证件照片地址。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegistrantImgUrl: str
         """
         self._CertificateCode = None
@@ -1114,7 +1110,6 @@ GZJGZY: 公证机构执业证。
     @property
     def OriginImgUrl(self):
         """原始照片地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OriginImgUrl
@@ -1126,7 +1121,6 @@ GZJGZY: 公证机构执业证。
     @property
     def RegistrantCertificateCode(self):
         """联系人证件号码。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RegistrantCertificateCode
@@ -1166,7 +1160,6 @@ GAJZZ: 中国港澳居住证。
 TWJZZ: 中国台湾居住证。
 QTTYDM: 其他-统一社会信用代码证书。
 GZJGZY: 公证机构执业证。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RegistrantCertificateType
@@ -1178,7 +1171,6 @@ GZJGZY: 公证机构执业证。
     @property
     def RegistrantImgUrl(self):
         """联系人证件照片地址。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RegistrantImgUrl

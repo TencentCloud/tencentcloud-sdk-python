@@ -8974,6 +8974,8 @@ class DescribeTokenUsageResponse(AbstractModel):
         :type SplitTokenUsage: float
         :param _RagSearchUsage: Rag检索次数
         :type RagSearchUsage: float
+        :param _InternetSearchUsage: 联网搜索次数
+        :type InternetSearchUsage: float
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -8985,6 +8987,7 @@ class DescribeTokenUsageResponse(AbstractModel):
         self._PageUsage = None
         self._SplitTokenUsage = None
         self._RagSearchUsage = None
+        self._InternetSearchUsage = None
         self._RequestId = None
 
     @property
@@ -9076,6 +9079,17 @@ class DescribeTokenUsageResponse(AbstractModel):
         self._RagSearchUsage = RagSearchUsage
 
     @property
+    def InternetSearchUsage(self):
+        """联网搜索次数
+        :rtype: float
+        """
+        return self._InternetSearchUsage
+
+    @InternetSearchUsage.setter
+    def InternetSearchUsage(self, InternetSearchUsage):
+        self._InternetSearchUsage = InternetSearchUsage
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -9096,6 +9110,7 @@ class DescribeTokenUsageResponse(AbstractModel):
         self._PageUsage = params.get("PageUsage")
         self._SplitTokenUsage = params.get("SplitTokenUsage")
         self._RagSearchUsage = params.get("RagSearchUsage")
+        self._InternetSearchUsage = params.get("InternetSearchUsage")
         self._RequestId = params.get("RequestId")
 
 
