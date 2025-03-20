@@ -6492,10 +6492,8 @@ class SecLogExportTaskInfo(AbstractModel):
         :param _AsyncRequestId: 异步任务Id。
         :type AsyncRequestId: int
         :param _StartTime: 任务开始时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
         :param _EndTime: 任务结束时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         :param _CreateTime: 任务创建时间。
         :type CreateTime: str
@@ -6504,16 +6502,12 @@ class SecLogExportTaskInfo(AbstractModel):
         :param _Progress: 任务执行进度。
         :type Progress: int
         :param _LogStartTime: 导出日志开始时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogStartTime: str
         :param _LogEndTime: 导出日志结束时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogEndTime: str
         :param _TotalSize: 日志文件总大小，单位KB。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalSize: int
         :param _DangerLevels: 风险等级列表。0 无风险；1 低风险；2 中风险；3 高风险。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DangerLevels: list of int non-negative
         """
         self._AsyncRequestId = None
@@ -6541,7 +6535,6 @@ class SecLogExportTaskInfo(AbstractModel):
     @property
     def StartTime(self):
         """任务开始时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StartTime
@@ -6553,7 +6546,6 @@ class SecLogExportTaskInfo(AbstractModel):
     @property
     def EndTime(self):
         """任务结束时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndTime
@@ -6598,7 +6590,6 @@ class SecLogExportTaskInfo(AbstractModel):
     @property
     def LogStartTime(self):
         """导出日志开始时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LogStartTime
@@ -6610,7 +6601,6 @@ class SecLogExportTaskInfo(AbstractModel):
     @property
     def LogEndTime(self):
         """导出日志结束时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LogEndTime
@@ -6622,7 +6612,6 @@ class SecLogExportTaskInfo(AbstractModel):
     @property
     def TotalSize(self):
         """日志文件总大小，单位KB。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalSize
@@ -6634,7 +6623,6 @@ class SecLogExportTaskInfo(AbstractModel):
     @property
     def DangerLevels(self):
         """风险等级列表。0 无风险；1 低风险；2 中风险；3 高风险。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int non-negative
         """
         return self._DangerLevels
@@ -7506,16 +7494,12 @@ class UserProfile(AbstractModel):
     def __init__(self):
         r"""
         :param _ProfileId: 配置的id。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProfileId: str
         :param _ProfileType: 配置类型。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProfileType: str
         :param _ProfileLevel: 配置级别，"User"或"Instance"。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProfileLevel: str
         :param _ProfileName: 配置名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProfileName: str
         :param _ProfileInfo: 配置详情。
         :type ProfileInfo: :class:`tencentcloud.dbbrain.v20191016.models.ProfileInfo`
@@ -7529,7 +7513,6 @@ class UserProfile(AbstractModel):
     @property
     def ProfileId(self):
         """配置的id。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProfileId
@@ -7541,7 +7524,6 @@ class UserProfile(AbstractModel):
     @property
     def ProfileType(self):
         """配置类型。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProfileType
@@ -7553,7 +7535,6 @@ class UserProfile(AbstractModel):
     @property
     def ProfileLevel(self):
         """配置级别，"User"或"Instance"。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProfileLevel
@@ -7565,7 +7546,6 @@ class UserProfile(AbstractModel):
     @property
     def ProfileName(self):
         """配置名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProfileName

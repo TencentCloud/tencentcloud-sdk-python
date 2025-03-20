@@ -14669,7 +14669,6 @@ class DescribeChangedParamsAfterUpgradeResponse(AbstractModel):
         :param _TotalCount: 参数个数
         :type TotalCount: int
         :param _Items: 实例参数列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of ParamItemInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14692,7 +14691,6 @@ class DescribeChangedParamsAfterUpgradeResponse(AbstractModel):
     @property
     def Items(self):
         """实例参数列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ParamItemInfo
         """
         return self._Items
@@ -15153,7 +15151,6 @@ class DescribeClusterDetailDatabasesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _DbInfos: 数据库信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type DbInfos: list of DbInfo
         :param _TotalCount: 总数
         :type TotalCount: int
@@ -15167,7 +15164,6 @@ class DescribeClusterDetailDatabasesResponse(AbstractModel):
     @property
     def DbInfos(self):
         """数据库信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DbInfo
         """
         return self._DbInfos
@@ -15634,7 +15630,6 @@ class DescribeClusterParamLogsResponse(AbstractModel):
         :param _TotalCount: 记录总数
         :type TotalCount: int
         :param _ClusterParamLogs: 参数修改记录
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterParamLogs: list of ClusterParamModifyLog
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15657,7 +15652,6 @@ class DescribeClusterParamLogsResponse(AbstractModel):
     @property
     def ClusterParamLogs(self):
         """参数修改记录
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ClusterParamModifyLog
         """
         return self._ClusterParamLogs
@@ -15765,7 +15759,6 @@ class DescribeClusterParamsResponse(AbstractModel):
         :param _TotalCount: 参数个数
         :type TotalCount: int
         :param _Items: 实例参数列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of ParamInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15788,7 +15781,6 @@ class DescribeClusterParamsResponse(AbstractModel):
     @property
     def Items(self):
         """实例参数列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ParamInfo
         """
         return self._Items
@@ -15864,22 +15856,16 @@ class DescribeClusterPasswordComplexityResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ValidatePasswordDictionary: 数据字典参数
-注意：此字段可能返回 null，表示取不到有效值。
         :type ValidatePasswordDictionary: :class:`tencentcloud.cynosdb.v20190107.models.ParamInfo`
         :param _ValidatePasswordLength: 密码长度
-注意：此字段可能返回 null，表示取不到有效值。
         :type ValidatePasswordLength: :class:`tencentcloud.cynosdb.v20190107.models.ParamInfo`
         :param _ValidatePasswordMixedCaseCount: 大小写敏感字符个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type ValidatePasswordMixedCaseCount: :class:`tencentcloud.cynosdb.v20190107.models.ParamInfo`
         :param _ValidatePasswordNumberCount: 数字个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type ValidatePasswordNumberCount: :class:`tencentcloud.cynosdb.v20190107.models.ParamInfo`
         :param _ValidatePasswordPolicy: 密码等级
-注意：此字段可能返回 null，表示取不到有效值。
         :type ValidatePasswordPolicy: :class:`tencentcloud.cynosdb.v20190107.models.ParamInfo`
         :param _ValidatePasswordSpecialCharCount: 特殊字符个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type ValidatePasswordSpecialCharCount: :class:`tencentcloud.cynosdb.v20190107.models.ParamInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15895,7 +15881,6 @@ class DescribeClusterPasswordComplexityResponse(AbstractModel):
     @property
     def ValidatePasswordDictionary(self):
         """数据字典参数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ParamInfo`
         """
         return self._ValidatePasswordDictionary
@@ -15907,7 +15892,6 @@ class DescribeClusterPasswordComplexityResponse(AbstractModel):
     @property
     def ValidatePasswordLength(self):
         """密码长度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ParamInfo`
         """
         return self._ValidatePasswordLength
@@ -15919,7 +15903,6 @@ class DescribeClusterPasswordComplexityResponse(AbstractModel):
     @property
     def ValidatePasswordMixedCaseCount(self):
         """大小写敏感字符个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ParamInfo`
         """
         return self._ValidatePasswordMixedCaseCount
@@ -15931,7 +15914,6 @@ class DescribeClusterPasswordComplexityResponse(AbstractModel):
     @property
     def ValidatePasswordNumberCount(self):
         """数字个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ParamInfo`
         """
         return self._ValidatePasswordNumberCount
@@ -15943,7 +15925,6 @@ class DescribeClusterPasswordComplexityResponse(AbstractModel):
     @property
     def ValidatePasswordPolicy(self):
         """密码等级
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ParamInfo`
         """
         return self._ValidatePasswordPolicy
@@ -15955,7 +15936,6 @@ class DescribeClusterPasswordComplexityResponse(AbstractModel):
     @property
     def ValidatePasswordSpecialCharCount(self):
         """特殊字符个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ParamInfo`
         """
         return self._ValidatePasswordSpecialCharCount
@@ -16826,10 +16806,8 @@ class DescribeInstanceErrorLogsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 日志条数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _ErrorLogs: 错误日志列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorLogs: list of CynosdbErrorLogItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16841,7 +16819,6 @@ class DescribeInstanceErrorLogsResponse(AbstractModel):
     @property
     def TotalCount(self):
         """日志条数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -16853,7 +16830,6 @@ class DescribeInstanceErrorLogsResponse(AbstractModel):
     @property
     def ErrorLogs(self):
         """错误日志列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CynosdbErrorLogItem
         """
         return self._ErrorLogs
@@ -18716,7 +18692,6 @@ class DescribeProxiesResponse(AbstractModel):
         :param _TotalCount: 数据库代理组数
         :type TotalCount: int
         :param _ProxyGroupInfos: 数据库代理组列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyGroupInfos: list of ProxyGroupInfo
         :param _ProxyNodeInfos: 数据库代理节点
 注意：此字段可能返回 null，表示取不到有效值。
@@ -18743,7 +18718,6 @@ class DescribeProxiesResponse(AbstractModel):
     @property
     def ProxyGroupInfos(self):
         """数据库代理组列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ProxyGroupInfo
         """
         return self._ProxyGroupInfos
@@ -19424,7 +19398,6 @@ class DescribeResourcePackageListResponse(AbstractModel):
         :param _Total: 资源包总数
         :type Total: int
         :param _Detail: 资源包明细
-注意：此字段可能返回 null，表示取不到有效值。
         :type Detail: list of Package
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -19447,7 +19420,6 @@ class DescribeResourcePackageListResponse(AbstractModel):
     @property
     def Detail(self):
         """资源包明细
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Package
         """
         return self._Detail
@@ -19591,7 +19563,6 @@ class DescribeResourcePackageSaleSpecResponse(AbstractModel):
         :param _Total: 可售卖资源包规格总数
         :type Total: int
         :param _Detail: 资源包明细说明
-注意：此字段可能返回 null，表示取不到有效值。
         :type Detail: list of SalePackageSpec
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -19614,7 +19585,6 @@ class DescribeResourcePackageSaleSpecResponse(AbstractModel):
     @property
     def Detail(self):
         """资源包明细说明
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SalePackageSpec
         """
         return self._Detail
@@ -19793,10 +19763,8 @@ class DescribeRollbackTimeRangeResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TimeRangeStart: 有效回归时间范围开始时间点（已废弃）
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimeRangeStart: str
         :param _TimeRangeEnd: 有效回归时间范围结束时间点（已废弃）
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimeRangeEnd: str
         :param _RollbackTimeRanges: 可回档时间范围
         :type RollbackTimeRanges: list of RollbackTimeRange
@@ -19811,7 +19779,6 @@ class DescribeRollbackTimeRangeResponse(AbstractModel):
     @property
     def TimeRangeStart(self):
         """有效回归时间范围开始时间点（已废弃）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TimeRangeStart
@@ -19823,7 +19790,6 @@ class DescribeRollbackTimeRangeResponse(AbstractModel):
     @property
     def TimeRangeEnd(self):
         """有效回归时间范围结束时间点（已废弃）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TimeRangeEnd
@@ -20168,10 +20134,8 @@ class DescribeSupportProxyVersionResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _SupportProxyVersions: 支持的数据库代理版本集合
-注意：此字段可能返回 null，表示取不到有效值。
         :type SupportProxyVersions: list of str
         :param _CurrentProxyVersion: 当前proxy版本号
-注意：此字段可能返回 null，表示取不到有效值。
         :type CurrentProxyVersion: str
         :param _SupportProxyVersionDetail: 代理版本详情
         :type SupportProxyVersionDetail: list of ProxyVersionInfo
@@ -20186,7 +20150,6 @@ class DescribeSupportProxyVersionResponse(AbstractModel):
     @property
     def SupportProxyVersions(self):
         """支持的数据库代理版本集合
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._SupportProxyVersions
@@ -20198,7 +20161,6 @@ class DescribeSupportProxyVersionResponse(AbstractModel):
     @property
     def CurrentProxyVersion(self):
         """当前proxy版本号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CurrentProxyVersion
@@ -20958,7 +20920,6 @@ class ExportInstanceErrorLogsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ErrorLogItems: 错误日志导出内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorLogItems: list of ErrorLogItemExport
         :param _FileContent: 错误日志字符串
         :type FileContent: str
@@ -20972,7 +20933,6 @@ class ExportInstanceErrorLogsResponse(AbstractModel):
     @property
     def ErrorLogItems(self):
         """错误日志导出内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ErrorLogItemExport
         """
         return self._ErrorLogItems
@@ -21992,10 +21952,8 @@ class InquirePriceModifyResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _InstancePrice: 实例价格
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstancePrice: :class:`tencentcloud.cynosdb.v20190107.models.TradePrice`
         :param _StoragePrice: 存储价格
-注意：此字段可能返回 null，表示取不到有效值。
         :type StoragePrice: :class:`tencentcloud.cynosdb.v20190107.models.TradePrice`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -22007,7 +21965,6 @@ class InquirePriceModifyResponse(AbstractModel):
     @property
     def InstancePrice(self):
         """实例价格
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.TradePrice`
         """
         return self._InstancePrice
@@ -22019,7 +21976,6 @@ class InquirePriceModifyResponse(AbstractModel):
     @property
     def StoragePrice(self):
         """存储价格
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.TradePrice`
         """
         return self._StoragePrice
@@ -23595,7 +23551,6 @@ class IsolateClusterResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _FlowId: 任务流ID(后付费或者serverless资源返回，如果需要同步任务状态，请使用DescribeFlow接口)
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowId: int
         :param _DealNames: 退款订单号(预付费资源返回，如果需要同步订单状态，请使用计费产品的DescribeDealsByCond同步订单状态)
 注意：此字段可能返回 null，表示取不到有效值。
@@ -23610,7 +23565,6 @@ class IsolateClusterResponse(AbstractModel):
     @property
     def FlowId(self):
         """任务流ID(后付费或者serverless资源返回，如果需要同步任务状态，请使用DescribeFlow接口)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FlowId
@@ -25995,13 +25949,10 @@ class ModifyClusterStorageResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TranId: 冻结流水ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TranId: str
         :param _BigDealIds: 大订单号
-注意：此字段可能返回 null，表示取不到有效值。
         :type BigDealIds: list of str
         :param _DealNames: 订单号
-注意：此字段可能返回 null，表示取不到有效值。
         :type DealNames: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -26014,7 +25965,6 @@ class ModifyClusterStorageResponse(AbstractModel):
     @property
     def TranId(self):
         """冻结流水ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TranId
@@ -26026,7 +25976,6 @@ class ModifyClusterStorageResponse(AbstractModel):
     @property
     def BigDealIds(self):
         """大订单号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._BigDealIds
@@ -26038,7 +25987,6 @@ class ModifyClusterStorageResponse(AbstractModel):
     @property
     def DealNames(self):
         """订单号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._DealNames
@@ -30908,19 +30856,15 @@ class ParamItemInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _ParamName: 参数名字
-注意：此字段可能返回 null，表示取不到有效值。
         :type ParamName: str
         :param _NewValue: 参数新值
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type NewValue: str
         :param _OldValue: 参数旧值
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type OldValue: str
         :param _ValueFunction: 参数公式
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type ValueFunction: str
         """
         self._ParamName = None
@@ -30931,7 +30875,6 @@ class ParamItemInfo(AbstractModel):
     @property
     def ParamName(self):
         """参数名字
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ParamName
@@ -30944,7 +30887,6 @@ class ParamItemInfo(AbstractModel):
     def NewValue(self):
         """参数新值
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NewValue
@@ -30957,7 +30899,6 @@ class ParamItemInfo(AbstractModel):
     def OldValue(self):
         """参数旧值
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OldValue
@@ -30970,7 +30911,6 @@ class ParamItemInfo(AbstractModel):
     def ValueFunction(self):
         """参数公式
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ValueFunction
@@ -32805,19 +32745,14 @@ class RenewClustersResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _BigDealIds: 预付费总订单号
-注意：此字段可能返回 null，表示取不到有效值。
         :type BigDealIds: list of str
         :param _DealNames: 退款订单号
-注意：此字段可能返回 null，表示取不到有效值。
         :type DealNames: list of str
         :param _TranId: 冻结流水，一次开通一个冻结流水
-注意：此字段可能返回 null，表示取不到有效值。
         :type TranId: str
         :param _ResourceIds: 每个订单号对应的发货资源id列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceIds: list of str
         :param _ClusterIds: 集群id列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterIds: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -32832,7 +32767,6 @@ class RenewClustersResponse(AbstractModel):
     @property
     def BigDealIds(self):
         """预付费总订单号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._BigDealIds
@@ -32844,7 +32778,6 @@ class RenewClustersResponse(AbstractModel):
     @property
     def DealNames(self):
         """退款订单号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._DealNames
@@ -32856,7 +32789,6 @@ class RenewClustersResponse(AbstractModel):
     @property
     def TranId(self):
         """冻结流水，一次开通一个冻结流水
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TranId
@@ -32868,7 +32800,6 @@ class RenewClustersResponse(AbstractModel):
     @property
     def ResourceIds(self):
         """每个订单号对应的发货资源id列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._ResourceIds
@@ -32880,7 +32811,6 @@ class RenewClustersResponse(AbstractModel):
     @property
     def ClusterIds(self):
         """集群id列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._ClusterIds
@@ -34929,16 +34859,12 @@ class RollbackToNewClusterResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TranId: 冻结流水ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TranId: str
         :param _DealNames: 订单号
-注意：此字段可能返回 null，表示取不到有效值。
         :type DealNames: list of str
         :param _ResourceIds: 资源ID列表（该字段已不再维护，请使用dealNames字段查询接口DescribeResourcesByDealName获取资源ID）
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceIds: list of str
         :param _ClusterIds: 集群ID列表（该字段已不再维护，请使用dealNames字段查询接口DescribeResourcesByDealName获取集群ID）
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterIds: list of str
         :param _BigDealIds: 大订单号
 注意：此字段可能返回 null，表示取不到有效值。
@@ -34956,7 +34882,6 @@ class RollbackToNewClusterResponse(AbstractModel):
     @property
     def TranId(self):
         """冻结流水ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TranId
@@ -34968,7 +34893,6 @@ class RollbackToNewClusterResponse(AbstractModel):
     @property
     def DealNames(self):
         """订单号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._DealNames
@@ -34980,7 +34904,6 @@ class RollbackToNewClusterResponse(AbstractModel):
     @property
     def ResourceIds(self):
         """资源ID列表（该字段已不再维护，请使用dealNames字段查询接口DescribeResourcesByDealName获取资源ID）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._ResourceIds
@@ -34992,7 +34915,6 @@ class RollbackToNewClusterResponse(AbstractModel):
     @property
     def ClusterIds(self):
         """集群ID列表（该字段已不再维护，请使用dealNames字段查询接口DescribeResourcesByDealName获取集群ID）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._ClusterIds
@@ -35840,7 +35762,6 @@ class SearchClusterTablesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Tables: 数据表列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tables: list of DatabaseTables
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -35851,7 +35772,6 @@ class SearchClusterTablesResponse(AbstractModel):
     @property
     def Tables(self):
         """数据表列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DatabaseTables
         """
         return self._Tables
@@ -38326,10 +38246,8 @@ class UpgradeInstanceResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TranId: 冻结流水ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TranId: str
         :param _BigDealIds: 大订单号
-注意：此字段可能返回 null，表示取不到有效值。
         :type BigDealIds: list of str
         :param _DealNames: 订单号
         :type DealNames: list of str
@@ -38344,7 +38262,6 @@ class UpgradeInstanceResponse(AbstractModel):
     @property
     def TranId(self):
         """冻结流水ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TranId
@@ -38356,7 +38273,6 @@ class UpgradeInstanceResponse(AbstractModel):
     @property
     def BigDealIds(self):
         """大订单号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._BigDealIds

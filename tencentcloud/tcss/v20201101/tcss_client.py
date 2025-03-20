@@ -1618,6 +1618,29 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteRaspRules(self, request):
+        """删除漏洞防御白名单
+
+        :param request: Request instance for DeleteRaspRules.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DeleteRaspRulesRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DeleteRaspRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRaspRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteRaspRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteReverseShellEvents(self, request):
         """删除运行时反弹shell事件
 
@@ -1825,31 +1848,6 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeAbnormalProcessEventsExport(self, request):
-        """接口已废弃
-
-        查询运行时异常进程事件列表信息导出
-
-        :param request: Request instance for DescribeAbnormalProcessEventsExport.
-        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAbnormalProcessEventsExportRequest`
-        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeAbnormalProcessEventsExportResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeAbnormalProcessEventsExport", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeAbnormalProcessEventsExportResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeAbnormalProcessLevelSummary(self, request):
         """统计异常进程各威胁等级待处理事件数
 
@@ -1910,31 +1908,6 @@ class TcssClient(AbstractClient):
             body = self.call("DescribeAbnormalProcessRules", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAbnormalProcessRulesResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeAbnormalProcessRulesExport(self, request):
-        """接口已废弃
-
-        查询运行时异常进程策略列表信息导出
-
-        :param request: Request instance for DescribeAbnormalProcessRulesExport.
-        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAbnormalProcessRulesExportRequest`
-        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeAbnormalProcessRulesExportResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeAbnormalProcessRulesExport", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeAbnormalProcessRulesExportResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2050,31 +2023,6 @@ class TcssClient(AbstractClient):
             body = self.call("DescribeAccessControlRules", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAccessControlRulesResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeAccessControlRulesExport(self, request):
-        """接口已废弃
-
-        查询运行时访问控制策略列表导出
-
-        :param request: Request instance for DescribeAccessControlRulesExport.
-        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAccessControlRulesExportRequest`
-        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeAccessControlRulesExportResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeAccessControlRulesExport", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeAccessControlRulesExportResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2466,31 +2414,6 @@ class TcssClient(AbstractClient):
             body = self.call("DescribeAssetImageList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAssetImageListResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeAssetImageListExport(self, request):
-        """接口已废弃
-
-        容器安全搜索查询镜像列表导出
-
-        :param request: Request instance for DescribeAssetImageListExport.
-        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageListExportRequest`
-        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageListExportResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeAssetImageListExport", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeAssetImageListExportResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3742,31 +3665,6 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeEscapeEventsExport(self, request):
-        """接口已废弃
-
-        DescribeEscapeEventsExport  查询容器逃逸事件列表导出
-
-        :param request: Request instance for DescribeEscapeEventsExport.
-        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeEscapeEventsExportRequest`
-        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeEscapeEventsExportResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeEscapeEventsExport", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeEscapeEventsExportResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeEscapeRuleInfo(self, request):
         """DescribeEscapeRuleInfo 查询容器逃逸扫描规则信息
 
@@ -4770,6 +4668,52 @@ class TcssClient(AbstractClient):
             body = self.call("DescribePurchaseStateInfo", params, headers=headers)
             response = json.loads(body)
             model = models.DescribePurchaseStateInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRaspRuleVuls(self, request):
+        """获取漏洞防御白名单漏洞列表
+
+        :param request: Request instance for DescribeRaspRuleVuls.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeRaspRuleVulsRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeRaspRuleVulsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRaspRuleVuls", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRaspRuleVulsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRaspRules(self, request):
+        """查询支持防御的漏洞列表
+
+        :param request: Request instance for DescribeRaspRules.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeRaspRulesRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeRaspRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRaspRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRaspRulesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -7001,6 +6945,29 @@ class TcssClient(AbstractClient):
             body = self.call("ModifyK8sApiAbnormalRuleStatus", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyK8sApiAbnormalRuleStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyRaspRules(self, request):
+        """编辑或者创建java内存马白名单
+
+        :param request: Request instance for ModifyRaspRules.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyRaspRulesRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.ModifyRaspRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRaspRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyRaspRulesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

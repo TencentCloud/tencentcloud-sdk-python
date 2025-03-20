@@ -212,6 +212,29 @@ class DnspodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateDomainsAnalyticsFile(self, request):
+        """批量导出域名解析量
+
+        :param request: Request instance for CreateDomainsAnalyticsFile.
+        :type request: :class:`tencentcloud.dnspod.v20210323.models.CreateDomainsAnalyticsFileRequest`
+        :rtype: :class:`tencentcloud.dnspod.v20210323.models.CreateDomainsAnalyticsFileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDomainsAnalyticsFile", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDomainsAnalyticsFileResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateLineGroup(self, request):
         """创建域名的线路分组
 
@@ -342,6 +365,29 @@ class DnspodClient(AbstractClient):
             body = self.call("CreateSnapshot", params, headers=headers)
             response = json.loads(body)
             model = models.CreateSnapshotResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateSubDomainsAnalyticsFile(self, request):
+        """批量导出子域名解析量
+
+        :param request: Request instance for CreateSubDomainsAnalyticsFile.
+        :type request: :class:`tencentcloud.dnspod.v20210323.models.CreateSubDomainsAnalyticsFileRequest`
+        :rtype: :class:`tencentcloud.dnspod.v20210323.models.CreateSubDomainsAnalyticsFileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSubDomainsAnalyticsFile", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSubDomainsAnalyticsFileResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -943,6 +989,29 @@ class DnspodClient(AbstractClient):
             body = self.call("DescribeDomainWhois", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDomainWhoisResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeFileInfoByJobId(self, request):
+        """根据批量任务ID获取生成文件信息
+
+        :param request: Request instance for DescribeFileInfoByJobId.
+        :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeFileInfoByJobIdRequest`
+        :rtype: :class:`tencentcloud.dnspod.v20210323.models.DescribeFileInfoByJobIdResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFileInfoByJobId", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeFileInfoByJobIdResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

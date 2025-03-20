@@ -5219,7 +5219,7 @@ class CreateTargetGroupRequest(AbstractModel):
         :param _Port: 目标组的默认端口， 后续添加服务器时可使用该默认端口。Port和TargetGroupInstances.N中的port二者必填其一。
 
         :type Port: int
-        :param _TargetGroupInstances: 目标组绑定的后端服务器
+        :param _TargetGroupInstances: 目标组绑定的后端服务器，单次最多支持50个。
         :type TargetGroupInstances: list of TargetGroupInstance
         :param _Type: 目标组类型，当前支持v1(旧版目标组), v2(新版目标组), 默认为v1(旧版目标组)。
         :type Type: str
@@ -5280,7 +5280,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def TargetGroupInstances(self):
-        """目标组绑定的后端服务器
+        """目标组绑定的后端服务器，单次最多支持50个。
         :rtype: list of TargetGroupInstance
         """
         return self._TargetGroupInstances
@@ -18907,12 +18907,10 @@ class RewriteTarget(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TargetListenerId: 重定向目标的监听器ID
-注意：此字段可能返回 null，表示无重定向。
+        :param _TargetListenerId: 重定向目标的监听器ID，该字段仅配置了重定向时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TargetListenerId: str
-        :param _TargetLocationId: 重定向目标的转发规则ID
-注意：此字段可能返回 null，表示无重定向。
+        :param _TargetLocationId: 重定向目标的转发规则ID，该字段仅配置了重定向时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TargetLocationId: str
         :param _RewriteCode: 重定向状态码
@@ -18933,8 +18931,7 @@ class RewriteTarget(AbstractModel):
 
     @property
     def TargetListenerId(self):
-        """重定向目标的监听器ID
-注意：此字段可能返回 null，表示无重定向。
+        """重定向目标的监听器ID，该字段仅配置了重定向时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18946,8 +18943,7 @@ class RewriteTarget(AbstractModel):
 
     @property
     def TargetLocationId(self):
-        """重定向目标的转发规则ID
-注意：此字段可能返回 null，表示无重定向。
+        """重定向目标的转发规则ID，该字段仅配置了重定向时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -21611,6 +21607,8 @@ class TargetGroupInstance(AbstractModel):
         :param _Port: 目标组实例的端口
         :type Port: int
         :param _Weight: 目标组实例的权重
+
+v2目标组需要配置权重，调用CreateTargetGroup接口创建目标组时该参数与创建接口中的Weight参数必填其一。
         :type Weight: int
         :param _NewPort: 目标组实例的新端口
         :type NewPort: int
@@ -21645,6 +21643,8 @@ class TargetGroupInstance(AbstractModel):
     @property
     def Weight(self):
         """目标组实例的权重
+
+v2目标组需要配置权重，调用CreateTargetGroup接口创建目标组时该参数与创建接口中的Weight参数必填其一。
         :rtype: int
         """
         return self._Weight

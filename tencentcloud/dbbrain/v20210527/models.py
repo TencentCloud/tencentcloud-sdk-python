@@ -143,7 +143,6 @@ class Aggregation(AbstractModel):
         :param _SortCount: 内存排序次数。
         :type SortCount: int
         :param _SlowLogs: 慢查模板概览。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SlowLogs: list of str
         """
         self._AvgExecTime = None
@@ -199,7 +198,6 @@ class Aggregation(AbstractModel):
     @property
     def SlowLogs(self):
         """慢查模板概览。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._SlowLogs
@@ -233,46 +231,32 @@ class AlarmProfileList(AbstractModel):
     def __init__(self):
         r"""
         :param _IsWebHook: 0-不是 1-是
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsWebHook: int
         :param _ReceiveUinCount: 接收告警用户数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReceiveUinCount: int
         :param _Lang: 语言
-注意：此字段可能返回 null，表示取不到有效值。
         :type Lang: str
         :param _TemplateType: 模板类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateType: str
         :param _Remark: 备注
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _ReceiveGroupCount: 接收组数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReceiveGroupCount: int
         :param _UpdateUin: 更新用户的uin
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateUin: int
         :param _ReceiveType: 接收类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReceiveType: list of int
         :param _ReceiveInfo: 接收用户信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReceiveInfo: list of ReceiveInfo
         :param _UpdateTime: 更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param _TemplateName: 模板名
-注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateName: str
         :param _SendChannel: 发送渠道
-注意：此字段可能返回 null，表示取不到有效值。
         :type SendChannel: list of int
         :param _TemplateId: 模板id
-注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateId: int
         :param _WebHookCount: webhook数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type WebHookCount: int
         """
         self._IsWebHook = None
@@ -293,7 +277,6 @@ class AlarmProfileList(AbstractModel):
     @property
     def IsWebHook(self):
         """0-不是 1-是
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IsWebHook
@@ -305,7 +288,6 @@ class AlarmProfileList(AbstractModel):
     @property
     def ReceiveUinCount(self):
         """接收告警用户数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ReceiveUinCount
@@ -317,7 +299,6 @@ class AlarmProfileList(AbstractModel):
     @property
     def Lang(self):
         """语言
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Lang
@@ -329,7 +310,6 @@ class AlarmProfileList(AbstractModel):
     @property
     def TemplateType(self):
         """模板类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TemplateType
@@ -341,7 +321,6 @@ class AlarmProfileList(AbstractModel):
     @property
     def Remark(self):
         """备注
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -353,7 +332,6 @@ class AlarmProfileList(AbstractModel):
     @property
     def ReceiveGroupCount(self):
         """接收组数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ReceiveGroupCount
@@ -365,7 +343,6 @@ class AlarmProfileList(AbstractModel):
     @property
     def UpdateUin(self):
         """更新用户的uin
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._UpdateUin
@@ -377,7 +354,6 @@ class AlarmProfileList(AbstractModel):
     @property
     def ReceiveType(self):
         """接收类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._ReceiveType
@@ -389,7 +365,6 @@ class AlarmProfileList(AbstractModel):
     @property
     def ReceiveInfo(self):
         """接收用户信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ReceiveInfo
         """
         return self._ReceiveInfo
@@ -401,7 +376,6 @@ class AlarmProfileList(AbstractModel):
     @property
     def UpdateTime(self):
         """更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime
@@ -413,7 +387,6 @@ class AlarmProfileList(AbstractModel):
     @property
     def TemplateName(self):
         """模板名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TemplateName
@@ -425,7 +398,6 @@ class AlarmProfileList(AbstractModel):
     @property
     def SendChannel(self):
         """发送渠道
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._SendChannel
@@ -437,7 +409,6 @@ class AlarmProfileList(AbstractModel):
     @property
     def TemplateId(self):
         """模板id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TemplateId
@@ -449,7 +420,6 @@ class AlarmProfileList(AbstractModel):
     @property
     def WebHookCount(self):
         """webhook数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._WebHookCount
@@ -869,7 +839,6 @@ class AuditInstanceInfo(AbstractModel):
         :param _Region: 实例所在地域。
         :type Region: str
         :param _ResourceTags: 资源Tags。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceTags: list of str
         """
         self._AppId = None
@@ -949,7 +918,6 @@ class AuditInstanceInfo(AbstractModel):
     @property
     def ResourceTags(self):
         """资源Tags。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._ResourceTags
@@ -985,18 +953,15 @@ class AuditLogFile(AbstractModel):
     def __init__(self):
         r"""
         :param _AsyncRequestId: 审计日志文件生成异步任务ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AsyncRequestId: int
         :param _FileName: 审计日志文件名称。
         :type FileName: str
         :param _CreateTime: 审计日志文件创建时间。格式为 : "2019-03-20 17:09:13"。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _Status: 文件状态值。可能返回的值为：
 "creating" - 生成中;
 "failed" - 创建失败;
 "success" - 已生成;
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _FileSize: 文件大小，单位为 KB。
         :type FileSize: float
@@ -1022,7 +987,6 @@ class AuditLogFile(AbstractModel):
     @property
     def AsyncRequestId(self):
         """审计日志文件生成异步任务ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AsyncRequestId
@@ -1045,7 +1009,6 @@ class AuditLogFile(AbstractModel):
     @property
     def CreateTime(self):
         """审计日志文件创建时间。格式为 : "2019-03-20 17:09:13"。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -1060,7 +1023,6 @@ class AuditLogFile(AbstractModel):
 "creating" - 生成中;
 "failed" - 创建失败;
 "success" - 已生成;
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -14842,22 +14804,16 @@ class ReceiveInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _ReceiveGroup: 接收组
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReceiveGroup: list of int
         :param _EndReceiveTime: 最后接收时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndReceiveTime: str
         :param _ReceiveName: 接收名
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReceiveName: str
         :param _SendChannel: 推送渠道
-注意：此字段可能返回 null，表示取不到有效值。
         :type SendChannel: list of int
         :param _StartReceiveTime: 开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartReceiveTime: str
         :param _ReceiveUin: 接收用户列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReceiveUin: list of ReceiveUin
         """
         self._ReceiveGroup = None
@@ -14870,7 +14826,6 @@ class ReceiveInfo(AbstractModel):
     @property
     def ReceiveGroup(self):
         """接收组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._ReceiveGroup
@@ -14882,7 +14837,6 @@ class ReceiveInfo(AbstractModel):
     @property
     def EndReceiveTime(self):
         """最后接收时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndReceiveTime
@@ -14894,7 +14848,6 @@ class ReceiveInfo(AbstractModel):
     @property
     def ReceiveName(self):
         """接收名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ReceiveName
@@ -14906,7 +14859,6 @@ class ReceiveInfo(AbstractModel):
     @property
     def SendChannel(self):
         """推送渠道
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._SendChannel
@@ -14918,7 +14870,6 @@ class ReceiveInfo(AbstractModel):
     @property
     def StartReceiveTime(self):
         """开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StartReceiveTime
@@ -14930,7 +14881,6 @@ class ReceiveInfo(AbstractModel):
     @property
     def ReceiveUin(self):
         """接收用户列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ReceiveUin
         """
         return self._ReceiveUin
@@ -16018,10 +15968,8 @@ class SecLogExportTaskInfo(AbstractModel):
         :param _AsyncRequestId: 异步任务Id。
         :type AsyncRequestId: int
         :param _StartTime: 任务开始时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
         :param _EndTime: 任务结束时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         :param _CreateTime: 任务创建时间。
         :type CreateTime: str
@@ -16030,16 +15978,12 @@ class SecLogExportTaskInfo(AbstractModel):
         :param _Progress: 任务执行进度。
         :type Progress: int
         :param _LogStartTime: 导出日志开始时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogStartTime: str
         :param _LogEndTime: 导出日志结束时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogEndTime: str
         :param _TotalSize: 日志文件总大小，单位KB。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalSize: int
         :param _DangerLevels: 风险等级列表。0 无风险；1 低风险；2 中风险；3 高风险。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DangerLevels: list of int non-negative
         """
         self._AsyncRequestId = None
@@ -16067,7 +16011,6 @@ class SecLogExportTaskInfo(AbstractModel):
     @property
     def StartTime(self):
         """任务开始时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StartTime
@@ -16079,7 +16022,6 @@ class SecLogExportTaskInfo(AbstractModel):
     @property
     def EndTime(self):
         """任务结束时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndTime
@@ -16124,7 +16066,6 @@ class SecLogExportTaskInfo(AbstractModel):
     @property
     def LogStartTime(self):
         """导出日志开始时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LogStartTime
@@ -16136,7 +16077,6 @@ class SecLogExportTaskInfo(AbstractModel):
     @property
     def LogEndTime(self):
         """导出日志结束时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LogEndTime
@@ -16148,7 +16088,6 @@ class SecLogExportTaskInfo(AbstractModel):
     @property
     def TotalSize(self):
         """日志文件总大小，单位KB。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalSize
@@ -16160,7 +16099,6 @@ class SecLogExportTaskInfo(AbstractModel):
     @property
     def DangerLevels(self):
         """风险等级列表。0 无风险；1 低风险；2 中风险；3 高风险。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int non-negative
         """
         return self._DangerLevels
@@ -16337,21 +16275,16 @@ class SlowLogInfoItem(AbstractModel):
         :param _Database: 数据库
         :type Database: str
         :param _UserName: User来源
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserName: str
         :param _UserHost: IP来源
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserHost: str
         :param _QueryTime: 执行时间,单位秒
         :type QueryTime: float
         :param _LockTime: 锁时间,单位秒
-注意：此字段可能返回 null，表示取不到有效值。
         :type LockTime: float
         :param _RowsExamined: 扫描行数
-注意：此字段可能返回 null，表示取不到有效值。
         :type RowsExamined: int
         :param _RowsSent: 返回行数
-注意：此字段可能返回 null，表示取不到有效值。
         :type RowsSent: int
         """
         self._Timestamp = None
@@ -16400,7 +16333,6 @@ class SlowLogInfoItem(AbstractModel):
     @property
     def UserName(self):
         """User来源
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UserName
@@ -16412,7 +16344,6 @@ class SlowLogInfoItem(AbstractModel):
     @property
     def UserHost(self):
         """IP来源
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UserHost
@@ -16435,7 +16366,6 @@ class SlowLogInfoItem(AbstractModel):
     @property
     def LockTime(self):
         """锁时间,单位秒
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._LockTime
@@ -16447,7 +16377,6 @@ class SlowLogInfoItem(AbstractModel):
     @property
     def RowsExamined(self):
         """扫描行数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RowsExamined
@@ -16459,7 +16388,6 @@ class SlowLogInfoItem(AbstractModel):
     @property
     def RowsSent(self):
         """返回行数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RowsSent
@@ -17020,16 +16948,12 @@ class StatisticDataInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 统计维度的值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _TimeAvg: 平均时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimeAvg: float
         :param _TimeSum: 总时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimeSum: float
         :param _Count: 数量。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Count: int
         """
         self._Name = None
@@ -17040,7 +16964,6 @@ class StatisticDataInfo(AbstractModel):
     @property
     def Name(self):
         """统计维度的值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -17052,7 +16975,6 @@ class StatisticDataInfo(AbstractModel):
     @property
     def TimeAvg(self):
         """平均时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._TimeAvg
@@ -17064,7 +16986,6 @@ class StatisticDataInfo(AbstractModel):
     @property
     def TimeSum(self):
         """总时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._TimeSum
@@ -17076,7 +16997,6 @@ class StatisticDataInfo(AbstractModel):
     @property
     def Count(self):
         """数量。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Count
@@ -17109,10 +17029,8 @@ class StatisticInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Dimension: 统计分析的维度。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Dimension: str
         :param _Data: 统计分析的维度下的统计数据详情。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of StatisticDataInfo
         """
         self._Dimension = None
@@ -17121,7 +17039,6 @@ class StatisticInfo(AbstractModel):
     @property
     def Dimension(self):
         """统计分析的维度。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Dimension
@@ -17133,7 +17050,6 @@ class StatisticInfo(AbstractModel):
     @property
     def Data(self):
         """统计分析的维度下的统计数据详情。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of StatisticDataInfo
         """
         return self._Data
@@ -18091,16 +18007,12 @@ class UserProfile(AbstractModel):
     def __init__(self):
         r"""
         :param _ProfileId: 配置的id。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProfileId: str
         :param _ProfileType: 配置类型，支持值包括："dbScan_mail_configuration" - 数据库巡检邮件配置，"scheduler_mail_configuration" - 定期生成邮件配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProfileType: str
         :param _ProfileLevel: 配置级别，支持值包括："User" - 用户级别，"Instance" - 实例级别，其中数据库巡检邮件配置为用户级别，定期生成邮件配置为实例级别。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProfileLevel: str
         :param _ProfileName: 配置名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProfileName: str
         :param _ProfileInfo: 配置详情。
         :type ProfileInfo: :class:`tencentcloud.dbbrain.v20210527.models.ProfileInfo`
@@ -18114,7 +18026,6 @@ class UserProfile(AbstractModel):
     @property
     def ProfileId(self):
         """配置的id。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProfileId
@@ -18126,7 +18037,6 @@ class UserProfile(AbstractModel):
     @property
     def ProfileType(self):
         """配置类型，支持值包括："dbScan_mail_configuration" - 数据库巡检邮件配置，"scheduler_mail_configuration" - 定期生成邮件配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProfileType
@@ -18138,7 +18048,6 @@ class UserProfile(AbstractModel):
     @property
     def ProfileLevel(self):
         """配置级别，支持值包括："User" - 用户级别，"Instance" - 实例级别，其中数据库巡检邮件配置为用户级别，定期生成邮件配置为实例级别。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProfileLevel
@@ -18150,7 +18059,6 @@ class UserProfile(AbstractModel):
     @property
     def ProfileName(self):
         """配置名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProfileName

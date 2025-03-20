@@ -3524,10 +3524,8 @@ class MachineSetScaling(AbstractModel):
     def __init__(self):
         r"""
         :param _MinReplicas: 节点池最小副本数
-注意：此字段可能返回 null，表示取不到有效值。
         :type MinReplicas: int
         :param _MaxReplicas: 节点池最大副本数
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxReplicas: int
         :param _CreatePolicy: 节点池扩容策略。ZoneEquality：多可用区打散；ZonePriority：首选可用区优先；
 注意：此字段可能返回 null，表示取不到有效值。
@@ -3540,7 +3538,6 @@ class MachineSetScaling(AbstractModel):
     @property
     def MinReplicas(self):
         """节点池最小副本数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MinReplicas
@@ -3552,7 +3549,6 @@ class MachineSetScaling(AbstractModel):
     @property
     def MaxReplicas(self):
         """节点池最大副本数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxReplicas
@@ -3596,16 +3592,13 @@ class MachineUpgradeSettings(AbstractModel):
     def __init__(self):
         r"""
         :param _AutoUpgrade: 是否开启自动升级
-注意：此字段可能返回 null，表示取不到有效值。
         :type AutoUpgrade: bool
         :param _UpgradeOptions: 运维窗口
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpgradeOptions: :class:`tencentcloud.tke.v20220501.models.AutoUpgradeOptions`
         :param _Components: 升级项
 注意：此字段可能返回 null，表示取不到有效值。
         :type Components: list of str
         :param _MaxUnavailable: 升级时，最大不可升级的节点数
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxUnavailable: :class:`tencentcloud.tke.v20220501.models.IntOrString`
         """
         self._AutoUpgrade = None
@@ -3616,7 +3609,6 @@ class MachineUpgradeSettings(AbstractModel):
     @property
     def AutoUpgrade(self):
         """是否开启自动升级
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._AutoUpgrade
@@ -3628,7 +3620,6 @@ class MachineUpgradeSettings(AbstractModel):
     @property
     def UpgradeOptions(self):
         """运维窗口
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20220501.models.AutoUpgradeOptions`
         """
         return self._UpgradeOptions
@@ -3652,7 +3643,6 @@ class MachineUpgradeSettings(AbstractModel):
     @property
     def MaxUnavailable(self):
         """升级时，最大不可升级的节点数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20220501.models.IntOrString`
         """
         return self._MaxUnavailable
@@ -4188,10 +4178,8 @@ class NativeNodeInfo(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityGroupIDs: list of str
         :param _VpcId: VPC 唯一 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
         :param _SubnetId: 子网唯一 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetId: str
         :param _OsImage: OS的名称
 注意：此字段可能返回 null，表示取不到有效值。
@@ -4445,7 +4433,6 @@ class NativeNodeInfo(AbstractModel):
     @property
     def VpcId(self):
         """VPC 唯一 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VpcId
@@ -4457,7 +4444,6 @@ class NativeNodeInfo(AbstractModel):
     @property
     def SubnetId(self):
         """子网唯一 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubnetId
@@ -4538,7 +4524,6 @@ class NativeNodePoolInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Scaling: 伸缩配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type Scaling: :class:`tencentcloud.tke.v20220501.models.MachineSetScaling`
         :param _SubnetIds: 子网列表
         :type SubnetIds: list of str
@@ -4546,7 +4531,6 @@ class NativeNodePoolInfo(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityGroupIds: list of str
         :param _UpgradeSettings: 自动升级配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpgradeSettings: :class:`tencentcloud.tke.v20220501.models.MachineUpgradeSettings`
         :param _AutoRepair: 是否开启自愈能力
 注意：此字段可能返回 null，表示取不到有效值。
@@ -4554,7 +4538,6 @@ class NativeNodePoolInfo(AbstractModel):
         :param _InstanceChargeType: 节点计费类型
         :type InstanceChargeType: str
         :param _InstanceChargePrepaid: 包年包月机型计费配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceChargePrepaid: :class:`tencentcloud.tke.v20220501.models.InstanceChargePrepaid`
         :param _SystemDisk: 系统盘配置
         :type SystemDisk: :class:`tencentcloud.tke.v20220501.models.Disk`
@@ -4562,7 +4545,6 @@ class NativeNodePoolInfo(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type KeyIds: list of str
         :param _Management: Machine 系统配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type Management: :class:`tencentcloud.tke.v20220501.models.ManagementConfig`
         :param _HealthCheckPolicyName: 故障自愈规则名称
 注意：此字段可能返回 null，表示取不到有效值。
@@ -4574,29 +4556,23 @@ class NativeNodePoolInfo(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type KubeletArgs: list of str
         :param _Lifecycle: 预定义脚本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Lifecycle: :class:`tencentcloud.tke.v20220501.models.LifecycleConfig`
         :param _RuntimeRootDir: 运行时根目录
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuntimeRootDir: str
         :param _EnableAutoscaling: 是否开启弹性伸缩
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnableAutoscaling: bool
         :param _InstanceTypes: 机型列表
         :type InstanceTypes: list of str
         :param _Replicas: 期望节点数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Replicas: int
         :param _ReadyReplicas: 就绪 Machine 个数
         :type ReadyReplicas: int
         :param _InternetAccessible: 公网带宽设置
-注意：此字段可能返回 null，表示取不到有效值。
         :type InternetAccessible: :class:`tencentcloud.tke.v20220501.models.InternetAccessible`
         :param _DataDisks: 原生节点池数据盘
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataDisks: list of DataDisk
         :param _MachineType: 原生节点机型 Native, NativeCVM
-注意：此字段可能返回 null，表示取不到有效值。
         :type MachineType: str
         """
         self._Scaling = None
@@ -4625,7 +4601,6 @@ class NativeNodePoolInfo(AbstractModel):
     @property
     def Scaling(self):
         """伸缩配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20220501.models.MachineSetScaling`
         """
         return self._Scaling
@@ -4660,7 +4635,6 @@ class NativeNodePoolInfo(AbstractModel):
     @property
     def UpgradeSettings(self):
         """自动升级配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20220501.models.MachineUpgradeSettings`
         """
         return self._UpgradeSettings
@@ -4695,7 +4669,6 @@ class NativeNodePoolInfo(AbstractModel):
     @property
     def InstanceChargePrepaid(self):
         """包年包月机型计费配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20220501.models.InstanceChargePrepaid`
         """
         return self._InstanceChargePrepaid
@@ -4730,7 +4703,6 @@ class NativeNodePoolInfo(AbstractModel):
     @property
     def Management(self):
         """Machine 系统配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20220501.models.ManagementConfig`
         """
         return self._Management
@@ -4778,7 +4750,6 @@ class NativeNodePoolInfo(AbstractModel):
     @property
     def Lifecycle(self):
         """预定义脚本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20220501.models.LifecycleConfig`
         """
         return self._Lifecycle
@@ -4790,7 +4761,6 @@ class NativeNodePoolInfo(AbstractModel):
     @property
     def RuntimeRootDir(self):
         """运行时根目录
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RuntimeRootDir
@@ -4802,7 +4772,6 @@ class NativeNodePoolInfo(AbstractModel):
     @property
     def EnableAutoscaling(self):
         """是否开启弹性伸缩
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._EnableAutoscaling
@@ -4825,7 +4794,6 @@ class NativeNodePoolInfo(AbstractModel):
     @property
     def Replicas(self):
         """期望节点数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Replicas
@@ -4848,7 +4816,6 @@ class NativeNodePoolInfo(AbstractModel):
     @property
     def InternetAccessible(self):
         """公网带宽设置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20220501.models.InternetAccessible`
         """
         return self._InternetAccessible
@@ -4872,7 +4839,6 @@ class NativeNodePoolInfo(AbstractModel):
     @property
     def MachineType(self):
         """原生节点机型 Native, NativeCVM
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MachineType

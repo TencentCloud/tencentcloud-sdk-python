@@ -2066,6 +2066,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSecurityPolicy(self, request):
+        """查询安全防护配置详情。
+
+        :param request: Request instance for DescribeSecurityPolicy.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityPolicyRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSecurityPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSecurityPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSecurityTemplateBindings(self, request):
         """查询指定策略模板的绑定关系列表。
 

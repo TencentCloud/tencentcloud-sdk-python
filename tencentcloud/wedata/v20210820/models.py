@@ -15957,6 +15957,9 @@ class DatabaseMeta(AbstractModel):
         :param _LastAccessTimeByTables: 库下表的最新访问时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastAccessTimeByTables: int
+        :param _DatabaseGuid: 库guid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseGuid: str
         """
         self._ProjectId = None
         self._MetastoreType = None
@@ -15985,6 +15988,7 @@ class DatabaseMeta(AbstractModel):
         self._ClusterName = None
         self._ModifiedTimeByTables = None
         self._LastAccessTimeByTables = None
+        self._DatabaseGuid = None
 
     @property
     def ProjectId(self):
@@ -16310,6 +16314,18 @@ class DatabaseMeta(AbstractModel):
     def LastAccessTimeByTables(self, LastAccessTimeByTables):
         self._LastAccessTimeByTables = LastAccessTimeByTables
 
+    @property
+    def DatabaseGuid(self):
+        """库guid
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatabaseGuid
+
+    @DatabaseGuid.setter
+    def DatabaseGuid(self, DatabaseGuid):
+        self._DatabaseGuid = DatabaseGuid
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -16344,6 +16360,7 @@ class DatabaseMeta(AbstractModel):
         self._ClusterName = params.get("ClusterName")
         self._ModifiedTimeByTables = params.get("ModifiedTimeByTables")
         self._LastAccessTimeByTables = params.get("LastAccessTimeByTables")
+        self._DatabaseGuid = params.get("DatabaseGuid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -45291,6 +45308,8 @@ class GenHiveTableDDLSqlRequest(AbstractModel):
         :type SinkSchemaName: str
         :param _Env: 获取源信息的环境
         :type Env: str
+        :param _WriteMode: doris写入模式配置
+        :type WriteMode: str
         """
         self._ProjectId = None
         self._SinkDatabase = None
@@ -45317,6 +45336,7 @@ class GenHiveTableDDLSqlRequest(AbstractModel):
         self._TableBaseInfo = None
         self._SinkSchemaName = None
         self._Env = None
+        self._WriteMode = None
 
     @property
     def ProjectId(self):
@@ -45593,6 +45613,17 @@ class GenHiveTableDDLSqlRequest(AbstractModel):
     def Env(self, Env):
         self._Env = Env
 
+    @property
+    def WriteMode(self):
+        """doris写入模式配置
+        :rtype: str
+        """
+        return self._WriteMode
+
+    @WriteMode.setter
+    def WriteMode(self, WriteMode):
+        self._WriteMode = WriteMode
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -45637,6 +45668,7 @@ class GenHiveTableDDLSqlRequest(AbstractModel):
             self._TableBaseInfo._deserialize(params.get("TableBaseInfo"))
         self._SinkSchemaName = params.get("SinkSchemaName")
         self._Env = params.get("Env")
+        self._WriteMode = params.get("WriteMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

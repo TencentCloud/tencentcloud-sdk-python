@@ -30,10 +30,8 @@ class Acl(AbstractModel):
         :param _ResourceName: 资源名称，和resourceType相关如当resourceType为TOPIC时，则该字段表示topic名称，当resourceType为GROUP时，该字段表示group名称
         :type ResourceName: str
         :param _Principal: 用户列表，默认为User:*，表示任何user都可以访问，当前用户只能是用户列表中包含的用户
-注意：此字段可能返回 null，表示取不到有效值。
         :type Principal: str
         :param _Host: 默认\*,表示任何host都可以访问，当前ckafka不支持host为\*，但是后面开源kafka的产品化会直接支持
-注意：此字段可能返回 null，表示取不到有效值。
         :type Host: str
         :param _Operation: Acl操作方式(0:UNKNOWN，1:ANY，2:ALL，3:READ，4:WRITE，5:CREATE，6:DELETE，7:ALTER，8:DESCRIBE，9:CLUSTER_ACTION，10:DESCRIBE_CONFIGS，11:ALTER_CONFIGS，12:IDEMPOTEN_WRITE)
         :type Operation: int
@@ -72,7 +70,6 @@ class Acl(AbstractModel):
     @property
     def Principal(self):
         """用户列表，默认为User:*，表示任何user都可以访问，当前用户只能是用户列表中包含的用户
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Principal
@@ -84,7 +81,6 @@ class Acl(AbstractModel):
     @property
     def Host(self):
         """默认\*,表示任何host都可以访问，当前ckafka不支持host为\*，但是后面开源kafka的产品化会直接支持
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Host
@@ -143,7 +139,6 @@ class AclResponse(AbstractModel):
         :param _TotalCount: 符合条件的总数据条数
         :type TotalCount: int
         :param _AclList: ACL列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type AclList: list of Acl
         """
         self._TotalCount = None
@@ -163,7 +158,6 @@ class AclResponse(AbstractModel):
     @property
     def AclList(self):
         """ACL列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Acl
         """
         return self._AclList
@@ -199,43 +193,30 @@ class AclRule(AbstractModel):
     def __init__(self):
         r"""
         :param _RuleName: ACL规则名
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleName: str
         :param _InstanceId: ckafka集群实例Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _PatternType: ACL规则匹配类型，目前只支持前缀匹配，枚举值列表：PREFIXED
-注意：此字段可能返回 null，表示取不到有效值。
         :type PatternType: str
         :param _Pattern: 表示前缀匹配的前缀的值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Pattern: str
         :param _ResourceType: Acl资源类型,目前只支持Topic,枚举值列表：Topic
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceType: str
         :param _AclList: 该规则所包含的ACL信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type AclList: str
         :param _CreateTimeStamp: 规则所创建的时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTimeStamp: str
         :param _IsApplied: 预设ACL规则是否应用到新增的topic中
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsApplied: int
         :param _UpdateTimeStamp: 规则更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTimeStamp: str
         :param _Comment: 规则的备注
-注意：此字段可能返回 null，表示取不到有效值。
         :type Comment: str
         :param _TopicName: 其中一个显示的对应的TopicName
-注意：此字段可能返回 null，表示取不到有效值。
         :type TopicName: str
         :param _TopicCount: 应用该ACL规则的Topic数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TopicCount: int
         :param _PatternTypeTitle: patternType的中文显示
-注意：此字段可能返回 null，表示取不到有效值。
         :type PatternTypeTitle: str
         """
         self._RuleName = None
@@ -255,7 +236,6 @@ class AclRule(AbstractModel):
     @property
     def RuleName(self):
         """ACL规则名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RuleName
@@ -267,7 +247,6 @@ class AclRule(AbstractModel):
     @property
     def InstanceId(self):
         """ckafka集群实例Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -279,7 +258,6 @@ class AclRule(AbstractModel):
     @property
     def PatternType(self):
         """ACL规则匹配类型，目前只支持前缀匹配，枚举值列表：PREFIXED
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PatternType
@@ -291,7 +269,6 @@ class AclRule(AbstractModel):
     @property
     def Pattern(self):
         """表示前缀匹配的前缀的值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Pattern
@@ -303,7 +280,6 @@ class AclRule(AbstractModel):
     @property
     def ResourceType(self):
         """Acl资源类型,目前只支持Topic,枚举值列表：Topic
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceType
@@ -315,7 +291,6 @@ class AclRule(AbstractModel):
     @property
     def AclList(self):
         """该规则所包含的ACL信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AclList
@@ -327,7 +302,6 @@ class AclRule(AbstractModel):
     @property
     def CreateTimeStamp(self):
         """规则所创建的时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTimeStamp
@@ -339,7 +313,6 @@ class AclRule(AbstractModel):
     @property
     def IsApplied(self):
         """预设ACL规则是否应用到新增的topic中
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IsApplied
@@ -351,7 +324,6 @@ class AclRule(AbstractModel):
     @property
     def UpdateTimeStamp(self):
         """规则更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTimeStamp
@@ -363,7 +335,6 @@ class AclRule(AbstractModel):
     @property
     def Comment(self):
         """规则的备注
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Comment
@@ -375,7 +346,6 @@ class AclRule(AbstractModel):
     @property
     def TopicName(self):
         """其中一个显示的对应的TopicName
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TopicName
@@ -387,7 +357,6 @@ class AclRule(AbstractModel):
     @property
     def TopicCount(self):
         """应用该ACL规则的Topic数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TopicCount
@@ -399,7 +368,6 @@ class AclRule(AbstractModel):
     @property
     def PatternTypeTitle(self):
         """patternType的中文显示
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PatternTypeTitle
@@ -524,7 +492,6 @@ class AclRuleResp(AbstractModel):
         :param _TotalCount: 总数据条数
         :type TotalCount: int
         :param _AclRuleList: AclRule列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type AclRuleList: list of AclRule
         """
         self._TotalCount = None
@@ -544,7 +511,6 @@ class AclRuleResp(AbstractModel):
     @property
     def AclRuleList(self):
         """AclRule列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AclRule
         """
         return self._AclRuleList
@@ -582,13 +548,10 @@ class AnalyseParam(AbstractModel):
         :param _Format: 解析格式，JSON，DELIMITER分隔符，REGULAR正则提取，SOURCE处理上层所有结果
         :type Format: str
         :param _Regex: 分隔符、正则表达式
-注意：此字段可能返回 null，表示取不到有效值。
         :type Regex: str
         :param _InputValueType: 需再次处理的KEY——模式
-注意：此字段可能返回 null，表示取不到有效值。
         :type InputValueType: str
         :param _InputValue: 需再次处理的KEY——KEY表达式
-注意：此字段可能返回 null，表示取不到有效值。
         :type InputValue: str
         """
         self._Format = None
@@ -610,7 +573,6 @@ class AnalyseParam(AbstractModel):
     @property
     def Regex(self):
         """分隔符、正则表达式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Regex
@@ -622,7 +584,6 @@ class AnalyseParam(AbstractModel):
     @property
     def InputValueType(self):
         """需再次处理的KEY——模式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InputValueType
@@ -634,7 +595,6 @@ class AnalyseParam(AbstractModel):
     @property
     def InputValue(self):
         """需再次处理的KEY——KEY表达式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InputValue
@@ -669,7 +629,6 @@ class AppIdResponse(AbstractModel):
         :param _TotalCount: 符合要求的所有AppId数量
         :type TotalCount: int
         :param _AppIdList: 符合要求的App Id列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppIdList: list of int
         """
         self._TotalCount = None
@@ -689,7 +648,6 @@ class AppIdResponse(AbstractModel):
     @property
     def AppIdList(self):
         """符合要求的App Id列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._AppIdList
@@ -722,7 +680,6 @@ class Assignment(AbstractModel):
         :param _Version: assingment版本信息
         :type Version: int
         :param _Topics: topic信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Topics: list of GroupInfoTopics
         """
         self._Version = None
@@ -742,7 +699,6 @@ class Assignment(AbstractModel):
     @property
     def Topics(self):
         """topic信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of GroupInfoTopics
         """
         return self._Topics
@@ -889,7 +845,6 @@ class BatchAnalyseParam(AbstractModel):
     def __init__(self):
         r"""
         :param _Format: ONE_BY_ONE单条输出，MERGE合并输出
-注意：此字段可能返回 null，表示取不到有效值。
         :type Format: str
         """
         self._Format = None
@@ -897,7 +852,6 @@ class BatchAnalyseParam(AbstractModel):
     @property
     def Format(self):
         """ONE_BY_ONE单条输出，MERGE合并输出
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Format
@@ -1543,13 +1497,10 @@ class BatchModifyTopicResultDTO(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceId: ckafka集群实例Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _TopicName: 主题名
-注意：此字段可能返回 null，表示取不到有效值。
         :type TopicName: str
         :param _ReturnCode: 操作返回码
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReturnCode: str
         :param _Message: 操作返回信息
         :type Message: str
@@ -1562,7 +1513,6 @@ class BatchModifyTopicResultDTO(AbstractModel):
     @property
     def InstanceId(self):
         """ckafka集群实例Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -1574,7 +1524,6 @@ class BatchModifyTopicResultDTO(AbstractModel):
     @property
     def TopicName(self):
         """主题名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TopicName
@@ -1586,7 +1535,6 @@ class BatchModifyTopicResultDTO(AbstractModel):
     @property
     def ReturnCode(self):
         """操作返回码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ReturnCode
@@ -1630,13 +1578,10 @@ class BrokerTopicData(AbstractModel):
     def __init__(self):
         r"""
         :param _TopicName: 主题名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TopicName: str
         :param _TopicId: 主题Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type TopicId: str
         :param _DataSize: 主题占用Broker 容量大小
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataSize: int
         """
         self._TopicName = None
@@ -1646,7 +1591,6 @@ class BrokerTopicData(AbstractModel):
     @property
     def TopicName(self):
         """主题名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TopicName
@@ -1658,7 +1602,6 @@ class BrokerTopicData(AbstractModel):
     @property
     def TopicId(self):
         """主题Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TopicId
@@ -1670,7 +1613,6 @@ class BrokerTopicData(AbstractModel):
     @property
     def DataSize(self):
         """主题占用Broker 容量大小
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DataSize
@@ -1702,13 +1644,10 @@ class BrokerTopicFlowData(AbstractModel):
     def __init__(self):
         r"""
         :param _TopicName: 主题名
-注意：此字段可能返回 null，表示取不到有效值。
         :type TopicName: str
         :param _TopicId: 主题Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type TopicId: str
         :param _TopicTraffic: Topic 流量(MB)
-注意：此字段可能返回 null，表示取不到有效值。
         :type TopicTraffic: str
         """
         self._TopicName = None
@@ -1718,7 +1657,6 @@ class BrokerTopicFlowData(AbstractModel):
     @property
     def TopicName(self):
         """主题名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TopicName
@@ -1730,7 +1668,6 @@ class BrokerTopicFlowData(AbstractModel):
     @property
     def TopicId(self):
         """主题Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TopicId
@@ -1742,7 +1679,6 @@ class BrokerTopicFlowData(AbstractModel):
     @property
     def TopicTraffic(self):
         """Topic 流量(MB)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TopicTraffic
@@ -1885,7 +1821,6 @@ class CdcClusterResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TaskId: 任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: int
         """
         self._TaskId = None
@@ -1893,7 +1828,6 @@ class CdcClusterResponse(AbstractModel):
     @property
     def TaskId(self):
         """任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TaskId
@@ -2004,28 +1938,20 @@ class ClickHouseConnectParam(AbstractModel):
     def __init__(self):
         r"""
         :param _Port: ClickHouse的连接port
-注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
         :param _UserName: ClickHouse连接源的用户名
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserName: str
         :param _Password: ClickHouse连接源的密码
-注意：此字段可能返回 null，表示取不到有效值。
         :type Password: str
         :param _Resource: ClickHouse连接源的实例资源
-注意：此字段可能返回 null，表示取不到有效值。
         :type Resource: str
         :param _SelfBuilt: ClickHouse连接源是否为自建集群
-注意：此字段可能返回 null，表示取不到有效值。
         :type SelfBuilt: bool
         :param _ServiceVip: ClickHouse连接源的实例vip，当为腾讯云实例时，必填
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceVip: str
         :param _UniqVpcId: ClickHouse连接源的vpcId，当为腾讯云实例时，必填
-注意：此字段可能返回 null，表示取不到有效值。
         :type UniqVpcId: str
         :param _IsUpdate: 是否更新到关联的Datahub任务
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsUpdate: bool
         """
         self._Port = None
@@ -2040,7 +1966,6 @@ class ClickHouseConnectParam(AbstractModel):
     @property
     def Port(self):
         """ClickHouse的连接port
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Port
@@ -2052,7 +1977,6 @@ class ClickHouseConnectParam(AbstractModel):
     @property
     def UserName(self):
         """ClickHouse连接源的用户名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UserName
@@ -2064,7 +1988,6 @@ class ClickHouseConnectParam(AbstractModel):
     @property
     def Password(self):
         """ClickHouse连接源的密码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Password
@@ -2076,7 +1999,6 @@ class ClickHouseConnectParam(AbstractModel):
     @property
     def Resource(self):
         """ClickHouse连接源的实例资源
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Resource
@@ -2088,7 +2010,6 @@ class ClickHouseConnectParam(AbstractModel):
     @property
     def SelfBuilt(self):
         """ClickHouse连接源是否为自建集群
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._SelfBuilt
@@ -2100,7 +2021,6 @@ class ClickHouseConnectParam(AbstractModel):
     @property
     def ServiceVip(self):
         """ClickHouse连接源的实例vip，当为腾讯云实例时，必填
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ServiceVip
@@ -2112,7 +2032,6 @@ class ClickHouseConnectParam(AbstractModel):
     @property
     def UniqVpcId(self):
         """ClickHouse连接源的vpcId，当为腾讯云实例时，必填
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UniqVpcId
@@ -2124,7 +2043,6 @@ class ClickHouseConnectParam(AbstractModel):
     @property
     def IsUpdate(self):
         """是否更新到关联的Datahub任务
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsUpdate
@@ -2161,28 +2079,20 @@ class ClickHouseModifyConnectParam(AbstractModel):
     def __init__(self):
         r"""
         :param _Resource: ClickHouse连接源的实例资源【不支持修改】
-注意：此字段可能返回 null，表示取不到有效值。
         :type Resource: str
         :param _Port: ClickHouse的连接port【不支持修改】
-注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
         :param _ServiceVip: ClickHouse连接源的实例vip【不支持修改】
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceVip: str
         :param _UniqVpcId: ClickHouse连接源的vpcId【不支持修改】
-注意：此字段可能返回 null，表示取不到有效值。
         :type UniqVpcId: str
         :param _UserName: ClickHouse连接源的用户名
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserName: str
         :param _Password: ClickHouse连接源的密码
-注意：此字段可能返回 null，表示取不到有效值。
         :type Password: str
         :param _SelfBuilt: ClickHouse连接源是否为自建集群【不支持修改】
-注意：此字段可能返回 null，表示取不到有效值。
         :type SelfBuilt: bool
         :param _IsUpdate: 是否更新到关联的Datahub任务，默认为true
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsUpdate: bool
         """
         self._Resource = None
@@ -2197,7 +2107,6 @@ class ClickHouseModifyConnectParam(AbstractModel):
     @property
     def Resource(self):
         """ClickHouse连接源的实例资源【不支持修改】
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Resource
@@ -2209,7 +2118,6 @@ class ClickHouseModifyConnectParam(AbstractModel):
     @property
     def Port(self):
         """ClickHouse的连接port【不支持修改】
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Port
@@ -2221,7 +2129,6 @@ class ClickHouseModifyConnectParam(AbstractModel):
     @property
     def ServiceVip(self):
         """ClickHouse连接源的实例vip【不支持修改】
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ServiceVip
@@ -2233,7 +2140,6 @@ class ClickHouseModifyConnectParam(AbstractModel):
     @property
     def UniqVpcId(self):
         """ClickHouse连接源的vpcId【不支持修改】
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UniqVpcId
@@ -2245,7 +2151,6 @@ class ClickHouseModifyConnectParam(AbstractModel):
     @property
     def UserName(self):
         """ClickHouse连接源的用户名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UserName
@@ -2257,7 +2162,6 @@ class ClickHouseModifyConnectParam(AbstractModel):
     @property
     def Password(self):
         """ClickHouse连接源的密码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Password
@@ -2269,7 +2173,6 @@ class ClickHouseModifyConnectParam(AbstractModel):
     @property
     def SelfBuilt(self):
         """ClickHouse连接源是否为自建集群【不支持修改】
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._SelfBuilt
@@ -2281,7 +2184,6 @@ class ClickHouseModifyConnectParam(AbstractModel):
     @property
     def IsUpdate(self):
         """是否更新到关联的Datahub任务，默认为true
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsUpdate
@@ -2318,61 +2220,43 @@ class ClickHouseParam(AbstractModel):
     def __init__(self):
         r"""
         :param _Cluster: ClickHouse的集群
-注意：此字段可能返回 null，表示取不到有效值。
         :type Cluster: str
         :param _Database: ClickHouse的数据库名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Database: str
         :param _Table: ClickHouse的数据表名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Table: str
         :param _Schema: ClickHouse的schema
-注意：此字段可能返回 null，表示取不到有效值。
         :type Schema: list of ClickHouseSchema
         :param _Resource: 实例资源
-注意：此字段可能返回 null，表示取不到有效值。
         :type Resource: str
         :param _Ip: ClickHouse的连接ip
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ip: str
         :param _Port: ClickHouse的连接port
-注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
         :param _UserName: ClickHouse的用户名
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserName: str
         :param _Password: ClickHouse的密码
-注意：此字段可能返回 null，表示取不到有效值。
         :type Password: str
         :param _ServiceVip: 实例vip
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceVip: str
         :param _UniqVpcId: 实例的vpcId
-注意：此字段可能返回 null，表示取不到有效值。
         :type UniqVpcId: str
         :param _SelfBuilt: 是否为自建集群
-注意：此字段可能返回 null，表示取不到有效值。
         :type SelfBuilt: bool
         :param _DropInvalidMessage: ClickHouse是否抛弃解析失败的消息，默认为true
-注意：此字段可能返回 null，表示取不到有效值。
         :type DropInvalidMessage: bool
         :param _Type: ClickHouse 类型，emr-clickhouse : "emr";cdw-clickhouse : "cdwch";自建 : ""
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _DropCls: 当设置成员参数DropInvalidMessageToCls设置为true时,DropInvalidMessage参数失效
-注意：此字段可能返回 null，表示取不到有效值。
         :type DropCls: :class:`tencentcloud.ckafka.v20190819.models.DropCls`
         :param _BatchSize: 每批次投递到 ClickHouse 表消息数量，默认为 1000 条。
 提高该参数值，有利于减少往  ClickHouse 投递的次数，但在错误消息过多及网络不稳定等极端情况下时，可能导致频繁重试影响效率。
-注意：此字段可能返回 null，表示取不到有效值。
         :type BatchSize: int
         :param _ConsumerFetchMinBytes: 每次从 topic 中拉取消息大小，默认为 1MB，即至少要从 topic 中批量拉取 1MB 消息，才进行数据投递到 ClickHouse 操作。
 提高该参数值，有利于减少往  ClickHouse 投递的次数，但在错误消息过多及网络不稳定等极端情况下时，可能导致频繁重试影响效率。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ConsumerFetchMinBytes: int
         :param _ConsumerFetchMaxWaitMs: 每次从 topic 拉取消息最大等待时间，当超过当前最大等待时间时，即使没有拉取到 ConsumerFetchMinBytes 大小，也将进行 ClickHouse 投递操作。
 提高该参数值，有利于减少往  ClickHouse 投递的次数，但在错误消息过多及网络不稳定等极端情况下时，可能导致频繁重试影响效率。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ConsumerFetchMaxWaitMs: int
         """
         self._Cluster = None
@@ -2397,7 +2281,6 @@ class ClickHouseParam(AbstractModel):
     @property
     def Cluster(self):
         """ClickHouse的集群
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Cluster
@@ -2409,7 +2292,6 @@ class ClickHouseParam(AbstractModel):
     @property
     def Database(self):
         """ClickHouse的数据库名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Database
@@ -2421,7 +2303,6 @@ class ClickHouseParam(AbstractModel):
     @property
     def Table(self):
         """ClickHouse的数据表名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Table
@@ -2433,7 +2314,6 @@ class ClickHouseParam(AbstractModel):
     @property
     def Schema(self):
         """ClickHouse的schema
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ClickHouseSchema
         """
         return self._Schema
@@ -2445,7 +2325,6 @@ class ClickHouseParam(AbstractModel):
     @property
     def Resource(self):
         """实例资源
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Resource
@@ -2457,7 +2336,6 @@ class ClickHouseParam(AbstractModel):
     @property
     def Ip(self):
         """ClickHouse的连接ip
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Ip
@@ -2469,7 +2347,6 @@ class ClickHouseParam(AbstractModel):
     @property
     def Port(self):
         """ClickHouse的连接port
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Port
@@ -2481,7 +2358,6 @@ class ClickHouseParam(AbstractModel):
     @property
     def UserName(self):
         """ClickHouse的用户名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UserName
@@ -2493,7 +2369,6 @@ class ClickHouseParam(AbstractModel):
     @property
     def Password(self):
         """ClickHouse的密码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Password
@@ -2505,7 +2380,6 @@ class ClickHouseParam(AbstractModel):
     @property
     def ServiceVip(self):
         """实例vip
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ServiceVip
@@ -2517,7 +2391,6 @@ class ClickHouseParam(AbstractModel):
     @property
     def UniqVpcId(self):
         """实例的vpcId
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UniqVpcId
@@ -2529,7 +2402,6 @@ class ClickHouseParam(AbstractModel):
     @property
     def SelfBuilt(self):
         """是否为自建集群
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._SelfBuilt
@@ -2541,7 +2413,6 @@ class ClickHouseParam(AbstractModel):
     @property
     def DropInvalidMessage(self):
         """ClickHouse是否抛弃解析失败的消息，默认为true
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._DropInvalidMessage
@@ -2553,7 +2424,6 @@ class ClickHouseParam(AbstractModel):
     @property
     def Type(self):
         """ClickHouse 类型，emr-clickhouse : "emr";cdw-clickhouse : "cdwch";自建 : ""
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -2565,7 +2435,6 @@ class ClickHouseParam(AbstractModel):
     @property
     def DropCls(self):
         """当设置成员参数DropInvalidMessageToCls设置为true时,DropInvalidMessage参数失效
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.DropCls`
         """
         return self._DropCls
@@ -2578,7 +2447,6 @@ class ClickHouseParam(AbstractModel):
     def BatchSize(self):
         """每批次投递到 ClickHouse 表消息数量，默认为 1000 条。
 提高该参数值，有利于减少往  ClickHouse 投递的次数，但在错误消息过多及网络不稳定等极端情况下时，可能导致频繁重试影响效率。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._BatchSize
@@ -2591,7 +2459,6 @@ class ClickHouseParam(AbstractModel):
     def ConsumerFetchMinBytes(self):
         """每次从 topic 中拉取消息大小，默认为 1MB，即至少要从 topic 中批量拉取 1MB 消息，才进行数据投递到 ClickHouse 操作。
 提高该参数值，有利于减少往  ClickHouse 投递的次数，但在错误消息过多及网络不稳定等极端情况下时，可能导致频繁重试影响效率。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ConsumerFetchMinBytes
@@ -2604,7 +2471,6 @@ class ClickHouseParam(AbstractModel):
     def ConsumerFetchMaxWaitMs(self):
         """每次从 topic 拉取消息最大等待时间，当超过当前最大等待时间时，即使没有拉取到 ConsumerFetchMinBytes 大小，也将进行 ClickHouse 投递操作。
 提高该参数值，有利于减少往  ClickHouse 投递的次数，但在错误消息过多及网络不稳定等极端情况下时，可能导致频繁重试影响效率。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ConsumerFetchMaxWaitMs
@@ -2658,16 +2524,12 @@ class ClickHouseSchema(AbstractModel):
     def __init__(self):
         r"""
         :param _ColumnName: 表的列名
-注意：此字段可能返回 null，表示取不到有效值。
         :type ColumnName: str
         :param _JsonKey: 该列对应的jsonKey名
-注意：此字段可能返回 null，表示取不到有效值。
         :type JsonKey: str
         :param _Type: 表列项的类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _AllowNull: 列项是否允许为空
-注意：此字段可能返回 null，表示取不到有效值。
         :type AllowNull: bool
         """
         self._ColumnName = None
@@ -2678,7 +2540,6 @@ class ClickHouseSchema(AbstractModel):
     @property
     def ColumnName(self):
         """表的列名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ColumnName
@@ -2690,7 +2551,6 @@ class ClickHouseSchema(AbstractModel):
     @property
     def JsonKey(self):
         """该列对应的jsonKey名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._JsonKey
@@ -2702,7 +2562,6 @@ class ClickHouseSchema(AbstractModel):
     @property
     def Type(self):
         """表列项的类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -2714,7 +2573,6 @@ class ClickHouseSchema(AbstractModel):
     @property
     def AllowNull(self):
         """列项是否允许为空
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._AllowNull
@@ -2747,20 +2605,15 @@ class ClsParam(AbstractModel):
     def __init__(self):
         r"""
         :param _DecodeJson: 生产的信息是否为json格式
-注意：此字段可能返回 null，表示取不到有效值。
         :type DecodeJson: bool
         :param _Resource: cls日志主题id
-注意：此字段可能返回 null，表示取不到有效值。
         :type Resource: str
         :param _LogSet: cls日志集id
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogSet: str
         :param _ContentKey: 当DecodeJson为false时必填
-注意：此字段可能返回 null，表示取不到有效值。
         :type ContentKey: str
         :param _TimeField: 指定消息中的某字段内容作为cls日志的时间。
 字段内容格式需要是秒级时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimeField: str
         """
         self._DecodeJson = None
@@ -2772,7 +2625,6 @@ class ClsParam(AbstractModel):
     @property
     def DecodeJson(self):
         """生产的信息是否为json格式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._DecodeJson
@@ -2784,7 +2636,6 @@ class ClsParam(AbstractModel):
     @property
     def Resource(self):
         """cls日志主题id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Resource
@@ -2796,7 +2647,6 @@ class ClsParam(AbstractModel):
     @property
     def LogSet(self):
         """cls日志集id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LogSet
@@ -2808,7 +2658,6 @@ class ClsParam(AbstractModel):
     @property
     def ContentKey(self):
         """当DecodeJson为false时必填
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ContentKey
@@ -2821,7 +2670,6 @@ class ClsParam(AbstractModel):
     def TimeField(self):
         """指定消息中的某字段内容作为cls日志的时间。
 字段内容格式需要是秒级时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TimeField
@@ -2859,22 +2707,16 @@ class ClusterInfo(AbstractModel):
         :param _ClusterName: 集群名称
         :type ClusterName: str
         :param _MaxDiskSize: 集群最大磁盘 单位GB
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxDiskSize: int
         :param _MaxBandWidth: 集群最大带宽 单位MB/s
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxBandWidth: int
         :param _AvailableDiskSize: 集群当前可用磁盘  单位GB
-注意：此字段可能返回 null，表示取不到有效值。
         :type AvailableDiskSize: int
         :param _AvailableBandWidth: 集群当前可用带宽 单位MB/s
-注意：此字段可能返回 null，表示取不到有效值。
         :type AvailableBandWidth: int
         :param _ZoneId: 集群所属可用区，表明集群归属的可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneId: int
         :param _ZoneIds: 集群节点所在的可用区，若该集群为跨可用区集群，则包含该集群节点所在的多个可用区。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneIds: list of int
         """
         self._ClusterId = None
@@ -2911,7 +2753,6 @@ class ClusterInfo(AbstractModel):
     @property
     def MaxDiskSize(self):
         """集群最大磁盘 单位GB
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxDiskSize
@@ -2923,7 +2764,6 @@ class ClusterInfo(AbstractModel):
     @property
     def MaxBandWidth(self):
         """集群最大带宽 单位MB/s
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxBandWidth
@@ -2935,7 +2775,6 @@ class ClusterInfo(AbstractModel):
     @property
     def AvailableDiskSize(self):
         """集群当前可用磁盘  单位GB
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AvailableDiskSize
@@ -2947,7 +2786,6 @@ class ClusterInfo(AbstractModel):
     @property
     def AvailableBandWidth(self):
         """集群当前可用带宽 单位MB/s
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AvailableBandWidth
@@ -2959,7 +2797,6 @@ class ClusterInfo(AbstractModel):
     @property
     def ZoneId(self):
         """集群所属可用区，表明集群归属的可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ZoneId
@@ -2971,7 +2808,6 @@ class ClusterInfo(AbstractModel):
     @property
     def ZoneIds(self):
         """集群节点所在的可用区，若该集群为跨可用区集群，则包含该集群节点所在的多个可用区。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._ZoneIds
@@ -3008,32 +2844,23 @@ class Config(AbstractModel):
     def __init__(self):
         r"""
         :param _Retention: 消息保留时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type Retention: int
         :param _MinInsyncReplicas: 最小同步复制数
-注意：此字段可能返回 null，表示取不到有效值。
         :type MinInsyncReplicas: int
         :param _CleanUpPolicy: 日志清理模式，默认 delete。
 delete：日志按保存时间删除；compact：日志按 key 压缩；compact, delete：日志按 key 压缩且会保存时间删除。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CleanUpPolicy: str
         :param _SegmentMs: Segment 分片滚动的时长
-注意：此字段可能返回 null，表示取不到有效值。
         :type SegmentMs: int
         :param _UncleanLeaderElectionEnable: 0表示 false。 1表示 true。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UncleanLeaderElectionEnable: int
         :param _SegmentBytes: Segment 分片滚动的字节数
-注意：此字段可能返回 null，表示取不到有效值。
         :type SegmentBytes: int
         :param _MaxMessageBytes: 最大消息字节数
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxMessageBytes: int
         :param _RetentionBytes: 消息保留文件大小
-注意：此字段可能返回 null，表示取不到有效值。
         :type RetentionBytes: int
         :param _LogMsgTimestampType: 消息保存的时间类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogMsgTimestampType: str
         """
         self._Retention = None
@@ -3049,7 +2876,6 @@ delete：日志按保存时间删除；compact：日志按 key 压缩；compact,
     @property
     def Retention(self):
         """消息保留时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Retention
@@ -3061,7 +2887,6 @@ delete：日志按保存时间删除；compact：日志按 key 压缩；compact,
     @property
     def MinInsyncReplicas(self):
         """最小同步复制数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MinInsyncReplicas
@@ -3074,7 +2899,6 @@ delete：日志按保存时间删除；compact：日志按 key 压缩；compact,
     def CleanUpPolicy(self):
         """日志清理模式，默认 delete。
 delete：日志按保存时间删除；compact：日志按 key 压缩；compact, delete：日志按 key 压缩且会保存时间删除。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CleanUpPolicy
@@ -3086,7 +2910,6 @@ delete：日志按保存时间删除；compact：日志按 key 压缩；compact,
     @property
     def SegmentMs(self):
         """Segment 分片滚动的时长
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SegmentMs
@@ -3098,7 +2921,6 @@ delete：日志按保存时间删除；compact：日志按 key 压缩；compact,
     @property
     def UncleanLeaderElectionEnable(self):
         """0表示 false。 1表示 true。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._UncleanLeaderElectionEnable
@@ -3110,7 +2932,6 @@ delete：日志按保存时间删除；compact：日志按 key 压缩；compact,
     @property
     def SegmentBytes(self):
         """Segment 分片滚动的字节数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SegmentBytes
@@ -3122,7 +2943,6 @@ delete：日志按保存时间删除；compact：日志按 key 压缩；compact,
     @property
     def MaxMessageBytes(self):
         """最大消息字节数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxMessageBytes
@@ -3134,7 +2954,6 @@ delete：日志按保存时间删除；compact：日志按 key 压缩；compact,
     @property
     def RetentionBytes(self):
         """消息保留文件大小
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RetentionBytes
@@ -3146,7 +2965,6 @@ delete：日志按保存时间删除；compact：日志按 key 压缩；compact,
     @property
     def LogMsgTimestampType(self):
         """消息保存的时间类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LogMsgTimestampType
@@ -3184,7 +3002,6 @@ class ConnectResourceResourceIdResp(AbstractModel):
     def __init__(self):
         r"""
         :param _ResourceId: 连接源的Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceId: str
         """
         self._ResourceId = None
@@ -3192,7 +3009,6 @@ class ConnectResourceResourceIdResp(AbstractModel):
     @property
     def ResourceId(self):
         """连接源的Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceId
@@ -3346,25 +3162,18 @@ class ConsumerGroupResponse(AbstractModel):
         :param _TotalCount: 符合条件的消费组数量
         :type TotalCount: int
         :param _TopicList: 主题列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type TopicList: list of ConsumerGroupTopic
         :param _GroupList: 消费分组List
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupList: list of ConsumerGroup
         :param _TotalPartition: 所有分区数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalPartition: int
         :param _PartitionListForMonitor: 监控的分区列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type PartitionListForMonitor: list of Partition
         :param _TotalTopic: 主题总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalTopic: int
         :param _TopicListForMonitor: 监控的主题列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type TopicListForMonitor: list of ConsumerGroupTopic
         :param _GroupListForMonitor: 监控的组列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupListForMonitor: list of Group
         """
         self._TotalCount = None
@@ -3390,7 +3199,6 @@ class ConsumerGroupResponse(AbstractModel):
     @property
     def TopicList(self):
         """主题列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ConsumerGroupTopic
         """
         return self._TopicList
@@ -3402,7 +3210,6 @@ class ConsumerGroupResponse(AbstractModel):
     @property
     def GroupList(self):
         """消费分组List
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ConsumerGroup
         """
         return self._GroupList
@@ -3414,7 +3221,6 @@ class ConsumerGroupResponse(AbstractModel):
     @property
     def TotalPartition(self):
         """所有分区数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalPartition
@@ -3426,7 +3232,6 @@ class ConsumerGroupResponse(AbstractModel):
     @property
     def PartitionListForMonitor(self):
         """监控的分区列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Partition
         """
         return self._PartitionListForMonitor
@@ -3438,7 +3243,6 @@ class ConsumerGroupResponse(AbstractModel):
     @property
     def TotalTopic(self):
         """主题总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalTopic
@@ -3450,7 +3254,6 @@ class ConsumerGroupResponse(AbstractModel):
     @property
     def TopicListForMonitor(self):
         """监控的主题列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ConsumerGroupTopic
         """
         return self._TopicListForMonitor
@@ -3462,7 +3265,6 @@ class ConsumerGroupResponse(AbstractModel):
     @property
     def GroupListForMonitor(self):
         """监控的组列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Group
         """
         return self._GroupListForMonitor
@@ -3632,16 +3434,12 @@ class ConsumerRecord(AbstractModel):
         :param _Offset: 位点
         :type Offset: int
         :param _Key: 消息key
-注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
         :param _Value: 消息value
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         :param _Timestamp: 消息时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type Timestamp: int
         :param _Headers: 消息headers
-注意：此字段可能返回 null，表示取不到有效值。
         :type Headers: str
         """
         self._Topic = None
@@ -3688,7 +3486,6 @@ class ConsumerRecord(AbstractModel):
     @property
     def Key(self):
         """消息key
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Key
@@ -3700,7 +3497,6 @@ class ConsumerRecord(AbstractModel):
     @property
     def Value(self):
         """消息value
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -3712,7 +3508,6 @@ class ConsumerRecord(AbstractModel):
     @property
     def Timestamp(self):
         """消息时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Timestamp
@@ -3724,7 +3519,6 @@ class ConsumerRecord(AbstractModel):
     @property
     def Headers(self):
         """消息headers
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Headers
@@ -3760,28 +3554,20 @@ class CosParam(AbstractModel):
     def __init__(self):
         r"""
         :param _BucketName: cos 存储桶名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type BucketName: str
         :param _Region: 地域代码
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         :param _ObjectKey: 对象名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ObjectKey: str
         :param _AggregateBatchSize: 汇聚消息量的大小（单位：MB)
-注意：此字段可能返回 null，表示取不到有效值。
         :type AggregateBatchSize: int
         :param _AggregateInterval: 汇聚的时间间隔（单位：小时）
-注意：此字段可能返回 null，表示取不到有效值。
         :type AggregateInterval: int
         :param _FormatOutputType: 消息汇聚后的文件格式（支持csv, json）
-注意：此字段可能返回 null，表示取不到有效值。
         :type FormatOutputType: str
         :param _ObjectKeyPrefix: 转储的对象目录前缀
-注意：此字段可能返回 null，表示取不到有效值。
         :type ObjectKeyPrefix: str
         :param _DirectoryTimeFormat: 根据strptime 时间格式化的分区格式
-注意：此字段可能返回 null，表示取不到有效值。
         :type DirectoryTimeFormat: str
         """
         self._BucketName = None
@@ -3796,7 +3582,6 @@ class CosParam(AbstractModel):
     @property
     def BucketName(self):
         """cos 存储桶名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BucketName
@@ -3808,7 +3593,6 @@ class CosParam(AbstractModel):
     @property
     def Region(self):
         """地域代码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Region
@@ -3820,7 +3604,6 @@ class CosParam(AbstractModel):
     @property
     def ObjectKey(self):
         """对象名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ObjectKey
@@ -3832,7 +3615,6 @@ class CosParam(AbstractModel):
     @property
     def AggregateBatchSize(self):
         """汇聚消息量的大小（单位：MB)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AggregateBatchSize
@@ -3844,7 +3626,6 @@ class CosParam(AbstractModel):
     @property
     def AggregateInterval(self):
         """汇聚的时间间隔（单位：小时）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AggregateInterval
@@ -3856,7 +3637,6 @@ class CosParam(AbstractModel):
     @property
     def FormatOutputType(self):
         """消息汇聚后的文件格式（支持csv, json）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FormatOutputType
@@ -3868,7 +3648,6 @@ class CosParam(AbstractModel):
     @property
     def ObjectKeyPrefix(self):
         """转储的对象目录前缀
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ObjectKeyPrefix
@@ -3880,7 +3659,6 @@ class CosParam(AbstractModel):
     @property
     def DirectoryTimeFormat(self):
         """根据strptime 时间格式化的分区格式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DirectoryTimeFormat
@@ -5090,7 +4868,6 @@ class CreateDatahubTaskRes(AbstractModel):
         :param _TaskId: 转储任务id
         :type TaskId: str
         :param _DatahubId: 数据转储Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type DatahubId: str
         """
         self._TaskId = None
@@ -5110,7 +4887,6 @@ class CreateDatahubTaskRes(AbstractModel):
     @property
     def DatahubId(self):
         """数据转储Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DatahubId
@@ -5332,16 +5108,12 @@ class CreateInstancePostData(AbstractModel):
     def __init__(self):
         r"""
         :param _FlowId: CreateInstancePre返回固定为0，不能作为CheckTaskStatus的查询条件。只是为了保证和后台数据结构对齐。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowId: int
         :param _DealNames: 订单号列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type DealNames: list of str
         :param _InstanceId: ckafka集群实例Id，当购买多个实例时，默认返回购买的第一个实例 id
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _DealNameInstanceIdMapping: 订单和购买实例对应映射列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type DealNameInstanceIdMapping: list of DealInstanceDTO
         """
         self._FlowId = None
@@ -5352,7 +5124,6 @@ class CreateInstancePostData(AbstractModel):
     @property
     def FlowId(self):
         """CreateInstancePre返回固定为0，不能作为CheckTaskStatus的查询条件。只是为了保证和后台数据结构对齐。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FlowId
@@ -5364,7 +5135,6 @@ class CreateInstancePostData(AbstractModel):
     @property
     def DealNames(self):
         """订单号列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._DealNames
@@ -5376,7 +5146,6 @@ class CreateInstancePostData(AbstractModel):
     @property
     def InstanceId(self):
         """ckafka集群实例Id，当购买多个实例时，默认返回购买的第一个实例 id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -5388,7 +5157,6 @@ class CreateInstancePostData(AbstractModel):
     @property
     def DealNameInstanceIdMapping(self):
         """订单和购买实例对应映射列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DealInstanceDTO
         """
         return self._DealNameInstanceIdMapping
@@ -5756,7 +5524,6 @@ class CreateInstancePostResp(AbstractModel):
         :param _ReturnMessage: 接口返回消息，当接口报错时提示错误信息
         :type ReturnMessage: str
         :param _Data: 返回的Data数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePostData`
         """
         self._ReturnCode = None
@@ -5788,7 +5555,6 @@ class CreateInstancePostResp(AbstractModel):
     @property
     def Data(self):
         """返回的Data数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePostData`
         """
         return self._Data
@@ -7927,22 +7693,16 @@ class CtsdbConnectParam(AbstractModel):
     def __init__(self):
         r"""
         :param _Port: Ctsdb的连接port
-注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
         :param _ServiceVip: Ctsdb连接源的实例vip
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceVip: str
         :param _UniqVpcId: Ctsdb连接源的vpcId
-注意：此字段可能返回 null，表示取不到有效值。
         :type UniqVpcId: str
         :param _UserName: Ctsdb连接源的用户名
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserName: str
         :param _Password: Ctsdb连接源的密码
-注意：此字段可能返回 null，表示取不到有效值。
         :type Password: str
         :param _Resource: Ctsdb连接源的实例资源
-注意：此字段可能返回 null，表示取不到有效值。
         :type Resource: str
         """
         self._Port = None
@@ -7955,7 +7715,6 @@ class CtsdbConnectParam(AbstractModel):
     @property
     def Port(self):
         """Ctsdb的连接port
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Port
@@ -7967,7 +7726,6 @@ class CtsdbConnectParam(AbstractModel):
     @property
     def ServiceVip(self):
         """Ctsdb连接源的实例vip
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ServiceVip
@@ -7979,7 +7737,6 @@ class CtsdbConnectParam(AbstractModel):
     @property
     def UniqVpcId(self):
         """Ctsdb连接源的vpcId
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UniqVpcId
@@ -7991,7 +7748,6 @@ class CtsdbConnectParam(AbstractModel):
     @property
     def UserName(self):
         """Ctsdb连接源的用户名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UserName
@@ -8003,7 +7759,6 @@ class CtsdbConnectParam(AbstractModel):
     @property
     def Password(self):
         """Ctsdb连接源的密码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Password
@@ -8015,7 +7770,6 @@ class CtsdbConnectParam(AbstractModel):
     @property
     def Resource(self):
         """Ctsdb连接源的实例资源
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Resource
@@ -8050,22 +7804,16 @@ class CtsdbModifyConnectParam(AbstractModel):
     def __init__(self):
         r"""
         :param _Port: Ctsdb的连接port
-注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
         :param _ServiceVip: Ctsdb连接源的实例vip
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceVip: str
         :param _UniqVpcId: Ctsdb连接源的vpcId
-注意：此字段可能返回 null，表示取不到有效值。
         :type UniqVpcId: str
         :param _UserName: Ctsdb连接源的用户名
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserName: str
         :param _Password: Ctsdb连接源的密码
-注意：此字段可能返回 null，表示取不到有效值。
         :type Password: str
         :param _Resource: Ctsdb连接源的实例资源
-注意：此字段可能返回 null，表示取不到有效值。
         :type Resource: str
         """
         self._Port = None
@@ -8078,7 +7826,6 @@ class CtsdbModifyConnectParam(AbstractModel):
     @property
     def Port(self):
         """Ctsdb的连接port
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Port
@@ -8090,7 +7837,6 @@ class CtsdbModifyConnectParam(AbstractModel):
     @property
     def ServiceVip(self):
         """Ctsdb连接源的实例vip
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ServiceVip
@@ -8102,7 +7848,6 @@ class CtsdbModifyConnectParam(AbstractModel):
     @property
     def UniqVpcId(self):
         """Ctsdb连接源的vpcId
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UniqVpcId
@@ -8114,7 +7859,6 @@ class CtsdbModifyConnectParam(AbstractModel):
     @property
     def UserName(self):
         """Ctsdb连接源的用户名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UserName
@@ -8126,7 +7870,6 @@ class CtsdbModifyConnectParam(AbstractModel):
     @property
     def Password(self):
         """Ctsdb连接源的密码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Password
@@ -8138,7 +7881,6 @@ class CtsdbModifyConnectParam(AbstractModel):
     @property
     def Resource(self):
         """Ctsdb连接源的实例资源
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Resource
@@ -8587,7 +8329,6 @@ class DatahubTaskIdRes(AbstractModel):
     def __init__(self):
         r"""
         :param _TaskId: 任务id
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
         """
         self._TaskId = None
@@ -8595,7 +8336,6 @@ class DatahubTaskIdRes(AbstractModel):
     @property
     def TaskId(self):
         """任务id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskId

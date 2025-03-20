@@ -1492,7 +1492,9 @@ Operator 目前支持
 -is     in操作符
 
         :type GlobalParam: str
-        :param _TokenType: 100 不绑定用户  200 单用户单token  300 单用户多token
+        :param _TokenType: 100 不绑定用户, 一次创建一个token，UserCorpId和UserId 非必填，不支持 ChatBI 嵌出
+200 单用户单token , 一次创建一个token， UserCorpId和UserId 必填
+300 单用户多token, 一次创建多个token，UserCorpId和UserId 必填
         :type TokenType: int
         :param _TokenNum: 一次创建的token数
         :type TokenNum: int
@@ -1661,7 +1663,9 @@ Operator 目前支持
 
     @property
     def TokenType(self):
-        """100 不绑定用户  200 单用户单token  300 单用户多token
+        """100 不绑定用户, 一次创建一个token，UserCorpId和UserId 非必填，不支持 ChatBI 嵌出
+200 单用户单token , 一次创建一个token， UserCorpId和UserId 必填
+300 单用户多token, 一次创建多个token，UserCorpId和UserId 必填
         :rtype: int
         """
         return self._TokenType

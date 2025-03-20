@@ -4344,13 +4344,10 @@ class DCDBShardInfo(AbstractModel):
         :param _ProxyVersion: Proxy版本
         :type ProxyVersion: str
         :param _Paymode: 付费模型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Paymode: str
         :param _ShardMasterZone: 分片的主可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :type ShardMasterZone: str
         :param _ShardSlaveZones: 分片的从可用区列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type ShardSlaveZones: list of str
         :param _Cpu: CPU核数
         :type Cpu: int
@@ -4606,7 +4603,6 @@ class DCDBShardInfo(AbstractModel):
     @property
     def Paymode(self):
         """付费模型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Paymode
@@ -4618,7 +4614,6 @@ class DCDBShardInfo(AbstractModel):
     @property
     def ShardMasterZone(self):
         """分片的主可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ShardMasterZone
@@ -4630,7 +4625,6 @@ class DCDBShardInfo(AbstractModel):
     @property
     def ShardSlaveZones(self):
         """分片的从可用区列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._ShardSlaveZones
@@ -6929,10 +6923,8 @@ class DescribeDBSecurityGroupsResponse(AbstractModel):
         :param _Groups: 安全组详情。
         :type Groups: list of SecurityGroup
         :param _VIP: 实例VIP
-注意：此字段可能返回 null，表示取不到有效值。
         :type VIP: str
         :param _VPort: 实例端口
-注意：此字段可能返回 null，表示取不到有效值。
         :type VPort: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6956,7 +6948,6 @@ class DescribeDBSecurityGroupsResponse(AbstractModel):
     @property
     def VIP(self):
         """实例VIP
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VIP
@@ -6968,7 +6959,6 @@ class DescribeDBSecurityGroupsResponse(AbstractModel):
     @property
     def VPort(self):
         """实例端口
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VPort
@@ -9538,7 +9528,6 @@ class DescribeDCDBShardsResponse(AbstractModel):
         :param _Shards: 分片信息列表
         :type Shards: list of DCDBShardInfo
         :param _DcnFlag: 灾备标志，0-无，1-主实例，2-灾备实例
-注意：此字段可能返回 null，表示取不到有效值。
         :type DcnFlag: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9573,7 +9562,6 @@ class DescribeDCDBShardsResponse(AbstractModel):
     @property
     def DcnFlag(self):
         """灾备标志，0-无，1-主实例，2-灾备实例
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DcnFlag
@@ -14630,7 +14618,6 @@ class ParamDesc(AbstractModel):
         :param _Value: 当前参数值
         :type Value: str
         :param _SetValue: 设置过的值，参数生效后，该值和value一样。未设置过就不返回该字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SetValue: str
         :param _Default: 系统默认值
         :type Default: str
@@ -14675,7 +14662,6 @@ true:需要重启
     @property
     def SetValue(self):
         """设置过的值，参数生效后，该值和value一样。未设置过就不返回该字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SetValue
@@ -16231,10 +16217,8 @@ class SlowLogData(AbstractModel):
         :param _User: 账号
         :type User: str
         :param _ExampleSql: 样例Sql
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExampleSql: str
         :param _Host: 账户的域名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Host: str
         """
         self._CheckSum = None
@@ -16447,7 +16431,6 @@ class SlowLogData(AbstractModel):
     @property
     def ExampleSql(self):
         """样例Sql
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ExampleSql
@@ -16459,7 +16442,6 @@ class SlowLogData(AbstractModel):
     @property
     def Host(self):
         """账户的域名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Host
@@ -17141,49 +17123,34 @@ class TmpInstance(AbstractModel):
     def __init__(self):
         r"""
         :param _AppId: 应用ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: int
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _InstanceRemark: 实例备注
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceRemark: str
         :param _TempType: 0:非临时实例 ,1:无效临时实例, 2:回档成功的有效临时实例
-注意：此字段可能返回 null，表示取不到有效值。
         :type TempType: int
         :param _Status: 实例状态,0:待初始化,1:流程处理中,2:有效状态,-1:已隔离，-2：已下线
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _InstanceId: 实例 ID，形如：tdsql-ow728lmc。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _Vip: 实例虚IP
-注意：此字段可能返回 null，表示取不到有效值。
         :type Vip: str
         :param _Vport: 实例虚端口
-注意：此字段可能返回 null，表示取不到有效值。
         :type Vport: int
         :param _PeriodEndTime: 有效期结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type PeriodEndTime: str
         :param _SrcInstanceId: 源实例 ID，形如：tdsql-ow728lmc。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SrcInstanceId: str
         :param _StatusDesc: 实例状态描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type StatusDesc: str
         :param _Region: 实例所在地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         :param _Zone: 实例所在可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :type Zone: str
         :param _Vipv6: 实例虚IPv6
-注意：此字段可能返回 null，表示取不到有效值。
         :type Vipv6: str
         :param _Ipv6Flag: 实例IPv6标志
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ipv6Flag: int
         """
         self._AppId = None
@@ -17205,7 +17172,6 @@ class TmpInstance(AbstractModel):
     @property
     def AppId(self):
         """应用ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AppId
@@ -17217,7 +17183,6 @@ class TmpInstance(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -17229,7 +17194,6 @@ class TmpInstance(AbstractModel):
     @property
     def InstanceRemark(self):
         """实例备注
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceRemark
@@ -17241,7 +17205,6 @@ class TmpInstance(AbstractModel):
     @property
     def TempType(self):
         """0:非临时实例 ,1:无效临时实例, 2:回档成功的有效临时实例
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TempType
@@ -17253,7 +17216,6 @@ class TmpInstance(AbstractModel):
     @property
     def Status(self):
         """实例状态,0:待初始化,1:流程处理中,2:有效状态,-1:已隔离，-2：已下线
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -17265,7 +17227,6 @@ class TmpInstance(AbstractModel):
     @property
     def InstanceId(self):
         """实例 ID，形如：tdsql-ow728lmc。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -17277,7 +17238,6 @@ class TmpInstance(AbstractModel):
     @property
     def Vip(self):
         """实例虚IP
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Vip
@@ -17289,7 +17249,6 @@ class TmpInstance(AbstractModel):
     @property
     def Vport(self):
         """实例虚端口
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Vport
@@ -17301,7 +17260,6 @@ class TmpInstance(AbstractModel):
     @property
     def PeriodEndTime(self):
         """有效期结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PeriodEndTime
@@ -17313,7 +17271,6 @@ class TmpInstance(AbstractModel):
     @property
     def SrcInstanceId(self):
         """源实例 ID，形如：tdsql-ow728lmc。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SrcInstanceId
@@ -17325,7 +17282,6 @@ class TmpInstance(AbstractModel):
     @property
     def StatusDesc(self):
         """实例状态描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StatusDesc
@@ -17337,7 +17293,6 @@ class TmpInstance(AbstractModel):
     @property
     def Region(self):
         """实例所在地域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Region
@@ -17349,7 +17304,6 @@ class TmpInstance(AbstractModel):
     @property
     def Zone(self):
         """实例所在可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Zone
@@ -17361,7 +17315,6 @@ class TmpInstance(AbstractModel):
     @property
     def Vipv6(self):
         """实例虚IPv6
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Vipv6
@@ -17373,7 +17326,6 @@ class TmpInstance(AbstractModel):
     @property
     def Ipv6Flag(self):
         """实例IPv6标志
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Ipv6Flag

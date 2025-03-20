@@ -1888,6 +1888,134 @@ class CreateDomainResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateDomainsAnalyticsFileRequest(AbstractModel):
+    """CreateDomainsAnalyticsFile请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domains: 需要查询解析量的域名数组。
+        :type Domains: list of str
+        :param _StartDate: 查询解析量的时间区间起点。如：2023-01-01。
+        :type StartDate: str
+        :param _DNSFormat: 查询解析量的统计维度。默认为 DATE。
+DATE：按天统计
+HOUR：按小时统计
+        :type DNSFormat: str
+        :param _EndDate: 查询解析量的时间区间终点。如：2023-01-01。默认为当天。
+        :type EndDate: str
+        """
+        self._Domains = None
+        self._StartDate = None
+        self._DNSFormat = None
+        self._EndDate = None
+
+    @property
+    def Domains(self):
+        """需要查询解析量的域名数组。
+        :rtype: list of str
+        """
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+    @property
+    def StartDate(self):
+        """查询解析量的时间区间起点。如：2023-01-01。
+        :rtype: str
+        """
+        return self._StartDate
+
+    @StartDate.setter
+    def StartDate(self, StartDate):
+        self._StartDate = StartDate
+
+    @property
+    def DNSFormat(self):
+        """查询解析量的统计维度。默认为 DATE。
+DATE：按天统计
+HOUR：按小时统计
+        :rtype: str
+        """
+        return self._DNSFormat
+
+    @DNSFormat.setter
+    def DNSFormat(self, DNSFormat):
+        self._DNSFormat = DNSFormat
+
+    @property
+    def EndDate(self):
+        """查询解析量的时间区间终点。如：2023-01-01。默认为当天。
+        :rtype: str
+        """
+        return self._EndDate
+
+    @EndDate.setter
+    def EndDate(self, EndDate):
+        self._EndDate = EndDate
+
+
+    def _deserialize(self, params):
+        self._Domains = params.get("Domains")
+        self._StartDate = params.get("StartDate")
+        self._DNSFormat = params.get("DNSFormat")
+        self._EndDate = params.get("EndDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDomainsAnalyticsFileResponse(AbstractModel):
+    """CreateDomainsAnalyticsFile返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 当前批量任务 id。
+        :type JobId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobId = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        """当前批量任务 id。
+        :rtype: int
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateLineGroupCopyRequest(AbstractModel):
     """CreateLineGroupCopy请求参数结构体
 
@@ -3052,6 +3180,158 @@ class CreateSnapshotResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreateSubDomainsAnalyticsFileRequest(AbstractModel):
+    """CreateSubDomainsAnalyticsFile请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domains: 需要查询解析量的域名数组。
+        :type Domains: list of SubDomainsAnalyticsParamsItem
+        :param _StartDate: 查询解析量的时间区间起点。如：2023-01-01。
+        :type StartDate: str
+        :param _SubDomainType: 查询解析量子域名类型。
+1：子域名
+2：无解析量子域名
+        :type SubDomainType: int
+        :param _DNSFormat: 查询解析量的统计维度。默认为 DATE。
+DATE：按天统计
+HOUR：按小时统计
+        :type DNSFormat: str
+        :param _EndDate: 查询解析量的时间区间终点。如：2023-01-01。默认为当天。
+        :type EndDate: str
+        """
+        self._Domains = None
+        self._StartDate = None
+        self._SubDomainType = None
+        self._DNSFormat = None
+        self._EndDate = None
+
+    @property
+    def Domains(self):
+        """需要查询解析量的域名数组。
+        :rtype: list of SubDomainsAnalyticsParamsItem
+        """
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+    @property
+    def StartDate(self):
+        """查询解析量的时间区间起点。如：2023-01-01。
+        :rtype: str
+        """
+        return self._StartDate
+
+    @StartDate.setter
+    def StartDate(self, StartDate):
+        self._StartDate = StartDate
+
+    @property
+    def SubDomainType(self):
+        """查询解析量子域名类型。
+1：子域名
+2：无解析量子域名
+        :rtype: int
+        """
+        return self._SubDomainType
+
+    @SubDomainType.setter
+    def SubDomainType(self, SubDomainType):
+        self._SubDomainType = SubDomainType
+
+    @property
+    def DNSFormat(self):
+        """查询解析量的统计维度。默认为 DATE。
+DATE：按天统计
+HOUR：按小时统计
+        :rtype: str
+        """
+        return self._DNSFormat
+
+    @DNSFormat.setter
+    def DNSFormat(self, DNSFormat):
+        self._DNSFormat = DNSFormat
+
+    @property
+    def EndDate(self):
+        """查询解析量的时间区间终点。如：2023-01-01。默认为当天。
+        :rtype: str
+        """
+        return self._EndDate
+
+    @EndDate.setter
+    def EndDate(self, EndDate):
+        self._EndDate = EndDate
+
+
+    def _deserialize(self, params):
+        if params.get("Domains") is not None:
+            self._Domains = []
+            for item in params.get("Domains"):
+                obj = SubDomainsAnalyticsParamsItem()
+                obj._deserialize(item)
+                self._Domains.append(obj)
+        self._StartDate = params.get("StartDate")
+        self._SubDomainType = params.get("SubDomainType")
+        self._DNSFormat = params.get("DNSFormat")
+        self._EndDate = params.get("EndDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSubDomainsAnalyticsFileResponse(AbstractModel):
+    """CreateSubDomainsAnalyticsFile返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 当前批量任务 id。
+        :type JobId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobId = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        """当前批量任务 id。
+        :rtype: int
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
         self._RequestId = params.get("RequestId")
 
 
@@ -6729,6 +7009,87 @@ class DescribeDomainWhoisResponse(AbstractModel):
         if params.get("Info") is not None:
             self._Info = WhoisInfo()
             self._Info._deserialize(params.get("Info"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeFileInfoByJobIdRequest(AbstractModel):
+    """DescribeFileInfoByJobId请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 任务ID
+        :type JobId: int
+        """
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        """任务ID
+        :rtype: int
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFileInfoByJobIdResponse(AbstractModel):
+    """DescribeFileInfoByJobId返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileInfo: 生成文件相关信息
+        :type FileInfo: :class:`tencentcloud.dnspod.v20210323.models.FileInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FileInfo = None
+        self._RequestId = None
+
+    @property
+    def FileInfo(self):
+        """生成文件相关信息
+        :rtype: :class:`tencentcloud.dnspod.v20210323.models.FileInfo`
+        """
+        return self._FileInfo
+
+    @FileInfo.setter
+    def FileInfo(self, FileInfo):
+        self._FileInfo = FileInfo
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("FileInfo") is not None:
+            self._FileInfo = FileInfo()
+            self._FileInfo._deserialize(params.get("FileInfo"))
         self._RequestId = params.get("RequestId")
 
 
@@ -11443,6 +11804,216 @@ class DownloadSnapshotResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class FileInfo(AbstractModel):
+    """生成的文件信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileId: 文件 id。
+        :type FileId: int
+        :param _CreatedOn: 文件生成时间。
+        :type CreatedOn: str
+        :param _UpdatedOn: 文件最后更新时间。
+        :type UpdatedOn: str
+        :param _Domains: 文件涉及到的域名。
+        :type Domains: list of str
+        :param _Name: 文件名称。
+        :type Name: str
+        :param _FileUrl: 文件下载链接。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileUrl: str
+        :param _JobId: 生成文件的任务 id。
+        :type JobId: int
+        :param _Progress: 生成文件的进度。100 表示 完成度为100%。
+        :type Progress: int
+        :param _Status: 文件状态。
+OK：已完成
+RUNNING：正在生成中
+ERROR：生成失败
+CANCELED：文件已取消生成
+CANCELING：文件正在取消生成
+EXPIRED：文件已过期
+        :type Status: str
+        :param _Type: 生成文件的任务类型。
+RECORD_LOG：解析量数据
+RECORD_EXPORT：导出解析记录
+DOMAIN_EXPORT：导出域名列表
+        :type Type: str
+        :param _LeftTime: 剩余时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LeftTime: :class:`tencentcloud.dnspod.v20210323.models.LeftTime`
+        """
+        self._FileId = None
+        self._CreatedOn = None
+        self._UpdatedOn = None
+        self._Domains = None
+        self._Name = None
+        self._FileUrl = None
+        self._JobId = None
+        self._Progress = None
+        self._Status = None
+        self._Type = None
+        self._LeftTime = None
+
+    @property
+    def FileId(self):
+        """文件 id。
+        :rtype: int
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def CreatedOn(self):
+        """文件生成时间。
+        :rtype: str
+        """
+        return self._CreatedOn
+
+    @CreatedOn.setter
+    def CreatedOn(self, CreatedOn):
+        self._CreatedOn = CreatedOn
+
+    @property
+    def UpdatedOn(self):
+        """文件最后更新时间。
+        :rtype: str
+        """
+        return self._UpdatedOn
+
+    @UpdatedOn.setter
+    def UpdatedOn(self, UpdatedOn):
+        self._UpdatedOn = UpdatedOn
+
+    @property
+    def Domains(self):
+        """文件涉及到的域名。
+        :rtype: list of str
+        """
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+    @property
+    def Name(self):
+        """文件名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def FileUrl(self):
+        """文件下载链接。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FileUrl
+
+    @FileUrl.setter
+    def FileUrl(self, FileUrl):
+        self._FileUrl = FileUrl
+
+    @property
+    def JobId(self):
+        """生成文件的任务 id。
+        :rtype: int
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def Progress(self):
+        """生成文件的进度。100 表示 完成度为100%。
+        :rtype: int
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def Status(self):
+        """文件状态。
+OK：已完成
+RUNNING：正在生成中
+ERROR：生成失败
+CANCELED：文件已取消生成
+CANCELING：文件正在取消生成
+EXPIRED：文件已过期
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Type(self):
+        """生成文件的任务类型。
+RECORD_LOG：解析量数据
+RECORD_EXPORT：导出解析记录
+DOMAIN_EXPORT：导出域名列表
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def LeftTime(self):
+        """剩余时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dnspod.v20210323.models.LeftTime`
+        """
+        return self._LeftTime
+
+    @LeftTime.setter
+    def LeftTime(self, LeftTime):
+        self._LeftTime = LeftTime
+
+
+    def _deserialize(self, params):
+        self._FileId = params.get("FileId")
+        self._CreatedOn = params.get("CreatedOn")
+        self._UpdatedOn = params.get("UpdatedOn")
+        self._Domains = params.get("Domains")
+        self._Name = params.get("Name")
+        self._FileUrl = params.get("FileUrl")
+        self._JobId = params.get("JobId")
+        self._Progress = params.get("Progress")
+        self._Status = params.get("Status")
+        self._Type = params.get("Type")
+        if params.get("LeftTime") is not None:
+            self._LeftTime = LeftTime()
+            self._LeftTime._deserialize(params.get("LeftTime"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GroupInfo(AbstractModel):
     """域名分组列表
 
@@ -11567,6 +12138,78 @@ class KeyValue(AbstractModel):
     def _deserialize(self, params):
         self._Key = params.get("Key")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LeftTime(AbstractModel):
+    """批量生成文件剩余时间
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Days: 剩余天数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Days: int
+        :param _Hours: 剩余小时数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Hours: int
+        :param _Mins: 剩余分钟数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Mins: int
+        """
+        self._Days = None
+        self._Hours = None
+        self._Mins = None
+
+    @property
+    def Days(self):
+        """剩余天数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Days
+
+    @Days.setter
+    def Days(self, Days):
+        self._Days = Days
+
+    @property
+    def Hours(self):
+        """剩余小时数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Hours
+
+    @Hours.setter
+    def Hours(self, Hours):
+        self._Hours = Hours
+
+    @property
+    def Mins(self):
+        """剩余分钟数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Mins
+
+    @Mins.setter
+    def Mins(self, Mins):
+        self._Mins = Mins
+
+
+    def _deserialize(self, params):
+        self._Days = params.get("Days")
+        self._Hours = params.get("Hours")
+        self._Mins = params.get("Mins")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16788,6 +17431,87 @@ class SnapshotRecord(AbstractModel):
         self._MX = params.get("MX")
         self._Weight = params.get("Weight")
         self._Reason = params.get("Reason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubDomainsAnalyticsParamsItem(AbstractModel):
+    """批量导出子域名解析量查询条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 要查询解析量的主域名。
+        :type Domain: str
+        :param _SubDomain: 要查询解析量的子域名主机头。
+        :type SubDomain: str
+        :param _Offset: 查询子域名列表的偏移量。没有指定查询的 Subdomain 参数时，根据分页参数返回每页子域名解析量。
+        :type Offset: int
+        :param _Limit: 查询子域名列表的每页条数。没有指定查询的 Subdomain 参数时，根据分页参数返回每页子域名解析量。
+        :type Limit: int
+        """
+        self._Domain = None
+        self._SubDomain = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Domain(self):
+        """要查询解析量的主域名。
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def SubDomain(self):
+        """要查询解析量的子域名主机头。
+        :rtype: str
+        """
+        return self._SubDomain
+
+    @SubDomain.setter
+    def SubDomain(self, SubDomain):
+        self._SubDomain = SubDomain
+
+    @property
+    def Offset(self):
+        """查询子域名列表的偏移量。没有指定查询的 Subdomain 参数时，根据分页参数返回每页子域名解析量。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """查询子域名列表的每页条数。没有指定查询的 Subdomain 参数时，根据分页参数返回每页子域名解析量。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._SubDomain = params.get("SubDomain")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

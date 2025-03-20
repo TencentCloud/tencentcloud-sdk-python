@@ -333,25 +333,18 @@ class BackupTableContent(AbstractModel):
     def __init__(self):
         r"""
         :param _Database: 数据库
-注意：此字段可能返回 null，表示取不到有效值。
         :type Database: str
         :param _Table: 表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Table: str
         :param _TotalBytes: 表总字节数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalBytes: int
         :param _VCluster: 虚拟cluster
-注意：此字段可能返回 null，表示取不到有效值。
         :type VCluster: str
         :param _Ips: 表ip
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ips: str
         :param _ZooPath: zk路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type ZooPath: str
         :param _Rip: cvm的ip地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type Rip: str
         """
         self._Database = None
@@ -365,7 +358,6 @@ class BackupTableContent(AbstractModel):
     @property
     def Database(self):
         """数据库
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Database
@@ -377,7 +369,6 @@ class BackupTableContent(AbstractModel):
     @property
     def Table(self):
         """表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Table
@@ -389,7 +380,6 @@ class BackupTableContent(AbstractModel):
     @property
     def TotalBytes(self):
         """表总字节数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalBytes
@@ -401,7 +391,6 @@ class BackupTableContent(AbstractModel):
     @property
     def VCluster(self):
         """虚拟cluster
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VCluster
@@ -413,7 +402,6 @@ class BackupTableContent(AbstractModel):
     @property
     def Ips(self):
         """表ip
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Ips
@@ -425,7 +413,6 @@ class BackupTableContent(AbstractModel):
     @property
     def ZooPath(self):
         """zk路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ZooPath
@@ -437,7 +424,6 @@ class BackupTableContent(AbstractModel):
     @property
     def Rip(self):
         """cvm的ip地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Rip
@@ -630,7 +616,6 @@ class ClusterConfigsInfoFromEMR(AbstractModel):
         :param _NeedRestart: 用于表示当前配置文件是不是有过修改后没有重启，提醒用户需要重启
         :type NeedRestart: int
         :param _FilePath: 保存配置文件的路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type FilePath: str
         """
         self._FileName = None
@@ -698,7 +683,6 @@ class ClusterConfigsInfoFromEMR(AbstractModel):
     @property
     def FilePath(self):
         """保存配置文件的路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FilePath
@@ -733,10 +717,8 @@ class ClusterInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _ClusterName: vcluster名字
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterName: str
         :param _NodeIps: 当前cluster的IP列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type NodeIps: list of str
         """
         self._ClusterName = None
@@ -745,7 +727,6 @@ class ClusterInfo(AbstractModel):
     @property
     def ClusterName(self):
         """vcluster名字
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterName
@@ -757,7 +738,6 @@ class ClusterInfo(AbstractModel):
     @property
     def NodeIps(self):
         """当前cluster的IP列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._NodeIps
@@ -1644,7 +1624,6 @@ class DescribeBackUpJobDetailResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TableContents: 备份表详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type TableContents: list of BackupTableContent
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1655,7 +1634,6 @@ class DescribeBackUpJobDetailResponse(AbstractModel):
     @property
     def TableContents(self):
         """备份表详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BackupTableContent
         """
         return self._TableContents
@@ -2213,7 +2191,6 @@ class DescribeCkSqlApisResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ReturnData: 返回的查询数据，大部分情况是list，也可能是bool
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReturnData: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2224,7 +2201,6 @@ class DescribeCkSqlApisResponse(AbstractModel):
     @property
     def ReturnData(self):
         """返回的查询数据，大部分情况是list，也可能是bool
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ReturnData
@@ -2894,7 +2870,6 @@ class DescribeInstanceShardsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceShardsList: 实例shard信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceShardsList: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2905,7 +2880,6 @@ class DescribeInstanceShardsResponse(AbstractModel):
     @property
     def InstanceShardsList(self):
         """实例shard信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceShardsList
@@ -3504,7 +3478,6 @@ class DestroyInstanceResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _FlowID: 作业id
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowID: str
         :param _InstanceID: 集群id
         :type InstanceID: str
@@ -3521,7 +3494,6 @@ class DestroyInstanceResponse(AbstractModel):
     @property
     def FlowID(self):
         """作业id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FlowID
@@ -3978,7 +3950,6 @@ class InstanceDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _EnableAlarmStrategy: 告警策略是否可用
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnableAlarmStrategy: bool
         """
         self._EnableAlarmStrategy = None
@@ -3986,7 +3957,6 @@ class InstanceDetail(AbstractModel):
     @property
     def EnableAlarmStrategy(self):
         """告警策略是否可用
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._EnableAlarmStrategy
@@ -4976,22 +4946,16 @@ class InstanceNode(AbstractModel):
         :param _NodeGroups: 节点所属的分组信息
         :type NodeGroups: list of GroupInfo
         :param _Rip: VPC IP
-注意：此字段可能返回 null，表示取不到有效值。
         :type Rip: str
         :param _IsCHProxy: ture的时候表示该节点上部署了chproxy进程
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsCHProxy: bool
         :param _Status: 节点状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _UUID: 节点uuid
-注意：此字段可能返回 null，表示取不到有效值。
         :type UUID: str
         :param _Zone: 区
-注意：此字段可能返回 null，表示取不到有效值。
         :type Zone: str
         :param _ZoneDesc: 区描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneDesc: str
         :param _RealResourceId: 真实资源id
         :type RealResourceId: str
@@ -5103,7 +5067,6 @@ class InstanceNode(AbstractModel):
     @property
     def Rip(self):
         """VPC IP
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Rip
@@ -5115,7 +5078,6 @@ class InstanceNode(AbstractModel):
     @property
     def IsCHProxy(self):
         """ture的时候表示该节点上部署了chproxy进程
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsCHProxy
@@ -5127,7 +5089,6 @@ class InstanceNode(AbstractModel):
     @property
     def Status(self):
         """节点状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -5139,7 +5100,6 @@ class InstanceNode(AbstractModel):
     @property
     def UUID(self):
         """节点uuid
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UUID
@@ -5151,7 +5111,6 @@ class InstanceNode(AbstractModel):
     @property
     def Zone(self):
         """区
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Zone
@@ -5163,7 +5122,6 @@ class InstanceNode(AbstractModel):
     @property
     def ZoneDesc(self):
         """区描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ZoneDesc
@@ -5223,31 +5181,22 @@ class InstanceStateInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceState: 集群状态，例如：Serving
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceState: str
         :param _FlowCreateTime: 集群操作创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowCreateTime: str
         :param _FlowName: 集群操作名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowName: str
         :param _FlowProgress: 集群操作进度
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowProgress: int
         :param _InstanceStateDesc: 集群状态描述，例如：运行中
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceStateDesc: str
         :param _FlowMsg: 集群流程错误信息，例如：“创建失败，资源不足”
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowMsg: str
         :param _ProcessName: 当前步骤的名称，例如：”购买资源中“
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProcessName: str
         :param _RequestId: 请求id
-注意：此字段可能返回 null，表示取不到有效值。
         :type RequestId: str
         :param _ProcessSubName: 流程的二级名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProcessSubName: str
         """
         self._InstanceState = None
@@ -5263,7 +5212,6 @@ class InstanceStateInfo(AbstractModel):
     @property
     def InstanceState(self):
         """集群状态，例如：Serving
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceState
@@ -5275,7 +5223,6 @@ class InstanceStateInfo(AbstractModel):
     @property
     def FlowCreateTime(self):
         """集群操作创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FlowCreateTime
@@ -5287,7 +5234,6 @@ class InstanceStateInfo(AbstractModel):
     @property
     def FlowName(self):
         """集群操作名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FlowName
@@ -5299,7 +5245,6 @@ class InstanceStateInfo(AbstractModel):
     @property
     def FlowProgress(self):
         """集群操作进度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FlowProgress
@@ -5311,7 +5256,6 @@ class InstanceStateInfo(AbstractModel):
     @property
     def InstanceStateDesc(self):
         """集群状态描述，例如：运行中
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceStateDesc
@@ -5323,7 +5267,6 @@ class InstanceStateInfo(AbstractModel):
     @property
     def FlowMsg(self):
         """集群流程错误信息，例如：“创建失败，资源不足”
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FlowMsg
@@ -5335,7 +5278,6 @@ class InstanceStateInfo(AbstractModel):
     @property
     def ProcessName(self):
         """当前步骤的名称，例如：”购买资源中“
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProcessName
@@ -5347,7 +5289,6 @@ class InstanceStateInfo(AbstractModel):
     @property
     def RequestId(self):
         """请求id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RequestId
@@ -5359,7 +5300,6 @@ class InstanceStateInfo(AbstractModel):
     @property
     def ProcessSubName(self):
         """流程的二级名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProcessSubName
@@ -5710,7 +5650,6 @@ class ModifyInstanceKeyValConfigsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ErrorMsg: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
         :param _FlowId: ID
         :type FlowId: int
@@ -5724,7 +5663,6 @@ class ModifyInstanceKeyValConfigsResponse(AbstractModel):
     @property
     def ErrorMsg(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorMsg
@@ -6466,13 +6404,10 @@ class ResizeDiskResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _FlowId: 流程ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowId: str
         :param _InstanceId: 实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _ErrorMsg: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6485,7 +6420,6 @@ class ResizeDiskResponse(AbstractModel):
     @property
     def FlowId(self):
         """流程ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FlowId
@@ -6497,7 +6431,6 @@ class ResizeDiskResponse(AbstractModel):
     @property
     def InstanceId(self):
         """实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -6509,7 +6442,6 @@ class ResizeDiskResponse(AbstractModel):
     @property
     def ErrorMsg(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorMsg
@@ -6559,16 +6491,12 @@ class ResourceSpec(AbstractModel):
         :param _MaxNodeSize: 最大节点数目限制
         :type MaxNodeSize: int
         :param _Available: 是否可用，false代表售罄
-注意：此字段可能返回 null，表示取不到有效值。
         :type Available: bool
         :param _ComputeSpecDesc: 规格描述信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ComputeSpecDesc: str
         :param _DisplayName: 规格名
-注意：此字段可能返回 null，表示取不到有效值。
         :type DisplayName: str
         :param _InstanceQuota: 库存数
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceQuota: int
         """
         self._Name = None
@@ -6663,7 +6591,6 @@ class ResourceSpec(AbstractModel):
     @property
     def Available(self):
         """是否可用，false代表售罄
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Available
@@ -6675,7 +6602,6 @@ class ResourceSpec(AbstractModel):
     @property
     def ComputeSpecDesc(self):
         """规格描述信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ComputeSpecDesc
@@ -6687,7 +6613,6 @@ class ResourceSpec(AbstractModel):
     @property
     def DisplayName(self):
         """规格名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DisplayName
@@ -6699,7 +6624,6 @@ class ResourceSpec(AbstractModel):
     @property
     def InstanceQuota(self):
         """库存数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._InstanceQuota
@@ -6839,13 +6763,10 @@ class ScaleCNOutUpInstanceResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _FlowId: 流程ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowId: str
         :param _InstanceId: 实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _ErrorMsg: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6858,7 +6779,6 @@ class ScaleCNOutUpInstanceResponse(AbstractModel):
     @property
     def FlowId(self):
         """流程ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FlowId
@@ -6870,7 +6790,6 @@ class ScaleCNOutUpInstanceResponse(AbstractModel):
     @property
     def InstanceId(self):
         """实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -6882,7 +6801,6 @@ class ScaleCNOutUpInstanceResponse(AbstractModel):
     @property
     def ErrorMsg(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorMsg
@@ -7046,13 +6964,10 @@ class ScaleOutInstanceResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _FlowId: 流程ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowId: str
         :param _InstanceId: 实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _ErrorMsg: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7065,7 +6980,6 @@ class ScaleOutInstanceResponse(AbstractModel):
     @property
     def FlowId(self):
         """流程ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FlowId
@@ -7077,7 +6991,6 @@ class ScaleOutInstanceResponse(AbstractModel):
     @property
     def InstanceId(self):
         """实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -7089,7 +7002,6 @@ class ScaleOutInstanceResponse(AbstractModel):
     @property
     def ErrorMsg(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorMsg
@@ -7206,13 +7118,10 @@ class ScaleUpInstanceResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _FlowId: 流程ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowId: str
         :param _InstanceId: 实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _ErrorMsg: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7225,7 +7134,6 @@ class ScaleUpInstanceResponse(AbstractModel):
     @property
     def FlowId(self):
         """流程ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FlowId
@@ -7237,7 +7145,6 @@ class ScaleUpInstanceResponse(AbstractModel):
     @property
     def InstanceId(self):
         """实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -7249,7 +7156,6 @@ class ScaleUpInstanceResponse(AbstractModel):
     @property
     def ErrorMsg(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorMsg
@@ -7285,7 +7191,6 @@ class ScheduleStrategy(AbstractModel):
     def __init__(self):
         r"""
         :param _CosBucketName: 备份桶名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type CosBucketName: str
         :param _RetainDays: 备份保留天数
         :type RetainDays: int
@@ -7296,7 +7201,6 @@ class ScheduleStrategy(AbstractModel):
         :param _ScheduleId: 策略id
         :type ScheduleId: int
         :param _NextBackupTime: 下次备份时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type NextBackupTime: str
         """
         self._CosBucketName = None
@@ -7309,7 +7213,6 @@ class ScheduleStrategy(AbstractModel):
     @property
     def CosBucketName(self):
         """备份桶名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CosBucketName
@@ -7365,7 +7268,6 @@ class ScheduleStrategy(AbstractModel):
     @property
     def NextBackupTime(self):
         """下次备份时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NextBackupTime
@@ -7466,16 +7368,12 @@ class SecondaryZoneInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _SecondaryZone: 副可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :type SecondaryZone: str
         :param _SecondarySubnet: 可用区可用的子网id
-注意：此字段可能返回 null，表示取不到有效值。
         :type SecondarySubnet: str
         :param _UserIpNum: 可用区可用的子网可用ip的数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserIpNum: str
         :param _SecondaryUserSubnetIPNum: 可用区可用的子网可用ip的数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type SecondaryUserSubnetIPNum: int
         """
         self._SecondaryZone = None
@@ -7486,7 +7384,6 @@ class SecondaryZoneInfo(AbstractModel):
     @property
     def SecondaryZone(self):
         """副可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SecondaryZone
@@ -7498,7 +7395,6 @@ class SecondaryZoneInfo(AbstractModel):
     @property
     def SecondarySubnet(self):
         """可用区可用的子网id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SecondarySubnet
@@ -7510,7 +7406,6 @@ class SecondaryZoneInfo(AbstractModel):
     @property
     def UserIpNum(self):
         """可用区可用的子网可用ip的数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UserIpNum
@@ -7522,7 +7417,6 @@ class SecondaryZoneInfo(AbstractModel):
     @property
     def SecondaryUserSubnetIPNum(self):
         """可用区可用的子网可用ip的数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SecondaryUserSubnetIPNum
@@ -7555,10 +7449,8 @@ class ServiceInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 服务名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Version: 服务的版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
         """
         self._Name = None
@@ -7567,7 +7459,6 @@ class ServiceInfo(AbstractModel):
     @property
     def Name(self):
         """服务名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -7579,7 +7470,6 @@ class ServiceInfo(AbstractModel):
     @property
     def Version(self):
         """服务的版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Version

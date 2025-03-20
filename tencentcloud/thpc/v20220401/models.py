@@ -1493,7 +1493,6 @@ class ComputeNodeOverview(AbstractModel):
     def __init__(self):
         r"""
         :param _NodeId: 计算节点ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type NodeId: str
         """
         self._NodeId = None
@@ -1501,7 +1500,6 @@ class ComputeNodeOverview(AbstractModel):
     @property
     def NodeId(self):
         """计算节点ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NodeId
@@ -1864,7 +1862,6 @@ class CreateClusterResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ClusterId: 集群ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1875,7 +1872,6 @@ class CreateClusterResponse(AbstractModel):
     @property
     def ClusterId(self):
         """集群ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterId
@@ -3957,7 +3953,6 @@ class ManagerNodeOverview(AbstractModel):
     def __init__(self):
         r"""
         :param _NodeId: 管控节点ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type NodeId: str
         """
         self._NodeId = None
@@ -3965,7 +3960,6 @@ class ManagerNodeOverview(AbstractModel):
     @property
     def NodeId(self):
         """管控节点ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NodeId

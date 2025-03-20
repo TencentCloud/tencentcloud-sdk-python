@@ -8778,6 +8778,8 @@ class DisasterRecoverGroup(AbstractModel):
         :type InstanceIds: list of str
         :param _CreateTime: 分散置放群组创建时间。
         :type CreateTime: str
+        :param _Affinity: 置放群组亲和度
+        :type Affinity: int
         :param _Tags: 置放群组关联的标签列表。
         :type Tags: list of Tag
         """
@@ -8788,6 +8790,7 @@ class DisasterRecoverGroup(AbstractModel):
         self._CurrentNum = None
         self._InstanceIds = None
         self._CreateTime = None
+        self._Affinity = None
         self._Tags = None
 
     @property
@@ -8871,6 +8874,17 @@ class DisasterRecoverGroup(AbstractModel):
         self._CreateTime = CreateTime
 
     @property
+    def Affinity(self):
+        """置放群组亲和度
+        :rtype: int
+        """
+        return self._Affinity
+
+    @Affinity.setter
+    def Affinity(self, Affinity):
+        self._Affinity = Affinity
+
+    @property
     def Tags(self):
         """置放群组关联的标签列表。
         :rtype: list of Tag
@@ -8890,6 +8904,7 @@ class DisasterRecoverGroup(AbstractModel):
         self._CurrentNum = params.get("CurrentNum")
         self._InstanceIds = params.get("InstanceIds")
         self._CreateTime = params.get("CreateTime")
+        self._Affinity = params.get("Affinity")
         if params.get("Tags") is not None:
             self._Tags = []
             for item in params.get("Tags"):

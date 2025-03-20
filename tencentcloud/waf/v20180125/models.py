@@ -7766,10 +7766,13 @@ class CreatePostCLSFlowRequest(AbstractModel):
         :type LogsetName: str
         :param _LogType: 1-访问日志，2-攻击日志，默认为访问日志。
         :type LogType: int
+        :param _LogTopicName: 投递的CLS所在日志主题的名称，默认为 waf_post_logtopic
+        :type LogTopicName: str
         """
         self._CLSRegion = None
         self._LogsetName = None
         self._LogType = None
+        self._LogTopicName = None
 
     @property
     def CLSRegion(self):
@@ -7804,11 +7807,23 @@ class CreatePostCLSFlowRequest(AbstractModel):
     def LogType(self, LogType):
         self._LogType = LogType
 
+    @property
+    def LogTopicName(self):
+        """投递的CLS所在日志主题的名称，默认为 waf_post_logtopic
+        :rtype: str
+        """
+        return self._LogTopicName
+
+    @LogTopicName.setter
+    def LogTopicName(self, LogTopicName):
+        self._LogTopicName = LogTopicName
+
 
     def _deserialize(self, params):
         self._CLSRegion = params.get("CLSRegion")
         self._LogsetName = params.get("LogsetName")
         self._LogType = params.get("LogType")
+        self._LogTopicName = params.get("LogTopicName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

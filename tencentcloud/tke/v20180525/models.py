@@ -37181,7 +37181,6 @@ class PodChargeInfo(AbstractModel):
         :param _Type: Pod类型：intel、amd、v100、t4、a10\*gnv4、a10\*gnv4v等。
         :type Type: str
         :param _Gpu: Pod是GPU时，表示GPU卡数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Gpu: str
         :param _ChargeType: 计费类型
 PREPAID：Pod调度到包月超级节点
@@ -37263,7 +37262,6 @@ TPOD：特惠实例
     @property
     def Gpu(self):
         """Pod是GPU时，表示GPU卡数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Gpu
@@ -37339,22 +37337,16 @@ class PodDeductionRate(AbstractModel):
     def __init__(self):
         r"""
         :param _Cpu: Pod的 CPU
-注意：此字段可能返回 null，表示取不到有效值。
         :type Cpu: float
         :param _Memory: Pod 的内存
-注意：此字段可能返回 null，表示取不到有效值。
         :type Memory: float
         :param _Type:  Pod 的类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _GpuNum:  Pod 的 GPU 卡数，Pod 类型为 GPU 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :type GpuNum: str
         :param _TotalNum: 这种规格的 Pod总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalNum: int
         :param _DeductionNum: 这种规格的 Pod被预留券抵扣的数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeductionNum: int
         """
         self._Cpu = None
@@ -37367,7 +37359,6 @@ class PodDeductionRate(AbstractModel):
     @property
     def Cpu(self):
         """Pod的 CPU
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Cpu
@@ -37379,7 +37370,6 @@ class PodDeductionRate(AbstractModel):
     @property
     def Memory(self):
         """Pod 的内存
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Memory
@@ -37391,7 +37381,6 @@ class PodDeductionRate(AbstractModel):
     @property
     def Type(self):
         """ Pod 的类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -37403,7 +37392,6 @@ class PodDeductionRate(AbstractModel):
     @property
     def GpuNum(self):
         """ Pod 的 GPU 卡数，Pod 类型为 GPU 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GpuNum
@@ -37415,7 +37403,6 @@ class PodDeductionRate(AbstractModel):
     @property
     def TotalNum(self):
         """这种规格的 Pod总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalNum
@@ -37427,7 +37414,6 @@ class PodDeductionRate(AbstractModel):
     @property
     def DeductionNum(self):
         """这种规格的 Pod被预留券抵扣的数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DeductionNum
@@ -37626,19 +37612,14 @@ class PodNodeInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _ClusterId: 集群 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterId: str
         :param _NodeName:  节点名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type NodeName: str
         :param _Zone: 可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :type Zone: str
         :param _Namespace: 命名空间
-注意：此字段可能返回 null，表示取不到有效值。
         :type Namespace: str
         :param _Name:  Pod 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         """
         self._ClusterId = None
@@ -37650,7 +37631,6 @@ class PodNodeInfo(AbstractModel):
     @property
     def ClusterId(self):
         """集群 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterId
@@ -37662,7 +37642,6 @@ class PodNodeInfo(AbstractModel):
     @property
     def NodeName(self):
         """ 节点名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NodeName
@@ -37674,7 +37653,6 @@ class PodNodeInfo(AbstractModel):
     @property
     def Zone(self):
         """可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Zone
@@ -37686,7 +37664,6 @@ class PodNodeInfo(AbstractModel):
     @property
     def Namespace(self):
         """命名空间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Namespace
@@ -37698,7 +37675,6 @@ class PodNodeInfo(AbstractModel):
     @property
     def Name(self):
         """ Pod 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -42994,34 +42970,24 @@ class ReservedInstanceUtilizationRate(AbstractModel):
     def __init__(self):
         r"""
         :param _Rate: 使用率
-注意：此字段可能返回 null，表示取不到有效值。
         :type Rate: float
         :param _Num: 预留券数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Num: int
         :param _CPU: 核数
-注意：此字段可能返回 null，表示取不到有效值。
         :type CPU: float
         :param _Memory: 内存
-注意：此字段可能返回 null，表示取不到有效值。
         :type Memory: float
         :param _Type:  预留券类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _GpuNum: GPU 卡数
-注意：此字段可能返回 null，表示取不到有效值。
         :type GpuNum: str
         :param _Zone: 可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :type Zone: str
         :param _ClusterId: 集群 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterId: str
         :param _NodeName: 节点名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type NodeName: str
         :param _PodNum: Pod 数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type PodNum: int
         """
         self._Rate = None
@@ -43038,7 +43004,6 @@ class ReservedInstanceUtilizationRate(AbstractModel):
     @property
     def Rate(self):
         """使用率
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Rate
@@ -43050,7 +43015,6 @@ class ReservedInstanceUtilizationRate(AbstractModel):
     @property
     def Num(self):
         """预留券数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Num
@@ -43062,7 +43026,6 @@ class ReservedInstanceUtilizationRate(AbstractModel):
     @property
     def CPU(self):
         """核数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._CPU
@@ -43074,7 +43037,6 @@ class ReservedInstanceUtilizationRate(AbstractModel):
     @property
     def Memory(self):
         """内存
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Memory
@@ -43086,7 +43048,6 @@ class ReservedInstanceUtilizationRate(AbstractModel):
     @property
     def Type(self):
         """ 预留券类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -43098,7 +43059,6 @@ class ReservedInstanceUtilizationRate(AbstractModel):
     @property
     def GpuNum(self):
         """GPU 卡数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GpuNum
@@ -43110,7 +43070,6 @@ class ReservedInstanceUtilizationRate(AbstractModel):
     @property
     def Zone(self):
         """可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Zone
@@ -43122,7 +43081,6 @@ class ReservedInstanceUtilizationRate(AbstractModel):
     @property
     def ClusterId(self):
         """集群 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterId
@@ -43134,7 +43092,6 @@ class ReservedInstanceUtilizationRate(AbstractModel):
     @property
     def NodeName(self):
         """节点名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NodeName
@@ -43146,7 +43103,6 @@ class ReservedInstanceUtilizationRate(AbstractModel):
     @property
     def PodNum(self):
         """Pod 数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PodNum
@@ -44850,19 +44806,14 @@ class SuperNodeResource(AbstractModel):
     def __init__(self):
         r"""
         :param _NodeName: 节点名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type NodeName: str
         :param _Num: 节点上的资源总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Num: int
         :param _Cpu: 节点上的总核数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Cpu: float
         :param _Memory: 节点上的总内存数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Memory: float
         :param _Gpu: 节点上的总 GPU 卡数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Gpu: float
         """
         self._NodeName = None
@@ -44874,7 +44825,6 @@ class SuperNodeResource(AbstractModel):
     @property
     def NodeName(self):
         """节点名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NodeName
@@ -44886,7 +44836,6 @@ class SuperNodeResource(AbstractModel):
     @property
     def Num(self):
         """节点上的资源总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Num
@@ -44898,7 +44847,6 @@ class SuperNodeResource(AbstractModel):
     @property
     def Cpu(self):
         """节点上的总核数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Cpu
@@ -44910,7 +44858,6 @@ class SuperNodeResource(AbstractModel):
     @property
     def Memory(self):
         """节点上的总内存数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Memory
@@ -44922,7 +44869,6 @@ class SuperNodeResource(AbstractModel):
     @property
     def Gpu(self):
         """节点上的总 GPU 卡数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Gpu

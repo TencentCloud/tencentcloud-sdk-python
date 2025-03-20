@@ -28,36 +28,26 @@ class AppInfoItem(AbstractModel):
         :param _AppPackage: 小程序apiiid
         :type AppPackage: str
         :param _AppName: 小程序应用名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppName: str
         :param _AppVersion: 小程序应用版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppVersion: str
         :param _Platform: 应用平台, 0:android, 1:ios, 2:小程序
         :type Platform: int
         :param _ReportUrl: 小程序隐私诊断报告下载链接
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReportUrl: str
         :param _ReportTitle: 小程序隐私诊断报告名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReportTitle: str
         :param _BehaviorUrl: 小程序隐私诊断堆栈报告下载链接
-注意：此字段可能返回 null，表示取不到有效值。
         :type BehaviorUrl: str
         :param _BehaviorTitle: 小程序隐私诊断堆栈报告名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type BehaviorTitle: str
         :param _HighRiskCount: 诊断风险项数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type HighRiskCount: int
         :param _PrivacyTextName: 隐私申明文件名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type PrivacyTextName: str
         :param _SoftwareMD5: 软件MD5
-注意：此字段可能返回 null，表示取不到有效值。
         :type SoftwareMD5: str
         :param _PrivacyTextMD5: 隐私文本MD5
-注意：此字段可能返回 null，表示取不到有效值。
         :type PrivacyTextMD5: str
         """
         self._AppPackage = None
@@ -87,7 +77,6 @@ class AppInfoItem(AbstractModel):
     @property
     def AppName(self):
         """小程序应用名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AppName
@@ -99,7 +88,6 @@ class AppInfoItem(AbstractModel):
     @property
     def AppVersion(self):
         """小程序应用版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AppVersion
@@ -122,7 +110,6 @@ class AppInfoItem(AbstractModel):
     @property
     def ReportUrl(self):
         """小程序隐私诊断报告下载链接
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ReportUrl
@@ -134,7 +121,6 @@ class AppInfoItem(AbstractModel):
     @property
     def ReportTitle(self):
         """小程序隐私诊断报告名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ReportTitle
@@ -146,7 +132,6 @@ class AppInfoItem(AbstractModel):
     @property
     def BehaviorUrl(self):
         """小程序隐私诊断堆栈报告下载链接
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BehaviorUrl
@@ -158,7 +143,6 @@ class AppInfoItem(AbstractModel):
     @property
     def BehaviorTitle(self):
         """小程序隐私诊断堆栈报告名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BehaviorTitle
@@ -170,7 +154,6 @@ class AppInfoItem(AbstractModel):
     @property
     def HighRiskCount(self):
         """诊断风险项数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._HighRiskCount
@@ -182,7 +165,6 @@ class AppInfoItem(AbstractModel):
     @property
     def PrivacyTextName(self):
         """隐私申明文件名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PrivacyTextName
@@ -194,7 +176,6 @@ class AppInfoItem(AbstractModel):
     @property
     def SoftwareMD5(self):
         """软件MD5
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SoftwareMD5
@@ -206,7 +187,6 @@ class AppInfoItem(AbstractModel):
     @property
     def PrivacyTextMD5(self):
         """隐私文本MD5
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PrivacyTextMD5
@@ -253,7 +233,6 @@ class AppTaskData(AbstractModel):
         :param _TaskStatus: 0:默认值(待检测/待咨询), 1.检测中, 2:待评估, 3:评估中, 4:任务完成/咨询完成, 5:任务失败, 6:咨询中;
         :type TaskStatus: int
         :param _TaskErrMsg: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskErrMsg: str
         :param _Source: 任务来源,0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android);
         :type Source: int
@@ -264,7 +243,6 @@ class AppTaskData(AbstractModel):
         :param _EndTime: 任务完成时间(更新时间)
         :type EndTime: str
         :param _ContactName: 联系人信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ContactName: str
         """
         self._TaskID = None
@@ -313,7 +291,6 @@ class AppTaskData(AbstractModel):
     @property
     def TaskErrMsg(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskErrMsg
@@ -369,7 +346,6 @@ class AppTaskData(AbstractModel):
     @property
     def ContactName(self):
         """联系人信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ContactName
@@ -1581,7 +1557,6 @@ class DescribeFlySecMiniAppReportUrlResponse(AbstractModel):
         :param _Ret: 返回值, 0:成功, 其他值请查看“返回值”定义
         :type Ret: int
         :param _Url: 诊断报告下载链接
-注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1604,7 +1579,6 @@ class DescribeFlySecMiniAppReportUrlResponse(AbstractModel):
     @property
     def Url(self):
         """诊断报告下载链接
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Url
@@ -1737,10 +1711,8 @@ class DescribeFlySecMiniAppScanReportListResponse(AbstractModel):
         :param _Ret: 返回值, 0:成功, 其他值请查看“返回值”定义
         :type Ret: int
         :param _Data: 诊断报告数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of FlySecMiniAppReportData
         :param _Total: 诊断任务数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1764,7 +1736,6 @@ class DescribeFlySecMiniAppScanReportListResponse(AbstractModel):
     @property
     def Data(self):
         """诊断报告数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of FlySecMiniAppReportData
         """
         return self._Data
@@ -1776,7 +1747,6 @@ class DescribeFlySecMiniAppScanReportListResponse(AbstractModel):
     @property
     def Total(self):
         """诊断任务数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -1900,10 +1870,8 @@ class DescribeFlySecMiniAppScanTaskListResponse(AbstractModel):
         :param _Ret: 返回值, 0:成功, 其他值请查看“返回值”定义
         :type Ret: int
         :param _Data: 诊断任务数据列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of FlySecMiniAppTaskData
         :param _Total: 诊断任务数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1927,7 +1895,6 @@ class DescribeFlySecMiniAppScanTaskListResponse(AbstractModel):
     @property
     def Data(self):
         """诊断任务数据列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of FlySecMiniAppTaskData
         """
         return self._Data
@@ -1939,7 +1906,6 @@ class DescribeFlySecMiniAppScanTaskListResponse(AbstractModel):
     @property
     def Total(self):
         """诊断任务数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -2180,13 +2146,10 @@ class DescribeFlySecMiniAppScanTaskStatusResponse(AbstractModel):
         :param _Status: 诊断状态, 0:排队中, 1:成功, 2:失败, 3:进行中
         :type Status: int
         :param _Errno: 诊断失败错误码
-注意：此字段可能返回 null，表示取不到有效值。
         :type Errno: int
         :param _MiniAppName: 小程序名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type MiniAppName: str
         :param _MiniAppVersion: 小程序版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type MiniAppVersion: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2223,7 +2186,6 @@ class DescribeFlySecMiniAppScanTaskStatusResponse(AbstractModel):
     @property
     def Errno(self):
         """诊断失败错误码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Errno
@@ -2235,7 +2197,6 @@ class DescribeFlySecMiniAppScanTaskStatusResponse(AbstractModel):
     @property
     def MiniAppName(self):
         """小程序名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MiniAppName
@@ -2247,7 +2208,6 @@ class DescribeFlySecMiniAppScanTaskStatusResponse(AbstractModel):
     @property
     def MiniAppVersion(self):
         """小程序版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MiniAppVersion
@@ -2527,10 +2487,8 @@ class DescribeScanTaskListResponse(AbstractModel):
         :param _Result: 返回值, 0:成功, 其他值请查看“返回值”定义
         :type Result: int
         :param _Data: 诊断任务数据列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of AppTaskData
         :param _Total: 任务总数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2554,7 +2512,6 @@ class DescribeScanTaskListResponse(AbstractModel):
     @property
     def Data(self):
         """诊断任务数据列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AppTaskData
         """
         return self._Data
@@ -2566,7 +2523,6 @@ class DescribeScanTaskListResponse(AbstractModel):
     @property
     def Total(self):
         """任务总数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -2707,10 +2663,8 @@ class DescribeScanTaskReportUrlResponse(AbstractModel):
         :param _ReportUrl: 诊断报告/堆栈信息下载链接
         :type ReportUrl: str
         :param _ReportTitle: 诊断报告/堆栈名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReportTitle: str
         :param _ReportResult: 诊断json结果内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReportResult: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2746,7 +2700,6 @@ class DescribeScanTaskReportUrlResponse(AbstractModel):
     @property
     def ReportTitle(self):
         """诊断报告/堆栈名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ReportTitle
@@ -2758,7 +2711,6 @@ class DescribeScanTaskReportUrlResponse(AbstractModel):
     @property
     def ReportResult(self):
         """诊断json结果内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ReportResult
@@ -3494,20 +3446,16 @@ class TaskFlowStepsInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _FlowNo: 流程编号
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowNo: str
         :param _FlowName: 流程名称
         :type FlowName: str
         :param _FlowStatus: 流程状态, 其他值:进行中, 2:成功, 3:失败
         :type FlowStatus: int
         :param _FlowStateDesc: 流程状态描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowStateDesc: str
         :param _StartTime: 流程启动时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
         :param _EndTime: 流程完成时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         """
         self._FlowNo = None
@@ -3520,7 +3468,6 @@ class TaskFlowStepsInfo(AbstractModel):
     @property
     def FlowNo(self):
         """流程编号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FlowNo
@@ -3554,7 +3501,6 @@ class TaskFlowStepsInfo(AbstractModel):
     @property
     def FlowStateDesc(self):
         """流程状态描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FlowStateDesc
@@ -3566,7 +3512,6 @@ class TaskFlowStepsInfo(AbstractModel):
     @property
     def StartTime(self):
         """流程启动时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StartTime
@@ -3578,7 +3523,6 @@ class TaskFlowStepsInfo(AbstractModel):
     @property
     def EndTime(self):
         """流程完成时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndTime

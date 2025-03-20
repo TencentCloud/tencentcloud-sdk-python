@@ -26,16 +26,12 @@ class AdvancedRetentionPolicy(AbstractModel):
     def __init__(self):
         r"""
         :param _Days: 保留最新快照Days天内的每天最新的一个快照，取值范围：[0, 100]
-注意：此字段可能返回 null，表示取不到有效值。
         :type Days: int
         :param _Weeks: 保留最新快照Weeks周内的每周最新的一个快照，取值范围：[0, 100]
-注意：此字段可能返回 null，表示取不到有效值。
         :type Weeks: int
         :param _Months: 保留最新快照Months月内的每月最新的一个快照， 取值范围：[0, 100]
-注意：此字段可能返回 null，表示取不到有效值。
         :type Months: int
         :param _Years: 保留最新快照Years年内的每年最新的一个快照，取值范围：[0, 100]
-注意：此字段可能返回 null，表示取不到有效值。
         :type Years: int
         """
         self._Days = None
@@ -46,7 +42,6 @@ class AdvancedRetentionPolicy(AbstractModel):
     @property
     def Days(self):
         """保留最新快照Days天内的每天最新的一个快照，取值范围：[0, 100]
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Days
@@ -58,7 +53,6 @@ class AdvancedRetentionPolicy(AbstractModel):
     @property
     def Weeks(self):
         """保留最新快照Weeks周内的每周最新的一个快照，取值范围：[0, 100]
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Weeks
@@ -70,7 +64,6 @@ class AdvancedRetentionPolicy(AbstractModel):
     @property
     def Months(self):
         """保留最新快照Months月内的每月最新的一个快照， 取值范围：[0, 100]
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Months
@@ -82,7 +75,6 @@ class AdvancedRetentionPolicy(AbstractModel):
     @property
     def Years(self):
         """保留最新快照Years年内的每年最新的一个快照，取值范围：[0, 100]
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Years
@@ -749,7 +741,6 @@ class AutoSnapshotPolicy(AbstractModel):
 </ul>
         :type AutoSnapshotPolicyState: str
         :param _IsCopyToRemote: 是否是跨账号复制快照快照, 1：是, 0: 不是
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsCopyToRemote: int
         :param _IsPermanent: 使用该定期快照策略创建出来的快照是否永久保留。
         :type IsPermanent: bool
@@ -769,13 +760,10 @@ class AutoSnapshotPolicy(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type CopyToAccountUin: str
         :param _InstanceIdSet: 已绑定当前定期快照策略的实例ID列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceIdSet: list of str
         :param _RetentionMonths: 该定期快照创建的快照可以保留的月数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RetentionMonths: int
         :param _RetentionAmount: 该定期快照创建的快照最大保留数量。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RetentionAmount: int
         :param _AdvancedRetentionPolicy: 定期快照高级保留策略。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -784,7 +772,6 @@ class AutoSnapshotPolicy(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type CopyFromAccountUin: str
         :param _Tags: 标签。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
         """
         self._DiskIdSet = None
@@ -846,7 +833,6 @@ class AutoSnapshotPolicy(AbstractModel):
     @property
     def IsCopyToRemote(self):
         """是否是跨账号复制快照快照, 1：是, 0: 不是
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IsCopyToRemote
@@ -947,7 +933,6 @@ class AutoSnapshotPolicy(AbstractModel):
     @property
     def InstanceIdSet(self):
         """已绑定当前定期快照策略的实例ID列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._InstanceIdSet
@@ -959,7 +944,6 @@ class AutoSnapshotPolicy(AbstractModel):
     @property
     def RetentionMonths(self):
         """该定期快照创建的快照可以保留的月数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RetentionMonths
@@ -971,7 +955,6 @@ class AutoSnapshotPolicy(AbstractModel):
     @property
     def RetentionAmount(self):
         """该定期快照创建的快照最大保留数量。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RetentionAmount
@@ -1007,7 +990,6 @@ class AutoSnapshotPolicy(AbstractModel):
     @property
     def Tags(self):
         """标签。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._Tags
@@ -1326,7 +1308,6 @@ class CdcSize(AbstractModel):
         :param _DiskTotal: 独享集群的总容量大小，单位GiB
         :type DiskTotal: int
         :param _DiskAvailable: 独享集群的可用容量大小，单位GiB
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiskAvailable: int
         """
         self._DiskTotal = None
@@ -1346,7 +1327,6 @@ class CdcSize(AbstractModel):
     @property
     def DiskAvailable(self):
         """独享集群的可用容量大小，单位GiB
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DiskAvailable

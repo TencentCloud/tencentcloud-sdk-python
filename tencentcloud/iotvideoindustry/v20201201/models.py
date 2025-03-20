@@ -26,10 +26,8 @@ class AbnormalEvents(AbstractModel):
     def __init__(self):
         r"""
         :param _Date: 对应查询日期
-注意：此字段可能返回 null，表示取不到有效值。
         :type Date: str
         :param _Info: 列表信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Info: list of AbnormalEventsInfo
         """
         self._Date = None
@@ -38,7 +36,6 @@ class AbnormalEvents(AbstractModel):
     @property
     def Date(self):
         """对应查询日期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Date
@@ -50,7 +47,6 @@ class AbnormalEvents(AbstractModel):
     @property
     def Info(self):
         """列表信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AbnormalEventsInfo
         """
         return self._Info
@@ -86,10 +82,8 @@ class AbnormalEventsInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Key: 类型值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Key: int
         :param _Count: 类型总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Count: int
         """
         self._Key = None
@@ -98,7 +92,6 @@ class AbnormalEventsInfo(AbstractModel):
     @property
     def Key(self):
         """类型值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Key
@@ -110,7 +103,6 @@ class AbnormalEventsInfo(AbstractModel):
     @property
     def Count(self):
         """类型总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Count
@@ -141,43 +133,30 @@ class AllDeviceInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _DeviceId: 设备唯一标识
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceId: str
         :param _DeviceType: 设备类型；2：IPC
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceType: int
         :param _Status: 设备状态；0：设备不在线；1：设备在线；2：设备隔离中；3：设备未注册
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: int
         :param _ExtraInformation: 设备扩展属性
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExtraInformation: str
         :param _NickName: 设备名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type NickName: str
         :param _GroupPath: 设备绑定分组路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupPath: str
         :param _DeviceCode: 设备编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceCode: str
         :param _IsRecord: 是否存在录像,，0:不存在；1：存在
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsRecord: int
         :param _Recordable: 该设备是否可录制
-注意：此字段可能返回 null，表示取不到有效值。
         :type Recordable: int
         :param _Protocol: 设备接入协议
-注意：此字段可能返回 null，表示取不到有效值。
         :type Protocol: str
         :param _GroupId: 组Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupId: str
         :param _GroupName: 组名
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupName: str
         """
         self._DeviceId = None
@@ -197,7 +176,6 @@ class AllDeviceInfo(AbstractModel):
     @property
     def DeviceId(self):
         """设备唯一标识
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceId
@@ -209,7 +187,6 @@ class AllDeviceInfo(AbstractModel):
     @property
     def DeviceType(self):
         """设备类型；2：IPC
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DeviceType
@@ -221,7 +198,6 @@ class AllDeviceInfo(AbstractModel):
     @property
     def Status(self):
         """设备状态；0：设备不在线；1：设备在线；2：设备隔离中；3：设备未注册
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -233,7 +209,6 @@ class AllDeviceInfo(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CreateTime
@@ -245,7 +220,6 @@ class AllDeviceInfo(AbstractModel):
     @property
     def ExtraInformation(self):
         """设备扩展属性
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ExtraInformation
@@ -257,7 +231,6 @@ class AllDeviceInfo(AbstractModel):
     @property
     def NickName(self):
         """设备名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NickName
@@ -269,7 +242,6 @@ class AllDeviceInfo(AbstractModel):
     @property
     def GroupPath(self):
         """设备绑定分组路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupPath
@@ -281,7 +253,6 @@ class AllDeviceInfo(AbstractModel):
     @property
     def DeviceCode(self):
         """设备编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceCode
@@ -293,7 +264,6 @@ class AllDeviceInfo(AbstractModel):
     @property
     def IsRecord(self):
         """是否存在录像,，0:不存在；1：存在
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IsRecord
@@ -305,7 +275,6 @@ class AllDeviceInfo(AbstractModel):
     @property
     def Recordable(self):
         """该设备是否可录制
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Recordable
@@ -317,7 +286,6 @@ class AllDeviceInfo(AbstractModel):
     @property
     def Protocol(self):
         """设备接入协议
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Protocol
@@ -329,7 +297,6 @@ class AllDeviceInfo(AbstractModel):
     @property
     def GroupId(self):
         """组Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupId
@@ -341,7 +308,6 @@ class AllDeviceInfo(AbstractModel):
     @property
     def GroupName(self):
         """组名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupName
@@ -466,25 +432,18 @@ class ChannelDetail(AbstractModel):
         :param _ChannelId: 通道唯一标识
         :type ChannelId: str
         :param _ChannelType: 通道类型 0：未知；1：视频通道；2：音频通道；3：告警通道
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChannelType: int
         :param _ChannelCode: 20位国标通道编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChannelCode: str
         :param _ExtraInformation: 通道扩展信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExtraInformation: str
         :param _Status: 通道在线状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _IsRecord: 通道是否存在录像标识 0：无录像；1：有录像
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsRecord: int
         :param _DeviceId: 通道所属设备唯一标识
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceId: str
         :param _BusinessGroupId: 通道所属虚拟组织的ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessGroupId: str
         """
         self._ChannelName = None
@@ -522,7 +481,6 @@ class ChannelDetail(AbstractModel):
     @property
     def ChannelType(self):
         """通道类型 0：未知；1：视频通道；2：音频通道；3：告警通道
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ChannelType
@@ -534,7 +492,6 @@ class ChannelDetail(AbstractModel):
     @property
     def ChannelCode(self):
         """20位国标通道编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ChannelCode
@@ -546,7 +503,6 @@ class ChannelDetail(AbstractModel):
     @property
     def ExtraInformation(self):
         """通道扩展信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ExtraInformation
@@ -558,7 +514,6 @@ class ChannelDetail(AbstractModel):
     @property
     def Status(self):
         """通道在线状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -570,7 +525,6 @@ class ChannelDetail(AbstractModel):
     @property
     def IsRecord(self):
         """通道是否存在录像标识 0：无录像；1：有录像
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IsRecord
@@ -582,7 +536,6 @@ class ChannelDetail(AbstractModel):
     @property
     def DeviceId(self):
         """通道所属设备唯一标识
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceId
@@ -594,7 +547,6 @@ class ChannelDetail(AbstractModel):
     @property
     def BusinessGroupId(self):
         """通道所属虚拟组织的ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BusinessGroupId
@@ -632,10 +584,8 @@ class ChannelItem(AbstractModel):
     def __init__(self):
         r"""
         :param _DeviceId: 设备唯一标识
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceId: str
         :param _ChannelId: 通道唯一标识
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChannelId: str
         """
         self._DeviceId = None
@@ -644,7 +594,6 @@ class ChannelItem(AbstractModel):
     @property
     def DeviceId(self):
         """设备唯一标识
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceId
@@ -656,7 +605,6 @@ class ChannelItem(AbstractModel):
     @property
     def ChannelId(self):
         """通道唯一标识
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ChannelId
@@ -1478,10 +1426,8 @@ class CreateDeviceGroupResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Status: 响应结果，“OK”为成功，其他为失败
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _GroupId: 分组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1493,7 +1439,6 @@ class CreateDeviceGroupResponse(AbstractModel):
     @property
     def Status(self):
         """响应结果，“OK”为成功，其他为失败
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -1505,7 +1450,6 @@ class CreateDeviceGroupResponse(AbstractModel):
     @property
     def GroupId(self):
         """分组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupId
@@ -1621,13 +1565,10 @@ class CreateDeviceResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _DeviceCode: 设备编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceCode: str
         :param _DeviceId: 设备唯一标识
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceId: str
         :param _VirtualGroupId: 设备虚拟组信息，仅在创建NVR时返回该值
-注意：此字段可能返回 null，表示取不到有效值。
         :type VirtualGroupId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1640,7 +1581,6 @@ class CreateDeviceResponse(AbstractModel):
     @property
     def DeviceCode(self):
         """设备编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceCode
@@ -1652,7 +1592,6 @@ class CreateDeviceResponse(AbstractModel):
     @property
     def DeviceId(self):
         """设备唯一标识
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceId
@@ -1664,7 +1603,6 @@ class CreateDeviceResponse(AbstractModel):
     @property
     def VirtualGroupId(self):
         """设备虚拟组信息，仅在创建NVR时返回该值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VirtualGroupId
@@ -1751,10 +1689,8 @@ class CreateLiveChannelResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _LiveChannelId: 直播频道ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type LiveChannelId: str
         :param _PushStreamAddress: 直播频道推流地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type PushStreamAddress: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1766,7 +1702,6 @@ class CreateLiveChannelResponse(AbstractModel):
     @property
     def LiveChannelId(self):
         """直播频道ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LiveChannelId
@@ -1778,7 +1713,6 @@ class CreateLiveChannelResponse(AbstractModel):
     @property
     def PushStreamAddress(self):
         """直播频道推流地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PushStreamAddress
@@ -1909,7 +1843,6 @@ class CreateLiveRecordPlanResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _PlanId: 录制计划名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type PlanId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1920,7 +1853,6 @@ class CreateLiveRecordPlanResponse(AbstractModel):
     @property
     def PlanId(self):
         """录制计划名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PlanId
@@ -2080,7 +2012,6 @@ class CreateMessageForwardResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _IntId: 配置ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type IntId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2091,7 +2022,6 @@ class CreateMessageForwardResponse(AbstractModel):
     @property
     def IntId(self):
         """配置ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IntId
@@ -2519,7 +2449,6 @@ class CreateSceneResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _IntId: 场景ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type IntId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2530,7 +2459,6 @@ class CreateSceneResponse(AbstractModel):
     @property
     def IntId(self):
         """场景ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IntId
@@ -2793,7 +2721,6 @@ class DeleteDeviceGroupResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Status: 响应结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2804,7 +2731,6 @@ class DeleteDeviceGroupResponse(AbstractModel):
     @property
     def Status(self):
         """响应结果
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -2874,7 +2800,6 @@ class DeleteDeviceResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Status: 操作结果 OK-成功； 其他-失败
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2885,7 +2810,6 @@ class DeleteDeviceResponse(AbstractModel):
     @property
     def Status(self):
         """操作结果 OK-成功； 其他-失败
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -3448,7 +3372,6 @@ class DeleteTimeTemplateResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Status: 操作结果，OK：成功，其他：失败
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3459,7 +3382,6 @@ class DeleteTimeTemplateResponse(AbstractModel):
     @property
     def Status(self):
         """操作结果，OK：成功，其他：失败
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -3687,7 +3609,6 @@ class DescribeAbnormalEventsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 异动事件走势列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of AbnormalEvents
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3698,7 +3619,6 @@ class DescribeAbnormalEventsResponse(AbstractModel):
     @property
     def Data(self):
         """异动事件走势列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AbnormalEvents
         """
         return self._Data
@@ -3833,10 +3753,8 @@ class DescribeAllDeviceListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 设备总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _Devices: 设备详细信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Devices: list of AllDeviceInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3848,7 +3766,6 @@ class DescribeAllDeviceListResponse(AbstractModel):
     @property
     def TotalCount(self):
         """设备总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -3860,7 +3777,6 @@ class DescribeAllDeviceListResponse(AbstractModel):
     @property
     def Devices(self):
         """设备详细信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AllDeviceInfo
         """
         return self._Devices
@@ -3966,10 +3882,8 @@ class DescribeBindSceneChannelsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Total: 总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _List: 通道列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of ChannelItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3981,7 +3895,6 @@ class DescribeBindSceneChannelsResponse(AbstractModel):
     @property
     def Total(self):
         """总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -3993,7 +3906,6 @@ class DescribeBindSceneChannelsResponse(AbstractModel):
     @property
     def List(self):
         """通道列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ChannelItem
         """
         return self._List
@@ -4099,10 +4011,8 @@ class DescribeBindSceneDevicesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Total: 总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _List: 设备列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of DeviceItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4114,7 +4024,6 @@ class DescribeBindSceneDevicesResponse(AbstractModel):
     @property
     def Total(self):
         """总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -4126,7 +4035,6 @@ class DescribeBindSceneDevicesResponse(AbstractModel):
     @property
     def List(self):
         """设备列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DeviceItem
         """
         return self._List
@@ -4595,10 +4503,8 @@ class DescribeChannelsByLiveRecordPlanResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 总个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _LiveChannels: 通道详情数组
-注意：此字段可能返回 null，表示取不到有效值。
         :type LiveChannels: list of LiveChannelItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4610,7 +4516,6 @@ class DescribeChannelsByLiveRecordPlanResponse(AbstractModel):
     @property
     def TotalCount(self):
         """总个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -4622,7 +4527,6 @@ class DescribeChannelsByLiveRecordPlanResponse(AbstractModel):
     @property
     def LiveChannels(self):
         """通道详情数组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LiveChannelItem
         """
         return self._LiveChannels
@@ -4773,10 +4677,8 @@ class DescribeChannelsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 通道总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _Channels: 通道详情列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Channels: list of ChannelDetail
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4788,7 +4690,6 @@ class DescribeChannelsResponse(AbstractModel):
     @property
     def TotalCount(self):
         """通道总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -4800,7 +4701,6 @@ class DescribeChannelsResponse(AbstractModel):
     @property
     def Channels(self):
         """通道详情列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ChannelDetail
         """
         return self._Channels
@@ -5060,10 +4960,8 @@ class DescribeDeviceEventResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _Events: 事件列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Events: list of Events
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5075,7 +4973,6 @@ class DescribeDeviceEventResponse(AbstractModel):
     @property
     def TotalCount(self):
         """总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -5087,7 +4984,6 @@ class DescribeDeviceEventResponse(AbstractModel):
     @property
     def Events(self):
         """事件列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Events
         """
         return self._Events
@@ -5163,7 +5059,6 @@ class DescribeDeviceGroupResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _DevGroups: 设备所在分组信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type DevGroups: list of DevGroupInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5174,7 +5069,6 @@ class DescribeDeviceGroupResponse(AbstractModel):
     @property
     def DevGroups(self):
         """设备所在分组信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DevGroupInfo
         """
         return self._DevGroups
@@ -5878,7 +5772,6 @@ class DescribeGroupByIdResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Group: 分组信息详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type Group: :class:`tencentcloud.iotvideoindustry.v20201201.models.GroupItem`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5889,7 +5782,6 @@ class DescribeGroupByIdResponse(AbstractModel):
     @property
     def Group(self):
         """分组信息详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.GroupItem`
         """
         return self._Group
@@ -5961,7 +5853,6 @@ class DescribeGroupByPathResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Group: 分组信息详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type Group: :class:`tencentcloud.iotvideoindustry.v20201201.models.GroupItem`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5972,7 +5863,6 @@ class DescribeGroupByPathResponse(AbstractModel):
     @property
     def Group(self):
         """分组信息详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.GroupItem`
         """
         return self._Group
@@ -6121,10 +6011,8 @@ class DescribeGroupDevicesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 分组绑定的设备数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _DeviceList: 设备详情列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceList: list of GroupDeviceItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6136,7 +6024,6 @@ class DescribeGroupDevicesResponse(AbstractModel):
     @property
     def TotalCount(self):
         """分组绑定的设备数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -6148,7 +6035,6 @@ class DescribeGroupDevicesResponse(AbstractModel):
     @property
     def DeviceList(self):
         """设备详情列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of GroupDeviceItem
         """
         return self._DeviceList
@@ -6224,7 +6110,6 @@ class DescribeGroupsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Groups: 分组详细信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Groups: list of GroupInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6235,7 +6120,6 @@ class DescribeGroupsResponse(AbstractModel):
     @property
     def Groups(self):
         """分组详细信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of GroupInfo
         """
         return self._Groups
@@ -6355,10 +6239,8 @@ class DescribeIPCChannelsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 通道总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _DeviceList: 通道详情列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceList: list of GroupDeviceItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6370,7 +6252,6 @@ class DescribeIPCChannelsResponse(AbstractModel):
     @property
     def TotalCount(self):
         """通道总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -6382,7 +6263,6 @@ class DescribeIPCChannelsResponse(AbstractModel):
     @property
     def DeviceList(self):
         """通道详情列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of GroupDeviceItem
         """
         return self._DeviceList
@@ -6621,25 +6501,18 @@ class DescribeLiveChannelResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _LiveChannelId: 频道ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type LiveChannelId: str
         :param _LiveChannelName: 频道名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type LiveChannelName: str
         :param _LiveChannelType: 直播频道类型 1：固定直播；2：移动直播
-注意：此字段可能返回 null，表示取不到有效值。
         :type LiveChannelType: int
         :param _LiveStatus: 通道直播状态：1: 未推流，2: 推流中
-注意：此字段可能返回 null，表示取不到有效值。
         :type LiveStatus: int
         :param _PushStreamAddress: 推流地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type PushStreamAddress: str
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: list of str
         :param _UpdateTime: 修改时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6656,7 +6529,6 @@ class DescribeLiveChannelResponse(AbstractModel):
     @property
     def LiveChannelId(self):
         """频道ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LiveChannelId
@@ -6668,7 +6540,6 @@ class DescribeLiveChannelResponse(AbstractModel):
     @property
     def LiveChannelName(self):
         """频道名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LiveChannelName
@@ -6680,7 +6551,6 @@ class DescribeLiveChannelResponse(AbstractModel):
     @property
     def LiveChannelType(self):
         """直播频道类型 1：固定直播；2：移动直播
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LiveChannelType
@@ -6692,7 +6562,6 @@ class DescribeLiveChannelResponse(AbstractModel):
     @property
     def LiveStatus(self):
         """通道直播状态：1: 未推流，2: 推流中
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LiveStatus
@@ -6704,7 +6573,6 @@ class DescribeLiveChannelResponse(AbstractModel):
     @property
     def PushStreamAddress(self):
         """推流地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PushStreamAddress
@@ -6716,7 +6584,6 @@ class DescribeLiveChannelResponse(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._CreateTime
@@ -6728,7 +6595,6 @@ class DescribeLiveChannelResponse(AbstractModel):
     @property
     def UpdateTime(self):
         """修改时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._UpdateTime
@@ -7305,10 +7171,8 @@ class DescribeLiveVideoListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Total: 总的条数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _RecordList: 录制任务详情数组
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecordList: list of LiveRecordItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7320,7 +7184,6 @@ class DescribeLiveVideoListResponse(AbstractModel):
     @property
     def Total(self):
         """总的条数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -7332,7 +7195,6 @@ class DescribeLiveVideoListResponse(AbstractModel):
     @property
     def RecordList(self):
         """录制任务详情数组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LiveRecordItem
         """
         return self._RecordList
@@ -7408,35 +7270,27 @@ class DescribeMessageForwardResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _RegionId: 区域ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionId: str
         :param _RegionName: 区域名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionName: str
         :param _Instance: 实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type Instance: str
         :param _InstanceName: 实例名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceName: str
         :param _IntId: 配置ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type IntId: int
         :param _MessageType: json数组， 转发类型 1: 告警 2:GPS
-注意：此字段可能返回 null，表示取不到有效值。
         :type MessageType: str
         :param _TopicId: kafka topic id
-注意：此字段可能返回 null，表示取不到有效值。
         :type TopicId: str
         :param _CreateTime: 配置创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _Uin: 用户Uin信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Uin: str
         :param _TopicName: kafka topic 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TopicName: str
+        :param _UpdateTime: 更新时间
+        :type UpdateTime: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -7450,12 +7304,12 @@ class DescribeMessageForwardResponse(AbstractModel):
         self._CreateTime = None
         self._Uin = None
         self._TopicName = None
+        self._UpdateTime = None
         self._RequestId = None
 
     @property
     def RegionId(self):
         """区域ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RegionId
@@ -7467,7 +7321,6 @@ class DescribeMessageForwardResponse(AbstractModel):
     @property
     def RegionName(self):
         """区域名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RegionName
@@ -7479,7 +7332,6 @@ class DescribeMessageForwardResponse(AbstractModel):
     @property
     def Instance(self):
         """实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Instance
@@ -7491,7 +7343,6 @@ class DescribeMessageForwardResponse(AbstractModel):
     @property
     def InstanceName(self):
         """实例名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceName
@@ -7503,7 +7354,6 @@ class DescribeMessageForwardResponse(AbstractModel):
     @property
     def IntId(self):
         """配置ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IntId
@@ -7515,7 +7365,6 @@ class DescribeMessageForwardResponse(AbstractModel):
     @property
     def MessageType(self):
         """json数组， 转发类型 1: 告警 2:GPS
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MessageType
@@ -7527,7 +7376,6 @@ class DescribeMessageForwardResponse(AbstractModel):
     @property
     def TopicId(self):
         """kafka topic id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TopicId
@@ -7539,7 +7387,6 @@ class DescribeMessageForwardResponse(AbstractModel):
     @property
     def CreateTime(self):
         """配置创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -7551,7 +7398,6 @@ class DescribeMessageForwardResponse(AbstractModel):
     @property
     def Uin(self):
         """用户Uin信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Uin
@@ -7563,7 +7409,6 @@ class DescribeMessageForwardResponse(AbstractModel):
     @property
     def TopicName(self):
         """kafka topic 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TopicName
@@ -7571,6 +7416,17 @@ class DescribeMessageForwardResponse(AbstractModel):
     @TopicName.setter
     def TopicName(self, TopicName):
         self._TopicName = TopicName
+
+    @property
+    def UpdateTime(self):
+        """更新时间
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
 
     @property
     def RequestId(self):
@@ -7595,6 +7451,7 @@ class DescribeMessageForwardResponse(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._Uin = params.get("Uin")
         self._TopicName = params.get("TopicName")
+        self._UpdateTime = params.get("UpdateTime")
         self._RequestId = params.get("RequestId")
 
 
@@ -7775,7 +7632,6 @@ class DescribeMonitorDataByDateResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 统计数据列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of RecordStatistic
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7786,7 +7642,6 @@ class DescribeMonitorDataByDateResponse(AbstractModel):
     @property
     def Data(self):
         """统计数据列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RecordStatistic
         """
         return self._Data
@@ -7876,7 +7731,6 @@ class DescribePresetListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 预置列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of PresetItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7887,7 +7741,6 @@ class DescribePresetListResponse(AbstractModel):
     @property
     def Data(self):
         """预置列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PresetItem
         """
         return self._Data
@@ -8022,7 +7875,6 @@ class DescribeRecordDatesByChannelResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Dates: 含有录像文件的日期列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Dates: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8033,7 +7885,6 @@ class DescribeRecordDatesByChannelResponse(AbstractModel):
     @property
     def Dates(self):
         """含有录像文件的日期列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Dates
@@ -8466,7 +8317,6 @@ class DescribeRecordingPlanByIdResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Plan: 录制计划详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type Plan: :class:`tencentcloud.iotvideoindustry.v20201201.models.RecordPlanDetail`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8477,7 +8327,6 @@ class DescribeRecordingPlanByIdResponse(AbstractModel):
     @property
     def Plan(self):
         """录制计划详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.RecordPlanDetail`
         """
         return self._Plan
@@ -8519,10 +8368,8 @@ class DescribeRecordingPlansResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Plans: 录制计划详情·列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Plans: list of RecordPlanDetail
         :param _TotalCount: 录制计划总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8534,7 +8381,6 @@ class DescribeRecordingPlansResponse(AbstractModel):
     @property
     def Plans(self):
         """录制计划详情·列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RecordPlanDetail
         """
         return self._Plans
@@ -8546,7 +8392,6 @@ class DescribeRecordingPlansResponse(AbstractModel):
     @property
     def TotalCount(self):
         """录制计划总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -8673,25 +8518,18 @@ class DescribeSceneResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _IntId: 场景ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type IntId: int
         :param _RecordDuration: 录制时长(秒)
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecordDuration: int
         :param _SceneName: 场景名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type SceneName: str
         :param _SceneTrigger: 场景触发规则
-注意：此字段可能返回 null，表示取不到有效值。
         :type SceneTrigger: str
         :param _StoreDuration: 存储时长 (天)
-注意：此字段可能返回 null，表示取不到有效值。
         :type StoreDuration: int
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _UpdateTime: 更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param _Uin: 用户Uin
         :type Uin: str
@@ -8711,7 +8549,6 @@ class DescribeSceneResponse(AbstractModel):
     @property
     def IntId(self):
         """场景ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IntId
@@ -8723,7 +8560,6 @@ class DescribeSceneResponse(AbstractModel):
     @property
     def RecordDuration(self):
         """录制时长(秒)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RecordDuration
@@ -8735,7 +8571,6 @@ class DescribeSceneResponse(AbstractModel):
     @property
     def SceneName(self):
         """场景名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SceneName
@@ -8747,7 +8582,6 @@ class DescribeSceneResponse(AbstractModel):
     @property
     def SceneTrigger(self):
         """场景触发规则
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SceneTrigger
@@ -8759,7 +8593,6 @@ class DescribeSceneResponse(AbstractModel):
     @property
     def StoreDuration(self):
         """存储时长 (天)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._StoreDuration
@@ -8771,7 +8604,6 @@ class DescribeSceneResponse(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -8783,7 +8615,6 @@ class DescribeSceneResponse(AbstractModel):
     @property
     def UpdateTime(self):
         """更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime
@@ -8886,10 +8717,8 @@ class DescribeScenesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Total: 场景总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _List: 场景列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of SceneItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8901,7 +8730,6 @@ class DescribeScenesResponse(AbstractModel):
     @property
     def Total(self):
         """场景总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -8913,7 +8741,6 @@ class DescribeScenesResponse(AbstractModel):
     @property
     def List(self):
         """场景列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SceneItem
         """
         return self._List
@@ -9119,25 +8946,18 @@ class DescribeStatisticSummaryResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _RecordingDevice: 录制设备总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecordingDevice: int
         :param _NonRecordingDevice: 非录制设备总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type NonRecordingDevice: int
         :param _WatchFlux: 观看流量总数。为直播观看流量与点播观看流量之和。单位：GB
-注意：此字段可能返回 null，表示取不到有效值。
         :type WatchFlux: float
         :param _StorageUsage: 累计有效存储容量总数。单位：GB
-注意：此字段可能返回 null，表示取不到有效值。
         :type StorageUsage: float
         :param _P2PFluxTotal: X-P2P分享流量。单位 Byte
-注意：此字段可能返回 null，表示取不到有效值。
         :type P2PFluxTotal: float
         :param _P2PPeakValue: X-P2P峰值带宽。 单位bps
-注意：此字段可能返回 null，表示取不到有效值。
         :type P2PPeakValue: float
         :param _LivePushTotal: RTMP推流路数 ( 直播推流)
-注意：此字段可能返回 null，表示取不到有效值。
         :type LivePushTotal: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9154,7 +8974,6 @@ class DescribeStatisticSummaryResponse(AbstractModel):
     @property
     def RecordingDevice(self):
         """录制设备总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RecordingDevice
@@ -9166,7 +8985,6 @@ class DescribeStatisticSummaryResponse(AbstractModel):
     @property
     def NonRecordingDevice(self):
         """非录制设备总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._NonRecordingDevice
@@ -9178,7 +8996,6 @@ class DescribeStatisticSummaryResponse(AbstractModel):
     @property
     def WatchFlux(self):
         """观看流量总数。为直播观看流量与点播观看流量之和。单位：GB
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._WatchFlux
@@ -9190,7 +9007,6 @@ class DescribeStatisticSummaryResponse(AbstractModel):
     @property
     def StorageUsage(self):
         """累计有效存储容量总数。单位：GB
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._StorageUsage
@@ -9202,7 +9018,6 @@ class DescribeStatisticSummaryResponse(AbstractModel):
     @property
     def P2PFluxTotal(self):
         """X-P2P分享流量。单位 Byte
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._P2PFluxTotal
@@ -9214,7 +9029,6 @@ class DescribeStatisticSummaryResponse(AbstractModel):
     @property
     def P2PPeakValue(self):
         """X-P2P峰值带宽。 单位bps
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._P2PPeakValue
@@ -9226,7 +9040,6 @@ class DescribeStatisticSummaryResponse(AbstractModel):
     @property
     def LivePushTotal(self):
         """RTMP推流路数 ( 直播推流)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LivePushTotal
@@ -9362,10 +9175,8 @@ class DescribeSubGroupsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _GroupList: 子分组详情列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupList: list of GroupItem
         :param _TotalCount: 子分组总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9377,7 +9188,6 @@ class DescribeSubGroupsResponse(AbstractModel):
     @property
     def GroupList(self):
         """子分组详情列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of GroupItem
         """
         return self._GroupList
@@ -9389,7 +9199,6 @@ class DescribeSubGroupsResponse(AbstractModel):
     @property
     def TotalCount(self):
         """子分组总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -9621,10 +9430,8 @@ class DescribeVideoListByChannelResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _VideoList: 录像详情列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type VideoList: list of RecordTaskItem
         :param _TotalCount: 录像总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9636,7 +9443,6 @@ class DescribeVideoListByChannelResponse(AbstractModel):
     @property
     def VideoList(self):
         """录像详情列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RecordTaskItem
         """
         return self._VideoList
@@ -9648,7 +9454,6 @@ class DescribeVideoListByChannelResponse(AbstractModel):
     @property
     def TotalCount(self):
         """录像总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -10050,7 +9855,6 @@ class DescribeWarnModResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 告警类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10061,7 +9865,6 @@ class DescribeWarnModResponse(AbstractModel):
     @property
     def Data(self):
         """告警类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Data
@@ -10236,10 +10039,8 @@ class DescribeWarningsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Total: 总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _Data: 告警列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of WarningsData
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10251,7 +10052,6 @@ class DescribeWarningsResponse(AbstractModel):
     @property
     def Total(self):
         """总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -10263,7 +10063,6 @@ class DescribeWarningsResponse(AbstractModel):
     @property
     def Data(self):
         """告警列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of WarningsData
         """
         return self._Data
@@ -10386,7 +10185,6 @@ class DescribeXP2PDataResponse(AbstractModel):
         :param _Data: [log_time,cdn_bytes , p2p_bytes, online_people, stuck_times, stuck_people,request,request_success,request_fail,play_fail]
 [时间戳,cdn流量(字节) , p2p流量(字节), 在线人数, 卡播次数, 卡播人数,起播请求次数,起播成功次数,起播失败次数,播放失败次数, pcdn cdn流量（字节), pcdn路由流量(字节), 上传流量(字节)]
 [1481016480, 46118502414, 75144943171, 61691, 3853, 0,0,0,0,0, 0, 0, 0]
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10399,7 +10197,6 @@ class DescribeXP2PDataResponse(AbstractModel):
         """[log_time,cdn_bytes , p2p_bytes, online_people, stuck_times, stuck_people,request,request_success,request_fail,play_fail]
 [时间戳,cdn流量(字节) , p2p流量(字节), 在线人数, 卡播次数, 卡播人数,起播请求次数,起播成功次数,起播失败次数,播放失败次数, pcdn cdn流量（字节), pcdn路由流量(字节), 上传流量(字节)]
 [1481016480, 46118502414, 75144943171, 61691, 3853, 0,0,0,0,0, 0, 0, 0]
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Data
@@ -10529,10 +10326,8 @@ class DeviceItem(AbstractModel):
     def __init__(self):
         r"""
         :param _DeviceId: 设备唯一标识
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceId: str
         :param _ChannelId: 通道唯一标识
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChannelId: str
         """
         self._DeviceId = None
@@ -10541,7 +10336,6 @@ class DeviceItem(AbstractModel):
     @property
     def DeviceId(self):
         """设备唯一标识
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceId
@@ -10553,7 +10347,6 @@ class DeviceItem(AbstractModel):
     @property
     def ChannelId(self):
         """通道唯一标识
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ChannelId
@@ -10639,13 +10432,10 @@ class Events(AbstractModel):
     def __init__(self):
         r"""
         :param _EventTime: 开始时间，秒级时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type EventTime: int
         :param _EventType: 事件类型 1:注册 2:心跳 4:录制异常 5:播放异常 6:流中断
-注意：此字段可能返回 null，表示取不到有效值。
         :type EventType: int
         :param _EventDesc: 事件描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type EventDesc: str
         :param _DeviceType: 设备类型
         :type DeviceType: int
@@ -10658,7 +10448,6 @@ class Events(AbstractModel):
         :param _EventLog: 事件日志
         :type EventLog: str
         :param _DeviceName: 设备备注名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceName: str
         """
         self._EventTime = None
@@ -10674,7 +10463,6 @@ class Events(AbstractModel):
     @property
     def EventTime(self):
         """开始时间，秒级时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._EventTime
@@ -10686,7 +10474,6 @@ class Events(AbstractModel):
     @property
     def EventType(self):
         """事件类型 1:注册 2:心跳 4:录制异常 5:播放异常 6:流中断
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._EventType
@@ -10698,7 +10485,6 @@ class Events(AbstractModel):
     @property
     def EventDesc(self):
         """事件描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EventDesc
@@ -10765,7 +10551,6 @@ class Events(AbstractModel):
     @property
     def DeviceName(self):
         """设备备注名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceName
@@ -10899,7 +10684,6 @@ class GetRecordDatesByDevResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Dates: 含有录像文件的日期列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Dates: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10910,7 +10694,6 @@ class GetRecordDatesByDevResponse(AbstractModel):
     @property
     def Dates(self):
         """含有录像文件的日期列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Dates
@@ -10980,7 +10763,6 @@ class GetRecordPlanByDevResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Plan: 录制计划详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type Plan: :class:`tencentcloud.iotvideoindustry.v20201201.models.RecordPlanItem`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10991,7 +10773,6 @@ class GetRecordPlanByDevResponse(AbstractModel):
     @property
     def Plan(self):
         """录制计划详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.RecordPlanItem`
         """
         return self._Plan
@@ -11063,7 +10844,6 @@ class GetRecordPlanByIdResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Plan: 录制计划详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type Plan: :class:`tencentcloud.iotvideoindustry.v20201201.models.RecordPlanItem`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11074,7 +10854,6 @@ class GetRecordPlanByIdResponse(AbstractModel):
     @property
     def Plan(self):
         """录制计划详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.RecordPlanItem`
         """
         return self._Plan
@@ -11116,10 +10895,8 @@ class GetRecordPlansResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Plans: 录制计划详情·列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Plans: list of RecordPlanItem
         :param _TotalCount: 录制计划总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11131,7 +10908,6 @@ class GetRecordPlansResponse(AbstractModel):
     @property
     def Plans(self):
         """录制计划详情·列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RecordPlanItem
         """
         return self._Plans
@@ -11143,7 +10919,6 @@ class GetRecordPlansResponse(AbstractModel):
     @property
     def TotalCount(self):
         """录制计划总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -11219,7 +10994,6 @@ class GetTimeTemplateByIdResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Template: 时间模板详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type Template: :class:`tencentcloud.iotvideoindustry.v20201201.models.TimeTemplateItem`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11230,7 +11004,6 @@ class GetTimeTemplateByIdResponse(AbstractModel):
     @property
     def Template(self):
         """时间模板详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.TimeTemplateItem`
         """
         return self._Template
@@ -11272,7 +11045,6 @@ class GetTimeTemplatesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Templates: 时间模板列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Templates: list of TimeTemplateItem
         :param _TotalCount: 时间模板总数
         :type TotalCount: int
@@ -11286,7 +11058,6 @@ class GetTimeTemplatesResponse(AbstractModel):
     @property
     def Templates(self):
         """时间模板列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TimeTemplateItem
         """
         return self._Templates
@@ -11465,10 +11236,8 @@ class GetVideoListByConResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _VideoList: 录像详情列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type VideoList: list of RecordTaskItem
         :param _TotalCount: 录像总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11480,7 +11249,6 @@ class GetVideoListByConResponse(AbstractModel):
     @property
     def VideoList(self):
         """录像详情列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RecordTaskItem
         """
         return self._VideoList
@@ -11492,7 +11260,6 @@ class GetVideoListByConResponse(AbstractModel):
     @property
     def TotalCount(self):
         """录像总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -11532,43 +11299,30 @@ class GroupDeviceItem(AbstractModel):
     def __init__(self):
         r"""
         :param _DeviceId: 设备唯一标识
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceId: str
         :param _NickName: 设备名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type NickName: str
         :param _Status: 设备状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _ExtraInformation: 扩展信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExtraInformation: str
         :param _DeviceType: 设备类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceType: int
         :param _RTSPUrl: rtsp地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type RTSPUrl: str
         :param _DeviceCode: 设备编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceCode: str
         :param _IsRecord: 是否存在录像
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsRecord: int
         :param _Recordable: 该设备是否可录制
-注意：此字段可能返回 null，表示取不到有效值。
         :type Recordable: int
         :param _Protocol: 设备接入协议
-注意：此字段可能返回 null，表示取不到有效值。
         :type Protocol: str
         :param _CreateTime: 设备创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: int
         :param _ChannelNum: 设备通道总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChannelNum: int
         :param _VideoChannelNum: 设备视频通道总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type VideoChannelNum: int
         """
         self._DeviceId = None
@@ -11588,7 +11342,6 @@ class GroupDeviceItem(AbstractModel):
     @property
     def DeviceId(self):
         """设备唯一标识
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceId
@@ -11600,7 +11353,6 @@ class GroupDeviceItem(AbstractModel):
     @property
     def NickName(self):
         """设备名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NickName
@@ -11612,7 +11364,6 @@ class GroupDeviceItem(AbstractModel):
     @property
     def Status(self):
         """设备状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -11624,7 +11375,6 @@ class GroupDeviceItem(AbstractModel):
     @property
     def ExtraInformation(self):
         """扩展信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ExtraInformation
@@ -11636,7 +11386,6 @@ class GroupDeviceItem(AbstractModel):
     @property
     def DeviceType(self):
         """设备类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DeviceType
@@ -11648,7 +11397,6 @@ class GroupDeviceItem(AbstractModel):
     @property
     def RTSPUrl(self):
         """rtsp地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RTSPUrl
@@ -11660,7 +11408,6 @@ class GroupDeviceItem(AbstractModel):
     @property
     def DeviceCode(self):
         """设备编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceCode
@@ -11672,7 +11419,6 @@ class GroupDeviceItem(AbstractModel):
     @property
     def IsRecord(self):
         """是否存在录像
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IsRecord
@@ -11684,7 +11430,6 @@ class GroupDeviceItem(AbstractModel):
     @property
     def Recordable(self):
         """该设备是否可录制
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Recordable
@@ -11696,7 +11441,6 @@ class GroupDeviceItem(AbstractModel):
     @property
     def Protocol(self):
         """设备接入协议
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Protocol
@@ -11708,7 +11452,6 @@ class GroupDeviceItem(AbstractModel):
     @property
     def CreateTime(self):
         """设备创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CreateTime
@@ -11720,7 +11463,6 @@ class GroupDeviceItem(AbstractModel):
     @property
     def ChannelNum(self):
         """设备通道总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ChannelNum
@@ -11732,7 +11474,6 @@ class GroupDeviceItem(AbstractModel):
     @property
     def VideoChannelNum(self):
         """设备视频通道总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._VideoChannelNum
@@ -11790,10 +11531,8 @@ class GroupInfo(AbstractModel):
         :param _CreateTime: 创建时间
         :type CreateTime: int
         :param _GroupStatus: 分组状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupStatus: int
         :param _Error: 设备不存在时产生的错误
-注意：此字段可能返回 null，表示取不到有效值。
         :type Error: str
         """
         self._GroupId = None
@@ -11898,7 +11637,6 @@ class GroupInfo(AbstractModel):
     @property
     def GroupStatus(self):
         """分组状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._GroupStatus
@@ -11910,7 +11648,6 @@ class GroupInfo(AbstractModel):
     @property
     def Error(self):
         """设备不存在时产生的错误
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Error
@@ -11949,37 +11686,26 @@ class GroupItem(AbstractModel):
     def __init__(self):
         r"""
         :param _GroupName: 分组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupName: str
         :param _ParentId: 父分组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ParentId: str
         :param _GroupId: 分组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupId: str
         :param _GroupPath: 分组路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupPath: str
         :param _GroupDescribe: 分组描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupDescribe: str
         :param _DeviceNum: 分组绑定设备数
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceNum: int
         :param _SubGroupNum: 子分组数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubGroupNum: int
         :param _ExtraInformation: 分组附加信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExtraInformation: str
         :param _GroupType: 分组类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupType: str
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: int
         :param _GroupStatus: 分组状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupStatus: int
         """
         self._GroupName = None
@@ -11997,7 +11723,6 @@ class GroupItem(AbstractModel):
     @property
     def GroupName(self):
         """分组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupName
@@ -12009,7 +11734,6 @@ class GroupItem(AbstractModel):
     @property
     def ParentId(self):
         """父分组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ParentId
@@ -12021,7 +11745,6 @@ class GroupItem(AbstractModel):
     @property
     def GroupId(self):
         """分组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupId
@@ -12033,7 +11756,6 @@ class GroupItem(AbstractModel):
     @property
     def GroupPath(self):
         """分组路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupPath
@@ -12045,7 +11767,6 @@ class GroupItem(AbstractModel):
     @property
     def GroupDescribe(self):
         """分组描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupDescribe
@@ -12057,7 +11778,6 @@ class GroupItem(AbstractModel):
     @property
     def DeviceNum(self):
         """分组绑定设备数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DeviceNum
@@ -12069,7 +11789,6 @@ class GroupItem(AbstractModel):
     @property
     def SubGroupNum(self):
         """子分组数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SubGroupNum
@@ -12081,7 +11800,6 @@ class GroupItem(AbstractModel):
     @property
     def ExtraInformation(self):
         """分组附加信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ExtraInformation
@@ -12093,7 +11811,6 @@ class GroupItem(AbstractModel):
     @property
     def GroupType(self):
         """分组类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupType
@@ -12105,7 +11822,6 @@ class GroupItem(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CreateTime
@@ -12117,7 +11833,6 @@ class GroupItem(AbstractModel):
     @property
     def GroupStatus(self):
         """分组状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._GroupStatus
@@ -13209,7 +12924,6 @@ class ModifyDeviceDataResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Status: 操作结果,“OK”表示成功，其他表示失败。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13220,7 +12934,6 @@ class ModifyDeviceDataResponse(AbstractModel):
     @property
     def Status(self):
         """操作结果,“OK”表示成功，其他表示失败。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -14085,10 +13798,8 @@ class PresetItem(AbstractModel):
     def __init__(self):
         r"""
         :param _PresetId: 预置位ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type PresetId: int
         :param _PresetName: 预置位名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type PresetName: str
         :param _Status: 预置位状态 0:未设置预置位 1:已设置预置位 2:已设置预置位&看守位
         :type Status: int
@@ -14103,7 +13814,6 @@ class PresetItem(AbstractModel):
     @property
     def PresetId(self):
         """预置位ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PresetId
@@ -14115,7 +13825,6 @@ class PresetItem(AbstractModel):
     @property
     def PresetName(self):
         """预置位名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PresetName
@@ -14170,22 +13879,16 @@ class RecordPlanDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _PlanId: 计划ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type PlanId: str
         :param _Name: 计划名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _TimeTemplateId: 时间模板ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimeTemplateId: str
         :param _TimeTemplateName: 时间模板名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimeTemplateName: str
         :param _Channels: 绑定的通道列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Channels: list of ChannelItem
         :param _RecordStorageTime: 存储周期（天）
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecordStorageTime: int
         """
         self._PlanId = None
@@ -14198,7 +13901,6 @@ class RecordPlanDetail(AbstractModel):
     @property
     def PlanId(self):
         """计划ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PlanId
@@ -14210,7 +13912,6 @@ class RecordPlanDetail(AbstractModel):
     @property
     def Name(self):
         """计划名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -14222,7 +13923,6 @@ class RecordPlanDetail(AbstractModel):
     @property
     def TimeTemplateId(self):
         """时间模板ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TimeTemplateId
@@ -14234,7 +13934,6 @@ class RecordPlanDetail(AbstractModel):
     @property
     def TimeTemplateName(self):
         """时间模板名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TimeTemplateName
@@ -14246,7 +13945,6 @@ class RecordPlanDetail(AbstractModel):
     @property
     def Channels(self):
         """绑定的通道列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ChannelItem
         """
         return self._Channels
@@ -14258,7 +13956,6 @@ class RecordPlanDetail(AbstractModel):
     @property
     def RecordStorageTime(self):
         """存储周期（天）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RecordStorageTime
@@ -14298,25 +13995,18 @@ class RecordPlanItem(AbstractModel):
     def __init__(self):
         r"""
         :param _PlanId: 计划ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type PlanId: str
         :param _Name: 计划名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _TimeTemplateId: 时间模板ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimeTemplateId: str
         :param _TimeTemplateName: 时间模板名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimeTemplateName: str
         :param _EventId: 录制类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type EventId: int
         :param _Devices: 绑定的设备列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Devices: list of DeviceItem
         :param _RecordStorageTime: 录像存储天数
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecordStorageTime: int
         """
         self._PlanId = None
@@ -14330,7 +14020,6 @@ class RecordPlanItem(AbstractModel):
     @property
     def PlanId(self):
         """计划ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PlanId
@@ -14342,7 +14031,6 @@ class RecordPlanItem(AbstractModel):
     @property
     def Name(self):
         """计划名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -14354,7 +14042,6 @@ class RecordPlanItem(AbstractModel):
     @property
     def TimeTemplateId(self):
         """时间模板ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TimeTemplateId
@@ -14366,7 +14053,6 @@ class RecordPlanItem(AbstractModel):
     @property
     def TimeTemplateName(self):
         """时间模板名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TimeTemplateName
@@ -14378,7 +14064,6 @@ class RecordPlanItem(AbstractModel):
     @property
     def EventId(self):
         """录制类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._EventId
@@ -14390,7 +14075,6 @@ class RecordPlanItem(AbstractModel):
     @property
     def Devices(self):
         """绑定的设备列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DeviceItem
         """
         return self._Devices
@@ -14402,7 +14086,6 @@ class RecordPlanItem(AbstractModel):
     @property
     def RecordStorageTime(self):
         """录像存储天数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RecordStorageTime
@@ -14443,10 +14126,8 @@ class RecordStatistic(AbstractModel):
     def __init__(self):
         r"""
         :param _Time: 时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type Time: int
         :param _Value: 统计结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: :class:`tencentcloud.iotvideoindustry.v20201201.models.RecordStatisticValue`
         """
         self._Time = None
@@ -14455,7 +14136,6 @@ class RecordStatistic(AbstractModel):
     @property
     def Time(self):
         """时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Time
@@ -14467,7 +14147,6 @@ class RecordStatistic(AbstractModel):
     @property
     def Value(self):
         """统计结果
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.RecordStatisticValue`
         """
         return self._Value
@@ -14572,34 +14251,24 @@ class RecordTaskItem(AbstractModel):
     def __init__(self):
         r"""
         :param _RecordTaskId: 录像任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecordTaskId: str
         :param _RecordPlanId: 录制计划ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecordPlanId: str
         :param _StartTime: 本录制片段开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: int
         :param _EndTime: 本录制片段结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: int
         :param _EventId: 录制模式
-注意：此字段可能返回 null，表示取不到有效值。
         :type EventId: int
         :param _VideoUrl: 本录制片段对应的录制文件URL
-注意：此字段可能返回 null，表示取不到有效值。
         :type VideoUrl: str
         :param _RecordStatus: 本录制片段当前的录制状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecordStatus: int
         :param _SceneId: 场景ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type SceneId: int
         :param _WarnId: 告警ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type WarnId: int
         :param _RecordId: 录制id，NVR下属设备有效
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecordId: str
         """
         self._RecordTaskId = None
@@ -14616,7 +14285,6 @@ class RecordTaskItem(AbstractModel):
     @property
     def RecordTaskId(self):
         """录像任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RecordTaskId
@@ -14628,7 +14296,6 @@ class RecordTaskItem(AbstractModel):
     @property
     def RecordPlanId(self):
         """录制计划ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RecordPlanId
@@ -14640,7 +14307,6 @@ class RecordTaskItem(AbstractModel):
     @property
     def StartTime(self):
         """本录制片段开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._StartTime
@@ -14652,7 +14318,6 @@ class RecordTaskItem(AbstractModel):
     @property
     def EndTime(self):
         """本录制片段结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._EndTime
@@ -14664,7 +14329,6 @@ class RecordTaskItem(AbstractModel):
     @property
     def EventId(self):
         """录制模式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._EventId
@@ -14676,7 +14340,6 @@ class RecordTaskItem(AbstractModel):
     @property
     def VideoUrl(self):
         """本录制片段对应的录制文件URL
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VideoUrl
@@ -14688,7 +14351,6 @@ class RecordTaskItem(AbstractModel):
     @property
     def RecordStatus(self):
         """本录制片段当前的录制状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RecordStatus
@@ -14700,7 +14362,6 @@ class RecordTaskItem(AbstractModel):
     @property
     def SceneId(self):
         """场景ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SceneId
@@ -14712,7 +14373,6 @@ class RecordTaskItem(AbstractModel):
     @property
     def WarnId(self):
         """告警ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._WarnId
@@ -14724,7 +14384,6 @@ class RecordTaskItem(AbstractModel):
     @property
     def RecordId(self):
         """录制id，NVR下属设备有效
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RecordId
@@ -14842,22 +14501,16 @@ class SceneItem(AbstractModel):
     def __init__(self):
         r"""
         :param _IntId: 场景ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type IntId: int
         :param _Uin: 用户UIN
-注意：此字段可能返回 null，表示取不到有效值。
         :type Uin: str
         :param _SceneName: 场景名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type SceneName: str
         :param _SceneTrigger: 触发规则
-注意：此字段可能返回 null，表示取不到有效值。
         :type SceneTrigger: str
         :param _RecordDuration: 录制时长 秒
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecordDuration: int
         :param _StoreDuration: 存储时长 天
-注意：此字段可能返回 null，表示取不到有效值。
         :type StoreDuration: int
         :param _CreateTime: 创建时间
         :type CreateTime: str
@@ -14876,7 +14529,6 @@ class SceneItem(AbstractModel):
     @property
     def IntId(self):
         """场景ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IntId
@@ -14888,7 +14540,6 @@ class SceneItem(AbstractModel):
     @property
     def Uin(self):
         """用户UIN
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Uin
@@ -14900,7 +14551,6 @@ class SceneItem(AbstractModel):
     @property
     def SceneName(self):
         """场景名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SceneName
@@ -14912,7 +14562,6 @@ class SceneItem(AbstractModel):
     @property
     def SceneTrigger(self):
         """触发规则
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SceneTrigger
@@ -14924,7 +14573,6 @@ class SceneItem(AbstractModel):
     @property
     def RecordDuration(self):
         """录制时长 秒
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RecordDuration
@@ -14936,7 +14584,6 @@ class SceneItem(AbstractModel):
     @property
     def StoreDuration(self):
         """存储时长 天
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._StoreDuration
@@ -15237,19 +14884,14 @@ class TimeTemplateItem(AbstractModel):
     def __init__(self):
         r"""
         :param _TemplateId: 时间模板ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateId: str
         :param _Name: 模板名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _IsAllWeek: 是否全时录制，即7*24小时录制 0-否 1-是
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsAllWeek: int
         :param _Type: 是否为自定义模板 0-否 1-是
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: int
         :param _TimeTemplateSpecs: 时间片段详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimeTemplateSpecs: list of TimeTemplateSpec
         """
         self._TemplateId = None
@@ -15261,7 +14903,6 @@ class TimeTemplateItem(AbstractModel):
     @property
     def TemplateId(self):
         """时间模板ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TemplateId
@@ -15273,7 +14914,6 @@ class TimeTemplateItem(AbstractModel):
     @property
     def Name(self):
         """模板名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -15285,7 +14925,6 @@ class TimeTemplateItem(AbstractModel):
     @property
     def IsAllWeek(self):
         """是否全时录制，即7*24小时录制 0-否 1-是
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IsAllWeek
@@ -15297,7 +14936,6 @@ class TimeTemplateItem(AbstractModel):
     @property
     def Type(self):
         """是否为自定义模板 0-否 1-是
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Type
@@ -15309,7 +14947,6 @@ class TimeTemplateItem(AbstractModel):
     @property
     def TimeTemplateSpecs(self):
         """时间片段详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TimeTemplateSpec
         """
         return self._TimeTemplateSpecs
@@ -15580,7 +15217,6 @@ class UpdateDevicePassWordResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Status: 操作结果，“OK”表示成功，其他表示失败。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15591,7 +15227,6 @@ class UpdateDevicePassWordResponse(AbstractModel):
     @property
     def Status(self):
         """操作结果，“OK”表示成功，其他表示失败。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -15919,28 +15554,20 @@ class WarningsData(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: 唯一ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
         :param _DeviceId: 设备ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceId: str
         :param _DeviceName: 设备名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceName: str
         :param _WarnChannel: 告警通道
-注意：此字段可能返回 null，表示取不到有效值。
         :type WarnChannel: str
         :param _WarnLevel: 告警级别 1: "一级警情", 2: "二级警情", 3: "三级警情", 4: "四级警情",
-注意：此字段可能返回 null，表示取不到有效值。
         :type WarnLevel: int
         :param _WarnLevelName: 告警级别名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type WarnLevelName: str
         :param _WarnMode: 告警方式 2 设备报警 5 视频报警 6 设备故障报警
-注意：此字段可能返回 null，表示取不到有效值。
         :type WarnMode: int
         :param _WarnModeName: 告警方式名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type WarnModeName: str
         :param _WarnType: 告警类型  2: {
 			Name: "设备报警",
@@ -15976,16 +15603,12 @@ class WarningsData(AbstractModel):
 				2: "存储设备风扇故障报警",
 			},
 		}
-注意：此字段可能返回 null，表示取不到有效值。
         :type WarnType: int
         :param _Del: 是否删除
-注意：此字段可能返回 null，表示取不到有效值。
         :type Del: int
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _UpdateTime: 更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         """
         self._Id = None
@@ -16004,7 +15627,6 @@ class WarningsData(AbstractModel):
     @property
     def Id(self):
         """唯一ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Id
@@ -16016,7 +15638,6 @@ class WarningsData(AbstractModel):
     @property
     def DeviceId(self):
         """设备ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceId
@@ -16028,7 +15649,6 @@ class WarningsData(AbstractModel):
     @property
     def DeviceName(self):
         """设备名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceName
@@ -16040,7 +15660,6 @@ class WarningsData(AbstractModel):
     @property
     def WarnChannel(self):
         """告警通道
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._WarnChannel
@@ -16052,7 +15671,6 @@ class WarningsData(AbstractModel):
     @property
     def WarnLevel(self):
         """告警级别 1: "一级警情", 2: "二级警情", 3: "三级警情", 4: "四级警情",
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._WarnLevel
@@ -16064,7 +15682,6 @@ class WarningsData(AbstractModel):
     @property
     def WarnLevelName(self):
         """告警级别名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._WarnLevelName
@@ -16076,7 +15693,6 @@ class WarningsData(AbstractModel):
     @property
     def WarnMode(self):
         """告警方式 2 设备报警 5 视频报警 6 设备故障报警
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._WarnMode
@@ -16088,7 +15704,6 @@ class WarningsData(AbstractModel):
     @property
     def WarnModeName(self):
         """告警方式名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._WarnModeName
@@ -16133,7 +15748,6 @@ class WarningsData(AbstractModel):
 				2: "存储设备风扇故障报警",
 			},
 		}
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._WarnType
@@ -16145,7 +15759,6 @@ class WarningsData(AbstractModel):
     @property
     def Del(self):
         """是否删除
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Del
@@ -16157,7 +15770,6 @@ class WarningsData(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -16169,7 +15781,6 @@ class WarningsData(AbstractModel):
     @property
     def UpdateTime(self):
         """更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime

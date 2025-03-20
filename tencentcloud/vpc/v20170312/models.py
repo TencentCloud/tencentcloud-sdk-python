@@ -44479,10 +44479,8 @@ class InternetPriceDetail(AbstractModel):
         :param _UnitPrice: 付费单价，单位：元，仅后付费价格查询返回。
         :type UnitPrice: float
         :param _DiscountPrice: 折扣后的价格，单位：元。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiscountPrice: float
         :param _ChargeUnit: 计价单元，可取值范围：<ul> <li>HOUR：表示计价单元是按每小时来计算。当前涉及该计价单元的场景有：流量按小时后付费（TRAFFIC_POSTPAID_BY_HOUR）、带宽按小时后付费（BANDWIDTH_POSTPAID_BY_HOUR）。</li></ul>
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChargeUnit: str
         :param _OriginalPrice: 原价，单位：元，仅预付费价格查询返回。
         :type OriginalPrice: float
@@ -44506,7 +44504,6 @@ class InternetPriceDetail(AbstractModel):
     @property
     def DiscountPrice(self):
         """折扣后的价格，单位：元。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._DiscountPrice
@@ -44518,7 +44515,6 @@ class InternetPriceDetail(AbstractModel):
     @property
     def ChargeUnit(self):
         """计价单元，可取值范围：<ul> <li>HOUR：表示计价单元是按每小时来计算。当前涉及该计价单元的场景有：流量按小时后付费（TRAFFIC_POSTPAID_BY_HOUR）、带宽按小时后付费（BANDWIDTH_POSTPAID_BY_HOUR）。</li></ul>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ChargeUnit
@@ -45182,31 +45178,22 @@ class IpGeolocationInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Country: 国家信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Country: str
         :param _Province: 省、州、郡一级行政区域信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Province: str
         :param _City: 市一级行政区域信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type City: str
         :param _Region: 市内区域信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         :param _Isp: 接入运营商信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Isp: str
         :param _AsName: 骨干运营商名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type AsName: str
         :param _AsId: 骨干运营商AS号
-注意：此字段可能返回 null，表示取不到有效值。
         :type AsId: str
         :param _Comment: 注释信息。目前的填充值为移动接入用户的APN值，如无APN属性则为空
-注意：此字段可能返回 null，表示取不到有效值。
         :type Comment: str
         :param _AddressIp: IP地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type AddressIp: str
         """
         self._Country = None
@@ -45222,7 +45209,6 @@ class IpGeolocationInfo(AbstractModel):
     @property
     def Country(self):
         """国家信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Country
@@ -45234,7 +45220,6 @@ class IpGeolocationInfo(AbstractModel):
     @property
     def Province(self):
         """省、州、郡一级行政区域信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Province
@@ -45246,7 +45231,6 @@ class IpGeolocationInfo(AbstractModel):
     @property
     def City(self):
         """市一级行政区域信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._City
@@ -45258,7 +45242,6 @@ class IpGeolocationInfo(AbstractModel):
     @property
     def Region(self):
         """市内区域信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Region
@@ -45270,7 +45253,6 @@ class IpGeolocationInfo(AbstractModel):
     @property
     def Isp(self):
         """接入运营商信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Isp
@@ -45282,7 +45264,6 @@ class IpGeolocationInfo(AbstractModel):
     @property
     def AsName(self):
         """骨干运营商名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AsName
@@ -45294,7 +45275,6 @@ class IpGeolocationInfo(AbstractModel):
     @property
     def AsId(self):
         """骨干运营商AS号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AsId
@@ -45306,7 +45286,6 @@ class IpGeolocationInfo(AbstractModel):
     @property
     def Comment(self):
         """注释信息。目前的填充值为移动接入用户的APN值，如无APN属性则为空
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Comment
@@ -45318,7 +45297,6 @@ class IpGeolocationInfo(AbstractModel):
     @property
     def AddressIp(self):
         """IP地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AddressIp
@@ -56686,7 +56664,6 @@ class Quota(AbstractModel):
         :param _QuotaLimit: 配额数量
         :type QuotaLimit: int
         :param _QuotaGroup: 配额所属的网络组
-注意：此字段可能返回 null，表示取不到有效值。
         :type QuotaGroup: str
         """
         self._QuotaId = None
@@ -56736,7 +56713,6 @@ class Quota(AbstractModel):
     @property
     def QuotaGroup(self):
         """配额所属的网络组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._QuotaGroup
@@ -64593,10 +64569,8 @@ class TrafficFlow(AbstractModel):
         :param _Value: 实际流量，单位为 字节
         :type Value: int
         :param _FormatValue: 格式化后的流量，单位见参数 FormatUnit
-注意：此字段可能返回 null，表示取不到有效值。
         :type FormatValue: float
         :param _FormatUnit: 格式化后流量的单位
-注意：此字段可能返回 null，表示取不到有效值。
         :type FormatUnit: str
         """
         self._Value = None
@@ -64617,7 +64591,6 @@ class TrafficFlow(AbstractModel):
     @property
     def FormatValue(self):
         """格式化后的流量，单位见参数 FormatUnit
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._FormatValue
@@ -64629,7 +64602,6 @@ class TrafficFlow(AbstractModel):
     @property
     def FormatUnit(self):
         """格式化后流量的单位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FormatUnit
@@ -65144,7 +65116,6 @@ class TrafficPackage(AbstractModel):
         :param _TrafficPackageId: 流量包唯一ID
         :type TrafficPackageId: str
         :param _TrafficPackageName: 流量包名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TrafficPackageName: str
         :param _TotalAmount: 流量包总量，单位GB
         :type TotalAmount: float
@@ -65159,7 +65130,6 @@ class TrafficPackage(AbstractModel):
         :param _UsedAmount: 已使用的流量，单位GB
         :type UsedAmount: float
         :param _TagSet: 流量包标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagSet: list of Tag
         :param _DeductType: 区分闲时流量包与全时流量包
         :type DeductType: str
@@ -65189,7 +65159,6 @@ class TrafficPackage(AbstractModel):
     @property
     def TrafficPackageName(self):
         """流量包名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TrafficPackageName
@@ -65267,7 +65236,6 @@ class TrafficPackage(AbstractModel):
     @property
     def TagSet(self):
         """流量包标签
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._TagSet
@@ -66679,7 +66647,6 @@ class UsedDetail(AbstractModel):
         :param _TrafficPackageId: 流量包唯一ID
         :type TrafficPackageId: str
         :param _TrafficPackageName: 流量包名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TrafficPackageName: str
         :param _TotalAmount: 流量包总量
         :type TotalAmount: :class:`tencentcloud.vpc.v20170312.models.TrafficFlow`
@@ -66723,7 +66690,6 @@ class UsedDetail(AbstractModel):
     @property
     def TrafficPackageName(self):
         """流量包名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TrafficPackageName

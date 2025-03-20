@@ -2790,29 +2790,6 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def ModifyPublicNetworkAccessPoint(self, request):
-        """RabbitMQ专享版修改公网管控台，vpc15672开关
-
-        :param request: Request instance for ModifyPublicNetworkAccessPoint.
-        :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyPublicNetworkAccessPointRequest`
-        :rtype: :class:`tencentcloud.tdmq.v20200217.models.ModifyPublicNetworkAccessPointResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ModifyPublicNetworkAccessPoint", params, headers=headers)
-            response = json.loads(body)
-            model = models.ModifyPublicNetworkAccessPointResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def ModifyPublicNetworkSecurityPolicy(self, request):
         """修改pulsar专业版公网安全策略
 

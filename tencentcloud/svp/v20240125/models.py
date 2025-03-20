@@ -736,7 +736,6 @@ class DescribeSavingPlanOverviewResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Overviews: 节省计划总览明细数据	
-注意：此字段可能返回 null，表示取不到有效值。
         :type Overviews: list of SavingPlanOverviewDetail
         :param _Total: 查询命中的节省计划总览明细数据总条数
         :type Total: int
@@ -750,7 +749,6 @@ class DescribeSavingPlanOverviewResponse(AbstractModel):
     @property
     def Overviews(self):
         """节省计划总览明细数据	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SavingPlanOverviewDetail
         """
         return self._Overviews
@@ -1287,64 +1285,44 @@ class SavingPlanDeductDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _OwnerUin: 账号id
-注意：此字段可能返回 null，表示取不到有效值。
         :type OwnerUin: str
         :param _OwnerUinName: 账号名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type OwnerUinName: str
         :param _PayerUin: 抵扣账号id
-注意：此字段可能返回 null，表示取不到有效值。
         :type PayerUin: str
         :param _PayerUinName: 抵扣账号名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type PayerUinName: str
         :param _SpId: 节省计划资源id
-注意：此字段可能返回 null，表示取不到有效值。
         :type SpId: str
         :param _ProductCode: 产品编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductCode: str
         :param _ProductName: 产品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductName: str
         :param _SubProductCode: 子产品编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubProductCode: str
         :param _SubProductName: 子产品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubProductName: str
         :param _OutTradeNo: 交易ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type OutTradeNo: str
         :param _RegionId: 地域id
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionId: int
         :param _RegionName: 地域名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionName: str
         :param _ZoneId: 地区id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneId: int
         :param _ZoneName: 地区名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneName: str
         :param _SpStartTime: 开始使用时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type SpStartTime: str
         :param _SpEndTime: 结束使用时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type SpEndTime: str
         :param _DeductTime: 折扣时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeductTime: str
         :param _DeductAmount: 抵扣金额，单位分
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeductAmount: str
         :param _DeductDiscount: 抵扣折扣率
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeductDiscount: str
         :param _DeductRate: 抵扣比率
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeductRate: str
         """
         self._OwnerUin = None
@@ -1371,7 +1349,6 @@ class SavingPlanDeductDetail(AbstractModel):
     @property
     def OwnerUin(self):
         """账号id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OwnerUin
@@ -1383,7 +1360,6 @@ class SavingPlanDeductDetail(AbstractModel):
     @property
     def OwnerUinName(self):
         """账号名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OwnerUinName
@@ -1395,7 +1371,6 @@ class SavingPlanDeductDetail(AbstractModel):
     @property
     def PayerUin(self):
         """抵扣账号id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PayerUin
@@ -1407,7 +1382,6 @@ class SavingPlanDeductDetail(AbstractModel):
     @property
     def PayerUinName(self):
         """抵扣账号名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PayerUinName
@@ -1419,7 +1393,6 @@ class SavingPlanDeductDetail(AbstractModel):
     @property
     def SpId(self):
         """节省计划资源id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SpId
@@ -1431,7 +1404,6 @@ class SavingPlanDeductDetail(AbstractModel):
     @property
     def ProductCode(self):
         """产品编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductCode
@@ -1443,7 +1415,6 @@ class SavingPlanDeductDetail(AbstractModel):
     @property
     def ProductName(self):
         """产品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductName
@@ -1455,7 +1426,6 @@ class SavingPlanDeductDetail(AbstractModel):
     @property
     def SubProductCode(self):
         """子产品编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubProductCode
@@ -1467,7 +1437,6 @@ class SavingPlanDeductDetail(AbstractModel):
     @property
     def SubProductName(self):
         """子产品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubProductName
@@ -1479,7 +1448,6 @@ class SavingPlanDeductDetail(AbstractModel):
     @property
     def OutTradeNo(self):
         """交易ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OutTradeNo
@@ -1491,7 +1459,6 @@ class SavingPlanDeductDetail(AbstractModel):
     @property
     def RegionId(self):
         """地域id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RegionId
@@ -1503,7 +1470,6 @@ class SavingPlanDeductDetail(AbstractModel):
     @property
     def RegionName(self):
         """地域名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RegionName
@@ -1515,7 +1481,6 @@ class SavingPlanDeductDetail(AbstractModel):
     @property
     def ZoneId(self):
         """地区id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ZoneId
@@ -1527,7 +1492,6 @@ class SavingPlanDeductDetail(AbstractModel):
     @property
     def ZoneName(self):
         """地区名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ZoneName
@@ -1539,7 +1503,6 @@ class SavingPlanDeductDetail(AbstractModel):
     @property
     def SpStartTime(self):
         """开始使用时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SpStartTime
@@ -1551,7 +1514,6 @@ class SavingPlanDeductDetail(AbstractModel):
     @property
     def SpEndTime(self):
         """结束使用时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SpEndTime
@@ -1563,7 +1525,6 @@ class SavingPlanDeductDetail(AbstractModel):
     @property
     def DeductTime(self):
         """折扣时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeductTime
@@ -1575,7 +1536,6 @@ class SavingPlanDeductDetail(AbstractModel):
     @property
     def DeductAmount(self):
         """抵扣金额，单位分
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeductAmount
@@ -1587,7 +1547,6 @@ class SavingPlanDeductDetail(AbstractModel):
     @property
     def DeductDiscount(self):
         """抵扣折扣率
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeductDiscount
@@ -1599,7 +1558,6 @@ class SavingPlanDeductDetail(AbstractModel):
     @property
     def DeductRate(self):
         """抵扣比率
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeductRate

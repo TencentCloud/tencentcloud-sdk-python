@@ -83,10 +83,8 @@ class AbnormalProcessChildRuleInfo(AbstractModel):
         :param _ProcessPath: 进程路径
         :type ProcessPath: str
         :param _RuleId: 子策略id
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleId: str
         :param _RuleLevel: 威胁等级，HIGH:高，MIDDLE:中，LOW:低
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleLevel: str
         """
         self._RuleMode = None
@@ -121,7 +119,6 @@ class AbnormalProcessChildRuleInfo(AbstractModel):
     @property
     def RuleId(self):
         """子策略id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RuleId
@@ -133,7 +130,6 @@ class AbnormalProcessChildRuleInfo(AbstractModel):
     @property
     def RuleLevel(self):
         """威胁等级，HIGH:高，MIDDLE:中，LOW:低
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RuleLevel
@@ -170,7 +166,6 @@ class AbnormalProcessEventDescription(AbstractModel):
         :param _Solution: 解决方案
         :type Solution: str
         :param _Remark: 事件备注信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _MatchRule: 命中规则详细信息
         :type MatchRule: :class:`tencentcloud.tcss.v20201101.models.AbnormalProcessChildRuleInfo`
@@ -179,10 +174,8 @@ class AbnormalProcessEventDescription(AbstractModel):
         :param _RuleId: 命中规则的id
         :type RuleId: str
         :param _OperationTime: 事件最后一次处理的时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type OperationTime: str
         :param _GroupName: 命中策略名称：SYSTEM_DEFINED_RULE （系统策略）或  用户自定义的策略名字
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupName: str
         """
         self._Description = None
@@ -219,7 +212,6 @@ class AbnormalProcessEventDescription(AbstractModel):
     @property
     def Remark(self):
         """事件备注信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -264,7 +256,6 @@ class AbnormalProcessEventDescription(AbstractModel):
     @property
     def OperationTime(self):
         """事件最后一次处理的时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OperationTime
@@ -276,7 +267,6 @@ class AbnormalProcessEventDescription(AbstractModel):
     @property
     def GroupName(self):
         """命中策略名称：SYSTEM_DEFINED_RULE （系统策略）或  用户自定义的策略名字
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupName
@@ -374,7 +364,6 @@ RULE_MODE_HOLDUP 拦截
 隔离失败	ISOLATE_FAILED
 解除隔离中  RESTORING
 解除隔离失败 RESTORE_FAILED
-注意：此字段可能返回 null，表示取不到有效值。
         :type ContainerNetStatus: str
         :param _ContainerNetSubStatus: 容器子状态
 "AGENT_OFFLINE"       //Agent离线
@@ -384,10 +373,8 @@ RULE_MODE_HOLDUP 拦截
 "SHARED_HOST"         // 容器与主机共享网络
 "RESOURCE_LIMIT"      //隔离操作资源超限
 "UNKNOW"              // 原因未知
-注意：此字段可能返回 null，表示取不到有效值。
         :type ContainerNetSubStatus: str
         :param _ContainerIsolateOperationSrc: 容器隔离操作来源
-注意：此字段可能返回 null，表示取不到有效值。
         :type ContainerIsolateOperationSrc: str
         :param _ContainerStatus: 容器状态
 正在运行: RUNNING
@@ -719,7 +706,6 @@ RULE_MODE_HOLDUP 拦截
 隔离失败	ISOLATE_FAILED
 解除隔离中  RESTORING
 解除隔离失败 RESTORE_FAILED
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ContainerNetStatus
@@ -738,7 +724,6 @@ RULE_MODE_HOLDUP 拦截
 "SHARED_HOST"         // 容器与主机共享网络
 "RESOURCE_LIMIT"      //隔离操作资源超限
 "UNKNOW"              // 原因未知
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ContainerNetSubStatus
@@ -750,7 +735,6 @@ RULE_MODE_HOLDUP 拦截
     @property
     def ContainerIsolateOperationSrc(self):
         """容器隔离操作来源
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ContainerIsolateOperationSrc
@@ -1119,7 +1103,6 @@ class AbnormalProcessRuleInfo(AbstractModel):
         :param _RuleName: 策略名字
         :type RuleName: str
         :param _RuleId: 策略id
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleId: str
         :param _SystemChildRules: 系统策略的子策略数组
         :type SystemChildRules: list of AbnormalProcessSystemChildRuleInfo
@@ -1181,7 +1164,6 @@ class AbnormalProcessRuleInfo(AbstractModel):
     @property
     def RuleId(self):
         """策略id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RuleId
@@ -1266,7 +1248,6 @@ RISK_CMD：高危命令
 ABNORMAL_CHILD_PROC: 敏感服务异常子进程启动
         :type RuleType: str
         :param _RuleLevel: 威胁等级，HIGH:高，MIDDLE:中，LOW:低
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleLevel: str
         """
         self._RuleId = None
@@ -1331,7 +1312,6 @@ ABNORMAL_CHILD_PROC: 敏感服务异常子进程启动
     @property
     def RuleLevel(self):
         """威胁等级，HIGH:高，MIDDLE:中，LOW:低
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RuleLevel
@@ -1373,7 +1353,6 @@ class AccessControlChildRuleInfo(AbstractModel):
         :param _TargetFilePath: 被访问文件路径，仅仅在访问控制生效
         :type TargetFilePath: str
         :param _RuleId: 子策略id
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleId: str
         """
         self._RuleMode = None
@@ -1419,7 +1398,6 @@ class AccessControlChildRuleInfo(AbstractModel):
     @property
     def RuleId(self):
         """子策略id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RuleId
@@ -1456,7 +1434,6 @@ class AccessControlEventDescription(AbstractModel):
         :param _Solution: 解决方案
         :type Solution: str
         :param _Remark: 事件备注信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _MatchRule: 命中规则详细信息
         :type MatchRule: :class:`tencentcloud.tcss.v20201101.models.AccessControlChildRuleInfo`
@@ -1465,7 +1442,6 @@ class AccessControlEventDescription(AbstractModel):
         :param _RuleId: 命中规则id
         :type RuleId: str
         :param _OperationTime: 事件最后一次处理的时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type OperationTime: str
         """
         self._Description = None
@@ -1501,7 +1477,6 @@ class AccessControlEventDescription(AbstractModel):
     @property
     def Remark(self):
         """事件备注信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -1546,7 +1521,6 @@ class AccessControlEventDescription(AbstractModel):
     @property
     def OperationTime(self):
         """事件最后一次处理的时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OperationTime
@@ -2241,7 +2215,6 @@ class AccessControlRuleInfo(AbstractModel):
         :param _RuleName: 策略名字
         :type RuleName: str
         :param _RuleId: 策略id
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleId: str
         :param _SystemChildRules: 系统策略的子策略数组
         :type SystemChildRules: list of AccessControlSystemChildRuleInfo
@@ -2303,7 +2276,6 @@ class AccessControlRuleInfo(AbstractModel):
     @property
     def RuleId(self):
         """策略id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RuleId
@@ -2836,7 +2808,7 @@ class AddAssetImageRegistryRegistryDetailRequest(AbstractModel):
         :type Password: str
         :param _Url: 仓库url
         :type Url: str
-        :param _RegistryType: 仓库类型，列表：harbor
+        :param _RegistryType: 仓库类型，列表：harbor,quay,jfrog,aws,azure,other-tcr
         :type RegistryType: str
         :param _NetType: 网络类型，列表：public（公网）
         :type NetType: str
@@ -2850,8 +2822,14 @@ class AddAssetImageRegistryRegistryDetailRequest(AbstractModel):
         :type Insecure: int
         :param _ConnDetectConfig: 联通性检测的记录ID
         :type ConnDetectConfig: list of ConnDetectConfig
-        :param _NeedScan: ”授权&扫描"开关
+        :param _NeedScan: 是否自动授权&扫描，选择全量同步时只针对最新版本镜像，增量同步时则包含所有新增镜像
         :type NeedScan: bool
+        :param _SyncMode: 同步方式，0全量同步，1增量同步
+        :type SyncMode: int
+        :param _WebhookUrl: webhook接入地址
+        :type WebhookUrl: str
+        :param _WebhookToken: webhook接入token
+        :type WebhookToken: str
         """
         self._Name = None
         self._Username = None
@@ -2865,6 +2843,9 @@ class AddAssetImageRegistryRegistryDetailRequest(AbstractModel):
         self._Insecure = None
         self._ConnDetectConfig = None
         self._NeedScan = None
+        self._SyncMode = None
+        self._WebhookUrl = None
+        self._WebhookToken = None
 
     @property
     def Name(self):
@@ -2912,7 +2893,7 @@ class AddAssetImageRegistryRegistryDetailRequest(AbstractModel):
 
     @property
     def RegistryType(self):
-        """仓库类型，列表：harbor
+        """仓库类型，列表：harbor,quay,jfrog,aws,azure,other-tcr
         :rtype: str
         """
         return self._RegistryType
@@ -2989,7 +2970,7 @@ class AddAssetImageRegistryRegistryDetailRequest(AbstractModel):
 
     @property
     def NeedScan(self):
-        """”授权&扫描"开关
+        """是否自动授权&扫描，选择全量同步时只针对最新版本镜像，增量同步时则包含所有新增镜像
         :rtype: bool
         """
         return self._NeedScan
@@ -2997,6 +2978,39 @@ class AddAssetImageRegistryRegistryDetailRequest(AbstractModel):
     @NeedScan.setter
     def NeedScan(self, NeedScan):
         self._NeedScan = NeedScan
+
+    @property
+    def SyncMode(self):
+        """同步方式，0全量同步，1增量同步
+        :rtype: int
+        """
+        return self._SyncMode
+
+    @SyncMode.setter
+    def SyncMode(self, SyncMode):
+        self._SyncMode = SyncMode
+
+    @property
+    def WebhookUrl(self):
+        """webhook接入地址
+        :rtype: str
+        """
+        return self._WebhookUrl
+
+    @WebhookUrl.setter
+    def WebhookUrl(self, WebhookUrl):
+        self._WebhookUrl = WebhookUrl
+
+    @property
+    def WebhookToken(self):
+        """webhook接入token
+        :rtype: str
+        """
+        return self._WebhookToken
+
+    @WebhookToken.setter
+    def WebhookToken(self, WebhookToken):
+        self._WebhookToken = WebhookToken
 
 
     def _deserialize(self, params):
@@ -3017,6 +3031,9 @@ class AddAssetImageRegistryRegistryDetailRequest(AbstractModel):
                 obj._deserialize(item)
                 self._ConnDetectConfig.append(obj)
         self._NeedScan = params.get("NeedScan")
+        self._SyncMode = params.get("SyncMode")
+        self._WebhookUrl = params.get("WebhookUrl")
+        self._WebhookToken = params.get("WebhookToken")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3035,13 +3052,10 @@ class AddAssetImageRegistryRegistryDetailResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _HealthCheckErr: 连接错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type HealthCheckErr: str
         :param _NameRepeatErr: 名称错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type NameRepeatErr: str
         :param _RegistryId: 仓库唯一id
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegistryId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3054,7 +3068,6 @@ class AddAssetImageRegistryRegistryDetailResponse(AbstractModel):
     @property
     def HealthCheckErr(self):
         """连接错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HealthCheckErr
@@ -3066,7 +3079,6 @@ class AddAssetImageRegistryRegistryDetailResponse(AbstractModel):
     @property
     def NameRepeatErr(self):
         """名称错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NameRepeatErr
@@ -3078,7 +3090,6 @@ class AddAssetImageRegistryRegistryDetailResponse(AbstractModel):
     @property
     def RegistryId(self):
         """仓库唯一id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RegistryId
@@ -5319,19 +5330,14 @@ class CKafkaInstanceInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceID: 实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceID: str
         :param _InstanceName: 实例名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceName: str
         :param _TopicList: 主题列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type TopicList: list of CKafkaTopicInfo
         :param _RouteList: 路由列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type RouteList: list of CkafkaRouteInfo
         :param _KafkaVersion: kafka版本号
-注意：此字段可能返回 null，表示取不到有效值。
         :type KafkaVersion: str
         """
         self._InstanceID = None
@@ -5343,7 +5349,6 @@ class CKafkaInstanceInfo(AbstractModel):
     @property
     def InstanceID(self):
         """实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceID
@@ -5355,7 +5360,6 @@ class CKafkaInstanceInfo(AbstractModel):
     @property
     def InstanceName(self):
         """实例名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceName
@@ -5367,7 +5371,6 @@ class CKafkaInstanceInfo(AbstractModel):
     @property
     def TopicList(self):
         """主题列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CKafkaTopicInfo
         """
         return self._TopicList
@@ -5379,7 +5382,6 @@ class CKafkaInstanceInfo(AbstractModel):
     @property
     def RouteList(self):
         """路由列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CkafkaRouteInfo
         """
         return self._RouteList
@@ -5391,7 +5393,6 @@ class CKafkaInstanceInfo(AbstractModel):
     @property
     def KafkaVersion(self):
         """kafka版本号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._KafkaVersion
@@ -5661,7 +5662,6 @@ class CheckRepeatAssetImageRegistryResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _IsRepeat: 是否重复
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsRepeat: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5672,7 +5672,6 @@ class CheckRepeatAssetImageRegistryResponse(AbstractModel):
     @property
     def IsRepeat(self):
         """是否重复
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsRepeat
@@ -5706,26 +5705,20 @@ class CkafkaRouteInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _RouteID: 路由ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type RouteID: int
         :param _Domain: 域名名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Domain: str
         :param _DomainPort: 域名端口
-注意：此字段可能返回 null，表示取不到有效值。
         :type DomainPort: int
         :param _Vip: 虚拟ip
-注意：此字段可能返回 null，表示取不到有效值。
         :type Vip: str
         :param _VipType: 虚拟ip类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type VipType: int
         :param _AccessType: 接入类型
 // 0：PLAINTEXT (明文方式，没有带用户信息老版本及社区版本都支持)
 	// 1：SASL_PLAINTEXT（明文方式，不过在数据开始时，会通过SASL方式登录鉴权，仅社区版本支持）
 	// 2：SSL（SSL加密通信，没有带用户信息，老版本及社区版本都支持）
 	// 3：SASL_SSL（SSL加密通信，在数据开始时，会通过SASL方式登录鉴权，仅社区版本支持）
-注意：此字段可能返回 null，表示取不到有效值。
         :type AccessType: int
         """
         self._RouteID = None
@@ -5738,7 +5731,6 @@ class CkafkaRouteInfo(AbstractModel):
     @property
     def RouteID(self):
         """路由ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RouteID
@@ -5750,7 +5742,6 @@ class CkafkaRouteInfo(AbstractModel):
     @property
     def Domain(self):
         """域名名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Domain
@@ -5762,7 +5753,6 @@ class CkafkaRouteInfo(AbstractModel):
     @property
     def DomainPort(self):
         """域名端口
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DomainPort
@@ -5774,7 +5764,6 @@ class CkafkaRouteInfo(AbstractModel):
     @property
     def Vip(self):
         """虚拟ip
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Vip
@@ -5786,7 +5775,6 @@ class CkafkaRouteInfo(AbstractModel):
     @property
     def VipType(self):
         """虚拟ip类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._VipType
@@ -5802,7 +5790,6 @@ class CkafkaRouteInfo(AbstractModel):
 	// 1：SASL_PLAINTEXT（明文方式，不过在数据开始时，会通过SASL方式登录鉴权，仅社区版本支持）
 	// 2：SSL（SSL加密通信，没有带用户信息，老版本及社区版本都支持）
 	// 3：SASL_SSL（SSL加密通信，在数据开始时，会通过SASL方式登录鉴权，仅社区版本支持）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AccessType
@@ -5839,10 +5826,8 @@ class ClsLogsetInfo(AbstractModel):
         :param _LogsetID: 日志集ID
         :type LogsetID: str
         :param _LogsetName: 日志集名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogsetName: str
         :param _TopicList: cls主题列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type TopicList: list of ClsTopicInfo
         """
         self._LogsetID = None
@@ -5863,7 +5848,6 @@ class ClsLogsetInfo(AbstractModel):
     @property
     def LogsetName(self):
         """日志集名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LogsetName
@@ -5875,7 +5859,6 @@ class ClsLogsetInfo(AbstractModel):
     @property
     def TopicList(self):
         """cls主题列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ClsTopicInfo
         """
         return self._TopicList
@@ -5963,60 +5946,42 @@ class ClusterCheckItem(AbstractModel):
     def __init__(self):
         r"""
         :param _CheckItemId: 唯一的检测项的ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type CheckItemId: int
         :param _Name: 风险项的名称
         :type Name: str
         :param _ItemDetail: 检测项详细描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ItemDetail: str
         :param _RiskLevel: 威胁等级。严重Serious,高危High,中危Middle,提示Hint
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskLevel: str
         :param _RiskTarget: 检查对象、风险对象.Runc,Kubelet,Containerd,Pods
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskTarget: str
         :param _RiskType: 风险类别,漏洞风险CVERisk,配置风险ConfigRisk
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskType: str
         :param _RiskAttribute: 检测项所属的风险类型,权限提升:PrivilegePromotion,拒绝服务:RefuseService,目录穿越:DirectoryEscape,未授权访问:UnauthorizedAccess,权限许可和访问控制问题:PrivilegeAndAccessControl,敏感信息泄露:SensitiveInfoLeak
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskAttribute: str
         :param _RiskProperty: 风险特征,Tag.存在EXP:ExistEXP,存在POD:ExistPOC,无需重启:NoNeedReboot, 服务重启:ServerRestart,远程信息泄露:RemoteInfoLeak,远程拒绝服务:RemoteRefuseService,远程利用:RemoteExploit,远程执行:RemoteExecute
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskProperty: str
         :param _CVENumber: CVE编号
-注意：此字段可能返回 null，表示取不到有效值。
         :type CVENumber: str
         :param _DiscoverTime: 披露时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiscoverTime: str
         :param _Solution: 解决方案
-注意：此字段可能返回 null，表示取不到有效值。
         :type Solution: str
         :param _CVSS: CVSS信息,用于画图
-注意：此字段可能返回 null，表示取不到有效值。
         :type CVSS: str
         :param _CVSSScore: CVSS分数
-注意：此字段可能返回 null，表示取不到有效值。
         :type CVSSScore: str
         :param _RelateLink: 参考连接
-注意：此字段可能返回 null，表示取不到有效值。
         :type RelateLink: str
         :param _AffectedType: 影响类型，为Node或者Workload
-注意：此字段可能返回 null，表示取不到有效值。
         :type AffectedType: str
         :param _AffectedVersion: 受影响的版本信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type AffectedVersion: str
         :param _IgnoredAssetNum: 忽略的资产数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type IgnoredAssetNum: int
         :param _IsIgnored: 是否忽略该检测项
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsIgnored: bool
         :param _RiskAssessment: 受影响评估
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskAssessment: str
         """
         self._CheckItemId = None
@@ -6042,7 +6007,6 @@ class ClusterCheckItem(AbstractModel):
     @property
     def CheckItemId(self):
         """唯一的检测项的ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CheckItemId
@@ -6065,7 +6029,6 @@ class ClusterCheckItem(AbstractModel):
     @property
     def ItemDetail(self):
         """检测项详细描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ItemDetail
@@ -6077,7 +6040,6 @@ class ClusterCheckItem(AbstractModel):
     @property
     def RiskLevel(self):
         """威胁等级。严重Serious,高危High,中危Middle,提示Hint
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RiskLevel
@@ -6089,7 +6051,6 @@ class ClusterCheckItem(AbstractModel):
     @property
     def RiskTarget(self):
         """检查对象、风险对象.Runc,Kubelet,Containerd,Pods
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RiskTarget
@@ -6101,7 +6062,6 @@ class ClusterCheckItem(AbstractModel):
     @property
     def RiskType(self):
         """风险类别,漏洞风险CVERisk,配置风险ConfigRisk
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RiskType
@@ -6113,7 +6073,6 @@ class ClusterCheckItem(AbstractModel):
     @property
     def RiskAttribute(self):
         """检测项所属的风险类型,权限提升:PrivilegePromotion,拒绝服务:RefuseService,目录穿越:DirectoryEscape,未授权访问:UnauthorizedAccess,权限许可和访问控制问题:PrivilegeAndAccessControl,敏感信息泄露:SensitiveInfoLeak
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RiskAttribute
@@ -6125,7 +6084,6 @@ class ClusterCheckItem(AbstractModel):
     @property
     def RiskProperty(self):
         """风险特征,Tag.存在EXP:ExistEXP,存在POD:ExistPOC,无需重启:NoNeedReboot, 服务重启:ServerRestart,远程信息泄露:RemoteInfoLeak,远程拒绝服务:RemoteRefuseService,远程利用:RemoteExploit,远程执行:RemoteExecute
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RiskProperty
@@ -6137,7 +6095,6 @@ class ClusterCheckItem(AbstractModel):
     @property
     def CVENumber(self):
         """CVE编号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CVENumber
@@ -6149,7 +6106,6 @@ class ClusterCheckItem(AbstractModel):
     @property
     def DiscoverTime(self):
         """披露时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DiscoverTime
@@ -6161,7 +6117,6 @@ class ClusterCheckItem(AbstractModel):
     @property
     def Solution(self):
         """解决方案
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Solution
@@ -6173,7 +6128,6 @@ class ClusterCheckItem(AbstractModel):
     @property
     def CVSS(self):
         """CVSS信息,用于画图
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CVSS
@@ -6185,7 +6139,6 @@ class ClusterCheckItem(AbstractModel):
     @property
     def CVSSScore(self):
         """CVSS分数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CVSSScore
@@ -6197,7 +6150,6 @@ class ClusterCheckItem(AbstractModel):
     @property
     def RelateLink(self):
         """参考连接
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RelateLink
@@ -6209,7 +6161,6 @@ class ClusterCheckItem(AbstractModel):
     @property
     def AffectedType(self):
         """影响类型，为Node或者Workload
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AffectedType
@@ -6221,7 +6172,6 @@ class ClusterCheckItem(AbstractModel):
     @property
     def AffectedVersion(self):
         """受影响的版本信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AffectedVersion
@@ -6233,7 +6183,6 @@ class ClusterCheckItem(AbstractModel):
     @property
     def IgnoredAssetNum(self):
         """忽略的资产数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IgnoredAssetNum
@@ -6245,7 +6194,6 @@ class ClusterCheckItem(AbstractModel):
     @property
     def IsIgnored(self):
         """是否忽略该检测项
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsIgnored
@@ -6257,7 +6205,6 @@ class ClusterCheckItem(AbstractModel):
     @property
     def RiskAssessment(self):
         """受影响评估
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RiskAssessment
@@ -6538,22 +6485,16 @@ class ClusterInfoItem(AbstractModel):
 卸载异常: AccessedUninstallException
 接入中: AccessedInstalling
 卸载中: AccessedUninstalling
-注意：此字段可能返回 null，表示取不到有效值。
         :type AccessedStatus: str
         :param _AccessedSubStatus: 接入失败原因
-注意：此字段可能返回 null，表示取不到有效值。
         :type AccessedSubStatus: str
         :param _NodeCount: 节点总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type NodeCount: int
         :param _OffLineNodeCount: 离线节点数
-注意：此字段可能返回 null，表示取不到有效值。
         :type OffLineNodeCount: int
         :param _UnInstallAgentNodeCount: 未安装agent节点数
-注意：此字段可能返回 null，表示取不到有效值。
         :type UnInstallAgentNodeCount: int
         :param _ChargeCoresCnt: 计费核数(弹性计费核数+普通计费核数)
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChargeCoresCnt: int
         :param _MasterAddresses: master 地址列表
         :type MasterAddresses: list of str
@@ -6839,7 +6780,6 @@ class ClusterInfoItem(AbstractModel):
 卸载异常: AccessedUninstallException
 接入中: AccessedInstalling
 卸载中: AccessedUninstalling
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AccessedStatus
@@ -6851,7 +6791,6 @@ class ClusterInfoItem(AbstractModel):
     @property
     def AccessedSubStatus(self):
         """接入失败原因
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AccessedSubStatus
@@ -6863,7 +6802,6 @@ class ClusterInfoItem(AbstractModel):
     @property
     def NodeCount(self):
         """节点总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._NodeCount
@@ -6875,7 +6813,6 @@ class ClusterInfoItem(AbstractModel):
     @property
     def OffLineNodeCount(self):
         """离线节点数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._OffLineNodeCount
@@ -6887,7 +6824,6 @@ class ClusterInfoItem(AbstractModel):
     @property
     def UnInstallAgentNodeCount(self):
         """未安装agent节点数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._UnInstallAgentNodeCount
@@ -6899,7 +6835,6 @@ class ClusterInfoItem(AbstractModel):
     @property
     def ChargeCoresCnt(self):
         """计费核数(弹性计费核数+普通计费核数)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ChargeCoresCnt
@@ -7014,33 +6949,25 @@ class ClusterNodeInfo(AbstractModel):
         :param _NodeName: 节点名称
         :type NodeName: str
         :param _AgentStatus: agent安装状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type AgentStatus: str
         :param _PublicIP: 公网ip
-注意：此字段可能返回 null，表示取不到有效值。
         :type PublicIP: str
         :param _HostID: 节点ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type HostID: str
         :param _MachineType: 主机类型(普通节点情况)
-注意：此字段可能返回 null，表示取不到有效值。
         :type MachineType: str
         :param _NodeType: 节点类型(
 NORMAL: 普通节点
 SUPER:超级节点
 )
-注意：此字段可能返回 null，表示取不到有效值。
         :type NodeType: str
         :param _UUID: uuid
-注意：此字段可能返回 null，表示取不到有效值。
         :type UUID: str
         :param _ChargeCoresCnt: 计费核数
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChargeCoresCnt: int
         :param _DefendStatus: 防护状态:
 已防护: Defended
 未防护: UnDefended
-注意：此字段可能返回 null，表示取不到有效值。
         :type DefendStatus: str
         """
         self._InstanceId = None
@@ -7115,7 +7042,6 @@ SUPER:超级节点
     @property
     def AgentStatus(self):
         """agent安装状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AgentStatus
@@ -7127,7 +7053,6 @@ SUPER:超级节点
     @property
     def PublicIP(self):
         """公网ip
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PublicIP
@@ -7139,7 +7064,6 @@ SUPER:超级节点
     @property
     def HostID(self):
         """节点ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HostID
@@ -7151,7 +7075,6 @@ SUPER:超级节点
     @property
     def MachineType(self):
         """主机类型(普通节点情况)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MachineType
@@ -7166,7 +7089,6 @@ SUPER:超级节点
 NORMAL: 普通节点
 SUPER:超级节点
 )
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NodeType
@@ -7178,7 +7100,6 @@ SUPER:超级节点
     @property
     def UUID(self):
         """uuid
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UUID
@@ -7190,7 +7111,6 @@ SUPER:超级节点
     @property
     def ChargeCoresCnt(self):
         """计费核数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ChargeCoresCnt
@@ -7204,7 +7124,6 @@ SUPER:超级节点
         """防护状态:
 已防护: Defended
 未防护: UnDefended
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DefendStatus
@@ -7828,16 +7747,12 @@ RESULT_FAILED: 未通过
 RESULT_PASSED: 通过
         :type CheckResult: str
         :param _HostIP: 主机IP
-注意：此字段可能返回 null，表示取不到有效值。
         :type HostIP: str
         :param _ImageTag: 镜像的tag
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImageTag: str
         :param _VerifyInfo: 检查项验证信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type VerifyInfo: str
         :param _InstanceId: 主机实例id
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _ImageRegistryInfo: 镜像仓库信息
         :type ImageRegistryInfo: :class:`tencentcloud.tcss.v20201101.models.ImageRegistryInfo`
@@ -7955,7 +7870,6 @@ RESULT_PASSED: 通过
     @property
     def HostIP(self):
         """主机IP
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HostIP
@@ -7967,7 +7881,6 @@ RESULT_PASSED: 通过
     @property
     def ImageTag(self):
         """镜像的tag
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ImageTag
@@ -7979,7 +7892,6 @@ RESULT_PASSED: 通过
     @property
     def VerifyInfo(self):
         """检查项验证信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VerifyInfo
@@ -7991,7 +7903,6 @@ RESULT_PASSED: 通过
     @property
     def InstanceId(self):
         """主机实例id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -8091,12 +8002,10 @@ CHECK_FAILED, 检测失败
         :param _FailedPolicyItemCount: 此类资产未通过的检测的数目。
         :type FailedPolicyItemCount: int
         :param _LastCheckTime: 上次检测的时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LastCheckTime: str
         :param _CheckResult: 检测结果：
 RESULT_FAILED: 未通过。
 RESULT_PASSED: 通过。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CheckResult: str
         :param _AssetStatus: 资产的运行状态。
         :type AssetStatus: str
@@ -8227,7 +8136,6 @@ CHECK_FAILED, 检测失败
     @property
     def LastCheckTime(self):
         """上次检测的时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LastCheckTime
@@ -8241,7 +8149,6 @@ CHECK_FAILED, 检测失败
         """检测结果：
 RESULT_FAILED: 未通过。
 RESULT_PASSED: 通过。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CheckResult
@@ -8315,7 +8222,6 @@ class ComplianceAssetInfo(AbstractModel):
         :param _AssetName: 资产的名称。
         :type AssetName: str
         :param _ImageTag: 当资产为镜像时，这个字段为镜像Tag。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImageTag: str
         :param _HostIP: 资产所在的主机IP。
         :type HostIP: str
@@ -8332,21 +8238,16 @@ CHECK_FINISHED, 检测完成
 CHECK_FAILED, 检测失败
         :type CheckStatus: str
         :param _PassedPolicyItemCount: 此类资产通过的检测项的数目。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PassedPolicyItemCount: int
         :param _FailedPolicyItemCount: 此类资产未通过的检测的数目。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailedPolicyItemCount: int
         :param _LastCheckTime: 上次检测的时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LastCheckTime: str
         :param _CheckResult: 检测结果：
 RESULT_FAILED: 未通过。
 RESULT_PASSED: 通过。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CheckResult: str
         :param _InstanceId: 主机节点的实例id
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _ImageRegistryInfo: 镜像仓库信息
         :type ImageRegistryInfo: :class:`tencentcloud.tcss.v20201101.models.ImageRegistryInfo`
@@ -8407,7 +8308,6 @@ RESULT_PASSED: 通过。
     @property
     def ImageTag(self):
         """当资产为镜像时，这个字段为镜像Tag。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ImageTag
@@ -8460,7 +8360,6 @@ CHECK_FAILED, 检测失败
     @property
     def PassedPolicyItemCount(self):
         """此类资产通过的检测项的数目。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PassedPolicyItemCount
@@ -8472,7 +8371,6 @@ CHECK_FAILED, 检测失败
     @property
     def FailedPolicyItemCount(self):
         """此类资产未通过的检测的数目。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FailedPolicyItemCount
@@ -8484,7 +8382,6 @@ CHECK_FAILED, 检测失败
     @property
     def LastCheckTime(self):
         """上次检测的时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LastCheckTime
@@ -8498,7 +8395,6 @@ CHECK_FAILED, 检测失败
         """检测结果：
 RESULT_FAILED: 未通过。
 RESULT_PASSED: 通过。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CheckResult
@@ -8510,7 +8406,6 @@ RESULT_PASSED: 通过。
     @property
     def InstanceId(self):
         """主机节点的实例id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -8611,18 +8506,14 @@ CHECK_FAILED, 检测失败
         :param _CheckResult: 检测结果
 RESULT_PASSED: 通过
 RESULT_FAILED: 未通过
-注意：此字段可能返回 null，表示取不到有效值。
         :type CheckResult: str
         :param _WhitelistId: 检测项对应的白名单项的ID。如果存在且非0，表示检测项被用户忽略。
-注意：此字段可能返回 null，表示取不到有效值。
         :type WhitelistId: int
         :param _FixSuggestion: 处理建议。
         :type FixSuggestion: str
         :param _LastCheckTime: 最近检测的时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LastCheckTime: str
         :param _VerifyInfo: 验证信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type VerifyInfo: str
         """
         self._CustomerPolicyItemId = None
@@ -8736,7 +8627,6 @@ CHECK_FAILED, 检测失败
         """检测结果
 RESULT_PASSED: 通过
 RESULT_FAILED: 未通过
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CheckResult
@@ -8748,7 +8638,6 @@ RESULT_FAILED: 未通过
     @property
     def WhitelistId(self):
         """检测项对应的白名单项的ID。如果存在且非0，表示检测项被用户忽略。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._WhitelistId
@@ -8771,7 +8660,6 @@ RESULT_FAILED: 未通过
     @property
     def LastCheckTime(self):
         """最近检测的时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LastCheckTime
@@ -8783,7 +8671,6 @@ RESULT_FAILED: 未通过
     @property
     def VerifyInfo(self):
         """验证信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VerifyInfo
@@ -8892,7 +8779,6 @@ CHECK_FINISHED, 检测完成
 CHECK_FAILED, 检测失败
         :type CheckStatus: str
         :param _CheckProgress: 此类别的检测进度，为 0~100 的数。若未在检测中，无此字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CheckProgress: float
         :param _PassedPolicyItemCount: 此类资产通过的检测项的数目。
         :type PassedPolicyItemCount: int
@@ -8917,27 +8803,20 @@ CHECK_FAILED, 检测失败
         :param _ScanFailedAssetCount: 检测失败的资产的数目。
         :type ScanFailedAssetCount: int
         :param _CheckCostTime: 上次检测的耗时，单位为秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CheckCostTime: float
         :param _LastCheckTime: 上次检测的时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LastCheckTime: str
         :param _PeriodRule: 定时检测规则。
         :type PeriodRule: :class:`tencentcloud.tcss.v20201101.models.CompliancePeriodTaskRule`
         :param _OpenPolicyItemCount: 已开启的检查项总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type OpenPolicyItemCount: int
         :param _IgnoredPolicyItemCount: 已忽略的检查项总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type IgnoredPolicyItemCount: int
         :param _TotalPolicyItemCount: 总检测项数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalPolicyItemCount: int
         :param _DetectHostCount: 检测主机数
-注意：此字段可能返回 null，表示取不到有效值。
         :type DetectHostCount: int
         :param _LeftTime: 当前任务剩余时间，单位秒
-注意：此字段可能返回 null，表示取不到有效值。
         :type LeftTime: int
         """
         self._AssetType = None
@@ -9010,7 +8889,6 @@ CHECK_FAILED, 检测失败
     @property
     def CheckProgress(self):
         """此类别的检测进度，为 0~100 的数。若未在检测中，无此字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._CheckProgress
@@ -9143,7 +9021,6 @@ CHECK_FAILED, 检测失败
     @property
     def CheckCostTime(self):
         """上次检测的耗时，单位为秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._CheckCostTime
@@ -9155,7 +9032,6 @@ CHECK_FAILED, 检测失败
     @property
     def LastCheckTime(self):
         """上次检测的时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LastCheckTime
@@ -9178,7 +9054,6 @@ CHECK_FAILED, 检测失败
     @property
     def OpenPolicyItemCount(self):
         """已开启的检查项总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._OpenPolicyItemCount
@@ -9190,7 +9065,6 @@ CHECK_FAILED, 检测失败
     @property
     def IgnoredPolicyItemCount(self):
         """已忽略的检查项总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IgnoredPolicyItemCount
@@ -9202,7 +9076,6 @@ CHECK_FAILED, 检测失败
     @property
     def TotalPolicyItemCount(self):
         """总检测项数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalPolicyItemCount
@@ -9214,7 +9087,6 @@ CHECK_FAILED, 检测失败
     @property
     def DetectHostCount(self):
         """检测主机数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DetectHostCount
@@ -9226,7 +9098,6 @@ CHECK_FAILED, 检测失败
     @property
     def LeftTime(self):
         """当前任务剩余时间，单位秒
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LeftTime
@@ -9429,7 +9300,6 @@ class ComplianceContainerDetailInfo(AbstractModel):
         :param _ContainerId: 容器在主机上的ID。
         :type ContainerId: str
         :param _PodName: 容器所属的Pod的名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PodName: str
         """
         self._ContainerId = None
@@ -9449,7 +9319,6 @@ class ComplianceContainerDetailInfo(AbstractModel):
     @property
     def PodName(self):
         """容器所属的Pod的名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PodName
@@ -9546,13 +9415,10 @@ class ComplianceHostDetailInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _DockerVersion: 主机上的Docker版本。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DockerVersion: str
         :param _K8SVersion: 主机上的K8S的版本。
-注意：此字段可能返回 null，表示取不到有效值。
         :type K8SVersion: str
         :param _ContainerdVersion: 主机上Containerd版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type ContainerdVersion: str
         """
         self._DockerVersion = None
@@ -9562,7 +9428,6 @@ class ComplianceHostDetailInfo(AbstractModel):
     @property
     def DockerVersion(self):
         """主机上的Docker版本。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DockerVersion
@@ -9574,7 +9439,6 @@ class ComplianceHostDetailInfo(AbstractModel):
     @property
     def K8SVersion(self):
         """主机上的K8S的版本。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._K8SVersion
@@ -9586,7 +9450,6 @@ class ComplianceHostDetailInfo(AbstractModel):
     @property
     def ContainerdVersion(self):
         """主机上Containerd版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ContainerdVersion
@@ -9624,7 +9487,6 @@ class ComplianceImageDetailInfo(AbstractModel):
         :param _ImageTag: 镜像的Tag。
         :type ImageTag: str
         :param _Repository: 镜像所在远程仓库的路径。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Repository: str
         """
         self._ImageId = None
@@ -9668,7 +9530,6 @@ class ComplianceImageDetailInfo(AbstractModel):
     @property
     def Repository(self):
         """镜像所在远程仓库的路径。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Repository
@@ -9701,10 +9562,8 @@ class ComplianceK8SDetailInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _ClusterName: K8S集群的名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterName: str
         :param _ClusterVersion: K8S集群的版本。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterVersion: str
         """
         self._ClusterName = None
@@ -9713,7 +9572,6 @@ class ComplianceK8SDetailInfo(AbstractModel):
     @property
     def ClusterName(self):
         """K8S集群的名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterName
@@ -9725,7 +9583,6 @@ class ComplianceK8SDetailInfo(AbstractModel):
     @property
     def ClusterVersion(self):
         """K8S集群的版本。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterVersion
@@ -9764,7 +9621,6 @@ ASSET_HOST, 主机
 ASSET_K8S, K8S资产
         :type AssetType: str
         :param _LastTriggerTime: 最近一次触发的时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type LastTriggerTime: str
         :param _TotalPolicyItemCount: 总的检查项数目
         :type TotalPolicyItemCount: int
@@ -9809,7 +9665,6 @@ ASSET_K8S, K8S资产
     @property
     def LastTriggerTime(self):
         """最近一次触发的时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LastTriggerTime
@@ -9888,7 +9743,6 @@ class CompliancePeriodTaskRule(AbstractModel):
         :param _ExecutionTime: 在这天的什么时间执行，格式为：HH:mm:SS。
         :type ExecutionTime: str
         :param _Enable: 是否开启
-注意：此字段可能返回 null，表示取不到有效值。
         :type Enable: bool
         """
         self._Frequency = None
@@ -9920,7 +9774,6 @@ class CompliancePeriodTaskRule(AbstractModel):
     @property
     def Enable(self):
         """是否开启
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Enable
@@ -10017,7 +9870,6 @@ class CompliancePolicyItemSummary(AbstractModel):
         :param _AssetType: 检测项所属的资产类型
         :type AssetType: str
         :param _LastCheckTime: 最近检测的时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type LastCheckTime: str
         :param _CheckStatus: 检测状态
 
@@ -10032,34 +9884,26 @@ CHECK_FAILED, 检测失败
         :param _CheckResult: 检测结果。RESULT_PASSED: 通过
 
 RESULT_FAILED: 未通过
-注意：此字段可能返回 null，表示取不到有效值。
         :type CheckResult: str
         :param _PassedAssetCount: 通过检测的资产的数目
-注意：此字段可能返回 null，表示取不到有效值。
         :type PassedAssetCount: int
         :param _FailedAssetCount: 未通过检测的资产的数目
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailedAssetCount: int
         :param _WhitelistId: 检测项对应的白名单项的ID。如果存在且非0，表示检测项被用户忽略。
-注意：此字段可能返回 null，表示取不到有效值。
         :type WhitelistId: int
         :param _FixSuggestion: 处理建议。
         :type FixSuggestion: str
         :param _BenchmarkStandardId: 所属的合规标准的ID
         :type BenchmarkStandardId: int
         :param _ApplicableVersion: 检测项适用的版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicableVersion: str
         :param _Description: 检查项描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _AuditProcedure: 检查项审计方法
-注意：此字段可能返回 null，表示取不到有效值。
         :type AuditProcedure: str
         :param _IsEnable: 是否开启
 <li>0 关闭</li>
 <li>1 开启</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsEnable: int
         """
         self._CustomerPolicyItemId = None
@@ -10162,7 +10006,6 @@ RESULT_FAILED: 未通过
     @property
     def LastCheckTime(self):
         """最近检测的时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LastCheckTime
@@ -10195,7 +10038,6 @@ CHECK_FAILED, 检测失败
         """检测结果。RESULT_PASSED: 通过
 
 RESULT_FAILED: 未通过
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CheckResult
@@ -10207,7 +10049,6 @@ RESULT_FAILED: 未通过
     @property
     def PassedAssetCount(self):
         """通过检测的资产的数目
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PassedAssetCount
@@ -10219,7 +10060,6 @@ RESULT_FAILED: 未通过
     @property
     def FailedAssetCount(self):
         """未通过检测的资产的数目
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FailedAssetCount
@@ -10231,7 +10071,6 @@ RESULT_FAILED: 未通过
     @property
     def WhitelistId(self):
         """检测项对应的白名单项的ID。如果存在且非0，表示检测项被用户忽略。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._WhitelistId
@@ -10265,7 +10104,6 @@ RESULT_FAILED: 未通过
     @property
     def ApplicableVersion(self):
         """检测项适用的版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApplicableVersion
@@ -10277,7 +10115,6 @@ RESULT_FAILED: 未通过
     @property
     def Description(self):
         """检查项描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -10289,7 +10126,6 @@ RESULT_FAILED: 未通过
     @property
     def AuditProcedure(self):
         """检查项审计方法
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AuditProcedure
@@ -10303,7 +10139,6 @@ RESULT_FAILED: 未通过
         """是否开启
 <li>0 关闭</li>
 <li>1 开启</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IsEnable
@@ -10677,22 +10512,16 @@ class ComponentsInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Component: 组件名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Component: str
         :param _Version: 组件版本信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
         :param _FixedVersion: 可修复版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type FixedVersion: str
         :param _Path: 路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type Path: str
         :param _Type: 类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Name: 组件名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         """
         self._Component = None
@@ -10707,7 +10536,6 @@ class ComponentsInfo(AbstractModel):
         warnings.warn("parameter `Component` is deprecated", DeprecationWarning) 
 
         """组件名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Component
@@ -10721,7 +10549,6 @@ class ComponentsInfo(AbstractModel):
     @property
     def Version(self):
         """组件版本信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Version
@@ -10733,7 +10560,6 @@ class ComponentsInfo(AbstractModel):
     @property
     def FixedVersion(self):
         """可修复版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FixedVersion
@@ -10745,7 +10571,6 @@ class ComponentsInfo(AbstractModel):
     @property
     def Path(self):
         """路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Path
@@ -10757,7 +10582,6 @@ class ComponentsInfo(AbstractModel):
     @property
     def Type(self):
         """类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -10769,7 +10593,6 @@ class ComponentsInfo(AbstractModel):
     @property
     def Name(self):
         """组件名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -11006,10 +10829,8 @@ class ContainerInfo(AbstractModel):
         :param _NetSubStatus: 网络子状态
         :type NetSubStatus: str
         :param _IsolateSource: 隔离来源
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsolateSource: str
         :param _IsolateTime: 隔离时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsolateTime: str
         :param _NodeID: 超级节点id
         :type NodeID: str
@@ -11030,7 +10851,6 @@ class ContainerInfo(AbstractModel):
         :param _ClusterID: 集群ID
         :type ClusterID: str
         :param _PodUid: pod uid
-注意：此字段可能返回 null，表示取不到有效值。
         :type PodUid: str
         """
         self._ContainerID = None
@@ -11271,7 +11091,6 @@ class ContainerInfo(AbstractModel):
     @property
     def IsolateSource(self):
         """隔离来源
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IsolateSource
@@ -11283,7 +11102,6 @@ class ContainerInfo(AbstractModel):
     @property
     def IsolateTime(self):
         """隔离时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IsolateTime
@@ -11394,7 +11212,6 @@ class ContainerInfo(AbstractModel):
     @property
     def PodUid(self):
         """pod uid
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PodUid
@@ -12659,6 +12476,8 @@ class CreateAssetImageScanTaskRequest(AbstractModel):
         :type ScanScope: int
         :param _Timeout: 任务超时时长单位秒，默认1小时
         :type Timeout: int
+        :param _IsOneClickScanningTask: 一键扫描任务。默认false表示非一键扫描，true一键扫描
+        :type IsOneClickScanningTask: bool
         """
         self._All = None
         self._Images = None
@@ -12670,6 +12489,7 @@ class CreateAssetImageScanTaskRequest(AbstractModel):
         self._ContainerRunning = None
         self._ScanScope = None
         self._Timeout = None
+        self._IsOneClickScanningTask = None
 
     @property
     def All(self):
@@ -12785,6 +12605,17 @@ class CreateAssetImageScanTaskRequest(AbstractModel):
     def Timeout(self, Timeout):
         self._Timeout = Timeout
 
+    @property
+    def IsOneClickScanningTask(self):
+        """一键扫描任务。默认false表示非一键扫描，true一键扫描
+        :rtype: bool
+        """
+        return self._IsOneClickScanningTask
+
+    @IsOneClickScanningTask.setter
+    def IsOneClickScanningTask(self, IsOneClickScanningTask):
+        self._IsOneClickScanningTask = IsOneClickScanningTask
+
 
     def _deserialize(self, params):
         self._All = params.get("All")
@@ -12802,6 +12633,7 @@ class CreateAssetImageScanTaskRequest(AbstractModel):
         self._ContainerRunning = params.get("ContainerRunning")
         self._ScanScope = params.get("ScanScope")
         self._Timeout = params.get("Timeout")
+        self._IsOneClickScanningTask = params.get("IsOneClickScanningTask")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13166,7 +12998,6 @@ class CreateClusterCheckTaskResponse(AbstractModel):
         :param _CreateResult: 创建检查任务的结果，"Succ"为成功，其他的为失败原因
         :type CreateResult: str
         :param _NewTaskID: 返回创建的集群新任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type NewTaskID: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13201,7 +13032,6 @@ class CreateClusterCheckTaskResponse(AbstractModel):
     @property
     def NewTaskID(self):
         """返回创建的集群新任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NewTaskID
@@ -14238,7 +14068,6 @@ class CreateExportComplianceStatusListJobResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _JobId: 返回创建的导出任务的ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type JobId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14249,7 +14078,6 @@ class CreateExportComplianceStatusListJobResponse(AbstractModel):
     @property
     def JobId(self):
         """返回创建的导出任务的ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._JobId
@@ -18315,6 +18143,70 @@ class DeleteNetworkFirewallPolicyDetailResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteRaspRulesRequest(AbstractModel):
+    """DeleteRaspRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IDs: 待删除的规则ID数组 (最大100条)
+        :type IDs: list of int non-negative
+        """
+        self._IDs = None
+
+    @property
+    def IDs(self):
+        """待删除的规则ID数组 (最大100条)
+        :rtype: list of int non-negative
+        """
+        return self._IDs
+
+    @IDs.setter
+    def IDs(self, IDs):
+        self._IDs = IDs
+
+
+    def _deserialize(self, params):
+        self._IDs = params.get("IDs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRaspRulesResponse(AbstractModel):
+    """DeleteRaspRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteReverseShellEventsRequest(AbstractModel):
     """DeleteReverseShellEvents请求参数结构体
 
@@ -18771,7 +18663,6 @@ class DescribeAbnormalProcessDetailResponse(AbstractModel):
         :param _EventDetail: 事件描述
         :type EventDetail: :class:`tencentcloud.tcss.v20201101.models.AbnormalProcessEventDescription`
         :param _AncestorProcessInfo: 祖先进程信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type AncestorProcessInfo: :class:`tencentcloud.tcss.v20201101.models.ProcessBaseInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18830,7 +18721,6 @@ class DescribeAbnormalProcessDetailResponse(AbstractModel):
     @property
     def AncestorProcessInfo(self):
         """祖先进程信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcss.v20201101.models.ProcessBaseInfo`
         """
         return self._AncestorProcessInfo
@@ -18966,167 +18856,6 @@ class DescribeAbnormalProcessEventTendencyResponse(AbstractModel):
                 obj = AbnormalProcessEventTendencyInfo()
                 obj._deserialize(item)
                 self._List.append(obj)
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeAbnormalProcessEventsExportRequest(AbstractModel):
-    """DescribeAbnormalProcessEventsExport请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ExportField: 导出字段
-        :type ExportField: list of str
-        :param _Limit: 需要返回的数量，默认为10，最大值为100
-        :type Limit: int
-        :param _Offset: 偏移量，默认为0。
-        :type Offset: int
-        :param _Filters: 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-        :type Filters: list of RunTimeFilters
-        :param _Order: 升序降序,asc desc
-        :type Order: str
-        :param _By: 排序字段
-        :type By: str
-        """
-        self._ExportField = None
-        self._Limit = None
-        self._Offset = None
-        self._Filters = None
-        self._Order = None
-        self._By = None
-
-    @property
-    def ExportField(self):
-        """导出字段
-        :rtype: list of str
-        """
-        return self._ExportField
-
-    @ExportField.setter
-    def ExportField(self, ExportField):
-        self._ExportField = ExportField
-
-    @property
-    def Limit(self):
-        """需要返回的数量，默认为10，最大值为100
-        :rtype: int
-        """
-        return self._Limit
-
-    @Limit.setter
-    def Limit(self, Limit):
-        self._Limit = Limit
-
-    @property
-    def Offset(self):
-        """偏移量，默认为0。
-        :rtype: int
-        """
-        return self._Offset
-
-    @Offset.setter
-    def Offset(self, Offset):
-        self._Offset = Offset
-
-    @property
-    def Filters(self):
-        """过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-        :rtype: list of RunTimeFilters
-        """
-        return self._Filters
-
-    @Filters.setter
-    def Filters(self, Filters):
-        self._Filters = Filters
-
-    @property
-    def Order(self):
-        """升序降序,asc desc
-        :rtype: str
-        """
-        return self._Order
-
-    @Order.setter
-    def Order(self, Order):
-        self._Order = Order
-
-    @property
-    def By(self):
-        """排序字段
-        :rtype: str
-        """
-        return self._By
-
-    @By.setter
-    def By(self, By):
-        self._By = By
-
-
-    def _deserialize(self, params):
-        self._ExportField = params.get("ExportField")
-        self._Limit = params.get("Limit")
-        self._Offset = params.get("Offset")
-        if params.get("Filters") is not None:
-            self._Filters = []
-            for item in params.get("Filters"):
-                obj = RunTimeFilters()
-                obj._deserialize(item)
-                self._Filters.append(obj)
-        self._Order = params.get("Order")
-        self._By = params.get("By")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeAbnormalProcessEventsExportResponse(AbstractModel):
-    """DescribeAbnormalProcessEventsExport返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _DownloadUrl: execle下载地址
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DownloadUrl: str
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._DownloadUrl = None
-        self._RequestId = None
-
-    @property
-    def DownloadUrl(self):
-        """execle下载地址
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._DownloadUrl
-
-    @DownloadUrl.setter
-    def DownloadUrl(self, DownloadUrl):
-        self._DownloadUrl = DownloadUrl
-
-    @property
-    def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._DownloadUrl = params.get("DownloadUrl")
         self._RequestId = params.get("RequestId")
 
 
@@ -19499,167 +19228,6 @@ class DescribeAbnormalProcessRuleDetailResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class DescribeAbnormalProcessRulesExportRequest(AbstractModel):
-    """DescribeAbnormalProcessRulesExport请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ExportField: 导出字段
-        :type ExportField: list of str
-        :param _Limit: 需要返回的数量，默认为10，最大值为100
-        :type Limit: int
-        :param _Offset: 偏移量，默认为0。
-        :type Offset: int
-        :param _Filters: 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-        :type Filters: list of RunTimeFilters
-        :param _Order: 升序降序,asc desc
-        :type Order: str
-        :param _By: 排序字段
-        :type By: str
-        """
-        self._ExportField = None
-        self._Limit = None
-        self._Offset = None
-        self._Filters = None
-        self._Order = None
-        self._By = None
-
-    @property
-    def ExportField(self):
-        """导出字段
-        :rtype: list of str
-        """
-        return self._ExportField
-
-    @ExportField.setter
-    def ExportField(self, ExportField):
-        self._ExportField = ExportField
-
-    @property
-    def Limit(self):
-        """需要返回的数量，默认为10，最大值为100
-        :rtype: int
-        """
-        return self._Limit
-
-    @Limit.setter
-    def Limit(self, Limit):
-        self._Limit = Limit
-
-    @property
-    def Offset(self):
-        """偏移量，默认为0。
-        :rtype: int
-        """
-        return self._Offset
-
-    @Offset.setter
-    def Offset(self, Offset):
-        self._Offset = Offset
-
-    @property
-    def Filters(self):
-        """过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-        :rtype: list of RunTimeFilters
-        """
-        return self._Filters
-
-    @Filters.setter
-    def Filters(self, Filters):
-        self._Filters = Filters
-
-    @property
-    def Order(self):
-        """升序降序,asc desc
-        :rtype: str
-        """
-        return self._Order
-
-    @Order.setter
-    def Order(self, Order):
-        self._Order = Order
-
-    @property
-    def By(self):
-        """排序字段
-        :rtype: str
-        """
-        return self._By
-
-    @By.setter
-    def By(self, By):
-        self._By = By
-
-
-    def _deserialize(self, params):
-        self._ExportField = params.get("ExportField")
-        self._Limit = params.get("Limit")
-        self._Offset = params.get("Offset")
-        if params.get("Filters") is not None:
-            self._Filters = []
-            for item in params.get("Filters"):
-                obj = RunTimeFilters()
-                obj._deserialize(item)
-                self._Filters.append(obj)
-        self._Order = params.get("Order")
-        self._By = params.get("By")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeAbnormalProcessRulesExportResponse(AbstractModel):
-    """DescribeAbnormalProcessRulesExport返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _DownloadUrl: execle下载地址
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DownloadUrl: str
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._DownloadUrl = None
-        self._RequestId = None
-
-    @property
-    def DownloadUrl(self):
-        """execle下载地址
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._DownloadUrl
-
-    @DownloadUrl.setter
-    def DownloadUrl(self, DownloadUrl):
-        self._DownloadUrl = DownloadUrl
-
-    @property
-    def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._DownloadUrl = params.get("DownloadUrl")
-        self._RequestId = params.get("RequestId")
-
-
 class DescribeAbnormalProcessRulesRequest(AbstractModel):
     """DescribeAbnormalProcessRules请求参数结构体
 
@@ -19878,7 +19446,6 @@ class DescribeAccessControlDetailResponse(AbstractModel):
         :param _ParentProcessInfo: 父进程信息
         :type ParentProcessInfo: :class:`tencentcloud.tcss.v20201101.models.ProcessBaseInfo`
         :param _AncestorProcessInfo: 祖先进程信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type AncestorProcessInfo: :class:`tencentcloud.tcss.v20201101.models.ProcessBaseInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -19949,7 +19516,6 @@ class DescribeAccessControlDetailResponse(AbstractModel):
     @property
     def AncestorProcessInfo(self):
         """祖先进程信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcss.v20201101.models.ProcessBaseInfo`
         """
         return self._AncestorProcessInfo
@@ -20116,10 +19682,8 @@ class DescribeAccessControlEventsExportResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _DownloadUrl: execle下载地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type DownloadUrl: str
         :param _JobId: 任务id
-注意：此字段可能返回 null，表示取不到有效值。
         :type JobId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -20131,7 +19695,6 @@ class DescribeAccessControlEventsExportResponse(AbstractModel):
     @property
     def DownloadUrl(self):
         """execle下载地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DownloadUrl
@@ -20143,7 +19706,6 @@ class DescribeAccessControlEventsExportResponse(AbstractModel):
     @property
     def JobId(self):
         """任务id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._JobId
@@ -20457,167 +20019,6 @@ class DescribeAccessControlRuleDetailResponse(AbstractModel):
         if params.get("RuleDetail") is not None:
             self._RuleDetail = AccessControlRuleInfo()
             self._RuleDetail._deserialize(params.get("RuleDetail"))
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeAccessControlRulesExportRequest(AbstractModel):
-    """DescribeAccessControlRulesExport请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ExportField: 导出字段
-        :type ExportField: list of str
-        :param _Limit: 需要返回的数量，默认为10，最大值为100
-        :type Limit: int
-        :param _Offset: 偏移量，默认为0。
-        :type Offset: int
-        :param _Filters: 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-        :type Filters: list of RunTimeFilters
-        :param _Order: 升序降序,asc desc
-        :type Order: str
-        :param _By: 排序字段
-        :type By: str
-        """
-        self._ExportField = None
-        self._Limit = None
-        self._Offset = None
-        self._Filters = None
-        self._Order = None
-        self._By = None
-
-    @property
-    def ExportField(self):
-        """导出字段
-        :rtype: list of str
-        """
-        return self._ExportField
-
-    @ExportField.setter
-    def ExportField(self, ExportField):
-        self._ExportField = ExportField
-
-    @property
-    def Limit(self):
-        """需要返回的数量，默认为10，最大值为100
-        :rtype: int
-        """
-        return self._Limit
-
-    @Limit.setter
-    def Limit(self, Limit):
-        self._Limit = Limit
-
-    @property
-    def Offset(self):
-        """偏移量，默认为0。
-        :rtype: int
-        """
-        return self._Offset
-
-    @Offset.setter
-    def Offset(self, Offset):
-        self._Offset = Offset
-
-    @property
-    def Filters(self):
-        """过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-        :rtype: list of RunTimeFilters
-        """
-        return self._Filters
-
-    @Filters.setter
-    def Filters(self, Filters):
-        self._Filters = Filters
-
-    @property
-    def Order(self):
-        """升序降序,asc desc
-        :rtype: str
-        """
-        return self._Order
-
-    @Order.setter
-    def Order(self, Order):
-        self._Order = Order
-
-    @property
-    def By(self):
-        """排序字段
-        :rtype: str
-        """
-        return self._By
-
-    @By.setter
-    def By(self, By):
-        self._By = By
-
-
-    def _deserialize(self, params):
-        self._ExportField = params.get("ExportField")
-        self._Limit = params.get("Limit")
-        self._Offset = params.get("Offset")
-        if params.get("Filters") is not None:
-            self._Filters = []
-            for item in params.get("Filters"):
-                obj = RunTimeFilters()
-                obj._deserialize(item)
-                self._Filters.append(obj)
-        self._Order = params.get("Order")
-        self._By = params.get("By")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeAccessControlRulesExportResponse(AbstractModel):
-    """DescribeAccessControlRulesExport返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _DownloadUrl: execle下载地址
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DownloadUrl: str
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._DownloadUrl = None
-        self._RequestId = None
-
-    @property
-    def DownloadUrl(self):
-        """execle下载地址
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._DownloadUrl
-
-    @DownloadUrl.setter
-    def DownloadUrl(self, DownloadUrl):
-        self._DownloadUrl = DownloadUrl
-
-    @property
-    def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._DownloadUrl = params.get("DownloadUrl")
         self._RequestId = params.get("RequestId")
 
 
@@ -22229,10 +21630,8 @@ class DescribeAssetContainerDetailResponse(AbstractModel):
         :param _NetSubStatus: 网络子状态
         :type NetSubStatus: str
         :param _IsolateSource: 隔离来源
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsolateSource: str
         :param _IsolateTime: 隔离时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsolateTime: str
         :param _NodeID: 节点ID
         :type NodeID: str
@@ -22589,7 +21988,6 @@ class DescribeAssetContainerDetailResponse(AbstractModel):
     @property
     def IsolateSource(self):
         """隔离来源
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IsolateSource
@@ -22601,7 +21999,6 @@ class DescribeAssetContainerDetailResponse(AbstractModel):
     @property
     def IsolateTime(self):
         """隔离时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IsolateTime
@@ -24034,71 +23431,50 @@ class DescribeAssetImageDetailResponse(AbstractModel):
         :param _Size: 镜像大小
         :type Size: int
         :param _HostCnt: 关联主机个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type HostCnt: int
         :param _ContainerCnt: 关联容器个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type ContainerCnt: int
         :param _ScanTime: 最近扫描时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScanTime: str
         :param _VulCnt: 漏洞个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type VulCnt: int
         :param _RiskCnt: 风险行为数
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskCnt: int
         :param _SensitiveInfoCnt: 敏感信息数
-注意：此字段可能返回 null，表示取不到有效值。
         :type SensitiveInfoCnt: int
         :param _IsTrustImage: 是否信任镜像
         :type IsTrustImage: bool
         :param _OsName: 镜像系统
         :type OsName: str
         :param _AgentError: agent镜像扫描错误
-注意：此字段可能返回 null，表示取不到有效值。
         :type AgentError: str
         :param _ScanError: 后端镜像扫描错误
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScanError: str
         :param _Architecture: 系统架构
-注意：此字段可能返回 null，表示取不到有效值。
         :type Architecture: str
         :param _Author: 作者
-注意：此字段可能返回 null，表示取不到有效值。
         :type Author: str
         :param _BuildHistory: 构建历史
-注意：此字段可能返回 null，表示取不到有效值。
         :type BuildHistory: str
         :param _ScanVirusProgress: 木马扫描进度
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScanVirusProgress: int
         :param _ScanVulProgress: 漏洞扫进度
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScanVulProgress: int
         :param _ScanRiskProgress: 敏感信息扫描进度
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScanRiskProgress: int
         :param _ScanVirusError: 木马扫描错误
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScanVirusError: str
         :param _ScanVulError: 漏洞扫描错误
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScanVulError: str
         :param _ScanRiskError: 敏感信息错误
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScanRiskError: str
         :param _ScanStatus: 镜像扫描状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScanStatus: str
         :param _VirusCnt: 木马病毒数
-注意：此字段可能返回 null，表示取不到有效值。
         :type VirusCnt: int
         :param _Status: 镜像扫描状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _RemainScanTime: 剩余扫描时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type RemainScanTime: int
         :param _IsAuthorized: 授权为：1，未授权为：0
         :type IsAuthorized: int
@@ -24194,7 +23570,6 @@ class DescribeAssetImageDetailResponse(AbstractModel):
     @property
     def HostCnt(self):
         """关联主机个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._HostCnt
@@ -24206,7 +23581,6 @@ class DescribeAssetImageDetailResponse(AbstractModel):
     @property
     def ContainerCnt(self):
         """关联容器个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ContainerCnt
@@ -24218,7 +23592,6 @@ class DescribeAssetImageDetailResponse(AbstractModel):
     @property
     def ScanTime(self):
         """最近扫描时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ScanTime
@@ -24230,7 +23603,6 @@ class DescribeAssetImageDetailResponse(AbstractModel):
     @property
     def VulCnt(self):
         """漏洞个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._VulCnt
@@ -24242,7 +23614,6 @@ class DescribeAssetImageDetailResponse(AbstractModel):
     @property
     def RiskCnt(self):
         """风险行为数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RiskCnt
@@ -24254,7 +23625,6 @@ class DescribeAssetImageDetailResponse(AbstractModel):
     @property
     def SensitiveInfoCnt(self):
         """敏感信息数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SensitiveInfoCnt
@@ -24288,7 +23658,6 @@ class DescribeAssetImageDetailResponse(AbstractModel):
     @property
     def AgentError(self):
         """agent镜像扫描错误
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AgentError
@@ -24300,7 +23669,6 @@ class DescribeAssetImageDetailResponse(AbstractModel):
     @property
     def ScanError(self):
         """后端镜像扫描错误
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ScanError
@@ -24312,7 +23680,6 @@ class DescribeAssetImageDetailResponse(AbstractModel):
     @property
     def Architecture(self):
         """系统架构
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Architecture
@@ -24324,7 +23691,6 @@ class DescribeAssetImageDetailResponse(AbstractModel):
     @property
     def Author(self):
         """作者
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Author
@@ -24336,7 +23702,6 @@ class DescribeAssetImageDetailResponse(AbstractModel):
     @property
     def BuildHistory(self):
         """构建历史
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BuildHistory
@@ -24348,7 +23713,6 @@ class DescribeAssetImageDetailResponse(AbstractModel):
     @property
     def ScanVirusProgress(self):
         """木马扫描进度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ScanVirusProgress
@@ -24360,7 +23724,6 @@ class DescribeAssetImageDetailResponse(AbstractModel):
     @property
     def ScanVulProgress(self):
         """漏洞扫进度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ScanVulProgress
@@ -24372,7 +23735,6 @@ class DescribeAssetImageDetailResponse(AbstractModel):
     @property
     def ScanRiskProgress(self):
         """敏感信息扫描进度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ScanRiskProgress
@@ -24384,7 +23746,6 @@ class DescribeAssetImageDetailResponse(AbstractModel):
     @property
     def ScanVirusError(self):
         """木马扫描错误
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ScanVirusError
@@ -24396,7 +23757,6 @@ class DescribeAssetImageDetailResponse(AbstractModel):
     @property
     def ScanVulError(self):
         """漏洞扫描错误
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ScanVulError
@@ -24408,7 +23768,6 @@ class DescribeAssetImageDetailResponse(AbstractModel):
     @property
     def ScanRiskError(self):
         """敏感信息错误
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ScanRiskError
@@ -24420,7 +23779,6 @@ class DescribeAssetImageDetailResponse(AbstractModel):
     @property
     def ScanStatus(self):
         """镜像扫描状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ScanStatus
@@ -24432,7 +23790,6 @@ class DescribeAssetImageDetailResponse(AbstractModel):
     @property
     def VirusCnt(self):
         """木马病毒数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._VirusCnt
@@ -24444,7 +23801,6 @@ class DescribeAssetImageDetailResponse(AbstractModel):
     @property
     def Status(self):
         """镜像扫描状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -24456,7 +23812,6 @@ class DescribeAssetImageDetailResponse(AbstractModel):
     @property
     def RemainScanTime(self):
         """剩余扫描时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RemainScanTime
@@ -24622,173 +23977,6 @@ class DescribeAssetImageHostListResponse(AbstractModel):
                 obj._deserialize(item)
                 self._List.append(obj)
         self._TotalCount = params.get("TotalCount")
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeAssetImageListExportRequest(AbstractModel):
-    """DescribeAssetImageListExport请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ExportField: 导出字段
-        :type ExportField: list of str
-        :param _Limit: 需要返回的数量，默认为10，最大值为100
-        :type Limit: int
-        :param _Offset: 偏移量，默认为0。
-        :type Offset: int
-        :param _Filters: 过滤条件。
-<li>ImageName- String - 是否必填：否 - 镜像名称筛选，</li>
-<li>ScanStatus - String - 是否必填：否 - 镜像扫描状态notScan，scanning，scanned，scanErr</li>
-<li>ImageID- String - 是否必填：否 - 镜像ID筛选，</li>
-<li>SecurityRisk- String - 是否必填：否 - 安全风险，VulCnt 、VirusCnt、RiskCnt、IsTrustImage</li>
-        :type Filters: list of AssetFilters
-        :param _By: 排序字段
-        :type By: str
-        :param _Order: 排序方式 asc,desc
-        :type Order: str
-        """
-        self._ExportField = None
-        self._Limit = None
-        self._Offset = None
-        self._Filters = None
-        self._By = None
-        self._Order = None
-
-    @property
-    def ExportField(self):
-        """导出字段
-        :rtype: list of str
-        """
-        return self._ExportField
-
-    @ExportField.setter
-    def ExportField(self, ExportField):
-        self._ExportField = ExportField
-
-    @property
-    def Limit(self):
-        """需要返回的数量，默认为10，最大值为100
-        :rtype: int
-        """
-        return self._Limit
-
-    @Limit.setter
-    def Limit(self, Limit):
-        self._Limit = Limit
-
-    @property
-    def Offset(self):
-        """偏移量，默认为0。
-        :rtype: int
-        """
-        return self._Offset
-
-    @Offset.setter
-    def Offset(self, Offset):
-        self._Offset = Offset
-
-    @property
-    def Filters(self):
-        """过滤条件。
-<li>ImageName- String - 是否必填：否 - 镜像名称筛选，</li>
-<li>ScanStatus - String - 是否必填：否 - 镜像扫描状态notScan，scanning，scanned，scanErr</li>
-<li>ImageID- String - 是否必填：否 - 镜像ID筛选，</li>
-<li>SecurityRisk- String - 是否必填：否 - 安全风险，VulCnt 、VirusCnt、RiskCnt、IsTrustImage</li>
-        :rtype: list of AssetFilters
-        """
-        return self._Filters
-
-    @Filters.setter
-    def Filters(self, Filters):
-        self._Filters = Filters
-
-    @property
-    def By(self):
-        """排序字段
-        :rtype: str
-        """
-        return self._By
-
-    @By.setter
-    def By(self, By):
-        self._By = By
-
-    @property
-    def Order(self):
-        """排序方式 asc,desc
-        :rtype: str
-        """
-        return self._Order
-
-    @Order.setter
-    def Order(self, Order):
-        self._Order = Order
-
-
-    def _deserialize(self, params):
-        self._ExportField = params.get("ExportField")
-        self._Limit = params.get("Limit")
-        self._Offset = params.get("Offset")
-        if params.get("Filters") is not None:
-            self._Filters = []
-            for item in params.get("Filters"):
-                obj = AssetFilters()
-                obj._deserialize(item)
-                self._Filters.append(obj)
-        self._By = params.get("By")
-        self._Order = params.get("Order")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeAssetImageListExportResponse(AbstractModel):
-    """DescribeAssetImageListExport返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _DownloadUrl: excel文件下载地址
-        :type DownloadUrl: str
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._DownloadUrl = None
-        self._RequestId = None
-
-    @property
-    def DownloadUrl(self):
-        """excel文件下载地址
-        :rtype: str
-        """
-        return self._DownloadUrl
-
-    @DownloadUrl.setter
-    def DownloadUrl(self, DownloadUrl):
-        self._DownloadUrl = DownloadUrl
-
-    @property
-    def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._DownloadUrl = params.get("DownloadUrl")
         self._RequestId = params.get("RequestId")
 
 
@@ -24980,7 +24168,6 @@ class DescribeAssetImageRegistryAssetStatusResponse(AbstractModel):
         :param _Status: 更新进度状态,doing更新中，success更新成功，failed失败
         :type Status: str
         :param _Err: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Err: str
         :param _LatestSyncSuccessTime: 最后一次同步成功时间
         :type LatestSyncSuccessTime: str
@@ -25006,7 +24193,6 @@ class DescribeAssetImageRegistryAssetStatusResponse(AbstractModel):
     @property
     def Err(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Err
@@ -25104,103 +24290,70 @@ class DescribeAssetImageRegistryDetailResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ImageDigest: 镜像Digest
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImageDigest: str
         :param _ImageRepoAddress: 镜像地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImageRepoAddress: str
         :param _RegistryType: 镜像类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegistryType: str
         :param _ImageName: 仓库名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImageName: str
         :param _ImageTag: 镜像版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImageTag: str
         :param _ScanTime: 扫描时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScanTime: str
         :param _ScanStatus: 扫描状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScanStatus: str
         :param _VulCnt: 安全漏洞数
-注意：此字段可能返回 null，表示取不到有效值。
         :type VulCnt: int
         :param _VirusCnt: 木马病毒数
-注意：此字段可能返回 null，表示取不到有效值。
         :type VirusCnt: int
         :param _RiskCnt: 风险行为数
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskCnt: int
         :param _SentiveInfoCnt: 敏感信息数
-注意：此字段可能返回 null，表示取不到有效值。
         :type SentiveInfoCnt: int
         :param _OsName: 镜像系统
-注意：此字段可能返回 null，表示取不到有效值。
         :type OsName: str
         :param _ScanVirusError: 木马扫描错误
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScanVirusError: str
         :param _ScanVulError: 漏洞扫描错误
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScanVulError: str
         :param _LayerInfo: 层文件信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type LayerInfo: str
         :param _InstanceId: 实例id
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _InstanceName: 实例名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceName: str
         :param _Namespace: 命名空间
-注意：此字段可能返回 null，表示取不到有效值。
         :type Namespace: str
         :param _ScanRiskError: 高危扫描错误
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScanRiskError: str
         :param _ScanVirusProgress: 木马信息扫描进度
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScanVirusProgress: int
         :param _ScanVulProgress: 漏洞扫描进度
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScanVulProgress: int
         :param _ScanRiskProgress: 敏感扫描进度
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScanRiskProgress: int
         :param _ScanRemainTime: 剩余扫描时间秒
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScanRemainTime: int
         :param _CveStatus: cve扫描状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type CveStatus: str
         :param _RiskStatus: 高危扫描状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskStatus: str
         :param _VirusStatus: 木马扫描状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type VirusStatus: str
         :param _Progress: 总进度
-注意：此字段可能返回 null，表示取不到有效值。
         :type Progress: int
         :param _IsAuthorized: 授权状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsAuthorized: int
         :param _ImageSize: 镜像大小
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImageSize: int
         :param _ImageId: 镜像Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImageId: str
         :param _RegistryRegion: 镜像区域
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegistryRegion: str
         :param _ImageCreateTime: 镜像创建的时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImageCreateTime: str
         :param _SensitiveInfoCnt: 敏感信息数
-注意：此字段可能返回 null，表示取不到有效值。
         :type SensitiveInfoCnt: int
         :param _Id: Id
         :type Id: int
@@ -25246,7 +24399,6 @@ class DescribeAssetImageRegistryDetailResponse(AbstractModel):
     @property
     def ImageDigest(self):
         """镜像Digest
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ImageDigest
@@ -25258,7 +24410,6 @@ class DescribeAssetImageRegistryDetailResponse(AbstractModel):
     @property
     def ImageRepoAddress(self):
         """镜像地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ImageRepoAddress
@@ -25270,7 +24421,6 @@ class DescribeAssetImageRegistryDetailResponse(AbstractModel):
     @property
     def RegistryType(self):
         """镜像类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RegistryType
@@ -25282,7 +24432,6 @@ class DescribeAssetImageRegistryDetailResponse(AbstractModel):
     @property
     def ImageName(self):
         """仓库名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ImageName
@@ -25294,7 +24443,6 @@ class DescribeAssetImageRegistryDetailResponse(AbstractModel):
     @property
     def ImageTag(self):
         """镜像版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ImageTag
@@ -25306,7 +24454,6 @@ class DescribeAssetImageRegistryDetailResponse(AbstractModel):
     @property
     def ScanTime(self):
         """扫描时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ScanTime
@@ -25318,7 +24465,6 @@ class DescribeAssetImageRegistryDetailResponse(AbstractModel):
     @property
     def ScanStatus(self):
         """扫描状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ScanStatus
@@ -25330,7 +24476,6 @@ class DescribeAssetImageRegistryDetailResponse(AbstractModel):
     @property
     def VulCnt(self):
         """安全漏洞数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._VulCnt
@@ -25342,7 +24487,6 @@ class DescribeAssetImageRegistryDetailResponse(AbstractModel):
     @property
     def VirusCnt(self):
         """木马病毒数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._VirusCnt
@@ -25354,7 +24498,6 @@ class DescribeAssetImageRegistryDetailResponse(AbstractModel):
     @property
     def RiskCnt(self):
         """风险行为数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RiskCnt
@@ -25368,7 +24511,6 @@ class DescribeAssetImageRegistryDetailResponse(AbstractModel):
         warnings.warn("parameter `SentiveInfoCnt` is deprecated", DeprecationWarning) 
 
         """敏感信息数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SentiveInfoCnt
@@ -25382,7 +24524,6 @@ class DescribeAssetImageRegistryDetailResponse(AbstractModel):
     @property
     def OsName(self):
         """镜像系统
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OsName
@@ -25394,7 +24535,6 @@ class DescribeAssetImageRegistryDetailResponse(AbstractModel):
     @property
     def ScanVirusError(self):
         """木马扫描错误
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ScanVirusError
@@ -25406,7 +24546,6 @@ class DescribeAssetImageRegistryDetailResponse(AbstractModel):
     @property
     def ScanVulError(self):
         """漏洞扫描错误
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ScanVulError
@@ -25418,7 +24557,6 @@ class DescribeAssetImageRegistryDetailResponse(AbstractModel):
     @property
     def LayerInfo(self):
         """层文件信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LayerInfo
@@ -25430,7 +24568,6 @@ class DescribeAssetImageRegistryDetailResponse(AbstractModel):
     @property
     def InstanceId(self):
         """实例id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -25442,7 +24579,6 @@ class DescribeAssetImageRegistryDetailResponse(AbstractModel):
     @property
     def InstanceName(self):
         """实例名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceName
@@ -25454,7 +24590,6 @@ class DescribeAssetImageRegistryDetailResponse(AbstractModel):
     @property
     def Namespace(self):
         """命名空间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Namespace
@@ -25466,7 +24601,6 @@ class DescribeAssetImageRegistryDetailResponse(AbstractModel):
     @property
     def ScanRiskError(self):
         """高危扫描错误
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ScanRiskError
@@ -25478,7 +24612,6 @@ class DescribeAssetImageRegistryDetailResponse(AbstractModel):
     @property
     def ScanVirusProgress(self):
         """木马信息扫描进度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ScanVirusProgress
@@ -25490,7 +24623,6 @@ class DescribeAssetImageRegistryDetailResponse(AbstractModel):
     @property
     def ScanVulProgress(self):
         """漏洞扫描进度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ScanVulProgress
@@ -25502,7 +24634,6 @@ class DescribeAssetImageRegistryDetailResponse(AbstractModel):
     @property
     def ScanRiskProgress(self):
         """敏感扫描进度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ScanRiskProgress
@@ -25514,7 +24645,6 @@ class DescribeAssetImageRegistryDetailResponse(AbstractModel):
     @property
     def ScanRemainTime(self):
         """剩余扫描时间秒
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ScanRemainTime
@@ -25526,7 +24656,6 @@ class DescribeAssetImageRegistryDetailResponse(AbstractModel):
     @property
     def CveStatus(self):
         """cve扫描状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CveStatus
@@ -25538,7 +24667,6 @@ class DescribeAssetImageRegistryDetailResponse(AbstractModel):
     @property
     def RiskStatus(self):
         """高危扫描状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RiskStatus
@@ -25550,7 +24678,6 @@ class DescribeAssetImageRegistryDetailResponse(AbstractModel):
     @property
     def VirusStatus(self):
         """木马扫描状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VirusStatus
@@ -25562,7 +24689,6 @@ class DescribeAssetImageRegistryDetailResponse(AbstractModel):
     @property
     def Progress(self):
         """总进度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Progress
@@ -25574,7 +24700,6 @@ class DescribeAssetImageRegistryDetailResponse(AbstractModel):
     @property
     def IsAuthorized(self):
         """授权状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IsAuthorized
@@ -25586,7 +24711,6 @@ class DescribeAssetImageRegistryDetailResponse(AbstractModel):
     @property
     def ImageSize(self):
         """镜像大小
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ImageSize
@@ -25598,7 +24722,6 @@ class DescribeAssetImageRegistryDetailResponse(AbstractModel):
     @property
     def ImageId(self):
         """镜像Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ImageId
@@ -25610,7 +24733,6 @@ class DescribeAssetImageRegistryDetailResponse(AbstractModel):
     @property
     def RegistryRegion(self):
         """镜像区域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RegistryRegion
@@ -25622,7 +24744,6 @@ class DescribeAssetImageRegistryDetailResponse(AbstractModel):
     @property
     def ImageCreateTime(self):
         """镜像创建的时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ImageCreateTime
@@ -25634,7 +24755,6 @@ class DescribeAssetImageRegistryDetailResponse(AbstractModel):
     @property
     def SensitiveInfoCnt(self):
         """敏感信息数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SensitiveInfoCnt
@@ -25843,7 +24963,6 @@ class DescribeAssetImageRegistryListExportResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _DownloadUrl: excel文件下载地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type DownloadUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -25854,7 +24973,6 @@ class DescribeAssetImageRegistryListExportResponse(AbstractModel):
     @property
     def DownloadUrl(self):
         """excel文件下载地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DownloadUrl
@@ -26021,10 +25139,8 @@ class DescribeAssetImageRegistryListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _List: 镜像仓库列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of ImageRepoInfo
         :param _TotalCount: 总数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -26036,7 +25152,6 @@ class DescribeAssetImageRegistryListResponse(AbstractModel):
     @property
     def List(self):
         """镜像仓库列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ImageRepoInfo
         """
         return self._List
@@ -26048,7 +25163,6 @@ class DescribeAssetImageRegistryListResponse(AbstractModel):
     @property
     def TotalCount(self):
         """总数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -26134,23 +25248,27 @@ class DescribeAssetImageRegistryRegistryDetailResponse(AbstractModel):
         :param _RegistryType: 仓库类型，列表：harbor
         :type RegistryType: str
         :param _RegistryVersion: 仓库版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegistryVersion: str
         :param _NetType: 网络类型，列表：public（公网）,private（私网）
         :type NetType: str
         :param _RegistryRegion: 区域，列表:default（默认）
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegistryRegion: str
         :param _SpeedLimit: 限速
-注意：此字段可能返回 null，表示取不到有效值。
         :type SpeedLimit: int
         :param _Insecure: 安全模式（证书校验）：0（默认） 非安全模式（跳过证书校验）：1
-注意：此字段可能返回 null，表示取不到有效值。
         :type Insecure: int
         :param _ConnDetectDetail: 联通性检测结果详情
         :type ConnDetectDetail: list of RegistryConnDetectResult
         :param _InstanceID: tcr情况下instance_id
         :type InstanceID: str
+        :param _SyncMode: 同步方式，0全量同步，1增量同步
+        :type SyncMode: int
+        :param _NeedScan: 是否自动授权&扫描，选择全量同步时只针对最新版本镜像，增量同步时则包含所有新增镜像
+        :type NeedScan: bool
+        :param _WebhookUrl: webhook接入地址
+        :type WebhookUrl: str
+        :param _WebhookToken: webhook接入token	
+        :type WebhookToken: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -26166,6 +25284,10 @@ class DescribeAssetImageRegistryRegistryDetailResponse(AbstractModel):
         self._Insecure = None
         self._ConnDetectDetail = None
         self._InstanceID = None
+        self._SyncMode = None
+        self._NeedScan = None
+        self._WebhookUrl = None
+        self._WebhookToken = None
         self._RequestId = None
 
     @property
@@ -26226,7 +25348,6 @@ class DescribeAssetImageRegistryRegistryDetailResponse(AbstractModel):
     @property
     def RegistryVersion(self):
         """仓库版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RegistryVersion
@@ -26249,7 +25370,6 @@ class DescribeAssetImageRegistryRegistryDetailResponse(AbstractModel):
     @property
     def RegistryRegion(self):
         """区域，列表:default（默认）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RegistryRegion
@@ -26261,7 +25381,6 @@ class DescribeAssetImageRegistryRegistryDetailResponse(AbstractModel):
     @property
     def SpeedLimit(self):
         """限速
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SpeedLimit
@@ -26273,7 +25392,6 @@ class DescribeAssetImageRegistryRegistryDetailResponse(AbstractModel):
     @property
     def Insecure(self):
         """安全模式（证书校验）：0（默认） 非安全模式（跳过证书校验）：1
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Insecure
@@ -26305,6 +25423,50 @@ class DescribeAssetImageRegistryRegistryDetailResponse(AbstractModel):
         self._InstanceID = InstanceID
 
     @property
+    def SyncMode(self):
+        """同步方式，0全量同步，1增量同步
+        :rtype: int
+        """
+        return self._SyncMode
+
+    @SyncMode.setter
+    def SyncMode(self, SyncMode):
+        self._SyncMode = SyncMode
+
+    @property
+    def NeedScan(self):
+        """是否自动授权&扫描，选择全量同步时只针对最新版本镜像，增量同步时则包含所有新增镜像
+        :rtype: bool
+        """
+        return self._NeedScan
+
+    @NeedScan.setter
+    def NeedScan(self, NeedScan):
+        self._NeedScan = NeedScan
+
+    @property
+    def WebhookUrl(self):
+        """webhook接入地址
+        :rtype: str
+        """
+        return self._WebhookUrl
+
+    @WebhookUrl.setter
+    def WebhookUrl(self, WebhookUrl):
+        self._WebhookUrl = WebhookUrl
+
+    @property
+    def WebhookToken(self):
+        """webhook接入token	
+        :rtype: str
+        """
+        return self._WebhookToken
+
+    @WebhookToken.setter
+    def WebhookToken(self, WebhookToken):
+        self._WebhookToken = WebhookToken
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -26334,6 +25496,10 @@ class DescribeAssetImageRegistryRegistryDetailResponse(AbstractModel):
                 obj._deserialize(item)
                 self._ConnDetectDetail.append(obj)
         self._InstanceID = params.get("InstanceID")
+        self._SyncMode = params.get("SyncMode")
+        self._NeedScan = params.get("NeedScan")
+        self._WebhookUrl = params.get("WebhookUrl")
+        self._WebhookToken = params.get("WebhookToken")
         self._RequestId = params.get("RequestId")
 
 
@@ -26448,10 +25614,8 @@ class DescribeAssetImageRegistryRegistryListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _List: 镜像仓库列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of ImageRepoRegistryInfo
         :param _TotalCount: 总数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -26463,7 +25627,6 @@ class DescribeAssetImageRegistryRegistryListResponse(AbstractModel):
     @property
     def List(self):
         """镜像仓库列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ImageRepoRegistryInfo
         """
         return self._List
@@ -26475,7 +25638,6 @@ class DescribeAssetImageRegistryRegistryListResponse(AbstractModel):
     @property
     def TotalCount(self):
         """总数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -26652,10 +25814,8 @@ class DescribeAssetImageRegistryRiskInfoListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _List: 镜像漏洞列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of ImageRisk
         :param _TotalCount: 总数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -26667,7 +25827,6 @@ class DescribeAssetImageRegistryRiskInfoListResponse(AbstractModel):
     @property
     def List(self):
         """镜像漏洞列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ImageRisk
         """
         return self._List
@@ -26679,7 +25838,6 @@ class DescribeAssetImageRegistryRiskInfoListResponse(AbstractModel):
     @property
     def TotalCount(self):
         """总数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -26841,7 +25999,6 @@ class DescribeAssetImageRegistryRiskListExportResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _DownloadUrl: excel文件下载地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type DownloadUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -26852,7 +26009,6 @@ class DescribeAssetImageRegistryRiskListExportResponse(AbstractModel):
     @property
     def DownloadUrl(self):
         """excel文件下载地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DownloadUrl
@@ -26976,7 +26132,6 @@ class DescribeAssetImageRegistryScanStatusOneKeyResponse(AbstractModel):
         :param _ImageScanCnt: 扫描镜像个数
         :type ImageScanCnt: int
         :param _ImageStatus: 扫描进度列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImageStatus: list of ImageProgress
         :param _SuccessCount: 安全个数
         :type SuccessCount: int
@@ -26987,7 +26142,6 @@ class DescribeAssetImageRegistryScanStatusOneKeyResponse(AbstractModel):
         :param _Status: 总的扫描状态
         :type Status: str
         :param _ScanRemainTime: 扫描剩余时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScanRemainTime: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -27027,7 +26181,6 @@ class DescribeAssetImageRegistryScanStatusOneKeyResponse(AbstractModel):
     @property
     def ImageStatus(self):
         """扫描进度列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ImageProgress
         """
         return self._ImageStatus
@@ -27083,7 +26236,6 @@ class DescribeAssetImageRegistryScanStatusOneKeyResponse(AbstractModel):
     @property
     def ScanRemainTime(self):
         """扫描剩余时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ScanRemainTime
@@ -27335,7 +26487,6 @@ class DescribeAssetImageRegistryVirusListExportResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _DownloadUrl: excel文件下载地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type DownloadUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -27346,7 +26497,6 @@ class DescribeAssetImageRegistryVirusListExportResponse(AbstractModel):
     @property
     def DownloadUrl(self):
         """excel文件下载地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DownloadUrl
@@ -27487,10 +26637,8 @@ class DescribeAssetImageRegistryVirusListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _List: 镜像漏洞列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of ImageVirus
         :param _TotalCount: 总数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -27502,7 +26650,6 @@ class DescribeAssetImageRegistryVirusListResponse(AbstractModel):
     @property
     def List(self):
         """镜像漏洞列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ImageVirus
         """
         return self._List
@@ -27514,7 +26661,6 @@ class DescribeAssetImageRegistryVirusListResponse(AbstractModel):
     @property
     def TotalCount(self):
         """总数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -27676,7 +26822,6 @@ class DescribeAssetImageRegistryVulListExportResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _DownloadUrl: excel文件下载地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type DownloadUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -27687,7 +26832,6 @@ class DescribeAssetImageRegistryVulListExportResponse(AbstractModel):
     @property
     def DownloadUrl(self):
         """excel文件下载地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DownloadUrl
@@ -27828,10 +26972,8 @@ class DescribeAssetImageRegistryVulListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _List: 镜像漏洞列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of ImageVul
         :param _TotalCount: 总数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -27843,7 +26985,6 @@ class DescribeAssetImageRegistryVulListResponse(AbstractModel):
     @property
     def List(self):
         """镜像漏洞列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ImageVul
         """
         return self._List
@@ -27855,7 +26996,6 @@ class DescribeAssetImageRegistryVulListResponse(AbstractModel):
     @property
     def TotalCount(self):
         """总数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -28228,13 +27368,10 @@ class DescribeAssetImageScanSettingResponse(AbstractModel):
         :param _ScanEndTime: 扫描结束时间 02:00 时分
         :type ScanEndTime: str
         :param _ExcludeImages: 排除的扫描镜像
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExcludeImages: list of str
         :param _LastScanTime: 最后一次扫描时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type LastScanTime: str
         :param _ScanResult: 扫描结果(Success|InsufficientLicense|ImageNeedIsEmpty|InternalError)
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScanResult: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -28383,7 +27520,6 @@ class DescribeAssetImageScanSettingResponse(AbstractModel):
     @property
     def ExcludeImages(self):
         """排除的扫描镜像
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._ExcludeImages
@@ -28395,7 +27531,6 @@ class DescribeAssetImageScanSettingResponse(AbstractModel):
     @property
     def LastScanTime(self):
         """最后一次扫描时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LastScanTime
@@ -28407,7 +27542,6 @@ class DescribeAssetImageScanSettingResponse(AbstractModel):
     @property
     def ScanResult(self):
         """扫描结果(Success|InsufficientLicense|ImageNeedIsEmpty|InternalError)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ScanResult
@@ -31693,13 +30827,10 @@ class DescribeClusterSummaryResponse(AbstractModel):
         :param _ServerlessClusterCount: eks集群数量
         :type ServerlessClusterCount: int
         :param _TkeClusterCount: TKE集群数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TkeClusterCount: int
         :param _UserCreateTencentClusterCount: 用户自建腾讯云集群数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserCreateTencentClusterCount: int
         :param _UserCreateHybridClusterCount: 用户自建集群混合云数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserCreateHybridClusterCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -31856,7 +30987,6 @@ class DescribeClusterSummaryResponse(AbstractModel):
     @property
     def TkeClusterCount(self):
         """TKE集群数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TkeClusterCount
@@ -31868,7 +30998,6 @@ class DescribeClusterSummaryResponse(AbstractModel):
     @property
     def UserCreateTencentClusterCount(self):
         """用户自建腾讯云集群数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._UserCreateTencentClusterCount
@@ -31880,7 +31009,6 @@ class DescribeClusterSummaryResponse(AbstractModel):
     @property
     def UserCreateHybridClusterCount(self):
         """用户自建集群混合云数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._UserCreateHybridClusterCount
@@ -31981,16 +31109,12 @@ class DescribeComplianceAssetDetailInfoResponse(AbstractModel):
         :param _AssetDetailInfo: 某资产的详情。
         :type AssetDetailInfo: :class:`tencentcloud.tcss.v20201101.models.ComplianceAssetDetailInfo`
         :param _ContainerDetailInfo: 当资产为容器时，返回此字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ContainerDetailInfo: :class:`tencentcloud.tcss.v20201101.models.ComplianceContainerDetailInfo`
         :param _ImageDetailInfo: 当资产为镜像时，返回此字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImageDetailInfo: :class:`tencentcloud.tcss.v20201101.models.ComplianceImageDetailInfo`
         :param _HostDetailInfo: 当资产为主机时，返回此字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :type HostDetailInfo: :class:`tencentcloud.tcss.v20201101.models.ComplianceHostDetailInfo`
         :param _K8SDetailInfo: 当资产为K8S时，返回此字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :type K8SDetailInfo: :class:`tencentcloud.tcss.v20201101.models.ComplianceK8SDetailInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -32016,7 +31140,6 @@ class DescribeComplianceAssetDetailInfoResponse(AbstractModel):
     @property
     def ContainerDetailInfo(self):
         """当资产为容器时，返回此字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcss.v20201101.models.ComplianceContainerDetailInfo`
         """
         return self._ContainerDetailInfo
@@ -32028,7 +31151,6 @@ class DescribeComplianceAssetDetailInfoResponse(AbstractModel):
     @property
     def ImageDetailInfo(self):
         """当资产为镜像时，返回此字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcss.v20201101.models.ComplianceImageDetailInfo`
         """
         return self._ImageDetailInfo
@@ -32040,7 +31162,6 @@ class DescribeComplianceAssetDetailInfoResponse(AbstractModel):
     @property
     def HostDetailInfo(self):
         """当资产为主机时，返回此字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcss.v20201101.models.ComplianceHostDetailInfo`
         """
         return self._HostDetailInfo
@@ -32052,7 +31173,6 @@ class DescribeComplianceAssetDetailInfoResponse(AbstractModel):
     @property
     def K8SDetailInfo(self):
         """当资产为K8S时，返回此字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcss.v20201101.models.ComplianceK8SDetailInfo`
         """
         return self._K8SDetailInfo
@@ -32196,7 +31316,6 @@ class DescribeComplianceAssetListResponse(AbstractModel):
         :param _TotalCount: 返回资产的总数。
         :type TotalCount: int
         :param _AssetInfoList: 返回各类资产的列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AssetInfoList: list of ComplianceAssetInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -32219,7 +31338,6 @@ class DescribeComplianceAssetListResponse(AbstractModel):
     @property
     def AssetInfoList(self):
         """返回各类资产的列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ComplianceAssetInfo
         """
         return self._AssetInfoList
@@ -32892,7 +32010,6 @@ class DescribeComplianceScanFailedAssetListResponse(AbstractModel):
         :param _TotalCount: 返回检测失败的资产的总数。
         :type TotalCount: int
         :param _ScanFailedAssetList: 返回各类检测失败的资产的汇总信息的列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScanFailedAssetList: list of ComplianceScanFailedAsset
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -32915,7 +32032,6 @@ class DescribeComplianceScanFailedAssetListResponse(AbstractModel):
     @property
     def ScanFailedAssetList(self):
         """返回各类检测失败的资产的汇总信息的列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ComplianceScanFailedAsset
         """
         return self._ScanFailedAssetList
@@ -33172,7 +32288,6 @@ class DescribeComplianceTaskPolicyItemSummaryListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TaskId: 返回最近一次合规检查任务的ID。这个任务为本次所展示数据的来源。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: int
         :param _TotalCount: 返回检测项的总数。
         :type TotalCount: int
@@ -33189,7 +32304,6 @@ class DescribeComplianceTaskPolicyItemSummaryListResponse(AbstractModel):
     @property
     def TaskId(self):
         """返回最近一次合规检查任务的ID。这个任务为本次所展示数据的来源。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TaskId
@@ -33665,7 +32779,6 @@ class DescribeContainerSecEventSummaryResponse(AbstractModel):
         :param _UnhandledMaliciousConnectionEventCnt: 未处理恶意外连事件
         :type UnhandledMaliciousConnectionEventCnt: int
         :param _UnhandledK8sApiEventCnt: 未处理k8sApi事件
-注意：此字段可能返回 null，表示取不到有效值。
         :type UnhandledK8sApiEventCnt: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -33760,7 +32873,6 @@ class DescribeContainerSecEventSummaryResponse(AbstractModel):
     @property
     def UnhandledK8sApiEventCnt(self):
         """未处理k8sApi事件
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._UnhandledK8sApiEventCnt
@@ -34264,7 +33376,6 @@ class DescribeEscapeEventDetailResponse(AbstractModel):
         :param _ParentProcessInfo: 父进程信息
         :type ParentProcessInfo: :class:`tencentcloud.tcss.v20201101.models.ProcessBaseInfo`
         :param _AncestorProcessInfo: 祖先进程信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type AncestorProcessInfo: :class:`tencentcloud.tcss.v20201101.models.ProcessBaseInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -34323,7 +33434,6 @@ class DescribeEscapeEventDetailResponse(AbstractModel):
     @property
     def AncestorProcessInfo(self):
         """祖先进程信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcss.v20201101.models.ProcessBaseInfo`
         """
         return self._AncestorProcessInfo
@@ -34729,167 +33839,6 @@ class DescribeEscapeEventTypeSummaryResponse(AbstractModel):
         self._ProcessPrivilegeEventCount = params.get("ProcessPrivilegeEventCount")
         self._RiskContainerEventCount = params.get("RiskContainerEventCount")
         self._PendingEscapeEventCount = params.get("PendingEscapeEventCount")
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeEscapeEventsExportRequest(AbstractModel):
-    """DescribeEscapeEventsExport请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ExportField: 导出字段
-        :type ExportField: list of str
-        :param _Limit: 需要返回的数量，默认为10，最大值为100
-        :type Limit: int
-        :param _Offset: 偏移量，默认为0。
-        :type Offset: int
-        :param _Filters: 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-        :type Filters: list of RunTimeFilters
-        :param _Order: 升序降序,asc desc
-        :type Order: str
-        :param _By: 排序字段
-        :type By: str
-        """
-        self._ExportField = None
-        self._Limit = None
-        self._Offset = None
-        self._Filters = None
-        self._Order = None
-        self._By = None
-
-    @property
-    def ExportField(self):
-        """导出字段
-        :rtype: list of str
-        """
-        return self._ExportField
-
-    @ExportField.setter
-    def ExportField(self, ExportField):
-        self._ExportField = ExportField
-
-    @property
-    def Limit(self):
-        """需要返回的数量，默认为10，最大值为100
-        :rtype: int
-        """
-        return self._Limit
-
-    @Limit.setter
-    def Limit(self, Limit):
-        self._Limit = Limit
-
-    @property
-    def Offset(self):
-        """偏移量，默认为0。
-        :rtype: int
-        """
-        return self._Offset
-
-    @Offset.setter
-    def Offset(self, Offset):
-        self._Offset = Offset
-
-    @property
-    def Filters(self):
-        """过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-        :rtype: list of RunTimeFilters
-        """
-        return self._Filters
-
-    @Filters.setter
-    def Filters(self, Filters):
-        self._Filters = Filters
-
-    @property
-    def Order(self):
-        """升序降序,asc desc
-        :rtype: str
-        """
-        return self._Order
-
-    @Order.setter
-    def Order(self, Order):
-        self._Order = Order
-
-    @property
-    def By(self):
-        """排序字段
-        :rtype: str
-        """
-        return self._By
-
-    @By.setter
-    def By(self, By):
-        self._By = By
-
-
-    def _deserialize(self, params):
-        self._ExportField = params.get("ExportField")
-        self._Limit = params.get("Limit")
-        self._Offset = params.get("Offset")
-        if params.get("Filters") is not None:
-            self._Filters = []
-            for item in params.get("Filters"):
-                obj = RunTimeFilters()
-                obj._deserialize(item)
-                self._Filters.append(obj)
-        self._Order = params.get("Order")
-        self._By = params.get("By")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeEscapeEventsExportResponse(AbstractModel):
-    """DescribeEscapeEventsExport返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _DownloadUrl: execle下载地址
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DownloadUrl: str
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._DownloadUrl = None
-        self._RequestId = None
-
-    @property
-    def DownloadUrl(self):
-        """execle下载地址
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._DownloadUrl
-
-    @DownloadUrl.setter
-    def DownloadUrl(self, DownloadUrl):
-        self._DownloadUrl = DownloadUrl
-
-    @property
-    def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._DownloadUrl = params.get("DownloadUrl")
         self._RequestId = params.get("RequestId")
 
 
@@ -35637,13 +34586,10 @@ class DescribeExportJobResultResponse(AbstractModel):
         :param _ExportStatus: 导出的状态。取值为, SUCCESS:成功、FAILURE:失败，RUNNING: 进行中。
         :type ExportStatus: str
         :param _DownloadURL: 返回下载URL
-注意：此字段可能返回 null，表示取不到有效值。
         :type DownloadURL: str
         :param _ExportProgress: 当ExportStatus为RUNNING时，返回导出进度。0~100范围的浮点数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExportProgress: float
         :param _FailureMsg: 失败原因
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailureMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -35668,7 +34614,6 @@ class DescribeExportJobResultResponse(AbstractModel):
     @property
     def DownloadURL(self):
         """返回下载URL
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DownloadURL
@@ -35680,7 +34625,6 @@ class DescribeExportJobResultResponse(AbstractModel):
     @property
     def ExportProgress(self):
         """当ExportStatus为RUNNING时，返回导出进度。0~100范围的浮点数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._ExportProgress
@@ -35692,7 +34636,6 @@ class DescribeExportJobResultResponse(AbstractModel):
     @property
     def FailureMsg(self):
         """失败原因
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FailureMsg
@@ -36132,16 +35075,12 @@ class DescribeImageAutoAuthorizedRuleResponse(AbstractModel):
         :param _IsEnabled: 规则是否生效，0:不生效，1:已生效
         :type IsEnabled: int
         :param _RangeType: 授权范围类别，MANUAL:自选主机节点，ALL:全部镜像
-注意：此字段可能返回 null，表示取不到有效值。
         :type RangeType: str
         :param _HostCount: 授权范围是自选主机时的主机数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type HostCount: int
         :param _MaxDailyCount: 每天最大的镜像授权数限制, 0表示无限制
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxDailyCount: int
         :param _RuleId: 规则id，用未设置时为0
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleId: int
         :param _AutoScanEnabled: 自动扫描开关，0：关闭，1：开启
         :type AutoScanEnabled: int
@@ -36173,7 +35112,6 @@ class DescribeImageAutoAuthorizedRuleResponse(AbstractModel):
     @property
     def RangeType(self):
         """授权范围类别，MANUAL:自选主机节点，ALL:全部镜像
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RangeType
@@ -36185,7 +35123,6 @@ class DescribeImageAutoAuthorizedRuleResponse(AbstractModel):
     @property
     def HostCount(self):
         """授权范围是自选主机时的主机数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._HostCount
@@ -36197,7 +35134,6 @@ class DescribeImageAutoAuthorizedRuleResponse(AbstractModel):
     @property
     def MaxDailyCount(self):
         """每天最大的镜像授权数限制, 0表示无限制
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxDailyCount
@@ -36209,7 +35145,6 @@ class DescribeImageAutoAuthorizedRuleResponse(AbstractModel):
     @property
     def RuleId(self):
         """规则id，用未设置时为0
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RuleId
@@ -36777,28 +35712,22 @@ class DescribeImageRegistryTimingScanTaskResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Enable: 定时扫描开关
-注意：此字段可能返回 null，表示取不到有效值。
         :type Enable: bool
         :param _ScanTime: 定时任务扫描时间
         :type ScanTime: str
         :param _ScanPeriod: 定时扫描间隔
         :type ScanPeriod: int
         :param _ScanType: 扫描类型数组
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScanType: list of str
         :param _All: 扫描全部镜像
         :type All: bool
         :param _Images: 自定义扫描镜像
-注意：此字段可能返回 null，表示取不到有效值。
         :type Images: list of ImageInfo
         :param _Id: 自动以扫描镜像Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: list of int non-negative
         :param _Latest: 是否扫描最新版本镜像
-注意：此字段可能返回 null，表示取不到有效值。
         :type Latest: bool
         :param _ScanEndTime: 扫描结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScanEndTime: str
         :param _RegistryType: 仓库类型 tcr,ccr,harbor	
         :type RegistryType: list of str
@@ -36809,10 +35738,8 @@ class DescribeImageRegistryTimingScanTaskResponse(AbstractModel):
         :param _Namespace: 命名空间
         :type Namespace: list of str
         :param _ExcludeImageAssetIds: 排除的镜像资产id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExcludeImageAssetIds: list of int non-negative
         :param _LastScanTime: 最近扫描时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type LastScanTime: str
         :param _ScanResult: 扫描结果(Success|InsufficientLicense|ImageNeedIsEmpty|InternalError)
         :type ScanResult: str
@@ -36840,7 +35767,6 @@ class DescribeImageRegistryTimingScanTaskResponse(AbstractModel):
     @property
     def Enable(self):
         """定时扫描开关
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Enable
@@ -36874,7 +35800,6 @@ class DescribeImageRegistryTimingScanTaskResponse(AbstractModel):
     @property
     def ScanType(self):
         """扫描类型数组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._ScanType
@@ -36901,7 +35826,6 @@ class DescribeImageRegistryTimingScanTaskResponse(AbstractModel):
     @property
     def Images(self):
         """自定义扫描镜像
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ImageInfo
         """
         return self._Images
@@ -36913,7 +35837,6 @@ class DescribeImageRegistryTimingScanTaskResponse(AbstractModel):
     @property
     def Id(self):
         """自动以扫描镜像Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int non-negative
         """
         return self._Id
@@ -36925,7 +35848,6 @@ class DescribeImageRegistryTimingScanTaskResponse(AbstractModel):
     @property
     def Latest(self):
         """是否扫描最新版本镜像
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Latest
@@ -36937,7 +35859,6 @@ class DescribeImageRegistryTimingScanTaskResponse(AbstractModel):
     @property
     def ScanEndTime(self):
         """扫描结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ScanEndTime
@@ -36993,7 +35914,6 @@ class DescribeImageRegistryTimingScanTaskResponse(AbstractModel):
     @property
     def ExcludeImageAssetIds(self):
         """排除的镜像资产id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int non-negative
         """
         return self._ExcludeImageAssetIds
@@ -37005,7 +35925,6 @@ class DescribeImageRegistryTimingScanTaskResponse(AbstractModel):
     @property
     def LastScanTime(self):
         """最近扫描时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LastScanTime
@@ -37268,9 +36187,9 @@ class DescribeImageSimpleListRequest(AbstractModel):
         :type Limit: int
         :param _Offset: 偏移量，默认为0。
         :type Offset: int
-        :param _Order: 排序方式
+        :param _Order: 排序方式 asc,desc
         :type Order: str
-        :param _By: 排序字段
+        :param _By: 排序字段 ContainerCnt
         :type By: str
         """
         self._Filters = None
@@ -37314,7 +36233,7 @@ class DescribeImageSimpleListRequest(AbstractModel):
 
     @property
     def Order(self):
-        """排序方式
+        """排序方式 asc,desc
         :rtype: str
         """
         return self._Order
@@ -37325,7 +36244,7 @@ class DescribeImageSimpleListRequest(AbstractModel):
 
     @property
     def By(self):
-        """排序字段
+        """排序字段 ContainerCnt
         :rtype: str
         """
         return self._By
@@ -39361,7 +38280,6 @@ class DescribeNetworkFirewallPodLabelsListResponse(AbstractModel):
         :param _TotalCount: 集群pod总数
         :type TotalCount: int
         :param _PodList: 集群pod详细信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type PodList: list of NetworkClusterPodInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -39384,7 +38302,6 @@ class DescribeNetworkFirewallPodLabelsListResponse(AbstractModel):
     @property
     def PodList(self):
         """集群pod详细信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of NetworkClusterPodInfo
         """
         return self._PodList
@@ -39464,31 +38381,26 @@ class DescribeNetworkFirewallPolicyDetailResponse(AbstractModel):
         :param _PolicyName: 策略名
         :type PolicyName: str
         :param _Namespace: 命名空间
-注意：此字段可能返回 null，表示取不到有效值。
         :type Namespace: str
         :param _FromPolicyRule: 入站类型
         :type FromPolicyRule: int
         :param _ToPolicyRule: 出站类型
         :type ToPolicyRule: int
         :param _CustomPolicy: 自定义规则
-注意：此字段可能返回 null，表示取不到有效值。
         :type CustomPolicy: list of NetworkCustomPolicy
         :param _PodSelector: pod选择器
         :type PodSelector: str
         :param _Description: 策略描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _PolicyCreateTime: 策略创建时间
         :type PolicyCreateTime: str
         :param _PolicySourceType: 策略源类型，分为System和Manual，分别代表手动和系统添加
         :type PolicySourceType: str
         :param _NetworkPolicyPlugin: 网络策略对应的网络插件
-注意：此字段可能返回 null，表示取不到有效值。
         :type NetworkPolicyPlugin: str
         :param _PublishStatus: 网络策略状态
         :type PublishStatus: str
         :param _PublishResult: 网络发布结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type PublishResult: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -39533,7 +38445,6 @@ class DescribeNetworkFirewallPolicyDetailResponse(AbstractModel):
     @property
     def Namespace(self):
         """命名空间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Namespace
@@ -39567,7 +38478,6 @@ class DescribeNetworkFirewallPolicyDetailResponse(AbstractModel):
     @property
     def CustomPolicy(self):
         """自定义规则
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of NetworkCustomPolicy
         """
         return self._CustomPolicy
@@ -39590,7 +38500,6 @@ class DescribeNetworkFirewallPolicyDetailResponse(AbstractModel):
     @property
     def Description(self):
         """策略描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -39624,7 +38533,6 @@ class DescribeNetworkFirewallPolicyDetailResponse(AbstractModel):
     @property
     def NetworkPolicyPlugin(self):
         """网络策略对应的网络插件
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NetworkPolicyPlugin
@@ -39647,7 +38555,6 @@ class DescribeNetworkFirewallPolicyDetailResponse(AbstractModel):
     @property
     def PublishResult(self):
         """网络发布结果
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PublishResult
@@ -39996,7 +38903,6 @@ class DescribeNetworkFirewallPolicyStatusResponse(AbstractModel):
         :param _TaskStatus: 任务状态，可能为：Task_Running,Task_Succ,Task_Error,Task_NoExist
         :type TaskStatus: str
         :param _TaskResult: NameRepeat,K8sRuleIngressPortError等
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskResult: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -40019,7 +38925,6 @@ class DescribeNetworkFirewallPolicyStatusResponse(AbstractModel):
     @property
     def TaskResult(self):
         """NameRepeat,K8sRuleIngressPortError等
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._TaskResult
@@ -40094,22 +38999,18 @@ class DescribeNetworkFirewallPolicyYamlDetailResponse(AbstractModel):
         :param _PolicyName: 策略名
         :type PolicyName: str
         :param _Yaml: base64编码的yaml字符串
-注意：此字段可能返回 null，表示取不到有效值。
         :type Yaml: str
         :param _Description: 策略描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _PolicyCreateTime: 策略创建时间
         :type PolicyCreateTime: str
         :param _PolicySourceType: 策略源类型，分为System和Manual，分别代表手动和系统添加
         :type PolicySourceType: str
         :param _NetworkPolicyPlugin: 网络策略对应的网络插件
-注意：此字段可能返回 null，表示取不到有效值。
         :type NetworkPolicyPlugin: str
         :param _PublishStatus: 网络策略状态
         :type PublishStatus: str
         :param _PublishResult: 网络发布结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type PublishResult: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -40150,7 +39051,6 @@ class DescribeNetworkFirewallPolicyYamlDetailResponse(AbstractModel):
     @property
     def Yaml(self):
         """base64编码的yaml字符串
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Yaml
@@ -40162,7 +39062,6 @@ class DescribeNetworkFirewallPolicyYamlDetailResponse(AbstractModel):
     @property
     def Description(self):
         """策略描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -40196,7 +39095,6 @@ class DescribeNetworkFirewallPolicyYamlDetailResponse(AbstractModel):
     @property
     def NetworkPolicyPlugin(self):
         """网络策略对应的网络插件
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NetworkPolicyPlugin
@@ -40219,7 +39117,6 @@ class DescribeNetworkFirewallPolicyYamlDetailResponse(AbstractModel):
     @property
     def PublishResult(self):
         """网络发布结果
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PublishResult
@@ -40421,7 +39318,6 @@ class DescribePostPayDetailResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _SoftQuotaDayDetail: 弹性计费扣费详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type SoftQuotaDayDetail: list of SoftQuotaDayInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -40432,7 +39328,6 @@ class DescribePostPayDetailResponse(AbstractModel):
     @property
     def SoftQuotaDayDetail(self):
         """弹性计费扣费详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SoftQuotaDayInfo
         """
         return self._SoftQuotaDayDetail
@@ -40477,17 +39372,14 @@ class DescribeProVersionInfoResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _StartTime: 专业版开始时间，补充购买时才不为空
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
         :param _EndTime: 专业版结束时间，补充购买时才不为空
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         :param _CoresCnt: 需购买的机器核数
         :type CoresCnt: int
         :param _MaxPostPayCoresCnt: 弹性计费上限
         :type MaxPostPayCoresCnt: int
         :param _ResourceId: 资源ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceId: str
         :param _BuyStatus: 购买状态
 待购: Pending
@@ -40511,7 +39403,6 @@ class DescribeProVersionInfoResponse(AbstractModel):
     @property
     def StartTime(self):
         """专业版开始时间，补充购买时才不为空
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StartTime
@@ -40523,7 +39414,6 @@ class DescribeProVersionInfoResponse(AbstractModel):
     @property
     def EndTime(self):
         """专业版结束时间，补充购买时才不为空
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndTime
@@ -40557,7 +39447,6 @@ class DescribeProVersionInfoResponse(AbstractModel):
     @property
     def ResourceId(self):
         """资源ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceId
@@ -40765,45 +39654,33 @@ class DescribePurchaseStateInfoResponse(AbstractModel):
         :param _AllCoresCnt: 总资源核数 = 总防护核数 + 未防护核数
         :type AllCoresCnt: int
         :param _CoresCnt: 总防护核数 =已购核数+ 试用赠送核数 +弹性计费核数
-注意：此字段可能返回 null，表示取不到有效值。
         :type CoresCnt: int
         :param _UndefendCoresCnt: 未防护核数(未开启防护资源核数)
         :type UndefendCoresCnt: int
         :param _AuthorizedCoresCnt: 已购买核数
-注意：此字段可能返回 null，表示取不到有效值。
         :type AuthorizedCoresCnt: int
         :param _GivenAuthorizedCoresCnt: 试用赠送专业版核心数
-注意：此字段可能返回 null，表示取不到有效值。
         :type GivenAuthorizedCoresCnt: int
         :param _CurrentFlexibleCoresCnt: 当前弹性计费核数数量
         :type CurrentFlexibleCoresCnt: int
         :param _ImageCnt: 镜像数
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImageCnt: int
         :param _AuthorizedImageCnt: 已授权镜像数
-注意：此字段可能返回 null，表示取不到有效值。
         :type AuthorizedImageCnt: int
         :param _ExpirationTime: 过期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExpirationTime: str
         :param _PurchasedAuthorizedCnt: 已购买镜像授权数
-注意：此字段可能返回 null，表示取不到有效值。
         :type PurchasedAuthorizedCnt: int
         :param _AutomaticRenewal: 0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费(用户设置)
-注意：此字段可能返回 null，表示取不到有效值。
         :type AutomaticRenewal: int
         :param _GivenAuthorizedCnt: 试用期间赠送镜像授权数，可能会过期
-注意：此字段可能返回 null，表示取不到有效值。
         :type GivenAuthorizedCnt: int
         :param _BeginTime: 起始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type BeginTime: str
         :param _SubState: 子状态(具体意义依据State字段而定)
 State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubState: str
         :param _InquireKey: 计费key
-注意：此字段可能返回 null，表示取不到有效值。
         :type InquireKey: str
         :param _DefendPolicy: 防护策略
         :type DefendPolicy: str
@@ -40863,7 +39740,6 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
     @property
     def CoresCnt(self):
         """总防护核数 =已购核数+ 试用赠送核数 +弹性计费核数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CoresCnt
@@ -40886,7 +39762,6 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
     @property
     def AuthorizedCoresCnt(self):
         """已购买核数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AuthorizedCoresCnt
@@ -40898,7 +39773,6 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
     @property
     def GivenAuthorizedCoresCnt(self):
         """试用赠送专业版核心数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._GivenAuthorizedCoresCnt
@@ -40921,7 +39795,6 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
     @property
     def ImageCnt(self):
         """镜像数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ImageCnt
@@ -40933,7 +39806,6 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
     @property
     def AuthorizedImageCnt(self):
         """已授权镜像数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AuthorizedImageCnt
@@ -40945,7 +39817,6 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
     @property
     def ExpirationTime(self):
         """过期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ExpirationTime
@@ -40957,7 +39828,6 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
     @property
     def PurchasedAuthorizedCnt(self):
         """已购买镜像授权数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PurchasedAuthorizedCnt
@@ -40969,7 +39839,6 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
     @property
     def AutomaticRenewal(self):
         """0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费(用户设置)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AutomaticRenewal
@@ -40981,7 +39850,6 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
     @property
     def GivenAuthorizedCnt(self):
         """试用期间赠送镜像授权数，可能会过期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._GivenAuthorizedCnt
@@ -40993,7 +39861,6 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
     @property
     def BeginTime(self):
         """起始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BeginTime
@@ -41006,7 +39873,6 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
     def SubState(self):
         """子状态(具体意义依据State字段而定)
 State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubState
@@ -41018,7 +39884,6 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
     @property
     def InquireKey(self):
         """计费key
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InquireKey
@@ -41104,6 +39969,346 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
         self._FlexibleCoresLimit = params.get("FlexibleCoresLimit")
         self._DefendClusterCoresCnt = params.get("DefendClusterCoresCnt")
         self._DefendHostCoresCnt = params.get("DefendHostCoresCnt")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRaspRuleVulsRequest(AbstractModel):
+    """DescribeRaspRuleVuls请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: 过滤条件。
+<li>Level- String - 是否必填：否 - 威胁等级，CRITICAL:严重 HIGH:高/MIDDLE:中/LOW:低</li>
+<li>CVEID- string - 是否必填：否 - CVE编号</li>
+<li>Name- string -是否必填: 否 - 漏洞名称</li>
+        :type Filters: list of RunTimeFilters
+        :param _Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param _Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param _Order: 排序方式：asc/desc
+        :type Order: str
+        :param _By: 排序字段：披露时间：SubmitTime
+        :type By: str
+        """
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+        self._Order = None
+        self._By = None
+
+    @property
+    def Filters(self):
+        """过滤条件。
+<li>Level- String - 是否必填：否 - 威胁等级，CRITICAL:严重 HIGH:高/MIDDLE:中/LOW:低</li>
+<li>CVEID- string - 是否必填：否 - CVE编号</li>
+<li>Name- string -是否必填: 否 - 漏洞名称</li>
+        :rtype: list of RunTimeFilters
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        """需要返回的数量，默认为10，最大值为100
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Order(self):
+        """排序方式：asc/desc
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        """排序字段：披露时间：SubmitTime
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = RunTimeFilters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRaspRuleVulsResponse(AbstractModel):
+    """DescribeRaspRuleVuls返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: 列表内容	
+        :type List: list of RaspRuleVul
+        :param _TotalCount: 总数量
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._List = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        """列表内容	
+        :rtype: list of RaspRuleVul
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def TotalCount(self):
+        """总数量
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = RaspRuleVul()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRaspRulesRequest(AbstractModel):
+    """DescribeRaspRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: 过滤条件。
+<li>Level- String - 是否必填：否 - 威胁等级，CRITICAL:严重 HIGH:高/MIDDLE:中/LOW:低</li>
+<li>CVEID- string - 是否必填：否 - CVE编号</li>
+<li>Name- string -是否必填: 否 - 漏洞名称</li>
+        :type Filters: list of RunTimeFilters
+        :param _Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param _Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param _Order: 排序方式：asc/desc
+        :type Order: str
+        :param _By: 排序字段：披露时间：SubmitTime
+        :type By: str
+        """
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+        self._Order = None
+        self._By = None
+
+    @property
+    def Filters(self):
+        """过滤条件。
+<li>Level- String - 是否必填：否 - 威胁等级，CRITICAL:严重 HIGH:高/MIDDLE:中/LOW:低</li>
+<li>CVEID- string - 是否必填：否 - CVE编号</li>
+<li>Name- string -是否必填: 否 - 漏洞名称</li>
+        :rtype: list of RunTimeFilters
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        """需要返回的数量，默认为10，最大值为100
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Order(self):
+        """排序方式：asc/desc
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        """排序字段：披露时间：SubmitTime
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = RunTimeFilters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRaspRulesResponse(AbstractModel):
+    """DescribeRaspRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: 列表内容	
+        :type List: list of RaspRule
+        :param _TotalCount: 总数量
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._List = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        """列表内容	
+        :rtype: list of RaspRule
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def TotalCount(self):
+        """总数量
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = RaspRule()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -41253,7 +40458,6 @@ class DescribeReverseShellDetailResponse(AbstractModel):
         :param _EventDetail: 事件描述
         :type EventDetail: :class:`tencentcloud.tcss.v20201101.models.ReverseShellEventDescription`
         :param _AncestorProcessInfo: 祖先进程信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type AncestorProcessInfo: :class:`tencentcloud.tcss.v20201101.models.ProcessBaseInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -41312,7 +40516,6 @@ class DescribeReverseShellDetailResponse(AbstractModel):
     @property
     def AncestorProcessInfo(self):
         """祖先进程信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcss.v20201101.models.ProcessBaseInfo`
         """
         return self._AncestorProcessInfo
@@ -41476,10 +40679,8 @@ class DescribeReverseShellEventsExportResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _DownloadUrl: execle下载地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type DownloadUrl: str
         :param _JobId: 任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type JobId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -41491,7 +40692,6 @@ class DescribeReverseShellEventsExportResponse(AbstractModel):
     @property
     def DownloadUrl(self):
         """execle下载地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DownloadUrl
@@ -41503,7 +40703,6 @@ class DescribeReverseShellEventsExportResponse(AbstractModel):
     @property
     def JobId(self):
         """任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._JobId
@@ -42045,10 +41244,8 @@ class DescribeRiskDnsEventDetailResponse(AbstractModel):
         :param _Reference: 参考链接
         :type Reference: list of str
         :param _Address: 恶意域名或IP
-注意：此字段可能返回 null，表示取不到有效值。
         :type Address: str
         :param _City: 恶意IP所属城市
-注意：此字段可能返回 null，表示取不到有效值。
         :type City: str
         :param _MatchRuleType: 命中规则类型
 SYSTEM：系统规则
@@ -42095,7 +41292,6 @@ EVENT_IGNORE： 已忽略
 EVENT_ADD_WHITE：已加白
         :type EventStatus: str
         :param _OperationTime: 操作时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type OperationTime: str
         :param _Remark: 备注
         :type Remark: str
@@ -42429,7 +41625,6 @@ EVENT_ADD_WHITE：已加白
     @property
     def Address(self):
         """恶意域名或IP
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Address
@@ -42441,7 +41636,6 @@ EVENT_ADD_WHITE：已加白
     @property
     def City(self):
         """恶意IP所属城市
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._City
@@ -42668,7 +41862,6 @@ EVENT_ADD_WHITE：已加白
     @property
     def OperationTime(self):
         """操作时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OperationTime
@@ -43328,7 +42521,6 @@ class DescribeRiskSyscallDetailResponse(AbstractModel):
         :param _EventDetail: 事件描述
         :type EventDetail: :class:`tencentcloud.tcss.v20201101.models.RiskSyscallEventDescription`
         :param _AncestorProcessInfo: 祖先进程信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type AncestorProcessInfo: :class:`tencentcloud.tcss.v20201101.models.ProcessBaseInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -43387,7 +42579,6 @@ class DescribeRiskSyscallDetailResponse(AbstractModel):
     @property
     def AncestorProcessInfo(self):
         """祖先进程信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcss.v20201101.models.ProcessBaseInfo`
         """
         return self._AncestorProcessInfo
@@ -43551,10 +42742,8 @@ class DescribeRiskSyscallEventsExportResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _DownloadUrl: Excel下载地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type DownloadUrl: str
         :param _JobId: 任务Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type JobId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -43566,7 +42755,6 @@ class DescribeRiskSyscallEventsExportResponse(AbstractModel):
     @property
     def DownloadUrl(self):
         """Excel下载地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DownloadUrl
@@ -43578,7 +42766,6 @@ class DescribeRiskSyscallEventsExportResponse(AbstractModel):
     @property
     def JobId(self):
         """任务Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._JobId
@@ -45051,22 +44238,16 @@ class DescribeSecLogDeliveryKafkaSettingResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceID: 消息队列实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceID: str
         :param _InstanceName: 消息队列实例名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceName: str
         :param _Domain: 域名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Domain: str
         :param _LogTypeList: 日志类型队列
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogTypeList: list of SecLogDeliveryKafkaSettingInfo
         :param _User: 用户名
-注意：此字段可能返回 null，表示取不到有效值。
         :type User: str
         :param _RegionID: 地域ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionID: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -45082,7 +44263,6 @@ class DescribeSecLogDeliveryKafkaSettingResponse(AbstractModel):
     @property
     def InstanceID(self):
         """消息队列实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceID
@@ -45094,7 +44274,6 @@ class DescribeSecLogDeliveryKafkaSettingResponse(AbstractModel):
     @property
     def InstanceName(self):
         """消息队列实例名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceName
@@ -45106,7 +44285,6 @@ class DescribeSecLogDeliveryKafkaSettingResponse(AbstractModel):
     @property
     def Domain(self):
         """域名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Domain
@@ -45118,7 +44296,6 @@ class DescribeSecLogDeliveryKafkaSettingResponse(AbstractModel):
     @property
     def LogTypeList(self):
         """日志类型队列
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SecLogDeliveryKafkaSettingInfo
         """
         return self._LogTypeList
@@ -45130,7 +44307,6 @@ class DescribeSecLogDeliveryKafkaSettingResponse(AbstractModel):
     @property
     def User(self):
         """用户名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._User
@@ -45142,7 +44318,6 @@ class DescribeSecLogDeliveryKafkaSettingResponse(AbstractModel):
     @property
     def RegionID(self):
         """地域ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RegionID
@@ -45484,10 +44659,8 @@ class DescribeSecLogKafkaUINResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _DstUIN: 目标UIN
-注意：此字段可能返回 null，表示取不到有效值。
         :type DstUIN: str
         :param _Status: 授权状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -45499,7 +44672,6 @@ class DescribeSecLogKafkaUINResponse(AbstractModel):
     @property
     def DstUIN(self):
         """目标UIN
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DstUIN
@@ -45511,7 +44683,6 @@ class DescribeSecLogKafkaUINResponse(AbstractModel):
     @property
     def Status(self):
         """授权状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Status
@@ -45570,6 +44741,8 @@ class DescribeSecLogVasInfoResponse(AbstractModel):
         :type IsPurchased: bool
         :param _TrialCapacity: 试用存储容量(GB)
         :type TrialCapacity: int
+        :param _ResourceDetailList: 资源详情数组对象
+        :type ResourceDetailList: list of VasInfoResourceDetail
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -45581,6 +44754,7 @@ class DescribeSecLogVasInfoResponse(AbstractModel):
         self._ResourceID = None
         self._IsPurchased = None
         self._TrialCapacity = None
+        self._ResourceDetailList = None
         self._RequestId = None
 
     @property
@@ -45675,6 +44849,17 @@ class DescribeSecLogVasInfoResponse(AbstractModel):
         self._TrialCapacity = TrialCapacity
 
     @property
+    def ResourceDetailList(self):
+        """资源详情数组对象
+        :rtype: list of VasInfoResourceDetail
+        """
+        return self._ResourceDetailList
+
+    @ResourceDetailList.setter
+    def ResourceDetailList(self, ResourceDetailList):
+        self._ResourceDetailList = ResourceDetailList
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -45695,6 +44880,12 @@ class DescribeSecLogVasInfoResponse(AbstractModel):
         self._ResourceID = params.get("ResourceID")
         self._IsPurchased = params.get("IsPurchased")
         self._TrialCapacity = params.get("TrialCapacity")
+        if params.get("ResourceDetailList") is not None:
+            self._ResourceDetailList = []
+            for item in params.get("ResourceDetailList"):
+                obj = VasInfoResourceDetail()
+                obj._deserialize(item)
+                self._ResourceDetailList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -45718,7 +44909,7 @@ class DescribeSuperNodePodListRequest(AbstractModel):
         :type Limit: int
         :param _Offset: 偏移量，默认为0。
         :type Offset: int
-        :param _By: 排序字段
+        :param _By: 排序字段 StartTime
         :type By: str
         :param _Order: 排序方式 asc,desc
         :type Order: str
@@ -45771,7 +44962,7 @@ class DescribeSuperNodePodListRequest(AbstractModel):
 
     @property
     def By(self):
-        """排序字段
+        """排序字段 StartTime
         :rtype: str
         """
         return self._By
@@ -46768,7 +45959,6 @@ class DescribeUnfinishRefreshTaskResponse(AbstractModel):
         :param _TaskStatus: 任务状态，为Task_New,Task_Running,Task_Finish,Task_Error,Task_NoExist.Task_New,Task_Running表示有任务存在，不允许新下发
         :type TaskStatus: str
         :param _NewTaskID: 新任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type NewTaskID: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -46803,7 +45993,6 @@ class DescribeUnfinishRefreshTaskResponse(AbstractModel):
     @property
     def NewTaskID(self):
         """新任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NewTaskID
@@ -47331,28 +46520,20 @@ class DescribeVirusAutoIsolateSampleDetailResponse(AbstractModel):
         :param _MD5: 文件Md5值
         :type MD5: str
         :param _Size: 文件大小(B)
-注意：此字段可能返回 null，表示取不到有效值。
         :type Size: int
         :param _VirusName: 病毒名
-注意：此字段可能返回 null，表示取不到有效值。
         :type VirusName: str
         :param _RiskLevel: 风险等级 RISK_CRITICAL, RISK_HIGH, RISK_MEDIUM, RISK_LOW, RISK_NOTICE。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskLevel: str
         :param _KillEngine: 查杀引擎
-注意：此字段可能返回 null，表示取不到有效值。
         :type KillEngine: list of str
         :param _Tags: 标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of str
         :param _HarmDescribe: 事件描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type HarmDescribe: str
         :param _SuggestScheme: 建议方案
-注意：此字段可能返回 null，表示取不到有效值。
         :type SuggestScheme: str
         :param _ReferenceLink: 参考链接
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReferenceLink: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -47382,7 +46563,6 @@ class DescribeVirusAutoIsolateSampleDetailResponse(AbstractModel):
     @property
     def Size(self):
         """文件大小(B)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Size
@@ -47394,7 +46574,6 @@ class DescribeVirusAutoIsolateSampleDetailResponse(AbstractModel):
     @property
     def VirusName(self):
         """病毒名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VirusName
@@ -47406,7 +46585,6 @@ class DescribeVirusAutoIsolateSampleDetailResponse(AbstractModel):
     @property
     def RiskLevel(self):
         """风险等级 RISK_CRITICAL, RISK_HIGH, RISK_MEDIUM, RISK_LOW, RISK_NOTICE。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RiskLevel
@@ -47418,7 +46596,6 @@ class DescribeVirusAutoIsolateSampleDetailResponse(AbstractModel):
     @property
     def KillEngine(self):
         """查杀引擎
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._KillEngine
@@ -47430,7 +46607,6 @@ class DescribeVirusAutoIsolateSampleDetailResponse(AbstractModel):
     @property
     def Tags(self):
         """标签
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Tags
@@ -47442,7 +46618,6 @@ class DescribeVirusAutoIsolateSampleDetailResponse(AbstractModel):
     @property
     def HarmDescribe(self):
         """事件描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HarmDescribe
@@ -47454,7 +46629,6 @@ class DescribeVirusAutoIsolateSampleDetailResponse(AbstractModel):
     @property
     def SuggestScheme(self):
         """建议方案
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SuggestScheme
@@ -47466,7 +46640,6 @@ class DescribeVirusAutoIsolateSampleDetailResponse(AbstractModel):
     @property
     def ReferenceLink(self):
         """参考链接
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ReferenceLink
@@ -47766,11 +46939,14 @@ class DescribeVirusAutoIsolateSettingResponse(AbstractModel):
         :type AutoIsolateSwitch: bool
         :param _IsKillProgress: 是否中断隔离文件关联的进程(true:是 false:否)
         :type IsKillProgress: bool
+        :param _UserAutoIsolateKillSwitch: 用户用户自定义开关
+        :type UserAutoIsolateKillSwitch: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AutoIsolateSwitch = None
         self._IsKillProgress = None
+        self._UserAutoIsolateKillSwitch = None
         self._RequestId = None
 
     @property
@@ -47796,6 +46972,17 @@ class DescribeVirusAutoIsolateSettingResponse(AbstractModel):
         self._IsKillProgress = IsKillProgress
 
     @property
+    def UserAutoIsolateKillSwitch(self):
+        """用户用户自定义开关
+        :rtype: bool
+        """
+        return self._UserAutoIsolateKillSwitch
+
+    @UserAutoIsolateKillSwitch.setter
+    def UserAutoIsolateKillSwitch(self, UserAutoIsolateKillSwitch):
+        self._UserAutoIsolateKillSwitch = UserAutoIsolateKillSwitch
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -47810,6 +46997,7 @@ class DescribeVirusAutoIsolateSettingResponse(AbstractModel):
     def _deserialize(self, params):
         self._AutoIsolateSwitch = params.get("AutoIsolateSwitch")
         self._IsKillProgress = params.get("IsKillProgress")
+        self._UserAutoIsolateKillSwitch = params.get("UserAutoIsolateKillSwitch")
         self._RequestId = params.get("RequestId")
 
 
@@ -47857,94 +47045,64 @@ class DescribeVirusDetailResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ImageId: 镜像ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImageId: str
         :param _ImageName: 镜像名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImageName: str
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _Size: 木马文件大小
-注意：此字段可能返回 null，表示取不到有效值。
         :type Size: int
         :param _FilePath: 木马文件路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type FilePath: str
         :param _ModifyTime: 最近生成时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyTime: str
         :param _VirusName: 病毒名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type VirusName: str
         :param _RiskLevel: 风险等级 RISK_CRITICAL, RISK_HIGH, RISK_MEDIUM, RISK_LOW, RISK_NOTICE。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskLevel: str
         :param _ContainerName: 容器名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ContainerName: str
         :param _ContainerId: 容器id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ContainerId: str
         :param _HostName: 主机名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type HostName: str
         :param _HostId: 主机id
-注意：此字段可能返回 null，表示取不到有效值。
         :type HostId: str
         :param _ProcessName: 进程名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProcessName: str
         :param _ProcessPath: 进程路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProcessPath: str
         :param _ProcessMd5: 进程md5
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProcessMd5: str
         :param _ProcessId: 进程id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProcessId: int
         :param _ProcessArgv: 进程参数
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProcessArgv: str
         :param _ProcessChan: 进程链
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProcessChan: str
         :param _ProcessAccountGroup: 进程组
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProcessAccountGroup: str
         :param _ProcessStartAccount: 进程启动用户
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProcessStartAccount: str
         :param _ProcessFileAuthority: 进程文件权限
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProcessFileAuthority: str
         :param _SourceType: 来源：0：一键扫描， 1：定时扫描 2：实时监控
-注意：此字段可能返回 null，表示取不到有效值。
         :type SourceType: int
         :param _Tags: 标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of str
         :param _HarmDescribe: 事件描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type HarmDescribe: str
         :param _SuggestScheme: 建议方案
-注意：此字段可能返回 null，表示取不到有效值。
         :type SuggestScheme: str
         :param _Mark: 备注
-注意：此字段可能返回 null，表示取不到有效值。
         :type Mark: str
         :param _FileName: 风险文件名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileName: str
         :param _FileMd5: 文件MD5
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileMd5: str
         :param _EventType: 事件类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type EventType: str
         :param _PodName: 集群名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type PodName: str
         :param _Status: DEAL_NONE:文件待处理
 DEAL_IGNORE:已经忽略
@@ -47955,7 +47113,6 @@ DEAL_ISOLATING:隔离中
 DEAL_ISOLATE_FAILED:隔离失败
 DEAL_RECOVERING:恢复中
 DEAL_RECOVER_FAILED: 恢复失败
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _SubStatus: 失败子状态:
 FILE_NOT_FOUND:文件不存在
@@ -47964,49 +47121,34 @@ FILE_ABNORMAL_DEAL_RECOVER:恢复文件时，文件异常
 BACKUP_FILE_NOT_FOUND:备份文件不存在
 CONTAINER_NOT_FOUND_DEAL_ISOLATE:隔离时，容器不存在
 CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubStatus: str
         :param _HostIP: 内网ip
-注意：此字段可能返回 null，表示取不到有效值。
         :type HostIP: str
         :param _ClientIP: 外网ip
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClientIP: str
         :param _PProcessStartUser: 父进程启动用户
-注意：此字段可能返回 null，表示取不到有效值。
         :type PProcessStartUser: str
         :param _PProcessUserGroup: 父进程用户组
-注意：此字段可能返回 null，表示取不到有效值。
         :type PProcessUserGroup: str
         :param _PProcessPath: 父进程路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type PProcessPath: str
         :param _PProcessParam: 父进程命令行参数
-注意：此字段可能返回 null，表示取不到有效值。
         :type PProcessParam: str
         :param _AncestorProcessStartUser: 祖先进程启动用户
-注意：此字段可能返回 null，表示取不到有效值。
         :type AncestorProcessStartUser: str
         :param _AncestorProcessUserGroup: 祖先进程用户组
-注意：此字段可能返回 null，表示取不到有效值。
         :type AncestorProcessUserGroup: str
         :param _AncestorProcessPath: 祖先进程路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type AncestorProcessPath: str
         :param _AncestorProcessParam: 祖先进程命令行参数
-注意：此字段可能返回 null，表示取不到有效值。
         :type AncestorProcessParam: str
         :param _OperationTime: 事件最后一次处理的时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type OperationTime: str
         :param _ContainerNetStatus: 容器隔离状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type ContainerNetStatus: str
         :param _ContainerNetSubStatus: 容器隔离子状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type ContainerNetSubStatus: str
         :param _ContainerIsolateOperationSrc: 容器隔离操作来源
-注意：此字段可能返回 null，表示取不到有效值。
         :type ContainerIsolateOperationSrc: str
         :param _CheckPlatform: 检测平台
 1: 云查杀引擎
@@ -48014,13 +47156,10 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
 3: binaryAi
 4: 异常行为
 5: 威胁情报
-注意：此字段可能返回 null，表示取不到有效值。
         :type CheckPlatform: list of str
         :param _FileAccessTime: 文件访问时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileAccessTime: str
         :param _FileModifyTime: 文件修改时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileModifyTime: str
         :param _NodeSubNetID: 节点子网ID
         :type NodeSubNetID: str
@@ -48115,7 +47254,6 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
     @property
     def ImageId(self):
         """镜像ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ImageId
@@ -48127,7 +47265,6 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
     @property
     def ImageName(self):
         """镜像名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ImageName
@@ -48139,7 +47276,6 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -48151,7 +47287,6 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
     @property
     def Size(self):
         """木马文件大小
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Size
@@ -48163,7 +47298,6 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
     @property
     def FilePath(self):
         """木马文件路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FilePath
@@ -48175,7 +47309,6 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
     @property
     def ModifyTime(self):
         """最近生成时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ModifyTime
@@ -48187,7 +47320,6 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
     @property
     def VirusName(self):
         """病毒名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VirusName
@@ -48199,7 +47331,6 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
     @property
     def RiskLevel(self):
         """风险等级 RISK_CRITICAL, RISK_HIGH, RISK_MEDIUM, RISK_LOW, RISK_NOTICE。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RiskLevel
@@ -48211,7 +47342,6 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
     @property
     def ContainerName(self):
         """容器名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ContainerName
@@ -48223,7 +47353,6 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
     @property
     def ContainerId(self):
         """容器id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ContainerId
@@ -48235,7 +47364,6 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
     @property
     def HostName(self):
         """主机名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HostName
@@ -48247,7 +47375,6 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
     @property
     def HostId(self):
         """主机id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HostId
@@ -48259,7 +47386,6 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
     @property
     def ProcessName(self):
         """进程名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProcessName
@@ -48271,7 +47397,6 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
     @property
     def ProcessPath(self):
         """进程路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProcessPath
@@ -48283,7 +47408,6 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
     @property
     def ProcessMd5(self):
         """进程md5
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProcessMd5
@@ -48295,7 +47419,6 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
     @property
     def ProcessId(self):
         """进程id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ProcessId
@@ -48307,7 +47430,6 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
     @property
     def ProcessArgv(self):
         """进程参数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProcessArgv
@@ -48319,7 +47441,6 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
     @property
     def ProcessChan(self):
         """进程链
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProcessChan
@@ -48331,7 +47452,6 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
     @property
     def ProcessAccountGroup(self):
         """进程组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProcessAccountGroup
@@ -48343,7 +47463,6 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
     @property
     def ProcessStartAccount(self):
         """进程启动用户
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProcessStartAccount
@@ -48355,7 +47474,6 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
     @property
     def ProcessFileAuthority(self):
         """进程文件权限
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProcessFileAuthority
@@ -48367,7 +47485,6 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
     @property
     def SourceType(self):
         """来源：0：一键扫描， 1：定时扫描 2：实时监控
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SourceType
@@ -48379,7 +47496,6 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
     @property
     def Tags(self):
         """标签
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Tags
@@ -48391,7 +47507,6 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
     @property
     def HarmDescribe(self):
         """事件描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HarmDescribe
@@ -48403,7 +47518,6 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
     @property
     def SuggestScheme(self):
         """建议方案
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SuggestScheme
@@ -48415,7 +47529,6 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
     @property
     def Mark(self):
         """备注
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Mark
@@ -48427,7 +47540,6 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
     @property
     def FileName(self):
         """风险文件名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FileName
@@ -48439,7 +47551,6 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
     @property
     def FileMd5(self):
         """文件MD5
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FileMd5
@@ -48451,7 +47562,6 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
     @property
     def EventType(self):
         """事件类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EventType
@@ -48463,7 +47573,6 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
     @property
     def PodName(self):
         """集群名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PodName
@@ -48483,7 +47592,6 @@ DEAL_ISOLATING:隔离中
 DEAL_ISOLATE_FAILED:隔离失败
 DEAL_RECOVERING:恢复中
 DEAL_RECOVER_FAILED: 恢复失败
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -48501,7 +47609,6 @@ FILE_ABNORMAL_DEAL_RECOVER:恢复文件时，文件异常
 BACKUP_FILE_NOT_FOUND:备份文件不存在
 CONTAINER_NOT_FOUND_DEAL_ISOLATE:隔离时，容器不存在
 CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubStatus
@@ -48513,7 +47620,6 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
     @property
     def HostIP(self):
         """内网ip
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HostIP
@@ -48525,7 +47631,6 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
     @property
     def ClientIP(self):
         """外网ip
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClientIP
@@ -48537,7 +47642,6 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
     @property
     def PProcessStartUser(self):
         """父进程启动用户
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PProcessStartUser
@@ -48549,7 +47653,6 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
     @property
     def PProcessUserGroup(self):
         """父进程用户组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PProcessUserGroup
@@ -48561,7 +47664,6 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
     @property
     def PProcessPath(self):
         """父进程路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PProcessPath
@@ -48573,7 +47675,6 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
     @property
     def PProcessParam(self):
         """父进程命令行参数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PProcessParam
@@ -48585,7 +47686,6 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
     @property
     def AncestorProcessStartUser(self):
         """祖先进程启动用户
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AncestorProcessStartUser
@@ -48597,7 +47697,6 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
     @property
     def AncestorProcessUserGroup(self):
         """祖先进程用户组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AncestorProcessUserGroup
@@ -48609,7 +47708,6 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
     @property
     def AncestorProcessPath(self):
         """祖先进程路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AncestorProcessPath
@@ -48621,7 +47719,6 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
     @property
     def AncestorProcessParam(self):
         """祖先进程命令行参数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AncestorProcessParam
@@ -48633,7 +47730,6 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
     @property
     def OperationTime(self):
         """事件最后一次处理的时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OperationTime
@@ -48645,7 +47741,6 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
     @property
     def ContainerNetStatus(self):
         """容器隔离状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ContainerNetStatus
@@ -48657,7 +47752,6 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
     @property
     def ContainerNetSubStatus(self):
         """容器隔离子状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ContainerNetSubStatus
@@ -48669,7 +47763,6 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
     @property
     def ContainerIsolateOperationSrc(self):
         """容器隔离操作来源
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ContainerIsolateOperationSrc
@@ -48686,7 +47779,6 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
 3: binaryAi
 4: 异常行为
 5: 威胁情报
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._CheckPlatform
@@ -48698,7 +47790,6 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
     @property
     def FileAccessTime(self):
         """文件访问时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FileAccessTime
@@ -48710,7 +47801,6 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
     @property
     def FileModifyTime(self):
         """文件修改时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FileModifyTime
@@ -49344,13 +48434,10 @@ class DescribeVirusMonitorSettingResponse(AbstractModel):
         :param _EnableScan: 是否开启实时监控
         :type EnableScan: bool
         :param _ScanPathAll: 扫描全部路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScanPathAll: bool
         :param _ScanPathType: 当ScanPathAll为true 生效 0扫描以下路径 1、扫描除以下路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScanPathType: int
         :param _ScanPath: 自选排除或扫描的地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScanPath: list of str
         :param _ScanPathMode: 扫描路径模式：
 SCAN_PATH_ALL：全部路径
@@ -49382,7 +48469,6 @@ SCAN_PATH_USER_DEFINE：用户自定义路径
     @property
     def ScanPathAll(self):
         """扫描全部路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._ScanPathAll
@@ -49394,7 +48480,6 @@ SCAN_PATH_USER_DEFINE：用户自定义路径
     @property
     def ScanPathType(self):
         """当ScanPathAll为true 生效 0扫描以下路径 1、扫描除以下路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ScanPathType
@@ -49406,7 +48491,6 @@ SCAN_PATH_USER_DEFINE：用户自定义路径
     @property
     def ScanPath(self):
         """自选排除或扫描的地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._ScanPath
@@ -49564,7 +48648,6 @@ class DescribeVirusScanSettingResponse(AbstractModel):
         :param _ScanPath: 自选排除或扫描的地址
         :type ScanPath: list of str
         :param _ClickTimeout: 一键检测的超时设置
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClickTimeout: int
         :param _ScanPathMode: 扫描路径模式：
 SCAN_PATH_ALL：全部路径
@@ -49702,7 +48785,6 @@ SCAN_PATH_USER_DEFINE：用户自定义路径
     @property
     def ClickTimeout(self):
         """一键检测的超时设置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ClickTimeout
@@ -50024,7 +49106,6 @@ class DescribeVirusScanTimeoutSettingResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Timeout: 超时时长单位小时
-注意：此字段可能返回 null，表示取不到有效值。
         :type Timeout: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -50035,7 +49116,6 @@ class DescribeVirusScanTimeoutSettingResponse(AbstractModel):
     @property
     def Timeout(self):
         """超时时长单位小时
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Timeout
@@ -50077,25 +49157,18 @@ class DescribeVirusSummaryResponse(AbstractModel):
         :param _TaskId: 最近的一次扫描任务id
         :type TaskId: str
         :param _RiskContainerCnt: 木马影响容器个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskContainerCnt: int
         :param _RiskCnt: 待处理风险个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskCnt: int
         :param _VirusDataBaseModifyTime: 病毒库更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type VirusDataBaseModifyTime: str
         :param _RiskContainerIncrease: 木马影响容器个数较昨日增长
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskContainerIncrease: int
         :param _RiskIncrease: 待处理风险个数较昨日增长
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskIncrease: int
         :param _IsolateIncrease: 隔离事件个数较昨日新增
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsolateIncrease: int
         :param _IsolateCnt: 隔离事件总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsolateCnt: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -50124,7 +49197,6 @@ class DescribeVirusSummaryResponse(AbstractModel):
     @property
     def RiskContainerCnt(self):
         """木马影响容器个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RiskContainerCnt
@@ -50136,7 +49208,6 @@ class DescribeVirusSummaryResponse(AbstractModel):
     @property
     def RiskCnt(self):
         """待处理风险个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RiskCnt
@@ -50148,7 +49219,6 @@ class DescribeVirusSummaryResponse(AbstractModel):
     @property
     def VirusDataBaseModifyTime(self):
         """病毒库更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VirusDataBaseModifyTime
@@ -50160,7 +49230,6 @@ class DescribeVirusSummaryResponse(AbstractModel):
     @property
     def RiskContainerIncrease(self):
         """木马影响容器个数较昨日增长
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RiskContainerIncrease
@@ -50172,7 +49241,6 @@ class DescribeVirusSummaryResponse(AbstractModel):
     @property
     def RiskIncrease(self):
         """待处理风险个数较昨日增长
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RiskIncrease
@@ -50184,7 +49252,6 @@ class DescribeVirusSummaryResponse(AbstractModel):
     @property
     def IsolateIncrease(self):
         """隔离事件个数较昨日新增
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IsolateIncrease
@@ -50196,7 +49263,6 @@ class DescribeVirusSummaryResponse(AbstractModel):
     @property
     def IsolateCnt(self):
         """隔离事件总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IsolateCnt
@@ -51322,13 +50388,10 @@ class DescribeVulDefenceSettingResponse(AbstractModel):
         :param _ExceptionHostCount: 开启漏洞防御异常主机数量
         :type ExceptionHostCount: int
         :param _HostIDs: 自选漏洞防御主机
-注意：此字段可能返回 null，表示取不到有效值。
         :type HostIDs: list of str
         :param _HostTotalCount: 开通容器安全的主机总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type HostTotalCount: int
         :param _SupportDefenseVulCount: 支持防御的漏洞数
-注意：此字段可能返回 null，表示取不到有效值。
         :type SupportDefenseVulCount: int
         :param _HostNodeCount: 普通节点个数
         :type HostNodeCount: int
@@ -51404,7 +50467,6 @@ class DescribeVulDefenceSettingResponse(AbstractModel):
     @property
     def HostIDs(self):
         """自选漏洞防御主机
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._HostIDs
@@ -51416,7 +50478,6 @@ class DescribeVulDefenceSettingResponse(AbstractModel):
     @property
     def HostTotalCount(self):
         """开通容器安全的主机总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._HostTotalCount
@@ -51428,7 +50489,6 @@ class DescribeVulDefenceSettingResponse(AbstractModel):
     @property
     def SupportDefenseVulCount(self):
         """支持防御的漏洞数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SupportDefenseVulCount
@@ -53979,24 +53039,18 @@ class EmergencyVulInfo(AbstractModel):
         :param _Name: 漏洞名称
         :type Name: str
         :param _Tags: 漏洞标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of str
         :param _CVSSV3Score: CVSS V3分数
-注意：此字段可能返回 null，表示取不到有效值。
         :type CVSSV3Score: float
         :param _Level: 风险等级
-注意：此字段可能返回 null，表示取不到有效值。
         :type Level: str
         :param _CVEID: CVE编号
         :type CVEID: str
         :param _Category: 漏洞类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Category: str
         :param _SubmitTime: 漏洞披露时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubmitTime: str
         :param _LatestFoundTime: 最近发现时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type LatestFoundTime: str
         :param _Status: 应急漏洞风险情况：NOT_SCAN：未扫描，SCANNING：扫描中，SCANNED_NOT_RISK：已扫描，暂未风险 ，SCANNED_RISK：已扫描存在风险
         :type Status: str
@@ -54005,16 +53059,12 @@ class EmergencyVulInfo(AbstractModel):
         :param _PocID: 漏洞PocID
         :type PocID: str
         :param _DefenceStatus: 防御状态，NO_DEFENDED:未防御，DEFENDED:已防御
-注意：此字段可能返回 null，表示取不到有效值。
         :type DefenceStatus: str
         :param _DefenceScope: 漏洞防御主机范围: MANUAL:自选主机节点，ALL:全部
-注意：此字段可能返回 null，表示取不到有效值。
         :type DefenceScope: str
         :param _DefenceHostCount: 漏洞防御主机数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type DefenceHostCount: int
         :param _DefendedCount: 已防御攻击次数
-注意：此字段可能返回 null，表示取不到有效值。
         :type DefendedCount: int
         """
         self._Name = None
@@ -54047,7 +53097,6 @@ class EmergencyVulInfo(AbstractModel):
     @property
     def Tags(self):
         """漏洞标签
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Tags
@@ -54059,7 +53108,6 @@ class EmergencyVulInfo(AbstractModel):
     @property
     def CVSSV3Score(self):
         """CVSS V3分数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._CVSSV3Score
@@ -54071,7 +53119,6 @@ class EmergencyVulInfo(AbstractModel):
     @property
     def Level(self):
         """风险等级
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Level
@@ -54094,7 +53141,6 @@ class EmergencyVulInfo(AbstractModel):
     @property
     def Category(self):
         """漏洞类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Category
@@ -54106,7 +53152,6 @@ class EmergencyVulInfo(AbstractModel):
     @property
     def SubmitTime(self):
         """漏洞披露时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubmitTime
@@ -54118,7 +53163,6 @@ class EmergencyVulInfo(AbstractModel):
     @property
     def LatestFoundTime(self):
         """最近发现时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LatestFoundTime
@@ -54163,7 +53207,6 @@ class EmergencyVulInfo(AbstractModel):
     @property
     def DefenceStatus(self):
         """防御状态，NO_DEFENDED:未防御，DEFENDED:已防御
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DefenceStatus
@@ -54175,7 +53218,6 @@ class EmergencyVulInfo(AbstractModel):
     @property
     def DefenceScope(self):
         """漏洞防御主机范围: MANUAL:自选主机节点，ALL:全部
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DefenceScope
@@ -54187,7 +53229,6 @@ class EmergencyVulInfo(AbstractModel):
     @property
     def DefenceHostCount(self):
         """漏洞防御主机数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DefenceHostCount
@@ -54199,7 +53240,6 @@ class EmergencyVulInfo(AbstractModel):
     @property
     def DefendedCount(self):
         """已防御攻击次数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DefendedCount
@@ -54247,10 +53287,8 @@ class EscapeEventDescription(AbstractModel):
         :param _Solution: 解决方案
         :type Solution: str
         :param _Remark: 事件备注信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _OperationTime: 事件最后一次处理的时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type OperationTime: str
         """
         self._Description = None
@@ -54283,7 +53321,6 @@ class EscapeEventDescription(AbstractModel):
     @property
     def Remark(self):
         """事件备注信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -54295,7 +53332,6 @@ class EscapeEventDescription(AbstractModel):
     @property
     def OperationTime(self):
         """事件最后一次处理的时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OperationTime
@@ -54371,10 +53407,8 @@ MountNamespace逃逸、
         :param _LatestFoundTime: 最近生成时间
         :type LatestFoundTime: str
         :param _NodeIP: 节点IP
-注意：此字段可能返回 null，表示取不到有效值。
         :type NodeIP: str
         :param _HostID: 主机IP
-注意：此字段可能返回 null，表示取不到有效值。
         :type HostID: str
         :param _ContainerNetStatus: 网络状态
 未隔离  	NORMAL
@@ -54383,7 +53417,6 @@ MountNamespace逃逸、
 隔离失败	ISOLATE_FAILED
 解除隔离中  RESTORING
 解除隔离失败 RESTORE_FAILED
-注意：此字段可能返回 null，表示取不到有效值。
         :type ContainerNetStatus: str
         :param _ContainerNetSubStatus: 容器子状态
 "AGENT_OFFLINE"       //Agent离线
@@ -54393,10 +53426,8 @@ MountNamespace逃逸、
 "SHARED_HOST"         // 容器与主机共享网络
 "RESOURCE_LIMIT"      //隔离操作资源超限
 "UNKNOW"              // 原因未知
-注意：此字段可能返回 null，表示取不到有效值。
         :type ContainerNetSubStatus: str
         :param _ContainerIsolateOperationSrc: 容器隔离操作来源
-注意：此字段可能返回 null，表示取不到有效值。
         :type ContainerIsolateOperationSrc: str
         :param _ContainerStatus: 容器状态
 正在运行: RUNNING
@@ -54635,7 +53666,6 @@ MountNamespace逃逸、
     @property
     def NodeIP(self):
         """节点IP
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NodeIP
@@ -54647,7 +53677,6 @@ MountNamespace逃逸、
     @property
     def HostID(self):
         """主机IP
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HostID
@@ -54665,7 +53694,6 @@ MountNamespace逃逸、
 隔离失败	ISOLATE_FAILED
 解除隔离中  RESTORING
 解除隔离失败 RESTORE_FAILED
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ContainerNetStatus
@@ -54684,7 +53712,6 @@ MountNamespace逃逸、
 "SHARED_HOST"         // 容器与主机共享网络
 "RESOURCE_LIMIT"      //隔离操作资源超限
 "UNKNOW"              // 原因未知
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ContainerNetSubStatus
@@ -54696,7 +53723,6 @@ MountNamespace逃逸、
     @property
     def ContainerIsolateOperationSrc(self):
         """容器隔离操作来源
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ContainerIsolateOperationSrc
@@ -55951,10 +54977,8 @@ class HostInfo(AbstractModel):
         :param _RegionID: 地域ID
         :type RegionID: int
         :param _Project: 所属项目
-注意：此字段可能返回 null，表示取不到有效值。
         :type Project: :class:`tencentcloud.tcss.v20201101.models.ProjectInfo`
         :param _Tags: 标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of TagInfo
         :param _ClusterID: 集群id
         :type ClusterID: str
@@ -56163,7 +55187,6 @@ class HostInfo(AbstractModel):
     @property
     def Project(self):
         """所属项目
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcss.v20201101.models.ProjectInfo`
         """
         return self._Project
@@ -56175,7 +55198,6 @@ class HostInfo(AbstractModel):
     @property
     def Tags(self):
         """标签
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TagInfo
         """
         return self._Tags
@@ -56451,10 +55473,8 @@ class ImageComponent(AbstractModel):
         :param _Type: 组件类型
         :type Type: str
         :param _VulCount: 组件漏洞数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type VulCount: int
         :param _ImageID: 镜像ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImageID: str
         """
         self._Name = None
@@ -56511,7 +55531,6 @@ class ImageComponent(AbstractModel):
     @property
     def VulCount(self):
         """组件漏洞数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._VulCount
@@ -56523,7 +55542,6 @@ class ImageComponent(AbstractModel):
     @property
     def ImageID(self):
         """镜像ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ImageID
@@ -56765,40 +55783,28 @@ class ImageProgress(AbstractModel):
     def __init__(self):
         r"""
         :param _ImageId: 镜像id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImageId: str
         :param _RegistryType: 仓库类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegistryType: str
         :param _ImageRepoAddress: 镜像仓库地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImageRepoAddress: str
         :param _InstanceId: 实例id
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _InstanceName: 实例名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceName: str
         :param _Namespace: 命名空间
-注意：此字段可能返回 null，表示取不到有效值。
         :type Namespace: str
         :param _ImageName: 仓库名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImageName: str
         :param _ImageTag: 镜像tag
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImageTag: str
         :param _ScanStatus: 镜像扫描状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScanStatus: str
         :param _CveProgress: 镜像cve扫描进度
-注意：此字段可能返回 null，表示取不到有效值。
         :type CveProgress: int
         :param _RiskProgress: 镜像敏感扫描进度
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskProgress: int
         :param _VirusProgress: 镜像木马扫描进度
-注意：此字段可能返回 null，表示取不到有效值。
         :type VirusProgress: int
         """
         self._ImageId = None
@@ -56817,7 +55823,6 @@ class ImageProgress(AbstractModel):
     @property
     def ImageId(self):
         """镜像id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ImageId
@@ -56829,7 +55834,6 @@ class ImageProgress(AbstractModel):
     @property
     def RegistryType(self):
         """仓库类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RegistryType
@@ -56841,7 +55845,6 @@ class ImageProgress(AbstractModel):
     @property
     def ImageRepoAddress(self):
         """镜像仓库地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ImageRepoAddress
@@ -56853,7 +55856,6 @@ class ImageProgress(AbstractModel):
     @property
     def InstanceId(self):
         """实例id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -56865,7 +55867,6 @@ class ImageProgress(AbstractModel):
     @property
     def InstanceName(self):
         """实例名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceName
@@ -56877,7 +55878,6 @@ class ImageProgress(AbstractModel):
     @property
     def Namespace(self):
         """命名空间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Namespace
@@ -56889,7 +55889,6 @@ class ImageProgress(AbstractModel):
     @property
     def ImageName(self):
         """仓库名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ImageName
@@ -56901,7 +55900,6 @@ class ImageProgress(AbstractModel):
     @property
     def ImageTag(self):
         """镜像tag
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ImageTag
@@ -56913,7 +55911,6 @@ class ImageProgress(AbstractModel):
     @property
     def ScanStatus(self):
         """镜像扫描状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ScanStatus
@@ -56925,7 +55922,6 @@ class ImageProgress(AbstractModel):
     @property
     def CveProgress(self):
         """镜像cve扫描进度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CveProgress
@@ -56937,7 +55933,6 @@ class ImageProgress(AbstractModel):
     @property
     def RiskProgress(self):
         """镜像敏感扫描进度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RiskProgress
@@ -56949,7 +55944,6 @@ class ImageProgress(AbstractModel):
     @property
     def VirusProgress(self):
         """镜像木马扫描进度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._VirusProgress
@@ -57098,10 +56092,8 @@ class ImageRepoInfo(AbstractModel):
         :param _OsName: 镜像系统
         :type OsName: str
         :param _ScanVirusError: 木马扫描错误
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScanVirusError: str
         :param _ScanVulError: 漏洞扫描错误
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScanVulError: str
         :param _InstanceId: 实例id
         :type InstanceId: str
@@ -57110,31 +56102,22 @@ class ImageRepoInfo(AbstractModel):
         :param _Namespace: 命名空间
         :type Namespace: str
         :param _ScanRiskError: 高危扫描错误
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScanRiskError: str
         :param _ScanVirusProgress: 敏感信息扫描进度
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScanVirusProgress: int
         :param _ScanVulProgress: 木马扫描进度
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScanVulProgress: int
         :param _ScanRiskProgress: 漏洞扫描进度
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScanRiskProgress: int
         :param _ScanRemainTime: 剩余扫描时间秒
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScanRemainTime: int
         :param _CveStatus: cve扫描状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type CveStatus: str
         :param _RiskStatus: 高危扫描状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskStatus: str
         :param _VirusStatus: 木马扫描状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type VirusStatus: str
         :param _Progress: 总进度
-注意：此字段可能返回 null，表示取不到有效值。
         :type Progress: int
         :param _IsAuthorized: 授权状态
         :type IsAuthorized: int
@@ -57143,13 +56126,10 @@ class ImageRepoInfo(AbstractModel):
         :param _Id: 列表id
         :type Id: int
         :param _ImageId: 镜像Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImageId: str
         :param _ImageCreateTime: 镜像创建的时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImageCreateTime: str
         :param _IsLatestImage: 是否为镜像的最新版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsLatestImage: bool
         :param _LowLevelVulCnt: low级别漏洞个数
         :type LowLevelVulCnt: int
@@ -57168,7 +56148,6 @@ class ImageRepoInfo(AbstractModel):
         :param _HasNeedFixVul: 是否存在必修漏洞
         :type HasNeedFixVul: bool
         :param _SensitiveInfoCnt: 敏感信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type SensitiveInfoCnt: int
         :param _RecommendedFix: 是否推荐处置
         :type RecommendedFix: bool
@@ -57379,7 +56358,6 @@ class ImageRepoInfo(AbstractModel):
     @property
     def ScanVirusError(self):
         """木马扫描错误
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ScanVirusError
@@ -57391,7 +56369,6 @@ class ImageRepoInfo(AbstractModel):
     @property
     def ScanVulError(self):
         """漏洞扫描错误
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ScanVulError
@@ -57436,7 +56413,6 @@ class ImageRepoInfo(AbstractModel):
     @property
     def ScanRiskError(self):
         """高危扫描错误
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ScanRiskError
@@ -57448,7 +56424,6 @@ class ImageRepoInfo(AbstractModel):
     @property
     def ScanVirusProgress(self):
         """敏感信息扫描进度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ScanVirusProgress
@@ -57460,7 +56435,6 @@ class ImageRepoInfo(AbstractModel):
     @property
     def ScanVulProgress(self):
         """木马扫描进度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ScanVulProgress
@@ -57472,7 +56446,6 @@ class ImageRepoInfo(AbstractModel):
     @property
     def ScanRiskProgress(self):
         """漏洞扫描进度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ScanRiskProgress
@@ -57484,7 +56457,6 @@ class ImageRepoInfo(AbstractModel):
     @property
     def ScanRemainTime(self):
         """剩余扫描时间秒
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ScanRemainTime
@@ -57496,7 +56468,6 @@ class ImageRepoInfo(AbstractModel):
     @property
     def CveStatus(self):
         """cve扫描状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CveStatus
@@ -57508,7 +56479,6 @@ class ImageRepoInfo(AbstractModel):
     @property
     def RiskStatus(self):
         """高危扫描状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RiskStatus
@@ -57520,7 +56490,6 @@ class ImageRepoInfo(AbstractModel):
     @property
     def VirusStatus(self):
         """木马扫描状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VirusStatus
@@ -57532,7 +56501,6 @@ class ImageRepoInfo(AbstractModel):
     @property
     def Progress(self):
         """总进度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Progress
@@ -57577,7 +56545,6 @@ class ImageRepoInfo(AbstractModel):
     @property
     def ImageId(self):
         """镜像Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ImageId
@@ -57589,7 +56556,6 @@ class ImageRepoInfo(AbstractModel):
     @property
     def ImageCreateTime(self):
         """镜像创建的时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ImageCreateTime
@@ -57601,7 +56567,6 @@ class ImageRepoInfo(AbstractModel):
     @property
     def IsLatestImage(self):
         """是否为镜像的最新版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsLatestImage
@@ -57701,7 +56666,6 @@ class ImageRepoInfo(AbstractModel):
     @property
     def SensitiveInfoCnt(self):
         """敏感信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SensitiveInfoCnt
@@ -57799,7 +56763,6 @@ class ImageRepoRegistryInfo(AbstractModel):
         :param _RegistryVersion: 仓库版本
         :type RegistryVersion: str
         :param _ConnectMsg: 仓库连接错误信息，待废弃，请使用ConnDetectException
-注意：此字段可能返回 null，表示取不到有效值。
         :type ConnectMsg: str
         :param _ConnDetectType: 联通性检测方式
         :type ConnDetectType: str
@@ -57819,6 +56782,8 @@ class ImageRepoRegistryInfo(AbstractModel):
         :type SyncSolution: str
         :param _SyncMessage: 同步失败信息
         :type SyncMessage: str
+        :param _SyncMode: 同步方式，0全量同步，1增量同步	
+        :type SyncMode: int
         """
         self._RegistryId = None
         self._Name = None
@@ -57837,6 +56802,7 @@ class ImageRepoRegistryInfo(AbstractModel):
         self._SyncFailReason = None
         self._SyncSolution = None
         self._SyncMessage = None
+        self._SyncMode = None
 
     @property
     def RegistryId(self):
@@ -57918,7 +56884,6 @@ class ImageRepoRegistryInfo(AbstractModel):
     @property
     def ConnectMsg(self):
         """仓库连接错误信息，待废弃，请使用ConnDetectException
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ConnectMsg
@@ -58026,6 +56991,17 @@ class ImageRepoRegistryInfo(AbstractModel):
     def SyncMessage(self, SyncMessage):
         self._SyncMessage = SyncMessage
 
+    @property
+    def SyncMode(self):
+        """同步方式，0全量同步，1增量同步	
+        :rtype: int
+        """
+        return self._SyncMode
+
+    @SyncMode.setter
+    def SyncMode(self, SyncMode):
+        self._SyncMode = SyncMode
+
 
     def _deserialize(self, params):
         self._RegistryId = params.get("RegistryId")
@@ -58050,6 +57026,7 @@ class ImageRepoRegistryInfo(AbstractModel):
         self._SyncFailReason = params.get("SyncFailReason")
         self._SyncSolution = params.get("SyncSolution")
         self._SyncMessage = params.get("SyncMessage")
+        self._SyncMode = params.get("SyncMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -58068,19 +57045,14 @@ class ImageRisk(AbstractModel):
     def __init__(self):
         r"""
         :param _Behavior: 高危行为
-注意：此字段可能返回 null，表示取不到有效值。
         :type Behavior: int
         :param _Type: 种类
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: int
         :param _Level: 风险等级
-注意：此字段可能返回 null，表示取不到有效值。
         :type Level: str
         :param _Desc: 描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Desc: str
         :param _InstructionContent: 解决方案
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstructionContent: str
         """
         self._Behavior = None
@@ -58092,7 +57064,6 @@ class ImageRisk(AbstractModel):
     @property
     def Behavior(self):
         """高危行为
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Behavior
@@ -58104,7 +57075,6 @@ class ImageRisk(AbstractModel):
     @property
     def Type(self):
         """种类
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Type
@@ -58116,7 +57086,6 @@ class ImageRisk(AbstractModel):
     @property
     def Level(self):
         """风险等级
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Level
@@ -58128,7 +57097,6 @@ class ImageRisk(AbstractModel):
     @property
     def Desc(self):
         """描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Desc
@@ -58140,7 +57108,6 @@ class ImageRisk(AbstractModel):
     @property
     def InstructionContent(self):
         """解决方案
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstructionContent
@@ -58333,7 +57300,7 @@ class ImageScanInquireInfo(AbstractModel):
         r"""
         :param _InquireKey: 计费项
         :type InquireKey: str
-        :param _Capcity: 容量
+        :param _Capcity: 总容量
         :type Capcity: int
         :param _Useage: 已使用量
         :type Useage: int
@@ -58348,6 +57315,12 @@ class ImageScanInquireInfo(AbstractModel):
         :type PurchaseStatus: str
         :param _ResourceID: 资源ID
         :type ResourceID: str
+        :param _PayNum: 购买扫描数
+        :type PayNum: int
+        :param _TrialNum: 试用扫描数
+        :type TrialNum: int
+        :param _PayUsage: 购买已使用量
+        :type PayUsage: int
         """
         self._InquireKey = None
         self._Capcity = None
@@ -58356,6 +57329,9 @@ class ImageScanInquireInfo(AbstractModel):
         self._EndTime = None
         self._PurchaseStatus = None
         self._ResourceID = None
+        self._PayNum = None
+        self._TrialNum = None
+        self._PayUsage = None
 
     @property
     def InquireKey(self):
@@ -58370,7 +57346,7 @@ class ImageScanInquireInfo(AbstractModel):
 
     @property
     def Capcity(self):
-        """容量
+        """总容量
         :rtype: int
         """
         return self._Capcity
@@ -58437,6 +57413,39 @@ class ImageScanInquireInfo(AbstractModel):
     def ResourceID(self, ResourceID):
         self._ResourceID = ResourceID
 
+    @property
+    def PayNum(self):
+        """购买扫描数
+        :rtype: int
+        """
+        return self._PayNum
+
+    @PayNum.setter
+    def PayNum(self, PayNum):
+        self._PayNum = PayNum
+
+    @property
+    def TrialNum(self):
+        """试用扫描数
+        :rtype: int
+        """
+        return self._TrialNum
+
+    @TrialNum.setter
+    def TrialNum(self, TrialNum):
+        self._TrialNum = TrialNum
+
+    @property
+    def PayUsage(self):
+        """购买已使用量
+        :rtype: int
+        """
+        return self._PayUsage
+
+    @PayUsage.setter
+    def PayUsage(self, PayUsage):
+        self._PayUsage = PayUsage
+
 
     def _deserialize(self, params):
         self._InquireKey = params.get("InquireKey")
@@ -58446,6 +57455,9 @@ class ImageScanInquireInfo(AbstractModel):
         self._EndTime = params.get("EndTime")
         self._PurchaseStatus = params.get("PurchaseStatus")
         self._ResourceID = params.get("ResourceID")
+        self._PayNum = params.get("PayNum")
+        self._TrialNum = params.get("TrialNum")
+        self._PayUsage = params.get("PayUsage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -58791,37 +57803,26 @@ class ImageVirusInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Path: 路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type Path: str
         :param _RiskLevel: 风险等级
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskLevel: int
         :param _VirusName: 病毒名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type VirusName: str
         :param _Tags: 标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of str
         :param _Desc: 描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Desc: str
         :param _Solution: 修护建议
-注意：此字段可能返回 null，表示取不到有效值。
         :type Solution: str
         :param _Size: 大小
-注意：此字段可能返回 null，表示取不到有效值。
         :type Size: int
         :param _FirstScanTime: 首次发现时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type FirstScanTime: str
         :param _LatestScanTime: 最近扫描时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type LatestScanTime: str
         :param _Md5: 文件md5
-注意：此字段可能返回 null，表示取不到有效值。
         :type Md5: str
         :param _FileName: 文件名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileName: str
         :param _CheckPlatform: 检测平台
 1: 云查杀引擎
@@ -58829,7 +57830,6 @@ class ImageVirusInfo(AbstractModel):
 3: binaryAi
 4: 异常行为
 5: 威胁情报
-注意：此字段可能返回 null，表示取不到有效值。
         :type CheckPlatform: list of str
         """
         self._Path = None
@@ -58848,7 +57848,6 @@ class ImageVirusInfo(AbstractModel):
     @property
     def Path(self):
         """路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Path
@@ -58860,7 +57859,6 @@ class ImageVirusInfo(AbstractModel):
     @property
     def RiskLevel(self):
         """风险等级
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RiskLevel
@@ -58872,7 +57870,6 @@ class ImageVirusInfo(AbstractModel):
     @property
     def VirusName(self):
         """病毒名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VirusName
@@ -58884,7 +57881,6 @@ class ImageVirusInfo(AbstractModel):
     @property
     def Tags(self):
         """标签
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Tags
@@ -58896,7 +57892,6 @@ class ImageVirusInfo(AbstractModel):
     @property
     def Desc(self):
         """描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Desc
@@ -58908,7 +57903,6 @@ class ImageVirusInfo(AbstractModel):
     @property
     def Solution(self):
         """修护建议
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Solution
@@ -58920,7 +57914,6 @@ class ImageVirusInfo(AbstractModel):
     @property
     def Size(self):
         """大小
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Size
@@ -58932,7 +57925,6 @@ class ImageVirusInfo(AbstractModel):
     @property
     def FirstScanTime(self):
         """首次发现时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FirstScanTime
@@ -58944,7 +57936,6 @@ class ImageVirusInfo(AbstractModel):
     @property
     def LatestScanTime(self):
         """最近扫描时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LatestScanTime
@@ -58956,7 +57947,6 @@ class ImageVirusInfo(AbstractModel):
     @property
     def Md5(self):
         """文件md5
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Md5
@@ -58968,7 +57958,6 @@ class ImageVirusInfo(AbstractModel):
     @property
     def FileName(self):
         """文件名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FileName
@@ -58985,7 +57974,6 @@ class ImageVirusInfo(AbstractModel):
 3: binaryAi
 4: 异常行为
 5: 威胁情报
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._CheckPlatform
@@ -59026,67 +58014,46 @@ class ImageVul(AbstractModel):
     def __init__(self):
         r"""
         :param _CVEID: 漏洞id
-注意：此字段可能返回 null，表示取不到有效值。
         :type CVEID: str
         :param _POCID: 观点验证程序id
-注意：此字段可能返回 null，表示取不到有效值。
         :type POCID: str
         :param _Name: 漏洞名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Components: 涉及组件信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Components: list of ComponentsInfo
         :param _Category: 分类
-注意：此字段可能返回 null，表示取不到有效值。
         :type Category: str
         :param _CategoryType: 分类2
-注意：此字段可能返回 null，表示取不到有效值。
         :type CategoryType: str
         :param _Level: 风险等级
-注意：此字段可能返回 null，表示取不到有效值。
         :type Level: str
         :param _Des: 描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Des: str
         :param _OfficialSolution: 解决方案
-注意：此字段可能返回 null，表示取不到有效值。
         :type OfficialSolution: str
         :param _Reference: 引用
-注意：此字段可能返回 null，表示取不到有效值。
         :type Reference: str
         :param _DefenseSolution: 防御方案
-注意：此字段可能返回 null，表示取不到有效值。
         :type DefenseSolution: str
         :param _SubmitTime: 提交时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubmitTime: str
         :param _CvssScore: Cvss分数
-注意：此字段可能返回 null，表示取不到有效值。
         :type CvssScore: str
         :param _CvssVector: Cvss信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type CvssVector: str
         :param _IsSuggest: 是否建议修复
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsSuggest: str
         :param _FixedVersions: 修复版本号
-注意：此字段可能返回 null，表示取不到有效值。
         :type FixedVersions: str
         :param _Tag: 漏洞标签:"CanBeFixed","DynamicLevelPoc","DynamicLevelExp"
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tag: list of str
         :param _Component: 组件名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Component: str
         :param _Version: 组件版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
         :param _AttackLevel: 攻击热度 0-3
-注意：此字段可能返回 null，表示取不到有效值。
         :type AttackLevel: int
         :param _LayerInfos: 镜像层信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type LayerInfos: list of ImageVulLayerInfo
         """
         self._CVEID = None
@@ -59114,7 +58081,6 @@ class ImageVul(AbstractModel):
     @property
     def CVEID(self):
         """漏洞id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CVEID
@@ -59126,7 +58092,6 @@ class ImageVul(AbstractModel):
     @property
     def POCID(self):
         """观点验证程序id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._POCID
@@ -59138,7 +58103,6 @@ class ImageVul(AbstractModel):
     @property
     def Name(self):
         """漏洞名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -59150,7 +58114,6 @@ class ImageVul(AbstractModel):
     @property
     def Components(self):
         """涉及组件信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ComponentsInfo
         """
         return self._Components
@@ -59162,7 +58125,6 @@ class ImageVul(AbstractModel):
     @property
     def Category(self):
         """分类
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Category
@@ -59174,7 +58136,6 @@ class ImageVul(AbstractModel):
     @property
     def CategoryType(self):
         """分类2
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CategoryType
@@ -59186,7 +58147,6 @@ class ImageVul(AbstractModel):
     @property
     def Level(self):
         """风险等级
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Level
@@ -59198,7 +58158,6 @@ class ImageVul(AbstractModel):
     @property
     def Des(self):
         """描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Des
@@ -59210,7 +58169,6 @@ class ImageVul(AbstractModel):
     @property
     def OfficialSolution(self):
         """解决方案
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OfficialSolution
@@ -59222,7 +58180,6 @@ class ImageVul(AbstractModel):
     @property
     def Reference(self):
         """引用
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Reference
@@ -59234,7 +58191,6 @@ class ImageVul(AbstractModel):
     @property
     def DefenseSolution(self):
         """防御方案
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DefenseSolution
@@ -59246,7 +58202,6 @@ class ImageVul(AbstractModel):
     @property
     def SubmitTime(self):
         """提交时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubmitTime
@@ -59258,7 +58213,6 @@ class ImageVul(AbstractModel):
     @property
     def CvssScore(self):
         """Cvss分数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CvssScore
@@ -59270,7 +58224,6 @@ class ImageVul(AbstractModel):
     @property
     def CvssVector(self):
         """Cvss信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CvssVector
@@ -59282,7 +58235,6 @@ class ImageVul(AbstractModel):
     @property
     def IsSuggest(self):
         """是否建议修复
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IsSuggest
@@ -59294,7 +58246,6 @@ class ImageVul(AbstractModel):
     @property
     def FixedVersions(self):
         """修复版本号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FixedVersions
@@ -59306,7 +58257,6 @@ class ImageVul(AbstractModel):
     @property
     def Tag(self):
         """漏洞标签:"CanBeFixed","DynamicLevelPoc","DynamicLevelExp"
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Tag
@@ -59318,7 +58268,6 @@ class ImageVul(AbstractModel):
     @property
     def Component(self):
         """组件名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Component
@@ -59330,7 +58279,6 @@ class ImageVul(AbstractModel):
     @property
     def Version(self):
         """组件版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Version
@@ -59342,7 +58290,6 @@ class ImageVul(AbstractModel):
     @property
     def AttackLevel(self):
         """攻击热度 0-3
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AttackLevel
@@ -59354,7 +58301,6 @@ class ImageVul(AbstractModel):
     @property
     def LayerInfos(self):
         """镜像层信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ImageVulLayerInfo
         """
         return self._LayerInfos
@@ -59414,10 +58360,8 @@ class ImageVulLayerInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _LayerId: 层id
-注意：此字段可能返回 null，表示取不到有效值。
         :type LayerId: str
         :param _LayerCmd: 层cmd
-注意：此字段可能返回 null，表示取不到有效值。
         :type LayerCmd: str
         """
         self._LayerId = None
@@ -59426,7 +58370,6 @@ class ImageVulLayerInfo(AbstractModel):
     @property
     def LayerId(self):
         """层id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LayerId
@@ -59438,7 +58381,6 @@ class ImageVulLayerInfo(AbstractModel):
     @property
     def LayerCmd(self):
         """层cmd
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LayerCmd
@@ -59475,16 +58417,12 @@ class ImagesBindRuleInfo(AbstractModel):
         :param _ContainerCnt: 关联容器数量
         :type ContainerCnt: int
         :param _RuleId: 绑定规则id
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleId: str
         :param _RuleName: 规则名字
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleName: str
         :param _ImageSize: 镜像大小
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImageSize: int
         :param _ScanTime: 最近扫描时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScanTime: str
         """
         self._ImageId = None
@@ -59531,7 +58469,6 @@ class ImagesBindRuleInfo(AbstractModel):
     @property
     def RuleId(self):
         """绑定规则id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RuleId
@@ -59543,7 +58480,6 @@ class ImagesBindRuleInfo(AbstractModel):
     @property
     def RuleName(self):
         """规则名字
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RuleName
@@ -59555,7 +58491,6 @@ class ImagesBindRuleInfo(AbstractModel):
     @property
     def ImageSize(self):
         """镜像大小
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ImageSize
@@ -59567,7 +58502,6 @@ class ImagesBindRuleInfo(AbstractModel):
     @property
     def ScanTime(self):
         """最近扫描时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ScanTime
@@ -60059,13 +58993,10 @@ class ImagesVul(AbstractModel):
         :param _IsSuggest: 是否是重点关注：true：是，false：不是
         :type IsSuggest: bool
         :param _FixedVersions: 修复版本号
-注意：此字段可能返回 null，表示取不到有效值。
         :type FixedVersions: str
         :param _Tag: 漏洞标签:"CanBeFixed","DynamicLevelPoc","DynamicLevelExp"
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tag: list of str
         :param _AttackLevel: 攻击热度
-注意：此字段可能返回 null，表示取不到有效值。
         :type AttackLevel: int
         """
         self._CVEID = None
@@ -60255,7 +59186,6 @@ class ImagesVul(AbstractModel):
     @property
     def FixedVersions(self):
         """修复版本号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FixedVersions
@@ -60267,7 +59197,6 @@ class ImagesVul(AbstractModel):
     @property
     def Tag(self):
         """漏洞标签:"CanBeFixed","DynamicLevelPoc","DynamicLevelExp"
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Tag
@@ -60279,7 +59208,6 @@ class ImagesVul(AbstractModel):
     @property
     def AttackLevel(self):
         """攻击热度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AttackLevel
@@ -61207,13 +60135,10 @@ USER_DEFINED: 用户自定义
         :param _Action: 动作(RULE_MODE_ALERT: 告警 RULE_MODE_RELEASE:放行)
         :type Action: str
         :param _RiskLevel: 威胁等级 HIGH:高级 MIDDLE: 中级 LOW:低级 NOTICE:提示
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskLevel: str
         :param _Status: 开关状态(true:开 false:关) 适用于系统规则
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: bool
         :param _IsDelete: 是否被删除 适用于自定义规则入参
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsDelete: bool
         """
         self._Scope = None
@@ -61259,7 +60184,6 @@ USER_DEFINED: 用户自定义
     @property
     def RiskLevel(self):
         """威胁等级 HIGH:高级 MIDDLE: 中级 LOW:低级 NOTICE:提示
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RiskLevel
@@ -61271,7 +60195,6 @@ USER_DEFINED: 用户自定义
     @property
     def Status(self):
         """开关状态(true:开 false:关) 适用于系统规则
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Status
@@ -61283,7 +60206,6 @@ USER_DEFINED: 用户自定义
     @property
     def IsDelete(self):
         """是否被删除 适用于自定义规则入参
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsDelete
@@ -63415,6 +62337,115 @@ class ModifyK8sApiAbnormalRuleStatusResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyRaspRulesRequest(AbstractModel):
+    """ModifyRaspRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 规则ID(新增时请留空，编辑时候必传)
+        :type Id: int
+        :param _VulVulsIDs: 漏洞id数组
+        :type VulVulsIDs: list of int non-negative
+        :param _URLRegexp: 自定义请求范围加白正则表达式，选择全部请求范围时候为空，否则不能为空，base64编码
+        :type URLRegexp: str
+        :param _WhiteType: 加白方式，0：自定义请求范围加白。1：全部请求加白
+        :type WhiteType: int
+        """
+        self._Id = None
+        self._VulVulsIDs = None
+        self._URLRegexp = None
+        self._WhiteType = None
+
+    @property
+    def Id(self):
+        """规则ID(新增时请留空，编辑时候必传)
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def VulVulsIDs(self):
+        """漏洞id数组
+        :rtype: list of int non-negative
+        """
+        return self._VulVulsIDs
+
+    @VulVulsIDs.setter
+    def VulVulsIDs(self, VulVulsIDs):
+        self._VulVulsIDs = VulVulsIDs
+
+    @property
+    def URLRegexp(self):
+        """自定义请求范围加白正则表达式，选择全部请求范围时候为空，否则不能为空，base64编码
+        :rtype: str
+        """
+        return self._URLRegexp
+
+    @URLRegexp.setter
+    def URLRegexp(self, URLRegexp):
+        self._URLRegexp = URLRegexp
+
+    @property
+    def WhiteType(self):
+        """加白方式，0：自定义请求范围加白。1：全部请求加白
+        :rtype: int
+        """
+        return self._WhiteType
+
+    @WhiteType.setter
+    def WhiteType(self, WhiteType):
+        self._WhiteType = WhiteType
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._VulVulsIDs = params.get("VulVulsIDs")
+        self._URLRegexp = params.get("URLRegexp")
+        self._WhiteType = params.get("WhiteType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRaspRulesResponse(AbstractModel):
+    """ModifyRaspRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyReverseShellStatusRequest(AbstractModel):
     """ModifyReverseShellStatus请求参数结构体
 
@@ -64361,9 +63392,12 @@ class ModifyVirusAutoIsolateSettingRequest(AbstractModel):
         :type AutoIsolateSwitch: bool
         :param _IsKillProgress: 是否中断隔离文件关联的进程(true:是 false:否)
         :type IsKillProgress: bool
+        :param _UserAutoIsolateKillSwitch: 用户用户自定义开关
+        :type UserAutoIsolateKillSwitch: bool
         """
         self._AutoIsolateSwitch = None
         self._IsKillProgress = None
+        self._UserAutoIsolateKillSwitch = None
 
     @property
     def AutoIsolateSwitch(self):
@@ -64387,10 +63421,22 @@ class ModifyVirusAutoIsolateSettingRequest(AbstractModel):
     def IsKillProgress(self, IsKillProgress):
         self._IsKillProgress = IsKillProgress
 
+    @property
+    def UserAutoIsolateKillSwitch(self):
+        """用户用户自定义开关
+        :rtype: bool
+        """
+        return self._UserAutoIsolateKillSwitch
+
+    @UserAutoIsolateKillSwitch.setter
+    def UserAutoIsolateKillSwitch(self, UserAutoIsolateKillSwitch):
+        self._UserAutoIsolateKillSwitch = UserAutoIsolateKillSwitch
+
 
     def _deserialize(self, params):
         self._AutoIsolateSwitch = params.get("AutoIsolateSwitch")
         self._IsKillProgress = params.get("IsKillProgress")
+        self._UserAutoIsolateKillSwitch = params.get("UserAutoIsolateKillSwitch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -64438,14 +63484,7 @@ class ModifyVirusFileStatusRequest(AbstractModel):
         r"""
         :param _EventIdSet: 处理事件id
         :type EventIdSet: list of str
-        :param _Status: 标记事件的状态，   
-    EVENT_DEALED:事件处理
-    EVENT_INGNORE"：事件忽略
-    EVENT_DEL:事件删除
-    EVENT_ADD_WHITE:事件加白
-    EVENT_PENDING: 事件待处理
-	EVENT_ISOLATE_CONTAINER: 隔离容器
-	EVENT_RESOTRE_CONTAINER: 恢复容器
+        :param _Status: 标记事件的状态，       EVENT_DEALED:事件处理    EVENT_IGNORE"：事件忽略    EVENT_DEL:事件删除    EVENT_ADD_WHITE:事件加白    EVENT_PENDING: 事件待处理	EVENT_ISOLATE_CONTAINER: 隔离容器	EVENT_RESOTRE_CONTAINER: 恢复容器
         :type Status: str
         :param _Remark: 事件备注
         :type Remark: str
@@ -64470,14 +63509,7 @@ class ModifyVirusFileStatusRequest(AbstractModel):
 
     @property
     def Status(self):
-        """标记事件的状态，   
-    EVENT_DEALED:事件处理
-    EVENT_INGNORE"：事件忽略
-    EVENT_DEL:事件删除
-    EVENT_ADD_WHITE:事件加白
-    EVENT_PENDING: 事件待处理
-	EVENT_ISOLATE_CONTAINER: 隔离容器
-	EVENT_RESOTRE_CONTAINER: 恢复容器
+        """标记事件的状态，       EVENT_DEALED:事件处理    EVENT_IGNORE"：事件忽略    EVENT_DEL:事件删除    EVENT_ADD_WHITE:事件加白    EVENT_PENDING: 事件待处理	EVENT_ISOLATE_CONTAINER: 隔离容器	EVENT_RESOTRE_CONTAINER: 恢复容器
         :rtype: str
         """
         return self._Status
@@ -65308,12 +64340,10 @@ class NetworkAuditRecord(AbstractModel):
         :param _OperationTime: 操作时间
         :type OperationTime: str
         :param _AppId: 操作人appid
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: int
         :param _Uin: 操作人uin
         :type Uin: str
         :param _PolicyId: 策略id
-注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyId: int
         """
         self._ClusterId = None
@@ -65407,7 +64437,6 @@ class NetworkAuditRecord(AbstractModel):
     @property
     def AppId(self):
         """操作人appid
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AppId
@@ -65430,7 +64459,6 @@ class NetworkAuditRecord(AbstractModel):
     @property
     def PolicyId(self):
         """策略id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PolicyId
@@ -65491,10 +64519,8 @@ class NetworkClusterInfoItem(AbstractModel):
         :param _NetworkPolicyPluginStatus: 集群网络插件状态，正常：Running 不正常：Error
         :type NetworkPolicyPluginStatus: str
         :param _NetworkPolicyPluginError: 集群网络插件错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type NetworkPolicyPluginError: str
         :param _ClusterNetworkSettings: 容器网络插件
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterNetworkSettings: str
         """
         self._ClusterId = None
@@ -65635,7 +64661,6 @@ class NetworkClusterInfoItem(AbstractModel):
     @property
     def NetworkPolicyPluginError(self):
         """集群网络插件错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NetworkPolicyPluginError
@@ -65647,7 +64672,6 @@ class NetworkClusterInfoItem(AbstractModel):
     @property
     def ClusterNetworkSettings(self):
         """容器网络插件
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterNetworkSettings
@@ -65793,13 +64817,10 @@ class NetworkClusterPodInfo(AbstractModel):
         :param _PodName: pod名字
         :type PodName: str
         :param _Namespace: pod空间
-注意：此字段可能返回 null，表示取不到有效值。
         :type Namespace: str
         :param _Labels: pod标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type Labels: str
         :param _WorkloadKind: pod类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type WorkloadKind: str
         """
         self._PodName = None
@@ -65821,7 +64842,6 @@ class NetworkClusterPodInfo(AbstractModel):
     @property
     def Namespace(self):
         """pod空间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Namespace
@@ -65833,7 +64853,6 @@ class NetworkClusterPodInfo(AbstractModel):
     @property
     def Labels(self):
         """pod标签
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Labels
@@ -65845,7 +64864,6 @@ class NetworkClusterPodInfo(AbstractModel):
     @property
     def WorkloadKind(self):
         """pod类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._WorkloadKind
@@ -65880,7 +64898,6 @@ class NetworkCustomPolicy(AbstractModel):
         :param _Direction: 网络策略方向，分为FROM和TO
         :type Direction: str
         :param _Ports: 网络策略策略端口
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ports: list of NetworkPorts
         :param _Peer: 网络策略策略对象
 
@@ -65893,7 +64910,6 @@ class NetworkCustomPolicy(AbstractModel):
 开启中：Publishing
 
 待开启：unPublishEdit
-注意：此字段可能返回 null，表示取不到有效值。
         :type Peer: list of NetworkPeer
         """
         self._Direction = None
@@ -65914,7 +64930,6 @@ class NetworkCustomPolicy(AbstractModel):
     @property
     def Ports(self):
         """网络策略策略端口
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of NetworkPorts
         """
         return self._Ports
@@ -65936,7 +64951,6 @@ class NetworkCustomPolicy(AbstractModel):
 开启中：Publishing
 
 待开启：unPublishEdit
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of NetworkPeer
         """
         return self._Peer
@@ -65986,13 +65000,10 @@ pod类型：PodSelector，代表NamespaceSelector和PodSelector都有值
 ip类型：IPBlock，代表只有IPBlock有值
         :type PeerType: str
         :param _NamespaceSelector: 空间选择器
-注意：此字段可能返回 null，表示取不到有效值。
         :type NamespaceSelector: str
         :param _PodSelector: pod选择器
-注意：此字段可能返回 null，表示取不到有效值。
         :type PodSelector: str
         :param _IPBlock: Ip选择器
-注意：此字段可能返回 null，表示取不到有效值。
         :type IPBlock: str
         """
         self._PeerType = None
@@ -66020,7 +65031,6 @@ ip类型：IPBlock，代表只有IPBlock有值
     @property
     def NamespaceSelector(self):
         """空间选择器
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NamespaceSelector
@@ -66032,7 +65042,6 @@ ip类型：IPBlock，代表只有IPBlock有值
     @property
     def PodSelector(self):
         """pod选择器
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PodSelector
@@ -66044,7 +65053,6 @@ ip类型：IPBlock，代表只有IPBlock有值
     @property
     def IPBlock(self):
         """Ip选择器
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IPBlock
@@ -66079,7 +65087,6 @@ class NetworkPolicyInfoItem(AbstractModel):
         :param _Name: 网络策略名
         :type Name: str
         :param _Description: 网络策略描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _PublishStatus: 发布状态：
 
@@ -66110,7 +65117,6 @@ kube-router：KubeRouter
 cilium：Cilium
         :type NetworkPolicyPlugin: str
         :param _PublishResult: 策略发布结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type PublishResult: str
         :param _FromPolicyRule: 入站规则
 
@@ -66129,7 +65135,6 @@ cilium：Cilium
 自定义：3
         :type ToPolicyRule: int
         :param _PodSelector: 作用对象
-注意：此字段可能返回 null，表示取不到有效值。
         :type PodSelector: str
         :param _Id: 网络策略Id
         :type Id: int
@@ -66161,7 +65166,6 @@ cilium：Cilium
     @property
     def Description(self):
         """网络策略描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -66246,7 +65250,6 @@ cilium：Cilium
     @property
     def PublishResult(self):
         """策略发布结果
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PublishResult
@@ -66292,7 +65295,6 @@ cilium：Cilium
     @property
     def PodSelector(self):
         """作用对象
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PodSelector
@@ -66344,10 +65346,8 @@ class NetworkPorts(AbstractModel):
     def __init__(self):
         r"""
         :param _Protocol: 网络策略协议
-注意：此字段可能返回 null，表示取不到有效值。
         :type Protocol: str
         :param _Port: 网络策略策略端口
-注意：此字段可能返回 null，表示取不到有效值。
         :type Port: str
         """
         self._Protocol = None
@@ -66356,7 +65356,6 @@ class NetworkPorts(AbstractModel):
     @property
     def Protocol(self):
         """网络策略协议
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Protocol
@@ -66368,7 +65367,6 @@ class NetworkPorts(AbstractModel):
     @property
     def Port(self):
         """网络策略策略端口
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Port
@@ -66769,16 +65767,12 @@ class ProcessBaseInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _ProcessStartUser: 进程启动用户
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProcessStartUser: str
         :param _ProcessUserGroup: 进程用户组
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProcessUserGroup: str
         :param _ProcessPath: 进程路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProcessPath: str
         :param _ProcessParam: 进程命令行参数
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProcessParam: str
         """
         self._ProcessStartUser = None
@@ -66789,7 +65783,6 @@ class ProcessBaseInfo(AbstractModel):
     @property
     def ProcessStartUser(self):
         """进程启动用户
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProcessStartUser
@@ -66801,7 +65794,6 @@ class ProcessBaseInfo(AbstractModel):
     @property
     def ProcessUserGroup(self):
         """进程用户组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProcessUserGroup
@@ -66813,7 +65805,6 @@ class ProcessBaseInfo(AbstractModel):
     @property
     def ProcessPath(self):
         """进程路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProcessPath
@@ -66825,7 +65816,6 @@ class ProcessBaseInfo(AbstractModel):
     @property
     def ProcessParam(self):
         """进程命令行参数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProcessParam
@@ -67576,6 +66566,258 @@ class RaspInfo(AbstractModel):
         
 
 
+class RaspRule(AbstractModel):
+    """rasp白名单规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 规则ID
+        :type Id: int
+        :param _URLRegexp: 自定义请求url范围正则表达式，为空则保存不成功
+        :type URLRegexp: str
+        :param _VulVulsID: 漏洞id
+        :type VulVulsID: int
+        :param _VulVulsName: 漏洞名称
+        :type VulVulsName: str
+        :param _CveID: cve_id
+        :type CveID: str
+        :param _SupportDefense: 漏洞防御类型，从漏洞表富化， 1:支持组件漏洞防御，组件漏洞没有正则加白。2:支持正则防御
+        :type SupportDefense: int
+        :param _WhiteType: 加白范围，0:全部请求加白，1:自定义请求范围加白
+        :type WhiteType: int
+        :param _Status: 状态 0: 有效
+        :type Status: int
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _ModifyTime: 修改时间
+        :type ModifyTime: str
+        """
+        self._Id = None
+        self._URLRegexp = None
+        self._VulVulsID = None
+        self._VulVulsName = None
+        self._CveID = None
+        self._SupportDefense = None
+        self._WhiteType = None
+        self._Status = None
+        self._CreateTime = None
+        self._ModifyTime = None
+
+    @property
+    def Id(self):
+        """规则ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def URLRegexp(self):
+        """自定义请求url范围正则表达式，为空则保存不成功
+        :rtype: str
+        """
+        return self._URLRegexp
+
+    @URLRegexp.setter
+    def URLRegexp(self, URLRegexp):
+        self._URLRegexp = URLRegexp
+
+    @property
+    def VulVulsID(self):
+        """漏洞id
+        :rtype: int
+        """
+        return self._VulVulsID
+
+    @VulVulsID.setter
+    def VulVulsID(self, VulVulsID):
+        self._VulVulsID = VulVulsID
+
+    @property
+    def VulVulsName(self):
+        """漏洞名称
+        :rtype: str
+        """
+        return self._VulVulsName
+
+    @VulVulsName.setter
+    def VulVulsName(self, VulVulsName):
+        self._VulVulsName = VulVulsName
+
+    @property
+    def CveID(self):
+        """cve_id
+        :rtype: str
+        """
+        return self._CveID
+
+    @CveID.setter
+    def CveID(self, CveID):
+        self._CveID = CveID
+
+    @property
+    def SupportDefense(self):
+        """漏洞防御类型，从漏洞表富化， 1:支持组件漏洞防御，组件漏洞没有正则加白。2:支持正则防御
+        :rtype: int
+        """
+        return self._SupportDefense
+
+    @SupportDefense.setter
+    def SupportDefense(self, SupportDefense):
+        self._SupportDefense = SupportDefense
+
+    @property
+    def WhiteType(self):
+        """加白范围，0:全部请求加白，1:自定义请求范围加白
+        :rtype: int
+        """
+        return self._WhiteType
+
+    @WhiteType.setter
+    def WhiteType(self, WhiteType):
+        self._WhiteType = WhiteType
+
+    @property
+    def Status(self):
+        """状态 0: 有效
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifyTime(self):
+        """修改时间
+        :rtype: str
+        """
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._URLRegexp = params.get("URLRegexp")
+        self._VulVulsID = params.get("VulVulsID")
+        self._VulVulsName = params.get("VulVulsName")
+        self._CveID = params.get("CveID")
+        self._SupportDefense = params.get("SupportDefense")
+        self._WhiteType = params.get("WhiteType")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifyTime = params.get("ModifyTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RaspRuleVul(AbstractModel):
+    """rasp白名单漏洞列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VulVulsID: 漏洞id
+        :type VulVulsID: int
+        :param _VulVulsName: 漏洞名称
+        :type VulVulsName: str
+        :param _CveID: cve_id
+        :type CveID: str
+        :param _SupportDefense: 漏洞防御类型，从漏洞表富化， 1:支持组件漏洞防御，组件漏洞没有正则加白。2:支持正则防御
+        :type SupportDefense: int
+        """
+        self._VulVulsID = None
+        self._VulVulsName = None
+        self._CveID = None
+        self._SupportDefense = None
+
+    @property
+    def VulVulsID(self):
+        """漏洞id
+        :rtype: int
+        """
+        return self._VulVulsID
+
+    @VulVulsID.setter
+    def VulVulsID(self, VulVulsID):
+        self._VulVulsID = VulVulsID
+
+    @property
+    def VulVulsName(self):
+        """漏洞名称
+        :rtype: str
+        """
+        return self._VulVulsName
+
+    @VulVulsName.setter
+    def VulVulsName(self, VulVulsName):
+        self._VulVulsName = VulVulsName
+
+    @property
+    def CveID(self):
+        """cve_id
+        :rtype: str
+        """
+        return self._CveID
+
+    @CveID.setter
+    def CveID(self, CveID):
+        self._CveID = CveID
+
+    @property
+    def SupportDefense(self):
+        """漏洞防御类型，从漏洞表富化， 1:支持组件漏洞防御，组件漏洞没有正则加白。2:支持正则防御
+        :rtype: int
+        """
+        return self._SupportDefense
+
+    @SupportDefense.setter
+    def SupportDefense(self, SupportDefense):
+        self._SupportDefense = SupportDefense
+
+
+    def _deserialize(self, params):
+        self._VulVulsID = params.get("VulVulsID")
+        self._VulVulsName = params.get("VulVulsName")
+        self._CveID = params.get("CveID")
+        self._SupportDefense = params.get("SupportDefense")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RegionInfo(AbstractModel):
     """地域信息
 
@@ -68002,12 +67244,10 @@ class ReverseShellEventDescription(AbstractModel):
         :param _Solution: 解决方案
         :type Solution: str
         :param _Remark: 事件备注信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _DstAddress: 目标地址
         :type DstAddress: str
         :param _OperationTime: 事件最后一次处理的时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type OperationTime: str
         """
         self._Description = None
@@ -68041,7 +67281,6 @@ class ReverseShellEventDescription(AbstractModel):
     @property
     def Remark(self):
         """事件备注信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -68064,7 +67303,6 @@ class ReverseShellEventDescription(AbstractModel):
     @property
     def OperationTime(self):
         """事件最后一次处理的时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OperationTime
@@ -69405,12 +68643,10 @@ class RiskSyscallEventDescription(AbstractModel):
         :param _Solution: 解决方案
         :type Solution: str
         :param _Remark: 事件备注信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _SyscallName: 系统调用名称
         :type SyscallName: str
         :param _OperationTime: 事件最后一次处理的时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type OperationTime: str
         """
         self._Description = None
@@ -69444,7 +68680,6 @@ class RiskSyscallEventDescription(AbstractModel):
     @property
     def Remark(self):
         """事件备注信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -69467,7 +68702,6 @@ class RiskSyscallEventDescription(AbstractModel):
     @property
     def OperationTime(self):
         """事件最后一次处理的时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OperationTime
@@ -70261,7 +69495,6 @@ class RuleBaseInfo(AbstractModel):
         :param _RuleId: 策略Id
         :type RuleId: str
         :param _UpdateTime: 策略更新时间, 存在为空的情况
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param _RuleName: 策略名字
         :type RuleName: str
@@ -70314,7 +69547,6 @@ class RuleBaseInfo(AbstractModel):
     @property
     def UpdateTime(self):
         """策略更新时间, 存在为空的情况
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime
@@ -70423,10 +69655,8 @@ MountNamespace逃逸、
         :param _LatestFoundTime: 最近生成时间
         :type LatestFoundTime: str
         :param _HostIP: 内网ip
-注意：此字段可能返回 null，表示取不到有效值。
         :type HostIP: str
         :param _ClientIP: 外网ip
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClientIP: str
         :param _ContainerNetStatus: 网络状态
 未隔离  	NORMAL
@@ -70435,7 +69665,6 @@ MountNamespace逃逸、
 隔离失败	ISOLATE_FAILED
 解除隔离中  RESTORING
 解除隔离失败 RESTORE_FAILED
-注意：此字段可能返回 null，表示取不到有效值。
         :type ContainerNetStatus: str
         :param _ContainerNetSubStatus: 容器子状态
 "AGENT_OFFLINE"       //Agent离线
@@ -70445,10 +69674,8 @@ MountNamespace逃逸、
 "SHARED_HOST"         // 容器与主机共享网络
 "RESOURCE_LIMIT"      //隔离操作资源超限
 "UNKNOW"              // 原因未知
-注意：此字段可能返回 null，表示取不到有效值。
         :type ContainerNetSubStatus: str
         :param _ContainerIsolateOperationSrc: 容器隔离操作来源
-注意：此字段可能返回 null，表示取不到有效值。
         :type ContainerIsolateOperationSrc: str
         :param _NodeID: 节点ID
         :type NodeID: str
@@ -70662,7 +69889,6 @@ MountNamespace逃逸、
     @property
     def HostIP(self):
         """内网ip
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HostIP
@@ -70674,7 +69900,6 @@ MountNamespace逃逸、
     @property
     def ClientIP(self):
         """外网ip
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClientIP
@@ -70692,7 +69917,6 @@ MountNamespace逃逸、
 隔离失败	ISOLATE_FAILED
 解除隔离中  RESTORING
 解除隔离失败 RESTORE_FAILED
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ContainerNetStatus
@@ -70711,7 +69935,6 @@ MountNamespace逃逸、
 "SHARED_HOST"         // 容器与主机共享网络
 "RESOURCE_LIMIT"      //隔离操作资源超限
 "UNKNOW"              // 原因未知
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ContainerNetSubStatus
@@ -70723,7 +69946,6 @@ MountNamespace逃逸、
     @property
     def ContainerIsolateOperationSrc(self):
         """容器隔离操作来源
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ContainerIsolateOperationSrc
@@ -71835,11 +71057,13 @@ class SecLogDeliveryClsSettingInfo(AbstractModel):
         :param _TopicID: 主题ID
         :type TopicID: str
         :param _LogSetName: 日志集名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogSetName: str
         :param _TopicName: 主题名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TopicName: str
+        :param _SubLogType: 日志类型	
+        :type SubLogType: list of str
+        :param _ErrMsg: 错误信息
+        :type ErrMsg: str
         """
         self._LogType = None
         self._State = None
@@ -71848,6 +71072,8 @@ class SecLogDeliveryClsSettingInfo(AbstractModel):
         self._TopicID = None
         self._LogSetName = None
         self._TopicName = None
+        self._SubLogType = None
+        self._ErrMsg = None
 
     @property
     def LogType(self):
@@ -71907,7 +71133,6 @@ class SecLogDeliveryClsSettingInfo(AbstractModel):
     @property
     def LogSetName(self):
         """日志集名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LogSetName
@@ -71919,7 +71144,6 @@ class SecLogDeliveryClsSettingInfo(AbstractModel):
     @property
     def TopicName(self):
         """主题名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TopicName
@@ -71927,6 +71151,28 @@ class SecLogDeliveryClsSettingInfo(AbstractModel):
     @TopicName.setter
     def TopicName(self, TopicName):
         self._TopicName = TopicName
+
+    @property
+    def SubLogType(self):
+        """日志类型	
+        :rtype: list of str
+        """
+        return self._SubLogType
+
+    @SubLogType.setter
+    def SubLogType(self, SubLogType):
+        self._SubLogType = SubLogType
+
+    @property
+    def ErrMsg(self):
+        """错误信息
+        :rtype: str
+        """
+        return self._ErrMsg
+
+    @ErrMsg.setter
+    def ErrMsg(self, ErrMsg):
+        self._ErrMsg = ErrMsg
 
 
     def _deserialize(self, params):
@@ -71937,6 +71183,8 @@ class SecLogDeliveryClsSettingInfo(AbstractModel):
         self._TopicID = params.get("TopicID")
         self._LogSetName = params.get("LogSetName")
         self._TopicName = params.get("TopicName")
+        self._SubLogType = params.get("SubLogType")
+        self._ErrMsg = params.get("ErrMsg")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -71954,24 +71202,29 @@ class SecLogDeliveryKafkaSettingInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LogType: 日志类型
+        :param _LogType: 安全日志模块
         :type LogType: str
         :param _TopicID: 主题ID
         :type TopicID: str
         :param _TopicName: 主题名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TopicName: str
         :param _State: 投递状态(false:关 true:开)
         :type State: bool
+        :param _SubLogType: 日志类型
+        :type SubLogType: list of str
+        :param _ErrMsg: 错误信息
+        :type ErrMsg: str
         """
         self._LogType = None
         self._TopicID = None
         self._TopicName = None
         self._State = None
+        self._SubLogType = None
+        self._ErrMsg = None
 
     @property
     def LogType(self):
-        """日志类型
+        """安全日志模块
         :rtype: str
         """
         return self._LogType
@@ -71994,7 +71247,6 @@ class SecLogDeliveryKafkaSettingInfo(AbstractModel):
     @property
     def TopicName(self):
         """主题名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TopicName
@@ -72014,12 +71266,36 @@ class SecLogDeliveryKafkaSettingInfo(AbstractModel):
     def State(self, State):
         self._State = State
 
+    @property
+    def SubLogType(self):
+        """日志类型
+        :rtype: list of str
+        """
+        return self._SubLogType
+
+    @SubLogType.setter
+    def SubLogType(self, SubLogType):
+        self._SubLogType = SubLogType
+
+    @property
+    def ErrMsg(self):
+        """错误信息
+        :rtype: str
+        """
+        return self._ErrMsg
+
+    @ErrMsg.setter
+    def ErrMsg(self, ErrMsg):
+        self._ErrMsg = ErrMsg
+
 
     def _deserialize(self, params):
         self._LogType = params.get("LogType")
         self._TopicID = params.get("TopicID")
         self._TopicName = params.get("TopicName")
         self._State = params.get("State")
+        self._SubLogType = params.get("SubLogType")
+        self._ErrMsg = params.get("ErrMsg")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -72144,26 +71420,20 @@ class SecLogJoinObjectInfo(AbstractModel):
         :param _HostID: 主机ID
         :type HostID: str
         :param _HostName: 主机名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type HostName: str
         :param _HostIP: 主机IP
-注意：此字段可能返回 null，表示取不到有效值。
         :type HostIP: str
         :param _HostStatus: 主机状态
         :type HostStatus: str
         :param _ClusterID: 集群ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterID: str
         :param _ClusterName: 集群名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterName: str
         :param _PublicIP: 外网IP
-注意：此字段可能返回 null，表示取不到有效值。
         :type PublicIP: str
         :param _JoinState: 接入状态(true:已接入  false:未接入)
         :type JoinState: bool
         :param _ClusterVersion: 集群版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterVersion: str
         :param _ClusterMainAddress: 集群主节点地址
         :type ClusterMainAddress: str
@@ -72172,7 +71442,6 @@ class SecLogJoinObjectInfo(AbstractModel):
         :param _ClusterType: 集群类型
         :type ClusterType: str
         :param _ClusterStatus: 集群状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterStatus: str
         """
         self._HostID = None
@@ -72203,7 +71472,6 @@ class SecLogJoinObjectInfo(AbstractModel):
     @property
     def HostName(self):
         """主机名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HostName
@@ -72215,7 +71483,6 @@ class SecLogJoinObjectInfo(AbstractModel):
     @property
     def HostIP(self):
         """主机IP
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HostIP
@@ -72238,7 +71505,6 @@ class SecLogJoinObjectInfo(AbstractModel):
     @property
     def ClusterID(self):
         """集群ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterID
@@ -72250,7 +71516,6 @@ class SecLogJoinObjectInfo(AbstractModel):
     @property
     def ClusterName(self):
         """集群名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterName
@@ -72262,7 +71527,6 @@ class SecLogJoinObjectInfo(AbstractModel):
     @property
     def PublicIP(self):
         """外网IP
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PublicIP
@@ -72285,7 +71549,6 @@ class SecLogJoinObjectInfo(AbstractModel):
     @property
     def ClusterVersion(self):
         """集群版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterVersion
@@ -72330,7 +71593,6 @@ class SecLogJoinObjectInfo(AbstractModel):
     @property
     def ClusterStatus(self):
         """集群状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterStatus
@@ -73801,10 +73063,8 @@ class SupportDefenceVul(AbstractModel):
         :param _SubmitTime: 漏洞披露时间
         :type SubmitTime: str
         :param _VulId: 漏洞id
-注意：此字段可能返回 null，表示取不到有效值。
         :type VulId: int
         :param _Status: 状态，0:防御中，1：已加白，指的是在白名单列表中有这个漏洞的，不一定是全局型白名单
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         """
         self._PocID = None
@@ -73897,7 +73157,6 @@ class SupportDefenceVul(AbstractModel):
     @property
     def VulId(self):
         """漏洞id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._VulId
@@ -73909,7 +73168,6 @@ class SupportDefenceVul(AbstractModel):
     @property
     def Status(self):
         """状态，0:防御中，1：已加白，指的是在白名单列表中有这个漏洞的，不一定是全局型白名单
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -74597,6 +73855,10 @@ class UpdateAssetImageRegistryRegistryDetailRequest(AbstractModel):
         :type ConnDetectConfig: list of ConnDetectConfig
         :param _RegistryId: 仓库唯一id
         :type RegistryId: int
+        :param _SyncMode: 同步方式，0全量同步，1增量同步
+        :type SyncMode: int
+        :param _NeedScan: 是否自动授权&扫描，选择增量同步时参数生效，包含所有新增镜像
+        :type NeedScan: bool
         """
         self._Name = None
         self._Username = None
@@ -74610,6 +73872,8 @@ class UpdateAssetImageRegistryRegistryDetailRequest(AbstractModel):
         self._Insecure = None
         self._ConnDetectConfig = None
         self._RegistryId = None
+        self._SyncMode = None
+        self._NeedScan = None
 
     @property
     def Name(self):
@@ -74743,6 +74007,28 @@ class UpdateAssetImageRegistryRegistryDetailRequest(AbstractModel):
     def RegistryId(self, RegistryId):
         self._RegistryId = RegistryId
 
+    @property
+    def SyncMode(self):
+        """同步方式，0全量同步，1增量同步
+        :rtype: int
+        """
+        return self._SyncMode
+
+    @SyncMode.setter
+    def SyncMode(self, SyncMode):
+        self._SyncMode = SyncMode
+
+    @property
+    def NeedScan(self):
+        """是否自动授权&扫描，选择增量同步时参数生效，包含所有新增镜像
+        :rtype: bool
+        """
+        return self._NeedScan
+
+    @NeedScan.setter
+    def NeedScan(self, NeedScan):
+        self._NeedScan = NeedScan
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -74762,6 +74048,8 @@ class UpdateAssetImageRegistryRegistryDetailRequest(AbstractModel):
                 obj._deserialize(item)
                 self._ConnDetectConfig.append(obj)
         self._RegistryId = params.get("RegistryId")
+        self._SyncMode = params.get("SyncMode")
+        self._NeedScan = params.get("NeedScan")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -74780,13 +74068,10 @@ class UpdateAssetImageRegistryRegistryDetailResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _HealthCheckErr: 连接错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type HealthCheckErr: str
         :param _NameRepeatErr: 名称错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type NameRepeatErr: str
         :param _RegistryId: 仓库唯一id
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegistryId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -74799,7 +74084,6 @@ class UpdateAssetImageRegistryRegistryDetailResponse(AbstractModel):
     @property
     def HealthCheckErr(self):
         """连接错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HealthCheckErr
@@ -74811,7 +74095,6 @@ class UpdateAssetImageRegistryRegistryDetailResponse(AbstractModel):
     @property
     def NameRepeatErr(self):
         """名称错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NameRepeatErr
@@ -74823,7 +74106,6 @@ class UpdateAssetImageRegistryRegistryDetailResponse(AbstractModel):
     @property
     def RegistryId(self):
         """仓库唯一id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RegistryId
@@ -75486,6 +74768,102 @@ class UpdateNetworkFirewallPolicyYamlDetailResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class VasInfoResourceDetail(AbstractModel):
+    """日志分析资源详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: 资源ID
+        :type ResourceId: str
+        :param _StartTime: 开始时间
+        :type StartTime: str
+        :param _EndTime: 到期时间
+        :type EndTime: str
+        :param _SourceType: 0 付费订单 1试用 2赠送
+        :type SourceType: int
+        :param _InquireNum: 购买量
+        :type InquireNum: int
+        """
+        self._ResourceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._SourceType = None
+        self._InquireNum = None
+
+    @property
+    def ResourceId(self):
+        """资源ID
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def StartTime(self):
+        """开始时间
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """到期时间
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def SourceType(self):
+        """0 付费订单 1试用 2赠送
+        :rtype: int
+        """
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+    @property
+    def InquireNum(self):
+        """购买量
+        :rtype: int
+        """
+        return self._InquireNum
+
+    @InquireNum.setter
+    def InquireNum(self, InquireNum):
+        self._InquireNum = InquireNum
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._SourceType = params.get("SourceType")
+        self._InquireNum = params.get("InquireNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class VirusAutoIsolateSampleInfo(AbstractModel):
     """木马自动隔离样本信息
 
@@ -75650,10 +75028,8 @@ VALIDATION: 参数非法
         :param _ContainerIsolateOperationSrc: 容器隔离操作来源
         :type ContainerIsolateOperationSrc: str
         :param _MD5: md5值
-注意：此字段可能返回 null，表示取不到有效值。
         :type MD5: str
         :param _RiskLevel: 风险等级 RISK_CRITICAL, RISK_HIGH, RISK_MEDIUM, RISK_LOW, RISK_NOTICE。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskLevel: str
         :param _CheckPlatform: 检测平台
 1: 云查杀引擎
@@ -75661,7 +75037,6 @@ VALIDATION: 参数非法
 3: binaryAi
 4: 异常行为
 5: 威胁情报
-注意：此字段可能返回 null，表示取不到有效值。
         :type CheckPlatform: list of str
         :param _NodeID: 节点ID
         :type NodeID: str
@@ -75959,7 +75334,6 @@ VALIDATION: 参数非法
     @property
     def MD5(self):
         """md5值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MD5
@@ -75971,7 +75345,6 @@ VALIDATION: 参数非法
     @property
     def RiskLevel(self):
         """风险等级 RISK_CRITICAL, RISK_HIGH, RISK_MEDIUM, RISK_LOW, RISK_NOTICE。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RiskLevel
@@ -75988,7 +75361,6 @@ VALIDATION: 参数非法
 3: binaryAi
 4: 异常行为
 5: 威胁情报
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._CheckPlatform
@@ -76552,13 +75924,10 @@ class VulAffectedComponentInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 组件名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Version: 组件版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Version: list of str
         :param _FixedVersion: 组件修复版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type FixedVersion: list of str
         """
         self._Name = None
@@ -76568,7 +75937,6 @@ class VulAffectedComponentInfo(AbstractModel):
     @property
     def Name(self):
         """组件名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -76580,7 +75948,6 @@ class VulAffectedComponentInfo(AbstractModel):
     @property
     def Version(self):
         """组件版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Version
@@ -76592,7 +75959,6 @@ class VulAffectedComponentInfo(AbstractModel):
     @property
     def FixedVersion(self):
         """组件修复版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._FixedVersion
@@ -76652,7 +76018,6 @@ class VulAffectedContainerInfo(AbstractModel):
         :param _NodeName: 超级节点名称
         :type NodeName: str
         :param _ContainerStatus: 容器状态 "RUNNING":运行,"PAUSED":暂停,"STOPPED":停止,"CREATED":已经创建,"DESTROYED":已销毁,"RESTARTING":重启中,"REMOVING":迁移中,"DEAD":DEAD,"UNKNOWN":未知
-注意：此字段可能返回 null，表示取不到有效值。
         :type ContainerStatus: str
         """
         self._HostIP = None
@@ -76828,7 +76193,6 @@ class VulAffectedContainerInfo(AbstractModel):
     @property
     def ContainerStatus(self):
         """容器状态 "RUNNING":运行,"PAUSED":暂停,"STOPPED":停止,"CREATED":已经创建,"DESTROYED":已销毁,"RESTARTING":重启中,"REMOVING":迁移中,"DEAD":DEAD,"UNKNOWN":未知
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ContainerStatus
@@ -76872,16 +76236,12 @@ class VulAffectedImageComponentInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 组件名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Version: 组件版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
         :param _FixedVersion: 组件修复版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type FixedVersion: str
         :param _Path: 组件路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type Path: str
         """
         self._Name = None
@@ -76892,7 +76252,6 @@ class VulAffectedImageComponentInfo(AbstractModel):
     @property
     def Name(self):
         """组件名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -76904,7 +76263,6 @@ class VulAffectedImageComponentInfo(AbstractModel):
     @property
     def Version(self):
         """组件版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Version
@@ -76916,7 +76274,6 @@ class VulAffectedImageComponentInfo(AbstractModel):
     @property
     def FixedVersion(self):
         """组件修复版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FixedVersion
@@ -76928,7 +76285,6 @@ class VulAffectedImageComponentInfo(AbstractModel):
     @property
     def Path(self):
         """组件路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Path
@@ -77234,7 +76590,6 @@ class VulDefenceEvent(AbstractModel):
         :param _EventID: 事件ID
         :type EventID: int
         :param _CreateTime: 首次发现时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _ContainerNetStatus: 隔离状态
 未隔离  	NORMAL
@@ -77245,7 +76600,6 @@ class VulDefenceEvent(AbstractModel):
 解除隔离失败 RESTORE_FAILED
         :type ContainerNetStatus: str
         :param _MergeTime: 最近发现时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type MergeTime: str
         :param _ContainerStatus: 容器状态
 正在运行: RUNNING
@@ -77255,7 +76609,6 @@ class VulDefenceEvent(AbstractModel):
 已经销毁: DESTROYED
 正在重启中: RESTARTING
 迁移中: REMOVING
-注意：此字段可能返回 null，表示取不到有效值。
         :type ContainerStatus: str
         :param _ContainerNetSubStatus: 容器子状态
 "AGENT_OFFLINE"       //Agent离线
@@ -77265,19 +76618,14 @@ class VulDefenceEvent(AbstractModel):
 	"SHARED_HOST"         // 容器与主机共享网络
 	"RESOURCE_LIMIT"      //隔离操作资源超限
 	"UNKNOW"              // 原因未知
-注意：此字段可能返回 null，表示取不到有效值。
         :type ContainerNetSubStatus: str
         :param _ContainerIsolateOperationSrc: 容器隔离操作来源
-注意：此字段可能返回 null，表示取不到有效值。
         :type ContainerIsolateOperationSrc: str
         :param _QUUID: 主机QUUID/超级节点ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type QUUID: str
         :param _HostIP: 主机内网IP
-注意：此字段可能返回 null，表示取不到有效值。
         :type HostIP: str
         :param _HostName: 主机名称/超级节点名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type HostName: str
         :param _NodeType: 节点类型[NORMAL:普通节点|SUPER:超级节点]
         :type NodeType: str
@@ -77473,7 +76821,6 @@ class VulDefenceEvent(AbstractModel):
     @property
     def CreateTime(self):
         """首次发现时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -77502,7 +76849,6 @@ class VulDefenceEvent(AbstractModel):
     @property
     def MergeTime(self):
         """最近发现时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MergeTime
@@ -77521,7 +76867,6 @@ class VulDefenceEvent(AbstractModel):
 已经销毁: DESTROYED
 正在重启中: RESTARTING
 迁移中: REMOVING
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ContainerStatus
@@ -77540,7 +76885,6 @@ class VulDefenceEvent(AbstractModel):
 	"SHARED_HOST"         // 容器与主机共享网络
 	"RESOURCE_LIMIT"      //隔离操作资源超限
 	"UNKNOW"              // 原因未知
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ContainerNetSubStatus
@@ -77552,7 +76896,6 @@ class VulDefenceEvent(AbstractModel):
     @property
     def ContainerIsolateOperationSrc(self):
         """容器隔离操作来源
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ContainerIsolateOperationSrc
@@ -77564,7 +76907,6 @@ class VulDefenceEvent(AbstractModel):
     @property
     def QUUID(self):
         """主机QUUID/超级节点ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._QUUID
@@ -77576,7 +76918,6 @@ class VulDefenceEvent(AbstractModel):
     @property
     def HostIP(self):
         """主机内网IP
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HostIP
@@ -77588,7 +76929,6 @@ class VulDefenceEvent(AbstractModel):
     @property
     def HostName(self):
         """主机名称/超级节点名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HostName
@@ -77777,28 +77117,20 @@ class VulDefenceEventDetail(AbstractModel):
         :param _NetworkPayload: 攻击包
         :type NetworkPayload: str
         :param _PID: 进程PID
-注意：此字段可能返回 null，表示取不到有效值。
         :type PID: int
         :param _MainClass: 进程主类名
-注意：此字段可能返回 null，表示取不到有效值。
         :type MainClass: str
         :param _StackTrace: 堆栈信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type StackTrace: str
         :param _ServerAccount: 监听账号
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServerAccount: str
         :param _ServerPort: 监听端口
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServerPort: str
         :param _ServerExe: 进程路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServerExe: str
         :param _ServerArg: 进程命令行参数
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServerArg: str
         :param _QUUID: 主机QUUID/超级节点ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type QUUID: str
         :param _ContainerNetStatus: 隔离状态
 未隔离  	NORMAL
@@ -77807,7 +77139,6 @@ class VulDefenceEventDetail(AbstractModel):
 隔离失败	ISOLATE_FAILED
 解除隔离中  RESTORING
 解除隔离失败 RESTORE_FAILED
-注意：此字段可能返回 null，表示取不到有效值。
         :type ContainerNetStatus: str
         :param _ContainerNetSubStatus: 容器子状态
 "AGENT_OFFLINE"       //Agent离线
@@ -77817,10 +77148,8 @@ class VulDefenceEventDetail(AbstractModel):
 	"SHARED_HOST"         // 容器与主机共享网络
 	"RESOURCE_LIMIT"      //隔离操作资源超限
 	"UNKNOW"              // 原因未知
-注意：此字段可能返回 null，表示取不到有效值。
         :type ContainerNetSubStatus: str
         :param _ContainerIsolateOperationSrc: 容器隔离操作来源
-注意：此字段可能返回 null，表示取不到有效值。
         :type ContainerIsolateOperationSrc: str
         :param _ContainerStatus: 容器状态
 正在运行: RUNNING
@@ -77830,13 +77159,10 @@ class VulDefenceEventDetail(AbstractModel):
 已经销毁: DESTROYED
 正在重启中: RESTARTING
 迁移中: REMOVING
-注意：此字段可能返回 null，表示取不到有效值。
         :type ContainerStatus: str
         :param _JNDIUrl: 接口Url
-注意：此字段可能返回 null，表示取不到有效值。
         :type JNDIUrl: str
         :param _RaspDetail: rasp detail
-注意：此字段可能返回 null，表示取不到有效值。
         :type RaspDetail: list of RaspInfo
         :param _NodeSubNetName: 超级节点子网名称
         :type NodeSubNetName: str
@@ -78142,7 +77468,6 @@ class VulDefenceEventDetail(AbstractModel):
     @property
     def PID(self):
         """进程PID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PID
@@ -78154,7 +77479,6 @@ class VulDefenceEventDetail(AbstractModel):
     @property
     def MainClass(self):
         """进程主类名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MainClass
@@ -78166,7 +77490,6 @@ class VulDefenceEventDetail(AbstractModel):
     @property
     def StackTrace(self):
         """堆栈信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StackTrace
@@ -78178,7 +77501,6 @@ class VulDefenceEventDetail(AbstractModel):
     @property
     def ServerAccount(self):
         """监听账号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ServerAccount
@@ -78190,7 +77512,6 @@ class VulDefenceEventDetail(AbstractModel):
     @property
     def ServerPort(self):
         """监听端口
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ServerPort
@@ -78202,7 +77523,6 @@ class VulDefenceEventDetail(AbstractModel):
     @property
     def ServerExe(self):
         """进程路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ServerExe
@@ -78214,7 +77534,6 @@ class VulDefenceEventDetail(AbstractModel):
     @property
     def ServerArg(self):
         """进程命令行参数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ServerArg
@@ -78226,7 +77545,6 @@ class VulDefenceEventDetail(AbstractModel):
     @property
     def QUUID(self):
         """主机QUUID/超级节点ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._QUUID
@@ -78244,7 +77562,6 @@ class VulDefenceEventDetail(AbstractModel):
 隔离失败	ISOLATE_FAILED
 解除隔离中  RESTORING
 解除隔离失败 RESTORE_FAILED
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ContainerNetStatus
@@ -78263,7 +77580,6 @@ class VulDefenceEventDetail(AbstractModel):
 	"SHARED_HOST"         // 容器与主机共享网络
 	"RESOURCE_LIMIT"      //隔离操作资源超限
 	"UNKNOW"              // 原因未知
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ContainerNetSubStatus
@@ -78275,7 +77591,6 @@ class VulDefenceEventDetail(AbstractModel):
     @property
     def ContainerIsolateOperationSrc(self):
         """容器隔离操作来源
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ContainerIsolateOperationSrc
@@ -78294,7 +77609,6 @@ class VulDefenceEventDetail(AbstractModel):
 已经销毁: DESTROYED
 正在重启中: RESTARTING
 迁移中: REMOVING
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ContainerStatus
@@ -78306,7 +77620,6 @@ class VulDefenceEventDetail(AbstractModel):
     @property
     def JNDIUrl(self):
         """接口Url
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._JNDIUrl
@@ -78318,7 +77631,6 @@ class VulDefenceEventDetail(AbstractModel):
     @property
     def RaspDetail(self):
         """rasp detail
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RaspInfo
         """
         return self._RaspDetail
@@ -78901,16 +78213,12 @@ class VulDetailInfo(AbstractModel):
         :param _Name: 漏洞名称
         :type Name: str
         :param _Tags: 漏洞标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of str
         :param _CategoryType: 漏洞类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type CategoryType: str
         :param _Level: 漏洞威胁等级
-注意：此字段可能返回 null，表示取不到有效值。
         :type Level: str
         :param _SubmitTime: 漏洞披露时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubmitTime: str
         :param _Description: 漏洞描述
         :type Description: str
@@ -78941,19 +78249,14 @@ class VulDetailInfo(AbstractModel):
         :param _PocID: 漏洞PocID
         :type PocID: str
         :param _DefenceStatus: 防御状态，NO_DEFENDED:未防御，DEFENDED:已防御
-注意：此字段可能返回 null，表示取不到有效值。
         :type DefenceStatus: str
         :param _DefenceScope: 漏洞防御主机范围: MANUAL:自选主机节点，ALL:全部
-注意：此字段可能返回 null，表示取不到有效值。
         :type DefenceScope: str
         :param _DefenceHostCount: 漏洞防御主机数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type DefenceHostCount: int
         :param _DefendedCount: 已防御攻击次数
-注意：此字段可能返回 null，表示取不到有效值。
         :type DefendedCount: int
         :param _ScanStatus: 是否已扫描，NOT_SCAN:未扫描,SCANNED:已扫描
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScanStatus: str
         """
         self._CVEID = None
@@ -79007,7 +78310,6 @@ class VulDetailInfo(AbstractModel):
     @property
     def Tags(self):
         """漏洞标签
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Tags
@@ -79019,7 +78321,6 @@ class VulDetailInfo(AbstractModel):
     @property
     def CategoryType(self):
         """漏洞类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CategoryType
@@ -79031,7 +78332,6 @@ class VulDetailInfo(AbstractModel):
     @property
     def Level(self):
         """漏洞威胁等级
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Level
@@ -79043,7 +78343,6 @@ class VulDetailInfo(AbstractModel):
     @property
     def SubmitTime(self):
         """漏洞披露时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubmitTime
@@ -79209,7 +78508,6 @@ class VulDetailInfo(AbstractModel):
     @property
     def DefenceStatus(self):
         """防御状态，NO_DEFENDED:未防御，DEFENDED:已防御
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DefenceStatus
@@ -79221,7 +78519,6 @@ class VulDetailInfo(AbstractModel):
     @property
     def DefenceScope(self):
         """漏洞防御主机范围: MANUAL:自选主机节点，ALL:全部
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DefenceScope
@@ -79233,7 +78530,6 @@ class VulDetailInfo(AbstractModel):
     @property
     def DefenceHostCount(self):
         """漏洞防御主机数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DefenceHostCount
@@ -79245,7 +78541,6 @@ class VulDetailInfo(AbstractModel):
     @property
     def DefendedCount(self):
         """已防御攻击次数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DefendedCount
@@ -79257,7 +78552,6 @@ class VulDetailInfo(AbstractModel):
     @property
     def ScanStatus(self):
         """是否已扫描，NOT_SCAN:未扫描,SCANNED:已扫描
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ScanStatus
@@ -79525,49 +78819,36 @@ class VulInfo(AbstractModel):
         :param _Name: 漏洞名称
         :type Name: str
         :param _Tags: 漏洞标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of str
         :param _CVSSV3Score: CVSS V3分数
-注意：此字段可能返回 null，表示取不到有效值。
         :type CVSSV3Score: float
         :param _Level: 风险等级
-注意：此字段可能返回 null，表示取不到有效值。
         :type Level: str
         :param _CVEID: CVE编号
         :type CVEID: str
         :param _Category: 漏洞子类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Category: str
         :param _FoundTime: 首次发现时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type FoundTime: str
         :param _LatestFoundTime: 最近发现时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type LatestFoundTime: str
         :param _ID: 漏洞ID
         :type ID: int
         :param _LocalImageCount: 影响本地镜像数
         :type LocalImageCount: int
         :param _ContainerCount: 影响容器数
-注意：此字段可能返回 null，表示取不到有效值。
         :type ContainerCount: int
         :param _RegistryImageCount: 影响仓库镜像数
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegistryImageCount: int
         :param _PocID: 漏洞PocID
-注意：此字段可能返回 null，表示取不到有效值。
         :type PocID: str
         :param _DefenceStatus: 防御状态，NO_DEFENDED:未防御，DEFENDED:已防御
-注意：此字段可能返回 null，表示取不到有效值。
         :type DefenceStatus: str
         :param _DefenceScope: 漏洞防御主机范围: MANUAL:自选主机节点，ALL:全部
-注意：此字段可能返回 null，表示取不到有效值。
         :type DefenceScope: str
         :param _DefenceHostCount: 漏洞防御主机数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type DefenceHostCount: int
         :param _DefendedCount: 已防御攻击次数
-注意：此字段可能返回 null，表示取不到有效值。
         :type DefendedCount: int
         """
         self._Name = None
@@ -79602,7 +78883,6 @@ class VulInfo(AbstractModel):
     @property
     def Tags(self):
         """漏洞标签
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Tags
@@ -79614,7 +78894,6 @@ class VulInfo(AbstractModel):
     @property
     def CVSSV3Score(self):
         """CVSS V3分数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._CVSSV3Score
@@ -79626,7 +78905,6 @@ class VulInfo(AbstractModel):
     @property
     def Level(self):
         """风险等级
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Level
@@ -79649,7 +78927,6 @@ class VulInfo(AbstractModel):
     @property
     def Category(self):
         """漏洞子类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Category
@@ -79661,7 +78938,6 @@ class VulInfo(AbstractModel):
     @property
     def FoundTime(self):
         """首次发现时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FoundTime
@@ -79673,7 +78949,6 @@ class VulInfo(AbstractModel):
     @property
     def LatestFoundTime(self):
         """最近发现时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LatestFoundTime
@@ -79707,7 +78982,6 @@ class VulInfo(AbstractModel):
     @property
     def ContainerCount(self):
         """影响容器数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ContainerCount
@@ -79719,7 +78993,6 @@ class VulInfo(AbstractModel):
     @property
     def RegistryImageCount(self):
         """影响仓库镜像数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RegistryImageCount
@@ -79731,7 +79004,6 @@ class VulInfo(AbstractModel):
     @property
     def PocID(self):
         """漏洞PocID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PocID
@@ -79743,7 +79015,6 @@ class VulInfo(AbstractModel):
     @property
     def DefenceStatus(self):
         """防御状态，NO_DEFENDED:未防御，DEFENDED:已防御
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DefenceStatus
@@ -79755,7 +79026,6 @@ class VulInfo(AbstractModel):
     @property
     def DefenceScope(self):
         """漏洞防御主机范围: MANUAL:自选主机节点，ALL:全部
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DefenceScope
@@ -79767,7 +79037,6 @@ class VulInfo(AbstractModel):
     @property
     def DefenceHostCount(self):
         """漏洞防御主机数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DefenceHostCount
@@ -79779,7 +79048,6 @@ class VulInfo(AbstractModel):
     @property
     def DefendedCount(self):
         """已防御攻击次数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DefendedCount
@@ -79833,7 +79101,6 @@ class VulScanImageInfo(AbstractModel):
         :param _ScanStatus: 任务状态:SCANNING:扫描中 FAILED:失败 FINISHED:完成 CANCELED:取消
         :type ScanStatus: str
         :param _ScanDuration: 扫描时长
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScanDuration: float
         :param _HighLevelVulCount: 高危漏洞数
         :type HighLevelVulCount: int
@@ -79913,7 +79180,6 @@ class VulScanImageInfo(AbstractModel):
     @property
     def ScanDuration(self):
         """扫描时长
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._ScanDuration

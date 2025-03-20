@@ -71,6 +71,9 @@ FAILEDOPERATION_DOMAINOWNEDBYOTHERUSER = 'FailedOperation.DomainOwnedByOtherUser
 # 校验公网 IP 发生异常。
 FAILEDOPERATION_EIPCHECKFAILED = 'FailedOperation.EipCheckFailed'
 
+# 文件不存在或文件还未生成
+FAILEDOPERATION_FILENOTEXIST = 'FailedOperation.FileNotExist'
+
 # 您操作过于频繁，请稍后重试
 FAILEDOPERATION_FREQUENCYLIMIT = 'FailedOperation.FrequencyLimit'
 
@@ -157,6 +160,9 @@ INVALIDPARAMETER_ALIASISMYDOMAIN = 'InvalidParameter.AliasIsMyDomain'
 
 # 创建批量域名任务失败，原因：内部错误。
 INVALIDPARAMETER_BATCHDOMAINCREATEACTIONERROR = 'InvalidParameter.BatchDomainCreateActionError'
+
+# 您有批量任务未执行完成，请等待完成后继续添加。
+INVALIDPARAMETER_BATCHLIMITUNDO = 'InvalidParameter.BatchLimitUndo'
 
 # 创建批量记录任务失败，原因：内部错误。
 INVALIDPARAMETER_BATCHRECORDCREATEACTIONERROR = 'InvalidParameter.BatchRecordCreateActionError'
@@ -502,6 +508,9 @@ INVALIDPARAMETER_RESULTMORETHAN500 = 'InvalidParameter.ResultMoreThan500'
 
 # 共享用户中包含未实名认证用户。
 INVALIDPARAMETER_SHAREDUSERSUNREALNAME = 'InvalidParameter.SharedUsersUnrealName'
+
+# 开始时间不能大于结束时间。
+INVALIDPARAMETER_STARTTIMEGREATERTHANENDTIME = 'InvalidParameter.StarttimeGreaterThanEndtime'
 
 # 状态代码不正确。
 INVALIDPARAMETER_STATUSCODEINVALID = 'InvalidParameter.StatusCodeInvalid'
