@@ -212,6 +212,29 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateConditionsTemplate(self, request):
+        """创建告警条件模板
+
+        :param request: Request instance for CreateConditionsTemplate.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.CreateConditionsTemplateRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.CreateConditionsTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateConditionsTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateConditionsTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateExporterIntegration(self, request):
         """创建集成中心 exporter 集成，因集成较多，建议控制台创建集成。(前提：已授权创建托管 EKS 集群，验证方式：1. 控制台界面确认，未提示授权则表示已授权创建；2. 通过 DescribePrometheusInstanceInitStatus 接口查询集群状态，如果托管集群不存在，可通过 RunPrometheusInstance 接口创建)
 

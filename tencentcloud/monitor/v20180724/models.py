@@ -5106,6 +5106,230 @@ class CreateAlertRuleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateConditionsTemplateRequest(AbstractModel):
+    """CreateConditionsTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Module: 固定值，monitor
+        :type Module: str
+        :param _ViewName: 视图名
+        :type ViewName: str
+        :param _GroupName: 组名
+        :type GroupName: str
+        :param _IsUnionRule: 是否为与关系
+        :type IsUnionRule: int
+        :param _Remark: 备注
+        :type Remark: str
+        :param _ParentGroupID: 父ID
+        :type ParentGroupID: int
+        :param _IsShielded: 是否屏蔽
+        :type IsShielded: int
+        :param _ComplexExpression: 复合告警表达式
+        :type ComplexExpression: str
+        :param _Conditions: 指标告警条件
+        :type Conditions: list of ModifyConditionsTemplateRequestCondition
+        :param _EventConditions: 事件告警条件
+        :type EventConditions: list of ModifyConditionsTemplateRequestEventCondition
+        """
+        self._Module = None
+        self._ViewName = None
+        self._GroupName = None
+        self._IsUnionRule = None
+        self._Remark = None
+        self._ParentGroupID = None
+        self._IsShielded = None
+        self._ComplexExpression = None
+        self._Conditions = None
+        self._EventConditions = None
+
+    @property
+    def Module(self):
+        """固定值，monitor
+        :rtype: str
+        """
+        return self._Module
+
+    @Module.setter
+    def Module(self, Module):
+        self._Module = Module
+
+    @property
+    def ViewName(self):
+        """视图名
+        :rtype: str
+        """
+        return self._ViewName
+
+    @ViewName.setter
+    def ViewName(self, ViewName):
+        self._ViewName = ViewName
+
+    @property
+    def GroupName(self):
+        """组名
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def IsUnionRule(self):
+        """是否为与关系
+        :rtype: int
+        """
+        return self._IsUnionRule
+
+    @IsUnionRule.setter
+    def IsUnionRule(self, IsUnionRule):
+        self._IsUnionRule = IsUnionRule
+
+    @property
+    def Remark(self):
+        """备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def ParentGroupID(self):
+        """父ID
+        :rtype: int
+        """
+        return self._ParentGroupID
+
+    @ParentGroupID.setter
+    def ParentGroupID(self, ParentGroupID):
+        self._ParentGroupID = ParentGroupID
+
+    @property
+    def IsShielded(self):
+        """是否屏蔽
+        :rtype: int
+        """
+        return self._IsShielded
+
+    @IsShielded.setter
+    def IsShielded(self, IsShielded):
+        self._IsShielded = IsShielded
+
+    @property
+    def ComplexExpression(self):
+        """复合告警表达式
+        :rtype: str
+        """
+        return self._ComplexExpression
+
+    @ComplexExpression.setter
+    def ComplexExpression(self, ComplexExpression):
+        self._ComplexExpression = ComplexExpression
+
+    @property
+    def Conditions(self):
+        """指标告警条件
+        :rtype: list of ModifyConditionsTemplateRequestCondition
+        """
+        return self._Conditions
+
+    @Conditions.setter
+    def Conditions(self, Conditions):
+        self._Conditions = Conditions
+
+    @property
+    def EventConditions(self):
+        """事件告警条件
+        :rtype: list of ModifyConditionsTemplateRequestEventCondition
+        """
+        return self._EventConditions
+
+    @EventConditions.setter
+    def EventConditions(self, EventConditions):
+        self._EventConditions = EventConditions
+
+
+    def _deserialize(self, params):
+        self._Module = params.get("Module")
+        self._ViewName = params.get("ViewName")
+        self._GroupName = params.get("GroupName")
+        self._IsUnionRule = params.get("IsUnionRule")
+        self._Remark = params.get("Remark")
+        self._ParentGroupID = params.get("ParentGroupID")
+        self._IsShielded = params.get("IsShielded")
+        self._ComplexExpression = params.get("ComplexExpression")
+        if params.get("Conditions") is not None:
+            self._Conditions = []
+            for item in params.get("Conditions"):
+                obj = ModifyConditionsTemplateRequestCondition()
+                obj._deserialize(item)
+                self._Conditions.append(obj)
+        if params.get("EventConditions") is not None:
+            self._EventConditions = []
+            for item in params.get("EventConditions"):
+                obj = ModifyConditionsTemplateRequestEventCondition()
+                obj._deserialize(item)
+                self._EventConditions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateConditionsTemplateResponse(AbstractModel):
+    """CreateConditionsTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupID: 模板策略组ID
+        :type GroupID: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._GroupID = None
+        self._RequestId = None
+
+    @property
+    def GroupID(self):
+        """模板策略组ID
+        :rtype: int
+        """
+        return self._GroupID
+
+    @GroupID.setter
+    def GroupID(self, GroupID):
+        self._GroupID = GroupID
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._GroupID = params.get("GroupID")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateExporterIntegrationRequest(AbstractModel):
     """CreateExporterIntegration请求参数结构体
 
@@ -28463,6 +28687,228 @@ class ModifyAlarmReceiversResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class ModifyConditionsTemplateRequestCondition(AbstractModel):
+    """ModifyConditionsTemplateRequestCondition，Condition入参字段值
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CalcPeriod: 统计周期
+        :type CalcPeriod: str
+        :param _CalcType: 统计方式
+        :type CalcType: str
+        :param _ContinuePeriod: 持续周期
+        :type ContinuePeriod: str
+        :param _MetricID: 指标ID
+        :type MetricID: int
+        :param _CalcValue: 统计值
+        :type CalcValue: str
+        :param _AlarmNotifyPeriod: 告警通知周期
+        :type AlarmNotifyPeriod: str
+        :param _AlarmNotifyType: 告警通知方式
+        :type AlarmNotifyType: int
+        :param _RuleID: 规则ID
+        :type RuleID: int
+        """
+        self._CalcPeriod = None
+        self._CalcType = None
+        self._ContinuePeriod = None
+        self._MetricID = None
+        self._CalcValue = None
+        self._AlarmNotifyPeriod = None
+        self._AlarmNotifyType = None
+        self._RuleID = None
+
+    @property
+    def CalcPeriod(self):
+        """统计周期
+        :rtype: str
+        """
+        return self._CalcPeriod
+
+    @CalcPeriod.setter
+    def CalcPeriod(self, CalcPeriod):
+        self._CalcPeriod = CalcPeriod
+
+    @property
+    def CalcType(self):
+        """统计方式
+        :rtype: str
+        """
+        return self._CalcType
+
+    @CalcType.setter
+    def CalcType(self, CalcType):
+        self._CalcType = CalcType
+
+    @property
+    def ContinuePeriod(self):
+        """持续周期
+        :rtype: str
+        """
+        return self._ContinuePeriod
+
+    @ContinuePeriod.setter
+    def ContinuePeriod(self, ContinuePeriod):
+        self._ContinuePeriod = ContinuePeriod
+
+    @property
+    def MetricID(self):
+        """指标ID
+        :rtype: int
+        """
+        return self._MetricID
+
+    @MetricID.setter
+    def MetricID(self, MetricID):
+        self._MetricID = MetricID
+
+    @property
+    def CalcValue(self):
+        """统计值
+        :rtype: str
+        """
+        return self._CalcValue
+
+    @CalcValue.setter
+    def CalcValue(self, CalcValue):
+        self._CalcValue = CalcValue
+
+    @property
+    def AlarmNotifyPeriod(self):
+        """告警通知周期
+        :rtype: str
+        """
+        return self._AlarmNotifyPeriod
+
+    @AlarmNotifyPeriod.setter
+    def AlarmNotifyPeriod(self, AlarmNotifyPeriod):
+        self._AlarmNotifyPeriod = AlarmNotifyPeriod
+
+    @property
+    def AlarmNotifyType(self):
+        """告警通知方式
+        :rtype: int
+        """
+        return self._AlarmNotifyType
+
+    @AlarmNotifyType.setter
+    def AlarmNotifyType(self, AlarmNotifyType):
+        self._AlarmNotifyType = AlarmNotifyType
+
+    @property
+    def RuleID(self):
+        """规则ID
+        :rtype: int
+        """
+        return self._RuleID
+
+    @RuleID.setter
+    def RuleID(self, RuleID):
+        self._RuleID = RuleID
+
+
+    def _deserialize(self, params):
+        self._CalcPeriod = params.get("CalcPeriod")
+        self._CalcType = params.get("CalcType")
+        self._ContinuePeriod = params.get("ContinuePeriod")
+        self._MetricID = params.get("MetricID")
+        self._CalcValue = params.get("CalcValue")
+        self._AlarmNotifyPeriod = params.get("AlarmNotifyPeriod")
+        self._AlarmNotifyType = params.get("AlarmNotifyType")
+        self._RuleID = params.get("RuleID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyConditionsTemplateRequestEventCondition(AbstractModel):
+    """ModifyConditionsTemplateRequestEventCondition
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AlarmNotifyPeriod: 告警通知周期
+        :type AlarmNotifyPeriod: str
+        :param _AlarmNotifyType: 告警通知方式
+        :type AlarmNotifyType: str
+        :param _EventID: 事件ID
+        :type EventID: str
+        :param _RuleID: 规则ID
+        :type RuleID: int
+        """
+        self._AlarmNotifyPeriod = None
+        self._AlarmNotifyType = None
+        self._EventID = None
+        self._RuleID = None
+
+    @property
+    def AlarmNotifyPeriod(self):
+        """告警通知周期
+        :rtype: str
+        """
+        return self._AlarmNotifyPeriod
+
+    @AlarmNotifyPeriod.setter
+    def AlarmNotifyPeriod(self, AlarmNotifyPeriod):
+        self._AlarmNotifyPeriod = AlarmNotifyPeriod
+
+    @property
+    def AlarmNotifyType(self):
+        """告警通知方式
+        :rtype: str
+        """
+        return self._AlarmNotifyType
+
+    @AlarmNotifyType.setter
+    def AlarmNotifyType(self, AlarmNotifyType):
+        self._AlarmNotifyType = AlarmNotifyType
+
+    @property
+    def EventID(self):
+        """事件ID
+        :rtype: str
+        """
+        return self._EventID
+
+    @EventID.setter
+    def EventID(self, EventID):
+        self._EventID = EventID
+
+    @property
+    def RuleID(self):
+        """规则ID
+        :rtype: int
+        """
+        return self._RuleID
+
+    @RuleID.setter
+    def RuleID(self, RuleID):
+        self._RuleID = RuleID
+
+
+    def _deserialize(self, params):
+        self._AlarmNotifyPeriod = params.get("AlarmNotifyPeriod")
+        self._AlarmNotifyType = params.get("AlarmNotifyType")
+        self._EventID = params.get("EventID")
+        self._RuleID = params.get("RuleID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ModifyGrafanaInstanceRequest(AbstractModel):

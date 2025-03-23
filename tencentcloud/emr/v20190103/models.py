@@ -829,6 +829,8 @@ ALIGN_DEADLINE：自动对其到期时间
         :type DiskSpec: :class:`tencentcloud.emr.v20190103.models.NodeSpecDiskV2`
         :param _DeleteWithInstance: 可选参数，不传该参数则仅执行挂载操作。传入True时，会在挂载成功后将云硬盘设置为随云主机销毁模式，仅对按量计费云硬盘有效。
         :type DeleteWithInstance: bool
+        :param _SelectiveConfServices: 新挂磁盘时可支持配置的服务名称列表
+        :type SelectiveConfServices: list of str
         """
         self._InstanceId = None
         self._DiskIds = None
@@ -837,6 +839,7 @@ ALIGN_DEADLINE：自动对其到期时间
         self._CreateDisk = None
         self._DiskSpec = None
         self._DeleteWithInstance = None
+        self._SelectiveConfServices = None
 
     @property
     def InstanceId(self):
@@ -917,6 +920,17 @@ ALIGN_DEADLINE：自动对其到期时间
     def DeleteWithInstance(self, DeleteWithInstance):
         self._DeleteWithInstance = DeleteWithInstance
 
+    @property
+    def SelectiveConfServices(self):
+        """新挂磁盘时可支持配置的服务名称列表
+        :rtype: list of str
+        """
+        return self._SelectiveConfServices
+
+    @SelectiveConfServices.setter
+    def SelectiveConfServices(self, SelectiveConfServices):
+        self._SelectiveConfServices = SelectiveConfServices
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -928,6 +942,7 @@ ALIGN_DEADLINE：自动对其到期时间
             self._DiskSpec = NodeSpecDiskV2()
             self._DiskSpec._deserialize(params.get("DiskSpec"))
         self._DeleteWithInstance = params.get("DeleteWithInstance")
+        self._SelectiveConfServices = params.get("SelectiveConfServices")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1598,6 +1613,8 @@ class CBSInstance(AbstractModel):
         :type InstanceId: str
         :param _Shareable: 云盘是否为共享型云盘。
         :type Shareable: bool
+        :param _EmrResourceId: emr节点ID
+        :type EmrResourceId: str
         """
         self._DiskId = None
         self._DiskUsage = None
@@ -1614,6 +1631,7 @@ class CBSInstance(AbstractModel):
         self._InstanceIdList = None
         self._InstanceId = None
         self._Shareable = None
+        self._EmrResourceId = None
 
     @property
     def DiskId(self):
@@ -1781,6 +1799,17 @@ class CBSInstance(AbstractModel):
     def Shareable(self, Shareable):
         self._Shareable = Shareable
 
+    @property
+    def EmrResourceId(self):
+        """emr节点ID
+        :rtype: str
+        """
+        return self._EmrResourceId
+
+    @EmrResourceId.setter
+    def EmrResourceId(self, EmrResourceId):
+        self._EmrResourceId = EmrResourceId
+
 
     def _deserialize(self, params):
         self._DiskId = params.get("DiskId")
@@ -1798,6 +1827,7 @@ class CBSInstance(AbstractModel):
         self._InstanceIdList = params.get("InstanceIdList")
         self._InstanceId = params.get("InstanceId")
         self._Shareable = params.get("Shareable")
+        self._EmrResourceId = params.get("EmrResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10276,9 +10306,21 @@ class DescribeNodeDataDisksRequest(AbstractModel):
         :type InstanceId: str
         :param _CvmInstanceIds: 节点CVM实例Id列表
         :type CvmInstanceIds: list of str
+        :param _Filters: 查询云盘的过滤条件
+        :type Filters: list of Filters
+        :param _InnerSearch: 模糊搜索
+        :type InnerSearch: str
+        :param _Limit: 每页返回数量，默认值为100，最大值为100。
+        :type Limit: int
+        :param _Offset: 数据偏移值
+        :type Offset: int
         """
         self._InstanceId = None
         self._CvmInstanceIds = None
+        self._Filters = None
+        self._InnerSearch = None
+        self._Limit = None
+        self._Offset = None
 
     @property
     def InstanceId(self):
@@ -10302,10 +10344,63 @@ class DescribeNodeDataDisksRequest(AbstractModel):
     def CvmInstanceIds(self, CvmInstanceIds):
         self._CvmInstanceIds = CvmInstanceIds
 
+    @property
+    def Filters(self):
+        """查询云盘的过滤条件
+        :rtype: list of Filters
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def InnerSearch(self):
+        """模糊搜索
+        :rtype: str
+        """
+        return self._InnerSearch
+
+    @InnerSearch.setter
+    def InnerSearch(self, InnerSearch):
+        self._InnerSearch = InnerSearch
+
+    @property
+    def Limit(self):
+        """每页返回数量，默认值为100，最大值为100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """数据偏移值
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._CvmInstanceIds = params.get("CvmInstanceIds")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._InnerSearch = params.get("InnerSearch")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10328,11 +10423,14 @@ class DescribeNodeDataDisksResponse(AbstractModel):
         :param _CBSList: 云盘列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type CBSList: list of CBSInstance
+        :param _MaxSize: 云盘最大容量
+        :type MaxSize: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
         self._CBSList = None
+        self._MaxSize = None
         self._RequestId = None
 
     @property
@@ -10359,6 +10457,17 @@ class DescribeNodeDataDisksResponse(AbstractModel):
         self._CBSList = CBSList
 
     @property
+    def MaxSize(self):
+        """云盘最大容量
+        :rtype: int
+        """
+        return self._MaxSize
+
+    @MaxSize.setter
+    def MaxSize(self, MaxSize):
+        self._MaxSize = MaxSize
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -10378,6 +10487,7 @@ class DescribeNodeDataDisksResponse(AbstractModel):
                 obj = CBSInstance()
                 obj._deserialize(item)
                 self._CBSList.append(obj)
+        self._MaxSize = params.get("MaxSize")
         self._RequestId = params.get("RequestId")
 
 
@@ -16360,6 +16470,8 @@ class InquirePriceRenewEmrResponse(AbstractModel):
         :type TimeUnit: str
         :param _TimeSpan: 实例续费的时长。
         :type TimeSpan: int
+        :param _NodeRenewPriceDetails: 节点续费询价明细列表
+        :type NodeRenewPriceDetails: list of NodeRenewPriceDetail
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -16367,6 +16479,7 @@ class InquirePriceRenewEmrResponse(AbstractModel):
         self._DiscountCost = None
         self._TimeUnit = None
         self._TimeSpan = None
+        self._NodeRenewPriceDetails = None
         self._RequestId = None
 
     @property
@@ -16415,6 +16528,17 @@ class InquirePriceRenewEmrResponse(AbstractModel):
         self._TimeSpan = TimeSpan
 
     @property
+    def NodeRenewPriceDetails(self):
+        """节点续费询价明细列表
+        :rtype: list of NodeRenewPriceDetail
+        """
+        return self._NodeRenewPriceDetails
+
+    @NodeRenewPriceDetails.setter
+    def NodeRenewPriceDetails(self, NodeRenewPriceDetails):
+        self._NodeRenewPriceDetails = NodeRenewPriceDetails
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -16431,6 +16555,12 @@ class InquirePriceRenewEmrResponse(AbstractModel):
         self._DiscountCost = params.get("DiscountCost")
         self._TimeUnit = params.get("TimeUnit")
         self._TimeSpan = params.get("TimeSpan")
+        if params.get("NodeRenewPriceDetails") is not None:
+            self._NodeRenewPriceDetails = []
+            for item in params.get("NodeRenewPriceDetails"):
+                obj = NodeRenewPriceDetail()
+                obj._deserialize(item)
+                self._NodeRenewPriceDetails.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -17047,6 +17177,8 @@ class InquiryPriceRenewInstanceResponse(AbstractModel):
         :param _PriceDetail: 价格详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type PriceDetail: list of PriceDetail
+        :param _NodeRenewPriceDetails: 节点续费询价明细列表
+        :type NodeRenewPriceDetails: list of NodeRenewPriceDetail
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -17055,6 +17187,7 @@ class InquiryPriceRenewInstanceResponse(AbstractModel):
         self._TimeUnit = None
         self._TimeSpan = None
         self._PriceDetail = None
+        self._NodeRenewPriceDetails = None
         self._RequestId = None
 
     @property
@@ -17115,6 +17248,17 @@ class InquiryPriceRenewInstanceResponse(AbstractModel):
         self._PriceDetail = PriceDetail
 
     @property
+    def NodeRenewPriceDetails(self):
+        """节点续费询价明细列表
+        :rtype: list of NodeRenewPriceDetail
+        """
+        return self._NodeRenewPriceDetails
+
+    @NodeRenewPriceDetails.setter
+    def NodeRenewPriceDetails(self, NodeRenewPriceDetails):
+        self._NodeRenewPriceDetails = NodeRenewPriceDetails
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -17137,6 +17281,12 @@ class InquiryPriceRenewInstanceResponse(AbstractModel):
                 obj = PriceDetail()
                 obj._deserialize(item)
                 self._PriceDetail.append(obj)
+        if params.get("NodeRenewPriceDetails") is not None:
+            self._NodeRenewPriceDetails = []
+            for item in params.get("NodeRenewPriceDetails"):
+                obj = NodeRenewPriceDetail()
+                obj._deserialize(item)
+                self._NodeRenewPriceDetails.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -23211,6 +23361,152 @@ class NodeHardwareInfo(AbstractModel):
         
 
 
+class NodeRenewPriceDetail(AbstractModel):
+    """节点续费询价明细
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChargeType: 计费类型，包月为1、包销为3
+        :type ChargeType: int
+        :param _EmrResourceId: emr资源id
+        :type EmrResourceId: str
+        :param _NodeType: 节点类型
+        :type NodeType: str
+        :param _Ip: 节点内网ip
+        :type Ip: str
+        :param _ExpireTime: 当前到期时间
+        :type ExpireTime: str
+        :param _OriginalCost: 原价
+        :type OriginalCost: float
+        :param _DiscountCost: 折扣价
+        :type DiscountCost: float
+        :param _RenewPriceDetails: 节点子项续费询价明细列表
+        :type RenewPriceDetails: list of RenewPriceDetail
+        """
+        self._ChargeType = None
+        self._EmrResourceId = None
+        self._NodeType = None
+        self._Ip = None
+        self._ExpireTime = None
+        self._OriginalCost = None
+        self._DiscountCost = None
+        self._RenewPriceDetails = None
+
+    @property
+    def ChargeType(self):
+        """计费类型，包月为1、包销为3
+        :rtype: int
+        """
+        return self._ChargeType
+
+    @ChargeType.setter
+    def ChargeType(self, ChargeType):
+        self._ChargeType = ChargeType
+
+    @property
+    def EmrResourceId(self):
+        """emr资源id
+        :rtype: str
+        """
+        return self._EmrResourceId
+
+    @EmrResourceId.setter
+    def EmrResourceId(self, EmrResourceId):
+        self._EmrResourceId = EmrResourceId
+
+    @property
+    def NodeType(self):
+        """节点类型
+        :rtype: str
+        """
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def Ip(self):
+        """节点内网ip
+        :rtype: str
+        """
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def ExpireTime(self):
+        """当前到期时间
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def OriginalCost(self):
+        """原价
+        :rtype: float
+        """
+        return self._OriginalCost
+
+    @OriginalCost.setter
+    def OriginalCost(self, OriginalCost):
+        self._OriginalCost = OriginalCost
+
+    @property
+    def DiscountCost(self):
+        """折扣价
+        :rtype: float
+        """
+        return self._DiscountCost
+
+    @DiscountCost.setter
+    def DiscountCost(self, DiscountCost):
+        self._DiscountCost = DiscountCost
+
+    @property
+    def RenewPriceDetails(self):
+        """节点子项续费询价明细列表
+        :rtype: list of RenewPriceDetail
+        """
+        return self._RenewPriceDetails
+
+    @RenewPriceDetails.setter
+    def RenewPriceDetails(self, RenewPriceDetails):
+        self._RenewPriceDetails = RenewPriceDetails
+
+
+    def _deserialize(self, params):
+        self._ChargeType = params.get("ChargeType")
+        self._EmrResourceId = params.get("EmrResourceId")
+        self._NodeType = params.get("NodeType")
+        self._Ip = params.get("Ip")
+        self._ExpireTime = params.get("ExpireTime")
+        self._OriginalCost = params.get("OriginalCost")
+        self._DiscountCost = params.get("DiscountCost")
+        if params.get("RenewPriceDetails") is not None:
+            self._RenewPriceDetails = []
+            for item in params.get("RenewPriceDetails"):
+                obj = RenewPriceDetail()
+                obj._deserialize(item)
+                self._RenewPriceDetails.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class NodeResource(AbstractModel):
     """规格管理，规格类型描述
 
@@ -26780,6 +27076,102 @@ class RenewInstancesInfo(AbstractModel):
         
 
 
+class RenewPriceDetail(AbstractModel):
+    """节点子项续费询价明细
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BillingName: 计费项名称
+        :type BillingName: str
+        :param _Policy: 折扣
+        :type Policy: float
+        :param _Quantity: 数量
+        :type Quantity: int
+        :param _OriginalCost: 原价
+        :type OriginalCost: float
+        :param _DiscountCost: 折扣价
+        :type DiscountCost: float
+        """
+        self._BillingName = None
+        self._Policy = None
+        self._Quantity = None
+        self._OriginalCost = None
+        self._DiscountCost = None
+
+    @property
+    def BillingName(self):
+        """计费项名称
+        :rtype: str
+        """
+        return self._BillingName
+
+    @BillingName.setter
+    def BillingName(self, BillingName):
+        self._BillingName = BillingName
+
+    @property
+    def Policy(self):
+        """折扣
+        :rtype: float
+        """
+        return self._Policy
+
+    @Policy.setter
+    def Policy(self, Policy):
+        self._Policy = Policy
+
+    @property
+    def Quantity(self):
+        """数量
+        :rtype: int
+        """
+        return self._Quantity
+
+    @Quantity.setter
+    def Quantity(self, Quantity):
+        self._Quantity = Quantity
+
+    @property
+    def OriginalCost(self):
+        """原价
+        :rtype: float
+        """
+        return self._OriginalCost
+
+    @OriginalCost.setter
+    def OriginalCost(self, OriginalCost):
+        self._OriginalCost = OriginalCost
+
+    @property
+    def DiscountCost(self):
+        """折扣价
+        :rtype: float
+        """
+        return self._DiscountCost
+
+    @DiscountCost.setter
+    def DiscountCost(self, DiscountCost):
+        self._DiscountCost = DiscountCost
+
+
+    def _deserialize(self, params):
+        self._BillingName = params.get("BillingName")
+        self._Policy = params.get("Policy")
+        self._Quantity = params.get("Quantity")
+        self._OriginalCost = params.get("OriginalCost")
+        self._DiscountCost = params.get("DiscountCost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RepeatStrategy(AbstractModel):
     """定时伸缩任务策略
 
@@ -27020,17 +27412,20 @@ class ResizeDataDisksRequest(AbstractModel):
         r"""
         :param _InstanceId: EMR集群实例ID
         :type InstanceId: str
-        :param _DiskIds: 需要扩容的云盘ID
-        :type DiskIds: list of str
         :param _DiskSize: 需要扩充的容量值，容量值需要大于原容量，并且为10的整数倍
         :type DiskSize: int
         :param _CvmInstanceIds: 需要扩容的节点ID列表
         :type CvmInstanceIds: list of str
+        :param _DiskIds: 需要扩容的云盘ID
+        :type DiskIds: list of str
+        :param _ResizeAll: 是否扩容全部云硬盘
+        :type ResizeAll: bool
         """
         self._InstanceId = None
-        self._DiskIds = None
         self._DiskSize = None
         self._CvmInstanceIds = None
+        self._DiskIds = None
+        self._ResizeAll = None
 
     @property
     def InstanceId(self):
@@ -27042,17 +27437,6 @@ class ResizeDataDisksRequest(AbstractModel):
     @InstanceId.setter
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
-
-    @property
-    def DiskIds(self):
-        """需要扩容的云盘ID
-        :rtype: list of str
-        """
-        return self._DiskIds
-
-    @DiskIds.setter
-    def DiskIds(self, DiskIds):
-        self._DiskIds = DiskIds
 
     @property
     def DiskSize(self):
@@ -27076,12 +27460,35 @@ class ResizeDataDisksRequest(AbstractModel):
     def CvmInstanceIds(self, CvmInstanceIds):
         self._CvmInstanceIds = CvmInstanceIds
 
+    @property
+    def DiskIds(self):
+        """需要扩容的云盘ID
+        :rtype: list of str
+        """
+        return self._DiskIds
+
+    @DiskIds.setter
+    def DiskIds(self, DiskIds):
+        self._DiskIds = DiskIds
+
+    @property
+    def ResizeAll(self):
+        """是否扩容全部云硬盘
+        :rtype: bool
+        """
+        return self._ResizeAll
+
+    @ResizeAll.setter
+    def ResizeAll(self, ResizeAll):
+        self._ResizeAll = ResizeAll
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
-        self._DiskIds = params.get("DiskIds")
         self._DiskSize = params.get("DiskSize")
         self._CvmInstanceIds = params.get("CvmInstanceIds")
+        self._DiskIds = params.get("DiskIds")
+        self._ResizeAll = params.get("ResizeAll")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

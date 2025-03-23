@@ -19705,22 +19705,16 @@ class MachineGroupInfo(AbstractModel):
         :param _CreateTime: 创建时间
         :type CreateTime: str
         :param _Tags: 机器组绑定的标签列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
         :param _AutoUpdate: 是否开启机器组自动更新
-注意：此字段可能返回 null，表示取不到有效值。
         :type AutoUpdate: str
         :param _UpdateStartTime: 升级开始时间，建议业务低峰期升级LogListener
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateStartTime: str
         :param _UpdateEndTime: 升级结束时间，建议业务低峰期升级LogListener
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateEndTime: str
         :param _ServiceLogging: 是否开启服务日志，用于记录因Loglistener 服务自身产生的log，开启后，会创建内部日志集cls_service_logging和日志主题loglistener_status,loglistener_alarm,loglistener_business，不产生计费
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceLogging: bool
         :param _DelayCleanupTime: 机器组中机器离线定期清理时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type DelayCleanupTime: int
         :param _MetaTags: 机器组元数据信息列表
         :type MetaTags: list of MetaTagInfo
@@ -19787,7 +19781,6 @@ class MachineGroupInfo(AbstractModel):
     @property
     def Tags(self):
         """机器组绑定的标签列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._Tags
@@ -19799,7 +19792,6 @@ class MachineGroupInfo(AbstractModel):
     @property
     def AutoUpdate(self):
         """是否开启机器组自动更新
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AutoUpdate
@@ -19811,7 +19803,6 @@ class MachineGroupInfo(AbstractModel):
     @property
     def UpdateStartTime(self):
         """升级开始时间，建议业务低峰期升级LogListener
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateStartTime
@@ -19823,7 +19814,6 @@ class MachineGroupInfo(AbstractModel):
     @property
     def UpdateEndTime(self):
         """升级结束时间，建议业务低峰期升级LogListener
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateEndTime
@@ -19835,7 +19825,6 @@ class MachineGroupInfo(AbstractModel):
     @property
     def ServiceLogging(self):
         """是否开启服务日志，用于记录因Loglistener 服务自身产生的log，开启后，会创建内部日志集cls_service_logging和日志主题loglistener_status,loglistener_alarm,loglistener_business，不产生计费
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._ServiceLogging
@@ -19847,7 +19836,6 @@ class MachineGroupInfo(AbstractModel):
     @property
     def DelayCleanupTime(self):
         """机器组中机器离线定期清理时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DelayCleanupTime
@@ -19979,7 +19967,6 @@ class MachineInfo(AbstractModel):
         :param _Ip: 机器的IP
         :type Ip: str
         :param _InstanceID: 机器实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceID: str
         :param _Status: 机器状态，0:异常，1:正常
         :type Status: int
@@ -20022,7 +20009,6 @@ class MachineInfo(AbstractModel):
     @property
     def InstanceID(self):
         """机器实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceID
@@ -20297,10 +20283,8 @@ class MetricLabel(AbstractModel):
     def __init__(self):
         r"""
         :param _Key: 指标名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
         :param _Value: 指标内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Key = None
@@ -20309,7 +20293,6 @@ class MetricLabel(AbstractModel):
     @property
     def Key(self):
         """指标名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Key
@@ -20321,7 +20304,6 @@ class MetricLabel(AbstractModel):
     @property
     def Value(self):
         """指标内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -24329,7 +24311,6 @@ class MonitorTime(AbstractModel):
         :type Time: int
         :param _CronExpression: 执行的周期cron表达式。示例：`"*/1 * * * *"` 从左到右每个field的含义 Minutes field, Hours field,Day of month field,Month field,Day of week field， 不支持秒级别。
 当type为`Cron`时，CronExpression字段生效。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CronExpression: str
         """
         self._Type = None
@@ -24367,7 +24348,6 @@ class MonitorTime(AbstractModel):
     def CronExpression(self):
         """执行的周期cron表达式。示例：`"*/1 * * * *"` 从左到右每个field的含义 Minutes field, Hours field,Day of month field,Month field,Day of week field， 不支持秒级别。
 当type为`Cron`时，CronExpression字段生效。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CronExpression
@@ -24399,12 +24379,10 @@ class MultiCondition(AbstractModel):
     def __init__(self):
         r"""
         :param _Condition: 触发条件。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Condition: str
         :param _AlarmLevel: 告警级别。0:警告(Warn); 1:提醒(Info); 2:紧急 (Critical)。
 
 - 不填则默认为0。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AlarmLevel: int
         """
         self._Condition = None
@@ -24413,7 +24391,6 @@ class MultiCondition(AbstractModel):
     @property
     def Condition(self):
         """触发条件。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Condition
@@ -24427,7 +24404,6 @@ class MultiCondition(AbstractModel):
         """告警级别。0:警告(Warn); 1:提醒(Info); 2:紧急 (Critical)。
 
 - 不填则默认为0。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AlarmLevel
@@ -24513,10 +24489,8 @@ class NoticeContent(AbstractModel):
 Email:邮件;Sms:短信;WeChat:微信;Phone:电话;WeCom:企业微信;DingTalk:钉钉;Lark:飞书;Http:自定义回调;
         :type Type: str
         :param _TriggerContent: 告警触发通知内容模板。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerContent: :class:`tencentcloud.cls.v20201016.models.NoticeContentInfo`
         :param _RecoveryContent: 告警恢复通知内容模板。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecoveryContent: :class:`tencentcloud.cls.v20201016.models.NoticeContentInfo`
         """
         self._Type = None
@@ -24539,7 +24513,6 @@ Email:邮件;Sms:短信;WeChat:微信;Phone:电话;WeCom:企业微信;DingTalk:�
     @property
     def TriggerContent(self):
         """告警触发通知内容模板。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cls.v20201016.models.NoticeContentInfo`
         """
         return self._TriggerContent
@@ -24551,7 +24524,6 @@ Email:邮件;Sms:短信;WeChat:微信;Phone:电话;WeCom:企业微信;DingTalk:�
     @property
     def RecoveryContent(self):
         """告警恢复通知内容模板。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cls.v20201016.models.NoticeContentInfo`
         """
         return self._RecoveryContent
@@ -24588,14 +24560,11 @@ class NoticeContentInfo(AbstractModel):
         r"""
         :param _Title: 通知内容模板标题信息。
 部分通知渠道类型不支持“标题”，请参照腾讯云控制台页面。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Title: str
         :param _Content: 通知内容模板正文信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Content: str
         :param _Headers: 请求头（Request Headers）：在HTTP请求中，请求头包含了客户端向服务器发送的附加信息，如用户代理、授权凭证、期望的响应格式等。
 仅“自定义回调”支持该配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Headers: list of str
         """
         self._Title = None
@@ -24606,7 +24575,6 @@ class NoticeContentInfo(AbstractModel):
     def Title(self):
         """通知内容模板标题信息。
 部分通知渠道类型不支持“标题”，请参照腾讯云控制台页面。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Title
@@ -24618,7 +24586,6 @@ class NoticeContentInfo(AbstractModel):
     @property
     def Content(self):
         """通知内容模板正文信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Content
@@ -24631,7 +24598,6 @@ class NoticeContentInfo(AbstractModel):
     def Headers(self):
         """请求头（Request Headers）：在HTTP请求中，请求头包含了客户端向服务器发送的附加信息，如用户代理、授权凭证、期望的响应格式等。
 仅“自定义回调”支持该配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Headers
@@ -24663,37 +24629,28 @@ class NoticeContentTemplate(AbstractModel):
     def __init__(self):
         r"""
         :param _NoticeContentId: 通知内容模板ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type NoticeContentId: str
         :param _Name: 通知内容模板名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Type: 语言类型。
 
 0： 中文
 1： 英文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: int
         :param _NoticeContents: 通知内容模板信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type NoticeContents: list of NoticeContent
         :param _Flag: 通知内容模板标记。
 
 0： 用户自定义
 1： 系统内置
-注意：此字段可能返回 null，表示取不到有效值。
         :type Flag: int
         :param _Uin: 创建者主账号。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Uin: int
         :param _SubUin: 创建/修改者子账号。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubUin: int
         :param _CreateTime: 创建时间 秒级时间戳。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: int
         :param _UpdateTime: 更新时间 秒级时间戳。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: int
         """
         self._NoticeContentId = None
@@ -24709,7 +24666,6 @@ class NoticeContentTemplate(AbstractModel):
     @property
     def NoticeContentId(self):
         """通知内容模板ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NoticeContentId
@@ -24721,7 +24677,6 @@ class NoticeContentTemplate(AbstractModel):
     @property
     def Name(self):
         """通知内容模板名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -24736,7 +24691,6 @@ class NoticeContentTemplate(AbstractModel):
 
 0： 中文
 1： 英文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Type
@@ -24748,7 +24702,6 @@ class NoticeContentTemplate(AbstractModel):
     @property
     def NoticeContents(self):
         """通知内容模板信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of NoticeContent
         """
         return self._NoticeContents
@@ -24763,7 +24716,6 @@ class NoticeContentTemplate(AbstractModel):
 
 0： 用户自定义
 1： 系统内置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Flag
@@ -24775,7 +24727,6 @@ class NoticeContentTemplate(AbstractModel):
     @property
     def Uin(self):
         """创建者主账号。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Uin
@@ -24787,7 +24738,6 @@ class NoticeContentTemplate(AbstractModel):
     @property
     def SubUin(self):
         """创建/修改者子账号。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SubUin
@@ -24799,7 +24749,6 @@ class NoticeContentTemplate(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间 秒级时间戳。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CreateTime
@@ -24811,7 +24760,6 @@ class NoticeContentTemplate(AbstractModel):
     @property
     def UpdateTime(self):
         """更新时间 秒级时间戳。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._UpdateTime
@@ -24869,7 +24817,6 @@ class NoticeReceiver(AbstractModel):
 - Phone - 电话
         :type ReceiverChannels: list of str
         :param _NoticeContentId: 通知内容模板ID，使用Default-zh引用默认模板（中文），使用Default-en引用DefaultTemplate(English)。
-注意：此字段可能返回 null，表示取不到有效值。
         :type NoticeContentId: str
         :param _StartTime: 允许接收信息的开始时间。格式：`15:04:05`。必填
         :type StartTime: str
@@ -24934,7 +24881,6 @@ class NoticeReceiver(AbstractModel):
     @property
     def NoticeContentId(self):
         """通知内容模板ID，使用Default-zh引用默认模板（中文），使用Default-en引用DefaultTemplate(English)。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NoticeContentId
@@ -25063,28 +25009,21 @@ class NoticeRule(AbstractModel):
     - 下一个子节点value支持的值：整型值单位分钟
 以下示例表示：告警持续时间大于1分钟或告警持续时间大于等于2分钟或告警持续时间小于3分钟或告警持续时间小于等于4分钟
 `{\"Value\":\"AND\",\"Type\":\"Operation\",\"Children\":[{\"Value\":\"OR\",\"Type\":\"Operation\",\"Children\":[{\"Type\":\"Condition\",\"Value\":\"Duration\",\"Children\":[{\"Value\":\">\",\"Type\":\"Compare\"},{\"Value\":1,\"Type\":\"Value\"}]},{\"Type\":\"Condition\",\"Value\":\"Duration\",\"Children\":[{\"Value\":\">=\",\"Type\":\"Compare\"},{\"Value\":2,\"Type\":\"Value\"}]},{\"Type\":\"Condition\",\"Value\":\"Duration\",\"Children\":[{\"Value\":\"<\",\"Type\":\"Compare\"},{\"Value\":3,\"Type\":\"Value\"}]},{\"Type\":\"Condition\",\"Value\":\"Duration\",\"Children\":[{\"Value\":\"<=\",\"Type\":\"Compare\"},{\"Value\":4,\"Type\":\"Value\"}]}]}]}`
-注意：此字段可能返回 null，表示取不到有效值。
         :type Rule: str
         :param _NoticeReceivers: 告警通知接收者信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type NoticeReceivers: list of NoticeReceiver
         :param _WebCallbacks: 告警通知模板回调信息，包括企业微信、钉钉、飞书。
-注意：此字段可能返回 null，表示取不到有效值。
         :type WebCallbacks: list of WebCallback
         :param _Escalate: 告警升级开关。`true`：开启告警升级、`false`：关闭告警升级，默认：false
-注意：此字段可能返回 null，表示取不到有效值。
         :type Escalate: bool
         :param _Type: 告警升级条件。`1`：无人认领且未恢复、`2`：未恢复，默认为1
 - 无人认领且未恢复：告警没有恢复并且没有人认领则升级
 - 未恢复：当前告警持续未恢复则升级
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: int
         :param _Interval: 告警升级间隔。单位：分钟，范围`[1，14400]`
-注意：此字段可能返回 null，表示取不到有效值。
         :type Interval: int
         :param _EscalateNotice: 告警升级后下一个环节的通知渠道配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type EscalateNotice: :class:`tencentcloud.cls.v20201016.models.EscalateNoticeInfo`
         """
         self._Rule = None
@@ -25155,7 +25094,6 @@ class NoticeRule(AbstractModel):
     - 下一个子节点value支持的值：整型值单位分钟
 以下示例表示：告警持续时间大于1分钟或告警持续时间大于等于2分钟或告警持续时间小于3分钟或告警持续时间小于等于4分钟
 `{\"Value\":\"AND\",\"Type\":\"Operation\",\"Children\":[{\"Value\":\"OR\",\"Type\":\"Operation\",\"Children\":[{\"Type\":\"Condition\",\"Value\":\"Duration\",\"Children\":[{\"Value\":\">\",\"Type\":\"Compare\"},{\"Value\":1,\"Type\":\"Value\"}]},{\"Type\":\"Condition\",\"Value\":\"Duration\",\"Children\":[{\"Value\":\">=\",\"Type\":\"Compare\"},{\"Value\":2,\"Type\":\"Value\"}]},{\"Type\":\"Condition\",\"Value\":\"Duration\",\"Children\":[{\"Value\":\"<\",\"Type\":\"Compare\"},{\"Value\":3,\"Type\":\"Value\"}]},{\"Type\":\"Condition\",\"Value\":\"Duration\",\"Children\":[{\"Value\":\"<=\",\"Type\":\"Compare\"},{\"Value\":4,\"Type\":\"Value\"}]}]}]}`
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Rule
@@ -25167,7 +25105,6 @@ class NoticeRule(AbstractModel):
     @property
     def NoticeReceivers(self):
         """告警通知接收者信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of NoticeReceiver
         """
         return self._NoticeReceivers
@@ -25179,7 +25116,6 @@ class NoticeRule(AbstractModel):
     @property
     def WebCallbacks(self):
         """告警通知模板回调信息，包括企业微信、钉钉、飞书。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of WebCallback
         """
         return self._WebCallbacks
@@ -25191,7 +25127,6 @@ class NoticeRule(AbstractModel):
     @property
     def Escalate(self):
         """告警升级开关。`true`：开启告警升级、`false`：关闭告警升级，默认：false
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Escalate
@@ -25206,7 +25141,6 @@ class NoticeRule(AbstractModel):
 - 无人认领且未恢复：告警没有恢复并且没有人认领则升级
 - 未恢复：当前告警持续未恢复则升级
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Type
@@ -25218,7 +25152,6 @@ class NoticeRule(AbstractModel):
     @property
     def Interval(self):
         """告警升级间隔。单位：分钟，范围`[1，14400]`
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Interval
@@ -25230,7 +25163,6 @@ class NoticeRule(AbstractModel):
     @property
     def EscalateNotice(self):
         """告警升级后下一个环节的通知渠道配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cls.v20201016.models.EscalateNoticeInfo`
         """
         return self._EscalateNotice
@@ -25434,7 +25366,6 @@ class ParquetKeyInfo(AbstractModel):
         :param _KeyType: 数据类型，目前支持6种类型：string、boolean、int32、int64、float、double
         :type KeyType: str
         :param _KeyNonExistingField: 解析失败赋值信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type KeyNonExistingField: str
         """
         self._KeyName = None
@@ -25466,7 +25397,6 @@ class ParquetKeyInfo(AbstractModel):
     @property
     def KeyNonExistingField(self):
         """解析失败赋值信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._KeyNonExistingField
@@ -26731,10 +26661,8 @@ class ScheduledSqlTaskInfo(AbstractModel):
         :param _SrcTopicRegion: 源topicId的地域信息
         :type SrcTopicRegion: str
         :param _SyntaxRule: 语法规则，0：Lucene语法，1：CQL语法
-注意：此字段可能返回 null，表示取不到有效值。
         :type SyntaxRule: int
         :param _HasServicesLog: 是否开启投递服务日志。1：关闭，2：开启。
-注意：此字段可能返回 null，表示取不到有效值。
         :type HasServicesLog: int
         """
         self._TaskId = None
@@ -26949,7 +26877,6 @@ class ScheduledSqlTaskInfo(AbstractModel):
     @property
     def SyntaxRule(self):
         """语法规则，0：Lucene语法，1：CQL语法
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SyntaxRule
@@ -26961,7 +26888,6 @@ class ScheduledSqlTaskInfo(AbstractModel):
     @property
     def HasServicesLog(self):
         """是否开启投递服务日志。1：关闭，2：开启。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._HasServicesLog
@@ -28069,32 +27995,24 @@ class ShipperInfo(AbstractModel):
         :param _Status: 是否生效
         :type Status: bool
         :param _FilterRules: 投递日志的过滤规则
-注意：此字段可能返回 null，表示取不到有效值。
         :type FilterRules: list of FilterRuleInfo
         :param _Partition: 投递日志的分区规则，支持strftime的时间格式表示
         :type Partition: str
         :param _Compress: 投递日志的压缩配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type Compress: :class:`tencentcloud.cls.v20201016.models.CompressInfo`
         :param _Content: 投递日志的内容格式配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type Content: :class:`tencentcloud.cls.v20201016.models.ContentInfo`
         :param _CreateTime: 投递日志的创建时间
         :type CreateTime: str
         :param _FilenameMode: 投递文件命名配置，0：随机数命名，1：投递时间命名，默认0（随机数命名）
-注意：此字段可能返回 null，表示取不到有效值。
         :type FilenameMode: int
         :param _StartTime: 投递数据范围的开始时间点
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: int
         :param _EndTime: 投递数据范围的结束时间点
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: int
         :param _Progress: 历史数据投递的进度（仅当用户选择的数据内中历史数据时才有效）
-注意：此字段可能返回 null，表示取不到有效值。
         :type Progress: float
         :param _RemainTime: 历史数据全部投递完成剩余的时间（仅当用户选择的数据中有历史数据时才有效）
-注意：此字段可能返回 null，表示取不到有效值。
         :type RemainTime: int
         :param _HistoryStatus: 历史任务状态：
 0：实时任务
@@ -28102,10 +28020,8 @@ class ShipperInfo(AbstractModel):
 2：任务运行中
 3：任务运行异常
 4：任务运行结束
-注意：此字段可能返回 null，表示取不到有效值。
         :type HistoryStatus: int
         :param _StorageType: cos桶类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type StorageType: str
         """
         self._ShipperId = None
@@ -28220,7 +28136,6 @@ class ShipperInfo(AbstractModel):
     @property
     def FilterRules(self):
         """投递日志的过滤规则
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of FilterRuleInfo
         """
         return self._FilterRules
@@ -28243,7 +28158,6 @@ class ShipperInfo(AbstractModel):
     @property
     def Compress(self):
         """投递日志的压缩配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cls.v20201016.models.CompressInfo`
         """
         return self._Compress
@@ -28255,7 +28169,6 @@ class ShipperInfo(AbstractModel):
     @property
     def Content(self):
         """投递日志的内容格式配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cls.v20201016.models.ContentInfo`
         """
         return self._Content
@@ -28278,7 +28191,6 @@ class ShipperInfo(AbstractModel):
     @property
     def FilenameMode(self):
         """投递文件命名配置，0：随机数命名，1：投递时间命名，默认0（随机数命名）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FilenameMode
@@ -28290,7 +28202,6 @@ class ShipperInfo(AbstractModel):
     @property
     def StartTime(self):
         """投递数据范围的开始时间点
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._StartTime
@@ -28302,7 +28213,6 @@ class ShipperInfo(AbstractModel):
     @property
     def EndTime(self):
         """投递数据范围的结束时间点
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._EndTime
@@ -28314,7 +28224,6 @@ class ShipperInfo(AbstractModel):
     @property
     def Progress(self):
         """历史数据投递的进度（仅当用户选择的数据内中历史数据时才有效）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Progress
@@ -28326,7 +28235,6 @@ class ShipperInfo(AbstractModel):
     @property
     def RemainTime(self):
         """历史数据全部投递完成剩余的时间（仅当用户选择的数据中有历史数据时才有效）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RemainTime
@@ -28343,7 +28251,6 @@ class ShipperInfo(AbstractModel):
 2：任务运行中
 3：任务运行异常
 4：任务运行结束
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._HistoryStatus
@@ -28355,7 +28262,6 @@ class ShipperInfo(AbstractModel):
     @property
     def StorageType(self):
         """cos桶类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StorageType
@@ -28915,7 +28821,6 @@ class TopicInfo(AbstractModel):
         :param _SubAssumerName: 云产品二级标识，日志主题由其它云产品创建时，该字段会显示云产品名称及其日志类型的二级分类，例如TKE-Audit、TKE-Event。部分云产品仅有云产品标识(AssumerName)，无该字段。
         :type SubAssumerName: str
         :param _Describes: 主题描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Describes: str
         :param _HotPeriod: 开启日志沉降，标准存储的生命周期， hotPeriod < Period。
 标准存储为 hotPeriod, 低频存储则为 Period-hotPeriod。（主题类型需为日志主题）
@@ -28929,7 +28834,6 @@ HotPeriod=0为没有开启日志沉降。
 开启后将支持指定操作匿名访问该日志主题。详情请参见[日志主题](https://cloud.tencent.com/document/product/614/41035)。
         :type IsWebTracking: bool
         :param _Extends: 日志主题扩展信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Extends: :class:`tencentcloud.cls.v20201016.models.TopicExtendInfo`
         :param _TopicAsyncTaskID: 异步迁移任务ID
         :type TopicAsyncTaskID: str
@@ -29123,7 +29027,6 @@ HotPeriod=0为没有开启日志沉降。
     @property
     def Describes(self):
         """主题描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Describes
@@ -29173,7 +29076,6 @@ HotPeriod=0为没有开启日志沉降。
     @property
     def Extends(self):
         """日志主题扩展信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cls.v20201016.models.TopicExtendInfo`
         """
         return self._Extends
@@ -29458,7 +29360,6 @@ class WebCallback(AbstractModel):
 也可使用WebCallbackId引用集成配置中的URL，此时该字段请填写为空字符串。
         :type Url: str
         :param _WebCallbackId: 集成配置ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type WebCallbackId: str
         :param _Method: 回调方法。可选值：
 - POST（默认值）
@@ -29466,24 +29367,18 @@ class WebCallback(AbstractModel):
 
 注意：
 - 参数CallbackType为Http时为必选，其它回调方式无需填写。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Method: str
         :param _NoticeContentId: 通知内容模板ID，使用Default-zh引用默认模板（中文），使用Default-en引用DefaultTemplate(English)。
-注意：此字段可能返回 null，表示取不到有效值。
         :type NoticeContentId: str
         :param _RemindType: 提醒类型。
 
 0：不提醒；1：指定人；2：所有人
-注意：此字段可能返回 null，表示取不到有效值。
         :type RemindType: int
         :param _Mobiles: 电话列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Mobiles: list of str
         :param _UserIds: 用户ID列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserIds: list of str
         :param _Headers: 该参数已废弃，请使用NoticeContentId。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Headers: list of str
         :param _Body: 该参数已废弃，请使用NoticeContentId。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -29535,7 +29430,6 @@ class WebCallback(AbstractModel):
     @property
     def WebCallbackId(self):
         """集成配置ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._WebCallbackId
@@ -29552,7 +29446,6 @@ class WebCallback(AbstractModel):
 
 注意：
 - 参数CallbackType为Http时为必选，其它回调方式无需填写。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Method
@@ -29564,7 +29457,6 @@ class WebCallback(AbstractModel):
     @property
     def NoticeContentId(self):
         """通知内容模板ID，使用Default-zh引用默认模板（中文），使用Default-en引用DefaultTemplate(English)。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NoticeContentId
@@ -29578,7 +29470,6 @@ class WebCallback(AbstractModel):
         """提醒类型。
 
 0：不提醒；1：指定人；2：所有人
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RemindType
@@ -29590,7 +29481,6 @@ class WebCallback(AbstractModel):
     @property
     def Mobiles(self):
         """电话列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Mobiles
@@ -29602,7 +29492,6 @@ class WebCallback(AbstractModel):
     @property
     def UserIds(self):
         """用户ID列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._UserIds
@@ -29614,7 +29503,6 @@ class WebCallback(AbstractModel):
     @property
     def Headers(self):
         """该参数已废弃，请使用NoticeContentId。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Headers

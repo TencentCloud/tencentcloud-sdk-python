@@ -929,7 +929,6 @@ class ClusterActivity(AbstractModel):
         :param _ActivityStatus: 集群活动状态。取值范围：<br><li>PENDING：等待运行</li><br><li>RUNNING：运行中</li><br><li>SUCCESSFUL：活动成功</li><br><li>PARTIALLY_SUCCESSFUL：活动部分成功</li><br><li>FAILED：活动失败</li>
         :type ActivityStatus: str
         :param _ActivityStatusCode: 集群活动状态码。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActivityStatusCode: str
         :param _ResultDetail: 集群活动结果详情。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -941,10 +940,8 @@ class ClusterActivity(AbstractModel):
         :param _RelatedNodeActivitySet: 集群活动相关节点活动集合。
         :type RelatedNodeActivitySet: list of NodeActivity
         :param _StartTime: 集群活动开始时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
         :param _EndTime: 集群活动结束时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         """
         self._ClusterId = None
@@ -1006,7 +1003,6 @@ class ClusterActivity(AbstractModel):
     @property
     def ActivityStatusCode(self):
         """集群活动状态码。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ActivityStatusCode
@@ -1063,7 +1059,6 @@ class ClusterActivity(AbstractModel):
     @property
     def StartTime(self):
         """集群活动开始时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StartTime
@@ -1075,7 +1070,6 @@ class ClusterActivity(AbstractModel):
     @property
     def EndTime(self):
         """集群活动结束时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndTime
@@ -1132,7 +1126,6 @@ class ClusterOverview(AbstractModel):
         :param _SchedulerType: 集群调度器。
         :type SchedulerType: str
         :param _SchedulerVersion: 集群调度器版本。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SchedulerVersion: str
         :param _ComputeNodeCount: 计算节点数量。
         :type ComputeNodeCount: int
@@ -1236,7 +1229,6 @@ class ClusterOverview(AbstractModel):
     @property
     def SchedulerVersion(self):
         """集群调度器版本。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SchedulerVersion
@@ -4512,10 +4504,8 @@ class GooseFSxOptionOverview(AbstractModel):
     def __init__(self):
         r"""
         :param _Masters: 文件系统master的ip和端口列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Masters: list of str
         :param _LocalPath: 文件系统的本地挂载路径。GooseFSx目前只支持挂载在/goosefsx/{文件系统ID}_proxy/目录下。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LocalPath: str
         """
         self._Masters = None
@@ -4524,7 +4514,6 @@ class GooseFSxOptionOverview(AbstractModel):
     @property
     def Masters(self):
         """文件系统master的ip和端口列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Masters
@@ -4536,7 +4525,6 @@ class GooseFSxOptionOverview(AbstractModel):
     @property
     def LocalPath(self):
         """文件系统的本地挂载路径。GooseFSx目前只支持挂载在/goosefsx/{文件系统ID}_proxy/目录下。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LocalPath

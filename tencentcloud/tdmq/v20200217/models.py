@@ -808,6 +808,7 @@ class Cluster(AbstractModel):
         :param _Healthy: 集群是否健康，1表示健康，0表示异常
         :type Healthy: int
         :param _HealthyInfo: 集群健康信息
+注意：此字段可能返回 null，表示取不到有效值。
         :type HealthyInfo: str
         :param _Status: 集群状态，0:创建中，1:正常，2:销毁中，3:已删除，4: 隔离中，5:创建失败，6: 删除失败
         :type Status: int
@@ -822,38 +823,54 @@ class Cluster(AbstractModel):
         :param _MaxStorageCapacity: 最大存储容量
         :type MaxStorageCapacity: int
         :param _Version: 集群版本
+注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
         :param _PublicEndPoint: 公网访问接入点
+注意：此字段可能返回 null，表示取不到有效值。
         :type PublicEndPoint: str
         :param _VpcEndPoint: VPC访问接入点
+注意：此字段可能返回 null，表示取不到有效值。
         :type VpcEndPoint: str
         :param _NamespaceNum: 命名空间数量
+注意：此字段可能返回 null，表示取不到有效值。
         :type NamespaceNum: int
         :param _UsedStorageBudget: 已使用存储限制，MB为单位
+注意：此字段可能返回 null，表示取不到有效值。
         :type UsedStorageBudget: int
         :param _MaxPublishRateInMessages: 最大生产消息速率，以条数为单位
+注意：此字段可能返回 null，表示取不到有效值。
         :type MaxPublishRateInMessages: int
         :param _MaxDispatchRateInMessages: 最大推送消息速率，以条数为单位
+注意：此字段可能返回 null，表示取不到有效值。
         :type MaxDispatchRateInMessages: int
         :param _MaxPublishRateInBytes: 最大生产消息速率，以字节为单位
+注意：此字段可能返回 null，表示取不到有效值。
         :type MaxPublishRateInBytes: int
         :param _MaxDispatchRateInBytes: 最大推送消息速率，以字节为单位
+注意：此字段可能返回 null，表示取不到有效值。
         :type MaxDispatchRateInBytes: int
         :param _TopicNum: 已创建主题数
+注意：此字段可能返回 null，表示取不到有效值。
         :type TopicNum: int
         :param _MaxMessageDelayInSeconds: 最长消息延时，以秒为单位
+注意：此字段可能返回 null，表示取不到有效值。
         :type MaxMessageDelayInSeconds: int
         :param _PublicAccessEnabled: 是否开启公网访问，不填时默认开启
+注意：此字段可能返回 null，表示取不到有效值。
         :type PublicAccessEnabled: bool
         :param _Tags: 标签
+注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
         :param _PayMode: 计费模式：
 0: 按量计费
 1: 包年包月
+注意：此字段可能返回 null，表示取不到有效值。
         :type PayMode: int
         :param _ProjectId: 项目ID
+注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: int
         :param _ProjectName: 项目名字
+注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectName: str
         :param _UpgradeProInstance: 是否支持升级专业版实例
         :type UpgradeProInstance: bool
@@ -958,6 +975,7 @@ class Cluster(AbstractModel):
     @property
     def HealthyInfo(self):
         """集群健康信息
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HealthyInfo
@@ -1035,6 +1053,7 @@ class Cluster(AbstractModel):
     @property
     def Version(self):
         """集群版本
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Version
@@ -1046,6 +1065,7 @@ class Cluster(AbstractModel):
     @property
     def PublicEndPoint(self):
         """公网访问接入点
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PublicEndPoint
@@ -1057,6 +1077,7 @@ class Cluster(AbstractModel):
     @property
     def VpcEndPoint(self):
         """VPC访问接入点
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VpcEndPoint
@@ -1068,6 +1089,7 @@ class Cluster(AbstractModel):
     @property
     def NamespaceNum(self):
         """命名空间数量
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._NamespaceNum
@@ -1079,6 +1101,7 @@ class Cluster(AbstractModel):
     @property
     def UsedStorageBudget(self):
         """已使用存储限制，MB为单位
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._UsedStorageBudget
@@ -1090,6 +1113,7 @@ class Cluster(AbstractModel):
     @property
     def MaxPublishRateInMessages(self):
         """最大生产消息速率，以条数为单位
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxPublishRateInMessages
@@ -1101,6 +1125,7 @@ class Cluster(AbstractModel):
     @property
     def MaxDispatchRateInMessages(self):
         """最大推送消息速率，以条数为单位
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxDispatchRateInMessages
@@ -1112,6 +1137,7 @@ class Cluster(AbstractModel):
     @property
     def MaxPublishRateInBytes(self):
         """最大生产消息速率，以字节为单位
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxPublishRateInBytes
@@ -1123,6 +1149,7 @@ class Cluster(AbstractModel):
     @property
     def MaxDispatchRateInBytes(self):
         """最大推送消息速率，以字节为单位
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxDispatchRateInBytes
@@ -1134,6 +1161,7 @@ class Cluster(AbstractModel):
     @property
     def TopicNum(self):
         """已创建主题数
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TopicNum
@@ -1145,6 +1173,7 @@ class Cluster(AbstractModel):
     @property
     def MaxMessageDelayInSeconds(self):
         """最长消息延时，以秒为单位
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxMessageDelayInSeconds
@@ -1156,6 +1185,7 @@ class Cluster(AbstractModel):
     @property
     def PublicAccessEnabled(self):
         """是否开启公网访问，不填时默认开启
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._PublicAccessEnabled
@@ -1167,6 +1197,7 @@ class Cluster(AbstractModel):
     @property
     def Tags(self):
         """标签
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._Tags
@@ -1180,6 +1211,7 @@ class Cluster(AbstractModel):
         """计费模式：
 0: 按量计费
 1: 包年包月
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PayMode
@@ -1191,6 +1223,7 @@ class Cluster(AbstractModel):
     @property
     def ProjectId(self):
         """项目ID
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ProjectId
@@ -1202,6 +1235,7 @@ class Cluster(AbstractModel):
     @property
     def ProjectName(self):
         """项目名字
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProjectName
@@ -2500,14 +2534,19 @@ class Consumer(AbstractModel):
     def __init__(self):
         r"""
         :param _ConnectedSince: 消费者开始连接的时间。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ConnectedSince: str
         :param _ConsumerAddr: 消费者地址。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ConsumerAddr: str
         :param _ConsumerName: 消费者名称。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ConsumerName: str
         :param _ClientVersion: 消费者版本。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ClientVersion: str
         :param _Partition: 消费者连接的主题分区号
+注意：此字段可能返回 null，表示取不到有效值。
         :type Partition: int
         """
         self._ConnectedSince = None
@@ -2519,6 +2558,7 @@ class Consumer(AbstractModel):
     @property
     def ConnectedSince(self):
         """消费者开始连接的时间。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ConnectedSince
@@ -2530,6 +2570,7 @@ class Consumer(AbstractModel):
     @property
     def ConsumerAddr(self):
         """消费者地址。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ConsumerAddr
@@ -2541,6 +2582,7 @@ class Consumer(AbstractModel):
     @property
     def ConsumerName(self):
         """消费者名称。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ConsumerName
@@ -2552,6 +2594,7 @@ class Consumer(AbstractModel):
     @property
     def ClientVersion(self):
         """消费者版本。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClientVersion
@@ -2563,6 +2606,7 @@ class Consumer(AbstractModel):
     @property
     def Partition(self):
         """消费者连接的主题分区号
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Partition
@@ -2722,8 +2766,10 @@ class ConsumerLogs(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 记录数。
+注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _ConsumerLogSets: 消费日志。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ConsumerLogSets: list of ConsumerLog
         """
         self._TotalCount = None
@@ -2732,6 +2778,7 @@ class ConsumerLogs(AbstractModel):
     @property
     def TotalCount(self):
         """记录数。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -2743,6 +2790,7 @@ class ConsumerLogs(AbstractModel):
     @property
     def ConsumerLogSets(self):
         """消费日志。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ConsumerLog
         """
         return self._ConsumerLogSets
@@ -2935,16 +2983,20 @@ class ConsumersSchedule(AbstractModel):
     def __init__(self):
         r"""
         :param _Partitions: 当前分区id。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Partitions: int
         :param _NumberOfEntries: 消息数量。
+注意：此字段可能返回 null，表示取不到有效值。
         :type NumberOfEntries: int
         :param _MsgBacklog: 消息积压数量。
+注意：此字段可能返回 null，表示取不到有效值。
         :type MsgBacklog: int
         :param _MsgRateOut: 消费者每秒分发消息的数量之和。
         :type MsgRateOut: str
         :param _MsgThroughputOut: 消费者每秒消息的byte。
         :type MsgThroughputOut: str
         :param _MsgRateExpired: 超时丢弃比例。
+注意：此字段可能返回 null，表示取不到有效值。
         :type MsgRateExpired: str
         """
         self._Partitions = None
@@ -2957,6 +3009,7 @@ class ConsumersSchedule(AbstractModel):
     @property
     def Partitions(self):
         """当前分区id。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Partitions
@@ -2968,6 +3021,7 @@ class ConsumersSchedule(AbstractModel):
     @property
     def NumberOfEntries(self):
         """消息数量。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._NumberOfEntries
@@ -2979,6 +3033,7 @@ class ConsumersSchedule(AbstractModel):
     @property
     def MsgBacklog(self):
         """消息积压数量。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MsgBacklog
@@ -3012,6 +3067,7 @@ class ConsumersSchedule(AbstractModel):
     @property
     def MsgRateExpired(self):
         """超时丢弃比例。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MsgRateExpired
@@ -20503,6 +20559,7 @@ class DimensionInstance(AbstractModel):
     def __init__(self):
         r"""
         :param _Dimensions: 实例的维度组合
+注意：此字段可能返回 null，表示取不到有效值。
         :type Dimensions: list of DimensionOpt
         """
         self._Dimensions = None
@@ -20510,6 +20567,7 @@ class DimensionInstance(AbstractModel):
     @property
     def Dimensions(self):
         """实例的维度组合
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DimensionOpt
         """
         return self._Dimensions
@@ -20613,10 +20671,13 @@ class Environment(AbstractModel):
         :param _NamespaceName: 命名空间名称
         :type NamespaceName: str
         :param _TopicNum: Topic数量
+注意：此字段可能返回 null，表示取不到有效值。
         :type TopicNum: int
         :param _RetentionPolicy: 消息保留策略
+注意：此字段可能返回 null，表示取不到有效值。
         :type RetentionPolicy: :class:`tencentcloud.tdmq.v20200217.models.RetentionPolicy`
         :param _AutoSubscriptionCreation: 是否自动创建订阅
+注意：此字段可能返回 null，表示取不到有效值。
         :type AutoSubscriptionCreation: bool
         """
         self._EnvironmentId = None
@@ -20710,6 +20771,7 @@ class Environment(AbstractModel):
     @property
     def TopicNum(self):
         """Topic数量
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TopicNum
@@ -20721,6 +20783,7 @@ class Environment(AbstractModel):
     @property
     def RetentionPolicy(self):
         """消息保留策略
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tdmq.v20200217.models.RetentionPolicy`
         """
         return self._RetentionPolicy
@@ -20732,6 +20795,7 @@ class Environment(AbstractModel):
     @property
     def AutoSubscriptionCreation(self):
         """是否自动创建订阅
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._AutoSubscriptionCreation
@@ -20883,9 +20947,11 @@ class EnvironmentRoleSet(AbstractModel):
     def __init__(self):
         r"""
         :param _EnvironmentId: 需要绑定的命名空间Id，不重复且存在资源
+注意：此字段可能返回 null，表示取不到有效值。
         :type EnvironmentId: str
         :param _Permissions: 名字空间需要绑定的权限，枚举为 "consume" "produce" 组合，但是不为空
 
+注意：此字段可能返回 null，表示取不到有效值。
         :type Permissions: list of str
         """
         self._EnvironmentId = None
@@ -20894,6 +20960,7 @@ class EnvironmentRoleSet(AbstractModel):
     @property
     def EnvironmentId(self):
         """需要绑定的命名空间Id，不重复且存在资源
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EnvironmentId
@@ -20906,6 +20973,7 @@ class EnvironmentRoleSet(AbstractModel):
     def Permissions(self):
         """名字空间需要绑定的权限，枚举为 "consume" "produce" 组合，但是不为空
 
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Permissions
@@ -21765,6 +21833,7 @@ class InstanceNodeDistribution(AbstractModel):
         :param _NodePermWipeFlag: 有调度任务且没有切回的可用区，此标识为true
         :type NodePermWipeFlag: bool
         :param _ZoneStatus: 可用区状态
+注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneStatus: str
         """
         self._ZoneName = None
@@ -21820,6 +21889,7 @@ class InstanceNodeDistribution(AbstractModel):
     @property
     def ZoneStatus(self):
         """可用区状态
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ZoneStatus
@@ -21889,12 +21959,16 @@ class InternalTenant(AbstractModel):
         :param _MaxDispatchTps: 命名空间最大消费TPS
         :type MaxDispatchTps: int
         :param _MaxDispatchRateInBytes: 命名空间最大消费带宽，byte为单位
+注意：此字段可能返回 null，表示取不到有效值。
         :type MaxDispatchRateInBytes: int
         :param _MaxPublishRateInBytes: 命名空间最大生产带宽，byte为单位
+注意：此字段可能返回 null，表示取不到有效值。
         :type MaxPublishRateInBytes: int
         :param _MaxRetentionSizeInMB: 消息最大保留空间，MB为单位
+注意：此字段可能返回 null，表示取不到有效值。
         :type MaxRetentionSizeInMB: int
         :param _PublicAccessEnabled: public Access Enabled
+注意：此字段可能返回 null，表示取不到有效值。
         :type PublicAccessEnabled: bool
         """
         self._TenantId = None
@@ -22121,6 +22195,7 @@ class InternalTenant(AbstractModel):
     @property
     def MaxDispatchRateInBytes(self):
         """命名空间最大消费带宽，byte为单位
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxDispatchRateInBytes
@@ -22132,6 +22207,7 @@ class InternalTenant(AbstractModel):
     @property
     def MaxPublishRateInBytes(self):
         """命名空间最大生产带宽，byte为单位
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxPublishRateInBytes
@@ -22143,6 +22219,7 @@ class InternalTenant(AbstractModel):
     @property
     def MaxRetentionSizeInMB(self):
         """消息最大保留空间，MB为单位
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxRetentionSizeInMB
@@ -22154,6 +22231,7 @@ class InternalTenant(AbstractModel):
     @property
     def PublicAccessEnabled(self):
         """public Access Enabled
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._PublicAccessEnabled
@@ -25505,30 +25583,43 @@ class PartitionsTopic(AbstractModel):
     def __init__(self):
         r"""
         :param _AverageMsgSize: 最后一次间隔内发布消息的平均byte大小。
+注意：此字段可能返回 null，表示取不到有效值。
         :type AverageMsgSize: str
         :param _ConsumerCount: 消费者数量。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ConsumerCount: str
         :param _LastConfirmedEntry: 被记录下来的消息总数。
+注意：此字段可能返回 null，表示取不到有效值。
         :type LastConfirmedEntry: str
         :param _LastLedgerCreatedTimestamp: 最后一个ledger创建的时间。
+注意：此字段可能返回 null，表示取不到有效值。
         :type LastLedgerCreatedTimestamp: str
         :param _MsgRateIn: 本地和复制的发布者每秒发布消息的速率。
+注意：此字段可能返回 null，表示取不到有效值。
         :type MsgRateIn: str
         :param _MsgRateOut: 本地和复制的消费者每秒分发消息的数量之和。
+注意：此字段可能返回 null，表示取不到有效值。
         :type MsgRateOut: str
         :param _MsgThroughputIn: 本地和复制的发布者每秒发布消息的byte。
+注意：此字段可能返回 null，表示取不到有效值。
         :type MsgThroughputIn: str
         :param _MsgThroughputOut: 本地和复制的消费者每秒分发消息的byte。
+注意：此字段可能返回 null，表示取不到有效值。
         :type MsgThroughputOut: str
         :param _NumberOfEntries: 被记录下来的消息总数。
+注意：此字段可能返回 null，表示取不到有效值。
         :type NumberOfEntries: str
         :param _Partitions: 子分区id。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Partitions: int
         :param _ProducerCount: 生产者数量。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ProducerCount: str
         :param _TotalSize: 以byte计算的所有消息存储总量。
+注意：此字段可能返回 null，表示取不到有效值。
         :type TotalSize: str
         :param _TopicType: topic类型描述。
+注意：此字段可能返回 null，表示取不到有效值。
         :type TopicType: int
         """
         self._AverageMsgSize = None
@@ -25548,6 +25639,7 @@ class PartitionsTopic(AbstractModel):
     @property
     def AverageMsgSize(self):
         """最后一次间隔内发布消息的平均byte大小。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AverageMsgSize
@@ -25559,6 +25651,7 @@ class PartitionsTopic(AbstractModel):
     @property
     def ConsumerCount(self):
         """消费者数量。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ConsumerCount
@@ -25570,6 +25663,7 @@ class PartitionsTopic(AbstractModel):
     @property
     def LastConfirmedEntry(self):
         """被记录下来的消息总数。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LastConfirmedEntry
@@ -25581,6 +25675,7 @@ class PartitionsTopic(AbstractModel):
     @property
     def LastLedgerCreatedTimestamp(self):
         """最后一个ledger创建的时间。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LastLedgerCreatedTimestamp
@@ -25592,6 +25687,7 @@ class PartitionsTopic(AbstractModel):
     @property
     def MsgRateIn(self):
         """本地和复制的发布者每秒发布消息的速率。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MsgRateIn
@@ -25603,6 +25699,7 @@ class PartitionsTopic(AbstractModel):
     @property
     def MsgRateOut(self):
         """本地和复制的消费者每秒分发消息的数量之和。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MsgRateOut
@@ -25614,6 +25711,7 @@ class PartitionsTopic(AbstractModel):
     @property
     def MsgThroughputIn(self):
         """本地和复制的发布者每秒发布消息的byte。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MsgThroughputIn
@@ -25625,6 +25723,7 @@ class PartitionsTopic(AbstractModel):
     @property
     def MsgThroughputOut(self):
         """本地和复制的消费者每秒分发消息的byte。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MsgThroughputOut
@@ -25636,6 +25735,7 @@ class PartitionsTopic(AbstractModel):
     @property
     def NumberOfEntries(self):
         """被记录下来的消息总数。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NumberOfEntries
@@ -25647,6 +25747,7 @@ class PartitionsTopic(AbstractModel):
     @property
     def Partitions(self):
         """子分区id。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Partitions
@@ -25658,6 +25759,7 @@ class PartitionsTopic(AbstractModel):
     @property
     def ProducerCount(self):
         """生产者数量。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProducerCount
@@ -25669,6 +25771,7 @@ class PartitionsTopic(AbstractModel):
     @property
     def TotalSize(self):
         """以byte计算的所有消息存储总量。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TotalSize
@@ -25680,6 +25783,7 @@ class PartitionsTopic(AbstractModel):
     @property
     def TopicType(self):
         """topic类型描述。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TopicType
@@ -26115,22 +26219,31 @@ class Publisher(AbstractModel):
     def __init__(self):
         r"""
         :param _ProducerId: 生产者id
+注意：此字段可能返回 null，表示取不到有效值。
         :type ProducerId: int
         :param _ProducerName: 生产者名称
+注意：此字段可能返回 null，表示取不到有效值。
         :type ProducerName: str
         :param _Address: 生产者地址
+注意：此字段可能返回 null，表示取不到有效值。
         :type Address: str
         :param _ClientVersion: 客户端版本
+注意：此字段可能返回 null，表示取不到有效值。
         :type ClientVersion: str
         :param _MsgRateIn: 消息生产速率（条/秒）
+注意：此字段可能返回 null，表示取不到有效值。
         :type MsgRateIn: float
         :param _MsgThroughputIn: 消息生产吞吐速率（字节/秒）
+注意：此字段可能返回 null，表示取不到有效值。
         :type MsgThroughputIn: float
         :param _AverageMsgSize: 平均消息大小（字节）
+注意：此字段可能返回 null，表示取不到有效值。
         :type AverageMsgSize: float
         :param _ConnectedSince: 连接时间
+注意：此字段可能返回 null，表示取不到有效值。
         :type ConnectedSince: str
         :param _Partition: 生产者连接的主题分区号
+注意：此字段可能返回 null，表示取不到有效值。
         :type Partition: int
         """
         self._ProducerId = None
@@ -26146,6 +26259,7 @@ class Publisher(AbstractModel):
     @property
     def ProducerId(self):
         """生产者id
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ProducerId
@@ -26157,6 +26271,7 @@ class Publisher(AbstractModel):
     @property
     def ProducerName(self):
         """生产者名称
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProducerName
@@ -26168,6 +26283,7 @@ class Publisher(AbstractModel):
     @property
     def Address(self):
         """生产者地址
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Address
@@ -26179,6 +26295,7 @@ class Publisher(AbstractModel):
     @property
     def ClientVersion(self):
         """客户端版本
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClientVersion
@@ -26190,6 +26307,7 @@ class Publisher(AbstractModel):
     @property
     def MsgRateIn(self):
         """消息生产速率（条/秒）
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._MsgRateIn
@@ -26201,6 +26319,7 @@ class Publisher(AbstractModel):
     @property
     def MsgThroughputIn(self):
         """消息生产吞吐速率（字节/秒）
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._MsgThroughputIn
@@ -26212,6 +26331,7 @@ class Publisher(AbstractModel):
     @property
     def AverageMsgSize(self):
         """平均消息大小（字节）
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._AverageMsgSize
@@ -26223,6 +26343,7 @@ class Publisher(AbstractModel):
     @property
     def ConnectedSince(self):
         """连接时间
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ConnectedSince
@@ -26234,6 +26355,7 @@ class Publisher(AbstractModel):
     @property
     def Partition(self):
         """生产者连接的主题分区号
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Partition
@@ -26271,8 +26393,10 @@ class PulsarNetworkAccessPointInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _VpcId: vpc的id，支撑网和公网接入点，该字段为空
+注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
         :param _SubnetId: 子网id，支撑网和公网接入点，该字段为空
+注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetId: str
         :param _Endpoint: 接入地址
         :type Endpoint: str
@@ -26288,16 +26412,22 @@ class PulsarNetworkAccessPointInfo(AbstractModel):
 2：跨地域访问，已经完成了异地切换，该状态用于源集群的接入点，该状态下的接入点不可删除
 3：跨地域访问，随时可以进行异地访问切回，该状态用于目标集群的接入点，该状态下的接入点不可删除
 4:跨地域访问，目标集群已经完成异地切回，等待删除状态
+注意：此字段可能返回 null，表示取不到有效值。
         :type OperationType: int
         :param _AccessPointsType: 接入点类型
+注意：此字段可能返回 null，表示取不到有效值。
         :type AccessPointsType: str
         :param _Bandwidth: 带宽，目前只有公网会有这个值
+注意：此字段可能返回 null，表示取不到有效值。
         :type Bandwidth: int
         :param _SecurityPolicy: 类
+注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityPolicy: list of SecurityPolicy
         :param _StandardAccessPoint: 是否是标准的接入点 true是标准的 false不是标准的
+注意：此字段可能返回 null，表示取不到有效值。
         :type StandardAccessPoint: bool
         :param _ZoneName: 可用区信息
+注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneName: str
         """
         self._VpcId = None
@@ -26315,6 +26445,7 @@ class PulsarNetworkAccessPointInfo(AbstractModel):
     @property
     def VpcId(self):
         """vpc的id，支撑网和公网接入点，该字段为空
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VpcId
@@ -26326,6 +26457,7 @@ class PulsarNetworkAccessPointInfo(AbstractModel):
     @property
     def SubnetId(self):
         """子网id，支撑网和公网接入点，该字段为空
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubnetId
@@ -26377,6 +26509,7 @@ class PulsarNetworkAccessPointInfo(AbstractModel):
 2：跨地域访问，已经完成了异地切换，该状态用于源集群的接入点，该状态下的接入点不可删除
 3：跨地域访问，随时可以进行异地访问切回，该状态用于目标集群的接入点，该状态下的接入点不可删除
 4:跨地域访问，目标集群已经完成异地切回，等待删除状态
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._OperationType
@@ -26388,6 +26521,7 @@ class PulsarNetworkAccessPointInfo(AbstractModel):
     @property
     def AccessPointsType(self):
         """接入点类型
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AccessPointsType
@@ -26399,6 +26533,7 @@ class PulsarNetworkAccessPointInfo(AbstractModel):
     @property
     def Bandwidth(self):
         """带宽，目前只有公网会有这个值
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Bandwidth
@@ -26410,6 +26545,7 @@ class PulsarNetworkAccessPointInfo(AbstractModel):
     @property
     def SecurityPolicy(self):
         """类
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SecurityPolicy
         """
         return self._SecurityPolicy
@@ -26421,6 +26557,7 @@ class PulsarNetworkAccessPointInfo(AbstractModel):
     @property
     def StandardAccessPoint(self):
         """是否是标准的接入点 true是标准的 false不是标准的
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._StandardAccessPoint
@@ -26432,6 +26569,7 @@ class PulsarNetworkAccessPointInfo(AbstractModel):
     @property
     def ZoneName(self):
         """可用区信息
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ZoneName
@@ -26488,19 +26626,25 @@ class PulsarProClusterInfo(AbstractModel):
         :param _Version: 集群版本
         :type Version: str
         :param _NodeDistribution: 节点分布情况
+注意：此字段可能返回 null，表示取不到有效值。
         :type NodeDistribution: list of InstanceNodeDistribution
         :param _MaxStorage: 最大储存容量，单位：MB
         :type MaxStorage: int
         :param _CanEditRoute: 是否可以修改路由
+注意：此字段可能返回 null，表示取不到有效值。
         :type CanEditRoute: bool
         :param _BillingLabelVersion: 代表是专业版和小规格专业版的不同计费规格PULSAR.P1固定存储PULSAR.P2弹性存储
+注意：此字段可能返回 null，表示取不到有效值。
         :type BillingLabelVersion: str
         :param _ExpireTime: 实例到期时间戳，毫秒级精度。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireTime: int
         :param _AutoCreateTopicStatus: 是否开启自动创建主题
 true就是开启了，false是关闭
+注意：此字段可能返回 null，表示取不到有效值。
         :type AutoCreateTopicStatus: bool
         :param _DefaultPartitionNumber: 自动创建主题的默认分区数，如果没开启就是0
+注意：此字段可能返回 null，表示取不到有效值。
         :type DefaultPartitionNumber: int
         :param _Tenant: 用户自定义的租户别名，如果没有，会复用专业集群 ID
 
@@ -26590,6 +26734,7 @@ true就是开启了，false是关闭
     @property
     def NodeDistribution(self):
         """节点分布情况
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of InstanceNodeDistribution
         """
         return self._NodeDistribution
@@ -26612,6 +26757,7 @@ true就是开启了，false是关闭
     @property
     def CanEditRoute(self):
         """是否可以修改路由
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._CanEditRoute
@@ -26623,6 +26769,7 @@ true就是开启了，false是关闭
     @property
     def BillingLabelVersion(self):
         """代表是专业版和小规格专业版的不同计费规格PULSAR.P1固定存储PULSAR.P2弹性存储
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BillingLabelVersion
@@ -26634,6 +26781,7 @@ true就是开启了，false是关闭
     @property
     def ExpireTime(self):
         """实例到期时间戳，毫秒级精度。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ExpireTime
@@ -26646,6 +26794,7 @@ true就是开启了，false是关闭
     def AutoCreateTopicStatus(self):
         """是否开启自动创建主题
 true就是开启了，false是关闭
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._AutoCreateTopicStatus
@@ -26657,6 +26806,7 @@ true就是开启了，false是关闭
     @property
     def DefaultPartitionNumber(self):
         """自动创建主题的默认分区数，如果没开启就是0
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DefaultPartitionNumber
@@ -26726,9 +26876,11 @@ class PulsarProClusterSpecInfo(AbstractModel):
         :param _MaxTopics: 最大主题分区数
         :type MaxTopics: int
         :param _ScalableTps: 规格外弹性TPS
+注意：此字段可能返回 null，表示取不到有效值。
         :type ScalableTps: int
         :param _MaxPartitions: 32或者128
 当前集群topic的最大分区数
+注意：此字段可能返回 null，表示取不到有效值。
         :type MaxPartitions: int
         :param _MaxDelayedMessages: 商品最大延迟消息数量。0代表没有限制	
         :type MaxDelayedMessages: int
@@ -26800,6 +26952,7 @@ class PulsarProClusterSpecInfo(AbstractModel):
     @property
     def ScalableTps(self):
         """规格外弹性TPS
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ScalableTps
@@ -26812,6 +26965,7 @@ class PulsarProClusterSpecInfo(AbstractModel):
     def MaxPartitions(self):
         """32或者128
 当前集群topic的最大分区数
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxPartitions
@@ -26879,22 +27033,29 @@ class PulsarProInstance(AbstractModel):
         :param _PayMode: 0-后付费，1-预付费
         :type PayMode: int
         :param _Remark: 备注信息
+注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _SpecName: 实例配置ID
         :type SpecName: str
         :param _ScalableTps: 规格外弹性TPS
+注意：此字段可能返回 null，表示取不到有效值。
         :type ScalableTps: int
         :param _VpcId: VPC的id
+注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
         :param _SubnetId: 子网id
+注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetId: str
         :param _MaxBandWidth: 峰值带宽。单位：mbps
         :type MaxBandWidth: int
         :param _Tags: 集群的标签列表
+注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
         :param _CreateTime: 集群创建时间
+注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _BillingLabelVersion: 代表是专业版和小规格专业版的不同计费规格PULSAR.P1固定存储PULSAR.P2弹性存储
+注意：此字段可能返回 null，表示取不到有效值。
         :type BillingLabelVersion: str
         :param _Tenant: 自定义租户
         :type Tenant: str
@@ -27033,6 +27194,7 @@ class PulsarProInstance(AbstractModel):
     @property
     def Remark(self):
         """备注信息
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -27055,6 +27217,7 @@ class PulsarProInstance(AbstractModel):
     @property
     def ScalableTps(self):
         """规格外弹性TPS
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ScalableTps
@@ -27066,6 +27229,7 @@ class PulsarProInstance(AbstractModel):
     @property
     def VpcId(self):
         """VPC的id
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VpcId
@@ -27077,6 +27241,7 @@ class PulsarProInstance(AbstractModel):
     @property
     def SubnetId(self):
         """子网id
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubnetId
@@ -27099,6 +27264,7 @@ class PulsarProInstance(AbstractModel):
     @property
     def Tags(self):
         """集群的标签列表
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._Tags
@@ -27110,6 +27276,7 @@ class PulsarProInstance(AbstractModel):
     @property
     def CreateTime(self):
         """集群创建时间
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -27121,6 +27288,7 @@ class PulsarProInstance(AbstractModel):
     @property
     def BillingLabelVersion(self):
         """代表是专业版和小规格专业版的不同计费规格PULSAR.P1固定存储PULSAR.P2弹性存储
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BillingLabelVersion
@@ -34319,11 +34487,14 @@ class SecurityPolicy(AbstractModel):
     def __init__(self):
         r"""
         :param _Route: ip或者网段
+注意：此字段可能返回 null，表示取不到有效值。
         :type Route: str
         :param _Policy: 策略 true就是允许，白名单或者 false 拒绝 黑名单
 
+注意：此字段可能返回 null，表示取不到有效值。
         :type Policy: bool
         :param _Remark: 备注
+注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         """
         self._Route = None
@@ -34333,6 +34504,7 @@ class SecurityPolicy(AbstractModel):
     @property
     def Route(self):
         """ip或者网段
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Route
@@ -34345,6 +34517,7 @@ class SecurityPolicy(AbstractModel):
     def Policy(self):
         """策略 true就是允许，白名单或者 false 拒绝 黑名单
 
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Policy
@@ -34356,6 +34529,7 @@ class SecurityPolicy(AbstractModel):
     @property
     def Remark(self):
         """备注
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -35430,40 +35604,58 @@ class Subscription(AbstractModel):
         :param _EnvironmentId: 环境（命名空间）名称。
         :type EnvironmentId: str
         :param _ConnectedSince: 消费者开始连接的时间。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ConnectedSince: str
         :param _ConsumerAddr: 消费者地址。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ConsumerAddr: str
         :param _ConsumerCount: 消费者数量。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ConsumerCount: str
         :param _ConsumerName: 消费者名称。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ConsumerName: str
         :param _MsgBacklog: 堆积的消息数量。
+注意：此字段可能返回 null，表示取不到有效值。
         :type MsgBacklog: str
         :param _MsgRateExpired: 于TTL，此订阅下没有被发送而是被丢弃的比例。
+注意：此字段可能返回 null，表示取不到有效值。
         :type MsgRateExpired: str
         :param _MsgRateOut: 消费者每秒分发消息的数量之和。
+注意：此字段可能返回 null，表示取不到有效值。
         :type MsgRateOut: str
         :param _MsgThroughputOut: 消费者每秒消息的byte。
+注意：此字段可能返回 null，表示取不到有效值。
         :type MsgThroughputOut: str
         :param _SubscriptionName: 订阅名称。
+注意：此字段可能返回 null，表示取不到有效值。
         :type SubscriptionName: str
         :param _ConsumerSets: 消费者集合。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ConsumerSets: list of Consumer
         :param _IsOnline: 是否在线。
+注意：此字段可能返回 null，表示取不到有效值。
         :type IsOnline: bool
         :param _ConsumersScheduleSets: 消费进度集合。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ConsumersScheduleSets: list of ConsumersSchedule
         :param _Remark: 备注。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _CreateTime: 创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _UpdateTime: 最近修改时间。
+注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param _SubType: 订阅类型，Exclusive，Shared，Failover， Key_Shared，空或NULL表示未知，
+注意：此字段可能返回 null，表示取不到有效值。
         :type SubType: str
         :param _BlockedSubscriptionOnUnackedMsgs: 是否由于未 ack 数到达上限而被 block
+注意：此字段可能返回 null，表示取不到有效值。
         :type BlockedSubscriptionOnUnackedMsgs: bool
         :param _MaxUnackedMsgNum: 未 ack 消息数上限
+注意：此字段可能返回 null，表示取不到有效值。
         :type MaxUnackedMsgNum: int
         """
         self._TopicName = None
@@ -35512,6 +35704,7 @@ class Subscription(AbstractModel):
     @property
     def ConnectedSince(self):
         """消费者开始连接的时间。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ConnectedSince
@@ -35523,6 +35716,7 @@ class Subscription(AbstractModel):
     @property
     def ConsumerAddr(self):
         """消费者地址。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ConsumerAddr
@@ -35534,6 +35728,7 @@ class Subscription(AbstractModel):
     @property
     def ConsumerCount(self):
         """消费者数量。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ConsumerCount
@@ -35545,6 +35740,7 @@ class Subscription(AbstractModel):
     @property
     def ConsumerName(self):
         """消费者名称。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ConsumerName
@@ -35556,6 +35752,7 @@ class Subscription(AbstractModel):
     @property
     def MsgBacklog(self):
         """堆积的消息数量。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MsgBacklog
@@ -35567,6 +35764,7 @@ class Subscription(AbstractModel):
     @property
     def MsgRateExpired(self):
         """于TTL，此订阅下没有被发送而是被丢弃的比例。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MsgRateExpired
@@ -35578,6 +35776,7 @@ class Subscription(AbstractModel):
     @property
     def MsgRateOut(self):
         """消费者每秒分发消息的数量之和。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MsgRateOut
@@ -35589,6 +35788,7 @@ class Subscription(AbstractModel):
     @property
     def MsgThroughputOut(self):
         """消费者每秒消息的byte。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MsgThroughputOut
@@ -35600,6 +35800,7 @@ class Subscription(AbstractModel):
     @property
     def SubscriptionName(self):
         """订阅名称。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubscriptionName
@@ -35611,6 +35812,7 @@ class Subscription(AbstractModel):
     @property
     def ConsumerSets(self):
         """消费者集合。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Consumer
         """
         return self._ConsumerSets
@@ -35622,6 +35824,7 @@ class Subscription(AbstractModel):
     @property
     def IsOnline(self):
         """是否在线。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsOnline
@@ -35633,6 +35836,7 @@ class Subscription(AbstractModel):
     @property
     def ConsumersScheduleSets(self):
         """消费进度集合。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ConsumersSchedule
         """
         return self._ConsumersScheduleSets
@@ -35644,6 +35848,7 @@ class Subscription(AbstractModel):
     @property
     def Remark(self):
         """备注。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -35655,6 +35860,7 @@ class Subscription(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -35666,6 +35872,7 @@ class Subscription(AbstractModel):
     @property
     def UpdateTime(self):
         """最近修改时间。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime
@@ -35677,6 +35884,7 @@ class Subscription(AbstractModel):
     @property
     def SubType(self):
         """订阅类型，Exclusive，Shared，Failover， Key_Shared，空或NULL表示未知，
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubType
@@ -35688,6 +35896,7 @@ class Subscription(AbstractModel):
     @property
     def BlockedSubscriptionOnUnackedMsgs(self):
         """是否由于未 ack 数到达上限而被 block
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._BlockedSubscriptionOnUnackedMsgs
@@ -35699,6 +35908,7 @@ class Subscription(AbstractModel):
     @property
     def MaxUnackedMsgNum(self):
         """未 ack 消息数上限
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxUnackedMsgNum
@@ -35823,8 +36033,10 @@ class Tag(AbstractModel):
     def __init__(self):
         r"""
         :param _TagKey: 标签的key的值
+注意：此字段可能返回 null，表示取不到有效值。
         :type TagKey: str
         :param _TagValue: 标签的Value的值
+注意：此字段可能返回 null，表示取不到有效值。
         :type TagValue: str
         """
         self._TagKey = None
@@ -35833,6 +36045,7 @@ class Tag(AbstractModel):
     @property
     def TagKey(self):
         """标签的key的值
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TagKey
@@ -35844,6 +36057,7 @@ class Tag(AbstractModel):
     @property
     def TagValue(self):
         """标签的Value的值
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TagValue
@@ -35874,30 +36088,43 @@ class Topic(AbstractModel):
     def __init__(self):
         r"""
         :param _AverageMsgSize: 最后一次间隔内发布消息的平均byte大小。
+注意：此字段可能返回 null，表示取不到有效值。
         :type AverageMsgSize: str
         :param _ConsumerCount: 消费者数量。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ConsumerCount: str
         :param _LastConfirmedEntry: 被记录下来的消息总数。
+注意：此字段可能返回 null，表示取不到有效值。
         :type LastConfirmedEntry: str
         :param _LastLedgerCreatedTimestamp: 最后一个ledger创建的时间。
+注意：此字段可能返回 null，表示取不到有效值。
         :type LastLedgerCreatedTimestamp: str
         :param _MsgRateIn: 本地和复制的发布者每秒发布消息的速率。
+注意：此字段可能返回 null，表示取不到有效值。
         :type MsgRateIn: str
         :param _MsgRateOut: 本地和复制的消费者每秒分发消息的数量之和。
+注意：此字段可能返回 null，表示取不到有效值。
         :type MsgRateOut: str
         :param _MsgThroughputIn: 本地和复制的发布者每秒发布消息的byte。
+注意：此字段可能返回 null，表示取不到有效值。
         :type MsgThroughputIn: str
         :param _MsgThroughputOut: 本地和复制的消费者每秒分发消息的byte。
+注意：此字段可能返回 null，表示取不到有效值。
         :type MsgThroughputOut: str
         :param _NumberOfEntries: 被记录下来的消息总数。
+注意：此字段可能返回 null，表示取不到有效值。
         :type NumberOfEntries: str
         :param _Partitions: 分区数<=0：topic下无子分区。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Partitions: int
         :param _ProducerCount: 生产者数量。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ProducerCount: str
         :param _TotalSize: 以byte计算的所有消息存储总量。
+注意：此字段可能返回 null，表示取不到有效值。
         :type TotalSize: str
         :param _SubTopicSets: 分区topic里面的子分区。
+注意：此字段可能返回 null，表示取不到有效值。
         :type SubTopicSets: list of PartitionsTopic
         :param _TopicType: topic类型描述：
 0：普通消息；
@@ -35906,28 +36133,38 @@ class Topic(AbstractModel):
 3：重试队列；
 4：死信队列；
 5：事务消息。
+注意：此字段可能返回 null，表示取不到有效值。
         :type TopicType: int
         :param _EnvironmentId: 环境（命名空间）名称。
+注意：此字段可能返回 null，表示取不到有效值。
         :type EnvironmentId: str
         :param _TopicName: 主题名称。
+注意：此字段可能返回 null，表示取不到有效值。
         :type TopicName: str
         :param _Remark: 说明，128个字符以内。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _CreateTime: 创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _UpdateTime: 最近修改时间。
+注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param _ProducerLimit: 生产者上限。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ProducerLimit: str
         :param _ConsumerLimit: 消费者上限。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ConsumerLimit: str
         :param _PulsarTopicType: 0: 非持久非分区
 1: 非持久分区
 2: 持久非分区
 3: 持久分区
+注意：此字段可能返回 null，表示取不到有效值。
         :type PulsarTopicType: int
         :param _MsgTTL: 未消费消息过期时间，单位：秒
 
+注意：此字段可能返回 null，表示取不到有效值。
         :type MsgTTL: int
         :param _ClusterId: 集群 ID
         :type ClusterId: str
@@ -35964,6 +36201,7 @@ class Topic(AbstractModel):
     @property
     def AverageMsgSize(self):
         """最后一次间隔内发布消息的平均byte大小。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AverageMsgSize
@@ -35975,6 +36213,7 @@ class Topic(AbstractModel):
     @property
     def ConsumerCount(self):
         """消费者数量。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ConsumerCount
@@ -35986,6 +36225,7 @@ class Topic(AbstractModel):
     @property
     def LastConfirmedEntry(self):
         """被记录下来的消息总数。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LastConfirmedEntry
@@ -35997,6 +36237,7 @@ class Topic(AbstractModel):
     @property
     def LastLedgerCreatedTimestamp(self):
         """最后一个ledger创建的时间。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LastLedgerCreatedTimestamp
@@ -36008,6 +36249,7 @@ class Topic(AbstractModel):
     @property
     def MsgRateIn(self):
         """本地和复制的发布者每秒发布消息的速率。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MsgRateIn
@@ -36019,6 +36261,7 @@ class Topic(AbstractModel):
     @property
     def MsgRateOut(self):
         """本地和复制的消费者每秒分发消息的数量之和。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MsgRateOut
@@ -36030,6 +36273,7 @@ class Topic(AbstractModel):
     @property
     def MsgThroughputIn(self):
         """本地和复制的发布者每秒发布消息的byte。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MsgThroughputIn
@@ -36041,6 +36285,7 @@ class Topic(AbstractModel):
     @property
     def MsgThroughputOut(self):
         """本地和复制的消费者每秒分发消息的byte。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MsgThroughputOut
@@ -36052,6 +36297,7 @@ class Topic(AbstractModel):
     @property
     def NumberOfEntries(self):
         """被记录下来的消息总数。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NumberOfEntries
@@ -36063,6 +36309,7 @@ class Topic(AbstractModel):
     @property
     def Partitions(self):
         """分区数<=0：topic下无子分区。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Partitions
@@ -36074,6 +36321,7 @@ class Topic(AbstractModel):
     @property
     def ProducerCount(self):
         """生产者数量。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProducerCount
@@ -36085,6 +36333,7 @@ class Topic(AbstractModel):
     @property
     def TotalSize(self):
         """以byte计算的所有消息存储总量。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TotalSize
@@ -36096,6 +36345,7 @@ class Topic(AbstractModel):
     @property
     def SubTopicSets(self):
         """分区topic里面的子分区。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PartitionsTopic
         """
         return self._SubTopicSets
@@ -36113,6 +36363,7 @@ class Topic(AbstractModel):
 3：重试队列；
 4：死信队列；
 5：事务消息。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TopicType
@@ -36124,6 +36375,7 @@ class Topic(AbstractModel):
     @property
     def EnvironmentId(self):
         """环境（命名空间）名称。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EnvironmentId
@@ -36135,6 +36387,7 @@ class Topic(AbstractModel):
     @property
     def TopicName(self):
         """主题名称。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TopicName
@@ -36146,6 +36399,7 @@ class Topic(AbstractModel):
     @property
     def Remark(self):
         """说明，128个字符以内。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -36157,6 +36411,7 @@ class Topic(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -36168,6 +36423,7 @@ class Topic(AbstractModel):
     @property
     def UpdateTime(self):
         """最近修改时间。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime
@@ -36179,6 +36435,7 @@ class Topic(AbstractModel):
     @property
     def ProducerLimit(self):
         """生产者上限。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProducerLimit
@@ -36190,6 +36447,7 @@ class Topic(AbstractModel):
     @property
     def ConsumerLimit(self):
         """消费者上限。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ConsumerLimit
@@ -36204,6 +36462,7 @@ class Topic(AbstractModel):
 1: 非持久分区
 2: 持久非分区
 3: 持久分区
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PulsarTopicType
@@ -36216,6 +36475,7 @@ class Topic(AbstractModel):
     def MsgTTL(self):
         """未消费消息过期时间，单位：秒
 
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MsgTTL
@@ -36471,11 +36731,13 @@ class Topic_Simplification(AbstractModel):
     def __init__(self):
         r"""
         :param _TopicName: 主题名称。
+注意：此字段可能返回 null，表示取不到有效值。
         :type TopicName: str
         :param _PulsarTopicType: 0: 非持久非分区
 1: 非持久分区
 2: 持久非分区
 3: 持久分区
+注意：此字段可能返回 null，表示取不到有效值。
         :type PulsarTopicType: int
         """
         self._TopicName = None
@@ -36484,6 +36746,7 @@ class Topic_Simplification(AbstractModel):
     @property
     def TopicName(self):
         """主题名称。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TopicName
@@ -36498,6 +36761,7 @@ class Topic_Simplification(AbstractModel):
 1: 非持久分区
 2: 持久非分区
 3: 持久分区
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PulsarTopicType
@@ -36843,6 +37107,7 @@ class VpcBindRecord(AbstractModel):
         :param _Port: Vpc的Port
         :type Port: int
         :param _Remark: 说明，128个字符以内
+注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         """
         self._UniqueVpcId = None
@@ -36910,6 +37175,7 @@ class VpcBindRecord(AbstractModel):
     @property
     def Remark(self):
         """说明，128个字符以内
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark

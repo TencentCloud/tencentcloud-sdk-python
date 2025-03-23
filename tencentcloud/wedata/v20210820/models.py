@@ -61489,11 +61489,14 @@ class ProdSchedulerTask(AbstractModel):
         :param _CycleType: 生产调度任务任务类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type CycleType: int
+        :param _TaskType: 生产任务类型
+        :type TaskType: str
         """
         self._WorkflowId = None
         self._TaskId = None
         self._TaskName = None
         self._CycleType = None
+        self._TaskType = None
 
     @property
     def WorkflowId(self):
@@ -61543,12 +61546,24 @@ class ProdSchedulerTask(AbstractModel):
     def CycleType(self, CycleType):
         self._CycleType = CycleType
 
+    @property
+    def TaskType(self):
+        """生产任务类型
+        :rtype: str
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
 
     def _deserialize(self, params):
         self._WorkflowId = params.get("WorkflowId")
         self._TaskId = params.get("TaskId")
         self._TaskName = params.get("TaskName")
         self._CycleType = params.get("CycleType")
+        self._TaskType = params.get("TaskType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -67047,6 +67062,23 @@ class RuleGroup(AbstractModel):
         :param _ClusterDeployType: EMR集群部署方式：CVM/TKE
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterDeployType: str
+        :param _Name: 任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _ExecDetail: 执行详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecDetail: str
+        :param _PipelineTaskCount: 事中关联任务数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PipelineTaskCount: int
+        :param _EnableRuleCount: 有效规则数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableRuleCount: int
+        :param _Description: 任务描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _CreateUserName: 监控创建人
+        :type CreateUserName: str
         """
         self._RuleGroupId = None
         self._DatasourceId = None
@@ -67072,6 +67104,12 @@ class RuleGroup(AbstractModel):
         self._SubscribeConfig = None
         self._DsEnvType = None
         self._ClusterDeployType = None
+        self._Name = None
+        self._ExecDetail = None
+        self._PipelineTaskCount = None
+        self._EnableRuleCount = None
+        self._Description = None
+        self._CreateUserName = None
 
     @property
     def RuleGroupId(self):
@@ -67361,6 +67399,77 @@ class RuleGroup(AbstractModel):
     def ClusterDeployType(self, ClusterDeployType):
         self._ClusterDeployType = ClusterDeployType
 
+    @property
+    def Name(self):
+        """任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ExecDetail(self):
+        """执行详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecDetail
+
+    @ExecDetail.setter
+    def ExecDetail(self, ExecDetail):
+        self._ExecDetail = ExecDetail
+
+    @property
+    def PipelineTaskCount(self):
+        """事中关联任务数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PipelineTaskCount
+
+    @PipelineTaskCount.setter
+    def PipelineTaskCount(self, PipelineTaskCount):
+        self._PipelineTaskCount = PipelineTaskCount
+
+    @property
+    def EnableRuleCount(self):
+        """有效规则数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._EnableRuleCount
+
+    @EnableRuleCount.setter
+    def EnableRuleCount(self, EnableRuleCount):
+        self._EnableRuleCount = EnableRuleCount
+
+    @property
+    def Description(self):
+        """任务描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CreateUserName(self):
+        """监控创建人
+        :rtype: str
+        """
+        return self._CreateUserName
+
+    @CreateUserName.setter
+    def CreateUserName(self, CreateUserName):
+        self._CreateUserName = CreateUserName
+
 
     def _deserialize(self, params):
         self._RuleGroupId = params.get("RuleGroupId")
@@ -67391,6 +67500,12 @@ class RuleGroup(AbstractModel):
         self._SubscribeConfig = params.get("SubscribeConfig")
         self._DsEnvType = params.get("DsEnvType")
         self._ClusterDeployType = params.get("ClusterDeployType")
+        self._Name = params.get("Name")
+        self._ExecDetail = params.get("ExecDetail")
+        self._PipelineTaskCount = params.get("PipelineTaskCount")
+        self._EnableRuleCount = params.get("EnableRuleCount")
+        self._Description = params.get("Description")
+        self._CreateUserName = params.get("CreateUserName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -67986,6 +68101,18 @@ class RuleGroupExecStrategy(AbstractModel):
         :param _DlcGroupName: DLC资源组
 注意：此字段可能返回 null，表示取不到有效值。
         :type DlcGroupName: str
+        :param _RuleGroupName: 任务名称
+        :type RuleGroupName: str
+        :param _DatabaseName: 数据库名称
+        :type DatabaseName: str
+        :param _SchemaName: schema名称
+        :type SchemaName: str
+        :param _TableName: 表名称
+        :type TableName: str
+        :param _DatasourceId: 数据源id
+        :type DatasourceId: str
+        :param _Description: 任务描述
+        :type Description: str
         """
         self._RuleGroupId = None
         self._MonitorType = None
@@ -68005,6 +68132,12 @@ class RuleGroupExecStrategy(AbstractModel):
         self._RuleName = None
         self._TriggerTypes = None
         self._DlcGroupName = None
+        self._RuleGroupName = None
+        self._DatabaseName = None
+        self._SchemaName = None
+        self._TableName = None
+        self._DatasourceId = None
+        self._Description = None
 
     @property
     def RuleGroupId(self):
@@ -68222,6 +68355,72 @@ class RuleGroupExecStrategy(AbstractModel):
     def DlcGroupName(self, DlcGroupName):
         self._DlcGroupName = DlcGroupName
 
+    @property
+    def RuleGroupName(self):
+        """任务名称
+        :rtype: str
+        """
+        return self._RuleGroupName
+
+    @RuleGroupName.setter
+    def RuleGroupName(self, RuleGroupName):
+        self._RuleGroupName = RuleGroupName
+
+    @property
+    def DatabaseName(self):
+        """数据库名称
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def SchemaName(self):
+        """schema名称
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def TableName(self):
+        """表名称
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def DatasourceId(self):
+        """数据源id
+        :rtype: str
+        """
+        return self._DatasourceId
+
+    @DatasourceId.setter
+    def DatasourceId(self, DatasourceId):
+        self._DatasourceId = DatasourceId
+
+    @property
+    def Description(self):
+        """任务描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
 
     def _deserialize(self, params):
         self._RuleGroupId = params.get("RuleGroupId")
@@ -68247,6 +68446,12 @@ class RuleGroupExecStrategy(AbstractModel):
         self._RuleName = params.get("RuleName")
         self._TriggerTypes = params.get("TriggerTypes")
         self._DlcGroupName = params.get("DlcGroupName")
+        self._RuleGroupName = params.get("RuleGroupName")
+        self._DatabaseName = params.get("DatabaseName")
+        self._SchemaName = params.get("SchemaName")
+        self._TableName = params.get("TableName")
+        self._DatasourceId = params.get("DatasourceId")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -68550,6 +68755,9 @@ class RuleGroupSubscribe(AbstractModel):
         :param _RuleName: 规则名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleName: str
+        :param _AlarmMessageRule: 发送对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmMessageRule: str
         """
         self._RuleGroupId = None
         self._Receivers = None
@@ -68557,6 +68765,7 @@ class RuleGroupSubscribe(AbstractModel):
         self._WebHooks = None
         self._RuleId = None
         self._RuleName = None
+        self._AlarmMessageRule = None
 
     @property
     def RuleGroupId(self):
@@ -68630,6 +68839,18 @@ class RuleGroupSubscribe(AbstractModel):
     def RuleName(self, RuleName):
         self._RuleName = RuleName
 
+    @property
+    def AlarmMessageRule(self):
+        """发送对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AlarmMessageRule
+
+    @AlarmMessageRule.setter
+    def AlarmMessageRule(self, AlarmMessageRule):
+        self._AlarmMessageRule = AlarmMessageRule
+
 
     def _deserialize(self, params):
         self._RuleGroupId = params.get("RuleGroupId")
@@ -68648,6 +68869,7 @@ class RuleGroupSubscribe(AbstractModel):
                 self._WebHooks.append(obj)
         self._RuleId = params.get("RuleId")
         self._RuleName = params.get("RuleName")
+        self._AlarmMessageRule = params.get("AlarmMessageRule")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

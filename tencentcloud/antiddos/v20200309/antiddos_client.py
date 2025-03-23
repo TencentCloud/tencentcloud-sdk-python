@@ -1015,31 +1015,6 @@ class AntiddosClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeBlackWhiteIpList(self, request):
-        """接口变更
-
-        获取DDoS防护的IP黑白名单
-
-        :param request: Request instance for DescribeBlackWhiteIpList.
-        :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeBlackWhiteIpListRequest`
-        :rtype: :class:`tencentcloud.antiddos.v20200309.models.DescribeBlackWhiteIpListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeBlackWhiteIpList", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeBlackWhiteIpListResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeCCLevelList(self, request):
         """获取边界防护CC防护等级列表
 
@@ -1583,31 +1558,6 @@ class AntiddosClient(AbstractClient):
             body = self.call("DescribeListPortAclList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeListPortAclListResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeListProtectThresholdConfig(self, request):
-        """接口变更
-
-        获取防护阈值配置列表，包括DDoS的AI、等级、CC阈值开关等
-
-        :param request: Request instance for DescribeListProtectThresholdConfig.
-        :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeListProtectThresholdConfigRequest`
-        :rtype: :class:`tencentcloud.antiddos.v20200309.models.DescribeListProtectThresholdConfigResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeListProtectThresholdConfig", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeListProtectThresholdConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

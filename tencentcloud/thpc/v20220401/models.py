@@ -926,7 +926,6 @@ class ClusterActivity(AbstractModel):
         :param _ActivityStatus: 集群活动状态。取值范围：<br><li>PENDING：等待运行</li><br><li>RUNNING：运行中</li><br><li>SUCCESSFUL：活动成功</li><br><li>PARTIALLY_SUCCESSFUL：活动部分成功</li><br><li>FAILED：活动失败</li>	
         :type ActivityStatus: str
         :param _ActivityStatusCode: 集群活动状态码。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActivityStatusCode: str
         :param _ResultDetail: 集群活动结果详情。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -938,10 +937,8 @@ class ClusterActivity(AbstractModel):
         :param _RelatedNodeActivitySet: 集群活动相关节点活动集合。
         :type RelatedNodeActivitySet: list of NodeActivity
         :param _StartTime: 集群活动开始时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
         :param _EndTime: 集群活动结束时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         """
         self._ClusterId = None
@@ -1003,7 +1000,6 @@ class ClusterActivity(AbstractModel):
     @property
     def ActivityStatusCode(self):
         """集群活动状态码。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ActivityStatusCode
@@ -1060,7 +1056,6 @@ class ClusterActivity(AbstractModel):
     @property
     def StartTime(self):
         """集群活动开始时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StartTime
@@ -1072,7 +1067,6 @@ class ClusterActivity(AbstractModel):
     @property
     def EndTime(self):
         """集群活动结束时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndTime

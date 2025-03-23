@@ -2105,29 +2105,6 @@ class LkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def ResetSession(self, request):
-        """重置会话
-
-        :param request: Request instance for ResetSession.
-        :type request: :class:`tencentcloud.lke.v20231130.models.ResetSessionRequest`
-        :rtype: :class:`tencentcloud.lke.v20231130.models.ResetSessionResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ResetSession", params, headers=headers)
-            response = json.loads(body)
-            model = models.ResetSessionResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def RetryDocAudit(self, request):
         """文档解析重试
 

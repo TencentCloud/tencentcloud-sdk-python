@@ -1598,7 +1598,7 @@ class EmrClient(AbstractClient):
 
 
     def ResizeDataDisks(self, request):
-        """云盘扩容
+        """云数据盘扩容
 
         :param request: Request instance for ResizeDataDisks.
         :type request: :class:`tencentcloud.emr.v20190103.models.ResizeDataDisksRequest`

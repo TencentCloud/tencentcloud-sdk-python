@@ -14079,6 +14079,137 @@ class DescribeTopicRuleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeUnbindedDevicesRequest(AbstractModel):
+    """DescribeUnbindedDevices请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品ID
+        :type ProductId: str
+        :param _Offset: 分页偏移量
+        :type Offset: int
+        :param _Limit: 分页的页大小
+        :type Limit: int
+        """
+        self._ProductId = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def ProductId(self):
+        """产品ID
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def Offset(self):
+        """分页偏移量
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """分页的页大小
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUnbindedDevicesResponse(AbstractModel):
+    """DescribeUnbindedDevices返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UnbindedDevices: 未绑定的设备列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnbindedDevices: list of BindDeviceInfo
+        :param _Total: 设备的总数量
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._UnbindedDevices = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def UnbindedDevices(self):
+        """未绑定的设备列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of BindDeviceInfo
+        """
+        return self._UnbindedDevices
+
+    @UnbindedDevices.setter
+    def UnbindedDevices(self, UnbindedDevices):
+        self._UnbindedDevices = UnbindedDevices
+
+    @property
+    def Total(self):
+        """设备的总数量
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("UnbindedDevices") is not None:
+            self._UnbindedDevices = []
+            for item in params.get("UnbindedDevices"):
+                obj = BindDeviceInfo()
+                obj._deserialize(item)
+                self._UnbindedDevices.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeVideoLicenseRequest(AbstractModel):
     """DescribeVideoLicense请求参数结构体
 

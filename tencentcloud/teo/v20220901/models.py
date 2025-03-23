@@ -21756,7 +21756,7 @@ class DetectLengthLimitCondition(AbstractModel):
         :type Name: str
         :param _Values: 匹配条件的参数值，取值与 Name 成对使用。
 当 Name 值为 body_depth 时， Values 只支持传入单个值，取值有：
-<li>8KB；</li>
+<li>10KB；</li>
 <li>64KB；</li>
 <li>128KB。</li>
         :type Values: list of str
@@ -21780,7 +21780,7 @@ class DetectLengthLimitCondition(AbstractModel):
     def Values(self):
         """匹配条件的参数值，取值与 Name 成对使用。
 当 Name 值为 body_depth 时， Values 只支持传入单个值，取值有：
-<li>8KB；</li>
+<li>10KB；</li>
 <li>64KB；</li>
 <li>128KB。</li>
         :rtype: list of str
@@ -31241,6 +31241,85 @@ class ModifyL4ProxyStatusRequest(AbstractModel):
 
 class ModifyL4ProxyStatusResponse(AbstractModel):
     """ModifyL4ProxyStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyL7AccRulePriorityRequest(AbstractModel):
+    """ModifyL7AccRulePriority请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _RuleIds: 站点 ID 下完整的规则 ID 列表，规则 ID 列表可以通过 [查询七层加速规则](https://cloud.tencent.com/document/product/1552/115820) 获取，最终优先级顺序将调整成规则 ID 列表的顺序，从前往后依次执行。
+        :type RuleIds: list of str
+        """
+        self._ZoneId = None
+        self._RuleIds = None
+
+    @property
+    def ZoneId(self):
+        """站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def RuleIds(self):
+        """站点 ID 下完整的规则 ID 列表，规则 ID 列表可以通过 [查询七层加速规则](https://cloud.tencent.com/document/product/1552/115820) 获取，最终优先级顺序将调整成规则 ID 列表的顺序，从前往后依次执行。
+        :rtype: list of str
+        """
+        return self._RuleIds
+
+    @RuleIds.setter
+    def RuleIds(self, RuleIds):
+        self._RuleIds = RuleIds
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._RuleIds = params.get("RuleIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyL7AccRulePriorityResponse(AbstractModel):
+    """ModifyL7AccRulePriority返回参数结构体
 
     """
 

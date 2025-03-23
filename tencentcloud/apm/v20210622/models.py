@@ -2648,20 +2648,20 @@ class DescribeMetricRecordsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Metrics: 指标列表
-        :type Metrics: list of QueryMetricItem
         :param _InstanceId: 业务系统 ID
         :type InstanceId: str
+        :param _Metrics: 指标列表
+        :type Metrics: list of QueryMetricItem
         :param _StartTime: 开始时间（单位为秒）
         :type StartTime: int
         :param _EndTime: 结束时间（单位为秒）
         :type EndTime: int
+        :param _GroupBy: 聚合维度
+        :type GroupBy: list of str
         :param _Filters: 过滤条件
         :type Filters: list of Filter
         :param _OrFilters: Or 过滤条件
         :type OrFilters: list of Filter
-        :param _GroupBy: 聚合维度
-        :type GroupBy: list of str
         :param _OrderBy: 排序
 现支持的 Key 有：
 
@@ -2687,13 +2687,13 @@ class DescribeMetricRecordsRequest(AbstractModel):
         :param _PageSize: 页长
         :type PageSize: int
         """
-        self._Metrics = None
         self._InstanceId = None
+        self._Metrics = None
         self._StartTime = None
         self._EndTime = None
+        self._GroupBy = None
         self._Filters = None
         self._OrFilters = None
-        self._GroupBy = None
         self._OrderBy = None
         self._BusinessName = None
         self._Type = None
@@ -2701,17 +2701,6 @@ class DescribeMetricRecordsRequest(AbstractModel):
         self._Offset = None
         self._PageIndex = None
         self._PageSize = None
-
-    @property
-    def Metrics(self):
-        """指标列表
-        :rtype: list of QueryMetricItem
-        """
-        return self._Metrics
-
-    @Metrics.setter
-    def Metrics(self, Metrics):
-        self._Metrics = Metrics
 
     @property
     def InstanceId(self):
@@ -2723,6 +2712,17 @@ class DescribeMetricRecordsRequest(AbstractModel):
     @InstanceId.setter
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
+
+    @property
+    def Metrics(self):
+        """指标列表
+        :rtype: list of QueryMetricItem
+        """
+        return self._Metrics
+
+    @Metrics.setter
+    def Metrics(self, Metrics):
+        self._Metrics = Metrics
 
     @property
     def StartTime(self):
@@ -2747,6 +2747,17 @@ class DescribeMetricRecordsRequest(AbstractModel):
         self._EndTime = EndTime
 
     @property
+    def GroupBy(self):
+        """聚合维度
+        :rtype: list of str
+        """
+        return self._GroupBy
+
+    @GroupBy.setter
+    def GroupBy(self, GroupBy):
+        self._GroupBy = GroupBy
+
+    @property
     def Filters(self):
         """过滤条件
         :rtype: list of Filter
@@ -2767,17 +2778,6 @@ class DescribeMetricRecordsRequest(AbstractModel):
     @OrFilters.setter
     def OrFilters(self, OrFilters):
         self._OrFilters = OrFilters
-
-    @property
-    def GroupBy(self):
-        """聚合维度
-        :rtype: list of str
-        """
-        return self._GroupBy
-
-    @GroupBy.setter
-    def GroupBy(self, GroupBy):
-        self._GroupBy = GroupBy
 
     @property
     def OrderBy(self):
@@ -2868,15 +2868,16 @@ class DescribeMetricRecordsRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
         if params.get("Metrics") is not None:
             self._Metrics = []
             for item in params.get("Metrics"):
                 obj = QueryMetricItem()
                 obj._deserialize(item)
                 self._Metrics.append(obj)
-        self._InstanceId = params.get("InstanceId")
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
+        self._GroupBy = params.get("GroupBy")
         if params.get("Filters") is not None:
             self._Filters = []
             for item in params.get("Filters"):
@@ -2889,7 +2890,6 @@ class DescribeMetricRecordsRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self._OrFilters.append(obj)
-        self._GroupBy = params.get("GroupBy")
         if params.get("OrderBy") is not None:
             self._OrderBy = OrderBy()
             self._OrderBy._deserialize(params.get("OrderBy"))
@@ -2983,14 +2983,14 @@ class DescribeServiceOverviewRequest(AbstractModel):
         :type InstanceId: str
         :param _Metrics: 指标列表
         :type Metrics: list of QueryMetricItem
-        :param _GroupBy: 聚合维度
-        :type GroupBy: list of str
-        :param _Filters: 过滤条件
-        :type Filters: list of Filter
         :param _StartTime: 开始时间（单位：秒）
         :type StartTime: int
         :param _EndTime: 结束时间（单位：秒）
         :type EndTime: int
+        :param _GroupBy: 聚合维度
+        :type GroupBy: list of str
+        :param _Filters: 过滤条件
+        :type Filters: list of Filter
         :param _OrderBy: 排序方式
 Value 填写：
 - asc：对查询指标进行升序排序
@@ -3003,10 +3003,10 @@ Value 填写：
         """
         self._InstanceId = None
         self._Metrics = None
-        self._GroupBy = None
-        self._Filters = None
         self._StartTime = None
         self._EndTime = None
+        self._GroupBy = None
+        self._Filters = None
         self._OrderBy = None
         self._Limit = None
         self._Offset = None
@@ -3034,28 +3034,6 @@ Value 填写：
         self._Metrics = Metrics
 
     @property
-    def GroupBy(self):
-        """聚合维度
-        :rtype: list of str
-        """
-        return self._GroupBy
-
-    @GroupBy.setter
-    def GroupBy(self, GroupBy):
-        self._GroupBy = GroupBy
-
-    @property
-    def Filters(self):
-        """过滤条件
-        :rtype: list of Filter
-        """
-        return self._Filters
-
-    @Filters.setter
-    def Filters(self, Filters):
-        self._Filters = Filters
-
-    @property
     def StartTime(self):
         """开始时间（单位：秒）
         :rtype: int
@@ -3076,6 +3054,28 @@ Value 填写：
     @EndTime.setter
     def EndTime(self, EndTime):
         self._EndTime = EndTime
+
+    @property
+    def GroupBy(self):
+        """聚合维度
+        :rtype: list of str
+        """
+        return self._GroupBy
+
+    @GroupBy.setter
+    def GroupBy(self, GroupBy):
+        self._GroupBy = GroupBy
+
+    @property
+    def Filters(self):
+        """过滤条件
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
     @property
     def OrderBy(self):
@@ -3122,6 +3122,8 @@ Value 填写：
                 obj = QueryMetricItem()
                 obj._deserialize(item)
                 self._Metrics.append(obj)
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         self._GroupBy = params.get("GroupBy")
         if params.get("Filters") is not None:
             self._Filters = []
@@ -3129,8 +3131,6 @@ Value 填写：
                 obj = Filter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
-        self._StartTime = params.get("StartTime")
-        self._EndTime = params.get("EndTime")
         if params.get("OrderBy") is not None:
             self._OrderBy = OrderBy()
             self._OrderBy._deserialize(params.get("OrderBy"))

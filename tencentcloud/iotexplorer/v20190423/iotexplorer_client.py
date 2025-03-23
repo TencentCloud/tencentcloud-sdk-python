@@ -2142,6 +2142,29 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeUnbindedDevices(self, request):
+        """获取未绑定的设备列表
+
+        :param request: Request instance for DescribeUnbindedDevices.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeUnbindedDevicesRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeUnbindedDevicesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUnbindedDevices", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUnbindedDevicesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeVideoLicense(self, request):
         """用于查询视频激活码统计概览
 

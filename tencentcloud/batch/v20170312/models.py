@@ -42,10 +42,8 @@ class Activity(AbstractModel):
         :param _StartTime: 活动开始时间
         :type StartTime: str
         :param _EndTime: 活动结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         :param _InstanceId: 云服务器实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         """
         self._ActivityId = None
@@ -150,7 +148,6 @@ class Activity(AbstractModel):
     @property
     def EndTime(self):
         """活动结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndTime
@@ -162,7 +159,6 @@ class Activity(AbstractModel):
     @property
     def InstanceId(self):
         """云服务器实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -201,13 +197,10 @@ class AgentRunningMode(AbstractModel):
     def __init__(self):
         r"""
         :param _Scene: 场景类型，支持WINDOWS
-注意：此字段可能返回 null，表示取不到有效值。
         :type Scene: str
         :param _User: 运行Agent的User
-注意：此字段可能返回 null，表示取不到有效值。
         :type User: str
         :param _Session: 运行Agent的Session
-注意：此字段可能返回 null，表示取不到有效值。
         :type Session: str
         """
         self._Scene = None
@@ -217,7 +210,6 @@ class AgentRunningMode(AbstractModel):
     @property
     def Scene(self):
         """场景类型，支持WINDOWS
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Scene
@@ -229,7 +221,6 @@ class AgentRunningMode(AbstractModel):
     @property
     def User(self):
         """运行Agent的User
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._User
@@ -241,7 +232,6 @@ class AgentRunningMode(AbstractModel):
     @property
     def Session(self):
         """运行Agent的Session
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Session
@@ -363,19 +353,14 @@ class Application(AbstractModel):
     def __init__(self):
         r"""
         :param _DeliveryForm: 应用程序的交付方式，包括PACKAGE、LOCAL 两种取值，分别指远程存储的软件包、计算环境本地。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeliveryForm: str
         :param _Command: 任务执行命令。与Commands不能同时指定。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Command: str
         :param _PackagePath: 应用程序软件包的远程存储路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type PackagePath: str
         :param _Docker: 应用使用Docker的相关配置。在使用Docker配置的情况下，DeliveryForm 为 LOCAL 表示直接使用Docker镜像内部的应用软件，通过Docker方式运行；DeliveryForm 为 PACKAGE，表示将远程应用包注入到Docker镜像后，通过Docker方式运行。为避免Docker不同版本的兼容性问题，Docker安装包及相关依赖由Batch统一负责，对于已安装Docker的自定义镜像，请卸载后再使用Docker特性。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Docker: :class:`tencentcloud.batch.v20170312.models.Docker`
         :param _Commands: 任务执行命令信息。与Command不能同时指定。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Commands: list of CommandLine
         """
         self._DeliveryForm = None
@@ -387,7 +372,6 @@ class Application(AbstractModel):
     @property
     def DeliveryForm(self):
         """应用程序的交付方式，包括PACKAGE、LOCAL 两种取值，分别指远程存储的软件包、计算环境本地。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeliveryForm
@@ -399,7 +383,6 @@ class Application(AbstractModel):
     @property
     def Command(self):
         """任务执行命令。与Commands不能同时指定。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Command
@@ -411,7 +394,6 @@ class Application(AbstractModel):
     @property
     def PackagePath(self):
         """应用程序软件包的远程存储路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PackagePath
@@ -423,7 +405,6 @@ class Application(AbstractModel):
     @property
     def Docker(self):
         """应用使用Docker的相关配置。在使用Docker配置的情况下，DeliveryForm 为 LOCAL 表示直接使用Docker镜像内部的应用软件，通过Docker方式运行；DeliveryForm 为 PACKAGE，表示将远程应用包注入到Docker镜像后，通过Docker方式运行。为避免Docker不同版本的兼容性问题，Docker安装包及相关依赖由Batch统一负责，对于已安装Docker的自定义镜像，请卸载后再使用Docker特性。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.batch.v20170312.models.Docker`
         """
         return self._Docker
@@ -435,7 +416,6 @@ class Application(AbstractModel):
     @property
     def Commands(self):
         """任务执行命令信息。与Command不能同时指定。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CommandLine
         """
         return self._Commands
@@ -560,13 +540,10 @@ class Authentication(AbstractModel):
     def __init__(self):
         r"""
         :param _Scene: 授权场景，例如COS
-注意：此字段可能返回 null，表示取不到有效值。
         :type Scene: str
         :param _SecretId: SecretId
-注意：此字段可能返回 null，表示取不到有效值。
         :type SecretId: str
         :param _SecretKey: SecretKey
-注意：此字段可能返回 null，表示取不到有效值。
         :type SecretKey: str
         """
         self._Scene = None
@@ -576,7 +553,6 @@ class Authentication(AbstractModel):
     @property
     def Scene(self):
         """授权场景，例如COS
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Scene
@@ -588,7 +564,6 @@ class Authentication(AbstractModel):
     @property
     def SecretId(self):
         """SecretId
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SecretId
@@ -600,7 +575,6 @@ class Authentication(AbstractModel):
     @property
     def SecretKey(self):
         """SecretKey
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SecretKey
@@ -632,7 +606,6 @@ class CommandLine(AbstractModel):
     def __init__(self):
         r"""
         :param _Command: 任务执行命令。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Command: str
         """
         self._Command = None
@@ -640,7 +613,6 @@ class CommandLine(AbstractModel):
     @property
     def Command(self):
         """任务执行命令。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Command
@@ -672,31 +644,24 @@ class ComputeEnvCreateInfo(AbstractModel):
         :param _EnvId: 计算环境 ID
         :type EnvId: str
         :param _EnvName: 计算环境名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnvName: str
         :param _EnvDescription: 计算环境描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnvDescription: str
         :param _EnvType: 计算环境类型，仅支持“MANAGED”类型
         :type EnvType: str
         :param _EnvData: 计算环境参数
         :type EnvData: :class:`tencentcloud.batch.v20170312.models.EnvData`
         :param _MountDataDisks: 数据盘挂载选项
-注意：此字段可能返回 null，表示取不到有效值。
         :type MountDataDisks: list of MountDataDisk
         :param _InputMappings: 输入映射
-注意：此字段可能返回 null，表示取不到有效值。
         :type InputMappings: list of InputMapping
         :param _Authentications: 授权信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Authentications: list of Authentication
         :param _Notifications: 通知信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Notifications: list of Notification
         :param _DesiredComputeNodeCount: 计算节点期望个数
         :type DesiredComputeNodeCount: int
         :param _Tags: 计算环境标签列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
         """
         self._EnvId = None
@@ -725,7 +690,6 @@ class ComputeEnvCreateInfo(AbstractModel):
     @property
     def EnvName(self):
         """计算环境名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EnvName
@@ -737,7 +701,6 @@ class ComputeEnvCreateInfo(AbstractModel):
     @property
     def EnvDescription(self):
         """计算环境描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EnvDescription
@@ -771,7 +734,6 @@ class ComputeEnvCreateInfo(AbstractModel):
     @property
     def MountDataDisks(self):
         """数据盘挂载选项
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of MountDataDisk
         """
         return self._MountDataDisks
@@ -783,7 +745,6 @@ class ComputeEnvCreateInfo(AbstractModel):
     @property
     def InputMappings(self):
         """输入映射
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of InputMapping
         """
         return self._InputMappings
@@ -795,7 +756,6 @@ class ComputeEnvCreateInfo(AbstractModel):
     @property
     def Authentications(self):
         """授权信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Authentication
         """
         return self._Authentications
@@ -807,7 +767,6 @@ class ComputeEnvCreateInfo(AbstractModel):
     @property
     def Notifications(self):
         """通知信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Notification
         """
         return self._Notifications
@@ -830,7 +789,6 @@ class ComputeEnvCreateInfo(AbstractModel):
     @property
     def Tags(self):
         """计算环境标签列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._Tags
@@ -2283,10 +2241,8 @@ class Dependence(AbstractModel):
     def __init__(self):
         r"""
         :param _StartTask: 依赖关系的起点任务名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTask: str
         :param _EndTask: 依赖关系的终点任务名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTask: str
         """
         self._StartTask = None
@@ -2295,7 +2251,6 @@ class Dependence(AbstractModel):
     @property
     def StartTask(self):
         """依赖关系的起点任务名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StartTask
@@ -2307,7 +2262,6 @@ class Dependence(AbstractModel):
     @property
     def EndTask(self):
         """依赖关系的终点任务名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndTask
@@ -2619,7 +2573,6 @@ class DescribeComputeEnvCreateInfoResponse(AbstractModel):
         :param _EnvName: 计算环境名称
         :type EnvName: str
         :param _EnvDescription: 计算环境描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnvDescription: str
         :param _EnvType: 计算环境类型，仅支持“MANAGED”类型
         :type EnvType: str
@@ -2679,7 +2632,6 @@ class DescribeComputeEnvCreateInfoResponse(AbstractModel):
     @property
     def EnvDescription(self):
         """计算环境描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EnvDescription
@@ -3719,7 +3671,6 @@ class DescribeJobResponse(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
         :param _NextAction: 下一步动作
-注意：此字段可能返回 null，表示取不到有效值。
         :type NextAction: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3887,7 +3838,6 @@ class DescribeJobResponse(AbstractModel):
     @property
     def NextAction(self):
         """下一步动作
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NextAction
@@ -4971,7 +4921,6 @@ class Docker(AbstractModel):
         :param _DelayOnRetry: 拉取Docker镜像失败时延迟时间。单位：秒。
         :type DelayOnRetry: int
         :param _DockerRunOption: Docker命令运行参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DockerRunOption: str
         """
         self._Image = None
@@ -5051,7 +5000,6 @@ class Docker(AbstractModel):
     @property
     def DockerRunOption(self):
         """Docker命令运行参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DockerRunOption
@@ -5785,10 +5733,8 @@ class EnvVar(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 环境变量名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Value: 环境变量取值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Name = None
@@ -5797,7 +5743,6 @@ class EnvVar(AbstractModel):
     @property
     def Name(self):
         """环境变量名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -5809,7 +5754,6 @@ class EnvVar(AbstractModel):
     @property
     def Value(self):
         """环境变量取值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -5896,10 +5840,8 @@ class EventVar(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 自定义键
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Value: 自定义值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Name = None
@@ -5908,7 +5850,6 @@ class EventVar(AbstractModel):
     @property
     def Name(self):
         """自定义键
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -5920,7 +5861,6 @@ class EventVar(AbstractModel):
     @property
     def Value(self):
         """自定义值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -6081,13 +6021,10 @@ class InputMapping(AbstractModel):
     def __init__(self):
         r"""
         :param _SourcePath: 源端路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type SourcePath: str
         :param _DestinationPath: 目的端路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type DestinationPath: str
         :param _MountOptionParameter: 挂载配置项参数
-注意：此字段可能返回 null，表示取不到有效值。
         :type MountOptionParameter: str
         """
         self._SourcePath = None
@@ -6097,7 +6034,6 @@ class InputMapping(AbstractModel):
     @property
     def SourcePath(self):
         """源端路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SourcePath
@@ -6109,7 +6045,6 @@ class InputMapping(AbstractModel):
     @property
     def DestinationPath(self):
         """目的端路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DestinationPath
@@ -6121,7 +6056,6 @@ class InputMapping(AbstractModel):
     @property
     def MountOptionParameter(self):
         """挂载配置项参数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MountOptionParameter
@@ -7480,17 +7414,14 @@ class JobView(AbstractModel):
         :param _Priority: 作业优先级
         :type Priority: int
         :param _Placement: 位置信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Placement: :class:`tencentcloud.batch.v20170312.models.Placement`
         :param _CreateTime: 创建时间
         :type CreateTime: str
         :param _EndTime: 结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         :param _TaskMetrics: 任务统计指标
         :type TaskMetrics: :class:`tencentcloud.batch.v20170312.models.TaskMetrics`
         :param _Tags: 作业绑定的标签列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
         """
         self._JobId = None
@@ -7550,7 +7481,6 @@ class JobView(AbstractModel):
     @property
     def Placement(self):
         """位置信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.batch.v20170312.models.Placement`
         """
         return self._Placement
@@ -7573,7 +7503,6 @@ class JobView(AbstractModel):
     @property
     def EndTime(self):
         """结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndTime
@@ -7596,7 +7525,6 @@ class JobView(AbstractModel):
     @property
     def Tags(self):
         """作业绑定的标签列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._Tags
@@ -8044,10 +7972,8 @@ class MountDataDisk(AbstractModel):
     def __init__(self):
         r"""
         :param _LocalPath: 挂载点，Linux系统合法路径，或Windows系统盘符,比如"H:\\"
-注意：此字段可能返回 null，表示取不到有效值。
         :type LocalPath: str
         :param _FileSystemType: 文件系统类型，Linux系统下支持"EXT3"和"EXT4"两种，默认"EXT3"；Windows系统下仅支持"NTFS"
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileSystemType: str
         """
         self._LocalPath = None
@@ -8056,7 +7982,6 @@ class MountDataDisk(AbstractModel):
     @property
     def LocalPath(self):
         """挂载点，Linux系统合法路径，或Windows系统盘符,比如"H:\\"
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LocalPath
@@ -8068,7 +7993,6 @@ class MountDataDisk(AbstractModel):
     @property
     def FileSystemType(self):
         """文件系统类型，Linux系统下支持"EXT3"和"EXT4"两种，默认"EXT3"；Windows系统下仅支持"NTFS"
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FileSystemType
@@ -9036,16 +8960,12 @@ class RedirectInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _StdoutRedirectPath: 标准输出重定向路径; 
-注意：此字段可能返回 null，表示取不到有效值。
         :type StdoutRedirectPath: str
         :param _StderrRedirectPath: 标准错误重定向路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type StderrRedirectPath: str
         :param _StdoutRedirectFileName: 标准输出重定向文件名，支持三个占位符${BATCH_JOB_ID}、${BATCH_TASK_NAME}、${BATCH_TASK_INSTANCE_INDEX}
-注意：此字段可能返回 null，表示取不到有效值。
         :type StdoutRedirectFileName: str
         :param _StderrRedirectFileName: 标准错误重定向文件名，支持三个占位符${BATCH_JOB_ID}、${BATCH_TASK_NAME}、${BATCH_TASK_INSTANCE_INDEX}
-注意：此字段可能返回 null，表示取不到有效值。
         :type StderrRedirectFileName: str
         """
         self._StdoutRedirectPath = None
@@ -9056,7 +8976,6 @@ class RedirectInfo(AbstractModel):
     @property
     def StdoutRedirectPath(self):
         """标准输出重定向路径; 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StdoutRedirectPath
@@ -9068,7 +8987,6 @@ class RedirectInfo(AbstractModel):
     @property
     def StderrRedirectPath(self):
         """标准错误重定向路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StderrRedirectPath
@@ -9080,7 +8998,6 @@ class RedirectInfo(AbstractModel):
     @property
     def StdoutRedirectFileName(self):
         """标准输出重定向文件名，支持三个占位符${BATCH_JOB_ID}、${BATCH_TASK_NAME}、${BATCH_TASK_INSTANCE_INDEX}
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StdoutRedirectFileName
@@ -9092,7 +9009,6 @@ class RedirectInfo(AbstractModel):
     @property
     def StderrRedirectFileName(self):
         """标准错误重定向文件名，支持三个占位符${BATCH_JOB_ID}、${BATCH_TASK_NAME}、${BATCH_TASK_INSTANCE_INDEX}
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StderrRedirectFileName
@@ -9125,16 +9041,12 @@ class RedirectLocalInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _StdoutLocalPath: 标准输出重定向本地路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type StdoutLocalPath: str
         :param _StderrLocalPath: 标准错误重定向本地路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type StderrLocalPath: str
         :param _StdoutLocalFileName: 标准输出重定向本地文件名，支持三个占位符${BATCH_JOB_ID}、${BATCH_TASK_NAME}、${BATCH_TASK_INSTANCE_INDEX}
-注意：此字段可能返回 null，表示取不到有效值。
         :type StdoutLocalFileName: str
         :param _StderrLocalFileName: 标准错误重定向本地文件名，支持三个占位符${BATCH_JOB_ID}、${BATCH_TASK_NAME}、${BATCH_TASK_INSTANCE_INDEX}
-注意：此字段可能返回 null，表示取不到有效值。
         :type StderrLocalFileName: str
         """
         self._StdoutLocalPath = None
@@ -9145,7 +9057,6 @@ class RedirectLocalInfo(AbstractModel):
     @property
     def StdoutLocalPath(self):
         """标准输出重定向本地路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StdoutLocalPath
@@ -9157,7 +9068,6 @@ class RedirectLocalInfo(AbstractModel):
     @property
     def StderrLocalPath(self):
         """标准错误重定向本地路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StderrLocalPath
@@ -9169,7 +9079,6 @@ class RedirectLocalInfo(AbstractModel):
     @property
     def StdoutLocalFileName(self):
         """标准输出重定向本地文件名，支持三个占位符${BATCH_JOB_ID}、${BATCH_TASK_NAME}、${BATCH_TASK_INSTANCE_INDEX}
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StdoutLocalFileName
@@ -9181,7 +9090,6 @@ class RedirectLocalInfo(AbstractModel):
     @property
     def StderrLocalFileName(self):
         """标准错误重定向本地文件名，支持三个占位符${BATCH_JOB_ID}、${BATCH_TASK_NAME}、${BATCH_TASK_INSTANCE_INDEX}
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StderrLocalFileName
@@ -9736,10 +9644,8 @@ class Tag(AbstractModel):
     def __init__(self):
         r"""
         :param _Key: 标签键。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
         :param _Value: 标签值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Key = None
@@ -9748,7 +9654,6 @@ class Tag(AbstractModel):
     @property
     def Key(self):
         """标签键。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Key
@@ -9760,7 +9665,6 @@ class Tag(AbstractModel):
     @property
     def Value(self):
         """标签值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -10131,22 +10035,16 @@ class TaskInstanceLog(AbstractModel):
         :param _TaskInstanceIndex: 任务实例
         :type TaskInstanceIndex: int
         :param _StdoutLog: 标准输出日志（Base64编码，解码后最大日志长度2048字节）
-注意：此字段可能返回 null，表示取不到有效值。
         :type StdoutLog: str
         :param _StderrLog: 标准错误日志（Base64编码，解码后最大日志长度2048字节）
-注意：此字段可能返回 null，表示取不到有效值。
         :type StderrLog: str
         :param _StdoutRedirectPath: 标准输出重定向路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type StdoutRedirectPath: str
         :param _StderrRedirectPath: 标准错误重定向路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type StderrRedirectPath: str
         :param _StdoutRedirectFileName: 标准输出重定向文件名
-注意：此字段可能返回 null，表示取不到有效值。
         :type StdoutRedirectFileName: str
         :param _StderrRedirectFileName: 标准错误重定向文件名
-注意：此字段可能返回 null，表示取不到有效值。
         :type StderrRedirectFileName: str
         """
         self._TaskInstanceIndex = None
@@ -10171,7 +10069,6 @@ class TaskInstanceLog(AbstractModel):
     @property
     def StdoutLog(self):
         """标准输出日志（Base64编码，解码后最大日志长度2048字节）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StdoutLog
@@ -10183,7 +10080,6 @@ class TaskInstanceLog(AbstractModel):
     @property
     def StderrLog(self):
         """标准错误日志（Base64编码，解码后最大日志长度2048字节）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StderrLog
@@ -10195,7 +10091,6 @@ class TaskInstanceLog(AbstractModel):
     @property
     def StdoutRedirectPath(self):
         """标准输出重定向路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StdoutRedirectPath
@@ -10207,7 +10102,6 @@ class TaskInstanceLog(AbstractModel):
     @property
     def StderrRedirectPath(self):
         """标准错误重定向路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StderrRedirectPath
@@ -10219,7 +10113,6 @@ class TaskInstanceLog(AbstractModel):
     @property
     def StdoutRedirectFileName(self):
         """标准输出重定向文件名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StdoutRedirectFileName
@@ -10231,7 +10124,6 @@ class TaskInstanceLog(AbstractModel):
     @property
     def StderrRedirectFileName(self):
         """标准错误重定向文件名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StderrRedirectFileName
@@ -10267,28 +10159,20 @@ class TaskInstanceMetrics(AbstractModel):
     def __init__(self):
         r"""
         :param _SubmittedCount: Submitted个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubmittedCount: int
         :param _PendingCount: Pending个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type PendingCount: int
         :param _RunnableCount: Runnable个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type RunnableCount: int
         :param _StartingCount: Starting个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartingCount: int
         :param _RunningCount: Running个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type RunningCount: int
         :param _SucceedCount: Succeed个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type SucceedCount: int
         :param _FailedInterruptedCount: FailedInterrupted个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailedInterruptedCount: int
         :param _FailedCount: Failed个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailedCount: int
         """
         self._SubmittedCount = None
@@ -10303,7 +10187,6 @@ class TaskInstanceMetrics(AbstractModel):
     @property
     def SubmittedCount(self):
         """Submitted个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SubmittedCount
@@ -10315,7 +10198,6 @@ class TaskInstanceMetrics(AbstractModel):
     @property
     def PendingCount(self):
         """Pending个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PendingCount
@@ -10327,7 +10209,6 @@ class TaskInstanceMetrics(AbstractModel):
     @property
     def RunnableCount(self):
         """Runnable个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RunnableCount
@@ -10339,7 +10220,6 @@ class TaskInstanceMetrics(AbstractModel):
     @property
     def StartingCount(self):
         """Starting个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._StartingCount
@@ -10351,7 +10231,6 @@ class TaskInstanceMetrics(AbstractModel):
     @property
     def RunningCount(self):
         """Running个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RunningCount
@@ -10363,7 +10242,6 @@ class TaskInstanceMetrics(AbstractModel):
     @property
     def SucceedCount(self):
         """Succeed个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SucceedCount
@@ -10375,7 +10253,6 @@ class TaskInstanceMetrics(AbstractModel):
     @property
     def FailedInterruptedCount(self):
         """FailedInterrupted个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FailedInterruptedCount
@@ -10387,7 +10264,6 @@ class TaskInstanceMetrics(AbstractModel):
     @property
     def FailedCount(self):
         """Failed个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FailedCount
@@ -10428,23 +10304,18 @@ class TaskInstanceView(AbstractModel):
         :param _TaskInstanceState: 任务实例状态
         :type TaskInstanceState: str
         :param _ExitCode: 应用程序执行结束的exit code
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExitCode: int
         :param _StateReason: 任务实例状态原因，任务实例失败时，会记录失败原因
         :type StateReason: str
         :param _ComputeNodeInstanceId: 任务实例运行时所在计算节点（例如CVM）的InstanceId。任务实例未运行或者完结时，本字段为空。任务实例重试时，本字段会随之变化
-注意：此字段可能返回 null，表示取不到有效值。
         :type ComputeNodeInstanceId: str
         :param _CreateTime: 创建时间
         :type CreateTime: str
         :param _LaunchTime: 启动时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type LaunchTime: str
         :param _RunningTime: 开始运行时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type RunningTime: str
         :param _EndTime: 结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         :param _RedirectInfo: 重定向信息
         :type RedirectInfo: :class:`tencentcloud.batch.v20170312.models.RedirectInfo`
@@ -10488,7 +10359,6 @@ class TaskInstanceView(AbstractModel):
     @property
     def ExitCode(self):
         """应用程序执行结束的exit code
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ExitCode
@@ -10511,7 +10381,6 @@ class TaskInstanceView(AbstractModel):
     @property
     def ComputeNodeInstanceId(self):
         """任务实例运行时所在计算节点（例如CVM）的InstanceId。任务实例未运行或者完结时，本字段为空。任务实例重试时，本字段会随之变化
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ComputeNodeInstanceId
@@ -10534,7 +10403,6 @@ class TaskInstanceView(AbstractModel):
     @property
     def LaunchTime(self):
         """启动时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LaunchTime
@@ -10546,7 +10414,6 @@ class TaskInstanceView(AbstractModel):
     @property
     def RunningTime(self):
         """开始运行时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RunningTime
@@ -10558,7 +10425,6 @@ class TaskInstanceView(AbstractModel):
     @property
     def EndTime(self):
         """结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndTime
@@ -10622,28 +10488,20 @@ class TaskMetrics(AbstractModel):
     def __init__(self):
         r"""
         :param _SubmittedCount: Submitted个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubmittedCount: int
         :param _PendingCount: Pending个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type PendingCount: int
         :param _RunnableCount: Runnable个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type RunnableCount: int
         :param _StartingCount: Starting个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartingCount: int
         :param _RunningCount: Running个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type RunningCount: int
         :param _SucceedCount: Succeed个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type SucceedCount: int
         :param _FailedInterruptedCount: FailedInterrupted个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailedInterruptedCount: int
         :param _FailedCount: Failed个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailedCount: int
         """
         self._SubmittedCount = None
@@ -10658,7 +10516,6 @@ class TaskMetrics(AbstractModel):
     @property
     def SubmittedCount(self):
         """Submitted个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SubmittedCount
@@ -10670,7 +10527,6 @@ class TaskMetrics(AbstractModel):
     @property
     def PendingCount(self):
         """Pending个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PendingCount
@@ -10682,7 +10538,6 @@ class TaskMetrics(AbstractModel):
     @property
     def RunnableCount(self):
         """Runnable个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RunnableCount
@@ -10694,7 +10549,6 @@ class TaskMetrics(AbstractModel):
     @property
     def StartingCount(self):
         """Starting个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._StartingCount
@@ -10706,7 +10560,6 @@ class TaskMetrics(AbstractModel):
     @property
     def RunningCount(self):
         """Running个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RunningCount
@@ -10718,7 +10571,6 @@ class TaskMetrics(AbstractModel):
     @property
     def SucceedCount(self):
         """Succeed个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SucceedCount
@@ -10730,7 +10582,6 @@ class TaskMetrics(AbstractModel):
     @property
     def FailedInterruptedCount(self):
         """FailedInterrupted个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FailedInterruptedCount
@@ -10742,7 +10593,6 @@ class TaskMetrics(AbstractModel):
     @property
     def FailedCount(self):
         """Failed个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FailedCount

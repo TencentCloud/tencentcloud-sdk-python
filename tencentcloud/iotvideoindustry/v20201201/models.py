@@ -5188,10 +5188,8 @@ class DescribeDeviceListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 设备总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _Devices: 设备详细信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Devices: list of AllDeviceInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5203,7 +5201,6 @@ class DescribeDeviceListResponse(AbstractModel):
     @property
     def TotalCount(self):
         """设备总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -5215,7 +5212,6 @@ class DescribeDeviceListResponse(AbstractModel):
     @property
     def Devices(self):
         """设备详细信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AllDeviceInfo
         """
         return self._Devices
@@ -6398,10 +6394,8 @@ class DescribeLiveChannelListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Total: 频道总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _LiveChannels: 频道信息数组
-注意：此字段可能返回 null，表示取不到有效值。
         :type LiveChannels: list of LiveChannelInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6413,7 +6407,6 @@ class DescribeLiveChannelListResponse(AbstractModel):
     @property
     def Total(self):
         """频道总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -6425,7 +6418,6 @@ class DescribeLiveChannelListResponse(AbstractModel):
     @property
     def LiveChannels(self):
         """频道信息数组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LiveChannelInfo
         """
         return self._LiveChannels
@@ -7514,10 +7506,8 @@ class DescribeMessageForwardsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Total: 配置总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _List: 配置列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of MessageForward
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7529,7 +7519,6 @@ class DescribeMessageForwardsResponse(AbstractModel):
     @property
     def Total(self):
         """配置总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -7541,7 +7530,6 @@ class DescribeMessageForwardsResponse(AbstractModel):
     @property
     def List(self):
         """配置列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of MessageForward
         """
         return self._List
@@ -10377,10 +10365,8 @@ class DeviceMonitorValue(AbstractModel):
     def __init__(self):
         r"""
         :param _Value: 统计值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: float
         :param _Time: 统计时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type Time: int
         """
         self._Value = None
@@ -10389,7 +10375,6 @@ class DeviceMonitorValue(AbstractModel):
     @property
     def Value(self):
         """统计值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Value
@@ -10401,7 +10386,6 @@ class DeviceMonitorValue(AbstractModel):
     @property
     def Time(self):
         """统计时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Time
@@ -11872,25 +11856,18 @@ class LiveChannelInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _LiveChannelId: 频道ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type LiveChannelId: str
         :param _LiveChannelName: 频道名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type LiveChannelName: str
         :param _LiveChannelType: 频道类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type LiveChannelType: int
         :param _LiveStatus: 通道直播状态：1: 未推流，2: 推流中
-注意：此字段可能返回 null，表示取不到有效值。
         :type LiveStatus: int
         :param _PushStreamAddress: 推流地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type PushStreamAddress: str
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _UpdateTime: 修改时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         """
         self._LiveChannelId = None
@@ -11904,7 +11881,6 @@ class LiveChannelInfo(AbstractModel):
     @property
     def LiveChannelId(self):
         """频道ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LiveChannelId
@@ -11916,7 +11892,6 @@ class LiveChannelInfo(AbstractModel):
     @property
     def LiveChannelName(self):
         """频道名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LiveChannelName
@@ -11928,7 +11903,6 @@ class LiveChannelInfo(AbstractModel):
     @property
     def LiveChannelType(self):
         """频道类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LiveChannelType
@@ -11940,7 +11914,6 @@ class LiveChannelInfo(AbstractModel):
     @property
     def LiveStatus(self):
         """通道直播状态：1: 未推流，2: 推流中
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LiveStatus
@@ -11952,7 +11925,6 @@ class LiveChannelInfo(AbstractModel):
     @property
     def PushStreamAddress(self):
         """推流地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PushStreamAddress
@@ -11964,7 +11936,6 @@ class LiveChannelInfo(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -11976,7 +11947,6 @@ class LiveChannelInfo(AbstractModel):
     @property
     def UpdateTime(self):
         """修改时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime
@@ -12274,37 +12244,26 @@ class MessageForward(AbstractModel):
     def __init__(self):
         r"""
         :param _IntId: 配置ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type IntId: int
         :param _Uin: 用户Uin
-注意：此字段可能返回 null，表示取不到有效值。
         :type Uin: str
         :param _MessageType: json数组， 转发类型 1: 告警 2:GPS
-注意：此字段可能返回 null，表示取不到有效值。
         :type MessageType: str
         :param _RegionId: 区域ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionId: str
         :param _RegionName: 区域名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionName: str
         :param _Instance: 实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type Instance: str
         :param _InstanceName: 实例名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceName: str
         :param _TopicId: kafka topic id
-注意：此字段可能返回 null，表示取不到有效值。
         :type TopicId: str
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _UpdateTime: 更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param _TopicName: topic 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TopicName: str
         """
         self._IntId = None
@@ -12322,7 +12281,6 @@ class MessageForward(AbstractModel):
     @property
     def IntId(self):
         """配置ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IntId
@@ -12334,7 +12292,6 @@ class MessageForward(AbstractModel):
     @property
     def Uin(self):
         """用户Uin
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Uin
@@ -12346,7 +12303,6 @@ class MessageForward(AbstractModel):
     @property
     def MessageType(self):
         """json数组， 转发类型 1: 告警 2:GPS
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MessageType
@@ -12358,7 +12314,6 @@ class MessageForward(AbstractModel):
     @property
     def RegionId(self):
         """区域ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RegionId
@@ -12370,7 +12325,6 @@ class MessageForward(AbstractModel):
     @property
     def RegionName(self):
         """区域名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RegionName
@@ -12382,7 +12336,6 @@ class MessageForward(AbstractModel):
     @property
     def Instance(self):
         """实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Instance
@@ -12394,7 +12347,6 @@ class MessageForward(AbstractModel):
     @property
     def InstanceName(self):
         """实例名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceName
@@ -12406,7 +12358,6 @@ class MessageForward(AbstractModel):
     @property
     def TopicId(self):
         """kafka topic id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TopicId
@@ -12418,7 +12369,6 @@ class MessageForward(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -12430,7 +12380,6 @@ class MessageForward(AbstractModel):
     @property
     def UpdateTime(self):
         """更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime
@@ -12442,7 +12391,6 @@ class MessageForward(AbstractModel):
     @property
     def TopicName(self):
         """topic 名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TopicName

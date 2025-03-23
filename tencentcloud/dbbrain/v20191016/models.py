@@ -2190,7 +2190,7 @@ class DescribeHealthScoreRequest(AbstractModel):
         :type InstanceId: str
         :param _Time: 获取健康得分的时间。
         :type Time: str
-        :param _Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :param _Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
         :type Product: str
         """
         self._InstanceId = None
@@ -2221,7 +2221,7 @@ class DescribeHealthScoreRequest(AbstractModel):
 
     @property
     def Product(self):
-        """服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        """服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
         :rtype: str
         """
         return self._Product

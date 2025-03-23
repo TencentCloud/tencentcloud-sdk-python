@@ -2930,9 +2930,12 @@ class CreateProxySessionKillTaskRequest(AbstractModel):
         :type InstanceId: str
         :param _Product: 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
         :type Product: str
+        :param _InstanceProxyId: 实列代理ID。
+        :type InstanceProxyId: str
         """
         self._InstanceId = None
         self._Product = None
+        self._InstanceProxyId = None
 
     @property
     def InstanceId(self):
@@ -2956,10 +2959,22 @@ class CreateProxySessionKillTaskRequest(AbstractModel):
     def Product(self, Product):
         self._Product = Product
 
+    @property
+    def InstanceProxyId(self):
+        """实列代理ID。
+        :rtype: str
+        """
+        return self._InstanceProxyId
+
+    @InstanceProxyId.setter
+    def InstanceProxyId(self, InstanceProxyId):
+        self._InstanceProxyId = InstanceProxyId
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._Product = params.get("Product")
+        self._InstanceProxyId = params.get("InstanceProxyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6396,7 +6411,7 @@ class DescribeHealthScoreRequest(AbstractModel):
         :type InstanceId: str
         :param _Time: 获取健康得分的时间，时间格式如：2019-09-10 12:13:14。
         :type Time: str
-        :param _Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :param _Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
         :type Product: str
         """
         self._InstanceId = None
@@ -6427,7 +6442,7 @@ class DescribeHealthScoreRequest(AbstractModel):
 
     @property
     def Product(self):
-        """服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        """服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
         :rtype: str
         """
         return self._Product
@@ -14139,7 +14154,6 @@ class MonitorMetric(AbstractModel):
         :param _Unit: 指标单位。
         :type Unit: str
         :param _Values: 指标值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Values: list of float
         """
         self._Metric = None
@@ -14171,7 +14185,6 @@ class MonitorMetric(AbstractModel):
     @property
     def Values(self):
         """指标值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of float
         """
         return self._Values
