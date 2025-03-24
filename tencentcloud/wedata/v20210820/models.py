@@ -23,6 +23,66 @@ class AddProjectUserRoleRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目id
+        :type ProjectId: str
+        :param _UserIds: 用户uin
+        :type UserIds: list of str
+        :param _RoleIds: 角色id
+        :type RoleIds: list of str
+        """
+        self._ProjectId = None
+        self._UserIds = None
+        self._RoleIds = None
+
+    @property
+    def ProjectId(self):
+        """项目id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def UserIds(self):
+        """用户uin
+        :rtype: list of str
+        """
+        return self._UserIds
+
+    @UserIds.setter
+    def UserIds(self, UserIds):
+        self._UserIds = UserIds
+
+    @property
+    def RoleIds(self):
+        """角色id
+        :rtype: list of str
+        """
+        return self._RoleIds
+
+    @RoleIds.setter
+    def RoleIds(self, RoleIds):
+        self._RoleIds = RoleIds
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._UserIds = params.get("UserIds")
+        self._RoleIds = params.get("RoleIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class AddProjectUserRoleResponse(AbstractModel):
     """AddProjectUserRole返回参数结构体
@@ -31,10 +91,24 @@ class AddProjectUserRoleResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Data: 返回数据
+        :type Data: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Data = None
         self._RequestId = None
+
+    @property
+    def Data(self):
+        """返回数据
+        :rtype: bool
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
 
     @property
     def RequestId(self):
@@ -49,6 +123,7 @@ class AddProjectUserRoleResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._Data = params.get("Data")
         self._RequestId = params.get("RequestId")
 
 
@@ -1876,6 +1951,9 @@ class AlarmReceiverInfo(AbstractModel):
         :param _LarkGroup: 飞书群，0：未设置，1：成功，2：失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type LarkGroup: int
+        :param _AlarmMessageSendResult: 发送结果 大json格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmMessageSendResult: str
         """
         self._AlarmId = None
         self._AlarmReceiver = None
@@ -1887,6 +1965,7 @@ class AlarmReceiverInfo(AbstractModel):
         self._Http = None
         self._WecomGroup = None
         self._LarkGroup = None
+        self._AlarmMessageSendResult = None
 
     @property
     def AlarmId(self):
@@ -2000,6 +2079,18 @@ class AlarmReceiverInfo(AbstractModel):
     def LarkGroup(self, LarkGroup):
         self._LarkGroup = LarkGroup
 
+    @property
+    def AlarmMessageSendResult(self):
+        """发送结果 大json格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AlarmMessageSendResult
+
+    @AlarmMessageSendResult.setter
+    def AlarmMessageSendResult(self, AlarmMessageSendResult):
+        self._AlarmMessageSendResult = AlarmMessageSendResult
+
 
     def _deserialize(self, params):
         self._AlarmId = params.get("AlarmId")
@@ -2012,6 +2103,7 @@ class AlarmReceiverInfo(AbstractModel):
         self._Http = params.get("Http")
         self._WecomGroup = params.get("WecomGroup")
         self._LarkGroup = params.get("LarkGroup")
+        self._AlarmMessageSendResult = params.get("AlarmMessageSendResult")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -79365,6 +79457,9 @@ class TaskAlarmInfo(AbstractModel):
         :param _BusinessType: 业务类型, 0-非默认, 1-默认
 注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessType: int
+        :param _AlarmMessageRule: alarm message rule
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmMessageRule: str
         """
         self._TaskId = None
         self._RegularName = None
@@ -79400,6 +79495,7 @@ class TaskAlarmInfo(AbstractModel):
         self._LarkWebHooks = None
         self._DingDingWebHooks = None
         self._BusinessType = None
+        self._AlarmMessageRule = None
 
     @property
     def TaskId(self):
@@ -79801,6 +79897,18 @@ class TaskAlarmInfo(AbstractModel):
     def BusinessType(self, BusinessType):
         self._BusinessType = BusinessType
 
+    @property
+    def AlarmMessageRule(self):
+        """alarm message rule
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AlarmMessageRule
+
+    @AlarmMessageRule.setter
+    def AlarmMessageRule(self, AlarmMessageRule):
+        self._AlarmMessageRule = AlarmMessageRule
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -79847,6 +79955,7 @@ class TaskAlarmInfo(AbstractModel):
         self._LarkWebHooks = params.get("LarkWebHooks")
         self._DingDingWebHooks = params.get("DingDingWebHooks")
         self._BusinessType = params.get("BusinessType")
+        self._AlarmMessageRule = params.get("AlarmMessageRule")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

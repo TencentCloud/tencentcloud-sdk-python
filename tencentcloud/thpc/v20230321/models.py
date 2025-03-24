@@ -3882,13 +3882,10 @@ class EnhancedService(AbstractModel):
     def __init__(self):
         r"""
         :param _SecurityService: 开启云安全服务。若不指定该参数，则默认开启云安全服务。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityService: :class:`tencentcloud.thpc.v20230321.models.RunSecurityServiceEnabled`
         :param _MonitorService: 开启腾讯云可观测平台服务。若不指定该参数，则默认开启腾讯云可观测平台服务。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MonitorService: :class:`tencentcloud.thpc.v20230321.models.RunMonitorServiceEnabled`
         :param _AutomationService: 开启云自动化助手服务（TencentCloud Automation Tools，TAT）。若不指定该参数，默认开启云自动化助手服务。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AutomationService: :class:`tencentcloud.thpc.v20230321.models.RunAutomationServiceEnabled`
         """
         self._SecurityService = None
@@ -3898,7 +3895,6 @@ class EnhancedService(AbstractModel):
     @property
     def SecurityService(self):
         """开启云安全服务。若不指定该参数，则默认开启云安全服务。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.thpc.v20230321.models.RunSecurityServiceEnabled`
         """
         return self._SecurityService
@@ -3910,7 +3906,6 @@ class EnhancedService(AbstractModel):
     @property
     def MonitorService(self):
         """开启腾讯云可观测平台服务。若不指定该参数，则默认开启腾讯云可观测平台服务。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.thpc.v20230321.models.RunMonitorServiceEnabled`
         """
         return self._MonitorService
@@ -3922,7 +3917,6 @@ class EnhancedService(AbstractModel):
     @property
     def AutomationService(self):
         """开启云自动化助手服务（TencentCloud Automation Tools，TAT）。若不指定该参数，默认开启云自动化助手服务。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.thpc.v20230321.models.RunAutomationServiceEnabled`
         """
         return self._AutomationService
@@ -5408,6 +5402,8 @@ class NodeOverview(AbstractModel):
         :param _NodeId: thpc集群节点id
 注意：此字段可能返回 null，表示取不到有效值。
         :type NodeId: str
+        :param _NodeAllocateState: 节点的工作状态
+        :type NodeAllocateState: str
         """
         self._InstanceId = None
         self._Zone = None
@@ -5417,6 +5413,7 @@ class NodeOverview(AbstractModel):
         self._NodeRole = None
         self._NodeType = None
         self._NodeId = None
+        self._NodeAllocateState = None
 
     @property
     def InstanceId(self):
@@ -5514,6 +5511,17 @@ class NodeOverview(AbstractModel):
     def NodeId(self, NodeId):
         self._NodeId = NodeId
 
+    @property
+    def NodeAllocateState(self):
+        """节点的工作状态
+        :rtype: str
+        """
+        return self._NodeAllocateState
+
+    @NodeAllocateState.setter
+    def NodeAllocateState(self, NodeAllocateState):
+        self._NodeAllocateState = NodeAllocateState
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -5524,6 +5532,7 @@ class NodeOverview(AbstractModel):
         self._NodeRole = params.get("NodeRole")
         self._NodeType = params.get("NodeType")
         self._NodeId = params.get("NodeId")
+        self._NodeAllocateState = params.get("NodeAllocateState")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5543,10 +5552,8 @@ class NodeScript(AbstractModel):
         r"""
         :param _ScriptPath: 节点执行脚本获取地址。
 目前仅支持cos地址。地址最大长度：255。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScriptPath: str
         :param _Timeout: 脚本执行超时时间（包含拉取脚本的时间）。单位秒，默认值：30。取值范围：10～1200。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Timeout: int
         """
         self._ScriptPath = None
@@ -5556,7 +5563,6 @@ class NodeScript(AbstractModel):
     def ScriptPath(self):
         """节点执行脚本获取地址。
 目前仅支持cos地址。地址最大长度：255。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ScriptPath
@@ -5568,7 +5574,6 @@ class NodeScript(AbstractModel):
     @property
     def Timeout(self):
         """脚本执行超时时间（包含拉取脚本的时间）。单位秒，默认值：30。取值范围：10～1200。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Timeout
@@ -5955,28 +5960,23 @@ class QueueConfigOverview(AbstractModel):
         :param _ExpansionNodeConfigs: 扩容节点配置信息。
         :type ExpansionNodeConfigs: list of ExpansionNodeConfigOverview
         :param _DesiredIdleNodeCapacity: 队列中期望的空闲节点数量（包含弹性节点和静态节点）。默认值：0。队列中，处于空闲状态的节点小于此值，集群会扩容弹性节点；处于空闲状态的节点大于此值，集群会缩容弹性节点。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DesiredIdleNodeCapacity: int
         :param _DesiredNodeCount: 队列中期望的总节点数。
         :type DesiredNodeCount: int
         :param _ScaleOutRatio: 扩容比例。默认值：100。取值范围：1～100。
 如果扩容比例为50，那么每轮只会扩容当前作业负载所需的50%数量的节点。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScaleOutRatio: int
         :param _ScaleOutNodeThreshold: 比例扩容阈值。默认值：0。取值范围：0～200。
 当作业负载需要扩容节点数量大于此值，当前扩容轮次按照ScaleOutRatio配置的的比例进行扩容。当作业负载需要扩容节点数量小于此值，当前扩容轮次扩容当前作业负载所需数量的节点。
 此参数配合ScaleOutRatio参数进行使用，用于比例扩容场景下，在作业负载所需节点数量较小时，加快收敛速度。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScaleOutNodeThreshold: int
         :param _MaxNodesPerCycle: 每轮扩容最大节点个数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxNodesPerCycle: int
         :param _ScaleUpMemRatio: 扩容过程中，作业的内存在匹配实例机型时增大比例（不会影响作业提交的内存大小，只影响匹配计算过程）。<br/>
 针对场景：由于实例机型的总内存会大于实例内部的可用内存，16GB内存规格的实例，实例操作系统内的可用内存只有约14.9GB内存。假设此时提交一个需要15GB内存的作业，
 
 - 当ScaleUpMemRatio=0时，会匹配到16GB内存规格的实例,但是由于操作系统内的可用内存为14.9GB小于作业所需的15GB，扩容出来的实例作业无法运行起来。
 - 当ScaleUpMemRatio=10时，匹配实例规格会按照15*(1+10%)=16.5GB来进行实例规格匹配，则不会匹配到16GB的实例，而是更大内存规格的实例来保证作业能够被运行起来。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScaleUpMemRatio: int
         """
         self._QueueName = None
@@ -6061,7 +6061,6 @@ class QueueConfigOverview(AbstractModel):
     @property
     def DesiredIdleNodeCapacity(self):
         """队列中期望的空闲节点数量（包含弹性节点和静态节点）。默认值：0。队列中，处于空闲状态的节点小于此值，集群会扩容弹性节点；处于空闲状态的节点大于此值，集群会缩容弹性节点。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DesiredIdleNodeCapacity
@@ -6085,7 +6084,6 @@ class QueueConfigOverview(AbstractModel):
     def ScaleOutRatio(self):
         """扩容比例。默认值：100。取值范围：1～100。
 如果扩容比例为50，那么每轮只会扩容当前作业负载所需的50%数量的节点。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ScaleOutRatio
@@ -6099,7 +6097,6 @@ class QueueConfigOverview(AbstractModel):
         """比例扩容阈值。默认值：0。取值范围：0～200。
 当作业负载需要扩容节点数量大于此值，当前扩容轮次按照ScaleOutRatio配置的的比例进行扩容。当作业负载需要扩容节点数量小于此值，当前扩容轮次扩容当前作业负载所需数量的节点。
 此参数配合ScaleOutRatio参数进行使用，用于比例扩容场景下，在作业负载所需节点数量较小时，加快收敛速度。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ScaleOutNodeThreshold
@@ -6111,7 +6108,6 @@ class QueueConfigOverview(AbstractModel):
     @property
     def MaxNodesPerCycle(self):
         """每轮扩容最大节点个数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxNodesPerCycle
@@ -6127,7 +6123,6 @@ class QueueConfigOverview(AbstractModel):
 
 - 当ScaleUpMemRatio=0时，会匹配到16GB内存规格的实例,但是由于操作系统内的可用内存为14.9GB小于作业所需的15GB，扩容出来的实例作业无法运行起来。
 - 当ScaleUpMemRatio=10时，匹配实例规格会按照15*(1+10%)=16.5GB来进行实例规格匹配，则不会匹配到16GB的实例，而是更大内存规格的实例来保证作业能够被运行起来。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ScaleUpMemRatio
@@ -6173,7 +6168,6 @@ class QueueOverview(AbstractModel):
     def __init__(self):
         r"""
         :param _QueueName: 队列名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type QueueName: str
         """
         self._QueueName = None
@@ -6181,7 +6175,6 @@ class QueueOverview(AbstractModel):
     @property
     def QueueName(self):
         """队列名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._QueueName
@@ -6247,7 +6240,6 @@ class RunMonitorServiceEnabled(AbstractModel):
     def __init__(self):
         r"""
         :param _Enabled: 是否开启[腾讯云可观测平台](/document/product/248)服务。取值范围：<br><li>TRUE：表示开启腾讯云可观测平台服务</li><br><li>FALSE：表示不开启腾讯云可观测平台服务</li><br><br>默认取值：TRUE。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Enabled: bool
         """
         self._Enabled = None
@@ -6255,7 +6247,6 @@ class RunMonitorServiceEnabled(AbstractModel):
     @property
     def Enabled(self):
         """是否开启[腾讯云可观测平台](/document/product/248)服务。取值范围：<br><li>TRUE：表示开启腾讯云可观测平台服务</li><br><li>FALSE：表示不开启腾讯云可观测平台服务</li><br><br>默认取值：TRUE。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Enabled
@@ -7124,10 +7115,8 @@ class SpacePlacement(AbstractModel):
     def __init__(self):
         r"""
         :param _Zone: 可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :type Zone: str
         :param _ProjectId: 项目，默认是0
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: int
         """
         self._Zone = None
@@ -7136,7 +7125,6 @@ class SpacePlacement(AbstractModel):
     @property
     def Zone(self):
         """可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Zone
@@ -7148,7 +7136,6 @@ class SpacePlacement(AbstractModel):
     @property
     def ProjectId(self):
         """项目，默认是0
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ProjectId
@@ -7608,10 +7595,8 @@ class TagSpecification(AbstractModel):
     def __init__(self):
         r"""
         :param _ResourceType: 标签绑定的资源类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceType: str
         :param _Tags: 标签对列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
         """
         self._ResourceType = None
@@ -7620,7 +7605,6 @@ class TagSpecification(AbstractModel):
     @property
     def ResourceType(self):
         """标签绑定的资源类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceType
@@ -7632,7 +7616,6 @@ class TagSpecification(AbstractModel):
     @property
     def Tags(self):
         """标签对列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._Tags

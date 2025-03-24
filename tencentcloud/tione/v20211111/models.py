@@ -8339,6 +8339,57 @@ class GooseFS(AbstractModel):
         
 
 
+class GooseFSx(AbstractModel):
+    """GosseFSx的配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: goosefsx实例id
+        :type Id: str
+        :param _Path: GooseFSx实例需要挂载的路径
+        :type Path: str
+        """
+        self._Id = None
+        self._Path = None
+
+    @property
+    def Id(self):
+        """goosefsx实例id
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Path(self):
+        """GooseFSx实例需要挂载的路径
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Path = params.get("Path")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GpuDetail(AbstractModel):
     """gpu 详情
 
@@ -11043,6 +11094,8 @@ class ModelInfo(AbstractModel):
         :type ModelSource: str
         :param _CosPathInfo: cos路径信息
         :type CosPathInfo: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
+        :param _GooseFSx: GooseFSx的配置，ModelSource为GooseFSx时有效
+        :type GooseFSx: :class:`tencentcloud.tione.v20211111.models.GooseFSx`
         :param _AlgorithmFramework: 模型对应的算法框架，预留
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlgorithmFramework: str
@@ -11064,6 +11117,7 @@ class ModelInfo(AbstractModel):
         self._ModelVersion = None
         self._ModelSource = None
         self._CosPathInfo = None
+        self._GooseFSx = None
         self._AlgorithmFramework = None
         self._ModelType = None
         self._ModelFormat = None
@@ -11138,6 +11192,17 @@ class ModelInfo(AbstractModel):
         self._CosPathInfo = CosPathInfo
 
     @property
+    def GooseFSx(self):
+        """GooseFSx的配置，ModelSource为GooseFSx时有效
+        :rtype: :class:`tencentcloud.tione.v20211111.models.GooseFSx`
+        """
+        return self._GooseFSx
+
+    @GooseFSx.setter
+    def GooseFSx(self, GooseFSx):
+        self._GooseFSx = GooseFSx
+
+    @property
     def AlgorithmFramework(self):
         """模型对应的算法框架，预留
 注意：此字段可能返回 null，表示取不到有效值。
@@ -11206,6 +11271,9 @@ class ModelInfo(AbstractModel):
         if params.get("CosPathInfo") is not None:
             self._CosPathInfo = CosPathInfo()
             self._CosPathInfo._deserialize(params.get("CosPathInfo"))
+        if params.get("GooseFSx") is not None:
+            self._GooseFSx = GooseFSx()
+            self._GooseFSx._deserialize(params.get("GooseFSx"))
         self._AlgorithmFramework = params.get("AlgorithmFramework")
         self._ModelType = params.get("ModelType")
         self._ModelFormat = params.get("ModelFormat")

@@ -3369,16 +3369,12 @@ class ClusterCondition(AbstractModel):
         :param _Status: 集群创建过程状态
         :type Status: str
         :param _LastProbeTime: 最后一次探测到该状态的时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type LastProbeTime: str
         :param _LastTransitionTime: 最后一次转换到该过程的时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type LastTransitionTime: str
         :param _Reason: 转换到该过程的简明原因
-注意：此字段可能返回 null，表示取不到有效值。
         :type Reason: str
         :param _Message: 转换到该过程的更多信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         """
         self._Type = None
@@ -3413,7 +3409,6 @@ class ClusterCondition(AbstractModel):
     @property
     def LastProbeTime(self):
         """最后一次探测到该状态的时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LastProbeTime
@@ -3425,7 +3420,6 @@ class ClusterCondition(AbstractModel):
     @property
     def LastTransitionTime(self):
         """最后一次转换到该过程的时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LastTransitionTime
@@ -3437,7 +3431,6 @@ class ClusterCondition(AbstractModel):
     @property
     def Reason(self):
         """转换到该过程的简明原因
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Reason
@@ -3449,7 +3442,6 @@ class ClusterCondition(AbstractModel):
     @property
     def Message(self):
         """转换到该过程的更多信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Message
@@ -3624,7 +3616,6 @@ class ClusterInternalLB(AbstractModel):
     def __init__(self):
         r"""
         :param _Enabled: 是否开启内网访问LB
-注意：此字段可能返回 null，表示取不到有效值。
         :type Enabled: bool
         :param _SubnetId: 内网访问LB关联的子网Id
 注意：此字段可能返回 null，表示取不到有效值。
@@ -3636,7 +3627,6 @@ class ClusterInternalLB(AbstractModel):
     @property
     def Enabled(self):
         """是否开启内网访问LB
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Enabled
@@ -4277,19 +4267,14 @@ class ClusterPublicLB(AbstractModel):
     def __init__(self):
         r"""
         :param _Enabled: 是否开启公网访问LB
-注意：此字段可能返回 null，表示取不到有效值。
         :type Enabled: bool
         :param _AllowFromCidrs: 允许访问的来源CIDR列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type AllowFromCidrs: list of str
         :param _SecurityPolicies: 安全策略放通单个IP或CIDR(例如: "192.168.1.0/24",默认为拒绝所有)
-注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityPolicies: list of str
         :param _ExtraParam: 外网访问相关的扩展参数，格式为json
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExtraParam: str
         :param _SecurityGroup: 新内外网功能，需要传递安全组
-注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityGroup: str
         """
         self._Enabled = None
@@ -4301,7 +4286,6 @@ class ClusterPublicLB(AbstractModel):
     @property
     def Enabled(self):
         """是否开启公网访问LB
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Enabled
@@ -4313,7 +4297,6 @@ class ClusterPublicLB(AbstractModel):
     @property
     def AllowFromCidrs(self):
         """允许访问的来源CIDR列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._AllowFromCidrs
@@ -4325,7 +4308,6 @@ class ClusterPublicLB(AbstractModel):
     @property
     def SecurityPolicies(self):
         """安全策略放通单个IP或CIDR(例如: "192.168.1.0/24",默认为拒绝所有)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._SecurityPolicies
@@ -4337,7 +4319,6 @@ class ClusterPublicLB(AbstractModel):
     @property
     def ExtraParam(self):
         """外网访问相关的扩展参数，格式为json
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ExtraParam
@@ -4349,7 +4330,6 @@ class ClusterPublicLB(AbstractModel):
     @property
     def SecurityGroup(self):
         """新内外网功能，需要传递安全组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SecurityGroup
@@ -8339,7 +8319,6 @@ class CreateEksLogConfigResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TopicId: 日志采集topicid
-注意：此字段可能返回 null，表示取不到有效值。
         :type TopicId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8350,7 +8329,6 @@ class CreateEksLogConfigResponse(AbstractModel):
     @property
     def TopicId(self):
         """日志采集topicid
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TopicId
@@ -36628,13 +36606,10 @@ class OpenConstraintInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 策略实例名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _EventNums: 策略实例关联事件数
-注意：此字段可能返回 null，表示取不到有效值。
         :type EventNums: int
         :param _YamlDetail: 实例yaml详情base64编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type YamlDetail: str
         """
         self._Name = None
@@ -36644,7 +36619,6 @@ class OpenConstraintInfo(AbstractModel):
     @property
     def Name(self):
         """策略实例名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -36656,7 +36630,6 @@ class OpenConstraintInfo(AbstractModel):
     @property
     def EventNums(self):
         """策略实例关联事件数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._EventNums
@@ -36668,7 +36641,6 @@ class OpenConstraintInfo(AbstractModel):
     @property
     def YamlDetail(self):
         """实例yaml详情base64编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._YamlDetail

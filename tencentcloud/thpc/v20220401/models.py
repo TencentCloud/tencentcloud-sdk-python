@@ -4547,7 +4547,6 @@ class QueueOverview(AbstractModel):
     def __init__(self):
         r"""
         :param _QueueName: 队列名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type QueueName: str
         """
         self._QueueName = None
@@ -4555,7 +4554,6 @@ class QueueOverview(AbstractModel):
     @property
     def QueueName(self):
         """队列名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._QueueName

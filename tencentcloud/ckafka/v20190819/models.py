@@ -800,7 +800,6 @@ class AuthorizeTokenResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 0 成功
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -811,7 +810,6 @@ class AuthorizeTokenResponse(AbstractModel):
     @property
     def Result(self):
         """0 成功
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Result
@@ -1776,7 +1774,6 @@ class CancelAuthorizationTokenResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 0 成功 非0 失败
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1787,7 +1784,6 @@ class CancelAuthorizationTokenResponse(AbstractModel):
     @property
     def Result(self):
         """0 成功 非0 失败
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Result
@@ -1893,7 +1889,6 @@ class CheckCdcClusterResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 返回结果状态Success
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1904,7 +1899,6 @@ class CheckCdcClusterResponse(AbstractModel):
     @property
     def Result(self):
         """返回结果状态Success
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Result
@@ -1952,6 +1946,7 @@ class ClickHouseConnectParam(AbstractModel):
         :param _UniqVpcId: ClickHouse连接源的vpcId，当为腾讯云实例时，必填
         :type UniqVpcId: str
         :param _IsUpdate: 是否更新到关联的Datahub任务
+注意：此字段可能返回 null，表示取不到有效值。
         :type IsUpdate: bool
         """
         self._Port = None
@@ -2043,6 +2038,7 @@ class ClickHouseConnectParam(AbstractModel):
     @property
     def IsUpdate(self):
         """是否更新到关联的Datahub任务
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsUpdate
@@ -3450,12 +3446,15 @@ class ConsumerRecord(AbstractModel):
         :param _Offset: 位点
         :type Offset: int
         :param _Key: 消息key
+注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
         :param _Value: 消息value
+注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         :param _Timestamp: 消息时间戳
         :type Timestamp: int
         :param _Headers: 消息headers
+注意：此字段可能返回 null，表示取不到有效值。
         :type Headers: str
         """
         self._Topic = None
@@ -3502,6 +3501,7 @@ class ConsumerRecord(AbstractModel):
     @property
     def Key(self):
         """消息key
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Key
@@ -3513,6 +3513,7 @@ class ConsumerRecord(AbstractModel):
     @property
     def Value(self):
         """消息value
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -3535,6 +3536,7 @@ class ConsumerRecord(AbstractModel):
     @property
     def Headers(self):
         """消息headers
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Headers
@@ -7070,7 +7072,6 @@ class CreateTokenResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: token串
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7081,7 +7082,6 @@ class CreateTokenResponse(AbstractModel):
     @property
     def Result(self):
         """token串
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Result
@@ -9248,7 +9248,6 @@ class DeleteDatahubTaskResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 操作结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.DatahubTaskIdRes`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9259,7 +9258,6 @@ class DeleteDatahubTaskResponse(AbstractModel):
     @property
     def Result(self):
         """操作结果
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.DatahubTaskIdRes`
         """
         return self._Result
@@ -11507,7 +11505,6 @@ class DescribeConnectResourceResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 连接源的Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.DescribeConnectResourceResp`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11518,7 +11515,6 @@ class DescribeConnectResourceResponse(AbstractModel):
     @property
     def Result(self):
         """连接源的Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.DescribeConnectResourceResp`
         """
         return self._Result
@@ -13028,7 +13024,6 @@ class DescribeDatahubTopicsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 主题列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.DescribeDatahubTopicsResp`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13039,7 +13034,6 @@ class DescribeDatahubTopicsResponse(AbstractModel):
     @property
     def Result(self):
         """主题列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.DescribeDatahubTopicsResp`
         """
         return self._Result
@@ -13177,7 +13171,6 @@ class DescribeGroupInfoResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 返回的结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: list of GroupInfoResponse
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13188,7 +13181,6 @@ class DescribeGroupInfoResponse(AbstractModel):
     @property
     def Result(self):
         """返回的结果
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of GroupInfoResponse
         """
         return self._Result
@@ -14172,7 +14164,6 @@ class DescribeRegionResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 返回地域枚举结果列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: list of Region
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14183,7 +14174,6 @@ class DescribeRegionResponse(AbstractModel):
     @property
     def Result(self):
         """返回地域枚举结果列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Region
         """
         return self._Result
@@ -15022,7 +15012,6 @@ class DescribeTopicResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 返回的结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.TopicResult`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15033,7 +15022,6 @@ class DescribeTopicResponse(AbstractModel):
     @property
     def Result(self):
         """返回的结果
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.TopicResult`
         """
         return self._Result
@@ -21479,7 +21467,6 @@ class InstanceScalingDownResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 返回结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.ScalingDownResp`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -21490,7 +21477,6 @@ class InstanceScalingDownResponse(AbstractModel):
     @property
     def Result(self):
         """返回结果
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.ScalingDownResp`
         """
         return self._Result
@@ -23123,7 +23109,6 @@ class ModifyDatahubTaskResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 任务id
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.DatahubTaskIdRes`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -23134,7 +23119,6 @@ class ModifyDatahubTaskResponse(AbstractModel):
     @property
     def Result(self):
         """任务id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.DatahubTaskIdRes`
         """
         return self._Result

@@ -26,13 +26,10 @@ class Conditions(AbstractModel):
     def __init__(self):
         r"""
         :param _ConditionId: 警告条件ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ConditionId: int
         :param _Level: 警告级别，2:中风险，3:高风险
-注意：此字段可能返回 null，表示取不到有效值。
         :type Level: int
         :param _LevelDesc: 警告级别描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type LevelDesc: str
         :param _Desc: 警告条件描述
         :type Desc: str
@@ -45,7 +42,6 @@ class Conditions(AbstractModel):
     @property
     def ConditionId(self):
         """警告条件ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ConditionId
@@ -57,7 +53,6 @@ class Conditions(AbstractModel):
     @property
     def Level(self):
         """警告级别，2:中风险，3:高风险
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Level
@@ -69,7 +64,6 @@ class Conditions(AbstractModel):
     @property
     def LevelDesc(self):
         """警告级别描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LevelDesc
@@ -119,7 +113,6 @@ class DescribeStrategiesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Strategies: 评估项列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Strategies: list of Strategies
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -130,7 +123,6 @@ class DescribeStrategiesResponse(AbstractModel):
     @property
     def Strategies(self):
         """评估项列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Strategies
         """
         return self._Strategies
@@ -532,31 +524,22 @@ class Strategies(AbstractModel):
     def __init__(self):
         r"""
         :param _StrategyId: 评估项ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type StrategyId: int
         :param _Name: 评估项名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Desc: 评估项描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Desc: str
         :param _Product: 评估项对应产品ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type Product: str
         :param _ProductDesc: 评估项对应产品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductDesc: str
         :param _Repair: 评估项优化建议
-注意：此字段可能返回 null，表示取不到有效值。
         :type Repair: str
         :param _GroupId: 评估项类别ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupId: int
         :param _GroupName: 评估项类别名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupName: str
         :param _Conditions: 评估项风险列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Conditions: list of Conditions
         """
         self._StrategyId = None
@@ -572,7 +555,6 @@ class Strategies(AbstractModel):
     @property
     def StrategyId(self):
         """评估项ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._StrategyId
@@ -584,7 +566,6 @@ class Strategies(AbstractModel):
     @property
     def Name(self):
         """评估项名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -596,7 +577,6 @@ class Strategies(AbstractModel):
     @property
     def Desc(self):
         """评估项描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Desc
@@ -608,7 +588,6 @@ class Strategies(AbstractModel):
     @property
     def Product(self):
         """评估项对应产品ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Product
@@ -620,7 +599,6 @@ class Strategies(AbstractModel):
     @property
     def ProductDesc(self):
         """评估项对应产品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductDesc
@@ -632,7 +610,6 @@ class Strategies(AbstractModel):
     @property
     def Repair(self):
         """评估项优化建议
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Repair
@@ -644,7 +621,6 @@ class Strategies(AbstractModel):
     @property
     def GroupId(self):
         """评估项类别ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._GroupId
@@ -656,7 +632,6 @@ class Strategies(AbstractModel):
     @property
     def GroupName(self):
         """评估项类别名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupName
@@ -668,7 +643,6 @@ class Strategies(AbstractModel):
     @property
     def Conditions(self):
         """评估项风险列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Conditions
         """
         return self._Conditions

@@ -294,6 +294,11 @@ def test_import_cfw():
     from tencentcloud.cfw.v20190904 import models
 
 
+def test_import_chc():
+    from tencentcloud.chc.v20230418 import chc_client
+    from tencentcloud.chc.v20230418 import models
+
+
 def test_import_chdfs():
     from tencentcloud.chdfs.v20190718 import chdfs_client
     from tencentcloud.chdfs.v20190718 import models

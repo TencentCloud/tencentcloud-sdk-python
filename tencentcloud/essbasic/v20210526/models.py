@@ -15682,6 +15682,11 @@ class CreateFlowOption(AbstractModel):
 **true**：允许
 **false**：（默认）不允许
         :type CanSkipAddApprover: bool
+        :param _ForbidEditApprover: 是否可以编辑签署人包括新增，修改，删除 
+<ul><li>（默认） false -可以编辑签署人</li> <li> true - 可以编辑签署人</li></ul>
+
+注意：如果设置参数为 false， 则 参数签署人 [FlowApproverList](https://qian.tencent.com/developers/partnerApis/embedPages/ChannelCreatePrepareFlow) 不能为空
+        :type ForbidEditApprover: bool
         :param _CustomCreateFlowDescription: 定制化发起合同弹窗的描述信息，长度不能超过500，只能由中文、字母、数字和标点组成。
         :type CustomCreateFlowDescription: str
         :param _ForbidEditFillComponent: 禁止编辑填写控件
@@ -15703,6 +15708,7 @@ class CreateFlowOption(AbstractModel):
         self._HideShowFlowType = None
         self._HideShowDeadline = None
         self._CanSkipAddApprover = None
+        self._ForbidEditApprover = None
         self._CustomCreateFlowDescription = None
         self._ForbidEditFillComponent = None
         self._SkipUploadFile = None
@@ -15774,6 +15780,20 @@ class CreateFlowOption(AbstractModel):
         self._CanSkipAddApprover = CanSkipAddApprover
 
     @property
+    def ForbidEditApprover(self):
+        """是否可以编辑签署人包括新增，修改，删除 
+<ul><li>（默认） false -可以编辑签署人</li> <li> true - 可以编辑签署人</li></ul>
+
+注意：如果设置参数为 false， 则 参数签署人 [FlowApproverList](https://qian.tencent.com/developers/partnerApis/embedPages/ChannelCreatePrepareFlow) 不能为空
+        :rtype: bool
+        """
+        return self._ForbidEditApprover
+
+    @ForbidEditApprover.setter
+    def ForbidEditApprover(self, ForbidEditApprover):
+        self._ForbidEditApprover = ForbidEditApprover
+
+    @property
     def CustomCreateFlowDescription(self):
         """定制化发起合同弹窗的描述信息，长度不能超过500，只能由中文、字母、数字和标点组成。
         :rtype: str
@@ -15831,6 +15851,7 @@ class CreateFlowOption(AbstractModel):
         self._HideShowFlowType = params.get("HideShowFlowType")
         self._HideShowDeadline = params.get("HideShowDeadline")
         self._CanSkipAddApprover = params.get("CanSkipAddApprover")
+        self._ForbidEditApprover = params.get("ForbidEditApprover")
         self._CustomCreateFlowDescription = params.get("CustomCreateFlowDescription")
         self._ForbidEditFillComponent = params.get("ForbidEditFillComponent")
         self._SkipUploadFile = params.get("SkipUploadFile")

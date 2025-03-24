@@ -4345,14 +4345,14 @@ class DescribeInstanceListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: 查询条件列表,支持以下子弹
+        :param _Filters: 查询条件列表,支持以下字段
 InstanceName：集群名模糊搜索
 InstanceId：集群id精确搜索
-InstanceStatus：集群状态搜索
+InstanceStatus：集群状态搜索（RUNNING-运行中，CREATING-创建中，MODIFYING-变配中，DELETING-删除中）
         :type Filters: list of Filter
-        :param _Offset: 查询起始位置
+        :param _Offset: 查询起始位置，默认0
         :type Offset: int
-        :param _Limit: 查询结果限制数量
+        :param _Limit: 查询结果限制数量，默认20，最大100
         :type Limit: int
         :param _TagFilters: 标签过滤器
         :type TagFilters: list of TagFilter
@@ -4364,10 +4364,10 @@ InstanceStatus：集群状态搜索
 
     @property
     def Filters(self):
-        """查询条件列表,支持以下子弹
+        """查询条件列表,支持以下字段
 InstanceName：集群名模糊搜索
 InstanceId：集群id精确搜索
-InstanceStatus：集群状态搜索
+InstanceStatus：集群状态搜索（RUNNING-运行中，CREATING-创建中，MODIFYING-变配中，DELETING-删除中）
         :rtype: list of Filter
         """
         return self._Filters
@@ -4378,7 +4378,7 @@ InstanceStatus：集群状态搜索
 
     @property
     def Offset(self):
-        """查询起始位置
+        """查询起始位置，默认0
         :rtype: int
         """
         return self._Offset
@@ -4389,7 +4389,7 @@ InstanceStatus：集群状态搜索
 
     @property
     def Limit(self):
-        """查询结果限制数量
+        """查询结果限制数量，默认20，最大100
         :rtype: int
         """
         return self._Limit
@@ -5289,7 +5289,7 @@ class DescribeTopicListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :type InstanceId: str
         :param _Filters: 查询条件列表:
 支持TopicName模糊查询
@@ -5306,7 +5306,7 @@ class DescribeTopicListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        """实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -6626,8 +6626,7 @@ class MQTTInstanceItem(AbstractModel):
         :type InstanceName: str
         :param _Version: 实例版本
         :type Version: str
-        :param _InstanceType: 实例类型，
-EXPERIMENT，体验版
+        :param _InstanceType: 实例类型
 BASIC，基础版
 PRO，专业版
 PLATINUM，铂金版
@@ -6654,19 +6653,21 @@ DELETING，删除中
         :type SkuCode: str
         :param _TpsLimit: 弹性TPS限流值
         :type TpsLimit: int
-        :param _CreateTime: 创建时间
+        :param _CreateTime: 创建时间，毫秒级时间戳
         :type CreateTime: int
         :param _MaxSubscriptionPerClient: 单客户端最大订阅数量
         :type MaxSubscriptionPerClient: int
         :param _ClientNumLimit: 客户端连接数上线
         :type ClientNumLimit: int
-        :param _RenewFlag: 是否自动续费
+        :param _RenewFlag: 是否自动续费。仅包年包月就去那生效。
+1:自动续费
+0:非自动续费
         :type RenewFlag: int
         :param _PayMode: 计费模式， POSTPAID，按量计费 PREPAID，包年包月
         :type PayMode: str
-        :param _ExpiryTime: 到期时间，秒为单位
+        :param _ExpiryTime: 到期时间，毫秒级时间戳
         :type ExpiryTime: int
-        :param _DestroyTime: 预销毁时间
+        :param _DestroyTime: 预销毁时间，毫秒级时间戳
         :type DestroyTime: int
         :param _AuthorizationPolicyLimit: 授权规则条数限制
         :type AuthorizationPolicyLimit: int
@@ -6731,8 +6732,7 @@ DELETING，删除中
 
     @property
     def InstanceType(self):
-        """实例类型，
-EXPERIMENT，体验版
+        """实例类型
 BASIC，基础版
 PRO，专业版
 PLATINUM，铂金版
@@ -6822,7 +6822,7 @@ DELETING，删除中
 
     @property
     def CreateTime(self):
-        """创建时间
+        """创建时间，毫秒级时间戳
         :rtype: int
         """
         return self._CreateTime
@@ -6855,7 +6855,9 @@ DELETING，删除中
 
     @property
     def RenewFlag(self):
-        """是否自动续费
+        """是否自动续费。仅包年包月就去那生效。
+1:自动续费
+0:非自动续费
         :rtype: int
         """
         return self._RenewFlag
@@ -6877,7 +6879,7 @@ DELETING，删除中
 
     @property
     def ExpiryTime(self):
-        """到期时间，秒为单位
+        """到期时间，毫秒级时间戳
         :rtype: int
         """
         return self._ExpiryTime
@@ -6888,7 +6890,7 @@ DELETING，删除中
 
     @property
     def DestroyTime(self):
-        """预销毁时间
+        """预销毁时间，毫秒级时间戳
         :rtype: int
         """
         return self._DestroyTime

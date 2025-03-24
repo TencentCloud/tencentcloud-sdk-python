@@ -6864,7 +6864,6 @@ Reject：实名审核失败
 NoAudit: 无需实名认证
         :type RealNameAuditStatus: str
         :param _RealNameAuditUnpassReason: 域名实名认证不通过原因。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RealNameAuditUnpassReason: str
         :param _DomainNameAuditStatus: 域名命名审核状态。
 NotAudit：命名审核未上传
@@ -6981,7 +6980,6 @@ NoAudit: 无需实名认证
     @property
     def RealNameAuditUnpassReason(self):
         """域名实名认证不通过原因。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RealNameAuditUnpassReason

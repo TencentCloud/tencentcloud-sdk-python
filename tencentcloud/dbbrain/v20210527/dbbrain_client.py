@@ -762,6 +762,29 @@ class DbbrainClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDBPerfTimeSeries(self, request):
+        """根据实例ID获取指定时间段的性能趋势。
+
+        :param request: Request instance for DescribeDBPerfTimeSeries.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeDBPerfTimeSeriesRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.DescribeDBPerfTimeSeriesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBPerfTimeSeries", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBPerfTimeSeriesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDBSpaceStatus(self, request):
         """获取指定时间段内的实例空间使用概览，包括磁盘增长量(MB)、磁盘剩余(MB)、磁盘总量(MB)及预计可用天数。
 
@@ -1006,6 +1029,75 @@ class DbbrainClient(AbstractClient):
             body = self.call("DescribeRedisBigKeyAnalysisTasks", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeRedisBigKeyAnalysisTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRedisCmdPerfTimeSeries(self, request):
+        """延迟分析-命令字分析-查询命令延迟趋势
+
+        :param request: Request instance for DescribeRedisCmdPerfTimeSeries.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeRedisCmdPerfTimeSeriesRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.DescribeRedisCmdPerfTimeSeriesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRedisCmdPerfTimeSeries", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRedisCmdPerfTimeSeriesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRedisCommandCostStatistics(self, request):
+        """延迟分析-查询命令延迟分布
+
+        :param request: Request instance for DescribeRedisCommandCostStatistics.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeRedisCommandCostStatisticsRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.DescribeRedisCommandCostStatisticsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRedisCommandCostStatistics", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRedisCommandCostStatisticsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRedisCommandOverview(self, request):
+        """延迟分析-查询实例访问命令统计
+
+        :param request: Request instance for DescribeRedisCommandOverview.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeRedisCommandOverviewRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.DescribeRedisCommandOverviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRedisCommandOverview", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRedisCommandOverviewResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

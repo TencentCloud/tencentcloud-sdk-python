@@ -4236,10 +4236,8 @@ class ContainerWorkLoadInfo(AbstractModel):
         :param _Name: 工作负载的名称
         :type Name: str
         :param _Container: 容器名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Container: str
         :param _Namespace: 命名空间
-注意：此字段可能返回 null，表示取不到有效值。
         :type Namespace: str
         """
         self._Kind = None
@@ -4272,7 +4270,6 @@ class ContainerWorkLoadInfo(AbstractModel):
     @property
     def Container(self):
         """容器名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Container
@@ -4284,7 +4281,6 @@ class ContainerWorkLoadInfo(AbstractModel):
     @property
     def Namespace(self):
         """命名空间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Namespace
@@ -4410,56 +4406,39 @@ class CosRechargeInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: COS导入配置ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
         :param _TopicId: 日志主题ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TopicId: str
         :param _LogsetId: 日志集ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogsetId: str
         :param _Name: COS导入任务名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Bucket: COS存储桶
-注意：此字段可能返回 null，表示取不到有效值。
         :type Bucket: str
         :param _BucketRegion: COS存储桶所在地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type BucketRegion: str
         :param _Prefix: COS文件所在文件夹的前缀
-注意：此字段可能返回 null，表示取不到有效值。
         :type Prefix: str
         :param _LogType: 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表单行全文；
 默认为minimalist_log
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogType: str
         :param _Status: 状态   status 0: 已创建, 1: 运行中, 2: 已停止, 3: 已完成, 4: 运行失败。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _Enable: 是否启用:   0： 未启用  ， 1：启用
-注意：此字段可能返回 null，表示取不到有效值。
         :type Enable: int
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _UpdateTime: 更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param _Progress: 进度条百分值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Progress: int
         :param _Compress: supported: "", "gzip", "lzop", "snappy”; 默认空
-注意：此字段可能返回 null，表示取不到有效值。
         :type Compress: str
         :param _ExtractRuleInfo: 见： ExtractRuleInfo 结构描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExtractRuleInfo: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
         :param _TaskType: COS导入任务类型。1：一次性导入任务；2：持续性导入任务。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskType: int
         :param _Metadata: 元数据。支持 bucket，object。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Metadata: list of str
         """
         self._Id = None
@@ -4483,7 +4462,6 @@ class CosRechargeInfo(AbstractModel):
     @property
     def Id(self):
         """COS导入配置ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Id
@@ -4495,7 +4473,6 @@ class CosRechargeInfo(AbstractModel):
     @property
     def TopicId(self):
         """日志主题ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TopicId
@@ -4507,7 +4484,6 @@ class CosRechargeInfo(AbstractModel):
     @property
     def LogsetId(self):
         """日志集ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LogsetId
@@ -4519,7 +4495,6 @@ class CosRechargeInfo(AbstractModel):
     @property
     def Name(self):
         """COS导入任务名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -4531,7 +4506,6 @@ class CosRechargeInfo(AbstractModel):
     @property
     def Bucket(self):
         """COS存储桶
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Bucket
@@ -4543,7 +4517,6 @@ class CosRechargeInfo(AbstractModel):
     @property
     def BucketRegion(self):
         """COS存储桶所在地域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BucketRegion
@@ -4555,7 +4528,6 @@ class CosRechargeInfo(AbstractModel):
     @property
     def Prefix(self):
         """COS文件所在文件夹的前缀
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Prefix
@@ -4568,7 +4540,6 @@ class CosRechargeInfo(AbstractModel):
     def LogType(self):
         """采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表单行全文；
 默认为minimalist_log
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LogType
@@ -4580,7 +4551,6 @@ class CosRechargeInfo(AbstractModel):
     @property
     def Status(self):
         """状态   status 0: 已创建, 1: 运行中, 2: 已停止, 3: 已完成, 4: 运行失败。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -4592,7 +4562,6 @@ class CosRechargeInfo(AbstractModel):
     @property
     def Enable(self):
         """是否启用:   0： 未启用  ， 1：启用
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Enable
@@ -4604,7 +4573,6 @@ class CosRechargeInfo(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -4616,7 +4584,6 @@ class CosRechargeInfo(AbstractModel):
     @property
     def UpdateTime(self):
         """更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime
@@ -4628,7 +4595,6 @@ class CosRechargeInfo(AbstractModel):
     @property
     def Progress(self):
         """进度条百分值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Progress
@@ -4640,7 +4606,6 @@ class CosRechargeInfo(AbstractModel):
     @property
     def Compress(self):
         """supported: "", "gzip", "lzop", "snappy”; 默认空
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Compress
@@ -4652,7 +4617,6 @@ class CosRechargeInfo(AbstractModel):
     @property
     def ExtractRuleInfo(self):
         """见： ExtractRuleInfo 结构描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
         """
         return self._ExtractRuleInfo
@@ -4664,7 +4628,6 @@ class CosRechargeInfo(AbstractModel):
     @property
     def TaskType(self):
         """COS导入任务类型。1：一次性导入任务；2：持续性导入任务。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TaskType
@@ -4676,7 +4639,6 @@ class CosRechargeInfo(AbstractModel):
     @property
     def Metadata(self):
         """元数据。支持 bucket，object。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Metadata
@@ -9234,30 +9196,22 @@ class DashboardInfo(AbstractModel):
         :param _DashboardName: 仪表盘名字
         :type DashboardName: str
         :param _Data: 仪表盘数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: str
         :param _CreateTime: 创建仪表盘的时间
         :type CreateTime: str
         :param _AssumerUin: AssumerUin非空则表示创建该日志主题的服务方Uin
-注意：此字段可能返回 null，表示取不到有效值。
         :type AssumerUin: int
         :param _RoleName: RoleName非空则表示创建该日志主题的服务方使用的角色
-注意：此字段可能返回 null，表示取不到有效值。
         :type RoleName: str
         :param _AssumerName: AssumerName非空则表示创建该日志主题的服务方名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type AssumerName: str
         :param _Tags: 日志主题绑定的标签信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
         :param _DashboardRegion: 仪表盘所在地域： 为了兼容老的地域。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DashboardRegion: str
         :param _UpdateTime: 修改仪表盘的时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param _DashboardTopicInfos: 仪表盘对应的topic相关信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type DashboardTopicInfos: list of DashboardTopicInfo
         """
         self._DashboardId = None
@@ -9297,7 +9251,6 @@ class DashboardInfo(AbstractModel):
     @property
     def Data(self):
         """仪表盘数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Data
@@ -9320,7 +9273,6 @@ class DashboardInfo(AbstractModel):
     @property
     def AssumerUin(self):
         """AssumerUin非空则表示创建该日志主题的服务方Uin
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AssumerUin
@@ -9332,7 +9284,6 @@ class DashboardInfo(AbstractModel):
     @property
     def RoleName(self):
         """RoleName非空则表示创建该日志主题的服务方使用的角色
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RoleName
@@ -9344,7 +9295,6 @@ class DashboardInfo(AbstractModel):
     @property
     def AssumerName(self):
         """AssumerName非空则表示创建该日志主题的服务方名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AssumerName
@@ -9356,7 +9306,6 @@ class DashboardInfo(AbstractModel):
     @property
     def Tags(self):
         """日志主题绑定的标签信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._Tags
@@ -9368,7 +9317,6 @@ class DashboardInfo(AbstractModel):
     @property
     def DashboardRegion(self):
         """仪表盘所在地域： 为了兼容老的地域。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DashboardRegion
@@ -9380,7 +9328,6 @@ class DashboardInfo(AbstractModel):
     @property
     def UpdateTime(self):
         """修改仪表盘的时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime
@@ -9392,7 +9339,6 @@ class DashboardInfo(AbstractModel):
     @property
     def DashboardTopicInfos(self):
         """仪表盘对应的topic相关信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DashboardTopicInfo
         """
         return self._DashboardTopicInfos
@@ -9458,7 +9404,6 @@ class DashboardNoticeMode(AbstractModel):
         :param _Url: 回调Url。
 <br><li/> 当ReceiverType是 Wecom 时，Url必填。
 <br><li/> 当ReceiverType不是 Wecom 时，Url不能填写。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
         """
         self._ReceiverType = None
@@ -9512,7 +9457,6 @@ class DashboardNoticeMode(AbstractModel):
         """回调Url。
 <br><li/> 当ReceiverType是 Wecom 时，Url必填。
 <br><li/> 当ReceiverType不是 Wecom 时，Url不能填写。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Url
@@ -9553,16 +9497,12 @@ class DashboardSubscribeData(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateVariables: list of DashboardTemplateVariable
         :param _Timezone: 时区。参考：https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#SHANGHAI
-注意：此字段可能返回 null，表示取不到有效值。
         :type Timezone: str
         :param _SubscribeLanguage: 语言。 zh 中文、en`英文。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubscribeLanguage: str
         :param _JumpDomain: 调用链接域名。http:// 或者 https:// 开头，不能/结尾
-注意：此字段可能返回 null，表示取不到有效值。
         :type JumpDomain: str
         :param _JumpUrl: 自定义跳转链接。
-注意：此字段可能返回 null，表示取不到有效值。
         :type JumpUrl: str
         """
         self._NoticeModes = None
@@ -9611,7 +9551,6 @@ class DashboardSubscribeData(AbstractModel):
     @property
     def Timezone(self):
         """时区。参考：https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#SHANGHAI
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Timezone
@@ -9623,7 +9562,6 @@ class DashboardSubscribeData(AbstractModel):
     @property
     def SubscribeLanguage(self):
         """语言。 zh 中文、en`英文。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubscribeLanguage
@@ -9635,7 +9573,6 @@ class DashboardSubscribeData(AbstractModel):
     @property
     def JumpDomain(self):
         """调用链接域名。http:// 或者 https:// 开头，不能/结尾
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._JumpDomain
@@ -9647,7 +9584,6 @@ class DashboardSubscribeData(AbstractModel):
     @property
     def JumpUrl(self):
         """自定义跳转链接。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._JumpUrl
@@ -9872,13 +9808,10 @@ class DataTransformTaskInfo(AbstractModel):
         :param _EtlContent: 加工逻辑函数。
         :type EtlContent: str
         :param _DataTransformType: 数据加工类型。0：标准加工任务；1：前置加工任务。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataTransformType: int
         :param _KeepFailureLog: 保留失败日志状态。 1:不保留，2:保留
-注意：此字段可能返回 null，表示取不到有效值。
         :type KeepFailureLog: int
         :param _FailureLogKey: 失败日志的字段名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailureLogKey: str
         """
         self._Name = None
@@ -10044,7 +9977,6 @@ class DataTransformTaskInfo(AbstractModel):
     @property
     def DataTransformType(self):
         """数据加工类型。0：标准加工任务；1：前置加工任务。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DataTransformType
@@ -10056,7 +9988,6 @@ class DataTransformTaskInfo(AbstractModel):
     @property
     def KeepFailureLog(self):
         """保留失败日志状态。 1:不保留，2:保留
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._KeepFailureLog
@@ -10068,7 +9999,6 @@ class DataTransformTaskInfo(AbstractModel):
     @property
     def FailureLogKey(self):
         """失败日志的字段名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FailureLogKey
@@ -16315,7 +16245,6 @@ class DynamicIndex(AbstractModel):
     def __init__(self):
         r"""
         :param _Status: 键值索引自动配置开关
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: bool
         """
         self._Status = None
@@ -16323,7 +16252,6 @@ class DynamicIndex(AbstractModel):
     @property
     def Status(self):
         """键值索引自动配置开关
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Status
@@ -16357,19 +16285,15 @@ class EscalateNoticeInfo(AbstractModel):
         :param _WebCallbacks: 告警通知模板回调信息。
         :type WebCallbacks: list of WebCallback
         :param _Escalate: 告警升级开关。`true`：开启告警升级、`false`：关闭告警升级，默认：false
-注意：此字段可能返回 null，表示取不到有效值。
         :type Escalate: bool
         :param _Interval: 告警升级间隔。单位：分钟，范围`[1，14400]`
-注意：此字段可能返回 null，表示取不到有效值。
         :type Interval: int
         :param _Type: 升级条件。`1`：无人认领且未恢复、`2`：未恢复，默认为1
 - 无人认领且未恢复：告警没有恢复并且没有人认领则升级
 - 未恢复：当前告警持续未恢复则升级
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: int
         :param _EscalateNotice: 告警升级后下一个环节的通知渠道配置，最多可配置5个环节。
-注意：此字段可能返回 null，表示取不到有效值。
         :type EscalateNotice: :class:`tencentcloud.cls.v20201016.models.EscalateNoticeInfo`
         """
         self._NoticeReceivers = None
@@ -16404,7 +16328,6 @@ class EscalateNoticeInfo(AbstractModel):
     @property
     def Escalate(self):
         """告警升级开关。`true`：开启告警升级、`false`：关闭告警升级，默认：false
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Escalate
@@ -16416,7 +16339,6 @@ class EscalateNoticeInfo(AbstractModel):
     @property
     def Interval(self):
         """告警升级间隔。单位：分钟，范围`[1，14400]`
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Interval
@@ -16431,7 +16353,6 @@ class EscalateNoticeInfo(AbstractModel):
 - 无人认领且未恢复：告警没有恢复并且没有人认领则升级
 - 未恢复：当前告警持续未恢复则升级
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Type
@@ -16443,7 +16364,6 @@ class EscalateNoticeInfo(AbstractModel):
     @property
     def EscalateNotice(self):
         """告警升级后下一个环节的通知渠道配置，最多可配置5个环节。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cls.v20201016.models.EscalateNoticeInfo`
         """
         return self._EscalateNotice
@@ -16661,7 +16581,6 @@ class ExportInfo(AbstractModel):
 0：Lucene语法，1：CQL语法。
         :type SyntaxRule: int
         :param _DerivedFields: 导出字段
-注意：此字段可能返回 null，表示取不到有效值。
         :type DerivedFields: list of str
         """
         self._TopicId = None
@@ -16838,7 +16757,6 @@ class ExportInfo(AbstractModel):
     @property
     def DerivedFields(self):
         """导出字段
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._DerivedFields
@@ -16882,19 +16800,14 @@ class ExtractRuleInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _TimeKey: 时间字段的key名字，TikeKey和TimeFormat必须成对出现
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimeKey: str
         :param _TimeFormat: 时间字段的格式，参考c语言的strftime函数对于时间的格式说明输出参数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimeFormat: str
         :param _Delimiter: 分隔符类型日志的分隔符，只有LogType为delimiter_log时有效
-注意：此字段可能返回 null，表示取不到有效值。
         :type Delimiter: str
         :param _LogRegex: 整条日志匹配规则，只有LogType为fullregex_log时有效
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogRegex: str
         :param _BeginRegex: 行首匹配规则，只有LogType为multiline_log或fullregex_log时有效
-注意：此字段可能返回 null，表示取不到有效值。
         :type BeginRegex: str
         :param _Keys: 取的每个字段的key名字，为空的key代表丢弃这个字段，只有LogType为delimiter_log时有效，json_log的日志使用json本身的key。限制100个。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -16902,7 +16815,6 @@ class ExtractRuleInfo(AbstractModel):
         :param _FilterKeyRegex: 日志过滤规则列表（旧版），需要过滤日志的key，及其对应的regex。
  注意：2.9.3及以上版本LogListener ，建议使用AdvanceFilterRules配置日志过滤规则。
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type FilterKeyRegex: list of KeyRegexInfo
         :param _UnMatchUpLoadSwitch: 解析失败日志是否上传，true表示上传，false表示不上传
 注意：此字段可能返回 null，表示取不到有效值。
@@ -16919,7 +16831,6 @@ class ExtractRuleInfo(AbstractModel):
 注意
 - 目前取0值时，表示UTF-8编码
 - COS导入不支持此字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsGBK: int
         :param _JsonStandard: 是否为标准json。  0：否； 1：是。
 - 标准json指采集器使用业界标准开源解析器进行json解析，非标json指采集器使用CLS自研json解析器进行解析，两种解析器没有本质区别，建议客户使用标准json进行解析。
@@ -16929,13 +16840,11 @@ class ExtractRuleInfo(AbstractModel):
 注意：
 - 该字段适用于：创建采集规则配置、修改采集规则配置。
 - COS导入不支持此字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Protocol: str
         :param _Address: syslog系统日志采集指定采集器监听的地址和端口 ，形式：[ip]:[port]，只有在LogType为service_syslog时生效，其余类型无需填写。
 注意：
 - 该字段适用于：创建采集规则配置、修改采集规则配置。
 - COS导入不支持此字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Address: str
         :param _ParseProtocol: rfc3164：指定系统日志采集使用RFC3164协议解析日志。
 rfc5424：指定系统日志采集使用RFC5424协议解析日志。
@@ -16944,7 +16853,6 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议。
 注意：
 - 该字段适用于：创建采集规则配置、修改采集规则配置
 - COS导入不支持此字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ParseProtocol: str
         :param _MetadataType: 元数据类型。0: 不使用元数据信息；1:使用机器组元数据；2:使用用户自定义元数据；3:使用采集配置路径。
 注意：
@@ -16960,7 +16868,6 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议。
 注意：
 - MetadataType为3时必填。
 - COS导入不支持此字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PathRegex: str
         :param _MetaTags: 用户自定义元数据信息。
 注意：
@@ -17000,7 +16907,6 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议。
     @property
     def TimeKey(self):
         """时间字段的key名字，TikeKey和TimeFormat必须成对出现
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TimeKey
@@ -17012,7 +16918,6 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议。
     @property
     def TimeFormat(self):
         """时间字段的格式，参考c语言的strftime函数对于时间的格式说明输出参数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TimeFormat
@@ -17024,7 +16929,6 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议。
     @property
     def Delimiter(self):
         """分隔符类型日志的分隔符，只有LogType为delimiter_log时有效
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Delimiter
@@ -17036,7 +16940,6 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议。
     @property
     def LogRegex(self):
         """整条日志匹配规则，只有LogType为fullregex_log时有效
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LogRegex
@@ -17048,7 +16951,6 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议。
     @property
     def BeginRegex(self):
         """行首匹配规则，只有LogType为multiline_log或fullregex_log时有效
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BeginRegex
@@ -17074,7 +16976,6 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议。
         """日志过滤规则列表（旧版），需要过滤日志的key，及其对应的regex。
  注意：2.9.3及以上版本LogListener ，建议使用AdvanceFilterRules配置日志过滤规则。
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KeyRegexInfo
         """
         return self._FilterKeyRegex
@@ -17127,7 +17028,6 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议。
 注意
 - 目前取0值时，表示UTF-8编码
 - COS导入不支持此字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IsGBK
@@ -17155,7 +17055,6 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议。
 注意：
 - 该字段适用于：创建采集规则配置、修改采集规则配置。
 - COS导入不支持此字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Protocol
@@ -17170,7 +17069,6 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议。
 注意：
 - 该字段适用于：创建采集规则配置、修改采集规则配置。
 - COS导入不支持此字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Address
@@ -17188,7 +17086,6 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议。
 注意：
 - 该字段适用于：创建采集规则配置、修改采集规则配置
 - COS导入不支持此字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ParseProtocol
@@ -17222,7 +17119,6 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议。
 注意：
 - MetadataType为3时必填。
 - COS导入不支持此字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PathRegex
@@ -17505,7 +17401,6 @@ class FullTextInfo(AbstractModel):
 注意：\n\t\r本身已被转义，直接使用双引号包裹即可作为入参，无需再次转义。使用API Explorer进行调试时请使用JSON参数输入方式，以避免\n\t\r被重复转义
         :type Tokenizer: str
         :param _ContainZH: 是否包含中文
-注意：此字段可能返回 null，表示取不到有效值。
         :type ContainZH: bool
         """
         self._CaseSensitive = None
@@ -17539,7 +17434,6 @@ class FullTextInfo(AbstractModel):
     @property
     def ContainZH(self):
         """是否包含中文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._ContainZH
@@ -18128,7 +18022,6 @@ class JsonInfo(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type MetaFields: list of str
         :param _JsonType: 投递Json格式，0：字符串方式投递；1:以结构化方式投递
-注意：此字段可能返回 null，表示取不到有效值。
         :type JsonType: int
         """
         self._EnableTag = None
@@ -18161,7 +18054,6 @@ class JsonInfo(AbstractModel):
     @property
     def JsonType(self):
         """投递Json格式，0：字符串方式投递；1:以结构化方式投递
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._JsonType
@@ -18210,7 +18102,6 @@ TAG信息：`{"__TAG__":{"fieldA":200,"fieldB":"text"}}`
 平铺示例：
 TAG信息：`{"__TAG__":{"fieldA":200,"fieldB":"text"}}`
 平铺：`{"__TAG__.fieldA":200,"__TAG__.fieldB":"text"}`
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagTransaction: int
         :param _JsonType: 消费数据Json格式：
 1：不转义（默认格式）
@@ -18279,7 +18170,6 @@ TAG信息：`{"__TAG__":{"fieldA":200,"fieldB":"text"}}`
 平铺示例：
 TAG信息：`{"__TAG__":{"fieldA":200,"fieldB":"text"}}`
 平铺：`{"__TAG__.fieldA":200,"__TAG__.fieldB":"text"}`
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TagTransaction
@@ -18336,19 +18226,15 @@ class KafkaProtocolInfo(AbstractModel):
         r"""
         :param _Protocol: 协议类型，支持的协议类型包括 plaintext、sasl_plaintext 或 sasl_ssl。建议使用 sasl_ssl，此协议会进行连接加密同时需要用户认证。
 入参必填
-注意：此字段可能返回 null，表示取不到有效值。
         :type Protocol: str
         :param _Mechanism: 加密类型，支持 PLAIN、SCRAM-SHA-256 或 SCRAM-SHA-512。
 当Protocol为sasl_plaintext或sasl_ssl时必填
-注意：此字段可能返回 null，表示取不到有效值。
         :type Mechanism: str
         :param _UserName: 用户名。
 当Protocol为sasl_plaintext或sasl_ssl时必填
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserName: str
         :param _Password: 用户密码。
 当Protocol为sasl_plaintext或sasl_ssl时必填
-注意：此字段可能返回 null，表示取不到有效值。
         :type Password: str
         """
         self._Protocol = None
@@ -18360,7 +18246,6 @@ class KafkaProtocolInfo(AbstractModel):
     def Protocol(self):
         """协议类型，支持的协议类型包括 plaintext、sasl_plaintext 或 sasl_ssl。建议使用 sasl_ssl，此协议会进行连接加密同时需要用户认证。
 入参必填
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Protocol
@@ -18373,7 +18258,6 @@ class KafkaProtocolInfo(AbstractModel):
     def Mechanism(self):
         """加密类型，支持 PLAIN、SCRAM-SHA-256 或 SCRAM-SHA-512。
 当Protocol为sasl_plaintext或sasl_ssl时必填
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Mechanism
@@ -18386,7 +18270,6 @@ class KafkaProtocolInfo(AbstractModel):
     def UserName(self):
         """用户名。
 当Protocol为sasl_plaintext或sasl_ssl时必填
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UserName
@@ -18399,7 +18282,6 @@ class KafkaProtocolInfo(AbstractModel):
     def Password(self):
         """用户密码。
 当Protocol为sasl_plaintext或sasl_ssl时必填
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Password
@@ -18432,48 +18314,34 @@ class KafkaRechargeInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: Kafka数据订阅配置的ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
         :param _TopicId: 日志主题ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TopicId: str
         :param _Name: Kafka导入任务名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _KafkaType: 导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka
-注意：此字段可能返回 null，表示取不到有效值。
         :type KafkaType: int
         :param _KafkaInstance: 腾讯云CKafka实例ID，KafkaType为0时必填
-注意：此字段可能返回 null，表示取不到有效值。
         :type KafkaInstance: str
         :param _ServerAddr: 服务地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServerAddr: str
         :param _IsEncryptionAddr: ServerAddr是否为加密连接	
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsEncryptionAddr: bool
         :param _Protocol: 加密访问协议，IsEncryptionAddr参数为true时必填
         :type Protocol: :class:`tencentcloud.cls.v20201016.models.KafkaProtocolInfo`
         :param _UserKafkaTopics: 用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserKafkaTopics: str
         :param _ConsumerGroupName: 用户Kafka消费组名称	
-注意：此字段可能返回 null，表示取不到有效值。
         :type ConsumerGroupName: str
         :param _Status: 状态 ，1：运行中；2：暂停。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _Offset: 导入数据位置，-2:最早（默认），-1：最晚
-注意：此字段可能返回 null，表示取不到有效值。
         :type Offset: int
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _UpdateTime: 更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param _LogRechargeRule: 日志导入规则
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogRechargeRule: :class:`tencentcloud.cls.v20201016.models.LogRechargeRuleInfo`
         """
         self._Id = None
@@ -18495,7 +18363,6 @@ class KafkaRechargeInfo(AbstractModel):
     @property
     def Id(self):
         """Kafka数据订阅配置的ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Id
@@ -18507,7 +18374,6 @@ class KafkaRechargeInfo(AbstractModel):
     @property
     def TopicId(self):
         """日志主题ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TopicId
@@ -18519,7 +18385,6 @@ class KafkaRechargeInfo(AbstractModel):
     @property
     def Name(self):
         """Kafka导入任务名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -18531,7 +18396,6 @@ class KafkaRechargeInfo(AbstractModel):
     @property
     def KafkaType(self):
         """导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._KafkaType
@@ -18543,7 +18407,6 @@ class KafkaRechargeInfo(AbstractModel):
     @property
     def KafkaInstance(self):
         """腾讯云CKafka实例ID，KafkaType为0时必填
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._KafkaInstance
@@ -18555,7 +18418,6 @@ class KafkaRechargeInfo(AbstractModel):
     @property
     def ServerAddr(self):
         """服务地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ServerAddr
@@ -18567,7 +18429,6 @@ class KafkaRechargeInfo(AbstractModel):
     @property
     def IsEncryptionAddr(self):
         """ServerAddr是否为加密连接	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsEncryptionAddr
@@ -18590,7 +18451,6 @@ class KafkaRechargeInfo(AbstractModel):
     @property
     def UserKafkaTopics(self):
         """用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UserKafkaTopics
@@ -18602,7 +18462,6 @@ class KafkaRechargeInfo(AbstractModel):
     @property
     def ConsumerGroupName(self):
         """用户Kafka消费组名称	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ConsumerGroupName
@@ -18614,7 +18473,6 @@ class KafkaRechargeInfo(AbstractModel):
     @property
     def Status(self):
         """状态 ，1：运行中；2：暂停。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -18626,7 +18484,6 @@ class KafkaRechargeInfo(AbstractModel):
     @property
     def Offset(self):
         """导入数据位置，-2:最早（默认），-1：最晚
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Offset
@@ -18638,7 +18495,6 @@ class KafkaRechargeInfo(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -18650,7 +18506,6 @@ class KafkaRechargeInfo(AbstractModel):
     @property
     def UpdateTime(self):
         """更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime
@@ -18662,7 +18517,6 @@ class KafkaRechargeInfo(AbstractModel):
     @property
     def LogRechargeRule(self):
         """日志导入规则
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cls.v20201016.models.LogRechargeRuleInfo`
         """
         return self._LogRechargeRule
@@ -18838,16 +18692,12 @@ class LogContextInfo(AbstractModel):
         :param _BTime: 日志时间戳
         :type BTime: int
         :param _HostName: 日志来源主机名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type HostName: str
         :param _RawLog: 原始日志(仅在日志创建索引异常时有值)
-注意：此字段可能返回 null，表示取不到有效值。
         :type RawLog: str
         :param _IndexStatus: 日志创建索引异常原因(仅在日志创建索引异常时有值)
-注意：此字段可能返回 null，表示取不到有效值。
         :type IndexStatus: str
         :param _HighLights: 日志内容的高亮描述信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type HighLights: list of HighLightItem
         """
         self._Source = None
@@ -18930,7 +18780,6 @@ class LogContextInfo(AbstractModel):
     @property
     def HostName(self):
         """日志来源主机名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HostName
@@ -18942,7 +18791,6 @@ class LogContextInfo(AbstractModel):
     @property
     def RawLog(self):
         """原始日志(仅在日志创建索引异常时有值)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RawLog
@@ -18954,7 +18802,6 @@ class LogContextInfo(AbstractModel):
     @property
     def IndexStatus(self):
         """日志创建索引异常原因(仅在日志创建索引异常时有值)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IndexStatus
@@ -18966,7 +18813,6 @@ class LogContextInfo(AbstractModel):
     @property
     def HighLights(self):
         """日志内容的高亮描述信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of HighLightItem
         """
         return self._HighLights
@@ -19024,16 +18870,12 @@ class LogInfo(AbstractModel):
         :param _PkgLogId: 请求包内日志的ID
         :type PkgLogId: str
         :param _LogJson: 日志内容的Json序列化字符串
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogJson: str
         :param _HostName: 日志来源主机名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type HostName: str
         :param _RawLog: 原始日志(仅在日志创建索引异常时有值)
-注意：此字段可能返回 null，表示取不到有效值。
         :type RawLog: str
         :param _IndexStatus: 日志创建索引异常原因(仅在日志创建索引异常时有值)
-注意：此字段可能返回 null，表示取不到有效值。
         :type IndexStatus: str
         """
         self._Time = None
@@ -19128,7 +18970,6 @@ class LogInfo(AbstractModel):
     @property
     def LogJson(self):
         """日志内容的Json序列化字符串
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LogJson
@@ -19140,7 +18981,6 @@ class LogInfo(AbstractModel):
     @property
     def HostName(self):
         """日志来源主机名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HostName
@@ -19152,7 +18992,6 @@ class LogInfo(AbstractModel):
     @property
     def RawLog(self):
         """原始日志(仅在日志创建索引异常时有值)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RawLog
@@ -19164,7 +19003,6 @@ class LogInfo(AbstractModel):
     @property
     def IndexStatus(self):
         """日志创建索引异常原因(仅在日志创建索引异常时有值)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IndexStatus
@@ -19302,36 +19140,26 @@ class LogRechargeRuleInfo(AbstractModel):
         :param _DefaultTimeSwitch: 使用默认时间，true：开启（默认值）， flase：关闭
         :type DefaultTimeSwitch: bool
         :param _LogRegex: 整条日志匹配规则，只有RechargeType为fullregex_log时有效
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogRegex: str
         :param _UnMatchLogSwitch: 解析失败日志是否上传，true表示上传，false表示不上传
         :type UnMatchLogSwitch: bool
         :param _UnMatchLogKey: 解析失败日志的键名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type UnMatchLogKey: str
         :param _UnMatchLogTimeSrc: 解析失败日志时间来源，0: 系统当前时间，1: Kafka消息时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type UnMatchLogTimeSrc: int
         :param _DefaultTimeSrc: 默认时间来源，0: 系统当前时间，1: Kafka消息时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type DefaultTimeSrc: int
         :param _TimeKey: 时间字段
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimeKey: str
         :param _TimeRegex: 时间提取正则表达式
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimeRegex: str
         :param _TimeFormat: 时间字段格式
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimeFormat: str
         :param _TimeZone: 时间字段时区
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimeZone: str
         :param _Metadata: 元数据信息，Kafka导入支持kafka_topic,kafka_partition,kafka_offset,kafka_timestamp
-注意：此字段可能返回 null，表示取不到有效值。
         :type Metadata: list of str
         :param _Keys: 日志Key列表，RechargeType为full_regex_log时必填
-注意：此字段可能返回 null，表示取不到有效值。
         :type Keys: list of str
         :param _ParseArray: json解析模式，开启首层数据解析
         :type ParseArray: bool
@@ -19388,7 +19216,6 @@ class LogRechargeRuleInfo(AbstractModel):
     @property
     def LogRegex(self):
         """整条日志匹配规则，只有RechargeType为fullregex_log时有效
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LogRegex
@@ -19411,7 +19238,6 @@ class LogRechargeRuleInfo(AbstractModel):
     @property
     def UnMatchLogKey(self):
         """解析失败日志的键名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UnMatchLogKey
@@ -19423,7 +19249,6 @@ class LogRechargeRuleInfo(AbstractModel):
     @property
     def UnMatchLogTimeSrc(self):
         """解析失败日志时间来源，0: 系统当前时间，1: Kafka消息时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._UnMatchLogTimeSrc
@@ -19435,7 +19260,6 @@ class LogRechargeRuleInfo(AbstractModel):
     @property
     def DefaultTimeSrc(self):
         """默认时间来源，0: 系统当前时间，1: Kafka消息时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DefaultTimeSrc
@@ -19447,7 +19271,6 @@ class LogRechargeRuleInfo(AbstractModel):
     @property
     def TimeKey(self):
         """时间字段
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TimeKey
@@ -19459,7 +19282,6 @@ class LogRechargeRuleInfo(AbstractModel):
     @property
     def TimeRegex(self):
         """时间提取正则表达式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TimeRegex
@@ -19471,7 +19293,6 @@ class LogRechargeRuleInfo(AbstractModel):
     @property
     def TimeFormat(self):
         """时间字段格式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TimeFormat
@@ -19483,7 +19304,6 @@ class LogRechargeRuleInfo(AbstractModel):
     @property
     def TimeZone(self):
         """时间字段时区
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TimeZone
@@ -19495,7 +19315,6 @@ class LogRechargeRuleInfo(AbstractModel):
     @property
     def Metadata(self):
         """元数据信息，Kafka导入支持kafka_topic,kafka_partition,kafka_offset,kafka_timestamp
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Metadata
@@ -19507,7 +19326,6 @@ class LogRechargeRuleInfo(AbstractModel):
     @property
     def Keys(self):
         """日志Key列表，RechargeType为full_regex_log时必填
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Keys
@@ -19568,10 +19386,8 @@ class LogsetInfo(AbstractModel):
         :param _CreateTime: 创建时间
         :type CreateTime: str
         :param _AssumerName: 云产品标识，日志集由其它云产品创建时，该字段会显示云产品名称，例如CDN、TKE
-注意：此字段可能返回 null，表示取不到有效值。
         :type AssumerName: str
         :param _Tags: 日志集绑定的标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
         :param _TopicCount: 日志集下日志主题的数目
         :type TopicCount: int
@@ -19622,7 +19438,6 @@ class LogsetInfo(AbstractModel):
     @property
     def AssumerName(self):
         """云产品标识，日志集由其它云产品创建时，该字段会显示云产品名称，例如CDN、TKE
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AssumerName
@@ -19634,7 +19449,6 @@ class LogsetInfo(AbstractModel):
     @property
     def Tags(self):
         """日志集绑定的标签
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._Tags
@@ -27277,13 +27091,10 @@ class SearchLogErrors(AbstractModel):
     def __init__(self):
         r"""
         :param _TopicId: 日志主题ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TopicId: str
         :param _ErrorMsg: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
         :param _ErrorCodeStr: 错误码
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorCodeStr: str
         """
         self._TopicId = None
@@ -27293,7 +27104,6 @@ class SearchLogErrors(AbstractModel):
     @property
     def TopicId(self):
         """日志主题ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TopicId
@@ -27305,7 +27115,6 @@ class SearchLogErrors(AbstractModel):
     @property
     def ErrorMsg(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorMsg
@@ -27317,7 +27126,6 @@ class SearchLogErrors(AbstractModel):
     @property
     def ErrorCodeStr(self):
         """错误码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorCodeStr
@@ -27353,7 +27161,6 @@ class SearchLogInfos(AbstractModel):
         :param _Period: 日志存储生命周期
         :type Period: int
         :param _Context: 透传本次接口返回的Context值，可获取后续更多日志，过期时间1小时
-注意：此字段可能返回 null，表示取不到有效值。
         :type Context: str
         """
         self._TopicId = None
@@ -27385,7 +27192,6 @@ class SearchLogInfos(AbstractModel):
     @property
     def Context(self):
         """透传本次接口返回的Context值，可获取后续更多日志，过期时间1小时
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Context
@@ -27914,10 +27720,8 @@ class SearchLogTopics(AbstractModel):
     def __init__(self):
         r"""
         :param _Errors: 多日志主题检索对应的错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Errors: list of SearchLogErrors
         :param _Infos: 多日志主题检索各日志主题信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Infos: list of SearchLogInfos
         """
         self._Errors = None
@@ -27926,7 +27730,6 @@ class SearchLogTopics(AbstractModel):
     @property
     def Errors(self):
         """多日志主题检索对应的错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SearchLogErrors
         """
         return self._Errors
@@ -27938,7 +27741,6 @@ class SearchLogTopics(AbstractModel):
     @property
     def Infos(self):
         """多日志主题检索各日志主题信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SearchLogInfos
         """
         return self._Infos

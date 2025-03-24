@@ -5391,15 +5391,15 @@ class EnvDataCpm(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Zones: 黑石可用区名称列表。如ap-guangzhou-bls-1, 可通过黑石接口[DescribeRegions]( https://cloud.tencent.com/document/api/386/33564)接口获取。不是Batch可用区名称。目前仅支持一个可用区名称。
+        :param _Zones: 黑石可用区名称列表。如ap-guangzhou-bls-1。不是Batch可用区名称。目前仅支持一个可用区名称。
         :type Zones: list of str
-        :param _InstanceTypes: 购买的机型ID。通过黑石接口[DescribeDeviceClass]( https://cloud.tencent.com/document/api/386/32911)查询设备型号，获取机型信息。
+        :param _InstanceTypes: 购买的机型ID。
         :type InstanceTypes: list of str
         :param _TimeUnit: 购买时长单位，取值：m(月)。
         :type TimeUnit: str
         :param _TimeSpan: 购买时长。
         :type TimeSpan: int
-        :param _RaidId: RAID类型ID。通过黑石接口[DescribeDeviceClassPartition]( https://cloud.tencent.com/document/api/386/32910)查询机型RAID方式以及系统盘大小，获取RAID信息。
+        :param _RaidId: RAID类型ID。
         :type RaidId: int
         :param _OsTypeId: 部署服务器的操作系统ID。通过批量计算接口DescribeCpmOsInfo查询操作系统信息。
         :type OsTypeId: int
@@ -5425,7 +5425,7 @@ class EnvDataCpm(AbstractModel):
         :type EipBandwidth: int
         :param _ImageId: 自定义镜像ID，取值生效时用自定义镜像部署物理机。
         :type ImageId: str
-        :param _SysRootSpace: 系统盘根分区大小，单位为G，默认取值10G。通过黑石接口[DescribeDeviceClassPartition]( https://cloud.tencent.com/document/api/386/32910)查询机型RAID方式以及系统盘大小，获取根分区信息。
+        :param _SysRootSpace: 系统盘根分区大小，单位为G，默认取值10G。
         :type SysRootSpace: int
         :param _SysDataSpace: /data分区大小，单位为G。如果系统盘还有剩余大小，会分配给/data分区。（特殊情况：如果剩余空间不足10G，并且没有指定/data分区，则剩余空间会分配给Root分区）。
         :type SysDataSpace: int
@@ -5458,7 +5458,7 @@ class EnvDataCpm(AbstractModel):
 
     @property
     def Zones(self):
-        """黑石可用区名称列表。如ap-guangzhou-bls-1, 可通过黑石接口[DescribeRegions]( https://cloud.tencent.com/document/api/386/33564)接口获取。不是Batch可用区名称。目前仅支持一个可用区名称。
+        """黑石可用区名称列表。如ap-guangzhou-bls-1。不是Batch可用区名称。目前仅支持一个可用区名称。
         :rtype: list of str
         """
         return self._Zones
@@ -5469,7 +5469,7 @@ class EnvDataCpm(AbstractModel):
 
     @property
     def InstanceTypes(self):
-        """购买的机型ID。通过黑石接口[DescribeDeviceClass]( https://cloud.tencent.com/document/api/386/32911)查询设备型号，获取机型信息。
+        """购买的机型ID。
         :rtype: list of str
         """
         return self._InstanceTypes
@@ -5502,7 +5502,7 @@ class EnvDataCpm(AbstractModel):
 
     @property
     def RaidId(self):
-        """RAID类型ID。通过黑石接口[DescribeDeviceClassPartition]( https://cloud.tencent.com/document/api/386/32910)查询机型RAID方式以及系统盘大小，获取RAID信息。
+        """RAID类型ID。
         :rtype: int
         """
         return self._RaidId
@@ -5645,7 +5645,7 @@ class EnvDataCpm(AbstractModel):
 
     @property
     def SysRootSpace(self):
-        """系统盘根分区大小，单位为G，默认取值10G。通过黑石接口[DescribeDeviceClassPartition]( https://cloud.tencent.com/document/api/386/32910)查询机型RAID方式以及系统盘大小，获取根分区信息。
+        """系统盘根分区大小，单位为G，默认取值10G。
         :rtype: int
         """
         return self._SysRootSpace

@@ -2394,10 +2394,8 @@ class DescribeMailProfileResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ProfileList: 邮件配置详情。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProfileList: list of UserProfile
         :param _TotalCount: 邮件模板总数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2409,7 +2407,6 @@ class DescribeMailProfileResponse(AbstractModel):
     @property
     def ProfileList(self):
         """邮件配置详情。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of UserProfile
         """
         return self._ProfileList
@@ -2421,7 +2418,6 @@ class DescribeMailProfileResponse(AbstractModel):
     @property
     def TotalCount(self):
         """邮件模板总数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount

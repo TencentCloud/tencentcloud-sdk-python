@@ -1988,13 +1988,10 @@ class DescribeFlySecMiniAppScanTaskParamResponse(AbstractModel):
         :param _Mode: 诊断模式 1:基础诊断，2:深度诊断
         :type Mode: int
         :param _MiniAppTestAccount: 小程序测试账号(自有账号体系需提供,其他情况不需要)
-注意：此字段可能返回 null，表示取不到有效值。
         :type MiniAppTestAccount: str
         :param _MiniAppTestPwd: 小程序测试密码(自有账号体系需提供,其他情况不需要)
-注意：此字段可能返回 null，表示取不到有效值。
         :type MiniAppTestPwd: str
         :param _ScanVersion: 诊断扫描版本 0:正式版 1:体验版
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScanVersion: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2043,7 +2040,6 @@ class DescribeFlySecMiniAppScanTaskParamResponse(AbstractModel):
     @property
     def MiniAppTestAccount(self):
         """小程序测试账号(自有账号体系需提供,其他情况不需要)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MiniAppTestAccount
@@ -2055,7 +2051,6 @@ class DescribeFlySecMiniAppScanTaskParamResponse(AbstractModel):
     @property
     def MiniAppTestPwd(self):
         """小程序测试密码(自有账号体系需提供,其他情况不需要)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MiniAppTestPwd
@@ -2067,7 +2062,6 @@ class DescribeFlySecMiniAppScanTaskParamResponse(AbstractModel):
     @property
     def ScanVersion(self):
         """诊断扫描版本 0:正式版 1:体验版
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ScanVersion

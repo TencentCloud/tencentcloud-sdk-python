@@ -7366,7 +7366,7 @@ class CreateFlowByFilesRequest(AbstractModel):
 <li> 如果企业通知腾讯电子签平台审核未通过，平台将继续阻塞签署方的签署动作，直到企业通知平台审核通过。</li></ul>
 注：`此功能可用于与企业内部的审批流程进行关联，支持手动、静默签署合同`
         :type NeedSignReview: bool
-        :param _FlowDisplayType: 在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
+        :param _FlowDisplayType: 在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li><li> <b>3</b> :文书</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
         :type FlowDisplayType: int
         :param _OpenDynamicSignFlow: 是否开启动态签署合同：
 <ul><li> **true**：开启动态签署合同，可在签署过程中追加签署人（必须满足：1，发起方企业开启了模块化计费能力；2，发起方企业在企业应用管理中开启了动态签署人2.0能力）    。</li>
@@ -7700,7 +7700,7 @@ class CreateFlowByFilesRequest(AbstractModel):
 
     @property
     def FlowDisplayType(self):
-        """在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
+        """在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li><li> <b>3</b> :文书</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
         :rtype: int
         """
         return self._FlowDisplayType
@@ -8830,9 +8830,14 @@ class CreateFlowOption(AbstractModel):
         :param _CustomCreateFlowDescription: 定制化发起合同弹窗的描述信息，描述信息最长500字符
 
         :type CustomCreateFlowDescription: str
-        :param _ForbidAddApprover:   禁止添加签署方，若为true则在发起流程的可嵌入页面隐藏“添加签署人按钮”
+        :param _ForbidAddApprover:  禁止添加签署方，若为true则在发起流程的可嵌入页面隐藏“添加签署人按钮”
 
         :type ForbidAddApprover: bool
+        :param _ForbidEditApprover: 是否可以编辑签署人包括新增，修改，删除 
+<ul><li>（默认） false -可以编辑签署人</li> <li> true - 可以编辑签署人</li></ul>
+
+注意：如果设置参数为 false， 则 参数签署人 [FlowApproverList](https://qian.tencent.com/developers/partnerApis/embedPages/ChannelCreatePrepareFlow) 不能为空
+        :type ForbidEditApprover: bool
         :param _ForbidEditFlowProperties:   禁止设置设置签署流程属性 (顺序、合同签署认证方式等)，若为true则在发起流程的可嵌入页面隐藏签署流程设置面板
 
         :type ForbidEditFlowProperties: bool
@@ -8908,6 +8913,7 @@ class CreateFlowOption(AbstractModel):
         self._ForbidEditFillComponent = None
         self._CustomCreateFlowDescription = None
         self._ForbidAddApprover = None
+        self._ForbidEditApprover = None
         self._ForbidEditFlowProperties = None
         self._HideComponentTypes = None
         self._ShowComponentTypes = None
@@ -9040,7 +9046,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def ForbidAddApprover(self):
-        """  禁止添加签署方，若为true则在发起流程的可嵌入页面隐藏“添加签署人按钮”
+        """ 禁止添加签署方，若为true则在发起流程的可嵌入页面隐藏“添加签署人按钮”
 
         :rtype: bool
         """
@@ -9049,6 +9055,20 @@ class CreateFlowOption(AbstractModel):
     @ForbidAddApprover.setter
     def ForbidAddApprover(self, ForbidAddApprover):
         self._ForbidAddApprover = ForbidAddApprover
+
+    @property
+    def ForbidEditApprover(self):
+        """是否可以编辑签署人包括新增，修改，删除 
+<ul><li>（默认） false -可以编辑签署人</li> <li> true - 可以编辑签署人</li></ul>
+
+注意：如果设置参数为 false， 则 参数签署人 [FlowApproverList](https://qian.tencent.com/developers/partnerApis/embedPages/ChannelCreatePrepareFlow) 不能为空
+        :rtype: bool
+        """
+        return self._ForbidEditApprover
+
+    @ForbidEditApprover.setter
+    def ForbidEditApprover(self, ForbidEditApprover):
+        self._ForbidEditApprover = ForbidEditApprover
 
     @property
     def ForbidEditFlowProperties(self):
@@ -9171,6 +9191,7 @@ class CreateFlowOption(AbstractModel):
         self._ForbidEditFillComponent = params.get("ForbidEditFillComponent")
         self._CustomCreateFlowDescription = params.get("CustomCreateFlowDescription")
         self._ForbidAddApprover = params.get("ForbidAddApprover")
+        self._ForbidEditApprover = params.get("ForbidEditApprover")
         self._ForbidEditFlowProperties = params.get("ForbidEditFlowProperties")
         self._HideComponentTypes = params.get("HideComponentTypes")
         self._ShowComponentTypes = params.get("ShowComponentTypes")
@@ -9405,7 +9426,7 @@ class CreateFlowRequest(AbstractModel):
         :param _CallbackUrl: 暂未开放
         :type CallbackUrl: str
         :param _FlowDisplayType: 在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下： 
- <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li></ul>
+ <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li><li> <b>3</b> :文书</li></ul>
 
 效果如下:
 ![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
@@ -9676,7 +9697,7 @@ class CreateFlowRequest(AbstractModel):
     @property
     def FlowDisplayType(self):
         """在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下： 
- <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li></ul>
+ <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li><li> <b>3</b> :文书</li></ul>
 
 效果如下:
 ![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)

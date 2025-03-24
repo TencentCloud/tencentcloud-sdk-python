@@ -942,7 +942,6 @@ class DescribeRegionsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _RegionSet: 地域列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionSet: list of RegionInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -953,7 +952,6 @@ class DescribeRegionsResponse(AbstractModel):
     @property
     def RegionSet(self):
         """地域列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RegionInfo
         """
         return self._RegionSet
@@ -1028,7 +1026,6 @@ class DescribeScenesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _SceneSet: 场景详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type SceneSet: list of SceneInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1039,7 +1036,6 @@ class DescribeScenesResponse(AbstractModel):
     @property
     def SceneSet(self):
         """场景详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SceneInfo
         """
         return self._SceneSet
@@ -2408,7 +2404,6 @@ class NetworkStatus(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceId: HAI 的实例 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _AddressIp: 公网 IP 地址
 注意：此字段可能返回 null，表示取不到有效值。
@@ -2417,10 +2412,8 @@ class NetworkStatus(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Bandwidth: int
         :param _TotalTrafficAmount: 流量包总量，单位GB
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalTrafficAmount: float
         :param _RemainingTrafficAmount: 流量包剩余量，单位GB
-注意：此字段可能返回 null，表示取不到有效值。
         :type RemainingTrafficAmount: float
         """
         self._InstanceId = None
@@ -2432,7 +2425,6 @@ class NetworkStatus(AbstractModel):
     @property
     def InstanceId(self):
         """HAI 的实例 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -2468,7 +2460,6 @@ class NetworkStatus(AbstractModel):
     @property
     def TotalTrafficAmount(self):
         """流量包总量，单位GB
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._TotalTrafficAmount
@@ -2480,7 +2471,6 @@ class NetworkStatus(AbstractModel):
     @property
     def RemainingTrafficAmount(self):
         """流量包剩余量，单位GB
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._RemainingTrafficAmount
@@ -2596,19 +2586,15 @@ class RegionInfo(AbstractModel):
         r"""
         :param _Region: ap-guangzhou
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         :param _RegionName: 华南地区(广州)
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionName: str
         :param _RegionState: 地域是否可用状态
 AVAILABLE：可用
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionState: str
         :param _ScholarRocketSupportState: 学术加速是否支持：
 NO_NEED_SUPPORT表示不需支持；NOT_SUPPORT_YET表示暂未支持；ALREADY_SUPPORT表示已经支持。对于ALREADY_SUPPORT的地域才需进一步调用DescribeScholarRocketStatus查看学术加速是开启还是关闭
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScholarRocketSupportState: str
         """
         self._Region = None
@@ -2620,7 +2606,6 @@ NO_NEED_SUPPORT表示不需支持；NOT_SUPPORT_YET表示暂未支持；ALREADY_
     def Region(self):
         """ap-guangzhou
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Region
@@ -2632,7 +2617,6 @@ NO_NEED_SUPPORT表示不需支持；NOT_SUPPORT_YET表示暂未支持；ALREADY_
     @property
     def RegionName(self):
         """华南地区(广州)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RegionName
@@ -2646,7 +2630,6 @@ NO_NEED_SUPPORT表示不需支持；NOT_SUPPORT_YET表示暂未支持；ALREADY_
         """地域是否可用状态
 AVAILABLE：可用
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RegionState
@@ -2659,7 +2642,6 @@ AVAILABLE：可用
     def ScholarRocketSupportState(self):
         """学术加速是否支持：
 NO_NEED_SUPPORT表示不需支持；NOT_SUPPORT_YET表示暂未支持；ALREADY_SUPPORT表示已经支持。对于ALREADY_SUPPORT的地域才需进一步调用DescribeScholarRocketStatus查看学术加速是开启还是关闭
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ScholarRocketSupportState
@@ -2864,11 +2846,9 @@ class SceneInfo(AbstractModel):
         r"""
         :param _SceneId: 场景id
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type SceneId: str
         :param _SceneName: 场景名
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type SceneName: str
         """
         self._SceneId = None
@@ -2878,7 +2858,6 @@ class SceneInfo(AbstractModel):
     def SceneId(self):
         """场景id
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SceneId
@@ -2891,7 +2870,6 @@ class SceneInfo(AbstractModel):
     def SceneName(self):
         """场景名
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SceneName

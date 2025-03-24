@@ -2049,6 +2049,140 @@ class CloseAuditServiceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CmdCostGroup(AbstractModel):
+    """redis延迟分布区间详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Percent: 该延迟区间内命令数占总命令数百分比
+        :type Percent: float
+        :param _CostUpperLimit: 延迟区间上界，单位ms
+        :type CostUpperLimit: str
+        :param _CostLowerLimit: 延迟区间下界，单位ms
+        :type CostLowerLimit: str
+        :param _Count: 该延迟区间内命令次数
+        :type Count: int
+        """
+        self._Percent = None
+        self._CostUpperLimit = None
+        self._CostLowerLimit = None
+        self._Count = None
+
+    @property
+    def Percent(self):
+        """该延迟区间内命令数占总命令数百分比
+        :rtype: float
+        """
+        return self._Percent
+
+    @Percent.setter
+    def Percent(self, Percent):
+        self._Percent = Percent
+
+    @property
+    def CostUpperLimit(self):
+        """延迟区间上界，单位ms
+        :rtype: str
+        """
+        return self._CostUpperLimit
+
+    @CostUpperLimit.setter
+    def CostUpperLimit(self, CostUpperLimit):
+        self._CostUpperLimit = CostUpperLimit
+
+    @property
+    def CostLowerLimit(self):
+        """延迟区间下界，单位ms
+        :rtype: str
+        """
+        return self._CostLowerLimit
+
+    @CostLowerLimit.setter
+    def CostLowerLimit(self, CostLowerLimit):
+        self._CostLowerLimit = CostLowerLimit
+
+    @property
+    def Count(self):
+        """该延迟区间内命令次数
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+
+    def _deserialize(self, params):
+        self._Percent = params.get("Percent")
+        self._CostUpperLimit = params.get("CostUpperLimit")
+        self._CostLowerLimit = params.get("CostLowerLimit")
+        self._Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CmdPerfInfo(AbstractModel):
+    """redis命令延迟趋势
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Command: redis命令
+        :type Command: str
+        :param _SeriesData: 监控数据
+        :type SeriesData: :class:`tencentcloud.dbbrain.v20210527.models.MonitorMetricSeriesData`
+        """
+        self._Command = None
+        self._SeriesData = None
+
+    @property
+    def Command(self):
+        """redis命令
+        :rtype: str
+        """
+        return self._Command
+
+    @Command.setter
+    def Command(self, Command):
+        self._Command = Command
+
+    @property
+    def SeriesData(self):
+        """监控数据
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.MonitorMetricSeriesData`
+        """
+        return self._SeriesData
+
+    @SeriesData.setter
+    def SeriesData(self, SeriesData):
+        self._SeriesData = SeriesData
+
+
+    def _deserialize(self, params):
+        self._Command = params.get("Command")
+        if params.get("SeriesData") is not None:
+            self._SeriesData = MonitorMetricSeriesData()
+            self._SeriesData._deserialize(params.get("SeriesData"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ContactItem(AbstractModel):
     """联系人contact描述。
 
@@ -4884,10 +5018,8 @@ class DescribeAuditLogFilesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 符合条件的审计日志文件个数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _Items: 审计日志文件详情。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of AuditLogFile
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4899,7 +5031,6 @@ class DescribeAuditLogFilesResponse(AbstractModel):
     @property
     def TotalCount(self):
         """符合条件的审计日志文件个数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -4911,7 +5042,6 @@ class DescribeAuditLogFilesResponse(AbstractModel):
     @property
     def Items(self):
         """审计日志文件详情。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AuditLogFile
         """
         return self._Items
@@ -6042,6 +6172,222 @@ class DescribeDBDiagReportTasksResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDBPerfTimeSeriesRequest(AbstractModel):
+    """DescribeDBPerfTimeSeries请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 需要获取性能趋势的实例ID。
+        :type InstanceId: str
+        :param _StartTime: 开始时间。
+        :type StartTime: str
+        :param _EndTime: 结束时间。
+        :type EndTime: str
+        :param _Metric: 指标名称，多个指标之间用逗号分隔。
+        :type Metric: str
+        :param _Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，"mongodb" - 云数据库 MongoDB
+        :type Product: str
+        :param _ClusterId: 需要获取性能趋势的集群ID。
+        :type ClusterId: str
+        :param _Period: 性能数据统计粒度。
+        :type Period: int
+        :param _InstanceNodeId: 实列节点ID。
+        :type InstanceNodeId: str
+        :param _InstanceProxyId: 实列代理ID。
+        :type InstanceProxyId: str
+        :param _ProxyId: 代理节点ID。
+        :type ProxyId: str
+        """
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Metric = None
+        self._Product = None
+        self._ClusterId = None
+        self._Period = None
+        self._InstanceNodeId = None
+        self._InstanceProxyId = None
+        self._ProxyId = None
+
+    @property
+    def InstanceId(self):
+        """需要获取性能趋势的实例ID。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        """开始时间。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """结束时间。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Metric(self):
+        """指标名称，多个指标之间用逗号分隔。
+        :rtype: str
+        """
+        return self._Metric
+
+    @Metric.setter
+    def Metric(self, Metric):
+        self._Metric = Metric
+
+    @property
+    def Product(self):
+        """服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，"mongodb" - 云数据库 MongoDB
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def ClusterId(self):
+        """需要获取性能趋势的集群ID。
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Period(self):
+        """性能数据统计粒度。
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def InstanceNodeId(self):
+        """实列节点ID。
+        :rtype: str
+        """
+        return self._InstanceNodeId
+
+    @InstanceNodeId.setter
+    def InstanceNodeId(self, InstanceNodeId):
+        self._InstanceNodeId = InstanceNodeId
+
+    @property
+    def InstanceProxyId(self):
+        """实列代理ID。
+        :rtype: str
+        """
+        return self._InstanceProxyId
+
+    @InstanceProxyId.setter
+    def InstanceProxyId(self, InstanceProxyId):
+        self._InstanceProxyId = InstanceProxyId
+
+    @property
+    def ProxyId(self):
+        """代理节点ID。
+        :rtype: str
+        """
+        return self._ProxyId
+
+    @ProxyId.setter
+    def ProxyId(self, ProxyId):
+        self._ProxyId = ProxyId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Metric = params.get("Metric")
+        self._Product = params.get("Product")
+        self._ClusterId = params.get("ClusterId")
+        self._Period = params.get("Period")
+        self._InstanceNodeId = params.get("InstanceNodeId")
+        self._InstanceProxyId = params.get("InstanceProxyId")
+        self._ProxyId = params.get("ProxyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBPerfTimeSeriesResponse(AbstractModel):
+    """DescribeDBPerfTimeSeries返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 实列性能数据。
+        :type Data: :class:`tencentcloud.dbbrain.v20210527.models.MonitorMetricSeriesData`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """实列性能数据。
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.MonitorMetricSeriesData`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = MonitorMetricSeriesData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDBSpaceStatusRequest(AbstractModel):
     """DescribeDBSpaceStatus请求参数结构体
 
@@ -6930,10 +7276,8 @@ class DescribeMailProfileResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ProfileList: 邮件配置详情。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProfileList: list of UserProfile
         :param _TotalCount: 邮件配置总数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6945,7 +7289,6 @@ class DescribeMailProfileResponse(AbstractModel):
     @property
     def ProfileList(self):
         """邮件配置详情。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of UserProfile
         """
         return self._ProfileList
@@ -6957,7 +7300,6 @@ class DescribeMailProfileResponse(AbstractModel):
     @property
     def TotalCount(self):
         """邮件配置总数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -7908,6 +8250,438 @@ class DescribeRedisBigKeyAnalysisTasksResponse(AbstractModel):
                 obj = RedisBigKeyTask()
                 obj._deserialize(item)
                 self._Tasks.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRedisCmdPerfTimeSeriesRequest(AbstractModel):
+    """DescribeRedisCmdPerfTimeSeries请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例 ID
+        :type InstanceId: str
+        :param _Product: 服务产品类型，仅仅支持值 "redis" - 云数据库 Redis。
+        :type Product: str
+        :param _StartTime: 开始时间，如“2025-03-17T00:00:00+00:00”。0天 < 当前服务器时间 - 开始时间 <= 10天。
+        :type StartTime: str
+        :param _EndTime: 结束时间，如“2025-03-17T01:00:00+00:00”，0天 < 结束时间 - 开始时间 <= 10天。
+        :type EndTime: str
+        :param _CommandList: 需要分析的redis命令
+        :type CommandList: list of str
+        :param _Metric: 监控指标，以逗号分隔
+        :type Metric: str
+        :param _Period: 监控指标时间粒度，单位秒，若不提供则根据开始时间和结束时间取默认值
+        :type Period: int
+        """
+        self._InstanceId = None
+        self._Product = None
+        self._StartTime = None
+        self._EndTime = None
+        self._CommandList = None
+        self._Metric = None
+        self._Period = None
+
+    @property
+    def InstanceId(self):
+        """实例 ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Product(self):
+        """服务产品类型，仅仅支持值 "redis" - 云数据库 Redis。
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def StartTime(self):
+        """开始时间，如“2025-03-17T00:00:00+00:00”。0天 < 当前服务器时间 - 开始时间 <= 10天。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """结束时间，如“2025-03-17T01:00:00+00:00”，0天 < 结束时间 - 开始时间 <= 10天。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def CommandList(self):
+        """需要分析的redis命令
+        :rtype: list of str
+        """
+        return self._CommandList
+
+    @CommandList.setter
+    def CommandList(self, CommandList):
+        self._CommandList = CommandList
+
+    @property
+    def Metric(self):
+        """监控指标，以逗号分隔
+        :rtype: str
+        """
+        return self._Metric
+
+    @Metric.setter
+    def Metric(self, Metric):
+        self._Metric = Metric
+
+    @property
+    def Period(self):
+        """监控指标时间粒度，单位秒，若不提供则根据开始时间和结束时间取默认值
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Product = params.get("Product")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._CommandList = params.get("CommandList")
+        self._Metric = params.get("Metric")
+        self._Period = params.get("Period")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRedisCmdPerfTimeSeriesResponse(AbstractModel):
+    """DescribeRedisCmdPerfTimeSeries返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CmdPerfList: redis命令延迟趋势
+        :type CmdPerfList: list of CmdPerfInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CmdPerfList = None
+        self._RequestId = None
+
+    @property
+    def CmdPerfList(self):
+        """redis命令延迟趋势
+        :rtype: list of CmdPerfInfo
+        """
+        return self._CmdPerfList
+
+    @CmdPerfList.setter
+    def CmdPerfList(self, CmdPerfList):
+        self._CmdPerfList = CmdPerfList
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CmdPerfList") is not None:
+            self._CmdPerfList = []
+            for item in params.get("CmdPerfList"):
+                obj = CmdPerfInfo()
+                obj._deserialize(item)
+                self._CmdPerfList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRedisCommandCostStatisticsRequest(AbstractModel):
+    """DescribeRedisCommandCostStatistics请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例 ID
+        :type InstanceId: str
+        :param _StartTime: 开始时间，如“2025-03-17T00:00:00+00:00”。0天 < 当前服务器时间 - 开始时间 <= 10天。
+        :type StartTime: str
+        :param _EndTime: 结束时间，如“2025-03-17T01:00:00+00:00”，0天 < 结束时间 - 开始时间 <= 10天。
+        :type EndTime: str
+        :param _Product: 服务产品类型，仅仅支持值 "redis" - 云数据库 Redis。
+        :type Product: str
+        """
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Product = None
+
+    @property
+    def InstanceId(self):
+        """实例 ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        """开始时间，如“2025-03-17T00:00:00+00:00”。0天 < 当前服务器时间 - 开始时间 <= 10天。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """结束时间，如“2025-03-17T01:00:00+00:00”，0天 < 结束时间 - 开始时间 <= 10天。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Product(self):
+        """服务产品类型，仅仅支持值 "redis" - 云数据库 Redis。
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRedisCommandCostStatisticsResponse(AbstractModel):
+    """DescribeRedisCommandCostStatistics返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CmdCostGroups: redis延迟分布区间
+        :type CmdCostGroups: list of CmdCostGroup
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CmdCostGroups = None
+        self._RequestId = None
+
+    @property
+    def CmdCostGroups(self):
+        """redis延迟分布区间
+        :rtype: list of CmdCostGroup
+        """
+        return self._CmdCostGroups
+
+    @CmdCostGroups.setter
+    def CmdCostGroups(self, CmdCostGroups):
+        self._CmdCostGroups = CmdCostGroups
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CmdCostGroups") is not None:
+            self._CmdCostGroups = []
+            for item in params.get("CmdCostGroups"):
+                obj = CmdCostGroup()
+                obj._deserialize(item)
+                self._CmdCostGroups.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRedisCommandOverviewRequest(AbstractModel):
+    """DescribeRedisCommandOverview请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例 ID
+        :type InstanceId: str
+        :param _StartTime: 开始时间，如“2025-03-17T00:00:00+00:00”。0天 < 当前服务器时间 - 开始时间 <= 10天。
+        :type StartTime: str
+        :param _EndTime: 结束时间，如“2025-03-17T01:00:00+00:00”，0天 < 结束时间 - 开始时间 <= 10天。
+        :type EndTime: str
+        :param _Product: 服务产品类型，仅仅支持值 "redis" - 云数据库 Redis。
+        :type Product: str
+        """
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Product = None
+
+    @property
+    def InstanceId(self):
+        """实例 ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        """开始时间，如“2025-03-17T00:00:00+00:00”。0天 < 当前服务器时间 - 开始时间 <= 10天。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """结束时间，如“2025-03-17T01:00:00+00:00”，0天 < 结束时间 - 开始时间 <= 10天。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Product(self):
+        """服务产品类型，仅仅支持值 "redis" - 云数据库 Redis。
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRedisCommandOverviewResponse(AbstractModel):
+    """DescribeRedisCommandOverview返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CmdList: redis访问命令统计
+        :type CmdList: list of RedisCmdInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CmdList = None
+        self._RequestId = None
+
+    @property
+    def CmdList(self):
+        """redis访问命令统计
+        :rtype: list of RedisCmdInfo
+        """
+        return self._CmdList
+
+    @CmdList.setter
+    def CmdList(self, CmdList):
+        self._CmdList = CmdList
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CmdList") is not None:
+            self._CmdList = []
+            for item in params.get("CmdList"):
+                obj = RedisCmdInfo()
+                obj._deserialize(item)
+                self._CmdList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -15096,6 +15870,57 @@ class RedisBigKeyTask(AbstractModel):
         self._TaskStatus = params.get("TaskStatus")
         self._Progress = params.get("Progress")
         self._ShardIds = params.get("ShardIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RedisCmdInfo(AbstractModel):
+    """redis访问命令详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Cmd: redis命令
+        :type Cmd: str
+        :param _Count: 命令次数
+        :type Count: int
+        """
+        self._Cmd = None
+        self._Count = None
+
+    @property
+    def Cmd(self):
+        """redis命令
+        :rtype: str
+        """
+        return self._Cmd
+
+    @Cmd.setter
+    def Cmd(self, Cmd):
+        self._Cmd = Cmd
+
+    @property
+    def Count(self):
+        """命令次数
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+
+    def _deserialize(self, params):
+        self._Cmd = params.get("Cmd")
+        self._Count = params.get("Count")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

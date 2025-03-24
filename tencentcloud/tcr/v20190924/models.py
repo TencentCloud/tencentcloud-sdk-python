@@ -8709,9 +8709,9 @@ class DescribeRepositoriesRequest(AbstractModel):
         :type NamespaceName: str
         :param _RepositoryName: 指定镜像仓库，不填写默认查询指定命名空间下所有镜像仓库
         :type RepositoryName: str
-        :param _Offset: 页数，用于分页
+        :param _Offset: 页数，第几页，用于分页
         :type Offset: int
-        :param _Limit: 每页个数，用于分页
+        :param _Limit: 每页个数，用于分页，最大值为100
         :type Limit: int
         :param _SortBy: 基于字段排序，支持的值有-creation_time,-name, -update_time
         :type SortBy: str
@@ -8758,7 +8758,7 @@ class DescribeRepositoriesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """页数，用于分页
+        """页数，第几页，用于分页
         :rtype: int
         """
         return self._Offset
@@ -8769,7 +8769,7 @@ class DescribeRepositoriesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页个数，用于分页
+        """每页个数，用于分页，最大值为100
         :rtype: int
         """
         return self._Limit
@@ -15783,10 +15783,8 @@ class RetentionRule(AbstractModel):
     def __init__(self):
         r"""
         :param _Key: 支持的策略，可选值为latestPushedK（保留最新推送多少个版本）nDaysSinceLastPush（保留近天内推送）
-注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
         :param _Value: 规则设置下的对应值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: int
         """
         self._Key = None
@@ -15795,7 +15793,6 @@ class RetentionRule(AbstractModel):
     @property
     def Key(self):
         """支持的策略，可选值为latestPushedK（保留最新推送多少个版本）nDaysSinceLastPush（保留近天内推送）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Key
@@ -15807,7 +15804,6 @@ class RetentionRule(AbstractModel):
     @property
     def Value(self):
         """规则设置下的对应值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Value
@@ -17350,10 +17346,8 @@ class TcrRepositoryInfo(AbstractModel):
         :param _Public: 是否公开
         :type Public: bool
         :param _Description: 仓库详细描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _BriefDescription: 简单描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type BriefDescription: str
         :param _UpdateTime: 更新时间，格式"2006-01-02 15:04:05.999999999 -0700 MST"
         :type UpdateTime: str
@@ -17413,7 +17407,6 @@ class TcrRepositoryInfo(AbstractModel):
     @property
     def Description(self):
         """仓库详细描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -17425,7 +17418,6 @@ class TcrRepositoryInfo(AbstractModel):
     @property
     def BriefDescription(self):
         """简单描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BriefDescription
@@ -18431,7 +18423,6 @@ class WebhookTrigger(AbstractModel):
         :param _NamespaceId: 触发器所属命名空间 Id
         :type NamespaceId: int
         :param _NamespaceName: 触发器所属命名空间名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type NamespaceName: str
         """
         self._Name = None
@@ -18535,7 +18526,6 @@ class WebhookTrigger(AbstractModel):
     @property
     def NamespaceName(self):
         """触发器所属命名空间名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NamespaceName
