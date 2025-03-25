@@ -3134,10 +3134,20 @@ class DescribeClustersRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
         :type Limit: int
+        :param _Filters: <ul>
+    <li><strong>cluster-type</strong>
+        <p style="padding-left: 30px;">按照【<strong>集群类型</strong>】进行过滤</p>
+        <p style="padding-left: 30px;">类型：String</p>
+        <p style="padding-left: 30px;">必选：否</p>
+    </li>
+</ul>
+<p style="padding-left: 30px;">每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。</p>
+        :type Filters: list of Filter
         """
         self._ClusterIds = None
         self._Offset = None
         self._Limit = None
+        self._Filters = None
 
     @property
     def ClusterIds(self):
@@ -3172,11 +3182,35 @@ class DescribeClustersRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def Filters(self):
+        """<ul>
+    <li><strong>cluster-type</strong>
+        <p style="padding-left: 30px;">按照【<strong>集群类型</strong>】进行过滤</p>
+        <p style="padding-left: 30px;">类型：String</p>
+        <p style="padding-left: 30px;">必选：否</p>
+    </li>
+</ul>
+<p style="padding-left: 30px;">每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
 
     def _deserialize(self, params):
         self._ClusterIds = params.get("ClusterIds")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

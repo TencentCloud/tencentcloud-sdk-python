@@ -2871,7 +2871,7 @@ class CreateUserOIDCConfigRequest(AbstractModel):
         :type IdentityKey: str
         :param _Scope: 授权请求Scope。openid; email;profile。授权请求信息范围。默认必选openid。
         :type Scope: list of str
-        :param _Description: 描述
+        :param _Description: 描述信息。由用户自行定义。
         :type Description: str
         """
         self._IdentityUrl = None
@@ -2975,7 +2975,7 @@ class CreateUserOIDCConfigRequest(AbstractModel):
 
     @property
     def Description(self):
-        """描述
+        """描述信息。由用户自行定义。
         :rtype: str
         """
         return self._Description

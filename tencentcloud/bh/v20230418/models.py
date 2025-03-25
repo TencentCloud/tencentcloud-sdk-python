@@ -91,19 +91,21 @@ class AccessDevicesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 资源id
-        :type InstanceId: str
-        :param _Account: 账号
+        :param _Account: 资产的登录账号
         :type Account: str
         :param _LoginAccount: 运维端登录账号
         :type LoginAccount: str
         :param _LoginPassword: 运维端登录密码
         :type LoginPassword: str
-        :param _Password: 密码
+        :param _DeviceId: 资产ID
+        :type DeviceId: int
+        :param _InstanceId: 资源id(优先使用DeviceId)
+        :type InstanceId: str
+        :param _Password: 未托管密码私钥时，填入
         :type Password: str
-        :param _PrivateKey: 私钥
+        :param _PrivateKey: 未托管密码私钥时，填入
         :type PrivateKey: str
-        :param _PrivateKeyPassword: 私钥密码
+        :param _PrivateKeyPassword: 未托管密码私钥时，填入
         :type PrivateKeyPassword: str
         :param _Exe: 客户端工具
         :type Exe: str
@@ -115,11 +117,14 @@ class AccessDevicesRequest(AbstractModel):
         :type Height: int
         :param _IntranetAccess: 是否内网访问（默认不是）
         :type IntranetAccess: bool
+        :param _AutoManageAccessCredential: 是否自动管理访问串，删掉过期的，新建可用的（默认false）
+        :type AutoManageAccessCredential: bool
         """
-        self._InstanceId = None
         self._Account = None
         self._LoginAccount = None
         self._LoginPassword = None
+        self._DeviceId = None
+        self._InstanceId = None
         self._Password = None
         self._PrivateKey = None
         self._PrivateKeyPassword = None
@@ -128,21 +133,11 @@ class AccessDevicesRequest(AbstractModel):
         self._Width = None
         self._Height = None
         self._IntranetAccess = None
-
-    @property
-    def InstanceId(self):
-        """资源id
-        :rtype: str
-        """
-        return self._InstanceId
-
-    @InstanceId.setter
-    def InstanceId(self, InstanceId):
-        self._InstanceId = InstanceId
+        self._AutoManageAccessCredential = None
 
     @property
     def Account(self):
-        """账号
+        """资产的登录账号
         :rtype: str
         """
         return self._Account
@@ -153,6 +148,8 @@ class AccessDevicesRequest(AbstractModel):
 
     @property
     def LoginAccount(self):
+        warnings.warn("parameter `LoginAccount` is deprecated", DeprecationWarning) 
+
         """运维端登录账号
         :rtype: str
         """
@@ -160,10 +157,14 @@ class AccessDevicesRequest(AbstractModel):
 
     @LoginAccount.setter
     def LoginAccount(self, LoginAccount):
+        warnings.warn("parameter `LoginAccount` is deprecated", DeprecationWarning) 
+
         self._LoginAccount = LoginAccount
 
     @property
     def LoginPassword(self):
+        warnings.warn("parameter `LoginPassword` is deprecated", DeprecationWarning) 
+
         """运维端登录密码
         :rtype: str
         """
@@ -171,11 +172,35 @@ class AccessDevicesRequest(AbstractModel):
 
     @LoginPassword.setter
     def LoginPassword(self, LoginPassword):
+        warnings.warn("parameter `LoginPassword` is deprecated", DeprecationWarning) 
+
         self._LoginPassword = LoginPassword
 
     @property
+    def DeviceId(self):
+        """资产ID
+        :rtype: int
+        """
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+    @property
+    def InstanceId(self):
+        """资源id(优先使用DeviceId)
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
     def Password(self):
-        """密码
+        """未托管密码私钥时，填入
         :rtype: str
         """
         return self._Password
@@ -186,7 +211,7 @@ class AccessDevicesRequest(AbstractModel):
 
     @property
     def PrivateKey(self):
-        """私钥
+        """未托管密码私钥时，填入
         :rtype: str
         """
         return self._PrivateKey
@@ -197,7 +222,7 @@ class AccessDevicesRequest(AbstractModel):
 
     @property
     def PrivateKeyPassword(self):
-        """私钥密码
+        """未托管密码私钥时，填入
         :rtype: str
         """
         return self._PrivateKeyPassword
@@ -261,12 +286,24 @@ class AccessDevicesRequest(AbstractModel):
     def IntranetAccess(self, IntranetAccess):
         self._IntranetAccess = IntranetAccess
 
+    @property
+    def AutoManageAccessCredential(self):
+        """是否自动管理访问串，删掉过期的，新建可用的（默认false）
+        :rtype: bool
+        """
+        return self._AutoManageAccessCredential
+
+    @AutoManageAccessCredential.setter
+    def AutoManageAccessCredential(self, AutoManageAccessCredential):
+        self._AutoManageAccessCredential = AutoManageAccessCredential
+
 
     def _deserialize(self, params):
-        self._InstanceId = params.get("InstanceId")
         self._Account = params.get("Account")
         self._LoginAccount = params.get("LoginAccount")
         self._LoginPassword = params.get("LoginPassword")
+        self._DeviceId = params.get("DeviceId")
+        self._InstanceId = params.get("InstanceId")
         self._Password = params.get("Password")
         self._PrivateKey = params.get("PrivateKey")
         self._PrivateKeyPassword = params.get("PrivateKeyPassword")
@@ -275,6 +312,7 @@ class AccessDevicesRequest(AbstractModel):
         self._Width = params.get("Width")
         self._Height = params.get("Height")
         self._IntranetAccess = params.get("IntranetAccess")
+        self._AutoManageAccessCredential = params.get("AutoManageAccessCredential")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

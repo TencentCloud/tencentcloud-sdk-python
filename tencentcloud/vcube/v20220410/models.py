@@ -30,7 +30,6 @@ class AppInfo(AbstractModel):
         :param _AppId: 用户appid
         :type AppId: str
         :param _AppName: 应用名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppName: str
         :param _BundleId: Ios 包名
 注意：此字段可能返回 null，表示取不到有效值。
@@ -91,7 +90,6 @@ class AppInfo(AbstractModel):
     @property
     def AppName(self):
         """应用名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AppName
@@ -231,24 +229,20 @@ class ApplicationInfo(AbstractModel):
         :param _AppType: 应用类型，formal： 正式应用，test：测试应用
         :type AppType: str
         :param _Licenses: license数组
+注意：此字段可能返回 null，表示取不到有效值。
         :type Licenses: list of License
         :param _LicenseKey: license 秘钥
-注意：此字段可能返回 null，表示取不到有效值。
         :type LicenseKey: str
         :param _PackageName: 安卓应用的唯一标识
 注意：此字段可能返回 null，表示取不到有效值。
         :type PackageName: str
         :param _CreatedAt: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedAt: str
         :param _UpdatedAt: 更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedAt: str
         :param _ApplicationId: 用户应用Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationId: int
         :param _LicenseUrl: 视立方下载license的url
-注意：此字段可能返回 null，表示取不到有效值。
         :type LicenseUrl: str
         :param _XMagics: 优图美视信息列表
 注意：此字段可能返回 null，表示取不到有效值。
@@ -318,6 +312,7 @@ class ApplicationInfo(AbstractModel):
     @property
     def Licenses(self):
         """license数组
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of License
         """
         return self._Licenses
@@ -329,7 +324,6 @@ class ApplicationInfo(AbstractModel):
     @property
     def LicenseKey(self):
         """license 秘钥
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LicenseKey
@@ -353,7 +347,6 @@ class ApplicationInfo(AbstractModel):
     @property
     def CreatedAt(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreatedAt
@@ -365,7 +358,6 @@ class ApplicationInfo(AbstractModel):
     @property
     def UpdatedAt(self):
         """更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdatedAt
@@ -377,7 +369,6 @@ class ApplicationInfo(AbstractModel):
     @property
     def ApplicationId(self):
         """用户应用Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ApplicationId
@@ -389,7 +380,6 @@ class ApplicationInfo(AbstractModel):
     @property
     def LicenseUrl(self):
         """视立方下载license的url
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LicenseUrl
@@ -540,15 +530,12 @@ class CreateActivityLicenseResponse(AbstractModel):
         :param _AppId: 用户appid
         :type AppId: str
         :param _AppName: app名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppName: str
         :param _BundleId: ios包名
-注意：此字段可能返回 null，表示取不到有效值。
         :type BundleId: str
         :param _PackageName: 安卓包名
         :type PackageName: str
         :param _Duration: 有效时长
-注意：此字段可能返回 null，表示取不到有效值。
         :type Duration: int
         :param _StartTime: 开始时间
         :type StartTime: str
@@ -559,10 +546,8 @@ class CreateActivityLicenseResponse(AbstractModel):
         :param _LicenseUrl: license 授权文件下载链接
         :type LicenseUrl: str
         :param _ResidueDay: license剩余天数，最后一天以及过期显示0
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResidueDay: int
         :param _Residue: license剩余秒数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Residue: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -594,7 +579,6 @@ class CreateActivityLicenseResponse(AbstractModel):
     @property
     def AppName(self):
         """app名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AppName
@@ -606,7 +590,6 @@ class CreateActivityLicenseResponse(AbstractModel):
     @property
     def BundleId(self):
         """ios包名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BundleId
@@ -629,7 +612,6 @@ class CreateActivityLicenseResponse(AbstractModel):
     @property
     def Duration(self):
         """有效时长
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Duration
@@ -685,7 +667,6 @@ class CreateActivityLicenseResponse(AbstractModel):
     @property
     def ResidueDay(self):
         """license剩余天数，最后一天以及过期显示0
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ResidueDay
@@ -697,7 +678,6 @@ class CreateActivityLicenseResponse(AbstractModel):
     @property
     def Residue(self):
         """license剩余秒数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Residue
@@ -1236,7 +1216,7 @@ class CreateTestXMagicRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApplicationId: 应用id
+        :param _ApplicationId: 将腾讯特效创建到哪个应用下
         :type ApplicationId: int
         :param _CompanyPermit: 营业执照
         :type CompanyPermit: str
@@ -1255,7 +1235,7 @@ class CreateTestXMagicRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用id
+        """将腾讯特效创建到哪个应用下
         :rtype: int
         """
         return self._ApplicationId
@@ -1829,10 +1809,8 @@ class DescribeFeatureListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _FeatureList: 功能列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type FeatureList: list of VideoFeature
         :param _XMagicFeatureList: 优图功能列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type XMagicFeatureList: list of XMagicFeature
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1844,7 +1822,6 @@ class DescribeFeatureListResponse(AbstractModel):
     @property
     def FeatureList(self):
         """功能列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of VideoFeature
         """
         return self._FeatureList
@@ -1856,7 +1833,6 @@ class DescribeFeatureListResponse(AbstractModel):
     @property
     def XMagicFeatureList(self):
         """优图功能列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of XMagicFeature
         """
         return self._XMagicFeatureList
@@ -2214,7 +2190,6 @@ class DescribeTrialFeatureResponse(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type XMagicTrial: :class:`tencentcloud.vcube.v20220410.models.XMagicTrial`
         :param _XMagicTrialList: 可以开通的优图测试功能列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type XMagicTrialList: list of XMagicTrial
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2250,7 +2225,6 @@ class DescribeTrialFeatureResponse(AbstractModel):
     @property
     def XMagicTrialList(self):
         """可以开通的优图测试功能列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of XMagicTrial
         """
         return self._XMagicTrialList
@@ -3283,10 +3257,8 @@ class DescribeXMagicResourceListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Resources: 优图资源包信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Resources: list of XMagicResourceSimpleInfo
         :param _Count: 资源数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Count: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3298,7 +3270,6 @@ class DescribeXMagicResourceListResponse(AbstractModel):
     @property
     def Resources(self):
         """优图资源包信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of XMagicResourceSimpleInfo
         """
         return self._Resources
@@ -3310,7 +3281,6 @@ class DescribeXMagicResourceListResponse(AbstractModel):
     @property
     def Count(self):
         """资源数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Count
@@ -3401,10 +3371,8 @@ class DescribeXMagicResourceResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Resources: 优图资源包信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Resources: list of XMagicResource
         :param _Count: 资源数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Count: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3416,7 +3384,6 @@ class DescribeXMagicResourceResponse(AbstractModel):
     @property
     def Resources(self):
         """优图资源包信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of XMagicResource
         """
         return self._Resources
@@ -3428,7 +3395,6 @@ class DescribeXMagicResourceResponse(AbstractModel):
     @property
     def Count(self):
         """资源数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Count
@@ -3482,10 +3448,8 @@ class Feature(AbstractModel):
         :param _Duration: 可以试用的时长，单位天
         :type Duration: int
         :param _CreatedAt: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedAt: str
         :param _UpdatedAt: 更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedAt: str
         """
         self._Id = None
@@ -3578,7 +3542,6 @@ class Feature(AbstractModel):
     @property
     def CreatedAt(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreatedAt
@@ -3590,7 +3553,6 @@ class Feature(AbstractModel):
     @property
     def UpdatedAt(self):
         """更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdatedAt
@@ -3641,15 +3603,12 @@ class License(AbstractModel):
         :param _LicenseType: license是测试：test还是正式：formal
         :type LicenseType: str
         :param _Renewal: 测试license 是否可以续期
-注意：此字段可能返回 null，表示取不到有效值。
         :type Renewal: bool
         :param _LicenseId: license索引
         :type LicenseId: int
         :param _Name: license名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Update: 测试license 是否升级
-注意：此字段可能返回 null，表示取不到有效值。
         :type Update: bool
         :param _OldLicenseUrl: 兼容老的licenseUrl
 注意：此字段可能返回 null，表示取不到有效值。
@@ -3658,22 +3617,18 @@ class License(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Group: int
         :param _Expired: 过期：true ，未过期：其它
-注意：此字段可能返回 null，表示取不到有效值。
         :type Expired: bool
         :param _RestTime: 返回还有多少秒过期，过期返回0
 注意：此字段可能返回 null，表示取不到有效值。
         :type RestTime: int
         :param _CreatedAt: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedAt: str
         :param _UpdatedAt: 更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedAt: str
         :param _Resource: 计费资源相关信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Resource: :class:`tencentcloud.vcube.v20220410.models.RenewResource`
         :param _IsVest: 是否为马甲包
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsVest: bool
         """
         self._Type = None
@@ -3765,7 +3720,6 @@ class License(AbstractModel):
     @property
     def Renewal(self):
         """测试license 是否可以续期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Renewal
@@ -3788,7 +3742,6 @@ class License(AbstractModel):
     @property
     def Name(self):
         """license名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -3800,7 +3753,6 @@ class License(AbstractModel):
     @property
     def Update(self):
         """测试license 是否升级
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Update
@@ -3836,7 +3788,6 @@ class License(AbstractModel):
     @property
     def Expired(self):
         """过期：true ，未过期：其它
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Expired
@@ -3860,7 +3811,6 @@ class License(AbstractModel):
     @property
     def CreatedAt(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreatedAt
@@ -3872,7 +3822,6 @@ class License(AbstractModel):
     @property
     def UpdatedAt(self):
         """更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdatedAt
@@ -3896,7 +3845,6 @@ class License(AbstractModel):
     @property
     def IsVest(self):
         """是否为马甲包
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsVest
@@ -3954,29 +3902,23 @@ class LicenseResourceInfo(AbstractModel):
         :param _FeatureId: 功能Id
         :type FeatureId: int
         :param _StartTime: 此license资源的开始生效时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
         :param _EndTime: 此license资源的生效结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         :param _CreatedAt: 创建时间
         :type CreatedAt: str
         :param _UpdatedAt: 更新时间
         :type UpdatedAt: str
         :param _IsUse: 此资源是否可用于续期和更新有效期
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsUse: bool
         :param _Status: 此资源的状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _IsolatedTimestamp: 销毁时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsolatedTimestamp: str
         :param _Name: 功能模块名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Type: 功能模块类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Package: 资源包信息
 注意：此字段可能返回 null，表示取不到有效值。
@@ -3985,10 +3927,8 @@ class LicenseResourceInfo(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Application: :class:`tencentcloud.vcube.v20220410.models.AppInfo`
         :param _ResourceId: 资源Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceId: str
         :param _AutoRenewFlag: 自动续费状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type AutoRenewFlag: int
         """
         self._Id = None
@@ -4057,7 +3997,6 @@ class LicenseResourceInfo(AbstractModel):
     @property
     def StartTime(self):
         """此license资源的开始生效时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StartTime
@@ -4069,7 +4008,6 @@ class LicenseResourceInfo(AbstractModel):
     @property
     def EndTime(self):
         """此license资源的生效结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndTime
@@ -4103,7 +4041,6 @@ class LicenseResourceInfo(AbstractModel):
     @property
     def IsUse(self):
         """此资源是否可用于续期和更新有效期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsUse
@@ -4115,7 +4052,6 @@ class LicenseResourceInfo(AbstractModel):
     @property
     def Status(self):
         """此资源的状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -4139,7 +4075,6 @@ class LicenseResourceInfo(AbstractModel):
     @property
     def Name(self):
         """功能模块名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -4151,7 +4086,6 @@ class LicenseResourceInfo(AbstractModel):
     @property
     def Type(self):
         """功能模块类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -4187,7 +4121,6 @@ class LicenseResourceInfo(AbstractModel):
     @property
     def ResourceId(self):
         """资源Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceId
@@ -4199,7 +4132,6 @@ class LicenseResourceInfo(AbstractModel):
     @property
     def AutoRenewFlag(self):
         """自动续费状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -4258,38 +4190,30 @@ class LicenseResourceSimpleInfo(AbstractModel):
         :param _FeatureId: 功能Id
         :type FeatureId: int
         :param _StartTime: 此license资源的开始生效时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
         :param _EndTime: 此license资源的生效结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         :param _CreatedAt: 创建时间
         :type CreatedAt: str
         :param _UpdatedAt: 更新时间
         :type UpdatedAt: str
         :param _IsUse: 此资源是否可用于续期和更新有效期
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsUse: bool
         :param _Status: 此资源的状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _IsolatedTimestamp: 销毁时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsolatedTimestamp: str
         :param _Name: 功能模块名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Type: 功能模块类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Package: 资源包信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Package: :class:`tencentcloud.vcube.v20220410.models.Package`
         :param _ResourceId: 资源id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceId: str
         :param _AutoRenewFlag: 自动续费状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type AutoRenewFlag: int
         """
         self._Id = None
@@ -4357,7 +4281,6 @@ class LicenseResourceSimpleInfo(AbstractModel):
     @property
     def StartTime(self):
         """此license资源的开始生效时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StartTime
@@ -4369,7 +4292,6 @@ class LicenseResourceSimpleInfo(AbstractModel):
     @property
     def EndTime(self):
         """此license资源的生效结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndTime
@@ -4403,7 +4325,6 @@ class LicenseResourceSimpleInfo(AbstractModel):
     @property
     def IsUse(self):
         """此资源是否可用于续期和更新有效期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsUse
@@ -4415,7 +4336,6 @@ class LicenseResourceSimpleInfo(AbstractModel):
     @property
     def Status(self):
         """此资源的状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -4439,7 +4359,6 @@ class LicenseResourceSimpleInfo(AbstractModel):
     @property
     def Name(self):
         """功能模块名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -4451,7 +4370,6 @@ class LicenseResourceSimpleInfo(AbstractModel):
     @property
     def Type(self):
         """功能模块类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -4475,7 +4393,6 @@ class LicenseResourceSimpleInfo(AbstractModel):
     @property
     def ResourceId(self):
         """资源id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceId
@@ -4487,7 +4404,6 @@ class LicenseResourceSimpleInfo(AbstractModel):
     @property
     def AutoRenewFlag(self):
         """自动续费状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -4984,14 +4900,14 @@ class ModifyTrialLicenseRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LicenseId: 执照ID
+        :param _LicenseId: 授权ID
         :type LicenseId: str
         """
         self._LicenseId = None
 
     @property
     def LicenseId(self):
-        """执照ID
+        """授权ID
         :rtype: str
         """
         return self._LicenseId
@@ -5125,6 +5041,36 @@ class NewsInfo(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _Id: 新闻Id
+        :type Id: int
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        """新闻Id
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class Package(AbstractModel):
     """资源包结构
@@ -5149,7 +5095,6 @@ class Package(AbstractModel):
         :param _Name: 资源包名称
         :type Name: str
         :param _Type: 资源包类型ID,对应点播：PackageId 对应直播：TypeId
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         """
         self._Id = None
@@ -5242,7 +5187,6 @@ class Package(AbstractModel):
     @property
     def Type(self):
         """资源包类型ID,对应点播：PackageId 对应直播：TypeId
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -5358,10 +5302,8 @@ class RenewResource(AbstractModel):
     def __init__(self):
         r"""
         :param _ResourceId: 资源Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceId: str
         :param _AutoRenewFlag: 自动续期标记，0：默认，1：自动续期，2：不续期
-注意：此字段可能返回 null，表示取不到有效值。
         :type AutoRenewFlag: int
         :param _IsolatedTimestamp: 资源冻结时间
 注意：此字段可能返回 null，表示取不到有效值。
@@ -5370,10 +5312,8 @@ class RenewResource(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Refund: bool
         :param _SubProductCode: 子产品码
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubProductCode: str
         :param _EndTime: 资源到期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         """
         self._ResourceId = None
@@ -5386,7 +5326,6 @@ class RenewResource(AbstractModel):
     @property
     def ResourceId(self):
         """资源Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceId
@@ -5398,7 +5337,6 @@ class RenewResource(AbstractModel):
     @property
     def AutoRenewFlag(self):
         """自动续期标记，0：默认，1：自动续期，2：不续期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -5434,7 +5372,6 @@ class RenewResource(AbstractModel):
     @property
     def SubProductCode(self):
         """子产品码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubProductCode
@@ -5446,7 +5383,6 @@ class RenewResource(AbstractModel):
     @property
     def EndTime(self):
         """资源到期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndTime
@@ -5895,13 +5831,10 @@ class VideoFeature(AbstractModel):
         :param _FeatureId: 功能ID
         :type FeatureId: int
         :param _Name: 功能名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Type: 功能类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Trial: 是否可以申请试用
-注意：此字段可能返回 null，表示取不到有效值。
         :type Trial: bool
         :param _TrialCount: 可以试用的次数
 注意：此字段可能返回 null，表示取不到有效值。
@@ -5910,16 +5843,12 @@ class VideoFeature(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Duration: int
         :param _CreatedAt: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedAt: str
         :param _UpdatedAt: 更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedAt: str
         :param _BizType: 功能所属业务方
-注意：此字段可能返回 null，表示取不到有效值。
         :type BizType: str
         :param _Platform: 平台类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Platform: str
         """
         self._Id = None
@@ -5959,7 +5888,6 @@ class VideoFeature(AbstractModel):
     @property
     def Name(self):
         """功能名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -5971,7 +5899,6 @@ class VideoFeature(AbstractModel):
     @property
     def Type(self):
         """功能类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -5983,7 +5910,6 @@ class VideoFeature(AbstractModel):
     @property
     def Trial(self):
         """是否可以申请试用
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Trial
@@ -6019,7 +5945,6 @@ class VideoFeature(AbstractModel):
     @property
     def CreatedAt(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreatedAt
@@ -6031,7 +5956,6 @@ class VideoFeature(AbstractModel):
     @property
     def UpdatedAt(self):
         """更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdatedAt
@@ -6043,7 +5967,6 @@ class VideoFeature(AbstractModel):
     @property
     def BizType(self):
         """功能所属业务方
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BizType
@@ -6055,7 +5978,6 @@ class VideoFeature(AbstractModel):
     @property
     def Platform(self):
         """平台类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Platform
@@ -6236,7 +6158,6 @@ class XMagicInfo(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type CompanyType: str
         :param _Plan: 优图套餐类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Plan: str
         :param _LicenseType: 测试版还是正式版 test | formal
         :type LicenseType: str
@@ -6260,14 +6181,12 @@ class XMagicInfo(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type RenewalCount: int
         :param _Reply: 历次审批的回复
-注意：此字段可能返回 null，表示取不到有效值。
         :type Reply: list of str
         :param _CreatedAt: 创建时间
         :type CreatedAt: str
         :param _UpdatedAt: 修改时间
         :type UpdatedAt: str
         :param _UpdateTime: 用户更新信息的时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param _Expired: 是否过期
 注意：此字段可能返回 null，表示取不到有效值。
@@ -6276,16 +6195,13 @@ class XMagicInfo(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type RestTime: int
         :param _XMagicType: single: 原子能力,combined:套餐
-注意：此字段可能返回 null，表示取不到有效值。
         :type XMagicType: str
         :param _Name: 优图模块名称，自动中英文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Resource: 优图资源信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Resource: :class:`tencentcloud.vcube.v20220410.models.RenewResource`
         :param _IsVest: 是否是马甲包
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsVest: bool
         """
         self._Id = None
@@ -6360,7 +6276,6 @@ class XMagicInfo(AbstractModel):
     @property
     def Plan(self):
         """优图套餐类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Plan
@@ -6447,7 +6362,6 @@ class XMagicInfo(AbstractModel):
     @property
     def Reply(self):
         """历次审批的回复
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Reply
@@ -6481,7 +6395,6 @@ class XMagicInfo(AbstractModel):
     @property
     def UpdateTime(self):
         """用户更新信息的时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime
@@ -6517,7 +6430,6 @@ class XMagicInfo(AbstractModel):
     @property
     def XMagicType(self):
         """single: 原子能力,combined:套餐
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._XMagicType
@@ -6529,7 +6441,6 @@ class XMagicInfo(AbstractModel):
     @property
     def Name(self):
         """优图模块名称，自动中英文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -6553,7 +6464,6 @@ class XMagicInfo(AbstractModel):
     @property
     def IsVest(self):
         """是否是马甲包
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsVest
@@ -6620,28 +6530,20 @@ class XMagicResource(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type XMagic: bool
         :param _StartTime: 资源开始生效时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
         :param _EndTime: 资源结束生效时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         :param _Expired: 资源包是否过期
-注意：此字段可能返回 null，表示取不到有效值。
         :type Expired: bool
         :param _Name: 功能模块名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _XMagicType: single: 原子能力,combined:套餐
-注意：此字段可能返回 null，表示取不到有效值。
         :type XMagicType: str
         :param _BizType: xmagic:优图， avatar：虚拟人
-注意：此字段可能返回 null，表示取不到有效值。
         :type BizType: str
         :param _ResourceId: 资源Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceId: str
         :param _IsUse: 资源是否可以使用
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsUse: bool
         """
         self._Id = None
@@ -6741,7 +6643,6 @@ class XMagicResource(AbstractModel):
     @property
     def StartTime(self):
         """资源开始生效时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StartTime
@@ -6753,7 +6654,6 @@ class XMagicResource(AbstractModel):
     @property
     def EndTime(self):
         """资源结束生效时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndTime
@@ -6765,7 +6665,6 @@ class XMagicResource(AbstractModel):
     @property
     def Expired(self):
         """资源包是否过期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Expired
@@ -6777,7 +6676,6 @@ class XMagicResource(AbstractModel):
     @property
     def Name(self):
         """功能模块名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -6789,7 +6687,6 @@ class XMagicResource(AbstractModel):
     @property
     def XMagicType(self):
         """single: 原子能力,combined:套餐
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._XMagicType
@@ -6801,7 +6698,6 @@ class XMagicResource(AbstractModel):
     @property
     def BizType(self):
         """xmagic:优图， avatar：虚拟人
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BizType
@@ -6813,7 +6709,6 @@ class XMagicResource(AbstractModel):
     @property
     def ResourceId(self):
         """资源Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceId
@@ -6825,7 +6720,6 @@ class XMagicResource(AbstractModel):
     @property
     def IsUse(self):
         """资源是否可以使用
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsUse
@@ -6881,10 +6775,8 @@ class XMagicResourceSimpleInfo(AbstractModel):
         :param _UpdatedAt: 更新时间
         :type UpdatedAt: str
         :param _StartTime: 资源开始生效时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
         :param _EndTime: 资源结束生效时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         :param _Application: 应用信息
 注意：此字段可能返回 null，表示取不到有效值。
@@ -6898,22 +6790,16 @@ class XMagicResourceSimpleInfo(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Operation: list of str
         :param _IsUse: 是否可以使用
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsUse: bool
         :param _XMagicType: single: 原子能力,combined:套餐
-注意：此字段可能返回 null，表示取不到有效值。
         :type XMagicType: str
         :param _Name: 功能模块名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _BizType: 资源所属业务方 xmagic：优图，avatar：虚拟形象 
-注意：此字段可能返回 null，表示取不到有效值。
         :type BizType: str
         :param _ResourceId: 资源id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceId: str
         :param _AutoRenewFlag: 资源自动续费状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type AutoRenewFlag: int
         """
         self._Id = None
@@ -7004,7 +6890,6 @@ class XMagicResourceSimpleInfo(AbstractModel):
     @property
     def StartTime(self):
         """资源开始生效时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StartTime
@@ -7016,7 +6901,6 @@ class XMagicResourceSimpleInfo(AbstractModel):
     @property
     def EndTime(self):
         """资源结束生效时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndTime
@@ -7075,7 +6959,6 @@ class XMagicResourceSimpleInfo(AbstractModel):
     @property
     def IsUse(self):
         """是否可以使用
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsUse
@@ -7087,7 +6970,6 @@ class XMagicResourceSimpleInfo(AbstractModel):
     @property
     def XMagicType(self):
         """single: 原子能力,combined:套餐
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._XMagicType
@@ -7099,7 +6981,6 @@ class XMagicResourceSimpleInfo(AbstractModel):
     @property
     def Name(self):
         """功能模块名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -7111,7 +6992,6 @@ class XMagicResourceSimpleInfo(AbstractModel):
     @property
     def BizType(self):
         """资源所属业务方 xmagic：优图，avatar：虚拟形象 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BizType
@@ -7123,7 +7003,6 @@ class XMagicResourceSimpleInfo(AbstractModel):
     @property
     def ResourceId(self):
         """资源id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceId
@@ -7135,7 +7014,6 @@ class XMagicResourceSimpleInfo(AbstractModel):
     @property
     def AutoRenewFlag(self):
         """资源自动续费状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -7246,12 +7124,15 @@ class XMagicTrial(AbstractModel):
         :type Plan: str
         :param _XMagicType: single: 原子能力,combined:套餐
         :type XMagicType: str
+        :param _BizType: vod：点播 live：直播
+        :type BizType: str
         """
         self._Name = None
         self._TrialCount = None
         self._Duration = None
         self._Plan = None
         self._XMagicType = None
+        self._BizType = None
 
     @property
     def Name(self):
@@ -7308,6 +7189,17 @@ class XMagicTrial(AbstractModel):
     def XMagicType(self, XMagicType):
         self._XMagicType = XMagicType
 
+    @property
+    def BizType(self):
+        """vod：点播 live：直播
+        :rtype: str
+        """
+        return self._BizType
+
+    @BizType.setter
+    def BizType(self, BizType):
+        self._BizType = BizType
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -7315,6 +7207,7 @@ class XMagicTrial(AbstractModel):
         self._Duration = params.get("Duration")
         self._Plan = params.get("Plan")
         self._XMagicType = params.get("XMagicType")
+        self._BizType = params.get("BizType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

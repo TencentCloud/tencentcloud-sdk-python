@@ -27,33 +27,24 @@ class ApplicationInfo(AbstractModel):
         r"""
         :param _ApplicationId: 应用id
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationId: str
         :param _ApplicationName: 应用名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationName: str
         :param _Description: 应用描述
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _ConfigEnvironment: 应用的环境配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type ConfigEnvironment: str
         :param _MinSystemDiskSize: 系统盘大小下限
-注意：此字段可能返回 null，表示取不到有效值。
         :type MinSystemDiskSize: int
         :param _ApplicationType: 应用类型，目前该项取值可以为PRIVATE_APPLICATION或者PUBLIC_APPLICATION
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationType: str
         :param _ApplicationState: 应用状态：CREATING-创建中；ONLINE -正常在线；DELETING -删除中；ARREARS - 欠费隔离
 示例值：ONLINE
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationState: str
         :param _CreateTime: 应用创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _ApplicationSize: 应用大小
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationSize: int
         """
         self._ApplicationId = None
@@ -70,7 +61,6 @@ class ApplicationInfo(AbstractModel):
     def ApplicationId(self):
         """应用id
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApplicationId
@@ -82,7 +72,6 @@ class ApplicationInfo(AbstractModel):
     @property
     def ApplicationName(self):
         """应用名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApplicationName
@@ -95,7 +84,6 @@ class ApplicationInfo(AbstractModel):
     def Description(self):
         """应用描述
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -107,7 +95,6 @@ class ApplicationInfo(AbstractModel):
     @property
     def ConfigEnvironment(self):
         """应用的环境配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ConfigEnvironment
@@ -119,7 +106,6 @@ class ApplicationInfo(AbstractModel):
     @property
     def MinSystemDiskSize(self):
         """系统盘大小下限
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MinSystemDiskSize
@@ -131,7 +117,6 @@ class ApplicationInfo(AbstractModel):
     @property
     def ApplicationType(self):
         """应用类型，目前该项取值可以为PRIVATE_APPLICATION或者PUBLIC_APPLICATION
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApplicationType
@@ -144,7 +129,6 @@ class ApplicationInfo(AbstractModel):
     def ApplicationState(self):
         """应用状态：CREATING-创建中；ONLINE -正常在线；DELETING -删除中；ARREARS - 欠费隔离
 示例值：ONLINE
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApplicationState
@@ -156,7 +140,6 @@ class ApplicationInfo(AbstractModel):
     @property
     def CreateTime(self):
         """应用创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -168,7 +151,6 @@ class ApplicationInfo(AbstractModel):
     @property
     def ApplicationSize(self):
         """应用大小
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ApplicationSize
@@ -1389,7 +1371,6 @@ class InquirePriceRunInstancesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Price: 发货参数对应的价格组合，当DryRun=True，会返回空
-注意：此字段可能返回 null，表示取不到有效值。
         :type Price: :class:`tencentcloud.hai.v20230812.models.Price`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1400,7 +1381,6 @@ class InquirePriceRunInstancesResponse(AbstractModel):
     @property
     def Price(self):
         """发货参数对应的价格组合，当DryRun=True，会返回空
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.hai.v20230812.models.Price`
         """
         return self._Price
@@ -1946,20 +1926,15 @@ class ItemPrice(AbstractModel):
     def __init__(self):
         r"""
         :param _UnitPrice: 原单价
-注意：此字段可能返回 null，表示取不到有效值。
         :type UnitPrice: float
         :param _DiscountUnitPrice: 折扣后单价
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiscountUnitPrice: float
         :param _Discount: 折扣
-注意：此字段可能返回 null，表示取不到有效值。
         :type Discount: float
         :param _ChargeUnit: 单位：时/月
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChargeUnit: str
         :param _Amount: 商品数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Amount: int
         """
         self._UnitPrice = None
@@ -1971,7 +1946,6 @@ class ItemPrice(AbstractModel):
     @property
     def UnitPrice(self):
         """原单价
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._UnitPrice
@@ -1983,7 +1957,6 @@ class ItemPrice(AbstractModel):
     @property
     def DiscountUnitPrice(self):
         """折扣后单价
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._DiscountUnitPrice
@@ -1995,7 +1968,6 @@ class ItemPrice(AbstractModel):
     @property
     def Discount(self):
         """折扣
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Discount
@@ -2008,7 +1980,6 @@ class ItemPrice(AbstractModel):
     def ChargeUnit(self):
         """单位：时/月
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ChargeUnit
@@ -2020,7 +1991,6 @@ class ItemPrice(AbstractModel):
     @property
     def Amount(self):
         """商品数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Amount
@@ -2054,16 +2024,12 @@ class ItemPriceDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceId: 实例id
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _InstancePrice: 实例价格详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstancePrice: :class:`tencentcloud.hai.v20230812.models.ItemPrice`
         :param _CloudDiskPrice: 磁盘价格详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type CloudDiskPrice: :class:`tencentcloud.hai.v20230812.models.ItemPrice`
         :param _InstanceTotalPrice: 该实例的总价钱
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceTotalPrice: :class:`tencentcloud.hai.v20230812.models.ItemPrice`
         """
         self._InstanceId = None
@@ -2074,7 +2040,6 @@ class ItemPriceDetail(AbstractModel):
     @property
     def InstanceId(self):
         """实例id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -2086,7 +2051,6 @@ class ItemPriceDetail(AbstractModel):
     @property
     def InstancePrice(self):
         """实例价格详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.hai.v20230812.models.ItemPrice`
         """
         return self._InstancePrice
@@ -2098,7 +2062,6 @@ class ItemPriceDetail(AbstractModel):
     @property
     def CloudDiskPrice(self):
         """磁盘价格详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.hai.v20230812.models.ItemPrice`
         """
         return self._CloudDiskPrice
@@ -2110,7 +2073,6 @@ class ItemPriceDetail(AbstractModel):
     @property
     def InstanceTotalPrice(self):
         """该实例的总价钱
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.hai.v20230812.models.ItemPrice`
         """
         return self._InstanceTotalPrice
@@ -2504,13 +2466,10 @@ class Price(AbstractModel):
     def __init__(self):
         r"""
         :param _InstancePrice: 实例价格信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstancePrice: :class:`tencentcloud.hai.v20230812.models.ItemPrice`
         :param _CloudDiskPrice: 云盘价格信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type CloudDiskPrice: :class:`tencentcloud.hai.v20230812.models.ItemPrice`
         :param _PriceDetailSet: 分实例价格
-注意：此字段可能返回 null，表示取不到有效值。
         :type PriceDetailSet: list of ItemPriceDetail
         """
         self._InstancePrice = None
@@ -2520,7 +2479,6 @@ class Price(AbstractModel):
     @property
     def InstancePrice(self):
         """实例价格信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.hai.v20230812.models.ItemPrice`
         """
         return self._InstancePrice
@@ -2532,7 +2490,6 @@ class Price(AbstractModel):
     @property
     def CloudDiskPrice(self):
         """云盘价格信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.hai.v20230812.models.ItemPrice`
         """
         return self._CloudDiskPrice
@@ -2544,7 +2501,6 @@ class Price(AbstractModel):
     @property
     def PriceDetailSet(self):
         """分实例价格
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ItemPriceDetail
         """
         return self._PriceDetailSet

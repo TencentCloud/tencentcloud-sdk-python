@@ -36,6 +36,9 @@ class LkeapClient(AbstractClient):
         如您希望在网页内直接体验 DeepSeek 模型对话，推荐您前往[腾讯云大模型知识引擎](https://cloud.tencent.com/product/lke)，使用[ DeepSeek 联网助手](https://lke.cloud.tencent.com/webim_exp/#/chat/wQrAwR)。
 
         #### 已支持的模型
+        - DeepSeek-V3-0324（model 参数值为**deepseek-v3-0324**）
+            - DeepSeek-V3-0324为671B参数MoE模型，在编程与技术能力、上下文理解与长文本处理等方面优势突出。
+            - 支持64K上下文长度，最大输入56k，最大输出8k（不含思维链）。
         - DeepSeek-V3（model 参数值为**deepseek-v3**）
             - DeepSeek-V3为671B参数MoE模型，在百科知识、数学推理等多项任务上优势突出，评测成绩在主流榜单中位列开源模型榜首。
             - 支持64K上下文长度，最大输入56k，最大输出8k（不含思维链）。
@@ -50,6 +53,8 @@ class LkeapClient(AbstractClient):
             -   DeepSeek-R1 模型   | 输入：0.004元/千token | 输出（含思维链）：0.016元/千token
 
             - DeepSeek-V3 模型 | 输入：0.002元/千token | 输出：0.008元/千token
+
+            - DeepSeek-V3-0324 模型 | 输入：0.002元/千token | 输出：0.008元/千token
 
 
         ### Openai兼容协议接口

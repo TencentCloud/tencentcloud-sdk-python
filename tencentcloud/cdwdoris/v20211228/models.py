@@ -31,10 +31,16 @@ class ActionAlterUserRequest(AbstractModel):
         :type ApiType: str
         :param _UserPrivilege: 用户权限类型 0:普通用户 1:管理员
         :type UserPrivilege: int
+        :param _ComputeGroups: 计算组列表
+        :type ComputeGroups: list of str
+        :param _InstanceId: 集群ID
+        :type InstanceId: str
         """
         self._UserInfo = None
         self._ApiType = None
         self._UserPrivilege = None
+        self._ComputeGroups = None
+        self._InstanceId = None
 
     @property
     def UserInfo(self):
@@ -69,6 +75,28 @@ class ActionAlterUserRequest(AbstractModel):
     def UserPrivilege(self, UserPrivilege):
         self._UserPrivilege = UserPrivilege
 
+    @property
+    def ComputeGroups(self):
+        """计算组列表
+        :rtype: list of str
+        """
+        return self._ComputeGroups
+
+    @ComputeGroups.setter
+    def ComputeGroups(self, ComputeGroups):
+        self._ComputeGroups = ComputeGroups
+
+    @property
+    def InstanceId(self):
+        """集群ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
 
     def _deserialize(self, params):
         if params.get("UserInfo") is not None:
@@ -76,6 +104,8 @@ class ActionAlterUserRequest(AbstractModel):
             self._UserInfo._deserialize(params.get("UserInfo"))
         self._ApiType = params.get("ApiType")
         self._UserPrivilege = params.get("UserPrivilege")
+        self._ComputeGroups = params.get("ComputeGroups")
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1336,6 +1366,8 @@ class ClusterConfigsInfoFromEMR(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ComputeGroupId: 计算组id
+        :type ComputeGroupId: str
         :param _FileName: 配置文件名称
         :type FileName: str
         :param _FileConf: 配置文件对应的相关属性信息
@@ -1354,6 +1386,7 @@ class ClusterConfigsInfoFromEMR(AbstractModel):
         :param _FileKeyValuesNew: 配置文件kv值
         :type FileKeyValuesNew: list of ConfigKeyValue
         """
+        self._ComputeGroupId = None
         self._FileName = None
         self._FileConf = None
         self._KeyConf = None
@@ -1362,6 +1395,17 @@ class ClusterConfigsInfoFromEMR(AbstractModel):
         self._FilePath = None
         self._FileKeyValues = None
         self._FileKeyValuesNew = None
+
+    @property
+    def ComputeGroupId(self):
+        """计算组id
+        :rtype: str
+        """
+        return self._ComputeGroupId
+
+    @ComputeGroupId.setter
+    def ComputeGroupId(self, ComputeGroupId):
+        self._ComputeGroupId = ComputeGroupId
 
     @property
     def FileName(self):
@@ -1458,6 +1502,7 @@ class ClusterConfigsInfoFromEMR(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._ComputeGroupId = params.get("ComputeGroupId")
         self._FileName = params.get("FileName")
         self._FileConf = params.get("FileConf")
         self._KeyConf = params.get("KeyConf")
@@ -2970,6 +3015,8 @@ class DataBaseAuditRecord(AbstractModel):
         :type State: str
         :param _IsQuery: 是否是查询
         :type IsQuery: bool
+        :param _ComputeGroup: 计算组
+        :type ComputeGroup: str
         """
         self._OsUser = None
         self._InitialQueryId = None
@@ -2986,6 +3033,7 @@ class DataBaseAuditRecord(AbstractModel):
         self._Catalog = None
         self._State = None
         self._IsQuery = None
+        self._ComputeGroup = None
 
     @property
     def OsUser(self):
@@ -3152,6 +3200,17 @@ class DataBaseAuditRecord(AbstractModel):
     def IsQuery(self, IsQuery):
         self._IsQuery = IsQuery
 
+    @property
+    def ComputeGroup(self):
+        """计算组
+        :rtype: str
+        """
+        return self._ComputeGroup
+
+    @ComputeGroup.setter
+    def ComputeGroup(self, ComputeGroup):
+        self._ComputeGroup = ComputeGroup
+
 
     def _deserialize(self, params):
         self._OsUser = params.get("OsUser")
@@ -3169,6 +3228,7 @@ class DataBaseAuditRecord(AbstractModel):
         self._Catalog = params.get("Catalog")
         self._State = params.get("State")
         self._IsQuery = params.get("IsQuery")
+        self._ComputeGroup = params.get("ComputeGroup")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4946,6 +5006,8 @@ class DescribeDatabaseAuditDownloadRequest(AbstractModel):
         :type Catalogs: list of str
         :param _IsQuery: 是否是查询	
         :type IsQuery: list of bool
+        :param _ComputeGroups: 计算组列表
+        :type ComputeGroups: list of str
         """
         self._InstanceId = None
         self._StartTime = None
@@ -4962,6 +5024,7 @@ class DescribeDatabaseAuditDownloadRequest(AbstractModel):
         self._SqlTypes = None
         self._Catalogs = None
         self._IsQuery = None
+        self._ComputeGroups = None
 
     @property
     def InstanceId(self):
@@ -5128,6 +5191,17 @@ class DescribeDatabaseAuditDownloadRequest(AbstractModel):
     def IsQuery(self, IsQuery):
         self._IsQuery = IsQuery
 
+    @property
+    def ComputeGroups(self):
+        """计算组列表
+        :rtype: list of str
+        """
+        return self._ComputeGroups
+
+    @ComputeGroups.setter
+    def ComputeGroups(self, ComputeGroups):
+        self._ComputeGroups = ComputeGroups
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -5145,6 +5219,7 @@ class DescribeDatabaseAuditDownloadRequest(AbstractModel):
         self._SqlTypes = params.get("SqlTypes")
         self._Catalogs = params.get("Catalogs")
         self._IsQuery = params.get("IsQuery")
+        self._ComputeGroups = params.get("ComputeGroups")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5235,6 +5310,8 @@ class DescribeDatabaseAuditRecordsRequest(AbstractModel):
         :type Catalogs: list of str
         :param _IsQuery: 是否是查询 
         :type IsQuery: list of bool
+        :param _ComputeGroups: 计算组列表
+        :type ComputeGroups: list of str
         """
         self._InstanceId = None
         self._StartTime = None
@@ -5251,6 +5328,7 @@ class DescribeDatabaseAuditRecordsRequest(AbstractModel):
         self._SqlTypes = None
         self._Catalogs = None
         self._IsQuery = None
+        self._ComputeGroups = None
 
     @property
     def InstanceId(self):
@@ -5417,6 +5495,17 @@ class DescribeDatabaseAuditRecordsRequest(AbstractModel):
     def IsQuery(self, IsQuery):
         self._IsQuery = IsQuery
 
+    @property
+    def ComputeGroups(self):
+        """计算组列表
+        :rtype: list of str
+        """
+        return self._ComputeGroups
+
+    @ComputeGroups.setter
+    def ComputeGroups(self, ComputeGroups):
+        self._ComputeGroups = ComputeGroups
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -5434,6 +5523,7 @@ class DescribeDatabaseAuditRecordsRequest(AbstractModel):
         self._SqlTypes = params.get("SqlTypes")
         self._Catalogs = params.get("Catalogs")
         self._IsQuery = params.get("IsQuery")
+        self._ComputeGroups = params.get("ComputeGroups")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6008,12 +6098,15 @@ class DescribeInstanceOperationsRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: 结束时间
         :type EndTime: str
+        :param _ComputeGroupId: 计算组ID
+        :type ComputeGroupId: str
         """
         self._InstanceId = None
         self._Offset = None
         self._Limit = None
         self._StartTime = None
         self._EndTime = None
+        self._ComputeGroupId = None
 
     @property
     def InstanceId(self):
@@ -6070,6 +6163,17 @@ class DescribeInstanceOperationsRequest(AbstractModel):
     def EndTime(self, EndTime):
         self._EndTime = EndTime
 
+    @property
+    def ComputeGroupId(self):
+        """计算组ID
+        :rtype: str
+        """
+        return self._ComputeGroupId
+
+    @ComputeGroupId.setter
+    def ComputeGroupId(self, ComputeGroupId):
+        self._ComputeGroupId = ComputeGroupId
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -6077,6 +6181,7 @@ class DescribeInstanceOperationsRequest(AbstractModel):
         self._Limit = params.get("Limit")
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
+        self._ComputeGroupId = params.get("ComputeGroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6594,12 +6699,15 @@ class DescribeInstancesRequest(AbstractModel):
         :type Limit: int
         :param _SearchTags: 搜索标签列表，没匹配到则不过滤集群列表
         :type SearchTags: list of SearchTags
+        :param _InstanceType: 0 : 存算一体,1：存算分离,2:ALL
+        :type InstanceType: int
         """
         self._SearchInstanceId = None
         self._SearchInstanceName = None
         self._Offset = None
         self._Limit = None
         self._SearchTags = None
+        self._InstanceType = None
 
     @property
     def SearchInstanceId(self):
@@ -6656,6 +6764,17 @@ class DescribeInstancesRequest(AbstractModel):
     def SearchTags(self, SearchTags):
         self._SearchTags = SearchTags
 
+    @property
+    def InstanceType(self):
+        """0 : 存算一体,1：存算分离,2:ALL
+        :rtype: int
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
 
     def _deserialize(self, params):
         self._SearchInstanceId = params.get("SearchInstanceId")
@@ -6668,6 +6787,7 @@ class DescribeInstancesRequest(AbstractModel):
                 obj = SearchTags()
                 obj._deserialize(item)
                 self._SearchTags.append(obj)
+        self._InstanceType = params.get("InstanceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6892,6 +7012,8 @@ class DescribeSlowQueryRecordsDownloadRequest(AbstractModel):
         :type SortOrder: str
         :param _UserName: user
         :type UserName: str
+        :param _ComputeGroups: 计算组列表
+        :type ComputeGroups: list of str
         """
         self._InstanceId = None
         self._QueryDurationMs = None
@@ -6908,6 +7030,7 @@ class DescribeSlowQueryRecordsDownloadRequest(AbstractModel):
         self._SortField = None
         self._SortOrder = None
         self._UserName = None
+        self._ComputeGroups = None
 
     @property
     def InstanceId(self):
@@ -7074,6 +7197,17 @@ class DescribeSlowQueryRecordsDownloadRequest(AbstractModel):
     def UserName(self, UserName):
         self._UserName = UserName
 
+    @property
+    def ComputeGroups(self):
+        """计算组列表
+        :rtype: list of str
+        """
+        return self._ComputeGroups
+
+    @ComputeGroups.setter
+    def ComputeGroups(self, ComputeGroups):
+        self._ComputeGroups = ComputeGroups
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -7091,6 +7225,7 @@ class DescribeSlowQueryRecordsDownloadRequest(AbstractModel):
         self._SortField = params.get("SortField")
         self._SortOrder = params.get("SortOrder")
         self._UserName = params.get("UserName")
+        self._ComputeGroups = params.get("ComputeGroups")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7185,6 +7320,8 @@ class DescribeSlowQueryRecordsRequest(AbstractModel):
         :type SortOrder: str
         :param _UserName: user
         :type UserName: str
+        :param _ComputeGroups: 计算组列表
+        :type ComputeGroups: list of str
         """
         self._InstanceId = None
         self._QueryDurationMs = None
@@ -7203,6 +7340,7 @@ class DescribeSlowQueryRecordsRequest(AbstractModel):
         self._SortField = None
         self._SortOrder = None
         self._UserName = None
+        self._ComputeGroups = None
 
     @property
     def InstanceId(self):
@@ -7391,6 +7529,17 @@ class DescribeSlowQueryRecordsRequest(AbstractModel):
     def UserName(self, UserName):
         self._UserName = UserName
 
+    @property
+    def ComputeGroups(self):
+        """计算组列表
+        :rtype: list of str
+        """
+        return self._ComputeGroups
+
+    @ComputeGroups.setter
+    def ComputeGroups(self, ComputeGroups):
+        self._ComputeGroups = ComputeGroups
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -7410,6 +7559,7 @@ class DescribeSlowQueryRecordsRequest(AbstractModel):
         self._SortField = params.get("SortField")
         self._SortOrder = params.get("SortOrder")
         self._UserName = params.get("UserName")
+        self._ComputeGroups = params.get("ComputeGroups")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7528,11 +7678,14 @@ class DescribeSpecRequest(AbstractModel):
         :type Zones: list of str
         :param _SpecName: 机型名称
         :type SpecName: str
+        :param _IsSSC: 是否存算分离
+        :type IsSSC: bool
         """
         self._Zone = None
         self._PayMode = None
         self._Zones = None
         self._SpecName = None
+        self._IsSSC = None
 
     @property
     def Zone(self):
@@ -7578,12 +7731,24 @@ class DescribeSpecRequest(AbstractModel):
     def SpecName(self, SpecName):
         self._SpecName = SpecName
 
+    @property
+    def IsSSC(self):
+        """是否存算分离
+        :rtype: bool
+        """
+        return self._IsSSC
+
+    @IsSSC.setter
+    def IsSSC(self, IsSSC):
+        self._IsSSC = IsSSC
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
         self._PayMode = params.get("PayMode")
         self._Zones = params.get("Zones")
         self._SpecName = params.get("SpecName")
+        self._IsSSC = params.get("IsSSC")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8836,6 +9001,8 @@ Modify 集群变更中；
         :type MonitorMode: int
         :param _CNSummary: cn节点信息
         :type CNSummary: :class:`tencentcloud.cdwdoris.v20211228.models.NodesSummary`
+        :param _ComputeGroupCount: 计算组个数
+        :type ComputeGroupCount: int
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -8889,6 +9056,7 @@ Modify 集群变更中；
         self._AccountType = None
         self._MonitorMode = None
         self._CNSummary = None
+        self._ComputeGroupCount = None
 
     @property
     def InstanceId(self):
@@ -9474,6 +9642,17 @@ Modify 集群变更中；
     def CNSummary(self, CNSummary):
         self._CNSummary = CNSummary
 
+    @property
+    def ComputeGroupCount(self):
+        """计算组个数
+        :rtype: int
+        """
+        return self._ComputeGroupCount
+
+    @ComputeGroupCount.setter
+    def ComputeGroupCount(self, ComputeGroupCount):
+        self._ComputeGroupCount = ComputeGroupCount
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -9541,6 +9720,7 @@ Modify 集群变更中；
         if params.get("CNSummary") is not None:
             self._CNSummary = NodesSummary()
             self._CNSummary._deserialize(params.get("CNSummary"))
+        self._ComputeGroupCount = params.get("ComputeGroupCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9584,6 +9764,8 @@ class InstanceNode(AbstractModel):
         :type Zone: str
         :param _CreateTime: 创建时间
         :type CreateTime: str
+        :param _ComputeGroupId: 计算组ID
+        :type ComputeGroupId: str
         """
         self._Ip = None
         self._Spec = None
@@ -9598,6 +9780,7 @@ class InstanceNode(AbstractModel):
         self._UUID = None
         self._Zone = None
         self._CreateTime = None
+        self._ComputeGroupId = None
 
     @property
     def Ip(self):
@@ -9742,6 +9925,17 @@ class InstanceNode(AbstractModel):
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
 
+    @property
+    def ComputeGroupId(self):
+        """计算组ID
+        :rtype: str
+        """
+        return self._ComputeGroupId
+
+    @ComputeGroupId.setter
+    def ComputeGroupId(self, ComputeGroupId):
+        self._ComputeGroupId = ComputeGroupId
+
 
     def _deserialize(self, params):
         self._Ip = params.get("Ip")
@@ -9757,6 +9951,7 @@ class InstanceNode(AbstractModel):
         self._UUID = params.get("UUID")
         self._Zone = params.get("Zone")
         self._CreateTime = params.get("CreateTime")
+        self._ComputeGroupId = params.get("ComputeGroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9796,6 +9991,8 @@ class InstanceOperation(AbstractModel):
         :type JobId: int
         :param _OperationDetail: 操作明细
         :type OperationDetail: str
+        :param _ComputerGroupId: 计算组id
+        :type ComputerGroupId: str
         """
         self._Name = None
         self._Result = None
@@ -9808,6 +10005,7 @@ class InstanceOperation(AbstractModel):
         self._OperateUin = None
         self._JobId = None
         self._OperationDetail = None
+        self._ComputerGroupId = None
 
     @property
     def Name(self):
@@ -9930,6 +10128,17 @@ class InstanceOperation(AbstractModel):
     def OperationDetail(self, OperationDetail):
         self._OperationDetail = OperationDetail
 
+    @property
+    def ComputerGroupId(self):
+        """计算组id
+        :rtype: str
+        """
+        return self._ComputerGroupId
+
+    @ComputerGroupId.setter
+    def ComputerGroupId(self, ComputerGroupId):
+        self._ComputerGroupId = ComputerGroupId
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -9943,6 +10152,7 @@ class InstanceOperation(AbstractModel):
         self._OperateUin = params.get("OperateUin")
         self._JobId = params.get("JobId")
         self._OperationDetail = params.get("OperationDetail")
+        self._ComputerGroupId = params.get("ComputerGroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10918,11 +11128,17 @@ class ModifyUserPrivilegesV3Request(AbstractModel):
         :type UserPrivileges: :class:`tencentcloud.cdwdoris.v20211228.models.UpdateUserPrivileges`
         :param _WhiteHost: 用户链接来自的 IP	
         :type WhiteHost: str
+        :param _UpdateType: 更新类型，默认0，1为更新绑定计算组
+        :type UpdateType: int
+        :param _UpdateComputeGroups: 需绑定计算组列表
+        :type UpdateComputeGroups: list of str
         """
         self._InstanceId = None
         self._UserName = None
         self._UserPrivileges = None
         self._WhiteHost = None
+        self._UpdateType = None
+        self._UpdateComputeGroups = None
 
     @property
     def InstanceId(self):
@@ -10968,6 +11184,28 @@ class ModifyUserPrivilegesV3Request(AbstractModel):
     def WhiteHost(self, WhiteHost):
         self._WhiteHost = WhiteHost
 
+    @property
+    def UpdateType(self):
+        """更新类型，默认0，1为更新绑定计算组
+        :rtype: int
+        """
+        return self._UpdateType
+
+    @UpdateType.setter
+    def UpdateType(self, UpdateType):
+        self._UpdateType = UpdateType
+
+    @property
+    def UpdateComputeGroups(self):
+        """需绑定计算组列表
+        :rtype: list of str
+        """
+        return self._UpdateComputeGroups
+
+    @UpdateComputeGroups.setter
+    def UpdateComputeGroups(self, UpdateComputeGroups):
+        self._UpdateComputeGroups = UpdateComputeGroups
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -10976,6 +11214,8 @@ class ModifyUserPrivilegesV3Request(AbstractModel):
             self._UserPrivileges = UpdateUserPrivileges()
             self._UserPrivileges._deserialize(params.get("UserPrivileges"))
         self._WhiteHost = params.get("WhiteHost")
+        self._UpdateType = params.get("UpdateType")
+        self._UpdateComputeGroups = params.get("UpdateComputeGroups")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11466,6 +11706,10 @@ class NodeInfos(AbstractModel):
         :type Zone: str
         :param _CreateTime: 创建时间
         :type CreateTime: str
+        :param _ComputeGroupId: 计算组id
+        :type ComputeGroupId: str
+        :param _RIp: rip
+        :type RIp: str
         """
         self._NodeName = None
         self._Status = None
@@ -11476,6 +11720,8 @@ class NodeInfos(AbstractModel):
         self._Id = None
         self._Zone = None
         self._CreateTime = None
+        self._ComputeGroupId = None
+        self._RIp = None
 
     @property
     def NodeName(self):
@@ -11576,6 +11822,28 @@ class NodeInfos(AbstractModel):
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
 
+    @property
+    def ComputeGroupId(self):
+        """计算组id
+        :rtype: str
+        """
+        return self._ComputeGroupId
+
+    @ComputeGroupId.setter
+    def ComputeGroupId(self, ComputeGroupId):
+        self._ComputeGroupId = ComputeGroupId
+
+    @property
+    def RIp(self):
+        """rip
+        :rtype: str
+        """
+        return self._RIp
+
+    @RIp.setter
+    def RIp(self, RIp):
+        self._RIp = RIp
+
 
     def _deserialize(self, params):
         self._NodeName = params.get("NodeName")
@@ -11587,6 +11855,8 @@ class NodeInfos(AbstractModel):
         self._Id = params.get("Id")
         self._Zone = params.get("Zone")
         self._CreateTime = params.get("CreateTime")
+        self._ComputeGroupId = params.get("ComputeGroupId")
+        self._RIp = params.get("RIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14272,6 +14542,8 @@ class SlowQueryRecord(AbstractModel):
         :type CatalogName: str
         :param _CpuTimeMs: cpu执行时间 
         :type CpuTimeMs: int
+        :param _ComputeGroup: 计算组
+        :type ComputeGroup: str
         """
         self._OsUser = None
         self._InitialQueryId = None
@@ -14291,6 +14563,7 @@ class SlowQueryRecord(AbstractModel):
         self._State = None
         self._CatalogName = None
         self._CpuTimeMs = None
+        self._ComputeGroup = None
 
     @property
     def OsUser(self):
@@ -14490,6 +14763,17 @@ class SlowQueryRecord(AbstractModel):
     def CpuTimeMs(self, CpuTimeMs):
         self._CpuTimeMs = CpuTimeMs
 
+    @property
+    def ComputeGroup(self):
+        """计算组
+        :rtype: str
+        """
+        return self._ComputeGroup
+
+    @ComputeGroup.setter
+    def ComputeGroup(self, ComputeGroup):
+        self._ComputeGroup = ComputeGroup
+
 
     def _deserialize(self, params):
         self._OsUser = params.get("OsUser")
@@ -14510,6 +14794,7 @@ class SlowQueryRecord(AbstractModel):
         self._State = params.get("State")
         self._CatalogName = params.get("CatalogName")
         self._CpuTimeMs = params.get("CpuTimeMs")
+        self._ComputeGroup = params.get("ComputeGroup")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15036,12 +15321,15 @@ class ZoneInfo(AbstractModel):
         :type Encrypt: int
         :param _Main: 是否为主力园区
         :type Main: bool
+        :param _ContainerEnabled: 0表示未开通容器化，1表示已开通容器化
+        :type ContainerEnabled: int
         """
         self._Name = None
         self._Desc = None
         self._ZoneId = None
         self._Encrypt = None
         self._Main = None
+        self._ContainerEnabled = None
 
     @property
     def Name(self):
@@ -15098,6 +15386,17 @@ class ZoneInfo(AbstractModel):
     def Main(self, Main):
         self._Main = Main
 
+    @property
+    def ContainerEnabled(self):
+        """0表示未开通容器化，1表示已开通容器化
+        :rtype: int
+        """
+        return self._ContainerEnabled
+
+    @ContainerEnabled.setter
+    def ContainerEnabled(self, ContainerEnabled):
+        self._ContainerEnabled = ContainerEnabled
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -15105,6 +15404,7 @@ class ZoneInfo(AbstractModel):
         self._ZoneId = params.get("ZoneId")
         self._Encrypt = params.get("Encrypt")
         self._Main = params.get("Main")
+        self._ContainerEnabled = params.get("ContainerEnabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

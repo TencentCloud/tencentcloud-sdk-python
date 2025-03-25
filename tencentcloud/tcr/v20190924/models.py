@@ -220,7 +220,6 @@ class AutoDelStrategyInfoResp(AbstractModel):
         :param _TotalCount: 总数目
         :type TotalCount: int
         :param _StrategyInfo: 自动删除策略列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type StrategyInfo: list of AutoDelStrategyInfo
         """
         self._TotalCount = None
@@ -240,7 +239,6 @@ class AutoDelStrategyInfoResp(AbstractModel):
     @property
     def StrategyInfo(self):
         """自动删除策略列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AutoDelStrategyInfo
         """
         return self._StrategyInfo
@@ -419,7 +417,6 @@ class CVEWhitelistItem(AbstractModel):
     def __init__(self):
         r"""
         :param _CVEID: 漏洞白名单 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type CVEID: str
         """
         self._CVEID = None
@@ -427,7 +424,6 @@ class CVEWhitelistItem(AbstractModel):
     @property
     def CVEID(self):
         """漏洞白名单 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CVEID
@@ -495,7 +491,6 @@ class CheckInstanceNameResponse(AbstractModel):
         :param _IsValidated: 检查结果，true为合法，false为非法
         :type IsValidated: bool
         :param _DetailCode: 1: Illegal（名称非法）, 2:Reserved（名字保留）, 3:Existed（名字已存在）
-注意：此字段可能返回 null，表示取不到有效值。
         :type DetailCode: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -518,7 +513,6 @@ class CheckInstanceNameResponse(AbstractModel):
     @property
     def DetailCode(self):
         """1: Illegal（名称非法）, 2:Reserved（名字保留）, 3:Existed（名字已存在）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DetailCode
@@ -1461,14 +1455,12 @@ class CreateInstanceTokenResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Username: 用户名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Username: str
         :param _Token: 访问凭证
         :type Token: str
         :param _ExpTime: 访问凭证过期时间戳，是一个时间戳数字，无单位
         :type ExpTime: int
         :param _TokenId: 长期凭证的TokenId，短期凭证没有TokenId
-注意：此字段可能返回 null，表示取不到有效值。
         :type TokenId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1482,7 +1474,6 @@ class CreateInstanceTokenResponse(AbstractModel):
     @property
     def Username(self):
         """用户名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Username
@@ -1516,7 +1507,6 @@ class CreateInstanceTokenResponse(AbstractModel):
     @property
     def TokenId(self):
         """长期凭证的TokenId，短期凭证没有TokenId
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TokenId
@@ -5439,7 +5429,6 @@ class DescribeApplicationTriggerLogPersonalResp(AbstractModel):
         :param _TotalCount: 返回总数
         :type TotalCount: int
         :param _LogInfo: 触发日志列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogInfo: list of TriggerLogResp
         """
         self._TotalCount = None
@@ -5459,7 +5448,6 @@ class DescribeApplicationTriggerLogPersonalResp(AbstractModel):
     @property
     def LogInfo(self):
         """触发日志列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TriggerLogResp
         """
         return self._LogInfo
@@ -10811,7 +10799,6 @@ class FavorResp(AbstractModel):
         :param _TotalCount: 收藏仓库的总数
         :type TotalCount: int
         :param _RepoInfo: 仓库信息数组
-注意：此字段可能返回 null，表示取不到有效值。
         :type RepoInfo: list of Favors
         """
         self._TotalCount = None
@@ -10831,7 +10818,6 @@ class FavorResp(AbstractModel):
     @property
     def RepoInfo(self):
         """仓库信息数组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Favors
         """
         return self._RepoInfo
@@ -10871,22 +10857,16 @@ class Favors(AbstractModel):
         :param _RepoType: 仓库类型
         :type RepoType: str
         :param _PullCount: Pull总共的次数
-注意：此字段可能返回 null，表示取不到有效值。
         :type PullCount: int
         :param _FavorCount: 仓库收藏次数
-注意：此字段可能返回 null，表示取不到有效值。
         :type FavorCount: int
         :param _Public: 仓库是否公开
-注意：此字段可能返回 null，表示取不到有效值。
         :type Public: int
         :param _IsQcloudOfficial: 是否为官方所有
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsQcloudOfficial: bool
         :param _TagCount: 仓库Tag的数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagCount: int
         :param _Logo: Logo
-注意：此字段可能返回 null，表示取不到有效值。
         :type Logo: str
         :param _Region: 地域
         :type Region: str
@@ -10929,7 +10909,6 @@ class Favors(AbstractModel):
     @property
     def PullCount(self):
         """Pull总共的次数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PullCount
@@ -10941,7 +10920,6 @@ class Favors(AbstractModel):
     @property
     def FavorCount(self):
         """仓库收藏次数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FavorCount
@@ -10953,7 +10931,6 @@ class Favors(AbstractModel):
     @property
     def Public(self):
         """仓库是否公开
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Public
@@ -10965,7 +10942,6 @@ class Favors(AbstractModel):
     @property
     def IsQcloudOfficial(self):
         """是否为官方所有
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsQcloudOfficial
@@ -10977,7 +10953,6 @@ class Favors(AbstractModel):
     @property
     def TagCount(self):
         """仓库Tag的数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TagCount
@@ -10989,7 +10964,6 @@ class Favors(AbstractModel):
     @property
     def Logo(self):
         """Logo
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Logo
@@ -13900,10 +13874,8 @@ class Permission(AbstractModel):
     def __init__(self):
         r"""
         :param _Resource: 资源路径，目前仅支持Namespace
-注意：此字段可能返回 null，表示取不到有效值。
         :type Resource: str
         :param _Actions: 动作，目前仅支持：tcr:PushRepository、tcr:PullRepository、tcr:CreateRepository、tcr:CreateHelmChart、tcr:DescribeHelmCharts
-注意：此字段可能返回 null，表示取不到有效值。
         :type Actions: list of str
         """
         self._Resource = None
@@ -13912,7 +13884,6 @@ class Permission(AbstractModel):
     @property
     def Resource(self):
         """资源路径，目前仅支持Namespace
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Resource
@@ -13924,7 +13895,6 @@ class Permission(AbstractModel):
     @property
     def Actions(self):
         """动作，目前仅支持：tcr:PushRepository、tcr:PullRepository、tcr:CreateRepository、tcr:CreateHelmChart、tcr:DescribeHelmCharts
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Actions
@@ -14129,16 +14099,12 @@ DeleteFailed, 实例删除失败
         :param _InternalEndpoint: 实例内部访问地址
         :type InternalEndpoint: str
         :param _TagSpecification: 实例云标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagSpecification: :class:`tencentcloud.tcr.v20190924.models.TagSpecification`
         :param _ExpiredAt: 实例过期时间（预付费）
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExpiredAt: str
         :param _PayMod: 实例付费类型，0表示后付费，1表示预付费
-注意：此字段可能返回 null，表示取不到有效值。
         :type PayMod: int
         :param _RenewFlag: 预付费续费标识，0表示手动续费，1表示自动续费，2不续费并且不通知
-注意：此字段可能返回 null，表示取不到有效值。
         :type RenewFlag: int
         :param _DeletionProtection: 是否开启实例删除保护，false表示不开启
         :type DeletionProtection: bool
@@ -14295,7 +14261,6 @@ DeleteFailed, 实例删除失败
     @property
     def TagSpecification(self):
         """实例云标签
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcr.v20190924.models.TagSpecification`
         """
         return self._TagSpecification
@@ -14307,7 +14272,6 @@ DeleteFailed, 实例删除失败
     @property
     def ExpiredAt(self):
         """实例过期时间（预付费）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ExpiredAt
@@ -14319,7 +14283,6 @@ DeleteFailed, 实例删除失败
     @property
     def PayMod(self):
         """实例付费类型，0表示后付费，1表示预付费
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PayMod
@@ -14331,7 +14294,6 @@ DeleteFailed, 实例删除失败
     @property
     def RenewFlag(self):
         """预付费续费标识，0表示手动续费，1表示自动续费，2不续费并且不通知
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RenewFlag
@@ -14510,7 +14472,6 @@ class RegistryStatus(AbstractModel):
         :param _Status: 实例的状态
         :type Status: str
         :param _Conditions: 附加状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Conditions: list of RegistryCondition
         """
         self._RegistryId = None
@@ -14542,7 +14503,6 @@ class RegistryStatus(AbstractModel):
     @property
     def Conditions(self):
         """附加状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RegistryCondition
         """
         return self._Conditions
@@ -15365,7 +15325,6 @@ class RepositoryInfoResp(AbstractModel):
         :param _CreationTime: 创建时间
         :type CreationTime: str
         :param _Description: 镜像仓库描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _Public: 是否为公有镜像
         :type Public: int
@@ -15436,7 +15395,6 @@ class RepositoryInfoResp(AbstractModel):
     @property
     def Description(self):
         """镜像仓库描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -15975,7 +15933,6 @@ class SameImagesResp(AbstractModel):
     def __init__(self):
         r"""
         :param _SameImages: tag列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type SameImages: list of str
         """
         self._SameImages = None
@@ -15983,7 +15940,6 @@ class SameImagesResp(AbstractModel):
     @property
     def SameImages(self):
         """tag列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._SameImages
@@ -16216,25 +16172,19 @@ class ServiceAccount(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 服务级账号名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Description: 描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _Disable: 是否禁用
-注意：此字段可能返回 null，表示取不到有效值。
         :type Disable: bool
         :param _ExpiresAt: 过期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExpiresAt: int
         :param _CreateTime: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _UpdateTime: 更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param _Permissions: 策略
-注意：此字段可能返回 null，表示取不到有效值。
         :type Permissions: list of Permission
         """
         self._Name = None
@@ -16248,7 +16198,6 @@ class ServiceAccount(AbstractModel):
     @property
     def Name(self):
         """服务级账号名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -16260,7 +16209,6 @@ class ServiceAccount(AbstractModel):
     @property
     def Description(self):
         """描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -16272,7 +16220,6 @@ class ServiceAccount(AbstractModel):
     @property
     def Disable(self):
         """是否禁用
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Disable
@@ -16284,7 +16231,6 @@ class ServiceAccount(AbstractModel):
     @property
     def ExpiresAt(self):
         """过期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ExpiresAt
@@ -16308,7 +16254,6 @@ class ServiceAccount(AbstractModel):
     @property
     def UpdateTime(self):
         """更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime
@@ -16320,7 +16265,6 @@ class ServiceAccount(AbstractModel):
     @property
     def Permissions(self):
         """策略
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Permission
         """
         return self._Permissions
@@ -16361,10 +16305,8 @@ class Tag(AbstractModel):
     def __init__(self):
         r"""
         :param _Key: 云标签的key
-注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
         :param _Value: 云标签的值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Key = None
@@ -16373,7 +16315,6 @@ class Tag(AbstractModel):
     @property
     def Key(self):
         """云标签的key
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Key
@@ -16385,7 +16326,6 @@ class Tag(AbstractModel):
     @property
     def Value(self):
         """云标签的值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -16426,7 +16366,6 @@ class TagInfo(AbstractModel):
         :param _CreationTime: 制品的创建时间
         :type CreationTime: str
         :param _DurationDays: 制品创建至今时间长度
-注意：此字段可能返回 null，表示取不到有效值。
         :type DurationDays: str
         :param _Author: 标注的制品作者
         :type Author: str
@@ -16521,7 +16460,6 @@ class TagInfo(AbstractModel):
     @property
     def DurationDays(self):
         """制品创建至今时间长度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DurationDays
@@ -16750,10 +16688,8 @@ class TagSpecification(AbstractModel):
     def __init__(self):
         r"""
         :param _ResourceType: 默认值为instance
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceType: str
         :param _Tags: 云标签数组
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
         """
         self._ResourceType = None
@@ -16762,7 +16698,6 @@ class TagSpecification(AbstractModel):
     @property
     def ResourceType(self):
         """默认值为instance
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceType
@@ -16774,7 +16709,6 @@ class TagSpecification(AbstractModel):
     @property
     def Tags(self):
         """云标签数组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._Tags
@@ -16816,12 +16750,10 @@ class TaskDetail(AbstractModel):
         :param _TaskStatus: 任务状态
         :type TaskStatus: str
         :param _TaskMessage: 任务的状态信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskMessage: str
         :param _CreatedTime: 任务开始时间
         :type CreatedTime: str
         :param _FinishedTime: 任务结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type FinishedTime: str
         """
         self._TaskName = None
@@ -16867,7 +16799,6 @@ class TaskDetail(AbstractModel):
     @property
     def TaskMessage(self):
         """任务的状态信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskMessage
@@ -16890,7 +16821,6 @@ class TaskDetail(AbstractModel):
     @property
     def FinishedTime(self):
         """任务结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FinishedTime
@@ -16933,10 +16863,8 @@ class TcrImageInfo(AbstractModel):
         :param _UpdateTime: 更新时间
         :type UpdateTime: str
         :param _Kind: 制品类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Kind: str
         :param _KmsSignature: KMS 签名信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type KmsSignature: str
         """
         self._Digest = None
@@ -16993,7 +16921,6 @@ class TcrImageInfo(AbstractModel):
     @property
     def Kind(self):
         """制品类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Kind
@@ -17005,7 +16932,6 @@ class TcrImageInfo(AbstractModel):
     @property
     def KmsSignature(self):
         """KMS 签名信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._KmsSignature
@@ -17159,10 +17085,8 @@ class TcrNamespaceInfo(AbstractModel):
         :param _NamespaceId: 命名空间的Id
         :type NamespaceId: int
         :param _TagSpecification: 实例云标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagSpecification: :class:`tencentcloud.tcr.v20190924.models.TagSpecification`
         :param _Metadata: 命名空间元数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type Metadata: list of KeyValueString
         :param _CVEWhitelistItems: 漏洞白名单列表
         :type CVEWhitelistItems: list of CVEWhitelistItem
@@ -17231,7 +17155,6 @@ class TcrNamespaceInfo(AbstractModel):
     @property
     def TagSpecification(self):
         """实例云标签
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcr.v20190924.models.TagSpecification`
         """
         return self._TagSpecification
@@ -17243,7 +17166,6 @@ class TcrNamespaceInfo(AbstractModel):
     @property
     def Metadata(self):
         """命名空间元数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KeyValueString
         """
         return self._Metadata
@@ -17466,7 +17388,6 @@ class TriggerInvokeCondition(AbstractModel):
         :param _InvokeMethod: 触发方式
         :type InvokeMethod: str
         :param _InvokeExpr: 触发表达式
-注意：此字段可能返回 null，表示取不到有效值。
         :type InvokeExpr: str
         """
         self._InvokeMethod = None
@@ -17486,7 +17407,6 @@ class TriggerInvokeCondition(AbstractModel):
     @property
     def InvokeExpr(self):
         """触发表达式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InvokeExpr
@@ -17517,22 +17437,16 @@ class TriggerInvokePara(AbstractModel):
     def __init__(self):
         r"""
         :param _AppId: AppId
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: str
         :param _ClusterId: TKE集群ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterId: str
         :param _Namespace: TKE集群命名空间
-注意：此字段可能返回 null，表示取不到有效值。
         :type Namespace: str
         :param _ServiceName: TKE集群工作负载名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceName: str
         :param _ContainerName: TKE集群工作负载中容器名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ContainerName: str
         :param _ClusterRegion: TKE集群地域数字ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterRegion: int
         """
         self._AppId = None
@@ -17545,7 +17459,6 @@ class TriggerInvokePara(AbstractModel):
     @property
     def AppId(self):
         """AppId
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AppId
@@ -17557,7 +17470,6 @@ class TriggerInvokePara(AbstractModel):
     @property
     def ClusterId(self):
         """TKE集群ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterId
@@ -17569,7 +17481,6 @@ class TriggerInvokePara(AbstractModel):
     @property
     def Namespace(self):
         """TKE集群命名空间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Namespace
@@ -17581,7 +17492,6 @@ class TriggerInvokePara(AbstractModel):
     @property
     def ServiceName(self):
         """TKE集群工作负载名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ServiceName
@@ -17593,7 +17503,6 @@ class TriggerInvokePara(AbstractModel):
     @property
     def ContainerName(self):
         """TKE集群工作负载中容器名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ContainerName
@@ -17605,7 +17514,6 @@ class TriggerInvokePara(AbstractModel):
     @property
     def ClusterRegion(self):
         """TKE集群地域数字ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ClusterRegion
@@ -17640,10 +17548,8 @@ class TriggerInvokeResult(AbstractModel):
     def __init__(self):
         r"""
         :param _ReturnCode: 请求TKE返回值
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReturnCode: int
         :param _ReturnMsg: 请求TKE返回信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReturnMsg: str
         """
         self._ReturnCode = None
@@ -17652,7 +17558,6 @@ class TriggerInvokeResult(AbstractModel):
     @property
     def ReturnCode(self):
         """请求TKE返回值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ReturnCode
@@ -17664,7 +17569,6 @@ class TriggerInvokeResult(AbstractModel):
     @property
     def ReturnMsg(self):
         """请求TKE返回信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ReturnMsg
@@ -17695,31 +17599,22 @@ class TriggerLogResp(AbstractModel):
     def __init__(self):
         r"""
         :param _RepoName: 仓库名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type RepoName: str
         :param _TagName: Tag名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagName: str
         :param _TriggerName: 触发器名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerName: str
         :param _InvokeSource: 触发方式
-注意：此字段可能返回 null，表示取不到有效值。
         :type InvokeSource: str
         :param _InvokeAction: 触发动作
-注意：此字段可能返回 null，表示取不到有效值。
         :type InvokeAction: str
         :param _InvokeTime: 触发时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type InvokeTime: str
         :param _InvokeCondition: 触发条件
-注意：此字段可能返回 null，表示取不到有效值。
         :type InvokeCondition: :class:`tencentcloud.tcr.v20190924.models.TriggerInvokeCondition`
         :param _InvokePara: 触发参数
-注意：此字段可能返回 null，表示取不到有效值。
         :type InvokePara: :class:`tencentcloud.tcr.v20190924.models.TriggerInvokePara`
         :param _InvokeResult: 触发结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type InvokeResult: :class:`tencentcloud.tcr.v20190924.models.TriggerInvokeResult`
         """
         self._RepoName = None
@@ -17735,7 +17630,6 @@ class TriggerLogResp(AbstractModel):
     @property
     def RepoName(self):
         """仓库名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RepoName
@@ -17747,7 +17641,6 @@ class TriggerLogResp(AbstractModel):
     @property
     def TagName(self):
         """Tag名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TagName
@@ -17759,7 +17652,6 @@ class TriggerLogResp(AbstractModel):
     @property
     def TriggerName(self):
         """触发器名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TriggerName
@@ -17771,7 +17663,6 @@ class TriggerLogResp(AbstractModel):
     @property
     def InvokeSource(self):
         """触发方式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InvokeSource
@@ -17783,7 +17674,6 @@ class TriggerLogResp(AbstractModel):
     @property
     def InvokeAction(self):
         """触发动作
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InvokeAction
@@ -17795,7 +17685,6 @@ class TriggerLogResp(AbstractModel):
     @property
     def InvokeTime(self):
         """触发时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InvokeTime
@@ -17807,7 +17696,6 @@ class TriggerLogResp(AbstractModel):
     @property
     def InvokeCondition(self):
         """触发条件
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcr.v20190924.models.TriggerInvokeCondition`
         """
         return self._InvokeCondition
@@ -17819,7 +17707,6 @@ class TriggerLogResp(AbstractModel):
     @property
     def InvokePara(self):
         """触发参数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcr.v20190924.models.TriggerInvokePara`
         """
         return self._InvokePara
@@ -17831,7 +17718,6 @@ class TriggerLogResp(AbstractModel):
     @property
     def InvokeResult(self):
         """触发结果
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcr.v20190924.models.TriggerInvokeResult`
         """
         return self._InvokeResult
@@ -17875,25 +17761,18 @@ class TriggerResp(AbstractModel):
     def __init__(self):
         r"""
         :param _TriggerName: 触发器名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerName: str
         :param _InvokeSource: 触发来源
-注意：此字段可能返回 null，表示取不到有效值。
         :type InvokeSource: str
         :param _InvokeAction: 触发动作
-注意：此字段可能返回 null，表示取不到有效值。
         :type InvokeAction: str
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _UpdateTime: 更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param _InvokeCondition: 触发条件
-注意：此字段可能返回 null，表示取不到有效值。
         :type InvokeCondition: :class:`tencentcloud.tcr.v20190924.models.TriggerInvokeCondition`
         :param _InvokePara: 触发器参数
-注意：此字段可能返回 null，表示取不到有效值。
         :type InvokePara: :class:`tencentcloud.tcr.v20190924.models.TriggerInvokePara`
         """
         self._TriggerName = None
@@ -17907,7 +17786,6 @@ class TriggerResp(AbstractModel):
     @property
     def TriggerName(self):
         """触发器名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TriggerName
@@ -17919,7 +17797,6 @@ class TriggerResp(AbstractModel):
     @property
     def InvokeSource(self):
         """触发来源
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InvokeSource
@@ -17931,7 +17808,6 @@ class TriggerResp(AbstractModel):
     @property
     def InvokeAction(self):
         """触发动作
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InvokeAction
@@ -17943,7 +17819,6 @@ class TriggerResp(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -17955,7 +17830,6 @@ class TriggerResp(AbstractModel):
     @property
     def UpdateTime(self):
         """更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime
@@ -17967,7 +17841,6 @@ class TriggerResp(AbstractModel):
     @property
     def InvokeCondition(self):
         """触发条件
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcr.v20190924.models.TriggerInvokeCondition`
         """
         return self._InvokeCondition
@@ -17979,7 +17852,6 @@ class TriggerResp(AbstractModel):
     @property
     def InvokePara(self):
         """触发器参数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tcr.v20190924.models.TriggerInvokePara`
         """
         return self._InvokePara
@@ -18279,13 +18151,10 @@ class VpcPrivateDomainStatus(AbstractModel):
     def __init__(self):
         r"""
         :param _Region: 地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         :param _VpcId: unique vpc id
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
         :param _Status: ENABLE代表已经开启，DISABLE代表未开启，ERROR代表查询出错
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         """
         self._Region = None
@@ -18295,7 +18164,6 @@ class VpcPrivateDomainStatus(AbstractModel):
     @property
     def Region(self):
         """地域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Region
@@ -18307,7 +18175,6 @@ class VpcPrivateDomainStatus(AbstractModel):
     @property
     def VpcId(self):
         """unique vpc id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VpcId
@@ -18319,7 +18186,6 @@ class VpcPrivateDomainStatus(AbstractModel):
     @property
     def Status(self):
         """ENABLE代表已经开启，DISABLE代表未开启，ERROR代表查询出错
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status

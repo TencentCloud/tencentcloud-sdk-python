@@ -7114,16 +7114,12 @@ class ContainerGroupDeploy(AbstractModel):
     def __init__(self):
         r"""
         :param _GroupId: 部署组id
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupId: str
         :param _GroupName: 分组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupName: str
         :param _InstanceNum: 实例总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceNum: int
         :param _CurrentNum: 已启动实例总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type CurrentNum: int
         :param _Server: 镜像server
 注意：此字段可能返回 null，表示取不到有效值。
@@ -7150,7 +7146,6 @@ class ContainerGroupDeploy(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccessType: int
         :param _ProtocolPorts: 端口映射
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProtocolPorts: list of ProtocolPort
         :param _UpdateType: 更新方式：0:快速更新 1:滚动更新
 注意：此字段可能返回 null，表示取不到有效值。
@@ -7195,16 +7190,13 @@ class ContainerGroupDeploy(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type HealthCheckSettings: :class:`tencentcloud.tsf.v20180326.models.HealthCheckSettings`
         :param _DeployAgent: 是否部署Agent容器
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeployAgent: bool
         :param _Alias: 部署组备注
 注意：此字段可能返回 null，表示取不到有效值。
         :type Alias: str
         :param _DisableService: 是否创建 k8s service
-注意：此字段可能返回 null，表示取不到有效值。
         :type DisableService: bool
         :param _HeadlessService: service 是否为 headless 类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type HeadlessService: bool
         :param _TcrRepoInfo: TcrRepoInfo值
 注意：此字段可能返回 null，表示取不到有效值。
@@ -7219,25 +7211,19 @@ class ContainerGroupDeploy(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type KubeInjectEnable: bool
         :param _RepoType: 仓库类型 (person, tcr)
-注意：此字段可能返回 null，表示取不到有效值。
         :type RepoType: str
         :param _WarmupSetting: 预热配置设置
-注意：此字段可能返回 null，表示取不到有效值。
         :type WarmupSetting: :class:`tencentcloud.tsf.v20180326.models.WarmupSetting`
         :param _GatewayConfig: Envoy网关服务配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayConfig: :class:`tencentcloud.tsf.v20180326.models.GatewayConfig`
         :param _ContainerName: 容器名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ContainerName: str
         :param _AdditionalContainerList: 附加容器列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type AdditionalContainerList: list of GroupContainerInfo
         :param _InternalContainerList: 内部容器列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type InternalContainerList: list of GroupContainerInfo
         :param _ServiceSettingList: service列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceSettingList: list of ServiceSetting
         """
         self._GroupId = None
@@ -7286,7 +7272,6 @@ class ContainerGroupDeploy(AbstractModel):
     @property
     def GroupId(self):
         """部署组id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupId
@@ -7298,7 +7283,6 @@ class ContainerGroupDeploy(AbstractModel):
     @property
     def GroupName(self):
         """分组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupName
@@ -7310,7 +7294,6 @@ class ContainerGroupDeploy(AbstractModel):
     @property
     def InstanceNum(self):
         """实例总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._InstanceNum
@@ -7322,7 +7305,6 @@ class ContainerGroupDeploy(AbstractModel):
     @property
     def CurrentNum(self):
         """已启动实例总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CurrentNum
@@ -7430,7 +7412,6 @@ class ContainerGroupDeploy(AbstractModel):
     @property
     def ProtocolPorts(self):
         """端口映射
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ProtocolPort
         """
         return self._ProtocolPorts
@@ -7610,7 +7591,6 @@ class ContainerGroupDeploy(AbstractModel):
     @property
     def DeployAgent(self):
         """是否部署Agent容器
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._DeployAgent
@@ -7634,7 +7614,6 @@ class ContainerGroupDeploy(AbstractModel):
     @property
     def DisableService(self):
         """是否创建 k8s service
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._DisableService
@@ -7646,7 +7625,6 @@ class ContainerGroupDeploy(AbstractModel):
     @property
     def HeadlessService(self):
         """service 是否为 headless 类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._HeadlessService
@@ -7706,7 +7684,6 @@ class ContainerGroupDeploy(AbstractModel):
     @property
     def RepoType(self):
         """仓库类型 (person, tcr)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RepoType
@@ -7718,7 +7695,6 @@ class ContainerGroupDeploy(AbstractModel):
     @property
     def WarmupSetting(self):
         """预热配置设置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.WarmupSetting`
         """
         return self._WarmupSetting
@@ -7742,7 +7718,6 @@ class ContainerGroupDeploy(AbstractModel):
     @property
     def ContainerName(self):
         """容器名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ContainerName
@@ -7754,7 +7729,6 @@ class ContainerGroupDeploy(AbstractModel):
     @property
     def AdditionalContainerList(self):
         """附加容器列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of GroupContainerInfo
         """
         return self._AdditionalContainerList
@@ -7766,7 +7740,6 @@ class ContainerGroupDeploy(AbstractModel):
     @property
     def InternalContainerList(self):
         """内部容器列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of GroupContainerInfo
         """
         return self._InternalContainerList
@@ -7778,7 +7751,6 @@ class ContainerGroupDeploy(AbstractModel):
     @property
     def ServiceSettingList(self):
         """service列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ServiceSetting
         """
         return self._ServiceSettingList
@@ -21266,7 +21238,6 @@ class DescribeContainerGroupDeployInfoResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 获取部署组
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.ContainerGroupDeploy`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -21277,7 +21248,6 @@ class DescribeContainerGroupDeployInfoResponse(AbstractModel):
     @property
     def Result(self):
         """获取部署组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.ContainerGroupDeploy`
         """
         return self._Result
@@ -23652,7 +23622,6 @@ class DescribeGroupResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 虚拟机部署组详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.VmGroup`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -23663,7 +23632,6 @@ class DescribeGroupResponse(AbstractModel):
     @property
     def Result(self):
         """虚拟机部署组详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.VmGroup`
         """
         return self._Result
@@ -34297,49 +34265,34 @@ class GroupContainerInfo(AbstractModel):
         :param _TagName: 镜像版本名称
         :type TagName: str
         :param _ContainerName: 容器名字
-注意：此字段可能返回 null，表示取不到有效值。
         :type ContainerName: str
         :param _RepoName: 镜像名
-注意：此字段可能返回 null，表示取不到有效值。
         :type RepoName: str
         :param _RepoType: 仓库类型,tcr，address，personal，默认personal
-注意：此字段可能返回 null，表示取不到有效值。
         :type RepoType: str
         :param _TcrRepoInfo: tcr仓库信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type TcrRepoInfo: :class:`tencentcloud.tsf.v20180326.models.TcrRepoInfo`
         :param _Server: 镜像server
-注意：此字段可能返回 null，表示取不到有效值。
         :type Server: str
         :param _SecretName: 凭证名字
-注意：此字段可能返回 null，表示取不到有效值。
         :type SecretName: str
         :param _JvmOpts: jvm 参数
-注意：此字段可能返回 null，表示取不到有效值。
         :type JvmOpts: str
         :param _CpuLimit: 容器最大的 CPU 核数，对应 K8S 的 limit
-注意：此字段可能返回 null，表示取不到有效值。
         :type CpuLimit: str
         :param _CpuRequest: 容器分配的 CPU 核数，对应 K8S 的 request
-注意：此字段可能返回 null，表示取不到有效值。
         :type CpuRequest: str
         :param _MemRequest: 容器分配的内存 MiB 数，对应 K8S 的 request
-注意：此字段可能返回 null，表示取不到有效值。
         :type MemRequest: str
         :param _MemLimit: 容器最大的内存 MiB 数，对应 K8S 的 limit
-注意：此字段可能返回 null，表示取不到有效值。
         :type MemLimit: str
         :param _HealthCheckSettings: 健康检查配置信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type HealthCheckSettings: :class:`tencentcloud.tsf.v20180326.models.HealthCheckSettings`
         :param _Envs: 环境变量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Envs: list of Env
         :param _UserEnvs: 环境变量,作为入参时不用填
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserEnvs: list of Env
         :param _VolumeMountInfoList: 数据卷挂载点信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type VolumeMountInfoList: list of VolumeMountInfo
         """
         self._TagName = None
@@ -34373,7 +34326,6 @@ class GroupContainerInfo(AbstractModel):
     @property
     def ContainerName(self):
         """容器名字
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ContainerName
@@ -34385,7 +34337,6 @@ class GroupContainerInfo(AbstractModel):
     @property
     def RepoName(self):
         """镜像名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RepoName
@@ -34397,7 +34348,6 @@ class GroupContainerInfo(AbstractModel):
     @property
     def RepoType(self):
         """仓库类型,tcr，address，personal，默认personal
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RepoType
@@ -34409,7 +34359,6 @@ class GroupContainerInfo(AbstractModel):
     @property
     def TcrRepoInfo(self):
         """tcr仓库信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TcrRepoInfo`
         """
         return self._TcrRepoInfo
@@ -34421,7 +34370,6 @@ class GroupContainerInfo(AbstractModel):
     @property
     def Server(self):
         """镜像server
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Server
@@ -34433,7 +34381,6 @@ class GroupContainerInfo(AbstractModel):
     @property
     def SecretName(self):
         """凭证名字
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SecretName
@@ -34445,7 +34392,6 @@ class GroupContainerInfo(AbstractModel):
     @property
     def JvmOpts(self):
         """jvm 参数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._JvmOpts
@@ -34457,7 +34403,6 @@ class GroupContainerInfo(AbstractModel):
     @property
     def CpuLimit(self):
         """容器最大的 CPU 核数，对应 K8S 的 limit
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CpuLimit
@@ -34469,7 +34414,6 @@ class GroupContainerInfo(AbstractModel):
     @property
     def CpuRequest(self):
         """容器分配的 CPU 核数，对应 K8S 的 request
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CpuRequest
@@ -34481,7 +34425,6 @@ class GroupContainerInfo(AbstractModel):
     @property
     def MemRequest(self):
         """容器分配的内存 MiB 数，对应 K8S 的 request
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MemRequest
@@ -34493,7 +34436,6 @@ class GroupContainerInfo(AbstractModel):
     @property
     def MemLimit(self):
         """容器最大的内存 MiB 数，对应 K8S 的 limit
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MemLimit
@@ -34505,7 +34447,6 @@ class GroupContainerInfo(AbstractModel):
     @property
     def HealthCheckSettings(self):
         """健康检查配置信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.HealthCheckSettings`
         """
         return self._HealthCheckSettings
@@ -34517,7 +34458,6 @@ class GroupContainerInfo(AbstractModel):
     @property
     def Envs(self):
         """环境变量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Env
         """
         return self._Envs
@@ -34529,7 +34469,6 @@ class GroupContainerInfo(AbstractModel):
     @property
     def UserEnvs(self):
         """环境变量,作为入参时不用填
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Env
         """
         return self._UserEnvs
@@ -34541,7 +34480,6 @@ class GroupContainerInfo(AbstractModel):
     @property
     def VolumeMountInfoList(self):
         """数据卷挂载点信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of VolumeMountInfo
         """
         return self._VolumeMountInfoList
@@ -35933,6 +35871,8 @@ class ImageRepository(AbstractModel):
         :type CreateMode: str
         :param _RepoName: 仓库名，等同reponame字段
         :type RepoName: str
+        :param _RepoType: 仓库类型
+        :type RepoType: str
         """
         self._Reponame = None
         self._Repotype = None
@@ -35953,6 +35893,7 @@ class ImageRepository(AbstractModel):
         self._Public = None
         self._CreateMode = None
         self._RepoName = None
+        self._RepoType = None
 
     @property
     def Reponame(self):
@@ -36163,6 +36104,17 @@ class ImageRepository(AbstractModel):
     def RepoName(self, RepoName):
         self._RepoName = RepoName
 
+    @property
+    def RepoType(self):
+        """仓库类型
+        :rtype: str
+        """
+        return self._RepoType
+
+    @RepoType.setter
+    def RepoType(self, RepoType):
+        self._RepoType = RepoType
+
 
     def _deserialize(self, params):
         self._Reponame = params.get("Reponame")
@@ -36188,6 +36140,7 @@ class ImageRepository(AbstractModel):
         self._Public = params.get("Public")
         self._CreateMode = params.get("CreateMode")
         self._RepoName = params.get("RepoName")
+        self._RepoType = params.get("RepoType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -47015,6 +46968,8 @@ class SearchBusinessLogRequest(AbstractModel):
         :type BatchType: str
         :param _ScrollId: 游标ID
         :type ScrollId: str
+        :param _SearchAfter: 查询es使用searchAfter时，游标
+        :type SearchAfter: list of str
         """
         self._ConfigId = None
         self._InstanceIds = None
@@ -47029,6 +46984,7 @@ class SearchBusinessLogRequest(AbstractModel):
         self._SearchWordType = None
         self._BatchType = None
         self._ScrollId = None
+        self._SearchAfter = None
 
     @property
     def ConfigId(self):
@@ -47173,6 +47129,17 @@ class SearchBusinessLogRequest(AbstractModel):
     def ScrollId(self, ScrollId):
         self._ScrollId = ScrollId
 
+    @property
+    def SearchAfter(self):
+        """查询es使用searchAfter时，游标
+        :rtype: list of str
+        """
+        return self._SearchAfter
+
+    @SearchAfter.setter
+    def SearchAfter(self, SearchAfter):
+        self._SearchAfter = SearchAfter
+
 
     def _deserialize(self, params):
         self._ConfigId = params.get("ConfigId")
@@ -47188,6 +47155,7 @@ class SearchBusinessLogRequest(AbstractModel):
         self._SearchWordType = params.get("SearchWordType")
         self._BatchType = params.get("BatchType")
         self._ScrollId = params.get("ScrollId")
+        self._SearchAfter = params.get("SearchAfter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -47206,7 +47174,6 @@ class SearchBusinessLogResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 业务日志列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageBusinessLogV2`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -47217,7 +47184,6 @@ class SearchBusinessLogResponse(AbstractModel):
     @property
     def Result(self):
         """业务日志列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TsfPageBusinessLogV2`
         """
         return self._Result
@@ -47280,6 +47246,8 @@ class SearchStdoutLogRequest(AbstractModel):
         :type BatchType: str
         :param _ScrollId: 游标ID
         :type ScrollId: str
+        :param _SearchAfter: 查询es使用searchAfter时，游标
+        :type SearchAfter: list of str
         """
         self._InstanceId = None
         self._Limit = None
@@ -47293,6 +47261,7 @@ class SearchStdoutLogRequest(AbstractModel):
         self._SearchWordType = None
         self._BatchType = None
         self._ScrollId = None
+        self._SearchAfter = None
 
     @property
     def InstanceId(self):
@@ -47430,6 +47399,17 @@ class SearchStdoutLogRequest(AbstractModel):
     def ScrollId(self, ScrollId):
         self._ScrollId = ScrollId
 
+    @property
+    def SearchAfter(self):
+        """查询es使用searchAfter时，游标
+        :rtype: list of str
+        """
+        return self._SearchAfter
+
+    @SearchAfter.setter
+    def SearchAfter(self, SearchAfter):
+        self._SearchAfter = SearchAfter
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -47444,6 +47424,7 @@ class SearchStdoutLogRequest(AbstractModel):
         self._SearchWordType = params.get("SearchWordType")
         self._BatchType = params.get("BatchType")
         self._ScrollId = params.get("ScrollId")
+        self._SearchAfter = params.get("SearchAfter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -47462,7 +47443,6 @@ class SearchStdoutLogResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 标准输出日志列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageStdoutLogV2`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -47473,7 +47453,6 @@ class SearchStdoutLogResponse(AbstractModel):
     @property
     def Result(self):
         """标准输出日志列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TsfPageStdoutLogV2`
         """
         return self._Result
@@ -47655,68 +47634,49 @@ class ServiceSetting(AbstractModel):
     def __init__(self):
         r"""
         :param _AccessType: 0:公网, 1:集群内访问, 2：NodePort, 3: VPC 内网访问
-注意：此字段可能返回 null，表示取不到有效值。
         :type AccessType: int
         :param _ProtocolPorts: 容器端口映射
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProtocolPorts: list of ProtocolPort
         :param _SubnetId: 子网ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetId: str
         :param _DisableService: 是否创建 k8s service，默认为 false
-注意：此字段可能返回 null，表示取不到有效值。
         :type DisableService: bool
         :param _HeadlessService: service 是否为 headless 类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type HeadlessService: bool
         :param _AllowDeleteService: 当为 true 且 DisableService 也为 true 时，会删除之前创建的 service，请小心使用
-注意：此字段可能返回 null，表示取不到有效值。
         :type AllowDeleteService: bool
         :param _OpenSessionAffinity: 开启SessionAffinity，true为开启，false为不开启，默认为false
-注意：此字段可能返回 null，表示取不到有效值。
         :type OpenSessionAffinity: bool
         :param _SessionAffinityTimeoutSeconds: SessionAffinity会话时间，默认10800
-注意：此字段可能返回 null，表示取不到有效值。
         :type SessionAffinityTimeoutSeconds: int
         :param _ServiceName: 服务名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceName: str
         :param _ExternalTrafficStrategy: 外部流量策略
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExternalTrafficStrategy: str
         :param _ExternalTrafficPolicy: 外部流量策略
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExternalTrafficPolicy: str
         :param _LoadBalancerProvisioner: 负载均衡提供者
-注意：此字段可能返回 null，表示取不到有效值。
         :type LoadBalancerProvisioner: str
         :param _LoadBalancingType: 负载均衡类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type LoadBalancingType: str
         :param _ClusterIp: k8s负载均衡内网vip
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterIp: str
         :param _DisableServiceInt: 禁用服务Int记录
-注意：此字段可能返回 null，表示取不到有效值。
         :type DisableServiceInt: int
         :param _OpenSessionAffinityInt: 开启SessionAffinity Int记录
-注意：此字段可能返回 null，表示取不到有效值。
         :type OpenSessionAffinityInt: int
         :param _HeadlessServiceInt: 开启HeadlessService int记录
-注意：此字段可能返回 null，表示取不到有效值。
         :type HeadlessServiceInt: int
         :param _Name: 服务名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _VpcId: VPC网络ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
         :param _LoadBalancingIp: 负载均衡VIP
-注意：此字段可能返回 null，表示取不到有效值。
         :type LoadBalancingIp: str
         :param _LoadBalancerId: 负载均衡id
-注意：此字段可能返回 null，表示取不到有效值。
         :type LoadBalancerId: str
+        :param _ExistingLoadBalancerId: 已存在的负载均衡id
+        :type ExistingLoadBalancerId: str
         """
         self._AccessType = None
         self._ProtocolPorts = None
@@ -47739,11 +47699,11 @@ class ServiceSetting(AbstractModel):
         self._VpcId = None
         self._LoadBalancingIp = None
         self._LoadBalancerId = None
+        self._ExistingLoadBalancerId = None
 
     @property
     def AccessType(self):
         """0:公网, 1:集群内访问, 2：NodePort, 3: VPC 内网访问
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AccessType
@@ -47755,7 +47715,6 @@ class ServiceSetting(AbstractModel):
     @property
     def ProtocolPorts(self):
         """容器端口映射
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ProtocolPort
         """
         return self._ProtocolPorts
@@ -47767,7 +47726,6 @@ class ServiceSetting(AbstractModel):
     @property
     def SubnetId(self):
         """子网ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubnetId
@@ -47779,7 +47737,6 @@ class ServiceSetting(AbstractModel):
     @property
     def DisableService(self):
         """是否创建 k8s service，默认为 false
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._DisableService
@@ -47791,7 +47748,6 @@ class ServiceSetting(AbstractModel):
     @property
     def HeadlessService(self):
         """service 是否为 headless 类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._HeadlessService
@@ -47803,7 +47759,6 @@ class ServiceSetting(AbstractModel):
     @property
     def AllowDeleteService(self):
         """当为 true 且 DisableService 也为 true 时，会删除之前创建的 service，请小心使用
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._AllowDeleteService
@@ -47815,7 +47770,6 @@ class ServiceSetting(AbstractModel):
     @property
     def OpenSessionAffinity(self):
         """开启SessionAffinity，true为开启，false为不开启，默认为false
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._OpenSessionAffinity
@@ -47827,7 +47781,6 @@ class ServiceSetting(AbstractModel):
     @property
     def SessionAffinityTimeoutSeconds(self):
         """SessionAffinity会话时间，默认10800
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SessionAffinityTimeoutSeconds
@@ -47839,7 +47792,6 @@ class ServiceSetting(AbstractModel):
     @property
     def ServiceName(self):
         """服务名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ServiceName
@@ -47851,7 +47803,6 @@ class ServiceSetting(AbstractModel):
     @property
     def ExternalTrafficStrategy(self):
         """外部流量策略
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ExternalTrafficStrategy
@@ -47863,7 +47814,6 @@ class ServiceSetting(AbstractModel):
     @property
     def ExternalTrafficPolicy(self):
         """外部流量策略
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ExternalTrafficPolicy
@@ -47875,7 +47825,6 @@ class ServiceSetting(AbstractModel):
     @property
     def LoadBalancerProvisioner(self):
         """负载均衡提供者
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LoadBalancerProvisioner
@@ -47887,7 +47836,6 @@ class ServiceSetting(AbstractModel):
     @property
     def LoadBalancingType(self):
         """负载均衡类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LoadBalancingType
@@ -47899,7 +47847,6 @@ class ServiceSetting(AbstractModel):
     @property
     def ClusterIp(self):
         """k8s负载均衡内网vip
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterIp
@@ -47911,7 +47858,6 @@ class ServiceSetting(AbstractModel):
     @property
     def DisableServiceInt(self):
         """禁用服务Int记录
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DisableServiceInt
@@ -47923,7 +47869,6 @@ class ServiceSetting(AbstractModel):
     @property
     def OpenSessionAffinityInt(self):
         """开启SessionAffinity Int记录
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._OpenSessionAffinityInt
@@ -47935,7 +47880,6 @@ class ServiceSetting(AbstractModel):
     @property
     def HeadlessServiceInt(self):
         """开启HeadlessService int记录
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._HeadlessServiceInt
@@ -47947,7 +47891,6 @@ class ServiceSetting(AbstractModel):
     @property
     def Name(self):
         """服务名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -47959,7 +47902,6 @@ class ServiceSetting(AbstractModel):
     @property
     def VpcId(self):
         """VPC网络ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VpcId
@@ -47971,7 +47913,6 @@ class ServiceSetting(AbstractModel):
     @property
     def LoadBalancingIp(self):
         """负载均衡VIP
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LoadBalancingIp
@@ -47983,7 +47924,6 @@ class ServiceSetting(AbstractModel):
     @property
     def LoadBalancerId(self):
         """负载均衡id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LoadBalancerId
@@ -47991,6 +47931,17 @@ class ServiceSetting(AbstractModel):
     @LoadBalancerId.setter
     def LoadBalancerId(self, LoadBalancerId):
         self._LoadBalancerId = LoadBalancerId
+
+    @property
+    def ExistingLoadBalancerId(self):
+        """已存在的负载均衡id
+        :rtype: str
+        """
+        return self._ExistingLoadBalancerId
+
+    @ExistingLoadBalancerId.setter
+    def ExistingLoadBalancerId(self, ExistingLoadBalancerId):
+        self._ExistingLoadBalancerId = ExistingLoadBalancerId
 
 
     def _deserialize(self, params):
@@ -48020,6 +47971,7 @@ class ServiceSetting(AbstractModel):
         self._VpcId = params.get("VpcId")
         self._LoadBalancingIp = params.get("LoadBalancingIp")
         self._LoadBalancerId = params.get("LoadBalancerId")
+        self._ExistingLoadBalancerId = params.get("ExistingLoadBalancerId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -51567,10 +51519,8 @@ class TsfPageBusinessLogV2(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _Content: 业务日志列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Content: list of BusinessLogV2
         :param _ScrollId: 游标ID
 注意：此字段可能返回 null，表示取不到有效值。
@@ -51578,16 +51528,19 @@ class TsfPageBusinessLogV2(AbstractModel):
         :param _Status: 查询状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
+        :param _SearchAfter: 查询es时，使用searchAfter返回的游标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SearchAfter: list of str
         """
         self._TotalCount = None
         self._Content = None
         self._ScrollId = None
         self._Status = None
+        self._SearchAfter = None
 
     @property
     def TotalCount(self):
         """总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -51599,7 +51552,6 @@ class TsfPageBusinessLogV2(AbstractModel):
     @property
     def Content(self):
         """业务日志列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BusinessLogV2
         """
         return self._Content
@@ -51632,6 +51584,18 @@ class TsfPageBusinessLogV2(AbstractModel):
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def SearchAfter(self):
+        """查询es时，使用searchAfter返回的游标
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._SearchAfter
+
+    @SearchAfter.setter
+    def SearchAfter(self, SearchAfter):
+        self._SearchAfter = SearchAfter
+
 
     def _deserialize(self, params):
         self._TotalCount = params.get("TotalCount")
@@ -51643,6 +51607,7 @@ class TsfPageBusinessLogV2(AbstractModel):
                 self._Content.append(obj)
         self._ScrollId = params.get("ScrollId")
         self._Status = params.get("Status")
+        self._SearchAfter = params.get("SearchAfter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -52636,10 +52601,8 @@ class TsfPageStdoutLogV2(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _Content: 标准输出日志列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Content: list of StdoutLogV2
         :param _ScrollId: 游标ID
 注意：此字段可能返回 null，表示取不到有效值。
@@ -52647,16 +52610,19 @@ class TsfPageStdoutLogV2(AbstractModel):
         :param _Status: 查询状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
+        :param _SearchAfter: 游标ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SearchAfter: list of str
         """
         self._TotalCount = None
         self._Content = None
         self._ScrollId = None
         self._Status = None
+        self._SearchAfter = None
 
     @property
     def TotalCount(self):
         """总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -52668,7 +52634,6 @@ class TsfPageStdoutLogV2(AbstractModel):
     @property
     def Content(self):
         """标准输出日志列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of StdoutLogV2
         """
         return self._Content
@@ -52701,6 +52666,18 @@ class TsfPageStdoutLogV2(AbstractModel):
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def SearchAfter(self):
+        """游标ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._SearchAfter
+
+    @SearchAfter.setter
+    def SearchAfter(self, SearchAfter):
+        self._SearchAfter = SearchAfter
+
 
     def _deserialize(self, params):
         self._TotalCount = params.get("TotalCount")
@@ -52712,6 +52689,7 @@ class TsfPageStdoutLogV2(AbstractModel):
                 self._Content.append(obj)
         self._ScrollId = params.get("ScrollId")
         self._Status = params.get("Status")
+        self._SearchAfter = params.get("SearchAfter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -54918,13 +54896,10 @@ class VmGroup(AbstractModel):
     def __init__(self):
         r"""
         :param _GroupId: 部署组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupId: str
         :param _GroupName: 部署组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupName: str
         :param _GroupStatus: 部署组状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupStatus: str
         :param _PackageId: 程序包ID
 注意：此字段可能返回 null，表示取不到有效值。
@@ -54936,76 +54911,55 @@ class VmGroup(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type PackageVersion: str
         :param _ClusterId: 集群ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterId: str
         :param _ClusterName: 集群名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterName: str
         :param _NamespaceId: 命名空间ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type NamespaceId: str
         :param _NamespaceName: 命名空间名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type NamespaceName: str
         :param _ApplicationId: 应用ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationId: str
         :param _ApplicationName: 应用名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationName: str
         :param _InstanceCount: 部署组机器数目
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceCount: int
         :param _RunInstanceCount: 部署组运行中机器数目
-注意：此字段可能返回 null，表示取不到有效值。
         :type RunInstanceCount: int
         :param _StartupParameters: 部署组启动参数信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartupParameters: str
         :param _CreateTime: 部署组创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _UpdateTime: 部署组更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param _OffInstanceCount: 部署组停止机器数目
-注意：此字段可能返回 null，表示取不到有效值。
         :type OffInstanceCount: int
         :param _GroupDesc: 部署组描述信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupDesc: str
         :param _MicroserviceType: 微服务类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type MicroserviceType: str
         :param _ApplicationType: 应用类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationType: str
         :param _GroupResourceType: 部署组资源类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupResourceType: str
         :param _UpdatedTime: 部署组更新时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedTime: int
         :param _DeployDesc: 部署应用描述信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeployDesc: str
         :param _UpdateType: 滚动发布的更新方式
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateType: int
         :param _DeployBetaEnable: 发布是否启用beta批次
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeployBetaEnable: bool
         :param _DeployBatch: 滚动发布的批次比例列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeployBatch: list of float
         :param _DeployExeMode: 滚动发布的批次执行方式
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeployExeMode: str
         :param _DeployWaitTime: 滚动发布的每个批次的等待时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeployWaitTime: int
         :param _EnableHealthCheck: 是否开启了健康检查
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnableHealthCheck: bool
         :param _HealthCheckSettings: 健康检查配置
 注意：此字段可能返回 null，表示取不到有效值。
@@ -55023,17 +54977,32 @@ class VmGroup(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Alias: str
         :param _AgentProfileList: javaagent信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type AgentProfileList: list of AgentProfile
         :param _WarmupSetting: 预热属性配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type WarmupSetting: :class:`tencentcloud.tsf.v20180326.models.WarmupSetting`
         :param _GatewayConfig: Envoy网关配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayConfig: :class:`tencentcloud.tsf.v20180326.models.GatewayConfig`
         :param _EnableBatchHealthCheck: 批次是否开启健康检查
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnableBatchHealthCheck: bool
+        :param _FilebeatCgroupEnable: 是否开启cgroup控制内存cpu
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FilebeatCgroupEnable: bool
+        :param _FilebeatMaxCpu: filebeat使用cpu上限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FilebeatMaxCpu: float
+        :param _FilebeatMaxMem: filebeat使用内存上限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FilebeatMaxMem: int
+        :param _RepositoryId: 仓库ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RepositoryId: str
+        :param _RepositoryName: 仓库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RepositoryName: str
+        :param _RepositoryType: 仓库类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RepositoryType: str
         """
         self._GroupId = None
         self._GroupName = None
@@ -55074,11 +55043,16 @@ class VmGroup(AbstractModel):
         self._WarmupSetting = None
         self._GatewayConfig = None
         self._EnableBatchHealthCheck = None
+        self._FilebeatCgroupEnable = None
+        self._FilebeatMaxCpu = None
+        self._FilebeatMaxMem = None
+        self._RepositoryId = None
+        self._RepositoryName = None
+        self._RepositoryType = None
 
     @property
     def GroupId(self):
         """部署组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupId
@@ -55090,7 +55064,6 @@ class VmGroup(AbstractModel):
     @property
     def GroupName(self):
         """部署组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupName
@@ -55102,7 +55075,6 @@ class VmGroup(AbstractModel):
     @property
     def GroupStatus(self):
         """部署组状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupStatus
@@ -55150,7 +55122,6 @@ class VmGroup(AbstractModel):
     @property
     def ClusterId(self):
         """集群ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterId
@@ -55162,7 +55133,6 @@ class VmGroup(AbstractModel):
     @property
     def ClusterName(self):
         """集群名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterName
@@ -55174,7 +55144,6 @@ class VmGroup(AbstractModel):
     @property
     def NamespaceId(self):
         """命名空间ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NamespaceId
@@ -55186,7 +55155,6 @@ class VmGroup(AbstractModel):
     @property
     def NamespaceName(self):
         """命名空间名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NamespaceName
@@ -55198,7 +55166,6 @@ class VmGroup(AbstractModel):
     @property
     def ApplicationId(self):
         """应用ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApplicationId
@@ -55210,7 +55177,6 @@ class VmGroup(AbstractModel):
     @property
     def ApplicationName(self):
         """应用名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApplicationName
@@ -55222,7 +55188,6 @@ class VmGroup(AbstractModel):
     @property
     def InstanceCount(self):
         """部署组机器数目
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._InstanceCount
@@ -55234,7 +55199,6 @@ class VmGroup(AbstractModel):
     @property
     def RunInstanceCount(self):
         """部署组运行中机器数目
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RunInstanceCount
@@ -55258,7 +55222,6 @@ class VmGroup(AbstractModel):
     @property
     def CreateTime(self):
         """部署组创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -55270,7 +55233,6 @@ class VmGroup(AbstractModel):
     @property
     def UpdateTime(self):
         """部署组更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime
@@ -55282,7 +55244,6 @@ class VmGroup(AbstractModel):
     @property
     def OffInstanceCount(self):
         """部署组停止机器数目
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._OffInstanceCount
@@ -55306,7 +55267,6 @@ class VmGroup(AbstractModel):
     @property
     def MicroserviceType(self):
         """微服务类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MicroserviceType
@@ -55318,7 +55278,6 @@ class VmGroup(AbstractModel):
     @property
     def ApplicationType(self):
         """应用类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApplicationType
@@ -55330,7 +55289,6 @@ class VmGroup(AbstractModel):
     @property
     def GroupResourceType(self):
         """部署组资源类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupResourceType
@@ -55342,7 +55300,6 @@ class VmGroup(AbstractModel):
     @property
     def UpdatedTime(self):
         """部署组更新时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._UpdatedTime
@@ -55366,7 +55323,6 @@ class VmGroup(AbstractModel):
     @property
     def UpdateType(self):
         """滚动发布的更新方式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._UpdateType
@@ -55378,7 +55334,6 @@ class VmGroup(AbstractModel):
     @property
     def DeployBetaEnable(self):
         """发布是否启用beta批次
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._DeployBetaEnable
@@ -55390,7 +55345,6 @@ class VmGroup(AbstractModel):
     @property
     def DeployBatch(self):
         """滚动发布的批次比例列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of float
         """
         return self._DeployBatch
@@ -55402,7 +55356,6 @@ class VmGroup(AbstractModel):
     @property
     def DeployExeMode(self):
         """滚动发布的批次执行方式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeployExeMode
@@ -55414,7 +55367,6 @@ class VmGroup(AbstractModel):
     @property
     def DeployWaitTime(self):
         """滚动发布的每个批次的等待时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DeployWaitTime
@@ -55426,7 +55378,6 @@ class VmGroup(AbstractModel):
     @property
     def EnableHealthCheck(self):
         """是否开启了健康检查
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._EnableHealthCheck
@@ -55498,7 +55449,6 @@ class VmGroup(AbstractModel):
     @property
     def AgentProfileList(self):
         """javaagent信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AgentProfile
         """
         return self._AgentProfileList
@@ -55510,7 +55460,6 @@ class VmGroup(AbstractModel):
     @property
     def WarmupSetting(self):
         """预热属性配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.WarmupSetting`
         """
         return self._WarmupSetting
@@ -55534,7 +55483,6 @@ class VmGroup(AbstractModel):
     @property
     def EnableBatchHealthCheck(self):
         """批次是否开启健康检查
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._EnableBatchHealthCheck
@@ -55542,6 +55490,78 @@ class VmGroup(AbstractModel):
     @EnableBatchHealthCheck.setter
     def EnableBatchHealthCheck(self, EnableBatchHealthCheck):
         self._EnableBatchHealthCheck = EnableBatchHealthCheck
+
+    @property
+    def FilebeatCgroupEnable(self):
+        """是否开启cgroup控制内存cpu
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._FilebeatCgroupEnable
+
+    @FilebeatCgroupEnable.setter
+    def FilebeatCgroupEnable(self, FilebeatCgroupEnable):
+        self._FilebeatCgroupEnable = FilebeatCgroupEnable
+
+    @property
+    def FilebeatMaxCpu(self):
+        """filebeat使用cpu上限
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._FilebeatMaxCpu
+
+    @FilebeatMaxCpu.setter
+    def FilebeatMaxCpu(self, FilebeatMaxCpu):
+        self._FilebeatMaxCpu = FilebeatMaxCpu
+
+    @property
+    def FilebeatMaxMem(self):
+        """filebeat使用内存上限
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._FilebeatMaxMem
+
+    @FilebeatMaxMem.setter
+    def FilebeatMaxMem(self, FilebeatMaxMem):
+        self._FilebeatMaxMem = FilebeatMaxMem
+
+    @property
+    def RepositoryId(self):
+        """仓库ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RepositoryId
+
+    @RepositoryId.setter
+    def RepositoryId(self, RepositoryId):
+        self._RepositoryId = RepositoryId
+
+    @property
+    def RepositoryName(self):
+        """仓库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RepositoryName
+
+    @RepositoryName.setter
+    def RepositoryName(self, RepositoryName):
+        self._RepositoryName = RepositoryName
+
+    @property
+    def RepositoryType(self):
+        """仓库类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RepositoryType
+
+    @RepositoryType.setter
+    def RepositoryType(self, RepositoryType):
+        self._RepositoryType = RepositoryType
 
 
     def _deserialize(self, params):
@@ -55595,6 +55615,12 @@ class VmGroup(AbstractModel):
             self._GatewayConfig = GatewayConfig()
             self._GatewayConfig._deserialize(params.get("GatewayConfig"))
         self._EnableBatchHealthCheck = params.get("EnableBatchHealthCheck")
+        self._FilebeatCgroupEnable = params.get("FilebeatCgroupEnable")
+        self._FilebeatMaxCpu = params.get("FilebeatMaxCpu")
+        self._FilebeatMaxMem = params.get("FilebeatMaxMem")
+        self._RepositoryId = params.get("RepositoryId")
+        self._RepositoryName = params.get("RepositoryName")
+        self._RepositoryType = params.get("RepositoryType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -55613,7 +55639,6 @@ class VmGroupOther(AbstractModel):
     def __init__(self):
         r"""
         :param _GroupId: 部署组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupId: str
         :param _PackageId: 程序包ID
 注意：此字段可能返回 null，表示取不到有效值。
@@ -55625,19 +55650,14 @@ class VmGroupOther(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type PackageVersion: str
         :param _InstanceCount: 部署组实例数
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceCount: int
         :param _RunInstanceCount: 部署组运行中实例数
-注意：此字段可能返回 null，表示取不到有效值。
         :type RunInstanceCount: int
         :param _OffInstanceCount: 部署组中停止实例数
-注意：此字段可能返回 null，表示取不到有效值。
         :type OffInstanceCount: int
         :param _GroupStatus: 部署组状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupStatus: str
         :param _IsNotEqualServiceConfig: 服务配置信息是否匹配
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsNotEqualServiceConfig: bool
         :param _HealthCheckSettings: HealthCheckSettings
 注意：此字段可能返回 null，表示取不到有效值。
@@ -55657,7 +55677,6 @@ class VmGroupOther(AbstractModel):
     @property
     def GroupId(self):
         """部署组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupId
@@ -55705,7 +55724,6 @@ class VmGroupOther(AbstractModel):
     @property
     def InstanceCount(self):
         """部署组实例数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._InstanceCount
@@ -55717,7 +55735,6 @@ class VmGroupOther(AbstractModel):
     @property
     def RunInstanceCount(self):
         """部署组运行中实例数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RunInstanceCount
@@ -55729,7 +55746,6 @@ class VmGroupOther(AbstractModel):
     @property
     def OffInstanceCount(self):
         """部署组中停止实例数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._OffInstanceCount
@@ -55741,7 +55757,6 @@ class VmGroupOther(AbstractModel):
     @property
     def GroupStatus(self):
         """部署组状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupStatus
@@ -55753,7 +55768,6 @@ class VmGroupOther(AbstractModel):
     @property
     def IsNotEqualServiceConfig(self):
         """服务配置信息是否匹配
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsNotEqualServiceConfig

@@ -7140,7 +7140,6 @@ class DescribeTopicListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 查询总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _Data: 主题列表
         :type Data: list of TopicItem
@@ -7154,7 +7153,6 @@ class DescribeTopicListResponse(AbstractModel):
     @property
     def TotalCount(self):
         """查询总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -12547,7 +12545,6 @@ class SourceClusterTopicConfig(AbstractModel):
     def __init__(self):
         r"""
         :param _TopicName: 主题名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TopicName: str
         :param _TopicType: 主题类型，
 5.x版本
@@ -12563,35 +12560,26 @@ PartitionedOrder 分区顺序消息
 Transaction 事务消息
 DelayScheduled 延时消息
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type TopicType: str
         :param _QueueNum: 队列数
-注意：此字段可能返回 null，表示取不到有效值。
         :type QueueNum: int
         :param _Remark: 备注信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _Imported: 是否已导入，作为入参时无效
-注意：此字段可能返回 null，表示取不到有效值。
         :type Imported: bool
         :param _Namespace: 命名空间，仅4.x集群有效
-注意：此字段可能返回 null，表示取不到有效值。
         :type Namespace: str
         :param _ImportStatus: 导入状态，
 Unknown 未知，
 AlreadyExists 已存在，
 Success 成功，
 Failure 失败
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImportStatus: str
         :param _NamespaceV4: 4.x的命名空间，出参使用
-注意：此字段可能返回 null，表示取不到有效值。
         :type NamespaceV4: str
         :param _TopicNameV4: 4.x的主题名，出参使用
-注意：此字段可能返回 null，表示取不到有效值。
         :type TopicNameV4: str
         :param _FullNamespaceV4: 4.x的完整命名空间，出参使用
-注意：此字段可能返回 null，表示取不到有效值。
         :type FullNamespaceV4: str
         """
         self._TopicName = None
@@ -12608,7 +12596,6 @@ Failure 失败
     @property
     def TopicName(self):
         """主题名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TopicName
@@ -12633,7 +12620,6 @@ PartitionedOrder 分区顺序消息
 Transaction 事务消息
 DelayScheduled 延时消息
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TopicType
@@ -12645,7 +12631,6 @@ DelayScheduled 延时消息
     @property
     def QueueNum(self):
         """队列数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._QueueNum
@@ -12657,7 +12642,6 @@ DelayScheduled 延时消息
     @property
     def Remark(self):
         """备注信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -12669,7 +12653,6 @@ DelayScheduled 延时消息
     @property
     def Imported(self):
         """是否已导入，作为入参时无效
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Imported
@@ -12681,7 +12664,6 @@ DelayScheduled 延时消息
     @property
     def Namespace(self):
         """命名空间，仅4.x集群有效
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Namespace
@@ -12697,7 +12679,6 @@ Unknown 未知，
 AlreadyExists 已存在，
 Success 成功，
 Failure 失败
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ImportStatus
@@ -12709,7 +12690,6 @@ Failure 失败
     @property
     def NamespaceV4(self):
         """4.x的命名空间，出参使用
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NamespaceV4
@@ -12721,7 +12701,6 @@ Failure 失败
     @property
     def TopicNameV4(self):
         """4.x的主题名，出参使用
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TopicNameV4
@@ -12733,7 +12712,6 @@ Failure 失败
     @property
     def FullNamespaceV4(self):
         """4.x的完整命名空间，出参使用
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FullNamespaceV4
@@ -13228,7 +13206,6 @@ class TopicConsumeStats(AbstractModel):
         :param _SubString: 订阅规则
         :type SubString: str
         :param _LastUpdateTime: 最后消费进度更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type LastUpdateTime: int
         """
         self._Topic = None
@@ -13296,7 +13273,6 @@ class TopicConsumeStats(AbstractModel):
     @property
     def LastUpdateTime(self):
         """最后消费进度更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LastUpdateTime

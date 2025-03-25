@@ -594,7 +594,7 @@ class Backend(AbstractModel):
         :type Type: str
         :param _InstanceId: 后端服务的唯一 ID，如 ins-abcd1234
         :type InstanceId: str
-        :param _Port: 后端服务的监听端口
+        :param _Port: 后端服务的监听端口，如果是全端口段监听器绑定的全监听目标组场景，此端口返回0，表示无效端口，绑定的后端服务的端口随监听器端口。
         :type Port: int
         :param _Weight: 后端服务的转发权重，取值范围：[0, 100]，默认为 10。
         :type Weight: int
@@ -652,7 +652,7 @@ class Backend(AbstractModel):
 
     @property
     def Port(self):
-        """后端服务的监听端口
+        """后端服务的监听端口，如果是全端口段监听器绑定的全监听目标组场景，此端口返回0，表示无效端口，绑定的后端服务的端口随监听器端口。
         :rtype: int
         """
         return self._Port
@@ -5216,7 +5216,7 @@ class CreateTargetGroupRequest(AbstractModel):
         :type TargetGroupName: str
         :param _VpcId: 目标组的vpcid属性，不填则使用默认vpc
         :type VpcId: str
-        :param _Port: 目标组的默认端口， 后续添加服务器时可使用该默认端口。Port和TargetGroupInstances.N中的port二者必填其一。
+        :param _Port: 目标组的默认端口， 后续添加服务器时可使用该默认端口。全监听目标组不支持此参数，非全监听目标组Port和TargetGroupInstances.N中的port二者必填其一。
 
         :type Port: int
         :param _TargetGroupInstances: 目标组绑定的后端服务器，单次最多支持50个。
@@ -5234,6 +5234,8 @@ class CreateTargetGroupRequest(AbstractModel):
 </ul>
 
         :type Weight: int
+        :param _FullListenSwitch: 全监听目标组标识，为true表示是全监听目标组，false表示不是全监听目标组。
+        :type FullListenSwitch: bool
         """
         self._TargetGroupName = None
         self._VpcId = None
@@ -5243,6 +5245,7 @@ class CreateTargetGroupRequest(AbstractModel):
         self._Protocol = None
         self._Tags = None
         self._Weight = None
+        self._FullListenSwitch = None
 
     @property
     def TargetGroupName(self):
@@ -5268,7 +5271,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def Port(self):
-        """目标组的默认端口， 后续添加服务器时可使用该默认端口。Port和TargetGroupInstances.N中的port二者必填其一。
+        """目标组的默认端口， 后续添加服务器时可使用该默认端口。全监听目标组不支持此参数，非全监听目标组Port和TargetGroupInstances.N中的port二者必填其一。
 
         :rtype: int
         """
@@ -5338,6 +5341,17 @@ class CreateTargetGroupRequest(AbstractModel):
     def Weight(self, Weight):
         self._Weight = Weight
 
+    @property
+    def FullListenSwitch(self):
+        """全监听目标组标识，为true表示是全监听目标组，false表示不是全监听目标组。
+        :rtype: bool
+        """
+        return self._FullListenSwitch
+
+    @FullListenSwitch.setter
+    def FullListenSwitch(self, FullListenSwitch):
+        self._FullListenSwitch = FullListenSwitch
+
 
     def _deserialize(self, params):
         self._TargetGroupName = params.get("TargetGroupName")
@@ -5358,6 +5372,7 @@ class CreateTargetGroupRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._Weight = params.get("Weight")
+        self._FullListenSwitch = params.get("FullListenSwitch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16771,7 +16786,7 @@ class ModifyLoadBalancerMixIpTargetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerIds: 负载均衡实例ID数组。
+        :param _LoadBalancerIds: 负载均衡实例ID数组，默认支持20个负载均衡实例ID。
         :type LoadBalancerIds: list of str
         :param _MixIpTarget: 开启/关闭IPv6FullChain负载均衡7层监听器支持混绑IPv4/IPv6目标特性。
         :type MixIpTarget: bool
@@ -16781,7 +16796,7 @@ class ModifyLoadBalancerMixIpTargetRequest(AbstractModel):
 
     @property
     def LoadBalancerIds(self):
-        """负载均衡实例ID数组。
+        """负载均衡实例ID数组，默认支持20个负载均衡实例ID。
         :rtype: list of str
         """
         return self._LoadBalancerIds
@@ -17237,7 +17252,7 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
         :type TargetGroupId: str
         :param _TargetGroupName: 目标组的新名称。
         :type TargetGroupName: str
-        :param _Port: 目标组的新默认端口。
+        :param _Port: 目标组的新默认端口。全监听目标组不支持此参数。
         :type Port: int
         :param _Weight: 后端服务默认权重。
 <ul>
@@ -17275,7 +17290,7 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
 
     @property
     def Port(self):
-        """目标组的新默认端口。
+        """目标组的新默认端口。全监听目标组不支持此参数。
         :rtype: int
         """
         return self._Port
@@ -21187,7 +21202,7 @@ class TargetGroupBackend(AbstractModel):
         :type Type: str
         :param _InstanceId: 后端服务的唯一 ID
         :type InstanceId: str
-        :param _Port: 后端服务的监听端口
+        :param _Port: 后端服务的监听端口，全端口段监听器此字段返回0，代表无效端口，即不支持设置。
         :type Port: int
         :param _Weight: 后端服务的转发权重，取值范围：[0, 100]，默认为 10。
         :type Weight: int
@@ -21257,7 +21272,7 @@ class TargetGroupBackend(AbstractModel):
 
     @property
     def Port(self):
-        """后端服务的监听端口
+        """后端服务的监听端口，全端口段监听器此字段返回0，代表无效端口，即不支持设置。
         :rtype: int
         """
         return self._Port
@@ -21385,7 +21400,7 @@ class TargetGroupInfo(AbstractModel):
         :type VpcId: str
         :param _TargetGroupName: 目标组的名字
         :type TargetGroupName: str
-        :param _Port: 目标组的默认端口
+        :param _Port: 目标组的默认端口，全监听目标组此字段返回0，表示无效端口。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
         :param _CreatedTime: 目标组的创建时间
@@ -21409,6 +21424,8 @@ class TargetGroupInfo(AbstractModel):
         :param _Weight: 默认权重。只有v2类型目标组返回该字段。当返回为NULL时， 表示未设置默认权重。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Weight: int
+        :param _FullListenSwitch: 是否全监听目标组
+        :type FullListenSwitch: bool
         """
         self._TargetGroupId = None
         self._VpcId = None
@@ -21422,6 +21439,7 @@ class TargetGroupInfo(AbstractModel):
         self._RegisteredInstancesCount = None
         self._Tag = None
         self._Weight = None
+        self._FullListenSwitch = None
 
     @property
     def TargetGroupId(self):
@@ -21458,7 +21476,7 @@ class TargetGroupInfo(AbstractModel):
 
     @property
     def Port(self):
-        """目标组的默认端口
+        """目标组的默认端口，全监听目标组此字段返回0，表示无效端口。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -21561,6 +21579,17 @@ class TargetGroupInfo(AbstractModel):
     def Weight(self, Weight):
         self._Weight = Weight
 
+    @property
+    def FullListenSwitch(self):
+        """是否全监听目标组
+        :rtype: bool
+        """
+        return self._FullListenSwitch
+
+    @FullListenSwitch.setter
+    def FullListenSwitch(self, FullListenSwitch):
+        self._FullListenSwitch = FullListenSwitch
+
 
     def _deserialize(self, params):
         self._TargetGroupId = params.get("TargetGroupId")
@@ -21585,6 +21614,7 @@ class TargetGroupInfo(AbstractModel):
                 obj._deserialize(item)
                 self._Tag.append(obj)
         self._Weight = params.get("Weight")
+        self._FullListenSwitch = params.get("FullListenSwitch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21604,13 +21634,13 @@ class TargetGroupInstance(AbstractModel):
         r"""
         :param _BindIP: 目标组实例的内网IP
         :type BindIP: str
-        :param _Port: 目标组实例的端口
+        :param _Port: 目标组实例的端口，全监听目标组不支持传此字段。
         :type Port: int
         :param _Weight: 目标组实例的权重
 
 v2目标组需要配置权重，调用CreateTargetGroup接口创建目标组时该参数与创建接口中的Weight参数必填其一。
         :type Weight: int
-        :param _NewPort: 目标组实例的新端口
+        :param _NewPort: 目标组实例的新端口，全监听目标组不支持传此字段。
         :type NewPort: int
         """
         self._BindIP = None
@@ -21631,7 +21661,7 @@ v2目标组需要配置权重，调用CreateTargetGroup接口创建目标组时�
 
     @property
     def Port(self):
-        """目标组实例的端口
+        """目标组实例的端口，全监听目标组不支持传此字段。
         :rtype: int
         """
         return self._Port
@@ -21655,7 +21685,7 @@ v2目标组需要配置权重，调用CreateTargetGroup接口创建目标组时�
 
     @property
     def NewPort(self):
-        """目标组实例的新端口
+        """目标组实例的新端口，全监听目标组不支持传此字段。
         :rtype: int
         """
         return self._NewPort

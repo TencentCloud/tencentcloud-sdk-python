@@ -13186,13 +13186,10 @@ class CLSTopicInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _TopicId: 日志主题 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TopicId: str
         :param _TopicName: 日志主题名。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TopicName: str
         :param _LogsetId: 日志集 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogsetId: str
         """
         self._TopicId = None
@@ -13202,7 +13199,6 @@ class CLSTopicInfo(AbstractModel):
     @property
     def TopicId(self):
         """日志主题 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TopicId
@@ -13214,7 +13210,6 @@ class CLSTopicInfo(AbstractModel):
     @property
     def TopicName(self):
         """日志主题名。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TopicName
@@ -13226,7 +13221,6 @@ class CLSTopicInfo(AbstractModel):
     @property
     def LogsetId(self):
         """日志集 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LogsetId
@@ -59150,10 +59144,8 @@ class QualityInspectTask(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
         :param _Input: 音画质检测任务输入。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Input: :class:`tencentcloud.vod.v20180717.models.QualityInspectTaskInput`
         :param _Output: 音画质检测任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.QualityInspectTaskOutput`
         :param _SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
         :type SessionId: str
@@ -59231,7 +59223,6 @@ class QualityInspectTask(AbstractModel):
     @property
     def Input(self):
         """音画质检测任务输入。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.QualityInspectTaskInput`
         """
         return self._Input
@@ -59243,7 +59234,6 @@ class QualityInspectTask(AbstractModel):
     @property
     def Output(self):
         """音画质检测任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.QualityInspectTaskOutput`
         """
         return self._Output
@@ -59466,34 +59456,24 @@ class QualityInspectTemplateItem(AbstractModel):
         :param _ScreenshotInterval: 截帧间隔，单位为秒。
         :type ScreenshotInterval: float
         :param _JitterConfigure: 视频画面抖动重影检测的控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type JitterConfigure: :class:`tencentcloud.vod.v20180717.models.JitterConfigureInfo`
         :param _BlurConfigure: 视频画面模糊检测的控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type BlurConfigure: :class:`tencentcloud.vod.v20180717.models.BlurConfigureInfo`
         :param _AbnormalLightingConfigure: 视频画面低光、过曝检测的控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AbnormalLightingConfigure: :class:`tencentcloud.vod.v20180717.models.AbnormalLightingConfigureInfo`
         :param _CrashScreenConfigure: 视频画面花屏检测的控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CrashScreenConfigure: :class:`tencentcloud.vod.v20180717.models.CrashScreenConfigureInfo`
         :param _BlackWhiteEdgeConfigure: 视频画面黑边、白边、黑屏、白屏检测的控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type BlackWhiteEdgeConfigure: :class:`tencentcloud.vod.v20180717.models.BlackWhiteEdgeConfigureInfo`
         :param _NoiseConfigure: 视频画面噪点检测的控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type NoiseConfigure: :class:`tencentcloud.vod.v20180717.models.NoiseConfigureInfo`
         :param _MosaicConfigure: 视频画面马赛克检测的控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MosaicConfigure: :class:`tencentcloud.vod.v20180717.models.MosaicConfigureInfo`
         :param _QRCodeConfigure: 视频画面二维码检测的控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type QRCodeConfigure: :class:`tencentcloud.vod.v20180717.models.QRCodeConfigureInfo`
         :param _QualityEvaluationConfigure: 视频画面质量评价的控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type QualityEvaluationConfigure: :class:`tencentcloud.vod.v20180717.models.QualityEvaluationConfigureInfo`
         :param _VoiceConfigure: 音频（静音、低音、爆音）检测的控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type VoiceConfigure: :class:`tencentcloud.vod.v20180717.models.VoiceConfigureInfo`
         :param _CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
         :type CreateTime: str
@@ -59578,7 +59558,6 @@ class QualityInspectTemplateItem(AbstractModel):
     @property
     def JitterConfigure(self):
         """视频画面抖动重影检测的控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.JitterConfigureInfo`
         """
         return self._JitterConfigure
@@ -59590,7 +59569,6 @@ class QualityInspectTemplateItem(AbstractModel):
     @property
     def BlurConfigure(self):
         """视频画面模糊检测的控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.BlurConfigureInfo`
         """
         return self._BlurConfigure
@@ -59602,7 +59580,6 @@ class QualityInspectTemplateItem(AbstractModel):
     @property
     def AbnormalLightingConfigure(self):
         """视频画面低光、过曝检测的控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AbnormalLightingConfigureInfo`
         """
         return self._AbnormalLightingConfigure
@@ -59614,7 +59591,6 @@ class QualityInspectTemplateItem(AbstractModel):
     @property
     def CrashScreenConfigure(self):
         """视频画面花屏检测的控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.CrashScreenConfigureInfo`
         """
         return self._CrashScreenConfigure
@@ -59626,7 +59602,6 @@ class QualityInspectTemplateItem(AbstractModel):
     @property
     def BlackWhiteEdgeConfigure(self):
         """视频画面黑边、白边、黑屏、白屏检测的控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.BlackWhiteEdgeConfigureInfo`
         """
         return self._BlackWhiteEdgeConfigure
@@ -59638,7 +59613,6 @@ class QualityInspectTemplateItem(AbstractModel):
     @property
     def NoiseConfigure(self):
         """视频画面噪点检测的控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.NoiseConfigureInfo`
         """
         return self._NoiseConfigure
@@ -59650,7 +59624,6 @@ class QualityInspectTemplateItem(AbstractModel):
     @property
     def MosaicConfigure(self):
         """视频画面马赛克检测的控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.MosaicConfigureInfo`
         """
         return self._MosaicConfigure
@@ -59662,7 +59635,6 @@ class QualityInspectTemplateItem(AbstractModel):
     @property
     def QRCodeConfigure(self):
         """视频画面二维码检测的控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.QRCodeConfigureInfo`
         """
         return self._QRCodeConfigure
@@ -59674,7 +59646,6 @@ class QualityInspectTemplateItem(AbstractModel):
     @property
     def QualityEvaluationConfigure(self):
         """视频画面质量评价的控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.QualityEvaluationConfigureInfo`
         """
         return self._QualityEvaluationConfigure
@@ -59686,7 +59657,6 @@ class QualityInspectTemplateItem(AbstractModel):
     @property
     def VoiceConfigure(self):
         """音频（静音、低音、爆音）检测的控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.VoiceConfigureInfo`
         """
         return self._VoiceConfigure
@@ -61024,13 +60994,10 @@ class RebuildMediaTask(AbstractModel):
         :param _Progress: 音画质重生任务进度，取值范围 [0-100] 。
         :type Progress: int
         :param _Input: 音画质重生任务的输入。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Input: :class:`tencentcloud.vod.v20180717.models.RebuildMediaTaskInput`
         :param _Output: 音画质重生任务的输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.RebuildMediaTaskOutput`
         :param _MetaData: 音画质重生输出视频的元信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
         :param _SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
         :type SessionId: str
@@ -61123,7 +61090,6 @@ class RebuildMediaTask(AbstractModel):
     @property
     def Input(self):
         """音画质重生任务的输入。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.RebuildMediaTaskInput`
         """
         return self._Input
@@ -61135,7 +61101,6 @@ class RebuildMediaTask(AbstractModel):
     @property
     def Output(self):
         """音画质重生任务的输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.RebuildMediaTaskOutput`
         """
         return self._Output
@@ -61147,7 +61112,6 @@ class RebuildMediaTask(AbstractModel):
     @property
     def MetaData(self):
         """音画质重生输出视频的元信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
         """
         return self._MetaData
@@ -61220,7 +61184,7 @@ class RebuildMediaTaskInput(AbstractModel):
         :type StartTimeOffset: float
         :param _EndTimeOffset: 结束偏移时间，单位：秒，不填表示截取到视频末尾。
         :type EndTimeOffset: float
-        :param _Definition: 音画质重生模版号。
+        :param _Definition: 音画质重生模板号。
         :type Definition: int
         :param _RepairInfo: 画质修复控制参数。
         :type RepairInfo: :class:`tencentcloud.vod.v20180717.models.RepairInfo`
@@ -61302,7 +61266,7 @@ class RebuildMediaTaskInput(AbstractModel):
 
     @property
     def Definition(self):
-        """音画质重生模版号。
+        """音画质重生模板号。
         :rtype: int
         """
         return self._Definition
@@ -63115,7 +63079,6 @@ class RemoveWatermarkTask(AbstractModel):
         :param _Message: 错误信息。
         :type Message: str
         :param _Input: 智能去除水印任务的输入。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Input: :class:`tencentcloud.vod.v20180717.models.RemoveWaterMarkTaskInput`
         :param _Output: 智能去除水印任务的输出。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -63198,7 +63161,6 @@ class RemoveWatermarkTask(AbstractModel):
     @property
     def Input(self):
         """智能去除水印任务的输入。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.RemoveWaterMarkTaskInput`
         """
         return self._Input
@@ -69821,7 +69783,7 @@ class SvgWatermarkInputForUpdate(AbstractModel):
 <li>当字符串以 H% 结尾，表示水印 Height 为视频高度的百分比大小，如 10H% 表示 Height 为视频高度的 10%；</li>
 <li>当字符串以 S% 结尾，表示水印 Height 为视频短边的百分比大小，如 10S% 表示 Height 为视频短边的 10%；</li>
 <li>当字符串以 L% 结尾，表示水印 Height 为视频长边的百分比大小，如 10L% 表示 Height 为视频长边的 10%；</li>
-<li>当字符串以 % 结尾时，含义同 H%。
+<li>当字符串以 % 结尾时，含义同 H%。</li>
 默认值为 0px。
         :type Height: str
         :param _CycleConfig: 水印周期配置，用于配置水印周期性地显示与隐藏。
@@ -69865,7 +69827,7 @@ class SvgWatermarkInputForUpdate(AbstractModel):
 <li>当字符串以 H% 结尾，表示水印 Height 为视频高度的百分比大小，如 10H% 表示 Height 为视频高度的 10%；</li>
 <li>当字符串以 S% 结尾，表示水印 Height 为视频短边的百分比大小，如 10S% 表示 Height 为视频短边的 10%；</li>
 <li>当字符串以 L% 结尾，表示水印 Height 为视频长边的百分比大小，如 10L% 表示 Height 为视频长边的 10%；</li>
-<li>当字符串以 % 结尾时，含义同 H%。
+<li>当字符串以 % 结尾时，含义同 H%。</li>
 默认值为 0px。
         :rtype: str
         """
@@ -69877,6 +69839,8 @@ class SvgWatermarkInputForUpdate(AbstractModel):
 
     @property
     def CycleConfig(self):
+        warnings.warn("parameter `CycleConfig` is deprecated", DeprecationWarning) 
+
         """水印周期配置，用于配置水印周期性地显示与隐藏。
 主要使用场景是：为了视频防遮标，在视频多个地方设置水印，这些水印按固定顺序周期性地显示与隐藏。
 例如，设置 A、B、C、D 4 个水印分别位于视频的左上角、右上角、右下角、左下角处，视频开始时，{ A 显示 5 秒 -> B 显示 5 秒 -> C 显示 5 秒 -> D 显示 5 秒 } -> A 显示 5 秒 -> B 显示 5 秒 -> ...，任何时刻只显示一处水印。
@@ -69890,6 +69854,8 @@ class SvgWatermarkInputForUpdate(AbstractModel):
 
     @CycleConfig.setter
     def CycleConfig(self, CycleConfig):
+        warnings.warn("parameter `CycleConfig` is deprecated", DeprecationWarning) 
+
         self._CycleConfig = CycleConfig
 
 
@@ -71977,10 +71943,8 @@ class TranscodeTemplate(AbstractModel):
 <li>1：去除。</li>
         :type RemoveAudio: int
         :param _VideoTemplate: 视频流配置参数，仅当 RemoveVideo 为 0，该字段有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :type VideoTemplate: :class:`tencentcloud.vod.v20180717.models.VideoTemplateInfo`
         :param _AudioTemplate: 音频流配置参数，仅当 RemoveAudio 为 0，该字段有效 。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AudioTemplate: :class:`tencentcloud.vod.v20180717.models.AudioTemplateInfo`
         :param _TEHDConfig: 极速高清转码参数。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -72097,7 +72061,6 @@ class TranscodeTemplate(AbstractModel):
     @property
     def VideoTemplate(self):
         """视频流配置参数，仅当 RemoveVideo 为 0，该字段有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.VideoTemplateInfo`
         """
         return self._VideoTemplate
@@ -72109,7 +72072,6 @@ class TranscodeTemplate(AbstractModel):
     @property
     def AudioTemplate(self):
         """音频流配置参数，仅当 RemoveAudio 为 0，该字段有效 。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AudioTemplateInfo`
         """
         return self._AudioTemplate

@@ -323,7 +323,7 @@ class LcicClient(AbstractClient):
 
 
     def CreateRoom(self, request):
-        """创建房间
+        """创建课堂
 
         :param request: Request instance for CreateRoom.
         :type request: :class:`tencentcloud.lcic.v20220817.models.CreateRoomRequest`

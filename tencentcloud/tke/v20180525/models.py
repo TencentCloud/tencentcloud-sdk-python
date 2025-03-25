@@ -31764,10 +31764,8 @@ class KubeJarvisStateCatalogue(AbstractModel):
         :param _CatalogueLevel: 目录级别，支持参数：
 first：一级目录
 second：二级目录
-注意：此字段可能返回 null，表示取不到有效值。
         :type CatalogueLevel: str
         :param _CatalogueName: 目录名
-注意：此字段可能返回 null，表示取不到有效值。
         :type CatalogueName: str
         """
         self._CatalogueLevel = None
@@ -31778,7 +31776,6 @@ second：二级目录
         """目录级别，支持参数：
 first：一级目录
 second：二级目录
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CatalogueLevel
@@ -31790,7 +31787,6 @@ second：二级目录
     @property
     def CatalogueName(self):
         """目录名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CatalogueName
@@ -31821,28 +31817,20 @@ class KubeJarvisStateDiagnostic(AbstractModel):
     def __init__(self):
         r"""
         :param _StartTime: 诊断开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
         :param _EndTime: 诊断结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         :param _Catalogues: 诊断目录
-注意：此字段可能返回 null，表示取不到有效值。
         :type Catalogues: list of KubeJarvisStateCatalogue
         :param _Type: 诊断类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Name: 诊断名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Desc: 诊断描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Desc: str
         :param _Results: 诊断结果列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Results: list of KubeJarvisStateResultsItem
         :param _Statistics: 诊断结果统计
-注意：此字段可能返回 null，表示取不到有效值。
         :type Statistics: list of KubeJarvisStateStatistic
         """
         self._StartTime = None
@@ -31857,7 +31845,6 @@ class KubeJarvisStateDiagnostic(AbstractModel):
     @property
     def StartTime(self):
         """诊断开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StartTime
@@ -31869,7 +31856,6 @@ class KubeJarvisStateDiagnostic(AbstractModel):
     @property
     def EndTime(self):
         """诊断结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndTime
@@ -31881,7 +31867,6 @@ class KubeJarvisStateDiagnostic(AbstractModel):
     @property
     def Catalogues(self):
         """诊断目录
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KubeJarvisStateCatalogue
         """
         return self._Catalogues
@@ -31893,7 +31878,6 @@ class KubeJarvisStateDiagnostic(AbstractModel):
     @property
     def Type(self):
         """诊断类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -31905,7 +31889,6 @@ class KubeJarvisStateDiagnostic(AbstractModel):
     @property
     def Name(self):
         """诊断名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -31917,7 +31900,6 @@ class KubeJarvisStateDiagnostic(AbstractModel):
     @property
     def Desc(self):
         """诊断描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Desc
@@ -31929,7 +31911,6 @@ class KubeJarvisStateDiagnostic(AbstractModel):
     @property
     def Results(self):
         """诊断结果列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KubeJarvisStateResultsItem
         """
         return self._Results
@@ -31941,7 +31922,6 @@ class KubeJarvisStateDiagnostic(AbstractModel):
     @property
     def Statistics(self):
         """诊断结果统计
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KubeJarvisStateStatistic
         """
         return self._Statistics
@@ -31993,10 +31973,8 @@ class KubeJarvisStateDiagnosticOverview(AbstractModel):
     def __init__(self):
         r"""
         :param _Catalogues: 诊断目录
-注意：此字段可能返回 null，表示取不到有效值。
         :type Catalogues: list of KubeJarvisStateCatalogue
         :param _Statistics: 诊断结果统计
-注意：此字段可能返回 null，表示取不到有效值。
         :type Statistics: list of KubeJarvisStateStatistic
         """
         self._Catalogues = None
@@ -32005,7 +31983,6 @@ class KubeJarvisStateDiagnosticOverview(AbstractModel):
     @property
     def Catalogues(self):
         """诊断目录
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KubeJarvisStateCatalogue
         """
         return self._Catalogues
@@ -32017,7 +31994,6 @@ class KubeJarvisStateDiagnosticOverview(AbstractModel):
     @property
     def Statistics(self):
         """诊断结果统计
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KubeJarvisStateStatistic
         """
         return self._Statistics
@@ -32058,13 +32034,10 @@ class KubeJarvisStateInspectionOverview(AbstractModel):
     def __init__(self):
         r"""
         :param _ClusterId: 集群ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterId: str
         :param _Statistics: 诊断结果统计
-注意：此字段可能返回 null，表示取不到有效值。
         :type Statistics: list of KubeJarvisStateStatistic
         :param _Diagnostics: 诊断结果详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type Diagnostics: list of KubeJarvisStateDiagnosticOverview
         """
         self._ClusterId = None
@@ -32074,7 +32047,6 @@ class KubeJarvisStateInspectionOverview(AbstractModel):
     @property
     def ClusterId(self):
         """集群ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterId
@@ -32086,7 +32058,6 @@ class KubeJarvisStateInspectionOverview(AbstractModel):
     @property
     def Statistics(self):
         """诊断结果统计
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KubeJarvisStateStatistic
         """
         return self._Statistics
@@ -32098,7 +32069,6 @@ class KubeJarvisStateInspectionOverview(AbstractModel):
     @property
     def Diagnostics(self):
         """诊断结果详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KubeJarvisStateDiagnosticOverview
         """
         return self._Diagnostics
@@ -32140,22 +32110,16 @@ class KubeJarvisStateInspectionResult(AbstractModel):
     def __init__(self):
         r"""
         :param _ClusterId: 集群ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterId: str
         :param _StartTime: 诊断开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
         :param _EndTime: 诊断结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         :param _Statistics: 诊断结果统计
-注意：此字段可能返回 null，表示取不到有效值。
         :type Statistics: list of KubeJarvisStateStatistic
         :param _Diagnostics: 诊断结果详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type Diagnostics: list of KubeJarvisStateDiagnostic
         :param _Error: 查询巡检报告相关报错
-注意：此字段可能返回 null，表示取不到有效值。
         :type Error: str
         """
         self._ClusterId = None
@@ -32168,7 +32132,6 @@ class KubeJarvisStateInspectionResult(AbstractModel):
     @property
     def ClusterId(self):
         """集群ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterId
@@ -32180,7 +32143,6 @@ class KubeJarvisStateInspectionResult(AbstractModel):
     @property
     def StartTime(self):
         """诊断开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StartTime
@@ -32192,7 +32154,6 @@ class KubeJarvisStateInspectionResult(AbstractModel):
     @property
     def EndTime(self):
         """诊断结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndTime
@@ -32204,7 +32165,6 @@ class KubeJarvisStateInspectionResult(AbstractModel):
     @property
     def Statistics(self):
         """诊断结果统计
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KubeJarvisStateStatistic
         """
         return self._Statistics
@@ -32216,7 +32176,6 @@ class KubeJarvisStateInspectionResult(AbstractModel):
     @property
     def Diagnostics(self):
         """诊断结果详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KubeJarvisStateDiagnostic
         """
         return self._Diagnostics
@@ -32228,7 +32187,6 @@ class KubeJarvisStateInspectionResult(AbstractModel):
     @property
     def Error(self):
         """查询巡检报告相关报错
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Error
@@ -32273,10 +32231,8 @@ class KubeJarvisStateInspectionResultsItem(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 巡检结果名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Statistics: 诊断结果统计
-注意：此字段可能返回 null，表示取不到有效值。
         :type Statistics: list of KubeJarvisStateStatistic
         """
         self._Name = None
@@ -32285,7 +32241,6 @@ class KubeJarvisStateInspectionResultsItem(AbstractModel):
     @property
     def Name(self):
         """巡检结果名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -32297,7 +32252,6 @@ class KubeJarvisStateInspectionResultsItem(AbstractModel):
     @property
     def Statistics(self):
         """诊断结果统计
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KubeJarvisStateStatistic
         """
         return self._Statistics
@@ -32333,10 +32287,8 @@ class KubeJarvisStateResultObjInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _PropertyName: 对象属性名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type PropertyName: str
         :param _PropertyValue: 对象属性值
-注意：此字段可能返回 null，表示取不到有效值。
         :type PropertyValue: str
         """
         self._PropertyName = None
@@ -32345,7 +32297,6 @@ class KubeJarvisStateResultObjInfo(AbstractModel):
     @property
     def PropertyName(self):
         """对象属性名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PropertyName
@@ -32357,7 +32308,6 @@ class KubeJarvisStateResultObjInfo(AbstractModel):
     @property
     def PropertyValue(self):
         """对象属性值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PropertyValue
@@ -32388,28 +32338,22 @@ class KubeJarvisStateResultsItem(AbstractModel):
     def __init__(self):
         r"""
         :param _Level: 诊断结果级别
-注意：此字段可能返回 null，表示取不到有效值。
         :type Level: str
         :param _ObjName: 诊断对象名
-注意：此字段可能返回 null，表示取不到有效值。
         :type ObjName: str
         :param _ObjInfo: 诊断对象信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ObjInfo: list of KubeJarvisStateResultObjInfo
         :param _Title: 诊断项标题
-注意：此字段可能返回 null，表示取不到有效值。
         :type Title: str
         :param _Desc: 诊断项描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Desc: str
         :param _Proposal: 诊断建议
 注意：此字段可能返回 null，表示取不到有效值。
         :type Proposal: str
         :param _ProposalDocUrl: 诊断建议文档链接
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProposalDocUrl: str
         :param _ProposalDocName: 诊断建议文档名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProposalDocName: str
         """
         self._Level = None
@@ -32424,7 +32368,6 @@ class KubeJarvisStateResultsItem(AbstractModel):
     @property
     def Level(self):
         """诊断结果级别
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Level
@@ -32436,7 +32379,6 @@ class KubeJarvisStateResultsItem(AbstractModel):
     @property
     def ObjName(self):
         """诊断对象名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ObjName
@@ -32460,7 +32402,6 @@ class KubeJarvisStateResultsItem(AbstractModel):
     @property
     def Title(self):
         """诊断项标题
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Title
@@ -32472,7 +32413,6 @@ class KubeJarvisStateResultsItem(AbstractModel):
     @property
     def Desc(self):
         """诊断项描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Desc
@@ -32496,7 +32436,6 @@ class KubeJarvisStateResultsItem(AbstractModel):
     @property
     def ProposalDocUrl(self):
         """诊断建议文档链接
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProposalDocUrl
@@ -32508,7 +32447,6 @@ class KubeJarvisStateResultsItem(AbstractModel):
     @property
     def ProposalDocName(self):
         """诊断建议文档名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProposalDocName
@@ -32550,10 +32488,8 @@ class KubeJarvisStateStatistic(AbstractModel):
     def __init__(self):
         r"""
         :param _HealthyLevel: 诊断结果的健康水平
-注意：此字段可能返回 null，表示取不到有效值。
         :type HealthyLevel: str
         :param _Count: 诊断结果的统计
-注意：此字段可能返回 null，表示取不到有效值。
         :type Count: int
         """
         self._HealthyLevel = None
@@ -32562,7 +32498,6 @@ class KubeJarvisStateStatistic(AbstractModel):
     @property
     def HealthyLevel(self):
         """诊断结果的健康水平
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HealthyLevel
@@ -32574,7 +32509,6 @@ class KubeJarvisStateStatistic(AbstractModel):
     @property
     def Count(self):
         """诊断结果的统计
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Count

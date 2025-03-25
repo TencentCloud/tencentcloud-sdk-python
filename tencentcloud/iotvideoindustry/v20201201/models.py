@@ -12189,10 +12189,8 @@ class LiveRecordPlanItem(AbstractModel):
     def __init__(self):
         r"""
         :param _PlanId: 计划ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type PlanId: str
         :param _PlanName: 计划名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type PlanName: str
         """
         self._PlanId = None
@@ -12201,7 +12199,6 @@ class LiveRecordPlanItem(AbstractModel):
     @property
     def PlanId(self):
         """计划ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PlanId
@@ -12213,7 +12210,6 @@ class LiveRecordPlanItem(AbstractModel):
     @property
     def PlanName(self):
         """计划名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PlanName
@@ -14127,13 +14123,10 @@ class RecordStatisticValue(AbstractModel):
     def __init__(self):
         r"""
         :param _ExpectTimeLen: 期望执行时间 秒
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExpectTimeLen: int
         :param _RecordTimeLen: 实际执行时间 秒
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecordTimeLen: int
         :param _FileSize: 存储大小 G
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileSize: float
         """
         self._ExpectTimeLen = None
@@ -14143,7 +14136,6 @@ class RecordStatisticValue(AbstractModel):
     @property
     def ExpectTimeLen(self):
         """期望执行时间 秒
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ExpectTimeLen
@@ -14155,7 +14147,6 @@ class RecordStatisticValue(AbstractModel):
     @property
     def RecordTimeLen(self):
         """实际执行时间 秒
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RecordTimeLen
@@ -14167,7 +14158,6 @@ class RecordStatisticValue(AbstractModel):
     @property
     def FileSize(self):
         """存储大小 G
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._FileSize
@@ -14671,10 +14661,8 @@ class StatisticItem(AbstractModel):
     def __init__(self):
         r"""
         :param _Date: 日期。格式【YYYY-MM-DD】
-注意：此字段可能返回 null，表示取不到有效值。
         :type Date: str
         :param _Sum: 统计数额
-注意：此字段可能返回 null，表示取不到有效值。
         :type Sum: float
         """
         self._Date = None
@@ -14683,7 +14671,6 @@ class StatisticItem(AbstractModel):
     @property
     def Date(self):
         """日期。格式【YYYY-MM-DD】
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Date
@@ -14695,7 +14682,6 @@ class StatisticItem(AbstractModel):
     @property
     def Sum(self):
         """统计数额
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Sum
@@ -14726,19 +14712,14 @@ class StreamAddress(AbstractModel):
     def __init__(self):
         r"""
         :param _StreamId: 流ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type StreamId: str
         :param _RtspAddr: rtsp流地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type RtspAddr: str
         :param _RtmpAddr: rtmp流地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type RtmpAddr: str
         :param _HlsAddr: hls流地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type HlsAddr: str
         :param _FlvAddr: flv流地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlvAddr: str
         """
         self._StreamId = None
@@ -14750,7 +14731,6 @@ class StreamAddress(AbstractModel):
     @property
     def StreamId(self):
         """流ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StreamId
@@ -14762,7 +14742,6 @@ class StreamAddress(AbstractModel):
     @property
     def RtspAddr(self):
         """rtsp流地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RtspAddr
@@ -14774,7 +14753,6 @@ class StreamAddress(AbstractModel):
     @property
     def RtmpAddr(self):
         """rtmp流地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RtmpAddr
@@ -14786,7 +14764,6 @@ class StreamAddress(AbstractModel):
     @property
     def HlsAddr(self):
         """hls流地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HlsAddr
@@ -14798,7 +14775,6 @@ class StreamAddress(AbstractModel):
     @property
     def FlvAddr(self):
         """flv流地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FlvAddr
@@ -14933,13 +14909,10 @@ class TimeTemplateSpec(AbstractModel):
     def __init__(self):
         r"""
         :param _DayofWeek: 一周中的周几
-注意：此字段可能返回 null，表示取不到有效值。
         :type DayofWeek: int
         :param _BeginTime: 时间片段的开始时分。格式【HH:MM】
-注意：此字段可能返回 null，表示取不到有效值。
         :type BeginTime: str
         :param _EndTime: 时间片段的结束时分。格式【HH:MM】
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         """
         self._DayofWeek = None
@@ -14949,7 +14922,6 @@ class TimeTemplateSpec(AbstractModel):
     @property
     def DayofWeek(self):
         """一周中的周几
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DayofWeek
@@ -14961,7 +14933,6 @@ class TimeTemplateSpec(AbstractModel):
     @property
     def BeginTime(self):
         """时间片段的开始时分。格式【HH:MM】
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BeginTime
@@ -14973,7 +14944,6 @@ class TimeTemplateSpec(AbstractModel):
     @property
     def EndTime(self):
         """时间片段的结束时分。格式【HH:MM】
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndTime

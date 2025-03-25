@@ -77549,6 +77549,9 @@ TABLE, VIEW, MANAGED_TABLE(Hive管理表), EXTERNAL_TABLE(Hive外部表), VIRTUA
         :param _IfSupportCreateAndDDL: 是否支持select or ddl
 注意：此字段可能返回 null，表示取不到有效值。
         :type IfSupportCreateAndDDL: :class:`tencentcloud.wedata.v20210820.models.CreateAndDDLSupport`
+        :param _ColumnCount: 字段数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ColumnCount: int
         """
         self._TableId = None
         self._TableName = None
@@ -77614,6 +77617,7 @@ TABLE, VIEW, MANAGED_TABLE(Hive管理表), EXTERNAL_TABLE(Hive外部表), VIRTUA
         self._OwnerByEngine = None
         self._ErrorTips = None
         self._IfSupportCreateAndDDL = None
+        self._ColumnCount = None
 
     @property
     def TableId(self):
@@ -78384,6 +78388,18 @@ TABLE, VIEW, MANAGED_TABLE(Hive管理表), EXTERNAL_TABLE(Hive外部表), VIRTUA
     def IfSupportCreateAndDDL(self, IfSupportCreateAndDDL):
         self._IfSupportCreateAndDDL = IfSupportCreateAndDDL
 
+    @property
+    def ColumnCount(self):
+        """字段数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ColumnCount
+
+    @ColumnCount.setter
+    def ColumnCount(self, ColumnCount):
+        self._ColumnCount = ColumnCount
+
 
     def _deserialize(self, params):
         self._TableId = params.get("TableId")
@@ -78471,6 +78487,7 @@ TABLE, VIEW, MANAGED_TABLE(Hive管理表), EXTERNAL_TABLE(Hive外部表), VIRTUA
         if params.get("IfSupportCreateAndDDL") is not None:
             self._IfSupportCreateAndDDL = CreateAndDDLSupport()
             self._IfSupportCreateAndDDL._deserialize(params.get("IfSupportCreateAndDDL"))
+        self._ColumnCount = params.get("ColumnCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

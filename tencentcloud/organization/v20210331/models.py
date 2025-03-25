@@ -6563,6 +6563,10 @@ class DescribeOrganizationMembersRequest(AbstractModel):
         :type Product: str
         :param _Tags: 成员标签搜索列表，最大10个
         :type Tags: list of Tag
+        :param _NodeId: 组织单元ID
+        :type NodeId: int
+        :param _NodeName: 组织单元名称
+        :type NodeName: str
         """
         self._Offset = None
         self._Limit = None
@@ -6571,6 +6575,8 @@ class DescribeOrganizationMembersRequest(AbstractModel):
         self._AuthName = None
         self._Product = None
         self._Tags = None
+        self._NodeId = None
+        self._NodeName = None
 
     @property
     def Offset(self):
@@ -6649,6 +6655,28 @@ class DescribeOrganizationMembersRequest(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def NodeId(self):
+        """组织单元ID
+        :rtype: int
+        """
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def NodeName(self):
+        """组织单元名称
+        :rtype: str
+        """
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
 
     def _deserialize(self, params):
         self._Offset = params.get("Offset")
@@ -6663,6 +6691,8 @@ class DescribeOrganizationMembersRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._NodeId = params.get("NodeId")
+        self._NodeName = params.get("NodeName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

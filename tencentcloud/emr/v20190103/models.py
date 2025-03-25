@@ -3423,7 +3423,6 @@ class ClusterRelationMeta(AbstractModel):
     def __init__(self):
         r"""
         :param _ClusterType: 集群类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterType: str
         :param _ClusterIdList: 集群id列表
 注意：此字段可能返回 null，表示取不到有效值。
@@ -3435,7 +3434,6 @@ class ClusterRelationMeta(AbstractModel):
     @property
     def ClusterType(self):
         """集群类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterType
@@ -5604,7 +5602,6 @@ class CreateInstanceResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceId: 实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5615,7 +5612,6 @@ class CreateInstanceResponse(AbstractModel):
     @property
     def InstanceId(self):
         """实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -11700,13 +11696,11 @@ class DescribeServiceNodeInfosResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCnt: 总数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCnt: int
         :param _ServiceNodeList: 进程信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceNodeList: list of ServiceNodeDetailInfo
         :param _AliasInfo: 集群所有节点的别名序列化
-注意：此字段可能返回 null，表示取不到有效值。
         :type AliasInfo: str
         :param _SupportNodeFlagFilterList: 支持的FlagNode列表
 注意：此字段可能返回 null，表示取不到有效值。
@@ -11723,7 +11717,6 @@ class DescribeServiceNodeInfosResponse(AbstractModel):
     @property
     def TotalCnt(self):
         """总数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCnt
@@ -11747,7 +11740,6 @@ class DescribeServiceNodeInfosResponse(AbstractModel):
     @property
     def AliasInfo(self):
         """集群所有节点的别名序列化
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AliasInfo
@@ -12867,7 +12859,6 @@ class DescribeYarnScheduleHistoryResponse(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tasks: list of SchedulerTaskInfo
         :param _Total: 任务详情总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _SchedulerNameList: 调度类型筛选列表
 注意：此字段可能返回 null，表示取不到有效值。
@@ -12899,7 +12890,6 @@ class DescribeYarnScheduleHistoryResponse(AbstractModel):
     @property
     def Total(self):
         """任务详情总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -13758,7 +13748,6 @@ class EmrListInstance(AbstractModel):
         :param _ClusterId: 集群ID
         :type ClusterId: str
         :param _StatusDesc: 常见状态描述：集群生产中,集群运行中,集群创建中,集群已关闭,集群已删除
-注意：此字段可能返回 null，表示取不到有效值。
         :type StatusDesc: str
         :param _ClusterName: 集群名字
         :type ClusterName: str
@@ -13779,65 +13768,49 @@ class EmrListInstance(AbstractModel):
         :param _Id: emr ID
         :type Id: int
         :param _ProductId: 产品ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductId: int
         :param _ProjectId: 项目ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: int
         :param _RegionId: 区域
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionId: int
         :param _SubnetId: 子网ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetId: int
         :param _VpcId: 网络ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: int
         :param _Zone: 地区
-注意：此字段可能返回 null，表示取不到有效值。
         :type Zone: str
         :param _Status: 状态码, 取值为-2(集群已删除), -1(集群已关闭), 0(集群生产中), 2(集群运行中), 3(集群创建中)
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _Tags: 实例标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
         :param _AlarmInfo: 告警信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type AlarmInfo: str
         :param _IsWoodpeckerCluster: 是否是woodpecker集群
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsWoodpeckerCluster: int
         :param _VpcName: Vpc中文
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcName: str
         :param _SubnetName: 子网中文
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetName: str
         :param _UniqVpcId: 字符串VpcId
-注意：此字段可能返回 null，表示取不到有效值。
         :type UniqVpcId: str
         :param _UniqSubnetId: 字符串子网
-注意：此字段可能返回 null，表示取不到有效值。
         :type UniqSubnetId: str
         :param _ClusterClass: 集群类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterClass: str
         :param _IsMultiZoneCluster: 是否为跨AZ集群
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsMultiZoneCluster: bool
         :param _IsHandsCluster: 是否手戳集群
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsHandsCluster: bool
         :param _OutSideSoftInfo: 体外客户端组件信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type OutSideSoftInfo: list of SoftDependInfo
         :param _IsSupportOutsideCluster: 当前集群的应用场景是否支持体外客户端
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsSupportOutsideCluster: bool
         :param _IsDedicatedCluster: 是否专有集群场景集群
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsDedicatedCluster: bool
+        :param _IsSupportClone: 集群支持克隆
+        :type IsSupportClone: bool
         """
         self._ClusterId = None
         self._StatusDesc = None
@@ -13870,6 +13843,7 @@ class EmrListInstance(AbstractModel):
         self._OutSideSoftInfo = None
         self._IsSupportOutsideCluster = None
         self._IsDedicatedCluster = None
+        self._IsSupportClone = None
 
     @property
     def ClusterId(self):
@@ -13885,7 +13859,6 @@ class EmrListInstance(AbstractModel):
     @property
     def StatusDesc(self):
         """常见状态描述：集群生产中,集群运行中,集群创建中,集群已关闭,集群已删除
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StatusDesc
@@ -13996,7 +13969,6 @@ class EmrListInstance(AbstractModel):
     @property
     def ProductId(self):
         """产品ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ProductId
@@ -14008,7 +13980,6 @@ class EmrListInstance(AbstractModel):
     @property
     def ProjectId(self):
         """项目ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ProjectId
@@ -14020,7 +13991,6 @@ class EmrListInstance(AbstractModel):
     @property
     def RegionId(self):
         """区域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RegionId
@@ -14032,7 +14002,6 @@ class EmrListInstance(AbstractModel):
     @property
     def SubnetId(self):
         """子网ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SubnetId
@@ -14044,7 +14013,6 @@ class EmrListInstance(AbstractModel):
     @property
     def VpcId(self):
         """网络ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._VpcId
@@ -14056,7 +14024,6 @@ class EmrListInstance(AbstractModel):
     @property
     def Zone(self):
         """地区
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Zone
@@ -14068,7 +14035,6 @@ class EmrListInstance(AbstractModel):
     @property
     def Status(self):
         """状态码, 取值为-2(集群已删除), -1(集群已关闭), 0(集群生产中), 2(集群运行中), 3(集群创建中)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -14092,7 +14058,6 @@ class EmrListInstance(AbstractModel):
     @property
     def AlarmInfo(self):
         """告警信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AlarmInfo
@@ -14104,7 +14069,6 @@ class EmrListInstance(AbstractModel):
     @property
     def IsWoodpeckerCluster(self):
         """是否是woodpecker集群
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IsWoodpeckerCluster
@@ -14116,7 +14080,6 @@ class EmrListInstance(AbstractModel):
     @property
     def VpcName(self):
         """Vpc中文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VpcName
@@ -14128,7 +14091,6 @@ class EmrListInstance(AbstractModel):
     @property
     def SubnetName(self):
         """子网中文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubnetName
@@ -14140,7 +14102,6 @@ class EmrListInstance(AbstractModel):
     @property
     def UniqVpcId(self):
         """字符串VpcId
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UniqVpcId
@@ -14152,7 +14113,6 @@ class EmrListInstance(AbstractModel):
     @property
     def UniqSubnetId(self):
         """字符串子网
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UniqSubnetId
@@ -14164,7 +14124,6 @@ class EmrListInstance(AbstractModel):
     @property
     def ClusterClass(self):
         """集群类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterClass
@@ -14176,7 +14135,6 @@ class EmrListInstance(AbstractModel):
     @property
     def IsMultiZoneCluster(self):
         """是否为跨AZ集群
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsMultiZoneCluster
@@ -14188,7 +14146,6 @@ class EmrListInstance(AbstractModel):
     @property
     def IsHandsCluster(self):
         """是否手戳集群
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsHandsCluster
@@ -14212,7 +14169,6 @@ class EmrListInstance(AbstractModel):
     @property
     def IsSupportOutsideCluster(self):
         """当前集群的应用场景是否支持体外客户端
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsSupportOutsideCluster
@@ -14224,7 +14180,6 @@ class EmrListInstance(AbstractModel):
     @property
     def IsDedicatedCluster(self):
         """是否专有集群场景集群
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsDedicatedCluster
@@ -14232,6 +14187,17 @@ class EmrListInstance(AbstractModel):
     @IsDedicatedCluster.setter
     def IsDedicatedCluster(self, IsDedicatedCluster):
         self._IsDedicatedCluster = IsDedicatedCluster
+
+    @property
+    def IsSupportClone(self):
+        """集群支持克隆
+        :rtype: bool
+        """
+        return self._IsSupportClone
+
+    @IsSupportClone.setter
+    def IsSupportClone(self, IsSupportClone):
+        self._IsSupportClone = IsSupportClone
 
 
     def _deserialize(self, params):
@@ -14276,6 +14242,7 @@ class EmrListInstance(AbstractModel):
                 self._OutSideSoftInfo.append(obj)
         self._IsSupportOutsideCluster = params.get("IsSupportOutsideCluster")
         self._IsDedicatedCluster = params.get("IsDedicatedCluster")
+        self._IsSupportClone = params.get("IsSupportClone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21729,10 +21696,8 @@ class ModifyYarnDeployResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _IsDraft: 为false不点亮部署生效、重置
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsDraft: bool
         :param _ErrorMsg: 错误信息，预留
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -21744,7 +21709,6 @@ class ModifyYarnDeployResponse(AbstractModel):
     @property
     def IsDraft(self):
         """为false不点亮部署生效、重置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsDraft
@@ -21756,7 +21720,6 @@ class ModifyYarnDeployResponse(AbstractModel):
     @property
     def ErrorMsg(self):
         """错误信息，预留
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorMsg
@@ -27194,7 +27157,6 @@ class RepeatStrategy(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type NotRepeat: :class:`tencentcloud.emr.v20190103.models.NotRepeatStrategy`
         :param _Expire: 规则过期时间，超过该时间后，规则将自动置为暂停状态，形式为"2020-07-23 00:00:00"。必须填写
-注意：此字段可能返回 null，表示取不到有效值。
         :type Expire: str
         :param _StartTime: 周期性规则开始时间
         :type StartTime: str
@@ -27269,7 +27231,6 @@ class RepeatStrategy(AbstractModel):
     @property
     def Expire(self):
         """规则过期时间，超过该时间后，规则将自动置为暂停状态，形式为"2020-07-23 00:00:00"。必须填写
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Expire

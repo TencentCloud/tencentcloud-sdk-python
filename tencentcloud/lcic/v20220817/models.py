@@ -734,7 +734,7 @@ class BatchCreateRoomRequest(AbstractModel):
         r"""
         :param _SdkAppId: 低代码平台的SdkAppId。
         :type SdkAppId: int
-        :param _RoomInfos: 创建房间ID列表
+        :param _RoomInfos: 创建课堂ID列表
         :type RoomInfos: list of RoomInfo
         """
         self._SdkAppId = None
@@ -753,7 +753,7 @@ class BatchCreateRoomRequest(AbstractModel):
 
     @property
     def RoomInfos(self):
-        """创建房间ID列表
+        """创建课堂ID列表
         :rtype: list of RoomInfo
         """
         return self._RoomInfos
@@ -2144,11 +2144,11 @@ class CreateRoomRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 房间名称。
+        :param _Name: 课堂名称。
         :type Name: str
-        :param _StartTime: 预定的房间开始时间，unix时间戳（秒）。
+        :param _StartTime: 预定的课堂开始时间，unix时间戳（秒）。
         :type StartTime: int
-        :param _EndTime: 预定的房间结束时间，unix时间戳（秒）。
+        :param _EndTime: 预定的课堂结束时间，unix时间戳（秒）。
         :type EndTime: int
         :param _SdkAppId: 低代码互动课堂的SdkAppId。
         :type SdkAppId: int
@@ -2157,11 +2157,9 @@ class CreateRoomRequest(AbstractModel):
 2 高清
 3 全高清
         :type Resolution: int
-        :param _MaxMicNumber: 设置房间/课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。该取值影响计费，请根据业务实际情况设置。计费规则见“购买指南”下“计费概述”。
+        :param _MaxMicNumber: 设置课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。该取值影响计费，请根据业务实际情况设置。计费规则见“购买指南”下“计费概述”。
         :type MaxMicNumber: int
-        :param _SubType: 房间子类型，可以有以下取值：
-videodoc 文档+视频
-video 纯视频
+        :param _SubType: 课堂子类型，可以有以下取值：videodoc 文档+视频video 纯视频
         :type SubType: str
         :param _TeacherId: 老师ID。通过[注册用户]接口获取的UserId。指定后该用户在房间内拥有老师权限。
         :type TeacherId: str
@@ -2187,7 +2185,7 @@ video 纯视频
         :type AudienceType: int
         :param _RecordLayout: 录制模板。未配置时默认取值0。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
         :type RecordLayout: int
-        :param _GroupId: 房间绑定的群组ID,非空时限制组成员进入
+        :param _GroupId: 课堂绑定的群组ID,非空时限制组成员进入
         :type GroupId: str
         :param _EnableDirectControl: 是否允许老师/助教直接控制学生的摄像头/麦克风。可以有以下取值：
 0 不允许直接控制（需同意，默认值）
@@ -2201,8 +2199,7 @@ video 纯视频
         :type VideoOrientation: int
         :param _IsGradingRequiredPostClass: 开启课后评分。 0：不开启(默认)  1：开启
         :type IsGradingRequiredPostClass: int
-        :param _RoomType: 房间类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (预留参数，暂未开放)
-注：大班课的布局(layout)只有三分屏
+        :param _RoomType: 课堂类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (预留参数，暂未开放)注：大班课的布局(layout)只有三分屏
         :type RoomType: int
         :param _EndDelayTime: 拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
         :type EndDelayTime: int
@@ -2258,7 +2255,7 @@ video 纯视频
 
     @property
     def Name(self):
-        """房间名称。
+        """课堂名称。
         :rtype: str
         """
         return self._Name
@@ -2269,7 +2266,7 @@ video 纯视频
 
     @property
     def StartTime(self):
-        """预定的房间开始时间，unix时间戳（秒）。
+        """预定的课堂开始时间，unix时间戳（秒）。
         :rtype: int
         """
         return self._StartTime
@@ -2280,7 +2277,7 @@ video 纯视频
 
     @property
     def EndTime(self):
-        """预定的房间结束时间，unix时间戳（秒）。
+        """预定的课堂结束时间，unix时间戳（秒）。
         :rtype: int
         """
         return self._EndTime
@@ -2316,7 +2313,7 @@ video 纯视频
 
     @property
     def MaxMicNumber(self):
-        """设置房间/课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。该取值影响计费，请根据业务实际情况设置。计费规则见“购买指南”下“计费概述”。
+        """设置课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。该取值影响计费，请根据业务实际情况设置。计费规则见“购买指南”下“计费概述”。
         :rtype: int
         """
         return self._MaxMicNumber
@@ -2327,9 +2324,7 @@ video 纯视频
 
     @property
     def SubType(self):
-        """房间子类型，可以有以下取值：
-videodoc 文档+视频
-video 纯视频
+        """课堂子类型，可以有以下取值：videodoc 文档+视频video 纯视频
         :rtype: str
         """
         return self._SubType
@@ -2449,7 +2444,7 @@ video 纯视频
 
     @property
     def GroupId(self):
-        """房间绑定的群组ID,非空时限制组成员进入
+        """课堂绑定的群组ID,非空时限制组成员进入
         :rtype: str
         """
         return self._GroupId
@@ -2508,8 +2503,7 @@ video 纯视频
 
     @property
     def RoomType(self):
-        """房间类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (预留参数，暂未开放)
-注：大班课的布局(layout)只有三分屏
+        """课堂类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (预留参数，暂未开放)注：大班课的布局(layout)只有三分屏
         :rtype: int
         """
         return self._RoomType
@@ -3398,14 +3392,14 @@ class DeleteRoomRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RoomId: 房间ID。
+        :param _RoomId: 课堂ID。
         :type RoomId: int
         """
         self._RoomId = None
 
     @property
     def RoomId(self):
-        """房间ID。
+        """课堂ID。
         :rtype: int
         """
         return self._RoomId
@@ -3950,7 +3944,7 @@ class DescribeCurrentMemberListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RoomId: 房间Id。
+        :param _RoomId: 课堂Id。
         :type RoomId: int
         :param _Page: 分页查询当前页数，从1开始递增。
         :type Page: int
@@ -3963,7 +3957,7 @@ class DescribeCurrentMemberListRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        """房间Id。
+        """课堂Id。
         :rtype: int
         """
         return self._RoomId
@@ -6144,7 +6138,7 @@ class DescribeRoomRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RoomId: 房间Id。
+        :param _RoomId: 课堂Id。
         :type RoomId: int
         :param _RTMPStreamingURL: 请求RTMP推流链接，0：否，1：是，默认为0。
         :type RTMPStreamingURL: int
@@ -6154,7 +6148,7 @@ class DescribeRoomRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        """房间Id。
+        """课堂Id。
         :rtype: int
         """
         return self._RoomId
@@ -6195,11 +6189,11 @@ class DescribeRoomResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 房间名称。
+        :param _Name: 课堂名称。
         :type Name: str
-        :param _StartTime: 预定的房间开始时间，unix时间戳（秒）。
+        :param _StartTime: 预定的课堂开始时间，unix时间戳（秒）。
         :type StartTime: int
-        :param _EndTime: 预定的房间结束时间，unix时间戳（秒）。
+        :param _EndTime: 预定的课堂结束时间，unix时间戳（秒）。
         :type EndTime: int
         :param _TeacherId: 老师的UserId。
         :type TeacherId: str
@@ -6212,7 +6206,7 @@ class DescribeRoomResponse(AbstractModel):
 2 高清
 3 全高清
         :type Resolution: int
-        :param _MaxMicNumber: 设置房间/课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。
+        :param _MaxMicNumber: 设置课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。
         :type MaxMicNumber: int
         :param _AutoMic: 进入课堂时是否自动连麦。可以有以下取值：
 0 不自动连麦（需要手动申请上麦，默认值）
@@ -6222,9 +6216,7 @@ class DescribeRoomResponse(AbstractModel):
 0 不开启高音质（默认值）
 1 开启高音质
         :type AudioQuality: int
-        :param _SubType: 房间子类型，可以有以下取值：
-videodoc 文档+视频
-video 纯视频
+        :param _SubType: 课堂子类型，可以有以下取值：videodoc 文档+视频video 纯视频
         :type SubType: str
         :param _DisableRecord: 上课后是否禁止自动录制。可以有以下取值：
 0 不禁止录制（自动开启录制，默认值）
@@ -6237,7 +6229,7 @@ video 纯视频
         :type RecordUrl: str
         :param _Status: 课堂状态。0为未开始，1为已开始，2为已结束，3为已过期。
         :type Status: int
-        :param _GroupId: 房间绑定的群组ID
+        :param _GroupId: 课堂绑定的群组ID
         :type GroupId: str
         :param _EnableDirectControl: 打开学生麦克风/摄像头的授权开关
         :type EnableDirectControl: int
@@ -6247,10 +6239,9 @@ video 纯视频
         :type InteractionMode: int
         :param _VideoOrientation: 横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
         :type VideoOrientation: int
-        :param _IsGradingRequiredPostClass: 该房间是否开启了课后评分功能。0：未开启  1：开启
+        :param _IsGradingRequiredPostClass: 该课堂是否开启了课后评分功能。0：未开启  1：开启
         :type IsGradingRequiredPostClass: int
-        :param _RoomType: 房间类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (后续扩展)
-注：大班课的布局(layout)只有三分屏
+        :param _RoomType: 课堂类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (后续扩展)注：大班课的布局(layout)只有三分屏
         :type RoomType: int
         :param _VideoDuration: 录制时长
         :type VideoDuration: int
@@ -6316,7 +6307,7 @@ video 纯视频
 
     @property
     def Name(self):
-        """房间名称。
+        """课堂名称。
         :rtype: str
         """
         return self._Name
@@ -6327,7 +6318,7 @@ video 纯视频
 
     @property
     def StartTime(self):
-        """预定的房间开始时间，unix时间戳（秒）。
+        """预定的课堂开始时间，unix时间戳（秒）。
         :rtype: int
         """
         return self._StartTime
@@ -6338,7 +6329,7 @@ video 纯视频
 
     @property
     def EndTime(self):
-        """预定的房间结束时间，unix时间戳（秒）。
+        """预定的课堂结束时间，unix时间戳（秒）。
         :rtype: int
         """
         return self._EndTime
@@ -6396,7 +6387,7 @@ video 纯视频
 
     @property
     def MaxMicNumber(self):
-        """设置房间/课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。
+        """设置课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。
         :rtype: int
         """
         return self._MaxMicNumber
@@ -6433,9 +6424,7 @@ video 纯视频
 
     @property
     def SubType(self):
-        """房间子类型，可以有以下取值：
-videodoc 文档+视频
-video 纯视频
+        """课堂子类型，可以有以下取值：videodoc 文档+视频video 纯视频
         :rtype: str
         """
         return self._SubType
@@ -6493,7 +6482,7 @@ video 纯视频
 
     @property
     def GroupId(self):
-        """房间绑定的群组ID
+        """课堂绑定的群组ID
         :rtype: str
         """
         return self._GroupId
@@ -6539,7 +6528,7 @@ video 纯视频
 
     @property
     def IsGradingRequiredPostClass(self):
-        """该房间是否开启了课后评分功能。0：未开启  1：开启
+        """该课堂是否开启了课后评分功能。0：未开启  1：开启
         :rtype: int
         """
         return self._IsGradingRequiredPostClass
@@ -6550,8 +6539,7 @@ video 纯视频
 
     @property
     def RoomType(self):
-        """房间类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (后续扩展)
-注：大班课的布局(layout)只有三分屏
+        """课堂类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (后续扩展)注：大班课的布局(layout)只有三分屏
         :rtype: int
         """
         return self._RoomType
@@ -6748,7 +6736,7 @@ class DescribeRoomStatisticsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RoomId: 房间Id。
+        :param _RoomId: 课堂Id。
         :type RoomId: int
         :param _Page: 分页查询当前页数，从1开始递增。
         :type Page: int
@@ -6761,7 +6749,7 @@ class DescribeRoomStatisticsRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        """房间Id。
+        """课堂Id。
         :rtype: int
         """
         return self._RoomId
@@ -6826,9 +6814,9 @@ class DescribeRoomStatisticsResponse(AbstractModel):
         :type RealStartTime: int
         :param _RealEndTime: 秒级unix时间戳，实际房间结束时间。
         :type RealEndTime: int
-        :param _MessageCount: 房间消息总数。
+        :param _MessageCount: 课堂消息总数。
         :type MessageCount: int
-        :param _MicCount: 房间连麦总数。
+        :param _MicCount: 课堂连麦总数。
         :type MicCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6911,7 +6899,7 @@ class DescribeRoomStatisticsResponse(AbstractModel):
 
     @property
     def MessageCount(self):
-        """房间消息总数。
+        """课堂消息总数。
         :rtype: int
         """
         return self._MessageCount
@@ -6922,7 +6910,7 @@ class DescribeRoomStatisticsResponse(AbstractModel):
 
     @property
     def MicCount(self):
-        """房间连麦总数。
+        """课堂连麦总数。
         :rtype: int
         """
         return self._MicCount
@@ -8416,7 +8404,7 @@ class GetRoomEventRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RoomId: 房间Id。
+        :param _RoomId: 课堂Id。
         :type RoomId: int
         :param _SdkAppId: 应用Id。
         :type SdkAppId: int
@@ -8448,7 +8436,7 @@ VisibleOff: 页面不可见
 
     @property
     def RoomId(self):
-        """房间Id。
+        """课堂Id。
         :rtype: int
         """
         return self._RoomId
@@ -8538,7 +8526,7 @@ class GetRoomEventResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Total: 该房间的事件总数，keyword搜索不影响该值。
+        :param _Total: 该课堂的事件总数，keyword搜索不影响该值。
         :type Total: int
         :param _Events: 详细事件内容。包含相应的类型、发生的时间戳。
         :type Events: list of EventInfo
@@ -8551,7 +8539,7 @@ class GetRoomEventResponse(AbstractModel):
 
     @property
     def Total(self):
-        """该房间的事件总数，keyword搜索不影响该值。
+        """该课堂的事件总数，keyword搜索不影响该值。
         :rtype: int
         """
         return self._Total
@@ -8603,7 +8591,7 @@ class GetRoomMessageRequest(AbstractModel):
         r"""
         :param _SdkAppId: 低代码互动课堂的SdkAppId。
         :type SdkAppId: int
-        :param _RoomId: 房间Id。	
+        :param _RoomId: 课堂Id。	
         :type RoomId: int
         :param _Seq: 消息序列。获取该序列以前的消息(不包含该seq消息)
         :type Seq: int
@@ -8628,7 +8616,7 @@ class GetRoomMessageRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        """房间Id。	
+        """课堂Id。	
         :rtype: int
         """
         return self._RoomId
@@ -8845,7 +8833,7 @@ class GetRoomsResponse(AbstractModel):
         r"""
         :param _Total: 总数
         :type Total: int
-        :param _Rooms: 房间列表
+        :param _Rooms: 课堂列表
         :type Rooms: list of RoomItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8867,7 +8855,7 @@ class GetRoomsResponse(AbstractModel):
 
     @property
     def Rooms(self):
-        """房间列表
+        """课堂列表
         :rtype: list of RoomItem
         """
         return self._Rooms
@@ -9380,7 +9368,7 @@ class KickUserFromRoomRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RoomId: 房间Id。
+        :param _RoomId: 课堂Id。
         :type RoomId: int
         :param _SdkAppId: 低代码平台的SdkAppId。
         :type SdkAppId: int
@@ -9401,7 +9389,7 @@ class KickUserFromRoomRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        """房间Id。
+        """课堂Id。
         :rtype: int
         """
         return self._RoomId
@@ -13876,7 +13864,7 @@ class UnblockKickedUserRequest(AbstractModel):
         r"""
         :param _SdkAppId: 低代码平台的SdkAppId。
         :type SdkAppId: int
-        :param _RoomId: 房间Id。
+        :param _RoomId: 课堂Id。
         :type RoomId: int
         :param _UserId: 需要解禁踢出的成员Id。
         :type UserId: str
@@ -13898,7 +13886,7 @@ class UnblockKickedUserRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        """房间Id。
+        """课堂Id。
         :rtype: int
         """
         return self._RoomId

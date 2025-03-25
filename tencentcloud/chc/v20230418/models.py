@@ -5913,7 +5913,6 @@ class DeviceOrderBaseInfo(AbstractModel):
         :param _IdcId: 机房id
         :type IdcId: int
         :param _IdcName: 机房名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type IdcName: str
         :param _DeviceType: 设备类型
         :type DeviceType: str
@@ -5975,7 +5974,6 @@ class DeviceOrderBaseInfo(AbstractModel):
     @property
     def IdcName(self):
         """机房名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IdcName
@@ -7909,35 +7907,26 @@ class Personnel(AbstractModel):
     def __init__(self):
         r"""
         :param _IDCardNumber: 证件号码
-注意：此字段可能返回 null，表示取不到有效值。
         :type IDCardNumber: str
         :param _IDCardType: 证件类型。对应关系如下：IDENTITY_CARD: 身份证,
 HONG_KONG_AND_MACAO_PASS: 港澳通行证',
 PASSPORT: 护照,
 DRIVING_LICENSE: 驾照,
 OTHER: 其他
-注意：此字段可能返回 null，表示取不到有效值。
         :type IDCardType: str
         :param _Company: 公司名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Company: str
         :param _LanguageType: 语言。对应关系：ENGLISH: 英文, CHINESE: 中文
-注意：此字段可能返回 null，表示取不到有效值。
         :type LanguageType: str
         :param _Name: 姓名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _TelNumber: 电话
-注意：此字段可能返回 null，表示取不到有效值。
         :type TelNumber: str
         :param _Position: 职位
-注意：此字段可能返回 null，表示取不到有效值。
         :type Position: str
         :param _Wechat: 微信
-注意：此字段可能返回 null，表示取不到有效值。
         :type Wechat: str
         :param _Email: 邮箱
-注意：此字段可能返回 null，表示取不到有效值。
         :type Email: str
         """
         self._IDCardNumber = None
@@ -7953,7 +7942,6 @@ OTHER: 其他
     @property
     def IDCardNumber(self):
         """证件号码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IDCardNumber
@@ -7969,7 +7957,6 @@ HONG_KONG_AND_MACAO_PASS: 港澳通行证',
 PASSPORT: 护照,
 DRIVING_LICENSE: 驾照,
 OTHER: 其他
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IDCardType
@@ -7981,7 +7968,6 @@ OTHER: 其他
     @property
     def Company(self):
         """公司名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Company
@@ -7993,7 +7979,6 @@ OTHER: 其他
     @property
     def LanguageType(self):
         """语言。对应关系：ENGLISH: 英文, CHINESE: 中文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LanguageType
@@ -8005,7 +7990,6 @@ OTHER: 其他
     @property
     def Name(self):
         """姓名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -8017,7 +8001,6 @@ OTHER: 其他
     @property
     def TelNumber(self):
         """电话
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TelNumber
@@ -8029,7 +8012,6 @@ OTHER: 其他
     @property
     def Position(self):
         """职位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Position
@@ -8041,7 +8023,6 @@ OTHER: 其他
     @property
     def Wechat(self):
         """微信
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Wechat
@@ -8053,7 +8034,6 @@ OTHER: 其他
     @property
     def Email(self):
         """邮箱
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Email
@@ -8802,16 +8782,12 @@ class SelfOperation(AbstractModel):
     def __init__(self):
         r"""
         :param _StuffContact: 联系人员电话
-注意：此字段可能返回 null，表示取不到有效值。
         :type StuffContact: str
         :param _StuffIDCard: 身份证号
-注意：此字段可能返回 null，表示取不到有效值。
         :type StuffIDCard: str
         :param _StuffName: 人员姓名
-注意：此字段可能返回 null，表示取不到有效值。
         :type StuffName: str
         :param _OperationTime: 上门时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type OperationTime: str
         """
         self._StuffContact = None
@@ -8822,7 +8798,6 @@ class SelfOperation(AbstractModel):
     @property
     def StuffContact(self):
         """联系人员电话
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StuffContact
@@ -8834,7 +8809,6 @@ class SelfOperation(AbstractModel):
     @property
     def StuffIDCard(self):
         """身份证号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StuffIDCard
@@ -8846,7 +8820,6 @@ class SelfOperation(AbstractModel):
     @property
     def StuffName(self):
         """人员姓名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StuffName
@@ -8858,7 +8831,6 @@ class SelfOperation(AbstractModel):
     @property
     def OperationTime(self):
         """上门时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OperationTime
@@ -9622,7 +9594,6 @@ class WorkOrderData(AbstractModel):
         :param _CreateTime: 工单创建时间
         :type CreateTime: str
         :param _FinishTime: 工单完成时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type FinishTime: str
         """
         self._WorkOrderId = None
@@ -9702,7 +9673,6 @@ class WorkOrderData(AbstractModel):
     @property
     def FinishTime(self):
         """工单完成时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FinishTime

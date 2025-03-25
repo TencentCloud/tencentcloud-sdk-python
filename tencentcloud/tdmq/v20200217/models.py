@@ -24710,7 +24710,6 @@ class ModifyRocketMQInstanceSpecResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _OrderId: 订单号
-注意：此字段可能返回 null，表示取不到有效值。
         :type OrderId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -24721,7 +24720,6 @@ class ModifyRocketMQInstanceSpecResponse(AbstractModel):
     @property
     def OrderId(self):
         """订单号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OrderId
@@ -34060,7 +34058,6 @@ class RocketMQVipInstance(AbstractModel):
         :param _InstanceName: 实例名称
         :type InstanceName: str
         :param _InstanceVersion: 实例版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceVersion: str
         :param _Status: 实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败，6 - 变配中，7 - 变配失败
         :type Status: int
@@ -34086,19 +34083,14 @@ class RocketMQVipInstance(AbstractModel):
         :param _SpecName: 实例配置ID
         :type SpecName: str
         :param _MaxRetention: 最大可设置消息保留时间，小时为单位
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxRetention: int
         :param _MinRetention: 最小可设置消息保留时间，小时为单位
-注意：此字段可能返回 null，表示取不到有效值。
         :type MinRetention: int
         :param _Retention: 实例消息保留时间，小时为单位
-注意：此字段可能返回 null，表示取不到有效值。
         :type Retention: int
         :param _AclEnabled: 是否开启ACL鉴权
-注意：此字段可能返回 null，表示取不到有效值。
         :type AclEnabled: bool
         :param _DestroyTime: 销毁时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type DestroyTime: int
         """
         self._InstanceId = None
@@ -34146,7 +34138,6 @@ class RocketMQVipInstance(AbstractModel):
     @property
     def InstanceVersion(self):
         """实例版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceVersion
@@ -34280,7 +34271,6 @@ class RocketMQVipInstance(AbstractModel):
     @property
     def MaxRetention(self):
         """最大可设置消息保留时间，小时为单位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxRetention
@@ -34292,7 +34282,6 @@ class RocketMQVipInstance(AbstractModel):
     @property
     def MinRetention(self):
         """最小可设置消息保留时间，小时为单位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MinRetention
@@ -34304,7 +34293,6 @@ class RocketMQVipInstance(AbstractModel):
     @property
     def Retention(self):
         """实例消息保留时间，小时为单位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Retention
@@ -34316,7 +34304,6 @@ class RocketMQVipInstance(AbstractModel):
     @property
     def AclEnabled(self):
         """是否开启ACL鉴权
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._AclEnabled
@@ -34328,7 +34315,6 @@ class RocketMQVipInstance(AbstractModel):
     @property
     def DestroyTime(self):
         """销毁时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DestroyTime

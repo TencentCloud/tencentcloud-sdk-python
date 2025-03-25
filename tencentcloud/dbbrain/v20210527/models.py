@@ -14672,10 +14672,8 @@ class MongoDBIndex(AbstractModel):
         :param _Score: 得分。
         :type Score: int
         :param _IndexesToBuild: 推荐索引列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IndexesToBuild: list of IndexesToBuild
         :param _IndexesToDrop: 无效索引列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IndexesToDrop: list of IndexesToDrop
         """
         self._ClusterId = None
@@ -14744,7 +14742,6 @@ class MongoDBIndex(AbstractModel):
     @property
     def IndexesToBuild(self):
         """推荐索引列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of IndexesToBuild
         """
         return self._IndexesToBuild
@@ -14756,7 +14753,6 @@ class MongoDBIndex(AbstractModel):
     @property
     def IndexesToDrop(self):
         """无效索引列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of IndexesToDrop
         """
         return self._IndexesToDrop
@@ -15707,10 +15703,8 @@ class ReceiveUin(AbstractModel):
     def __init__(self):
         r"""
         :param _UinName: 用户名
-注意：此字段可能返回 null，表示取不到有效值。
         :type UinName: str
         :param _Uin: 用户id
-注意：此字段可能返回 null，表示取不到有效值。
         :type Uin: str
         """
         self._UinName = None
@@ -15719,7 +15713,6 @@ class ReceiveUin(AbstractModel):
     @property
     def UinName(self):
         """用户名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UinName
@@ -15731,7 +15724,6 @@ class ReceiveUin(AbstractModel):
     @property
     def Uin(self):
         """用户id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Uin

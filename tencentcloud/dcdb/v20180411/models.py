@@ -1925,7 +1925,6 @@ class CreateDCDBInstanceResponse(AbstractModel):
  查询订单详细信息，或在支付失败时调用用户账号相关接口进行支付。
         :type DealName: str
         :param _InstanceIds: 订单对应的实例 ID 列表，如果此处没有返回实例 ID，可以通过订单查询接口获取。还可通过实例查询接口查询实例是否创建完成。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceIds: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1949,7 +1948,6 @@ class CreateDCDBInstanceResponse(AbstractModel):
     @property
     def InstanceIds(self):
         """订单对应的实例 ID 列表，如果此处没有返回实例 ID，可以通过订单查询接口获取。还可通过实例查询接口查询实例是否创建完成。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._InstanceIds
@@ -3569,7 +3567,6 @@ class DCDBInstanceInfo(AbstractModel):
         :param _Paymode: 付费模式
         :type Paymode: str
         :param _Locker: 实例处于异步任务状态时，表示异步任务流程ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type Locker: int
         :param _WanStatus: 外网状态，0-未开通；1-已开通；2-关闭；3-开通中
         :type WanStatus: int
@@ -3578,37 +3575,26 @@ class DCDBInstanceInfo(AbstractModel):
         :param _Cpu: Cpu核数
         :type Cpu: int
         :param _Ipv6Flag: 实例IPv6标志
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ipv6Flag: int
         :param _Vipv6: 内网IPv6
-注意：此字段可能返回 null，表示取不到有效值。
         :type Vipv6: str
         :param _WanVipv6: 外网IPv6
-注意：此字段可能返回 null，表示取不到有效值。
         :type WanVipv6: str
         :param _WanPortIpv6: 外网IPv6端口
-注意：此字段可能返回 null，表示取不到有效值。
         :type WanPortIpv6: int
         :param _WanStatusIpv6: 外网IPv6状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type WanStatusIpv6: int
         :param _DcnFlag: DCN标志，0-无，1-主实例，2-灾备实例
-注意：此字段可能返回 null，表示取不到有效值。
         :type DcnFlag: int
         :param _DcnStatus: DCN状态，0-无，1-创建中，2-同步中，3-已断开
-注意：此字段可能返回 null，表示取不到有效值。
         :type DcnStatus: int
         :param _DcnDstNum: DCN灾备实例数
-注意：此字段可能返回 null，表示取不到有效值。
         :type DcnDstNum: int
         :param _InstanceType: 1： 主实例（独享型）, 2: 主实例, 3： 灾备实例, 4： 灾备实例（独享型）
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceType: int
         :param _ResourceTags: 实例标签信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceTags: list of ResourceTag
         :param _DbVersionId: 数据库引擎版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type DbVersionId: str
         """
         self._InstanceId = None
@@ -4050,7 +4036,6 @@ class DCDBInstanceInfo(AbstractModel):
     @property
     def Locker(self):
         """实例处于异步任务状态时，表示异步任务流程ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Locker
@@ -4095,7 +4080,6 @@ class DCDBInstanceInfo(AbstractModel):
     @property
     def Ipv6Flag(self):
         """实例IPv6标志
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Ipv6Flag
@@ -4107,7 +4091,6 @@ class DCDBInstanceInfo(AbstractModel):
     @property
     def Vipv6(self):
         """内网IPv6
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Vipv6
@@ -4119,7 +4102,6 @@ class DCDBInstanceInfo(AbstractModel):
     @property
     def WanVipv6(self):
         """外网IPv6
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._WanVipv6
@@ -4131,7 +4113,6 @@ class DCDBInstanceInfo(AbstractModel):
     @property
     def WanPortIpv6(self):
         """外网IPv6端口
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._WanPortIpv6
@@ -4143,7 +4124,6 @@ class DCDBInstanceInfo(AbstractModel):
     @property
     def WanStatusIpv6(self):
         """外网IPv6状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._WanStatusIpv6
@@ -4155,7 +4135,6 @@ class DCDBInstanceInfo(AbstractModel):
     @property
     def DcnFlag(self):
         """DCN标志，0-无，1-主实例，2-灾备实例
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DcnFlag
@@ -4167,7 +4146,6 @@ class DCDBInstanceInfo(AbstractModel):
     @property
     def DcnStatus(self):
         """DCN状态，0-无，1-创建中，2-同步中，3-已断开
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DcnStatus
@@ -4179,7 +4157,6 @@ class DCDBInstanceInfo(AbstractModel):
     @property
     def DcnDstNum(self):
         """DCN灾备实例数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DcnDstNum
@@ -4191,7 +4168,6 @@ class DCDBInstanceInfo(AbstractModel):
     @property
     def InstanceType(self):
         """1： 主实例（独享型）, 2: 主实例, 3： 灾备实例, 4： 灾备实例（独享型）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._InstanceType
@@ -4203,7 +4179,6 @@ class DCDBInstanceInfo(AbstractModel):
     @property
     def ResourceTags(self):
         """实例标签信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ResourceTag
         """
         return self._ResourceTags
@@ -4215,7 +4190,6 @@ class DCDBInstanceInfo(AbstractModel):
     @property
     def DbVersionId(self):
         """数据库引擎版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DbVersionId
@@ -5987,7 +5961,6 @@ class DescribeAccountsResponse(AbstractModel):
         :param _InstanceId: 实例ID，透传入参。
         :type InstanceId: str
         :param _Users: 实例用户列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Users: list of DBAccount
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6010,7 +5983,6 @@ class DescribeAccountsResponse(AbstractModel):
     @property
     def Users(self):
         """实例用户列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DBAccount
         """
         return self._Users
@@ -7665,57 +7637,40 @@ class DescribeDCDBInstanceDetailResponse(AbstractModel):
         :param _Shards: 分片信息
         :type Shards: list of ShardBriefInfo
         :param _Vip6: 内网IPv6
-注意：此字段可能返回 null，表示取不到有效值。
         :type Vip6: str
         :param _Cpu: 实例Cpu核数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Cpu: int
         :param _Qps: 实例QPS
-注意：此字段可能返回 null，表示取不到有效值。
         :type Qps: int
         :param _DbEngine: DB引擎
-注意：此字段可能返回 null，表示取不到有效值。
         :type DbEngine: str
         :param _Ipv6Flag: 是否支持IPv6
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ipv6Flag: int
         :param _WanVipv6: 外网IPv6地址，公网可访问
-注意：此字段可能返回 null，表示取不到有效值。
         :type WanVipv6: str
         :param _WanStatusIpv6: 外网状态，0-未开通；1-已开通；2-关闭；3-开通中；4-关闭中
-注意：此字段可能返回 null，表示取不到有效值。
         :type WanStatusIpv6: int
         :param _WanPortIpv6: 外网IPv6端口
-注意：此字段可能返回 null，表示取不到有效值。
         :type WanPortIpv6: int
         :param _ResourceTags: 标签信息
         :type ResourceTags: list of ResourceTag
         :param _DcnFlag: DCN标志，0-无，1-主实例，2-灾备实例
-注意：此字段可能返回 null，表示取不到有效值。
         :type DcnFlag: int
         :param _DcnStatus: DCN状态，0-无，1-创建中，2-同步中，3-已断开
-注意：此字段可能返回 null，表示取不到有效值。
         :type DcnStatus: int
         :param _DcnDstNum: DCN灾备实例数
-注意：此字段可能返回 null，表示取不到有效值。
         :type DcnDstNum: int
         :param _InstanceType: 1： 主实例（独享型）, 2: 主实例, 3： 灾备实例, 4： 灾备实例（独享型）
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceType: int
         :param _IsMaxUserConnectionsSupported: 实例是否支持设置用户连接数限制，内核为10.1暂不支持。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsMaxUserConnectionsSupported: bool
         :param _DbVersionId: 对外显示的数据库版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type DbVersionId: str
         :param _EncryptStatus: 加密状态, 0-未开启，1-已开启
-注意：此字段可能返回 null，表示取不到有效值。
         :type EncryptStatus: int
         :param _ExclusterType: 独享集群类型，0:公有云, 1:金融围笼, 2:CDC集群
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExclusterType: int
         :param _RsAccessStrategy: VPC就近访问
-注意：此字段可能返回 null，表示取不到有效值。
         :type RsAccessStrategy: int
         :param _ReservedNetResources: 尚未回收的网络资源
         :type ReservedNetResources: list of ReservedNetResource
@@ -8139,7 +8094,6 @@ class DescribeDCDBInstanceDetailResponse(AbstractModel):
     @property
     def Vip6(self):
         """内网IPv6
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Vip6
@@ -8151,7 +8105,6 @@ class DescribeDCDBInstanceDetailResponse(AbstractModel):
     @property
     def Cpu(self):
         """实例Cpu核数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Cpu
@@ -8163,7 +8116,6 @@ class DescribeDCDBInstanceDetailResponse(AbstractModel):
     @property
     def Qps(self):
         """实例QPS
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Qps
@@ -8175,7 +8127,6 @@ class DescribeDCDBInstanceDetailResponse(AbstractModel):
     @property
     def DbEngine(self):
         """DB引擎
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DbEngine
@@ -8187,7 +8138,6 @@ class DescribeDCDBInstanceDetailResponse(AbstractModel):
     @property
     def Ipv6Flag(self):
         """是否支持IPv6
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Ipv6Flag
@@ -8199,7 +8149,6 @@ class DescribeDCDBInstanceDetailResponse(AbstractModel):
     @property
     def WanVipv6(self):
         """外网IPv6地址，公网可访问
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._WanVipv6
@@ -8211,7 +8160,6 @@ class DescribeDCDBInstanceDetailResponse(AbstractModel):
     @property
     def WanStatusIpv6(self):
         """外网状态，0-未开通；1-已开通；2-关闭；3-开通中；4-关闭中
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._WanStatusIpv6
@@ -8223,7 +8171,6 @@ class DescribeDCDBInstanceDetailResponse(AbstractModel):
     @property
     def WanPortIpv6(self):
         """外网IPv6端口
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._WanPortIpv6
@@ -8246,7 +8193,6 @@ class DescribeDCDBInstanceDetailResponse(AbstractModel):
     @property
     def DcnFlag(self):
         """DCN标志，0-无，1-主实例，2-灾备实例
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DcnFlag
@@ -8258,7 +8204,6 @@ class DescribeDCDBInstanceDetailResponse(AbstractModel):
     @property
     def DcnStatus(self):
         """DCN状态，0-无，1-创建中，2-同步中，3-已断开
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DcnStatus
@@ -8270,7 +8215,6 @@ class DescribeDCDBInstanceDetailResponse(AbstractModel):
     @property
     def DcnDstNum(self):
         """DCN灾备实例数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DcnDstNum
@@ -8282,7 +8226,6 @@ class DescribeDCDBInstanceDetailResponse(AbstractModel):
     @property
     def InstanceType(self):
         """1： 主实例（独享型）, 2: 主实例, 3： 灾备实例, 4： 灾备实例（独享型）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._InstanceType
@@ -8294,7 +8237,6 @@ class DescribeDCDBInstanceDetailResponse(AbstractModel):
     @property
     def IsMaxUserConnectionsSupported(self):
         """实例是否支持设置用户连接数限制，内核为10.1暂不支持。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsMaxUserConnectionsSupported
@@ -8306,7 +8248,6 @@ class DescribeDCDBInstanceDetailResponse(AbstractModel):
     @property
     def DbVersionId(self):
         """对外显示的数据库版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DbVersionId
@@ -8318,7 +8259,6 @@ class DescribeDCDBInstanceDetailResponse(AbstractModel):
     @property
     def EncryptStatus(self):
         """加密状态, 0-未开启，1-已开启
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._EncryptStatus
@@ -8330,7 +8270,6 @@ class DescribeDCDBInstanceDetailResponse(AbstractModel):
     @property
     def ExclusterType(self):
         """独享集群类型，0:公有云, 1:金融围笼, 2:CDC集群
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ExclusterType
@@ -8342,7 +8281,6 @@ class DescribeDCDBInstanceDetailResponse(AbstractModel):
     @property
     def RsAccessStrategy(self):
         """VPC就近访问
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RsAccessStrategy
@@ -15729,7 +15667,6 @@ class ShardBriefInfo(AbstractModel):
         :param _Cpu: 分片Cpu核数
         :type Cpu: int
         :param _NodesInfo: DB节点信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type NodesInfo: list of NodeInfo
         """
         self._ShardSerialId = None
@@ -15905,7 +15842,6 @@ class ShardBriefInfo(AbstractModel):
     @property
     def NodesInfo(self):
         """DB节点信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of NodeInfo
         """
         return self._NodesInfo

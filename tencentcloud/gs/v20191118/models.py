@@ -28,12 +28,10 @@ class AndroidApp(AbstractModel):
         :param _AndroidAppId: 安卓应用 Id
         :type AndroidAppId: str
         :param _Name: 安卓应用名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _State: 安卓应用状态（上架、下架）
         :type State: str
         :param _AndroidAppVersionInfo: 安卓应用版本列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type AndroidAppVersionInfo: list of AndroidAppVersionInfo
         :param _CreateTime: 安卓应用创建时间
         :type CreateTime: str
@@ -58,7 +56,6 @@ class AndroidApp(AbstractModel):
     @property
     def Name(self):
         """安卓应用名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -81,7 +78,6 @@ class AndroidApp(AbstractModel):
     @property
     def AndroidAppVersionInfo(self):
         """安卓应用版本列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AndroidAppVersionInfo
         """
         return self._AndroidAppVersionInfo
@@ -205,14 +201,12 @@ class AndroidInstance(AbstractModel):
         :param _AndroidInstanceRegion: 实例所在区域
         :type AndroidInstanceRegion: str
         :param _AndroidInstanceZone: 实例可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :type AndroidInstanceZone: str
         :param _State: 实例状态：INITIALIZING，NORMAL，PROCESSING
         :type State: str
         :param _AndroidInstanceType: 实例规格
         :type AndroidInstanceType: str
         :param _AndroidInstanceImageId: 实例镜像 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type AndroidInstanceImageId: str
         :param _Width: 分辨率宽度
         :type Width: int
@@ -268,7 +262,6 @@ class AndroidInstance(AbstractModel):
     @property
     def AndroidInstanceZone(self):
         """实例可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AndroidInstanceZone
@@ -302,7 +295,6 @@ class AndroidInstance(AbstractModel):
     @property
     def AndroidInstanceImageId(self):
         """实例镜像 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AndroidInstanceImageId
@@ -426,13 +418,10 @@ class AndroidInstanceAppInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _AndroidAppId: 应用id
-注意：此字段可能返回 null，表示取不到有效值。
         :type AndroidAppId: str
         :param _Name: 应用名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _AndroidAppVersion: 应用版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type AndroidAppVersion: str
         :param _PackageName: 应用包名
         :type PackageName: str
@@ -451,7 +440,6 @@ class AndroidInstanceAppInfo(AbstractModel):
     @property
     def AndroidAppId(self):
         """应用id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AndroidAppId
@@ -463,7 +451,6 @@ class AndroidInstanceAppInfo(AbstractModel):
     @property
     def Name(self):
         """应用名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -475,7 +462,6 @@ class AndroidInstanceAppInfo(AbstractModel):
     @property
     def AndroidAppVersion(self):
         """应用版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AndroidAppVersion
@@ -543,16 +529,12 @@ class AndroidInstanceImage(AbstractModel):
     def __init__(self):
         r"""
         :param _AndroidInstanceImageId: 镜像 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type AndroidInstanceImageId: str
         :param _AndroidInstanceImageName: 镜像名称，由业务方自定义，仅用于展示
-注意：此字段可能返回 null，表示取不到有效值。
         :type AndroidInstanceImageName: str
         :param _AndroidInstanceImageState: 镜像状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type AndroidInstanceImageState: str
         :param _AndroidInstanceImageZone: 镜像可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :type AndroidInstanceImageZone: str
         """
         self._AndroidInstanceImageId = None
@@ -563,7 +545,6 @@ class AndroidInstanceImage(AbstractModel):
     @property
     def AndroidInstanceImageId(self):
         """镜像 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AndroidInstanceImageId
@@ -575,7 +556,6 @@ class AndroidInstanceImage(AbstractModel):
     @property
     def AndroidInstanceImageName(self):
         """镜像名称，由业务方自定义，仅用于展示
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AndroidInstanceImageName
@@ -587,7 +567,6 @@ class AndroidInstanceImage(AbstractModel):
     @property
     def AndroidInstanceImageState(self):
         """镜像状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AndroidInstanceImageState
@@ -599,7 +578,6 @@ class AndroidInstanceImage(AbstractModel):
     @property
     def AndroidInstanceImageZone(self):
         """镜像可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AndroidInstanceImageZone
@@ -683,10 +661,8 @@ class AndroidInstanceTask(AbstractModel):
     def __init__(self):
         r"""
         :param _TaskId: 任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
         :param _AndroidInstanceId: 实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type AndroidInstanceId: str
         """
         self._TaskId = None
@@ -695,7 +671,6 @@ class AndroidInstanceTask(AbstractModel):
     @property
     def TaskId(self):
         """任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskId
@@ -707,7 +682,6 @@ class AndroidInstanceTask(AbstractModel):
     @property
     def AndroidInstanceId(self):
         """实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AndroidInstanceId
@@ -744,7 +718,6 @@ class AndroidInstanceTaskStatus(AbstractModel):
         :param _AndroidInstanceId: 实例ID
         :type AndroidInstanceId: str
         :param _TaskResult: 任务执行结果描述，针对某些任务，可以是可解析的 json
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskResult: str
         """
         self._TaskId = None
@@ -788,7 +761,6 @@ class AndroidInstanceTaskStatus(AbstractModel):
     @property
     def TaskResult(self):
         """任务执行结果描述，针对某些任务，可以是可解析的 json
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskResult
@@ -1105,7 +1077,6 @@ class CreateAndroidInstanceImageResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _AndroidInstanceImageId: 安卓实例镜像 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type AndroidInstanceImageId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1116,7 +1087,6 @@ class CreateAndroidInstanceImageResponse(AbstractModel):
     @property
     def AndroidInstanceImageId(self):
         """安卓实例镜像 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AndroidInstanceImageId
@@ -2230,7 +2200,6 @@ class DescribeAndroidAppsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Apps: 安卓应用列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Apps: list of AndroidApp
         :param _TotalCount: 安卓应用列表长度
         :type TotalCount: int
@@ -2244,7 +2213,6 @@ class DescribeAndroidAppsResponse(AbstractModel):
     @property
     def Apps(self):
         """安卓应用列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AndroidApp
         """
         return self._Apps
@@ -2331,7 +2299,6 @@ class DescribeAndroidInstanceAppsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Apps: 安卓应用列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Apps: list of AndroidInstanceAppInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2342,7 +2309,6 @@ class DescribeAndroidInstanceAppsResponse(AbstractModel):
     @property
     def Apps(self):
         """安卓应用列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AndroidInstanceAppInfo
         """
         return self._Apps
@@ -2447,10 +2413,8 @@ class DescribeAndroidInstanceImagesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Total: 镜像总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _AndroidInstanceImages: 镜像列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type AndroidInstanceImages: list of AndroidInstanceImage
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2462,7 +2426,6 @@ class DescribeAndroidInstanceImagesResponse(AbstractModel):
     @property
     def Total(self):
         """镜像总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -2474,7 +2437,6 @@ class DescribeAndroidInstanceImagesResponse(AbstractModel):
     @property
     def AndroidInstanceImages(self):
         """镜像列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AndroidInstanceImage
         """
         return self._AndroidInstanceImages
@@ -2694,7 +2656,6 @@ class DescribeAndroidInstanceTasksStatusResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TaskStatusSet: 任务状态集合
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskStatusSet: list of AndroidInstanceTaskStatus
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2705,7 +2666,6 @@ class DescribeAndroidInstanceTasksStatusResponse(AbstractModel):
     @property
     def TaskStatusSet(self):
         """任务状态集合
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AndroidInstanceTaskStatus
         """
         return self._TaskStatusSet
@@ -3267,9 +3227,9 @@ class Filter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: "aaa"
+        :param _Name: 字段名
         :type Name: str
-        :param _Values: ["bbb", "ccc"]
+        :param _Values: 字段值列表
         :type Values: list of str
         """
         self._Name = None
@@ -3277,7 +3237,7 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
-        """"aaa"
+        """字段名
         :rtype: str
         """
         return self._Name
@@ -3288,7 +3248,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        """["bbb", "ccc"]
+        """字段值列表
         :rtype: list of str
         """
         return self._Values
@@ -3385,7 +3345,6 @@ class InstallAndroidInstancesAppResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TaskSet: 任务集合
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskSet: list of AndroidInstanceTask
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3396,7 +3355,6 @@ class InstallAndroidInstancesAppResponse(AbstractModel):
     @property
     def TaskSet(self):
         """任务集合
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AndroidInstanceTask
         """
         return self._TaskSet
@@ -3911,7 +3869,6 @@ class RebootAndroidInstancesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TaskSet: 任务集合
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskSet: list of AndroidInstanceTask
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3922,7 +3879,6 @@ class RebootAndroidInstancesResponse(AbstractModel):
     @property
     def TaskSet(self):
         """任务集合
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AndroidInstanceTask
         """
         return self._TaskSet
@@ -4037,7 +3993,6 @@ class ResetAndroidInstancesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TaskSet: 任务集合
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskSet: list of AndroidInstanceTask
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4048,7 +4003,6 @@ class ResetAndroidInstancesResponse(AbstractModel):
     @property
     def TaskSet(self):
         """任务集合
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AndroidInstanceTask
         """
         return self._TaskSet
@@ -4360,7 +4314,6 @@ class StartAndroidInstancesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TaskSet: 任务集合
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskSet: list of AndroidInstanceTask
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4371,7 +4324,6 @@ class StartAndroidInstancesResponse(AbstractModel):
     @property
     def TaskSet(self):
         """任务集合
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AndroidInstanceTask
         """
         return self._TaskSet
@@ -4683,7 +4635,6 @@ class StopAndroidInstancesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TaskSet: 任务集合
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskSet: list of AndroidInstanceTask
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4694,7 +4645,6 @@ class StopAndroidInstancesResponse(AbstractModel):
     @property
     def TaskSet(self):
         """任务集合
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AndroidInstanceTask
         """
         return self._TaskSet
@@ -5236,7 +5186,6 @@ class SyncExecuteCommandResult(AbstractModel):
         :param _InstanceId: 实例ID
         :type InstanceId: str
         :param _Output: 命令执行输出内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type Output: str
         :param _Status: 命令执行结果
         :type Status: str
@@ -5259,7 +5208,6 @@ class SyncExecuteCommandResult(AbstractModel):
     @property
     def Output(self):
         """命令执行输出内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Output
@@ -5507,7 +5455,6 @@ class UninstallAndroidInstancesAppResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TaskSet: 任务集合
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskSet: list of AndroidInstanceTask
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5518,7 +5465,6 @@ class UninstallAndroidInstancesAppResponse(AbstractModel):
     @property
     def TaskSet(self):
         """任务集合
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AndroidInstanceTask
         """
         return self._TaskSet

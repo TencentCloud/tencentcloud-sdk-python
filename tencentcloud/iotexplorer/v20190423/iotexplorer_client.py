@@ -188,7 +188,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def ChangeP2PRoute(self, request):
-        """p2p路线切换
+        """p2p路线切换（此接口目前处于内测接口，可以联系申请加白 ）
 
         :param request: Request instance for ChangeP2PRoute.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ChangeP2PRouteRequest`

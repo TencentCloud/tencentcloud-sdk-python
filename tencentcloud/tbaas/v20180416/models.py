@@ -439,19 +439,14 @@ class ChainMakerContractResult(AbstractModel):
         :param _Code: 交易结果码
         :type Code: int
         :param _CodeMessage: 交易结果码含义
-注意：此字段可能返回 null，表示取不到有效值。
         :type CodeMessage: str
         :param _TxId: 交易ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TxId: str
         :param _GasUsed: Gas使用量
-注意：此字段可能返回 null，表示取不到有效值。
         :type GasUsed: int
         :param _Message: 合约返回消息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param _Result: 合约函数返回，base64编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
         """
         self._Code = None
@@ -475,7 +470,6 @@ class ChainMakerContractResult(AbstractModel):
     @property
     def CodeMessage(self):
         """交易结果码含义
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CodeMessage
@@ -487,7 +481,6 @@ class ChainMakerContractResult(AbstractModel):
     @property
     def TxId(self):
         """交易ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TxId
@@ -499,7 +492,6 @@ class ChainMakerContractResult(AbstractModel):
     @property
     def GasUsed(self):
         """Gas使用量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._GasUsed
@@ -511,7 +503,6 @@ class ChainMakerContractResult(AbstractModel):
     @property
     def Message(self):
         """合约返回消息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Message
@@ -523,7 +514,6 @@ class ChainMakerContractResult(AbstractModel):
     @property
     def Result(self):
         """合约函数返回，base64编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Result
@@ -560,25 +550,18 @@ class ChainMakerTransactionResult(AbstractModel):
         :param _Code: 交易结果码
         :type Code: int
         :param _CodeMessage: 交易结果码含义
-注意：此字段可能返回 null，表示取不到有效值。
         :type CodeMessage: str
         :param _TxId: 交易ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TxId: str
         :param _GasUsed: Gas使用量
-注意：此字段可能返回 null，表示取不到有效值。
         :type GasUsed: int
         :param _BlockHeight: 区块高度
-注意：此字段可能返回 null，表示取不到有效值。
         :type BlockHeight: int
         :param _ContractEvent: 合约执行结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type ContractEvent: str
         :param _Message: 合约返回信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param _Timestamp: 交易时间，单位是秒
-注意：此字段可能返回 null，表示取不到有效值。
         :type Timestamp: int
         """
         self._Code = None
@@ -604,7 +587,6 @@ class ChainMakerTransactionResult(AbstractModel):
     @property
     def CodeMessage(self):
         """交易结果码含义
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CodeMessage
@@ -616,7 +598,6 @@ class ChainMakerTransactionResult(AbstractModel):
     @property
     def TxId(self):
         """交易ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TxId
@@ -628,7 +609,6 @@ class ChainMakerTransactionResult(AbstractModel):
     @property
     def GasUsed(self):
         """Gas使用量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._GasUsed
@@ -640,7 +620,6 @@ class ChainMakerTransactionResult(AbstractModel):
     @property
     def BlockHeight(self):
         """区块高度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._BlockHeight
@@ -652,7 +631,6 @@ class ChainMakerTransactionResult(AbstractModel):
     @property
     def ContractEvent(self):
         """合约执行结果
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ContractEvent
@@ -664,7 +642,6 @@ class ChainMakerTransactionResult(AbstractModel):
     @property
     def Message(self):
         """合约返回信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Message
@@ -676,7 +653,6 @@ class ChainMakerTransactionResult(AbstractModel):
     @property
     def Timestamp(self):
         """交易时间，单位是秒
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Timestamp
@@ -3462,7 +3438,6 @@ class InvokeChainMakerDemoContractResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 交易结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tbaas.v20180416.models.ChainMakerContractResult`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3473,7 +3448,6 @@ class InvokeChainMakerDemoContractResponse(AbstractModel):
     @property
     def Result(self):
         """交易结果
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tbaas.v20180416.models.ChainMakerContractResult`
         """
         return self._Result
@@ -4369,12 +4343,10 @@ class QueryChainMakerDemoBlockTransactionResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 区块交易
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: list of ChainMakerTransactionResult
         :param _BlockHeight: 区块高度
         :type BlockHeight: int
         :param _TxCount: 交易数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TxCount: int
         :param _BlockTimestamp: 区块时间戳，单位是秒
         :type BlockTimestamp: int
@@ -4390,7 +4362,6 @@ class QueryChainMakerDemoBlockTransactionResponse(AbstractModel):
     @property
     def Result(self):
         """区块交易
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ChainMakerTransactionResult
         """
         return self._Result
@@ -4413,7 +4384,6 @@ class QueryChainMakerDemoBlockTransactionResponse(AbstractModel):
     @property
     def TxCount(self):
         """交易数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TxCount
@@ -4562,7 +4532,6 @@ class QueryChainMakerDemoContractResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 交易结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tbaas.v20180416.models.ChainMakerContractResult`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4573,7 +4542,6 @@ class QueryChainMakerDemoContractResponse(AbstractModel):
     @property
     def Result(self):
         """交易结果
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tbaas.v20180416.models.ChainMakerContractResult`
         """
         return self._Result
@@ -4675,7 +4643,6 @@ class QueryChainMakerDemoTransactionResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 交易结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tbaas.v20180416.models.ChainMakerTransactionResult`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4686,7 +4653,6 @@ class QueryChainMakerDemoTransactionResponse(AbstractModel):
     @property
     def Result(self):
         """交易结果
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tbaas.v20180416.models.ChainMakerTransactionResult`
         """
         return self._Result
@@ -5398,22 +5364,16 @@ class Transaction(AbstractModel):
     def __init__(self):
         r"""
         :param _TxId: 交易ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TxId: str
         :param _ChaincodeName: 合约名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChaincodeName: str
         :param _Sender: 交易发送者
-注意：此字段可能返回 null，表示取不到有效值。
         :type Sender: str
         :param _CreateTime: 交易创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _BlockHeight: 交易所在区块高度
-注意：此字段可能返回 null，表示取不到有效值。
         :type BlockHeight: int
         :param _TxIndex: 交易在区块中的序号
-注意：此字段可能返回 null，表示取不到有效值。
         :type TxIndex: int
         """
         self._TxId = None
@@ -5426,7 +5386,6 @@ class Transaction(AbstractModel):
     @property
     def TxId(self):
         """交易ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TxId
@@ -5438,7 +5397,6 @@ class Transaction(AbstractModel):
     @property
     def ChaincodeName(self):
         """合约名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ChaincodeName
@@ -5450,7 +5408,6 @@ class Transaction(AbstractModel):
     @property
     def Sender(self):
         """交易发送者
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Sender
@@ -5462,7 +5419,6 @@ class Transaction(AbstractModel):
     @property
     def CreateTime(self):
         """交易创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -5474,7 +5430,6 @@ class Transaction(AbstractModel):
     @property
     def BlockHeight(self):
         """交易所在区块高度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._BlockHeight
@@ -5486,7 +5441,6 @@ class Transaction(AbstractModel):
     @property
     def TxIndex(self):
         """交易在区块中的序号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TxIndex
