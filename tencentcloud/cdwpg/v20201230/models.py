@@ -481,7 +481,7 @@ class ConfigHistory(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: id1
+        :param _Id: id
         :type Id: int
         :param _InstanceId: 实例名
         :type InstanceId: str
@@ -512,7 +512,7 @@ class ConfigHistory(AbstractModel):
 
     @property
     def Id(self):
-        """id1
+        """id
         :rtype: int
         """
         return self._Id

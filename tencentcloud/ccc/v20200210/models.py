@@ -3277,7 +3277,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
         :type Callees: list of str
         :param _Callers: 主叫号码列表
         :type Callers: list of str
-        :param _IvrId: 呼叫使用的Ivr
+        :param _IvrId: 呼叫使用的 IVR Id，不填时需要填写 AIAgentId
         :type IvrId: int
         :param _Name: 任务名
         :type Name: str
@@ -3293,6 +3293,12 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
         :type UUI: str
         :param _CalleeAttributes: 被叫属性
         :type CalleeAttributes: list of CalleeAttribute
+        :param _TimeZone: IANA 时区名称，参考 https://datatracker.ietf.org/doc/html/draft-ietf-netmod-iana-timezones
+        :type TimeZone: str
+        :param _AvailableTime: 可用时间段
+        :type AvailableTime: list of TimeRange
+        :param _AIAgentId: 智能体 ID，不填写时需要填写 IvrId
+        :type AIAgentId: int
         """
         self._SdkAppId = None
         self._NotBefore = None
@@ -3306,6 +3312,9 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
         self._Variables = None
         self._UUI = None
         self._CalleeAttributes = None
+        self._TimeZone = None
+        self._AvailableTime = None
+        self._AIAgentId = None
 
     @property
     def SdkAppId(self):
@@ -3353,7 +3362,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def IvrId(self):
-        """呼叫使用的Ivr
+        """呼叫使用的 IVR Id，不填时需要填写 AIAgentId
         :rtype: int
         """
         return self._IvrId
@@ -3439,6 +3448,39 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
     def CalleeAttributes(self, CalleeAttributes):
         self._CalleeAttributes = CalleeAttributes
 
+    @property
+    def TimeZone(self):
+        """IANA 时区名称，参考 https://datatracker.ietf.org/doc/html/draft-ietf-netmod-iana-timezones
+        :rtype: str
+        """
+        return self._TimeZone
+
+    @TimeZone.setter
+    def TimeZone(self, TimeZone):
+        self._TimeZone = TimeZone
+
+    @property
+    def AvailableTime(self):
+        """可用时间段
+        :rtype: list of TimeRange
+        """
+        return self._AvailableTime
+
+    @AvailableTime.setter
+    def AvailableTime(self, AvailableTime):
+        self._AvailableTime = AvailableTime
+
+    @property
+    def AIAgentId(self):
+        """智能体 ID，不填写时需要填写 IvrId
+        :rtype: int
+        """
+        return self._AIAgentId
+
+    @AIAgentId.setter
+    def AIAgentId(self, AIAgentId):
+        self._AIAgentId = AIAgentId
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -3463,6 +3505,14 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
                 obj = CalleeAttribute()
                 obj._deserialize(item)
                 self._CalleeAttributes.append(obj)
+        self._TimeZone = params.get("TimeZone")
+        if params.get("AvailableTime") is not None:
+            self._AvailableTime = []
+            for item in params.get("AvailableTime"):
+                obj = TimeRange()
+                obj._deserialize(item)
+                self._AvailableTime.append(obj)
+        self._AIAgentId = params.get("AIAgentId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4486,6 +4536,10 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
         :type UUI: str
         :param _CalleeAttributes: 被叫属性
         :type CalleeAttributes: list of CalleeAttribute
+        :param _TimeZone: IANA 时区名称，参考 https://datatracker.ietf.org/doc/html/draft-ietf-netmod-iana-timezones
+        :type TimeZone: str
+        :param _AvailableTime: 可用时间段
+        :type AvailableTime: list of TimeRange
         """
         self._SdkAppId = None
         self._Name = None
@@ -4503,6 +4557,8 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
         self._Variables = None
         self._UUI = None
         self._CalleeAttributes = None
+        self._TimeZone = None
+        self._AvailableTime = None
 
     @property
     def SdkAppId(self):
@@ -4680,6 +4736,28 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
     def CalleeAttributes(self, CalleeAttributes):
         self._CalleeAttributes = CalleeAttributes
 
+    @property
+    def TimeZone(self):
+        """IANA 时区名称，参考 https://datatracker.ietf.org/doc/html/draft-ietf-netmod-iana-timezones
+        :rtype: str
+        """
+        return self._TimeZone
+
+    @TimeZone.setter
+    def TimeZone(self, TimeZone):
+        self._TimeZone = TimeZone
+
+    @property
+    def AvailableTime(self):
+        """可用时间段
+        :rtype: list of TimeRange
+        """
+        return self._AvailableTime
+
+    @AvailableTime.setter
+    def AvailableTime(self, AvailableTime):
+        self._AvailableTime = AvailableTime
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -4708,6 +4786,13 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
                 obj = CalleeAttribute()
                 obj._deserialize(item)
                 self._CalleeAttributes.append(obj)
+        self._TimeZone = params.get("TimeZone")
+        if params.get("AvailableTime") is not None:
+            self._AvailableTime = []
+            for item in params.get("AvailableTime"):
+                obj = TimeRange()
+                obj._deserialize(item)
+                self._AvailableTime.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13595,7 +13680,10 @@ class StaffInfo(AbstractModel):
         :param _StaffNumber: 座席工号
         :type StaffNumber: str
         :param _RoleId: 用户角色id
+一个用户绑定了多个角色时以RoleIdList为准
         :type RoleId: int
+        :param _RoleIdList: 用户角色id列表
+        :type RoleIdList: int
         :param _SkillGroupList: 所属技能组列表
         :type SkillGroupList: list of SkillGroupItem
         :param _LastModifyTimestamp: 最后修改时间
@@ -13609,6 +13697,7 @@ class StaffInfo(AbstractModel):
         self._Nick = None
         self._StaffNumber = None
         self._RoleId = None
+        self._RoleIdList = None
         self._SkillGroupList = None
         self._LastModifyTimestamp = None
         self._ExtensionNumber = None
@@ -13670,14 +13759,30 @@ class StaffInfo(AbstractModel):
 
     @property
     def RoleId(self):
+        warnings.warn("parameter `RoleId` is deprecated", DeprecationWarning) 
+
         """用户角色id
+一个用户绑定了多个角色时以RoleIdList为准
         :rtype: int
         """
         return self._RoleId
 
     @RoleId.setter
     def RoleId(self, RoleId):
+        warnings.warn("parameter `RoleId` is deprecated", DeprecationWarning) 
+
         self._RoleId = RoleId
+
+    @property
+    def RoleIdList(self):
+        """用户角色id列表
+        :rtype: int
+        """
+        return self._RoleIdList
+
+    @RoleIdList.setter
+    def RoleIdList(self, RoleIdList):
+        self._RoleIdList = RoleIdList
 
     @property
     def SkillGroupList(self):
@@ -13720,6 +13825,7 @@ class StaffInfo(AbstractModel):
         self._Nick = params.get("Nick")
         self._StaffNumber = params.get("StaffNumber")
         self._RoleId = params.get("RoleId")
+        self._RoleIdList = params.get("RoleIdList")
         if params.get("SkillGroupList") is not None:
             self._SkillGroupList = []
             for item in params.get("SkillGroupList"):
@@ -14997,6 +15103,57 @@ NotExists
         self._QueuedSkillGroupName = params.get("QueuedSkillGroupName")
         self._VoicemailRecordURL = params.get("VoicemailRecordURL")
         self._VoicemailAsrURL = params.get("VoicemailAsrURL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TimeRange(AbstractModel):
+    """时间范围，24 小时制，格式为 09:00:00
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 开始时间
+        :type StartTime: str
+        :param _EndTime: 结束时间
+        :type EndTime: str
+        """
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def StartTime(self):
+        """开始时间
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """结束时间
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

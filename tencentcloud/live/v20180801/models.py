@@ -3146,21 +3146,13 @@ class CasterLayoutParam(AbstractModel):
         :param _LayerId: 布局层ID。
 在画面最终渲染时，将按ID从小到大的顺序，由下至上渲染。
         :type LayerId: int
-        :param _LayerWidth: 布局层宽度。
-当该值为大于1的整数值时，单位为像素，允许范围[1,1920]。
-当该值为小于1大于0的小数时，单位为百分比，表示该层在最终画面上所占的比例值。
+        :param _LayerWidth: 布局层宽度。单位为百分比，范围[0.0,1.0]，表示该层在最终画面上所占的比例值。
         :type LayerWidth: float
-        :param _LayerHeight: 布局层高度.
-当该值为大于1的整数值时，单位为像素，允许范围[1,1920]。
-当该值为小于1大于0的小数时，单位为百分比，表示该层在最终画面上所占的比例值。
+        :param _LayerHeight: 布局层高度。单位为百分比，范围[0.0,1.0]， 表示该层在最终画面上所占的比例值。
         :type LayerHeight: float
-        :param _LayerLocationX: 布局层位置x坐标。
-当该值为大于1的整数值时，单位为像素，允许范围[1,1920]。
-当该值为小于1大于0的小数时，单位为百分比，表示该层在最终画面上x坐标所占的比例值。
+        :param _LayerLocationX: 布局层位置x坐标。单位为百分比，范围[0.0,1.0]，表示该层在最终画面上x坐标所占的比例值。
         :type LayerLocationX: float
-        :param _LayerLocationY: 布局层位置Y坐标。
-当该值为大于1的整数值时，单位为像素，允许范围[1,1920]。
-当该值为小于1大于0的小数时，单位为百分比，表示该层在最终画面Y坐标上所占的比例值。
+        :param _LayerLocationY: 布局层位置Y坐标。单位为百分比，范围[0.0,1.0]， 表示该层在最终画面Y坐标上所占的比例值。
         :type LayerLocationY: float
         :param _UsePortraitSegment: 是否启用抠图。
         :type UsePortraitSegment: bool
@@ -3186,9 +3178,7 @@ class CasterLayoutParam(AbstractModel):
 
     @property
     def LayerWidth(self):
-        """布局层宽度。
-当该值为大于1的整数值时，单位为像素，允许范围[1,1920]。
-当该值为小于1大于0的小数时，单位为百分比，表示该层在最终画面上所占的比例值。
+        """布局层宽度。单位为百分比，范围[0.0,1.0]，表示该层在最终画面上所占的比例值。
         :rtype: float
         """
         return self._LayerWidth
@@ -3199,9 +3189,7 @@ class CasterLayoutParam(AbstractModel):
 
     @property
     def LayerHeight(self):
-        """布局层高度.
-当该值为大于1的整数值时，单位为像素，允许范围[1,1920]。
-当该值为小于1大于0的小数时，单位为百分比，表示该层在最终画面上所占的比例值。
+        """布局层高度。单位为百分比，范围[0.0,1.0]， 表示该层在最终画面上所占的比例值。
         :rtype: float
         """
         return self._LayerHeight
@@ -3212,9 +3200,7 @@ class CasterLayoutParam(AbstractModel):
 
     @property
     def LayerLocationX(self):
-        """布局层位置x坐标。
-当该值为大于1的整数值时，单位为像素，允许范围[1,1920]。
-当该值为小于1大于0的小数时，单位为百分比，表示该层在最终画面上x坐标所占的比例值。
+        """布局层位置x坐标。单位为百分比，范围[0.0,1.0]，表示该层在最终画面上x坐标所占的比例值。
         :rtype: float
         """
         return self._LayerLocationX
@@ -3225,9 +3211,7 @@ class CasterLayoutParam(AbstractModel):
 
     @property
     def LayerLocationY(self):
-        """布局层位置Y坐标。
-当该值为大于1的整数值时，单位为像素，允许范围[1,1920]。
-当该值为小于1大于0的小数时，单位为百分比，表示该层在最终画面Y坐标上所占的比例值。
+        """布局层位置Y坐标。单位为百分比，范围[0.0,1.0]， 表示该层在最终画面Y坐标上所占的比例值。
         :rtype: float
         """
         return self._LayerLocationY

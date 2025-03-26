@@ -82,7 +82,6 @@ class ApplyChainMakerBatchUserCertResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _SignUserCrtList: 成功生成的用户证书的base64编码字符串列表，与SignUserCsrList一一对应
-注意：此字段可能返回 null，表示取不到有效值。
         :type SignUserCrtList: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -93,7 +92,6 @@ class ApplyChainMakerBatchUserCertResponse(AbstractModel):
     @property
     def SignUserCrtList(self):
         """成功生成的用户证书的base64编码字符串列表，与SignUserCsrList一一对应
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._SignUserCrtList
@@ -3280,7 +3278,6 @@ class InvokeChainMakerContractResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 交易结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tbaas.v20180416.models.ChainMakerContractResult`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3291,7 +3288,6 @@ class InvokeChainMakerContractResponse(AbstractModel):
     @property
     def Result(self):
         """交易结果
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tbaas.v20180416.models.ChainMakerContractResult`
         """
         return self._Result
@@ -4037,12 +4033,10 @@ class QueryChainMakerBlockTransactionResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 区块交易
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: list of ChainMakerTransactionResult
         :param _BlockHeight: 区块高度
         :type BlockHeight: int
         :param _TxCount: 交易数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TxCount: int
         :param _BlockTimestamp: 区块时间戳，单位是秒
         :type BlockTimestamp: int
@@ -4058,7 +4052,6 @@ class QueryChainMakerBlockTransactionResponse(AbstractModel):
     @property
     def Result(self):
         """区块交易
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ChainMakerTransactionResult
         """
         return self._Result
@@ -4081,7 +4074,6 @@ class QueryChainMakerBlockTransactionResponse(AbstractModel):
     @property
     def TxCount(self):
         """交易数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TxCount
@@ -4230,7 +4222,6 @@ class QueryChainMakerContractResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 交易结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tbaas.v20180416.models.ChainMakerContractResult`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4241,7 +4232,6 @@ class QueryChainMakerContractResponse(AbstractModel):
     @property
     def Result(self):
         """交易结果
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tbaas.v20180416.models.ChainMakerContractResult`
         """
         return self._Result
@@ -4754,7 +4744,6 @@ class QueryChainMakerTransactionResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 交易结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tbaas.v20180416.models.ChainMakerTransactionResult`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4765,7 +4754,6 @@ class QueryChainMakerTransactionResponse(AbstractModel):
     @property
     def Result(self):
         """交易结果
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tbaas.v20180416.models.ChainMakerTransactionResult`
         """
         return self._Result

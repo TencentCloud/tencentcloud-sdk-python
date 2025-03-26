@@ -25,9 +25,9 @@ class ActivateCaCertificateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群id
+        :param _InstanceId: 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :type InstanceId: str
-        :param _CaSn: 证书序列号
+        :param _CaSn: CA证书的SN序列号，可以从 [DescribeCaCertificates](https://cloud.tencent.com/document/api/1778/116206)接口、控制台、证书文件中获得。
         :type CaSn: str
         """
         self._InstanceId = None
@@ -35,7 +35,7 @@ class ActivateCaCertificateRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群id
+        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -46,7 +46,7 @@ class ActivateCaCertificateRequest(AbstractModel):
 
     @property
     def CaSn(self):
-        """证书序列号
+        """CA证书的SN序列号，可以从 [DescribeCaCertificates](https://cloud.tencent.com/document/api/1778/116206)接口、控制台、证书文件中获得。
         :rtype: str
         """
         return self._CaSn
@@ -303,7 +303,6 @@ sub：订阅mqtt消息
         :param _ClientId: 条件-连接设备ID，可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
         :type ClientId: str
         :param _Username: 条件-用户名，可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
-
         :type Username: str
         :param _Ip: 条件-客户端IP地址，可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
         :type Ip: str
@@ -447,7 +446,6 @@ sub：订阅mqtt消息
     @property
     def Username(self):
         """条件-用户名，可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
-
         :rtype: str
         """
         return self._Username
@@ -2141,7 +2139,7 @@ class CreateUserRequest(AbstractModel):
         :type InstanceId: str
         :param _Username: 用户名，不能为空，只支持数字 大小写字母 分隔符("_","-")，不能超过 32 个字符
         :type Username: str
-        :param _Password: 密码，该字段为空时候则后端会默认生成
+        :param _Password: 密码，该字段为空时候则后端会默认生成。用户自定义密码时，不能为空，只支持数字 大小写字母 分隔符("_","-")，不能超过 64 个字符。
         :type Password: str
         :param _Remark: 备注，长度不超过128个字符。
         :type Remark: str
@@ -2175,7 +2173,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def Password(self):
-        """密码，该字段为空时候则后端会默认生成
+        """密码，该字段为空时候则后端会默认生成。用户自定义密码时，不能为空，只支持数字 大小写字母 分隔符("_","-")，不能超过 64 个字符。
         :rtype: str
         """
         return self._Password
@@ -2570,7 +2568,7 @@ class DeleteCaCertificateRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :type InstanceId: str
-        :param _CaSn: 证书序列号，可以从 [DescribeCaCertificates](https://cloud.tencent.com/document/api/1778/116206)接口、控制台、证书文件中获得。
+        :param _CaSn: CA证书序列号，可以从 [DescribeCaCertificates](https://cloud.tencent.com/document/api/1778/116206)接口、控制台、证书文件中获得。
         :type CaSn: str
         """
         self._InstanceId = None
@@ -2589,7 +2587,7 @@ class DeleteCaCertificateRequest(AbstractModel):
 
     @property
     def CaSn(self):
-        """证书序列号，可以从 [DescribeCaCertificates](https://cloud.tencent.com/document/api/1778/116206)接口、控制台、证书文件中获得。
+        """CA证书序列号，可以从 [DescribeCaCertificates](https://cloud.tencent.com/document/api/1778/116206)接口、控制台、证书文件中获得。
         :rtype: str
         """
         return self._CaSn
@@ -2790,14 +2788,14 @@ class DeleteInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """实例ID
+        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -3201,9 +3199,9 @@ class DescribeCaCertificateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CaSn: ca证书sn
+        :param _CaSn: CA证书的SN序列号，可以从 [DescribeCaCertificates](https://cloud.tencent.com/document/api/1778/116206)接口、控制台、证书文件中获得。
         :type CaSn: str
-        :param _InstanceId: 集群id
+        :param _InstanceId: 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :type InstanceId: str
         """
         self._CaSn = None
@@ -3211,7 +3209,7 @@ class DescribeCaCertificateRequest(AbstractModel):
 
     @property
     def CaSn(self):
-        """ca证书sn
+        """CA证书的SN序列号，可以从 [DescribeCaCertificates](https://cloud.tencent.com/document/api/1778/116206)接口、控制台、证书文件中获得。
         :rtype: str
         """
         return self._CaSn
@@ -3222,7 +3220,7 @@ class DescribeCaCertificateRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群id
+        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -3252,29 +3250,32 @@ class DescribeCaCertificateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CreatedTime: 创建时间
+        :param _CreatedTime: 创建时间，毫秒级时间戳 。
         :type CreatedTime: int
-        :param _UpdateTime: 上次更新时间
+        :param _UpdateTime: 上次更新时间，毫秒级时间戳 。
         :type UpdateTime: int
-        :param _NotAfterTime: 失效日期
+        :param _NotAfterTime: 失效日期，毫秒级时间戳 。
         :type NotAfterTime: int
-        :param _LastActivationTime: 上次激活时间
+        :param _LastActivationTime: 上次激活时间，毫秒级时间戳 。
         :type LastActivationTime: int
-        :param _LastInactivationTime: 上次吊销时间
+        :param _LastInactivationTime: 上次吊销时间，毫秒级时间戳 。
         :type LastInactivationTime: int
-        :param _Status: 证书状态
+        :param _Status: CA证书状态
+ ACTIVE：激活
+INACTIVE：未激活
+
         :type Status: str
         :param _CaSn: 证书序列号
         :type CaSn: str
-        :param _CaCn: common name
+        :param _CaCn: 证书的CN（Common Name），证书中用于标识主体的名称，通常是域名或组织名称
         :type CaCn: str
         :param _CaCertificate: 证书内容
         :type CaCertificate: str
-        :param _Format: 证书格式
+        :param _Format: 证书格式，当仅支持PEM格式
         :type Format: str
         :param _CaIssuerCn: Ca证书颁发者CN
         :type CaIssuerCn: str
-        :param _NotBeforeTime: 生效开始时间
+        :param _NotBeforeTime: 生效开始时间，毫秒级时间戳 。
         :type NotBeforeTime: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3295,7 +3296,7 @@ class DescribeCaCertificateResponse(AbstractModel):
 
     @property
     def CreatedTime(self):
-        """创建时间
+        """创建时间，毫秒级时间戳 。
         :rtype: int
         """
         return self._CreatedTime
@@ -3306,7 +3307,7 @@ class DescribeCaCertificateResponse(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """上次更新时间
+        """上次更新时间，毫秒级时间戳 。
         :rtype: int
         """
         return self._UpdateTime
@@ -3317,7 +3318,7 @@ class DescribeCaCertificateResponse(AbstractModel):
 
     @property
     def NotAfterTime(self):
-        """失效日期
+        """失效日期，毫秒级时间戳 。
         :rtype: int
         """
         return self._NotAfterTime
@@ -3328,7 +3329,7 @@ class DescribeCaCertificateResponse(AbstractModel):
 
     @property
     def LastActivationTime(self):
-        """上次激活时间
+        """上次激活时间，毫秒级时间戳 。
         :rtype: int
         """
         return self._LastActivationTime
@@ -3339,7 +3340,7 @@ class DescribeCaCertificateResponse(AbstractModel):
 
     @property
     def LastInactivationTime(self):
-        """上次吊销时间
+        """上次吊销时间，毫秒级时间戳 。
         :rtype: int
         """
         return self._LastInactivationTime
@@ -3350,7 +3351,10 @@ class DescribeCaCertificateResponse(AbstractModel):
 
     @property
     def Status(self):
-        """证书状态
+        """CA证书状态
+ ACTIVE：激活
+INACTIVE：未激活
+
         :rtype: str
         """
         return self._Status
@@ -3372,7 +3376,7 @@ class DescribeCaCertificateResponse(AbstractModel):
 
     @property
     def CaCn(self):
-        """common name
+        """证书的CN（Common Name），证书中用于标识主体的名称，通常是域名或组织名称
         :rtype: str
         """
         return self._CaCn
@@ -3394,7 +3398,7 @@ class DescribeCaCertificateResponse(AbstractModel):
 
     @property
     def Format(self):
-        """证书格式
+        """证书格式，当仅支持PEM格式
         :rtype: str
         """
         return self._Format
@@ -3416,7 +3420,7 @@ class DescribeCaCertificateResponse(AbstractModel):
 
     @property
     def NotBeforeTime(self):
-        """生效开始时间
+        """生效开始时间，毫秒级时间戳 。
         :rtype: int
         """
         return self._NotBeforeTime
@@ -3546,7 +3550,7 @@ class DescribeClientListRequest(AbstractModel):
         r"""
         :param _InstanceId: 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :type InstanceId: str
-        :param _ClientId: 客户端名
+        :param _ClientId: 客户端ID
         :type ClientId: str
         :param _Number: 客户端数量限制,最大1024，默认1024
         :type Number: str
@@ -3568,7 +3572,7 @@ class DescribeClientListRequest(AbstractModel):
 
     @property
     def ClientId(self):
-        """客户端名
+        """客户端ID
         :rtype: str
         """
         return self._ClientId
@@ -3974,24 +3978,25 @@ class DescribeDeviceCertificatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        :param _InstanceId: 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :type InstanceId: str
         :param _Filters: 支持搜索参数
-ClientId：客户端id
-CaSn：所属的CA证书SN
-DeviceCertificateSn：设备证书SN
-DeviceCertificateCn：设备证书CN
+ClientId：客户端id，根据实际业务使用获取
+CaSn：所属的CA证书SN序列号 可以从 [查询集群CA证书列表](https://cloud.tencent.com/document/api/1778/116206) 或者实际业务使用获取
+DeviceCertificateSn：设备证书SN序列号 可从[查询设备证书详情](https://cloud.tencent.com/document/api/1778/113748) 获取
+DeviceCertificateCn：设备证书CN 可从[查询设备证书详情](https://cloud.tencent.com/document/api/1778/113748) 获取
 OrganizationalUnit：证书OU
 NotAfterEnd：过期时间小于等于指定时间的证书
 NotAfterStart：过期时间大于等于指定时间的证书
-Status：证书状态
+Status：设备证书状态     ACTIVE（激活）； INACTIVE（未激活）REVOKED（吊销）；PENDING_ACTIVATION（注册待激活）
 
         :type Filters: list of Filter
-        :param _Limit: 分页limit
+        :param _Limit: 分页limit，默认20，最大100
         :type Limit: int
-        :param _Offset: 分页偏移量
+        :param _Offset: 分页偏移量，默认0
         :type Offset: int
-        :param _OrderBy: CREATE_TIME_DESC, 创建时间降序
+        :param _OrderBy: 排序规则
+    CREATE_TIME_DESC, 创建时间降序
     CREATE_TIME_ASC,创建时间升序
     UPDATE_TIME_DESC,更新时间降序
     UPDATE_TIME_ASC,更新时间升序
@@ -4005,7 +4010,7 @@ Status：证书状态
 
     @property
     def InstanceId(self):
-        """实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -4017,14 +4022,14 @@ Status：证书状态
     @property
     def Filters(self):
         """支持搜索参数
-ClientId：客户端id
-CaSn：所属的CA证书SN
-DeviceCertificateSn：设备证书SN
-DeviceCertificateCn：设备证书CN
+ClientId：客户端id，根据实际业务使用获取
+CaSn：所属的CA证书SN序列号 可以从 [查询集群CA证书列表](https://cloud.tencent.com/document/api/1778/116206) 或者实际业务使用获取
+DeviceCertificateSn：设备证书SN序列号 可从[查询设备证书详情](https://cloud.tencent.com/document/api/1778/113748) 获取
+DeviceCertificateCn：设备证书CN 可从[查询设备证书详情](https://cloud.tencent.com/document/api/1778/113748) 获取
 OrganizationalUnit：证书OU
 NotAfterEnd：过期时间小于等于指定时间的证书
 NotAfterStart：过期时间大于等于指定时间的证书
-Status：证书状态
+Status：设备证书状态     ACTIVE（激活）； INACTIVE（未激活）REVOKED（吊销）；PENDING_ACTIVATION（注册待激活）
 
         :rtype: list of Filter
         """
@@ -4036,7 +4041,7 @@ Status：证书状态
 
     @property
     def Limit(self):
-        """分页limit
+        """分页limit，默认20，最大100
         :rtype: int
         """
         return self._Limit
@@ -4047,7 +4052,7 @@ Status：证书状态
 
     @property
     def Offset(self):
-        """分页偏移量
+        """分页偏移量，默认0
         :rtype: int
         """
         return self._Offset
@@ -4058,7 +4063,8 @@ Status：证书状态
 
     @property
     def OrderBy(self):
-        """CREATE_TIME_DESC, 创建时间降序
+        """排序规则
+    CREATE_TIME_DESC, 创建时间降序
     CREATE_TIME_ASC,创建时间升序
     UPDATE_TIME_DESC,更新时间降序
     UPDATE_TIME_ASC,更新时间升序
@@ -4101,7 +4107,7 @@ class DescribeDeviceCertificatesResponse(AbstractModel):
         r"""
         :param _TotalCount: 总数
         :type TotalCount: int
-        :param _Data: 设备证书
+        :param _Data: 设备证书列表
         :type Data: list of DeviceCertificateItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4123,7 +4129,7 @@ class DescribeDeviceCertificatesResponse(AbstractModel):
 
     @property
     def Data(self):
-        """设备证书
+        """设备证书列表
         :rtype: list of DeviceCertificateItem
         """
         return self._Data
@@ -5356,7 +5362,7 @@ class DescribeTopicListRequest(AbstractModel):
         :type Filters: list of Filter
         :param _Offset: 查询起始位置，默认0。
         :type Offset: int
-        :param _Limit: 查询结果限制数量，默认0，最大20
+        :param _Limit: 查询结果限制数量，默认20，最大20
         :type Limit: int
         """
         self._InstanceId = None
@@ -5400,7 +5406,7 @@ class DescribeTopicListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """查询结果限制数量，默认0，最大20
+        """查询结果限制数量，默认20，最大20
         :rtype: int
         """
         return self._Limit
@@ -5794,37 +5800,37 @@ class DeviceCertificateItem(AbstractModel):
         :type ClientId: str
         :param _DeviceCertificate: 设备证书
         :type DeviceCertificate: str
-        :param _DeviceCertificateSn: 设备证书Sn
+        :param _DeviceCertificateSn: 设备证书SN序列号，用于唯一标识一个设备证书
         :type DeviceCertificateSn: str
         :param _DeviceCertificateCn: 设备证书Cn
         :type DeviceCertificateCn: str
-        :param _CaSn: 签发ca的序列号
+        :param _CaSn: 签发该证书的CA证书的序列号
         :type CaSn: str
-        :param _Format: 证书格式
+        :param _Format: 证书格式，当前仅支持PEM
         :type Format: str
-        :param _Status: 证书状态
-    ACTIVE,//激活
-    INACTIVE,//未激活
-    REVOKED,//吊销
-    PENDING_ACTIVATION,//注册待激活
+        :param _Status: 设备证书状态
+    ACTIVE：激活
+    INACTIVE：未激活
+    REVOKED：吊销
+    PENDING_ACTIVATION：注册待激活
         :type Status: str
         :param _OrganizationalUnit: 组织单位
         :type OrganizationalUnit: str
-        :param _LastActivationTime: 上次激活时间
+        :param _LastActivationTime: 上次激活时间，毫秒级时间戳 。
         :type LastActivationTime: int
-        :param _LastInactivationTime: 上次取消激活时间
+        :param _LastInactivationTime: 上次取消激活时间，毫秒级时间戳 。
         :type LastInactivationTime: int
-        :param _CreatedTime: 创建时间
+        :param _CreatedTime: 创建时间，毫秒级时间戳 。
         :type CreatedTime: int
-        :param _UpdateTime: 预销毁时间
+        :param _UpdateTime: 更新时间，毫秒级时间戳 。
         :type UpdateTime: int
         :param _CertificateSource: 证书来源：
 API, 手动注册   
 JITP 自动注册
         :type CertificateSource: str
-        :param _NotAfterTime: 证书失效日期
+        :param _NotAfterTime: 证书失效日期，毫秒级时间戳 。
         :type NotAfterTime: int
-        :param _NotBeforeTime: 证书生效开始日期
+        :param _NotBeforeTime: 证书生效开始日期，毫秒级时间戳 。
         :type NotBeforeTime: int
         """
         self._ClientId = None
@@ -5867,7 +5873,7 @@ JITP 自动注册
 
     @property
     def DeviceCertificateSn(self):
-        """设备证书Sn
+        """设备证书SN序列号，用于唯一标识一个设备证书
         :rtype: str
         """
         return self._DeviceCertificateSn
@@ -5889,7 +5895,7 @@ JITP 自动注册
 
     @property
     def CaSn(self):
-        """签发ca的序列号
+        """签发该证书的CA证书的序列号
         :rtype: str
         """
         return self._CaSn
@@ -5900,7 +5906,7 @@ JITP 自动注册
 
     @property
     def Format(self):
-        """证书格式
+        """证书格式，当前仅支持PEM
         :rtype: str
         """
         return self._Format
@@ -5911,11 +5917,11 @@ JITP 自动注册
 
     @property
     def Status(self):
-        """证书状态
-    ACTIVE,//激活
-    INACTIVE,//未激活
-    REVOKED,//吊销
-    PENDING_ACTIVATION,//注册待激活
+        """设备证书状态
+    ACTIVE：激活
+    INACTIVE：未激活
+    REVOKED：吊销
+    PENDING_ACTIVATION：注册待激活
         :rtype: str
         """
         return self._Status
@@ -5937,7 +5943,7 @@ JITP 自动注册
 
     @property
     def LastActivationTime(self):
-        """上次激活时间
+        """上次激活时间，毫秒级时间戳 。
         :rtype: int
         """
         return self._LastActivationTime
@@ -5948,7 +5954,7 @@ JITP 自动注册
 
     @property
     def LastInactivationTime(self):
-        """上次取消激活时间
+        """上次取消激活时间，毫秒级时间戳 。
         :rtype: int
         """
         return self._LastInactivationTime
@@ -5959,7 +5965,7 @@ JITP 自动注册
 
     @property
     def CreatedTime(self):
-        """创建时间
+        """创建时间，毫秒级时间戳 。
         :rtype: int
         """
         return self._CreatedTime
@@ -5970,7 +5976,7 @@ JITP 自动注册
 
     @property
     def UpdateTime(self):
-        """预销毁时间
+        """更新时间，毫秒级时间戳 。
         :rtype: int
         """
         return self._UpdateTime
@@ -5994,7 +6000,7 @@ JITP 自动注册
 
     @property
     def NotAfterTime(self):
-        """证书失效日期
+        """证书失效日期，毫秒级时间戳 。
         :rtype: int
         """
         return self._NotAfterTime
@@ -6005,7 +6011,7 @@ JITP 自动注册
 
     @property
     def NotBeforeTime(self):
-        """证书生效开始日期
+        """证书生效开始日期，毫秒级时间戳 。
         :rtype: int
         """
         return self._NotBeforeTime
@@ -6761,7 +6767,7 @@ DELETING，删除中
         :type MaxSubscriptionPerClient: int
         :param _ClientNumLimit: 客户端连接数上线
         :type ClientNumLimit: int
-        :param _RenewFlag: 是否自动续费。仅包年包月就去那生效。
+        :param _RenewFlag: 是否自动续费。仅包年包月集群生效。
 1:自动续费
 0:非自动续费
         :type RenewFlag: int
@@ -6957,7 +6963,7 @@ DELETING，删除中
 
     @property
     def RenewFlag(self):
-        """是否自动续费。仅包年包月就去那生效。
+        """是否自动续费。仅包年包月集群生效。
 1:自动续费
 0:非自动续费
         :rtype: int
@@ -9222,19 +9228,17 @@ class RegisterCaCertificateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群id
+        :param _InstanceId: 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :type InstanceId: str
-        :param _CaCertificate: CA证书
+        :param _CaCertificate: CA证书内容，自签CA可参考 [自定义 X.509 证书实现 “一机一证”](https://cloud.tencent.com/document/product/1778/114817) 签发自签CA
         :type CaCertificate: str
-        :param _VerificationCertificate: 验证证书
+        :param _VerificationCertificate: 验证证书内容，可参考 [自定义 X.509 证书实现 “一机一证”](https://cloud.tencent.com/document/product/1778/114817) 手动注册CA证书章节
         :type VerificationCertificate: str
-        :param _Format: 证书格式，不传默认PEM格式
+        :param _Format: 证书格式，不传默认PEM格式，当前仅支持PEM格式
         :type Format: str
         :param _Status: 证书状态，不传默认ACTIVE状态
-    ACTIVE,//激活
-    INACTIVE,//未激活
-    REVOKED,//吊销
-    PENDING_ACTIVATION,//注册待激活
+    ACTIVE：激活
+    INACTIVE：未激活
         :type Status: str
         """
         self._InstanceId = None
@@ -9245,7 +9249,7 @@ class RegisterCaCertificateRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群id
+        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -9256,7 +9260,7 @@ class RegisterCaCertificateRequest(AbstractModel):
 
     @property
     def CaCertificate(self):
-        """CA证书
+        """CA证书内容，自签CA可参考 [自定义 X.509 证书实现 “一机一证”](https://cloud.tencent.com/document/product/1778/114817) 签发自签CA
         :rtype: str
         """
         return self._CaCertificate
@@ -9267,7 +9271,7 @@ class RegisterCaCertificateRequest(AbstractModel):
 
     @property
     def VerificationCertificate(self):
-        """验证证书
+        """验证证书内容，可参考 [自定义 X.509 证书实现 “一机一证”](https://cloud.tencent.com/document/product/1778/114817) 手动注册CA证书章节
         :rtype: str
         """
         return self._VerificationCertificate
@@ -9278,7 +9282,7 @@ class RegisterCaCertificateRequest(AbstractModel):
 
     @property
     def Format(self):
-        """证书格式，不传默认PEM格式
+        """证书格式，不传默认PEM格式，当前仅支持PEM格式
         :rtype: str
         """
         return self._Format
@@ -9290,10 +9294,8 @@ class RegisterCaCertificateRequest(AbstractModel):
     @property
     def Status(self):
         """证书状态，不传默认ACTIVE状态
-    ACTIVE,//激活
-    INACTIVE,//未激活
-    REVOKED,//吊销
-    PENDING_ACTIVATION,//注册待激活
+    ACTIVE：激活
+    INACTIVE：未激活
         :rtype: str
         """
         return self._Status
@@ -9354,17 +9356,21 @@ class RegisterDeviceCertificateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群id
+        :param _InstanceId: 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :type InstanceId: str
-        :param _DeviceCertificate: 设备证书
+        :param _DeviceCertificate: 设备证书内容，可参考 [使用 CA 证书生成服务端/客户端证书](https://cloud.tencent.com/document/product/1778/114817#aab79cc8-a148-412e-beb8-9c9e158eb944) 生成
         :type DeviceCertificate: str
         :param _CaSn: 关联的CA证书SN
         :type CaSn: str
-        :param _ClientId: 客户端ID
+        :param _ClientId: 客户端ID，需要关联该证书的客户端ID。根据实际业务使用填写
         :type ClientId: str
-        :param _Format: 证书格式
+        :param _Format: 证书格式，默认为PEM，当前仅支持PEM格式
         :type Format: str
-        :param _Status:     ACTIVE,//激活     INACTIVE,//未激活     REVOKED,//吊销     PENDING_ACTIVATION,//注册待激活
+        :param _Status:  客户端证书状态，默认激活状态（ACTIVE）
+ACTIVE：激活     
+INACTIVE：未激活     
+REVOKED：吊销 
+PENDING_ACTIVATION：注册待激活
         :type Status: str
         """
         self._InstanceId = None
@@ -9376,7 +9382,7 @@ class RegisterDeviceCertificateRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群id
+        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -9387,7 +9393,7 @@ class RegisterDeviceCertificateRequest(AbstractModel):
 
     @property
     def DeviceCertificate(self):
-        """设备证书
+        """设备证书内容，可参考 [使用 CA 证书生成服务端/客户端证书](https://cloud.tencent.com/document/product/1778/114817#aab79cc8-a148-412e-beb8-9c9e158eb944) 生成
         :rtype: str
         """
         return self._DeviceCertificate
@@ -9409,7 +9415,7 @@ class RegisterDeviceCertificateRequest(AbstractModel):
 
     @property
     def ClientId(self):
-        """客户端ID
+        """客户端ID，需要关联该证书的客户端ID。根据实际业务使用填写
         :rtype: str
         """
         return self._ClientId
@@ -9420,7 +9426,7 @@ class RegisterDeviceCertificateRequest(AbstractModel):
 
     @property
     def Format(self):
-        """证书格式
+        """证书格式，默认为PEM，当前仅支持PEM格式
         :rtype: str
         """
         return self._Format
@@ -9431,7 +9437,11 @@ class RegisterDeviceCertificateRequest(AbstractModel):
 
     @property
     def Status(self):
-        """    ACTIVE,//激活     INACTIVE,//未激活     REVOKED,//吊销     PENDING_ACTIVATION,//注册待激活
+        """ 客户端证书状态，默认激活状态（ACTIVE）
+ACTIVE：激活     
+INACTIVE：未激活     
+REVOKED：吊销 
+PENDING_ACTIVATION：注册待激活
         :rtype: str
         """
         return self._Status

@@ -11534,6 +11534,8 @@ class DatasourceConnectionConfig(AbstractModel):
         :param _TCHouseD: Doris数据源连接的属性
 注意：此字段可能返回 null，表示取不到有效值。
         :type TCHouseD: :class:`tencentcloud.dlc.v20210125.models.TCHouseD`
+        :param _TccHive: TccHive数据目录连接信息
+        :type TccHive: :class:`tencentcloud.dlc.v20210125.models.TccHive`
         """
         self._Mysql = None
         self._Hive = None
@@ -11545,6 +11547,7 @@ class DatasourceConnectionConfig(AbstractModel):
         self._Elasticsearch = None
         self._TDSQLPostgreSql = None
         self._TCHouseD = None
+        self._TccHive = None
 
     @property
     def Mysql(self):
@@ -11666,6 +11669,17 @@ class DatasourceConnectionConfig(AbstractModel):
     def TCHouseD(self, TCHouseD):
         self._TCHouseD = TCHouseD
 
+    @property
+    def TccHive(self):
+        """TccHive数据目录连接信息
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.TccHive`
+        """
+        return self._TccHive
+
+    @TccHive.setter
+    def TccHive(self, TccHive):
+        self._TccHive = TccHive
+
 
     def _deserialize(self, params):
         if params.get("Mysql") is not None:
@@ -11698,6 +11712,9 @@ class DatasourceConnectionConfig(AbstractModel):
         if params.get("TCHouseD") is not None:
             self._TCHouseD = TCHouseD()
             self._TCHouseD._deserialize(params.get("TCHouseD"))
+        if params.get("TccHive") is not None:
+            self._TccHive = TccHive()
+            self._TccHive._deserialize(params.get("TccHive"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23185,7 +23202,6 @@ class HiveInfo(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceName: str
         :param _HiveVersion: EMR集群中hive组件的版本号
-注意：此字段可能返回 null，表示取不到有效值。
         :type HiveVersion: str
         :param _KerberosInfo: Kerberos详细信息
 注意：此字段可能返回 null，表示取不到有效值。
@@ -23324,7 +23340,6 @@ class HiveInfo(AbstractModel):
     @property
     def HiveVersion(self):
         """EMR集群中hive组件的版本号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HiveVersion
@@ -25987,6 +26002,117 @@ class MysqlInfo(AbstractModel):
         self._DbName = params.get("DbName")
         self._InstanceId = params.get("InstanceId")
         self._InstanceName = params.get("InstanceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NetWork(AbstractModel):
+    """网络配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClbIp: 服务clbip
+        :type ClbIp: str
+        :param _ClbPort: 服务clbPort
+        :type ClbPort: str
+        :param _VpcId: vpc实例id
+        :type VpcId: str
+        :param _VpcCidrBlock: vpc网段
+        :type VpcCidrBlock: str
+        :param _SubnetId: 子网实例id
+        :type SubnetId: str
+        :param _SubnetCidrBlock: 子网网段
+        :type SubnetCidrBlock: str
+        """
+        self._ClbIp = None
+        self._ClbPort = None
+        self._VpcId = None
+        self._VpcCidrBlock = None
+        self._SubnetId = None
+        self._SubnetCidrBlock = None
+
+    @property
+    def ClbIp(self):
+        """服务clbip
+        :rtype: str
+        """
+        return self._ClbIp
+
+    @ClbIp.setter
+    def ClbIp(self, ClbIp):
+        self._ClbIp = ClbIp
+
+    @property
+    def ClbPort(self):
+        """服务clbPort
+        :rtype: str
+        """
+        return self._ClbPort
+
+    @ClbPort.setter
+    def ClbPort(self, ClbPort):
+        self._ClbPort = ClbPort
+
+    @property
+    def VpcId(self):
+        """vpc实例id
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def VpcCidrBlock(self):
+        """vpc网段
+        :rtype: str
+        """
+        return self._VpcCidrBlock
+
+    @VpcCidrBlock.setter
+    def VpcCidrBlock(self, VpcCidrBlock):
+        self._VpcCidrBlock = VpcCidrBlock
+
+    @property
+    def SubnetId(self):
+        """子网实例id
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def SubnetCidrBlock(self):
+        """子网网段
+        :rtype: str
+        """
+        return self._SubnetCidrBlock
+
+    @SubnetCidrBlock.setter
+    def SubnetCidrBlock(self, SubnetCidrBlock):
+        self._SubnetCidrBlock = SubnetCidrBlock
+
+
+    def _deserialize(self, params):
+        self._ClbIp = params.get("ClbIp")
+        self._ClbPort = params.get("ClbPort")
+        self._VpcId = params.get("VpcId")
+        self._VpcCidrBlock = params.get("VpcCidrBlock")
+        self._SubnetId = params.get("SubnetId")
+        self._SubnetCidrBlock = params.get("SubnetCidrBlock")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31760,28 +31886,21 @@ class TCHouseD(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceId: 数据源实例的唯一ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _InstanceName: 数据源名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceName: str
         :param _JdbcUrl: 数据源的JDBC
-注意：此字段可能返回 null，表示取不到有效值。
         :type JdbcUrl: str
         :param _User: 用于访问数据源的用户
-注意：此字段可能返回 null，表示取不到有效值。
         :type User: str
         :param _Password: 数据源访问密码，需要base64编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type Password: str
         :param _Location: 数据源的VPC和子网信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Location: :class:`tencentcloud.dlc.v20210125.models.DatasourceConnectionLocation`
         :param _DbName: 默认数据库名
-注意：此字段可能返回 null，表示取不到有效值。
         :type DbName: str
         :param _AccessInfo: 访问信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type AccessInfo: str
         """
         self._InstanceId = None
@@ -31796,7 +31915,6 @@ class TCHouseD(AbstractModel):
     @property
     def InstanceId(self):
         """数据源实例的唯一ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -31808,7 +31926,6 @@ class TCHouseD(AbstractModel):
     @property
     def InstanceName(self):
         """数据源名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceName
@@ -31820,7 +31937,6 @@ class TCHouseD(AbstractModel):
     @property
     def JdbcUrl(self):
         """数据源的JDBC
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._JdbcUrl
@@ -31832,7 +31948,6 @@ class TCHouseD(AbstractModel):
     @property
     def User(self):
         """用于访问数据源的用户
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._User
@@ -31844,7 +31959,6 @@ class TCHouseD(AbstractModel):
     @property
     def Password(self):
         """数据源访问密码，需要base64编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Password
@@ -31868,7 +31982,6 @@ class TCHouseD(AbstractModel):
     @property
     def DbName(self):
         """默认数据库名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DbName
@@ -31880,7 +31993,6 @@ class TCHouseD(AbstractModel):
     @property
     def AccessInfo(self):
         """访问信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AccessInfo
@@ -34291,6 +34403,134 @@ class TasksOverview(AbstractModel):
         self._TaskInitCount = params.get("TaskInitCount")
         self._TaskRunningCount = params.get("TaskRunningCount")
         self._TotalTaskCount = params.get("TotalTaskCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TccHive(AbstractModel):
+    """TccHive数据结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _InstanceName: 实例名称
+        :type InstanceName: str
+        :param _EndpointServiceId: 终端节点服务ID
+        :type EndpointServiceId: str
+        :param _MetaStoreUrl: thrift连接地址
+        :type MetaStoreUrl: str
+        :param _HiveVersion: hive版本
+        :type HiveVersion: str
+        :param _TccConnection: 网络信息
+        :type TccConnection: :class:`tencentcloud.dlc.v20210125.models.NetWork`
+        :param _HmsEndpointServiceId: Hms终端节点服务ID
+        :type HmsEndpointServiceId: str
+        """
+        self._InstanceId = None
+        self._InstanceName = None
+        self._EndpointServiceId = None
+        self._MetaStoreUrl = None
+        self._HiveVersion = None
+        self._TccConnection = None
+        self._HmsEndpointServiceId = None
+
+    @property
+    def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        """实例名称
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def EndpointServiceId(self):
+        """终端节点服务ID
+        :rtype: str
+        """
+        return self._EndpointServiceId
+
+    @EndpointServiceId.setter
+    def EndpointServiceId(self, EndpointServiceId):
+        self._EndpointServiceId = EndpointServiceId
+
+    @property
+    def MetaStoreUrl(self):
+        """thrift连接地址
+        :rtype: str
+        """
+        return self._MetaStoreUrl
+
+    @MetaStoreUrl.setter
+    def MetaStoreUrl(self, MetaStoreUrl):
+        self._MetaStoreUrl = MetaStoreUrl
+
+    @property
+    def HiveVersion(self):
+        """hive版本
+        :rtype: str
+        """
+        return self._HiveVersion
+
+    @HiveVersion.setter
+    def HiveVersion(self, HiveVersion):
+        self._HiveVersion = HiveVersion
+
+    @property
+    def TccConnection(self):
+        """网络信息
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.NetWork`
+        """
+        return self._TccConnection
+
+    @TccConnection.setter
+    def TccConnection(self, TccConnection):
+        self._TccConnection = TccConnection
+
+    @property
+    def HmsEndpointServiceId(self):
+        """Hms终端节点服务ID
+        :rtype: str
+        """
+        return self._HmsEndpointServiceId
+
+    @HmsEndpointServiceId.setter
+    def HmsEndpointServiceId(self, HmsEndpointServiceId):
+        self._HmsEndpointServiceId = HmsEndpointServiceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._EndpointServiceId = params.get("EndpointServiceId")
+        self._MetaStoreUrl = params.get("MetaStoreUrl")
+        self._HiveVersion = params.get("HiveVersion")
+        if params.get("TccConnection") is not None:
+            self._TccConnection = NetWork()
+            self._TccConnection._deserialize(params.get("TccConnection"))
+        self._HmsEndpointServiceId = params.get("HmsEndpointServiceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -1407,6 +1407,15 @@ class AlarmPolicy(AbstractModel):
         :type TagOperation: str
         :param _NoticeTmplBindInfos: 通知模板绑定内容模板信息
         :type NoticeTmplBindInfos: list of NoticeContentTmplBindInfo
+        :param _HierarchicalNotices: 模板通知的等级
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HierarchicalNotices: list of AlarmHierarchicalNotice
+        :param _NoticeContentTmplBindInfos: 通知模板绑定内容模板信息，同NoticeTmplBindInfos
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NoticeContentTmplBindInfos: list of NoticeContentTmplBindInfo
+        :param _PredefinedConfigID: 预设配置id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PredefinedConfigID: str
         """
         self._PolicyId = None
         self._PolicyName = None
@@ -1448,6 +1457,9 @@ class AlarmPolicy(AbstractModel):
         self._IsSupportAlarmTag = None
         self._TagOperation = None
         self._NoticeTmplBindInfos = None
+        self._HierarchicalNotices = None
+        self._NoticeContentTmplBindInfos = None
+        self._PredefinedConfigID = None
 
     @property
     def PolicyId(self):
@@ -1931,6 +1943,42 @@ class AlarmPolicy(AbstractModel):
     def NoticeTmplBindInfos(self, NoticeTmplBindInfos):
         self._NoticeTmplBindInfos = NoticeTmplBindInfos
 
+    @property
+    def HierarchicalNotices(self):
+        """模板通知的等级
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AlarmHierarchicalNotice
+        """
+        return self._HierarchicalNotices
+
+    @HierarchicalNotices.setter
+    def HierarchicalNotices(self, HierarchicalNotices):
+        self._HierarchicalNotices = HierarchicalNotices
+
+    @property
+    def NoticeContentTmplBindInfos(self):
+        """通知模板绑定内容模板信息，同NoticeTmplBindInfos
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of NoticeContentTmplBindInfo
+        """
+        return self._NoticeContentTmplBindInfos
+
+    @NoticeContentTmplBindInfos.setter
+    def NoticeContentTmplBindInfos(self, NoticeContentTmplBindInfos):
+        self._NoticeContentTmplBindInfos = NoticeContentTmplBindInfos
+
+    @property
+    def PredefinedConfigID(self):
+        """预设配置id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PredefinedConfigID
+
+    @PredefinedConfigID.setter
+    def PredefinedConfigID(self, PredefinedConfigID):
+        self._PredefinedConfigID = PredefinedConfigID
+
 
     def _deserialize(self, params):
         self._PolicyId = params.get("PolicyId")
@@ -2011,6 +2059,19 @@ class AlarmPolicy(AbstractModel):
                 obj = NoticeContentTmplBindInfo()
                 obj._deserialize(item)
                 self._NoticeTmplBindInfos.append(obj)
+        if params.get("HierarchicalNotices") is not None:
+            self._HierarchicalNotices = []
+            for item in params.get("HierarchicalNotices"):
+                obj = AlarmHierarchicalNotice()
+                obj._deserialize(item)
+                self._HierarchicalNotices.append(obj)
+        if params.get("NoticeContentTmplBindInfos") is not None:
+            self._NoticeContentTmplBindInfos = []
+            for item in params.get("NoticeContentTmplBindInfos"):
+                obj = NoticeContentTmplBindInfo()
+                obj._deserialize(item)
+                self._NoticeContentTmplBindInfos.append(obj)
+        self._PredefinedConfigID = params.get("PredefinedConfigID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11338,13 +11399,7 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
         :param _Namespaces: 根据命名空间过滤，不同策略类型的值详见
 [策略类型列表](https://cloud.tencent.com/document/product/248/50397)当Dimension不为空时，该项为必填项
         :type Namespaces: list of str
-        :param _Dimensions: 告警对象列表，JSON 字符串。外层数组，对应多个实例，内层为对象的维度。例如“云服务器-基础监控”可写为：
-`[ {"Dimensions": {"unInstanceId": "ins-qr8d555g"}}, {"Dimensions": {"unInstanceId": "ins-qr8d555h"}} ]`
-具体也可以参考下方的示例 2。
-
-不同云产品参数示例详见 [维度信息Dimensions列表](https://cloud.tencent.com/document/product/248/50397)
-
-注意：如果NeedCorrespondence传入1，即需要返回策略与实例对应关系，请传入不多于20个告警对象维度，否则容易请求超时
+        :param _Dimensions: 告警对象列表，JSON 字符串。外层数组，对应多个实例，内层为对象的维度。例如“云服务器-基础监控”可写为：`[[{"name":"unInstanceId","value":"ins-qr888845g"}]]`具体也可以参考下方的示例 2。不同云产品参数示例详见 [维度信息Dimensions列表](https://cloud.tencent.com/document/product/248/50397)注意：如果NeedCorrespondence传入1，即需要返回策略与实例对应关系，请传入不多于20个告警对象维度，否则容易请求超时
         :type Dimensions: str
         :param _ReceiverUids: 根据接收人搜索，可以使用“访问管理”的 [拉取子用户 ListUsers](https://cloud.tencent.com/document/product/598/34587) 接口获取用户列表 或 [查询子用户 GetUser](https://cloud.tencent.com/document/product/598/34590) 接口查询子用户详情，此处填入返回结果中的 `Uid` 字段
         :type ReceiverUids: list of int
@@ -11388,6 +11443,8 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
         :type ReceiverOnCallFormIDs: list of str
         :param _NoticeContentTmplIDs: 通知内容模板ID筛选
         :type NoticeContentTmplIDs: list of str
+        :param _IsPredefined: 是否为预设策略，1是，0否
+        :type IsPredefined: int
         """
         self._Module = None
         self._PageNumber = None
@@ -11416,6 +11473,7 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
         self._PromInsId = None
         self._ReceiverOnCallFormIDs = None
         self._NoticeContentTmplIDs = None
+        self._IsPredefined = None
 
     @property
     def Module(self):
@@ -11486,13 +11544,7 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
 
     @property
     def Dimensions(self):
-        """告警对象列表，JSON 字符串。外层数组，对应多个实例，内层为对象的维度。例如“云服务器-基础监控”可写为：
-`[ {"Dimensions": {"unInstanceId": "ins-qr8d555g"}}, {"Dimensions": {"unInstanceId": "ins-qr8d555h"}} ]`
-具体也可以参考下方的示例 2。
-
-不同云产品参数示例详见 [维度信息Dimensions列表](https://cloud.tencent.com/document/product/248/50397)
-
-注意：如果NeedCorrespondence传入1，即需要返回策略与实例对应关系，请传入不多于20个告警对象维度，否则容易请求超时
+        """告警对象列表，JSON 字符串。外层数组，对应多个实例，内层为对象的维度。例如“云服务器-基础监控”可写为：`[[{"name":"unInstanceId","value":"ins-qr888845g"}]]`具体也可以参考下方的示例 2。不同云产品参数示例详见 [维度信息Dimensions列表](https://cloud.tencent.com/document/product/248/50397)注意：如果NeedCorrespondence传入1，即需要返回策略与实例对应关系，请传入不多于20个告警对象维度，否则容易请求超时
         :rtype: str
         """
         return self._Dimensions
@@ -11723,6 +11775,17 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
     def NoticeContentTmplIDs(self, NoticeContentTmplIDs):
         self._NoticeContentTmplIDs = NoticeContentTmplIDs
 
+    @property
+    def IsPredefined(self):
+        """是否为预设策略，1是，0否
+        :rtype: int
+        """
+        return self._IsPredefined
+
+    @IsPredefined.setter
+    def IsPredefined(self, IsPredefined):
+        self._IsPredefined = IsPredefined
+
 
     def _deserialize(self, params):
         self._Module = params.get("Module")
@@ -11762,6 +11825,7 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
         self._PromInsId = params.get("PromInsId")
         self._ReceiverOnCallFormIDs = params.get("ReceiverOnCallFormIDs")
         self._NoticeContentTmplIDs = params.get("NoticeContentTmplIDs")
+        self._IsPredefined = params.get("IsPredefined")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -37630,6 +37694,9 @@ class URLNotice(AbstractModel):
         :param _Weekday: 通知周期 1-7表示周一到周日
 注意：此字段可能返回 null，表示取不到有效值。
         :type Weekday: list of int
+        :param _GroupMembers: 组名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupMembers: str
         """
         self._URL = None
         self._IsValid = None
@@ -37637,6 +37704,7 @@ class URLNotice(AbstractModel):
         self._StartTime = None
         self._EndTime = None
         self._Weekday = None
+        self._GroupMembers = None
 
     @property
     def URL(self):
@@ -37710,6 +37778,18 @@ class URLNotice(AbstractModel):
     def Weekday(self, Weekday):
         self._Weekday = Weekday
 
+    @property
+    def GroupMembers(self):
+        """组名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._GroupMembers
+
+    @GroupMembers.setter
+    def GroupMembers(self, GroupMembers):
+        self._GroupMembers = GroupMembers
+
 
     def _deserialize(self, params):
         self._URL = params.get("URL")
@@ -37718,6 +37798,7 @@ class URLNotice(AbstractModel):
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
         self._Weekday = params.get("Weekday")
+        self._GroupMembers = params.get("GroupMembers")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

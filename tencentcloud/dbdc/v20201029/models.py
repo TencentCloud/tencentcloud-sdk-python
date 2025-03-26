@@ -713,10 +713,8 @@ class DescribeInstanceDetail(AbstractModel):
         :param _Zone: 可用区
         :type Zone: str
         :param _FenceId: 金融围笼ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type FenceId: str
         :param _ClusterId: 所属集群ID(默认集群为空)
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterId: str
         """
         self._InstanceId = None
@@ -1013,7 +1011,6 @@ class DescribeInstanceDetail(AbstractModel):
     @property
     def FenceId(self):
         """金融围笼ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FenceId
@@ -1025,7 +1022,6 @@ class DescribeInstanceDetail(AbstractModel):
     @property
     def ClusterId(self):
         """所属集群ID(默认集群为空)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterId
@@ -1164,10 +1160,8 @@ class DescribeInstanceDetailResponse(AbstractModel):
         :param _Zone: 可用区
         :type Zone: str
         :param _FenceId: 金融围笼ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type FenceId: str
         :param _ClusterId: 所属集群ID(默认集群为空)
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1467,7 +1461,6 @@ class DescribeInstanceDetailResponse(AbstractModel):
     @property
     def FenceId(self):
         """金融围笼ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FenceId
@@ -1479,7 +1472,6 @@ class DescribeInstanceDetailResponse(AbstractModel):
     @property
     def ClusterId(self):
         """所属集群ID(默认集群为空)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterId
@@ -2719,16 +2711,12 @@ class InstanceDeviceInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceId: 集群ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _ReadWriteDevice: 读写设备组
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReadWriteDevice: list of DeviceInfo
         :param _ReadOnlyDevice: 只读设备组
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReadOnlyDevice: list of DeviceInfo
         :param _FreeDevice: 空闲设备组
-注意：此字段可能返回 null，表示取不到有效值。
         :type FreeDevice: list of DeviceInfo
         """
         self._InstanceId = None
@@ -2739,7 +2727,6 @@ class InstanceDeviceInfo(AbstractModel):
     @property
     def InstanceId(self):
         """集群ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -2751,7 +2738,6 @@ class InstanceDeviceInfo(AbstractModel):
     @property
     def ReadWriteDevice(self):
         """读写设备组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DeviceInfo
         """
         return self._ReadWriteDevice
@@ -2763,7 +2749,6 @@ class InstanceDeviceInfo(AbstractModel):
     @property
     def ReadOnlyDevice(self):
         """只读设备组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DeviceInfo
         """
         return self._ReadOnlyDevice
@@ -2775,7 +2760,6 @@ class InstanceDeviceInfo(AbstractModel):
     @property
     def FreeDevice(self):
         """空闲设备组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DeviceInfo
         """
         return self._FreeDevice

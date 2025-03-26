@@ -34078,7 +34078,6 @@ class RocketMQVipInstance(AbstractModel):
         :param _PayMode: 0-后付费，1-预付费
         :type PayMode: int
         :param _Remark: 备注信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _SpecName: 实例配置ID
         :type SpecName: str
@@ -34248,7 +34247,6 @@ class RocketMQVipInstance(AbstractModel):
     @property
     def Remark(self):
         """备注信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark

@@ -684,11 +684,9 @@ class DescribeInstancesResponse(AbstractModel):
         r"""
         :param _TotalCount: 实例总数
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _InstanceSet: 分页实例详情
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceSet: list of Instance
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -701,7 +699,6 @@ class DescribeInstancesResponse(AbstractModel):
     def TotalCount(self):
         """实例总数
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -714,7 +711,6 @@ class DescribeInstancesResponse(AbstractModel):
     def InstanceSet(self):
         """分页实例详情
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Instance
         """
         return self._InstanceSet
@@ -1107,7 +1103,6 @@ class DescribeServiceLoginSettingsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _LoginSettings: 服务登录配置详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type LoginSettings: list of LoginSetting
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1118,7 +1113,6 @@ class DescribeServiceLoginSettingsResponse(AbstractModel):
     @property
     def LoginSettings(self):
         """服务登录配置详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LoginSetting
         """
         return self._LoginSettings
@@ -1416,10 +1410,8 @@ class Instance(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceId: 实例id
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _InstanceName: 实例名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceName: str
         :param _InstanceState: 实例状态：
 PENDING：表示创建中
@@ -1429,73 +1421,53 @@ ARREARS：表示待回收
 STOPPED_NO_CHARGE：表示关机不收费
 TERMINATING：表示销毁中
 TERMINATED：表示已销毁
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceState: str
         :param _ApplicationName: 应用名称
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationName: str
         :param _BundleName: 算力套餐名称
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type BundleName: str
         :param _GPUCount: 实例所包含的GPU卡数
-注意：此字段可能返回 null，表示取不到有效值。
         :type GPUCount: int
         :param _GPUPerformance: 算力
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type GPUPerformance: str
         :param _GPUMemory: 显存
-注意：此字段可能返回 null，表示取不到有效值。
         :type GPUMemory: str
         :param _CPU: CPU核数
-注意：此字段可能返回 null，表示取不到有效值。
         :type CPU: str
         :param _Memory: 内存
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type Memory: str
         :param _SystemDisk: 系统盘数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type SystemDisk: :class:`tencentcloud.hai.v20230812.models.SystemDisk`
         :param _PrivateIpAddresses: 内网ip地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type PrivateIpAddresses: list of str
         :param _PublicIpAddresses: 公网ip地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type PublicIpAddresses: list of str
         :param _SecurityGroupIds: 安全组ID
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityGroupIds: list of str
         :param _LatestOperation: 实例最新操作
-注意：此字段可能返回 null，表示取不到有效值。
         :type LatestOperation: str
         :param _LatestOperationState: 实例最新操作状态：
 SUCCESS：表示操作成功
 OPERATING：表示操作执行中
 FAILED：表示操作失败
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type LatestOperationState: str
         :param _CreateTime: 实例创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _MaxOutBandwidth: 公网出带宽上限，默认10Mbps
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxOutBandwidth: str
         :param _MaxFreeTraffic: 每月免费流量，默认500G
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxFreeTraffic: str
         :param _ConfigurationEnvironment: 应用配置环境
-注意：此字段可能返回 null，表示取不到有效值。
         :type ConfigurationEnvironment: str
         :param _LoginServices: 实例包含的登录服务详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type LoginServices: list of LoginService
         :param _OSType: 应用服务的操作系统类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type OSType: str
         """
         self._InstanceId = None
@@ -1524,7 +1496,6 @@ FAILED：表示操作失败
     @property
     def InstanceId(self):
         """实例id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -1536,7 +1507,6 @@ FAILED：表示操作失败
     @property
     def InstanceName(self):
         """实例名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceName
@@ -1555,7 +1525,6 @@ ARREARS：表示待回收
 STOPPED_NO_CHARGE：表示关机不收费
 TERMINATING：表示销毁中
 TERMINATED：表示已销毁
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceState
@@ -1568,7 +1537,6 @@ TERMINATED：表示已销毁
     def ApplicationName(self):
         """应用名称
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApplicationName
@@ -1581,7 +1549,6 @@ TERMINATED：表示已销毁
     def BundleName(self):
         """算力套餐名称
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BundleName
@@ -1593,7 +1560,6 @@ TERMINATED：表示已销毁
     @property
     def GPUCount(self):
         """实例所包含的GPU卡数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._GPUCount
@@ -1606,7 +1572,6 @@ TERMINATED：表示已销毁
     def GPUPerformance(self):
         """算力
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GPUPerformance
@@ -1618,7 +1583,6 @@ TERMINATED：表示已销毁
     @property
     def GPUMemory(self):
         """显存
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GPUMemory
@@ -1630,7 +1594,6 @@ TERMINATED：表示已销毁
     @property
     def CPU(self):
         """CPU核数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CPU
@@ -1643,7 +1606,6 @@ TERMINATED：表示已销毁
     def Memory(self):
         """内存
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Memory
@@ -1655,7 +1617,6 @@ TERMINATED：表示已销毁
     @property
     def SystemDisk(self):
         """系统盘数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.hai.v20230812.models.SystemDisk`
         """
         return self._SystemDisk
@@ -1667,7 +1628,6 @@ TERMINATED：表示已销毁
     @property
     def PrivateIpAddresses(self):
         """内网ip地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._PrivateIpAddresses
@@ -1679,7 +1639,6 @@ TERMINATED：表示已销毁
     @property
     def PublicIpAddresses(self):
         """公网ip地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._PublicIpAddresses
@@ -1692,7 +1651,6 @@ TERMINATED：表示已销毁
     def SecurityGroupIds(self):
         """安全组ID
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -1704,7 +1662,6 @@ TERMINATED：表示已销毁
     @property
     def LatestOperation(self):
         """实例最新操作
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LatestOperation
@@ -1720,7 +1677,6 @@ SUCCESS：表示操作成功
 OPERATING：表示操作执行中
 FAILED：表示操作失败
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LatestOperationState
@@ -1732,7 +1688,6 @@ FAILED：表示操作失败
     @property
     def CreateTime(self):
         """实例创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -1744,7 +1699,6 @@ FAILED：表示操作失败
     @property
     def MaxOutBandwidth(self):
         """公网出带宽上限，默认10Mbps
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MaxOutBandwidth
@@ -1756,7 +1710,6 @@ FAILED：表示操作失败
     @property
     def MaxFreeTraffic(self):
         """每月免费流量，默认500G
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MaxFreeTraffic
@@ -1768,7 +1721,6 @@ FAILED：表示操作失败
     @property
     def ConfigurationEnvironment(self):
         """应用配置环境
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ConfigurationEnvironment
@@ -1780,7 +1732,6 @@ FAILED：表示操作失败
     @property
     def LoginServices(self):
         """实例包含的登录服务详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LoginService
         """
         return self._LoginServices
@@ -1792,7 +1743,6 @@ FAILED：表示操作失败
     @property
     def OSType(self):
         """应用服务的操作系统类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OSType
@@ -2111,7 +2061,6 @@ class LoginService(AbstractModel):
     def __init__(self):
         r"""
         :param _ServiceName: 登录方式名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceName: str
         """
         self._ServiceName = None
@@ -2119,7 +2068,6 @@ class LoginService(AbstractModel):
     @property
     def ServiceName(self):
         """登录方式名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ServiceName

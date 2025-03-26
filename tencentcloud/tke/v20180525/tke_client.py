@@ -2855,6 +2855,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeOSImages(self, request):
+        """获取OS聚合信息
+
+        :param request: Request instance for DescribeOSImages.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeOSImagesRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeOSImagesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOSImages", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOSImagesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeOpenPolicyList(self, request):
         """查询opa策略列表
 

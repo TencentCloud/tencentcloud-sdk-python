@@ -32,16 +32,12 @@ class AIAnalysisTemplateItem(AbstractModel):
         :param _Comment: 智能分析模板描述信息。
         :type Comment: str
         :param _ClassificationConfigure: 智能分类任务控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClassificationConfigure: :class:`tencentcloud.vod.v20180717.models.ClassificationConfigureInfo`
         :param _TagConfigure: 智能标签任务控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagConfigure: :class:`tencentcloud.vod.v20180717.models.TagConfigureInfo`
         :param _CoverConfigure: 智能封面任务控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CoverConfigure: :class:`tencentcloud.vod.v20180717.models.CoverConfigureInfo`
         :param _FrameTagConfigure: 智能按帧标签任务控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FrameTagConfigure: :class:`tencentcloud.vod.v20180717.models.FrameTagConfigureInfo`
         :param _HighlightConfigure: 智能精彩集锦任务控制参数。
         :type HighlightConfigure: :class:`tencentcloud.vod.v20180717.models.HighlightsConfigureInfo`
@@ -97,7 +93,6 @@ class AIAnalysisTemplateItem(AbstractModel):
     @property
     def ClassificationConfigure(self):
         """智能分类任务控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.ClassificationConfigureInfo`
         """
         return self._ClassificationConfigure
@@ -109,7 +104,6 @@ class AIAnalysisTemplateItem(AbstractModel):
     @property
     def TagConfigure(self):
         """智能标签任务控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.TagConfigureInfo`
         """
         return self._TagConfigure
@@ -121,7 +115,6 @@ class AIAnalysisTemplateItem(AbstractModel):
     @property
     def CoverConfigure(self):
         """智能封面任务控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.CoverConfigureInfo`
         """
         return self._CoverConfigure
@@ -133,7 +126,6 @@ class AIAnalysisTemplateItem(AbstractModel):
     @property
     def FrameTagConfigure(self):
         """智能按帧标签任务控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.FrameTagConfigureInfo`
         """
         return self._FrameTagConfigure
@@ -225,32 +217,23 @@ class AIRecognitionTemplateItem(AbstractModel):
 <li>Custom：用户自定义模板。</li>
         :type Type: str
         :param _HeadTailConfigure: 头尾识别控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type HeadTailConfigure: :class:`tencentcloud.vod.v20180717.models.HeadTailConfigureInfo`
         :param _SegmentConfigure: 拆条识别控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SegmentConfigure: :class:`tencentcloud.vod.v20180717.models.SegmentConfigureInfo`
         :param _FaceConfigure: 人脸识别控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FaceConfigure: :class:`tencentcloud.vod.v20180717.models.FaceConfigureInfo`
         :param _OcrFullTextConfigure: 文本全文识别控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OcrFullTextConfigure: :class:`tencentcloud.vod.v20180717.models.OcrFullTextConfigureInfo`
         :param _OcrWordsConfigure: 文本关键词识别控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OcrWordsConfigure: :class:`tencentcloud.vod.v20180717.models.OcrWordsConfigureInfo`
         :param _AsrFullTextConfigure: 语音全文识别控制参数。
 <font color=red>注意：本参数已不再维护，推荐使用 AsrTranslateConfigure 参数发起语音翻译识别（当 DstLanguage 不填或填空字符串时，则不进行翻译，计费项和语音全文识别一致）。</font> 
-注意：此字段可能返回 null，表示取不到有效值。
         :type AsrFullTextConfigure: :class:`tencentcloud.vod.v20180717.models.AsrFullTextConfigureInfo`
         :param _AsrWordsConfigure: 语音关键词识别控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AsrWordsConfigure: :class:`tencentcloud.vod.v20180717.models.AsrWordsConfigureInfo`
         :param _AsrTranslateConfigure: 语音翻译识别控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AsrTranslateConfigure: :class:`tencentcloud.vod.v20180717.models.AsrTranslateConfigureInfo`
         :param _ObjectConfigure: 物体识别控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ObjectConfigure: :class:`tencentcloud.vod.v20180717.models.ObjectConfigureInfo`
         :param _ScreenshotInterval: 截图时间间隔，单位：秒。
         :type ScreenshotInterval: float
@@ -325,7 +308,6 @@ class AIRecognitionTemplateItem(AbstractModel):
     @property
     def HeadTailConfigure(self):
         """头尾识别控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.HeadTailConfigureInfo`
         """
         return self._HeadTailConfigure
@@ -337,7 +319,6 @@ class AIRecognitionTemplateItem(AbstractModel):
     @property
     def SegmentConfigure(self):
         """拆条识别控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.SegmentConfigureInfo`
         """
         return self._SegmentConfigure
@@ -349,7 +330,6 @@ class AIRecognitionTemplateItem(AbstractModel):
     @property
     def FaceConfigure(self):
         """人脸识别控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.FaceConfigureInfo`
         """
         return self._FaceConfigure
@@ -361,7 +341,6 @@ class AIRecognitionTemplateItem(AbstractModel):
     @property
     def OcrFullTextConfigure(self):
         """文本全文识别控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.OcrFullTextConfigureInfo`
         """
         return self._OcrFullTextConfigure
@@ -373,7 +352,6 @@ class AIRecognitionTemplateItem(AbstractModel):
     @property
     def OcrWordsConfigure(self):
         """文本关键词识别控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.OcrWordsConfigureInfo`
         """
         return self._OcrWordsConfigure
@@ -386,7 +364,6 @@ class AIRecognitionTemplateItem(AbstractModel):
     def AsrFullTextConfigure(self):
         """语音全文识别控制参数。
 <font color=red>注意：本参数已不再维护，推荐使用 AsrTranslateConfigure 参数发起语音翻译识别（当 DstLanguage 不填或填空字符串时，则不进行翻译，计费项和语音全文识别一致）。</font> 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AsrFullTextConfigureInfo`
         """
         return self._AsrFullTextConfigure
@@ -398,7 +375,6 @@ class AIRecognitionTemplateItem(AbstractModel):
     @property
     def AsrWordsConfigure(self):
         """语音关键词识别控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AsrWordsConfigureInfo`
         """
         return self._AsrWordsConfigure
@@ -410,7 +386,6 @@ class AIRecognitionTemplateItem(AbstractModel):
     @property
     def AsrTranslateConfigure(self):
         """语音翻译识别控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AsrTranslateConfigureInfo`
         """
         return self._AsrTranslateConfigure
@@ -422,7 +397,6 @@ class AIRecognitionTemplateItem(AbstractModel):
     @property
     def ObjectConfigure(self):
         """物体识别控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.ObjectConfigureInfo`
         """
         return self._ObjectConfigure
@@ -1342,19 +1316,14 @@ class AiAnalysisResult(AbstractModel):
 <li>Highlight：智能精彩集锦</li>
         :type Type: str
         :param _ClassificationTask: 视频内容分析智能分类任务的查询结果，当任务类型为 Classification 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClassificationTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskClassificationResult`
         :param _CoverTask: 视频内容分析智能封面任务的查询结果，当任务类型为 Cover 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CoverTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskCoverResult`
         :param _TagTask: 视频内容分析智能标签任务的查询结果，当任务类型为 Tag 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskTagResult`
         :param _FrameTagTask: 视频内容分析智能按帧标签任务的查询结果，当任务类型为 FrameTag 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FrameTagTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskFrameTagResult`
         :param _HighlightTask: 视频内容分析智能精彩集锦任务的查询结果，当任务类型为 Highlight 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :type HighlightTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskHighlightResult`
         """
         self._Type = None
@@ -1383,7 +1352,6 @@ class AiAnalysisResult(AbstractModel):
     @property
     def ClassificationTask(self):
         """视频内容分析智能分类任务的查询结果，当任务类型为 Classification 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskClassificationResult`
         """
         return self._ClassificationTask
@@ -1395,7 +1363,6 @@ class AiAnalysisResult(AbstractModel):
     @property
     def CoverTask(self):
         """视频内容分析智能封面任务的查询结果，当任务类型为 Cover 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskCoverResult`
         """
         return self._CoverTask
@@ -1407,7 +1374,6 @@ class AiAnalysisResult(AbstractModel):
     @property
     def TagTask(self):
         """视频内容分析智能标签任务的查询结果，当任务类型为 Tag 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskTagResult`
         """
         return self._TagTask
@@ -1419,7 +1385,6 @@ class AiAnalysisResult(AbstractModel):
     @property
     def FrameTagTask(self):
         """视频内容分析智能按帧标签任务的查询结果，当任务类型为 FrameTag 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskFrameTagResult`
         """
         return self._FrameTagTask
@@ -1431,7 +1396,6 @@ class AiAnalysisResult(AbstractModel):
     @property
     def HighlightTask(self):
         """视频内容分析智能精彩集锦任务的查询结果，当任务类型为 Highlight 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskHighlightResult`
         """
         return self._HighlightTask
@@ -1595,7 +1559,6 @@ class AiAnalysisTaskClassificationResult(AbstractModel):
         :param _Input: 智能分类任务输入。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskClassificationInput`
         :param _Output: 智能分类任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskClassificationOutput`
         :param _Progress: 智能分类任务进度，取值范围 [0-100] 。
         :type Progress: int
@@ -1672,7 +1635,6 @@ class AiAnalysisTaskClassificationResult(AbstractModel):
     @property
     def Output(self):
         """智能分类任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskClassificationOutput`
         """
         return self._Output
@@ -1866,7 +1828,6 @@ class AiAnalysisTaskCoverResult(AbstractModel):
         :param _Input: 智能封面任务输入。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskCoverInput`
         :param _Output: 智能封面任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskCoverOutput`
         :param _Progress: 智能封面任务进度，取值范围 [0-100] 。
         :type Progress: int
@@ -1943,7 +1904,6 @@ class AiAnalysisTaskCoverResult(AbstractModel):
     @property
     def Output(self):
         """智能封面任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskCoverOutput`
         """
         return self._Output
@@ -2137,7 +2097,6 @@ class AiAnalysisTaskFrameTagResult(AbstractModel):
         :param _Input: 智能按帧标签任务输入。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskFrameTagInput`
         :param _Output: 智能按帧标签任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskFrameTagOutput`
         :param _Progress: 智能按帧标签任务进度，取值范围 [0-100] 。
         :type Progress: int
@@ -2214,7 +2173,6 @@ class AiAnalysisTaskFrameTagResult(AbstractModel):
     @property
     def Output(self):
         """智能按帧标签任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskFrameTagOutput`
         """
         return self._Output
@@ -2408,7 +2366,6 @@ class AiAnalysisTaskHighlightResult(AbstractModel):
         :param _Input: 智能精彩片段任务输入。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskHighlightInput`
         :param _Output: 智能精彩片段任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskHighlightOutput`
         :param _Progress: 智能精彩片段任务进度，取值范围 [0-100] 。
         :type Progress: int
@@ -2485,7 +2442,6 @@ class AiAnalysisTaskHighlightResult(AbstractModel):
     @property
     def Output(self):
         """智能精彩片段任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskHighlightOutput`
         """
         return self._Output
@@ -2715,7 +2671,6 @@ class AiAnalysisTaskTagResult(AbstractModel):
         :param _Input: 智能标签任务输入。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskTagInput`
         :param _Output: 智能标签任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskTagOutput`
         :param _Progress: 智能标签任务进度，取值范围 [0-100] 。
         :type Progress: int
@@ -2792,7 +2747,6 @@ class AiAnalysisTaskTagResult(AbstractModel):
     @property
     def Output(self):
         """智能标签任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskTagOutput`
         """
         return self._Output
@@ -3160,38 +3114,29 @@ class AiRecognitionResult(AbstractModel):
         :type Type: str
         :param _HeadTailTask: 视频片头片尾识别结果，当 Type 为
  HeadTailRecognition 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :type HeadTailTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskHeadTailResult`
         :param _SegmentTask: 视频拆条识别结果，当 Type 为
  SegmentRecognition 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SegmentTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskSegmentResult`
         :param _FaceTask: 人脸识别结果，当 Type 为 
  FaceRecognition 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FaceTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskFaceResult`
         :param _AsrWordsTask: 语音关键词识别结果，当 Type 为
  AsrWordsRecognition 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AsrWordsTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrWordsResult`
         :param _AsrFullTextTask: 语音全文识别结果，当 Type 为
  AsrFullTextRecognition 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AsrFullTextTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrFullTextResult`
         :param _AsrTranslateTask: 语音翻译结果，当 Type 为 AsrTranslateRecognition 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AsrTranslateTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrTranslateResult`
         :param _OcrWordsTask: 文本关键词识别结果，当 Type 为
  OcrWordsRecognition 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OcrWordsTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskOcrWordsResult`
         :param _OcrFullTextTask: 文本全文识别结果，当 Type 为
  OcrFullTextRecognition 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OcrFullTextTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskOcrFullTextResult`
         :param _ObjectTask: 物体识别结果，当 Type 为
  ObjectRecognition 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ObjectTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskObjectResult`
         """
         self._Type = None
@@ -3228,7 +3173,6 @@ class AiRecognitionResult(AbstractModel):
     def HeadTailTask(self):
         """视频片头片尾识别结果，当 Type 为
  HeadTailRecognition 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskHeadTailResult`
         """
         return self._HeadTailTask
@@ -3241,7 +3185,6 @@ class AiRecognitionResult(AbstractModel):
     def SegmentTask(self):
         """视频拆条识别结果，当 Type 为
  SegmentRecognition 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskSegmentResult`
         """
         return self._SegmentTask
@@ -3254,7 +3197,6 @@ class AiRecognitionResult(AbstractModel):
     def FaceTask(self):
         """人脸识别结果，当 Type 为 
  FaceRecognition 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskFaceResult`
         """
         return self._FaceTask
@@ -3267,7 +3209,6 @@ class AiRecognitionResult(AbstractModel):
     def AsrWordsTask(self):
         """语音关键词识别结果，当 Type 为
  AsrWordsRecognition 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrWordsResult`
         """
         return self._AsrWordsTask
@@ -3280,7 +3221,6 @@ class AiRecognitionResult(AbstractModel):
     def AsrFullTextTask(self):
         """语音全文识别结果，当 Type 为
  AsrFullTextRecognition 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrFullTextResult`
         """
         return self._AsrFullTextTask
@@ -3292,7 +3232,6 @@ class AiRecognitionResult(AbstractModel):
     @property
     def AsrTranslateTask(self):
         """语音翻译结果，当 Type 为 AsrTranslateRecognition 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrTranslateResult`
         """
         return self._AsrTranslateTask
@@ -3305,7 +3244,6 @@ class AiRecognitionResult(AbstractModel):
     def OcrWordsTask(self):
         """文本关键词识别结果，当 Type 为
  OcrWordsRecognition 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskOcrWordsResult`
         """
         return self._OcrWordsTask
@@ -3318,7 +3256,6 @@ class AiRecognitionResult(AbstractModel):
     def OcrFullTextTask(self):
         """文本全文识别结果，当 Type 为
  OcrFullTextRecognition 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskOcrFullTextResult`
         """
         return self._OcrFullTextTask
@@ -3331,7 +3268,6 @@ class AiRecognitionResult(AbstractModel):
     def ObjectTask(self):
         """物体识别结果，当 Type 为
  ObjectRecognition 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskObjectResult`
         """
         return self._ObjectTask
@@ -3398,7 +3334,6 @@ class AiRecognitionTaskAsrFullTextResult(AbstractModel):
         :param _Input: 语音全文识别任务输入信息。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrFullTextResultInput`
         :param _Output: 语音全文识别任务输出信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrFullTextResultOutput`
         :param _Progress: 语音全文识别任务进度，取值范围 [0-100] 。
         :type Progress: int
@@ -3475,7 +3410,6 @@ class AiRecognitionTaskAsrFullTextResult(AbstractModel):
     @property
     def Output(self):
         """语音全文识别任务输出信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrFullTextResultOutput`
         """
         return self._Output
@@ -3889,7 +3823,6 @@ class AiRecognitionTaskAsrTranslateResult(AbstractModel):
         :param _Input: 语音翻译任务输入信息。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrTranslateResultInput`
         :param _Output: 语音翻译任务输出信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrTranslateResultOutput`
         :param _Progress: 语音翻译任务进度，取值范围 [0-100] 。
         :type Progress: int
@@ -3966,7 +3899,6 @@ class AiRecognitionTaskAsrTranslateResult(AbstractModel):
     @property
     def Output(self):
         """语音翻译任务输出信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrTranslateResultOutput`
         """
         return self._Output
@@ -4276,7 +4208,6 @@ class AiRecognitionTaskAsrWordsResult(AbstractModel):
         :param _Input: 语音关键词识别任务输入信息。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrWordsResultInput`
         :param _Output: 语音关键词识别任务输出信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrWordsResultOutput`
         :param _Progress: 语音关键词识别任务进度，取值范围 [0-100] 。
         :type Progress: int
@@ -4353,7 +4284,6 @@ class AiRecognitionTaskAsrWordsResult(AbstractModel):
     @property
     def Output(self):
         """语音关键词识别任务输出信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrWordsResultOutput`
         """
         return self._Output
@@ -4669,7 +4599,6 @@ class AiRecognitionTaskFaceResult(AbstractModel):
         :param _Input: 人脸识别任务输入信息。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskFaceResultInput`
         :param _Output: 人脸识别任务输出信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskFaceResultOutput`
         :param _Progress: 人脸识别任务进度，取值范围 [0-100] 。
         :type Progress: int
@@ -4746,7 +4675,6 @@ class AiRecognitionTaskFaceResult(AbstractModel):
     @property
     def Output(self):
         """人脸识别任务输出信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskFaceResultOutput`
         """
         return self._Output
@@ -5111,7 +5039,6 @@ class AiRecognitionTaskHeadTailResult(AbstractModel):
         :param _Input: 视频片头片尾识别任务输入信息。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskHeadTailResultInput`
         :param _Output: 视频片头片尾识别任务输出信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskHeadTailResultOutput`
         :param _Progress: 视频片头片尾识别任务进度，取值范围 [0-100] 。
         :type Progress: int
@@ -5188,7 +5115,6 @@ class AiRecognitionTaskHeadTailResult(AbstractModel):
     @property
     def Output(self):
         """视频片头片尾识别任务输出信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskHeadTailResultOutput`
         """
         return self._Output
@@ -5426,7 +5352,6 @@ class AiRecognitionTaskObjectResult(AbstractModel):
         :param _Input: 物体识别任务输入信息。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskObjectResultInput`
         :param _Output: 物体识别任务输出信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskObjectResultOutput`
         :param _Progress: 物体识别任务进度，取值范围 [0-100] 。
         :type Progress: int
@@ -5503,7 +5428,6 @@ class AiRecognitionTaskObjectResult(AbstractModel):
     @property
     def Output(self):
         """物体识别任务输出信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskObjectResultOutput`
         """
         return self._Output
@@ -5939,7 +5863,6 @@ class AiRecognitionTaskOcrFullTextResult(AbstractModel):
         :param _Input: 文本全文识别任务输入信息。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskOcrFullTextResultInput`
         :param _Output: 文本全文识别任务输出信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskOcrFullTextResultOutput`
         :param _Progress: 文本全文识别任务进度，取值范围 [0-100] 。
         :type Progress: int
@@ -6016,7 +5939,6 @@ class AiRecognitionTaskOcrFullTextResult(AbstractModel):
     @property
     def Output(self):
         """文本全文识别任务输出信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskOcrFullTextResultOutput`
         """
         return self._Output
@@ -6347,7 +6269,6 @@ class AiRecognitionTaskOcrWordsResult(AbstractModel):
         :param _Input: 文本关键词识别任务输入信息。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskOcrWordsResultInput`
         :param _Output: 文本关键词识别任务输出信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskOcrWordsResultOutput`
         :param _Progress: 文本关键词识别任务进度，取值范围 [0-100] 。
         :type Progress: int
@@ -6424,7 +6345,6 @@ class AiRecognitionTaskOcrWordsResult(AbstractModel):
     @property
     def Output(self):
         """文本关键词识别任务输出信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskOcrWordsResultOutput`
         """
         return self._Output
@@ -6753,10 +6673,8 @@ class AiRecognitionTaskSegmentResult(AbstractModel):
         :param _Message: 错误信息。
         :type Message: str
         :param _Input: 视频拆条任务输入信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskSegmentResultInput`
         :param _Output: 视频拆条任务输出信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskSegmentResultOutput`
         :param _Progress: 视频拆条任务进度，取值范围 [0-100] 。
         :type Progress: int
@@ -6822,7 +6740,6 @@ class AiRecognitionTaskSegmentResult(AbstractModel):
     @property
     def Input(self):
         """视频拆条任务输入信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskSegmentResultInput`
         """
         return self._Input
@@ -6834,7 +6751,6 @@ class AiRecognitionTaskSegmentResult(AbstractModel):
     @property
     def Output(self):
         """视频拆条任务输出信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskSegmentResultOutput`
         """
         return self._Output
@@ -8490,7 +8406,6 @@ class AiReviewTaskPoliticalOcrResult(AbstractModel):
         :param _Input: 音视频审核 Ocr 文字涉及令人不适宜信息的任务输入。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewPoliticalOcrTaskInput`
         :param _Output: 音视频审核 Ocr 文字涉及令人不适宜信息的任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPoliticalOcrTaskOutput`
         :param _Progress: 音视频审核 Ocr 文字涉及令人不适宜信息的任务进度，取值范围 [0-100] 。
         :type Progress: int
@@ -8561,7 +8476,6 @@ class AiReviewTaskPoliticalOcrResult(AbstractModel):
     @property
     def Output(self):
         """音视频审核 Ocr 文字涉及令人不适宜信息的任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiReviewPoliticalOcrTaskOutput`
         """
         return self._Output
@@ -8622,7 +8536,6 @@ class AiReviewTaskPoliticalResult(AbstractModel):
         :param _Input: 音视频审核涉及令人不适宜信息的任务输入。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewPoliticalTaskInput`
         :param _Output: 音视频审核涉及令人不适宜信息的任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPoliticalTaskOutput`
         :param _Progress: 音视频审核涉及令人不适宜信息的任务进度，取值范围 [0-100] 。
         :type Progress: int
@@ -8693,7 +8606,6 @@ class AiReviewTaskPoliticalResult(AbstractModel):
     @property
     def Output(self):
         """音视频审核涉及令人不适宜信息的任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiReviewPoliticalTaskOutput`
         """
         return self._Output
@@ -8754,7 +8666,6 @@ class AiReviewTaskPornAsrResult(AbstractModel):
         :param _Input: 音视频审核 Asr 文字涉及令人反感的信息的任务输入。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewPornAsrTaskInput`
         :param _Output: 音视频审核 Asr 文字涉及令人反感的信息的任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPornAsrTaskOutput`
         :param _Progress: 音视频审核 Asr 文字涉及令人反感的信息的任务进度，取值范围 [0-100] 。
         :type Progress: int
@@ -8825,7 +8736,6 @@ class AiReviewTaskPornAsrResult(AbstractModel):
     @property
     def Output(self):
         """音视频审核 Asr 文字涉及令人反感的信息的任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiReviewPornAsrTaskOutput`
         """
         return self._Output
@@ -8886,7 +8796,6 @@ class AiReviewTaskPornOcrResult(AbstractModel):
         :param _Input: 音视频审核 Ocr 文字涉及令人反感的信息的任务输入。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewPornOcrTaskInput`
         :param _Output: Ocr 文字音视频审核涉及令人反感的信息的任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPornOcrTaskOutput`
         :param _Progress: Ocr 文字音视频审核涉及令人反感的信息的任务进度，取值范围 [0-100] 。
         :type Progress: int
@@ -8957,7 +8866,6 @@ class AiReviewTaskPornOcrResult(AbstractModel):
     @property
     def Output(self):
         """Ocr 文字音视频审核涉及令人反感的信息的任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiReviewPornOcrTaskOutput`
         """
         return self._Output
@@ -9018,7 +8926,6 @@ class AiReviewTaskPornResult(AbstractModel):
         :param _Input: 音视频审核涉及令人反感的信息的任务输入。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewPornTaskInput`
         :param _Output: 音视频审核涉及令人反感的信息的任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPornTaskOutput`
         :param _Progress: 音视频审核涉及令人反感的信息的任务进度，取值范围 [0-100] 。
         :type Progress: int
@@ -9089,7 +8996,6 @@ class AiReviewTaskPornResult(AbstractModel):
     @property
     def Output(self):
         """音视频审核涉及令人反感的信息的任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiReviewPornTaskOutput`
         """
         return self._Output
@@ -9150,7 +9056,6 @@ class AiReviewTaskProhibitedAsrResult(AbstractModel):
         :param _Input: 音视频审核 Asr 文字鉴违禁任务输入。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewProhibitedAsrTaskInput`
         :param _Output: 音视频审核 Asr 文字鉴违禁任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewProhibitedAsrTaskOutput`
         :param _Progress: 音视频审核 Asr 文字鉴违禁任务进度，取值范围 [0-100] 。
         :type Progress: int
@@ -9221,7 +9126,6 @@ class AiReviewTaskProhibitedAsrResult(AbstractModel):
     @property
     def Output(self):
         """音视频审核 Asr 文字鉴违禁任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiReviewProhibitedAsrTaskOutput`
         """
         return self._Output
@@ -9282,7 +9186,6 @@ class AiReviewTaskProhibitedOcrResult(AbstractModel):
         :param _Input: 音视频审核 Ocr 文字鉴违禁任务输入。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewProhibitedOcrTaskInput`
         :param _Output: 音视频审核 Ocr 文字鉴违禁任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewProhibitedOcrTaskOutput`
         :param _Progress: 音视频审核 Ocr 文字鉴违禁任务进度，取值范围 [0-100] 。
         :type Progress: int
@@ -9353,7 +9256,6 @@ class AiReviewTaskProhibitedOcrResult(AbstractModel):
     @property
     def Output(self):
         """音视频审核 Ocr 文字鉴违禁任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiReviewProhibitedOcrTaskOutput`
         """
         return self._Output
@@ -9414,7 +9316,6 @@ class AiReviewTaskTerrorismOcrResult(AbstractModel):
         :param _Input: 音视频审核 Ocr 文字涉及令人不安全的信息的任务输入。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewTerrorismOcrTaskInput`
         :param _Output: 音视频审核 Ocr 文字涉及令人不安全的信息的任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewTerrorismOcrTaskOutput`
         :param _Progress: 音视频审核 Ocr 文字涉及令人不安全的信息的任务进度，取值范围 [0-100] 。
         :type Progress: int
@@ -9485,7 +9386,6 @@ class AiReviewTaskTerrorismOcrResult(AbstractModel):
     @property
     def Output(self):
         """音视频审核 Ocr 文字涉及令人不安全的信息的任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiReviewTerrorismOcrTaskOutput`
         """
         return self._Output
@@ -9546,7 +9446,6 @@ class AiReviewTaskTerrorismResult(AbstractModel):
         :param _Input: 音视频审核涉及令人不安全的信息的任务输入。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewTerrorismTaskInput`
         :param _Output: 音视频审核涉及令人不安全的信息的任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewTerrorismTaskOutput`
         :param _Progress: 音视频审核涉及令人不安全的信息的任务进度，取值范围 [0-100] 。
         :type Progress: int
@@ -9617,7 +9516,6 @@ class AiReviewTaskTerrorismResult(AbstractModel):
     @property
     def Output(self):
         """音视频审核涉及令人不安全的信息的任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiReviewTerrorismTaskOutput`
         """
         return self._Output
@@ -15601,21 +15499,16 @@ class ContentReviewTemplateItem(AbstractModel):
         :param _Comment: 音视频审核模板描述信息，长度限制：256 个字符。
         :type Comment: str
         :param _PornConfigure: 鉴别涉及令人反感的信息的控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PornConfigure: :class:`tencentcloud.vod.v20180717.models.PornConfigureInfo`
         :param _TerrorismConfigure: 鉴别涉及令人不安全的信息的控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TerrorismConfigure: :class:`tencentcloud.vod.v20180717.models.TerrorismConfigureInfo`
         :param _PoliticalConfigure: 鉴别涉及令人不适宜的信息的控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PoliticalConfigure: :class:`tencentcloud.vod.v20180717.models.PoliticalConfigureInfo`
         :param _ProhibitedConfigure: 违禁控制参数。违禁内容包括：
 <li>谩骂；</li>
 <li>涉毒违法。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProhibitedConfigure: :class:`tencentcloud.vod.v20180717.models.ProhibitedConfigureInfo`
         :param _UserDefineConfigure: 用户自定义音视频审核控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserDefineConfigure: :class:`tencentcloud.vod.v20180717.models.UserDefineConfigureInfo`
         :param _ReviewWallSwitch: 音视频审核结果是否进入音视频审核墙（对音视频审核结果进行人工复核）的开关。
 <li>ON：是；</li>
@@ -15677,7 +15570,6 @@ class ContentReviewTemplateItem(AbstractModel):
     @property
     def PornConfigure(self):
         """鉴别涉及令人反感的信息的控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.PornConfigureInfo`
         """
         return self._PornConfigure
@@ -15689,7 +15581,6 @@ class ContentReviewTemplateItem(AbstractModel):
     @property
     def TerrorismConfigure(self):
         """鉴别涉及令人不安全的信息的控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.TerrorismConfigureInfo`
         """
         return self._TerrorismConfigure
@@ -15701,7 +15592,6 @@ class ContentReviewTemplateItem(AbstractModel):
     @property
     def PoliticalConfigure(self):
         """鉴别涉及令人不适宜的信息的控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.PoliticalConfigureInfo`
         """
         return self._PoliticalConfigure
@@ -15715,7 +15605,6 @@ class ContentReviewTemplateItem(AbstractModel):
         """违禁控制参数。违禁内容包括：
 <li>谩骂；</li>
 <li>涉毒违法。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.ProhibitedConfigureInfo`
         """
         return self._ProhibitedConfigure
@@ -15727,7 +15616,6 @@ class ContentReviewTemplateItem(AbstractModel):
     @property
     def UserDefineConfigure(self):
         """用户自定义音视频审核控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.UserDefineConfigureInfo`
         """
         return self._UserDefineConfigure
@@ -20828,7 +20716,7 @@ class CreateSubAppIdRequest(AbstractModel):
         r"""
         :param _Name: 应用名称，长度限制：40个字符。
         :type Name: str
-        :param _Description: 应用简介，长度限制： 300个字符。
+        :param _Description: 应用简介，长度限制： 300个字符。不填则应用简介默认为空。
         :type Description: str
         """
         self._Name = None
@@ -20847,7 +20735,7 @@ class CreateSubAppIdRequest(AbstractModel):
 
     @property
     def Description(self):
-        """应用简介，长度限制： 300个字符。
+        """应用简介，长度限制： 300个字符。不填则应用简介默认为空。
         :rtype: str
         """
         return self._Description
@@ -32459,7 +32347,6 @@ class DescribeTranscodeTemplatesResponse(AbstractModel):
         :param _TotalCount: 符合过滤条件的记录总数。
         :type TotalCount: int
         :param _TranscodeTemplateSet: 转码模板详情列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TranscodeTemplateSet: list of TranscodeTemplate
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -32482,7 +32369,6 @@ class DescribeTranscodeTemplatesResponse(AbstractModel):
     @property
     def TranscodeTemplateSet(self):
         """转码模板详情列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TranscodeTemplate
         """
         return self._TranscodeTemplateSet
@@ -42025,7 +41911,6 @@ class MediaCastEvent(AbstractModel):
 <li>Scheduled ：等待定时时间到达后启动；</li>
 <li>Stopped ：已经停止转推；</li>
 <li>Idle ：空闲。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         """
         self._CastId = None
@@ -42049,7 +41934,6 @@ class MediaCastEvent(AbstractModel):
 <li>Scheduled ：等待定时时间到达后启动；</li>
 <li>Stopped ：已经停止转推；</li>
 <li>Idle ：空闲。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -47652,19 +47536,9 @@ class ModifyAnimatedGraphicsTemplateRequest(AbstractModel):
         :type SubAppId: int
         :param _Name: 转动图模板名称，长度限制：64 个字符。
         :type Name: str
-        :param _Width: 动图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
-<li>当 Width、Height 均为 0，则分辨率同源；</li>
-<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
-<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
-<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-默认值：0。
+        :param _Width: 动图宽度（或长边）的最大值，取值范围：0 和 [32, 4096]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。
         :type Width: int
-        :param _Height: 动图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
-<li>当 Width、Height 均为 0，则分辨率同源；</li>
-<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
-<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
-<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-默认值：0。
+        :param _Height: 动图高度（或短边）的最大值，取值范围：0 和 [32, 4096]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。
         :type Height: int
         :param _ResolutionAdaptive: 分辨率自适应，可选值：
 <li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
@@ -47726,12 +47600,7 @@ class ModifyAnimatedGraphicsTemplateRequest(AbstractModel):
 
     @property
     def Width(self):
-        """动图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
-<li>当 Width、Height 均为 0，则分辨率同源；</li>
-<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
-<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
-<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-默认值：0。
+        """动图宽度（或长边）的最大值，取值范围：0 和 [32, 4096]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。
         :rtype: int
         """
         return self._Width
@@ -47742,12 +47611,7 @@ class ModifyAnimatedGraphicsTemplateRequest(AbstractModel):
 
     @property
     def Height(self):
-        """动图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
-<li>当 Width、Height 均为 0，则分辨率同源；</li>
-<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
-<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
-<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-默认值：0。
+        """动图高度（或短边）的最大值，取值范围：0 和 [32, 4096]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。
         :rtype: int
         """
         return self._Height
@@ -48934,9 +48798,9 @@ class ModifyImageSpriteTemplateRequest(AbstractModel):
         :type SubAppId: int
         :param _Name: 雪碧图模板名称，长度限制：64 个字符。
         :type Name: str
-        :param _Width: 雪碧图中小图的宽度，取值范围： [128, 4096]，单位：px。
+        :param _Width: 雪碧图中小图的宽度，取值范围： [32, 4096]，单位：px。
         :type Width: int
-        :param _Height: 雪碧图中小图的高度，取值范围： [128, 4096]，单位：px。
+        :param _Height: 雪碧图中小图的高度，取值范围： [32, 4096]，单位：px。
         :type Height: int
         :param _ResolutionAdaptive: 分辨率自适应，可选值：
 <li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
@@ -48955,10 +48819,7 @@ class ModifyImageSpriteTemplateRequest(AbstractModel):
         :type RowCount: int
         :param _ColumnCount: 雪碧图中小图的列数。
         :type ColumnCount: int
-        :param _FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
-<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
-<li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
-默认值：black 。
+        :param _FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li><li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li><li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li><li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>默认值：black 。
         :type FillType: str
         :param _Comment: 模板描述信息，长度限制：256 个字符。
         :type Comment: str
@@ -49017,7 +48878,7 @@ class ModifyImageSpriteTemplateRequest(AbstractModel):
 
     @property
     def Width(self):
-        """雪碧图中小图的宽度，取值范围： [128, 4096]，单位：px。
+        """雪碧图中小图的宽度，取值范围： [32, 4096]，单位：px。
         :rtype: int
         """
         return self._Width
@@ -49028,7 +48889,7 @@ class ModifyImageSpriteTemplateRequest(AbstractModel):
 
     @property
     def Height(self):
-        """雪碧图中小图的高度，取值范围： [128, 4096]，单位：px。
+        """雪碧图中小图的高度，取值范围： [32, 4096]，单位：px。
         :rtype: int
         """
         return self._Height
@@ -49101,10 +48962,7 @@ class ModifyImageSpriteTemplateRequest(AbstractModel):
 
     @property
     def FillType(self):
-        """填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
-<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
-<li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
-默认值：black 。
+        """填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li><li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li><li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li><li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>默认值：black 。
         :rtype: str
         """
         return self._FillType
@@ -50869,19 +50727,9 @@ class ModifySampleSnapshotTemplateRequest(AbstractModel):
         :type SubAppId: int
         :param _Name: 采样截图模板名称，长度限制：64 个字符。
         :type Name: str
-        :param _Width: 截图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
-<li>当 Width、Height 均为 0，则分辨率同源；</li>
-<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
-<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
-<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-默认值：0。
+        :param _Width: 截图宽度（或长边）的最大值，取值范围：0 和 [32, 4096]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。
         :type Width: int
-        :param _Height: 截图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
-<li>当 Width、Height 均为 0，则分辨率同源；</li>
-<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
-<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
-<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-默认值：0。
+        :param _Height: 截图高度（或短边）的最大值，取值范围：0 和 [32, 4096]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。
         :type Height: int
         :param _ResolutionAdaptive: 分辨率自适应，可选值：
 <li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
@@ -50955,12 +50803,7 @@ class ModifySampleSnapshotTemplateRequest(AbstractModel):
 
     @property
     def Width(self):
-        """截图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
-<li>当 Width、Height 均为 0，则分辨率同源；</li>
-<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
-<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
-<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-默认值：0。
+        """截图宽度（或长边）的最大值，取值范围：0 和 [32, 4096]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。
         :rtype: int
         """
         return self._Width
@@ -50971,12 +50814,7 @@ class ModifySampleSnapshotTemplateRequest(AbstractModel):
 
     @property
     def Height(self):
-        """截图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
-<li>当 Width、Height 均为 0，则分辨率同源；</li>
-<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
-<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
-<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-默认值：0。
+        """截图高度（或短边）的最大值，取值范围：0 和 [32, 4096]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。
         :rtype: int
         """
         return self._Height
@@ -51127,19 +50965,9 @@ class ModifySnapshotByTimeOffsetTemplateRequest(AbstractModel):
         :type SubAppId: int
         :param _Name: 指定时间点截图模板名称，长度限制：64 个字符。
         :type Name: str
-        :param _Width: 截图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
-<li>当 Width、Height 均为 0，则分辨率同源；</li>
-<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
-<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
-<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-默认值：0。
+        :param _Width: 截图宽度（或长边）的最大值，取值范围：0 和 [32, 4096]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。
         :type Width: int
-        :param _Height: 截图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
-<li>当 Width、Height 均为 0，则分辨率同源；</li>
-<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
-<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
-<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-默认值：0。
+        :param _Height: 截图高度（或短边）的最大值，取值范围：0 和 [32, 4096]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。
         :type Height: int
         :param _ResolutionAdaptive: 分辨率自适应，可选值：
 <li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
@@ -51203,12 +51031,7 @@ class ModifySnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
     @property
     def Width(self):
-        """截图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
-<li>当 Width、Height 均为 0，则分辨率同源；</li>
-<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
-<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
-<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-默认值：0。
+        """截图宽度（或长边）的最大值，取值范围：0 和 [32, 4096]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。
         :rtype: int
         """
         return self._Width
@@ -51219,12 +51042,7 @@ class ModifySnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
     @property
     def Height(self):
-        """截图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
-<li>当 Width、Height 均为 0，则分辨率同源；</li>
-<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
-<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
-<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-默认值：0。
+        """截图高度（或短边）的最大值，取值范围：0 和 [32, 4096]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。
         :rtype: int
         """
         return self._Height
@@ -64266,10 +64084,8 @@ class ReviewAudioVideoTask(AbstractModel):
         :param _Message: 错误信息。
         :type Message: str
         :param _Input: 音视频审核任务的输入。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Input: :class:`tencentcloud.vod.v20180717.models.ReviewAudioVideoTaskInput`
         :param _Output: 音视频审核任务的输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.ReviewAudioVideoTaskOutput`
         :param _SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
         :type SessionId: str
@@ -64334,7 +64150,6 @@ class ReviewAudioVideoTask(AbstractModel):
     @property
     def Input(self):
         """音视频审核任务的输入。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.ReviewAudioVideoTaskInput`
         """
         return self._Input
@@ -64346,7 +64161,6 @@ class ReviewAudioVideoTask(AbstractModel):
     @property
     def Output(self):
         """音视频审核任务的输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.ReviewAudioVideoTaskOutput`
         """
         return self._Output
@@ -65331,10 +65145,8 @@ class RoundPlayFilePlayInfo(AbstractModel):
         :param _StartPlayTime: 启播时间，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)。
         :type StartPlayTime: str
         :param _Duration: 播放时长，单位为秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Duration: float
         :param _Progress: 播放进度，单位为秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Progress: float
         """
         self._ItemId = None
@@ -65379,7 +65191,6 @@ class RoundPlayFilePlayInfo(AbstractModel):
     @property
     def Duration(self):
         """播放时长，单位为秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Duration
@@ -65391,7 +65202,6 @@ class RoundPlayFilePlayInfo(AbstractModel):
     @property
     def Progress(self):
         """播放进度，单位为秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Progress
@@ -65447,10 +65257,8 @@ class RoundPlayInfo(AbstractModel):
         :param _Url: 轮播播放地址。
         :type Url: str
         :param _CreateTime: 创建时间，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _UpdateTime: 更新时间，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param _ExpiredTime: 过期时间，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)，过期后将停止播单的播放。“9999-12-31T23:59:59+08:00”表示永不过期。
         :type ExpiredTime: str
@@ -65564,7 +65372,6 @@ class RoundPlayInfo(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -65576,7 +65383,6 @@ class RoundPlayInfo(AbstractModel):
     @property
     def UpdateTime(self):
         """更新时间，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime

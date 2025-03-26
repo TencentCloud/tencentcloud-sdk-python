@@ -5872,7 +5872,6 @@ class DescribeExternalEndpointStatusResponse(AbstractModel):
         :param _Status: 开启公网访问状态，开启中（Opening）、已开启（Opened）、关闭（Closed）
         :type Status: str
         :param _Reason: 原因
-注意：此字段可能返回 null，表示取不到有效值。
         :type Reason: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5895,7 +5894,6 @@ class DescribeExternalEndpointStatusResponse(AbstractModel):
     @property
     def Reason(self):
         """原因
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Reason
@@ -6547,10 +6545,8 @@ class DescribeImageManifestsResponse(AbstractModel):
         :param _Config: 镜像的配置信息
         :type Config: str
         :param _Labels: 镜像的Labels信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Labels: list of KeyValueString
         :param _Size: 镜像大小，单位：byte
-注意：此字段可能返回 null，表示取不到有效值。
         :type Size: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6586,7 +6582,6 @@ class DescribeImageManifestsResponse(AbstractModel):
     @property
     def Labels(self):
         """镜像的Labels信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KeyValueString
         """
         return self._Labels
@@ -6598,7 +6593,6 @@ class DescribeImageManifestsResponse(AbstractModel):
     @property
     def Size(self):
         """镜像大小，单位：byte
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Size
@@ -6975,8 +6969,14 @@ class DescribeImmutableTagRulesRequest(AbstractModel):
         r"""
         :param _RegistryId: 实例 Id
         :type RegistryId: str
+        :param _Page: 页数，默认为1
+        :type Page: int
+        :param _PageSize: 每页展示个数，最大值为100
+        :type PageSize: int
         """
         self._RegistryId = None
+        self._Page = None
+        self._PageSize = None
 
     @property
     def RegistryId(self):
@@ -6989,9 +6989,33 @@ class DescribeImmutableTagRulesRequest(AbstractModel):
     def RegistryId(self, RegistryId):
         self._RegistryId = RegistryId
 
+    @property
+    def Page(self):
+        """页数，默认为1
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        """每页展示个数，最大值为100
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
 
     def _deserialize(self, params):
         self._RegistryId = params.get("RegistryId")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7010,10 +7034,8 @@ class DescribeImmutableTagRulesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Rules: 规则列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Rules: list of ImmutableTagRule
         :param _EmptyNs: 未创建规则的命名空间
-注意：此字段可能返回 null，表示取不到有效值。
         :type EmptyNs: list of str
         :param _Total: 规则总量
         :type Total: int
@@ -7028,7 +7050,6 @@ class DescribeImmutableTagRulesResponse(AbstractModel):
     @property
     def Rules(self):
         """规则列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ImmutableTagRule
         """
         return self._Rules
@@ -7040,7 +7061,6 @@ class DescribeImmutableTagRulesResponse(AbstractModel):
     @property
     def EmptyNs(self):
         """未创建规则的命名空间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._EmptyNs
@@ -7237,7 +7257,6 @@ class DescribeInstanceCustomizedDomainResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _DomainInfoList: 域名信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type DomainInfoList: list of CustomizedDomainInfo
         :param _TotalCount: 总个数
         :type TotalCount: int
@@ -7251,7 +7270,6 @@ class DescribeInstanceCustomizedDomainResponse(AbstractModel):
     @property
     def DomainInfoList(self):
         """域名信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CustomizedDomainInfo
         """
         return self._DomainInfoList
@@ -7622,7 +7640,6 @@ class DescribeInstancesResponse(AbstractModel):
         :param _TotalCount: 总实例个数
         :type TotalCount: int
         :param _Registries: 实例信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Registries: list of Registry
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7645,7 +7662,6 @@ class DescribeInstancesResponse(AbstractModel):
     @property
     def Registries(self):
         """实例信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Registry
         """
         return self._Registries
@@ -7726,7 +7742,6 @@ class DescribeInternalEndpointDnsStatusResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _VpcSet: vpc私有域名解析状态列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcSet: list of VpcPrivateDomainStatus
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7737,7 +7752,6 @@ class DescribeInternalEndpointDnsStatusResponse(AbstractModel):
     @property
     def VpcSet(self):
         """vpc私有域名解析状态列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of VpcPrivateDomainStatus
         """
         return self._VpcSet
@@ -9401,7 +9415,6 @@ class DescribeServiceAccountsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ServiceAccounts: 服务级账号列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceAccounts: list of ServiceAccount
         :param _TotalCount: 服务级账户数量
         :type TotalCount: int
@@ -9415,7 +9428,6 @@ class DescribeServiceAccountsResponse(AbstractModel):
     @property
     def ServiceAccounts(self):
         """服务级账号列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ServiceAccount
         """
         return self._ServiceAccounts
@@ -16180,7 +16192,6 @@ class ServiceAccount(AbstractModel):
         :param _ExpiresAt: 过期时间
         :type ExpiresAt: int
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _UpdateTime: 更新时间
         :type UpdateTime: str
@@ -16242,7 +16253,6 @@ class ServiceAccount(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime

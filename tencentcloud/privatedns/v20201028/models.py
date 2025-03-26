@@ -2799,7 +2799,6 @@ class MetricData(AbstractModel):
         :param _DataSet: 表数据
         :type DataSet: list of DatePoint
         :param _MetricCount: 查询范围内的请求总量
-注意：此字段可能返回 null，表示取不到有效值。
         :type MetricCount: int
         """
         self._Resource = None
@@ -2843,7 +2842,6 @@ class MetricData(AbstractModel):
     @property
     def MetricCount(self):
         """查询范围内的请求总量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MetricCount
@@ -3550,7 +3548,6 @@ class PrivateZone(AbstractModel):
         :param _RecordCount: 记录数
         :type RecordCount: int
         :param _Remark: 备注
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _VpcSet: 绑定的Vpc列表
         :type VpcSet: list of VpcInfo
@@ -3562,27 +3559,21 @@ class PrivateZone(AbstractModel):
         :param _Tags: 标签键值对集合
         :type Tags: list of TagInfo
         :param _AccountVpcSet: 绑定的关联账号的vpc列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type AccountVpcSet: list of AccountVpcInfoOutput
         :param _IsCustomTld: 是否自定义TLD
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsCustomTld: bool
         :param _CnameSpeedupStatus: CNAME加速状态：开通：ENABLED, 关闭，DISABLED
         :type CnameSpeedupStatus: str
         :param _ForwardRuleName: 转发规则名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ForwardRuleName: str
         :param _ForwardRuleType: 转发规则类型：云上到云下，DOWN；云下到云上，UP，目前只支持DOWN
-注意：此字段可能返回 null，表示取不到有效值。
         :type ForwardRuleType: str
         :param _ForwardAddress: 转发的地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type ForwardAddress: str
         :param _EndPointName: 终端节点名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndPointName: str
         :param _DeletedVpcSet: 已删除的vpc
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeletedVpcSet: list of VpcInfo
         """
         self._ZoneId = None
@@ -3674,7 +3665,6 @@ class PrivateZone(AbstractModel):
     @property
     def Remark(self):
         """备注
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -3731,7 +3721,6 @@ class PrivateZone(AbstractModel):
     @property
     def AccountVpcSet(self):
         """绑定的关联账号的vpc列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AccountVpcInfoOutput
         """
         return self._AccountVpcSet
@@ -3743,7 +3732,6 @@ class PrivateZone(AbstractModel):
     @property
     def IsCustomTld(self):
         """是否自定义TLD
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsCustomTld
@@ -3766,7 +3754,6 @@ class PrivateZone(AbstractModel):
     @property
     def ForwardRuleName(self):
         """转发规则名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ForwardRuleName
@@ -3778,7 +3765,6 @@ class PrivateZone(AbstractModel):
     @property
     def ForwardRuleType(self):
         """转发规则类型：云上到云下，DOWN；云下到云上，UP，目前只支持DOWN
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ForwardRuleType
@@ -3790,7 +3776,6 @@ class PrivateZone(AbstractModel):
     @property
     def ForwardAddress(self):
         """转发的地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ForwardAddress
@@ -3814,7 +3799,6 @@ class PrivateZone(AbstractModel):
     @property
     def DeletedVpcSet(self):
         """已删除的vpc
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of VpcInfo
         """
         return self._DeletedVpcSet
@@ -3894,7 +3878,6 @@ class PrivateZoneRecord(AbstractModel):
         :param _TTL: 记录缓存时间，数值越小生效越快，取值1-86400s, 默认 600
         :type TTL: int
         :param _MX: MX优先级：记录类型为MX时必填。取值范围：5,10,15,20,30,40,50
-注意：此字段可能返回 null，表示取不到有效值。
         :type MX: int
         :param _Status: 记录状态：ENABLED
         :type Status: str
@@ -3909,10 +3892,8 @@ class PrivateZoneRecord(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Extra: str
         :param _Enabled: 0暂停，1启用
-注意：此字段可能返回 null，表示取不到有效值。
         :type Enabled: int
         :param _Remark: 备注
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         """
         self._RecordId = None
@@ -3999,7 +3980,6 @@ class PrivateZoneRecord(AbstractModel):
     @property
     def MX(self):
         """MX优先级：记录类型为MX时必填。取值范围：5,10,15,20,30,40,50
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MX
@@ -4068,7 +4048,6 @@ class PrivateZoneRecord(AbstractModel):
     @property
     def Enabled(self):
         """0暂停，1启用
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Enabled
@@ -4080,7 +4059,6 @@ class PrivateZoneRecord(AbstractModel):
     @property
     def Remark(self):
         """备注
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark

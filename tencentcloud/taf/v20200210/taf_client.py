@@ -26,6 +26,29 @@ class TafClient(AbstractClient):
     _service = 'taf'
 
 
+    def ManageDeviceRisk(self, request):
+        """oaid 设备风险接口
+
+        :param request: Request instance for ManageDeviceRisk.
+        :type request: :class:`tencentcloud.taf.v20200210.models.ManageDeviceRiskRequest`
+        :rtype: :class:`tencentcloud.taf.v20200210.models.ManageDeviceRiskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ManageDeviceRisk", params, headers=headers)
+            response = json.loads(body)
+            model = models.ManageDeviceRiskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ManagePortraitRisk(self, request):
         """虚假流量识别
 

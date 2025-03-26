@@ -1465,24 +1465,13 @@ class CbsVolume(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: cbs volume 数据卷名称
-        :type Name: str
         :param _CbsDiskId: 腾讯云cbs盘Id
         :type CbsDiskId: str
+        :param _Name: cbs volume 数据卷名称
+        :type Name: str
         """
-        self._Name = None
         self._CbsDiskId = None
-
-    @property
-    def Name(self):
-        """cbs volume 数据卷名称
-        :rtype: str
-        """
-        return self._Name
-
-    @Name.setter
-    def Name(self, Name):
-        self._Name = Name
+        self._Name = None
 
     @property
     def CbsDiskId(self):
@@ -1495,10 +1484,21 @@ class CbsVolume(AbstractModel):
     def CbsDiskId(self, CbsDiskId):
         self._CbsDiskId = CbsDiskId
 
+    @property
+    def Name(self):
+        """cbs volume 数据卷名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
 
     def _deserialize(self, params):
-        self._Name = params.get("Name")
         self._CbsDiskId = params.get("CbsDiskId")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4654,56 +4654,54 @@ class Container(AbstractModel):
         :type Image: str
         :param _Name: 容器名
         :type Name: str
-        :param _Commands: 容器启动命令
-        :type Commands: list of str
         :param _Args: 容器启动参数
         :type Args: list of str
-        :param _EnvironmentVars: 容器内操作系统的环境变量
-        :type EnvironmentVars: list of EnvironmentVariable
+        :param _Commands: 容器启动命令
+        :type Commands: list of str
         :param _Cpu: CPU，制改容器最多可使用的核数，该值不可超过容器实例的总核数。单位：核。
         :type Cpu: float
-        :param _Memory: 内存，限制该容器最多可使用的内存值，该值不可超过容器实例的总内存值。单位：GiB
-        :type Memory: float
-        :param _VolumeMounts: 数据卷挂载信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type VolumeMounts: list of VolumeMount
         :param _CurrentState: 当前状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type CurrentState: :class:`tencentcloud.tke.v20180525.models.ContainerState`
-        :param _RestartCount: 重启次数
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RestartCount: int
-        :param _WorkingDir: 容器工作目录
-注意：此字段可能返回 null，表示取不到有效值。
-        :type WorkingDir: str
-        :param _LivenessProbe: 存活探针
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LivenessProbe: :class:`tencentcloud.tke.v20180525.models.LivenessOrReadinessProbe`
-        :param _ReadinessProbe: 就绪探针
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ReadinessProbe: :class:`tencentcloud.tke.v20180525.models.LivenessOrReadinessProbe`
+        :param _EnvironmentVars: 容器内操作系统的环境变量
+        :type EnvironmentVars: list of EnvironmentVariable
         :param _GpuLimit: Gpu限制
 注意：此字段可能返回 null，表示取不到有效值。
         :type GpuLimit: int
+        :param _LivenessProbe: 存活探针
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LivenessProbe: :class:`tencentcloud.tke.v20180525.models.LivenessOrReadinessProbe`
+        :param _Memory: 内存，限制该容器最多可使用的内存值，该值不可超过容器实例的总内存值。单位：GiB
+        :type Memory: float
+        :param _ReadinessProbe: 就绪探针
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReadinessProbe: :class:`tencentcloud.tke.v20180525.models.LivenessOrReadinessProbe`
+        :param _RestartCount: 重启次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RestartCount: int
         :param _SecurityContext: 容器的安全上下文
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityContext: :class:`tencentcloud.tke.v20180525.models.SecurityContext`
+        :param _VolumeMounts: 数据卷挂载信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VolumeMounts: list of VolumeMount
+        :param _WorkingDir: 容器工作目录
+        :type WorkingDir: str
         """
         self._Image = None
         self._Name = None
-        self._Commands = None
         self._Args = None
-        self._EnvironmentVars = None
+        self._Commands = None
         self._Cpu = None
-        self._Memory = None
-        self._VolumeMounts = None
         self._CurrentState = None
-        self._RestartCount = None
-        self._WorkingDir = None
-        self._LivenessProbe = None
-        self._ReadinessProbe = None
+        self._EnvironmentVars = None
         self._GpuLimit = None
+        self._LivenessProbe = None
+        self._Memory = None
+        self._ReadinessProbe = None
+        self._RestartCount = None
         self._SecurityContext = None
+        self._VolumeMounts = None
+        self._WorkingDir = None
 
     @property
     def Image(self):
@@ -4728,17 +4726,6 @@ class Container(AbstractModel):
         self._Name = Name
 
     @property
-    def Commands(self):
-        """容器启动命令
-        :rtype: list of str
-        """
-        return self._Commands
-
-    @Commands.setter
-    def Commands(self, Commands):
-        self._Commands = Commands
-
-    @property
     def Args(self):
         """容器启动参数
         :rtype: list of str
@@ -4750,15 +4737,15 @@ class Container(AbstractModel):
         self._Args = Args
 
     @property
-    def EnvironmentVars(self):
-        """容器内操作系统的环境变量
-        :rtype: list of EnvironmentVariable
+    def Commands(self):
+        """容器启动命令
+        :rtype: list of str
         """
-        return self._EnvironmentVars
+        return self._Commands
 
-    @EnvironmentVars.setter
-    def EnvironmentVars(self, EnvironmentVars):
-        self._EnvironmentVars = EnvironmentVars
+    @Commands.setter
+    def Commands(self, Commands):
+        self._Commands = Commands
 
     @property
     def Cpu(self):
@@ -4772,32 +4759,8 @@ class Container(AbstractModel):
         self._Cpu = Cpu
 
     @property
-    def Memory(self):
-        """内存，限制该容器最多可使用的内存值，该值不可超过容器实例的总内存值。单位：GiB
-        :rtype: float
-        """
-        return self._Memory
-
-    @Memory.setter
-    def Memory(self, Memory):
-        self._Memory = Memory
-
-    @property
-    def VolumeMounts(self):
-        """数据卷挂载信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: list of VolumeMount
-        """
-        return self._VolumeMounts
-
-    @VolumeMounts.setter
-    def VolumeMounts(self, VolumeMounts):
-        self._VolumeMounts = VolumeMounts
-
-    @property
     def CurrentState(self):
         """当前状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20180525.models.ContainerState`
         """
         return self._CurrentState
@@ -4807,52 +4770,15 @@ class Container(AbstractModel):
         self._CurrentState = CurrentState
 
     @property
-    def RestartCount(self):
-        """重启次数
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: int
+    def EnvironmentVars(self):
+        """容器内操作系统的环境变量
+        :rtype: list of EnvironmentVariable
         """
-        return self._RestartCount
+        return self._EnvironmentVars
 
-    @RestartCount.setter
-    def RestartCount(self, RestartCount):
-        self._RestartCount = RestartCount
-
-    @property
-    def WorkingDir(self):
-        """容器工作目录
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._WorkingDir
-
-    @WorkingDir.setter
-    def WorkingDir(self, WorkingDir):
-        self._WorkingDir = WorkingDir
-
-    @property
-    def LivenessProbe(self):
-        """存活探针
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: :class:`tencentcloud.tke.v20180525.models.LivenessOrReadinessProbe`
-        """
-        return self._LivenessProbe
-
-    @LivenessProbe.setter
-    def LivenessProbe(self, LivenessProbe):
-        self._LivenessProbe = LivenessProbe
-
-    @property
-    def ReadinessProbe(self):
-        """就绪探针
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: :class:`tencentcloud.tke.v20180525.models.LivenessOrReadinessProbe`
-        """
-        return self._ReadinessProbe
-
-    @ReadinessProbe.setter
-    def ReadinessProbe(self, ReadinessProbe):
-        self._ReadinessProbe = ReadinessProbe
+    @EnvironmentVars.setter
+    def EnvironmentVars(self, EnvironmentVars):
+        self._EnvironmentVars = EnvironmentVars
 
     @property
     def GpuLimit(self):
@@ -4867,6 +4793,53 @@ class Container(AbstractModel):
         self._GpuLimit = GpuLimit
 
     @property
+    def LivenessProbe(self):
+        """存活探针
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tke.v20180525.models.LivenessOrReadinessProbe`
+        """
+        return self._LivenessProbe
+
+    @LivenessProbe.setter
+    def LivenessProbe(self, LivenessProbe):
+        self._LivenessProbe = LivenessProbe
+
+    @property
+    def Memory(self):
+        """内存，限制该容器最多可使用的内存值，该值不可超过容器实例的总内存值。单位：GiB
+        :rtype: float
+        """
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def ReadinessProbe(self):
+        """就绪探针
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tke.v20180525.models.LivenessOrReadinessProbe`
+        """
+        return self._ReadinessProbe
+
+    @ReadinessProbe.setter
+    def ReadinessProbe(self, ReadinessProbe):
+        self._ReadinessProbe = ReadinessProbe
+
+    @property
+    def RestartCount(self):
+        """重启次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RestartCount
+
+    @RestartCount.setter
+    def RestartCount(self, RestartCount):
+        self._RestartCount = RestartCount
+
+    @property
     def SecurityContext(self):
         """容器的安全上下文
 注意：此字段可能返回 null，表示取不到有效值。
@@ -4878,41 +4851,64 @@ class Container(AbstractModel):
     def SecurityContext(self, SecurityContext):
         self._SecurityContext = SecurityContext
 
+    @property
+    def VolumeMounts(self):
+        """数据卷挂载信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of VolumeMount
+        """
+        return self._VolumeMounts
+
+    @VolumeMounts.setter
+    def VolumeMounts(self, VolumeMounts):
+        self._VolumeMounts = VolumeMounts
+
+    @property
+    def WorkingDir(self):
+        """容器工作目录
+        :rtype: str
+        """
+        return self._WorkingDir
+
+    @WorkingDir.setter
+    def WorkingDir(self, WorkingDir):
+        self._WorkingDir = WorkingDir
+
 
     def _deserialize(self, params):
         self._Image = params.get("Image")
         self._Name = params.get("Name")
-        self._Commands = params.get("Commands")
         self._Args = params.get("Args")
+        self._Commands = params.get("Commands")
+        self._Cpu = params.get("Cpu")
+        if params.get("CurrentState") is not None:
+            self._CurrentState = ContainerState()
+            self._CurrentState._deserialize(params.get("CurrentState"))
         if params.get("EnvironmentVars") is not None:
             self._EnvironmentVars = []
             for item in params.get("EnvironmentVars"):
                 obj = EnvironmentVariable()
                 obj._deserialize(item)
                 self._EnvironmentVars.append(obj)
-        self._Cpu = params.get("Cpu")
+        self._GpuLimit = params.get("GpuLimit")
+        if params.get("LivenessProbe") is not None:
+            self._LivenessProbe = LivenessOrReadinessProbe()
+            self._LivenessProbe._deserialize(params.get("LivenessProbe"))
         self._Memory = params.get("Memory")
+        if params.get("ReadinessProbe") is not None:
+            self._ReadinessProbe = LivenessOrReadinessProbe()
+            self._ReadinessProbe._deserialize(params.get("ReadinessProbe"))
+        self._RestartCount = params.get("RestartCount")
+        if params.get("SecurityContext") is not None:
+            self._SecurityContext = SecurityContext()
+            self._SecurityContext._deserialize(params.get("SecurityContext"))
         if params.get("VolumeMounts") is not None:
             self._VolumeMounts = []
             for item in params.get("VolumeMounts"):
                 obj = VolumeMount()
                 obj._deserialize(item)
                 self._VolumeMounts.append(obj)
-        if params.get("CurrentState") is not None:
-            self._CurrentState = ContainerState()
-            self._CurrentState._deserialize(params.get("CurrentState"))
-        self._RestartCount = params.get("RestartCount")
         self._WorkingDir = params.get("WorkingDir")
-        if params.get("LivenessProbe") is not None:
-            self._LivenessProbe = LivenessOrReadinessProbe()
-            self._LivenessProbe._deserialize(params.get("LivenessProbe"))
-        if params.get("ReadinessProbe") is not None:
-            self._ReadinessProbe = LivenessOrReadinessProbe()
-            self._ReadinessProbe._deserialize(params.get("ReadinessProbe"))
-        self._GpuLimit = params.get("GpuLimit")
-        if params.get("SecurityContext") is not None:
-            self._SecurityContext = SecurityContext()
-            self._SecurityContext._deserialize(params.get("SecurityContext"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4930,34 +4926,94 @@ class ContainerState(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ExitCode: 容器运行退出码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExitCode: int
+        :param _FinishTime: 容器运行结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FinishTime: str
+        :param _Message: 容器状态信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        :param _Reason: 容器状态 Reason
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Reason: str
+        :param _RestartCount: 容器重启次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RestartCount: int
         :param _StartTime: 容器运行开始时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
         :param _State: 容器状态：created, running, exited, unknown
         :type State: str
-        :param _FinishTime: 容器运行结束时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type FinishTime: str
-        :param _ExitCode: 容器运行退出码
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ExitCode: int
-        :param _Reason: 容器状态 Reason
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Reason: str
-        :param _Message: 容器状态信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Message: str
-        :param _RestartCount: 容器重启次数
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RestartCount: int
         """
+        self._ExitCode = None
+        self._FinishTime = None
+        self._Message = None
+        self._Reason = None
+        self._RestartCount = None
         self._StartTime = None
         self._State = None
-        self._FinishTime = None
-        self._ExitCode = None
-        self._Reason = None
-        self._Message = None
-        self._RestartCount = None
+
+    @property
+    def ExitCode(self):
+        """容器运行退出码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ExitCode
+
+    @ExitCode.setter
+    def ExitCode(self, ExitCode):
+        self._ExitCode = ExitCode
+
+    @property
+    def FinishTime(self):
+        """容器运行结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
+    @property
+    def Message(self):
+        """容器状态信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Reason(self):
+        """容器状态 Reason
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def RestartCount(self):
+        """容器重启次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RestartCount
+
+    @RestartCount.setter
+    def RestartCount(self, RestartCount):
+        self._RestartCount = RestartCount
 
     @property
     def StartTime(self):
@@ -4982,75 +5038,15 @@ class ContainerState(AbstractModel):
     def State(self, State):
         self._State = State
 
-    @property
-    def FinishTime(self):
-        """容器运行结束时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._FinishTime
-
-    @FinishTime.setter
-    def FinishTime(self, FinishTime):
-        self._FinishTime = FinishTime
-
-    @property
-    def ExitCode(self):
-        """容器运行退出码
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: int
-        """
-        return self._ExitCode
-
-    @ExitCode.setter
-    def ExitCode(self, ExitCode):
-        self._ExitCode = ExitCode
-
-    @property
-    def Reason(self):
-        """容器状态 Reason
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._Reason
-
-    @Reason.setter
-    def Reason(self, Reason):
-        self._Reason = Reason
-
-    @property
-    def Message(self):
-        """容器状态信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._Message
-
-    @Message.setter
-    def Message(self, Message):
-        self._Message = Message
-
-    @property
-    def RestartCount(self):
-        """容器重启次数
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: int
-        """
-        return self._RestartCount
-
-    @RestartCount.setter
-    def RestartCount(self, RestartCount):
-        self._RestartCount = RestartCount
-
 
     def _deserialize(self, params):
+        self._ExitCode = params.get("ExitCode")
+        self._FinishTime = params.get("FinishTime")
+        self._Message = params.get("Message")
+        self._Reason = params.get("Reason")
+        self._RestartCount = params.get("RestartCount")
         self._StartTime = params.get("StartTime")
         self._State = params.get("State")
-        self._FinishTime = params.get("FinishTime")
-        self._ExitCode = params.get("ExitCode")
-        self._Reason = params.get("Reason")
-        self._Message = params.get("Message")
-        self._RestartCount = params.get("RestartCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10006,23 +10002,19 @@ class DNSConfig(AbstractModel):
     def __init__(self):
         r"""
         :param _Nameservers: DNS 服务器IP地址列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Nameservers: list of str
-        :param _Searches: DNS搜索域列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Searches: list of str
         :param _Options: 对象选项列表，每个对象由name和value（可选）构成
-注意：此字段可能返回 null，表示取不到有效值。
         :type Options: list of DNSConfigOption
+        :param _Searches: DNS搜索域列表
+        :type Searches: list of str
         """
         self._Nameservers = None
-        self._Searches = None
         self._Options = None
+        self._Searches = None
 
     @property
     def Nameservers(self):
         """DNS 服务器IP地址列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Nameservers
@@ -10032,21 +10024,8 @@ class DNSConfig(AbstractModel):
         self._Nameservers = Nameservers
 
     @property
-    def Searches(self):
-        """DNS搜索域列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: list of str
-        """
-        return self._Searches
-
-    @Searches.setter
-    def Searches(self, Searches):
-        self._Searches = Searches
-
-    @property
     def Options(self):
         """对象选项列表，每个对象由name和value（可选）构成
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DNSConfigOption
         """
         return self._Options
@@ -10055,16 +10034,27 @@ class DNSConfig(AbstractModel):
     def Options(self, Options):
         self._Options = Options
 
+    @property
+    def Searches(self):
+        """DNS搜索域列表
+        :rtype: list of str
+        """
+        return self._Searches
+
+    @Searches.setter
+    def Searches(self, Searches):
+        self._Searches = Searches
+
 
     def _deserialize(self, params):
         self._Nameservers = params.get("Nameservers")
-        self._Searches = params.get("Searches")
         if params.get("Options") is not None:
             self._Options = []
             for item in params.get("Options"):
                 obj = DNSConfigOption()
                 obj._deserialize(item)
                 self._Options.append(obj)
+        self._Searches = params.get("Searches")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17512,7 +17502,6 @@ class DescribeEKSContainerInstanceRegionsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Regions: EKS Container Instance支持的地域信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Regions: list of EksCiRegionInfo
         :param _TotalCount: 总数
         :type TotalCount: int
@@ -17526,7 +17515,6 @@ class DescribeEKSContainerInstanceRegionsResponse(AbstractModel):
     @property
     def Regions(self):
         """EKS Container Instance支持的地域信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of EksCiRegionInfo
         """
         return self._Regions
@@ -19984,6 +19972,79 @@ class DescribeLogSwitchesResponse(AbstractModel):
                 obj = Switch()
                 obj._deserialize(item)
                 self._SwitchSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeOSImagesRequest(AbstractModel):
+    """DescribeOSImages请求参数结构体
+
+    """
+
+
+class DescribeOSImagesResponse(AbstractModel):
+    """DescribeOSImages返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OSImageSeriesSet: 镜像信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OSImageSeriesSet: list of OSImage
+        :param _TotalCount: 镜像数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._OSImageSeriesSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def OSImageSeriesSet(self):
+        """镜像信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of OSImage
+        """
+        return self._OSImageSeriesSet
+
+    @OSImageSeriesSet.setter
+    def OSImageSeriesSet(self, OSImageSeriesSet):
+        self._OSImageSeriesSet = OSImageSeriesSet
+
+    @property
+    def TotalCount(self):
+        """镜像数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("OSImageSeriesSet") is not None:
+            self._OSImageSeriesSet = []
+            for item in params.get("OSImageSeriesSet"):
+                obj = OSImage()
+                obj._deserialize(item)
+                self._OSImageSeriesSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -26772,98 +26833,162 @@ class EksCi(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _AutoCreatedEipId: 自动为用户创建的EipId
+        :type AutoCreatedEipId: str
+        :param _CamRoleName: 为容器实例关联 CAM 角色，value 填写 CAM 角色名称，容器实例可获取该 CAM 角色包含的权限策略，方便 容器实例 内的程序进行如购买资源、读写存储等云资源操作。
+        :type CamRoleName: str
+        :param _Containers: 容器列表
+        :type Containers: list of Container
+        :param _Cpu: CPU大小
+        :type Cpu: float
+        :param _CpuType: CPU类型
+        :type CpuType: str
+        :param _CreationTime: 接到请求后的系统创建时间。
+        :type CreationTime: str
+        :param _EipAddress: 容器实例绑定的Eip地址，注意可能为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EipAddress: str
         :param _EksCiId: EKS Cotainer Instance Id
         :type EksCiId: str
         :param _EksCiName: EKS Cotainer Instance Name
         :type EksCiName: str
+        :param _EksCiVolume: 数据卷信息
+        :type EksCiVolume: :class:`tencentcloud.tke.v20180525.models.EksCiVolume`
+        :param _GpuCount: GPU卡数量
+        :type GpuCount: int
+        :param _GpuType: GPU类型。如无使用GPU则不返回
+        :type GpuType: str
+        :param _InitContainers: 初始化容器列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InitContainers: list of Container
         :param _Memory: 内存大小
         :type Memory: float
-        :param _Cpu: CPU大小
-        :type Cpu: float
+        :param _PersistStatus: 容器状态是否持久化
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PersistStatus: bool
+        :param _PrivateIp: 内网ip地址
+        :type PrivateIp: str
+        :param _RestartPolicy: 容器组的重启策略
+        :type RestartPolicy: str
+        :param _SecurityContext: 容器组运行的安全上下文
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecurityContext: :class:`tencentcloud.tke.v20180525.models.SecurityContext`
         :param _SecurityGroupIds: 安全组ID
         :type SecurityGroupIds: list of str
-        :param _RestartPolicy: 容器组的重启策略
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RestartPolicy: str
         :param _Status: 返回容器组创建状态：Pending，Running，Succeeded，Failed。其中：
 Failed （运行失败）指的容器组退出，RestartPolilcy为Never， 有容器exitCode非0；
 Succeeded（运行成功）指的是容器组退出了，RestartPolicy为Never或onFailure，所有容器exitCode都为0；
 Failed和Succeeded这两种状态都会停止运行，停止计费。
 Pending是创建中，Running是 运行中。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
-        :param _CreationTime: 接到请求后的系统创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CreationTime: str
-        :param _SucceededTime: 容器全部成功退出后的时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SucceededTime: str
-        :param _Containers: 容器列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Containers: list of Container
-        :param _EksCiVolume: 数据卷信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type EksCiVolume: :class:`tencentcloud.tke.v20180525.models.EksCiVolume`
-        :param _SecurityContext: 容器组运行的安全上下文
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SecurityContext: :class:`tencentcloud.tke.v20180525.models.SecurityContext`
-        :param _PrivateIp: 内网ip地址
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PrivateIp: str
-        :param _EipAddress: 容器实例绑定的Eip地址，注意可能为空
-注意：此字段可能返回 null，表示取不到有效值。
-        :type EipAddress: str
-        :param _GpuType: GPU类型。如无使用GPU则不返回
-注意：此字段可能返回 null，表示取不到有效值。
-        :type GpuType: str
-        :param _CpuType: CPU类型
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CpuType: str
-        :param _GpuCount: GPU卡数量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type GpuCount: int
-        :param _VpcId: 实例所属VPC的Id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type VpcId: str
         :param _SubnetId: 实例所属子网Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetId: str
-        :param _InitContainers: 初始化容器列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InitContainers: list of Container
-        :param _CamRoleName: 为容器实例关联 CAM 角色，value 填写 CAM 角色名称，容器实例可获取该 CAM 角色包含的权限策略，方便 容器实例 内的程序进行如购买资源、读写存储等云资源操作。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CamRoleName: str
-        :param _AutoCreatedEipId: 自动为用户创建的EipId
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AutoCreatedEipId: str
-        :param _PersistStatus: 容器状态是否持久化
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PersistStatus: bool
+        :param _SucceededTime: 容器全部成功退出后的时间
+        :type SucceededTime: str
+        :param _VpcId: 实例所属VPC的Id
+        :type VpcId: str
         """
+        self._AutoCreatedEipId = None
+        self._CamRoleName = None
+        self._Containers = None
+        self._Cpu = None
+        self._CpuType = None
+        self._CreationTime = None
+        self._EipAddress = None
         self._EksCiId = None
         self._EksCiName = None
-        self._Memory = None
-        self._Cpu = None
-        self._SecurityGroupIds = None
-        self._RestartPolicy = None
-        self._Status = None
-        self._CreationTime = None
-        self._SucceededTime = None
-        self._Containers = None
         self._EksCiVolume = None
-        self._SecurityContext = None
-        self._PrivateIp = None
-        self._EipAddress = None
-        self._GpuType = None
-        self._CpuType = None
         self._GpuCount = None
-        self._VpcId = None
-        self._SubnetId = None
+        self._GpuType = None
         self._InitContainers = None
-        self._CamRoleName = None
-        self._AutoCreatedEipId = None
+        self._Memory = None
         self._PersistStatus = None
+        self._PrivateIp = None
+        self._RestartPolicy = None
+        self._SecurityContext = None
+        self._SecurityGroupIds = None
+        self._Status = None
+        self._SubnetId = None
+        self._SucceededTime = None
+        self._VpcId = None
+
+    @property
+    def AutoCreatedEipId(self):
+        """自动为用户创建的EipId
+        :rtype: str
+        """
+        return self._AutoCreatedEipId
+
+    @AutoCreatedEipId.setter
+    def AutoCreatedEipId(self, AutoCreatedEipId):
+        self._AutoCreatedEipId = AutoCreatedEipId
+
+    @property
+    def CamRoleName(self):
+        """为容器实例关联 CAM 角色，value 填写 CAM 角色名称，容器实例可获取该 CAM 角色包含的权限策略，方便 容器实例 内的程序进行如购买资源、读写存储等云资源操作。
+        :rtype: str
+        """
+        return self._CamRoleName
+
+    @CamRoleName.setter
+    def CamRoleName(self, CamRoleName):
+        self._CamRoleName = CamRoleName
+
+    @property
+    def Containers(self):
+        """容器列表
+        :rtype: list of Container
+        """
+        return self._Containers
+
+    @Containers.setter
+    def Containers(self, Containers):
+        self._Containers = Containers
+
+    @property
+    def Cpu(self):
+        """CPU大小
+        :rtype: float
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def CpuType(self):
+        """CPU类型
+        :rtype: str
+        """
+        return self._CpuType
+
+    @CpuType.setter
+    def CpuType(self, CpuType):
+        self._CpuType = CpuType
+
+    @property
+    def CreationTime(self):
+        """接到请求后的系统创建时间。
+        :rtype: str
+        """
+        return self._CreationTime
+
+    @CreationTime.setter
+    def CreationTime(self, CreationTime):
+        self._CreationTime = CreationTime
+
+    @property
+    def EipAddress(self):
+        """容器实例绑定的Eip地址，注意可能为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EipAddress
+
+    @EipAddress.setter
+    def EipAddress(self, EipAddress):
+        self._EipAddress = EipAddress
 
     @property
     def EksCiId(self):
@@ -26888,106 +27013,8 @@ Pending是创建中，Running是 运行中。
         self._EksCiName = EksCiName
 
     @property
-    def Memory(self):
-        """内存大小
-        :rtype: float
-        """
-        return self._Memory
-
-    @Memory.setter
-    def Memory(self, Memory):
-        self._Memory = Memory
-
-    @property
-    def Cpu(self):
-        """CPU大小
-        :rtype: float
-        """
-        return self._Cpu
-
-    @Cpu.setter
-    def Cpu(self, Cpu):
-        self._Cpu = Cpu
-
-    @property
-    def SecurityGroupIds(self):
-        """安全组ID
-        :rtype: list of str
-        """
-        return self._SecurityGroupIds
-
-    @SecurityGroupIds.setter
-    def SecurityGroupIds(self, SecurityGroupIds):
-        self._SecurityGroupIds = SecurityGroupIds
-
-    @property
-    def RestartPolicy(self):
-        """容器组的重启策略
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._RestartPolicy
-
-    @RestartPolicy.setter
-    def RestartPolicy(self, RestartPolicy):
-        self._RestartPolicy = RestartPolicy
-
-    @property
-    def Status(self):
-        """返回容器组创建状态：Pending，Running，Succeeded，Failed。其中：
-Failed （运行失败）指的容器组退出，RestartPolilcy为Never， 有容器exitCode非0；
-Succeeded（运行成功）指的是容器组退出了，RestartPolicy为Never或onFailure，所有容器exitCode都为0；
-Failed和Succeeded这两种状态都会停止运行，停止计费。
-Pending是创建中，Running是 运行中。
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
-    @property
-    def CreationTime(self):
-        """接到请求后的系统创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._CreationTime
-
-    @CreationTime.setter
-    def CreationTime(self, CreationTime):
-        self._CreationTime = CreationTime
-
-    @property
-    def SucceededTime(self):
-        """容器全部成功退出后的时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._SucceededTime
-
-    @SucceededTime.setter
-    def SucceededTime(self, SucceededTime):
-        self._SucceededTime = SucceededTime
-
-    @property
-    def Containers(self):
-        """容器列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: list of Container
-        """
-        return self._Containers
-
-    @Containers.setter
-    def Containers(self, Containers):
-        self._Containers = Containers
-
-    @property
     def EksCiVolume(self):
         """数据卷信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20180525.models.EksCiVolume`
         """
         return self._EksCiVolume
@@ -26997,69 +27024,8 @@ Pending是创建中，Running是 运行中。
         self._EksCiVolume = EksCiVolume
 
     @property
-    def SecurityContext(self):
-        """容器组运行的安全上下文
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: :class:`tencentcloud.tke.v20180525.models.SecurityContext`
-        """
-        return self._SecurityContext
-
-    @SecurityContext.setter
-    def SecurityContext(self, SecurityContext):
-        self._SecurityContext = SecurityContext
-
-    @property
-    def PrivateIp(self):
-        """内网ip地址
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._PrivateIp
-
-    @PrivateIp.setter
-    def PrivateIp(self, PrivateIp):
-        self._PrivateIp = PrivateIp
-
-    @property
-    def EipAddress(self):
-        """容器实例绑定的Eip地址，注意可能为空
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._EipAddress
-
-    @EipAddress.setter
-    def EipAddress(self, EipAddress):
-        self._EipAddress = EipAddress
-
-    @property
-    def GpuType(self):
-        """GPU类型。如无使用GPU则不返回
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._GpuType
-
-    @GpuType.setter
-    def GpuType(self, GpuType):
-        self._GpuType = GpuType
-
-    @property
-    def CpuType(self):
-        """CPU类型
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._CpuType
-
-    @CpuType.setter
-    def CpuType(self, CpuType):
-        self._CpuType = CpuType
-
-    @property
     def GpuCount(self):
         """GPU卡数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._GpuCount
@@ -27069,28 +27035,15 @@ Pending是创建中，Running是 运行中。
         self._GpuCount = GpuCount
 
     @property
-    def VpcId(self):
-        """实例所属VPC的Id
-注意：此字段可能返回 null，表示取不到有效值。
+    def GpuType(self):
+        """GPU类型。如无使用GPU则不返回
         :rtype: str
         """
-        return self._VpcId
+        return self._GpuType
 
-    @VpcId.setter
-    def VpcId(self, VpcId):
-        self._VpcId = VpcId
-
-    @property
-    def SubnetId(self):
-        """实例所属子网Id
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._SubnetId
-
-    @SubnetId.setter
-    def SubnetId(self, SubnetId):
-        self._SubnetId = SubnetId
+    @GpuType.setter
+    def GpuType(self, GpuType):
+        self._GpuType = GpuType
 
     @property
     def InitContainers(self):
@@ -27105,28 +27058,15 @@ Pending是创建中，Running是 运行中。
         self._InitContainers = InitContainers
 
     @property
-    def CamRoleName(self):
-        """为容器实例关联 CAM 角色，value 填写 CAM 角色名称，容器实例可获取该 CAM 角色包含的权限策略，方便 容器实例 内的程序进行如购买资源、读写存储等云资源操作。
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
+    def Memory(self):
+        """内存大小
+        :rtype: float
         """
-        return self._CamRoleName
+        return self._Memory
 
-    @CamRoleName.setter
-    def CamRoleName(self, CamRoleName):
-        self._CamRoleName = CamRoleName
-
-    @property
-    def AutoCreatedEipId(self):
-        """自动为用户创建的EipId
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._AutoCreatedEipId
-
-    @AutoCreatedEipId.setter
-    def AutoCreatedEipId(self, AutoCreatedEipId):
-        self._AutoCreatedEipId = AutoCreatedEipId
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
 
     @property
     def PersistStatus(self):
@@ -27140,45 +27080,138 @@ Pending是创建中，Running是 运行中。
     def PersistStatus(self, PersistStatus):
         self._PersistStatus = PersistStatus
 
+    @property
+    def PrivateIp(self):
+        """内网ip地址
+        :rtype: str
+        """
+        return self._PrivateIp
+
+    @PrivateIp.setter
+    def PrivateIp(self, PrivateIp):
+        self._PrivateIp = PrivateIp
+
+    @property
+    def RestartPolicy(self):
+        """容器组的重启策略
+        :rtype: str
+        """
+        return self._RestartPolicy
+
+    @RestartPolicy.setter
+    def RestartPolicy(self, RestartPolicy):
+        self._RestartPolicy = RestartPolicy
+
+    @property
+    def SecurityContext(self):
+        """容器组运行的安全上下文
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tke.v20180525.models.SecurityContext`
+        """
+        return self._SecurityContext
+
+    @SecurityContext.setter
+    def SecurityContext(self, SecurityContext):
+        self._SecurityContext = SecurityContext
+
+    @property
+    def SecurityGroupIds(self):
+        """安全组ID
+        :rtype: list of str
+        """
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
+    @property
+    def Status(self):
+        """返回容器组创建状态：Pending，Running，Succeeded，Failed。其中：
+Failed （运行失败）指的容器组退出，RestartPolilcy为Never， 有容器exitCode非0；
+Succeeded（运行成功）指的是容器组退出了，RestartPolicy为Never或onFailure，所有容器exitCode都为0；
+Failed和Succeeded这两种状态都会停止运行，停止计费。
+Pending是创建中，Running是 运行中。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def SubnetId(self):
+        """实例所属子网Id
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def SucceededTime(self):
+        """容器全部成功退出后的时间
+        :rtype: str
+        """
+        return self._SucceededTime
+
+    @SucceededTime.setter
+    def SucceededTime(self, SucceededTime):
+        self._SucceededTime = SucceededTime
+
+    @property
+    def VpcId(self):
+        """实例所属VPC的Id
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
 
     def _deserialize(self, params):
-        self._EksCiId = params.get("EksCiId")
-        self._EksCiName = params.get("EksCiName")
-        self._Memory = params.get("Memory")
-        self._Cpu = params.get("Cpu")
-        self._SecurityGroupIds = params.get("SecurityGroupIds")
-        self._RestartPolicy = params.get("RestartPolicy")
-        self._Status = params.get("Status")
-        self._CreationTime = params.get("CreationTime")
-        self._SucceededTime = params.get("SucceededTime")
+        self._AutoCreatedEipId = params.get("AutoCreatedEipId")
+        self._CamRoleName = params.get("CamRoleName")
         if params.get("Containers") is not None:
             self._Containers = []
             for item in params.get("Containers"):
                 obj = Container()
                 obj._deserialize(item)
                 self._Containers.append(obj)
+        self._Cpu = params.get("Cpu")
+        self._CpuType = params.get("CpuType")
+        self._CreationTime = params.get("CreationTime")
+        self._EipAddress = params.get("EipAddress")
+        self._EksCiId = params.get("EksCiId")
+        self._EksCiName = params.get("EksCiName")
         if params.get("EksCiVolume") is not None:
             self._EksCiVolume = EksCiVolume()
             self._EksCiVolume._deserialize(params.get("EksCiVolume"))
-        if params.get("SecurityContext") is not None:
-            self._SecurityContext = SecurityContext()
-            self._SecurityContext._deserialize(params.get("SecurityContext"))
-        self._PrivateIp = params.get("PrivateIp")
-        self._EipAddress = params.get("EipAddress")
-        self._GpuType = params.get("GpuType")
-        self._CpuType = params.get("CpuType")
         self._GpuCount = params.get("GpuCount")
-        self._VpcId = params.get("VpcId")
-        self._SubnetId = params.get("SubnetId")
+        self._GpuType = params.get("GpuType")
         if params.get("InitContainers") is not None:
             self._InitContainers = []
             for item in params.get("InitContainers"):
                 obj = Container()
                 obj._deserialize(item)
                 self._InitContainers.append(obj)
-        self._CamRoleName = params.get("CamRoleName")
-        self._AutoCreatedEipId = params.get("AutoCreatedEipId")
+        self._Memory = params.get("Memory")
         self._PersistStatus = params.get("PersistStatus")
+        self._PrivateIp = params.get("PrivateIp")
+        self._RestartPolicy = params.get("RestartPolicy")
+        if params.get("SecurityContext") is not None:
+            self._SecurityContext = SecurityContext()
+            self._SecurityContext._deserialize(params.get("SecurityContext"))
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._Status = params.get("Status")
+        self._SubnetId = params.get("SubnetId")
+        self._SucceededTime = params.get("SucceededTime")
+        self._VpcId = params.get("VpcId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32826,27 +32859,24 @@ class LivenessOrReadinessProbe(AbstractModel):
     def __init__(self):
         r"""
         :param _Probe: 探针参数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Probe: :class:`tencentcloud.tke.v20180525.models.Probe`
-        :param _HttpGet: HttpGet检测参数
-注意：此字段可能返回 null，表示取不到有效值。
-        :type HttpGet: :class:`tencentcloud.tke.v20180525.models.HttpGet`
         :param _Exec: 容器内检测命令参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type Exec: :class:`tencentcloud.tke.v20180525.models.Exec`
+        :param _HttpGet: HttpGet检测参数
+        :type HttpGet: :class:`tencentcloud.tke.v20180525.models.HttpGet`
         :param _TcpSocket: TcpSocket检测的端口参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TcpSocket: :class:`tencentcloud.tke.v20180525.models.TcpSocket`
         """
         self._Probe = None
-        self._HttpGet = None
         self._Exec = None
+        self._HttpGet = None
         self._TcpSocket = None
 
     @property
     def Probe(self):
         """探针参数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20180525.models.Probe`
         """
         return self._Probe
@@ -32854,18 +32884,6 @@ class LivenessOrReadinessProbe(AbstractModel):
     @Probe.setter
     def Probe(self, Probe):
         self._Probe = Probe
-
-    @property
-    def HttpGet(self):
-        """HttpGet检测参数
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: :class:`tencentcloud.tke.v20180525.models.HttpGet`
-        """
-        return self._HttpGet
-
-    @HttpGet.setter
-    def HttpGet(self, HttpGet):
-        self._HttpGet = HttpGet
 
     @property
     def Exec(self):
@@ -32878,6 +32896,17 @@ class LivenessOrReadinessProbe(AbstractModel):
     @Exec.setter
     def Exec(self, Exec):
         self._Exec = Exec
+
+    @property
+    def HttpGet(self):
+        """HttpGet检测参数
+        :rtype: :class:`tencentcloud.tke.v20180525.models.HttpGet`
+        """
+        return self._HttpGet
+
+    @HttpGet.setter
+    def HttpGet(self, HttpGet):
+        self._HttpGet = HttpGet
 
     @property
     def TcpSocket(self):
@@ -32896,12 +32925,12 @@ class LivenessOrReadinessProbe(AbstractModel):
         if params.get("Probe") is not None:
             self._Probe = Probe()
             self._Probe._deserialize(params.get("Probe"))
-        if params.get("HttpGet") is not None:
-            self._HttpGet = HttpGet()
-            self._HttpGet._deserialize(params.get("HttpGet"))
         if params.get("Exec") is not None:
             self._Exec = Exec()
             self._Exec._deserialize(params.get("Exec"))
+        if params.get("HttpGet") is not None:
+            self._HttpGet = HttpGet()
+            self._HttpGet._deserialize(params.get("HttpGet"))
         if params.get("TcpSocket") is not None:
             self._TcpSocket = TcpSocket()
             self._TcpSocket._deserialize(params.get("TcpSocket"))
@@ -35702,16 +35731,16 @@ class NfsVolume(AbstractModel):
         r"""
         :param _Name: nfs volume 数据卷名称
         :type Name: str
-        :param _Server: NFS 服务器地址
-        :type Server: str
         :param _Path: NFS 数据卷路径
         :type Path: str
+        :param _Server: NFS 服务器地址
+        :type Server: str
         :param _ReadOnly: 默认为 False
         :type ReadOnly: bool
         """
         self._Name = None
-        self._Server = None
         self._Path = None
+        self._Server = None
         self._ReadOnly = None
 
     @property
@@ -35726,17 +35755,6 @@ class NfsVolume(AbstractModel):
         self._Name = Name
 
     @property
-    def Server(self):
-        """NFS 服务器地址
-        :rtype: str
-        """
-        return self._Server
-
-    @Server.setter
-    def Server(self, Server):
-        self._Server = Server
-
-    @property
     def Path(self):
         """NFS 数据卷路径
         :rtype: str
@@ -35746,6 +35764,17 @@ class NfsVolume(AbstractModel):
     @Path.setter
     def Path(self, Path):
         self._Path = Path
+
+    @property
+    def Server(self):
+        """NFS 服务器地址
+        :rtype: str
+        """
+        return self._Server
+
+    @Server.setter
+    def Server(self, Server):
+        self._Server = Server
 
     @property
     def ReadOnly(self):
@@ -35761,8 +35790,8 @@ class NfsVolume(AbstractModel):
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
-        self._Server = params.get("Server")
         self._Path = params.get("Path")
+        self._Server = params.get("Server")
         self._ReadOnly = params.get("ReadOnly")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -36522,6 +36551,117 @@ class OIDCConfigAuthenticationOptions(AbstractModel):
         self._AutoCreateOIDCConfig = params.get("AutoCreateOIDCConfig")
         self._AutoCreateClientId = params.get("AutoCreateClientId")
         self._AutoInstallPodIdentityWebhookAddon = params.get("AutoInstallPodIdentityWebhookAddon")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OSImage(AbstractModel):
+    """操作系统描述
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SeriesName: os聚合名称
+        :type SeriesName: str
+        :param _Alias: os别名
+        :type Alias: str
+        :param _OsName: os名称
+        :type OsName: str
+        :param _OsCustomizeType: 操作系统类型(分为定制和非定制，取值分别为:DOCKER_CUSTOMIZE、GENERAL)
+        :type OsCustomizeType: str
+        :param _Status: os是否下线(online表示在线,offline表示下线)
+        :type Status: str
+        :param _ImageId: 镜像id
+        :type ImageId: str
+        """
+        self._SeriesName = None
+        self._Alias = None
+        self._OsName = None
+        self._OsCustomizeType = None
+        self._Status = None
+        self._ImageId = None
+
+    @property
+    def SeriesName(self):
+        """os聚合名称
+        :rtype: str
+        """
+        return self._SeriesName
+
+    @SeriesName.setter
+    def SeriesName(self, SeriesName):
+        self._SeriesName = SeriesName
+
+    @property
+    def Alias(self):
+        """os别名
+        :rtype: str
+        """
+        return self._Alias
+
+    @Alias.setter
+    def Alias(self, Alias):
+        self._Alias = Alias
+
+    @property
+    def OsName(self):
+        """os名称
+        :rtype: str
+        """
+        return self._OsName
+
+    @OsName.setter
+    def OsName(self, OsName):
+        self._OsName = OsName
+
+    @property
+    def OsCustomizeType(self):
+        """操作系统类型(分为定制和非定制，取值分别为:DOCKER_CUSTOMIZE、GENERAL)
+        :rtype: str
+        """
+        return self._OsCustomizeType
+
+    @OsCustomizeType.setter
+    def OsCustomizeType(self, OsCustomizeType):
+        self._OsCustomizeType = OsCustomizeType
+
+    @property
+    def Status(self):
+        """os是否下线(online表示在线,offline表示下线)
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ImageId(self):
+        """镜像id
+        :rtype: str
+        """
+        return self._ImageId
+
+    @ImageId.setter
+    def ImageId(self, ImageId):
+        self._ImageId = ImageId
+
+
+    def _deserialize(self, params):
+        self._SeriesName = params.get("SeriesName")
+        self._Alias = params.get("Alias")
+        self._OsName = params.get("OsName")
+        self._OsCustomizeType = params.get("OsCustomizeType")
+        self._Status = params.get("Status")
+        self._ImageId = params.get("ImageId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -37613,28 +37753,40 @@ class Probe(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _FailureThreshold: Minimum consecutive failures for the probe to be considered failed after having succeeded.Defaults to 3. Minimum value is 1.
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailureThreshold: int
         :param _InitialDelaySeconds: Number of seconds after the container has started before liveness probes are initiated.
 注意：此字段可能返回 null，表示取不到有效值。
         :type InitialDelaySeconds: int
-        :param _TimeoutSeconds: Number of seconds after which the probe times out.
-Defaults to 1 second. Minimum value is 1.
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TimeoutSeconds: int
         :param _PeriodSeconds: How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
 注意：此字段可能返回 null，表示取不到有效值。
         :type PeriodSeconds: int
         :param _SuccessThreshold: Minimum consecutive successes for the probe to be considered successful after having failed.Defaults to 1. Must be 1 for liveness. Minimum value is 1.
 注意：此字段可能返回 null，表示取不到有效值。
         :type SuccessThreshold: int
-        :param _FailureThreshold: Minimum consecutive failures for the probe to be considered failed after having succeeded.Defaults to 3. Minimum value is 1.
+        :param _TimeoutSeconds: Number of seconds after which the probe times out.
+Defaults to 1 second. Minimum value is 1.
 注意：此字段可能返回 null，表示取不到有效值。
-        :type FailureThreshold: int
+        :type TimeoutSeconds: int
         """
+        self._FailureThreshold = None
         self._InitialDelaySeconds = None
-        self._TimeoutSeconds = None
         self._PeriodSeconds = None
         self._SuccessThreshold = None
-        self._FailureThreshold = None
+        self._TimeoutSeconds = None
+
+    @property
+    def FailureThreshold(self):
+        """Minimum consecutive failures for the probe to be considered failed after having succeeded.Defaults to 3. Minimum value is 1.
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._FailureThreshold
+
+    @FailureThreshold.setter
+    def FailureThreshold(self, FailureThreshold):
+        self._FailureThreshold = FailureThreshold
 
     @property
     def InitialDelaySeconds(self):
@@ -37647,19 +37799,6 @@ Defaults to 1 second. Minimum value is 1.
     @InitialDelaySeconds.setter
     def InitialDelaySeconds(self, InitialDelaySeconds):
         self._InitialDelaySeconds = InitialDelaySeconds
-
-    @property
-    def TimeoutSeconds(self):
-        """Number of seconds after which the probe times out.
-Defaults to 1 second. Minimum value is 1.
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: int
-        """
-        return self._TimeoutSeconds
-
-    @TimeoutSeconds.setter
-    def TimeoutSeconds(self, TimeoutSeconds):
-        self._TimeoutSeconds = TimeoutSeconds
 
     @property
     def PeriodSeconds(self):
@@ -37686,24 +37825,25 @@ Defaults to 1 second. Minimum value is 1.
         self._SuccessThreshold = SuccessThreshold
 
     @property
-    def FailureThreshold(self):
-        """Minimum consecutive failures for the probe to be considered failed after having succeeded.Defaults to 3. Minimum value is 1.
+    def TimeoutSeconds(self):
+        """Number of seconds after which the probe times out.
+Defaults to 1 second. Minimum value is 1.
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
-        return self._FailureThreshold
+        return self._TimeoutSeconds
 
-    @FailureThreshold.setter
-    def FailureThreshold(self, FailureThreshold):
-        self._FailureThreshold = FailureThreshold
+    @TimeoutSeconds.setter
+    def TimeoutSeconds(self, TimeoutSeconds):
+        self._TimeoutSeconds = TimeoutSeconds
 
 
     def _deserialize(self, params):
+        self._FailureThreshold = params.get("FailureThreshold")
         self._InitialDelaySeconds = params.get("InitialDelaySeconds")
-        self._TimeoutSeconds = params.get("TimeoutSeconds")
         self._PeriodSeconds = params.get("PeriodSeconds")
         self._SuccessThreshold = params.get("SuccessThreshold")
-        self._FailureThreshold = params.get("FailureThreshold")
+        self._TimeoutSeconds = params.get("TimeoutSeconds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -45470,7 +45610,6 @@ class TcpSocket(AbstractModel):
     def __init__(self):
         r"""
         :param _Port: TcpSocket检测的端口
-注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
         """
         self._Port = None
@@ -45478,7 +45617,6 @@ class TcpSocket(AbstractModel):
     @property
     def Port(self):
         """TcpSocket检测的端口
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Port
@@ -46619,7 +46757,6 @@ class UpdateEKSContainerInstanceResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _EksCiId: 容器实例 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type EksCiId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -46630,7 +46767,6 @@ class UpdateEKSContainerInstanceResponse(AbstractModel):
     @property
     def EksCiId(self):
         """容器实例 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EksCiId
@@ -48138,31 +48274,43 @@ class VolumeMount(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: volume名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Name: str
         :param _MountPath: 挂载路径
 注意：此字段可能返回 null，表示取不到有效值。
         :type MountPath: str
+        :param _Name: volume名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _MountPropagation: 传播挂载方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MountPropagation: str
         :param _ReadOnly: 是否只读
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReadOnly: bool
         :param _SubPath: 子路径
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubPath: str
-        :param _MountPropagation: 传播挂载方式
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MountPropagation: str
         :param _SubPathExpr: 子路径表达式
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubPathExpr: str
         """
-        self._Name = None
         self._MountPath = None
+        self._Name = None
+        self._MountPropagation = None
         self._ReadOnly = None
         self._SubPath = None
-        self._MountPropagation = None
         self._SubPathExpr = None
+
+    @property
+    def MountPath(self):
+        """挂载路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MountPath
+
+    @MountPath.setter
+    def MountPath(self, MountPath):
+        self._MountPath = MountPath
 
     @property
     def Name(self):
@@ -48177,16 +48325,16 @@ class VolumeMount(AbstractModel):
         self._Name = Name
 
     @property
-    def MountPath(self):
-        """挂载路径
+    def MountPropagation(self):
+        """传播挂载方式
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
-        return self._MountPath
+        return self._MountPropagation
 
-    @MountPath.setter
-    def MountPath(self, MountPath):
-        self._MountPath = MountPath
+    @MountPropagation.setter
+    def MountPropagation(self, MountPropagation):
+        self._MountPropagation = MountPropagation
 
     @property
     def ReadOnly(self):
@@ -48213,18 +48361,6 @@ class VolumeMount(AbstractModel):
         self._SubPath = SubPath
 
     @property
-    def MountPropagation(self):
-        """传播挂载方式
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._MountPropagation
-
-    @MountPropagation.setter
-    def MountPropagation(self, MountPropagation):
-        self._MountPropagation = MountPropagation
-
-    @property
     def SubPathExpr(self):
         """子路径表达式
 注意：此字段可能返回 null，表示取不到有效值。
@@ -48238,11 +48374,11 @@ class VolumeMount(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._Name = params.get("Name")
         self._MountPath = params.get("MountPath")
+        self._Name = params.get("Name")
+        self._MountPropagation = params.get("MountPropagation")
         self._ReadOnly = params.get("ReadOnly")
         self._SubPath = params.get("SubPath")
-        self._MountPropagation = params.get("MountPropagation")
         self._SubPathExpr = params.get("SubPathExpr")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

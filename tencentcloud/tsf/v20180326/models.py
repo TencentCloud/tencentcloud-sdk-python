@@ -3634,7 +3634,6 @@ class BusinessLogConfig(AbstractModel):
         :param _ConfigName: 配置项名称
         :type ConfigName: str
         :param _ConfigPath: 配置项日志路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type ConfigPath: str
         :param _ConfigDesc: 配置项描述
 注意：此字段可能返回 null，表示取不到有效值。
@@ -3643,7 +3642,6 @@ class BusinessLogConfig(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConfigTags: str
         :param _ConfigPipeline: 配置项对应的ES管道
-注意：此字段可能返回 null，表示取不到有效值。
         :type ConfigPipeline: str
         :param _ConfigCreateTime: 配置项创建时间
 注意：此字段可能返回 null，表示取不到有效值。
@@ -3652,14 +3650,18 @@ class BusinessLogConfig(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConfigUpdateTime: str
         :param _ConfigSchema: 配置项解析规则
-注意：此字段可能返回 null，表示取不到有效值。
         :type ConfigSchema: :class:`tencentcloud.tsf.v20180326.models.BusinessLogConfigSchema`
         :param _ConfigAssociatedGroups: 配置项关联部署组
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConfigAssociatedGroups: list of BusinesLogConfigAssociatedGroup
         :param _ConfigAssociatedGroupList: 配置项关联部署组
-注意：此字段可能返回 null，表示取不到有效值。
         :type ConfigAssociatedGroupList: list of BusinessLogConfigAssociatedGroup
+        :param _FilebeatConfigEnable: 是否开启filebeat高级配置开关
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FilebeatConfigEnable: bool
+        :param _FilebeatCloseTimeout: close_timeout参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FilebeatCloseTimeout: int
         """
         self._ConfigId = None
         self._ConfigName = None
@@ -3672,6 +3674,8 @@ class BusinessLogConfig(AbstractModel):
         self._ConfigSchema = None
         self._ConfigAssociatedGroups = None
         self._ConfigAssociatedGroupList = None
+        self._FilebeatConfigEnable = None
+        self._FilebeatCloseTimeout = None
 
     @property
     def ConfigId(self):
@@ -3698,7 +3702,6 @@ class BusinessLogConfig(AbstractModel):
     @property
     def ConfigPath(self):
         """配置项日志路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ConfigPath
@@ -3734,7 +3737,6 @@ class BusinessLogConfig(AbstractModel):
     @property
     def ConfigPipeline(self):
         """配置项对应的ES管道
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ConfigPipeline
@@ -3770,7 +3772,6 @@ class BusinessLogConfig(AbstractModel):
     @property
     def ConfigSchema(self):
         """配置项解析规则
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.BusinessLogConfigSchema`
         """
         return self._ConfigSchema
@@ -3798,7 +3799,6 @@ class BusinessLogConfig(AbstractModel):
     @property
     def ConfigAssociatedGroupList(self):
         """配置项关联部署组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BusinessLogConfigAssociatedGroup
         """
         return self._ConfigAssociatedGroupList
@@ -3806,6 +3806,30 @@ class BusinessLogConfig(AbstractModel):
     @ConfigAssociatedGroupList.setter
     def ConfigAssociatedGroupList(self, ConfigAssociatedGroupList):
         self._ConfigAssociatedGroupList = ConfigAssociatedGroupList
+
+    @property
+    def FilebeatConfigEnable(self):
+        """是否开启filebeat高级配置开关
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._FilebeatConfigEnable
+
+    @FilebeatConfigEnable.setter
+    def FilebeatConfigEnable(self, FilebeatConfigEnable):
+        self._FilebeatConfigEnable = FilebeatConfigEnable
+
+    @property
+    def FilebeatCloseTimeout(self):
+        """close_timeout参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._FilebeatCloseTimeout
+
+    @FilebeatCloseTimeout.setter
+    def FilebeatCloseTimeout(self, FilebeatCloseTimeout):
+        self._FilebeatCloseTimeout = FilebeatCloseTimeout
 
 
     def _deserialize(self, params):
@@ -3832,6 +3856,8 @@ class BusinessLogConfig(AbstractModel):
                 obj = BusinessLogConfigAssociatedGroup()
                 obj._deserialize(item)
                 self._ConfigAssociatedGroupList.append(obj)
+        self._FilebeatConfigEnable = params.get("FilebeatConfigEnable")
+        self._FilebeatCloseTimeout = params.get("FilebeatCloseTimeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19517,7 +19543,6 @@ class DescribeBusinessLogConfigResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 日志配置项
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.BusinessLogConfig`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -19528,7 +19553,6 @@ class DescribeBusinessLogConfigResponse(AbstractModel):
     @property
     def Result(self):
         """日志配置项
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.BusinessLogConfig`
         """
         return self._Result
@@ -25728,7 +25752,6 @@ class DescribeJvmMonitorResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: Java实例jvm监控数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.JvmMonitorData`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -25739,7 +25762,6 @@ class DescribeJvmMonitorResponse(AbstractModel):
     @property
     def Result(self):
         """Java实例jvm监控数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.JvmMonitorData`
         """
         return self._Result
@@ -50927,12 +50949,15 @@ class ThreadPicture(AbstractModel):
         :type ThreadCount: list of CurvePoint
         :param _ThreadActive: 活跃线程数
         :type ThreadActive: list of CurvePoint
-        :param _DeamonThreadCount: 守护线程数
+        :param _DeamonThreadCount: 守护线程数 拼写错误，废弃
         :type DeamonThreadCount: list of CurvePoint
+        :param _DaemonThreadCount: 守护线程数
+        :type DaemonThreadCount: list of CurvePoint
         """
         self._ThreadCount = None
         self._ThreadActive = None
         self._DeamonThreadCount = None
+        self._DaemonThreadCount = None
 
     @property
     def ThreadCount(self):
@@ -50958,7 +50983,7 @@ class ThreadPicture(AbstractModel):
 
     @property
     def DeamonThreadCount(self):
-        """守护线程数
+        """守护线程数 拼写错误，废弃
         :rtype: list of CurvePoint
         """
         return self._DeamonThreadCount
@@ -50966,6 +50991,17 @@ class ThreadPicture(AbstractModel):
     @DeamonThreadCount.setter
     def DeamonThreadCount(self, DeamonThreadCount):
         self._DeamonThreadCount = DeamonThreadCount
+
+    @property
+    def DaemonThreadCount(self):
+        """守护线程数
+        :rtype: list of CurvePoint
+        """
+        return self._DaemonThreadCount
+
+    @DaemonThreadCount.setter
+    def DaemonThreadCount(self, DaemonThreadCount):
+        self._DaemonThreadCount = DaemonThreadCount
 
 
     def _deserialize(self, params):
@@ -50987,6 +51023,12 @@ class ThreadPicture(AbstractModel):
                 obj = CurvePoint()
                 obj._deserialize(item)
                 self._DeamonThreadCount.append(obj)
+        if params.get("DaemonThreadCount") is not None:
+            self._DaemonThreadCount = []
+            for item in params.get("DaemonThreadCount"):
+                obj = CurvePoint()
+                obj._deserialize(item)
+                self._DaemonThreadCount.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

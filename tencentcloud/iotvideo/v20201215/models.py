@@ -13230,6 +13230,9 @@ class VideoProduct(AbstractModel):
         :param _NetType: 连接类型，wifi表示WIFI连接，cellular表示4G连接
 注意：此字段可能返回 null，表示取不到有效值。
         :type NetType: str
+        :param _CategoryId: 产品品类id，113：摄像头
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CategoryId: int
         """
         self._ProductId = None
         self._ProductName = None
@@ -13243,6 +13246,7 @@ class VideoProduct(AbstractModel):
         self._CreateTime = None
         self._UpdateTime = None
         self._NetType = None
+        self._CategoryId = None
 
     @property
     def ProductId(self):
@@ -13377,6 +13381,18 @@ class VideoProduct(AbstractModel):
     def NetType(self, NetType):
         self._NetType = NetType
 
+    @property
+    def CategoryId(self):
+        """产品品类id，113：摄像头
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CategoryId
+
+    @CategoryId.setter
+    def CategoryId(self, CategoryId):
+        self._CategoryId = CategoryId
+
 
     def _deserialize(self, params):
         self._ProductId = params.get("ProductId")
@@ -13391,6 +13407,7 @@ class VideoProduct(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         self._NetType = params.get("NetType")
+        self._CategoryId = params.get("CategoryId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

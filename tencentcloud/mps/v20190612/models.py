@@ -1655,11 +1655,16 @@ class AdaptiveStreamTemplate(AbstractModel):
 <li>0：否，</li>
 <li>1：是。</li>
         :type RemoveVideo: int
+        :param _AudioList: 音频参数信息列表。
+注意：参数数组长度最大为64。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AudioList: list of AudioTemplateInfo
         """
         self._Audio = None
         self._Video = None
         self._RemoveAudio = None
         self._RemoveVideo = None
+        self._AudioList = None
 
     @property
     def Audio(self):
@@ -1709,6 +1714,19 @@ class AdaptiveStreamTemplate(AbstractModel):
     def RemoveVideo(self, RemoveVideo):
         self._RemoveVideo = RemoveVideo
 
+    @property
+    def AudioList(self):
+        """音频参数信息列表。
+注意：参数数组长度最大为64。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AudioTemplateInfo
+        """
+        return self._AudioList
+
+    @AudioList.setter
+    def AudioList(self, AudioList):
+        self._AudioList = AudioList
+
 
     def _deserialize(self, params):
         if params.get("Audio") is not None:
@@ -1719,6 +1737,12 @@ class AdaptiveStreamTemplate(AbstractModel):
             self._Video._deserialize(params.get("Video"))
         self._RemoveAudio = params.get("RemoveAudio")
         self._RemoveVideo = params.get("RemoveVideo")
+        if params.get("AudioList") is not None:
+            self._AudioList = []
+            for item in params.get("AudioList"):
+                obj = AudioTemplateInfo()
+                obj._deserialize(item)
+                self._AudioList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11576,11 +11600,16 @@ class AudioTemplateInfo(AbstractModel):
 当媒体的封装格式是音频格式时（flac，ogg，mp3，m4a）时，声道数不允许设为5.1声道。
 默认值：2。
         :type AudioChannel: int
+        :param _TrackChannelInfo: 合并音轨信息。
+注意：此字段只是自适应转码生效，
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TrackChannelInfo: :class:`tencentcloud.mps.v20190612.models.AudioTrackChannelInfo`
         """
         self._Codec = None
         self._Bitrate = None
         self._SampleRate = None
         self._AudioChannel = None
+        self._TrackChannelInfo = None
 
     @property
     def Codec(self):
@@ -11652,12 +11681,28 @@ class AudioTemplateInfo(AbstractModel):
     def AudioChannel(self, AudioChannel):
         self._AudioChannel = AudioChannel
 
+    @property
+    def TrackChannelInfo(self):
+        """合并音轨信息。
+注意：此字段只是自适应转码生效，
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AudioTrackChannelInfo`
+        """
+        return self._TrackChannelInfo
+
+    @TrackChannelInfo.setter
+    def TrackChannelInfo(self, TrackChannelInfo):
+        self._TrackChannelInfo = TrackChannelInfo
+
 
     def _deserialize(self, params):
         self._Codec = params.get("Codec")
         self._Bitrate = params.get("Bitrate")
         self._SampleRate = params.get("SampleRate")
         self._AudioChannel = params.get("AudioChannel")
+        if params.get("TrackChannelInfo") is not None:
+            self._TrackChannelInfo = AudioTrackChannelInfo()
+            self._TrackChannelInfo._deserialize(params.get("TrackChannelInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11812,6 +11857,97 @@ class AudioTemplateInfoForUpdate(AbstractModel):
         self._SampleRate = params.get("SampleRate")
         self._AudioChannel = params.get("AudioChannel")
         self._StreamSelects = params.get("StreamSelects")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AudioTrackChannelInfo(AbstractModel):
+    """音轨信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChannelsRemix: 是否开启混音，可选值：
+0：表示不开启混音
+1：表示开启混音
+默认值：0
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChannelsRemix: int
+        :param _SelectType: 合并音轨输入类型，可选值：
+trask：表示使用音轨id；
+trask_channel： 表示使用音轨id和声道id；
+默认：trask。
+注意：如果原视频是多声道，建议使用trask_channel。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SelectType: str
+        :param _InputTrackInfo: 音轨信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InputTrackInfo: list of TrackInfo
+        """
+        self._ChannelsRemix = None
+        self._SelectType = None
+        self._InputTrackInfo = None
+
+    @property
+    def ChannelsRemix(self):
+        """是否开启混音，可选值：
+0：表示不开启混音
+1：表示开启混音
+默认值：0
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ChannelsRemix
+
+    @ChannelsRemix.setter
+    def ChannelsRemix(self, ChannelsRemix):
+        self._ChannelsRemix = ChannelsRemix
+
+    @property
+    def SelectType(self):
+        """合并音轨输入类型，可选值：
+trask：表示使用音轨id；
+trask_channel： 表示使用音轨id和声道id；
+默认：trask。
+注意：如果原视频是多声道，建议使用trask_channel。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SelectType
+
+    @SelectType.setter
+    def SelectType(self, SelectType):
+        self._SelectType = SelectType
+
+    @property
+    def InputTrackInfo(self):
+        """音轨信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TrackInfo
+        """
+        return self._InputTrackInfo
+
+    @InputTrackInfo.setter
+    def InputTrackInfo(self, InputTrackInfo):
+        self._InputTrackInfo = InputTrackInfo
+
+
+    def _deserialize(self, params):
+        self._ChannelsRemix = params.get("ChannelsRemix")
+        self._SelectType = params.get("SelectType")
+        if params.get("InputTrackInfo") is not None:
+            self._InputTrackInfo = []
+            for item in params.get("InputTrackInfo"):
+                obj = TrackInfo()
+                obj._deserialize(item)
+                self._InputTrackInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34402,11 +34538,19 @@ class HighlightSegmentItem(AbstractModel):
         :param _SegmentTags: 片段标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type SegmentTags: list of str
+        :param _BeginTime: 直播切片对应直播起始时间点，采用 ISO 日期格式。	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BeginTime: str
+        :param _EndTime: 直播切片对应直播结束时间点，采用 ISO 日期格式。	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
         """
         self._Confidence = None
         self._StartTimeOffset = None
         self._EndTimeOffset = None
         self._SegmentTags = None
+        self._BeginTime = None
+        self._EndTime = None
 
     @property
     def Confidence(self):
@@ -34453,12 +34597,38 @@ class HighlightSegmentItem(AbstractModel):
     def SegmentTags(self, SegmentTags):
         self._SegmentTags = SegmentTags
 
+    @property
+    def BeginTime(self):
+        """直播切片对应直播起始时间点，采用 ISO 日期格式。	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        """直播切片对应直播结束时间点，采用 ISO 日期格式。	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
 
     def _deserialize(self, params):
         self._Confidence = params.get("Confidence")
         self._StartTimeOffset = params.get("StartTimeOffset")
         self._EndTimeOffset = params.get("EndTimeOffset")
         self._SegmentTags = params.get("SegmentTags")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -54645,6 +54815,8 @@ class SegmentRecognitionItem(AbstractModel):
         :type AudioEndTime: float
         :param _PersonPositionUrl: 直播拆条用，人物位置参考信息用于横转竖。
         :type PersonPositionUrl: str
+        :param _PersonId: 指定人物ID。
+        :type PersonId: str
         """
         self._Confidence = None
         self._StartTimeOffset = None
@@ -54660,6 +54832,7 @@ class SegmentRecognitionItem(AbstractModel):
         self._AudioBeginTime = None
         self._AudioEndTime = None
         self._PersonPositionUrl = None
+        self._PersonId = None
 
     @property
     def Confidence(self):
@@ -54821,6 +54994,17 @@ class SegmentRecognitionItem(AbstractModel):
     def PersonPositionUrl(self, PersonPositionUrl):
         self._PersonPositionUrl = PersonPositionUrl
 
+    @property
+    def PersonId(self):
+        """指定人物ID。
+        :rtype: str
+        """
+        return self._PersonId
+
+    @PersonId.setter
+    def PersonId(self, PersonId):
+        self._PersonId = PersonId
+
 
     def _deserialize(self, params):
         self._Confidence = params.get("Confidence")
@@ -54837,6 +55021,7 @@ class SegmentRecognitionItem(AbstractModel):
         self._AudioBeginTime = params.get("AudioBeginTime")
         self._AudioEndTime = params.get("AudioEndTime")
         self._PersonPositionUrl = params.get("PersonPositionUrl")
+        self._PersonId = params.get("PersonId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -58513,6 +58698,81 @@ class TextWatermarkTemplateInputForUpdate(AbstractModel):
         self._FontColor = params.get("FontColor")
         self._FontAlpha = params.get("FontAlpha")
         self._TextContent = params.get("TextContent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TrackInfo(AbstractModel):
+    """音轨信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TrackNum: 音轨和声道数字，说明：
+当：SelectType值为trask，此值为整数类型，例如：1；
+当：SelectType值为trask_channel，此值为小数类型，例如：1.0；
+默认值：1.0
+注意：整数部分代表音轨序号，以小数部分代表声道。音轨序号即为音轨的stream index，支持输入0和正整数。小数部分最多支持2位小数，并且仅支持0-63，但是如果Codec为aac/eac3/ac3时，小数部分仅支持0-15。例如：对于stream index为1的音轨，1.0代表这个音轨的第1个声道，1.1代表这个音轨的第2个声道。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TrackNum: str
+        :param _ChannelVolume: 声道音量大小，说明：
+当：AudioChannel的值为1时，此值长度为1；
+当：AudioChannel的值为2时，此值长度为2；
+当：AudioChannel的值为6时，此值长度大于2。
+此值数组值取值范围：[-60, 6]，其中-60代表静音、0代表保持原音量，6表示原音量增加一倍，默认值为-60。
+注意：支持3位小数。
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChannelVolume: list of float
+        """
+        self._TrackNum = None
+        self._ChannelVolume = None
+
+    @property
+    def TrackNum(self):
+        """音轨和声道数字，说明：
+当：SelectType值为trask，此值为整数类型，例如：1；
+当：SelectType值为trask_channel，此值为小数类型，例如：1.0；
+默认值：1.0
+注意：整数部分代表音轨序号，以小数部分代表声道。音轨序号即为音轨的stream index，支持输入0和正整数。小数部分最多支持2位小数，并且仅支持0-63，但是如果Codec为aac/eac3/ac3时，小数部分仅支持0-15。例如：对于stream index为1的音轨，1.0代表这个音轨的第1个声道，1.1代表这个音轨的第2个声道。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TrackNum
+
+    @TrackNum.setter
+    def TrackNum(self, TrackNum):
+        self._TrackNum = TrackNum
+
+    @property
+    def ChannelVolume(self):
+        """声道音量大小，说明：
+当：AudioChannel的值为1时，此值长度为1；
+当：AudioChannel的值为2时，此值长度为2；
+当：AudioChannel的值为6时，此值长度大于2。
+此值数组值取值范围：[-60, 6]，其中-60代表静音、0代表保持原音量，6表示原音量增加一倍，默认值为-60。
+注意：支持3位小数。
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of float
+        """
+        return self._ChannelVolume
+
+    @ChannelVolume.setter
+    def ChannelVolume(self, ChannelVolume):
+        self._ChannelVolume = ChannelVolume
+
+
+    def _deserialize(self, params):
+        self._TrackNum = params.get("TrackNum")
+        self._ChannelVolume = params.get("ChannelVolume")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

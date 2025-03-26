@@ -4344,7 +4344,6 @@ class DetailPrice(AbstractModel):
     def __init__(self):
         r"""
         :param _PriceTitle: 描述计费项目名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PriceTitle: str
         :param _PriceName: 描述计费项目显示名称，用户控制台展示。
         :type PriceName: str
@@ -4391,7 +4390,6 @@ class DetailPrice(AbstractModel):
     @property
     def PriceTitle(self):
         """描述计费项目名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PriceTitle
@@ -7665,7 +7663,6 @@ class PrepayPrice(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type UnitPrice: float
         :param _DetailPrices: 计费项目明细列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DetailPrices: list of DetailPrice
         """
         self._DiscountPrice = None
@@ -7790,7 +7787,6 @@ class PrepayPrice(AbstractModel):
     @property
     def DetailPrices(self):
         """计费项目明细列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DetailPrice
         """
         return self._DetailPrices

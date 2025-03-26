@@ -2895,15 +2895,12 @@ class DescribeCaptchaRceResultResponse(AbstractModel):
 100 appid-secretkey-ticket mismatch 参数校验错误，（1）请检查CaptchaAppId与AppSecretKey是否正确，CaptchaAppId、AppSecretKey需要在验证码控制台【验证管理】>【基础配置】中获取（2）请检查传入的Ticket是否由传入的CaptchaAppId生成
         :type CaptchaCode: int
         :param _CaptchaMsg: 状态描述及验证错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type CaptchaMsg: str
         :param _EvilLevel: 无感验证模式下，该参数返回验证结果：
 EvilLevel=0 请求无恶意
 EvilLevel=100 请求有恶意
-注意：此字段可能返回 null，表示取不到有效值。
         :type EvilLevel: int
         :param _GetCaptchaTime: 前端获取验证码时间，时间戳格式
-注意：此字段可能返回 null，表示取不到有效值。
         :type GetCaptchaTime: int
         :param _EvilBitmap: 拦截类型
 注意：此字段可能返回 null，表示取不到有效值。
@@ -2911,8 +2908,9 @@ EvilLevel=100 请求有恶意
         :param _SubmitCaptchaTime: 提交验证码时间
         :type SubmitCaptchaTime: int
         :param _RceResult: rce检测结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type RceResult: :class:`tencentcloud.captcha.v20190722.models.RceResult`
+        :param _DeviceRiskCategory: 设备风险大类
+        :type DeviceRiskCategory: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2923,6 +2921,7 @@ EvilLevel=100 请求有恶意
         self._EvilBitmap = None
         self._SubmitCaptchaTime = None
         self._RceResult = None
+        self._DeviceRiskCategory = None
         self._RequestId = None
 
     @property
@@ -2946,7 +2945,6 @@ EvilLevel=100 请求有恶意
     @property
     def CaptchaMsg(self):
         """状态描述及验证错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CaptchaMsg
@@ -2960,7 +2958,6 @@ EvilLevel=100 请求有恶意
         """无感验证模式下，该参数返回验证结果：
 EvilLevel=0 请求无恶意
 EvilLevel=100 请求有恶意
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._EvilLevel
@@ -2972,7 +2969,6 @@ EvilLevel=100 请求有恶意
     @property
     def GetCaptchaTime(self):
         """前端获取验证码时间，时间戳格式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._GetCaptchaTime
@@ -3007,7 +3003,6 @@ EvilLevel=100 请求有恶意
     @property
     def RceResult(self):
         """rce检测结果
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.captcha.v20190722.models.RceResult`
         """
         return self._RceResult
@@ -3015,6 +3010,17 @@ EvilLevel=100 请求有恶意
     @RceResult.setter
     def RceResult(self, RceResult):
         self._RceResult = RceResult
+
+    @property
+    def DeviceRiskCategory(self):
+        """设备风险大类
+        :rtype: str
+        """
+        return self._DeviceRiskCategory
+
+    @DeviceRiskCategory.setter
+    def DeviceRiskCategory(self, DeviceRiskCategory):
+        self._DeviceRiskCategory = DeviceRiskCategory
 
     @property
     def RequestId(self):
@@ -3038,6 +3044,7 @@ EvilLevel=100 请求有恶意
         if params.get("RceResult") is not None:
             self._RceResult = RceResult()
             self._RceResult._deserialize(params.get("RceResult"))
+        self._DeviceRiskCategory = params.get("DeviceRiskCategory")
         self._RequestId = params.get("RequestId")
 
 
@@ -3244,15 +3251,12 @@ class DescribeCaptchaResultResponse(AbstractModel):
 100 appid-secretkey-ticket mismatch 参数校验错误，（1）请检查CaptchaAppId与AppSecretKey是否正确，CaptchaAppId、AppSecretKey需要在验证码控制台【验证管理】>【基础配置】中获取（2）请检查传入的Ticket是否由传入的CaptchaAppId生成
         :type CaptchaCode: int
         :param _CaptchaMsg: 状态描述及验证错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type CaptchaMsg: str
         :param _EvilLevel: 无感验证模式下，该参数返回验证结果：
 EvilLevel=0 请求无恶意
 EvilLevel=100 请求有恶意
-注意：此字段可能返回 null，表示取不到有效值。
         :type EvilLevel: int
         :param _GetCaptchaTime: 前端获取验证码时间，时间戳格式
-注意：此字段可能返回 null，表示取不到有效值。
         :type GetCaptchaTime: int
         :param _EvilBitmap: 拦截类型
 注意：此字段可能返回 null，表示取不到有效值。
@@ -3295,7 +3299,6 @@ EvilLevel=100 请求有恶意
     @property
     def CaptchaMsg(self):
         """状态描述及验证错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CaptchaMsg
@@ -3309,7 +3312,6 @@ EvilLevel=100 请求有恶意
         """无感验证模式下，该参数返回验证结果：
 EvilLevel=0 请求无恶意
 EvilLevel=100 请求有恶意
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._EvilLevel
@@ -3321,7 +3323,6 @@ EvilLevel=100 请求有恶意
     @property
     def GetCaptchaTime(self):
         """前端获取验证码时间，时间戳格式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._GetCaptchaTime
@@ -4483,28 +4484,20 @@ class RceResult(AbstractModel):
     def __init__(self):
         r"""
         :param _UserId: 用户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserId: str
         :param _PostTime: 操作时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type PostTime: int
         :param _AssociateAccount: 业务参数
-注意：此字段可能返回 null，表示取不到有效值。
         :type AssociateAccount: str
         :param _UserIp: 用户Ip
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserIp: str
         :param _RiskLevel: 风险等级
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskLevel: str
         :param _RiskType: 风险类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskType: list of int
         :param _ConstId: 设备唯一ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ConstId: str
         :param _RiskInformation: 风险扩展参数
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskInformation: str
         """
         self._UserId = None
@@ -4519,7 +4512,6 @@ class RceResult(AbstractModel):
     @property
     def UserId(self):
         """用户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UserId
@@ -4531,7 +4523,6 @@ class RceResult(AbstractModel):
     @property
     def PostTime(self):
         """操作时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PostTime
@@ -4543,7 +4534,6 @@ class RceResult(AbstractModel):
     @property
     def AssociateAccount(self):
         """业务参数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AssociateAccount
@@ -4555,7 +4545,6 @@ class RceResult(AbstractModel):
     @property
     def UserIp(self):
         """用户Ip
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UserIp
@@ -4567,7 +4556,6 @@ class RceResult(AbstractModel):
     @property
     def RiskLevel(self):
         """风险等级
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RiskLevel
@@ -4579,7 +4567,6 @@ class RceResult(AbstractModel):
     @property
     def RiskType(self):
         """风险类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._RiskType
@@ -4591,7 +4578,6 @@ class RceResult(AbstractModel):
     @property
     def ConstId(self):
         """设备唯一ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ConstId
@@ -4603,7 +4589,6 @@ class RceResult(AbstractModel):
     @property
     def RiskInformation(self):
         """风险扩展参数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RiskInformation

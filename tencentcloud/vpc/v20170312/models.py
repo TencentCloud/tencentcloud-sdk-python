@@ -15093,6 +15093,8 @@ class CreateVpcEndPointRequest(AbstractModel):
         :type SecurityGroupId: str
         :param _Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
         :type Tags: list of Tag
+        :param _IpAddressType: 协议类型，支持 Ipv4，Ipv6，默认 Ipv4
+        :type IpAddressType: str
         """
         self._VpcId = None
         self._SubnetId = None
@@ -15101,6 +15103,7 @@ class CreateVpcEndPointRequest(AbstractModel):
         self._EndPointVip = None
         self._SecurityGroupId = None
         self._Tags = None
+        self._IpAddressType = None
 
     @property
     def VpcId(self):
@@ -15179,6 +15182,17 @@ class CreateVpcEndPointRequest(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def IpAddressType(self):
+        """协议类型，支持 Ipv4，Ipv6，默认 Ipv4
+        :rtype: str
+        """
+        return self._IpAddressType
+
+    @IpAddressType.setter
+    def IpAddressType(self, IpAddressType):
+        self._IpAddressType = IpAddressType
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
@@ -15193,6 +15207,7 @@ class CreateVpcEndPointRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._IpAddressType = params.get("IpAddressType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15269,6 +15284,8 @@ class CreateVpcEndPointServiceRequest(AbstractModel):
         :type ServiceType: str
         :param _Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
         :type Tags: list of Tag
+        :param _IpAddressType: 协议类型，支持 Ipv4，Ipv6，默认 Ipv4。
+        :type IpAddressType: str
         """
         self._VpcId = None
         self._EndPointServiceName = None
@@ -15277,6 +15294,7 @@ class CreateVpcEndPointServiceRequest(AbstractModel):
         self._IsPassService = None
         self._ServiceType = None
         self._Tags = None
+        self._IpAddressType = None
 
     @property
     def VpcId(self):
@@ -15355,6 +15373,17 @@ class CreateVpcEndPointServiceRequest(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def IpAddressType(self):
+        """协议类型，支持 Ipv4，Ipv6，默认 Ipv4。
+        :rtype: str
+        """
+        return self._IpAddressType
+
+    @IpAddressType.setter
+    def IpAddressType(self, IpAddressType):
+        self._IpAddressType = IpAddressType
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
@@ -15369,6 +15398,7 @@ class CreateVpcEndPointServiceRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._IpAddressType = params.get("IpAddressType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21091,8 +21121,11 @@ class DeleteVpcEndPointRequest(AbstractModel):
         r"""
         :param _EndPointId: 终端节点ID。
         :type EndPointId: str
+        :param _IpAddressType: 协议类型，支持 Ipv4，Ipv6，默认 Ipv4。
+        :type IpAddressType: str
         """
         self._EndPointId = None
+        self._IpAddressType = None
 
     @property
     def EndPointId(self):
@@ -21105,9 +21138,21 @@ class DeleteVpcEndPointRequest(AbstractModel):
     def EndPointId(self, EndPointId):
         self._EndPointId = EndPointId
 
+    @property
+    def IpAddressType(self):
+        """协议类型，支持 Ipv4，Ipv6，默认 Ipv4。
+        :rtype: str
+        """
+        return self._IpAddressType
+
+    @IpAddressType.setter
+    def IpAddressType(self, IpAddressType):
+        self._IpAddressType = IpAddressType
+
 
     def _deserialize(self, params):
         self._EndPointId = params.get("EndPointId")
+        self._IpAddressType = params.get("IpAddressType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21155,8 +21200,11 @@ class DeleteVpcEndPointServiceRequest(AbstractModel):
         r"""
         :param _EndPointServiceId: 终端节点ID。
         :type EndPointServiceId: str
+        :param _IpAddressType: 协议类型，支持 Ipv4，Ipv6，默认 Ipv4。
+        :type IpAddressType: str
         """
         self._EndPointServiceId = None
+        self._IpAddressType = None
 
     @property
     def EndPointServiceId(self):
@@ -21169,9 +21217,21 @@ class DeleteVpcEndPointServiceRequest(AbstractModel):
     def EndPointServiceId(self, EndPointServiceId):
         self._EndPointServiceId = EndPointServiceId
 
+    @property
+    def IpAddressType(self):
+        """协议类型，支持 Ipv4，Ipv6，默认 Ipv4。
+        :rtype: str
+        """
+        return self._IpAddressType
+
+    @IpAddressType.setter
+    def IpAddressType(self, IpAddressType):
+        self._IpAddressType = IpAddressType
+
 
     def _deserialize(self, params):
         self._EndPointServiceId = params.get("EndPointServiceId")
+        self._IpAddressType = params.get("IpAddressType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34930,11 +34990,14 @@ class DescribeVpcEndPointRequest(AbstractModel):
         :type Limit: int
         :param _EndPointId: 终端节点ID列表。
         :type EndPointId: list of str
+        :param _IpAddressType: 协议类型，支持 Ipv4，Ipv6，默认 Ipv4。
+        :type IpAddressType: str
         """
         self._Filters = None
         self._Offset = None
         self._Limit = None
         self._EndPointId = None
+        self._IpAddressType = None
 
     @property
     def Filters(self):
@@ -34984,6 +35047,17 @@ class DescribeVpcEndPointRequest(AbstractModel):
     def EndPointId(self, EndPointId):
         self._EndPointId = EndPointId
 
+    @property
+    def IpAddressType(self):
+        """协议类型，支持 Ipv4，Ipv6，默认 Ipv4。
+        :rtype: str
+        """
+        return self._IpAddressType
+
+    @IpAddressType.setter
+    def IpAddressType(self, IpAddressType):
+        self._IpAddressType = IpAddressType
+
 
     def _deserialize(self, params):
         if params.get("Filters") is not None:
@@ -34995,6 +35069,7 @@ class DescribeVpcEndPointRequest(AbstractModel):
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._EndPointId = params.get("EndPointId")
+        self._IpAddressType = params.get("IpAddressType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -35089,12 +35164,15 @@ class DescribeVpcEndPointServiceRequest(AbstractModel):
         :type EndPointServiceIds: list of str
         :param _IsListAuthorizedEndPointService: <li>不支持同时传入参数 Filters 。</li> <li>列出授权给当前账号的终端节点服务信息。可以配合EndPointServiceIds参数进行过滤，哪些终端节点服务授权了该账户。</li>
         :type IsListAuthorizedEndPointService: bool
+        :param _IpAddressType: 协议类型，支持 Ipv4，Ipv6，默认 Ipv4。
+        :type IpAddressType: str
         """
         self._Filters = None
         self._Offset = None
         self._Limit = None
         self._EndPointServiceIds = None
         self._IsListAuthorizedEndPointService = None
+        self._IpAddressType = None
 
     @property
     def Filters(self):
@@ -35155,6 +35233,17 @@ class DescribeVpcEndPointServiceRequest(AbstractModel):
     def IsListAuthorizedEndPointService(self, IsListAuthorizedEndPointService):
         self._IsListAuthorizedEndPointService = IsListAuthorizedEndPointService
 
+    @property
+    def IpAddressType(self):
+        """协议类型，支持 Ipv4，Ipv6，默认 Ipv4。
+        :rtype: str
+        """
+        return self._IpAddressType
+
+    @IpAddressType.setter
+    def IpAddressType(self, IpAddressType):
+        self._IpAddressType = IpAddressType
+
 
     def _deserialize(self, params):
         if params.get("Filters") is not None:
@@ -35167,6 +35256,7 @@ class DescribeVpcEndPointServiceRequest(AbstractModel):
         self._Limit = params.get("Limit")
         self._EndPointServiceIds = params.get("EndPointServiceIds")
         self._IsListAuthorizedEndPointService = params.get("IsListAuthorizedEndPointService")
+        self._IpAddressType = params.get("IpAddressType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -40530,10 +40620,13 @@ class EnableVpcEndPointConnectRequest(AbstractModel):
         :param _AcceptFlag: 是否接受终端节点连接请求。
 <li> true：自动接受。</li> <li> false：不自动接受。</li>
         :type AcceptFlag: bool
+        :param _IpAddressType: 协议类型，支持 Ipv4，Ipv6，默认 Ipv4。
+        :type IpAddressType: str
         """
         self._EndPointServiceId = None
         self._EndPointId = None
         self._AcceptFlag = None
+        self._IpAddressType = None
 
     @property
     def EndPointServiceId(self):
@@ -40569,11 +40662,23 @@ class EnableVpcEndPointConnectRequest(AbstractModel):
     def AcceptFlag(self, AcceptFlag):
         self._AcceptFlag = AcceptFlag
 
+    @property
+    def IpAddressType(self):
+        """协议类型，支持 Ipv4，Ipv6，默认 Ipv4。
+        :rtype: str
+        """
+        return self._IpAddressType
+
+    @IpAddressType.setter
+    def IpAddressType(self, IpAddressType):
+        self._IpAddressType = IpAddressType
+
 
     def _deserialize(self, params):
         self._EndPointServiceId = params.get("EndPointServiceId")
         self._EndPointId = params.get("EndPointId")
         self._AcceptFlag = params.get("AcceptFlag")
+        self._IpAddressType = params.get("IpAddressType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -51744,10 +51849,13 @@ class ModifyVpcEndPointAttributeRequest(AbstractModel):
         :type EndPointName: str
         :param _SecurityGroupIds: 安全组ID列表。
         :type SecurityGroupIds: list of str
+        :param _IpAddressType: 协议类型，支持 Ipv4，Ipv6，默认 Ipv4。
+        :type IpAddressType: str
         """
         self._EndPointId = None
         self._EndPointName = None
         self._SecurityGroupIds = None
+        self._IpAddressType = None
 
     @property
     def EndPointId(self):
@@ -51782,11 +51890,23 @@ class ModifyVpcEndPointAttributeRequest(AbstractModel):
     def SecurityGroupIds(self, SecurityGroupIds):
         self._SecurityGroupIds = SecurityGroupIds
 
+    @property
+    def IpAddressType(self):
+        """协议类型，支持 Ipv4，Ipv6，默认 Ipv4。
+        :rtype: str
+        """
+        return self._IpAddressType
+
+    @IpAddressType.setter
+    def IpAddressType(self, IpAddressType):
+        self._IpAddressType = IpAddressType
+
 
     def _deserialize(self, params):
         self._EndPointId = params.get("EndPointId")
         self._EndPointName = params.get("EndPointName")
         self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._IpAddressType = params.get("IpAddressType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -51842,12 +51962,15 @@ class ModifyVpcEndPointServiceAttributeRequest(AbstractModel):
         :type AutoAcceptFlag: bool
         :param _ServiceInstanceId: 后端服务的ID，比如lb-xxx。
         :type ServiceInstanceId: str
+        :param _IpAddressType: 协议类型，支持 Ipv4，Ipv6，默认 Ipv4。
+        :type IpAddressType: str
         """
         self._EndPointServiceId = None
         self._VpcId = None
         self._EndPointServiceName = None
         self._AutoAcceptFlag = None
         self._ServiceInstanceId = None
+        self._IpAddressType = None
 
     @property
     def EndPointServiceId(self):
@@ -51904,6 +52027,17 @@ class ModifyVpcEndPointServiceAttributeRequest(AbstractModel):
     def ServiceInstanceId(self, ServiceInstanceId):
         self._ServiceInstanceId = ServiceInstanceId
 
+    @property
+    def IpAddressType(self):
+        """协议类型，支持 Ipv4，Ipv6，默认 Ipv4。
+        :rtype: str
+        """
+        return self._IpAddressType
+
+    @IpAddressType.setter
+    def IpAddressType(self, IpAddressType):
+        self._IpAddressType = IpAddressType
+
 
     def _deserialize(self, params):
         self._EndPointServiceId = params.get("EndPointServiceId")
@@ -51911,6 +52045,7 @@ class ModifyVpcEndPointServiceAttributeRequest(AbstractModel):
         self._EndPointServiceName = params.get("EndPointServiceName")
         self._AutoAcceptFlag = params.get("AutoAcceptFlag")
         self._ServiceInstanceId = params.get("ServiceInstanceId")
+        self._IpAddressType = params.get("IpAddressType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
