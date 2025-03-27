@@ -26,9 +26,6 @@ FAILEDOPERATION_CLASSIFYSTOREFAILED = 'FailedOperation.ClassifyStoreFailed'
 # 今日次数达到限制。
 FAILEDOPERATION_COUNTLIMITERROR = 'FailedOperation.CountLimitError'
 
-# 数据库异常。
-FAILEDOPERATION_DBERROR = 'FailedOperation.DbError'
-
 # 检测失败。
 FAILEDOPERATION_DETECTFAILED = 'FailedOperation.DetectFailed'
 
@@ -137,9 +134,6 @@ FAILEDOPERATION_UNKNOWFILETYPEERROR = 'FailedOperation.UnKnowFileTypeError'
 # 服务未开通。
 FAILEDOPERATION_UNOPENERROR = 'FailedOperation.UnOpenError'
 
-# 剩余识别次数不足，请检查资源包状态。
-FAILEDOPERATION_USERQUOTAERROR = 'FailedOperation.UserQuotaError'
-
 # 通用告警服务异常
 FAILEDOPERATION_WARNINGSERVICEFAILED = 'FailedOperation.WarningServiceFailed'
 
@@ -151,9 +145,6 @@ INVALIDPARAMETER_CONFIGFORMATERROR = 'InvalidParameter.ConfigFormatError'
 
 # 图片解码失败。
 INVALIDPARAMETER_ENGINEIMAGEDECODEFAILED = 'InvalidParameter.EngineImageDecodeFailed'
-
-# 任务创建失败，文件URL非法。
-INVALIDPARAMETERVALUE_FILEURLILLEGALERROR = 'InvalidParameterValue.FileUrlIllegalError'
 
 # 参数值错误。
 INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = 'InvalidParameterValue.InvalidParameterValueLimit'

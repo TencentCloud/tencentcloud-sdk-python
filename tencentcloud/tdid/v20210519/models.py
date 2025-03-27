@@ -1403,19 +1403,14 @@ class GetOverSummaryResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _AppCounter: 用户参与应用的统计指标
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppCounter: :class:`tencentcloud.tdid.v20210519.models.ResourceCounterData`
         :param _UserCounter: 用户部署应用的统计指标
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserCounter: :class:`tencentcloud.tdid.v20210519.models.ResourceCounterData`
         :param _AppCnt: 用户参与的应用总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppCnt: int
         :param _DeployCnt: 用户部署的应用总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeployCnt: int
         :param _ChainCnt: 部署网络子链总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChainCnt: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1430,7 +1425,6 @@ class GetOverSummaryResponse(AbstractModel):
     @property
     def AppCounter(self):
         """用户参与应用的统计指标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tdid.v20210519.models.ResourceCounterData`
         """
         return self._AppCounter
@@ -1442,7 +1436,6 @@ class GetOverSummaryResponse(AbstractModel):
     @property
     def UserCounter(self):
         """用户部署应用的统计指标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tdid.v20210519.models.ResourceCounterData`
         """
         return self._UserCounter
@@ -1454,7 +1447,6 @@ class GetOverSummaryResponse(AbstractModel):
     @property
     def AppCnt(self):
         """用户参与的应用总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AppCnt
@@ -1466,7 +1458,6 @@ class GetOverSummaryResponse(AbstractModel):
     @property
     def DeployCnt(self):
         """用户部署的应用总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DeployCnt
@@ -1478,7 +1469,6 @@ class GetOverSummaryResponse(AbstractModel):
     @property
     def ChainCnt(self):
         """部署网络子链总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ChainCnt

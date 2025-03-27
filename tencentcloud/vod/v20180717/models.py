@@ -12754,7 +12754,6 @@ class AudioTransform(AbstractModel):
 <li>Volume：音量调节。</li>
         :type Type: str
         :param _VolumeParam: 音量调节参数， 当 Type = Volume 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :type VolumeParam: :class:`tencentcloud.vod.v20180717.models.AudioVolumeParam`
         """
         self._Type = None
@@ -12775,7 +12774,6 @@ class AudioTransform(AbstractModel):
     @property
     def VolumeParam(self):
         """音量调节参数， 当 Type = Volume 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AudioVolumeParam`
         """
         return self._VolumeParam
@@ -13765,7 +13763,7 @@ class ComplexAdaptiveDynamicStreamingTask(AbstractModel):
 <li>FINISH：已完成。</li>
 
         :type Status: str
-        :param _ComplexAdaptiveDynamicStreamingTaskResultSet: 自适应码流任务的执行状态与结果，每个元素对应一个自适应码流模版。
+        :param _ComplexAdaptiveDynamicStreamingTaskResultSet: 自适应码流任务的执行状态与结果，每个元素对应一个自适应码流模板。
         :type ComplexAdaptiveDynamicStreamingTaskResultSet: list of ComplexAdaptiveDynamicStreamingTaskResult
         """
         self._TaskId = None
@@ -13799,7 +13797,7 @@ class ComplexAdaptiveDynamicStreamingTask(AbstractModel):
 
     @property
     def ComplexAdaptiveDynamicStreamingTaskResultSet(self):
-        """自适应码流任务的执行状态与结果，每个元素对应一个自适应码流模版。
+        """自适应码流任务的执行状态与结果，每个元素对应一个自适应码流模板。
         :rtype: list of ComplexAdaptiveDynamicStreamingTaskResult
         """
         return self._ComplexAdaptiveDynamicStreamingTaskResultSet
@@ -13923,7 +13921,6 @@ class ComplexAdaptiveDynamicStreamingTaskInput(AbstractModel):
     def __init__(self):
         r"""
         :param _StreamPara: 自适应码流参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type StreamPara: :class:`tencentcloud.vod.v20180717.models.ComplexAdaptiveDynamicStreamingTaskStreamPara`
         """
         self._StreamPara = None
@@ -13931,7 +13928,6 @@ class ComplexAdaptiveDynamicStreamingTaskInput(AbstractModel):
     @property
     def StreamPara(self):
         """自适应码流参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.ComplexAdaptiveDynamicStreamingTaskStreamPara`
         """
         return self._StreamPara
@@ -13962,7 +13958,7 @@ class ComplexAdaptiveDynamicStreamingTaskOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: 自适应码流模版 ID。
+        :param _Definition: 自适应码流模板 ID。
         :type Definition: int
         :param _Format: 自适应码流打包格式。可选值：
 <li>HLS；</li>
@@ -13984,7 +13980,7 @@ class ComplexAdaptiveDynamicStreamingTaskOutput(AbstractModel):
 
     @property
     def Definition(self):
-        """自适应码流模版 ID。
+        """自适应码流模板 ID。
         :rtype: int
         """
         return self._Definition
@@ -14069,7 +14065,6 @@ class ComplexAdaptiveDynamicStreamingTaskResult(AbstractModel):
         :param _Input: 自适应码流任务的输入。
         :type Input: :class:`tencentcloud.vod.v20180717.models.ComplexAdaptiveDynamicStreamingTaskInput`
         :param _Output: 自适应码流任务的输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.ComplexAdaptiveDynamicStreamingTaskOutput`
         """
         self._Status = None
@@ -14140,7 +14135,6 @@ class ComplexAdaptiveDynamicStreamingTaskResult(AbstractModel):
     @property
     def Output(self):
         """自适应码流任务的输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.ComplexAdaptiveDynamicStreamingTaskOutput`
         """
         return self._Output
@@ -14625,10 +14619,8 @@ class ComposeMediaTask(AbstractModel):
         :param _Progress: 制作媒体文件任务进度，取值范围 [0-100] 。
         :type Progress: int
         :param _Input: 制作媒体文件任务的输入。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Input: :class:`tencentcloud.vod.v20180717.models.ComposeMediaTaskInput`
         :param _Output: 制作媒体文件任务的输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.ComposeMediaTaskOutput`
         :param _MetaData: 输出视频的元信息。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -14711,7 +14703,6 @@ class ComposeMediaTask(AbstractModel):
     @property
     def Input(self):
         """制作媒体文件任务的输入。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.ComposeMediaTaskInput`
         """
         return self._Input
@@ -14723,7 +14714,6 @@ class ComposeMediaTask(AbstractModel):
     @property
     def Output(self):
         """制作媒体文件任务的输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.ComposeMediaTaskOutput`
         """
         return self._Output
@@ -24547,7 +24537,6 @@ class DescribeAllClassResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ClassInfoSet: 分类信息集合
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClassInfoSet: list of MediaClassInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -24558,7 +24547,6 @@ class DescribeAllClassResponse(AbstractModel):
     @property
     def ClassInfoSet(self):
         """分类信息集合
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of MediaClassInfo
         """
         return self._ClassInfoSet
@@ -25753,13 +25741,10 @@ class DescribeCdnLogsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 日志下载链接总数量。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _OverseaCdnLogs: 海外CDN节点的日志下载列表。如果域名没有开启海外加速，忽略该参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OverseaCdnLogs: list of CdnLogInfo
         :param _DomesticCdnLogs: 国内CDN节点的日志下载列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DomesticCdnLogs: list of CdnLogInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -25772,7 +25757,6 @@ class DescribeCdnLogsResponse(AbstractModel):
     @property
     def TotalCount(self):
         """日志下载链接总数量。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -25784,7 +25768,6 @@ class DescribeCdnLogsResponse(AbstractModel):
     @property
     def OverseaCdnLogs(self):
         """海外CDN节点的日志下载列表。如果域名没有开启海外加速，忽略该参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CdnLogInfo
         """
         return self._OverseaCdnLogs
@@ -25796,7 +25779,6 @@ class DescribeCdnLogsResponse(AbstractModel):
     @property
     def DomesticCdnLogs(self):
         """国内CDN节点的日志下载列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CdnLogInfo
         """
         return self._DomesticCdnLogs
@@ -26876,7 +26858,6 @@ class DescribeDrmKeyProviderInfoResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _SDMCInfo: 华曦达（SDMC）相关的 DRM 密钥提供商信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SDMCInfo: :class:`tencentcloud.vod.v20180717.models.SDMCDrmKeyProviderInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -26887,7 +26868,6 @@ class DescribeDrmKeyProviderInfoResponse(AbstractModel):
     @property
     def SDMCInfo(self):
         """华曦达（SDMC）相关的 DRM 密钥提供商信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.SDMCDrmKeyProviderInfo`
         """
         return self._SDMCInfo
@@ -32987,7 +32967,6 @@ class DomainDetailInfo(AbstractModel):
         :param _Domain: 域名名称。
         :type Domain: str
         :param _AccelerateAreaInfos: 加速地区信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AccelerateAreaInfos: list of AccelerateAreaInfo
         :param _DeployStatus: 部署状态，取值有：
 <li>Online：上线；</li>
@@ -32995,22 +32974,17 @@ class DomainDetailInfo(AbstractModel):
 <li>Locked: 锁定中，出现该状态时，无法对该域名进行部署变更。</li>
         :type DeployStatus: str
         :param _HTTPSConfig: HTTPS 配置信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type HTTPSConfig: :class:`tencentcloud.vod.v20180717.models.DomainHTTPSConfig`
         :param _UrlSignatureAuthPolicy: [Key 防盗链](https://cloud.tencent.com/document/product/266/14047)配置信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UrlSignatureAuthPolicy: :class:`tencentcloud.vod.v20180717.models.UrlSignatureAuthPolicy`
         :param _RefererAuthPolicy: [Referer 防盗链](https://cloud.tencent.com/document/product/266/14046)配置信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RefererAuthPolicy: :class:`tencentcloud.vod.v20180717.models.RefererAuthPolicy`
         :param _CreateTime: 域名添加到腾讯云点播系统中的时间。
 <li>格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。</li>
         :type CreateTime: str
         :param _QUICConfig: 域名 QUIC 配置信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type QUICConfig: :class:`tencentcloud.vod.v20180717.models.DomainQUICConfig`
         :param _IPFilterPolicy: IP 访问限制配置信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IPFilterPolicy: :class:`tencentcloud.vod.v20180717.models.IPFilterPolicy`
         :param _Type: 域名类型，取值有： <li>VOD：使用 VOD 产品分发的域名；</li> <li>EdgeOne：使用 EdgeOne 产品分发的域名。</li>
         :type Type: str
@@ -33040,7 +33014,6 @@ class DomainDetailInfo(AbstractModel):
     @property
     def AccelerateAreaInfos(self):
         """加速地区信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AccelerateAreaInfo
         """
         return self._AccelerateAreaInfos
@@ -33066,7 +33039,6 @@ class DomainDetailInfo(AbstractModel):
     @property
     def HTTPSConfig(self):
         """HTTPS 配置信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.DomainHTTPSConfig`
         """
         return self._HTTPSConfig
@@ -33078,7 +33050,6 @@ class DomainDetailInfo(AbstractModel):
     @property
     def UrlSignatureAuthPolicy(self):
         """[Key 防盗链](https://cloud.tencent.com/document/product/266/14047)配置信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.UrlSignatureAuthPolicy`
         """
         return self._UrlSignatureAuthPolicy
@@ -33090,7 +33061,6 @@ class DomainDetailInfo(AbstractModel):
     @property
     def RefererAuthPolicy(self):
         """[Referer 防盗链](https://cloud.tencent.com/document/product/266/14046)配置信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.RefererAuthPolicy`
         """
         return self._RefererAuthPolicy
@@ -33114,7 +33084,6 @@ class DomainDetailInfo(AbstractModel):
     @property
     def QUICConfig(self):
         """域名 QUIC 配置信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.DomainQUICConfig`
         """
         return self._QUICConfig
@@ -33126,7 +33095,6 @@ class DomainDetailInfo(AbstractModel):
     @property
     def IPFilterPolicy(self):
         """IP 访问限制配置信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.IPFilterPolicy`
         """
         return self._IPFilterPolicy
@@ -34039,10 +34007,8 @@ class EditMediaTask(AbstractModel):
         :param _Progress: 编辑视频任务进度，取值范围 [0-100] 。
         :type Progress: int
         :param _Input: 视频编辑任务的输入。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Input: :class:`tencentcloud.vod.v20180717.models.EditMediaTaskInput`
         :param _Output: 视频编辑任务的输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.EditMediaTaskOutput`
         :param _MetaData: 输出视频的元信息。
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
@@ -34143,7 +34109,6 @@ class EditMediaTask(AbstractModel):
     @property
     def Input(self):
         """视频编辑任务的输入。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.EditMediaTaskInput`
         """
         return self._Input
@@ -34155,7 +34120,6 @@ class EditMediaTask(AbstractModel):
     @property
     def Output(self):
         """视频编辑任务的输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.EditMediaTaskOutput`
         """
         return self._Output
@@ -36028,10 +35992,8 @@ class ExtractCopyRightWatermarkTask(AbstractModel):
         :param _ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
         :type ErrCodeExt: str
         :param _Input: 提取版权水印任务输入信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Input: :class:`tencentcloud.vod.v20180717.models.ExtractCopyRightWatermarkTaskInput`
         :param _Output: 提取版权水印任务输出信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.ExtractCopyRightWatermarkTaskOutput`
         :param _SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
         :type SessionId: str
@@ -36111,7 +36073,6 @@ class ExtractCopyRightWatermarkTask(AbstractModel):
     @property
     def Input(self):
         """提取版权水印任务输入信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.ExtractCopyRightWatermarkTaskInput`
         """
         return self._Input
@@ -36123,7 +36084,6 @@ class ExtractCopyRightWatermarkTask(AbstractModel):
     @property
     def Output(self):
         """提取版权水印任务输出信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.ExtractCopyRightWatermarkTaskOutput`
         """
         return self._Output
@@ -37222,7 +37182,6 @@ class FileDeleteResultItem(AbstractModel):
         :param _FileId: 删除的文件 ID 。
         :type FileId: str
         :param _DeleteParts: 本次删除的文件部分。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeleteParts: list of MediaDeleteItem
         """
         self._FileId = None
@@ -37242,7 +37201,6 @@ class FileDeleteResultItem(AbstractModel):
     @property
     def DeleteParts(self):
         """本次删除的文件部分。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of MediaDeleteItem
         """
         return self._DeleteParts
@@ -37507,7 +37465,6 @@ class FileVerifyInfo(AbstractModel):
         :param _FileVerifyDomains: 文件校验域名列表。
         :type FileVerifyDomains: list of str
         :param _FileVerifyName: 文件校验文件名。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileVerifyName: str
         """
         self._FileVerifyUrl = None
@@ -37539,7 +37496,6 @@ class FileVerifyInfo(AbstractModel):
     @property
     def FileVerifyName(self):
         """文件校验文件名。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FileVerifyName
@@ -40053,10 +40009,8 @@ class JustInTimeTranscodeTemplate(AbstractModel):
         :param _Comment: 模板描述。
         :type Comment: str
         :param _VideoConfigure: 视频参数配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :type VideoConfigure: :class:`tencentcloud.vod.v20180717.models.VideoConfigureInfo`
         :param _WatermarkConfigure: 水印参数配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :type WatermarkConfigure: :class:`tencentcloud.vod.v20180717.models.WatermarkConfigureData`
         """
         self._Type = None
@@ -40101,7 +40055,6 @@ class JustInTimeTranscodeTemplate(AbstractModel):
     @property
     def VideoConfigure(self):
         """视频参数配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.VideoConfigureInfo`
         """
         return self._VideoConfigure
@@ -40113,7 +40066,6 @@ class JustInTimeTranscodeTemplate(AbstractModel):
     @property
     def WatermarkConfigure(self):
         """水印参数配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.WatermarkConfigureData`
         """
         return self._WatermarkConfigure
@@ -48483,6 +48435,8 @@ class ModifyEventConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :type SubAppId: int
         :param _Mode: 接收事件通知的方式。
 <li>PUSH：[HTTP 回调通知](https://cloud.tencent.com/document/product/266/33779)；</li>
 <li>PULL：[基于消息队列的可靠通知](https://cloud.tencent.com/document/product/266/33779)。</li>
@@ -48496,15 +48450,24 @@ class ModifyEventConfigRequest(AbstractModel):
         :type DeleteMediaCompleteEventSwitch: str
         :param _PersistenceCompleteEventSwitch: 是否接收剪辑固化完成事件通知，  默认 "OFF" 为忽略该事件通知，"ON" 为接收事件通知。
         :type PersistenceCompleteEventSwitch: str
-        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
-        :type SubAppId: int
         """
+        self._SubAppId = None
         self._Mode = None
         self._NotificationUrl = None
         self._UploadMediaCompleteEventSwitch = None
         self._DeleteMediaCompleteEventSwitch = None
         self._PersistenceCompleteEventSwitch = None
-        self._SubAppId = None
+
+    @property
+    def SubAppId(self):
+        """<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
 
     @property
     def Mode(self):
@@ -48564,25 +48527,14 @@ class ModifyEventConfigRequest(AbstractModel):
     def PersistenceCompleteEventSwitch(self, PersistenceCompleteEventSwitch):
         self._PersistenceCompleteEventSwitch = PersistenceCompleteEventSwitch
 
-    @property
-    def SubAppId(self):
-        """<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
-        :rtype: int
-        """
-        return self._SubAppId
-
-    @SubAppId.setter
-    def SubAppId(self, SubAppId):
-        self._SubAppId = SubAppId
-
 
     def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
         self._Mode = params.get("Mode")
         self._NotificationUrl = params.get("NotificationUrl")
         self._UploadMediaCompleteEventSwitch = params.get("UploadMediaCompleteEventSwitch")
         self._DeleteMediaCompleteEventSwitch = params.get("DeleteMediaCompleteEventSwitch")
         self._PersistenceCompleteEventSwitch = params.get("PersistenceCompleteEventSwitch")
-        self._SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -53360,13 +53312,11 @@ class PersistenceCompleteTask(AbstractModel):
     def __init__(self):
         r"""
         :param _FileId: 固化生成的媒体 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileId: str
         :param _PersistenceSource: 剪辑固化的来源，有以下三种。
 <li>SimpleHlsClip：来自简单 HLS 剪辑；</li>
 <li>FastEditMedia：来自快速媒体编辑；</li>
 <li>LiveRealTimeClip:来自直播即时剪辑。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type PersistenceSource: str
         """
         self._FileId = None
@@ -53375,7 +53325,6 @@ class PersistenceCompleteTask(AbstractModel):
     @property
     def FileId(self):
         """固化生成的媒体 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FileId
@@ -53390,7 +53339,6 @@ class PersistenceCompleteTask(AbstractModel):
 <li>SimpleHlsClip：来自简单 HLS 剪辑；</li>
 <li>FastEditMedia：来自快速媒体编辑；</li>
 <li>LiveRealTimeClip:来自直播即时剪辑。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PersistenceSource
@@ -53977,13 +53925,10 @@ class PoliticalConfigureInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _ImgReviewInfo: 画面鉴别涉及令人不适宜的信息的控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImgReviewInfo: :class:`tencentcloud.vod.v20180717.models.PoliticalImgReviewTemplateInfo`
         :param _AsrReviewInfo: 语音鉴别涉及令人不适宜的信息的控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AsrReviewInfo: :class:`tencentcloud.vod.v20180717.models.PoliticalAsrReviewTemplateInfo`
         :param _OcrReviewInfo: 文本鉴别涉及令人不适宜的信息的控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OcrReviewInfo: :class:`tencentcloud.vod.v20180717.models.PoliticalOcrReviewTemplateInfo`
         """
         self._ImgReviewInfo = None
@@ -53993,7 +53938,6 @@ class PoliticalConfigureInfo(AbstractModel):
     @property
     def ImgReviewInfo(self):
         """画面鉴别涉及令人不适宜的信息的控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.PoliticalImgReviewTemplateInfo`
         """
         return self._ImgReviewInfo
@@ -54005,7 +53949,6 @@ class PoliticalConfigureInfo(AbstractModel):
     @property
     def AsrReviewInfo(self):
         """语音鉴别涉及令人不适宜的信息的控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.PoliticalAsrReviewTemplateInfo`
         """
         return self._AsrReviewInfo
@@ -54017,7 +53960,6 @@ class PoliticalConfigureInfo(AbstractModel):
     @property
     def OcrReviewInfo(self):
         """文本鉴别涉及令人不适宜的信息的控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.PoliticalOcrReviewTemplateInfo`
         """
         return self._OcrReviewInfo
@@ -54696,13 +54638,10 @@ class PornConfigureInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _ImgReviewInfo: 画面鉴别涉及令人反感的信息的控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImgReviewInfo: :class:`tencentcloud.vod.v20180717.models.PornImgReviewTemplateInfo`
         :param _AsrReviewInfo: 语音鉴别涉及令人反感的信息的控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AsrReviewInfo: :class:`tencentcloud.vod.v20180717.models.PornAsrReviewTemplateInfo`
         :param _OcrReviewInfo: 文本鉴别涉及令人反感的信息的控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OcrReviewInfo: :class:`tencentcloud.vod.v20180717.models.PornOcrReviewTemplateInfo`
         """
         self._ImgReviewInfo = None
@@ -54712,7 +54651,6 @@ class PornConfigureInfo(AbstractModel):
     @property
     def ImgReviewInfo(self):
         """画面鉴别涉及令人反感的信息的控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.PornImgReviewTemplateInfo`
         """
         return self._ImgReviewInfo
@@ -54724,7 +54662,6 @@ class PornConfigureInfo(AbstractModel):
     @property
     def AsrReviewInfo(self):
         """语音鉴别涉及令人反感的信息的控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.PornAsrReviewTemplateInfo`
         """
         return self._AsrReviewInfo
@@ -54736,7 +54673,6 @@ class PornConfigureInfo(AbstractModel):
     @property
     def OcrReviewInfo(self):
         """文本鉴别涉及令人反感的信息的控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.PornOcrReviewTemplateInfo`
         """
         return self._OcrReviewInfo
@@ -55869,15 +55805,15 @@ class ProcessImageRequest(AbstractModel):
         :type FileId: str
         :param _Operation: 操作类型。现在仅支持填 ContentReview，表示内容智能识别。
         :type Operation: str
-        :param _ContentReviewInput: 图片内容智能识别参数，当 Operation 为 ContentReview 时该字段有效。
-        :type ContentReviewInput: :class:`tencentcloud.vod.v20180717.models.ImageContentReviewInput`
         :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
+        :param _ContentReviewInput: 图片内容智能识别参数，当 Operation 为 ContentReview 时该字段有效。
+        :type ContentReviewInput: :class:`tencentcloud.vod.v20180717.models.ImageContentReviewInput`
         """
         self._FileId = None
         self._Operation = None
-        self._ContentReviewInput = None
         self._SubAppId = None
+        self._ContentReviewInput = None
 
     @property
     def FileId(self):
@@ -55902,17 +55838,6 @@ class ProcessImageRequest(AbstractModel):
         self._Operation = Operation
 
     @property
-    def ContentReviewInput(self):
-        """图片内容智能识别参数，当 Operation 为 ContentReview 时该字段有效。
-        :rtype: :class:`tencentcloud.vod.v20180717.models.ImageContentReviewInput`
-        """
-        return self._ContentReviewInput
-
-    @ContentReviewInput.setter
-    def ContentReviewInput(self, ContentReviewInput):
-        self._ContentReviewInput = ContentReviewInput
-
-    @property
     def SubAppId(self):
         """<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :rtype: int
@@ -55923,14 +55848,25 @@ class ProcessImageRequest(AbstractModel):
     def SubAppId(self, SubAppId):
         self._SubAppId = SubAppId
 
+    @property
+    def ContentReviewInput(self):
+        """图片内容智能识别参数，当 Operation 为 ContentReview 时该字段有效。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ImageContentReviewInput`
+        """
+        return self._ContentReviewInput
+
+    @ContentReviewInput.setter
+    def ContentReviewInput(self, ContentReviewInput):
+        self._ContentReviewInput = ContentReviewInput
+
 
     def _deserialize(self, params):
         self._FileId = params.get("FileId")
         self._Operation = params.get("Operation")
+        self._SubAppId = params.get("SubAppId")
         if params.get("ContentReviewInput") is not None:
             self._ContentReviewInput = ImageContentReviewInput()
             self._ContentReviewInput._deserialize(params.get("ContentReviewInput"))
-        self._SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -57229,10 +57165,8 @@ class ProhibitedConfigureInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _AsrReviewInfo: 语音违禁控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AsrReviewInfo: :class:`tencentcloud.vod.v20180717.models.ProhibitedAsrReviewTemplateInfo`
         :param _OcrReviewInfo: 文本违禁控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OcrReviewInfo: :class:`tencentcloud.vod.v20180717.models.ProhibitedOcrReviewTemplateInfo`
         """
         self._AsrReviewInfo = None
@@ -57241,7 +57175,6 @@ class ProhibitedConfigureInfo(AbstractModel):
     @property
     def AsrReviewInfo(self):
         """语音违禁控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.ProhibitedAsrReviewTemplateInfo`
         """
         return self._AsrReviewInfo
@@ -57253,7 +57186,6 @@ class ProhibitedConfigureInfo(AbstractModel):
     @property
     def OcrReviewInfo(self):
         """文本违禁控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.ProhibitedOcrReviewTemplateInfo`
         """
         return self._OcrReviewInfo
@@ -58261,13 +58193,10 @@ class QualityEnhanceTask(AbstractModel):
         :param _Progress: 音画质重生任务进度，取值范围 [0-100] 。
         :type Progress: int
         :param _Input: 音画质重生任务的输入。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Input: :class:`tencentcloud.vod.v20180717.models.QualityEnhanceTaskInput`
         :param _Output: 音画质重生任务的输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.QualityEnhanceTaskOutput`
         :param _MetaData: 音画质重生输出视频的元信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
         :param _SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
         :type SessionId: str
@@ -58360,7 +58289,6 @@ class QualityEnhanceTask(AbstractModel):
     @property
     def Input(self):
         """音画质重生任务的输入。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.QualityEnhanceTaskInput`
         """
         return self._Input
@@ -58372,7 +58300,6 @@ class QualityEnhanceTask(AbstractModel):
     @property
     def Output(self):
         """音画质重生任务的输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.QualityEnhanceTaskOutput`
         """
         return self._Output
@@ -58384,7 +58311,6 @@ class QualityEnhanceTask(AbstractModel):
     @property
     def MetaData(self):
         """音画质重生输出视频的元信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
         """
         return self._MetaData
@@ -59562,7 +59488,6 @@ class RebuildAudioInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _AudioDenoiseInfo: 音频降噪控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AudioDenoiseInfo: :class:`tencentcloud.vod.v20180717.models.AudioDenoiseInfo`
         """
         self._AudioDenoiseInfo = None
@@ -59570,7 +59495,6 @@ class RebuildAudioInfo(AbstractModel):
     @property
     def AudioDenoiseInfo(self):
         """音频降噪控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AudioDenoiseInfo`
         """
         return self._AudioDenoiseInfo
@@ -61422,16 +61346,12 @@ class RebuildMediaTemplate(AbstractModel):
         :param _Comment: 音画质重生模板描述。
         :type Comment: str
         :param _RebuildVideoInfo: 音画质重生视频控制信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RebuildVideoInfo: :class:`tencentcloud.vod.v20180717.models.RebuildVideoInfo`
         :param _RebuildAudioInfo: 音画质重生音频控制信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RebuildAudioInfo: :class:`tencentcloud.vod.v20180717.models.RebuildAudioInfo`
         :param _TargetVideoInfo: 输出视频控制信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TargetVideoInfo: :class:`tencentcloud.vod.v20180717.models.RebuildMediaTargetVideoStream`
         :param _TargetAudioInfo: 输出音频控制信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TargetAudioInfo: :class:`tencentcloud.vod.v20180717.models.RebuildMediaTargetAudioStream`
         :param _Container: 封装格式。可选值：mp4、hls。默认是 mp4。
         :type Container: str
@@ -61513,7 +61433,6 @@ class RebuildMediaTemplate(AbstractModel):
     @property
     def RebuildVideoInfo(self):
         """音画质重生视频控制信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.RebuildVideoInfo`
         """
         return self._RebuildVideoInfo
@@ -61525,7 +61444,6 @@ class RebuildMediaTemplate(AbstractModel):
     @property
     def RebuildAudioInfo(self):
         """音画质重生音频控制信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.RebuildAudioInfo`
         """
         return self._RebuildAudioInfo
@@ -61537,7 +61455,6 @@ class RebuildMediaTemplate(AbstractModel):
     @property
     def TargetVideoInfo(self):
         """输出视频控制信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.RebuildMediaTargetVideoStream`
         """
         return self._TargetVideoInfo
@@ -61549,7 +61466,6 @@ class RebuildMediaTemplate(AbstractModel):
     @property
     def TargetAudioInfo(self):
         """输出音频控制信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.RebuildMediaTargetAudioStream`
         """
         return self._TargetAudioInfo
@@ -61994,10 +61910,8 @@ class ReduceMediaBitrateMediaProcessTaskResult(AbstractModel):
 <li>AdaptiveDynamicStreaming：自适应码流</li>
         :type Type: str
         :param _TranscodeTask: 降码率任务中视频转码任务的查询结果，当任务类型为 Transcode 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TranscodeTask: :class:`tencentcloud.vod.v20180717.models.ReduceMediaBitrateTranscodeResult`
         :param _AdaptiveDynamicStreamingTask: 降码率任务中对视频转自适应码流任务的查询结果，当任务类型为 AdaptiveDynamicStreaming 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AdaptiveDynamicStreamingTask: :class:`tencentcloud.vod.v20180717.models.ReduceMediaBitrateAdaptiveDynamicStreamingResult`
         """
         self._Type = None
@@ -62020,7 +61934,6 @@ class ReduceMediaBitrateMediaProcessTaskResult(AbstractModel):
     @property
     def TranscodeTask(self):
         """降码率任务中视频转码任务的查询结果，当任务类型为 Transcode 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.ReduceMediaBitrateTranscodeResult`
         """
         return self._TranscodeTask
@@ -62032,7 +61945,6 @@ class ReduceMediaBitrateMediaProcessTaskResult(AbstractModel):
     @property
     def AdaptiveDynamicStreamingTask(self):
         """降码率任务中对视频转自适应码流任务的查询结果，当任务类型为 AdaptiveDynamicStreaming 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.ReduceMediaBitrateAdaptiveDynamicStreamingResult`
         """
         return self._AdaptiveDynamicStreamingTask
@@ -62080,7 +61992,6 @@ class ReduceMediaBitrateTask(AbstractModel):
         :param _FileUrl: 媒体文件地址。
         :type FileUrl: str
         :param _MetaData: 原始视频的元信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
         :param _MediaProcessResultSet: 降码率任务执行状态与结果。
         :type MediaProcessResultSet: list of ReduceMediaBitrateMediaProcessTaskResult
@@ -62167,7 +62078,6 @@ class ReduceMediaBitrateTask(AbstractModel):
     @property
     def MetaData(self):
         """原始视频的元信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
         """
         return self._MetaData
@@ -62279,7 +62189,6 @@ class ReduceMediaBitrateTranscodeResult(AbstractModel):
         :param _Input: 转码任务的输入。
         :type Input: :class:`tencentcloud.vod.v20180717.models.TranscodeTaskInput`
         :param _Output: 转码任务的输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.MediaTranscodeItem`
         :param _Progress: 转码进度，取值范围 [0-100] 。
         :type Progress: int
@@ -62344,7 +62253,6 @@ class ReduceMediaBitrateTranscodeResult(AbstractModel):
     @property
     def Output(self):
         """转码任务的输出。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.MediaTranscodeItem`
         """
         return self._Output
@@ -62426,7 +62334,7 @@ class RefererAuthPolicy(AbstractModel):
 <li>White：白名单方式校验。HTTP 请求携带了 Referers 列表中的 Referer 时才允许访问。</li>
 当 Status 取值为 Enabled 时，AuthType 必须赋值。
         :type AuthType: str
-        :param _Referers: 用于校验的 Referer 列表，最大支持20个 Referer。当 Status 取值为 Enabled 时， Referers 不能为空数组。Referer 的格式参考域名的格式。
+        :param _Referers: 用于校验的 Referer 列表，最大支持  400 个 Referer。当 Status 取值为 Enabled 时， Referers 不能为空数组。Referer 的格式参考域名的格式。
         :type Referers: list of str
         :param _BlankRefererAllowed: 是否允许空 Referer 访问本域名，可选值：
 <li>Yes： 是。</li>
@@ -62468,7 +62376,7 @@ class RefererAuthPolicy(AbstractModel):
 
     @property
     def Referers(self):
-        """用于校验的 Referer 列表，最大支持20个 Referer。当 Status 取值为 Enabled 时， Referers 不能为空数组。Referer 的格式参考域名的格式。
+        """用于校验的 Referer 列表，最大支持  400 个 Referer。当 Status 取值为 Enabled 时， Referers 不能为空数组。Referer 的格式参考域名的格式。
         :rtype: list of str
         """
         return self._Referers
@@ -65002,13 +64910,13 @@ Label 表示违禁的标签，取值范围：
 
 
 class ReviewTemplate(AbstractModel):
-    """审核模版详情
+    """审核模板详情
 
     """
 
     def __init__(self):
         r"""
-        :param _Definition: 审核模版唯一标签。
+        :param _Definition: 审核模板唯一标签。
         :type Definition: int
         :param _Name: 模板名称。
         :type Name: str
@@ -65035,7 +64943,7 @@ class ReviewTemplate(AbstractModel):
 
     @property
     def Definition(self):
-        """审核模版唯一标签。
+        """审核模板唯一标签。
         :rtype: int
         """
         return self._Definition
@@ -68654,7 +68562,6 @@ class SplitMediaTaskSegmentInfo(AbstractModel):
         :param _Input: 视频拆条任务输入信息。
         :type Input: :class:`tencentcloud.vod.v20180717.models.SplitMediaTaskInput`
         :param _Output: 视频拆条任务输出信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.TaskOutputMediaInfo`
         :param _ProcedureTaskId: 任务类型为 Procedure 的任务 ID。若发起[视频拆条](https://cloud.tencent.com/document/api/266/51098)任务时，视频拆条任务信息列表指定了任务流模板(ProcedureName)，当该任务流模板指定了 MediaProcessTask、AiAnalysisTask、AiRecognitionTask 中的一个或多个时发起该任务。
         :type ProcedureTaskId: str
@@ -68680,7 +68587,6 @@ class SplitMediaTaskSegmentInfo(AbstractModel):
     @property
     def Output(self):
         """视频拆条任务输出信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.TaskOutputMediaInfo`
         """
         return self._Output
@@ -70475,10 +70381,8 @@ class TerrorismConfigureInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _ImgReviewInfo: 画面鉴别涉及令人不安全的信息的任务控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImgReviewInfo: :class:`tencentcloud.vod.v20180717.models.TerrorismImgReviewTemplateInfo`
         :param _OcrReviewInfo: 文字鉴别涉及令人不安全的信息的任务控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OcrReviewInfo: :class:`tencentcloud.vod.v20180717.models.TerrorismOcrReviewTemplateInfo`
         """
         self._ImgReviewInfo = None
@@ -70487,7 +70391,6 @@ class TerrorismConfigureInfo(AbstractModel):
     @property
     def ImgReviewInfo(self):
         """画面鉴别涉及令人不安全的信息的任务控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.TerrorismImgReviewTemplateInfo`
         """
         return self._ImgReviewInfo
@@ -70499,7 +70402,6 @@ class TerrorismConfigureInfo(AbstractModel):
     @property
     def OcrReviewInfo(self):
         """文字鉴别涉及令人不安全的信息的任务控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.TerrorismOcrReviewTemplateInfo`
         """
         return self._OcrReviewInfo
@@ -72552,13 +72454,10 @@ class UserDefineConfigureInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _FaceReviewInfo: 用户自定义人物音视频审核控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FaceReviewInfo: :class:`tencentcloud.vod.v20180717.models.UserDefineFaceReviewTemplateInfo`
         :param _AsrReviewInfo: 用户自定义语音音视频审核控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AsrReviewInfo: :class:`tencentcloud.vod.v20180717.models.UserDefineAsrTextReviewTemplateInfo`
         :param _OcrReviewInfo: 用户自定义文本音视频审核控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OcrReviewInfo: :class:`tencentcloud.vod.v20180717.models.UserDefineOcrTextReviewTemplateInfo`
         """
         self._FaceReviewInfo = None
@@ -72568,7 +72467,6 @@ class UserDefineConfigureInfo(AbstractModel):
     @property
     def FaceReviewInfo(self):
         """用户自定义人物音视频审核控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.UserDefineFaceReviewTemplateInfo`
         """
         return self._FaceReviewInfo
@@ -72580,7 +72478,6 @@ class UserDefineConfigureInfo(AbstractModel):
     @property
     def AsrReviewInfo(self):
         """用户自定义语音音视频审核控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.UserDefineAsrTextReviewTemplateInfo`
         """
         return self._AsrReviewInfo
@@ -72592,7 +72489,6 @@ class UserDefineConfigureInfo(AbstractModel):
     @property
     def OcrReviewInfo(self):
         """用户自定义文本音视频审核控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.UserDefineOcrTextReviewTemplateInfo`
         """
         return self._OcrReviewInfo

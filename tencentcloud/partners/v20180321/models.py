@@ -3694,6 +3694,160 @@ class DescribeClientJoinIncreaseListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeClientSwitchTraTaskInfoRequest(AbstractModel):
+    """DescribeClientSwitchTraTaskInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClientUin: 代客UIN
+        :type ClientUin: str
+        :param _SwitchType: 1：代理，2：代采
+        :type SwitchType: int
+        """
+        self._ClientUin = None
+        self._SwitchType = None
+
+    @property
+    def ClientUin(self):
+        """代客UIN
+        :rtype: str
+        """
+        return self._ClientUin
+
+    @ClientUin.setter
+    def ClientUin(self, ClientUin):
+        self._ClientUin = ClientUin
+
+    @property
+    def SwitchType(self):
+        """1：代理，2：代采
+        :rtype: int
+        """
+        return self._SwitchType
+
+    @SwitchType.setter
+    def SwitchType(self, SwitchType):
+        self._SwitchType = SwitchType
+
+
+    def _deserialize(self, params):
+        self._ClientUin = params.get("ClientUin")
+        self._SwitchType = params.get("SwitchType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClientSwitchTraTaskInfoResponse(AbstractModel):
+    """DescribeClientSwitchTraTaskInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClientUin: 客户UIN
+        :type ClientUin: str
+        :param _SwitchType: 切换类型：代理,代采
+        :type SwitchType: str
+        :param _Result: ok，符合，fail，不符合
+        :type Result: str
+        :param _SwitchUrl: 切换链接
+        :type SwitchUrl: str
+        :param _ResultMsg: 不符合的原因
+        :type ResultMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ClientUin = None
+        self._SwitchType = None
+        self._Result = None
+        self._SwitchUrl = None
+        self._ResultMsg = None
+        self._RequestId = None
+
+    @property
+    def ClientUin(self):
+        """客户UIN
+        :rtype: str
+        """
+        return self._ClientUin
+
+    @ClientUin.setter
+    def ClientUin(self, ClientUin):
+        self._ClientUin = ClientUin
+
+    @property
+    def SwitchType(self):
+        """切换类型：代理,代采
+        :rtype: str
+        """
+        return self._SwitchType
+
+    @SwitchType.setter
+    def SwitchType(self, SwitchType):
+        self._SwitchType = SwitchType
+
+    @property
+    def Result(self):
+        """ok，符合，fail，不符合
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def SwitchUrl(self):
+        """切换链接
+        :rtype: str
+        """
+        return self._SwitchUrl
+
+    @SwitchUrl.setter
+    def SwitchUrl(self, SwitchUrl):
+        self._SwitchUrl = SwitchUrl
+
+    @property
+    def ResultMsg(self):
+        """不符合的原因
+        :rtype: str
+        """
+        return self._ResultMsg
+
+    @ResultMsg.setter
+    def ResultMsg(self, ResultMsg):
+        self._ResultMsg = ResultMsg
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ClientUin = params.get("ClientUin")
+        self._SwitchType = params.get("SwitchType")
+        self._Result = params.get("Result")
+        self._SwitchUrl = params.get("SwitchUrl")
+        self._ResultMsg = params.get("ResultMsg")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRebateInfosNewRequest(AbstractModel):
     """DescribeRebateInfosNew请求参数结构体
 

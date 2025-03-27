@@ -1791,9 +1791,12 @@ class Delta(AbstractModel):
         :type Role: str
         :param _Content: 内容详情。
         :type Content: str
+        :param _ReasoningContent: 思维链内容。 ReasoningConent参数仅支持出参，且只有deepseek-r1模型会返回。
+        :type ReasoningContent: str
         """
         self._Role = None
         self._Content = None
+        self._ReasoningContent = None
 
     @property
     def Role(self):
@@ -1817,10 +1820,22 @@ class Delta(AbstractModel):
     def Content(self, Content):
         self._Content = Content
 
+    @property
+    def ReasoningContent(self):
+        """思维链内容。 ReasoningConent参数仅支持出参，且只有deepseek-r1模型会返回。
+        :rtype: str
+        """
+        return self._ReasoningContent
+
+    @ReasoningContent.setter
+    def ReasoningContent(self, ReasoningContent):
+        self._ReasoningContent = ReasoningContent
+
 
     def _deserialize(self, params):
         self._Role = params.get("Role")
         self._Content = params.get("Content")
+        self._ReasoningContent = params.get("ReasoningContent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

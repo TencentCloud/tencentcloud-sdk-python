@@ -2545,9 +2545,12 @@ class DescribeCloudRecordingRequest(AbstractModel):
         :type SdkAppId: int
         :param _TaskId: 录制任务的唯一Id，在启动录制成功后会返回。
         :type TaskId: str
+        :param _RecorderKey: 转推录制任务发起时所填，标识一次录制
+        :type RecorderKey: str
         """
         self._SdkAppId = None
         self._TaskId = None
+        self._RecorderKey = None
 
     @property
     def SdkAppId(self):
@@ -2571,10 +2574,22 @@ class DescribeCloudRecordingRequest(AbstractModel):
     def TaskId(self, TaskId):
         self._TaskId = TaskId
 
+    @property
+    def RecorderKey(self):
+        """转推录制任务发起时所填，标识一次录制
+        :rtype: str
+        """
+        return self._RecorderKey
+
+    @RecorderKey.setter
+    def RecorderKey(self, RecorderKey):
+        self._RecorderKey = RecorderKey
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
         self._TaskId = params.get("TaskId")
+        self._RecorderKey = params.get("RecorderKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2601,12 +2616,15 @@ Exited：表示当前录制任务正在退出的过程中。
         :type Status: str
         :param _StorageFileList: 录制文件信息。
         :type StorageFileList: list of StorageFile
+        :param _RecorderKey: 转推录制任务发起时所填，标识一次录制
+        :type RecorderKey: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
         self._Status = None
         self._StorageFileList = None
+        self._RecorderKey = None
         self._RequestId = None
 
     @property
@@ -2646,6 +2664,17 @@ Exited：表示当前录制任务正在退出的过程中。
         self._StorageFileList = StorageFileList
 
     @property
+    def RecorderKey(self):
+        """转推录制任务发起时所填，标识一次录制
+        :rtype: str
+        """
+        return self._RecorderKey
+
+    @RecorderKey.setter
+    def RecorderKey(self, RecorderKey):
+        self._RecorderKey = RecorderKey
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -2666,6 +2695,7 @@ Exited：表示当前录制任务正在退出的过程中。
                 obj = StorageFile()
                 obj._deserialize(item)
                 self._StorageFileList.append(obj)
+        self._RecorderKey = params.get("RecorderKey")
         self._RequestId = params.get("RequestId")
 
 

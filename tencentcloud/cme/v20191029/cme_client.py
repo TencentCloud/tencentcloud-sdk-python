@@ -480,7 +480,6 @@ class CmeClient(AbstractClient):
 
         关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
 
-
         :param request: Request instance for DescribePlatforms.
         :type request: :class:`tencentcloud.cme.v20191029.models.DescribePlatformsRequest`
         :rtype: :class:`tencentcloud.cme.v20191029.models.DescribePlatformsResponse`

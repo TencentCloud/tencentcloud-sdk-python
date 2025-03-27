@@ -1951,24 +1951,18 @@ class AuditRuleTemplateInfo(AbstractModel):
         :param _RuleFilters: 规则模板的过滤条件
         :type RuleFilters: list of RuleFilters
         :param _Description: 规则模板描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _CreateAt: 规则模板创建时间。
         :type CreateAt: str
         :param _UpdateAt: 规则模板修改时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateAt: str
         :param _AlarmLevel: 告警等级。1-低风险，2-中风险，3-高风险。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AlarmLevel: int
         :param _AlarmPolicy: 告警策略。0-不告警，1-告警。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AlarmPolicy: int
         :param _Status: 模板状态。0-无任务 ，1-修改中。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _AffectedInstances: 规则模板应用在哪些在实例。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AffectedInstances: list of str
         """
         self._RuleTemplateId = None
@@ -2018,7 +2012,6 @@ class AuditRuleTemplateInfo(AbstractModel):
     @property
     def Description(self):
         """规则模板描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -2041,7 +2034,6 @@ class AuditRuleTemplateInfo(AbstractModel):
     @property
     def UpdateAt(self):
         """规则模板修改时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateAt
@@ -2053,7 +2045,6 @@ class AuditRuleTemplateInfo(AbstractModel):
     @property
     def AlarmLevel(self):
         """告警等级。1-低风险，2-中风险，3-高风险。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AlarmLevel
@@ -2065,7 +2056,6 @@ class AuditRuleTemplateInfo(AbstractModel):
     @property
     def AlarmPolicy(self):
         """告警策略。0-不告警，1-告警。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AlarmPolicy
@@ -2077,7 +2067,6 @@ class AuditRuleTemplateInfo(AbstractModel):
     @property
     def Status(self):
         """模板状态。0-无任务 ，1-修改中。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -2089,7 +2078,6 @@ class AuditRuleTemplateInfo(AbstractModel):
     @property
     def AffectedInstances(self):
         """规则模板应用在哪些在实例。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._AffectedInstances
@@ -13433,7 +13421,6 @@ class DescribeAuditRuleTemplatesResponse(AbstractModel):
         :param _TotalCount: 符合查询条件的实例总数。
         :type TotalCount: int
         :param _Items: 规则模板详细信息列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of AuditRuleTemplateInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13456,7 +13443,6 @@ class DescribeAuditRuleTemplatesResponse(AbstractModel):
     @property
     def Items(self):
         """规则模板详细信息列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AuditRuleTemplateInfo
         """
         return self._Items

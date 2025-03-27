@@ -2074,6 +2074,8 @@ class CreateUserRoleProjectRequest(AbstractModel):
 
     @property
     def UserList(self):
+        warnings.warn("parameter `UserList` is deprecated", DeprecationWarning) 
+
         """用户列表（废弃）
         :rtype: list of UserIdAndUserName
         """
@@ -2081,6 +2083,8 @@ class CreateUserRoleProjectRequest(AbstractModel):
 
     @UserList.setter
     def UserList(self, UserList):
+        warnings.warn("parameter `UserList` is deprecated", DeprecationWarning) 
+
         self._UserList = UserList
 
     @property
@@ -2251,6 +2255,8 @@ class CreateUserRoleRequest(AbstractModel):
 
     @property
     def UserList(self):
+        warnings.warn("parameter `UserList` is deprecated", DeprecationWarning) 
+
         """用户列表（废弃）
         :rtype: list of UserIdAndUserName
         """
@@ -2258,6 +2264,8 @@ class CreateUserRoleRequest(AbstractModel):
 
     @UserList.setter
     def UserList(self, UserList):
+        warnings.warn("parameter `UserList` is deprecated", DeprecationWarning) 
+
         self._UserList = UserList
 
     @property

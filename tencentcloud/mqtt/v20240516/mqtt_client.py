@@ -768,7 +768,7 @@ class MqttClient(AbstractClient):
 
 
     def DescribeMessageList(self, request):
-        """查询消息列表，如查询死信，请设置ConsumerGroup参数
+        """根据一级Topic查询消息列表
 
         :param request: Request instance for DescribeMessageList.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeMessageListRequest`
@@ -980,7 +980,7 @@ class MqttClient(AbstractClient):
 
 
     def ModifyInstance(self, request):
-        """修改实例属性
+        """修改实例属性，只有运行中的集群可以调用该接口进行变更配置。
 
         :param request: Request instance for ModifyInstance.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.ModifyInstanceRequest`

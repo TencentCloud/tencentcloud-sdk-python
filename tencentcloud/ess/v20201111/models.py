@@ -2983,18 +2983,19 @@ class Component(AbstractModel):
         :type ComponentRequired: bool
         :param _ComponentRecipientId: **在通过接口拉取控件信息场景下**，为出参参数，此控件归属的参与方的角色ID角色（即RecipientId），**发起合同时候不要填写此字段留空即可**
         :type ComponentRecipientId: str
-        :param _ComponentExtra: **在所有的定位方式下**，控件的扩展参数，为<font color="red">JSON格式</font>，不同类型的控件会有部分非通用参数。
+        :param _ComponentExtra: 
+**在所有的定位方式下**，控件的扩展参数，为<font color="red">JSON格式</font>，不同类型的控件会有部分非通用参数。
 
 <font color="red">ComponentType为TEXT、MULTI_LINE_TEXT时</font>，支持以下参数：
 <ul><li> <b>Font</b>：目前只支持黑体、宋体、仿宋</li>
-<li> <b>FontSize</b>： 范围12 :72</li>
+<li> <b>FontSize</b>： 范围6 :72</li>
 <li> <b>FontAlign</b>： Left/Right/Center，左对齐/居中/右对齐</li>
 <li> <b>FontColor</b>：字符串类型，格式为RGB颜色数字</li></ul>
 <b>参数样例</b>：`{"FontColor":"255,0,0","FontSize":12}`
 
 <font color="red">ComponentType为DATE时</font>，支持以下参数：
 <ul><li> <b>Font</b>：目前只支持黑体、宋体、仿宋</li>
-<li> <b>FontSize</b>： 范围12 :72</li></ul>
+<li> <b>FontSize</b>： 范围6 :72</li></ul>
 <b>参数样例</b>：`{"FontColor":"255,0,0","FontSize":12}`
 
 <font color="red">ComponentType为WATERMARK时</font>，支持以下参数：
@@ -3396,18 +3397,19 @@ ChildrenComponent结构体定义:
 
     @property
     def ComponentExtra(self):
-        """**在所有的定位方式下**，控件的扩展参数，为<font color="red">JSON格式</font>，不同类型的控件会有部分非通用参数。
+        """
+**在所有的定位方式下**，控件的扩展参数，为<font color="red">JSON格式</font>，不同类型的控件会有部分非通用参数。
 
 <font color="red">ComponentType为TEXT、MULTI_LINE_TEXT时</font>，支持以下参数：
 <ul><li> <b>Font</b>：目前只支持黑体、宋体、仿宋</li>
-<li> <b>FontSize</b>： 范围12 :72</li>
+<li> <b>FontSize</b>： 范围6 :72</li>
 <li> <b>FontAlign</b>： Left/Right/Center，左对齐/居中/右对齐</li>
 <li> <b>FontColor</b>：字符串类型，格式为RGB颜色数字</li></ul>
 <b>参数样例</b>：`{"FontColor":"255,0,0","FontSize":12}`
 
 <font color="red">ComponentType为DATE时</font>，支持以下参数：
 <ul><li> <b>Font</b>：目前只支持黑体、宋体、仿宋</li>
-<li> <b>FontSize</b>： 范围12 :72</li></ul>
+<li> <b>FontSize</b>： 范围6 :72</li></ul>
 <b>参数样例</b>：`{"FontColor":"255,0,0","FontSize":12}`
 
 <font color="red">ComponentType为WATERMARK时</font>，支持以下参数：
@@ -14331,6 +14333,8 @@ class CreateSchemeUrlRequest(AbstractModel):
 
 参考 [公众号 H5 跳转电子签小程序](https://qian.tencent.com/developers/company/openwxminiprogram/#23-%E5%85%AC%E4%BC%97%E5%8F%B7-h5-%E4%B8%AD%E8%B7%B3%E8%BD%AC)。
         :type UrlUseEnv: str
+        :param _PickUpAfterJoined: 在动态签署人场景预设了“企业名称”时，可通过该参数控制“已认证身份才可领取”，即在加入了预设的企业后才可领取。默认值：false，无须先加入企业。
+        :type PickUpAfterJoined: bool
         """
         self._Operator = None
         self._OrganizationName = None
@@ -14348,6 +14352,7 @@ class CreateSchemeUrlRequest(AbstractModel):
         self._RecipientId = None
         self._FlowGroupUrlInfo = None
         self._UrlUseEnv = None
+        self._PickUpAfterJoined = None
 
     @property
     def Operator(self):
@@ -14556,6 +14561,17 @@ class CreateSchemeUrlRequest(AbstractModel):
     def UrlUseEnv(self, UrlUseEnv):
         self._UrlUseEnv = UrlUseEnv
 
+    @property
+    def PickUpAfterJoined(self):
+        """在动态签署人场景预设了“企业名称”时，可通过该参数控制“已认证身份才可领取”，即在加入了预设的企业后才可领取。默认值：false，无须先加入企业。
+        :rtype: bool
+        """
+        return self._PickUpAfterJoined
+
+    @PickUpAfterJoined.setter
+    def PickUpAfterJoined(self, PickUpAfterJoined):
+        self._PickUpAfterJoined = PickUpAfterJoined
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -14580,6 +14596,7 @@ class CreateSchemeUrlRequest(AbstractModel):
             self._FlowGroupUrlInfo = FlowGroupUrlInfo()
             self._FlowGroupUrlInfo._deserialize(params.get("FlowGroupUrlInfo"))
         self._UrlUseEnv = params.get("UrlUseEnv")
+        self._PickUpAfterJoined = params.get("PickUpAfterJoined")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18414,10 +18431,14 @@ class DescribeExtendedServiceAuthInfosRequest(AbstractModel):
 <li>HIDE_OPERATOR_DISPLAY：隐藏合同经办人姓名</li>
 <li>ORGANIZATION_OCR_FALLBACK：正楷临摹签名失败后更换其他签名类型</li>
 <li>ORGANIZATION_FLOW_NOTIFY_TYPE：短信通知签署方</li>
-<li>HIDE_ONE_KEY_SIGN：个人签署方手动签字</li>
 <li>ORGANIZATION_FLOW_EMAIL_NOTIFY：邮件通知签署方</li>
 <li>FLOW_APPROVAL：合同审批强制开启</li>
-<li>ORGANIZATION_FLOW_PASSWD_NOTIFY：签署密码开通引导</li></ul>
+<li>ORGANIZATION_FLOW_PASSWD_NOTIFY：签署密码开通引导</li>
+<li>HIDE_ONE_KEY_SIGN：个人签署方手写签名时需逐个手写</li>
+<li>SIGN_SIGNATURE_DEFAULT_SET_HANDWRITE：个人签署方手动签名</li>
+<li>APP_LOGIN：限制企业员工小程序端登录</li>
+<li>PC_LOGIN：限制企业员工网页端登录</li>
+</ul>
         :type ExtendServiceType: str
         :param _Agent: 代理企业和员工的信息。
 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
@@ -18453,10 +18474,14 @@ class DescribeExtendedServiceAuthInfosRequest(AbstractModel):
 <li>HIDE_OPERATOR_DISPLAY：隐藏合同经办人姓名</li>
 <li>ORGANIZATION_OCR_FALLBACK：正楷临摹签名失败后更换其他签名类型</li>
 <li>ORGANIZATION_FLOW_NOTIFY_TYPE：短信通知签署方</li>
-<li>HIDE_ONE_KEY_SIGN：个人签署方手动签字</li>
 <li>ORGANIZATION_FLOW_EMAIL_NOTIFY：邮件通知签署方</li>
 <li>FLOW_APPROVAL：合同审批强制开启</li>
-<li>ORGANIZATION_FLOW_PASSWD_NOTIFY：签署密码开通引导</li></ul>
+<li>ORGANIZATION_FLOW_PASSWD_NOTIFY：签署密码开通引导</li>
+<li>HIDE_ONE_KEY_SIGN：个人签署方手写签名时需逐个手写</li>
+<li>SIGN_SIGNATURE_DEFAULT_SET_HANDWRITE：个人签署方手动签名</li>
+<li>APP_LOGIN：限制企业员工小程序端登录</li>
+<li>PC_LOGIN：限制企业员工网页端登录</li>
+</ul>
         :rtype: str
         """
         return self._ExtendServiceType
@@ -27514,10 +27539,14 @@ class ModifyExtendedServiceRequest(AbstractModel):
 <li>HIDE_OPERATOR_DISPLAY：隐藏合同经办人姓名</li>
 <li>ORGANIZATION_OCR_FALLBACK：正楷临摹签名失败后更换其他签名类型</li>
 <li>ORGANIZATION_FLOW_NOTIFY_TYPE：短信通知签署方</li>
-<li>HIDE_ONE_KEY_SIGN：个人签署方手动签字</li>
+<li>HIDE_ONE_KEY_SIGN：个人签署方手写签名时需逐个手写</li>
+<li>SIGN_SIGNATURE_DEFAULT_SET_HANDWRITE：个人签署方手动签名</li>
 <li>ORGANIZATION_FLOW_EMAIL_NOTIFY：邮件通知签署方</li>
 <li>FLOW_APPROVAL：合同审批强制开启</li>
-<li>ORGANIZATION_FLOW_PASSWD_NOTIFY：签署密码开通引导</li></ul>
+<li>ORGANIZATION_FLOW_PASSWD_NOTIFY：签署密码开通引导</li>
+<li>APP_LOGIN：限制企业员工小程序端登录</li>
+<li>PC_LOGIN：限制企业员工网页端登录</li>
+</ul>
         :type ServiceType: str
         :param _Operate: 操作类型
 <ul>
@@ -27565,10 +27594,14 @@ class ModifyExtendedServiceRequest(AbstractModel):
 <li>HIDE_OPERATOR_DISPLAY：隐藏合同经办人姓名</li>
 <li>ORGANIZATION_OCR_FALLBACK：正楷临摹签名失败后更换其他签名类型</li>
 <li>ORGANIZATION_FLOW_NOTIFY_TYPE：短信通知签署方</li>
-<li>HIDE_ONE_KEY_SIGN：个人签署方手动签字</li>
+<li>HIDE_ONE_KEY_SIGN：个人签署方手写签名时需逐个手写</li>
+<li>SIGN_SIGNATURE_DEFAULT_SET_HANDWRITE：个人签署方手动签名</li>
 <li>ORGANIZATION_FLOW_EMAIL_NOTIFY：邮件通知签署方</li>
 <li>FLOW_APPROVAL：合同审批强制开启</li>
-<li>ORGANIZATION_FLOW_PASSWD_NOTIFY：签署密码开通引导</li></ul>
+<li>ORGANIZATION_FLOW_PASSWD_NOTIFY：签署密码开通引导</li>
+<li>APP_LOGIN：限制企业员工小程序端登录</li>
+<li>PC_LOGIN：限制企业员工网页端登录</li>
+</ul>
         :rtype: str
         """
         return self._ServiceType

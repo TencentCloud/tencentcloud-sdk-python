@@ -22126,10 +22126,13 @@ Mainland：查询国内数据，
 Oversea：则查询国外数据，
 默认：查询国内+国外的数据。
         :type MainlandOrOversea: str
+        :param _SourceType: 可选值：  PullLivePushLive：拉流源类型为直播  PullVodPushLive：拉流源类型为点播  PullPicPushLive：拉流源类型为图片  默认：查询全部拉流源类型
+        :type SourceType: str
         """
         self._StartTime = None
         self._EndTime = None
         self._MainlandOrOversea = None
+        self._SourceType = None
 
     @property
     def StartTime(self):
@@ -22172,11 +22175,23 @@ Oversea：则查询国外数据，
     def MainlandOrOversea(self, MainlandOrOversea):
         self._MainlandOrOversea = MainlandOrOversea
 
+    @property
+    def SourceType(self):
+        """可选值：  PullLivePushLive：拉流源类型为直播  PullVodPushLive：拉流源类型为点播  PullPicPushLive：拉流源类型为图片  默认：查询全部拉流源类型
+        :rtype: str
+        """
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
 
     def _deserialize(self, params):
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
         self._MainlandOrOversea = params.get("MainlandOrOversea")
+        self._SourceType = params.get("SourceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22198,11 +22213,14 @@ class DescribePullTransformPushInfoResponse(AbstractModel):
         :type DataInfoList: list of TaskDurationInfo
         :param _TotalDuration: 拉流转推得总时长
         :type TotalDuration: int
+        :param _TotalDurationSecond: 拉流转推得总时长（秒）
+        :type TotalDurationSecond: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DataInfoList = None
         self._TotalDuration = None
+        self._TotalDurationSecond = None
         self._RequestId = None
 
     @property
@@ -22228,6 +22246,17 @@ class DescribePullTransformPushInfoResponse(AbstractModel):
         self._TotalDuration = TotalDuration
 
     @property
+    def TotalDurationSecond(self):
+        """拉流转推得总时长（秒）
+        :rtype: int
+        """
+        return self._TotalDurationSecond
+
+    @TotalDurationSecond.setter
+    def TotalDurationSecond(self, TotalDurationSecond):
+        self._TotalDurationSecond = TotalDurationSecond
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -22247,6 +22276,7 @@ class DescribePullTransformPushInfoResponse(AbstractModel):
                 obj._deserialize(item)
                 self._DataInfoList.append(obj)
         self._TotalDuration = params.get("TotalDuration")
+        self._TotalDurationSecond = params.get("TotalDurationSecond")
         self._RequestId = params.get("RequestId")
 
 
@@ -37117,9 +37147,12 @@ class TaskDurationInfo(AbstractModel):
         :type Time: str
         :param _Duration: 拉流转推任务的时长，单位为分钟
         :type Duration: int
+        :param _DurationSecond: 拉流转推任务的时长，单位为秒
+        :type DurationSecond: int
         """
         self._Time = None
         self._Duration = None
+        self._DurationSecond = None
 
     @property
     def Time(self):
@@ -37143,10 +37176,22 @@ class TaskDurationInfo(AbstractModel):
     def Duration(self, Duration):
         self._Duration = Duration
 
+    @property
+    def DurationSecond(self):
+        """拉流转推任务的时长，单位为秒
+        :rtype: int
+        """
+        return self._DurationSecond
+
+    @DurationSecond.setter
+    def DurationSecond(self, DurationSecond):
+        self._DurationSecond = DurationSecond
+
 
     def _deserialize(self, params):
         self._Time = params.get("Time")
         self._Duration = params.get("Duration")
+        self._DurationSecond = params.get("DurationSecond")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

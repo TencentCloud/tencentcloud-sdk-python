@@ -28644,7 +28644,7 @@ class ScaleOutClusterRequest(AbstractModel):
         :type DisasterRecoverGroupIds: list of str
         :param _Tags: 扩容节点绑定标签列表。
         :type Tags: list of Tag
-        :param _HardwareSourceType: 扩容所选资源类型，可选范围为"host","pod"，host为普通的CVM资源，Pod为TKE集群或EKS集群提供的资源
+        :param _HardwareSourceType: 扩容所选资源类型，可选范围为"HOST","POD","MNode"，HOST为普通的CVM资源，POD为TKE集群或EKS集群提供的资源,MNode为全托管资源类型
         :type HardwareSourceType: str
         :param _PodSpecInfo: Pod相关资源信息
         :type PodSpecInfo: :class:`tencentcloud.emr.v20190103.models.PodSpecInfo`
@@ -28804,7 +28804,7 @@ class ScaleOutClusterRequest(AbstractModel):
 
     @property
     def HardwareSourceType(self):
-        """扩容所选资源类型，可选范围为"host","pod"，host为普通的CVM资源，Pod为TKE集群或EKS集群提供的资源
+        """扩容所选资源类型，可选范围为"HOST","POD","MNode"，HOST为普通的CVM资源，POD为TKE集群或EKS集群提供的资源,MNode为全托管资源类型
         :rtype: str
         """
         return self._HardwareSourceType
@@ -29132,7 +29132,7 @@ class ScaleOutInstanceRequest(AbstractModel):
         :type DisasterRecoverGroupIds: list of str
         :param _Tags: 扩容节点绑定标签列表。
         :type Tags: list of Tag
-        :param _HardwareResourceType: 扩容所选资源类型，可选范围为"host","pod"，host为普通的CVM资源，Pod为TKE集群或EKS集群提供的资源
+        :param _HardwareResourceType: 扩容所选资源类型，可选范围为"HOST","POD","MNode"，HOST为普通的CVM资源，POD为TKE集群或EKS集群提供的资源,MNode为全托管资源类型
         :type HardwareResourceType: str
         :param _PodSpec: 使用Pod资源扩容时，指定的Pod规格以及来源等信息
         :type PodSpec: :class:`tencentcloud.emr.v20190103.models.PodSpec`
@@ -29357,7 +29357,7 @@ class ScaleOutInstanceRequest(AbstractModel):
 
     @property
     def HardwareResourceType(self):
-        """扩容所选资源类型，可选范围为"host","pod"，host为普通的CVM资源，Pod为TKE集群或EKS集群提供的资源
+        """扩容所选资源类型，可选范围为"HOST","POD","MNode"，HOST为普通的CVM资源，POD为TKE集群或EKS集群提供的资源,MNode为全托管资源类型
         :rtype: str
         """
         return self._HardwareResourceType

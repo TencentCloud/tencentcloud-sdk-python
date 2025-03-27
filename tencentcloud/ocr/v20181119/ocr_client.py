@@ -277,33 +277,6 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CreateAIFormTask(self, request):
-        """智慧表单产品已下线，需要下线相关API
-
-        本接口可创建智能表单录入任务，支持多个识别图片和PDF的URL上传，返回含有识别内容的操作页面URL。
-
-        智能表单录入产品提供高准确率的表单识别技术和人工核对工具，支持自定义字段，将识别结果自动填入到自定义条目中，并提供人工操作工具，完成整个表单识别过程。适用性强，可对票据、合同、货单等文件的识别，适用于金融、货代、保险、档案等领域。本产品免费公测中，您可以点击demo（超链接：https://ocr.smartform.cloud.tencent.com/）试用，如需购买请与商务团队联系。
-
-        :param request: Request instance for CreateAIFormTask.
-        :type request: :class:`tencentcloud.ocr.v20181119.models.CreateAIFormTaskRequest`
-        :rtype: :class:`tencentcloud.ocr.v20181119.models.CreateAIFormTaskResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateAIFormTask", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateAIFormTaskResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DriverLicenseOCR(self, request):
         """本接口支持驾驶证主页和副页所有字段的自动定位与识别，重点字段的识别准确度达到99%以上。
 
@@ -904,31 +877,6 @@ class OcrClient(AbstractClient):
             body = self.call("GetOCRToken", params, headers=headers)
             response = json.loads(body)
             model = models.GetOCRTokenResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def GetTaskState(self, request):
-        """智慧表单产品已下线，需要下线相关API
-
-        支持查询智能表单录入任务的状态。本产品免费公测中，您可以点击demo（超链接：https://ocr.smartform.cloud.tencent.com/）试用，如需购买请与商务团队联系。
-
-        :param request: Request instance for GetTaskState.
-        :type request: :class:`tencentcloud.ocr.v20181119.models.GetTaskStateRequest`
-        :rtype: :class:`tencentcloud.ocr.v20181119.models.GetTaskStateResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("GetTaskState", params, headers=headers)
-            response = json.loads(body)
-            model = models.GetTaskStateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1838,6 +1786,11 @@ class OcrClient(AbstractClient):
                   <td> 19 </td>
                 </tr>
                 <tr>
+                  <td> BankSlip </td>
+                  <td> 银行回单 </td>
+                  <td> 20 </td>
+                </tr>
+                <tr>
                   <td> OtherInvoice </td>
                   <td> 其他发票 </td>
                   <td> -1 </td>
@@ -2479,33 +2432,6 @@ class OcrClient(AbstractClient):
             body = self.call("VatInvoiceOCR", params, headers=headers)
             response = json.loads(body)
             model = models.VatInvoiceOCRResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def VatInvoiceVerify(self, request):
-        """已上线VatInvoiceVerifyNew，VatInvoiceVerify需要下线，产品在官网已发通告
-
-        本接口支持增值税发票的准确性核验，您可以通过输入增值税发票的关键字段提供所需的验证信息，接口返回真实的票面相关信息，包括发票代码、发票号码、开票日期、金额、消费类型、购方名称、购方税号、销方名称、销方税号等多个常用字段。支持多种发票类型核验，包括增值税专用发票、增值税普通发票（含电子普通发票、卷式发票、通行费发票）、全电发票、机动车销售统一发票、货物运输业增值税专用发票、二手车销售统一发票。
-
-        默认接口请求频率限制：20次/秒。
-
-        :param request: Request instance for VatInvoiceVerify.
-        :type request: :class:`tencentcloud.ocr.v20181119.models.VatInvoiceVerifyRequest`
-        :rtype: :class:`tencentcloud.ocr.v20181119.models.VatInvoiceVerifyResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("VatInvoiceVerify", params, headers=headers)
-            response = json.loads(body)
-            model = models.VatInvoiceVerifyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

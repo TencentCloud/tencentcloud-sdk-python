@@ -6720,6 +6720,12 @@ class DescribeCloudStorageOrderResponse(AbstractModel):
         :type Status: int
         :param _ChannelId: 通道id
         :type ChannelId: int
+        :param _Price: 订单金额，单位为分
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Price: int
+        :param _Amount: 支付金额，单位为分
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Amount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -6728,6 +6734,8 @@ class DescribeCloudStorageOrderResponse(AbstractModel):
         self._PackageId = None
         self._Status = None
         self._ChannelId = None
+        self._Price = None
+        self._Amount = None
         self._RequestId = None
 
     @property
@@ -6792,6 +6800,30 @@ class DescribeCloudStorageOrderResponse(AbstractModel):
         self._ChannelId = ChannelId
 
     @property
+    def Price(self):
+        """订单金额，单位为分
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Price
+
+    @Price.setter
+    def Price(self, Price):
+        self._Price = Price
+
+    @property
+    def Amount(self):
+        """支付金额，单位为分
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Amount
+
+    @Amount.setter
+    def Amount(self, Amount):
+        self._Amount = Amount
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -6809,6 +6841,8 @@ class DescribeCloudStorageOrderResponse(AbstractModel):
         self._PackageId = params.get("PackageId")
         self._Status = params.get("Status")
         self._ChannelId = params.get("ChannelId")
+        self._Price = params.get("Price")
+        self._Amount = params.get("Amount")
         self._RequestId = params.get("RequestId")
 
 

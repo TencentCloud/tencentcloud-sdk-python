@@ -17,6 +17,9 @@
 # 操作失败。
 FAILEDOPERATION = 'FailedOperation'
 
+# 交易异常
+FAILEDOPERATION_CALLTRADE = 'FailedOperation.CallTrade'
+
 # FailedOperation.CertificateVerificationFailed
 FAILEDOPERATION_CERTIFICATEVERIFICATIONFAILED = 'FailedOperation.CertificateVerificationFailed'
 
@@ -28,6 +31,9 @@ FAILEDOPERATION_INSTANCENOTREADY = 'FailedOperation.InstanceNotReady'
 
 # FailedOperation.InstanceRegistrationCodeEmpty
 FAILEDOPERATION_INSTANCEREGISTRATIONCODEEMPTY = 'FailedOperation.InstanceRegistrationCodeEmpty'
+
+# 授权策略不支持关闭。
+FAILEDOPERATION_NOTSUPPORTDISABLEAUTHORIZATIONPOLICY = 'FailedOperation.NotSupportDisableAuthorizationPolicy'
 
 # FailedOperation.PublicKeyVerifyFailed
 FAILEDOPERATION_PUBLICKEYVERIFYFAILED = 'FailedOperation.PublicKeyVerifyFailed'

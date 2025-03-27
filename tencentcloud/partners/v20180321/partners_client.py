@@ -374,6 +374,29 @@ class PartnersClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeClientSwitchTraTaskInfo(self, request):
+        """查询客户的交易类型切换任务的信息，查询成功则获取当前用户的切换链接，查询失败则返回失败的原因
+
+        :param request: Request instance for DescribeClientSwitchTraTaskInfo.
+        :type request: :class:`tencentcloud.partners.v20180321.models.DescribeClientSwitchTraTaskInfoRequest`
+        :rtype: :class:`tencentcloud.partners.v20180321.models.DescribeClientSwitchTraTaskInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClientSwitchTraTaskInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeClientSwitchTraTaskInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRebateInfos(self, request):
         """【该接口已下线，请切换使用升级版本DescribeRebateInfosNew】代理商可查询自己名下全部返佣信息
 

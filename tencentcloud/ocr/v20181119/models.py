@@ -4186,154 +4186,6 @@ class Coord(AbstractModel):
         
 
 
-class CreateAIFormTaskRequest(AbstractModel):
-    """CreateAIFormTask请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _FileList: 多个文件的URL列表
-        :type FileList: list of SmartFormFileUrl
-        :param _FirstNotes: 备注信息1
-        :type FirstNotes: str
-        :param _SecondNotes: 备注信息2
-        :type SecondNotes: str
-        :param _FileType: 文件类型
-        :type FileType: int
-        """
-        self._FileList = None
-        self._FirstNotes = None
-        self._SecondNotes = None
-        self._FileType = None
-
-    @property
-    def FileList(self):
-        """多个文件的URL列表
-        :rtype: list of SmartFormFileUrl
-        """
-        return self._FileList
-
-    @FileList.setter
-    def FileList(self, FileList):
-        self._FileList = FileList
-
-    @property
-    def FirstNotes(self):
-        """备注信息1
-        :rtype: str
-        """
-        return self._FirstNotes
-
-    @FirstNotes.setter
-    def FirstNotes(self, FirstNotes):
-        self._FirstNotes = FirstNotes
-
-    @property
-    def SecondNotes(self):
-        """备注信息2
-        :rtype: str
-        """
-        return self._SecondNotes
-
-    @SecondNotes.setter
-    def SecondNotes(self, SecondNotes):
-        self._SecondNotes = SecondNotes
-
-    @property
-    def FileType(self):
-        """文件类型
-        :rtype: int
-        """
-        return self._FileType
-
-    @FileType.setter
-    def FileType(self, FileType):
-        self._FileType = FileType
-
-
-    def _deserialize(self, params):
-        if params.get("FileList") is not None:
-            self._FileList = []
-            for item in params.get("FileList"):
-                obj = SmartFormFileUrl()
-                obj._deserialize(item)
-                self._FileList.append(obj)
-        self._FirstNotes = params.get("FirstNotes")
-        self._SecondNotes = params.get("SecondNotes")
-        self._FileType = params.get("FileType")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateAIFormTaskResponse(AbstractModel):
-    """CreateAIFormTask返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _TaskId: 本次识别任务的唯一身份ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TaskId: str
-        :param _OperateUrl: 本次识别任务的操作URL，有效期自生成之时起共24小时
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OperateUrl: str
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._TaskId = None
-        self._OperateUrl = None
-        self._RequestId = None
-
-    @property
-    def TaskId(self):
-        """本次识别任务的唯一身份ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._TaskId
-
-    @TaskId.setter
-    def TaskId(self, TaskId):
-        self._TaskId = TaskId
-
-    @property
-    def OperateUrl(self):
-        """本次识别任务的操作URL，有效期自生成之时起共24小时
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._OperateUrl
-
-    @OperateUrl.setter
-    def OperateUrl(self, OperateUrl):
-        self._OperateUrl = OperateUrl
-
-    @property
-    def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._TaskId = params.get("TaskId")
-        self._OperateUrl = params.get("OperateUrl")
-        self._RequestId = params.get("RequestId")
-
-
 class CustomsPaymentReceipt(AbstractModel):
     """海关缴款书
 
@@ -11558,95 +11410,6 @@ class GetOCRTokenResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class GetTaskStateRequest(AbstractModel):
-    """GetTaskState请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _TaskId: 智慧表单任务唯一身份ID
-        :type TaskId: str
-        """
-        self._TaskId = None
-
-    @property
-    def TaskId(self):
-        """智慧表单任务唯一身份ID
-        :rtype: str
-        """
-        return self._TaskId
-
-    @TaskId.setter
-    def TaskId(self, TaskId):
-        self._TaskId = TaskId
-
-
-    def _deserialize(self, params):
-        self._TaskId = params.get("TaskId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class GetTaskStateResponse(AbstractModel):
-    """GetTaskState返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _TaskState: 1:任务识别完成，还未提交
-2:任务已手动关闭
-3:任务已提交
-4:任务识别中
-5:超时：任务超过了可操作的24H时限
-6:任务识别失败
-        :type TaskState: int
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._TaskState = None
-        self._RequestId = None
-
-    @property
-    def TaskState(self):
-        """1:任务识别完成，还未提交
-2:任务已手动关闭
-3:任务已提交
-4:任务识别中
-5:超时：任务超过了可操作的24H时限
-6:任务识别失败
-        :rtype: int
-        """
-        return self._TaskState
-
-    @TaskState.setter
-    def TaskState(self, TaskState):
-        self._TaskState = TaskState
-
-    @property
-    def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._TaskState = params.get("TaskState")
-        self._RequestId = params.get("RequestId")
-
-
 class GroupInfo(AbstractModel):
     """组在图中的序号
 
@@ -14467,6 +14230,7 @@ FailedOperation.UnKnowError：表示识别失败；
 17：医疗发票
 18：完税凭证
 19：海关缴款书
+20：银行回单
         :type Type: int
         :param _Polygon: 该发票在原图片中的四点坐标。
         :type Polygon: :class:`tencentcloud.ocr.v20181119.models.Polygon`
@@ -14533,6 +14297,7 @@ FailedOperation.UnKnowError：表示识别失败；
 17：医疗发票
 18：完税凭证
 19：海关缴款书
+20：银行回单
         :rtype: int
         """
         return self._Type
@@ -15592,12 +15357,11 @@ class MLIDPassportOCRRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageBase64: 图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
+        :param _ImageBase64: 图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。建议卡片部分占据图片2/3以上。
         :type ImageBase64: str
         :param _RetImage: 是否返回图片，默认false
         :type RetImage: bool
-        :param _ImageUrl: 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。
-建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+        :param _ImageUrl: 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
         :type ImageUrl: str
         """
         self._ImageBase64 = None
@@ -15606,7 +15370,7 @@ class MLIDPassportOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
+        """图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。建议卡片部分占据图片2/3以上。
         :rtype: str
         """
         return self._ImageBase64
@@ -15628,8 +15392,7 @@ class MLIDPassportOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。
-建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+        """图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
         :rtype: str
         """
         return self._ImageUrl
@@ -24175,6 +23938,7 @@ class RecognizeGeneralInvoiceRequest(AbstractModel):
 17：医疗发票
 18：完税凭证
 19：海关缴款书
+20：银行回单
 -1：其他发票
         :type Types: list of int
         :param _EnableOther: 是否开启其他票识别，默认值为true，开启后可支持其他发票的智能识别。	
@@ -24242,6 +24006,7 @@ class RecognizeGeneralInvoiceRequest(AbstractModel):
 17：医疗发票
 18：完税凭证
 19：海关缴款书
+20：银行回单
 -1：其他发票
         :rtype: list of int
         """
@@ -29685,57 +29450,6 @@ class SingleInvoiceItem(AbstractModel):
         
 
 
-class SmartFormFileUrl(AbstractModel):
-    """智慧表单上传文件信息
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _FileUrl: 文件url地址
-        :type FileUrl: str
-        :param _FileOrderNumber: 文件的顺序，顺序从1开始
-        :type FileOrderNumber: int
-        """
-        self._FileUrl = None
-        self._FileOrderNumber = None
-
-    @property
-    def FileUrl(self):
-        """文件url地址
-        :rtype: str
-        """
-        return self._FileUrl
-
-    @FileUrl.setter
-    def FileUrl(self, FileUrl):
-        self._FileUrl = FileUrl
-
-    @property
-    def FileOrderNumber(self):
-        """文件的顺序，顺序从1开始
-        :rtype: int
-        """
-        return self._FileOrderNumber
-
-    @FileOrderNumber.setter
-    def FileOrderNumber(self, FileOrderNumber):
-        self._FileOrderNumber = FileOrderNumber
-
-
-    def _deserialize(self, params):
-        self._FileUrl = params.get("FileUrl")
-        self._FileOrderNumber = params.get("FileOrderNumber")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class SmartStructuralOCRRequest(AbstractModel):
     """SmartStructuralOCR请求参数结构体
 
@@ -30217,9 +29931,14 @@ EntrustmentBook -- 海运托书
 WordRecognize -- 手写英文作文模版
 Statement -- 对账单识别模板
 BookingConfirmation -- 配舱通知书识别模板
+AirWayBill -- 航空运单识别模板
+DispatchWeightNote -- 磅单发货单识别模板
+ReceiptWeightNote -- 磅单收货单识别模板
         :type ConfigId: str
         :param _EnableCoord: 是否开启全文字段坐标值的识别
         :type EnableCoord: bool
+        :param _OutputParentKey: 是否开启父子key识别，默认是
+        :type OutputParentKey: bool
         """
         self._ImageUrl = None
         self._ImageBase64 = None
@@ -30228,6 +29947,7 @@ BookingConfirmation -- 配舱通知书识别模板
         self._ReturnFullText = None
         self._ConfigId = None
         self._EnableCoord = None
+        self._OutputParentKey = None
 
     @property
     def ImageUrl(self):
@@ -30298,6 +30018,9 @@ EntrustmentBook -- 海运托书
 WordRecognize -- 手写英文作文模版
 Statement -- 对账单识别模板
 BookingConfirmation -- 配舱通知书识别模板
+AirWayBill -- 航空运单识别模板
+DispatchWeightNote -- 磅单发货单识别模板
+ReceiptWeightNote -- 磅单收货单识别模板
         :rtype: str
         """
         return self._ConfigId
@@ -30317,6 +30040,17 @@ BookingConfirmation -- 配舱通知书识别模板
     def EnableCoord(self, EnableCoord):
         self._EnableCoord = EnableCoord
 
+    @property
+    def OutputParentKey(self):
+        """是否开启父子key识别，默认是
+        :rtype: bool
+        """
+        return self._OutputParentKey
+
+    @OutputParentKey.setter
+    def OutputParentKey(self, OutputParentKey):
+        self._OutputParentKey = OutputParentKey
+
 
     def _deserialize(self, params):
         self._ImageUrl = params.get("ImageUrl")
@@ -30326,6 +30060,7 @@ BookingConfirmation -- 配舱通知书识别模板
         self._ReturnFullText = params.get("ReturnFullText")
         self._ConfigId = params.get("ConfigId")
         self._EnableCoord = params.get("EnableCoord")
+        self._OutputParentKey = params.get("OutputParentKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -39922,190 +39657,6 @@ class VatInvoiceVerifyNewResponse(AbstractModel):
         if params.get("FinancialBill") is not None:
             self._FinancialBill = FinancialBill()
             self._FinancialBill._deserialize(params.get("FinancialBill"))
-        self._RequestId = params.get("RequestId")
-
-
-class VatInvoiceVerifyRequest(AbstractModel):
-    """VatInvoiceVerify请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _InvoiceCode: 发票代码， 一张发票一天只能查询5次。
-        :type InvoiceCode: str
-        :param _InvoiceNo: 发票号码（8位）
-        :type InvoiceNo: str
-        :param _InvoiceDate: 开票日期（不支持当天发票查询，支持五年以内开具的发票），格式：“YYYY-MM-DD”，如：2019-12-20。
-        :type InvoiceDate: str
-        :param _Additional: 根据票种传递对应值，如果报参数错误，请仔细检查每个票种对应的值
-
-增值税专用发票：开具金额（不含税）
-
-增值税普通发票、增值税电子普通发票（含通行费发票）、增值税普通发票（卷票）：校验码后6位
-
-区块链发票：不含税金额/校验码，例如：“285.01/856ab”
-
-机动车销售统一发票：不含税价
-
-货物运输业增值税专用发票：合计金额
-
-二手车销售统一发票：车价合计
-        :type Additional: str
-        """
-        self._InvoiceCode = None
-        self._InvoiceNo = None
-        self._InvoiceDate = None
-        self._Additional = None
-
-    @property
-    def InvoiceCode(self):
-        """发票代码， 一张发票一天只能查询5次。
-        :rtype: str
-        """
-        return self._InvoiceCode
-
-    @InvoiceCode.setter
-    def InvoiceCode(self, InvoiceCode):
-        self._InvoiceCode = InvoiceCode
-
-    @property
-    def InvoiceNo(self):
-        """发票号码（8位）
-        :rtype: str
-        """
-        return self._InvoiceNo
-
-    @InvoiceNo.setter
-    def InvoiceNo(self, InvoiceNo):
-        self._InvoiceNo = InvoiceNo
-
-    @property
-    def InvoiceDate(self):
-        """开票日期（不支持当天发票查询，支持五年以内开具的发票），格式：“YYYY-MM-DD”，如：2019-12-20。
-        :rtype: str
-        """
-        return self._InvoiceDate
-
-    @InvoiceDate.setter
-    def InvoiceDate(self, InvoiceDate):
-        self._InvoiceDate = InvoiceDate
-
-    @property
-    def Additional(self):
-        """根据票种传递对应值，如果报参数错误，请仔细检查每个票种对应的值
-
-增值税专用发票：开具金额（不含税）
-
-增值税普通发票、增值税电子普通发票（含通行费发票）、增值税普通发票（卷票）：校验码后6位
-
-区块链发票：不含税金额/校验码，例如：“285.01/856ab”
-
-机动车销售统一发票：不含税价
-
-货物运输业增值税专用发票：合计金额
-
-二手车销售统一发票：车价合计
-        :rtype: str
-        """
-        return self._Additional
-
-    @Additional.setter
-    def Additional(self, Additional):
-        self._Additional = Additional
-
-
-    def _deserialize(self, params):
-        self._InvoiceCode = params.get("InvoiceCode")
-        self._InvoiceNo = params.get("InvoiceNo")
-        self._InvoiceDate = params.get("InvoiceDate")
-        self._Additional = params.get("Additional")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class VatInvoiceVerifyResponse(AbstractModel):
-    """VatInvoiceVerify返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Invoice: 增值税发票信息，详情请点击左侧链接。
-        :type Invoice: :class:`tencentcloud.ocr.v20181119.models.VatInvoice`
-        :param _VehicleInvoiceInfo: 机动车销售统一发票信息
-        :type VehicleInvoiceInfo: :class:`tencentcloud.ocr.v20181119.models.VehicleInvoiceInfo`
-        :param _UsedVehicleInvoiceInfo: 二手车销售统一发票信息
-        :type UsedVehicleInvoiceInfo: :class:`tencentcloud.ocr.v20181119.models.UsedVehicleInvoiceInfo`
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._Invoice = None
-        self._VehicleInvoiceInfo = None
-        self._UsedVehicleInvoiceInfo = None
-        self._RequestId = None
-
-    @property
-    def Invoice(self):
-        """增值税发票信息，详情请点击左侧链接。
-        :rtype: :class:`tencentcloud.ocr.v20181119.models.VatInvoice`
-        """
-        return self._Invoice
-
-    @Invoice.setter
-    def Invoice(self, Invoice):
-        self._Invoice = Invoice
-
-    @property
-    def VehicleInvoiceInfo(self):
-        """机动车销售统一发票信息
-        :rtype: :class:`tencentcloud.ocr.v20181119.models.VehicleInvoiceInfo`
-        """
-        return self._VehicleInvoiceInfo
-
-    @VehicleInvoiceInfo.setter
-    def VehicleInvoiceInfo(self, VehicleInvoiceInfo):
-        self._VehicleInvoiceInfo = VehicleInvoiceInfo
-
-    @property
-    def UsedVehicleInvoiceInfo(self):
-        """二手车销售统一发票信息
-        :rtype: :class:`tencentcloud.ocr.v20181119.models.UsedVehicleInvoiceInfo`
-        """
-        return self._UsedVehicleInvoiceInfo
-
-    @UsedVehicleInvoiceInfo.setter
-    def UsedVehicleInvoiceInfo(self, UsedVehicleInvoiceInfo):
-        self._UsedVehicleInvoiceInfo = UsedVehicleInvoiceInfo
-
-    @property
-    def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("Invoice") is not None:
-            self._Invoice = VatInvoice()
-            self._Invoice._deserialize(params.get("Invoice"))
-        if params.get("VehicleInvoiceInfo") is not None:
-            self._VehicleInvoiceInfo = VehicleInvoiceInfo()
-            self._VehicleInvoiceInfo._deserialize(params.get("VehicleInvoiceInfo"))
-        if params.get("UsedVehicleInvoiceInfo") is not None:
-            self._UsedVehicleInvoiceInfo = UsedVehicleInvoiceInfo()
-            self._UsedVehicleInvoiceInfo._deserialize(params.get("UsedVehicleInvoiceInfo"))
         self._RequestId = params.get("RequestId")
 
 

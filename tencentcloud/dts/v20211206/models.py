@@ -9112,7 +9112,6 @@ class DistributeRule(AbstractModel):
         :param _TablePattern: 表名匹配规则，如果 DatabaseType 为 mongodb，则匹配集合名
         :type TablePattern: str
         :param _Columns: 列名。如果 RuleType 为 cols，此项必填。订阅任务会用该列的值计算分区。mongo没有按列分区，因此也不用传这个字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Columns: list of str
         """
         self._RuleType = None
@@ -9156,7 +9155,6 @@ class DistributeRule(AbstractModel):
     @property
     def Columns(self):
         """列名。如果 RuleType 为 cols，此项必填。订阅任务会用该列的值计算分区。mongo没有按列分区，因此也不用传这个字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Columns
@@ -15163,7 +15161,6 @@ class SkippedDetail(AbstractModel):
         :param _TotalCount: 跳过的表数量
         :type TotalCount: int
         :param _Items: 跳过校验的表详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of SkippedItem
         """
         self._TotalCount = None
@@ -15183,7 +15180,6 @@ class SkippedDetail(AbstractModel):
     @property
     def Items(self):
         """跳过校验的表详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SkippedItem
         """
         return self._Items
@@ -15941,19 +15937,14 @@ class StepTip(AbstractModel):
     def __init__(self):
         r"""
         :param _Code: 错误码
-注意：此字段可能返回 null，表示取不到有效值。
         :type Code: str
         :param _Message: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param _Solution: 解决方式
-注意：此字段可能返回 null，表示取不到有效值。
         :type Solution: str
         :param _HelpDoc: 帮助文档
-注意：此字段可能返回 null，表示取不到有效值。
         :type HelpDoc: str
         :param _SkipInfo: 当前步骤跳过信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type SkipInfo: str
         """
         self._Code = None
@@ -15965,7 +15956,6 @@ class StepTip(AbstractModel):
     @property
     def Code(self):
         """错误码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Code
@@ -15977,7 +15967,6 @@ class StepTip(AbstractModel):
     @property
     def Message(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Message
@@ -15989,7 +15978,6 @@ class StepTip(AbstractModel):
     @property
     def Solution(self):
         """解决方式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Solution
@@ -16001,7 +15989,6 @@ class StepTip(AbstractModel):
     @property
     def HelpDoc(self):
         """帮助文档
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HelpDoc
@@ -16013,7 +16000,6 @@ class StepTip(AbstractModel):
     @property
     def SkipInfo(self):
         """当前步骤跳过信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SkipInfo

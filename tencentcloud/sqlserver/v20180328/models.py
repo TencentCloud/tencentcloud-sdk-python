@@ -2442,6 +2442,8 @@ class CreateBasicDBInstancesRequest(AbstractModel):
         :type Collation: str
         :param _TimeZone: 系统时区，默认：China Standard Time
         :type TimeZone: str
+        :param _DiskEncryptFlag: 磁盘加密标识，0-不加密，1-加密
+        :type DiskEncryptFlag: int
         """
         self._Zone = None
         self._Cpu = None
@@ -2465,6 +2467,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
         self._ResourceTags = None
         self._Collation = None
         self._TimeZone = None
+        self._DiskEncryptFlag = None
 
     @property
     def Zone(self):
@@ -2708,6 +2711,17 @@ class CreateBasicDBInstancesRequest(AbstractModel):
     def TimeZone(self, TimeZone):
         self._TimeZone = TimeZone
 
+    @property
+    def DiskEncryptFlag(self):
+        """磁盘加密标识，0-不加密，1-加密
+        :rtype: int
+        """
+        return self._DiskEncryptFlag
+
+    @DiskEncryptFlag.setter
+    def DiskEncryptFlag(self, DiskEncryptFlag):
+        self._DiskEncryptFlag = DiskEncryptFlag
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -2737,6 +2751,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
                 self._ResourceTags.append(obj)
         self._Collation = params.get("Collation")
         self._TimeZone = params.get("TimeZone")
+        self._DiskEncryptFlag = params.get("DiskEncryptFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3295,6 +3310,8 @@ class CreateCloudDBInstancesRequest(AbstractModel):
         :type MultiNodes: bool
         :param _DrZones: 备节点可用区，默认为空。当MultiNodes = true时，主节点和备节点可用区不能全部相同。备机可用区集合最小为2个，最大不超过5个。
         :type DrZones: list of str
+        :param _DiskEncryptFlag: 磁盘加密标识，0-不加密，1-加密
+        :type DiskEncryptFlag: int
         """
         self._Zone = None
         self._Memory = None
@@ -3321,6 +3338,7 @@ class CreateCloudDBInstancesRequest(AbstractModel):
         self._TimeZone = None
         self._MultiNodes = None
         self._DrZones = None
+        self._DiskEncryptFlag = None
 
     @property
     def Zone(self):
@@ -3597,6 +3615,17 @@ class CreateCloudDBInstancesRequest(AbstractModel):
     def DrZones(self, DrZones):
         self._DrZones = DrZones
 
+    @property
+    def DiskEncryptFlag(self):
+        """磁盘加密标识，0-不加密，1-加密
+        :rtype: int
+        """
+        return self._DiskEncryptFlag
+
+    @DiskEncryptFlag.setter
+    def DiskEncryptFlag(self, DiskEncryptFlag):
+        self._DiskEncryptFlag = DiskEncryptFlag
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -3629,6 +3658,7 @@ class CreateCloudDBInstancesRequest(AbstractModel):
         self._TimeZone = params.get("TimeZone")
         self._MultiNodes = params.get("MultiNodes")
         self._DrZones = params.get("DrZones")
+        self._DiskEncryptFlag = params.get("DiskEncryptFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3737,6 +3767,8 @@ class CreateCloudReadOnlyDBInstancesRequest(AbstractModel):
         :type Collation: str
         :param _TimeZone: 系统时区，默认：China Standard Time
         :type TimeZone: str
+        :param _DiskEncryptFlag: 磁盘加密标识，0-不加密，1-加密
+        :type DiskEncryptFlag: int
         """
         self._InstanceId = None
         self._Zone = None
@@ -3762,6 +3794,7 @@ class CreateCloudReadOnlyDBInstancesRequest(AbstractModel):
         self._ResourceTags = None
         self._Collation = None
         self._TimeZone = None
+        self._DiskEncryptFlag = None
 
     @property
     def InstanceId(self):
@@ -4027,6 +4060,17 @@ class CreateCloudReadOnlyDBInstancesRequest(AbstractModel):
     def TimeZone(self, TimeZone):
         self._TimeZone = TimeZone
 
+    @property
+    def DiskEncryptFlag(self):
+        """磁盘加密标识，0-不加密，1-加密
+        :rtype: int
+        """
+        return self._DiskEncryptFlag
+
+    @DiskEncryptFlag.setter
+    def DiskEncryptFlag(self, DiskEncryptFlag):
+        self._DiskEncryptFlag = DiskEncryptFlag
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -4058,6 +4102,7 @@ class CreateCloudReadOnlyDBInstancesRequest(AbstractModel):
                 self._ResourceTags.append(obj)
         self._Collation = params.get("Collation")
         self._TimeZone = params.get("TimeZone")
+        self._DiskEncryptFlag = params.get("DiskEncryptFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12017,6 +12062,8 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
         :type XEventStatus: str
         :param _MultiDrReadableInfo: 多节点备机只读信息
         :type MultiDrReadableInfo: list of DrReadableInfo
+        :param _IsDiskEncryptFlag: 是否开启磁盘加密，1-开启，0-未开启
+        :type IsDiskEncryptFlag: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -12034,6 +12081,7 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
         self._OldVipList = None
         self._XEventStatus = None
         self._MultiDrReadableInfo = None
+        self._IsDiskEncryptFlag = None
         self._RequestId = None
 
     @property
@@ -12191,6 +12239,17 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
         self._MultiDrReadableInfo = MultiDrReadableInfo
 
     @property
+    def IsDiskEncryptFlag(self):
+        """是否开启磁盘加密，1-开启，0-未开启
+        :rtype: int
+        """
+        return self._IsDiskEncryptFlag
+
+    @IsDiskEncryptFlag.setter
+    def IsDiskEncryptFlag(self, IsDiskEncryptFlag):
+        self._IsDiskEncryptFlag = IsDiskEncryptFlag
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -12233,6 +12292,7 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
                 obj = DrReadableInfo()
                 obj._deserialize(item)
                 self._MultiDrReadableInfo.append(obj)
+        self._IsDiskEncryptFlag = params.get("IsDiskEncryptFlag")
         self._RequestId = params.get("RequestId")
 
 

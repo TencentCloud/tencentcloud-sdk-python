@@ -93003,6 +93003,8 @@ class ReverseShell(AbstractModel):
         :type Pid: int
         :param _RiskLevel: 威胁等级：0中危，1高危
         :type RiskLevel: int
+        :param _CmdLineQuote: 命令详情的转义后内容，供正则加白全字符串匹配使用	
+        :type CmdLineQuote: str
         """
         self._Id = None
         self._Uuid = None
@@ -93027,6 +93029,7 @@ class ReverseShell(AbstractModel):
         self._MachineExtraInfo = None
         self._Pid = None
         self._RiskLevel = None
+        self._CmdLineQuote = None
 
     @property
     def Id(self):
@@ -93281,6 +93284,17 @@ class ReverseShell(AbstractModel):
     def RiskLevel(self, RiskLevel):
         self._RiskLevel = RiskLevel
 
+    @property
+    def CmdLineQuote(self):
+        """命令详情的转义后内容，供正则加白全字符串匹配使用	
+        :rtype: str
+        """
+        return self._CmdLineQuote
+
+    @CmdLineQuote.setter
+    def CmdLineQuote(self, CmdLineQuote):
+        self._CmdLineQuote = CmdLineQuote
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -93308,6 +93322,7 @@ class ReverseShell(AbstractModel):
             self._MachineExtraInfo._deserialize(params.get("MachineExtraInfo"))
         self._Pid = params.get("Pid")
         self._RiskLevel = params.get("RiskLevel")
+        self._CmdLineQuote = params.get("CmdLineQuote")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -93379,6 +93394,8 @@ class ReverseShellEventInfo(AbstractModel):
         :type MachineStatus: str
         :param _ModifyTime: 处理时间
         :type ModifyTime: str
+        :param _CmdLineQuote: 命令详情的转义后内容，供正则加白全字符串匹配使用
+        :type CmdLineQuote: str
         """
         self._Id = None
         self._Uuid = None
@@ -93407,6 +93424,7 @@ class ReverseShellEventInfo(AbstractModel):
         self._MachineWanIp = None
         self._MachineStatus = None
         self._ModifyTime = None
+        self._CmdLineQuote = None
 
     @property
     def Id(self):
@@ -93705,6 +93723,17 @@ class ReverseShellEventInfo(AbstractModel):
     def ModifyTime(self, ModifyTime):
         self._ModifyTime = ModifyTime
 
+    @property
+    def CmdLineQuote(self):
+        """命令详情的转义后内容，供正则加白全字符串匹配使用
+        :rtype: str
+        """
+        return self._CmdLineQuote
+
+    @CmdLineQuote.setter
+    def CmdLineQuote(self, CmdLineQuote):
+        self._CmdLineQuote = CmdLineQuote
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -93734,6 +93763,7 @@ class ReverseShellEventInfo(AbstractModel):
         self._MachineWanIp = params.get("MachineWanIp")
         self._MachineStatus = params.get("MachineStatus")
         self._ModifyTime = params.get("ModifyTime")
+        self._CmdLineQuote = params.get("CmdLineQuote")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -95611,10 +95641,38 @@ class ScanTaskAgainResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _SuccessCount: 下发成功的主机数
+        :type SuccessCount: int
+        :param _BasicVersionCount: 基础版(不支持扫描)主机数
+        :type BasicVersionCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._SuccessCount = None
+        self._BasicVersionCount = None
         self._RequestId = None
+
+    @property
+    def SuccessCount(self):
+        """下发成功的主机数
+        :rtype: int
+        """
+        return self._SuccessCount
+
+    @SuccessCount.setter
+    def SuccessCount(self, SuccessCount):
+        self._SuccessCount = SuccessCount
+
+    @property
+    def BasicVersionCount(self):
+        """基础版(不支持扫描)主机数
+        :rtype: int
+        """
+        return self._BasicVersionCount
+
+    @BasicVersionCount.setter
+    def BasicVersionCount(self, BasicVersionCount):
+        self._BasicVersionCount = BasicVersionCount
 
     @property
     def RequestId(self):
@@ -95629,6 +95687,8 @@ class ScanTaskAgainResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._SuccessCount = params.get("SuccessCount")
+        self._BasicVersionCount = params.get("BasicVersionCount")
         self._RequestId = params.get("RequestId")
 
 

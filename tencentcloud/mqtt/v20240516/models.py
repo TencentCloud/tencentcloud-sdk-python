@@ -884,31 +884,42 @@ class CreateAuthorizationPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :type InstanceId: str
-        :param _PolicyName: 策略名称
+        :param _PolicyName: 策略名称，不能为空，3-64个字符，支持中文、字母、数字、“-”及“_”。
         :type PolicyName: str
-        :param _PolicyVersion: 策略版本
+        :param _PolicyVersion: 策略版本,默认为1，当前仅支持1
         :type PolicyVersion: int
-        :param _Priority: 策略优先级，越小越优先
+        :param _Priority: 策略优先级，越小越优先，不能重复
         :type Priority: int
-        :param _Effect: allow、deny
+        :param _Effect: 决策：
+allow 允许
+deny 拒绝
         :type Effect: str
-        :param _Actions: connect、pub、sub
+        :param _Actions: 操作
+connect：连接
+pub：发布
+sub：订阅
         :type Actions: str
-        :param _Retain: 1,匹配保留消息；2,匹配非保留消息，3.匹配所有消息
+        :param _Retain: 条件-保留消息
+1,匹配保留消息；
+2,匹配非保留消息，
+3.匹配保留和非保留消息
         :type Retain: int
-        :param _Qos: 0、1、2
+        :param _Qos: 条件：服务质量
+0：最多一次
+1：最少一次
+2：精确一次
         :type Qos: str
-        :param _Resources: 资源
+        :param _Resources: 资源，需要匹配的订阅
         :type Resources: str
-        :param _Username: 用户名
+        :param _Username: 条件-用户名
         :type Username: str
-        :param _ClientId: 客户端
+        :param _ClientId: 条件：客户端ID，支持正则
         :type ClientId: str
-        :param _Ip: IP地址
+        :param _Ip: 条件：客户端IP地址，支持IP或者CIDR
         :type Ip: str
-        :param _Remark: 备注信息
+        :param _Remark: 备注信息，最长 128 字符
         :type Remark: str
         """
         self._InstanceId = None
@@ -927,7 +938,7 @@ class CreateAuthorizationPolicyRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -938,7 +949,7 @@ class CreateAuthorizationPolicyRequest(AbstractModel):
 
     @property
     def PolicyName(self):
-        """策略名称
+        """策略名称，不能为空，3-64个字符，支持中文、字母、数字、“-”及“_”。
         :rtype: str
         """
         return self._PolicyName
@@ -949,7 +960,7 @@ class CreateAuthorizationPolicyRequest(AbstractModel):
 
     @property
     def PolicyVersion(self):
-        """策略版本
+        """策略版本,默认为1，当前仅支持1
         :rtype: int
         """
         return self._PolicyVersion
@@ -960,7 +971,7 @@ class CreateAuthorizationPolicyRequest(AbstractModel):
 
     @property
     def Priority(self):
-        """策略优先级，越小越优先
+        """策略优先级，越小越优先，不能重复
         :rtype: int
         """
         return self._Priority
@@ -971,7 +982,9 @@ class CreateAuthorizationPolicyRequest(AbstractModel):
 
     @property
     def Effect(self):
-        """allow、deny
+        """决策：
+allow 允许
+deny 拒绝
         :rtype: str
         """
         return self._Effect
@@ -982,7 +995,10 @@ class CreateAuthorizationPolicyRequest(AbstractModel):
 
     @property
     def Actions(self):
-        """connect、pub、sub
+        """操作
+connect：连接
+pub：发布
+sub：订阅
         :rtype: str
         """
         return self._Actions
@@ -993,7 +1009,10 @@ class CreateAuthorizationPolicyRequest(AbstractModel):
 
     @property
     def Retain(self):
-        """1,匹配保留消息；2,匹配非保留消息，3.匹配所有消息
+        """条件-保留消息
+1,匹配保留消息；
+2,匹配非保留消息，
+3.匹配保留和非保留消息
         :rtype: int
         """
         return self._Retain
@@ -1004,7 +1023,10 @@ class CreateAuthorizationPolicyRequest(AbstractModel):
 
     @property
     def Qos(self):
-        """0、1、2
+        """条件：服务质量
+0：最多一次
+1：最少一次
+2：精确一次
         :rtype: str
         """
         return self._Qos
@@ -1015,7 +1037,7 @@ class CreateAuthorizationPolicyRequest(AbstractModel):
 
     @property
     def Resources(self):
-        """资源
+        """资源，需要匹配的订阅
         :rtype: str
         """
         return self._Resources
@@ -1026,7 +1048,7 @@ class CreateAuthorizationPolicyRequest(AbstractModel):
 
     @property
     def Username(self):
-        """用户名
+        """条件-用户名
         :rtype: str
         """
         return self._Username
@@ -1037,7 +1059,7 @@ class CreateAuthorizationPolicyRequest(AbstractModel):
 
     @property
     def ClientId(self):
-        """客户端
+        """条件：客户端ID，支持正则
         :rtype: str
         """
         return self._ClientId
@@ -1048,7 +1070,7 @@ class CreateAuthorizationPolicyRequest(AbstractModel):
 
     @property
     def Ip(self):
-        """IP地址
+        """条件：客户端IP地址，支持IP或者CIDR
         :rtype: str
         """
         return self._Ip
@@ -1059,7 +1081,7 @@ class CreateAuthorizationPolicyRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """备注信息
+        """备注信息，最长 128 字符
         :rtype: str
         """
         return self._Remark
@@ -1100,10 +1122,38 @@ class CreateAuthorizationPolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _InstanceId: 集群Id
+        :type InstanceId: str
+        :param _Id: 策略id
+        :type Id: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._InstanceId = None
+        self._Id = None
         self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        """集群Id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Id(self):
+        """策略id
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
 
     @property
     def RequestId(self):
@@ -1118,6 +1168,8 @@ class CreateAuthorizationPolicyResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Id = params.get("Id")
         self._RequestId = params.get("RequestId")
 
 
@@ -4571,14 +4623,14 @@ class DescribeInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 实例ID [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """实例ID
+        """实例ID [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)
         :rtype: str
         """
         return self._InstanceId
@@ -4610,6 +4662,7 @@ class DescribeInstanceResponse(AbstractModel):
         :param _InstanceType: 实例类型
 BASIC 基础版
 PRO  专业版
+PLATINUM 铂金版
         :type InstanceType: str
         :param _InstanceId: 实例ID
         :type InstanceId: str
@@ -4625,7 +4678,7 @@ PRO  专业版
         :type CreatedTime: int
         :param _Remark: 备注信息
         :type Remark: str
-        :param _InstanceStatus: 实例状态
+        :param _InstanceStatus: 实例状态， RUNNING, 运行中 MAINTAINING，维护中 ABNORMAL，异常 OVERDUE，欠费 DESTROYED，已删除 CREATING，创建中 MODIFYING，变配中 CREATE_FAILURE，创建失败 MODIFY_FAILURE，变配失败 DELETING，删除中
         :type InstanceStatus: str
         :param _SkuCode: 实例规格
         :type SkuCode: str
@@ -4641,13 +4694,13 @@ API：通过API手动注册
         :type DeviceCertificateProvisionType: str
         :param _AutomaticActivation: 自动注册设备证书时是否自动激活
         :type AutomaticActivation: bool
-        :param _RenewFlag: 是否自动续费
+        :param _RenewFlag: 是否自动续费。仅包年包月集群生效。 1:自动续费 0:非自动续费
         :type RenewFlag: int
         :param _PayMode: 计费模式， POSTPAID，按量计费 PREPAID，包年包月
         :type PayMode: str
-        :param _ExpiryTime: 到期时间，秒为单位
+        :param _ExpiryTime: 到期时间，毫秒级时间戳
         :type ExpiryTime: int
-        :param _DestroyTime: 预销毁时间
+        :param _DestroyTime: 预销毁时间，毫秒级时间戳
         :type DestroyTime: int
         :param _X509Mode: TLS,单向认证    mTLS,双向认证    BYOC;一机一证
         :type X509Mode: str
@@ -4657,6 +4710,8 @@ API：通过API手动注册
         :type RegistrationCode: str
         :param _MaxSubscription: 集群最大订阅数
         :type MaxSubscription: int
+        :param _AuthorizationPolicy: 授权策略开关
+        :type AuthorizationPolicy: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4683,6 +4738,7 @@ API：通过API手动注册
         self._MaxCaNum = None
         self._RegistrationCode = None
         self._MaxSubscription = None
+        self._AuthorizationPolicy = None
         self._RequestId = None
 
     @property
@@ -4690,6 +4746,7 @@ API：通过API手动注册
         """实例类型
 BASIC 基础版
 PRO  专业版
+PLATINUM 铂金版
         :rtype: str
         """
         return self._InstanceType
@@ -4777,7 +4834,7 @@ PRO  专业版
 
     @property
     def InstanceStatus(self):
-        """实例状态
+        """实例状态， RUNNING, 运行中 MAINTAINING，维护中 ABNORMAL，异常 OVERDUE，欠费 DESTROYED，已删除 CREATING，创建中 MODIFYING，变配中 CREATE_FAILURE，创建失败 MODIFY_FAILURE，变配失败 DELETING，删除中
         :rtype: str
         """
         return self._InstanceStatus
@@ -4856,7 +4913,7 @@ API：通过API手动注册
 
     @property
     def RenewFlag(self):
-        """是否自动续费
+        """是否自动续费。仅包年包月集群生效。 1:自动续费 0:非自动续费
         :rtype: int
         """
         return self._RenewFlag
@@ -4878,7 +4935,7 @@ API：通过API手动注册
 
     @property
     def ExpiryTime(self):
-        """到期时间，秒为单位
+        """到期时间，毫秒级时间戳
         :rtype: int
         """
         return self._ExpiryTime
@@ -4889,7 +4946,7 @@ API：通过API手动注册
 
     @property
     def DestroyTime(self):
-        """预销毁时间
+        """预销毁时间，毫秒级时间戳
         :rtype: int
         """
         return self._DestroyTime
@@ -4943,6 +5000,17 @@ API：通过API手动注册
         self._MaxSubscription = MaxSubscription
 
     @property
+    def AuthorizationPolicy(self):
+        """授权策略开关
+        :rtype: bool
+        """
+        return self._AuthorizationPolicy
+
+    @AuthorizationPolicy.setter
+    def AuthorizationPolicy(self, AuthorizationPolicy):
+        self._AuthorizationPolicy = AuthorizationPolicy
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -4978,6 +5046,7 @@ API：通过API手动注册
         self._MaxCaNum = params.get("MaxCaNum")
         self._RegistrationCode = params.get("RegistrationCode")
         self._MaxSubscription = params.get("MaxSubscription")
+        self._AuthorizationPolicy = params.get("AuthorizationPolicy")
         self._RequestId = params.get("RequestId")
 
 
@@ -4988,19 +5057,19 @@ class DescribeMessageListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :type InstanceId: str
-        :param _Topic: 主题
+        :param _Topic: 要查询的一级Topic，可从 [查询MQTT主题列表](https://cloud.tencent.com/document/product/1778/111082) 获取。
         :type Topic: str
-        :param _StartTime: 开始时间
+        :param _StartTime: 开始时间，毫秒级时间戳 。
         :type StartTime: int
-        :param _EndTime: 结束时间
+        :param _EndTime: 结束时间，毫秒级时间戳 。
         :type EndTime: int
-        :param _TaskRequestId: 请求任务id
+        :param _TaskRequestId: 请求任务id，用于相同查询参数下查询加速，第一次查询时无需传递，第一次查询会根据本次查询参数生成查询任务ID，保留查询条件，查询下一页消息时可传递第一次查询返回的任务ID。
         :type TaskRequestId: str
-        :param _Offset: 查询起始位置
+        :param _Offset: 查询起始位置，默认0
         :type Offset: int
-        :param _Limit: 查询结果限制数量
+        :param _Limit: 查询结果限制数量，默认20，最大50
         :type Limit: int
         """
         self._InstanceId = None
@@ -5013,7 +5082,7 @@ class DescribeMessageListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -5024,7 +5093,7 @@ class DescribeMessageListRequest(AbstractModel):
 
     @property
     def Topic(self):
-        """主题
+        """要查询的一级Topic，可从 [查询MQTT主题列表](https://cloud.tencent.com/document/product/1778/111082) 获取。
         :rtype: str
         """
         return self._Topic
@@ -5035,7 +5104,7 @@ class DescribeMessageListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间
+        """开始时间，毫秒级时间戳 。
         :rtype: int
         """
         return self._StartTime
@@ -5046,7 +5115,7 @@ class DescribeMessageListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间
+        """结束时间，毫秒级时间戳 。
         :rtype: int
         """
         return self._EndTime
@@ -5057,7 +5126,7 @@ class DescribeMessageListRequest(AbstractModel):
 
     @property
     def TaskRequestId(self):
-        """请求任务id
+        """请求任务id，用于相同查询参数下查询加速，第一次查询时无需传递，第一次查询会根据本次查询参数生成查询任务ID，保留查询条件，查询下一页消息时可传递第一次查询返回的任务ID。
         :rtype: str
         """
         return self._TaskRequestId
@@ -5068,7 +5137,7 @@ class DescribeMessageListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """查询起始位置
+        """查询起始位置，默认0
         :rtype: int
         """
         return self._Offset
@@ -5079,7 +5148,7 @@ class DescribeMessageListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """查询结果限制数量
+        """查询结果限制数量，默认20，最大50
         :rtype: int
         """
         return self._Limit
@@ -6227,16 +6296,35 @@ JWT：JWT认证器
 JWKS：JWKS认证器
 HTTP：HTTP认证器
         :type Type: str
-        :param _Config: HTTP认证器
+        :param _Config: JWT认证器字段说明
+from（认证字段）
+    password：从password字段获取认证字段
+    username：从username字段获取认证字段
+secret（签名方式）
+    hmac-based：hmac-based签名方式
+    public-key：public-key签名方式
+secret（密钥），hmac-based需要配置密钥
+public-key（公钥），public-key签名方式需要配置
+样例：{"from":"password","secret":"secret282698","algorithm":"hmac-based"}
+
+JWKS认证器字段说明
+endpoint（接入点）：公钥获取服务器接入地址
+refreshInterval（认证内容）：公钥集合刷新周期
+from（认证字段）
+    password：从password字段获取认证字段
+    username：从username字段获取认证字段
+text：公钥集合
+样例：{"endpoint":"127.0.0.1","refreshInterval":60,"from":"password"}
+
+HTTP认证器
 headers（请求头）：标准请求头和自定义请求头
 endpoint（接入点）：认证服务器接入点
 method（http请求方法）：POST/GET
 readTimeout（读超时时间）：读取认证服务器数据超时时间，单位秒
 connectTimeout（连接超时时间）：连接认证服务器超时时间，单位秒
 body（请求体）：http请求体
-concurrency（并发数）：最大并发请求数
+concurrency（并发数）：最大并发请求数量
 样例：{"headers":[{"key":"Content-type","value":"application/json"},{"key":"username","value":"${Username}"}],"endpoint":"https://127.0.0.1:443","method":"POST","readTimeout":10,"connectTimeout":10,"body":[{"key":"client-id","value":"${ClientId}"}],"concurrency":8}
-
 参考 [认证管理概述](https://cloud.tencent.com/document/product/1778/114813)
         :type Config: str
         :param _Status: 认证器状态
@@ -6270,16 +6358,35 @@ HTTP：HTTP认证器
 
     @property
     def Config(self):
-        """HTTP认证器
+        """JWT认证器字段说明
+from（认证字段）
+    password：从password字段获取认证字段
+    username：从username字段获取认证字段
+secret（签名方式）
+    hmac-based：hmac-based签名方式
+    public-key：public-key签名方式
+secret（密钥），hmac-based需要配置密钥
+public-key（公钥），public-key签名方式需要配置
+样例：{"from":"password","secret":"secret282698","algorithm":"hmac-based"}
+
+JWKS认证器字段说明
+endpoint（接入点）：公钥获取服务器接入地址
+refreshInterval（认证内容）：公钥集合刷新周期
+from（认证字段）
+    password：从password字段获取认证字段
+    username：从username字段获取认证字段
+text：公钥集合
+样例：{"endpoint":"127.0.0.1","refreshInterval":60,"from":"password"}
+
+HTTP认证器
 headers（请求头）：标准请求头和自定义请求头
 endpoint（接入点）：认证服务器接入点
 method（http请求方法）：POST/GET
 readTimeout（读超时时间）：读取认证服务器数据超时时间，单位秒
 connectTimeout（连接超时时间）：连接认证服务器超时时间，单位秒
 body（请求体）：http请求体
-concurrency（并发数）：最大并发请求数
+concurrency（并发数）：最大并发请求数量
 样例：{"headers":[{"key":"Content-type","value":"application/json"},{"key":"username","value":"${Username}"}],"endpoint":"https://127.0.0.1:443","method":"POST","readTimeout":10,"connectTimeout":10,"body":[{"key":"client-id","value":"${ClientId}"}],"concurrency":8}
-
 参考 [认证管理概述](https://cloud.tencent.com/document/product/1778/114813)
         :rtype: str
         """
@@ -6355,7 +6462,7 @@ class MQTTClientInfo(AbstractModel):
         :param _ProtocolVersion: MQTT 协议版本
 3：表示MQTT 3.1版本
 4：表示 MQTT 3.1.1
-5:   标识MQTT 5.0协议
+5：表示MQTT 5.0协议
         :type ProtocolVersion: int
         :param _Keepalive: 保持连接时间，单位：秒
         :type Keepalive: int
@@ -6407,7 +6514,7 @@ class MQTTClientInfo(AbstractModel):
         """MQTT 协议版本
 3：表示MQTT 3.1版本
 4：表示 MQTT 3.1.1
-5:   标识MQTT 5.0协议
+5：表示MQTT 5.0协议
         :rtype: int
         """
         return self._ProtocolVersion
@@ -7087,7 +7194,7 @@ class MQTTMessageItem(AbstractModel):
         :type Keys: str
         :param _ProducerAddr: 客户端地址	
         :type ProducerAddr: str
-        :param _ProduceTime: 消息发送时间	
+        :param _ProduceTime: 消息发送时间，格式 日期时间：YYYY-MM-DD hh:mm:ss
         :type ProduceTime: str
         :param _DeadLetterResendTimes: 死信重发次数	
         :type DeadLetterResendTimes: int
@@ -7096,6 +7203,9 @@ class MQTTMessageItem(AbstractModel):
         :param _SubTopic: 子topic
         :type SubTopic: str
         :param _Qos: 消息质量等级
+0：至多一次
+1：至少一次
+2：精确一次
         :type Qos: str
         """
         self._MsgId = None
@@ -7154,7 +7264,7 @@ class MQTTMessageItem(AbstractModel):
 
     @property
     def ProduceTime(self):
-        """消息发送时间	
+        """消息发送时间，格式 日期时间：YYYY-MM-DD hh:mm:ss
         :rtype: str
         """
         return self._ProduceTime
@@ -7199,6 +7309,9 @@ class MQTTMessageItem(AbstractModel):
     @property
     def Qos(self):
         """消息质量等级
+0：至多一次
+1：至少一次
+2：精确一次
         :rtype: str
         """
         return self._Qos
@@ -8113,13 +8226,14 @@ class ModifyInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :type InstanceId: str
-        :param _Name: 要修改实例名称
+        :param _Name: 要修改实例名称，不能为空, 3-64个字符，只能包含数字、字母、“-”和“_”。
         :type Name: str
-        :param _Remark: 要修改的备注信息
+        :param _Remark: 要修改的备注信息，最多64个字符。
         :type Remark: str
-        :param _SkuCode: 要变更的配置规格
+        :param _SkuCode: 需要变更的配置规格
+基础版和增强版集群不能升配到铂金版规格，铂金版集群不能降配至基础版和增强版规格。
         :type SkuCode: str
         :param _DeviceCertificateProvisionType: 客户端证书注册方式：
 JITP：自动注册
@@ -8127,6 +8241,8 @@ API：手动通过API注册
         :type DeviceCertificateProvisionType: str
         :param _AutomaticActivation: 自动注册证书是否自动激活
         :type AutomaticActivation: bool
+        :param _AuthorizationPolicy: 授权策略开关
+        :type AuthorizationPolicy: bool
         """
         self._InstanceId = None
         self._Name = None
@@ -8134,10 +8250,11 @@ API：手动通过API注册
         self._SkuCode = None
         self._DeviceCertificateProvisionType = None
         self._AutomaticActivation = None
+        self._AuthorizationPolicy = None
 
     @property
     def InstanceId(self):
-        """实例ID
+        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -8148,7 +8265,7 @@ API：手动通过API注册
 
     @property
     def Name(self):
-        """要修改实例名称
+        """要修改实例名称，不能为空, 3-64个字符，只能包含数字、字母、“-”和“_”。
         :rtype: str
         """
         return self._Name
@@ -8159,7 +8276,7 @@ API：手动通过API注册
 
     @property
     def Remark(self):
-        """要修改的备注信息
+        """要修改的备注信息，最多64个字符。
         :rtype: str
         """
         return self._Remark
@@ -8170,7 +8287,8 @@ API：手动通过API注册
 
     @property
     def SkuCode(self):
-        """要变更的配置规格
+        """需要变更的配置规格
+基础版和增强版集群不能升配到铂金版规格，铂金版集群不能降配至基础版和增强版规格。
         :rtype: str
         """
         return self._SkuCode
@@ -8203,6 +8321,17 @@ API：手动通过API注册
     def AutomaticActivation(self, AutomaticActivation):
         self._AutomaticActivation = AutomaticActivation
 
+    @property
+    def AuthorizationPolicy(self):
+        """授权策略开关
+        :rtype: bool
+        """
+        return self._AuthorizationPolicy
+
+    @AuthorizationPolicy.setter
+    def AuthorizationPolicy(self, AuthorizationPolicy):
+        self._AuthorizationPolicy = AuthorizationPolicy
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -8211,6 +8340,7 @@ API：手动通过API注册
         self._SkuCode = params.get("SkuCode")
         self._DeviceCertificateProvisionType = params.get("DeviceCertificateProvisionType")
         self._AutomaticActivation = params.get("AutomaticActivation")
+        self._AuthorizationPolicy = params.get("AuthorizationPolicy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

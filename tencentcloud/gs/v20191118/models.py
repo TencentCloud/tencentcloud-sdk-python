@@ -5506,9 +5506,12 @@ class UploadFileToAndroidInstancesRequest(AbstractModel):
         :type AndroidInstanceIds: list of str
         :param _FileURL: 文件下载 URL
         :type FileURL: str
+        :param _DestinationDirectory: 上传目标目录，只能上传到 /sdcard/ 目录或其子目录下
+        :type DestinationDirectory: str
         """
         self._AndroidInstanceIds = None
         self._FileURL = None
+        self._DestinationDirectory = None
 
     @property
     def AndroidInstanceIds(self):
@@ -5532,10 +5535,22 @@ class UploadFileToAndroidInstancesRequest(AbstractModel):
     def FileURL(self, FileURL):
         self._FileURL = FileURL
 
+    @property
+    def DestinationDirectory(self):
+        """上传目标目录，只能上传到 /sdcard/ 目录或其子目录下
+        :rtype: str
+        """
+        return self._DestinationDirectory
+
+    @DestinationDirectory.setter
+    def DestinationDirectory(self, DestinationDirectory):
+        self._DestinationDirectory = DestinationDirectory
+
 
     def _deserialize(self, params):
         self._AndroidInstanceIds = params.get("AndroidInstanceIds")
         self._FileURL = params.get("FileURL")
+        self._DestinationDirectory = params.get("DestinationDirectory")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

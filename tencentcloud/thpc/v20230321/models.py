@@ -1143,6 +1143,8 @@ class ClusterOverview(AbstractModel):
         :type AutoScalingType: str
         :param _VpcId: 集群所属私有网络ID。
         :type VpcId: str
+        :param _ClusterType: 集群类型
+        :type ClusterType: str
         """
         self._ClusterId = None
         self._ClusterStatus = None
@@ -1159,6 +1161,7 @@ class ClusterOverview(AbstractModel):
         self._LoginNodeCount = None
         self._AutoScalingType = None
         self._VpcId = None
+        self._ClusterType = None
 
     @property
     def ClusterId(self):
@@ -1325,6 +1328,17 @@ class ClusterOverview(AbstractModel):
     def VpcId(self, VpcId):
         self._VpcId = VpcId
 
+    @property
+    def ClusterType(self):
+        """集群类型
+        :rtype: str
+        """
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -1359,6 +1373,7 @@ class ClusterOverview(AbstractModel):
         self._LoginNodeCount = params.get("LoginNodeCount")
         self._AutoScalingType = params.get("AutoScalingType")
         self._VpcId = params.get("VpcId")
+        self._ClusterType = params.get("ClusterType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

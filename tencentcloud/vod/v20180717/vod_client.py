@@ -1721,7 +1721,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeCdnLogs(self, request):
-        """查询点播域名的 CDN 访问日志的下载链接。
+        """查询点播域名的 CDN （不含 EdgeOne 回源到 VOD 域名）访问日志的下载链接。
             1. 可以查询最近30天内的 CDN 日志下载链接。
             2. 默认情况下 CDN 每小时生成一个日志文件，如果某一个小时没有 CDN 访问，不会生成日志文件。
             3. CDN 日志下载链接的有效期为24小时。
@@ -4295,6 +4295,7 @@ class VodClient(AbstractClient):
         - 允许对结果根据创建时间进行排序并分页返回，通过 Offset 和 Limit （见输入参数）来控制分页。
 
         <div id="maxResultsDesc">接口返回结果数限制：</div>
+
         - <b><a href="#p_offset">Offset</a> 和 <a href="#p_limit">Limit</a> 两个参数影响单次分页查询结果数。特别注意：当这2个值都缺省时，本接口最多只返回10条查询结果。</b>
         - <b>最大支持返回5000条搜索结果，超出部分不再支持查询。如果搜索结果量太大，建议使用更精细的筛选条件来减少搜索结果。</b>
 

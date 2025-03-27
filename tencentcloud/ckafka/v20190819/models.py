@@ -3718,7 +3718,7 @@ class CreateAclRequest(AbstractModel):
         :type ResourceType: int
         :param _Operation: Acl操作方式，(2:ALL，3:READ，4:WRITE，5:CREATE，6:DELETE，7:ALTER，8:DESCRIBE，9:CLUSTER_ACTION，10:DESCRIBE_CONFIGS，11:ALTER_CONFIGS，12:IDEMPOTENT_WRITE)
         :type Operation: int
-        :param _PermissionType: 权限类型，(2:DENY，3:ALLOW)，当前ckakfa支持ALLOW(相当于白名单)，其它用于后续兼容开源kafka的acl时使用
+        :param _PermissionType: 权限类型，(2:DENY，3:ALLOW)，当前ckafka支持ALLOW(相当于白名单)，其它用于后续兼容开源kafka的acl时使用
         :type PermissionType: int
         :param _ResourceName: 资源名称，和resourceType相关，如当resourceType为TOPIC时，则该字段表示topic名称，当resourceType为GROUP时，该字段表示group名称，当resourceType为CLUSTER时，该字段可为空。
         :type ResourceName: str
@@ -3773,7 +3773,7 @@ class CreateAclRequest(AbstractModel):
 
     @property
     def PermissionType(self):
-        """权限类型，(2:DENY，3:ALLOW)，当前ckakfa支持ALLOW(相当于白名单)，其它用于后续兼容开源kafka的acl时使用
+        """权限类型，(2:DENY，3:ALLOW)，当前ckafka支持ALLOW(相当于白名单)，其它用于后续兼容开源kafka的acl时使用
         :rtype: int
         """
         return self._PermissionType
@@ -8873,7 +8873,7 @@ class DeleteAclRequest(AbstractModel):
         :type ResourceName: str
         :param _Operation: Acl操作方式，(2:ALL，3:READ，4:WRITE，5:CREATE，6:DELETE，7:ALTER，8:DESCRIBE，9:CLUSTER_ACTION，10:DESCRIBE_CONFIGS，11:ALTER_CONFIGS，12:IDEMPOTENT_WRITE)
         :type Operation: int
-        :param _PermissionType: 权限类型，(2:DENY，3:ALLOW)，当前ckakfa支持ALLOW(相当于白名单)，其它用于后续兼容开源kafka的acl时使用
+        :param _PermissionType: 权限类型，(2:DENY，3:ALLOW)，当前ckafka支持ALLOW(相当于白名单)，其它用于后续兼容开源kafka的acl时使用
         :type PermissionType: int
         :param _Host: 默认为\*，表示任何host都可以访问，当前ckafka不支持host为\*，但是后面开源kafka的产品化会直接支持
         :type Host: str
@@ -8934,7 +8934,7 @@ class DeleteAclRequest(AbstractModel):
 
     @property
     def PermissionType(self):
-        """权限类型，(2:DENY，3:ALLOW)，当前ckakfa支持ALLOW(相当于白名单)，其它用于后续兼容开源kafka的acl时使用
+        """权限类型，(2:DENY，3:ALLOW)，当前ckafka支持ALLOW(相当于白名单)，其它用于后续兼容开源kafka的acl时使用
         :rtype: int
         """
         return self._PermissionType
@@ -28535,7 +28535,7 @@ class SaleInfo(AbstractModel):
         r"""
         :param _Flag: 手动设置的flag标志
         :type Flag: bool
-        :param _Version: ckakfa版本号(1.1.1/2.4.2/0.10.2)
+        :param _Version: ckafka版本号(1.1.1/2.4.2/0.10.2)
         :type Version: str
         :param _Platform: 专业版、标准版标志
         :type Platform: str
@@ -28560,7 +28560,7 @@ class SaleInfo(AbstractModel):
 
     @property
     def Version(self):
-        """ckakfa版本号(1.1.1/2.4.2/0.10.2)
+        """ckafka版本号(1.1.1/2.4.2/0.10.2)
         :rtype: str
         """
         return self._Version

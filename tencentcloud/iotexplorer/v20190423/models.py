@@ -20036,6 +20036,9 @@ class IotApplication(AbstractModel):
         :param _WechatNotifyStatus: 第三方小程序强提醒开关 0：关闭；1：开启
 注意：此字段可能返回 null，表示取不到有效值。
         :type WechatNotifyStatus: int
+        :param _InterconnectionProducts: 互联互通产品ID列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InterconnectionProducts: str
         """
         self._IotAppID = None
         self._AppName = None
@@ -20065,6 +20068,7 @@ class IotApplication(AbstractModel):
         self._SelfSmsSign = None
         self._SelfSmsTemplateId = None
         self._WechatNotifyStatus = None
+        self._InterconnectionProducts = None
 
     @property
     def IotAppID(self):
@@ -20379,6 +20383,18 @@ class IotApplication(AbstractModel):
     def WechatNotifyStatus(self, WechatNotifyStatus):
         self._WechatNotifyStatus = WechatNotifyStatus
 
+    @property
+    def InterconnectionProducts(self):
+        """互联互通产品ID列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InterconnectionProducts
+
+    @InterconnectionProducts.setter
+    def InterconnectionProducts(self, InterconnectionProducts):
+        self._InterconnectionProducts = InterconnectionProducts
+
 
     def _deserialize(self, params):
         self._IotAppID = params.get("IotAppID")
@@ -20409,6 +20425,7 @@ class IotApplication(AbstractModel):
         self._SelfSmsSign = params.get("SelfSmsSign")
         self._SelfSmsTemplateId = params.get("SelfSmsTemplateId")
         self._WechatNotifyStatus = params.get("WechatNotifyStatus")
+        self._InterconnectionProducts = params.get("InterconnectionProducts")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24301,6 +24318,9 @@ wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、els
         :param _Period: 有效期
 注意：此字段可能返回 null，表示取不到有效值。
         :type Period: str
+        :param _IsInterconnection: 互联互通标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsInterconnection: int
         """
         self._ProductId = None
         self._ProductName = None
@@ -24323,6 +24343,7 @@ wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、els
         self._DeviceCount = None
         self._Rate = None
         self._Period = None
+        self._IsInterconnection = None
 
     @property
     def ProductId(self):
@@ -24563,6 +24584,18 @@ wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、els
     def Period(self, Period):
         self._Period = Period
 
+    @property
+    def IsInterconnection(self):
+        """互联互通标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._IsInterconnection
+
+    @IsInterconnection.setter
+    def IsInterconnection(self, IsInterconnection):
+        self._IsInterconnection = IsInterconnection
+
 
     def _deserialize(self, params):
         self._ProductId = params.get("ProductId")
@@ -24586,6 +24619,7 @@ wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、els
         self._DeviceCount = params.get("DeviceCount")
         self._Rate = params.get("Rate")
         self._Period = params.get("Period")
+        self._IsInterconnection = params.get("IsInterconnection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

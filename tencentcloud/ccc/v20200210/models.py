@@ -2210,12 +2210,19 @@ class CreateAIAgentCallRequest(AbstractModel):
         :type Callers: list of str
         :param _PromptVariables: 提示词变量
         :type PromptVariables: list of Variable
+        :param _Variables: 通用变量： <p>提示词变量</p> <p>欢迎语变量</p> <p> dify变量</p>  
+
+1. dify-inputs-xxx 为dify的inputs变量
+2.  dify-inputs-user 为dify的user值
+3.  dify-inputs-conversation_id 为dify的conversation_id值
+        :type Variables: list of Variable
         """
         self._SdkAppId = None
         self._AIAgentId = None
         self._Callee = None
         self._Callers = None
         self._PromptVariables = None
+        self._Variables = None
 
     @property
     def SdkAppId(self):
@@ -2272,6 +2279,21 @@ class CreateAIAgentCallRequest(AbstractModel):
     def PromptVariables(self, PromptVariables):
         self._PromptVariables = PromptVariables
 
+    @property
+    def Variables(self):
+        """通用变量： <p>提示词变量</p> <p>欢迎语变量</p> <p> dify变量</p>  
+
+1. dify-inputs-xxx 为dify的inputs变量
+2.  dify-inputs-user 为dify的user值
+3.  dify-inputs-conversation_id 为dify的conversation_id值
+        :rtype: list of Variable
+        """
+        return self._Variables
+
+    @Variables.setter
+    def Variables(self, Variables):
+        self._Variables = Variables
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -2284,6 +2306,12 @@ class CreateAIAgentCallRequest(AbstractModel):
                 obj = Variable()
                 obj._deserialize(item)
                 self._PromptVariables.append(obj)
+        if params.get("Variables") is not None:
+            self._Variables = []
+            for item in params.get("Variables"):
+                obj = Variable()
+                obj._deserialize(item)
+                self._Variables.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2348,25 +2376,13 @@ class CreateAICallRequest(AbstractModel):
         :type SdkAppId: int
         :param _Callee: 被叫号码
         :type Callee: str
-        :param _SystemPrompt: 用于设定AI人设、说话规则、任务等的全局提示词。示例：## 人设您是人民医院友善、和蔼的随访医生李医生，正在给患者小明的家长打电话，原因是医院要求小明2024-08-08回院复查手术恢复情况，但小明没有来。您需要按照任务流程对小明家长进行电话随访调查。## 要求简洁回复：使用简练语言，每次最多询问一个问题，不要在一个回复中询问多个问题。富有变化：尽量使表达富有变化，表达机械重复。自然亲切：使用日常语言，尽量显得专业并亲切。提到时间时使用口语表述，如下周三、6月18日。积极主动：尝试引导对话，每个回复通常以问题或下一步建议来结尾。询问清楚：如果对方部分回答了您的问题，或者回答很模糊，请通过追问来确保回答的完整明确。遵循任务：当对方的回答偏离了您的任务时，及时引导对方回到任务中。不要从头开始重复，从偏离的地方继续询问。诚实可靠：对于客户的提问，如果不确定请务必不要编造，礼貌告知对方不清楚。不要捏造患者未提及的症状史、用药史、治疗史。其他注意点：避免提到病情恶化、恢复不理想或疾病名称等使用会使患者感到紧张的表述。不要问患者已经直接或间接回答过的问题，例如患者已经说没有不适症状，那就不要再问手术部位是否有红肿疼痛症状的问题。##任务： 1.自我介绍您是人民医院负责随访的李医生，并说明致电的目的。2.询问被叫方是否是小明家长。 - 如果不是小明家长，请礼貌表达歉意，并使用 call_end 挂断电话。- 如果小明家长没空，请礼貌告诉对方稍后会重新致电，并使用 end_call 挂断电话。3.询问小明出院后水肿情况如何，较出院时是否有变化。- 如果水肿变严重，直接跳转步骤7。4.询问出院后是否给小朋友量过体温，是否出现过发烧情况。- 如果没有量过体温，请礼貌告诉家长出院后三个月内需要每天观察体温。- 如果出现过发烧，请直接跳转步骤7。5.询问出院后是否给小朋友按时服药。- 如果没有按时服药，请友善提醒家长严格按医嘱服用药物，避免影响手术效果。6.询问小朋友在饮食上是否做到低盐低脂，适量吃优质蛋白如鸡蛋、牛奶、瘦肉等。- 如果没有做到，请友善提醒家长低盐低脂和优质蛋白有助小朋友尽快恢复。7.告知家长医生要求6月18日回院复查，但没看到有相关复诊记录。提醒家长尽快前往医院体检复查血化验、尿常规。8.询问家长是否有问题需要咨询，如果没有请礼貌道别并用call_end挂断电话。
-        :type SystemPrompt: str
-        :param _LLMType: 模型接口协议类型，目前兼容三种协议类型：
+        :param _LLMType: 模型接口协议类型，目前兼容四种协议类型：
 
 - OpenAI协议(包括GPT、混元、DeepSeek等)："openai"
 - Azure协议："azure"
 - Minimax协议："minimax"
+- Dify协议: "dify"
         :type LLMType: str
-        :param _Model: 模型名称，如
-
-- OpenAI协议
-"gpt-4o-mini","gpt-4o"，"hunyuan-standard", "hunyuan-turbo"，"deepseek-chat"；
-
-- Azure协议
-"gpt-4o-mini", "gpt-4o"；
-
-- Minmax协议
-"deepseek-chat".
-        :type Model: str
         :param _APIKey: 模型API密钥，获取鉴权信息方式请参见各模型官网
 
 - OpenAI协议：[GPT](https://help.openai.com/en/articles/4936850-where-do-i-find-my-openai-api-key)，[混元](https://cloud.tencent.com/document/product/1729/111008)，[DeepSeek](https://api-docs.deepseek.com/zh-cn/)；
@@ -2388,6 +2404,19 @@ Deepseek："https://api.deepseek.com/v1"
 - Minimax协议
 "https://api.minimax.chat/v1"
         :type APIUrl: str
+        :param _SystemPrompt: 用于设定AI人设、说话规则、任务等的全局提示词。示例：## 人设您是人民医院友善、和蔼的随访医生李医生，正在给患者小明的家长打电话，原因是医院要求小明2024-08-08回院复查手术恢复情况，但小明没有来。您需要按照任务流程对小明家长进行电话随访调查。## 要求简洁回复：使用简练语言，每次最多询问一个问题，不要在一个回复中询问多个问题。富有变化：尽量使表达富有变化，表达机械重复。自然亲切：使用日常语言，尽量显得专业并亲切。提到时间时使用口语表述，如下周三、6月18日。积极主动：尝试引导对话，每个回复通常以问题或下一步建议来结尾。询问清楚：如果对方部分回答了您的问题，或者回答很模糊，请通过追问来确保回答的完整明确。遵循任务：当对方的回答偏离了您的任务时，及时引导对方回到任务中。不要从头开始重复，从偏离的地方继续询问。诚实可靠：对于客户的提问，如果不确定请务必不要编造，礼貌告知对方不清楚。不要捏造患者未提及的症状史、用药史、治疗史。其他注意点：避免提到病情恶化、恢复不理想或疾病名称等使用会使患者感到紧张的表述。不要问患者已经直接或间接回答过的问题，例如患者已经说没有不适症状，那就不要再问手术部位是否有红肿疼痛症状的问题。##任务： 1.自我介绍您是人民医院负责随访的李医生，并说明致电的目的。2.询问被叫方是否是小明家长。 - 如果不是小明家长，请礼貌表达歉意，并使用 call_end 挂断电话。- 如果小明家长没空，请礼貌告诉对方稍后会重新致电，并使用 end_call 挂断电话。3.询问小明出院后水肿情况如何，较出院时是否有变化。- 如果水肿变严重，直接跳转步骤7。4.询问出院后是否给小朋友量过体温，是否出现过发烧情况。- 如果没有量过体温，请礼貌告诉家长出院后三个月内需要每天观察体温。- 如果出现过发烧，请直接跳转步骤7。5.询问出院后是否给小朋友按时服药。- 如果没有按时服药，请友善提醒家长严格按医嘱服用药物，避免影响手术效果。6.询问小朋友在饮食上是否做到低盐低脂，适量吃优质蛋白如鸡蛋、牛奶、瘦肉等。- 如果没有做到，请友善提醒家长低盐低脂和优质蛋白有助小朋友尽快恢复。7.告知家长医生要求6月18日回院复查，但没看到有相关复诊记录。提醒家长尽快前往医院体检复查血化验、尿常规。8.询问家长是否有问题需要咨询，如果没有请礼貌道别并用call_end挂断电话。
+        :type SystemPrompt: str
+        :param _Model: 模型名称，如
+
+- OpenAI协议
+"gpt-4o-mini","gpt-4o"，"hunyuan-standard", "hunyuan-turbo"，"deepseek-chat"；
+
+- Azure协议
+"gpt-4o-mini", "gpt-4o"；
+
+- Minmax协议
+"deepseek-chat".
+        :type Model: str
         :param _VoiceType: 默认提供以下音色参数值可选择，如需自定义音色VoiceType请留空并在参数CustomTTSConfig中配置
 
 汉语：
@@ -2566,14 +2595,20 @@ HoaiMy
         :type ExtractConfig: list of AICallExtractConfigElement
         :param _Temperature: 模型温度控制
         :type Temperature: float
+        :param _Variables: 通用变量： <p>提示词变量</p> <p>欢迎语变量</p> <p> dify变量</p>  
+
+1. dify-inputs-xxx 为dify的inputs变量
+2.  dify-inputs-user 为dify的user值
+3.  dify-inputs-conversation_id 为dify的conversation_id值
+        :type Variables: list of Variable
         """
         self._SdkAppId = None
         self._Callee = None
-        self._SystemPrompt = None
         self._LLMType = None
-        self._Model = None
         self._APIKey = None
         self._APIUrl = None
+        self._SystemPrompt = None
+        self._Model = None
         self._VoiceType = None
         self._Callers = None
         self._WelcomeMessage = None
@@ -2595,6 +2630,7 @@ HoaiMy
         self._VadSilenceTime = None
         self._ExtractConfig = None
         self._Temperature = None
+        self._Variables = None
 
     @property
     def SdkAppId(self):
@@ -2619,23 +2655,13 @@ HoaiMy
         self._Callee = Callee
 
     @property
-    def SystemPrompt(self):
-        """用于设定AI人设、说话规则、任务等的全局提示词。示例：## 人设您是人民医院友善、和蔼的随访医生李医生，正在给患者小明的家长打电话，原因是医院要求小明2024-08-08回院复查手术恢复情况，但小明没有来。您需要按照任务流程对小明家长进行电话随访调查。## 要求简洁回复：使用简练语言，每次最多询问一个问题，不要在一个回复中询问多个问题。富有变化：尽量使表达富有变化，表达机械重复。自然亲切：使用日常语言，尽量显得专业并亲切。提到时间时使用口语表述，如下周三、6月18日。积极主动：尝试引导对话，每个回复通常以问题或下一步建议来结尾。询问清楚：如果对方部分回答了您的问题，或者回答很模糊，请通过追问来确保回答的完整明确。遵循任务：当对方的回答偏离了您的任务时，及时引导对方回到任务中。不要从头开始重复，从偏离的地方继续询问。诚实可靠：对于客户的提问，如果不确定请务必不要编造，礼貌告知对方不清楚。不要捏造患者未提及的症状史、用药史、治疗史。其他注意点：避免提到病情恶化、恢复不理想或疾病名称等使用会使患者感到紧张的表述。不要问患者已经直接或间接回答过的问题，例如患者已经说没有不适症状，那就不要再问手术部位是否有红肿疼痛症状的问题。##任务： 1.自我介绍您是人民医院负责随访的李医生，并说明致电的目的。2.询问被叫方是否是小明家长。 - 如果不是小明家长，请礼貌表达歉意，并使用 call_end 挂断电话。- 如果小明家长没空，请礼貌告诉对方稍后会重新致电，并使用 end_call 挂断电话。3.询问小明出院后水肿情况如何，较出院时是否有变化。- 如果水肿变严重，直接跳转步骤7。4.询问出院后是否给小朋友量过体温，是否出现过发烧情况。- 如果没有量过体温，请礼貌告诉家长出院后三个月内需要每天观察体温。- 如果出现过发烧，请直接跳转步骤7。5.询问出院后是否给小朋友按时服药。- 如果没有按时服药，请友善提醒家长严格按医嘱服用药物，避免影响手术效果。6.询问小朋友在饮食上是否做到低盐低脂，适量吃优质蛋白如鸡蛋、牛奶、瘦肉等。- 如果没有做到，请友善提醒家长低盐低脂和优质蛋白有助小朋友尽快恢复。7.告知家长医生要求6月18日回院复查，但没看到有相关复诊记录。提醒家长尽快前往医院体检复查血化验、尿常规。8.询问家长是否有问题需要咨询，如果没有请礼貌道别并用call_end挂断电话。
-        :rtype: str
-        """
-        return self._SystemPrompt
-
-    @SystemPrompt.setter
-    def SystemPrompt(self, SystemPrompt):
-        self._SystemPrompt = SystemPrompt
-
-    @property
     def LLMType(self):
-        """模型接口协议类型，目前兼容三种协议类型：
+        """模型接口协议类型，目前兼容四种协议类型：
 
 - OpenAI协议(包括GPT、混元、DeepSeek等)："openai"
 - Azure协议："azure"
 - Minimax协议："minimax"
+- Dify协议: "dify"
         :rtype: str
         """
         return self._LLMType
@@ -2643,26 +2669,6 @@ HoaiMy
     @LLMType.setter
     def LLMType(self, LLMType):
         self._LLMType = LLMType
-
-    @property
-    def Model(self):
-        """模型名称，如
-
-- OpenAI协议
-"gpt-4o-mini","gpt-4o"，"hunyuan-standard", "hunyuan-turbo"，"deepseek-chat"；
-
-- Azure协议
-"gpt-4o-mini", "gpt-4o"；
-
-- Minmax协议
-"deepseek-chat".
-        :rtype: str
-        """
-        return self._Model
-
-    @Model.setter
-    def Model(self, Model):
-        self._Model = Model
 
     @property
     def APIKey(self):
@@ -2702,6 +2708,37 @@ Deepseek："https://api.deepseek.com/v1"
     @APIUrl.setter
     def APIUrl(self, APIUrl):
         self._APIUrl = APIUrl
+
+    @property
+    def SystemPrompt(self):
+        """用于设定AI人设、说话规则、任务等的全局提示词。示例：## 人设您是人民医院友善、和蔼的随访医生李医生，正在给患者小明的家长打电话，原因是医院要求小明2024-08-08回院复查手术恢复情况，但小明没有来。您需要按照任务流程对小明家长进行电话随访调查。## 要求简洁回复：使用简练语言，每次最多询问一个问题，不要在一个回复中询问多个问题。富有变化：尽量使表达富有变化，表达机械重复。自然亲切：使用日常语言，尽量显得专业并亲切。提到时间时使用口语表述，如下周三、6月18日。积极主动：尝试引导对话，每个回复通常以问题或下一步建议来结尾。询问清楚：如果对方部分回答了您的问题，或者回答很模糊，请通过追问来确保回答的完整明确。遵循任务：当对方的回答偏离了您的任务时，及时引导对方回到任务中。不要从头开始重复，从偏离的地方继续询问。诚实可靠：对于客户的提问，如果不确定请务必不要编造，礼貌告知对方不清楚。不要捏造患者未提及的症状史、用药史、治疗史。其他注意点：避免提到病情恶化、恢复不理想或疾病名称等使用会使患者感到紧张的表述。不要问患者已经直接或间接回答过的问题，例如患者已经说没有不适症状，那就不要再问手术部位是否有红肿疼痛症状的问题。##任务： 1.自我介绍您是人民医院负责随访的李医生，并说明致电的目的。2.询问被叫方是否是小明家长。 - 如果不是小明家长，请礼貌表达歉意，并使用 call_end 挂断电话。- 如果小明家长没空，请礼貌告诉对方稍后会重新致电，并使用 end_call 挂断电话。3.询问小明出院后水肿情况如何，较出院时是否有变化。- 如果水肿变严重，直接跳转步骤7。4.询问出院后是否给小朋友量过体温，是否出现过发烧情况。- 如果没有量过体温，请礼貌告诉家长出院后三个月内需要每天观察体温。- 如果出现过发烧，请直接跳转步骤7。5.询问出院后是否给小朋友按时服药。- 如果没有按时服药，请友善提醒家长严格按医嘱服用药物，避免影响手术效果。6.询问小朋友在饮食上是否做到低盐低脂，适量吃优质蛋白如鸡蛋、牛奶、瘦肉等。- 如果没有做到，请友善提醒家长低盐低脂和优质蛋白有助小朋友尽快恢复。7.告知家长医生要求6月18日回院复查，但没看到有相关复诊记录。提醒家长尽快前往医院体检复查血化验、尿常规。8.询问家长是否有问题需要咨询，如果没有请礼貌道别并用call_end挂断电话。
+        :rtype: str
+        """
+        return self._SystemPrompt
+
+    @SystemPrompt.setter
+    def SystemPrompt(self, SystemPrompt):
+        self._SystemPrompt = SystemPrompt
+
+    @property
+    def Model(self):
+        """模型名称，如
+
+- OpenAI协议
+"gpt-4o-mini","gpt-4o"，"hunyuan-standard", "hunyuan-turbo"，"deepseek-chat"；
+
+- Azure协议
+"gpt-4o-mini", "gpt-4o"；
+
+- Minmax协议
+"deepseek-chat".
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
 
     @property
     def VoiceType(self):
@@ -3070,15 +3107,30 @@ HoaiMy
     def Temperature(self, Temperature):
         self._Temperature = Temperature
 
+    @property
+    def Variables(self):
+        """通用变量： <p>提示词变量</p> <p>欢迎语变量</p> <p> dify变量</p>  
+
+1. dify-inputs-xxx 为dify的inputs变量
+2.  dify-inputs-user 为dify的user值
+3.  dify-inputs-conversation_id 为dify的conversation_id值
+        :rtype: list of Variable
+        """
+        return self._Variables
+
+    @Variables.setter
+    def Variables(self, Variables):
+        self._Variables = Variables
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
         self._Callee = params.get("Callee")
-        self._SystemPrompt = params.get("SystemPrompt")
         self._LLMType = params.get("LLMType")
-        self._Model = params.get("Model")
         self._APIKey = params.get("APIKey")
         self._APIUrl = params.get("APIUrl")
+        self._SystemPrompt = params.get("SystemPrompt")
+        self._Model = params.get("Model")
         self._VoiceType = params.get("VoiceType")
         self._Callers = params.get("Callers")
         self._WelcomeMessage = params.get("WelcomeMessage")
@@ -3115,6 +3167,12 @@ HoaiMy
                 obj._deserialize(item)
                 self._ExtractConfig.append(obj)
         self._Temperature = params.get("Temperature")
+        if params.get("Variables") is not None:
+            self._Variables = []
+            for item in params.get("Variables"):
+                obj = Variable()
+                obj._deserialize(item)
+                self._Variables.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

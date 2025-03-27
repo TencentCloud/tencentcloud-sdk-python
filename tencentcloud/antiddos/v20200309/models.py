@@ -38,7 +38,6 @@ class AclConfig(AbstractModel):
         :param _Action: 动作，可取值：drop， transmit， forward
         :type Action: str
         :param _Priority: 策略优先级，数字越小，级别越高，该规则越靠前匹配，取值1-1000
-注意：此字段可能返回 null，表示取不到有效值。
         :type Priority: int
         """
         self._ForwardProtocol = None
@@ -118,7 +117,6 @@ class AclConfig(AbstractModel):
     @property
     def Priority(self):
         """策略优先级，数字越小，级别越高，该规则越靠前匹配，取值1-1000
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Priority
@@ -212,16 +210,12 @@ class AnycastOutPackRelation(AbstractModel):
     def __init__(self):
         r"""
         :param _NormalBandwidth: 业务带宽(单位M)
-注意：此字段可能返回 null，表示取不到有效值。
         :type NormalBandwidth: int
         :param _ForwardRulesLimit: 转发规则数
-注意：此字段可能返回 null，表示取不到有效值。
         :type ForwardRulesLimit: int
         :param _AutoRenewFlag: 自动续费标记
-注意：此字段可能返回 null，表示取不到有效值。
         :type AutoRenewFlag: int
         :param _CurDeadline: 到期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CurDeadline: str
         """
         self._NormalBandwidth = None
@@ -232,7 +226,6 @@ class AnycastOutPackRelation(AbstractModel):
     @property
     def NormalBandwidth(self):
         """业务带宽(单位M)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._NormalBandwidth
@@ -244,7 +237,6 @@ class AnycastOutPackRelation(AbstractModel):
     @property
     def ForwardRulesLimit(self):
         """转发规则数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ForwardRulesLimit
@@ -256,7 +248,6 @@ class AnycastOutPackRelation(AbstractModel):
     @property
     def AutoRenewFlag(self):
         """自动续费标记
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -268,7 +259,6 @@ class AnycastOutPackRelation(AbstractModel):
     @property
     def CurDeadline(self):
         """到期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CurDeadline
@@ -564,16 +554,12 @@ class BGPIPInstance(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type StaticPackRelation: :class:`tencentcloud.antiddos.v20200309.models.StaticPackRelation`
         :param _ZoneId: 区分高防IP境外线路
-注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneId: int
         :param _Tgw: 区分集群
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tgw: int
         :param _EipAddressStatus: 高防弹性公网IP状态，包含'CREATING'(创建中),'BINDING'(绑定中),'BIND'(已绑定),'UNBINDING'(解绑中),'UNBIND'(已解绑),'OFFLINING'(释放中),'BIND_ENI'(绑定悬空弹性网卡)。只对高防弹性公网IP实例有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :type EipAddressStatus: str
         :param _EipFlag: 是否高防弹性公网IP实例，是为1，否为0。
-注意：此字段可能返回 null，表示取不到有效值。
         :type EipFlag: int
         :param _EipAddressPackRelation: 资产实例所属的高防弹性公网IP套餐包详情，
 注意：当资产实例不是高防弹性公网IP套餐包的实例时，此字段为null
@@ -584,34 +570,26 @@ class BGPIPInstance(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type EipAddressInfo: :class:`tencentcloud.antiddos.v20200309.models.EipAddressRelation`
         :param _Domain: 建议客户接入的域名，客户可使用域名接入。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Domain: str
         :param _DamDDoSStatus: 是否开启安全加速，是为1，否为0。
         :type DamDDoSStatus: int
         :param _V6Flag: 是否Ipv6版本的IP, 是为1，否为0
-注意：此字段可能返回 null，表示取不到有效值。
         :type V6Flag: int
         :param _BGPIPChannelFlag: 是否渠道版高防IP，是为1，否为0
-注意：此字段可能返回 null，表示取不到有效值。
         :type BGPIPChannelFlag: int
         :param _TagInfoList: 资源关联标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagInfoList: list of TagInfo
         :param _AnycastOutPackRelation: 资产实例所属的全力防护套餐包详情，
 注意：当资产实例不是全力防护套餐包的实例时，此字段为null
 注意：此字段可能返回 null，表示取不到有效值。
         :type AnycastOutPackRelation: :class:`tencentcloud.antiddos.v20200309.models.AnycastOutPackRelation`
         :param _InstanceVersion: 资源实例版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceVersion: int
         :param _ConvoyId: 重保实例
-注意：此字段可能返回 null，表示取不到有效值。
         :type ConvoyId: str
         :param _ElasticBandwidth: 带宽后付费
-注意：此字段可能返回 null，表示取不到有效值。
         :type ElasticBandwidth: int
         :param _EOFlag: 是否为EO代播的ip: 1是，0不是
-注意：此字段可能返回 null，表示取不到有效值。
         :type EOFlag: int
         """
         self._InstanceDetail = None
@@ -764,7 +742,6 @@ class BGPIPInstance(AbstractModel):
     @property
     def ZoneId(self):
         """区分高防IP境外线路
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ZoneId
@@ -776,7 +753,6 @@ class BGPIPInstance(AbstractModel):
     @property
     def Tgw(self):
         """区分集群
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Tgw
@@ -788,7 +764,6 @@ class BGPIPInstance(AbstractModel):
     @property
     def EipAddressStatus(self):
         """高防弹性公网IP状态，包含'CREATING'(创建中),'BINDING'(绑定中),'BIND'(已绑定),'UNBINDING'(解绑中),'UNBIND'(已解绑),'OFFLINING'(释放中),'BIND_ENI'(绑定悬空弹性网卡)。只对高防弹性公网IP实例有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EipAddressStatus
@@ -800,7 +775,6 @@ class BGPIPInstance(AbstractModel):
     @property
     def EipFlag(self):
         """是否高防弹性公网IP实例，是为1，否为0。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._EipFlag
@@ -838,7 +812,6 @@ class BGPIPInstance(AbstractModel):
     @property
     def Domain(self):
         """建议客户接入的域名，客户可使用域名接入。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Domain
@@ -861,7 +834,6 @@ class BGPIPInstance(AbstractModel):
     @property
     def V6Flag(self):
         """是否Ipv6版本的IP, 是为1，否为0
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._V6Flag
@@ -873,7 +845,6 @@ class BGPIPInstance(AbstractModel):
     @property
     def BGPIPChannelFlag(self):
         """是否渠道版高防IP，是为1，否为0
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._BGPIPChannelFlag
@@ -885,7 +856,6 @@ class BGPIPInstance(AbstractModel):
     @property
     def TagInfoList(self):
         """资源关联标签
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TagInfo
         """
         return self._TagInfoList
@@ -910,7 +880,6 @@ class BGPIPInstance(AbstractModel):
     @property
     def InstanceVersion(self):
         """资源实例版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._InstanceVersion
@@ -922,7 +891,6 @@ class BGPIPInstance(AbstractModel):
     @property
     def ConvoyId(self):
         """重保实例
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ConvoyId
@@ -934,7 +902,6 @@ class BGPIPInstance(AbstractModel):
     @property
     def ElasticBandwidth(self):
         """带宽后付费
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ElasticBandwidth
@@ -946,7 +913,6 @@ class BGPIPInstance(AbstractModel):
     @property
     def EOFlag(self):
         """是否为EO代播的ip: 1是，0不是
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._EOFlag
@@ -1287,7 +1253,6 @@ class BGPIPL7RuleEntry(AbstractModel):
         :param _ErrCode: 规则配置失败时的详细错误原因(仅当Status=2时有效)，1001证书不存在，1002证书获取失败，1003证书上传失败，1004证书已过期
         :type ErrCode: int
         :param _Version: 版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Version: int
         """
         self._Protocol = None
@@ -1608,7 +1573,6 @@ class BGPIPL7RuleEntry(AbstractModel):
     @property
     def Version(self):
         """版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Version
@@ -1713,32 +1677,24 @@ class BGPInstance(AbstractModel):
         :param _VitalityVersion: 攻击封堵套餐标记
         :type VitalityVersion: int
         :param _Line: 网络线路
-注意：此字段可能返回 null，表示取不到有效值。
         :type Line: int
         :param _FreeServiceBandwidth: 不计费的业务带宽
-注意：此字段可能返回 null，表示取不到有效值。
         :type FreeServiceBandwidth: int
         :param _ElasticServiceBandwidth: 弹性业务带宽开关
         :type ElasticServiceBandwidth: int
         :param _GiftServiceBandWidth: 赠送的业务带宽
         :type GiftServiceBandWidth: int
         :param _ModifyTime: 修改时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyTime: str
         :param _BasicPlusFlag: 是否是基础防护加强版 0: 不是 1: 是
-注意：此字段可能返回 null，表示取不到有效值。
         :type BasicPlusFlag: int
         :param _PlanCntFlag: 是否标准版2.0 0: 包含标准版2.0 1: 只查询标准版2.0 2: 不查标准版2.0
-注意：此字段可能返回 null，表示取不到有效值。
         :type PlanCntFlag: int
         :param _TransRegionFlag: 是否跨区域产品 0: 不包含跨区域产品 1: 中国大陆跨区域产品 2: 非中国大陆跨区域产品
-注意：此字段可能返回 null，表示取不到有效值。
         :type TransRegionFlag: int
         :param _SuperPackFlag: 是否为超级高防包
-注意：此字段可能返回 null，表示取不到有效值。
         :type SuperPackFlag: int
         :param _ZoneId: 所属ZoneId
-注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneId: int
         """
         self._InstanceDetail = None
@@ -1959,7 +1915,6 @@ class BGPInstance(AbstractModel):
     @property
     def Line(self):
         """网络线路
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Line
@@ -1971,7 +1926,6 @@ class BGPInstance(AbstractModel):
     @property
     def FreeServiceBandwidth(self):
         """不计费的业务带宽
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FreeServiceBandwidth
@@ -2005,7 +1959,6 @@ class BGPInstance(AbstractModel):
     @property
     def ModifyTime(self):
         """修改时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ModifyTime
@@ -2017,7 +1970,6 @@ class BGPInstance(AbstractModel):
     @property
     def BasicPlusFlag(self):
         """是否是基础防护加强版 0: 不是 1: 是
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._BasicPlusFlag
@@ -2029,7 +1981,6 @@ class BGPInstance(AbstractModel):
     @property
     def PlanCntFlag(self):
         """是否标准版2.0 0: 包含标准版2.0 1: 只查询标准版2.0 2: 不查标准版2.0
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PlanCntFlag
@@ -2041,7 +1992,6 @@ class BGPInstance(AbstractModel):
     @property
     def TransRegionFlag(self):
         """是否跨区域产品 0: 不包含跨区域产品 1: 中国大陆跨区域产品 2: 非中国大陆跨区域产品
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TransRegionFlag
@@ -2053,7 +2003,6 @@ class BGPInstance(AbstractModel):
     @property
     def SuperPackFlag(self):
         """是否为超级高防包
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SuperPackFlag
@@ -2065,7 +2014,6 @@ class BGPInstance(AbstractModel):
     @property
     def ZoneId(self):
         """所属ZoneId
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ZoneId
@@ -2151,25 +2099,18 @@ class BGPInstanceSpecification(AbstractModel):
 ]
         :type AutoRenewFlag: int
         :param _UnionPackFlag: 联合产品标记，0代表普通高防包，1代表联合高防包
-注意：此字段可能返回 null，表示取不到有效值。
         :type UnionPackFlag: int
         :param _ServiceBandWidth: 业务带宽
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceBandWidth: int
         :param _BattleEditionFlag: 战斗服版本标记，0表示普通高防包，1表示战斗服高防包
-注意：此字段可能返回 null，表示取不到有效值。
         :type BattleEditionFlag: int
         :param _ChannelEditionFlag: 渠道版标记，0表示普通高防包，1表示渠道版高防包
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChannelEditionFlag: int
         :param _EnterpriseFlag: 高防包企业版标记，0表示普通高防包；1表示企业版高防包
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnterpriseFlag: int
         :param _ElasticLimit: 高防包企业版弹性阈值，0表示未开启；大于0为弹性防护阈值
-注意：此字段可能返回 null，表示取不到有效值。
         :type ElasticLimit: int
         :param _DownGradeProtect: 降配后的防护能力，单位Gbps
-注意：此字段可能返回 null，表示取不到有效值。
         :type DownGradeProtect: int
         """
         self._ProtectBandwidth = None
@@ -2234,7 +2175,6 @@ class BGPInstanceSpecification(AbstractModel):
     @property
     def UnionPackFlag(self):
         """联合产品标记，0代表普通高防包，1代表联合高防包
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._UnionPackFlag
@@ -2246,7 +2186,6 @@ class BGPInstanceSpecification(AbstractModel):
     @property
     def ServiceBandWidth(self):
         """业务带宽
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ServiceBandWidth
@@ -2258,7 +2197,6 @@ class BGPInstanceSpecification(AbstractModel):
     @property
     def BattleEditionFlag(self):
         """战斗服版本标记，0表示普通高防包，1表示战斗服高防包
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._BattleEditionFlag
@@ -2270,7 +2208,6 @@ class BGPInstanceSpecification(AbstractModel):
     @property
     def ChannelEditionFlag(self):
         """渠道版标记，0表示普通高防包，1表示渠道版高防包
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ChannelEditionFlag
@@ -2282,7 +2219,6 @@ class BGPInstanceSpecification(AbstractModel):
     @property
     def EnterpriseFlag(self):
         """高防包企业版标记，0表示普通高防包；1表示企业版高防包
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._EnterpriseFlag
@@ -2294,7 +2230,6 @@ class BGPInstanceSpecification(AbstractModel):
     @property
     def ElasticLimit(self):
         """高防包企业版弹性阈值，0表示未开启；大于0为弹性防护阈值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ElasticLimit
@@ -2306,7 +2241,6 @@ class BGPInstanceSpecification(AbstractModel):
     @property
     def DownGradeProtect(self):
         """降配后的防护能力，单位Gbps
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DownGradeProtect
@@ -2523,7 +2457,6 @@ class BoundIpInfo(AbstractModel):
         :param _IspCode: 运营商，绑定操作为必填项，解绑操作可不填。0：电信；1：联通；2：移动；5：BGP
         :type IspCode: int
         :param _Domain: 域名化资产对应的域名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Domain: str
         """
         self._Ip = None
@@ -2591,7 +2524,6 @@ class BoundIpInfo(AbstractModel):
     @property
     def Domain(self):
         """域名化资产对应的域名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Domain
@@ -8206,10 +8138,8 @@ class DescribeBasicDeviceStatusResponse(AbstractModel):
 3 - 攻击状态
         :type Data: list of KeyValue
         :param _CLBData: 域名化资产的名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type CLBData: list of KeyValue
         :param _CnameWafData: cnamewaf资源状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type CnameWafData: list of KeyValue
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8236,7 +8166,6 @@ class DescribeBasicDeviceStatusResponse(AbstractModel):
     @property
     def CLBData(self):
         """域名化资产的名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KeyValue
         """
         return self._CLBData
@@ -8248,7 +8177,6 @@ class DescribeBasicDeviceStatusResponse(AbstractModel):
     @property
     def CnameWafData(self):
         """cnamewaf资源状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KeyValue
         """
         return self._CnameWafData
@@ -8804,7 +8732,6 @@ class DescribeBizMonitorTrendResponse(AbstractModel):
         :param _MetricName: 统计纬度
         :type MetricName: str
         :param _MaxData: 返回DataList中的最大值
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxData: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8839,7 +8766,6 @@ class DescribeBizMonitorTrendResponse(AbstractModel):
     @property
     def MaxData(self):
         """返回DataList中的最大值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxData
@@ -9059,7 +8985,6 @@ class DescribeBizTrendResponse(AbstractModel):
         :param _MetricName: 统计纬度
         :type MetricName: str
         :param _MaxData: 返回DataList中的最大值
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxData: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9094,7 +9019,6 @@ class DescribeBizTrendResponse(AbstractModel):
     @property
     def MaxData(self):
         """返回DataList中的最大值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxData
@@ -10075,7 +9999,6 @@ class DescribeCCTrendResponse(AbstractModel):
         :param _Data: 值数组
         :type Data: list of int non-negative
         :param _Id: 资源ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
         :param _MetricName: 指标，取值[inqps(总请求峰值，dropqps(攻击请求峰值))，incount(请求次数), dropcount(攻击次数)]
         :type MetricName: str
@@ -10173,7 +10096,6 @@ class DescribeCCTrendResponse(AbstractModel):
     @property
     def Id(self):
         """资源ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Id
@@ -11022,7 +10944,6 @@ class DescribeDDoSTrendResponse(AbstractModel):
         :param _Data: 值数组，攻击流量带宽单位为Mbps，包速率单位为pps
         :type Data: list of int non-negative
         :param _Id: 资源ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
         :param _MetricName: 指标，取值[bps(攻击流量带宽，pps(攻击包速率))]
         :type MetricName: str
@@ -11120,7 +11041,6 @@ class DescribeDDoSTrendResponse(AbstractModel):
     @property
     def Id(self):
         """资源ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Id
@@ -15318,19 +15238,14 @@ class EipAddressRelation(AbstractModel):
     def __init__(self):
         r"""
         :param _EipAddressRegion: 高防弹性公网IP绑定的实例地区，例如hk代表中国香港
-注意：此字段可能返回 null，表示取不到有效值。
         :type EipAddressRegion: str
         :param _EipBoundRscIns: 绑定的资源实例ID。可能是一个CVM。
-注意：此字段可能返回 null，表示取不到有效值。
         :type EipBoundRscIns: str
         :param _EipBoundRscEni: 绑定的弹性网卡ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type EipBoundRscEni: str
         :param _EipBoundRscVip: 绑定的资源内网ip
-注意：此字段可能返回 null，表示取不到有效值。
         :type EipBoundRscVip: str
         :param _ModifyTime: 修改时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyTime: str
         """
         self._EipAddressRegion = None
@@ -15342,7 +15257,6 @@ class EipAddressRelation(AbstractModel):
     @property
     def EipAddressRegion(self):
         """高防弹性公网IP绑定的实例地区，例如hk代表中国香港
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EipAddressRegion
@@ -15354,7 +15268,6 @@ class EipAddressRelation(AbstractModel):
     @property
     def EipBoundRscIns(self):
         """绑定的资源实例ID。可能是一个CVM。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EipBoundRscIns
@@ -15366,7 +15279,6 @@ class EipAddressRelation(AbstractModel):
     @property
     def EipBoundRscEni(self):
         """绑定的弹性网卡ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EipBoundRscEni
@@ -15378,7 +15290,6 @@ class EipAddressRelation(AbstractModel):
     @property
     def EipBoundRscVip(self):
         """绑定的资源内网ip
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EipBoundRscVip
@@ -15390,7 +15301,6 @@ class EipAddressRelation(AbstractModel):
     @property
     def ModifyTime(self):
         """修改时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ModifyTime
@@ -15442,7 +15352,6 @@ other(托管IP)
         :param _InstanceId: IP所属的云产品实例ID，例如是弹性网卡的IP，InstanceId为弹性网卡的ID(eni-*); 如果是托管IP没有对应的资源实例ID,InstanceId为""
         :type InstanceId: str
         :param _Domain: 域名化资产对应的域名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Domain: str
         """
         self._Ip = None
@@ -15508,7 +15417,6 @@ other(托管IP)
     @property
     def Domain(self):
         """域名化资产对应的域名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Domain
@@ -15876,7 +15784,6 @@ class IPLineInfo(AbstractModel):
         :param _ResourceFlag: 资源flag，0：高防包资源，1：高防IP资源，2：非高防资源IP
         :type ResourceFlag: int
         :param _Domain: 域名化资产对应的域名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Domain: str
         """
         self._Type = None
@@ -15938,7 +15845,6 @@ class IPLineInfo(AbstractModel):
     @property
     def Domain(self):
         """域名化资产对应的域名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Domain
@@ -16371,7 +16277,6 @@ class L4RuleSource(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
         :param _Backup: 备份源站，1: 备份源站，0: 普通源站
-注意：此字段可能返回 null，表示取不到有效值。
         :type Backup: int
         """
         self._Source = None
@@ -16416,7 +16321,6 @@ class L4RuleSource(AbstractModel):
     @property
     def Backup(self):
         """备份源站，1: 备份源站，0: 普通源站
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Backup
@@ -16473,7 +16377,6 @@ class L7RuleEntry(AbstractModel):
         :param _CCEnable: HTTPS协议的CC防护状态，取值[0(关闭), 1(开启)]
         :type CCEnable: int
         :param _HttpsToHttpEnable: 是否开启Https协议使用Http回源，取值[0(关闭), 1(开启)]，不填写默认是关闭
-注意：此字段可能返回 null，表示取不到有效值。
         :type HttpsToHttpEnable: int
         :param _CertType: 证书来源，当转发协议为https时必须填，取值[2(腾讯云托管证书)]，当转发协议为http时也可以填0
         :type CertType: int
@@ -16486,7 +16389,6 @@ class L7RuleEntry(AbstractModel):
         :param _CCStatus: cc防护状态，取值[0(关闭), 1(开启)]
         :type CCStatus: int
         :param _VirtualPort: 接入端口值
-注意：此字段可能返回 null，表示取不到有效值。
         :type VirtualPort: int
         :param _SSLId: 当证书来源为腾讯云托管证书时，此字段必须填写托管证书ID
         :type SSLId: str
@@ -16653,7 +16555,6 @@ class L7RuleEntry(AbstractModel):
     @property
     def HttpsToHttpEnable(self):
         """是否开启Https协议使用Http回源，取值[0(关闭), 1(开启)]，不填写默认是关闭
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._HttpsToHttpEnable
@@ -16720,7 +16621,6 @@ class L7RuleEntry(AbstractModel):
     @property
     def VirtualPort(self):
         """接入端口值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._VirtualPort
@@ -19048,14 +18948,12 @@ class NewL7RuleEntry(AbstractModel):
         :param _HttpsToHttpEnable: 是否开启Https协议使用Http回源，取值[0(关闭), 1(开启)]，不填写默认是关闭
         :type HttpsToHttpEnable: int
         :param _VirtualPort: 接入端口值
-注意：此字段可能返回 null，表示取不到有效值。
         :type VirtualPort: int
         :param _RewriteHttps: http强制跳转https，1表示打开，0表示关闭
         :type RewriteHttps: int
         :param _ErrCode: 规则配置失败时的详细错误原因(仅当Status=2时有效)，1001证书不存在，1002证书获取失败，1003证书上传失败，1004证书已过期
         :type ErrCode: int
         :param _Version: 版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Version: int
         """
         self._Protocol = None
@@ -19356,7 +19254,6 @@ class NewL7RuleEntry(AbstractModel):
     @property
     def VirtualPort(self):
         """接入端口值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._VirtualPort
@@ -19390,7 +19287,6 @@ class NewL7RuleEntry(AbstractModel):
     @property
     def Version(self):
         """版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Version
@@ -20641,7 +20537,6 @@ class SchedulingDomainInfo(AbstractModel):
         :param _ModifyTime: 最后修改时间
         :type ModifyTime: str
         :param _UsrDomainName: 域名名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type UsrDomainName: str
         """
         self._Domain = None
@@ -20737,7 +20632,6 @@ class SchedulingDomainInfo(AbstractModel):
     @property
     def UsrDomainName(self):
         """域名名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UsrDomainName
@@ -20923,19 +20817,14 @@ class StaticPackRelation(AbstractModel):
     def __init__(self):
         r"""
         :param _ProtectBandwidth: 保底带宽
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProtectBandwidth: int
         :param _NormalBandwidth: 业务带宽
-注意：此字段可能返回 null，表示取不到有效值。
         :type NormalBandwidth: int
         :param _ForwardRulesLimit: 转发规则
-注意：此字段可能返回 null，表示取不到有效值。
         :type ForwardRulesLimit: int
         :param _AutoRenewFlag: 自动续费标记
-注意：此字段可能返回 null，表示取不到有效值。
         :type AutoRenewFlag: int
         :param _CurDeadline: 到期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CurDeadline: str
         """
         self._ProtectBandwidth = None
@@ -20947,7 +20836,6 @@ class StaticPackRelation(AbstractModel):
     @property
     def ProtectBandwidth(self):
         """保底带宽
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ProtectBandwidth
@@ -20959,7 +20847,6 @@ class StaticPackRelation(AbstractModel):
     @property
     def NormalBandwidth(self):
         """业务带宽
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._NormalBandwidth
@@ -20971,7 +20858,6 @@ class StaticPackRelation(AbstractModel):
     @property
     def ForwardRulesLimit(self):
         """转发规则
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ForwardRulesLimit
@@ -20983,7 +20869,6 @@ class StaticPackRelation(AbstractModel):
     @property
     def AutoRenewFlag(self):
         """自动续费标记
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -20995,7 +20880,6 @@ class StaticPackRelation(AbstractModel):
     @property
     def CurDeadline(self):
         """到期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CurDeadline

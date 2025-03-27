@@ -4061,7 +4061,6 @@ class DescribeResourceAuthorizationResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 符合条件的资源授权记录总数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _AuthorizationInfoSet: 授权信息列表。
         :type AuthorizationInfoSet: list of AuthorizationInfo
@@ -4075,7 +4074,6 @@ class DescribeResourceAuthorizationResponse(AbstractModel):
     @property
     def TotalCount(self):
         """符合条件的资源授权记录总数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -4994,7 +4992,7 @@ class DescribeVideoEncodingPresetsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Platform: 平台名称，指定访问的平台。
+        :param _Platform: 平台名称，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
         :type Platform: str
         :param _Ids: 要查询的配置 ID 列表。填写该参数则按照配置 ID 进行查询。
         :type Ids: list of int non-negative
@@ -5010,7 +5008,7 @@ class DescribeVideoEncodingPresetsRequest(AbstractModel):
 
     @property
     def Platform(self):
-        """平台名称，指定访问的平台。
+        """平台名称，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
         :rtype: str
         """
         return self._Platform
@@ -9497,7 +9495,7 @@ class MaterialTagInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Type: 标签类型，取值为：
-<li>PRESET：预置标签；</li>
+<li>PRESET：预置标签。</li>
         :type Type: str
         :param _Id: 标签 Id 。当标签类型为 PRESET 时，标签 Id 为预置标签 Id 。
         :type Id: str
@@ -9511,7 +9509,7 @@ class MaterialTagInfo(AbstractModel):
     @property
     def Type(self):
         """标签类型，取值为：
-<li>PRESET：预置标签；</li>
+<li>PRESET：预置标签。</li>
         :rtype: str
         """
         return self._Type
@@ -10253,7 +10251,6 @@ class MediaCastSourceInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Id: 输入源 Id，由系统分配。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
         :param _Type: 输入源的媒体类型，取值有：
 <li>CME：多媒体创作引擎的媒体文件；</li>
@@ -10282,7 +10279,6 @@ class MediaCastSourceInfo(AbstractModel):
     @property
     def Id(self):
         """输入源 Id，由系统分配。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Id
@@ -11724,7 +11720,7 @@ class ModifyVideoEncodingPresetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Platform: 平台名称，指定访问的平台。
+        :param _Platform: 平台名称，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
         :type Platform: str
         :param _Id: 配置 ID。
         :type Id: int
@@ -11755,7 +11751,7 @@ class ModifyVideoEncodingPresetRequest(AbstractModel):
 
     @property
     def Platform(self):
-        """平台名称，指定访问的平台。
+        """平台名称，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
         :rtype: str
         """
         return self._Platform
@@ -11894,7 +11890,7 @@ class MoveClassRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Platform: 平台名称，指定访问的平台。
+        :param _Platform: 平台名称，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
         :type Platform: str
         :param _Owner: 归属者。
         :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
@@ -11913,7 +11909,7 @@ class MoveClassRequest(AbstractModel):
 
     @property
     def Platform(self):
-        """平台名称，指定访问的平台。
+        """平台名称，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
         :rtype: str
         """
         return self._Platform
@@ -12184,7 +12180,7 @@ class ParseEventRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Platform: 平台名称，指定访问的平台。
+        :param _Platform: 平台名称，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
         :type Platform: str
         :param _EventContent: 回调事件内容。
         :type EventContent: str
@@ -12194,7 +12190,7 @@ class ParseEventRequest(AbstractModel):
 
     @property
     def Platform(self):
-        """平台名称，指定访问的平台。
+        """平台名称，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
         :rtype: str
         """
         return self._Platform
