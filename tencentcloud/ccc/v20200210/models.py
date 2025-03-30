@@ -360,6 +360,85 @@ class AITransferItem(AbstractModel):
         
 
 
+class AbortAgentCruiseDialingCampaignRequest(AbstractModel):
+    """AbortAgentCruiseDialingCampaign请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :type SdkAppId: int
+        :param _CampaignId: 任务 ID
+        :type CampaignId: int
+        """
+        self._SdkAppId = None
+        self._CampaignId = None
+
+    @property
+    def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def CampaignId(self):
+        """任务 ID
+        :rtype: int
+        """
+        return self._CampaignId
+
+    @CampaignId.setter
+    def CampaignId(self, CampaignId):
+        self._CampaignId = CampaignId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._CampaignId = params.get("CampaignId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AbortAgentCruiseDialingCampaignResponse(AbstractModel):
+    """AbortAgentCruiseDialingCampaign返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class AbortPredictiveDialingCampaignRequest(AbstractModel):
     """AbortPredictiveDialingCampaign请求参数结构体
 
@@ -3320,6 +3399,220 @@ class CreateAdminURLResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateAgentCruiseDialingCampaignRequest(AbstractModel):
+    """CreateAgentCruiseDialingCampaign请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :type SdkAppId: int
+        :param _Name: 任务名称
+        :type Name: str
+        :param _Agent: 座席账号
+        :type Agent: str
+        :param _ConcurrencyNumber: 单轮并发呼叫量 1-20
+        :type ConcurrencyNumber: int
+        :param _StartTime: 任务启动时间，Unix 时间戳，到此时间后会自动启动任务
+        :type StartTime: int
+        :param _EndTime: 任务结束时间，Unix 时间戳，到此时间后会自动终止任务
+        :type EndTime: int
+        :param _Callees: 被叫列表，支持 E.164 或不带国家码形式的号码
+        :type Callees: list of str
+        :param _Callers: 主叫列表，使用管理端展示的号码格式
+        :type Callers: list of str
+        :param _CallOrder: 被叫呼叫顺序 0 随机 1 顺序
+        :type CallOrder: int
+        :param _UUI: 调用方自定义数据，最大长度 1024
+        :type UUI: str
+        """
+        self._SdkAppId = None
+        self._Name = None
+        self._Agent = None
+        self._ConcurrencyNumber = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Callees = None
+        self._Callers = None
+        self._CallOrder = None
+        self._UUI = None
+
+    @property
+    def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def Name(self):
+        """任务名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Agent(self):
+        """座席账号
+        :rtype: str
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def ConcurrencyNumber(self):
+        """单轮并发呼叫量 1-20
+        :rtype: int
+        """
+        return self._ConcurrencyNumber
+
+    @ConcurrencyNumber.setter
+    def ConcurrencyNumber(self, ConcurrencyNumber):
+        self._ConcurrencyNumber = ConcurrencyNumber
+
+    @property
+    def StartTime(self):
+        """任务启动时间，Unix 时间戳，到此时间后会自动启动任务
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """任务结束时间，Unix 时间戳，到此时间后会自动终止任务
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Callees(self):
+        """被叫列表，支持 E.164 或不带国家码形式的号码
+        :rtype: list of str
+        """
+        return self._Callees
+
+    @Callees.setter
+    def Callees(self, Callees):
+        self._Callees = Callees
+
+    @property
+    def Callers(self):
+        """主叫列表，使用管理端展示的号码格式
+        :rtype: list of str
+        """
+        return self._Callers
+
+    @Callers.setter
+    def Callers(self, Callers):
+        self._Callers = Callers
+
+    @property
+    def CallOrder(self):
+        """被叫呼叫顺序 0 随机 1 顺序
+        :rtype: int
+        """
+        return self._CallOrder
+
+    @CallOrder.setter
+    def CallOrder(self, CallOrder):
+        self._CallOrder = CallOrder
+
+    @property
+    def UUI(self):
+        """调用方自定义数据，最大长度 1024
+        :rtype: str
+        """
+        return self._UUI
+
+    @UUI.setter
+    def UUI(self, UUI):
+        self._UUI = UUI
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._Name = params.get("Name")
+        self._Agent = params.get("Agent")
+        self._ConcurrencyNumber = params.get("ConcurrencyNumber")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Callees = params.get("Callees")
+        self._Callers = params.get("Callers")
+        self._CallOrder = params.get("CallOrder")
+        self._UUI = params.get("UUI")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAgentCruiseDialingCampaignResponse(AbstractModel):
+    """CreateAgentCruiseDialingCampaign返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CampaignId: 生成的任务 ID
+        :type CampaignId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CampaignId = None
+        self._RequestId = None
+
+    @property
+    def CampaignId(self):
+        """生成的任务 ID
+        :rtype: int
+        """
+        return self._CampaignId
+
+    @CampaignId.setter
+    def CampaignId(self, CampaignId):
+        self._CampaignId = CampaignId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._CampaignId = params.get("CampaignId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateAutoCalloutTaskRequest(AbstractModel):
     """CreateAutoCalloutTask请求参数结构体
 
@@ -5828,6 +6121,235 @@ class DescribeActiveCarrierPrivilegeNumberResponse(AbstractModel):
                 obj._deserialize(item)
                 self._ActiveCarrierPrivilegeNumbers.append(obj)
         self._PendingApplicantIds = params.get("PendingApplicantIds")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAgentCruiseDialingCampaignRequest(AbstractModel):
+    """DescribeAgentCruiseDialingCampaign请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :type SdkAppId: int
+        :param _CampaignId: 任务 ID
+        :type CampaignId: int
+        """
+        self._SdkAppId = None
+        self._CampaignId = None
+
+    @property
+    def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def CampaignId(self):
+        """任务 ID
+        :rtype: int
+        """
+        return self._CampaignId
+
+    @CampaignId.setter
+    def CampaignId(self, CampaignId):
+        self._CampaignId = CampaignId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._CampaignId = params.get("CampaignId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAgentCruiseDialingCampaignResponse(AbstractModel):
+    """DescribeAgentCruiseDialingCampaign返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 任务名称
+        :type Name: str
+        :param _Agent: 座席账号
+        :type Agent: str
+        :param _ConcurrencyNumber: 单轮并发呼叫量 1-20
+        :type ConcurrencyNumber: int
+        :param _StartTime: 任务启动时间，Unix 时间戳，到此时间后会自动启动任务
+        :type StartTime: int
+        :param _EndTime: 任务结束时间，Unix 时间戳，到此时间后会自动终止任务
+        :type EndTime: int
+        :param _CallOrder: 被叫呼叫顺序 0 随机 1 顺序
+        :type CallOrder: int
+        :param _UUI: 调用方自定义数据，最大长度 1024
+        :type UUI: str
+        :param _State: 任务状态 0 未启动 1 运行中 2 已完成 3 已终止
+        :type State: int
+        :param _TotalCalleeCount: 被叫总数
+        :type TotalCalleeCount: int
+        :param _CalledCalleeCount: 已呼被叫数
+        :type CalledCalleeCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Name = None
+        self._Agent = None
+        self._ConcurrencyNumber = None
+        self._StartTime = None
+        self._EndTime = None
+        self._CallOrder = None
+        self._UUI = None
+        self._State = None
+        self._TotalCalleeCount = None
+        self._CalledCalleeCount = None
+        self._RequestId = None
+
+    @property
+    def Name(self):
+        """任务名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Agent(self):
+        """座席账号
+        :rtype: str
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def ConcurrencyNumber(self):
+        """单轮并发呼叫量 1-20
+        :rtype: int
+        """
+        return self._ConcurrencyNumber
+
+    @ConcurrencyNumber.setter
+    def ConcurrencyNumber(self, ConcurrencyNumber):
+        self._ConcurrencyNumber = ConcurrencyNumber
+
+    @property
+    def StartTime(self):
+        """任务启动时间，Unix 时间戳，到此时间后会自动启动任务
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """任务结束时间，Unix 时间戳，到此时间后会自动终止任务
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def CallOrder(self):
+        """被叫呼叫顺序 0 随机 1 顺序
+        :rtype: int
+        """
+        return self._CallOrder
+
+    @CallOrder.setter
+    def CallOrder(self, CallOrder):
+        self._CallOrder = CallOrder
+
+    @property
+    def UUI(self):
+        """调用方自定义数据，最大长度 1024
+        :rtype: str
+        """
+        return self._UUI
+
+    @UUI.setter
+    def UUI(self, UUI):
+        self._UUI = UUI
+
+    @property
+    def State(self):
+        """任务状态 0 未启动 1 运行中 2 已完成 3 已终止
+        :rtype: int
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def TotalCalleeCount(self):
+        """被叫总数
+        :rtype: int
+        """
+        return self._TotalCalleeCount
+
+    @TotalCalleeCount.setter
+    def TotalCalleeCount(self, TotalCalleeCount):
+        self._TotalCalleeCount = TotalCalleeCount
+
+    @property
+    def CalledCalleeCount(self):
+        """已呼被叫数
+        :rtype: int
+        """
+        return self._CalledCalleeCount
+
+    @CalledCalleeCount.setter
+    def CalledCalleeCount(self, CalledCalleeCount):
+        self._CalledCalleeCount = CalledCalleeCount
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Agent = params.get("Agent")
+        self._ConcurrencyNumber = params.get("ConcurrencyNumber")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._CallOrder = params.get("CallOrder")
+        self._UUI = params.get("UUI")
+        self._State = params.get("State")
+        self._TotalCalleeCount = params.get("TotalCalleeCount")
+        self._CalledCalleeCount = params.get("CalledCalleeCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -15220,6 +15742,100 @@ class TimeRange(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class TransferToManualRequest(AbstractModel):
+    """TransferToManual请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :type SdkAppId: int
+        :param _SessionId: 会话ID
+        :type SessionId: str
+        :param _SkillGroupId: 技能组Id
+        :type SkillGroupId: int
+        """
+        self._SdkAppId = None
+        self._SessionId = None
+        self._SkillGroupId = None
+
+    @property
+    def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def SessionId(self):
+        """会话ID
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def SkillGroupId(self):
+        """技能组Id
+        :rtype: int
+        """
+        return self._SkillGroupId
+
+    @SkillGroupId.setter
+    def SkillGroupId(self, SkillGroupId):
+        self._SkillGroupId = SkillGroupId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._SessionId = params.get("SessionId")
+        self._SkillGroupId = params.get("SkillGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TransferToManualResponse(AbstractModel):
+    """TransferToManual返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class UnbindNumberCallOutSkillGroupRequest(AbstractModel):

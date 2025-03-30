@@ -26,6 +26,29 @@ class CccClient(AbstractClient):
     _service = 'ccc'
 
 
+    def AbortAgentCruiseDialingCampaign(self, request):
+        """停止座席巡航式外呼任务
+
+        :param request: Request instance for AbortAgentCruiseDialingCampaign.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.AbortAgentCruiseDialingCampaignRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.AbortAgentCruiseDialingCampaignResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AbortAgentCruiseDialingCampaign", params, headers=headers)
+            response = json.loads(body)
+            model = models.AbortAgentCruiseDialingCampaignResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def AbortPredictiveDialingCampaign(self, request):
         """停止预测式外呼任务
 
@@ -159,6 +182,29 @@ class CccClient(AbstractClient):
             body = self.call("CreateAdminURL", params, headers=headers)
             response = json.loads(body)
             model = models.CreateAdminURLResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateAgentCruiseDialingCampaign(self, request):
+        """座席巡航式外呼。
+
+        :param request: Request instance for CreateAgentCruiseDialingCampaign.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.CreateAgentCruiseDialingCampaignRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.CreateAgentCruiseDialingCampaignResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAgentCruiseDialingCampaign", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAgentCruiseDialingCampaignResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -554,6 +600,29 @@ class CccClient(AbstractClient):
             body = self.call("DescribeActiveCarrierPrivilegeNumber", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeActiveCarrierPrivilegeNumberResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAgentCruiseDialingCampaign(self, request):
+        """查询 座席巡航式外呼任务
+
+        :param request: Request instance for DescribeAgentCruiseDialingCampaign.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeAgentCruiseDialingCampaignRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.DescribeAgentCruiseDialingCampaignResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAgentCruiseDialingCampaign", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAgentCruiseDialingCampaignResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1384,6 +1453,29 @@ class CccClient(AbstractClient):
             body = self.call("StopAutoCalloutTask", params, headers=headers)
             response = json.loads(body)
             model = models.StopAutoCalloutTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def TransferToManual(self, request):
+        """特定场景下讲会话转接到人工坐席
+
+        :param request: Request instance for TransferToManual.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.TransferToManualRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.TransferToManualResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TransferToManual", params, headers=headers)
+            response = json.loads(body)
+            model = models.TransferToManualResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

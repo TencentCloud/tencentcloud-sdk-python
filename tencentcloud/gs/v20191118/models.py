@@ -1615,6 +1615,90 @@ class CreateAndroidInstancesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateAndroidInstancesScreenshotRequest(AbstractModel):
+    """CreateAndroidInstancesScreenshot请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AndroidInstanceIds: 实例 ID 列表
+        :type AndroidInstanceIds: list of str
+        """
+        self._AndroidInstanceIds = None
+
+    @property
+    def AndroidInstanceIds(self):
+        """实例 ID 列表
+        :rtype: list of str
+        """
+        return self._AndroidInstanceIds
+
+    @AndroidInstanceIds.setter
+    def AndroidInstanceIds(self, AndroidInstanceIds):
+        self._AndroidInstanceIds = AndroidInstanceIds
+
+
+    def _deserialize(self, params):
+        self._AndroidInstanceIds = params.get("AndroidInstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAndroidInstancesScreenshotResponse(AbstractModel):
+    """CreateAndroidInstancesScreenshot返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskSet: 任务列表
+        :type TaskSet: list of AndroidInstanceTask
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskSet = None
+        self._RequestId = None
+
+    @property
+    def TaskSet(self):
+        """任务列表
+        :rtype: list of AndroidInstanceTask
+        """
+        return self._TaskSet
+
+    @TaskSet.setter
+    def TaskSet(self, TaskSet):
+        self._TaskSet = TaskSet
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TaskSet") is not None:
+            self._TaskSet = []
+            for item in params.get("TaskSet"):
+                obj = AndroidInstanceTask()
+                obj._deserialize(item)
+                self._TaskSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class CreateSessionRequest(AbstractModel):
     """CreateSession请求参数结构体
 

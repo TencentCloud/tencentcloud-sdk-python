@@ -17286,6 +17286,7 @@ class SyncJobInfo(AbstractModel):
         :param _AllActions: 支持的所有操作
         :type AllActions: list of str
         :param _Actions: 当前状态能进行的操作
+注意：此字段可能返回 null，表示取不到有效值。
         :type Actions: list of str
         :param _Options: 同步选项
         :type Options: :class:`tencentcloud.dts.v20211206.models.Options`
@@ -17452,6 +17453,7 @@ class SyncJobInfo(AbstractModel):
     @property
     def Actions(self):
         """当前状态能进行的操作
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Actions

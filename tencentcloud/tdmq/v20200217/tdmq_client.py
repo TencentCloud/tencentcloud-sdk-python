@@ -2191,7 +2191,9 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQSmoothMigrationTaskList(self, request):
-        """用于查询RocketMQ平滑迁移任务列表
+        """平滑迁移相关接口已迁移至trocket产品下，该接口已废弃
+
+        用于查询RocketMQ平滑迁移任务列表
 
         :param request: Request instance for DescribeRocketMQSmoothMigrationTaskList.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQSmoothMigrationTaskListRequest`
@@ -2214,7 +2216,9 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQSourceClusterGroupList(self, request):
-        """平滑迁移过程获取源集群group列表接口
+        """平滑迁移相关接口已迁移至trocket产品下，该接口已废弃
+
+        平滑迁移过程获取源集群group列表接口
 
         :param request: Request instance for DescribeRocketMQSourceClusterGroupList.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQSourceClusterGroupListRequest`
@@ -2237,7 +2241,9 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQSourceClusterTopicList(self, request):
-        """平滑迁移过程获取源集群topic列表接口
+        """平滑迁移相关接口已迁移至trocket产品下，该接口已废弃
+
+        平滑迁移过程获取源集群topic列表接口
 
         :param request: Request instance for DescribeRocketMQSourceClusterTopicList.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQSourceClusterTopicListRequest`

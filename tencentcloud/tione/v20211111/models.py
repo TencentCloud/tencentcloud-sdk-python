@@ -2798,6 +2798,444 @@ class CreateTrainingModelResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateTrainingTaskRequest(AbstractModel):
+    """CreateTrainingTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 训练任务名称，不超过60个字符，仅支持中英文、数字、下划线"_"、短横"-"，只能以中英文、数字开头
+        :type Name: str
+        :param _ChargeType: 计费模式，eg：PREPAID 包年包月（资源组）;
+POSTPAID_BY_HOUR 按量计费
+        :type ChargeType: str
+        :param _ResourceConfigInfos: 资源配置，需填写对应算力规格ID和节点数量，算力规格ID查询接口为DescribeBillingSpecsPrice，eg：[{"Role":"WORKER", "InstanceType": "TI.S.MEDIUM.POST", "InstanceNum": 1}]
+        :type ResourceConfigInfos: list of ResourceConfigInfo
+        :param _FrameworkName: 训练框架名称，通过DescribeTrainingFrameworks接口查询，eg：SPARK、PYSPARK、TENSORFLOW、PYTORCH
+        :type FrameworkName: str
+        :param _FrameworkVersion: 训练框架版本，通过DescribeTrainingFrameworks接口查询，eg：1.15、1.9
+        :type FrameworkVersion: str
+        :param _FrameworkEnvironment: 训练框架环境，通过DescribeTrainingFrameworks接口查询，eg：tf1.15-py3.7-cpu、torch1.9-py3.8-cuda11.1-gpu
+        :type FrameworkEnvironment: str
+        :param _ResourceGroupId: 预付费专用资源组ID，通过DescribeBillingResourceGroups接口查询
+        :type ResourceGroupId: str
+        :param _Tags: 标签配置
+        :type Tags: list of Tag
+        :param _ImageInfo: 自定义镜像信息
+        :type ImageInfo: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
+        :param _CodePackagePath: COS代码包路径
+        :type CodePackagePath: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
+        :param _StartCmdInfo: 任务的启动命令，按任务训练模式输入，如遇特殊字符导致配置失败，可使用EncodedStartCmdInfo参数
+        :type StartCmdInfo: :class:`tencentcloud.tione.v20211111.models.StartCmdInfo`
+        :param _TrainingMode: 训练模式，通过DescribeTrainingFrameworks接口查询，eg：PS_WORKER、DDP、MPI、HOROVOD
+        :type TrainingMode: str
+        :param _DataConfigs: 数据配置，依赖DataSource字段，数量不超过10个
+        :type DataConfigs: list of DataConfig
+        :param _VpcId: VPC Id
+        :type VpcId: str
+        :param _SubnetId: 子网Id
+        :type SubnetId: str
+        :param _Output: COS训练输出路径
+        :type Output: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
+        :param _LogConfig: CLS日志配置
+        :type LogConfig: :class:`tencentcloud.tione.v20211111.models.LogConfig`
+        :param _TuningParameters: 调优参数，不超过2048个字符
+        :type TuningParameters: str
+        :param _LogEnable: 是否上报日志
+        :type LogEnable: bool
+        :param _Remark: 备注，不超过1024个字符
+        :type Remark: str
+        :param _DataSource: 数据来源，eg：DATASET、COS、CFS、CFSTurbo、HDFS、GooseFSx
+        :type DataSource: str
+        :param _CallbackUrl: 回调地址，用于创建/启动/停止训练任务的异步回调。回调格式&内容详见：[[TI-ONE接口回调说明]](https://cloud.tencent.com/document/product/851/84292)
+        :type CallbackUrl: str
+        :param _EncodedStartCmdInfo: 编码后的任务启动命令，与StartCmdInfo同时配置时，仅当前参数生效
+        :type EncodedStartCmdInfo: :class:`tencentcloud.tione.v20211111.models.EncodedStartCmdInfo`
+        """
+        self._Name = None
+        self._ChargeType = None
+        self._ResourceConfigInfos = None
+        self._FrameworkName = None
+        self._FrameworkVersion = None
+        self._FrameworkEnvironment = None
+        self._ResourceGroupId = None
+        self._Tags = None
+        self._ImageInfo = None
+        self._CodePackagePath = None
+        self._StartCmdInfo = None
+        self._TrainingMode = None
+        self._DataConfigs = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._Output = None
+        self._LogConfig = None
+        self._TuningParameters = None
+        self._LogEnable = None
+        self._Remark = None
+        self._DataSource = None
+        self._CallbackUrl = None
+        self._EncodedStartCmdInfo = None
+
+    @property
+    def Name(self):
+        """训练任务名称，不超过60个字符，仅支持中英文、数字、下划线"_"、短横"-"，只能以中英文、数字开头
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ChargeType(self):
+        """计费模式，eg：PREPAID 包年包月（资源组）;
+POSTPAID_BY_HOUR 按量计费
+        :rtype: str
+        """
+        return self._ChargeType
+
+    @ChargeType.setter
+    def ChargeType(self, ChargeType):
+        self._ChargeType = ChargeType
+
+    @property
+    def ResourceConfigInfos(self):
+        """资源配置，需填写对应算力规格ID和节点数量，算力规格ID查询接口为DescribeBillingSpecsPrice，eg：[{"Role":"WORKER", "InstanceType": "TI.S.MEDIUM.POST", "InstanceNum": 1}]
+        :rtype: list of ResourceConfigInfo
+        """
+        return self._ResourceConfigInfos
+
+    @ResourceConfigInfos.setter
+    def ResourceConfigInfos(self, ResourceConfigInfos):
+        self._ResourceConfigInfos = ResourceConfigInfos
+
+    @property
+    def FrameworkName(self):
+        """训练框架名称，通过DescribeTrainingFrameworks接口查询，eg：SPARK、PYSPARK、TENSORFLOW、PYTORCH
+        :rtype: str
+        """
+        return self._FrameworkName
+
+    @FrameworkName.setter
+    def FrameworkName(self, FrameworkName):
+        self._FrameworkName = FrameworkName
+
+    @property
+    def FrameworkVersion(self):
+        """训练框架版本，通过DescribeTrainingFrameworks接口查询，eg：1.15、1.9
+        :rtype: str
+        """
+        return self._FrameworkVersion
+
+    @FrameworkVersion.setter
+    def FrameworkVersion(self, FrameworkVersion):
+        self._FrameworkVersion = FrameworkVersion
+
+    @property
+    def FrameworkEnvironment(self):
+        """训练框架环境，通过DescribeTrainingFrameworks接口查询，eg：tf1.15-py3.7-cpu、torch1.9-py3.8-cuda11.1-gpu
+        :rtype: str
+        """
+        return self._FrameworkEnvironment
+
+    @FrameworkEnvironment.setter
+    def FrameworkEnvironment(self, FrameworkEnvironment):
+        self._FrameworkEnvironment = FrameworkEnvironment
+
+    @property
+    def ResourceGroupId(self):
+        """预付费专用资源组ID，通过DescribeBillingResourceGroups接口查询
+        :rtype: str
+        """
+        return self._ResourceGroupId
+
+    @ResourceGroupId.setter
+    def ResourceGroupId(self, ResourceGroupId):
+        self._ResourceGroupId = ResourceGroupId
+
+    @property
+    def Tags(self):
+        """标签配置
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def ImageInfo(self):
+        """自定义镜像信息
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
+        """
+        return self._ImageInfo
+
+    @ImageInfo.setter
+    def ImageInfo(self, ImageInfo):
+        self._ImageInfo = ImageInfo
+
+    @property
+    def CodePackagePath(self):
+        """COS代码包路径
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
+        """
+        return self._CodePackagePath
+
+    @CodePackagePath.setter
+    def CodePackagePath(self, CodePackagePath):
+        self._CodePackagePath = CodePackagePath
+
+    @property
+    def StartCmdInfo(self):
+        """任务的启动命令，按任务训练模式输入，如遇特殊字符导致配置失败，可使用EncodedStartCmdInfo参数
+        :rtype: :class:`tencentcloud.tione.v20211111.models.StartCmdInfo`
+        """
+        return self._StartCmdInfo
+
+    @StartCmdInfo.setter
+    def StartCmdInfo(self, StartCmdInfo):
+        self._StartCmdInfo = StartCmdInfo
+
+    @property
+    def TrainingMode(self):
+        """训练模式，通过DescribeTrainingFrameworks接口查询，eg：PS_WORKER、DDP、MPI、HOROVOD
+        :rtype: str
+        """
+        return self._TrainingMode
+
+    @TrainingMode.setter
+    def TrainingMode(self, TrainingMode):
+        self._TrainingMode = TrainingMode
+
+    @property
+    def DataConfigs(self):
+        """数据配置，依赖DataSource字段，数量不超过10个
+        :rtype: list of DataConfig
+        """
+        return self._DataConfigs
+
+    @DataConfigs.setter
+    def DataConfigs(self, DataConfigs):
+        self._DataConfigs = DataConfigs
+
+    @property
+    def VpcId(self):
+        """VPC Id
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        """子网Id
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def Output(self):
+        """COS训练输出路径
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def LogConfig(self):
+        """CLS日志配置
+        :rtype: :class:`tencentcloud.tione.v20211111.models.LogConfig`
+        """
+        return self._LogConfig
+
+    @LogConfig.setter
+    def LogConfig(self, LogConfig):
+        self._LogConfig = LogConfig
+
+    @property
+    def TuningParameters(self):
+        """调优参数，不超过2048个字符
+        :rtype: str
+        """
+        return self._TuningParameters
+
+    @TuningParameters.setter
+    def TuningParameters(self, TuningParameters):
+        self._TuningParameters = TuningParameters
+
+    @property
+    def LogEnable(self):
+        """是否上报日志
+        :rtype: bool
+        """
+        return self._LogEnable
+
+    @LogEnable.setter
+    def LogEnable(self, LogEnable):
+        self._LogEnable = LogEnable
+
+    @property
+    def Remark(self):
+        """备注，不超过1024个字符
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def DataSource(self):
+        """数据来源，eg：DATASET、COS、CFS、CFSTurbo、HDFS、GooseFSx
+        :rtype: str
+        """
+        return self._DataSource
+
+    @DataSource.setter
+    def DataSource(self, DataSource):
+        self._DataSource = DataSource
+
+    @property
+    def CallbackUrl(self):
+        """回调地址，用于创建/启动/停止训练任务的异步回调。回调格式&内容详见：[[TI-ONE接口回调说明]](https://cloud.tencent.com/document/product/851/84292)
+        :rtype: str
+        """
+        return self._CallbackUrl
+
+    @CallbackUrl.setter
+    def CallbackUrl(self, CallbackUrl):
+        self._CallbackUrl = CallbackUrl
+
+    @property
+    def EncodedStartCmdInfo(self):
+        """编码后的任务启动命令，与StartCmdInfo同时配置时，仅当前参数生效
+        :rtype: :class:`tencentcloud.tione.v20211111.models.EncodedStartCmdInfo`
+        """
+        return self._EncodedStartCmdInfo
+
+    @EncodedStartCmdInfo.setter
+    def EncodedStartCmdInfo(self, EncodedStartCmdInfo):
+        self._EncodedStartCmdInfo = EncodedStartCmdInfo
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._ChargeType = params.get("ChargeType")
+        if params.get("ResourceConfigInfos") is not None:
+            self._ResourceConfigInfos = []
+            for item in params.get("ResourceConfigInfos"):
+                obj = ResourceConfigInfo()
+                obj._deserialize(item)
+                self._ResourceConfigInfos.append(obj)
+        self._FrameworkName = params.get("FrameworkName")
+        self._FrameworkVersion = params.get("FrameworkVersion")
+        self._FrameworkEnvironment = params.get("FrameworkEnvironment")
+        self._ResourceGroupId = params.get("ResourceGroupId")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        if params.get("ImageInfo") is not None:
+            self._ImageInfo = ImageInfo()
+            self._ImageInfo._deserialize(params.get("ImageInfo"))
+        if params.get("CodePackagePath") is not None:
+            self._CodePackagePath = CosPathInfo()
+            self._CodePackagePath._deserialize(params.get("CodePackagePath"))
+        if params.get("StartCmdInfo") is not None:
+            self._StartCmdInfo = StartCmdInfo()
+            self._StartCmdInfo._deserialize(params.get("StartCmdInfo"))
+        self._TrainingMode = params.get("TrainingMode")
+        if params.get("DataConfigs") is not None:
+            self._DataConfigs = []
+            for item in params.get("DataConfigs"):
+                obj = DataConfig()
+                obj._deserialize(item)
+                self._DataConfigs.append(obj)
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        if params.get("Output") is not None:
+            self._Output = CosPathInfo()
+            self._Output._deserialize(params.get("Output"))
+        if params.get("LogConfig") is not None:
+            self._LogConfig = LogConfig()
+            self._LogConfig._deserialize(params.get("LogConfig"))
+        self._TuningParameters = params.get("TuningParameters")
+        self._LogEnable = params.get("LogEnable")
+        self._Remark = params.get("Remark")
+        self._DataSource = params.get("DataSource")
+        self._CallbackUrl = params.get("CallbackUrl")
+        if params.get("EncodedStartCmdInfo") is not None:
+            self._EncodedStartCmdInfo = EncodedStartCmdInfo()
+            self._EncodedStartCmdInfo._deserialize(params.get("EncodedStartCmdInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateTrainingTaskResponse(AbstractModel):
+    """CreateTrainingTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 训练任务ID
+        :type Id: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        """训练任务ID
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._RequestId = params.get("RequestId")
+
+
 class CronScaleJob(AbstractModel):
     """定时扩缩任务
 
@@ -5034,6 +5472,70 @@ class DeleteTrainingModelVersionRequest(AbstractModel):
 
 class DeleteTrainingModelVersionResponse(AbstractModel):
     """DeleteTrainingModelVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteTrainingTaskRequest(AbstractModel):
+    """DeleteTrainingTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 训练任务ID
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        """训练任务ID
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteTrainingTaskResponse(AbstractModel):
+    """DeleteTrainingTask返回参数结构体
 
     """
 
@@ -8112,6 +8614,42 @@ class DescribeTrainingTasksResponse(AbstractModel):
                 self._TrainingTaskSet.append(obj)
         self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
+
+
+class EncodedStartCmdInfo(AbstractModel):
+    """编码后的启动命令信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartCmdInfo: 任务的启动命令，以base64格式输入，注意转换时需要完整输入{"StartCmd":"","PsStartCmd":"","WorkerStartCmd":""}
+        :type StartCmdInfo: str
+        """
+        self._StartCmdInfo = None
+
+    @property
+    def StartCmdInfo(self):
+        """任务的启动命令，以base64格式输入，注意转换时需要完整输入{"StartCmd":"","PsStartCmd":"","WorkerStartCmd":""}
+        :rtype: str
+        """
+        return self._StartCmdInfo
+
+    @StartCmdInfo.setter
+    def StartCmdInfo(self, StartCmdInfo):
+        self._StartCmdInfo = StartCmdInfo
+
+
+    def _deserialize(self, params):
+        self._StartCmdInfo = params.get("StartCmdInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class EnvVar(AbstractModel):
@@ -17550,6 +18088,70 @@ class StartNotebookResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class StartTrainingTaskRequest(AbstractModel):
+    """StartTrainingTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 训练任务ID
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        """训练任务ID
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartTrainingTaskResponse(AbstractModel):
+    """StartTrainingTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class StatefulSetCondition(AbstractModel):
     """实例状况
 
@@ -17809,6 +18411,70 @@ class StopNotebookRequest(AbstractModel):
 
 class StopNotebookResponse(AbstractModel):
     """StopNotebook返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class StopTrainingTaskRequest(AbstractModel):
+    """StopTrainingTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 训练任务ID
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        """训练任务ID
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopTrainingTaskResponse(AbstractModel):
+    """StopTrainingTask返回参数结构体
 
     """
 

@@ -164,6 +164,29 @@ class TioneClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateTrainingTask(self, request):
+        """创建模型训练任务
+
+        :param request: Request instance for CreateTrainingTask.
+        :type request: :class:`tencentcloud.tione.v20211111.models.CreateTrainingTaskRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CreateTrainingTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateTrainingTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateTrainingTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteDataset(self, request):
         """删除数据集
 
@@ -293,6 +316,29 @@ class TioneClient(AbstractClient):
             body = self.call("DeleteTrainingModelVersion", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteTrainingModelVersionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteTrainingTask(self, request):
+        """删除训练任务
+
+        :param request: Request instance for DeleteTrainingTask.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DeleteTrainingTaskRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DeleteTrainingTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteTrainingTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteTrainingTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -879,6 +925,29 @@ class TioneClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def StartTrainingTask(self, request):
+        """启动模型训练任务
+
+        :param request: Request instance for StartTrainingTask.
+        :type request: :class:`tencentcloud.tione.v20211111.models.StartTrainingTaskRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.StartTrainingTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartTrainingTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartTrainingTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def StopModelAccelerateTask(self, request):
         """停止模型加速任务
 
@@ -916,6 +985,29 @@ class TioneClient(AbstractClient):
             body = self.call("StopNotebook", params, headers=headers)
             response = json.loads(body)
             model = models.StopNotebookResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StopTrainingTask(self, request):
+        """停止模型训练任务
+
+        :param request: Request instance for StopTrainingTask.
+        :type request: :class:`tencentcloud.tione.v20211111.models.StopTrainingTaskRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.StopTrainingTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopTrainingTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopTrainingTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

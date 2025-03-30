@@ -328,6 +328,29 @@ class IssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ControlDeviceSnapshot(self, request):
+        """控制设备抓拍--单次，当前仅支持国标设备
+
+        :param request: Request instance for ControlDeviceSnapshot.
+        :type request: :class:`tencentcloud.iss.v20230517.models.ControlDeviceSnapshotRequest`
+        :rtype: :class:`tencentcloud.iss.v20230517.models.ControlDeviceSnapshotResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ControlDeviceSnapshot", params, headers=headers)
+            response = json.loads(body)
+            model = models.ControlDeviceSnapshotResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ControlDeviceStream(self, request):
         """用于获取设备的实时开流地址。
 
@@ -1240,6 +1263,29 @@ class IssClient(AbstractClient):
             body = self.call("ListAITasks", params, headers=headers)
             response = json.loads(body)
             model = models.ListAITasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListDeviceSnapshots(self, request):
+        """获取设备抓拍结果列表
+
+        :param request: Request instance for ListDeviceSnapshots.
+        :type request: :class:`tencentcloud.iss.v20230517.models.ListDeviceSnapshotsRequest`
+        :rtype: :class:`tencentcloud.iss.v20230517.models.ListDeviceSnapshotsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListDeviceSnapshots", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListDeviceSnapshotsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

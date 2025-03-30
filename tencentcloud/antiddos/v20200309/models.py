@@ -1246,7 +1246,6 @@ class BGPIPL7RuleEntry(AbstractModel):
         :param _HttpsToHttpEnable: 是否开启Https协议使用Http回源，取值[0(关闭), 1(开启)]，不填写默认是关闭
         :type HttpsToHttpEnable: int
         :param _VirtualPort: 接入端口值
-注意：此字段可能返回 null，表示取不到有效值。
         :type VirtualPort: int
         :param _RewriteHttps: http强制跳转https，1表示打开，0表示关闭
         :type RewriteHttps: int
@@ -1539,7 +1538,6 @@ class BGPIPL7RuleEntry(AbstractModel):
     @property
     def VirtualPort(self):
         """接入端口值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._VirtualPort

@@ -6359,8 +6359,7 @@ class DescribeDomainLogListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LogList: 域名信息
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _LogList: 域名日志信息
         :type LogList: list of str
         :param _PageSize: 分页大小
         :type PageSize: int
@@ -6376,8 +6375,7 @@ class DescribeDomainLogListResponse(AbstractModel):
 
     @property
     def LogList(self):
-        """域名信息
-注意：此字段可能返回 null，表示取不到有效值。
+        """域名日志信息
         :rtype: list of str
         """
         return self._LogList
@@ -8702,7 +8700,6 @@ class DescribeRecordSnapshotRollbackResultResponse(AbstractModel):
         :param _Status: 回滚状态
         :type Status: str
         :param _FailedRecordList: 失败的记录信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailedRecordList: list of SnapshotRecord
         :param _Domain: 所属域名
 注意：此字段可能返回 null，表示取不到有效值。
@@ -8765,7 +8762,6 @@ class DescribeRecordSnapshotRollbackResultResponse(AbstractModel):
     @property
     def FailedRecordList(self):
         """失败的记录信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SnapshotRecord
         """
         return self._FailedRecordList
@@ -10614,7 +10610,6 @@ class DomainInfo(AbstractModel):
         :param _CnameSpeedup: cname加速启用状态
         :type CnameSpeedup: str
         :param _Remark: 域名备注
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _Punycode: 域名Punycode
         :type Punycode: str
@@ -10641,18 +10636,14 @@ class DomainInfo(AbstractModel):
         :param _Uin: 腾讯云账户Uin
         :type Uin: str
         :param _ActualNsList: 域名实际使用的NS列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActualNsList: list of str
         :param _RecordCount: 域名的记录数量
         :type RecordCount: int
         :param _OwnerNick: 域名所有者的账户昵称
-注意：此字段可能返回 null，表示取不到有效值。
         :type OwnerNick: str
         :param _IsGracePeriod: 是否在付费套餐宽限期
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsGracePeriod: str
         :param _VipBuffered: 是否在付费套餐缓冲期
-注意：此字段可能返回 null，表示取不到有效值。
         :type VipBuffered: str
         :param _VipStartAt: VIP套餐有效期开始时间
 注意：此字段可能返回 null，表示取不到有效值。
@@ -10667,10 +10658,8 @@ class DomainInfo(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type VipResourceId: str
         :param _IsSubDomain: 是否是子域名。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsSubDomain: bool
         :param _TagList: 域名关联的标签列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagList: list of TagItem
         :param _SearchEnginePush: 是否启用搜索引擎推送
         :type SearchEnginePush: str
@@ -10791,7 +10780,6 @@ class DomainInfo(AbstractModel):
     @property
     def Remark(self):
         """域名备注
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -10935,7 +10923,6 @@ class DomainInfo(AbstractModel):
     @property
     def ActualNsList(self):
         """域名实际使用的NS列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._ActualNsList
@@ -10958,7 +10945,6 @@ class DomainInfo(AbstractModel):
     @property
     def OwnerNick(self):
         """域名所有者的账户昵称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OwnerNick
@@ -10970,7 +10956,6 @@ class DomainInfo(AbstractModel):
     @property
     def IsGracePeriod(self):
         """是否在付费套餐宽限期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IsGracePeriod
@@ -10982,7 +10967,6 @@ class DomainInfo(AbstractModel):
     @property
     def VipBuffered(self):
         """是否在付费套餐缓冲期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VipBuffered
@@ -11042,7 +11026,6 @@ class DomainInfo(AbstractModel):
     @property
     def IsSubDomain(self):
         """是否是子域名。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsSubDomain
@@ -11054,7 +11037,6 @@ class DomainInfo(AbstractModel):
     @property
     def TagList(self):
         """域名关联的标签列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TagItem
         """
         return self._TagList
@@ -11584,19 +11566,14 @@ class DomainShareUserInfo(AbstractModel):
         :param _DomainShareId: 共享记录ID
         :type DomainShareId: int
         :param _Mode: 共享模式。r-只读；w-可写；rw-可读写。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Mode: str
         :param _Nickname: 共享到的用户昵称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Nickname: str
         :param _QCloudUIN: 共享到的用户UIN
-注意：此字段可能返回 null，表示取不到有效值。
         :type QCloudUIN: str
         :param _Status: 共享状态。enabled-有效；pause-无效。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _SubDomain: 共享的子域名
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubDomain: str
         """
         self._DomainShareId = None
@@ -11620,7 +11597,6 @@ class DomainShareUserInfo(AbstractModel):
     @property
     def Mode(self):
         """共享模式。r-只读；w-可写；rw-可读写。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Mode
@@ -11632,7 +11608,6 @@ class DomainShareUserInfo(AbstractModel):
     @property
     def Nickname(self):
         """共享到的用户昵称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Nickname
@@ -11644,7 +11619,6 @@ class DomainShareUserInfo(AbstractModel):
     @property
     def QCloudUIN(self):
         """共享到的用户UIN
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._QCloudUIN
@@ -11656,7 +11630,6 @@ class DomainShareUserInfo(AbstractModel):
     @property
     def Status(self):
         """共享状态。enabled-有效；pause-无效。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -11668,7 +11641,6 @@ class DomainShareUserInfo(AbstractModel):
     @property
     def SubDomain(self):
         """共享的子域名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubDomain
@@ -12105,7 +12077,6 @@ class KeyValue(AbstractModel):
         :param _Key: 键
         :type Key: str
         :param _Value: 值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Key = None
@@ -12125,7 +12096,6 @@ class KeyValue(AbstractModel):
     @property
     def Value(self):
         """值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -13885,27 +13855,22 @@ class ModifyRecordBatchDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _RecordList: 见RecordInfoBatchModify
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecordList: list of BatchRecordInfo
         :param _Id: 任务编号
         :type Id: int
         :param _Domain: 域名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Domain: str
         :param _DomainGrade: 域名等级
-注意：此字段可能返回 null，表示取不到有效值。
         :type DomainGrade: str
         :param _ErrMsg: 错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrMsg: str
         :param _Status: 该条任务运行状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _Operation: 操作类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type Operation: str
         :param _DomainId: 域名ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type DomainId: int
         """
         self._RecordList = None
@@ -13920,7 +13885,6 @@ class ModifyRecordBatchDetail(AbstractModel):
     @property
     def RecordList(self):
         """见RecordInfoBatchModify
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BatchRecordInfo
         """
         return self._RecordList
@@ -13943,7 +13907,6 @@ class ModifyRecordBatchDetail(AbstractModel):
     @property
     def Domain(self):
         """域名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Domain
@@ -13955,7 +13918,6 @@ class ModifyRecordBatchDetail(AbstractModel):
     @property
     def DomainGrade(self):
         """域名等级
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DomainGrade
@@ -13979,7 +13941,6 @@ class ModifyRecordBatchDetail(AbstractModel):
     @property
     def Status(self):
         """该条任务运行状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -14003,7 +13964,6 @@ class ModifyRecordBatchDetail(AbstractModel):
     @property
     def DomainId(self):
         """域名ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DomainId
@@ -16290,7 +16250,6 @@ class RecordInfo(AbstractModel):
 "" : 该记录未开启 D 监控。
         :type MonitorStatus: str
         :param _Remark: 记录的备注。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _UpdatedOn: 记录最后更新时间。
         :type UpdatedOn: str
@@ -16441,7 +16400,6 @@ class RecordInfo(AbstractModel):
     @property
     def Remark(self):
         """记录的备注。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -16531,7 +16489,6 @@ class RecordListItem(AbstractModel):
         :param _TTL: 记录缓存时间
         :type TTL: int
         :param _MX: MX值，只有MX记录有
-注意：此字段可能返回 null，表示取不到有效值。
         :type MX: int
         :param _DefaultNS: 是否是默认的ns记录
         :type DefaultNS: bool
@@ -16687,7 +16644,6 @@ class RecordListItem(AbstractModel):
     @property
     def MX(self):
         """MX值，只有MX记录有
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MX
@@ -17701,7 +17657,6 @@ class TagItem(AbstractModel):
         :param _TagKey: 标签键
         :type TagKey: str
         :param _TagValue: 标签值
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagValue: str
         """
         self._TagKey = None
@@ -17721,7 +17676,6 @@ class TagItem(AbstractModel):
     @property
     def TagValue(self):
         """标签值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TagValue

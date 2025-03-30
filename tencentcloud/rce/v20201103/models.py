@@ -224,8 +224,6 @@ class DataAuthorizationInfo(AbstractModel):
         :type AuthorizationTerm: int
         :param _PrivacyPolicyLink: 客户获得用户授权所依赖的协议地址。
         :type PrivacyPolicyLink: str
-        :param _IsPersonalData: 是否是用户个人敏感数据（不推荐使用）。固定填：1。
-        :type IsPersonalData: int
         """
         self._DataProviderName = None
         self._DataRecipientName = None
@@ -234,7 +232,6 @@ class DataAuthorizationInfo(AbstractModel):
         self._IsOrderHandling = None
         self._AuthorizationTerm = None
         self._PrivacyPolicyLink = None
-        self._IsPersonalData = None
 
     @property
     def DataProviderName(self):
@@ -320,17 +317,6 @@ class DataAuthorizationInfo(AbstractModel):
     def PrivacyPolicyLink(self, PrivacyPolicyLink):
         self._PrivacyPolicyLink = PrivacyPolicyLink
 
-    @property
-    def IsPersonalData(self):
-        """是否是用户个人敏感数据（不推荐使用）。固定填：1。
-        :rtype: int
-        """
-        return self._IsPersonalData
-
-    @IsPersonalData.setter
-    def IsPersonalData(self, IsPersonalData):
-        self._IsPersonalData = IsPersonalData
-
 
     def _deserialize(self, params):
         self._DataProviderName = params.get("DataProviderName")
@@ -340,7 +326,6 @@ class DataAuthorizationInfo(AbstractModel):
         self._IsOrderHandling = params.get("IsOrderHandling")
         self._AuthorizationTerm = params.get("AuthorizationTerm")
         self._PrivacyPolicyLink = params.get("PrivacyPolicyLink")
-        self._IsPersonalData = params.get("IsPersonalData")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -10965,8 +10965,11 @@ class FirewallRule(AbstractModel):
     def __init__(self):
         r"""
         :param _Protocol: 协议，取值：TCP，UDP，ICMP，ALL，ICMPv6。
+
+- 使用ICMP协议时，只支持CidrBlock，不支持使用Port、Ipv6CidrBlock参数；
+- 使用ICMPv6协议时，只支持Ipv6CidrBlock，不支持使用Port、Ipv6CidrBlock参数；
         :type Protocol: str
-        :param _Port: 端口，取值：ALL，单独的端口，逗号分隔的离散端口，减号分隔的端口范围。
+        :param _Port: 端口，取值：ALL，单独的端口，逗号分隔的离散端口，减号分隔的端口范围。注意：单独的端口与离散端口不能同时存在。
         :type Port: str
         :param _CidrBlock: IPv4网段或 IPv4地址(互斥)。
 示例值：0.0.0.0/0。
@@ -10978,7 +10981,7 @@ class FirewallRule(AbstractModel):
 
 和CidrBlock互斥，两者都不指定时，如果Protocol是ICMPv6，则取默认值::/0。
         :type Ipv6CidrBlock: str
-        :param _Action: 取值：ACCEPT，DROP。默认为 ACCEPT。
+        :param _Action: 取值：ACCEPT（允许），DROP（拒绝）。默认为 ACCEPT。
         :type Action: str
         :param _FirewallRuleDescription: 防火墙规则描述。
         :type FirewallRuleDescription: str
@@ -10993,6 +10996,9 @@ class FirewallRule(AbstractModel):
     @property
     def Protocol(self):
         """协议，取值：TCP，UDP，ICMP，ALL，ICMPv6。
+
+- 使用ICMP协议时，只支持CidrBlock，不支持使用Port、Ipv6CidrBlock参数；
+- 使用ICMPv6协议时，只支持Ipv6CidrBlock，不支持使用Port、Ipv6CidrBlock参数；
         :rtype: str
         """
         return self._Protocol
@@ -11003,7 +11009,7 @@ class FirewallRule(AbstractModel):
 
     @property
     def Port(self):
-        """端口，取值：ALL，单独的端口，逗号分隔的离散端口，减号分隔的端口范围。
+        """端口，取值：ALL，单独的端口，逗号分隔的离散端口，减号分隔的端口范围。注意：单独的端口与离散端口不能同时存在。
         :rtype: str
         """
         return self._Port
@@ -11042,7 +11048,7 @@ class FirewallRule(AbstractModel):
 
     @property
     def Action(self):
-        """取值：ACCEPT，DROP。默认为 ACCEPT。
+        """取值：ACCEPT（允许），DROP（拒绝）。默认为 ACCEPT。
         :rtype: str
         """
         return self._Action

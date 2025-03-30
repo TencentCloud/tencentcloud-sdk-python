@@ -191,6 +191,29 @@ class GsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAndroidInstancesScreenshot(self, request):
+        """安卓实例截图
+
+        :param request: Request instance for CreateAndroidInstancesScreenshot.
+        :type request: :class:`tencentcloud.gs.v20191118.models.CreateAndroidInstancesScreenshotRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.CreateAndroidInstancesScreenshotResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAndroidInstancesScreenshot", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAndroidInstancesScreenshotResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateSession(self, request):
         """创建会话
 

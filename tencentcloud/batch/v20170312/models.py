@@ -8515,10 +8515,8 @@ class Notification(AbstractModel):
     def __init__(self):
         r"""
         :param _TopicName: CMQ主题名字，要求主题名有效且关联订阅
-注意：此字段可能返回 null，表示取不到有效值。
         :type TopicName: str
         :param _EventConfigs: 事件配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type EventConfigs: list of EventConfig
         """
         self._TopicName = None
@@ -8527,7 +8525,6 @@ class Notification(AbstractModel):
     @property
     def TopicName(self):
         """CMQ主题名字，要求主题名有效且关联订阅
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TopicName
@@ -8539,7 +8536,6 @@ class Notification(AbstractModel):
     @property
     def EventConfigs(self):
         """事件配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of EventConfig
         """
         return self._EventConfigs
@@ -8705,7 +8701,6 @@ class OutputMapping(AbstractModel):
         :param _DestinationPath: 目的端路径
         :type DestinationPath: str
         :param _OutputMappingOption: 输出映射选项
-注意：此字段可能返回 null，表示取不到有效值。
         :type OutputMappingOption: :class:`tencentcloud.batch.v20170312.models.OutputMappingOption`
         """
         self._SourcePath = None
@@ -8737,7 +8732,6 @@ class OutputMapping(AbstractModel):
     @property
     def OutputMappingOption(self):
         """输出映射选项
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.batch.v20170312.models.OutputMappingOption`
         """
         return self._OutputMappingOption
@@ -8839,7 +8833,6 @@ class OutputMappingOption(AbstractModel):
         :param _Workspace: 容器场景下,输出选项从实例映射到容器内的实例侧的工作空间。
 BATCH_WORKSPACE: 工作空间为BATCH在实例内定义的工作空间，BATCH侧保证作业之间的隔离。（默认）
 GLOBAL_WORKSPACE: 工作空间为实例操作系统空间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Workspace: str
         """
         self._Workspace = None
@@ -8849,7 +8842,6 @@ GLOBAL_WORKSPACE: 工作空间为实例操作系统空间。
         """容器场景下,输出选项从实例映射到容器内的实例侧的工作空间。
 BATCH_WORKSPACE: 工作空间为BATCH在实例内定义的工作空间，BATCH侧保证作业之间的隔离。（默认）
 GLOBAL_WORKSPACE: 工作空间为实例操作系统空间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Workspace

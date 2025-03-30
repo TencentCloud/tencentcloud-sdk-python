@@ -18427,12 +18427,20 @@ class ModelInfo(AbstractModel):
         :param _MaxTokens: 最多能生成的token数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxTokens: :class:`tencentcloud.lke.v20231130.models.ModelParameter`
-        :param _Source: 模型来源 Hunyuan：腾讯混元大模型,Industry：腾讯云行业大模型,Experience：新模型体验
+        :param _Source: 模型来源 Hunyuan：腾讯混元大模型,Industry：腾讯云行业大模型,Experience：新模型体验,Custom自定义模型
         :type Source: str
         :param _Icon: 模型图标
         :type Icon: str
         :param _IsFree: 是否免费
         :type IsFree: bool
+        :param _InputLenLimit: 模型对话框可输入的上限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InputLenLimit: int
+        :param _SupportWorkflowStatus: 支持工作流的类型 0:模型不支持; 1: 模型支持工作流； 2： 模型支持效果不佳；
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SupportWorkflowStatus: int
+        :param _ModelCategory: 模型类别 generate：生成模型，thought：思考模型
+        :type ModelCategory: str
         """
         self._ModelName = None
         self._ModelDesc = None
@@ -18445,6 +18453,9 @@ class ModelInfo(AbstractModel):
         self._Source = None
         self._Icon = None
         self._IsFree = None
+        self._InputLenLimit = None
+        self._SupportWorkflowStatus = None
+        self._ModelCategory = None
 
     @property
     def ModelName(self):
@@ -18544,7 +18555,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def Source(self):
-        """模型来源 Hunyuan：腾讯混元大模型,Industry：腾讯云行业大模型,Experience：新模型体验
+        """模型来源 Hunyuan：腾讯混元大模型,Industry：腾讯云行业大模型,Experience：新模型体验,Custom自定义模型
         :rtype: str
         """
         return self._Source
@@ -18575,6 +18586,41 @@ class ModelInfo(AbstractModel):
     def IsFree(self, IsFree):
         self._IsFree = IsFree
 
+    @property
+    def InputLenLimit(self):
+        """模型对话框可输入的上限
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._InputLenLimit
+
+    @InputLenLimit.setter
+    def InputLenLimit(self, InputLenLimit):
+        self._InputLenLimit = InputLenLimit
+
+    @property
+    def SupportWorkflowStatus(self):
+        """支持工作流的类型 0:模型不支持; 1: 模型支持工作流； 2： 模型支持效果不佳；
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SupportWorkflowStatus
+
+    @SupportWorkflowStatus.setter
+    def SupportWorkflowStatus(self, SupportWorkflowStatus):
+        self._SupportWorkflowStatus = SupportWorkflowStatus
+
+    @property
+    def ModelCategory(self):
+        """模型类别 generate：生成模型，thought：思考模型
+        :rtype: str
+        """
+        return self._ModelCategory
+
+    @ModelCategory.setter
+    def ModelCategory(self, ModelCategory):
+        self._ModelCategory = ModelCategory
+
 
     def _deserialize(self, params):
         self._ModelName = params.get("ModelName")
@@ -18594,6 +18640,9 @@ class ModelInfo(AbstractModel):
         self._Source = params.get("Source")
         self._Icon = params.get("Icon")
         self._IsFree = params.get("IsFree")
+        self._InputLenLimit = params.get("InputLenLimit")
+        self._SupportWorkflowStatus = params.get("SupportWorkflowStatus")
+        self._ModelCategory = params.get("ModelCategory")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

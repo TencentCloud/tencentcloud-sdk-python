@@ -4169,6 +4169,115 @@ class ControlDevicePresetResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ControlDeviceSnapshotRequest(AbstractModel):
+    """ControlDeviceSnapshot请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChannelId: 通道ID
+        :type ChannelId: str
+        :param _SnapNum: 连拍张数，可选值范围1～10
+        :type SnapNum: int
+        :param _Interval: 抓拍间隔时间，可选值范围1～1800
+        :type Interval: int
+        :param _Expire: 图片存储时间，默认 7 天，仅支持（7, 15, 30, 60, 90, 180, 365）天
+        :type Expire: int
+        """
+        self._ChannelId = None
+        self._SnapNum = None
+        self._Interval = None
+        self._Expire = None
+
+    @property
+    def ChannelId(self):
+        """通道ID
+        :rtype: str
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def SnapNum(self):
+        """连拍张数，可选值范围1～10
+        :rtype: int
+        """
+        return self._SnapNum
+
+    @SnapNum.setter
+    def SnapNum(self, SnapNum):
+        self._SnapNum = SnapNum
+
+    @property
+    def Interval(self):
+        """抓拍间隔时间，可选值范围1～1800
+        :rtype: int
+        """
+        return self._Interval
+
+    @Interval.setter
+    def Interval(self, Interval):
+        self._Interval = Interval
+
+    @property
+    def Expire(self):
+        """图片存储时间，默认 7 天，仅支持（7, 15, 30, 60, 90, 180, 365）天
+        :rtype: int
+        """
+        return self._Expire
+
+    @Expire.setter
+    def Expire(self, Expire):
+        self._Expire = Expire
+
+
+    def _deserialize(self, params):
+        self._ChannelId = params.get("ChannelId")
+        self._SnapNum = params.get("SnapNum")
+        self._Interval = params.get("Interval")
+        self._Expire = params.get("Expire")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ControlDeviceSnapshotResponse(AbstractModel):
+    """ControlDeviceSnapshot返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ControlDeviceStreamData(AbstractModel):
     """获取开流地址返回数据
 
@@ -10191,6 +10300,132 @@ class FaceMaskAIResultInfo(AbstractModel):
         
 
 
+class GBDeviceSnapInfo(AbstractModel):
+    """抓拍结果信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileName: 文件名称
+        :type FileName: str
+        :param _DownloadUrl: 下载地址，空值表示存储图片过期
+        :type DownloadUrl: str
+        :param _ImageSize: 图片大小，单位B
+        :type ImageSize: int
+        :param _CreatedTime: 文件的创建时间
+        :type CreatedTime: str
+        :param _ReceivedTime: 图片的接收时间
+        :type ReceivedTime: str
+        :param _PreviewUrl: 预览地址，空值表示存储图片过期
+        :type PreviewUrl: str
+        :param _SessionId: 国标信令会话ID，同时对应控制设备抓拍 ( ControlDeviceSnapshot )接口返回的request_id
+        :type SessionId: str
+        """
+        self._FileName = None
+        self._DownloadUrl = None
+        self._ImageSize = None
+        self._CreatedTime = None
+        self._ReceivedTime = None
+        self._PreviewUrl = None
+        self._SessionId = None
+
+    @property
+    def FileName(self):
+        """文件名称
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def DownloadUrl(self):
+        """下载地址，空值表示存储图片过期
+        :rtype: str
+        """
+        return self._DownloadUrl
+
+    @DownloadUrl.setter
+    def DownloadUrl(self, DownloadUrl):
+        self._DownloadUrl = DownloadUrl
+
+    @property
+    def ImageSize(self):
+        """图片大小，单位B
+        :rtype: int
+        """
+        return self._ImageSize
+
+    @ImageSize.setter
+    def ImageSize(self, ImageSize):
+        self._ImageSize = ImageSize
+
+    @property
+    def CreatedTime(self):
+        """文件的创建时间
+        :rtype: str
+        """
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def ReceivedTime(self):
+        """图片的接收时间
+        :rtype: str
+        """
+        return self._ReceivedTime
+
+    @ReceivedTime.setter
+    def ReceivedTime(self, ReceivedTime):
+        self._ReceivedTime = ReceivedTime
+
+    @property
+    def PreviewUrl(self):
+        """预览地址，空值表示存储图片过期
+        :rtype: str
+        """
+        return self._PreviewUrl
+
+    @PreviewUrl.setter
+    def PreviewUrl(self, PreviewUrl):
+        self._PreviewUrl = PreviewUrl
+
+    @property
+    def SessionId(self):
+        """国标信令会话ID，同时对应控制设备抓拍 ( ControlDeviceSnapshot )接口返回的request_id
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+
+    def _deserialize(self, params):
+        self._FileName = params.get("FileName")
+        self._DownloadUrl = params.get("DownloadUrl")
+        self._ImageSize = params.get("ImageSize")
+        self._CreatedTime = params.get("CreatedTime")
+        self._ReceivedTime = params.get("ReceivedTime")
+        self._PreviewUrl = params.get("PreviewUrl")
+        self._SessionId = params.get("SessionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GatewayDevice(AbstractModel):
     """网关设备数据
 
@@ -11056,6 +11291,180 @@ class ListDeviceInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ListDeviceSnapshotsRequest(AbstractModel):
+    """ListDeviceSnapshots请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChannelId: 通道ID
+        :type ChannelId: str
+        :param _DeviceId: 设备ID（该字段暂不生效）
+        :type DeviceId: str
+        :param _Start: 查询开始时间，默认查询当天
+        :type Start: int
+        :param _End: 查询结束时间，默认查询当天
+        :type End: int
+        :param _PageNumber: 分页页码，默认1
+        :type PageNumber: int
+        :param _PageSize: 分页大小，默认200，最大2000
+        :type PageSize: int
+        """
+        self._ChannelId = None
+        self._DeviceId = None
+        self._Start = None
+        self._End = None
+        self._PageNumber = None
+        self._PageSize = None
+
+    @property
+    def ChannelId(self):
+        """通道ID
+        :rtype: str
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def DeviceId(self):
+        """设备ID（该字段暂不生效）
+        :rtype: str
+        """
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+    @property
+    def Start(self):
+        """查询开始时间，默认查询当天
+        :rtype: int
+        """
+        return self._Start
+
+    @Start.setter
+    def Start(self, Start):
+        self._Start = Start
+
+    @property
+    def End(self):
+        """查询结束时间，默认查询当天
+        :rtype: int
+        """
+        return self._End
+
+    @End.setter
+    def End(self, End):
+        self._End = End
+
+    @property
+    def PageNumber(self):
+        """分页页码，默认1
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        """分页大小，默认200，最大2000
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._ChannelId = params.get("ChannelId")
+        self._DeviceId = params.get("DeviceId")
+        self._Start = params.get("Start")
+        self._End = params.get("End")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListDeviceSnapshotsResponse(AbstractModel):
+    """ListDeviceSnapshots返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 抓拍结果信息列表
+        :type Data: list of GBDeviceSnapInfo
+        :param _TotalCount: 抓拍结果总数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """抓拍结果信息列表
+        :rtype: list of GBDeviceSnapInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def TotalCount(self):
+        """抓拍结果总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = GBDeviceSnapInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class ListDevicesRequest(AbstractModel):

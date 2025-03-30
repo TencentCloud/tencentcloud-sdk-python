@@ -1137,10 +1137,8 @@ class AuditInstanceInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _ProjectId: 项目ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: int
         :param _TagList: 标签信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagList: list of Tag
         """
         self._ProjectId = None
@@ -1149,7 +1147,6 @@ class AuditInstanceInfo(AbstractModel):
     @property
     def ProjectId(self):
         """项目ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ProjectId
@@ -1161,7 +1158,6 @@ class AuditInstanceInfo(AbstractModel):
     @property
     def TagList(self):
         """标签信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._TagList
@@ -1225,28 +1221,20 @@ class AuditLog(AbstractModel):
         :param _ThreadId: 执行线程ID。
         :type ThreadId: int
         :param _CheckRows: 扫描行数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CheckRows: int
         :param _CpuTime: cpu执行时间，微秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CpuTime: float
         :param _IoWaitTime: IO等待时间，微秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IoWaitTime: int
         :param _LockWaitTime: 锁等待时间，微秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LockWaitTime: int
         :param _TrxLivingTime: 事务持续等待时间，微秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TrxLivingTime: int
         :param _NsTime: 开始时间，与timestamp构成一个精确到纳秒的时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type NsTime: int
         :param _TemplateInfo: 日志命中规则模板的基本信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateInfo: list of LogRuleTemplateInfo
         :param _TrxId: 事务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TrxId: int
         """
         self._AffectRows = None
@@ -1429,7 +1417,6 @@ class AuditLog(AbstractModel):
     @property
     def CheckRows(self):
         """扫描行数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CheckRows
@@ -1441,7 +1428,6 @@ class AuditLog(AbstractModel):
     @property
     def CpuTime(self):
         """cpu执行时间，微秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._CpuTime
@@ -1453,7 +1439,6 @@ class AuditLog(AbstractModel):
     @property
     def IoWaitTime(self):
         """IO等待时间，微秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IoWaitTime
@@ -1465,7 +1450,6 @@ class AuditLog(AbstractModel):
     @property
     def LockWaitTime(self):
         """锁等待时间，微秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LockWaitTime
@@ -1477,7 +1461,6 @@ class AuditLog(AbstractModel):
     @property
     def TrxLivingTime(self):
         """事务持续等待时间，微秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TrxLivingTime
@@ -1489,7 +1472,6 @@ class AuditLog(AbstractModel):
     @property
     def NsTime(self):
         """开始时间，与timestamp构成一个精确到纳秒的时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._NsTime
@@ -1501,7 +1483,6 @@ class AuditLog(AbstractModel):
     @property
     def TemplateInfo(self):
         """日志命中规则模板的基本信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LogRuleTemplateInfo
         """
         return self._TemplateInfo
@@ -1513,7 +1494,6 @@ class AuditLog(AbstractModel):
     @property
     def TrxId(self):
         """事务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TrxId
@@ -1902,7 +1882,6 @@ class AuditRuleFilters(AbstractModel):
     def __init__(self):
         r"""
         :param _RuleFilters: 单条审计规则。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleFilters: list of RuleFilters
         """
         self._RuleFilters = None
@@ -1910,7 +1889,6 @@ class AuditRuleFilters(AbstractModel):
     @property
     def RuleFilters(self):
         """单条审计规则。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RuleFilters
         """
         return self._RuleFilters
@@ -12216,9 +12194,15 @@ class DeliverSummary(AbstractModel):
         :type DeliverType: str
         :param _DeliverSubType: 投递子类型：cls，ckafka。
         :type DeliverSubType: str
+        :param _DeliverConsumer: 投递者
+        :type DeliverConsumer: str
+        :param _DeliverConsumerName: 投递者名称
+        :type DeliverConsumerName: str
         """
         self._DeliverType = None
         self._DeliverSubType = None
+        self._DeliverConsumer = None
+        self._DeliverConsumerName = None
 
     @property
     def DeliverType(self):
@@ -12242,10 +12226,34 @@ class DeliverSummary(AbstractModel):
     def DeliverSubType(self, DeliverSubType):
         self._DeliverSubType = DeliverSubType
 
+    @property
+    def DeliverConsumer(self):
+        """投递者
+        :rtype: str
+        """
+        return self._DeliverConsumer
+
+    @DeliverConsumer.setter
+    def DeliverConsumer(self, DeliverConsumer):
+        self._DeliverConsumer = DeliverConsumer
+
+    @property
+    def DeliverConsumerName(self):
+        """投递者名称
+        :rtype: str
+        """
+        return self._DeliverConsumerName
+
+    @DeliverConsumerName.setter
+    def DeliverConsumerName(self, DeliverConsumerName):
+        self._DeliverConsumerName = DeliverConsumerName
+
 
     def _deserialize(self, params):
         self._DeliverType = params.get("DeliverType")
         self._DeliverSubType = params.get("DeliverSubType")
+        self._DeliverConsumer = params.get("DeliverConsumer")
+        self._DeliverConsumerName = params.get("DeliverConsumerName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22323,16 +22331,12 @@ class InstanceAuditRule(AbstractModel):
         :param _InstanceId: 实例ID。
         :type InstanceId: str
         :param _AuditRule: 是否是规则审计。true-规则审计，false-全审计。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AuditRule: bool
         :param _AuditRuleFilters: 审计规则详情。仅当AuditRule=true时有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AuditRuleFilters: list of AuditRuleFilters
         :param _OldRule: 是否是审计策略
-注意：此字段可能返回 null，表示取不到有效值。
         :type OldRule: bool
         :param _RuleTemplates: 实例应用的规则模板详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleTemplates: list of RuleTemplateInfo
         """
         self._InstanceId = None
@@ -22355,7 +22359,6 @@ class InstanceAuditRule(AbstractModel):
     @property
     def AuditRule(self):
         """是否是规则审计。true-规则审计，false-全审计。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._AuditRule
@@ -22367,7 +22370,6 @@ class InstanceAuditRule(AbstractModel):
     @property
     def AuditRuleFilters(self):
         """审计规则详情。仅当AuditRule=true时有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AuditRuleFilters
         """
         return self._AuditRuleFilters
@@ -22379,7 +22381,6 @@ class InstanceAuditRule(AbstractModel):
     @property
     def OldRule(self):
         """是否是审计策略
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._OldRule
@@ -22391,7 +22392,6 @@ class InstanceAuditRule(AbstractModel):
     @property
     def RuleTemplates(self):
         """实例应用的规则模板详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RuleTemplateInfo
         """
         return self._RuleTemplates
@@ -22439,43 +22439,30 @@ class InstanceAuditStatus(AbstractModel):
         :param _AuditStatus: 审计状态。ON-表示审计已开启，OFF-表示审计关闭。
         :type AuditStatus: str
         :param _LogExpireDay: 日志保留时长。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogExpireDay: int
         :param _HighLogExpireDay: 高频存储时长。
-注意：此字段可能返回 null，表示取不到有效值。
         :type HighLogExpireDay: int
         :param _LowLogExpireDay: 低频存储时长。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LowLogExpireDay: int
         :param _BillingAmount: 日志存储量。
-注意：此字段可能返回 null，表示取不到有效值。
         :type BillingAmount: float
         :param _HighRealStorage: 高频存储量。
-注意：此字段可能返回 null，表示取不到有效值。
         :type HighRealStorage: float
         :param _LowRealStorage: 低频存储量。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LowRealStorage: float
         :param _AuditAll: 是否为全审计。true-表示全审计。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AuditAll: bool
         :param _CreateAt: 审计开通时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateAt: str
         :param _InstanceInfo: 实例相关信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceInfo: :class:`tencentcloud.cynosdb.v20190107.models.AuditInstanceInfo`
         :param _RealStorage: 总存储量。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RealStorage: float
         :param _RuleTemplateIds: 实例所应用的规则模板。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleTemplateIds: list of str
         :param _Deliver: 是否开启日志投递：ON，OFF
-注意：此字段可能返回 null，表示取不到有效值。
         :type Deliver: str
         :param _DeliverSummary: 日志投递类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeliverSummary: list of DeliverSummary
         """
         self._InstanceId = None
@@ -22519,7 +22506,6 @@ class InstanceAuditStatus(AbstractModel):
     @property
     def LogExpireDay(self):
         """日志保留时长。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LogExpireDay
@@ -22531,7 +22517,6 @@ class InstanceAuditStatus(AbstractModel):
     @property
     def HighLogExpireDay(self):
         """高频存储时长。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._HighLogExpireDay
@@ -22543,7 +22528,6 @@ class InstanceAuditStatus(AbstractModel):
     @property
     def LowLogExpireDay(self):
         """低频存储时长。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LowLogExpireDay
@@ -22555,7 +22539,6 @@ class InstanceAuditStatus(AbstractModel):
     @property
     def BillingAmount(self):
         """日志存储量。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._BillingAmount
@@ -22567,7 +22550,6 @@ class InstanceAuditStatus(AbstractModel):
     @property
     def HighRealStorage(self):
         """高频存储量。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._HighRealStorage
@@ -22579,7 +22561,6 @@ class InstanceAuditStatus(AbstractModel):
     @property
     def LowRealStorage(self):
         """低频存储量。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._LowRealStorage
@@ -22591,7 +22572,6 @@ class InstanceAuditStatus(AbstractModel):
     @property
     def AuditAll(self):
         """是否为全审计。true-表示全审计。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._AuditAll
@@ -22603,7 +22583,6 @@ class InstanceAuditStatus(AbstractModel):
     @property
     def CreateAt(self):
         """审计开通时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateAt
@@ -22615,7 +22594,6 @@ class InstanceAuditStatus(AbstractModel):
     @property
     def InstanceInfo(self):
         """实例相关信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.AuditInstanceInfo`
         """
         return self._InstanceInfo
@@ -22627,7 +22605,6 @@ class InstanceAuditStatus(AbstractModel):
     @property
     def RealStorage(self):
         """总存储量。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._RealStorage
@@ -22639,7 +22616,6 @@ class InstanceAuditStatus(AbstractModel):
     @property
     def RuleTemplateIds(self):
         """实例所应用的规则模板。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._RuleTemplateIds
@@ -22651,7 +22627,6 @@ class InstanceAuditStatus(AbstractModel):
     @property
     def Deliver(self):
         """是否开启日志投递：ON，OFF
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Deliver
@@ -22663,7 +22638,6 @@ class InstanceAuditStatus(AbstractModel):
     @property
     def DeliverSummary(self):
         """日志投递类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DeliverSummary
         """
         return self._DeliverSummary
@@ -23753,16 +23727,12 @@ class LogRuleTemplateInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _RuleTemplateId: 模板ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleTemplateId: str
         :param _RuleTemplateName: 规则模板名
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleTemplateName: str
         :param _AlarmLevel: 告警等级。1-低风险，2-中风险，3-高风险。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AlarmLevel: str
         :param _RuleTemplateStatus: 规则模板变更状态：0-未变更；1-已变更；2-已删除
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleTemplateStatus: int
         """
         self._RuleTemplateId = None
@@ -23773,7 +23743,6 @@ class LogRuleTemplateInfo(AbstractModel):
     @property
     def RuleTemplateId(self):
         """模板ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RuleTemplateId
@@ -23785,7 +23754,6 @@ class LogRuleTemplateInfo(AbstractModel):
     @property
     def RuleTemplateName(self):
         """规则模板名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RuleTemplateName
@@ -23797,7 +23765,6 @@ class LogRuleTemplateInfo(AbstractModel):
     @property
     def AlarmLevel(self):
         """告警等级。1-低风险，2-中风险，3-高风险。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AlarmLevel
@@ -23809,7 +23776,6 @@ class LogRuleTemplateInfo(AbstractModel):
     @property
     def RuleTemplateStatus(self):
         """规则模板变更状态：0-未变更；1-已变更；2-已删除
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RuleTemplateStatus
@@ -35016,22 +34982,16 @@ class RuleTemplateInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _RuleTemplateId: 规则模板ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleTemplateId: str
         :param _RuleTemplateName: 规则模板名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleTemplateName: str
         :param _RuleFilters: 规则内容。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleFilters: list of RuleFilters
         :param _AlarmLevel: 告警等级。1-低风险，2-中风险，3-高风险。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AlarmLevel: int
         :param _AlarmPolicy: 告警策略。0-不告警，1-告警。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AlarmPolicy: int
         :param _Description: 规则描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         """
         self._RuleTemplateId = None
@@ -35044,7 +35004,6 @@ class RuleTemplateInfo(AbstractModel):
     @property
     def RuleTemplateId(self):
         """规则模板ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RuleTemplateId
@@ -35056,7 +35015,6 @@ class RuleTemplateInfo(AbstractModel):
     @property
     def RuleTemplateName(self):
         """规则模板名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RuleTemplateName
@@ -35068,7 +35026,6 @@ class RuleTemplateInfo(AbstractModel):
     @property
     def RuleFilters(self):
         """规则内容。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RuleFilters
         """
         return self._RuleFilters
@@ -35080,7 +35037,6 @@ class RuleTemplateInfo(AbstractModel):
     @property
     def AlarmLevel(self):
         """告警等级。1-低风险，2-中风险，3-高风险。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AlarmLevel
@@ -35092,7 +35048,6 @@ class RuleTemplateInfo(AbstractModel):
     @property
     def AlarmPolicy(self):
         """告警策略。0-不告警，1-告警。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AlarmPolicy
@@ -35104,7 +35059,6 @@ class RuleTemplateInfo(AbstractModel):
     @property
     def Description(self):
         """规则描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
