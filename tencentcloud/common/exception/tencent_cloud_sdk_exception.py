@@ -11,8 +11,7 @@ class TencentCloudSDKException(Exception):
         self.requestId = requestId
 
     def __str__(self):
-        s = "[TencentCloudSDKException] code:%s message:%s requestId:%s" % (
-            self.code, self.message, self.requestId)
+        s = f"[TencentCloudSDKException] code:{self.code} message:{self.message} requestId:{self.requestId}"
         if sys.version_info[0] < 3 and isinstance(s, unicode):
             return s.encode("utf8")
         else:
