@@ -2599,6 +2599,132 @@ class CloseKafkaConsumerResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CloudProductLogTaskInfo(AbstractModel):
+    """云产品日志投递任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClsRegion: 日志服务地域
+        :type ClsRegion: str
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _LogsetId: 日志集ID
+        :type LogsetId: str
+        :param _TopicId: 日志主题ID
+        :type TopicId: str
+        :param _Extend: 日志配置拓展信息， 一般用于存储额外的日志投递配置
+        :type Extend: str
+        :param _LogType: 日志类型，支持枚举：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、PostgreSQL-AUDIT、BH-FILELOG、BH-COMMANDLOG、APIS-ACCESS
+        :type LogType: str
+        :param _Status: 任务状态， 0创建中 1创建完成 2 删除中 
+        :type Status: int
+        """
+        self._ClsRegion = None
+        self._InstanceId = None
+        self._LogsetId = None
+        self._TopicId = None
+        self._Extend = None
+        self._LogType = None
+        self._Status = None
+
+    @property
+    def ClsRegion(self):
+        """日志服务地域
+        :rtype: str
+        """
+        return self._ClsRegion
+
+    @ClsRegion.setter
+    def ClsRegion(self, ClsRegion):
+        self._ClsRegion = ClsRegion
+
+    @property
+    def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def LogsetId(self):
+        """日志集ID
+        :rtype: str
+        """
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
+    @property
+    def TopicId(self):
+        """日志主题ID
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Extend(self):
+        """日志配置拓展信息， 一般用于存储额外的日志投递配置
+        :rtype: str
+        """
+        return self._Extend
+
+    @Extend.setter
+    def Extend(self, Extend):
+        self._Extend = Extend
+
+    @property
+    def LogType(self):
+        """日志类型，支持枚举：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、PostgreSQL-AUDIT、BH-FILELOG、BH-COMMANDLOG、APIS-ACCESS
+        :rtype: str
+        """
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def Status(self):
+        """任务状态， 0创建中 1创建完成 2 删除中 
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._ClsRegion = params.get("ClsRegion")
+        self._InstanceId = params.get("InstanceId")
+        self._LogsetId = params.get("LogsetId")
+        self._TopicId = params.get("TopicId")
+        self._Extend = params.get("Extend")
+        self._LogType = params.get("LogType")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CollectConfig(AbstractModel):
     """采集配置信息
 
@@ -5511,6 +5637,304 @@ class CreateAlarmShieldResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateCloudProductLogCollectionRequest(AbstractModel):
+    """CreateCloudProductLogCollection请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _AssumerName: 云产品标识，支持枚举：CDS、CWP、CDB、TDSQL-C、MongoDB、TDStore、DCDB、MariaDB、PostgreSQL、BH、APIS
+        :type AssumerName: str
+        :param _LogType: 日志类型，支持枚举：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、PostgreSQL-AUDIT、BH-FILELOG、BH-COMMANDLOG、APIS-ACCESS
+        :type LogType: str
+        :param _CloudProductRegion: 云产品地域。 不同日志类型(LogType)地域入參格式存在差异， 请参考如下示例：
+- CDS所有日志类型：ap-guangzhou
+- CDB-AUDIT: gz
+- TDSQL-C-AUDIT:  gz
+- MongoDB-AUDIT:  gz
+- MongoDB-SlowLog：ap-guangzhou
+- MongoDB-ErrorLog：ap-guangzhou
+- TDMYSQL-SLOW：gz
+- DCDB所有日志类型：gz
+- MariaDB所有日志类型：gz
+- PostgreSQL所有日志类型：gz
+- BH所有日志类型：overseas-polaris(国内站海外)/fsi-polaris(国内站金融)/general-polaris(国内站普通)/intl-sg-prod(国际站)
+- APIS所有日志类型：gz
+        :type CloudProductRegion: str
+        :param _ClsRegion: CLS目标地域
+        :type ClsRegion: str
+        :param _LogsetName: 日志集名称，未填LogsetId时必填。若日志集不存在, 将自动创建
+        :type LogsetName: str
+        :param _TopicName: 日志主题名称，在未填TopicId时必填。 若日志主题不存在，将自动创建
+        :type TopicName: str
+        :param _Extend: 日志配置拓展信息， 一般用于存储额外的日志投递配置
+        :type Extend: str
+        :param _LogsetId: 日志集id
+        :type LogsetId: str
+        :param _TopicId: 日志主题id
+        :type TopicId: str
+        """
+        self._InstanceId = None
+        self._AssumerName = None
+        self._LogType = None
+        self._CloudProductRegion = None
+        self._ClsRegion = None
+        self._LogsetName = None
+        self._TopicName = None
+        self._Extend = None
+        self._LogsetId = None
+        self._TopicId = None
+
+    @property
+    def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def AssumerName(self):
+        """云产品标识，支持枚举：CDS、CWP、CDB、TDSQL-C、MongoDB、TDStore、DCDB、MariaDB、PostgreSQL、BH、APIS
+        :rtype: str
+        """
+        return self._AssumerName
+
+    @AssumerName.setter
+    def AssumerName(self, AssumerName):
+        self._AssumerName = AssumerName
+
+    @property
+    def LogType(self):
+        """日志类型，支持枚举：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、PostgreSQL-AUDIT、BH-FILELOG、BH-COMMANDLOG、APIS-ACCESS
+        :rtype: str
+        """
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def CloudProductRegion(self):
+        """云产品地域。 不同日志类型(LogType)地域入參格式存在差异， 请参考如下示例：
+- CDS所有日志类型：ap-guangzhou
+- CDB-AUDIT: gz
+- TDSQL-C-AUDIT:  gz
+- MongoDB-AUDIT:  gz
+- MongoDB-SlowLog：ap-guangzhou
+- MongoDB-ErrorLog：ap-guangzhou
+- TDMYSQL-SLOW：gz
+- DCDB所有日志类型：gz
+- MariaDB所有日志类型：gz
+- PostgreSQL所有日志类型：gz
+- BH所有日志类型：overseas-polaris(国内站海外)/fsi-polaris(国内站金融)/general-polaris(国内站普通)/intl-sg-prod(国际站)
+- APIS所有日志类型：gz
+        :rtype: str
+        """
+        return self._CloudProductRegion
+
+    @CloudProductRegion.setter
+    def CloudProductRegion(self, CloudProductRegion):
+        self._CloudProductRegion = CloudProductRegion
+
+    @property
+    def ClsRegion(self):
+        """CLS目标地域
+        :rtype: str
+        """
+        return self._ClsRegion
+
+    @ClsRegion.setter
+    def ClsRegion(self, ClsRegion):
+        self._ClsRegion = ClsRegion
+
+    @property
+    def LogsetName(self):
+        """日志集名称，未填LogsetId时必填。若日志集不存在, 将自动创建
+        :rtype: str
+        """
+        return self._LogsetName
+
+    @LogsetName.setter
+    def LogsetName(self, LogsetName):
+        self._LogsetName = LogsetName
+
+    @property
+    def TopicName(self):
+        """日志主题名称，在未填TopicId时必填。 若日志主题不存在，将自动创建
+        :rtype: str
+        """
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+    @property
+    def Extend(self):
+        """日志配置拓展信息， 一般用于存储额外的日志投递配置
+        :rtype: str
+        """
+        return self._Extend
+
+    @Extend.setter
+    def Extend(self, Extend):
+        self._Extend = Extend
+
+    @property
+    def LogsetId(self):
+        """日志集id
+        :rtype: str
+        """
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
+    @property
+    def TopicId(self):
+        """日志主题id
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._AssumerName = params.get("AssumerName")
+        self._LogType = params.get("LogType")
+        self._CloudProductRegion = params.get("CloudProductRegion")
+        self._ClsRegion = params.get("ClsRegion")
+        self._LogsetName = params.get("LogsetName")
+        self._TopicName = params.get("TopicName")
+        self._Extend = params.get("Extend")
+        self._LogsetId = params.get("LogsetId")
+        self._TopicId = params.get("TopicId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCloudProductLogCollectionResponse(AbstractModel):
+    """CreateCloudProductLogCollection返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: 日志主题ID
+        :type TopicId: str
+        :param _TopicName: 日志主题名称
+        :type TopicName: str
+        :param _LogsetId: 日志集ID
+        :type LogsetId: str
+        :param _LogsetName: 日志集名称
+        :type LogsetName: str
+        :param _Status: -1 创建中，1创建完成 
+        :type Status: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TopicId = None
+        self._TopicName = None
+        self._LogsetId = None
+        self._LogsetName = None
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def TopicId(self):
+        """日志主题ID
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def TopicName(self):
+        """日志主题名称
+        :rtype: str
+        """
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+    @property
+    def LogsetId(self):
+        """日志集ID
+        :rtype: str
+        """
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
+    @property
+    def LogsetName(self):
+        """日志集名称
+        :rtype: str
+        """
+        return self._LogsetName
+
+    @LogsetName.setter
+    def LogsetName(self, LogsetName):
+        self._LogsetName = LogsetName
+
+    @property
+    def Status(self):
+        """-1 创建中，1创建完成 
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._TopicName = params.get("TopicName")
+        self._LogsetId = params.get("LogsetId")
+        self._LogsetName = params.get("LogsetName")
+        self._Status = params.get("Status")
         self._RequestId = params.get("RequestId")
 
 
@@ -10247,6 +10671,154 @@ class DeleteAlarmShieldResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteCloudProductLogCollectionRequest(AbstractModel):
+    """DeleteCloudProductLogCollection请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _AssumerName: 云产品标识，支持枚举：CDS、CWP、CDB、TDSQL-C、MongoDB、TDStore、DCDB、MariaDB、PostgreSQL、BH、APIS
+        :type AssumerName: str
+        :param _LogType: 日志类型，支持枚举：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、PostgreSQL-AUDIT、BH-FILELOG、BH-COMMANDLOG、APIS-ACCESS
+        :type LogType: str
+        :param _CloudProductRegion: 云产品地域。 不同日志类型(LogType)地域入參格式存在差异， 请参考如下示例：
+- CDS所有日志类型：ap-guangzhou
+- CDB-AUDIT: gz
+- TDSQL-C-AUDIT: gz
+- MongoDB-AUDIT: gz
+- MongoDB-SlowLog：ap-guangzhou
+- MongoDB-ErrorLog：ap-guangzhou
+- TDMYSQL-SLOW：gz
+- DCDB所有日志类型：gz
+- MariaDB所有日志类型：gz
+- PostgreSQL所有日志类型：gz
+- BH所有日志类型：overseas-polaris(国内站海外)/fsi-polaris(国内站金融)/general-polaris(国内站普通)/intl-sg-prod(国际站)
+- APIS所有日志类型：gz
+        :type CloudProductRegion: str
+        """
+        self._InstanceId = None
+        self._AssumerName = None
+        self._LogType = None
+        self._CloudProductRegion = None
+
+    @property
+    def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def AssumerName(self):
+        """云产品标识，支持枚举：CDS、CWP、CDB、TDSQL-C、MongoDB、TDStore、DCDB、MariaDB、PostgreSQL、BH、APIS
+        :rtype: str
+        """
+        return self._AssumerName
+
+    @AssumerName.setter
+    def AssumerName(self, AssumerName):
+        self._AssumerName = AssumerName
+
+    @property
+    def LogType(self):
+        """日志类型，支持枚举：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、PostgreSQL-AUDIT、BH-FILELOG、BH-COMMANDLOG、APIS-ACCESS
+        :rtype: str
+        """
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def CloudProductRegion(self):
+        """云产品地域。 不同日志类型(LogType)地域入參格式存在差异， 请参考如下示例：
+- CDS所有日志类型：ap-guangzhou
+- CDB-AUDIT: gz
+- TDSQL-C-AUDIT: gz
+- MongoDB-AUDIT: gz
+- MongoDB-SlowLog：ap-guangzhou
+- MongoDB-ErrorLog：ap-guangzhou
+- TDMYSQL-SLOW：gz
+- DCDB所有日志类型：gz
+- MariaDB所有日志类型：gz
+- PostgreSQL所有日志类型：gz
+- BH所有日志类型：overseas-polaris(国内站海外)/fsi-polaris(国内站金融)/general-polaris(国内站普通)/intl-sg-prod(国际站)
+- APIS所有日志类型：gz
+        :rtype: str
+        """
+        return self._CloudProductRegion
+
+    @CloudProductRegion.setter
+    def CloudProductRegion(self, CloudProductRegion):
+        self._CloudProductRegion = CloudProductRegion
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._AssumerName = params.get("AssumerName")
+        self._LogType = params.get("LogType")
+        self._CloudProductRegion = params.get("CloudProductRegion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCloudProductLogCollectionResponse(AbstractModel):
+    """DeleteCloudProductLogCollection返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 枚举值，0创建中 1创建完成 2删除中 3删除完成
+        :type Status: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        """枚举值，0创建中 1创建完成 2删除中 3删除完成
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteConfigExtraRequest(AbstractModel):
     """DeleteConfigExtra请求参数结构体
 
@@ -12233,6 +12805,166 @@ class DescribeAlertRecordHistoryResponse(AbstractModel):
                 obj = AlertHistoryRecord()
                 obj._deserialize(item)
                 self._Records.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCloudProductLogTasksRequest(AbstractModel):
+    """DescribeCloudProductLogTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: 分页的偏移量，默认值为0。
+        :type Offset: int
+        :param _Limit: 分页单页限制数目，默认值为100，最大值100。
+        :type Limit: int
+        :param _Filters: - assumerName
+  - 按照【云产品标识】进行过滤。
+  - 类型：String
+  - 必选：否
+  - 枚举：CDS、CWP、CDB、TDSQL-C、MongoDB、TDStore、DCDB、MariaDB、PostgreSQL、BH、APIS
+- logType
+  - 按照【日志类型】进行过滤。
+  - 类型：String
+  - 必选：否
+  - 枚举：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、PostgreSQL-AUDIT、BH-FILELOG、BH-COMMANDLOG、APIS-ACCESS
+- instanceId
+  - 按照【实例ID】进行过滤。
+  - 类型：String
+  - 必选：否
+        :type Filters: list of Filter
+        """
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def Offset(self):
+        """分页的偏移量，默认值为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """分页单页限制数目，默认值为100，最大值100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        """- assumerName
+  - 按照【云产品标识】进行过滤。
+  - 类型：String
+  - 必选：否
+  - 枚举：CDS、CWP、CDB、TDSQL-C、MongoDB、TDStore、DCDB、MariaDB、PostgreSQL、BH、APIS
+- logType
+  - 按照【日志类型】进行过滤。
+  - 类型：String
+  - 必选：否
+  - 枚举：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、PostgreSQL-AUDIT、BH-FILELOG、BH-COMMANDLOG、APIS-ACCESS
+- instanceId
+  - 按照【实例ID】进行过滤。
+  - 类型：String
+  - 必选：否
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudProductLogTasksResponse(AbstractModel):
+    """DescribeCloudProductLogTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Tasks: 日志配置详情列表
+        :type Tasks: list of CloudProductLogTaskInfo
+        :param _TotalCount: 日志配置总数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Tasks = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Tasks(self):
+        """日志配置详情列表
+        :rtype: list of CloudProductLogTaskInfo
+        """
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def TotalCount(self):
+        """日志配置总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Tasks") is not None:
+            self._Tasks = []
+            for item in params.get("Tasks"):
+                obj = CloudProductLogTaskInfo()
+                obj._deserialize(item)
+                self._Tasks.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -20991,6 +21723,154 @@ class ModifyAlarmShieldResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyCloudProductLogCollectionRequest(AbstractModel):
+    """ModifyCloudProductLogCollection请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _AssumerName: 云产品标识，支持枚举：CDS、CWP、CDB、TDSQL-C、MongoDB、TDStore、DCDB、MariaDB、PostgreSQL、BH、APIS
+        :type AssumerName: str
+        :param _LogType: 日志类型，支持枚举：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、PostgreSQL-AUDIT、BH-FILELOG、BH-COMMANDLOG、APIS-ACCESS
+        :type LogType: str
+        :param _CloudProductRegion: 云产品地域。 不同日志类型(LogType)地域入參格式存在差异， 请参考如下示例：
+- CDS所有日志类型：ap-guangzhou
+- CDB-AUDIT: gz
+- TDSQL-C-AUDIT: gz
+- MongoDB-AUDIT: gz
+- MongoDB-SlowLog：ap-guangzhou
+- MongoDB-ErrorLog：ap-guangzhou
+- TDMYSQL-SLOW：gz
+- DCDB所有日志类型：gz
+- MariaDB所有日志类型：gz
+- PostgreSQL所有日志类型：gz
+- BH所有日志类型：overseas-polaris(国内站海外)/fsi-polaris(国内站金融)/general-polaris(国内站普通)/intl-sg-prod(国际站)
+- APIS所有日志类型：gz
+        :type CloudProductRegion: str
+        :param _Extend: 日志配置拓展信息， 一般用于存储额外的日志投递配置
+        :type Extend: str
+        """
+        self._InstanceId = None
+        self._AssumerName = None
+        self._LogType = None
+        self._CloudProductRegion = None
+        self._Extend = None
+
+    @property
+    def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def AssumerName(self):
+        """云产品标识，支持枚举：CDS、CWP、CDB、TDSQL-C、MongoDB、TDStore、DCDB、MariaDB、PostgreSQL、BH、APIS
+        :rtype: str
+        """
+        return self._AssumerName
+
+    @AssumerName.setter
+    def AssumerName(self, AssumerName):
+        self._AssumerName = AssumerName
+
+    @property
+    def LogType(self):
+        """日志类型，支持枚举：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、PostgreSQL-AUDIT、BH-FILELOG、BH-COMMANDLOG、APIS-ACCESS
+        :rtype: str
+        """
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def CloudProductRegion(self):
+        """云产品地域。 不同日志类型(LogType)地域入參格式存在差异， 请参考如下示例：
+- CDS所有日志类型：ap-guangzhou
+- CDB-AUDIT: gz
+- TDSQL-C-AUDIT: gz
+- MongoDB-AUDIT: gz
+- MongoDB-SlowLog：ap-guangzhou
+- MongoDB-ErrorLog：ap-guangzhou
+- TDMYSQL-SLOW：gz
+- DCDB所有日志类型：gz
+- MariaDB所有日志类型：gz
+- PostgreSQL所有日志类型：gz
+- BH所有日志类型：overseas-polaris(国内站海外)/fsi-polaris(国内站金融)/general-polaris(国内站普通)/intl-sg-prod(国际站)
+- APIS所有日志类型：gz
+        :rtype: str
+        """
+        return self._CloudProductRegion
+
+    @CloudProductRegion.setter
+    def CloudProductRegion(self, CloudProductRegion):
+        self._CloudProductRegion = CloudProductRegion
+
+    @property
+    def Extend(self):
+        """日志配置拓展信息， 一般用于存储额外的日志投递配置
+        :rtype: str
+        """
+        return self._Extend
+
+    @Extend.setter
+    def Extend(self, Extend):
+        self._Extend = Extend
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._AssumerName = params.get("AssumerName")
+        self._LogType = params.get("LogType")
+        self._CloudProductRegion = params.get("CloudProductRegion")
+        self._Extend = params.get("Extend")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCloudProductLogCollectionResponse(AbstractModel):
+    """ModifyCloudProductLogCollection返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyConfigExtraRequest(AbstractModel):
     """ModifyConfigExtra请求参数结构体
 
@@ -27222,20 +28102,21 @@ class SearchLogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _From: 要检索分析的日志的起始时间，Unix时间戳（毫秒）
+        :param _From: 要检索分析的日志的起始时间，**Unix时间戳（毫秒）**
         :type From: int
-        :param _To: 要检索分析的日志的结束时间，Unix时间戳（毫秒）
+        :param _To: 要检索分析的日志的结束时间，**Unix时间戳（毫秒）**
         :type To: int
         :param _Query: 检索分析语句，最大长度为12KB
 语句由 <a href="https://cloud.tencent.com/document/product/614/47044" target="_blank">[检索条件]</a> | <a href="https://cloud.tencent.com/document/product/614/44061" target="_blank">[SQL语句]</a>构成，无需对日志进行统计分析时，可省略其中的管道符<code> | </code>及SQL语句
 使用*或空字符串可查询所有日志
         :type Query: str
         :param _SyntaxRule: 检索语法规则，默认值为0，推荐使用1 。
-
 - 0：Lucene语法
-- 1：CQL语法（日志服务专用检索语法，控制台默认也使用该语法规则）。
+- 1：CQL语法（CLS Query Language，日志服务专用检索语法）
 
-详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>
+ ⚠️⚠️ **注意**
+ **该参数值建议设置为 1，使用 CQL 语法规则，控制台日志检索及仪表盘默认均使用该语法规则。**
+ 该参数值未指定或者为 0 时，将使用 Lucene 语法，语法容易报错且查询结果与控制台默认语法规则不一致。详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>。
         :type SyntaxRule: int
         :param _TopicId: - 要检索分析的日志主题ID，仅能指定一个日志主题。
 - 如需同时检索多个日志主题，请使用Topics参数。
@@ -27297,7 +28178,7 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def From(self):
-        """要检索分析的日志的起始时间，Unix时间戳（毫秒）
+        """要检索分析的日志的起始时间，**Unix时间戳（毫秒）**
         :rtype: int
         """
         return self._From
@@ -27308,7 +28189,7 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def To(self):
-        """要检索分析的日志的结束时间，Unix时间戳（毫秒）
+        """要检索分析的日志的结束时间，**Unix时间戳（毫秒）**
         :rtype: int
         """
         return self._To
@@ -27333,11 +28214,12 @@ class SearchLogRequest(AbstractModel):
     @property
     def SyntaxRule(self):
         """检索语法规则，默认值为0，推荐使用1 。
-
 - 0：Lucene语法
-- 1：CQL语法（日志服务专用检索语法，控制台默认也使用该语法规则）。
+- 1：CQL语法（CLS Query Language，日志服务专用检索语法）
 
-详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>
+ ⚠️⚠️ **注意**
+ **该参数值建议设置为 1，使用 CQL 语法规则，控制台日志检索及仪表盘默认均使用该语法规则。**
+ 该参数值未指定或者为 0 时，将使用 Lucene 语法，语法容易报错且查询结果与控制台默认语法规则不一致。详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>。
         :rtype: int
         """
         return self._SyntaxRule

@@ -35,12 +35,15 @@ class AndroidApp(AbstractModel):
         :type AndroidAppVersionInfo: list of AndroidAppVersionInfo
         :param _CreateTime: 安卓应用创建时间
         :type CreateTime: str
+        :param _UserId: 用户 Id
+        :type UserId: str
         """
         self._AndroidAppId = None
         self._Name = None
         self._State = None
         self._AndroidAppVersionInfo = None
         self._CreateTime = None
+        self._UserId = None
 
     @property
     def AndroidAppId(self):
@@ -97,6 +100,17 @@ class AndroidApp(AbstractModel):
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
 
+    @property
+    def UserId(self):
+        """用户 Id
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
 
     def _deserialize(self, params):
         self._AndroidAppId = params.get("AndroidAppId")
@@ -109,6 +123,7 @@ class AndroidApp(AbstractModel):
                 obj._deserialize(item)
                 self._AndroidAppVersionInfo.append(obj)
         self._CreateTime = params.get("CreateTime")
+        self._UserId = params.get("UserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2223,10 +2238,13 @@ class DescribeAndroidAppsRequest(AbstractModel):
         :type Limit: int
         :param _AndroidAppIds: 应用ID数组
         :type AndroidAppIds: list of str
+        :param _Filters: 过滤条件
+        :type Filters: list of Filter
         """
         self._Offset = None
         self._Limit = None
         self._AndroidAppIds = None
+        self._Filters = None
 
     @property
     def Offset(self):
@@ -2261,11 +2279,28 @@ class DescribeAndroidAppsRequest(AbstractModel):
     def AndroidAppIds(self, AndroidAppIds):
         self._AndroidAppIds = AndroidAppIds
 
+    @property
+    def Filters(self):
+        """过滤条件
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
 
     def _deserialize(self, params):
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._AndroidAppIds = params.get("AndroidAppIds")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

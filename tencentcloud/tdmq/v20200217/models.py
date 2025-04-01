@@ -27751,6 +27751,10 @@ class RabbitMQClusterInfo(AbstractModel):
         :type PayMode: int
         :param _InstanceType: 实例类型，0 专享版、1 Serverless 版
         :type InstanceType: int
+        :param _IsolatedTime: 开始隔离时间
+        :type IsolatedTime: int
+        :param _Container: 是否为容器实例，默认 true
+        :type Container: bool
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -27776,6 +27780,8 @@ class RabbitMQClusterInfo(AbstractModel):
         self._ClusterVersion = None
         self._PayMode = None
         self._InstanceType = None
+        self._IsolatedTime = None
+        self._Container = None
 
     @property
     def ClusterId(self):
@@ -28042,6 +28048,28 @@ class RabbitMQClusterInfo(AbstractModel):
     def InstanceType(self, InstanceType):
         self._InstanceType = InstanceType
 
+    @property
+    def IsolatedTime(self):
+        """开始隔离时间
+        :rtype: int
+        """
+        return self._IsolatedTime
+
+    @IsolatedTime.setter
+    def IsolatedTime(self, IsolatedTime):
+        self._IsolatedTime = IsolatedTime
+
+    @property
+    def Container(self):
+        """是否为容器实例，默认 true
+        :rtype: bool
+        """
+        return self._Container
+
+    @Container.setter
+    def Container(self, Container):
+        self._Container = Container
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -28073,6 +28101,8 @@ class RabbitMQClusterInfo(AbstractModel):
         self._ClusterVersion = params.get("ClusterVersion")
         self._PayMode = params.get("PayMode")
         self._InstanceType = params.get("InstanceType")
+        self._IsolatedTime = params.get("IsolatedTime")
+        self._Container = params.get("Container")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29380,6 +29410,8 @@ class RabbitMQVipInstance(AbstractModel):
         :type CreateTime: int
         :param _InstanceType: 实例类型，0 专享版、1 Serverless 版
         :type InstanceType: int
+        :param _IsolatedTime: 隔离时间，毫秒为单位
+        :type IsolatedTime: int
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -29401,6 +29433,7 @@ class RabbitMQVipInstance(AbstractModel):
         self._Vpcs = None
         self._CreateTime = None
         self._InstanceType = None
+        self._IsolatedTime = None
 
     @property
     def InstanceId(self):
@@ -29625,6 +29658,17 @@ class RabbitMQVipInstance(AbstractModel):
     def InstanceType(self, InstanceType):
         self._InstanceType = InstanceType
 
+    @property
+    def IsolatedTime(self):
+        """隔离时间，毫秒为单位
+        :rtype: int
+        """
+        return self._IsolatedTime
+
+    @IsolatedTime.setter
+    def IsolatedTime(self, IsolatedTime):
+        self._IsolatedTime = IsolatedTime
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -29652,6 +29696,7 @@ class RabbitMQVipInstance(AbstractModel):
                 self._Vpcs.append(obj)
         self._CreateTime = params.get("CreateTime")
         self._InstanceType = params.get("InstanceType")
+        self._IsolatedTime = params.get("IsolatedTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

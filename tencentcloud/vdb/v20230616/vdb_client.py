@@ -49,6 +49,29 @@ class VdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateInstance(self, request):
+        """本接口（CreateInstance）用于创建向量数据库实例。
+
+        :param request: Request instance for CreateInstance.
+        :type request: :class:`tencentcloud.vdb.v20230616.models.CreateInstanceRequest`
+        :rtype: :class:`tencentcloud.vdb.v20230616.models.CreateInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDBSecurityGroups(self, request):
         """本接口(DescribeDBSecurityGroups)用于查询实例的安全组详情。
 
@@ -63,6 +86,29 @@ class VdbClient(AbstractClient):
             body = self.call("DescribeDBSecurityGroups", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDBSecurityGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeInstanceMaintenanceWindow(self, request):
+        """本接口（DescribeInstanceMaintenanceWindow）用于查看实例维护时间窗。
+
+        :param request: Request instance for DescribeInstanceMaintenanceWindow.
+        :type request: :class:`tencentcloud.vdb.v20230616.models.DescribeInstanceMaintenanceWindowRequest`
+        :rtype: :class:`tencentcloud.vdb.v20230616.models.DescribeInstanceMaintenanceWindowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceMaintenanceWindow", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceMaintenanceWindowResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -118,6 +164,29 @@ class VdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DestroyInstances(self, request):
+        """本接口（DestroyInstances）用于销毁实例。
+
+        :param request: Request instance for DestroyInstances.
+        :type request: :class:`tencentcloud.vdb.v20230616.models.DestroyInstancesRequest`
+        :rtype: :class:`tencentcloud.vdb.v20230616.models.DestroyInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DestroyInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DestroyInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DisassociateSecurityGroups(self, request):
         """本接口(DisassociateSecurityGroups)用于安全组批量解绑实例。
 
@@ -141,6 +210,29 @@ class VdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def IsolateInstance(self, request):
+        """本接口（IsolateInstance）用于隔离实例于回收站，在回收站保护时长内可恢复实例。
+
+        :param request: Request instance for IsolateInstance.
+        :type request: :class:`tencentcloud.vdb.v20230616.models.IsolateInstanceRequest`
+        :rtype: :class:`tencentcloud.vdb.v20230616.models.IsolateInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("IsolateInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.IsolateInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyDBInstanceSecurityGroups(self, request):
         """本接口(ModifyDBInstanceSecurityGroups)用于修改实例绑定的安全组。
 
@@ -155,6 +247,98 @@ class VdbClient(AbstractClient):
             body = self.call("ModifyDBInstanceSecurityGroups", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyDBInstanceSecurityGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyInstanceMaintenanceWindow(self, request):
+        """本接口（ModifyInstanceMaintenanceWindow）用于修改实例维护时间窗范围。
+
+        :param request: Request instance for ModifyInstanceMaintenanceWindow.
+        :type request: :class:`tencentcloud.vdb.v20230616.models.ModifyInstanceMaintenanceWindowRequest`
+        :rtype: :class:`tencentcloud.vdb.v20230616.models.ModifyInstanceMaintenanceWindowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstanceMaintenanceWindow", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstanceMaintenanceWindowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RecoverInstance(self, request):
+        """本接口（RecoverInstance）用于恢复在回收站隔离的实例。
+
+        :param request: Request instance for RecoverInstance.
+        :type request: :class:`tencentcloud.vdb.v20230616.models.RecoverInstanceRequest`
+        :rtype: :class:`tencentcloud.vdb.v20230616.models.RecoverInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RecoverInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.RecoverInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ScaleOutInstance(self, request):
+        """本接口（ScaleOutInstance）用于水平扩容节点数量。
+
+        :param request: Request instance for ScaleOutInstance.
+        :type request: :class:`tencentcloud.vdb.v20230616.models.ScaleOutInstanceRequest`
+        :rtype: :class:`tencentcloud.vdb.v20230616.models.ScaleOutInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ScaleOutInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.ScaleOutInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ScaleUpInstance(self, request):
+        """本接口（ScaleUpInstance）用于升级节点配置规格。
+
+        :param request: Request instance for ScaleUpInstance.
+        :type request: :class:`tencentcloud.vdb.v20230616.models.ScaleUpInstanceRequest`
+        :rtype: :class:`tencentcloud.vdb.v20230616.models.ScaleUpInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ScaleUpInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.ScaleUpInstanceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

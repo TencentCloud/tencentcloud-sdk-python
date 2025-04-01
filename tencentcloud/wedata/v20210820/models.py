@@ -2920,6 +2920,321 @@ class BaseClusterInfo(AbstractModel):
         
 
 
+class BaseRole(AbstractModel):
+    """基础角色对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoleId: 角色id
+        :type RoleId: str
+        :param _RoleName: 角色名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoleName: str
+        :param _DisplayName: 角色昵称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DisplayName: str
+        :param _Description: 描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _RoleType: 角色类型, 分为System,Tenant,Project,Commercial
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoleType: str
+        :param _SystemDefault: 系统预设
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SystemDefault: bool
+        :param _Parameters: 自定义参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Parameters: str
+        :param _MemberCount: 成员统计
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemberCount: int
+        :param _Privileges: 权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Privileges: list of RolePrivilege
+        :param _Operator: 操作者
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Operator: :class:`tencentcloud.wedata.v20210820.models.BaseUser`
+        :param _OperateTime: 操作时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperateTime: int
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
+        :param _CreateTimeStr: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTimeStr: str
+        :param _UpdateTimeStr: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTimeStr: str
+        :param _ProjectId: 项目id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: str
+        :param _UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param _Creator: 创建人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Creator: str
+        """
+        self._RoleId = None
+        self._RoleName = None
+        self._DisplayName = None
+        self._Description = None
+        self._RoleType = None
+        self._SystemDefault = None
+        self._Parameters = None
+        self._MemberCount = None
+        self._Privileges = None
+        self._Operator = None
+        self._OperateTime = None
+        self._CreateTime = None
+        self._CreateTimeStr = None
+        self._UpdateTimeStr = None
+        self._ProjectId = None
+        self._UpdateTime = None
+        self._Creator = None
+
+    @property
+    def RoleId(self):
+        """角色id
+        :rtype: str
+        """
+        return self._RoleId
+
+    @RoleId.setter
+    def RoleId(self, RoleId):
+        self._RoleId = RoleId
+
+    @property
+    def RoleName(self):
+        """角色名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+    @property
+    def DisplayName(self):
+        """角色昵称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DisplayName
+
+    @DisplayName.setter
+    def DisplayName(self, DisplayName):
+        self._DisplayName = DisplayName
+
+    @property
+    def Description(self):
+        """描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def RoleType(self):
+        """角色类型, 分为System,Tenant,Project,Commercial
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RoleType
+
+    @RoleType.setter
+    def RoleType(self, RoleType):
+        self._RoleType = RoleType
+
+    @property
+    def SystemDefault(self):
+        """系统预设
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._SystemDefault
+
+    @SystemDefault.setter
+    def SystemDefault(self, SystemDefault):
+        self._SystemDefault = SystemDefault
+
+    @property
+    def Parameters(self):
+        """自定义参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Parameters
+
+    @Parameters.setter
+    def Parameters(self, Parameters):
+        self._Parameters = Parameters
+
+    @property
+    def MemberCount(self):
+        """成员统计
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MemberCount
+
+    @MemberCount.setter
+    def MemberCount(self, MemberCount):
+        self._MemberCount = MemberCount
+
+    @property
+    def Privileges(self):
+        """权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RolePrivilege
+        """
+        return self._Privileges
+
+    @Privileges.setter
+    def Privileges(self, Privileges):
+        self._Privileges = Privileges
+
+    @property
+    def Operator(self):
+        """操作者
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.BaseUser`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def OperateTime(self):
+        """操作时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._OperateTime
+
+    @OperateTime.setter
+    def OperateTime(self, OperateTime):
+        self._OperateTime = OperateTime
+
+    @property
+    def CreateTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def CreateTimeStr(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTimeStr
+
+    @CreateTimeStr.setter
+    def CreateTimeStr(self, CreateTimeStr):
+        self._CreateTimeStr = CreateTimeStr
+
+    @property
+    def UpdateTimeStr(self):
+        """更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdateTimeStr
+
+    @UpdateTimeStr.setter
+    def UpdateTimeStr(self, UpdateTimeStr):
+        self._UpdateTimeStr = UpdateTimeStr
+
+    @property
+    def ProjectId(self):
+        """项目id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def UpdateTime(self):
+        """更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Creator(self):
+        """创建人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Creator
+
+    @Creator.setter
+    def Creator(self, Creator):
+        self._Creator = Creator
+
+
+    def _deserialize(self, params):
+        self._RoleId = params.get("RoleId")
+        self._RoleName = params.get("RoleName")
+        self._DisplayName = params.get("DisplayName")
+        self._Description = params.get("Description")
+        self._RoleType = params.get("RoleType")
+        self._SystemDefault = params.get("SystemDefault")
+        self._Parameters = params.get("Parameters")
+        self._MemberCount = params.get("MemberCount")
+        if params.get("Privileges") is not None:
+            self._Privileges = []
+            for item in params.get("Privileges"):
+                obj = RolePrivilege()
+                obj._deserialize(item)
+                self._Privileges.append(obj)
+        if params.get("Operator") is not None:
+            self._Operator = BaseUser()
+            self._Operator._deserialize(params.get("Operator"))
+        self._OperateTime = params.get("OperateTime")
+        self._CreateTime = params.get("CreateTime")
+        self._CreateTimeStr = params.get("CreateTimeStr")
+        self._UpdateTimeStr = params.get("UpdateTimeStr")
+        self._ProjectId = params.get("ProjectId")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Creator = params.get("Creator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BaseTenant(AbstractModel):
     """租户基础信息
 
@@ -32196,6 +32511,277 @@ class DescribeResourceManagePathTreesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRoleListRequest(AbstractModel):
+    """DescribeRoleList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ShowAllRoles: 返回所有角色。
+        :type ShowAllRoles: bool
+        :param _IncludeRoleTypes: 需要返回的角色类型(system,tenant,project)
+        :type IncludeRoleTypes: list of str
+        :param _DescribeMemberCount: 返回角色绑定人员统计，仅私有化版本支持
+        :type DescribeMemberCount: bool
+        :param _DescribeOperator: 返回操作者信息，私有化多租户版本
+        :type DescribeOperator: bool
+        :param _DescribeSystemRoleOnly: 系统角色
+        :type DescribeSystemRoleOnly: bool
+        :param _DescribeCustomRoleOnly: 自定义角色
+        :type DescribeCustomRoleOnly: bool
+        :param _DescribePrivileges: 查看权限
+        :type DescribePrivileges: bool
+        :param _RoleIds: 筛选角色id
+        :type RoleIds: list of str
+        :param _ProjectId: 项目id
+        :type ProjectId: str
+        :param _PageNumber: 页码
+        :type PageNumber: int
+        :param _PageSize: 分页信息
+        :type PageSize: int
+        :param _Filters: 查询字段
+        :type Filters: list of Filter
+        :param _OrderFields: 排序字段
+        :type OrderFields: list of OrderFields
+        """
+        self._ShowAllRoles = None
+        self._IncludeRoleTypes = None
+        self._DescribeMemberCount = None
+        self._DescribeOperator = None
+        self._DescribeSystemRoleOnly = None
+        self._DescribeCustomRoleOnly = None
+        self._DescribePrivileges = None
+        self._RoleIds = None
+        self._ProjectId = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._Filters = None
+        self._OrderFields = None
+
+    @property
+    def ShowAllRoles(self):
+        """返回所有角色。
+        :rtype: bool
+        """
+        return self._ShowAllRoles
+
+    @ShowAllRoles.setter
+    def ShowAllRoles(self, ShowAllRoles):
+        self._ShowAllRoles = ShowAllRoles
+
+    @property
+    def IncludeRoleTypes(self):
+        """需要返回的角色类型(system,tenant,project)
+        :rtype: list of str
+        """
+        return self._IncludeRoleTypes
+
+    @IncludeRoleTypes.setter
+    def IncludeRoleTypes(self, IncludeRoleTypes):
+        self._IncludeRoleTypes = IncludeRoleTypes
+
+    @property
+    def DescribeMemberCount(self):
+        """返回角色绑定人员统计，仅私有化版本支持
+        :rtype: bool
+        """
+        return self._DescribeMemberCount
+
+    @DescribeMemberCount.setter
+    def DescribeMemberCount(self, DescribeMemberCount):
+        self._DescribeMemberCount = DescribeMemberCount
+
+    @property
+    def DescribeOperator(self):
+        """返回操作者信息，私有化多租户版本
+        :rtype: bool
+        """
+        return self._DescribeOperator
+
+    @DescribeOperator.setter
+    def DescribeOperator(self, DescribeOperator):
+        self._DescribeOperator = DescribeOperator
+
+    @property
+    def DescribeSystemRoleOnly(self):
+        """系统角色
+        :rtype: bool
+        """
+        return self._DescribeSystemRoleOnly
+
+    @DescribeSystemRoleOnly.setter
+    def DescribeSystemRoleOnly(self, DescribeSystemRoleOnly):
+        self._DescribeSystemRoleOnly = DescribeSystemRoleOnly
+
+    @property
+    def DescribeCustomRoleOnly(self):
+        """自定义角色
+        :rtype: bool
+        """
+        return self._DescribeCustomRoleOnly
+
+    @DescribeCustomRoleOnly.setter
+    def DescribeCustomRoleOnly(self, DescribeCustomRoleOnly):
+        self._DescribeCustomRoleOnly = DescribeCustomRoleOnly
+
+    @property
+    def DescribePrivileges(self):
+        """查看权限
+        :rtype: bool
+        """
+        return self._DescribePrivileges
+
+    @DescribePrivileges.setter
+    def DescribePrivileges(self, DescribePrivileges):
+        self._DescribePrivileges = DescribePrivileges
+
+    @property
+    def RoleIds(self):
+        """筛选角色id
+        :rtype: list of str
+        """
+        return self._RoleIds
+
+    @RoleIds.setter
+    def RoleIds(self, RoleIds):
+        self._RoleIds = RoleIds
+
+    @property
+    def ProjectId(self):
+        """项目id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def PageNumber(self):
+        """页码
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        """分页信息
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Filters(self):
+        """查询字段
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def OrderFields(self):
+        """排序字段
+        :rtype: list of OrderFields
+        """
+        return self._OrderFields
+
+    @OrderFields.setter
+    def OrderFields(self, OrderFields):
+        self._OrderFields = OrderFields
+
+
+    def _deserialize(self, params):
+        self._ShowAllRoles = params.get("ShowAllRoles")
+        self._IncludeRoleTypes = params.get("IncludeRoleTypes")
+        self._DescribeMemberCount = params.get("DescribeMemberCount")
+        self._DescribeOperator = params.get("DescribeOperator")
+        self._DescribeSystemRoleOnly = params.get("DescribeSystemRoleOnly")
+        self._DescribeCustomRoleOnly = params.get("DescribeCustomRoleOnly")
+        self._DescribePrivileges = params.get("DescribePrivileges")
+        self._RoleIds = params.get("RoleIds")
+        self._ProjectId = params.get("ProjectId")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        if params.get("OrderFields") is not None:
+            self._OrderFields = []
+            for item in params.get("OrderFields"):
+                obj = OrderFields()
+                obj._deserialize(item)
+                self._OrderFields.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRoleListResponse(AbstractModel):
+    """DescribeRoleList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 角色列表
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.PageRoles`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """角色列表
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.PageRoles`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = PageRoles()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRuleDimStatRequest(AbstractModel):
     """DescribeRuleDimStat请求参数结构体
 
@@ -61111,6 +61697,117 @@ class OrganizationalFunction(AbstractModel):
         
 
 
+class PageRoles(AbstractModel):
+    """角色列表分页信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Rows: 角色信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rows: list of BaseRole
+        :param _PageNumber: 页码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageNumber: int
+        :param _PageSize: 分页大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageSize: int
+        :param _TotalCount: 总个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _TotalPageNumber: 总分页页码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalPageNumber: int
+        """
+        self._Rows = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._TotalCount = None
+        self._TotalPageNumber = None
+
+    @property
+    def Rows(self):
+        """角色信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of BaseRole
+        """
+        return self._Rows
+
+    @Rows.setter
+    def Rows(self, Rows):
+        self._Rows = Rows
+
+    @property
+    def PageNumber(self):
+        """页码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        """分页大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalCount(self):
+        """总个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TotalPageNumber(self):
+        """总分页页码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalPageNumber
+
+    @TotalPageNumber.setter
+    def TotalPageNumber(self, TotalPageNumber):
+        self._TotalPageNumber = TotalPageNumber
+
+
+    def _deserialize(self, params):
+        if params.get("Rows") is not None:
+            self._Rows = []
+            for item in params.get("Rows"):
+                obj = BaseRole()
+                obj._deserialize(item)
+                self._Rows.append(obj)
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._TotalCount = params.get("TotalCount")
+        self._TotalPageNumber = params.get("TotalPageNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Pair(AbstractModel):
     """键值对
 
@@ -85117,6 +85814,100 @@ class UpdateDataModelRegistryInfoResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateProjectUserRoleRequest(AbstractModel):
+    """UpdateProjectUserRole请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目id
+        :type ProjectId: str
+        :param _UserIds: 用户id
+        :type UserIds: list of str
+        :param _RoleIds: 角色id
+        :type RoleIds: list of str
+        """
+        self._ProjectId = None
+        self._UserIds = None
+        self._RoleIds = None
+
+    @property
+    def ProjectId(self):
+        """项目id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def UserIds(self):
+        """用户id
+        :rtype: list of str
+        """
+        return self._UserIds
+
+    @UserIds.setter
+    def UserIds(self, UserIds):
+        self._UserIds = UserIds
+
+    @property
+    def RoleIds(self):
+        """角色id
+        :rtype: list of str
+        """
+        return self._RoleIds
+
+    @RoleIds.setter
+    def RoleIds(self, RoleIds):
+        self._RoleIds = RoleIds
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._UserIds = params.get("UserIds")
+        self._RoleIds = params.get("RoleIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateProjectUserRoleResponse(AbstractModel):
+    """UpdateProjectUserRole返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 

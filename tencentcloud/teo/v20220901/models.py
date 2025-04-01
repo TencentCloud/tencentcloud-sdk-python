@@ -19274,7 +19274,7 @@ class DescribeSecurityIPGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IPGroups: 安全 IP 组的详细配置信息。包含每个安全 IP 组的 ID 、名称和 IP / 网段列表信息。
+        :param _IPGroups: 安全 IP 组的详细配置信息。包含每个安全 IP 组的 ID 、名称、 IP / 网段列表信息和过期时间信息。
         :type IPGroups: list of IPGroup
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -19284,7 +19284,7 @@ class DescribeSecurityIPGroupResponse(AbstractModel):
 
     @property
     def IPGroups(self):
-        """安全 IP 组的详细配置信息。包含每个安全 IP 组的 ID 、名称和 IP / 网段列表信息。
+        """安全 IP 组的详细配置信息。包含每个安全 IP 组的 ID 、名称、 IP / 网段列表信息和过期时间信息。
         :rtype: list of IPGroup
         """
         return self._IPGroups
@@ -25802,6 +25802,57 @@ class Https(AbstractModel):
         
 
 
+class IPExpireInfo(AbstractModel):
+    """存储定时过期时间和对应 IP。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExpireTime: 定时过期时间，遵循 ISO 8601 标准的日期和时间格式。例如 "2022-01-01T00:00:00+08:00"。
+        :type ExpireTime: str
+        :param _IPList: IP 列表。仅支持 IP  及 IP 网段。
+        :type IPList: list of str
+        """
+        self._ExpireTime = None
+        self._IPList = None
+
+    @property
+    def ExpireTime(self):
+        """定时过期时间，遵循 ISO 8601 标准的日期和时间格式。例如 "2022-01-01T00:00:00+08:00"。
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def IPList(self):
+        """IP 列表。仅支持 IP  及 IP 网段。
+        :rtype: list of str
+        """
+        return self._IPList
+
+    @IPList.setter
+    def IPList(self, IPList):
+        self._IPList = IPList
+
+
+    def _deserialize(self, params):
+        self._ExpireTime = params.get("ExpireTime")
+        self._IPList = params.get("IPList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class IPGroup(AbstractModel):
     """IP 网段组
 
@@ -25813,12 +25864,19 @@ class IPGroup(AbstractModel):
         :type GroupId: int
         :param _Name: 组名称。
         :type Name: str
-        :param _Content: IP 组内容，仅支持 IP 及 IP 掩码。
+        :param _Content: IP 组内容，仅支持 IP 及 IP 网段。
         :type Content: list of str
+        :param _IPExpireInfo: IP 定时过期信息。
+作为入参：用于为指定的 IP 地址或网段配置定时过期时间。
+作为出参，包含以下两类信息：
+<li>当前未到期的定时过期信息：尚未触发的过期配置。</li>
+<li>一周内已到期的定时过期信息：已触发的过期配置。</li>
+        :type IPExpireInfo: list of IPExpireInfo
         """
         self._GroupId = None
         self._Name = None
         self._Content = None
+        self._IPExpireInfo = None
 
     @property
     def GroupId(self):
@@ -25844,7 +25902,7 @@ class IPGroup(AbstractModel):
 
     @property
     def Content(self):
-        """IP 组内容，仅支持 IP 及 IP 掩码。
+        """IP 组内容，仅支持 IP 及 IP 网段。
         :rtype: list of str
         """
         return self._Content
@@ -25853,11 +25911,32 @@ class IPGroup(AbstractModel):
     def Content(self, Content):
         self._Content = Content
 
+    @property
+    def IPExpireInfo(self):
+        """IP 定时过期信息。
+作为入参：用于为指定的 IP 地址或网段配置定时过期时间。
+作为出参，包含以下两类信息：
+<li>当前未到期的定时过期信息：尚未触发的过期配置。</li>
+<li>一周内已到期的定时过期信息：已触发的过期配置。</li>
+        :rtype: list of IPExpireInfo
+        """
+        return self._IPExpireInfo
+
+    @IPExpireInfo.setter
+    def IPExpireInfo(self, IPExpireInfo):
+        self._IPExpireInfo = IPExpireInfo
+
 
     def _deserialize(self, params):
         self._GroupId = params.get("GroupId")
         self._Name = params.get("Name")
         self._Content = params.get("Content")
+        if params.get("IPExpireInfo") is not None:
+            self._IPExpireInfo = []
+            for item in params.get("IPExpireInfo"):
+                obj = IPExpireInfo()
+                obj._deserialize(item)
+                self._IPExpireInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32583,10 +32662,7 @@ class ModifySecurityIPGroupRequest(AbstractModel):
         :type ZoneId: str
         :param _IPGroup: IP 组配置。
         :type IPGroup: :class:`tencentcloud.teo.v20220901.models.IPGroup`
-        :param _Mode: 操作类型，取值有：
-<li> append: 向 IPGroup 中追加 Content 参数中内容；</li>
-<li> remove: 从 IPGroup 中删除 Content 参数中内容；</li>
-<li> update: 全量替换 IPGroup 内容，并可修改 IPGroup 名称。 </li>
+        :param _Mode: 操作类型，取值有：<li> append: 向 IPGroup 中添加新的 IP 地址或设置定时过期时间；</li><li>  remove: 从 IPGroup 中删除指定的 IP 地址或其定时过期时间；</li><li>  update: 完全替换 IPGroup 中 Content 或 ExpireInfo 的内容，并且可以修改 IPGroup 的名称。</li>    使用 append 操作时注意：   <li> 为 IP 或网段添加定时过期时间时，必须晚于当前时间。如果该 IP 或网段在组中不存在，必须同时在 Content 参数中添加该 IP 或网段。若该 IP 或网段已存在过期时间，则新时间将覆盖原有时间。</li>  使用 remove 操作时注意： <li> 删除 IP 或网段时，相关的未过期的定时过期时间也会被删除；</li> <li> 删除定时过期时间时，仅能删除当前未过期的时间。</li>  使用 update 操作时注意： <li> 替换 Content 内容时，不在 Content 中的 IP 或网段的未过期时间会被删除；</li> <li> 替换 IPExpireInfo 内容时，IPExpireInfo 中的 IP 或网段必须在 Content 中或在 IP 组中存在。</li>
         :type Mode: str
         """
         self._ZoneId = None
@@ -32617,10 +32693,7 @@ class ModifySecurityIPGroupRequest(AbstractModel):
 
     @property
     def Mode(self):
-        """操作类型，取值有：
-<li> append: 向 IPGroup 中追加 Content 参数中内容；</li>
-<li> remove: 从 IPGroup 中删除 Content 参数中内容；</li>
-<li> update: 全量替换 IPGroup 内容，并可修改 IPGroup 名称。 </li>
+        """操作类型，取值有：<li> append: 向 IPGroup 中添加新的 IP 地址或设置定时过期时间；</li><li>  remove: 从 IPGroup 中删除指定的 IP 地址或其定时过期时间；</li><li>  update: 完全替换 IPGroup 中 Content 或 ExpireInfo 的内容，并且可以修改 IPGroup 的名称。</li>    使用 append 操作时注意：   <li> 为 IP 或网段添加定时过期时间时，必须晚于当前时间。如果该 IP 或网段在组中不存在，必须同时在 Content 参数中添加该 IP 或网段。若该 IP 或网段已存在过期时间，则新时间将覆盖原有时间。</li>  使用 remove 操作时注意： <li> 删除 IP 或网段时，相关的未过期的定时过期时间也会被删除；</li> <li> 删除定时过期时间时，仅能删除当前未过期的时间。</li>  使用 update 操作时注意： <li> 替换 Content 内容时，不在 Content 中的 IP 或网段的未过期时间会被删除；</li> <li> 替换 IPExpireInfo 内容时，IPExpireInfo 中的 IP 或网段必须在 Content 中或在 IP 组中存在。</li>
         :rtype: str
         """
         return self._Mode

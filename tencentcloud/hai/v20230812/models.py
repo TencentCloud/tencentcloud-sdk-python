@@ -427,10 +427,8 @@ class DescribeApplicationsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 应用总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _ApplicationSet: 分页返回的应用列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationSet: list of ApplicationInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -442,7 +440,6 @@ class DescribeApplicationsResponse(AbstractModel):
     @property
     def TotalCount(self):
         """应用总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -454,7 +451,6 @@ class DescribeApplicationsResponse(AbstractModel):
     @property
     def ApplicationSet(self):
         """分页返回的应用列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ApplicationInfo
         """
         return self._ApplicationSet
@@ -532,7 +528,6 @@ class DescribeInstanceNetworkStatusResponse(AbstractModel):
         :param _TotalCount: 查询结果集长度
         :type TotalCount: int
         :param _NetworkStatusSet: 查询结果集
-注意：此字段可能返回 null，表示取不到有效值。
         :type NetworkStatusSet: list of NetworkStatus
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -555,7 +550,6 @@ class DescribeInstanceNetworkStatusResponse(AbstractModel):
     @property
     def NetworkStatusSet(self):
         """查询结果集
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of NetworkStatus
         """
         return self._NetworkStatusSet
@@ -2097,10 +2091,8 @@ class LoginSetting(AbstractModel):
     def __init__(self):
         r"""
         :param _ServiceName: 服务名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceName: str
         :param _Url: 服务登录url
-注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
         """
         self._ServiceName = None
@@ -2109,7 +2101,6 @@ class LoginSetting(AbstractModel):
     @property
     def ServiceName(self):
         """服务名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ServiceName
@@ -2121,7 +2112,6 @@ class LoginSetting(AbstractModel):
     @property
     def Url(self):
         """服务登录url
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Url
@@ -3010,14 +3000,11 @@ class SystemDisk(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskType: 系统盘类型。系统盘类型限制详见[存储概述](https://cloud.tencent.com/document/product/213/4952)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><li>CLOUD_BSSD：通用性SSD云硬盘<br><br>默认取值：当前有库存的硬盘类型。	
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _DiskType: 系统盘类型。取值范围：<li>CLOUD_PREMIUM：高性能云硬盘</li><li>CLOUD_HSSD：增强型SSD云盘</li>默认取值：当前有库存的硬盘类型。
         :type DiskType: str
         :param _DiskSize: 系统盘大小，单位：GB。默认值为 80
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiskSize: int
         :param _DiskName: 系统盘分区盘符
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiskName: str
         """
         self._DiskType = None
@@ -3026,8 +3013,7 @@ class SystemDisk(AbstractModel):
 
     @property
     def DiskType(self):
-        """系统盘类型。系统盘类型限制详见[存储概述](https://cloud.tencent.com/document/product/213/4952)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><li>CLOUD_BSSD：通用性SSD云硬盘<br><br>默认取值：当前有库存的硬盘类型。	
-注意：此字段可能返回 null，表示取不到有效值。
+        """系统盘类型。取值范围：<li>CLOUD_PREMIUM：高性能云硬盘</li><li>CLOUD_HSSD：增强型SSD云盘</li>默认取值：当前有库存的硬盘类型。
         :rtype: str
         """
         return self._DiskType
@@ -3039,7 +3025,6 @@ class SystemDisk(AbstractModel):
     @property
     def DiskSize(self):
         """系统盘大小，单位：GB。默认值为 80
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DiskSize
@@ -3051,7 +3036,6 @@ class SystemDisk(AbstractModel):
     @property
     def DiskName(self):
         """系统盘分区盘符
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DiskName

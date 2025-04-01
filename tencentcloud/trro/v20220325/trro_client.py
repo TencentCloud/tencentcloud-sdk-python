@@ -95,6 +95,29 @@ class TrroClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateCloudRecording(self, request):
+        """启动云端录制功能，完成房间内的音视频录制，并上传到指定的云存储。
+
+        :param request: Request instance for CreateCloudRecording.
+        :type request: :class:`tencentcloud.trro.v20220325.models.CreateCloudRecordingRequest`
+        :rtype: :class:`tencentcloud.trro.v20220325.models.CreateCloudRecordingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCloudRecording", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCloudRecordingResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateDevice(self, request):
         """用于创建设备
 
@@ -132,6 +155,29 @@ class TrroClient(AbstractClient):
             body = self.call("CreateProject", params, headers=headers)
             response = json.loads(body)
             model = models.CreateProjectResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteCloudRecording(self, request):
+        """成功开启录制后，可以使用此接口来停止录制任务。停止录制成功后不代表文件全部传输完成，如果未完成后台将会继续上传文件，成功后通过事件回调通知客户文件全部传输完成状态。
+
+        :param request: Request instance for DeleteCloudRecording.
+        :type request: :class:`tencentcloud.trro.v20220325.models.DeleteCloudRecordingRequest`
+        :rtype: :class:`tencentcloud.trro.v20220325.models.DeleteCloudRecordingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCloudRecording", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCloudRecordingResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -486,6 +532,31 @@ class TrroClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyCallbackUrl(self, request):
+        """设置回调URL
+        录制回调事件内容参考：https://cloud.tencent.com/document/product/647/81113
+        转推回调事件内容参考：https://cloud.tencent.com/document/product/647/88552
+
+        :param request: Request instance for ModifyCallbackUrl.
+        :type request: :class:`tencentcloud.trro.v20220325.models.ModifyCallbackUrlRequest`
+        :rtype: :class:`tencentcloud.trro.v20220325.models.ModifyCallbackUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCallbackUrl", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCallbackUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyDevice(self, request):
         """用于修改设备信息
 
@@ -571,6 +642,52 @@ class TrroClient(AbstractClient):
             body = self.call("ModifyProjectSecMode", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyProjectSecModeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StartPublishLiveStream(self, request):
+        """启动一个混流转推任务，将 TRTC 房间的多路音视频流混成一路音视频流，编码后推到直播 CDN 或者回推到 TRTC 房间。也支持不转码直接转推 TRTC 房间的单路流。启动成功后，会返回一个 SdkAppid 维度唯一的任务 Id（TaskId）。您需要保存该 TaskId，后续需要依赖此 TaskId 更新和结束任务。
+
+        :param request: Request instance for StartPublishLiveStream.
+        :type request: :class:`tencentcloud.trro.v20220325.models.StartPublishLiveStreamRequest`
+        :rtype: :class:`tencentcloud.trro.v20220325.models.StartPublishLiveStreamResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartPublishLiveStream", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartPublishLiveStreamResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StopPublishLiveStream(self, request):
+        """停止指定的混流转推任务。如果没有调用 Stop 接口停止任务，所有参与混流转推的主播离开房间超过MaxIdleTime 设置的时间后，任务也会自动停止。
+
+        :param request: Request instance for StopPublishLiveStream.
+        :type request: :class:`tencentcloud.trro.v20220325.models.StopPublishLiveStreamRequest`
+        :rtype: :class:`tencentcloud.trro.v20220325.models.StopPublishLiveStreamResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopPublishLiveStream", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopPublishLiveStreamResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

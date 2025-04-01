@@ -315,6 +315,308 @@ class BoundLicensesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CloudStorage(AbstractModel):
+    """云端录制文件上传到云存储的参数（对象存储cos）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Vendor: 腾讯云对象存储COS以及第三方云存储账号信息
+0：腾讯云对象存储 COS
+1：AWS
+【注意】目前第三方云存储仅支持AWS，更多第三方云存储陆续支持中
+示例值：0
+        :type Vendor: int
+        :param _Region: 腾讯云对象存储的[地域信息]（https://cloud.tencent.com/document/product/436/6224#.E5.9C.B0.E5.9F.9F）。
+示例值：cn-shanghai-1
+
+AWS S3[地域信息]（https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions）
+示例值：ap-shanghai(cos, 具体参考云存储厂商支持的地域)
+        :type Region: str
+        :param _Bucket: 云存储桶名称。
+        :type Bucket: str
+        :param _AccessKey: 云存储的access_key账号信息。
+若存储至腾讯云对象存储COS，请前往https://console.cloud.tencent.com/cam/capi 查看或创建，对应链接中密钥字段的SecretId值。
+        :type AccessKey: str
+        :param _SecretKey: 云存储的secret_key账号信息。
+若存储至腾讯云对象存储COS，请前往https://console.cloud.tencent.com/cam/capi 查看或创建，对应链接中密钥字段的SecretKey值。
+        :type SecretKey: str
+        :param _FileNamePrefix: 云存储bucket 的指定位置，由字符串数组组成。合法的字符串范围az,AZ,0~9,'_'和'-'，举个例子，录制文件xxx.m3u8在 ["prefix1", "prefix2"]作用下，会变成prefix1/prefix2/TaskId/xxx.m3u8。
+        :type FileNamePrefix: list of str
+        """
+        self._Vendor = None
+        self._Region = None
+        self._Bucket = None
+        self._AccessKey = None
+        self._SecretKey = None
+        self._FileNamePrefix = None
+
+    @property
+    def Vendor(self):
+        """腾讯云对象存储COS以及第三方云存储账号信息
+0：腾讯云对象存储 COS
+1：AWS
+【注意】目前第三方云存储仅支持AWS，更多第三方云存储陆续支持中
+示例值：0
+        :rtype: int
+        """
+        return self._Vendor
+
+    @Vendor.setter
+    def Vendor(self, Vendor):
+        self._Vendor = Vendor
+
+    @property
+    def Region(self):
+        """腾讯云对象存储的[地域信息]（https://cloud.tencent.com/document/product/436/6224#.E5.9C.B0.E5.9F.9F）。
+示例值：cn-shanghai-1
+
+AWS S3[地域信息]（https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions）
+示例值：ap-shanghai(cos, 具体参考云存储厂商支持的地域)
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Bucket(self):
+        """云存储桶名称。
+        :rtype: str
+        """
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def AccessKey(self):
+        """云存储的access_key账号信息。
+若存储至腾讯云对象存储COS，请前往https://console.cloud.tencent.com/cam/capi 查看或创建，对应链接中密钥字段的SecretId值。
+        :rtype: str
+        """
+        return self._AccessKey
+
+    @AccessKey.setter
+    def AccessKey(self, AccessKey):
+        self._AccessKey = AccessKey
+
+    @property
+    def SecretKey(self):
+        """云存储的secret_key账号信息。
+若存储至腾讯云对象存储COS，请前往https://console.cloud.tencent.com/cam/capi 查看或创建，对应链接中密钥字段的SecretKey值。
+        :rtype: str
+        """
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
+    @property
+    def FileNamePrefix(self):
+        """云存储bucket 的指定位置，由字符串数组组成。合法的字符串范围az,AZ,0~9,'_'和'-'，举个例子，录制文件xxx.m3u8在 ["prefix1", "prefix2"]作用下，会变成prefix1/prefix2/TaskId/xxx.m3u8。
+        :rtype: list of str
+        """
+        return self._FileNamePrefix
+
+    @FileNamePrefix.setter
+    def FileNamePrefix(self, FileNamePrefix):
+        self._FileNamePrefix = FileNamePrefix
+
+
+    def _deserialize(self, params):
+        self._Vendor = params.get("Vendor")
+        self._Region = params.get("Region")
+        self._Bucket = params.get("Bucket")
+        self._AccessKey = params.get("AccessKey")
+        self._SecretKey = params.get("SecretKey")
+        self._FileNamePrefix = params.get("FileNamePrefix")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCloudRecordingRequest(AbstractModel):
+    """CreateCloudRecording请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目id
+        :type ProjectId: str
+        :param _DeviceId: 设备id
+        :type DeviceId: str
+        :param _VideoStreamId: 视频流号
+        :type VideoStreamId: int
+        :param _CloudStorage: 腾讯云对象存储COS以及第三方云存储的账号信息
+        :type CloudStorage: :class:`tencentcloud.trro.v20220325.models.CloudStorage`
+        :param _MaxMediaFileDuration: 如果是aac或者mp4文件格式，超过长度限制后，系统会自动拆分视频文件。单位：分钟。默认为1440min（24h），取值范围为1-1440。【单文件限制最大为2G，满足文件大小 >2G 或录制时长度 > 24h任意一个条件，文件都会自动切分】 Hls 格式录制此参数不生效。
+        :type MaxMediaFileDuration: int
+        :param _OutputFormat: 输出文件的格式（存储至COS等第三方存储时有效）。0：输出文件为hls格式。1：输出文件格式为hls+mp4。2：输出文件格式为hls+aac 。3：(默认)输出文件格式为mp4。4：输出文件格式为aac。
+        :type OutputFormat: int
+        :param _MaxIdleTime: 房间内持续没有主播的状态超过MaxIdleTime的时长，自动停止录制，单位：秒。默认值为 30 秒，该值需大于等于 5秒，且小于等于 86400秒(24小时)。 示例值：30
+        :type MaxIdleTime: int
+        """
+        self._ProjectId = None
+        self._DeviceId = None
+        self._VideoStreamId = None
+        self._CloudStorage = None
+        self._MaxMediaFileDuration = None
+        self._OutputFormat = None
+        self._MaxIdleTime = None
+
+    @property
+    def ProjectId(self):
+        """项目id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def DeviceId(self):
+        """设备id
+        :rtype: str
+        """
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+    @property
+    def VideoStreamId(self):
+        """视频流号
+        :rtype: int
+        """
+        return self._VideoStreamId
+
+    @VideoStreamId.setter
+    def VideoStreamId(self, VideoStreamId):
+        self._VideoStreamId = VideoStreamId
+
+    @property
+    def CloudStorage(self):
+        """腾讯云对象存储COS以及第三方云存储的账号信息
+        :rtype: :class:`tencentcloud.trro.v20220325.models.CloudStorage`
+        """
+        return self._CloudStorage
+
+    @CloudStorage.setter
+    def CloudStorage(self, CloudStorage):
+        self._CloudStorage = CloudStorage
+
+    @property
+    def MaxMediaFileDuration(self):
+        """如果是aac或者mp4文件格式，超过长度限制后，系统会自动拆分视频文件。单位：分钟。默认为1440min（24h），取值范围为1-1440。【单文件限制最大为2G，满足文件大小 >2G 或录制时长度 > 24h任意一个条件，文件都会自动切分】 Hls 格式录制此参数不生效。
+        :rtype: int
+        """
+        return self._MaxMediaFileDuration
+
+    @MaxMediaFileDuration.setter
+    def MaxMediaFileDuration(self, MaxMediaFileDuration):
+        self._MaxMediaFileDuration = MaxMediaFileDuration
+
+    @property
+    def OutputFormat(self):
+        """输出文件的格式（存储至COS等第三方存储时有效）。0：输出文件为hls格式。1：输出文件格式为hls+mp4。2：输出文件格式为hls+aac 。3：(默认)输出文件格式为mp4。4：输出文件格式为aac。
+        :rtype: int
+        """
+        return self._OutputFormat
+
+    @OutputFormat.setter
+    def OutputFormat(self, OutputFormat):
+        self._OutputFormat = OutputFormat
+
+    @property
+    def MaxIdleTime(self):
+        """房间内持续没有主播的状态超过MaxIdleTime的时长，自动停止录制，单位：秒。默认值为 30 秒，该值需大于等于 5秒，且小于等于 86400秒(24小时)。 示例值：30
+        :rtype: int
+        """
+        return self._MaxIdleTime
+
+    @MaxIdleTime.setter
+    def MaxIdleTime(self, MaxIdleTime):
+        self._MaxIdleTime = MaxIdleTime
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._DeviceId = params.get("DeviceId")
+        self._VideoStreamId = params.get("VideoStreamId")
+        if params.get("CloudStorage") is not None:
+            self._CloudStorage = CloudStorage()
+            self._CloudStorage._deserialize(params.get("CloudStorage"))
+        self._MaxMediaFileDuration = params.get("MaxMediaFileDuration")
+        self._OutputFormat = params.get("OutputFormat")
+        self._MaxIdleTime = params.get("MaxIdleTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCloudRecordingResponse(AbstractModel):
+    """CreateCloudRecording返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 云录制服务分配的任务 ID。任务 ID 是对一次录制生命周期过程的唯一标识，结束录制时会失去意义。任务 ID需要业务保存下来，作为下次针对这个录制任务操作的参数。
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        """云录制服务分配的任务 ID。任务 ID 是对一次录制生命周期过程的唯一标识，结束录制时会失去意义。任务 ID需要业务保存下来，作为下次针对这个录制任务操作的参数。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateDeviceRequest(AbstractModel):
     """CreateDevice请求参数结构体
 
@@ -545,6 +847,70 @@ class CreateProjectResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteCloudRecordingRequest(AbstractModel):
+    """DeleteCloudRecording请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 录制任务的唯一Id，在启动录制成功后会返回。
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        """录制任务的唯一Id，在启动录制成功后会返回。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCloudRecordingResponse(AbstractModel):
+    """DeleteCloudRecording返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -3116,6 +3482,130 @@ class License(AbstractModel):
         
 
 
+class ModifyCallbackUrlRequest(AbstractModel):
+    """ModifyCallbackUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目id
+        :type ProjectId: str
+        :param _CallbackUrl: 回调URL
+        :type CallbackUrl: str
+        :param _SignKey: 回调签名密钥，用于校验回调信息的完整性
+        :type SignKey: str
+        """
+        self._ProjectId = None
+        self._CallbackUrl = None
+        self._SignKey = None
+
+    @property
+    def ProjectId(self):
+        """项目id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def CallbackUrl(self):
+        """回调URL
+        :rtype: str
+        """
+        return self._CallbackUrl
+
+    @CallbackUrl.setter
+    def CallbackUrl(self, CallbackUrl):
+        self._CallbackUrl = CallbackUrl
+
+    @property
+    def SignKey(self):
+        """回调签名密钥，用于校验回调信息的完整性
+        :rtype: str
+        """
+        return self._SignKey
+
+    @SignKey.setter
+    def SignKey(self, SignKey):
+        self._SignKey = SignKey
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._CallbackUrl = params.get("CallbackUrl")
+        self._SignKey = params.get("SignKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCallbackUrlResponse(AbstractModel):
+    """ModifyCallbackUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Code: 响应码，0：成功，其他：失败
+        :type Code: int
+        :param _Msg: 响应消息，ok:成功，其他：失败
+        :type Msg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Code = None
+        self._Msg = None
+        self._RequestId = None
+
+    @property
+    def Code(self):
+        """响应码，0：成功，其他：失败
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Msg(self):
+        """响应消息，ok:成功，其他：失败
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Code = params.get("Code")
+        self._Msg = params.get("Msg")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyDeviceRequest(AbstractModel):
     """ModifyDevice请求参数结构体
 
@@ -3891,6 +4381,57 @@ class ProjectInfo(AbstractModel):
         self._ProjectDescription = params.get("ProjectDescription")
         self._PolicyMode = params.get("PolicyMode")
         self._ModifyTime = params.get("ModifyTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PublishParams(AbstractModel):
+    """转推参数，一个任务最多支持10个推流URL。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PublishUrl: 腾讯云直播推流地址url
+        :type PublishUrl: str
+        :param _IsTencentUrl: 是否是腾讯云CDN，0为转推非腾讯云CDN，1为转推腾讯CDN，不携带该参数默认为1。
+        :type IsTencentUrl: int
+        """
+        self._PublishUrl = None
+        self._IsTencentUrl = None
+
+    @property
+    def PublishUrl(self):
+        """腾讯云直播推流地址url
+        :rtype: str
+        """
+        return self._PublishUrl
+
+    @PublishUrl.setter
+    def PublishUrl(self, PublishUrl):
+        self._PublishUrl = PublishUrl
+
+    @property
+    def IsTencentUrl(self):
+        """是否是腾讯云CDN，0为转推非腾讯云CDN，1为转推腾讯CDN，不携带该参数默认为1。
+        :rtype: int
+        """
+        return self._IsTencentUrl
+
+    @IsTencentUrl.setter
+    def IsTencentUrl(self, IsTencentUrl):
+        self._IsTencentUrl = IsTencentUrl
+
+
+    def _deserialize(self, params):
+        self._PublishUrl = params.get("PublishUrl")
+        self._IsTencentUrl = params.get("IsTencentUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4826,6 +5367,413 @@ class SessionIntervalStatistic(AbstractModel):
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
         self._NotBadSessionRatio = params.get("NotBadSessionRatio")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartPublishLiveStreamRequest(AbstractModel):
+    """StartPublishLiveStream请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WithTranscoding: 是否转码，0表示无需转码，1表示需要转码。是否收取转码费是由WithTranscoding参数决定的，WithTranscoding为0，表示旁路转推，不会收取转码费用，WithTranscoding为1，表示混流转推，会收取转码费用。 示例值：1
+        :type WithTranscoding: int
+        :param _MaxIdleTime: 所有参与混流转推的主播持续离开TRTC房间或切换成观众超过MaxIdleTime的时长，自动停止转推，单位：秒。默认值为 30 秒，该值需大于等于 5秒，且小于等于 86400秒(24小时)。
+        :type MaxIdleTime: int
+        :param _VideoParams: 转推视频参数
+        :type VideoParams: :class:`tencentcloud.trro.v20220325.models.VideoParams`
+        :param _PublishParams: 转推的URL参数，一个任务最多支持10个推流URL
+        :type PublishParams: list of PublishParams
+        """
+        self._WithTranscoding = None
+        self._MaxIdleTime = None
+        self._VideoParams = None
+        self._PublishParams = None
+
+    @property
+    def WithTranscoding(self):
+        """是否转码，0表示无需转码，1表示需要转码。是否收取转码费是由WithTranscoding参数决定的，WithTranscoding为0，表示旁路转推，不会收取转码费用，WithTranscoding为1，表示混流转推，会收取转码费用。 示例值：1
+        :rtype: int
+        """
+        return self._WithTranscoding
+
+    @WithTranscoding.setter
+    def WithTranscoding(self, WithTranscoding):
+        self._WithTranscoding = WithTranscoding
+
+    @property
+    def MaxIdleTime(self):
+        """所有参与混流转推的主播持续离开TRTC房间或切换成观众超过MaxIdleTime的时长，自动停止转推，单位：秒。默认值为 30 秒，该值需大于等于 5秒，且小于等于 86400秒(24小时)。
+        :rtype: int
+        """
+        return self._MaxIdleTime
+
+    @MaxIdleTime.setter
+    def MaxIdleTime(self, MaxIdleTime):
+        self._MaxIdleTime = MaxIdleTime
+
+    @property
+    def VideoParams(self):
+        """转推视频参数
+        :rtype: :class:`tencentcloud.trro.v20220325.models.VideoParams`
+        """
+        return self._VideoParams
+
+    @VideoParams.setter
+    def VideoParams(self, VideoParams):
+        self._VideoParams = VideoParams
+
+    @property
+    def PublishParams(self):
+        """转推的URL参数，一个任务最多支持10个推流URL
+        :rtype: list of PublishParams
+        """
+        return self._PublishParams
+
+    @PublishParams.setter
+    def PublishParams(self, PublishParams):
+        self._PublishParams = PublishParams
+
+
+    def _deserialize(self, params):
+        self._WithTranscoding = params.get("WithTranscoding")
+        self._MaxIdleTime = params.get("MaxIdleTime")
+        if params.get("VideoParams") is not None:
+            self._VideoParams = VideoParams()
+            self._VideoParams._deserialize(params.get("VideoParams"))
+        if params.get("PublishParams") is not None:
+            self._PublishParams = []
+            for item in params.get("PublishParams"):
+                obj = PublishParams()
+                obj._deserialize(item)
+                self._PublishParams.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartPublishLiveStreamResponse(AbstractModel):
+    """StartPublishLiveStream返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 用于唯一标识转推任务，由腾讯云服务端生成，后续停止请求需要携带TaskiD参数。
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        """用于唯一标识转推任务，由腾讯云服务端生成，后续停止请求需要携带TaskiD参数。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class StopPublishLiveStreamRequest(AbstractModel):
+    """StopPublishLiveStream请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 唯一标识转推任务。
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        """唯一标识转推任务。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopPublishLiveStreamResponse(AbstractModel):
+    """StopPublishLiveStream返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class VideoList(AbstractModel):
+    """原视频流参数列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目id
+        :type ProjectId: str
+        :param _DeviceId: 设备id
+        :type DeviceId: str
+        :param _VideoStreamId: 流id
+        :type VideoStreamId: int
+        :param _Width: 子画面在输出时的宽度，单位为像素值，不填默认为0。
+        :type Width: int
+        :param _Height: 子画面在输出时的高度，单位为像素值，不填默认为0。
+        :type Height: int
+        """
+        self._ProjectId = None
+        self._DeviceId = None
+        self._VideoStreamId = None
+        self._Width = None
+        self._Height = None
+
+    @property
+    def ProjectId(self):
+        """项目id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def DeviceId(self):
+        """设备id
+        :rtype: str
+        """
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+    @property
+    def VideoStreamId(self):
+        """流id
+        :rtype: int
+        """
+        return self._VideoStreamId
+
+    @VideoStreamId.setter
+    def VideoStreamId(self, VideoStreamId):
+        self._VideoStreamId = VideoStreamId
+
+    @property
+    def Width(self):
+        """子画面在输出时的宽度，单位为像素值，不填默认为0。
+        :rtype: int
+        """
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        """子画面在输出时的高度，单位为像素值，不填默认为0。
+        :rtype: int
+        """
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._DeviceId = params.get("DeviceId")
+        self._VideoStreamId = params.get("VideoStreamId")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoParams(AbstractModel):
+    """转推视频参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Width: 输出流宽，音视频输出时必填。取值范围[0,1920]，单位为像素值。
+        :type Width: int
+        :param _Height: 输出流高，音视频输出时必填。取值范围[0,1080]，单位为像素值。
+        :type Height: int
+        :param _Fps: 输出流帧率，音视频输出时必填。取值范围[1,60]，表示混流的输出帧率可选范围为1到60fps。
+        :type Fps: int
+        :param _BitRate: 输出流码率，音视频输出时必填。取值范围[1,10000]，单位为kbps。
+        :type BitRate: int
+        :param _Gop: 输出流gop，音视频输出时必填。取值范围[1,5]，单位为秒。
+        :type Gop: int
+        :param _VideoList: 转推视频流列表
+        :type VideoList: list of VideoList
+        """
+        self._Width = None
+        self._Height = None
+        self._Fps = None
+        self._BitRate = None
+        self._Gop = None
+        self._VideoList = None
+
+    @property
+    def Width(self):
+        """输出流宽，音视频输出时必填。取值范围[0,1920]，单位为像素值。
+        :rtype: int
+        """
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        """输出流高，音视频输出时必填。取值范围[0,1080]，单位为像素值。
+        :rtype: int
+        """
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def Fps(self):
+        """输出流帧率，音视频输出时必填。取值范围[1,60]，表示混流的输出帧率可选范围为1到60fps。
+        :rtype: int
+        """
+        return self._Fps
+
+    @Fps.setter
+    def Fps(self, Fps):
+        self._Fps = Fps
+
+    @property
+    def BitRate(self):
+        """输出流码率，音视频输出时必填。取值范围[1,10000]，单位为kbps。
+        :rtype: int
+        """
+        return self._BitRate
+
+    @BitRate.setter
+    def BitRate(self, BitRate):
+        self._BitRate = BitRate
+
+    @property
+    def Gop(self):
+        """输出流gop，音视频输出时必填。取值范围[1,5]，单位为秒。
+        :rtype: int
+        """
+        return self._Gop
+
+    @Gop.setter
+    def Gop(self, Gop):
+        self._Gop = Gop
+
+    @property
+    def VideoList(self):
+        """转推视频流列表
+        :rtype: list of VideoList
+        """
+        return self._VideoList
+
+    @VideoList.setter
+    def VideoList(self, VideoList):
+        self._VideoList = VideoList
+
+
+    def _deserialize(self, params):
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        self._Fps = params.get("Fps")
+        self._BitRate = params.get("BitRate")
+        self._Gop = params.get("Gop")
+        if params.get("VideoList") is not None:
+            self._VideoList = []
+            for item in params.get("VideoList"):
+                obj = VideoList()
+                obj._deserialize(item)
+                self._VideoList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

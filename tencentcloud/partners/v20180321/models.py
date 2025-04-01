@@ -539,6 +539,8 @@ class AgentClientElem(AbstractModel):
         :type SalesName: str
         :param _ClientName: 客户名称，此字段和控制台返回一致。
         :type ClientName: str
+        :param _IncreaseGoal: 增量目标金额(分)
+        :type IncreaseGoal: str
         """
         self._Uin = None
         self._ClientUin = None
@@ -551,6 +553,7 @@ class AgentClientElem(AbstractModel):
         self._SalesUin = None
         self._SalesName = None
         self._ClientName = None
+        self._IncreaseGoal = None
 
     @property
     def Uin(self):
@@ -673,6 +676,17 @@ class AgentClientElem(AbstractModel):
     def ClientName(self, ClientName):
         self._ClientName = ClientName
 
+    @property
+    def IncreaseGoal(self):
+        """增量目标金额(分)
+        :rtype: str
+        """
+        return self._IncreaseGoal
+
+    @IncreaseGoal.setter
+    def IncreaseGoal(self, IncreaseGoal):
+        self._IncreaseGoal = IncreaseGoal
+
 
     def _deserialize(self, params):
         self._Uin = params.get("Uin")
@@ -686,6 +700,7 @@ class AgentClientElem(AbstractModel):
         self._SalesUin = params.get("SalesUin")
         self._SalesName = params.get("SalesName")
         self._ClientName = params.get("ClientName")
+        self._IncreaseGoal = params.get("IncreaseGoal")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -2064,12 +2064,15 @@ class CloudStorageAIServiceTaskFileInfo(AbstractModel):
         :type MimeType: str
         :param _VideoMetaInfo: 视频文件元数据（仅当文件为视频类型时包含该字段）
         :type VideoMetaInfo: :class:`tencentcloud.iotexplorer.v20190423.models.CloudStorageAIServiceTaskVideoMetaInfo`
+        :param _Labels: 文件标签
+        :type Labels: list of CloudStorageAIServiceTaskFileLabel
         """
         self._FileName = None
         self._FileSize = None
         self._DownloadURL = None
         self._MimeType = None
         self._VideoMetaInfo = None
+        self._Labels = None
 
     @property
     def FileName(self):
@@ -2126,6 +2129,17 @@ class CloudStorageAIServiceTaskFileInfo(AbstractModel):
     def VideoMetaInfo(self, VideoMetaInfo):
         self._VideoMetaInfo = VideoMetaInfo
 
+    @property
+    def Labels(self):
+        """文件标签
+        :rtype: list of CloudStorageAIServiceTaskFileLabel
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
 
     def _deserialize(self, params):
         self._FileName = params.get("FileName")
@@ -2135,6 +2149,63 @@ class CloudStorageAIServiceTaskFileInfo(AbstractModel):
         if params.get("VideoMetaInfo") is not None:
             self._VideoMetaInfo = CloudStorageAIServiceTaskVideoMetaInfo()
             self._VideoMetaInfo._deserialize(params.get("VideoMetaInfo"))
+        if params.get("Labels") is not None:
+            self._Labels = []
+            for item in params.get("Labels"):
+                obj = CloudStorageAIServiceTaskFileLabel()
+                obj._deserialize(item)
+                self._Labels.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloudStorageAIServiceTaskFileLabel(AbstractModel):
+    """云存 AI 任务输出文件标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: key1
+        :type Key: str
+        :param _Value: value1
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        """key1
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        """value1
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7248,10 +7319,8 @@ class DescribeCloudStorageAIServiceCallbackResponse(AbstractModel):
         :param _Type: 推送类型。http：HTTP 回调
         :type Type: str
         :param _CallbackUrl: HTTP 回调 URL
-注意：此字段可能返回 null，表示取不到有效值。
         :type CallbackUrl: str
         :param _CallbackToken: HTTP 回调鉴权 Token
-注意：此字段可能返回 null，表示取不到有效值。
         :type CallbackToken: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7275,7 +7344,6 @@ class DescribeCloudStorageAIServiceCallbackResponse(AbstractModel):
     @property
     def CallbackUrl(self):
         """HTTP 回调 URL
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CallbackUrl
@@ -7287,7 +7355,6 @@ class DescribeCloudStorageAIServiceCallbackResponse(AbstractModel):
     @property
     def CallbackToken(self):
         """HTTP 回调鉴权 Token
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CallbackToken
@@ -7541,8 +7608,13 @@ class DescribeCloudStorageAIServiceTaskRequest(AbstractModel):
         r"""
         :param _TaskId: 任务 ID
         :type TaskId: str
+        :param _FileURLExpireTime: 下载 URL 的过期时间。
+
+若传入该参数，则响应中将包含所有文件的下载 URL
+        :type FileURLExpireTime: int
         """
         self._TaskId = None
+        self._FileURLExpireTime = None
 
     @property
     def TaskId(self):
@@ -7555,9 +7627,23 @@ class DescribeCloudStorageAIServiceTaskRequest(AbstractModel):
     def TaskId(self, TaskId):
         self._TaskId = TaskId
 
+    @property
+    def FileURLExpireTime(self):
+        """下载 URL 的过期时间。
+
+若传入该参数，则响应中将包含所有文件的下载 URL
+        :rtype: int
+        """
+        return self._FileURLExpireTime
+
+    @FileURLExpireTime.setter
+    def FileURLExpireTime(self, FileURLExpireTime):
+        self._FileURLExpireTime = FileURLExpireTime
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
+        self._FileURLExpireTime = params.get("FileURLExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19188,7 +19274,7 @@ class InstanceDetail(AbstractModel):
         :param _CellNum: 实例单元数
 注意：此字段可能返回 null，表示取不到有效值。
         :type CellNum: int
-        :param _BillingTag: 实例Tag
+        :param _BillingTag: 实例Tag，企业实例必传
 注意：此字段可能返回 null，表示取不到有效值。
         :type BillingTag: str
         :param _EverydayFreeMessageCount: 每日消息数
@@ -19453,7 +19539,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def BillingTag(self):
-        """实例Tag
+        """实例Tag，企业实例必传
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -19903,7 +19989,6 @@ class InvokeExternalSourceAIServiceTaskResponse(AbstractModel):
         :param _TaskId: 任务 ID
         :type TaskId: str
         :param _TaskInfo: 任务信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskInfo: :class:`tencentcloud.iotexplorer.v20190423.models.CloudStorageAIServiceTask`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -19938,7 +20023,6 @@ class InvokeExternalSourceAIServiceTaskResponse(AbstractModel):
     @property
     def TaskInfo(self):
         """任务信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.CloudStorageAIServiceTask`
         """
         return self._TaskInfo

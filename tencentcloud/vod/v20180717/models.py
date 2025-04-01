@@ -20708,9 +20708,12 @@ class CreateSubAppIdRequest(AbstractModel):
         :type Name: str
         :param _Description: 应用简介，长度限制： 300个字符。不填则应用简介默认为空。
         :type Description: str
+        :param _Type: 应用类型， 取值有：<li>AllInOne：一体化；</li><li>Professional：专业版。</li>默认值为 AllInOne。
+        :type Type: str
         """
         self._Name = None
         self._Description = None
+        self._Type = None
 
     @property
     def Name(self):
@@ -20734,10 +20737,22 @@ class CreateSubAppIdRequest(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def Type(self):
+        """应用类型， 取值有：<li>AllInOne：一体化；</li><li>Professional：专业版。</li>默认值为 AllInOne。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Description = params.get("Description")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -510,7 +510,9 @@ class WeilingwithClient(AbstractClient):
 
 
     def DescribeCityWorkspaceList(self, request):
-        """通过城市id查询工作空间列表
+        """老微瓴后续不继续更新
+
+        通过城市id查询工作空间列表
 
         :param request: Request instance for DescribeCityWorkspaceList.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeCityWorkspaceListRequest`

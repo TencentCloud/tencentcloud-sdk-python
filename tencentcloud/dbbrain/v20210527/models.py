@@ -2424,7 +2424,7 @@ class CreateDBDiagReportTaskRequest(AbstractModel):
         :type ContactPerson: list of int
         :param _ContactGroup: 接收邮件的联系组ID数组。
         :type ContactGroup: list of int
-        :param _Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认值为"mysql"。
+        :param _Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，"redis" - 云数据库 Redis，默认值为"mysql"。
         :type Product: str
         """
         self._InstanceId = None
@@ -2503,7 +2503,7 @@ class CreateDBDiagReportTaskRequest(AbstractModel):
 
     @property
     def Product(self):
-        """服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认值为"mysql"。
+        """服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，"redis" - 云数据库 Redis，默认值为"mysql"。
         :rtype: str
         """
         return self._Product
@@ -2585,7 +2585,7 @@ class CreateDBDiagReportUrlRequest(AbstractModel):
         :type InstanceId: str
         :param _AsyncRequestId: 健康报告相应的任务ID，可通过DescribeDBDiagReportTasks查询。
         :type AsyncRequestId: int
-        :param _Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :param _Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
         :type Product: str
         """
         self._InstanceId = None
@@ -2616,7 +2616,7 @@ class CreateDBDiagReportUrlRequest(AbstractModel):
 
     @property
     def Product(self):
-        """服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        """服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
         :rtype: str
         """
         return self._Product
@@ -5387,7 +5387,7 @@ class DescribeDBDiagEventRequest(AbstractModel):
         :type InstanceId: str
         :param _EventId: 事件 ID 。通过“获取实例诊断历史DescribeDBDiagHistory”获取。
         :type EventId: int
-        :param _Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+        :param _Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
         :type Product: str
         """
         self._InstanceId = None
@@ -5418,7 +5418,7 @@ class DescribeDBDiagEventRequest(AbstractModel):
 
     @property
     def Product(self):
-        """服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+        """服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
         :rtype: str
         """
         return self._Product
@@ -5966,7 +5966,7 @@ class DescribeDBDiagReportTasksRequest(AbstractModel):
         :type EndTime: str
         :param _InstanceIds: 实例ID数组，用于筛选指定实例的任务列表。
         :type InstanceIds: list of str
-        :param _Sources: 任务的触发来源，支持的取值包括："DAILY_INSPECTION" - 实例巡检；"SCHEDULED" - 定时生成；"MANUAL" - 手动触发。
+        :param _Sources: 任务的触发来源，支持的取值包括："DAILY_INSPECTION" - 实例巡检；"SCHEDULED" - 计划任务；"MANUAL" - 手动触发。
         :type Sources: list of str
         :param _HealthLevels: 报告的健康等级，支持的取值包括："HEALTH" - 健康；"SUB_HEALTH" - 亚健康；"RISK" - 危险；"HIGH_RISK" - 高危。
         :type HealthLevels: str
@@ -5976,7 +5976,7 @@ class DescribeDBDiagReportTasksRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 返回数量，默认20，最大值为100。
         :type Limit: int
-        :param _Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :param _Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
         :type Product: str
         """
         self._StartTime = None
@@ -6024,7 +6024,7 @@ class DescribeDBDiagReportTasksRequest(AbstractModel):
 
     @property
     def Sources(self):
-        """任务的触发来源，支持的取值包括："DAILY_INSPECTION" - 实例巡检；"SCHEDULED" - 定时生成；"MANUAL" - 手动触发。
+        """任务的触发来源，支持的取值包括："DAILY_INSPECTION" - 实例巡检；"SCHEDULED" - 计划任务；"MANUAL" - 手动触发。
         :rtype: list of str
         """
         return self._Sources
@@ -6079,7 +6079,7 @@ class DescribeDBDiagReportTasksRequest(AbstractModel):
 
     @property
     def Product(self):
-        """服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        """服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
         :rtype: str
         """
         return self._Product
@@ -12435,11 +12435,14 @@ class HealthStatus(AbstractModel):
         :type ScoreLost: int
         :param _ScoreDetails: 扣分详情。
         :type ScoreDetails: list of ScoreDetail
+        :param _HealthLevelVersion: 健康等级版本，默认为"V1"
+        :type HealthLevelVersion: str
         """
         self._HealthScore = None
         self._HealthLevel = None
         self._ScoreLost = None
         self._ScoreDetails = None
+        self._HealthLevelVersion = None
 
     @property
     def HealthScore(self):
@@ -12485,6 +12488,17 @@ class HealthStatus(AbstractModel):
     def ScoreDetails(self, ScoreDetails):
         self._ScoreDetails = ScoreDetails
 
+    @property
+    def HealthLevelVersion(self):
+        """健康等级版本，默认为"V1"
+        :rtype: str
+        """
+        return self._HealthLevelVersion
+
+    @HealthLevelVersion.setter
+    def HealthLevelVersion(self, HealthLevelVersion):
+        self._HealthLevelVersion = HealthLevelVersion
+
 
     def _deserialize(self, params):
         self._HealthScore = params.get("HealthScore")
@@ -12496,6 +12510,7 @@ class HealthStatus(AbstractModel):
                 obj = ScoreDetail()
                 obj._deserialize(item)
                 self._ScoreDetails.append(obj)
+        self._HealthLevelVersion = params.get("HealthLevelVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12747,6 +12762,24 @@ class InstanceBasicInfo(AbstractModel):
         :type Product: str
         :param _EngineVersion: 实例引擎版本。
         :type EngineVersion: str
+        :param _Cpu: CPU数量，对于Redis为0。
+        :type Cpu: int
+        :param _DeployMode: 实例部署模式。
+        :type DeployMode: str
+        :param _InstanceConf: 实例内存配置。
+        :type InstanceConf: :class:`tencentcloud.dbbrain.v20210527.models.RedisInstanceConf`
+        :param _IsSupported: DBbrain是否支持该实例。
+        :type IsSupported: bool
+        :param _Memory: 实例内存，单位MB。
+        :type Memory: int
+        :param _Region: 实例地域。
+        :type Region: str
+        :param _UniqSubnetId: 实例子网统一ID，对于redis为空字符串。
+        :type UniqSubnetId: str
+        :param _UniqVpcId: 实例私有网络统一ID，对于redis为空字符串。
+        :type UniqVpcId: str
+        :param _Volume: 实例磁盘容量，对于Redis为0。
+        :type Volume: int
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -12754,6 +12787,15 @@ class InstanceBasicInfo(AbstractModel):
         self._Vport = None
         self._Product = None
         self._EngineVersion = None
+        self._Cpu = None
+        self._DeployMode = None
+        self._InstanceConf = None
+        self._IsSupported = None
+        self._Memory = None
+        self._Region = None
+        self._UniqSubnetId = None
+        self._UniqVpcId = None
+        self._Volume = None
 
     @property
     def InstanceId(self):
@@ -12821,6 +12863,105 @@ class InstanceBasicInfo(AbstractModel):
     def EngineVersion(self, EngineVersion):
         self._EngineVersion = EngineVersion
 
+    @property
+    def Cpu(self):
+        """CPU数量，对于Redis为0。
+        :rtype: int
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def DeployMode(self):
+        """实例部署模式。
+        :rtype: str
+        """
+        return self._DeployMode
+
+    @DeployMode.setter
+    def DeployMode(self, DeployMode):
+        self._DeployMode = DeployMode
+
+    @property
+    def InstanceConf(self):
+        """实例内存配置。
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.RedisInstanceConf`
+        """
+        return self._InstanceConf
+
+    @InstanceConf.setter
+    def InstanceConf(self, InstanceConf):
+        self._InstanceConf = InstanceConf
+
+    @property
+    def IsSupported(self):
+        """DBbrain是否支持该实例。
+        :rtype: bool
+        """
+        return self._IsSupported
+
+    @IsSupported.setter
+    def IsSupported(self, IsSupported):
+        self._IsSupported = IsSupported
+
+    @property
+    def Memory(self):
+        """实例内存，单位MB。
+        :rtype: int
+        """
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def Region(self):
+        """实例地域。
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def UniqSubnetId(self):
+        """实例子网统一ID，对于redis为空字符串。
+        :rtype: str
+        """
+        return self._UniqSubnetId
+
+    @UniqSubnetId.setter
+    def UniqSubnetId(self, UniqSubnetId):
+        self._UniqSubnetId = UniqSubnetId
+
+    @property
+    def UniqVpcId(self):
+        """实例私有网络统一ID，对于redis为空字符串。
+        :rtype: str
+        """
+        return self._UniqVpcId
+
+    @UniqVpcId.setter
+    def UniqVpcId(self, UniqVpcId):
+        self._UniqVpcId = UniqVpcId
+
+    @property
+    def Volume(self):
+        """实例磁盘容量，对于Redis为0。
+        :rtype: int
+        """
+        return self._Volume
+
+    @Volume.setter
+    def Volume(self, Volume):
+        self._Volume = Volume
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -12829,6 +12970,17 @@ class InstanceBasicInfo(AbstractModel):
         self._Vport = params.get("Vport")
         self._Product = params.get("Product")
         self._EngineVersion = params.get("EngineVersion")
+        self._Cpu = params.get("Cpu")
+        self._DeployMode = params.get("DeployMode")
+        if params.get("InstanceConf") is not None:
+            self._InstanceConf = RedisInstanceConf()
+            self._InstanceConf._deserialize(params.get("InstanceConf"))
+        self._IsSupported = params.get("IsSupported")
+        self._Memory = params.get("Memory")
+        self._Region = params.get("Region")
+        self._UniqSubnetId = params.get("UniqSubnetId")
+        self._UniqVpcId = params.get("UniqVpcId")
+        self._Volume = params.get("Volume")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15913,6 +16065,72 @@ class RedisCmdInfo(AbstractModel):
     def _deserialize(self, params):
         self._Cmd = params.get("Cmd")
         self._Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RedisInstanceConf(AbstractModel):
+    """Redis实例内存配置参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReplicasNum: 副本数量
+        :type ReplicasNum: str
+        :param _ShardNum: 分片数量
+        :type ShardNum: str
+        :param _ShardSize: 分片内存大小，单位MB
+        :type ShardSize: str
+        """
+        self._ReplicasNum = None
+        self._ShardNum = None
+        self._ShardSize = None
+
+    @property
+    def ReplicasNum(self):
+        """副本数量
+        :rtype: str
+        """
+        return self._ReplicasNum
+
+    @ReplicasNum.setter
+    def ReplicasNum(self, ReplicasNum):
+        self._ReplicasNum = ReplicasNum
+
+    @property
+    def ShardNum(self):
+        """分片数量
+        :rtype: str
+        """
+        return self._ShardNum
+
+    @ShardNum.setter
+    def ShardNum(self, ShardNum):
+        self._ShardNum = ShardNum
+
+    @property
+    def ShardSize(self):
+        """分片内存大小，单位MB
+        :rtype: str
+        """
+        return self._ShardSize
+
+    @ShardSize.setter
+    def ShardSize(self, ShardSize):
+        self._ShardSize = ShardSize
+
+
+    def _deserialize(self, params):
+        self._ReplicasNum = params.get("ReplicasNum")
+        self._ShardNum = params.get("ShardNum")
+        self._ShardSize = params.get("ShardSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

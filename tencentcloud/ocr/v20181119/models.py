@@ -4008,6 +4008,42 @@ class ClassifyStoreNameResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ConfigAdvanced(AbstractModel):
+    """支持模版的单个属性配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Scene: 模版的单个属性配置
+        :type Scene: str
+        """
+        self._Scene = None
+
+    @property
+    def Scene(self):
+        """模版的单个属性配置
+        :rtype: str
+        """
+        return self._Scene
+
+    @Scene.setter
+    def Scene(self, Scene):
+        self._Scene = Scene
+
+
+    def _deserialize(self, params):
+        self._Scene = params.get("Scene")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ContentInfo(AbstractModel):
     """卡证字段信息返回值
 
@@ -29934,11 +29970,14 @@ BookingConfirmation -- 配舱通知书识别模板
 AirWayBill -- 航空运单识别模板
 DispatchWeightNote -- 磅单发货单识别模板
 ReceiptWeightNote -- 磅单收货单识别模板
+ArticalRecognize -- 手写作文模版
         :type ConfigId: str
         :param _EnableCoord: 是否开启全文字段坐标值的识别
         :type EnableCoord: bool
         :param _OutputParentKey: 是否开启父子key识别，默认是
         :type OutputParentKey: bool
+        :param _ConfigAdvanced: 模版的单个属性配置
+        :type ConfigAdvanced: :class:`tencentcloud.ocr.v20181119.models.ConfigAdvanced`
         """
         self._ImageUrl = None
         self._ImageBase64 = None
@@ -29948,6 +29987,7 @@ ReceiptWeightNote -- 磅单收货单识别模板
         self._ConfigId = None
         self._EnableCoord = None
         self._OutputParentKey = None
+        self._ConfigAdvanced = None
 
     @property
     def ImageUrl(self):
@@ -30021,6 +30061,7 @@ BookingConfirmation -- 配舱通知书识别模板
 AirWayBill -- 航空运单识别模板
 DispatchWeightNote -- 磅单发货单识别模板
 ReceiptWeightNote -- 磅单收货单识别模板
+ArticalRecognize -- 手写作文模版
         :rtype: str
         """
         return self._ConfigId
@@ -30051,6 +30092,17 @@ ReceiptWeightNote -- 磅单收货单识别模板
     def OutputParentKey(self, OutputParentKey):
         self._OutputParentKey = OutputParentKey
 
+    @property
+    def ConfigAdvanced(self):
+        """模版的单个属性配置
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.ConfigAdvanced`
+        """
+        return self._ConfigAdvanced
+
+    @ConfigAdvanced.setter
+    def ConfigAdvanced(self, ConfigAdvanced):
+        self._ConfigAdvanced = ConfigAdvanced
+
 
     def _deserialize(self, params):
         self._ImageUrl = params.get("ImageUrl")
@@ -30061,6 +30113,9 @@ ReceiptWeightNote -- 磅单收货单识别模板
         self._ConfigId = params.get("ConfigId")
         self._EnableCoord = params.get("EnableCoord")
         self._OutputParentKey = params.get("OutputParentKey")
+        if params.get("ConfigAdvanced") is not None:
+            self._ConfigAdvanced = ConfigAdvanced()
+            self._ConfigAdvanced._deserialize(params.get("ConfigAdvanced"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -41467,6 +41522,94 @@ class WordCoordPoint(AbstractModel):
 
 class WordItem(AbstractModel):
     """还原文本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DetectedText: 文本块内容
+        :type DetectedText: str
+        :param _Coord: 四点坐标
+        :type Coord: :class:`tencentcloud.ocr.v20181119.models.Polygon`
+        :param _AdvancedInfo: 描述性信息
+        :type AdvancedInfo: str
+        :param _WordCoord: 单词的四点坐标
+        :type WordCoord: list of WordPolygon
+        """
+        self._DetectedText = None
+        self._Coord = None
+        self._AdvancedInfo = None
+        self._WordCoord = None
+
+    @property
+    def DetectedText(self):
+        """文本块内容
+        :rtype: str
+        """
+        return self._DetectedText
+
+    @DetectedText.setter
+    def DetectedText(self, DetectedText):
+        self._DetectedText = DetectedText
+
+    @property
+    def Coord(self):
+        """四点坐标
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.Polygon`
+        """
+        return self._Coord
+
+    @Coord.setter
+    def Coord(self, Coord):
+        self._Coord = Coord
+
+    @property
+    def AdvancedInfo(self):
+        """描述性信息
+        :rtype: str
+        """
+        return self._AdvancedInfo
+
+    @AdvancedInfo.setter
+    def AdvancedInfo(self, AdvancedInfo):
+        self._AdvancedInfo = AdvancedInfo
+
+    @property
+    def WordCoord(self):
+        """单词的四点坐标
+        :rtype: list of WordPolygon
+        """
+        return self._WordCoord
+
+    @WordCoord.setter
+    def WordCoord(self, WordCoord):
+        self._WordCoord = WordCoord
+
+
+    def _deserialize(self, params):
+        self._DetectedText = params.get("DetectedText")
+        if params.get("Coord") is not None:
+            self._Coord = Polygon()
+            self._Coord._deserialize(params.get("Coord"))
+        self._AdvancedInfo = params.get("AdvancedInfo")
+        if params.get("WordCoord") is not None:
+            self._WordCoord = []
+            for item in params.get("WordCoord"):
+                obj = WordPolygon()
+                obj._deserialize(item)
+                self._WordCoord.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WordPolygon(AbstractModel):
+    """单词坐标信息
 
     """
 

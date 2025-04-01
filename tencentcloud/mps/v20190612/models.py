@@ -16696,7 +16696,7 @@ class CreateInput(AbstractModel):
         r"""
         :param _InputName: 输入名称，可填大小写、数字和下划线，长度为[1, 32]。
         :type InputName: str
-        :param _Protocol: 输入的协议，可选[SRT|RTP|RTMP_PUSH|RTMP_PULL|RTSP_PULL|RIST]。
+        :param _Protocol: 输入的协议，可选[SRT|RTP|RTMP|RTMP_PULL|RTSP_PULL|RIST]。
         :type Protocol: str
         :param _Description: 输入描述，长度为[0, 255]。
         :type Description: str
@@ -16754,7 +16754,7 @@ class CreateInput(AbstractModel):
 
     @property
     def Protocol(self):
-        """输入的协议，可选[SRT|RTP|RTMP_PUSH|RTMP_PULL|RTSP_PULL|RIST]。
+        """输入的协议，可选[SRT|RTP|RTMP|RTMP_PULL|RTSP_PULL|RIST]。
         :rtype: str
         """
         return self._Protocol
@@ -18165,7 +18165,7 @@ class CreateOutputSRTSettingsDestinations(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Ip: 输出的IP。
+        :param _Ip: 输出的IP或域名。
         :type Ip: str
         :param _Port: 输出的端口。
         :type Port: int
@@ -18175,7 +18175,7 @@ class CreateOutputSRTSettingsDestinations(AbstractModel):
 
     @property
     def Ip(self):
-        """输出的IP。
+        """输出的IP或域名。
         :rtype: str
         """
         return self._Ip
@@ -44557,7 +44557,7 @@ class ModifyOutputInfo(AbstractModel):
         :type OutputName: str
         :param _Description: 输出的描述。
         :type Description: str
-        :param _Protocol: 输出的转推协议，支持SRT|RTP|RTMP|RTMP_PULL|RTSP|RIST。
+        :param _Protocol: 输出的转推协议，支持SRT|RTP|RTMP|RTMP_PULL|RTSP_PULL|RIST。
         :type Protocol: str
         :param _SRTSettings: 转推SRT的配置。
         :type SRTSettings: :class:`tencentcloud.mps.v20190612.models.CreateOutputSRTSettings`
@@ -44631,7 +44631,7 @@ class ModifyOutputInfo(AbstractModel):
 
     @property
     def Protocol(self):
-        """输出的转推协议，支持SRT|RTP|RTMP|RTMP_PULL|RTSP|RIST。
+        """输出的转推协议，支持SRT|RTP|RTMP|RTMP_PULL|RTSP_PULL|RIST。
         :rtype: str
         """
         return self._Protocol
@@ -52886,7 +52886,7 @@ class SRTSourceAddressReq(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Ip: 对端IP。
+        :param _Ip: 对端IP或域名。
         :type Ip: str
         :param _Port: 对端端口。
         :type Port: int
@@ -52896,7 +52896,7 @@ class SRTSourceAddressReq(AbstractModel):
 
     @property
     def Ip(self):
-        """对端IP。
+        """对端IP或域名。
         :rtype: str
         """
         return self._Ip

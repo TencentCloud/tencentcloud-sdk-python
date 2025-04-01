@@ -6990,6 +6990,290 @@ class CreateSparkSessionBatchSQLResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateSparkSubmitTaskRequest(AbstractModel):
+    """CreateSparkSubmitTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskName: 任务名称
+        :type TaskName: str
+        :param _TaskType: 任务类型：当前支持1: BatchType, 2: StreamingType, 4: SQLType
+        :type TaskType: int
+        :param _DataEngineName: 引擎名称，当前仅支持Spark批作业集群
+        :type DataEngineName: str
+        :param _PackagePath: 指定运行的程序脚本路径，当前仅支持jar和py，对于SQLType该值设为空字符串
+        :type PackagePath: str
+        :param _RoleArn: 指定的鉴权信息
+        :type RoleArn: int
+        :param _IsInherit: 运行任务所需资源是否继承自集群上配置资源信息，0（默认，不继承）、1（继承，当设置为该值，则任务级资源配置可不额外指定）
+        :type IsInherit: int
+        :param _MainClass: jar任务时需要指定主程序
+        :type MainClass: str
+        :param _DriverSize: 当前DriverSize规格仅支持（内存型集群则使用m前缀的枚举值）: small/medium/large/xlarge/m.small/m.medium/m.large/m.xlarge
+        :type DriverSize: str
+        :param _ExecutorSize: 当前ExecutorSize规格仅支持（内存型集群则使用m前缀的枚举值）: small/medium/large/xlarge/m.small/m.medium/m.large/m.xlarge
+        :type ExecutorSize: str
+        :param _ExecutorNumbers: 指定使用的executor数量，最小为1
+        :type ExecutorNumbers: int
+        :param _ExecutorMaxNumbers: 指定使用的executor最大数量, 当该值大于ExecutorNums则自动开启动态
+        :type ExecutorMaxNumbers: int
+        :param _CmdArgs: 提交任务的附加配置集合，当前支持Key包含：MAINARGS：程序入口参数，空格分割(SqlType任务通过该值指定base64加密后的sql)、SPARKCONFIG：Spark配置，以换行符分隔、ENI：Eni连接信息、DEPENDENCYPACKAGEPATH：依赖的程序包（--jars、--py-files:支持py/zip/egg等归档格式），多文件以逗号分隔、DEPENDENCYFILEPATH：依赖文件资源（--files: 非jar、zip），多文件以逗号分隔、DEPENDENCYARCHIVESPATH：依赖archives资源（--archives: 支持tar.gz/tgz/tar等归档格式)，多文件以逗号分隔、MAXRETRIES：任务重试次数，非流任务默认为1、SPARKIMAGE：Spark镜像版本号，支持使用dlc镜像/用户自定的tcr镜像运行任务、SPARKIMAGEVERSION：Spark镜像版本名称，与SPARKIMAGE一一对应
+        :type CmdArgs: list of KVPair
+        :param _SourceInfo: 任务来源信息
+        :type SourceInfo: list of KVPair
+        """
+        self._TaskName = None
+        self._TaskType = None
+        self._DataEngineName = None
+        self._PackagePath = None
+        self._RoleArn = None
+        self._IsInherit = None
+        self._MainClass = None
+        self._DriverSize = None
+        self._ExecutorSize = None
+        self._ExecutorNumbers = None
+        self._ExecutorMaxNumbers = None
+        self._CmdArgs = None
+        self._SourceInfo = None
+
+    @property
+    def TaskName(self):
+        """任务名称
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def TaskType(self):
+        """任务类型：当前支持1: BatchType, 2: StreamingType, 4: SQLType
+        :rtype: int
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def DataEngineName(self):
+        """引擎名称，当前仅支持Spark批作业集群
+        :rtype: str
+        """
+        return self._DataEngineName
+
+    @DataEngineName.setter
+    def DataEngineName(self, DataEngineName):
+        self._DataEngineName = DataEngineName
+
+    @property
+    def PackagePath(self):
+        """指定运行的程序脚本路径，当前仅支持jar和py，对于SQLType该值设为空字符串
+        :rtype: str
+        """
+        return self._PackagePath
+
+    @PackagePath.setter
+    def PackagePath(self, PackagePath):
+        self._PackagePath = PackagePath
+
+    @property
+    def RoleArn(self):
+        """指定的鉴权信息
+        :rtype: int
+        """
+        return self._RoleArn
+
+    @RoleArn.setter
+    def RoleArn(self, RoleArn):
+        self._RoleArn = RoleArn
+
+    @property
+    def IsInherit(self):
+        """运行任务所需资源是否继承自集群上配置资源信息，0（默认，不继承）、1（继承，当设置为该值，则任务级资源配置可不额外指定）
+        :rtype: int
+        """
+        return self._IsInherit
+
+    @IsInherit.setter
+    def IsInherit(self, IsInherit):
+        self._IsInherit = IsInherit
+
+    @property
+    def MainClass(self):
+        """jar任务时需要指定主程序
+        :rtype: str
+        """
+        return self._MainClass
+
+    @MainClass.setter
+    def MainClass(self, MainClass):
+        self._MainClass = MainClass
+
+    @property
+    def DriverSize(self):
+        """当前DriverSize规格仅支持（内存型集群则使用m前缀的枚举值）: small/medium/large/xlarge/m.small/m.medium/m.large/m.xlarge
+        :rtype: str
+        """
+        return self._DriverSize
+
+    @DriverSize.setter
+    def DriverSize(self, DriverSize):
+        self._DriverSize = DriverSize
+
+    @property
+    def ExecutorSize(self):
+        """当前ExecutorSize规格仅支持（内存型集群则使用m前缀的枚举值）: small/medium/large/xlarge/m.small/m.medium/m.large/m.xlarge
+        :rtype: str
+        """
+        return self._ExecutorSize
+
+    @ExecutorSize.setter
+    def ExecutorSize(self, ExecutorSize):
+        self._ExecutorSize = ExecutorSize
+
+    @property
+    def ExecutorNumbers(self):
+        """指定使用的executor数量，最小为1
+        :rtype: int
+        """
+        return self._ExecutorNumbers
+
+    @ExecutorNumbers.setter
+    def ExecutorNumbers(self, ExecutorNumbers):
+        self._ExecutorNumbers = ExecutorNumbers
+
+    @property
+    def ExecutorMaxNumbers(self):
+        """指定使用的executor最大数量, 当该值大于ExecutorNums则自动开启动态
+        :rtype: int
+        """
+        return self._ExecutorMaxNumbers
+
+    @ExecutorMaxNumbers.setter
+    def ExecutorMaxNumbers(self, ExecutorMaxNumbers):
+        self._ExecutorMaxNumbers = ExecutorMaxNumbers
+
+    @property
+    def CmdArgs(self):
+        """提交任务的附加配置集合，当前支持Key包含：MAINARGS：程序入口参数，空格分割(SqlType任务通过该值指定base64加密后的sql)、SPARKCONFIG：Spark配置，以换行符分隔、ENI：Eni连接信息、DEPENDENCYPACKAGEPATH：依赖的程序包（--jars、--py-files:支持py/zip/egg等归档格式），多文件以逗号分隔、DEPENDENCYFILEPATH：依赖文件资源（--files: 非jar、zip），多文件以逗号分隔、DEPENDENCYARCHIVESPATH：依赖archives资源（--archives: 支持tar.gz/tgz/tar等归档格式)，多文件以逗号分隔、MAXRETRIES：任务重试次数，非流任务默认为1、SPARKIMAGE：Spark镜像版本号，支持使用dlc镜像/用户自定的tcr镜像运行任务、SPARKIMAGEVERSION：Spark镜像版本名称，与SPARKIMAGE一一对应
+        :rtype: list of KVPair
+        """
+        return self._CmdArgs
+
+    @CmdArgs.setter
+    def CmdArgs(self, CmdArgs):
+        self._CmdArgs = CmdArgs
+
+    @property
+    def SourceInfo(self):
+        """任务来源信息
+        :rtype: list of KVPair
+        """
+        return self._SourceInfo
+
+    @SourceInfo.setter
+    def SourceInfo(self, SourceInfo):
+        self._SourceInfo = SourceInfo
+
+
+    def _deserialize(self, params):
+        self._TaskName = params.get("TaskName")
+        self._TaskType = params.get("TaskType")
+        self._DataEngineName = params.get("DataEngineName")
+        self._PackagePath = params.get("PackagePath")
+        self._RoleArn = params.get("RoleArn")
+        self._IsInherit = params.get("IsInherit")
+        self._MainClass = params.get("MainClass")
+        self._DriverSize = params.get("DriverSize")
+        self._ExecutorSize = params.get("ExecutorSize")
+        self._ExecutorNumbers = params.get("ExecutorNumbers")
+        self._ExecutorMaxNumbers = params.get("ExecutorMaxNumbers")
+        if params.get("CmdArgs") is not None:
+            self._CmdArgs = []
+            for item in params.get("CmdArgs"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self._CmdArgs.append(obj)
+        if params.get("SourceInfo") is not None:
+            self._SourceInfo = []
+            for item in params.get("SourceInfo"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self._SourceInfo.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSparkSubmitTaskResponse(AbstractModel):
+    """CreateSparkSubmitTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BatchId: 批作业ID
+        :type BatchId: str
+        :param _TaskId: 批任务ID，用改ID进行任务的查询与删除等
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._BatchId = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def BatchId(self):
+        """批作业ID
+        :rtype: str
+        """
+        return self._BatchId
+
+    @BatchId.setter
+    def BatchId(self, BatchId):
+        self._BatchId = BatchId
+
+    @property
+    def TaskId(self):
+        """批任务ID，用改ID进行任务的查询与删除等
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._BatchId = params.get("BatchId")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateStoreLocationRequest(AbstractModel):
     """CreateStoreLocation请求参数结构体
 

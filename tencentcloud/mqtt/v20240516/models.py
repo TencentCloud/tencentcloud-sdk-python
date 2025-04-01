@@ -4623,14 +4623,14 @@ class DescribeInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)
+        :param _InstanceId: 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """实例ID [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)
+        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
         :rtype: str
         """
         return self._InstanceId
@@ -8233,7 +8233,7 @@ class ModifyInstanceRequest(AbstractModel):
         :param _Remark: 要修改的备注信息，最多64个字符。
         :type Remark: str
         :param _SkuCode: 需要变更的配置规格
-基础版和增强版集群不能升配到铂金版规格，铂金版集群不能降配至基础版和增强版规格。
+基础版和专业版集群不能升配到铂金版规格，铂金版集群不能降配至基础版和增强版规格。
         :type SkuCode: str
         :param _DeviceCertificateProvisionType: 客户端证书注册方式：
 JITP：自动注册
@@ -8288,7 +8288,7 @@ API：手动通过API注册
     @property
     def SkuCode(self):
         """需要变更的配置规格
-基础版和增强版集群不能升配到铂金版规格，铂金版集群不能降配至基础版和增强版规格。
+基础版和专业版集群不能升配到铂金版规格，铂金版集群不能降配至基础版和增强版规格。
         :rtype: str
         """
         return self._SkuCode
@@ -8886,13 +8886,14 @@ class PriceTag(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 计价名称
+        :param _Name: 计价名称，表示规格的计费项项目分类，具体规格的计价名称可参考  [获取MQTT产品售卖规格](https://cloud.tencent.com/document/product/1778/116232) 接口的返回结果。
         :type Name: str
-        :param _Category: 计价类别
+        :param _Category: 计价类别，计价名称子类，具体规格的计价类别可参考  [获取MQTT产品售卖规格](https://cloud.tencent.com/document/product/1778/116232) 的返回结果。
         :type Category: str
-        :param _Code: 计费项标签
+        :param _Code: 计费项标签，为计价名称（Name）下计价类别（Category）的子项目，表示一个具体的收费项。规格的计费项标签可参考 
+ [获取MQTT产品售卖规格](https://cloud.tencent.com/document/product/1778/116232) 接口的返回结果。
         :type Code: str
-        :param _Step: 步长
+        :param _Step: 计费步长，表示该规格在 计价名称（Name）下的计价类别（Category）的计费项标签（Code）计费数量。具体规格该字段取值参考 [获取MQTT产品售卖规格](https://cloud.tencent.com/document/product/1778/116232)
         :type Step: int
         """
         self._Name = None
@@ -8902,7 +8903,7 @@ class PriceTag(AbstractModel):
 
     @property
     def Name(self):
-        """计价名称
+        """计价名称，表示规格的计费项项目分类，具体规格的计价名称可参考  [获取MQTT产品售卖规格](https://cloud.tencent.com/document/product/1778/116232) 接口的返回结果。
         :rtype: str
         """
         return self._Name
@@ -8913,7 +8914,7 @@ class PriceTag(AbstractModel):
 
     @property
     def Category(self):
-        """计价类别
+        """计价类别，计价名称子类，具体规格的计价类别可参考  [获取MQTT产品售卖规格](https://cloud.tencent.com/document/product/1778/116232) 的返回结果。
         :rtype: str
         """
         return self._Category
@@ -8924,7 +8925,8 @@ class PriceTag(AbstractModel):
 
     @property
     def Code(self):
-        """计费项标签
+        """计费项标签，为计价名称（Name）下计价类别（Category）的子项目，表示一个具体的收费项。规格的计费项标签可参考 
+ [获取MQTT产品售卖规格](https://cloud.tencent.com/document/product/1778/116232) 接口的返回结果。
         :rtype: str
         """
         return self._Code
@@ -8935,7 +8937,7 @@ class PriceTag(AbstractModel):
 
     @property
     def Step(self):
-        """步长
+        """计费步长，表示该规格在 计价名称（Name）下的计价类别（Category）的计费项标签（Code）计费数量。具体规格该字段取值参考 [获取MQTT产品售卖规格](https://cloud.tencent.com/document/product/1778/116232)
         :rtype: int
         """
         return self._Step
@@ -9458,10 +9460,38 @@ class RegisterCaCertificateResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _InstanceId: mqtt实例ID
+        :type InstanceId: str
+        :param _CaSn: ca 证书的序列号
+        :type CaSn: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._InstanceId = None
+        self._CaSn = None
         self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        """mqtt实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def CaSn(self):
+        """ca 证书的序列号
+        :rtype: str
+        """
+        return self._CaSn
+
+    @CaSn.setter
+    def CaSn(self, CaSn):
+        self._CaSn = CaSn
 
     @property
     def RequestId(self):
@@ -9476,6 +9506,8 @@ class RegisterCaCertificateResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._CaSn = params.get("CaSn")
         self._RequestId = params.get("RequestId")
 
 
@@ -9605,10 +9637,52 @@ class RegisterDeviceCertificateResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _InstanceId: 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        :type InstanceId: str
+        :param _CaSn: 关联的CA证书SN
+        :type CaSn: str
+        :param _DeviceCertificateSn: 设备证书的SN
+        :type DeviceCertificateSn: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._InstanceId = None
+        self._CaSn = None
+        self._DeviceCertificateSn = None
         self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        """腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def CaSn(self):
+        """关联的CA证书SN
+        :rtype: str
+        """
+        return self._CaSn
+
+    @CaSn.setter
+    def CaSn(self, CaSn):
+        self._CaSn = CaSn
+
+    @property
+    def DeviceCertificateSn(self):
+        """设备证书的SN
+        :rtype: str
+        """
+        return self._DeviceCertificateSn
+
+    @DeviceCertificateSn.setter
+    def DeviceCertificateSn(self, DeviceCertificateSn):
+        self._DeviceCertificateSn = DeviceCertificateSn
 
     @property
     def RequestId(self):
@@ -9623,6 +9697,9 @@ class RegisterDeviceCertificateResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._CaSn = params.get("CaSn")
+        self._DeviceCertificateSn = params.get("DeviceCertificateSn")
         self._RequestId = params.get("RequestId")
 
 

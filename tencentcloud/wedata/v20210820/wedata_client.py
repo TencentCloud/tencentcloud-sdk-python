@@ -3018,6 +3018,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRoleList(self, request):
+        """获取角色列表信息
+
+        :param request: Request instance for DescribeRoleList.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRoleListRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeRoleListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRoleList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRoleListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRule(self, request):
         """查询规则详情
 
@@ -5600,6 +5623,29 @@ class WedataClient(AbstractClient):
             body = self.call("UpdateDataModelRegistryInfo", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateDataModelRegistryInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateProjectUserRole(self, request):
+        """修改项目用户角色
+
+        :param request: Request instance for UpdateProjectUserRole.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.UpdateProjectUserRoleRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.UpdateProjectUserRoleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateProjectUserRole", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateProjectUserRoleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
