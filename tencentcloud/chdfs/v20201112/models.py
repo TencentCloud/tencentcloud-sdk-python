@@ -3440,7 +3440,7 @@ class RestoreTask(AbstractModel):
         :type RestoreTaskId: int
         :param _FilePath: 回热任务文件路径
         :type FilePath: str
-        :param _Type: 回热任务类型（1：标准；2：极速；3：批量，暂时仅支持极速）
+        :param _Type: 回热任务类型（1：标准；2：极速；3：批量，暂时仅支持标准）
         :type Type: int
         :param _Days: 指定恢复出的临时副本的有效时长（单位天）
         :type Days: int
@@ -3480,7 +3480,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def Type(self):
-        """回热任务类型（1：标准；2：极速；3：批量，暂时仅支持极速）
+        """回热任务类型（1：标准；2：极速；3：批量，暂时仅支持标准）
         :rtype: int
         """
         return self._Type

@@ -974,7 +974,7 @@ class CreateReconstructDocumentFlowRequest(AbstractModel):
 - `PDF`、`DOC`、`DOCX`、`XLS`、`XLSX`、`PPT`、`PPTX`、`MD`、`TXT`、`PNG`、`JPG`、`JPEG`、`CSV`、`HTML`、`EPUB`、`BMP`、`GIF`、`WEBP`、`HEIC`、`EPS`、`ICNS`、`IM`、`PCX`、`PPM`、`TIFF`、`XBM`、`HEIF`、`JP2`
 
 **支持的文件大小：**
- - `PDF` 最大500M
+ - `PDF` 最大300M
  - `DOCX`、`DOC`、`PPT`、`PPTX` 最大 200M
  - `TXT`、`MD` 最大10M
  - 其他 最大20M
@@ -1014,7 +1014,7 @@ class CreateReconstructDocumentFlowRequest(AbstractModel):
 - `PDF`、`DOC`、`DOCX`、`XLS`、`XLSX`、`PPT`、`PPTX`、`MD`、`TXT`、`PNG`、`JPG`、`JPEG`、`CSV`、`HTML`、`EPUB`、`BMP`、`GIF`、`WEBP`、`HEIC`、`EPS`、`ICNS`、`IM`、`PCX`、`PPM`、`TIFF`、`XBM`、`HEIF`、`JP2`
 
 **支持的文件大小：**
- - `PDF` 最大500M
+ - `PDF` 最大300M
  - `DOCX`、`DOC`、`PPT`、`PPTX` 最大 200M
  - `TXT`、`MD` 最大10M
  - 其他 最大20M
@@ -3924,7 +3924,7 @@ class ReconstructDocumentSSERequest(AbstractModel):
 **支持的文件类型**：PDF、DOC、DOCX、PPT、PPTX、MD、TXT、XLS、XLSX、CSV、PNG、JPG、JPEG、BMP、GIF、WEBP、HEIC、EPS、ICNS、IM、PCX、PPM、TIFF、XBM、HEIF、JP2
 **支持的文件大小**：
 - PDF、DOC、DOCX、PPT、PPTX 支持100M
-- MD、TXT 支持10M
+- MD、TXT、XLS、XLSX、CSV 支持10M
 - 其他支持20M
 
         :type FileType: str
@@ -3959,7 +3959,7 @@ class ReconstructDocumentSSERequest(AbstractModel):
 **支持的文件类型**：PDF、DOC、DOCX、PPT、PPTX、MD、TXT、XLS、XLSX、CSV、PNG、JPG、JPEG、BMP、GIF、WEBP、HEIC、EPS、ICNS、IM、PCX、PPM、TIFF、XBM、HEIF、JP2
 **支持的文件大小**：
 - PDF、DOC、DOCX、PPT、PPTX 支持100M
-- MD、TXT 支持10M
+- MD、TXT、XLS、XLSX、CSV 支持10M
 - 其他支持20M
 
         :rtype: str
@@ -4067,7 +4067,10 @@ class ReconstructDocumentSSEResponse(AbstractModel):
         :type Progress: str
         :param _ProgressMessage: 进度信息。
         :type ProgressMessage: str
-        :param _DocumentRecognizeResultUrl: 文档解析结果URL。存储在腾讯云cos，可以通过http请求下载，URL十分钟内有效。
+        :param _DocumentRecognizeResultUrl: 文档解析结果的临时下载地址。
+文件类型为zip压缩包，下载链接有效期30分钟。
+压缩包内包含*.md、*.json以及images文件夹。
+
         :type DocumentRecognizeResultUrl: str
         :param _FailedPages: 文档解析失败的页码。
         :type FailedPages: list of ReconstructDocumentFailedPage
@@ -4128,7 +4131,10 @@ class ReconstructDocumentSSEResponse(AbstractModel):
 
     @property
     def DocumentRecognizeResultUrl(self):
-        """文档解析结果URL。存储在腾讯云cos，可以通过http请求下载，URL十分钟内有效。
+        """文档解析结果的临时下载地址。
+文件类型为zip压缩包，下载链接有效期30分钟。
+压缩包内包含*.md、*.json以及images文件夹。
+
         :rtype: str
         """
         return self._DocumentRecognizeResultUrl

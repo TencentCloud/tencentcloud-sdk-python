@@ -209,10 +209,8 @@ class AutoScalerBehavior(AbstractModel):
     def __init__(self):
         r"""
         :param _ScaleUp: 扩容行为配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScaleUp: :class:`tencentcloud.tse.v20201207.models.AutoScalerRules`
         :param _ScaleDown: 缩容行为配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScaleDown: :class:`tencentcloud.tse.v20201207.models.AutoScalerRules`
         """
         self._ScaleUp = None
@@ -221,7 +219,6 @@ class AutoScalerBehavior(AbstractModel):
     @property
     def ScaleUp(self):
         """扩容行为配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tse.v20201207.models.AutoScalerRules`
         """
         return self._ScaleUp
@@ -233,7 +230,6 @@ class AutoScalerBehavior(AbstractModel):
     @property
     def ScaleDown(self):
         """缩容行为配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tse.v20201207.models.AutoScalerRules`
         """
         return self._ScaleDown
@@ -268,13 +264,10 @@ class AutoScalerPolicy(AbstractModel):
     def __init__(self):
         r"""
         :param _Type: 类型，Pods
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Value: 数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: int
         :param _PeriodSeconds: 扩容周期
-注意：此字段可能返回 null，表示取不到有效值。
         :type PeriodSeconds: int
         """
         self._Type = None
@@ -284,7 +277,6 @@ class AutoScalerPolicy(AbstractModel):
     @property
     def Type(self):
         """类型，Pods
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -296,7 +288,6 @@ class AutoScalerPolicy(AbstractModel):
     @property
     def Value(self):
         """数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Value
@@ -308,7 +299,6 @@ class AutoScalerPolicy(AbstractModel):
     @property
     def PeriodSeconds(self):
         """扩容周期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PeriodSeconds
@@ -340,13 +330,10 @@ class AutoScalerRules(AbstractModel):
     def __init__(self):
         r"""
         :param _StabilizationWindowSeconds: 稳定窗口时间，扩容时默认0，缩容时默认300
-注意：此字段可能返回 null，表示取不到有效值。
         :type StabilizationWindowSeconds: int
         :param _SelectPolicy: 选择策略依据
-注意：此字段可能返回 null，表示取不到有效值。
         :type SelectPolicy: str
         :param _Policies: 扩缩容策略
-注意：此字段可能返回 null，表示取不到有效值。
         :type Policies: list of AutoScalerPolicy
         """
         self._StabilizationWindowSeconds = None
@@ -356,7 +343,6 @@ class AutoScalerRules(AbstractModel):
     @property
     def StabilizationWindowSeconds(self):
         """稳定窗口时间，扩容时默认0，缩容时默认300
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._StabilizationWindowSeconds
@@ -368,7 +354,6 @@ class AutoScalerRules(AbstractModel):
     @property
     def SelectPolicy(self):
         """选择策略依据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SelectPolicy
@@ -380,7 +365,6 @@ class AutoScalerRules(AbstractModel):
     @property
     def Policies(self):
         """扩缩容策略
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AutoScalerPolicy
         """
         return self._Policies
@@ -2518,7 +2502,6 @@ class CloudNativeAPIGatewayStrategyAutoScalerConfig(AbstractModel):
     def __init__(self):
         r"""
         :param _MaxReplicas: 最大副本数
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxReplicas: int
         :param _Metrics: 指标列表
 注意：此字段可能返回 null，表示取不到有效值。
@@ -2554,7 +2537,6 @@ class CloudNativeAPIGatewayStrategyAutoScalerConfig(AbstractModel):
     @property
     def MaxReplicas(self):
         """最大副本数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxReplicas
@@ -2707,13 +2689,10 @@ class CloudNativeAPIGatewayStrategyAutoScalerConfigMetric(AbstractModel):
         :param _ResourceName: 指标资源名称
 - cpu
 - memory
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceName: str
         :param _TargetType: 指标目标类型，目前只支持百分比Utilization
-注意：此字段可能返回 null，表示取不到有效值。
         :type TargetType: str
         :param _TargetValue: 指标目标值
-注意：此字段可能返回 null，表示取不到有效值。
         :type TargetValue: int
         """
         self._Type = None
@@ -2738,7 +2717,6 @@ class CloudNativeAPIGatewayStrategyAutoScalerConfigMetric(AbstractModel):
         """指标资源名称
 - cpu
 - memory
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceName
@@ -2750,7 +2728,6 @@ class CloudNativeAPIGatewayStrategyAutoScalerConfigMetric(AbstractModel):
     @property
     def TargetType(self):
         """指标目标类型，目前只支持百分比Utilization
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TargetType
@@ -2762,7 +2739,6 @@ class CloudNativeAPIGatewayStrategyAutoScalerConfigMetric(AbstractModel):
     @property
     def TargetValue(self):
         """指标目标值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TargetValue
@@ -3030,16 +3006,12 @@ class CloudNativeAPIGatewayStrategyCronScalerConfigParam(AbstractModel):
     def __init__(self):
         r"""
         :param _Period: 定时伸缩周期
-注意：此字段可能返回 null，表示取不到有效值。
         :type Period: str
         :param _StartAt: 定时伸缩开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartAt: str
         :param _TargetReplicas: 定时伸缩目标节点数，不超过指标伸缩中定义的最大节点数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TargetReplicas: int
         :param _Crontab: 定时伸缩cron表达式，无需输入
-注意：此字段可能返回 null，表示取不到有效值。
         :type Crontab: str
         """
         self._Period = None
@@ -3050,7 +3022,6 @@ class CloudNativeAPIGatewayStrategyCronScalerConfigParam(AbstractModel):
     @property
     def Period(self):
         """定时伸缩周期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Period
@@ -3062,7 +3033,6 @@ class CloudNativeAPIGatewayStrategyCronScalerConfigParam(AbstractModel):
     @property
     def StartAt(self):
         """定时伸缩开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StartAt
@@ -3074,7 +3044,6 @@ class CloudNativeAPIGatewayStrategyCronScalerConfigParam(AbstractModel):
     @property
     def TargetReplicas(self):
         """定时伸缩目标节点数，不超过指标伸缩中定义的最大节点数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TargetReplicas
@@ -3086,7 +3055,6 @@ class CloudNativeAPIGatewayStrategyCronScalerConfigParam(AbstractModel):
     @property
     def Crontab(self):
         """定时伸缩cron表达式，无需输入
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Crontab
@@ -5197,7 +5165,6 @@ class CreateAutoScalerResourceStrategyResponse(AbstractModel):
         :param _Result: 是否成功
         :type Result: bool
         :param _StrategyId: 策略Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type StrategyId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5224,7 +5191,6 @@ class CreateAutoScalerResourceStrategyResponse(AbstractModel):
     @property
     def StrategyId(self):
         """策略Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StrategyId

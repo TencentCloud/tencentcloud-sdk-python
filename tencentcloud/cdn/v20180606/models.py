@@ -7357,7 +7357,6 @@ class CreateClsLogTopicResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TopicId: 主题ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TopicId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7368,7 +7367,6 @@ class CreateClsLogTopicResponse(AbstractModel):
     @property
     def TopicId(self):
         """主题ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TopicId
@@ -8212,13 +8210,10 @@ class CreateVerifyRecordResponse(AbstractModel):
         :param _RecordType: 解析类型
         :type RecordType: str
         :param _FileVerifyUrl: 文件验证 URL 指引
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileVerifyUrl: str
         :param _FileVerifyDomains: 文件校验域名列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileVerifyDomains: list of str
         :param _FileVerifyName: 文件校验文件名
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileVerifyName: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8267,7 +8262,6 @@ class CreateVerifyRecordResponse(AbstractModel):
     @property
     def FileVerifyUrl(self):
         """文件验证 URL 指引
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FileVerifyUrl
@@ -8279,7 +8273,6 @@ class CreateVerifyRecordResponse(AbstractModel):
     @property
     def FileVerifyDomains(self):
         """文件校验域名列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._FileVerifyDomains
@@ -8291,7 +8284,6 @@ class CreateVerifyRecordResponse(AbstractModel):
     @property
     def FileVerifyName(self):
         """文件校验文件名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FileVerifyName
@@ -10241,10 +10233,8 @@ class DescribeCertDomainsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Domains: 已接入CDN的域名列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Domains: list of str
         :param _CertifiedDomains: 已配置证书的CDN域名列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type CertifiedDomains: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10256,7 +10246,6 @@ class DescribeCertDomainsResponse(AbstractModel):
     @property
     def Domains(self):
         """已接入CDN的域名列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Domains
@@ -10268,7 +10257,6 @@ class DescribeCertDomainsResponse(AbstractModel):
     @property
     def CertifiedDomains(self):
         """已配置证书的CDN域名列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._CertifiedDomains
@@ -10520,7 +10508,6 @@ class DescribeDiagnoseReportResponse(AbstractModel):
         :param _OriginInfo: 源站检测信息
         :type OriginInfo: :class:`tencentcloud.cdn.v20180606.models.DiagnoseData`
         :param _PurgeInfo: 刷新检测信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type PurgeInfo: :class:`tencentcloud.cdn.v20180606.models.DiagnoseData`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10627,7 +10614,6 @@ class DescribeDiagnoseReportResponse(AbstractModel):
     @property
     def PurgeInfo(self):
         """刷新检测信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.DiagnoseData`
         """
         return self._PurgeInfo
@@ -10887,7 +10873,6 @@ class DescribeDistrictIspDataResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 地区运营商数据明细
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of DistrictIspInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10898,7 +10883,6 @@ class DescribeDistrictIspDataResponse(AbstractModel):
     @property
     def Data(self):
         """地区运营商数据明细
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DistrictIspInfo
         """
         return self._Data
@@ -11788,16 +11772,12 @@ class DescribeImageConfigResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _WebpAdapter: WebpAdapter配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type WebpAdapter: :class:`tencentcloud.cdn.v20180606.models.WebpAdapter`
         :param _TpgAdapter: TpgAdapter配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type TpgAdapter: :class:`tencentcloud.cdn.v20180606.models.TpgAdapter`
         :param _GuetzliAdapter: GuetzliAdapter配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type GuetzliAdapter: :class:`tencentcloud.cdn.v20180606.models.GuetzliAdapter`
         :param _AvifAdapter: AvifAdapter配置项
-注意：此字段可能返回 null，表示取不到有效值。
         :type AvifAdapter: :class:`tencentcloud.cdn.v20180606.models.AvifAdapter`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11811,7 +11791,6 @@ class DescribeImageConfigResponse(AbstractModel):
     @property
     def WebpAdapter(self):
         """WebpAdapter配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.WebpAdapter`
         """
         return self._WebpAdapter
@@ -11823,7 +11802,6 @@ class DescribeImageConfigResponse(AbstractModel):
     @property
     def TpgAdapter(self):
         """TpgAdapter配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.TpgAdapter`
         """
         return self._TpgAdapter
@@ -11835,7 +11813,6 @@ class DescribeImageConfigResponse(AbstractModel):
     @property
     def GuetzliAdapter(self):
         """GuetzliAdapter配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.GuetzliAdapter`
         """
         return self._GuetzliAdapter
@@ -11847,7 +11824,6 @@ class DescribeImageConfigResponse(AbstractModel):
     @property
     def AvifAdapter(self):
         """AvifAdapter配置项
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.AvifAdapter`
         """
         return self._AvifAdapter
@@ -13119,10 +13095,8 @@ class DescribePurgeTasksResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _PurgeLogs: 详细刷新记录
-注意：此字段可能返回 null，表示取不到有效值。
         :type PurgeLogs: list of PurgeTask
         :param _TotalCount: 任务总数，用于分页
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13134,7 +13108,6 @@ class DescribePurgeTasksResponse(AbstractModel):
     @property
     def PurgeLogs(self):
         """详细刷新记录
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PurgeTask
         """
         return self._PurgeLogs
@@ -13146,7 +13119,6 @@ class DescribePurgeTasksResponse(AbstractModel):
     @property
     def TotalCount(self):
         """任务总数，用于分页
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -13397,10 +13369,8 @@ class DescribePushTasksResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _PushLogs: 预热历史记录
-注意：此字段可能返回 null，表示取不到有效值。
         :type PushLogs: list of PushTask
         :param _TotalCount: 任务总数，用于分页
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13412,7 +13382,6 @@ class DescribePushTasksResponse(AbstractModel):
     @property
     def PushLogs(self):
         """预热历史记录
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PushTask
         """
         return self._PushLogs
@@ -13424,7 +13393,6 @@ class DescribePushTasksResponse(AbstractModel):
     @property
     def TotalCount(self):
         """任务总数，用于分页
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -17447,10 +17415,8 @@ class DisableCachesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _CacheOptResult: 提交结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type CacheOptResult: :class:`tencentcloud.cdn.v20180606.models.CacheOptResult`
         :param _TaskId: 任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -17462,7 +17428,6 @@ class DisableCachesResponse(AbstractModel):
     @property
     def CacheOptResult(self):
         """提交结果
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.CacheOptResult`
         """
         return self._CacheOptResult
@@ -17474,7 +17439,6 @@ class DisableCachesResponse(AbstractModel):
     @property
     def TaskId(self):
         """任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskId
@@ -18566,10 +18530,8 @@ class EnableCachesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _CacheOptResult: 结果列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type CacheOptResult: :class:`tencentcloud.cdn.v20180606.models.CacheOptResult`
         :param _TaskId: 任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18581,7 +18543,6 @@ class EnableCachesResponse(AbstractModel):
     @property
     def CacheOptResult(self):
         """结果列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.CacheOptResult`
         """
         return self._CacheOptResult
@@ -18593,7 +18554,6 @@ class EnableCachesResponse(AbstractModel):
     @property
     def TaskId(self):
         """任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskId
@@ -19261,10 +19221,8 @@ class GetDisableRecordsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _UrlRecordList: 封禁历史记录
-注意：此字段可能返回 null，表示取不到有效值。
         :type UrlRecordList: list of UrlRecord
         :param _TotalCount: 任务总数，用于分页
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -19276,7 +19234,6 @@ class GetDisableRecordsResponse(AbstractModel):
     @property
     def UrlRecordList(self):
         """封禁历史记录
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of UrlRecord
         """
         return self._UrlRecordList
@@ -19288,7 +19245,6 @@ class GetDisableRecordsResponse(AbstractModel):
     @property
     def TotalCount(self):
         """任务总数，用于分页
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -21440,7 +21396,6 @@ class ListClsTopicDomainsResponse(AbstractModel):
         :param _TopicName: 日志主题名称
         :type TopicName: str
         :param _UpdateTime: 日志主题最近更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -21523,7 +21478,6 @@ class ListClsTopicDomainsResponse(AbstractModel):
     @property
     def UpdateTime(self):
         """日志主题最近更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime

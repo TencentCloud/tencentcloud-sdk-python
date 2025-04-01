@@ -17470,7 +17470,7 @@ class CreateOutputInfo(AbstractModel):
         :type OutputName: str
         :param _Description: 输出描述。
         :type Description: str
-        :param _Protocol: 输出的转推协议，支持SRT|RTP|RTMP|RTMP_PULL|RTSP|RIST。
+        :param _Protocol: 输出的转推协议，支持SRT|RTP|RTMP|RTMP_PULL|RTSP_PULL|RIST。
         :type Protocol: str
         :param _OutputRegion: 输出地区。
         :type OutputRegion: str
@@ -17535,7 +17535,7 @@ class CreateOutputInfo(AbstractModel):
 
     @property
     def Protocol(self):
-        """输出的转推协议，支持SRT|RTP|RTMP|RTMP_PULL|RTSP|RIST。
+        """输出的转推协议，支持SRT|RTP|RTMP|RTMP_PULL|RTSP_PULL|RIST。
         :rtype: str
         """
         return self._Protocol

@@ -27,7 +27,9 @@ class TeoClient(AbstractClient):
 
 
     def CreatePrefetchTask(self, request):
-        """创建预热任务
+        """老版本接口，最近一次调用时23年11月了
+
+        创建预热任务
 
         :param request: Request instance for CreatePrefetchTask.
         :type request: :class:`tencentcloud.teo.v20220106.models.CreatePrefetchTaskRequest`
@@ -50,7 +52,9 @@ class TeoClient(AbstractClient):
 
 
     def CreatePurgeTask(self, request):
-        """创建清除缓存任务
+        """老版本接口，老版本pod的最近一次调用在23年11月
+
+        创建清除缓存任务
 
         :param request: Request instance for CreatePurgeTask.
         :type request: :class:`tencentcloud.teo.v20220106.models.CreatePurgeTaskRequest`

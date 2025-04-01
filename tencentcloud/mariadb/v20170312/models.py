@@ -1318,6 +1318,8 @@ class CreateDBInstanceRequest(AbstractModel):
         :type DcnInstanceId: str
         :param _DcnSyncMode: DCN同步模式，0：异步， 1：强同步
         :type DcnSyncMode: int
+        :param _CpuType: cpu类型，英特尔：Intel/AMD，海光：Hygon，默认Intel/AMD
+        :type CpuType: str
         """
         self._Zones = None
         self._NodeCount = None
@@ -1340,6 +1342,7 @@ class CreateDBInstanceRequest(AbstractModel):
         self._DcnRegion = None
         self._DcnInstanceId = None
         self._DcnSyncMode = None
+        self._CpuType = None
 
     @property
     def Zones(self):
@@ -1575,6 +1578,17 @@ class CreateDBInstanceRequest(AbstractModel):
     def DcnSyncMode(self, DcnSyncMode):
         self._DcnSyncMode = DcnSyncMode
 
+    @property
+    def CpuType(self):
+        """cpu类型，英特尔：Intel/AMD，海光：Hygon，默认Intel/AMD
+        :rtype: str
+        """
+        return self._CpuType
+
+    @CpuType.setter
+    def CpuType(self, CpuType):
+        self._CpuType = CpuType
+
 
     def _deserialize(self, params):
         self._Zones = params.get("Zones")
@@ -1608,6 +1622,7 @@ class CreateDBInstanceRequest(AbstractModel):
         self._DcnRegion = params.get("DcnRegion")
         self._DcnInstanceId = params.get("DcnInstanceId")
         self._DcnSyncMode = params.get("DcnSyncMode")
+        self._CpuType = params.get("CpuType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2204,6 +2219,8 @@ innodb_page_size（innodb数据页，默认16K），sync_mode（同步模式：0
         :type RollbackTime: str
         :param _DcnSyncMode: DCN同步模式，0：异步， 1：强同步
         :type DcnSyncMode: int
+        :param _CpuType: cpu类型，英特尔：Intel/AMD，海光：Hygon，默认Intel/AMD
+        :type CpuType: str
         """
         self._Zones = None
         self._NodeCount = None
@@ -2224,6 +2241,7 @@ innodb_page_size（innodb数据页，默认16K），sync_mode（同步模式：0
         self._RollbackInstanceId = None
         self._RollbackTime = None
         self._DcnSyncMode = None
+        self._CpuType = None
 
     @property
     def Zones(self):
@@ -2436,6 +2454,17 @@ innodb_page_size（innodb数据页，默认16K），sync_mode（同步模式：0
     def DcnSyncMode(self, DcnSyncMode):
         self._DcnSyncMode = DcnSyncMode
 
+    @property
+    def CpuType(self):
+        """cpu类型，英特尔：Intel/AMD，海光：Hygon，默认Intel/AMD
+        :rtype: str
+        """
+        return self._CpuType
+
+    @CpuType.setter
+    def CpuType(self, CpuType):
+        self._CpuType = CpuType
+
 
     def _deserialize(self, params):
         self._Zones = params.get("Zones")
@@ -2467,6 +2496,7 @@ innodb_page_size（innodb数据页，默认16K），sync_mode（同步模式：0
         self._RollbackInstanceId = params.get("RollbackInstanceId")
         self._RollbackTime = params.get("RollbackTime")
         self._DcnSyncMode = params.get("DcnSyncMode")
+        self._CpuType = params.get("CpuType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5947,6 +5977,8 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
         :type IsDcnSwitchSupported: int
         :param _ProxyVersion: proxy版本号
         :type ProxyVersion: str
+        :param _CpuType: Cpu类型，如：英特尔：Intel/AMD，海光：Hygon
+        :type CpuType: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -6010,6 +6042,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
         self._IsDcnStrongSyncSupported = None
         self._IsDcnSwitchSupported = None
         self._ProxyVersion = None
+        self._CpuType = None
         self._RequestId = None
 
     @property
@@ -6675,6 +6708,17 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
         self._ProxyVersion = ProxyVersion
 
     @property
+    def CpuType(self):
+        """Cpu类型，如：英特尔：Intel/AMD，海光：Hygon
+        :rtype: str
+        """
+        return self._CpuType
+
+    @CpuType.setter
+    def CpuType(self, CpuType):
+        self._CpuType = CpuType
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -6766,6 +6810,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
         self._IsDcnStrongSyncSupported = params.get("IsDcnStrongSyncSupported")
         self._IsDcnSwitchSupported = params.get("IsDcnSwitchSupported")
         self._ProxyVersion = params.get("ProxyVersion")
+        self._CpuType = params.get("CpuType")
         self._RequestId = params.get("RequestId")
 
 
@@ -6773,6 +6818,36 @@ class DescribeDBInstanceSpecsRequest(AbstractModel):
     """DescribeDBInstanceSpecs请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _CpuType: Cpu类型，如：英特尔：Intel/AMD，海光：Hygon，默认Intel/AMD
+        :type CpuType: str
+        """
+        self._CpuType = None
+
+    @property
+    def CpuType(self):
+        """Cpu类型，如：英特尔：Intel/AMD，海光：Hygon，默认Intel/AMD
+        :rtype: str
+        """
+        return self._CpuType
+
+    @CpuType.setter
+    def CpuType(self, CpuType):
+        self._CpuType = CpuType
+
+
+    def _deserialize(self, params):
+        self._CpuType = params.get("CpuType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeDBInstanceSpecsResponse(AbstractModel):
@@ -9125,6 +9200,8 @@ class DescribePriceRequest(AbstractModel):
 * pent：分
 * microPent：微分
         :type AmountUnit: str
+        :param _CpuType: Cpu类型，如：英特尔：Intel/AMD，海光：Hygon，默认Intel/AMD
+        :type CpuType: str
         """
         self._Zone = None
         self._NodeCount = None
@@ -9134,6 +9211,7 @@ class DescribePriceRequest(AbstractModel):
         self._Count = None
         self._Paymode = None
         self._AmountUnit = None
+        self._CpuType = None
 
     @property
     def Zone(self):
@@ -9228,6 +9306,17 @@ class DescribePriceRequest(AbstractModel):
     def AmountUnit(self, AmountUnit):
         self._AmountUnit = AmountUnit
 
+    @property
+    def CpuType(self):
+        """Cpu类型，如：英特尔：Intel/AMD，海光：Hygon，默认Intel/AMD
+        :rtype: str
+        """
+        return self._CpuType
+
+    @CpuType.setter
+    def CpuType(self, CpuType):
+        self._CpuType = CpuType
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -9238,6 +9327,7 @@ class DescribePriceRequest(AbstractModel):
         self._Count = params.get("Count")
         self._Paymode = params.get("Paymode")
         self._AmountUnit = params.get("AmountUnit")
+        self._CpuType = params.get("CpuType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13131,9 +13221,12 @@ class NodeInfo(AbstractModel):
         :type NodeId: str
         :param _Role: DB节点角色，取值为master或者slave
         :type Role: str
+        :param _Zone: 节点所在可用区
+        :type Zone: str
         """
         self._NodeId = None
         self._Role = None
+        self._Zone = None
 
     @property
     def NodeId(self):
@@ -13157,10 +13250,22 @@ class NodeInfo(AbstractModel):
     def Role(self, Role):
         self._Role = Role
 
+    @property
+    def Zone(self):
+        """节点所在可用区
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
 
     def _deserialize(self, params):
         self._NodeId = params.get("NodeId")
         self._Role = params.get("Role")
+        self._Zone = params.get("Zone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13614,12 +13719,15 @@ class RegionInfo(AbstractModel):
         :type ZoneList: list of ZonesInfo
         :param _AvailableChoice: 可选择的主可用区和从可用区
         :type AvailableChoice: list of ZoneChooseInfo
+        :param _CpuType: Cpu类型，如：英特尔：Intel/AMD，海光：Hygon
+        :type CpuType: str
         """
         self._Region = None
         self._RegionId = None
         self._RegionName = None
         self._ZoneList = None
         self._AvailableChoice = None
+        self._CpuType = None
 
     @property
     def Region(self):
@@ -13676,6 +13784,17 @@ class RegionInfo(AbstractModel):
     def AvailableChoice(self, AvailableChoice):
         self._AvailableChoice = AvailableChoice
 
+    @property
+    def CpuType(self):
+        """Cpu类型，如：英特尔：Intel/AMD，海光：Hygon
+        :rtype: str
+        """
+        return self._CpuType
+
+    @CpuType.setter
+    def CpuType(self, CpuType):
+        self._CpuType = CpuType
+
 
     def _deserialize(self, params):
         self._Region = params.get("Region")
@@ -13693,6 +13812,7 @@ class RegionInfo(AbstractModel):
                 obj = ZoneChooseInfo()
                 obj._deserialize(item)
                 self._AvailableChoice.append(obj)
+        self._CpuType = params.get("CpuType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14882,11 +15002,21 @@ class SwitchDBInstanceHARequest(AbstractModel):
         r"""
         :param _InstanceId: 实例Id，形如 tdsql-ow728lmc
         :type InstanceId: str
-        :param _Zone: 切换的目标区域，会自动选择该可用区中延迟最低的节点
+        :param _Zone: 指定可用区标识符，具体含义由zoneMode参数决定。 
+
+- 当zoneMode为target时表示目标可用区 
+
+- 当zoneMode为avoid时表示需避开的故障可用区
         :type Zone: str
+        :param _ZoneMode: 可用区模式选择器，定义zone参数的语义类型。 
+- 默认值：target
+
+- 可选值：target, avoid
+        :type ZoneMode: str
         """
         self._InstanceId = None
         self._Zone = None
+        self._ZoneMode = None
 
     @property
     def InstanceId(self):
@@ -14901,7 +15031,11 @@ class SwitchDBInstanceHARequest(AbstractModel):
 
     @property
     def Zone(self):
-        """切换的目标区域，会自动选择该可用区中延迟最低的节点
+        """指定可用区标识符，具体含义由zoneMode参数决定。 
+
+- 当zoneMode为target时表示目标可用区 
+
+- 当zoneMode为avoid时表示需避开的故障可用区
         :rtype: str
         """
         return self._Zone
@@ -14910,10 +15044,25 @@ class SwitchDBInstanceHARequest(AbstractModel):
     def Zone(self, Zone):
         self._Zone = Zone
 
+    @property
+    def ZoneMode(self):
+        """可用区模式选择器，定义zone参数的语义类型。 
+- 默认值：target
+
+- 可选值：target, avoid
+        :rtype: str
+        """
+        return self._ZoneMode
+
+    @ZoneMode.setter
+    def ZoneMode(self, ZoneMode):
+        self._ZoneMode = ZoneMode
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._Zone = params.get("Zone")
+        self._ZoneMode = params.get("ZoneMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

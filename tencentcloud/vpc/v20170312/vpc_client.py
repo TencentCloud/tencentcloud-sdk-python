@@ -4532,6 +4532,32 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeNatGatewayFlowMonitorDetail(self, request):
+        """本接口（DescribeNatGatewayFlowMonitorDetail）用于查询NAT网关流量监控明细。
+
+        - 只支持单个网关实例查询。即入参 `NatGatewayId` 最多只支持传一个，且必须传一个。
+        - 如果网关有流量，但调用本接口没有返回数据，请在控制台对应网关详情页确认是否开启网关流量监控。
+
+        :param request: Request instance for DescribeNatGatewayFlowMonitorDetail.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeNatGatewayFlowMonitorDetailRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeNatGatewayFlowMonitorDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNatGatewayFlowMonitorDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeNatGatewayFlowMonitorDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeNatGatewaySourceIpTranslationNatRules(self, request):
         """本接口（DescribeNatGatewaySourceIpTranslationNatRules）用于查询NAT网关SNAT转发规则对象数组。
 

@@ -62791,6 +62791,9 @@ class ProjectUserRole(AbstractModel):
         :param _AppId: 租户iD
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: str
+        :param _IsProjectOwner: 是否项目负责人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsProjectOwner: bool
         """
         self._Roles = None
         self._UserName = None
@@ -62803,6 +62806,7 @@ class ProjectUserRole(AbstractModel):
         self._Email = None
         self._OwnerUin = None
         self._AppId = None
+        self._IsProjectOwner = None
 
     @property
     def Roles(self):
@@ -62936,6 +62940,18 @@ class ProjectUserRole(AbstractModel):
     def AppId(self, AppId):
         self._AppId = AppId
 
+    @property
+    def IsProjectOwner(self):
+        """是否项目负责人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsProjectOwner
+
+    @IsProjectOwner.setter
+    def IsProjectOwner(self, IsProjectOwner):
+        self._IsProjectOwner = IsProjectOwner
+
 
     def _deserialize(self, params):
         if params.get("Roles") is not None:
@@ -62954,6 +62970,7 @@ class ProjectUserRole(AbstractModel):
         self._Email = params.get("Email")
         self._OwnerUin = params.get("OwnerUin")
         self._AppId = params.get("AppId")
+        self._IsProjectOwner = params.get("IsProjectOwner")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -26,34 +26,24 @@ class AccountFactoryItem(AbstractModel):
     def __init__(self):
         r"""
         :param _Identifier: 账号工厂基线项唯一标识，只能包含英文字母、数字和@、,._[]-:()（）【】+=，。，长度2-128个字符。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Identifier: str
         :param _Name: 基线项名称，功能项名字唯一，仅支持英文字母、数宇、汉字、符号@、＆_[]-的组合，1-25个中文或英文字符。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _NameEn: 基线项英文名称，基线项名字唯一，仅支持英文字母、数字、空格、符号@、＆_[]-的组合，1-64个英文字符。
-注意：此字段可能返回 null，表示取不到有效值。
         :type NameEn: str
         :param _Weight: 基线项权重，数值小权重越高，取值范围大于等于0。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Weight: int
         :param _Required: 基线项是否必填，1必填，0非必填
-注意：此字段可能返回 null，表示取不到有效值。
         :type Required: int
         :param _DependsOn: 基线项依赖项，N的取值范围与该基线项依赖的其它基线项个数有关。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DependsOn: list of DependsOnItem
         :param _Description: 基线描述，长度为2~256个英文或中文字符，默认值为空。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _DescriptionEn: 基线项英文描述，长度为2~1024个英文字符，默认值为空。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DescriptionEn: str
         :param _Classify: 基线分类，长度为2~32个英文或中文字符，不能为空。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Classify: str
         :param _ClassifyEn: 基线英文分类，长度为2~64个英文字符，不能为空。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClassifyEn: str
         """
         self._Identifier = None
@@ -70,7 +60,6 @@ class AccountFactoryItem(AbstractModel):
     @property
     def Identifier(self):
         """账号工厂基线项唯一标识，只能包含英文字母、数字和@、,._[]-:()（）【】+=，。，长度2-128个字符。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Identifier
@@ -82,7 +71,6 @@ class AccountFactoryItem(AbstractModel):
     @property
     def Name(self):
         """基线项名称，功能项名字唯一，仅支持英文字母、数宇、汉字、符号@、＆_[]-的组合，1-25个中文或英文字符。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -94,7 +82,6 @@ class AccountFactoryItem(AbstractModel):
     @property
     def NameEn(self):
         """基线项英文名称，基线项名字唯一，仅支持英文字母、数字、空格、符号@、＆_[]-的组合，1-64个英文字符。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NameEn
@@ -106,7 +93,6 @@ class AccountFactoryItem(AbstractModel):
     @property
     def Weight(self):
         """基线项权重，数值小权重越高，取值范围大于等于0。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Weight
@@ -118,7 +104,6 @@ class AccountFactoryItem(AbstractModel):
     @property
     def Required(self):
         """基线项是否必填，1必填，0非必填
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Required
@@ -130,7 +115,6 @@ class AccountFactoryItem(AbstractModel):
     @property
     def DependsOn(self):
         """基线项依赖项，N的取值范围与该基线项依赖的其它基线项个数有关。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DependsOnItem
         """
         return self._DependsOn
@@ -142,7 +126,6 @@ class AccountFactoryItem(AbstractModel):
     @property
     def Description(self):
         """基线描述，长度为2~256个英文或中文字符，默认值为空。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -154,7 +137,6 @@ class AccountFactoryItem(AbstractModel):
     @property
     def DescriptionEn(self):
         """基线项英文描述，长度为2~1024个英文字符，默认值为空。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DescriptionEn
@@ -166,7 +148,6 @@ class AccountFactoryItem(AbstractModel):
     @property
     def Classify(self):
         """基线分类，长度为2~32个英文或中文字符，不能为空。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Classify
@@ -178,7 +159,6 @@ class AccountFactoryItem(AbstractModel):
     @property
     def ClassifyEn(self):
         """基线英文分类，长度为2~64个英文字符，不能为空。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClassifyEn
@@ -273,13 +253,10 @@ class BaselineInfoItem(AbstractModel):
     def __init__(self):
         r"""
         :param _Identifier: 账号工厂基线项唯一标识，只能包含英文字母、数字和@、,._[]-:()（）【】+=，。，长度2-128个字符。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Identifier: str
         :param _Configuration: 账号工厂基线项配置，不同的基线项配置参数不同。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Configuration: str
         :param _ApplyCount: 基线应用的账号数量。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplyCount: int
         """
         self._Identifier = None
@@ -289,7 +266,6 @@ class BaselineInfoItem(AbstractModel):
     @property
     def Identifier(self):
         """账号工厂基线项唯一标识，只能包含英文字母、数字和@、,._[]-:()（）【】+=，。，长度2-128个字符。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Identifier
@@ -301,7 +277,6 @@ class BaselineInfoItem(AbstractModel):
     @property
     def Configuration(self):
         """账号工厂基线项配置，不同的基线项配置参数不同。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Configuration
@@ -313,7 +288,6 @@ class BaselineInfoItem(AbstractModel):
     @property
     def ApplyCount(self):
         """基线应用的账号数量。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ApplyCount
@@ -345,31 +319,22 @@ class BaselineStepTaskInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _TaskId: 任务唯一Id，只能包含英文字母、数字，是16个字符的随机字符串。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
         :param _Identifier: 基线功能项唯一标识，只能包含英文字母、数字和@、,._[]-:()（）【】+=，。，长度2-128个字符。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Identifier: str
         :param _MemberUin: 被应用基线项的成员账号uin
-注意：此字段可能返回 null，表示取不到有效值。
         :type MemberUin: int
         :param _Status: 基线项应用的状态,Running表示基线项应用中,Success表示基线项应用成功,Failed表示基线项应用失败,Pending表示基线项待应用,Skipped表示基线项被跳过
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _ErrCode: 错误码
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: str
         :param _ErrMessage: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrMessage: str
         :param _Output: 基线项部署输出
-注意：此字段可能返回 null，表示取不到有效值。
         :type Output: str
         :param _CreateTime: 创建时间，按照ISO8601标准表示，格式为yyyy-MM-dd hh:mm:ss。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _UpdateTime: 更新时间，按照ISO8601标准表示，格式为yyyy-MM-dd hh:mm:ss。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         """
         self._TaskId = None
@@ -385,7 +350,6 @@ class BaselineStepTaskInfo(AbstractModel):
     @property
     def TaskId(self):
         """任务唯一Id，只能包含英文字母、数字，是16个字符的随机字符串。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskId
@@ -397,7 +361,6 @@ class BaselineStepTaskInfo(AbstractModel):
     @property
     def Identifier(self):
         """基线功能项唯一标识，只能包含英文字母、数字和@、,._[]-:()（）【】+=，。，长度2-128个字符。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Identifier
@@ -409,7 +372,6 @@ class BaselineStepTaskInfo(AbstractModel):
     @property
     def MemberUin(self):
         """被应用基线项的成员账号uin
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MemberUin
@@ -421,7 +383,6 @@ class BaselineStepTaskInfo(AbstractModel):
     @property
     def Status(self):
         """基线项应用的状态,Running表示基线项应用中,Success表示基线项应用成功,Failed表示基线项应用失败,Pending表示基线项待应用,Skipped表示基线项被跳过
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -433,7 +394,6 @@ class BaselineStepTaskInfo(AbstractModel):
     @property
     def ErrCode(self):
         """错误码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrCode
@@ -445,7 +405,6 @@ class BaselineStepTaskInfo(AbstractModel):
     @property
     def ErrMessage(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrMessage
@@ -457,7 +416,6 @@ class BaselineStepTaskInfo(AbstractModel):
     @property
     def Output(self):
         """基线项部署输出
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Output
@@ -469,7 +427,6 @@ class BaselineStepTaskInfo(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间，按照ISO8601标准表示，格式为yyyy-MM-dd hh:mm:ss。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -481,7 +438,6 @@ class BaselineStepTaskInfo(AbstractModel):
     @property
     def UpdateTime(self):
         """更新时间，按照ISO8601标准表示，格式为yyyy-MM-dd hh:mm:ss。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime
@@ -603,10 +559,8 @@ class DependsOnItem(AbstractModel):
     def __init__(self):
         r"""
         :param _Type: 依赖项类型，只有LandingZoneSetUp或AccountFactorySetUp。LandingZoneSetUp表示landingZone的依赖项；AccountFactorySetUp表示账号工厂的依赖项
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Identifier: 功能项唯一标识，只能包含英文字母、数字和@、,._[]-:()（）【】+=，。，长度2-128个字符。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Identifier: str
         """
         self._Type = None
@@ -615,7 +569,6 @@ class DependsOnItem(AbstractModel):
     @property
     def Type(self):
         """依赖项类型，只有LandingZoneSetUp或AccountFactorySetUp。LandingZoneSetUp表示landingZone的依赖项；AccountFactorySetUp表示账号工厂的依赖项
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -627,7 +580,6 @@ class DependsOnItem(AbstractModel):
     @property
     def Identifier(self):
         """功能项唯一标识，只能包含英文字母、数字和@、,._[]-:()（）【】+=，。，长度2-128个字符。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Identifier
@@ -664,19 +616,14 @@ class GetAccountFactoryBaselineResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _OwnerUin: 资源所属主账号uin。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OwnerUin: int
         :param _Name: 基线项名称，基线项名字唯一，仅支持英文字母、数宇、汉字、符号@、＆_[]-的组合，1-25个中文或英文字符。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _BaselineConfigItems: 基线项配置列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type BaselineConfigItems: list of BaselineInfoItem
         :param _CreateTime: 创建时间，按照ISO8601标准表示，格式为yyyy-MM-dd hh:mm:ss。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _UpdateTime: 更新时间，按照ISO8601标准表示，格式为yyyy-MM-dd hh:mm:ss。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -691,7 +638,6 @@ class GetAccountFactoryBaselineResponse(AbstractModel):
     @property
     def OwnerUin(self):
         """资源所属主账号uin。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._OwnerUin
@@ -703,7 +649,6 @@ class GetAccountFactoryBaselineResponse(AbstractModel):
     @property
     def Name(self):
         """基线项名称，基线项名字唯一，仅支持英文字母、数宇、汉字、符号@、＆_[]-的组合，1-25个中文或英文字符。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -715,7 +660,6 @@ class GetAccountFactoryBaselineResponse(AbstractModel):
     @property
     def BaselineConfigItems(self):
         """基线项配置列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BaselineInfoItem
         """
         return self._BaselineConfigItems
@@ -727,7 +671,6 @@ class GetAccountFactoryBaselineResponse(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间，按照ISO8601标准表示，格式为yyyy-MM-dd hh:mm:ss。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -739,7 +682,6 @@ class GetAccountFactoryBaselineResponse(AbstractModel):
     @property
     def UpdateTime(self):
         """更新时间，按照ISO8601标准表示，格式为yyyy-MM-dd hh:mm:ss。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime

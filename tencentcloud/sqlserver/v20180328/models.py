@@ -28466,8 +28466,11 @@ class RestartDBInstanceRequest(AbstractModel):
         r"""
         :param _InstanceId: 数据库实例ID，形如mssql-njj2mtpl
         :type InstanceId: str
+        :param _WaitSwitch: 重启设置，0-立刻重启，1-维护时间窗口内重启，默认0
+        :type WaitSwitch: int
         """
         self._InstanceId = None
+        self._WaitSwitch = None
 
     @property
     def InstanceId(self):
@@ -28480,9 +28483,21 @@ class RestartDBInstanceRequest(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def WaitSwitch(self):
+        """重启设置，0-立刻重启，1-维护时间窗口内重启，默认0
+        :rtype: int
+        """
+        return self._WaitSwitch
+
+    @WaitSwitch.setter
+    def WaitSwitch(self, WaitSwitch):
+        self._WaitSwitch = WaitSwitch
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
+        self._WaitSwitch = params.get("WaitSwitch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

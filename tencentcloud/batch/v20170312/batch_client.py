@@ -78,29 +78,6 @@ class BatchClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CreateCpmComputeEnv(self, request):
-        """创建黑石计算环境
-
-        :param request: Request instance for CreateCpmComputeEnv.
-        :type request: :class:`tencentcloud.batch.v20170312.models.CreateCpmComputeEnvRequest`
-        :rtype: :class:`tencentcloud.batch.v20170312.models.CreateCpmComputeEnvResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateCpmComputeEnv", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateCpmComputeEnvResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def CreateTaskTemplate(self, request):
         """用于创建任务模板
 
@@ -324,29 +301,6 @@ class BatchClient(AbstractClient):
             body = self.call("DescribeComputeEnvs", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeComputeEnvsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeCpmOsInfo(self, request):
-        """创建黑石计算环境时，查询批量计算环境支持的黑石操作系统信息
-
-        :param request: Request instance for DescribeCpmOsInfo.
-        :type request: :class:`tencentcloud.batch.v20170312.models.DescribeCpmOsInfoRequest`
-        :rtype: :class:`tencentcloud.batch.v20170312.models.DescribeCpmOsInfoResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeCpmOsInfo", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeCpmOsInfoResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

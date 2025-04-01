@@ -32,9 +32,6 @@ INTERNALERROR_CALLCVM = 'InternalError.CallCvm'
 # 获取Tag错误。
 INTERNALERROR_CALLTAGAPI = 'InternalError.CallTagAPI'
 
-# 黑石服务返回数据为空。
-INTERNALERROR_CPMRESPONSEDATAEMPTY = 'InternalError.CpmResponseDataEmpty'
-
 # 指定的Filter不被支持。
 INVALIDFILTER = 'InvalidFilter'
 
@@ -145,12 +142,6 @@ INVALIDPARAMETERVALUE_NEGATIVE = 'InvalidParameterValue.Negative'
 
 # 参数值不是浮点型。
 INVALIDPARAMETERVALUE_NOTFLOAT = 'InvalidParameterValue.NotFloat'
-
-# 指定的OsTypeId不合法。
-INVALIDPARAMETERVALUE_OSTYPEID = 'InvalidParameterValue.OsTypeId'
-
-# 该地域不支持创建黑石计算环境。
-INVALIDPARAMETERVALUE_REGIONNOTSUPPORTCPM = 'InvalidParameterValue.RegionNotSupportCpm'
 
 # 非法的存储路径格式。
 INVALIDPARAMETERVALUE_REMOTESTORAGEPATH = 'InvalidParameterValue.RemoteStoragePath'

@@ -3137,8 +3137,11 @@ class CreateSCIMCredentialRequest(AbstractModel):
         r"""
         :param _ZoneId: 空间ID。z-前缀开头，后面是12位随机数字/小写字母
         :type ZoneId: str
+        :param _ExpireDuration: 过期时间（秒），最小1小时，最大99年。如果不传则默认一年过期
+        :type ExpireDuration: int
         """
         self._ZoneId = None
+        self._ExpireDuration = None
 
     @property
     def ZoneId(self):
@@ -3151,9 +3154,21 @@ class CreateSCIMCredentialRequest(AbstractModel):
     def ZoneId(self, ZoneId):
         self._ZoneId = ZoneId
 
+    @property
+    def ExpireDuration(self):
+        """过期时间（秒），最小1小时，最大99年。如果不传则默认一年过期
+        :rtype: int
+        """
+        return self._ExpireDuration
+
+    @ExpireDuration.setter
+    def ExpireDuration(self, ExpireDuration):
+        self._ExpireDuration = ExpireDuration
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
+        self._ExpireDuration = params.get("ExpireDuration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

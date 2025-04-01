@@ -537,7 +537,6 @@ class CheckRecordSnapshotRollbackResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Reason: 错误原因
-注意：此字段可能返回 null，表示取不到有效值。
         :type Reason: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -548,7 +547,6 @@ class CheckRecordSnapshotRollbackResponse(AbstractModel):
     @property
     def Reason(self):
         """错误原因
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Reason
@@ -659,10 +657,8 @@ class CheckSnapshotRollbackResponse(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Timeout: int
         :param _Failed: 检查失败数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Failed: int
         :param _FailedRecordList: 失败记录信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailedRecordList: list of SnapshotRecord
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -735,7 +731,6 @@ class CheckSnapshotRollbackResponse(AbstractModel):
     @property
     def Failed(self):
         """检查失败数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Failed
@@ -747,7 +742,6 @@ class CheckSnapshotRollbackResponse(AbstractModel):
     @property
     def FailedRecordList(self):
         """失败记录信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SnapshotRecord
         """
         return self._FailedRecordList
@@ -1133,24 +1127,19 @@ class CreateDomainBatchDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _RecordList: 见RecordInfoBatch
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecordList: list of CreateDomainBatchRecord
         :param _Id: 任务编号
         :type Id: int
         :param _Domain: 域名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Domain: str
         :param _DomainGrade: 域名等级
-注意：此字段可能返回 null，表示取不到有效值。
         :type DomainGrade: str
         :param _ErrMsg: 错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrMsg: str
         :param _Status: 该条任务运行状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _Operation: 操作类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Operation: str
         """
         self._RecordList = None
@@ -1164,7 +1153,6 @@ class CreateDomainBatchDetail(AbstractModel):
     @property
     def RecordList(self):
         """见RecordInfoBatch
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CreateDomainBatchRecord
         """
         return self._RecordList
@@ -1187,7 +1175,6 @@ class CreateDomainBatchDetail(AbstractModel):
     @property
     def Domain(self):
         """域名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Domain
@@ -1199,7 +1186,6 @@ class CreateDomainBatchDetail(AbstractModel):
     @property
     def DomainGrade(self):
         """域名等级
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DomainGrade
@@ -1223,7 +1209,6 @@ class CreateDomainBatchDetail(AbstractModel):
     @property
     def Status(self):
         """该条任务运行状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -1235,7 +1220,6 @@ class CreateDomainBatchDetail(AbstractModel):
     @property
     def Operation(self):
         """操作类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Operation
@@ -1276,25 +1260,18 @@ class CreateDomainBatchRecord(AbstractModel):
     def __init__(self):
         r"""
         :param _SubDomain: 子域名(主机记录)。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubDomain: str
         :param _RecordType: 记录类型, 详见 DescribeRecordType 接口
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecordType: str
         :param _RecordLine: 解析记录的线路，详见 DescribeRecordLineList 接口
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecordLine: str
         :param _Value: 记录值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         :param _TTL: 记录的 TTL 值
-注意：此字段可能返回 null，表示取不到有效值。
         :type TTL: int
         :param _Status: 记录添加状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _Operation: 操作类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Operation: str
         :param _ErrMsg: 错误信息
 注意：此字段可能返回 null，表示取不到有效值。
@@ -1315,7 +1292,6 @@ class CreateDomainBatchRecord(AbstractModel):
     @property
     def SubDomain(self):
         """子域名(主机记录)。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubDomain
@@ -1327,7 +1303,6 @@ class CreateDomainBatchRecord(AbstractModel):
     @property
     def RecordType(self):
         """记录类型, 详见 DescribeRecordType 接口
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RecordType
@@ -1339,7 +1314,6 @@ class CreateDomainBatchRecord(AbstractModel):
     @property
     def RecordLine(self):
         """解析记录的线路，详见 DescribeRecordLineList 接口
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RecordLine
@@ -1351,7 +1325,6 @@ class CreateDomainBatchRecord(AbstractModel):
     @property
     def Value(self):
         """记录值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -1363,7 +1336,6 @@ class CreateDomainBatchRecord(AbstractModel):
     @property
     def TTL(self):
         """记录的 TTL 值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TTL
@@ -1375,7 +1347,6 @@ class CreateDomainBatchRecord(AbstractModel):
     @property
     def Status(self):
         """记录添加状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -1387,7 +1358,6 @@ class CreateDomainBatchRecord(AbstractModel):
     @property
     def Operation(self):
         """操作类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Operation
@@ -2244,27 +2214,22 @@ class CreateRecordBatchDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _RecordList: 见RecordInfoBatch
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecordList: list of CreateRecordBatchRecord
         :param _Id: 任务编号
         :type Id: int
         :param _Domain: 域名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Domain: str
         :param _DomainGrade: 域名等级
-注意：此字段可能返回 null，表示取不到有效值。
         :type DomainGrade: str
         :param _ErrMsg: 错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrMsg: str
         :param _Status: 该条任务运行状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _Operation: 操作类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type Operation: str
         :param _DomainId: 域名ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type DomainId: int
         """
         self._RecordList = None
@@ -2279,7 +2244,6 @@ class CreateRecordBatchDetail(AbstractModel):
     @property
     def RecordList(self):
         """见RecordInfoBatch
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CreateRecordBatchRecord
         """
         return self._RecordList
@@ -2302,7 +2266,6 @@ class CreateRecordBatchDetail(AbstractModel):
     @property
     def Domain(self):
         """域名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Domain
@@ -2314,7 +2277,6 @@ class CreateRecordBatchDetail(AbstractModel):
     @property
     def DomainGrade(self):
         """域名等级
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DomainGrade
@@ -2338,7 +2300,6 @@ class CreateRecordBatchDetail(AbstractModel):
     @property
     def Status(self):
         """该条任务运行状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -2362,7 +2323,6 @@ class CreateRecordBatchDetail(AbstractModel):
     @property
     def DomainId(self):
         """域名ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DomainId
@@ -2404,22 +2364,16 @@ class CreateRecordBatchRecord(AbstractModel):
     def __init__(self):
         r"""
         :param _SubDomain: 子域名(主机记录)。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubDomain: str
         :param _RecordType: 记录类型, 详见 DescribeRecordType 接口
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecordType: str
         :param _RecordLine: 解析记录的线路，详见 DescribeRecordLineList 接口
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecordLine: str
         :param _Value: 记录值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         :param _TTL: 记录的 TTL 值
-注意：此字段可能返回 null，表示取不到有效值。
         :type TTL: int
         :param _Status: 记录添加状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _Operation: 操作类型
 注意：此字段可能返回 null，表示取不到有效值。
@@ -2430,10 +2384,8 @@ class CreateRecordBatchRecord(AbstractModel):
         :param _Id: 此条记录在列表中的ID
         :type Id: int
         :param _MX: 记录的MX权重
-注意：此字段可能返回 null，表示取不到有效值。
         :type MX: int
         :param _Weight: 记录的权重
-注意：此字段可能返回 null，表示取不到有效值。
         :type Weight: int
         """
         self._SubDomain = None
@@ -2451,7 +2403,6 @@ class CreateRecordBatchRecord(AbstractModel):
     @property
     def SubDomain(self):
         """子域名(主机记录)。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubDomain
@@ -2463,7 +2414,6 @@ class CreateRecordBatchRecord(AbstractModel):
     @property
     def RecordType(self):
         """记录类型, 详见 DescribeRecordType 接口
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RecordType
@@ -2475,7 +2425,6 @@ class CreateRecordBatchRecord(AbstractModel):
     @property
     def RecordLine(self):
         """解析记录的线路，详见 DescribeRecordLineList 接口
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RecordLine
@@ -2487,7 +2436,6 @@ class CreateRecordBatchRecord(AbstractModel):
     @property
     def Value(self):
         """记录值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -2499,7 +2447,6 @@ class CreateRecordBatchRecord(AbstractModel):
     @property
     def TTL(self):
         """记录的 TTL 值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TTL
@@ -2511,7 +2458,6 @@ class CreateRecordBatchRecord(AbstractModel):
     @property
     def Status(self):
         """记录添加状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -2558,7 +2504,6 @@ class CreateRecordBatchRecord(AbstractModel):
     @property
     def MX(self):
         """记录的MX权重
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MX
@@ -2570,7 +2515,6 @@ class CreateRecordBatchRecord(AbstractModel):
     @property
     def Weight(self):
         """记录的权重
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Weight
@@ -4974,7 +4918,6 @@ class DescribeBatchTaskDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _RecordList: 见BatchRecordInfo
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecordList: list of BatchRecordInfo
         :param _Id: 任务编号
         :type Id: int
@@ -4982,13 +4925,11 @@ class DescribeBatchTaskDetail(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Domain: str
         :param _DomainGrade: 域名等级
-注意：此字段可能返回 null，表示取不到有效值。
         :type DomainGrade: str
         :param _ErrMsg: 错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrMsg: str
         :param _Status: 该条任务运行状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _Operation: 操作类型
 注意：此字段可能返回 null，表示取不到有效值。
@@ -5009,7 +4950,6 @@ class DescribeBatchTaskDetail(AbstractModel):
     @property
     def RecordList(self):
         """见BatchRecordInfo
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BatchRecordInfo
         """
         return self._RecordList
@@ -5044,7 +4984,6 @@ class DescribeBatchTaskDetail(AbstractModel):
     @property
     def DomainGrade(self):
         """域名等级
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DomainGrade
@@ -5068,7 +5007,6 @@ class DescribeBatchTaskDetail(AbstractModel):
     @property
     def Status(self):
         """该条任务运行状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -11814,7 +11752,6 @@ RECORD_EXPORT：导出解析记录
 DOMAIN_EXPORT：导出域名列表
         :type Type: str
         :param _LeftTime: 剩余时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type LeftTime: :class:`tencentcloud.dnspod.v20210323.models.LeftTime`
         """
         self._FileId = None
@@ -11952,7 +11889,6 @@ DOMAIN_EXPORT：导出域名列表
     @property
     def LeftTime(self):
         """剩余时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dnspod.v20210323.models.LeftTime`
         """
         return self._LeftTime
@@ -12126,13 +12062,10 @@ class LeftTime(AbstractModel):
     def __init__(self):
         r"""
         :param _Days: 剩余天数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Days: int
         :param _Hours: 剩余小时数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Hours: int
         :param _Mins: 剩余分钟数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Mins: int
         """
         self._Days = None
@@ -12142,7 +12075,6 @@ class LeftTime(AbstractModel):
     @property
     def Days(self):
         """剩余天数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Days
@@ -12154,7 +12086,6 @@ class LeftTime(AbstractModel):
     @property
     def Hours(self):
         """剩余小时数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Hours
@@ -12166,7 +12097,6 @@ class LeftTime(AbstractModel):
     @property
     def Mins(self):
         """剩余分钟数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Mins

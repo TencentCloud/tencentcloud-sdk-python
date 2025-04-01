@@ -16638,6 +16638,10 @@ UPDATING 更新中
         :param _AvailableReplicasCount: 服务组下期望的pod数
 注意：此字段可能返回 null，表示取不到有效值。
         :type AvailableReplicasCount: int
+        :param _SubUin: 服务组的subuin
+        :type SubUin: str
+        :param _AppId: 服务组的app_id
+        :type AppId: int
         """
         self._ServiceGroupId = None
         self._ServiceGroupName = None
@@ -16657,6 +16661,8 @@ UPDATING 更新中
         self._WeightUpdateStatus = None
         self._ReplicasCount = None
         self._AvailableReplicasCount = None
+        self._SubUin = None
+        self._AppId = None
 
     @property
     def ServiceGroupId(self):
@@ -16885,6 +16891,28 @@ UPDATING 更新中
     def AvailableReplicasCount(self, AvailableReplicasCount):
         self._AvailableReplicasCount = AvailableReplicasCount
 
+    @property
+    def SubUin(self):
+        """服务组的subuin
+        :rtype: str
+        """
+        return self._SubUin
+
+    @SubUin.setter
+    def SubUin(self, SubUin):
+        self._SubUin = SubUin
+
+    @property
+    def AppId(self):
+        """服务组的app_id
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
 
     def _deserialize(self, params):
         self._ServiceGroupId = params.get("ServiceGroupId")
@@ -16915,6 +16943,8 @@ UPDATING 更新中
         self._WeightUpdateStatus = params.get("WeightUpdateStatus")
         self._ReplicasCount = params.get("ReplicasCount")
         self._AvailableReplicasCount = params.get("AvailableReplicasCount")
+        self._SubUin = params.get("SubUin")
+        self._AppId = params.get("AppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17004,7 +17034,7 @@ HYBRID_PAID:
         :type ScaleStrategy: str
         :param _ScheduledAction: 定时停止的配置
 注意：此字段可能返回 null，表示取不到有效值。
-        :type ScheduledAction: str
+        :type ScheduledAction: :class:`tencentcloud.tione.v20211111.models.ScheduledAction`
         :param _PodList: 实例列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type PodList: list of str
@@ -17338,7 +17368,7 @@ HYBRID_PAID:
     def ScheduledAction(self):
         """定时停止的配置
 注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ScheduledAction`
         """
         return self._ScheduledAction
 
@@ -17543,7 +17573,9 @@ HYBRID_PAID:
                 obj._deserialize(item)
                 self._CronScaleJobs.append(obj)
         self._ScaleStrategy = params.get("ScaleStrategy")
-        self._ScheduledAction = params.get("ScheduledAction")
+        if params.get("ScheduledAction") is not None:
+            self._ScheduledAction = ScheduledAction()
+            self._ScheduledAction._deserialize(params.get("ScheduledAction"))
         self._PodList = params.get("PodList")
         if params.get("Pods") is not None:
             self._Pods = Pod()

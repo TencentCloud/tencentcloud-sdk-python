@@ -29,7 +29,8 @@ class DescribeMaterialListRequest(AbstractModel):
         :type ActivityId: str
         :param _MaterialId: 素材Id
         :type MaterialId: str
-        :param _Limit: 每次拉取条数
+        :param _Limit: 每次拉取条数。
+每次拉取素材最多可支持拉取20条素材信息，如果需要拉取全部素材信息，可以分多次请求拉取全部素材信息。
         :type Limit: int
         :param _Offset: 偏移量
         :type Offset: int
@@ -63,7 +64,8 @@ class DescribeMaterialListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每次拉取条数
+        """每次拉取条数。
+每次拉取素材最多可支持拉取20条素材信息，如果需要拉取全部素材信息，可以分多次请求拉取全部素材信息。
         :rtype: int
         """
         return self._Limit

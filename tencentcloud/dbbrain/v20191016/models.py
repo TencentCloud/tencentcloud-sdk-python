@@ -2449,6 +2449,240 @@ class DescribeMailProfileResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeMySqlProcessListRequest(AbstractModel):
+    """DescribeMySqlProcessList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID。
+        :type InstanceId: str
+        :param _ID: 线程的ID，用于筛选线程列表。
+        :type ID: int
+        :param _User: 线程的操作账号名，用于筛选线程列表。
+        :type User: str
+        :param _Host: 线程的操作主机地址，用于筛选线程列表。
+        :type Host: str
+        :param _DB: 线程的操作数据库，用于筛选线程列表。
+        :type DB: str
+        :param _State: 线程的操作状态，用于筛选线程列表。
+        :type State: str
+        :param _Command: 线程的执行类型，用于筛选线程列表。
+        :type Command: str
+        :param _Time: 线程的操作时长最小值，单位秒，用于筛选操作时长大于该值的线程列表。
+        :type Time: int
+        :param _Info: 线程的操作语句，用于筛选线程列表。
+        :type Info: str
+        :param _Limit: 返回数量，默认20。
+        :type Limit: int
+        :param _Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :type Product: str
+        """
+        self._InstanceId = None
+        self._ID = None
+        self._User = None
+        self._Host = None
+        self._DB = None
+        self._State = None
+        self._Command = None
+        self._Time = None
+        self._Info = None
+        self._Limit = None
+        self._Product = None
+
+    @property
+    def InstanceId(self):
+        """实例ID。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ID(self):
+        """线程的ID，用于筛选线程列表。
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def User(self):
+        """线程的操作账号名，用于筛选线程列表。
+        :rtype: str
+        """
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Host(self):
+        """线程的操作主机地址，用于筛选线程列表。
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def DB(self):
+        """线程的操作数据库，用于筛选线程列表。
+        :rtype: str
+        """
+        return self._DB
+
+    @DB.setter
+    def DB(self, DB):
+        self._DB = DB
+
+    @property
+    def State(self):
+        """线程的操作状态，用于筛选线程列表。
+        :rtype: str
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def Command(self):
+        """线程的执行类型，用于筛选线程列表。
+        :rtype: str
+        """
+        return self._Command
+
+    @Command.setter
+    def Command(self, Command):
+        self._Command = Command
+
+    @property
+    def Time(self):
+        """线程的操作时长最小值，单位秒，用于筛选操作时长大于该值的线程列表。
+        :rtype: int
+        """
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def Info(self):
+        """线程的操作语句，用于筛选线程列表。
+        :rtype: str
+        """
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def Limit(self):
+        """返回数量，默认20。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Product(self):
+        """服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ID = params.get("ID")
+        self._User = params.get("User")
+        self._Host = params.get("Host")
+        self._DB = params.get("DB")
+        self._State = params.get("State")
+        self._Command = params.get("Command")
+        self._Time = params.get("Time")
+        self._Info = params.get("Info")
+        self._Limit = params.get("Limit")
+        self._Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMySqlProcessListResponse(AbstractModel):
+    """DescribeMySqlProcessList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProcessList: 实时线程列表。
+        :type ProcessList: list of MySqlProcess
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ProcessList = None
+        self._RequestId = None
+
+    @property
+    def ProcessList(self):
+        """实时线程列表。
+        :rtype: list of MySqlProcess
+        """
+        return self._ProcessList
+
+    @ProcessList.setter
+    def ProcessList(self, ProcessList):
+        self._ProcessList = ProcessList
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ProcessList") is not None:
+            self._ProcessList = []
+            for item in params.get("ProcessList"):
+                obj = MySqlProcess()
+                obj._deserialize(item)
+                self._ProcessList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSecurityAuditLogDownloadUrlsRequest(AbstractModel):
     """DescribeSecurityAuditLogDownloadUrls请求参数结构体
 
@@ -6155,6 +6389,147 @@ class MonitorMetricSeriesData(AbstractModel):
                 obj._deserialize(item)
                 self._Series.append(obj)
         self._Timestamp = params.get("Timestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MySqlProcess(AbstractModel):
+    """关系型数据库线程
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 线程ID。
+        :type ID: str
+        :param _User: 线程的操作账号名。
+        :type User: str
+        :param _Host: 线程的操作主机地址。
+        :type Host: str
+        :param _DB: 线程的操作数据库。
+        :type DB: str
+        :param _State: 线程的操作状态。
+        :type State: str
+        :param _Command: 线程的执行类型。
+        :type Command: str
+        :param _Time: 线程的操作时长，单位秒。
+        :type Time: str
+        :param _Info: 线程的操作语句。
+        :type Info: str
+        """
+        self._ID = None
+        self._User = None
+        self._Host = None
+        self._DB = None
+        self._State = None
+        self._Command = None
+        self._Time = None
+        self._Info = None
+
+    @property
+    def ID(self):
+        """线程ID。
+        :rtype: str
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def User(self):
+        """线程的操作账号名。
+        :rtype: str
+        """
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Host(self):
+        """线程的操作主机地址。
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def DB(self):
+        """线程的操作数据库。
+        :rtype: str
+        """
+        return self._DB
+
+    @DB.setter
+    def DB(self, DB):
+        self._DB = DB
+
+    @property
+    def State(self):
+        """线程的操作状态。
+        :rtype: str
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def Command(self):
+        """线程的执行类型。
+        :rtype: str
+        """
+        return self._Command
+
+    @Command.setter
+    def Command(self, Command):
+        self._Command = Command
+
+    @property
+    def Time(self):
+        """线程的操作时长，单位秒。
+        :rtype: str
+        """
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def Info(self):
+        """线程的操作语句。
+        :rtype: str
+        """
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._User = params.get("User")
+        self._Host = params.get("Host")
+        self._DB = params.get("DB")
+        self._State = params.get("State")
+        self._Command = params.get("Command")
+        self._Time = params.get("Time")
+        self._Info = params.get("Info")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

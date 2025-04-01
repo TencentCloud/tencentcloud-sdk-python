@@ -552,15 +552,12 @@ class AttachEntityOfPolicy(AbstractModel):
         :param _Id: 实体ID
         :type Id: str
         :param _Name: 实体名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Uin: 实体Uin
-注意：此字段可能返回 null，表示取不到有效值。
         :type Uin: int
         :param _RelatedType: 关联类型。1 用户关联 ； 2 用户组关联 3 角色关联
         :type RelatedType: int
         :param _AttachmentTime: 策略关联时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type AttachmentTime: str
         """
         self._Id = None
@@ -583,7 +580,6 @@ class AttachEntityOfPolicy(AbstractModel):
     @property
     def Name(self):
         """实体名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -595,7 +591,6 @@ class AttachEntityOfPolicy(AbstractModel):
     @property
     def Uin(self):
         """实体Uin
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Uin
@@ -618,7 +613,6 @@ class AttachEntityOfPolicy(AbstractModel):
     @property
     def AttachmentTime(self):
         """策略关联时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AttachmentTime
@@ -733,19 +727,14 @@ class AttachPolicyInfo(AbstractModel):
         :param _PolicyId: 策略id
         :type PolicyId: int
         :param _PolicyName: 策略名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyName: str
         :param _AddTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type AddTime: str
         :param _CreateMode: 创建来源，1 通过控制台创建, 2 通过策略语法创建
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateMode: int
         :param _PolicyType: 取值为User和QCS。User代表自定义策略，QCS代表系统策略
-注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyType: str
         :param _Remark: 策略备注
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _OperateOwnerUin: 策略关联操作者主账号
 注意：此字段可能返回 null，表示取不到有效值。
@@ -757,10 +746,8 @@ class AttachPolicyInfo(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type OperateUinType: int
         :param _Deactived: 是否已下线，1代表已下线，0代表未下线
-注意：此字段可能返回 null，表示取不到有效值。
         :type Deactived: int
         :param _DeactivedDetail: 已下线的产品列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeactivedDetail: list of str
         """
         self._PolicyId = None
@@ -789,7 +776,6 @@ class AttachPolicyInfo(AbstractModel):
     @property
     def PolicyName(self):
         """策略名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PolicyName
@@ -801,7 +787,6 @@ class AttachPolicyInfo(AbstractModel):
     @property
     def AddTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AddTime
@@ -813,7 +798,6 @@ class AttachPolicyInfo(AbstractModel):
     @property
     def CreateMode(self):
         """创建来源，1 通过控制台创建, 2 通过策略语法创建
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CreateMode
@@ -825,7 +809,6 @@ class AttachPolicyInfo(AbstractModel):
     @property
     def PolicyType(self):
         """取值为User和QCS。User代表自定义策略，QCS代表系统策略
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PolicyType
@@ -837,7 +820,6 @@ class AttachPolicyInfo(AbstractModel):
     @property
     def Remark(self):
         """策略备注
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -885,7 +867,6 @@ class AttachPolicyInfo(AbstractModel):
     @property
     def Deactived(self):
         """是否已下线，1代表已下线，0代表未下线
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Deactived
@@ -897,7 +878,6 @@ class AttachPolicyInfo(AbstractModel):
     @property
     def DeactivedDetail(self):
         """已下线的产品列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._DeactivedDetail
@@ -1131,18 +1111,14 @@ class AttachedPolicyOfRole(AbstractModel):
         :param _AddTime: 绑定时间
         :type AddTime: str
         :param _PolicyType: 策略类型，User表示自定义策略，QCS表示预设策略
-注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyType: str
         :param _CreateMode: 策略创建方式，1表示按产品功能或项目权限创建，其他表示按策略语法创建
         :type CreateMode: int
         :param _Deactived: 是否已下线(0:否 1:是)
-注意：此字段可能返回 null，表示取不到有效值。
         :type Deactived: int
         :param _DeactivedDetail: 已下线的产品列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeactivedDetail: list of str
         :param _Description: 策略描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         """
         self._PolicyId = None
@@ -1190,7 +1166,6 @@ class AttachedPolicyOfRole(AbstractModel):
     @property
     def PolicyType(self):
         """策略类型，User表示自定义策略，QCS表示预设策略
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PolicyType
@@ -1213,7 +1188,6 @@ class AttachedPolicyOfRole(AbstractModel):
     @property
     def Deactived(self):
         """是否已下线(0:否 1:是)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Deactived
@@ -1225,7 +1199,6 @@ class AttachedPolicyOfRole(AbstractModel):
     @property
     def DeactivedDetail(self):
         """已下线的产品列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._DeactivedDetail
@@ -1237,7 +1210,6 @@ class AttachedPolicyOfRole(AbstractModel):
     @property
     def Description(self):
         """策略描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -1286,13 +1258,10 @@ class AttachedUserPolicy(AbstractModel):
         :param _CreateMode: 创建模式(1表示按产品或项目权限创建的策略，其他表示策略语法创建的策略)
         :type CreateMode: str
         :param _Groups: 随组关联信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Groups: list of AttachedUserPolicyGroupInfo
         :param _Deactived: 是否已下线(0:否 1:是)
-注意：此字段可能返回 null，表示取不到有效值。
         :type Deactived: int
         :param _DeactivedDetail: 已下线的产品列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeactivedDetail: list of str
         """
         self._PolicyId = None
@@ -1374,7 +1343,6 @@ class AttachedUserPolicy(AbstractModel):
     @property
     def Groups(self):
         """随组关联信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AttachedUserPolicyGroupInfo
         """
         return self._Groups
@@ -1386,7 +1354,6 @@ class AttachedUserPolicy(AbstractModel):
     @property
     def Deactived(self):
         """是否已下线(0:否 1:是)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Deactived
@@ -1398,7 +1365,6 @@ class AttachedUserPolicy(AbstractModel):
     @property
     def DeactivedDetail(self):
         """已下线的产品列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._DeactivedDetail
@@ -2409,7 +2375,6 @@ class CreatePolicyVersionResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _VersionId: 策略版本号
-注意：此字段可能返回 null，表示取不到有效值。
         :type VersionId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2420,7 +2385,6 @@ class CreatePolicyVersionResponse(AbstractModel):
     @property
     def VersionId(self):
         """策略版本号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._VersionId
@@ -2570,7 +2534,6 @@ class CreateRoleResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _RoleId: 角色ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type RoleId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2581,7 +2544,6 @@ class CreateRoleResponse(AbstractModel):
     @property
     def RoleId(self):
         """角色ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RoleId
@@ -4218,7 +4180,6 @@ class DescribeRoleListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _List: 角色详情列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of RoleInfo
         :param _TotalNum: 角色总数
         :type TotalNum: int
@@ -4232,7 +4193,6 @@ class DescribeRoleListResponse(AbstractModel):
     @property
     def List(self):
         """角色详情列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RoleInfo
         """
         return self._List
@@ -4325,7 +4285,6 @@ class DescribeSafeAuthFlagCollResponse(AbstractModel):
         :param _OffsiteFlag: 异地登录保护设置
         :type OffsiteFlag: :class:`tencentcloud.cam.v20190116.models.OffsiteFlag`
         :param _PromptTrust: 是否提示信任设备1 ：提示 0: 不提示
-注意：此字段可能返回 null，表示取不到有效值。
         :type PromptTrust: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4372,7 +4331,6 @@ class DescribeSafeAuthFlagCollResponse(AbstractModel):
     @property
     def PromptTrust(self):
         """是否提示信任设备1 ：提示 0: 不提示
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PromptTrust
@@ -5680,28 +5638,21 @@ class GetPolicyResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _PolicyName: 策略名。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyName: str
         :param _Description: 策略描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _Type: 1 表示自定义策略，2 表示预设策略。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: int
         :param _AddTime: 策略创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AddTime: str
         :param _UpdateTime: 策略最近更新时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param _PolicyDocument: 策略文档。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyDocument: str
         :param _PresetAlias: 备注。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PresetAlias: str
         :param _IsServiceLinkedRolePolicy: 是否是服务相关策略，0代表不是服务相关策略，1代表是服务相关策略。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsServiceLinkedRolePolicy: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5719,7 +5670,6 @@ class GetPolicyResponse(AbstractModel):
     @property
     def PolicyName(self):
         """策略名。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PolicyName
@@ -5731,7 +5681,6 @@ class GetPolicyResponse(AbstractModel):
     @property
     def Description(self):
         """策略描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -5743,7 +5692,6 @@ class GetPolicyResponse(AbstractModel):
     @property
     def Type(self):
         """1 表示自定义策略，2 表示预设策略。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Type
@@ -5755,7 +5703,6 @@ class GetPolicyResponse(AbstractModel):
     @property
     def AddTime(self):
         """策略创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AddTime
@@ -5767,7 +5714,6 @@ class GetPolicyResponse(AbstractModel):
     @property
     def UpdateTime(self):
         """策略最近更新时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime
@@ -5779,7 +5725,6 @@ class GetPolicyResponse(AbstractModel):
     @property
     def PolicyDocument(self):
         """策略文档。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PolicyDocument
@@ -5803,7 +5748,6 @@ class GetPolicyResponse(AbstractModel):
     @property
     def IsServiceLinkedRolePolicy(self):
         """是否是服务相关策略，0代表不是服务相关策略，1代表是服务相关策略。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IsServiceLinkedRolePolicy
@@ -6819,10 +6763,8 @@ class GetUserResponse(AbstractModel):
         :param _Email: 邮箱
         :type Email: str
         :param _RecentlyLoginIP: 最近一次登录ip
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecentlyLoginIP: str
         :param _RecentlyLoginTime: 最近一次登录时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecentlyLoginTime: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6931,7 +6873,6 @@ class GetUserResponse(AbstractModel):
     @property
     def RecentlyLoginIP(self):
         """最近一次登录ip
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RecentlyLoginIP
@@ -6943,7 +6884,6 @@ class GetUserResponse(AbstractModel):
     @property
     def RecentlyLoginTime(self):
         """最近一次登录时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RecentlyLoginTime
@@ -8238,10 +8178,8 @@ class ListEntitiesForPolicyResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalNum: 实体总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalNum: int
         :param _List: 实体列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of AttachEntityOfPolicy
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8253,7 +8191,6 @@ class ListEntitiesForPolicyResponse(AbstractModel):
     @property
     def TotalNum(self):
         """实体总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalNum
@@ -8265,7 +8202,6 @@ class ListEntitiesForPolicyResponse(AbstractModel):
     @property
     def List(self):
         """实体列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AttachEntityOfPolicy
         """
         return self._List
@@ -9062,7 +8998,6 @@ ServiceType: 策略关联的产品
 IsAttached: 当需要查询标记实体是否已经关联策略时不为null。0表示未关联策略，1表示已关联策略
         :type List: list of StrategyInfo
         :param _ServiceTypeList: 保留字段
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceTypeList: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9106,7 +9041,6 @@ IsAttached: 当需要查询标记实体是否已经关联策略时不为null。0
     @property
     def ServiceTypeList(self):
         """保留字段
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._ServiceTypeList
@@ -9183,7 +9117,6 @@ class ListPolicyVersionsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Versions: 策略版本列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Versions: list of PolicyVersionItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9194,7 +9127,6 @@ class ListPolicyVersionsResponse(AbstractModel):
     @property
     def Versions(self):
         """策略版本列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PolicyVersionItem
         """
         return self._Versions
@@ -10220,13 +10152,10 @@ class PolicyVersionItem(AbstractModel):
     def __init__(self):
         r"""
         :param _VersionId: 策略版本号
-注意：此字段可能返回 null，表示取不到有效值。
         :type VersionId: int
         :param _CreateDate: 策略版本创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateDate: str
         :param _IsDefaultVersion: 是否是正在生效的版本。0表示不是，1表示是
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsDefaultVersion: int
         """
         self._VersionId = None
@@ -10236,7 +10165,6 @@ class PolicyVersionItem(AbstractModel):
     @property
     def VersionId(self):
         """策略版本号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._VersionId
@@ -10248,7 +10176,6 @@ class PolicyVersionItem(AbstractModel):
     @property
     def CreateDate(self):
         """策略版本创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateDate
@@ -10260,7 +10187,6 @@ class PolicyVersionItem(AbstractModel):
     @property
     def IsDefaultVersion(self):
         """是否是正在生效的版本。0表示不是，1表示是
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IsDefaultVersion
@@ -10482,10 +10408,8 @@ class Receiver(AbstractModel):
         :param _IsReceiverOwner: 是否主联系人
         :type IsReceiverOwner: int
         :param _WechatFlag: 是否允许微信接收通知
-注意：此字段可能返回 null，表示取不到有效值。
         :type WechatFlag: int
         :param _Uin: 账号uin
-注意：此字段可能返回 null，表示取不到有效值。
         :type Uin: int
         """
         self._Uid = None
@@ -10591,7 +10515,6 @@ class Receiver(AbstractModel):
     @property
     def WechatFlag(self):
         """是否允许微信接收通知
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._WechatFlag
@@ -10603,7 +10526,6 @@ class Receiver(AbstractModel):
     @property
     def Uin(self):
         """账号uin
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Uin
@@ -13473,10 +13395,8 @@ class WeChatWorkSubAccount(AbstractModel):
         :param _Email: 邮箱
         :type Email: str
         :param _WeChatWorkUserId: 企业微信UserId
-注意：此字段可能返回 null，表示取不到有效值。
         :type WeChatWorkUserId: str
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         """
         self._Uin = None
@@ -13581,7 +13501,6 @@ class WeChatWorkSubAccount(AbstractModel):
     @property
     def WeChatWorkUserId(self):
         """企业微信UserId
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._WeChatWorkUserId
@@ -13593,7 +13512,6 @@ class WeChatWorkSubAccount(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime

@@ -1130,6 +1130,29 @@ class DbbrainClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRedisSlowLogTopSqls(self, request):
+        """统计排序指定时间段内的top慢sql。
+
+        :param request: Request instance for DescribeRedisSlowLogTopSqls.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeRedisSlowLogTopSqlsRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.DescribeRedisSlowLogTopSqlsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRedisSlowLogTopSqls", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRedisSlowLogTopSqlsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRedisTopBigKeys(self, request):
         """查询redis实例大key列表。
 
@@ -1236,6 +1259,29 @@ class DbbrainClient(AbstractClient):
             body = self.call("DescribeSecurityAuditLogExportTasks", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSecurityAuditLogExportTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSlowLogQueryTimeStats(self, request):
+        """统计排序指定时间段内的top慢sql。
+
+        :param request: Request instance for DescribeSlowLogQueryTimeStats.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeSlowLogQueryTimeStatsRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.DescribeSlowLogQueryTimeStatsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSlowLogQueryTimeStats", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSlowLogQueryTimeStatsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

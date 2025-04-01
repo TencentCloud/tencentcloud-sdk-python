@@ -2586,6 +2586,12 @@ class DatasourceInfo(AbstractModel):
         :param _UseVPC: 开启vpc
 注意：此字段可能返回 null，表示取不到有效值。
         :type UseVPC: bool
+        :param _Owner: 所属人ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Owner: str
+        :param _OwnerName: 所属人名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnerName: str
         """
         self._Id = None
         self._DbName = None
@@ -2624,6 +2630,8 @@ class DatasourceInfo(AbstractModel):
         self._ClusterId = None
         self._DbTypeName = None
         self._UseVPC = None
+        self._Owner = None
+        self._OwnerName = None
 
     @property
     def Id(self):
@@ -3059,6 +3067,30 @@ class DatasourceInfo(AbstractModel):
     def UseVPC(self, UseVPC):
         self._UseVPC = UseVPC
 
+    @property
+    def Owner(self):
+        """所属人ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Owner
+
+    @Owner.setter
+    def Owner(self, Owner):
+        self._Owner = Owner
+
+    @property
+    def OwnerName(self):
+        """所属人名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OwnerName
+
+    @OwnerName.setter
+    def OwnerName(self, OwnerName):
+        self._OwnerName = OwnerName
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -3105,6 +3137,8 @@ class DatasourceInfo(AbstractModel):
         self._ClusterId = params.get("ClusterId")
         self._DbTypeName = params.get("DbTypeName")
         self._UseVPC = params.get("UseVPC")
+        self._Owner = params.get("Owner")
+        self._OwnerName = params.get("OwnerName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4532,11 +4566,17 @@ class DescribeUserProjectListRequest(AbstractModel):
         :type PageNo: int
         :param _PageSize: 无
         :type PageSize: int
+        :param _IsFilterPerAuthUser: 是否过滤掉企业管理员
+        :type IsFilterPerAuthUser: bool
+        :param _IsFilterCurrentUser: 是否过滤掉当前用户
+        :type IsFilterCurrentUser: bool
         """
         self._ProjectId = None
         self._AllPage = None
         self._PageNo = None
         self._PageSize = None
+        self._IsFilterPerAuthUser = None
+        self._IsFilterCurrentUser = None
 
     @property
     def ProjectId(self):
@@ -4582,12 +4622,36 @@ class DescribeUserProjectListRequest(AbstractModel):
     def PageSize(self, PageSize):
         self._PageSize = PageSize
 
+    @property
+    def IsFilterPerAuthUser(self):
+        """是否过滤掉企业管理员
+        :rtype: bool
+        """
+        return self._IsFilterPerAuthUser
+
+    @IsFilterPerAuthUser.setter
+    def IsFilterPerAuthUser(self, IsFilterPerAuthUser):
+        self._IsFilterPerAuthUser = IsFilterPerAuthUser
+
+    @property
+    def IsFilterCurrentUser(self):
+        """是否过滤掉当前用户
+        :rtype: bool
+        """
+        return self._IsFilterCurrentUser
+
+    @IsFilterCurrentUser.setter
+    def IsFilterCurrentUser(self, IsFilterCurrentUser):
+        self._IsFilterCurrentUser = IsFilterCurrentUser
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
         self._AllPage = params.get("AllPage")
         self._PageNo = params.get("PageNo")
         self._PageSize = params.get("PageSize")
+        self._IsFilterPerAuthUser = params.get("IsFilterPerAuthUser")
+        self._IsFilterCurrentUser = params.get("IsFilterCurrentUser")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4939,11 +5003,17 @@ class DescribeUserRoleProjectListRequest(AbstractModel):
         :type ProjectId: int
         :param _IsOnlyBindAppUser: 是否只获取绑定企微应用的
         :type IsOnlyBindAppUser: bool
+        :param _AllPage: 是否获取全部数据
+        :type AllPage: bool
+        :param _RoleCode: 角色编码
+        :type RoleCode: str
         """
         self._PageNo = None
         self._PageSize = None
         self._ProjectId = None
         self._IsOnlyBindAppUser = None
+        self._AllPage = None
+        self._RoleCode = None
 
     @property
     def PageNo(self):
@@ -4989,12 +5059,36 @@ class DescribeUserRoleProjectListRequest(AbstractModel):
     def IsOnlyBindAppUser(self, IsOnlyBindAppUser):
         self._IsOnlyBindAppUser = IsOnlyBindAppUser
 
+    @property
+    def AllPage(self):
+        """是否获取全部数据
+        :rtype: bool
+        """
+        return self._AllPage
+
+    @AllPage.setter
+    def AllPage(self, AllPage):
+        self._AllPage = AllPage
+
+    @property
+    def RoleCode(self):
+        """角色编码
+        :rtype: str
+        """
+        return self._RoleCode
+
+    @RoleCode.setter
+    def RoleCode(self, RoleCode):
+        self._RoleCode = RoleCode
+
 
     def _deserialize(self, params):
         self._PageNo = params.get("PageNo")
         self._PageSize = params.get("PageSize")
         self._ProjectId = params.get("ProjectId")
         self._IsOnlyBindAppUser = params.get("IsOnlyBindAppUser")
+        self._AllPage = params.get("AllPage")
+        self._RoleCode = params.get("RoleCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7945,6 +8039,15 @@ class Project(AbstractModel):
         :param _ConfigList: 定制化参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConfigList: list of ProjectConfigList
+        :param _CreatedUserName: 创建人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedUserName: str
+        :param _Owner: 所属人id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Owner: str
+        :param _OwnerName: 所属人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnerName: str
         """
         self._Id = None
         self._Logo = None
@@ -7967,6 +8070,9 @@ class Project(AbstractModel):
         self._IsExternalManage = None
         self._ManagePlatform = None
         self._ConfigList = None
+        self._CreatedUserName = None
+        self._Owner = None
+        self._OwnerName = None
 
     @property
     def Id(self):
@@ -8219,6 +8325,42 @@ class Project(AbstractModel):
     def ConfigList(self, ConfigList):
         self._ConfigList = ConfigList
 
+    @property
+    def CreatedUserName(self):
+        """创建人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreatedUserName
+
+    @CreatedUserName.setter
+    def CreatedUserName(self, CreatedUserName):
+        self._CreatedUserName = CreatedUserName
+
+    @property
+    def Owner(self):
+        """所属人id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Owner
+
+    @Owner.setter
+    def Owner(self, Owner):
+        self._Owner = Owner
+
+    @property
+    def OwnerName(self):
+        """所属人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OwnerName
+
+    @OwnerName.setter
+    def OwnerName(self, OwnerName):
+        self._OwnerName = OwnerName
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -8247,6 +8389,9 @@ class Project(AbstractModel):
                 obj = ProjectConfigList()
                 obj._deserialize(item)
                 self._ConfigList.append(obj)
+        self._CreatedUserName = params.get("CreatedUserName")
+        self._Owner = params.get("Owner")
+        self._OwnerName = params.get("OwnerName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

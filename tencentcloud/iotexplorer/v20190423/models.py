@@ -203,13 +203,10 @@ class ActivateTWeCallLicenseResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _DeviceList: 设备激活返回数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceList: list of DeviceActiveResult
         :param _FailureList: 设备激活失败返回数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailureList: list of DeviceActiveResult
         :param _SuccessList: 设备激活成功返回数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type SuccessList: list of DeviceActiveResult
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -221,20 +218,22 @@ class ActivateTWeCallLicenseResponse(AbstractModel):
 
     @property
     def DeviceList(self):
+        warnings.warn("parameter `DeviceList` is deprecated", DeprecationWarning) 
+
         """设备激活返回数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DeviceActiveResult
         """
         return self._DeviceList
 
     @DeviceList.setter
     def DeviceList(self, DeviceList):
+        warnings.warn("parameter `DeviceList` is deprecated", DeprecationWarning) 
+
         self._DeviceList = DeviceList
 
     @property
     def FailureList(self):
         """设备激活失败返回数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DeviceActiveResult
         """
         return self._FailureList
@@ -246,7 +245,6 @@ class ActivateTWeCallLicenseResponse(AbstractModel):
     @property
     def SuccessList(self):
         """设备激活成功返回数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DeviceActiveResult
         """
         return self._SuccessList
@@ -468,22 +466,16 @@ class AuthMiniProgramAppInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _MiniProgramAppId: 小程序APPID
-注意：此字段可能返回 null，表示取不到有效值。
         :type MiniProgramAppId: str
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: int
         :param _MiniProgramName: 小程序名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type MiniProgramName: str
         :param _LicenseNum: 激活码数
-注意：此字段可能返回 null，表示取不到有效值。
         :type LicenseNum: int
         :param _IotAppId: 应用ID 
-注意：此字段可能返回 null，表示取不到有效值。
         :type IotAppId: str
         :param _IotAppName: 应用名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type IotAppName: str
         """
         self._MiniProgramAppId = None
@@ -496,7 +488,6 @@ class AuthMiniProgramAppInfo(AbstractModel):
     @property
     def MiniProgramAppId(self):
         """小程序APPID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MiniProgramAppId
@@ -508,7 +499,6 @@ class AuthMiniProgramAppInfo(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CreateTime
@@ -520,7 +510,6 @@ class AuthMiniProgramAppInfo(AbstractModel):
     @property
     def MiniProgramName(self):
         """小程序名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MiniProgramName
@@ -532,7 +521,6 @@ class AuthMiniProgramAppInfo(AbstractModel):
     @property
     def LicenseNum(self):
         """激活码数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LicenseNum
@@ -544,7 +532,6 @@ class AuthMiniProgramAppInfo(AbstractModel):
     @property
     def IotAppId(self):
         """应用ID 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IotAppId
@@ -556,7 +543,6 @@ class AuthMiniProgramAppInfo(AbstractModel):
     @property
     def IotAppName(self):
         """应用名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IotAppName
@@ -945,25 +931,18 @@ class BindProductInfo(AbstractModel):
         :param _ProductName: 产品名称。
         :type ProductName: str
         :param _ProjectId: 产品所属项目ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: str
         :param _DataProtocol: 物模型类型。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataProtocol: int
         :param _CategoryId: 产品分组模板ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type CategoryId: int
         :param _ProductType: 产品类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductType: int
         :param _NetType: 连接类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type NetType: str
         :param _DevStatus: 状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type DevStatus: str
         :param _ProductOwnerName: 产品拥有者名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductOwnerName: str
         """
         self._ProductId = None
@@ -1001,7 +980,6 @@ class BindProductInfo(AbstractModel):
     @property
     def ProjectId(self):
         """产品所属项目ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProjectId
@@ -1013,7 +991,6 @@ class BindProductInfo(AbstractModel):
     @property
     def DataProtocol(self):
         """物模型类型。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DataProtocol
@@ -1025,7 +1002,6 @@ class BindProductInfo(AbstractModel):
     @property
     def CategoryId(self):
         """产品分组模板ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CategoryId
@@ -1037,7 +1013,6 @@ class BindProductInfo(AbstractModel):
     @property
     def ProductType(self):
         """产品类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ProductType
@@ -1049,7 +1024,6 @@ class BindProductInfo(AbstractModel):
     @property
     def NetType(self):
         """连接类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NetType
@@ -1061,7 +1035,6 @@ class BindProductInfo(AbstractModel):
     @property
     def DevStatus(self):
         """状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DevStatus
@@ -1073,7 +1046,6 @@ class BindProductInfo(AbstractModel):
     @property
     def ProductOwnerName(self):
         """产品拥有者名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductOwnerName
@@ -1412,7 +1384,6 @@ class CallDeviceActionSyncResponse(AbstractModel):
         :param _ClientToken: 调用Id
         :type ClientToken: str
         :param _OutputParams: 输出参数，取值设备端上报$thing/up/action method为action_reply 的 response字段，物模型协议参考https://cloud.tencent.com/document/product/1081/34916#.E8.AE.BE.E5.A4.87.E8.A1.8C.E4.B8.BA.E8.B0.83.E7.94.A8
-注意：此字段可能返回 null，表示取不到有效值。
         :type OutputParams: str
         :param _Status: 返回状态，取值设备端上报$thing/up/action	method为action_reply 的 status字段，如果不包含status字段，则取默认值，空字符串，物模型协议参考https://cloud.tencent.com/document/product/1081/34916#.E8.AE.BE.E5.A4.87.E8.A1.8C.E4.B8.BA.E8.B0.83.E7.94.A8
         :type Status: str
@@ -1438,7 +1409,6 @@ class CallDeviceActionSyncResponse(AbstractModel):
     @property
     def OutputParams(self):
         """输出参数，取值设备端上报$thing/up/action method为action_reply 的 response字段，物模型协议参考https://cloud.tencent.com/document/product/1081/34916#.E8.AE.BE.E5.A4.87.E8.A1.8C.E4.B8.BA.E8.B0.83.E7.94.A8
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OutputParams
@@ -1485,10 +1455,8 @@ class CamTag(AbstractModel):
     def __init__(self):
         r"""
         :param _TagKey: 标签键
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagKey: str
         :param _TagValue: 标签值
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagValue: str
         """
         self._TagKey = None
@@ -1497,7 +1465,6 @@ class CamTag(AbstractModel):
     @property
     def TagKey(self):
         """标签键
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TagKey
@@ -1509,7 +1476,6 @@ class CamTag(AbstractModel):
     @property
     def TagValue(self):
         """标签值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TagValue
@@ -1749,10 +1715,8 @@ class CheckFirmwareUpdateResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _CurrentVersion: 设备当前固件版本。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CurrentVersion: str
         :param _DstVersion: 固件可升级版本。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DstVersion: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1764,7 +1728,6 @@ class CheckFirmwareUpdateResponse(AbstractModel):
     @property
     def CurrentVersion(self):
         """设备当前固件版本。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CurrentVersion
@@ -1776,7 +1739,6 @@ class CheckFirmwareUpdateResponse(AbstractModel):
     @property
     def DstVersion(self):
         """固件可升级版本。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DstVersion
@@ -2604,7 +2566,6 @@ class CloudStorageTimeData(AbstractModel):
         :param _TimeList: 云存时间轴信息列表
         :type TimeList: list of CloudStorageTimeInfo
         :param _VideoURL: 播放地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type VideoURL: str
         """
         self._TimeList = None
@@ -2624,7 +2585,6 @@ class CloudStorageTimeData(AbstractModel):
     @property
     def VideoURL(self):
         """播放地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VideoURL
@@ -2862,7 +2822,6 @@ class ControlDeviceDataResponse(AbstractModel):
         :param _Result: JSON字符串， 返回下发控制的结果信息, 
 Sent = 1 表示设备已经在线并且订阅了控制下发的mqtt topic.
 pushResult 是表示发送结果，其中 0 表示成功， 23101 表示设备未在线或没有订阅相关的 MQTT Topic。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2887,7 +2846,6 @@ pushResult 是表示发送结果，其中 0 表示成功， 23101 表示设备�
         """JSON字符串， 返回下发控制的结果信息, 
 Sent = 1 表示设备已经在线并且订阅了控制下发的mqtt topic.
 pushResult 是表示发送结果，其中 0 表示成功， 23101 表示设备未在线或没有订阅相关的 MQTT Topic。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Result
@@ -4175,10 +4133,8 @@ class CreateFreeCloudStorageResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Price: 订单金额，单位为分
-注意：此字段可能返回 null，表示取不到有效值。
         :type Price: int
         :param _Amount: 支付金额，单位为分
-注意：此字段可能返回 null，表示取不到有效值。
         :type Amount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4190,7 +4146,6 @@ class CreateFreeCloudStorageResponse(AbstractModel):
     @property
     def Price(self):
         """订单金额，单位为分
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Price
@@ -4202,7 +4157,6 @@ class CreateFreeCloudStorageResponse(AbstractModel):
     @property
     def Amount(self):
         """支付金额，单位为分
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Amount
@@ -4418,10 +4372,8 @@ class CreateIotVideoCloudStorageResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Price: 订单金额，单位为分
-注意：此字段可能返回 null，表示取不到有效值。
         :type Price: int
         :param _Amount: 支付金额，单位为分
-注意：此字段可能返回 null，表示取不到有效值。
         :type Amount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4433,7 +4385,6 @@ class CreateIotVideoCloudStorageResponse(AbstractModel):
     @property
     def Price(self):
         """订单金额，单位为分
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Price
@@ -4445,7 +4396,6 @@ class CreateIotVideoCloudStorageResponse(AbstractModel):
     @property
     def Amount(self):
         """支付金额，单位为分
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Amount
@@ -5074,7 +5024,6 @@ class CreatePositionSpaceResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _SpaceId: 空间Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type SpaceId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5085,7 +5034,6 @@ class CreatePositionSpaceResponse(AbstractModel):
     @property
     def SpaceId(self):
         """空间Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SpaceId
@@ -5497,7 +5445,6 @@ class CreateTRTCSignaturesWithRoomIdResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TRTCParamList: 返回参数数组
-注意：此字段可能返回 null，表示取不到有效值。
         :type TRTCParamList: list of TRTCParams
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5508,7 +5455,6 @@ class CreateTRTCSignaturesWithRoomIdResponse(AbstractModel):
     @property
     def TRTCParamList(self):
         """返回参数数组
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TRTCParams
         """
         return self._TRTCParamList
@@ -5942,10 +5888,8 @@ class DeleteDeviceResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ResultCode: 删除的结果代码
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResultCode: str
         :param _ResultMessage: 删除的结果信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResultMessage: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5957,7 +5901,6 @@ class DeleteDeviceResponse(AbstractModel):
     @property
     def ResultCode(self):
         """删除的结果代码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResultCode
@@ -5969,7 +5912,6 @@ class DeleteDeviceResponse(AbstractModel):
     @property
     def ResultMessage(self):
         """删除的结果信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResultMessage
@@ -6045,10 +5987,8 @@ class DeleteDevicesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ResultCode: 删除的结果代码
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResultCode: str
         :param _ResultMessage: 删除的结果信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResultMessage: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6060,7 +6000,6 @@ class DeleteDevicesResponse(AbstractModel):
     @property
     def ResultCode(self):
         """删除的结果代码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResultCode
@@ -6072,7 +6011,6 @@ class DeleteDevicesResponse(AbstractModel):
     @property
     def ResultMessage(self):
         """删除的结果信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResultMessage
@@ -6769,7 +6707,6 @@ class DescribeActivateDeviceResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 设备激活详情信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.iotexplorer.v20190423.models.ActivateDeviceInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6780,7 +6717,6 @@ class DescribeActivateDeviceResponse(AbstractModel):
     @property
     def Data(self):
         """设备激活详情信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.ActivateDeviceInfo`
         """
         return self._Data
@@ -6867,7 +6803,6 @@ class DescribeActivateLicenseServiceResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 增值服务激活码信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of LicenseServiceNumInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6878,7 +6813,6 @@ class DescribeActivateLicenseServiceResponse(AbstractModel):
     @property
     def Data(self):
         """增值服务激活码信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LicenseServiceNumInfo
         """
         return self._Data
@@ -6980,13 +6914,10 @@ class DescribeBatchProductionResponse(AbstractModel):
         :param _UploadUrl: 上传URL。
         :type UploadUrl: str
         :param _SuccessCount: 成功数
-注意：此字段可能返回 null，表示取不到有效值。
         :type SuccessCount: int
         :param _LastFailedReason: 量产最后失败原因
-注意：此字段可能返回 null，表示取不到有效值。
         :type LastFailedReason: str
         :param _Status: 量产状态  0：任务创建，未量产；1：处理中；2：量产结束上传结果中；3：任务完成
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7071,7 +7002,6 @@ class DescribeBatchProductionResponse(AbstractModel):
     @property
     def SuccessCount(self):
         """成功数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SuccessCount
@@ -7083,7 +7013,6 @@ class DescribeBatchProductionResponse(AbstractModel):
     @property
     def LastFailedReason(self):
         """量产最后失败原因
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LastFailedReason
@@ -7095,7 +7024,6 @@ class DescribeBatchProductionResponse(AbstractModel):
     @property
     def Status(self):
         """量产状态  0：任务创建，未量产；1：处理中；2：量产结束上传结果中；3：任务完成
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -8820,13 +8748,10 @@ class DescribeCloudStorageOrderResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _StartTime: 云存套餐开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: int
         :param _ExpireTime: 云存套餐过期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireTime: int
         :param _PackageId: 套餐id
-注意：此字段可能返回 null，表示取不到有效值。
         :type PackageId: str
         :param _Status: 套餐状态
 0：等待生效
@@ -8836,10 +8761,8 @@ class DescribeCloudStorageOrderResponse(AbstractModel):
         :param _ChannelId: 通道id
         :type ChannelId: int
         :param _Price: 订单金额，单位为分
-注意：此字段可能返回 null，表示取不到有效值。
         :type Price: int
         :param _Amount: 支付金额，单位为分
-注意：此字段可能返回 null，表示取不到有效值。
         :type Amount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8856,7 +8779,6 @@ class DescribeCloudStorageOrderResponse(AbstractModel):
     @property
     def StartTime(self):
         """云存套餐开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._StartTime
@@ -8868,7 +8790,6 @@ class DescribeCloudStorageOrderResponse(AbstractModel):
     @property
     def ExpireTime(self):
         """云存套餐过期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ExpireTime
@@ -8880,7 +8801,6 @@ class DescribeCloudStorageOrderResponse(AbstractModel):
     @property
     def PackageId(self):
         """套餐id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PackageId
@@ -8917,7 +8837,6 @@ class DescribeCloudStorageOrderResponse(AbstractModel):
     @property
     def Price(self):
         """订单金额，单位为分
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Price
@@ -8929,7 +8848,6 @@ class DescribeCloudStorageOrderResponse(AbstractModel):
     @property
     def Amount(self):
         """支付金额，单位为分
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Amount
@@ -9236,7 +9154,6 @@ class DescribeCloudStorageResponse(AbstractModel):
         :param _ShiftDuration: 云存回看时长
         :type ShiftDuration: int
         :param _UserId: 云存用户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9295,7 +9212,6 @@ class DescribeCloudStorageResponse(AbstractModel):
     @property
     def UserId(self):
         """云存用户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UserId
@@ -10061,19 +9977,14 @@ class DescribeDeviceBindGatewayResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _GatewayProductId: 网关产品ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayProductId: str
         :param _GatewayDeviceName: 网关设备名
-注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayDeviceName: str
         :param _GatewayName: 网关产品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayName: str
         :param _GatewayProductOwnerName: 设备对应产品所属的主账号名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayProductOwnerName: str
         :param _GatewayProductOwnerUin: 设备对应产品所属的主账号 UIN
-注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayProductOwnerUin: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10088,7 +9999,6 @@ class DescribeDeviceBindGatewayResponse(AbstractModel):
     @property
     def GatewayProductId(self):
         """网关产品ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GatewayProductId
@@ -10100,7 +10010,6 @@ class DescribeDeviceBindGatewayResponse(AbstractModel):
     @property
     def GatewayDeviceName(self):
         """网关设备名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GatewayDeviceName
@@ -10112,7 +10021,6 @@ class DescribeDeviceBindGatewayResponse(AbstractModel):
     @property
     def GatewayName(self):
         """网关产品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GatewayName
@@ -10124,7 +10032,6 @@ class DescribeDeviceBindGatewayResponse(AbstractModel):
     @property
     def GatewayProductOwnerName(self):
         """设备对应产品所属的主账号名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GatewayProductOwnerName
@@ -10136,7 +10043,6 @@ class DescribeDeviceBindGatewayResponse(AbstractModel):
     @property
     def GatewayProductOwnerUin(self):
         """设备对应产品所属的主账号 UIN
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GatewayProductOwnerUin
@@ -10300,16 +10206,12 @@ class DescribeDeviceDataHistoryResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _FieldName: 属性字段名称，对应数据模板中功能属性的标识符
-注意：此字段可能返回 null，表示取不到有效值。
         :type FieldName: str
         :param _Listover: 数据是否已全部返回，true 表示数据全部返回，false 表示还有数据待返回，可将 Context 作为入参，继续查询返回结果。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Listover: bool
         :param _Context: 检索上下文，当 ListOver 为false时，可以用此上下文，继续读取后续数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type Context: str
         :param _Results: 历史数据结果数组，返回对应时间点及取值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Results: list of DeviceDataHistoryItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10323,7 +10225,6 @@ class DescribeDeviceDataHistoryResponse(AbstractModel):
     @property
     def FieldName(self):
         """属性字段名称，对应数据模板中功能属性的标识符
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FieldName
@@ -10335,7 +10236,6 @@ class DescribeDeviceDataHistoryResponse(AbstractModel):
     @property
     def Listover(self):
         """数据是否已全部返回，true 表示数据全部返回，false 表示还有数据待返回，可将 Context 作为入参，继续查询返回结果。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Listover
@@ -10347,7 +10247,6 @@ class DescribeDeviceDataHistoryResponse(AbstractModel):
     @property
     def Context(self):
         """检索上下文，当 ListOver 为false时，可以用此上下文，继续读取后续数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Context
@@ -10359,7 +10258,6 @@ class DescribeDeviceDataHistoryResponse(AbstractModel):
     @property
     def Results(self):
         """历史数据结果数组，返回对应时间点及取值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DeviceDataHistoryItem
         """
         return self._Results
@@ -10655,7 +10553,6 @@ class DescribeDeviceFirmwaresResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Firmwares: 固件信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Firmwares: list of DeviceFirmwareInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10666,7 +10563,6 @@ class DescribeDeviceFirmwaresResponse(AbstractModel):
     @property
     def Firmwares(self):
         """固件信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DeviceFirmwareInfo
         """
         return self._Firmwares
@@ -10812,7 +10708,6 @@ class DescribeDeviceLocationSolveResponse(AbstractModel):
         :param _LocationType: 类型
         :type LocationType: str
         :param _Accuracy: 误差精度预估，单位为米
-注意：此字段可能返回 null，表示取不到有效值。
         :type Accuracy: float
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10859,7 +10754,6 @@ class DescribeDeviceLocationSolveResponse(AbstractModel):
     @property
     def Accuracy(self):
         """误差精度预估，单位为米
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Accuracy
@@ -11700,24 +11594,18 @@ class DescribeFirmwareResponse(AbstractModel):
         :param _ProductId: 产品ID
         :type ProductId: str
         :param _Name: 固件名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Description: 固件描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _Md5sum: 固件Md5值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Md5sum: str
         :param _Createtime: 固件上传的秒级时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type Createtime: int
         :param _ProductName: 产品名称
         :type ProductName: str
         :param _FwType: 固件升级模块
-注意：此字段可能返回 null，表示取不到有效值。
         :type FwType: str
         :param _UserDefined: 固件用户自定义配置信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserDefined: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11758,7 +11646,6 @@ class DescribeFirmwareResponse(AbstractModel):
     @property
     def Name(self):
         """固件名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -11770,7 +11657,6 @@ class DescribeFirmwareResponse(AbstractModel):
     @property
     def Description(self):
         """固件描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -11782,7 +11668,6 @@ class DescribeFirmwareResponse(AbstractModel):
     @property
     def Md5sum(self):
         """固件Md5值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Md5sum
@@ -11794,7 +11679,6 @@ class DescribeFirmwareResponse(AbstractModel):
     @property
     def Createtime(self):
         """固件上传的秒级时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Createtime
@@ -11817,7 +11701,6 @@ class DescribeFirmwareResponse(AbstractModel):
     @property
     def FwType(self):
         """固件升级模块
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FwType
@@ -11829,7 +11712,6 @@ class DescribeFirmwareResponse(AbstractModel):
     @property
     def UserDefined(self):
         """固件用户自定义配置信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UserDefined
@@ -11937,34 +11819,24 @@ class DescribeFirmwareTaskResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TaskId: 固件任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: int
         :param _Status: 固件任务状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _CreateTime: 固件任务创建时间，单位：秒
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: int
         :param _Type: 固件任务升级类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: int
         :param _ProductName: 产品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductName: str
         :param _UpgradeMode: 固件任务升级模式。originalVersion（按版本号升级）、filename（提交文件升级）、devicenames（按设备名称升级）
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpgradeMode: str
         :param _ProductId: 产品ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductId: str
         :param _OriginalVersion: 原始固件版本号，在UpgradeMode是originalVersion升级模式下会返回
-注意：此字段可能返回 null，表示取不到有效值。
         :type OriginalVersion: str
         :param _CreateUserId: 创建账号ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateUserId: int
         :param _CreatorNickName: 创建账号ID昵称
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatorNickName: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11984,7 +11856,6 @@ class DescribeFirmwareTaskResponse(AbstractModel):
     @property
     def TaskId(self):
         """固件任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TaskId
@@ -11996,7 +11867,6 @@ class DescribeFirmwareTaskResponse(AbstractModel):
     @property
     def Status(self):
         """固件任务状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -12008,7 +11878,6 @@ class DescribeFirmwareTaskResponse(AbstractModel):
     @property
     def CreateTime(self):
         """固件任务创建时间，单位：秒
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CreateTime
@@ -12020,7 +11889,6 @@ class DescribeFirmwareTaskResponse(AbstractModel):
     @property
     def Type(self):
         """固件任务升级类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Type
@@ -12032,7 +11900,6 @@ class DescribeFirmwareTaskResponse(AbstractModel):
     @property
     def ProductName(self):
         """产品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductName
@@ -12044,7 +11911,6 @@ class DescribeFirmwareTaskResponse(AbstractModel):
     @property
     def UpgradeMode(self):
         """固件任务升级模式。originalVersion（按版本号升级）、filename（提交文件升级）、devicenames（按设备名称升级）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpgradeMode
@@ -12056,7 +11922,6 @@ class DescribeFirmwareTaskResponse(AbstractModel):
     @property
     def ProductId(self):
         """产品ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductId
@@ -12068,7 +11933,6 @@ class DescribeFirmwareTaskResponse(AbstractModel):
     @property
     def OriginalVersion(self):
         """原始固件版本号，在UpgradeMode是originalVersion升级模式下会返回
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OriginalVersion
@@ -12080,7 +11944,6 @@ class DescribeFirmwareTaskResponse(AbstractModel):
     @property
     def CreateUserId(self):
         """创建账号ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CreateUserId
@@ -12092,7 +11955,6 @@ class DescribeFirmwareTaskResponse(AbstractModel):
     @property
     def CreatorNickName(self):
         """创建账号ID昵称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreatorNickName
@@ -12186,15 +12048,12 @@ class DescribeFirmwareUpdateStatusResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _OriVersion: 升级任务源版本。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OriVersion: str
         :param _DstVersion: 升级任务目标版本。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DstVersion: str
         :param _Status: 升级状态：- 0：设备离线。- 1：待处理。- 2：消息下发成功。- 3：下载中。- 4：烧录中。- 5：失败。- 6：升级完成。- 7：正在处理中。- 8：等待用户确认。- 10：升级超时。- 20：下载完成。
         :type Status: int
         :param _Percent: 进度
-注意：此字段可能返回 null，表示取不到有效值。
         :type Percent: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12208,7 +12067,6 @@ class DescribeFirmwareUpdateStatusResponse(AbstractModel):
     @property
     def OriVersion(self):
         """升级任务源版本。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OriVersion
@@ -12220,7 +12078,6 @@ class DescribeFirmwareUpdateStatusResponse(AbstractModel):
     @property
     def DstVersion(self):
         """升级任务目标版本。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DstVersion
@@ -12243,7 +12100,6 @@ class DescribeFirmwareUpdateStatusResponse(AbstractModel):
     @property
     def Percent(self):
         """进度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Percent
@@ -12589,10 +12445,8 @@ class DescribeGatewaySubDeviceListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Total: 设备的总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _DeviceList: 设备列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceList: list of FamilySubDevice
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12604,7 +12458,6 @@ class DescribeGatewaySubDeviceListResponse(AbstractModel):
     @property
     def Total(self):
         """设备的总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -12616,7 +12469,6 @@ class DescribeGatewaySubDeviceListResponse(AbstractModel):
     @property
     def DeviceList(self):
         """设备列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of FamilySubDevice
         """
         return self._DeviceList
@@ -12896,7 +12748,6 @@ class DescribeInstanceResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 实例信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.iotexplorer.v20190423.models.InstanceDetail`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12907,7 +12758,6 @@ class DescribeInstanceResponse(AbstractModel):
     @property
     def Data(self):
         """实例信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.InstanceDetail`
         """
         return self._Data
@@ -12979,7 +12829,6 @@ class DescribeLoRaFrequencyResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 返回详情项
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.iotexplorer.v20190423.models.LoRaFrequencyEntry`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12990,7 +12839,6 @@ class DescribeLoRaFrequencyResponse(AbstractModel):
     @property
     def Data(self):
         """返回详情项
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.LoRaFrequencyEntry`
         """
         return self._Data
@@ -13460,10 +13308,8 @@ class DescribePositionFenceListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _List: 围栏列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of PositionFenceInfo
         :param _Total: 围栏数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13475,7 +13321,6 @@ class DescribePositionFenceListResponse(AbstractModel):
     @property
     def List(self):
         """围栏列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PositionFenceInfo
         """
         return self._List
@@ -13487,7 +13332,6 @@ class DescribePositionFenceListResponse(AbstractModel):
     @property
     def Total(self):
         """围栏数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -14104,10 +13948,8 @@ class DescribeTopicRuleResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Rule: 规则描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Rule: :class:`tencentcloud.iotexplorer.v20190423.models.TopicRule`
         :param _CamTag: 规则绑定的标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type CamTag: list of CamTag
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14119,7 +13961,6 @@ class DescribeTopicRuleResponse(AbstractModel):
     @property
     def Rule(self):
         """规则描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TopicRule`
         """
         return self._Rule
@@ -14131,7 +13972,6 @@ class DescribeTopicRuleResponse(AbstractModel):
     @property
     def CamTag(self):
         """规则绑定的标签
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CamTag
         """
         return self._CamTag
@@ -14239,7 +14079,6 @@ class DescribeUnbindedDevicesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _UnbindedDevices: 未绑定的设备列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type UnbindedDevices: list of BindDeviceInfo
         :param _Total: 设备的总数量
         :type Total: int
@@ -14253,7 +14092,6 @@ class DescribeUnbindedDevicesResponse(AbstractModel):
     @property
     def UnbindedDevices(self):
         """未绑定的设备列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BindDeviceInfo
         """
         return self._UnbindedDevices
@@ -14340,7 +14178,6 @@ class DescribeVideoLicenseResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _License: 视频激活码分类概览
-注意：此字段可能返回 null，表示取不到有效值。
         :type License: list of VideoLicenseEntity
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14351,7 +14188,6 @@ class DescribeVideoLicenseResponse(AbstractModel):
     @property
     def License(self):
         """视频激活码分类概览
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of VideoLicenseEntity
         """
         return self._License
@@ -14401,6 +14237,10 @@ class DeviceActivationDetail(AbstractModel):
         :type TotalBluetoothLicense: int
         :param _UsedBluetoothLicense: 已使用蓝牙授权数
         :type UsedBluetoothLicense: int
+        :param _TotalFreeLicense: 可免费注册设备数
+        :type TotalFreeLicense: int
+        :param _UsedFreeLicense: 已使用注册设备数
+        :type UsedFreeLicense: int
         """
         self._TotalDeviceNum = None
         self._UsedDeviceNum = None
@@ -14408,6 +14248,8 @@ class DeviceActivationDetail(AbstractModel):
         self._UsedNormalLicense = None
         self._TotalBluetoothLicense = None
         self._UsedBluetoothLicense = None
+        self._TotalFreeLicense = None
+        self._UsedFreeLicense = None
 
     @property
     def TotalDeviceNum(self):
@@ -14475,6 +14317,28 @@ class DeviceActivationDetail(AbstractModel):
     def UsedBluetoothLicense(self, UsedBluetoothLicense):
         self._UsedBluetoothLicense = UsedBluetoothLicense
 
+    @property
+    def TotalFreeLicense(self):
+        """可免费注册设备数
+        :rtype: int
+        """
+        return self._TotalFreeLicense
+
+    @TotalFreeLicense.setter
+    def TotalFreeLicense(self, TotalFreeLicense):
+        self._TotalFreeLicense = TotalFreeLicense
+
+    @property
+    def UsedFreeLicense(self):
+        """已使用注册设备数
+        :rtype: int
+        """
+        return self._UsedFreeLicense
+
+    @UsedFreeLicense.setter
+    def UsedFreeLicense(self, UsedFreeLicense):
+        self._UsedFreeLicense = UsedFreeLicense
+
 
     def _deserialize(self, params):
         self._TotalDeviceNum = params.get("TotalDeviceNum")
@@ -14483,6 +14347,8 @@ class DeviceActivationDetail(AbstractModel):
         self._UsedNormalLicense = params.get("UsedNormalLicense")
         self._TotalBluetoothLicense = params.get("TotalBluetoothLicense")
         self._UsedBluetoothLicense = params.get("UsedBluetoothLicense")
+        self._TotalFreeLicense = params.get("TotalFreeLicense")
+        self._UsedFreeLicense = params.get("UsedFreeLicense")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14504,13 +14370,10 @@ class DeviceActiveResult(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModelId: str
         :param _Sn: SN信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Sn: str
         :param _ErrCode: 设备激活状态，0：激活成功；50011：系统错误；50012：产品不存在；50013：设备不存在；50014：产品无权限；50015：不是音视频产品；50016：SN格式错误；50017：激活码类型错误；50018：激活次数限频；50019：激活码不足；50020：SN已暂停；
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param _ExpireTime: 过期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireTime: int
         """
         self._ModelId = None
@@ -14537,7 +14400,6 @@ class DeviceActiveResult(AbstractModel):
     @property
     def Sn(self):
         """SN信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Sn
@@ -14549,7 +14411,6 @@ class DeviceActiveResult(AbstractModel):
     @property
     def ErrCode(self):
         """设备激活状态，0：激活成功；50011：系统错误；50012：产品不存在；50013：设备不存在；50014：产品无权限；50015：不是音视频产品；50016：SN格式错误；50017：激活码类型错误；50018：激活次数限频；50019：激活码不足；50020：SN已暂停；
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ErrCode
@@ -14561,7 +14422,6 @@ class DeviceActiveResult(AbstractModel):
     @property
     def ExpireTime(self):
         """过期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ExpireTime
@@ -14594,16 +14454,12 @@ class DeviceData(AbstractModel):
     def __init__(self):
         r"""
         :param _DeviceCert: 设备证书，用于 TLS 建立链接时校验客户端身份。采用非对称加密时返回该参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceCert: str
         :param _DeviceName: 设备名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceName: str
         :param _DevicePrivateKey: 设备私钥，用于 TLS 建立链接时校验客户端身份，腾讯云后台不保存，请妥善保管。采用非对称加密时返回该参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DevicePrivateKey: str
         :param _DevicePsk: 对称加密密钥，base64编码。采用对称加密时返回该参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DevicePsk: str
         """
         self._DeviceCert = None
@@ -14614,7 +14470,6 @@ class DeviceData(AbstractModel):
     @property
     def DeviceCert(self):
         """设备证书，用于 TLS 建立链接时校验客户端身份。采用非对称加密时返回该参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceCert
@@ -14626,7 +14481,6 @@ class DeviceData(AbstractModel):
     @property
     def DeviceName(self):
         """设备名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceName
@@ -14638,7 +14492,6 @@ class DeviceData(AbstractModel):
     @property
     def DevicePrivateKey(self):
         """设备私钥，用于 TLS 建立链接时校验客户端身份，腾讯云后台不保存，请妥善保管。采用非对称加密时返回该参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DevicePrivateKey
@@ -14650,7 +14503,6 @@ class DeviceData(AbstractModel):
     @property
     def DevicePsk(self):
         """对称加密密钥，base64编码。采用对称加密时返回该参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DevicePsk
@@ -14807,58 +14659,40 @@ class DeviceInfo(AbstractModel):
         :type DevicePsk: str
         :param _FirstOnlineTime: 首次上线时间
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FirstOnlineTime: int
         :param _LoginTime: 最后一次上线时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type LoginTime: int
         :param _CreateTime: 设备创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: int
         :param _Version: 设备固件版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
         :param _DeviceCert: 设备证书
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceCert: str
         :param _LogLevel: 日志级别
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogLevel: int
         :param _DevAddr: LoRaWAN 设备地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type DevAddr: str
         :param _AppKey: LoRaWAN 应用密钥
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppKey: str
         :param _DevEUI: LoRaWAN 设备唯一标识
-注意：此字段可能返回 null，表示取不到有效值。
         :type DevEUI: str
         :param _AppSKey: LoRaWAN 应用会话密钥
-注意：此字段可能返回 null，表示取不到有效值。
         :type AppSKey: str
         :param _NwkSKey: LoRaWAN 网络会话密钥
-注意：此字段可能返回 null，表示取不到有效值。
         :type NwkSKey: str
         :param _CreateUserId: 创建人Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateUserId: int
         :param _CreatorNickName: 创建人昵称
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatorNickName: str
         :param _EnableState: 启用/禁用状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnableState: int
         :param _ProductId: 产品ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductId: str
         :param _ProductName: 产品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductName: str
         :param _DeviceType: 设备类型（设备、子设备、网关）
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceType: str
         :param _IsLora: 是否是 lora 设备
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsLora: bool
         """
         self._DeviceName = None
@@ -14920,7 +14754,6 @@ class DeviceInfo(AbstractModel):
     def FirstOnlineTime(self):
         """首次上线时间
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FirstOnlineTime
@@ -14932,7 +14765,6 @@ class DeviceInfo(AbstractModel):
     @property
     def LoginTime(self):
         """最后一次上线时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LoginTime
@@ -14944,7 +14776,6 @@ class DeviceInfo(AbstractModel):
     @property
     def CreateTime(self):
         """设备创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CreateTime
@@ -14956,7 +14787,6 @@ class DeviceInfo(AbstractModel):
     @property
     def Version(self):
         """设备固件版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Version
@@ -14968,7 +14798,6 @@ class DeviceInfo(AbstractModel):
     @property
     def DeviceCert(self):
         """设备证书
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceCert
@@ -14980,7 +14809,6 @@ class DeviceInfo(AbstractModel):
     @property
     def LogLevel(self):
         """日志级别
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LogLevel
@@ -14992,7 +14820,6 @@ class DeviceInfo(AbstractModel):
     @property
     def DevAddr(self):
         """LoRaWAN 设备地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DevAddr
@@ -15004,7 +14831,6 @@ class DeviceInfo(AbstractModel):
     @property
     def AppKey(self):
         """LoRaWAN 应用密钥
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AppKey
@@ -15016,7 +14842,6 @@ class DeviceInfo(AbstractModel):
     @property
     def DevEUI(self):
         """LoRaWAN 设备唯一标识
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DevEUI
@@ -15028,7 +14853,6 @@ class DeviceInfo(AbstractModel):
     @property
     def AppSKey(self):
         """LoRaWAN 应用会话密钥
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AppSKey
@@ -15040,7 +14864,6 @@ class DeviceInfo(AbstractModel):
     @property
     def NwkSKey(self):
         """LoRaWAN 网络会话密钥
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NwkSKey
@@ -15052,7 +14875,6 @@ class DeviceInfo(AbstractModel):
     @property
     def CreateUserId(self):
         """创建人Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CreateUserId
@@ -15064,7 +14886,6 @@ class DeviceInfo(AbstractModel):
     @property
     def CreatorNickName(self):
         """创建人昵称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreatorNickName
@@ -15076,7 +14897,6 @@ class DeviceInfo(AbstractModel):
     @property
     def EnableState(self):
         """启用/禁用状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._EnableState
@@ -15088,7 +14908,6 @@ class DeviceInfo(AbstractModel):
     @property
     def ProductId(self):
         """产品ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductId
@@ -15100,7 +14919,6 @@ class DeviceInfo(AbstractModel):
     @property
     def ProductName(self):
         """产品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductName
@@ -15112,7 +14930,6 @@ class DeviceInfo(AbstractModel):
     @property
     def DeviceType(self):
         """设备类型（设备、子设备、网关）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceType
@@ -15124,7 +14941,6 @@ class DeviceInfo(AbstractModel):
     @property
     def IsLora(self):
         """是否是 lora 设备
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsLora
@@ -15310,10 +15126,8 @@ class DeviceUser(AbstractModel):
         :param _Role: 用户角色 1所有者，0：其他分享者
         :type Role: int
         :param _FamilyId: 家庭ID，所有者带该参数
-注意：此字段可能返回 null，表示取不到有效值。
         :type FamilyId: str
         :param _FamilyName: 家庭名称，所有者带该参数
-注意：此字段可能返回 null，表示取不到有效值。
         :type FamilyName: str
         """
         self._UserId = None
@@ -15346,7 +15160,6 @@ class DeviceUser(AbstractModel):
     @property
     def FamilyId(self):
         """家庭ID，所有者带该参数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FamilyId
@@ -15358,7 +15171,6 @@ class DeviceUser(AbstractModel):
     @property
     def FamilyName(self):
         """家庭名称，所有者带该参数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FamilyName
@@ -15790,22 +15602,16 @@ class EventHistoryItem(AbstractModel):
     def __init__(self):
         r"""
         :param _TimeStamp: 事件的时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimeStamp: int
         :param _ProductId: 事件的产品ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductId: str
         :param _DeviceName: 事件的设备名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceName: str
         :param _EventId: 事件的标识符ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type EventId: str
         :param _Type: 事件的类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Data: 事件的数据
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: str
         """
         self._TimeStamp = None
@@ -15818,7 +15624,6 @@ class EventHistoryItem(AbstractModel):
     @property
     def TimeStamp(self):
         """事件的时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TimeStamp
@@ -15830,7 +15635,6 @@ class EventHistoryItem(AbstractModel):
     @property
     def ProductId(self):
         """事件的产品ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductId
@@ -15842,7 +15646,6 @@ class EventHistoryItem(AbstractModel):
     @property
     def DeviceName(self):
         """事件的设备名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceName
@@ -15854,7 +15657,6 @@ class EventHistoryItem(AbstractModel):
     @property
     def EventId(self):
         """事件的标识符ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EventId
@@ -15866,7 +15668,6 @@ class EventHistoryItem(AbstractModel):
     @property
     def Type(self):
         """事件的类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -15878,7 +15679,6 @@ class EventHistoryItem(AbstractModel):
     @property
     def Data(self):
         """事件的数据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Data
@@ -15919,18 +15719,14 @@ class FamilySubDevice(AbstractModel):
         :param _DeviceId: 设备ID
         :type DeviceId: str
         :param _AliasName: 设备别名
-注意：此字段可能返回 null，表示取不到有效值。
         :type AliasName: str
         :param _FamilyId: 设备绑定的家庭ID
         :type FamilyId: str
         :param _RoomId: 设备所在的房间ID，默认"0"
-注意：此字段可能返回 null，表示取不到有效值。
         :type RoomId: str
         :param _IconUrl: 图标
-注意：此字段可能返回 null，表示取不到有效值。
         :type IconUrl: str
         :param _IconUrlGrid: grid图标
-注意：此字段可能返回 null，表示取不到有效值。
         :type IconUrlGrid: str
         :param _CreateTime: 设备绑定时间戳
         :type CreateTime: int
@@ -15984,7 +15780,6 @@ class FamilySubDevice(AbstractModel):
     @property
     def AliasName(self):
         """设备别名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AliasName
@@ -16007,7 +15802,6 @@ class FamilySubDevice(AbstractModel):
     @property
     def RoomId(self):
         """设备所在的房间ID，默认"0"
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RoomId
@@ -16019,7 +15813,6 @@ class FamilySubDevice(AbstractModel):
     @property
     def IconUrl(self):
         """图标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IconUrl
@@ -16031,7 +15824,6 @@ class FamilySubDevice(AbstractModel):
     @property
     def IconUrlGrid(self):
         """grid图标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IconUrlGrid
@@ -16454,28 +16246,20 @@ class FirmwareInfo(AbstractModel):
         :param _CreateTime: 固件创建时间
         :type CreateTime: int
         :param _ProductName: 产品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductName: str
         :param _Name: 固件名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Description: 固件描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _ProductId: 产品ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductId: str
         :param _FwType: 固件升级模块
-注意：此字段可能返回 null，表示取不到有效值。
         :type FwType: str
         :param _CreateUserId: 创建者子 uin
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateUserId: int
         :param _CreatorNickName: 创建者昵称
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatorNickName: str
         :param _UserDefined: 固件用户自定义配置信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserDefined: str
         """
         self._Version = None
@@ -16526,7 +16310,6 @@ class FirmwareInfo(AbstractModel):
     @property
     def ProductName(self):
         """产品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductName
@@ -16538,7 +16321,6 @@ class FirmwareInfo(AbstractModel):
     @property
     def Name(self):
         """固件名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -16550,7 +16332,6 @@ class FirmwareInfo(AbstractModel):
     @property
     def Description(self):
         """固件描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -16562,7 +16343,6 @@ class FirmwareInfo(AbstractModel):
     @property
     def ProductId(self):
         """产品ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductId
@@ -16574,7 +16354,6 @@ class FirmwareInfo(AbstractModel):
     @property
     def FwType(self):
         """固件升级模块
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FwType
@@ -16586,7 +16365,6 @@ class FirmwareInfo(AbstractModel):
     @property
     def CreateUserId(self):
         """创建者子 uin
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CreateUserId
@@ -16598,7 +16376,6 @@ class FirmwareInfo(AbstractModel):
     @property
     def CreatorNickName(self):
         """创建者昵称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreatorNickName
@@ -16610,7 +16387,6 @@ class FirmwareInfo(AbstractModel):
     @property
     def UserDefined(self):
         """固件用户自定义配置信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UserDefined
@@ -17494,10 +17270,8 @@ class GetDeviceListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Devices: 返回的设备列表, 注意列表设备的 DevicePsk 为空, 要获取设备的 DevicePsk 请使用 DescribeDevice
-注意：此字段可能返回 null，表示取不到有效值。
         :type Devices: list of DeviceInfo
         :param _Total: 产品下的设备总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -17509,7 +17283,6 @@ class GetDeviceListResponse(AbstractModel):
     @property
     def Devices(self):
         """返回的设备列表, 注意列表设备的 DevicePsk 为空, 要获取设备的 DevicePsk 请使用 DescribeDevice
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DeviceInfo
         """
         return self._Devices
@@ -17521,7 +17294,6 @@ class GetDeviceListResponse(AbstractModel):
     @property
     def Total(self):
         """产品下的设备总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -17955,7 +17727,6 @@ class GetFamilyDeviceUserListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _UserList: 设备的用户列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserList: list of DeviceUser
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -17966,7 +17737,6 @@ class GetFamilyDeviceUserListResponse(AbstractModel):
     @property
     def UserList(self):
         """设备的用户列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DeviceUser
         """
         return self._UserList
@@ -18086,10 +17856,8 @@ class GetGatewaySubDeviceListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Total: 设备的总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _DeviceList: 设备列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceList: :class:`tencentcloud.iotexplorer.v20190423.models.FamilySubDevice`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18101,7 +17869,6 @@ class GetGatewaySubDeviceListResponse(AbstractModel):
     @property
     def Total(self):
         """设备的总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -18113,7 +17880,6 @@ class GetGatewaySubDeviceListResponse(AbstractModel):
     @property
     def DeviceList(self):
         """设备列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.FamilySubDevice`
         """
         return self._DeviceList
@@ -18218,7 +17984,6 @@ class GetLoRaGatewayListResponse(AbstractModel):
         :param _Total: 返回总数
         :type Total: int
         :param _Gateways: 返回详情项
-注意：此字段可能返回 null，表示取不到有效值。
         :type Gateways: list of LoRaGatewayItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18241,7 +18006,6 @@ class GetLoRaGatewayListResponse(AbstractModel):
     @property
     def Gateways(self):
         """返回详情项
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LoRaGatewayItem
         """
         return self._Gateways
@@ -18347,10 +18111,8 @@ class GetPositionSpaceListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _List: 位置空间列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of PositionSpaceInfo
         :param _Total: 位置空间数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18362,7 +18124,6 @@ class GetPositionSpaceListResponse(AbstractModel):
     @property
     def List(self):
         """位置空间列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PositionSpaceInfo
         """
         return self._List
@@ -18374,7 +18135,6 @@ class GetPositionSpaceListResponse(AbstractModel):
     @property
     def Total(self):
         """位置空间数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -18540,10 +18300,8 @@ class GetProjectListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Projects: 项目列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Projects: list of ProjectEntryEx
         :param _Total: 列表项个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18555,7 +18313,6 @@ class GetProjectListResponse(AbstractModel):
     @property
     def Projects(self):
         """项目列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ProjectEntryEx
         """
         return self._Projects
@@ -18567,7 +18324,6 @@ class GetProjectListResponse(AbstractModel):
     @property
     def Total(self):
         """列表项个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -19069,7 +18825,6 @@ class GetWechatDeviceTicketResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _WXDeviceInfo: 微信设备信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type WXDeviceInfo: :class:`tencentcloud.iotexplorer.v20190423.models.WXDeviceInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -19080,7 +18835,6 @@ class GetWechatDeviceTicketResponse(AbstractModel):
     @property
     def WXDeviceInfo(self):
         """微信设备信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.WXDeviceInfo`
         """
         return self._WXDeviceInfo
@@ -19248,40 +19002,28 @@ class InstanceDetail(AbstractModel):
         :param _ExpireTime: 过期时间，公共实例过期时间 0001-01-01T00:00:00Z，公共实例是永久有效
         :type ExpireTime: str
         :param _TotalDevice: 总设备数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalDevice: int
         :param _ActivateDevice: 激活设备数
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActivateDevice: int
         :param _Description: 备注
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _Status: 实例状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _UpDownTPS: 消息上下行配置TPS
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpDownTPS: int
         :param _UpDownCurrentTPS: 当前消息上下行TPS
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpDownCurrentTPS: int
         :param _ForwardTPS: 消息转发配置TPS
-注意：此字段可能返回 null，表示取不到有效值。
         :type ForwardTPS: int
         :param _ForwardCurrentTPS: 消息转发当前TPS
-注意：此字段可能返回 null，表示取不到有效值。
         :type ForwardCurrentTPS: int
         :param _CellNum: 实例单元数
-注意：此字段可能返回 null，表示取不到有效值。
         :type CellNum: int
         :param _BillingTag: 实例Tag，企业实例必传
-注意：此字段可能返回 null，表示取不到有效值。
         :type BillingTag: str
         :param _EverydayFreeMessageCount: 每日消息数
-注意：此字段可能返回 null，表示取不到有效值。
         :type EverydayFreeMessageCount: int
         :param _MaxDeviceOnlineCount: 最大在线设备数
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxDeviceOnlineCount: int
         """
         self._InstanceId = None
@@ -19432,7 +19174,6 @@ class InstanceDetail(AbstractModel):
     @property
     def TotalDevice(self):
         """总设备数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalDevice
@@ -19444,7 +19185,6 @@ class InstanceDetail(AbstractModel):
     @property
     def ActivateDevice(self):
         """激活设备数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ActivateDevice
@@ -19456,7 +19196,6 @@ class InstanceDetail(AbstractModel):
     @property
     def Description(self):
         """备注
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -19468,7 +19207,6 @@ class InstanceDetail(AbstractModel):
     @property
     def Status(self):
         """实例状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -19480,7 +19218,6 @@ class InstanceDetail(AbstractModel):
     @property
     def UpDownTPS(self):
         """消息上下行配置TPS
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._UpDownTPS
@@ -19492,7 +19229,6 @@ class InstanceDetail(AbstractModel):
     @property
     def UpDownCurrentTPS(self):
         """当前消息上下行TPS
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._UpDownCurrentTPS
@@ -19504,7 +19240,6 @@ class InstanceDetail(AbstractModel):
     @property
     def ForwardTPS(self):
         """消息转发配置TPS
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ForwardTPS
@@ -19516,7 +19251,6 @@ class InstanceDetail(AbstractModel):
     @property
     def ForwardCurrentTPS(self):
         """消息转发当前TPS
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ForwardCurrentTPS
@@ -19528,7 +19262,6 @@ class InstanceDetail(AbstractModel):
     @property
     def CellNum(self):
         """实例单元数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CellNum
@@ -19540,7 +19273,6 @@ class InstanceDetail(AbstractModel):
     @property
     def BillingTag(self):
         """实例Tag，企业实例必传
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BillingTag
@@ -19552,7 +19284,6 @@ class InstanceDetail(AbstractModel):
     @property
     def EverydayFreeMessageCount(self):
         """每日消息数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._EverydayFreeMessageCount
@@ -19564,7 +19295,6 @@ class InstanceDetail(AbstractModel):
     @property
     def MaxDeviceOnlineCount(self):
         """最大在线设备数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxDeviceOnlineCount
@@ -20106,22 +19836,16 @@ class IotApplication(AbstractModel):
         :param _TPNSAndroidRegion: TPNS服务Android应用所属地域，详细说明参见 ModifyApplication 同名入参。
         :type TPNSAndroidRegion: str
         :param _SelfSmsAppId: 自主短信配置APPID
-注意：此字段可能返回 null，表示取不到有效值。
         :type SelfSmsAppId: str
         :param _SelfSmsAppKey: 自主短信配置APPKey
-注意：此字段可能返回 null，表示取不到有效值。
         :type SelfSmsAppKey: str
         :param _SelfSmsSign: 自主短信配置签名
-注意：此字段可能返回 null，表示取不到有效值。
         :type SelfSmsSign: str
         :param _SelfSmsTemplateId: 自主短信配置模板ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type SelfSmsTemplateId: int
         :param _WechatNotifyStatus: 第三方小程序强提醒开关 0：关闭；1：开启
-注意：此字段可能返回 null，表示取不到有效值。
         :type WechatNotifyStatus: int
         :param _InterconnectionProducts: 互联互通产品ID列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type InterconnectionProducts: str
         """
         self._IotAppID = None
@@ -20410,7 +20134,6 @@ class IotApplication(AbstractModel):
     @property
     def SelfSmsAppId(self):
         """自主短信配置APPID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SelfSmsAppId
@@ -20422,7 +20145,6 @@ class IotApplication(AbstractModel):
     @property
     def SelfSmsAppKey(self):
         """自主短信配置APPKey
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SelfSmsAppKey
@@ -20434,7 +20156,6 @@ class IotApplication(AbstractModel):
     @property
     def SelfSmsSign(self):
         """自主短信配置签名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SelfSmsSign
@@ -20446,7 +20167,6 @@ class IotApplication(AbstractModel):
     @property
     def SelfSmsTemplateId(self):
         """自主短信配置模板ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SelfSmsTemplateId
@@ -20458,7 +20178,6 @@ class IotApplication(AbstractModel):
     @property
     def WechatNotifyStatus(self):
         """第三方小程序强提醒开关 0：关闭；1：开启
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._WechatNotifyStatus
@@ -20470,7 +20189,6 @@ class IotApplication(AbstractModel):
     @property
     def InterconnectionProducts(self):
         """互联互通产品ID列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InterconnectionProducts
@@ -20534,7 +20252,6 @@ class LicenseServiceNumInfo(AbstractModel):
         :param _UsedNum: 已使用授权数
         :type UsedNum: int
         :param _TWeCallLicense: TWeCall激活码
-注意：此字段可能返回 null，表示取不到有效值。
         :type TWeCallLicense: list of TWeCallLicenseInfo
         """
         self._LicenseType = None
@@ -20578,7 +20295,6 @@ class LicenseServiceNumInfo(AbstractModel):
     @property
     def TWeCallLicense(self):
         """TWeCall激活码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TWeCallLicenseInfo
         """
         return self._TWeCallLicense
@@ -20757,16 +20473,12 @@ class ListEventHistoryResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Context: 搜索上下文, 用作查询游标
-注意：此字段可能返回 null，表示取不到有效值。
         :type Context: str
         :param _Total: 搜索结果数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _Listover: 搜索结果是否已经结束
-注意：此字段可能返回 null，表示取不到有效值。
         :type Listover: bool
         :param _EventHistory: 搜集结果集
-注意：此字段可能返回 null，表示取不到有效值。
         :type EventHistory: list of EventHistoryItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -20780,7 +20492,6 @@ class ListEventHistoryResponse(AbstractModel):
     @property
     def Context(self):
         """搜索上下文, 用作查询游标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Context
@@ -20792,7 +20503,6 @@ class ListEventHistoryResponse(AbstractModel):
     @property
     def Total(self):
         """搜索结果数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -20804,7 +20514,6 @@ class ListEventHistoryResponse(AbstractModel):
     @property
     def Listover(self):
         """搜索结果是否已经结束
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Listover
@@ -20816,7 +20525,6 @@ class ListEventHistoryResponse(AbstractModel):
     @property
     def EventHistory(self):
         """搜集结果集
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of EventHistoryItem
         """
         return self._EventHistory
@@ -23602,21 +23310,16 @@ class PackageInfo(AbstractModel):
         :param _CSExpiredTime: 云存套餐过期时间
         :type CSExpiredTime: int
         :param _CreatedAt: 云存套餐创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedAt: int
         :param _UpdatedAt: 云存套餐更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedAt: int
         :param _PackageId: 套餐id
-注意：此字段可能返回 null，表示取不到有效值。
         :type PackageId: str
         :param _OrderId: 订单id
-注意：此字段可能返回 null，表示取不到有效值。
         :type OrderId: str
         :param _ChannelId: 通道id
         :type ChannelId: int
         :param _CSUserId: 用户id
-注意：此字段可能返回 null，表示取不到有效值。
         :type CSUserId: str
         """
         self._Status = None
@@ -23678,7 +23381,6 @@ class PackageInfo(AbstractModel):
     @property
     def CreatedAt(self):
         """云存套餐创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CreatedAt
@@ -23690,7 +23392,6 @@ class PackageInfo(AbstractModel):
     @property
     def UpdatedAt(self):
         """云存套餐更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._UpdatedAt
@@ -23702,7 +23403,6 @@ class PackageInfo(AbstractModel):
     @property
     def PackageId(self):
         """套餐id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PackageId
@@ -23714,7 +23414,6 @@ class PackageInfo(AbstractModel):
     @property
     def OrderId(self):
         """订单id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OrderId
@@ -23737,7 +23436,6 @@ class PackageInfo(AbstractModel):
     @property
     def CSUserId(self):
         """用户id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CSUserId
@@ -24015,10 +23713,8 @@ class PositionItem(AbstractModel):
         :param _Latitude: 位置点的纬度
         :type Latitude: float
         :param _LocationType: 位置点的定位类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type LocationType: str
         :param _Accuracy: 位置点的精度预估，单位为米
-注意：此字段可能返回 null，表示取不到有效值。
         :type Accuracy: float
         """
         self._CreateTime = None
@@ -24063,7 +23759,6 @@ class PositionItem(AbstractModel):
     @property
     def LocationType(self):
         """位置点的定位类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LocationType
@@ -24075,7 +23770,6 @@ class PositionItem(AbstractModel):
     @property
     def Accuracy(self):
         """位置点的精度预估，单位为米
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Accuracy
@@ -24117,7 +23811,6 @@ class PositionSpaceInfo(AbstractModel):
         :param _AuthorizeType: 授权类型
         :type AuthorizeType: int
         :param _Description: 描述备注
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _ProductIdList: 产品列表
         :type ProductIdList: list of str
@@ -24188,7 +23881,6 @@ class PositionSpaceInfo(AbstractModel):
     @property
     def Description(self):
         """描述备注
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -24382,28 +24074,20 @@ wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、els
         :param _ModuleId: 产品ModuleId
         :type ModuleId: int
         :param _EnableProductScript: 是否使用脚本进行二进制转json功能 可以取值 true / false
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnableProductScript: str
         :param _CreateUserId: 创建人 UinId
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateUserId: int
         :param _CreatorNickName: 创建者昵称
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatorNickName: str
         :param _BindStrategy: 绑定策略（1：强踢；2：非强踢；0：表示无意义）
-注意：此字段可能返回 null，表示取不到有效值。
         :type BindStrategy: int
         :param _DeviceCount: 设备数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceCount: int
         :param _Rate: 平均传输速率
-注意：此字段可能返回 null，表示取不到有效值。
         :type Rate: str
         :param _Period: 有效期
-注意：此字段可能返回 null，表示取不到有效值。
         :type Period: str
         :param _IsInterconnection: 互联互通标识
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsInterconnection: int
         """
         self._ProductId = None
@@ -24587,7 +24271,6 @@ wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、els
     @property
     def EnableProductScript(self):
         """是否使用脚本进行二进制转json功能 可以取值 true / false
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EnableProductScript
@@ -24599,7 +24282,6 @@ wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、els
     @property
     def CreateUserId(self):
         """创建人 UinId
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CreateUserId
@@ -24611,7 +24293,6 @@ wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、els
     @property
     def CreatorNickName(self):
         """创建者昵称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreatorNickName
@@ -24623,7 +24304,6 @@ wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、els
     @property
     def BindStrategy(self):
         """绑定策略（1：强踢；2：非强踢；0：表示无意义）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._BindStrategy
@@ -24635,7 +24315,6 @@ wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、els
     @property
     def DeviceCount(self):
         """设备数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DeviceCount
@@ -24647,7 +24326,6 @@ wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、els
     @property
     def Rate(self):
         """平均传输速率
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Rate
@@ -24659,7 +24337,6 @@ wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、els
     @property
     def Period(self):
         """有效期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Period
@@ -24671,7 +24348,6 @@ wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、els
     @property
     def IsInterconnection(self):
         """互联互通标识
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IsInterconnection
@@ -24730,10 +24406,8 @@ class ProductModelDefinition(AbstractModel):
         :param _CreateTime: 创建时间，秒级时间戳
         :type CreateTime: int
         :param _CategoryModel: 产品所属分类的模型快照（产品创建时刻的）
-注意：此字段可能返回 null，表示取不到有效值。
         :type CategoryModel: str
         :param _NetTypeModel: 产品的连接类型的模型
-注意：此字段可能返回 null，表示取不到有效值。
         :type NetTypeModel: str
         """
         self._ProductId = None
@@ -24790,7 +24464,6 @@ class ProductModelDefinition(AbstractModel):
     @property
     def CategoryModel(self):
         """产品所属分类的模型快照（产品创建时刻的）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CategoryModel
@@ -24802,7 +24475,6 @@ class ProductModelDefinition(AbstractModel):
     @property
     def NetTypeModel(self):
         """产品的连接类型的模型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NetTypeModel
@@ -24949,16 +24621,12 @@ class ProjectEntryEx(AbstractModel):
         :param _WebAppCount: WebApp数量
         :type WebAppCount: int
         :param _InstanceId: 实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _ApplicationCount: 应用数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationCount: int
         :param _DeviceCount: 设备注册总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceCount: int
         :param _EnableOpenState: 是否开通物联使能
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnableOpenState: int
         """
         self._ProjectId = None
@@ -25065,7 +24733,6 @@ class ProjectEntryEx(AbstractModel):
     @property
     def InstanceId(self):
         """实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -25077,7 +24744,6 @@ class ProjectEntryEx(AbstractModel):
     @property
     def ApplicationCount(self):
         """应用数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ApplicationCount
@@ -25089,7 +24755,6 @@ class ProjectEntryEx(AbstractModel):
     @property
     def DeviceCount(self):
         """设备注册总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DeviceCount
@@ -25101,7 +24766,6 @@ class ProjectEntryEx(AbstractModel):
     @property
     def EnableOpenState(self):
         """是否开通物联使能
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._EnableOpenState
@@ -25317,7 +24981,6 @@ class PublishFirmwareUpdateMessageResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Status: 请求状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -25328,7 +24991,6 @@ class PublishFirmwareUpdateMessageResponse(AbstractModel):
     @property
     def Status(self):
         """请求状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -25685,10 +25347,13 @@ class RegisteredDeviceTypeInfo(AbstractModel):
         :type GatewayDeviceNum: int
         :param _SubDeviceNum: 已注册子设备数
         :type SubDeviceNum: int
+        :param _VideoDeviceNum: 已注册视频设备数
+        :type VideoDeviceNum: int
         """
         self._NormalDeviceNum = None
         self._GatewayDeviceNum = None
         self._SubDeviceNum = None
+        self._VideoDeviceNum = None
 
     @property
     def NormalDeviceNum(self):
@@ -25723,11 +25388,23 @@ class RegisteredDeviceTypeInfo(AbstractModel):
     def SubDeviceNum(self, SubDeviceNum):
         self._SubDeviceNum = SubDeviceNum
 
+    @property
+    def VideoDeviceNum(self):
+        """已注册视频设备数
+        :rtype: int
+        """
+        return self._VideoDeviceNum
+
+    @VideoDeviceNum.setter
+    def VideoDeviceNum(self, VideoDeviceNum):
+        self._VideoDeviceNum = VideoDeviceNum
+
 
     def _deserialize(self, params):
         self._NormalDeviceNum = params.get("NormalDeviceNum")
         self._GatewayDeviceNum = params.get("GatewayDeviceNum")
         self._SubDeviceNum = params.get("SubDeviceNum")
+        self._VideoDeviceNum = params.get("VideoDeviceNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26520,10 +26197,8 @@ class SearchPositionSpaceResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _List: 位置空间列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of PositionSpaceInfo
         :param _Total: 符合条件的位置空间个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -26535,7 +26210,6 @@ class SearchPositionSpaceResponse(AbstractModel):
     @property
     def List(self):
         """位置空间列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PositionSpaceInfo
         """
         return self._List
@@ -26547,7 +26221,6 @@ class SearchPositionSpaceResponse(AbstractModel):
     @property
     def Total(self):
         """符合条件的位置空间个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -26979,10 +26652,8 @@ class TWeCallActiveInfo(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModelId: str
         :param _Sn: Sn信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Sn: str
         :param _ExpireTime: 过期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireTime: int
         :param _PkgType: 类型
         :type PkgType: int
@@ -27011,7 +26682,6 @@ class TWeCallActiveInfo(AbstractModel):
     @property
     def Sn(self):
         """Sn信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Sn
@@ -27023,7 +26693,6 @@ class TWeCallActiveInfo(AbstractModel):
     @property
     def ExpireTime(self):
         """过期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ExpireTime
@@ -27067,7 +26736,6 @@ class TWeCallInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Sn: Sn信息，SN格式：产品ID_设备名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Sn: str
         :param _ModelId: 小程序ID，参数已弃用，不用传参
 注意：此字段可能返回 null，表示取不到有效值。
@@ -27083,7 +26751,6 @@ class TWeCallInfo(AbstractModel):
     @property
     def Sn(self):
         """Sn信息，SN格式：产品ID_设备名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Sn
@@ -27147,13 +26814,10 @@ class TWeCallLicenseInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _TWeCallType: voip类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type TWeCallType: str
         :param _TotalNum: 总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalNum: int
         :param _UsedNum: 已使用
-注意：此字段可能返回 null，表示取不到有效值。
         :type UsedNum: int
         """
         self._TWeCallType = None
@@ -27163,7 +26827,6 @@ class TWeCallLicenseInfo(AbstractModel):
     @property
     def TWeCallType(self):
         """voip类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TWeCallType
@@ -27175,7 +26838,6 @@ class TWeCallLicenseInfo(AbstractModel):
     @property
     def TotalNum(self):
         """总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalNum
@@ -27187,7 +26849,6 @@ class TWeCallLicenseInfo(AbstractModel):
     @property
     def UsedNum(self):
         """已使用
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._UsedNum
@@ -27219,10 +26880,8 @@ class ThumbnailURLInfoList(AbstractModel):
     def __init__(self):
         r"""
         :param _ThumbnailURL: 缩略图访问地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type ThumbnailURL: str
         :param _ExpireTime: 缩略图访问地址的过期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireTime: int
         """
         self._ThumbnailURL = None
@@ -27231,7 +26890,6 @@ class ThumbnailURLInfoList(AbstractModel):
     @property
     def ThumbnailURL(self):
         """缩略图访问地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ThumbnailURL
@@ -27243,7 +26901,6 @@ class ThumbnailURLInfoList(AbstractModel):
     @property
     def ExpireTime(self):
         """缩略图访问地址的过期时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ExpireTime
@@ -27329,13 +26986,10 @@ class TopicRule(AbstractModel):
         :param _Sql: 规则的SQL语句，如： SELECT * FROM 'pid/dname/event'，然后对其进行base64编码，得：U0VMRUNUICogRlJPTSAncGlkL2RuYW1lL2V2ZW50Jw==
         :type Sql: str
         :param _Description: 规则描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _Actions: 行为的JSON字符串。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Actions: str
         :param _RuleDisabled: 是否禁用规则
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleDisabled: bool
         """
         self._RuleName = None
@@ -27369,7 +27023,6 @@ class TopicRule(AbstractModel):
     @property
     def Description(self):
         """规则描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -27381,7 +27034,6 @@ class TopicRule(AbstractModel):
     @property
     def Actions(self):
         """行为的JSON字符串。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Actions
@@ -27393,7 +27045,6 @@ class TopicRule(AbstractModel):
     @property
     def RuleDisabled(self):
         """是否禁用规则
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._RuleDisabled
@@ -28241,10 +27892,8 @@ class UpdateDevicesEnableStateResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ResultCode: 删除的结果代码
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResultCode: str
         :param _ResultMessage: 删除的结果信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResultMessage: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -28256,7 +27905,6 @@ class UpdateDevicesEnableStateResponse(AbstractModel):
     @property
     def ResultCode(self):
         """删除的结果代码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResultCode
@@ -28268,7 +27916,6 @@ class UpdateDevicesEnableStateResponse(AbstractModel):
     @property
     def ResultMessage(self):
         """删除的结果信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResultMessage
@@ -28677,10 +28324,8 @@ class WXDeviceInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _DeviceId: 设备ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceId: str
         :param _WXIoTDeviceInfo: 设备信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type WXIoTDeviceInfo: :class:`tencentcloud.iotexplorer.v20190423.models.WXIoTDeviceInfo`
         """
         self._DeviceId = None
@@ -28689,7 +28334,6 @@ class WXDeviceInfo(AbstractModel):
     @property
     def DeviceId(self):
         """设备ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceId
@@ -28701,7 +28345,6 @@ class WXDeviceInfo(AbstractModel):
     @property
     def WXIoTDeviceInfo(self):
         """设备信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.WXIoTDeviceInfo`
         """
         return self._WXIoTDeviceInfo
@@ -28734,13 +28377,10 @@ class WXIoTDeviceInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _SN: sn信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type SN: str
         :param _SNTicket: 票据
-注意：此字段可能返回 null，表示取不到有效值。
         :type SNTicket: str
         :param _ModelId: 模板ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ModelId: str
         """
         self._SN = None
@@ -28750,7 +28390,6 @@ class WXIoTDeviceInfo(AbstractModel):
     @property
     def SN(self):
         """sn信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SN
@@ -28762,7 +28401,6 @@ class WXIoTDeviceInfo(AbstractModel):
     @property
     def SNTicket(self):
         """票据
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SNTicket
@@ -28774,7 +28412,6 @@ class WXIoTDeviceInfo(AbstractModel):
     @property
     def ModelId(self):
         """模板ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ModelId

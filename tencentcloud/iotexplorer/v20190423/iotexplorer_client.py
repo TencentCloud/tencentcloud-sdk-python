@@ -533,7 +533,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def CreatePositionSpace(self, request):
-        """创建位置空间
+        """创建位置空间。
 
         :param request: Request instance for CreatePositionSpace.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreatePositionSpaceRequest`

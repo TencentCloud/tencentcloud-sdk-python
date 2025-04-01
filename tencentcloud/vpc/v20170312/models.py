@@ -28565,6 +28565,180 @@ class DescribeNatGatewayDirectConnectGatewayRouteResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeNatGatewayFlowMonitorDetailRequest(AbstractModel):
+    """DescribeNatGatewayFlowMonitorDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TimePoint: 时间点。表示要查询的时刻。聚合粒度为60、300时，会查询最近一个整分钟开始的聚合周期；聚合粒度为3600时，会查询最近一个整点开始的聚合周期；聚合粒度为86400时，会查询最近一个整天开始的聚合周期。形如：`2019-03-24T10:51:23+08:00`。
+        :type TimePoint: str
+        :param _NatGatewayId: NAT网关的ID，形如：`nat-ig8xpno8`。
+        :type NatGatewayId: str
+        :param _TopN: 展示排序靠前的数据。默认值：10，表示默认展示排序前 10 的数据。最大值：100。
+        :type TopN: int
+        :param _OrderField: 排序字段。支持：入包量`InPkg`、出包量`OutPkg`、入流量`InTraffic`、出流量`OutTraffic`，标准型nat额外支持 并发连接数`ConcurrentConnectionCount` 、新建连接速率`NewConnectionRate`。默认值`OutTraffic`。
+        :type OrderField: str
+        :param _AggregationTimeRange: 聚合时间粒度。支持：60、300、3600、86400，即按照1分钟、5分钟、1小时、1天进行聚合查询。
+        :type AggregationTimeRange: int
+        :param _AllMetricMode: 是否查询全部指标。默认值：True，表示查询全部指标。
+        :type AllMetricMode: bool
+        """
+        self._TimePoint = None
+        self._NatGatewayId = None
+        self._TopN = None
+        self._OrderField = None
+        self._AggregationTimeRange = None
+        self._AllMetricMode = None
+
+    @property
+    def TimePoint(self):
+        """时间点。表示要查询的时刻。聚合粒度为60、300时，会查询最近一个整分钟开始的聚合周期；聚合粒度为3600时，会查询最近一个整点开始的聚合周期；聚合粒度为86400时，会查询最近一个整天开始的聚合周期。形如：`2019-03-24T10:51:23+08:00`。
+        :rtype: str
+        """
+        return self._TimePoint
+
+    @TimePoint.setter
+    def TimePoint(self, TimePoint):
+        self._TimePoint = TimePoint
+
+    @property
+    def NatGatewayId(self):
+        """NAT网关的ID，形如：`nat-ig8xpno8`。
+        :rtype: str
+        """
+        return self._NatGatewayId
+
+    @NatGatewayId.setter
+    def NatGatewayId(self, NatGatewayId):
+        self._NatGatewayId = NatGatewayId
+
+    @property
+    def TopN(self):
+        """展示排序靠前的数据。默认值：10，表示默认展示排序前 10 的数据。最大值：100。
+        :rtype: int
+        """
+        return self._TopN
+
+    @TopN.setter
+    def TopN(self, TopN):
+        self._TopN = TopN
+
+    @property
+    def OrderField(self):
+        """排序字段。支持：入包量`InPkg`、出包量`OutPkg`、入流量`InTraffic`、出流量`OutTraffic`，标准型nat额外支持 并发连接数`ConcurrentConnectionCount` 、新建连接速率`NewConnectionRate`。默认值`OutTraffic`。
+        :rtype: str
+        """
+        return self._OrderField
+
+    @OrderField.setter
+    def OrderField(self, OrderField):
+        self._OrderField = OrderField
+
+    @property
+    def AggregationTimeRange(self):
+        """聚合时间粒度。支持：60、300、3600、86400，即按照1分钟、5分钟、1小时、1天进行聚合查询。
+        :rtype: int
+        """
+        return self._AggregationTimeRange
+
+    @AggregationTimeRange.setter
+    def AggregationTimeRange(self, AggregationTimeRange):
+        self._AggregationTimeRange = AggregationTimeRange
+
+    @property
+    def AllMetricMode(self):
+        """是否查询全部指标。默认值：True，表示查询全部指标。
+        :rtype: bool
+        """
+        return self._AllMetricMode
+
+    @AllMetricMode.setter
+    def AllMetricMode(self, AllMetricMode):
+        self._AllMetricMode = AllMetricMode
+
+
+    def _deserialize(self, params):
+        self._TimePoint = params.get("TimePoint")
+        self._NatGatewayId = params.get("NatGatewayId")
+        self._TopN = params.get("TopN")
+        self._OrderField = params.get("OrderField")
+        self._AggregationTimeRange = params.get("AggregationTimeRange")
+        self._AllMetricMode = params.get("AllMetricMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNatGatewayFlowMonitorDetailResponse(AbstractModel):
+    """DescribeNatGatewayFlowMonitorDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 符合条件的对象数。
+        :type TotalCount: int
+        :param _NatGatewayFlowMonitorDetailSet: 网关流量监控明细。
+        :type NatGatewayFlowMonitorDetailSet: list of NatGatewayFlowMonitorDetail
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._NatGatewayFlowMonitorDetailSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """符合条件的对象数。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def NatGatewayFlowMonitorDetailSet(self):
+        """网关流量监控明细。
+        :rtype: list of NatGatewayFlowMonitorDetail
+        """
+        return self._NatGatewayFlowMonitorDetailSet
+
+    @NatGatewayFlowMonitorDetailSet.setter
+    def NatGatewayFlowMonitorDetailSet(self, NatGatewayFlowMonitorDetailSet):
+        self._NatGatewayFlowMonitorDetailSet = NatGatewayFlowMonitorDetailSet
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("NatGatewayFlowMonitorDetailSet") is not None:
+            self._NatGatewayFlowMonitorDetailSet = []
+            for item in params.get("NatGatewayFlowMonitorDetailSet"):
+                obj = NatGatewayFlowMonitorDetail()
+                obj._deserialize(item)
+                self._NatGatewayFlowMonitorDetailSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeNatGatewaySourceIpTranslationNatRulesRequest(AbstractModel):
     """DescribeNatGatewaySourceIpTranslationNatRules请求参数结构体
 
@@ -53966,6 +54140,132 @@ class NatGatewayDestinationIpPortTranslationNatRule(AbstractModel):
         self._NatGatewayId = params.get("NatGatewayId")
         self._VpcId = params.get("VpcId")
         self._CreatedTime = params.get("CreatedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NatGatewayFlowMonitorDetail(AbstractModel):
+    """nat网关流量监控明细。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PrivateIpAddress: 来源`IP`。
+        :type PrivateIpAddress: str
+        :param _InPkg: 入包量。
+        :type InPkg: int
+        :param _OutPkg: 出包量。
+        :type OutPkg: int
+        :param _InTraffic: 入流量，单位：`Byte`。
+        :type InTraffic: int
+        :param _OutTraffic: 出流量，单位：`Byte`。
+        :type OutTraffic: int
+        :param _ConcurrentConnectionCount: 并发连接数。仅标准型nat支持此参数。
+        :type ConcurrentConnectionCount: int
+        :param _NewConnectionRate: 新建连接速率。仅标准型nat支持此参数。
+        :type NewConnectionRate: int
+        """
+        self._PrivateIpAddress = None
+        self._InPkg = None
+        self._OutPkg = None
+        self._InTraffic = None
+        self._OutTraffic = None
+        self._ConcurrentConnectionCount = None
+        self._NewConnectionRate = None
+
+    @property
+    def PrivateIpAddress(self):
+        """来源`IP`。
+        :rtype: str
+        """
+        return self._PrivateIpAddress
+
+    @PrivateIpAddress.setter
+    def PrivateIpAddress(self, PrivateIpAddress):
+        self._PrivateIpAddress = PrivateIpAddress
+
+    @property
+    def InPkg(self):
+        """入包量。
+        :rtype: int
+        """
+        return self._InPkg
+
+    @InPkg.setter
+    def InPkg(self, InPkg):
+        self._InPkg = InPkg
+
+    @property
+    def OutPkg(self):
+        """出包量。
+        :rtype: int
+        """
+        return self._OutPkg
+
+    @OutPkg.setter
+    def OutPkg(self, OutPkg):
+        self._OutPkg = OutPkg
+
+    @property
+    def InTraffic(self):
+        """入流量，单位：`Byte`。
+        :rtype: int
+        """
+        return self._InTraffic
+
+    @InTraffic.setter
+    def InTraffic(self, InTraffic):
+        self._InTraffic = InTraffic
+
+    @property
+    def OutTraffic(self):
+        """出流量，单位：`Byte`。
+        :rtype: int
+        """
+        return self._OutTraffic
+
+    @OutTraffic.setter
+    def OutTraffic(self, OutTraffic):
+        self._OutTraffic = OutTraffic
+
+    @property
+    def ConcurrentConnectionCount(self):
+        """并发连接数。仅标准型nat支持此参数。
+        :rtype: int
+        """
+        return self._ConcurrentConnectionCount
+
+    @ConcurrentConnectionCount.setter
+    def ConcurrentConnectionCount(self, ConcurrentConnectionCount):
+        self._ConcurrentConnectionCount = ConcurrentConnectionCount
+
+    @property
+    def NewConnectionRate(self):
+        """新建连接速率。仅标准型nat支持此参数。
+        :rtype: int
+        """
+        return self._NewConnectionRate
+
+    @NewConnectionRate.setter
+    def NewConnectionRate(self, NewConnectionRate):
+        self._NewConnectionRate = NewConnectionRate
+
+
+    def _deserialize(self, params):
+        self._PrivateIpAddress = params.get("PrivateIpAddress")
+        self._InPkg = params.get("InPkg")
+        self._OutPkg = params.get("OutPkg")
+        self._InTraffic = params.get("InTraffic")
+        self._OutTraffic = params.get("OutTraffic")
+        self._ConcurrentConnectionCount = params.get("ConcurrentConnectionCount")
+        self._NewConnectionRate = params.get("NewConnectionRate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

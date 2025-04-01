@@ -18363,6 +18363,8 @@ class GatewayItem(AbstractModel):
         :type LongAccessId: str
         :param _AccessDomain: Donut接入域名
         :type AccessDomain: str
+        :param _Tags: 标签键值对
+        :type Tags: list of Tag
         """
         self._Uin = None
         self._AppId = None
@@ -18390,6 +18392,7 @@ class GatewayItem(AbstractModel):
         self._VersionNumLimit = None
         self._LongAccessId = None
         self._AccessDomain = None
+        self._Tags = None
 
     @property
     def Uin(self):
@@ -18677,6 +18680,17 @@ class GatewayItem(AbstractModel):
     def AccessDomain(self, AccessDomain):
         self._AccessDomain = AccessDomain
 
+    @property
+    def Tags(self):
+        """标签键值对
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._Uin = params.get("Uin")
@@ -18705,6 +18719,12 @@ class GatewayItem(AbstractModel):
         self._VersionNumLimit = params.get("VersionNumLimit")
         self._LongAccessId = params.get("LongAccessId")
         self._AccessDomain = params.get("AccessDomain")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -8829,6 +8829,225 @@ class DescribeRedisProcessListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRedisSlowLogTopSqlsRequest(AbstractModel):
+    """DescribeRedisSlowLogTopSqls请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例 ID 。
+        :type InstanceId: str
+        :param _StartTime: 开始时间，如“2019-09-10 12:13:14”。
+        :type StartTime: str
+        :param _EndTime: 截止时间，如“2019-09-11 10:13:14”，截止时间与开始时间的间隔小于7天。
+        :type EndTime: str
+        :param _Product: 服务产品类型，支持值： "redis" - 云数据库 Redis。
+        :type Product: str
+        :param _InstanceProxyId: Redis Proxy节点ID。
+        :type InstanceProxyId: str
+        :param _SortBy: 排序键，支持ExecTimes,QueryTime,QueryTimeMax,QueryTimeAvg等排序键，默认为QueryTime。
+        :type SortBy: str
+        :param _OrderBy: 排序方式，支持ASC（升序）以及DESC（降序），默认为DESC。
+        :type OrderBy: str
+        :param _Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        :param _Offset: 偏移量，默认为0。
+        :type Offset: int
+        """
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Product = None
+        self._InstanceProxyId = None
+        self._SortBy = None
+        self._OrderBy = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def InstanceId(self):
+        """实例 ID 。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        """开始时间，如“2019-09-10 12:13:14”。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """截止时间，如“2019-09-11 10:13:14”，截止时间与开始时间的间隔小于7天。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Product(self):
+        """服务产品类型，支持值： "redis" - 云数据库 Redis。
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def InstanceProxyId(self):
+        """Redis Proxy节点ID。
+        :rtype: str
+        """
+        return self._InstanceProxyId
+
+    @InstanceProxyId.setter
+    def InstanceProxyId(self, InstanceProxyId):
+        self._InstanceProxyId = InstanceProxyId
+
+    @property
+    def SortBy(self):
+        """排序键，支持ExecTimes,QueryTime,QueryTimeMax,QueryTimeAvg等排序键，默认为QueryTime。
+        :rtype: str
+        """
+        return self._SortBy
+
+    @SortBy.setter
+    def SortBy(self, SortBy):
+        self._SortBy = SortBy
+
+    @property
+    def OrderBy(self):
+        """排序方式，支持ASC（升序）以及DESC（降序），默认为DESC。
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def Limit(self):
+        """返回数量，默认为20，最大值为100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """偏移量，默认为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Product = params.get("Product")
+        self._InstanceProxyId = params.get("InstanceProxyId")
+        self._SortBy = params.get("SortBy")
+        self._OrderBy = params.get("OrderBy")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRedisSlowLogTopSqlsResponse(AbstractModel):
+    """DescribeRedisSlowLogTopSqls返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 符合条件的记录总数。
+        :type TotalCount: int
+        :param _Rows: 慢日志 top sql 列表。
+        :type Rows: list of SlowLogAgg
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Rows = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """符合条件的记录总数。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Rows(self):
+        """慢日志 top sql 列表。
+        :rtype: list of SlowLogAgg
+        """
+        return self._Rows
+
+    @Rows.setter
+    def Rows(self, Rows):
+        self._Rows = Rows
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Rows") is not None:
+            self._Rows = []
+            for item in params.get("Rows"):
+                obj = SlowLogAgg()
+                obj._deserialize(item)
+                self._Rows.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRedisTopBigKeysRequest(AbstractModel):
     """DescribeRedisTopBigKeys请求参数结构体
 
@@ -9634,6 +9853,195 @@ class DescribeSecurityAuditLogExportTasksResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSlowLogQueryTimeStatsRequest(AbstractModel):
+    """DescribeSlowLogQueryTimeStats请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例 ID 。
+        :type InstanceId: str
+        :param _StartTime: 开始时间，如“2019-09-10 12:13:14”。
+        :type StartTime: str
+        :param _EndTime: 截止时间，如“2019-09-11 10:13:14”，截止时间与开始时间的间隔小于7天。
+        :type EndTime: str
+        :param _Product: "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，"mongodb" - 云数据库 MongoDB，默认为"mysql"。
+        :type Product: str
+        :param _InstanceProxyId: Proxy节点ID。
+        :type InstanceProxyId: str
+        :param _InstanceNodeId: 实列节点ID。
+        :type InstanceNodeId: str
+        :param _Type: 查询类型，目前支持值：mongod，mongos。
+        :type Type: str
+        """
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Product = None
+        self._InstanceProxyId = None
+        self._InstanceNodeId = None
+        self._Type = None
+
+    @property
+    def InstanceId(self):
+        """实例 ID 。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        """开始时间，如“2019-09-10 12:13:14”。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """截止时间，如“2019-09-11 10:13:14”，截止时间与开始时间的间隔小于7天。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Product(self):
+        """"mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，"mongodb" - 云数据库 MongoDB，默认为"mysql"。
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def InstanceProxyId(self):
+        """Proxy节点ID。
+        :rtype: str
+        """
+        return self._InstanceProxyId
+
+    @InstanceProxyId.setter
+    def InstanceProxyId(self, InstanceProxyId):
+        self._InstanceProxyId = InstanceProxyId
+
+    @property
+    def InstanceNodeId(self):
+        """实列节点ID。
+        :rtype: str
+        """
+        return self._InstanceNodeId
+
+    @InstanceNodeId.setter
+    def InstanceNodeId(self, InstanceNodeId):
+        self._InstanceNodeId = InstanceNodeId
+
+    @property
+    def Type(self):
+        """查询类型，目前支持值：mongod，mongos。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Product = params.get("Product")
+        self._InstanceProxyId = params.get("InstanceProxyId")
+        self._InstanceNodeId = params.get("InstanceNodeId")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSlowLogQueryTimeStatsResponse(AbstractModel):
+    """DescribeSlowLogQueryTimeStats返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 符合条件的记录总数。
+        :type TotalCount: int
+        :param _Items: 慢日志 top sql 列表。
+        :type Items: list of SqlCostDistribution
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """符合条件的记录总数。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        """慢日志 top sql 列表。
+        :rtype: list of SqlCostDistribution
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = SqlCostDistribution()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSlowLogTimeSeriesStatsRequest(AbstractModel):
     """DescribeSlowLogTimeSeriesStats请求参数结构体
 
@@ -9647,13 +10055,22 @@ class DescribeSlowLogTimeSeriesStatsRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: 结束时间，如“2019-09-10 12:13:14”，结束时间与开始时间的间隔最大可为7天。
         :type EndTime: str
-        :param _Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+        :param _Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，"redis" - 云数据库 Redis，"mongodb" - 云数据库 MongoDB，默认为"mysql"。
         :type Product: str
+        :param _InstanceProxyId: Proxy节点ID。	
+        :type InstanceProxyId: str
+        :param _InstanceNodeId: 实列节点ID。	
+        :type InstanceNodeId: str
+        :param _Type: 查询类型，目前支持值：mongod，mongos。
+        :type Type: str
         """
         self._InstanceId = None
         self._StartTime = None
         self._EndTime = None
         self._Product = None
+        self._InstanceProxyId = None
+        self._InstanceNodeId = None
+        self._Type = None
 
     @property
     def InstanceId(self):
@@ -9690,7 +10107,7 @@ class DescribeSlowLogTimeSeriesStatsRequest(AbstractModel):
 
     @property
     def Product(self):
-        """服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+        """服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，"redis" - 云数据库 Redis，"mongodb" - 云数据库 MongoDB，默认为"mysql"。
         :rtype: str
         """
         return self._Product
@@ -9699,12 +10116,48 @@ class DescribeSlowLogTimeSeriesStatsRequest(AbstractModel):
     def Product(self, Product):
         self._Product = Product
 
+    @property
+    def InstanceProxyId(self):
+        """Proxy节点ID。	
+        :rtype: str
+        """
+        return self._InstanceProxyId
+
+    @InstanceProxyId.setter
+    def InstanceProxyId(self, InstanceProxyId):
+        self._InstanceProxyId = InstanceProxyId
+
+    @property
+    def InstanceNodeId(self):
+        """实列节点ID。	
+        :rtype: str
+        """
+        return self._InstanceNodeId
+
+    @InstanceNodeId.setter
+    def InstanceNodeId(self, InstanceNodeId):
+        self._InstanceNodeId = InstanceNodeId
+
+    @property
+    def Type(self):
+        """查询类型，目前支持值：mongod，mongos。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
         self._Product = params.get("Product")
+        self._InstanceProxyId = params.get("InstanceProxyId")
+        self._InstanceNodeId = params.get("InstanceNodeId")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17243,6 +17696,147 @@ class SessionItem(AbstractModel):
         
 
 
+class SlowLogAgg(AbstractModel):
+    """redis top慢日志聚合详情。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Cmd: 命令模版。
+        :type Cmd: str
+        :param _Detail: 命令详情。
+        :type Detail: str
+        :param _ExecTimes: 执行次数。
+        :type ExecTimes: int
+        :param _QueryTime: 总耗时。
+        :type QueryTime: float
+        :param _QueryTimeAvg: 平均执行时间。
+        :type QueryTimeAvg: float
+        :param _QueryTimeMax: 最大执行时间。
+        :type QueryTimeMax: float
+        :param _QueryTimeMin: 最小执行时间。
+        :type QueryTimeMin: float
+        :param _QueryTimeRatio: 总耗时占比
+        :type QueryTimeRatio: float
+        """
+        self._Cmd = None
+        self._Detail = None
+        self._ExecTimes = None
+        self._QueryTime = None
+        self._QueryTimeAvg = None
+        self._QueryTimeMax = None
+        self._QueryTimeMin = None
+        self._QueryTimeRatio = None
+
+    @property
+    def Cmd(self):
+        """命令模版。
+        :rtype: str
+        """
+        return self._Cmd
+
+    @Cmd.setter
+    def Cmd(self, Cmd):
+        self._Cmd = Cmd
+
+    @property
+    def Detail(self):
+        """命令详情。
+        :rtype: str
+        """
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
+
+    @property
+    def ExecTimes(self):
+        """执行次数。
+        :rtype: int
+        """
+        return self._ExecTimes
+
+    @ExecTimes.setter
+    def ExecTimes(self, ExecTimes):
+        self._ExecTimes = ExecTimes
+
+    @property
+    def QueryTime(self):
+        """总耗时。
+        :rtype: float
+        """
+        return self._QueryTime
+
+    @QueryTime.setter
+    def QueryTime(self, QueryTime):
+        self._QueryTime = QueryTime
+
+    @property
+    def QueryTimeAvg(self):
+        """平均执行时间。
+        :rtype: float
+        """
+        return self._QueryTimeAvg
+
+    @QueryTimeAvg.setter
+    def QueryTimeAvg(self, QueryTimeAvg):
+        self._QueryTimeAvg = QueryTimeAvg
+
+    @property
+    def QueryTimeMax(self):
+        """最大执行时间。
+        :rtype: float
+        """
+        return self._QueryTimeMax
+
+    @QueryTimeMax.setter
+    def QueryTimeMax(self, QueryTimeMax):
+        self._QueryTimeMax = QueryTimeMax
+
+    @property
+    def QueryTimeMin(self):
+        """最小执行时间。
+        :rtype: float
+        """
+        return self._QueryTimeMin
+
+    @QueryTimeMin.setter
+    def QueryTimeMin(self, QueryTimeMin):
+        self._QueryTimeMin = QueryTimeMin
+
+    @property
+    def QueryTimeRatio(self):
+        """总耗时占比
+        :rtype: float
+        """
+        return self._QueryTimeRatio
+
+    @QueryTimeRatio.setter
+    def QueryTimeRatio(self, QueryTimeRatio):
+        self._QueryTimeRatio = QueryTimeRatio
+
+
+    def _deserialize(self, params):
+        self._Cmd = params.get("Cmd")
+        self._Detail = params.get("Detail")
+        self._ExecTimes = params.get("ExecTimes")
+        self._QueryTime = params.get("QueryTime")
+        self._QueryTimeAvg = params.get("QueryTimeAvg")
+        self._QueryTimeMax = params.get("QueryTimeMax")
+        self._QueryTimeMin = params.get("QueryTimeMin")
+        self._QueryTimeRatio = params.get("QueryTimeRatio")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SlowLogHost(AbstractModel):
     """慢日志来源地址详情。
 
@@ -17917,6 +18511,87 @@ class SlowLogUser(AbstractModel):
         self._UserName = params.get("UserName")
         self._Ratio = params.get("Ratio")
         self._Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SqlCostDistribution(AbstractModel):
+    """分段耗时 SQL 分布
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Count: sql条数。
+        :type Count: int
+        :param _From: 分段耗时下边界，单位是秒。
+        :type From: float
+        :param _To: 分段耗时上边界，单位是秒。
+        :type To: float
+        :param _Ratio: 耗时占比。
+        :type Ratio: float
+        """
+        self._Count = None
+        self._From = None
+        self._To = None
+        self._Ratio = None
+
+    @property
+    def Count(self):
+        """sql条数。
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def From(self):
+        """分段耗时下边界，单位是秒。
+        :rtype: float
+        """
+        return self._From
+
+    @From.setter
+    def From(self, From):
+        self._From = From
+
+    @property
+    def To(self):
+        """分段耗时上边界，单位是秒。
+        :rtype: float
+        """
+        return self._To
+
+    @To.setter
+    def To(self, To):
+        self._To = To
+
+    @property
+    def Ratio(self):
+        """耗时占比。
+        :rtype: float
+        """
+        return self._Ratio
+
+    @Ratio.setter
+    def Ratio(self, Ratio):
+        self._Ratio = Ratio
+
+
+    def _deserialize(self, params):
+        self._Count = params.get("Count")
+        self._From = params.get("From")
+        self._To = params.get("To")
+        self._Ratio = params.get("Ratio")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

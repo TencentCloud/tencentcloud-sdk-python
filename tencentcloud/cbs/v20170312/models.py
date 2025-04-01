@@ -1132,12 +1132,10 @@ class Cdc(AbstractModel):
         :param _CdcState: 独享集群状态。取值范围：<br><li>NORMAL：正常；</li><br><li>CLOSED：关闭，此时将不可使用该独享集群创建新的云硬盘；</li><br><li>FAULT：独享集群状态异常，此时独享集群将不可操作，腾讯云运维团队将会及时修复该集群；</li><br><li>ISOLATED：因未及时续费导致独享集群被隔离，此时将不可使用该独享集群创建新的云硬盘，对应的云硬盘也将不可操作。</li>
         :type CdcState: str
         :param _Zone: 独享集群所属的[可用区](/document/product/213/15753#ZoneInfo)ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Zone: str
         :param _CdcName: 独享集群实例名称。
         :type CdcName: str
         :param _CdcResource: 独享集群的资源容量大小。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CdcResource: :class:`tencentcloud.cbs.v20170312.models.CdcSize`
         :param _CdcId: 独享集群实例id。
         :type CdcId: str
@@ -1187,7 +1185,6 @@ class Cdc(AbstractModel):
     @property
     def Zone(self):
         """独享集群所属的[可用区](/document/product/213/15753#ZoneInfo)ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Zone
@@ -1210,7 +1207,6 @@ class Cdc(AbstractModel):
     @property
     def CdcResource(self):
         """独享集群的资源容量大小。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cbs.v20170312.models.CdcSize`
         """
         return self._CdcResource
@@ -5478,17 +5474,16 @@ class DiskConfig(AbstractModel):
         r"""
         :param _Available: 配置是否可用。
         :type Available: bool
-        :param _DiskChargeType: 付费模式。取值范围：<br><li>PREPAID：表示预付费，即包年包月<br><li>POSTPAID_BY_HOUR：表示后付费，即按量计费。
+        :param _DiskChargeType: 付费模式。取值范围：<br><li>PREPAID：表示预付费，即包年包月</li><br><li>POSTPAID_BY_HOUR：表示后付费，即按量计费。</li>
         :type DiskChargeType: str
         :param _Zone: 云硬盘所属的[可用区](/document/product/213/15753#ZoneInfo)。
         :type Zone: str
         :param _InstanceFamily: 实例机型系列。详见[实例类型](https://cloud.tencent.com/document/product/213/11518)
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceFamily: str
-        :param _DiskType: 云盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：SSD表示SSD云硬盘。
+        :param _DiskType: 云盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘</li><br><li>CLOUD_PREMIUM：表示高性能云硬盘</li><br><li>CLOUD_SSD：SSD表示SSD云硬盘。</li>
         :type DiskType: str
         :param _StepSize: 云盘大小变化的最小步长，单位GB。
-注意：此字段可能返回 null，表示取不到有效值。
         :type StepSize: int
         :param _ExtraPerformanceRange: 额外的性能区间。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -5496,14 +5491,13 @@ class DiskConfig(AbstractModel):
         :param _DeviceClass: 实例机型。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceClass: str
-        :param _DiskUsage: 云盘类型。取值范围：<br><li>SYSTEM_DISK：表示系统盘<br><li>DATA_DISK：表示数据盘。
+        :param _DiskUsage: 云盘类型。取值范围：<br><li>SYSTEM_DISK：表示系统盘</li><br><li>DATA_DISK：表示数据盘。</li>
         :type DiskUsage: str
         :param _MinDiskSize: 最小可配置云盘大小，单位GB。
         :type MinDiskSize: int
         :param _MaxDiskSize: 最大可配置云盘大小，单位GB。
         :type MaxDiskSize: int
         :param _Price: 描述预付费或后付费云盘的价格。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Price: :class:`tencentcloud.cbs.v20170312.models.Price`
         """
         self._Available = None
@@ -5532,7 +5526,7 @@ class DiskConfig(AbstractModel):
 
     @property
     def DiskChargeType(self):
-        """付费模式。取值范围：<br><li>PREPAID：表示预付费，即包年包月<br><li>POSTPAID_BY_HOUR：表示后付费，即按量计费。
+        """付费模式。取值范围：<br><li>PREPAID：表示预付费，即包年包月</li><br><li>POSTPAID_BY_HOUR：表示后付费，即按量计费。</li>
         :rtype: str
         """
         return self._DiskChargeType
@@ -5566,7 +5560,7 @@ class DiskConfig(AbstractModel):
 
     @property
     def DiskType(self):
-        """云盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：SSD表示SSD云硬盘。
+        """云盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘</li><br><li>CLOUD_PREMIUM：表示高性能云硬盘</li><br><li>CLOUD_SSD：SSD表示SSD云硬盘。</li>
         :rtype: str
         """
         return self._DiskType
@@ -5578,7 +5572,6 @@ class DiskConfig(AbstractModel):
     @property
     def StepSize(self):
         """云盘大小变化的最小步长，单位GB。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._StepSize
@@ -5613,7 +5606,7 @@ class DiskConfig(AbstractModel):
 
     @property
     def DiskUsage(self):
-        """云盘类型。取值范围：<br><li>SYSTEM_DISK：表示系统盘<br><li>DATA_DISK：表示数据盘。
+        """云盘类型。取值范围：<br><li>SYSTEM_DISK：表示系统盘</li><br><li>DATA_DISK：表示数据盘。</li>
         :rtype: str
         """
         return self._DiskUsage
@@ -5647,7 +5640,6 @@ class DiskConfig(AbstractModel):
     @property
     def Price(self):
         """描述预付费或后付费云盘的价格。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cbs.v20170312.models.Price`
         """
         return self._Price

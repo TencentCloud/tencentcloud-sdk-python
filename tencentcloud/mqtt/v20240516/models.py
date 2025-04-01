@@ -8972,14 +8972,17 @@ class ProductSkuItem(AbstractModel):
         :param _InstanceType: 规格类型
 BASIC：基础版
 PRO ：专业版
+PLATINUM： 铂金版
         :type InstanceType: str
         :param _SkuCode: 规格代码
         :type SkuCode: str
         :param _OnSale: 是否售卖
+1: 可售卖
+0: 不可售卖
         :type OnSale: bool
         :param _TopicNumLimit: topic num限制
         :type TopicNumLimit: int
-        :param _TpsLimit: tps
+        :param _TpsLimit: MQTT 集群下每秒钟生产消息量和消费消息量之和。详细计算方式参考 [计费概述](https://cloud.tencent.com/document/product/1778/109698)
         :type TpsLimit: int
         :param _ClientNumLimit: 客户端连接数
         :type ClientNumLimit: int
@@ -9005,6 +9008,7 @@ PRO ：专业版
         """规格类型
 BASIC：基础版
 PRO ：专业版
+PLATINUM： 铂金版
         :rtype: str
         """
         return self._InstanceType
@@ -9027,6 +9031,8 @@ PRO ：专业版
     @property
     def OnSale(self):
         """是否售卖
+1: 可售卖
+0: 不可售卖
         :rtype: bool
         """
         return self._OnSale
@@ -9048,7 +9054,7 @@ PRO ：专业版
 
     @property
     def TpsLimit(self):
-        """tps
+        """MQTT 集群下每秒钟生产消息量和消费消息量之和。详细计算方式参考 [计费概述](https://cloud.tencent.com/document/product/1778/109698)
         :rtype: int
         """
         return self._TpsLimit

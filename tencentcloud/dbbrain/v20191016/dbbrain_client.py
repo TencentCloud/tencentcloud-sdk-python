@@ -394,6 +394,29 @@ class DbbrainClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeMySqlProcessList(self, request):
+        """查询关系型数据库的实时线程列表。
+
+        :param request: Request instance for DescribeMySqlProcessList.
+        :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeMySqlProcessListRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.DescribeMySqlProcessListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMySqlProcessList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMySqlProcessListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSecurityAuditLogDownloadUrls(self, request):
         """查询安全审计日志导出文件下载链接。目前日志文件下载仅提供腾讯云内网地址，请通过广州地域的腾讯云服务器进行下载。
 

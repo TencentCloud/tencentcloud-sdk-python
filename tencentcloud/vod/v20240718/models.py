@@ -1655,7 +1655,6 @@ class IncrementalMigrationStrategyInfo(AbstractModel):
         :param _OriginType: 源站类型。取值有：<li>HTTP：HTTP 源。</li>
         :type OriginType: str
         :param _HttpOriginConfig: 回源源站配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :type HttpOriginConfig: :class:`tencentcloud.vod.v20240718.models.IncrementalMigrationHttpOriginConfig`
         """
         self._StrategyId = None
@@ -1723,7 +1722,6 @@ class IncrementalMigrationStrategyInfo(AbstractModel):
     @property
     def HttpOriginConfig(self):
         """回源源站配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20240718.models.IncrementalMigrationHttpOriginConfig`
         """
         return self._HttpOriginConfig
