@@ -14643,6 +14643,8 @@ class SessionResult(AbstractModel):
         :type AppAssetKind: int
         :param _AppAssetUrl: 应用资产url
         :type AppAssetUrl: str
+        :param _ReplayType: 回放类型 默认0, 1-rfb 2-mp4 3-ssh
+        :type ReplayType: int
         """
         self._UserName = None
         self._RealName = None
@@ -14664,6 +14666,7 @@ class SessionResult(AbstractModel):
         self._Protocol = None
         self._AppAssetKind = None
         self._AppAssetUrl = None
+        self._ReplayType = None
 
     @property
     def UserName(self):
@@ -14885,6 +14888,17 @@ class SessionResult(AbstractModel):
     def AppAssetUrl(self, AppAssetUrl):
         self._AppAssetUrl = AppAssetUrl
 
+    @property
+    def ReplayType(self):
+        """回放类型 默认0, 1-rfb 2-mp4 3-ssh
+        :rtype: int
+        """
+        return self._ReplayType
+
+    @ReplayType.setter
+    def ReplayType(self, ReplayType):
+        self._ReplayType = ReplayType
+
 
     def _deserialize(self, params):
         self._UserName = params.get("UserName")
@@ -14907,6 +14921,7 @@ class SessionResult(AbstractModel):
         self._Protocol = params.get("Protocol")
         self._AppAssetKind = params.get("AppAssetKind")
         self._AppAssetUrl = params.get("AppAssetUrl")
+        self._ReplayType = params.get("ReplayType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -24275,9 +24275,9 @@ class ModifyTopicAttributesRequest(AbstractModel):
         :type RetentionBytes: int
         :param _Tags: 标签列表
         :type Tags: list of Tag
-        :param _QuotaProducerByteRate: 生产限流，单位 MB/s
+        :param _QuotaProducerByteRate: 生产限流，单位 MB/s；设置为-1，则生产不限流
         :type QuotaProducerByteRate: int
-        :param _QuotaConsumerByteRate: 消费限流，单位 MB/s
+        :param _QuotaConsumerByteRate: 消费限流，单位 MB/s；设置为-1，则消费不限流
         :type QuotaConsumerByteRate: int
         :param _ReplicaNum: topic副本数  最小值 1,最大值 3
         :type ReplicaNum: int
@@ -24468,7 +24468,7 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def QuotaProducerByteRate(self):
-        """生产限流，单位 MB/s
+        """生产限流，单位 MB/s；设置为-1，则生产不限流
         :rtype: int
         """
         return self._QuotaProducerByteRate
@@ -24479,7 +24479,7 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def QuotaConsumerByteRate(self):
-        """消费限流，单位 MB/s
+        """消费限流，单位 MB/s；设置为-1，则消费不限流
         :rtype: int
         """
         return self._QuotaConsumerByteRate

@@ -2245,10 +2245,8 @@ class CloudStorageEvent(AbstractModel):
         :param _EventId: 事件ID
         :type EventId: str
         :param _UploadStatus: 事件录像上传状态，Finished: 全部上传成功 Partial: 部分上传成功 Failed: 上传失败	
-注意：此字段可能返回 null，表示取不到有效值。
         :type UploadStatus: str
         :param _Data: 事件自定义数据	
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: str
         """
         self._StartTime = None
@@ -2305,7 +2303,6 @@ class CloudStorageEvent(AbstractModel):
     @property
     def UploadStatus(self):
         """事件录像上传状态，Finished: 全部上传成功 Partial: 部分上传成功 Failed: 上传失败	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UploadStatus
@@ -2317,7 +2314,6 @@ class CloudStorageEvent(AbstractModel):
     @property
     def Data(self):
         """事件自定义数据	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Data

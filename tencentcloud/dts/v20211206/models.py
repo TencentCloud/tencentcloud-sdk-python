@@ -3619,6 +3619,8 @@ class DBInfo(AbstractModel):
         :type TmpSecretKey: str
         :param _TmpToken: 临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号迁移文档(https://cloud.tencent.com/document/product/571/54117)第4节中关于角色的定义。
         :type TmpToken: str
+        :param _EncryptConn: 是否走加密传输、UnEncrypted表示不走加密传输，Encrypted表示走加密传输，默认UnEncrypted
+        :type EncryptConn: str
         :param _SetId: tdsql的分片id。如节点类型为set必填。
         :type SetId: str
         """
@@ -3642,6 +3644,7 @@ class DBInfo(AbstractModel):
         self._TmpSecretId = None
         self._TmpSecretKey = None
         self._TmpToken = None
+        self._EncryptConn = None
         self._SetId = None
 
     @property
@@ -3865,6 +3868,17 @@ class DBInfo(AbstractModel):
         self._TmpToken = TmpToken
 
     @property
+    def EncryptConn(self):
+        """是否走加密传输、UnEncrypted表示不走加密传输，Encrypted表示走加密传输，默认UnEncrypted
+        :rtype: str
+        """
+        return self._EncryptConn
+
+    @EncryptConn.setter
+    def EncryptConn(self, EncryptConn):
+        self._EncryptConn = EncryptConn
+
+    @property
     def SetId(self):
         """tdsql的分片id。如节点类型为set必填。
         :rtype: str
@@ -3897,6 +3911,7 @@ class DBInfo(AbstractModel):
         self._TmpSecretId = params.get("TmpSecretId")
         self._TmpSecretKey = params.get("TmpSecretKey")
         self._TmpToken = params.get("TmpToken")
+        self._EncryptConn = params.get("EncryptConn")
         self._SetId = params.get("SetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -9194,11 +9209,26 @@ class DynamicOptions(AbstractModel):
         :type ConflictHandleType: str
         :param _ConflictHandleOption: 冲突处理的详细选项，如条件覆盖中的条件行和条件操作；不能部分更新该选项的内部字段；有更新时、需要全量更新该字段
         :type ConflictHandleOption: :class:`tencentcloud.dts.v20211206.models.ConflictHandleOption`
+        :param _KafkaOption: 同步到kafka链路的kafka配置
+        :type KafkaOption: :class:`tencentcloud.dts.v20211206.models.KafkaOption`
+        :param _FilterBeginCommit: 同步到kafka链路是否过滤掉begin和commit消息。目前仅mysql2kafka链路支持
+        :type FilterBeginCommit: bool
+        :param _FilterCheckpoint: 同步到kafka链路是否过滤掉checkpoint消息。目前仅mysql2kafka链路支持
+        :type FilterCheckpoint: bool
+        :param _DealOfExistSameTable: 同名表的处理，ReportErrorAfterCheck(前置校验并报错，默认)、ExecuteAfterIgnore(忽略并继续执行)
+        :type DealOfExistSameTable: str
+        :param _StartPosition: 仅增量任务重新设置指定位点
+        :type StartPosition: str
         """
         self._OpTypes = None
         self._DdlOptions = None
         self._ConflictHandleType = None
         self._ConflictHandleOption = None
+        self._KafkaOption = None
+        self._FilterBeginCommit = None
+        self._FilterCheckpoint = None
+        self._DealOfExistSameTable = None
+        self._StartPosition = None
 
     @property
     def OpTypes(self):
@@ -9244,6 +9274,61 @@ class DynamicOptions(AbstractModel):
     def ConflictHandleOption(self, ConflictHandleOption):
         self._ConflictHandleOption = ConflictHandleOption
 
+    @property
+    def KafkaOption(self):
+        """同步到kafka链路的kafka配置
+        :rtype: :class:`tencentcloud.dts.v20211206.models.KafkaOption`
+        """
+        return self._KafkaOption
+
+    @KafkaOption.setter
+    def KafkaOption(self, KafkaOption):
+        self._KafkaOption = KafkaOption
+
+    @property
+    def FilterBeginCommit(self):
+        """同步到kafka链路是否过滤掉begin和commit消息。目前仅mysql2kafka链路支持
+        :rtype: bool
+        """
+        return self._FilterBeginCommit
+
+    @FilterBeginCommit.setter
+    def FilterBeginCommit(self, FilterBeginCommit):
+        self._FilterBeginCommit = FilterBeginCommit
+
+    @property
+    def FilterCheckpoint(self):
+        """同步到kafka链路是否过滤掉checkpoint消息。目前仅mysql2kafka链路支持
+        :rtype: bool
+        """
+        return self._FilterCheckpoint
+
+    @FilterCheckpoint.setter
+    def FilterCheckpoint(self, FilterCheckpoint):
+        self._FilterCheckpoint = FilterCheckpoint
+
+    @property
+    def DealOfExistSameTable(self):
+        """同名表的处理，ReportErrorAfterCheck(前置校验并报错，默认)、ExecuteAfterIgnore(忽略并继续执行)
+        :rtype: str
+        """
+        return self._DealOfExistSameTable
+
+    @DealOfExistSameTable.setter
+    def DealOfExistSameTable(self, DealOfExistSameTable):
+        self._DealOfExistSameTable = DealOfExistSameTable
+
+    @property
+    def StartPosition(self):
+        """仅增量任务重新设置指定位点
+        :rtype: str
+        """
+        return self._StartPosition
+
+    @StartPosition.setter
+    def StartPosition(self, StartPosition):
+        self._StartPosition = StartPosition
+
 
     def _deserialize(self, params):
         self._OpTypes = params.get("OpTypes")
@@ -9257,6 +9342,13 @@ class DynamicOptions(AbstractModel):
         if params.get("ConflictHandleOption") is not None:
             self._ConflictHandleOption = ConflictHandleOption()
             self._ConflictHandleOption._deserialize(params.get("ConflictHandleOption"))
+        if params.get("KafkaOption") is not None:
+            self._KafkaOption = KafkaOption()
+            self._KafkaOption._deserialize(params.get("KafkaOption"))
+        self._FilterBeginCommit = params.get("FilterBeginCommit")
+        self._FilterCheckpoint = params.get("FilterCheckpoint")
+        self._DealOfExistSameTable = params.get("DealOfExistSameTable")
+        self._StartPosition = params.get("StartPosition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -2165,6 +2165,8 @@ class Apply(AbstractModel):
         :param _ApplyId: 审批id
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApplyId: str
+        :param _Metadata: 扩展字段
+        :type Metadata: str
         """
         self._ApplicantId = None
         self._ApplicantName = None
@@ -2184,6 +2186,7 @@ class Apply(AbstractModel):
         self._ApproverName = None
         self._ApproveProjectName = None
         self._ApplyId = None
+        self._Metadata = None
 
     @property
     def ApplicantId(self):
@@ -2391,6 +2394,17 @@ class Apply(AbstractModel):
     def ApplyId(self, ApplyId):
         self._ApplyId = ApplyId
 
+    @property
+    def Metadata(self):
+        """扩展字段
+        :rtype: str
+        """
+        return self._Metadata
+
+    @Metadata.setter
+    def Metadata(self, Metadata):
+        self._Metadata = Metadata
+
 
     def _deserialize(self, params):
         self._ApplicantId = params.get("ApplicantId")
@@ -2411,6 +2425,7 @@ class Apply(AbstractModel):
         self._ApproverName = params.get("ApproverName")
         self._ApproveProjectName = params.get("ApproveProjectName")
         self._ApplyId = params.get("ApplyId")
+        self._Metadata = params.get("Metadata")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

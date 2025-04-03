@@ -21410,6 +21410,10 @@ class TargetGroupInfo(AbstractModel):
         :param _AssociatedRule: 关联到的规则数组。在DescribeTargetGroupList接口调用时无法获取到该参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AssociatedRule: list of AssociationItem
+        :param _Protocol: 后端转发协议类型，支持类型TCP， UDP。仅V2新版目标组支持返回该参数。
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Protocol: str
         :param _TargetGroupType: 目标组类型，当前支持v1(旧版目标组), v2(新版目标组), gwlb(全局负载均衡目标组)。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TargetGroupType: str
@@ -21434,6 +21438,7 @@ class TargetGroupInfo(AbstractModel):
         self._CreatedTime = None
         self._UpdatedTime = None
         self._AssociatedRule = None
+        self._Protocol = None
         self._TargetGroupType = None
         self._AssociatedRuleCount = None
         self._RegisteredInstancesCount = None
@@ -21521,6 +21526,19 @@ class TargetGroupInfo(AbstractModel):
         self._AssociatedRule = AssociatedRule
 
     @property
+    def Protocol(self):
+        """后端转发协议类型，支持类型TCP， UDP。仅V2新版目标组支持返回该参数。
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
     def TargetGroupType(self):
         """目标组类型，当前支持v1(旧版目标组), v2(新版目标组), gwlb(全局负载均衡目标组)。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -21604,6 +21622,7 @@ class TargetGroupInfo(AbstractModel):
                 obj = AssociationItem()
                 obj._deserialize(item)
                 self._AssociatedRule.append(obj)
+        self._Protocol = params.get("Protocol")
         self._TargetGroupType = params.get("TargetGroupType")
         self._AssociatedRuleCount = params.get("AssociatedRuleCount")
         self._RegisteredInstancesCount = params.get("RegisteredInstancesCount")
