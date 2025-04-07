@@ -237,6 +237,8 @@ class AndroidInstance(AbstractModel):
         :type Name: str
         :param _UserId: 用户ID
         :type UserId: str
+        :param _PrivateIP: 内网 IP
+        :type PrivateIP: str
         """
         self._AndroidInstanceId = None
         self._AndroidInstanceRegion = None
@@ -251,6 +253,7 @@ class AndroidInstance(AbstractModel):
         self._AndroidInstanceLabels = None
         self._Name = None
         self._UserId = None
+        self._PrivateIP = None
 
     @property
     def AndroidInstanceId(self):
@@ -395,6 +398,17 @@ class AndroidInstance(AbstractModel):
     def UserId(self, UserId):
         self._UserId = UserId
 
+    @property
+    def PrivateIP(self):
+        """内网 IP
+        :rtype: str
+        """
+        return self._PrivateIP
+
+    @PrivateIP.setter
+    def PrivateIP(self, PrivateIP):
+        self._PrivateIP = PrivateIP
+
 
     def _deserialize(self, params):
         self._AndroidInstanceId = params.get("AndroidInstanceId")
@@ -415,6 +429,7 @@ class AndroidInstance(AbstractModel):
                 self._AndroidInstanceLabels.append(obj)
         self._Name = params.get("Name")
         self._UserId = params.get("UserId")
+        self._PrivateIP = params.get("PrivateIP")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -835,6 +850,230 @@ class AndroidInstanceTaskStatus(AbstractModel):
         self._TaskType = params.get("TaskType")
         self._CreateTime = params.get("CreateTime")
         self._CompleteTime = params.get("CompleteTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BackUpAndroidInstanceToStorageRequest(AbstractModel):
+    """BackUpAndroidInstanceToStorage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AndroidInstanceId: 安卓实例ID
+        :type AndroidInstanceId: str
+        :param _StorageType: 存储服务器类型，如 COS、S3。注意：使用 COS 和 S3 都将占用外网带宽。
+        :type StorageType: str
+        :param _ObjectKey: 自定义对象Key
+        :type ObjectKey: str
+        :param _Includes: 包含的路径，支持仅含一个通配符*，通配符不能出现在路径开始
+        :type Includes: list of str
+        :param _Excludes: 需要排除路径，支持仅含一个通配符*，通配符不能出现在路径开始
+        :type Excludes: list of str
+        :param _COSOptions: COS协议选项
+        :type COSOptions: :class:`tencentcloud.gs.v20191118.models.COSOptions`
+        :param _S3Options: S3存储协议选项
+        :type S3Options: :class:`tencentcloud.gs.v20191118.models.S3Options`
+        """
+        self._AndroidInstanceId = None
+        self._StorageType = None
+        self._ObjectKey = None
+        self._Includes = None
+        self._Excludes = None
+        self._COSOptions = None
+        self._S3Options = None
+
+    @property
+    def AndroidInstanceId(self):
+        """安卓实例ID
+        :rtype: str
+        """
+        return self._AndroidInstanceId
+
+    @AndroidInstanceId.setter
+    def AndroidInstanceId(self, AndroidInstanceId):
+        self._AndroidInstanceId = AndroidInstanceId
+
+    @property
+    def StorageType(self):
+        """存储服务器类型，如 COS、S3。注意：使用 COS 和 S3 都将占用外网带宽。
+        :rtype: str
+        """
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
+
+    @property
+    def ObjectKey(self):
+        """自定义对象Key
+        :rtype: str
+        """
+        return self._ObjectKey
+
+    @ObjectKey.setter
+    def ObjectKey(self, ObjectKey):
+        self._ObjectKey = ObjectKey
+
+    @property
+    def Includes(self):
+        """包含的路径，支持仅含一个通配符*，通配符不能出现在路径开始
+        :rtype: list of str
+        """
+        return self._Includes
+
+    @Includes.setter
+    def Includes(self, Includes):
+        self._Includes = Includes
+
+    @property
+    def Excludes(self):
+        """需要排除路径，支持仅含一个通配符*，通配符不能出现在路径开始
+        :rtype: list of str
+        """
+        return self._Excludes
+
+    @Excludes.setter
+    def Excludes(self, Excludes):
+        self._Excludes = Excludes
+
+    @property
+    def COSOptions(self):
+        """COS协议选项
+        :rtype: :class:`tencentcloud.gs.v20191118.models.COSOptions`
+        """
+        return self._COSOptions
+
+    @COSOptions.setter
+    def COSOptions(self, COSOptions):
+        self._COSOptions = COSOptions
+
+    @property
+    def S3Options(self):
+        """S3存储协议选项
+        :rtype: :class:`tencentcloud.gs.v20191118.models.S3Options`
+        """
+        return self._S3Options
+
+    @S3Options.setter
+    def S3Options(self, S3Options):
+        self._S3Options = S3Options
+
+
+    def _deserialize(self, params):
+        self._AndroidInstanceId = params.get("AndroidInstanceId")
+        self._StorageType = params.get("StorageType")
+        self._ObjectKey = params.get("ObjectKey")
+        self._Includes = params.get("Includes")
+        self._Excludes = params.get("Excludes")
+        if params.get("COSOptions") is not None:
+            self._COSOptions = COSOptions()
+            self._COSOptions._deserialize(params.get("COSOptions"))
+        if params.get("S3Options") is not None:
+            self._S3Options = S3Options()
+            self._S3Options._deserialize(params.get("S3Options"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BackUpAndroidInstanceToStorageResponse(AbstractModel):
+    """BackUpAndroidInstanceToStorage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 实例任务 ID
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        """实例任务 ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class COSOptions(AbstractModel):
+    """COS协议参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Bucket: 存储桶
+        :type Bucket: str
+        :param _Region: 存储区域
+        :type Region: str
+        """
+        self._Bucket = None
+        self._Region = None
+
+    @property
+    def Bucket(self):
+        """存储桶
+        :rtype: str
+        """
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def Region(self):
+        """存储区域
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+
+    def _deserialize(self, params):
+        self._Bucket = params.get("Bucket")
+        self._Region = params.get("Region")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4351,6 +4590,230 @@ class RestartAndroidInstancesAppResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class RestoreAndroidInstanceFromStorageRequest(AbstractModel):
+    """RestoreAndroidInstanceFromStorage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AndroidInstanceId: 安卓实例ID
+        :type AndroidInstanceId: str
+        :param _ObjectKey: 自定义备份对象Key
+        :type ObjectKey: str
+        :param _StorageType: 存储服务器类型，如 COS、S3。注意：使用 COS 和 S3 都将占用外网带宽。
+        :type StorageType: str
+        :param _COSOptions: COS协议选项
+        :type COSOptions: :class:`tencentcloud.gs.v20191118.models.COSOptions`
+        :param _S3Options: S3存储协议选项
+        :type S3Options: :class:`tencentcloud.gs.v20191118.models.S3Options`
+        """
+        self._AndroidInstanceId = None
+        self._ObjectKey = None
+        self._StorageType = None
+        self._COSOptions = None
+        self._S3Options = None
+
+    @property
+    def AndroidInstanceId(self):
+        """安卓实例ID
+        :rtype: str
+        """
+        return self._AndroidInstanceId
+
+    @AndroidInstanceId.setter
+    def AndroidInstanceId(self, AndroidInstanceId):
+        self._AndroidInstanceId = AndroidInstanceId
+
+    @property
+    def ObjectKey(self):
+        """自定义备份对象Key
+        :rtype: str
+        """
+        return self._ObjectKey
+
+    @ObjectKey.setter
+    def ObjectKey(self, ObjectKey):
+        self._ObjectKey = ObjectKey
+
+    @property
+    def StorageType(self):
+        """存储服务器类型，如 COS、S3。注意：使用 COS 和 S3 都将占用外网带宽。
+        :rtype: str
+        """
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
+
+    @property
+    def COSOptions(self):
+        """COS协议选项
+        :rtype: :class:`tencentcloud.gs.v20191118.models.COSOptions`
+        """
+        return self._COSOptions
+
+    @COSOptions.setter
+    def COSOptions(self, COSOptions):
+        self._COSOptions = COSOptions
+
+    @property
+    def S3Options(self):
+        """S3存储协议选项
+        :rtype: :class:`tencentcloud.gs.v20191118.models.S3Options`
+        """
+        return self._S3Options
+
+    @S3Options.setter
+    def S3Options(self, S3Options):
+        self._S3Options = S3Options
+
+
+    def _deserialize(self, params):
+        self._AndroidInstanceId = params.get("AndroidInstanceId")
+        self._ObjectKey = params.get("ObjectKey")
+        self._StorageType = params.get("StorageType")
+        if params.get("COSOptions") is not None:
+            self._COSOptions = COSOptions()
+            self._COSOptions._deserialize(params.get("COSOptions"))
+        if params.get("S3Options") is not None:
+            self._S3Options = S3Options()
+            self._S3Options._deserialize(params.get("S3Options"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RestoreAndroidInstanceFromStorageResponse(AbstractModel):
+    """RestoreAndroidInstanceFromStorage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 实例任务 ID
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        """实例任务 ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class S3Options(AbstractModel):
+    """S3协议参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EndPoint: 存储节点
+        :type EndPoint: str
+        :param _Bucket: 存储桶
+        :type Bucket: str
+        :param _AccessKeyId: 密钥 ID
+        :type AccessKeyId: str
+        :param _SecretAccessKey: 密钥 Key
+        :type SecretAccessKey: str
+        """
+        self._EndPoint = None
+        self._Bucket = None
+        self._AccessKeyId = None
+        self._SecretAccessKey = None
+
+    @property
+    def EndPoint(self):
+        """存储节点
+        :rtype: str
+        """
+        return self._EndPoint
+
+    @EndPoint.setter
+    def EndPoint(self, EndPoint):
+        self._EndPoint = EndPoint
+
+    @property
+    def Bucket(self):
+        """存储桶
+        :rtype: str
+        """
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def AccessKeyId(self):
+        """密钥 ID
+        :rtype: str
+        """
+        return self._AccessKeyId
+
+    @AccessKeyId.setter
+    def AccessKeyId(self, AccessKeyId):
+        self._AccessKeyId = AccessKeyId
+
+    @property
+    def SecretAccessKey(self):
+        """密钥 Key
+        :rtype: str
+        """
+        return self._SecretAccessKey
+
+    @SecretAccessKey.setter
+    def SecretAccessKey(self, SecretAccessKey):
+        self._SecretAccessKey = SecretAccessKey
+
+
+    def _deserialize(self, params):
+        self._EndPoint = params.get("EndPoint")
+        self._Bucket = params.get("Bucket")
+        self._AccessKeyId = params.get("AccessKeyId")
+        self._SecretAccessKey = params.get("SecretAccessKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SaveGameArchiveRequest(AbstractModel):

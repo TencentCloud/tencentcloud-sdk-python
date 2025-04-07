@@ -164,31 +164,6 @@ class MnaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CreateQos(self, request):
-        """产品下线
-
-        移动网络发起Qos加速过程
-
-        :param request: Request instance for CreateQos.
-        :type request: :class:`tencentcloud.mna.v20210119.models.CreateQosRequest`
-        :rtype: :class:`tencentcloud.mna.v20210119.models.CreateQosResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateQos", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateQosResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DeleteDevice(self, request):
         """删除设备信息
 
@@ -249,56 +224,6 @@ class MnaClient(AbstractClient):
             body = self.call("DeleteL3Conn", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteL3ConnResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DeleteQos(self, request):
-        """产品下线
-
-        移动网络停止Qos加速过程
-
-        :param request: Request instance for DeleteQos.
-        :type request: :class:`tencentcloud.mna.v20210119.models.DeleteQosRequest`
-        :rtype: :class:`tencentcloud.mna.v20210119.models.DeleteQosResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeleteQos", params, headers=headers)
-            response = json.loads(body)
-            model = models.DeleteQosResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeQos(self, request):
-        """产品下线
-
-        获取Qos加速状态
-
-        :param request: Request instance for DescribeQos.
-        :type request: :class:`tencentcloud.mna.v20210119.models.DescribeQosRequest`
-        :rtype: :class:`tencentcloud.mna.v20210119.models.DescribeQosResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeQos", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeQosResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

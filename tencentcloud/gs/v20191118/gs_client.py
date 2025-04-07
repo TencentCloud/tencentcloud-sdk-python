@@ -26,6 +26,29 @@ class GsClient(AbstractClient):
     _service = 'gs'
 
 
+    def BackUpAndroidInstanceToStorage(self, request):
+        """备份云手机到指定存储
+
+        :param request: Request instance for BackUpAndroidInstanceToStorage.
+        :type request: :class:`tencentcloud.gs.v20191118.models.BackUpAndroidInstanceToStorageRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.BackUpAndroidInstanceToStorageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BackUpAndroidInstanceToStorage", params, headers=headers)
+            response = json.loads(body)
+            model = models.BackUpAndroidInstanceToStorageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ConnectAndroidInstance(self, request):
         """连接安卓实例
 
@@ -665,6 +688,29 @@ class GsClient(AbstractClient):
             body = self.call("RestartAndroidInstancesApp", params, headers=headers)
             response = json.loads(body)
             model = models.RestartAndroidInstancesAppResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RestoreAndroidInstanceFromStorage(self, request):
+        """指定存储还原云手机
+
+        :param request: Request instance for RestoreAndroidInstanceFromStorage.
+        :type request: :class:`tencentcloud.gs.v20191118.models.RestoreAndroidInstanceFromStorageRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.RestoreAndroidInstanceFromStorageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RestoreAndroidInstanceFromStorage", params, headers=headers)
+            response = json.loads(body)
+            model = models.RestoreAndroidInstanceFromStorageResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

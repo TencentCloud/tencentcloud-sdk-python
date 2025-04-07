@@ -2256,6 +2256,70 @@ class EmbeddingObject(AbstractModel):
         
 
 
+class GetCharacterUsageRequest(AbstractModel):
+    """GetCharacterUsage请求参数结构体
+
+    """
+
+
+class GetCharacterUsageResponse(AbstractModel):
+    """GetCharacterUsage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Used: 已用字符数
+        :type Used: int
+        :param _Total: 可用字符数
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Used = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Used(self):
+        """已用字符数
+        :rtype: int
+        """
+        return self._Used
+
+    @Used.setter
+    def Used(self, Used):
+        self._Used = Used
+
+    @property
+    def Total(self):
+        """可用字符数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Used = params.get("Used")
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
 class GetEmbeddingRequest(AbstractModel):
     """GetEmbedding请求参数结构体
 

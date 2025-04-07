@@ -18572,15 +18572,15 @@ class GroupTriggerConditionInfo(AbstractModel):
 
 
 class HighLightItem(AbstractModel):
-    """日志内容高亮描述信息
+    """符合检索条件的关键词，一般用于高亮显示。仅支持键值检索，不支持全文检索
 
     """
 
     def __init__(self):
         r"""
-        :param _Key: 高亮的日志Key
+        :param _Key: 高亮的日志字段名称
         :type Key: str
-        :param _Values: 高亮的语法
+        :param _Values: 高亮的关键词
         :type Values: list of str
         """
         self._Key = None
@@ -18588,7 +18588,7 @@ class HighLightItem(AbstractModel):
 
     @property
     def Key(self):
-        """高亮的日志Key
+        """高亮的日志字段名称
         :rtype: str
         """
         return self._Key
@@ -18599,7 +18599,7 @@ class HighLightItem(AbstractModel):
 
     @property
     def Values(self):
-        """高亮的语法
+        """高亮的关键词
         :rtype: list of str
         """
         return self._Values
@@ -19601,6 +19601,8 @@ class LogInfo(AbstractModel):
         :type PkgId: str
         :param _PkgLogId: 请求包内日志的ID
         :type PkgLogId: str
+        :param _HighLights: 符合检索条件的关键词，一般用于高亮显示。仅支持键值检索，不支持全文检索	
+        :type HighLights: list of HighLightItem
         :param _LogJson: 日志内容的Json序列化字符串
         :type LogJson: str
         :param _HostName: 日志来源主机名称
@@ -19617,6 +19619,7 @@ class LogInfo(AbstractModel):
         self._FileName = None
         self._PkgId = None
         self._PkgLogId = None
+        self._HighLights = None
         self._LogJson = None
         self._HostName = None
         self._RawLog = None
@@ -19700,6 +19703,17 @@ class LogInfo(AbstractModel):
         self._PkgLogId = PkgLogId
 
     @property
+    def HighLights(self):
+        """符合检索条件的关键词，一般用于高亮显示。仅支持键值检索，不支持全文检索	
+        :rtype: list of HighLightItem
+        """
+        return self._HighLights
+
+    @HighLights.setter
+    def HighLights(self, HighLights):
+        self._HighLights = HighLights
+
+    @property
     def LogJson(self):
         """日志内容的Json序列化字符串
         :rtype: str
@@ -19752,6 +19766,12 @@ class LogInfo(AbstractModel):
         self._FileName = params.get("FileName")
         self._PkgId = params.get("PkgId")
         self._PkgLogId = params.get("PkgLogId")
+        if params.get("HighLights") is not None:
+            self._HighLights = []
+            for item in params.get("HighLights"):
+                obj = HighLightItem()
+                obj._deserialize(item)
+                self._HighLights.append(obj)
         self._LogJson = params.get("LogJson")
         self._HostName = params.get("HostName")
         self._RawLog = params.get("RawLog")
@@ -28162,6 +28182,8 @@ class SearchLogRequest(AbstractModel):
 为false时代表使用老的检索结果返回方式, 输出AnalysisResults和ColNames有效
 两种返回方式在编码格式上有少量区别，建议使用true
         :type UseNewAnalysis: bool
+        :param _HighLight: 是否高亮符合检索条件的关键词，一般用于高亮显示。仅支持键值检索，不支持全文检索
+        :type HighLight: bool
         """
         self._From = None
         self._To = None
@@ -28175,6 +28197,7 @@ class SearchLogRequest(AbstractModel):
         self._Context = None
         self._SamplingRate = None
         self._UseNewAnalysis = None
+        self._HighLight = None
 
     @property
     def From(self):
@@ -28344,6 +28367,17 @@ class SearchLogRequest(AbstractModel):
     def UseNewAnalysis(self, UseNewAnalysis):
         self._UseNewAnalysis = UseNewAnalysis
 
+    @property
+    def HighLight(self):
+        """是否高亮符合检索条件的关键词，一般用于高亮显示。仅支持键值检索，不支持全文检索
+        :rtype: bool
+        """
+        return self._HighLight
+
+    @HighLight.setter
+    def HighLight(self, HighLight):
+        self._HighLight = HighLight
+
 
     def _deserialize(self, params):
         self._From = params.get("From")
@@ -28363,6 +28397,7 @@ class SearchLogRequest(AbstractModel):
         self._Context = params.get("Context")
         self._SamplingRate = params.get("SamplingRate")
         self._UseNewAnalysis = params.get("UseNewAnalysis")
+        self._HighLight = params.get("HighLight")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
