@@ -12233,6 +12233,8 @@ class IDCardInfoResult(AbstractModel):
         :type ImageUrl: str
         :param _PortraitUrl: 身份证头像照片的地址（人像面）
         :type PortraitUrl: str
+        :param _IntErrorCode: 整型错误码
+        :type IntErrorCode: int
         """
         self._WarnCodes = None
         self._Address = None
@@ -12248,6 +12250,7 @@ class IDCardInfoResult(AbstractModel):
         self._ErrorMessage = None
         self._ImageUrl = None
         self._PortraitUrl = None
+        self._IntErrorCode = None
 
     @property
     def WarnCodes(self):
@@ -12415,6 +12418,17 @@ class IDCardInfoResult(AbstractModel):
     def PortraitUrl(self, PortraitUrl):
         self._PortraitUrl = PortraitUrl
 
+    @property
+    def IntErrorCode(self):
+        """整型错误码
+        :rtype: int
+        """
+        return self._IntErrorCode
+
+    @IntErrorCode.setter
+    def IntErrorCode(self, IntErrorCode):
+        self._IntErrorCode = IntErrorCode
+
 
     def _deserialize(self, params):
         self._WarnCodes = params.get("WarnCodes")
@@ -12431,6 +12445,7 @@ class IDCardInfoResult(AbstractModel):
         self._ErrorMessage = params.get("ErrorMessage")
         self._ImageUrl = params.get("ImageUrl")
         self._PortraitUrl = params.get("PortraitUrl")
+        self._IntErrorCode = params.get("IntErrorCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

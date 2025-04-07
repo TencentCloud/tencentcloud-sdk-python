@@ -904,6 +904,29 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCfwInsStatus(self, request):
+        """cfw实例运行状态查询
+
+        :param request: Request instance for DescribeCfwInsStatus.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeCfwInsStatusRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeCfwInsStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCfwInsStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCfwInsStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDefenseSwitch(self, request):
         """获取入侵防御按钮列表
 

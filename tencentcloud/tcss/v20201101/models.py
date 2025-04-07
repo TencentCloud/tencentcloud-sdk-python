@@ -6448,7 +6448,10 @@ class ClusterInfoItem(AbstractModel):
         :type ClusterNodeNum: int
         :param _Region: 集群区域
         :type Region: str
-        :param _DefenderStatus: 防护状态: 已防护: Defended 未防护: UnDefended
+        :param _DefenderStatus: 防护状态: 
+已防护: Defended 
+未防护: UnDefended
+部分防护: PartDefened
         :type DefenderStatus: str
         :param _ClusterStatus: 集群状态
         :type ClusterStatus: str
@@ -6617,7 +6620,10 @@ class ClusterInfoItem(AbstractModel):
 
     @property
     def DefenderStatus(self):
-        """防护状态: 已防护: Defended 未防护: UnDefended
+        """防护状态: 
+已防护: Defended 
+未防护: UnDefended
+部分防护: PartDefened
         :rtype: str
         """
         return self._DefenderStatus

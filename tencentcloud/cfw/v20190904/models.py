@@ -1731,6 +1731,159 @@ class BlockIgnoreRule(AbstractModel):
         
 
 
+class CfwInsStatus(AbstractModel):
+    """防火墙实例运行状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CfwInsId: 防火墙实例id
+        :type CfwInsId: str
+        :param _FwType: 防火墙类型，nat：nat防火墙；ew：vpc间防火墙
+        :type FwType: str
+        :param _Region: 实例所属地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param _Status: 实例运行状态，Running：正常运行；BypassAutoFix：bypass修复；Updating：升级中；Expand：扩容中；BypassManual：手动触发bypass中；BypassAuto：自动触发bypass中
+        :type Status: str
+        :param _EventTime: 事件时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventTime: str
+        :param _RecoverTime: 恢复时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecoverTime: str
+        :param _CfwInsName: 实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CfwInsName: str
+        :param _TrafficMode: Normal: 正常模式
+OnlyRoute: 透明模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TrafficMode: str
+        """
+        self._CfwInsId = None
+        self._FwType = None
+        self._Region = None
+        self._Status = None
+        self._EventTime = None
+        self._RecoverTime = None
+        self._CfwInsName = None
+        self._TrafficMode = None
+
+    @property
+    def CfwInsId(self):
+        """防火墙实例id
+        :rtype: str
+        """
+        return self._CfwInsId
+
+    @CfwInsId.setter
+    def CfwInsId(self, CfwInsId):
+        self._CfwInsId = CfwInsId
+
+    @property
+    def FwType(self):
+        """防火墙类型，nat：nat防火墙；ew：vpc间防火墙
+        :rtype: str
+        """
+        return self._FwType
+
+    @FwType.setter
+    def FwType(self, FwType):
+        self._FwType = FwType
+
+    @property
+    def Region(self):
+        """实例所属地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Status(self):
+        """实例运行状态，Running：正常运行；BypassAutoFix：bypass修复；Updating：升级中；Expand：扩容中；BypassManual：手动触发bypass中；BypassAuto：自动触发bypass中
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def EventTime(self):
+        """事件时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EventTime
+
+    @EventTime.setter
+    def EventTime(self, EventTime):
+        self._EventTime = EventTime
+
+    @property
+    def RecoverTime(self):
+        """恢复时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RecoverTime
+
+    @RecoverTime.setter
+    def RecoverTime(self, RecoverTime):
+        self._RecoverTime = RecoverTime
+
+    @property
+    def CfwInsName(self):
+        """实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CfwInsName
+
+    @CfwInsName.setter
+    def CfwInsName(self, CfwInsName):
+        self._CfwInsName = CfwInsName
+
+    @property
+    def TrafficMode(self):
+        """Normal: 正常模式
+OnlyRoute: 透明模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TrafficMode
+
+    @TrafficMode.setter
+    def TrafficMode(self, TrafficMode):
+        self._TrafficMode = TrafficMode
+
+
+    def _deserialize(self, params):
+        self._CfwInsId = params.get("CfwInsId")
+        self._FwType = params.get("FwType")
+        self._Region = params.get("Region")
+        self._Status = params.get("Status")
+        self._EventTime = params.get("EventTime")
+        self._RecoverTime = params.get("RecoverTime")
+        self._CfwInsName = params.get("CfwInsName")
+        self._TrafficMode = params.get("TrafficMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CfwNatDnatRule(AbstractModel):
     """NAT防火墙Dnat规则
 
@@ -8687,6 +8840,77 @@ class DescribeCfwEipsResponse(AbstractModel):
                 obj = NatFwEipsInfo()
                 obj._deserialize(item)
                 self._NatFwEipList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCfwInsStatusRequest(AbstractModel):
+    """DescribeCfwInsStatus请求参数结构体
+
+    """
+
+
+class DescribeCfwInsStatusResponse(AbstractModel):
+    """DescribeCfwInsStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CfwInsStatus: 防火墙实例运行状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CfwInsStatus: list of CfwInsStatus
+        :param _TotalCount: 0
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CfwInsStatus = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def CfwInsStatus(self):
+        """防火墙实例运行状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CfwInsStatus
+        """
+        return self._CfwInsStatus
+
+    @CfwInsStatus.setter
+    def CfwInsStatus(self, CfwInsStatus):
+        self._CfwInsStatus = CfwInsStatus
+
+    @property
+    def TotalCount(self):
+        """0
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CfwInsStatus") is not None:
+            self._CfwInsStatus = []
+            for item in params.get("CfwInsStatus"):
+                obj = CfwInsStatus()
+                obj._deserialize(item)
+                self._CfwInsStatus.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 

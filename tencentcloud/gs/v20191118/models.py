@@ -734,11 +734,20 @@ class AndroidInstanceTaskStatus(AbstractModel):
         :type AndroidInstanceId: str
         :param _TaskResult: 任务执行结果描述，针对某些任务，可以是可解析的 json
         :type TaskResult: str
+        :param _TaskType: 任务类型
+        :type TaskType: str
+        :param _CreateTime: 任务创建时间
+        :type CreateTime: str
+        :param _CompleteTime: 任务完成时间
+        :type CompleteTime: str
         """
         self._TaskId = None
         self._Status = None
         self._AndroidInstanceId = None
         self._TaskResult = None
+        self._TaskType = None
+        self._CreateTime = None
+        self._CompleteTime = None
 
     @property
     def TaskId(self):
@@ -784,12 +793,48 @@ class AndroidInstanceTaskStatus(AbstractModel):
     def TaskResult(self, TaskResult):
         self._TaskResult = TaskResult
 
+    @property
+    def TaskType(self):
+        """任务类型
+        :rtype: str
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def CreateTime(self):
+        """任务创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def CompleteTime(self):
+        """任务完成时间
+        :rtype: str
+        """
+        return self._CompleteTime
+
+    @CompleteTime.setter
+    def CompleteTime(self, CompleteTime):
+        self._CompleteTime = CompleteTime
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
         self._Status = params.get("Status")
         self._AndroidInstanceId = params.get("AndroidInstanceId")
         self._TaskResult = params.get("TaskResult")
+        self._TaskType = params.get("TaskType")
+        self._CreateTime = params.get("CreateTime")
+        self._CompleteTime = params.get("CompleteTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2738,14 +2783,23 @@ class DescribeAndroidInstanceTasksStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskIds: 任务ID列表
+        :param _TaskIds: 任务 ID 列表
         :type TaskIds: list of str
+        :param _Filter: 条件过滤器
+        :type Filter: list of Filter
+        :param _Offset: 偏移量，默认为 0
+        :type Offset: int
+        :param _Limit: 限制量，默认为20，最大值为100
+        :type Limit: int
         """
         self._TaskIds = None
+        self._Filter = None
+        self._Offset = None
+        self._Limit = None
 
     @property
     def TaskIds(self):
-        """任务ID列表
+        """任务 ID 列表
         :rtype: list of str
         """
         return self._TaskIds
@@ -2754,9 +2808,50 @@ class DescribeAndroidInstanceTasksStatusRequest(AbstractModel):
     def TaskIds(self, TaskIds):
         self._TaskIds = TaskIds
 
+    @property
+    def Filter(self):
+        """条件过滤器
+        :rtype: list of Filter
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+    @property
+    def Offset(self):
+        """偏移量，默认为 0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """限制量，默认为20，最大值为100
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
 
     def _deserialize(self, params):
         self._TaskIds = params.get("TaskIds")
+        if params.get("Filter") is not None:
+            self._Filter = []
+            for item in params.get("Filter"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filter.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2776,10 +2871,13 @@ class DescribeAndroidInstanceTasksStatusResponse(AbstractModel):
         r"""
         :param _TaskStatusSet: 任务状态集合
         :type TaskStatusSet: list of AndroidInstanceTaskStatus
+        :param _Total: 任务总数量
+        :type Total: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskStatusSet = None
+        self._Total = None
         self._RequestId = None
 
     @property
@@ -2792,6 +2890,17 @@ class DescribeAndroidInstanceTasksStatusResponse(AbstractModel):
     @TaskStatusSet.setter
     def TaskStatusSet(self, TaskStatusSet):
         self._TaskStatusSet = TaskStatusSet
+
+    @property
+    def Total(self):
+        """任务总数量
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
 
     @property
     def RequestId(self):
@@ -2812,6 +2921,7 @@ class DescribeAndroidInstanceTasksStatusResponse(AbstractModel):
                 obj = AndroidInstanceTaskStatus()
                 obj._deserialize(item)
                 self._TaskStatusSet.append(obj)
+        self._Total = params.get("Total")
         self._RequestId = params.get("RequestId")
 
 
