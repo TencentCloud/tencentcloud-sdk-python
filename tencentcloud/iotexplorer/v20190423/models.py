@@ -2868,6 +2868,119 @@ pushResult 是表示发送结果，其中 0 表示成功， 23101 表示设备�
         self._RequestId = params.get("RequestId")
 
 
+class CountDataInfo(AbstractModel):
+    """云存上报统计信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VideoExceptionNum: 视频上报异常次数
+        :type VideoExceptionNum: int
+        :param _VideoSuccessNum: 视频上报成功次数
+        :type VideoSuccessNum: int
+        :param _VideoSuccessRate: 视频上报成功率
+
+        :type VideoSuccessRate: str
+        :param _EventExceptionNum: 事件上报异常次数
+        :type EventExceptionNum: int
+        :param _EventSuccessNum: 事件上报成功次数
+        :type EventSuccessNum: int
+        :param _EventSuccessRate: 事件上报成功率
+        :type EventSuccessRate: str
+        """
+        self._VideoExceptionNum = None
+        self._VideoSuccessNum = None
+        self._VideoSuccessRate = None
+        self._EventExceptionNum = None
+        self._EventSuccessNum = None
+        self._EventSuccessRate = None
+
+    @property
+    def VideoExceptionNum(self):
+        """视频上报异常次数
+        :rtype: int
+        """
+        return self._VideoExceptionNum
+
+    @VideoExceptionNum.setter
+    def VideoExceptionNum(self, VideoExceptionNum):
+        self._VideoExceptionNum = VideoExceptionNum
+
+    @property
+    def VideoSuccessNum(self):
+        """视频上报成功次数
+        :rtype: int
+        """
+        return self._VideoSuccessNum
+
+    @VideoSuccessNum.setter
+    def VideoSuccessNum(self, VideoSuccessNum):
+        self._VideoSuccessNum = VideoSuccessNum
+
+    @property
+    def VideoSuccessRate(self):
+        """视频上报成功率
+
+        :rtype: str
+        """
+        return self._VideoSuccessRate
+
+    @VideoSuccessRate.setter
+    def VideoSuccessRate(self, VideoSuccessRate):
+        self._VideoSuccessRate = VideoSuccessRate
+
+    @property
+    def EventExceptionNum(self):
+        """事件上报异常次数
+        :rtype: int
+        """
+        return self._EventExceptionNum
+
+    @EventExceptionNum.setter
+    def EventExceptionNum(self, EventExceptionNum):
+        self._EventExceptionNum = EventExceptionNum
+
+    @property
+    def EventSuccessNum(self):
+        """事件上报成功次数
+        :rtype: int
+        """
+        return self._EventSuccessNum
+
+    @EventSuccessNum.setter
+    def EventSuccessNum(self, EventSuccessNum):
+        self._EventSuccessNum = EventSuccessNum
+
+    @property
+    def EventSuccessRate(self):
+        """事件上报成功率
+        :rtype: str
+        """
+        return self._EventSuccessRate
+
+    @EventSuccessRate.setter
+    def EventSuccessRate(self, EventSuccessRate):
+        self._EventSuccessRate = EventSuccessRate
+
+
+    def _deserialize(self, params):
+        self._VideoExceptionNum = params.get("VideoExceptionNum")
+        self._VideoSuccessNum = params.get("VideoSuccessNum")
+        self._VideoSuccessRate = params.get("VideoSuccessRate")
+        self._EventExceptionNum = params.get("EventExceptionNum")
+        self._EventSuccessNum = params.get("EventSuccessNum")
+        self._EventSuccessRate = params.get("EventSuccessRate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateBatchProductionRequest(AbstractModel):
     """CreateBatchProduction请求参数结构体
 
@@ -9911,6 +10024,147 @@ class DescribeCloudStorageUsersResponse(AbstractModel):
                 obj = CloudStorageUserInfo()
                 obj._deserialize(item)
                 self._Users.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCsReportCountDataInfoRequest(AbstractModel):
+    """DescribeCsReportCountDataInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品id
+        :type ProductId: str
+        :param _DeviceName: 设备名
+        :type DeviceName: str
+        :param _StartTime: 统计开始时间戳
+        :type StartTime: int
+        :param _EndTime: 统计结束时间戳
+        :type EndTime: int
+        :param _ChannelId: 设备通道
+        :type ChannelId: int
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._StartTime = None
+        self._EndTime = None
+        self._ChannelId = None
+
+    @property
+    def ProductId(self):
+        """产品id
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        """设备名
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def StartTime(self):
+        """统计开始时间戳
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """统计结束时间戳
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ChannelId(self):
+        """设备通道
+        :rtype: int
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._ChannelId = params.get("ChannelId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCsReportCountDataInfoResponse(AbstractModel):
+    """DescribeCsReportCountDataInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 云存上报统计信息
+        :type Data: :class:`tencentcloud.iotexplorer.v20190423.models.CountDataInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """云存上报统计信息
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.CountDataInfo`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = CountDataInfo()
+            self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 
 

@@ -12177,81 +12177,59 @@ class DomainRuleSet(AbstractModel):
         :param _RuleSet: 该域名对应的转发规则列表。
         :type RuleSet: list of RuleInfo
         :param _CertificateId: 该域名对应的服务器证书ID，值为default时，表示使用默认证书（监听器配置的证书）。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CertificateId: str
         :param _CertificateAlias: 该域名对应服务器证书名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CertificateAlias: str
         :param _ClientCertificateId: 该域名对应的客户端证书ID，值为default时，表示使用默认证书（监听器配置的证书）。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClientCertificateId: str
         :param _ClientCertificateAlias: 该域名对应客户端证书名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClientCertificateAlias: str
         :param _BasicAuthConfId: 该域名对应基础认证配置ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type BasicAuthConfId: str
         :param _BasicAuth: 基础认证开关，其中：
 0，表示未开启；
 1，表示已开启。
-注意：此字段可能返回 null，表示取不到有效值。
         :type BasicAuth: int
         :param _BasicAuthConfAlias: 该域名对应基础认证配置名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type BasicAuthConfAlias: str
         :param _RealServerCertificateId: 该域名对应源站认证证书ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RealServerCertificateId: str
         :param _RealServerAuth: 源站认证开关，其中：
 0，表示未开启；
 1，表示已开启。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RealServerAuth: int
         :param _RealServerCertificateAlias: 该域名对应源站认证证书名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RealServerCertificateAlias: str
         :param _GaapCertificateId: 该域名对应通道认证证书ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type GaapCertificateId: str
         :param _GaapAuth: 通道认证开关，其中：
 0，表示未开启；
 1，表示已开启。
-注意：此字段可能返回 null，表示取不到有效值。
         :type GaapAuth: int
         :param _GaapCertificateAlias: 该域名对应通道认证证书名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type GaapCertificateAlias: str
         :param _RealServerCertificateDomain: 源站认证域名。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RealServerCertificateDomain: str
         :param _PolyClientCertificateAliasInfo: 多客户端证书时，返回多个证书的id和别名
-注意：此字段可能返回 null，表示取不到有效值。
         :type PolyClientCertificateAliasInfo: list of CertificateAliasInfo
         :param _PolyRealServerCertificateAliasInfo: 多源站证书时，返回多个证书的id和别名
-注意：此字段可能返回 null，表示取不到有效值。
         :type PolyRealServerCertificateAliasInfo: list of CertificateAliasInfo
         :param _DomainStatus: 域名的状态。
 0表示运行中，
 1表示变更中，
 2表示删除中。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DomainStatus: int
         :param _BanStatus: 封禁解封状态：BANNED表示已封禁，RECOVER表示已解封或未封禁，BANNING表示封禁中，RECOVERING表示解封中，BAN_FAILED表示封禁失败，RECOVER_FAILED表示解封失败。
-注意：此字段可能返回 null，表示取不到有效值。
         :type BanStatus: str
         :param _Http3Supported: Http3特性标识，其中：
 0表示关闭；
 1表示启用。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Http3Supported: int
         :param _IsDefaultServer: 是否为默认域名
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsDefaultServer: bool
         :param _TLSCiphers: TLS套件包
-注意：此字段可能返回 null，表示取不到有效值。
         :type TLSCiphers: str
         :param _TLSSupportVersion: TLS版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type TLSSupportVersion: list of str
         """
         self._Domain = None
@@ -12304,7 +12282,6 @@ class DomainRuleSet(AbstractModel):
     @property
     def CertificateId(self):
         """该域名对应的服务器证书ID，值为default时，表示使用默认证书（监听器配置的证书）。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CertificateId
@@ -12316,7 +12293,6 @@ class DomainRuleSet(AbstractModel):
     @property
     def CertificateAlias(self):
         """该域名对应服务器证书名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CertificateAlias
@@ -12328,7 +12304,6 @@ class DomainRuleSet(AbstractModel):
     @property
     def ClientCertificateId(self):
         """该域名对应的客户端证书ID，值为default时，表示使用默认证书（监听器配置的证书）。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClientCertificateId
@@ -12340,7 +12315,6 @@ class DomainRuleSet(AbstractModel):
     @property
     def ClientCertificateAlias(self):
         """该域名对应客户端证书名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClientCertificateAlias
@@ -12352,7 +12326,6 @@ class DomainRuleSet(AbstractModel):
     @property
     def BasicAuthConfId(self):
         """该域名对应基础认证配置ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BasicAuthConfId
@@ -12366,7 +12339,6 @@ class DomainRuleSet(AbstractModel):
         """基础认证开关，其中：
 0，表示未开启；
 1，表示已开启。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._BasicAuth
@@ -12378,7 +12350,6 @@ class DomainRuleSet(AbstractModel):
     @property
     def BasicAuthConfAlias(self):
         """该域名对应基础认证配置名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BasicAuthConfAlias
@@ -12390,7 +12361,6 @@ class DomainRuleSet(AbstractModel):
     @property
     def RealServerCertificateId(self):
         """该域名对应源站认证证书ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RealServerCertificateId
@@ -12404,7 +12374,6 @@ class DomainRuleSet(AbstractModel):
         """源站认证开关，其中：
 0，表示未开启；
 1，表示已开启。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RealServerAuth
@@ -12416,7 +12385,6 @@ class DomainRuleSet(AbstractModel):
     @property
     def RealServerCertificateAlias(self):
         """该域名对应源站认证证书名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RealServerCertificateAlias
@@ -12428,7 +12396,6 @@ class DomainRuleSet(AbstractModel):
     @property
     def GaapCertificateId(self):
         """该域名对应通道认证证书ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GaapCertificateId
@@ -12442,7 +12409,6 @@ class DomainRuleSet(AbstractModel):
         """通道认证开关，其中：
 0，表示未开启；
 1，表示已开启。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._GaapAuth
@@ -12454,7 +12420,6 @@ class DomainRuleSet(AbstractModel):
     @property
     def GaapCertificateAlias(self):
         """该域名对应通道认证证书名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GaapCertificateAlias
@@ -12466,7 +12431,6 @@ class DomainRuleSet(AbstractModel):
     @property
     def RealServerCertificateDomain(self):
         """源站认证域名。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RealServerCertificateDomain
@@ -12478,7 +12442,6 @@ class DomainRuleSet(AbstractModel):
     @property
     def PolyClientCertificateAliasInfo(self):
         """多客户端证书时，返回多个证书的id和别名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CertificateAliasInfo
         """
         return self._PolyClientCertificateAliasInfo
@@ -12490,7 +12453,6 @@ class DomainRuleSet(AbstractModel):
     @property
     def PolyRealServerCertificateAliasInfo(self):
         """多源站证书时，返回多个证书的id和别名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CertificateAliasInfo
         """
         return self._PolyRealServerCertificateAliasInfo
@@ -12505,7 +12467,6 @@ class DomainRuleSet(AbstractModel):
 0表示运行中，
 1表示变更中，
 2表示删除中。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DomainStatus
@@ -12517,7 +12478,6 @@ class DomainRuleSet(AbstractModel):
     @property
     def BanStatus(self):
         """封禁解封状态：BANNED表示已封禁，RECOVER表示已解封或未封禁，BANNING表示封禁中，RECOVERING表示解封中，BAN_FAILED表示封禁失败，RECOVER_FAILED表示解封失败。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BanStatus
@@ -12531,7 +12491,6 @@ class DomainRuleSet(AbstractModel):
         """Http3特性标识，其中：
 0表示关闭；
 1表示启用。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Http3Supported
@@ -12543,7 +12502,6 @@ class DomainRuleSet(AbstractModel):
     @property
     def IsDefaultServer(self):
         """是否为默认域名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsDefaultServer
@@ -12555,7 +12513,6 @@ class DomainRuleSet(AbstractModel):
     @property
     def TLSCiphers(self):
         """TLS套件包
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TLSCiphers
@@ -12567,7 +12524,6 @@ class DomainRuleSet(AbstractModel):
     @property
     def TLSSupportVersion(self):
         """TLS版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._TLSSupportVersion
@@ -12929,7 +12885,6 @@ class HTTPListener(AbstractModel):
 4表示配置变更中。
         :type ListenerStatus: int
         :param _ProxyId: 监听器的通道ID，如果监听器属于通道组，则为null
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyId: str
         :param _GroupId: 监听器的通道组ID，如果监听器属于通道，则为null
 注意：此字段可能返回 null，表示取不到有效值。
@@ -13018,7 +12973,6 @@ class HTTPListener(AbstractModel):
     @property
     def ProxyId(self):
         """监听器的通道ID，如果监听器属于通道组，则为null
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProxyId
@@ -13088,7 +13042,6 @@ class HTTPSListener(AbstractModel):
         :param _CreateTime: 监听器创建时间，Unix时间戳
         :type CreateTime: int
         :param _CertificateAlias: 服务器SSL证书的别名
-注意：此字段可能返回 null，表示取不到有效值。
         :type CertificateAlias: str
         :param _ClientCertificateId: 监听器客户端CA证书ID
 注意：此字段可能返回 null，表示取不到有效值。
@@ -13096,31 +13049,25 @@ class HTTPSListener(AbstractModel):
         :param _AuthType: 监听器认证方式。其中，
 0表示单向认证；
 1表示双向认证。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AuthType: int
         :param _ClientCertificateAlias: 客户端CA证书别名
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClientCertificateAlias: str
         :param _PolyClientCertificateAliasInfo: 多客户端CA证书别名信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type PolyClientCertificateAliasInfo: list of CertificateAliasInfo
         :param _Http3Supported: 是否支持Http3，其中：
 0，不支持Http3接入；
 1，持Http3接入。
 注意：如果支持了Http3的功能，那么该监听器会占用对应的UDP接入端口，不可再创建相同端口的UDP监听器。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Http3Supported: int
         :param _ProxyId: 监听器的通道ID，如果监听器属于通道组，则为null
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyId: str
         :param _GroupId: 监听器的通道组ID，如果监听器属于通道，则为null
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupId: str
         :param _TLSSupportVersion: 支持的TLS版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type TLSSupportVersion: list of str
         :param _TLSCiphers: 支持的TLS密码套件
-注意：此字段可能返回 null，表示取不到有效值。
         :type TLSCiphers: str
         """
         self._ListenerId = None
@@ -13238,7 +13185,6 @@ class HTTPSListener(AbstractModel):
     @property
     def CertificateAlias(self):
         """服务器SSL证书的别名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CertificateAlias
@@ -13264,7 +13210,6 @@ class HTTPSListener(AbstractModel):
         """监听器认证方式。其中，
 0表示单向认证；
 1表示双向认证。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AuthType
@@ -13288,7 +13233,6 @@ class HTTPSListener(AbstractModel):
     @property
     def PolyClientCertificateAliasInfo(self):
         """多客户端CA证书别名信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CertificateAliasInfo
         """
         return self._PolyClientCertificateAliasInfo
@@ -13303,7 +13247,6 @@ class HTTPSListener(AbstractModel):
 0，不支持Http3接入；
 1，持Http3接入。
 注意：如果支持了Http3的功能，那么该监听器会占用对应的UDP接入端口，不可再创建相同端口的UDP监听器。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Http3Supported
@@ -13315,7 +13258,6 @@ class HTTPSListener(AbstractModel):
     @property
     def ProxyId(self):
         """监听器的通道ID，如果监听器属于通道组，则为null
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProxyId
@@ -13339,7 +13281,6 @@ class HTTPSListener(AbstractModel):
     @property
     def TLSSupportVersion(self):
         """支持的TLS版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._TLSSupportVersion
@@ -13351,7 +13292,6 @@ class HTTPSListener(AbstractModel):
     @property
     def TLSCiphers(self):
         """支持的TLS密码套件
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TLSCiphers
@@ -20600,7 +20540,6 @@ class UDPListener(AbstractModel):
         :param _Port: 监听器端口
         :type Port: int
         :param _RealServerPort: 监听器转发源站端口，仅V1版本通道或通道组监听器有效
-注意：此字段可能返回 null，表示取不到有效值。
         :type RealServerPort: int
         :param _RealServerType: 监听器绑定源站类型
         :type RealServerType: str
@@ -20622,46 +20561,32 @@ class UDPListener(AbstractModel):
         :param _CreateTime: 监听器创建时间，Unix时间戳
         :type CreateTime: int
         :param _SessionPersist: 是否开启会话保持选项：0关闭， 非0开启，非0值为会话保持时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type SessionPersist: int
         :param _DelayLoop: 源站健康检查时间间隔，单位：秒。时间间隔取值在[5，300]之间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DelayLoop: int
         :param _ConnectTimeout: 源站健康检查响应超时时间，单位：秒。超时时间取值在[2，60]之间。超时时间应小于健康检查时间间隔DelayLoop。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ConnectTimeout: int
         :param _HealthyThreshold: 健康阈值，表示连续检查成功多少次后认定源站健康。范围为1到10
-注意：此字段可能返回 null，表示取不到有效值。
         :type HealthyThreshold: int
         :param _UnhealthyThreshold: 不健康阈值，表示连续检查失败多少次数后认为源站不健康。范围为1到10
-注意：此字段可能返回 null，表示取不到有效值。
         :type UnhealthyThreshold: int
         :param _FailoverSwitch: 源站是否开启主备模式：1开启，0关闭，DOMAIN类型源站不支持开启
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailoverSwitch: int
         :param _HealthCheck: 源站是否开启健康检查：1开启，0关闭。
-注意：此字段可能返回 null，表示取不到有效值。
         :type HealthCheck: int
         :param _CheckType: UDP源站健康类型。PORT表示检查端口，PING表示PING。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CheckType: str
         :param _CheckPort: UDP源站健康检查探测端口。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CheckPort: int
         :param _ContextType: UDP源站健康检查端口探测报文类型：TEXT表示文本。仅在健康检查类型为PORT时使用。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ContextType: str
         :param _SendContext: UDP源站健康检查端口探测发送报文。仅在健康检查类型为PORT时使用。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SendContext: str
         :param _RecvContext: UDP源站健康检查端口探测接收报文。仅在健康检查类型为PORT时使用。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecvContext: str
         :param _ProxyId: 监听器的通道ID，如果监听器属于通道组，则为null
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyId: str
         :param _GroupId: 监听器的通道组ID，如果监听器属于通道，则为null
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupId: str
         """
         self._ListenerId = None
@@ -20726,7 +20651,6 @@ class UDPListener(AbstractModel):
     @property
     def RealServerPort(self):
         """监听器转发源站端口，仅V1版本通道或通道组监听器有效
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RealServerPort
@@ -20820,7 +20744,6 @@ class UDPListener(AbstractModel):
     @property
     def SessionPersist(self):
         """是否开启会话保持选项：0关闭， 非0开启，非0值为会话保持时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SessionPersist
@@ -20832,7 +20755,6 @@ class UDPListener(AbstractModel):
     @property
     def DelayLoop(self):
         """源站健康检查时间间隔，单位：秒。时间间隔取值在[5，300]之间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DelayLoop
@@ -20844,7 +20766,6 @@ class UDPListener(AbstractModel):
     @property
     def ConnectTimeout(self):
         """源站健康检查响应超时时间，单位：秒。超时时间取值在[2，60]之间。超时时间应小于健康检查时间间隔DelayLoop。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ConnectTimeout
@@ -20856,7 +20777,6 @@ class UDPListener(AbstractModel):
     @property
     def HealthyThreshold(self):
         """健康阈值，表示连续检查成功多少次后认定源站健康。范围为1到10
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._HealthyThreshold
@@ -20868,7 +20788,6 @@ class UDPListener(AbstractModel):
     @property
     def UnhealthyThreshold(self):
         """不健康阈值，表示连续检查失败多少次数后认为源站不健康。范围为1到10
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._UnhealthyThreshold
@@ -20880,7 +20799,6 @@ class UDPListener(AbstractModel):
     @property
     def FailoverSwitch(self):
         """源站是否开启主备模式：1开启，0关闭，DOMAIN类型源站不支持开启
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FailoverSwitch
@@ -20892,7 +20810,6 @@ class UDPListener(AbstractModel):
     @property
     def HealthCheck(self):
         """源站是否开启健康检查：1开启，0关闭。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._HealthCheck
@@ -20904,7 +20821,6 @@ class UDPListener(AbstractModel):
     @property
     def CheckType(self):
         """UDP源站健康类型。PORT表示检查端口，PING表示PING。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CheckType
@@ -20916,7 +20832,6 @@ class UDPListener(AbstractModel):
     @property
     def CheckPort(self):
         """UDP源站健康检查探测端口。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CheckPort
@@ -20928,7 +20843,6 @@ class UDPListener(AbstractModel):
     @property
     def ContextType(self):
         """UDP源站健康检查端口探测报文类型：TEXT表示文本。仅在健康检查类型为PORT时使用。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ContextType
@@ -20940,7 +20854,6 @@ class UDPListener(AbstractModel):
     @property
     def SendContext(self):
         """UDP源站健康检查端口探测发送报文。仅在健康检查类型为PORT时使用。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SendContext
@@ -20952,7 +20865,6 @@ class UDPListener(AbstractModel):
     @property
     def RecvContext(self):
         """UDP源站健康检查端口探测接收报文。仅在健康检查类型为PORT时使用。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RecvContext
@@ -20964,7 +20876,6 @@ class UDPListener(AbstractModel):
     @property
     def ProxyId(self):
         """监听器的通道ID，如果监听器属于通道组，则为null
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProxyId
@@ -20976,7 +20887,6 @@ class UDPListener(AbstractModel):
     @property
     def GroupId(self):
         """监听器的通道组ID，如果监听器属于通道，则为null
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupId

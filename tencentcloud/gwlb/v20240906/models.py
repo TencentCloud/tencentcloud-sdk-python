@@ -344,6 +344,8 @@ class CreateTargetGroupRequest(AbstractModel):
         :type ScheduleAlgorithm: str
         :param _AllDeadToAlive: 是否支持全死全活。默认支持。
         :type AllDeadToAlive: bool
+        :param _Tags: 标签。
+        :type Tags: list of TagInfo
         """
         self._TargetGroupName = None
         self._VpcId = None
@@ -353,6 +355,7 @@ class CreateTargetGroupRequest(AbstractModel):
         self._HealthCheck = None
         self._ScheduleAlgorithm = None
         self._AllDeadToAlive = None
+        self._Tags = None
 
     @property
     def TargetGroupName(self):
@@ -445,6 +448,17 @@ class CreateTargetGroupRequest(AbstractModel):
     def AllDeadToAlive(self, AllDeadToAlive):
         self._AllDeadToAlive = AllDeadToAlive
 
+    @property
+    def Tags(self):
+        """标签。
+        :rtype: list of TagInfo
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._TargetGroupName = params.get("TargetGroupName")
@@ -462,6 +476,12 @@ class CreateTargetGroupRequest(AbstractModel):
             self._HealthCheck._deserialize(params.get("HealthCheck"))
         self._ScheduleAlgorithm = params.get("ScheduleAlgorithm")
         self._AllDeadToAlive = params.get("AllDeadToAlive")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

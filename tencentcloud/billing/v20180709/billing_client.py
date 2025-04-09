@@ -884,31 +884,6 @@ class BillingClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeSavingPlanCoverage(self, request):
-        """当前接口已迁移至svp产品
-
-        查询当前用户节省计划覆盖率明细数据，如无特别说明，金额单位均为元（国内站）或者美元（国际站）。
-
-        :param request: Request instance for DescribeSavingPlanCoverage.
-        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeSavingPlanCoverageRequest`
-        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeSavingPlanCoverageResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeSavingPlanCoverage", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeSavingPlanCoverageResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeSavingPlanResourceInfo(self, request):
         """查询节省计划详情
 

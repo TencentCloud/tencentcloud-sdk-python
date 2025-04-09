@@ -29,9 +29,12 @@ class Attachment(AbstractModel):
         :type FileName: str
         :param _Content: Base64之后的附件内容，您可以发送的附件大小上限为4M。注意：腾讯云接口请求最大支持 8M 的请求包，附件内容经过 Base64 预期扩大1.5倍。应该控制所有附件的总大小最大在 4M 以内，整体请求超出 8M 接口会返回错误。
         :type Content: str
+        :param _FileURL: 附件URL。未开放功能，请勿使用。
+        :type FileURL: str
         """
         self._FileName = None
         self._Content = None
+        self._FileURL = None
 
     @property
     def FileName(self):
@@ -55,10 +58,22 @@ class Attachment(AbstractModel):
     def Content(self, Content):
         self._Content = Content
 
+    @property
+    def FileURL(self):
+        """附件URL。未开放功能，请勿使用。
+        :rtype: str
+        """
+        return self._FileURL
+
+    @FileURL.setter
+    def FileURL(self, FileURL):
+        self._FileURL = FileURL
+
 
     def _deserialize(self, params):
         self._FileName = params.get("FileName")
         self._Content = params.get("Content")
+        self._FileURL = params.get("FileURL")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

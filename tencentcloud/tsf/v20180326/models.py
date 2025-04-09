@@ -556,7 +556,6 @@ class AdvanceSettings(AbstractModel):
     def __init__(self):
         r"""
         :param _SubTaskConcurrency: 子任务单机并发数限制，默认值为2
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubTaskConcurrency: int
         """
         self._SubTaskConcurrency = None
@@ -564,7 +563,6 @@ class AdvanceSettings(AbstractModel):
     @property
     def SubTaskConcurrency(self):
         """子任务单机并发数限制，默认值为2
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SubTaskConcurrency
@@ -1245,10 +1243,8 @@ class ApiDetailResponse(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type RequestContentType: str
         :param _CanRun: API  能否调试
-注意：此字段可能返回 null，表示取不到有效值。
         :type CanRun: bool
         :param _Status: API 状态 0:离线 1:在线，默认0
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _Description: API 描述
 注意：此字段可能返回 null，表示取不到有效值。
@@ -1311,7 +1307,6 @@ class ApiDetailResponse(AbstractModel):
     @property
     def CanRun(self):
         """API  能否调试
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._CanRun
@@ -1323,7 +1318,6 @@ class ApiDetailResponse(AbstractModel):
     @property
     def Status(self):
         """API 状态 0:离线 1:在线，默认0
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -2516,37 +2510,27 @@ class ApplicationForPage(AbstractModel):
     def __init__(self):
         r"""
         :param _ApplicationId: 应用ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationId: str
         :param _ApplicationName: 应用名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationName: str
         :param _ApplicationDesc: 应用描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationDesc: str
         :param _ApplicationType: 应用类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationType: str
         :param _MicroserviceType: 微服务类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type MicroserviceType: str
         :param _ProgLang: 编程语言
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProgLang: str
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _UpdateTime: 更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param _ApplicationResourceType: 应用资源类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationResourceType: str
         :param _ApplicationRuntimeType: 应用runtime类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationRuntimeType: str
         :param _ApigatewayServiceId: Apigateway的serviceId
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApigatewayServiceId: str
         :param _ApplicationRemarkName: 应用备注名
 注意：此字段可能返回 null，表示取不到有效值。
@@ -2555,7 +2539,6 @@ class ApplicationForPage(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceConfigList: list of ServiceConfig
         :param _IgnoreCreateImageRepository: IgnoreCreateImageRepository
-注意：此字段可能返回 null，表示取不到有效值。
         :type IgnoreCreateImageRepository: bool
         :param _ApmInstanceId: Apm业务系统id
 注意：此字段可能返回 null，表示取不到有效值。
@@ -2570,19 +2553,15 @@ class ApplicationForPage(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type MicroserviceSubType: str
         :param _ProgramLanguage: 应用编程语言类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProgramLanguage: str
         :param _FrameworkType: 开发框架类型[SpringCloud，Dubbo，Go-GRPC，Other]
-注意：此字段可能返回 null，表示取不到有效值。
         :type FrameworkType: str
         :param _ServiceGovernanceConfig: 注册配置治理信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceGovernanceConfig: :class:`tencentcloud.tsf.v20180326.models.ServiceGovernanceConfig`
         :param _MicroserviceTypeList: 微服务类型列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type MicroserviceTypeList: list of str
         :param _CreateSameNameImageRepository: 是否同时创建镜像仓库
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateSameNameImageRepository: bool
         """
         self._ApplicationId = None
@@ -2612,7 +2591,6 @@ class ApplicationForPage(AbstractModel):
     @property
     def ApplicationId(self):
         """应用ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApplicationId
@@ -2624,7 +2602,6 @@ class ApplicationForPage(AbstractModel):
     @property
     def ApplicationName(self):
         """应用名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApplicationName
@@ -2648,7 +2625,6 @@ class ApplicationForPage(AbstractModel):
     @property
     def ApplicationType(self):
         """应用类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApplicationType
@@ -2660,7 +2636,6 @@ class ApplicationForPage(AbstractModel):
     @property
     def MicroserviceType(self):
         """微服务类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MicroserviceType
@@ -2672,7 +2647,6 @@ class ApplicationForPage(AbstractModel):
     @property
     def ProgLang(self):
         """编程语言
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProgLang
@@ -2684,7 +2658,6 @@ class ApplicationForPage(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -2696,7 +2669,6 @@ class ApplicationForPage(AbstractModel):
     @property
     def UpdateTime(self):
         """更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime
@@ -2708,7 +2680,6 @@ class ApplicationForPage(AbstractModel):
     @property
     def ApplicationResourceType(self):
         """应用资源类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApplicationResourceType
@@ -2720,7 +2691,6 @@ class ApplicationForPage(AbstractModel):
     @property
     def ApplicationRuntimeType(self):
         """应用runtime类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApplicationRuntimeType
@@ -2732,7 +2702,6 @@ class ApplicationForPage(AbstractModel):
     @property
     def ApigatewayServiceId(self):
         """Apigateway的serviceId
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApigatewayServiceId
@@ -2768,7 +2737,6 @@ class ApplicationForPage(AbstractModel):
     @property
     def IgnoreCreateImageRepository(self):
         """IgnoreCreateImageRepository
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IgnoreCreateImageRepository
@@ -2828,7 +2796,6 @@ class ApplicationForPage(AbstractModel):
     @property
     def ProgramLanguage(self):
         """应用编程语言类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProgramLanguage
@@ -2840,7 +2807,6 @@ class ApplicationForPage(AbstractModel):
     @property
     def FrameworkType(self):
         """开发框架类型[SpringCloud，Dubbo，Go-GRPC，Other]
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FrameworkType
@@ -2852,7 +2818,6 @@ class ApplicationForPage(AbstractModel):
     @property
     def ServiceGovernanceConfig(self):
         """注册配置治理信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.ServiceGovernanceConfig`
         """
         return self._ServiceGovernanceConfig
@@ -2876,7 +2841,6 @@ class ApplicationForPage(AbstractModel):
     @property
     def CreateSameNameImageRepository(self):
         """是否同时创建镜像仓库
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._CreateSameNameImageRepository
@@ -3657,10 +3621,8 @@ class BusinessLogConfig(AbstractModel):
         :param _ConfigAssociatedGroupList: 配置项关联部署组
         :type ConfigAssociatedGroupList: list of BusinessLogConfigAssociatedGroup
         :param _FilebeatConfigEnable: 是否开启filebeat高级配置开关
-注意：此字段可能返回 null，表示取不到有效值。
         :type FilebeatConfigEnable: bool
         :param _FilebeatCloseTimeout: close_timeout参数
-注意：此字段可能返回 null，表示取不到有效值。
         :type FilebeatCloseTimeout: int
         """
         self._ConfigId = None
@@ -3810,7 +3772,6 @@ class BusinessLogConfig(AbstractModel):
     @property
     def FilebeatConfigEnable(self):
         """是否开启filebeat高级配置开关
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._FilebeatConfigEnable
@@ -3822,7 +3783,6 @@ class BusinessLogConfig(AbstractModel):
     @property
     def FilebeatCloseTimeout(self):
         """close_timeout参数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FilebeatCloseTimeout
@@ -5821,13 +5781,10 @@ class ConfigMapOption(AbstractModel):
     def __init__(self):
         r"""
         :param _Key: -
-注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
         :param _Path: -
-注意：此字段可能返回 null，表示取不到有效值。
         :type Path: str
         :param _Mode: -
-注意：此字段可能返回 null，表示取不到有效值。
         :type Mode: str
         """
         self._Key = None
@@ -5837,7 +5794,6 @@ class ConfigMapOption(AbstractModel):
     @property
     def Key(self):
         """-
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Key
@@ -5849,7 +5805,6 @@ class ConfigMapOption(AbstractModel):
     @property
     def Path(self):
         """-
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Path
@@ -5861,7 +5816,6 @@ class ConfigMapOption(AbstractModel):
     @property
     def Mode(self):
         """-
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Mode
@@ -7890,19 +7844,15 @@ class ContainerGroupDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _GroupId: 部署组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupId: str
         :param _GroupName: 分组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupName: str
         :param _InstanceNum: 实例总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceNum: int
         :param _CurrentNum: 已启动实例总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type CurrentNum: int
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _Server: 镜像server
 注意：此字段可能返回 null，表示取不到有效值。
@@ -7914,28 +7864,20 @@ class ContainerGroupDetail(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagName: str
         :param _ClusterId: 集群ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterId: str
         :param _ClusterName: 集群名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterName: str
         :param _NamespaceId: 命名空间ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type NamespaceId: str
         :param _NamespaceName: 命名空间名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type NamespaceName: str
         :param _ApplicationId: 应用ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationId: str
         :param _LbIp: 负载均衡ip
-注意：此字段可能返回 null，表示取不到有效值。
         :type LbIp: str
         :param _ApplicationType: 应用类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationType: str
         :param _ClusterIp: Service ip
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterIp: str
         :param _NodePort: NodePort端口，只有公网和NodePort访问方式才有值
 注意：此字段可能返回 null，表示取不到有效值。
@@ -7950,28 +7892,22 @@ class ContainerGroupDetail(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccessType: int
         :param _UpdateType: 更新方式：0:快速更新 1:滚动更新
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateType: int
         :param _UpdateIvl: 更新间隔,单位秒
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateIvl: int
         :param _ProtocolPorts: 端口数组对象
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProtocolPorts: list of ProtocolPort
         :param _Envs: 环境变量数组对象
-注意：此字段可能返回 null，表示取不到有效值。
         :type Envs: list of Env
         :param _ApplicationName: 应用名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationName: str
         :param _Message: pod错误信息描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param _Status: 部署组状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _MicroserviceType: 服务类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type MicroserviceType: str
         :param _CpuRequest: 初始分配的 CPU 核数，对应 K8S request
 注意：此字段可能返回 null，表示取不到有效值。
@@ -7983,13 +7919,10 @@ class ContainerGroupDetail(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetId: str
         :param _GroupResourceType: 部署组资源类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupResourceType: str
         :param _InstanceCount: 部署组实例个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceCount: int
         :param _UpdatedTime: 部署组更新时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedTime: int
         :param _MaxSurge: kubernetes滚动更新策略的MaxSurge参数
 注意：此字段可能返回 null，表示取不到有效值。
@@ -8001,7 +7934,6 @@ class ContainerGroupDetail(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type HealthCheckSettings: :class:`tencentcloud.tsf.v20180326.models.HealthCheckSettings`
         :param _AllowPlainYamlDeploy: 允许PlainYamlDeploy
-注意：此字段可能返回 null，表示取不到有效值。
         :type AllowPlainYamlDeploy: bool
         :param _IsNotEqualServiceConfig: 是否不等于ServiceConfig
 注意：此字段可能返回 null，表示取不到有效值。
@@ -8058,7 +7990,6 @@ class ContainerGroupDetail(AbstractModel):
     @property
     def GroupId(self):
         """部署组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupId
@@ -8070,7 +8001,6 @@ class ContainerGroupDetail(AbstractModel):
     @property
     def GroupName(self):
         """分组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupName
@@ -8094,7 +8024,6 @@ class ContainerGroupDetail(AbstractModel):
     @property
     def CurrentNum(self):
         """已启动实例总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CurrentNum
@@ -8106,7 +8035,6 @@ class ContainerGroupDetail(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -8154,7 +8082,6 @@ class ContainerGroupDetail(AbstractModel):
     @property
     def ClusterId(self):
         """集群ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterId
@@ -8166,7 +8093,6 @@ class ContainerGroupDetail(AbstractModel):
     @property
     def ClusterName(self):
         """集群名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterName
@@ -8178,7 +8104,6 @@ class ContainerGroupDetail(AbstractModel):
     @property
     def NamespaceId(self):
         """命名空间ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NamespaceId
@@ -8190,7 +8115,6 @@ class ContainerGroupDetail(AbstractModel):
     @property
     def NamespaceName(self):
         """命名空间名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NamespaceName
@@ -8202,7 +8126,6 @@ class ContainerGroupDetail(AbstractModel):
     @property
     def ApplicationId(self):
         """应用ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApplicationId
@@ -8214,7 +8137,6 @@ class ContainerGroupDetail(AbstractModel):
     @property
     def LbIp(self):
         """负载均衡ip
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LbIp
@@ -8226,7 +8148,6 @@ class ContainerGroupDetail(AbstractModel):
     @property
     def ApplicationType(self):
         """应用类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApplicationType
@@ -8238,7 +8159,6 @@ class ContainerGroupDetail(AbstractModel):
     @property
     def ClusterIp(self):
         """Service ip
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClusterIp
@@ -8298,7 +8218,6 @@ class ContainerGroupDetail(AbstractModel):
     @property
     def UpdateType(self):
         """更新方式：0:快速更新 1:滚动更新
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._UpdateType
@@ -8322,7 +8241,6 @@ class ContainerGroupDetail(AbstractModel):
     @property
     def ProtocolPorts(self):
         """端口数组对象
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ProtocolPort
         """
         return self._ProtocolPorts
@@ -8334,7 +8252,6 @@ class ContainerGroupDetail(AbstractModel):
     @property
     def Envs(self):
         """环境变量数组对象
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Env
         """
         return self._Envs
@@ -8346,7 +8263,6 @@ class ContainerGroupDetail(AbstractModel):
     @property
     def ApplicationName(self):
         """应用名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApplicationName
@@ -8370,7 +8286,6 @@ class ContainerGroupDetail(AbstractModel):
     @property
     def Status(self):
         """部署组状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -8382,7 +8297,6 @@ class ContainerGroupDetail(AbstractModel):
     @property
     def MicroserviceType(self):
         """服务类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MicroserviceType
@@ -8430,7 +8344,6 @@ class ContainerGroupDetail(AbstractModel):
     @property
     def GroupResourceType(self):
         """部署组资源类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupResourceType
@@ -8442,7 +8355,6 @@ class ContainerGroupDetail(AbstractModel):
     @property
     def InstanceCount(self):
         """部署组实例个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._InstanceCount
@@ -8454,7 +8366,6 @@ class ContainerGroupDetail(AbstractModel):
     @property
     def UpdatedTime(self):
         """部署组更新时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._UpdatedTime
@@ -8502,7 +8413,6 @@ class ContainerGroupDetail(AbstractModel):
     @property
     def AllowPlainYamlDeploy(self):
         """允许PlainYamlDeploy
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._AllowPlainYamlDeploy
@@ -8645,7 +8555,6 @@ class ContainerGroupOther(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type HealthCheckSettings: :class:`tencentcloud.tsf.v20180326.models.HealthCheckSettings`
         :param _IsNotEqualServiceConfig: 服务配置信息是否匹配
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsNotEqualServiceConfig: bool
         """
         self._InstanceNum = None
@@ -8788,7 +8697,6 @@ class ContainerGroupOther(AbstractModel):
     @property
     def IsNotEqualServiceConfig(self):
         """服务配置信息是否匹配
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsNotEqualServiceConfig
@@ -9487,7 +9395,6 @@ class CreateApiGroupResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: API分组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9498,7 +9405,6 @@ class CreateApiGroupResponse(AbstractModel):
     @property
     def Result(self):
         """API分组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Result
@@ -9707,7 +9613,6 @@ class CreateApiRateLimitRuleWithDetailRespResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 创建的规则 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.ApiRateLimitRule`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9718,7 +9623,6 @@ class CreateApiRateLimitRuleWithDetailRespResponse(AbstractModel):
     @property
     def Result(self):
         """创建的规则 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.ApiRateLimitRule`
         """
         return self._Result
@@ -10525,7 +10429,6 @@ class CreateConfigResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: true：创建成功；false：创建失败
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10536,7 +10439,6 @@ class CreateConfigResponse(AbstractModel):
     @property
     def Result(self):
         """true：创建成功；false：创建失败
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Result
@@ -10805,7 +10707,6 @@ class CreateConfigTemplateWithDetailRespResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 创建成功，返回 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.ConfigTemplate`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10816,7 +10717,6 @@ class CreateConfigTemplateWithDetailRespResponse(AbstractModel):
     @property
     def Result(self):
         """创建成功，返回 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.ConfigTemplate`
         """
         return self._Result
@@ -10993,7 +10893,6 @@ class CreateConfigWithDetailRespResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 配置项
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.Config`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11004,7 +10903,6 @@ class CreateConfigWithDetailRespResponse(AbstractModel):
     @property
     def Result(self):
         """配置项
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.Config`
         """
         return self._Result
@@ -11659,7 +11557,6 @@ class CreateFileConfigResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: true：创建成功；false：创建失败
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11670,7 +11567,6 @@ class CreateFileConfigResponse(AbstractModel):
     @property
     def Result(self):
         """true：创建成功；false：创建失败
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Result
@@ -11890,7 +11786,6 @@ class CreateFileConfigWithDetailRespResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 文件配置项
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.FileConfig`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11901,7 +11796,6 @@ class CreateFileConfigWithDetailRespResponse(AbstractModel):
     @property
     def Result(self):
         """文件配置项
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.FileConfig`
         """
         return self._Result
@@ -12326,7 +12220,6 @@ class CreateLaneResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 泳道ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12337,7 +12230,6 @@ class CreateLaneResponse(AbstractModel):
     @property
     def Result(self):
         """泳道ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Result
@@ -12487,7 +12379,6 @@ class CreateLaneRuleResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 泳道规则Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12498,7 +12389,6 @@ class CreateLaneRuleResponse(AbstractModel):
     @property
     def Result(self):
         """泳道规则Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Result
@@ -13075,7 +12965,6 @@ class CreatePathRewritesWithDetailRespResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 返回路径重写规则 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13086,7 +12975,6 @@ class CreatePathRewritesWithDetailRespResponse(AbstractModel):
     @property
     def Result(self):
         """返回路径重写规则 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Result
@@ -13360,7 +13248,6 @@ class CreatePublicConfigResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: true：创建成功；false：创建失败
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13371,7 +13258,6 @@ class CreatePublicConfigResponse(AbstractModel):
     @property
     def Result(self):
         """true：创建成功；false：创建失败
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Result
@@ -13531,7 +13417,6 @@ class CreatePublicConfigWithDetailRespResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 公共配置项 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.Config`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13542,7 +13427,6 @@ class CreatePublicConfigWithDetailRespResponse(AbstractModel):
     @property
     def Result(self):
         """公共配置项 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.Config`
         """
         return self._Result
@@ -14247,7 +14131,6 @@ class CreateUnitNamespacesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 是否成功
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14258,7 +14141,6 @@ class CreateUnitNamespacesResponse(AbstractModel):
     @property
     def Result(self):
         """是否成功
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Result
@@ -14377,8 +14259,7 @@ class CreateUnitRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 是否成功
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _Result: 是否成功，成功：true，失败：false。；
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14388,8 +14269,7 @@ class CreateUnitRuleResponse(AbstractModel):
 
     @property
     def Result(self):
-        """是否成功
-注意：此字段可能返回 null，表示取不到有效值。
+        """是否成功，成功：true，失败：false。；
         :rtype: bool
         """
         return self._Result
@@ -14509,7 +14389,6 @@ class CreateUnitRuleWithDetailRespResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 单元化规则信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.UnitRule`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14520,7 +14399,6 @@ class CreateUnitRuleWithDetailRespResponse(AbstractModel):
     @property
     def Result(self):
         """单元化规则信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.UnitRule`
         """
         return self._Result
@@ -14988,7 +14866,6 @@ class DeleteApplicationResponse(AbstractModel):
         :param _Result: 删除应用操作是否成功。
 true：操作成功。
 false：操作失败。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15001,7 +14878,6 @@ false：操作失败。
         """删除应用操作是否成功。
 true：操作成功。
 false：操作失败。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Result
@@ -15410,7 +15286,6 @@ class DeleteFileConfigResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 删除结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15421,7 +15296,6 @@ class DeleteFileConfigResponse(AbstractModel):
     @property
     def Result(self):
         """删除结果
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Result
@@ -15901,7 +15775,6 @@ class DeleteLaneRuleResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 操作状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15912,7 +15785,6 @@ class DeleteLaneRuleResponse(AbstractModel):
     @property
     def Result(self):
         """操作状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Result
@@ -16351,7 +16223,6 @@ class DeletePublicConfigResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: true：删除成功；false：删除失败
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16362,7 +16233,6 @@ class DeletePublicConfigResponse(AbstractModel):
     @property
     def Result(self):
         """true：删除成功；false：删除失败
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Result
@@ -16684,7 +16554,6 @@ class DeleteUnitNamespacesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 是否成功
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16695,7 +16564,6 @@ class DeleteUnitNamespacesResponse(AbstractModel):
     @property
     def Result(self):
         """是否成功
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Result
@@ -16765,7 +16633,6 @@ class DeleteUnitRuleResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 是否成功
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16776,7 +16643,6 @@ class DeleteUnitRuleResponse(AbstractModel):
     @property
     def Result(self):
         """是否成功
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Result
@@ -17869,7 +17735,6 @@ class DeployContainerGroupResponse(AbstractModel):
         :param _Result: 部署容器应用是否成功。
 true：成功。
 false：失败。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -17882,7 +17747,6 @@ false：失败。
         """部署容器应用是否成功。
 true：成功。
 false：失败。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Result
@@ -18470,7 +18334,6 @@ class DescribeApiGroupResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: API分组信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.ApiGroupInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18481,7 +18344,6 @@ class DescribeApiGroupResponse(AbstractModel):
     @property
     def Result(self):
         """API分组信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.ApiGroupInfo`
         """
         return self._Result
@@ -18673,7 +18535,6 @@ class DescribeApiGroupsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 翻页结构体
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageApiGroupInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18684,7 +18545,6 @@ class DescribeApiGroupsResponse(AbstractModel):
     @property
     def Result(self):
         """翻页结构体
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TsfPageApiGroupInfo`
         """
         return self._Result
@@ -19684,7 +19544,6 @@ class DescribeBusinessLogConfigsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 业务日志配置列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageBusinessLogConfig`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -19695,7 +19554,6 @@ class DescribeBusinessLogConfigsResponse(AbstractModel):
     @property
     def Result(self):
         """业务日志配置列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TsfPageBusinessLogConfig`
         """
         return self._Result
@@ -20169,7 +20027,6 @@ class DescribeConfigReleaseLogsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 分页的配置项发布历史列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageConfigReleaseLog`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -20180,7 +20037,6 @@ class DescribeConfigReleaseLogsResponse(AbstractModel):
     @property
     def Result(self):
         """分页的配置项发布历史列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TsfPageConfigReleaseLog`
         """
         return self._Result
@@ -20357,7 +20213,6 @@ class DescribeConfigReleasesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 分页的配置发布信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageConfigRelease`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -20368,7 +20223,6 @@ class DescribeConfigReleasesResponse(AbstractModel):
     @property
     def Result(self):
         """分页的配置发布信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TsfPageConfigRelease`
         """
         return self._Result
@@ -20724,7 +20578,6 @@ class DescribeConfigTemplateResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 导入结果
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.ConfigTemplate`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -20735,7 +20588,6 @@ class DescribeConfigTemplateResponse(AbstractModel):
     @property
     def Result(self):
         """导入结果
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.ConfigTemplate`
         """
         return self._Result
@@ -20897,7 +20749,6 @@ class DescribeConfigsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 分页后的配置项列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageConfig`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -20908,7 +20759,6 @@ class DescribeConfigsResponse(AbstractModel):
     @property
     def Result(self):
         """分页后的配置项列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TsfPageConfig`
         """
         return self._Result
@@ -22133,7 +21983,6 @@ class DescribeEnabledUnitRuleResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 单元化规则对象
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.UnitRule`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -22144,7 +21993,6 @@ class DescribeEnabledUnitRuleResponse(AbstractModel):
     @property
     def Result(self):
         """单元化规则对象
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.UnitRule`
         """
         return self._Result
@@ -22321,7 +22169,6 @@ class DescribeFileConfigReleasesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 配置项发布信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageFileConfigRelease`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -22332,7 +22179,6 @@ class DescribeFileConfigReleasesResponse(AbstractModel):
     @property
     def Result(self):
         """配置项发布信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TsfPageFileConfigRelease`
         """
         return self._Result
@@ -22494,7 +22340,6 @@ class DescribeFileConfigsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 文件配置项列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageFileConfig`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -22505,7 +22350,6 @@ class DescribeFileConfigsResponse(AbstractModel):
     @property
     def Result(self):
         """文件配置项列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TsfPageFileConfig`
         """
         return self._Result
@@ -23198,7 +23042,6 @@ class DescribeGroupBusinessLogConfigsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 业务日志配置列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageBusinessLogConfig`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -23209,7 +23052,6 @@ class DescribeGroupBusinessLogConfigsResponse(AbstractModel):
     @property
     def Result(self):
         """业务日志配置列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TsfPageBusinessLogConfig`
         """
         return self._Result
@@ -23563,7 +23405,6 @@ class DescribeGroupReleaseResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 部署组发布的相关信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.GroupRelease`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -23574,7 +23415,6 @@ class DescribeGroupReleaseResponse(AbstractModel):
     @property
     def Result(self):
         """部署组发布的相关信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.GroupRelease`
         """
         return self._Result
@@ -25893,7 +25733,6 @@ class DescribeLaneRulesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 泳道规则列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.LaneRules`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -25904,7 +25743,6 @@ class DescribeLaneRulesResponse(AbstractModel):
     @property
     def Result(self):
         """泳道规则列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.LaneRules`
         """
         return self._Result
@@ -26036,7 +25874,6 @@ class DescribeLanesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 泳道列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.LaneInfos`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -26047,7 +25884,6 @@ class DescribeLanesResponse(AbstractModel):
     @property
     def Result(self):
         """泳道列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.LaneInfos`
         """
         return self._Result
@@ -26184,7 +26020,6 @@ class DescribeMicroserviceResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 微服务详情实例列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageMsInstance`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -26195,7 +26030,6 @@ class DescribeMicroserviceResponse(AbstractModel):
     @property
     def Result(self):
         """微服务详情实例列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TsfPageMsInstance`
         """
         return self._Result
@@ -26483,7 +26317,6 @@ class DescribeMicroservicesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 微服务分页列表信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageMicroservice`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -26494,7 +26327,6 @@ class DescribeMicroservicesResponse(AbstractModel):
     @property
     def Result(self):
         """微服务分页列表信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TsfPageMicroservice`
         """
         return self._Result
@@ -27699,7 +27531,6 @@ class DescribePublicConfigReleaseLogsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 分页后的公共配置项发布历史列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageConfigReleaseLog`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -27710,7 +27541,6 @@ class DescribePublicConfigReleaseLogsResponse(AbstractModel):
     @property
     def Result(self):
         """分页后的公共配置项发布历史列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TsfPageConfigReleaseLog`
         """
         return self._Result
@@ -27842,7 +27672,6 @@ class DescribePublicConfigReleasesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 公共配置发布信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageConfigRelease`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -27853,7 +27682,6 @@ class DescribePublicConfigReleasesResponse(AbstractModel):
     @property
     def Result(self):
         """公共配置发布信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TsfPageConfigRelease`
         """
         return self._Result
@@ -28113,7 +27941,6 @@ class DescribePublicConfigSummaryResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 分页的全局配置统计信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageConfig`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -28124,7 +27951,6 @@ class DescribePublicConfigSummaryResponse(AbstractModel):
     @property
     def Result(self):
         """分页的全局配置统计信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TsfPageConfig`
         """
         return self._Result
@@ -28271,7 +28097,6 @@ class DescribePublicConfigsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 分页后的全局配置项列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageConfig`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -28282,7 +28107,6 @@ class DescribePublicConfigsResponse(AbstractModel):
     @property
     def Result(self):
         """分页后的全局配置项列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TsfPageConfig`
         """
         return self._Result
@@ -28354,7 +28178,6 @@ class DescribeReleasedConfigResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 已发布的配置内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -28365,7 +28188,6 @@ class DescribeReleasedConfigResponse(AbstractModel):
     @property
     def Result(self):
         """已发布的配置内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Result
@@ -30432,7 +30254,6 @@ class DescribeUnitNamespacesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 单元化命名空间对象列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageUnitNamespace`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -30443,7 +30264,6 @@ class DescribeUnitNamespacesResponse(AbstractModel):
     @property
     def Result(self):
         """单元化命名空间对象列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TsfPageUnitNamespace`
         """
         return self._Result
@@ -30515,7 +30335,6 @@ class DescribeUnitRuleResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 单元化规则对象
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.UnitRule`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -30526,7 +30345,6 @@ class DescribeUnitRuleResponse(AbstractModel):
     @property
     def Result(self):
         """单元化规则对象
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.UnitRule`
         """
         return self._Result
@@ -30658,7 +30476,6 @@ class DescribeUnitRulesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 分页列表信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: list of TsfPageUnitRule
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -30669,7 +30486,6 @@ class DescribeUnitRulesResponse(AbstractModel):
     @property
     def Result(self):
         """分页列表信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TsfPageUnitRule
         """
         return self._Result
@@ -30804,7 +30620,6 @@ class DescribeUnitRulesV2Response(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 分页列表信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageUnitRuleV2`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -30815,7 +30630,6 @@ class DescribeUnitRulesV2Response(AbstractModel):
     @property
     def Result(self):
         """分页列表信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TsfPageUnitRuleV2`
         """
         return self._Result
@@ -31088,7 +30902,6 @@ class DescribeUsableUnitNamespacesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 单元化命名空间对象列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageUnitNamespace`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -31099,7 +30912,6 @@ class DescribeUsableUnitNamespacesResponse(AbstractModel):
     @property
     def Result(self):
         """单元化命名空间对象列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TsfPageUnitNamespace`
         """
         return self._Result
@@ -31171,7 +30983,6 @@ class DisableLaneRuleResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 操作状态。成功：true，失败：false
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -31182,7 +30993,6 @@ class DisableLaneRuleResponse(AbstractModel):
     @property
     def Result(self):
         """操作状态。成功：true，失败：false
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Result
@@ -31410,7 +31220,6 @@ class DisableUnitRouteResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 返回结果，成功失败
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -31421,7 +31230,6 @@ class DisableUnitRouteResponse(AbstractModel):
     @property
     def Result(self):
         """返回结果，成功失败
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Result
@@ -31491,7 +31299,6 @@ class DisableUnitRuleResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 是否成功
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -31502,7 +31309,6 @@ class DisableUnitRuleResponse(AbstractModel):
     @property
     def Result(self):
         """是否成功
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Result
@@ -31920,7 +31726,6 @@ class EnableLaneRuleResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 操作状态。成功：true，失败：false
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -31931,7 +31736,6 @@ class EnableLaneRuleResponse(AbstractModel):
     @property
     def Result(self):
         """操作状态。成功：true，失败：false
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Result
@@ -32158,8 +31962,7 @@ class EnableUnitRouteResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 返回结果，成功失败
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _Result: 返回结果。成功：true，失败：false。
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -32169,8 +31972,7 @@ class EnableUnitRouteResponse(AbstractModel):
 
     @property
     def Result(self):
-        """返回结果，成功失败
-注意：此字段可能返回 null，表示取不到有效值。
+        """返回结果。成功：true，失败：false。
         :rtype: bool
         """
         return self._Result
@@ -32239,8 +32041,7 @@ class EnableUnitRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 是否成功
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _Result: 是否成功，成功：true，失败：false。
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -32250,8 +32051,7 @@ class EnableUnitRuleResponse(AbstractModel):
 
     @property
     def Result(self):
-        """是否成功
-注意：此字段可能返回 null，表示取不到有效值。
+        """是否成功，成功：true，失败：false。
         :rtype: bool
         """
         return self._Result
@@ -33414,22 +33214,16 @@ class GatewayApiGroupVo(AbstractModel):
     def __init__(self):
         r"""
         :param _GroupId: 分组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupId: str
         :param _GroupName: 分组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupName: str
         :param _GroupApiCount: 分组下API个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupApiCount: int
         :param _GroupApis: 分组API列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupApis: list of GatewayGroupApiVo
         :param _GatewayInstanceType: 网关实例的类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayInstanceType: str
         :param _GatewayInstanceId: 网关实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayInstanceId: str
         """
         self._GroupId = None
@@ -33442,7 +33236,6 @@ class GatewayApiGroupVo(AbstractModel):
     @property
     def GroupId(self):
         """分组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupId
@@ -33454,7 +33247,6 @@ class GatewayApiGroupVo(AbstractModel):
     @property
     def GroupName(self):
         """分组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupName
@@ -33466,7 +33258,6 @@ class GatewayApiGroupVo(AbstractModel):
     @property
     def GroupApiCount(self):
         """分组下API个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._GroupApiCount
@@ -33478,7 +33269,6 @@ class GatewayApiGroupVo(AbstractModel):
     @property
     def GroupApis(self):
         """分组API列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of GatewayGroupApiVo
         """
         return self._GroupApis
@@ -33490,7 +33280,6 @@ class GatewayApiGroupVo(AbstractModel):
     @property
     def GatewayInstanceType(self):
         """网关实例的类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GatewayInstanceType
@@ -33502,7 +33291,6 @@ class GatewayApiGroupVo(AbstractModel):
     @property
     def GatewayInstanceId(self):
         """网关实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GatewayInstanceId
@@ -34107,16 +33895,12 @@ class GatewayVo(AbstractModel):
     def __init__(self):
         r"""
         :param _GatewayDeployGroupId: 网关部署组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayDeployGroupId: str
         :param _GatewayDeployGroupName: 网关部署组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayDeployGroupName: str
         :param _GroupNum: API 分组个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupNum: int
         :param _Groups: API 分组列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Groups: list of GatewayApiGroupVo
         """
         self._GatewayDeployGroupId = None
@@ -34127,7 +33911,6 @@ class GatewayVo(AbstractModel):
     @property
     def GatewayDeployGroupId(self):
         """网关部署组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GatewayDeployGroupId
@@ -34139,7 +33922,6 @@ class GatewayVo(AbstractModel):
     @property
     def GatewayDeployGroupName(self):
         """网关部署组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GatewayDeployGroupName
@@ -34151,7 +33933,6 @@ class GatewayVo(AbstractModel):
     @property
     def GroupNum(self):
         """API 分组个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._GroupNum
@@ -34163,7 +33944,6 @@ class GatewayVo(AbstractModel):
     @property
     def Groups(self):
         """API 分组列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of GatewayApiGroupVo
         """
         return self._Groups
@@ -34201,13 +33981,10 @@ class GroupApiUseStatistics(AbstractModel):
     def __init__(self):
         r"""
         :param _TopStatusCode: 总调用数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TopStatusCode: list of ApiUseStatisticsEntity
         :param _TopTimeCost: 平均错误率
-注意：此字段可能返回 null，表示取不到有效值。
         :type TopTimeCost: list of ApiUseStatisticsEntity
         :param _Quantile: 分位值对象
-注意：此字段可能返回 null，表示取不到有效值。
         :type Quantile: :class:`tencentcloud.tsf.v20180326.models.QuantileEntity`
         """
         self._TopStatusCode = None
@@ -34217,7 +33994,6 @@ class GroupApiUseStatistics(AbstractModel):
     @property
     def TopStatusCode(self):
         """总调用数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ApiUseStatisticsEntity
         """
         return self._TopStatusCode
@@ -34229,7 +34005,6 @@ class GroupApiUseStatistics(AbstractModel):
     @property
     def TopTimeCost(self):
         """平均错误率
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ApiUseStatisticsEntity
         """
         return self._TopTimeCost
@@ -34241,7 +34016,6 @@ class GroupApiUseStatistics(AbstractModel):
     @property
     def Quantile(self):
         """分位值对象
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.QuantileEntity`
         """
         return self._Quantile
@@ -38864,10 +38638,8 @@ class LaneInfos(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _Content: 泳道信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Content: list of LaneInfo
         """
         self._TotalCount = None
@@ -38876,7 +38648,6 @@ class LaneInfos(AbstractModel):
     @property
     def TotalCount(self):
         """总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -38888,7 +38659,6 @@ class LaneInfos(AbstractModel):
     @property
     def Content(self):
         """泳道信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LaneInfo
         """
         return self._Content
@@ -40999,7 +40769,6 @@ class ModifyLaneRuleResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 操作状态。成功：true，失败：false
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -41010,7 +40779,6 @@ class ModifyLaneRuleResponse(AbstractModel):
     @property
     def Result(self):
         """操作状态。成功：true，失败：false
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Result
@@ -45351,7 +45119,6 @@ class ReleaseConfigWithDetailRespResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 配置项发布 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.ConfigRelease`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -45362,7 +45129,6 @@ class ReleaseConfigWithDetailRespResponse(AbstractModel):
     @property
     def Result(self):
         """配置项发布 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.ConfigRelease`
         """
         return self._Result
@@ -45463,8 +45229,7 @@ class ReleaseFileConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 发布结果
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _Result: 发布结果，成功：true，失败：false。
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -45474,8 +45239,7 @@ class ReleaseFileConfigResponse(AbstractModel):
 
     @property
     def Result(self):
-        """发布结果
-注意：此字段可能返回 null，表示取不到有效值。
+        """发布结果，成功：true，失败：false。
         :rtype: bool
         """
         return self._Result
@@ -45575,7 +45339,6 @@ class ReleasePublicConfigResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: true：发布成功；false：发布失败
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -45586,7 +45349,6 @@ class ReleasePublicConfigResponse(AbstractModel):
     @property
     def Result(self):
         """true：发布成功；false：发布失败
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Result
@@ -46361,7 +46123,6 @@ class RevocationPublicConfigResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: true：撤销成功；false：撤销失败
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -46372,7 +46133,6 @@ class RevocationPublicConfigResponse(AbstractModel):
     @property
     def Result(self):
         """true：撤销成功；false：撤销失败
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Result
@@ -46441,8 +46201,7 @@ class RevokeFileConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 撤回结果
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _Result: 撤回结果，成功：true，失败：false。
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -46452,8 +46211,7 @@ class RevokeFileConfigResponse(AbstractModel):
 
     @property
     def Result(self):
-        """撤回结果
-注意：此字段可能返回 null，表示取不到有效值。
+        """撤回结果，成功：true，失败：false。
         :rtype: bool
         """
         return self._Result
@@ -51501,10 +51259,8 @@ class TsfPageBusinessLogConfig(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _Content: 业务日志配置项列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Content: list of BusinessLogConfig
         """
         self._TotalCount = None
@@ -51513,7 +51269,6 @@ class TsfPageBusinessLogConfig(AbstractModel):
     @property
     def TotalCount(self):
         """总条数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -51525,7 +51280,6 @@ class TsfPageBusinessLogConfig(AbstractModel):
     @property
     def Content(self):
         """业务日志配置项列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BusinessLogConfig
         """
         return self._Content
@@ -52123,10 +51877,8 @@ class TsfPageFileConfigRelease(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _Content: 列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Content: list of FileConfigRelease
         """
         self._TotalCount = None
@@ -52135,7 +51887,6 @@ class TsfPageFileConfigRelease(AbstractModel):
     @property
     def TotalCount(self):
         """数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -52147,7 +51898,6 @@ class TsfPageFileConfigRelease(AbstractModel):
     @property
     def Content(self):
         """列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of FileConfigRelease
         """
         return self._Content
@@ -52239,10 +51989,8 @@ class TsfPageGatewayPlugin(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 记录总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _Content: 记录实体列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Content: list of GatewayPlugin
         """
         self._TotalCount = None
@@ -52251,7 +51999,6 @@ class TsfPageGatewayPlugin(AbstractModel):
     @property
     def TotalCount(self):
         """记录总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -52263,7 +52010,6 @@ class TsfPageGatewayPlugin(AbstractModel):
     @property
     def Content(self):
         """记录实体列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of GatewayPlugin
         """
         return self._Content
@@ -52862,10 +52608,8 @@ class TsfPageUnitRuleV2(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 记录总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _Content: 记录实体列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Content: list of UnitRule
         """
         self._TotalCount = None
@@ -52874,7 +52618,6 @@ class TsfPageUnitRuleV2(AbstractModel):
     @property
     def TotalCount(self):
         """记录总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -52886,7 +52629,6 @@ class TsfPageUnitRuleV2(AbstractModel):
     @property
     def Content(self):
         """记录实体列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of UnitRule
         """
         return self._Content
@@ -53066,16 +52808,12 @@ class UnitNamespace(AbstractModel):
         :param _NamespaceName: 命名空间Name
         :type NamespaceName: str
         :param _Id: 单元化命名空间ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
         :param _GatewayInstanceId: 网关实体ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayInstanceId: str
         :param _CreatedTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedTime: str
         :param _UpdatedTime: 更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedTime: str
         """
         self._NamespaceId = None
@@ -53110,7 +52848,6 @@ class UnitNamespace(AbstractModel):
     @property
     def Id(self):
         """单元化命名空间ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Id
@@ -53122,7 +52859,6 @@ class UnitNamespace(AbstractModel):
     @property
     def GatewayInstanceId(self):
         """网关实体ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GatewayInstanceId
@@ -53134,7 +52870,6 @@ class UnitNamespace(AbstractModel):
     @property
     def CreatedTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreatedTime
@@ -53146,7 +52881,6 @@ class UnitNamespace(AbstractModel):
     @property
     def UpdatedTime(self):
         """更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdatedTime
@@ -53834,7 +53568,6 @@ class UpdateApiGroupResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 返回结果，true: 成功, false: 失败
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -53845,7 +53578,6 @@ class UpdateApiGroupResponse(AbstractModel):
     @property
     def Result(self):
         """返回结果，true: 成功, false: 失败
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Result
@@ -54795,8 +54527,7 @@ class UpdateUnitRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 是否成功
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _Result: 是否成功，成功：true，失败：false。
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -54806,8 +54537,7 @@ class UpdateUnitRuleResponse(AbstractModel):
 
     @property
     def Result(self):
-        """是否成功
-注意：此字段可能返回 null，表示取不到有效值。
+        """是否成功，成功：true，失败：false。
         :rtype: bool
         """
         return self._Result

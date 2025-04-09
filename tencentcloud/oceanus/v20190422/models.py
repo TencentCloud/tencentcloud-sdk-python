@@ -4471,6 +4471,12 @@ class DescribeClustersRequest(AbstractModel):
         :param _OrderType: 集群信息结果排序规则，1 按时间降序，2 按照时间升序，3  按照状态排序
         :type OrderType: int
         :param _Filters: 过滤规则
+    
+- Name
+    按照集群的名字进行模糊查询。例如：测试
+    类型： String
+    必选： 否
+    
         :type Filters: list of Filter
         :param _WorkSpaceId: 工作空间 SerialId
         :type WorkSpaceId: str
@@ -4529,6 +4535,12 @@ class DescribeClustersRequest(AbstractModel):
     @property
     def Filters(self):
         """过滤规则
+    
+- Name
+    按照集群的名字进行模糊查询。例如：测试
+    类型： String
+    必选： 否
+    
         :rtype: list of Filter
         """
         return self._Filters

@@ -13962,7 +13962,7 @@ FailedOperation.UnKnowError：表示识别失败；
         :type Type: int
         :param _Polygon: 该发票在原图片中的四点坐标。
         :type Polygon: :class:`tencentcloud.ocr.v20181119.models.Polygon`
-        :param _Angle: 识别出的图片在混贴票据图片中的旋转角度。
+        :param _Angle: 识别出切图后各图片的旋转角度。
         :type Angle: float
         :param _SingleInvoiceInfos: 识别到的内容。
         :type SingleInvoiceInfos: :class:`tencentcloud.ocr.v20181119.models.SingleInvoiceItem`
@@ -14047,7 +14047,7 @@ FailedOperation.UnKnowError：表示识别失败；
 
     @property
     def Angle(self):
-        """识别出的图片在混贴票据图片中的旋转角度。
+        """识别出切图后各图片的旋转角度。
         :rtype: float
         """
         return self._Angle

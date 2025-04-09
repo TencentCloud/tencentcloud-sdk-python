@@ -1429,6 +1429,29 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCsReportCountDataInfo(self, request):
+        """获取云存上报统计信息
+
+        :param request: Request instance for DescribeCsReportCountDataInfo.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCsReportCountDataInfoRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCsReportCountDataInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCsReportCountDataInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCsReportCountDataInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDevice(self, request):
         """用于查看某个设备的详细信息
 

@@ -8193,10 +8193,8 @@ class CidrForCcn(AbstractModel):
     def __init__(self):
         r"""
         :param _Cidr: local cidr值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Cidr: str
         :param _PublishedToVbc: 是否发布到了云联网。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PublishedToVbc: bool
         """
         self._Cidr = None
@@ -8205,7 +8203,6 @@ class CidrForCcn(AbstractModel):
     @property
     def Cidr(self):
         """local cidr值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Cidr
@@ -8217,7 +8214,6 @@ class CidrForCcn(AbstractModel):
     @property
     def PublishedToVbc(self):
         """是否发布到了云联网。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._PublishedToVbc
@@ -41651,21 +41647,21 @@ class FlowLog(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpcId: 私用网络ID或者统一ID，建议使用统一ID。
+        :param _VpcId: 私用网络唯一ID。可通过[DescribeVpcs](https://cloud.tencent.com/document/product/1108/43663)接口获取。
         :type VpcId: str
         :param _FlowLogId: 流日志唯一ID。
         :type FlowLogId: str
         :param _FlowLogName: 流日志实例名字。
         :type FlowLogName: str
-        :param _ResourceType: 流日志所属资源类型，VPC|SUBNET|NETWORKINTERFACE|CCN|NAT|DCG。
+        :param _ResourceType: 流日志所属资源类型：VPC(私有网络)，SUBNET（子网），NETWORKINTERFACE（网卡），CCN（云联网），NAT（网络地址转化），DCG（专线网关）。
         :type ResourceType: str
         :param _ResourceId: 资源唯一ID。
         :type ResourceId: str
-        :param _TrafficType: 流日志采集类型，ACCEPT|REJECT|ALL。
+        :param _TrafficType: 流日志采集类型，ACCEPT（允许），REJECT（拒绝），ALL（全部）。
         :type TrafficType: str
         :param _CloudLogId: 流日志存储ID。
         :type CloudLogId: str
-        :param _CloudLogState: 流日志存储ID状态。
+        :param _CloudLogState: 流日志存储ID状态。SUCCESS（成功），DELETED（删除）。
         :type CloudLogState: str
         :param _FlowLogDescription: 流日志描述信息。
         :type FlowLogDescription: str
@@ -41676,13 +41672,10 @@ class FlowLog(AbstractModel):
         :param _Enable: 是否启用，true-启用，false-停用。
         :type Enable: bool
         :param _StorageType: 消费端类型：cls、ckafka。
-注意：此字段可能返回 null，表示取不到有效值。
         :type StorageType: str
         :param _FlowLogStorage: 消费端信息，当消费端类型为ckafka时返回。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowLogStorage: :class:`tencentcloud.vpc.v20170312.models.FlowLogStorage`
         :param _CloudLogRegion: 流日志存储ID对应的地域信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CloudLogRegion: str
         """
         self._VpcId = None
@@ -41703,7 +41696,7 @@ class FlowLog(AbstractModel):
 
     @property
     def VpcId(self):
-        """私用网络ID或者统一ID，建议使用统一ID。
+        """私用网络唯一ID。可通过[DescribeVpcs](https://cloud.tencent.com/document/product/1108/43663)接口获取。
         :rtype: str
         """
         return self._VpcId
@@ -41736,7 +41729,7 @@ class FlowLog(AbstractModel):
 
     @property
     def ResourceType(self):
-        """流日志所属资源类型，VPC|SUBNET|NETWORKINTERFACE|CCN|NAT|DCG。
+        """流日志所属资源类型：VPC(私有网络)，SUBNET（子网），NETWORKINTERFACE（网卡），CCN（云联网），NAT（网络地址转化），DCG（专线网关）。
         :rtype: str
         """
         return self._ResourceType
@@ -41758,7 +41751,7 @@ class FlowLog(AbstractModel):
 
     @property
     def TrafficType(self):
-        """流日志采集类型，ACCEPT|REJECT|ALL。
+        """流日志采集类型，ACCEPT（允许），REJECT（拒绝），ALL（全部）。
         :rtype: str
         """
         return self._TrafficType
@@ -41780,7 +41773,7 @@ class FlowLog(AbstractModel):
 
     @property
     def CloudLogState(self):
-        """流日志存储ID状态。
+        """流日志存储ID状态。SUCCESS（成功），DELETED（删除）。
         :rtype: str
         """
         return self._CloudLogState
@@ -41836,7 +41829,6 @@ class FlowLog(AbstractModel):
     @property
     def StorageType(self):
         """消费端类型：cls、ckafka。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StorageType
@@ -41848,7 +41840,6 @@ class FlowLog(AbstractModel):
     @property
     def FlowLogStorage(self):
         """消费端信息，当消费端类型为ckafka时返回。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vpc.v20170312.models.FlowLogStorage`
         """
         return self._FlowLogStorage
@@ -41860,7 +41851,6 @@ class FlowLog(AbstractModel):
     @property
     def CloudLogRegion(self):
         """流日志存储ID对应的地域信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CloudLogRegion
@@ -41913,7 +41903,6 @@ class FlowLogStorage(AbstractModel):
         :param _StorageId: 存储实例Id，当流日志存储类型为ckafka时，必填。
         :type StorageId: str
         :param _StorageTopic: 主题Id，当流日志存储类型为ckafka时，必填。
-注意：此字段可能返回 null，表示取不到有效值。
         :type StorageTopic: str
         """
         self._StorageId = None
@@ -41933,7 +41922,6 @@ class FlowLogStorage(AbstractModel):
     @property
     def StorageTopic(self):
         """主题Id，当流日志存储类型为ckafka时，必填。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StorageTopic
@@ -42812,13 +42800,10 @@ class HaVipAssociation(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceId: HaVip绑定的子机或网卡唯一ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _HaVipId: HaVip实例唯一ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type HaVipId: str
         :param _InstanceType: HaVip绑定的类型。取值:CVM, ENI。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceType: str
         """
         self._InstanceId = None
@@ -42828,7 +42813,6 @@ class HaVipAssociation(AbstractModel):
     @property
     def InstanceId(self):
         """HaVip绑定的子机或网卡唯一ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -42840,7 +42824,6 @@ class HaVipAssociation(AbstractModel):
     @property
     def HaVipId(self):
         """HaVip实例唯一ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HaVipId
@@ -42852,7 +42835,6 @@ class HaVipAssociation(AbstractModel):
     @property
     def InstanceType(self):
         """HaVip绑定的类型。取值:CVM, ENI。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceType
@@ -43080,34 +43062,24 @@ class HighPriorityRoute(AbstractModel):
     def __init__(self):
         r"""
         :param _HighPriorityRouteTableId: 高优路由表唯一 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type HighPriorityRouteTableId: str
         :param _HighPriorityRouteId: 高优路由表条目唯一 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type HighPriorityRouteId: str
         :param _DestinationCidrBlock: 目标网段
-注意：此字段可能返回 null，表示取不到有效值。
         :type DestinationCidrBlock: str
         :param _GatewayType: 网关类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayType: str
         :param _GatewayId: 网关唯一ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayId: str
         :param _Description: 高优路由条目描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _SubnetRouteAlgorithm: ECMP算法，支持的算法有：ECMP_QUINTUPLE_HASH：五元组hash，ECMP_SOURCE_DESTINATION_IP_HASH：源和目的IP hash，ECMP_DESTINATION_IP_HASH：目的IP hash，ECMP_SOURCE_IP_HASH：源IP hash。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetRouteAlgorithm: str
         :param _IsCdc: 出参展示，是否为CDC属性高优路由
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsCdc: bool
         :param _CdcId: 出参展示，CDC 唯一ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type CdcId: str
         :param _CreatedTime: 创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedTime: str
         """
         self._HighPriorityRouteTableId = None
@@ -43124,7 +43096,6 @@ class HighPriorityRoute(AbstractModel):
     @property
     def HighPriorityRouteTableId(self):
         """高优路由表唯一 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HighPriorityRouteTableId
@@ -43136,7 +43107,6 @@ class HighPriorityRoute(AbstractModel):
     @property
     def HighPriorityRouteId(self):
         """高优路由表条目唯一 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HighPriorityRouteId
@@ -43148,7 +43118,6 @@ class HighPriorityRoute(AbstractModel):
     @property
     def DestinationCidrBlock(self):
         """目标网段
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DestinationCidrBlock
@@ -43160,7 +43129,6 @@ class HighPriorityRoute(AbstractModel):
     @property
     def GatewayType(self):
         """网关类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GatewayType
@@ -43172,7 +43140,6 @@ class HighPriorityRoute(AbstractModel):
     @property
     def GatewayId(self):
         """网关唯一ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GatewayId
@@ -43184,7 +43151,6 @@ class HighPriorityRoute(AbstractModel):
     @property
     def Description(self):
         """高优路由条目描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -43196,7 +43162,6 @@ class HighPriorityRoute(AbstractModel):
     @property
     def SubnetRouteAlgorithm(self):
         """ECMP算法，支持的算法有：ECMP_QUINTUPLE_HASH：五元组hash，ECMP_SOURCE_DESTINATION_IP_HASH：源和目的IP hash，ECMP_DESTINATION_IP_HASH：目的IP hash，ECMP_SOURCE_IP_HASH：源IP hash。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubnetRouteAlgorithm
@@ -43208,7 +43173,6 @@ class HighPriorityRoute(AbstractModel):
     @property
     def IsCdc(self):
         """出参展示，是否为CDC属性高优路由
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsCdc
@@ -43220,7 +43184,6 @@ class HighPriorityRoute(AbstractModel):
     @property
     def CdcId(self):
         """出参展示，CDC 唯一ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CdcId
@@ -43232,7 +43195,6 @@ class HighPriorityRoute(AbstractModel):
     @property
     def CreatedTime(self):
         """创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreatedTime
@@ -43271,22 +43233,16 @@ class HighPriorityRouteTable(AbstractModel):
     def __init__(self):
         r"""
         :param _HighPriorityRouteTableId: 高优路由表唯一 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type HighPriorityRouteTableId: str
         :param _VpcId: VPC实例ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
         :param _Name: 高优路由表名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _SubnetSet: 高优路由表关联的子网列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetSet: list of str
         :param _HighPriorityRouteSet: 高优路由表条目信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type HighPriorityRouteSet: list of HighPriorityRoute
         :param _CreatedTime: 创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedTime: str
         """
         self._HighPriorityRouteTableId = None
@@ -43299,7 +43255,6 @@ class HighPriorityRouteTable(AbstractModel):
     @property
     def HighPriorityRouteTableId(self):
         """高优路由表唯一 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HighPriorityRouteTableId
@@ -43311,7 +43266,6 @@ class HighPriorityRouteTable(AbstractModel):
     @property
     def VpcId(self):
         """VPC实例ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VpcId
@@ -43323,7 +43277,6 @@ class HighPriorityRouteTable(AbstractModel):
     @property
     def Name(self):
         """高优路由表名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -43335,7 +43288,6 @@ class HighPriorityRouteTable(AbstractModel):
     @property
     def SubnetSet(self):
         """高优路由表关联的子网列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._SubnetSet
@@ -43347,7 +43299,6 @@ class HighPriorityRouteTable(AbstractModel):
     @property
     def HighPriorityRouteSet(self):
         """高优路由表条目信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of HighPriorityRoute
         """
         return self._HighPriorityRouteSet
@@ -43359,7 +43310,6 @@ class HighPriorityRouteTable(AbstractModel):
     @property
     def CreatedTime(self):
         """创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreatedTime
@@ -45661,10 +45611,8 @@ class Ipv6Address(AbstractModel):
 <li>`AVAILABLE`：可用的</li>
         :type State: str
         :param _PublicIpAddress: 如果 IPv6地址是 ULA 类型，绑定的公网IP地址。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PublicIpAddress: str
         :param _AddressType: `IPv6`地址的类型: `GUA`(全球单播地址), `OTHER`(非GUA/ULA地址), `ULA`(唯一本地地址)
-注意：此字段可能返回 null，表示取不到有效值。
         :type AddressType: str
         """
         self._Address = None
@@ -45749,7 +45697,6 @@ class Ipv6Address(AbstractModel):
     @property
     def PublicIpAddress(self):
         """如果 IPv6地址是 ULA 类型，绑定的公网IP地址。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PublicIpAddress
@@ -45761,7 +45708,6 @@ class Ipv6Address(AbstractModel):
     @property
     def AddressType(self):
         """`IPv6`地址的类型: `GUA`(全球单播地址), `OTHER`(非GUA/ULA地址), `ULA`(唯一本地地址)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AddressType
@@ -46061,7 +46007,6 @@ class LocalGateway(AbstractModel):
         :param _CreateTime: 本地网关创建时间
         :type CreateTime: str
         :param _TagSet: 标签键值对。	
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagSet: list of Tag
         :param _LocalGatewayId: 本地网关实例ID（计划起用）
         :type LocalGatewayId: str
@@ -46144,7 +46089,6 @@ class LocalGateway(AbstractModel):
     @property
     def TagSet(self):
         """标签键值对。	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._TagSet
@@ -52546,6 +52490,8 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
         :type CustomerGatewayId: str
         :param _HealthCheckConfig: 健康检查配置
         :type HealthCheckConfig: :class:`tencentcloud.vpc.v20170312.models.HealthCheckConfig`
+        :param _BgpConfig: BGP隧道配置
+        :type BgpConfig: :class:`tencentcloud.vpc.v20170312.models.BgpConfig`
         """
         self._VpnConnectionId = None
         self._VpnConnectionName = None
@@ -52562,6 +52508,7 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
         self._DpdAction = None
         self._CustomerGatewayId = None
         self._HealthCheckConfig = None
+        self._BgpConfig = None
 
     @property
     def VpnConnectionId(self):
@@ -52728,6 +52675,17 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
     def HealthCheckConfig(self, HealthCheckConfig):
         self._HealthCheckConfig = HealthCheckConfig
 
+    @property
+    def BgpConfig(self):
+        """BGP隧道配置
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.BgpConfig`
+        """
+        return self._BgpConfig
+
+    @BgpConfig.setter
+    def BgpConfig(self, BgpConfig):
+        self._BgpConfig = BgpConfig
+
 
     def _deserialize(self, params):
         self._VpnConnectionId = params.get("VpnConnectionId")
@@ -52756,6 +52714,9 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
         if params.get("HealthCheckConfig") is not None:
             self._HealthCheckConfig = HealthCheckConfig()
             self._HealthCheckConfig._deserialize(params.get("HealthCheckConfig"))
+        if params.get("BgpConfig") is not None:
+            self._BgpConfig = BgpConfig()
+            self._BgpConfig._deserialize(params.get("BgpConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -54897,10 +54858,8 @@ class NetworkAclEntry(AbstractModel):
         :param _Priority: 优先级，从1开始。	
         :type Priority: int
         :param _NetworkAclIpv4EntryId: IPv4网络ACL条目唯一ID。当修改ACL条目时，NetworkAclIpv4EntryId和NetworkAclIpv6EntryID至少提供一个。
-注意：此字段可能返回 null，表示取不到有效值。
         :type NetworkAclIpv4EntryId: str
         :param _NetworkAclIpv6EntryId: IPv6网络ACL条目唯一ID。当修改ACL条目时，NetworkAclIpv4EntryId和NetworkAclIpv6EntryId至少提供一个。
-注意：此字段可能返回 null，表示取不到有效值。
         :type NetworkAclIpv6EntryId: str
         """
         self._Protocol = None
@@ -55005,7 +54964,6 @@ class NetworkAclEntry(AbstractModel):
     @property
     def NetworkAclIpv4EntryId(self):
         """IPv4网络ACL条目唯一ID。当修改ACL条目时，NetworkAclIpv4EntryId和NetworkAclIpv6EntryID至少提供一个。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NetworkAclIpv4EntryId
@@ -55017,7 +54975,6 @@ class NetworkAclEntry(AbstractModel):
     @property
     def NetworkAclIpv6EntryId(self):
         """IPv6网络ACL条目唯一ID。当修改ACL条目时，NetworkAclIpv4EntryId和NetworkAclIpv6EntryId至少提供一个。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NetworkAclIpv6EntryId
@@ -56245,16 +56202,12 @@ class PolicyStatistics(AbstractModel):
     def __init__(self):
         r"""
         :param _IngressIPv4TotalCount: 入站IPv4总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type IngressIPv4TotalCount: int
         :param _IngressIPv6TotalCount: 入站IPv6总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type IngressIPv6TotalCount: int
         :param _EgressIPv4TotalCount: 出站IPv4总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type EgressIPv4TotalCount: int
         :param _EgressIPv6TotalCount: 出站IPv6总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type EgressIPv6TotalCount: int
         """
         self._IngressIPv4TotalCount = None
@@ -56265,7 +56218,6 @@ class PolicyStatistics(AbstractModel):
     @property
     def IngressIPv4TotalCount(self):
         """入站IPv4总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IngressIPv4TotalCount
@@ -56277,7 +56229,6 @@ class PolicyStatistics(AbstractModel):
     @property
     def IngressIPv6TotalCount(self):
         """入站IPv6总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IngressIPv6TotalCount
@@ -56289,7 +56240,6 @@ class PolicyStatistics(AbstractModel):
     @property
     def EgressIPv4TotalCount(self):
         """出站IPv4总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._EgressIPv4TotalCount
@@ -56301,7 +56251,6 @@ class PolicyStatistics(AbstractModel):
     @property
     def EgressIPv6TotalCount(self):
         """出站IPv6总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._EgressIPv6TotalCount
@@ -61371,10 +61320,8 @@ class RouteECMPAlgorithm(AbstractModel):
     def __init__(self):
         r"""
         :param _DestinationCidrBlock:  目标网段
-注意：此字段可能返回 null，表示取不到有效值。
         :type DestinationCidrBlock: str
         :param _SubnetRouteAlgorithm: 支持的 ECMP算法有：ECMP_QUINTUPLE_HASH：五元组hash，ECMP_SOURCE_DESTINATION_IP_HASH：源和目的IP hash，ECMP_DESTINATION_IP_HASH：目的IP hash，ECMP_SOURCE_IP_HASH：源IP hash。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetRouteAlgorithm: str
         """
         self._DestinationCidrBlock = None
@@ -61383,7 +61330,6 @@ class RouteECMPAlgorithm(AbstractModel):
     @property
     def DestinationCidrBlock(self):
         """ 目标网段
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DestinationCidrBlock
@@ -61395,7 +61341,6 @@ class RouteECMPAlgorithm(AbstractModel):
     @property
     def SubnetRouteAlgorithm(self):
         """支持的 ECMP算法有：ECMP_QUINTUPLE_HASH：五元组hash，ECMP_SOURCE_DESTINATION_IP_HASH：源和目的IP hash，ECMP_DESTINATION_IP_HASH：目的IP hash，ECMP_SOURCE_IP_HASH：源IP hash。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubnetRouteAlgorithm
@@ -61598,7 +61543,6 @@ class RouteTable(AbstractModel):
         :param _TagSet: 标签键值对。
         :type TagSet: list of Tag
         :param _LocalCidrForCcn: local路由是否发布云联网。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LocalCidrForCcn: list of CidrForCcn
         """
         self._VpcId = None
@@ -61702,7 +61646,6 @@ class RouteTable(AbstractModel):
     @property
     def LocalCidrForCcn(self):
         """local路由是否发布云联网。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CidrForCcn
         """
         return self._LocalCidrForCcn
@@ -61760,10 +61703,8 @@ class RouteTableAssociation(AbstractModel):
     def __init__(self):
         r"""
         :param _SubnetId: 子网实例ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetId: str
         :param _RouteTableId: 路由表实例ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RouteTableId: str
         """
         self._SubnetId = None
@@ -61772,7 +61713,6 @@ class RouteTableAssociation(AbstractModel):
     @property
     def SubnetId(self):
         """子网实例ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubnetId
@@ -61784,7 +61724,6 @@ class RouteTableAssociation(AbstractModel):
     @property
     def RouteTableId(self):
         """路由表实例ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RouteTableId
@@ -61829,7 +61768,6 @@ class SecurityGroup(AbstractModel):
         :param _TagSet: 标签键值对。
         :type TagSet: list of Tag
         :param _UpdateTime: 安全组更新时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         """
         self._SecurityGroupId = None
@@ -61921,7 +61859,6 @@ class SecurityGroup(AbstractModel):
     @property
     def UpdateTime(self):
         """安全组更新时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime
@@ -62250,38 +62187,27 @@ class SecurityGroupPolicy(AbstractModel):
     def __init__(self):
         r"""
         :param _PolicyIndex: 安全组规则索引号，值会随着安全组规则的变更动态变化。使用PolicyIndex时，请先调用`DescribeSecurityGroupPolicies`获取到规则的PolicyIndex，并且结合返回值中的Version一起使用处理规则。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyIndex: int
         :param _Protocol: 协议, 取值: TCP,UDP,ICMP,ICMPv6,ALL。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Protocol: str
         :param _Port: 端口(all, 离散port,  range)。
 说明：如果Protocol设置为ALL，则Port也需要设置为all。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Port: str
         :param _ServiceTemplate: 协议端口ID或者协议端口组ID。ServiceTemplate和Protocol+Port互斥。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceTemplate: :class:`tencentcloud.vpc.v20170312.models.ServiceTemplateSpecification`
         :param _CidrBlock: 网段或IP(互斥)，特殊说明：0.0.0.0/n 都会映射为0.0.0.0/0。作为入参时，可使用字符串`MY_PUBLIC_IP`指代发起请求的公网IP地址。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CidrBlock: str
         :param _Ipv6CidrBlock: 网段或IPv6(互斥)。作为入参时，可使用字符串`MY_PUBLIC_IP`指代发起请求的公网IPv6地址。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ipv6CidrBlock: str
         :param _SecurityGroupId: 安全组实例ID，例如：sg-ohuuioma。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityGroupId: str
         :param _AddressTemplate: IP地址ID或者IP地址组ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AddressTemplate: :class:`tencentcloud.vpc.v20170312.models.AddressTemplateSpecification`
         :param _Action: ACCEPT 或 DROP。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Action: str
         :param _PolicyDescription: 安全组规则描述。作为入参时，当未传递该参数或值为空，且参数CidrBlock或Ipv6CidrBlock值为MY_PUBLIC_IP时，该参数的值将会被自动填充为Replaced-From-MY_PUBLIC_IP。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyDescription: str
         :param _ModifyTime: 安全组最近修改时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyTime: str
         """
         self._PolicyIndex = None
@@ -62299,7 +62225,6 @@ class SecurityGroupPolicy(AbstractModel):
     @property
     def PolicyIndex(self):
         """安全组规则索引号，值会随着安全组规则的变更动态变化。使用PolicyIndex时，请先调用`DescribeSecurityGroupPolicies`获取到规则的PolicyIndex，并且结合返回值中的Version一起使用处理规则。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PolicyIndex
@@ -62311,7 +62236,6 @@ class SecurityGroupPolicy(AbstractModel):
     @property
     def Protocol(self):
         """协议, 取值: TCP,UDP,ICMP,ICMPv6,ALL。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Protocol
@@ -62324,7 +62248,6 @@ class SecurityGroupPolicy(AbstractModel):
     def Port(self):
         """端口(all, 离散port,  range)。
 说明：如果Protocol设置为ALL，则Port也需要设置为all。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Port
@@ -62336,7 +62259,6 @@ class SecurityGroupPolicy(AbstractModel):
     @property
     def ServiceTemplate(self):
         """协议端口ID或者协议端口组ID。ServiceTemplate和Protocol+Port互斥。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vpc.v20170312.models.ServiceTemplateSpecification`
         """
         return self._ServiceTemplate
@@ -62348,7 +62270,6 @@ class SecurityGroupPolicy(AbstractModel):
     @property
     def CidrBlock(self):
         """网段或IP(互斥)，特殊说明：0.0.0.0/n 都会映射为0.0.0.0/0。作为入参时，可使用字符串`MY_PUBLIC_IP`指代发起请求的公网IP地址。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CidrBlock
@@ -62360,7 +62281,6 @@ class SecurityGroupPolicy(AbstractModel):
     @property
     def Ipv6CidrBlock(self):
         """网段或IPv6(互斥)。作为入参时，可使用字符串`MY_PUBLIC_IP`指代发起请求的公网IPv6地址。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Ipv6CidrBlock
@@ -62372,7 +62292,6 @@ class SecurityGroupPolicy(AbstractModel):
     @property
     def SecurityGroupId(self):
         """安全组实例ID，例如：sg-ohuuioma。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SecurityGroupId
@@ -62384,7 +62303,6 @@ class SecurityGroupPolicy(AbstractModel):
     @property
     def AddressTemplate(self):
         """IP地址ID或者IP地址组ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vpc.v20170312.models.AddressTemplateSpecification`
         """
         return self._AddressTemplate
@@ -62396,7 +62314,6 @@ class SecurityGroupPolicy(AbstractModel):
     @property
     def Action(self):
         """ACCEPT 或 DROP。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Action
@@ -62408,7 +62325,6 @@ class SecurityGroupPolicy(AbstractModel):
     @property
     def PolicyDescription(self):
         """安全组规则描述。作为入参时，当未传递该参数或值为空，且参数CidrBlock或Ipv6CidrBlock值为MY_PUBLIC_IP时，该参数的值将会被自动填充为Replaced-From-MY_PUBLIC_IP。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PolicyDescription
@@ -62420,7 +62336,6 @@ class SecurityGroupPolicy(AbstractModel):
     @property
     def ModifyTime(self):
         """安全组最近修改时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ModifyTime
@@ -62464,16 +62379,12 @@ class SecurityGroupPolicySet(AbstractModel):
     def __init__(self):
         r"""
         :param _Version: 安全组规则当前版本。用户每次更新安全规则版本会自动加1，防止更新的路由规则已过期，不填不考虑冲突。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
         :param _Egress: 出站规则。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Egress: list of SecurityGroupPolicy
         :param _Ingress: 入站规则。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ingress: list of SecurityGroupPolicy
         :param _PolicyStatistics: 安全组策略条目统计。只用于出参。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyStatistics: :class:`tencentcloud.vpc.v20170312.models.PolicyStatistics`
         """
         self._Version = None
@@ -62484,7 +62395,6 @@ class SecurityGroupPolicySet(AbstractModel):
     @property
     def Version(self):
         """安全组规则当前版本。用户每次更新安全规则版本会自动加1，防止更新的路由规则已过期，不填不考虑冲突。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Version
@@ -62496,7 +62406,6 @@ class SecurityGroupPolicySet(AbstractModel):
     @property
     def Egress(self):
         """出站规则。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SecurityGroupPolicy
         """
         return self._Egress
@@ -62508,7 +62417,6 @@ class SecurityGroupPolicySet(AbstractModel):
     @property
     def Ingress(self):
         """入站规则。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SecurityGroupPolicy
         """
         return self._Ingress
@@ -62520,7 +62428,6 @@ class SecurityGroupPolicySet(AbstractModel):
     @property
     def PolicyStatistics(self):
         """安全组策略条目统计。只用于出参。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vpc.v20170312.models.PolicyStatistics`
         """
         return self._PolicyStatistics
@@ -65138,13 +65045,10 @@ class TrafficMirror(AbstractModel):
         :param _CreateTime: 流量镜像创建时间。
         :type CreateTime: str
         :param _Type: 流量镜像的类型。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _SubnetId: 流量镜像所属的子网ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetId: str
         :param _TargetInfo: 流量镜接收目标资源信息，当接收目标为ENI和CLB时返回。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TargetInfo: list of TrafficMirrorTargetResourceInfo
         """
         self._VpcId = None
@@ -65286,7 +65190,6 @@ class TrafficMirror(AbstractModel):
     @property
     def Type(self):
         """流量镜像的类型。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -65298,7 +65201,6 @@ class TrafficMirror(AbstractModel):
     @property
     def SubnetId(self):
         """流量镜像所属的子网ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubnetId
@@ -65310,7 +65212,6 @@ class TrafficMirror(AbstractModel):
     @property
     def TargetInfo(self):
         """流量镜接收目标资源信息，当接收目标为ENI和CLB时返回。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TrafficMirrorTargetResourceInfo
         """
         return self._TargetInfo
@@ -65465,10 +65366,8 @@ class TrafficMirrorTarget(AbstractModel):
         :param _AlgHash: 流量镜像接收IP组，均衡规则，支持ENI/FIVE_TUPLE_FLOW（vpc），FIVE_TUPLE_FLOW（公网IP）
         :type AlgHash: str
         :param _TargetEndPoints: 流量镜像的接收endpoint（公网IP）
-注意：此字段可能返回 null，表示取不到有效值。
         :type TargetEndPoints: list of str
         :param _TargetType: 流量镜像的接收类型，分别为：IP/ENI/CLB
-注意：此字段可能返回 null，表示取不到有效值。
         :type TargetType: str
         """
         self._TargetIps = None
@@ -65501,7 +65400,6 @@ class TrafficMirrorTarget(AbstractModel):
     @property
     def TargetEndPoints(self):
         """流量镜像的接收endpoint（公网IP）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._TargetEndPoints
@@ -65513,7 +65411,6 @@ class TrafficMirrorTarget(AbstractModel):
     @property
     def TargetType(self):
         """流量镜像的接收类型，分别为：IP/ENI/CLB
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TargetType
@@ -67848,10 +67745,8 @@ class VpcTaskResultDetailInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _ResourceId: 资源ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceId: str
         :param _Status: 状态。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         """
         self._ResourceId = None
@@ -67860,7 +67755,6 @@ class VpcTaskResultDetailInfo(AbstractModel):
     @property
     def ResourceId(self):
         """资源ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceId
@@ -67872,7 +67766,6 @@ class VpcTaskResultDetailInfo(AbstractModel):
     @property
     def Status(self):
         """状态。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status

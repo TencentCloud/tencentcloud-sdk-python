@@ -27,7 +27,9 @@ class SmopClient(AbstractClient):
 
 
     def SubmitTaskEvent(self, request):
-        """提交任务事件接口
+        """smop产品下线，接口也一起下线
+
+        提交任务事件接口
 
         :param request: Request instance for SubmitTaskEvent.
         :type request: :class:`tencentcloud.smop.v20201203.models.SubmitTaskEventRequest`

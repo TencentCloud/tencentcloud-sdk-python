@@ -23436,10 +23436,12 @@ class DescribeAssetImageDetailResponse(AbstractModel):
         :type CreateTime: str
         :param _Size: 镜像大小
         :type Size: int
-        :param _HostCnt: 关联主机个数
+        :param _HostCnt: 关联主机个数(包含普通节点数和超级节点数)
         :type HostCnt: int
         :param _ContainerCnt: 关联容器个数
         :type ContainerCnt: int
+        :param _SuperNodeCnt: 超级节点数
+        :type SuperNodeCnt: int
         :param _ScanTime: 最近扫描时间
         :type ScanTime: str
         :param _VulCnt: 漏洞个数
@@ -23494,6 +23496,7 @@ class DescribeAssetImageDetailResponse(AbstractModel):
         self._Size = None
         self._HostCnt = None
         self._ContainerCnt = None
+        self._SuperNodeCnt = None
         self._ScanTime = None
         self._VulCnt = None
         self._RiskCnt = None
@@ -23575,7 +23578,7 @@ class DescribeAssetImageDetailResponse(AbstractModel):
 
     @property
     def HostCnt(self):
-        """关联主机个数
+        """关联主机个数(包含普通节点数和超级节点数)
         :rtype: int
         """
         return self._HostCnt
@@ -23594,6 +23597,17 @@ class DescribeAssetImageDetailResponse(AbstractModel):
     @ContainerCnt.setter
     def ContainerCnt(self, ContainerCnt):
         self._ContainerCnt = ContainerCnt
+
+    @property
+    def SuperNodeCnt(self):
+        """超级节点数
+        :rtype: int
+        """
+        return self._SuperNodeCnt
+
+    @SuperNodeCnt.setter
+    def SuperNodeCnt(self, SuperNodeCnt):
+        self._SuperNodeCnt = SuperNodeCnt
 
     @property
     def ScanTime(self):
@@ -23857,6 +23871,7 @@ class DescribeAssetImageDetailResponse(AbstractModel):
         self._Size = params.get("Size")
         self._HostCnt = params.get("HostCnt")
         self._ContainerCnt = params.get("ContainerCnt")
+        self._SuperNodeCnt = params.get("SuperNodeCnt")
         self._ScanTime = params.get("ScanTime")
         self._VulCnt = params.get("VulCnt")
         self._RiskCnt = params.get("RiskCnt")
@@ -39696,6 +39711,8 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
         :type DefendClusterCoresCnt: int
         :param _DefendHostCoresCnt: 已防护主机核数
         :type DefendHostCoresCnt: int
+        :param _TrialCoresCnt: 试用的专业版核数
+        :type TrialCoresCnt: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -39719,6 +39736,7 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
         self._FlexibleCoresLimit = None
         self._DefendClusterCoresCnt = None
         self._DefendHostCoresCnt = None
+        self._TrialCoresCnt = None
         self._RequestId = None
 
     @property
@@ -39943,6 +39961,17 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
         self._DefendHostCoresCnt = DefendHostCoresCnt
 
     @property
+    def TrialCoresCnt(self):
+        """试用的专业版核数
+        :rtype: int
+        """
+        return self._TrialCoresCnt
+
+    @TrialCoresCnt.setter
+    def TrialCoresCnt(self, TrialCoresCnt):
+        self._TrialCoresCnt = TrialCoresCnt
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -39975,6 +40004,7 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
         self._FlexibleCoresLimit = params.get("FlexibleCoresLimit")
         self._DefendClusterCoresCnt = params.get("DefendClusterCoresCnt")
         self._DefendHostCoresCnt = params.get("DefendHostCoresCnt")
+        self._TrialCoresCnt = params.get("TrialCoresCnt")
         self._RequestId = params.get("RequestId")
 
 
@@ -54148,8 +54178,10 @@ class EscapeWhiteListInfo(AbstractModel):
         :type ImageName: str
         :param _ID: 白名单记录ID
         :type ID: int
-        :param _HostCount: 关联主机数量
+        :param _HostCount: 关联主机数量（包含普通节点和超级节点数量）
         :type HostCount: int
+        :param _SuperNodeCount: 关联超级节点数量
+        :type SuperNodeCount: int
         :param _ContainerCount: 关联容器数量
         :type ContainerCount: int
         :param _EventType: 加白事件类型
@@ -54165,6 +54197,7 @@ class EscapeWhiteListInfo(AbstractModel):
         self._ImageName = None
         self._ID = None
         self._HostCount = None
+        self._SuperNodeCount = None
         self._ContainerCount = None
         self._EventType = None
         self._InsertTime = None
@@ -54206,7 +54239,7 @@ class EscapeWhiteListInfo(AbstractModel):
 
     @property
     def HostCount(self):
-        """关联主机数量
+        """关联主机数量（包含普通节点和超级节点数量）
         :rtype: int
         """
         return self._HostCount
@@ -54214,6 +54247,17 @@ class EscapeWhiteListInfo(AbstractModel):
     @HostCount.setter
     def HostCount(self, HostCount):
         self._HostCount = HostCount
+
+    @property
+    def SuperNodeCount(self):
+        """关联超级节点数量
+        :rtype: int
+        """
+        return self._SuperNodeCount
+
+    @SuperNodeCount.setter
+    def SuperNodeCount(self, SuperNodeCount):
+        self._SuperNodeCount = SuperNodeCount
 
     @property
     def ContainerCount(self):
@@ -54276,6 +54320,7 @@ class EscapeWhiteListInfo(AbstractModel):
         self._ImageName = params.get("ImageName")
         self._ID = params.get("ID")
         self._HostCount = params.get("HostCount")
+        self._SuperNodeCount = params.get("SuperNodeCount")
         self._ContainerCount = params.get("ContainerCount")
         self._EventType = params.get("EventType")
         self._InsertTime = params.get("InsertTime")
@@ -58550,8 +58595,10 @@ class ImagesInfo(AbstractModel):
         :type CreateTime: str
         :param _Size: 镜像大小
         :type Size: int
-        :param _HostCnt: 主机个数
+        :param _HostCnt: 主机个数(包含普通节点数和超级节点数)
         :type HostCnt: int
+        :param _SuperNodeCnt: 超级节点数
+        :type SuperNodeCnt: int
         :param _ContainerCnt: 容器个数
         :type ContainerCnt: int
         :param _ScanTime: 扫描时间
@@ -58602,6 +58649,7 @@ class ImagesInfo(AbstractModel):
         self._CreateTime = None
         self._Size = None
         self._HostCnt = None
+        self._SuperNodeCnt = None
         self._ContainerCnt = None
         self._ScanTime = None
         self._VulCnt = None
@@ -58671,7 +58719,7 @@ class ImagesInfo(AbstractModel):
 
     @property
     def HostCnt(self):
-        """主机个数
+        """主机个数(包含普通节点数和超级节点数)
         :rtype: int
         """
         return self._HostCnt
@@ -58679,6 +58727,17 @@ class ImagesInfo(AbstractModel):
     @HostCnt.setter
     def HostCnt(self, HostCnt):
         self._HostCnt = HostCnt
+
+    @property
+    def SuperNodeCnt(self):
+        """超级节点数
+        :rtype: int
+        """
+        return self._SuperNodeCnt
+
+    @SuperNodeCnt.setter
+    def SuperNodeCnt(self, SuperNodeCnt):
+        self._SuperNodeCnt = SuperNodeCnt
 
     @property
     def ContainerCnt(self):
@@ -58929,6 +58988,7 @@ class ImagesInfo(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._Size = params.get("Size")
         self._HostCnt = params.get("HostCnt")
+        self._SuperNodeCnt = params.get("SuperNodeCnt")
         self._ContainerCnt = params.get("ContainerCnt")
         self._ScanTime = params.get("ScanTime")
         self._VulCnt = params.get("VulCnt")
@@ -76326,8 +76386,10 @@ class VulAffectedImageInfo(AbstractModel):
         :type ImageID: str
         :param _ImageName: 镜像名称
         :type ImageName: str
-        :param _HostCount: 关联的主机数
+        :param _HostCount: 关联的主机数(包含普通节点数和超级节点数)
         :type HostCount: int
+        :param _SuperNodeCount: 关联的超级节点数
+        :type SuperNodeCount: int
         :param _ContainerCount: 关联的容器数
         :type ContainerCount: int
         :param _ComponentList: 组件列表
@@ -76336,6 +76398,7 @@ class VulAffectedImageInfo(AbstractModel):
         self._ImageID = None
         self._ImageName = None
         self._HostCount = None
+        self._SuperNodeCount = None
         self._ContainerCount = None
         self._ComponentList = None
 
@@ -76363,7 +76426,7 @@ class VulAffectedImageInfo(AbstractModel):
 
     @property
     def HostCount(self):
-        """关联的主机数
+        """关联的主机数(包含普通节点数和超级节点数)
         :rtype: int
         """
         return self._HostCount
@@ -76371,6 +76434,17 @@ class VulAffectedImageInfo(AbstractModel):
     @HostCount.setter
     def HostCount(self, HostCount):
         self._HostCount = HostCount
+
+    @property
+    def SuperNodeCount(self):
+        """关联的超级节点数
+        :rtype: int
+        """
+        return self._SuperNodeCount
+
+    @SuperNodeCount.setter
+    def SuperNodeCount(self, SuperNodeCount):
+        self._SuperNodeCount = SuperNodeCount
 
     @property
     def ContainerCount(self):
@@ -76399,6 +76473,7 @@ class VulAffectedImageInfo(AbstractModel):
         self._ImageID = params.get("ImageID")
         self._ImageName = params.get("ImageName")
         self._HostCount = params.get("HostCount")
+        self._SuperNodeCount = params.get("SuperNodeCount")
         self._ContainerCount = params.get("ContainerCount")
         if params.get("ComponentList") is not None:
             self._ComponentList = []

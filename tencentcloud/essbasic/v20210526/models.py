@@ -2614,6 +2614,8 @@ class ChannelCreateBatchQuickSignUrlRequest(AbstractModel):
         :type CacheApproverInfo: bool
         :param _CanBatchReject: 是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>注：`合同组暂不支持批量拒签功能。`
         :type CanBatchReject: bool
+        :param _PresetApproverInfo: 预设的动态签署方的补充信息，仅匹配对应信息的签署方才能领取合同。暂时仅对个人参与方生效。
+        :type PresetApproverInfo: :class:`tencentcloud.essbasic.v20210526.models.PresetApproverInfo`
         """
         self._FlowApproverInfo = None
         self._Agent = None
@@ -2627,6 +2629,7 @@ class ChannelCreateBatchQuickSignUrlRequest(AbstractModel):
         self._Intention = None
         self._CacheApproverInfo = None
         self._CanBatchReject = None
+        self._PresetApproverInfo = None
 
     @property
     def FlowApproverInfo(self):
@@ -2795,6 +2798,17 @@ class ChannelCreateBatchQuickSignUrlRequest(AbstractModel):
     def CanBatchReject(self, CanBatchReject):
         self._CanBatchReject = CanBatchReject
 
+    @property
+    def PresetApproverInfo(self):
+        """预设的动态签署方的补充信息，仅匹配对应信息的签署方才能领取合同。暂时仅对个人参与方生效。
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.PresetApproverInfo`
+        """
+        return self._PresetApproverInfo
+
+    @PresetApproverInfo.setter
+    def PresetApproverInfo(self, PresetApproverInfo):
+        self._PresetApproverInfo = PresetApproverInfo
+
 
     def _deserialize(self, params):
         if params.get("FlowApproverInfo") is not None:
@@ -2817,6 +2831,9 @@ class ChannelCreateBatchQuickSignUrlRequest(AbstractModel):
             self._Intention._deserialize(params.get("Intention"))
         self._CacheApproverInfo = params.get("CacheApproverInfo")
         self._CanBatchReject = params.get("CanBatchReject")
+        if params.get("PresetApproverInfo") is not None:
+            self._PresetApproverInfo = PresetApproverInfo()
+            self._PresetApproverInfo._deserialize(params.get("PresetApproverInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2892,12 +2909,20 @@ class ChannelCreateBatchSignUrlRequest(AbstractModel):
         :param _Name: 签署方经办人的姓名。
 经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
 
-注：`请确保和合同中填入的一致`，`除动态签署人或子客员工经办人场景外，此参数必填`
+注：
+<ul>
+<li>请确保和合同中填入的一致。</li>
+<li>在动态签署人补充链接场景中，可以通过传入这个值，对补充的个人参与方信息进行限制。仅匹配传入姓名的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。</li>
+</ul>
         :type Name: str
         :param _Mobile: 手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。
 请确认手机号所有方为此业务通知方。
 
-注：`请确保和合同中填入的一致,  若无法保持一致，请确保在发起和生成批量签署链接时传入相同的参与方证件信息`，`除动态签署人或子客员工经办人场景外，此参数必填`
+注：
+<ul>
+<li>请确保和合同中填入的一致,  若无法保持一致，请确保在发起和生成批量签署链接时传入相同的参与方证件信息。</li><li>在生成动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入手机号的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。 </li>
+</ul>
+
         :type Mobile: str
         :param _Operator: 执行本接口操作的员工信息。
 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
@@ -2907,14 +2932,18 @@ class ChannelCreateBatchSignUrlRequest(AbstractModel):
 <li>**HONGKONG_AND_MACAO** : 中国港澳居民来往内地通行证</li>
 <li>**HONGKONG_MACAO_AND_TAIWAN** : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
 
-注：`请确保和合同中填入的一致`
+注：
+1. `请确保和合同中填入的一致`。
+2. `在生成动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入证件类型的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方，且需要和证件号参数一同传递，不能单独进行限制。`
         :type IdCardType: str
         :param _IdCardNumber: 证件号码，应符合以下规则
 <ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
 <li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
 <li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 
-注：`请确保和合同中填入的一致`
+注：
+1. `请确保和合同中填入的一致`。
+2. `在生成动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入证件号的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。`
         :type IdCardNumber: str
         :param _NotifyType: 通知用户方式：
 <ul>
@@ -3010,7 +3039,11 @@ class ChannelCreateBatchSignUrlRequest(AbstractModel):
         """签署方经办人的姓名。
 经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
 
-注：`请确保和合同中填入的一致`，`除动态签署人或子客员工经办人场景外，此参数必填`
+注：
+<ul>
+<li>请确保和合同中填入的一致。</li>
+<li>在动态签署人补充链接场景中，可以通过传入这个值，对补充的个人参与方信息进行限制。仅匹配传入姓名的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。</li>
+</ul>
         :rtype: str
         """
         return self._Name
@@ -3024,7 +3057,11 @@ class ChannelCreateBatchSignUrlRequest(AbstractModel):
         """手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。
 请确认手机号所有方为此业务通知方。
 
-注：`请确保和合同中填入的一致,  若无法保持一致，请确保在发起和生成批量签署链接时传入相同的参与方证件信息`，`除动态签署人或子客员工经办人场景外，此参数必填`
+注：
+<ul>
+<li>请确保和合同中填入的一致,  若无法保持一致，请确保在发起和生成批量签署链接时传入相同的参与方证件信息。</li><li>在生成动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入手机号的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。 </li>
+</ul>
+
         :rtype: str
         """
         return self._Mobile
@@ -3052,7 +3089,9 @@ class ChannelCreateBatchSignUrlRequest(AbstractModel):
 <li>**HONGKONG_AND_MACAO** : 中国港澳居民来往内地通行证</li>
 <li>**HONGKONG_MACAO_AND_TAIWAN** : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
 
-注：`请确保和合同中填入的一致`
+注：
+1. `请确保和合同中填入的一致`。
+2. `在生成动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入证件类型的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方，且需要和证件号参数一同传递，不能单独进行限制。`
         :rtype: str
         """
         return self._IdCardType
@@ -3068,7 +3107,9 @@ class ChannelCreateBatchSignUrlRequest(AbstractModel):
 <li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
 <li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 
-注：`请确保和合同中填入的一致`
+注：
+1. `请确保和合同中填入的一致`。
+2. `在生成动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入证件号的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。`
         :rtype: str
         """
         return self._IdCardNumber
@@ -17242,20 +17283,28 @@ class CreateSignUrlsRequest(AbstractModel):
         :param _OrganizationName: SaaS平台企业员工签署方的企业名称如果名称中包含英文括号()，请使用中文括号（）代替。  注:  `1.GenerateType为"NOT_CHANNEL"时必填` `2.获取B端动态签署人领取链接时,可指定此字段来预先设定签署人的企业,预设后只能以该企业身份去领取合同并完成签署`
         :type OrganizationName: str
         :param _Name: 合同流程里边参与方的姓名。
-注: `GenerateType为"PERSON"(即个人签署方)时必填`
+注: 
+1. `GenerateType为"PERSON"(即个人签署方)时必填`。
+2. `在动态签署人补充链接场景中，可以通过传入这个值，对补充的个人参与方信息进行限制。仅匹配传入姓名的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。`
         :type Name: str
         :param _Mobile: 合同流程里边签署方经办人手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。
-注:  `GenerateType为"PERSON"或"FOLLOWER"时必填`
+注:  
+1. `GenerateType为"PERSON"或"FOLLOWER"时必填。`
+2. `在动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入手机号的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。`
         :type Mobile: str
         :param _IdCardType: 证件类型，支持以下类型
 <ul><li>ID_CARD : 中国大陆居民身份证</li>
 <li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li>
 <li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
+
+`注：在动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入证件类型的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方，且需要和证件号参数一同传递，不能单独进行限制。`
         :type IdCardType: str
         :param _IdCardNumber: 证件号码，应符合以下规则
 <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成(如存在X，请大写)。</li>
 <li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
 <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+
+`注：在动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入证件号的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。`
         :type IdCardNumber: str
         :param _OrganizationOpenId: 第三方平台子客企业的企业的标识, 即OrganizationOpenId。 注:  `1.GenerateType为"CHANNEL"时必填` `2.获取B端动态签署人领取链接时,可指定此字段来预先设定签署人的平台子客企业,预设后只能以该平台子客企业身份去领取合同并完成签署`
         :type OrganizationOpenId: str
@@ -17414,7 +17463,9 @@ class CreateSignUrlsRequest(AbstractModel):
     @property
     def Name(self):
         """合同流程里边参与方的姓名。
-注: `GenerateType为"PERSON"(即个人签署方)时必填`
+注: 
+1. `GenerateType为"PERSON"(即个人签署方)时必填`。
+2. `在动态签署人补充链接场景中，可以通过传入这个值，对补充的个人参与方信息进行限制。仅匹配传入姓名的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。`
         :rtype: str
         """
         return self._Name
@@ -17426,7 +17477,9 @@ class CreateSignUrlsRequest(AbstractModel):
     @property
     def Mobile(self):
         """合同流程里边签署方经办人手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。
-注:  `GenerateType为"PERSON"或"FOLLOWER"时必填`
+注:  
+1. `GenerateType为"PERSON"或"FOLLOWER"时必填。`
+2. `在动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入手机号的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。`
         :rtype: str
         """
         return self._Mobile
@@ -17441,6 +17494,8 @@ class CreateSignUrlsRequest(AbstractModel):
 <ul><li>ID_CARD : 中国大陆居民身份证</li>
 <li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li>
 <li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
+
+`注：在动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入证件类型的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方，且需要和证件号参数一同传递，不能单独进行限制。`
         :rtype: str
         """
         return self._IdCardType
@@ -17455,6 +17510,8 @@ class CreateSignUrlsRequest(AbstractModel):
 <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成(如存在X，请大写)。</li>
 <li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
 <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+
+`注：在动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入证件号的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。`
         :rtype: str
         """
         return self._IdCardNumber
@@ -26637,6 +26694,99 @@ class PrepareFlowsResponse(AbstractModel):
     def _deserialize(self, params):
         self._ConfirmUrl = params.get("ConfirmUrl")
         self._RequestId = params.get("RequestId")
+
+
+class PresetApproverInfo(AbstractModel):
+    """预设的动态签署方的补充信息，仅匹配对应信息的签署方才能领取合同。暂时仅对个人参与方生效。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 预设参与方姓名。
+        :type Name: str
+        :param _Mobile: 预设参与方手机号。
+        :type Mobile: str
+        :param _IdCardNumber: 预设参与方证件号，需要和IdCardType同时传入。
+
+证件号码，应符合以下规则
+<ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成(如存在X，请大写)。</li></ul>
+        :type IdCardNumber: str
+        :param _IdCardType: 预设参与方的证件类型，需要与IdCardNumber同时传入。
+
+证件类型，支持以下类型
+<ul><li><b>ID_CARD</b>: 居民身份证</li></ul>
+        :type IdCardType: str
+        """
+        self._Name = None
+        self._Mobile = None
+        self._IdCardNumber = None
+        self._IdCardType = None
+
+    @property
+    def Name(self):
+        """预设参与方姓名。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Mobile(self):
+        """预设参与方手机号。
+        :rtype: str
+        """
+        return self._Mobile
+
+    @Mobile.setter
+    def Mobile(self, Mobile):
+        self._Mobile = Mobile
+
+    @property
+    def IdCardNumber(self):
+        """预设参与方证件号，需要和IdCardType同时传入。
+
+证件号码，应符合以下规则
+<ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成(如存在X，请大写)。</li></ul>
+        :rtype: str
+        """
+        return self._IdCardNumber
+
+    @IdCardNumber.setter
+    def IdCardNumber(self, IdCardNumber):
+        self._IdCardNumber = IdCardNumber
+
+    @property
+    def IdCardType(self):
+        """预设参与方的证件类型，需要与IdCardNumber同时传入。
+
+证件类型，支持以下类型
+<ul><li><b>ID_CARD</b>: 居民身份证</li></ul>
+        :rtype: str
+        """
+        return self._IdCardType
+
+    @IdCardType.setter
+    def IdCardType(self, IdCardType):
+        self._IdCardType = IdCardType
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Mobile = params.get("Mobile")
+        self._IdCardNumber = params.get("IdCardNumber")
+        self._IdCardType = params.get("IdCardType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ProxyOrganizationOperator(AbstractModel):
