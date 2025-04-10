@@ -6699,6 +6699,301 @@ class DescribeInferTemplatesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeLogsRequest(AbstractModel):
+    """DescribeLogs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Service: 服务类型，TRAIN为任务式建模, NOTEBOOK为Notebook, INFER为在线服务, BATCH为批量预测
+枚举值：
+- TRAIN
+- NOTEBOOK
+- INFER
+- BATCH
+        :type Service: str
+        :param _StartTime: 日志查询开始时间（RFC3339格式的时间字符串），默认值为当前时间的前一个小时
+        :type StartTime: str
+        :param _EndTime: 日志查询结束时间（RFC3339格式的时间字符串），默认值为当前时间
+        :type EndTime: str
+        :param _Limit: 日志查询条数，默认值100，最大值100
+        :type Limit: int
+        :param _ServiceId: 服务ID，和Service参数对应，不同Service的服务ID获取方式不同，具体如下：
+- Service类型为TRAIN：
+  调用[DescribeTrainingTask接口](/document/product/851/75089)查询训练任务详情，ServiceId为接口返回值中Response.TrainingTaskDetail.LatestInstanceId
+- Service类型为NOTEBOOK：
+  调用[DescribeNotebook接口](/document/product/851/95662)查询Notebook详情，ServiceId为接口返回值中Response.NotebookDetail.PodName
+- Service类型为INFER：
+  调用[DescribeModelServiceGroup接口](/document/product/851/82285)查询服务组详情，ServiceId为接口返回值中Response.ServiceGroup.Services.ServiceId
+- Service类型为BATCH：
+  调用[DescribeBatchTask接口](/document/product/851/80180)查询跑批任务详情，ServiceId为接口返回值中Response.BatchTaskDetail.LatestInstanceId
+        :type ServiceId: str
+        :param _PodName: Pod的名称，即需要查询服务对应的Pod，和Service参数对应，不同Service的PodName获取方式不同，具体如下：
+- Service类型为TRAIN：
+  调用[DescribeTrainingTaskPods接口](/document/product/851/75088)查询训练任务pod列表，PodName为接口返回值中Response.PodNames
+- Service类型为NOTEBOOK：
+  调用[DescribeNotebook接口](/document/product/851/95662)查询Notebook详情，PodName为接口返回值中Response.NotebookDetail.PodName
+- Service类型为INFER：
+  调用[DescribeModelService接口](/document/product/851/82287)查询单个服务详情，PodName为接口返回值中Response.Service.ServiceInfo.PodInfos
+- Service类型为BATCH：
+  调用[DescribeBatchTask接口](/document/product/851/80180)查询跑批任务详情，PodName为接口返回值中Response.BatchTaskDetail. PodList
+注：支持结尾通配符*
+        :type PodName: str
+        :param _Order: 排序方向（可选值为ASC, DESC ），默认为DESC
+        :type Order: str
+        :param _OrderField: 按哪个字段排序（可选值为Timestamp），默认值为Timestamp
+        :type OrderField: str
+        :param _Context: 日志查询上下文，查询下一页的时候需要回传这个字段，该字段来自本接口的返回
+        :type Context: str
+        :param _Filters: 过滤条件
+注意: 
+1. Filter.Name：目前只支持Key（也就是按关键字过滤日志）
+2. Filter.Values：表示过滤日志的关键字；Values为多个的时候表示同时满足
+3. Filter. Negative和Filter. Fuzzy没有使用
+        :type Filters: list of Filter
+        """
+        self._Service = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Limit = None
+        self._ServiceId = None
+        self._PodName = None
+        self._Order = None
+        self._OrderField = None
+        self._Context = None
+        self._Filters = None
+
+    @property
+    def Service(self):
+        """服务类型，TRAIN为任务式建模, NOTEBOOK为Notebook, INFER为在线服务, BATCH为批量预测
+枚举值：
+- TRAIN
+- NOTEBOOK
+- INFER
+- BATCH
+        :rtype: str
+        """
+        return self._Service
+
+    @Service.setter
+    def Service(self, Service):
+        self._Service = Service
+
+    @property
+    def StartTime(self):
+        """日志查询开始时间（RFC3339格式的时间字符串），默认值为当前时间的前一个小时
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """日志查询结束时间（RFC3339格式的时间字符串），默认值为当前时间
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Limit(self):
+        """日志查询条数，默认值100，最大值100
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def ServiceId(self):
+        """服务ID，和Service参数对应，不同Service的服务ID获取方式不同，具体如下：
+- Service类型为TRAIN：
+  调用[DescribeTrainingTask接口](/document/product/851/75089)查询训练任务详情，ServiceId为接口返回值中Response.TrainingTaskDetail.LatestInstanceId
+- Service类型为NOTEBOOK：
+  调用[DescribeNotebook接口](/document/product/851/95662)查询Notebook详情，ServiceId为接口返回值中Response.NotebookDetail.PodName
+- Service类型为INFER：
+  调用[DescribeModelServiceGroup接口](/document/product/851/82285)查询服务组详情，ServiceId为接口返回值中Response.ServiceGroup.Services.ServiceId
+- Service类型为BATCH：
+  调用[DescribeBatchTask接口](/document/product/851/80180)查询跑批任务详情，ServiceId为接口返回值中Response.BatchTaskDetail.LatestInstanceId
+        :rtype: str
+        """
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def PodName(self):
+        """Pod的名称，即需要查询服务对应的Pod，和Service参数对应，不同Service的PodName获取方式不同，具体如下：
+- Service类型为TRAIN：
+  调用[DescribeTrainingTaskPods接口](/document/product/851/75088)查询训练任务pod列表，PodName为接口返回值中Response.PodNames
+- Service类型为NOTEBOOK：
+  调用[DescribeNotebook接口](/document/product/851/95662)查询Notebook详情，PodName为接口返回值中Response.NotebookDetail.PodName
+- Service类型为INFER：
+  调用[DescribeModelService接口](/document/product/851/82287)查询单个服务详情，PodName为接口返回值中Response.Service.ServiceInfo.PodInfos
+- Service类型为BATCH：
+  调用[DescribeBatchTask接口](/document/product/851/80180)查询跑批任务详情，PodName为接口返回值中Response.BatchTaskDetail. PodList
+注：支持结尾通配符*
+        :rtype: str
+        """
+        return self._PodName
+
+    @PodName.setter
+    def PodName(self, PodName):
+        self._PodName = PodName
+
+    @property
+    def Order(self):
+        """排序方向（可选值为ASC, DESC ），默认为DESC
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def OrderField(self):
+        """按哪个字段排序（可选值为Timestamp），默认值为Timestamp
+        :rtype: str
+        """
+        return self._OrderField
+
+    @OrderField.setter
+    def OrderField(self, OrderField):
+        self._OrderField = OrderField
+
+    @property
+    def Context(self):
+        """日志查询上下文，查询下一页的时候需要回传这个字段，该字段来自本接口的返回
+        :rtype: str
+        """
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
+
+    @property
+    def Filters(self):
+        """过滤条件
+注意: 
+1. Filter.Name：目前只支持Key（也就是按关键字过滤日志）
+2. Filter.Values：表示过滤日志的关键字；Values为多个的时候表示同时满足
+3. Filter. Negative和Filter. Fuzzy没有使用
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Service = params.get("Service")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Limit = params.get("Limit")
+        self._ServiceId = params.get("ServiceId")
+        self._PodName = params.get("PodName")
+        self._Order = params.get("Order")
+        self._OrderField = params.get("OrderField")
+        self._Context = params.get("Context")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLogsResponse(AbstractModel):
+    """DescribeLogs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Context: 分页的游标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Context: str
+        :param _Content: 日志数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: list of LogIdentity
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Context = None
+        self._Content = None
+        self._RequestId = None
+
+    @property
+    def Context(self):
+        """分页的游标
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
+
+    @property
+    def Content(self):
+        """日志数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LogIdentity
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Context = params.get("Context")
+        if params.get("Content") is not None:
+            self._Content = []
+            for item in params.get("Content"):
+                obj = LogIdentity()
+                obj._deserialize(item)
+                self._Content.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeModelAccelerateTaskRequest(AbstractModel):
     """DescribeModelAccelerateTask请求参数结构体
 
@@ -10525,6 +10820,95 @@ class LogConfig(AbstractModel):
     def _deserialize(self, params):
         self._LogsetId = params.get("LogsetId")
         self._TopicId = params.get("TopicId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogIdentity(AbstractModel):
+    """单条日志数据结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 单条日志的ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param _Message: 单条日志的内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        :param _PodName: 这条日志对应的Pod名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PodName: str
+        :param _Timestamp: 日志的时间戳（RFC3339格式的时间字符串）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timestamp: str
+        """
+        self._Id = None
+        self._Message = None
+        self._PodName = None
+        self._Timestamp = None
+
+    @property
+    def Id(self):
+        """单条日志的ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Message(self):
+        """单条日志的内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def PodName(self):
+        """这条日志对应的Pod名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PodName
+
+    @PodName.setter
+    def PodName(self, PodName):
+        self._PodName = PodName
+
+    @property
+    def Timestamp(self):
+        """日志的时间戳（RFC3339格式的时间字符串）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Message = params.get("Message")
+        self._PodName = params.get("PodName")
+        self._Timestamp = params.get("Timestamp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

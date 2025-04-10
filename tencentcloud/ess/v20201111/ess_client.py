@@ -3066,6 +3066,39 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def OperateTemplate(self, request):
+        """此接口（OperateTemplate）用于对企业自有模板进行管理操作，所有操作都会有对应的回调触发，具体参考回调文档 <a href="https://qian.tencent.com/developers/company/callback_types_templates" target="_blank">模板操作相关回调</a>
+
+        # 支持的操作
+        ## 1. 删除模板 (OperateType=DELETE)
+        此操作会从模板将企业自有模板中彻底删除，若要保留模板而不删除，可将将模板停用。
+
+        ## 2. 启用模板 (OperateType=ENABLE)
+        此操作是将停用的模板启用，操作幂等，若模板已经启用，接口不报错。
+
+        ## 3. 停用模板 (OperateType=DELETE)
+        此操作是将启用态的模板停用，操作幂等，若模板已经停用，接口不报错，停用后，无法通过此模板发起合同，已经发起的合同不受影响。
+
+        :param request: Request instance for OperateTemplate.
+        :type request: :class:`tencentcloud.ess.v20201111.models.OperateTemplateRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.OperateTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OperateTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.OperateTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RenewAutoSignLicense(self, request):
         """给医疗个人自动签许可续期。续期成功后，可对医疗自动签许可追加一年有效期，只可续期一次。
 

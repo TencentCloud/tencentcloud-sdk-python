@@ -7753,6 +7753,175 @@ class CreateIpAccessControlResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreatePostCKafkaFlowRequest(AbstractModel):
+    """CreatePostCKafkaFlow请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CKafkaRegion: 投递的CKafka所在区域
+        :type CKafkaRegion: str
+        :param _CKafkaID: 客户的CKafka 实例ID
+        :type CKafkaID: str
+        :param _Brokers: 支撑环境是IP:PORT，外网环境是domain:PORT
+        :type Brokers: str
+        :param _Compression: 默认为none，支持snappy、gzip和lz4压缩，推荐snappy
+        :type Compression: str
+        :param _VipType: 1-外网TGW，2-支撑环境，默认为支撑环境
+        :type VipType: int
+        :param _LogType: 1-访问日志，2-攻击日志，默认为访问日志
+        :type LogType: int
+        :param _Topic: 主题名称，默认不传或者传空字符串，默认值为waf_post_access_log
+        :type Topic: str
+        :param _KafkaVersion: kafka集群的版本号
+        :type KafkaVersion: str
+        """
+        self._CKafkaRegion = None
+        self._CKafkaID = None
+        self._Brokers = None
+        self._Compression = None
+        self._VipType = None
+        self._LogType = None
+        self._Topic = None
+        self._KafkaVersion = None
+
+    @property
+    def CKafkaRegion(self):
+        """投递的CKafka所在区域
+        :rtype: str
+        """
+        return self._CKafkaRegion
+
+    @CKafkaRegion.setter
+    def CKafkaRegion(self, CKafkaRegion):
+        self._CKafkaRegion = CKafkaRegion
+
+    @property
+    def CKafkaID(self):
+        """客户的CKafka 实例ID
+        :rtype: str
+        """
+        return self._CKafkaID
+
+    @CKafkaID.setter
+    def CKafkaID(self, CKafkaID):
+        self._CKafkaID = CKafkaID
+
+    @property
+    def Brokers(self):
+        """支撑环境是IP:PORT，外网环境是domain:PORT
+        :rtype: str
+        """
+        return self._Brokers
+
+    @Brokers.setter
+    def Brokers(self, Brokers):
+        self._Brokers = Brokers
+
+    @property
+    def Compression(self):
+        """默认为none，支持snappy、gzip和lz4压缩，推荐snappy
+        :rtype: str
+        """
+        return self._Compression
+
+    @Compression.setter
+    def Compression(self, Compression):
+        self._Compression = Compression
+
+    @property
+    def VipType(self):
+        """1-外网TGW，2-支撑环境，默认为支撑环境
+        :rtype: int
+        """
+        return self._VipType
+
+    @VipType.setter
+    def VipType(self, VipType):
+        self._VipType = VipType
+
+    @property
+    def LogType(self):
+        """1-访问日志，2-攻击日志，默认为访问日志
+        :rtype: int
+        """
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def Topic(self):
+        """主题名称，默认不传或者传空字符串，默认值为waf_post_access_log
+        :rtype: str
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def KafkaVersion(self):
+        """kafka集群的版本号
+        :rtype: str
+        """
+        return self._KafkaVersion
+
+    @KafkaVersion.setter
+    def KafkaVersion(self, KafkaVersion):
+        self._KafkaVersion = KafkaVersion
+
+
+    def _deserialize(self, params):
+        self._CKafkaRegion = params.get("CKafkaRegion")
+        self._CKafkaID = params.get("CKafkaID")
+        self._Brokers = params.get("Brokers")
+        self._Compression = params.get("Compression")
+        self._VipType = params.get("VipType")
+        self._LogType = params.get("LogType")
+        self._Topic = params.get("Topic")
+        self._KafkaVersion = params.get("KafkaVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePostCKafkaFlowResponse(AbstractModel):
+    """CreatePostCKafkaFlow返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreatePostCLSFlowRequest(AbstractModel):
     """CreatePostCLSFlow请求参数结构体
 
@@ -17262,6 +17431,90 @@ class DescribePortsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribePostCKafkaFlowsRequest(AbstractModel):
+    """DescribePostCKafkaFlows请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogType: 1-访问日志，2-攻击日志，默认为访问日志。
+        :type LogType: int
+        """
+        self._LogType = None
+
+    @property
+    def LogType(self):
+        """1-访问日志，2-攻击日志，默认为访问日志。
+        :rtype: int
+        """
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+
+    def _deserialize(self, params):
+        self._LogType = params.get("LogType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePostCKafkaFlowsResponse(AbstractModel):
+    """DescribePostCKafkaFlows返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PostCKafkaFlows: 客户的投递流列表
+        :type PostCKafkaFlows: list of PostCKafkaFlowInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PostCKafkaFlows = None
+        self._RequestId = None
+
+    @property
+    def PostCKafkaFlows(self):
+        """客户的投递流列表
+        :rtype: list of PostCKafkaFlowInfo
+        """
+        return self._PostCKafkaFlows
+
+    @PostCKafkaFlows.setter
+    def PostCKafkaFlows(self, PostCKafkaFlows):
+        self._PostCKafkaFlows = PostCKafkaFlows
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("PostCKafkaFlows") is not None:
+            self._PostCKafkaFlows = []
+            for item in params.get("PostCKafkaFlows"):
+                obj = PostCKafkaFlowInfo()
+                obj._deserialize(item)
+                self._PostCKafkaFlows.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribePostCLSFlowsRequest(AbstractModel):
     """DescribePostCLSFlows请求参数结构体
 
@@ -19769,6 +20022,85 @@ class DescribeWebshellStatusResponse(AbstractModel):
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
         self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
+class DestroyPostCKafkaFlowRequest(AbstractModel):
+    """DestroyPostCKafkaFlow请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 投递流的流ID
+        :type FlowId: int
+        :param _LogType: 1-访问日志，2-攻击日志，默认为访问日志。
+        :type LogType: int
+        """
+        self._FlowId = None
+        self._LogType = None
+
+    @property
+    def FlowId(self):
+        """投递流的流ID
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def LogType(self):
+        """1-访问日志，2-攻击日志，默认为访问日志。
+        :rtype: int
+        """
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._LogType = params.get("LogType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DestroyPostCKafkaFlowResponse(AbstractModel):
+    """DestroyPostCKafkaFlow返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -33704,6 +34036,147 @@ class PostAttackDownloadTaskResponse(AbstractModel):
     def _deserialize(self, params):
         self._Flow = params.get("Flow")
         self._RequestId = params.get("RequestId")
+
+
+class PostCKafkaFlowInfo(AbstractModel):
+    """CKafka投递流
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 投递流唯一ID
+        :type FlowId: int
+        :param _LogType: 1-访问日志 2-攻击日志
+        :type LogType: int
+        :param _Status: 状态 0-为关闭 1-为启用
+        :type Status: int
+        :param _CKafkaRegion: CKafka所在区域
+        :type CKafkaRegion: str
+        :param _CKafkaID: CKafka实例ID
+        :type CKafkaID: str
+        :param _Brokers: ckafka地址信息
+        :type Brokers: str
+        :param _Version: ckafka版本号
+        :type Version: str
+        :param _Topic: 主题名称
+        :type Topic: str
+        """
+        self._FlowId = None
+        self._LogType = None
+        self._Status = None
+        self._CKafkaRegion = None
+        self._CKafkaID = None
+        self._Brokers = None
+        self._Version = None
+        self._Topic = None
+
+    @property
+    def FlowId(self):
+        """投递流唯一ID
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def LogType(self):
+        """1-访问日志 2-攻击日志
+        :rtype: int
+        """
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def Status(self):
+        """状态 0-为关闭 1-为启用
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CKafkaRegion(self):
+        """CKafka所在区域
+        :rtype: str
+        """
+        return self._CKafkaRegion
+
+    @CKafkaRegion.setter
+    def CKafkaRegion(self, CKafkaRegion):
+        self._CKafkaRegion = CKafkaRegion
+
+    @property
+    def CKafkaID(self):
+        """CKafka实例ID
+        :rtype: str
+        """
+        return self._CKafkaID
+
+    @CKafkaID.setter
+    def CKafkaID(self, CKafkaID):
+        self._CKafkaID = CKafkaID
+
+    @property
+    def Brokers(self):
+        """ckafka地址信息
+        :rtype: str
+        """
+        return self._Brokers
+
+    @Brokers.setter
+    def Brokers(self, Brokers):
+        self._Brokers = Brokers
+
+    @property
+    def Version(self):
+        """ckafka版本号
+        :rtype: str
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def Topic(self):
+        """主题名称
+        :rtype: str
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._LogType = params.get("LogType")
+        self._Status = params.get("Status")
+        self._CKafkaRegion = params.get("CKafkaRegion")
+        self._CKafkaID = params.get("CKafkaID")
+        self._Brokers = params.get("Brokers")
+        self._Version = params.get("Version")
+        self._Topic = params.get("Topic")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class PostCLSFlowInfo(AbstractModel):

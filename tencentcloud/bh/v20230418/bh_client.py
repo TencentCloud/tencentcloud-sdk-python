@@ -302,6 +302,29 @@ class BhClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateOperationTask(self, request):
+        """创建运维任务
+
+        :param request: Request instance for CreateOperationTask.
+        :type request: :class:`tencentcloud.bh.v20230418.models.CreateOperationTaskRequest`
+        :rtype: :class:`tencentcloud.bh.v20230418.models.CreateOperationTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateOperationTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateOperationTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateResource(self, request):
         """创建堡垒机实例
 
@@ -523,6 +546,29 @@ class BhClient(AbstractClient):
             body = self.call("DeleteDevices", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteDevicesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteOperationTasks(self, request):
+        """删除运维任务
+
+        :param request: Request instance for DeleteOperationTasks.
+        :type request: :class:`tencentcloud.bh.v20230418.models.DeleteOperationTasksRequest`
+        :rtype: :class:`tencentcloud.bh.v20230418.models.DeleteOperationTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteOperationTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteOperationTasksResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -900,6 +946,29 @@ class BhClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeOperationTask(self, request):
+        """获取运维任务列表
+
+        :param request: Request instance for DescribeOperationTask.
+        :type request: :class:`tencentcloud.bh.v20230418.models.DescribeOperationTaskRequest`
+        :rtype: :class:`tencentcloud.bh.v20230418.models.DescribeOperationTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOperationTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOperationTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeResources(self, request):
         """查询用户购买的堡垒机服务信息，包括资源ID、授权点数、VPC、过期时间等。
 
@@ -1153,6 +1222,29 @@ class BhClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyOperationTask(self, request):
+        """修改运维任务
+
+        :param request: Request instance for ModifyOperationTask.
+        :type request: :class:`tencentcloud.bh.v20230418.models.ModifyOperationTaskRequest`
+        :rtype: :class:`tencentcloud.bh.v20230418.models.ModifyOperationTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyOperationTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyOperationTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyResource(self, request):
         """资源变配
 
@@ -1305,6 +1397,29 @@ class BhClient(AbstractClient):
             body = self.call("RunChangePwdTask", params, headers=headers)
             response = json.loads(body)
             model = models.RunChangePwdTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RunOperationTask(self, request):
+        """执行运维任务
+
+        :param request: Request instance for RunOperationTask.
+        :type request: :class:`tencentcloud.bh.v20230418.models.RunOperationTaskRequest`
+        :rtype: :class:`tencentcloud.bh.v20230418.models.RunOperationTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RunOperationTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.RunOperationTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

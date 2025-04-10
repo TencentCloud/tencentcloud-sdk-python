@@ -6937,28 +6937,20 @@ class ContainerEvent(AbstractModel):
     def __init__(self):
         r"""
         :param _FirstTimestamp: 第一次出现的时间，以 ms 为单位的时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type FirstTimestamp: int
         :param _LastTimestamp: 最后一次出现的时间，以 ms 为单位的时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type LastTimestamp: int
         :param _Type: 级别
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Kind: 资源类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Kind: str
         :param _Name: 资源名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Reason: 内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type Reason: str
         :param _Message: 详细描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param _Count: 出现次数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Count: int
         """
         self._FirstTimestamp = None
@@ -6973,7 +6965,6 @@ class ContainerEvent(AbstractModel):
     @property
     def FirstTimestamp(self):
         """第一次出现的时间，以 ms 为单位的时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FirstTimestamp
@@ -6985,7 +6976,6 @@ class ContainerEvent(AbstractModel):
     @property
     def LastTimestamp(self):
         """最后一次出现的时间，以 ms 为单位的时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._LastTimestamp
@@ -6997,7 +6987,6 @@ class ContainerEvent(AbstractModel):
     @property
     def Type(self):
         """级别
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -7009,7 +6998,6 @@ class ContainerEvent(AbstractModel):
     @property
     def Kind(self):
         """资源类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Kind
@@ -7021,7 +7009,6 @@ class ContainerEvent(AbstractModel):
     @property
     def Name(self):
         """资源名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -7033,7 +7020,6 @@ class ContainerEvent(AbstractModel):
     @property
     def Reason(self):
         """内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Reason
@@ -7045,7 +7031,6 @@ class ContainerEvent(AbstractModel):
     @property
     def Message(self):
         """详细描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Message
@@ -7057,7 +7042,6 @@ class ContainerEvent(AbstractModel):
     @property
     def Count(self):
         """出现次数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Count
@@ -14500,10 +14484,8 @@ class CustomPodSchedule(AbstractModel):
     def __init__(self):
         r"""
         :param _ForceSchedule: -
-注意：此字段可能返回 null，表示取不到有效值。
         :type ForceSchedule: :class:`tencentcloud.tsf.v20180326.models.ForceSchedule`
         :param _TrySchedule: -
-注意：此字段可能返回 null，表示取不到有效值。
         :type TrySchedule: :class:`tencentcloud.tsf.v20180326.models.TrySchedule`
         """
         self._ForceSchedule = None
@@ -14512,7 +14494,6 @@ class CustomPodSchedule(AbstractModel):
     @property
     def ForceSchedule(self):
         """-
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.ForceSchedule`
         """
         return self._ForceSchedule
@@ -14524,7 +14505,6 @@ class CustomPodSchedule(AbstractModel):
     @property
     def TrySchedule(self):
         """-
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TrySchedule`
         """
         return self._TrySchedule
@@ -19320,7 +19300,6 @@ class DescribeBasicResourceUsageResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: TSF基本资源信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.OverviewBasicResourceUsage`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -19331,7 +19310,6 @@ class DescribeBasicResourceUsageResponse(AbstractModel):
     @property
     def Result(self):
         """TSF基本资源信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.OverviewBasicResourceUsage`
         """
         return self._Result
@@ -26487,9 +26465,9 @@ class DescribeOverviewInvocationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NamespaceId: 命名空间ID
+        :param _NamespaceId: 命名空间ID， 此参数必填
         :type NamespaceId: str
-        :param _Type: 监控统计类型，可选值：SumReqAmount、AvgFailureRate、AvgTimeCost，分别对应请求量、请求错误率、平均响应耗时
+        :param _Type: 监控统计类型，必填，可选值：SumReqAmount、AvgFailureRate、AvgTimeCost，分别对应请求量、请求错误率、平均响应耗时
         :type Type: str
         :param _Period: 监控统计数据粒度，可选值：60、3600、86400，分别对应1分钟、1小时、1天
         :type Period: int
@@ -26506,7 +26484,7 @@ class DescribeOverviewInvocationRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        """命名空间ID
+        """命名空间ID， 此参数必填
         :rtype: str
         """
         return self._NamespaceId
@@ -26517,7 +26495,7 @@ class DescribeOverviewInvocationRequest(AbstractModel):
 
     @property
     def Type(self):
-        """监控统计类型，可选值：SumReqAmount、AvgFailureRate、AvgTimeCost，分别对应请求量、请求错误率、平均响应耗时
+        """监控统计类型，必填，可选值：SumReqAmount、AvgFailureRate、AvgTimeCost，分别对应请求量、请求错误率、平均响应耗时
         :rtype: str
         """
         return self._Type
@@ -26584,7 +26562,6 @@ class DescribeOverviewInvocationResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 监控统计数据列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: list of MetricDataPoint
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -26595,7 +26572,6 @@ class DescribeOverviewInvocationResponse(AbstractModel):
     @property
     def Result(self):
         """监控统计数据列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of MetricDataPoint
         """
         return self._Result
@@ -32520,7 +32496,6 @@ class FieldRef(AbstractModel):
     def __init__(self):
         r"""
         :param _FieldPath: k8s 的 FieldPath
-注意：此字段可能返回 null，表示取不到有效值。
         :type FieldPath: str
         """
         self._FieldPath = None
@@ -32528,7 +32503,6 @@ class FieldRef(AbstractModel):
     @property
     def FieldPath(self):
         """k8s 的 FieldPath
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FieldPath
@@ -33149,10 +33123,8 @@ class ForceSchedule(AbstractModel):
     def __init__(self):
         r"""
         :param _AffinityList: -
-注意：此字段可能返回 null，表示取不到有效值。
         :type AffinityList: list of Affinity
         :param _AntiAffinityList: -
-注意：此字段可能返回 null，表示取不到有效值。
         :type AntiAffinityList: list of Affinity
         """
         self._AffinityList = None
@@ -33161,7 +33133,6 @@ class ForceSchedule(AbstractModel):
     @property
     def AffinityList(self):
         """-
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Affinity
         """
         return self._AffinityList
@@ -33173,7 +33144,6 @@ class ForceSchedule(AbstractModel):
     @property
     def AntiAffinityList(self):
         """-
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Affinity
         """
         return self._AntiAffinityList
@@ -33330,7 +33300,6 @@ class GatewayConfig(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 服务名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         """
         self._Name = None
@@ -33338,7 +33307,6 @@ class GatewayConfig(AbstractModel):
     @property
     def Name(self):
         """服务名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -37664,7 +37632,6 @@ class InvocationMetricScatterPlot(AbstractModel):
         :param _Period: 时间轴开始时间，GMT，精确到毫秒
         :type Period: int
         :param _DataPoints: 多值数据点集合
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataPoints: list of MultiValueDataPoints
         """
         self._EndTime = None
@@ -37708,7 +37675,6 @@ class InvocationMetricScatterPlot(AbstractModel):
     @property
     def DataPoints(self):
         """多值数据点集合
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of MultiValueDataPoints
         """
         return self._DataPoints
@@ -40126,7 +40092,7 @@ class ModifyContainerGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 部署组ID
+        :param _GroupId: 部署组ID 必填项
         :type GroupId: str
         :param _AccessType: 0:公网 1:集群内访问 2：NodePort
         :type AccessType: int
@@ -40151,7 +40117,7 @@ class ModifyContainerGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """部署组ID
+        """部署组ID 必填项
         :rtype: str
         """
         return self._GroupId
@@ -40260,7 +40226,6 @@ class ModifyContainerGroupResponse(AbstractModel):
         :param _Result: 更新部署组是否成功。
 true：成功。
 false：失败。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -40273,7 +40238,6 @@ false：失败。
         """更新部署组是否成功。
 true：成功。
 false：失败。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Result
@@ -42470,7 +42434,6 @@ class MultiValue(AbstractModel):
     def __init__(self):
         r"""
         :param _Values: 数据点
-注意：此字段可能返回 null，表示取不到有效值。
         :type Values: list of float
         """
         self._Values = None
@@ -42478,7 +42441,6 @@ class MultiValue(AbstractModel):
     @property
     def Values(self):
         """数据点
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of float
         """
         return self._Values
@@ -42941,13 +42903,10 @@ class OperationInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Init: 初始化按钮的控制信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Init: :class:`tencentcloud.tsf.v20180326.models.OperationInfoDetail`
         :param _AddInstance: 添加实例按钮的控制信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type AddInstance: :class:`tencentcloud.tsf.v20180326.models.OperationInfoDetail`
         :param _Destroy: 销毁机器的控制信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Destroy: :class:`tencentcloud.tsf.v20180326.models.OperationInfoDetail`
         """
         self._Init = None
@@ -42957,7 +42916,6 @@ class OperationInfo(AbstractModel):
     @property
     def Init(self):
         """初始化按钮的控制信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.OperationInfoDetail`
         """
         return self._Init
@@ -42969,7 +42927,6 @@ class OperationInfo(AbstractModel):
     @property
     def AddInstance(self):
         """添加实例按钮的控制信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.OperationInfoDetail`
         """
         return self._AddInstance
@@ -42981,7 +42938,6 @@ class OperationInfo(AbstractModel):
     @property
     def Destroy(self):
         """销毁机器的控制信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.OperationInfoDetail`
         """
         return self._Destroy
@@ -45934,7 +45890,6 @@ class ResourceFieldRef(AbstractModel):
     def __init__(self):
         r"""
         :param _Resource: k8s 的 Resource
-注意：此字段可能返回 null，表示取不到有效值。
         :type Resource: str
         """
         self._Resource = None
@@ -45942,7 +45897,6 @@ class ResourceFieldRef(AbstractModel):
     @property
     def Resource(self):
         """k8s 的 Resource
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Resource
@@ -50063,10 +50017,8 @@ class TaskRecord(AbstractModel):
         :param _TimeOut: 超时时间
         :type TimeOut: int
         :param _RetryCount: 重试次数
-注意：此字段可能返回 null，表示取不到有效值。
         :type RetryCount: int
         :param _RetryInterval: 重试间隔
-注意：此字段可能返回 null，表示取不到有效值。
         :type RetryInterval: int
         :param _TaskRule: 触发规则
         :type TaskRule: :class:`tencentcloud.tsf.v20180326.models.TaskRule`
@@ -50075,31 +50027,22 @@ class TaskRecord(AbstractModel):
         :param _TaskId: 任务ID
         :type TaskId: str
         :param _SuccessOperator: 判断任务成功的操作符
-注意：此字段可能返回 null，表示取不到有效值。
         :type SuccessOperator: str
         :param _SuccessRatio: 判断任务成功的阈值
-注意：此字段可能返回 null，表示取不到有效值。
         :type SuccessRatio: int
         :param _ShardCount: 分片数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type ShardCount: int
         :param _AdvanceSettings: 高级设置
-注意：此字段可能返回 null，表示取不到有效值。
         :type AdvanceSettings: :class:`tencentcloud.tsf.v20180326.models.AdvanceSettings`
         :param _ShardArguments: 分片参数
-注意：此字段可能返回 null，表示取不到有效值。
         :type ShardArguments: list of ShardArgument
         :param _BelongFlowIds: 所属工作流ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type BelongFlowIds: list of str
         :param _TaskLogId: 任务历史ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskLogId: str
         :param _TriggerType: 触发类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerType: str
         :param _TaskArgument: 任务参数，长度限制10000个字符
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskArgument: str
         """
         self._TaskName = None
@@ -50192,7 +50135,6 @@ class TaskRecord(AbstractModel):
     @property
     def RetryCount(self):
         """重试次数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RetryCount
@@ -50204,7 +50146,6 @@ class TaskRecord(AbstractModel):
     @property
     def RetryInterval(self):
         """重试间隔
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RetryInterval
@@ -50249,7 +50190,6 @@ class TaskRecord(AbstractModel):
     @property
     def SuccessOperator(self):
         """判断任务成功的操作符
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SuccessOperator
@@ -50261,7 +50201,6 @@ class TaskRecord(AbstractModel):
     @property
     def SuccessRatio(self):
         """判断任务成功的阈值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SuccessRatio
@@ -50273,7 +50212,6 @@ class TaskRecord(AbstractModel):
     @property
     def ShardCount(self):
         """分片数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ShardCount
@@ -50285,7 +50223,6 @@ class TaskRecord(AbstractModel):
     @property
     def AdvanceSettings(self):
         """高级设置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.AdvanceSettings`
         """
         return self._AdvanceSettings
@@ -50297,7 +50234,6 @@ class TaskRecord(AbstractModel):
     @property
     def ShardArguments(self):
         """分片参数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ShardArgument
         """
         return self._ShardArguments
@@ -50309,7 +50245,6 @@ class TaskRecord(AbstractModel):
     @property
     def BelongFlowIds(self):
         """所属工作流ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._BelongFlowIds
@@ -50321,7 +50256,6 @@ class TaskRecord(AbstractModel):
     @property
     def TaskLogId(self):
         """任务历史ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskLogId
@@ -50333,7 +50267,6 @@ class TaskRecord(AbstractModel):
     @property
     def TriggerType(self):
         """触发类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TriggerType
@@ -50345,7 +50278,6 @@ class TaskRecord(AbstractModel):
     @property
     def TaskArgument(self):
         """任务参数，长度限制10000个字符
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskArgument
@@ -50461,7 +50393,6 @@ class TaskRule(AbstractModel):
         :param _RuleType: 触发规则类型, Cron/Repeat
         :type RuleType: str
         :param _Expression: Cron类型规则，cron表达式。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Expression: str
         :param _RepeatInterval: 时间间隔， 单位毫秒
 注意：此字段可能返回 null，表示取不到有效值。
@@ -50485,7 +50416,6 @@ class TaskRule(AbstractModel):
     @property
     def Expression(self):
         """Cron类型规则，cron表达式。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Expression
@@ -50805,10 +50735,8 @@ class TrySchedule(AbstractModel):
     def __init__(self):
         r"""
         :param _AffinityList: -
-注意：此字段可能返回 null，表示取不到有效值。
         :type AffinityList: list of Affinity
         :param _AntiAffinityList: -
-注意：此字段可能返回 null，表示取不到有效值。
         :type AntiAffinityList: list of Affinity
         """
         self._AffinityList = None
@@ -50817,7 +50745,6 @@ class TrySchedule(AbstractModel):
     @property
     def AffinityList(self):
         """-
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Affinity
         """
         return self._AffinityList
@@ -50829,7 +50756,6 @@ class TrySchedule(AbstractModel):
     @property
     def AntiAffinityList(self):
         """-
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Affinity
         """
         return self._AntiAffinityList
@@ -51182,13 +51108,10 @@ class TsfPageApplication(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 应用总数目
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _Content: 应用信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Content: list of ApplicationForPage
         :param _SpecTotalCount: 获取部署组实例列表返回的原始批次个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type SpecTotalCount: int
         """
         self._TotalCount = None
@@ -51198,7 +51121,6 @@ class TsfPageApplication(AbstractModel):
     @property
     def TotalCount(self):
         """应用总数目
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -51210,7 +51132,6 @@ class TsfPageApplication(AbstractModel):
     @property
     def Content(self):
         """应用信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ApplicationForPage
         """
         return self._Content
@@ -51222,7 +51143,6 @@ class TsfPageApplication(AbstractModel):
     @property
     def SpecTotalCount(self):
         """获取部署组实例列表返回的原始批次个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SpecTotalCount
@@ -51325,7 +51245,6 @@ class TsfPageBusinessLogV2(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _SearchAfter: 查询es时，使用searchAfter返回的游标
-注意：此字段可能返回 null，表示取不到有效值。
         :type SearchAfter: list of str
         """
         self._TotalCount = None
@@ -51383,7 +51302,6 @@ class TsfPageBusinessLogV2(AbstractModel):
     @property
     def SearchAfter(self):
         """查询es时，使用searchAfter返回的游标
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._SearchAfter
@@ -52399,7 +52317,6 @@ class TsfPageStdoutLogV2(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _SearchAfter: 游标ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type SearchAfter: list of str
         """
         self._TotalCount = None
@@ -52457,7 +52374,6 @@ class TsfPageStdoutLogV2(AbstractModel):
     @property
     def SearchAfter(self):
         """游标ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._SearchAfter
@@ -54301,7 +54217,6 @@ class UpdateHealthCheckSettingsResponse(AbstractModel):
         :param _Result: 更新健康检查配置操作是否成功。
 true：操作成功。
 false：操作失败。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -54314,7 +54229,6 @@ false：操作失败。
         """更新健康检查配置操作是否成功。
 true：操作成功。
 false：操作失败。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Result
@@ -54571,16 +54485,13 @@ class ValueFrom(AbstractModel):
     def __init__(self):
         r"""
         :param _FieldRef: k8s env 的 FieldRef
-注意：此字段可能返回 null，表示取不到有效值。
         :type FieldRef: :class:`tencentcloud.tsf.v20180326.models.FieldRef`
         :param _ResourceFieldRef: k8s env 的 ResourceFieldRef
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceFieldRef: :class:`tencentcloud.tsf.v20180326.models.ResourceFieldRef`
         :param _ConfigMapKeyRef: k8s env的configMapKeyRef
-注意：此字段可能返回 null，表示取不到有效值。
         :type ConfigMapKeyRef: :class:`tencentcloud.tsf.v20180326.models.CommonRef`
         :param _SecretKeyRef: k8s env 的 secretKeyRef
-注意：此字段可能返回 null，表示取不到有效值。
         :type SecretKeyRef: :class:`tencentcloud.tsf.v20180326.models.CommonRef`
         """
         self._FieldRef = None
@@ -54591,7 +54502,6 @@ class ValueFrom(AbstractModel):
     @property
     def FieldRef(self):
         """k8s env 的 FieldRef
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.FieldRef`
         """
         return self._FieldRef
@@ -54615,7 +54525,6 @@ class ValueFrom(AbstractModel):
     @property
     def ConfigMapKeyRef(self):
         """k8s env的configMapKeyRef
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.CommonRef`
         """
         return self._ConfigMapKeyRef
@@ -54627,7 +54536,6 @@ class ValueFrom(AbstractModel):
     @property
     def SecretKeyRef(self):
         """k8s env 的 secretKeyRef
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.CommonRef`
         """
         return self._SecretKeyRef
@@ -54758,22 +54666,16 @@ class VmGroup(AbstractModel):
         :param _EnableBatchHealthCheck: 批次是否开启健康检查
         :type EnableBatchHealthCheck: bool
         :param _FilebeatCgroupEnable: 是否开启cgroup控制内存cpu
-注意：此字段可能返回 null，表示取不到有效值。
         :type FilebeatCgroupEnable: bool
         :param _FilebeatMaxCpu: filebeat使用cpu上限
-注意：此字段可能返回 null，表示取不到有效值。
         :type FilebeatMaxCpu: float
         :param _FilebeatMaxMem: filebeat使用内存上限
-注意：此字段可能返回 null，表示取不到有效值。
         :type FilebeatMaxMem: int
         :param _RepositoryId: 仓库ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type RepositoryId: str
         :param _RepositoryName: 仓库名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type RepositoryName: str
         :param _RepositoryType: 仓库类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type RepositoryType: str
         """
         self._GroupId = None
@@ -55266,7 +55168,6 @@ class VmGroup(AbstractModel):
     @property
     def FilebeatCgroupEnable(self):
         """是否开启cgroup控制内存cpu
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._FilebeatCgroupEnable
@@ -55278,7 +55179,6 @@ class VmGroup(AbstractModel):
     @property
     def FilebeatMaxCpu(self):
         """filebeat使用cpu上限
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._FilebeatMaxCpu
@@ -55290,7 +55190,6 @@ class VmGroup(AbstractModel):
     @property
     def FilebeatMaxMem(self):
         """filebeat使用内存上限
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FilebeatMaxMem
@@ -55302,7 +55201,6 @@ class VmGroup(AbstractModel):
     @property
     def RepositoryId(self):
         """仓库ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RepositoryId
@@ -55314,7 +55212,6 @@ class VmGroup(AbstractModel):
     @property
     def RepositoryName(self):
         """仓库名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RepositoryName
@@ -55326,7 +55223,6 @@ class VmGroup(AbstractModel):
     @property
     def RepositoryType(self):
         """仓库类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RepositoryType

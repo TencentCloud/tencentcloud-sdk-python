@@ -25555,6 +25555,126 @@ class OperateChannelTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class OperateTemplateRequest(AbstractModel):
+    """OperateTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+
+此接口下面信息必填。
+<ul>
+<li>渠道应用标识:  Agent.AppId</li>
+<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId（模板的归属企业）</li>
+<li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId （操作人）</li>
+</ul>
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param _TemplateId: 模板ID，为32位字符串。
+        :type TemplateId: str
+        :param _OperateType: 操作类型，可取值如下:
+<ul>
+<li>DELETE:  删除</li>
+<li>ENABLE: 启用</li>
+<li>DISABLE: 停用</li>
+</ul>
+        :type OperateType: str
+        """
+        self._Agent = None
+        self._TemplateId = None
+        self._OperateType = None
+
+    @property
+    def Agent(self):
+        """关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+
+此接口下面信息必填。
+<ul>
+<li>渠道应用标识:  Agent.AppId</li>
+<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId（模板的归属企业）</li>
+<li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId （操作人）</li>
+</ul>
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def TemplateId(self):
+        """模板ID，为32位字符串。
+        :rtype: str
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def OperateType(self):
+        """操作类型，可取值如下:
+<ul>
+<li>DELETE:  删除</li>
+<li>ENABLE: 启用</li>
+<li>DISABLE: 停用</li>
+</ul>
+        :rtype: str
+        """
+        return self._OperateType
+
+    @OperateType.setter
+    def OperateType(self, OperateType):
+        self._OperateType = OperateType
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._TemplateId = params.get("TemplateId")
+        self._OperateType = params.get("OperateType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OperateTemplateResponse(AbstractModel):
+    """OperateTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class OrganizationAuthUrl(AbstractModel):
     """企业批量注册链接信息
 

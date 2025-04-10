@@ -559,6 +559,11 @@ def test_import_es():
     from tencentcloud.es.v20180416 import models
 
 
+def test_import_es():
+    from tencentcloud.es.v20250101 import es_client
+    from tencentcloud.es.v20250101 import models
+
+
 def test_import_ess():
     from tencentcloud.ess.v20201111 import ess_client
     from tencentcloud.ess.v20201111 import models

@@ -3559,6 +3559,205 @@ class CreateDeviceGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateOperationTaskRequest(AbstractModel):
+    """CreateOperationTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 运维任务名称
+        :type Name: str
+        :param _Type: 运维任务类型,1 - 手工执行, 2 - 周期性自动执行
+        :type Type: int
+        :param _Account: 执行账号
+        :type Account: str
+        :param _Timeout: 超时时间,单位秒
+        :type Timeout: int
+        :param _Script: 执行脚本内容
+        :type Script: str
+        :param _DeviceIdSet: 执行主机集合，满足条件以下三个条件：1. 资产绑定可用的专业版或国密版堡垒机服务；2、资产类型为linux资产；3、用户具有资产权限，且资产添加了指定执行账号
+        :type DeviceIdSet: list of int non-negative
+        :param _Period: 执行间隔，单位天. 手工执行时无需传入
+        :type Period: int
+        :param _FirstTime: 首次执行日期 默认1970-01-01T08:00:01+08:00,手工执行时无需传入
+        :type FirstTime: str
+        :param _Encoding: Script参数是否需要进行base64编码后传递，1-需要进行base64编码后传递，非1值-不需要进行base64编码后传递
+        :type Encoding: int
+        """
+        self._Name = None
+        self._Type = None
+        self._Account = None
+        self._Timeout = None
+        self._Script = None
+        self._DeviceIdSet = None
+        self._Period = None
+        self._FirstTime = None
+        self._Encoding = None
+
+    @property
+    def Name(self):
+        """运维任务名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        """运维任务类型,1 - 手工执行, 2 - 周期性自动执行
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Account(self):
+        """执行账号
+        :rtype: str
+        """
+        return self._Account
+
+    @Account.setter
+    def Account(self, Account):
+        self._Account = Account
+
+    @property
+    def Timeout(self):
+        """超时时间,单位秒
+        :rtype: int
+        """
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def Script(self):
+        """执行脚本内容
+        :rtype: str
+        """
+        return self._Script
+
+    @Script.setter
+    def Script(self, Script):
+        self._Script = Script
+
+    @property
+    def DeviceIdSet(self):
+        """执行主机集合，满足条件以下三个条件：1. 资产绑定可用的专业版或国密版堡垒机服务；2、资产类型为linux资产；3、用户具有资产权限，且资产添加了指定执行账号
+        :rtype: list of int non-negative
+        """
+        return self._DeviceIdSet
+
+    @DeviceIdSet.setter
+    def DeviceIdSet(self, DeviceIdSet):
+        self._DeviceIdSet = DeviceIdSet
+
+    @property
+    def Period(self):
+        """执行间隔，单位天. 手工执行时无需传入
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def FirstTime(self):
+        """首次执行日期 默认1970-01-01T08:00:01+08:00,手工执行时无需传入
+        :rtype: str
+        """
+        return self._FirstTime
+
+    @FirstTime.setter
+    def FirstTime(self, FirstTime):
+        self._FirstTime = FirstTime
+
+    @property
+    def Encoding(self):
+        """Script参数是否需要进行base64编码后传递，1-需要进行base64编码后传递，非1值-不需要进行base64编码后传递
+        :rtype: int
+        """
+        return self._Encoding
+
+    @Encoding.setter
+    def Encoding(self, Encoding):
+        self._Encoding = Encoding
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._Account = params.get("Account")
+        self._Timeout = params.get("Timeout")
+        self._Script = params.get("Script")
+        self._DeviceIdSet = params.get("DeviceIdSet")
+        self._Period = params.get("Period")
+        self._FirstTime = params.get("FirstTime")
+        self._Encoding = params.get("Encoding")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateOperationTaskResponse(AbstractModel):
+    """CreateOperationTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 运维任务ID
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        """运维任务ID
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateResourceRequest(AbstractModel):
     """CreateResource请求参数结构体
 
@@ -4537,6 +4736,70 @@ class DeleteDevicesRequest(AbstractModel):
 
 class DeleteDevicesResponse(AbstractModel):
     """DeleteDevices返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteOperationTasksRequest(AbstractModel):
+    """DeleteOperationTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IdSet: 运维任务ID集合
+        :type IdSet: list of int non-negative
+        """
+        self._IdSet = None
+
+    @property
+    def IdSet(self):
+        """运维任务ID集合
+        :rtype: list of int non-negative
+        """
+        return self._IdSet
+
+    @IdSet.setter
+    def IdSet(self, IdSet):
+        self._IdSet = IdSet
+
+
+    def _deserialize(self, params):
+        self._IdSet = params.get("IdSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteOperationTasksResponse(AbstractModel):
+    """DeleteOperationTasks返回参数结构体
 
     """
 
@@ -7339,6 +7602,150 @@ class DescribeOperationEventResponse(AbstractModel):
                 obj = OperationEvent()
                 obj._deserialize(item)
                 self._OperationEventSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeOperationTaskRequest(AbstractModel):
+    """DescribeOperationTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 运维任务名称
+        :type Name: str
+        :param _Type: 运维任务类型，1 - 手工执行任务， 2 - 周期性任务
+        :type Type: int
+        :param _Offset: 分页偏移位置，默认值为0
+        :type Offset: int
+        :param _Limit: 每页条目数，默认20
+        :type Limit: int
+        """
+        self._Name = None
+        self._Type = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Name(self):
+        """运维任务名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        """运维任务类型，1 - 手工执行任务， 2 - 周期性任务
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Offset(self):
+        """分页偏移位置，默认值为0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """每页条目数，默认20
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOperationTaskResponse(AbstractModel):
+    """DescribeOperationTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OperationTasks: 运维任务列表
+        :type OperationTasks: list of OperationTask
+        :param _TotalCount: 任务总数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._OperationTasks = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def OperationTasks(self):
+        """运维任务列表
+        :rtype: list of OperationTask
+        """
+        return self._OperationTasks
+
+    @OperationTasks.setter
+    def OperationTasks(self, OperationTasks):
+        self._OperationTasks = OperationTasks
+
+    @property
+    def TotalCount(self):
+        """任务总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("OperationTasks") is not None:
+            self._OperationTasks = []
+            for item in params.get("OperationTasks"):
+                obj = OperationTask()
+                obj._deserialize(item)
+                self._OperationTasks.append(obj)
         self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
@@ -10463,6 +10870,205 @@ class ModifyOAuthSettingResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyOperationTaskRequest(AbstractModel):
+    """ModifyOperationTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 任务Id
+        :type Id: int
+        :param _Name: 任务名称
+        :type Name: str
+        :param _Type: 任务类型, 1 - 手工执行, 2 - 周期性自动执行
+        :type Type: int
+        :param _Account: 执行账号
+        :type Account: str
+        :param _Timeout: 超时时间,单位秒
+        :type Timeout: int
+        :param _Script: 执行脚本内容
+        :type Script: str
+        :param _DeviceIdSet: 执行主机集合，满足条件以下三个条件：1. 资产绑定可用的专业版或国密版堡垒机服务；2、资产类型为linux资产；3、用户具有资产权限，且资产添加了指定执行账号
+        :type DeviceIdSet: list of int non-negative
+        :param _Period: 执行间隔，单位天. 手工执行时无需传入
+        :type Period: int
+        :param _FirstTime: 首次执行日期，默认1970-01-01T08:00:01+08:00,手工执行时无需传入
+        :type FirstTime: str
+        :param _Encoding: Script参数是否需要进行base64编码后传递，1-需要进行base64编码后传递，非1值-不需要进行base64编码后传递
+        :type Encoding: int
+        """
+        self._Id = None
+        self._Name = None
+        self._Type = None
+        self._Account = None
+        self._Timeout = None
+        self._Script = None
+        self._DeviceIdSet = None
+        self._Period = None
+        self._FirstTime = None
+        self._Encoding = None
+
+    @property
+    def Id(self):
+        """任务Id
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        """任务名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        """任务类型, 1 - 手工执行, 2 - 周期性自动执行
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Account(self):
+        """执行账号
+        :rtype: str
+        """
+        return self._Account
+
+    @Account.setter
+    def Account(self, Account):
+        self._Account = Account
+
+    @property
+    def Timeout(self):
+        """超时时间,单位秒
+        :rtype: int
+        """
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def Script(self):
+        """执行脚本内容
+        :rtype: str
+        """
+        return self._Script
+
+    @Script.setter
+    def Script(self, Script):
+        self._Script = Script
+
+    @property
+    def DeviceIdSet(self):
+        """执行主机集合，满足条件以下三个条件：1. 资产绑定可用的专业版或国密版堡垒机服务；2、资产类型为linux资产；3、用户具有资产权限，且资产添加了指定执行账号
+        :rtype: list of int non-negative
+        """
+        return self._DeviceIdSet
+
+    @DeviceIdSet.setter
+    def DeviceIdSet(self, DeviceIdSet):
+        self._DeviceIdSet = DeviceIdSet
+
+    @property
+    def Period(self):
+        """执行间隔，单位天. 手工执行时无需传入
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def FirstTime(self):
+        """首次执行日期，默认1970-01-01T08:00:01+08:00,手工执行时无需传入
+        :rtype: str
+        """
+        return self._FirstTime
+
+    @FirstTime.setter
+    def FirstTime(self, FirstTime):
+        self._FirstTime = FirstTime
+
+    @property
+    def Encoding(self):
+        """Script参数是否需要进行base64编码后传递，1-需要进行base64编码后传递，非1值-不需要进行base64编码后传递
+        :rtype: int
+        """
+        return self._Encoding
+
+    @Encoding.setter
+    def Encoding(self, Encoding):
+        self._Encoding = Encoding
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._Account = params.get("Account")
+        self._Timeout = params.get("Timeout")
+        self._Script = params.get("Script")
+        self._DeviceIdSet = params.get("DeviceIdSet")
+        self._Period = params.get("Period")
+        self._FirstTime = params.get("FirstTime")
+        self._Encoding = params.get("Encoding")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyOperationTaskResponse(AbstractModel):
+    """ModifyOperationTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyResourceRequest(AbstractModel):
     """ModifyResource请求参数结构体
 
@@ -11060,6 +11666,162 @@ class OperationEvent(AbstractModel):
         self._Operation = params.get("Operation")
         self._Result = params.get("Result")
         self._SignValue = params.get("SignValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OperationTask(AbstractModel):
+    """运维任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 运维任务主键ID
+        :type Id: int
+        :param _OperationId: 运维任务ID
+        :type OperationId: str
+        :param _Name: 运维任务名称
+        :type Name: str
+        :param _UserName: 创建用户
+        :type UserName: str
+        :param _RealName: 运维人员姓名
+        :type RealName: str
+        :param _Type: 任务类型，1 - 手工执行任务， 2 - 周期性任务
+        :type Type: int
+        :param _Period: 周期性任务执行间隔，单位天
+        :type Period: int
+        :param _NextTime: 执行账户
+        :type NextTime: str
+        :param _FirstTime: 下一次执行时间
+        :type FirstTime: str
+        """
+        self._Id = None
+        self._OperationId = None
+        self._Name = None
+        self._UserName = None
+        self._RealName = None
+        self._Type = None
+        self._Period = None
+        self._NextTime = None
+        self._FirstTime = None
+
+    @property
+    def Id(self):
+        """运维任务主键ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def OperationId(self):
+        """运维任务ID
+        :rtype: str
+        """
+        return self._OperationId
+
+    @OperationId.setter
+    def OperationId(self, OperationId):
+        self._OperationId = OperationId
+
+    @property
+    def Name(self):
+        """运维任务名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def UserName(self):
+        """创建用户
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def RealName(self):
+        """运维人员姓名
+        :rtype: str
+        """
+        return self._RealName
+
+    @RealName.setter
+    def RealName(self, RealName):
+        self._RealName = RealName
+
+    @property
+    def Type(self):
+        """任务类型，1 - 手工执行任务， 2 - 周期性任务
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Period(self):
+        """周期性任务执行间隔，单位天
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def NextTime(self):
+        """执行账户
+        :rtype: str
+        """
+        return self._NextTime
+
+    @NextTime.setter
+    def NextTime(self, NextTime):
+        self._NextTime = NextTime
+
+    @property
+    def FirstTime(self):
+        """下一次执行时间
+        :rtype: str
+        """
+        return self._FirstTime
+
+    @FirstTime.setter
+    def FirstTime(self, FirstTime):
+        self._FirstTime = FirstTime
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._OperationId = params.get("OperationId")
+        self._Name = params.get("Name")
+        self._UserName = params.get("UserName")
+        self._RealName = params.get("RealName")
+        self._Type = params.get("Type")
+        self._Period = params.get("Period")
+        self._NextTime = params.get("NextTime")
+        self._FirstTime = params.get("FirstTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12012,6 +12774,70 @@ class RunChangePwdTaskRequest(AbstractModel):
 
 class RunChangePwdTaskResponse(AbstractModel):
     """RunChangePwdTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class RunOperationTaskRequest(AbstractModel):
+    """RunOperationTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 运维任务ID
+        :type Id: int
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        """运维任务ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RunOperationTaskResponse(AbstractModel):
+    """RunOperationTask返回参数结构体
 
     """
 

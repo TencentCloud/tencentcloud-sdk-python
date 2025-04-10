@@ -1384,7 +1384,7 @@ class CreateQuitWorkOrderRequest(AbstractModel):
         :type IdcId: int
         :param _DeviceType: 设备类型，server, netDevice, otherDevice
         :type DeviceType: str
-        :param _StuffOption: 下架选择 1.自行解决 2.由腾讯IDC负责 3.不涉及下架，如：其他设备退出
+        :param _StuffOption: 下架选择 1.自行解决 2.由腾讯IDC负责
         :type StuffOption: str
         :param _IsPowerOffConfirm: 关电确认 1.授权时关电 2.关电前需要确认
         :type IsPowerOffConfirm: str
@@ -1439,7 +1439,7 @@ class CreateQuitWorkOrderRequest(AbstractModel):
 
     @property
     def StuffOption(self):
-        """下架选择 1.自行解决 2.由腾讯IDC负责 3.不涉及下架，如：其他设备退出
+        """下架选择 1.自行解决 2.由腾讯IDC负责
         :rtype: str
         """
         return self._StuffOption
@@ -2323,6 +2323,189 @@ class CreateServerModelResponse(AbstractModel):
     def _deserialize(self, params):
         self._DevModel = params.get("DevModel")
         self._Version = params.get("Version")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateSpeciallyQuitWorkOrderRequest(AbstractModel):
+    """CreateSpeciallyQuitWorkOrder请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IdcId: 机房id
+        :type IdcId: int
+        :param _DeviceType: 设备类型：otherDevice。此接口只支持其他设备
+        :type DeviceType: str
+        :param _HandoverMethod: 交接方式 1.物流上门收货 2.客户上门自提
+        :type HandoverMethod: str
+        :param _LogisticsReceipt: 物流上门收货必传
+        :type LogisticsReceipt: :class:`tencentcloud.chc.v20230418.models.LogisticsReceipt`
+        :param _CustomerReceipt: 客户上门自提必传
+        :type CustomerReceipt: :class:`tencentcloud.chc.v20230418.models.CustomerReceipt`
+        :param _Remark: 备注信息
+        :type Remark: str
+        :param _OtherDeviceList: 当设备类型为otherDevice，此参数必传
+        :type OtherDeviceList: list of OtherDevReceivingInfo
+        """
+        self._IdcId = None
+        self._DeviceType = None
+        self._HandoverMethod = None
+        self._LogisticsReceipt = None
+        self._CustomerReceipt = None
+        self._Remark = None
+        self._OtherDeviceList = None
+
+    @property
+    def IdcId(self):
+        """机房id
+        :rtype: int
+        """
+        return self._IdcId
+
+    @IdcId.setter
+    def IdcId(self, IdcId):
+        self._IdcId = IdcId
+
+    @property
+    def DeviceType(self):
+        """设备类型：otherDevice。此接口只支持其他设备
+        :rtype: str
+        """
+        return self._DeviceType
+
+    @DeviceType.setter
+    def DeviceType(self, DeviceType):
+        self._DeviceType = DeviceType
+
+    @property
+    def HandoverMethod(self):
+        """交接方式 1.物流上门收货 2.客户上门自提
+        :rtype: str
+        """
+        return self._HandoverMethod
+
+    @HandoverMethod.setter
+    def HandoverMethod(self, HandoverMethod):
+        self._HandoverMethod = HandoverMethod
+
+    @property
+    def LogisticsReceipt(self):
+        """物流上门收货必传
+        :rtype: :class:`tencentcloud.chc.v20230418.models.LogisticsReceipt`
+        """
+        return self._LogisticsReceipt
+
+    @LogisticsReceipt.setter
+    def LogisticsReceipt(self, LogisticsReceipt):
+        self._LogisticsReceipt = LogisticsReceipt
+
+    @property
+    def CustomerReceipt(self):
+        """客户上门自提必传
+        :rtype: :class:`tencentcloud.chc.v20230418.models.CustomerReceipt`
+        """
+        return self._CustomerReceipt
+
+    @CustomerReceipt.setter
+    def CustomerReceipt(self, CustomerReceipt):
+        self._CustomerReceipt = CustomerReceipt
+
+    @property
+    def Remark(self):
+        """备注信息
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def OtherDeviceList(self):
+        """当设备类型为otherDevice，此参数必传
+        :rtype: list of OtherDevReceivingInfo
+        """
+        return self._OtherDeviceList
+
+    @OtherDeviceList.setter
+    def OtherDeviceList(self, OtherDeviceList):
+        self._OtherDeviceList = OtherDeviceList
+
+
+    def _deserialize(self, params):
+        self._IdcId = params.get("IdcId")
+        self._DeviceType = params.get("DeviceType")
+        self._HandoverMethod = params.get("HandoverMethod")
+        if params.get("LogisticsReceipt") is not None:
+            self._LogisticsReceipt = LogisticsReceipt()
+            self._LogisticsReceipt._deserialize(params.get("LogisticsReceipt"))
+        if params.get("CustomerReceipt") is not None:
+            self._CustomerReceipt = CustomerReceipt()
+            self._CustomerReceipt._deserialize(params.get("CustomerReceipt"))
+        self._Remark = params.get("Remark")
+        if params.get("OtherDeviceList") is not None:
+            self._OtherDeviceList = []
+            for item in params.get("OtherDeviceList"):
+                obj = OtherDevReceivingInfo()
+                obj._deserialize(item)
+                self._OtherDeviceList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSpeciallyQuitWorkOrderResponse(AbstractModel):
+    """CreateSpeciallyQuitWorkOrder返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkOrderSet: 创建的工单信息
+        :type WorkOrderSet: list of WorkOrderTinyInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._WorkOrderSet = None
+        self._RequestId = None
+
+    @property
+    def WorkOrderSet(self):
+        """创建的工单信息
+        :rtype: list of WorkOrderTinyInfo
+        """
+        return self._WorkOrderSet
+
+    @WorkOrderSet.setter
+    def WorkOrderSet(self, WorkOrderSet):
+        self._WorkOrderSet = WorkOrderSet
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("WorkOrderSet") is not None:
+            self._WorkOrderSet = []
+            for item in params.get("WorkOrderSet"):
+                obj = WorkOrderTinyInfo()
+                obj._deserialize(item)
+                self._WorkOrderSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 

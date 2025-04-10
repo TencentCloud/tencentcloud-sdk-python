@@ -6333,6 +6333,8 @@ class CreateAuditLogFileRequest(AbstractModel):
         :type Filter: :class:`tencentcloud.cdb.v20170320.models.AuditLogFilter`
         :param _LogFilter: 过滤条件。可按设置的过滤条件过滤日志。
         :type LogFilter: list of InstanceAuditLogFilters
+        :param _ColumnFilter: 下载筛选列
+        :type ColumnFilter: list of str
         """
         self._InstanceId = None
         self._StartTime = None
@@ -6341,6 +6343,7 @@ class CreateAuditLogFileRequest(AbstractModel):
         self._OrderBy = None
         self._Filter = None
         self._LogFilter = None
+        self._ColumnFilter = None
 
     @property
     def InstanceId(self):
@@ -6422,6 +6425,17 @@ class CreateAuditLogFileRequest(AbstractModel):
     def LogFilter(self, LogFilter):
         self._LogFilter = LogFilter
 
+    @property
+    def ColumnFilter(self):
+        """下载筛选列
+        :rtype: list of str
+        """
+        return self._ColumnFilter
+
+    @ColumnFilter.setter
+    def ColumnFilter(self, ColumnFilter):
+        self._ColumnFilter = ColumnFilter
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -6438,6 +6452,7 @@ class CreateAuditLogFileRequest(AbstractModel):
                 obj = InstanceAuditLogFilters()
                 obj._deserialize(item)
                 self._LogFilter.append(obj)
+        self._ColumnFilter = params.get("ColumnFilter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -363,32 +363,24 @@ class GetBpaasApproveDetailResponse(AbstractModel):
         :param _ApplyOwnUin: 申请人主账号
         :type ApplyOwnUin: int
         :param _ApplyUinNick: 申请人昵称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplyUinNick: str
         :param _BpaasId: 审批流id
         :type BpaasId: int
         :param _BpaasName: 审批流名称
         :type BpaasName: str
         :param _ApplicationParams: 申请参数
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationParams: list of ApplyParam
         :param _Reason: 申请原因
-注意：此字段可能返回 null，表示取不到有效值。
         :type Reason: str
         :param _CreateTime: 申请时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _Status: 申请单状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _Nodes: 节点信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Nodes: list of StatusNode
         :param _ApprovingNodeId: 正在审批的节点id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApprovingNodeId: str
         :param _ModifyTime: 更新时间，时间格式：2021-12-12 10:12:10	
-注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyTime: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -432,7 +424,6 @@ class GetBpaasApproveDetailResponse(AbstractModel):
     @property
     def ApplyUinNick(self):
         """申请人昵称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApplyUinNick
@@ -466,7 +457,6 @@ class GetBpaasApproveDetailResponse(AbstractModel):
     @property
     def ApplicationParams(self):
         """申请参数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ApplyParam
         """
         return self._ApplicationParams
@@ -478,7 +468,6 @@ class GetBpaasApproveDetailResponse(AbstractModel):
     @property
     def Reason(self):
         """申请原因
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Reason
@@ -490,7 +479,6 @@ class GetBpaasApproveDetailResponse(AbstractModel):
     @property
     def CreateTime(self):
         """申请时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -502,7 +490,6 @@ class GetBpaasApproveDetailResponse(AbstractModel):
     @property
     def Status(self):
         """申请单状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -514,7 +501,6 @@ class GetBpaasApproveDetailResponse(AbstractModel):
     @property
     def Nodes(self):
         """节点信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of StatusNode
         """
         return self._Nodes
@@ -526,7 +512,6 @@ class GetBpaasApproveDetailResponse(AbstractModel):
     @property
     def ApprovingNodeId(self):
         """正在审批的节点id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApprovingNodeId
@@ -538,7 +523,6 @@ class GetBpaasApproveDetailResponse(AbstractModel):
     @property
     def ModifyTime(self):
         """更新时间，时间格式：2021-12-12 10:12:10	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ModifyTime
@@ -868,61 +852,42 @@ class StatusNode(AbstractModel):
         :param _NextNode: 下一个节点
         :type NextNode: str
         :param _Opinion: 审批意见模型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Opinion: :class:`tencentcloud.bpaas.v20181217.models.ApproveOpinion`
         :param _ScfName: scf函数名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScfName: str
         :param _SubStatus: 状态（0：待审批，1：审批通过，2：拒绝，3：scf执行失败，4：scf执行成功）18: 外部审批中
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubStatus: int
         :param _ApprovedUin: 审批节点审批人
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApprovedUin: list of int non-negative
         :param _CreateTime: 审批时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _Msg: 审批意见信息 审批节点:审批人意见  执行节点:scf函数执行日志
-注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
         :param _Users: 有权限审批该节点的uin
-注意：此字段可能返回 null，表示取不到有效值。
         :type Users: :class:`tencentcloud.bpaas.v20181217.models.ApproveUser`
         :param _IsApprove: 是否有权限审批该节点
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsApprove: bool
         :param _ApproveId: 审批id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApproveId: str
         :param _ApproveMethod: 审批方式 0或签 1会签
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApproveMethod: int
         :param _ApproveType: 审批节点审批类型，1人工审批 2自动通过 3自动决绝 4外部审批scf
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApproveType: int
         :param _CallMethod: 外部审批类型 scf:0或null ; CKafka:1
-注意：此字段可能返回 null，表示取不到有效值。
         :type CallMethod: int
         :param _DataHubId: CKafka - 接入资源ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataHubId: str
         :param _TaskName: CKafka - 任务名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskName: str
         :param _CKafkaRegion: CKafka - 地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type CKafkaRegion: str
         :param _ExternalUrl: 外部审批Url
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExternalUrl: str
         :param _ParallelNodes: 并行节点 3-4
-注意：此字段可能返回 null，表示取不到有效值。
         :type ParallelNodes: str
         :param _RejectedCloudFunctionMsg: scf拒绝时返回信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type RejectedCloudFunctionMsg: str
         :param _PrevNode: 上一个节点
-注意：此字段可能返回 null，表示取不到有效值。
         :type PrevNode: str
         """
         self._NodeId = None
@@ -996,7 +961,6 @@ class StatusNode(AbstractModel):
     @property
     def Opinion(self):
         """审批意见模型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.bpaas.v20181217.models.ApproveOpinion`
         """
         return self._Opinion
@@ -1008,7 +972,6 @@ class StatusNode(AbstractModel):
     @property
     def ScfName(self):
         """scf函数名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ScfName
@@ -1020,7 +983,6 @@ class StatusNode(AbstractModel):
     @property
     def SubStatus(self):
         """状态（0：待审批，1：审批通过，2：拒绝，3：scf执行失败，4：scf执行成功）18: 外部审批中
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SubStatus
@@ -1032,7 +994,6 @@ class StatusNode(AbstractModel):
     @property
     def ApprovedUin(self):
         """审批节点审批人
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int non-negative
         """
         return self._ApprovedUin
@@ -1044,7 +1005,6 @@ class StatusNode(AbstractModel):
     @property
     def CreateTime(self):
         """审批时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -1056,7 +1016,6 @@ class StatusNode(AbstractModel):
     @property
     def Msg(self):
         """审批意见信息 审批节点:审批人意见  执行节点:scf函数执行日志
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Msg
@@ -1068,7 +1027,6 @@ class StatusNode(AbstractModel):
     @property
     def Users(self):
         """有权限审批该节点的uin
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.bpaas.v20181217.models.ApproveUser`
         """
         return self._Users
@@ -1080,7 +1038,6 @@ class StatusNode(AbstractModel):
     @property
     def IsApprove(self):
         """是否有权限审批该节点
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsApprove
@@ -1092,7 +1049,6 @@ class StatusNode(AbstractModel):
     @property
     def ApproveId(self):
         """审批id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApproveId
@@ -1104,7 +1060,6 @@ class StatusNode(AbstractModel):
     @property
     def ApproveMethod(self):
         """审批方式 0或签 1会签
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ApproveMethod
@@ -1116,7 +1071,6 @@ class StatusNode(AbstractModel):
     @property
     def ApproveType(self):
         """审批节点审批类型，1人工审批 2自动通过 3自动决绝 4外部审批scf
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ApproveType
@@ -1128,7 +1082,6 @@ class StatusNode(AbstractModel):
     @property
     def CallMethod(self):
         """外部审批类型 scf:0或null ; CKafka:1
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CallMethod
@@ -1140,7 +1093,6 @@ class StatusNode(AbstractModel):
     @property
     def DataHubId(self):
         """CKafka - 接入资源ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DataHubId
@@ -1152,7 +1104,6 @@ class StatusNode(AbstractModel):
     @property
     def TaskName(self):
         """CKafka - 任务名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskName
@@ -1164,7 +1115,6 @@ class StatusNode(AbstractModel):
     @property
     def CKafkaRegion(self):
         """CKafka - 地域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CKafkaRegion
@@ -1176,7 +1126,6 @@ class StatusNode(AbstractModel):
     @property
     def ExternalUrl(self):
         """外部审批Url
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ExternalUrl
@@ -1188,7 +1137,6 @@ class StatusNode(AbstractModel):
     @property
     def ParallelNodes(self):
         """并行节点 3-4
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ParallelNodes
@@ -1200,7 +1148,6 @@ class StatusNode(AbstractModel):
     @property
     def RejectedCloudFunctionMsg(self):
         """scf拒绝时返回信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RejectedCloudFunctionMsg
@@ -1212,7 +1159,6 @@ class StatusNode(AbstractModel):
     @property
     def PrevNode(self):
         """上一个节点
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PrevNode

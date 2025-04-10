@@ -325,6 +325,29 @@ class ChcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateSpeciallyQuitWorkOrder(self, request):
+        """创建临时设备退出工单
+
+        :param request: Request instance for CreateSpeciallyQuitWorkOrder.
+        :type request: :class:`tencentcloud.chc.v20230418.models.CreateSpeciallyQuitWorkOrderRequest`
+        :rtype: :class:`tencentcloud.chc.v20230418.models.CreateSpeciallyQuitWorkOrderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSpeciallyQuitWorkOrder", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSpeciallyQuitWorkOrderResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAvailableModelList(self, request):
         """获取机房内可用的型号列表
 

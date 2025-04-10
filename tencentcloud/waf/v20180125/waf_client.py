@@ -348,6 +348,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreatePostCKafkaFlow(self, request):
+        """创建CKafka投递流任务
+
+        :param request: Request instance for CreatePostCKafkaFlow.
+        :type request: :class:`tencentcloud.waf.v20180125.models.CreatePostCKafkaFlowRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.CreatePostCKafkaFlowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreatePostCKafkaFlow", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreatePostCKafkaFlowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreatePostCLSFlow(self, request):
         """创建CLS投递流任务
 
@@ -1728,6 +1751,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribePostCKafkaFlows(self, request):
+        """获取CKafka投递流任务列表
+
+        :param request: Request instance for DescribePostCKafkaFlows.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribePostCKafkaFlowsRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribePostCKafkaFlowsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePostCKafkaFlows", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePostCKafkaFlowsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribePostCLSFlows(self, request):
         """获取CLS投递流任务列表
 
@@ -2181,6 +2227,29 @@ class WafClient(AbstractClient):
             body = self.call("DescribeWebshellStatus", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeWebshellStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DestroyPostCKafkaFlow(self, request):
+        """销毁CKafka投递流任务
+
+        :param request: Request instance for DestroyPostCKafkaFlow.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DestroyPostCKafkaFlowRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DestroyPostCKafkaFlowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DestroyPostCKafkaFlow", params, headers=headers)
+            response = json.loads(body)
+            model = models.DestroyPostCKafkaFlowResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -11154,6 +11154,85 @@ class DeleteConsumerResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteCosRechargeRequest(AbstractModel):
+    """DeleteCosRecharge请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: COS导入配置Id
+        :type Id: str
+        :param _TopicId: 日志主题Id
+        :type TopicId: str
+        """
+        self._Id = None
+        self._TopicId = None
+
+    @property
+    def Id(self):
+        """COS导入配置Id
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def TopicId(self):
+        """日志主题Id
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._TopicId = params.get("TopicId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCosRechargeResponse(AbstractModel):
+    """DeleteCosRecharge返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteDashboardSubscribeRequest(AbstractModel):
     """DeleteDashboardSubscribe请求参数结构体
 

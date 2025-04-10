@@ -31896,6 +31896,12 @@ class RocketMQGroup(AbstractModel):
         :param _RetryMaxTimes: 重试次数
 注意：此字段可能返回 null，表示取不到有效值。
         :type RetryMaxTimes: int
+        :param _InstanceId: 实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _Namespace: 命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Namespace: str
         """
         self._Name = None
         self._ConsumerNum = None
@@ -31912,6 +31918,8 @@ class RocketMQGroup(AbstractModel):
         self._BroadcastEnabled = None
         self._GroupType = None
         self._RetryMaxTimes = None
+        self._InstanceId = None
+        self._Namespace = None
 
     @property
     def Name(self):
@@ -32083,6 +32091,30 @@ class RocketMQGroup(AbstractModel):
     def RetryMaxTimes(self, RetryMaxTimes):
         self._RetryMaxTimes = RetryMaxTimes
 
+    @property
+    def InstanceId(self):
+        """实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Namespace(self):
+        """命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -32100,6 +32132,8 @@ class RocketMQGroup(AbstractModel):
         self._BroadcastEnabled = params.get("BroadcastEnabled")
         self._GroupType = params.get("GroupType")
         self._RetryMaxTimes = params.get("RetryMaxTimes")
+        self._InstanceId = params.get("InstanceId")
+        self._Namespace = params.get("Namespace")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33547,6 +33581,12 @@ class RocketMQTopic(AbstractModel):
         :type CreateTime: int
         :param _UpdateTime: 创建时间，以毫秒为单位
         :type UpdateTime: int
+        :param _InstanceId: 实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _Namespace: 命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Namespace: str
         :param _LastUpdateTime: 最后写入时间，单位为秒
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastUpdateTime: int
@@ -33564,6 +33604,8 @@ class RocketMQTopic(AbstractModel):
         self._PartitionNum = None
         self._CreateTime = None
         self._UpdateTime = None
+        self._InstanceId = None
+        self._Namespace = None
         self._LastUpdateTime = None
         self._SubscriptionCount = None
         self._SubscriptionData = None
@@ -33647,6 +33689,30 @@ class RocketMQTopic(AbstractModel):
         self._UpdateTime = UpdateTime
 
     @property
+    def InstanceId(self):
+        """实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Namespace(self):
+        """命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
     def LastUpdateTime(self):
         """最后写入时间，单位为秒
 注意：此字段可能返回 null，表示取不到有效值。
@@ -33691,6 +33757,8 @@ class RocketMQTopic(AbstractModel):
         self._PartitionNum = params.get("PartitionNum")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        self._InstanceId = params.get("InstanceId")
+        self._Namespace = params.get("Namespace")
         self._LastUpdateTime = params.get("LastUpdateTime")
         self._SubscriptionCount = params.get("SubscriptionCount")
         if params.get("SubscriptionData") is not None:

@@ -848,10 +848,8 @@ class CloudAPIGatewayCanaryRuleList(AbstractModel):
     def __init__(self):
         r"""
         :param _CanaryRuleList: 灰度规则
-注意：此字段可能返回 null，表示取不到有效值。
         :type CanaryRuleList: list of CloudNativeAPIGatewayCanaryRule
         :param _TotalCount: 总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         """
         self._CanaryRuleList = None
@@ -860,7 +858,6 @@ class CloudAPIGatewayCanaryRuleList(AbstractModel):
     @property
     def CanaryRuleList(self):
         """灰度规则
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CloudNativeAPIGatewayCanaryRule
         """
         return self._CanaryRuleList
@@ -872,7 +869,6 @@ class CloudAPIGatewayCanaryRuleList(AbstractModel):
     @property
     def TotalCount(self):
         """总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -908,16 +904,12 @@ class CloudNativeAPIGatewayBalancedService(AbstractModel):
     def __init__(self):
         r"""
         :param _ServiceID: 服务 ID，作为入参时，必填
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceID: str
         :param _ServiceName: 服务名称，作为入参时，无意义
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceName: str
         :param _UpstreamName: Upstream 名称，作为入参时，无意义
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpstreamName: str
         :param _Percent: 百分比，10 即 10%，范围0-100
-注意：此字段可能返回 null，表示取不到有效值。
         :type Percent: float
         """
         self._ServiceID = None
@@ -928,7 +920,6 @@ class CloudNativeAPIGatewayBalancedService(AbstractModel):
     @property
     def ServiceID(self):
         """服务 ID，作为入参时，必填
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ServiceID
@@ -940,7 +931,6 @@ class CloudNativeAPIGatewayBalancedService(AbstractModel):
     @property
     def ServiceName(self):
         """服务名称，作为入参时，无意义
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ServiceName
@@ -952,7 +942,6 @@ class CloudNativeAPIGatewayBalancedService(AbstractModel):
     @property
     def UpstreamName(self):
         """Upstream 名称，作为入参时，无意义
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpstreamName
@@ -964,7 +953,6 @@ class CloudNativeAPIGatewayBalancedService(AbstractModel):
     @property
     def Percent(self):
         """百分比，10 即 10%，范围0-100
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Percent
@@ -997,44 +985,32 @@ class CloudNativeAPIGatewayCanaryRule(AbstractModel):
     def __init__(self):
         r"""
         :param _Priority: 优先级，值范围为 0 到 100；值越大，优先级越高；不同规则间优先级不可重复
-注意：此字段可能返回 null，表示取不到有效值。
         :type Priority: int
         :param _Enabled: 是否启用规则
-注意：此字段可能返回 null，表示取不到有效值。
         :type Enabled: bool
         :param _ConditionList: 参数匹配条件
-注意：此字段可能返回 null，表示取不到有效值。
         :type ConditionList: list of CloudNativeAPIGatewayCanaryRuleCondition
         :param _BalancedServiceList: 服务的流量百分比配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type BalancedServiceList: list of CloudNativeAPIGatewayBalancedService
         :param _ServiceId: 归属服务 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceId: str
         :param _ServiceName: 归属服务名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceName: str
         :param _RuleType: 灰度规则类别
 Standard｜Lane
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleType: str
         :param _MatchType: 全链路灰度策略多个条件之间的匹配方式，与AND，或OR
-注意：此字段可能返回 null，表示取不到有效值。
         :type MatchType: str
         :param _GroupId: 泳道组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupId: str
         :param _GroupName: 泳道组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupName: str
         :param _LaneId: 泳道ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type LaneId: str
         :param _LaneName: 泳道名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type LaneName: str
         :param _MatchMode: 泳道匹配规则：严格STRICT｜宽松PERMISSIVE
-注意：此字段可能返回 null，表示取不到有效值。
         :type MatchMode: str
         :param _LaneTag: 泳道标签
 注意：此字段可能返回 null，表示取不到有效值。
@@ -1058,7 +1034,6 @@ Standard｜Lane
     @property
     def Priority(self):
         """优先级，值范围为 0 到 100；值越大，优先级越高；不同规则间优先级不可重复
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Priority
@@ -1070,7 +1045,6 @@ Standard｜Lane
     @property
     def Enabled(self):
         """是否启用规则
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Enabled
@@ -1082,7 +1056,6 @@ Standard｜Lane
     @property
     def ConditionList(self):
         """参数匹配条件
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CloudNativeAPIGatewayCanaryRuleCondition
         """
         return self._ConditionList
@@ -1106,7 +1079,6 @@ Standard｜Lane
     @property
     def ServiceId(self):
         """归属服务 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ServiceId
@@ -1118,7 +1090,6 @@ Standard｜Lane
     @property
     def ServiceName(self):
         """归属服务名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ServiceName
@@ -1131,7 +1102,6 @@ Standard｜Lane
     def RuleType(self):
         """灰度规则类别
 Standard｜Lane
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RuleType
@@ -1143,7 +1113,6 @@ Standard｜Lane
     @property
     def MatchType(self):
         """全链路灰度策略多个条件之间的匹配方式，与AND，或OR
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MatchType
@@ -1155,7 +1124,6 @@ Standard｜Lane
     @property
     def GroupId(self):
         """泳道组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupId
@@ -1167,7 +1135,6 @@ Standard｜Lane
     @property
     def GroupName(self):
         """泳道组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupName
@@ -1179,7 +1146,6 @@ Standard｜Lane
     @property
     def LaneId(self):
         """泳道ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LaneId
@@ -1191,7 +1157,6 @@ Standard｜Lane
     @property
     def LaneName(self):
         """泳道名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LaneName
@@ -1203,7 +1168,6 @@ Standard｜Lane
     @property
     def MatchMode(self):
         """泳道匹配规则：严格STRICT｜宽松PERMISSIVE
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MatchMode
@@ -1268,25 +1232,18 @@ class CloudNativeAPIGatewayCanaryRuleCondition(AbstractModel):
     def __init__(self):
         r"""
         :param _Type: 条件类型，支持 path, method, query, header, cookie, body 和 system。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Key: 参数名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
         :param _Operator: 操作符，支持 "le", "eq", "lt", "ne", "ge", "gt", "regex", "exists", "in", "not in",  "prefix" ,"exact", "regex" 等
-注意：此字段可能返回 null，表示取不到有效值。
         :type Operator: str
         :param _Value: 目标参数值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         :param _Delimiter: 分隔符，当 Operator 为 in 或者 not in 时生效。支持值为英文逗号，英文分号，空格，换行符。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Delimiter: str
         :param _GlobalConfigId: 全局配置 Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type GlobalConfigId: str
         :param _GlobalConfigName: 全局配置名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type GlobalConfigName: str
         """
         self._Type = None
@@ -1300,7 +1257,6 @@ class CloudNativeAPIGatewayCanaryRuleCondition(AbstractModel):
     @property
     def Type(self):
         """条件类型，支持 path, method, query, header, cookie, body 和 system。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -1312,7 +1268,6 @@ class CloudNativeAPIGatewayCanaryRuleCondition(AbstractModel):
     @property
     def Key(self):
         """参数名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Key
@@ -1324,7 +1279,6 @@ class CloudNativeAPIGatewayCanaryRuleCondition(AbstractModel):
     @property
     def Operator(self):
         """操作符，支持 "le", "eq", "lt", "ne", "ge", "gt", "regex", "exists", "in", "not in",  "prefix" ,"exact", "regex" 等
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Operator
@@ -1336,7 +1290,6 @@ class CloudNativeAPIGatewayCanaryRuleCondition(AbstractModel):
     @property
     def Value(self):
         """目标参数值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -1348,7 +1301,6 @@ class CloudNativeAPIGatewayCanaryRuleCondition(AbstractModel):
     @property
     def Delimiter(self):
         """分隔符，当 Operator 为 in 或者 not in 时生效。支持值为英文逗号，英文分号，空格，换行符。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Delimiter
@@ -1360,7 +1312,6 @@ class CloudNativeAPIGatewayCanaryRuleCondition(AbstractModel):
     @property
     def GlobalConfigId(self):
         """全局配置 Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GlobalConfigId
@@ -1372,7 +1323,6 @@ class CloudNativeAPIGatewayCanaryRuleCondition(AbstractModel):
     @property
     def GlobalConfigName(self):
         """全局配置名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GlobalConfigName
@@ -1752,25 +1702,18 @@ class CloudNativeAPIGatewayNode(AbstractModel):
         :param _NodeIp: 节点 ip
         :type NodeIp: str
         :param _ZoneId: Zone id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneId: str
         :param _Zone: Zone
-注意：此字段可能返回 null，表示取不到有效值。
         :type Zone: str
         :param _GroupId: 分组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupId: str
         :param _GroupName: 分组名
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupName: str
         :param _Status: 状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _Weight: 节点权重
-注意：此字段可能返回 null，表示取不到有效值。
         :type Weight: int
         :param _IsDefaultWeight: 是否默认权重
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsDefaultWeight: bool
         """
         self._NodeId = None
@@ -1808,7 +1751,6 @@ class CloudNativeAPIGatewayNode(AbstractModel):
     @property
     def ZoneId(self):
         """Zone id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ZoneId
@@ -1820,7 +1762,6 @@ class CloudNativeAPIGatewayNode(AbstractModel):
     @property
     def Zone(self):
         """Zone
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Zone
@@ -1832,7 +1773,6 @@ class CloudNativeAPIGatewayNode(AbstractModel):
     @property
     def GroupId(self):
         """分组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupId
@@ -1844,7 +1784,6 @@ class CloudNativeAPIGatewayNode(AbstractModel):
     @property
     def GroupName(self):
         """分组名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupName
@@ -1856,7 +1795,6 @@ class CloudNativeAPIGatewayNode(AbstractModel):
     @property
     def Status(self):
         """状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -1868,7 +1806,6 @@ class CloudNativeAPIGatewayNode(AbstractModel):
     @property
     def Weight(self):
         """节点权重
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Weight
@@ -1880,7 +1817,6 @@ class CloudNativeAPIGatewayNode(AbstractModel):
     @property
     def IsDefaultWeight(self):
         """是否默认权重
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsDefaultWeight
@@ -1973,30 +1909,24 @@ class CloudNativeAPIGatewayRateLimitDetail(AbstractModel):
         :param _QpsThresholds: qps阈值
         :type QpsThresholds: list of QpsThreshold
         :param _Path: 需要进行流量控制的请求路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type Path: str
         :param _Header: 需要进行流量控制的请求头Key
-注意：此字段可能返回 null，表示取不到有效值。
         :type Header: str
         :param _LimitBy: 限流依据
 ip service consumer credential path header
         :type LimitBy: str
         :param _ExternalRedis: 外部redis配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExternalRedis: :class:`tencentcloud.tse.v20201207.models.ExternalRedis`
         :param _Policy: 计数器策略 
 local 单机
 redis  默认redis
 external_redis 外部redis
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type Policy: str
         :param _RateLimitResponse: 响应配置，响应策略为text
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type RateLimitResponse: :class:`tencentcloud.tse.v20201207.models.RateLimitResponse`
         :param _RateLimitResponseUrl: 请求转发地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type RateLimitResponseUrl: str
         :param _ResponseType: 响应策略
 url请求转发
@@ -2058,7 +1988,6 @@ default 直接返回
     @property
     def Path(self):
         """需要进行流量控制的请求路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Path
@@ -2070,7 +1999,6 @@ default 直接返回
     @property
     def Header(self):
         """需要进行流量控制的请求头Key
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Header
@@ -2094,7 +2022,6 @@ ip service consumer credential path header
     @property
     def ExternalRedis(self):
         """外部redis配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tse.v20201207.models.ExternalRedis`
         """
         return self._ExternalRedis
@@ -2110,7 +2037,6 @@ local 单机
 redis  默认redis
 external_redis 外部redis
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Policy
@@ -2123,7 +2049,6 @@ external_redis 外部redis
     def RateLimitResponse(self):
         """响应配置，响应策略为text
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tse.v20201207.models.RateLimitResponse`
         """
         return self._RateLimitResponse
@@ -2135,7 +2060,6 @@ external_redis 外部redis
     @property
     def RateLimitResponseUrl(self):
         """请求转发地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RateLimitResponseUrl
@@ -2272,25 +2196,18 @@ class CloudNativeAPIGatewayStrategy(AbstractModel):
         :param _StrategyId: 策略ID
         :type StrategyId: str
         :param _StrategyName: 策略名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type StrategyName: str
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _ModifyTime: 更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyTime: str
         :param _Description: 策略描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _Config: 弹性伸缩配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type Config: :class:`tencentcloud.tse.v20201207.models.CloudNativeAPIGatewayStrategyAutoScalerConfig`
         :param _GatewayId: 网关实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayId: str
         :param _CronConfig: 定时伸缩配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type CronConfig: :class:`tencentcloud.tse.v20201207.models.CloudNativeAPIGatewayStrategyCronScalerConfig`
         :param _MaxReplicas: 最大节点数
 注意：此字段可能返回 null，表示取不到有效值。
@@ -2320,7 +2237,6 @@ class CloudNativeAPIGatewayStrategy(AbstractModel):
     @property
     def StrategyName(self):
         """策略名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StrategyName
@@ -2332,7 +2248,6 @@ class CloudNativeAPIGatewayStrategy(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -2344,7 +2259,6 @@ class CloudNativeAPIGatewayStrategy(AbstractModel):
     @property
     def ModifyTime(self):
         """更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ModifyTime
@@ -2356,7 +2270,6 @@ class CloudNativeAPIGatewayStrategy(AbstractModel):
     @property
     def Description(self):
         """策略描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -2368,7 +2281,6 @@ class CloudNativeAPIGatewayStrategy(AbstractModel):
     @property
     def Config(self):
         """弹性伸缩配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tse.v20201207.models.CloudNativeAPIGatewayStrategyAutoScalerConfig`
         """
         return self._Config
@@ -2380,7 +2292,6 @@ class CloudNativeAPIGatewayStrategy(AbstractModel):
     @property
     def GatewayId(self):
         """网关实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GatewayId
@@ -2392,7 +2303,6 @@ class CloudNativeAPIGatewayStrategy(AbstractModel):
     @property
     def CronConfig(self):
         """定时伸缩配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tse.v20201207.models.CloudNativeAPIGatewayStrategyCronScalerConfig`
         """
         return self._CronConfig
@@ -2719,19 +2629,14 @@ class CloudNativeAPIGatewayStrategyBindingGroupInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _GroupId: 网关分组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupId: str
         :param _NodeConfig: 节点配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type NodeConfig: :class:`tencentcloud.tse.v20201207.models.CloudNativeAPIGatewayNodeConfig`
         :param _BindTime: 绑定时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type BindTime: str
         :param _GroupName: 网关分组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupName: str
         :param _Status: 绑定状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         """
         self._GroupId = None
@@ -2743,7 +2648,6 @@ class CloudNativeAPIGatewayStrategyBindingGroupInfo(AbstractModel):
     @property
     def GroupId(self):
         """网关分组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupId
@@ -2755,7 +2659,6 @@ class CloudNativeAPIGatewayStrategyBindingGroupInfo(AbstractModel):
     @property
     def NodeConfig(self):
         """节点配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tse.v20201207.models.CloudNativeAPIGatewayNodeConfig`
         """
         return self._NodeConfig
@@ -2767,7 +2670,6 @@ class CloudNativeAPIGatewayStrategyBindingGroupInfo(AbstractModel):
     @property
     def BindTime(self):
         """绑定时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BindTime
@@ -2779,7 +2681,6 @@ class CloudNativeAPIGatewayStrategyBindingGroupInfo(AbstractModel):
     @property
     def GroupName(self):
         """网关分组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupName
@@ -2791,7 +2692,6 @@ class CloudNativeAPIGatewayStrategyBindingGroupInfo(AbstractModel):
     @property
     def Status(self):
         """绑定状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -3035,10 +2935,8 @@ class CloudNativeAPIGatewayVpcConfig(AbstractModel):
     def __init__(self):
         r"""
         :param _VpcId: 私有网络ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
         :param _SubnetId: 子网ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetId: str
         """
         self._VpcId = None
@@ -3047,7 +2945,6 @@ class CloudNativeAPIGatewayVpcConfig(AbstractModel):
     @property
     def VpcId(self):
         """私有网络ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VpcId
@@ -3059,7 +2956,6 @@ class CloudNativeAPIGatewayVpcConfig(AbstractModel):
     @property
     def SubnetId(self):
         """子网ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubnetId
@@ -5818,7 +5714,6 @@ class CreateCloudNativeAPIGatewayResult(AbstractModel):
         :param _Status: 云原生网关状态。
         :type Status: str
         :param _TaskId: 任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
         """
         self._GatewayId = None
@@ -5850,7 +5745,6 @@ class CreateCloudNativeAPIGatewayResult(AbstractModel):
     @property
     def TaskId(self):
         """任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskId
@@ -10401,7 +10295,6 @@ class DeleteNativeGatewayServerGroupResult(AbstractModel):
         :param _Status: 删除状态
         :type Status: str
         :param _TaskId: 任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
         """
         self._GatewayId = None
@@ -10445,7 +10338,6 @@ class DeleteNativeGatewayServerGroupResult(AbstractModel):
     @property
     def TaskId(self):
         """任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskId
@@ -11440,13 +11332,10 @@ class DescribeCloudNativeAPIGatewayConfigResult(AbstractModel):
         :param _ConfigList: 分组网络配置列表。
         :type ConfigList: list of CloudNativeAPIGatewayConfig
         :param _GroupSubnetId: 分组子网信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupSubnetId: str
         :param _GroupVpcId: 分组VPC信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupVpcId: str
         :param _GroupId: 分组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupId: str
         """
         self._GatewayId = None
@@ -11480,7 +11369,6 @@ class DescribeCloudNativeAPIGatewayConfigResult(AbstractModel):
     @property
     def GroupSubnetId(self):
         """分组子网信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupSubnetId
@@ -11492,7 +11380,6 @@ class DescribeCloudNativeAPIGatewayConfigResult(AbstractModel):
     @property
     def GroupVpcId(self):
         """分组VPC信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupVpcId
@@ -11504,7 +11391,6 @@ class DescribeCloudNativeAPIGatewayConfigResult(AbstractModel):
     @property
     def GroupId(self):
         """分组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupId
@@ -11988,53 +11874,37 @@ class DescribeCloudNativeAPIGatewayResult(AbstractModel):
         :param _CreateTime: 云原生API网关创建时间。
         :type CreateTime: str
         :param _Tags: 实例的标签信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of InstanceTagInfo
         :param _EnableCls: 是否开启 cls 日志
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnableCls: bool
         :param _TradeType: 付费模式，0表示后付费，1预付费
-注意：此字段可能返回 null，表示取不到有效值。
         :type TradeType: int
         :param _FeatureVersion: 实例版本，当前支持开发版、标准版、专业版【TRIAL、STANDARD、PROFESSIONAL】
-注意：此字段可能返回 null，表示取不到有效值。
         :type FeatureVersion: str
         :param _InternetMaxBandwidthOut: 公网出流量带宽，[1,2048]Mbps
-注意：此字段可能返回 null，表示取不到有效值。
         :type InternetMaxBandwidthOut: int
         :param _AutoRenewFlag: 自动续费标记，0表示默认状态(用户未设置，即初始状态)；
 1表示自动续费，2表示明确不自动续费(用户设置)，若业务无续费概念或无需自动续费，需要设置为0
-注意：此字段可能返回 null，表示取不到有效值。
         :type AutoRenewFlag: int
         :param _CurDeadline: 到期时间，预付费时使用
-注意：此字段可能返回 null，表示取不到有效值。
         :type CurDeadline: str
         :param _IsolateTime: 隔离时间，实例隔离时使用
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsolateTime: str
         :param _EnableInternet: 是否开启客户端公网。
-注意：此字段可能返回 null，表示取不到有效值。
         :type EnableInternet: bool
         :param _EngineRegion: 实例实际的地域信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type EngineRegion: str
         :param _IngressClassName: Ingress class名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type IngressClassName: str
         :param _InternetPayMode: 公网计费方式。可选取值 BANDWIDTH | TRAFFIC ，表示按带宽和按流量计费。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InternetPayMode: str
         :param _GatewayMinorVersion: 云原生API网关小版本号
-注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayMinorVersion: str
         :param _InstancePort: 实例监听的端口信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstancePort: :class:`tencentcloud.tse.v20201207.models.InstancePort`
         :param _LoadBalancerType: 公网CLB默认类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type LoadBalancerType: str
         :param _PublicIpAddresses: 公网IP地址列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type PublicIpAddresses: list of str
         """
         self._GatewayId = None
@@ -12167,7 +12037,6 @@ class DescribeCloudNativeAPIGatewayResult(AbstractModel):
     @property
     def Tags(self):
         """实例的标签信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of InstanceTagInfo
         """
         return self._Tags
@@ -12179,7 +12048,6 @@ class DescribeCloudNativeAPIGatewayResult(AbstractModel):
     @property
     def EnableCls(self):
         """是否开启 cls 日志
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._EnableCls
@@ -12191,7 +12059,6 @@ class DescribeCloudNativeAPIGatewayResult(AbstractModel):
     @property
     def TradeType(self):
         """付费模式，0表示后付费，1预付费
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TradeType
@@ -12203,7 +12070,6 @@ class DescribeCloudNativeAPIGatewayResult(AbstractModel):
     @property
     def FeatureVersion(self):
         """实例版本，当前支持开发版、标准版、专业版【TRIAL、STANDARD、PROFESSIONAL】
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FeatureVersion
@@ -12215,7 +12081,6 @@ class DescribeCloudNativeAPIGatewayResult(AbstractModel):
     @property
     def InternetMaxBandwidthOut(self):
         """公网出流量带宽，[1,2048]Mbps
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._InternetMaxBandwidthOut
@@ -12228,7 +12093,6 @@ class DescribeCloudNativeAPIGatewayResult(AbstractModel):
     def AutoRenewFlag(self):
         """自动续费标记，0表示默认状态(用户未设置，即初始状态)；
 1表示自动续费，2表示明确不自动续费(用户设置)，若业务无续费概念或无需自动续费，需要设置为0
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -12240,7 +12104,6 @@ class DescribeCloudNativeAPIGatewayResult(AbstractModel):
     @property
     def CurDeadline(self):
         """到期时间，预付费时使用
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CurDeadline
@@ -12252,7 +12115,6 @@ class DescribeCloudNativeAPIGatewayResult(AbstractModel):
     @property
     def IsolateTime(self):
         """隔离时间，实例隔离时使用
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IsolateTime
@@ -12264,7 +12126,6 @@ class DescribeCloudNativeAPIGatewayResult(AbstractModel):
     @property
     def EnableInternet(self):
         """是否开启客户端公网。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._EnableInternet
@@ -12276,7 +12137,6 @@ class DescribeCloudNativeAPIGatewayResult(AbstractModel):
     @property
     def EngineRegion(self):
         """实例实际的地域信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EngineRegion
@@ -12288,7 +12148,6 @@ class DescribeCloudNativeAPIGatewayResult(AbstractModel):
     @property
     def IngressClassName(self):
         """Ingress class名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IngressClassName
@@ -12300,7 +12159,6 @@ class DescribeCloudNativeAPIGatewayResult(AbstractModel):
     @property
     def InternetPayMode(self):
         """公网计费方式。可选取值 BANDWIDTH | TRAFFIC ，表示按带宽和按流量计费。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InternetPayMode
@@ -12312,7 +12170,6 @@ class DescribeCloudNativeAPIGatewayResult(AbstractModel):
     @property
     def GatewayMinorVersion(self):
         """云原生API网关小版本号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GatewayMinorVersion
@@ -12324,7 +12181,6 @@ class DescribeCloudNativeAPIGatewayResult(AbstractModel):
     @property
     def InstancePort(self):
         """实例监听的端口信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tse.v20201207.models.InstancePort`
         """
         return self._InstancePort
@@ -12336,7 +12192,6 @@ class DescribeCloudNativeAPIGatewayResult(AbstractModel):
     @property
     def LoadBalancerType(self):
         """公网CLB默认类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LoadBalancerType
@@ -12348,7 +12203,6 @@ class DescribeCloudNativeAPIGatewayResult(AbstractModel):
     @property
     def PublicIpAddresses(self):
         """公网IP地址列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._PublicIpAddresses
@@ -16949,13 +16803,10 @@ class DescribePublicAddressConfigResult(AbstractModel):
     def __init__(self):
         r"""
         :param _GatewayId: 网关实例id
-注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayId: str
         :param _ConfigList: 公网地址信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ConfigList: list of PublicAddressConfig
         :param _TotalCount: 总个数	
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         """
         self._GatewayId = None
@@ -16965,7 +16816,6 @@ class DescribePublicAddressConfigResult(AbstractModel):
     @property
     def GatewayId(self):
         """网关实例id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GatewayId
@@ -16977,7 +16827,6 @@ class DescribePublicAddressConfigResult(AbstractModel):
     @property
     def ConfigList(self):
         """公网地址信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PublicAddressConfig
         """
         return self._ConfigList
@@ -16989,7 +16838,6 @@ class DescribePublicAddressConfigResult(AbstractModel):
     @property
     def TotalCount(self):
         """总个数	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -17980,16 +17828,12 @@ class DescribeWafProtectionResult(AbstractModel):
     def __init__(self):
         r"""
         :param _GlobalStatus: 全局防护状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type GlobalStatus: str
         :param _ServicesStatus: 服务防护状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServicesStatus: list of ServiceWafStatus
         :param _RouteStatus: 路由防护状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type RouteStatus: list of RouteWafStatus
         :param _ObjectStatus: 对象防护状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type ObjectStatus: str
         """
         self._GlobalStatus = None
@@ -18000,7 +17844,6 @@ class DescribeWafProtectionResult(AbstractModel):
     @property
     def GlobalStatus(self):
         """全局防护状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GlobalStatus
@@ -18012,7 +17855,6 @@ class DescribeWafProtectionResult(AbstractModel):
     @property
     def ServicesStatus(self):
         """服务防护状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ServiceWafStatus
         """
         return self._ServicesStatus
@@ -18024,7 +17866,6 @@ class DescribeWafProtectionResult(AbstractModel):
     @property
     def RouteStatus(self):
         """路由防护状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RouteWafStatus
         """
         return self._RouteStatus
@@ -18036,7 +17877,6 @@ class DescribeWafProtectionResult(AbstractModel):
     @property
     def ObjectStatus(self):
         """对象防护状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ObjectStatus
@@ -18885,16 +18725,12 @@ class ExternalRedis(AbstractModel):
     def __init__(self):
         r"""
         :param _RedisHost: redis ip
-注意：此字段可能返回 null，表示取不到有效值。
         :type RedisHost: str
         :param _RedisPassword: redis密码
-注意：此字段可能返回 null，表示取不到有效值。
         :type RedisPassword: str
         :param _RedisPort: redis端口
-注意：此字段可能返回 null，表示取不到有效值。
         :type RedisPort: int
         :param _RedisTimeout: 超时时间  ms
-注意：此字段可能返回 null，表示取不到有效值。
         :type RedisTimeout: int
         """
         self._RedisHost = None
@@ -18905,7 +18741,6 @@ class ExternalRedis(AbstractModel):
     @property
     def RedisHost(self):
         """redis ip
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RedisHost
@@ -18917,7 +18752,6 @@ class ExternalRedis(AbstractModel):
     @property
     def RedisPassword(self):
         """redis密码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RedisPassword
@@ -18929,7 +18763,6 @@ class ExternalRedis(AbstractModel):
     @property
     def RedisPort(self):
         """redis端口
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RedisPort
@@ -18941,7 +18774,6 @@ class ExternalRedis(AbstractModel):
     @property
     def RedisTimeout(self):
         """超时时间  ms
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RedisTimeout
@@ -21258,16 +21090,12 @@ class InstancePort(AbstractModel):
     def __init__(self):
         r"""
         :param _HttpPort: 监听的 http 端口范围。
-注意：此字段可能返回 null，表示取不到有效值。
         :type HttpPort: str
         :param _HttpsPort: 监听的 https 端口范围。
-注意：此字段可能返回 null，表示取不到有效值。
         :type HttpsPort: str
         :param _TcpPort: 监听的 tcp 端口范围。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TcpPort: str
         :param _UdpPort: 监听的 udp 端口范围。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UdpPort: str
         """
         self._HttpPort = None
@@ -21278,7 +21106,6 @@ class InstancePort(AbstractModel):
     @property
     def HttpPort(self):
         """监听的 http 端口范围。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HttpPort
@@ -21290,7 +21117,6 @@ class InstancePort(AbstractModel):
     @property
     def HttpsPort(self):
         """监听的 https 端口范围。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HttpsPort
@@ -21302,7 +21128,6 @@ class InstancePort(AbstractModel):
     @property
     def TcpPort(self):
         """监听的 tcp 端口范围。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TcpPort
@@ -21314,7 +21139,6 @@ class InstancePort(AbstractModel):
     @property
     def UdpPort(self):
         """监听的 udp 端口范围。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UdpPort
@@ -21641,10 +21465,8 @@ class KeyValue(AbstractModel):
     def __init__(self):
         r"""
         :param _Key: 条件的Key
-注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
         :param _Value: 条件的Value
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Key = None
@@ -21653,7 +21475,6 @@ class KeyValue(AbstractModel):
     @property
     def Key(self):
         """条件的Key
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Key
@@ -21665,7 +21486,6 @@ class KeyValue(AbstractModel):
     @property
     def Value(self):
         """条件的Value
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -21815,7 +21635,6 @@ class KongCertificatesList(AbstractModel):
     def __init__(self):
         r"""
         :param _Total: 证书列表总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _CertificatesList: 无
 注意：此字段可能返回 null，表示取不到有效值。
@@ -21831,7 +21650,6 @@ class KongCertificatesList(AbstractModel):
     @property
     def Total(self):
         """证书列表总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Total
@@ -22430,37 +22248,28 @@ class KongServiceDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _ID: 服务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ID: str
         :param _Name: 服务名字
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Protocol: 后端协议
-注意：此字段可能返回 null，表示取不到有效值。
         :type Protocol: str
         :param _Path: 后端路径
 注意：此字段可能返回 null，表示取不到有效值。
         :type Path: str
         :param _Timeout: 后端延时，单位ms
-注意：此字段可能返回 null，表示取不到有效值。
         :type Timeout: int
         :param _Retries: 重试次数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Retries: int
         :param _Tags: 标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of str
         :param _UpstreamInfo: 后端配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpstreamInfo: :class:`tencentcloud.tse.v20201207.models.KongUpstreamInfo`
         :param _UpstreamType: 后端类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpstreamType: str
         :param _Editable: 是否可编辑
-注意：此字段可能返回 null，表示取不到有效值。
         :type Editable: bool
         :param _CreatedTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedTime: str
         """
         self._ID = None
@@ -22478,7 +22287,6 @@ class KongServiceDetail(AbstractModel):
     @property
     def ID(self):
         """服务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ID
@@ -22490,7 +22298,6 @@ class KongServiceDetail(AbstractModel):
     @property
     def Name(self):
         """服务名字
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -22502,7 +22309,6 @@ class KongServiceDetail(AbstractModel):
     @property
     def Protocol(self):
         """后端协议
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Protocol
@@ -22526,7 +22332,6 @@ class KongServiceDetail(AbstractModel):
     @property
     def Timeout(self):
         """后端延时，单位ms
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Timeout
@@ -22538,7 +22343,6 @@ class KongServiceDetail(AbstractModel):
     @property
     def Retries(self):
         """重试次数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Retries
@@ -22562,7 +22366,6 @@ class KongServiceDetail(AbstractModel):
     @property
     def UpstreamInfo(self):
         """后端配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tse.v20201207.models.KongUpstreamInfo`
         """
         return self._UpstreamInfo
@@ -22574,7 +22377,6 @@ class KongServiceDetail(AbstractModel):
     @property
     def UpstreamType(self):
         """后端类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpstreamType
@@ -22586,7 +22388,6 @@ class KongServiceDetail(AbstractModel):
     @property
     def Editable(self):
         """是否可编辑
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Editable
@@ -22598,7 +22399,6 @@ class KongServiceDetail(AbstractModel):
     @property
     def CreatedTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreatedTime
@@ -23426,7 +23226,6 @@ class KongUpstreamList(AbstractModel):
     def __init__(self):
         r"""
         :param _UpstreamList: 无
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpstreamList: list of KongUpstreamPreview
         """
         self._UpstreamList = None
@@ -23434,7 +23233,6 @@ class KongUpstreamList(AbstractModel):
     @property
     def UpstreamList(self):
         """无
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KongUpstreamPreview
         """
         return self._UpstreamList
@@ -23469,13 +23267,10 @@ class KongUpstreamPreview(AbstractModel):
     def __init__(self):
         r"""
         :param _ID: 服务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ID: str
         :param _Name: 服务名字
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Target: 后端配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type Target: list of KongTarget
         """
         self._ID = None
@@ -23485,7 +23280,6 @@ class KongUpstreamPreview(AbstractModel):
     @property
     def ID(self):
         """服务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ID
@@ -23497,7 +23291,6 @@ class KongUpstreamPreview(AbstractModel):
     @property
     def Name(self):
         """服务名字
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -23509,7 +23302,6 @@ class KongUpstreamPreview(AbstractModel):
     @property
     def Target(self):
         """后端配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KongTarget
         """
         return self._Target
@@ -23546,16 +23338,12 @@ class LimitRule(AbstractModel):
     def __init__(self):
         r"""
         :param _Filters: 请求匹配条件
-注意：此字段可能返回 null，表示取不到有效值。
         :type Filters: list of RuleFilter
         :param _LimitBy: 参数限流依据组合
-注意：此字段可能返回 null，表示取不到有效值。
         :type LimitBy: list of KeyValue
         :param _QpsThresholds: 限流阈值
-注意：此字段可能返回 null，表示取不到有效值。
         :type QpsThresholds: list of QpsThreshold
         :param _AccurateQpsThresholds: 精确限流阈值
-注意：此字段可能返回 null，表示取不到有效值。
         :type AccurateQpsThresholds: list of AccurateQpsThreshold
         """
         self._Filters = None
@@ -23566,7 +23354,6 @@ class LimitRule(AbstractModel):
     @property
     def Filters(self):
         """请求匹配条件
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RuleFilter
         """
         return self._Filters
@@ -23578,7 +23365,6 @@ class LimitRule(AbstractModel):
     @property
     def LimitBy(self):
         """参数限流依据组合
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KeyValue
         """
         return self._LimitBy
@@ -23590,7 +23376,6 @@ class LimitRule(AbstractModel):
     @property
     def QpsThresholds(self):
         """限流阈值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of QpsThreshold
         """
         return self._QpsThresholds
@@ -23602,7 +23387,6 @@ class LimitRule(AbstractModel):
     @property
     def AccurateQpsThresholds(self):
         """精确限流阈值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AccurateQpsThreshold
         """
         return self._AccurateQpsThresholds
@@ -26950,25 +26734,18 @@ class NativeGatewayServerGroup(AbstractModel):
 1：是。
         :type IsFirstGroup: int
         :param _BindingStrategy: 关联策略信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type BindingStrategy: :class:`tencentcloud.tse.v20201207.models.CloudNativeAPIGatewayStrategy`
         :param _GatewayId: 网关实例 id
-注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayId: str
         :param _InternetMaxBandwidthOut: 带宽
-注意：此字段可能返回 null，表示取不到有效值。
         :type InternetMaxBandwidthOut: int
         :param _ModifyTime: 修改时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyTime: str
         :param _SubnetIds: 子网id
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetIds: str
         :param _DefaultWeight: 分组默认权重
-注意：此字段可能返回 null，表示取不到有效值。
         :type DefaultWeight: int
         :param _ElasticNumber: 弹性节点
-注意：此字段可能返回 null，表示取不到有效值。
         :type ElasticNumber: int
         """
         self._GroupId = None
@@ -27068,7 +26845,6 @@ class NativeGatewayServerGroup(AbstractModel):
     @property
     def BindingStrategy(self):
         """关联策略信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tse.v20201207.models.CloudNativeAPIGatewayStrategy`
         """
         return self._BindingStrategy
@@ -27080,7 +26856,6 @@ class NativeGatewayServerGroup(AbstractModel):
     @property
     def GatewayId(self):
         """网关实例 id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GatewayId
@@ -27092,7 +26867,6 @@ class NativeGatewayServerGroup(AbstractModel):
     @property
     def InternetMaxBandwidthOut(self):
         """带宽
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._InternetMaxBandwidthOut
@@ -27104,7 +26878,6 @@ class NativeGatewayServerGroup(AbstractModel):
     @property
     def ModifyTime(self):
         """修改时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ModifyTime
@@ -27116,7 +26889,6 @@ class NativeGatewayServerGroup(AbstractModel):
     @property
     def SubnetIds(self):
         """子网id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubnetIds
@@ -27128,7 +26900,6 @@ class NativeGatewayServerGroup(AbstractModel):
     @property
     def DefaultWeight(self):
         """分组默认权重
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DefaultWeight
@@ -27140,7 +26911,6 @@ class NativeGatewayServerGroup(AbstractModel):
     @property
     def ElasticNumber(self):
         """弹性节点
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ElasticNumber
@@ -27656,22 +27426,16 @@ class PublicAddressConfig(AbstractModel):
     def __init__(self):
         r"""
         :param _Vip: 公网 ip
-注意：此字段可能返回 null，表示取不到有效值。
         :type Vip: str
         :param _InternetMaxBandwidthOut: 公网最大带宽
-注意：此字段可能返回 null，表示取不到有效值。
         :type InternetMaxBandwidthOut: int
         :param _GroupId: 公网所属分组 id
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupId: str
         :param _GroupName: 公网所属分组名
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupName: str
         :param _NetworkId: 公网负载均衡 id
-注意：此字段可能返回 null，表示取不到有效值。
         :type NetworkId: str
         :param _Description: 公网负载均衡描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         """
         self._Vip = None
@@ -27684,7 +27448,6 @@ class PublicAddressConfig(AbstractModel):
     @property
     def Vip(self):
         """公网 ip
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Vip
@@ -27696,7 +27459,6 @@ class PublicAddressConfig(AbstractModel):
     @property
     def InternetMaxBandwidthOut(self):
         """公网最大带宽
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._InternetMaxBandwidthOut
@@ -27708,7 +27470,6 @@ class PublicAddressConfig(AbstractModel):
     @property
     def GroupId(self):
         """公网所属分组 id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupId
@@ -27720,7 +27481,6 @@ class PublicAddressConfig(AbstractModel):
     @property
     def GroupName(self):
         """公网所属分组名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupName
@@ -27732,7 +27492,6 @@ class PublicAddressConfig(AbstractModel):
     @property
     def NetworkId(self):
         """公网负载均衡 id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NetworkId
@@ -27744,7 +27503,6 @@ class PublicAddressConfig(AbstractModel):
     @property
     def Description(self):
         """公网负载均衡描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -27956,13 +27714,10 @@ class RateLimitResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Body: 自定义响应体
-注意：此字段可能返回 null，表示取不到有效值。
         :type Body: str
         :param _Headers: Headers
-注意：此字段可能返回 null，表示取不到有效值。
         :type Headers: list of KVMapping
         :param _HttpStatus: http状态码
-注意：此字段可能返回 null，表示取不到有效值。
         :type HttpStatus: int
         """
         self._Body = None
@@ -27972,7 +27727,6 @@ class RateLimitResponse(AbstractModel):
     @property
     def Body(self):
         """自定义响应体
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Body
@@ -27984,7 +27738,6 @@ class RateLimitResponse(AbstractModel):
     @property
     def Headers(self):
         """Headers
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KVMapping
         """
         return self._Headers
@@ -27996,7 +27749,6 @@ class RateLimitResponse(AbstractModel):
     @property
     def HttpStatus(self):
         """http状态码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._HttpStatus
@@ -28352,28 +28104,20 @@ class RouteWafStatus(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 路由的名字
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Id: 路由的 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
         :param _Status:  路由是否开启 WAF 防护
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _Methods: 方法
-注意：此字段可能返回 null，表示取不到有效值。
         :type Methods: list of str
         :param _Paths: 路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type Paths: list of str
         :param _Hosts: 域名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Hosts: list of str
         :param _ServiceName: 路由对应服务的名字
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceName: str
         :param _ServiceId: 路由对应服务的ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceId: str
         """
         self._Name = None
@@ -28388,7 +28132,6 @@ class RouteWafStatus(AbstractModel):
     @property
     def Name(self):
         """路由的名字
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -28400,7 +28143,6 @@ class RouteWafStatus(AbstractModel):
     @property
     def Id(self):
         """路由的 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Id
@@ -28412,7 +28154,6 @@ class RouteWafStatus(AbstractModel):
     @property
     def Status(self):
         """ 路由是否开启 WAF 防护
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -28424,7 +28165,6 @@ class RouteWafStatus(AbstractModel):
     @property
     def Methods(self):
         """方法
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Methods
@@ -28436,7 +28176,6 @@ class RouteWafStatus(AbstractModel):
     @property
     def Paths(self):
         """路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Paths
@@ -28448,7 +28187,6 @@ class RouteWafStatus(AbstractModel):
     @property
     def Hosts(self):
         """域名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Hosts
@@ -28460,7 +28198,6 @@ class RouteWafStatus(AbstractModel):
     @property
     def ServiceName(self):
         """路由对应服务的名字
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ServiceName
@@ -28472,7 +28209,6 @@ class RouteWafStatus(AbstractModel):
     @property
     def ServiceId(self):
         """路由对应服务的ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ServiceId
@@ -28509,16 +28245,12 @@ class RuleFilter(AbstractModel):
     def __init__(self):
         r"""
         :param _Key: 限流条件的Key
-注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
         :param _Values: 限流条件的Values
-注意：此字段可能返回 null，表示取不到有效值。
         :type Values: list of str
         :param _Operator: 操作符
-注意：此字段可能返回 null，表示取不到有效值。
         :type Operator: str
         :param _Name: header或query对应的name
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         """
         self._Key = None
@@ -28529,7 +28261,6 @@ class RuleFilter(AbstractModel):
     @property
     def Key(self):
         """限流条件的Key
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Key
@@ -28541,7 +28272,6 @@ class RuleFilter(AbstractModel):
     @property
     def Values(self):
         """限流条件的Values
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Values
@@ -28553,7 +28283,6 @@ class RuleFilter(AbstractModel):
     @property
     def Operator(self):
         """操作符
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Operator
@@ -28565,7 +28294,6 @@ class RuleFilter(AbstractModel):
     @property
     def Name(self):
         """header或query对应的name
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -29372,16 +29100,12 @@ class ServiceWafStatus(AbstractModel):
     def __init__(self):
         r"""
         :param _Name:  服务的名字
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Id: 服务的 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
         :param _Type: 服务的类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Status:  服务是否开启 WAF 防护
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         """
         self._Name = None
@@ -29392,7 +29116,6 @@ class ServiceWafStatus(AbstractModel):
     @property
     def Name(self):
         """ 服务的名字
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -29404,7 +29127,6 @@ class ServiceWafStatus(AbstractModel):
     @property
     def Id(self):
         """服务的 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Id
@@ -29416,7 +29138,6 @@ class ServiceWafStatus(AbstractModel):
     @property
     def Type(self):
         """服务的类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -29428,7 +29149,6 @@ class ServiceWafStatus(AbstractModel):
     @property
     def Status(self):
         """ 服务是否开启 WAF 防护
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -29463,10 +29183,8 @@ class SourceInfo(AbstractModel):
         :param _Addresses: 微服务引擎接入IP地址信息
         :type Addresses: list of str
         :param _VpcInfo: 微服务引擎VPC信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcInfo: :class:`tencentcloud.tse.v20201207.models.SourceInstanceVpcInfo`
         :param _Auth: 微服务引擎鉴权信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Auth: :class:`tencentcloud.tse.v20201207.models.SourceInstanceAuth`
         """
         self._Addresses = None
@@ -29487,7 +29205,6 @@ class SourceInfo(AbstractModel):
     @property
     def VpcInfo(self):
         """微服务引擎VPC信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tse.v20201207.models.SourceInstanceVpcInfo`
         """
         return self._VpcInfo
@@ -29499,7 +29216,6 @@ class SourceInfo(AbstractModel):
     @property
     def Auth(self):
         """微服务引擎鉴权信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tse.v20201207.models.SourceInstanceAuth`
         """
         return self._Auth
@@ -29535,13 +29251,10 @@ class SourceInstanceAuth(AbstractModel):
     def __init__(self):
         r"""
         :param _Username: 用户名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Username: str
         :param _Password: 账户密码
-注意：此字段可能返回 null，表示取不到有效值。
         :type Password: str
         :param _AccessToken: 访问凭据 token
-注意：此字段可能返回 null，表示取不到有效值。
         :type AccessToken: str
         """
         self._Username = None
@@ -29551,7 +29264,6 @@ class SourceInstanceAuth(AbstractModel):
     @property
     def Username(self):
         """用户名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Username
@@ -29563,7 +29275,6 @@ class SourceInstanceAuth(AbstractModel):
     @property
     def Password(self):
         """账户密码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Password
@@ -29575,7 +29286,6 @@ class SourceInstanceAuth(AbstractModel):
     @property
     def AccessToken(self):
         """访问凭据 token
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AccessToken
@@ -29607,10 +29317,8 @@ class SourceInstanceVpcInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _VpcID: 微服务引擎VPC信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcID: str
         :param _SubnetID: 微服务引擎子网信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetID: str
         """
         self._VpcID = None
@@ -29619,7 +29327,6 @@ class SourceInstanceVpcInfo(AbstractModel):
     @property
     def VpcID(self):
         """微服务引擎VPC信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VpcID
@@ -29631,7 +29338,6 @@ class SourceInstanceVpcInfo(AbstractModel):
     @property
     def SubnetID(self):
         """微服务引擎子网信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubnetID
@@ -29950,7 +29656,6 @@ class UpdateCloudNativeAPIGatewayResult(AbstractModel):
         :param _Status: 云原生网关状态。
         :type Status: str
         :param _TaskId: 任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
         """
         self._GatewayId = None
@@ -29982,7 +29687,6 @@ class UpdateCloudNativeAPIGatewayResult(AbstractModel):
     @property
     def TaskId(self):
         """任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskId

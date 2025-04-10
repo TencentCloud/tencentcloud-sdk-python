@@ -115,6 +115,10 @@ qcs::cam::uin/12345678:role/tencentcloudServiceRole/4611686018427397920、qcs::c
         :type Tags: list of Tag
         :param _SourceIdentity: 调用者身份uin
         :type SourceIdentity: str
+        :param _SerialNumber: MFA序列号，与进行调用的CAM用户关联的MFA设备的标识号。格式qcs::cam:uin/${ownerUin}::mfa/${mfaType}。mfaType支持softToken（软token）
+        :type SerialNumber: str
+        :param _TokenCode: mfa身份验证码。
+        :type TokenCode: str
         """
         self._RoleArn = None
         self._RoleSessionName = None
@@ -123,6 +127,8 @@ qcs::cam::uin/12345678:role/tencentcloudServiceRole/4611686018427397920、qcs::c
         self._ExternalId = None
         self._Tags = None
         self._SourceIdentity = None
+        self._SerialNumber = None
+        self._TokenCode = None
 
     @property
     def RoleArn(self):
@@ -211,6 +217,28 @@ qcs::cam::uin/12345678:role/tencentcloudServiceRole/4611686018427397920、qcs::c
     def SourceIdentity(self, SourceIdentity):
         self._SourceIdentity = SourceIdentity
 
+    @property
+    def SerialNumber(self):
+        """MFA序列号，与进行调用的CAM用户关联的MFA设备的标识号。格式qcs::cam:uin/${ownerUin}::mfa/${mfaType}。mfaType支持softToken（软token）
+        :rtype: str
+        """
+        return self._SerialNumber
+
+    @SerialNumber.setter
+    def SerialNumber(self, SerialNumber):
+        self._SerialNumber = SerialNumber
+
+    @property
+    def TokenCode(self):
+        """mfa身份验证码。
+        :rtype: str
+        """
+        return self._TokenCode
+
+    @TokenCode.setter
+    def TokenCode(self, TokenCode):
+        self._TokenCode = TokenCode
+
 
     def _deserialize(self, params):
         self._RoleArn = params.get("RoleArn")
@@ -225,6 +253,8 @@ qcs::cam::uin/12345678:role/tencentcloudServiceRole/4611686018427397920、qcs::c
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._SourceIdentity = params.get("SourceIdentity")
+        self._SerialNumber = params.get("SerialNumber")
+        self._TokenCode = params.get("TokenCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -957,6 +987,147 @@ class GetFederationTokenResponse(AbstractModel):
     def Expiration(self):
         """临时访问凭证有效的时间，以 iso8601 格式的 UTC 时间表示
 注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Expiration
+
+    @Expiration.setter
+    def Expiration(self, Expiration):
+        self._Expiration = Expiration
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Credentials") is not None:
+            self._Credentials = Credentials()
+            self._Credentials._deserialize(params.get("Credentials"))
+        self._ExpiredTime = params.get("ExpiredTime")
+        self._Expiration = params.get("Expiration")
+        self._RequestId = params.get("RequestId")
+
+
+class GetSessionTokenRequest(AbstractModel):
+    """GetSessionToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SerialNumber: MFA序列号，与进行调用的CAM用户关联的MFA设备的标识号。格式qcs::cam:uin/${ownerUin}::mfa/${mfaType}。mfaType支持softToken（软token）
+        :type SerialNumber: str
+        :param _TokenCode: mfa身份验证码。
+        :type TokenCode: str
+        :param _DurationSeconds: 指定临时证书的有效期，单位：秒，默认1800秒，主账号最长可设定有效期为7200秒，子账号最长可设定有效期为129600秒。
+        :type DurationSeconds: int
+        """
+        self._SerialNumber = None
+        self._TokenCode = None
+        self._DurationSeconds = None
+
+    @property
+    def SerialNumber(self):
+        """MFA序列号，与进行调用的CAM用户关联的MFA设备的标识号。格式qcs::cam:uin/${ownerUin}::mfa/${mfaType}。mfaType支持softToken（软token）
+        :rtype: str
+        """
+        return self._SerialNumber
+
+    @SerialNumber.setter
+    def SerialNumber(self, SerialNumber):
+        self._SerialNumber = SerialNumber
+
+    @property
+    def TokenCode(self):
+        """mfa身份验证码。
+        :rtype: str
+        """
+        return self._TokenCode
+
+    @TokenCode.setter
+    def TokenCode(self, TokenCode):
+        self._TokenCode = TokenCode
+
+    @property
+    def DurationSeconds(self):
+        """指定临时证书的有效期，单位：秒，默认1800秒，主账号最长可设定有效期为7200秒，子账号最长可设定有效期为129600秒。
+        :rtype: int
+        """
+        return self._DurationSeconds
+
+    @DurationSeconds.setter
+    def DurationSeconds(self, DurationSeconds):
+        self._DurationSeconds = DurationSeconds
+
+
+    def _deserialize(self, params):
+        self._SerialNumber = params.get("SerialNumber")
+        self._TokenCode = params.get("TokenCode")
+        self._DurationSeconds = params.get("DurationSeconds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetSessionTokenResponse(AbstractModel):
+    """GetSessionToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Credentials: 临时访问凭证
+        :type Credentials: :class:`tencentcloud.sts.v20180813.models.Credentials`
+        :param _ExpiredTime: 证书无效的时间，返回 Unix 时间戳，精确到秒
+        :type ExpiredTime: int
+        :param _Expiration: 临时访问凭证的过期时间，以 iso8601 格式的 UTC 时间表示
+        :type Expiration: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Credentials = None
+        self._ExpiredTime = None
+        self._Expiration = None
+        self._RequestId = None
+
+    @property
+    def Credentials(self):
+        """临时访问凭证
+        :rtype: :class:`tencentcloud.sts.v20180813.models.Credentials`
+        """
+        return self._Credentials
+
+    @Credentials.setter
+    def Credentials(self, Credentials):
+        self._Credentials = Credentials
+
+    @property
+    def ExpiredTime(self):
+        """证书无效的时间，返回 Unix 时间戳，精确到秒
+        :rtype: int
+        """
+        return self._ExpiredTime
+
+    @ExpiredTime.setter
+    def ExpiredTime(self, ExpiredTime):
+        self._ExpiredTime = ExpiredTime
+
+    @property
+    def Expiration(self):
+        """临时访问凭证的过期时间，以 iso8601 格式的 UTC 时间表示
         :rtype: str
         """
         return self._Expiration

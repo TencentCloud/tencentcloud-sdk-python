@@ -806,7 +806,7 @@ class CosSnapShotInfo(AbstractModel):
         :param _Version: 快照版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
-        :param _CommonIndexArr: 普通索引信息列表
+        :param _CommonIndexArr: 普通[{"DataStreamName":"ilm-history-5","Is索引信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type CommonIndexArr: list of CommonIndexInfo
         :param _DataStreamArr: 自治索引信息列表
@@ -883,7 +883,7 @@ class CosSnapShotInfo(AbstractModel):
 
     @property
     def CommonIndexArr(self):
-        """普通索引信息列表
+        """普通[{"DataStreamName":"ilm-history-5","Is索引信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CommonIndexInfo
         """
@@ -13337,6 +13337,12 @@ class LogstashPipelineInfo(AbstractModel):
         :param _QueueCheckPointWrites: 管道缓冲队列检查点写入数
 注意：此字段可能返回 null，表示取不到有效值。
         :type QueueCheckPointWrites: int
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
         """
         self._PipelineId = None
         self._PipelineDesc = None
@@ -13348,6 +13354,8 @@ class LogstashPipelineInfo(AbstractModel):
         self._QueueType = None
         self._QueueMaxBytes = None
         self._QueueCheckPointWrites = None
+        self._CreateTime = None
+        self._UpdateTime = None
 
     @property
     def PipelineId(self):
@@ -13467,6 +13475,30 @@ class LogstashPipelineInfo(AbstractModel):
     def QueueCheckPointWrites(self, QueueCheckPointWrites):
         self._QueueCheckPointWrites = QueueCheckPointWrites
 
+    @property
+    def CreateTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        """更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
 
     def _deserialize(self, params):
         self._PipelineId = params.get("PipelineId")
@@ -13479,6 +13511,8 @@ class LogstashPipelineInfo(AbstractModel):
         self._QueueType = params.get("QueueType")
         self._QueueMaxBytes = params.get("QueueMaxBytes")
         self._QueueCheckPointWrites = params.get("QueueCheckPointWrites")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16112,7 +16146,7 @@ class ServerlessIndexMetaField(AbstractModel):
         :type StorageType: int
         :param _TagList: 标签信息
         :type TagList: list of TagInfo
-        :param _IndexTraffic: 3782478.47
+        :param _IndexTraffic: 索引流量，单位byte
 注意：此字段可能返回 null，表示取不到有效值。
         :type IndexTraffic: float
         """
@@ -16353,7 +16387,7 @@ class ServerlessIndexMetaField(AbstractModel):
 
     @property
     def IndexTraffic(self):
-        """3782478.47
+        """索引流量，单位byte
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -16746,7 +16780,7 @@ class ServerlessSpace(AbstractModel):
         :param _ClusterType: 0
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterType: int
-        :param _TagList: key:value
+        :param _TagList: 空间标签信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagList: list of TagInfo
         """
@@ -16996,7 +17030,7 @@ class ServerlessSpace(AbstractModel):
 
     @property
     def TagList(self):
-        """key:value
+        """空间标签信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TagInfo
         """
@@ -17295,6 +17329,9 @@ SUCCESS     备份成功
         :param _Failures: 备份失败的索引分片和失败原因
 注意：此字段可能返回 null，表示取不到有效值。
         :type Failures: list of Failures
+        :param _UserBackUp: 是否用户备份
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserBackUp: str
         """
         self._SnapshotName = None
         self._Uuid = None
@@ -17309,6 +17346,7 @@ SUCCESS     备份成功
         self._FailedShards = None
         self._SuccessfulShards = None
         self._Failures = None
+        self._UserBackUp = None
 
     @property
     def SnapshotName(self):
@@ -17474,6 +17512,18 @@ SUCCESS     备份成功
     def Failures(self, Failures):
         self._Failures = Failures
 
+    @property
+    def UserBackUp(self):
+        """是否用户备份
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UserBackUp
+
+    @UserBackUp.setter
+    def UserBackUp(self, UserBackUp):
+        self._UserBackUp = UserBackUp
+
 
     def _deserialize(self, params):
         self._SnapshotName = params.get("SnapshotName")
@@ -17494,6 +17544,7 @@ SUCCESS     备份成功
                 obj = Failures()
                 obj._deserialize(item)
                 self._Failures.append(obj)
+        self._UserBackUp = params.get("UserBackUp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

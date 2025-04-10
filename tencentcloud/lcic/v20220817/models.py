@@ -8597,11 +8597,14 @@ class GetRoomMessageRequest(AbstractModel):
         :type Seq: int
         :param _Limit: 消息拉取的条数。最大数量不能超过套餐包限制。
         :type Limit: int
+        :param _UserId: 请求消息的userId
+        :type UserId: str
         """
         self._SdkAppId = None
         self._RoomId = None
         self._Seq = None
         self._Limit = None
+        self._UserId = None
 
     @property
     def SdkAppId(self):
@@ -8647,12 +8650,24 @@ class GetRoomMessageRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def UserId(self):
+        """请求消息的userId
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
         self._RoomId = params.get("RoomId")
         self._Seq = params.get("Seq")
         self._Limit = params.get("Limit")
+        self._UserId = params.get("UserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

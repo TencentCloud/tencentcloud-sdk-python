@@ -861,6 +861,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteCosRecharge(self, request):
+        """本接口用于删除cos导入任务
+
+        :param request: Request instance for DeleteCosRecharge.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DeleteCosRechargeRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DeleteCosRechargeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCosRecharge", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCosRechargeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteDashboardSubscribe(self, request):
         """此接口用于删除仪表盘订阅
 
