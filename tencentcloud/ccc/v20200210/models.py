@@ -294,6 +294,257 @@ class AICallExtractResultInfo(AbstractModel):
         
 
 
+class AILatencyDetail(AbstractModel):
+    """AI时延明细
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoundId: 对话ID
+        :type RoundId: str
+        :param _ASRLatency: asr时延（毫秒）
+        :type ASRLatency: int
+        :param _TTSLatency: tts时延（毫秒）
+        :type TTSLatency: int
+        :param _LLMLatency: llm时延（毫秒）
+        :type LLMLatency: int
+        :param _ETELatency: 端到端时延（毫秒）
+        :type ETELatency: int
+        """
+        self._RoundId = None
+        self._ASRLatency = None
+        self._TTSLatency = None
+        self._LLMLatency = None
+        self._ETELatency = None
+
+    @property
+    def RoundId(self):
+        """对话ID
+        :rtype: str
+        """
+        return self._RoundId
+
+    @RoundId.setter
+    def RoundId(self, RoundId):
+        self._RoundId = RoundId
+
+    @property
+    def ASRLatency(self):
+        """asr时延（毫秒）
+        :rtype: int
+        """
+        return self._ASRLatency
+
+    @ASRLatency.setter
+    def ASRLatency(self, ASRLatency):
+        self._ASRLatency = ASRLatency
+
+    @property
+    def TTSLatency(self):
+        """tts时延（毫秒）
+        :rtype: int
+        """
+        return self._TTSLatency
+
+    @TTSLatency.setter
+    def TTSLatency(self, TTSLatency):
+        self._TTSLatency = TTSLatency
+
+    @property
+    def LLMLatency(self):
+        """llm时延（毫秒）
+        :rtype: int
+        """
+        return self._LLMLatency
+
+    @LLMLatency.setter
+    def LLMLatency(self, LLMLatency):
+        self._LLMLatency = LLMLatency
+
+    @property
+    def ETELatency(self):
+        """端到端时延（毫秒）
+        :rtype: int
+        """
+        return self._ETELatency
+
+    @ETELatency.setter
+    def ETELatency(self, ETELatency):
+        self._ETELatency = ETELatency
+
+
+    def _deserialize(self, params):
+        self._RoundId = params.get("RoundId")
+        self._ASRLatency = params.get("ASRLatency")
+        self._TTSLatency = params.get("TTSLatency")
+        self._LLMLatency = params.get("LLMLatency")
+        self._ETELatency = params.get("ETELatency")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AILatencyStatistics(AbstractModel):
+    """AI时延统计
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ASRLatency: asr时延统计
+        :type ASRLatency: :class:`tencentcloud.ccc.v20200210.models.AILatencyStatisticsInfo`
+        :param _TTSLatency: tts时延统计
+        :type TTSLatency: :class:`tencentcloud.ccc.v20200210.models.AILatencyStatisticsInfo`
+        :param _LLMLatency: llm时延统计
+        :type LLMLatency: :class:`tencentcloud.ccc.v20200210.models.AILatencyStatisticsInfo`
+        :param _ETELatency: 端到端时延统计
+        :type ETELatency: :class:`tencentcloud.ccc.v20200210.models.AILatencyStatisticsInfo`
+        """
+        self._ASRLatency = None
+        self._TTSLatency = None
+        self._LLMLatency = None
+        self._ETELatency = None
+
+    @property
+    def ASRLatency(self):
+        """asr时延统计
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.AILatencyStatisticsInfo`
+        """
+        return self._ASRLatency
+
+    @ASRLatency.setter
+    def ASRLatency(self, ASRLatency):
+        self._ASRLatency = ASRLatency
+
+    @property
+    def TTSLatency(self):
+        """tts时延统计
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.AILatencyStatisticsInfo`
+        """
+        return self._TTSLatency
+
+    @TTSLatency.setter
+    def TTSLatency(self, TTSLatency):
+        self._TTSLatency = TTSLatency
+
+    @property
+    def LLMLatency(self):
+        """llm时延统计
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.AILatencyStatisticsInfo`
+        """
+        return self._LLMLatency
+
+    @LLMLatency.setter
+    def LLMLatency(self, LLMLatency):
+        self._LLMLatency = LLMLatency
+
+    @property
+    def ETELatency(self):
+        """端到端时延统计
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.AILatencyStatisticsInfo`
+        """
+        return self._ETELatency
+
+    @ETELatency.setter
+    def ETELatency(self, ETELatency):
+        self._ETELatency = ETELatency
+
+
+    def _deserialize(self, params):
+        if params.get("ASRLatency") is not None:
+            self._ASRLatency = AILatencyStatisticsInfo()
+            self._ASRLatency._deserialize(params.get("ASRLatency"))
+        if params.get("TTSLatency") is not None:
+            self._TTSLatency = AILatencyStatisticsInfo()
+            self._TTSLatency._deserialize(params.get("TTSLatency"))
+        if params.get("LLMLatency") is not None:
+            self._LLMLatency = AILatencyStatisticsInfo()
+            self._LLMLatency._deserialize(params.get("LLMLatency"))
+        if params.get("ETELatency") is not None:
+            self._ETELatency = AILatencyStatisticsInfo()
+            self._ETELatency._deserialize(params.get("ETELatency"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AILatencyStatisticsInfo(AbstractModel):
+    """AI时延统计
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MinLatency: 最小值
+        :type MinLatency: int
+        :param _MiddleLatency: 中位数
+        :type MiddleLatency: int
+        :param _P90Latency: p90
+        :type P90Latency: int
+        """
+        self._MinLatency = None
+        self._MiddleLatency = None
+        self._P90Latency = None
+
+    @property
+    def MinLatency(self):
+        """最小值
+        :rtype: int
+        """
+        return self._MinLatency
+
+    @MinLatency.setter
+    def MinLatency(self, MinLatency):
+        self._MinLatency = MinLatency
+
+    @property
+    def MiddleLatency(self):
+        """中位数
+        :rtype: int
+        """
+        return self._MiddleLatency
+
+    @MiddleLatency.setter
+    def MiddleLatency(self, MiddleLatency):
+        self._MiddleLatency = MiddleLatency
+
+    @property
+    def P90Latency(self):
+        """p90
+        :rtype: int
+        """
+        return self._P90Latency
+
+    @P90Latency.setter
+    def P90Latency(self, P90Latency):
+        self._P90Latency = P90Latency
+
+
+    def _deserialize(self, params):
+        self._MinLatency = params.get("MinLatency")
+        self._MiddleLatency = params.get("MiddleLatency")
+        self._P90Latency = params.get("P90Latency")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AITransferItem(AbstractModel):
     """AI转人工配置项
 
@@ -5960,6 +6211,156 @@ class DescribeAICallExtractResultResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeAILatencyRequest(AbstractModel):
+    """DescribeAILatency请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :type SdkAppId: int
+        :param _SessionId: 会话 ID
+        :type SessionId: str
+        :param _StartTime: 查找起始时间	
+        :type StartTime: int
+        :param _EndTime: 1737350008
+        :type EndTime: int
+        """
+        self._SdkAppId = None
+        self._SessionId = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def SessionId(self):
+        """会话 ID
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def StartTime(self):
+        """查找起始时间	
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """1737350008
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._SessionId = params.get("SessionId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAILatencyResponse(AbstractModel):
+    """DescribeAILatency返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AILatencyDetail: 时延明细数据
+ -1表示无对应数据
+        :type AILatencyDetail: list of AILatencyDetail
+        :param _AILatencyStatistics: 时延统计数据
+ -1表示无对应数据
+        :type AILatencyStatistics: :class:`tencentcloud.ccc.v20200210.models.AILatencyStatistics`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AILatencyDetail = None
+        self._AILatencyStatistics = None
+        self._RequestId = None
+
+    @property
+    def AILatencyDetail(self):
+        """时延明细数据
+ -1表示无对应数据
+        :rtype: list of AILatencyDetail
+        """
+        return self._AILatencyDetail
+
+    @AILatencyDetail.setter
+    def AILatencyDetail(self, AILatencyDetail):
+        self._AILatencyDetail = AILatencyDetail
+
+    @property
+    def AILatencyStatistics(self):
+        """时延统计数据
+ -1表示无对应数据
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.AILatencyStatistics`
+        """
+        return self._AILatencyStatistics
+
+    @AILatencyStatistics.setter
+    def AILatencyStatistics(self, AILatencyStatistics):
+        self._AILatencyStatistics = AILatencyStatistics
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("AILatencyDetail") is not None:
+            self._AILatencyDetail = []
+            for item in params.get("AILatencyDetail"):
+                obj = AILatencyDetail()
+                obj._deserialize(item)
+                self._AILatencyDetail.append(obj)
+        if params.get("AILatencyStatistics") is not None:
+            self._AILatencyStatistics = AILatencyStatistics()
+            self._AILatencyStatistics._deserialize(params.get("AILatencyStatistics"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeActiveCarrierPrivilegeNumberRequest(AbstractModel):
     """DescribeActiveCarrierPrivilegeNumber请求参数结构体
 
@@ -11046,6 +11447,85 @@ class Filter(AbstractModel):
         
 
 
+class ForceMemberOfflineRequest(AbstractModel):
+    """ForceMemberOffline请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :type SdkAppId: int
+        :param _UserId: 客服ID
+        :type UserId: str
+        """
+        self._SdkAppId = None
+        self._UserId = None
+
+    @property
+    def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def UserId(self):
+        """客服ID
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._UserId = params.get("UserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ForceMemberOfflineResponse(AbstractModel):
+    """ForceMemberOffline返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class HangUpCallRequest(AbstractModel):
     """HangUpCall请求参数结构体
 
@@ -13268,6 +13748,85 @@ class ResetExtensionPasswordResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Password = params.get("Password")
+        self._RequestId = params.get("RequestId")
+
+
+class RestoreMemberOnlineRequest(AbstractModel):
+    """RestoreMemberOnline请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :type SdkAppId: int
+        :param _UserId: 客服ID
+        :type UserId: str
+        """
+        self._SdkAppId = None
+        self._UserId = None
+
+    @property
+    def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def UserId(self):
+        """客服ID
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._UserId = params.get("UserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RestoreMemberOnlineResponse(AbstractModel):
+    """RestoreMemberOnline返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 

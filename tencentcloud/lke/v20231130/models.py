@@ -9241,6 +9241,57 @@ class DescribeUnsatisfiedReplyContextResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DocFilterFlag(AbstractModel):
+    """文档列表筛选标识位
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Flag: 标识位
+        :type Flag: str
+        :param _Value: 标识值
+        :type Value: bool
+        """
+        self._Flag = None
+        self._Value = None
+
+    @property
+    def Flag(self):
+        """标识位
+        :rtype: str
+        """
+        return self._Flag
+
+    @Flag.setter
+    def Flag(self, Flag):
+        self._Flag = Flag
+
+    @property
+    def Value(self):
+        """标识值
+        :rtype: bool
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Flag = params.get("Flag")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DocSegment(AbstractModel):
     """文档片段
 
@@ -11015,6 +11066,8 @@ class GetDocPreviewResponse(AbstractModel):
         :type Bucket: str
         :param _NewName: 存在文档重命名情况下的新名称, 评测端优先使用这个名称
         :type NewName: str
+        :param _ParseResultCosUrl: 文件md结果cos临时地址
+        :type ParseResultCosUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -11024,6 +11077,7 @@ class GetDocPreviewResponse(AbstractModel):
         self._Url = None
         self._Bucket = None
         self._NewName = None
+        self._ParseResultCosUrl = None
         self._RequestId = None
 
     @property
@@ -11096,6 +11150,17 @@ class GetDocPreviewResponse(AbstractModel):
         self._NewName = NewName
 
     @property
+    def ParseResultCosUrl(self):
+        """文件md结果cos临时地址
+        :rtype: str
+        """
+        return self._ParseResultCosUrl
+
+    @ParseResultCosUrl.setter
+    def ParseResultCosUrl(self, ParseResultCosUrl):
+        self._ParseResultCosUrl = ParseResultCosUrl
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -11114,6 +11179,7 @@ class GetDocPreviewResponse(AbstractModel):
         self._Url = params.get("Url")
         self._Bucket = params.get("Bucket")
         self._NewName = params.get("NewName")
+        self._ParseResultCosUrl = params.get("ParseResultCosUrl")
         self._RequestId = params.get("RequestId")
 
 
@@ -12807,6 +12873,57 @@ class IgnoreUnsatisfiedReplyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class IntentAchievement(AbstractModel):
+    """意图达成方式
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 意图达成方式，qa:问答回复、doc：文档回复、workflow：工作流回复，llm：大模型回复
+        :type Name: str
+        :param _Desc: 意图达成方式描述
+        :type Desc: str
+        """
+        self._Name = None
+        self._Desc = None
+
+    @property
+    def Name(self):
+        """意图达成方式，qa:问答回复、doc：文档回复、workflow：工作流回复，llm：大模型回复
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Desc(self):
+        """意图达成方式描述
+        :rtype: str
+        """
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Desc = params.get("Desc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InvokeAPI(AbstractModel):
     """请求的API信息
 
@@ -13244,7 +13361,19 @@ class KnowledgeQaConfig(AbstractModel):
         :param _Greeting: 欢迎语，200字符以内
 注意：此字段可能返回 null，表示取不到有效值。
         :type Greeting: str
-        :param _RoleDescription: 角色描述，300字符以内
+        :param _RoleDescription: 角色描述，4000字符以内。通过填写描述，设定应用的 #角色名称、 #风格特点 及可达成的#意图。建议按照下面的模板填写，且自定义意图建议不超过5个。
+
+#角色名称：
+#风格特点：
+#输出要求：
+#能力限制：
+
+能够达成以下用户意图
+##意图名称：
+##意图描述：
+##意图示例：
+##意图实现：
+
 注意：此字段可能返回 null，表示取不到有效值。
         :type RoleDescription: str
         :param _Model: 生成模型配置
@@ -13277,6 +13406,12 @@ class KnowledgeQaConfig(AbstractModel):
         :param _ThoughtModel: 思考模型配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type ThoughtModel: :class:`tencentcloud.lke.v20231130.models.AppModel`
+        :param _IntentAchievements: 意图达成方式优先级
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IntentAchievements: list of IntentAchievement
+        :param _ImageTextRetrieval: 是否开启图文检索
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageTextRetrieval: bool
         """
         self._Greeting = None
         self._RoleDescription = None
@@ -13290,6 +13425,8 @@ class KnowledgeQaConfig(AbstractModel):
         self._SingleWorkflow = None
         self._Plugins = None
         self._ThoughtModel = None
+        self._IntentAchievements = None
+        self._ImageTextRetrieval = None
 
     @property
     def Greeting(self):
@@ -13305,7 +13442,19 @@ class KnowledgeQaConfig(AbstractModel):
 
     @property
     def RoleDescription(self):
-        """角色描述，300字符以内
+        """角色描述，4000字符以内。通过填写描述，设定应用的 #角色名称、 #风格特点 及可达成的#意图。建议按照下面的模板填写，且自定义意图建议不超过5个。
+
+#角色名称：
+#风格特点：
+#输出要求：
+#能力限制：
+
+能够达成以下用户意图
+##意图名称：
+##意图描述：
+##意图示例：
+##意图实现：
+
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13435,6 +13584,30 @@ class KnowledgeQaConfig(AbstractModel):
     def ThoughtModel(self, ThoughtModel):
         self._ThoughtModel = ThoughtModel
 
+    @property
+    def IntentAchievements(self):
+        """意图达成方式优先级
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of IntentAchievement
+        """
+        return self._IntentAchievements
+
+    @IntentAchievements.setter
+    def IntentAchievements(self, IntentAchievements):
+        self._IntentAchievements = IntentAchievements
+
+    @property
+    def ImageTextRetrieval(self):
+        """是否开启图文检索
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._ImageTextRetrieval
+
+    @ImageTextRetrieval.setter
+    def ImageTextRetrieval(self, ImageTextRetrieval):
+        self._ImageTextRetrieval = ImageTextRetrieval
+
 
     def _deserialize(self, params):
         self._Greeting = params.get("Greeting")
@@ -13473,6 +13646,13 @@ class KnowledgeQaConfig(AbstractModel):
         if params.get("ThoughtModel") is not None:
             self._ThoughtModel = AppModel()
             self._ThoughtModel._deserialize(params.get("ThoughtModel"))
+        if params.get("IntentAchievements") is not None:
+            self._IntentAchievements = []
+            for item in params.get("IntentAchievements"):
+                obj = IntentAchievement()
+                obj._deserialize(item)
+                self._IntentAchievements.append(obj)
+        self._ImageTextRetrieval = params.get("ImageTextRetrieval")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15454,6 +15634,10 @@ class ListDocRequest(AbstractModel):
         :type QueryType: str
         :param _CateBizId: 分类ID
         :type CateBizId: str
+        :param _FileTypes: 文件类型分类筛选
+        :type FileTypes: list of str
+        :param _FilterFlag: 文档列表筛选标识位
+        :type FilterFlag: list of DocFilterFlag
         """
         self._BotBizId = None
         self._PageNumber = None
@@ -15462,6 +15646,8 @@ class ListDocRequest(AbstractModel):
         self._Status = None
         self._QueryType = None
         self._CateBizId = None
+        self._FileTypes = None
+        self._FilterFlag = None
 
     @property
     def BotBizId(self):
@@ -15540,6 +15726,28 @@ class ListDocRequest(AbstractModel):
     def CateBizId(self, CateBizId):
         self._CateBizId = CateBizId
 
+    @property
+    def FileTypes(self):
+        """文件类型分类筛选
+        :rtype: list of str
+        """
+        return self._FileTypes
+
+    @FileTypes.setter
+    def FileTypes(self, FileTypes):
+        self._FileTypes = FileTypes
+
+    @property
+    def FilterFlag(self):
+        """文档列表筛选标识位
+        :rtype: list of DocFilterFlag
+        """
+        return self._FilterFlag
+
+    @FilterFlag.setter
+    def FilterFlag(self, FilterFlag):
+        self._FilterFlag = FilterFlag
+
 
     def _deserialize(self, params):
         self._BotBizId = params.get("BotBizId")
@@ -15549,6 +15757,13 @@ class ListDocRequest(AbstractModel):
         self._Status = params.get("Status")
         self._QueryType = params.get("QueryType")
         self._CateBizId = params.get("CateBizId")
+        self._FileTypes = params.get("FileTypes")
+        if params.get("FilterFlag") is not None:
+            self._FilterFlag = []
+            for item in params.get("FilterFlag"):
+                obj = DocFilterFlag()
+                obj._deserialize(item)
+                self._FilterFlag.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20845,6 +21060,8 @@ class PluginToolReqParam(AbstractModel):
         :type DefaultValue: str
         :param _SubParams: 子参数,ParamType 是OBJECT 或 ARRAY<>类型有用
         :type SubParams: list of PluginToolReqParam
+        :param _GlobalHidden: 插件参数配置是否隐藏不可见，true-隐藏不可见，false-可见
+        :type GlobalHidden: bool
         """
         self._Name = None
         self._Desc = None
@@ -20852,6 +21069,7 @@ class PluginToolReqParam(AbstractModel):
         self._IsRequired = None
         self._DefaultValue = None
         self._SubParams = None
+        self._GlobalHidden = None
 
     @property
     def Name(self):
@@ -20919,6 +21137,17 @@ class PluginToolReqParam(AbstractModel):
     def SubParams(self, SubParams):
         self._SubParams = SubParams
 
+    @property
+    def GlobalHidden(self):
+        """插件参数配置是否隐藏不可见，true-隐藏不可见，false-可见
+        :rtype: bool
+        """
+        return self._GlobalHidden
+
+    @GlobalHidden.setter
+    def GlobalHidden(self, GlobalHidden):
+        self._GlobalHidden = GlobalHidden
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -20932,6 +21161,7 @@ class PluginToolReqParam(AbstractModel):
                 obj = PluginToolReqParam()
                 obj._deserialize(item)
                 self._SubParams.append(obj)
+        self._GlobalHidden = params.get("GlobalHidden")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

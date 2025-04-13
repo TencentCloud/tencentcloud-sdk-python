@@ -1013,7 +1013,6 @@ Standard｜Lane
         :param _MatchMode: 泳道匹配规则：严格STRICT｜宽松PERMISSIVE
         :type MatchMode: str
         :param _LaneTag: 泳道标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type LaneTag: str
         """
         self._Priority = None
@@ -1179,7 +1178,6 @@ Standard｜Lane
     @property
     def LaneTag(self):
         """泳道标签
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LaneTag

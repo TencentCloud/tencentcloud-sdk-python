@@ -2619,6 +2619,29 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ExportPrometheusReadOnlyDynamicAPI(self, request):
+        """Prometheus 内部动态 api 代理，仅内部使用
+
+        :param request: Request instance for ExportPrometheusReadOnlyDynamicAPI.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.ExportPrometheusReadOnlyDynamicAPIRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.ExportPrometheusReadOnlyDynamicAPIResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ExportPrometheusReadOnlyDynamicAPI", params, headers=headers)
+            response = json.loads(body)
+            model = models.ExportPrometheusReadOnlyDynamicAPIResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetMonitorData(self, request):
         """获取云产品的监控数据。此接口不适用于拉取容器服务监控数据，如需拉取容器服务监控数据，请使用[根据维度条件查询监控数据](https://cloud.tencent.com/document/product/248/51845)接口。
         传入产品的命名空间、对象维度描述和监控指标即可获得相应的监控数据。

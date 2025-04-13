@@ -586,6 +586,29 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAILatency(self, request):
+        """获取 AI 时延信息
+
+        :param request: Request instance for DescribeAILatency.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeAILatencyRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.DescribeAILatencyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAILatency", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAILatencyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeActiveCarrierPrivilegeNumber(self, request):
         """查询生效运营商白名单规则
 
@@ -1232,6 +1255,29 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ForceMemberOffline(self, request):
+        """强制客服下线
+
+        :param request: Request instance for ForceMemberOffline.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.ForceMemberOfflineRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.ForceMemberOfflineResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ForceMemberOffline", params, headers=headers)
+            response = json.loads(body)
+            model = models.ForceMemberOfflineResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def HangUpCall(self, request):
         """挂断电话
 
@@ -1407,6 +1453,29 @@ class CccClient(AbstractClient):
             body = self.call("ResetExtensionPassword", params, headers=headers)
             response = json.loads(body)
             model = models.ResetExtensionPasswordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RestoreMemberOnline(self, request):
+        """恢复客服上线
+
+        :param request: Request instance for RestoreMemberOnline.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.RestoreMemberOnlineRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.RestoreMemberOnlineResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RestoreMemberOnline", params, headers=headers)
+            response = json.loads(body)
+            model = models.RestoreMemberOnlineResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

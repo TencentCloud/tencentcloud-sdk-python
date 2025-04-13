@@ -367,6 +367,29 @@ class HunyuanClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def QueryHunyuanTo3DJob(self, request):
+        """查询混元生3D任务
+
+        :param request: Request instance for QueryHunyuanTo3DJob.
+        :type request: :class:`tencentcloud.hunyuan.v20230901.models.QueryHunyuanTo3DJobRequest`
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.QueryHunyuanTo3DJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryHunyuanTo3DJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryHunyuanTo3DJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RunThread(self, request):
         """腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
 
@@ -456,6 +479,29 @@ class HunyuanClient(AbstractClient):
             body = self.call("SubmitHunyuanImageJob", params, headers=headers)
             response = json.loads(body)
             model = models.SubmitHunyuanImageJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SubmitHunyuanTo3DJob(self, request):
+        """提交混元生3D任务
+
+        :param request: Request instance for SubmitHunyuanTo3DJob.
+        :type request: :class:`tencentcloud.hunyuan.v20230901.models.SubmitHunyuanTo3DJobRequest`
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.SubmitHunyuanTo3DJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SubmitHunyuanTo3DJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.SubmitHunyuanTo3DJobResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

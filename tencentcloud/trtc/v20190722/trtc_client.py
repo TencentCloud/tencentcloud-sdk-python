@@ -1094,6 +1094,10 @@ class TrtcClient(AbstractClient):
 
         服务端通过TRTC的自定义消息实时下发字幕以及转录消息，CmdId固定是1。客户端只需监听自定义消息的回调即可，比如[c++回调](https://cloud.tencent.com/document/product/647/79637#4cd82f4edb24992a15a25187089e1565)。其他客户端比如安卓、Web等同样可在该链接处找到。
 
+
+        **注意：**
+        TranscriptionMode为0时，需要保证一个房间内只发起一个任务，如果发起多个任务，则机器人之间会相互订阅，除非主动停止任务，否则只有10小时后任务才会超时退出，这种情况下建议填写SessionId，保证后续重复发起的任务失败。
+
         :param request: Request instance for StartAITranscription.
         :type request: :class:`tencentcloud.trtc.v20190722.models.StartAITranscriptionRequest`
         :rtype: :class:`tencentcloud.trtc.v20190722.models.StartAITranscriptionResponse`

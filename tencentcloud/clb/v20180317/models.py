@@ -21872,9 +21872,13 @@ class TargetRegionInfo(AbstractModel):
         :type Region: str
         :param _VpcId: Target所属网络，私有网络格式如 vpc-abcd1234，如果是基础网络，则为"0"
         :type VpcId: str
+        :param _NumericalVpcId: Target所属网络，私有网络格式如86323，如果是基础网络，则为0
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NumericalVpcId: int
         """
         self._Region = None
         self._VpcId = None
+        self._NumericalVpcId = None
 
     @property
     def Region(self):
@@ -21898,10 +21902,23 @@ class TargetRegionInfo(AbstractModel):
     def VpcId(self, VpcId):
         self._VpcId = VpcId
 
+    @property
+    def NumericalVpcId(self):
+        """Target所属网络，私有网络格式如86323，如果是基础网络，则为0
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._NumericalVpcId
+
+    @NumericalVpcId.setter
+    def NumericalVpcId(self, NumericalVpcId):
+        self._NumericalVpcId = NumericalVpcId
+
 
     def _deserialize(self, params):
         self._Region = params.get("Region")
         self._VpcId = params.get("VpcId")
+        self._NumericalVpcId = params.get("NumericalVpcId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

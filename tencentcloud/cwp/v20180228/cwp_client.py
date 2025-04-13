@@ -4400,7 +4400,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeHostLoginList(self, request):
-        """获取登录审计列表
+        """获取异常登录列表
 
         :param request: Request instance for DescribeHostLoginList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeHostLoginListRequest`

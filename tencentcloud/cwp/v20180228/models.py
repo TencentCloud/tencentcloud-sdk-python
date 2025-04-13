@@ -39475,7 +39475,7 @@ class DescribeHostLoginListResponse(AbstractModel):
         r"""
         :param _TotalCount: 总数
         :type TotalCount: int
-        :param _HostLoginList: 登录审计列表
+        :param _HostLoginList: 异常登录列表
         :type HostLoginList: list of HostLoginList
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -39497,7 +39497,7 @@ class DescribeHostLoginListResponse(AbstractModel):
 
     @property
     def HostLoginList(self):
-        """登录审计列表
+        """异常登录列表
         :rtype: list of HostLoginList
         """
         return self._HostLoginList
