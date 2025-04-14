@@ -11754,7 +11754,8 @@ class AudioTemplateInfoForUpdate(AbstractModel):
         :param _Bitrate: 音频流的码率，取值范围：0 和 [26, 256]，单位：kbps。 当取值为 0，表示音频码率和原始音频保持一致。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Bitrate: int
-        :param _SampleRate: 音频流的采样率，不同编码标准支持的采样率选项不同。详细参考[音频采样率支持范围文档]https://cloud.tencent.com/document/product/862/77166#f3b039f1-d817-4a96-b4e4-90132d31cd53
+        :param _SampleRate: 音频流的采样率，不同编码标准支持的采样率选项不同。详细参考[音频采样率支持范围文档](https://cloud.tencent.com/document/product/862/77166#f3b039f1-d817-4a96-b4e4-90132d31cd53)
+单位：Hz
 注意：请确保源音频流的采样率在上述选项范围内，否则可能导致转码失败！
 注意：此字段可能返回 null，表示取不到有效值。
         :type SampleRate: int
@@ -11817,7 +11818,8 @@ class AudioTemplateInfoForUpdate(AbstractModel):
 
     @property
     def SampleRate(self):
-        """音频流的采样率，不同编码标准支持的采样率选项不同。详细参考[音频采样率支持范围文档]https://cloud.tencent.com/document/product/862/77166#f3b039f1-d817-4a96-b4e4-90132d31cd53
+        """音频流的采样率，不同编码标准支持的采样率选项不同。详细参考[音频采样率支持范围文档](https://cloud.tencent.com/document/product/862/77166#f3b039f1-d817-4a96-b4e4-90132d31cd53)
+单位：Hz
 注意：请确保源音频流的采样率在上述选项范围内，否则可能导致转码失败！
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
@@ -58722,8 +58724,8 @@ class TrackInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _TrackNum: 音轨和声道数字，说明：
-当：SelectType值为trask，此值为整数类型，例如：1；
-当：SelectType值为trask_channel，此值为小数类型，例如：1.0；
+当：SelectType值为track，此值为整数类型，例如：1；
+当：SelectType值为track_channel，此值为小数类型，例如：1.0；
 默认值：1.0
 注意：整数部分代表音轨序号，以小数部分代表声道。音轨序号即为音轨的stream index，支持输入0和正整数。小数部分最多支持2位小数，并且仅支持0-63，但是如果Codec为aac/eac3/ac3时，小数部分仅支持0-15。例如：对于stream index为1的音轨，1.0代表这个音轨的第1个声道，1.1代表这个音轨的第2个声道。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -58744,8 +58746,8 @@ class TrackInfo(AbstractModel):
     @property
     def TrackNum(self):
         """音轨和声道数字，说明：
-当：SelectType值为trask，此值为整数类型，例如：1；
-当：SelectType值为trask_channel，此值为小数类型，例如：1.0；
+当：SelectType值为track，此值为整数类型，例如：1；
+当：SelectType值为track_channel，此值为小数类型，例如：1.0；
 默认值：1.0
 注意：整数部分代表音轨序号，以小数部分代表声道。音轨序号即为音轨的stream index，支持输入0和正整数。小数部分最多支持2位小数，并且仅支持0-63，但是如果Codec为aac/eac3/ac3时，小数部分仅支持0-15。例如：对于stream index为1的音轨，1.0代表这个音轨的第1个声道，1.1代表这个音轨的第2个声道。
 注意：此字段可能返回 null，表示取不到有效值。

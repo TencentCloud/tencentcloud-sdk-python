@@ -26,10 +26,8 @@ class AccessInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Address: 地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type Address: str
         :param _Protocol: 协议
-注意：此字段可能返回 null，表示取不到有效值。
         :type Protocol: str
         """
         self._Address = None
@@ -38,7 +36,6 @@ class AccessInfo(AbstractModel):
     @property
     def Address(self):
         """地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Address
@@ -50,7 +47,6 @@ class AccessInfo(AbstractModel):
     @property
     def Protocol(self):
         """协议
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Protocol
@@ -875,10 +871,8 @@ class CreateInstanceByApiResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _FlowId: 流程ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowId: str
         :param _InstanceId: 实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _ErrorMsg: 错误信息
 注意：此字段可能返回 null，表示取不到有效值。
@@ -894,7 +888,6 @@ class CreateInstanceByApiResponse(AbstractModel):
     @property
     def FlowId(self):
         """流程ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FlowId
@@ -906,7 +899,6 @@ class CreateInstanceByApiResponse(AbstractModel):
     @property
     def InstanceId(self):
         """实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId

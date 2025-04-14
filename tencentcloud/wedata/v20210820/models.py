@@ -26888,6 +26888,8 @@ class DescribeInstanceLogFileRequest(AbstractModel):
         :type InstanceLifeDetailDtoList: list of InstanceLifeDetailDto
         :param _CurrentLifeRound: 当前生命周期数
         :type CurrentLifeRound: int
+        :param _MaxLifeRound: 最大生命周期数
+        :type MaxLifeRound: int
         :param _Tries: 当前生命周期重试次数
         :type Tries: int
         :param _Dynamic: 动态获取日志信息标识
@@ -26904,6 +26906,7 @@ class DescribeInstanceLogFileRequest(AbstractModel):
         self._ExecutionFileType = None
         self._InstanceLifeDetailDtoList = None
         self._CurrentLifeRound = None
+        self._MaxLifeRound = None
         self._Tries = None
         self._Dynamic = None
 
@@ -27029,6 +27032,17 @@ class DescribeInstanceLogFileRequest(AbstractModel):
         self._CurrentLifeRound = CurrentLifeRound
 
     @property
+    def MaxLifeRound(self):
+        """最大生命周期数
+        :rtype: int
+        """
+        return self._MaxLifeRound
+
+    @MaxLifeRound.setter
+    def MaxLifeRound(self, MaxLifeRound):
+        self._MaxLifeRound = MaxLifeRound
+
+    @property
     def Tries(self):
         """当前生命周期重试次数
         :rtype: int
@@ -27068,6 +27082,7 @@ class DescribeInstanceLogFileRequest(AbstractModel):
                 obj._deserialize(item)
                 self._InstanceLifeDetailDtoList.append(obj)
         self._CurrentLifeRound = params.get("CurrentLifeRound")
+        self._MaxLifeRound = params.get("MaxLifeRound")
         self._Tries = params.get("Tries")
         self._Dynamic = params.get("Dynamic")
         memeber_set = set(params.keys())
@@ -46794,6 +46809,252 @@ class GetFileInfoResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetInstanceLogRequest(AbstractModel):
+    """GetInstanceLog请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: **项目ID**
+        :type ProjectId: str
+        :param _InstanceKey: **实例唯一标识**
+        :type InstanceKey: str
+        :param _LifeRoundNum: 生命周期编号
+        :type LifeRoundNum: int
+        :param _ScheduleTimeZone: **时区**
+timeZone, 默认UTC+8
+        :type ScheduleTimeZone: str
+        :param _BrokerIp: **日志所在执行机Ip**
+        :type BrokerIp: str
+        :param _OriginFileName: **日志文件**
+实例详情中 executionJobId 为空时，但 originFileName 不为空时，入参中必须包含 originFileName 与 brokerIp
+如果 executionJobId 与 originFileName 都为空，则说明实例未下发执行或没有产生日志。例如分支节点 或 归并节点
+        :type OriginFileName: str
+        :param _ExecutionJobId: **执行ID**
+
+实例详情中 executionJobId 不为空时，入参中需包含executionJobId 。originFileName 与 brokerIp为非必要参数
+        :type ExecutionJobId: str
+        :param _LogLevel: **日志级别**
+默认All
+
+- Info
+- Debug
+- Warn
+- Error
+- All
+        :type LogLevel: str
+        :param _StartLineNum: **获取日志的开始行 行号**
+默认 1
+        :type StartLineNum: int
+        :param _EndLineCount: **获取日志的结束行 行号**
+默认 10000
+        :type EndLineCount: int
+        """
+        self._ProjectId = None
+        self._InstanceKey = None
+        self._LifeRoundNum = None
+        self._ScheduleTimeZone = None
+        self._BrokerIp = None
+        self._OriginFileName = None
+        self._ExecutionJobId = None
+        self._LogLevel = None
+        self._StartLineNum = None
+        self._EndLineCount = None
+
+    @property
+    def ProjectId(self):
+        """**项目ID**
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def InstanceKey(self):
+        """**实例唯一标识**
+        :rtype: str
+        """
+        return self._InstanceKey
+
+    @InstanceKey.setter
+    def InstanceKey(self, InstanceKey):
+        self._InstanceKey = InstanceKey
+
+    @property
+    def LifeRoundNum(self):
+        """生命周期编号
+        :rtype: int
+        """
+        return self._LifeRoundNum
+
+    @LifeRoundNum.setter
+    def LifeRoundNum(self, LifeRoundNum):
+        self._LifeRoundNum = LifeRoundNum
+
+    @property
+    def ScheduleTimeZone(self):
+        """**时区**
+timeZone, 默认UTC+8
+        :rtype: str
+        """
+        return self._ScheduleTimeZone
+
+    @ScheduleTimeZone.setter
+    def ScheduleTimeZone(self, ScheduleTimeZone):
+        self._ScheduleTimeZone = ScheduleTimeZone
+
+    @property
+    def BrokerIp(self):
+        """**日志所在执行机Ip**
+        :rtype: str
+        """
+        return self._BrokerIp
+
+    @BrokerIp.setter
+    def BrokerIp(self, BrokerIp):
+        self._BrokerIp = BrokerIp
+
+    @property
+    def OriginFileName(self):
+        """**日志文件**
+实例详情中 executionJobId 为空时，但 originFileName 不为空时，入参中必须包含 originFileName 与 brokerIp
+如果 executionJobId 与 originFileName 都为空，则说明实例未下发执行或没有产生日志。例如分支节点 或 归并节点
+        :rtype: str
+        """
+        return self._OriginFileName
+
+    @OriginFileName.setter
+    def OriginFileName(self, OriginFileName):
+        self._OriginFileName = OriginFileName
+
+    @property
+    def ExecutionJobId(self):
+        """**执行ID**
+
+实例详情中 executionJobId 不为空时，入参中需包含executionJobId 。originFileName 与 brokerIp为非必要参数
+        :rtype: str
+        """
+        return self._ExecutionJobId
+
+    @ExecutionJobId.setter
+    def ExecutionJobId(self, ExecutionJobId):
+        self._ExecutionJobId = ExecutionJobId
+
+    @property
+    def LogLevel(self):
+        """**日志级别**
+默认All
+
+- Info
+- Debug
+- Warn
+- Error
+- All
+        :rtype: str
+        """
+        return self._LogLevel
+
+    @LogLevel.setter
+    def LogLevel(self, LogLevel):
+        self._LogLevel = LogLevel
+
+    @property
+    def StartLineNum(self):
+        """**获取日志的开始行 行号**
+默认 1
+        :rtype: int
+        """
+        return self._StartLineNum
+
+    @StartLineNum.setter
+    def StartLineNum(self, StartLineNum):
+        self._StartLineNum = StartLineNum
+
+    @property
+    def EndLineCount(self):
+        """**获取日志的结束行 行号**
+默认 10000
+        :rtype: int
+        """
+        return self._EndLineCount
+
+    @EndLineCount.setter
+    def EndLineCount(self, EndLineCount):
+        self._EndLineCount = EndLineCount
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._InstanceKey = params.get("InstanceKey")
+        self._LifeRoundNum = params.get("LifeRoundNum")
+        self._ScheduleTimeZone = params.get("ScheduleTimeZone")
+        self._BrokerIp = params.get("BrokerIp")
+        self._OriginFileName = params.get("OriginFileName")
+        self._ExecutionJobId = params.get("ExecutionJobId")
+        self._LogLevel = params.get("LogLevel")
+        self._StartLineNum = params.get("StartLineNum")
+        self._EndLineCount = params.get("EndLineCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetInstanceLogResponse(AbstractModel):
+    """GetInstanceLog返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 调度实例详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.InstanceLogVO`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """调度实例详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.InstanceLogVO`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = InstanceLogVO()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class GetIntegrationNodeColumnSchemaRequest(AbstractModel):
     """GetIntegrationNodeColumnSchema请求参数结构体
 
@@ -47184,6 +47445,121 @@ class GetOfflineInstanceListResponse(AbstractModel):
                 obj = OfflineInstance()
                 obj._deserialize(item)
                 self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class GetTaskInstanceRequest(AbstractModel):
+    """GetTaskInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: **项目ID**
+        :type ProjectId: str
+        :param _InstanceKey: **实例唯一标识**
+        :type InstanceKey: str
+        :param _ScheduleTimeZone: **时区**
+timeZone, 默认UTC+8
+        :type ScheduleTimeZone: str
+        """
+        self._ProjectId = None
+        self._InstanceKey = None
+        self._ScheduleTimeZone = None
+
+    @property
+    def ProjectId(self):
+        """**项目ID**
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def InstanceKey(self):
+        """**实例唯一标识**
+        :rtype: str
+        """
+        return self._InstanceKey
+
+    @InstanceKey.setter
+    def InstanceKey(self, InstanceKey):
+        self._InstanceKey = InstanceKey
+
+    @property
+    def ScheduleTimeZone(self):
+        """**时区**
+timeZone, 默认UTC+8
+        :rtype: str
+        """
+        return self._ScheduleTimeZone
+
+    @ScheduleTimeZone.setter
+    def ScheduleTimeZone(self, ScheduleTimeZone):
+        self._ScheduleTimeZone = ScheduleTimeZone
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._InstanceKey = params.get("InstanceKey")
+        self._ScheduleTimeZone = params.get("ScheduleTimeZone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetTaskInstanceResponse(AbstractModel):
+    """GetTaskInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 调度实例详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.InstanceDetailVO`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """调度实例详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.InstanceDetailVO`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = InstanceDetailVO()
+            self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 
 
@@ -47897,6 +48273,595 @@ class InstanceCondition(AbstractModel):
         
 
 
+class InstanceDetailVO(AbstractModel):
+    """调度实例详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceKey: 实例唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceKey: str
+        :param _ProjectId: 项目ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: str
+        :param _FolderId: 文件夹ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FolderId: str
+        :param _FolderName: 文件夹名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FolderName: str
+        :param _WorkflowId: 工作流ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowId: str
+        :param _WorkflowName: 工作流名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowName: str
+        :param _InChargeList: 负责人列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InChargeList: list of str
+        :param _TaskId: 任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _TaskName: 任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskName: str
+        :param _TaskCycleType: **任务周期类型**
+支持过滤多个，条件间为 或 的过滤关系
+* O: ONEOFF_CYCLE
+* Y: YEAR_CYCLE
+* M: MONTH_CYCLE
+* W: WEEK_CYCLE
+* D: DAY_CYCLE
+* H: HOUR_CYCLE
+* I: MINUTE_CYCLE
+* C: CRONTAB_CYCLE
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskCycleType: str
+        :param _TaskType: 任务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskType: :class:`tencentcloud.wedata.v20210820.models.TaskTypeOpsDto`
+        :param _ExecutorGroupId: 执行资源组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutorGroupId: str
+        :param _ExecutorGroupName: 资源组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutorGroupName: str
+        :param _CurRunDate: 标准数据时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurRunDate: str
+        :param _NextCurDate: 下一个标准数据时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NextCurDate: str
+        :param _TryLimit: 每次运行失败，下发重试次数限制
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TryLimit: int
+        :param _Tries: 当前运行已下发运行次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tries: int
+        :param _TotalRunNum: 累计运行次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalRunNum: int
+        :param _LifeRoundNum: 生命周期编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LifeRoundNum: int
+        :param _InstanceType: **实例类型**
+
+- 0 表示补录类型
+- 1 表示周期实例
+- 2 表示非周期实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceType: int
+        :param _InstanceState: **实例状态**
+
+- [0] 表示 等待事件
+- [12] 表示 等待上游
+- [6, 7, 9, 10, 18] 表示 等待运行
+- [1, 19, 22] 表示 运行中
+- [21] 表示 跳过运行
+- [3] 表示 失败重试
+- [8, 4, 5, 13] 表示 失败
+- [2] 表示 成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceState: int
+        :param _SchedulerTime: 计划调度时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SchedulerTime: str
+        :param _StartTime: 运行开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param _EndTime: 运行完成时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param _CostTime: 耗费时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CostTime: str
+        :param _InstanceRunType: **实例运行触发类型**
+
+- RERUN 表示重跑
+- ADDITION 表示补录
+- PERIODIC 表示周期
+- APERIODIC 表示非周期
+- RERUN_SKIP_RUN 表示重跑 - 空跑
+- ADDITION_SKIP_RUN 表示补录 - 空跑
+- PERIODIC_SKIP_RUN 表示周期 - 空跑
+- APERIODIC_SKIP_RUN 表示非周期 - 空跑
+- MANUAL_TRIGGER 表示手动触发
+- RERUN_MANUAL_TRIGGER 表示手动触发 - 重跑
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceRunType: str
+        :param _ExecutionJobId: **下发执行ID**
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutionJobId: str
+        :param _InstanceLifeCycleList: **实例生命周期列表**
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceLifeCycleList: list of InstanceLifeCycleVO
+        :param _LatestLog: **实例最近一次的执行日志**
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LatestLog: :class:`tencentcloud.wedata.v20210820.models.InstanceLogVO`
+        """
+        self._InstanceKey = None
+        self._ProjectId = None
+        self._FolderId = None
+        self._FolderName = None
+        self._WorkflowId = None
+        self._WorkflowName = None
+        self._InChargeList = None
+        self._TaskId = None
+        self._TaskName = None
+        self._TaskCycleType = None
+        self._TaskType = None
+        self._ExecutorGroupId = None
+        self._ExecutorGroupName = None
+        self._CurRunDate = None
+        self._NextCurDate = None
+        self._TryLimit = None
+        self._Tries = None
+        self._TotalRunNum = None
+        self._LifeRoundNum = None
+        self._InstanceType = None
+        self._InstanceState = None
+        self._SchedulerTime = None
+        self._StartTime = None
+        self._EndTime = None
+        self._CostTime = None
+        self._InstanceRunType = None
+        self._ExecutionJobId = None
+        self._InstanceLifeCycleList = None
+        self._LatestLog = None
+
+    @property
+    def InstanceKey(self):
+        """实例唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceKey
+
+    @InstanceKey.setter
+    def InstanceKey(self, InstanceKey):
+        self._InstanceKey = InstanceKey
+
+    @property
+    def ProjectId(self):
+        """项目ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def FolderId(self):
+        """文件夹ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FolderId
+
+    @FolderId.setter
+    def FolderId(self, FolderId):
+        self._FolderId = FolderId
+
+    @property
+    def FolderName(self):
+        """文件夹名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FolderName
+
+    @FolderName.setter
+    def FolderName(self, FolderName):
+        self._FolderName = FolderName
+
+    @property
+    def WorkflowId(self):
+        """工作流ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+    @property
+    def WorkflowName(self):
+        """工作流名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkflowName
+
+    @WorkflowName.setter
+    def WorkflowName(self, WorkflowName):
+        self._WorkflowName = WorkflowName
+
+    @property
+    def InChargeList(self):
+        """负责人列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._InChargeList
+
+    @InChargeList.setter
+    def InChargeList(self, InChargeList):
+        self._InChargeList = InChargeList
+
+    @property
+    def TaskId(self):
+        """任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskName(self):
+        """任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def TaskCycleType(self):
+        """**任务周期类型**
+支持过滤多个，条件间为 或 的过滤关系
+* O: ONEOFF_CYCLE
+* Y: YEAR_CYCLE
+* M: MONTH_CYCLE
+* W: WEEK_CYCLE
+* D: DAY_CYCLE
+* H: HOUR_CYCLE
+* I: MINUTE_CYCLE
+* C: CRONTAB_CYCLE
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskCycleType
+
+    @TaskCycleType.setter
+    def TaskCycleType(self, TaskCycleType):
+        self._TaskCycleType = TaskCycleType
+
+    @property
+    def TaskType(self):
+        """任务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.TaskTypeOpsDto`
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def ExecutorGroupId(self):
+        """执行资源组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecutorGroupId
+
+    @ExecutorGroupId.setter
+    def ExecutorGroupId(self, ExecutorGroupId):
+        self._ExecutorGroupId = ExecutorGroupId
+
+    @property
+    def ExecutorGroupName(self):
+        """资源组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecutorGroupName
+
+    @ExecutorGroupName.setter
+    def ExecutorGroupName(self, ExecutorGroupName):
+        self._ExecutorGroupName = ExecutorGroupName
+
+    @property
+    def CurRunDate(self):
+        """标准数据时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CurRunDate
+
+    @CurRunDate.setter
+    def CurRunDate(self, CurRunDate):
+        self._CurRunDate = CurRunDate
+
+    @property
+    def NextCurDate(self):
+        """下一个标准数据时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._NextCurDate
+
+    @NextCurDate.setter
+    def NextCurDate(self, NextCurDate):
+        self._NextCurDate = NextCurDate
+
+    @property
+    def TryLimit(self):
+        """每次运行失败，下发重试次数限制
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TryLimit
+
+    @TryLimit.setter
+    def TryLimit(self, TryLimit):
+        self._TryLimit = TryLimit
+
+    @property
+    def Tries(self):
+        """当前运行已下发运行次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Tries
+
+    @Tries.setter
+    def Tries(self, Tries):
+        self._Tries = Tries
+
+    @property
+    def TotalRunNum(self):
+        """累计运行次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalRunNum
+
+    @TotalRunNum.setter
+    def TotalRunNum(self, TotalRunNum):
+        self._TotalRunNum = TotalRunNum
+
+    @property
+    def LifeRoundNum(self):
+        """生命周期编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._LifeRoundNum
+
+    @LifeRoundNum.setter
+    def LifeRoundNum(self, LifeRoundNum):
+        self._LifeRoundNum = LifeRoundNum
+
+    @property
+    def InstanceType(self):
+        """**实例类型**
+
+- 0 表示补录类型
+- 1 表示周期实例
+- 2 表示非周期实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceState(self):
+        """**实例状态**
+
+- [0] 表示 等待事件
+- [12] 表示 等待上游
+- [6, 7, 9, 10, 18] 表示 等待运行
+- [1, 19, 22] 表示 运行中
+- [21] 表示 跳过运行
+- [3] 表示 失败重试
+- [8, 4, 5, 13] 表示 失败
+- [2] 表示 成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._InstanceState
+
+    @InstanceState.setter
+    def InstanceState(self, InstanceState):
+        self._InstanceState = InstanceState
+
+    @property
+    def SchedulerTime(self):
+        """计划调度时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SchedulerTime
+
+    @SchedulerTime.setter
+    def SchedulerTime(self, SchedulerTime):
+        self._SchedulerTime = SchedulerTime
+
+    @property
+    def StartTime(self):
+        """运行开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """运行完成时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def CostTime(self):
+        """耗费时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CostTime
+
+    @CostTime.setter
+    def CostTime(self, CostTime):
+        self._CostTime = CostTime
+
+    @property
+    def InstanceRunType(self):
+        """**实例运行触发类型**
+
+- RERUN 表示重跑
+- ADDITION 表示补录
+- PERIODIC 表示周期
+- APERIODIC 表示非周期
+- RERUN_SKIP_RUN 表示重跑 - 空跑
+- ADDITION_SKIP_RUN 表示补录 - 空跑
+- PERIODIC_SKIP_RUN 表示周期 - 空跑
+- APERIODIC_SKIP_RUN 表示非周期 - 空跑
+- MANUAL_TRIGGER 表示手动触发
+- RERUN_MANUAL_TRIGGER 表示手动触发 - 重跑
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceRunType
+
+    @InstanceRunType.setter
+    def InstanceRunType(self, InstanceRunType):
+        self._InstanceRunType = InstanceRunType
+
+    @property
+    def ExecutionJobId(self):
+        """**下发执行ID**
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecutionJobId
+
+    @ExecutionJobId.setter
+    def ExecutionJobId(self, ExecutionJobId):
+        self._ExecutionJobId = ExecutionJobId
+
+    @property
+    def InstanceLifeCycleList(self):
+        """**实例生命周期列表**
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of InstanceLifeCycleVO
+        """
+        return self._InstanceLifeCycleList
+
+    @InstanceLifeCycleList.setter
+    def InstanceLifeCycleList(self, InstanceLifeCycleList):
+        self._InstanceLifeCycleList = InstanceLifeCycleList
+
+    @property
+    def LatestLog(self):
+        """**实例最近一次的执行日志**
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.InstanceLogVO`
+        """
+        return self._LatestLog
+
+    @LatestLog.setter
+    def LatestLog(self, LatestLog):
+        self._LatestLog = LatestLog
+
+
+    def _deserialize(self, params):
+        self._InstanceKey = params.get("InstanceKey")
+        self._ProjectId = params.get("ProjectId")
+        self._FolderId = params.get("FolderId")
+        self._FolderName = params.get("FolderName")
+        self._WorkflowId = params.get("WorkflowId")
+        self._WorkflowName = params.get("WorkflowName")
+        self._InChargeList = params.get("InChargeList")
+        self._TaskId = params.get("TaskId")
+        self._TaskName = params.get("TaskName")
+        self._TaskCycleType = params.get("TaskCycleType")
+        if params.get("TaskType") is not None:
+            self._TaskType = TaskTypeOpsDto()
+            self._TaskType._deserialize(params.get("TaskType"))
+        self._ExecutorGroupId = params.get("ExecutorGroupId")
+        self._ExecutorGroupName = params.get("ExecutorGroupName")
+        self._CurRunDate = params.get("CurRunDate")
+        self._NextCurDate = params.get("NextCurDate")
+        self._TryLimit = params.get("TryLimit")
+        self._Tries = params.get("Tries")
+        self._TotalRunNum = params.get("TotalRunNum")
+        self._LifeRoundNum = params.get("LifeRoundNum")
+        self._InstanceType = params.get("InstanceType")
+        self._InstanceState = params.get("InstanceState")
+        self._SchedulerTime = params.get("SchedulerTime")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._CostTime = params.get("CostTime")
+        self._InstanceRunType = params.get("InstanceRunType")
+        self._ExecutionJobId = params.get("ExecutionJobId")
+        if params.get("InstanceLifeCycleList") is not None:
+            self._InstanceLifeCycleList = []
+            for item in params.get("InstanceLifeCycleList"):
+                obj = InstanceLifeCycleVO()
+                obj._deserialize(item)
+                self._InstanceLifeCycleList.append(obj)
+        if params.get("LatestLog") is not None:
+            self._LatestLog = InstanceLogVO()
+            self._LatestLog._deserialize(params.get("LatestLog"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InstanceDownloadLogInfo(AbstractModel):
     """下载日志详情
 
@@ -48269,6 +49234,284 @@ class InstanceLifeCycleOpsDto(AbstractModel):
         
 
 
+class InstanceLifeCycleVO(AbstractModel):
+    """调度实例详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceKey: 实例唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceKey: str
+        :param _InstanceState: **实例状态**
+
+- [0] 表示 等待事件
+- [12] 表示 等待上游
+- [6, 7, 9, 10, 18] 表示 等待运行
+- [1, 19, 22] 表示 运行中
+- [21] 表示 跳过运行
+- [3] 表示 失败重试
+- [8, 4, 5, 13] 表示 失败
+- [2] 表示 成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceState: int
+        :param _LifeRoundNum: 生命周期编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LifeRoundNum: int
+        :param _RunType: **实例运行触发类型**
+
+- RERUN 表示重跑
+- ADDITION 表示补录
+- PERIODIC 表示周期
+- APERIODIC 表示非周期
+- RERUN_SKIP_RUN 表示重跑 - 空跑
+- ADDITION_SKIP_RUN 表示补录 - 空跑
+- PERIODIC_SKIP_RUN 表示周期 - 空跑
+- APERIODIC_SKIP_RUN 表示非周期 - 空跑
+- MANUAL_TRIGGER 表示手动触发
+- RERUN_MANUAL_TRIGGER 表示手动触发 - 重跑
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunType: str
+        :param _Tries: 失败重试次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tries: int
+        :param _LifeCycleDetailList: **实例生命周期列表**
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LifeCycleDetailList: list of InstanceLifeDetailDto
+        :param _CodeFileName: **实例代码文件**
+该文件内容为当次执行实例运行使用的代码，仅部分任务支持
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CodeFileName: str
+        :param _ExecutionJobId: **下发执行ID**
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutionJobId: str
+        :param _BrokerIp: 日志所在执行节点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BrokerIp: str
+        :param _OriginFileName: 日志文件名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginFileName: str
+        :param _LogType: **实例日志类型**
+
+- run: 运行; 
+- kill: 终止
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogType: str
+        :param _CostTime: 耗费时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CostTime: str
+        """
+        self._InstanceKey = None
+        self._InstanceState = None
+        self._LifeRoundNum = None
+        self._RunType = None
+        self._Tries = None
+        self._LifeCycleDetailList = None
+        self._CodeFileName = None
+        self._ExecutionJobId = None
+        self._BrokerIp = None
+        self._OriginFileName = None
+        self._LogType = None
+        self._CostTime = None
+
+    @property
+    def InstanceKey(self):
+        """实例唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceKey
+
+    @InstanceKey.setter
+    def InstanceKey(self, InstanceKey):
+        self._InstanceKey = InstanceKey
+
+    @property
+    def InstanceState(self):
+        """**实例状态**
+
+- [0] 表示 等待事件
+- [12] 表示 等待上游
+- [6, 7, 9, 10, 18] 表示 等待运行
+- [1, 19, 22] 表示 运行中
+- [21] 表示 跳过运行
+- [3] 表示 失败重试
+- [8, 4, 5, 13] 表示 失败
+- [2] 表示 成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._InstanceState
+
+    @InstanceState.setter
+    def InstanceState(self, InstanceState):
+        self._InstanceState = InstanceState
+
+    @property
+    def LifeRoundNum(self):
+        """生命周期编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._LifeRoundNum
+
+    @LifeRoundNum.setter
+    def LifeRoundNum(self, LifeRoundNum):
+        self._LifeRoundNum = LifeRoundNum
+
+    @property
+    def RunType(self):
+        """**实例运行触发类型**
+
+- RERUN 表示重跑
+- ADDITION 表示补录
+- PERIODIC 表示周期
+- APERIODIC 表示非周期
+- RERUN_SKIP_RUN 表示重跑 - 空跑
+- ADDITION_SKIP_RUN 表示补录 - 空跑
+- PERIODIC_SKIP_RUN 表示周期 - 空跑
+- APERIODIC_SKIP_RUN 表示非周期 - 空跑
+- MANUAL_TRIGGER 表示手动触发
+- RERUN_MANUAL_TRIGGER 表示手动触发 - 重跑
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RunType
+
+    @RunType.setter
+    def RunType(self, RunType):
+        self._RunType = RunType
+
+    @property
+    def Tries(self):
+        """失败重试次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Tries
+
+    @Tries.setter
+    def Tries(self, Tries):
+        self._Tries = Tries
+
+    @property
+    def LifeCycleDetailList(self):
+        """**实例生命周期列表**
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of InstanceLifeDetailDto
+        """
+        return self._LifeCycleDetailList
+
+    @LifeCycleDetailList.setter
+    def LifeCycleDetailList(self, LifeCycleDetailList):
+        self._LifeCycleDetailList = LifeCycleDetailList
+
+    @property
+    def CodeFileName(self):
+        """**实例代码文件**
+该文件内容为当次执行实例运行使用的代码，仅部分任务支持
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CodeFileName
+
+    @CodeFileName.setter
+    def CodeFileName(self, CodeFileName):
+        self._CodeFileName = CodeFileName
+
+    @property
+    def ExecutionJobId(self):
+        """**下发执行ID**
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecutionJobId
+
+    @ExecutionJobId.setter
+    def ExecutionJobId(self, ExecutionJobId):
+        self._ExecutionJobId = ExecutionJobId
+
+    @property
+    def BrokerIp(self):
+        """日志所在执行节点
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BrokerIp
+
+    @BrokerIp.setter
+    def BrokerIp(self, BrokerIp):
+        self._BrokerIp = BrokerIp
+
+    @property
+    def OriginFileName(self):
+        """日志文件名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OriginFileName
+
+    @OriginFileName.setter
+    def OriginFileName(self, OriginFileName):
+        self._OriginFileName = OriginFileName
+
+    @property
+    def LogType(self):
+        """**实例日志类型**
+
+- run: 运行; 
+- kill: 终止
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def CostTime(self):
+        """耗费时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CostTime
+
+    @CostTime.setter
+    def CostTime(self, CostTime):
+        self._CostTime = CostTime
+
+
+    def _deserialize(self, params):
+        self._InstanceKey = params.get("InstanceKey")
+        self._InstanceState = params.get("InstanceState")
+        self._LifeRoundNum = params.get("LifeRoundNum")
+        self._RunType = params.get("RunType")
+        self._Tries = params.get("Tries")
+        if params.get("LifeCycleDetailList") is not None:
+            self._LifeCycleDetailList = []
+            for item in params.get("LifeCycleDetailList"):
+                obj = InstanceLifeDetailDto()
+                obj._deserialize(item)
+                self._LifeCycleDetailList.append(obj)
+        self._CodeFileName = params.get("CodeFileName")
+        self._ExecutionJobId = params.get("ExecutionJobId")
+        self._BrokerIp = params.get("BrokerIp")
+        self._OriginFileName = params.get("OriginFileName")
+        self._LogType = params.get("LogType")
+        self._CostTime = params.get("CostTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InstanceLifeDetailDto(AbstractModel):
     """实例生命周期detail
 
@@ -48276,13 +49519,30 @@ class InstanceLifeDetailDto(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _State: 实例状态
+        :param _State: **实例状态**
+- [0] 表示 等待事件
+- [12] 表示 等待上游
+- [6, 7, 9, 10, 18] 表示 等待运行
+- [1, 19, 22] 表示 运行中
+- [21] 表示 跳过运行
+- [3] 表示 失败重试
+- [8, 4, 5, 13] 表示 失败
+- [2] 表示 成功
 注意：此字段可能返回 null，表示取不到有效值。
         :type State: str
         :param _StartTime: 该状态开始时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
-        :param _DetailState: 实例生命周期阶段状态
+        :param _DetailState: **实例生命周期阶段状态**
+
+- WAIT_UPSTREAM 表示 等待事件/上游状态
+- WAIT_RUN 表示 等待运行状态
+- RUNNING 表示 运行中状态
+- COMPLETE 表示 终态-完成
+- FAILED 表示 终态-失败重试
+- EXPIRED 表示 终态-失败
+- SKIP_RUNNING 表示 终态-被上游分支节点跳过的分支
+- HISTORY 表示 兼容历史实例
 注意：此字段可能返回 null，表示取不到有效值。
         :type DetailState: str
         :param _EndTime: 该状态结束时间
@@ -48296,7 +49556,15 @@ class InstanceLifeDetailDto(AbstractModel):
 
     @property
     def State(self):
-        """实例状态
+        """**实例状态**
+- [0] 表示 等待事件
+- [12] 表示 等待上游
+- [6, 7, 9, 10, 18] 表示 等待运行
+- [1, 19, 22] 表示 运行中
+- [21] 表示 跳过运行
+- [3] 表示 失败重试
+- [8, 4, 5, 13] 表示 失败
+- [2] 表示 成功
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -48320,7 +49588,16 @@ class InstanceLifeDetailDto(AbstractModel):
 
     @property
     def DetailState(self):
-        """实例生命周期阶段状态
+        """**实例生命周期阶段状态**
+
+- WAIT_UPSTREAM 表示 等待事件/上游状态
+- WAIT_RUN 表示 等待运行状态
+- RUNNING 表示 运行中状态
+- COMPLETE 表示 终态-完成
+- FAILED 表示 终态-失败重试
+- EXPIRED 表示 终态-失败
+- SKIP_RUNNING 表示 终态-被上游分支节点跳过的分支
+- HISTORY 表示 兼容历史实例
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -49271,6 +50548,309 @@ class InstanceLogList(AbstractModel):
         self._InstanceLogType = params.get("InstanceLogType")
         self._TaskName = params.get("TaskName")
         self._CostTime = params.get("CostTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceLogVO(AbstractModel):
+    """实例日志内容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceKey: 实例唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceKey: str
+        :param _ProjectId: 项目ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: str
+        :param _InstanceState: **实例状态**
+
+- [0] 表示 等待事件
+- [12] 表示 等待上游
+- [6, 7, 9, 10, 18] 表示 等待运行
+- [1, 19, 22] 表示 运行中
+- [21] 表示 跳过运行
+- [3] 表示 失败重试
+- [8, 4, 5, 13] 表示 失败
+- [2] 表示 成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceState: int
+        :param _RunType: **实例运行触发类型**
+
+- RERUN 表示重跑
+- ADDITION 表示补录
+- PERIODIC 表示周期
+- APERIODIC 表示非周期
+- RERUN_SKIP_RUN 表示重跑 - 空跑
+- ADDITION_SKIP_RUN 表示补录 - 空跑
+- PERIODIC_SKIP_RUN 表示周期 - 空跑
+- APERIODIC_SKIP_RUN 表示非周期 - 空跑
+- MANUAL_TRIGGER 表示手动触发
+- RERUN_MANUAL_TRIGGER 表示手动触发 - 重跑
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunType: str
+        :param _StartTime: 开始运行时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param _EndTime: 运行完成时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param _CodeInfo: **运行代码内容**
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CodeInfo: str
+        :param _CodeFileSize: **运行代码文件大小**
+单位KB
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CodeFileSize: str
+        :param _BrokerIp: 日志所在节点信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BrokerIp: str
+        :param _LogInfo: **日志内容**
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogInfo: str
+        :param _LogFileSize: **日志文件大小**
+单位KB
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogFileSize: str
+        :param _LineCount: **本次查询返回的日志行数**
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LineCount: int
+        :param _ExtInfo: 执行平台日志分页查询参数, 每次请求透明传入。第一页查询时值为空字符串
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtInfo: str
+        :param _IsEnd: 日志分页查询，是否最后一页
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsEnd: bool
+        """
+        self._InstanceKey = None
+        self._ProjectId = None
+        self._InstanceState = None
+        self._RunType = None
+        self._StartTime = None
+        self._EndTime = None
+        self._CodeInfo = None
+        self._CodeFileSize = None
+        self._BrokerIp = None
+        self._LogInfo = None
+        self._LogFileSize = None
+        self._LineCount = None
+        self._ExtInfo = None
+        self._IsEnd = None
+
+    @property
+    def InstanceKey(self):
+        """实例唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceKey
+
+    @InstanceKey.setter
+    def InstanceKey(self, InstanceKey):
+        self._InstanceKey = InstanceKey
+
+    @property
+    def ProjectId(self):
+        """项目ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def InstanceState(self):
+        """**实例状态**
+
+- [0] 表示 等待事件
+- [12] 表示 等待上游
+- [6, 7, 9, 10, 18] 表示 等待运行
+- [1, 19, 22] 表示 运行中
+- [21] 表示 跳过运行
+- [3] 表示 失败重试
+- [8, 4, 5, 13] 表示 失败
+- [2] 表示 成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._InstanceState
+
+    @InstanceState.setter
+    def InstanceState(self, InstanceState):
+        self._InstanceState = InstanceState
+
+    @property
+    def RunType(self):
+        """**实例运行触发类型**
+
+- RERUN 表示重跑
+- ADDITION 表示补录
+- PERIODIC 表示周期
+- APERIODIC 表示非周期
+- RERUN_SKIP_RUN 表示重跑 - 空跑
+- ADDITION_SKIP_RUN 表示补录 - 空跑
+- PERIODIC_SKIP_RUN 表示周期 - 空跑
+- APERIODIC_SKIP_RUN 表示非周期 - 空跑
+- MANUAL_TRIGGER 表示手动触发
+- RERUN_MANUAL_TRIGGER 表示手动触发 - 重跑
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RunType
+
+    @RunType.setter
+    def RunType(self, RunType):
+        self._RunType = RunType
+
+    @property
+    def StartTime(self):
+        """开始运行时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """运行完成时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def CodeInfo(self):
+        """**运行代码内容**
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CodeInfo
+
+    @CodeInfo.setter
+    def CodeInfo(self, CodeInfo):
+        self._CodeInfo = CodeInfo
+
+    @property
+    def CodeFileSize(self):
+        """**运行代码文件大小**
+单位KB
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CodeFileSize
+
+    @CodeFileSize.setter
+    def CodeFileSize(self, CodeFileSize):
+        self._CodeFileSize = CodeFileSize
+
+    @property
+    def BrokerIp(self):
+        """日志所在节点信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BrokerIp
+
+    @BrokerIp.setter
+    def BrokerIp(self, BrokerIp):
+        self._BrokerIp = BrokerIp
+
+    @property
+    def LogInfo(self):
+        """**日志内容**
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LogInfo
+
+    @LogInfo.setter
+    def LogInfo(self, LogInfo):
+        self._LogInfo = LogInfo
+
+    @property
+    def LogFileSize(self):
+        """**日志文件大小**
+单位KB
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LogFileSize
+
+    @LogFileSize.setter
+    def LogFileSize(self, LogFileSize):
+        self._LogFileSize = LogFileSize
+
+    @property
+    def LineCount(self):
+        """**本次查询返回的日志行数**
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._LineCount
+
+    @LineCount.setter
+    def LineCount(self, LineCount):
+        self._LineCount = LineCount
+
+    @property
+    def ExtInfo(self):
+        """执行平台日志分页查询参数, 每次请求透明传入。第一页查询时值为空字符串
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExtInfo
+
+    @ExtInfo.setter
+    def ExtInfo(self, ExtInfo):
+        self._ExtInfo = ExtInfo
+
+    @property
+    def IsEnd(self):
+        """日志分页查询，是否最后一页
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsEnd
+
+    @IsEnd.setter
+    def IsEnd(self, IsEnd):
+        self._IsEnd = IsEnd
+
+
+    def _deserialize(self, params):
+        self._InstanceKey = params.get("InstanceKey")
+        self._ProjectId = params.get("ProjectId")
+        self._InstanceState = params.get("InstanceState")
+        self._RunType = params.get("RunType")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._CodeInfo = params.get("CodeInfo")
+        self._CodeFileSize = params.get("CodeFileSize")
+        self._BrokerIp = params.get("BrokerIp")
+        self._LogInfo = params.get("LogInfo")
+        self._LogFileSize = params.get("LogFileSize")
+        self._LineCount = params.get("LineCount")
+        self._ExtInfo = params.get("ExtInfo")
+        self._IsEnd = params.get("IsEnd")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -50536,6 +52116,134 @@ class InstanceOpsInfoPage(AbstractModel):
         
 
 
+class InstancePageVO(AbstractModel):
+    """实例列表分页实体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: **总条数**
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _TotalPage: **总分页数**
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalPage: int
+        :param _PageNumber: 页码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageNumber: int
+        :param _PageSize: 每页条目数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageSize: int
+        :param _PageCount: 总分页数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageCount: int
+        :param _Items: 数据列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of InstanceVO
+        """
+        self._TotalCount = None
+        self._TotalPage = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._PageCount = None
+        self._Items = None
+
+    @property
+    def TotalCount(self):
+        """**总条数**
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TotalPage(self):
+        """**总分页数**
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalPage
+
+    @TotalPage.setter
+    def TotalPage(self, TotalPage):
+        self._TotalPage = TotalPage
+
+    @property
+    def PageNumber(self):
+        """页码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        """每页条目数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageCount(self):
+        """总分页数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PageCount
+
+    @PageCount.setter
+    def PageCount(self, PageCount):
+        self._PageCount = PageCount
+
+    @property
+    def Items(self):
+        """数据列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of InstanceVO
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._TotalPage = params.get("TotalPage")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._PageCount = params.get("PageCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = InstanceVO()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InstanceSearchCondition(AbstractModel):
     """实例检索条件
 
@@ -50805,6 +52513,466 @@ class InstanceStatisticInfo(AbstractModel):
         self._ShowTime = params.get("ShowTime")
         self._ReportTime = params.get("ReportTime")
         self._Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceVO(AbstractModel):
+    """调度运行实例实体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceKey: **实例唯一标识**
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceKey: str
+        :param _ProjectId: 项目ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: str
+        :param _FolderId: 文件夹ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FolderId: str
+        :param _FolderName: 文件夹名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FolderName: str
+        :param _WorkflowId: 工作流ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowId: str
+        :param _WorkflowName: 工作流名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowName: str
+        :param _InChargeList: 负责人列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InChargeList: list of str
+        :param _TaskId: 任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _TaskName: 任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskName: str
+        :param _TaskType: 任务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskType: :class:`tencentcloud.wedata.v20210820.models.TaskTypeOpsDto`
+        :param _TaskCycleType: **任务周期类型**
+支持过滤多个，条件间为 或 的过滤关系
+* O: ONEOFF_CYCLE
+* Y: YEAR_CYCLE
+* M: MONTH_CYCLE
+* W: WEEK_CYCLE
+* D: DAY_CYCLE
+* H: HOUR_CYCLE
+* I: MINUTE_CYCLE
+* C: CRONTAB_CYCLE
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskCycleType: str
+        :param _CurRunDate: 标准数据时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurRunDate: str
+        :param _TryLimit: 每次运行失败，下发重试次数限制
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TryLimit: int
+        :param _Tries: **失败重试次数**
+再次使用 手动重跑 或 补录实例等方式触发运行时，会被重置为 0 后重新计数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tries: int
+        :param _TotalRunNum: 累计运行次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalRunNum: int
+        :param _InstanceType: **实例类型**
+
+- 0 表示补录类型
+- 1 表示周期实例
+- 2 表示非周期实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceType: int
+        :param _InstanceState: **实例状态**
+
+- [0] 表示 等待事件
+- [12] 表示 等待上游
+- [6, 7, 9, 10, 18] 表示 等待运行
+- [1, 19, 22] 表示 运行中
+- [21] 表示 跳过运行
+- [3] 表示 失败重试
+- [8, 4, 5, 13] 表示 失败
+- [2] 表示 成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceState: int
+        :param _StartTime: 运行开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param _EndTime: 运行完成时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param _CostTime: 耗费时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CostTime: str
+        :param _SchedulerTime: 计划调度时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SchedulerTime: str
+        :param _ExecutorGroupId: 执行资源组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutorGroupId: str
+        :param _ExecutorGroupName: 资源组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutorGroupName: str
+        """
+        self._InstanceKey = None
+        self._ProjectId = None
+        self._FolderId = None
+        self._FolderName = None
+        self._WorkflowId = None
+        self._WorkflowName = None
+        self._InChargeList = None
+        self._TaskId = None
+        self._TaskName = None
+        self._TaskType = None
+        self._TaskCycleType = None
+        self._CurRunDate = None
+        self._TryLimit = None
+        self._Tries = None
+        self._TotalRunNum = None
+        self._InstanceType = None
+        self._InstanceState = None
+        self._StartTime = None
+        self._EndTime = None
+        self._CostTime = None
+        self._SchedulerTime = None
+        self._ExecutorGroupId = None
+        self._ExecutorGroupName = None
+
+    @property
+    def InstanceKey(self):
+        """**实例唯一标识**
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceKey
+
+    @InstanceKey.setter
+    def InstanceKey(self, InstanceKey):
+        self._InstanceKey = InstanceKey
+
+    @property
+    def ProjectId(self):
+        """项目ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def FolderId(self):
+        """文件夹ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FolderId
+
+    @FolderId.setter
+    def FolderId(self, FolderId):
+        self._FolderId = FolderId
+
+    @property
+    def FolderName(self):
+        """文件夹名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FolderName
+
+    @FolderName.setter
+    def FolderName(self, FolderName):
+        self._FolderName = FolderName
+
+    @property
+    def WorkflowId(self):
+        """工作流ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+    @property
+    def WorkflowName(self):
+        """工作流名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkflowName
+
+    @WorkflowName.setter
+    def WorkflowName(self, WorkflowName):
+        self._WorkflowName = WorkflowName
+
+    @property
+    def InChargeList(self):
+        """负责人列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._InChargeList
+
+    @InChargeList.setter
+    def InChargeList(self, InChargeList):
+        self._InChargeList = InChargeList
+
+    @property
+    def TaskId(self):
+        """任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskName(self):
+        """任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def TaskType(self):
+        """任务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.TaskTypeOpsDto`
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def TaskCycleType(self):
+        """**任务周期类型**
+支持过滤多个，条件间为 或 的过滤关系
+* O: ONEOFF_CYCLE
+* Y: YEAR_CYCLE
+* M: MONTH_CYCLE
+* W: WEEK_CYCLE
+* D: DAY_CYCLE
+* H: HOUR_CYCLE
+* I: MINUTE_CYCLE
+* C: CRONTAB_CYCLE
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskCycleType
+
+    @TaskCycleType.setter
+    def TaskCycleType(self, TaskCycleType):
+        self._TaskCycleType = TaskCycleType
+
+    @property
+    def CurRunDate(self):
+        """标准数据时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CurRunDate
+
+    @CurRunDate.setter
+    def CurRunDate(self, CurRunDate):
+        self._CurRunDate = CurRunDate
+
+    @property
+    def TryLimit(self):
+        """每次运行失败，下发重试次数限制
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TryLimit
+
+    @TryLimit.setter
+    def TryLimit(self, TryLimit):
+        self._TryLimit = TryLimit
+
+    @property
+    def Tries(self):
+        """**失败重试次数**
+再次使用 手动重跑 或 补录实例等方式触发运行时，会被重置为 0 后重新计数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Tries
+
+    @Tries.setter
+    def Tries(self, Tries):
+        self._Tries = Tries
+
+    @property
+    def TotalRunNum(self):
+        """累计运行次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalRunNum
+
+    @TotalRunNum.setter
+    def TotalRunNum(self, TotalRunNum):
+        self._TotalRunNum = TotalRunNum
+
+    @property
+    def InstanceType(self):
+        """**实例类型**
+
+- 0 表示补录类型
+- 1 表示周期实例
+- 2 表示非周期实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceState(self):
+        """**实例状态**
+
+- [0] 表示 等待事件
+- [12] 表示 等待上游
+- [6, 7, 9, 10, 18] 表示 等待运行
+- [1, 19, 22] 表示 运行中
+- [21] 表示 跳过运行
+- [3] 表示 失败重试
+- [8, 4, 5, 13] 表示 失败
+- [2] 表示 成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._InstanceState
+
+    @InstanceState.setter
+    def InstanceState(self, InstanceState):
+        self._InstanceState = InstanceState
+
+    @property
+    def StartTime(self):
+        """运行开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """运行完成时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def CostTime(self):
+        """耗费时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CostTime
+
+    @CostTime.setter
+    def CostTime(self, CostTime):
+        self._CostTime = CostTime
+
+    @property
+    def SchedulerTime(self):
+        """计划调度时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SchedulerTime
+
+    @SchedulerTime.setter
+    def SchedulerTime(self, SchedulerTime):
+        self._SchedulerTime = SchedulerTime
+
+    @property
+    def ExecutorGroupId(self):
+        """执行资源组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecutorGroupId
+
+    @ExecutorGroupId.setter
+    def ExecutorGroupId(self, ExecutorGroupId):
+        self._ExecutorGroupId = ExecutorGroupId
+
+    @property
+    def ExecutorGroupName(self):
+        """资源组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecutorGroupName
+
+    @ExecutorGroupName.setter
+    def ExecutorGroupName(self, ExecutorGroupName):
+        self._ExecutorGroupName = ExecutorGroupName
+
+
+    def _deserialize(self, params):
+        self._InstanceKey = params.get("InstanceKey")
+        self._ProjectId = params.get("ProjectId")
+        self._FolderId = params.get("FolderId")
+        self._FolderName = params.get("FolderName")
+        self._WorkflowId = params.get("WorkflowId")
+        self._WorkflowName = params.get("WorkflowName")
+        self._InChargeList = params.get("InChargeList")
+        self._TaskId = params.get("TaskId")
+        self._TaskName = params.get("TaskName")
+        if params.get("TaskType") is not None:
+            self._TaskType = TaskTypeOpsDto()
+            self._TaskType._deserialize(params.get("TaskType"))
+        self._TaskCycleType = params.get("TaskCycleType")
+        self._CurRunDate = params.get("CurRunDate")
+        self._TryLimit = params.get("TryLimit")
+        self._Tries = params.get("Tries")
+        self._TotalRunNum = params.get("TotalRunNum")
+        self._InstanceType = params.get("InstanceType")
+        self._InstanceState = params.get("InstanceState")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._CostTime = params.get("CostTime")
+        self._SchedulerTime = params.get("SchedulerTime")
+        self._ExecutorGroupId = params.get("ExecutorGroupId")
+        self._ExecutorGroupName = params.get("ExecutorGroupName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -53639,6 +55807,457 @@ class LinkOpsDto(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ListInstancesRequest(AbstractModel):
+    """ListInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: **项目ID**
+        :type ProjectId: str
+        :param _ScheduleTimeFrom: **实例计划调度时间**
+过滤起始时间，时间格式为 yyyy-MM-dd HH:mm:ss
+        :type ScheduleTimeFrom: str
+        :param _ScheduleTimeTo: **实例计划调度时间**
+过滤截止时间，时间格式为 yyyy-MM-dd HH:mm:ss
+        :type ScheduleTimeTo: str
+        :param _PageNumber: **页码，整型**
+配合pageSize使用且不能小于1， 默认值1
+        :type PageNumber: int
+        :param _PageSize: **每页数目，整型**
+配合pageNumber使用且不能大于200, 默认值 10
+        :type PageSize: int
+        :param _SortColumn: **查询结果排序字段**
+
+- SCHEDULE_DATE 表示 计划调度时间
+- START_TIME 表示 实例开始执行时间
+- END_TIME 表示 实例结束执行时间
+- COST_TIME 表示 实例执行时长
+        :type SortColumn: str
+        :param _SortType: **实例排序方式**
+
+- ASC 
+- DESC
+        :type SortType: str
+        :param _InstanceType: **实例类型**
+
+- 0 表示补录类型
+- 1 表示周期实例
+- 2 表示非周期实例
+        :type InstanceType: int
+        :param _InstanceStateList: **实例执行状态**
+支持过滤多个，条件间为 或 的过滤关系
+
+- [0] 表示 等待事件
+- [12] 表示 等待上游
+- [6, 7, 9, 10, 18] 表示 等待运行
+- [1, 19, 22] 表示 运行中
+- [21] 表示 跳过运行
+- [3] 表示 失败重试
+- [8, 4, 5, 13] 表示 失败
+- [2] 表示 成功
+        :type InstanceStateList: list of int non-negative
+        :param _TaskTypeIdList: **任务类型Id**
+
+- 支持过滤多个，条件间为 或 的过滤关系
+- 可以通过接口 DescribeAllTaskType 获取项目支持的全部任务类型
+        :type TaskTypeIdList: list of int non-negative
+        :param _TaskCycleList: **任务周期类型**
+支持过滤多个，条件间为 或 的过滤关系
+* O: ONEOFF_CYCLE
+* Y: YEAR_CYCLE
+* M: MONTH_CYCLE
+* W: WEEK_CYCLE
+* D: DAY_CYCLE
+* H: HOUR_CYCLE
+* I: MINUTE_CYCLE
+* C: CRONTAB_CYCLE
+        :type TaskCycleList: list of str
+        :param _Keyword: **任务名称 或 任务ID**
+支持模糊搜索过滤, 多个用 英文逗号, 分割
+        :type Keyword: str
+        :param _InChargeList: **任务负责人**
+支持过滤多个，条件间为 或 的过滤关系
+        :type InChargeList: list of str
+        :param _TaskFolderIdList: **任务所属文件件**
+支持过滤多个，条件间为 或 的过滤关系
+可以通过接口 FindAllFolder 获取项目下的所有文件夹列表
+        :type TaskFolderIdList: list of str
+        :param _WorkflowIdList: **任务所属工作流**
+支持过滤多个，条件间为 或 的过滤关系
+可以通过接口 DescribeOpsWorkflows 获取项目下的所有工作流列表
+        :type WorkflowIdList: list of str
+        :param _ExecutorGroupIdList: **执行资源组Id**
+支持过滤多个，条件间为 或 的过滤关系
+可以通过接口 DescribeNormalSchedulerExecutorGroups 获取项目下的所有调度资源组列表
+可以通过接口 DescribeNormalIntegrationExecutorGroups 获取项目下的所有集成资源组列表
+        :type ExecutorGroupIdList: list of str
+        :param _StartTimeFrom: **开始时间**
+过滤起始时间，时间格式为 yyyy-MM-dd HH:mm:ss
+        :type StartTimeFrom: str
+        :param _StartTimeTo: **开始时间**
+过滤截止时间，时间格式为 yyyy-MM-dd HH:mm:ss
+        :type StartTimeTo: str
+        :param _ScheduleTimeZone: **时区**
+timeZone, 默认UTC+8
+        :type ScheduleTimeZone: str
+        """
+        self._ProjectId = None
+        self._ScheduleTimeFrom = None
+        self._ScheduleTimeTo = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._SortColumn = None
+        self._SortType = None
+        self._InstanceType = None
+        self._InstanceStateList = None
+        self._TaskTypeIdList = None
+        self._TaskCycleList = None
+        self._Keyword = None
+        self._InChargeList = None
+        self._TaskFolderIdList = None
+        self._WorkflowIdList = None
+        self._ExecutorGroupIdList = None
+        self._StartTimeFrom = None
+        self._StartTimeTo = None
+        self._ScheduleTimeZone = None
+
+    @property
+    def ProjectId(self):
+        """**项目ID**
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ScheduleTimeFrom(self):
+        """**实例计划调度时间**
+过滤起始时间，时间格式为 yyyy-MM-dd HH:mm:ss
+        :rtype: str
+        """
+        return self._ScheduleTimeFrom
+
+    @ScheduleTimeFrom.setter
+    def ScheduleTimeFrom(self, ScheduleTimeFrom):
+        self._ScheduleTimeFrom = ScheduleTimeFrom
+
+    @property
+    def ScheduleTimeTo(self):
+        """**实例计划调度时间**
+过滤截止时间，时间格式为 yyyy-MM-dd HH:mm:ss
+        :rtype: str
+        """
+        return self._ScheduleTimeTo
+
+    @ScheduleTimeTo.setter
+    def ScheduleTimeTo(self, ScheduleTimeTo):
+        self._ScheduleTimeTo = ScheduleTimeTo
+
+    @property
+    def PageNumber(self):
+        """**页码，整型**
+配合pageSize使用且不能小于1， 默认值1
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        """**每页数目，整型**
+配合pageNumber使用且不能大于200, 默认值 10
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def SortColumn(self):
+        """**查询结果排序字段**
+
+- SCHEDULE_DATE 表示 计划调度时间
+- START_TIME 表示 实例开始执行时间
+- END_TIME 表示 实例结束执行时间
+- COST_TIME 表示 实例执行时长
+        :rtype: str
+        """
+        return self._SortColumn
+
+    @SortColumn.setter
+    def SortColumn(self, SortColumn):
+        self._SortColumn = SortColumn
+
+    @property
+    def SortType(self):
+        """**实例排序方式**
+
+- ASC 
+- DESC
+        :rtype: str
+        """
+        return self._SortType
+
+    @SortType.setter
+    def SortType(self, SortType):
+        self._SortType = SortType
+
+    @property
+    def InstanceType(self):
+        """**实例类型**
+
+- 0 表示补录类型
+- 1 表示周期实例
+- 2 表示非周期实例
+        :rtype: int
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceStateList(self):
+        """**实例执行状态**
+支持过滤多个，条件间为 或 的过滤关系
+
+- [0] 表示 等待事件
+- [12] 表示 等待上游
+- [6, 7, 9, 10, 18] 表示 等待运行
+- [1, 19, 22] 表示 运行中
+- [21] 表示 跳过运行
+- [3] 表示 失败重试
+- [8, 4, 5, 13] 表示 失败
+- [2] 表示 成功
+        :rtype: list of int non-negative
+        """
+        return self._InstanceStateList
+
+    @InstanceStateList.setter
+    def InstanceStateList(self, InstanceStateList):
+        self._InstanceStateList = InstanceStateList
+
+    @property
+    def TaskTypeIdList(self):
+        """**任务类型Id**
+
+- 支持过滤多个，条件间为 或 的过滤关系
+- 可以通过接口 DescribeAllTaskType 获取项目支持的全部任务类型
+        :rtype: list of int non-negative
+        """
+        return self._TaskTypeIdList
+
+    @TaskTypeIdList.setter
+    def TaskTypeIdList(self, TaskTypeIdList):
+        self._TaskTypeIdList = TaskTypeIdList
+
+    @property
+    def TaskCycleList(self):
+        """**任务周期类型**
+支持过滤多个，条件间为 或 的过滤关系
+* O: ONEOFF_CYCLE
+* Y: YEAR_CYCLE
+* M: MONTH_CYCLE
+* W: WEEK_CYCLE
+* D: DAY_CYCLE
+* H: HOUR_CYCLE
+* I: MINUTE_CYCLE
+* C: CRONTAB_CYCLE
+        :rtype: list of str
+        """
+        return self._TaskCycleList
+
+    @TaskCycleList.setter
+    def TaskCycleList(self, TaskCycleList):
+        self._TaskCycleList = TaskCycleList
+
+    @property
+    def Keyword(self):
+        """**任务名称 或 任务ID**
+支持模糊搜索过滤, 多个用 英文逗号, 分割
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def InChargeList(self):
+        """**任务负责人**
+支持过滤多个，条件间为 或 的过滤关系
+        :rtype: list of str
+        """
+        return self._InChargeList
+
+    @InChargeList.setter
+    def InChargeList(self, InChargeList):
+        self._InChargeList = InChargeList
+
+    @property
+    def TaskFolderIdList(self):
+        """**任务所属文件件**
+支持过滤多个，条件间为 或 的过滤关系
+可以通过接口 FindAllFolder 获取项目下的所有文件夹列表
+        :rtype: list of str
+        """
+        return self._TaskFolderIdList
+
+    @TaskFolderIdList.setter
+    def TaskFolderIdList(self, TaskFolderIdList):
+        self._TaskFolderIdList = TaskFolderIdList
+
+    @property
+    def WorkflowIdList(self):
+        """**任务所属工作流**
+支持过滤多个，条件间为 或 的过滤关系
+可以通过接口 DescribeOpsWorkflows 获取项目下的所有工作流列表
+        :rtype: list of str
+        """
+        return self._WorkflowIdList
+
+    @WorkflowIdList.setter
+    def WorkflowIdList(self, WorkflowIdList):
+        self._WorkflowIdList = WorkflowIdList
+
+    @property
+    def ExecutorGroupIdList(self):
+        """**执行资源组Id**
+支持过滤多个，条件间为 或 的过滤关系
+可以通过接口 DescribeNormalSchedulerExecutorGroups 获取项目下的所有调度资源组列表
+可以通过接口 DescribeNormalIntegrationExecutorGroups 获取项目下的所有集成资源组列表
+        :rtype: list of str
+        """
+        return self._ExecutorGroupIdList
+
+    @ExecutorGroupIdList.setter
+    def ExecutorGroupIdList(self, ExecutorGroupIdList):
+        self._ExecutorGroupIdList = ExecutorGroupIdList
+
+    @property
+    def StartTimeFrom(self):
+        """**开始时间**
+过滤起始时间，时间格式为 yyyy-MM-dd HH:mm:ss
+        :rtype: str
+        """
+        return self._StartTimeFrom
+
+    @StartTimeFrom.setter
+    def StartTimeFrom(self, StartTimeFrom):
+        self._StartTimeFrom = StartTimeFrom
+
+    @property
+    def StartTimeTo(self):
+        """**开始时间**
+过滤截止时间，时间格式为 yyyy-MM-dd HH:mm:ss
+        :rtype: str
+        """
+        return self._StartTimeTo
+
+    @StartTimeTo.setter
+    def StartTimeTo(self, StartTimeTo):
+        self._StartTimeTo = StartTimeTo
+
+    @property
+    def ScheduleTimeZone(self):
+        """**时区**
+timeZone, 默认UTC+8
+        :rtype: str
+        """
+        return self._ScheduleTimeZone
+
+    @ScheduleTimeZone.setter
+    def ScheduleTimeZone(self, ScheduleTimeZone):
+        self._ScheduleTimeZone = ScheduleTimeZone
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._ScheduleTimeFrom = params.get("ScheduleTimeFrom")
+        self._ScheduleTimeTo = params.get("ScheduleTimeTo")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._SortColumn = params.get("SortColumn")
+        self._SortType = params.get("SortType")
+        self._InstanceType = params.get("InstanceType")
+        self._InstanceStateList = params.get("InstanceStateList")
+        self._TaskTypeIdList = params.get("TaskTypeIdList")
+        self._TaskCycleList = params.get("TaskCycleList")
+        self._Keyword = params.get("Keyword")
+        self._InChargeList = params.get("InChargeList")
+        self._TaskFolderIdList = params.get("TaskFolderIdList")
+        self._WorkflowIdList = params.get("WorkflowIdList")
+        self._ExecutorGroupIdList = params.get("ExecutorGroupIdList")
+        self._StartTimeFrom = params.get("StartTimeFrom")
+        self._StartTimeTo = params.get("StartTimeTo")
+        self._ScheduleTimeZone = params.get("ScheduleTimeZone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListInstancesResponse(AbstractModel):
+    """ListInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 实例结果集
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.InstancePageVO`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """实例结果集
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.InstancePageVO`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = InstancePageVO()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class LockIntegrationTaskRequest(AbstractModel):
@@ -78278,6 +80897,18 @@ TABLE, VIEW, MANAGED_TABLE(Hive管理表), EXTERNAL_TABLE(Hive外部表), VIRTUA
         :param _IfSupportCreateAndDDL: 是否支持select or ddl
 注意：此字段可能返回 null，表示取不到有效值。
         :type IfSupportCreateAndDDL: :class:`tencentcloud.wedata.v20210820.models.CreateAndDDLSupport`
+        :param _DataFromType: 资产来源 历史默认值都是CRAWLER
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataFromType: str
+        :param _EngineOwner: 引擎侧责任人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EngineOwner: str
+        :param _DataLayerUuid: 数据分层UUID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataLayerUuid: str
+        :param _DataLayerName: 数据分层名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataLayerName: str
         :param _ColumnCount: 字段数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type ColumnCount: int
@@ -78346,6 +80977,10 @@ TABLE, VIEW, MANAGED_TABLE(Hive管理表), EXTERNAL_TABLE(Hive外部表), VIRTUA
         self._OwnerByEngine = None
         self._ErrorTips = None
         self._IfSupportCreateAndDDL = None
+        self._DataFromType = None
+        self._EngineOwner = None
+        self._DataLayerUuid = None
+        self._DataLayerName = None
         self._ColumnCount = None
 
     @property
@@ -79118,6 +81753,54 @@ TABLE, VIEW, MANAGED_TABLE(Hive管理表), EXTERNAL_TABLE(Hive外部表), VIRTUA
         self._IfSupportCreateAndDDL = IfSupportCreateAndDDL
 
     @property
+    def DataFromType(self):
+        """资产来源 历史默认值都是CRAWLER
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DataFromType
+
+    @DataFromType.setter
+    def DataFromType(self, DataFromType):
+        self._DataFromType = DataFromType
+
+    @property
+    def EngineOwner(self):
+        """引擎侧责任人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EngineOwner
+
+    @EngineOwner.setter
+    def EngineOwner(self, EngineOwner):
+        self._EngineOwner = EngineOwner
+
+    @property
+    def DataLayerUuid(self):
+        """数据分层UUID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DataLayerUuid
+
+    @DataLayerUuid.setter
+    def DataLayerUuid(self, DataLayerUuid):
+        self._DataLayerUuid = DataLayerUuid
+
+    @property
+    def DataLayerName(self):
+        """数据分层名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DataLayerName
+
+    @DataLayerName.setter
+    def DataLayerName(self, DataLayerName):
+        self._DataLayerName = DataLayerName
+
+    @property
     def ColumnCount(self):
         """字段数量
 注意：此字段可能返回 null，表示取不到有效值。
@@ -79216,6 +81899,10 @@ TABLE, VIEW, MANAGED_TABLE(Hive管理表), EXTERNAL_TABLE(Hive外部表), VIRTUA
         if params.get("IfSupportCreateAndDDL") is not None:
             self._IfSupportCreateAndDDL = CreateAndDDLSupport()
             self._IfSupportCreateAndDDL._deserialize(params.get("IfSupportCreateAndDDL"))
+        self._DataFromType = params.get("DataFromType")
+        self._EngineOwner = params.get("EngineOwner")
+        self._DataLayerUuid = params.get("DataLayerUuid")
+        self._DataLayerName = params.get("DataLayerName")
         self._ColumnCount = params.get("ColumnCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

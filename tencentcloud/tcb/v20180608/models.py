@@ -11796,6 +11796,66 @@ class DescribeCloudBaseRunVersionRsByConditionRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _EnvId: 环境ID；EnvId和ClusterId不能同时为空
+        :type EnvId: str
+        :param _ClusterId: 集群ID；EnvId和ClusterId不能同时为空
+        :type ClusterId: str
+        :param _FilterGwSwitch: 过滤网关服务开关
+        :type FilterGwSwitch: bool
+        """
+        self._EnvId = None
+        self._ClusterId = None
+        self._FilterGwSwitch = None
+
+    @property
+    def EnvId(self):
+        """环境ID；EnvId和ClusterId不能同时为空
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def ClusterId(self):
+        """集群ID；EnvId和ClusterId不能同时为空
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def FilterGwSwitch(self):
+        """过滤网关服务开关
+        :rtype: bool
+        """
+        return self._FilterGwSwitch
+
+    @FilterGwSwitch.setter
+    def FilterGwSwitch(self, FilterGwSwitch):
+        self._FilterGwSwitch = FilterGwSwitch
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._ClusterId = params.get("ClusterId")
+        self._FilterGwSwitch = params.get("FilterGwSwitch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeCloudBaseRunVersionRsByConditionResponse(AbstractModel):
     """DescribeCloudBaseRunVersionRsByCondition返回参数结构体

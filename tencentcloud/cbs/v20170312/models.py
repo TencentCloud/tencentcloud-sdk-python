@@ -8944,7 +8944,7 @@ class TerminateDisksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskIds: 需退还的云盘ID列表。
+        :param _DiskIds: 需退还的云盘ID列表，通过[DescribeDisks](/document/product/362/16315)接口查询。
         :type DiskIds: list of str
         :param _DeleteSnapshot: 销毁云盘时删除关联的非永久保留快照。0 表示非永久快照不随云盘销毁而销毁，1表示非永久快照随云盘销毁而销毁，默认取0。快照是否永久保留可以通过DescribeSnapshots接口返回的快照详情的IsPermanent字段来判断，true表示永久快照，false表示非永久快照。
         :type DeleteSnapshot: int
@@ -8954,7 +8954,7 @@ class TerminateDisksRequest(AbstractModel):
 
     @property
     def DiskIds(self):
-        """需退还的云盘ID列表。
+        """需退还的云盘ID列表，通过[DescribeDisks](/document/product/362/16315)接口查询。
         :rtype: list of str
         """
         return self._DiskIds

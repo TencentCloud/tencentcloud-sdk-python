@@ -99,6 +99,52 @@ class GsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAndroidApp(self, request):
+        """创建安卓应用
+
+        :param request: Request instance for CreateAndroidApp.
+        :type request: :class:`tencentcloud.gs.v20191118.models.CreateAndroidAppRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.CreateAndroidAppResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAndroidApp", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAndroidAppResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateAndroidAppVersion(self, request):
+        """创建安卓应用版本
+
+        :param request: Request instance for CreateAndroidAppVersion.
+        :type request: :class:`tencentcloud.gs.v20191118.models.CreateAndroidAppVersionRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.CreateAndroidAppVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAndroidAppVersion", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAndroidAppVersionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAndroidInstanceImage(self, request):
         """创建安卓实例镜像
 
@@ -237,6 +283,29 @@ class GsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateCosCredential(self, request):
+        """用于创建 Cos 临时密钥
+
+        :param request: Request instance for CreateCosCredential.
+        :type request: :class:`tencentcloud.gs.v20191118.models.CreateCosCredentialRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.CreateCosCredentialResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCosCredential", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCosCredentialResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateSession(self, request):
         """创建会话
 
@@ -251,6 +320,52 @@ class GsClient(AbstractClient):
             body = self.call("CreateSession", params, headers=headers)
             response = json.loads(body)
             model = models.CreateSessionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteAndroidApp(self, request):
+        """删除安卓应用
+
+        :param request: Request instance for DeleteAndroidApp.
+        :type request: :class:`tencentcloud.gs.v20191118.models.DeleteAndroidAppRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.DeleteAndroidAppResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAndroidApp", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAndroidAppResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteAndroidAppVersion(self, request):
+        """删除安卓应用版本
+
+        :param request: Request instance for DeleteAndroidAppVersion.
+        :type request: :class:`tencentcloud.gs.v20191118.models.DeleteAndroidAppVersionRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.DeleteAndroidAppVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAndroidAppVersion", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAndroidAppVersionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -527,6 +642,29 @@ class GsClient(AbstractClient):
             body = self.call("InstallAndroidInstancesApp", params, headers=headers)
             response = json.loads(body)
             model = models.InstallAndroidInstancesAppResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyAndroidApp(self, request):
+        """修改安卓应用信息
+
+        :param request: Request instance for ModifyAndroidApp.
+        :type request: :class:`tencentcloud.gs.v20191118.models.ModifyAndroidAppRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.ModifyAndroidAppResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAndroidApp", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAndroidAppResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -134,6 +134,42 @@ class AndroidApp(AbstractModel):
         
 
 
+class AndroidAppCosInfo(AbstractModel):
+    """安卓应用Cos数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AndroidAppId: 安卓应用ID
+        :type AndroidAppId: str
+        """
+        self._AndroidAppId = None
+
+    @property
+    def AndroidAppId(self):
+        """安卓应用ID
+        :rtype: str
+        """
+        return self._AndroidAppId
+
+    @AndroidAppId.setter
+    def AndroidAppId(self, AndroidAppId):
+        self._AndroidAppId = AndroidAppId
+
+
+    def _deserialize(self, params):
+        self._AndroidAppId = params.get("AndroidAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AndroidAppVersionInfo(AbstractModel):
     """安卓应用版本信息
 
@@ -1317,6 +1353,194 @@ class CopyAndroidInstanceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateAndroidAppRequest(AbstractModel):
+    """CreateAndroidApp请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 安卓应用名字
+        :type Name: str
+        :param _UserId: 用户 Id
+        :type UserId: str
+        """
+        self._Name = None
+        self._UserId = None
+
+    @property
+    def Name(self):
+        """安卓应用名字
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def UserId(self):
+        """用户 Id
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._UserId = params.get("UserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAndroidAppResponse(AbstractModel):
+    """CreateAndroidApp返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AndroidAppId: 应用ID
+        :type AndroidAppId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AndroidAppId = None
+        self._RequestId = None
+
+    @property
+    def AndroidAppId(self):
+        """应用ID
+        :rtype: str
+        """
+        return self._AndroidAppId
+
+    @AndroidAppId.setter
+    def AndroidAppId(self, AndroidAppId):
+        self._AndroidAppId = AndroidAppId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AndroidAppId = params.get("AndroidAppId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateAndroidAppVersionRequest(AbstractModel):
+    """CreateAndroidAppVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AndroidAppId: 应用ID
+        :type AndroidAppId: str
+        :param _DownloadUrl: 应用包下载地址
+        :type DownloadUrl: str
+        """
+        self._AndroidAppId = None
+        self._DownloadUrl = None
+
+    @property
+    def AndroidAppId(self):
+        """应用ID
+        :rtype: str
+        """
+        return self._AndroidAppId
+
+    @AndroidAppId.setter
+    def AndroidAppId(self, AndroidAppId):
+        self._AndroidAppId = AndroidAppId
+
+    @property
+    def DownloadUrl(self):
+        """应用包下载地址
+        :rtype: str
+        """
+        return self._DownloadUrl
+
+    @DownloadUrl.setter
+    def DownloadUrl(self, DownloadUrl):
+        self._DownloadUrl = DownloadUrl
+
+
+    def _deserialize(self, params):
+        self._AndroidAppId = params.get("AndroidAppId")
+        self._DownloadUrl = params.get("DownloadUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAndroidAppVersionResponse(AbstractModel):
+    """CreateAndroidAppVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AndroidAppVersion: 应用版本
+        :type AndroidAppVersion: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AndroidAppVersion = None
+        self._RequestId = None
+
+    @property
+    def AndroidAppVersion(self):
+        """应用版本
+        :rtype: str
+        """
+        return self._AndroidAppVersion
+
+    @AndroidAppVersion.setter
+    def AndroidAppVersion(self, AndroidAppVersion):
+        self._AndroidAppVersion = AndroidAppVersion
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AndroidAppVersion = params.get("AndroidAppVersion")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateAndroidInstanceImageRequest(AbstractModel):
     """CreateAndroidInstanceImage请求参数结构体
 
@@ -1998,6 +2222,207 @@ class CreateAndroidInstancesScreenshotResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateCosCredentialRequest(AbstractModel):
+    """CreateCosCredential请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CosType: Cos 密钥类型， Mobile 移动端, PC 桌面, AndroidApp 安卓应用
+        :type CosType: str
+        :param _AndroidAppCosInfo: 云手机 Cos 数据
+        :type AndroidAppCosInfo: :class:`tencentcloud.gs.v20191118.models.AndroidAppCosInfo`
+        """
+        self._CosType = None
+        self._AndroidAppCosInfo = None
+
+    @property
+    def CosType(self):
+        """Cos 密钥类型， Mobile 移动端, PC 桌面, AndroidApp 安卓应用
+        :rtype: str
+        """
+        return self._CosType
+
+    @CosType.setter
+    def CosType(self, CosType):
+        self._CosType = CosType
+
+    @property
+    def AndroidAppCosInfo(self):
+        """云手机 Cos 数据
+        :rtype: :class:`tencentcloud.gs.v20191118.models.AndroidAppCosInfo`
+        """
+        return self._AndroidAppCosInfo
+
+    @AndroidAppCosInfo.setter
+    def AndroidAppCosInfo(self, AndroidAppCosInfo):
+        self._AndroidAppCosInfo = AndroidAppCosInfo
+
+
+    def _deserialize(self, params):
+        self._CosType = params.get("CosType")
+        if params.get("AndroidAppCosInfo") is not None:
+            self._AndroidAppCosInfo = AndroidAppCosInfo()
+            self._AndroidAppCosInfo._deserialize(params.get("AndroidAppCosInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCosCredentialResponse(AbstractModel):
+    """CreateCosCredential返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SecretID: Cos SecretID
+        :type SecretID: str
+        :param _SecretKey: Cos SecretKey
+        :type SecretKey: str
+        :param _SessionToken: Cos Session
+        :type SessionToken: str
+        :param _CosBucket: Cos Bucket
+        :type CosBucket: str
+        :param _CosRegion: Cos Region
+        :type CosRegion: str
+        :param _Path: Cos 操作路径
+        :type Path: str
+        :param _StartTime: Cos 密钥的起始时间
+        :type StartTime: int
+        :param _ExpiredTime: Cos 密钥的失效时间
+        :type ExpiredTime: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SecretID = None
+        self._SecretKey = None
+        self._SessionToken = None
+        self._CosBucket = None
+        self._CosRegion = None
+        self._Path = None
+        self._StartTime = None
+        self._ExpiredTime = None
+        self._RequestId = None
+
+    @property
+    def SecretID(self):
+        """Cos SecretID
+        :rtype: str
+        """
+        return self._SecretID
+
+    @SecretID.setter
+    def SecretID(self, SecretID):
+        self._SecretID = SecretID
+
+    @property
+    def SecretKey(self):
+        """Cos SecretKey
+        :rtype: str
+        """
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
+    @property
+    def SessionToken(self):
+        """Cos Session
+        :rtype: str
+        """
+        return self._SessionToken
+
+    @SessionToken.setter
+    def SessionToken(self, SessionToken):
+        self._SessionToken = SessionToken
+
+    @property
+    def CosBucket(self):
+        """Cos Bucket
+        :rtype: str
+        """
+        return self._CosBucket
+
+    @CosBucket.setter
+    def CosBucket(self, CosBucket):
+        self._CosBucket = CosBucket
+
+    @property
+    def CosRegion(self):
+        """Cos Region
+        :rtype: str
+        """
+        return self._CosRegion
+
+    @CosRegion.setter
+    def CosRegion(self, CosRegion):
+        self._CosRegion = CosRegion
+
+    @property
+    def Path(self):
+        """Cos 操作路径
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def StartTime(self):
+        """Cos 密钥的起始时间
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def ExpiredTime(self):
+        """Cos 密钥的失效时间
+        :rtype: int
+        """
+        return self._ExpiredTime
+
+    @ExpiredTime.setter
+    def ExpiredTime(self, ExpiredTime):
+        self._ExpiredTime = ExpiredTime
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SecretID = params.get("SecretID")
+        self._SecretKey = params.get("SecretKey")
+        self._SessionToken = params.get("SessionToken")
+        self._CosBucket = params.get("CosBucket")
+        self._CosRegion = params.get("CosRegion")
+        self._Path = params.get("Path")
+        self._StartTime = params.get("StartTime")
+        self._ExpiredTime = params.get("ExpiredTime")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateSessionRequest(AbstractModel):
     """CreateSession请求参数结构体
 
@@ -2363,6 +2788,149 @@ class CreateSessionResponse(AbstractModel):
         self._ServerSession = params.get("ServerSession")
         self._RoleNumber = params.get("RoleNumber")
         self._Role = params.get("Role")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteAndroidAppRequest(AbstractModel):
+    """DeleteAndroidApp请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AndroidAppId: 应用ID
+        :type AndroidAppId: str
+        """
+        self._AndroidAppId = None
+
+    @property
+    def AndroidAppId(self):
+        """应用ID
+        :rtype: str
+        """
+        return self._AndroidAppId
+
+    @AndroidAppId.setter
+    def AndroidAppId(self, AndroidAppId):
+        self._AndroidAppId = AndroidAppId
+
+
+    def _deserialize(self, params):
+        self._AndroidAppId = params.get("AndroidAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAndroidAppResponse(AbstractModel):
+    """DeleteAndroidApp返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteAndroidAppVersionRequest(AbstractModel):
+    """DeleteAndroidAppVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AndroidAppId: 安卓应用 Id
+        :type AndroidAppId: str
+        :param _AndroidAppVersion: 安卓应用版本
+        :type AndroidAppVersion: str
+        """
+        self._AndroidAppId = None
+        self._AndroidAppVersion = None
+
+    @property
+    def AndroidAppId(self):
+        """安卓应用 Id
+        :rtype: str
+        """
+        return self._AndroidAppId
+
+    @AndroidAppId.setter
+    def AndroidAppId(self, AndroidAppId):
+        self._AndroidAppId = AndroidAppId
+
+    @property
+    def AndroidAppVersion(self):
+        """安卓应用版本
+        :rtype: str
+        """
+        return self._AndroidAppVersion
+
+    @AndroidAppVersion.setter
+    def AndroidAppVersion(self, AndroidAppVersion):
+        self._AndroidAppVersion = AndroidAppVersion
+
+
+    def _deserialize(self, params):
+        self._AndroidAppId = params.get("AndroidAppId")
+        self._AndroidAppVersion = params.get("AndroidAppVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAndroidAppVersionResponse(AbstractModel):
+    """DeleteAndroidAppVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -3925,6 +4493,100 @@ NOT_EXISTS: 要求对象标签不存在标签键 Key
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifyAndroidAppRequest(AbstractModel):
+    """ModifyAndroidApp请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AndroidAppId: 安卓应用 Id
+        :type AndroidAppId: str
+        :param _Name: 安卓应用名称
+        :type Name: str
+        :param _UserId: 用户 Id
+        :type UserId: str
+        """
+        self._AndroidAppId = None
+        self._Name = None
+        self._UserId = None
+
+    @property
+    def AndroidAppId(self):
+        """安卓应用 Id
+        :rtype: str
+        """
+        return self._AndroidAppId
+
+    @AndroidAppId.setter
+    def AndroidAppId(self, AndroidAppId):
+        self._AndroidAppId = AndroidAppId
+
+    @property
+    def Name(self):
+        """安卓应用名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def UserId(self):
+        """用户 Id
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+
+    def _deserialize(self, params):
+        self._AndroidAppId = params.get("AndroidAppId")
+        self._Name = params.get("Name")
+        self._UserId = params.get("UserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAndroidAppResponse(AbstractModel):
+    """ModifyAndroidApp返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyAndroidInstanceInformationRequest(AbstractModel):

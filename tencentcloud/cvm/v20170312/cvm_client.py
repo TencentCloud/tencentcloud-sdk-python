@@ -1341,7 +1341,7 @@ class CvmClient(AbstractClient):
 
 
     def ExitRescueMode(self, request):
-        """退出救援模式
+        """本接口（ExitRescueMode）用于退出救援模式。
 
         :param request: Request instance for ExitRescueMode.
         :type request: :class:`tencentcloud.cvm.v20170312.models.ExitRescueModeRequest`
@@ -1410,7 +1410,7 @@ class CvmClient(AbstractClient):
 
 
     def ImportInstancesActionTimer(self, request):
-        """导入定时任务
+        """本接口（ImportInstancesActionTimer）用于导入定时任务
 
         :param request: Request instance for ImportInstancesActionTimer.
         :type request: :class:`tencentcloud.cvm.v20170312.models.ImportInstancesActionTimerRequest`
@@ -1643,8 +1643,9 @@ class CvmClient(AbstractClient):
     def InquiryPriceResizeInstanceDisks(self, request):
         """本接口 (InquiryPriceResizeInstanceDisks) 用于扩容实例的数据盘询价。
 
-        * 目前只支持扩容非弹性数据盘（[`DescribeDisks`](https://cloud.tencent.com/document/api/362/16315)接口返回值中的`Portable`为`false`表示非弹性）询价。
-        * 目前不支持[CDH](https://cloud.tencent.com/document/product/416)实例使用该接口扩容数据盘询价。* 仅支持包年包月实例随机器购买的数据盘。* 目前只支持扩容一块数据盘询价。
+        * 目前只支持扩容非弹性数据盘（[DescribeDisks ](https://cloud.tencent.com/document/api/362/16315)接口返回值中的`Portable`为`false`表示非弹性）询价。
+        * 目前不支持[CDH](https://cloud.tencent.com/document/product/416)实例使用该接口扩容数据盘询价。
+        * 目前只支持扩容一块数据盘询价。
 
         :param request: Request instance for InquiryPriceResizeInstanceDisks.
         :type request: :class:`tencentcloud.cvm.v20170312.models.InquiryPriceResizeInstanceDisksRequest`
@@ -1868,7 +1869,7 @@ class CvmClient(AbstractClient):
         * 只支持实例在关机状态下转换成指定云硬盘介质。
         * 不支持竞价实例类型。
         * 若实例同时存在本地系统盘和本地数据盘，需同时调整系统盘和数据盘的介质类型，不支持单独针对本地系统盘或本地数据盘修改介质类型。
-        * 修改前请确保账户余额充足。可通过[DescribeAccountBalance](https://cloud.tencent.com/document/product/555/20253)接口查询账户余额。
+        * 修改前请确保账户余额充足。可通过[ DescribeAccountBalance ](https://cloud.tencent.com/document/product/555/20253)接口查询账户余额。
 
         :param request: Request instance for ModifyInstanceDiskType.
         :type request: :class:`tencentcloud.cvm.v20170312.models.ModifyInstanceDiskTypeRequest`
@@ -1891,7 +1892,7 @@ class CvmClient(AbstractClient):
 
 
     def ModifyInstancesAttribute(self, request):
-        """本接口 (ModifyInstancesAttribute) 用于修改实例的属性（目前只支持修改实例的名称和关联的安全组）。
+        """本接口 (ModifyInstancesAttribute) 用于修改实例的属性。
 
         * 每次请求必须指定实例的一种属性用于修改。
         * “实例名称”仅为方便用户自己管理之用，腾讯云并不以此名称作为在线支持或是进行实例管理操作的依据。
@@ -2541,7 +2542,9 @@ class CvmClient(AbstractClient):
         """本接口（SyncImages）用于将自定义镜像同步到其它地区。
 
         * 该接口每次调用只支持同步一个镜像。
-        * 该接口支持多个同步地域。
+        * 该接口支持自定义镜像向多个地域同步。
+        * 共享镜像仅支持同步为源地域（单个）的自定义镜像。
+        * 自定义镜像仅支持同步为源地域（单个）的加密自定义镜像。
         * 单个账号在每个地域最多支持存在500个自定义镜像。
 
         :param request: Request instance for SyncImages.

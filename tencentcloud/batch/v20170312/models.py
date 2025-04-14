@@ -1667,23 +1667,11 @@ class DataDisk(AbstractModel):
         :param _DiskId: 数据盘ID。
 该参数目前仅用于`DescribeInstances`等查询类接口的返回参数，不可用于`RunInstances`等写接口的入参。
         :type DiskId: str
-        :param _DeleteWithInstance: 数据盘是否随子机销毁。取值范围：
-<li>true：子机销毁时，销毁数据盘，只支持按小时后付费云盘</li>
-<li>
-  false：子机销毁时，保留数据盘<br />
-  默认取值：true<br />
-  该参数目前仅用于 `RunInstances` 接口。
-</li>
+        :param _DeleteWithInstance: 数据盘是否随子机销毁。取值范围：<li>true：子机销毁时，销毁数据盘，只支持按小时后付费云盘</li><li>false：子机销毁时，保留数据盘</li><br/>默认取值：true <br/>该参数目前仅用于 `RunInstances` 接口。
         :type DeleteWithInstance: bool
         :param _SnapshotId: 数据盘快照ID。选择的数据盘快照大小需小于数据盘大小。
         :type SnapshotId: str
-        :param _Encrypt: 数据盘是加密。取值范围：
-<li>true：加密</li>
-<li>
-  false：不加密<br />
-  默认取值：false<br />
-  该参数目前仅用于 `RunInstances` 接口。
-</li>
+        :param _Encrypt: 数据盘是否加密。取值范围：<li>true：加密</li><li>false：不加密</li><br/>默认取值：false<br/>该参数目前仅用于 `RunInstances` 接口。
         :type Encrypt: bool
         :param _KmsKeyId: 自定义CMK对应的ID，取值为UUID或者类似kms-abcd1234。用于加密云盘。
 
@@ -1750,13 +1738,7 @@ class DataDisk(AbstractModel):
 
     @property
     def DeleteWithInstance(self):
-        """数据盘是否随子机销毁。取值范围：
-<li>true：子机销毁时，销毁数据盘，只支持按小时后付费云盘</li>
-<li>
-  false：子机销毁时，保留数据盘<br />
-  默认取值：true<br />
-  该参数目前仅用于 `RunInstances` 接口。
-</li>
+        """数据盘是否随子机销毁。取值范围：<li>true：子机销毁时，销毁数据盘，只支持按小时后付费云盘</li><li>false：子机销毁时，保留数据盘</li><br/>默认取值：true <br/>该参数目前仅用于 `RunInstances` 接口。
         :rtype: bool
         """
         return self._DeleteWithInstance
@@ -1778,13 +1760,7 @@ class DataDisk(AbstractModel):
 
     @property
     def Encrypt(self):
-        """数据盘是加密。取值范围：
-<li>true：加密</li>
-<li>
-  false：不加密<br />
-  默认取值：false<br />
-  该参数目前仅用于 `RunInstances` 接口。
-</li>
+        """数据盘是否加密。取值范围：<li>true：加密</li><li>false：不加密</li><br/>默认取值：false<br/>该参数目前仅用于 `RunInstances` 接口。
         :rtype: bool
         """
         return self._Encrypt
@@ -5835,7 +5811,7 @@ class InstanceTypeQuotaItem(AbstractModel):
         :type Zone: str
         :param _InstanceType: 实例机型。
         :type InstanceType: str
-        :param _InstanceChargeType: 实例计费模式。取值范围： <br><li>PREPAID：表示预付费，即包年包月<br></li>POSTPAID_BY_HOUR：表示后付费，即按量计费<br><li>CDHPAID：表示[专用宿主机](https://cloud.tencent.com/document/product/416)付费，即只对`专用宿主机`计费，不对`专用宿主机`上的实例计费。<br></li>`SPOTPAID`：表示竞价实例付费。
+        :param _InstanceChargeType: 实例计费模式。取值范围： <br><li>PREPAID：表示预付费，即包年包月<br></li><li>POSTPAID_BY_HOUR：表示后付费，即按量计费</li><li>CDHPAID：表示[专用宿主机](https://cloud.tencent.com/document/product/416)付费，即只对`专用宿主机`计费，不对`专用宿主机`上的实例计费。<br></li><li>SPOTPAID：表示竞价实例付费。</li>
         :type InstanceChargeType: str
         :param _NetworkCard: 网卡类型，例如：25代表25G网卡
         :type NetworkCard: int
@@ -5851,7 +5827,7 @@ class InstanceTypeQuotaItem(AbstractModel):
         :type TypeName: str
         :param _LocalDiskTypeList: 本地磁盘规格列表。当该参数返回为空值时，表示当前情况下无法创建本地盘。
         :type LocalDiskTypeList: list of LocalDiskType
-        :param _Status: 实例是否售卖。取值范围： <br><li>SELL：表示实例可购买<br></li>SOLD_OUT：表示实例已售罄。
+        :param _Status: 实例是否售卖。取值范围： <br><li>SELL：表示实例可购买<br></li><li>SOLD_OUT：表示实例已售罄。</li>
         :type Status: str
         :param _Price: 实例的售卖价格。
         :type Price: :class:`tencentcloud.batch.v20170312.models.ItemPrice`
@@ -5876,10 +5852,7 @@ class InstanceTypeQuotaItem(AbstractModel):
         :param _Frequency: 实例的CPU主频信息
         :type Frequency: str
         :param _StatusCategory: 描述库存情况。取值范围：
-<li> EnoughStock：表示对应库存非常充足</li> 
-<li>NormalStock：表示对应库存供应有保障</li>
-<li> UnderStock：表示对应库存即将售罄</li> 
-<li>WithoutStock：表示对应库存已经售罄</li>
+<li> EnoughStock：表示对应库存非常充足</li> <li>NormalStock：表示对应库存供应有保障</li><li> UnderStock：表示对应库存即将售罄</li> <li>WithoutStock：表示对应库存已经售罄</li>
         :type StatusCategory: str
         """
         self._Zone = None
@@ -5930,7 +5903,7 @@ class InstanceTypeQuotaItem(AbstractModel):
 
     @property
     def InstanceChargeType(self):
-        """实例计费模式。取值范围： <br><li>PREPAID：表示预付费，即包年包月<br></li>POSTPAID_BY_HOUR：表示后付费，即按量计费<br><li>CDHPAID：表示[专用宿主机](https://cloud.tencent.com/document/product/416)付费，即只对`专用宿主机`计费，不对`专用宿主机`上的实例计费。<br></li>`SPOTPAID`：表示竞价实例付费。
+        """实例计费模式。取值范围： <br><li>PREPAID：表示预付费，即包年包月<br></li><li>POSTPAID_BY_HOUR：表示后付费，即按量计费</li><li>CDHPAID：表示[专用宿主机](https://cloud.tencent.com/document/product/416)付费，即只对`专用宿主机`计费，不对`专用宿主机`上的实例计费。<br></li><li>SPOTPAID：表示竞价实例付费。</li>
         :rtype: str
         """
         return self._InstanceChargeType
@@ -6018,7 +5991,7 @@ class InstanceTypeQuotaItem(AbstractModel):
 
     @property
     def Status(self):
-        """实例是否售卖。取值范围： <br><li>SELL：表示实例可购买<br></li>SOLD_OUT：表示实例已售罄。
+        """实例是否售卖。取值范围： <br><li>SELL：表示实例可购买<br></li><li>SOLD_OUT：表示实例已售罄。</li>
         :rtype: str
         """
         return self._Status
@@ -6151,10 +6124,7 @@ class InstanceTypeQuotaItem(AbstractModel):
     @property
     def StatusCategory(self):
         """描述库存情况。取值范围：
-<li> EnoughStock：表示对应库存非常充足</li> 
-<li>NormalStock：表示对应库存供应有保障</li>
-<li> UnderStock：表示对应库存即将售罄</li> 
-<li>WithoutStock：表示对应库存已经售罄</li>
+<li> EnoughStock：表示对应库存非常充足</li> <li>NormalStock：表示对应库存供应有保障</li><li> UnderStock：表示对应库存即将售罄</li> <li>WithoutStock：表示对应库存已经售罄</li>
         :rtype: str
         """
         return self._StatusCategory
@@ -8397,9 +8367,9 @@ class StorageBlock(AbstractModel):
         r"""
         :param _Type: HDD本地存储类型，值为：LOCAL_PRO.
         :type Type: str
-        :param _MinSize: HDD本地存储的最小容量
+        :param _MinSize: HDD本地存储的最小容量。单位：GiB。
         :type MinSize: int
-        :param _MaxSize: HDD本地存储的最大容量
+        :param _MaxSize: HDD本地存储的最大容量。单位：GiB。
         :type MaxSize: int
         """
         self._Type = None
@@ -8419,7 +8389,7 @@ class StorageBlock(AbstractModel):
 
     @property
     def MinSize(self):
-        """HDD本地存储的最小容量
+        """HDD本地存储的最小容量。单位：GiB。
         :rtype: int
         """
         return self._MinSize
@@ -8430,7 +8400,7 @@ class StorageBlock(AbstractModel):
 
     @property
     def MaxSize(self):
-        """HDD本地存储的最大容量
+        """HDD本地存储的最大容量。单位：GiB。
         :rtype: int
         """
         return self._MaxSize

@@ -17,6 +17,21 @@
 # 操作失败。
 FAILEDOPERATION = 'FailedOperation'
 
+# 应用创建失败。
+FAILEDOPERATION_APPLICATIONCREATEFAIL = 'FailedOperation.ApplicationCreateFail'
+
+# 应用锁定失败。
+FAILEDOPERATION_APPLICATIONLOCKFAIL = 'FailedOperation.ApplicationLockFail'
+
+# 应用不存在。
+FAILEDOPERATION_APPLICATIONNOTFIND = 'FailedOperation.ApplicationNotFind'
+
+# 游戏锁定失败。
+FAILEDOPERATION_GAMELOCKFAIL = 'FailedOperation.GameLockFail'
+
+# 游戏不存在。
+FAILEDOPERATION_GAMENOTFIND = 'FailedOperation.GameNotFind'
+
 # 锁定机器超时或未调用TrylockWorker。
 FAILEDOPERATION_LOCKTIMEOUT = 'FailedOperation.LockTimeout'
 
@@ -49,6 +64,15 @@ LIMITEXCEEDED_ROLE = 'LimitExceeded.Role'
 
 # 操作被拒绝。
 OPERATIONDENIED = 'OperationDenied'
+
+# 超出应用数量限制。
+OPERATIONDENIED_APPLICATIONLIMITEXCEEDED = 'OperationDenied.ApplicationLimitExceeded'
+
+# 版本正在创建。
+OPERATIONDENIED_VERSIONCREATING = 'OperationDenied.VersionCreating'
+
+# 超过版本数量限制。
+OPERATIONDENIED_VERSIONLIMITEXCEEDED = 'OperationDenied.VersionLimitExceeded'
 
 # 资源不存在。
 RESOURCENOTFOUND = 'ResourceNotFound'

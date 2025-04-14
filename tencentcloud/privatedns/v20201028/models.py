@@ -2547,10 +2547,13 @@ class DescribeRequestDataRequest(AbstractModel):
         :type Filters: list of Filter
         :param _TimeRangeEnd: 请求量统计结束时间，格式：2020-11-22 23:59:59
         :type TimeRangeEnd: str
+        :param _Export: 是否导出：true导出，false不导出
+        :type Export: bool
         """
         self._TimeRangeBegin = None
         self._Filters = None
         self._TimeRangeEnd = None
+        self._Export = None
 
     @property
     def TimeRangeBegin(self):
@@ -2585,6 +2588,17 @@ class DescribeRequestDataRequest(AbstractModel):
     def TimeRangeEnd(self, TimeRangeEnd):
         self._TimeRangeEnd = TimeRangeEnd
 
+    @property
+    def Export(self):
+        """是否导出：true导出，false不导出
+        :rtype: bool
+        """
+        return self._Export
+
+    @Export.setter
+    def Export(self, Export):
+        self._Export = Export
+
 
     def _deserialize(self, params):
         self._TimeRangeBegin = params.get("TimeRangeBegin")
@@ -2595,6 +2609,7 @@ class DescribeRequestDataRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Filters.append(obj)
         self._TimeRangeEnd = params.get("TimeRangeEnd")
+        self._Export = params.get("Export")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2616,11 +2631,14 @@ class DescribeRequestDataResponse(AbstractModel):
         :type Data: list of MetricData
         :param _Interval: 请求量单位时间: Day：天，Hour：小时
         :type Interval: str
+        :param _Url: 导出数据下载地址
+        :type Url: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
         self._Interval = None
+        self._Url = None
         self._RequestId = None
 
     @property
@@ -2646,6 +2664,17 @@ class DescribeRequestDataResponse(AbstractModel):
         self._Interval = Interval
 
     @property
+    def Url(self):
+        """导出数据下载地址
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -2665,6 +2694,7 @@ class DescribeRequestDataResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Data.append(obj)
         self._Interval = params.get("Interval")
+        self._Url = params.get("Url")
         self._RequestId = params.get("RequestId")
 
 

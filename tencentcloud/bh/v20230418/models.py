@@ -464,6 +464,87 @@ class AccessInfo(AbstractModel):
         
 
 
+class AccessWhiteListRule(AbstractModel):
+    """访问白名单规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 规则ID
+        :type Id: int
+        :param _Source: IP或者网段
+        :type Source: str
+        :param _Remark: 备注信息
+        :type Remark: str
+        :param _ModifyTime: 修改时间
+        :type ModifyTime: str
+        """
+        self._Id = None
+        self._Source = None
+        self._Remark = None
+        self._ModifyTime = None
+
+    @property
+    def Id(self):
+        """规则ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Source(self):
+        """IP或者网段
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Remark(self):
+        """备注信息
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def ModifyTime(self):
+        """修改时间
+        :rtype: str
+        """
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Source = params.get("Source")
+        self._Remark = params.get("Remark")
+        self._ModifyTime = params.get("ModifyTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Acl(AbstractModel):
     """访问权限
 
@@ -2338,6 +2419,100 @@ class CmdTemplate(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CreateAccessWhiteListRuleRequest(AbstractModel):
+    """CreateAccessWhiteListRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Source: ip 10.10.10.1或者网段10.10.10.0/24，最小长度4字节，最大长度40字节。
+        :type Source: str
+        :param _Remark: 备注信息，最小长度0字符，最大长度40字符。
+        :type Remark: str
+        """
+        self._Source = None
+        self._Remark = None
+
+    @property
+    def Source(self):
+        """ip 10.10.10.1或者网段10.10.10.0/24，最小长度4字节，最大长度40字节。
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Remark(self):
+        """备注信息，最小长度0字符，最大长度40字符。
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._Source = params.get("Source")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAccessWhiteListRuleResponse(AbstractModel):
+    """CreateAccessWhiteListRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 新建成功后返回的记录ID
+        :type Id: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        """新建成功后返回的记录ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateAclRequest(AbstractModel):
@@ -4299,6 +4474,70 @@ class CreateUserResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteAccessWhiteListRulesRequest(AbstractModel):
+    """DeleteAccessWhiteListRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IdSet: 待删除的ID集合
+        :type IdSet: list of int non-negative
+        """
+        self._IdSet = None
+
+    @property
+    def IdSet(self):
+        """待删除的ID集合
+        :rtype: list of int non-negative
+        """
+        return self._IdSet
+
+    @IdSet.setter
+    def IdSet(self, IdSet):
+        self._IdSet = IdSet
+
+
+    def _deserialize(self, params):
+        self._IdSet = params.get("IdSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAccessWhiteListRulesResponse(AbstractModel):
+    """DeleteAccessWhiteListRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteAclsRequest(AbstractModel):
     """DeleteAcls请求参数结构体
 
@@ -5366,6 +5605,180 @@ class DeployResourceResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAccessWhiteListRulesRequest(AbstractModel):
+    """DescribeAccessWhiteListRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IdSet: 用户ID集合，非必需，如果使用IdSet参数则忽略Name参数
+        :type IdSet: list of int non-negative
+        :param _Name: 来源IP或网段，模糊查询，最大长度64字符
+        :type Name: str
+        :param _Offset: 分页偏移位置，默认0
+        :type Offset: int
+        :param _Limit: 每页条目数量，默认20
+        :type Limit: int
+        """
+        self._IdSet = None
+        self._Name = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def IdSet(self):
+        """用户ID集合，非必需，如果使用IdSet参数则忽略Name参数
+        :rtype: list of int non-negative
+        """
+        return self._IdSet
+
+    @IdSet.setter
+    def IdSet(self, IdSet):
+        self._IdSet = IdSet
+
+    @property
+    def Name(self):
+        """来源IP或网段，模糊查询，最大长度64字符
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Offset(self):
+        """分页偏移位置，默认0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """每页条目数量，默认20
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._IdSet = params.get("IdSet")
+        self._Name = params.get("Name")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAccessWhiteListRulesResponse(AbstractModel):
+    """DescribeAccessWhiteListRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 记录总数
+        :type TotalCount: int
+        :param _AccessWhiteListRuleSet: 访问白名单规则列表
+        :type AccessWhiteListRuleSet: list of AccessWhiteListRule
+        :param _AllowAny: 是否放开全部来源IP，如果为true，TotalCount为0，AccessWhiteListRuleSet为空
+        :type AllowAny: bool
+        :param _AllowAuto: 是否开启自动添加来源IP, 如果为true, 在开启访问白名单的情况下将自动添加来源IP
+        :type AllowAuto: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._AccessWhiteListRuleSet = None
+        self._AllowAny = None
+        self._AllowAuto = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """记录总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def AccessWhiteListRuleSet(self):
+        """访问白名单规则列表
+        :rtype: list of AccessWhiteListRule
+        """
+        return self._AccessWhiteListRuleSet
+
+    @AccessWhiteListRuleSet.setter
+    def AccessWhiteListRuleSet(self, AccessWhiteListRuleSet):
+        self._AccessWhiteListRuleSet = AccessWhiteListRuleSet
+
+    @property
+    def AllowAny(self):
+        """是否放开全部来源IP，如果为true，TotalCount为0，AccessWhiteListRuleSet为空
+        :rtype: bool
+        """
+        return self._AllowAny
+
+    @AllowAny.setter
+    def AllowAny(self, AllowAny):
+        self._AllowAny = AllowAny
+
+    @property
+    def AllowAuto(self):
+        """是否开启自动添加来源IP, 如果为true, 在开启访问白名单的情况下将自动添加来源IP
+        :rtype: bool
+        """
+        return self._AllowAuto
+
+    @AllowAuto.setter
+    def AllowAuto(self, AllowAuto):
+        self._AllowAuto = AllowAuto
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("AccessWhiteListRuleSet") is not None:
+            self._AccessWhiteListRuleSet = []
+            for item in params.get("AccessWhiteListRuleSet"):
+                obj = AccessWhiteListRule()
+                obj._deserialize(item)
+                self._AccessWhiteListRuleSet.append(obj)
+        self._AllowAny = params.get("AllowAny")
+        self._AllowAuto = params.get("AllowAuto")
         self._RequestId = params.get("RequestId")
 
 
@@ -15422,6 +15835,231 @@ class SearchSessionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class SearchTaskResultRequest(AbstractModel):
+    """SearchTaskResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 搜索区间的开始时间
+        :type StartTime: str
+        :param _EndTime: 搜索区间的结束时间
+        :type EndTime: str
+        :param _OperationId: 运维任务ID
+        :type OperationId: str
+        :param _Name: 运维任务名称
+        :type Name: str
+        :param _UserName: 用户名，长度不超过20
+        :type UserName: str
+        :param _RealName: 姓名，长度不超过20
+        :type RealName: str
+        :param _TaskType: 任务类型
+1 手工运维任务
+2 定时任务
+3 账号推送任务
+        :type TaskType: list of int non-negative
+        :param _Offset: 查询偏移
+        :type Offset: int
+        :param _Limit: 分页的页内记录数，默认为20，最大200
+        :type Limit: int
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._OperationId = None
+        self._Name = None
+        self._UserName = None
+        self._RealName = None
+        self._TaskType = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def StartTime(self):
+        """搜索区间的开始时间
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """搜索区间的结束时间
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def OperationId(self):
+        """运维任务ID
+        :rtype: str
+        """
+        return self._OperationId
+
+    @OperationId.setter
+    def OperationId(self, OperationId):
+        self._OperationId = OperationId
+
+    @property
+    def Name(self):
+        """运维任务名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def UserName(self):
+        """用户名，长度不超过20
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def RealName(self):
+        """姓名，长度不超过20
+        :rtype: str
+        """
+        return self._RealName
+
+    @RealName.setter
+    def RealName(self, RealName):
+        self._RealName = RealName
+
+    @property
+    def TaskType(self):
+        """任务类型
+1 手工运维任务
+2 定时任务
+3 账号推送任务
+        :rtype: list of int non-negative
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def Offset(self):
+        """查询偏移
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """分页的页内记录数，默认为20，最大200
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._OperationId = params.get("OperationId")
+        self._Name = params.get("Name")
+        self._UserName = params.get("UserName")
+        self._RealName = params.get("RealName")
+        self._TaskType = params.get("TaskType")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchTaskResultResponse(AbstractModel):
+    """SearchTaskResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 记录数
+        :type TotalCount: int
+        :param _TaskResult: 运维任务执行结果
+        :type TaskResult: list of TaskResult
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._TaskResult = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """记录数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TaskResult(self):
+        """运维任务执行结果
+        :rtype: list of TaskResult
+        """
+        return self._TaskResult
+
+    @TaskResult.setter
+    def TaskResult(self, TaskResult):
+        self._TaskResult = TaskResult
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("TaskResult") is not None:
+            self._TaskResult = []
+            for item in params.get("TaskResult"):
+                obj = TaskResult()
+                obj._deserialize(item)
+                self._TaskResult.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class SessionResult(AbstractModel):
     """搜索字符或图形会话时返回的SessionResul结构体
 
@@ -15799,6 +16437,162 @@ class TagFilter(AbstractModel):
     def _deserialize(self, params):
         self._TagKey = params.get("TagKey")
         self._TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskResult(AbstractModel):
+    """运维父任务执行结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 运维任务结果日志ID
+        :type Id: str
+        :param _OperationId: 运维任务ID
+        :type OperationId: str
+        :param _Name: 运维任务名称
+        :type Name: str
+        :param _FromIp: 执行任务来源IP
+        :type FromIp: str
+        :param _UserName: 运维任务所属用户
+        :type UserName: str
+        :param _RealName: 运维任务所属用户的姓名
+        :type RealName: str
+        :param _Status: 运维任务执行状态 1 - 执行中，2 - 成功，3 - 失败，4 - 部分失败
+        :type Status: int
+        :param _StartTime: 运维任务开始时间
+        :type StartTime: str
+        :param _EndTime: 运维任务结束时间
+        :type EndTime: str
+        """
+        self._Id = None
+        self._OperationId = None
+        self._Name = None
+        self._FromIp = None
+        self._UserName = None
+        self._RealName = None
+        self._Status = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def Id(self):
+        """运维任务结果日志ID
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def OperationId(self):
+        """运维任务ID
+        :rtype: str
+        """
+        return self._OperationId
+
+    @OperationId.setter
+    def OperationId(self, OperationId):
+        self._OperationId = OperationId
+
+    @property
+    def Name(self):
+        """运维任务名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def FromIp(self):
+        """执行任务来源IP
+        :rtype: str
+        """
+        return self._FromIp
+
+    @FromIp.setter
+    def FromIp(self, FromIp):
+        self._FromIp = FromIp
+
+    @property
+    def UserName(self):
+        """运维任务所属用户
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def RealName(self):
+        """运维任务所属用户的姓名
+        :rtype: str
+        """
+        return self._RealName
+
+    @RealName.setter
+    def RealName(self, RealName):
+        self._RealName = RealName
+
+    @property
+    def Status(self):
+        """运维任务执行状态 1 - 执行中，2 - 成功，3 - 失败，4 - 部分失败
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StartTime(self):
+        """运维任务开始时间
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """运维任务结束时间
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._OperationId = params.get("OperationId")
+        self._Name = params.get("Name")
+        self._FromIp = params.get("FromIp")
+        self._UserName = params.get("UserName")
+        self._RealName = params.get("RealName")
+        self._Status = params.get("Status")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

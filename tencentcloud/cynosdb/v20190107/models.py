@@ -4106,6 +4106,8 @@ class ClusterInstanceDetail(AbstractModel):
         :type InstanceStorageType: str
         :param _DbMode: 数据库类型
         :type DbMode: str
+        :param _NodeList: 节点列表
+        :type NodeList: list of str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -4124,6 +4126,7 @@ class ClusterInstanceDetail(AbstractModel):
         self._InstanceDeviceType = None
         self._InstanceStorageType = None
         self._DbMode = None
+        self._NodeList = None
 
     @property
     def InstanceId(self):
@@ -4312,6 +4315,17 @@ class ClusterInstanceDetail(AbstractModel):
     def DbMode(self, DbMode):
         self._DbMode = DbMode
 
+    @property
+    def NodeList(self):
+        """节点列表
+        :rtype: list of str
+        """
+        return self._NodeList
+
+    @NodeList.setter
+    def NodeList(self, NodeList):
+        self._NodeList = NodeList
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -4336,6 +4350,7 @@ class ClusterInstanceDetail(AbstractModel):
         self._InstanceDeviceType = params.get("InstanceDeviceType")
         self._InstanceStorageType = params.get("InstanceStorageType")
         self._DbMode = params.get("DbMode")
+        self._NodeList = params.get("NodeList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4814,6 +4829,8 @@ class CreateAuditLogFileRequest(AbstractModel):
         :type Filter: :class:`tencentcloud.cynosdb.v20190107.models.AuditLogFilter`
         :param _LogFilter: 审计日志过滤条件
         :type LogFilter: list of InstanceAuditLogFilter
+        :param _ColumnFilter: 审计日志列
+        :type ColumnFilter: list of str
         """
         self._InstanceId = None
         self._StartTime = None
@@ -4822,6 +4839,7 @@ class CreateAuditLogFileRequest(AbstractModel):
         self._OrderBy = None
         self._Filter = None
         self._LogFilter = None
+        self._ColumnFilter = None
 
     @property
     def InstanceId(self):
@@ -4903,6 +4921,17 @@ class CreateAuditLogFileRequest(AbstractModel):
     def LogFilter(self, LogFilter):
         self._LogFilter = LogFilter
 
+    @property
+    def ColumnFilter(self):
+        """审计日志列
+        :rtype: list of str
+        """
+        return self._ColumnFilter
+
+    @ColumnFilter.setter
+    def ColumnFilter(self, ColumnFilter):
+        self._ColumnFilter = ColumnFilter
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -4919,6 +4948,7 @@ class CreateAuditLogFileRequest(AbstractModel):
                 obj = InstanceAuditLogFilter()
                 obj._deserialize(item)
                 self._LogFilter.append(obj)
+        self._ColumnFilter = params.get("ColumnFilter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9213,6 +9243,10 @@ pause
         :type DeviceType: str
         :param _InstanceStorageType: 实例存储类型
         :type InstanceStorageType: str
+        :param _CynosVersionTag: 未知字段
+        :type CynosVersionTag: str
+        :param _NodeList: libradb 节点信息
+        :type NodeList: list of str
         """
         self._Uin = None
         self._AppId = None
@@ -9270,6 +9304,8 @@ pause
         self._InstanceAbility = None
         self._DeviceType = None
         self._InstanceStorageType = None
+        self._CynosVersionTag = None
+        self._NodeList = None
 
     @property
     def Uin(self):
@@ -9892,6 +9928,28 @@ pause
     def InstanceStorageType(self, InstanceStorageType):
         self._InstanceStorageType = InstanceStorageType
 
+    @property
+    def CynosVersionTag(self):
+        """未知字段
+        :rtype: str
+        """
+        return self._CynosVersionTag
+
+    @CynosVersionTag.setter
+    def CynosVersionTag(self, CynosVersionTag):
+        self._CynosVersionTag = CynosVersionTag
+
+    @property
+    def NodeList(self):
+        """libradb 节点信息
+        :rtype: list of str
+        """
+        return self._NodeList
+
+    @NodeList.setter
+    def NodeList(self, NodeList):
+        self._NodeList = NodeList
+
 
     def _deserialize(self, params):
         self._Uin = params.get("Uin")
@@ -9972,6 +10030,8 @@ pause
             self._InstanceAbility._deserialize(params.get("InstanceAbility"))
         self._DeviceType = params.get("DeviceType")
         self._InstanceStorageType = params.get("InstanceStorageType")
+        self._CynosVersionTag = params.get("CynosVersionTag")
+        self._NodeList = params.get("NodeList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

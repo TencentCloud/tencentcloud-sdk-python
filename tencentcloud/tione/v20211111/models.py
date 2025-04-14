@@ -3452,6 +3452,8 @@ class DataConfig(AbstractModel):
         :param _CBSSource: CBS配置信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type CBSSource: :class:`tencentcloud.tione.v20211111.models.CBSConfig`
+        :param _HostPathSource: 主机路径信息
+        :type HostPathSource: :class:`tencentcloud.tione.v20211111.models.HostPath`
         """
         self._MappingPath = None
         self._DataSourceUsage = None
@@ -3464,6 +3466,7 @@ class DataConfig(AbstractModel):
         self._CFSTurboSource = None
         self._LocalDiskSource = None
         self._CBSSource = None
+        self._HostPathSource = None
 
     @property
     def MappingPath(self):
@@ -3597,6 +3600,17 @@ class DataConfig(AbstractModel):
     def CBSSource(self, CBSSource):
         self._CBSSource = CBSSource
 
+    @property
+    def HostPathSource(self):
+        """主机路径信息
+        :rtype: :class:`tencentcloud.tione.v20211111.models.HostPath`
+        """
+        return self._HostPathSource
+
+    @HostPathSource.setter
+    def HostPathSource(self, HostPathSource):
+        self._HostPathSource = HostPathSource
+
 
     def _deserialize(self, params):
         self._MappingPath = params.get("MappingPath")
@@ -3626,6 +3640,9 @@ class DataConfig(AbstractModel):
         if params.get("CBSSource") is not None:
             self._CBSSource = CBSConfig()
             self._CBSSource._deserialize(params.get("CBSSource"))
+        if params.get("HostPathSource") is not None:
+            self._HostPathSource = HostPath()
+            self._HostPathSource._deserialize(params.get("HostPathSource"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9490,6 +9507,42 @@ class HorizontalPodAutoscaler(AbstractModel):
                 obj = Option()
                 obj._deserialize(item)
                 self._HpaMetrics.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HostPath(AbstractModel):
+    """主机路径挂载配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Path: 需要挂载的主机路径
+        :type Path: str
+        """
+        self._Path = None
+
+    @property
+    def Path(self):
+        """需要挂载的主机路径
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+
+    def _deserialize(self, params):
+        self._Path = params.get("Path")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

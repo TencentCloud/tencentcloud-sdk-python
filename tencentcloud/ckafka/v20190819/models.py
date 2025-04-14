@@ -7964,6 +7964,76 @@ class CtsdbParam(AbstractModel):
         
 
 
+class CvmAndIpInfo(AbstractModel):
+    """CVM和IP信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CkafkaInstanceId: ckafka集群实例Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CkafkaInstanceId: str
+        :param _InstanceId: CVM实例ID
+        :type InstanceId: str
+        :param _Ip: IP地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ip: str
+        """
+        self._CkafkaInstanceId = None
+        self._InstanceId = None
+        self._Ip = None
+
+    @property
+    def CkafkaInstanceId(self):
+        """ckafka集群实例Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CkafkaInstanceId
+
+    @CkafkaInstanceId.setter
+    def CkafkaInstanceId(self, CkafkaInstanceId):
+        self._CkafkaInstanceId = CkafkaInstanceId
+
+    @property
+    def InstanceId(self):
+        """CVM实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Ip(self):
+        """IP地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+
+    def _deserialize(self, params):
+        self._CkafkaInstanceId = params.get("CkafkaInstanceId")
+        self._InstanceId = params.get("InstanceId")
+        self._Ip = params.get("Ip")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DatahubResource(AbstractModel):
     """Datahub资源配置
 
@@ -11880,6 +11950,87 @@ class DescribeConsumerGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCvmInfoRequest(AbstractModel):
+    """DescribeCvmInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: ckafka集群实例Id
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        """ckafka集群实例Id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCvmInfoResponse(AbstractModel):
+    """DescribeCvmInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 返回结果
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.ListCvmAndIpInfoRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        """返回结果
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.ListCvmAndIpInfoRsp`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = ListCvmAndIpInfoRsp()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDatahubGroupOffsetsRequest(AbstractModel):
     """DescribeDatahubGroupOffsets请求参数结构体
 
@@ -15312,6 +15463,162 @@ class DescribeTopicSyncReplicaResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Result") is not None:
             self._Result = TopicInSyncReplicaResult()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTypeInstancesRequest(AbstractModel):
+    """DescribeTypeInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: （过滤条件）按照实例ID过滤
+        :type InstanceId: str
+        :param _SearchWord: （过滤条件）按照实例名称过滤，支持模糊查询
+        :type SearchWord: str
+        :param _Status: （过滤条件）实例的状态。0：创建中，1：运行中，2：删除中，不填默认返回全部
+        :type Status: list of int
+        :param _Offset: 偏移量，不填默认为0
+        :type Offset: int
+        :param _Limit: 返回数量，不填则默认10，最大值100
+        :type Limit: int
+        :param _TagKey: 匹配标签key值。
+        :type TagKey: str
+        """
+        self._InstanceId = None
+        self._SearchWord = None
+        self._Status = None
+        self._Offset = None
+        self._Limit = None
+        self._TagKey = None
+
+    @property
+    def InstanceId(self):
+        """（过滤条件）按照实例ID过滤
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def SearchWord(self):
+        """（过滤条件）按照实例名称过滤，支持模糊查询
+        :rtype: str
+        """
+        return self._SearchWord
+
+    @SearchWord.setter
+    def SearchWord(self, SearchWord):
+        self._SearchWord = SearchWord
+
+    @property
+    def Status(self):
+        """（过滤条件）实例的状态。0：创建中，1：运行中，2：删除中，不填默认返回全部
+        :rtype: list of int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Offset(self):
+        """偏移量，不填默认为0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """返回数量，不填则默认10，最大值100
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def TagKey(self):
+        """匹配标签key值。
+        :rtype: str
+        """
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._SearchWord = params.get("SearchWord")
+        self._Status = params.get("Status")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._TagKey = params.get("TagKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTypeInstancesResponse(AbstractModel):
+    """DescribeTypeInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 返回的结果
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.InstanceResponse`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        """返回的结果
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.InstanceResponse`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = InstanceResponse()
             self._Result._deserialize(params.get("Result"))
         self._RequestId = params.get("RequestId")
 
@@ -22106,6 +22413,66 @@ class KafkaParam(AbstractModel):
         self._ConnectorSyncType = params.get("ConnectorSyncType")
         self._KeepPartition = params.get("KeepPartition")
         self._TopicRegularExpression = params.get("TopicRegularExpression")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListCvmAndIpInfoRsp(AbstractModel):
+    """CVM和IP 信息列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CvmList: cvm和IP 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CvmList: list of CvmAndIpInfo
+        :param _TotalCount: 实例数据量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        """
+        self._CvmList = None
+        self._TotalCount = None
+
+    @property
+    def CvmList(self):
+        """cvm和IP 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CvmAndIpInfo
+        """
+        return self._CvmList
+
+    @CvmList.setter
+    def CvmList(self, CvmList):
+        self._CvmList = CvmList
+
+    @property
+    def TotalCount(self):
+        """实例数据量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+
+    def _deserialize(self, params):
+        if params.get("CvmList") is not None:
+            self._CvmList = []
+            for item in params.get("CvmList"):
+                obj = CvmAndIpInfo()
+                obj._deserialize(item)
+                self._CvmList.append(obj)
+        self._TotalCount = params.get("TotalCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

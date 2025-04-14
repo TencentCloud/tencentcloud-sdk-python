@@ -164,6 +164,29 @@ class BhClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAccessWhiteListRule(self, request):
+        """添加访问白名单规则
+
+        :param request: Request instance for CreateAccessWhiteListRule.
+        :type request: :class:`tencentcloud.bh.v20230418.models.CreateAccessWhiteListRuleRequest`
+        :rtype: :class:`tencentcloud.bh.v20230418.models.CreateAccessWhiteListRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAccessWhiteListRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAccessWhiteListRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAcl(self, request):
         """新建访问权限
 
@@ -385,6 +408,29 @@ class BhClient(AbstractClient):
             body = self.call("CreateUserGroup", params, headers=headers)
             response = json.loads(body)
             model = models.CreateUserGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteAccessWhiteListRules(self, request):
+        """删除访问白名单规则
+
+        :param request: Request instance for DeleteAccessWhiteListRules.
+        :type request: :class:`tencentcloud.bh.v20230418.models.DeleteAccessWhiteListRulesRequest`
+        :rtype: :class:`tencentcloud.bh.v20230418.models.DeleteAccessWhiteListRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAccessWhiteListRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAccessWhiteListRulesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -661,6 +707,29 @@ class BhClient(AbstractClient):
             body = self.call("DeployResource", params, headers=headers)
             response = json.loads(body)
             model = models.DeployResourceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAccessWhiteListRules(self, request):
+        """查询访问白名单规则列表
+
+        :param request: Request instance for DescribeAccessWhiteListRules.
+        :type request: :class:`tencentcloud.bh.v20230418.models.DescribeAccessWhiteListRulesRequest`
+        :rtype: :class:`tencentcloud.bh.v20230418.models.DescribeAccessWhiteListRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAccessWhiteListRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAccessWhiteListRulesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1581,6 +1650,29 @@ class BhClient(AbstractClient):
             body = self.call("SearchSessionCommand", params, headers=headers)
             response = json.loads(body)
             model = models.SearchSessionCommandResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SearchTaskResult(self, request):
+        """搜索运维任务执行结果
+
+        :param request: Request instance for SearchTaskResult.
+        :type request: :class:`tencentcloud.bh.v20230418.models.SearchTaskResultRequest`
+        :rtype: :class:`tencentcloud.bh.v20230418.models.SearchTaskResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SearchTaskResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.SearchTaskResultResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

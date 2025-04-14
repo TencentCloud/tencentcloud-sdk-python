@@ -170,6 +170,9 @@ FAILEDOPERATION_RELEASESSHPORTFAILED = 'FailedOperation.ReleaseSSHPortFailed'
 # 存储库有绑定的实例，请先删除绑定的实例。
 FAILEDOPERATION_REPOBINDBYINSTANCE = 'FailedOperation.RepoBindByInstance'
 
+# 查询第三方机房信息失败
+FAILEDOPERATION_SERVERROOMQUERYFAILED = 'FailedOperation.ServerRoomQueryFailed'
+
 # 停止实例失败。
 FAILEDOPERATION_STOPJOBINSTANCEFAILED = 'FailedOperation.StopJobInstanceFailed'
 

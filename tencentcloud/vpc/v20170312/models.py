@@ -335,13 +335,21 @@ class AddBandwidthPackageResourcesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceIds: 资源唯一ID，当前支持EIP资源和LB资源，形如'eip-xxxx', 'lb-xxxx'
+        :param _ResourceIds: 资源唯一ID，当前支持EIP资源和LB资源，形如'eip-xxxx', 'lb-xxxx'。EIP资源列表可通过[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取，LB资源列表可通过[DescribeLoadBalancers](https://cloud.tencent.com/document/api/214/30685)接口获取。
         :type ResourceIds: list of str
-        :param _BandwidthPackageId: 带宽包唯一标识ID，形如'bwp-xxxx'
+        :param _BandwidthPackageId: 带宽包唯一标识ID，形如'bwp-xxxx'，可以使用[DescribeBandwidthPackages](https://cloud.tencent.com/document/product/215/19209)接口查询BandwidthPackageId。
         :type BandwidthPackageId: str
-        :param _NetworkType: 带宽包类型，当前支持'BGP'、'HIGH_QUALITY_BGP'、'ANYCAST'、'SINGLEISP_CUCC'、'SINGLEISP_CMCC'、'SINGLEISP_CTCC'等类型。
+        :param _NetworkType: 带宽包类型，可选值：
+<li>BGP: 普通BGP共享带宽包</li>
+<li>HIGH_QUALITY_BGP: 精品BGP共享带宽包</li>
+<li>ANYCAST：公网加速带宽包</li>
+<li>SINGLEISP_CMCC: 中国移动共享带宽包</li>
+<li>SINGLEISP_CTCC: 中国电信共享带宽包</li>
+<li>SINGLEISP_CUCC: 中国联通共享带宽包</li>
         :type NetworkType: str
-        :param _ResourceType: 资源类型，包括'Address', 'LoadBalance'
+        :param _ResourceType: 资源类型，可选值：
+<li>Address：弹性公网IP</li>
+<li>LoadBalance：负载均衡</li>
         :type ResourceType: str
         :param _Protocol: 带宽包协议类型。当前支持'ipv4'和'ipv6'协议类型。
         :type Protocol: str
@@ -354,7 +362,7 @@ class AddBandwidthPackageResourcesRequest(AbstractModel):
 
     @property
     def ResourceIds(self):
-        """资源唯一ID，当前支持EIP资源和LB资源，形如'eip-xxxx', 'lb-xxxx'
+        """资源唯一ID，当前支持EIP资源和LB资源，形如'eip-xxxx', 'lb-xxxx'。EIP资源列表可通过[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取，LB资源列表可通过[DescribeLoadBalancers](https://cloud.tencent.com/document/api/214/30685)接口获取。
         :rtype: list of str
         """
         return self._ResourceIds
@@ -365,7 +373,7 @@ class AddBandwidthPackageResourcesRequest(AbstractModel):
 
     @property
     def BandwidthPackageId(self):
-        """带宽包唯一标识ID，形如'bwp-xxxx'
+        """带宽包唯一标识ID，形如'bwp-xxxx'，可以使用[DescribeBandwidthPackages](https://cloud.tencent.com/document/product/215/19209)接口查询BandwidthPackageId。
         :rtype: str
         """
         return self._BandwidthPackageId
@@ -376,7 +384,13 @@ class AddBandwidthPackageResourcesRequest(AbstractModel):
 
     @property
     def NetworkType(self):
-        """带宽包类型，当前支持'BGP'、'HIGH_QUALITY_BGP'、'ANYCAST'、'SINGLEISP_CUCC'、'SINGLEISP_CMCC'、'SINGLEISP_CTCC'等类型。
+        """带宽包类型，可选值：
+<li>BGP: 普通BGP共享带宽包</li>
+<li>HIGH_QUALITY_BGP: 精品BGP共享带宽包</li>
+<li>ANYCAST：公网加速带宽包</li>
+<li>SINGLEISP_CMCC: 中国移动共享带宽包</li>
+<li>SINGLEISP_CTCC: 中国电信共享带宽包</li>
+<li>SINGLEISP_CUCC: 中国联通共享带宽包</li>
         :rtype: str
         """
         return self._NetworkType
@@ -387,7 +401,9 @@ class AddBandwidthPackageResourcesRequest(AbstractModel):
 
     @property
     def ResourceType(self):
-        """资源类型，包括'Address', 'LoadBalance'
+        """资源类型，可选值：
+<li>Address：弹性公网IP</li>
+<li>LoadBalance：负载均衡</li>
         :rtype: str
         """
         return self._ResourceType
@@ -4590,10 +4606,21 @@ class BandwidthPackage(AbstractModel):
         r"""
         :param _BandwidthPackageId: 带宽包唯一标识Id
         :type BandwidthPackageId: str
-        :param _NetworkType: 带宽包类型，包括'BGP','SINGLEISP','ANYCAST','SINGLEISP_CMCC','SINGLEISP_CTCC','SINGLEISP_CUCC'
+        :param _NetworkType: 带宽包类型，包括：
+<li>BGP: 普通BGP共享带宽包</li>
+<li>HIGH_QUALITY_BGP: 精品BGP共享带宽包</li>
+<li>ANYCAST：公网加速带宽包</li>
+<li>SINGLEISP_CMCC: 中国移动共享带宽包</li>
+<li>SINGLEISP_CTCC: 中国电信共享带宽包</li>
+<li>SINGLEISP_CUCC: 中国联通共享带宽包</li>
         :type NetworkType: str
-        :param _ChargeType: 带宽包计费类型，包括:<li>'TOP5_POSTPAID_BY_MONTH':按月后付费TOP5计费</li><li> 'PERCENT95_POSTPAID_BY_MONTH':按月后付费月95计费</li><li>'ENHANCED95_POSTPAID_BY_MONTH':按月后付费增强型95计费</li><li>'FIXED_PREPAID_BY_MONTH':包月预付费计费</li><li>‘PEAK_BANDWIDTH_POSTPAID_BY_DAY’: 后付费日结按带宽计费</li>
-
+        :param _ChargeType: 带宽包计费类型, 包括:
+<li>ENHANCED95_POSTPAID_BY_MONTH: 后付费-增强型95计费</li>
+<li>PRIMARY_TRAFFIC_POSTPAID_BY_HOUR: 后付费-按主流量计费</li>
+<li>BANDWIDTH_POSTPAID_BY_DAY: 常规BGP-后付费-按带宽计费</li>
+<li>FIXED_PREPAID_BY_MONTH: 常规BGP-预付费</li>
+<li>PEAK_BANDWIDTH_POSTPAID_BY_DAY: 静态单线-后付费-按日结算</li>
+<li>TOP5_POSTPAID_BY_MONTH: 后付费-TOP5计费，如需使用，请提交工单申请</li>
         :type ChargeType: str
         :param _BandwidthPackageName: 带宽包名称
         :type BandwidthPackageName: str
@@ -4636,7 +4663,13 @@ class BandwidthPackage(AbstractModel):
 
     @property
     def NetworkType(self):
-        """带宽包类型，包括'BGP','SINGLEISP','ANYCAST','SINGLEISP_CMCC','SINGLEISP_CTCC','SINGLEISP_CUCC'
+        """带宽包类型，包括：
+<li>BGP: 普通BGP共享带宽包</li>
+<li>HIGH_QUALITY_BGP: 精品BGP共享带宽包</li>
+<li>ANYCAST：公网加速带宽包</li>
+<li>SINGLEISP_CMCC: 中国移动共享带宽包</li>
+<li>SINGLEISP_CTCC: 中国电信共享带宽包</li>
+<li>SINGLEISP_CUCC: 中国联通共享带宽包</li>
         :rtype: str
         """
         return self._NetworkType
@@ -4647,8 +4680,13 @@ class BandwidthPackage(AbstractModel):
 
     @property
     def ChargeType(self):
-        """带宽包计费类型，包括:<li>'TOP5_POSTPAID_BY_MONTH':按月后付费TOP5计费</li><li> 'PERCENT95_POSTPAID_BY_MONTH':按月后付费月95计费</li><li>'ENHANCED95_POSTPAID_BY_MONTH':按月后付费增强型95计费</li><li>'FIXED_PREPAID_BY_MONTH':包月预付费计费</li><li>‘PEAK_BANDWIDTH_POSTPAID_BY_DAY’: 后付费日结按带宽计费</li>
-
+        """带宽包计费类型, 包括:
+<li>ENHANCED95_POSTPAID_BY_MONTH: 后付费-增强型95计费</li>
+<li>PRIMARY_TRAFFIC_POSTPAID_BY_HOUR: 后付费-按主流量计费</li>
+<li>BANDWIDTH_POSTPAID_BY_DAY: 常规BGP-后付费-按带宽计费</li>
+<li>FIXED_PREPAID_BY_MONTH: 常规BGP-预付费</li>
+<li>PEAK_BANDWIDTH_POSTPAID_BY_DAY: 静态单线-后付费-按日结算</li>
+<li>TOP5_POSTPAID_BY_MONTH: 后付费-TOP5计费，如需使用，请提交工单申请</li>
         :rtype: str
         """
         return self._ChargeType
@@ -4808,9 +4846,21 @@ class BandwidthRange(AbstractModel):
         r"""
         :param _ResourceId: 资源ID。
         :type ResourceId: str
-        :param _BandwidthLowerLimit: 带宽下限，单位：Mbps。
+        :param _BandwidthLowerLimit: 带宽下限，单位：Mbps。计费类型以及对应的带宽下限：
+- TOP5_POSTPAID_BY_MONTH: 默认无下限
+- BANDWIDTH_POSTPAID_BY_DAY: 50
+- FIXED_PREPAID_BY_MONTH: 100
+- ENHANCED95_POSTPAID_BY_MONTH: 300
+- PEAK_BANDWIDTH_POSTPAID_BY_DAY: 50
+- PRIMARY_TRAFFIC_POSTPAID_BY_HOUR: 50
         :type BandwidthLowerLimit: int
-        :param _BandwidthUpperLimit: 带宽上限，单位：Mbps。
+        :param _BandwidthUpperLimit: 带宽上限，单位：Mbps。计费类型以及对应的带宽上限：
+- TOP5_POSTPAID_BY_MONTH: 默认无上限
+- BANDWIDTH_POSTPAID_BY_DAY: 300
+- FIXED_PREPAID_BY_MONTH: 5000
+- ENHANCED95_POSTPAID_BY_MONTH: 5000
+- PEAK_BANDWIDTH_POSTPAID_BY_DAY: 300
+- PRIMARY_TRAFFIC_POSTPAID_BY_HOUR: 2000
         :type BandwidthUpperLimit: int
         """
         self._ResourceId = None
@@ -4830,7 +4880,13 @@ class BandwidthRange(AbstractModel):
 
     @property
     def BandwidthLowerLimit(self):
-        """带宽下限，单位：Mbps。
+        """带宽下限，单位：Mbps。计费类型以及对应的带宽下限：
+- TOP5_POSTPAID_BY_MONTH: 默认无下限
+- BANDWIDTH_POSTPAID_BY_DAY: 50
+- FIXED_PREPAID_BY_MONTH: 100
+- ENHANCED95_POSTPAID_BY_MONTH: 300
+- PEAK_BANDWIDTH_POSTPAID_BY_DAY: 50
+- PRIMARY_TRAFFIC_POSTPAID_BY_HOUR: 50
         :rtype: int
         """
         return self._BandwidthLowerLimit
@@ -4841,7 +4897,13 @@ class BandwidthRange(AbstractModel):
 
     @property
     def BandwidthUpperLimit(self):
-        """带宽上限，单位：Mbps。
+        """带宽上限，单位：Mbps。计费类型以及对应的带宽上限：
+- TOP5_POSTPAID_BY_MONTH: 默认无上限
+- BANDWIDTH_POSTPAID_BY_DAY: 300
+- FIXED_PREPAID_BY_MONTH: 5000
+- ENHANCED95_POSTPAID_BY_MONTH: 5000
+- PEAK_BANDWIDTH_POSTPAID_BY_DAY: 300
+- PRIMARY_TRAFFIC_POSTPAID_BY_HOUR: 2000
         :rtype: int
         """
         return self._BandwidthUpperLimit
@@ -9288,29 +9350,30 @@ class CreateBandwidthPackageRequest(AbstractModel):
 <li>SINGLEISP_CMCC: 中国移动共享带宽包</li>
 <li>SINGLEISP_CTCC: 中国电信共享带宽包</li>
 <li>SINGLEISP_CUCC: 中国联通共享带宽包</li>
+注意：仅部分地域支持三网带宽包和精品BGP带宽包。
         :type NetworkType: str
         :param _ChargeType: 带宽包计费类型, 默认为: ENHANCED95_POSTPAID_BY_MONTH, 可选值:
-<li>TOP5_POSTPAID_BY_MONTH: 按月后付费TOP5计费</li>
-<li>PERCENT95_POSTPAID_BY_MONTH: 按月后付费月95计费</li>
-<li>FIXED_PREPAID_BY_MONTH: 包月预付费计费</li>
-<li>ENHANCED95_POSTPAID_BY_MONTH: 按月后付费增强型95计费</li>
-<li>PEAK_BANDWIDTH_POSTPAID_BY_DAY: 后付费日结按带宽计费</li>
-<li>PRIMARY_TRAFFIC_POSTPAID_BY_HOUR: 后付费按主流量计费</li>
+<li>ENHANCED95_POSTPAID_BY_MONTH: 后付费-增强型95计费</li>
+<li>PRIMARY_TRAFFIC_POSTPAID_BY_HOUR: 后付费-按主流量计费</li>
+<li>BANDWIDTH_POSTPAID_BY_DAY: 常规BGP-后付费-按带宽计费</li>
+<li>FIXED_PREPAID_BY_MONTH: 常规BGP-预付费</li>
+<li>PEAK_BANDWIDTH_POSTPAID_BY_DAY: 静态单线-后付费-按日结算</li>
+<li>TOP5_POSTPAID_BY_MONTH: 后付费-TOP5计费，如需使用，请提交工单申请</li>
 
         :type ChargeType: str
-        :param _BandwidthPackageName: 带宽包名称。
+        :param _BandwidthPackageName: 带宽包名称。名称长度小于60，只包含数字、字母和下划线。
         :type BandwidthPackageName: str
-        :param _BandwidthPackageCount: 带宽包数量(传统账户类型只能填1), 标准账户类型取值范围为1~20。
+        :param _BandwidthPackageCount: 带宽包数量(传统账户类型只能填1), 标准账户类型取值范围为1~20。默认为1。
         :type BandwidthPackageCount: int
-        :param _InternetMaxBandwidth: 带宽包限速大小。单位：Mbps，-1表示不限速。不同计费类型的带宽包对应不同的带宽上下限。
+        :param _InternetMaxBandwidth: 带宽包限速大小。单位：Mbps，-1表示不限速。带宽包计费类型对应的带宽上下限可参考：[BandwidthRange](https://cloud.tencent.com/document/api/215/15824#BandwidthRange)
         :type InternetMaxBandwidth: int
         :param _Tags: 需要关联的标签列表。
         :type Tags: list of Tag
         :param _Protocol: 带宽包协议类型。当前支持'ipv4'和'ipv6'协议带宽包，默认值是'ipv4'。
         :type Protocol: str
-        :param _TimeSpan: 预付费包月带宽包的购买时长，单位: 月，取值范围: 1~60。
+        :param _TimeSpan: 预付费包月带宽包的购买时长，单位: 月，取值范围: 1~60。预付费计费类型必传。
         :type TimeSpan: int
-        :param _Egress: 网络出口，默认值：center_egress1
+        :param _Egress: 网络出口，默认值：center_egress1，其它可选值：center_egress2、center_egress3。
         :type Egress: str
         """
         self._NetworkType = None
@@ -9331,6 +9394,7 @@ class CreateBandwidthPackageRequest(AbstractModel):
 <li>SINGLEISP_CMCC: 中国移动共享带宽包</li>
 <li>SINGLEISP_CTCC: 中国电信共享带宽包</li>
 <li>SINGLEISP_CUCC: 中国联通共享带宽包</li>
+注意：仅部分地域支持三网带宽包和精品BGP带宽包。
         :rtype: str
         """
         return self._NetworkType
@@ -9342,12 +9406,12 @@ class CreateBandwidthPackageRequest(AbstractModel):
     @property
     def ChargeType(self):
         """带宽包计费类型, 默认为: ENHANCED95_POSTPAID_BY_MONTH, 可选值:
-<li>TOP5_POSTPAID_BY_MONTH: 按月后付费TOP5计费</li>
-<li>PERCENT95_POSTPAID_BY_MONTH: 按月后付费月95计费</li>
-<li>FIXED_PREPAID_BY_MONTH: 包月预付费计费</li>
-<li>ENHANCED95_POSTPAID_BY_MONTH: 按月后付费增强型95计费</li>
-<li>PEAK_BANDWIDTH_POSTPAID_BY_DAY: 后付费日结按带宽计费</li>
-<li>PRIMARY_TRAFFIC_POSTPAID_BY_HOUR: 后付费按主流量计费</li>
+<li>ENHANCED95_POSTPAID_BY_MONTH: 后付费-增强型95计费</li>
+<li>PRIMARY_TRAFFIC_POSTPAID_BY_HOUR: 后付费-按主流量计费</li>
+<li>BANDWIDTH_POSTPAID_BY_DAY: 常规BGP-后付费-按带宽计费</li>
+<li>FIXED_PREPAID_BY_MONTH: 常规BGP-预付费</li>
+<li>PEAK_BANDWIDTH_POSTPAID_BY_DAY: 静态单线-后付费-按日结算</li>
+<li>TOP5_POSTPAID_BY_MONTH: 后付费-TOP5计费，如需使用，请提交工单申请</li>
 
         :rtype: str
         """
@@ -9359,7 +9423,7 @@ class CreateBandwidthPackageRequest(AbstractModel):
 
     @property
     def BandwidthPackageName(self):
-        """带宽包名称。
+        """带宽包名称。名称长度小于60，只包含数字、字母和下划线。
         :rtype: str
         """
         return self._BandwidthPackageName
@@ -9370,7 +9434,7 @@ class CreateBandwidthPackageRequest(AbstractModel):
 
     @property
     def BandwidthPackageCount(self):
-        """带宽包数量(传统账户类型只能填1), 标准账户类型取值范围为1~20。
+        """带宽包数量(传统账户类型只能填1), 标准账户类型取值范围为1~20。默认为1。
         :rtype: int
         """
         return self._BandwidthPackageCount
@@ -9381,7 +9445,7 @@ class CreateBandwidthPackageRequest(AbstractModel):
 
     @property
     def InternetMaxBandwidth(self):
-        """带宽包限速大小。单位：Mbps，-1表示不限速。不同计费类型的带宽包对应不同的带宽上下限。
+        """带宽包限速大小。单位：Mbps，-1表示不限速。带宽包计费类型对应的带宽上下限可参考：[BandwidthRange](https://cloud.tencent.com/document/api/215/15824#BandwidthRange)
         :rtype: int
         """
         return self._InternetMaxBandwidth
@@ -9414,7 +9478,7 @@ class CreateBandwidthPackageRequest(AbstractModel):
 
     @property
     def TimeSpan(self):
-        """预付费包月带宽包的购买时长，单位: 月，取值范围: 1~60。
+        """预付费包月带宽包的购买时长，单位: 月，取值范围: 1~60。预付费计费类型必传。
         :rtype: int
         """
         return self._TimeSpan
@@ -9425,7 +9489,7 @@ class CreateBandwidthPackageRequest(AbstractModel):
 
     @property
     def Egress(self):
-        """网络出口，默认值：center_egress1
+        """网络出口，默认值：center_egress1，其它可选值：center_egress2、center_egress3。
         :rtype: str
         """
         return self._Egress
@@ -18279,14 +18343,14 @@ class DeleteBandwidthPackageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BandwidthPackageId: 待删除带宽包唯一ID
+        :param _BandwidthPackageId: 待删除带宽包唯一ID，可以使用[DescribeBandwidthPackages](https://cloud.tencent.com/document/product/215/19209)接口查询BandwidthPackageId。
         :type BandwidthPackageId: str
         """
         self._BandwidthPackageId = None
 
     @property
     def BandwidthPackageId(self):
-        """待删除带宽包唯一ID
+        """待删除带宽包唯一ID，可以使用[DescribeBandwidthPackages](https://cloud.tencent.com/document/product/215/19209)接口查询BandwidthPackageId。
         :rtype: str
         """
         return self._BandwidthPackageId
@@ -22839,14 +22903,14 @@ class DescribeBandwidthPackageBandwidthRangeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BandwidthPackageIds: 带宽包资源ID列表，单次查询上限20。
+        :param _BandwidthPackageIds: 带宽包资源ID列表，单次查询上限20。可以使用[DescribeBandwidthPackages](https://cloud.tencent.com/document/product/215/19209)接口查询BandwidthPackageId。
         :type BandwidthPackageIds: list of str
         """
         self._BandwidthPackageIds = None
 
     @property
     def BandwidthPackageIds(self):
-        """带宽包资源ID列表，单次查询上限20。
+        """带宽包资源ID列表，单次查询上限20。可以使用[DescribeBandwidthPackages](https://cloud.tencent.com/document/product/215/19209)接口查询BandwidthPackageId。
         :rtype: list of str
         """
         return self._BandwidthPackageIds
@@ -22875,7 +22939,7 @@ class DescribeBandwidthPackageBandwidthRangeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BandwidthRangeSet: 带宽包带宽上下限详细信息。
+        :param _BandwidthRangeSet: 带宽包带宽上下限详细信息。ResourceId：带宽包id、BandwidthLowerLimit：带宽下限、BandwidthUpperLimit：带宽上限。
         :type BandwidthRangeSet: list of BandwidthRange
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -22885,7 +22949,7 @@ class DescribeBandwidthPackageBandwidthRangeResponse(AbstractModel):
 
     @property
     def BandwidthRangeSet(self):
-        """带宽包带宽上下限详细信息。
+        """带宽包带宽上下限详细信息。ResourceId：带宽包id、BandwidthLowerLimit：带宽下限、BandwidthUpperLimit：带宽上限。
         :rtype: list of BandwidthRange
         """
         return self._BandwidthRangeSet
@@ -22923,14 +22987,14 @@ class DescribeBandwidthPackageBillUsageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BandwidthPackageId: 后付费共享带宽包的唯一ID
+        :param _BandwidthPackageId: 后付费共享带宽包的唯一ID，可以使用[DescribeBandwidthPackages](https://cloud.tencent.com/document/api/215/19209)接口获取BandwidthPackageId。
         :type BandwidthPackageId: str
         """
         self._BandwidthPackageId = None
 
     @property
     def BandwidthPackageId(self):
-        """后付费共享带宽包的唯一ID
+        """后付费共享带宽包的唯一ID，可以使用[DescribeBandwidthPackages](https://cloud.tencent.com/document/api/215/19209)接口获取BandwidthPackageId。
         :rtype: str
         """
         return self._BandwidthPackageId
@@ -23063,7 +23127,7 @@ class DescribeBandwidthPackageResourcesRequest(AbstractModel):
         r"""
         :param _BandwidthPackageId: 标识 共享带宽包 的唯一 ID 列表。共享带宽包 唯一 ID 形如：`bwp-11112222`。
         :type BandwidthPackageId: str
-        :param _Filters: 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`AddressIds`和`Filters`。详细的过滤条件如下：
+        :param _Filters: 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。详细的过滤条件如下：
 <li> resource-id - String - 是否必填：否 - （过滤条件）按照 共享带宽包内资源 的唯一 ID 过滤。共享带宽包内资源 唯一 ID 形如：eip-11112222。</li>
 <li> resource-type - String - 是否必填：否 - （过滤条件）按照 共享带宽包内资源 类型过滤，目前仅支持 弹性IP 和 负载均衡 两种类型，可选值为 Address 和 LoadBalance。</li>
         :type Filters: list of Filter
@@ -23090,7 +23154,7 @@ class DescribeBandwidthPackageResourcesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`AddressIds`和`Filters`。详细的过滤条件如下：
+        """每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。详细的过滤条件如下：
 <li> resource-id - String - 是否必填：否 - （过滤条件）按照 共享带宽包内资源 的唯一 ID 过滤。共享带宽包内资源 唯一 ID 形如：eip-11112222。</li>
 <li> resource-type - String - 是否必填：否 - （过滤条件）按照 共享带宽包内资源 类型过滤，目前仅支持 弹性IP 和 负载均衡 两种类型，可选值为 Address 和 LoadBalance。</li>
         :rtype: list of Filter
@@ -23219,8 +23283,8 @@ class DescribeBandwidthPackagesRequest(AbstractModel):
         :param _Filters: 每次请求的`Filters`的上限为10。参数不支持同时指定`BandwidthPackageIds`和`Filters`。详细的过滤条件如下：
 <li> bandwidth-package-id - String - 是否必填：否 - （过滤条件）按照带宽包的唯一标识ID过滤。</li>
 <li> bandwidth-package-name - String - 是否必填：否 - （过滤条件）按照 带宽包名称过滤。不支持模糊过滤。</li>
-<li> network-type - String - 是否必填：否 - （过滤条件）按照带宽包的类型过滤。类型包括'HIGH_QUALITY_BGP','BGP','SINGLEISP'和'ANYCAST'。</li>
-<li> charge-type - String - 是否必填：否 - （过滤条件）按照带宽包的计费类型过滤。计费类型包括: <li>'TOP5_POSTPAID_BY_MONTH':按月后付费TOP5计费</li><li> 'PERCENT95_POSTPAID_BY_MONTH':按月后付费月95计费</li><li>'ENHANCED95_POSTPAID_BY_MONTH':按月后付费增强型95计费</li><li>'FIXED_PREPAID_BY_MONTH':包月预付费计费</li><li>‘PEAK_BANDWIDTH_POSTPAID_BY_DAY’: 后付费日结按带宽计费</li>
+<li> network-type - String - 是否必填：否 - （过滤条件）按照带宽包的类型过滤。网络类型可参考[BandwidthPackage](https://cloud.tencent.com/document/api/215/15824#BandwidthPackage)。</li>
+<li> charge-type - String - 是否必填：否 - （过滤条件）按照带宽包的计费类型过滤。计费类型可参考[BandwidthPackage](https://cloud.tencent.com/document/api/215/15824#BandwidthPackage)。</li>
 <li> resource.resource-type - String - 是否必填：否 - （过滤条件）按照带宽包资源类型过滤。资源类型包括'Address'和'LoadBalance'</li>
 <li> resource.resource-id - String - 是否必填：否 - （过滤条件）按照带宽包资源Id过滤。资源Id形如'eip-xxxx','lb-xxxx'</li>
 <li> resource.address-ip - String - 是否必填：否 - （过滤条件）按照带宽包资源Ip过滤。</li>
@@ -23254,8 +23318,8 @@ class DescribeBandwidthPackagesRequest(AbstractModel):
         """每次请求的`Filters`的上限为10。参数不支持同时指定`BandwidthPackageIds`和`Filters`。详细的过滤条件如下：
 <li> bandwidth-package-id - String - 是否必填：否 - （过滤条件）按照带宽包的唯一标识ID过滤。</li>
 <li> bandwidth-package-name - String - 是否必填：否 - （过滤条件）按照 带宽包名称过滤。不支持模糊过滤。</li>
-<li> network-type - String - 是否必填：否 - （过滤条件）按照带宽包的类型过滤。类型包括'HIGH_QUALITY_BGP','BGP','SINGLEISP'和'ANYCAST'。</li>
-<li> charge-type - String - 是否必填：否 - （过滤条件）按照带宽包的计费类型过滤。计费类型包括: <li>'TOP5_POSTPAID_BY_MONTH':按月后付费TOP5计费</li><li> 'PERCENT95_POSTPAID_BY_MONTH':按月后付费月95计费</li><li>'ENHANCED95_POSTPAID_BY_MONTH':按月后付费增强型95计费</li><li>'FIXED_PREPAID_BY_MONTH':包月预付费计费</li><li>‘PEAK_BANDWIDTH_POSTPAID_BY_DAY’: 后付费日结按带宽计费</li>
+<li> network-type - String - 是否必填：否 - （过滤条件）按照带宽包的类型过滤。网络类型可参考[BandwidthPackage](https://cloud.tencent.com/document/api/215/15824#BandwidthPackage)。</li>
+<li> charge-type - String - 是否必填：否 - （过滤条件）按照带宽包的计费类型过滤。计费类型可参考[BandwidthPackage](https://cloud.tencent.com/document/api/215/15824#BandwidthPackage)。</li>
 <li> resource.resource-type - String - 是否必填：否 - （过滤条件）按照带宽包资源类型过滤。资源类型包括'Address'和'LoadBalance'</li>
 <li> resource.resource-id - String - 是否必填：否 - （过滤条件）按照带宽包资源Id过滤。资源Id形如'eip-xxxx','lb-xxxx'</li>
 <li> resource.address-ip - String - 是否必填：否 - （过滤条件）按照带宽包资源Ip过滤。</li>
@@ -46287,6 +46351,100 @@ class MemberInfo(AbstractModel):
         
 
 
+class MigrateBandwidthPackageResourcesRequest(AbstractModel):
+    """MigrateBandwidthPackageResources请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BandwidthPackageId: 当前资源所在的共享带宽包ID
+        :type BandwidthPackageId: str
+        :param _TargetBandwidthPackageId: 要迁移的目标共享带宽包的ID
+        :type TargetBandwidthPackageId: str
+        :param _ResourceIds: 要迁移的资源的ID列表
+        :type ResourceIds: list of str
+        """
+        self._BandwidthPackageId = None
+        self._TargetBandwidthPackageId = None
+        self._ResourceIds = None
+
+    @property
+    def BandwidthPackageId(self):
+        """当前资源所在的共享带宽包ID
+        :rtype: str
+        """
+        return self._BandwidthPackageId
+
+    @BandwidthPackageId.setter
+    def BandwidthPackageId(self, BandwidthPackageId):
+        self._BandwidthPackageId = BandwidthPackageId
+
+    @property
+    def TargetBandwidthPackageId(self):
+        """要迁移的目标共享带宽包的ID
+        :rtype: str
+        """
+        return self._TargetBandwidthPackageId
+
+    @TargetBandwidthPackageId.setter
+    def TargetBandwidthPackageId(self, TargetBandwidthPackageId):
+        self._TargetBandwidthPackageId = TargetBandwidthPackageId
+
+    @property
+    def ResourceIds(self):
+        """要迁移的资源的ID列表
+        :rtype: list of str
+        """
+        return self._ResourceIds
+
+    @ResourceIds.setter
+    def ResourceIds(self, ResourceIds):
+        self._ResourceIds = ResourceIds
+
+
+    def _deserialize(self, params):
+        self._BandwidthPackageId = params.get("BandwidthPackageId")
+        self._TargetBandwidthPackageId = params.get("TargetBandwidthPackageId")
+        self._ResourceIds = params.get("ResourceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MigrateBandwidthPackageResourcesResponse(AbstractModel):
+    """MigrateBandwidthPackageResources返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class MigrateNetworkInterfaceRequest(AbstractModel):
     """MigrateNetworkInterface请求参数结构体
 
@@ -47237,8 +47395,13 @@ class ModifyBandwidthPackageAttributeRequest(AbstractModel):
         :type BandwidthPackageId: str
         :param _BandwidthPackageName: 带宽包名称
         :type BandwidthPackageName: str
-        :param _ChargeType: 带宽包计费模式，示例 ：
-'TOP5_POSTPAID_BY_MONTH'（后付费-TOP5计费）
+        :param _ChargeType: 带宽包计费模式，可选值:
+<li>ENHANCED95_POSTPAID_BY_MONTH: 后付费-增强型95计费</li>
+<li>PRIMARY_TRAFFIC_POSTPAID_BY_HOUR: 后付费-按主流量计费</li>
+<li>BANDWIDTH_POSTPAID_BY_DAY: 常规BGP-后付费-按带宽计费</li>
+<li>FIXED_PREPAID_BY_MONTH: 常规BGP-预付费</li>
+<li>PEAK_BANDWIDTH_POSTPAID_BY_DAY: 静态单线-后付费-按日结算</li>
+<li>TOP5_POSTPAID_BY_MONTH: 后付费-TOP5计费，如需使用，请提交工单申请</li>
         :type ChargeType: str
         """
         self._BandwidthPackageId = None
@@ -47269,8 +47432,13 @@ class ModifyBandwidthPackageAttributeRequest(AbstractModel):
 
     @property
     def ChargeType(self):
-        """带宽包计费模式，示例 ：
-'TOP5_POSTPAID_BY_MONTH'（后付费-TOP5计费）
+        """带宽包计费模式，可选值:
+<li>ENHANCED95_POSTPAID_BY_MONTH: 后付费-增强型95计费</li>
+<li>PRIMARY_TRAFFIC_POSTPAID_BY_HOUR: 后付费-按主流量计费</li>
+<li>BANDWIDTH_POSTPAID_BY_DAY: 常规BGP-后付费-按带宽计费</li>
+<li>FIXED_PREPAID_BY_MONTH: 常规BGP-预付费</li>
+<li>PEAK_BANDWIDTH_POSTPAID_BY_DAY: 静态单线-后付费-按日结算</li>
+<li>TOP5_POSTPAID_BY_MONTH: 后付费-TOP5计费，如需使用，请提交工单申请</li>
         :rtype: str
         """
         return self._ChargeType
@@ -47329,9 +47497,9 @@ class ModifyBandwidthPackageBandwidthRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InternetMaxBandwidth: 带宽包限速大小。单位：Mbps。
+        :param _InternetMaxBandwidth: 带宽包限速大小。单位：Mbps。带宽包计费类型对应的带宽上下限可参考：[BandwidthRange](https://cloud.tencent.com/document/api/215/15824#BandwidthRange) 
         :type InternetMaxBandwidth: int
-        :param _BandwidthPackageId: 共享带宽包ID
+        :param _BandwidthPackageId: 共享带宽包ID，可以使用[DescribeBandwidthPackages](https://cloud.tencent.com/document/product/215/19209)接口查询BandwidthPackageId。
         :type BandwidthPackageId: str
         """
         self._InternetMaxBandwidth = None
@@ -47339,7 +47507,7 @@ class ModifyBandwidthPackageBandwidthRequest(AbstractModel):
 
     @property
     def InternetMaxBandwidth(self):
-        """带宽包限速大小。单位：Mbps。
+        """带宽包限速大小。单位：Mbps。带宽包计费类型对应的带宽上下限可参考：[BandwidthRange](https://cloud.tencent.com/document/api/215/15824#BandwidthRange) 
         :rtype: int
         """
         return self._InternetMaxBandwidth
@@ -47350,7 +47518,7 @@ class ModifyBandwidthPackageBandwidthRequest(AbstractModel):
 
     @property
     def BandwidthPackageId(self):
-        """共享带宽包ID
+        """共享带宽包ID，可以使用[DescribeBandwidthPackages](https://cloud.tencent.com/document/product/215/19209)接口查询BandwidthPackageId。
         :rtype: str
         """
         return self._BandwidthPackageId
@@ -57090,6 +57258,11 @@ class Quota(AbstractModel):
 - `TOTAL_EIP6_QUOTA`：用户当前地域下，传统弹性公网IPv6的配额数；
 - `BGP_EIPv6_QUOTA`：用户当前地域下，可申请的 BGP 弹性公网IPv6 的配额数；
 - `SINGLEISP_EIPv6_QUOTA`：用户当前地域下，可申请的静态单线弹性公网IPv6 的配额数；
+- `TOTAL_BANDWIDTHPKG_QUOTA`：用户当前地域下，可申请的带宽包总配额；
+- `PRIMARY_TRAFFIC_SINGLE_BWP_QUOTA`：用户当前地域下，可申请的静态单线主流量带宽包配额数；
+- `PRIMARY_TRAFFIC_BGP_BWP_QUOTA`：用户当前地域下，可申请的BGP主流量带宽包配额数；
+- `BandwidthGuaranteedRatio`：用户当前地域下，保底带宽包默认保底比例；
+- `TezBandwidthGuaranteedRatio`：用户当前地域下，边缘可用区保底带宽包默认保底比例；
         :type QuotaId: str
         :param _QuotaCurrent: 当前数量
         :type QuotaCurrent: int
@@ -57112,6 +57285,11 @@ class Quota(AbstractModel):
 - `TOTAL_EIP6_QUOTA`：用户当前地域下，传统弹性公网IPv6的配额数；
 - `BGP_EIPv6_QUOTA`：用户当前地域下，可申请的 BGP 弹性公网IPv6 的配额数；
 - `SINGLEISP_EIPv6_QUOTA`：用户当前地域下，可申请的静态单线弹性公网IPv6 的配额数；
+- `TOTAL_BANDWIDTHPKG_QUOTA`：用户当前地域下，可申请的带宽包总配额；
+- `PRIMARY_TRAFFIC_SINGLE_BWP_QUOTA`：用户当前地域下，可申请的静态单线主流量带宽包配额数；
+- `PRIMARY_TRAFFIC_BGP_BWP_QUOTA`：用户当前地域下，可申请的BGP主流量带宽包配额数；
+- `BandwidthGuaranteedRatio`：用户当前地域下，保底带宽包默认保底比例；
+- `TezBandwidthGuaranteedRatio`：用户当前地域下，边缘可用区保底带宽包默认保底比例；
         :rtype: str
         """
         return self._QuotaId
@@ -57726,20 +57904,33 @@ class RemoveBandwidthPackageResourcesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BandwidthPackageId: 带宽包唯一标识ID，形如'bwp-xxxx'
-        :type BandwidthPackageId: str
-        :param _ResourceType: 资源类型，包括‘Address’, ‘LoadBalance’
-        :type ResourceType: str
-        :param _ResourceIds: 资源ID，可支持资源形如'eip-xxxx', 'lb-xxxx'
+        :param _ResourceIds: 资源唯一ID，当前支持EIP资源和LB资源，形如'eip-xxxx', 'lb-xxxx'。EIP资源列表可通过[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取，LB资源列表可通过[DescribeLoadBalancers](https://cloud.tencent.com/document/api/214/30685)接口获取。
         :type ResourceIds: list of str
+        :param _BandwidthPackageId: 带宽包唯一标识ID，形如'bwp-xxxx'，可以使用[DescribeBandwidthPackages](https://cloud.tencent.com/document/product/215/19209)接口查询BandwidthPackageId。
+        :type BandwidthPackageId: str
+        :param _ResourceType: 资源类型，可选值：
+<li>Address：弹性公网IP</li>
+<li>LoadBalance：负载均衡</li>
+        :type ResourceType: str
         """
+        self._ResourceIds = None
         self._BandwidthPackageId = None
         self._ResourceType = None
-        self._ResourceIds = None
+
+    @property
+    def ResourceIds(self):
+        """资源唯一ID，当前支持EIP资源和LB资源，形如'eip-xxxx', 'lb-xxxx'。EIP资源列表可通过[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取，LB资源列表可通过[DescribeLoadBalancers](https://cloud.tencent.com/document/api/214/30685)接口获取。
+        :rtype: list of str
+        """
+        return self._ResourceIds
+
+    @ResourceIds.setter
+    def ResourceIds(self, ResourceIds):
+        self._ResourceIds = ResourceIds
 
     @property
     def BandwidthPackageId(self):
-        """带宽包唯一标识ID，形如'bwp-xxxx'
+        """带宽包唯一标识ID，形如'bwp-xxxx'，可以使用[DescribeBandwidthPackages](https://cloud.tencent.com/document/product/215/19209)接口查询BandwidthPackageId。
         :rtype: str
         """
         return self._BandwidthPackageId
@@ -57750,7 +57941,9 @@ class RemoveBandwidthPackageResourcesRequest(AbstractModel):
 
     @property
     def ResourceType(self):
-        """资源类型，包括‘Address’, ‘LoadBalance’
+        """资源类型，可选值：
+<li>Address：弹性公网IP</li>
+<li>LoadBalance：负载均衡</li>
         :rtype: str
         """
         return self._ResourceType
@@ -57759,22 +57952,11 @@ class RemoveBandwidthPackageResourcesRequest(AbstractModel):
     def ResourceType(self, ResourceType):
         self._ResourceType = ResourceType
 
-    @property
-    def ResourceIds(self):
-        """资源ID，可支持资源形如'eip-xxxx', 'lb-xxxx'
-        :rtype: list of str
-        """
-        return self._ResourceIds
-
-    @ResourceIds.setter
-    def ResourceIds(self, ResourceIds):
-        self._ResourceIds = ResourceIds
-
 
     def _deserialize(self, params):
+        self._ResourceIds = params.get("ResourceIds")
         self._BandwidthPackageId = params.get("BandwidthPackageId")
         self._ResourceType = params.get("ResourceType")
-        self._ResourceIds = params.get("ResourceIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -1015,6 +1015,29 @@ class CkafkaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCvmInfo(self, request):
+        """本接口用于获取实例对应后端CVM信息，包括cvmId和ip等。用于专业版，标准版返回数据为空
+
+        :param request: Request instance for DescribeCvmInfo.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeCvmInfoRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DescribeCvmInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCvmInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCvmInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDatahubGroupOffsets(self, request):
         """获取Datahub消费分组offset
 
@@ -1513,6 +1536,29 @@ class CkafkaClient(AbstractClient):
             body = self.call("DescribeTopicSyncReplica", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeTopicSyncReplicaResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeTypeInstances(self, request):
+        """本接口（DescribeTypeInstances）用于在用户账户下获取指定类型消息队列 CKafka 实例列表
+
+        :param request: Request instance for DescribeTypeInstances.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeTypeInstancesRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DescribeTypeInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTypeInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTypeInstancesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -147,7 +147,7 @@ class CreateGatewayLoadBalancerRequest(AbstractModel):
         r"""
         :param _VpcId: 网关负载均衡后端目标设备所属的私有网络 ID，如vpc-azd4dt1c，可以通过 [DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)  接口获取。
         :type VpcId: str
-        :param _SubnetId: 网关负载均衡后端目标设备所属的私有网络的子网ID。
+        :param _SubnetId: 网关负载均衡后端目标设备所属的私有网络的子网ID。可通过[DescribeSubnets](https://cloud.tencent.com/document/product/215/15784)接口获取。
         :type SubnetId: str
         :param _LoadBalancerName: 网关负载均衡实例名称。可支持输入1-60个字符。不填写时默认自动生成。
         :type LoadBalancerName: str
@@ -155,7 +155,7 @@ class CreateGatewayLoadBalancerRequest(AbstractModel):
         :type Number: int
         :param _Tags: 购买网关负载均衡的同时，给负载均衡打上标签，最大支持20个标签键值对。
         :type Tags: list of TagInfo
-        :param _LBChargeType: 网关负载均衡实例计费类型，当前只支持传POSTPAID_BY_HOUR，默认是POSTPAID_BY_HOUR。
+        :param _LBChargeType: 网关负载均衡实例计费类型，当前只支持传POSTPAID_BY_HOUR（按量计费），默认是POSTPAID_BY_HOUR。
         :type LBChargeType: str
         """
         self._VpcId = None
@@ -178,7 +178,7 @@ class CreateGatewayLoadBalancerRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        """网关负载均衡后端目标设备所属的私有网络的子网ID。
+        """网关负载均衡后端目标设备所属的私有网络的子网ID。可通过[DescribeSubnets](https://cloud.tencent.com/document/product/215/15784)接口获取。
         :rtype: str
         """
         return self._SubnetId
@@ -222,7 +222,7 @@ class CreateGatewayLoadBalancerRequest(AbstractModel):
 
     @property
     def LBChargeType(self):
-        """网关负载均衡实例计费类型，当前只支持传POSTPAID_BY_HOUR，默认是POSTPAID_BY_HOUR。
+        """网关负载均衡实例计费类型，当前只支持传POSTPAID_BY_HOUR（按量计费），默认是POSTPAID_BY_HOUR。
         :rtype: str
         """
         return self._LBChargeType
@@ -327,7 +327,7 @@ class CreateTargetGroupRequest(AbstractModel):
         r"""
         :param _TargetGroupName: 目标组名称，限定60个字符。
         :type TargetGroupName: str
-        :param _VpcId: 目标组的vpcid属性，不填则使用默认vpc
+        :param _VpcId: 网关负载均衡后端目标组所属的网络 ID，如vpc-12345678，可以通过 [DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)  接口获取。 不填此参数则默认为DefaultVPC。
         :type VpcId: str
         :param _Port: 目标组的默认端口， 后续添加服务器时可使用该默认端口。Port和TargetGroupInstances.N中的port二者必填其一。仅支持6081。
         :type Port: int
@@ -370,7 +370,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """目标组的vpcid属性，不填则使用默认vpc
+        """网关负载均衡后端目标组所属的网络 ID，如vpc-12345678，可以通过 [DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)  接口获取。 不填此参数则默认为DefaultVPC。
         :rtype: str
         """
         return self._VpcId
@@ -542,14 +542,14 @@ class DeleteGatewayLoadBalancerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerIds: 要删除的网关负载均衡实例 ID数组，数组大小最大支持20。
+        :param _LoadBalancerIds: 要删除的网关负载均衡实例 ID数组，数组大小最大支持20。可通过[DescribeGatewayLoadBalancers](https://cloud.tencent.com/document/api/1782/111683)  接口获取。
         :type LoadBalancerIds: list of str
         """
         self._LoadBalancerIds = None
 
     @property
     def LoadBalancerIds(self):
-        """要删除的网关负载均衡实例 ID数组，数组大小最大支持20。
+        """要删除的网关负载均衡实例 ID数组，数组大小最大支持20。可通过[DescribeGatewayLoadBalancers](https://cloud.tencent.com/document/api/1782/111683)  接口获取。
         :rtype: list of str
         """
         return self._LoadBalancerIds
@@ -606,14 +606,14 @@ class DeleteTargetGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TargetGroupIds: 目标组ID列表。
+        :param _TargetGroupIds: 目标组ID列表。 可以通过接口[DescribeTargetGroups](https://cloud.tencent.com/document/product/214/40554)获取。
         :type TargetGroupIds: list of str
         """
         self._TargetGroupIds = None
 
     @property
     def TargetGroupIds(self):
-        """目标组ID列表。
+        """目标组ID列表。 可以通过接口[DescribeTargetGroups](https://cloud.tencent.com/document/product/214/40554)获取。
         :rtype: list of str
         """
         return self._TargetGroupIds
@@ -670,7 +670,7 @@ class DeregisterTargetGroupInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TargetGroupId: 目标组ID。
+        :param _TargetGroupId: 目标组ID。可通过[DescribeTargetGroupList](https://cloud.tencent.com/document/api/1782/111692)接口获取。
         :type TargetGroupId: str
         :param _TargetGroupInstances: 待解绑的服务器信息。
         :type TargetGroupInstances: list of TargetGroupInstance
@@ -680,7 +680,7 @@ class DeregisterTargetGroupInstancesRequest(AbstractModel):
 
     @property
     def TargetGroupId(self):
-        """目标组ID。
+        """目标组ID。可通过[DescribeTargetGroupList](https://cloud.tencent.com/document/api/1782/111692)接口获取。
         :rtype: str
         """
         return self._TargetGroupId
@@ -928,7 +928,7 @@ class DescribeTargetGroupInstanceStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TargetGroupId: 目标组唯一id
+        :param _TargetGroupId: 目标组唯一id。可通过[DescribeTargetGroupList](https://cloud.tencent.com/document/api/1782/111692)接口获取。
         :type TargetGroupId: str
         :param _TargetGroupInstanceIps: 目标组绑定的后端服务ip列表
         :type TargetGroupInstanceIps: list of str
@@ -938,7 +938,7 @@ class DescribeTargetGroupInstanceStatusRequest(AbstractModel):
 
     @property
     def TargetGroupId(self):
-        """目标组唯一id
+        """目标组唯一id。可通过[DescribeTargetGroupList](https://cloud.tencent.com/document/api/1782/111692)接口获取。
         :rtype: str
         """
         return self._TargetGroupId
@@ -1029,11 +1029,11 @@ class DescribeTargetGroupInstancesRequest(AbstractModel):
         r"""
         :param _Filters: 过滤条件，当前仅支持TargetGroupId，BindIP，InstanceId过滤。
 
-- TargetGroupId - String - 是否必填：否 - （过滤条件）目标组ID，如“lbtg-5xunivs0”。
-- BindIP - String - 是否必填：否 - （过滤条件）目标组绑定实例的内网IP地址，如“10.1.1.1”
-- InstanceId - String - 是否必填：否 - （过滤条件）目标组绑定实例的名称，如“ins-mxzlf9ke”
+- TargetGroupId - String - 是否必填：否 - （过滤条件）目标组ID，如“lbtg-5xunivs0”。可通过[DescribeTargetGroupList](https://cloud.tencent.com/document/api/1782/111692)接口获取。
+- BindIP - String - 是否必填：否 - （过滤条件）目标组绑定实例的内网IP地址，如“10.1.1.1”。
+- InstanceId - String - 是否必填：否 - （过滤条件）目标组绑定实例的名称，如“ins-mxzlf9ke”。可通过[DescribeInstances](https://cloud.tencent.com/document/product/213/15728) 接口获取。
         :type Filters: list of Filter
-        :param _Limit: 显示数量限制，默认20。
+        :param _Limit: 显示数量限制，默认20，最大1000。
         :type Limit: int
         :param _Offset: 显示的偏移量，默认为0。
         :type Offset: int
@@ -1046,9 +1046,9 @@ class DescribeTargetGroupInstancesRequest(AbstractModel):
     def Filters(self):
         """过滤条件，当前仅支持TargetGroupId，BindIP，InstanceId过滤。
 
-- TargetGroupId - String - 是否必填：否 - （过滤条件）目标组ID，如“lbtg-5xunivs0”。
-- BindIP - String - 是否必填：否 - （过滤条件）目标组绑定实例的内网IP地址，如“10.1.1.1”
-- InstanceId - String - 是否必填：否 - （过滤条件）目标组绑定实例的名称，如“ins-mxzlf9ke”
+- TargetGroupId - String - 是否必填：否 - （过滤条件）目标组ID，如“lbtg-5xunivs0”。可通过[DescribeTargetGroupList](https://cloud.tencent.com/document/api/1782/111692)接口获取。
+- BindIP - String - 是否必填：否 - （过滤条件）目标组绑定实例的内网IP地址，如“10.1.1.1”。
+- InstanceId - String - 是否必填：否 - （过滤条件）目标组绑定实例的名称，如“ins-mxzlf9ke”。可通过[DescribeInstances](https://cloud.tencent.com/document/product/213/15728) 接口获取。
         :rtype: list of Filter
         """
         return self._Filters
@@ -1059,7 +1059,7 @@ class DescribeTargetGroupInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """显示数量限制，默认20。
+        """显示数量限制，默认20，最大1000。
         :rtype: int
         """
         return self._Limit
@@ -1188,12 +1188,12 @@ class DescribeTargetGroupListRequest(AbstractModel):
         :type TargetGroupIds: list of str
         :param _Filters: 过滤条件数组。
 
-- TargetGroupVpcId - String - 是否必填：否 - （过滤条件）按照目标组所属的私有网络过滤，如“vpc-bhqk****”。
+- TargetGroupVpcId - String - 是否必填：否 - （过滤条件）按照目标组所属的私有网络过滤，可以通过[DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)获取，如“vpc-bhqk****”。
 - TargetGroupName - String - 是否必填：否 - （过滤条件）按照目标组的名称过滤，如“tg_name”
         :type Filters: list of Filter
-        :param _Offset: 显示的偏移起始量。
+        :param _Offset: 显示的偏移起始量，默认为0。
         :type Offset: int
-        :param _Limit: 显示条数限制，默认为20。
+        :param _Limit: 显示条数限制，默认为20，最大值为1000。
         :type Limit: int
         """
         self._TargetGroupIds = None
@@ -1216,7 +1216,7 @@ class DescribeTargetGroupListRequest(AbstractModel):
     def Filters(self):
         """过滤条件数组。
 
-- TargetGroupVpcId - String - 是否必填：否 - （过滤条件）按照目标组所属的私有网络过滤，如“vpc-bhqk****”。
+- TargetGroupVpcId - String - 是否必填：否 - （过滤条件）按照目标组所属的私有网络过滤，可以通过[DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)获取，如“vpc-bhqk****”。
 - TargetGroupName - String - 是否必填：否 - （过滤条件）按照目标组的名称过滤，如“tg_name”
         :rtype: list of Filter
         """
@@ -1228,7 +1228,7 @@ class DescribeTargetGroupListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """显示的偏移起始量。
+        """显示的偏移起始量，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -1239,7 +1239,7 @@ class DescribeTargetGroupListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """显示条数限制，默认为20。
+        """显示条数限制，默认为20，最大值为1000。
         :rtype: int
         """
         return self._Limit
@@ -1339,15 +1339,14 @@ class DescribeTargetGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TargetGroupIds: 目标组ID，与Filters互斥。
+        :param _TargetGroupIds: 目标组ID。
         :type TargetGroupIds: list of str
-        :param _Limit: 显示条数限制，默认为20。
+        :param _Limit: 显示条数限制，默认为20，最大值为1000。
         :type Limit: int
-        :param _Offset: 显示的偏移起始量。
+        :param _Offset: 显示的偏移起始量，默认为0。
         :type Offset: int
         :param _Filters: 过滤条件数组。
-
-- TargetGroupVpcId - String - 是否必填：否 - （过滤条件）按照目标组所属的私有网络过滤，如“vpc-bhqk****”。
+- TargetGroupVpcId - String - 是否必填：否 - （过滤条件）按照目标组所属的私有网络过滤，可以通过[DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)获取，如“vpc-bhqk****”。
 - TargetGroupName - String - 是否必填：否 - （过滤条件）按照目标组的名称过滤，如“tg_name”
         :type Filters: list of Filter
         """
@@ -1358,7 +1357,7 @@ class DescribeTargetGroupsRequest(AbstractModel):
 
     @property
     def TargetGroupIds(self):
-        """目标组ID，与Filters互斥。
+        """目标组ID。
         :rtype: list of str
         """
         return self._TargetGroupIds
@@ -1369,7 +1368,7 @@ class DescribeTargetGroupsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """显示条数限制，默认为20。
+        """显示条数限制，默认为20，最大值为1000。
         :rtype: int
         """
         return self._Limit
@@ -1380,7 +1379,7 @@ class DescribeTargetGroupsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """显示的偏移起始量。
+        """显示的偏移起始量，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -1392,8 +1391,7 @@ class DescribeTargetGroupsRequest(AbstractModel):
     @property
     def Filters(self):
         """过滤条件数组。
-
-- TargetGroupVpcId - String - 是否必填：否 - （过滤条件）按照目标组所属的私有网络过滤，如“vpc-bhqk****”。
+- TargetGroupVpcId - String - 是否必填：否 - （过滤条件）按照目标组所属的私有网络过滤，可以通过[DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)获取，如“vpc-bhqk****”。
 - TargetGroupName - String - 是否必填：否 - （过滤条件）按照目标组的名称过滤，如“tg_name”
         :rtype: list of Filter
         """
@@ -2169,7 +2167,7 @@ class ModifyGatewayLoadBalancerAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerId: 网关负载均衡的唯一ID。
+        :param _LoadBalancerId: 网关负载均衡的唯一ID。可通过[DescribeGatewayLoadBalancers](https://cloud.tencent.com/document/api/1782/111683) 接口获取。
         :type LoadBalancerId: str
         :param _LoadBalancerName: 网关负载均衡实例名称。可支持输入1-60个字符。
         :type LoadBalancerName: str
@@ -2182,7 +2180,7 @@ class ModifyGatewayLoadBalancerAttributeRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """网关负载均衡的唯一ID。
+        """网关负载均衡的唯一ID。可通过[DescribeGatewayLoadBalancers](https://cloud.tencent.com/document/api/1782/111683) 接口获取。
         :rtype: str
         """
         return self._LoadBalancerId
@@ -2263,7 +2261,7 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TargetGroupId: 目标组的ID。
+        :param _TargetGroupId: 目标组的ID，可以通过[DescribeTargetGroups](https://cloud.tencent.com/document/product/214/40554)获取。
         :type TargetGroupId: str
         :param _TargetGroupName: 目标组的新名称。
         :type TargetGroupName: str
@@ -2279,7 +2277,7 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
 
     @property
     def TargetGroupId(self):
-        """目标组的ID。
+        """目标组的ID，可以通过[DescribeTargetGroups](https://cloud.tencent.com/document/product/214/40554)获取。
         :rtype: str
         """
         return self._TargetGroupId
@@ -2374,7 +2372,7 @@ class ModifyTargetGroupInstancesWeightRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TargetGroupId: 目标组ID。
+        :param _TargetGroupId: 目标组ID。可通过DescribeTargetGroupList接口获取。
         :type TargetGroupId: str
         :param _TargetGroupInstances: 实例绑定配置数组。
         :type TargetGroupInstances: list of TargetGroupInstance
@@ -2384,7 +2382,7 @@ class ModifyTargetGroupInstancesWeightRequest(AbstractModel):
 
     @property
     def TargetGroupId(self):
-        """目标组ID。
+        """目标组ID。可通过DescribeTargetGroupList接口获取。
         :rtype: str
         """
         return self._TargetGroupId
@@ -2517,7 +2515,7 @@ class RegisterTargetGroupInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TargetGroupId: 目标组ID
+        :param _TargetGroupId: 目标组ID。可通过[DescribeTargetGroupList](https://cloud.tencent.com/document/api/1782/111692)接口获取。
         :type TargetGroupId: str
         :param _TargetGroupInstances: 服务器实例数组
         :type TargetGroupInstances: list of TargetGroupInstance
@@ -2527,7 +2525,7 @@ class RegisterTargetGroupInstancesRequest(AbstractModel):
 
     @property
     def TargetGroupId(self):
-        """目标组ID
+        """目标组ID。可通过[DescribeTargetGroupList](https://cloud.tencent.com/document/api/1782/111692)接口获取。
         :rtype: str
         """
         return self._TargetGroupId
@@ -2652,9 +2650,9 @@ class TargetGroupAssociation(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerId: 网关负载均衡实例ID。
+        :param _LoadBalancerId: 网关负载均衡实例ID，可以通过[DescribeGatewayLoadBalancers](https://cloud.tencent.com/document/product/1782/111683)获取网关负载均衡ID。
         :type LoadBalancerId: str
-        :param _TargetGroupId: 目标组ID。
+        :param _TargetGroupId: 目标组ID，可以通过[DescribeTargetGroups](https://cloud.tencent.com/document/product/214/40554)获取目标组ID。
         :type TargetGroupId: str
         """
         self._LoadBalancerId = None
@@ -2662,7 +2660,7 @@ class TargetGroupAssociation(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """网关负载均衡实例ID。
+        """网关负载均衡实例ID，可以通过[DescribeGatewayLoadBalancers](https://cloud.tencent.com/document/product/1782/111683)获取网关负载均衡ID。
         :rtype: str
         """
         return self._LoadBalancerId
@@ -2673,7 +2671,7 @@ class TargetGroupAssociation(AbstractModel):
 
     @property
     def TargetGroupId(self):
-        """目标组ID。
+        """目标组ID，可以通过[DescribeTargetGroups](https://cloud.tencent.com/document/product/214/40554)获取目标组ID。
         :rtype: str
         """
         return self._TargetGroupId
@@ -2915,9 +2913,9 @@ class TargetGroupHealthCheck(AbstractModel):
         :type Timeout: int
         :param _IntervalTime: 检测间隔时间。 默认为5秒。 可配置范围：2 - 300秒。
         :type IntervalTime: int
-        :param _HealthNum: 检测健康阈值。 默认为3秒。 可配置范围：2 - 10次。
+        :param _HealthNum: 检测健康阈值。 默认为3次。 可配置范围：2 - 10次。
         :type HealthNum: int
-        :param _UnHealthNum: 检测不健康阈值。 默认为3秒。 可配置范围：2 - 10次。
+        :param _UnHealthNum: 检测不健康阈值。 默认为3次。 可配置范围：2 - 10次。
         :type UnHealthNum: int
         """
         self._HealthSwitch = None
@@ -2989,7 +2987,7 @@ class TargetGroupHealthCheck(AbstractModel):
 
     @property
     def HealthNum(self):
-        """检测健康阈值。 默认为3秒。 可配置范围：2 - 10次。
+        """检测健康阈值。 默认为3次。 可配置范围：2 - 10次。
         :rtype: int
         """
         return self._HealthNum
@@ -3000,7 +2998,7 @@ class TargetGroupHealthCheck(AbstractModel):
 
     @property
     def UnHealthNum(self):
-        """检测不健康阈值。 默认为3秒。 可配置范围：2 - 10次。
+        """检测不健康阈值。 默认为3次。 可配置范围：2 - 10次。
         :rtype: int
         """
         return self._UnHealthNum
@@ -3072,6 +3070,8 @@ class TargetGroupInfo(AbstractModel):
         :param _RegisteredInstancesCount: 目标组内的实例数量。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RegisteredInstancesCount: int
+        :param _Tag: 目标组的标签。
+        :type Tag: list of TagInfo
         """
         self._TargetGroupId = None
         self._VpcId = None
@@ -3086,6 +3086,7 @@ class TargetGroupInfo(AbstractModel):
         self._AllDeadToAlive = None
         self._AssociatedRuleCount = None
         self._RegisteredInstancesCount = None
+        self._Tag = None
 
     @property
     def TargetGroupId(self):
@@ -3241,6 +3242,17 @@ class TargetGroupInfo(AbstractModel):
     def RegisteredInstancesCount(self, RegisteredInstancesCount):
         self._RegisteredInstancesCount = RegisteredInstancesCount
 
+    @property
+    def Tag(self):
+        """目标组的标签。
+        :rtype: list of TagInfo
+        """
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
 
     def _deserialize(self, params):
         self._TargetGroupId = params.get("TargetGroupId")
@@ -3263,6 +3275,12 @@ class TargetGroupInfo(AbstractModel):
         self._AllDeadToAlive = params.get("AllDeadToAlive")
         self._AssociatedRuleCount = params.get("AssociatedRuleCount")
         self._RegisteredInstancesCount = params.get("RegisteredInstancesCount")
+        if params.get("Tag") is not None:
+            self._Tag = []
+            for item in params.get("Tag"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self._Tag.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
