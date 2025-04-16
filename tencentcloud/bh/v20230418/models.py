@@ -15835,6 +15835,145 @@ class SearchSessionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class SearchSubtaskResultByIdRequest(AbstractModel):
+    """SearchSubtaskResultById请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 运维任务名称
+        :type Name: str
+        :param _Offset: 查询偏移
+        :type Offset: int
+        :param _Limit: 分页的页内记录数，默认为20，最大200
+        :type Limit: int
+        :param _Id: 运维父任务执行日志ID
+        :type Id: str
+        :param _Status: 运维父任务执行状态
+        :type Status: list of int non-negative
+        """
+        self._Name = None
+        self._Offset = None
+        self._Limit = None
+        self._Id = None
+        self._Status = None
+
+    @property
+    def Name(self):
+        """运维任务名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Offset(self):
+        """查询偏移
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """分页的页内记录数，默认为20，最大200
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Id(self):
+        """运维父任务执行日志ID
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Status(self):
+        """运维父任务执行状态
+        :rtype: list of int non-negative
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Id = params.get("Id")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchSubtaskResultByIdResponse(AbstractModel):
+    """SearchSubtaskResultById返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 记录数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """记录数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class SearchTaskResultRequest(AbstractModel):
     """SearchTaskResult请求参数结构体
 

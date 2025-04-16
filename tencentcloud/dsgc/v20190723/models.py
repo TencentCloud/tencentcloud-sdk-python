@@ -16798,9 +16798,15 @@ class DescribeDSPALevelGroupsRequest(AbstractModel):
         :type DspaId: str
         :param _Name: 分级组名称
         :type Name: str
+        :param _Limit: 每页返回的记录数
+        :type Limit: int
+        :param _Offset: 从第几条记录开始返回
+        :type Offset: int
         """
         self._DspaId = None
         self._Name = None
+        self._Limit = None
+        self._Offset = None
 
     @property
     def DspaId(self):
@@ -16824,10 +16830,34 @@ class DescribeDSPALevelGroupsRequest(AbstractModel):
     def Name(self, Name):
         self._Name = Name
 
+    @property
+    def Limit(self):
+        """每页返回的记录数
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """从第几条记录开始返回
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
 
     def _deserialize(self, params):
         self._DspaId = params.get("DspaId")
         self._Name = params.get("Name")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

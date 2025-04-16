@@ -24734,7 +24734,7 @@ class GetMonitorDataRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: 结束时间，如2018-09-22T20:51:23+08:00，默认为当前时间。 EndTime不能小于StartTime
         :type EndTime: str
-        :param _SpecifyStatistics: 返回多种统计方式数据。avg, max, min (1,2,4)可以自由组合
+        :param _SpecifyStatistics: 返回多种统计方式数据。avg, max, min (1,2,4)可以自由组合。注意: 仅支持对API配置文档中展示的统计方式返回对应的统计数据。如所需的统计方式不满足您的查询需求，请提工单反馈。
         :type SpecifyStatistics: int
         """
         self._Namespace = None
@@ -24813,7 +24813,7 @@ class GetMonitorDataRequest(AbstractModel):
 
     @property
     def SpecifyStatistics(self):
-        """返回多种统计方式数据。avg, max, min (1,2,4)可以自由组合
+        """返回多种统计方式数据。avg, max, min (1,2,4)可以自由组合。注意: 仅支持对API配置文档中展示的统计方式返回对应的统计数据。如所需的统计方式不满足您的查询需求，请提工单反馈。
         :rtype: int
         """
         return self._SpecifyStatistics

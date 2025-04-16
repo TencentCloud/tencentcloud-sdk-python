@@ -3715,7 +3715,7 @@ class CdbClient(AbstractClient):
 
 
     def StartCpuExpand(self, request):
-        """通过该API，可以开启CPU弹性扩容，包括一次性的手动扩容以及自动弹性扩容。
+        """通过该 API，可以开启 CPU 弹性扩容，包括一次性的手动扩容以及自动弹性扩容。
 
         :param request: Request instance for StartCpuExpand.
         :type request: :class:`tencentcloud.cdb.v20170320.models.StartCpuExpandRequest`

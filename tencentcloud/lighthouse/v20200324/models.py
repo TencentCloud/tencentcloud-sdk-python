@@ -674,13 +674,13 @@ class Blueprint(AbstractModel):
         :type Platform: str
         :param _PlatformType: 操作系统平台类型，如 LINUX_UNIX、WINDOWS。
         :type PlatformType: str
-        :param _BlueprintType: 镜像类型，如 APP_OS、PURE_OS、PRIVATE。
+        :param _BlueprintType: 镜像类型，如 APP_OS（应用镜像）, PURE_OS（系统镜像）, DOCKER（容器）, PRIVATE（私有镜像）, SHARED（共享镜像）, GAME_PORTAL（游戏专区镜像）。
         :type BlueprintType: str
         :param _ImageUrl: 镜像图片 URL。
         :type ImageUrl: str
         :param _RequiredSystemDiskSize: 镜像所需系统盘大小，单位 GB。
         :type RequiredSystemDiskSize: int
-        :param _BlueprintState: 镜像状态。
+        :param _BlueprintState: 镜像状态，镜镜像状态，NORMAL（正常）、SYNCING（同步中）、OFFLINE（下线）、ISOLATED（已隔离）、CREATEFAILED（创建失败）、SYNCING_FAILED（目的地域同步失败）、ISOLATING（隔离中）、ISOLATED（已隔离）、DELETING（删除中）、DESTROYING（销毁中）。
         :type BlueprintState: str
         :param _CreatedTime: 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
 格式为： YYYY-MM-DDThh:mm:ssZ。
@@ -808,7 +808,7 @@ class Blueprint(AbstractModel):
 
     @property
     def BlueprintType(self):
-        """镜像类型，如 APP_OS、PURE_OS、PRIVATE。
+        """镜像类型，如 APP_OS（应用镜像）, PURE_OS（系统镜像）, DOCKER（容器）, PRIVATE（私有镜像）, SHARED（共享镜像）, GAME_PORTAL（游戏专区镜像）。
         :rtype: str
         """
         return self._BlueprintType
@@ -841,7 +841,7 @@ class Blueprint(AbstractModel):
 
     @property
     def BlueprintState(self):
-        """镜像状态。
+        """镜像状态，镜镜像状态，NORMAL（正常）、SYNCING（同步中）、OFFLINE（下线）、ISOLATED（已隔离）、CREATEFAILED（创建失败）、SYNCING_FAILED（目的地域同步失败）、ISOLATING（隔离中）、ISOLATED（已隔离）、DELETING（删除中）、DESTROYING（销毁中）。
         :rtype: str
         """
         return self._BlueprintState
@@ -3955,6 +3955,7 @@ class DescribeBlueprintsRequest(AbstractModel):
 <li>blueprint-state</li>按照【镜像状态】进行过滤。
 类型：String
 必选：否
+镜像状态，可通过[数据结构Blueprint](https://cloud.tencent.com/document/api/1207/47576#Blueprint)中的BlueprintState来获取。
 <li>scene-id</li>按照【使用场景Id】进行过滤。
 类型：String
 必选：否
@@ -4022,6 +4023,7 @@ class DescribeBlueprintsRequest(AbstractModel):
 <li>blueprint-state</li>按照【镜像状态】进行过滤。
 类型：String
 必选：否
+镜像状态，可通过[数据结构Blueprint](https://cloud.tencent.com/document/api/1207/47576#Blueprint)中的BlueprintState来获取。
 <li>scene-id</li>按照【使用场景Id】进行过滤。
 类型：String
 必选：否
@@ -11231,13 +11233,13 @@ class FirewallTemplate(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: 模板Id。
+        :param _TemplateId: 模板ID。
         :type TemplateId: str
         :param _TemplateName: 模板名称。
         :type TemplateName: str
-        :param _TemplateType: 模板类型。
+        :param _TemplateType: 模板类型。取值: "PRIVATE"(个人模版)
         :type TemplateType: str
-        :param _TemplateState: 模板状态。
+        :param _TemplateState: 模板状态。取值: "NORMAL"(正常)
         :type TemplateState: str
         :param _CreatedTime: 模板创建时间。
         :type CreatedTime: str
@@ -11250,7 +11252,7 @@ class FirewallTemplate(AbstractModel):
 
     @property
     def TemplateId(self):
-        """模板Id。
+        """模板ID。
         :rtype: str
         """
         return self._TemplateId
@@ -11272,7 +11274,7 @@ class FirewallTemplate(AbstractModel):
 
     @property
     def TemplateType(self):
-        """模板类型。
+        """模板类型。取值: "PRIVATE"(个人模版)
         :rtype: str
         """
         return self._TemplateType
@@ -11283,7 +11285,7 @@ class FirewallTemplate(AbstractModel):
 
     @property
     def TemplateState(self):
-        """模板状态。
+        """模板状态。取值: "NORMAL"(正常)
         :rtype: str
         """
         return self._TemplateState
@@ -11490,6 +11492,7 @@ class FirewallTemplateApplyRecordDetail(AbstractModel):
 
 - SUCCESS：成功
 - FAILED：失败
+- RUNNING：运行中
         :type ApplyState: str
         :param _ErrorMessage: 防火墙模板应用错误信息。
         :type ErrorMessage: str
@@ -11515,6 +11518,7 @@ class FirewallTemplateApplyRecordDetail(AbstractModel):
 
 - SUCCESS：成功
 - FAILED：失败
+- RUNNING：运行中
         :rtype: str
         """
         return self._ApplyState

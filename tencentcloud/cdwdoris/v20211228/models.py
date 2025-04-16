@@ -12928,6 +12928,10 @@ class RegionInfo(AbstractModel):
         :type IsInternationalSite: int
         :param _Bucket: 桶
         :type Bucket: str
+        :param _SSCCount: 存算分离集群数
+        :type SSCCount: int
+        :param _EnableSSC: 是否开通存算分离
+        :type EnableSSC: bool
         """
         self._Name = None
         self._Desc = None
@@ -12936,6 +12940,8 @@ class RegionInfo(AbstractModel):
         self._Count = None
         self._IsInternationalSite = None
         self._Bucket = None
+        self._SSCCount = None
+        self._EnableSSC = None
 
     @property
     def Name(self):
@@ -13014,6 +13020,28 @@ class RegionInfo(AbstractModel):
     def Bucket(self, Bucket):
         self._Bucket = Bucket
 
+    @property
+    def SSCCount(self):
+        """存算分离集群数
+        :rtype: int
+        """
+        return self._SSCCount
+
+    @SSCCount.setter
+    def SSCCount(self, SSCCount):
+        self._SSCCount = SSCCount
+
+    @property
+    def EnableSSC(self):
+        """是否开通存算分离
+        :rtype: bool
+        """
+        return self._EnableSSC
+
+    @EnableSSC.setter
+    def EnableSSC(self, EnableSSC):
+        self._EnableSSC = EnableSSC
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -13028,6 +13056,8 @@ class RegionInfo(AbstractModel):
         self._Count = params.get("Count")
         self._IsInternationalSite = params.get("IsInternationalSite")
         self._Bucket = params.get("Bucket")
+        self._SSCCount = params.get("SSCCount")
+        self._EnableSSC = params.get("EnableSSC")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

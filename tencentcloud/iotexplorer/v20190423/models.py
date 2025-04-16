@@ -5594,6 +5594,247 @@ class CreateTRTCSignaturesWithRoomIdResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateTWeSeeRecognitionTaskRequest(AbstractModel):
+    """CreateTWeSeeRecognitionTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品ID
+        :type ProductId: str
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        :param _InputURL: 输入视频 / 图片的 URL
+        :type InputURL: str
+        :param _CustomId: 自定义事件 ID
+        :type CustomId: str
+        :param _EnableSearch: 是否保存该事件使其可被搜索
+        :type EnableSearch: bool
+        :param _StartTimeMs: 事件起始时间事件起始时间（毫秒级 UNIX 时间戳，若不传则默认为接口调用时间）
+        :type StartTimeMs: int
+        :param _EndTimeMs: 事件结束时间事件起始时间（毫秒级 UNIX 时间戳，若不传则默认为接口调用时间）
+        :type EndTimeMs: int
+        :param _Config: 算法配置
+        :type Config: str
+        :param _IsCustomDevice: 是否自定义设备，为 true 时不检查设备存在性，默认为 false
+        :type IsCustomDevice: bool
+        :param _InputType: 输入类型。可选值：
+
+- `video`：视频（默认值）
+- `image`：图片
+        :type InputType: str
+        :param _SummaryQOS: 摘要服务质量。可选值：
+
+- `minutely`：分钟级（默认值）
+- `immediate`：立即
+        :type SummaryQOS: str
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._InputURL = None
+        self._CustomId = None
+        self._EnableSearch = None
+        self._StartTimeMs = None
+        self._EndTimeMs = None
+        self._Config = None
+        self._IsCustomDevice = None
+        self._InputType = None
+        self._SummaryQOS = None
+
+    @property
+    def ProductId(self):
+        """产品ID
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        """设备名称
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def InputURL(self):
+        """输入视频 / 图片的 URL
+        :rtype: str
+        """
+        return self._InputURL
+
+    @InputURL.setter
+    def InputURL(self, InputURL):
+        self._InputURL = InputURL
+
+    @property
+    def CustomId(self):
+        """自定义事件 ID
+        :rtype: str
+        """
+        return self._CustomId
+
+    @CustomId.setter
+    def CustomId(self, CustomId):
+        self._CustomId = CustomId
+
+    @property
+    def EnableSearch(self):
+        """是否保存该事件使其可被搜索
+        :rtype: bool
+        """
+        return self._EnableSearch
+
+    @EnableSearch.setter
+    def EnableSearch(self, EnableSearch):
+        self._EnableSearch = EnableSearch
+
+    @property
+    def StartTimeMs(self):
+        """事件起始时间事件起始时间（毫秒级 UNIX 时间戳，若不传则默认为接口调用时间）
+        :rtype: int
+        """
+        return self._StartTimeMs
+
+    @StartTimeMs.setter
+    def StartTimeMs(self, StartTimeMs):
+        self._StartTimeMs = StartTimeMs
+
+    @property
+    def EndTimeMs(self):
+        """事件结束时间事件起始时间（毫秒级 UNIX 时间戳，若不传则默认为接口调用时间）
+        :rtype: int
+        """
+        return self._EndTimeMs
+
+    @EndTimeMs.setter
+    def EndTimeMs(self, EndTimeMs):
+        self._EndTimeMs = EndTimeMs
+
+    @property
+    def Config(self):
+        """算法配置
+        :rtype: str
+        """
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
+
+    @property
+    def IsCustomDevice(self):
+        """是否自定义设备，为 true 时不检查设备存在性，默认为 false
+        :rtype: bool
+        """
+        return self._IsCustomDevice
+
+    @IsCustomDevice.setter
+    def IsCustomDevice(self, IsCustomDevice):
+        self._IsCustomDevice = IsCustomDevice
+
+    @property
+    def InputType(self):
+        """输入类型。可选值：
+
+- `video`：视频（默认值）
+- `image`：图片
+        :rtype: str
+        """
+        return self._InputType
+
+    @InputType.setter
+    def InputType(self, InputType):
+        self._InputType = InputType
+
+    @property
+    def SummaryQOS(self):
+        """摘要服务质量。可选值：
+
+- `minutely`：分钟级（默认值）
+- `immediate`：立即
+        :rtype: str
+        """
+        return self._SummaryQOS
+
+    @SummaryQOS.setter
+    def SummaryQOS(self, SummaryQOS):
+        self._SummaryQOS = SummaryQOS
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._InputURL = params.get("InputURL")
+        self._CustomId = params.get("CustomId")
+        self._EnableSearch = params.get("EnableSearch")
+        self._StartTimeMs = params.get("StartTimeMs")
+        self._EndTimeMs = params.get("EndTimeMs")
+        self._Config = params.get("Config")
+        self._IsCustomDevice = params.get("IsCustomDevice")
+        self._InputType = params.get("InputType")
+        self._SummaryQOS = params.get("SummaryQOS")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateTWeSeeRecognitionTaskResponse(AbstractModel):
+    """CreateTWeSeeRecognitionTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务 ID
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        """任务 ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateTopicPolicyRequest(AbstractModel):
     """CreateTopicPolicy请求参数结构体
 
@@ -20032,6 +20273,279 @@ class InvokeExternalSourceAIServiceTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class InvokeTWeSeeRecognitionTaskRequest(AbstractModel):
+    """InvokeTWeSeeRecognitionTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品ID
+        :type ProductId: str
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        :param _InputURL: 输入视频 / 图片的 URL
+        :type InputURL: str
+        :param _CustomId: 自定义事件 ID
+        :type CustomId: str
+        :param _EnableSearch: 是否保存该事件使其可被搜索
+        :type EnableSearch: bool
+        :param _StartTimeMs: 事件起始时间事件起始时间（毫秒级 UNIX 时间戳，若不传则默认为接口调用时间）
+        :type StartTimeMs: int
+        :param _EndTimeMs: 事件结束时间事件起始时间（毫秒级 UNIX 时间戳，若不传则默认为接口调用时间）
+        :type EndTimeMs: int
+        :param _Config: 算法配置
+        :type Config: str
+        :param _IsCustomDevice: 是否自定义设备，为 true 时不检查设备存在性，默认为 false
+        :type IsCustomDevice: bool
+        :param _InputType: 输入类型。可选值：
+
+- `video`：视频（默认值）
+- `image`：图片
+        :type InputType: str
+        :param _SummaryQOS: 摘要服务质量。可选值：
+
+- `minutely`：分钟级（默认值）
+- `immediate`：立即
+        :type SummaryQOS: str
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._InputURL = None
+        self._CustomId = None
+        self._EnableSearch = None
+        self._StartTimeMs = None
+        self._EndTimeMs = None
+        self._Config = None
+        self._IsCustomDevice = None
+        self._InputType = None
+        self._SummaryQOS = None
+
+    @property
+    def ProductId(self):
+        """产品ID
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        """设备名称
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def InputURL(self):
+        """输入视频 / 图片的 URL
+        :rtype: str
+        """
+        return self._InputURL
+
+    @InputURL.setter
+    def InputURL(self, InputURL):
+        self._InputURL = InputURL
+
+    @property
+    def CustomId(self):
+        """自定义事件 ID
+        :rtype: str
+        """
+        return self._CustomId
+
+    @CustomId.setter
+    def CustomId(self, CustomId):
+        self._CustomId = CustomId
+
+    @property
+    def EnableSearch(self):
+        """是否保存该事件使其可被搜索
+        :rtype: bool
+        """
+        return self._EnableSearch
+
+    @EnableSearch.setter
+    def EnableSearch(self, EnableSearch):
+        self._EnableSearch = EnableSearch
+
+    @property
+    def StartTimeMs(self):
+        """事件起始时间事件起始时间（毫秒级 UNIX 时间戳，若不传则默认为接口调用时间）
+        :rtype: int
+        """
+        return self._StartTimeMs
+
+    @StartTimeMs.setter
+    def StartTimeMs(self, StartTimeMs):
+        self._StartTimeMs = StartTimeMs
+
+    @property
+    def EndTimeMs(self):
+        """事件结束时间事件起始时间（毫秒级 UNIX 时间戳，若不传则默认为接口调用时间）
+        :rtype: int
+        """
+        return self._EndTimeMs
+
+    @EndTimeMs.setter
+    def EndTimeMs(self, EndTimeMs):
+        self._EndTimeMs = EndTimeMs
+
+    @property
+    def Config(self):
+        """算法配置
+        :rtype: str
+        """
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
+
+    @property
+    def IsCustomDevice(self):
+        """是否自定义设备，为 true 时不检查设备存在性，默认为 false
+        :rtype: bool
+        """
+        return self._IsCustomDevice
+
+    @IsCustomDevice.setter
+    def IsCustomDevice(self, IsCustomDevice):
+        self._IsCustomDevice = IsCustomDevice
+
+    @property
+    def InputType(self):
+        """输入类型。可选值：
+
+- `video`：视频（默认值）
+- `image`：图片
+        :rtype: str
+        """
+        return self._InputType
+
+    @InputType.setter
+    def InputType(self, InputType):
+        self._InputType = InputType
+
+    @property
+    def SummaryQOS(self):
+        """摘要服务质量。可选值：
+
+- `minutely`：分钟级（默认值）
+- `immediate`：立即
+        :rtype: str
+        """
+        return self._SummaryQOS
+
+    @SummaryQOS.setter
+    def SummaryQOS(self, SummaryQOS):
+        self._SummaryQOS = SummaryQOS
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._InputURL = params.get("InputURL")
+        self._CustomId = params.get("CustomId")
+        self._EnableSearch = params.get("EnableSearch")
+        self._StartTimeMs = params.get("StartTimeMs")
+        self._EndTimeMs = params.get("EndTimeMs")
+        self._Config = params.get("Config")
+        self._IsCustomDevice = params.get("IsCustomDevice")
+        self._InputType = params.get("InputType")
+        self._SummaryQOS = params.get("SummaryQOS")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InvokeTWeSeeRecognitionTaskResponse(AbstractModel):
+    """InvokeTWeSeeRecognitionTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务 ID
+        :type TaskId: str
+        :param _Completed: 任务是否执行完成
+        :type Completed: bool
+        :param _Result: 语义理解任务结果（仅当 Completed 为 true 时包含该出参）
+        :type Result: :class:`tencentcloud.iotexplorer.v20190423.models.VisionRecognitionResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._Completed = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        """任务 ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Completed(self):
+        """任务是否执行完成
+        :rtype: bool
+        """
+        return self._Completed
+
+    @Completed.setter
+    def Completed(self, Completed):
+        self._Completed = Completed
+
+    @property
+    def Result(self):
+        """语义理解任务结果（仅当 Completed 为 true 时包含该出参）
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.VisionRecognitionResult`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Completed = params.get("Completed")
+        if params.get("Result") is not None:
+            self._Result = VisionRecognitionResult()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
 class IotApplication(AbstractModel):
     """应用信息
 
@@ -28556,6 +29070,92 @@ class VideoLicenseEntity(AbstractModel):
         self._TotalCount = params.get("TotalCount")
         self._UsedCount = params.get("UsedCount")
         self._ExpiresSoonCount = params.get("ExpiresSoonCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VisionRecognitionResult(AbstractModel):
+    """TWeSee 语义理解结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 任务状态（1：失败；2：成功但结果为空；3：成功且结果非空）
+        :type Status: int
+        :param _DetectedClassifications: 识别到的目标类型。可能取值：
+
+- `person`：人
+- `vehicle`：车辆
+- `dog`：狗
+- `cat`：猫
+- `fire`：火焰
+- `smoke`：烟雾
+- `package`：快递包裹
+- `license_plate`：车牌
+
+        :type DetectedClassifications: list of str
+        :param _Summary: 视频摘要文本
+        :type Summary: str
+        """
+        self._Status = None
+        self._DetectedClassifications = None
+        self._Summary = None
+
+    @property
+    def Status(self):
+        """任务状态（1：失败；2：成功但结果为空；3：成功且结果非空）
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def DetectedClassifications(self):
+        """识别到的目标类型。可能取值：
+
+- `person`：人
+- `vehicle`：车辆
+- `dog`：狗
+- `cat`：猫
+- `fire`：火焰
+- `smoke`：烟雾
+- `package`：快递包裹
+- `license_plate`：车牌
+
+        :rtype: list of str
+        """
+        return self._DetectedClassifications
+
+    @DetectedClassifications.setter
+    def DetectedClassifications(self, DetectedClassifications):
+        self._DetectedClassifications = DetectedClassifications
+
+    @property
+    def Summary(self):
+        """视频摘要文本
+        :rtype: str
+        """
+        return self._Summary
+
+    @Summary.setter
+    def Summary(self, Summary):
+        self._Summary = Summary
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._DetectedClassifications = params.get("DetectedClassifications")
+        self._Summary = params.get("Summary")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

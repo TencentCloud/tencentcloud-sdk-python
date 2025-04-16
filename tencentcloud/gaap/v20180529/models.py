@@ -131,7 +131,6 @@ class AccessRegionDetial(AbstractModel):
 第5个bit，支持精品BGP接入；
 第6个bit，支持三网接入；
 第7个bit，支持接入段Qos加速。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FeatureBitmap: int
         """
         self._RegionId = None
@@ -233,7 +232,6 @@ class AccessRegionDetial(AbstractModel):
 第5个bit，支持精品BGP接入；
 第6个bit，支持三网接入；
 第7个bit，支持接入段Qos加速。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FeatureBitmap
@@ -648,10 +646,8 @@ class BindRealServer(AbstractModel):
 0表示正常；
 1表示异常。
 未开启健康检查状态时，该状态始终为正常。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RealServerStatus: int
         :param _RealServerPort: 源站的端口号
-注意：此字段可能返回 null，表示取不到有效值。
         :type RealServerPort: int
         :param _DownIPList: 当源站为域名时，域名被解析成一个或者多个IP，该字段表示其中异常的IP列表。状态异常，但该字段为空时，表示域名解析异常。
         :type DownIPList: list of str
@@ -705,7 +701,6 @@ class BindRealServer(AbstractModel):
 0表示正常；
 1表示异常。
 未开启健康检查状态时，该状态始终为正常。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RealServerStatus
@@ -717,7 +712,6 @@ class BindRealServer(AbstractModel):
     @property
     def RealServerPort(self):
         """源站的端口号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RealServerPort
@@ -783,7 +777,6 @@ class BindRealServerInfo(AbstractModel):
         :param _ProjectId: 项目ID
         :type ProjectId: int
         :param _TagSet: 标签列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagSet: list of TagPair
         """
         self._RealServerIP = None
@@ -839,7 +832,6 @@ class BindRealServerInfo(AbstractModel):
     @property
     def TagSet(self):
         """标签列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TagPair
         """
         return self._TagSet
@@ -1025,21 +1017,16 @@ class Certificate(AbstractModel):
         :param _CertificateType: 证书类型。
         :type CertificateType: int
         :param _CertificateAlias: 证书名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CertificateAlias: str
         :param _CreateTime: 证书创建时间，采用Unix时间戳的方式，表示从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数。
         :type CreateTime: int
         :param _BeginTime: 证书生效起始时间，采用Unix时间戳的方式，表示从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type BeginTime: int
         :param _EndTime: 证书过期时间，采用Unix时间戳的方式，表示从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: int
         :param _IssuerCN: 证书签发者通用名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IssuerCN: str
         :param _SubjectCN: 证书主题通用名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubjectCN: str
         """
         self._CertificateId = None
@@ -1088,7 +1075,6 @@ class Certificate(AbstractModel):
     @property
     def CertificateAlias(self):
         """证书名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CertificateAlias
@@ -1111,7 +1097,6 @@ class Certificate(AbstractModel):
     @property
     def BeginTime(self):
         """证书生效起始时间，采用Unix时间戳的方式，表示从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._BeginTime
@@ -1123,7 +1108,6 @@ class Certificate(AbstractModel):
     @property
     def EndTime(self):
         """证书过期时间，采用Unix时间戳的方式，表示从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._EndTime
@@ -1135,7 +1119,6 @@ class Certificate(AbstractModel):
     @property
     def IssuerCN(self):
         """证书签发者通用名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IssuerCN
@@ -1147,7 +1130,6 @@ class Certificate(AbstractModel):
     @property
     def SubjectCN(self):
         """证书主题通用名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubjectCN
@@ -1240,27 +1222,20 @@ class CertificateDetail(AbstractModel):
         :param _CertificateType: 证书类型。
         :type CertificateType: int
         :param _CertificateAlias: 证书名字。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CertificateAlias: str
         :param _CertificateContent: 证书内容。
         :type CertificateContent: str
         :param _CertificateKey: 密钥内容。仅当证书类型为SSL证书时，返回该字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CertificateKey: str
         :param _CreateTime: 创建时间，采用Unix时间戳的方式，表示从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: int
         :param _BeginTime: 证书生效起始时间，采用Unix时间戳的方式，表示从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type BeginTime: int
         :param _EndTime: 证书过期时间，采用Unix时间戳的方式，表示从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: int
         :param _IssuerCN: 证书签发者通用名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IssuerCN: str
         :param _SubjectCN: 证书主题通用名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubjectCN: str
         """
         self._CertificateId = None
@@ -1299,7 +1274,6 @@ class CertificateDetail(AbstractModel):
     @property
     def CertificateAlias(self):
         """证书名字。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CertificateAlias
@@ -1322,7 +1296,6 @@ class CertificateDetail(AbstractModel):
     @property
     def CertificateKey(self):
         """密钥内容。仅当证书类型为SSL证书时，返回该字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CertificateKey
@@ -1334,7 +1307,6 @@ class CertificateDetail(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间，采用Unix时间戳的方式，表示从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CreateTime
@@ -1346,7 +1318,6 @@ class CertificateDetail(AbstractModel):
     @property
     def BeginTime(self):
         """证书生效起始时间，采用Unix时间戳的方式，表示从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._BeginTime
@@ -1358,7 +1329,6 @@ class CertificateDetail(AbstractModel):
     @property
     def EndTime(self):
         """证书过期时间，采用Unix时间戳的方式，表示从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._EndTime
@@ -1370,7 +1340,6 @@ class CertificateDetail(AbstractModel):
     @property
     def IssuerCN(self):
         """证书签发者通用名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IssuerCN
@@ -1382,7 +1351,6 @@ class CertificateDetail(AbstractModel):
     @property
     def SubjectCN(self):
         """证书主题通用名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubjectCN
@@ -1946,7 +1914,6 @@ class CountryAreaMap(AbstractModel):
         :param _ContinentInnerCode: 大洲编码。
         :type ContinentInnerCode: str
         :param _Remark: 标注信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         """
         self._NationCountryName = None
@@ -2026,7 +1993,6 @@ class CountryAreaMap(AbstractModel):
     @property
     def Remark(self):
         """标注信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -11679,7 +11645,6 @@ class Domain(AbstractModel):
         :param _ProjectId: 所属项目
         :type ProjectId: int
         :param _DefaultValue: 默认入口
-注意：此字段可能返回 null，表示取不到有效值。
         :type DefaultValue: str
         :param _ProxyCount: 通道数量
         :type ProxyCount: int
@@ -11689,10 +11654,8 @@ class Domain(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: int
         :param _TagSet: 标签列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagSet: list of TagPair
         :param _BanStatus: 封禁解封状态：BANNED表示已封禁，RECOVER表示已解封或未封禁，BANNING表示封禁中，RECOVERING表示解封中，BAN_FAILED表示封禁失败，RECOVER_FAILED表示解封失败。
-注意：此字段可能返回 null，表示取不到有效值。
         :type BanStatus: str
         """
         self._DomainId = None
@@ -11777,7 +11740,6 @@ class Domain(AbstractModel):
     @property
     def DefaultValue(self):
         """默认入口
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DefaultValue
@@ -11823,7 +11785,6 @@ class Domain(AbstractModel):
     @property
     def TagSet(self):
         """标签列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TagPair
         """
         return self._TagSet
@@ -11835,7 +11796,6 @@ class Domain(AbstractModel):
     @property
     def BanStatus(self):
         """封禁解封状态：BANNED表示已封禁，RECOVER表示已解封或未封禁，BANNING表示封禁中，RECOVERING表示解封中，BAN_FAILED表示封禁失败，RECOVER_FAILED表示解封失败。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BanStatus
@@ -12010,19 +11970,14 @@ class DomainErrorPageInfo(AbstractModel):
         :param _ErrorNos: 原始错误码
         :type ErrorNos: list of int
         :param _NewErrorNo: 新的错误码
-注意：此字段可能返回 null，表示取不到有效值。
         :type NewErrorNo: int
         :param _ClearHeaders: 需要清理的响应头
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClearHeaders: list of str
         :param _SetHeaders: 需要设置的响应头
-注意：此字段可能返回 null，表示取不到有效值。
         :type SetHeaders: list of HttpHeaderParam
         :param _Body: 设置的响应体(不包括 HTTP头)
-注意：此字段可能返回 null，表示取不到有效值。
         :type Body: str
         :param _Status: 规则状态,0为成功
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         """
         self._ErrorPageId = None
@@ -12082,7 +12037,6 @@ class DomainErrorPageInfo(AbstractModel):
     @property
     def NewErrorNo(self):
         """新的错误码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._NewErrorNo
@@ -12094,7 +12048,6 @@ class DomainErrorPageInfo(AbstractModel):
     @property
     def ClearHeaders(self):
         """需要清理的响应头
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._ClearHeaders
@@ -12106,7 +12059,6 @@ class DomainErrorPageInfo(AbstractModel):
     @property
     def SetHeaders(self):
         """需要设置的响应头
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of HttpHeaderParam
         """
         return self._SetHeaders
@@ -12118,7 +12070,6 @@ class DomainErrorPageInfo(AbstractModel):
     @property
     def Body(self):
         """设置的响应体(不包括 HTTP头)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Body
@@ -12130,7 +12081,6 @@ class DomainErrorPageInfo(AbstractModel):
     @property
     def Status(self):
         """规则状态,0为成功
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -16739,22 +16689,16 @@ class ProxyAccessInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _RegionId: 地域ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionId: str
         :param _RegionName: 地域名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionName: str
         :param _ProxyId: 通道ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyId: str
         :param _Vip: 通道接入ip
-注意：此字段可能返回 null，表示取不到有效值。
         :type Vip: str
         :param _VipList: 三网通道VIP列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type VipList: list of IPDetail
         :param _SourceRegionIdcType: 接入点IDC类型。ec或dc
-注意：此字段可能返回 null，表示取不到有效值。
         :type SourceRegionIdcType: str
         """
         self._RegionId = None
@@ -16767,7 +16711,6 @@ class ProxyAccessInfo(AbstractModel):
     @property
     def RegionId(self):
         """地域ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RegionId
@@ -16779,7 +16722,6 @@ class ProxyAccessInfo(AbstractModel):
     @property
     def RegionName(self):
         """地域名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RegionName
@@ -16791,7 +16733,6 @@ class ProxyAccessInfo(AbstractModel):
     @property
     def ProxyId(self):
         """通道ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProxyId
@@ -16803,7 +16744,6 @@ class ProxyAccessInfo(AbstractModel):
     @property
     def Vip(self):
         """通道接入ip
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Vip
@@ -16815,7 +16755,6 @@ class ProxyAccessInfo(AbstractModel):
     @property
     def VipList(self):
         """三网通道VIP列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of IPDetail
         """
         return self._VipList
@@ -16827,7 +16766,6 @@ class ProxyAccessInfo(AbstractModel):
     @property
     def SourceRegionIdcType(self):
         """接入点IDC类型。ec或dc
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SourceRegionIdcType
@@ -16897,27 +16835,20 @@ class ProxyGroupDetail(AbstractModel):
         :param _GroupId: 通道组ID
         :type GroupId: str
         :param _TagSet: 标签列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagSet: list of TagPair
         :param _PolicyId: 安全策略ID，当设置了安全策略时，存在该字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyId: str
         :param _Version: 通道组版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
         :param _ClientIPMethod: 通道获取客户端IP的方式，0表示TOA，1表示Proxy Protocol
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClientIPMethod: list of int
         :param _IPAddressVersion: IP版本，可取值：IPv4、IPv6，默认值IPv4
-注意：此字段可能返回 null，表示取不到有效值。
         :type IPAddressVersion: str
         :param _PackageType: 通道组套餐类型：Thunder表示标准通道组，Accelerator表示银牌加速通道组，CrossBorder表示跨境通道组。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PackageType: str
         :param _Http3Supported: 支持Http3特性的标识，其中：
 0表示关闭；
 1表示启用。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Http3Supported: int
         :param _FeatureBitmap: 特性位图，每个bit位代表一种特性，其中：
 0，表示不支持该特性；
@@ -16931,12 +16862,10 @@ class ProxyGroupDetail(AbstractModel):
 第6个bit，支持三网接入；
 第7个bit，支持接入段Qos加速。
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FeatureBitmap: int
         :param _IsSupportTLSChoice: 是否支持设置TLS设置
 0表示不支持；
 1表示支持。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsSupportTLSChoice: int
         """
         self._CreateTime = None
@@ -17102,7 +17031,6 @@ class ProxyGroupDetail(AbstractModel):
     @property
     def TagSet(self):
         """标签列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TagPair
         """
         return self._TagSet
@@ -17114,7 +17042,6 @@ class ProxyGroupDetail(AbstractModel):
     @property
     def PolicyId(self):
         """安全策略ID，当设置了安全策略时，存在该字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PolicyId
@@ -17126,7 +17053,6 @@ class ProxyGroupDetail(AbstractModel):
     @property
     def Version(self):
         """通道组版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Version
@@ -17138,7 +17064,6 @@ class ProxyGroupDetail(AbstractModel):
     @property
     def ClientIPMethod(self):
         """通道获取客户端IP的方式，0表示TOA，1表示Proxy Protocol
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._ClientIPMethod
@@ -17150,7 +17075,6 @@ class ProxyGroupDetail(AbstractModel):
     @property
     def IPAddressVersion(self):
         """IP版本，可取值：IPv4、IPv6，默认值IPv4
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IPAddressVersion
@@ -17162,7 +17086,6 @@ class ProxyGroupDetail(AbstractModel):
     @property
     def PackageType(self):
         """通道组套餐类型：Thunder表示标准通道组，Accelerator表示银牌加速通道组，CrossBorder表示跨境通道组。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PackageType
@@ -17176,7 +17099,6 @@ class ProxyGroupDetail(AbstractModel):
         """支持Http3特性的标识，其中：
 0表示关闭；
 1表示启用。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Http3Supported
@@ -17199,7 +17121,6 @@ class ProxyGroupDetail(AbstractModel):
 第6个bit，支持三网接入；
 第7个bit，支持接入段Qos加速。
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FeatureBitmap
@@ -17213,7 +17134,6 @@ class ProxyGroupDetail(AbstractModel):
         """是否支持设置TLS设置
 0表示不支持；
 1表示支持。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IsSupportTLSChoice
@@ -17275,7 +17195,6 @@ class ProxyGroupInfo(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Domain: str
         :param _GroupName: 通道组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupName: str
         :param _ProjectId: 项目ID
         :type ProjectId: int
@@ -17293,18 +17212,14 @@ CHANGING表示部分部署中。
         :param _TagSet: 标签列表。
         :type TagSet: list of TagPair
         :param _Version: 通道组版本
-注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: int
         :param _ProxyType: 通道组是否包含微软通道
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyType: int
         :param _Http3Supported: 支持Http3特性的标识，其中：
 0表示关闭；
 1表示启用。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Http3Supported: int
         :param _FeatureBitmap: 特性位图，每个bit位代表一种特性，其中：
 0，表示不支持该特性；
@@ -17317,7 +17232,6 @@ CHANGING表示部分部署中。
 第5个bit，支持精品BGP接入；
 第6个bit，支持三网接入；
 第7个bit，支持接入段Qos加速。
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FeatureBitmap: int
         """
@@ -17360,7 +17274,6 @@ CHANGING表示部分部署中。
     @property
     def GroupName(self):
         """通道组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupName
@@ -17423,7 +17336,6 @@ CHANGING表示部分部署中。
     @property
     def Version(self):
         """通道组版本
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Version
@@ -17435,7 +17347,6 @@ CHANGING表示部分部署中。
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CreateTime
@@ -17447,7 +17358,6 @@ CHANGING表示部分部署中。
     @property
     def ProxyType(self):
         """通道组是否包含微软通道
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ProxyType
@@ -17461,7 +17371,6 @@ CHANGING表示部分部署中。
         """支持Http3特性的标识，其中：
 0表示关闭；
 1表示启用。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Http3Supported
@@ -17483,7 +17392,6 @@ CHANGING表示部分部署中。
 第5个bit，支持精品BGP接入；
 第6个bit，支持三网接入；
 第7个bit，支持接入段Qos加速。
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -17568,7 +17476,6 @@ class ProxyInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceId: （旧参数，请使用ProxyId）通道实例ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _CreateTime: 创建时间，采用Unix时间戳的方式，表示从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数。
         :type CreateTime: int
@@ -17605,7 +17512,6 @@ MOVING表示迁移中。
         :param _Version: 通道版本号：1.0，2.0，3.0。
         :type Version: str
         :param _ProxyId: （新参数）通道实例ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyId: str
         :param _Scalarable: 1，该通道可缩扩容；0，该通道无法缩扩容。
         :type Scalarable: int
@@ -17618,57 +17524,42 @@ MOVING表示迁移中。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyId: str
         :param _AccessRegionInfo: 接入地域详细信息，包括地域ID和地域名。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AccessRegionInfo: :class:`tencentcloud.gaap.v20180529.models.RegionDetail`
         :param _RealServerRegionInfo: 源站地域详细信息，包括地域ID和地域名。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RealServerRegionInfo: :class:`tencentcloud.gaap.v20180529.models.RegionDetail`
         :param _ForwardIP: 通道转发IP
         :type ForwardIP: str
         :param _TagSet: 标签列表，不存在标签时，该字段为空列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagSet: list of TagPair
         :param _SupportSecurity: 是否支持安全组配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type SupportSecurity: int
         :param _BillingType: 计费类型: 0表示按带宽计费  1表示按流量计费。
-注意：此字段可能返回 null，表示取不到有效值。
         :type BillingType: int
         :param _RelatedGlobalDomains: 关联了解析的域名列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type RelatedGlobalDomains: list of str
         :param _ModifyConfigTime: 配置变更时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyConfigTime: int
         :param _ProxyType: 通道类型，100表示THUNDER通道，103表示微软合作通道
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyType: int
         :param _ClientIPMethod: 通道获取客户端IP的方式，0表示TOA，1表示Proxy Protocol
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClientIPMethod: list of int
         :param _IPAddressVersion: IP版本：IPv4、IPv6
-注意：此字段可能返回 null，表示取不到有效值。
         :type IPAddressVersion: str
         :param _NetworkType: 网络类型：normal表示常规BGP，cn2表示精品BGP，triple表示三网，secure_eip表示定制安全EIP
-注意：此字段可能返回 null，表示取不到有效值。
         :type NetworkType: str
         :param _PackageType: 通道套餐类型：Thunder表示标准通道，Accelerator表示银牌加速通道，
 CrossBorder表示跨境通道。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PackageType: str
         :param _BanStatus: 封禁解封状态：BANNED表示已封禁，RECOVER表示已解封或未封禁，BANNING表示封禁中，RECOVERING表示解封中，BAN_FAILED表示封禁失败，RECOVER_FAILED表示解封失败。
-注意：此字段可能返回 null，表示取不到有效值。
         :type BanStatus: str
         :param _IPList: IP列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type IPList: list of IPDetail
         :param _Http3Supported: 支持Http3协议的标识，其中：
 0表示关闭；
 1表示启用。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Http3Supported: int
         :param _InBanBlacklist: 是否在封禁黑名单中，其中：0表示不在黑名单中，1表示在黑名单中。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InBanBlacklist: int
         :param _FeatureBitmap: 特性位图，每个bit位代表一种特性，其中：
 0，表示不支持该特性；
@@ -17682,15 +17573,12 @@ CrossBorder表示跨境通道。
 第6个bit，支持三网接入；
 第7个bit，支持接入段Qos加速。
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FeatureBitmap: int
         :param _IsAutoScaleProxy: 是否是开启了auto scale的通道，0表示否，1表示是。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsAutoScaleProxy: int
         :param _IsSupportTLSChoice: 是否允许设置TLS配置
 0表示不支持；
 1表示支持。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsSupportTLSChoice: int
         """
         self._InstanceId = None
@@ -17734,7 +17622,6 @@ CrossBorder表示跨境通道。
     @property
     def InstanceId(self):
         """（旧参数，请使用ProxyId）通道实例ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -17879,7 +17766,6 @@ MOVING表示迁移中。
     @property
     def ProxyId(self):
         """（新参数）通道实例ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProxyId
@@ -17937,7 +17823,6 @@ MOVING表示迁移中。
     @property
     def AccessRegionInfo(self):
         """接入地域详细信息，包括地域ID和地域名。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.gaap.v20180529.models.RegionDetail`
         """
         return self._AccessRegionInfo
@@ -17949,7 +17834,6 @@ MOVING表示迁移中。
     @property
     def RealServerRegionInfo(self):
         """源站地域详细信息，包括地域ID和地域名。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.gaap.v20180529.models.RegionDetail`
         """
         return self._RealServerRegionInfo
@@ -17972,7 +17856,6 @@ MOVING表示迁移中。
     @property
     def TagSet(self):
         """标签列表，不存在标签时，该字段为空列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TagPair
         """
         return self._TagSet
@@ -17984,7 +17867,6 @@ MOVING表示迁移中。
     @property
     def SupportSecurity(self):
         """是否支持安全组配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SupportSecurity
@@ -17996,7 +17878,6 @@ MOVING表示迁移中。
     @property
     def BillingType(self):
         """计费类型: 0表示按带宽计费  1表示按流量计费。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._BillingType
@@ -18008,7 +17889,6 @@ MOVING表示迁移中。
     @property
     def RelatedGlobalDomains(self):
         """关联了解析的域名列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._RelatedGlobalDomains
@@ -18032,7 +17912,6 @@ MOVING表示迁移中。
     @property
     def ProxyType(self):
         """通道类型，100表示THUNDER通道，103表示微软合作通道
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ProxyType
@@ -18044,7 +17923,6 @@ MOVING表示迁移中。
     @property
     def ClientIPMethod(self):
         """通道获取客户端IP的方式，0表示TOA，1表示Proxy Protocol
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._ClientIPMethod
@@ -18056,7 +17934,6 @@ MOVING表示迁移中。
     @property
     def IPAddressVersion(self):
         """IP版本：IPv4、IPv6
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IPAddressVersion
@@ -18068,7 +17945,6 @@ MOVING表示迁移中。
     @property
     def NetworkType(self):
         """网络类型：normal表示常规BGP，cn2表示精品BGP，triple表示三网，secure_eip表示定制安全EIP
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NetworkType
@@ -18081,7 +17957,6 @@ MOVING表示迁移中。
     def PackageType(self):
         """通道套餐类型：Thunder表示标准通道，Accelerator表示银牌加速通道，
 CrossBorder表示跨境通道。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PackageType
@@ -18093,7 +17968,6 @@ CrossBorder表示跨境通道。
     @property
     def BanStatus(self):
         """封禁解封状态：BANNED表示已封禁，RECOVER表示已解封或未封禁，BANNING表示封禁中，RECOVERING表示解封中，BAN_FAILED表示封禁失败，RECOVER_FAILED表示解封失败。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BanStatus
@@ -18105,7 +17979,6 @@ CrossBorder表示跨境通道。
     @property
     def IPList(self):
         """IP列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of IPDetail
         """
         return self._IPList
@@ -18119,7 +17992,6 @@ CrossBorder表示跨境通道。
         """支持Http3协议的标识，其中：
 0表示关闭；
 1表示启用。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Http3Supported
@@ -18131,7 +18003,6 @@ CrossBorder表示跨境通道。
     @property
     def InBanBlacklist(self):
         """是否在封禁黑名单中，其中：0表示不在黑名单中，1表示在黑名单中。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._InBanBlacklist
@@ -18154,7 +18025,6 @@ CrossBorder表示跨境通道。
 第6个bit，支持三网接入；
 第7个bit，支持接入段Qos加速。
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FeatureBitmap
@@ -18166,7 +18036,6 @@ CrossBorder表示跨境通道。
     @property
     def IsAutoScaleProxy(self):
         """是否是开启了auto scale的通道，0表示否，1表示是。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IsAutoScaleProxy
@@ -18180,7 +18049,6 @@ CrossBorder表示跨境通道。
         """是否允许设置TLS配置
 0表示不支持；
 1表示支持。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IsSupportTLSChoice
@@ -18699,7 +18567,6 @@ class RegionDetail(AbstractModel):
 第5个bit，支持精品BGP接入；
 第6个bit，支持三网接入；
 第7个bit，支持接入段Qos加速。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FeatureBitmap: int
         :param _SupportFeature: 接入区域支持的能力
 注意：此字段可能返回 null，表示取不到有效值。
@@ -18781,7 +18648,6 @@ class RegionDetail(AbstractModel):
 第5个bit，支持精品BGP接入；
 第6个bit，支持三网接入；
 第7个bit，支持接入段Qos加速。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FeatureBitmap
@@ -18908,13 +18774,10 @@ class RuleCheckParams(AbstractModel):
 当调用ModifyRuleAttribute时，不支持修改该参数。
         :type Domain: str
         :param _FailedCountInter: 源站服务失败统计频率
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailedCountInter: int
         :param _FailedThreshold: 源站健康性检查阀值，超过该阀值会屏蔽服务
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailedThreshold: int
         :param _BlockInter: 源站健康性检测超出阀值后，屏蔽的时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type BlockInter: int
         """
         self._DelayLoop = None
@@ -18997,7 +18860,6 @@ class RuleCheckParams(AbstractModel):
     @property
     def FailedCountInter(self):
         """源站服务失败统计频率
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FailedCountInter
@@ -19009,7 +18871,6 @@ class RuleCheckParams(AbstractModel):
     @property
     def FailedThreshold(self):
         """源站健康性检查阀值，超过该阀值会屏蔽服务
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FailedThreshold
@@ -19021,7 +18882,6 @@ class RuleCheckParams(AbstractModel):
     @property
     def BlockInter(self):
         """源站健康性检测超出阀值后，屏蔽的时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._BlockInter
@@ -19083,14 +18943,11 @@ class RuleInfo(AbstractModel):
 只要有一个源站健康状态为异常时，该状态为异常，具体源站的状态请查看RealServerSet。
         :type BindStatus: int
         :param _ForwardHost: 通道转发到源站的请求所携带的host，其中default表示直接转发接收到的host。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ForwardHost: str
         :param _ServerNameIndicationSwitch: 服务器名称指示（ServerNameIndication，简称SNI）开关。ON表示开启，OFF表示关闭。
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServerNameIndicationSwitch: str
         :param _ServerNameIndication: 服务器名称指示（ServerNameIndication，简称SNI），当SNI开关打开时，该字段必填。
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServerNameIndication: str
         :param _ForcedRedirect: 强转HTTPS指示，当传递值为https:时表示强转为https
@@ -19239,7 +19096,6 @@ class RuleInfo(AbstractModel):
     @property
     def ForwardHost(self):
         """通道转发到源站的请求所携带的host，其中default表示直接转发接收到的host。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ForwardHost
@@ -19252,7 +19108,6 @@ class RuleInfo(AbstractModel):
     def ServerNameIndicationSwitch(self):
         """服务器名称指示（ServerNameIndication，简称SNI）开关。ON表示开启，OFF表示关闭。
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ServerNameIndicationSwitch
@@ -19264,7 +19119,6 @@ class RuleInfo(AbstractModel):
     @property
     def ServerNameIndication(self):
         """服务器名称指示（ServerNameIndication，简称SNI），当SNI开关打开时，该字段必填。
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -19438,15 +19292,12 @@ class SecurityPolicyRuleOut(AbstractModel):
         :param _AliasName: 规则别名
         :type AliasName: str
         :param _DestPortRange: 目标端口范围
-注意：此字段可能返回 null，表示取不到有效值。
         :type DestPortRange: str
         :param _RuleId: 规则ID
         :type RuleId: str
         :param _Protocol: 要匹配的协议类型（TCP/UDP）
-注意：此字段可能返回 null，表示取不到有效值。
         :type Protocol: str
         :param _PolicyId: 安全策略ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyId: str
         """
         self._Action = None
@@ -19493,7 +19344,6 @@ class SecurityPolicyRuleOut(AbstractModel):
     @property
     def DestPortRange(self):
         """目标端口范围
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DestPortRange
@@ -19516,7 +19366,6 @@ class SecurityPolicyRuleOut(AbstractModel):
     @property
     def Protocol(self):
         """要匹配的协议类型（TCP/UDP）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Protocol
@@ -19528,7 +19377,6 @@ class SecurityPolicyRuleOut(AbstractModel):
     @property
     def PolicyId(self):
         """安全策略ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PolicyId
@@ -20083,27 +19931,20 @@ class TCPListener(AbstractModel):
 1表示正常。
         :type BindStatus: int
         :param _RealServerSet: 监听器绑定的源站信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type RealServerSet: list of BindRealServer
         :param _CreateTime: 监听器创建时间，Unix时间戳
         :type CreateTime: int
         :param _ClientIPMethod: 监听器获取客户端 IP 的方式，0表示TOA, 1表示Proxy Protocol
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClientIPMethod: int
         :param _HealthyThreshold: 健康阈值，表示连续检查成功多少次后认定源站健康。范围为1到10
-注意：此字段可能返回 null，表示取不到有效值。
         :type HealthyThreshold: int
         :param _UnhealthyThreshold: 不健康阈值，表示连续检查失败多少次数后认为源站不健康。范围为1到10
-注意：此字段可能返回 null，表示取不到有效值。
         :type UnhealthyThreshold: int
         :param _FailoverSwitch: 源站是否开启主备模式：1开启，0关闭，DOMAIN类型源站不支持开启
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailoverSwitch: int
         :param _SessionPersist: 是否开启会话保持选项：0关闭， 非0开启，非0值为会话保持时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type SessionPersist: int
         :param _ProxyId: 监听器的通道ID，如果监听器属于通道组，则为null
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyId: str
         :param _GroupId: 监听器的通道组ID，如果监听器属于通道，则为null
 注意：此字段可能返回 null，表示取不到有效值。
@@ -20276,7 +20117,6 @@ class TCPListener(AbstractModel):
     @property
     def RealServerSet(self):
         """监听器绑定的源站信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BindRealServer
         """
         return self._RealServerSet
@@ -20299,7 +20139,6 @@ class TCPListener(AbstractModel):
     @property
     def ClientIPMethod(self):
         """监听器获取客户端 IP 的方式，0表示TOA, 1表示Proxy Protocol
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ClientIPMethod
@@ -20311,7 +20150,6 @@ class TCPListener(AbstractModel):
     @property
     def HealthyThreshold(self):
         """健康阈值，表示连续检查成功多少次后认定源站健康。范围为1到10
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._HealthyThreshold
@@ -20323,7 +20161,6 @@ class TCPListener(AbstractModel):
     @property
     def UnhealthyThreshold(self):
         """不健康阈值，表示连续检查失败多少次数后认为源站不健康。范围为1到10
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._UnhealthyThreshold
@@ -20335,7 +20172,6 @@ class TCPListener(AbstractModel):
     @property
     def FailoverSwitch(self):
         """源站是否开启主备模式：1开启，0关闭，DOMAIN类型源站不支持开启
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FailoverSwitch
@@ -20347,7 +20183,6 @@ class TCPListener(AbstractModel):
     @property
     def SessionPersist(self):
         """是否开启会话保持选项：0关闭， 非0开启，非0值为会话保持时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SessionPersist
@@ -20359,7 +20194,6 @@ class TCPListener(AbstractModel):
     @property
     def ProxyId(self):
         """监听器的通道ID，如果监听器属于通道组，则为null
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProxyId

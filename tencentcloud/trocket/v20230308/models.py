@@ -18,6 +18,120 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class ChangeMigratingTopicToNextStageRequest(AbstractModel):
+    """ChangeMigratingTopicToNextStage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        :param _TopicNameList: 主题名称列表
+        :type TopicNameList: list of str
+        :param _NamespaceList: 命名空间列表，仅4.x集群有效，与TopicNameList一一对应
+        :type NamespaceList: list of str
+        """
+        self._TaskId = None
+        self._TopicNameList = None
+        self._NamespaceList = None
+
+    @property
+    def TaskId(self):
+        """任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TopicNameList(self):
+        """主题名称列表
+        :rtype: list of str
+        """
+        return self._TopicNameList
+
+    @TopicNameList.setter
+    def TopicNameList(self, TopicNameList):
+        self._TopicNameList = TopicNameList
+
+    @property
+    def NamespaceList(self):
+        """命名空间列表，仅4.x集群有效，与TopicNameList一一对应
+        :rtype: list of str
+        """
+        return self._NamespaceList
+
+    @NamespaceList.setter
+    def NamespaceList(self, NamespaceList):
+        self._NamespaceList = NamespaceList
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TopicNameList = params.get("TopicNameList")
+        self._NamespaceList = params.get("NamespaceList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChangeMigratingTopicToNextStageResponse(AbstractModel):
+    """ChangeMigratingTopicToNextStage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Results: 迁移主题状态修改的结果列表
+        :type Results: list of TopicStageChangeResult
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Results = None
+        self._RequestId = None
+
+    @property
+    def Results(self):
+        """迁移主题状态修改的结果列表
+        :rtype: list of TopicStageChangeResult
+        """
+        return self._Results
+
+    @Results.setter
+    def Results(self, Results):
+        self._Results = Results
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Results") is not None:
+            self._Results = []
+            for item in params.get("Results"):
+                obj = TopicStageChangeResult()
+                obj._deserialize(item)
+                self._Results.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class ConsumeGroupItem(AbstractModel):
     """消费组信息
 
@@ -2301,6 +2415,70 @@ class DeleteRoleRequest(AbstractModel):
 
 class DeleteRoleResponse(AbstractModel):
     """DeleteRole返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteSmoothMigrationTaskRequest(AbstractModel):
+    """DeleteSmoothMigrationTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        """任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteSmoothMigrationTaskResponse(AbstractModel):
+    """DeleteSmoothMigrationTask返回参数结构体
 
     """
 
@@ -6673,6 +6851,483 @@ class DescribeMessageTraceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeMigratingGroupStatsRequest(AbstractModel):
+    """DescribeMigratingGroupStats请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 迁移任务ID
+        :type TaskId: str
+        :param _GroupName: 消费组名称
+        :type GroupName: str
+        :param _Namespace: 命名空间
+        :type Namespace: str
+        """
+        self._TaskId = None
+        self._GroupName = None
+        self._Namespace = None
+
+    @property
+    def TaskId(self):
+        """迁移任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def GroupName(self):
+        """消费组名称
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def Namespace(self):
+        """命名空间
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._GroupName = params.get("GroupName")
+        self._Namespace = params.get("Namespace")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMigratingGroupStatsResponse(AbstractModel):
+    """DescribeMigratingGroupStats返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SourceConsumeLag: 源集群消费组堆积
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceConsumeLag: int
+        :param _TargetConsumeLag: 目标集群消费组堆积
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetConsumeLag: int
+        :param _SourceConsumerClients: 源集群连接客户端列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceConsumerClients: list of ConsumerClient
+        :param _TargetConsumerClients: 目标集群连接客户端列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetConsumerClients: list of ConsumerClient
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SourceConsumeLag = None
+        self._TargetConsumeLag = None
+        self._SourceConsumerClients = None
+        self._TargetConsumerClients = None
+        self._RequestId = None
+
+    @property
+    def SourceConsumeLag(self):
+        """源集群消费组堆积
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SourceConsumeLag
+
+    @SourceConsumeLag.setter
+    def SourceConsumeLag(self, SourceConsumeLag):
+        self._SourceConsumeLag = SourceConsumeLag
+
+    @property
+    def TargetConsumeLag(self):
+        """目标集群消费组堆积
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TargetConsumeLag
+
+    @TargetConsumeLag.setter
+    def TargetConsumeLag(self, TargetConsumeLag):
+        self._TargetConsumeLag = TargetConsumeLag
+
+    @property
+    def SourceConsumerClients(self):
+        """源集群连接客户端列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ConsumerClient
+        """
+        return self._SourceConsumerClients
+
+    @SourceConsumerClients.setter
+    def SourceConsumerClients(self, SourceConsumerClients):
+        self._SourceConsumerClients = SourceConsumerClients
+
+    @property
+    def TargetConsumerClients(self):
+        """目标集群连接客户端列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ConsumerClient
+        """
+        return self._TargetConsumerClients
+
+    @TargetConsumerClients.setter
+    def TargetConsumerClients(self, TargetConsumerClients):
+        self._TargetConsumerClients = TargetConsumerClients
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SourceConsumeLag = params.get("SourceConsumeLag")
+        self._TargetConsumeLag = params.get("TargetConsumeLag")
+        if params.get("SourceConsumerClients") is not None:
+            self._SourceConsumerClients = []
+            for item in params.get("SourceConsumerClients"):
+                obj = ConsumerClient()
+                obj._deserialize(item)
+                self._SourceConsumerClients.append(obj)
+        if params.get("TargetConsumerClients") is not None:
+            self._TargetConsumerClients = []
+            for item in params.get("TargetConsumerClients"):
+                obj = ConsumerClient()
+                obj._deserialize(item)
+                self._TargetConsumerClients.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeMigratingTopicListRequest(AbstractModel):
+    """DescribeMigratingTopicList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: 查询起始位置
+        :type Offset: int
+        :param _Limit: 查询结果限制数量
+        :type Limit: int
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        :param _Filters: 查询条件列表
+        :type Filters: list of Filter
+        """
+        self._Offset = None
+        self._Limit = None
+        self._TaskId = None
+        self._Filters = None
+
+    @property
+    def Offset(self):
+        """查询起始位置
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """查询结果限制数量
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def TaskId(self):
+        """任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Filters(self):
+        """查询条件列表
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._TaskId = params.get("TaskId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMigratingTopicListResponse(AbstractModel):
+    """DescribeMigratingTopicList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 查询总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _MigrateTopics: 主题列表
+        :type MigrateTopics: list of MigratingTopic
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._MigrateTopics = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """查询总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def MigrateTopics(self):
+        """主题列表
+        :rtype: list of MigratingTopic
+        """
+        return self._MigrateTopics
+
+    @MigrateTopics.setter
+    def MigrateTopics(self, MigrateTopics):
+        self._MigrateTopics = MigrateTopics
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("MigrateTopics") is not None:
+            self._MigrateTopics = []
+            for item in params.get("MigrateTopics"):
+                obj = MigratingTopic()
+                obj._deserialize(item)
+                self._MigrateTopics.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeMigratingTopicStatsRequest(AbstractModel):
+    """DescribeMigratingTopicStats请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        :param _TopicName: 主题名称
+        :type TopicName: str
+        :param _Namespace: 命名空间，仅4.x集群有效
+        :type Namespace: str
+        """
+        self._TaskId = None
+        self._TopicName = None
+        self._Namespace = None
+
+    @property
+    def TaskId(self):
+        """任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TopicName(self):
+        """主题名称
+        :rtype: str
+        """
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+    @property
+    def Namespace(self):
+        """命名空间，仅4.x集群有效
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TopicName = params.get("TopicName")
+        self._Namespace = params.get("Namespace")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMigratingTopicStatsResponse(AbstractModel):
+    """DescribeMigratingTopicStats返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SourceClusterConsumerCount: 源集群的消费者数量
+        :type SourceClusterConsumerCount: int
+        :param _TargetClusterConsumerCount: 目标集群的消费者数量
+        :type TargetClusterConsumerCount: int
+        :param _SourceClusterConsumerGroups: 源集群消费组列表
+        :type SourceClusterConsumerGroups: list of str
+        :param _TargetClusterConsumerGroups: 目标集群消费组列表
+        :type TargetClusterConsumerGroups: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SourceClusterConsumerCount = None
+        self._TargetClusterConsumerCount = None
+        self._SourceClusterConsumerGroups = None
+        self._TargetClusterConsumerGroups = None
+        self._RequestId = None
+
+    @property
+    def SourceClusterConsumerCount(self):
+        """源集群的消费者数量
+        :rtype: int
+        """
+        return self._SourceClusterConsumerCount
+
+    @SourceClusterConsumerCount.setter
+    def SourceClusterConsumerCount(self, SourceClusterConsumerCount):
+        self._SourceClusterConsumerCount = SourceClusterConsumerCount
+
+    @property
+    def TargetClusterConsumerCount(self):
+        """目标集群的消费者数量
+        :rtype: int
+        """
+        return self._TargetClusterConsumerCount
+
+    @TargetClusterConsumerCount.setter
+    def TargetClusterConsumerCount(self, TargetClusterConsumerCount):
+        self._TargetClusterConsumerCount = TargetClusterConsumerCount
+
+    @property
+    def SourceClusterConsumerGroups(self):
+        """源集群消费组列表
+        :rtype: list of str
+        """
+        return self._SourceClusterConsumerGroups
+
+    @SourceClusterConsumerGroups.setter
+    def SourceClusterConsumerGroups(self, SourceClusterConsumerGroups):
+        self._SourceClusterConsumerGroups = SourceClusterConsumerGroups
+
+    @property
+    def TargetClusterConsumerGroups(self):
+        """目标集群消费组列表
+        :rtype: list of str
+        """
+        return self._TargetClusterConsumerGroups
+
+    @TargetClusterConsumerGroups.setter
+    def TargetClusterConsumerGroups(self, TargetClusterConsumerGroups):
+        self._TargetClusterConsumerGroups = TargetClusterConsumerGroups
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SourceClusterConsumerCount = params.get("SourceClusterConsumerCount")
+        self._TargetClusterConsumerCount = params.get("TargetClusterConsumerCount")
+        self._SourceClusterConsumerGroups = params.get("SourceClusterConsumerGroups")
+        self._TargetClusterConsumerGroups = params.get("TargetClusterConsumerGroups")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeProductSKUsRequest(AbstractModel):
     """DescribeProductSKUs请求参数结构体
 
@@ -6877,6 +7532,157 @@ class DescribeRoleListResponse(AbstractModel):
                 obj = RoleItem()
                 obj._deserialize(item)
                 self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSourceClusterGroupListRequest(AbstractModel):
+    """DescribeSourceClusterGroupList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: 查询起始位置
+        :type Offset: int
+        :param _Limit: 查询结果限制数量
+        :type Limit: int
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        :param _Filters: 查询条件列表
+        :type Filters: list of Filter
+        """
+        self._Offset = None
+        self._Limit = None
+        self._TaskId = None
+        self._Filters = None
+
+    @property
+    def Offset(self):
+        """查询起始位置
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """查询结果限制数量
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def TaskId(self):
+        """任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Filters(self):
+        """查询条件列表
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._TaskId = params.get("TaskId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSourceClusterGroupListResponse(AbstractModel):
+    """DescribeSourceClusterGroupList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 查询总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _Groups: 消费组配置列表
+        :type Groups: list of SourceClusterGroupConfig
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Groups = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """查询总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Groups(self):
+        """消费组配置列表
+        :rtype: list of SourceClusterGroupConfig
+        """
+        return self._Groups
+
+    @Groups.setter
+    def Groups(self, Groups):
+        self._Groups = Groups
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Groups") is not None:
+            self._Groups = []
+            for item in params.get("Groups"):
+                obj = SourceClusterGroupConfig()
+                obj._deserialize(item)
+                self._Groups.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -7568,6 +8374,166 @@ class DetailedRolePerm(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DoHealthCheckOnMigratingTopicRequest(AbstractModel):
+    """DoHealthCheckOnMigratingTopic请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        :param _TopicName: 主题名称
+        :type TopicName: str
+        :param _IgnoreCheck: 是否忽略当前检查
+        :type IgnoreCheck: bool
+        :param _Namespace: 命名空间，仅4.x集群有效
+        :type Namespace: str
+        """
+        self._TaskId = None
+        self._TopicName = None
+        self._IgnoreCheck = None
+        self._Namespace = None
+
+    @property
+    def TaskId(self):
+        """任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TopicName(self):
+        """主题名称
+        :rtype: str
+        """
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+    @property
+    def IgnoreCheck(self):
+        """是否忽略当前检查
+        :rtype: bool
+        """
+        return self._IgnoreCheck
+
+    @IgnoreCheck.setter
+    def IgnoreCheck(self, IgnoreCheck):
+        self._IgnoreCheck = IgnoreCheck
+
+    @property
+    def Namespace(self):
+        """命名空间，仅4.x集群有效
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TopicName = params.get("TopicName")
+        self._IgnoreCheck = params.get("IgnoreCheck")
+        self._Namespace = params.get("Namespace")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DoHealthCheckOnMigratingTopicResponse(AbstractModel):
+    """DoHealthCheckOnMigratingTopic返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Passed: 是否通过	
+        :type Passed: bool
+        :param _Reason: 健康检查返回的错误信息
+NotChecked 未执行检查， Unknown 未知错误, TopicNotImported 主题未导入, TopicNotExistsInSourceCluster 主题在源集群中不存在, TopicNotExistsInTargetCluster 主题在目标集群中不存在, ConsumerConnectedOnTarget 目标集群上存在消费者连接, SourceTopicHasNewMessagesIn5Minutes 源集群主题前5分钟内有新消息写入, TargetTopicHasNewMessagesIn5Minutes 目标集群主题前5分钟内有新消息写入, SourceTopicHasNoMessagesIn5Minutes 源集群前5分钟内没有新消息写入, TargetTopicHasNoMessagesIn5Minutes 源集群前5分钟内没有新消息写入, ConsumerGroupCountNotMatch 订阅组数量不一致, SourceTopicHasUnconsumedMessages 源集群主题存在未消费消息,
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Reason: str
+        :param _ReasonList: 健康检查返回的错误信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReasonList: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Passed = None
+        self._Reason = None
+        self._ReasonList = None
+        self._RequestId = None
+
+    @property
+    def Passed(self):
+        """是否通过	
+        :rtype: bool
+        """
+        return self._Passed
+
+    @Passed.setter
+    def Passed(self, Passed):
+        self._Passed = Passed
+
+    @property
+    def Reason(self):
+        """健康检查返回的错误信息
+NotChecked 未执行检查， Unknown 未知错误, TopicNotImported 主题未导入, TopicNotExistsInSourceCluster 主题在源集群中不存在, TopicNotExistsInTargetCluster 主题在目标集群中不存在, ConsumerConnectedOnTarget 目标集群上存在消费者连接, SourceTopicHasNewMessagesIn5Minutes 源集群主题前5分钟内有新消息写入, TargetTopicHasNewMessagesIn5Minutes 目标集群主题前5分钟内有新消息写入, SourceTopicHasNoMessagesIn5Minutes 源集群前5分钟内没有新消息写入, TargetTopicHasNoMessagesIn5Minutes 源集群前5分钟内没有新消息写入, ConsumerGroupCountNotMatch 订阅组数量不一致, SourceTopicHasUnconsumedMessages 源集群主题存在未消费消息,
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def ReasonList(self):
+        """健康检查返回的错误信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._ReasonList
+
+    @ReasonList.setter
+    def ReasonList(self, ReasonList):
+        self._ReasonList = ReasonList
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Passed = params.get("Passed")
+        self._Reason = params.get("Reason")
+        self._ReasonList = params.get("ReasonList")
+        self._RequestId = params.get("RequestId")
 
 
 class Endpoint(AbstractModel):
@@ -10254,6 +11220,112 @@ class MessageTrackItem(AbstractModel):
         
 
 
+class MigratingTopic(AbstractModel):
+    """迁移中的主题
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicName: 主题名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicName: str
+        :param _MigrationStatus: 迁移状态 S_RW_D_NA 源集群读写 S_RW_D_R 源集群读写目标集群读 S_RW_D_RW 源集群读写目标集群读写 S_R_D_RW 源集群读目标集群读写 S_NA_D_RW 目标集群读写
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MigrationStatus: str
+        :param _HealthCheckPassed: 是否完成健康检查	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HealthCheckPassed: bool
+        :param _HealthCheckError: 上次健康检查返回的错误信息，仅在HealthCheckPassed为false时有效。 NotChecked 未执行检查， Unknown 未知错误, TopicNotImported 主题未导入, TopicNotExistsInSourceCluster 主题在源集群中不存在, TopicNotExistsInTargetCluster 主题在目标集群中不存在, ConsumerConnectedOnTarget 目标集群上存在消费者连接, SourceTopicHasNewMessagesIn5Minutes 源集群主题前5分钟内有新消息写入, TargetTopicHasNewMessagesIn5Minutes 目标集群主题前5分钟内有新消息写入, SourceTopicHasNoMessagesIn5Minutes 源集群前5分钟内没有新消息写入, TargetTopicHasNoMessagesIn5Minutes 源集群前5分钟内没有新消息写入, ConsumerGroupCountNotMatch 订阅组数量不一致, SourceTopicHasUnconsumedMessages 源集群主题存在未消费消息,
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HealthCheckError: str
+        :param _Namespace: 命名空间，仅4.x集群有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Namespace: str
+        """
+        self._TopicName = None
+        self._MigrationStatus = None
+        self._HealthCheckPassed = None
+        self._HealthCheckError = None
+        self._Namespace = None
+
+    @property
+    def TopicName(self):
+        """主题名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+    @property
+    def MigrationStatus(self):
+        """迁移状态 S_RW_D_NA 源集群读写 S_RW_D_R 源集群读写目标集群读 S_RW_D_RW 源集群读写目标集群读写 S_R_D_RW 源集群读目标集群读写 S_NA_D_RW 目标集群读写
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MigrationStatus
+
+    @MigrationStatus.setter
+    def MigrationStatus(self, MigrationStatus):
+        self._MigrationStatus = MigrationStatus
+
+    @property
+    def HealthCheckPassed(self):
+        """是否完成健康检查	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._HealthCheckPassed
+
+    @HealthCheckPassed.setter
+    def HealthCheckPassed(self, HealthCheckPassed):
+        self._HealthCheckPassed = HealthCheckPassed
+
+    @property
+    def HealthCheckError(self):
+        """上次健康检查返回的错误信息，仅在HealthCheckPassed为false时有效。 NotChecked 未执行检查， Unknown 未知错误, TopicNotImported 主题未导入, TopicNotExistsInSourceCluster 主题在源集群中不存在, TopicNotExistsInTargetCluster 主题在目标集群中不存在, ConsumerConnectedOnTarget 目标集群上存在消费者连接, SourceTopicHasNewMessagesIn5Minutes 源集群主题前5分钟内有新消息写入, TargetTopicHasNewMessagesIn5Minutes 目标集群主题前5分钟内有新消息写入, SourceTopicHasNoMessagesIn5Minutes 源集群前5分钟内没有新消息写入, TargetTopicHasNoMessagesIn5Minutes 源集群前5分钟内没有新消息写入, ConsumerGroupCountNotMatch 订阅组数量不一致, SourceTopicHasUnconsumedMessages 源集群主题存在未消费消息,
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._HealthCheckError
+
+    @HealthCheckError.setter
+    def HealthCheckError(self, HealthCheckError):
+        self._HealthCheckError = HealthCheckError
+
+    @property
+    def Namespace(self):
+        """命名空间，仅4.x集群有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+
+    def _deserialize(self, params):
+        self._TopicName = params.get("TopicName")
+        self._MigrationStatus = params.get("MigrationStatus")
+        self._HealthCheckPassed = params.get("HealthCheckPassed")
+        self._HealthCheckError = params.get("HealthCheckError")
+        self._Namespace = params.get("Namespace")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyConsumerGroupRequest(AbstractModel):
     """ModifyConsumerGroup请求参数结构体
 
@@ -11957,6 +13029,100 @@ class PublicAccessRule(AbstractModel):
         
 
 
+class RemoveMigratingTopicRequest(AbstractModel):
+    """RemoveMigratingTopic请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        :param _TopicName: 主题名称
+        :type TopicName: str
+        :param _Namespace: 命名空间，仅迁移至4.x集群有效
+        :type Namespace: str
+        """
+        self._TaskId = None
+        self._TopicName = None
+        self._Namespace = None
+
+    @property
+    def TaskId(self):
+        """任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TopicName(self):
+        """主题名称
+        :rtype: str
+        """
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+    @property
+    def Namespace(self):
+        """命名空间，仅迁移至4.x集群有效
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TopicName = params.get("TopicName")
+        self._Namespace = params.get("Namespace")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RemoveMigratingTopicResponse(AbstractModel):
+    """RemoveMigratingTopic返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ResendDeadLetterMessageRequest(AbstractModel):
     """ResendDeadLetterMessage请求参数结构体
 
@@ -12353,6 +13519,100 @@ class RoleItem(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class RollbackMigratingTopicStageRequest(AbstractModel):
+    """RollbackMigratingTopicStage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        :param _TopicName: 主题名称
+        :type TopicName: str
+        :param _Namespace: 命名空间，仅4.x集群有效
+        :type Namespace: str
+        """
+        self._TaskId = None
+        self._TopicName = None
+        self._Namespace = None
+
+    @property
+    def TaskId(self):
+        """任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TopicName(self):
+        """主题名称
+        :rtype: str
+        """
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+    @property
+    def Namespace(self):
+        """命名空间，仅4.x集群有效
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TopicName = params.get("TopicName")
+        self._Namespace = params.get("Namespace")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RollbackMigratingTopicStageResponse(AbstractModel):
+    """RollbackMigratingTopicStage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class SourceClusterGroupConfig(AbstractModel):
@@ -13478,6 +14738,78 @@ TRANSACTION:事务消息
         self._TopicV4 = params.get("TopicV4")
         self._FullNamespaceV4 = params.get("FullNamespaceV4")
         self._MsgTTL = params.get("MsgTTL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TopicStageChangeResult(AbstractModel):
+    """迁移主题修改状态后的结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicName: 主题名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicName: str
+        :param _Success: 是否成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Success: bool
+        :param _Namespace: 命名空间，仅4.x有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Namespace: str
+        """
+        self._TopicName = None
+        self._Success = None
+        self._Namespace = None
+
+    @property
+    def TopicName(self):
+        """主题名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+    @property
+    def Success(self):
+        """是否成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Success
+
+    @Success.setter
+    def Success(self, Success):
+        self._Success = Success
+
+    @property
+    def Namespace(self):
+        """命名空间，仅4.x有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+
+    def _deserialize(self, params):
+        self._TopicName = params.get("TopicName")
+        self._Success = params.get("Success")
+        self._Namespace = params.get("Namespace")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -624,6 +624,29 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateTWeSeeRecognitionTask(self, request):
+        """创建 TWeSee 语义理解任务
+
+        :param request: Request instance for CreateTWeSeeRecognitionTask.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreateTWeSeeRecognitionTaskRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.CreateTWeSeeRecognitionTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateTWeSeeRecognitionTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateTWeSeeRecognitionTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateTopicPolicy(self, request):
         """本接口（CreateTopicPolicy）用于创建一个Topic
 
@@ -2777,6 +2800,29 @@ class IotexplorerClient(AbstractClient):
             body = self.call("InvokeExternalSourceAIServiceTask", params, headers=headers)
             response = json.loads(body)
             model = models.InvokeExternalSourceAIServiceTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def InvokeTWeSeeRecognitionTask(self, request):
+        """同步执行 TWeSee 语义理解任务
+
+        :param request: Request instance for InvokeTWeSeeRecognitionTask.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.InvokeTWeSeeRecognitionTaskRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.InvokeTWeSeeRecognitionTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InvokeTWeSeeRecognitionTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.InvokeTWeSeeRecognitionTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

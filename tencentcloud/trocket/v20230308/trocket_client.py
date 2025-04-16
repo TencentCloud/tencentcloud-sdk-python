@@ -26,6 +26,29 @@ class TrocketClient(AbstractClient):
     _service = 'trocket'
 
 
+    def ChangeMigratingTopicToNextStage(self, request):
+        """修改迁移中的Topic状态进入下一步
+
+        :param request: Request instance for ChangeMigratingTopicToNextStage.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.ChangeMigratingTopicToNextStageRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.ChangeMigratingTopicToNextStageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ChangeMigratingTopicToNextStage", params, headers=headers)
+            response = json.loads(body)
+            model = models.ChangeMigratingTopicToNextStageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateConsumerGroup(self, request):
         """创建消费组
 
@@ -362,6 +385,29 @@ class TrocketClient(AbstractClient):
             body = self.call("DeleteRole", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteRoleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteSmoothMigrationTask(self, request):
+        """删除平滑迁移任务，只有被取消的任务才可删除
+
+        :param request: Request instance for DeleteSmoothMigrationTask.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.DeleteSmoothMigrationTaskRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.DeleteSmoothMigrationTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteSmoothMigrationTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteSmoothMigrationTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -925,6 +971,77 @@ class TrocketClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeMigratingGroupStats(self, request):
+        """查看迁移消费组的实时信息
+
+        :param request: Request instance for DescribeMigratingGroupStats.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeMigratingGroupStatsRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.DescribeMigratingGroupStatsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMigratingGroupStats", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMigratingGroupStatsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMigratingTopicList(self, request):
+        """查询Topic迁移状态列表
+
+        查询过滤器，支持TopicName、MigrationStatus查询
+
+        :param request: Request instance for DescribeMigratingTopicList.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeMigratingTopicListRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.DescribeMigratingTopicListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMigratingTopicList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMigratingTopicListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMigratingTopicStats(self, request):
+        """用于查询迁移主题的实时数据
+
+        :param request: Request instance for DescribeMigratingTopicStats.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeMigratingTopicStatsRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.DescribeMigratingTopicStatsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMigratingTopicStats", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMigratingTopicStatsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeProductSKUs(self, request):
         """查询产品售卖规格，针对 RocketMQ 5.x 集群。
 
@@ -965,6 +1082,34 @@ class TrocketClient(AbstractClient):
             body = self.call("DescribeRoleList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeRoleListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSourceClusterGroupList(self, request):
+        """平滑迁移过程获取源集群group列表接口
+
+        查询过滤器，支持字段
+        GroupName，消费组名称模糊搜索
+        Imported，是否已导入
+        ImportStatus，导入状态
+
+        :param request: Request instance for DescribeSourceClusterGroupList.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeSourceClusterGroupListRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.DescribeSourceClusterGroupListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSourceClusterGroupList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSourceClusterGroupListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1041,6 +1186,29 @@ class TrocketClient(AbstractClient):
             body = self.call("DescribeTopicListByGroup", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeTopicListByGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DoHealthCheckOnMigratingTopic(self, request):
+        """检查迁移中的主题是否处于正常状态，只有处于正常状态的主题，才可以进入下一个迁移阶段
+
+        :param request: Request instance for DoHealthCheckOnMigratingTopic.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.DoHealthCheckOnMigratingTopicRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.DoHealthCheckOnMigratingTopicResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DoHealthCheckOnMigratingTopic", params, headers=headers)
+            response = json.loads(body)
+            model = models.DoHealthCheckOnMigratingTopicResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1327,6 +1495,29 @@ class TrocketClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RemoveMigratingTopic(self, request):
+        """从迁移列表中移除主题，仅当主题处于初始状态时有效
+
+        :param request: Request instance for RemoveMigratingTopic.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.RemoveMigratingTopicRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.RemoveMigratingTopicResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RemoveMigratingTopic", params, headers=headers)
+            response = json.loads(body)
+            model = models.RemoveMigratingTopicResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ResendDeadLetterMessage(self, request):
         """重新发送死信消息
 
@@ -1364,6 +1555,29 @@ class TrocketClient(AbstractClient):
             body = self.call("ResetConsumerGroupOffset", params, headers=headers)
             response = json.loads(body)
             model = models.ResetConsumerGroupOffsetResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RollbackMigratingTopicStage(self, request):
+        """回滚正在迁移的主题至前一个阶段
+
+        :param request: Request instance for RollbackMigratingTopicStage.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.RollbackMigratingTopicStageRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.RollbackMigratingTopicStageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RollbackMigratingTopicStage", params, headers=headers)
+            response = json.loads(body)
+            model = models.RollbackMigratingTopicStageResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

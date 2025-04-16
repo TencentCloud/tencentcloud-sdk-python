@@ -182,6 +182,187 @@ class Condition(AbstractModel):
         
 
 
+class CreateDLPFileDetectionTaskData(AbstractModel):
+    """提交送检任务相应数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DLPFileDetectionTaskID: 提交任务生成的id，也即requestID。用于后续查询
+        :type DLPFileDetectionTaskID: str
+        """
+        self._DLPFileDetectionTaskID = None
+
+    @property
+    def DLPFileDetectionTaskID(self):
+        """提交任务生成的id，也即requestID。用于后续查询
+        :rtype: str
+        """
+        return self._DLPFileDetectionTaskID
+
+    @DLPFileDetectionTaskID.setter
+    def DLPFileDetectionTaskID(self, DLPFileDetectionTaskID):
+        self._DLPFileDetectionTaskID = DLPFileDetectionTaskID
+
+
+    def _deserialize(self, params):
+        self._DLPFileDetectionTaskID = params.get("DLPFileDetectionTaskID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDLPFileDetectionTaskRequest(AbstractModel):
+    """CreateDLPFileDetectionTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: 文件下载链接，要求公网可访问，GET方式访问后为文件
+        :type Url: str
+        :param _FileName: 文件名，带后缀
+        :type FileName: str
+        :param _FileMd5:  文件md5，传入相同md5会直接使用之前缓存的结果。
+
+> 请注意：不同文件使用相同md5送检，会命中缓存得到旧的检测结果
+        :type FileMd5: str
+        :param _DomainInstanceId: 管理域实例ID，用于CAM管理域权限分配
+        :type DomainInstanceId: str
+        :param _CallBackUrl: 回调地址，暂时未使用
+        :type CallBackUrl: str
+        """
+        self._Url = None
+        self._FileName = None
+        self._FileMd5 = None
+        self._DomainInstanceId = None
+        self._CallBackUrl = None
+
+    @property
+    def Url(self):
+        """文件下载链接，要求公网可访问，GET方式访问后为文件
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def FileName(self):
+        """文件名，带后缀
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def FileMd5(self):
+        """ 文件md5，传入相同md5会直接使用之前缓存的结果。
+
+> 请注意：不同文件使用相同md5送检，会命中缓存得到旧的检测结果
+        :rtype: str
+        """
+        return self._FileMd5
+
+    @FileMd5.setter
+    def FileMd5(self, FileMd5):
+        self._FileMd5 = FileMd5
+
+    @property
+    def DomainInstanceId(self):
+        """管理域实例ID，用于CAM管理域权限分配
+        :rtype: str
+        """
+        return self._DomainInstanceId
+
+    @DomainInstanceId.setter
+    def DomainInstanceId(self, DomainInstanceId):
+        self._DomainInstanceId = DomainInstanceId
+
+    @property
+    def CallBackUrl(self):
+        """回调地址，暂时未使用
+        :rtype: str
+        """
+        return self._CallBackUrl
+
+    @CallBackUrl.setter
+    def CallBackUrl(self, CallBackUrl):
+        self._CallBackUrl = CallBackUrl
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
+        self._FileName = params.get("FileName")
+        self._FileMd5 = params.get("FileMd5")
+        self._DomainInstanceId = params.get("DomainInstanceId")
+        self._CallBackUrl = params.get("CallBackUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDLPFileDetectionTaskResponse(AbstractModel):
+    """CreateDLPFileDetectionTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 创建送检任务响应数据
+        :type Data: :class:`tencentcloud.ioa.v20220601.models.CreateDLPFileDetectionTaskData`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """创建送检任务响应数据
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.CreateDLPFileDetectionTaskData`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = CreateDLPFileDetectionTaskData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class CreateDeviceVirtualGroupRequest(AbstractModel):
     """CreateDeviceVirtualGroup请求参数结构体
 
@@ -886,6 +1067,183 @@ class DescribeAccountGroupsResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Data") is not None:
             self._Data = DescribeAccountGroupsPageResp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDLPFileDetectResultData(AbstractModel):
+    """查询文件检测结果响应数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileMd5: 提交任务时的文件md5
+        :type FileMd5: str
+        :param _FileName: 提交任务时的文件名
+        :type FileName: str
+        :param _Status: 状态：等待检测->正在检测->检测失败/检测成功。或任务不存在
+        :type Status: str
+        :param _DetectResult: 文件检测结果，json字符串。
+        :type DetectResult: str
+        """
+        self._FileMd5 = None
+        self._FileName = None
+        self._Status = None
+        self._DetectResult = None
+
+    @property
+    def FileMd5(self):
+        """提交任务时的文件md5
+        :rtype: str
+        """
+        return self._FileMd5
+
+    @FileMd5.setter
+    def FileMd5(self, FileMd5):
+        self._FileMd5 = FileMd5
+
+    @property
+    def FileName(self):
+        """提交任务时的文件名
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def Status(self):
+        """状态：等待检测->正在检测->检测失败/检测成功。或任务不存在
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def DetectResult(self):
+        """文件检测结果，json字符串。
+        :rtype: str
+        """
+        return self._DetectResult
+
+    @DetectResult.setter
+    def DetectResult(self, DetectResult):
+        self._DetectResult = DetectResult
+
+
+    def _deserialize(self, params):
+        self._FileMd5 = params.get("FileMd5")
+        self._FileName = params.get("FileName")
+        self._Status = params.get("Status")
+        self._DetectResult = params.get("DetectResult")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDLPFileDetectResultRequest(AbstractModel):
+    """DescribeDLPFileDetectResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DomainInstanceId: 管理域实例ID，用于CAM管理域权限分配
+        :type DomainInstanceId: str
+        :param _QueryID: 查询ID，即提交送检任务接口（CreateDLPFileDetectionTask）返回的任务ID（DLPFileDetectionTaskID）
+        :type QueryID: str
+        """
+        self._DomainInstanceId = None
+        self._QueryID = None
+
+    @property
+    def DomainInstanceId(self):
+        """管理域实例ID，用于CAM管理域权限分配
+        :rtype: str
+        """
+        return self._DomainInstanceId
+
+    @DomainInstanceId.setter
+    def DomainInstanceId(self, DomainInstanceId):
+        self._DomainInstanceId = DomainInstanceId
+
+    @property
+    def QueryID(self):
+        """查询ID，即提交送检任务接口（CreateDLPFileDetectionTask）返回的任务ID（DLPFileDetectionTaskID）
+        :rtype: str
+        """
+        return self._QueryID
+
+    @QueryID.setter
+    def QueryID(self, QueryID):
+        self._QueryID = QueryID
+
+
+    def _deserialize(self, params):
+        self._DomainInstanceId = params.get("DomainInstanceId")
+        self._QueryID = params.get("QueryID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDLPFileDetectResultResponse(AbstractModel):
+    """DescribeDLPFileDetectResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 查询任务结果
+        :type Data: :class:`tencentcloud.ioa.v20220601.models.DescribeDLPFileDetectResultData`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """查询任务结果
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeDLPFileDetectResultData`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DescribeDLPFileDetectResultData()
             self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 

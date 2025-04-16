@@ -2156,6 +2156,7 @@ class CreateRoomRequest(AbstractModel):
 1 标清
 2 高清
 3 全高清
+注意：连麦人数（MaxMicNumber）>6时，仅可使用标清
         :type Resolution: int
         :param _MaxMicNumber: 设置课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。该取值影响计费，请根据业务实际情况设置。计费规则见“购买指南”下“计费概述”。
         :type MaxMicNumber: int
@@ -2220,6 +2221,8 @@ class CreateRoomRequest(AbstractModel):
         :type RecordStream: int
         :param _WhiteBoardSnapshotMode: 板书截图生成类型。0 不生成板书（默认）；1 全量模式；2 单页去重模式
         :type WhiteBoardSnapshotMode: int
+        :param _SubtitlesTranscription: 字幕转写功能开关：0关闭，1开启，默认关闭
+        :type SubtitlesTranscription: int
         """
         self._Name = None
         self._StartTime = None
@@ -2252,6 +2255,7 @@ class CreateRoomRequest(AbstractModel):
         self._RecordLang = None
         self._RecordStream = None
         self._WhiteBoardSnapshotMode = None
+        self._SubtitlesTranscription = None
 
     @property
     def Name(self):
@@ -2303,6 +2307,7 @@ class CreateRoomRequest(AbstractModel):
 1 标清
 2 高清
 3 全高清
+注意：连麦人数（MaxMicNumber）>6时，仅可使用标清
         :rtype: int
         """
         return self._Resolution
@@ -2616,6 +2621,17 @@ class CreateRoomRequest(AbstractModel):
     def WhiteBoardSnapshotMode(self, WhiteBoardSnapshotMode):
         self._WhiteBoardSnapshotMode = WhiteBoardSnapshotMode
 
+    @property
+    def SubtitlesTranscription(self):
+        """字幕转写功能开关：0关闭，1开启，默认关闭
+        :rtype: int
+        """
+        return self._SubtitlesTranscription
+
+    @SubtitlesTranscription.setter
+    def SubtitlesTranscription(self, SubtitlesTranscription):
+        self._SubtitlesTranscription = SubtitlesTranscription
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -2649,6 +2665,7 @@ class CreateRoomRequest(AbstractModel):
         self._RecordLang = params.get("RecordLang")
         self._RecordStream = params.get("RecordStream")
         self._WhiteBoardSnapshotMode = params.get("WhiteBoardSnapshotMode")
+        self._SubtitlesTranscription = params.get("SubtitlesTranscription")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12448,6 +12465,9 @@ class SendRoomNormalMessageRequest(AbstractModel):
         :type CloudCustomData: str
         :param _NickName: 昵称，当FromAccount没有在房间中，需要填写NickName，当FromAccount在房间中，填写NickName无意义
         :type NickName: str
+        :param _Priority: 消息的优先级，默认优先级 Normal。
+可以指定3种优先级，从高到低依次为 High、Normal 和 Low，区分大小写。
+        :type Priority: str
         """
         self._SdkAppId = None
         self._RoomId = None
@@ -12455,6 +12475,7 @@ class SendRoomNormalMessageRequest(AbstractModel):
         self._MsgBody = None
         self._CloudCustomData = None
         self._NickName = None
+        self._Priority = None
 
     @property
     def SdkAppId(self):
@@ -12522,6 +12543,18 @@ class SendRoomNormalMessageRequest(AbstractModel):
     def NickName(self, NickName):
         self._NickName = NickName
 
+    @property
+    def Priority(self):
+        """消息的优先级，默认优先级 Normal。
+可以指定3种优先级，从高到低依次为 High、Normal 和 Low，区分大小写。
+        :rtype: str
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -12535,6 +12568,7 @@ class SendRoomNormalMessageRequest(AbstractModel):
                 self._MsgBody.append(obj)
         self._CloudCustomData = params.get("CloudCustomData")
         self._NickName = params.get("NickName")
+        self._Priority = params.get("Priority")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

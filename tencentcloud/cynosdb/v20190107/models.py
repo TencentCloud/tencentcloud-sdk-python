@@ -26211,6 +26211,10 @@ class ModifyInstanceData(AbstractModel):
         :type DeviceType: str
         :param _UpgradeType: 升级方式。升级完成后切换或维护时间内切换
         :type UpgradeType: str
+        :param _LibraNodeCount: libra节点数量
+        :type LibraNodeCount: int
+        :param _OldLibraNodeCount: 原libra节点数量
+        :type OldLibraNodeCount: int
         """
         self._Cpu = None
         self._Memory = None
@@ -26221,6 +26225,8 @@ class ModifyInstanceData(AbstractModel):
         self._OldDeviceType = None
         self._DeviceType = None
         self._UpgradeType = None
+        self._LibraNodeCount = None
+        self._OldLibraNodeCount = None
 
     @property
     def Cpu(self):
@@ -26321,6 +26327,28 @@ class ModifyInstanceData(AbstractModel):
     def UpgradeType(self, UpgradeType):
         self._UpgradeType = UpgradeType
 
+    @property
+    def LibraNodeCount(self):
+        """libra节点数量
+        :rtype: int
+        """
+        return self._LibraNodeCount
+
+    @LibraNodeCount.setter
+    def LibraNodeCount(self, LibraNodeCount):
+        self._LibraNodeCount = LibraNodeCount
+
+    @property
+    def OldLibraNodeCount(self):
+        """原libra节点数量
+        :rtype: int
+        """
+        return self._OldLibraNodeCount
+
+    @OldLibraNodeCount.setter
+    def OldLibraNodeCount(self, OldLibraNodeCount):
+        self._OldLibraNodeCount = OldLibraNodeCount
+
 
     def _deserialize(self, params):
         self._Cpu = params.get("Cpu")
@@ -26332,6 +26360,8 @@ class ModifyInstanceData(AbstractModel):
         self._OldDeviceType = params.get("OldDeviceType")
         self._DeviceType = params.get("DeviceType")
         self._UpgradeType = params.get("UpgradeType")
+        self._LibraNodeCount = params.get("LibraNodeCount")
+        self._OldLibraNodeCount = params.get("OldLibraNodeCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26786,10 +26816,13 @@ class ModifyParamItem(AbstractModel):
         :type CurrentValue: str
         :param _OldValue: 参数旧值（只在出参时有用）
         :type OldValue: str
+        :param _Component: libra组件类型
+        :type Component: str
         """
         self._ParamName = None
         self._CurrentValue = None
         self._OldValue = None
+        self._Component = None
 
     @property
     def ParamName(self):
@@ -26824,11 +26857,23 @@ class ModifyParamItem(AbstractModel):
     def OldValue(self, OldValue):
         self._OldValue = OldValue
 
+    @property
+    def Component(self):
+        """libra组件类型
+        :rtype: str
+        """
+        return self._Component
+
+    @Component.setter
+    def Component(self, Component):
+        self._Component = Component
+
 
     def _deserialize(self, params):
         self._ParamName = params.get("ParamName")
         self._CurrentValue = params.get("CurrentValue")
         self._OldValue = params.get("OldValue")
+        self._Component = params.get("Component")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -11595,7 +11595,7 @@ class AudioTemplateInfo(AbstractModel):
 
 
         :type Bitrate: int
-        :param _SampleRate: 音频流的采样率，不同编码标准支持的采样率选项不同。详细参考[音频采样率支持范围文档]https://cloud.tencent.com/document/product/862/77166#f3b039f1-d817-4a96-b4e4-90132d31cd53
+        :param _SampleRate: 音频流的采样率，不同编码标准支持的采样率选项不同。详细参考[音频采样率支持范围文档](https://cloud.tencent.com/document/product/862/77166#f3b039f1-d817-4a96-b4e4-90132d31cd53)
 单位：Hz
 注意：请确保源音频流的采样率在上述选项范围内，否则可能导致转码失败！
         :type SampleRate: int
@@ -11666,7 +11666,7 @@ class AudioTemplateInfo(AbstractModel):
 
     @property
     def SampleRate(self):
-        """音频流的采样率，不同编码标准支持的采样率选项不同。详细参考[音频采样率支持范围文档]https://cloud.tencent.com/document/product/862/77166#f3b039f1-d817-4a96-b4e4-90132d31cd53
+        """音频流的采样率，不同编码标准支持的采样率选项不同。详细参考[音频采样率支持范围文档](https://cloud.tencent.com/document/product/862/77166#f3b039f1-d817-4a96-b4e4-90132d31cd53)
 单位：Hz
 注意：请确保源音频流的采样率在上述选项范围内，否则可能导致转码失败！
         :rtype: int
@@ -17497,7 +17497,7 @@ class CreateOutputInfo(AbstractModel):
         :type SecurityGroupIds: list of str
         :param _Zones: 可用区，output最多只支持输入一个可用区。	
         :type Zones: list of str
-        :param _OutputType: 输出类型：Internet/TencentCSS/StreamLive
+        :param _OutputType: 输出类型：Internet/TencentCSS
         :type OutputType: str
         :param _RISTSettings: 输出的RIST的配置。
         :type RISTSettings: :class:`tencentcloud.mps.v20190612.models.CreateOutputRistSettings`
@@ -17643,7 +17643,7 @@ class CreateOutputInfo(AbstractModel):
 
     @property
     def OutputType(self):
-        """输出类型：Internet/TencentCSS/StreamLive
+        """输出类型：Internet/TencentCSS
         :rtype: str
         """
         return self._OutputType

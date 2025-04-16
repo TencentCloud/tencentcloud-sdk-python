@@ -1659,6 +1659,29 @@ class BhClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def SearchSubtaskResultById(self, request):
+        """查询运维子任务执行结果
+
+        :param request: Request instance for SearchSubtaskResultById.
+        :type request: :class:`tencentcloud.bh.v20230418.models.SearchSubtaskResultByIdRequest`
+        :rtype: :class:`tencentcloud.bh.v20230418.models.SearchSubtaskResultByIdResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SearchSubtaskResultById", params, headers=headers)
+            response = json.loads(body)
+            model = models.SearchSubtaskResultByIdResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def SearchTaskResult(self, request):
         """搜索运维任务执行结果
 

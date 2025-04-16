@@ -26226,6 +26226,261 @@ class FormField(AbstractModel):
 
     ```
 
+    输入示例4（表格设置表头不合成到文件）：
+
+    ```
+    {
+        "headers": [
+            {
+                "content": "序号"
+            },
+            {
+                "content": "品牌"
+            },
+            {
+                "content": "商品名称"
+            },
+            {
+                "content": "粒径"
+            },
+            {
+                "content": "规格"
+            },
+            {
+                "content": "数量(包)"
+            },
+            {
+                "content": "重量(吨)"
+            }
+        ],
+        "rowCount": 5,
+        "body": {
+            "cells": [
+                {
+                    "rowStart": 1,
+                    "rowEnd": 1,
+                    "columnStart": 1,
+                    "columnEnd": 1,
+                    "content": "1"
+                },
+                {
+                    "rowStart": 1,
+                    "rowEnd": 1,
+                    "columnStart": 2,
+                    "columnEnd": 2,
+                    "content": "品牌名称1"
+                },
+                {
+                    "rowStart": 1,
+                    "rowEnd": 1,
+                    "columnStart": 3,
+                    "columnEnd": 3,
+                    "content": "商品名称1"
+                },
+                {
+                    "rowStart": 1,
+                    "rowEnd": 1,
+                    "columnStart": 4,
+                    "columnEnd": 4,
+                    "content": "7#"
+                },
+                {
+                    "rowStart": 1,
+                    "rowEnd": 1,
+                    "columnStart": 5,
+                    "columnEnd": 5,
+                    "content": "20"
+                },
+                {
+                    "rowStart": 1,
+                    "rowEnd": 1,
+                    "columnStart": 6,
+                    "columnEnd": 6,
+                    "content": "50"
+                },
+                {
+                    "rowStart": 1,
+                    "rowEnd": 1,
+                    "columnStart": 7,
+                    "columnEnd": 7,
+                    "content": "1.000"
+                },
+                {
+                    "rowStart": 2,
+                    "rowEnd": 2,
+                    "columnStart": 1,
+                    "columnEnd": 1,
+                    "content": "2"
+                },
+                {
+                    "rowStart": 2,
+                    "rowEnd": 2,
+                    "columnStart": 2,
+                    "columnEnd": 2,
+                    "content": "品牌名称2"
+                },
+                {
+                    "rowStart": 2,
+                    "rowEnd": 2,
+                    "columnStart": 3,
+                    "columnEnd": 3,
+                    "content": "商品名称2"
+                },
+                {
+                    "rowStart": 2,
+                    "rowEnd": 2,
+                    "columnStart": 4,
+                    "columnEnd": 4,
+                    "content": "5#"
+                },
+                {
+                    "rowStart": 2,
+                    "rowEnd": 2,
+                    "columnStart": 5,
+                    "columnEnd": 5,
+                    "content": "20"
+                },
+                {
+                    "rowStart": 2,
+                    "rowEnd": 2,
+                    "columnStart": 6,
+                    "columnEnd": 6,
+                    "content": "20"
+                },
+                {
+                    "rowStart": 2,
+                    "rowEnd": 2,
+                    "columnStart": 7,
+                    "columnEnd": 7,
+                    "content": "0.400"
+                },
+                {
+                    "rowStart": 3,
+                    "rowEnd": 3,
+                    "columnStart": 1,
+                    "columnEnd": 1,
+                    "content": "3"
+                },
+                {
+                    "rowStart": 3,
+                    "rowEnd": 3,
+                    "columnStart": 2,
+                    "columnEnd": 2,
+                    "content": "品牌名称3"
+                },
+                {
+                    "rowStart": 3,
+                    "rowEnd": 3,
+                    "columnStart": 3,
+                    "columnEnd": 3,
+                    "content": "商品名称3"
+                },
+                {
+                    "rowStart": 3,
+                    "rowEnd": 3,
+                    "columnStart": 4,
+                    "columnEnd": 4,
+                    "content": "2#"
+                },
+                {
+                    "rowStart": 3,
+                    "rowEnd": 3,
+                    "columnStart": 5,
+                    "columnEnd": 5,
+                    "content": "20"
+                },
+                {
+                    "rowStart": 3,
+                    "rowEnd": 3,
+                    "columnStart": 6,
+                    "columnEnd": 6,
+                    "content": "5"
+                },
+                {
+                    "rowStart": 3,
+                    "rowEnd": 3,
+                    "columnStart": 7,
+                    "columnEnd": 7,
+                    "content": "0.100"
+                },
+                {
+                    "rowStart": 4,
+                    "rowEnd": 4,
+                    "columnStart": 1,
+                    "columnEnd": 1,
+                    "content": "4"
+                },
+                {
+                    "rowStart": 4,
+                    "rowEnd": 4,
+                    "columnStart": 2,
+                    "columnEnd": 2,
+                    "content": "品牌名称4"
+                },
+                {
+                    "rowStart": 4,
+                    "rowEnd": 4,
+                    "columnStart": 3,
+                    "columnEnd": 3,
+                    "content": "商品名称4"
+                },
+                {
+                    "rowStart": 4,
+                    "rowEnd": 4,
+                    "columnStart": 4,
+                    "columnEnd": 4,
+                    "content": "3#"
+                },
+                {
+                    "rowStart": 4,
+                    "rowEnd": 4,
+                    "columnStart": 5,
+                    "columnEnd": 5,
+                    "content": "20"
+                },
+                {
+                    "rowStart": 4,
+                    "rowEnd": 4,
+                    "columnStart": 6,
+                    "columnEnd": 6,
+                    "content": "10"
+                },
+                {
+                    "rowStart": 4,
+                    "rowEnd": 4,
+                    "columnStart": 7,
+                    "columnEnd": 7,
+                    "content": "0.200"
+                },
+                {
+                    "rowStart": 5,
+                    "rowEnd": 5,
+                    "columnStart": 1,
+                    "columnEnd": 5,
+                    "content": "合计"
+                },
+                {
+                    "rowStart": 5,
+                    "rowEnd": 5,
+                    "columnStart": 6,
+                    "columnEnd": 6,
+                    "content": "85"
+                },
+                {
+                    "rowStart": 5,
+                    "rowEnd": 5,
+                    "columnStart": 7,
+                    "columnEnd": 7,
+                    "content": "1.700"
+                }
+            ]
+        },
+        "settings": {
+            "headerRowDisplay": false
+        }
+    }
+    ```
+
     表格参数说明
 
     | 名称                | 类型    | 描述                                              |
@@ -26238,6 +26493,7 @@ class FormField(AbstractModel):
     | cells.N.columnEnd   | Integer | 单元格坐标：列结束index                           |
     | cells.N.content     | String  | 单元格内容，字数不超过100                         |
     | cells.N.style         | String  | 单元格字体风格配置 ，风格配置的json字符串  如： {"font":"黑体","fontSize":12,"color":"#FFFFFF","bold":true,"align":"CENTER"}      |
+    | settings            | Object  | 表格全局设定。目前支持设置表头不显示，示例：{"headerRowDisplay":false}                                                         |
 
     表格参数headers说明
     widthPercent Integer 表头单元格列占总表头的比例，例如1：30表示 此列占表头的30%，不填写时列宽度平均拆分；例如2：总2列，某一列填写40，剩余列可以为空，按照60计算。；例如3：总3列，某一列填写30，剩余2列可以为空，分别为(100-30)/2=35

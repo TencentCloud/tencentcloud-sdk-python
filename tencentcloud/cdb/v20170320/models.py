@@ -35685,10 +35685,10 @@ class StartCpuExpandRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例 ID 。
         :type InstanceId: str
-        :param _Type: 扩容类型。可选值：auto：代表进行自动扩容
-manual：代表进行手动扩容
+        :param _Type: 扩容类型。auto 自动  manual 立即生效 timeInterval 按时间段 period 按周期
         :type Type: str
-        :param _ExpandCpu: 手动扩容时，扩容的CPU核心数。Type 为 manual 时必传。
+        :param _ExpandCpu: 手动扩容时，扩容的 CPU 核心数。
+说明：1. Type 为 manual 时必传。2. 扩容的 CPU 核心数上限为当前实例 CPU 核心数，比如8核16G最大可手动扩容的 CPU 核心数为8，即范围为1 - 8。
         :type ExpandCpu: int
         :param _AutoStrategy: 自动扩容策略。Type 为 auto 时必传。
         :type AutoStrategy: :class:`tencentcloud.cdb.v20170320.models.AutoStrategy`
@@ -35711,8 +35711,7 @@ manual：代表进行手动扩容
 
     @property
     def Type(self):
-        """扩容类型。可选值：auto：代表进行自动扩容
-manual：代表进行手动扩容
+        """扩容类型。auto 自动  manual 立即生效 timeInterval 按时间段 period 按周期
         :rtype: str
         """
         return self._Type
@@ -35723,7 +35722,8 @@ manual：代表进行手动扩容
 
     @property
     def ExpandCpu(self):
-        """手动扩容时，扩容的CPU核心数。Type 为 manual 时必传。
+        """手动扩容时，扩容的 CPU 核心数。
+说明：1. Type 为 manual 时必传。2. 扩容的 CPU 核心数上限为当前实例 CPU 核心数，比如8核16G最大可手动扩容的 CPU 核心数为8，即范围为1 - 8。
         :rtype: int
         """
         return self._ExpandCpu

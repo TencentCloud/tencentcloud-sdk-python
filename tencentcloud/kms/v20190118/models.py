@@ -2901,6 +2901,57 @@ class EncryptResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ExclusiveHSM(AbstractModel):
+    """独享版集群
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HsmClusterId: 独享集群Id
+        :type HsmClusterId: str
+        :param _HsmClusterName: 独享集群名称
+        :type HsmClusterName: str
+        """
+        self._HsmClusterId = None
+        self._HsmClusterName = None
+
+    @property
+    def HsmClusterId(self):
+        """独享集群Id
+        :rtype: str
+        """
+        return self._HsmClusterId
+
+    @HsmClusterId.setter
+    def HsmClusterId(self, HsmClusterId):
+        self._HsmClusterId = HsmClusterId
+
+    @property
+    def HsmClusterName(self):
+        """独享集群名称
+        :rtype: str
+        """
+        return self._HsmClusterName
+
+    @HsmClusterName.setter
+    def HsmClusterName(self, HsmClusterName):
+        self._HsmClusterName = HsmClusterName
+
+
+    def _deserialize(self, params):
+        self._HsmClusterId = params.get("HsmClusterId")
+        self._HsmClusterName = params.get("HsmClusterName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GenerateDataKeyRequest(AbstractModel):
     """GenerateDataKey请求参数结构体
 
@@ -3592,6 +3643,8 @@ class GetServiceStatusResponse(AbstractModel):
         :type CmkUserCount: int
         :param _CmkLimit: 返回KMS用户密钥规格数量
         :type CmkLimit: int
+        :param _ExclusiveHSMList: 返回独享集群组
+        :type ExclusiveHSMList: list of ExclusiveHSM
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3606,6 +3659,7 @@ class GetServiceStatusResponse(AbstractModel):
         self._SubscriptionInfo = None
         self._CmkUserCount = None
         self._CmkLimit = None
+        self._ExclusiveHSMList = None
         self._RequestId = None
 
     @property
@@ -3730,6 +3784,17 @@ class GetServiceStatusResponse(AbstractModel):
         self._CmkLimit = CmkLimit
 
     @property
+    def ExclusiveHSMList(self):
+        """返回独享集群组
+        :rtype: list of ExclusiveHSM
+        """
+        return self._ExclusiveHSMList
+
+    @ExclusiveHSMList.setter
+    def ExclusiveHSMList(self, ExclusiveHSMList):
+        self._ExclusiveHSMList = ExclusiveHSMList
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -3753,6 +3818,12 @@ class GetServiceStatusResponse(AbstractModel):
         self._SubscriptionInfo = params.get("SubscriptionInfo")
         self._CmkUserCount = params.get("CmkUserCount")
         self._CmkLimit = params.get("CmkLimit")
+        if params.get("ExclusiveHSMList") is not None:
+            self._ExclusiveHSMList = []
+            for item in params.get("ExclusiveHSMList"):
+                obj = ExclusiveHSM()
+                obj._deserialize(item)
+                self._ExclusiveHSMList.append(obj)
         self._RequestId = params.get("RequestId")
 
 

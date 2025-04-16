@@ -1009,7 +1009,7 @@ class CreatePrivateZoneResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: 私有域ID, zone-xxxxxx
+        :param _ZoneId: 私有域ID, zone-12345678
         :type ZoneId: str
         :param _Domain: 私有域名
         :type Domain: str
@@ -1022,7 +1022,7 @@ class CreatePrivateZoneResponse(AbstractModel):
 
     @property
     def ZoneId(self):
-        """私有域ID, zone-xxxxxx
+        """私有域ID, zone-12345678
         :rtype: str
         """
         return self._ZoneId
@@ -2360,14 +2360,14 @@ class DescribePrivateZoneRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: 域名，格式必须是标准的TLD
+        :param _ZoneId: 私有域id
         :type ZoneId: str
         """
         self._ZoneId = None
 
     @property
     def ZoneId(self):
-        """域名，格式必须是标准的TLD
+        """私有域id
         :rtype: str
         """
         return self._ZoneId
@@ -3277,7 +3277,7 @@ class ModifyPrivateZoneVpcResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: 私有域ID, zone-xxxxxx
+        :param _ZoneId: 私有域ID, zone-12345ds6
         :type ZoneId: str
         :param _VpcSet: 解析域关联的VPC列表
         :type VpcSet: list of VpcInfo
@@ -3293,7 +3293,7 @@ class ModifyPrivateZoneVpcResponse(AbstractModel):
 
     @property
     def ZoneId(self):
-        """私有域ID, zone-xxxxxx
+        """私有域ID, zone-12345ds6
         :rtype: str
         """
         return self._ZoneId

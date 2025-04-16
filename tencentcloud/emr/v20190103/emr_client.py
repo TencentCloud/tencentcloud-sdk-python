@@ -650,6 +650,29 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeInspectionTaskResult(self, request):
+        """获取巡检任务结果列表
+
+        :param request: Request instance for DescribeInspectionTaskResult.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeInspectionTaskResultRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeInspectionTaskResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInspectionTaskResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInspectionTaskResultResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeInstanceRenewNodes(self, request):
         """查询待续费节点信息
 

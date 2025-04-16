@@ -26,6 +26,29 @@ class IoaClient(AbstractClient):
     _service = 'ioa'
 
 
+    def CreateDLPFileDetectionTask(self, request):
+        """提交送检任务
+
+        :param request: Request instance for CreateDLPFileDetectionTask.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.CreateDLPFileDetectionTaskRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.CreateDLPFileDetectionTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDLPFileDetectionTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDLPFileDetectionTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateDeviceVirtualGroup(self, request):
         """创建终端自定义分组，私有化调用path为：/capi/Assets/Device/CreateDeviceVirtualGroup
 
@@ -63,6 +86,29 @@ class IoaClient(AbstractClient):
             body = self.call("DescribeAccountGroups", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAccountGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDLPFileDetectResult(self, request):
+        """webservice查询文件检测结果
+
+        :param request: Request instance for DescribeDLPFileDetectResult.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.DescribeDLPFileDetectResultRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeDLPFileDetectResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDLPFileDetectResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDLPFileDetectResultResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

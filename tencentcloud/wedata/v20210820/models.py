@@ -48328,10 +48328,10 @@ class InstanceDetailVO(AbstractModel):
         :param _ExecutorGroupName: 资源组名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutorGroupName: str
-        :param _CurRunDate: 标准数据时间
+        :param _CurRunDate: 实例数据时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CurRunDate: str
-        :param _NextCurDate: 下一个标准数据时间
+        :param _NextCurDate: 下一个实例数据时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type NextCurDate: str
         :param _TryLimit: 每次运行失败，下发重试次数限制
@@ -48598,7 +48598,7 @@ class InstanceDetailVO(AbstractModel):
 
     @property
     def CurRunDate(self):
-        """标准数据时间
+        """实例数据时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -48610,7 +48610,7 @@ class InstanceDetailVO(AbstractModel):
 
     @property
     def NextCurDate(self):
-        """下一个标准数据时间
+        """下一个实例数据时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -52572,7 +52572,7 @@ class InstanceVO(AbstractModel):
 * C: CRONTAB_CYCLE
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskCycleType: str
-        :param _CurRunDate: 标准数据时间
+        :param _CurRunDate: 实例数据时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CurRunDate: str
         :param _TryLimit: 每次运行失败，下发重试次数限制
@@ -52790,7 +52790,7 @@ class InstanceVO(AbstractModel):
 
     @property
     def CurRunDate(self):
-        """标准数据时间
+        """实例数据时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

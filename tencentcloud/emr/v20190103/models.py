@@ -5660,6 +5660,8 @@ class CreateSLInstanceRequest(AbstractModel):
         :type Tags: list of Tag
         :param _PrePaySetting: 预付费参数
         :type PrePaySetting: :class:`tencentcloud.emr.v20190103.models.PrePaySetting`
+        :param _ClientToken: 唯一随机标识，时效性为5分钟，需要调用者指定 防止客户端重复创建资源，例如 a9a90aa6-****-****-****-fae360632808	
+        :type ClientToken: str
         """
         self._InstanceName = None
         self._PayMode = None
@@ -5669,6 +5671,7 @@ class CreateSLInstanceRequest(AbstractModel):
         self._ZoneSettings = None
         self._Tags = None
         self._PrePaySetting = None
+        self._ClientToken = None
 
     @property
     def InstanceName(self):
@@ -5758,6 +5761,17 @@ class CreateSLInstanceRequest(AbstractModel):
     def PrePaySetting(self, PrePaySetting):
         self._PrePaySetting = PrePaySetting
 
+    @property
+    def ClientToken(self):
+        """唯一随机标识，时效性为5分钟，需要调用者指定 防止客户端重复创建资源，例如 a9a90aa6-****-****-****-fae360632808	
+        :rtype: str
+        """
+        return self._ClientToken
+
+    @ClientToken.setter
+    def ClientToken(self, ClientToken):
+        self._ClientToken = ClientToken
+
 
     def _deserialize(self, params):
         self._InstanceName = params.get("InstanceName")
@@ -5780,6 +5794,7 @@ class CreateSLInstanceRequest(AbstractModel):
         if params.get("PrePaySetting") is not None:
             self._PrePaySetting = PrePaySetting()
             self._PrePaySetting._deserialize(params.get("PrePaySetting"))
+        self._ClientToken = params.get("ClientToken")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9487,6 +9502,190 @@ class DescribeInsightListResponse(AbstractModel):
                 obj = InsightResult()
                 obj._deserialize(item)
                 self._ResultList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeInspectionTaskResultRequest(AbstractModel):
+    """DescribeInspectionTaskResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _Type: 类型
+        :type Type: str
+        :param _StartTime: 开始时间
+        :type StartTime: int
+        :param _EndTime: 结束时间
+        :type EndTime: int
+        :param _Limit: 分页大小
+        :type Limit: int
+        :param _Offset: 分页偏移量
+        :type Offset: int
+        """
+        self._InstanceId = None
+        self._Type = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Type(self):
+        """类型
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def StartTime(self):
+        """开始时间
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """结束时间
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Limit(self):
+        """分页大小
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """分页偏移量
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Type = params.get("Type")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInspectionTaskResultResponse(AbstractModel):
+    """DescribeInspectionTaskResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InspectionResultInfo: 巡检任务记录，base64编码
+        :type InspectionResultInfo: str
+        :param _Total: 记录总数
+        :type Total: int
+        :param _TypeInfo: 类别信息，base64编码，{"FixedTime": "定时", "RealTime": "及时"}
+        :type TypeInfo: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InspectionResultInfo = None
+        self._Total = None
+        self._TypeInfo = None
+        self._RequestId = None
+
+    @property
+    def InspectionResultInfo(self):
+        """巡检任务记录，base64编码
+        :rtype: str
+        """
+        return self._InspectionResultInfo
+
+    @InspectionResultInfo.setter
+    def InspectionResultInfo(self, InspectionResultInfo):
+        self._InspectionResultInfo = InspectionResultInfo
+
+    @property
+    def Total(self):
+        """记录总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def TypeInfo(self):
+        """类别信息，base64编码，{"FixedTime": "定时", "RealTime": "及时"}
+        :rtype: str
+        """
+        return self._TypeInfo
+
+    @TypeInfo.setter
+    def TypeInfo(self, TypeInfo):
+        self._TypeInfo = TypeInfo
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InspectionResultInfo = params.get("InspectionResultInfo")
+        self._Total = params.get("Total")
+        self._TypeInfo = params.get("TypeInfo")
         self._RequestId = params.get("RequestId")
 
 
@@ -21447,10 +21646,13 @@ class ModifySLInstanceRequest(AbstractModel):
         :type Zone: str
         :param _NodeNum: 该区域变配后的目标节点数量，所有区域节点总数应大于等于3，小于等于50。
         :type NodeNum: int
+        :param _ClientToken: 唯一随机标识，时效性为5分钟，需要调用者指定 防止客户端重复创建资源，例如 a9a90aa6-****-****-****-fae360632808	
+        :type ClientToken: str
         """
         self._InstanceId = None
         self._Zone = None
         self._NodeNum = None
+        self._ClientToken = None
 
     @property
     def InstanceId(self):
@@ -21485,11 +21687,23 @@ class ModifySLInstanceRequest(AbstractModel):
     def NodeNum(self, NodeNum):
         self._NodeNum = NodeNum
 
+    @property
+    def ClientToken(self):
+        """唯一随机标识，时效性为5分钟，需要调用者指定 防止客户端重复创建资源，例如 a9a90aa6-****-****-****-fae360632808	
+        :rtype: str
+        """
+        return self._ClientToken
+
+    @ClientToken.setter
+    def ClientToken(self, ClientToken):
+        self._ClientToken = ClientToken
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._Zone = params.get("Zone")
         self._NodeNum = params.get("NodeNum")
+        self._ClientToken = params.get("ClientToken")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
