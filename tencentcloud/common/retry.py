@@ -5,7 +5,7 @@ from tencentcloud.common.exception import TencentCloudSDKException
 
 
 class NoopRetryer(object):
-    """
+    """configuration without retry
 
     NoopRetryer is a retry policy that does nothing.
     It is useful when you don't want to retry.
