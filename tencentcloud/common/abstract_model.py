@@ -61,7 +61,11 @@ class AbstractModel(object):
         return json.dumps(self._serialize(allow_none=True), *args, **kwargs)
 
     def from_json_string(self, jsonStr):
-        """Deserialize a JSON formatted str to a Python object"""
+        """Deserialize a JSON formatted str to a Python object
+
+        :param jsonStr: JSON formatted string
+        :type jsonStr: str
+        """
         params = json.loads(jsonStr)
         self._deserialize(params)
 
