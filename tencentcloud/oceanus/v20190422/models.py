@@ -2573,7 +2573,7 @@ class CreateJobConfigRequest(AbstractModel):
         :type JobId: str
         :param _EntrypointClass: 主类
         :type EntrypointClass: str
-        :param _ProgramArgs: 主类入参
+        :param _ProgramArgs: 主类入参，需要区分下Sql作业配置，Jar作业配置，Python作业配置，具体参考下面的示例值
         :type ProgramArgs: str
         :param _Remark: 备注
         :type Remark: str
@@ -2694,7 +2694,7 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def ProgramArgs(self):
-        """主类入参
+        """主类入参，需要区分下Sql作业配置，Jar作业配置，Python作业配置，具体参考下面的示例值
         :rtype: str
         """
         return self._ProgramArgs

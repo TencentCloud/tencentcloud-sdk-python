@@ -331,12 +331,15 @@ class ConsumerClient(AbstractModel):
         :param _ConsumerLag: 客户端消费堆积
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConsumerLag: int
+        :param _ChannelProtocol: 消费者客户端类型（grpc；remoting；http）
+        :type ChannelProtocol: str
         """
         self._ClientId = None
         self._ClientAddr = None
         self._Language = None
         self._Version = None
         self._ConsumerLag = None
+        self._ChannelProtocol = None
 
     @property
     def ClientId(self):
@@ -394,6 +397,17 @@ class ConsumerClient(AbstractModel):
     def ConsumerLag(self, ConsumerLag):
         self._ConsumerLag = ConsumerLag
 
+    @property
+    def ChannelProtocol(self):
+        """消费者客户端类型（grpc；remoting；http）
+        :rtype: str
+        """
+        return self._ChannelProtocol
+
+    @ChannelProtocol.setter
+    def ChannelProtocol(self, ChannelProtocol):
+        self._ChannelProtocol = ChannelProtocol
+
 
     def _deserialize(self, params):
         self._ClientId = params.get("ClientId")
@@ -401,6 +415,7 @@ class ConsumerClient(AbstractModel):
         self._Language = params.get("Language")
         self._Version = params.get("Version")
         self._ConsumerLag = params.get("ConsumerLag")
+        self._ChannelProtocol = params.get("ChannelProtocol")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6925,16 +6940,12 @@ class DescribeMigratingGroupStatsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _SourceConsumeLag: 源集群消费组堆积
-注意：此字段可能返回 null，表示取不到有效值。
         :type SourceConsumeLag: int
         :param _TargetConsumeLag: 目标集群消费组堆积
-注意：此字段可能返回 null，表示取不到有效值。
         :type TargetConsumeLag: int
         :param _SourceConsumerClients: 源集群连接客户端列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type SourceConsumerClients: list of ConsumerClient
         :param _TargetConsumerClients: 目标集群连接客户端列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type TargetConsumerClients: list of ConsumerClient
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6948,7 +6959,6 @@ class DescribeMigratingGroupStatsResponse(AbstractModel):
     @property
     def SourceConsumeLag(self):
         """源集群消费组堆积
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SourceConsumeLag
@@ -6960,7 +6970,6 @@ class DescribeMigratingGroupStatsResponse(AbstractModel):
     @property
     def TargetConsumeLag(self):
         """目标集群消费组堆积
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TargetConsumeLag
@@ -6972,7 +6981,6 @@ class DescribeMigratingGroupStatsResponse(AbstractModel):
     @property
     def SourceConsumerClients(self):
         """源集群连接客户端列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ConsumerClient
         """
         return self._SourceConsumerClients
@@ -6984,7 +6992,6 @@ class DescribeMigratingGroupStatsResponse(AbstractModel):
     @property
     def TargetConsumerClients(self):
         """目标集群连接客户端列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ConsumerClient
         """
         return self._TargetConsumerClients
@@ -7030,41 +7037,19 @@ class DescribeMigratingTopicListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: 查询起始位置
-        :type Offset: int
-        :param _Limit: 查询结果限制数量
-        :type Limit: int
         :param _TaskId: 任务ID
         :type TaskId: str
         :param _Filters: 查询条件列表
         :type Filters: list of Filter
+        :param _Offset: 查询起始位置
+        :type Offset: int
+        :param _Limit: 查询结果限制数量
+        :type Limit: int
         """
-        self._Offset = None
-        self._Limit = None
         self._TaskId = None
         self._Filters = None
-
-    @property
-    def Offset(self):
-        """查询起始位置
-        :rtype: int
-        """
-        return self._Offset
-
-    @Offset.setter
-    def Offset(self, Offset):
-        self._Offset = Offset
-
-    @property
-    def Limit(self):
-        """查询结果限制数量
-        :rtype: int
-        """
-        return self._Limit
-
-    @Limit.setter
-    def Limit(self, Limit):
-        self._Limit = Limit
+        self._Offset = None
+        self._Limit = None
 
     @property
     def TaskId(self):
@@ -7088,10 +7073,30 @@ class DescribeMigratingTopicListRequest(AbstractModel):
     def Filters(self, Filters):
         self._Filters = Filters
 
+    @property
+    def Offset(self):
+        """查询起始位置
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """查询结果限制数量
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
 
     def _deserialize(self, params):
-        self._Offset = params.get("Offset")
-        self._Limit = params.get("Limit")
         self._TaskId = params.get("TaskId")
         if params.get("Filters") is not None:
             self._Filters = []
@@ -7099,6 +7104,8 @@ class DescribeMigratingTopicListRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7117,7 +7124,6 @@ class DescribeMigratingTopicListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 查询总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _MigrateTopics: 主题列表
         :type MigrateTopics: list of MigratingTopic
@@ -7131,7 +7137,6 @@ class DescribeMigratingTopicListResponse(AbstractModel):
     @property
     def TotalCount(self):
         """查询总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -7542,41 +7547,19 @@ class DescribeSourceClusterGroupListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: 查询起始位置
-        :type Offset: int
-        :param _Limit: 查询结果限制数量
-        :type Limit: int
         :param _TaskId: 任务ID
         :type TaskId: str
         :param _Filters: 查询条件列表
         :type Filters: list of Filter
+        :param _Offset: 查询起始位置
+        :type Offset: int
+        :param _Limit: 查询结果限制数量
+        :type Limit: int
         """
-        self._Offset = None
-        self._Limit = None
         self._TaskId = None
         self._Filters = None
-
-    @property
-    def Offset(self):
-        """查询起始位置
-        :rtype: int
-        """
-        return self._Offset
-
-    @Offset.setter
-    def Offset(self, Offset):
-        self._Offset = Offset
-
-    @property
-    def Limit(self):
-        """查询结果限制数量
-        :rtype: int
-        """
-        return self._Limit
-
-    @Limit.setter
-    def Limit(self, Limit):
-        self._Limit = Limit
+        self._Offset = None
+        self._Limit = None
 
     @property
     def TaskId(self):
@@ -7600,10 +7583,30 @@ class DescribeSourceClusterGroupListRequest(AbstractModel):
     def Filters(self, Filters):
         self._Filters = Filters
 
+    @property
+    def Offset(self):
+        """查询起始位置
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """查询结果限制数量
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
 
     def _deserialize(self, params):
-        self._Offset = params.get("Offset")
-        self._Limit = params.get("Limit")
         self._TaskId = params.get("TaskId")
         if params.get("Filters") is not None:
             self._Filters = []
@@ -7611,6 +7614,8 @@ class DescribeSourceClusterGroupListRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7629,7 +7634,6 @@ class DescribeSourceClusterGroupListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 查询总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _Groups: 消费组配置列表
         :type Groups: list of SourceClusterGroupConfig
@@ -7643,7 +7647,6 @@ class DescribeSourceClusterGroupListResponse(AbstractModel):
     @property
     def TotalCount(self):
         """查询总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -11228,31 +11231,40 @@ class MigratingTopic(AbstractModel):
     def __init__(self):
         r"""
         :param _TopicName: 主题名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TopicName: str
         :param _MigrationStatus: 迁移状态 S_RW_D_NA 源集群读写 S_RW_D_R 源集群读写目标集群读 S_RW_D_RW 源集群读写目标集群读写 S_R_D_RW 源集群读目标集群读写 S_NA_D_RW 目标集群读写
-注意：此字段可能返回 null，表示取不到有效值。
         :type MigrationStatus: str
         :param _HealthCheckPassed: 是否完成健康检查	
-注意：此字段可能返回 null，表示取不到有效值。
         :type HealthCheckPassed: bool
         :param _HealthCheckError: 上次健康检查返回的错误信息，仅在HealthCheckPassed为false时有效。 NotChecked 未执行检查， Unknown 未知错误, TopicNotImported 主题未导入, TopicNotExistsInSourceCluster 主题在源集群中不存在, TopicNotExistsInTargetCluster 主题在目标集群中不存在, ConsumerConnectedOnTarget 目标集群上存在消费者连接, SourceTopicHasNewMessagesIn5Minutes 源集群主题前5分钟内有新消息写入, TargetTopicHasNewMessagesIn5Minutes 目标集群主题前5分钟内有新消息写入, SourceTopicHasNoMessagesIn5Minutes 源集群前5分钟内没有新消息写入, TargetTopicHasNoMessagesIn5Minutes 源集群前5分钟内没有新消息写入, ConsumerGroupCountNotMatch 订阅组数量不一致, SourceTopicHasUnconsumedMessages 源集群主题存在未消费消息,
-注意：此字段可能返回 null，表示取不到有效值。
         :type HealthCheckError: str
         :param _Namespace: 命名空间，仅4.x集群有效
-注意：此字段可能返回 null，表示取不到有效值。
         :type Namespace: str
+        :param _NamespaceV4: 4.x的命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamespaceV4: str
+        :param _TopicNameV4: 4.x的主题名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicNameV4: str
+        :param _FullNamespaceV4: 4.x的完整命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FullNamespaceV4: str
+        :param _HealthCheckErrorList: 上次健康检查返回的错误列表
+        :type HealthCheckErrorList: list of str
         """
         self._TopicName = None
         self._MigrationStatus = None
         self._HealthCheckPassed = None
         self._HealthCheckError = None
         self._Namespace = None
+        self._NamespaceV4 = None
+        self._TopicNameV4 = None
+        self._FullNamespaceV4 = None
+        self._HealthCheckErrorList = None
 
     @property
     def TopicName(self):
         """主题名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TopicName
@@ -11264,7 +11276,6 @@ class MigratingTopic(AbstractModel):
     @property
     def MigrationStatus(self):
         """迁移状态 S_RW_D_NA 源集群读写 S_RW_D_R 源集群读写目标集群读 S_RW_D_RW 源集群读写目标集群读写 S_R_D_RW 源集群读目标集群读写 S_NA_D_RW 目标集群读写
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MigrationStatus
@@ -11276,7 +11287,6 @@ class MigratingTopic(AbstractModel):
     @property
     def HealthCheckPassed(self):
         """是否完成健康检查	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._HealthCheckPassed
@@ -11288,7 +11298,6 @@ class MigratingTopic(AbstractModel):
     @property
     def HealthCheckError(self):
         """上次健康检查返回的错误信息，仅在HealthCheckPassed为false时有效。 NotChecked 未执行检查， Unknown 未知错误, TopicNotImported 主题未导入, TopicNotExistsInSourceCluster 主题在源集群中不存在, TopicNotExistsInTargetCluster 主题在目标集群中不存在, ConsumerConnectedOnTarget 目标集群上存在消费者连接, SourceTopicHasNewMessagesIn5Minutes 源集群主题前5分钟内有新消息写入, TargetTopicHasNewMessagesIn5Minutes 目标集群主题前5分钟内有新消息写入, SourceTopicHasNoMessagesIn5Minutes 源集群前5分钟内没有新消息写入, TargetTopicHasNoMessagesIn5Minutes 源集群前5分钟内没有新消息写入, ConsumerGroupCountNotMatch 订阅组数量不一致, SourceTopicHasUnconsumedMessages 源集群主题存在未消费消息,
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HealthCheckError
@@ -11300,7 +11309,6 @@ class MigratingTopic(AbstractModel):
     @property
     def Namespace(self):
         """命名空间，仅4.x集群有效
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Namespace
@@ -11309,6 +11317,53 @@ class MigratingTopic(AbstractModel):
     def Namespace(self, Namespace):
         self._Namespace = Namespace
 
+    @property
+    def NamespaceV4(self):
+        """4.x的命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._NamespaceV4
+
+    @NamespaceV4.setter
+    def NamespaceV4(self, NamespaceV4):
+        self._NamespaceV4 = NamespaceV4
+
+    @property
+    def TopicNameV4(self):
+        """4.x的主题名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TopicNameV4
+
+    @TopicNameV4.setter
+    def TopicNameV4(self, TopicNameV4):
+        self._TopicNameV4 = TopicNameV4
+
+    @property
+    def FullNamespaceV4(self):
+        """4.x的完整命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FullNamespaceV4
+
+    @FullNamespaceV4.setter
+    def FullNamespaceV4(self, FullNamespaceV4):
+        self._FullNamespaceV4 = FullNamespaceV4
+
+    @property
+    def HealthCheckErrorList(self):
+        """上次健康检查返回的错误列表
+        :rtype: list of str
+        """
+        return self._HealthCheckErrorList
+
+    @HealthCheckErrorList.setter
+    def HealthCheckErrorList(self, HealthCheckErrorList):
+        self._HealthCheckErrorList = HealthCheckErrorList
+
 
     def _deserialize(self, params):
         self._TopicName = params.get("TopicName")
@@ -11316,6 +11371,10 @@ class MigratingTopic(AbstractModel):
         self._HealthCheckPassed = params.get("HealthCheckPassed")
         self._HealthCheckError = params.get("HealthCheckError")
         self._Namespace = params.get("Namespace")
+        self._NamespaceV4 = params.get("NamespaceV4")
+        self._TopicNameV4 = params.get("TopicNameV4")
+        self._FullNamespaceV4 = params.get("FullNamespaceV4")
+        self._HealthCheckErrorList = params.get("HealthCheckErrorList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14756,13 +14815,10 @@ class TopicStageChangeResult(AbstractModel):
     def __init__(self):
         r"""
         :param _TopicName: 主题名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TopicName: str
         :param _Success: 是否成功
-注意：此字段可能返回 null，表示取不到有效值。
         :type Success: bool
         :param _Namespace: 命名空间，仅4.x有效
-注意：此字段可能返回 null，表示取不到有效值。
         :type Namespace: str
         """
         self._TopicName = None
@@ -14772,7 +14828,6 @@ class TopicStageChangeResult(AbstractModel):
     @property
     def TopicName(self):
         """主题名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TopicName
@@ -14784,7 +14839,6 @@ class TopicStageChangeResult(AbstractModel):
     @property
     def Success(self):
         """是否成功
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Success
@@ -14796,7 +14850,6 @@ class TopicStageChangeResult(AbstractModel):
     @property
     def Namespace(self):
         """命名空间，仅4.x有效
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Namespace

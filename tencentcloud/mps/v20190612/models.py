@@ -17482,6 +17482,10 @@ class CreateOutputInfo(AbstractModel):
         :type Protocol: str
         :param _OutputRegion: 输出地区。
         :type OutputRegion: str
+        :param _OutputType: 输出类型：Internet/TencentCSS
+        :type OutputType: str
+        :param _OutputKind: 输出模块类型，包括Pinpoint（单点输出，最多支持四路并发输出）；MultiMesh（多路输出，支持大于四路的并发输出，目前可以达到200路）。默认类型为 Pinpoint 输出。对于单个 Flow 一个区域最多只能有一个 MultiMesh 输出
+        :type OutputKind: str
         :param _SRTSettings: 输出的SRT的配置。
         :type SRTSettings: :class:`tencentcloud.mps.v20190612.models.CreateOutputSRTSettings`
         :param _RTMPSettings: 输出的RTMP的配置。
@@ -17497,8 +17501,6 @@ class CreateOutputInfo(AbstractModel):
         :type SecurityGroupIds: list of str
         :param _Zones: 可用区，output最多只支持输入一个可用区。	
         :type Zones: list of str
-        :param _OutputType: 输出类型：Internet/TencentCSS
-        :type OutputType: str
         :param _RISTSettings: 输出的RIST的配置。
         :type RISTSettings: :class:`tencentcloud.mps.v20190612.models.CreateOutputRistSettings`
         :param _PidSelector: 对于含有多个音/视频轨的流，可以指定需要使用的轨道
@@ -17508,6 +17510,8 @@ class CreateOutputInfo(AbstractModel):
         self._Description = None
         self._Protocol = None
         self._OutputRegion = None
+        self._OutputType = None
+        self._OutputKind = None
         self._SRTSettings = None
         self._RTMPSettings = None
         self._RTPSettings = None
@@ -17515,7 +17519,6 @@ class CreateOutputInfo(AbstractModel):
         self._MaxConcurrent = None
         self._SecurityGroupIds = None
         self._Zones = None
-        self._OutputType = None
         self._RISTSettings = None
         self._PidSelector = None
 
@@ -17562,6 +17565,28 @@ class CreateOutputInfo(AbstractModel):
     @OutputRegion.setter
     def OutputRegion(self, OutputRegion):
         self._OutputRegion = OutputRegion
+
+    @property
+    def OutputType(self):
+        """输出类型：Internet/TencentCSS
+        :rtype: str
+        """
+        return self._OutputType
+
+    @OutputType.setter
+    def OutputType(self, OutputType):
+        self._OutputType = OutputType
+
+    @property
+    def OutputKind(self):
+        """输出模块类型，包括Pinpoint（单点输出，最多支持四路并发输出）；MultiMesh（多路输出，支持大于四路的并发输出，目前可以达到200路）。默认类型为 Pinpoint 输出。对于单个 Flow 一个区域最多只能有一个 MultiMesh 输出
+        :rtype: str
+        """
+        return self._OutputKind
+
+    @OutputKind.setter
+    def OutputKind(self, OutputKind):
+        self._OutputKind = OutputKind
 
     @property
     def SRTSettings(self):
@@ -17642,17 +17667,6 @@ class CreateOutputInfo(AbstractModel):
         self._Zones = Zones
 
     @property
-    def OutputType(self):
-        """输出类型：Internet/TencentCSS
-        :rtype: str
-        """
-        return self._OutputType
-
-    @OutputType.setter
-    def OutputType(self, OutputType):
-        self._OutputType = OutputType
-
-    @property
     def RISTSettings(self):
         """输出的RIST的配置。
         :rtype: :class:`tencentcloud.mps.v20190612.models.CreateOutputRistSettings`
@@ -17680,6 +17694,8 @@ class CreateOutputInfo(AbstractModel):
         self._Description = params.get("Description")
         self._Protocol = params.get("Protocol")
         self._OutputRegion = params.get("OutputRegion")
+        self._OutputType = params.get("OutputType")
+        self._OutputKind = params.get("OutputKind")
         if params.get("SRTSettings") is not None:
             self._SRTSettings = CreateOutputSRTSettings()
             self._SRTSettings._deserialize(params.get("SRTSettings"))
@@ -17693,7 +17709,6 @@ class CreateOutputInfo(AbstractModel):
         self._MaxConcurrent = params.get("MaxConcurrent")
         self._SecurityGroupIds = params.get("SecurityGroupIds")
         self._Zones = params.get("Zones")
-        self._OutputType = params.get("OutputType")
         if params.get("RISTSettings") is not None:
             self._RISTSettings = CreateOutputRistSettings()
             self._RISTSettings._deserialize(params.get("RISTSettings"))
@@ -24508,6 +24523,8 @@ class DescribeInput(AbstractModel):
         :param _RISTSettings: 输入的RIST配置信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RISTSettings: :class:`tencentcloud.mps.v20190612.models.DescribeInputRISTSettings`
+        :param _StreamUrls: 输入模块配置相关的URL信息，包含提供的推流地址，或者配置的第三方源流地址
+        :type StreamUrls: list of StreamUrlDetail
         """
         self._InputId = None
         self._InputName = None
@@ -24527,6 +24544,7 @@ class DescribeInput(AbstractModel):
         self._SecurityGroupIds = None
         self._Zones = None
         self._RISTSettings = None
+        self._StreamUrls = None
 
     @property
     def InputId(self):
@@ -24736,6 +24754,17 @@ class DescribeInput(AbstractModel):
     def RISTSettings(self, RISTSettings):
         self._RISTSettings = RISTSettings
 
+    @property
+    def StreamUrls(self):
+        """输入模块配置相关的URL信息，包含提供的推流地址，或者配置的第三方源流地址
+        :rtype: list of StreamUrlDetail
+        """
+        return self._StreamUrls
+
+    @StreamUrls.setter
+    def StreamUrls(self, StreamUrls):
+        self._StreamUrls = StreamUrls
+
 
     def _deserialize(self, params):
         self._InputId = params.get("InputId")
@@ -24777,6 +24806,12 @@ class DescribeInput(AbstractModel):
         if params.get("RISTSettings") is not None:
             self._RISTSettings = DescribeInputRISTSettings()
             self._RISTSettings._deserialize(params.get("RISTSettings"))
+        if params.get("StreamUrls") is not None:
+            self._StreamUrls = []
+            for item in params.get("StreamUrls"):
+                obj = StreamUrlDetail()
+                obj._deserialize(item)
+                self._StreamUrls.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25506,6 +25541,8 @@ class DescribeOutput(AbstractModel):
         :type OutputName: str
         :param _OutputType: 输出类型。
         :type OutputType: str
+        :param _OutputKind: 输出模块类型，包括Pinpoint（单点输出，最多支持四路并发输出）；MultiMesh（多路输出，支持大于四路的并发输出，目前可以达到200路）。默认类型为 Pinpoint 输出。对于单个 Flow 一个区域最多只能有一个 MultiMesh 输出。
+        :type OutputKind: str
         :param _Description: 输出描述。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
@@ -25550,10 +25587,13 @@ class DescribeOutput(AbstractModel):
         :type RISTSettings: :class:`tencentcloud.mps.v20190612.models.DescribeOutputRISTSettings`
         :param _PidSelector: 对于含有多个音/视频轨的流，可以指定需要使用的轨道
         :type PidSelector: :class:`tencentcloud.mps.v20190612.models.PidSelector`
+        :param _StreamUrls: 输出模块配置，相关的URL，包括提供的拉流地址，或者配置的输出到第三方的转推地址
+        :type StreamUrls: list of StreamUrlDetail
         """
         self._OutputId = None
         self._OutputName = None
         self._OutputType = None
+        self._OutputKind = None
         self._Description = None
         self._Protocol = None
         self._OutputAddressList = None
@@ -25570,6 +25610,7 @@ class DescribeOutput(AbstractModel):
         self._Zones = None
         self._RISTSettings = None
         self._PidSelector = None
+        self._StreamUrls = None
 
     @property
     def OutputId(self):
@@ -25603,6 +25644,17 @@ class DescribeOutput(AbstractModel):
     @OutputType.setter
     def OutputType(self, OutputType):
         self._OutputType = OutputType
+
+    @property
+    def OutputKind(self):
+        """输出模块类型，包括Pinpoint（单点输出，最多支持四路并发输出）；MultiMesh（多路输出，支持大于四路的并发输出，目前可以达到200路）。默认类型为 Pinpoint 输出。对于单个 Flow 一个区域最多只能有一个 MultiMesh 输出。
+        :rtype: str
+        """
+        return self._OutputKind
+
+    @OutputKind.setter
+    def OutputKind(self, OutputKind):
+        self._OutputKind = OutputKind
 
     @property
     def Description(self):
@@ -25792,11 +25844,23 @@ class DescribeOutput(AbstractModel):
     def PidSelector(self, PidSelector):
         self._PidSelector = PidSelector
 
+    @property
+    def StreamUrls(self):
+        """输出模块配置，相关的URL，包括提供的拉流地址，或者配置的输出到第三方的转推地址
+        :rtype: list of StreamUrlDetail
+        """
+        return self._StreamUrls
+
+    @StreamUrls.setter
+    def StreamUrls(self, StreamUrls):
+        self._StreamUrls = StreamUrls
+
 
     def _deserialize(self, params):
         self._OutputId = params.get("OutputId")
         self._OutputName = params.get("OutputName")
         self._OutputType = params.get("OutputType")
+        self._OutputKind = params.get("OutputKind")
         self._Description = params.get("Description")
         self._Protocol = params.get("Protocol")
         if params.get("OutputAddressList") is not None:
@@ -25834,6 +25898,12 @@ class DescribeOutput(AbstractModel):
         if params.get("PidSelector") is not None:
             self._PidSelector = PidSelector()
             self._PidSelector._deserialize(params.get("PidSelector"))
+        if params.get("StreamUrls") is not None:
+            self._StreamUrls = []
+            for item in params.get("StreamUrls"):
+                obj = StreamUrlDetail()
+                obj._deserialize(item)
+                self._StreamUrls.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -44567,6 +44637,8 @@ class ModifyOutputInfo(AbstractModel):
         :type Description: str
         :param _Protocol: 输出的转推协议，支持SRT|RTP|RTMP|RTMP_PULL|RTSP_PULL|RIST。
         :type Protocol: str
+        :param _OutputKind: 输出模块类型，包括Pinpoint（单点输出，最多支持四路并发输出）；MultiMesh（多路输出，支持大于四路的并发输出，目前可以达到200路）。默认类型为 Pinpoint 输出。对于单个 Flow 一个区域最多只能有一个 MultiMesh 输出。
+        :type OutputKind: str
         :param _SRTSettings: 转推SRT的配置。
         :type SRTSettings: :class:`tencentcloud.mps.v20190612.models.CreateOutputSRTSettings`
         :param _RTPSettings: 转推RTP的配置。
@@ -44593,6 +44665,7 @@ class ModifyOutputInfo(AbstractModel):
         self._OutputName = None
         self._Description = None
         self._Protocol = None
+        self._OutputKind = None
         self._SRTSettings = None
         self._RTPSettings = None
         self._RTMPSettings = None
@@ -44647,6 +44720,17 @@ class ModifyOutputInfo(AbstractModel):
     @Protocol.setter
     def Protocol(self, Protocol):
         self._Protocol = Protocol
+
+    @property
+    def OutputKind(self):
+        """输出模块类型，包括Pinpoint（单点输出，最多支持四路并发输出）；MultiMesh（多路输出，支持大于四路的并发输出，目前可以达到200路）。默认类型为 Pinpoint 输出。对于单个 Flow 一个区域最多只能有一个 MultiMesh 输出。
+        :rtype: str
+        """
+        return self._OutputKind
+
+    @OutputKind.setter
+    def OutputKind(self, OutputKind):
+        self._OutputKind = OutputKind
 
     @property
     def SRTSettings(self):
@@ -44765,6 +44849,7 @@ class ModifyOutputInfo(AbstractModel):
         self._OutputName = params.get("OutputName")
         self._Description = params.get("Description")
         self._Protocol = params.get("Protocol")
+        self._OutputKind = params.get("OutputKind")
         if params.get("SRTSettings") is not None:
             self._SRTSettings = CreateOutputSRTSettings()
             self._SRTSettings._deserialize(params.get("SRTSettings"))
@@ -57080,6 +57165,72 @@ class StreamLinkRegionInfo(AbstractModel):
                 obj = RegionInfo()
                 obj._deserialize(item)
                 self._Regions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StreamUrlDetail(AbstractModel):
+    """描述 URL 的完整信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Label: 会描述运营商信息等
+        :type Label: str
+        :param _Url: URL
+        :type Url: str
+        :param _Type: Playback: 拉流播放地址； RelayDestination：转推目的地址；SourceCaptureUrl：回源拉流地址；IngestEndpoint：推流地址
+        :type Type: str
+        """
+        self._Label = None
+        self._Url = None
+        self._Type = None
+
+    @property
+    def Label(self):
+        """会描述运营商信息等
+        :rtype: str
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Url(self):
+        """URL
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Type(self):
+        """Playback: 拉流播放地址； RelayDestination：转推目的地址；SourceCaptureUrl：回源拉流地址；IngestEndpoint：推流地址
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Label = params.get("Label")
+        self._Url = params.get("Url")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

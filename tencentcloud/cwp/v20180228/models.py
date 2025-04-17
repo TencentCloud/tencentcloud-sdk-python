@@ -45117,7 +45117,6 @@ Other 混合云专区
 <li>Ips - String - 是否必填：否 - 通过ip查询 </li>
 <li>Names - String - 是否必填：否 - 通过实例名查询 </li>
 <li>InstanceIds - String - 是否必填：否 - 通过实例id查询 </li>
-<li>Status - String - 是否必填：否 - 客户端在线状态（OFFLINE: 离线/关机 | ONLINE: 在线 | UNINSTALLED：未安装 | AGENT_OFFLINE 离线| AGENT_SHUTDOWN 已关机）</li>
 <li>Version - String  是否必填：否 - 当前防护版本（ PRO_VERSION：专业版 | BASIC_VERSION：基础版 | Flagship : 旗舰版 | ProtectedMachines: 专业版+旗舰版）</li>
 <li>Risk - String 是否必填: 否 - 风险主机( yes ) </li>
 <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )
@@ -45125,6 +45124,8 @@ Other 混合云专区
 <li>Quuid - String - 是否必填: 否 - 云服务器uuid  最大100条.</li>
 <li>AddedOnTheFifteen- String 是否必填: 否 - 是否只查询15天内新增的主机( 1：是) </li>
 <li> TagId- String 是否必填: 否 - 查询指定标签关联的主机列表 </li>
+<li> AgentStatus- String 是否必填: 否 - ALL 全部; ONLINE 防护中; OFFLINE 已离线;UNINSTALLED 未安装</li>
+<li> MachineStatus- String 是否必填: 否 - ALL 全部; RUNNING 运行中; STOPPED 已关机; EXPIRED 待回收</li>
         :type Filters: list of Filter
         :param _ProjectIds: 机器所属业务ID列表
         :type ProjectIds: list of int non-negative
@@ -45191,7 +45192,6 @@ Other 混合云专区
 <li>Ips - String - 是否必填：否 - 通过ip查询 </li>
 <li>Names - String - 是否必填：否 - 通过实例名查询 </li>
 <li>InstanceIds - String - 是否必填：否 - 通过实例id查询 </li>
-<li>Status - String - 是否必填：否 - 客户端在线状态（OFFLINE: 离线/关机 | ONLINE: 在线 | UNINSTALLED：未安装 | AGENT_OFFLINE 离线| AGENT_SHUTDOWN 已关机）</li>
 <li>Version - String  是否必填：否 - 当前防护版本（ PRO_VERSION：专业版 | BASIC_VERSION：基础版 | Flagship : 旗舰版 | ProtectedMachines: 专业版+旗舰版）</li>
 <li>Risk - String 是否必填: 否 - 风险主机( yes ) </li>
 <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )
@@ -45199,6 +45199,8 @@ Other 混合云专区
 <li>Quuid - String - 是否必填: 否 - 云服务器uuid  最大100条.</li>
 <li>AddedOnTheFifteen- String 是否必填: 否 - 是否只查询15天内新增的主机( 1：是) </li>
 <li> TagId- String 是否必填: 否 - 查询指定标签关联的主机列表 </li>
+<li> AgentStatus- String 是否必填: 否 - ALL 全部; ONLINE 防护中; OFFLINE 已离线;UNINSTALLED 未安装</li>
+<li> MachineStatus- String 是否必填: 否 - ALL 全部; RUNNING 运行中; STOPPED 已关机; EXPIRED 待回收</li>
         :rtype: list of Filter
         """
         return self._Filters
@@ -67213,10 +67215,13 @@ class ExportFileTamperEventsRequest(AbstractModel):
         :type Fileds: list of str
         :param _Fields: 需要导出的字段
         :type Fields: str
+        :param _Where: 需要导出的字段
+        :type Where: list of str
         """
         self._Filters = None
         self._Fileds = None
         self._Fields = None
+        self._Where = None
 
     @property
     def Filters(self):
@@ -67250,6 +67255,8 @@ class ExportFileTamperEventsRequest(AbstractModel):
 
     @property
     def Fields(self):
+        warnings.warn("parameter `Fields` is deprecated", DeprecationWarning) 
+
         """需要导出的字段
         :rtype: str
         """
@@ -67257,7 +67264,20 @@ class ExportFileTamperEventsRequest(AbstractModel):
 
     @Fields.setter
     def Fields(self, Fields):
+        warnings.warn("parameter `Fields` is deprecated", DeprecationWarning) 
+
         self._Fields = Fields
+
+    @property
+    def Where(self):
+        """需要导出的字段
+        :rtype: list of str
+        """
+        return self._Where
+
+    @Where.setter
+    def Where(self, Where):
+        self._Where = Where
 
 
     def _deserialize(self, params):
@@ -67269,6 +67289,7 @@ class ExportFileTamperEventsRequest(AbstractModel):
                 self._Filters.append(obj)
         self._Fileds = params.get("Fileds")
         self._Fields = params.get("Fields")
+        self._Where = params.get("Where")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -75509,6 +75530,14 @@ class LicenseBindDetail(AbstractModel):
         :type IsSwitchBind: bool
         :param _MachineExtraInfo: 主机额外信息
         :type MachineExtraInfo: :class:`tencentcloud.cwp.v20180228.models.MachineExtraInfo`
+        :param _InstanceState: <li> RUNNING 运行中</li>
+<li> STOPPED 已关机</li>
+<li> EXPIRED 待回收</li>
+        :type InstanceState: str
+        :param _AgentState: <li>ONLINE 已离线 </li>
+<li>OFFLINE 防护中</li>
+<li>UNINSTALLED 未安装客户端</li>
+        :type AgentState: str
         """
         self._MachineName = None
         self._MachineWanIp = None
@@ -75520,6 +75549,8 @@ class LicenseBindDetail(AbstractModel):
         self._IsUnBind = None
         self._IsSwitchBind = None
         self._MachineExtraInfo = None
+        self._InstanceState = None
+        self._AgentState = None
 
     @property
     def MachineName(self):
@@ -75631,6 +75662,32 @@ class LicenseBindDetail(AbstractModel):
     def MachineExtraInfo(self, MachineExtraInfo):
         self._MachineExtraInfo = MachineExtraInfo
 
+    @property
+    def InstanceState(self):
+        """<li> RUNNING 运行中</li>
+<li> STOPPED 已关机</li>
+<li> EXPIRED 待回收</li>
+        :rtype: str
+        """
+        return self._InstanceState
+
+    @InstanceState.setter
+    def InstanceState(self, InstanceState):
+        self._InstanceState = InstanceState
+
+    @property
+    def AgentState(self):
+        """<li>ONLINE 已离线 </li>
+<li>OFFLINE 防护中</li>
+<li>UNINSTALLED 未安装客户端</li>
+        :rtype: str
+        """
+        return self._AgentState
+
+    @AgentState.setter
+    def AgentState(self, AgentState):
+        self._AgentState = AgentState
+
 
     def _deserialize(self, params):
         self._MachineName = params.get("MachineName")
@@ -75645,6 +75702,8 @@ class LicenseBindDetail(AbstractModel):
         if params.get("MachineExtraInfo") is not None:
             self._MachineExtraInfo = MachineExtraInfo()
             self._MachineExtraInfo._deserialize(params.get("MachineExtraInfo"))
+        self._InstanceState = params.get("InstanceState")
+        self._AgentState = params.get("AgentState")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -76832,12 +76891,12 @@ class Machine(AbstractModel):
         :type MachineName: str
         :param _MachineOs: 主机系统。
         :type MachineOs: str
-        :param _MachineStatus: 主机状态。
-<li>OFFLINE: 离线  </li>
-<li>ONLINE: 在线</li>
-<li>SHUTDOWN: 已关机</li>
-<li>UNINSTALLED: 未防护</li>
+        :param _MachineStatus: 主机状态。 <li>OFFLINE: 离线 </li> <li>ONLINE: 在线</li> <li>SHUTDOWN: 已关机</li> <li>UNINSTALLED: 未防护</li>	
         :type MachineStatus: str
+        :param _AgentStatus: ONLINE 防护中; OFFLINE 已离线;UNINStALLED 未安装
+        :type AgentStatus: str
+        :param _InstanceStatus: RUNNING 运行中; STOPED 已关机; EXPIRED 待回收	
+        :type InstanceStatus: str
         :param _Uuid: 主机安全Uuid，若客户端长时间不在线将返回空字符。
         :type Uuid: str
         :param _Quuid: CVM或BM机器唯一Uuid。
@@ -76905,6 +76964,8 @@ class Machine(AbstractModel):
         self._MachineName = None
         self._MachineOs = None
         self._MachineStatus = None
+        self._AgentStatus = None
+        self._InstanceStatus = None
         self._Uuid = None
         self._Quuid = None
         self._VulNum = None
@@ -76958,11 +77019,7 @@ class Machine(AbstractModel):
 
     @property
     def MachineStatus(self):
-        """主机状态。
-<li>OFFLINE: 离线  </li>
-<li>ONLINE: 在线</li>
-<li>SHUTDOWN: 已关机</li>
-<li>UNINSTALLED: 未防护</li>
+        """主机状态。 <li>OFFLINE: 离线 </li> <li>ONLINE: 在线</li> <li>SHUTDOWN: 已关机</li> <li>UNINSTALLED: 未防护</li>	
         :rtype: str
         """
         return self._MachineStatus
@@ -76970,6 +77027,28 @@ class Machine(AbstractModel):
     @MachineStatus.setter
     def MachineStatus(self, MachineStatus):
         self._MachineStatus = MachineStatus
+
+    @property
+    def AgentStatus(self):
+        """ONLINE 防护中; OFFLINE 已离线;UNINStALLED 未安装
+        :rtype: str
+        """
+        return self._AgentStatus
+
+    @AgentStatus.setter
+    def AgentStatus(self, AgentStatus):
+        self._AgentStatus = AgentStatus
+
+    @property
+    def InstanceStatus(self):
+        """RUNNING 运行中; STOPED 已关机; EXPIRED 待回收	
+        :rtype: str
+        """
+        return self._InstanceStatus
+
+    @InstanceStatus.setter
+    def InstanceStatus(self, InstanceStatus):
+        self._InstanceStatus = InstanceStatus
 
     @property
     def Uuid(self):
@@ -77291,6 +77370,8 @@ class Machine(AbstractModel):
         self._MachineName = params.get("MachineName")
         self._MachineOs = params.get("MachineOs")
         self._MachineStatus = params.get("MachineStatus")
+        self._AgentStatus = params.get("AgentStatus")
+        self._InstanceStatus = params.get("InstanceStatus")
         self._Uuid = params.get("Uuid")
         self._Quuid = params.get("Quuid")
         self._VulNum = params.get("VulNum")
@@ -78847,6 +78928,10 @@ class MalwareInfo(AbstractModel):
         :type MachineExtraInfo: :class:`tencentcloud.cwp.v20180228.models.MachineExtraInfo`
         :param _References: 参考链接
         :type References: list of str
+        :param _FileExists: 木马文件是否存在
+        :type FileExists: bool
+        :param _ProcessExists: 木马进程是否存在
+        :type ProcessExists: bool
         """
         self._VirusName = None
         self._FileSize = None
@@ -78879,6 +78964,8 @@ class MalwareInfo(AbstractModel):
         self._StrFileAccessTime = None
         self._MachineExtraInfo = None
         self._References = None
+        self._FileExists = None
+        self._ProcessExists = None
 
     @property
     def VirusName(self):
@@ -79221,6 +79308,28 @@ class MalwareInfo(AbstractModel):
     def References(self, References):
         self._References = References
 
+    @property
+    def FileExists(self):
+        """木马文件是否存在
+        :rtype: bool
+        """
+        return self._FileExists
+
+    @FileExists.setter
+    def FileExists(self, FileExists):
+        self._FileExists = FileExists
+
+    @property
+    def ProcessExists(self):
+        """木马进程是否存在
+        :rtype: bool
+        """
+        return self._ProcessExists
+
+    @ProcessExists.setter
+    def ProcessExists(self, ProcessExists):
+        self._ProcessExists = ProcessExists
+
 
     def _deserialize(self, params):
         self._VirusName = params.get("VirusName")
@@ -79256,6 +79365,8 @@ class MalwareInfo(AbstractModel):
             self._MachineExtraInfo = MachineExtraInfo()
             self._MachineExtraInfo._deserialize(params.get("MachineExtraInfo"))
         self._References = params.get("References")
+        self._FileExists = params.get("FileExists")
+        self._ProcessExists = params.get("ProcessExists")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -93396,6 +93507,8 @@ class ReverseShellEventInfo(AbstractModel):
         :type ModifyTime: str
         :param _CmdLineQuote: 命令详情的转义后内容，供正则加白全字符串匹配使用
         :type CmdLineQuote: str
+        :param _RiskLevel: 风险等级
+        :type RiskLevel: int
         """
         self._Id = None
         self._Uuid = None
@@ -93425,6 +93538,7 @@ class ReverseShellEventInfo(AbstractModel):
         self._MachineStatus = None
         self._ModifyTime = None
         self._CmdLineQuote = None
+        self._RiskLevel = None
 
     @property
     def Id(self):
@@ -93734,6 +93848,17 @@ class ReverseShellEventInfo(AbstractModel):
     def CmdLineQuote(self, CmdLineQuote):
         self._CmdLineQuote = CmdLineQuote
 
+    @property
+    def RiskLevel(self):
+        """风险等级
+        :rtype: int
+        """
+        return self._RiskLevel
+
+    @RiskLevel.setter
+    def RiskLevel(self, RiskLevel):
+        self._RiskLevel = RiskLevel
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -93764,6 +93889,7 @@ class ReverseShellEventInfo(AbstractModel):
         self._MachineStatus = params.get("MachineStatus")
         self._ModifyTime = params.get("ModifyTime")
         self._CmdLineQuote = params.get("CmdLineQuote")
+        self._RiskLevel = params.get("RiskLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

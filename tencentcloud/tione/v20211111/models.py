@@ -462,6 +462,57 @@ class Choice(AbstractModel):
         
 
 
+class CodeRepoConfig(AbstractModel):
+    """代码仓库配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 代码仓库Id
+        :type Id: str
+        :param _TargetPath: 代码仓下载目标地址
+        :type TargetPath: str
+        """
+        self._Id = None
+        self._TargetPath = None
+
+    @property
+    def Id(self):
+        """代码仓库Id
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def TargetPath(self):
+        """代码仓下载目标地址
+        :rtype: str
+        """
+        return self._TargetPath
+
+    @TargetPath.setter
+    def TargetPath(self, TargetPath):
+        self._TargetPath = TargetPath
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._TargetPath = params.get("TargetPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Container(AbstractModel):
     """容器信息
 
@@ -2852,6 +2903,8 @@ POSTPAID_BY_HOUR 按量计费
         :type CallbackUrl: str
         :param _EncodedStartCmdInfo: 编码后的任务启动命令，与StartCmdInfo同时配置时，仅当前参数生效
         :type EncodedStartCmdInfo: :class:`tencentcloud.tione.v20211111.models.EncodedStartCmdInfo`
+        :param _CodeRepos: 代码仓库配置
+        :type CodeRepos: list of CodeRepoConfig
         """
         self._Name = None
         self._ChargeType = None
@@ -2876,6 +2929,7 @@ POSTPAID_BY_HOUR 按量计费
         self._DataSource = None
         self._CallbackUrl = None
         self._EncodedStartCmdInfo = None
+        self._CodeRepos = None
 
     @property
     def Name(self):
@@ -3131,6 +3185,17 @@ POSTPAID_BY_HOUR 按量计费
     def EncodedStartCmdInfo(self, EncodedStartCmdInfo):
         self._EncodedStartCmdInfo = EncodedStartCmdInfo
 
+    @property
+    def CodeRepos(self):
+        """代码仓库配置
+        :rtype: list of CodeRepoConfig
+        """
+        return self._CodeRepos
+
+    @CodeRepos.setter
+    def CodeRepos(self, CodeRepos):
+        self._CodeRepos = CodeRepos
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -3183,6 +3248,12 @@ POSTPAID_BY_HOUR 按量计费
         if params.get("EncodedStartCmdInfo") is not None:
             self._EncodedStartCmdInfo = EncodedStartCmdInfo()
             self._EncodedStartCmdInfo._deserialize(params.get("EncodedStartCmdInfo"))
+        if params.get("CodeRepos") is not None:
+            self._CodeRepos = []
+            for item in params.get("CodeRepos"):
+                obj = CodeRepoConfig()
+                obj._deserialize(item)
+                self._CodeRepos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19784,6 +19855,8 @@ class TrainingTaskDetail(AbstractModel):
         :param _CallbackUrl: 回调地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type CallbackUrl: str
+        :param _CodeRepos: 任务关联的代码仓库配置
+        :type CodeRepos: list of CodeRepoConfig
         """
         self._Id = None
         self._Name = None
@@ -19825,6 +19898,7 @@ class TrainingTaskDetail(AbstractModel):
         self._Message = None
         self._Status = None
         self._CallbackUrl = None
+        self._CodeRepos = None
 
     @property
     def Id(self):
@@ -20291,6 +20365,17 @@ class TrainingTaskDetail(AbstractModel):
     def CallbackUrl(self, CallbackUrl):
         self._CallbackUrl = CallbackUrl
 
+    @property
+    def CodeRepos(self):
+        """任务关联的代码仓库配置
+        :rtype: list of CodeRepoConfig
+        """
+        return self._CodeRepos
+
+    @CodeRepos.setter
+    def CodeRepos(self, CodeRepos):
+        self._CodeRepos = CodeRepos
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -20358,6 +20443,12 @@ class TrainingTaskDetail(AbstractModel):
         self._Message = params.get("Message")
         self._Status = params.get("Status")
         self._CallbackUrl = params.get("CallbackUrl")
+        if params.get("CodeRepos") is not None:
+            self._CodeRepos = []
+            for item in params.get("CodeRepos"):
+                obj = CodeRepoConfig()
+                obj._deserialize(item)
+                self._CodeRepos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

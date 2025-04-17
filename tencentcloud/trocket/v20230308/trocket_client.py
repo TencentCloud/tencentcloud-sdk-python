@@ -997,7 +997,7 @@ class TrocketClient(AbstractClient):
     def DescribeMigratingTopicList(self, request):
         """查询Topic迁移状态列表
 
-        查询过滤器，支持TopicName、MigrationStatus查询
+        查询过滤器，支持TopicName、MigrationStatus、Namespace查询
 
         :param request: Request instance for DescribeMigratingTopicList.
         :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeMigratingTopicListRequest`
@@ -1098,6 +1098,7 @@ class TrocketClient(AbstractClient):
         GroupName，消费组名称模糊搜索
         Imported，是否已导入
         ImportStatus，导入状态
+        Namespace，命名空间
 
         :param request: Request instance for DescribeSourceClusterGroupList.
         :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeSourceClusterGroupListRequest`

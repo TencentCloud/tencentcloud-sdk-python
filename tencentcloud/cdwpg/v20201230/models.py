@@ -81,7 +81,6 @@ class AccountInfo(AbstractModel):
         :param _UserName: 账号名
         :type UserName: str
         :param _Perms: 账户属性
-注意：此字段可能返回 null，表示取不到有效值。
         :type Perms: list of str
         """
         self._InstanceId = None
@@ -113,7 +112,6 @@ class AccountInfo(AbstractModel):
     @property
     def Perms(self):
         """账户属性
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Perms
@@ -879,7 +877,6 @@ class CreateInstanceByApiResponse(AbstractModel):
         :param _InstanceId: 实例ID
         :type InstanceId: str
         :param _ErrorMsg: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -914,7 +911,6 @@ class CreateInstanceByApiResponse(AbstractModel):
     @property
     def ErrorMsg(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorMsg
@@ -1643,7 +1639,6 @@ class DescribeInstanceNodesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ErrorMsg: error msg
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
         :param _InstanceNodes: 节点列表
 注意：此字段可能返回 null，表示取不到有效值。
@@ -1658,7 +1653,6 @@ class DescribeInstanceNodesResponse(AbstractModel):
     @property
     def ErrorMsg(self):
         """error msg
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorMsg
@@ -1990,22 +1984,16 @@ class DescribeInstanceStateResponse(AbstractModel):
         :param _InstanceState: 集群状态，例如：Serving
         :type InstanceState: str
         :param _FlowCreateTime: 集群操作创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowCreateTime: str
         :param _FlowName: 集群操作名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowName: str
         :param _FlowProgress: 集群操作进度
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowProgress: float
         :param _InstanceStateDesc: 集群状态描述，例如：运行中
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceStateDesc: str
         :param _FlowMsg: 集群流程错误信息，例如：“创建失败，资源不足”
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowMsg: str
         :param _ProcessName: 当前步骤的名称，例如：”购买资源中“
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProcessName: str
         :param _BackupStatus: 集群备份任务开启状态
         :type BackupStatus: int
@@ -2036,7 +2024,6 @@ class DescribeInstanceStateResponse(AbstractModel):
     @property
     def FlowCreateTime(self):
         """集群操作创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FlowCreateTime
@@ -2048,7 +2035,6 @@ class DescribeInstanceStateResponse(AbstractModel):
     @property
     def FlowName(self):
         """集群操作名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FlowName
@@ -2060,7 +2046,6 @@ class DescribeInstanceStateResponse(AbstractModel):
     @property
     def FlowProgress(self):
         """集群操作进度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._FlowProgress
@@ -2072,7 +2057,6 @@ class DescribeInstanceStateResponse(AbstractModel):
     @property
     def InstanceStateDesc(self):
         """集群状态描述，例如：运行中
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceStateDesc
@@ -2084,7 +2068,6 @@ class DescribeInstanceStateResponse(AbstractModel):
     @property
     def FlowMsg(self):
         """集群流程错误信息，例如：“创建失败，资源不足”
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FlowMsg
@@ -2096,7 +2079,6 @@ class DescribeInstanceStateResponse(AbstractModel):
     @property
     def ProcessName(self):
         """当前步骤的名称，例如：”购买资源中“
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProcessName
@@ -2254,7 +2236,6 @@ class DescribeInstancesResponse(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstancesList: list of InstanceInfo
         :param _ErrorMsg: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2290,7 +2271,6 @@ class DescribeInstancesResponse(AbstractModel):
     @property
     def ErrorMsg(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorMsg
@@ -2429,10 +2409,8 @@ class DescribeSimpleInstancesResponse(AbstractModel):
         :param _TotalCount: 集群列表总数
         :type TotalCount: int
         :param _InstancesList: 集群列表详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstancesList: list of InstanceSimpleInfoNew
         :param _ErrorMsg: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2456,7 +2434,6 @@ class DescribeSimpleInstancesResponse(AbstractModel):
     @property
     def InstancesList(self):
         """集群列表详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of InstanceSimpleInfoNew
         """
         return self._InstancesList
@@ -2468,7 +2445,6 @@ class DescribeSimpleInstancesResponse(AbstractModel):
     @property
     def ErrorMsg(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorMsg
@@ -3251,7 +3227,6 @@ class HbaConfig(AbstractModel):
         :param _Method: 方法
         :type Method: str
         :param _Mask: 是否遮盖
-注意：此字段可能返回 null，表示取不到有效值。
         :type Mask: str
         """
         self._Type = None
@@ -3319,7 +3294,6 @@ class HbaConfig(AbstractModel):
     @property
     def Mask(self):
         """是否遮盖
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Mask
@@ -3360,16 +3334,13 @@ class InstanceInfo(AbstractModel):
         :param _InstanceName: 集群名字
         :type InstanceName: str
         :param _Status: 集群状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _StatusDesc: 集群状态详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type StatusDesc: str
         :param _InstanceStateInfo: 集群状态信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceStateInfo: :class:`tencentcloud.cdwpg.v20201230.models.InstanceStateInfo`
         :param _InstanceID: 集群id
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceID: str
         :param _CreateTime: 创建时间
         :type CreateTime: str
@@ -3378,13 +3349,10 @@ class InstanceInfo(AbstractModel):
         :param _Zone: 地区
         :type Zone: str
         :param _RegionDesc: 地域详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionDesc: str
         :param _ZoneDesc: 地区详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneDesc: str
         :param _Tags: 标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
         :param _Version: 内核版本
         :type Version: str
@@ -3395,10 +3363,8 @@ class InstanceInfo(AbstractModel):
         :param _DNNodes: DN节点列表
         :type DNNodes: list of InstanceNodeGroup
         :param _RegionId: 地域id
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionId: int
         :param _ZoneId: 地区id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneId: int
         :param _VpcId: 私有网络
         :type VpcId: str
@@ -3478,7 +3444,6 @@ class InstanceInfo(AbstractModel):
     @property
     def Status(self):
         """集群状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -3490,7 +3455,6 @@ class InstanceInfo(AbstractModel):
     @property
     def StatusDesc(self):
         """集群状态详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StatusDesc
@@ -3514,7 +3478,6 @@ class InstanceInfo(AbstractModel):
     @property
     def InstanceID(self):
         """集群id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceID
@@ -3559,7 +3522,6 @@ class InstanceInfo(AbstractModel):
     @property
     def RegionDesc(self):
         """地域详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RegionDesc
@@ -3571,7 +3533,6 @@ class InstanceInfo(AbstractModel):
     @property
     def ZoneDesc(self):
         """地区详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ZoneDesc
@@ -3583,7 +3544,6 @@ class InstanceInfo(AbstractModel):
     @property
     def Tags(self):
         """标签
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._Tags
@@ -3639,7 +3599,6 @@ class InstanceInfo(AbstractModel):
     @property
     def RegionId(self):
         """地域id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RegionId
@@ -3651,7 +3610,6 @@ class InstanceInfo(AbstractModel):
     @property
     def ZoneId(self):
         """地区id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ZoneId
@@ -3949,16 +3907,12 @@ class InstanceOperation(AbstractModel):
         :param _StartTime: 操作开始时间
         :type StartTime: str
         :param _EndTime: 操作结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         :param _Context: 操作上下文
-注意：此字段可能返回 null，表示取不到有效值。
         :type Context: str
         :param _UpdateTime: 操作更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param _Uin: 操作UIN
-注意：此字段可能返回 null，表示取不到有效值。
         :type Uin: str
         """
         self._Id = None
@@ -4029,7 +3983,6 @@ class InstanceOperation(AbstractModel):
     @property
     def EndTime(self):
         """操作结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndTime
@@ -4041,7 +3994,6 @@ class InstanceOperation(AbstractModel):
     @property
     def Context(self):
         """操作上下文
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Context
@@ -4053,7 +4005,6 @@ class InstanceOperation(AbstractModel):
     @property
     def UpdateTime(self):
         """操作更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime
@@ -4065,7 +4016,6 @@ class InstanceOperation(AbstractModel):
     @property
     def Uin(self):
         """操作UIN
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Uin
@@ -4113,18 +4063,14 @@ class InstanceSimpleInfoNew(AbstractModel):
         :param _Region: 地域
         :type Region: str
         :param _RegionId: 地域Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionId: int
         :param _RegionDesc: 地域详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionDesc: str
         :param _Zone: 地区
         :type Zone: str
         :param _ZoneId: 地区id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneId: int
         :param _ZoneDesc: 地区详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneDesc: str
         :param _VpcId: 私有网络
         :type VpcId: str
@@ -4135,7 +4081,6 @@ class InstanceSimpleInfoNew(AbstractModel):
         :param _ExpireTime: 过期时间
         :type ExpireTime: str
         :param _AccessInfo: 访问地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type AccessInfo: str
         :param _PayMode: 计费方式
         :type PayMode: str
@@ -4218,7 +4163,6 @@ class InstanceSimpleInfoNew(AbstractModel):
     @property
     def RegionId(self):
         """地域Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RegionId
@@ -4230,7 +4174,6 @@ class InstanceSimpleInfoNew(AbstractModel):
     @property
     def RegionDesc(self):
         """地域详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RegionDesc
@@ -4253,7 +4196,6 @@ class InstanceSimpleInfoNew(AbstractModel):
     @property
     def ZoneId(self):
         """地区id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ZoneId
@@ -4265,7 +4207,6 @@ class InstanceSimpleInfoNew(AbstractModel):
     @property
     def ZoneDesc(self):
         """地区详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ZoneDesc
@@ -4321,7 +4262,6 @@ class InstanceSimpleInfoNew(AbstractModel):
     @property
     def AccessInfo(self):
         """访问地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AccessInfo
@@ -4391,31 +4331,22 @@ class InstanceStateInfo(AbstractModel):
         :param _InstanceState: 集群状态，例如：Serving
         :type InstanceState: str
         :param _FlowCreateTime: 集群操作创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowCreateTime: str
         :param _FlowName: 集群操作名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowName: str
         :param _FlowProgress: 集群操作进度
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowProgress: int
         :param _InstanceStateDesc: 集群状态描述，例如：运行中
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceStateDesc: str
         :param _FlowMsg: 集群流程错误信息，例如：“创建失败，资源不足”
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowMsg: str
         :param _ProcessName: 当前步骤的名称，例如：”购买资源中“
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProcessName: str
         :param _BackupStatus: 集群是否有备份中任务，有为1,无为0
-注意：此字段可能返回 null，表示取不到有效值。
         :type BackupStatus: int
         :param _RequestId: 请求id
-注意：此字段可能返回 null，表示取不到有效值。
         :type RequestId: str
         :param _BackupOpenStatus: 集群是否有备份中任务，有为1,无为0
-注意：此字段可能返回 null，表示取不到有效值。
         :type BackupOpenStatus: int
         """
         self._InstanceState = None
@@ -4443,7 +4374,6 @@ class InstanceStateInfo(AbstractModel):
     @property
     def FlowCreateTime(self):
         """集群操作创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FlowCreateTime
@@ -4455,7 +4385,6 @@ class InstanceStateInfo(AbstractModel):
     @property
     def FlowName(self):
         """集群操作名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FlowName
@@ -4467,7 +4396,6 @@ class InstanceStateInfo(AbstractModel):
     @property
     def FlowProgress(self):
         """集群操作进度
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FlowProgress
@@ -4479,7 +4407,6 @@ class InstanceStateInfo(AbstractModel):
     @property
     def InstanceStateDesc(self):
         """集群状态描述，例如：运行中
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceStateDesc
@@ -4491,7 +4418,6 @@ class InstanceStateInfo(AbstractModel):
     @property
     def FlowMsg(self):
         """集群流程错误信息，例如：“创建失败，资源不足”
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FlowMsg
@@ -4503,7 +4429,6 @@ class InstanceStateInfo(AbstractModel):
     @property
     def ProcessName(self):
         """当前步骤的名称，例如：”购买资源中“
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProcessName
@@ -4515,7 +4440,6 @@ class InstanceStateInfo(AbstractModel):
     @property
     def BackupStatus(self):
         """集群是否有备份中任务，有为1,无为0
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._BackupStatus
@@ -4527,7 +4451,6 @@ class InstanceStateInfo(AbstractModel):
     @property
     def RequestId(self):
         """请求id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RequestId
@@ -4539,7 +4462,6 @@ class InstanceStateInfo(AbstractModel):
     @property
     def BackupOpenStatus(self):
         """集群是否有备份中任务，有为1,无为0
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._BackupOpenStatus
@@ -4814,7 +4736,6 @@ class ModifyUserHbaResponse(AbstractModel):
         :param _TaskId: 任务id
         :type TaskId: int
         :param _ErrorMsg: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4837,7 +4758,6 @@ class ModifyUserHbaResponse(AbstractModel):
     @property
     def ErrorMsg(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorMsg
@@ -4928,55 +4848,38 @@ class NormQueryItem(AbstractModel):
     def __init__(self):
         r"""
         :param _CallTimes: 调用次数
-注意：此字段可能返回 null，表示取不到有效值。
         :type CallTimes: int
         :param _SharedReadBlocks: 读共享内存块数
-注意：此字段可能返回 null，表示取不到有效值。
         :type SharedReadBlocks: int
         :param _SharedWriteBlocks: 写共享内存块数
-注意：此字段可能返回 null，表示取不到有效值。
         :type SharedWriteBlocks: int
         :param _DatabaseName: 数据库
-注意：此字段可能返回 null，表示取不到有效值。
         :type DatabaseName: str
         :param _NormalQuery: 脱敏后语句
-注意：此字段可能返回 null，表示取不到有效值。
         :type NormalQuery: str
         :param _MaxElapsedQuery: 执行时间最长的语句
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxElapsedQuery: str
         :param _CostTime: 花费总时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CostTime: float
         :param _ClientIp: 客户端ip
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClientIp: str
         :param _UserName: 用户名
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserName: str
         :param _TotalCallTimesPercent: 总次数占比
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCallTimesPercent: float
         :param _TotalCostTimePercent: 总耗时占比
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCostTimePercent: float
         :param _MinCostTime: 花费最小时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type MinCostTime: float
         :param _MaxCostTime: 花费最大时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxCostTime: float
         :param _FirstTime: 最早一条时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type FirstTime: str
         :param _LastTime: 最晚一条时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type LastTime: str
         :param _ReadCostTime: 读io总耗时
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReadCostTime: float
         :param _WriteCostTime: 写io总耗时
-注意：此字段可能返回 null，表示取不到有效值。
         :type WriteCostTime: float
         """
         self._CallTimes = None
@@ -5000,7 +4903,6 @@ class NormQueryItem(AbstractModel):
     @property
     def CallTimes(self):
         """调用次数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CallTimes
@@ -5012,7 +4914,6 @@ class NormQueryItem(AbstractModel):
     @property
     def SharedReadBlocks(self):
         """读共享内存块数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SharedReadBlocks
@@ -5024,7 +4925,6 @@ class NormQueryItem(AbstractModel):
     @property
     def SharedWriteBlocks(self):
         """写共享内存块数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SharedWriteBlocks
@@ -5036,7 +4936,6 @@ class NormQueryItem(AbstractModel):
     @property
     def DatabaseName(self):
         """数据库
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DatabaseName
@@ -5048,7 +4947,6 @@ class NormQueryItem(AbstractModel):
     @property
     def NormalQuery(self):
         """脱敏后语句
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NormalQuery
@@ -5060,7 +4958,6 @@ class NormQueryItem(AbstractModel):
     @property
     def MaxElapsedQuery(self):
         """执行时间最长的语句
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MaxElapsedQuery
@@ -5072,7 +4969,6 @@ class NormQueryItem(AbstractModel):
     @property
     def CostTime(self):
         """花费总时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._CostTime
@@ -5084,7 +4980,6 @@ class NormQueryItem(AbstractModel):
     @property
     def ClientIp(self):
         """客户端ip
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ClientIp
@@ -5096,7 +4991,6 @@ class NormQueryItem(AbstractModel):
     @property
     def UserName(self):
         """用户名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UserName
@@ -5108,7 +5002,6 @@ class NormQueryItem(AbstractModel):
     @property
     def TotalCallTimesPercent(self):
         """总次数占比
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._TotalCallTimesPercent
@@ -5120,7 +5013,6 @@ class NormQueryItem(AbstractModel):
     @property
     def TotalCostTimePercent(self):
         """总耗时占比
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._TotalCostTimePercent
@@ -5132,7 +5024,6 @@ class NormQueryItem(AbstractModel):
     @property
     def MinCostTime(self):
         """花费最小时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._MinCostTime
@@ -5144,7 +5035,6 @@ class NormQueryItem(AbstractModel):
     @property
     def MaxCostTime(self):
         """花费最大时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._MaxCostTime
@@ -5156,7 +5046,6 @@ class NormQueryItem(AbstractModel):
     @property
     def FirstTime(self):
         """最早一条时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FirstTime
@@ -5168,7 +5057,6 @@ class NormQueryItem(AbstractModel):
     @property
     def LastTime(self):
         """最晚一条时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LastTime
@@ -5180,7 +5068,6 @@ class NormQueryItem(AbstractModel):
     @property
     def ReadCostTime(self):
         """读io总耗时
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._ReadCostTime
@@ -5192,7 +5079,6 @@ class NormQueryItem(AbstractModel):
     @property
     def WriteCostTime(self):
         """写io总耗时
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._WriteCostTime
@@ -5248,13 +5134,10 @@ class ParamDetail(AbstractModel):
         :param _ValueRange: 取值范围
         :type ValueRange: :class:`tencentcloud.cdwpg.v20201230.models.ValueRange`
         :param _Unit: 单位
-注意：此字段可能返回 null，表示取不到有效值。
         :type Unit: str
         :param _ShortDesc: 英文简介
-注意：此字段可能返回 null，表示取不到有效值。
         :type ShortDesc: str
         :param _ParameterName: 参数名
-注意：此字段可能返回 null，表示取不到有效值。
         :type ParameterName: str
         """
         self._ParamName = None
@@ -5324,7 +5207,6 @@ class ParamDetail(AbstractModel):
     @property
     def Unit(self):
         """单位
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Unit
@@ -5336,7 +5218,6 @@ class ParamDetail(AbstractModel):
     @property
     def ShortDesc(self):
         """英文简介
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ShortDesc
@@ -5348,7 +5229,6 @@ class ParamDetail(AbstractModel):
     @property
     def ParameterName(self):
         """参数名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ParameterName
@@ -5590,7 +5470,6 @@ class ResetAccountPasswordResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ErrorMsg: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5601,7 +5480,6 @@ class ResetAccountPasswordResponse(AbstractModel):
     @property
     def ErrorMsg(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorMsg
@@ -5993,7 +5871,6 @@ class ScaleOutInstanceResponse(AbstractModel):
         :param _FlowId: 流程id
         :type FlowId: str
         :param _ErrorMsg: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6016,7 +5893,6 @@ class ScaleOutInstanceResponse(AbstractModel):
     @property
     def ErrorMsg(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorMsg
@@ -6278,7 +6154,6 @@ class SimpleInstanceInfo(AbstractModel):
         :param _ExpireTime: 到期时间
         :type ExpireTime: str
         :param _AccessInfo: 访问地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type AccessInfo: str
         :param _RenewFlag: 自动续费开关，0为不自动续费，1为自动续费
         :type RenewFlag: int
@@ -6287,7 +6162,6 @@ class SimpleInstanceInfo(AbstractModel):
         :param _Resources: 资源集合
         :type Resources: list of ResourceInfo
         :param _Tags: 标签列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
         :param _Status: 集群状态
         :type Status: int
@@ -6422,7 +6296,6 @@ class SimpleInstanceInfo(AbstractModel):
     @property
     def AccessInfo(self):
         """访问地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AccessInfo
@@ -6467,7 +6340,6 @@ class SimpleInstanceInfo(AbstractModel):
     @property
     def Tags(self):
         """标签列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._Tags
@@ -6774,12 +6646,10 @@ class UpgradeItem(AbstractModel):
         :param _CreateTime: 任务创建时间
         :type CreateTime: str
         :param _EndTime: 任务结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         :param _Status: 任务完成状态
         :type Status: str
         :param _OperateUin: 操作者
-注意：此字段可能返回 null，表示取不到有效值。
         :type OperateUin: str
         """
         self._TaskName = None
@@ -6837,7 +6707,6 @@ class UpgradeItem(AbstractModel):
     @property
     def EndTime(self):
         """任务结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndTime
@@ -6860,7 +6729,6 @@ class UpgradeItem(AbstractModel):
     @property
     def OperateUin(self):
         """操作者
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OperateUin
@@ -6900,10 +6768,8 @@ class ValueRange(AbstractModel):
         :param _Range: type 取section的时候，返回的参数值
         :type Range: :class:`tencentcloud.cdwpg.v20201230.models.Range`
         :param _Enum: type 取enum的时候，返回参数值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Enum: list of str
         :param _String: type 取string的时候，返回的参数值
-注意：此字段可能返回 null，表示取不到有效值。
         :type String: str
         """
         self._Type = None
@@ -6936,7 +6802,6 @@ class ValueRange(AbstractModel):
     @property
     def Enum(self):
         """type 取enum的时候，返回参数值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Enum
@@ -6948,7 +6813,6 @@ class ValueRange(AbstractModel):
     @property
     def String(self):
         """type 取string的时候，返回的参数值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._String

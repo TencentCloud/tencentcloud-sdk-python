@@ -2813,8 +2813,11 @@ class AssignIpv6CidrBlockRequest(AbstractModel):
         r"""
         :param _VpcId: `VPC`实例`ID`，形如：`vpc-f49l6u0z`。
         :type VpcId: str
+        :param _AddressType: 申请IPv6 Cidr 的类型，`GUA`(全球单播地址), `ULA`(唯一本地地址)。
+        :type AddressType: str
         """
         self._VpcId = None
+        self._AddressType = None
 
     @property
     def VpcId(self):
@@ -2827,9 +2830,21 @@ class AssignIpv6CidrBlockRequest(AbstractModel):
     def VpcId(self, VpcId):
         self._VpcId = VpcId
 
+    @property
+    def AddressType(self):
+        """申请IPv6 Cidr 的类型，`GUA`(全球单播地址), `ULA`(唯一本地地址)。
+        :rtype: str
+        """
+        return self._AddressType
+
+    @AddressType.setter
+    def AddressType(self, AddressType):
+        self._AddressType = AddressType
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
+        self._AddressType = params.get("AddressType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2849,10 +2864,13 @@ class AssignIpv6CidrBlockResponse(AbstractModel):
         r"""
         :param _Ipv6CidrBlock: 分配的 `IPv6` 网段。形如：`3402:4e00:20:1000::/56`。
         :type Ipv6CidrBlock: str
+        :param _AddressType: 申请IPv6 Cidr 的类型，`GUA`,  `ULA`
+        :type AddressType: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Ipv6CidrBlock = None
+        self._AddressType = None
         self._RequestId = None
 
     @property
@@ -2865,6 +2883,17 @@ class AssignIpv6CidrBlockResponse(AbstractModel):
     @Ipv6CidrBlock.setter
     def Ipv6CidrBlock(self, Ipv6CidrBlock):
         self._Ipv6CidrBlock = Ipv6CidrBlock
+
+    @property
+    def AddressType(self):
+        """申请IPv6 Cidr 的类型，`GUA`,  `ULA`
+        :rtype: str
+        """
+        return self._AddressType
+
+    @AddressType.setter
+    def AddressType(self, AddressType):
+        self._AddressType = AddressType
 
     @property
     def RequestId(self):
@@ -2880,6 +2909,7 @@ class AssignIpv6CidrBlockResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Ipv6CidrBlock = params.get("Ipv6CidrBlock")
+        self._AddressType = params.get("AddressType")
         self._RequestId = params.get("RequestId")
 
 
@@ -8974,7 +9004,7 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
         r"""
         :param _VpcId: VPC实例ID。可通过[DescribeVpcs](https://cloud.tencent.com/document/product/1108/43663)接口获取。
         :type VpcId: str
-        :param _NetworkInterfaceName: 弹性网卡名称，最大长度不能超过60个字节。
+        :param _NetworkInterfaceName: 弹性网卡名称，最大长度不能超过60个字符。
         :type NetworkInterfaceName: str
         :param _SubnetId: 弹性网卡所在的子网实例ID，例如：subnet-0ap8nwca。可通过[DescribeSubnets](https://cloud.tencent.com/document/product/215/15784)接口获取。
         :type SubnetId: str
@@ -9027,7 +9057,7 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
 
     @property
     def NetworkInterfaceName(self):
-        """弹性网卡名称，最大长度不能超过60个字节。
+        """弹性网卡名称，最大长度不能超过60个字符。
         :rtype: str
         """
         return self._NetworkInterfaceName
@@ -10664,23 +10694,25 @@ class CreateFlowLogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowLogName: 流日志实例名字。
+        :param _FlowLogName: 流日志实例名字。长度为不超过60个字节。
         :type FlowLogName: str
-        :param _ResourceType: 流日志所属资源类型，VPC|SUBNET|NETWORKINTERFACE|CCN|NAT|DCG。
+        :param _ResourceType: 流日志所属资源类型，VPC(私有网络)，SUBNET（子网），NETWORKINTERFACE（网卡），CCN（云联网），NAT（网络地址转化），DCG（专线网关）。当选择VPC， SUBNET，CCN，DCG时，请通过工单加入白名单。
         :type ResourceType: str
         :param _ResourceId: 资源唯一ID。
         :type ResourceId: str
-        :param _TrafficType: 流日志采集类型，ACCEPT|REJECT|ALL。
+        :param _TrafficType: 流日志采集类型，ACCEPT（允许），REJECT（拒绝），ALL（全部）。
         :type TrafficType: str
-        :param _VpcId: 私用网络ID或者统一ID，建议使用统一ID，当ResourceType为CCN时不填，其他类型必填。
+        :param _VpcId: 私用网络唯一ID。当ResourceType为CCN时不填，其他类型必填。
         :type VpcId: str
         :param _FlowLogDescription: 流日志实例描述。
         :type FlowLogDescription: str
-        :param _CloudLogId: 流日志存储ID。
+        :param _CloudLogId: 流日志存储ID（cls的日志主题ID，
+可通过[DescribeTopics](https://cloud.tencent.com/document/api/1179/46086)接口获取。
+）。当StorageType为cls时，CloudLogId为必选。
         :type CloudLogId: str
         :param _Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
         :type Tags: list of Tag
-        :param _StorageType: 消费端类型：cls、ckafka。默认值cls。
+        :param _StorageType: 消费端类型：cls、ckafka。默认值cls。当选择kafka时，请通过工单加入白名单。
         :type StorageType: str
         :param _FlowLogStorage: 流日志消费端信息，当消费端类型为ckafka时，必填。
         :type FlowLogStorage: :class:`tencentcloud.vpc.v20170312.models.FlowLogStorage`
@@ -10701,7 +10733,7 @@ class CreateFlowLogRequest(AbstractModel):
 
     @property
     def FlowLogName(self):
-        """流日志实例名字。
+        """流日志实例名字。长度为不超过60个字节。
         :rtype: str
         """
         return self._FlowLogName
@@ -10712,7 +10744,7 @@ class CreateFlowLogRequest(AbstractModel):
 
     @property
     def ResourceType(self):
-        """流日志所属资源类型，VPC|SUBNET|NETWORKINTERFACE|CCN|NAT|DCG。
+        """流日志所属资源类型，VPC(私有网络)，SUBNET（子网），NETWORKINTERFACE（网卡），CCN（云联网），NAT（网络地址转化），DCG（专线网关）。当选择VPC， SUBNET，CCN，DCG时，请通过工单加入白名单。
         :rtype: str
         """
         return self._ResourceType
@@ -10734,7 +10766,7 @@ class CreateFlowLogRequest(AbstractModel):
 
     @property
     def TrafficType(self):
-        """流日志采集类型，ACCEPT|REJECT|ALL。
+        """流日志采集类型，ACCEPT（允许），REJECT（拒绝），ALL（全部）。
         :rtype: str
         """
         return self._TrafficType
@@ -10745,7 +10777,7 @@ class CreateFlowLogRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """私用网络ID或者统一ID，建议使用统一ID，当ResourceType为CCN时不填，其他类型必填。
+        """私用网络唯一ID。当ResourceType为CCN时不填，其他类型必填。
         :rtype: str
         """
         return self._VpcId
@@ -10767,7 +10799,9 @@ class CreateFlowLogRequest(AbstractModel):
 
     @property
     def CloudLogId(self):
-        """流日志存储ID。
+        """流日志存储ID（cls的日志主题ID，
+可通过[DescribeTopics](https://cloud.tencent.com/document/api/1179/46086)接口获取。
+）。当StorageType为cls时，CloudLogId为必选。
         :rtype: str
         """
         return self._CloudLogId
@@ -10789,7 +10823,7 @@ class CreateFlowLogRequest(AbstractModel):
 
     @property
     def StorageType(self):
-        """消费端类型：cls、ckafka。默认值cls。
+        """消费端类型：cls、ckafka。默认值cls。当选择kafka时，请通过工单加入白名单。
         :rtype: str
         """
         return self._StorageType
@@ -18889,9 +18923,10 @@ class DeleteFlowLogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowLogId: 流日志唯一ID。
+        :param _FlowLogId: 流日志唯一ID。可通过[CreateFlowLog](https://cloud.tencent.com/document/product/215/35015)接口创建；可通过[DescribeFlowLogs](https://cloud.tencent.com/document/product/215/35012)接口获取。
         :type FlowLogId: str
-        :param _VpcId: 私用网络ID或者统一ID，建议使用统一ID，删除云联网流日志时，可不填，其他流日志类型必填。
+        :param _VpcId: 私用网络唯一ID。删除云联网流日志时，可不填，其他流日志类型必填。可通过[DescribeFlowLogs](https://cloud.tencent.com/document/product/215/35012)接口获取流日志对应的私有网络唯一ID。也可通过[DescribeVpcs](https://cloud.tencent.com/document/product/1108/43663)接口获取当前账户的私有网络唯一ID。
+
         :type VpcId: str
         """
         self._FlowLogId = None
@@ -18899,7 +18934,7 @@ class DeleteFlowLogRequest(AbstractModel):
 
     @property
     def FlowLogId(self):
-        """流日志唯一ID。
+        """流日志唯一ID。可通过[CreateFlowLog](https://cloud.tencent.com/document/product/215/35015)接口创建；可通过[DescribeFlowLogs](https://cloud.tencent.com/document/product/215/35012)接口获取。
         :rtype: str
         """
         return self._FlowLogId
@@ -18910,7 +18945,8 @@ class DeleteFlowLogRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """私用网络ID或者统一ID，建议使用统一ID，删除云联网流日志时，可不填，其他流日志类型必填。
+        """私用网络唯一ID。删除云联网流日志时，可不填，其他流日志类型必填。可通过[DescribeFlowLogs](https://cloud.tencent.com/document/product/215/35012)接口获取流日志对应的私有网络唯一ID。也可通过[DescribeVpcs](https://cloud.tencent.com/document/product/1108/43663)接口获取当前账户的私有网络唯一ID。
+
         :rtype: str
         """
         return self._VpcId
@@ -19870,14 +19906,16 @@ class DeleteNetworkInterfaceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NetworkInterfaceId: 弹性网卡实例ID，例如：eni-m6dyj72l。
+        :param _NetworkInterfaceId: 弹性网卡实例ID，例如：eni-m6dyj72l。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
+
         :type NetworkInterfaceId: str
         """
         self._NetworkInterfaceId = None
 
     @property
     def NetworkInterfaceId(self):
-        """弹性网卡实例ID，例如：eni-m6dyj72l。
+        """弹性网卡实例ID，例如：eni-m6dyj72l。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
+
         :rtype: str
         """
         return self._NetworkInterfaceId
@@ -26098,9 +26136,9 @@ class DescribeFlowLogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpcId: 私用网络ID或者统一ID，建议使用统一ID。
+        :param _VpcId: 私用网络唯一ID。可通过[DescribeVpcs](https://cloud.tencent.com/document/product/1108/43663)接口获取。该接口不支持拉取CCN类型的流日志，所以该字段为必选。
         :type VpcId: str
-        :param _FlowLogId: 流日志唯一ID。
+        :param _FlowLogId: 流日志唯一ID。可通过[CreateFlowLog](https://cloud.tencent.com/document/product/215/35015)接口创建；可通过[DescribeFlowLogs](https://cloud.tencent.com/document/product/215/35012)接口获取；
         :type FlowLogId: str
         """
         self._VpcId = None
@@ -26108,7 +26146,7 @@ class DescribeFlowLogRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """私用网络ID或者统一ID，建议使用统一ID。
+        """私用网络唯一ID。可通过[DescribeVpcs](https://cloud.tencent.com/document/product/1108/43663)接口获取。该接口不支持拉取CCN类型的流日志，所以该字段为必选。
         :rtype: str
         """
         return self._VpcId
@@ -26119,7 +26157,7 @@ class DescribeFlowLogRequest(AbstractModel):
 
     @property
     def FlowLogId(self):
-        """流日志唯一ID。
+        """流日志唯一ID。可通过[CreateFlowLog](https://cloud.tencent.com/document/product/215/35015)接口创建；可通过[DescribeFlowLogs](https://cloud.tencent.com/document/product/215/35012)接口获取；
         :rtype: str
         """
         return self._FlowLogId
@@ -26197,29 +26235,30 @@ class DescribeFlowLogsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpcId: 私用网络ID或者统一ID，建议使用统一ID。
+        :param _VpcId: 私用网络唯一ID。可通过[DescribeVpcs](https://cloud.tencent.com/document/product/1108/43663)接口获取。
         :type VpcId: str
-        :param _FlowLogId: 流日志唯一ID。
+        :param _FlowLogId: 流日志唯一ID。可通过[CreateFlowLog](https://cloud.tencent.com/document/product/215/35015)接口创建。
         :type FlowLogId: str
         :param _FlowLogName: 流日志实例名字。
         :type FlowLogName: str
-        :param _ResourceType: 流日志所属资源类型，VPC|SUBNET|NETWORKINTERFACE。
+        :param _ResourceType: 流日志所属资源类型：VPC(私有网络)，SUBNET（子网），NETWORKINTERFACE（网卡），CCN（云联网），NAT（网络地址转化），DCG（专线网关）。
+
         :type ResourceType: str
         :param _ResourceId: 资源唯一ID。
         :type ResourceId: str
-        :param _TrafficType: 流日志采集类型，ACCEPT|REJECT|ALL。
+        :param _TrafficType: 流日志采集类型，ACCEPT（允许），REJECT（拒绝），ALL（全部）。
         :type TrafficType: str
         :param _CloudLogId: 流日志存储ID。
         :type CloudLogId: str
-        :param _CloudLogState: 流日志存储ID状态。
+        :param _CloudLogState: 流日志存储ID状态。SUCCESS（成功），DELETED（删除）
         :type CloudLogState: str
-        :param _OrderField: 按某个字段排序,支持字段：flowLogName,createTime，默认按CreatedTime。
+        :param _OrderField: 按某个字段排序,支持字段：flowLogName,createTime，默认按createTime。
         :type OrderField: str
         :param _OrderDirection: 升序（ASC）还是降序（DESC）,默认：DESC。
         :type OrderDirection: str
         :param _Offset: 偏移量，默认为0。
         :type Offset: int
-        :param _Limit: 每页行数，默认为10。
+        :param _Limit: 每页行数，默认为10。范围1-100。
         :type Limit: int
         :param _Filters: 过滤条件，参数不支持同时指定FlowLogId和Filters。
 <li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。</li>
@@ -26245,7 +26284,7 @@ class DescribeFlowLogsRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """私用网络ID或者统一ID，建议使用统一ID。
+        """私用网络唯一ID。可通过[DescribeVpcs](https://cloud.tencent.com/document/product/1108/43663)接口获取。
         :rtype: str
         """
         return self._VpcId
@@ -26256,7 +26295,7 @@ class DescribeFlowLogsRequest(AbstractModel):
 
     @property
     def FlowLogId(self):
-        """流日志唯一ID。
+        """流日志唯一ID。可通过[CreateFlowLog](https://cloud.tencent.com/document/product/215/35015)接口创建。
         :rtype: str
         """
         return self._FlowLogId
@@ -26278,7 +26317,8 @@ class DescribeFlowLogsRequest(AbstractModel):
 
     @property
     def ResourceType(self):
-        """流日志所属资源类型，VPC|SUBNET|NETWORKINTERFACE。
+        """流日志所属资源类型：VPC(私有网络)，SUBNET（子网），NETWORKINTERFACE（网卡），CCN（云联网），NAT（网络地址转化），DCG（专线网关）。
+
         :rtype: str
         """
         return self._ResourceType
@@ -26300,7 +26340,7 @@ class DescribeFlowLogsRequest(AbstractModel):
 
     @property
     def TrafficType(self):
-        """流日志采集类型，ACCEPT|REJECT|ALL。
+        """流日志采集类型，ACCEPT（允许），REJECT（拒绝），ALL（全部）。
         :rtype: str
         """
         return self._TrafficType
@@ -26322,7 +26362,7 @@ class DescribeFlowLogsRequest(AbstractModel):
 
     @property
     def CloudLogState(self):
-        """流日志存储ID状态。
+        """流日志存储ID状态。SUCCESS（成功），DELETED（删除）
         :rtype: str
         """
         return self._CloudLogState
@@ -26333,7 +26373,7 @@ class DescribeFlowLogsRequest(AbstractModel):
 
     @property
     def OrderField(self):
-        """按某个字段排序,支持字段：flowLogName,createTime，默认按CreatedTime。
+        """按某个字段排序,支持字段：flowLogName,createTime，默认按createTime。
         :rtype: str
         """
         return self._OrderField
@@ -26366,7 +26406,7 @@ class DescribeFlowLogsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """每页行数，默认为10。
+        """每页行数，默认为10。范围1-100。
         :rtype: int
         """
         return self._Limit
@@ -27574,6 +27614,90 @@ class DescribeIPv6AddressesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeInstanceJumboRequest(AbstractModel):
+    """DescribeInstanceJumbo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceIds: CVM实例ID列表。限制每次i最多查询10个实例。
+        :type InstanceIds: list of str
+        """
+        self._InstanceIds = None
+
+    @property
+    def InstanceIds(self):
+        """CVM实例ID列表。限制每次i最多查询10个实例。
+        :rtype: list of str
+        """
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+
+    def _deserialize(self, params):
+        self._InstanceIds = params.get("InstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceJumboResponse(AbstractModel):
+    """DescribeInstanceJumbo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceJumboSet: 云服务器巨帧状态
+        :type InstanceJumboSet: list of InstanceJumbo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceJumboSet = None
+        self._RequestId = None
+
+    @property
+    def InstanceJumboSet(self):
+        """云服务器巨帧状态
+        :rtype: list of InstanceJumbo
+        """
+        return self._InstanceJumboSet
+
+    @InstanceJumboSet.setter
+    def InstanceJumboSet(self, InstanceJumboSet):
+        self._InstanceJumboSet = InstanceJumboSet
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceJumboSet") is not None:
+            self._InstanceJumboSet = []
+            for item in params.get("InstanceJumboSet"):
+                obj = InstanceJumbo()
+                obj._deserialize(item)
+                self._InstanceJumboSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeIp6AddressesRequest(AbstractModel):
     """DescribeIp6Addresses请求参数结构体
 
@@ -28187,8 +28311,7 @@ class DescribeLocalGatewayRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: 查询条件：
-vpc-id：按照VPCID过滤，local-gateway-name：按照本地网关名称过滤，名称支持模糊搜索，local-gateway-id：按照本地网关实例ID过滤，cdc-id：按照cdc实例ID过滤查询。
+        :param _Filters: 支持的过滤条件如下:\n<li>vpc-id:按照VPCID过滤。</li>\n<li>local-gateway-name:本地网关名称,支持模糊查询。</li>\n<li>local-gateway-id:本地网关实例ID。</li>\n<li>cdc-id:cdc实例ID。</li>
         :type Filters: list of Filter
         :param _Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/11646)中的相关小节。
         :type Offset: int
@@ -28201,8 +28324,7 @@ vpc-id：按照VPCID过滤，local-gateway-name：按照本地网关名称过滤
 
     @property
     def Filters(self):
-        """查询条件：
-vpc-id：按照VPCID过滤，local-gateway-name：按照本地网关名称过滤，名称支持模糊搜索，local-gateway-id：按照本地网关实例ID过滤，cdc-id：按照cdc实例ID过滤查询。
+        """支持的过滤条件如下:\n<li>vpc-id:按照VPCID过滤。</li>\n<li>local-gateway-name:本地网关名称,支持模糊查询。</li>\n<li>local-gateway-id:本地网关实例ID。</li>\n<li>cdc-id:cdc实例ID。</li>
         :rtype: list of Filter
         """
         return self._Filters
@@ -30004,6 +30126,7 @@ class DescribeNetworkInterfacesRequest(AbstractModel):
 <li>eni-qos - String -是否必填：否- （过滤条件）按照网卡服务质量进行过滤。PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。</li>
 <li>address-ipv6 - String - 是否必填：否 -（过滤条件）内网IPv6地址过滤，支持多ipv6地址查询，如果和address-ip一起使用取交集。</li>
 <li>public-address-ip - String - （过滤条件）公网IPv4地址，精确匹配。</li>
+<li>address-type - String - （过滤条件）IPv6 Cidr 的类型，精确匹配。`GUA`(全球单播地址), `ULA`(唯一本地地址)。</li>
         :type Filters: list of Filter
         :param _Offset: 偏移量，默认为0。
         :type Offset: int
@@ -30051,6 +30174,7 @@ class DescribeNetworkInterfacesRequest(AbstractModel):
 <li>eni-qos - String -是否必填：否- （过滤条件）按照网卡服务质量进行过滤。PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。</li>
 <li>address-ipv6 - String - 是否必填：否 -（过滤条件）内网IPv6地址过滤，支持多ipv6地址查询，如果和address-ip一起使用取交集。</li>
 <li>public-address-ip - String - （过滤条件）公网IPv4地址，精确匹配。</li>
+<li>address-type - String - （过滤条件）IPv6 Cidr 的类型，精确匹配。`GUA`(全球单播地址), `ULA`(唯一本地地址)。</li>
         :rtype: list of Filter
         """
         return self._Filters
@@ -34202,6 +34326,7 @@ class DescribeSubnetsRequest(AbstractModel):
 <li>is-cdc-subnet - String - 是否必填：否 - （过滤条件）按照是否是cdc子网进行过滤。取值：“0”-非cdc子网，“1”--cdc子网</li>
 <li>ipv6-cidr-block - String - （过滤条件）IPv6子网网段，形如: 2402:4e00:1717:8700::/64 。</li>
 <li>isp-type  - String - （过滤条件）运营商类型，形如: BGP 。</li>
+<li>address-type - String - （过滤条件）IPv6 Cidr 的类型，精确匹配。`GUA`(全球单播地址), `ULA`(唯一本地地址)。</li>
         :type Filters: list of Filter
         :param _Offset: 偏移量，默认为0。
         :type Offset: str
@@ -34240,6 +34365,7 @@ class DescribeSubnetsRequest(AbstractModel):
 <li>is-cdc-subnet - String - 是否必填：否 - （过滤条件）按照是否是cdc子网进行过滤。取值：“0”-非cdc子网，“1”--cdc子网</li>
 <li>ipv6-cidr-block - String - （过滤条件）IPv6子网网段，形如: 2402:4e00:1717:8700::/64 。</li>
 <li>isp-type  - String - （过滤条件）运营商类型，形如: BGP 。</li>
+<li>address-type - String - （过滤条件）IPv6 Cidr 的类型，精确匹配。`GUA`(全球单播地址), `ULA`(唯一本地地址)。</li>
         :rtype: list of Filter
         """
         return self._Filters
@@ -36633,6 +36759,7 @@ class DescribeVpcsRequest(AbstractModel):
   **说明：**若同一个过滤条件（Filter）存在多个Values，则同一Filter下Values间的关系为逻辑或（OR）关系；若存在多个过滤条件（Filter），Filter之间的关系为逻辑与（AND）关系。
 <li>ipv6-cidr-block - String - （过滤条件）IPv6子网网段，形如: 2402:4e00:1717:8700::/64 。</li>
 <li>isp-type  - String - （过滤条件）运营商类型，形如: BGP 取值范围：'BGP'-默认, 'CMCC'-中国移动, 'CTCC'-中国电信, 'CUCC'-中国联通。</li>
+<li>address-type - String - （过滤条件）IPv6 Cidr 的类型，精确匹配。`GUA`(全球单播地址), `ULA`(唯一本地地址)。</li>
         :type Filters: list of Filter
         :param _Offset: 偏移量，默认为0。
         :type Offset: str
@@ -36668,6 +36795,7 @@ class DescribeVpcsRequest(AbstractModel):
   **说明：**若同一个过滤条件（Filter）存在多个Values，则同一Filter下Values间的关系为逻辑或（OR）关系；若存在多个过滤条件（Filter），Filter之间的关系为逻辑与（AND）关系。
 <li>ipv6-cidr-block - String - （过滤条件）IPv6子网网段，形如: 2402:4e00:1717:8700::/64 。</li>
 <li>isp-type  - String - （过滤条件）运营商类型，形如: BGP 取值范围：'BGP'-默认, 'CMCC'-中国移动, 'CTCC'-中国电信, 'CUCC'-中国联通。</li>
+<li>address-type - String - （过滤条件）IPv6 Cidr 的类型，精确匹配。`GUA`(全球单播地址), `ULA`(唯一本地地址)。</li>
         :rtype: list of Filter
         """
         return self._Filters
@@ -39190,14 +39318,14 @@ class DisableFlowLogsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowLogIds: 流日志Id。
+        :param _FlowLogIds: 流日志Id。可通过[CreateFlowLog](https://cloud.tencent.com/document/product/215/35015)接口创建；可通过[DescribeFlowLogs](https://cloud.tencent.com/document/product/215/35012)接口获取。
         :type FlowLogIds: list of str
         """
         self._FlowLogIds = None
 
     @property
     def FlowLogIds(self):
-        """流日志Id。
+        """流日志Id。可通过[CreateFlowLog](https://cloud.tencent.com/document/product/215/35015)接口创建；可通过[DescribeFlowLogs](https://cloud.tencent.com/document/product/215/35012)接口获取。
         :rtype: list of str
         """
         return self._FlowLogIds
@@ -40065,9 +40193,10 @@ class DisassociateNetworkInterfaceSecurityGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NetworkInterfaceIds: 弹性网卡实例ID。形如：eni-pxir56ns。每次请求的实例的上限为100。
+        :param _NetworkInterfaceIds: 弹性网卡实例ID。形如：eni-pxir56ns。每次请求的实例的上限为100。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
+
         :type NetworkInterfaceIds: list of str
-        :param _SecurityGroupIds: 安全组实例ID，例如：sg-33ocnj9n，可通过DescribeSecurityGroups获取。每次请求的实例的上限为100。
+        :param _SecurityGroupIds: 安全组实例ID，例如：sg-33ocnj9n，可通过[DescribeSecurityGroups](https://cloud.tencent.com/document/product/215/15808)接口获取。每次请求的实例的上限为100。
         :type SecurityGroupIds: list of str
         """
         self._NetworkInterfaceIds = None
@@ -40075,7 +40204,8 @@ class DisassociateNetworkInterfaceSecurityGroupsRequest(AbstractModel):
 
     @property
     def NetworkInterfaceIds(self):
-        """弹性网卡实例ID。形如：eni-pxir56ns。每次请求的实例的上限为100。
+        """弹性网卡实例ID。形如：eni-pxir56ns。每次请求的实例的上限为100。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
+
         :rtype: list of str
         """
         return self._NetworkInterfaceIds
@@ -40086,7 +40216,7 @@ class DisassociateNetworkInterfaceSecurityGroupsRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        """安全组实例ID，例如：sg-33ocnj9n，可通过DescribeSecurityGroups获取。每次请求的实例的上限为100。
+        """安全组实例ID，例如：sg-33ocnj9n，可通过[DescribeSecurityGroups](https://cloud.tencent.com/document/product/215/15808)接口获取。每次请求的实例的上限为100。
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -40587,14 +40717,14 @@ class EnableFlowLogsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowLogIds: 流日志Id。
+        :param _FlowLogIds: 流日志Id。可通过[CreateFlowLog](https://cloud.tencent.com/document/product/215/35015)接口创建；可通过[DescribeFlowLogs](https://cloud.tencent.com/document/product/215/35012)接口获取。
         :type FlowLogIds: list of str
         """
         self._FlowLogIds = None
 
     @property
     def FlowLogIds(self):
-        """流日志Id。
+        """流日志Id。可通过[CreateFlowLog](https://cloud.tencent.com/document/product/215/35015)接口创建；可通过[DescribeFlowLogs](https://cloud.tencent.com/document/product/215/35012)接口获取。
         :rtype: list of str
         """
         return self._FlowLogIds
@@ -42524,19 +42654,14 @@ class HaVip(AbstractModel):
         :param _Business: 使用havip的业务标识。
         :type Business: str
         :param _HaVipAssociationSet: `HAVIP`的飘移范围。
-注意：此字段可能返回 null，表示取不到有效值。
         :type HaVipAssociationSet: list of HaVipAssociation
         :param _CheckAssociate: 是否开启`HAVIP`的飘移范围校验。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CheckAssociate: bool
         :param _CdcId: CDC实例ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CdcId: str
         :param _FlushedTime: HAVIP 刷新时间。该参数只作为出参数。以下场景会触发 FlushTime 被刷新：1）子机发出免费 ARP 触发 HAVIP 漂移；2）手动HAVIP解绑网卡; 没有更新时默认值：0000-00-00 00:00:00
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlushedTime: str
         :param _TagSet: 标签键值对。	
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagSet: list of Tag
         """
         self._HaVipId = None
@@ -42682,7 +42807,6 @@ class HaVip(AbstractModel):
     @property
     def HaVipAssociationSet(self):
         """`HAVIP`的飘移范围。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of HaVipAssociation
         """
         return self._HaVipAssociationSet
@@ -42694,7 +42818,6 @@ class HaVip(AbstractModel):
     @property
     def CheckAssociate(self):
         """是否开启`HAVIP`的飘移范围校验。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._CheckAssociate
@@ -42706,7 +42829,6 @@ class HaVip(AbstractModel):
     @property
     def CdcId(self):
         """CDC实例ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CdcId
@@ -42718,7 +42840,6 @@ class HaVip(AbstractModel):
     @property
     def FlushedTime(self):
         """HAVIP 刷新时间。该参数只作为出参数。以下场景会触发 FlushTime 被刷新：1）子机发出免费 ARP 触发 HAVIP 漂移；2）手动HAVIP解绑网卡; 没有更新时默认值：0000-00-00 00:00:00
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FlushedTime
@@ -42730,7 +42851,6 @@ class HaVip(AbstractModel):
     @property
     def TagSet(self):
         """标签键值对。	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._TagSet
@@ -43723,6 +43843,42 @@ class IPSECOptionsSpecification(AbstractModel):
         
 
 
+class ISPIPv6CidrBlock(AbstractModel):
+    """返回多运营商IPv6 Cidr Block
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AddressType: IPv6 Cidr 的类型：`GUA`(全球单播地址), `ULA`(唯一本地地址)
+        :type AddressType: str
+        """
+        self._AddressType = None
+
+    @property
+    def AddressType(self):
+        """IPv6 Cidr 的类型：`GUA`(全球单播地址), `ULA`(唯一本地地址)
+        :rtype: str
+        """
+        return self._AddressType
+
+    @AddressType.setter
+    def AddressType(self, AddressType):
+        self._AddressType = AddressType
+
+
+    def _deserialize(self, params):
+        self._AddressType = params.get("AddressType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InquirePriceCreateDirectConnectGatewayRequest(AbstractModel):
     """InquirePriceCreateDirectConnectGateway请求参数结构体
 
@@ -44705,6 +44861,57 @@ class InstanceChargePrepaid(AbstractModel):
         
 
 
+class InstanceJumbo(AbstractModel):
+    """云服务器巨帧状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID。
+        :type InstanceId: str
+        :param _JumboState: 实例是否支持巨帧。
+        :type JumboState: bool
+        """
+        self._InstanceId = None
+        self._JumboState = None
+
+    @property
+    def InstanceId(self):
+        """实例ID。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def JumboState(self):
+        """实例是否支持巨帧。
+        :rtype: bool
+        """
+        return self._JumboState
+
+    @JumboState.setter
+    def JumboState(self, JumboState):
+        self._JumboState = JumboState
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._JumboState = params.get("JumboState")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InstanceStatistic(AbstractModel):
     """用于描述实例的统计信息
 
@@ -45676,7 +45883,7 @@ class Ipv6Address(AbstractModel):
         :type State: str
         :param _PublicIpAddress: 如果 IPv6地址是 ULA 类型，绑定的公网IP地址。
         :type PublicIpAddress: str
-        :param _AddressType: `IPv6`地址的类型: `GUA`(全球单播地址), `OTHER`(非GUA/ULA地址), `ULA`(唯一本地地址)
+        :param _AddressType: `IPv6`地址的类型: `GUA`(全球单播地址), `ULA`(唯一本地地址)
         :type AddressType: str
         """
         self._Address = None
@@ -45771,7 +45978,7 @@ class Ipv6Address(AbstractModel):
 
     @property
     def AddressType(self):
-        """`IPv6`地址的类型: `GUA`(全球单播地址), `OTHER`(非GUA/ULA地址), `ULA`(唯一本地地址)
+        """`IPv6`地址的类型: `GUA`(全球单播地址), `ULA`(唯一本地地址)
         :rtype: str
         """
         return self._AddressType
@@ -46567,9 +46774,11 @@ class MigratePrivateIpAddressRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SourceNetworkInterfaceId: 当内网IP绑定的弹性网卡实例ID，例如：eni-m6dyj72l。
+        :param _SourceNetworkInterfaceId: 当内网IP绑定的弹性网卡实例ID，例如：eni-m6dyj72l。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
+
         :type SourceNetworkInterfaceId: str
-        :param _DestinationNetworkInterfaceId: 待迁移的目的弹性网卡实例ID。
+        :param _DestinationNetworkInterfaceId: 待迁移的目的弹性网卡实例ID。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
+
         :type DestinationNetworkInterfaceId: str
         :param _PrivateIpAddress: 迁移的内网IP地址，例如：10.0.0.6。
         :type PrivateIpAddress: str
@@ -46580,7 +46789,8 @@ class MigratePrivateIpAddressRequest(AbstractModel):
 
     @property
     def SourceNetworkInterfaceId(self):
-        """当内网IP绑定的弹性网卡实例ID，例如：eni-m6dyj72l。
+        """当内网IP绑定的弹性网卡实例ID，例如：eni-m6dyj72l。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
+
         :rtype: str
         """
         return self._SourceNetworkInterfaceId
@@ -46591,7 +46801,8 @@ class MigratePrivateIpAddressRequest(AbstractModel):
 
     @property
     def DestinationNetworkInterfaceId(self):
-        """待迁移的目的弹性网卡实例ID。
+        """待迁移的目的弹性网卡实例ID。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
+
         :rtype: str
         """
         return self._DestinationNetworkInterfaceId
@@ -48282,13 +48493,13 @@ class ModifyFlowLogAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowLogId: 流日志唯一ID。
+        :param _FlowLogId: 流日志唯一ID。可通过[CreateFlowLog](https://cloud.tencent.com/document/product/215/35015)接口创建；可通过[DescribeFlowLogs](https://cloud.tencent.com/document/product/215/35012)接口获取。
         :type FlowLogId: str
-        :param _VpcId: 私用网络ID或者统一ID，建议使用统一ID，修改云联网流日志属性时可不填，其他流日志类型必填。
+        :param _VpcId: 私用网络唯一ID。修改云联网流日志属性时可不填，其他流日志类型必填。
         :type VpcId: str
-        :param _FlowLogName: 流日志实例名字。
+        :param _FlowLogName: 流日志实例名字。长度为不超过60字节。
         :type FlowLogName: str
-        :param _FlowLogDescription: 流日志实例描述。
+        :param _FlowLogDescription: 流日志实例描述。长度为不超过512字节。
         :type FlowLogDescription: str
         """
         self._FlowLogId = None
@@ -48298,7 +48509,7 @@ class ModifyFlowLogAttributeRequest(AbstractModel):
 
     @property
     def FlowLogId(self):
-        """流日志唯一ID。
+        """流日志唯一ID。可通过[CreateFlowLog](https://cloud.tencent.com/document/product/215/35015)接口创建；可通过[DescribeFlowLogs](https://cloud.tencent.com/document/product/215/35012)接口获取。
         :rtype: str
         """
         return self._FlowLogId
@@ -48309,7 +48520,7 @@ class ModifyFlowLogAttributeRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """私用网络ID或者统一ID，建议使用统一ID，修改云联网流日志属性时可不填，其他流日志类型必填。
+        """私用网络唯一ID。修改云联网流日志属性时可不填，其他流日志类型必填。
         :rtype: str
         """
         return self._VpcId
@@ -48320,7 +48531,7 @@ class ModifyFlowLogAttributeRequest(AbstractModel):
 
     @property
     def FlowLogName(self):
-        """流日志实例名字。
+        """流日志实例名字。长度为不超过60字节。
         :rtype: str
         """
         return self._FlowLogName
@@ -48331,7 +48542,7 @@ class ModifyFlowLogAttributeRequest(AbstractModel):
 
     @property
     def FlowLogDescription(self):
-        """流日志实例描述。
+        """流日志实例描述。长度为不超过512字节。
         :rtype: str
         """
         return self._FlowLogDescription
@@ -64612,10 +64823,8 @@ class Subnet(AbstractModel):
         :param _TagSet: 标签键值对。
         :type TagSet: list of Tag
         :param _CdcId: CDC实例ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CdcId: str
         :param _IsCdcSubnet: 是否是CDC所属子网。0:否 1:是
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsCdcSubnet: int
         """
         self._VpcId = None
@@ -64804,7 +65013,6 @@ class Subnet(AbstractModel):
     @property
     def CdcId(self):
         """CDC实例ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CdcId
@@ -64816,7 +65024,6 @@ class Subnet(AbstractModel):
     @property
     def IsCdcSubnet(self):
         """是否是CDC所属子网。0:否 1:是
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._IsCdcSubnet
@@ -67416,6 +67623,9 @@ class Vpc(AbstractModel):
         :param _AssistantCidrSet: 辅助CIDR
 注意：此字段可能返回 null，表示取不到有效值。
         :type AssistantCidrSet: list of AssistantCidr
+        :param _Ipv6CidrBlockSet: 返回多运营商IPv6 Cidr Block
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ipv6CidrBlockSet: list of ISPIPv6CidrBlock
         """
         self._VpcName = None
         self._VpcId = None
@@ -67430,6 +67640,7 @@ class Vpc(AbstractModel):
         self._Ipv6CidrBlock = None
         self._TagSet = None
         self._AssistantCidrSet = None
+        self._Ipv6CidrBlockSet = None
 
     @property
     def VpcName(self):
@@ -67575,6 +67786,18 @@ class Vpc(AbstractModel):
     def AssistantCidrSet(self, AssistantCidrSet):
         self._AssistantCidrSet = AssistantCidrSet
 
+    @property
+    def Ipv6CidrBlockSet(self):
+        """返回多运营商IPv6 Cidr Block
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ISPIPv6CidrBlock
+        """
+        return self._Ipv6CidrBlockSet
+
+    @Ipv6CidrBlockSet.setter
+    def Ipv6CidrBlockSet(self, Ipv6CidrBlockSet):
+        self._Ipv6CidrBlockSet = Ipv6CidrBlockSet
+
 
     def _deserialize(self, params):
         self._VpcName = params.get("VpcName")
@@ -67600,6 +67823,12 @@ class Vpc(AbstractModel):
                 obj = AssistantCidr()
                 obj._deserialize(item)
                 self._AssistantCidrSet.append(obj)
+        if params.get("Ipv6CidrBlockSet") is not None:
+            self._Ipv6CidrBlockSet = []
+            for item in params.get("Ipv6CidrBlockSet"):
+                obj = ISPIPv6CidrBlock()
+                obj._deserialize(item)
+                self._Ipv6CidrBlockSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

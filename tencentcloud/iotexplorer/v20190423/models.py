@@ -14271,6 +14271,160 @@ class DescribeStudioProductResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTWeSeeConfigRequest(AbstractModel):
+    """DescribeTWeSeeConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品ID
+        :type ProductId: str
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        :param _UserId: 用户ID
+        :type UserId: str
+        :param _ChannelId: 通道ID
+        :type ChannelId: int
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._UserId = None
+        self._ChannelId = None
+
+    @property
+    def ProductId(self):
+        """产品ID
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        """设备名称
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def UserId(self):
+        """用户ID
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def ChannelId(self):
+        """通道ID
+        :rtype: int
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._UserId = params.get("UserId")
+        self._ChannelId = params.get("ChannelId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTWeSeeConfigResponse(AbstractModel):
+    """DescribeTWeSeeConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnableSummary: 是否开启视频摘要
+        :type EnableSummary: bool
+        :param _EnableSearch: 是否开启视频搜索
+        :type EnableSearch: bool
+        :param _Config: 配置参数
+        :type Config: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._EnableSummary = None
+        self._EnableSearch = None
+        self._Config = None
+        self._RequestId = None
+
+    @property
+    def EnableSummary(self):
+        """是否开启视频摘要
+        :rtype: bool
+        """
+        return self._EnableSummary
+
+    @EnableSummary.setter
+    def EnableSummary(self, EnableSummary):
+        self._EnableSummary = EnableSummary
+
+    @property
+    def EnableSearch(self):
+        """是否开启视频搜索
+        :rtype: bool
+        """
+        return self._EnableSearch
+
+    @EnableSearch.setter
+    def EnableSearch(self, EnableSearch):
+        self._EnableSearch = EnableSearch
+
+    @property
+    def Config(self):
+        """配置参数
+        :rtype: str
+        """
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._EnableSummary = params.get("EnableSummary")
+        self._EnableSearch = params.get("EnableSearch")
+        self._Config = params.get("Config")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTopicPolicyRequest(AbstractModel):
     """DescribeTopicPolicy请求参数结构体
 
@@ -19829,6 +19983,150 @@ class InstanceDetail(AbstractModel):
         
 
 
+class InvokeAISearchServiceRequest(AbstractModel):
+    """InvokeAISearchService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品ID
+        :type ProductId: str
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        :param _Query: 自然语言查询
+        :type Query: str
+        :param _SummaryLang: 搜索结果总结的语言类型，支持的类型有：en-US、zh-CN、id-ID、th-TH
+        :type SummaryLang: str
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._Query = None
+        self._SummaryLang = None
+
+    @property
+    def ProductId(self):
+        """产品ID
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        """设备名称
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def Query(self):
+        """自然语言查询
+        :rtype: str
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+    @property
+    def SummaryLang(self):
+        """搜索结果总结的语言类型，支持的类型有：en-US、zh-CN、id-ID、th-TH
+        :rtype: str
+        """
+        return self._SummaryLang
+
+    @SummaryLang.setter
+    def SummaryLang(self, SummaryLang):
+        self._SummaryLang = SummaryLang
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._Query = params.get("Query")
+        self._SummaryLang = params.get("SummaryLang")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InvokeAISearchServiceResponse(AbstractModel):
+    """InvokeAISearchService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Summary: 基于搜索结果的总结
+        :type Summary: str
+        :param _Targets: 视频结果集
+        :type Targets: list of TargetInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Summary = None
+        self._Targets = None
+        self._RequestId = None
+
+    @property
+    def Summary(self):
+        """基于搜索结果的总结
+        :rtype: str
+        """
+        return self._Summary
+
+    @Summary.setter
+    def Summary(self, Summary):
+        self._Summary = Summary
+
+    @property
+    def Targets(self):
+        """视频结果集
+        :rtype: list of TargetInfo
+        """
+        return self._Targets
+
+    @Targets.setter
+    def Targets(self, Targets):
+        self._Targets = Targets
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Summary = params.get("Summary")
+        if params.get("Targets") is not None:
+            self._Targets = []
+            for item in params.get("Targets"):
+                obj = TargetInfo()
+                obj._deserialize(item)
+                self._Targets.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class InvokeCloudStorageAIServiceTaskRequest(AbstractModel):
     """InvokeCloudStorageAIServiceTask请求参数结构体
 
@@ -23702,6 +24000,160 @@ class ModifyStudioProductResponse(AbstractModel):
         if params.get("Product") is not None:
             self._Product = ProductEntry()
             self._Product._deserialize(params.get("Product"))
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyTWeSeeConfigRequest(AbstractModel):
+    """ModifyTWeSeeConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品ID
+        :type ProductId: str
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        :param _UserId: 用户ID
+        :type UserId: str
+        :param _ChannelId: 通道ID
+        :type ChannelId: int
+        :param _EnableSummary: 是否开启视频摘要，不传则不修改
+        :type EnableSummary: bool
+        :param _EnableSearch: 是否开启视频搜索，不传则不修改
+        :type EnableSearch: bool
+        :param _Config: 配置参数，不传则不修改
+        :type Config: str
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._UserId = None
+        self._ChannelId = None
+        self._EnableSummary = None
+        self._EnableSearch = None
+        self._Config = None
+
+    @property
+    def ProductId(self):
+        """产品ID
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        """设备名称
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def UserId(self):
+        """用户ID
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def ChannelId(self):
+        """通道ID
+        :rtype: int
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def EnableSummary(self):
+        """是否开启视频摘要，不传则不修改
+        :rtype: bool
+        """
+        return self._EnableSummary
+
+    @EnableSummary.setter
+    def EnableSummary(self, EnableSummary):
+        self._EnableSummary = EnableSummary
+
+    @property
+    def EnableSearch(self):
+        """是否开启视频搜索，不传则不修改
+        :rtype: bool
+        """
+        return self._EnableSearch
+
+    @EnableSearch.setter
+    def EnableSearch(self, EnableSearch):
+        self._EnableSearch = EnableSearch
+
+    @property
+    def Config(self):
+        """配置参数，不传则不修改
+        :rtype: str
+        """
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._UserId = params.get("UserId")
+        self._ChannelId = params.get("ChannelId")
+        self._EnableSummary = params.get("EnableSummary")
+        self._EnableSearch = params.get("EnableSearch")
+        self._Config = params.get("Config")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyTWeSeeConfigResponse(AbstractModel):
+    """ModifyTWeSeeConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -27626,6 +28078,132 @@ class TWeCallLicenseInfo(AbstractModel):
         self._TWeCallType = params.get("TWeCallType")
         self._TotalNum = params.get("TotalNum")
         self._UsedNum = params.get("UsedNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TargetInfo(AbstractModel):
+    """视频语义搜索结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 视频唯一ID
+        :type Id: str
+        :param _ProductId: 产品ID
+        :type ProductId: str
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        :param _StartTimeMs: 视频起始时间（毫秒级Unix时间戳）
+        :type StartTimeMs: int
+        :param _EndTimeMs: 视频结束时间（毫秒级Unix时间戳）
+        :type EndTimeMs: int
+        :param _EventId: 用户自定义事件ID，后续扩展使用
+        :type EventId: str
+        :param _Summary: 视频内容摘要
+        :type Summary: str
+        """
+        self._Id = None
+        self._ProductId = None
+        self._DeviceName = None
+        self._StartTimeMs = None
+        self._EndTimeMs = None
+        self._EventId = None
+        self._Summary = None
+
+    @property
+    def Id(self):
+        """视频唯一ID
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def ProductId(self):
+        """产品ID
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        """设备名称
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def StartTimeMs(self):
+        """视频起始时间（毫秒级Unix时间戳）
+        :rtype: int
+        """
+        return self._StartTimeMs
+
+    @StartTimeMs.setter
+    def StartTimeMs(self, StartTimeMs):
+        self._StartTimeMs = StartTimeMs
+
+    @property
+    def EndTimeMs(self):
+        """视频结束时间（毫秒级Unix时间戳）
+        :rtype: int
+        """
+        return self._EndTimeMs
+
+    @EndTimeMs.setter
+    def EndTimeMs(self, EndTimeMs):
+        self._EndTimeMs = EndTimeMs
+
+    @property
+    def EventId(self):
+        """用户自定义事件ID，后续扩展使用
+        :rtype: str
+        """
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
+    @property
+    def Summary(self):
+        """视频内容摘要
+        :rtype: str
+        """
+        return self._Summary
+
+    @Summary.setter
+    def Summary(self, Summary):
+        self._Summary = Summary
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._StartTimeMs = params.get("StartTimeMs")
+        self._EndTimeMs = params.get("EndTimeMs")
+        self._EventId = params.get("EventId")
+        self._Summary = params.get("Summary")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

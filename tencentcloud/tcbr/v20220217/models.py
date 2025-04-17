@@ -2680,6 +2680,8 @@ class ServerBaseConfig(AbstractModel):
         :type LogParseType: str
         :param _Tag: 服务标签, function: 函数托管
         :type Tag: str
+        :param _InternalAccess: 内网访问开关 close | open
+        :type InternalAccess: str
         """
         self._EnvId = None
         self._ServerName = None
@@ -2702,6 +2704,7 @@ class ServerBaseConfig(AbstractModel):
         self._LogTopicId = None
         self._LogParseType = None
         self._Tag = None
+        self._InternalAccess = None
 
     @property
     def EnvId(self):
@@ -2934,6 +2937,17 @@ class ServerBaseConfig(AbstractModel):
     def Tag(self, Tag):
         self._Tag = Tag
 
+    @property
+    def InternalAccess(self):
+        """内网访问开关 close | open
+        :rtype: str
+        """
+        return self._InternalAccess
+
+    @InternalAccess.setter
+    def InternalAccess(self, InternalAccess):
+        self._InternalAccess = InternalAccess
+
 
     def _deserialize(self, params):
         self._EnvId = params.get("EnvId")
@@ -2962,6 +2976,7 @@ class ServerBaseConfig(AbstractModel):
         self._LogTopicId = params.get("LogTopicId")
         self._LogParseType = params.get("LogParseType")
         self._Tag = params.get("Tag")
+        self._InternalAccess = params.get("InternalAccess")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

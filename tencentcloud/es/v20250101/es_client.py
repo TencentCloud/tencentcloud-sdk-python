@@ -226,3 +226,26 @@ class EsClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def WebSearch(self, request):
+        """WebSearch API 是一个网页搜索服务，支持多种搜索引擎，可以获取网页的标题、URL、摘要和正文内容。
+
+        :param request: Request instance for WebSearch.
+        :type request: :class:`tencentcloud.es.v20250101.models.WebSearchRequest`
+        :rtype: :class:`tencentcloud.es.v20250101.models.WebSearchResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("WebSearch", params, headers=headers)
+            response = json.loads(body)
+            model = models.WebSearchResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))

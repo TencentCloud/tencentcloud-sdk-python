@@ -658,10 +658,24 @@ class CreateInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _InstanceIds: 实例 ID。
+        :type InstanceIds: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._InstanceIds = None
         self._RequestId = None
+
+    @property
+    def InstanceIds(self):
+        """实例 ID。
+        :rtype: list of str
+        """
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
 
     @property
     def RequestId(self):
@@ -676,6 +690,7 @@ class CreateInstanceResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._InstanceIds = params.get("InstanceIds")
         self._RequestId = params.get("RequestId")
 
 

@@ -1172,33 +1172,6 @@ class LighthouseClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeInstanceLoginKeyPairAttribute(self, request):
-        """后端代码已与23年2月4号下线
-        近90天无调用记录
-        经评估，下线无风险，操作下线
-
-        本接口用于查询实例默认登录密钥属性。
-
-        :param request: Request instance for DescribeInstanceLoginKeyPairAttribute.
-        :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeInstanceLoginKeyPairAttributeRequest`
-        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DescribeInstanceLoginKeyPairAttributeResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeInstanceLoginKeyPairAttribute", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeInstanceLoginKeyPairAttributeResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeInstanceVncUrl(self, request):
         """本接口 ( DescribeInstanceVncUrl ) 用于查询实例管理终端地址，获取的地址可用于实例的 VNC 登录。
 
@@ -2090,35 +2063,6 @@ class LighthouseClient(AbstractClient):
             body = self.call("ModifyInstancesBundle", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyInstancesBundleResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def ModifyInstancesLoginKeyPairAttribute(self, request):
-        """后端代码已与23年2月4号下线
-        近90天只有一次调用记录，且明确返回前端接口下线错误信息
-
-        经评估无风险，操作接口下线
-
-        本接口用于设置实例默认登录密钥对属性。
-
-
-        :param request: Request instance for ModifyInstancesLoginKeyPairAttribute.
-        :type request: :class:`tencentcloud.lighthouse.v20200324.models.ModifyInstancesLoginKeyPairAttributeRequest`
-        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.ModifyInstancesLoginKeyPairAttributeResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ModifyInstancesLoginKeyPairAttribute", params, headers=headers)
-            response = json.loads(body)
-            model = models.ModifyInstancesLoginKeyPairAttributeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

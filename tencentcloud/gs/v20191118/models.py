@@ -37,6 +37,8 @@ class AndroidApp(AbstractModel):
         :type CreateTime: str
         :param _UserId: 用户 Id
         :type UserId: str
+        :param _AppMode: 应用模式（NORMAL : 普通模式；ADVANCED : 高级模式）
+        :type AppMode: str
         """
         self._AndroidAppId = None
         self._Name = None
@@ -44,6 +46,7 @@ class AndroidApp(AbstractModel):
         self._AndroidAppVersionInfo = None
         self._CreateTime = None
         self._UserId = None
+        self._AppMode = None
 
     @property
     def AndroidAppId(self):
@@ -111,6 +114,17 @@ class AndroidApp(AbstractModel):
     def UserId(self, UserId):
         self._UserId = UserId
 
+    @property
+    def AppMode(self):
+        """应用模式（NORMAL : 普通模式；ADVANCED : 高级模式）
+        :rtype: str
+        """
+        return self._AppMode
+
+    @AppMode.setter
+    def AppMode(self, AppMode):
+        self._AppMode = AppMode
+
 
     def _deserialize(self, params):
         self._AndroidAppId = params.get("AndroidAppId")
@@ -124,6 +138,7 @@ class AndroidApp(AbstractModel):
                 self._AndroidAppVersionInfo.append(obj)
         self._CreateTime = params.get("CreateTime")
         self._UserId = params.get("UserId")
+        self._AppMode = params.get("AppMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -143,8 +158,11 @@ class AndroidAppCosInfo(AbstractModel):
         r"""
         :param _AndroidAppId: 安卓应用ID
         :type AndroidAppId: str
+        :param _FileName: 应用名称（支持 apk 和 tgz 两种格式文件，当应用 AppMode 为 NORMAL 时，只支持上传 apk 类型文件，当应用 AppMode 为 ADVANCED 高级模式时，只支持上传  tgz 类型文件）
+        :type FileName: str
         """
         self._AndroidAppId = None
+        self._FileName = None
 
     @property
     def AndroidAppId(self):
@@ -157,9 +175,21 @@ class AndroidAppCosInfo(AbstractModel):
     def AndroidAppId(self, AndroidAppId):
         self._AndroidAppId = AndroidAppId
 
+    @property
+    def FileName(self):
+        """应用名称（支持 apk 和 tgz 两种格式文件，当应用 AppMode 为 NORMAL 时，只支持上传 apk 类型文件，当应用 AppMode 为 ADVANCED 高级模式时，只支持上传  tgz 类型文件）
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
 
     def _deserialize(self, params):
         self._AndroidAppId = params.get("AndroidAppId")
+        self._FileName = params.get("FileName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -185,10 +215,13 @@ CREATE_FAIL：创建失败、CREATE_SUCCESS：创建成功）
         :type State: str
         :param _CreateTime: 安卓应用版本创建时间
         :type CreateTime: str
+        :param _Command: shell 命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
+        :type Command: str
         """
         self._AndroidAppVersion = None
         self._State = None
         self._CreateTime = None
+        self._Command = None
 
     @property
     def AndroidAppVersion(self):
@@ -225,11 +258,23 @@ CREATE_FAIL：创建失败、CREATE_SUCCESS：创建成功）
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
 
+    @property
+    def Command(self):
+        """shell 命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
+        :rtype: str
+        """
+        return self._Command
+
+    @Command.setter
+    def Command(self, Command):
+        self._Command = Command
+
 
     def _deserialize(self, params):
         self._AndroidAppVersion = params.get("AndroidAppVersion")
         self._State = params.get("State")
         self._CreateTime = params.get("CreateTime")
+        self._Command = params.get("Command")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1364,9 +1409,12 @@ class CreateAndroidAppRequest(AbstractModel):
         :type Name: str
         :param _UserId: 用户 Id
         :type UserId: str
+        :param _AppMode: 应用模式（NORMAL : 普通模式、只支持 apk 文件上传，为默认值；ADVANCED : 高级模式、只支持上传 tgz 文件 和 自定义 shell 命令执行）
+        :type AppMode: str
         """
         self._Name = None
         self._UserId = None
+        self._AppMode = None
 
     @property
     def Name(self):
@@ -1390,10 +1438,22 @@ class CreateAndroidAppRequest(AbstractModel):
     def UserId(self, UserId):
         self._UserId = UserId
 
+    @property
+    def AppMode(self):
+        """应用模式（NORMAL : 普通模式、只支持 apk 文件上传，为默认值；ADVANCED : 高级模式、只支持上传 tgz 文件 和 自定义 shell 命令执行）
+        :rtype: str
+        """
+        return self._AppMode
+
+    @AppMode.setter
+    def AppMode(self, AppMode):
+        self._AppMode = AppMode
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._UserId = params.get("UserId")
+        self._AppMode = params.get("AppMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1458,9 +1518,12 @@ class CreateAndroidAppVersionRequest(AbstractModel):
         :type AndroidAppId: str
         :param _DownloadUrl: 应用包下载地址
         :type DownloadUrl: str
+        :param _Command: shell 命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
+        :type Command: str
         """
         self._AndroidAppId = None
         self._DownloadUrl = None
+        self._Command = None
 
     @property
     def AndroidAppId(self):
@@ -1484,10 +1547,22 @@ class CreateAndroidAppVersionRequest(AbstractModel):
     def DownloadUrl(self, DownloadUrl):
         self._DownloadUrl = DownloadUrl
 
+    @property
+    def Command(self):
+        """shell 命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
+        :rtype: str
+        """
+        return self._Command
+
+    @Command.setter
+    def Command(self, Command):
+        self._Command = Command
+
 
     def _deserialize(self, params):
         self._AndroidAppId = params.get("AndroidAppId")
         self._DownloadUrl = params.get("DownloadUrl")
+        self._Command = params.get("Command")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4589,6 +4664,115 @@ class ModifyAndroidAppResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyAndroidAppVersionRequest(AbstractModel):
+    """ModifyAndroidAppVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AndroidAppId: 安卓应用 Id
+        :type AndroidAppId: str
+        :param _AndroidAppVersion: 安卓应用版本 Id
+        :type AndroidAppVersion: str
+        :param _AndroidAppVersionName: 安卓应用版本名称
+        :type AndroidAppVersionName: str
+        :param _Command: shell 命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
+        :type Command: str
+        """
+        self._AndroidAppId = None
+        self._AndroidAppVersion = None
+        self._AndroidAppVersionName = None
+        self._Command = None
+
+    @property
+    def AndroidAppId(self):
+        """安卓应用 Id
+        :rtype: str
+        """
+        return self._AndroidAppId
+
+    @AndroidAppId.setter
+    def AndroidAppId(self, AndroidAppId):
+        self._AndroidAppId = AndroidAppId
+
+    @property
+    def AndroidAppVersion(self):
+        """安卓应用版本 Id
+        :rtype: str
+        """
+        return self._AndroidAppVersion
+
+    @AndroidAppVersion.setter
+    def AndroidAppVersion(self, AndroidAppVersion):
+        self._AndroidAppVersion = AndroidAppVersion
+
+    @property
+    def AndroidAppVersionName(self):
+        """安卓应用版本名称
+        :rtype: str
+        """
+        return self._AndroidAppVersionName
+
+    @AndroidAppVersionName.setter
+    def AndroidAppVersionName(self, AndroidAppVersionName):
+        self._AndroidAppVersionName = AndroidAppVersionName
+
+    @property
+    def Command(self):
+        """shell 命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
+        :rtype: str
+        """
+        return self._Command
+
+    @Command.setter
+    def Command(self, Command):
+        self._Command = Command
+
+
+    def _deserialize(self, params):
+        self._AndroidAppId = params.get("AndroidAppId")
+        self._AndroidAppVersion = params.get("AndroidAppVersion")
+        self._AndroidAppVersionName = params.get("AndroidAppVersionName")
+        self._Command = params.get("Command")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAndroidAppVersionResponse(AbstractModel):
+    """ModifyAndroidAppVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyAndroidInstanceInformationRequest(AbstractModel):
     """ModifyAndroidInstanceInformation请求参数结构体
 
@@ -4678,22 +4862,30 @@ class ModifyAndroidInstanceResolutionRequest(AbstractModel):
         :param _AndroidInstanceId: 安卓实例 ID
         :type AndroidInstanceId: str
         :param _Width: 分辨率宽度。建议按照以下数值设置，避免出现性能不足问题：
-实例类型为单开（A1）、双开（A2）、三开（ A3）：建议设置为 1080
-实例类型为 四开（A4） 及以上：建议设置为 720
+实例类型为单开（A1）：建议设置为 1080
+实例类型为双开（A2） 及以上：建议设置为 720
         :type Width: int
         :param _Height: 分辨率高度。建议按照以下数值设置，避免出现性能不足问题：
-实例类型为单开（A1）、双开（A2）、三开（ A3）：建议设置为 1920
-实例类型为 四开（A4） 及以上：建议设置为 1280
+实例类型为单开（A1）：建议设置为 1920
+实例类型为双开（A2） 及以上：建议设置为 1280
         :type Height: int
         :param _DPI: 每英寸像素点。如果不填，系统将会计算一个合理的数值。修改 DPI 可能会导致 App 异常退出，请谨慎使用！
 分辨率为 720x1280：建议配置为 320
 分辨率为  1080x1920：建议配置为 480
         :type DPI: int
+        :param _FPS: 帧率。ResolutionType 为 PHYSICAL 时才会修改帧率。另外建议按照以下数值设置，避免出现性能不足问题： 实例类型为单开（A1）：建议设置为 60 实例类型为双开（A2） 及以上：建议设置为 30
+        :type FPS: int
+        :param _ResolutionType: 修改分辨率类型。修改物理分辨率，需要重启才能生效。
+OVERRIDE：默认值，修改覆盖（显示）分辨率
+PHYSICAL：修改物理分辨率
+        :type ResolutionType: str
         """
         self._AndroidInstanceId = None
         self._Width = None
         self._Height = None
         self._DPI = None
+        self._FPS = None
+        self._ResolutionType = None
 
     @property
     def AndroidInstanceId(self):
@@ -4709,8 +4901,8 @@ class ModifyAndroidInstanceResolutionRequest(AbstractModel):
     @property
     def Width(self):
         """分辨率宽度。建议按照以下数值设置，避免出现性能不足问题：
-实例类型为单开（A1）、双开（A2）、三开（ A3）：建议设置为 1080
-实例类型为 四开（A4） 及以上：建议设置为 720
+实例类型为单开（A1）：建议设置为 1080
+实例类型为双开（A2） 及以上：建议设置为 720
         :rtype: int
         """
         return self._Width
@@ -4722,8 +4914,8 @@ class ModifyAndroidInstanceResolutionRequest(AbstractModel):
     @property
     def Height(self):
         """分辨率高度。建议按照以下数值设置，避免出现性能不足问题：
-实例类型为单开（A1）、双开（A2）、三开（ A3）：建议设置为 1920
-实例类型为 四开（A4） 及以上：建议设置为 1280
+实例类型为单开（A1）：建议设置为 1920
+实例类型为双开（A2） 及以上：建议设置为 1280
         :rtype: int
         """
         return self._Height
@@ -4745,12 +4937,38 @@ class ModifyAndroidInstanceResolutionRequest(AbstractModel):
     def DPI(self, DPI):
         self._DPI = DPI
 
+    @property
+    def FPS(self):
+        """帧率。ResolutionType 为 PHYSICAL 时才会修改帧率。另外建议按照以下数值设置，避免出现性能不足问题： 实例类型为单开（A1）：建议设置为 60 实例类型为双开（A2） 及以上：建议设置为 30
+        :rtype: int
+        """
+        return self._FPS
+
+    @FPS.setter
+    def FPS(self, FPS):
+        self._FPS = FPS
+
+    @property
+    def ResolutionType(self):
+        """修改分辨率类型。修改物理分辨率，需要重启才能生效。
+OVERRIDE：默认值，修改覆盖（显示）分辨率
+PHYSICAL：修改物理分辨率
+        :rtype: str
+        """
+        return self._ResolutionType
+
+    @ResolutionType.setter
+    def ResolutionType(self, ResolutionType):
+        self._ResolutionType = ResolutionType
+
 
     def _deserialize(self, params):
         self._AndroidInstanceId = params.get("AndroidInstanceId")
         self._Width = params.get("Width")
         self._Height = params.get("Height")
         self._DPI = params.get("DPI")
+        self._FPS = params.get("FPS")
+        self._ResolutionType = params.get("ResolutionType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4862,6 +5080,165 @@ class ModifyAndroidInstancesLabelsRequest(AbstractModel):
 
 class ModifyAndroidInstancesLabelsResponse(AbstractModel):
     """ModifyAndroidInstancesLabels返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyAndroidInstancesResolutionRequest(AbstractModel):
+    """ModifyAndroidInstancesResolution请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AndroidInstanceIds: 安卓实例 ID 列表
+        :type AndroidInstanceIds: list of str
+        :param _Width: 分辨率宽度。建议按照以下数值设置，避免出现性能不足问题：
+实例类型为单开（A1）：建议设置为 1080
+实例类型为双开（A2） 及以上：建议设置为 720
+        :type Width: int
+        :param _Height: 分辨率高度。建议按照以下数值设置，避免出现性能不足问题：
+实例类型为单开（A1）：建议设置为 1920
+实例类型为双开（A2） 及以上：建议设置为 1280
+        :type Height: int
+        :param _DPI: 每英寸像素点。
+分辨率为 720x1280：建议配置为 320
+分辨率为  1080x1920：建议配置为 480
+        :type DPI: int
+        :param _FPS: 帧率。ResolutionType 为 PHYSICAL 时才会修改帧率。另外建议按照以下数值设置，避免出现性能不足问题：
+实例类型为单开（A1）：建议设置为 60
+实例类型为双开（A2） 及以上：建议设置为 30
+        :type FPS: int
+        :param _ResolutionType: 修改分辨率类型。修改物理分辨率，需要重启才能生效。
+OVERRIDE：默认值，修改覆盖（显示）分辨率
+PHYSICAL：修改物理分辨率
+        :type ResolutionType: str
+        """
+        self._AndroidInstanceIds = None
+        self._Width = None
+        self._Height = None
+        self._DPI = None
+        self._FPS = None
+        self._ResolutionType = None
+
+    @property
+    def AndroidInstanceIds(self):
+        """安卓实例 ID 列表
+        :rtype: list of str
+        """
+        return self._AndroidInstanceIds
+
+    @AndroidInstanceIds.setter
+    def AndroidInstanceIds(self, AndroidInstanceIds):
+        self._AndroidInstanceIds = AndroidInstanceIds
+
+    @property
+    def Width(self):
+        """分辨率宽度。建议按照以下数值设置，避免出现性能不足问题：
+实例类型为单开（A1）：建议设置为 1080
+实例类型为双开（A2） 及以上：建议设置为 720
+        :rtype: int
+        """
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        """分辨率高度。建议按照以下数值设置，避免出现性能不足问题：
+实例类型为单开（A1）：建议设置为 1920
+实例类型为双开（A2） 及以上：建议设置为 1280
+        :rtype: int
+        """
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def DPI(self):
+        """每英寸像素点。
+分辨率为 720x1280：建议配置为 320
+分辨率为  1080x1920：建议配置为 480
+        :rtype: int
+        """
+        return self._DPI
+
+    @DPI.setter
+    def DPI(self, DPI):
+        self._DPI = DPI
+
+    @property
+    def FPS(self):
+        """帧率。ResolutionType 为 PHYSICAL 时才会修改帧率。另外建议按照以下数值设置，避免出现性能不足问题：
+实例类型为单开（A1）：建议设置为 60
+实例类型为双开（A2） 及以上：建议设置为 30
+        :rtype: int
+        """
+        return self._FPS
+
+    @FPS.setter
+    def FPS(self, FPS):
+        self._FPS = FPS
+
+    @property
+    def ResolutionType(self):
+        """修改分辨率类型。修改物理分辨率，需要重启才能生效。
+OVERRIDE：默认值，修改覆盖（显示）分辨率
+PHYSICAL：修改物理分辨率
+        :rtype: str
+        """
+        return self._ResolutionType
+
+    @ResolutionType.setter
+    def ResolutionType(self, ResolutionType):
+        self._ResolutionType = ResolutionType
+
+
+    def _deserialize(self, params):
+        self._AndroidInstanceIds = params.get("AndroidInstanceIds")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        self._DPI = params.get("DPI")
+        self._FPS = params.get("FPS")
+        self._ResolutionType = params.get("ResolutionType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAndroidInstancesResolutionResponse(AbstractModel):
+    """ModifyAndroidInstancesResolution返回参数结构体
 
     """
 

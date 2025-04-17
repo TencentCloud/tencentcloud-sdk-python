@@ -6284,6 +6284,8 @@ class DescribeRoomResponse(AbstractModel):
         :type RecordLayout: int
         :param _WhiteBoardSnapshotMode: 板书截图生成类型。0 不生成板书；1 全量模式；2 单页去重模式
         :type WhiteBoardSnapshotMode: int
+        :param _SubtitlesTranscription: 字幕转写功能开关：0关闭，1开启，默认关闭
+        :type SubtitlesTranscription: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -6320,6 +6322,7 @@ class DescribeRoomResponse(AbstractModel):
         self._RecordStream = None
         self._RecordLayout = None
         self._WhiteBoardSnapshotMode = None
+        self._SubtitlesTranscription = None
         self._RequestId = None
 
     @property
@@ -6698,6 +6701,17 @@ class DescribeRoomResponse(AbstractModel):
         self._WhiteBoardSnapshotMode = WhiteBoardSnapshotMode
 
     @property
+    def SubtitlesTranscription(self):
+        """字幕转写功能开关：0关闭，1开启，默认关闭
+        :rtype: int
+        """
+        return self._SubtitlesTranscription
+
+    @SubtitlesTranscription.setter
+    def SubtitlesTranscription(self, SubtitlesTranscription):
+        self._SubtitlesTranscription = SubtitlesTranscription
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -6743,6 +6757,7 @@ class DescribeRoomResponse(AbstractModel):
         self._RecordStream = params.get("RecordStream")
         self._RecordLayout = params.get("RecordLayout")
         self._WhiteBoardSnapshotMode = params.get("WhiteBoardSnapshotMode")
+        self._SubtitlesTranscription = params.get("SubtitlesTranscription")
         self._RequestId = params.get("RequestId")
 
 
@@ -10546,6 +10561,8 @@ video 纯视频
         :type RecordLang: str
         :param _WhiteBoardSnapshotMode: 板书截图生成类型。0 不生成板书；1 全量模式；2 单页去重模式
         :type WhiteBoardSnapshotMode: int
+        :param _SubtitlesTranscription: 字幕转写功能开关：0关闭，1开启，默认关闭
+        :type SubtitlesTranscription: int
         """
         self._RoomId = None
         self._SdkAppId = None
@@ -10574,6 +10591,7 @@ video 纯视频
         self._RecordScene = None
         self._RecordLang = None
         self._WhiteBoardSnapshotMode = None
+        self._SubtitlesTranscription = None
 
     @property
     def RoomId(self):
@@ -10895,6 +10913,17 @@ video 纯视频
     def WhiteBoardSnapshotMode(self, WhiteBoardSnapshotMode):
         self._WhiteBoardSnapshotMode = WhiteBoardSnapshotMode
 
+    @property
+    def SubtitlesTranscription(self):
+        """字幕转写功能开关：0关闭，1开启，默认关闭
+        :rtype: int
+        """
+        return self._SubtitlesTranscription
+
+    @SubtitlesTranscription.setter
+    def SubtitlesTranscription(self, SubtitlesTranscription):
+        self._SubtitlesTranscription = SubtitlesTranscription
+
 
     def _deserialize(self, params):
         self._RoomId = params.get("RoomId")
@@ -10924,6 +10953,7 @@ video 纯视频
         self._RecordScene = params.get("RecordScene")
         self._RecordLang = params.get("RecordLang")
         self._WhiteBoardSnapshotMode = params.get("WhiteBoardSnapshotMode")
+        self._SubtitlesTranscription = params.get("SubtitlesTranscription")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

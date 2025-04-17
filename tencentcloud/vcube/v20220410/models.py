@@ -258,6 +258,8 @@ class ApplicationInfo(AbstractModel):
         :type DomainList: list of str
         :param _AppId: 账号AppId
         :type AppId: str
+        :param _NameLimit: 扩展包名数量上限
+        :type NameLimit: int
         """
         self._AppName = None
         self._BundleId = None
@@ -274,6 +276,7 @@ class ApplicationInfo(AbstractModel):
         self._WinProcessName = None
         self._DomainList = None
         self._AppId = None
+        self._NameLimit = None
 
     @property
     def AppName(self):
@@ -447,6 +450,17 @@ class ApplicationInfo(AbstractModel):
     def AppId(self, AppId):
         self._AppId = AppId
 
+    @property
+    def NameLimit(self):
+        """扩展包名数量上限
+        :rtype: int
+        """
+        return self._NameLimit
+
+    @NameLimit.setter
+    def NameLimit(self, NameLimit):
+        self._NameLimit = NameLimit
+
 
     def _deserialize(self, params):
         self._AppName = params.get("AppName")
@@ -474,6 +488,7 @@ class ApplicationInfo(AbstractModel):
         self._WinProcessName = params.get("WinProcessName")
         self._DomainList = params.get("DomainList")
         self._AppId = params.get("AppId")
+        self._NameLimit = params.get("NameLimit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

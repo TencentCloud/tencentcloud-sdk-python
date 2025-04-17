@@ -6094,7 +6094,6 @@ class DescribeBlackHeaderResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _BlackHeaders: 禁用的自定义header列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type BlackHeaders: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6105,7 +6104,6 @@ class DescribeBlackHeaderResponse(AbstractModel):
     @property
     def BlackHeaders(self):
         """禁用的自定义header列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._BlackHeaders
@@ -6487,10 +6485,8 @@ class DescribeCustomHeaderResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _RuleId: 规则id
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleId: str
         :param _Headers: 自定义header列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Headers: list of HttpHeaderParam
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6502,7 +6498,6 @@ class DescribeCustomHeaderResponse(AbstractModel):
     @property
     def RuleId(self):
         """规则id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RuleId
@@ -6514,7 +6509,6 @@ class DescribeCustomHeaderResponse(AbstractModel):
     @property
     def Headers(self):
         """自定义header列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of HttpHeaderParam
         """
         return self._Headers
@@ -6652,14 +6646,14 @@ class DescribeDomainErrorPageInfoByIdsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ErrorPageIds: 定制错误ID列表,最多支持10个
+        :param _ErrorPageIds: 定制错误ID列表，最多支持10个
         :type ErrorPageIds: list of str
         """
         self._ErrorPageIds = None
 
     @property
     def ErrorPageIds(self):
-        """定制错误ID列表,最多支持10个
+        """定制错误ID列表，最多支持10个
         :rtype: list of str
         """
         return self._ErrorPageIds
@@ -6689,7 +6683,6 @@ class DescribeDomainErrorPageInfoByIdsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ErrorPageSet: 定制错误响应配置集
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorPageSet: list of DomainErrorPageInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6700,7 +6693,6 @@ class DescribeDomainErrorPageInfoByIdsResponse(AbstractModel):
     @property
     def ErrorPageSet(self):
         """定制错误响应配置集
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DomainErrorPageInfo
         """
         return self._ErrorPageSet
@@ -6790,7 +6782,6 @@ class DescribeDomainErrorPageInfoResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ErrorPageSet: 定制错误响应配置集
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorPageSet: list of DomainErrorPageInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6801,7 +6792,6 @@ class DescribeDomainErrorPageInfoResponse(AbstractModel):
     @property
     def ErrorPageSet(self):
         """定制错误响应配置集
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DomainErrorPageInfo
         """
         return self._ErrorPageSet
@@ -8966,7 +8956,6 @@ class DescribeProxyGroupListResponse(AbstractModel):
         :param _TotalCount: 通道组总数。
         :type TotalCount: int
         :param _ProxyGroupList: 通道组列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyGroupList: list of ProxyGroupInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8989,7 +8978,6 @@ class DescribeProxyGroupListResponse(AbstractModel):
     @property
     def ProxyGroupList(self):
         """通道组列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ProxyGroupInfo
         """
         return self._ProxyGroupList
@@ -10996,7 +10984,6 @@ class DescribeTaskStatusResponse(AbstractModel):
         :param _Status: 任务状态：RUNNING，FAIL，SUCCESS
         :type Status: str
         :param _TaskId: 任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11019,7 +11006,6 @@ class DescribeTaskStatusResponse(AbstractModel):
     @property
     def TaskId(self):
         """任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskId
@@ -13611,10 +13597,8 @@ class InquiryPriceCreateProxyResponse(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type DiscountFlowUnitPrice: float
         :param _Cn2BandwidthPrice: 精品BGP的带宽费用价格，单位: 元/Mbps/天
-注意：此字段可能返回 null，表示取不到有效值。
         :type Cn2BandwidthPrice: float
         :param _Cn2BandwidthPriceWithDiscount: 精品BGP的折后带宽费用价格，单位: 元/Mbps/天
-注意：此字段可能返回 null，表示取不到有效值。
         :type Cn2BandwidthPriceWithDiscount: float
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13701,7 +13685,6 @@ class InquiryPriceCreateProxyResponse(AbstractModel):
     @property
     def Cn2BandwidthPrice(self):
         """精品BGP的带宽费用价格，单位: 元/Mbps/天
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Cn2BandwidthPrice
@@ -13713,7 +13696,6 @@ class InquiryPriceCreateProxyResponse(AbstractModel):
     @property
     def Cn2BandwidthPriceWithDiscount(self):
         """精品BGP的折后带宽费用价格，单位: 元/Mbps/天
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Cn2BandwidthPriceWithDiscount

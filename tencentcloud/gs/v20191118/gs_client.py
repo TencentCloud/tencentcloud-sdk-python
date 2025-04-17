@@ -674,6 +674,29 @@ class GsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyAndroidAppVersion(self, request):
+        """修改安卓应用版本
+
+        :param request: Request instance for ModifyAndroidAppVersion.
+        :type request: :class:`tencentcloud.gs.v20191118.models.ModifyAndroidAppVersionRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.ModifyAndroidAppVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAndroidAppVersion", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAndroidAppVersionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyAndroidInstanceInformation(self, request):
         """修改安卓实例的信息
 
@@ -734,6 +757,29 @@ class GsClient(AbstractClient):
             body = self.call("ModifyAndroidInstancesLabels", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyAndroidInstancesLabelsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyAndroidInstancesResolution(self, request):
+        """修改安卓实例分辨率。需要注意的是该接口需要重启才能生效。
+
+        :param request: Request instance for ModifyAndroidInstancesResolution.
+        :type request: :class:`tencentcloud.gs.v20191118.models.ModifyAndroidInstancesResolutionRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.ModifyAndroidInstancesResolutionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAndroidInstancesResolution", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAndroidInstancesResolutionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
