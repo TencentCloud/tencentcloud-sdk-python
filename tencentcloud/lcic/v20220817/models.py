@@ -11560,6 +11560,8 @@ class RoomInfo(AbstractModel):
         :type RecordStream: int
         :param _WhiteBoardSnapshotMode: 板书截图生成类型。0 不生成板书（默认）；1 全量模式；2 单页去重模式
         :type WhiteBoardSnapshotMode: int
+        :param _SubtitlesTranscription: 字幕转写功能开关：0关闭，1开启，默认关闭
+        :type SubtitlesTranscription: int
         """
         self._Name = None
         self._StartTime = None
@@ -11591,6 +11593,7 @@ class RoomInfo(AbstractModel):
         self._RecordLang = None
         self._RecordStream = None
         self._WhiteBoardSnapshotMode = None
+        self._SubtitlesTranscription = None
 
     @property
     def Name(self):
@@ -11934,6 +11937,17 @@ class RoomInfo(AbstractModel):
     def WhiteBoardSnapshotMode(self, WhiteBoardSnapshotMode):
         self._WhiteBoardSnapshotMode = WhiteBoardSnapshotMode
 
+    @property
+    def SubtitlesTranscription(self):
+        """字幕转写功能开关：0关闭，1开启，默认关闭
+        :rtype: int
+        """
+        return self._SubtitlesTranscription
+
+    @SubtitlesTranscription.setter
+    def SubtitlesTranscription(self, SubtitlesTranscription):
+        self._SubtitlesTranscription = SubtitlesTranscription
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -11966,6 +11980,7 @@ class RoomInfo(AbstractModel):
         self._RecordLang = params.get("RecordLang")
         self._RecordStream = params.get("RecordStream")
         self._WhiteBoardSnapshotMode = params.get("WhiteBoardSnapshotMode")
+        self._SubtitlesTranscription = params.get("SubtitlesTranscription")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12037,6 +12052,8 @@ class RoomItem(AbstractModel):
         :type RecordLang: str
         :param _WhiteBoardSnapshotMode: 板书截图生成类型。0 不生成板书；1 全量模式；2 单页去重模式
         :type WhiteBoardSnapshotMode: int
+        :param _SubtitlesTranscription: 字幕转写功能开关：0关闭，1开启，默认关闭
+        :type SubtitlesTranscription: int
         """
         self._Name = None
         self._RoomId = None
@@ -12063,6 +12080,7 @@ class RoomItem(AbstractModel):
         self._RecordScene = None
         self._RecordLang = None
         self._WhiteBoardSnapshotMode = None
+        self._SubtitlesTranscription = None
 
     @property
     def Name(self):
@@ -12343,6 +12361,17 @@ class RoomItem(AbstractModel):
     def WhiteBoardSnapshotMode(self, WhiteBoardSnapshotMode):
         self._WhiteBoardSnapshotMode = WhiteBoardSnapshotMode
 
+    @property
+    def SubtitlesTranscription(self):
+        """字幕转写功能开关：0关闭，1开启，默认关闭
+        :rtype: int
+        """
+        return self._SubtitlesTranscription
+
+    @SubtitlesTranscription.setter
+    def SubtitlesTranscription(self, SubtitlesTranscription):
+        self._SubtitlesTranscription = SubtitlesTranscription
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -12370,6 +12399,7 @@ class RoomItem(AbstractModel):
         self._RecordScene = params.get("RecordScene")
         self._RecordLang = params.get("RecordLang")
         self._WhiteBoardSnapshotMode = params.get("WhiteBoardSnapshotMode")
+        self._SubtitlesTranscription = params.get("SubtitlesTranscription")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

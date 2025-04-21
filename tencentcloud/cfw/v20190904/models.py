@@ -1743,22 +1743,17 @@ class CfwInsStatus(AbstractModel):
         :param _FwType: 防火墙类型，nat：nat防火墙；ew：vpc间防火墙
         :type FwType: str
         :param _Region: 实例所属地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         :param _Status: 实例运行状态，Running：正常运行；BypassAutoFix：bypass修复；Updating：升级中；Expand：扩容中；BypassManual：手动触发bypass中；BypassAuto：自动触发bypass中
         :type Status: str
         :param _EventTime: 事件时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type EventTime: str
         :param _RecoverTime: 恢复时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecoverTime: str
         :param _CfwInsName: 实例名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type CfwInsName: str
         :param _TrafficMode: Normal: 正常模式
 OnlyRoute: 透明模式
-注意：此字段可能返回 null，表示取不到有效值。
         :type TrafficMode: str
         """
         self._CfwInsId = None
@@ -1795,7 +1790,6 @@ OnlyRoute: 透明模式
     @property
     def Region(self):
         """实例所属地域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Region
@@ -1818,7 +1812,6 @@ OnlyRoute: 透明模式
     @property
     def EventTime(self):
         """事件时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EventTime
@@ -1830,7 +1823,6 @@ OnlyRoute: 透明模式
     @property
     def RecoverTime(self):
         """恢复时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RecoverTime
@@ -1842,7 +1834,6 @@ OnlyRoute: 透明模式
     @property
     def CfwInsName(self):
         """实例名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CfwInsName
@@ -1855,7 +1846,6 @@ OnlyRoute: 透明模式
     def TrafficMode(self):
         """Normal: 正常模式
 OnlyRoute: 透明模式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TrafficMode
@@ -6418,6 +6408,10 @@ class DescAcItem(AbstractModel):
         :type TargetName: str
         :param _LastHitTime: 规则最近命中时间
         :type LastHitTime: str
+        :param _CountryKey: 地区简称
+        :type CountryKey: str
+        :param _CityKey: 省份、城市简称
+        :type CityKey: str
         """
         self._SourceContent = None
         self._TargetContent = None
@@ -6452,6 +6446,8 @@ class DescAcItem(AbstractModel):
         self._SourceName = None
         self._TargetName = None
         self._LastHitTime = None
+        self._CountryKey = None
+        self._CityKey = None
 
     @property
     def SourceContent(self):
@@ -6817,6 +6813,28 @@ class DescAcItem(AbstractModel):
     def LastHitTime(self, LastHitTime):
         self._LastHitTime = LastHitTime
 
+    @property
+    def CountryKey(self):
+        """地区简称
+        :rtype: str
+        """
+        return self._CountryKey
+
+    @CountryKey.setter
+    def CountryKey(self, CountryKey):
+        self._CountryKey = CountryKey
+
+    @property
+    def CityKey(self):
+        """省份、城市简称
+        :rtype: str
+        """
+        return self._CityKey
+
+    @CityKey.setter
+    def CityKey(self, CityKey):
+        self._CityKey = CityKey
+
 
     def _deserialize(self, params):
         self._SourceContent = params.get("SourceContent")
@@ -6857,6 +6875,8 @@ class DescAcItem(AbstractModel):
         self._SourceName = params.get("SourceName")
         self._TargetName = params.get("TargetName")
         self._LastHitTime = params.get("LastHitTime")
+        self._CountryKey = params.get("CountryKey")
+        self._CityKey = params.get("CityKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9805,6 +9825,8 @@ class DescribeFwEdgeIpsResponse(AbstractModel):
         :type RegionLst: list of str
         :param _InstanceTypeLst: 实例类型列表
         :type InstanceTypeLst: list of str
+        :param _SerilCount: 串行模式开关个数
+        :type SerilCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -9812,6 +9834,7 @@ class DescribeFwEdgeIpsResponse(AbstractModel):
         self._Total = None
         self._RegionLst = None
         self._InstanceTypeLst = None
+        self._SerilCount = None
         self._RequestId = None
 
     @property
@@ -9859,6 +9882,17 @@ class DescribeFwEdgeIpsResponse(AbstractModel):
         self._InstanceTypeLst = InstanceTypeLst
 
     @property
+    def SerilCount(self):
+        """串行模式开关个数
+        :rtype: int
+        """
+        return self._SerilCount
+
+    @SerilCount.setter
+    def SerilCount(self, SerilCount):
+        self._SerilCount = SerilCount
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -9880,6 +9914,7 @@ class DescribeFwEdgeIpsResponse(AbstractModel):
         self._Total = params.get("Total")
         self._RegionLst = params.get("RegionLst")
         self._InstanceTypeLst = params.get("InstanceTypeLst")
+        self._SerilCount = params.get("SerilCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -14381,6 +14416,8 @@ ANY:表示所有
         :type BetaList: list of EnterpriseSecurityGroupRuleBetaInfo
         :param _Id: 规则id  等同RuleUuid
         :type Id: int
+        :param _DnsParseCount: 域名解析的IP统计
+        :type DnsParseCount: :class:`tencentcloud.cfw.v20190904.models.SgDnsParseCount`
         """
         self._OrderIndex = None
         self._RuleUuid = None
@@ -14412,6 +14449,7 @@ ANY:表示所有
         self._ProtocolPortName = None
         self._BetaList = None
         self._Id = None
+        self._DnsParseCount = None
 
     @property
     def OrderIndex(self):
@@ -14781,6 +14819,17 @@ ANY:表示所有
     def Id(self, Id):
         self._Id = Id
 
+    @property
+    def DnsParseCount(self):
+        """域名解析的IP统计
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.SgDnsParseCount`
+        """
+        return self._DnsParseCount
+
+    @DnsParseCount.setter
+    def DnsParseCount(self, DnsParseCount):
+        self._DnsParseCount = DnsParseCount
+
 
     def _deserialize(self, params):
         self._OrderIndex = params.get("OrderIndex")
@@ -14818,6 +14867,9 @@ ANY:表示所有
                 obj._deserialize(item)
                 self._BetaList.append(obj)
         self._Id = params.get("Id")
+        if params.get("DnsParseCount") is not None:
+            self._DnsParseCount = SgDnsParseCount()
+            self._DnsParseCount._deserialize(params.get("DnsParseCount"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22803,7 +22855,7 @@ region：地域(ap-gaungzhou)
 accept：放行
 drop：拒绝
         :type RuleAction: str
-        :param _Description: 描述
+        :param _Description: 规则描述 用于规则使用或者场景的描述，最多支持50个字符
         :type Description: str
         :param _OrderIndex: 规则顺序，-1表示最低，1表示最高，请勿和外层Type冲突（和外层的Type配合使用，当中间插入时，指定添加位置）
         :type OrderIndex: str
@@ -22908,7 +22960,7 @@ drop：拒绝
 
     @property
     def Description(self):
-        """描述
+        """规则描述 用于规则使用或者场景的描述，最多支持50个字符
         :rtype: str
         """
         return self._Description
@@ -23463,6 +23515,57 @@ class SetNatFwEipResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class SgDnsParseCount(AbstractModel):
+    """企业安全组域名解析的IP统计
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ValidCount: 有效下发的IP个数，离散数据
+        :type ValidCount: int
+        :param _InvalidCount: 未下发的IP个数，离散数据
+        :type InvalidCount: int
+        """
+        self._ValidCount = None
+        self._InvalidCount = None
+
+    @property
+    def ValidCount(self):
+        """有效下发的IP个数，离散数据
+        :rtype: int
+        """
+        return self._ValidCount
+
+    @ValidCount.setter
+    def ValidCount(self, ValidCount):
+        self._ValidCount = ValidCount
+
+    @property
+    def InvalidCount(self):
+        """未下发的IP个数，离散数据
+        :rtype: int
+        """
+        return self._InvalidCount
+
+    @InvalidCount.setter
+    def InvalidCount(self, InvalidCount):
+        self._InvalidCount = InvalidCount
+
+
+    def _deserialize(self, params):
+        self._ValidCount = params.get("ValidCount")
+        self._InvalidCount = params.get("InvalidCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class StaticInfo(AbstractModel):

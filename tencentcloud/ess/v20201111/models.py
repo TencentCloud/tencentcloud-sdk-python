@@ -7985,11 +7985,14 @@ class CreateFlowEvidenceReportRequest(AbstractModel):
 <ul><li> **0** :合同签署报告（默认）</li>
 <li> **1** :公证处核验报告</li></ul>
         :type ReportType: int
+        :param _HybridEvidenceFlowFile: 混合云模式获取合同文件合并出证，默认：不同意。注：此参数需要联系腾讯电子签运营进行开通后生效
+        :type HybridEvidenceFlowFile: bool
         """
         self._Operator = None
         self._FlowId = None
         self._Agent = None
         self._ReportType = None
+        self._HybridEvidenceFlowFile = None
 
     @property
     def Operator(self):
@@ -8040,6 +8043,17 @@ class CreateFlowEvidenceReportRequest(AbstractModel):
     def ReportType(self, ReportType):
         self._ReportType = ReportType
 
+    @property
+    def HybridEvidenceFlowFile(self):
+        """混合云模式获取合同文件合并出证，默认：不同意。注：此参数需要联系腾讯电子签运营进行开通后生效
+        :rtype: bool
+        """
+        return self._HybridEvidenceFlowFile
+
+    @HybridEvidenceFlowFile.setter
+    def HybridEvidenceFlowFile(self, HybridEvidenceFlowFile):
+        self._HybridEvidenceFlowFile = HybridEvidenceFlowFile
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -8050,6 +8064,7 @@ class CreateFlowEvidenceReportRequest(AbstractModel):
             self._Agent = Agent()
             self._Agent._deserialize(params.get("Agent"))
         self._ReportType = params.get("ReportType")
+        self._HybridEvidenceFlowFile = params.get("HybridEvidenceFlowFile")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

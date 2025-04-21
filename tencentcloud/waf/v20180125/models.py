@@ -4584,6 +4584,102 @@ class BatchOperateUserSignatureRulesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class BotActionScopeRuleEntry(AbstractModel):
+    """动作策略的匹配规则实体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 参数
+        :type Key: str
+        :param _Op: 匹配符
+        :type Op: str
+        :param _Value: 参数值
+        :type Value: str
+        :param _Name: 对于头部字段匹配value的时候指定的头部名
+        :type Name: str
+        :param _ValueArray: 470后使用此字段存储多值
+        :type ValueArray: list of str
+        """
+        self._Key = None
+        self._Op = None
+        self._Value = None
+        self._Name = None
+        self._ValueArray = None
+
+    @property
+    def Key(self):
+        """参数
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Op(self):
+        """匹配符
+        :rtype: str
+        """
+        return self._Op
+
+    @Op.setter
+    def Op(self, Op):
+        self._Op = Op
+
+    @property
+    def Value(self):
+        """参数值
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Name(self):
+        """对于头部字段匹配value的时候指定的头部名
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ValueArray(self):
+        """470后使用此字段存储多值
+        :rtype: list of str
+        """
+        return self._ValueArray
+
+    @ValueArray.setter
+    def ValueArray(self, ValueArray):
+        self._ValueArray = ValueArray
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Op = params.get("Op")
+        self._Value = params.get("Value")
+        self._Name = params.get("Name")
+        self._ValueArray = params.get("ValueArray")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BotPkg(AbstractModel):
     """Bot资源信息
 
@@ -4896,6 +4992,910 @@ class BotQPS(AbstractModel):
         
 
 
+class BotSceneActionRule(AbstractModel):
+    """获取场景动作策略列表时的动作策略实体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: 动作策略ID
+        :type RuleId: str
+        :param _RuleName: 动作策略名称
+        :type RuleName: str
+        :param _Priority: 策略优先级
+        :type Priority: int
+        :param _Status: 策略生效状态
+        :type Status: bool
+        :param _Score: 分数范围
+        :type Score: list of BotScoreRuleEntry
+        :param _Level: 100-宽松、200-中等、300-严格、0-自定义
+        :type Level: str
+        :param _Scope: 生效范围，为空表示全部范围
+        :type Scope: list of BotActionScopeRuleEntry
+        :param _Type: default：默认创建 custom：自定义创建
+        :type Type: str
+        :param _ScopeType: 匹配范围类型：全局匹配 or 自定义匹配范围
+        :type ScopeType: str
+        :param _ActionMatchType: 匹配条件间的与或关系
+        :type ActionMatchType: str
+        """
+        self._RuleId = None
+        self._RuleName = None
+        self._Priority = None
+        self._Status = None
+        self._Score = None
+        self._Level = None
+        self._Scope = None
+        self._Type = None
+        self._ScopeType = None
+        self._ActionMatchType = None
+
+    @property
+    def RuleId(self):
+        """动作策略ID
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RuleName(self):
+        """动作策略名称
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def Priority(self):
+        """策略优先级
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def Status(self):
+        """策略生效状态
+        :rtype: bool
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Score(self):
+        """分数范围
+        :rtype: list of BotScoreRuleEntry
+        """
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def Level(self):
+        """100-宽松、200-中等、300-严格、0-自定义
+        :rtype: str
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Scope(self):
+        """生效范围，为空表示全部范围
+        :rtype: list of BotActionScopeRuleEntry
+        """
+        return self._Scope
+
+    @Scope.setter
+    def Scope(self, Scope):
+        self._Scope = Scope
+
+    @property
+    def Type(self):
+        """default：默认创建 custom：自定义创建
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def ScopeType(self):
+        """匹配范围类型：全局匹配 or 自定义匹配范围
+        :rtype: str
+        """
+        return self._ScopeType
+
+    @ScopeType.setter
+    def ScopeType(self, ScopeType):
+        self._ScopeType = ScopeType
+
+    @property
+    def ActionMatchType(self):
+        """匹配条件间的与或关系
+        :rtype: str
+        """
+        return self._ActionMatchType
+
+    @ActionMatchType.setter
+    def ActionMatchType(self, ActionMatchType):
+        self._ActionMatchType = ActionMatchType
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._RuleName = params.get("RuleName")
+        self._Priority = params.get("Priority")
+        self._Status = params.get("Status")
+        if params.get("Score") is not None:
+            self._Score = []
+            for item in params.get("Score"):
+                obj = BotScoreRuleEntry()
+                obj._deserialize(item)
+                self._Score.append(obj)
+        self._Level = params.get("Level")
+        if params.get("Scope") is not None:
+            self._Scope = []
+            for item in params.get("Scope"):
+                obj = BotActionScopeRuleEntry()
+                obj._deserialize(item)
+                self._Scope.append(obj)
+        self._Type = params.get("Type")
+        self._ScopeType = params.get("ScopeType")
+        self._ActionMatchType = params.get("ActionMatchType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BotSceneInfo(AbstractModel):
+    """场景的详细配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SceneId: 场景ID
+        :type SceneId: str
+        :param _Type: 场景类型，default:默认场景,custom:非默认场景
+        :type Type: str
+        :param _SceneName: 场景名
+        :type SceneName: str
+        :param _UpdateTime: 更新时间
+        :type UpdateTime: int
+        :param _BusinessType: 场景模板类型，登录: login  秒杀:seckill  爬内容：crawl 自定义: custom
+        :type BusinessType: list of str
+        :param _ClientType: 客户端类型，浏览器/H5 : browser  小程序: miniApp  App:
+        :type ClientType: list of str
+        :param _Priority: 优先级
+        :type Priority: int
+        :param _MatchCondition: 匹配范围
+        :type MatchCondition: list of BotSceneMatchCondition
+        :param _SceneStatus: 场景开关
+        :type SceneStatus: bool
+        :param _JsInjectStatus: 前端对抗开关
+        :type JsInjectStatus: bool
+        :param _AIStatus: AI开关
+        :type AIStatus: bool
+        :param _TIStatus: TI开关
+        :type TIStatus: bool
+        :param _StatisticStatus: 智能统计开关
+        :type StatisticStatus: bool
+        :param _ActionRuleCount: 动作策略数量
+        :type ActionRuleCount: int
+        :param _UCBCount: 自定义规则数量
+        :type UCBCount: int
+        :param _MatchType: 场景的匹配范围，global-全部匹配 custom-自定义匹配范围
+        :type MatchType: str
+        :param _ActionMatchType: 匹配条件间的与或关系
+        :type ActionMatchType: str
+        :param _UAStatus: UA模块开关
+        :type UAStatus: bool
+        :param _JsInjectRuleId: 简易模式场景：前端对抗对应mysql的记录id
+        :type JsInjectRuleId: int
+        :param _JsInjectAction: 简易模式场景：前端对抗配置动作
+        :type JsInjectAction: int
+        :param _JsInjectRedirect: 简易模式场景：前端对抗重定向路径
+        :type JsInjectRedirect: str
+        :param _ActionRuleList: 简易模式场景：动作策略信息  PS:简易模式只有一个动作策略
+        :type ActionRuleList: list of BotSceneActionRule
+        :param _BotIdPattern: 简易模式场景：monitor-观察 intercept-拦截 custom-自定义
+        :type BotIdPattern: str
+        :param _BotIdCount: 简易模式场景：bot_id规则总数
+        :type BotIdCount: int
+        :param _BotIdMonitorCount: 简易模式场景：观察动作的规则总数
+        :type BotIdMonitorCount: int
+        :param _BotIdInterceptCount: 简易模式场景：拦截动作的规则总数
+        :type BotIdInterceptCount: int
+        :param _RuleSetSelection: 创建场景时选择的规则集
+        :type RuleSetSelection: list of str
+        :param _TokenList: 改场景的bot token列表
+        :type TokenList: list of BotToken
+        :param _BotIdRedirectCount: 简易模式场景：重定向动作的规则总数
+        :type BotIdRedirectCount: int
+        :param _BotIdCaptchaCount: 简易模式场景：人机识别动作的规则总数
+        :type BotIdCaptchaCount: int
+        :param _BotIdProtectLevel: 简易模式场景：防护等级
+        :type BotIdProtectLevel: str
+        :param _BotIdGlobalRedirect: 简易模式场景：全局重定向路径
+        :type BotIdGlobalRedirect: str
+        :param _BotIdJsChallengeCount: 简易模式场景：JS校验动作的规则总数
+        :type BotIdJsChallengeCount: int
+        """
+        self._SceneId = None
+        self._Type = None
+        self._SceneName = None
+        self._UpdateTime = None
+        self._BusinessType = None
+        self._ClientType = None
+        self._Priority = None
+        self._MatchCondition = None
+        self._SceneStatus = None
+        self._JsInjectStatus = None
+        self._AIStatus = None
+        self._TIStatus = None
+        self._StatisticStatus = None
+        self._ActionRuleCount = None
+        self._UCBCount = None
+        self._MatchType = None
+        self._ActionMatchType = None
+        self._UAStatus = None
+        self._JsInjectRuleId = None
+        self._JsInjectAction = None
+        self._JsInjectRedirect = None
+        self._ActionRuleList = None
+        self._BotIdPattern = None
+        self._BotIdCount = None
+        self._BotIdMonitorCount = None
+        self._BotIdInterceptCount = None
+        self._RuleSetSelection = None
+        self._TokenList = None
+        self._BotIdRedirectCount = None
+        self._BotIdCaptchaCount = None
+        self._BotIdProtectLevel = None
+        self._BotIdGlobalRedirect = None
+        self._BotIdJsChallengeCount = None
+
+    @property
+    def SceneId(self):
+        """场景ID
+        :rtype: str
+        """
+        return self._SceneId
+
+    @SceneId.setter
+    def SceneId(self, SceneId):
+        self._SceneId = SceneId
+
+    @property
+    def Type(self):
+        """场景类型，default:默认场景,custom:非默认场景
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def SceneName(self):
+        """场景名
+        :rtype: str
+        """
+        return self._SceneName
+
+    @SceneName.setter
+    def SceneName(self, SceneName):
+        self._SceneName = SceneName
+
+    @property
+    def UpdateTime(self):
+        """更新时间
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def BusinessType(self):
+        """场景模板类型，登录: login  秒杀:seckill  爬内容：crawl 自定义: custom
+        :rtype: list of str
+        """
+        return self._BusinessType
+
+    @BusinessType.setter
+    def BusinessType(self, BusinessType):
+        self._BusinessType = BusinessType
+
+    @property
+    def ClientType(self):
+        """客户端类型，浏览器/H5 : browser  小程序: miniApp  App:
+        :rtype: list of str
+        """
+        return self._ClientType
+
+    @ClientType.setter
+    def ClientType(self, ClientType):
+        self._ClientType = ClientType
+
+    @property
+    def Priority(self):
+        """优先级
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def MatchCondition(self):
+        """匹配范围
+        :rtype: list of BotSceneMatchCondition
+        """
+        return self._MatchCondition
+
+    @MatchCondition.setter
+    def MatchCondition(self, MatchCondition):
+        self._MatchCondition = MatchCondition
+
+    @property
+    def SceneStatus(self):
+        """场景开关
+        :rtype: bool
+        """
+        return self._SceneStatus
+
+    @SceneStatus.setter
+    def SceneStatus(self, SceneStatus):
+        self._SceneStatus = SceneStatus
+
+    @property
+    def JsInjectStatus(self):
+        """前端对抗开关
+        :rtype: bool
+        """
+        return self._JsInjectStatus
+
+    @JsInjectStatus.setter
+    def JsInjectStatus(self, JsInjectStatus):
+        self._JsInjectStatus = JsInjectStatus
+
+    @property
+    def AIStatus(self):
+        """AI开关
+        :rtype: bool
+        """
+        return self._AIStatus
+
+    @AIStatus.setter
+    def AIStatus(self, AIStatus):
+        self._AIStatus = AIStatus
+
+    @property
+    def TIStatus(self):
+        """TI开关
+        :rtype: bool
+        """
+        return self._TIStatus
+
+    @TIStatus.setter
+    def TIStatus(self, TIStatus):
+        self._TIStatus = TIStatus
+
+    @property
+    def StatisticStatus(self):
+        """智能统计开关
+        :rtype: bool
+        """
+        return self._StatisticStatus
+
+    @StatisticStatus.setter
+    def StatisticStatus(self, StatisticStatus):
+        self._StatisticStatus = StatisticStatus
+
+    @property
+    def ActionRuleCount(self):
+        """动作策略数量
+        :rtype: int
+        """
+        return self._ActionRuleCount
+
+    @ActionRuleCount.setter
+    def ActionRuleCount(self, ActionRuleCount):
+        self._ActionRuleCount = ActionRuleCount
+
+    @property
+    def UCBCount(self):
+        """自定义规则数量
+        :rtype: int
+        """
+        return self._UCBCount
+
+    @UCBCount.setter
+    def UCBCount(self, UCBCount):
+        self._UCBCount = UCBCount
+
+    @property
+    def MatchType(self):
+        """场景的匹配范围，global-全部匹配 custom-自定义匹配范围
+        :rtype: str
+        """
+        return self._MatchType
+
+    @MatchType.setter
+    def MatchType(self, MatchType):
+        self._MatchType = MatchType
+
+    @property
+    def ActionMatchType(self):
+        """匹配条件间的与或关系
+        :rtype: str
+        """
+        return self._ActionMatchType
+
+    @ActionMatchType.setter
+    def ActionMatchType(self, ActionMatchType):
+        self._ActionMatchType = ActionMatchType
+
+    @property
+    def UAStatus(self):
+        """UA模块开关
+        :rtype: bool
+        """
+        return self._UAStatus
+
+    @UAStatus.setter
+    def UAStatus(self, UAStatus):
+        self._UAStatus = UAStatus
+
+    @property
+    def JsInjectRuleId(self):
+        """简易模式场景：前端对抗对应mysql的记录id
+        :rtype: int
+        """
+        return self._JsInjectRuleId
+
+    @JsInjectRuleId.setter
+    def JsInjectRuleId(self, JsInjectRuleId):
+        self._JsInjectRuleId = JsInjectRuleId
+
+    @property
+    def JsInjectAction(self):
+        """简易模式场景：前端对抗配置动作
+        :rtype: int
+        """
+        return self._JsInjectAction
+
+    @JsInjectAction.setter
+    def JsInjectAction(self, JsInjectAction):
+        self._JsInjectAction = JsInjectAction
+
+    @property
+    def JsInjectRedirect(self):
+        """简易模式场景：前端对抗重定向路径
+        :rtype: str
+        """
+        return self._JsInjectRedirect
+
+    @JsInjectRedirect.setter
+    def JsInjectRedirect(self, JsInjectRedirect):
+        self._JsInjectRedirect = JsInjectRedirect
+
+    @property
+    def ActionRuleList(self):
+        """简易模式场景：动作策略信息  PS:简易模式只有一个动作策略
+        :rtype: list of BotSceneActionRule
+        """
+        return self._ActionRuleList
+
+    @ActionRuleList.setter
+    def ActionRuleList(self, ActionRuleList):
+        self._ActionRuleList = ActionRuleList
+
+    @property
+    def BotIdPattern(self):
+        """简易模式场景：monitor-观察 intercept-拦截 custom-自定义
+        :rtype: str
+        """
+        return self._BotIdPattern
+
+    @BotIdPattern.setter
+    def BotIdPattern(self, BotIdPattern):
+        self._BotIdPattern = BotIdPattern
+
+    @property
+    def BotIdCount(self):
+        """简易模式场景：bot_id规则总数
+        :rtype: int
+        """
+        return self._BotIdCount
+
+    @BotIdCount.setter
+    def BotIdCount(self, BotIdCount):
+        self._BotIdCount = BotIdCount
+
+    @property
+    def BotIdMonitorCount(self):
+        """简易模式场景：观察动作的规则总数
+        :rtype: int
+        """
+        return self._BotIdMonitorCount
+
+    @BotIdMonitorCount.setter
+    def BotIdMonitorCount(self, BotIdMonitorCount):
+        self._BotIdMonitorCount = BotIdMonitorCount
+
+    @property
+    def BotIdInterceptCount(self):
+        """简易模式场景：拦截动作的规则总数
+        :rtype: int
+        """
+        return self._BotIdInterceptCount
+
+    @BotIdInterceptCount.setter
+    def BotIdInterceptCount(self, BotIdInterceptCount):
+        self._BotIdInterceptCount = BotIdInterceptCount
+
+    @property
+    def RuleSetSelection(self):
+        """创建场景时选择的规则集
+        :rtype: list of str
+        """
+        return self._RuleSetSelection
+
+    @RuleSetSelection.setter
+    def RuleSetSelection(self, RuleSetSelection):
+        self._RuleSetSelection = RuleSetSelection
+
+    @property
+    def TokenList(self):
+        """改场景的bot token列表
+        :rtype: list of BotToken
+        """
+        return self._TokenList
+
+    @TokenList.setter
+    def TokenList(self, TokenList):
+        self._TokenList = TokenList
+
+    @property
+    def BotIdRedirectCount(self):
+        """简易模式场景：重定向动作的规则总数
+        :rtype: int
+        """
+        return self._BotIdRedirectCount
+
+    @BotIdRedirectCount.setter
+    def BotIdRedirectCount(self, BotIdRedirectCount):
+        self._BotIdRedirectCount = BotIdRedirectCount
+
+    @property
+    def BotIdCaptchaCount(self):
+        """简易模式场景：人机识别动作的规则总数
+        :rtype: int
+        """
+        return self._BotIdCaptchaCount
+
+    @BotIdCaptchaCount.setter
+    def BotIdCaptchaCount(self, BotIdCaptchaCount):
+        self._BotIdCaptchaCount = BotIdCaptchaCount
+
+    @property
+    def BotIdProtectLevel(self):
+        """简易模式场景：防护等级
+        :rtype: str
+        """
+        return self._BotIdProtectLevel
+
+    @BotIdProtectLevel.setter
+    def BotIdProtectLevel(self, BotIdProtectLevel):
+        self._BotIdProtectLevel = BotIdProtectLevel
+
+    @property
+    def BotIdGlobalRedirect(self):
+        """简易模式场景：全局重定向路径
+        :rtype: str
+        """
+        return self._BotIdGlobalRedirect
+
+    @BotIdGlobalRedirect.setter
+    def BotIdGlobalRedirect(self, BotIdGlobalRedirect):
+        self._BotIdGlobalRedirect = BotIdGlobalRedirect
+
+    @property
+    def BotIdJsChallengeCount(self):
+        """简易模式场景：JS校验动作的规则总数
+        :rtype: int
+        """
+        return self._BotIdJsChallengeCount
+
+    @BotIdJsChallengeCount.setter
+    def BotIdJsChallengeCount(self, BotIdJsChallengeCount):
+        self._BotIdJsChallengeCount = BotIdJsChallengeCount
+
+
+    def _deserialize(self, params):
+        self._SceneId = params.get("SceneId")
+        self._Type = params.get("Type")
+        self._SceneName = params.get("SceneName")
+        self._UpdateTime = params.get("UpdateTime")
+        self._BusinessType = params.get("BusinessType")
+        self._ClientType = params.get("ClientType")
+        self._Priority = params.get("Priority")
+        if params.get("MatchCondition") is not None:
+            self._MatchCondition = []
+            for item in params.get("MatchCondition"):
+                obj = BotSceneMatchCondition()
+                obj._deserialize(item)
+                self._MatchCondition.append(obj)
+        self._SceneStatus = params.get("SceneStatus")
+        self._JsInjectStatus = params.get("JsInjectStatus")
+        self._AIStatus = params.get("AIStatus")
+        self._TIStatus = params.get("TIStatus")
+        self._StatisticStatus = params.get("StatisticStatus")
+        self._ActionRuleCount = params.get("ActionRuleCount")
+        self._UCBCount = params.get("UCBCount")
+        self._MatchType = params.get("MatchType")
+        self._ActionMatchType = params.get("ActionMatchType")
+        self._UAStatus = params.get("UAStatus")
+        self._JsInjectRuleId = params.get("JsInjectRuleId")
+        self._JsInjectAction = params.get("JsInjectAction")
+        self._JsInjectRedirect = params.get("JsInjectRedirect")
+        if params.get("ActionRuleList") is not None:
+            self._ActionRuleList = []
+            for item in params.get("ActionRuleList"):
+                obj = BotSceneActionRule()
+                obj._deserialize(item)
+                self._ActionRuleList.append(obj)
+        self._BotIdPattern = params.get("BotIdPattern")
+        self._BotIdCount = params.get("BotIdCount")
+        self._BotIdMonitorCount = params.get("BotIdMonitorCount")
+        self._BotIdInterceptCount = params.get("BotIdInterceptCount")
+        self._RuleSetSelection = params.get("RuleSetSelection")
+        if params.get("TokenList") is not None:
+            self._TokenList = []
+            for item in params.get("TokenList"):
+                obj = BotToken()
+                obj._deserialize(item)
+                self._TokenList.append(obj)
+        self._BotIdRedirectCount = params.get("BotIdRedirectCount")
+        self._BotIdCaptchaCount = params.get("BotIdCaptchaCount")
+        self._BotIdProtectLevel = params.get("BotIdProtectLevel")
+        self._BotIdGlobalRedirect = params.get("BotIdGlobalRedirect")
+        self._BotIdJsChallengeCount = params.get("BotIdJsChallengeCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BotSceneMatchCondition(AbstractModel):
+    """场景匹配条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 匹配参数
+        :type Key: str
+        :param _Op: 匹配符
+        :type Op: str
+        :param _Value: 匹配值
+        :type Value: str
+        :param _Name: 对于头部字段匹配value的时候指定的头部名
+        :type Name: str
+        :param _ValueArray: 470后使用此入参存在多值
+        :type ValueArray: list of str
+        """
+        self._Key = None
+        self._Op = None
+        self._Value = None
+        self._Name = None
+        self._ValueArray = None
+
+    @property
+    def Key(self):
+        """匹配参数
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Op(self):
+        """匹配符
+        :rtype: str
+        """
+        return self._Op
+
+    @Op.setter
+    def Op(self, Op):
+        self._Op = Op
+
+    @property
+    def Value(self):
+        """匹配值
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Name(self):
+        """对于头部字段匹配value的时候指定的头部名
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ValueArray(self):
+        """470后使用此入参存在多值
+        :rtype: list of str
+        """
+        return self._ValueArray
+
+    @ValueArray.setter
+    def ValueArray(self, ValueArray):
+        self._ValueArray = ValueArray
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Op = params.get("Op")
+        self._Value = params.get("Value")
+        self._Name = params.get("Name")
+        self._ValueArray = params.get("ValueArray")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BotScoreRuleEntry(AbstractModel):
+    """动作策略的一条分数段实体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Upper: 分数区间上限
+        :type Upper: str
+        :param _Lower: 分数区间下限
+        :type Lower: str
+        :param _Action: 处置动作
+        :type Action: str
+        :param _Label: 流量标签
+        :type Label: str
+        :param _Redirect: 重定向
+        :type Redirect: str
+        """
+        self._Upper = None
+        self._Lower = None
+        self._Action = None
+        self._Label = None
+        self._Redirect = None
+
+    @property
+    def Upper(self):
+        """分数区间上限
+        :rtype: str
+        """
+        return self._Upper
+
+    @Upper.setter
+    def Upper(self, Upper):
+        self._Upper = Upper
+
+    @property
+    def Lower(self):
+        """分数区间下限
+        :rtype: str
+        """
+        return self._Lower
+
+    @Lower.setter
+    def Lower(self, Lower):
+        self._Lower = Lower
+
+    @property
+    def Action(self):
+        """处置动作
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def Label(self):
+        """流量标签
+        :rtype: str
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Redirect(self):
+        """重定向
+        :rtype: str
+        """
+        return self._Redirect
+
+    @Redirect.setter
+    def Redirect(self, Redirect):
+        self._Redirect = Redirect
+
+
+    def _deserialize(self, params):
+        self._Upper = params.get("Upper")
+        self._Lower = params.get("Lower")
+        self._Action = params.get("Action")
+        self._Label = params.get("Label")
+        self._Redirect = params.get("Redirect")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BotStatPointItem(AbstractModel):
     """bot的趋势图对象
 
@@ -4967,6 +5967,177 @@ class BotStatPointItem(AbstractModel):
         self._Key = params.get("Key")
         self._Value = params.get("Value")
         self._Label = params.get("Label")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BotToken(AbstractModel):
+    """bot-token配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 会话名称
+        :type Name: str
+        :param _Description: 会话描述
+        :type Description: str
+        :param _Id: 会话id
+        :type Id: str
+        :param _Status: 策略的开关状态
+        :type Status: bool
+        :param _Location: 会话位置
+        :type Location: str
+        :param _Key: 会话key
+        :type Key: str
+        :param _Operator: 会话匹配方式，前缀匹配、后缀匹配等
+        :type Operator: str
+        :param _Timestamp: 会话更新的时间戳
+        :type Timestamp: int
+        :param _Scene: 场景列表，内容为空表示全部场景应用
+        :type Scene: list of str
+        :param _Priority: 优先级
+        :type Priority: int
+        """
+        self._Name = None
+        self._Description = None
+        self._Id = None
+        self._Status = None
+        self._Location = None
+        self._Key = None
+        self._Operator = None
+        self._Timestamp = None
+        self._Scene = None
+        self._Priority = None
+
+    @property
+    def Name(self):
+        """会话名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        """会话描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Id(self):
+        """会话id
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Status(self):
+        """策略的开关状态
+        :rtype: bool
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Location(self):
+        """会话位置
+        :rtype: str
+        """
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
+    @property
+    def Key(self):
+        """会话key
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Operator(self):
+        """会话匹配方式，前缀匹配、后缀匹配等
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Timestamp(self):
+        """会话更新的时间戳
+        :rtype: int
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def Scene(self):
+        """场景列表，内容为空表示全部场景应用
+        :rtype: list of str
+        """
+        return self._Scene
+
+    @Scene.setter
+    def Scene(self, Scene):
+        self._Scene = Scene
+
+    @property
+    def Priority(self):
+        """优先级
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Id = params.get("Id")
+        self._Status = params.get("Status")
+        self._Location = params.get("Location")
+        self._Key = params.get("Key")
+        self._Operator = params.get("Operator")
+        self._Timestamp = params.get("Timestamp")
+        self._Scene = params.get("Scene")
+        self._Priority = params.get("Priority")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8555,6 +9726,117 @@ class DeleteAttackWhiteRuleResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._FailIds = params.get("FailIds")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteBotSceneUCBRuleRequest(AbstractModel):
+    """DeleteBotSceneUCBRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _RuleId: 自定义规则ID
+        :type RuleId: str
+        :param _SceneId: 1.BOT全局白名单处调用时，传"global";2.BOT场景配置时，传具体的场景ID
+        :type SceneId: str
+        """
+        self._Domain = None
+        self._RuleId = None
+        self._SceneId = None
+
+    @property
+    def Domain(self):
+        """域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def RuleId(self):
+        """自定义规则ID
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def SceneId(self):
+        """1.BOT全局白名单处调用时，传"global";2.BOT场景配置时，传具体的场景ID
+        :rtype: str
+        """
+        return self._SceneId
+
+    @SceneId.setter
+    def SceneId(self, SceneId):
+        self._SceneId = SceneId
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._RuleId = params.get("RuleId")
+        self._SceneId = params.get("SceneId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteBotSceneUCBRuleResponse(AbstractModel):
+    """DeleteBotSceneUCBRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 正常情况下为null
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """正常情况下为null
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
         self._RequestId = params.get("RequestId")
 
 
@@ -12630,6 +13912,627 @@ class DescribeBatchIpAccessControlResponse(AbstractModel):
             self._Data = BatchIpAccessControlData()
             self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
+
+
+class DescribeBotSceneListRequest(AbstractModel):
+    """DescribeBotSceneList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _Limit: 每页数量
+        :type Limit: int
+        :param _Offset: 页码
+        :type Offset: int
+        :param _BusinessType: 场景模板类型，通过此下拉字段进行场景筛选。全部: all 登录: login  秒杀:seckill  爬内容：crawl 自定义: custom
+        :type BusinessType: list of str
+        :param _SceneName: 通过场景名称模糊搜索
+        :type SceneName: str
+        :param _IsDefault: 是否只显示默认场景
+        :type IsDefault: bool
+        :param _IsValid: 是否仅显示生效场景
+        :type IsValid: bool
+        """
+        self._Domain = None
+        self._Limit = None
+        self._Offset = None
+        self._BusinessType = None
+        self._SceneName = None
+        self._IsDefault = None
+        self._IsValid = None
+
+    @property
+    def Domain(self):
+        """域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Limit(self):
+        """每页数量
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """页码
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def BusinessType(self):
+        """场景模板类型，通过此下拉字段进行场景筛选。全部: all 登录: login  秒杀:seckill  爬内容：crawl 自定义: custom
+        :rtype: list of str
+        """
+        return self._BusinessType
+
+    @BusinessType.setter
+    def BusinessType(self, BusinessType):
+        self._BusinessType = BusinessType
+
+    @property
+    def SceneName(self):
+        """通过场景名称模糊搜索
+        :rtype: str
+        """
+        return self._SceneName
+
+    @SceneName.setter
+    def SceneName(self, SceneName):
+        self._SceneName = SceneName
+
+    @property
+    def IsDefault(self):
+        """是否只显示默认场景
+        :rtype: bool
+        """
+        return self._IsDefault
+
+    @IsDefault.setter
+    def IsDefault(self, IsDefault):
+        self._IsDefault = IsDefault
+
+    @property
+    def IsValid(self):
+        """是否仅显示生效场景
+        :rtype: bool
+        """
+        return self._IsValid
+
+    @IsValid.setter
+    def IsValid(self, IsValid):
+        self._IsValid = IsValid
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._BusinessType = params.get("BusinessType")
+        self._SceneName = params.get("SceneName")
+        self._IsDefault = params.get("IsDefault")
+        self._IsValid = params.get("IsValid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBotSceneListResponse(AbstractModel):
+    """DescribeBotSceneList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 符合筛选条件的场景数目
+        :type TotalCount: int
+        :param _BotSceneList: 当TotalCount为0时，返回空
+        :type BotSceneList: list of BotSceneInfo
+        :param _SimpleFlag: true-简易模式
+        :type SimpleFlag: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._BotSceneList = None
+        self._SimpleFlag = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """符合筛选条件的场景数目
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def BotSceneList(self):
+        """当TotalCount为0时，返回空
+        :rtype: list of BotSceneInfo
+        """
+        return self._BotSceneList
+
+    @BotSceneList.setter
+    def BotSceneList(self, BotSceneList):
+        self._BotSceneList = BotSceneList
+
+    @property
+    def SimpleFlag(self):
+        """true-简易模式
+        :rtype: bool
+        """
+        return self._SimpleFlag
+
+    @SimpleFlag.setter
+    def SimpleFlag(self, SimpleFlag):
+        self._SimpleFlag = SimpleFlag
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("BotSceneList") is not None:
+            self._BotSceneList = []
+            for item in params.get("BotSceneList"):
+                obj = BotSceneInfo()
+                obj._deserialize(item)
+                self._BotSceneList.append(obj)
+        self._SimpleFlag = params.get("SimpleFlag")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBotSceneOverviewRequest(AbstractModel):
+    """DescribeBotSceneOverview请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        """
+        self._Domain = None
+
+    @property
+    def Domain(self):
+        """域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBotSceneOverviewResponse(AbstractModel):
+    """DescribeBotSceneOverview返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: BOT总开关
+        :type Status: bool
+        :param _SceneCount: 场景总数
+        :type SceneCount: int
+        :param _ValidSceneCount: 生效场景数
+        :type ValidSceneCount: int
+        :param _CurrentGlobalScene: 当前开启的、匹配范围为全局、优先级最高的场景
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurrentGlobalScene: :class:`tencentcloud.waf.v20180125.models.GlobalSceneInfo`
+        :param _CustomRuleNums: 自定义规则总数，不包括BOT白名单
+        :type CustomRuleNums: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._SceneCount = None
+        self._ValidSceneCount = None
+        self._CurrentGlobalScene = None
+        self._CustomRuleNums = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        """BOT总开关
+        :rtype: bool
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def SceneCount(self):
+        """场景总数
+        :rtype: int
+        """
+        return self._SceneCount
+
+    @SceneCount.setter
+    def SceneCount(self, SceneCount):
+        self._SceneCount = SceneCount
+
+    @property
+    def ValidSceneCount(self):
+        """生效场景数
+        :rtype: int
+        """
+        return self._ValidSceneCount
+
+    @ValidSceneCount.setter
+    def ValidSceneCount(self, ValidSceneCount):
+        self._ValidSceneCount = ValidSceneCount
+
+    @property
+    def CurrentGlobalScene(self):
+        """当前开启的、匹配范围为全局、优先级最高的场景
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.waf.v20180125.models.GlobalSceneInfo`
+        """
+        return self._CurrentGlobalScene
+
+    @CurrentGlobalScene.setter
+    def CurrentGlobalScene(self, CurrentGlobalScene):
+        self._CurrentGlobalScene = CurrentGlobalScene
+
+    @property
+    def CustomRuleNums(self):
+        """自定义规则总数，不包括BOT白名单
+        :rtype: int
+        """
+        return self._CustomRuleNums
+
+    @CustomRuleNums.setter
+    def CustomRuleNums(self, CustomRuleNums):
+        self._CustomRuleNums = CustomRuleNums
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._SceneCount = params.get("SceneCount")
+        self._ValidSceneCount = params.get("ValidSceneCount")
+        if params.get("CurrentGlobalScene") is not None:
+            self._CurrentGlobalScene = GlobalSceneInfo()
+            self._CurrentGlobalScene._deserialize(params.get("CurrentGlobalScene"))
+        self._CustomRuleNums = params.get("CustomRuleNums")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBotSceneUCBRuleRequest(AbstractModel):
+    """DescribeBotSceneUCBRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _Skip: 翻页组件的起始页
+        :type Skip: int
+        :param _Limit: 翻页组件的页数据条数
+        :type Limit: int
+        :param _Sort: 排序参数
+        :type Sort: str
+        :param _SceneId: 1.BOT全局白名单处调用时，传"global";2.BOT场景配置处调用时，传具体的场景ID
+        :type SceneId: str
+        :param _Operate: 需要过滤的动作
+        :type Operate: str
+        :param _Name: 需要过滤的规则名称
+        :type Name: str
+        :param _VersionFlag: 兼容老数据和新旧版前端
+        :type VersionFlag: str
+        :param _TimerType: 生效方式：0-全部 1-永久生效 2-定时生效 3-周粒度生效 4-月粒度生效
+        :type TimerType: int
+        :param _ValidStatus: 0-全部 1-生效中 2-已过期
+        :type ValidStatus: int
+        """
+        self._Domain = None
+        self._Skip = None
+        self._Limit = None
+        self._Sort = None
+        self._SceneId = None
+        self._Operate = None
+        self._Name = None
+        self._VersionFlag = None
+        self._TimerType = None
+        self._ValidStatus = None
+
+    @property
+    def Domain(self):
+        """域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Skip(self):
+        """翻页组件的起始页
+        :rtype: int
+        """
+        return self._Skip
+
+    @Skip.setter
+    def Skip(self, Skip):
+        self._Skip = Skip
+
+    @property
+    def Limit(self):
+        """翻页组件的页数据条数
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Sort(self):
+        """排序参数
+        :rtype: str
+        """
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+    @property
+    def SceneId(self):
+        """1.BOT全局白名单处调用时，传"global";2.BOT场景配置处调用时，传具体的场景ID
+        :rtype: str
+        """
+        return self._SceneId
+
+    @SceneId.setter
+    def SceneId(self, SceneId):
+        self._SceneId = SceneId
+
+    @property
+    def Operate(self):
+        """需要过滤的动作
+        :rtype: str
+        """
+        return self._Operate
+
+    @Operate.setter
+    def Operate(self, Operate):
+        self._Operate = Operate
+
+    @property
+    def Name(self):
+        """需要过滤的规则名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def VersionFlag(self):
+        """兼容老数据和新旧版前端
+        :rtype: str
+        """
+        return self._VersionFlag
+
+    @VersionFlag.setter
+    def VersionFlag(self, VersionFlag):
+        self._VersionFlag = VersionFlag
+
+    @property
+    def TimerType(self):
+        """生效方式：0-全部 1-永久生效 2-定时生效 3-周粒度生效 4-月粒度生效
+        :rtype: int
+        """
+        return self._TimerType
+
+    @TimerType.setter
+    def TimerType(self, TimerType):
+        self._TimerType = TimerType
+
+    @property
+    def ValidStatus(self):
+        """0-全部 1-生效中 2-已过期
+        :rtype: int
+        """
+        return self._ValidStatus
+
+    @ValidStatus.setter
+    def ValidStatus(self, ValidStatus):
+        self._ValidStatus = ValidStatus
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Skip = params.get("Skip")
+        self._Limit = params.get("Limit")
+        self._Sort = params.get("Sort")
+        self._SceneId = params.get("SceneId")
+        self._Operate = params.get("Operate")
+        self._Name = params.get("Name")
+        self._VersionFlag = params.get("VersionFlag")
+        self._TimerType = params.get("TimerType")
+        self._ValidStatus = params.get("ValidStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBotSceneUCBRuleResponse(AbstractModel):
+    """DescribeBotSceneUCBRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 返回数据包
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.waf.v20180125.models.DescribeBotUCBRuleRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """返回数据包
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeBotUCBRuleRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DescribeBotUCBRuleRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBotUCBRuleRsp(AbstractModel):
+    """获取自定义规则列表时的出参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Res: 规则列表
+        :type Res: list of InOutputBotUCBRule
+        :param _TotalCount: 规则总数
+        :type TotalCount: int
+        """
+        self._Res = None
+        self._TotalCount = None
+
+    @property
+    def Res(self):
+        """规则列表
+        :rtype: list of InOutputBotUCBRule
+        """
+        return self._Res
+
+    @Res.setter
+    def Res(self, Res):
+        self._Res = Res
+
+    @property
+    def TotalCount(self):
+        """规则总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+
+    def _deserialize(self, params):
+        if params.get("Res") is not None:
+            self._Res = []
+            for item in params.get("Res"):
+                obj = InOutputBotUCBRule()
+                obj._deserialize(item)
+                self._Res.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeCCAutoStatusRequest(AbstractModel):
@@ -23436,6 +25339,87 @@ class GetInstanceQpsLimitResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GlobalSceneInfo(AbstractModel):
+    """当前开启的、匹配范围为全局、优先级最高的场景信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SceneId: 场景ID
+        :type SceneId: str
+        :param _SceneName: 场景名称
+        :type SceneName: str
+        :param _Priority: 场景优先级
+        :type Priority: int
+        :param _UpdateTime: 场景更新时间
+        :type UpdateTime: int
+        """
+        self._SceneId = None
+        self._SceneName = None
+        self._Priority = None
+        self._UpdateTime = None
+
+    @property
+    def SceneId(self):
+        """场景ID
+        :rtype: str
+        """
+        return self._SceneId
+
+    @SceneId.setter
+    def SceneId(self, SceneId):
+        self._SceneId = SceneId
+
+    @property
+    def SceneName(self):
+        """场景名称
+        :rtype: str
+        """
+        return self._SceneName
+
+    @SceneName.setter
+    def SceneName(self, SceneName):
+        self._SceneName = SceneName
+
+    @property
+    def Priority(self):
+        """场景优先级
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def UpdateTime(self):
+        """场景更新时间
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._SceneId = params.get("SceneId")
+        self._SceneName = params.get("SceneName")
+        self._Priority = params.get("Priority")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GoodNews(AbstractModel):
     """计费下单接口出入参Goods
 
@@ -25029,6 +27013,547 @@ class ImportIpAccessControlResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class InOutputBotUCBRule(AbstractModel):
+    """修改/新增自定义规则的入参，查询自定义规则列表时的出参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _Name: 规则名称
+        :type Name: str
+        :param _Rule: UCB的具体规则项
+        :type Rule: list of InOutputUCBRuleEntry
+        :param _Action: 处置动作
+        :type Action: str
+        :param _OnOff: 规则开关
+        :type OnOff: str
+        :param _RuleType: 规则类型
+        :type RuleType: int
+        :param _Prior: 规则优先级
+        :type Prior: int
+        :param _Timestamp: 修改时间戳
+        :type Timestamp: int
+        :param _Label: 标签
+        :type Label: str
+        :param _Id: 入参ID
+        :type Id: str
+        :param _SceneId: 场景ID
+        :type SceneId: str
+        :param _ValidTime: 生效时间
+        :type ValidTime: int
+        :param _Appid: 传入的appid
+        :type Appid: int
+        :param _AdditionArg: 额外参数
+        :type AdditionArg: str
+        :param _Desc: 规则描述
+        :type Desc: str
+        :param _RuleId: 规则ID
+        :type RuleId: str
+        :param _PreDefine: true-系统预设规则 false-自定义规则
+        :type PreDefine: bool
+        :param _JobType: 定时任务类型
+        :type JobType: str
+        :param _JobDateTime: 定时任务配置
+        :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        :param _ExpireTime: 生效截止时间
+        :type ExpireTime: int
+        :param _ValidStatus: 生效-1,失效-0
+        :type ValidStatus: int
+        :param _BlockPageId: 自定义拦截页面ID
+        :type BlockPageId: int
+        :param _ActionList: 当Action=intercept时，此字段必填
+        :type ActionList: list of UCBActionProportion
+        """
+        self._Domain = None
+        self._Name = None
+        self._Rule = None
+        self._Action = None
+        self._OnOff = None
+        self._RuleType = None
+        self._Prior = None
+        self._Timestamp = None
+        self._Label = None
+        self._Id = None
+        self._SceneId = None
+        self._ValidTime = None
+        self._Appid = None
+        self._AdditionArg = None
+        self._Desc = None
+        self._RuleId = None
+        self._PreDefine = None
+        self._JobType = None
+        self._JobDateTime = None
+        self._ExpireTime = None
+        self._ValidStatus = None
+        self._BlockPageId = None
+        self._ActionList = None
+
+    @property
+    def Domain(self):
+        """域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Name(self):
+        """规则名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Rule(self):
+        """UCB的具体规则项
+        :rtype: list of InOutputUCBRuleEntry
+        """
+        return self._Rule
+
+    @Rule.setter
+    def Rule(self, Rule):
+        self._Rule = Rule
+
+    @property
+    def Action(self):
+        """处置动作
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def OnOff(self):
+        """规则开关
+        :rtype: str
+        """
+        return self._OnOff
+
+    @OnOff.setter
+    def OnOff(self, OnOff):
+        self._OnOff = OnOff
+
+    @property
+    def RuleType(self):
+        """规则类型
+        :rtype: int
+        """
+        return self._RuleType
+
+    @RuleType.setter
+    def RuleType(self, RuleType):
+        self._RuleType = RuleType
+
+    @property
+    def Prior(self):
+        """规则优先级
+        :rtype: int
+        """
+        return self._Prior
+
+    @Prior.setter
+    def Prior(self, Prior):
+        self._Prior = Prior
+
+    @property
+    def Timestamp(self):
+        """修改时间戳
+        :rtype: int
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def Label(self):
+        """标签
+        :rtype: str
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Id(self):
+        """入参ID
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def SceneId(self):
+        """场景ID
+        :rtype: str
+        """
+        return self._SceneId
+
+    @SceneId.setter
+    def SceneId(self, SceneId):
+        self._SceneId = SceneId
+
+    @property
+    def ValidTime(self):
+        """生效时间
+        :rtype: int
+        """
+        return self._ValidTime
+
+    @ValidTime.setter
+    def ValidTime(self, ValidTime):
+        self._ValidTime = ValidTime
+
+    @property
+    def Appid(self):
+        """传入的appid
+        :rtype: int
+        """
+        return self._Appid
+
+    @Appid.setter
+    def Appid(self, Appid):
+        self._Appid = Appid
+
+    @property
+    def AdditionArg(self):
+        """额外参数
+        :rtype: str
+        """
+        return self._AdditionArg
+
+    @AdditionArg.setter
+    def AdditionArg(self, AdditionArg):
+        self._AdditionArg = AdditionArg
+
+    @property
+    def Desc(self):
+        """规则描述
+        :rtype: str
+        """
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
+
+    @property
+    def RuleId(self):
+        """规则ID
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def PreDefine(self):
+        """true-系统预设规则 false-自定义规则
+        :rtype: bool
+        """
+        return self._PreDefine
+
+    @PreDefine.setter
+    def PreDefine(self, PreDefine):
+        self._PreDefine = PreDefine
+
+    @property
+    def JobType(self):
+        """定时任务类型
+        :rtype: str
+        """
+        return self._JobType
+
+    @JobType.setter
+    def JobType(self, JobType):
+        self._JobType = JobType
+
+    @property
+    def JobDateTime(self):
+        """定时任务配置
+        :rtype: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        """
+        return self._JobDateTime
+
+    @JobDateTime.setter
+    def JobDateTime(self, JobDateTime):
+        self._JobDateTime = JobDateTime
+
+    @property
+    def ExpireTime(self):
+        """生效截止时间
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def ValidStatus(self):
+        """生效-1,失效-0
+        :rtype: int
+        """
+        return self._ValidStatus
+
+    @ValidStatus.setter
+    def ValidStatus(self, ValidStatus):
+        self._ValidStatus = ValidStatus
+
+    @property
+    def BlockPageId(self):
+        """自定义拦截页面ID
+        :rtype: int
+        """
+        return self._BlockPageId
+
+    @BlockPageId.setter
+    def BlockPageId(self, BlockPageId):
+        self._BlockPageId = BlockPageId
+
+    @property
+    def ActionList(self):
+        """当Action=intercept时，此字段必填
+        :rtype: list of UCBActionProportion
+        """
+        return self._ActionList
+
+    @ActionList.setter
+    def ActionList(self, ActionList):
+        self._ActionList = ActionList
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Name = params.get("Name")
+        if params.get("Rule") is not None:
+            self._Rule = []
+            for item in params.get("Rule"):
+                obj = InOutputUCBRuleEntry()
+                obj._deserialize(item)
+                self._Rule.append(obj)
+        self._Action = params.get("Action")
+        self._OnOff = params.get("OnOff")
+        self._RuleType = params.get("RuleType")
+        self._Prior = params.get("Prior")
+        self._Timestamp = params.get("Timestamp")
+        self._Label = params.get("Label")
+        self._Id = params.get("Id")
+        self._SceneId = params.get("SceneId")
+        self._ValidTime = params.get("ValidTime")
+        self._Appid = params.get("Appid")
+        self._AdditionArg = params.get("AdditionArg")
+        self._Desc = params.get("Desc")
+        self._RuleId = params.get("RuleId")
+        self._PreDefine = params.get("PreDefine")
+        self._JobType = params.get("JobType")
+        if params.get("JobDateTime") is not None:
+            self._JobDateTime = JobDateTime()
+            self._JobDateTime._deserialize(params.get("JobDateTime"))
+        self._ExpireTime = params.get("ExpireTime")
+        self._ValidStatus = params.get("ValidStatus")
+        self._BlockPageId = params.get("BlockPageId")
+        if params.get("ActionList") is not None:
+            self._ActionList = []
+            for item in params.get("ActionList"):
+                obj = UCBActionProportion()
+                obj._deserialize(item)
+                self._ActionList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InOutputUCBRuleEntry(AbstractModel):
+    """自定义规则UCB的Rule生效条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 键
+        :type Key: str
+        :param _Op: 操作符
+        :type Op: str
+        :param _Value: 值
+        :type Value: :class:`tencentcloud.waf.v20180125.models.UCBEntryValue`
+        :param _OpOp: 可选的补充操作符
+        :type OpOp: str
+        :param _OpArg: 可选的补充参数
+        :type OpArg: list of str
+        :param _OpValue: 可选的补充值
+        :type OpValue: float
+        :param _Name: Header参数值时使用
+        :type Name: str
+        :param _Areas: 区域选择
+        :type Areas: list of Area
+        :param _Lang: 语言环境
+        :type Lang: str
+        """
+        self._Key = None
+        self._Op = None
+        self._Value = None
+        self._OpOp = None
+        self._OpArg = None
+        self._OpValue = None
+        self._Name = None
+        self._Areas = None
+        self._Lang = None
+
+    @property
+    def Key(self):
+        """键
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Op(self):
+        """操作符
+        :rtype: str
+        """
+        return self._Op
+
+    @Op.setter
+    def Op(self, Op):
+        self._Op = Op
+
+    @property
+    def Value(self):
+        """值
+        :rtype: :class:`tencentcloud.waf.v20180125.models.UCBEntryValue`
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def OpOp(self):
+        """可选的补充操作符
+        :rtype: str
+        """
+        return self._OpOp
+
+    @OpOp.setter
+    def OpOp(self, OpOp):
+        self._OpOp = OpOp
+
+    @property
+    def OpArg(self):
+        """可选的补充参数
+        :rtype: list of str
+        """
+        return self._OpArg
+
+    @OpArg.setter
+    def OpArg(self, OpArg):
+        self._OpArg = OpArg
+
+    @property
+    def OpValue(self):
+        """可选的补充值
+        :rtype: float
+        """
+        return self._OpValue
+
+    @OpValue.setter
+    def OpValue(self, OpValue):
+        self._OpValue = OpValue
+
+    @property
+    def Name(self):
+        """Header参数值时使用
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Areas(self):
+        """区域选择
+        :rtype: list of Area
+        """
+        return self._Areas
+
+    @Areas.setter
+    def Areas(self, Areas):
+        self._Areas = Areas
+
+    @property
+    def Lang(self):
+        """语言环境
+        :rtype: str
+        """
+        return self._Lang
+
+    @Lang.setter
+    def Lang(self, Lang):
+        self._Lang = Lang
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Op = params.get("Op")
+        if params.get("Value") is not None:
+            self._Value = UCBEntryValue()
+            self._Value._deserialize(params.get("Value"))
+        self._OpOp = params.get("OpOp")
+        self._OpArg = params.get("OpArg")
+        self._OpValue = params.get("OpValue")
+        self._Name = params.get("Name")
+        if params.get("Areas") is not None:
+            self._Areas = []
+            for item in params.get("Areas"):
+                obj = Area()
+                obj._deserialize(item)
+                self._Areas.append(obj)
+        self._Lang = params.get("Lang")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class InstanceInfo(AbstractModel):
@@ -28644,6 +31169,231 @@ class ModifyAttackWhiteRuleResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RuleId = params.get("RuleId")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyBotSceneStatusRequest(AbstractModel):
+    """ModifyBotSceneStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _SceneId: 场景ID
+        :type SceneId: str
+        :param _Status: true-开启 false-关闭
+        :type Status: bool
+        """
+        self._Domain = None
+        self._SceneId = None
+        self._Status = None
+
+    @property
+    def Domain(self):
+        """域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def SceneId(self):
+        """场景ID
+        :rtype: str
+        """
+        return self._SceneId
+
+    @SceneId.setter
+    def SceneId(self, SceneId):
+        self._SceneId = SceneId
+
+    @property
+    def Status(self):
+        """true-开启 false-关闭
+        :rtype: bool
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._SceneId = params.get("SceneId")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBotSceneStatusResponse(AbstractModel):
+    """ModifyBotSceneStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyBotSceneUCBRuleRequest(AbstractModel):
+    """ModifyBotSceneUCBRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _SceneId: 1.BOT全局白名单处调用时，传"global";2.BOT场景配置时，传具体的场景ID
+        :type SceneId: str
+        :param _Rule: 规则内容, 增加编码SceneId信息,1.BOT全局白名单处调用时，SceneId为"global", RuleType传10, Action为"permit";2.BOT场景配置时，SceneId为场景ID
+        :type Rule: :class:`tencentcloud.waf.v20180125.models.InOutputBotUCBRule`
+        :param _BatchRules: 530改批量操作
+        :type BatchRules: list of InOutputBotUCBRule
+        """
+        self._Domain = None
+        self._SceneId = None
+        self._Rule = None
+        self._BatchRules = None
+
+    @property
+    def Domain(self):
+        """域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def SceneId(self):
+        """1.BOT全局白名单处调用时，传"global";2.BOT场景配置时，传具体的场景ID
+        :rtype: str
+        """
+        return self._SceneId
+
+    @SceneId.setter
+    def SceneId(self, SceneId):
+        self._SceneId = SceneId
+
+    @property
+    def Rule(self):
+        """规则内容, 增加编码SceneId信息,1.BOT全局白名单处调用时，SceneId为"global", RuleType传10, Action为"permit";2.BOT场景配置时，SceneId为场景ID
+        :rtype: :class:`tencentcloud.waf.v20180125.models.InOutputBotUCBRule`
+        """
+        return self._Rule
+
+    @Rule.setter
+    def Rule(self, Rule):
+        self._Rule = Rule
+
+    @property
+    def BatchRules(self):
+        """530改批量操作
+        :rtype: list of InOutputBotUCBRule
+        """
+        return self._BatchRules
+
+    @BatchRules.setter
+    def BatchRules(self, BatchRules):
+        self._BatchRules = BatchRules
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._SceneId = params.get("SceneId")
+        if params.get("Rule") is not None:
+            self._Rule = InOutputBotUCBRule()
+            self._Rule._deserialize(params.get("Rule"))
+        if params.get("BatchRules") is not None:
+            self._BatchRules = []
+            for item in params.get("BatchRules"):
+                obj = InOutputBotUCBRule()
+                obj._deserialize(item)
+                self._BatchRules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBotSceneUCBRuleResponse(AbstractModel):
+    """ModifyBotSceneUCBRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 正常情况下为null
+        :type Data: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """正常情况下为null
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
         self._RequestId = params.get("RequestId")
 
 
@@ -34061,6 +36811,10 @@ class PostCKafkaFlowInfo(AbstractModel):
         :type Version: str
         :param _Topic: 主题名称
         :type Topic: str
+        :param _Compression: 压缩算法，支持gzip 和 lz4
+        :type Compression: str
+        :param _Content: 描述信息
+        :type Content: str
         """
         self._FlowId = None
         self._LogType = None
@@ -34070,6 +36824,8 @@ class PostCKafkaFlowInfo(AbstractModel):
         self._Brokers = None
         self._Version = None
         self._Topic = None
+        self._Compression = None
+        self._Content = None
 
     @property
     def FlowId(self):
@@ -34159,6 +36915,28 @@ class PostCKafkaFlowInfo(AbstractModel):
     def Topic(self, Topic):
         self._Topic = Topic
 
+    @property
+    def Compression(self):
+        """压缩算法，支持gzip 和 lz4
+        :rtype: str
+        """
+        return self._Compression
+
+    @Compression.setter
+    def Compression(self, Compression):
+        self._Compression = Compression
+
+    @property
+    def Content(self):
+        """描述信息
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
 
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
@@ -34169,6 +36947,8 @@ class PostCKafkaFlowInfo(AbstractModel):
         self._Brokers = params.get("Brokers")
         self._Version = params.get("Version")
         self._Topic = params.get("Topic")
+        self._Compression = params.get("Compression")
+        self._Content = params.get("Content")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -36906,6 +39686,153 @@ class TimedJob(AbstractModel):
     def _deserialize(self, params):
         self._StartDateTime = params.get("StartDateTime")
         self._EndDateTime = params.get("EndDateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UCBActionProportion(AbstractModel):
+    """bot自定义规则动作灰度
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Action: 动作
+        :type Action: str
+        :param _Proportion: 比例
+        :type Proportion: float
+        """
+        self._Action = None
+        self._Proportion = None
+
+    @property
+    def Action(self):
+        """动作
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def Proportion(self):
+        """比例
+        :rtype: float
+        """
+        return self._Proportion
+
+    @Proportion.setter
+    def Proportion(self, Proportion):
+        self._Proportion = Proportion
+
+
+    def _deserialize(self, params):
+        self._Action = params.get("Action")
+        self._Proportion = params.get("Proportion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UCBEntryValue(AbstractModel):
+    """云图API改版后, 不支持将复杂json类型编码成string,因此通过此复杂类型识别传入的不同类型参数值
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BasicValue: string类型值
+        :type BasicValue: str
+        :param _LogicValue: 布尔类型值
+        :type LogicValue: bool
+        :param _BelongValue: string数组类型值
+        :type BelongValue: list of str
+        :param _ValidKey: 指示有效的字段
+        :type ValidKey: str
+        :param _MultiValue: string数组类型值
+        :type MultiValue: list of str
+        """
+        self._BasicValue = None
+        self._LogicValue = None
+        self._BelongValue = None
+        self._ValidKey = None
+        self._MultiValue = None
+
+    @property
+    def BasicValue(self):
+        """string类型值
+        :rtype: str
+        """
+        return self._BasicValue
+
+    @BasicValue.setter
+    def BasicValue(self, BasicValue):
+        self._BasicValue = BasicValue
+
+    @property
+    def LogicValue(self):
+        """布尔类型值
+        :rtype: bool
+        """
+        return self._LogicValue
+
+    @LogicValue.setter
+    def LogicValue(self, LogicValue):
+        self._LogicValue = LogicValue
+
+    @property
+    def BelongValue(self):
+        """string数组类型值
+        :rtype: list of str
+        """
+        return self._BelongValue
+
+    @BelongValue.setter
+    def BelongValue(self, BelongValue):
+        self._BelongValue = BelongValue
+
+    @property
+    def ValidKey(self):
+        """指示有效的字段
+        :rtype: str
+        """
+        return self._ValidKey
+
+    @ValidKey.setter
+    def ValidKey(self, ValidKey):
+        self._ValidKey = ValidKey
+
+    @property
+    def MultiValue(self):
+        """string数组类型值
+        :rtype: list of str
+        """
+        return self._MultiValue
+
+    @MultiValue.setter
+    def MultiValue(self, MultiValue):
+        self._MultiValue = MultiValue
+
+
+    def _deserialize(self, params):
+        self._BasicValue = params.get("BasicValue")
+        self._LogicValue = params.get("LogicValue")
+        self._BelongValue = params.get("BelongValue")
+        self._ValidKey = params.get("ValidKey")
+        self._MultiValue = params.get("MultiValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

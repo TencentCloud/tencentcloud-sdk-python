@@ -3994,11 +3994,14 @@ class DescribeModelVersionListRequest(AbstractModel):
         :type Checked: bool
         :param _CampusId: 园区ID，当 Checked 参数传 True 时，该参数必须传值
         :type CampusId: int
+        :param _ModelName: 型号关键字，可以实现模糊匹配搜索功能
+        :type ModelName: str
         """
         self._DeviceType = None
         self._Filters = None
         self._Checked = None
         self._CampusId = None
+        self._ModelName = None
 
     @property
     def DeviceType(self):
@@ -4044,6 +4047,17 @@ class DescribeModelVersionListRequest(AbstractModel):
     def CampusId(self, CampusId):
         self._CampusId = CampusId
 
+    @property
+    def ModelName(self):
+        """型号关键字，可以实现模糊匹配搜索功能
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
 
     def _deserialize(self, params):
         self._DeviceType = params.get("DeviceType")
@@ -4055,6 +4069,7 @@ class DescribeModelVersionListRequest(AbstractModel):
                 self._Filters.append(obj)
         self._Checked = params.get("Checked")
         self._CampusId = params.get("CampusId")
+        self._ModelName = params.get("ModelName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

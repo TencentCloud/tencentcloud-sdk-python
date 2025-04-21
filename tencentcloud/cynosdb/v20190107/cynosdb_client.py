@@ -1843,6 +1843,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSSLStatus(self, request):
+        """查询实例SSL状态
+
+        :param request: Request instance for DescribeSSLStatus.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeSSLStatusRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeSSLStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSSLStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSSLStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeServerlessInstanceSpecs(self, request):
         """查询Serverless实例可选规格
 
@@ -1880,6 +1903,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("DescribeServerlessStrategy", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeServerlessStrategyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSlaveZones(self, request):
+        """查询从可用区
+
+        :param request: Request instance for DescribeSlaveZones.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeSlaveZonesRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeSlaveZonesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSlaveZones", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSlaveZonesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3007,6 +3053,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("OpenReadOnlyInstanceExclusiveAccess", params, headers=headers)
             response = json.loads(body)
             model = models.OpenReadOnlyInstanceExclusiveAccessResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def OpenSSL(self, request):
+        """开启SSL加密
+
+        :param request: Request instance for OpenSSL.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.OpenSSLRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.OpenSSLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OpenSSL", params, headers=headers)
+            response = json.loads(body)
+            model = models.OpenSSLResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

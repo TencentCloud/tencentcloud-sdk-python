@@ -2176,10 +2176,8 @@ class WebPage(AbstractModel):
     def __init__(self):
         r"""
         :param _Title: 标题
-注意：此字段可能返回 null，表示取不到有效值。
         :type Title: str
         :param _Url: url
-注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
         :param _Summary: 网页摘要
 注意：此字段可能返回 null，表示取不到有效值。
@@ -2200,7 +2198,6 @@ class WebPage(AbstractModel):
     @property
     def Title(self):
         """标题
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Title
@@ -2212,7 +2209,6 @@ class WebPage(AbstractModel):
     @property
     def Url(self):
         """url
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Url
@@ -2293,7 +2289,7 @@ class WebSearchRequest(AbstractModel):
         :type WhiteSites: list of str
         :param _BlackSites: 域名黑名单，在不指定 Site 和白名单时，过滤黑名单中的域名。
         :type BlackSites: list of str
-        :param _StartTime: 秒级时间冲，搜索网页的开始时间，默认不限制开始时间。
+        :param _StartTime: 秒级时间戳，搜索网页的开始时间，默认不限制开始时间。
         :type StartTime: int
         :param _EndTime: 秒级时间戳，搜索网页的结束时间，默认为现在。
         :type EndTime: int
@@ -2378,7 +2374,7 @@ class WebSearchRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """秒级时间冲，搜索网页的开始时间，默认不限制开始时间。
+        """秒级时间戳，搜索网页的开始时间，默认不限制开始时间。
         :rtype: int
         """
         return self._StartTime

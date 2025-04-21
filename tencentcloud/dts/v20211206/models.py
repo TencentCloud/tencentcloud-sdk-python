@@ -3417,9 +3417,11 @@ class DBEndpointInfo(AbstractModel):
         :type AccessType: str
         :param _DatabaseType: 实例数据库类型，如：mysql,redis,mongodb,postgresql,mariadb,percona 等
         :type DatabaseType: str
-        :param _NodeType: 节点类型，为空或者simple表示普通节点、cluster表示集群节点；对于mongo业务，取值为replicaset(mongodb副本集)、standalone(mongodb单节点)、cluster(mongodb集群)；对于redis实例，为空或simple(单节点)、cluster(集群)、cluster-cache(cache集群)、cluster-proxy(代理集群)
+        :param _NodeType: 节点类型，simple表示普通节点、cluster表示集群节点；
+对于mongo业务，取值为replicaset(mongodb副本集)、standalone(mongodb单节点)、cluster(mongodb集群)；
+对于redis实例，simple(单节点)、cluster-cache(直连集群)、cluster-proxy(代理集群)；
         :type NodeType: str
-        :param _Info: 数据库信息
+        :param _Info: 实例具体的连接信息，如ip、port、接入方式等
         :type Info: list of DBInfo
         :param _Supplier: 实例服务提供商，如:"aliyun","others"
         :type Supplier: str
@@ -3428,7 +3430,7 @@ class DBEndpointInfo(AbstractModel):
         :type ExtraAttr: list of KeyValuePairOption
         :param _DatabaseNetEnv: 数据库所属网络环境，AccessType为云联网(ccn)时必填， UserIDC表示用户IDC、TencentVPC表示腾讯云VPC；
         :type DatabaseNetEnv: str
-        :param _ConnectType: tdsql连接方式：proxy-通过tdsql proxy主机访问各个set节点，注意只有在自研上云的网络环境下才能通过这种方式连接，Info中只需要提供proxy主机信息。set-直连set节点，如选择直连set方式，Info中需要正确填写proxy主机信息及所有set节点信息。源端是tdsqlmysql类型必填。
+        :param _ConnectType: tdsql连接方式：proxy-通过tdsql proxy主机访问各个set节点，注意只有在自研上云的网络环境下才能通过这种方式连接，Info中只需要提供proxy主机信息。set-直连set节点，如选择直连set方式，Info中需要正确填写proxy主机信息及所有set节点信息。源端是tdsqlmysql类型必填。对于mongodb链路，srv表示SRV连接串，为空或不传表示普通连接串，srv仅限于FetchMethod为change_stream的拉取模式
         :type ConnectType: str
         """
         self._Region = None
@@ -3476,7 +3478,9 @@ class DBEndpointInfo(AbstractModel):
 
     @property
     def NodeType(self):
-        """节点类型，为空或者simple表示普通节点、cluster表示集群节点；对于mongo业务，取值为replicaset(mongodb副本集)、standalone(mongodb单节点)、cluster(mongodb集群)；对于redis实例，为空或simple(单节点)、cluster(集群)、cluster-cache(cache集群)、cluster-proxy(代理集群)
+        """节点类型，simple表示普通节点、cluster表示集群节点；
+对于mongo业务，取值为replicaset(mongodb副本集)、standalone(mongodb单节点)、cluster(mongodb集群)；
+对于redis实例，simple(单节点)、cluster-cache(直连集群)、cluster-proxy(代理集群)；
         :rtype: str
         """
         return self._NodeType
@@ -3487,7 +3491,7 @@ class DBEndpointInfo(AbstractModel):
 
     @property
     def Info(self):
-        """数据库信息
+        """实例具体的连接信息，如ip、port、接入方式等
         :rtype: list of DBInfo
         """
         return self._Info
@@ -3532,7 +3536,7 @@ class DBEndpointInfo(AbstractModel):
 
     @property
     def ConnectType(self):
-        """tdsql连接方式：proxy-通过tdsql proxy主机访问各个set节点，注意只有在自研上云的网络环境下才能通过这种方式连接，Info中只需要提供proxy主机信息。set-直连set节点，如选择直连set方式，Info中需要正确填写proxy主机信息及所有set节点信息。源端是tdsqlmysql类型必填。
+        """tdsql连接方式：proxy-通过tdsql proxy主机访问各个set节点，注意只有在自研上云的网络环境下才能通过这种方式连接，Info中只需要提供proxy主机信息。set-直连set节点，如选择直连set方式，Info中需要正确填写proxy主机信息及所有set节点信息。源端是tdsqlmysql类型必填。对于mongodb链路，srv表示SRV连接串，为空或不传表示普通连接串，srv仅限于FetchMethod为change_stream的拉取模式
         :rtype: str
         """
         return self._ConnectType

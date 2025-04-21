@@ -2540,7 +2540,7 @@ class CreateAIAgentCallRequest(AbstractModel):
         :type Callers: list of str
         :param _PromptVariables: 提示词变量
         :type PromptVariables: list of Variable
-        :param _Variables: 通用变量： <p>提示词变量</p> <p>欢迎语变量</p> <p> dify变量</p>  
+        :param _Variables: 通用变量： <p>提示词变量</p> <p>欢迎语变量</p> <p> 欢迎语延迟播放(秒级)：welcome-message-delay</p>  <p> dify变量</p>  
 
 1. dify-inputs-xxx 为dify的inputs变量
 2.  dify-inputs-user 为dify的user值
@@ -2600,6 +2600,8 @@ class CreateAIAgentCallRequest(AbstractModel):
 
     @property
     def PromptVariables(self):
+        warnings.warn("parameter `PromptVariables` is deprecated", DeprecationWarning) 
+
         """提示词变量
         :rtype: list of Variable
         """
@@ -2607,11 +2609,13 @@ class CreateAIAgentCallRequest(AbstractModel):
 
     @PromptVariables.setter
     def PromptVariables(self, PromptVariables):
+        warnings.warn("parameter `PromptVariables` is deprecated", DeprecationWarning) 
+
         self._PromptVariables = PromptVariables
 
     @property
     def Variables(self):
-        """通用变量： <p>提示词变量</p> <p>欢迎语变量</p> <p> dify变量</p>  
+        """通用变量： <p>提示词变量</p> <p>欢迎语变量</p> <p> 欢迎语延迟播放(秒级)：welcome-message-delay</p>  <p> dify变量</p>  
 
 1. dify-inputs-xxx 为dify的inputs变量
 2.  dify-inputs-user 为dify的user值
@@ -2925,7 +2929,7 @@ HoaiMy
         :type ExtractConfig: list of AICallExtractConfigElement
         :param _Temperature: 模型温度控制
         :type Temperature: float
-        :param _Variables: 通用变量： <p>提示词变量</p> <p>欢迎语变量</p> <p> dify变量</p>  
+        :param _Variables: 通用变量： <p>提示词变量</p> <p>欢迎语变量</p> <p> 欢迎语延迟播放(秒级)：welcome-message-delay</p>  <p> dify变量</p>  
 
 1. dify-inputs-xxx 为dify的inputs变量
 2.  dify-inputs-user 为dify的user值
@@ -3395,6 +3399,8 @@ HoaiMy
 
     @property
     def PromptVariables(self):
+        warnings.warn("parameter `PromptVariables` is deprecated", DeprecationWarning) 
+
         """提示词变量
         :rtype: list of Variable
         """
@@ -3402,6 +3408,8 @@ HoaiMy
 
     @PromptVariables.setter
     def PromptVariables(self, PromptVariables):
+        warnings.warn("parameter `PromptVariables` is deprecated", DeprecationWarning) 
+
         self._PromptVariables = PromptVariables
 
     @property
@@ -3439,7 +3447,7 @@ HoaiMy
 
     @property
     def Variables(self):
-        """通用变量： <p>提示词变量</p> <p>欢迎语变量</p> <p> dify变量</p>  
+        """通用变量： <p>提示词变量</p> <p>欢迎语变量</p> <p> 欢迎语延迟播放(秒级)：welcome-message-delay</p>  <p> dify变量</p>  
 
 1. dify-inputs-xxx 为dify的inputs变量
 2.  dify-inputs-user 为dify的user值
@@ -5827,6 +5835,85 @@ class CreateUserSigResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._UserSig = params.get("UserSig")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteCCCSkillGroupRequest(AbstractModel):
+    """DeleteCCCSkillGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :type SdkAppId: int
+        :param _SkillGroupId: 技能组ID
+        :type SkillGroupId: int
+        """
+        self._SdkAppId = None
+        self._SkillGroupId = None
+
+    @property
+    def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def SkillGroupId(self):
+        """技能组ID
+        :rtype: int
+        """
+        return self._SkillGroupId
+
+    @SkillGroupId.setter
+    def SkillGroupId(self, SkillGroupId):
+        self._SkillGroupId = SkillGroupId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._SkillGroupId = params.get("SkillGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCCCSkillGroupResponse(AbstractModel):
+    """DeleteCCCSkillGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 

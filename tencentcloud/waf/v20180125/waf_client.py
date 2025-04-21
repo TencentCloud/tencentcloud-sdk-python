@@ -509,6 +509,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteBotSceneUCBRule(self, request):
+        """场景化后删除Bot的UCB自定义规则
+
+        :param request: Request instance for DeleteBotSceneUCBRule.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DeleteBotSceneUCBRuleRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DeleteBotSceneUCBRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteBotSceneUCBRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteBotSceneUCBRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteCCRule(self, request):
         """Waf  CC V2 Delete接口
 
@@ -1075,6 +1098,75 @@ class WafClient(AbstractClient):
             body = self.call("DescribeBatchIpAccessControl", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeBatchIpAccessControlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeBotSceneList(self, request):
+        """获取BOT场景列表与概览
+
+        :param request: Request instance for DescribeBotSceneList.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeBotSceneListRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeBotSceneListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBotSceneList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBotSceneListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeBotSceneOverview(self, request):
+        """获取Bot场景全局概览
+
+        :param request: Request instance for DescribeBotSceneOverview.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeBotSceneOverviewRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeBotSceneOverviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBotSceneOverview", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBotSceneOverviewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeBotSceneUCBRule(self, request):
+        """场景化后Bot获取UCB自定义规则策略
+
+        :param request: Request instance for DescribeBotSceneUCBRule.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeBotSceneUCBRuleRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeBotSceneUCBRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBotSceneUCBRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBotSceneUCBRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2664,6 +2756,52 @@ class WafClient(AbstractClient):
             body = self.call("ModifyAttackWhiteRule", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyAttackWhiteRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyBotSceneStatus(self, request):
+        """bot子场景开关
+
+        :param request: Request instance for ModifyBotSceneStatus.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyBotSceneStatusRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyBotSceneStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyBotSceneStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyBotSceneStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyBotSceneUCBRule(self, request):
+        """【接口复用】场景化后更新Bot的UCB自定义规则，两个调用位置：1.BOT全局白名单 2.BOT场景配置
+
+        :param request: Request instance for ModifyBotSceneUCBRule.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyBotSceneUCBRuleRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyBotSceneUCBRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyBotSceneUCBRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyBotSceneUCBRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

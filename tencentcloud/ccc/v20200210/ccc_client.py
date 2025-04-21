@@ -494,6 +494,29 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteCCCSkillGroup(self, request):
+        """删除技能组
+
+        :param request: Request instance for DeleteCCCSkillGroup.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.DeleteCCCSkillGroupRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.DeleteCCCSkillGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCCCSkillGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCCCSkillGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteExtension(self, request):
         """删除话机账号
 

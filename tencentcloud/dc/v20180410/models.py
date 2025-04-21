@@ -25,14 +25,14 @@ class AcceptDirectConnectTunnelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DirectConnectTunnelId: 专用通道ID。
+        :param _DirectConnectTunnelId: 专用通道ID。可以通过[DescribeDirectConnectTunnel](https://cloud.tencent.com/document/product/216/19819)接口获取。
         :type DirectConnectTunnelId: str
         """
         self._DirectConnectTunnelId = None
 
     @property
     def DirectConnectTunnelId(self):
-        """专用通道ID。
+        """专用通道ID。可以通过[DescribeDirectConnectTunnel](https://cloud.tencent.com/document/product/216/19819)接口获取。
         :rtype: str
         """
         return self._DirectConnectTunnelId

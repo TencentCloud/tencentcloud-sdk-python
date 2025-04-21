@@ -1359,7 +1359,6 @@ class CreateInstanceNewResponse(AbstractModel):
         :param _InstanceId: 实例ID
         :type InstanceId: str
         :param _ErrorMsg: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1394,7 +1393,6 @@ class CreateInstanceNewResponse(AbstractModel):
     @property
     def ErrorMsg(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorMsg
@@ -1906,18 +1904,14 @@ class DescribeBackUpScheduleResponse(AbstractModel):
         :param _BackUpOpened: 备份是否开启
         :type BackUpOpened: bool
         :param _MetaStrategy: 元数据备份策略
-注意：此字段可能返回 null，表示取不到有效值。
         :type MetaStrategy: :class:`tencentcloud.cdwch.v20200915.models.ScheduleStrategy`
         :param _DataStrategy: 表数据备份策略
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataStrategy: :class:`tencentcloud.cdwch.v20200915.models.ScheduleStrategy`
         :param _BackUpContents: 备份表列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type BackUpContents: list of BackupTableContent
         :param _BackUpStatus: 备份的状态
         :type BackUpStatus: int
         :param _ErrorMsg: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1944,7 +1938,6 @@ class DescribeBackUpScheduleResponse(AbstractModel):
     @property
     def MetaStrategy(self):
         """元数据备份策略
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdwch.v20200915.models.ScheduleStrategy`
         """
         return self._MetaStrategy
@@ -1956,7 +1949,6 @@ class DescribeBackUpScheduleResponse(AbstractModel):
     @property
     def DataStrategy(self):
         """表数据备份策略
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdwch.v20200915.models.ScheduleStrategy`
         """
         return self._DataStrategy
@@ -1968,7 +1960,6 @@ class DescribeBackUpScheduleResponse(AbstractModel):
     @property
     def BackUpContents(self):
         """备份表列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BackupTableContent
         """
         return self._BackUpContents
@@ -1991,7 +1982,6 @@ class DescribeBackUpScheduleResponse(AbstractModel):
     @property
     def ErrorMsg(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorMsg
@@ -2526,7 +2516,6 @@ class DescribeInstanceKeyValConfigsResponse(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type MapConfigItems: list of MapConfigItem
         :param _ErrorMsg: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2575,7 +2564,6 @@ class DescribeInstanceKeyValConfigsResponse(AbstractModel):
     @property
     def ErrorMsg(self):
         """错误信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ErrorMsg

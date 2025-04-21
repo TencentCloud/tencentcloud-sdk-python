@@ -13018,7 +13018,6 @@ class DescribeAdvancedStoreLocationResponse(AbstractModel):
         :param _LakeFsStatus: 托管存储状态，HasLakeFs等于true时，该值才有意义
         :type LakeFsStatus: str
         :param _BucketType: 托管存储桶类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type BucketType: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13077,7 +13076,6 @@ class DescribeAdvancedStoreLocationResponse(AbstractModel):
     @property
     def BucketType(self):
         """托管存储桶类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BucketType
@@ -17152,7 +17150,6 @@ class DescribeResultDownloadResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Path: 下载文件路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type Path: str
         :param _Status: 任务状态 init | queue | format | compress | success|  timeout | error
         :type Status: str
@@ -17178,7 +17175,6 @@ class DescribeResultDownloadResponse(AbstractModel):
     @property
     def Path(self):
         """下载文件路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Path
@@ -27065,7 +27061,6 @@ class NotebookSessionStatementInfo(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type OutPut: :class:`tencentcloud.dlc.v20210125.models.StatementOutput`
         :param _BatchId: 批任务id
-注意：此字段可能返回 null，表示取不到有效值。
         :type BatchId: str
         :param _Code: 运行语句
         :type Code: str
@@ -27152,7 +27147,6 @@ class NotebookSessionStatementInfo(AbstractModel):
     @property
     def BatchId(self):
         """批任务id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BatchId
@@ -27645,16 +27639,12 @@ class OtherCHDFSBinding(AbstractModel):
     def __init__(self):
         r"""
         :param _ProductName: 产品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductName: str
         :param _SuperUser: 用户名称（该字段已废弃）
-注意：此字段可能返回 null，表示取不到有效值。
         :type SuperUser: list of str
         :param _VpcInfo: vpc配置信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcInfo: list of CHDFSProductVpcInfo
         :param _IsBind: 是否与该桶绑定（该字段已废弃）
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsBind: bool
         """
         self._ProductName = None
@@ -27665,7 +27655,6 @@ class OtherCHDFSBinding(AbstractModel):
     @property
     def ProductName(self):
         """产品名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProductName
@@ -27677,7 +27666,6 @@ class OtherCHDFSBinding(AbstractModel):
     @property
     def SuperUser(self):
         """用户名称（该字段已废弃）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._SuperUser
@@ -27689,7 +27677,6 @@ class OtherCHDFSBinding(AbstractModel):
     @property
     def VpcInfo(self):
         """vpc配置信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CHDFSProductVpcInfo
         """
         return self._VpcInfo
@@ -27701,7 +27688,6 @@ class OtherCHDFSBinding(AbstractModel):
     @property
     def IsBind(self):
         """是否与该桶绑定（该字段已废弃）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsBind
@@ -33123,7 +33109,6 @@ class TaskResponseInfo(AbstractModel):
         :param _OperateUin: 执行sql的子uin
         :type OperateUin: str
         :param _DataEngineName: 计算资源名字
-注意：此字段可能返回 null，表示取不到有效值。
         :type DataEngineName: str
         :param _InputType: 导入类型是本地导入还是cos
         :type InputType: str
@@ -33440,7 +33425,6 @@ class TaskResponseInfo(AbstractModel):
     @property
     def DataEngineName(self):
         """计算资源名字
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DataEngineName

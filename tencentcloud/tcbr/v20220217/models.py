@@ -2682,6 +2682,8 @@ class ServerBaseConfig(AbstractModel):
         :type Tag: str
         :param _InternalAccess: 内网访问开关 close | open
         :type InternalAccess: str
+        :param _InternalDomain: 内网域名
+        :type InternalDomain: str
         """
         self._EnvId = None
         self._ServerName = None
@@ -2705,6 +2707,7 @@ class ServerBaseConfig(AbstractModel):
         self._LogParseType = None
         self._Tag = None
         self._InternalAccess = None
+        self._InternalDomain = None
 
     @property
     def EnvId(self):
@@ -2948,6 +2951,17 @@ class ServerBaseConfig(AbstractModel):
     def InternalAccess(self, InternalAccess):
         self._InternalAccess = InternalAccess
 
+    @property
+    def InternalDomain(self):
+        """内网域名
+        :rtype: str
+        """
+        return self._InternalDomain
+
+    @InternalDomain.setter
+    def InternalDomain(self, InternalDomain):
+        self._InternalDomain = InternalDomain
+
 
     def _deserialize(self, params):
         self._EnvId = params.get("EnvId")
@@ -2977,6 +2991,7 @@ class ServerBaseConfig(AbstractModel):
         self._LogParseType = params.get("LogParseType")
         self._Tag = params.get("Tag")
         self._InternalAccess = params.get("InternalAccess")
+        self._InternalDomain = params.get("InternalDomain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3010,6 +3025,8 @@ class ServerBaseInfo(AbstractModel):
         :type CustomDomainNames: list of str
         :param _ServerType: 服务类型: function 云函数2.0；container 容器服务
         :type ServerType: str
+        :param _TrafficType: 流量类型，目前只有 FLOW
+        :type TrafficType: str
         """
         self._ServerName = None
         self._DefaultDomainName = None
@@ -3019,6 +3036,7 @@ class ServerBaseInfo(AbstractModel):
         self._AccessTypes = None
         self._CustomDomainNames = None
         self._ServerType = None
+        self._TrafficType = None
 
     @property
     def ServerName(self):
@@ -3108,6 +3126,17 @@ class ServerBaseInfo(AbstractModel):
     def ServerType(self, ServerType):
         self._ServerType = ServerType
 
+    @property
+    def TrafficType(self):
+        """流量类型，目前只有 FLOW
+        :rtype: str
+        """
+        return self._TrafficType
+
+    @TrafficType.setter
+    def TrafficType(self, TrafficType):
+        self._TrafficType = TrafficType
+
 
     def _deserialize(self, params):
         self._ServerName = params.get("ServerName")
@@ -3118,6 +3147,7 @@ class ServerBaseInfo(AbstractModel):
         self._AccessTypes = params.get("AccessTypes")
         self._CustomDomainNames = params.get("CustomDomainNames")
         self._ServerType = params.get("ServerType")
+        self._TrafficType = params.get("TrafficType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -71,6 +71,12 @@ INTERNALERROR_UNKNOWNERR = 'InternalError.UnknownErr'
 # 参数错误。
 INVALIDPARAMETER = 'InvalidParameter'
 
+# 命名重复
+INVALIDPARAMETER_BOTNAMEREPEATERR = 'InvalidParameter.BotNameRepeatErr'
+
+# Bot场景不存在
+INVALIDPARAMETER_BOTSCENENOTEXISTERR = 'InvalidParameter.BotSceneNotExistErr'
+
 # 证书信息参数错误
 INVALIDPARAMETER_CERTIFICATIONPARAMETERERR = 'InvalidParameter.CertificationParameterErr'
 
@@ -178,6 +184,9 @@ UNKNOWNPARAMETER = 'UnknownParameter'
 
 # 操作不支持。
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'
+
+# Bot套餐未购买
+UNSUPPORTEDOPERATION_BOTSERVICENOTSUBSCRIBEERR = 'UnsupportedOperation.BotServiceNotSubscribeErr'
 
 # InvalidRequest
 UNSUPPORTEDOPERATION_INVALIDREQUEST = 'UnsupportedOperation.InvalidRequest'

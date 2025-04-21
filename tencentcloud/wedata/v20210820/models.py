@@ -68286,6 +68286,9 @@ class Rule(AbstractModel):
         :param _ProjectName: 项目名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectName: str
+        :param _UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
         """
         self._RuleId = None
         self._RuleGroupId = None
@@ -68337,6 +68340,7 @@ class Rule(AbstractModel):
         self._TargetSchemaName = None
         self._ProjectId = None
         self._ProjectName = None
+        self._UpdateTime = None
 
     @property
     def RuleId(self):
@@ -68938,6 +68942,18 @@ class Rule(AbstractModel):
     def ProjectName(self, ProjectName):
         self._ProjectName = ProjectName
 
+    @property
+    def UpdateTime(self):
+        """更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
 
     def _deserialize(self, params):
         self._RuleId = params.get("RuleId")
@@ -68998,6 +69014,7 @@ class Rule(AbstractModel):
         self._TargetSchemaName = params.get("TargetSchemaName")
         self._ProjectId = params.get("ProjectId")
         self._ProjectName = params.get("ProjectName")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -71036,9 +71053,17 @@ class RuleGroupExecResult(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceStatus: str
         :param _StartTime: 实例运行的开始时间
+注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
         :param _FinishTime: 实例运行的结束时间
+注意：此字段可能返回 null，表示取不到有效值。
         :type FinishTime: str
+        :param _RuleGroupName: 监控名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleGroupName: str
+        :param _RuleGroupExist: 判断是否屏蔽监控 0.屏蔽 1.不屏蔽
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleGroupExist: str
         """
         self._RuleGroupExecId = None
         self._RuleGroupId = None
@@ -71066,6 +71091,8 @@ class RuleGroupExecResult(AbstractModel):
         self._InstanceStatus = None
         self._StartTime = None
         self._FinishTime = None
+        self._RuleGroupName = None
+        self._RuleGroupExist = None
 
     @property
     def RuleGroupExecId(self):
@@ -71358,6 +71385,7 @@ class RuleGroupExecResult(AbstractModel):
     @property
     def StartTime(self):
         """实例运行的开始时间
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StartTime
@@ -71369,6 +71397,7 @@ class RuleGroupExecResult(AbstractModel):
     @property
     def FinishTime(self):
         """实例运行的结束时间
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FinishTime
@@ -71376,6 +71405,30 @@ class RuleGroupExecResult(AbstractModel):
     @FinishTime.setter
     def FinishTime(self, FinishTime):
         self._FinishTime = FinishTime
+
+    @property
+    def RuleGroupName(self):
+        """监控名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RuleGroupName
+
+    @RuleGroupName.setter
+    def RuleGroupName(self, RuleGroupName):
+        self._RuleGroupName = RuleGroupName
+
+    @property
+    def RuleGroupExist(self):
+        """判断是否屏蔽监控 0.屏蔽 1.不屏蔽
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RuleGroupExist
+
+    @RuleGroupExist.setter
+    def RuleGroupExist(self, RuleGroupExist):
+        self._RuleGroupExist = RuleGroupExist
 
 
     def _deserialize(self, params):
@@ -71410,6 +71463,8 @@ class RuleGroupExecResult(AbstractModel):
         self._InstanceStatus = params.get("InstanceStatus")
         self._StartTime = params.get("StartTime")
         self._FinishTime = params.get("FinishTime")
+        self._RuleGroupName = params.get("RuleGroupName")
+        self._RuleGroupExist = params.get("RuleGroupExist")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -1660,7 +1660,7 @@ class DataDisk(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskSize: 数据盘大小，单位：GB。最小调整步长为10G，不同数据盘类型取值范围不同，具体限制详见：[存储概述](https://cloud.tencent.com/document/product/213/4952)。默认值为0，表示不购买数据盘。更多限制详见产品文档。
+        :param _DiskSize: 数据盘大小，单位：GiB。最小调整步长为10GiB，不同数据盘类型取值范围不同，具体限制详见：[存储概述](https://cloud.tencent.com/document/product/213/4952)。默认值为0，表示不购买数据盘。更多限制详见产品文档。
         :type DiskSize: int
         :param _DiskType: 数据盘类型。数据盘类型限制详见[存储概述](https://cloud.tencent.com/document/product/213/4952)。取值范围：<br /><li>LOCAL_BASIC：本地硬盘<br /> <li>LOCAL_SSD：本地SSD硬盘<br /><li>LOCAL_NVME：本地NVME硬盘，与InstanceType强相关，不支持指定<br /><li>LOCAL_PRO：本地HDD硬盘，与InstanceType强相关，不支持指定<br /><li>CLOUD_BASIC：普通云硬盘<br /><li> CLOUD_PREMIUM：高性能云硬盘<br /><li>CLOUD_SSD：SSD云硬盘<br /><li> CLOUD_HSSD：增强型SSD云硬盘<br /> <li>CLOUD_TSSD：极速型SSD云硬盘<br /><li>CLOUD_BSSD：通用型SSD云硬盘<br /><br />默认取值：LOCAL_BASIC。<br /><br />该参数对`ResizeInstanceDisk`接口无效。</li></li></li> </li> </li></li></li></li></li></li>
         :type DiskType: str
@@ -1677,7 +1677,8 @@ class DataDisk(AbstractModel):
 
 该参数目前仅用于 `RunInstances` 接口。
         :type KmsKeyId: str
-        :param _ThroughputPerformance: 云硬盘性能，单位：MB/s
+        :param _ThroughputPerformance: 云硬盘性能，单位：MiB/s。使用此参数可给云硬盘购买额外的性能。
+当前仅支持极速型云盘（CLOUD_TSSD）和增强型SSD云硬盘（CLOUD_HSSD）
         :type ThroughputPerformance: int
         :param _CdcId: 所属的独享集群ID。
         :type CdcId: str
@@ -1686,8 +1687,6 @@ class DataDisk(AbstractModel):
  <b>注：内测中。</b>
         :type BurstPerformance: bool
         :param _DiskName: 磁盘名称，长度不超过128 个字符。
-
-该参数正在邀测中，暂未开放使用。
         :type DiskName: str
         """
         self._DiskSize = None
@@ -1704,7 +1703,7 @@ class DataDisk(AbstractModel):
 
     @property
     def DiskSize(self):
-        """数据盘大小，单位：GB。最小调整步长为10G，不同数据盘类型取值范围不同，具体限制详见：[存储概述](https://cloud.tencent.com/document/product/213/4952)。默认值为0，表示不购买数据盘。更多限制详见产品文档。
+        """数据盘大小，单位：GiB。最小调整步长为10GiB，不同数据盘类型取值范围不同，具体限制详见：[存储概述](https://cloud.tencent.com/document/product/213/4952)。默认值为0，表示不购买数据盘。更多限制详见产品文档。
         :rtype: int
         """
         return self._DiskSize
@@ -1784,7 +1783,8 @@ class DataDisk(AbstractModel):
 
     @property
     def ThroughputPerformance(self):
-        """云硬盘性能，单位：MB/s
+        """云硬盘性能，单位：MiB/s。使用此参数可给云硬盘购买额外的性能。
+当前仅支持极速型云盘（CLOUD_TSSD）和增强型SSD云硬盘（CLOUD_HSSD）
         :rtype: int
         """
         return self._ThroughputPerformance
@@ -1820,8 +1820,6 @@ class DataDisk(AbstractModel):
     @property
     def DiskName(self):
         """磁盘名称，长度不超过128 个字符。
-
-该参数正在邀测中，暂未开放使用。
         :rtype: str
         """
         return self._DiskName
@@ -6190,7 +6188,7 @@ class InternetAccessible(AbstractModel):
         :type InternetMaxBandwidthOut: int
         :param _PublicIpAssigned: 是否分配公网IP。取值范围：<br><li>true：表示分配公网IP</li><li>false：表示不分配公网IP</li><br>当公网带宽大于0Mbps时，可自由选择开通与否，默认开通公网IP；当公网带宽为0，则不允许分配公网IP。该参数仅在RunInstances接口中作为入参使用。
         :type PublicIpAssigned: bool
-        :param _BandwidthPackageId: 带宽包ID。可通过[`DescribeBandwidthPackages`](https://cloud.tencent.com/document/api/215/19209)接口返回值中的`BandwidthPackageId`获取。该参数仅在RunInstances接口中作为入参使用。
+        :param _BandwidthPackageId: 带宽包ID。可通过[ DescribeBandwidthPackages ](https://cloud.tencent.com/document/api/215/19209)接口返回值中的`BandwidthPackageId`获取。该参数仅在RunInstances接口中作为入参使用。
         :type BandwidthPackageId: str
         """
         self._InternetChargeType = None
@@ -6233,7 +6231,7 @@ class InternetAccessible(AbstractModel):
 
     @property
     def BandwidthPackageId(self):
-        """带宽包ID。可通过[`DescribeBandwidthPackages`](https://cloud.tencent.com/document/api/215/19209)接口返回值中的`BandwidthPackageId`获取。该参数仅在RunInstances接口中作为入参使用。
+        """带宽包ID。可通过[ DescribeBandwidthPackages ](https://cloud.tencent.com/document/api/215/19209)接口返回值中的`BandwidthPackageId`获取。该参数仅在RunInstances接口中作为入参使用。
         :rtype: str
         """
         return self._BandwidthPackageId
@@ -8558,13 +8556,11 @@ class SystemDisk(AbstractModel):
         :param _DiskId: 系统盘ID。
 该参数目前仅用于`DescribeInstances`等查询类接口的返回参数，不可用于`RunInstances`等写接口的入参。
         :type DiskId: str
-        :param _DiskSize: 系统盘大小，单位：GB。默认值为 50
+        :param _DiskSize: 系统盘大小，单位：GiB。默认值为 50
         :type DiskSize: int
         :param _CdcId: 所属的独享集群ID。
         :type CdcId: str
         :param _DiskName: 磁盘名称，长度不超过128 个字符。
-
-该参数正在邀测中，暂未开放使用。
         :type DiskName: str
         """
         self._DiskType = None
@@ -8607,7 +8603,7 @@ class SystemDisk(AbstractModel):
 
     @property
     def DiskSize(self):
-        """系统盘大小，单位：GB。默认值为 50
+        """系统盘大小，单位：GiB。默认值为 50
         :rtype: int
         """
         return self._DiskSize
@@ -8630,8 +8626,6 @@ class SystemDisk(AbstractModel):
     @property
     def DiskName(self):
         """磁盘名称，长度不超过128 个字符。
-
-该参数正在邀测中，暂未开放使用。
         :rtype: str
         """
         return self._DiskName
@@ -10170,7 +10164,7 @@ class VirtualPrivateCloud(AbstractModel):
         r"""
         :param _VpcId: 私有网络ID，形如`vpc-xxx`。有效的VpcId可通过登录[控制台](https://console.cloud.tencent.com/vpc/vpc?rid=1)查询；也可以调用接口 [DescribeVpcEx](/document/api/215/1372) ，从接口返回中的`unVpcId`字段获取。若在创建子机时VpcId与SubnetId同时传入`DEFAULT`，则强制使用默认vpc网络。
         :type VpcId: str
-        :param _SubnetId: 私有网络子网ID，形如`subnet-xxx`。有效的私有网络子网ID可通过登录[控制台](https://console.cloud.tencent.com/vpc/subnet?rid=1)查询；也可以调用接口  [DescribeSubnets](/document/api/215/15784) ，从接口返回中的`unSubnetId`字段获取。若在创建子机时SubnetId与VpcId同时传入`DEFAULT`，则强制使用默认vpc网络。
+        :param _SubnetId: 私有网络子网ID，形如`subnet-xxx`。有效的私有网络子网ID可通过登录[控制台](https://console.cloud.tencent.com/vpc/subnet?rid=1)查询；也可以调用接口  [DescribeSubnets](https://cloud.tencent.com/document/product/215/15784) ，从接口返回中的`SubnetId `字段获取。若在创建子机时SubnetId与VpcId同时传入`DEFAULT`，则强制使用默认vpc网络。
         :type SubnetId: str
         :param _AsVpcGateway: 是否用作公网网关。公网网关只有在实例拥有公网IP以及处于私有网络下时才能正常使用。取值范围：<li>true：表示用作公网网关</li><li>false：表示不作为公网网关</li>默认取值：false。
         :type AsVpcGateway: bool
@@ -10198,7 +10192,7 @@ class VirtualPrivateCloud(AbstractModel):
 
     @property
     def SubnetId(self):
-        """私有网络子网ID，形如`subnet-xxx`。有效的私有网络子网ID可通过登录[控制台](https://console.cloud.tencent.com/vpc/subnet?rid=1)查询；也可以调用接口  [DescribeSubnets](/document/api/215/15784) ，从接口返回中的`unSubnetId`字段获取。若在创建子机时SubnetId与VpcId同时传入`DEFAULT`，则强制使用默认vpc网络。
+        """私有网络子网ID，形如`subnet-xxx`。有效的私有网络子网ID可通过登录[控制台](https://console.cloud.tencent.com/vpc/subnet?rid=1)查询；也可以调用接口  [DescribeSubnets](https://cloud.tencent.com/document/product/215/15784) ，从接口返回中的`SubnetId `字段获取。若在创建子机时SubnetId与VpcId同时传入`DEFAULT`，则强制使用默认vpc网络。
         :rtype: str
         """
         return self._SubnetId

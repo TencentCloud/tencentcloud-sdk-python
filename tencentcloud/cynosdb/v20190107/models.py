@@ -19887,6 +19887,117 @@ class DescribeRollbackTimeRangeResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSSLStatusRequest(AbstractModel):
+    """DescribeSSLStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        """
+        self._ClusterId = None
+        self._InstanceId = None
+
+    @property
+    def ClusterId(self):
+        """集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSSLStatusResponse(AbstractModel):
+    """DescribeSSLStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsOpenSSL: yes-开启，no-关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsOpenSSL: str
+        :param _DownloadUrl: 证书下载地址
+        :type DownloadUrl: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._IsOpenSSL = None
+        self._DownloadUrl = None
+        self._RequestId = None
+
+    @property
+    def IsOpenSSL(self):
+        """yes-开启，no-关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._IsOpenSSL
+
+    @IsOpenSSL.setter
+    def IsOpenSSL(self, IsOpenSSL):
+        self._IsOpenSSL = IsOpenSSL
+
+    @property
+    def DownloadUrl(self):
+        """证书下载地址
+        :rtype: str
+        """
+        return self._DownloadUrl
+
+    @DownloadUrl.setter
+    def DownloadUrl(self, DownloadUrl):
+        self._DownloadUrl = DownloadUrl
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._IsOpenSSL = params.get("IsOpenSSL")
+        self._DownloadUrl = params.get("DownloadUrl")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeServerlessInstanceSpecsRequest(AbstractModel):
     """DescribeServerlessInstanceSpecs请求参数结构体
 
@@ -20126,6 +20237,100 @@ no
         self._AutoPause = params.get("AutoPause")
         self._AutoScaleUp = params.get("AutoScaleUp")
         self._AutoScaleDown = params.get("AutoScaleDown")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSlaveZonesRequest(AbstractModel):
+    """DescribeSlaveZones请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Zone: 可用区
+        :type Zone: str
+        :param _OssClusterId: 云架集群ID
+        :type OssClusterId: int
+        """
+        self._Zone = None
+        self._OssClusterId = None
+
+    @property
+    def Zone(self):
+        """可用区
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def OssClusterId(self):
+        """云架集群ID
+        :rtype: int
+        """
+        return self._OssClusterId
+
+    @OssClusterId.setter
+    def OssClusterId(self, OssClusterId):
+        self._OssClusterId = OssClusterId
+
+
+    def _deserialize(self, params):
+        self._Zone = params.get("Zone")
+        self._OssClusterId = params.get("OssClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSlaveZonesResponse(AbstractModel):
+    """DescribeSlaveZones返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SlaveZones: 从可用区
+        :type SlaveZones: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SlaveZones = None
+        self._RequestId = None
+
+    @property
+    def SlaveZones(self):
+        """从可用区
+        :rtype: list of str
+        """
+        return self._SlaveZones
+
+    @SlaveZones.setter
+    def SlaveZones(self, SlaveZones):
+        self._SlaveZones = SlaveZones
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SlaveZones = params.get("SlaveZones")
         self._RequestId = params.get("RequestId")
 
 
@@ -29532,6 +29737,119 @@ class OpenReadOnlyInstanceExclusiveAccessResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
+class OpenSSLRequest(AbstractModel):
+    """OpenSSL请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        """
+        self._ClusterId = None
+        self._InstanceId = None
+
+    @property
+    def ClusterId(self):
+        """集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OpenSSLResponse(AbstractModel):
+    """OpenSSL返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 任务流ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowId: int
+        :param _TaskId: 任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        """任务流ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def TaskId(self):
+        """任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 

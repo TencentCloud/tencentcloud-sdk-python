@@ -1877,6 +1877,29 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribePolicyObjectCount(self, request):
+        """查询策略组在每个地域下面绑定的对象数统计
+
+        :param request: Request instance for DescribePolicyObjectCount.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyObjectCountRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyObjectCountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePolicyObjectCount", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePolicyObjectCountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeProductEventList(self, request):
         """分页获取产品事件的列表
 
