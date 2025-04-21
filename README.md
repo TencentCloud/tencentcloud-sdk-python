@@ -105,28 +105,28 @@ try:
     cred = credential.Credential("SecretId", "SecretKey")
 
     # 实例化一个http选项，可选的，没有特殊需求可以跳过。
-    httpProfile = HttpProfile()
+    http_profile = HttpProfile()
     # 如果需要指定proxy访问接口，可以按照如下方式初始化hp
-    # httpProfile = HttpProfile(proxy="http://用户名:密码@代理IP:代理端口")
-    httpProfile.scheme = "https"  # 在外网互通的网络环境下支持http协议(默认是https协议),建议使用https协议
-    httpProfile.keepAlive = True  # 状态保持，默认是False
-    httpProfile.reqMethod = "GET"  # get请求(默认为post请求)
-    httpProfile.reqTimeout = 30    # 请求超时时间，单位为秒(默认60秒)
-    httpProfile.endpoint = "cvm.ap-shanghai.tencentcloudapi.com"  # 指定接入地域域名(默认就近接入)
+    # http_profile = HttpProfile(proxy="http://用户名:密码@代理IP:代理端口")
+    http_profile.scheme = "https"  # 在外网互通的网络环境下支持http协议(默认是https协议),建议使用https协议
+    http_profile.keepAlive = True  # 状态保持，默认是False
+    http_profile.reqMethod = "GET"  # get请求(默认为post请求)
+    http_profile.reqTimeout = 30    # 请求超时时间，单位为秒(默认60秒)
+    http_profile.endpoint = "cvm.ap-shanghai.tencentcloudapi.com"  # 指定接入地域域名(默认就近接入)
 
     # 实例化一个client选项，可选的，没有特殊需求可以跳过。
-    clientProfile = ClientProfile()
-    clientProfile.signMethod = "TC3-HMAC-SHA256"  # 指定签名算法
-    clientProfile.language = "en-US"  # 指定展示英文（默认为中文）
-    clientProfile.httpProfile = httpProfile
+    client_profile = ClientProfile()
+    client_profile.signMethod = "TC3-HMAC-SHA256"  # 指定签名算法
+    client_profile.language = "en-US"  # 指定展示英文（默认为中文）
+    client_profile.httpProfile = http_profile
     # 当发生网络/限频错误时, 重试3次, 并通过logger打印日志
     logger = logging.getLogger("retry")
     logger.setLevel(logging.DEBUG)
     logger.addHandler(logging.StreamHandler(sys.stderr))
-    clientProfile.retryer = retry.StandardRetryer(max_attempts=3, logger=logger)
+    client_profile.retryer = retry.StandardRetryer(max_attempts=3, logger=logger)
 
     # 实例化要请求产品(以cvm为例)的client对象，clientProfile是可选的。
-    client = cvm_client.CvmClient(cred, "ap-shanghai", clientProfile)
+    client = cvm_client.CvmClient(cred, "ap-shanghai", client_profile)
 
     # 打印日志按照如下方式，也可以设置log_format，默认为 '%(asctime)s %(process)d %(filename)s L%(lineno)s %(levelname)s %(message)s'
     # client.set_stream_logger(stream=sys.stdout, level=logging.DEBUG)
@@ -138,10 +138,10 @@ try:
 
     # 填充请求参数,这里request对象的成员变量即对应接口的入参。
     # 您可以通过官网接口文档或跳转到request对象的定义处查看请求参数的定义。
-    respFilter = models.Filter()  # 创建Filter对象, 以zone的维度来查询cvm实例。
-    respFilter.Name = "zone"
-    respFilter.Values = ["ap-shanghai-1", "ap-shanghai-2"]
-    req.Filters = [respFilter]  # Filters 是成员为Filter对象的列表
+    resp_filter = models.Filter()  # 创建Filter对象, 以zone的维度来查询cvm实例。
+    resp_filter.Name = "zone"
+    resp_filter.Values = ["ap-shanghai-1", "ap-shanghai-2"]
+    req.Filters = [resp_filter]  # Filters 是成员为Filter对象的列表
 
     # python sdk支持自定义header如 X-TC-TraceId、X-TC-Canary，可以按照如下方式指定，header必须是字典类型的
     headers = {
@@ -299,14 +299,14 @@ cred = credential.DefaultTkeOIDCRoleArnProvider().get_credential()
 ```python
 # 简单开启方式，此时所有的配置都是默认值
 from tencentcloud.common.profile.client_profile import ClientProfile
-clientProfile = ClientProfile()
-clientProfile.disable_region_breaker = False  # False表示使用地域容灾
+client_profile = ClientProfile()
+client_profile.disable_region_breaker = False  # False表示使用地域容灾
 ```
 
 ```python
 # 自定义配置
 from tencentcloud.common.profile.client_profile import ClientProfile, RegionBreakerProfile
-regionBreakerProfile = RegionBreakerProfile(
+region_breaker_profile = RegionBreakerProfile(
     backup_endpoint="ap-beijing.tencentcloudapi.com",  # 备用地域，格式${region}.tencentcloudapi.com，必须是存在的域名，默认值为ap-guangzhou.tencentcloudapi.com
     max_fail_num=3,  # 最大失败数，默认值5
     max_fail_percent=0.5,  # 最大失败率，默认值0.75。当失败数达到最大失败数，且失败率达到最大的失败率时，或者连续失败数达到5次，关闭状态切换到开启状态
@@ -314,7 +314,7 @@ regionBreakerProfile = RegionBreakerProfile(
     timeout=30,  # 全开时间，单位s，默认60。处于全开状态达到超过该时间，切换为半开状态
     max_requests=3  # 最大成功请求数，默认5。处于半开状态时，请求主域名达到该数量则切换为关闭状态
 )
-clientProfile = ClientProfile()
-clientProfile.disable_region_breaker = False  # 使用地域容灾必须要将这个值置为false
-clientProfile.region_breaker_profile = regionBreakerProfile
+client_profile = ClientProfile()
+client_profile.disable_region_breaker = False  # 使用地域容灾必须要将这个值置为false
+client_profile.region_breaker_profile = region_breaker_profile
 ```

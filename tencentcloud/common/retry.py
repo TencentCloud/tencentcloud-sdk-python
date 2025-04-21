@@ -5,11 +5,29 @@ from tencentcloud.common.exception import TencentCloudSDKException
 
 
 class NoopRetryer(object):
+    """configuration without retry
+
+    NoopRetryer is a retry policy that does nothing.
+    It is useful when you don't want to retry.
+    """
+
     def send_request(self, fn):
         return fn()
 
 
 class StandardRetryer(object):
+    """Retry configuration
+
+    StandardRetryer is a retry policy that retries on network errors or frequency limitation.
+    :param max_attempts: Maximum number of attempts.
+    :type max_attempts: int
+    :param backoff_fn: A function that takes the number of attempts and returns the number of seconds to sleep before the next retry.
+       Default sleep time is 2^n seconds, n is the number of attempts.
+    :type backoff_fn: function
+    :param logger: A logger to log retry attempts. If not provided, no logging will be performed.
+    :type logger: logging.Logger
+    """
+
     def __init__(self, max_attempts=3, backoff_fn=None, logger=None):
         self._max_attempts = max_attempts
         self._backoff_fn = backoff_fn or self.backoff

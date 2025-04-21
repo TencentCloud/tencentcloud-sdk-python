@@ -18,25 +18,27 @@ from tencentcloud.common.profile.http_profile import HttpProfile
 
 
 class ClientProfile(object):
+    """SDK profile.
+
+    :param signMethod: The signature method, valid choice: HmacSHA1, HmacSHA256, TC3-HMAC-SHA256
+    :type signMethod: str
+    :param httpProfile: The http profile
+    :type httpProfile: :class:`HttpProfile`
+    :param language: Valid choice: en-US, zh-CN.
+    :type language: str
+    :param disable_region_breaker: Switch of region breaker.
+    :type disable_region_breaker: bool
+    :param region_breaker_profile: The region breaker profile.
+    :type region_breaker_profile: :class:`RegionBreakerProfile`
+    :param request_client: Custom request client.
+    :type request_client: str
+    :param retryer: Custom retry configuration.
+    :type retryer: :class:`tencentcloud.common.retry.StandardRetryer`
+    """
     unsignedPayload = False
 
     def __init__(self, signMethod=None, httpProfile=None, language="zh-CN",
                  disable_region_breaker=True, region_breaker_profile=None, request_client=None, retryer=None):
-        """SDK profile.
-
-        :param signMethod: The signature method, valid choice: HmacSHA1, HmacSHA256, TC3-HMAC-SHA256
-        :type signMethod: str
-        :param httpProfile: The http profile
-        :type httpProfile: :class:`HttpProfile`
-        :param language: Valid choice: en-US, zh-CN.
-        :type language: str
-        :param disable_region_breaker: Switch of region breaker.
-        :type disable_region_breaker: bool
-        :param region_breaker_profile: The region breaker profile.
-        :type region_breaker_profile: :class:`RegionBreakerProfile`
-        :param request_client: Custom request client.
-        :type request_client: str
-        """
         self.httpProfile = HttpProfile() if httpProfile is None else httpProfile
         self.signMethod = "TC3-HMAC-SHA256" if signMethod is None else signMethod
         valid_language = ["zh-CN", "en-US"]
@@ -59,6 +61,21 @@ class ClientProfile(object):
 
 
 class RegionBreakerProfile(object):
+    """RegionBreaker profile.
+
+    :param backup_endpoint: Backup region of endpoint, default ap-guangzhou.tencentcloudapi.com.
+    :type backup_endpoint: str
+    :param max_fail_num: Max failure to trigger breaker, default 5.
+    :type max_fail_num: int
+    :param max_fail_percent: Max failure percent to trigger breaker, default 0.75.
+    :type max_fail_percent: float
+    :param window_interval: Decides when to reset counter if the state is StateClosed, default 5 minutes.
+    :type window_interval: int
+    :param timeout: Decides when to turn StateOpen to StateHalfOpen, default 60 seconds.
+    :type timeout: int
+    :param max_requests: Decides when to turn StateHalfOpen to StateClosed, default 5 successful requests.
+    :type max_requests: int
+    """
 
     def __init__(self, backup_endpoint="ap-guangzhou.tencentcloudapi.com",
                  max_fail_num=5,
@@ -66,21 +83,6 @@ class RegionBreakerProfile(object):
                  window_interval=60 * 5,
                  timeout=60,
                  max_requests=5):
-        """RegionBreaker profile.
-
-        :param backup_endpoint: Backup region of endpoint, default ap-guangzhou.tencentcloudapi.com.
-        :type backup_endpoint: str
-        :param max_fail_num: Max failure to trigger breaker, default 5.
-        :type max_fail_num: int
-        :param max_fail_percent: Max failure percent to trigger breaker, default 0.75.
-        :type max_fail_percent: float
-        :param window_interval: Decides when to reset counter if the state is StateClosed, default 5 minutes.
-        :type window_interval: int
-        :param timeout: Decides when to turn StateOpen to StateHalfOpen, default 1 minutes.
-        :type timeout: int
-        :param max_requests: Decides when to turn StateHalfOpen to StateClosed, default 5 successful requests.
-        :type timeout: int
-        """
         self.backup_endpoint = backup_endpoint
         if not self.check_endpoint():
             raise TencentCloudSDKException("ClientError", "the format of `backup_endpoint` must be tencentcloudapi.com "

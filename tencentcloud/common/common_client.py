@@ -21,25 +21,24 @@ from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentClo
 
 
 class CommonClient(AbstractClient):
-    """
-    使用CommonClient，可以只安装tencentcloud-sdk-python-common包，即可调用各个产品的接口
-    使用详情见github示例
+    """General client for all products.
 
+     With CommonClient, you only need to install the tencentcloud-sdk-python-common package to access APIs of all products.
+     See GitHub examples for usage details: https://github.com/TencentCloud/tencentcloud-sdk-python/tree/master/examples/common_client
+
+    :param service: Product name
+    :type service: str
+    :param version: Version of API
+    :type version: str
+    :param credential: Request credential
+    :type credential: tencentcloud.common.credential.Credential or tencentcloud.common.credential.STSAssumeRoleCredential or None
+    :param region: Request region
+    :type region: str
+    :param profile: Request SDK profile
+    :type profile: tencentcloud.common.profile.client_profile.ClientProfile
     """
 
     def __init__(self, service, version, credential, region, profile=None):
-        """
-        :param credential: 接口调用凭证
-        :type credential: tencentcloud.common.credential.Credential or tencentcloud.common.credential.STSAssumeRoleCredential or None
-        :param region: 接口调用地域
-        :type region: str
-        :param version: 接口版本
-        :type version: str
-        :param service: 接口产品
-        :type service: str
-        :param profile: 请求网络信息
-        :type profile: tencentcloud.common.profile.client_profile.ClientProfile
-        """
         if region is None or version is None or service is None:
             raise TencentCloudSDKException("CommonClient Parameter Error, "
                                            "credential region version service all required.")

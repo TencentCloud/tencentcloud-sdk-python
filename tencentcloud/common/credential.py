@@ -35,20 +35,20 @@ from tencentcloud.common.profile.client_profile import ClientProfile
 
 
 class Credential(object):
+    """Tencent Cloud Credentials.
+
+    Access https://console.cloud.tencent.com/cam/capi to manage your credentials.
+
+    :param secret_id: The secret id of your credential.
+    :type secret_id: str
+    :param secret_key: The secret key of your credential.
+    :type secret_key: str
+    :param token: The federation token of your credential, if this field
+                  is specified, secret_id and secret_key should be set
+                  accordingly, see: https://cloud.tencent.com/document/product/598/13896
+    """
+
     def __init__(self, secret_id, secret_key, token=None):
-        """Tencent Cloud Credentials.
-
-        Access https://console.cloud.tencent.com/cam/capi to manage your
-        credentials.
-
-        :param secret_id: The secret id of your credential.
-        :type secret_id: str
-        :param secret_key: The secret key of your credential.
-        :type secret_key: str
-        :param token: The federation token of your credential, if this field
-                      is specified, secret_id and secret_key should be set
-                      accordingly, see: https://cloud.tencent.com/document/product/598/13896
-        """
         if secret_id is None or secret_id.strip() == "":
             raise TencentCloudSDKException("InvalidCredential", "secret id should not be none or empty")
         if secret_id.strip() != secret_id:
@@ -73,6 +73,11 @@ class Credential(object):
 
 
 class CVMRoleCredential(object):
+    """Tencent Cloud Credential via CVM role
+
+    Automatically generates temporary credentials when binding a service role to instance.
+    See https://cloud.tencent.com/document/product/598/85616 for more information.
+    """
     _metadata_endpoint = "http://metadata.tencentyun.com/latest/meta-data/"
     _role_endpoint = _metadata_endpoint + "cam/security-credentials/"
     # In seconds.
@@ -156,9 +161,20 @@ class CVMRoleCredential(object):
 
 
 class STSAssumeRoleCredential(object):
-    """使用STSAssumeRoleCredential，制动role，
-    可以自动生成临时凭证，并使用临时凭证调用接口
+    """Tencent Cloud Credential via STS service
 
+    Automatically generates temporary credentials for API calls.
+
+    :param secret_id: The secret id of your credential.
+    :type secret_id: str
+    :param secret_key: The secret key of your credential.
+    :type secret_key: str
+    :param role_arn: Resource descriptions of a role，see https://cloud.tencent.com/document/api/1312/48197
+    :type role_arn: str
+    :param role_session_name: User-defined temporary session name
+    :type role_session_name: str
+    :param duration_seconds: Specifies the validity period of credentials in seconds. Default value: 7200. Maximum value: 43200
+    :type duration_seconds: int
     """
     _region = "ap-guangzhou"
     _version = '2018-08-13'
@@ -167,17 +183,7 @@ class STSAssumeRoleCredential(object):
 
     def __init__(self, secret_id, secret_key, role_arn, role_session_name, duration_seconds=7200, endpoint=None):
         """
-        :param secret_id: 接口调用凭证id
-        :type secret_id: str
-        :param secret_key: 接口调用凭证key
-        :type secret_key: str
-        https://cloud.tencent.com/document/api/1312/48197
-        :param role_arn: 角色的资源描述，参考官网文档 https://cloud.tencent.com/document/api/1312/48197 中 RoleArn 参数的描述。
-        :type role_arn: str
-        :param role_session_name: 临时会话名称，由用户自定义名称
-        :type role_session_name: str
-        :param duration_seconds: 获取临时凭证的有效期，默认7200s
-        :type duration_seconds: int
+
         """
         self._long_secret_id = secret_id
         self._long_secret_key = secret_key
@@ -221,19 +227,6 @@ class STSAssumeRoleCredential(object):
         return self._token
 
     def _need_refresh(self):
-        """
-        https://cloud.tencent.com/document/api/1312/48197
-        此函数自动使用初始secret_id和secret_key，自动调用上述链接中获取临时凭证的接口，并返回临时凭证
-
-        :param role_arn: 角色的资源描述，上述链接RoleArn参数中有详细获取方式
-        :type role_arn: str
-        :param role_session_name: 临时会话名称，由用户自定义名称
-        :type role_session_name: str
-        :param duration_seconds: 获取临时凭证的有效期，默认7200s
-        :type duration_seconds: int
-
-        """
-
         if None in [self._token, self._tmp_secret_key, self._tmp_secret_id] or self._expired_time < int(time.time()):
             self.get_sts_tmp_role_arn()
 
@@ -260,18 +253,14 @@ class STSAssumeRoleCredential(object):
 
 
 class EnvironmentVariableCredential(object):
+    """Tencent Cloud EnvironmentVariableCredential.
+
+    Acquire credential from environment variables.
+    Access https://console.cloud.tencent.com/cam/capi to manage your credentials.
+    Set secret id and secret key as `TENCENTCLOUD_SECRET_ID` and `TENCENTCLOUD_SECRET_KEY `in environment variables.
+    """
 
     def get_credential(self):
-        """Tencent Cloud EnvironmentVariableCredential.
-
-        Access https://console.cloud.tencent.com/cam/capi to manage your
-        credentials.
-
-        :param secret_id: The secret id of your credential, get by environment variable TENCENTCLOUD_SECRET_ID
-        :type secret_id: str
-        :param secret_key: The secret key of your credential. get by environment variable TENCENTCLOUD_SECRET_KEY
-        :type secret_key: str
-        """
         self.secret_id = os.environ.get('TENCENTCLOUD_SECRET_ID')
         self.secret_key = os.environ.get('TENCENTCLOUD_SECRET_KEY')
 
@@ -283,23 +272,17 @@ class EnvironmentVariableCredential(object):
 
 
 class ProfileCredential(object):
+    """Tencent Cloud ProfileCredential.
+
+    Access https://console.cloud.tencent.com/cam/capi to manage your credentials.
+    default file position is "~/.tencentcloud/credentials" or "/etc/tencentcloud/credentials", it is ini format.
+    such as:
+    [default]
+    secret_id=""
+    secret_key=""
+    """
 
     def get_credential(self):
-        """Tencent Cloud ProfileCredential.
-
-        Access https://console.cloud.tencent.com/cam/capi to manage your credentials.
-
-        default file position is "~/.tencentcloud/credentials" or "/etc/tencentcloud/credentials", it is ini format.
-        such as:
-        [default]
-        secret_id=""
-        secret_key=""
-
-        :param secret_id: The secret id of your credential.
-        :type secret_id: str
-        :param secret_key: The secret key of your credential.
-        :type secret_key: str
-        """
         home_path = os.environ.get('HOME') or os.environ.get('HOMEPATH')
         if os.path.exists(home_path + "/.tencentcloud/credentials"):
             file_path = home_path + "/.tencentcloud/credentials"
@@ -371,6 +354,7 @@ class DefaultCredentialProvider(object):
 
 
 class DefaultTkeOIDCRoleArnProvider(object):
+    """Acquire credential via TKE IdP automatically."""
     def get_credential(self):
         return self.get_credentials()
 
@@ -382,6 +366,25 @@ class DefaultTkeOIDCRoleArnProvider(object):
 
 
 class OIDCRoleArnCredential(object):
+    """TencentCloud OIDC Credential
+
+    OIDC is an authentication protocol built on OAuth 2.0. Tencent Cloud CAM supports OIDC role-based SSO.
+    See https://cloud.tencent.com/document/product/598/96013 for more information.
+    This will apply for an OIDC role credential automatically.
+
+    :param region: Region for AssumeRoleWithWebIdentity call. See https://cloud.tencent.com/document/product/1312/73070
+    :type region: str
+    :param provider_id: Identity provider name
+    :type provider_id: str
+    :param web_identity_token: OIDC token issued by the IdP
+    :type web_identity_token: str
+    :param role_arn: Role access description name
+    :type role_arn: str
+    :param role_session_name: Session name
+    :type role_session_name: str
+    :param duration_seconds: The validity period of the temporary credential in seconds. Default value: 7200s. Maximum value: 43200s.
+    :type duration_seconds: int
+    """
     _version = '2018-08-13'
     _service = "sts"
     _action = 'AssumeRoleWithWebIdentity'

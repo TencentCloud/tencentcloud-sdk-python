@@ -471,20 +471,19 @@ class AbstractClient(object):
         return resp.content
 
     def call_octet_stream(self, action, headers, body):
-        """
-        Invoke API with application/ocet-stream content-type.
+        """Invoke API with application/ocet-stream content-type.
 
         Note:
         1. only specific API can be invoked in such manner.
         2. only TC3-HMAC-SHA256 signature method can be specified.
         3. only POST request method can be specified
 
-        :type action: str
         :param action: Specific API action name.
-        :type headers: dict
+        :type action: str
         :param headers: Header parameters for this API.
-        :type body: bytes
+        :type headers: dict
         :param body: Bytes of requested body
+        :type body: bytes
         """
         if self.profile.signMethod != "TC3-HMAC-SHA256":
             raise SDKError("ClientError", "Invalid signature method.")
@@ -505,17 +504,16 @@ class AbstractClient(object):
         return json.loads(resp.content)
 
     def call_json(self, action, params, headers=None, options=None):
-        """
-        Call api with json object and return with json object.
+        """Call api with json object and return with json object.
 
-        :type action: str
         :param action: api name e.g. ``DescribeInstances``
+        :type action: str
+        :param params: Request parameters of this action
         :type params: dict
-        :param params: params with this action
+        :param headers: Request headers, like {"X-TC-TraceId": "ffe0c072-8a5d-4e17-8887-a8a60252abca"}
         :type headers: dict
-        :param headers: request header, like {"X-TC-TraceId": "ffe0c072-8a5d-4e17-8887-a8a60252abca"}
+        :param options: Request options, like {"SkipSign": False, "IsMultipart": False, "IsOctetStream": False, "BinaryParams": []}
         :type options: dict
-        :param options: request options, like {"SkipSign": False, "IsMultipart": False, "IsOctetStream": False, "BinaryParams": []}
         """
 
         def _call_once():
@@ -529,6 +527,17 @@ class AbstractClient(object):
         return json.loads(retryer.send_request(_call_once).content)
 
     def call_sse(self, action, params, headers=None, options=None):
+        """Call api with json object and return with sse event.
+
+        :param action: api name e.g. ``ChatCompletions``
+        :type action: str
+        :param params: Request parameters of this action
+        :type params: dict
+        :param headers: Request headers, like {"X-TC-TraceId": "ffe0c072-8a5d-4e17-8887-a8a60252abca"}
+        :type headers: dict
+        :param options: Request options, like {"SkipSign": False, "IsMultipart": False, "IsOctetStream": False, "BinaryParams": []}
+        :type options: dict
+        """
         def _call_once():
             resp = self._call(action, params, options, headers)
             self._check_status(resp)
@@ -557,15 +566,14 @@ class AbstractClient(object):
         return self._process_response_json(resp, resp_type)
 
     def set_stream_logger(self, stream=None, level=logging.DEBUG, log_format=None):
-        """
-        Add a stream handler
+        """Add a stream handler
 
-        :type stream: IO[str]
         :param stream: e.g. ``sys.stdout`` ``sys.stdin`` ``sys.stderr``
-        :type level: int
+        :type stream: IO[str]
         :param level: Logging level, e.g. ``logging.INFO``
-        :type log_format: str
+        :type level: int
         :param log_format: Log message format
+        :type log_format: str
         """
         log = logging.getLogger(LOGGER_NAME)
         log.setLevel(level)
@@ -578,15 +586,14 @@ class AbstractClient(object):
         log.addHandler(sh)
 
     def set_file_logger(self, file_path, level=logging.DEBUG, log_format=None):
-        """
-        Add a file handler
+        """Add a file handler
 
-        :type file_path: str
         :param file_path: path of log file
-        :type level: int
+        :type file_path: str
         :param level: Logging level, e.g. ``logging.INFO``
-        :type log_format: str
+        :type level: int
         :param log_format: Log message format
+        :type log_format: str
         """
         log = logging.getLogger(LOGGER_NAME)
         log.setLevel(level)
@@ -600,9 +607,7 @@ class AbstractClient(object):
         log.addHandler(fh)
 
     def set_default_logger(self):
-        """
-        Set default log handler
-        """
+        """Set default log handler"""
         log = logging.getLogger(LOGGER_NAME)
         log.handlers = []
         logger.addHandler(EmptyHandler())

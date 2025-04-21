@@ -14,22 +14,30 @@
 
 
 class HttpProfile(object):
+    """HTTP profile.
+
+    :param protocol: Request schema, http or https, default is https.
+    :type protocol: str
+    :param endpoint: The domain to access, like: cvm.tencentcloudapi.com
+    :type endpoint: str
+    :param reqMethod: The http method, valid choice: GET, POST
+    :type reqMethod: str
+    :param reqTimeout: The http timeout in second.
+    :type reqTimeout: int
+    :param keepAlive: Whether set keep alive.
+    :type keepAlive: bool
+    :param proxy: Custom proxy server, like: http(s)://{user}:{password}@{ip}:{port}.
+    :type proxy: str
+    :param rootDomain: The root domain to access, like: tencentcloudapi.com.
+    :type rootDomain: str
+    :param certification: Custom certificate path (typically not required).
+        Set `False` to disable certificate verification.
+    :type certification: str or bool
+    """
     scheme = "https"
 
     def __init__(self, protocol=None, endpoint=None, reqMethod="POST", reqTimeout=60,
                  keepAlive=False, proxy=None, rootDomain=None, certification=None):
-        """HTTP profile.
-        :param protocol: http or https, default is https.
-        :type protocol: str
-        :param endpoint: The domain to access, like: cvm.tencentcloudapi.com
-        :type endpoint: str
-        :param reqMethod: the http method, valid choice: GET, POST
-        :type reqMethod: str
-        :param reqTimeout: The http timeout in second.
-        :type reqTimeout: int
-        :param rootDomain: The root domain to access, like: tencentcloudapi.com.
-        :type rootDomain: str
-        """
         self.endpoint = endpoint
         self.reqTimeout = 60 if reqTimeout is None else reqTimeout
         self.reqMethod = "POST" if reqMethod is None else reqMethod
