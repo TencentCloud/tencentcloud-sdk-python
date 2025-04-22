@@ -10932,6 +10932,112 @@ class CreateFlowLogResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateGlobalRoutesRequest(AbstractModel):
+    """CreateGlobalRoutes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VpcId: VPC唯一Id。
+        :type VpcId: str
+        :param _GlobalRoutes: 全局路由对象。创建时必填参数： 'GatewayType'，'GatewayId'，'DestinationCidrBlock'。
+
+        :type GlobalRoutes: list of GlobalRoute
+        """
+        self._VpcId = None
+        self._GlobalRoutes = None
+
+    @property
+    def VpcId(self):
+        """VPC唯一Id。
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def GlobalRoutes(self):
+        """全局路由对象。创建时必填参数： 'GatewayType'，'GatewayId'，'DestinationCidrBlock'。
+
+        :rtype: list of GlobalRoute
+        """
+        return self._GlobalRoutes
+
+    @GlobalRoutes.setter
+    def GlobalRoutes(self, GlobalRoutes):
+        self._GlobalRoutes = GlobalRoutes
+
+
+    def _deserialize(self, params):
+        self._VpcId = params.get("VpcId")
+        if params.get("GlobalRoutes") is not None:
+            self._GlobalRoutes = []
+            for item in params.get("GlobalRoutes"):
+                obj = GlobalRoute()
+                obj._deserialize(item)
+                self._GlobalRoutes.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateGlobalRoutesResponse(AbstractModel):
+    """CreateGlobalRoutes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GlobalRouteSet: 全局路由对象。
+        :type GlobalRouteSet: list of GlobalRoute
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._GlobalRouteSet = None
+        self._RequestId = None
+
+    @property
+    def GlobalRouteSet(self):
+        """全局路由对象。
+        :rtype: list of GlobalRoute
+        """
+        return self._GlobalRouteSet
+
+    @GlobalRouteSet.setter
+    def GlobalRouteSet(self, GlobalRouteSet):
+        self._GlobalRouteSet = GlobalRouteSet
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("GlobalRouteSet") is not None:
+            self._GlobalRouteSet = []
+            for item in params.get("GlobalRouteSet"):
+                obj = GlobalRoute()
+                obj._deserialize(item)
+                self._GlobalRouteSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class CreateHaVipRequest(AbstractModel):
     """CreateHaVip请求参数结构体
 
@@ -18997,6 +19103,85 @@ class DeleteFlowLogResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteGlobalRoutesRequest(AbstractModel):
+    """DeleteGlobalRoutes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VpcId: VPC唯一Id。
+        :type VpcId: str
+        :param _GlobalRouteIds: 全局路由实例唯一Id列表。
+        :type GlobalRouteIds: list of str
+        """
+        self._VpcId = None
+        self._GlobalRouteIds = None
+
+    @property
+    def VpcId(self):
+        """VPC唯一Id。
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def GlobalRouteIds(self):
+        """全局路由实例唯一Id列表。
+        :rtype: list of str
+        """
+        return self._GlobalRouteIds
+
+    @GlobalRouteIds.setter
+    def GlobalRouteIds(self, GlobalRouteIds):
+        self._GlobalRouteIds = GlobalRouteIds
+
+
+    def _deserialize(self, params):
+        self._VpcId = params.get("VpcId")
+        self._GlobalRouteIds = params.get("GlobalRouteIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteGlobalRoutesResponse(AbstractModel):
+    """DeleteGlobalRoutes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteHaVipRequest(AbstractModel):
     """DeleteHaVip请求参数结构体
 
@@ -26910,6 +27095,187 @@ class DescribeGatewayFlowQosResponse(AbstractModel):
                 obj = GatewayQos()
                 obj._deserialize(item)
                 self._GatewayQosSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeGlobalRoutesRequest(AbstractModel):
+    """DescribeGlobalRoutes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: 过滤条件。
+<li>global-route-id - String - （过滤条件）如全局路由唯一 Id，形如：gr-bmenrwu2。</li>
+<li>vpc-id - String - （过滤条件）VPC唯一Id， 形如： vpc-mcqaoy0f。</li>
+<li>gateway-id - String - （过滤条件）下一跳对象。</li>
+<li>gateway-type - String -  是否必填：否 - （过滤条件）按下一跳类型进行过滤。支持 NORMAL_CVM
+</li>
+<li>cdc-id - String - （过滤条件）CDC实例ID，形如：cluster-gbo27yc4。</li>
+<li>description - String - （过滤条件）描述。</li>
+<li>dest-cidr - String - （过滤条件）Ipv4目标网段。</li>
+<li>subnet-route-algorithm - String - （过滤条件）支持的 ECMP算法有：
+
+   - ECMP_QUINTUPLE_HASH：五元组hash
+   - ECMP_SOURCE_DESTINATION_IP_HASH：源和目的IP hash
+   - ECMP_DESTINATION_IP_HASH：目的IP hash
+   - ECMP_SOURCE_IP_HASH：源IP hash
+</li>
+
+        :type Filters: list of Filter
+        :param _Offset: 偏移量。
+        :type Offset: int
+        :param _Limit: 请求对象个数。
+        :type Limit: int
+        :param _GlobalRouteIds: 全局路由唯一Id列表。
+        :type GlobalRouteIds: list of str
+        """
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+        self._GlobalRouteIds = None
+
+    @property
+    def Filters(self):
+        """过滤条件。
+<li>global-route-id - String - （过滤条件）如全局路由唯一 Id，形如：gr-bmenrwu2。</li>
+<li>vpc-id - String - （过滤条件）VPC唯一Id， 形如： vpc-mcqaoy0f。</li>
+<li>gateway-id - String - （过滤条件）下一跳对象。</li>
+<li>gateway-type - String -  是否必填：否 - （过滤条件）按下一跳类型进行过滤。支持 NORMAL_CVM
+</li>
+<li>cdc-id - String - （过滤条件）CDC实例ID，形如：cluster-gbo27yc4。</li>
+<li>description - String - （过滤条件）描述。</li>
+<li>dest-cidr - String - （过滤条件）Ipv4目标网段。</li>
+<li>subnet-route-algorithm - String - （过滤条件）支持的 ECMP算法有：
+
+   - ECMP_QUINTUPLE_HASH：五元组hash
+   - ECMP_SOURCE_DESTINATION_IP_HASH：源和目的IP hash
+   - ECMP_DESTINATION_IP_HASH：目的IP hash
+   - ECMP_SOURCE_IP_HASH：源IP hash
+</li>
+
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        """偏移量。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """请求对象个数。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def GlobalRouteIds(self):
+        """全局路由唯一Id列表。
+        :rtype: list of str
+        """
+        return self._GlobalRouteIds
+
+    @GlobalRouteIds.setter
+    def GlobalRouteIds(self, GlobalRouteIds):
+        self._GlobalRouteIds = GlobalRouteIds
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._GlobalRouteIds = params.get("GlobalRouteIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGlobalRoutesResponse(AbstractModel):
+    """DescribeGlobalRoutes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GlobalRouteSet: 全局路由对象。
+        :type GlobalRouteSet: list of GlobalRoute
+        :param _TotalCount: 符合条件的实例数量。
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._GlobalRouteSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def GlobalRouteSet(self):
+        """全局路由对象。
+        :rtype: list of GlobalRoute
+        """
+        return self._GlobalRouteSet
+
+    @GlobalRouteSet.setter
+    def GlobalRouteSet(self, GlobalRouteSet):
+        self._GlobalRouteSet = GlobalRouteSet
+
+    @property
+    def TotalCount(self):
+        """符合条件的实例数量。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("GlobalRouteSet") is not None:
+            self._GlobalRouteSet = []
+            for item in params.get("GlobalRouteSet"):
+                obj = GlobalRoute()
+                obj._deserialize(item)
+                self._GlobalRouteSet.append(obj)
         self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
@@ -42622,6 +42988,157 @@ class GetCcnRegionBandwidthLimitsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GlobalRoute(AbstractModel):
+    """全局路由对象。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VpcId: 作为出参展示，表示VPC唯一Id，。
+        :type VpcId: str
+        :param _GlobalRouteId: 全局路由唯一Id。
+        :type GlobalRouteId: str
+        :param _DestinationCidrBlock: Ipv4目标网段。
+        :type DestinationCidrBlock: str
+        :param _GatewayType: 下一跳类型，支持 NORMAL_CVM。
+        :type GatewayType: str
+        :param _GatewayId: 下一跳对象，如果GatewayType类型是NORMAL_CVM填写子机IP。
+        :type GatewayId: str
+        :param _Description: 备注。
+        :type Description: str
+        :param _CreatedTime: 创建时间。
+        :type CreatedTime: str
+        :param _SubnetRouteAlgorithm: 支持的 ECMP算法有：
+
+- ECMP_QUINTUPLE_HASH：五元组hash
+- ECMP_SOURCE_DESTINATION_IP_HASH：源和目的IP hash
+- ECMP_DESTINATION_IP_HASH：目的IP hash
+- ECMP_SOURCE_IP_HASH：源IP hash。
+        :type SubnetRouteAlgorithm: str
+        """
+        self._VpcId = None
+        self._GlobalRouteId = None
+        self._DestinationCidrBlock = None
+        self._GatewayType = None
+        self._GatewayId = None
+        self._Description = None
+        self._CreatedTime = None
+        self._SubnetRouteAlgorithm = None
+
+    @property
+    def VpcId(self):
+        """作为出参展示，表示VPC唯一Id，。
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def GlobalRouteId(self):
+        """全局路由唯一Id。
+        :rtype: str
+        """
+        return self._GlobalRouteId
+
+    @GlobalRouteId.setter
+    def GlobalRouteId(self, GlobalRouteId):
+        self._GlobalRouteId = GlobalRouteId
+
+    @property
+    def DestinationCidrBlock(self):
+        """Ipv4目标网段。
+        :rtype: str
+        """
+        return self._DestinationCidrBlock
+
+    @DestinationCidrBlock.setter
+    def DestinationCidrBlock(self, DestinationCidrBlock):
+        self._DestinationCidrBlock = DestinationCidrBlock
+
+    @property
+    def GatewayType(self):
+        """下一跳类型，支持 NORMAL_CVM。
+        :rtype: str
+        """
+        return self._GatewayType
+
+    @GatewayType.setter
+    def GatewayType(self, GatewayType):
+        self._GatewayType = GatewayType
+
+    @property
+    def GatewayId(self):
+        """下一跳对象，如果GatewayType类型是NORMAL_CVM填写子机IP。
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def Description(self):
+        """备注。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CreatedTime(self):
+        """创建时间。
+        :rtype: str
+        """
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def SubnetRouteAlgorithm(self):
+        """支持的 ECMP算法有：
+
+- ECMP_QUINTUPLE_HASH：五元组hash
+- ECMP_SOURCE_DESTINATION_IP_HASH：源和目的IP hash
+- ECMP_DESTINATION_IP_HASH：目的IP hash
+- ECMP_SOURCE_IP_HASH：源IP hash。
+        :rtype: str
+        """
+        return self._SubnetRouteAlgorithm
+
+    @SubnetRouteAlgorithm.setter
+    def SubnetRouteAlgorithm(self, SubnetRouteAlgorithm):
+        self._SubnetRouteAlgorithm = SubnetRouteAlgorithm
+
+
+    def _deserialize(self, params):
+        self._VpcId = params.get("VpcId")
+        self._GlobalRouteId = params.get("GlobalRouteId")
+        self._DestinationCidrBlock = params.get("DestinationCidrBlock")
+        self._GatewayType = params.get("GatewayType")
+        self._GatewayId = params.get("GatewayId")
+        self._Description = params.get("Description")
+        self._CreatedTime = params.get("CreatedTime")
+        self._SubnetRouteAlgorithm = params.get("SubnetRouteAlgorithm")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class HaVip(AbstractModel):
     """描述 HAVIP 信息
 
@@ -48669,6 +49186,199 @@ VPN网关实例ID，形如，`vpn-ltjahce6`。
 
 class ModifyGatewayFlowQosResponse(AbstractModel):
     """ModifyGatewayFlowQos返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyGlobalRouteECMPAlgorithmRequest(AbstractModel):
+    """ModifyGlobalRouteECMPAlgorithm请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VpcId: VPC唯一Id。
+        :type VpcId: str
+        :param _DestinationCidrBlock: Ipv4目标网段。
+        :type DestinationCidrBlock: str
+        :param _SubnetRouteAlgorithm: 支持的 ECMP算法有：ECMP_QUINTUPLE_HASH：五元组hash，ECMP_SOURCE_DESTINATION_IP_HASH：源和目的IP hash，ECMP_DESTINATION_IP_HASH：目的IP hash，ECMP_SOURCE_IP_HASH：源IP hash。
+        :type SubnetRouteAlgorithm: str
+        :param _CdcId: CDC 集群唯一 ID。
+        :type CdcId: str
+        """
+        self._VpcId = None
+        self._DestinationCidrBlock = None
+        self._SubnetRouteAlgorithm = None
+        self._CdcId = None
+
+    @property
+    def VpcId(self):
+        """VPC唯一Id。
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def DestinationCidrBlock(self):
+        """Ipv4目标网段。
+        :rtype: str
+        """
+        return self._DestinationCidrBlock
+
+    @DestinationCidrBlock.setter
+    def DestinationCidrBlock(self, DestinationCidrBlock):
+        self._DestinationCidrBlock = DestinationCidrBlock
+
+    @property
+    def SubnetRouteAlgorithm(self):
+        """支持的 ECMP算法有：ECMP_QUINTUPLE_HASH：五元组hash，ECMP_SOURCE_DESTINATION_IP_HASH：源和目的IP hash，ECMP_DESTINATION_IP_HASH：目的IP hash，ECMP_SOURCE_IP_HASH：源IP hash。
+        :rtype: str
+        """
+        return self._SubnetRouteAlgorithm
+
+    @SubnetRouteAlgorithm.setter
+    def SubnetRouteAlgorithm(self, SubnetRouteAlgorithm):
+        self._SubnetRouteAlgorithm = SubnetRouteAlgorithm
+
+    @property
+    def CdcId(self):
+        """CDC 集群唯一 ID。
+        :rtype: str
+        """
+        return self._CdcId
+
+    @CdcId.setter
+    def CdcId(self, CdcId):
+        self._CdcId = CdcId
+
+
+    def _deserialize(self, params):
+        self._VpcId = params.get("VpcId")
+        self._DestinationCidrBlock = params.get("DestinationCidrBlock")
+        self._SubnetRouteAlgorithm = params.get("SubnetRouteAlgorithm")
+        self._CdcId = params.get("CdcId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyGlobalRouteECMPAlgorithmResponse(AbstractModel):
+    """ModifyGlobalRouteECMPAlgorithm返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyGlobalRoutesRequest(AbstractModel):
+    """ModifyGlobalRoutes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VpcId: VPC唯一Id。
+        :type VpcId: str
+        :param _GlobalRoutes: 全局路由对象。仅支持修改：'Description'，其他字段暂不支持。
+        :type GlobalRoutes: list of GlobalRoute
+        """
+        self._VpcId = None
+        self._GlobalRoutes = None
+
+    @property
+    def VpcId(self):
+        """VPC唯一Id。
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def GlobalRoutes(self):
+        """全局路由对象。仅支持修改：'Description'，其他字段暂不支持。
+        :rtype: list of GlobalRoute
+        """
+        return self._GlobalRoutes
+
+    @GlobalRoutes.setter
+    def GlobalRoutes(self, GlobalRoutes):
+        self._GlobalRoutes = GlobalRoutes
+
+
+    def _deserialize(self, params):
+        self._VpcId = params.get("VpcId")
+        if params.get("GlobalRoutes") is not None:
+            self._GlobalRoutes = []
+            for item in params.get("GlobalRoutes"):
+                obj = GlobalRoute()
+                obj._deserialize(item)
+                self._GlobalRoutes.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyGlobalRoutesResponse(AbstractModel):
+    """ModifyGlobalRoutes返回参数结构体
 
     """
 

@@ -143,13 +143,10 @@ class CBSSpec(AbstractModel):
     def __init__(self):
         r"""
         :param _DiskType: 盘类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiskType: str
         :param _DiskSize: 大小
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiskSize: int
         :param _DiskCount: 个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiskCount: int
         """
         self._DiskType = None
@@ -159,7 +156,6 @@ class CBSSpec(AbstractModel):
     @property
     def DiskType(self):
         """盘类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DiskType
@@ -171,7 +167,6 @@ class CBSSpec(AbstractModel):
     @property
     def DiskSize(self):
         """大小
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DiskSize
@@ -183,7 +178,6 @@ class CBSSpec(AbstractModel):
     @property
     def DiskCount(self):
         """个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DiskCount
@@ -616,13 +610,10 @@ class ConfigParams(AbstractModel):
     def __init__(self):
         r"""
         :param _ParameterName: 名字
-注意：此字段可能返回 null，表示取不到有效值。
         :type ParameterName: str
         :param _ParameterValue: 值
-注意：此字段可能返回 null，表示取不到有效值。
         :type ParameterValue: str
         :param _ParameterOldValue: 修改前的值
-注意：此字段可能返回 null，表示取不到有效值。
         :type ParameterOldValue: str
         """
         self._ParameterName = None
@@ -632,7 +623,6 @@ class ConfigParams(AbstractModel):
     @property
     def ParameterName(self):
         """名字
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ParameterName
@@ -644,7 +634,6 @@ class ConfigParams(AbstractModel):
     @property
     def ParameterValue(self):
         """值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ParameterValue
@@ -656,7 +645,6 @@ class ConfigParams(AbstractModel):
     @property
     def ParameterOldValue(self):
         """修改前的值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ParameterOldValue

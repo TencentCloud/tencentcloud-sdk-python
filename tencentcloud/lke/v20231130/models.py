@@ -18,6 +18,61 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AgentDebugInfo(AbstractModel):
+    """Agent调试信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Input: 工具、大模型的输入信息，json
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Input: str
+        :param _Output: 工具、大模型的输出信息，json
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: str
+        """
+        self._Input = None
+        self._Output = None
+
+    @property
+    def Input(self):
+        """工具、大模型的输入信息，json
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        """工具、大模型的输出信息，json
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+
+    def _deserialize(self, params):
+        self._Input = params.get("Input")
+        self._Output = params.get("Output")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AgentProcedure(AbstractModel):
     """思考事件过程信息
 
@@ -4265,7 +4320,7 @@ class CreateReleaseRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         :param _Desc: 发布描述
         :type Desc: str
@@ -4275,7 +4330,7 @@ class CreateReleaseRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """机器人ID
+        """应用ID
         :rtype: str
         """
         return self._BotBizId
@@ -10201,6 +10256,44 @@ class ExportUnsatisfiedReplyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ExtraInfo(AbstractModel):
+    """扩展信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EChartsInfo: ECharts信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EChartsInfo: list of str
+        """
+        self._EChartsInfo = None
+
+    @property
+    def EChartsInfo(self):
+        """ECharts信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._EChartsInfo
+
+    @EChartsInfo.setter
+    def EChartsInfo(self, EChartsInfo):
+        self._EChartsInfo = EChartsInfo
+
+
+    def _deserialize(self, params):
+        self._EChartsInfo = params.get("EChartsInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FileInfo(AbstractModel):
     """实时上传的文件信息
 
@@ -11577,6 +11670,8 @@ class GetMsgRecordRequest(AbstractModel):
         :type BotAppKey: str
         :param _Scene: 场景, 体验: 1; 正式: 2
         :type Scene: int
+        :param _MidRecordId: 传该值，代表拉取该记录id的前后总共count条消息记录
+        :type MidRecordId: str
         """
         self._Type = None
         self._Count = None
@@ -11584,6 +11679,7 @@ class GetMsgRecordRequest(AbstractModel):
         self._LastRecordId = None
         self._BotAppKey = None
         self._Scene = None
+        self._MidRecordId = None
 
     @property
     def Type(self):
@@ -11651,6 +11747,17 @@ class GetMsgRecordRequest(AbstractModel):
     def Scene(self, Scene):
         self._Scene = Scene
 
+    @property
+    def MidRecordId(self):
+        """传该值，代表拉取该记录id的前后总共count条消息记录
+        :rtype: str
+        """
+        return self._MidRecordId
+
+    @MidRecordId.setter
+    def MidRecordId(self, MidRecordId):
+        self._MidRecordId = MidRecordId
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -11659,6 +11766,7 @@ class GetMsgRecordRequest(AbstractModel):
         self._LastRecordId = params.get("LastRecordId")
         self._BotAppKey = params.get("BotAppKey")
         self._Scene = params.get("Scene")
+        self._MidRecordId = params.get("MidRecordId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15160,6 +15268,8 @@ class ListDocItem(AbstractModel):
         :param _CreateTime: 文档创建落库时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
+        :param _CateBizId: 文档所属分类ID
+        :type CateBizId: str
         """
         self._DocBizId = None
         self._FileName = None
@@ -15192,6 +15302,7 @@ class ListDocItem(AbstractModel):
         self._IsAllowRetry = None
         self._Processing = None
         self._CreateTime = None
+        self._CateBizId = None
 
     @property
     def DocBizId(self):
@@ -15565,6 +15676,17 @@ class ListDocItem(AbstractModel):
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
 
+    @property
+    def CateBizId(self):
+        """文档所属分类ID
+        :rtype: str
+        """
+        return self._CateBizId
+
+    @CateBizId.setter
+    def CateBizId(self, CateBizId):
+        self._CateBizId = CateBizId
+
 
     def _deserialize(self, params):
         self._DocBizId = params.get("DocBizId")
@@ -15603,6 +15725,7 @@ class ListDocItem(AbstractModel):
         self._IsAllowRetry = params.get("IsAllowRetry")
         self._Processing = params.get("Processing")
         self._CreateTime = params.get("CreateTime")
+        self._CateBizId = params.get("CateBizId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17106,7 +17229,7 @@ class ListReleaseConfigPreviewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 机器人ID
+        :param _BotBizId: 应用ID
         :type BotBizId: str
         :param _PageNumber: 页码
         :type PageNumber: int
@@ -17137,7 +17260,7 @@ class ListReleaseConfigPreviewRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """机器人ID
+        """应用ID
         :rtype: str
         """
         return self._BotBizId
@@ -20485,6 +20608,9 @@ class MsgRecord(AbstractModel):
         :param _AgentThought: Agent的思考过程信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type AgentThought: :class:`tencentcloud.lke.v20231130.models.AgentThought`
+        :param _ExtraInfo: 扩展信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtraInfo: :class:`tencentcloud.lke.v20231130.models.ExtraInfo`
         """
         self._Content = None
         self._SessionId = None
@@ -20510,6 +20636,7 @@ class MsgRecord(AbstractModel):
         self._FileInfos = None
         self._QuoteInfos = None
         self._AgentThought = None
+        self._ExtraInfo = None
 
     @property
     def Content(self):
@@ -20799,6 +20926,18 @@ class MsgRecord(AbstractModel):
     def AgentThought(self, AgentThought):
         self._AgentThought = AgentThought
 
+    @property
+    def ExtraInfo(self):
+        """扩展信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.lke.v20231130.models.ExtraInfo`
+        """
+        return self._ExtraInfo
+
+    @ExtraInfo.setter
+    def ExtraInfo(self, ExtraInfo):
+        self._ExtraInfo = ExtraInfo
+
 
     def _deserialize(self, params):
         self._Content = params.get("Content")
@@ -20846,6 +20985,9 @@ class MsgRecord(AbstractModel):
         if params.get("AgentThought") is not None:
             self._AgentThought = AgentThought()
             self._AgentThought._deserialize(params.get("AgentThought"))
+        if params.get("ExtraInfo") is not None:
+            self._ExtraInfo = ExtraInfo()
+            self._ExtraInfo._deserialize(params.get("ExtraInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21412,6 +21554,9 @@ class ProcedureDebugging(AbstractModel):
         :param _WorkFlow: 工作流调试信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkFlow: :class:`tencentcloud.lke.v20231130.models.WorkFlowSummary`
+        :param _Agent: Agent调试信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Agent: :class:`tencentcloud.lke.v20231130.models.AgentDebugInfo`
         """
         self._Content = None
         self._System = None
@@ -21419,6 +21564,7 @@ class ProcedureDebugging(AbstractModel):
         self._Knowledge = None
         self._TaskFlow = None
         self._WorkFlow = None
+        self._Agent = None
 
     @property
     def Content(self):
@@ -21492,6 +21638,18 @@ class ProcedureDebugging(AbstractModel):
     def WorkFlow(self, WorkFlow):
         self._WorkFlow = WorkFlow
 
+    @property
+    def Agent(self):
+        """Agent调试信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.lke.v20231130.models.AgentDebugInfo`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
 
     def _deserialize(self, params):
         self._Content = params.get("Content")
@@ -21514,6 +21672,9 @@ class ProcedureDebugging(AbstractModel):
         if params.get("WorkFlow") is not None:
             self._WorkFlow = WorkFlowSummary()
             self._WorkFlow._deserialize(params.get("WorkFlow"))
+        if params.get("Agent") is not None:
+            self._Agent = AgentDebugInfo()
+            self._Agent._deserialize(params.get("Agent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22007,7 +22168,7 @@ class QueryRewriteRequest(AbstractModel):
         r"""
         :param _Question: 需要改写的问题
         :type Question: str
-        :param _Messages: 需要改写的多轮历史会话
+        :param _Messages: 需要改写的多轮历史会话，每轮历史对话需要包含user（问）和assistant（答）成对输入，由于模型字符限制，最多提供4轮对话。
         :type Messages: list of Message
         :param _Model: 模型名称
         :type Model: str
@@ -22029,7 +22190,7 @@ class QueryRewriteRequest(AbstractModel):
 
     @property
     def Messages(self):
-        """需要改写的多轮历史会话
+        """需要改写的多轮历史会话，每轮历史对话需要包含user（问）和assistant（答）成对输入，由于模型字符限制，最多提供4轮对话。
         :rtype: list of Message
         """
         return self._Messages

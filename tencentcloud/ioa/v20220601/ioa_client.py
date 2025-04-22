@@ -72,6 +72,29 @@ class IoaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreatePrivilegeCode(self, request):
+        """生成特权码，私有化调用path为：capi/Assets/Device/CreatePrivilegeCode，生成的特权码、卸载码，仅对该设备当天有效
+
+        :param request: Request instance for CreatePrivilegeCode.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.CreatePrivilegeCodeRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.CreatePrivilegeCodeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreatePrivilegeCode", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreatePrivilegeCodeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAccountGroups(self, request):
         """以分页的方式查询账号分组列表，私有化调用path为：/capi/Assets/DescribeAccountGroups
 
@@ -178,6 +201,29 @@ class IoaClient(AbstractClient):
             body = self.call("DescribeRootAccountGroup", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeRootAccountGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSoftCensusListByDevice(self, request):
+        """查看终端树下的软件列表,私有化调用path为：capi/Software/DescribeSoftCensusListByDevice
+
+        :param request: Request instance for DescribeSoftCensusListByDevice.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.DescribeSoftCensusListByDeviceRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeSoftCensusListByDeviceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSoftCensusListByDevice", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSoftCensusListByDeviceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

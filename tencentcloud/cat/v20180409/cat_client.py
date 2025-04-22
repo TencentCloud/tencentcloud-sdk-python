@@ -118,6 +118,29 @@ class CatClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeNodeGroups(self, request):
+        """获取拨测点组（可用性拨测点组、高级拨测点组、我的拨测点组）
+
+        :param request: Request instance for DescribeNodeGroups.
+        :type request: :class:`tencentcloud.cat.v20180409.models.DescribeNodeGroupsRequest`
+        :rtype: :class:`tencentcloud.cat.v20180409.models.DescribeNodeGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNodeGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeNodeGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeNodes(self, request):
         """获取拨测节点
 

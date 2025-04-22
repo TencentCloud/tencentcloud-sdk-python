@@ -1229,6 +1229,29 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateGlobalRoutes(self, request):
+        """本接口（CreateGlobalRoutes）用于创建全局路由。
+
+        :param request: Request instance for CreateGlobalRoutes.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateGlobalRoutesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateGlobalRoutesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateGlobalRoutes", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateGlobalRoutesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateHaVip(self, request):
         """本接口（CreateHaVip）用于创建高可用虚拟IP（HAVIP）。
 
@@ -2511,6 +2534,29 @@ class VpcClient(AbstractClient):
             body = self.call("DeleteFlowLog", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteFlowLogResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteGlobalRoutes(self, request):
+        """删除全局路由。
+
+        :param request: Request instance for DeleteGlobalRoutes.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteGlobalRoutesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteGlobalRoutesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteGlobalRoutes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteGlobalRoutesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4243,6 +4289,29 @@ class VpcClient(AbstractClient):
             body = self.call("DescribeGatewayFlowQos", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeGatewayFlowQosResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeGlobalRoutes(self, request):
+        """查询全局路由列表。
+
+        :param request: Request instance for DescribeGlobalRoutes.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeGlobalRoutesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeGlobalRoutesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGlobalRoutes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeGlobalRoutesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -7505,6 +7574,52 @@ class VpcClient(AbstractClient):
             body = self.call("ModifyGatewayFlowQos", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyGatewayFlowQosResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyGlobalRouteECMPAlgorithm(self, request):
+        """修改全局路由表ECMP算法 HASH 策略。
+
+        :param request: Request instance for ModifyGlobalRouteECMPAlgorithm.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyGlobalRouteECMPAlgorithmRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyGlobalRouteECMPAlgorithmResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyGlobalRouteECMPAlgorithm", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyGlobalRouteECMPAlgorithmResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyGlobalRoutes(self, request):
+        """修改全局路由。
+
+        :param request: Request instance for ModifyGlobalRoutes.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyGlobalRoutesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyGlobalRoutesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyGlobalRoutes", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyGlobalRoutesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

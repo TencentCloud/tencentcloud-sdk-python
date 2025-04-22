@@ -242,7 +242,7 @@ class ChatCompletionsRequest(AbstractModel):
         :type Stream: bool
         :param _Temperature: 控制生成的随机性，较高的值会产生更多样化的输出。
         :type Temperature: float
-        :param _MaxTokens: 最大生成的token数量
+        :param _MaxTokens: 最大生成的token数量，默认为4096，最大可设置为16384
         :type MaxTokens: int
         """
         self._Model = None
@@ -302,7 +302,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def MaxTokens(self):
-        """最大生成的token数量
+        """最大生成的token数量，默认为4096，最大可设置为16384
         :rtype: int
         """
         return self._MaxTokens

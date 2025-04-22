@@ -15533,6 +15533,8 @@ class TelCdrInfo(AbstractModel):
         :type Time: int
         :param _Direction: 呼入呼出方向 0 呼入 1 呼出
         :type Direction: int
+        :param _CallType: 通话类型 1 呼出 2 呼入 3 音频呼入 5 预测式外呼 6 内线呼叫
+        :type CallType: int
         :param _Duration: 通话时长
         :type Duration: int
         :param _RecordURL: 录音信息
@@ -15545,15 +15547,15 @@ class TelCdrInfo(AbstractModel):
 
 **场景	         EndStatus	EndStatusString	状态说明**
 
-电话呼入&呼出	1	        ok	                        正常结束
+电话呼入&呼出	1	        ok	                        正常通话
 
-电话呼入&呼出	0	        error	                系统错误
+电话呼入&呼出	0	        error	                异常结束
 
 电话呼入	             102	        ivrGiveUp	        IVR 期间用户放弃
 
-电话呼入	             103	        waitingGiveUp	       会话排队期间用户放弃
+电话呼入	             103	        waitingGiveUp	       排队时用户放弃
 
-电话呼入	             104	        ringingGiveUp	       会话振铃期间用户放弃
+电话呼入	             104	        ringingGiveUp	       振铃时用户放弃
 
 电话呼入	             105	        noSeatOnline	       无座席在线
 
@@ -15561,37 +15563,37 @@ class TelCdrInfo(AbstractModel):
 
 电话呼入	            107	       ivrEnd	               IVR 后直接结束
 
-电话呼入	            100	      blackList 呼入黑名单 
+电话呼入	            100	      blackList 黑名单 
 
 电话呼出               2	              unconnected	未接通
 
 电话呼出             108	        restrictedCallee	被叫因高风险受限
 
-电话呼出             109	        tooManyRequest	    超频
+电话呼出             109	        tooManyRequest	    外呼超频限制
 
-电话呼出             110	        restrictedArea	    外呼盲区
+电话呼出             110	        restrictedArea	    外呼区域限制
 
 电话呼出             111	        restrictedTime	外呼时间限制
                          
 电话呼出             201            unknown	未知状态
 
-电话呼出             202            notAnswer	未接听
+电话呼出             202            notAnswer	 被叫未接听
 
-电话呼出            203	    userReject	拒接挂断
+电话呼出            203	    userReject	被叫拒接挂断
 
-电话呼出	          204	    powerOff	关机
+电话呼出	          204	    powerOff	被叫关机
 
-电话呼出           205            numberNotExist	空号
+电话呼出           205            numberNotExist	被叫空号
 
-电话呼出	         206	           busy	通话中
+电话呼出	         206	           busy	被叫忙
 
-电话呼出   	        207	           outOfCredit	欠费
+电话呼出   	        207	           outOfCredit	被叫欠费
 
 电话呼出	         208	           operatorError	运营商线路异常
 
 电话呼出         	209	           callerCancel	主叫取消
 
-电话呼出	        210	           notInService	不在服务区
+电话呼出	        210	           notInService	被叫不在服务区
 
 电话呼入&呼出	211    clientError    客户端错误
 电话呼出        212     carrierBlocked      运营商拦截
@@ -15620,15 +15622,15 @@ class TelCdrInfo(AbstractModel):
 
 **场景	         EndStatus	EndStatusString	状态说明**
 
-电话呼入&呼出	1	        ok	                        正常结束
+电话呼入&呼出	1	        ok	                        正常通话
 
-电话呼入&呼出	0	        error	                系统错误
+电话呼入&呼出	0	        error	                异常结束
 
 电话呼入	             102	        ivrGiveUp	        IVR 期间用户放弃
 
-电话呼入	             103	        waitingGiveUp	       会话排队期间用户放弃
+电话呼入	             103	        waitingGiveUp	       排队时用户放弃
 
-电话呼入	             104	        ringingGiveUp	       会话振铃期间用户放弃
+电话呼入	             104	        ringingGiveUp	       振铃时用户放弃
 
 电话呼入	             105	        noSeatOnline	       无座席在线
 
@@ -15636,37 +15638,37 @@ class TelCdrInfo(AbstractModel):
 
 电话呼入	            107	       ivrEnd	               IVR 后直接结束
 
-电话呼入	            100	      blackList 呼入黑名单 
+电话呼入	            100	      blackList 黑名单 
 
 电话呼出               2	              unconnected	未接通
 
 电话呼出             108	        restrictedCallee	被叫因高风险受限
 
-电话呼出             109	        tooManyRequest	    超频
+电话呼出             109	        tooManyRequest	    外呼超频限制
 
-电话呼出             110	        restrictedArea	    外呼盲区
+电话呼出             110	        restrictedArea	    外呼区域限制
 
 电话呼出             111	        restrictedTime	外呼时间限制
                          
 电话呼出             201            unknown	未知状态
 
-电话呼出             202            notAnswer	未接听
+电话呼出             202            notAnswer	 被叫未接听
 
-电话呼出            203	    userReject	拒接挂断
+电话呼出            203	    userReject	被叫拒接挂断
 
-电话呼出	          204	    powerOff	关机
+电话呼出	          204	    powerOff	被叫关机
 
-电话呼出           205            numberNotExist	空号
+电话呼出           205            numberNotExist	被叫空号
 
-电话呼出	         206	           busy	通话中
+电话呼出	         206	           busy	被叫忙
 
-电话呼出   	        207	           outOfCredit	欠费
+电话呼出   	        207	           outOfCredit	被叫欠费
 
 电话呼出	         208	           operatorError	运营商线路异常
 
 电话呼出         	209	           callerCancel	主叫取消
 
-电话呼出	        210	           notInService	不在服务区
+电话呼出	        210	           notInService	被叫不在服务区
 
 电话呼入&呼出	211    clientError    客户端错误
 电话呼出        212     carrierBlocked      运营商拦截
@@ -15716,6 +15718,7 @@ NotExists
         self._Callee = None
         self._Time = None
         self._Direction = None
+        self._CallType = None
         self._Duration = None
         self._RecordURL = None
         self._RecordId = None
@@ -15795,6 +15798,17 @@ NotExists
         self._Direction = Direction
 
     @property
+    def CallType(self):
+        """通话类型 1 呼出 2 呼入 3 音频呼入 5 预测式外呼 6 内线呼叫
+        :rtype: int
+        """
+        return self._CallType
+
+    @CallType.setter
+    def CallType(self, CallType):
+        self._CallType = CallType
+
+    @property
     def Duration(self):
         """通话时长
         :rtype: int
@@ -15844,15 +15858,15 @@ NotExists
 
 **场景	         EndStatus	EndStatusString	状态说明**
 
-电话呼入&呼出	1	        ok	                        正常结束
+电话呼入&呼出	1	        ok	                        正常通话
 
-电话呼入&呼出	0	        error	                系统错误
+电话呼入&呼出	0	        error	                异常结束
 
 电话呼入	             102	        ivrGiveUp	        IVR 期间用户放弃
 
-电话呼入	             103	        waitingGiveUp	       会话排队期间用户放弃
+电话呼入	             103	        waitingGiveUp	       排队时用户放弃
 
-电话呼入	             104	        ringingGiveUp	       会话振铃期间用户放弃
+电话呼入	             104	        ringingGiveUp	       振铃时用户放弃
 
 电话呼入	             105	        noSeatOnline	       无座席在线
 
@@ -15860,37 +15874,37 @@ NotExists
 
 电话呼入	            107	       ivrEnd	               IVR 后直接结束
 
-电话呼入	            100	      blackList 呼入黑名单 
+电话呼入	            100	      blackList 黑名单 
 
 电话呼出               2	              unconnected	未接通
 
 电话呼出             108	        restrictedCallee	被叫因高风险受限
 
-电话呼出             109	        tooManyRequest	    超频
+电话呼出             109	        tooManyRequest	    外呼超频限制
 
-电话呼出             110	        restrictedArea	    外呼盲区
+电话呼出             110	        restrictedArea	    外呼区域限制
 
 电话呼出             111	        restrictedTime	外呼时间限制
                          
 电话呼出             201            unknown	未知状态
 
-电话呼出             202            notAnswer	未接听
+电话呼出             202            notAnswer	 被叫未接听
 
-电话呼出            203	    userReject	拒接挂断
+电话呼出            203	    userReject	被叫拒接挂断
 
-电话呼出	          204	    powerOff	关机
+电话呼出	          204	    powerOff	被叫关机
 
-电话呼出           205            numberNotExist	空号
+电话呼出           205            numberNotExist	被叫空号
 
-电话呼出	         206	           busy	通话中
+电话呼出	         206	           busy	被叫忙
 
-电话呼出   	        207	           outOfCredit	欠费
+电话呼出   	        207	           outOfCredit	被叫欠费
 
 电话呼出	         208	           operatorError	运营商线路异常
 
 电话呼出         	209	           callerCancel	主叫取消
 
-电话呼出	        210	           notInService	不在服务区
+电话呼出	        210	           notInService	被叫不在服务区
 
 电话呼入&呼出	211    clientError    客户端错误
 电话呼出        212     carrierBlocked      运营商拦截
@@ -16018,15 +16032,15 @@ NotExists
 
 **场景	         EndStatus	EndStatusString	状态说明**
 
-电话呼入&呼出	1	        ok	                        正常结束
+电话呼入&呼出	1	        ok	                        正常通话
 
-电话呼入&呼出	0	        error	                系统错误
+电话呼入&呼出	0	        error	                异常结束
 
 电话呼入	             102	        ivrGiveUp	        IVR 期间用户放弃
 
-电话呼入	             103	        waitingGiveUp	       会话排队期间用户放弃
+电话呼入	             103	        waitingGiveUp	       排队时用户放弃
 
-电话呼入	             104	        ringingGiveUp	       会话振铃期间用户放弃
+电话呼入	             104	        ringingGiveUp	       振铃时用户放弃
 
 电话呼入	             105	        noSeatOnline	       无座席在线
 
@@ -16034,37 +16048,37 @@ NotExists
 
 电话呼入	            107	       ivrEnd	               IVR 后直接结束
 
-电话呼入	            100	      blackList 呼入黑名单 
+电话呼入	            100	      blackList 黑名单 
 
 电话呼出               2	              unconnected	未接通
 
 电话呼出             108	        restrictedCallee	被叫因高风险受限
 
-电话呼出             109	        tooManyRequest	    超频
+电话呼出             109	        tooManyRequest	    外呼超频限制
 
-电话呼出             110	        restrictedArea	    外呼盲区
+电话呼出             110	        restrictedArea	    外呼区域限制
 
 电话呼出             111	        restrictedTime	外呼时间限制
                          
 电话呼出             201            unknown	未知状态
 
-电话呼出             202            notAnswer	未接听
+电话呼出             202            notAnswer	 被叫未接听
 
-电话呼出            203	    userReject	拒接挂断
+电话呼出            203	    userReject	被叫拒接挂断
 
-电话呼出	          204	    powerOff	关机
+电话呼出	          204	    powerOff	被叫关机
 
-电话呼出           205            numberNotExist	空号
+电话呼出           205            numberNotExist	被叫空号
 
-电话呼出	         206	           busy	通话中
+电话呼出	         206	           busy	被叫忙
 
-电话呼出   	        207	           outOfCredit	欠费
+电话呼出   	        207	           outOfCredit	被叫欠费
 
 电话呼出	         208	           operatorError	运营商线路异常
 
 电话呼出         	209	           callerCancel	主叫取消
 
-电话呼出	        210	           notInService	不在服务区
+电话呼出	        210	           notInService	被叫不在服务区
 
 电话呼入&呼出	211    clientError    客户端错误
 电话呼出        212     carrierBlocked      运营商拦截
@@ -16279,6 +16293,7 @@ NotExists
         self._Callee = params.get("Callee")
         self._Time = params.get("Time")
         self._Direction = params.get("Direction")
+        self._CallType = params.get("CallType")
         self._Duration = params.get("Duration")
         self._RecordURL = params.get("RecordURL")
         self._RecordId = params.get("RecordId")

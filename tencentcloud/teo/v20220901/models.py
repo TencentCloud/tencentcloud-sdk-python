@@ -2417,14 +2417,12 @@ class ApplicationProxyRule(AbstractModel):
 <li>false：关闭。</li>默认值：false。
         :type SessionPersist: bool
         :param _SessionPersistTime: 会话保持的时间，只有当SessionPersist为true时，该值才会生效。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SessionPersistTime: int
         :param _OriginPort: 源站端口，支持格式：
 <li>单端口，如：80。</li>
 <li>端口段：81-82，表示81，82两个端口。</li>
         :type OriginPort: str
         :param _RuleTag: 规则标签。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleTag: str
         """
         self._Proto = None
@@ -2552,7 +2550,6 @@ class ApplicationProxyRule(AbstractModel):
     @property
     def SessionPersistTime(self):
         """会话保持的时间，只有当SessionPersist为true时，该值才会生效。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._SessionPersistTime
@@ -2577,7 +2574,6 @@ class ApplicationProxyRule(AbstractModel):
     @property
     def RuleTag(self):
         """规则标签。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RuleTag
@@ -4230,7 +4226,6 @@ class Cache(AbstractModel):
         :type Switch: str
         :param _CacheTime: 缓存过期时间设置。
 单位为秒，最大可设置为 365 天。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CacheTime: int
         :param _IgnoreCacheControl: 是否开启强制缓存，取值有：
 <li>on：开启；</li>
@@ -4259,7 +4254,6 @@ class Cache(AbstractModel):
     def CacheTime(self):
         """缓存过期时间设置。
 单位为秒，最大可设置为 365 天。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CacheTime
@@ -4522,12 +4516,10 @@ class CacheKey(AbstractModel):
         :param _FullUrlCache: 是否开启全路径缓存，取值有：
 <li>on：开启全路径缓存（即关闭参数忽略）；</li>
 <li>off：关闭全路径缓存（即开启参数忽略）。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type FullUrlCache: str
         :param _IgnoreCase: 是否忽略大小写缓存，取值有：
 <li>on：忽略；</li>
 <li>off：不忽略。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type IgnoreCase: str
         :param _QueryString: CacheKey 中包含请求参数。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -4542,7 +4534,6 @@ class CacheKey(AbstractModel):
         """是否开启全路径缓存，取值有：
 <li>on：开启全路径缓存（即关闭参数忽略）；</li>
 <li>off：关闭全路径缓存（即开启参数忽略）。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FullUrlCache
@@ -4556,7 +4547,6 @@ class CacheKey(AbstractModel):
         """是否忽略大小写缓存，取值有：
 <li>on：忽略；</li>
 <li>off：不忽略。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IgnoreCase
@@ -5154,7 +5144,6 @@ class CachePrefresh(AbstractModel):
 <li>off：关闭。</li>
         :type Switch: str
         :param _Percent: 缓存预刷新百分比，取值范围：1-99。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Percent: int
         """
         self._Switch = None
@@ -5176,7 +5165,6 @@ class CachePrefresh(AbstractModel):
     @property
     def Percent(self):
         """缓存预刷新百分比，取值范围：1-99。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Percent
@@ -5787,7 +5775,6 @@ class ClientIpHeader(AbstractModel):
 <li>off：关闭。</li>
         :type Switch: str
         :param _HeaderName: 回源时，存放客户端 IP 的请求头名称。当 Switch 为 on 时，该参数必填。该参数不允许填写 X-Forwarded-For。
-注意：此字段可能返回 null，表示取不到有效值。
         :type HeaderName: str
         """
         self._Switch = None
@@ -5809,7 +5796,6 @@ class ClientIpHeader(AbstractModel):
     @property
     def HeaderName(self):
         """回源时，存放客户端 IP 的请求头名称。当 Switch 为 on 时，该参数必填。该参数不允许填写 X-Forwarded-For。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HeaderName
@@ -5844,10 +5830,9 @@ class CnameStatus(AbstractModel):
         :param _Cname: CNAME 地址。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Cname: str
-        :param _Status: Cname状态信息，取值有：
+        :param _Status: CNAME 状态信息，取值有：
 <li>active：生效；</li>
-<li>moved：不生效。</li>
-注意：此字段可能返回 null，表示取不到有效值。
+<li>moved：不生效；</li>
         :type Status: str
         """
         self._RecordName = None
@@ -5879,10 +5864,9 @@ class CnameStatus(AbstractModel):
 
     @property
     def Status(self):
-        """Cname状态信息，取值有：
+        """CNAME 状态信息，取值有：
 <li>active：生效；</li>
-<li>moved：不生效。</li>
-注意：此字段可能返回 null，表示取不到有效值。
+<li>moved：不生效；</li>
         :rtype: str
         """
         return self._Status
@@ -5976,7 +5960,6 @@ class Compression(AbstractModel):
         :param _Algorithms: 支持的压缩算法列表，取值有：
 <li>brotli：brotli算法；</li>
 <li>gzip：gzip算法。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type Algorithms: list of str
         """
         self._Switch = None
@@ -6000,7 +5983,6 @@ class Compression(AbstractModel):
         """支持的压缩算法列表，取值有：
 <li>brotli：brotli算法；</li>
 <li>gzip：gzip算法。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Algorithms
@@ -10677,15 +10659,12 @@ class CustomField(AbstractModel):
 <li>RspHeader：从 HTTP 响应头中提取指定字段值；</li>
 <li>Cookie: 从 Cookie 中提取指定字段值；</li>
 <li>ReqBody: 从 HTTP 请求正文中通过 Google RE2 正则表达式提取指定内容。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Value: 根据字段类型（Name）填入字段值的定义。需要区分大小写。
 <li>当字段类型为 ReqHeader、RspHeader、Cookie 时，填入需要提取值的参数名称，例如：Accept-Language。可输入 1-100 个字符，允许的字符开头为字母，中间为字母、数字、-，结尾为字母、数字；</li>
 <li>当字段类型为 ReqBody 时，填入 Google RE2 正则表达式，正则表达式长度上限为 4KB。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         :param _Enabled: 是否投递该字段，不填表示不投递此字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Enabled: bool
         """
         self._Name = None
@@ -10699,7 +10678,6 @@ class CustomField(AbstractModel):
 <li>RspHeader：从 HTTP 响应头中提取指定字段值；</li>
 <li>Cookie: 从 Cookie 中提取指定字段值；</li>
 <li>ReqBody: 从 HTTP 请求正文中通过 Google RE2 正则表达式提取指定内容。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -10713,7 +10691,6 @@ class CustomField(AbstractModel):
         """根据字段类型（Name）填入字段值的定义。需要区分大小写。
 <li>当字段类型为 ReqHeader、RspHeader、Cookie 时，填入需要提取值的参数名称，例如：Accept-Language。可输入 1-100 个字符，允许的字符开头为字母，中间为字母、数字、-，结尾为字母、数字；</li>
 <li>当字段类型为 ReqBody 时，填入 Google RE2 正则表达式，正则表达式长度上限为 4KB。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -10725,7 +10702,6 @@ class CustomField(AbstractModel):
     @property
     def Enabled(self):
         """是否投递该字段，不填表示不投递此字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Enabled
@@ -11000,10 +10976,8 @@ class CustomizedHeader(AbstractModel):
     def __init__(self):
         r"""
         :param _Key: 自定义头部 Key。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
         :param _Value: 自定义头部 Value。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Key = None
@@ -11012,7 +10986,6 @@ class CustomizedHeader(AbstractModel):
     @property
     def Key(self):
         """自定义头部 Key。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Key
@@ -11024,7 +10997,6 @@ class CustomizedHeader(AbstractModel):
     @property
     def Value(self):
         """自定义头部 Value。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -11450,40 +11422,30 @@ class DefaultServerCertInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _CertId: 服务器证书 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CertId: str
         :param _Alias: 证书备注名。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Alias: str
         :param _Type: 证书类型，取值有：
 <li>default: 默认证书;</li>
 <li>upload:用户上传;</li>
 <li>managed:腾讯云托管。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _ExpireTime: 证书过期时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireTime: str
         :param _EffectiveTime: 证书生效时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type EffectiveTime: str
         :param _CommonName: 证书公用名。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CommonName: str
         :param _SubjectAltName: 证书SAN域名。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubjectAltName: list of str
         :param _Status: 部署状态，取值有：
 <li>processing: 部署中；</li>
 <li>deployed: 已部署；</li>
 <li>failed: 部署失败。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _Message: Status为失败时,此字段返回失败原因。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param _SignAlgo: 证书算法。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SignAlgo: str
         """
         self._CertId = None
@@ -11500,7 +11462,6 @@ class DefaultServerCertInfo(AbstractModel):
     @property
     def CertId(self):
         """服务器证书 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CertId
@@ -11512,7 +11473,6 @@ class DefaultServerCertInfo(AbstractModel):
     @property
     def Alias(self):
         """证书备注名。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Alias
@@ -11527,7 +11487,6 @@ class DefaultServerCertInfo(AbstractModel):
 <li>default: 默认证书;</li>
 <li>upload:用户上传;</li>
 <li>managed:腾讯云托管。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -11539,7 +11498,6 @@ class DefaultServerCertInfo(AbstractModel):
     @property
     def ExpireTime(self):
         """证书过期时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ExpireTime
@@ -11551,7 +11509,6 @@ class DefaultServerCertInfo(AbstractModel):
     @property
     def EffectiveTime(self):
         """证书生效时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EffectiveTime
@@ -11563,7 +11520,6 @@ class DefaultServerCertInfo(AbstractModel):
     @property
     def CommonName(self):
         """证书公用名。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CommonName
@@ -11575,7 +11531,6 @@ class DefaultServerCertInfo(AbstractModel):
     @property
     def SubjectAltName(self):
         """证书SAN域名。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._SubjectAltName
@@ -11590,7 +11545,6 @@ class DefaultServerCertInfo(AbstractModel):
 <li>processing: 部署中；</li>
 <li>deployed: 已部署；</li>
 <li>failed: 部署失败。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -11602,7 +11556,6 @@ class DefaultServerCertInfo(AbstractModel):
     @property
     def Message(self):
         """Status为失败时,此字段返回失败原因。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Message
@@ -11614,7 +11567,6 @@ class DefaultServerCertInfo(AbstractModel):
     @property
     def SignAlgo(self):
         """证书算法。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SignAlgo
@@ -13362,7 +13314,6 @@ class DeployRecord(AbstractModel):
         :param _Message: 发布结果信息。
         :type Message: str
         :param _RecordId: 发布记录 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecordId: str
         :param _Description: 变更说明。
         :type Description: str
@@ -13424,7 +13375,6 @@ class DeployRecord(AbstractModel):
     @property
     def RecordId(self):
         """发布记录 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RecordId
@@ -24130,7 +24080,6 @@ class ForceRedirect(AbstractModel):
         :param _RedirectStatusCode: 重定向状态码，取值有：
 <li>301：301跳转；</li>
 <li>302：302跳转。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type RedirectStatusCode: int
         """
         self._Switch = None
@@ -24154,7 +24103,6 @@ class ForceRedirect(AbstractModel):
         """重定向状态码，取值有：
 <li>301：301跳转；</li>
 <li>302：302跳转。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RedirectStatusCode
@@ -25542,17 +25490,14 @@ class Hsts(AbstractModel):
 <li>off：关闭。</li>
         :type Switch: str
         :param _MaxAge: MaxAge 数值。单位为秒，最大值为1天。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxAge: int
         :param _IncludeSubDomains: 是否包含子域名，取值有：
 <li>on：开启；</li>
 <li>off：关闭。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type IncludeSubDomains: str
         :param _Preload: 是否开启预加载，取值有：
 <li>on：开启；</li>
 <li>off：关闭。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type Preload: str
         """
         self._Switch = None
@@ -25576,7 +25521,6 @@ class Hsts(AbstractModel):
     @property
     def MaxAge(self):
         """MaxAge 数值。单位为秒，最大值为1天。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxAge
@@ -25590,7 +25534,6 @@ class Hsts(AbstractModel):
         """是否包含子域名，取值有：
 <li>on：开启；</li>
 <li>off：关闭。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IncludeSubDomains
@@ -25604,7 +25547,6 @@ class Hsts(AbstractModel):
         """是否开启预加载，取值有：
 <li>on：开启；</li>
 <li>off：关闭。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Preload
@@ -25639,19 +25581,16 @@ class Https(AbstractModel):
         :param _Http2: http2 配置开关，取值有：
 <li>on：开启；</li>
 <li>off：关闭。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type Http2: str
         :param _OcspStapling: OCSP 配置开关，取值有：
 <li>on：开启；</li>
 <li>off：关闭。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type OcspStapling: str
         :param _TlsVersion: Tls 版本设置，取值有：
 <li>TLSv1：TLSv1版本；</li>
 <li>TLSV1.1：TLSv1.1版本；</li>
 <li>TLSV1.2：TLSv1.2版本；</li>
 <li>TLSv1.3：TLSv1.3版本。</li>修改时必须开启连续的版本。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TlsVersion: list of str
         :param _Hsts: HSTS 配置。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -25662,13 +25601,11 @@ class Https(AbstractModel):
         :param _ApplyType: 申请类型，取值有：
 <li>apply：托管EdgeOne；</li>
 <li>none：不托管EdgeOne。</li>不填，默认取值为none。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApplyType: str
         :param _CipherSuite: 密码套件，取值有：
 <li>loose-v2023：提供高兼容性，安全性一般，支持 TLS 1.0-1.3 密码套件；</li>
 <li>general-v2023：提供较高兼容性，安全性中等，支持 TLS 1.2-1.3 密码套件；</li>
 <li>strict-v2023：提供高安全性能，禁用所有含不安全隐患的加密套件，支持 TLS 1.2-1.3 密码套件。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type CipherSuite: str
         """
         self._Http2 = None
@@ -25684,7 +25621,6 @@ class Https(AbstractModel):
         """http2 配置开关，取值有：
 <li>on：开启；</li>
 <li>off：关闭。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Http2
@@ -25698,7 +25634,6 @@ class Https(AbstractModel):
         """OCSP 配置开关，取值有：
 <li>on：开启；</li>
 <li>off：关闭。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OcspStapling
@@ -25714,7 +25649,6 @@ class Https(AbstractModel):
 <li>TLSV1.1：TLSv1.1版本；</li>
 <li>TLSV1.2：TLSv1.2版本；</li>
 <li>TLSv1.3：TLSv1.3版本。</li>修改时必须开启连续的版本。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._TlsVersion
@@ -25752,7 +25686,6 @@ class Https(AbstractModel):
         """申请类型，取值有：
 <li>apply：托管EdgeOne；</li>
 <li>none：不托管EdgeOne。</li>不填，默认取值为none。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ApplyType
@@ -25767,7 +25700,6 @@ class Https(AbstractModel):
 <li>loose-v2023：提供高兼容性，安全性一般，支持 TLS 1.0-1.3 密码套件；</li>
 <li>general-v2023：提供较高兼容性，安全性中等，支持 TLS 1.2-1.3 密码套件；</li>
 <li>strict-v2023：提供高安全性能，禁用所有含不安全隐患的加密套件，支持 TLS 1.2-1.3 密码套件。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CipherSuite
@@ -26103,7 +26035,6 @@ class Identification(AbstractModel):
         :param _ZoneName: 站点名称。
         :type ZoneName: str
         :param _Domain: 验证子域名。验证站点时，该值为空。验证子域名是为具体子域名。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Domain: str
         :param _Status: 验证状态，取值有：
 <li> pending：验证中；</li>
@@ -26112,7 +26043,6 @@ class Identification(AbstractModel):
         :param _Ascription: 站点归属权校验：Dns校验信息。
         :type Ascription: :class:`tencentcloud.teo.v20220901.models.AscriptionInfo`
         :param _OriginalNameServers: 域名当前的 NS 记录。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OriginalNameServers: list of str
         :param _FileAscription: 站点归属权校验：文件校验信息。
         :type FileAscription: :class:`tencentcloud.teo.v20220901.models.FileAscriptionInfo`
@@ -26138,7 +26068,6 @@ class Identification(AbstractModel):
     @property
     def Domain(self):
         """验证子域名。验证站点时，该值为空。验证子域名是为具体子域名。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Domain
@@ -26174,7 +26103,6 @@ class Identification(AbstractModel):
     @property
     def OriginalNameServers(self):
         """域名当前的 NS 记录。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._OriginalNameServers
@@ -33907,21 +33835,17 @@ class Origin(AbstractModel):
     def __init__(self):
         r"""
         :param _Origins: 主源站列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Origins: list of str
         :param _BackupOrigins: 备源站列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type BackupOrigins: list of str
         :param _OriginPullProtocol: 回源协议配置，取值有：
 <li>http：强制 http 回源；</li>
 <li>follow：协议跟随回源；</li>
 <li>https：强制 https 回源。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type OriginPullProtocol: str
         :param _CosPrivateAccess: 源站为腾讯云 COS 时，是否为私有访问 bucket，取值有：
 <li>on：私有访问；</li>
 <li>off：公共访问。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type CosPrivateAccess: str
         """
         self._Origins = None
@@ -33932,7 +33856,6 @@ class Origin(AbstractModel):
     @property
     def Origins(self):
         """主源站列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Origins
@@ -33944,7 +33867,6 @@ class Origin(AbstractModel):
     @property
     def BackupOrigins(self):
         """备源站列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._BackupOrigins
@@ -33959,7 +33881,6 @@ class Origin(AbstractModel):
 <li>http：强制 http 回源；</li>
 <li>follow：协议跟随回源；</li>
 <li>https：强制 https 回源。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OriginPullProtocol
@@ -33973,7 +33894,6 @@ class Origin(AbstractModel):
         """源站为腾讯云 COS 时，是否为私有访问 bucket，取值有：
 <li>on：私有访问；</li>
 <li>off：公共访问。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CosPrivateAccess
@@ -34274,7 +34194,6 @@ class OriginGroup(AbstractModel):
         :param _UpdateTime: 源站组更新时间。
         :type UpdateTime: str
         :param _HostHeader: 回源Host Header。
-注意：此字段可能返回 null，表示取不到有效值。
         :type HostHeader: str
         """
         self._GroupId = None
@@ -34368,7 +34287,6 @@ class OriginGroup(AbstractModel):
     @property
     def HostHeader(self):
         """回源Host Header。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._HostHeader
@@ -35718,7 +35636,6 @@ class PostMaxSize(AbstractModel):
 <li>off：关闭限制。</li>
         :type Switch: str
         :param _MaxSize: 最大限制，取值在1MB和500MB之间。单位字节。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaxSize: int
         """
         self._Switch = None
@@ -35740,7 +35657,6 @@ class PostMaxSize(AbstractModel):
     @property
     def MaxSize(self):
         """最大限制，取值在1MB和500MB之间。单位字节。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxSize
@@ -36070,10 +35986,8 @@ class QueryString(AbstractModel):
         :param _Action: CacheKey使用QueryString的方式，取值有：
 <li>includeCustom：使用部分url参数；</li>
 <li>excludeCustom：排除部分url参数。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type Action: str
         :param _Value: 使用/排除的url参数数组。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: list of str
         """
         self._Switch = None
@@ -36098,7 +36012,6 @@ class QueryString(AbstractModel):
         """CacheKey使用QueryString的方式，取值有：
 <li>includeCustom：使用部分url参数；</li>
 <li>excludeCustom：排除部分url参数。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Action
@@ -36110,7 +36023,6 @@ class QueryString(AbstractModel):
     @property
     def Value(self):
         """使用/排除的url参数数组。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Value
@@ -40821,28 +40733,21 @@ class ServerCertInfo(AbstractModel):
         r"""
         :param _CertId: 服务器证书 ID。来源于 SSL 侧，您可以前往 [SSL 证书列表](https://console.cloud.tencent.com/ssl) 查看 CertId。
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type CertId: str
         :param _Alias: 证书备注名。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Alias: str
         :param _Type: 证书类型，取值有：
 <li>default：默认证书；</li>
 <li>upload：用户上传；</li>
 <li>managed：腾讯云托管。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _ExpireTime: 证书过期时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireTime: str
         :param _DeployTime: 证书部署时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeployTime: str
         :param _SignAlgo: 签名算法。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SignAlgo: str
         :param _CommonName: 证书归属域名名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CommonName: str
         """
         self._CertId = None
@@ -40857,7 +40762,6 @@ class ServerCertInfo(AbstractModel):
     def CertId(self):
         """服务器证书 ID。来源于 SSL 侧，您可以前往 [SSL 证书列表](https://console.cloud.tencent.com/ssl) 查看 CertId。
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CertId
@@ -40869,7 +40773,6 @@ class ServerCertInfo(AbstractModel):
     @property
     def Alias(self):
         """证书备注名。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Alias
@@ -40884,7 +40787,6 @@ class ServerCertInfo(AbstractModel):
 <li>default：默认证书；</li>
 <li>upload：用户上传；</li>
 <li>managed：腾讯云托管。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -40896,7 +40798,6 @@ class ServerCertInfo(AbstractModel):
     @property
     def ExpireTime(self):
         """证书过期时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ExpireTime
@@ -40908,7 +40809,6 @@ class ServerCertInfo(AbstractModel):
     @property
     def DeployTime(self):
         """证书部署时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeployTime
@@ -40920,7 +40820,6 @@ class ServerCertInfo(AbstractModel):
     @property
     def SignAlgo(self):
         """签名算法。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SignAlgo
@@ -40932,7 +40831,6 @@ class ServerCertInfo(AbstractModel):
     @property
     def CommonName(self):
         """证书归属域名名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CommonName
@@ -42042,13 +41940,13 @@ class Task(AbstractModel):
         :param _Method: 节点缓存清除方法，取值有：
 <li>invalidate：标记过期，用户请求时触发回源校验，即发送带有 If-None-Match 和 If-Modified-Since 头部的 HTTP 条件请求。若源站响应 200，则节点会回源拉取新的资源并更新缓存；若源站响应 304，则节点不会更新缓存；</li>
 <li>delete：直接删除节点缓存，用户请求时触发回源拉取资源。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type Method: str
         :param _Status: 状态。取值有：
 <li>processing：处理中；</li>
 <li>success：成功；</li>
 <li> failed：失败；</li>
-<li>timeout：超时。</li>
+<li>timeout：超时；</li>
+<li>canceled：已取消。</li>
         :type Status: str
         :param _CreateTime: 任务创建时间。
         :type CreateTime: str
@@ -42101,7 +41999,6 @@ class Task(AbstractModel):
         """节点缓存清除方法，取值有：
 <li>invalidate：标记过期，用户请求时触发回源校验，即发送带有 If-None-Match 和 If-Modified-Since 头部的 HTTP 条件请求。若源站响应 200，则节点会回源拉取新的资源并更新缓存；若源站响应 304，则节点不会更新缓存；</li>
 <li>delete：直接删除节点缓存，用户请求时触发回源拉取资源。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Method
@@ -42116,7 +42013,8 @@ class Task(AbstractModel):
 <li>processing：处理中；</li>
 <li>success：成功；</li>
 <li> failed：失败；</li>
-<li>timeout：超时。</li>
+<li>timeout：超时；</li>
+<li>canceled：已取消。</li>
         :rtype: str
         """
         return self._Status
@@ -43963,7 +43861,6 @@ class Zone(AbstractModel):
 <li> paused：已停用。</li>
         :type ActiveStatus: str
         :param _AliasZoneName: 站点别名。数字、英文、-和_组合，限制20个字符。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AliasZoneName: str
         :param _IsFake: 是否伪站点，取值有：
 <li> 0：非伪站点；</li>
@@ -44207,7 +44104,6 @@ class Zone(AbstractModel):
     @property
     def AliasZoneName(self):
         """站点别名。数字、英文、-和_组合，限制20个字符。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AliasZoneName

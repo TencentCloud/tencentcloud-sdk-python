@@ -903,6 +903,205 @@ class DescribeInstantTasksResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeNodeGroupsRequest(AbstractModel):
+    """DescribeNodeGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeType: 节点类型。0: 全部 1: IDC 2: LastMile 3: Mobile，不填默认为0
+        :type NodeType: list of int
+        :param _TaskCategory: 节点分类。0: 全部 1: PC 2：Mobile，不填默认为0。PC分类包括IDC和LM节点类型，Mobile分类包括Mobile节点类型。与NodeType参数取交集。
+        :type TaskCategory: int
+        :param _IPType: IP类型。0: 全部 1: IPv4 2: IPv6，不填默认为0
+        :type IPType: int
+        :param _Name: 拨测点描述关键词。
+        :type Name: str
+        :param _RegionID: 地域ID。0: 精选拨测点 1: 国内 2: 港澳台 3: 亚太 4: 欧洲与美洲 5: 非洲与大洋洲，不填默认为0
+        :type RegionID: int
+        :param _DistrictID: 省份或国家ID。0表示全部，不填默认为0
+        :type DistrictID: int
+        :param _NetServiceID: 运营商ID。0: 全部 1: 中国电信 2: 中国联通 3: 中国移动 99: 其他，不填默认为0
+        :type NetServiceID: int
+        :param _NodeGroupType: 节点组类型。0: 高级拨测点组 1: 可用性节点 2: 我的拨测点组，不填默认为0
+        :type NodeGroupType: int
+        :param _TaskType: 任务类型，如1、2、3、4、5、6、7；1-页面性能、2-文件上传、3-文件下载、4-端口性能、5-网络质量、6-音视频体验、7-域名whois，不填默认为0，不对任务类型做过滤
+        :type TaskType: int
+        :param _ProbeType: 测试类型，包含定时测试与即时测试。0-定时拨测，其它表示即时拨测。
+        :type ProbeType: int
+        """
+        self._NodeType = None
+        self._TaskCategory = None
+        self._IPType = None
+        self._Name = None
+        self._RegionID = None
+        self._DistrictID = None
+        self._NetServiceID = None
+        self._NodeGroupType = None
+        self._TaskType = None
+        self._ProbeType = None
+
+    @property
+    def NodeType(self):
+        """节点类型。0: 全部 1: IDC 2: LastMile 3: Mobile，不填默认为0
+        :rtype: list of int
+        """
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def TaskCategory(self):
+        """节点分类。0: 全部 1: PC 2：Mobile，不填默认为0。PC分类包括IDC和LM节点类型，Mobile分类包括Mobile节点类型。与NodeType参数取交集。
+        :rtype: int
+        """
+        return self._TaskCategory
+
+    @TaskCategory.setter
+    def TaskCategory(self, TaskCategory):
+        self._TaskCategory = TaskCategory
+
+    @property
+    def IPType(self):
+        """IP类型。0: 全部 1: IPv4 2: IPv6，不填默认为0
+        :rtype: int
+        """
+        return self._IPType
+
+    @IPType.setter
+    def IPType(self, IPType):
+        self._IPType = IPType
+
+    @property
+    def Name(self):
+        """拨测点描述关键词。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def RegionID(self):
+        """地域ID。0: 精选拨测点 1: 国内 2: 港澳台 3: 亚太 4: 欧洲与美洲 5: 非洲与大洋洲，不填默认为0
+        :rtype: int
+        """
+        return self._RegionID
+
+    @RegionID.setter
+    def RegionID(self, RegionID):
+        self._RegionID = RegionID
+
+    @property
+    def DistrictID(self):
+        """省份或国家ID。0表示全部，不填默认为0
+        :rtype: int
+        """
+        return self._DistrictID
+
+    @DistrictID.setter
+    def DistrictID(self, DistrictID):
+        self._DistrictID = DistrictID
+
+    @property
+    def NetServiceID(self):
+        """运营商ID。0: 全部 1: 中国电信 2: 中国联通 3: 中国移动 99: 其他，不填默认为0
+        :rtype: int
+        """
+        return self._NetServiceID
+
+    @NetServiceID.setter
+    def NetServiceID(self, NetServiceID):
+        self._NetServiceID = NetServiceID
+
+    @property
+    def NodeGroupType(self):
+        """节点组类型。0: 高级拨测点组 1: 可用性节点 2: 我的拨测点组，不填默认为0
+        :rtype: int
+        """
+        return self._NodeGroupType
+
+    @NodeGroupType.setter
+    def NodeGroupType(self, NodeGroupType):
+        self._NodeGroupType = NodeGroupType
+
+    @property
+    def TaskType(self):
+        """任务类型，如1、2、3、4、5、6、7；1-页面性能、2-文件上传、3-文件下载、4-端口性能、5-网络质量、6-音视频体验、7-域名whois，不填默认为0，不对任务类型做过滤
+        :rtype: int
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def ProbeType(self):
+        """测试类型，包含定时测试与即时测试。0-定时拨测，其它表示即时拨测。
+        :rtype: int
+        """
+        return self._ProbeType
+
+    @ProbeType.setter
+    def ProbeType(self, ProbeType):
+        self._ProbeType = ProbeType
+
+
+    def _deserialize(self, params):
+        self._NodeType = params.get("NodeType")
+        self._TaskCategory = params.get("TaskCategory")
+        self._IPType = params.get("IPType")
+        self._Name = params.get("Name")
+        self._RegionID = params.get("RegionID")
+        self._DistrictID = params.get("DistrictID")
+        self._NetServiceID = params.get("NetServiceID")
+        self._NodeGroupType = params.get("NodeGroupType")
+        self._TaskType = params.get("TaskType")
+        self._ProbeType = params.get("ProbeType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNodeGroupsResponse(AbstractModel):
+    """DescribeNodeGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeNodesRequest(AbstractModel):
     """DescribeNodes请求参数结构体
 

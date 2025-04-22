@@ -335,6 +335,8 @@ class AlarmInfo(AbstractModel):
         :type GroupTriggerStatus: bool
         :param _GroupTriggerCondition: 分组触发条件。
         :type GroupTriggerCondition: list of str
+        :param _Tags: 告警策略绑定的标签信息。
+        :type Tags: list of Tag
         :param _MonitorObjectType: 监控对象类型。0:执行语句共用监控对象;1:每个执行语句单独选择监控对象。 
         :type MonitorObjectType: int
         :param _AlarmLevel: 告警级别。0:警告(Warn);1:提醒(Info);2:紧急 (Critical)。
@@ -361,6 +363,7 @@ Condition互斥。
         self._Analysis = None
         self._GroupTriggerStatus = None
         self._GroupTriggerCondition = None
+        self._Tags = None
         self._MonitorObjectType = None
         self._AlarmLevel = None
         self._Classifications = None
@@ -544,6 +547,17 @@ Condition互斥。
         self._GroupTriggerCondition = GroupTriggerCondition
 
     @property
+    def Tags(self):
+        """告警策略绑定的标签信息。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
     def MonitorObjectType(self):
         """监控对象类型。0:执行语句共用监控对象;1:每个执行语句单独选择监控对象。 
         :rtype: int
@@ -620,6 +634,12 @@ Condition互斥。
                 self._Analysis.append(obj)
         self._GroupTriggerStatus = params.get("GroupTriggerStatus")
         self._GroupTriggerCondition = params.get("GroupTriggerCondition")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         self._MonitorObjectType = params.get("MonitorObjectType")
         self._AlarmLevel = params.get("AlarmLevel")
         if params.get("Classifications") is not None:
@@ -30072,11 +30092,14 @@ long及double类型字段需为空；
         :type SqlFlag: bool
         :param _ContainZH: 是否包含中文，long及double类型字段需为false
         :type ContainZH: bool
+        :param _Alias: 字段别名
+        :type Alias: str
         """
         self._Type = None
         self._Tokenizer = None
         self._SqlFlag = None
         self._ContainZH = None
+        self._Alias = None
 
     @property
     def Type(self):
@@ -30125,12 +30148,24 @@ long及double类型字段需为空；
     def ContainZH(self, ContainZH):
         self._ContainZH = ContainZH
 
+    @property
+    def Alias(self):
+        """字段别名
+        :rtype: str
+        """
+        return self._Alias
+
+    @Alias.setter
+    def Alias(self, Alias):
+        self._Alias = Alias
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
         self._Tokenizer = params.get("Tokenizer")
         self._SqlFlag = params.get("SqlFlag")
         self._ContainZH = params.get("ContainZH")
+        self._Alias = params.get("Alias")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

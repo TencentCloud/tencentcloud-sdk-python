@@ -10999,7 +10999,7 @@ manualPaused(已暂停)
 
 
 class KafkaOption(AbstractModel):
-    """目标端为kakfa时添加的同步选项字段
+    """目标端为kafka时添加的同步选项字段
 
     """
 

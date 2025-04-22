@@ -262,7 +262,7 @@ class CreateGatewayLoadBalancerResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _LoadBalancerIds: 由网关负载均衡实例唯一 ID 组成的数组。
-存在某些场景，如创建出现延迟时，此字段可能返回为空；此时可以根据接口返回的RequestId或DealName参数，通过DescribeTaskStatus接口查询创建的资源ID。
+存在某些场景，如创建出现延迟时，此字段可能返回为空；此时可以根据接口返回的RequestId或DealName参数，通过[DescribeTaskStatus](https://cloud.tencent.com/document/api/1782/111700)接口查询创建的资源ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LoadBalancerIds: list of str
         :param _DealName: 订单号。
@@ -278,7 +278,7 @@ class CreateGatewayLoadBalancerResponse(AbstractModel):
     @property
     def LoadBalancerIds(self):
         """由网关负载均衡实例唯一 ID 组成的数组。
-存在某些场景，如创建出现延迟时，此字段可能返回为空；此时可以根据接口返回的RequestId或DealName参数，通过DescribeTaskStatus接口查询创建的资源ID。
+存在某些场景，如创建出现延迟时，此字段可能返回为空；此时可以根据接口返回的RequestId或DealName参数，通过[DescribeTaskStatus](https://cloud.tencent.com/document/api/1782/111700)接口查询创建的资源ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -2372,7 +2372,7 @@ class ModifyTargetGroupInstancesWeightRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TargetGroupId: 目标组ID。可通过DescribeTargetGroupList接口获取。
+        :param _TargetGroupId: 目标组ID。可通过[DescribeTargetGroupList](https://cloud.tencent.com/document/api/1782/111692)接口获取。
         :type TargetGroupId: str
         :param _TargetGroupInstances: 实例绑定配置数组。
         :type TargetGroupInstances: list of TargetGroupInstance
@@ -2382,7 +2382,7 @@ class ModifyTargetGroupInstancesWeightRequest(AbstractModel):
 
     @property
     def TargetGroupId(self):
-        """目标组ID。可通过DescribeTargetGroupList接口获取。
+        """目标组ID。可通过[DescribeTargetGroupList](https://cloud.tencent.com/document/api/1782/111692)接口获取。
         :rtype: str
         """
         return self._TargetGroupId

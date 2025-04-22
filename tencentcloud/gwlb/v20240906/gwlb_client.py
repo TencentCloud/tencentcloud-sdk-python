@@ -401,7 +401,6 @@ class GwlbClient(AbstractClient):
 
     def ModifyTargetGroupInstancesWeight(self, request):
         """修改目标组的服务器权重。
-        本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
 
         :param request: Request instance for ModifyTargetGroupInstancesWeight.
         :type request: :class:`tencentcloud.gwlb.v20240906.models.ModifyTargetGroupInstancesWeightRequest`

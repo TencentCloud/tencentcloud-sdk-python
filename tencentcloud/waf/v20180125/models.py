@@ -8947,6 +8947,14 @@ class CreatePostCKafkaFlowRequest(AbstractModel):
         :type Topic: str
         :param _KafkaVersion: kafka集群的版本号
         :type KafkaVersion: str
+        :param _SASLEnable: 是否开启SASL校验，默认不开启，0-关闭，1-开启
+        :type SASLEnable: int
+        :param _SASLUser: SASL用户名
+        :type SASLUser: str
+        :param _SASLPassword: SASL密码
+        :type SASLPassword: str
+        :param _WriteConfig: 开启访问日志某些字段是否投递
+        :type WriteConfig: :class:`tencentcloud.waf.v20180125.models.FieldWriteConfig`
         """
         self._CKafkaRegion = None
         self._CKafkaID = None
@@ -8956,6 +8964,10 @@ class CreatePostCKafkaFlowRequest(AbstractModel):
         self._LogType = None
         self._Topic = None
         self._KafkaVersion = None
+        self._SASLEnable = None
+        self._SASLUser = None
+        self._SASLPassword = None
+        self._WriteConfig = None
 
     @property
     def CKafkaRegion(self):
@@ -9045,6 +9057,50 @@ class CreatePostCKafkaFlowRequest(AbstractModel):
     def KafkaVersion(self, KafkaVersion):
         self._KafkaVersion = KafkaVersion
 
+    @property
+    def SASLEnable(self):
+        """是否开启SASL校验，默认不开启，0-关闭，1-开启
+        :rtype: int
+        """
+        return self._SASLEnable
+
+    @SASLEnable.setter
+    def SASLEnable(self, SASLEnable):
+        self._SASLEnable = SASLEnable
+
+    @property
+    def SASLUser(self):
+        """SASL用户名
+        :rtype: str
+        """
+        return self._SASLUser
+
+    @SASLUser.setter
+    def SASLUser(self, SASLUser):
+        self._SASLUser = SASLUser
+
+    @property
+    def SASLPassword(self):
+        """SASL密码
+        :rtype: str
+        """
+        return self._SASLPassword
+
+    @SASLPassword.setter
+    def SASLPassword(self, SASLPassword):
+        self._SASLPassword = SASLPassword
+
+    @property
+    def WriteConfig(self):
+        """开启访问日志某些字段是否投递
+        :rtype: :class:`tencentcloud.waf.v20180125.models.FieldWriteConfig`
+        """
+        return self._WriteConfig
+
+    @WriteConfig.setter
+    def WriteConfig(self, WriteConfig):
+        self._WriteConfig = WriteConfig
+
 
     def _deserialize(self, params):
         self._CKafkaRegion = params.get("CKafkaRegion")
@@ -9055,6 +9111,12 @@ class CreatePostCKafkaFlowRequest(AbstractModel):
         self._LogType = params.get("LogType")
         self._Topic = params.get("Topic")
         self._KafkaVersion = params.get("KafkaVersion")
+        self._SASLEnable = params.get("SASLEnable")
+        self._SASLUser = params.get("SASLUser")
+        self._SASLPassword = params.get("SASLPassword")
+        if params.get("WriteConfig") is not None:
+            self._WriteConfig = FieldWriteConfig()
+            self._WriteConfig._deserialize(params.get("WriteConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24331,6 +24393,72 @@ class ExportAccessInfo(AbstractModel):
         
 
 
+class FieldWriteConfig(AbstractModel):
+    """设置哪些字段是否存储或转发
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnableHeaders: 1:开启 0:不开启
+        :type EnableHeaders: int
+        :param _EnableBody: 1:开启 0:不开启
+        :type EnableBody: int
+        :param _EnableBot: 1:开启 0:不开启
+        :type EnableBot: int
+        """
+        self._EnableHeaders = None
+        self._EnableBody = None
+        self._EnableBot = None
+
+    @property
+    def EnableHeaders(self):
+        """1:开启 0:不开启
+        :rtype: int
+        """
+        return self._EnableHeaders
+
+    @EnableHeaders.setter
+    def EnableHeaders(self, EnableHeaders):
+        self._EnableHeaders = EnableHeaders
+
+    @property
+    def EnableBody(self):
+        """1:开启 0:不开启
+        :rtype: int
+        """
+        return self._EnableBody
+
+    @EnableBody.setter
+    def EnableBody(self, EnableBody):
+        self._EnableBody = EnableBody
+
+    @property
+    def EnableBot(self):
+        """1:开启 0:不开启
+        :rtype: int
+        """
+        return self._EnableBot
+
+    @EnableBot.setter
+    def EnableBot(self, EnableBot):
+        self._EnableBot = EnableBot
+
+
+    def _deserialize(self, params):
+        self._EnableHeaders = params.get("EnableHeaders")
+        self._EnableBody = params.get("EnableBody")
+        self._EnableBot = params.get("EnableBot")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FiltersItemNew(AbstractModel):
     """过滤数组
 
@@ -36813,8 +36941,18 @@ class PostCKafkaFlowInfo(AbstractModel):
         :type Topic: str
         :param _Compression: 压缩算法，支持gzip 和 lz4
         :type Compression: str
+        :param _SASLEnable: 是否支持SASL,0-关闭，1-开启
+        :type SASLEnable: int
+        :param _SASLUser: SASL用户名
+        :type SASLUser: str
+        :param _SASLPassword: SALS密码
+        :type SASLPassword: str
         :param _Content: 描述信息
         :type Content: str
+        :param _VipType: 1-外网TGW，2-支撑环境，默认为支撑环境
+        :type VipType: int
+        :param _WriteConfig: 配置状态
+        :type WriteConfig: :class:`tencentcloud.waf.v20180125.models.FieldWriteConfig`
         """
         self._FlowId = None
         self._LogType = None
@@ -36825,7 +36963,12 @@ class PostCKafkaFlowInfo(AbstractModel):
         self._Version = None
         self._Topic = None
         self._Compression = None
+        self._SASLEnable = None
+        self._SASLUser = None
+        self._SASLPassword = None
         self._Content = None
+        self._VipType = None
+        self._WriteConfig = None
 
     @property
     def FlowId(self):
@@ -36927,6 +37070,39 @@ class PostCKafkaFlowInfo(AbstractModel):
         self._Compression = Compression
 
     @property
+    def SASLEnable(self):
+        """是否支持SASL,0-关闭，1-开启
+        :rtype: int
+        """
+        return self._SASLEnable
+
+    @SASLEnable.setter
+    def SASLEnable(self, SASLEnable):
+        self._SASLEnable = SASLEnable
+
+    @property
+    def SASLUser(self):
+        """SASL用户名
+        :rtype: str
+        """
+        return self._SASLUser
+
+    @SASLUser.setter
+    def SASLUser(self, SASLUser):
+        self._SASLUser = SASLUser
+
+    @property
+    def SASLPassword(self):
+        """SALS密码
+        :rtype: str
+        """
+        return self._SASLPassword
+
+    @SASLPassword.setter
+    def SASLPassword(self, SASLPassword):
+        self._SASLPassword = SASLPassword
+
+    @property
     def Content(self):
         """描述信息
         :rtype: str
@@ -36936,6 +37112,28 @@ class PostCKafkaFlowInfo(AbstractModel):
     @Content.setter
     def Content(self, Content):
         self._Content = Content
+
+    @property
+    def VipType(self):
+        """1-外网TGW，2-支撑环境，默认为支撑环境
+        :rtype: int
+        """
+        return self._VipType
+
+    @VipType.setter
+    def VipType(self, VipType):
+        self._VipType = VipType
+
+    @property
+    def WriteConfig(self):
+        """配置状态
+        :rtype: :class:`tencentcloud.waf.v20180125.models.FieldWriteConfig`
+        """
+        return self._WriteConfig
+
+    @WriteConfig.setter
+    def WriteConfig(self, WriteConfig):
+        self._WriteConfig = WriteConfig
 
 
     def _deserialize(self, params):
@@ -36948,7 +37146,14 @@ class PostCKafkaFlowInfo(AbstractModel):
         self._Version = params.get("Version")
         self._Topic = params.get("Topic")
         self._Compression = params.get("Compression")
+        self._SASLEnable = params.get("SASLEnable")
+        self._SASLUser = params.get("SASLUser")
+        self._SASLPassword = params.get("SASLPassword")
         self._Content = params.get("Content")
+        self._VipType = params.get("VipType")
+        if params.get("WriteConfig") is not None:
+            self._WriteConfig = FieldWriteConfig()
+            self._WriteConfig._deserialize(params.get("WriteConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

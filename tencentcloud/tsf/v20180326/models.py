@@ -4899,6 +4899,8 @@ class ClusterV2(AbstractModel):
         :type KuberneteNativeSecret: str
         :param _EnableLogCollection: 是否开启cls日志功能
         :type EnableLogCollection: bool
+        :param _Reason: 集群状态的原因
+        :type Reason: str
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -4937,6 +4939,7 @@ class ClusterV2(AbstractModel):
         self._KuberneteNativeType = None
         self._KuberneteNativeSecret = None
         self._EnableLogCollection = None
+        self._Reason = None
 
     @property
     def ClusterId(self):
@@ -5380,6 +5383,17 @@ class ClusterV2(AbstractModel):
     def EnableLogCollection(self, EnableLogCollection):
         self._EnableLogCollection = EnableLogCollection
 
+    @property
+    def Reason(self):
+        """集群状态的原因
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -5421,6 +5435,7 @@ class ClusterV2(AbstractModel):
         self._KuberneteNativeType = params.get("KuberneteNativeType")
         self._KuberneteNativeSecret = params.get("KuberneteNativeSecret")
         self._EnableLogCollection = params.get("EnableLogCollection")
+        self._Reason = params.get("Reason")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
