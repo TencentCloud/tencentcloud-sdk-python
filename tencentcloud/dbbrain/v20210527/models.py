@@ -5953,6 +5953,115 @@ class DescribeDBDiagHistoryResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDBDiagReportContentRequest(AbstractModel):
+    """DescribeDBDiagReportContent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例名
+        :type InstanceId: str
+        :param _AsyncRequestId: 异步任务ID
+        :type AsyncRequestId: int
+        :param _Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL，"redis" - 云数据库 Redis，"mongodb" - 云数据库 MongoDB，默认为"mysql"。
+        :type Product: str
+        """
+        self._InstanceId = None
+        self._AsyncRequestId = None
+        self._Product = None
+
+    @property
+    def InstanceId(self):
+        """实例名
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def AsyncRequestId(self):
+        """异步任务ID
+        :rtype: int
+        """
+        return self._AsyncRequestId
+
+    @AsyncRequestId.setter
+    def AsyncRequestId(self, AsyncRequestId):
+        self._AsyncRequestId = AsyncRequestId
+
+    @property
+    def Product(self):
+        """服务产品类型，支持值："mysql" - 云数据库 MySQL，"redis" - 云数据库 Redis，"mongodb" - 云数据库 MongoDB，默认为"mysql"。
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._AsyncRequestId = params.get("AsyncRequestId")
+        self._Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBDiagReportContentResponse(AbstractModel):
+    """DescribeDBDiagReportContent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Report: 报告内容。
+        :type Report: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Report = None
+        self._RequestId = None
+
+    @property
+    def Report(self):
+        """报告内容。
+        :rtype: str
+        """
+        return self._Report
+
+    @Report.setter
+    def Report(self, Report):
+        self._Report = Report
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Report = params.get("Report")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDBDiagReportTasksRequest(AbstractModel):
     """DescribeDBDiagReportTasks请求参数结构体
 

@@ -49,6 +49,29 @@ class CdcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateDedicatedClusterImageCache(self, request):
+        """创建云上镜像缓存到本地专用集群中
+
+        :param request: Request instance for CreateDedicatedClusterImageCache.
+        :type request: :class:`tencentcloud.cdc.v20201214.models.CreateDedicatedClusterImageCacheRequest`
+        :rtype: :class:`tencentcloud.cdc.v20201214.models.CreateDedicatedClusterImageCacheResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDedicatedClusterImageCache", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDedicatedClusterImageCacheResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateDedicatedClusterOrder(self, request):
         """创建专用集群订单
 
@@ -86,6 +109,29 @@ class CdcClient(AbstractClient):
             body = self.call("CreateSite", params, headers=headers)
             response = json.loads(body)
             model = models.CreateSiteResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteDedicatedClusterImageCache(self, request):
+        """删除本地专用集群的云上镜像缓存
+
+        :param request: Request instance for DeleteDedicatedClusterImageCache.
+        :type request: :class:`tencentcloud.cdc.v20201214.models.DeleteDedicatedClusterImageCacheRequest`
+        :rtype: :class:`tencentcloud.cdc.v20201214.models.DeleteDedicatedClusterImageCacheResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDedicatedClusterImageCache", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDedicatedClusterImageCacheResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

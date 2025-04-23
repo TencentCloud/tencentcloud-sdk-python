@@ -186,6 +186,100 @@ class CosInfo(AbstractModel):
         
 
 
+class CreateDedicatedClusterImageCacheRequest(AbstractModel):
+    """CreateDedicatedClusterImageCache请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DedicatedClusterId: 集群ID
+        :type DedicatedClusterId: str
+        :param _ImageId: 镜像ID
+        :type ImageId: str
+        """
+        self._DedicatedClusterId = None
+        self._ImageId = None
+
+    @property
+    def DedicatedClusterId(self):
+        """集群ID
+        :rtype: str
+        """
+        return self._DedicatedClusterId
+
+    @DedicatedClusterId.setter
+    def DedicatedClusterId(self, DedicatedClusterId):
+        self._DedicatedClusterId = DedicatedClusterId
+
+    @property
+    def ImageId(self):
+        """镜像ID
+        :rtype: str
+        """
+        return self._ImageId
+
+    @ImageId.setter
+    def ImageId(self, ImageId):
+        self._ImageId = ImageId
+
+
+    def _deserialize(self, params):
+        self._DedicatedClusterId = params.get("DedicatedClusterId")
+        self._ImageId = params.get("ImageId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDedicatedClusterImageCacheResponse(AbstractModel):
+    """CreateDedicatedClusterImageCache返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务id
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        """任务id
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateDedicatedClusterOrderRequest(AbstractModel):
     """CreateDedicatedClusterOrder请求参数结构体
 
@@ -2256,6 +2350,85 @@ class DedicatedClusterTypeInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DeleteDedicatedClusterImageCacheRequest(AbstractModel):
+    """DeleteDedicatedClusterImageCache请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DedicatedClusterId: 集群id
+        :type DedicatedClusterId: str
+        :param _ImageId: 镜像id
+        :type ImageId: str
+        """
+        self._DedicatedClusterId = None
+        self._ImageId = None
+
+    @property
+    def DedicatedClusterId(self):
+        """集群id
+        :rtype: str
+        """
+        return self._DedicatedClusterId
+
+    @DedicatedClusterId.setter
+    def DedicatedClusterId(self, DedicatedClusterId):
+        self._DedicatedClusterId = DedicatedClusterId
+
+    @property
+    def ImageId(self):
+        """镜像id
+        :rtype: str
+        """
+        return self._ImageId
+
+    @ImageId.setter
+    def ImageId(self, ImageId):
+        self._ImageId = ImageId
+
+
+    def _deserialize(self, params):
+        self._DedicatedClusterId = params.get("DedicatedClusterId")
+        self._ImageId = params.get("ImageId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDedicatedClusterImageCacheResponse(AbstractModel):
+    """DeleteDedicatedClusterImageCache返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteDedicatedClustersRequest(AbstractModel):

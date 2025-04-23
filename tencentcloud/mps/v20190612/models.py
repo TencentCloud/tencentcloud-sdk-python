@@ -17363,20 +17363,23 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HLSConfigure: HLS 配置参数
+        :param _HLSConfigure: HLS配置参数，和MP4Configure需要二选一必填。
         :type HLSConfigure: :class:`tencentcloud.mps.v20190612.models.HLSConfigureInfo`
+        :param _MP4Configure: MP4配置参数，和HLSConfigure需要二选一必填。
+        :type MP4Configure: :class:`tencentcloud.mps.v20190612.models.MP4ConfigureInfo`
         :param _Name: 录制模板名称，长度限制：64 个字符。
         :type Name: str
         :param _Comment: 模板描述信息，长度限制：256 个字符。
         :type Comment: str
         """
         self._HLSConfigure = None
+        self._MP4Configure = None
         self._Name = None
         self._Comment = None
 
     @property
     def HLSConfigure(self):
-        """HLS 配置参数
+        """HLS配置参数，和MP4Configure需要二选一必填。
         :rtype: :class:`tencentcloud.mps.v20190612.models.HLSConfigureInfo`
         """
         return self._HLSConfigure
@@ -17384,6 +17387,17 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
     @HLSConfigure.setter
     def HLSConfigure(self, HLSConfigure):
         self._HLSConfigure = HLSConfigure
+
+    @property
+    def MP4Configure(self):
+        """MP4配置参数，和HLSConfigure需要二选一必填。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MP4ConfigureInfo`
+        """
+        return self._MP4Configure
+
+    @MP4Configure.setter
+    def MP4Configure(self, MP4Configure):
+        self._MP4Configure = MP4Configure
 
     @property
     def Name(self):
@@ -17412,6 +17426,9 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
         if params.get("HLSConfigure") is not None:
             self._HLSConfigure = HLSConfigureInfo()
             self._HLSConfigure._deserialize(params.get("HLSConfigure"))
+        if params.get("MP4Configure") is not None:
+            self._MP4Configure = MP4ConfigureInfo()
+            self._MP4Configure._deserialize(params.get("MP4Configure"))
         self._Name = params.get("Name")
         self._Comment = params.get("Comment")
         memeber_set = set(params.keys())
@@ -36110,6 +36127,8 @@ class LiveRecordTemplate(AbstractModel):
         :type Definition: int
         :param _HLSConfigure: HLS 配置参数
         :type HLSConfigure: :class:`tencentcloud.mps.v20190612.models.HLSConfigureInfo`
+        :param _MP4Configure: MP4配置参数
+        :type MP4Configure: :class:`tencentcloud.mps.v20190612.models.MP4ConfigureInfo`
         :param _Name: 录制模板名称。
         :type Name: str
         :param _Comment: 模板描述信息。
@@ -36125,6 +36144,7 @@ class LiveRecordTemplate(AbstractModel):
         """
         self._Definition = None
         self._HLSConfigure = None
+        self._MP4Configure = None
         self._Name = None
         self._Comment = None
         self._Type = None
@@ -36152,6 +36172,17 @@ class LiveRecordTemplate(AbstractModel):
     @HLSConfigure.setter
     def HLSConfigure(self, HLSConfigure):
         self._HLSConfigure = HLSConfigure
+
+    @property
+    def MP4Configure(self):
+        """MP4配置参数
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MP4ConfigureInfo`
+        """
+        return self._MP4Configure
+
+    @MP4Configure.setter
+    def MP4Configure(self, MP4Configure):
+        self._MP4Configure = MP4Configure
 
     @property
     def Name(self):
@@ -36216,6 +36247,9 @@ class LiveRecordTemplate(AbstractModel):
         if params.get("HLSConfigure") is not None:
             self._HLSConfigure = HLSConfigureInfo()
             self._HLSConfigure._deserialize(params.get("HLSConfigure"))
+        if params.get("MP4Configure") is not None:
+            self._MP4Configure = MP4ConfigureInfo()
+            self._MP4Configure._deserialize(params.get("MP4Configure"))
         self._Name = params.get("Name")
         self._Comment = params.get("Comment")
         self._Type = params.get("Type")
@@ -39020,6 +39054,42 @@ class LowLightEnhanceConfig(AbstractModel):
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
         self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MP4ConfigureInfo(AbstractModel):
+    """MP4配置参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Interval: 录制周期，单位：秒，取值范围 10 分钟到720分钟。默认值：60分钟（3600秒）。
+        :type Interval: int
+        """
+        self._Interval = None
+
+    @property
+    def Interval(self):
+        """录制周期，单位：秒，取值范围 10 分钟到720分钟。默认值：60分钟（3600秒）。
+        :rtype: int
+        """
+        return self._Interval
+
+    @Interval.setter
+    def Interval(self, Interval):
+        self._Interval = Interval
+
+
+    def _deserialize(self, params):
+        self._Interval = params.get("Interval")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43659,7 +43729,10 @@ class ModifyAsrHotwordsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HotwordsId: 热词库 id
+        :param _HotwordsId: 热词库 id 
+如果热词库是文本热词：Name 和 Content 至少填一个 
+如果热词库是：Name、FileContent 和 FileName 至少填一个 
+
         :type HotwordsId: str
         :param _Name: 热词库名称
         :type Name: str
@@ -43681,7 +43754,10 @@ class ModifyAsrHotwordsRequest(AbstractModel):
 
     @property
     def HotwordsId(self):
-        """热词库 id
+        """热词库 id 
+如果热词库是文本热词：Name 和 Content 至少填一个 
+如果热词库是：Name、FileContent 和 FileName 至少填一个 
+
         :rtype: str
         """
         return self._HotwordsId
@@ -44520,8 +44596,10 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
         r"""
         :param _Definition: 录制模板唯一标识。
         :type Definition: int
-        :param _HLSConfigure: HLS 配置参数
+        :param _HLSConfigure: HLS配置参数，和MP4Configure需要二选一必填。
         :type HLSConfigure: :class:`tencentcloud.mps.v20190612.models.HLSConfigureInfo`
+        :param _MP4Configure: MP4配置参数，和HLSConfigure需要二选一必填。
+        :type MP4Configure: :class:`tencentcloud.mps.v20190612.models.MP4ConfigureInfo`
         :param _Name: 录制模板名称，长度限制：64 个字符。
         :type Name: str
         :param _Comment: 模板描述信息，长度限制：256 个字符。
@@ -44529,6 +44607,7 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
         """
         self._Definition = None
         self._HLSConfigure = None
+        self._MP4Configure = None
         self._Name = None
         self._Comment = None
 
@@ -44545,7 +44624,7 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def HLSConfigure(self):
-        """HLS 配置参数
+        """HLS配置参数，和MP4Configure需要二选一必填。
         :rtype: :class:`tencentcloud.mps.v20190612.models.HLSConfigureInfo`
         """
         return self._HLSConfigure
@@ -44553,6 +44632,17 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
     @HLSConfigure.setter
     def HLSConfigure(self, HLSConfigure):
         self._HLSConfigure = HLSConfigure
+
+    @property
+    def MP4Configure(self):
+        """MP4配置参数，和HLSConfigure需要二选一必填。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MP4ConfigureInfo`
+        """
+        return self._MP4Configure
+
+    @MP4Configure.setter
+    def MP4Configure(self, MP4Configure):
+        self._MP4Configure = MP4Configure
 
     @property
     def Name(self):
@@ -44582,6 +44672,9 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
         if params.get("HLSConfigure") is not None:
             self._HLSConfigure = HLSConfigureInfo()
             self._HLSConfigure._deserialize(params.get("HLSConfigure"))
+        if params.get("MP4Configure") is not None:
+            self._MP4Configure = MP4ConfigureInfo()
+            self._MP4Configure._deserialize(params.get("MP4Configure"))
         self._Name = params.get("Name")
         self._Comment = params.get("Comment")
         memeber_set = set(params.keys())
@@ -50839,9 +50932,12 @@ class QualityControlData(AbstractModel):
         :param _NoVideo: 为true时表示视频无视频轨。
 注意：此字段可能返回 null，表示取不到有效值。
         :type NoVideo: bool
-        :param _QualityEvaluationScore: 视频无参考质量打分，百分制。
+        :param _QualityEvaluationScore: 视频无参考质量评分，百分制。
 注意：此字段可能返回 null，表示取不到有效值。
         :type QualityEvaluationScore: int
+        :param _QualityEvaluationMeanOpinionScore: 视频无参考质量评分，MOS分数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QualityEvaluationMeanOpinionScore: float
         :param _QualityControlResultSet: 内容质检检出异常项。
 注意：此字段可能返回 null，表示取不到有效值。
         :type QualityControlResultSet: list of QualityControlResult
@@ -50852,6 +50948,7 @@ class QualityControlData(AbstractModel):
         self._NoAudio = None
         self._NoVideo = None
         self._QualityEvaluationScore = None
+        self._QualityEvaluationMeanOpinionScore = None
         self._QualityControlResultSet = None
         self._ContainerDiagnoseResultSet = None
 
@@ -50881,7 +50978,7 @@ class QualityControlData(AbstractModel):
 
     @property
     def QualityEvaluationScore(self):
-        """视频无参考质量打分，百分制。
+        """视频无参考质量评分，百分制。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -50890,6 +50987,18 @@ class QualityControlData(AbstractModel):
     @QualityEvaluationScore.setter
     def QualityEvaluationScore(self, QualityEvaluationScore):
         self._QualityEvaluationScore = QualityEvaluationScore
+
+    @property
+    def QualityEvaluationMeanOpinionScore(self):
+        """视频无参考质量评分，MOS分数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._QualityEvaluationMeanOpinionScore
+
+    @QualityEvaluationMeanOpinionScore.setter
+    def QualityEvaluationMeanOpinionScore(self, QualityEvaluationMeanOpinionScore):
+        self._QualityEvaluationMeanOpinionScore = QualityEvaluationMeanOpinionScore
 
     @property
     def QualityControlResultSet(self):
@@ -50920,6 +51029,7 @@ class QualityControlData(AbstractModel):
         self._NoAudio = params.get("NoAudio")
         self._NoVideo = params.get("NoVideo")
         self._QualityEvaluationScore = params.get("QualityEvaluationScore")
+        self._QualityEvaluationMeanOpinionScore = params.get("QualityEvaluationMeanOpinionScore")
         if params.get("QualityControlResultSet") is not None:
             self._QualityControlResultSet = []
             for item in params.get("QualityControlResultSet"):
@@ -62711,10 +62821,13 @@ class WordResult(AbstractModel):
         :type Start: float
         :param _End: 字词结束时间戳，单位秒。
         :type End: float
+        :param _Trans: 翻译文本
+        :type Trans: str
         """
         self._Word = None
         self._Start = None
         self._End = None
+        self._Trans = None
 
     @property
     def Word(self):
@@ -62749,11 +62862,23 @@ class WordResult(AbstractModel):
     def End(self, End):
         self._End = End
 
+    @property
+    def Trans(self):
+        """翻译文本
+        :rtype: str
+        """
+        return self._Trans
+
+    @Trans.setter
+    def Trans(self, Trans):
+        self._Trans = Trans
+
 
     def _deserialize(self, params):
         self._Word = params.get("Word")
         self._Start = params.get("Start")
         self._End = params.get("End")
+        self._Trans = params.get("Trans")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -26,6 +26,29 @@ class TdsClient(AbstractClient):
     _service = 'tds'
 
 
+    def DescribeFinanceFraudUltimate(self, request):
+        """查询设备标识及风险（金融旗舰版）
+
+        :param request: Request instance for DescribeFinanceFraudUltimate.
+        :type request: :class:`tencentcloud.tds.v20220801.models.DescribeFinanceFraudUltimateRequest`
+        :rtype: :class:`tencentcloud.tds.v20220801.models.DescribeFinanceFraudUltimateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFinanceFraudUltimate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeFinanceFraudUltimateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeFraudBase(self, request):
         """查询设备风险
 

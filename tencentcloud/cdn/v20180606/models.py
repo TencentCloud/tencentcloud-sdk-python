@@ -20698,11 +20698,14 @@ directory 时填充路径，如 /xxx/test/
 path 时填充绝对路径，如 /xxx/test.html
 注意：此字段可能返回 null，表示取不到有效值。
         :type RulePaths: list of str
+        :param _Remark: 备注信息, 最多支持50个字符
+        :type Remark: str
         """
         self._FilterType = None
         self._Filters = None
         self._RuleType = None
         self._RulePaths = None
+        self._Remark = None
 
     @property
     def FilterType(self):
@@ -20764,12 +20767,24 @@ path 时填充绝对路径，如 /xxx/test.html
     def RulePaths(self, RulePaths):
         self._RulePaths = RulePaths
 
+    @property
+    def Remark(self):
+        """备注信息, 最多支持50个字符
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
 
     def _deserialize(self, params):
         self._FilterType = params.get("FilterType")
         self._Filters = params.get("Filters")
         self._RuleType = params.get("RuleType")
         self._RulePaths = params.get("RulePaths")
+        self._Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -1364,7 +1364,6 @@ class BindDetailItem(AbstractModel):
         :param _LocationId: 配置绑定的规则
         :type LocationId: str
         :param _ListenerName: 监听器名字
-注意：此字段可能返回 null，表示取不到有效值。
         :type ListenerName: str
         :param _Protocol: 监听器协议
         :type Protocol: str
@@ -1433,7 +1432,6 @@ class BindDetailItem(AbstractModel):
     @property
     def ListenerName(self):
         """监听器名字
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ListenerName

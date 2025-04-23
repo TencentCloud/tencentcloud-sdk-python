@@ -1245,6 +1245,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeClusterMonitorInfos(self, request):
+        """查询任务监控指标信息
+
+        :param request: Request instance for DescribeClusterMonitorInfos.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeClusterMonitorInfosRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeClusterMonitorInfosResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClusterMonitorInfos", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeClusterMonitorInfosResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDLCCatalogAccess(self, request):
         """查询DLC Catalog授权列表
 

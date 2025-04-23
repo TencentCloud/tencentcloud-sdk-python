@@ -13105,6 +13105,130 @@ class DescribeAdvancedStoreLocationResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeClusterMonitorInfosRequest(AbstractModel):
+    """DescribeClusterMonitorInfos请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataEngineId: 引擎Id
+        :type DataEngineId: str
+        :param _TimeStart: 任务创建时间的起始时间
+        :type TimeStart: str
+        :param _TimeEnd: 任务创建时间的结束时间
+        :type TimeEnd: str
+        :param _MetricName: 指标名称
+        :type MetricName: str
+        """
+        self._DataEngineId = None
+        self._TimeStart = None
+        self._TimeEnd = None
+        self._MetricName = None
+
+    @property
+    def DataEngineId(self):
+        """引擎Id
+        :rtype: str
+        """
+        return self._DataEngineId
+
+    @DataEngineId.setter
+    def DataEngineId(self, DataEngineId):
+        self._DataEngineId = DataEngineId
+
+    @property
+    def TimeStart(self):
+        """任务创建时间的起始时间
+        :rtype: str
+        """
+        return self._TimeStart
+
+    @TimeStart.setter
+    def TimeStart(self, TimeStart):
+        self._TimeStart = TimeStart
+
+    @property
+    def TimeEnd(self):
+        """任务创建时间的结束时间
+        :rtype: str
+        """
+        return self._TimeEnd
+
+    @TimeEnd.setter
+    def TimeEnd(self, TimeEnd):
+        self._TimeEnd = TimeEnd
+
+    @property
+    def MetricName(self):
+        """指标名称
+        :rtype: str
+        """
+        return self._MetricName
+
+    @MetricName.setter
+    def MetricName(self, MetricName):
+        self._MetricName = MetricName
+
+
+    def _deserialize(self, params):
+        self._DataEngineId = params.get("DataEngineId")
+        self._TimeStart = params.get("TimeStart")
+        self._TimeEnd = params.get("TimeEnd")
+        self._MetricName = params.get("MetricName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterMonitorInfosResponse(AbstractModel):
+    """DescribeClusterMonitorInfos返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Info: 集群监控信息列表
+        :type Info: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Info = None
+        self._RequestId = None
+
+    @property
+    def Info(self):
+        """集群监控信息列表
+        :rtype: str
+        """
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Info = params.get("Info")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDLCCatalogAccessRequest(AbstractModel):
     """DescribeDLCCatalogAccess请求参数结构体
 

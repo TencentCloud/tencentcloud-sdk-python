@@ -27787,6 +27787,8 @@ class InstanceInfo(AbstractModel):
         :type Last3MaxQPS: int
         :param _Last3MaxBandwidth: 最近3天最大带宽
         :type Last3MaxBandwidth: int
+        :param _MajorEventsProPkg: 重保增强包
+        :type MajorEventsProPkg: :class:`tencentcloud.waf.v20180125.models.MajorEventsProPkg`
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -27831,6 +27833,7 @@ class InstanceInfo(AbstractModel):
         self._FreeDelayFlag = None
         self._Last3MaxQPS = None
         self._Last3MaxBandwidth = None
+        self._MajorEventsProPkg = None
 
     @property
     def InstanceId(self):
@@ -28315,6 +28318,17 @@ class InstanceInfo(AbstractModel):
     def Last3MaxBandwidth(self, Last3MaxBandwidth):
         self._Last3MaxBandwidth = Last3MaxBandwidth
 
+    @property
+    def MajorEventsProPkg(self):
+        """重保增强包
+        :rtype: :class:`tencentcloud.waf.v20180125.models.MajorEventsProPkg`
+        """
+        return self._MajorEventsProPkg
+
+    @MajorEventsProPkg.setter
+    def MajorEventsProPkg(self, MajorEventsProPkg):
+        self._MajorEventsProPkg = MajorEventsProPkg
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -28380,6 +28394,9 @@ class InstanceInfo(AbstractModel):
         self._FreeDelayFlag = params.get("FreeDelayFlag")
         self._Last3MaxQPS = params.get("Last3MaxQPS")
         self._Last3MaxBandwidth = params.get("Last3MaxBandwidth")
+        if params.get("MajorEventsProPkg") is not None:
+            self._MajorEventsProPkg = MajorEventsProPkg()
+            self._MajorEventsProPkg._deserialize(params.get("MajorEventsProPkg"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29724,6 +29741,162 @@ class MajorEventsPkg(AbstractModel):
         self._RenewFlag = params.get("RenewFlag")
         self._BillingItem = params.get("BillingItem")
         self._HWState = params.get("HWState")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MajorEventsProPkg(AbstractModel):
+    """重保防护资源信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceIds: 资源id
+        :type ResourceIds: str
+        :param _Status: 状态
+        :type Status: int
+        :param _Region: 地域
+        :type Region: int
+        :param _BeginTime: 开始时间
+        :type BeginTime: str
+        :param _EndTime: 结束时间
+        :type EndTime: str
+        :param _InquireNum: 申请数量
+        :type InquireNum: int
+        :param _UsedNum: 使用数量
+        :type UsedNum: int
+        :param _RenewFlag: 续费标志
+        :type RenewFlag: int
+        :param _BillingItem: 计费项
+        :type BillingItem: str
+        """
+        self._ResourceIds = None
+        self._Status = None
+        self._Region = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._InquireNum = None
+        self._UsedNum = None
+        self._RenewFlag = None
+        self._BillingItem = None
+
+    @property
+    def ResourceIds(self):
+        """资源id
+        :rtype: str
+        """
+        return self._ResourceIds
+
+    @ResourceIds.setter
+    def ResourceIds(self, ResourceIds):
+        self._ResourceIds = ResourceIds
+
+    @property
+    def Status(self):
+        """状态
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Region(self):
+        """地域
+        :rtype: int
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def BeginTime(self):
+        """开始时间
+        :rtype: str
+        """
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        """结束时间
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def InquireNum(self):
+        """申请数量
+        :rtype: int
+        """
+        return self._InquireNum
+
+    @InquireNum.setter
+    def InquireNum(self, InquireNum):
+        self._InquireNum = InquireNum
+
+    @property
+    def UsedNum(self):
+        """使用数量
+        :rtype: int
+        """
+        return self._UsedNum
+
+    @UsedNum.setter
+    def UsedNum(self, UsedNum):
+        self._UsedNum = UsedNum
+
+    @property
+    def RenewFlag(self):
+        """续费标志
+        :rtype: int
+        """
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def BillingItem(self):
+        """计费项
+        :rtype: str
+        """
+        return self._BillingItem
+
+    @BillingItem.setter
+    def BillingItem(self, BillingItem):
+        self._BillingItem = BillingItem
+
+
+    def _deserialize(self, params):
+        self._ResourceIds = params.get("ResourceIds")
+        self._Status = params.get("Status")
+        self._Region = params.get("Region")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._InquireNum = params.get("InquireNum")
+        self._UsedNum = params.get("UsedNum")
+        self._RenewFlag = params.get("RenewFlag")
+        self._BillingItem = params.get("BillingItem")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

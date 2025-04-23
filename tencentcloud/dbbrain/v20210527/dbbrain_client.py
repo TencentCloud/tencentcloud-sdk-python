@@ -739,6 +739,29 @@ class DbbrainClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDBDiagReportContent(self, request):
+        """健康报告内容。
+
+        :param request: Request instance for DescribeDBDiagReportContent.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeDBDiagReportContentRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.DescribeDBDiagReportContentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBDiagReportContent", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBDiagReportContentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDBDiagReportTasks(self, request):
         """查询健康报告生成任务列表。
 

@@ -61,6 +61,8 @@ False -- 不开启
         :type EnableRotation: bool
         :param _RotationFrequency: 轮转周期，以天为单位，默认为1天。
         :type RotationFrequency: int
+        :param _KmsHsmClusterId: KMS的独享集群的ID。当KmsKeyId为空,并且用户的KMS存在有效的HsmClusterId时有效。
+        :type KmsHsmClusterId: str
         """
         self._SecretName = None
         self._UserNamePrefix = None
@@ -74,6 +76,7 @@ False -- 不开启
         self._RotationBeginTime = None
         self._EnableRotation = None
         self._RotationFrequency = None
+        self._KmsHsmClusterId = None
 
     @property
     def SecretName(self):
@@ -219,6 +222,17 @@ False -- 不开启
     def RotationFrequency(self, RotationFrequency):
         self._RotationFrequency = RotationFrequency
 
+    @property
+    def KmsHsmClusterId(self):
+        """KMS的独享集群的ID。当KmsKeyId为空,并且用户的KMS存在有效的HsmClusterId时有效。
+        :rtype: str
+        """
+        return self._KmsHsmClusterId
+
+    @KmsHsmClusterId.setter
+    def KmsHsmClusterId(self, KmsHsmClusterId):
+        self._KmsHsmClusterId = KmsHsmClusterId
+
 
     def _deserialize(self, params):
         self._SecretName = params.get("SecretName")
@@ -243,6 +257,7 @@ False -- 不开启
         self._RotationBeginTime = params.get("RotationBeginTime")
         self._EnableRotation = params.get("EnableRotation")
         self._RotationFrequency = params.get("RotationFrequency")
+        self._KmsHsmClusterId = params.get("KmsHsmClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -362,6 +377,8 @@ class CreateSSHKeyPairSecretRequest(AbstractModel):
         :type Tags: list of Tag
         :param _SSHKeyName: 用户自定义输入的SSH密钥对的名称，可由数字，字母和下划线组成，只能以数字和字母开头，长度不超过25个字符。
         :type SSHKeyName: str
+        :param _KmsHsmClusterId: KMS的独享集群的ID。当KmsKeyId为空,并且用户的KMS存在有效的HsmClusterId时有效。
+        :type KmsHsmClusterId: str
         """
         self._SecretName = None
         self._ProjectId = None
@@ -369,6 +386,7 @@ class CreateSSHKeyPairSecretRequest(AbstractModel):
         self._KmsKeyId = None
         self._Tags = None
         self._SSHKeyName = None
+        self._KmsHsmClusterId = None
 
     @property
     def SecretName(self):
@@ -438,6 +456,17 @@ class CreateSSHKeyPairSecretRequest(AbstractModel):
     def SSHKeyName(self, SSHKeyName):
         self._SSHKeyName = SSHKeyName
 
+    @property
+    def KmsHsmClusterId(self):
+        """KMS的独享集群的ID。当KmsKeyId为空,并且用户的KMS存在有效的HsmClusterId时有效。
+        :rtype: str
+        """
+        return self._KmsHsmClusterId
+
+    @KmsHsmClusterId.setter
+    def KmsHsmClusterId(self, KmsHsmClusterId):
+        self._KmsHsmClusterId = KmsHsmClusterId
+
 
     def _deserialize(self, params):
         self._SecretName = params.get("SecretName")
@@ -451,6 +480,7 @@ class CreateSSHKeyPairSecretRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._SSHKeyName = params.get("SSHKeyName")
+        self._KmsHsmClusterId = params.get("KmsHsmClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -589,6 +619,8 @@ class CreateSecretRequest(AbstractModel):
         :type AdditionalConfig: str
         :param _Tags: 标签列表
         :type Tags: list of Tag
+        :param _KmsHsmClusterId: KMS的独享集群的ID。当KmsKeyId为空,并且用户的KMS存在有效的HsmClusterId时有效。
+        :type KmsHsmClusterId: str
         """
         self._SecretName = None
         self._VersionId = None
@@ -599,6 +631,7 @@ class CreateSecretRequest(AbstractModel):
         self._SecretString = None
         self._AdditionalConfig = None
         self._Tags = None
+        self._KmsHsmClusterId = None
 
     @property
     def SecretName(self):
@@ -699,6 +732,17 @@ class CreateSecretRequest(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def KmsHsmClusterId(self):
+        """KMS的独享集群的ID。当KmsKeyId为空,并且用户的KMS存在有效的HsmClusterId时有效。
+        :rtype: str
+        """
+        return self._KmsHsmClusterId
+
+    @KmsHsmClusterId.setter
+    def KmsHsmClusterId(self, KmsHsmClusterId):
+        self._KmsHsmClusterId = KmsHsmClusterId
+
 
     def _deserialize(self, params):
         self._SecretName = params.get("SecretName")
@@ -715,6 +759,7 @@ class CreateSecretRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._KmsHsmClusterId = params.get("KmsHsmClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

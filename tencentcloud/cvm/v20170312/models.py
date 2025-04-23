@@ -12217,10 +12217,17 @@ class InquiryPriceResizeInstanceDisksRequest(AbstractModel):
         :type DataDisks: list of DataDisk
         :param _ForceStop: 是否对运行中的实例选择强制关机。建议对运行中的实例先手动关机，然后再重置用户密码。取值范围：<br><li>true：表示在正常关机失败后进行强制关机</li><br><li>false：表示在正常关机失败后不进行强制关机</li><br>默认取值：false。<br><br>强制关机的效果等同于关闭物理计算机的电源开关。强制关机可能会导致数据丢失或文件系统损坏，请仅在服务器不能正常关机时使用。
         :type ForceStop: bool
+        :param _SystemDisk: 待扩容的系统盘配置信息。只支持扩容云盘。
+<dx-alert infotype="explain" title="">您必须指定参数DataDisks与SystemDisk的其中一个，但不能同时指定。</dx-alert>
+        :type SystemDisk: :class:`tencentcloud.cvm.v20170312.models.SystemDisk`
+        :param _ResizeOnline: 是否在线扩容
+        :type ResizeOnline: bool
         """
         self._InstanceId = None
         self._DataDisks = None
         self._ForceStop = None
+        self._SystemDisk = None
+        self._ResizeOnline = None
 
     @property
     def InstanceId(self):
@@ -12256,6 +12263,29 @@ class InquiryPriceResizeInstanceDisksRequest(AbstractModel):
     def ForceStop(self, ForceStop):
         self._ForceStop = ForceStop
 
+    @property
+    def SystemDisk(self):
+        """待扩容的系统盘配置信息。只支持扩容云盘。
+<dx-alert infotype="explain" title="">您必须指定参数DataDisks与SystemDisk的其中一个，但不能同时指定。</dx-alert>
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.SystemDisk`
+        """
+        return self._SystemDisk
+
+    @SystemDisk.setter
+    def SystemDisk(self, SystemDisk):
+        self._SystemDisk = SystemDisk
+
+    @property
+    def ResizeOnline(self):
+        """是否在线扩容
+        :rtype: bool
+        """
+        return self._ResizeOnline
+
+    @ResizeOnline.setter
+    def ResizeOnline(self, ResizeOnline):
+        self._ResizeOnline = ResizeOnline
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -12266,6 +12296,10 @@ class InquiryPriceResizeInstanceDisksRequest(AbstractModel):
                 obj._deserialize(item)
                 self._DataDisks.append(obj)
         self._ForceStop = params.get("ForceStop")
+        if params.get("SystemDisk") is not None:
+            self._SystemDisk = SystemDisk()
+            self._SystemDisk._deserialize(params.get("SystemDisk"))
+        self._ResizeOnline = params.get("ResizeOnline")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
