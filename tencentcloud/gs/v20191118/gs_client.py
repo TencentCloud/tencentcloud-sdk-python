@@ -628,6 +628,29 @@ class GsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def FetchAndroidInstancesLogs(self, request):
+        """批量获取安卓实例日志
+
+        :param request: Request instance for FetchAndroidInstancesLogs.
+        :type request: :class:`tencentcloud.gs.v20191118.models.FetchAndroidInstancesLogsRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.FetchAndroidInstancesLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("FetchAndroidInstancesLogs", params, headers=headers)
+            response = json.loads(body)
+            model = models.FetchAndroidInstancesLogsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def InstallAndroidInstancesApp(self, request):
         """安装安卓实例应用
 
@@ -734,6 +757,29 @@ class GsClient(AbstractClient):
             body = self.call("ModifyAndroidInstanceResolution", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyAndroidInstanceResolutionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyAndroidInstancesInformation(self, request):
+        """批量修改安卓实例信息
+
+        :param request: Request instance for ModifyAndroidInstancesInformation.
+        :type request: :class:`tencentcloud.gs.v20191118.models.ModifyAndroidInstancesInformationRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.ModifyAndroidInstancesInformationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAndroidInstancesInformation", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAndroidInstancesInformationResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

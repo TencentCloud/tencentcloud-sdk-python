@@ -4487,9 +4487,9 @@ class CreateRabbitMQBindingRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例Id
+        :param _InstanceId: 实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
         :type InstanceId: str
-        :param _VirtualHost: Vhost名称
+        :param _VirtualHost: VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到Vhost名称。
         :type VirtualHost: str
         :param _Source: 源exchange
         :type Source: str
@@ -4509,7 +4509,7 @@ class CreateRabbitMQBindingRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例Id
+        """实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
         :rtype: str
         """
         return self._InstanceId
@@ -4520,7 +4520,7 @@ class CreateRabbitMQBindingRequest(AbstractModel):
 
     @property
     def VirtualHost(self):
-        """Vhost名称
+        """VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到Vhost名称。
         :rtype: str
         """
         return self._VirtualHost
@@ -4598,7 +4598,7 @@ class CreateRabbitMQBindingResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例名称
+        :param _InstanceId: 实例 ID
         :type InstanceId: str
         :param _VirtualHost: vhost名称
         :type VirtualHost: str
@@ -4614,7 +4614,7 @@ class CreateRabbitMQBindingResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例名称
+        """实例 ID
         :rtype: str
         """
         return self._InstanceId
@@ -4671,11 +4671,11 @@ class CreateRabbitMQUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群实例Id
+        :param _InstanceId: 实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
         :type InstanceId: str
         :param _User: 用户名，登录时使用
         :type User: str
-        :param _Password: 密码，登录时使用
+        :param _Password: 密码，登录时使用。规范：不能为空，8-64个字符，至少要包含小写字母、大写字母、数字、特殊字符【()`~!@#$%^&*_=|{}[]:;',.?/】中的两项
         :type Password: str
         :param _Description: 描述
         :type Description: str
@@ -4697,7 +4697,7 @@ management：普通控制台用户，monitoring：管理型控制台用户，其
 
     @property
     def InstanceId(self):
-        """集群实例Id
+        """实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
         :rtype: str
         """
         return self._InstanceId
@@ -4719,7 +4719,7 @@ management：普通控制台用户，monitoring：管理型控制台用户，其
 
     @property
     def Password(self):
-        """密码，登录时使用
+        """密码，登录时使用。规范：不能为空，8-64个字符，至少要包含小写字母、大写字母、数字、特殊字符【()`~!@#$%^&*_=|{}[]:;',.?/】中的两项
         :rtype: str
         """
         return self._Password
@@ -4844,21 +4844,30 @@ class CreateRabbitMQVipInstanceRequest(AbstractModel):
         r"""
         :param _ZoneIds: 可用区
         :type ZoneIds: list of int
-        :param _VpcId: 私有网络VpcId
+        :param _VpcId: 私有网络ID，形如 vpc-xxx。有效的 VpcId 可通过登录[私有网络](https://console.cloud.tencent.com/vpc/vpc?rid=1)控制台查询；也可以调用接口 [DescribeVpcEx](https://cloud.tencent.com/document/api/215/1372)，从接口返回中的 unVpcId 字段获取。若在创建子机时 VpcId 与 SubnetId 同时传入 DEFAULT，则强制使用默认 vpc 网络。
         :type VpcId: str
-        :param _SubnetId: 私有网络SubnetId
+        :param _SubnetId: 私有网络子网 ID，形如 subnet-xxx。有效的私有网络子网 ID 可通过登录[子网控制台](https://console.cloud.tencent.com/vpc/subnet?rid=1)查询；也可以调用接口 [DescribeSubnets](https://cloud.tencent.com/document/api/215/15784)，从接口返回中的 unSubnetId 字段获取。若在创建子机时 SubnetId 与 VpcId 同时传入 DEFAULT，则强制使用默认 vpc 网络。
         :type SubnetId: str
         :param _ClusterName: 集群名称
         :type ClusterName: str
-        :param _NodeSpec: 节点规格,基础型rabbit-vip-basic-1,标准型rabbit-vip-basic-2,高阶1型rabbit-vip-basic-3,高阶2型rabbit-vip-basic-4。不传默认为基础型
+        :param _NodeSpec: 集群的节点规格，需要输入对应的规格标识：
+2C8G：rabbit-vip-basic-2c8g
+4C16G：rabbit-vip-basic-4c16g
+8C32G：rabbit-vip-basic-8c32g
+16C32G：rabbit-vip-basic-4
+16C64G：rabbit-vip-basic-16c64g
+2C4G：rabbit-vip-basic-5
+4C8G：rabbit-vip-basic-1
+8C16G（已售罄）：rabbit-vip-basic-2
+不传默认为 4C8G：rabbit-vip-basic-1
         :type NodeSpec: str
         :param _NodeNum: 节点数量,多可用区最少为3节点。不传默认单可用区为1,多可用区为3
         :type NodeNum: int
         :param _StorageSize: 单节点存储规格,不传默认为200G
         :type StorageSize: int
-        :param _EnableCreateDefaultHaMirrorQueue: 镜像队列,不传默认为false
+        :param _EnableCreateDefaultHaMirrorQueue: 是否开启默认镜像队列，true 表示为开启，false 表示为不开启。不传默认为 false
         :type EnableCreateDefaultHaMirrorQueue: bool
-        :param _AutoRenewFlag: 预付费使用。自动续费,不传默认为true
+        :param _AutoRenewFlag: 仅预付费集群（PayMode 参数为 1 时）使用该参数，表示是否自动续费，true 表示打开自动续费。不传默认为 true
         :type AutoRenewFlag: bool
         :param _TimeSpan: 购买时长,不传默认为1(月)
         :type TimeSpan: int
@@ -4870,7 +4879,7 @@ class CreateRabbitMQVipInstanceRequest(AbstractModel):
         :type IsIntl: bool
         :param _ResourceTags: 资源标签列表
         :type ResourceTags: list of Tag
-        :param _Bandwidth: 公网带宽大小，单位 M
+        :param _Bandwidth: 公网带宽大小，单位 Mbps
         :type Bandwidth: int
         :param _EnablePublicAccess: 是否打开公网接入，不传默认为false
         :type EnablePublicAccess: bool
@@ -4905,7 +4914,7 @@ class CreateRabbitMQVipInstanceRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """私有网络VpcId
+        """私有网络ID，形如 vpc-xxx。有效的 VpcId 可通过登录[私有网络](https://console.cloud.tencent.com/vpc/vpc?rid=1)控制台查询；也可以调用接口 [DescribeVpcEx](https://cloud.tencent.com/document/api/215/1372)，从接口返回中的 unVpcId 字段获取。若在创建子机时 VpcId 与 SubnetId 同时传入 DEFAULT，则强制使用默认 vpc 网络。
         :rtype: str
         """
         return self._VpcId
@@ -4916,7 +4925,7 @@ class CreateRabbitMQVipInstanceRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        """私有网络SubnetId
+        """私有网络子网 ID，形如 subnet-xxx。有效的私有网络子网 ID 可通过登录[子网控制台](https://console.cloud.tencent.com/vpc/subnet?rid=1)查询；也可以调用接口 [DescribeSubnets](https://cloud.tencent.com/document/api/215/15784)，从接口返回中的 unSubnetId 字段获取。若在创建子机时 SubnetId 与 VpcId 同时传入 DEFAULT，则强制使用默认 vpc 网络。
         :rtype: str
         """
         return self._SubnetId
@@ -4938,7 +4947,16 @@ class CreateRabbitMQVipInstanceRequest(AbstractModel):
 
     @property
     def NodeSpec(self):
-        """节点规格,基础型rabbit-vip-basic-1,标准型rabbit-vip-basic-2,高阶1型rabbit-vip-basic-3,高阶2型rabbit-vip-basic-4。不传默认为基础型
+        """集群的节点规格，需要输入对应的规格标识：
+2C8G：rabbit-vip-basic-2c8g
+4C16G：rabbit-vip-basic-4c16g
+8C32G：rabbit-vip-basic-8c32g
+16C32G：rabbit-vip-basic-4
+16C64G：rabbit-vip-basic-16c64g
+2C4G：rabbit-vip-basic-5
+4C8G：rabbit-vip-basic-1
+8C16G（已售罄）：rabbit-vip-basic-2
+不传默认为 4C8G：rabbit-vip-basic-1
         :rtype: str
         """
         return self._NodeSpec
@@ -4971,7 +4989,7 @@ class CreateRabbitMQVipInstanceRequest(AbstractModel):
 
     @property
     def EnableCreateDefaultHaMirrorQueue(self):
-        """镜像队列,不传默认为false
+        """是否开启默认镜像队列，true 表示为开启，false 表示为不开启。不传默认为 false
         :rtype: bool
         """
         return self._EnableCreateDefaultHaMirrorQueue
@@ -4982,7 +5000,7 @@ class CreateRabbitMQVipInstanceRequest(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        """预付费使用。自动续费,不传默认为true
+        """仅预付费集群（PayMode 参数为 1 时）使用该参数，表示是否自动续费，true 表示打开自动续费。不传默认为 true
         :rtype: bool
         """
         return self._AutoRenewFlag
@@ -5048,7 +5066,7 @@ class CreateRabbitMQVipInstanceRequest(AbstractModel):
 
     @property
     def Bandwidth(self):
-        """公网带宽大小，单位 M
+        """公网带宽大小，单位 Mbps
         :rtype: int
         """
         return self._Bandwidth
@@ -5108,9 +5126,9 @@ class CreateRabbitMQVipInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TranId: 订单号Id
+        :param _TranId: 订单号 ID
         :type TranId: str
-        :param _InstanceId: 实例Id
+        :param _InstanceId: 实例 ID
         :type InstanceId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5121,7 +5139,7 @@ class CreateRabbitMQVipInstanceResponse(AbstractModel):
 
     @property
     def TranId(self):
-        """订单号Id
+        """订单号 ID
         :rtype: str
         """
         return self._TranId
@@ -5132,7 +5150,7 @@ class CreateRabbitMQVipInstanceResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例Id
+        """实例 ID
         :rtype: str
         """
         return self._InstanceId
@@ -5166,7 +5184,7 @@ class CreateRabbitMQVirtualHostRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群实例Id
+        :param _InstanceId: 实例 ID，形如amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
         :type InstanceId: str
         :param _VirtualHost: vhost名
         :type VirtualHost: str
@@ -5185,7 +5203,7 @@ class CreateRabbitMQVirtualHostRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群实例Id
+        """实例 ID，形如amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
         :rtype: str
         """
         return self._InstanceId
@@ -7557,9 +7575,9 @@ class DeleteRabbitMQBindingRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例Id
+        :param _InstanceId: 实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
         :type InstanceId: str
-        :param _VirtualHost: Vhost参数
+        :param _VirtualHost: VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到Vhost名称。
         :type VirtualHost: str
         :param _BindingId: 路由关系Id
         :type BindingId: int
@@ -7570,7 +7588,7 @@ class DeleteRabbitMQBindingRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例Id
+        """实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
         :rtype: str
         """
         return self._InstanceId
@@ -7581,7 +7599,7 @@ class DeleteRabbitMQBindingRequest(AbstractModel):
 
     @property
     def VirtualHost(self):
-        """Vhost参数
+        """VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到Vhost名称。
         :rtype: str
         """
         return self._VirtualHost
@@ -7623,7 +7641,7 @@ class DeleteRabbitMQBindingResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例名称
+        :param _InstanceId: 实例 ID
         :type InstanceId: str
         :param _VirtualHost: vhost参数
         :type VirtualHost: str
@@ -7639,7 +7657,7 @@ class DeleteRabbitMQBindingResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例名称
+        """实例 ID
         :rtype: str
         """
         return self._InstanceId
@@ -7696,11 +7714,11 @@ class DeleteRabbitMQPermissionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群实例Id
+        :param _InstanceId: 实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
         :type InstanceId: str
-        :param _User: 用户名，登录时使用
+        :param _User: 用户名，形如 admin。有效的 User 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，点击集群列表中的集群，进入集群详情，并在用户与权限页签中找到用户列表，从而找到用户名称。
         :type User: str
-        :param _VirtualHost: vhost名称
+        :param _VirtualHost: VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到 Vhost 名称。
         :type VirtualHost: str
         """
         self._InstanceId = None
@@ -7709,7 +7727,7 @@ class DeleteRabbitMQPermissionRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群实例Id
+        """实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
         :rtype: str
         """
         return self._InstanceId
@@ -7720,7 +7738,7 @@ class DeleteRabbitMQPermissionRequest(AbstractModel):
 
     @property
     def User(self):
-        """用户名，登录时使用
+        """用户名，形如 admin。有效的 User 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，点击集群列表中的集群，进入集群详情，并在用户与权限页签中找到用户列表，从而找到用户名称。
         :rtype: str
         """
         return self._User
@@ -7731,7 +7749,7 @@ class DeleteRabbitMQPermissionRequest(AbstractModel):
 
     @property
     def VirtualHost(self):
-        """vhost名称
+        """VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到 Vhost 名称。
         :rtype: str
         """
         return self._VirtualHost
@@ -7790,9 +7808,9 @@ class DeleteRabbitMQUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群实例Id
+        :param _InstanceId: 实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
         :type InstanceId: str
-        :param _User: 用户名，登录时使用
+        :param _User: 用户名，形如 admin。有效的 User 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，点击集群列表中的集群，进入集群详情，并在用户与权限页签中找到用户列表，从而找到用户名称。
         :type User: str
         """
         self._InstanceId = None
@@ -7800,7 +7818,7 @@ class DeleteRabbitMQUserRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群实例Id
+        """实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
         :rtype: str
         """
         return self._InstanceId
@@ -7811,7 +7829,7 @@ class DeleteRabbitMQUserRequest(AbstractModel):
 
     @property
     def User(self):
-        """用户名，登录时使用
+        """用户名，形如 admin。有效的 User 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，点击集群列表中的集群，进入集群详情，并在用户与权限页签中找到用户列表，从而找到用户名称。
         :rtype: str
         """
         return self._User
@@ -7869,7 +7887,7 @@ class DeleteRabbitMQVipInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例Id
+        :param _InstanceId: 实例 ID，形如amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
         :type InstanceId: str
         :param _IsIntl: 是否国际站请求，默认 false
         :type IsIntl: bool
@@ -7879,7 +7897,7 @@ class DeleteRabbitMQVipInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例Id
+        """实例 ID，形如amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
         :rtype: str
         """
         return self._InstanceId
@@ -7920,9 +7938,9 @@ class DeleteRabbitMQVipInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TranId: 订单号Id
+        :param _TranId: 订单号 ID
         :type TranId: str
-        :param _InstanceId: 实例Id
+        :param _InstanceId: 实例 ID
         :type InstanceId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7933,7 +7951,7 @@ class DeleteRabbitMQVipInstanceResponse(AbstractModel):
 
     @property
     def TranId(self):
-        """订单号Id
+        """订单号 ID
         :rtype: str
         """
         return self._TranId
@@ -7944,7 +7962,7 @@ class DeleteRabbitMQVipInstanceResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例Id
+        """实例 ID
         :rtype: str
         """
         return self._InstanceId
@@ -7978,9 +7996,9 @@ class DeleteRabbitMQVirtualHostRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群实例Id
+        :param _InstanceId: 实例 ID，形如amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
         :type InstanceId: str
-        :param _VirtualHost: vhost名
+        :param _VirtualHost: VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到Vhost名称。
         :type VirtualHost: str
         """
         self._InstanceId = None
@@ -7988,7 +8006,7 @@ class DeleteRabbitMQVirtualHostRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群实例Id
+        """实例 ID，形如amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
         :rtype: str
         """
         return self._InstanceId
@@ -7999,7 +8017,7 @@ class DeleteRabbitMQVirtualHostRequest(AbstractModel):
 
     @property
     def VirtualHost(self):
-        """vhost名
+        """VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到Vhost名称。
         :rtype: str
         """
         return self._VirtualHost
@@ -13047,22 +13065,22 @@ class DescribeRabbitMQNodeListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: rabbitmq集群ID
+        :param _InstanceId: 实例 ID，形如amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
         :type InstanceId: str
-        :param _Offset: 偏移量
+        :param _Offset: 偏移量，默认值 0
         :type Offset: int
-        :param _Limit: 一页限制
+        :param _Limit: 一页限制,moren
         :type Limit: int
         :param _NodeName: 模糊搜索节点名字
         :type NodeName: str
-        :param _Filters: 过滤参数的名字和数值
-现在只有一个nodeStatus
-running/down
-数组类型，兼容后续添加过滤参数
+        :param _Filters: 过滤参数的名字和数值，当前仅支持根据节点状态筛选。
+"Name": "nodeStatus"
+"Value": running or down
 
         :type Filters: list of Filter
         :param _SortElement: 按指定元素排序，现在只有2个
-cpuUsage/diskUsage
+cpuUsage：节点CPU利用率
+diskUsage：节点磁盘利用率
         :type SortElement: str
         :param _SortOrder: 升序/降序
 ascend/descend
@@ -13078,7 +13096,7 @@ ascend/descend
 
     @property
     def InstanceId(self):
-        """rabbitmq集群ID
+        """实例 ID，形如amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
         :rtype: str
         """
         return self._InstanceId
@@ -13089,7 +13107,7 @@ ascend/descend
 
     @property
     def Offset(self):
-        """偏移量
+        """偏移量，默认值 0
         :rtype: int
         """
         return self._Offset
@@ -13100,7 +13118,7 @@ ascend/descend
 
     @property
     def Limit(self):
-        """一页限制
+        """一页限制,moren
         :rtype: int
         """
         return self._Limit
@@ -13122,10 +13140,9 @@ ascend/descend
 
     @property
     def Filters(self):
-        """过滤参数的名字和数值
-现在只有一个nodeStatus
-running/down
-数组类型，兼容后续添加过滤参数
+        """过滤参数的名字和数值，当前仅支持根据节点状态筛选。
+"Name": "nodeStatus"
+"Value": running or down
 
         :rtype: list of Filter
         """
@@ -13138,7 +13155,8 @@ running/down
     @property
     def SortElement(self):
         """按指定元素排序，现在只有2个
-cpuUsage/diskUsage
+cpuUsage：节点CPU利用率
+diskUsage：节点磁盘利用率
         :rtype: str
         """
         return self._SortElement
@@ -13190,9 +13208,9 @@ class DescribeRabbitMQNodeListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 集群列表数量
+        :param _TotalCount: 集群节点数量
         :type TotalCount: int
-        :param _NodeList: 集群列表
+        :param _NodeList: 集群节点列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type NodeList: list of RabbitMQPrivateNode
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -13204,7 +13222,7 @@ class DescribeRabbitMQNodeListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """集群列表数量
+        """集群节点数量
         :rtype: int
         """
         return self._TotalCount
@@ -13215,7 +13233,7 @@ class DescribeRabbitMQNodeListResponse(AbstractModel):
 
     @property
     def NodeList(self):
-        """集群列表
+        """集群节点列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RabbitMQPrivateNode
         """
@@ -23514,11 +23532,11 @@ class ModifyRabbitMQPermissionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群实例Id
+        :param _InstanceId: 实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
         :type InstanceId: str
-        :param _User: 用户名，权限关联的用户
+        :param _User: 用户名，形如 admin。有效的 User 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，点击集群列表中的集群，进入集群详情，并在用户与权限页签中找到用户列表，从而找到用户名称。
         :type User: str
-        :param _VirtualHost: vhost名称
+        :param _VirtualHost: VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到Vhost名称。
         :type VirtualHost: str
         :param _ConfigRegexp: 权限类型，declare相关操作，该用户可操作该vhost下的资源名称正则表达式
         :type ConfigRegexp: str
@@ -23536,7 +23554,7 @@ class ModifyRabbitMQPermissionRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群实例Id
+        """实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
         :rtype: str
         """
         return self._InstanceId
@@ -23547,7 +23565,7 @@ class ModifyRabbitMQPermissionRequest(AbstractModel):
 
     @property
     def User(self):
-        """用户名，权限关联的用户
+        """用户名，形如 admin。有效的 User 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，点击集群列表中的集群，进入集群详情，并在用户与权限页签中找到用户列表，从而找到用户名称。
         :rtype: str
         """
         return self._User
@@ -23558,7 +23576,7 @@ class ModifyRabbitMQPermissionRequest(AbstractModel):
 
     @property
     def VirtualHost(self):
-        """vhost名称
+        """VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到Vhost名称。
         :rtype: str
         """
         return self._VirtualHost
@@ -23653,15 +23671,16 @@ class ModifyRabbitMQUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群实例Id
+        :param _InstanceId: 实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
         :type InstanceId: str
-        :param _User: 用户名，登录时使用
+        :param _User: 用户名，形如 admin。有效的 User 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，点击集群列表中的集群，进入集群详情，并在用户与权限页签中找到用户列表，从而找到用户名称。
         :type User: str
-        :param _Password: 密码，登录时使用
+        :param _Password: 密码，登录时使用。规范：不能为空，8-64个字符，至少要包含小写字母、大写字母、数字、特殊字符【()`~!@#$%^&*_=|{}[]:;',.?/】中的两项
         :type Password: str
         :param _Description: 描述，不传则不修改
         :type Description: str
-        :param _Tags: 用户标签，用于决定改用户访问RabbitMQ Management的权限范围，不传则不修改
+        :param _Tags: 用户标签，用于决定改用户访问 RabbitMQ Management 的权限范围
+management：普通控制台用户，monitoring：管理型控制台用户，其他值：非控制台用户
         :type Tags: list of str
         :param _MaxConnections: 该用户的最大连接数，不传则不修改
         :type MaxConnections: int
@@ -23678,7 +23697,7 @@ class ModifyRabbitMQUserRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群实例Id
+        """实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
         :rtype: str
         """
         return self._InstanceId
@@ -23689,7 +23708,7 @@ class ModifyRabbitMQUserRequest(AbstractModel):
 
     @property
     def User(self):
-        """用户名，登录时使用
+        """用户名，形如 admin。有效的 User 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，点击集群列表中的集群，进入集群详情，并在用户与权限页签中找到用户列表，从而找到用户名称。
         :rtype: str
         """
         return self._User
@@ -23700,7 +23719,7 @@ class ModifyRabbitMQUserRequest(AbstractModel):
 
     @property
     def Password(self):
-        """密码，登录时使用
+        """密码，登录时使用。规范：不能为空，8-64个字符，至少要包含小写字母、大写字母、数字、特殊字符【()`~!@#$%^&*_=|{}[]:;',.?/】中的两项
         :rtype: str
         """
         return self._Password
@@ -23722,7 +23741,8 @@ class ModifyRabbitMQUserRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """用户标签，用于决定改用户访问RabbitMQ Management的权限范围，不传则不修改
+        """用户标签，用于决定改用户访问 RabbitMQ Management 的权限范围
+management：普通控制台用户，monitoring：管理型控制台用户，其他值：非控制台用户
         :rtype: list of str
         """
         return self._Tags
@@ -23916,11 +23936,11 @@ class ModifyRabbitMQVirtualHostRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群实例Id
+        :param _InstanceId: 实例 ID，形如amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
         :type InstanceId: str
         :param _VirtualHost: vhost名
         :type VirtualHost: str
-        :param _Description: 描述
+        :param _Description: VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到Vhost名称。
         :type Description: str
         :param _TraceFlag: 消息轨迹开关,true打开,false关闭
         :type TraceFlag: bool
@@ -23932,7 +23952,7 @@ class ModifyRabbitMQVirtualHostRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群实例Id
+        """实例 ID，形如amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
         :rtype: str
         """
         return self._InstanceId
@@ -23954,7 +23974,7 @@ class ModifyRabbitMQVirtualHostRequest(AbstractModel):
 
     @property
     def Description(self):
-        """描述
+        """VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到Vhost名称。
         :rtype: str
         """
         return self._Description
@@ -28737,7 +28757,7 @@ class RabbitMQPermission(AbstractModel):
 
 
 class RabbitMQPrivateNode(AbstractModel):
-    """RabbitMQ节点信息
+    """RabbitMQ 节点信息
 
     """
 
@@ -28746,7 +28766,7 @@ class RabbitMQPrivateNode(AbstractModel):
         :param _NodeName: 节点名字
 注意：此字段可能返回 null，表示取不到有效值。
         :type NodeName: str
-        :param _NodeStatus: 节点状态
+        :param _NodeStatus: 节点状态，running 运行中，down 异常
 注意：此字段可能返回 null，表示取不到有效值。
         :type NodeStatus: str
         :param _CPUUsage: CPU使用率
@@ -28783,7 +28803,7 @@ class RabbitMQPrivateNode(AbstractModel):
 
     @property
     def NodeStatus(self):
-        """节点状态
+        """节点状态，running 运行中，down 异常
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

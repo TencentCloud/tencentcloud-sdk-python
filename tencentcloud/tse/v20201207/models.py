@@ -3017,6 +3017,10 @@ class ConfigFile(AbstractModel):
         :type ConfigFileSupportedClient: int
         :param _ConfigFilePersistent: 配置文件持久化
         :type ConfigFilePersistent: :class:`tencentcloud.tse.v20201207.models.ConfigFilePersistent`
+        :param _Encrypted: 是否开启加密算法
+        :type Encrypted: bool
+        :param _EncryptAlgo: 加密算法
+        :type EncryptAlgo: str
         """
         self._Id = None
         self._Name = None
@@ -3035,6 +3039,8 @@ class ConfigFile(AbstractModel):
         self._ReleaseBy = None
         self._ConfigFileSupportedClient = None
         self._ConfigFilePersistent = None
+        self._Encrypted = None
+        self._EncryptAlgo = None
 
     @property
     def Id(self):
@@ -3223,6 +3229,28 @@ class ConfigFile(AbstractModel):
     def ConfigFilePersistent(self, ConfigFilePersistent):
         self._ConfigFilePersistent = ConfigFilePersistent
 
+    @property
+    def Encrypted(self):
+        """是否开启加密算法
+        :rtype: bool
+        """
+        return self._Encrypted
+
+    @Encrypted.setter
+    def Encrypted(self, Encrypted):
+        self._Encrypted = Encrypted
+
+    @property
+    def EncryptAlgo(self):
+        """加密算法
+        :rtype: str
+        """
+        return self._EncryptAlgo
+
+    @EncryptAlgo.setter
+    def EncryptAlgo(self, EncryptAlgo):
+        self._EncryptAlgo = EncryptAlgo
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -3249,6 +3277,8 @@ class ConfigFile(AbstractModel):
         if params.get("ConfigFilePersistent") is not None:
             self._ConfigFilePersistent = ConfigFilePersistent()
             self._ConfigFilePersistent._deserialize(params.get("ConfigFilePersistent"))
+        self._Encrypted = params.get("Encrypted")
+        self._EncryptAlgo = params.get("EncryptAlgo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28934,6 +28964,8 @@ class ServiceGovernanceInfo(AbstractModel):
         :type LimiterVpcInfos: list of VpcInfo
         :param _CLSTopics: 引擎关联CLS日志主题信息
         :type CLSTopics: list of PolarisCLSTopicInfo
+        :param _SubPassword: 子用户密码
+        :type SubPassword: str
         """
         self._EngineRegion = None
         self._BoundK8SInfos = None
@@ -28944,6 +28976,7 @@ class ServiceGovernanceInfo(AbstractModel):
         self._PgwVpcInfos = None
         self._LimiterVpcInfos = None
         self._CLSTopics = None
+        self._SubPassword = None
 
     @property
     def EngineRegion(self):
@@ -29044,6 +29077,17 @@ class ServiceGovernanceInfo(AbstractModel):
     def CLSTopics(self, CLSTopics):
         self._CLSTopics = CLSTopics
 
+    @property
+    def SubPassword(self):
+        """子用户密码
+        :rtype: str
+        """
+        return self._SubPassword
+
+    @SubPassword.setter
+    def SubPassword(self, SubPassword):
+        self._SubPassword = SubPassword
+
 
     def _deserialize(self, params):
         self._EngineRegion = params.get("EngineRegion")
@@ -29080,6 +29124,7 @@ class ServiceGovernanceInfo(AbstractModel):
                 obj = PolarisCLSTopicInfo()
                 obj._deserialize(item)
                 self._CLSTopics.append(obj)
+        self._SubPassword = params.get("SubPassword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

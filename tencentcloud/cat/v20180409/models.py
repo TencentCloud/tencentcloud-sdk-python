@@ -1081,10 +1081,58 @@ class DescribeNodeGroupsResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _NodeList: 树状节点列表，总共两级
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeList: list of NodeTree
+        :param _DistrictList: 省份或国家列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DistrictList: list of DistinctOrNetServiceInfo
+        :param _NetServiceList: 运营商列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetServiceList: list of DistinctOrNetServiceInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._NodeList = None
+        self._DistrictList = None
+        self._NetServiceList = None
         self._RequestId = None
+
+    @property
+    def NodeList(self):
+        """树状节点列表，总共两级
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of NodeTree
+        """
+        return self._NodeList
+
+    @NodeList.setter
+    def NodeList(self, NodeList):
+        self._NodeList = NodeList
+
+    @property
+    def DistrictList(self):
+        """省份或国家列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DistinctOrNetServiceInfo
+        """
+        return self._DistrictList
+
+    @DistrictList.setter
+    def DistrictList(self, DistrictList):
+        self._DistrictList = DistrictList
+
+    @property
+    def NetServiceList(self):
+        """运营商列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DistinctOrNetServiceInfo
+        """
+        return self._NetServiceList
+
+    @NetServiceList.setter
+    def NetServiceList(self, NetServiceList):
+        self._NetServiceList = NetServiceList
 
     @property
     def RequestId(self):
@@ -1099,6 +1147,24 @@ class DescribeNodeGroupsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("NodeList") is not None:
+            self._NodeList = []
+            for item in params.get("NodeList"):
+                obj = NodeTree()
+                obj._deserialize(item)
+                self._NodeList.append(obj)
+        if params.get("DistrictList") is not None:
+            self._DistrictList = []
+            for item in params.get("DistrictList"):
+                obj = DistinctOrNetServiceInfo()
+                obj._deserialize(item)
+                self._DistrictList.append(obj)
+        if params.get("NetServiceList") is not None:
+            self._NetServiceList = []
+            for item in params.get("NetServiceList"):
+                obj = DistinctOrNetServiceInfo()
+                obj._deserialize(item)
+                self._NetServiceList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -2025,6 +2091,57 @@ class DetailedSingleDataDefine(AbstractModel):
         
 
 
+class DistinctOrNetServiceInfo(AbstractModel):
+    """省份(国际)或运营商基本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 省份(国际)或运营商ID
+        :type ID: str
+        :param _Name: 名称
+        :type Name: str
+        """
+        self._ID = None
+        self._Name = None
+
+    @property
+    def ID(self):
+        """省份(国际)或运营商ID
+        :rtype: str
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Name(self):
+        """名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Field(AbstractModel):
     """储存float类型字段
 
@@ -2588,6 +2705,199 @@ class NodeDefineExt(AbstractModel):
         self._Location = params.get("Location")
         self._CodeType = params.get("CodeType")
         self._TaskTypes = params.get("TaskTypes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NodeInfoBase(AbstractModel):
+    """Node节点基本信息，用于新建任务页面重构节点选择
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 节点code
+        :type ID: str
+        :param _Content: 节点名称
+        :type Content: str
+        """
+        self._ID = None
+        self._Content = None
+
+    @property
+    def ID(self):
+        """节点code
+        :rtype: str
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Content(self):
+        """节点名称
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NodeLeaf(AbstractModel):
+    """子节点。用于新建任务重构页面的节点选择
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 子节点ID
+        :type ID: str
+        :param _Content: 子节点名称
+        :type Content: str
+        :param _Children: 节点列表
+        :type Children: list of NodeInfoBase
+        """
+        self._ID = None
+        self._Content = None
+        self._Children = None
+
+    @property
+    def ID(self):
+        """子节点ID
+        :rtype: str
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Content(self):
+        """子节点名称
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Children(self):
+        """节点列表
+        :rtype: list of NodeInfoBase
+        """
+        return self._Children
+
+    @Children.setter
+    def Children(self, Children):
+        self._Children = Children
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Content = params.get("Content")
+        if params.get("Children") is not None:
+            self._Children = []
+            for item in params.get("Children"):
+                obj = NodeInfoBase()
+                obj._deserialize(item)
+                self._Children.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NodeTree(AbstractModel):
+    """拨测节点数（新建任务页面重构）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 节点ID
+        :type ID: str
+        :param _Content: 节点名称
+        :type Content: str
+        :param _Children: 子节点
+        :type Children: list of NodeLeaf
+        """
+        self._ID = None
+        self._Content = None
+        self._Children = None
+
+    @property
+    def ID(self):
+        """节点ID
+        :rtype: str
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Content(self):
+        """节点名称
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Children(self):
+        """子节点
+        :rtype: list of NodeLeaf
+        """
+        return self._Children
+
+    @Children.setter
+    def Children(self, Children):
+        self._Children = Children
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Content = params.get("Content")
+        if params.get("Children") is not None:
+            self._Children = []
+            for item in params.get("Children"):
+                obj = NodeLeaf()
+                obj._deserialize(item)
+                self._Children.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

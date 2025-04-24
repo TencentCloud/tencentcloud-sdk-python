@@ -713,6 +713,57 @@ class AndroidInstanceImage(AbstractModel):
         
 
 
+class AndroidInstanceInformation(AbstractModel):
+    """安卓实例信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AndroidInstanceId: 安卓实例 ID
+        :type AndroidInstanceId: str
+        :param _Name: 实例名称
+        :type Name: str
+        """
+        self._AndroidInstanceId = None
+        self._Name = None
+
+    @property
+    def AndroidInstanceId(self):
+        """安卓实例 ID
+        :rtype: str
+        """
+        return self._AndroidInstanceId
+
+    @AndroidInstanceId.setter
+    def AndroidInstanceId(self, AndroidInstanceId):
+        self._AndroidInstanceId = AndroidInstanceId
+
+    @property
+    def Name(self):
+        """实例名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._AndroidInstanceId = params.get("AndroidInstanceId")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AndroidInstanceLabel(AbstractModel):
     """安卓实例标签
 
@@ -4331,6 +4382,130 @@ class ExecuteCommandOnAndroidInstancesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class FetchAndroidInstancesLogsRequest(AbstractModel):
+    """FetchAndroidInstancesLogs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AndroidInstanceIds: 安卓实例 ID 列表
+        :type AndroidInstanceIds: list of str
+        :param _BucketName: cos 桶名称
+        :type BucketName: str
+        :param _BucketRegion: cos 桶区域
+        :type BucketRegion: str
+        :param _BucketDirectory: cos 桶目录，默认为 /log/
+        :type BucketDirectory: str
+        :param _RecentDays: 下载最近几天的日志，默认值为 1
+        :type RecentDays: int
+        """
+        self._AndroidInstanceIds = None
+        self._BucketName = None
+        self._BucketRegion = None
+        self._BucketDirectory = None
+        self._RecentDays = None
+
+    @property
+    def AndroidInstanceIds(self):
+        """安卓实例 ID 列表
+        :rtype: list of str
+        """
+        return self._AndroidInstanceIds
+
+    @AndroidInstanceIds.setter
+    def AndroidInstanceIds(self, AndroidInstanceIds):
+        self._AndroidInstanceIds = AndroidInstanceIds
+
+    @property
+    def BucketName(self):
+        """cos 桶名称
+        :rtype: str
+        """
+        return self._BucketName
+
+    @BucketName.setter
+    def BucketName(self, BucketName):
+        self._BucketName = BucketName
+
+    @property
+    def BucketRegion(self):
+        """cos 桶区域
+        :rtype: str
+        """
+        return self._BucketRegion
+
+    @BucketRegion.setter
+    def BucketRegion(self, BucketRegion):
+        self._BucketRegion = BucketRegion
+
+    @property
+    def BucketDirectory(self):
+        """cos 桶目录，默认为 /log/
+        :rtype: str
+        """
+        return self._BucketDirectory
+
+    @BucketDirectory.setter
+    def BucketDirectory(self, BucketDirectory):
+        self._BucketDirectory = BucketDirectory
+
+    @property
+    def RecentDays(self):
+        """下载最近几天的日志，默认值为 1
+        :rtype: int
+        """
+        return self._RecentDays
+
+    @RecentDays.setter
+    def RecentDays(self, RecentDays):
+        self._RecentDays = RecentDays
+
+
+    def _deserialize(self, params):
+        self._AndroidInstanceIds = params.get("AndroidInstanceIds")
+        self._BucketName = params.get("BucketName")
+        self._BucketRegion = params.get("BucketRegion")
+        self._BucketDirectory = params.get("BucketDirectory")
+        self._RecentDays = params.get("RecentDays")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FetchAndroidInstancesLogsResponse(AbstractModel):
+    """FetchAndroidInstancesLogs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class Filter(AbstractModel):
     """过滤
 
@@ -4981,6 +5156,75 @@ PHYSICAL：修改物理分辨率
 
 class ModifyAndroidInstanceResolutionResponse(AbstractModel):
     """ModifyAndroidInstanceResolution返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyAndroidInstancesInformationRequest(AbstractModel):
+    """ModifyAndroidInstancesInformation请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AndroidInstanceInformations: 安卓实例信息数据
+        :type AndroidInstanceInformations: list of AndroidInstanceInformation
+        """
+        self._AndroidInstanceInformations = None
+
+    @property
+    def AndroidInstanceInformations(self):
+        """安卓实例信息数据
+        :rtype: list of AndroidInstanceInformation
+        """
+        return self._AndroidInstanceInformations
+
+    @AndroidInstanceInformations.setter
+    def AndroidInstanceInformations(self, AndroidInstanceInformations):
+        self._AndroidInstanceInformations = AndroidInstanceInformations
+
+
+    def _deserialize(self, params):
+        if params.get("AndroidInstanceInformations") is not None:
+            self._AndroidInstanceInformations = []
+            for item in params.get("AndroidInstanceInformations"):
+                obj = AndroidInstanceInformation()
+                obj._deserialize(item)
+                self._AndroidInstanceInformations.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAndroidInstancesInformationResponse(AbstractModel):
+    """ModifyAndroidInstancesInformation返回参数结构体
 
     """
 

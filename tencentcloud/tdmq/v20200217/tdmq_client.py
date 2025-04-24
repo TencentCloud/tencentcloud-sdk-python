@@ -303,7 +303,7 @@ class TdmqClient(AbstractClient):
 
 
     def CreateRabbitMQVipInstance(self, request):
-        """创建RabbitMQ专享版实例
+        """创建 RabbitMQ 托管版实例
 
         :param request: Request instance for CreateRabbitMQVipInstance.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRabbitMQVipInstanceRequest`
@@ -809,7 +809,7 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteRabbitMQVipInstance(self, request):
-        """删除RabbitMQ专享版实例
+        """删除 RabbitMQ 托管版实例
 
         :param request: Request instance for DeleteRabbitMQVipInstance.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteRabbitMQVipInstanceRequest`
@@ -1662,7 +1662,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRabbitMQNodeList(self, request):
-        """RabbitMQ专享版查询节点列表
+        """查询 RabbitMQ 托管版节点列表
 
         :param request: Request instance for DescribeRabbitMQNodeList.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRabbitMQNodeListRequest`

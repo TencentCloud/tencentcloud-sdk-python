@@ -14910,6 +14910,8 @@ class StaffInfo(AbstractModel):
         :type RoleId: int
         :param _RoleIdList: 用户角色id列表
         :type RoleIdList: int
+        :param _RoleList: 用户角色id列表
+        :type RoleList: list of int non-negative
         :param _SkillGroupList: 所属技能组列表
         :type SkillGroupList: list of SkillGroupItem
         :param _LastModifyTimestamp: 最后修改时间
@@ -14924,6 +14926,7 @@ class StaffInfo(AbstractModel):
         self._StaffNumber = None
         self._RoleId = None
         self._RoleIdList = None
+        self._RoleList = None
         self._SkillGroupList = None
         self._LastModifyTimestamp = None
         self._ExtensionNumber = None
@@ -15001,6 +15004,8 @@ class StaffInfo(AbstractModel):
 
     @property
     def RoleIdList(self):
+        warnings.warn("parameter `RoleIdList` is deprecated", DeprecationWarning) 
+
         """用户角色id列表
         :rtype: int
         """
@@ -15008,7 +15013,20 @@ class StaffInfo(AbstractModel):
 
     @RoleIdList.setter
     def RoleIdList(self, RoleIdList):
+        warnings.warn("parameter `RoleIdList` is deprecated", DeprecationWarning) 
+
         self._RoleIdList = RoleIdList
+
+    @property
+    def RoleList(self):
+        """用户角色id列表
+        :rtype: list of int non-negative
+        """
+        return self._RoleList
+
+    @RoleList.setter
+    def RoleList(self, RoleList):
+        self._RoleList = RoleList
 
     @property
     def SkillGroupList(self):
@@ -15052,6 +15070,7 @@ class StaffInfo(AbstractModel):
         self._StaffNumber = params.get("StaffNumber")
         self._RoleId = params.get("RoleId")
         self._RoleIdList = params.get("RoleIdList")
+        self._RoleList = params.get("RoleList")
         if params.get("SkillGroupList") is not None:
             self._SkillGroupList = []
             for item in params.get("SkillGroupList"):

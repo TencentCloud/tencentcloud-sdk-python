@@ -29922,7 +29922,7 @@ class DescribeNetworkAccountTypeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NetworkAccountType: 用户账号的网络类型，STANDARD为标准用户，LEGACY为传统用户
+        :param _NetworkAccountType: 用户账号的网络类型，STANDARD为标准账户类型，LEGACY为传统账户类型
         :type NetworkAccountType: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -29932,7 +29932,7 @@ class DescribeNetworkAccountTypeResponse(AbstractModel):
 
     @property
     def NetworkAccountType(self):
-        """用户账号的网络类型，STANDARD为标准用户，LEGACY为传统用户
+        """用户账号的网络类型，STANDARD为标准账户类型，LEGACY为传统账户类型
         :rtype: str
         """
         return self._NetworkAccountType
@@ -58173,9 +58173,13 @@ class Quota(AbstractModel):
     def __init__(self):
         r"""
         :param _QuotaId: 配额名称，取值范围：
-- `TOTAL_EIP_QUOTA`：用户当前地域下EIP的配额数；
-- `DAILY_EIP_APPLY`：用户当前地域下今日申购次数；
+- `TOTAL_EIP_QUOTA`：用户当前地域下，EIP的配额数；
+- `LOCALBGP_EIP_QUOTA`：用户当前地域下，本地BGP IP配额数；
+- `SINGLEISP_EIP_QUOTA`：用户当前地域下，静态单线 IP 配额数；
+- `DAILY_EIP_APPLY`：用户当前地域下，除静态单线 IP外今日申购次数；
+- `DAILY_SINGLEISP_APPLY`：用户当前地域下，静态单线 IP今日申购次数；
 - `DAILY_PUBLIC_IP_ASSIGN`：用户当前地域下，重新分配公网 IP次数；
+- `MONTHLY_RECOVER_QUOTA`：用户当前地域下，每月申请指定 IP次数；
 - `TOTAL_EIP6_QUOTA`：用户当前地域下，传统弹性公网IPv6的配额数；
 - `BGP_EIPv6_QUOTA`：用户当前地域下，可申请的 BGP 弹性公网IPv6 的配额数；
 - `SINGLEISP_EIPv6_QUOTA`：用户当前地域下，可申请的静态单线弹性公网IPv6 的配额数；
@@ -58200,9 +58204,13 @@ class Quota(AbstractModel):
     @property
     def QuotaId(self):
         """配额名称，取值范围：
-- `TOTAL_EIP_QUOTA`：用户当前地域下EIP的配额数；
-- `DAILY_EIP_APPLY`：用户当前地域下今日申购次数；
+- `TOTAL_EIP_QUOTA`：用户当前地域下，EIP的配额数；
+- `LOCALBGP_EIP_QUOTA`：用户当前地域下，本地BGP IP配额数；
+- `SINGLEISP_EIP_QUOTA`：用户当前地域下，静态单线 IP 配额数；
+- `DAILY_EIP_APPLY`：用户当前地域下，除静态单线 IP外今日申购次数；
+- `DAILY_SINGLEISP_APPLY`：用户当前地域下，静态单线 IP今日申购次数；
 - `DAILY_PUBLIC_IP_ASSIGN`：用户当前地域下，重新分配公网 IP次数；
+- `MONTHLY_RECOVER_QUOTA`：用户当前地域下，每月申请指定 IP次数；
 - `TOTAL_EIP6_QUOTA`：用户当前地域下，传统弹性公网IPv6的配额数；
 - `BGP_EIPv6_QUOTA`：用户当前地域下，可申请的 BGP 弹性公网IPv6 的配额数；
 - `SINGLEISP_EIPv6_QUOTA`：用户当前地域下，可申请的静态单线弹性公网IPv6 的配额数；
@@ -68141,7 +68149,8 @@ class UsedDetail(AbstractModel):
         :type RemainingAmount: :class:`tencentcloud.vpc.v20170312.models.TrafficFlow`
         :param _Time: 抵扣时间
         :type Time: str
-        :param _ResourceType: 资源类型。可能的值: CVM, LB, NAT, HAVIP, EIP
+        :param _ResourceType: 资源类型。可选值: EIP, BWP, LB
+
         :type ResourceType: str
         :param _ResourceId: 资源ID
         :type ResourceId: str
@@ -68229,7 +68238,8 @@ class UsedDetail(AbstractModel):
 
     @property
     def ResourceType(self):
-        """资源类型。可能的值: CVM, LB, NAT, HAVIP, EIP
+        """资源类型。可选值: EIP, BWP, LB
+
         :rtype: str
         """
         return self._ResourceType

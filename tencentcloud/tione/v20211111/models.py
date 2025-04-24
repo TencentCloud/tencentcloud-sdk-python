@@ -18,6 +18,211 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AuthToken(AbstractModel):
+    """在线服务的 AuthToken 数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Base: AuthToken 基础信息
+        :type Base: :class:`tencentcloud.tione.v20211111.models.AuthTokenBase`
+        :param _Limits: AuthToken 限流数组
+        :type Limits: list of AuthTokenLimit
+        """
+        self._Base = None
+        self._Limits = None
+
+    @property
+    def Base(self):
+        """AuthToken 基础信息
+        :rtype: :class:`tencentcloud.tione.v20211111.models.AuthTokenBase`
+        """
+        return self._Base
+
+    @Base.setter
+    def Base(self, Base):
+        self._Base = Base
+
+    @property
+    def Limits(self):
+        """AuthToken 限流数组
+        :rtype: list of AuthTokenLimit
+        """
+        return self._Limits
+
+    @Limits.setter
+    def Limits(self, Limits):
+        self._Limits = Limits
+
+
+    def _deserialize(self, params):
+        if params.get("Base") is not None:
+            self._Base = AuthTokenBase()
+            self._Base._deserialize(params.get("Base"))
+        if params.get("Limits") is not None:
+            self._Limits = []
+            for item in params.get("Limits"):
+                obj = AuthTokenLimit()
+                obj._deserialize(item)
+                self._Limits.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuthTokenBase(AbstractModel):
+    """AuthToken 的基础信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Value: token 值
+        :type Value: str
+        :param _Name: token 别名
+        :type Name: str
+        :param _Description: token 描述
+        :type Description: str
+        :param _CreateTime: token 创建时间
+        :type CreateTime: str
+        :param _Status: token状态
+        :type Status: str
+        """
+        self._Value = None
+        self._Name = None
+        self._Description = None
+        self._CreateTime = None
+        self._Status = None
+
+    @property
+    def Value(self):
+        """token 值
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Name(self):
+        """token 别名
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        """token 描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CreateTime(self):
+        """token 创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Status(self):
+        """token状态
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Value = params.get("Value")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._CreateTime = params.get("CreateTime")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuthTokenLimit(AbstractModel):
+    """AuthToken 限流信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Strategy: 限频策略：PerMinute 每分钟限频；PerDay 每日限频
+        :type Strategy: str
+        :param _Max: 上限值
+        :type Max: int
+        """
+        self._Strategy = None
+        self._Max = None
+
+    @property
+    def Strategy(self):
+        """限频策略：PerMinute 每分钟限频；PerDay 每日限频
+        :rtype: str
+        """
+        return self._Strategy
+
+    @Strategy.setter
+    def Strategy(self, Strategy):
+        self._Strategy = Strategy
+
+    @property
+    def Max(self):
+        """上限值
+        :rtype: int
+        """
+        return self._Max
+
+    @Max.setter
+    def Max(self, Max):
+        self._Max = Max
+
+
+    def _deserialize(self, params):
+        self._Strategy = params.get("Strategy")
+        self._Max = params.get("Max")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CBSConfig(AbstractModel):
     """CBS存储配置
 
@@ -1222,6 +1427,10 @@ HYBRID_PAID:
         :type TerminationGracePeriodSeconds: int
         :param _PreStopCommand: ["sleep","60"]
         :type PreStopCommand: list of str
+        :param _GrpcEnable: 是否启用 grpc 端口
+        :type GrpcEnable: bool
+        :param _HealthProbe: 健康探针
+        :type HealthProbe: :class:`tencentcloud.tione.v20211111.models.HealthProbe`
         """
         self._ServiceGroupId = None
         self._ServiceGroupName = None
@@ -1260,6 +1469,8 @@ HYBRID_PAID:
         self._InstancePerReplicas = None
         self._TerminationGracePeriodSeconds = None
         self._PreStopCommand = None
+        self._GrpcEnable = None
+        self._HealthProbe = None
 
     @property
     def ServiceGroupId(self):
@@ -1691,6 +1902,28 @@ HYBRID_PAID:
     def PreStopCommand(self, PreStopCommand):
         self._PreStopCommand = PreStopCommand
 
+    @property
+    def GrpcEnable(self):
+        """是否启用 grpc 端口
+        :rtype: bool
+        """
+        return self._GrpcEnable
+
+    @GrpcEnable.setter
+    def GrpcEnable(self, GrpcEnable):
+        self._GrpcEnable = GrpcEnable
+
+    @property
+    def HealthProbe(self):
+        """健康探针
+        :rtype: :class:`tencentcloud.tione.v20211111.models.HealthProbe`
+        """
+        return self._HealthProbe
+
+    @HealthProbe.setter
+    def HealthProbe(self, HealthProbe):
+        self._HealthProbe = HealthProbe
+
 
     def _deserialize(self, params):
         self._ServiceGroupId = params.get("ServiceGroupId")
@@ -1763,6 +1996,10 @@ HYBRID_PAID:
         self._InstancePerReplicas = params.get("InstancePerReplicas")
         self._TerminationGracePeriodSeconds = params.get("TerminationGracePeriodSeconds")
         self._PreStopCommand = params.get("PreStopCommand")
+        self._GrpcEnable = params.get("GrpcEnable")
+        if params.get("HealthProbe") is not None:
+            self._HealthProbe = HealthProbe()
+            self._HealthProbe._deserialize(params.get("HealthProbe"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9507,6 +9744,114 @@ class HDFSConfig(AbstractModel):
         
 
 
+class HTTPGetAction(AbstractModel):
+    """http get 行为
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Path: http 路径
+        :type Path: str
+        """
+        self._Path = None
+
+    @property
+    def Path(self):
+        """http 路径
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+
+    def _deserialize(self, params):
+        self._Path = params.get("Path")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HealthProbe(AbstractModel):
+    """健康探针
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LivenessProbe: 存活探针
+        :type LivenessProbe: :class:`tencentcloud.tione.v20211111.models.Probe`
+        :param _ReadinessProbe: 就绪探针
+        :type ReadinessProbe: :class:`tencentcloud.tione.v20211111.models.Probe`
+        :param _StartupProbe: 启动探针
+        :type StartupProbe: :class:`tencentcloud.tione.v20211111.models.Probe`
+        """
+        self._LivenessProbe = None
+        self._ReadinessProbe = None
+        self._StartupProbe = None
+
+    @property
+    def LivenessProbe(self):
+        """存活探针
+        :rtype: :class:`tencentcloud.tione.v20211111.models.Probe`
+        """
+        return self._LivenessProbe
+
+    @LivenessProbe.setter
+    def LivenessProbe(self, LivenessProbe):
+        self._LivenessProbe = LivenessProbe
+
+    @property
+    def ReadinessProbe(self):
+        """就绪探针
+        :rtype: :class:`tencentcloud.tione.v20211111.models.Probe`
+        """
+        return self._ReadinessProbe
+
+    @ReadinessProbe.setter
+    def ReadinessProbe(self, ReadinessProbe):
+        self._ReadinessProbe = ReadinessProbe
+
+    @property
+    def StartupProbe(self):
+        """启动探针
+        :rtype: :class:`tencentcloud.tione.v20211111.models.Probe`
+        """
+        return self._StartupProbe
+
+    @StartupProbe.setter
+    def StartupProbe(self, StartupProbe):
+        self._StartupProbe = StartupProbe
+
+
+    def _deserialize(self, params):
+        if params.get("LivenessProbe") is not None:
+            self._LivenessProbe = Probe()
+            self._LivenessProbe._deserialize(params.get("LivenessProbe"))
+        if params.get("ReadinessProbe") is not None:
+            self._ReadinessProbe = Probe()
+            self._ReadinessProbe._deserialize(params.get("ReadinessProbe"))
+        if params.get("StartupProbe") is not None:
+            self._StartupProbe = Probe()
+            self._StartupProbe._deserialize(params.get("StartupProbe"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class HorizontalPodAutoscaler(AbstractModel):
     """hpa的描述
 
@@ -12690,6 +13035,10 @@ HYBRID_PAID:
         :type TerminationGracePeriodSeconds: int
         :param _PreStopCommand: ["sleep","60"]
         :type PreStopCommand: list of str
+        :param _GrpcEnable: 是否启动grpc端口
+        :type GrpcEnable: bool
+        :param _HealthProbe: 健康探针
+        :type HealthProbe: :class:`tencentcloud.tione.v20211111.models.HealthProbe`
         """
         self._ServiceId = None
         self._ModelInfo = None
@@ -12719,6 +13068,8 @@ HYBRID_PAID:
         self._InstancePerReplicas = None
         self._TerminationGracePeriodSeconds = None
         self._PreStopCommand = None
+        self._GrpcEnable = None
+        self._HealthProbe = None
 
     @property
     def ServiceId(self):
@@ -13051,6 +13402,28 @@ HYBRID_PAID:
     def PreStopCommand(self, PreStopCommand):
         self._PreStopCommand = PreStopCommand
 
+    @property
+    def GrpcEnable(self):
+        """是否启动grpc端口
+        :rtype: bool
+        """
+        return self._GrpcEnable
+
+    @GrpcEnable.setter
+    def GrpcEnable(self, GrpcEnable):
+        self._GrpcEnable = GrpcEnable
+
+    @property
+    def HealthProbe(self):
+        """健康探针
+        :rtype: :class:`tencentcloud.tione.v20211111.models.HealthProbe`
+        """
+        return self._HealthProbe
+
+    @HealthProbe.setter
+    def HealthProbe(self, HealthProbe):
+        self._HealthProbe = HealthProbe
+
 
     def _deserialize(self, params):
         self._ServiceId = params.get("ServiceId")
@@ -13109,6 +13482,10 @@ HYBRID_PAID:
         self._InstancePerReplicas = params.get("InstancePerReplicas")
         self._TerminationGracePeriodSeconds = params.get("TerminationGracePeriodSeconds")
         self._PreStopCommand = params.get("PreStopCommand")
+        self._GrpcEnable = params.get("GrpcEnable")
+        if params.get("HealthProbe") is not None:
+            self._HealthProbe = HealthProbe()
+            self._HealthProbe._deserialize(params.get("HealthProbe"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14918,12 +15295,15 @@ class PrivateLinkInfo(AbstractModel):
         :param _State: 私有连接状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type State: str
+        :param _InnerGrpcAddr: grpc内网调用地址
+        :type InnerGrpcAddr: list of str
         """
         self._VpcId = None
         self._SubnetId = None
         self._InnerHttpAddr = None
         self._InnerHttpsAddr = None
         self._State = None
+        self._InnerGrpcAddr = None
 
     @property
     def VpcId(self):
@@ -14985,6 +15365,17 @@ class PrivateLinkInfo(AbstractModel):
     def State(self, State):
         self._State = State
 
+    @property
+    def InnerGrpcAddr(self):
+        """grpc内网调用地址
+        :rtype: list of str
+        """
+        return self._InnerGrpcAddr
+
+    @InnerGrpcAddr.setter
+    def InnerGrpcAddr(self, InnerGrpcAddr):
+        self._InnerGrpcAddr = InnerGrpcAddr
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
@@ -14992,6 +15383,158 @@ class PrivateLinkInfo(AbstractModel):
         self._InnerHttpAddr = params.get("InnerHttpAddr")
         self._InnerHttpsAddr = params.get("InnerHttpsAddr")
         self._State = params.get("State")
+        self._InnerGrpcAddr = params.get("InnerGrpcAddr")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Probe(AbstractModel):
+    """探针结构信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProbeAction: 探针行为
+        :type ProbeAction: :class:`tencentcloud.tione.v20211111.models.ProbeAction`
+        :param _InitialDelaySeconds: 等待服务启动的延迟
+        :type InitialDelaySeconds: int
+        :param _PeriodSeconds: 轮询检查时间间隔
+        :type PeriodSeconds: int
+        :param _TimeoutSeconds: 检查超时时长
+        :type TimeoutSeconds: int
+        :param _FailureThreshold: 检测失败认定次数
+        :type FailureThreshold: int
+        :param _SuccessThreshold: 检测成功认定次数，就绪默认 3，存活/启动默认 1
+        :type SuccessThreshold: int
+        """
+        self._ProbeAction = None
+        self._InitialDelaySeconds = None
+        self._PeriodSeconds = None
+        self._TimeoutSeconds = None
+        self._FailureThreshold = None
+        self._SuccessThreshold = None
+
+    @property
+    def ProbeAction(self):
+        """探针行为
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ProbeAction`
+        """
+        return self._ProbeAction
+
+    @ProbeAction.setter
+    def ProbeAction(self, ProbeAction):
+        self._ProbeAction = ProbeAction
+
+    @property
+    def InitialDelaySeconds(self):
+        """等待服务启动的延迟
+        :rtype: int
+        """
+        return self._InitialDelaySeconds
+
+    @InitialDelaySeconds.setter
+    def InitialDelaySeconds(self, InitialDelaySeconds):
+        self._InitialDelaySeconds = InitialDelaySeconds
+
+    @property
+    def PeriodSeconds(self):
+        """轮询检查时间间隔
+        :rtype: int
+        """
+        return self._PeriodSeconds
+
+    @PeriodSeconds.setter
+    def PeriodSeconds(self, PeriodSeconds):
+        self._PeriodSeconds = PeriodSeconds
+
+    @property
+    def TimeoutSeconds(self):
+        """检查超时时长
+        :rtype: int
+        """
+        return self._TimeoutSeconds
+
+    @TimeoutSeconds.setter
+    def TimeoutSeconds(self, TimeoutSeconds):
+        self._TimeoutSeconds = TimeoutSeconds
+
+    @property
+    def FailureThreshold(self):
+        """检测失败认定次数
+        :rtype: int
+        """
+        return self._FailureThreshold
+
+    @FailureThreshold.setter
+    def FailureThreshold(self, FailureThreshold):
+        self._FailureThreshold = FailureThreshold
+
+    @property
+    def SuccessThreshold(self):
+        """检测成功认定次数，就绪默认 3，存活/启动默认 1
+        :rtype: int
+        """
+        return self._SuccessThreshold
+
+    @SuccessThreshold.setter
+    def SuccessThreshold(self, SuccessThreshold):
+        self._SuccessThreshold = SuccessThreshold
+
+
+    def _deserialize(self, params):
+        if params.get("ProbeAction") is not None:
+            self._ProbeAction = ProbeAction()
+            self._ProbeAction._deserialize(params.get("ProbeAction"))
+        self._InitialDelaySeconds = params.get("InitialDelaySeconds")
+        self._PeriodSeconds = params.get("PeriodSeconds")
+        self._TimeoutSeconds = params.get("TimeoutSeconds")
+        self._FailureThreshold = params.get("FailureThreshold")
+        self._SuccessThreshold = params.get("SuccessThreshold")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProbeAction(AbstractModel):
+    """探针行为
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HTTPGet: http get 行为
+        :type HTTPGet: :class:`tencentcloud.tione.v20211111.models.HTTPGetAction`
+        """
+        self._HTTPGet = None
+
+    @property
+    def HTTPGet(self):
+        """http get 行为
+        :rtype: :class:`tencentcloud.tione.v20211111.models.HTTPGetAction`
+        """
+        return self._HTTPGet
+
+    @HTTPGet.setter
+    def HTTPGet(self, HTTPGet):
+        self._HTTPGet = HTTPGet
+
+
+    def _deserialize(self, params):
+        if params.get("HTTPGet") is not None:
+            self._HTTPGet = HTTPGetAction()
+            self._HTTPGet._deserialize(params.get("HTTPGet"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16860,11 +17403,20 @@ class ServiceCallInfoV2(AbstractModel):
         :param _AuthToken: 鉴权token，仅当AuthorizationEnable为true时有效
 注意：此字段可能返回 null，表示取不到有效值。
         :type AuthToken: str
+        :param _AuthTokens: LLM token 列表
+        :type AuthTokens: list of AuthToken
+        :param _EnableLimit: 是否开启限流
+        :type EnableLimit: bool
+        :param _GrpcHost: 访问grpc时需携带的虚拟Host
+        :type GrpcHost: str
         """
         self._ServiceGroupId = None
         self._InternetEndpoint = None
         self._AuthorizationEnable = None
         self._AuthToken = None
+        self._AuthTokens = None
+        self._EnableLimit = None
+        self._GrpcHost = None
 
     @property
     def ServiceGroupId(self):
@@ -16914,12 +17466,53 @@ class ServiceCallInfoV2(AbstractModel):
     def AuthToken(self, AuthToken):
         self._AuthToken = AuthToken
 
+    @property
+    def AuthTokens(self):
+        """LLM token 列表
+        :rtype: list of AuthToken
+        """
+        return self._AuthTokens
+
+    @AuthTokens.setter
+    def AuthTokens(self, AuthTokens):
+        self._AuthTokens = AuthTokens
+
+    @property
+    def EnableLimit(self):
+        """是否开启限流
+        :rtype: bool
+        """
+        return self._EnableLimit
+
+    @EnableLimit.setter
+    def EnableLimit(self, EnableLimit):
+        self._EnableLimit = EnableLimit
+
+    @property
+    def GrpcHost(self):
+        """访问grpc时需携带的虚拟Host
+        :rtype: str
+        """
+        return self._GrpcHost
+
+    @GrpcHost.setter
+    def GrpcHost(self, GrpcHost):
+        self._GrpcHost = GrpcHost
+
 
     def _deserialize(self, params):
         self._ServiceGroupId = params.get("ServiceGroupId")
         self._InternetEndpoint = params.get("InternetEndpoint")
         self._AuthorizationEnable = params.get("AuthorizationEnable")
         self._AuthToken = params.get("AuthToken")
+        if params.get("AuthTokens") is not None:
+            self._AuthTokens = []
+            for item in params.get("AuthTokens"):
+                obj = AuthToken()
+                obj._deserialize(item)
+                self._AuthTokens.append(obj)
+        self._EnableLimit = params.get("EnableLimit")
+        self._GrpcHost = params.get("GrpcHost")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17150,6 +17743,10 @@ UPDATING 更新中
         :type SubUin: str
         :param _AppId: 服务组的app_id
         :type AppId: int
+        :param _AuthorizationEnable: 是否开启鉴权
+        :type AuthorizationEnable: bool
+        :param _AuthTokens: 限流鉴权 token 列表
+        :type AuthTokens: list of AuthToken
         """
         self._ServiceGroupId = None
         self._ServiceGroupName = None
@@ -17171,6 +17768,8 @@ UPDATING 更新中
         self._AvailableReplicasCount = None
         self._SubUin = None
         self._AppId = None
+        self._AuthorizationEnable = None
+        self._AuthTokens = None
 
     @property
     def ServiceGroupId(self):
@@ -17421,6 +18020,28 @@ UPDATING 更新中
     def AppId(self, AppId):
         self._AppId = AppId
 
+    @property
+    def AuthorizationEnable(self):
+        """是否开启鉴权
+        :rtype: bool
+        """
+        return self._AuthorizationEnable
+
+    @AuthorizationEnable.setter
+    def AuthorizationEnable(self, AuthorizationEnable):
+        self._AuthorizationEnable = AuthorizationEnable
+
+    @property
+    def AuthTokens(self):
+        """限流鉴权 token 列表
+        :rtype: list of AuthToken
+        """
+        return self._AuthTokens
+
+    @AuthTokens.setter
+    def AuthTokens(self, AuthTokens):
+        self._AuthTokens = AuthTokens
+
 
     def _deserialize(self, params):
         self._ServiceGroupId = params.get("ServiceGroupId")
@@ -17453,6 +18074,13 @@ UPDATING 更新中
         self._AvailableReplicasCount = params.get("AvailableReplicasCount")
         self._SubUin = params.get("SubUin")
         self._AppId = params.get("AppId")
+        self._AuthorizationEnable = params.get("AuthorizationEnable")
+        if params.get("AuthTokens") is not None:
+            self._AuthTokens = []
+            for item in params.get("AuthTokens"):
+                obj = AuthToken()
+                obj._deserialize(item)
+                self._AuthTokens.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17577,6 +18205,10 @@ HYBRID_PAID:
         :type TerminationGracePeriodSeconds: int
         :param _PreStopCommand: 服务实例停止前执行的命令，执行完毕或执行时间超过优雅退出时限后实例结束
         :type PreStopCommand: list of str
+        :param _GrpcEnable: 是否启用grpc端口
+        :type GrpcEnable: bool
+        :param _HealthProbe: 健康探针
+        :type HealthProbe: :class:`tencentcloud.tione.v20211111.models.HealthProbe`
         """
         self._Replicas = None
         self._ImageInfo = None
@@ -17612,6 +18244,8 @@ HYBRID_PAID:
         self._ServicePort = None
         self._TerminationGracePeriodSeconds = None
         self._PreStopCommand = None
+        self._GrpcEnable = None
+        self._HealthProbe = None
 
     @property
     def Replicas(self):
@@ -18034,6 +18668,28 @@ HYBRID_PAID:
     def PreStopCommand(self, PreStopCommand):
         self._PreStopCommand = PreStopCommand
 
+    @property
+    def GrpcEnable(self):
+        """是否启用grpc端口
+        :rtype: bool
+        """
+        return self._GrpcEnable
+
+    @GrpcEnable.setter
+    def GrpcEnable(self, GrpcEnable):
+        self._GrpcEnable = GrpcEnable
+
+    @property
+    def HealthProbe(self):
+        """健康探针
+        :rtype: :class:`tencentcloud.tione.v20211111.models.HealthProbe`
+        """
+        return self._HealthProbe
+
+    @HealthProbe.setter
+    def HealthProbe(self, HealthProbe):
+        self._HealthProbe = HealthProbe
+
 
     def _deserialize(self, params):
         self._Replicas = params.get("Replicas")
@@ -18111,6 +18767,10 @@ HYBRID_PAID:
         self._ServicePort = params.get("ServicePort")
         self._TerminationGracePeriodSeconds = params.get("TerminationGracePeriodSeconds")
         self._PreStopCommand = params.get("PreStopCommand")
+        self._GrpcEnable = params.get("GrpcEnable")
+        if params.get("HealthProbe") is not None:
+            self._HealthProbe = HealthProbe()
+            self._HealthProbe._deserialize(params.get("HealthProbe"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
