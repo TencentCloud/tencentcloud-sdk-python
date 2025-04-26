@@ -29406,10 +29406,14 @@ class SmartStructuralProRequest(AbstractModel):
         :type ImageUrl: str
         :param _ImageBase64: 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，WORD，EXCEL，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :type ImageBase64: str
-        :param _PdfPageNumber: 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+        :param _PdfPageNumber: 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为前3页。
         :type PdfPageNumber: int
         :param _ItemNames: 自定义结构化功能需返回的字段名称，例：若客户想新增返回姓名、性别两个字段的识别结果，则输入ItemNames=["姓名","性别"]
         :type ItemNames: list of str
+        :param _ItemNamesShowMode: true：仅输出自定义字段
+flase：输出默认字段+自定义字段
+默认true
+        :type ItemNamesShowMode: bool
         :param _ReturnFullText: 是否开启全文字段识别
         :type ReturnFullText: bool
         :param _ConfigId: 配置id支持：
@@ -29428,6 +29432,7 @@ AirWayBill -- 航空运单识别模板
 DispatchWeightNote -- 磅单发货单识别模板
 ReceiptWeightNote -- 磅单收货单识别模板
 ArticalRecognize -- 手写作文模版
+Table -- 表格模版
         :type ConfigId: str
         :param _EnableCoord: 是否开启全文字段坐标值的识别
         :type EnableCoord: bool
@@ -29440,6 +29445,7 @@ ArticalRecognize -- 手写作文模版
         self._ImageBase64 = None
         self._PdfPageNumber = None
         self._ItemNames = None
+        self._ItemNamesShowMode = None
         self._ReturnFullText = None
         self._ConfigId = None
         self._EnableCoord = None
@@ -29470,7 +29476,7 @@ ArticalRecognize -- 手写作文模版
 
     @property
     def PdfPageNumber(self):
-        """需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+        """需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为前3页。
         :rtype: int
         """
         return self._PdfPageNumber
@@ -29489,6 +29495,19 @@ ArticalRecognize -- 手写作文模版
     @ItemNames.setter
     def ItemNames(self, ItemNames):
         self._ItemNames = ItemNames
+
+    @property
+    def ItemNamesShowMode(self):
+        """true：仅输出自定义字段
+flase：输出默认字段+自定义字段
+默认true
+        :rtype: bool
+        """
+        return self._ItemNamesShowMode
+
+    @ItemNamesShowMode.setter
+    def ItemNamesShowMode(self, ItemNamesShowMode):
+        self._ItemNamesShowMode = ItemNamesShowMode
 
     @property
     def ReturnFullText(self):
@@ -29519,6 +29538,7 @@ AirWayBill -- 航空运单识别模板
 DispatchWeightNote -- 磅单发货单识别模板
 ReceiptWeightNote -- 磅单收货单识别模板
 ArticalRecognize -- 手写作文模版
+Table -- 表格模版
         :rtype: str
         """
         return self._ConfigId
@@ -29566,6 +29586,7 @@ ArticalRecognize -- 手写作文模版
         self._ImageBase64 = params.get("ImageBase64")
         self._PdfPageNumber = params.get("PdfPageNumber")
         self._ItemNames = params.get("ItemNames")
+        self._ItemNamesShowMode = params.get("ItemNamesShowMode")
         self._ReturnFullText = params.get("ReturnFullText")
         self._ConfigId = params.get("ConfigId")
         self._EnableCoord = params.get("EnableCoord")
