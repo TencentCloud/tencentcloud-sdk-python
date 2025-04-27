@@ -1323,7 +1323,7 @@ class CvmClient(AbstractClient):
 
 
     def EnterRescueMode(self, request):
-        """进入救援模式
+        """本接口（EnterRescueMode）用于进入救援模式。
 
         :param request: Request instance for EnterRescueMode.
         :type request: :class:`tencentcloud.cvm.v20170312.models.EnterRescueModeRequest`

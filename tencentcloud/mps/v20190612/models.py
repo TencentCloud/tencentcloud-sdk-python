@@ -27409,7 +27409,7 @@ class DescribeSmartSubtitleTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definitions: 智能字幕模板唯一标识过滤条件，数组长度限制：10。
+        :param _Definitions: 智能字幕模板唯一标识过滤条件，数组长度限制：100。
         :type Definitions: list of int
         :param _Offset: 分页偏移量，默认值：0。
         :type Offset: int
@@ -27430,7 +27430,7 @@ class DescribeSmartSubtitleTemplatesRequest(AbstractModel):
 
     @property
     def Definitions(self):
-        """智能字幕模板唯一标识过滤条件，数组长度限制：10。
+        """智能字幕模板唯一标识过滤条件，数组长度限制：100。
         :rtype: list of int
         """
         return self._Definitions

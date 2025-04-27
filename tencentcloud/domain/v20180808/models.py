@@ -29,7 +29,7 @@ class AuctionInfo(AbstractModel):
         :type Bidder: str
         :param _AuctionTime: 竞拍时间
         :type AuctionTime: str
-        :param _AuctionPrice: 竞拍价格
+        :param _AuctionPrice: 竞拍价格 单位元
         :type AuctionPrice: float
         :param _Status: 状态 up: 领先 down: 落后
         :type Status: str
@@ -63,7 +63,7 @@ class AuctionInfo(AbstractModel):
 
     @property
     def AuctionPrice(self):
-        """竞拍价格
+        """竞拍价格 单位元
         :rtype: float
         """
         return self._AuctionPrice
@@ -108,7 +108,8 @@ class BatchModifyDomainInfoRequest(AbstractModel):
         r"""
         :param _Domains: 批量修改的域名。
         :type Domains: list of str
-        :param _TemplateId: 模板ID(可从模板列表接口获取)
+        :param _TemplateId: 模板ID
+可从DescribeTemplates接口获取
         :type TemplateId: str
         :param _LockTransfer: true： 开启60天内禁止转移注册商锁定
 false：关闭60天内禁止转移注册商锁定
@@ -132,7 +133,8 @@ false：关闭60天内禁止转移注册商锁定
 
     @property
     def TemplateId(self):
-        """模板ID(可从模板列表接口获取)
+        """模板ID
+可从DescribeTemplates接口获取
         :rtype: str
         """
         return self._TemplateId
@@ -224,6 +226,16 @@ class BatchStatus(AbstractModel):
         :param _Status: 批量任务状态  doing：进行中  success：成功  failed：失败  partial_success：部分成功
         :type Status: str
         :param _BatchAction: 批量任务类型
+new：注册域名
+renew：续费域名
+batch_transfer_prohibition_on：开启禁止转移锁
+batch_transfer_prohibition_off：关闭禁止转移锁
+batch_update_prohibition_on：开启禁止更新锁
+batch_update_prohibition_off：关闭禁止更新锁
+batch_modify_owner：域名转移
+batch_modify_domain_info：域名信息修改
+batch_transfer_in：域名转入
+batch_cancel_transfer_out：域名取消转出
         :type BatchAction: str
         """
         self._LogId = None
@@ -255,6 +267,16 @@ class BatchStatus(AbstractModel):
     @property
     def BatchAction(self):
         """批量任务类型
+new：注册域名
+renew：续费域名
+batch_transfer_prohibition_on：开启禁止转移锁
+batch_transfer_prohibition_off：关闭禁止转移锁
+batch_update_prohibition_on：开启禁止更新锁
+batch_update_prohibition_off：关闭禁止更新锁
+batch_modify_owner：域名转移
+batch_modify_domain_info：域名信息修改
+batch_transfer_in：域名转入
+batch_cancel_transfer_out：域名取消转出
         :rtype: str
         """
         return self._BatchAction
@@ -285,14 +307,16 @@ class BidDetailPageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BusinessId: 业务ID
+        :param _BusinessId: 预约ID
+可通过DescribeBiddingList接口获取
         :type BusinessId: str
         """
         self._BusinessId = None
 
     @property
     def BusinessId(self):
-        """业务ID
+        """预约ID
+可通过DescribeBiddingList接口获取
         :rtype: str
         """
         return self._BusinessId
@@ -323,16 +347,16 @@ class BidDetailPageResponse(AbstractModel):
         r"""
         :param _Domain: 域名
         :type Domain: str
-        :param _CurrentPrice: 当前域名价格
+        :param _CurrentPrice: 当前域名价格 单位元
         :type CurrentPrice: float
-        :param _BidPrice: 用户上次出价
+        :param _BidPrice: 用户上次出价 单位元
         :type BidPrice: float
-        :param _CurrentPriceScope: 当前加价幅度
+        :param _CurrentPriceScope: 当前加价幅度 单位元
         :type CurrentPriceScope: float
         :param _PriceScope: 加价幅度区间配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type PriceScope: list of PriceScopeConf
-        :param _DepositPrice: 用户当前已经支付了的保证金
+        :param _DepositPrice: 用户当前已经支付了的保证金 单位元
         :type DepositPrice: float
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -358,7 +382,7 @@ class BidDetailPageResponse(AbstractModel):
 
     @property
     def CurrentPrice(self):
-        """当前域名价格
+        """当前域名价格 单位元
         :rtype: float
         """
         return self._CurrentPrice
@@ -369,7 +393,7 @@ class BidDetailPageResponse(AbstractModel):
 
     @property
     def BidPrice(self):
-        """用户上次出价
+        """用户上次出价 单位元
         :rtype: float
         """
         return self._BidPrice
@@ -380,7 +404,7 @@ class BidDetailPageResponse(AbstractModel):
 
     @property
     def CurrentPriceScope(self):
-        """当前加价幅度
+        """当前加价幅度 单位元
         :rtype: float
         """
         return self._CurrentPriceScope
@@ -403,7 +427,7 @@ class BidDetailPageResponse(AbstractModel):
 
     @property
     def DepositPrice(self):
-        """用户当前已经支付了的保证金
+        """用户当前已经支付了的保证金 单位元
         :rtype: float
         """
         return self._DepositPrice
@@ -525,13 +549,13 @@ class BiddingAppointResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BusinessID: business_id
+        :param _BusinessID: 预约ID
         :type BusinessID: str
         :param _Domain: 域名
         :type Domain: str
-        :param _AppointPrice: 预定价格
+        :param _AppointPrice: 预定价格 单位元
         :type AppointPrice: int
-        :param _AppointBondPrice: 预约保证金
+        :param _AppointBondPrice: 预约保证金 单位元
         :type AppointBondPrice: int
         :param _AppointEndTime: 预约结束时间
         :type AppointEndTime: str
@@ -550,7 +574,7 @@ class BiddingAppointResult(AbstractModel):
 
     @property
     def BusinessID(self):
-        """business_id
+        """预约ID
         :rtype: str
         """
         return self._BusinessID
@@ -572,7 +596,7 @@ class BiddingAppointResult(AbstractModel):
 
     @property
     def AppointPrice(self):
-        """预定价格
+        """预定价格 单位元
         :rtype: int
         """
         return self._AppointPrice
@@ -583,7 +607,7 @@ class BiddingAppointResult(AbstractModel):
 
     @property
     def AppointBondPrice(self):
-        """预约保证金
+        """预约保证金 单位元
         :rtype: int
         """
         return self._AppointBondPrice
@@ -652,8 +676,9 @@ class BiddingPreReleaseRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _BusinessId: 业务ID
+可通过DescribeBiddingList接口获取
         :type BusinessId: str
-        :param _Price: 价格
+        :param _Price: 价格 单位元
         :type Price: float
         """
         self._BusinessId = None
@@ -662,6 +687,7 @@ class BiddingPreReleaseRequest(AbstractModel):
     @property
     def BusinessId(self):
         """业务ID
+可通过DescribeBiddingList接口获取
         :rtype: str
         """
         return self._BusinessId
@@ -672,7 +698,7 @@ class BiddingPreReleaseRequest(AbstractModel):
 
     @property
     def Price(self):
-        """价格
+        """价格 单位元
         :rtype: float
         """
         return self._Price
@@ -704,7 +730,7 @@ class BiddingPreReleaseResponse(AbstractModel):
         r"""
         :param _IsNeedPay: 是否需要额外支付
         :type IsNeedPay: bool
-        :param _BillingParam: 计费请求参数，以Json字符串的形式进行返回。
+        :param _BillingParam: 计费请求参数，以类Json字符串的形式进行返回。用于计费下单
         :type BillingParam: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -726,7 +752,7 @@ class BiddingPreReleaseResponse(AbstractModel):
 
     @property
     def BillingParam(self):
-        """计费请求参数，以Json字符串的形式进行返回。
+        """计费请求参数，以类Json字符串的形式进行返回。用于计费下单
         :rtype: str
         """
         return self._BillingParam
@@ -760,17 +786,17 @@ class BiddingResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BusinessID: business_id
+        :param _BusinessID: 预约ID
         :type BusinessID: str
         :param _Domain: 域名
         :type Domain: str
-        :param _CurrentPrice: 当前价格
+        :param _CurrentPrice: 当前价格 单位元
         :type CurrentPrice: int
         :param _CurrentNickname: 当前用户昵称
         :type CurrentNickname: str
-        :param _BiddingPrice: 我的出价
+        :param _BiddingPrice: 我的出价 单位元
         :type BiddingPrice: int
-        :param _BiddingBondPrice: 竞价保证金
+        :param _BiddingBondPrice: 竞价保证金 单位元
         :type BiddingBondPrice: int
         :param _BiddingEndTime: 竞价结束时间
         :type BiddingEndTime: str
@@ -794,7 +820,7 @@ class BiddingResult(AbstractModel):
 
     @property
     def BusinessID(self):
-        """business_id
+        """预约ID
         :rtype: str
         """
         return self._BusinessID
@@ -816,7 +842,7 @@ class BiddingResult(AbstractModel):
 
     @property
     def CurrentPrice(self):
-        """当前价格
+        """当前价格 单位元
         :rtype: int
         """
         return self._CurrentPrice
@@ -838,7 +864,7 @@ class BiddingResult(AbstractModel):
 
     @property
     def BiddingPrice(self):
-        """我的出价
+        """我的出价 单位元
         :rtype: int
         """
         return self._BiddingPrice
@@ -849,7 +875,7 @@ class BiddingResult(AbstractModel):
 
     @property
     def BiddingBondPrice(self):
-        """竞价保证金
+        """竞价保证金 单位元
         :rtype: int
         """
         return self._BiddingBondPrice
@@ -1206,6 +1232,15 @@ class CheckBatchStatusRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _LogIds: 操作日志 ID数组，最多 200 个
+可通过任意批量操作接口获取，例如：
+BatchModifyDomainInfo
+ModifyDomainDNSBatch
+ModifyDomainOwnerBatch
+UpdateProhibitionBatch
+TransferProhibitionBatch
+TransferInDomainBatch
+TransferInDomainBatchBuy
+CancelTransferOutInBatch
         :type LogIds: list of int non-negative
         """
         self._LogIds = None
@@ -1213,6 +1248,15 @@ class CheckBatchStatusRequest(AbstractModel):
     @property
     def LogIds(self):
         """操作日志 ID数组，最多 200 个
+可通过任意批量操作接口获取，例如：
+BatchModifyDomainInfo
+ModifyDomainDNSBatch
+ModifyDomainOwnerBatch
+UpdateProhibitionBatch
+TransferProhibitionBatch
+TransferInDomainBatch
+TransferInDomainBatchBuy
+CancelTransferOutInBatch
         :rtype: list of int non-negative
         """
         return self._LogIds
@@ -1833,10 +1877,13 @@ class CreateCustomDnsHostRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _DomainId: 域名实例ID
+可通过DescribeDomainLIst接口获取
         :type DomainId: str
         :param _DnsName: Dns名称
+例如：<>.test.com;其中<>就是Dns名称，可以是任意域名允许的格式
         :type DnsName: str
         :param _IpSet: IP地址列表
+可选择：正常IP地址范围
         :type IpSet: list of str
         """
         self._DomainId = None
@@ -1846,6 +1893,7 @@ class CreateCustomDnsHostRequest(AbstractModel):
     @property
     def DomainId(self):
         """域名实例ID
+可通过DescribeDomainLIst接口获取
         :rtype: str
         """
         return self._DomainId
@@ -1857,6 +1905,7 @@ class CreateCustomDnsHostRequest(AbstractModel):
     @property
     def DnsName(self):
         """Dns名称
+例如：<>.test.com;其中<>就是Dns名称，可以是任意域名允许的格式
         :rtype: str
         """
         return self._DnsName
@@ -1868,6 +1917,7 @@ class CreateCustomDnsHostRequest(AbstractModel):
     @property
     def IpSet(self):
         """IP地址列表
+可选择：正常IP地址范围
         :rtype: list of str
         """
         return self._IpSet
@@ -2174,14 +2224,16 @@ class CreateDomainRedemptionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DomainId: 域名 ID
+        :param _DomainId: 域名ID
+可通过DescribeDomainList接口获取
         :type DomainId: str
         """
         self._DomainId = None
 
     @property
     def DomainId(self):
-        """域名 ID
+        """域名ID
+可通过DescribeDomainList接口获取
         :rtype: str
         """
         return self._DomainId
@@ -2242,7 +2294,8 @@ class CreatePhoneEmailRequest(AbstractModel):
         :type Code: str
         :param _Type: 1：手机   2：邮箱
         :type Type: int
-        :param _VerifyCode: 验证码(通过SendPhoneEmailCode发送到手机或邮箱的验证码)
+        :param _VerifyCode: 验证码
+通过调用SendPhoneEmailCode接口发送到手机或邮箱的验证码：https://cloud.tencent.com/document/api/242/62666
         :type VerifyCode: str
         """
         self._Code = None
@@ -2273,7 +2326,8 @@ class CreatePhoneEmailRequest(AbstractModel):
 
     @property
     def VerifyCode(self):
-        """验证码(通过SendPhoneEmailCode发送到手机或邮箱的验证码)
+        """验证码
+通过调用SendPhoneEmailCode接口发送到手机或邮箱的验证码：https://cloud.tencent.com/document/api/242/62666
         :rtype: str
         """
         return self._VerifyCode
@@ -2483,14 +2537,16 @@ class DeleteBiddingRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BusinessID: business_id
+        :param _BusinessID: 预约ID
+可通过DescribeBiddingList接口获取
         :type BusinessID: str
         """
         self._BusinessID = None
 
     @property
     def BusinessID(self):
-        """business_id
+        """预约ID
+可通过DescribeBiddingList接口获取
         :rtype: str
         """
         return self._BusinessID
@@ -2548,8 +2604,10 @@ class DeleteCustomDnsHostRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _DomainId: 域名实例ID
+可通过DescribeDomainList接口获取
         :type DomainId: str
         :param _DnsName: DNS名称
+例如：<>.test.com;其中<>就是Dns名称，可以是任意域名允许的格式
         :type DnsName: str
         """
         self._DomainId = None
@@ -2558,6 +2616,7 @@ class DeleteCustomDnsHostRequest(AbstractModel):
     @property
     def DomainId(self):
         """域名实例ID
+可通过DescribeDomainList接口获取
         :rtype: str
         """
         return self._DomainId
@@ -2569,6 +2628,7 @@ class DeleteCustomDnsHostRequest(AbstractModel):
     @property
     def DnsName(self):
         """DNS名称
+例如：<>.test.com;其中<>就是Dns名称，可以是任意域名允许的格式
         :rtype: str
         """
         return self._DnsName
@@ -2784,14 +2844,16 @@ class DeleteTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: 模板ID(可通过模板信息列表获取)
+        :param _TemplateId: 模板ID
+可通过DescribeTemplates接口获取
         :type TemplateId: str
         """
         self._TemplateId = None
 
     @property
     def TemplateId(self):
-        """模板ID(可通过模板信息列表获取)
+        """模板ID
+可通过DescribeTemplates接口获取
         :rtype: str
         """
         return self._TemplateId
@@ -2850,9 +2912,9 @@ class DescribeAuctionListRequest(AbstractModel):
         r"""
         :param _BusinessId: 业务ID，通过接口DescribeBiddingList返回结果中获取
         :type BusinessId: str
-        :param _Limit: 条数，默认10条
+        :param _Limit: 条数，默认10，最大100
         :type Limit: int
-        :param _OffSet: 偏移量
+        :param _OffSet: 偏移量 默认0
         :type OffSet: int
         """
         self._BusinessId = None
@@ -2872,7 +2934,7 @@ class DescribeAuctionListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """条数，默认10条
+        """条数，默认10，最大100
         :rtype: int
         """
         return self._Limit
@@ -2883,7 +2945,7 @@ class DescribeAuctionListRequest(AbstractModel):
 
     @property
     def OffSet(self):
-        """偏移量
+        """偏移量 默认0
         :rtype: int
         """
         return self._OffSet
@@ -3220,14 +3282,16 @@ class DescribeBiddingAppointDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BusinessID: business_id
+        :param _BusinessID: 预约ID
+可通过DescribeBiddingList接口获取
         :type BusinessID: str
         """
         self._BusinessID = None
 
     @property
     def BusinessID(self):
-        """business_id
+        """预约ID
+可通过DescribeBiddingList接口获取
         :rtype: str
         """
         return self._BusinessID
@@ -3270,9 +3334,9 @@ class DescribeBiddingAppointDetailResponse(AbstractModel):
         :type ExpireTime: str
         :param _DeleteTime: 删除时间
         :type DeleteTime: str
-        :param _AppointPrice: 当前价格
+        :param _AppointPrice: 当前价格 单位元
         :type AppointPrice: int
-        :param _AppointBondPrice: 预约保证金
+        :param _AppointBondPrice: 预约保证金 单位元
         :type AppointBondPrice: int
         :param _Status: 1 已预约，2 竞价中，3 等待出价 4 竞价失败 5 等待支付 6 等待转移，7 转移中 8 交易成功 9 预约持有者赎回 10 竞价持有者赎回 11 其他阶段持有者赎回 12 违约
         :type Status: int
@@ -3374,7 +3438,7 @@ yes：退回 no: 未退回
 
     @property
     def AppointPrice(self):
-        """当前价格
+        """当前价格 单位元
         :rtype: int
         """
         return self._AppointPrice
@@ -3385,7 +3449,7 @@ yes：退回 no: 未退回
 
     @property
     def AppointBondPrice(self):
-        """预约保证金
+        """预约保证金 单位元
         :rtype: int
         """
         return self._AppointBondPrice
@@ -3457,7 +3521,8 @@ class DescribeBiddingAppointListRequest(AbstractModel):
         :type PageSize: int
         :param _Domain: 域名
         :type Domain: str
-        :param _Status: 状态： 1 已预约 9 预约持有者索回
+        :param _Status: 状态：
+1 已预约，2 竞价中，3 等待出价 4 竞价失败 5 等待支付 6 等待转移，7 转移中 8 交易成功 9 预约持有者赎回 10 竞价持有者赎回 11 其他阶段持有者赎回 12 违约
         :type Status: list of int non-negative
         :param _SortField: 排序字段：AppointEndTime 预约结束时间
         :type SortField: str
@@ -3506,7 +3571,8 @@ class DescribeBiddingAppointListRequest(AbstractModel):
 
     @property
     def Status(self):
-        """状态： 1 已预约 9 预约持有者索回
+        """状态：
+1 已预约，2 竞价中，3 等待出价 4 竞价失败 5 等待支付 6 等待转移，7 转移中 8 交易成功 9 预约持有者赎回 10 竞价持有者赎回 11 其他阶段持有者赎回 12 违约
         :rtype: list of int non-negative
         """
         return self._Status
@@ -3625,14 +3691,16 @@ class DescribeBiddingDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BusinessID: business_id
+        :param _BusinessID: 预约ID
+可通过DescribeBiddingList接口获取
         :type BusinessID: str
         """
         self._BusinessID = None
 
     @property
     def BusinessID(self):
-        """business_id
+        """预约ID
+可通过DescribeBiddingList接口获取
         :rtype: str
         """
         return self._BusinessID
@@ -3675,11 +3743,11 @@ class DescribeBiddingDetailResponse(AbstractModel):
         :type ExpireTime: str
         :param _DeleteTime: 删除时间
         :type DeleteTime: str
-        :param _CurrentPrice: 当前价格
+        :param _CurrentPrice: 当前价格 单位元
         :type CurrentPrice: int
         :param _CurrentNickname: 当前用户昵称
         :type CurrentNickname: str
-        :param _BiddingBondPrice: 竞价保证金
+        :param _BiddingBondPrice: 竞价保证金 单位元
         :type BiddingBondPrice: int
         :param _Status: 2 竞价中  3 等待出价 4 竞价失败 10 竞价持有者赎回
         :type Status: int
@@ -3687,7 +3755,7 @@ class DescribeBiddingDetailResponse(AbstractModel):
         :type BiddingFlag: int
         :param _BiddingBondRefund: 是否退款，yes表示退款，no表示不退款
         :type BiddingBondRefund: str
-        :param _BiddingPrice: 我的出价
+        :param _BiddingPrice: 我的出价 单位元
         :type BiddingPrice: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3787,7 +3855,7 @@ class DescribeBiddingDetailResponse(AbstractModel):
 
     @property
     def CurrentPrice(self):
-        """当前价格
+        """当前价格 单位元
         :rtype: int
         """
         return self._CurrentPrice
@@ -3809,7 +3877,7 @@ class DescribeBiddingDetailResponse(AbstractModel):
 
     @property
     def BiddingBondPrice(self):
-        """竞价保证金
+        """竞价保证金 单位元
         :rtype: int
         """
         return self._BiddingBondPrice
@@ -3853,7 +3921,7 @@ class DescribeBiddingDetailResponse(AbstractModel):
 
     @property
     def BiddingPrice(self):
-        """我的出价
+        """我的出价 单位元
         :rtype: int
         """
         return self._BiddingPrice
@@ -4075,14 +4143,16 @@ class DescribeBiddingSuccessfulDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BusinessID: business_id
+        :param _BusinessID: 预约ID
+可通过DescribeBiddingSuccessfulList接口获取
         :type BusinessID: str
         """
         self._BusinessID = None
 
     @property
     def BusinessID(self):
-        """business_id
+        """预约ID
+可通过DescribeBiddingSuccessfulList接口获取
         :rtype: str
         """
         return self._BusinessID
@@ -4115,7 +4185,7 @@ class DescribeBiddingSuccessfulDetailResponse(AbstractModel):
         :type Domain: str
         :param _SuccessfulTime: 得标时间
         :type SuccessfulTime: str
-        :param _SuccessfulPrice: 得标价格
+        :param _SuccessfulPrice: 得标价格 单位元
         :type SuccessfulPrice: float
         :param _RegTime:  注册时间
         :type RegTime: str
@@ -4127,7 +4197,7 @@ class DescribeBiddingSuccessfulDetailResponse(AbstractModel):
         :type PayEndTime: str
         :param _BiddingBondRefund: 保证金，是否退款，yes表示退款，no表示不退款
         :type BiddingBondRefund: str
-        :param _BiddingBondPrice: 保证金
+        :param _BiddingBondPrice: 保证金 单位元
         :type BiddingBondPrice: float
         :param _Status: 状态：5 等待支付 6 等待转移， 7 转移中，8 交易成功，11 尾款阶段持有者索回，12 已违约
         :type Status: int
@@ -4170,7 +4240,7 @@ class DescribeBiddingSuccessfulDetailResponse(AbstractModel):
 
     @property
     def SuccessfulPrice(self):
-        """得标价格
+        """得标价格 单位元
         :rtype: float
         """
         return self._SuccessfulPrice
@@ -4236,7 +4306,7 @@ class DescribeBiddingSuccessfulDetailResponse(AbstractModel):
 
     @property
     def BiddingBondPrice(self):
-        """保证金
+        """保证金 单位元
         :rtype: float
         """
         return self._BiddingBondPrice
@@ -4463,7 +4533,8 @@ class DescribeCustomDnsHostSetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DomainId: 域名实例ID(域名基本信息或我的域名列表接口可获取)
+        :param _DomainId: 域名实例ID
+可通过DescribeDomainList接口获取
         :type DomainId: str
         :param _Limit: 返回数量，默认为20，取值范围[1,100]
         :type Limit: int
@@ -4476,7 +4547,8 @@ class DescribeCustomDnsHostSetRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """域名实例ID(域名基本信息或我的域名列表接口可获取)
+        """域名实例ID
+可通过DescribeDomainList接口获取
         :rtype: str
         """
         return self._DomainId
@@ -5021,6 +5093,7 @@ class DescribePayWaitDetailRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _BusinessId: 业务ID
+可通过DescribeBiddingList接口获取
         :type BusinessId: str
         """
         self._BusinessId = None
@@ -5028,6 +5101,7 @@ class DescribePayWaitDetailRequest(AbstractModel):
     @property
     def BusinessId(self):
         """业务ID
+可通过DescribeBiddingList接口获取
         :rtype: str
         """
         return self._BusinessId
@@ -5059,14 +5133,18 @@ class DescribePayWaitDetailResponse(AbstractModel):
         :param _Domain: 域名
         :type Domain: str
         :param _Status: 域名类型
+pay：等待支持
+sub：已经预订
+wait：等待出价
+finish：完成出价
         :type Status: str
         :param _EndTime: 支付结束时间
         :type EndTime: str
         :param _RegTime: 域名注册时间
         :type RegTime: str
-        :param _Price: 域名成交价格
+        :param _Price: 域名成交价格 单位元
         :type Price: float
-        :param _RetDeposit: 待退还保证金
+        :param _RetDeposit: 待退还保证金 单位元
         :type RetDeposit: float
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5093,6 +5171,10 @@ class DescribePayWaitDetailResponse(AbstractModel):
     @property
     def Status(self):
         """域名类型
+pay：等待支持
+sub：已经预订
+wait：等待出价
+finish：完成出价
         :rtype: str
         """
         return self._Status
@@ -5125,7 +5207,7 @@ class DescribePayWaitDetailResponse(AbstractModel):
 
     @property
     def Price(self):
-        """域名成交价格
+        """域名成交价格 单位元
         :rtype: float
         """
         return self._Price
@@ -5136,7 +5218,7 @@ class DescribePayWaitDetailResponse(AbstractModel):
 
     @property
     def RetDeposit(self):
-        """待退还保证金
+        """待退还保证金 单位元
         :rtype: float
         """
         return self._RetDeposit
@@ -5318,9 +5400,9 @@ class DescribePreAuctionListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PageNumber: 页码
+        :param _PageNumber: 页码 默认1
         :type PageNumber: int
-        :param _PageSize: 条数
+        :param _PageSize: 条数 默认20 最大100
         :type PageSize: int
         """
         self._PageNumber = None
@@ -5328,7 +5410,7 @@ class DescribePreAuctionListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """页码
+        """页码 默认1
         :rtype: int
         """
         return self._PageNumber
@@ -5339,7 +5421,7 @@ class DescribePreAuctionListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """条数
+        """条数 默认20 最大100
         :rtype: int
         """
         return self._PageSize
@@ -5372,7 +5454,6 @@ class DescribePreAuctionListResponse(AbstractModel):
         :param _TotalCount: 总数
         :type TotalCount: int
         :param _PreAuctionList: 预释放竞价列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type PreAuctionList: list of PreAuctionInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5395,7 +5476,6 @@ class DescribePreAuctionListResponse(AbstractModel):
     @property
     def PreAuctionList(self):
         """预释放竞价列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PreAuctionInfo
         """
         return self._PreAuctionList
@@ -6678,10 +6758,12 @@ class DescribeUnPreDomainDetailResponse(AbstractModel):
         :param _ExpireTime: 到期时间
         :type ExpireTime: str
         :param _Status: 域名状态
+ bid：出价
+noAction：无法操作
         :type Status: str
-        :param _CurrentPrice: 域名价格
+        :param _CurrentPrice: 域名价格 单位元
         :type CurrentPrice: float
-        :param _AppointBondPrice: 域名保证金
+        :param _AppointBondPrice: 域名保证金 单位元
         :type AppointBondPrice: float
         :param _IsAppoint: 是否已经预约
         :type IsAppoint: bool
@@ -6763,6 +6845,8 @@ class DescribeUnPreDomainDetailResponse(AbstractModel):
     @property
     def Status(self):
         """域名状态
+ bid：出价
+noAction：无法操作
         :rtype: str
         """
         return self._Status
@@ -6773,7 +6857,7 @@ class DescribeUnPreDomainDetailResponse(AbstractModel):
 
     @property
     def CurrentPrice(self):
-        """域名价格
+        """域名价格 单位元
         :rtype: float
         """
         return self._CurrentPrice
@@ -6784,7 +6868,7 @@ class DescribeUnPreDomainDetailResponse(AbstractModel):
 
     @property
     def AppointBondPrice(self):
-        """域名保证金
+        """域名保证金 单位元
         :rtype: float
         """
         return self._AppointBondPrice
@@ -7179,7 +7263,17 @@ class DomainBatchDetailSet(AbstractModel):
         r"""
         :param _Id: 详情ID
         :type Id: int
-        :param _Action: 类型  new: 注册域名 batch_transfer_prohibition_on:开启禁止转移  batch_transfer_prohibition_off:关闭禁止转移 batch_update_prohibition_on:开启禁止更新   batch_update_prohibition_off:关闭禁止更新
+        :param _Action: 类型  
+new：注册域名
+renew：续费域名
+batch_transfer_prohibition_on：开启禁止转移锁
+batch_transfer_prohibition_off：关闭禁止转移锁
+batch_update_prohibition_on：开启禁止更新锁
+batch_update_prohibition_off：关闭禁止更新锁
+batch_modify_owner：域名转移
+batch_modify_domain_info：域名信息修改
+batch_transfer_in：域名转入
+batch_cancel_transfer_out：域名取消转出
         :type Action: str
         :param _Domain: 域名
         :type Domain: str
@@ -7188,7 +7282,7 @@ doing 执行中。
 failed 操作失败。
 success  操作成功。
         :type Status: str
-        :param _Reason: 失败原因
+        :param _Reason: 失败原因，如果状态成功(Status:success),则该字段为空
         :type Reason: str
         :param _CreatedOn: 创建时间
         :type CreatedOn: str
@@ -7219,7 +7313,17 @@ success  操作成功。
 
     @property
     def Action(self):
-        """类型  new: 注册域名 batch_transfer_prohibition_on:开启禁止转移  batch_transfer_prohibition_off:关闭禁止转移 batch_update_prohibition_on:开启禁止更新   batch_update_prohibition_off:关闭禁止更新
+        """类型  
+new：注册域名
+renew：续费域名
+batch_transfer_prohibition_on：开启禁止转移锁
+batch_transfer_prohibition_off：关闭禁止转移锁
+batch_update_prohibition_on：开启禁止更新锁
+batch_update_prohibition_off：关闭禁止更新锁
+batch_modify_owner：域名转移
+batch_modify_domain_info：域名信息修改
+batch_transfer_in：域名转入
+batch_cancel_transfer_out：域名取消转出
         :rtype: str
         """
         return self._Action
@@ -7255,7 +7359,7 @@ success  操作成功。
 
     @property
     def Reason(self):
-        """失败原因
+        """失败原因，如果状态成功(Status:success),则该字段为空
         :rtype: str
         """
         return self._Reason
@@ -8319,8 +8423,9 @@ class ModifyDomainOwnerBatchRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _Domains: 要过户的域名。
+一次提交不大于4000个
         :type Domains: list of str
-        :param _NewOwnerUin: 转入账户的uin。
+        :param _NewOwnerUin: 转入账户的主uin。
         :type NewOwnerUin: str
         :param _TransferDns: 是否同时转移对应的 DNS 解析域名，默认false
         :type TransferDns: bool
@@ -8335,6 +8440,7 @@ class ModifyDomainOwnerBatchRequest(AbstractModel):
     @property
     def Domains(self):
         """要过户的域名。
+一次提交不大于4000个
         :rtype: list of str
         """
         return self._Domains
@@ -8345,7 +8451,7 @@ class ModifyDomainOwnerBatchRequest(AbstractModel):
 
     @property
     def NewOwnerUin(self):
-        """转入账户的uin。
+        """转入账户的主uin。
         :rtype: str
         """
         return self._NewOwnerUin
@@ -8751,11 +8857,13 @@ class PreAuctionInfo(AbstractModel):
         :type Domain: str
         :param _BiddingTime: 竞价倒计时
         :type BiddingTime: str
-        :param _BidCount: 出价次数
+        :param _BidCount: 出价次数 单位元
         :type BidCount: int
-        :param _Price: 当前价格
+        :param _Price: 当前价格 单位元
         :type Price: float
-        :param _Op: 用户操作 bid：出价 "noAction"：无法操作
+        :param _Op: 用户操作 
+bid：出价 
+noAction：无法操作
         :type Op: str
         :param _BusinessId: 业务ID
         :type BusinessId: str
@@ -8791,7 +8899,7 @@ class PreAuctionInfo(AbstractModel):
 
     @property
     def BidCount(self):
-        """出价次数
+        """出价次数 单位元
         :rtype: int
         """
         return self._BidCount
@@ -8802,7 +8910,7 @@ class PreAuctionInfo(AbstractModel):
 
     @property
     def Price(self):
-        """当前价格
+        """当前价格 单位元
         :rtype: float
         """
         return self._Price
@@ -8813,7 +8921,9 @@ class PreAuctionInfo(AbstractModel):
 
     @property
     def Op(self):
-        """用户操作 bid：出价 "noAction"：无法操作
+        """用户操作 
+bid：出价 
+noAction：无法操作
         :rtype: str
         """
         return self._Op
@@ -9125,13 +9235,13 @@ class PriceScopeConf(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MaxPrice: 最高价格
+        :param _MaxPrice: 最高价格 单位元
         :type MaxPrice: float
-        :param _MinPrice: 最低价格
+        :param _MinPrice: 最低价格 单位元
         :type MinPrice: float
-        :param _Price: 价格幅度
+        :param _Price: 价格幅度 单位元
         :type Price: float
-        :param _DepositPrice: 保证金
+        :param _DepositPrice: 保证金 单位元
         :type DepositPrice: float
         """
         self._MaxPrice = None
@@ -9141,7 +9251,7 @@ class PriceScopeConf(AbstractModel):
 
     @property
     def MaxPrice(self):
-        """最高价格
+        """最高价格 单位元
         :rtype: float
         """
         return self._MaxPrice
@@ -9152,7 +9262,7 @@ class PriceScopeConf(AbstractModel):
 
     @property
     def MinPrice(self):
-        """最低价格
+        """最低价格 单位元
         :rtype: float
         """
         return self._MinPrice
@@ -9163,7 +9273,7 @@ class PriceScopeConf(AbstractModel):
 
     @property
     def Price(self):
-        """价格幅度
+        """价格幅度 单位元
         :rtype: float
         """
         return self._Price
@@ -9174,7 +9284,7 @@ class PriceScopeConf(AbstractModel):
 
     @property
     def DepositPrice(self):
-        """保证金
+        """保证金 单位元
         :rtype: float
         """
         return self._DepositPrice
@@ -9206,9 +9316,10 @@ class RenewDomainBatchRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Period: 域名续费的年限。
+        :param _Period: 域名续费的年限。取值范围[1,9]
         :type Period: int
         :param _Domains: 批量续费的域名。
+一次提交不大于4000个
         :type Domains: list of str
         :param _PayMode: 付费模式 0手动在线付费，1使用余额付费，2使用特惠包。
         :type PayMode: int
@@ -9237,7 +9348,7 @@ class RenewDomainBatchRequest(AbstractModel):
 
     @property
     def Period(self):
-        """域名续费的年限。
+        """域名续费的年限。取值范围[1,9]
         :rtype: int
         """
         return self._Period
@@ -9249,6 +9360,7 @@ class RenewDomainBatchRequest(AbstractModel):
     @property
     def Domains(self):
         """批量续费的域名。
+一次提交不大于4000个
         :rtype: list of str
         """
         return self._Domains
@@ -9731,11 +9843,11 @@ class ReservedPreDomainsRequest(AbstractModel):
         r"""
         :param _DomainList: 预约预释放域名列表
         :type DomainList: list of str
-        :param _TemplateId: 模板ID
+        :param _TemplateId: 模板ID 可通过DescribeTemplates接口获取
         :type TemplateId: str
-        :param _IsAutoPay: 结束后是否自动支付尾款，默认开启 传入1关闭
+        :param _IsAutoPay: 结束后是否自动支付尾款，默认1 开启 传入0关闭
         :type IsAutoPay: int
-        :param _IsBidAutoPay: 结束后是否自动进行梯度保证金扣除，默认开启 传入1关闭
+        :param _IsBidAutoPay: 结束后是否自动进行梯度保证金扣除，默认1开启 传入0关闭
         :type IsBidAutoPay: int
         """
         self._DomainList = None
@@ -9756,7 +9868,7 @@ class ReservedPreDomainsRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """模板ID
+        """模板ID 可通过DescribeTemplates接口获取
         :rtype: str
         """
         return self._TemplateId
@@ -9767,7 +9879,7 @@ class ReservedPreDomainsRequest(AbstractModel):
 
     @property
     def IsAutoPay(self):
-        """结束后是否自动支付尾款，默认开启 传入1关闭
+        """结束后是否自动支付尾款，默认1 开启 传入0关闭
         :rtype: int
         """
         return self._IsAutoPay
@@ -9778,7 +9890,7 @@ class ReservedPreDomainsRequest(AbstractModel):
 
     @property
     def IsBidAutoPay(self):
-        """结束后是否自动进行梯度保证金扣除，默认开启 传入1关闭
+        """结束后是否自动进行梯度保证金扣除，默认1开启 传入0关闭
         :rtype: int
         """
         return self._IsBidAutoPay
@@ -9972,7 +10084,7 @@ class SetDomainAutoRenewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DomainId: 域名ID 例如：domain-123abc
+        :param _DomainId: 域名ID 例如：domain-dwerewwq可通过DescribreDomainList接口获取
         :type DomainId: str
         :param _AutoRenew: AutoRenew 有三个可选值：
  0：不设置自动续费
@@ -9985,7 +10097,7 @@ class SetDomainAutoRenewRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """域名ID 例如：domain-123abc
+        """域名ID 例如：domain-dwerewwq可通过DescribreDomainList接口获取
         :rtype: str
         """
         return self._DomainId
@@ -10108,14 +10220,14 @@ class SyncCustomDnsHostRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DomainId: 域名实例ID
+        :param _DomainId: 域名实例ID，可以通过DescribeDomainList接口获取
         :type DomainId: str
         """
         self._DomainId = None
 
     @property
     def DomainId(self):
-        """域名实例ID
+        """域名实例ID，可以通过DescribeDomainList接口获取
         :rtype: str
         """
         return self._DomainId
@@ -10189,7 +10301,12 @@ class TemplateInfo(AbstractModel):
         r"""
         :param _TemplateId: 模板ID
         :type TemplateId: str
-        :param _AuditStatus: 认证状态：未实名认证:NotUpload, 实名审核中:InAudit，已实名认证:Approved，实名审核失败:Reject
+        :param _AuditStatus: 认证状态:
+NotUpload: 未实名认证
+InAudit: 实名审核中
+Approved: 已实名认证
+Reject: 实名审核失败
+NotVerified: 实名信息待修改
         :type AuditStatus: str
         :param _CreatedOn: 创建时间
         :type CreatedOn: str
@@ -10238,7 +10355,12 @@ class TemplateInfo(AbstractModel):
 
     @property
     def AuditStatus(self):
-        """认证状态：未实名认证:NotUpload, 实名审核中:InAudit，已实名认证:Approved，实名审核失败:Reject
+        """认证状态:
+NotUpload: 未实名认证
+InAudit: 实名审核中
+Approved: 已实名认证
+Reject: 实名审核失败
+NotVerified: 实名信息待修改
         :rtype: str
         """
         return self._AuditStatus
@@ -10393,10 +10515,12 @@ class TransferInDomainBatchRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _Domains: 转入的域名名称数组。
+一次提交不大于4000个
         :type Domains: list of str
         :param _PassWords: 域名转移码数组。
         :type PassWords: list of str
         :param _TemplateId: 模板ID。
+可通过DescribeTemplates接口获取
         :type TemplateId: str
         :param _PayMode: 付费模式 0手动在线付费，1使用余额付费。
         :type PayMode: int
@@ -10434,6 +10558,7 @@ false：关闭60天内禁止转移注册商锁定
     @property
     def Domains(self):
         """转入的域名名称数组。
+一次提交不大于4000个
         :rtype: list of str
         """
         return self._Domains
@@ -10456,6 +10581,7 @@ false：关闭60天内禁止转移注册商锁定
     @property
     def TemplateId(self):
         """模板ID。
+可通过DescribeTemplates接口获取
         :rtype: str
         """
         return self._TemplateId
@@ -10630,10 +10756,11 @@ class TransferProhibitionBatchRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _Domains: 批量操作的域名。
+一次提交不大于4000个
         :type Domains: list of str
         :param _Status: 是否开启禁止域名转移。
-True: 开启禁止域名转移状态。
-False：关闭禁止域名转移状态。
+true: 开启禁止域名转移状态。
+false：关闭禁止域名转移状态。
         :type Status: bool
         """
         self._Domains = None
@@ -10642,6 +10769,7 @@ False：关闭禁止域名转移状态。
     @property
     def Domains(self):
         """批量操作的域名。
+一次提交不大于4000个
         :rtype: list of str
         """
         return self._Domains
@@ -10653,8 +10781,8 @@ False：关闭禁止域名转移状态。
     @property
     def Status(self):
         """是否开启禁止域名转移。
-True: 开启禁止域名转移状态。
-False：关闭禁止域名转移状态。
+true: 开启禁止域名转移状态。
+false：关闭禁止域名转移状态。
         :rtype: bool
         """
         return self._Status
@@ -10728,10 +10856,11 @@ class UpdateProhibitionBatchRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _Domains: 批量操作的域名。
+一次提交不大于4000个
         :type Domains: list of str
         :param _Status: 是否开启禁止域名更新。
-True:开启禁止域名更新状态。
-False：关闭禁止域名更新状态。
+true:开启禁止域名更新状态。
+false：关闭禁止域名更新状态。
         :type Status: bool
         """
         self._Domains = None
@@ -10740,6 +10869,7 @@ False：关闭禁止域名更新状态。
     @property
     def Domains(self):
         """批量操作的域名。
+一次提交不大于4000个
         :rtype: list of str
         """
         return self._Domains
@@ -10751,8 +10881,8 @@ False：关闭禁止域名更新状态。
     @property
     def Status(self):
         """是否开启禁止域名更新。
-True:开启禁止域名更新状态。
-False：关闭禁止域名更新状态。
+true:开启禁止域名更新状态。
+false：关闭禁止域名更新状态。
         :rtype: bool
         """
         return self._Status

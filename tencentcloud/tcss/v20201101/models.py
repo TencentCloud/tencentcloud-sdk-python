@@ -17100,6 +17100,12 @@ class CreateVulScanTaskRequest(AbstractModel):
         :type LocalTaskID: int
         :param _RegistryTaskID: 仓库镜像重新漏洞扫描时的任务ID
         :type RegistryTaskID: int
+        :param _LocalImageContainerRunning: 本地镜像容器运行中
+        :type LocalImageContainerRunning: bool
+        :param _RegistryImageContainerRunning: 仓库镜像容器运行中
+        :type RegistryImageContainerRunning: bool
+        :param _IsLatest: 仓库镜像是否是最新
+        :type IsLatest: bool
         """
         self._LocalImageScanType = None
         self._LocalImageIDs = None
@@ -17107,6 +17113,9 @@ class CreateVulScanTaskRequest(AbstractModel):
         self._RegistryImageIDs = None
         self._LocalTaskID = None
         self._RegistryTaskID = None
+        self._LocalImageContainerRunning = None
+        self._RegistryImageContainerRunning = None
+        self._IsLatest = None
 
     @property
     def LocalImageScanType(self):
@@ -17174,6 +17183,39 @@ class CreateVulScanTaskRequest(AbstractModel):
     def RegistryTaskID(self, RegistryTaskID):
         self._RegistryTaskID = RegistryTaskID
 
+    @property
+    def LocalImageContainerRunning(self):
+        """本地镜像容器运行中
+        :rtype: bool
+        """
+        return self._LocalImageContainerRunning
+
+    @LocalImageContainerRunning.setter
+    def LocalImageContainerRunning(self, LocalImageContainerRunning):
+        self._LocalImageContainerRunning = LocalImageContainerRunning
+
+    @property
+    def RegistryImageContainerRunning(self):
+        """仓库镜像容器运行中
+        :rtype: bool
+        """
+        return self._RegistryImageContainerRunning
+
+    @RegistryImageContainerRunning.setter
+    def RegistryImageContainerRunning(self, RegistryImageContainerRunning):
+        self._RegistryImageContainerRunning = RegistryImageContainerRunning
+
+    @property
+    def IsLatest(self):
+        """仓库镜像是否是最新
+        :rtype: bool
+        """
+        return self._IsLatest
+
+    @IsLatest.setter
+    def IsLatest(self, IsLatest):
+        self._IsLatest = IsLatest
+
 
     def _deserialize(self, params):
         self._LocalImageScanType = params.get("LocalImageScanType")
@@ -17182,6 +17224,9 @@ class CreateVulScanTaskRequest(AbstractModel):
         self._RegistryImageIDs = params.get("RegistryImageIDs")
         self._LocalTaskID = params.get("LocalTaskID")
         self._RegistryTaskID = params.get("RegistryTaskID")
+        self._LocalImageContainerRunning = params.get("LocalImageContainerRunning")
+        self._RegistryImageContainerRunning = params.get("RegistryImageContainerRunning")
+        self._IsLatest = params.get("IsLatest")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -12117,17 +12117,29 @@ class InquiryPriceCreateInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Price: 价格，单位：分
+        :param _Price: 价格
         :type Price: float
+        :param _HighPrecisionPrice: 高精度价格
+        :type HighPrecisionPrice: float
+        :param _Currency: 币种
+        :type Currency: str
+        :param _AmountUnit: 价格金额单位
+
+- pent: 分
+- microPent: 微分
+        :type AmountUnit: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Price = None
+        self._HighPrecisionPrice = None
+        self._Currency = None
+        self._AmountUnit = None
         self._RequestId = None
 
     @property
     def Price(self):
-        """价格，单位：分
+        """价格
         :rtype: float
         """
         return self._Price
@@ -12135,6 +12147,42 @@ class InquiryPriceCreateInstanceResponse(AbstractModel):
     @Price.setter
     def Price(self, Price):
         self._Price = Price
+
+    @property
+    def HighPrecisionPrice(self):
+        """高精度价格
+        :rtype: float
+        """
+        return self._HighPrecisionPrice
+
+    @HighPrecisionPrice.setter
+    def HighPrecisionPrice(self, HighPrecisionPrice):
+        self._HighPrecisionPrice = HighPrecisionPrice
+
+    @property
+    def Currency(self):
+        """币种
+        :rtype: str
+        """
+        return self._Currency
+
+    @Currency.setter
+    def Currency(self, Currency):
+        self._Currency = Currency
+
+    @property
+    def AmountUnit(self):
+        """价格金额单位
+
+- pent: 分
+- microPent: 微分
+        :rtype: str
+        """
+        return self._AmountUnit
+
+    @AmountUnit.setter
+    def AmountUnit(self, AmountUnit):
+        self._AmountUnit = AmountUnit
 
     @property
     def RequestId(self):
@@ -12150,6 +12198,9 @@ class InquiryPriceCreateInstanceResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Price = params.get("Price")
+        self._HighPrecisionPrice = params.get("HighPrecisionPrice")
+        self._Currency = params.get("Currency")
+        self._AmountUnit = params.get("AmountUnit")
         self._RequestId = params.get("RequestId")
 
 
@@ -12211,17 +12262,29 @@ class InquiryPriceRenewInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Price: 价格，单位：分。
+        :param _Price: 价格
         :type Price: float
+        :param _HighPrecisionPrice: 高精度价格
+        :type HighPrecisionPrice: float
+        :param _Currency: 币种
+        :type Currency: str
+        :param _AmountUnit: 价格金额单位
+
+- pent: 分
+- microPent: 微分
+        :type AmountUnit: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Price = None
+        self._HighPrecisionPrice = None
+        self._Currency = None
+        self._AmountUnit = None
         self._RequestId = None
 
     @property
     def Price(self):
-        """价格，单位：分。
+        """价格
         :rtype: float
         """
         return self._Price
@@ -12229,6 +12292,42 @@ class InquiryPriceRenewInstanceResponse(AbstractModel):
     @Price.setter
     def Price(self, Price):
         self._Price = Price
+
+    @property
+    def HighPrecisionPrice(self):
+        """高精度价格
+        :rtype: float
+        """
+        return self._HighPrecisionPrice
+
+    @HighPrecisionPrice.setter
+    def HighPrecisionPrice(self, HighPrecisionPrice):
+        self._HighPrecisionPrice = HighPrecisionPrice
+
+    @property
+    def Currency(self):
+        """币种
+        :rtype: str
+        """
+        return self._Currency
+
+    @Currency.setter
+    def Currency(self, Currency):
+        self._Currency = Currency
+
+    @property
+    def AmountUnit(self):
+        """价格金额单位
+
+- pent: 分
+- microPent: 微分
+        :rtype: str
+        """
+        return self._AmountUnit
+
+    @AmountUnit.setter
+    def AmountUnit(self, AmountUnit):
+        self._AmountUnit = AmountUnit
 
     @property
     def RequestId(self):
@@ -12244,6 +12343,9 @@ class InquiryPriceRenewInstanceResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Price = params.get("Price")
+        self._HighPrecisionPrice = params.get("HighPrecisionPrice")
+        self._Currency = params.get("Currency")
+        self._AmountUnit = params.get("AmountUnit")
         self._RequestId = params.get("RequestId")
 
 
@@ -12335,17 +12437,29 @@ class InquiryPriceUpgradeInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Price: 价格，单位：分
+        :param _Price: 价格
         :type Price: float
+        :param _HighPrecisionPrice: 高精度价格
+        :type HighPrecisionPrice: float
+        :param _Currency: 币种
+        :type Currency: str
+        :param _AmountUnit: 价格金额单位
+
+- pent: 分
+- microPent: 微分
+        :type AmountUnit: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Price = None
+        self._HighPrecisionPrice = None
+        self._Currency = None
+        self._AmountUnit = None
         self._RequestId = None
 
     @property
     def Price(self):
-        """价格，单位：分
+        """价格
         :rtype: float
         """
         return self._Price
@@ -12353,6 +12467,42 @@ class InquiryPriceUpgradeInstanceResponse(AbstractModel):
     @Price.setter
     def Price(self, Price):
         self._Price = Price
+
+    @property
+    def HighPrecisionPrice(self):
+        """高精度价格
+        :rtype: float
+        """
+        return self._HighPrecisionPrice
+
+    @HighPrecisionPrice.setter
+    def HighPrecisionPrice(self, HighPrecisionPrice):
+        self._HighPrecisionPrice = HighPrecisionPrice
+
+    @property
+    def Currency(self):
+        """币种
+        :rtype: str
+        """
+        return self._Currency
+
+    @Currency.setter
+    def Currency(self, Currency):
+        self._Currency = Currency
+
+    @property
+    def AmountUnit(self):
+        """价格金额单位
+
+- pent: 分
+- microPent: 微分
+        :rtype: str
+        """
+        return self._AmountUnit
+
+    @AmountUnit.setter
+    def AmountUnit(self, AmountUnit):
+        self._AmountUnit = AmountUnit
 
     @property
     def RequestId(self):
@@ -12368,6 +12518,9 @@ class InquiryPriceUpgradeInstanceResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Price = params.get("Price")
+        self._HighPrecisionPrice = params.get("HighPrecisionPrice")
+        self._Currency = params.get("Currency")
+        self._AmountUnit = params.get("AmountUnit")
         self._RequestId = params.get("RequestId")
 
 

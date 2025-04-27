@@ -976,9 +976,13 @@ class CreateInvokerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 执行器名称。
+        :param _Name: 执行器名称。长度不超过 120 字符。
         :type Name: str
-        :param _Type: 执行器类型，当前仅支持周期类型执行器，取值：`SCHEDULE` 。
+        :param _Type: 执行器类型。
+
+可选取值（当前仅支持一种）：
+
+- `SCHEDULE`：周期类型执行器。
         :type Type: str
         :param _CommandId: 远程命令ID。
 
@@ -990,13 +994,15 @@ class CreateInvokerRequest(AbstractModel):
 
 实例需要安装 TAT 客户端, 且客户端为 Online 状态。可通过 [DescribeAutomationAgentStatus(查询客户端状态)](https://cloud.tencent.com/document/api/1340/52682) 接口查询客户端状态。
         :type InstanceIds: list of str
-        :param _Username: 命令执行用户。
+        :param _Username: 命令执行用户。长度不超过 256 字符。
         :type Username: str
-        :param _Parameters: 命令自定义参数。
+        :param _Parameters: 命令自定义参数。字段类型为 JSON encode string。
 
 仅在 CommandId 所指命令的 EnableParameter 为 true 时，才允许设置此参数。可通过 [DescribeCommands(查询命令详情)](https://cloud.tencent.com/document/api/1340/52681) 接口获取命令的 EnableParameter 设置。
         :type Parameters: str
-        :param _ScheduleSettings: 周期执行器设置。当创建周期执行器时，必须指定此参数。
+        :param _ScheduleSettings: 周期执行器设置。
+
+当执行器类型为 `SCHEDULE` 时，必须指定此参数。
         :type ScheduleSettings: :class:`tencentcloud.tat.v20201028.models.ScheduleSettings`
         """
         self._Name = None
@@ -1009,7 +1015,7 @@ class CreateInvokerRequest(AbstractModel):
 
     @property
     def Name(self):
-        """执行器名称。
+        """执行器名称。长度不超过 120 字符。
         :rtype: str
         """
         return self._Name
@@ -1020,7 +1026,11 @@ class CreateInvokerRequest(AbstractModel):
 
     @property
     def Type(self):
-        """执行器类型，当前仅支持周期类型执行器，取值：`SCHEDULE` 。
+        """执行器类型。
+
+可选取值（当前仅支持一种）：
+
+- `SCHEDULE`：周期类型执行器。
         :rtype: str
         """
         return self._Type
@@ -1059,7 +1069,7 @@ class CreateInvokerRequest(AbstractModel):
 
     @property
     def Username(self):
-        """命令执行用户。
+        """命令执行用户。长度不超过 256 字符。
         :rtype: str
         """
         return self._Username
@@ -1070,7 +1080,7 @@ class CreateInvokerRequest(AbstractModel):
 
     @property
     def Parameters(self):
-        """命令自定义参数。
+        """命令自定义参数。字段类型为 JSON encode string。
 
 仅在 CommandId 所指命令的 EnableParameter 为 true 时，才允许设置此参数。可通过 [DescribeCommands(查询命令详情)](https://cloud.tencent.com/document/api/1340/52681) 接口获取命令的 EnableParameter 设置。
         :rtype: str
@@ -1083,7 +1093,9 @@ class CreateInvokerRequest(AbstractModel):
 
     @property
     def ScheduleSettings(self):
-        """周期执行器设置。当创建周期执行器时，必须指定此参数。
+        """周期执行器设置。
+
+当执行器类型为 `SCHEDULE` 时，必须指定此参数。
         :rtype: :class:`tencentcloud.tat.v20201028.models.ScheduleSettings`
         """
         return self._ScheduleSettings
@@ -1733,13 +1745,15 @@ class DescribeAutomationAgentStatusRequest(AbstractModel):
 
 可通过对应云产品的查询实例接口获取实例 ID。目前支持实例类型：CVM、Lighthouse、TAT 托管实例。
 
+每次请求的上限为 100。
+
 参数不支持同时指定 `InstanceIds ` 和 `Filters ` 。
         :type InstanceIds: list of str
         :param _Filters: - agent-status - String - 是否必填：否 -（过滤条件）按照agent状态过滤，取值：Online 在线，Offline 离线。 
 - environment - String - 是否必填：否 -（过滤条件）按照agent运行环境查询，取值：Linux, Windows。
 - instance-id - String - 是否必填：否 -（过滤条件）按照实例ID过滤。 可通过对应云产品的查询实例接口获取实例 ID。目前支持实例类型：CVM、Lighthouse、TAT 托管实例。
 
-参数不支持同时指定 `InstanceIds ` 和 `Filters ` 。
+每次请求的 `Filters` 的上限为10， `Filter.Values` 的上限为5。参数不支持同时指定 `InstanceIds ` 和 `Filters ` 。
         :type Filters: list of Filter
         :param _Limit: 返回数量，默认为20，最大值为100。关于 `Limit` 的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
         :type Limit: int
@@ -1757,6 +1771,8 @@ class DescribeAutomationAgentStatusRequest(AbstractModel):
 
 可通过对应云产品的查询实例接口获取实例 ID。目前支持实例类型：CVM、Lighthouse、TAT 托管实例。
 
+每次请求的上限为 100。
+
 参数不支持同时指定 `InstanceIds ` 和 `Filters ` 。
         :rtype: list of str
         """
@@ -1772,7 +1788,7 @@ class DescribeAutomationAgentStatusRequest(AbstractModel):
 - environment - String - 是否必填：否 -（过滤条件）按照agent运行环境查询，取值：Linux, Windows。
 - instance-id - String - 是否必填：否 -（过滤条件）按照实例ID过滤。 可通过对应云产品的查询实例接口获取实例 ID。目前支持实例类型：CVM、Lighthouse、TAT 托管实例。
 
-参数不支持同时指定 `InstanceIds ` 和 `Filters ` 。
+每次请求的 `Filters` 的上限为10， `Filter.Values` 的上限为5。参数不支持同时指定 `InstanceIds ` 和 `Filters ` 。
         :rtype: list of Filter
         """
         return self._Filters
@@ -2547,7 +2563,9 @@ class DescribeInvokersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InvokerIds: 执行器ID列表。
+        :param _InvokerIds: 执行器 ID 列表。
+
+每次请求的上限为 100。
 
 参数不支持同时指定 `InvokerIds ` 和 `Filters ` 。
 
@@ -2556,9 +2574,9 @@ class DescribeInvokersRequest(AbstractModel):
 
 - invoker-id - String - 是否必填：否 - （过滤条件）按执行器ID过滤。
 - command-id - String - 是否必填：否 - （过滤条件）按命令ID过滤。可通过 [DescribeCommands(查询命令详情)](https://cloud.tencent.com/document/api/1340/52681) 接口获取。
-- type - String - 是否必填：否 - （过滤条件）按执行器类型过滤。目前仅支持 SCHEDULE 一种。
+- invoker-type - String - 是否必填：否 - （过滤条件）按执行器类型过滤。目前仅支持 SCHEDULE 一种。
 
-参数不支持同时指定 `InvokerIds ` 和 `Filters ` 。
+每次请求的 `Filters` 的上限为 10，`Filter.Values` 的上限为 5。参数不支持同时指定 `InvokerIds` 和 `Filters` 。
         :type Filters: list of Filter
         :param _Limit: 返回数量，默认为20，最大值为100。
         :type Limit: int
@@ -2572,7 +2590,9 @@ class DescribeInvokersRequest(AbstractModel):
 
     @property
     def InvokerIds(self):
-        """执行器ID列表。
+        """执行器 ID 列表。
+
+每次请求的上限为 100。
 
 参数不支持同时指定 `InvokerIds ` 和 `Filters ` 。
 
@@ -2590,9 +2610,9 @@ class DescribeInvokersRequest(AbstractModel):
 
 - invoker-id - String - 是否必填：否 - （过滤条件）按执行器ID过滤。
 - command-id - String - 是否必填：否 - （过滤条件）按命令ID过滤。可通过 [DescribeCommands(查询命令详情)](https://cloud.tencent.com/document/api/1340/52681) 接口获取。
-- type - String - 是否必填：否 - （过滤条件）按执行器类型过滤。目前仅支持 SCHEDULE 一种。
+- invoker-type - String - 是否必填：否 - （过滤条件）按执行器类型过滤。目前仅支持 SCHEDULE 一种。
 
-参数不支持同时指定 `InvokerIds ` 和 `Filters ` 。
+每次请求的 `Filters` 的上限为 10，`Filter.Values` 的上限为 5。参数不支持同时指定 `InvokerIds` 和 `Filters` 。
         :rtype: list of Filter
         """
         return self._Filters
@@ -2878,6 +2898,10 @@ class DescribeRegisterCodesRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _RegisterCodeIds: 注册码ID。
+
+每次请求的上限为 100。
+
+参数不支持同时指定 `RegisterCodeIds ` 和 `Filters ` 。
         :type RegisterCodeIds: list of str
         :param _Offset: 偏移量，默认为 0。
         :type Offset: int
@@ -2891,6 +2915,10 @@ class DescribeRegisterCodesRequest(AbstractModel):
     @property
     def RegisterCodeIds(self):
         """注册码ID。
+
+每次请求的上限为 100。
+
+参数不支持同时指定 `RegisterCodeIds ` 和 `Filters ` 。
         :rtype: list of str
         """
         return self._RegisterCodeIds
@@ -3008,10 +3036,12 @@ class DescribeRegisterInstancesRequest(AbstractModel):
         r"""
         :param _InstanceIds: 托管实例 id。
 
+每次请求的上限为 100。
+
 参数不支持同时指定 `InstanceIds` 和 `Filters` 。
 
         :type InstanceIds: list of str
-        :param _Filters: 过滤器列表。参数不支持同时指定 `InstanceIds` 和 `Filters` 。
+        :param _Filters: 过滤器列表。每次请求的 `Filters` 的上限为 10，`Filter.Values` 的上限为 5。参数不支持同时指定 `InstanceIds` 和 `Filters` 。
 
 
 - instance-name
@@ -3074,6 +3104,8 @@ class DescribeRegisterInstancesRequest(AbstractModel):
     def InstanceIds(self):
         """托管实例 id。
 
+每次请求的上限为 100。
+
 参数不支持同时指定 `InstanceIds` 和 `Filters` 。
 
         :rtype: list of str
@@ -3086,7 +3118,7 @@ class DescribeRegisterInstancesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤器列表。参数不支持同时指定 `InstanceIds` 和 `Filters` 。
+        """过滤器列表。每次请求的 `Filters` 的上限为 10，`Filter.Values` 的上限为 5。参数不支持同时指定 `InstanceIds` 和 `Filters` 。
 
 
 - instance-name
@@ -3257,6 +3289,8 @@ class DescribeScenesRequest(AbstractModel):
         r"""
         :param _SceneIds: 场景 ID 数组。
 
+每次请求的上限为 100。
+
 参数不支持同时指定 `SceneIds ` 和 `Filters ` 。
 
         :type SceneIds: list of str
@@ -3281,6 +3315,8 @@ class DescribeScenesRequest(AbstractModel):
     @property
     def SceneIds(self):
         """场景 ID 数组。
+
+每次请求的上限为 100。
 
 参数不支持同时指定 `SceneIds ` 和 `Filters ` 。
 
@@ -5249,17 +5285,21 @@ class ModifyInvokerRequest(AbstractModel):
 
 可通过 [DescribeInvokers(查询执行器)](https://cloud.tencent.com/document/api/1340/61759) 接口获取。
         :type InvokerId: str
-        :param _Name: 待修改的执行器名称。
+        :param _Name: 待修改的执行器名称。长度不超过 120 字符。
         :type Name: str
-        :param _Type: 执行器类型，当前仅支持周期类型执行器，取值：`SCHEDULE` 。
+        :param _Type: 待修改的执行器类型。
+
+可选取值（当前仅支持一种）：
+
+- `SCHEDULE`：周期类型执行器。
         :type Type: str
         :param _CommandId: 待修改的命令ID。
 
 可通过 [DescribeCommands(查询命令详情)](https://cloud.tencent.com/document/api/1340/52681) 接口获取。
         :type CommandId: str
-        :param _Username: 待修改的用户名。
+        :param _Username: 待修改的用户名。长度不超过 256 字符。
         :type Username: str
-        :param _Parameters: 待修改的自定义参数。
+        :param _Parameters: 待修改的自定义参数。字段类型为 JSON encode string。
 
 仅在 CommandId 所指命令的 EnableParameter 为 true 时，才允许设置此参数。可通过 [DescribeCommands(查询命令详情)](https://cloud.tencent.com/document/api/1340/52681) 接口获取命令的 EnableParameter 设置。
         :type Parameters: str
@@ -5270,6 +5310,8 @@ class ModifyInvokerRequest(AbstractModel):
 实例需要安装 TAT 客户端, 且客户端为 Online 状态。可通过 [DescribeAutomationAgentStatus(查询客户端状态)](https://cloud.tencent.com/document/api/1340/52682) 接口查询客户端状态。
         :type InstanceIds: list of str
         :param _ScheduleSettings: 待修改的周期执行器设置。
+
+要将执行器类型修改为 `SCHEDULE` 时，必须指定此参数。
         :type ScheduleSettings: :class:`tencentcloud.tat.v20201028.models.ScheduleSettings`
         """
         self._InvokerId = None
@@ -5296,7 +5338,7 @@ class ModifyInvokerRequest(AbstractModel):
 
     @property
     def Name(self):
-        """待修改的执行器名称。
+        """待修改的执行器名称。长度不超过 120 字符。
         :rtype: str
         """
         return self._Name
@@ -5307,7 +5349,11 @@ class ModifyInvokerRequest(AbstractModel):
 
     @property
     def Type(self):
-        """执行器类型，当前仅支持周期类型执行器，取值：`SCHEDULE` 。
+        """待修改的执行器类型。
+
+可选取值（当前仅支持一种）：
+
+- `SCHEDULE`：周期类型执行器。
         :rtype: str
         """
         return self._Type
@@ -5331,7 +5377,7 @@ class ModifyInvokerRequest(AbstractModel):
 
     @property
     def Username(self):
-        """待修改的用户名。
+        """待修改的用户名。长度不超过 256 字符。
         :rtype: str
         """
         return self._Username
@@ -5342,7 +5388,7 @@ class ModifyInvokerRequest(AbstractModel):
 
     @property
     def Parameters(self):
-        """待修改的自定义参数。
+        """待修改的自定义参数。字段类型为 JSON encode string。
 
 仅在 CommandId 所指命令的 EnableParameter 为 true 时，才允许设置此参数。可通过 [DescribeCommands(查询命令详情)](https://cloud.tencent.com/document/api/1340/52681) 接口获取命令的 EnableParameter 设置。
         :rtype: str
@@ -5371,6 +5417,8 @@ class ModifyInvokerRequest(AbstractModel):
     @property
     def ScheduleSettings(self):
         """待修改的周期执行器设置。
+
+要将执行器类型修改为 `SCHEDULE` 时，必须指定此参数。
         :rtype: :class:`tencentcloud.tat.v20201028.models.ScheduleSettings`
         """
         return self._ScheduleSettings
@@ -6597,10 +6645,9 @@ class ScheduleSettings(AbstractModel):
     def __init__(self):
         r"""
         :param _Policy: 执行策略：
+
 - ONCE：单次执行
 - RECURRENCE：周期执行
-
-只有在 CreateInvoker 时才必填，ModifyInvoker 时为非必填
         :type Policy: str
         :param _Recurrence: 触发 Crontab 表达式。Policy 为 RECURRENCE 时，需要指定此字段。Crontab 按北京时间解析。
         :type Recurrence: str
@@ -6616,10 +6663,9 @@ class ScheduleSettings(AbstractModel):
     @property
     def Policy(self):
         """执行策略：
+
 - ONCE：单次执行
 - RECURRENCE：周期执行
-
-只有在 CreateInvoker 时才必填，ModifyInvoker 时为非必填
         :rtype: str
         """
         return self._Policy

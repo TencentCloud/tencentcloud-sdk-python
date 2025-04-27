@@ -1786,10 +1786,14 @@ class CloudStorageAIServiceTask(AbstractModel):
 - `Highlight`：视频浓缩
 - `VideoToText`：视频语义理解
         :type ServiceType: str
-        :param _StartTime: 对应云存视频的起始时间
+        :param _StartTime: 对应云存视频的起始时间（秒级 UNIX 时间戳）
         :type StartTime: int
-        :param _EndTime: 对应云存视频的结束时间
+        :param _StartTimeMs: 对应云存视频的起始时间（毫秒级 UNIX 时间戳）
+        :type StartTimeMs: int
+        :param _EndTime: 对应云存视频的结束时间（秒级 UNIX 时间戳）
         :type EndTime: int
+        :param _EndTimeMs: 对应云存视频的结束时间（毫秒级 UNIX 时间戳）
+        :type EndTimeMs: int
         :param _Status: 任务状态（1：失败；2：成功但结果为空；3：成功且结果非空；4：执行中）
         :type Status: int
         :param _Result: 任务结果
@@ -1811,7 +1815,9 @@ class CloudStorageAIServiceTask(AbstractModel):
         self._ChannelId = None
         self._ServiceType = None
         self._StartTime = None
+        self._StartTimeMs = None
         self._EndTime = None
+        self._EndTimeMs = None
         self._Status = None
         self._Result = None
         self._Files = None
@@ -1881,7 +1887,7 @@ class CloudStorageAIServiceTask(AbstractModel):
 
     @property
     def StartTime(self):
-        """对应云存视频的起始时间
+        """对应云存视频的起始时间（秒级 UNIX 时间戳）
         :rtype: int
         """
         return self._StartTime
@@ -1891,8 +1897,19 @@ class CloudStorageAIServiceTask(AbstractModel):
         self._StartTime = StartTime
 
     @property
+    def StartTimeMs(self):
+        """对应云存视频的起始时间（毫秒级 UNIX 时间戳）
+        :rtype: int
+        """
+        return self._StartTimeMs
+
+    @StartTimeMs.setter
+    def StartTimeMs(self, StartTimeMs):
+        self._StartTimeMs = StartTimeMs
+
+    @property
     def EndTime(self):
-        """对应云存视频的结束时间
+        """对应云存视频的结束时间（秒级 UNIX 时间戳）
         :rtype: int
         """
         return self._EndTime
@@ -1900,6 +1917,17 @@ class CloudStorageAIServiceTask(AbstractModel):
     @EndTime.setter
     def EndTime(self, EndTime):
         self._EndTime = EndTime
+
+    @property
+    def EndTimeMs(self):
+        """对应云存视频的结束时间（毫秒级 UNIX 时间戳）
+        :rtype: int
+        """
+        return self._EndTimeMs
+
+    @EndTimeMs.setter
+    def EndTimeMs(self, EndTimeMs):
+        self._EndTimeMs = EndTimeMs
 
     @property
     def Status(self):
@@ -1986,7 +2014,9 @@ class CloudStorageAIServiceTask(AbstractModel):
         self._ChannelId = params.get("ChannelId")
         self._ServiceType = params.get("ServiceType")
         self._StartTime = params.get("StartTime")
+        self._StartTimeMs = params.get("StartTimeMs")
         self._EndTime = params.get("EndTime")
+        self._EndTimeMs = params.get("EndTimeMs")
         self._Status = params.get("Status")
         self._Result = params.get("Result")
         self._Files = params.get("Files")
@@ -19998,11 +20028,14 @@ class InvokeAISearchServiceRequest(AbstractModel):
         :type Query: str
         :param _SummaryLang: 搜索结果总结的语言类型，支持的类型有：en-US、zh-CN、id-ID、th-TH
         :type SummaryLang: str
+        :param _ChannelId: 通道ID
+        :type ChannelId: int
         """
         self._ProductId = None
         self._DeviceName = None
         self._Query = None
         self._SummaryLang = None
+        self._ChannelId = None
 
     @property
     def ProductId(self):
@@ -20048,12 +20081,24 @@ class InvokeAISearchServiceRequest(AbstractModel):
     def SummaryLang(self, SummaryLang):
         self._SummaryLang = SummaryLang
 
+    @property
+    def ChannelId(self):
+        """通道ID
+        :rtype: int
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
 
     def _deserialize(self, params):
         self._ProductId = params.get("ProductId")
         self._DeviceName = params.get("DeviceName")
         self._Query = params.get("Query")
         self._SummaryLang = params.get("SummaryLang")
+        self._ChannelId = params.get("ChannelId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20075,11 +20120,14 @@ class InvokeAISearchServiceResponse(AbstractModel):
         :type Summary: str
         :param _Targets: 视频结果集
         :type Targets: list of TargetInfo
+        :param _VideoURL: 视频回放URL
+        :type VideoURL: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Summary = None
         self._Targets = None
+        self._VideoURL = None
         self._RequestId = None
 
     @property
@@ -20105,6 +20153,17 @@ class InvokeAISearchServiceResponse(AbstractModel):
         self._Targets = Targets
 
     @property
+    def VideoURL(self):
+        """视频回放URL
+        :rtype: str
+        """
+        return self._VideoURL
+
+    @VideoURL.setter
+    def VideoURL(self, VideoURL):
+        self._VideoURL = VideoURL
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -20124,6 +20183,7 @@ class InvokeAISearchServiceResponse(AbstractModel):
                 obj = TargetInfo()
                 obj._deserialize(item)
                 self._Targets.append(obj)
+        self._VideoURL = params.get("VideoURL")
         self._RequestId = params.get("RequestId")
 
 
@@ -28109,6 +28169,10 @@ class TargetInfo(AbstractModel):
         :type EventId: str
         :param _Summary: 视频内容摘要
         :type Summary: str
+        :param _ChannelId: 通道ID
+        :type ChannelId: int
+        :param _Thumbnail: 缩略图路径
+        :type Thumbnail: str
         """
         self._Id = None
         self._ProductId = None
@@ -28117,6 +28181,8 @@ class TargetInfo(AbstractModel):
         self._EndTimeMs = None
         self._EventId = None
         self._Summary = None
+        self._ChannelId = None
+        self._Thumbnail = None
 
     @property
     def Id(self):
@@ -28195,6 +28261,28 @@ class TargetInfo(AbstractModel):
     def Summary(self, Summary):
         self._Summary = Summary
 
+    @property
+    def ChannelId(self):
+        """通道ID
+        :rtype: int
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def Thumbnail(self):
+        """缩略图路径
+        :rtype: str
+        """
+        return self._Thumbnail
+
+    @Thumbnail.setter
+    def Thumbnail(self, Thumbnail):
+        self._Thumbnail = Thumbnail
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -28204,6 +28292,8 @@ class TargetInfo(AbstractModel):
         self._EndTimeMs = params.get("EndTimeMs")
         self._EventId = params.get("EventId")
         self._Summary = params.get("Summary")
+        self._ChannelId = params.get("ChannelId")
+        self._Thumbnail = params.get("Thumbnail")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

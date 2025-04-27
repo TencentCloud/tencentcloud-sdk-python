@@ -3529,10 +3529,24 @@ class DeleteWarningResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Cnt: 操作个数
+        :type Cnt: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Cnt = None
         self._RequestId = None
+
+    @property
+    def Cnt(self):
+        """操作个数
+        :rtype: int
+        """
+        return self._Cnt
+
+    @Cnt.setter
+    def Cnt(self, Cnt):
+        self._Cnt = Cnt
 
     @property
     def RequestId(self):
@@ -3547,6 +3561,7 @@ class DeleteWarningResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._Cnt = params.get("Cnt")
         self._RequestId = params.get("RequestId")
 
 

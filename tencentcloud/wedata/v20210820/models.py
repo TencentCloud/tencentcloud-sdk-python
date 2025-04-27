@@ -39716,6 +39716,217 @@ class DescribeTemplateDimCountResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTenantProjectsRequest(AbstractModel):
+    """DescribeTenantProjects请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNumber: 第几页
+        :type PageNumber: int
+        :param _PageSize: 一页几条
+        :type PageSize: int
+        :param _DescribeExecutors: 是否展示关联执行组的信息。正常应该不是从项目列表里获取
+        :type DescribeExecutors: bool
+        :param _DescribeAdminUsers: 是否展示项目管理员信息，减少默认返回的请求内容
+        :type DescribeAdminUsers: bool
+        :param _DescribeMemberCount: 统计项目人员数量。数据地图需求
+        :type DescribeMemberCount: bool
+        :param _Filters: 自定义条件查询
+        :type Filters: list of Filter
+        :param _OrderFields: 排序字段
+        :type OrderFields: list of OrderField
+        :param _DescribeCreator: 默认不提供创建者信息，该参数与CAM交互比较耗时
+        :type DescribeCreator: bool
+        :param _DescribeResourcePools: 是否展示关联资源池信息
+        :type DescribeResourcePools: bool
+        """
+        self._PageNumber = None
+        self._PageSize = None
+        self._DescribeExecutors = None
+        self._DescribeAdminUsers = None
+        self._DescribeMemberCount = None
+        self._Filters = None
+        self._OrderFields = None
+        self._DescribeCreator = None
+        self._DescribeResourcePools = None
+
+    @property
+    def PageNumber(self):
+        """第几页
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        """一页几条
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def DescribeExecutors(self):
+        """是否展示关联执行组的信息。正常应该不是从项目列表里获取
+        :rtype: bool
+        """
+        return self._DescribeExecutors
+
+    @DescribeExecutors.setter
+    def DescribeExecutors(self, DescribeExecutors):
+        self._DescribeExecutors = DescribeExecutors
+
+    @property
+    def DescribeAdminUsers(self):
+        """是否展示项目管理员信息，减少默认返回的请求内容
+        :rtype: bool
+        """
+        return self._DescribeAdminUsers
+
+    @DescribeAdminUsers.setter
+    def DescribeAdminUsers(self, DescribeAdminUsers):
+        self._DescribeAdminUsers = DescribeAdminUsers
+
+    @property
+    def DescribeMemberCount(self):
+        """统计项目人员数量。数据地图需求
+        :rtype: bool
+        """
+        return self._DescribeMemberCount
+
+    @DescribeMemberCount.setter
+    def DescribeMemberCount(self, DescribeMemberCount):
+        self._DescribeMemberCount = DescribeMemberCount
+
+    @property
+    def Filters(self):
+        """自定义条件查询
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def OrderFields(self):
+        """排序字段
+        :rtype: list of OrderField
+        """
+        return self._OrderFields
+
+    @OrderFields.setter
+    def OrderFields(self, OrderFields):
+        self._OrderFields = OrderFields
+
+    @property
+    def DescribeCreator(self):
+        """默认不提供创建者信息，该参数与CAM交互比较耗时
+        :rtype: bool
+        """
+        return self._DescribeCreator
+
+    @DescribeCreator.setter
+    def DescribeCreator(self, DescribeCreator):
+        self._DescribeCreator = DescribeCreator
+
+    @property
+    def DescribeResourcePools(self):
+        """是否展示关联资源池信息
+        :rtype: bool
+        """
+        return self._DescribeResourcePools
+
+    @DescribeResourcePools.setter
+    def DescribeResourcePools(self, DescribeResourcePools):
+        self._DescribeResourcePools = DescribeResourcePools
+
+
+    def _deserialize(self, params):
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._DescribeExecutors = params.get("DescribeExecutors")
+        self._DescribeAdminUsers = params.get("DescribeAdminUsers")
+        self._DescribeMemberCount = params.get("DescribeMemberCount")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        if params.get("OrderFields") is not None:
+            self._OrderFields = []
+            for item in params.get("OrderFields"):
+                obj = OrderField()
+                obj._deserialize(item)
+                self._OrderFields.append(obj)
+        self._DescribeCreator = params.get("DescribeCreator")
+        self._DescribeResourcePools = params.get("DescribeResourcePools")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTenantProjectsResponse(AbstractModel):
+    """DescribeTenantProjects返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 项目列表
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.ProjectPage`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """项目列表
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.ProjectPage`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ProjectPage()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeThirdTaskRunLogRequest(AbstractModel):
     """DescribeThirdTaskRunLog请求参数结构体
 
@@ -65375,6 +65586,117 @@ class ProjectBaseInfoOpsRequest(AbstractModel):
         self._ProjectIdent = params.get("ProjectIdent")
         self._ProjectName = params.get("ProjectName")
         self._IsAdmin = params.get("IsAdmin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProjectPage(AbstractModel):
+    """查询数据源分页列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNumber: 分页页码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageNumber: int
+        :param _PageSize: 分页大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageSize: int
+        :param _Rows: 数据源列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rows: list of Project
+        :param _TotalCount: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _TotalPageNumber: 总分页页码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalPageNumber: int
+        """
+        self._PageNumber = None
+        self._PageSize = None
+        self._Rows = None
+        self._TotalCount = None
+        self._TotalPageNumber = None
+
+    @property
+    def PageNumber(self):
+        """分页页码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        """分页大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Rows(self):
+        """数据源列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Project
+        """
+        return self._Rows
+
+    @Rows.setter
+    def Rows(self, Rows):
+        self._Rows = Rows
+
+    @property
+    def TotalCount(self):
+        """总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TotalPageNumber(self):
+        """总分页页码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalPageNumber
+
+    @TotalPageNumber.setter
+    def TotalPageNumber(self, TotalPageNumber):
+        self._TotalPageNumber = TotalPageNumber
+
+
+    def _deserialize(self, params):
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        if params.get("Rows") is not None:
+            self._Rows = []
+            for item in params.get("Rows"):
+                obj = Project()
+                obj._deserialize(item)
+                self._Rows.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._TotalPageNumber = params.get("TotalPageNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

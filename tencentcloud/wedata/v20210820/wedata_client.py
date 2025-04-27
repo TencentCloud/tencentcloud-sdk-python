@@ -4060,6 +4060,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTenantProjects(self, request):
+        """租户全局范围的项目列表，与用户查看范围无关.
+
+        :param request: Request instance for DescribeTenantProjects.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTenantProjectsRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeTenantProjectsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTenantProjects", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTenantProjectsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeThirdTaskRunLog(self, request):
         """获取第三方运行日志
 

@@ -6640,10 +6640,24 @@ class SetUserQuotaResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _UserId: UID/GID信息
+        :type UserId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._UserId = None
         self._RequestId = None
+
+    @property
+    def UserId(self):
+        """UID/GID信息
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
 
     @property
     def RequestId(self):
@@ -6658,6 +6672,7 @@ class SetUserQuotaResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._UserId = params.get("UserId")
         self._RequestId = params.get("RequestId")
 
 

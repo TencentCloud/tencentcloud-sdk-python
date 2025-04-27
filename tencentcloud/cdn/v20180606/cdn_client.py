@@ -143,7 +143,9 @@ class CdnClient(AbstractClient):
 
 
     def CreateScdnDomain(self, request):
-        """CreateScdnDomain 用于创建 SCDN 加速域名
+        """SCDN平台已经正式下线，接口开始预下线处理
+
+        CreateScdnDomain 用于创建 SCDN 加速域名
 
         :param request: Request instance for CreateScdnDomain.
         :type request: :class:`tencentcloud.cdn.v20180606.models.CreateScdnDomainRequest`
@@ -166,7 +168,9 @@ class CdnClient(AbstractClient):
 
 
     def CreateScdnFailedLogTask(self, request):
-        """CreateScdnFailedLogTask 用于重试创建失败的事件日志任务
+        """SCDN平台已经正式下线，接口开始预下线处理
+
+        CreateScdnFailedLogTask 用于重试创建失败的事件日志任务
 
         :param request: Request instance for CreateScdnFailedLogTask.
         :type request: :class:`tencentcloud.cdn.v20180606.models.CreateScdnFailedLogTaskRequest`
@@ -189,7 +193,9 @@ class CdnClient(AbstractClient):
 
 
     def CreateScdnLogTask(self, request):
-        """CreateScdnLogTask 用于创建事件日志任务
+        """SCDN平台已经正式下线，接口开始预下线处理
+
+        CreateScdnLogTask 用于创建事件日志任务
 
         :param request: Request instance for CreateScdnLogTask.
         :type request: :class:`tencentcloud.cdn.v20180606.models.CreateScdnLogTaskRequest`
@@ -284,7 +290,9 @@ class CdnClient(AbstractClient):
 
 
     def DeleteScdnDomain(self, request):
-        """删除SCDN域名
+        """SCDN平台已经正式下线，接口开始预下线处理
+
+        删除SCDN域名
 
         :param request: Request instance for DeleteScdnDomain.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DeleteScdnDomainRequest`
@@ -936,7 +944,9 @@ class CdnClient(AbstractClient):
 
 
     def DescribeScdnBotData(self, request):
-        """获取BOT统计数据列表
+        """SCDN平台已经正式下线，接口开始预下线处理
+
+        获取BOT统计数据列表
 
         :param request: Request instance for DescribeScdnBotData.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeScdnBotDataRequest`
@@ -959,7 +969,9 @@ class CdnClient(AbstractClient):
 
 
     def DescribeScdnBotRecords(self, request):
-        """查询BOT会话记录列表
+        """SCDN平台已经正式下线，接口开始预下线处理
+
+        查询BOT会话记录列表
 
         :param request: Request instance for DescribeScdnBotRecords.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeScdnBotRecordsRequest`
@@ -982,7 +994,9 @@ class CdnClient(AbstractClient):
 
 
     def DescribeScdnConfig(self, request):
-        """DescribeScdnConfig 用于查询指定 SCDN 加速域名的安全相关配置
+        """SCDN平台已经正式下线，接口开始预下线处理
+
+        DescribeScdnConfig 用于查询指定 SCDN 加速域名的安全相关配置
 
         :param request: Request instance for DescribeScdnConfig.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeScdnConfigRequest`
@@ -1005,7 +1019,9 @@ class CdnClient(AbstractClient):
 
 
     def DescribeScdnIpStrategy(self, request):
-        """查询在SCDN IP安全策略
+        """SCDN平台已经正式下线，接口开始预下线处理
+
+        查询在SCDN IP安全策略
 
         :param request: Request instance for DescribeScdnIpStrategy.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeScdnIpStrategyRequest`
@@ -1028,7 +1044,9 @@ class CdnClient(AbstractClient):
 
 
     def DescribeScdnTopData(self, request):
-        """获取SCDN的Top数据
+        """SCDN平台已经正式下线，接口开始预下线处理
+
+        获取SCDN的Top数据
 
         :param request: Request instance for DescribeScdnTopData.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeScdnTopDataRequest`
@@ -1364,7 +1382,9 @@ class CdnClient(AbstractClient):
 
 
     def ListScdnDomains(self, request):
-        """ListScdnDomains 用于查询 SCDN 安全加速域名列表，及域名基本配置信息
+        """SCDN平台已经正式下线，接口开始预下线处理
+
+        ListScdnDomains 用于查询 SCDN 安全加速域名列表，及域名基本配置信息
 
         :param request: Request instance for ListScdnDomains.
         :type request: :class:`tencentcloud.cdn.v20180606.models.ListScdnDomainsRequest`
@@ -1387,7 +1407,9 @@ class CdnClient(AbstractClient):
 
 
     def ListScdnLogTasks(self, request):
-        """ListScdnLogTasks 用于查询SCDN日志下载任务列表,以及展示下载任务基本信息
+        """SCDN平台已经正式下线，接口开始预下线处理
+
+        ListScdnLogTasks 用于查询SCDN日志下载任务列表,以及展示下载任务基本信息
 
         :param request: Request instance for ListScdnLogTasks.
         :type request: :class:`tencentcloud.cdn.v20180606.models.ListScdnLogTasksRequest`
@@ -1410,7 +1432,9 @@ class CdnClient(AbstractClient):
 
 
     def ListScdnTopBotData(self, request):
-        """获取Bot攻击的Top数据列表
+        """SCDN平台已经正式下线，接口开始预下线处理
+
+        获取Bot攻击的Top数据列表
 
         :param request: Request instance for ListScdnTopBotData.
         :type request: :class:`tencentcloud.cdn.v20180606.models.ListScdnTopBotDataRequest`
@@ -1770,7 +1794,9 @@ class CdnClient(AbstractClient):
 
 
     def StartScdnDomain(self, request):
-        """StartScdnDomain 用于开启域名的安全防护配置
+        """SCDN平台已经正式下线，接口开始预下线处理
+
+        StartScdnDomain 用于开启域名的安全防护配置
 
         :param request: Request instance for StartScdnDomain.
         :type request: :class:`tencentcloud.cdn.v20180606.models.StartScdnDomainRequest`
@@ -1817,7 +1843,9 @@ class CdnClient(AbstractClient):
 
 
     def StopScdnDomain(self, request):
-        """StopScdnDomain 用于关闭域名的安全防护配置
+        """SCDN平台已经正式下线，接口开始预下线处理
+
+        StopScdnDomain 用于关闭域名的安全防护配置
 
         :param request: Request instance for StopScdnDomain.
         :type request: :class:`tencentcloud.cdn.v20180606.models.StopScdnDomainRequest`
@@ -1911,7 +1939,9 @@ class CdnClient(AbstractClient):
 
 
     def UpdateScdnDomain(self, request):
-        """UpdateScdnDomain 用于修改 SCDN 加速域名安全相关配置
+        """SCDN平台已经正式下线，接口开始预下线处理
+
+        UpdateScdnDomain 用于修改 SCDN 加速域名安全相关配置
 
         :param request: Request instance for UpdateScdnDomain.
         :type request: :class:`tencentcloud.cdn.v20180606.models.UpdateScdnDomainRequest`

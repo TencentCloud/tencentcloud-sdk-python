@@ -5673,14 +5673,14 @@ class DescribeImageSharePermissionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageId: 需要共享的镜像Id
+        :param _ImageId: 需要共享的镜像 ID，可通过 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) 接口返回的`ImageId`获取。
         :type ImageId: str
         """
         self._ImageId = None
 
     @property
     def ImageId(self):
-        """需要共享的镜像Id
+        """需要共享的镜像 ID，可通过 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) 接口返回的`ImageId`获取。
         :rtype: str
         """
         return self._ImageId
@@ -5764,23 +5764,23 @@ class DescribeImagesRequest(AbstractModel):
 <li><strong>image-id</strong></li>
 <p style="padding-left: 30px;">按照【<strong>镜像ID</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
 <li><strong>image-type</strong></li>
-<p style="padding-left: 30px;">按照【<strong>镜像类型</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：</p><p style="padding-left: 30px;">PRIVATE_IMAGE: 私有镜像 (本账户创建的镜像)</p><p style="padding-left: 30px;">PUBLIC_IMAGE: 公共镜像 (腾讯云官方镜像)</p><p style="padding-left: 30px;">SHARED_IMAGE: 共享镜像(其他账户共享给本账户的镜像)</p>
+<p style="padding-left: 30px;">按照【<strong>镜像类型</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：</p><p style="padding-left: 30px;">PRIVATE_IMAGE: 自定义镜像 (本账户创建的镜像)</p><p style="padding-left: 30px;">PUBLIC_IMAGE: 公共镜像 (腾讯云官方镜像)</p><p style="padding-left: 30px;">SHARED_IMAGE: 共享镜像(其他账户共享给本账户的镜像)</p>
 <li><strong>image-name</strong></li>
-<p style="padding-left: 30px;">按照【<strong>镜像名称</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+<p style="padding-left: 30px;">按照【<strong>镜像名称</strong>】进行过滤。支持模糊查询。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
 <li><strong>platform</strong></li>
-<p style="padding-left: 30px;">按照【<strong>镜像平台</strong>】进行过滤，如CentOS。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+<p style="padding-left: 30px;">按照【<strong>镜像平台</strong>】进行过滤，如 CentOS，支持模糊匹配。可通过 <a href="https://cloud.tencent.com/document/api/213/15715" target="_blank">DescribeImages</a> 接口返回的<code> Platform </code>获取。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
 <li><strong>tag-key</strong></li>
-<p style="padding-left: 30px;">按照【<strong>标签键</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+<p style="padding-left: 30px;">按照【<strong>标签键</strong>】进行过滤。可通过 <a href="https://cloud.tencent.com/document/product/651/72275" target="_blank"> GetTags </a> 接口返回的<code> TagKey </code>获取。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
 <li><strong>tag-value</strong></li>
-<p style="padding-left: 30px;">按照【<strong>标签值</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+<p style="padding-left: 30px;">按照【<strong>标签值</strong>】进行过滤。可通过 <a href="https://cloud.tencent.com/document/product/651/72275" target="_blank"> GetTags </a> 接口返回的<code> TagValue </code>获取。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
 <li><strong>tag:tag-key</strong></li>
-<p style="padding-left: 30px;">按照【<strong>标签键值对</strong>】进行过滤。tag-key使用具体的标签键进行替换。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+<p style="padding-left: 30px;">按照【<strong>标签键值对</strong>】进行过滤。tag-key使用具体的标签键进行替换。可通过 <a href="https://cloud.tencent.com/document/product/651/72275" target="_blank"> GetTags </a> 接口返回的<code> TagKey 和 TagValue </code>获取。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
         :type Filters: list of Filter
         :param _Offset: 偏移量，默认为0。关于Offset详见[API简介](/document/api/213/568#.E8.BE.93.E5.85.A5.E5.8F.82.E6.95.B0.E4.B8.8E.E8.BF.94.E5.9B.9E.E5.8F.82.E6.95.B0.E9.87.8A.E4.B9.89)。
         :type Offset: int
         :param _Limit: 数量限制，默认为20，最大值为100。关于Limit详见[API简介](/document/api/213/568#.E8.BE.93.E5.85.A5.E5.8F.82.E6.95.B0.E4.B8.8E.E8.BF.94.E5.9B.9E.E5.8F.82.E6.95.B0.E9.87.8A.E4.B9.89)。
         :type Limit: int
-        :param _InstanceType: 实例类型，如 `S1.SMALL1`
+        :param _InstanceType: 实例类型，如 `S1.SMALL1`。可通过 [DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/product/213/15749) 接口返回的 `InstanceType` 获取。
         :type InstanceType: str
         """
         self._ImageIds = None
@@ -5807,17 +5807,17 @@ class DescribeImagesRequest(AbstractModel):
 <li><strong>image-id</strong></li>
 <p style="padding-left: 30px;">按照【<strong>镜像ID</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
 <li><strong>image-type</strong></li>
-<p style="padding-left: 30px;">按照【<strong>镜像类型</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：</p><p style="padding-left: 30px;">PRIVATE_IMAGE: 私有镜像 (本账户创建的镜像)</p><p style="padding-left: 30px;">PUBLIC_IMAGE: 公共镜像 (腾讯云官方镜像)</p><p style="padding-left: 30px;">SHARED_IMAGE: 共享镜像(其他账户共享给本账户的镜像)</p>
+<p style="padding-left: 30px;">按照【<strong>镜像类型</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：</p><p style="padding-left: 30px;">PRIVATE_IMAGE: 自定义镜像 (本账户创建的镜像)</p><p style="padding-left: 30px;">PUBLIC_IMAGE: 公共镜像 (腾讯云官方镜像)</p><p style="padding-left: 30px;">SHARED_IMAGE: 共享镜像(其他账户共享给本账户的镜像)</p>
 <li><strong>image-name</strong></li>
-<p style="padding-left: 30px;">按照【<strong>镜像名称</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+<p style="padding-left: 30px;">按照【<strong>镜像名称</strong>】进行过滤。支持模糊查询。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
 <li><strong>platform</strong></li>
-<p style="padding-left: 30px;">按照【<strong>镜像平台</strong>】进行过滤，如CentOS。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+<p style="padding-left: 30px;">按照【<strong>镜像平台</strong>】进行过滤，如 CentOS，支持模糊匹配。可通过 <a href="https://cloud.tencent.com/document/api/213/15715" target="_blank">DescribeImages</a> 接口返回的<code> Platform </code>获取。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
 <li><strong>tag-key</strong></li>
-<p style="padding-left: 30px;">按照【<strong>标签键</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+<p style="padding-left: 30px;">按照【<strong>标签键</strong>】进行过滤。可通过 <a href="https://cloud.tencent.com/document/product/651/72275" target="_blank"> GetTags </a> 接口返回的<code> TagKey </code>获取。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
 <li><strong>tag-value</strong></li>
-<p style="padding-left: 30px;">按照【<strong>标签值</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+<p style="padding-left: 30px;">按照【<strong>标签值</strong>】进行过滤。可通过 <a href="https://cloud.tencent.com/document/product/651/72275" target="_blank"> GetTags </a> 接口返回的<code> TagValue </code>获取。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
 <li><strong>tag:tag-key</strong></li>
-<p style="padding-left: 30px;">按照【<strong>标签键值对</strong>】进行过滤。tag-key使用具体的标签键进行替换。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+<p style="padding-left: 30px;">按照【<strong>标签键值对</strong>】进行过滤。tag-key使用具体的标签键进行替换。可通过 <a href="https://cloud.tencent.com/document/product/651/72275" target="_blank"> GetTags </a> 接口返回的<code> TagKey 和 TagValue </code>获取。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -5850,7 +5850,7 @@ class DescribeImagesRequest(AbstractModel):
 
     @property
     def InstanceType(self):
-        """实例类型，如 `S1.SMALL1`
+        """实例类型，如 `S1.SMALL1`。可通过 [DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/product/213/15749) 接口返回的 `InstanceType` 获取。
         :rtype: str
         """
         return self._InstanceType
@@ -9118,9 +9118,10 @@ class EnterRescueModeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 需要进入救援模式的实例id
+        :param _InstanceId: 需要进入救援模式的实例ID。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的`InstanceId`获取。
+
         :type InstanceId: str
-        :param _Password: 救援模式下系统密码
+        :param _Password: 救援模式下系统密码。不同操作系统类型密码复杂度限制不一样，具体如下：<li>Linux实例密码必须8到30位，至少包括两项[a-z]，[A-Z]、[0-9] 和 [( ) \` ~ ! @ # $ % ^ & *  - + = | { } [ ] : ; ' , . ? / ]中的特殊符号。</li><li>Windows实例密码必须12到30位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) \` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? /]中的特殊符号。</li>
         :type Password: str
         :param _Username: 救援模式下系统用户名
         :type Username: str
@@ -9137,7 +9138,8 @@ class EnterRescueModeRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """需要进入救援模式的实例id
+        """需要进入救援模式的实例ID。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的`InstanceId`获取。
+
         :rtype: str
         """
         return self._InstanceId
@@ -9148,7 +9150,7 @@ class EnterRescueModeRequest(AbstractModel):
 
     @property
     def Password(self):
-        """救援模式下系统密码
+        """救援模式下系统密码。不同操作系统类型密码复杂度限制不一样，具体如下：<li>Linux实例密码必须8到30位，至少包括两项[a-z]，[A-Z]、[0-9] 和 [( ) \` ~ ! @ # $ % ^ & *  - + = | { } [ ] : ; ' , . ? / ]中的特殊符号。</li><li>Windows实例密码必须12到30位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) \` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? /]中的特殊符号。</li>
         :rtype: str
         """
         return self._Password
@@ -10363,17 +10365,24 @@ class Image(AbstractModel):
         :type ImageId: str
         :param _OsName: 镜像操作系统
         :type OsName: str
-        :param _ImageType: 镜像类型
+        :param _ImageType: 镜像类型。镜像类型返回值包括：
+* `PUBLIC_IMAGE` 公共镜像
+* `PRIVATE_IMAGE` 自定义镜像
+* `SHARED_IMAGE` 共享镜像
         :type ImageType: str
-        :param _CreatedTime: 镜像创建时间
+        :param _CreatedTime: 镜像创建时间。
+按照 ISO8601 标准表示，并且使用 UTC 时间，格式为：YYYY-MM-DDThh:mm:ssZ。
         :type CreatedTime: str
         :param _ImageName: 镜像名称
         :type ImageName: str
         :param _ImageDescription: 镜像描述
         :type ImageDescription: str
-        :param _ImageSize: 镜像大小
+        :param _ImageSize: 镜像大小，单位 GiB。
         :type ImageSize: int
-        :param _Architecture: 镜像架构
+        :param _Architecture: 镜像架构。镜像架构返回值包括：
+* `x86_64`
+* `arm`
+* `i386`
         :type Architecture: str
         :param _ImageState: 镜像状态:
 CREATING-创建中
@@ -10388,7 +10397,10 @@ IMPORTFAILED-导入失败
         :type Platform: str
         :param _ImageCreator: 镜像创建者
         :type ImageCreator: str
-        :param _ImageSource: 镜像来源
+        :param _ImageSource: 镜像来源。镜像来源返回值包括：
+* `OFFICIAL` 官方镜像
+* `CREATE_IMAGE` 用户自建镜像
+* `EXTERNAL_IMPORT` 用户外部导入镜像
         :type ImageSource: str
         :param _SyncPercent: 同步百分比
 注意：此字段可能返回 null，表示取不到有效值。
@@ -10399,12 +10411,16 @@ IMPORTFAILED-导入失败
         :type SnapshotSet: list of Snapshot
         :param _Tags: 镜像关联的标签列表。
         :type Tags: list of Tag
-        :param _LicenseType: 镜像许可类型
+        :param _LicenseType: 镜像许可类型。镜像许可类型返回值包括：
+* `TencentCloud` 腾讯云官方许可
+* `BYOL` 用户自带许可
         :type LicenseType: str
         :param _ImageFamily: 镜像族
         :type ImageFamily: str
         :param _ImageDeprecated: 镜像是否废弃
         :type ImageDeprecated: bool
+        :param _CdcCacheStatus: CDC镜像缓存状态
+        :type CdcCacheStatus: str
         """
         self._ImageId = None
         self._OsName = None
@@ -10425,6 +10441,7 @@ IMPORTFAILED-导入失败
         self._LicenseType = None
         self._ImageFamily = None
         self._ImageDeprecated = None
+        self._CdcCacheStatus = None
 
     @property
     def ImageId(self):
@@ -10450,7 +10467,10 @@ IMPORTFAILED-导入失败
 
     @property
     def ImageType(self):
-        """镜像类型
+        """镜像类型。镜像类型返回值包括：
+* `PUBLIC_IMAGE` 公共镜像
+* `PRIVATE_IMAGE` 自定义镜像
+* `SHARED_IMAGE` 共享镜像
         :rtype: str
         """
         return self._ImageType
@@ -10461,7 +10481,8 @@ IMPORTFAILED-导入失败
 
     @property
     def CreatedTime(self):
-        """镜像创建时间
+        """镜像创建时间。
+按照 ISO8601 标准表示，并且使用 UTC 时间，格式为：YYYY-MM-DDThh:mm:ssZ。
         :rtype: str
         """
         return self._CreatedTime
@@ -10494,7 +10515,7 @@ IMPORTFAILED-导入失败
 
     @property
     def ImageSize(self):
-        """镜像大小
+        """镜像大小，单位 GiB。
         :rtype: int
         """
         return self._ImageSize
@@ -10505,7 +10526,10 @@ IMPORTFAILED-导入失败
 
     @property
     def Architecture(self):
-        """镜像架构
+        """镜像架构。镜像架构返回值包括：
+* `x86_64`
+* `arm`
+* `i386`
         :rtype: str
         """
         return self._Architecture
@@ -10556,7 +10580,10 @@ IMPORTFAILED-导入失败
 
     @property
     def ImageSource(self):
-        """镜像来源
+        """镜像来源。镜像来源返回值包括：
+* `OFFICIAL` 官方镜像
+* `CREATE_IMAGE` 用户自建镜像
+* `EXTERNAL_IMPORT` 用户外部导入镜像
         :rtype: str
         """
         return self._ImageSource
@@ -10612,7 +10639,9 @@ IMPORTFAILED-导入失败
 
     @property
     def LicenseType(self):
-        """镜像许可类型
+        """镜像许可类型。镜像许可类型返回值包括：
+* `TencentCloud` 腾讯云官方许可
+* `BYOL` 用户自带许可
         :rtype: str
         """
         return self._LicenseType
@@ -10642,6 +10671,17 @@ IMPORTFAILED-导入失败
     @ImageDeprecated.setter
     def ImageDeprecated(self, ImageDeprecated):
         self._ImageDeprecated = ImageDeprecated
+
+    @property
+    def CdcCacheStatus(self):
+        """CDC镜像缓存状态
+        :rtype: str
+        """
+        return self._CdcCacheStatus
+
+    @CdcCacheStatus.setter
+    def CdcCacheStatus(self, CdcCacheStatus):
+        self._CdcCacheStatus = CdcCacheStatus
 
 
     def _deserialize(self, params):
@@ -10674,6 +10714,7 @@ IMPORTFAILED-导入失败
         self._LicenseType = params.get("LicenseType")
         self._ImageFamily = params.get("ImageFamily")
         self._ImageDeprecated = params.get("ImageDeprecated")
+        self._CdcCacheStatus = params.get("CdcCacheStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18329,9 +18370,9 @@ class RebootInstancesRequest(AbstractModel):
         r"""
         :param _InstanceIds: 一个或多个待操作的实例ID。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的`InstanceId`获取。每次请求批量实例的上限为100。
         :type InstanceIds: list of str
-        :param _ForceReboot: 本参数已弃用，推荐使用StopType，不可以与参数StopType同时使用。表示是否在正常重启失败后选择强制重启实例。取值范围：<br><li>true：表示在正常重启失败后进行强制重启<br><li>false：表示在正常重启失败后不进行强制重启<br><br>默认取值：false。
+        :param _ForceReboot: 本参数已弃用，推荐使用StopType，不可以与参数StopType同时使用。表示是否在正常重启失败后选择强制重启实例。取值范围：<br><li>true：表示在正常重启失败后进行强制重启</li><li>false：表示在正常重启失败后不进行强制重启</li><br>默认取值：false。
         :type ForceReboot: bool
-        :param _StopType: 关机类型。取值范围：<br><li>SOFT：表示软关机<br><li>HARD：表示硬关机<br><li>SOFT_FIRST：表示优先软关机，失败再执行硬关机<br><br>默认取值：SOFT。
+        :param _StopType: 关机类型。取值范围：<br><li>SOFT：表示软关机</li><li>HARD：表示硬关机</li><li>SOFT_FIRST：表示优先软关机，失败再执行硬关机</li><br>默认取值：SOFT。
         :type StopType: str
         """
         self._InstanceIds = None
@@ -18351,7 +18392,7 @@ class RebootInstancesRequest(AbstractModel):
 
     @property
     def ForceReboot(self):
-        """本参数已弃用，推荐使用StopType，不可以与参数StopType同时使用。表示是否在正常重启失败后选择强制重启实例。取值范围：<br><li>true：表示在正常重启失败后进行强制重启<br><li>false：表示在正常重启失败后不进行强制重启<br><br>默认取值：false。
+        """本参数已弃用，推荐使用StopType，不可以与参数StopType同时使用。表示是否在正常重启失败后选择强制重启实例。取值范围：<br><li>true：表示在正常重启失败后进行强制重启</li><li>false：表示在正常重启失败后不进行强制重启</li><br>默认取值：false。
         :rtype: bool
         """
         return self._ForceReboot
@@ -18362,7 +18403,7 @@ class RebootInstancesRequest(AbstractModel):
 
     @property
     def StopType(self):
-        """关机类型。取值范围：<br><li>SOFT：表示软关机<br><li>HARD：表示硬关机<br><li>SOFT_FIRST：表示优先软关机，失败再执行硬关机<br><br>默认取值：SOFT。
+        """关机类型。取值范围：<br><li>SOFT：表示软关机</li><li>HARD：表示硬关机</li><li>SOFT_FIRST：表示优先软关机，失败再执行硬关机</li><br>默认取值：SOFT。
         :rtype: str
         """
         return self._StopType
@@ -21555,7 +21596,8 @@ class SharePermission(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CreatedTime: 镜像分享时间
+        :param _CreatedTime: 镜像分享时间。
+按照 ISO8601 标准表示，并且使用 UTC 时间，格式为：YYYY-MM-DDThh:mm:ssZ。
         :type CreatedTime: str
         :param _AccountId: 镜像分享的账户ID
         :type AccountId: str
@@ -21565,7 +21607,8 @@ class SharePermission(AbstractModel):
 
     @property
     def CreatedTime(self):
-        """镜像分享时间
+        """镜像分享时间。
+按照 ISO8601 标准表示，并且使用 UTC 时间，格式为：YYYY-MM-DDThh:mm:ssZ。
         :rtype: str
         """
         return self._CreatedTime
@@ -21612,7 +21655,7 @@ class Snapshot(AbstractModel):
 SYSTEM_DISK：系统盘
 DATA_DISK：数据盘。
         :type DiskUsage: str
-        :param _DiskSize: 创建此快照的云硬盘大小，单位GB。
+        :param _DiskSize: 创建此快照的云硬盘大小，单位 GiB。
         :type DiskSize: int
         """
         self._SnapshotId = None
@@ -21645,7 +21688,7 @@ DATA_DISK：数据盘。
 
     @property
     def DiskSize(self):
-        """创建此快照的云硬盘大小，单位GB。
+        """创建此快照的云硬盘大小，单位 GiB。
         :rtype: int
         """
         return self._DiskSize

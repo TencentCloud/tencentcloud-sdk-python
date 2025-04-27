@@ -2876,7 +2876,7 @@ class DeviceDetail(AbstractModel):
         :type DeviceStrategyVer: str
         :param _NGNStrategyVer: NGN策略版本
         :type NGNStrategyVer: str
-        :param _IOAUserName: 最近登录账户的账号
+        :param _IOAUserName: 最近登录账户的账号(账号系统用户账号)
         :type IOAUserName: str
         :param _DeviceNewStrategyVer: 设备管控新策略
         :type DeviceNewStrategyVer: str
@@ -2894,10 +2894,12 @@ class DeviceDetail(AbstractModel):
         :type IdentityNewStrategyVer: str
         :param _AccountGroupName: 最近登录账号部门
         :type AccountGroupName: str
-        :param _AccountName: 最近登录账户的姓名
+        :param _AccountName: 最近登录账户的姓名(账号系统用户姓名)
         :type AccountName: str
         :param _AccountGroupId: 账号组id
         :type AccountGroupId: int
+        :param _RemarkName: 终端备注名
+        :type RemarkName: str
         """
         self._Id = None
         self._Mid = None
@@ -2942,6 +2944,7 @@ class DeviceDetail(AbstractModel):
         self._AccountGroupName = None
         self._AccountName = None
         self._AccountGroupId = None
+        self._RemarkName = None
 
     @property
     def Id(self):
@@ -3297,7 +3300,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def IOAUserName(self):
-        """最近登录账户的账号
+        """最近登录账户的账号(账号系统用户账号)
         :rtype: str
         """
         return self._IOAUserName
@@ -3396,7 +3399,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def AccountName(self):
-        """最近登录账户的姓名
+        """最近登录账户的姓名(账号系统用户姓名)
         :rtype: str
         """
         return self._AccountName
@@ -3415,6 +3418,17 @@ class DeviceDetail(AbstractModel):
     @AccountGroupId.setter
     def AccountGroupId(self, AccountGroupId):
         self._AccountGroupId = AccountGroupId
+
+    @property
+    def RemarkName(self):
+        """终端备注名
+        :rtype: str
+        """
+        return self._RemarkName
+
+    @RemarkName.setter
+    def RemarkName(self, RemarkName):
+        self._RemarkName = RemarkName
 
 
     def _deserialize(self, params):
@@ -3461,6 +3475,7 @@ class DeviceDetail(AbstractModel):
         self._AccountGroupName = params.get("AccountGroupName")
         self._AccountName = params.get("AccountName")
         self._AccountGroupId = params.get("AccountGroupId")
+        self._RemarkName = params.get("RemarkName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

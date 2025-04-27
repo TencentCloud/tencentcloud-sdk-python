@@ -309,6 +309,8 @@ class AILatencyDetail(AbstractModel):
         :type TTSLatency: int
         :param _LLMLatency: llm时延（毫秒）
         :type LLMLatency: int
+        :param _LLMFirstTokenLatency: llm首token时延(毫秒)
+        :type LLMFirstTokenLatency: int
         :param _ETELatency: 端到端时延（毫秒）
         :type ETELatency: int
         """
@@ -316,6 +318,7 @@ class AILatencyDetail(AbstractModel):
         self._ASRLatency = None
         self._TTSLatency = None
         self._LLMLatency = None
+        self._LLMFirstTokenLatency = None
         self._ETELatency = None
 
     @property
@@ -363,6 +366,17 @@ class AILatencyDetail(AbstractModel):
         self._LLMLatency = LLMLatency
 
     @property
+    def LLMFirstTokenLatency(self):
+        """llm首token时延(毫秒)
+        :rtype: int
+        """
+        return self._LLMFirstTokenLatency
+
+    @LLMFirstTokenLatency.setter
+    def LLMFirstTokenLatency(self, LLMFirstTokenLatency):
+        self._LLMFirstTokenLatency = LLMFirstTokenLatency
+
+    @property
     def ETELatency(self):
         """端到端时延（毫秒）
         :rtype: int
@@ -379,6 +393,7 @@ class AILatencyDetail(AbstractModel):
         self._ASRLatency = params.get("ASRLatency")
         self._TTSLatency = params.get("TTSLatency")
         self._LLMLatency = params.get("LLMLatency")
+        self._LLMFirstTokenLatency = params.get("LLMFirstTokenLatency")
         self._ETELatency = params.get("ETELatency")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

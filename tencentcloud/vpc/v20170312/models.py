@@ -44367,10 +44367,38 @@ class ISPIPv6CidrBlock(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _IPv6CidrBlock: IPv6 CIdr Block
+        :type IPv6CidrBlock: str
+        :param _ISPType: 网络运营商类型 取值范围:'BGP'-默认, 'CMCC'-中国移动, 'CTCC'-中国电信, 'CUCC'-中国联调
+        :type ISPType: str
         :param _AddressType: IPv6 Cidr 的类型：`GUA`(全球单播地址), `ULA`(唯一本地地址)
         :type AddressType: str
         """
+        self._IPv6CidrBlock = None
+        self._ISPType = None
         self._AddressType = None
+
+    @property
+    def IPv6CidrBlock(self):
+        """IPv6 CIdr Block
+        :rtype: str
+        """
+        return self._IPv6CidrBlock
+
+    @IPv6CidrBlock.setter
+    def IPv6CidrBlock(self, IPv6CidrBlock):
+        self._IPv6CidrBlock = IPv6CidrBlock
+
+    @property
+    def ISPType(self):
+        """网络运营商类型 取值范围:'BGP'-默认, 'CMCC'-中国移动, 'CTCC'-中国电信, 'CUCC'-中国联调
+        :rtype: str
+        """
+        return self._ISPType
+
+    @ISPType.setter
+    def ISPType(self, ISPType):
+        self._ISPType = ISPType
 
     @property
     def AddressType(self):
@@ -44385,6 +44413,8 @@ class ISPIPv6CidrBlock(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._IPv6CidrBlock = params.get("IPv6CidrBlock")
+        self._ISPType = params.get("ISPType")
         self._AddressType = params.get("AddressType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -46583,16 +46613,12 @@ class ItemPrice(AbstractModel):
     def __init__(self):
         r"""
         :param _UnitPrice: 按量计费后付费单价，单位：元。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UnitPrice: float
         :param _ChargeUnit: 按量计费后付费计价单元，可取值范围： HOUR：表示计价单元是按每小时来计算。当前涉及该计价单元的场景有：实例按小时后付费（POSTPAID_BY_HOUR）、带宽按小时后付费（BANDWIDTH_POSTPAID_BY_HOUR）： GB：表示计价单元是按每GB来计算。当前涉及该计价单元的场景有：流量按小时后付费（TRAFFIC_POSTPAID_BY_HOUR）。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChargeUnit: str
         :param _OriginalPrice: 预付费商品的原价，单位：元。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OriginalPrice: float
         :param _DiscountPrice: 预付费商品的折扣价，单位：元。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DiscountPrice: float
         """
         self._UnitPrice = None
@@ -46603,7 +46629,6 @@ class ItemPrice(AbstractModel):
     @property
     def UnitPrice(self):
         """按量计费后付费单价，单位：元。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._UnitPrice
@@ -46615,7 +46640,6 @@ class ItemPrice(AbstractModel):
     @property
     def ChargeUnit(self):
         """按量计费后付费计价单元，可取值范围： HOUR：表示计价单元是按每小时来计算。当前涉及该计价单元的场景有：实例按小时后付费（POSTPAID_BY_HOUR）、带宽按小时后付费（BANDWIDTH_POSTPAID_BY_HOUR）： GB：表示计价单元是按每GB来计算。当前涉及该计价单元的场景有：流量按小时后付费（TRAFFIC_POSTPAID_BY_HOUR）。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ChargeUnit
@@ -46627,7 +46651,6 @@ class ItemPrice(AbstractModel):
     @property
     def OriginalPrice(self):
         """预付费商品的原价，单位：元。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._OriginalPrice
@@ -46639,7 +46662,6 @@ class ItemPrice(AbstractModel):
     @property
     def DiscountPrice(self):
         """预付费商品的折扣价，单位：元。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._DiscountPrice
@@ -54594,36 +54616,26 @@ class NatGateway(AbstractModel):
         :param _Zone: NAT网关所在的可用区。
         :type Zone: str
         :param _DirectConnectGatewayIds: 绑定的专线网关ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DirectConnectGatewayIds: list of str
         :param _SubnetId: 所属子网ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetId: str
         :param _TagSet: 标签键值对。
         :type TagSet: list of Tag
         :param _SecurityGroupSet: NAT网关绑定的安全组列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityGroupSet: list of str
         :param _SourceIpTranslationNatRuleSet: NAT网关的SNAT转发规则。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SourceIpTranslationNatRuleSet: list of SourceIpTranslationNatRule
         :param _IsExclusive: 是否独享型NAT。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsExclusive: bool
         :param _ExclusiveGatewayBandwidth: 独享型NAT所在的网关集群的带宽(单位:Mbps)，当IsExclusive为false时无此字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExclusiveGatewayBandwidth: int
         :param _RestrictState: NAT网关是否被封禁。“NORMAL”：未被封禁，“RESTRICTED”：已被封禁。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RestrictState: str
         :param _NatProductVersion: NAT网关类型，1表示传统型NAT网关，2表示标准型NAT网关
-注意：此字段可能返回 null，表示取不到有效值。
         :type NatProductVersion: int
         :param _SmartScheduleMode: 是否启用根据目的网段选择SNAT使用的EIP功能	
-注意：此字段可能返回 null，表示取不到有效值。
         :type SmartScheduleMode: bool
         :param _DedicatedClusterId: NAT实例归属的专属集群id
-注意：此字段可能返回 null，表示取不到有效值。
         :type DedicatedClusterId: str
         """
         self._NatGatewayId = None
@@ -54775,7 +54787,6 @@ class NatGateway(AbstractModel):
     @property
     def DirectConnectGatewayIds(self):
         """绑定的专线网关ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._DirectConnectGatewayIds
@@ -54787,7 +54798,6 @@ class NatGateway(AbstractModel):
     @property
     def SubnetId(self):
         """所属子网ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SubnetId
@@ -54810,7 +54820,6 @@ class NatGateway(AbstractModel):
     @property
     def SecurityGroupSet(self):
         """NAT网关绑定的安全组列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._SecurityGroupSet
@@ -54822,7 +54831,6 @@ class NatGateway(AbstractModel):
     @property
     def SourceIpTranslationNatRuleSet(self):
         """NAT网关的SNAT转发规则。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SourceIpTranslationNatRule
         """
         return self._SourceIpTranslationNatRuleSet
@@ -54834,7 +54842,6 @@ class NatGateway(AbstractModel):
     @property
     def IsExclusive(self):
         """是否独享型NAT。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsExclusive
@@ -54846,7 +54853,6 @@ class NatGateway(AbstractModel):
     @property
     def ExclusiveGatewayBandwidth(self):
         """独享型NAT所在的网关集群的带宽(单位:Mbps)，当IsExclusive为false时无此字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ExclusiveGatewayBandwidth
@@ -54858,7 +54864,6 @@ class NatGateway(AbstractModel):
     @property
     def RestrictState(self):
         """NAT网关是否被封禁。“NORMAL”：未被封禁，“RESTRICTED”：已被封禁。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RestrictState
@@ -54870,7 +54875,6 @@ class NatGateway(AbstractModel):
     @property
     def NatProductVersion(self):
         """NAT网关类型，1表示传统型NAT网关，2表示标准型NAT网关
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._NatProductVersion
@@ -54882,7 +54886,6 @@ class NatGateway(AbstractModel):
     @property
     def SmartScheduleMode(self):
         """是否启用根据目的网段选择SNAT使用的EIP功能	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._SmartScheduleMode
@@ -54894,7 +54897,6 @@ class NatGateway(AbstractModel):
     @property
     def DedicatedClusterId(self):
         """NAT实例归属的专属集群id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DedicatedClusterId
@@ -55058,13 +55060,10 @@ class NatGatewayDestinationIpPortTranslationNatRule(AbstractModel):
         :param _Description: NAT网关转发规则描述。
         :type Description: str
         :param _NatGatewayId: NAT网关的ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type NatGatewayId: str
         :param _VpcId: 私有网络VPC的ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
         :param _CreatedTime: NAT网关转发规则创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedTime: str
         """
         self._IpProtocol = None
@@ -55146,7 +55145,6 @@ class NatGatewayDestinationIpPortTranslationNatRule(AbstractModel):
     @property
     def NatGatewayId(self):
         """NAT网关的ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NatGatewayId
@@ -55158,7 +55156,6 @@ class NatGatewayDestinationIpPortTranslationNatRule(AbstractModel):
     @property
     def VpcId(self):
         """私有网络VPC的ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VpcId
@@ -55170,7 +55167,6 @@ class NatGatewayDestinationIpPortTranslationNatRule(AbstractModel):
     @property
     def CreatedTime(self):
         """NAT网关转发规则创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreatedTime
@@ -57576,13 +57572,10 @@ class PrivateNatCrossDomainInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _CcnId: 跨域私网NAT关联的云联网ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type CcnId: str
         :param _LocalVpcId: 跨域私网NAT本端Vpc
-注意：此字段可能返回 null，表示取不到有效值。
         :type LocalVpcId: str
         :param _PeerVpcId: 跨域私网NAT对端Vpc
-注意：此字段可能返回 null，表示取不到有效值。
         :type PeerVpcId: str
         """
         self._CcnId = None
@@ -57592,7 +57585,6 @@ class PrivateNatCrossDomainInfo(AbstractModel):
     @property
     def CcnId(self):
         """跨域私网NAT关联的云联网ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CcnId
@@ -57604,7 +57596,6 @@ class PrivateNatCrossDomainInfo(AbstractModel):
     @property
     def LocalVpcId(self):
         """跨域私网NAT本端Vpc
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LocalVpcId
@@ -57616,7 +57607,6 @@ class PrivateNatCrossDomainInfo(AbstractModel):
     @property
     def PeerVpcId(self):
         """跨域私网NAT对端Vpc
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PeerVpcId
@@ -57793,7 +57783,6 @@ class PrivateNatGateway(AbstractModel):
         :param _NatGatewayName: 私网网关名称。
         :type NatGatewayName: str
         :param _VpcId: 私网网关关联`VPC`实例`ID`。
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
         :param _Status: 私网网关当前状态。
         :type Status: str
@@ -57802,22 +57791,16 @@ class PrivateNatGateway(AbstractModel):
         :param _CreatedTime: 创建时间
         :type CreatedTime: str
         :param _TagSet: 标签键值对。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagSet: list of Tag
         :param _DirectConnectGatewayIds: 专线网关唯一`ID`
-注意：此字段可能返回 null，表示取不到有效值。
         :type DirectConnectGatewayIds: list of str
         :param _NatType: 私网网关类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type NatType: str
         :param _CrossDomainInfo: 私网NAT跨域信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type CrossDomainInfo: :class:`tencentcloud.vpc.v20170312.models.PrivateNatCrossDomainInfo`
         :param _VpcType: 是否VPC型私网网关
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcType: bool
         :param _CcnId: 跨域私网NAT关联的云联网ID	
-注意：此字段可能返回 null，表示取不到有效值。
         :type CcnId: str
         """
         self._NatGatewayId = None
@@ -57858,7 +57841,6 @@ class PrivateNatGateway(AbstractModel):
     @property
     def VpcId(self):
         """私网网关关联`VPC`实例`ID`。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VpcId
@@ -57903,7 +57885,6 @@ class PrivateNatGateway(AbstractModel):
     @property
     def TagSet(self):
         """标签键值对。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._TagSet
@@ -57915,7 +57896,6 @@ class PrivateNatGateway(AbstractModel):
     @property
     def DirectConnectGatewayIds(self):
         """专线网关唯一`ID`
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._DirectConnectGatewayIds
@@ -57927,7 +57907,6 @@ class PrivateNatGateway(AbstractModel):
     @property
     def NatType(self):
         """私网网关类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NatType
@@ -57939,7 +57918,6 @@ class PrivateNatGateway(AbstractModel):
     @property
     def CrossDomainInfo(self):
         """私网NAT跨域信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vpc.v20170312.models.PrivateNatCrossDomainInfo`
         """
         return self._CrossDomainInfo
@@ -57951,7 +57929,6 @@ class PrivateNatGateway(AbstractModel):
     @property
     def VpcType(self):
         """是否VPC型私网网关
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._VpcType
@@ -57963,7 +57940,6 @@ class PrivateNatGateway(AbstractModel):
     @property
     def CcnId(self):
         """跨域私网NAT关联的云联网ID	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CcnId
@@ -64616,7 +64592,6 @@ class SourceIpTranslationNatRule(AbstractModel):
         :param _ResourceId: 资源ID，如果ResourceType为USERDEFINED，可以为空字符串
         :type ResourceId: str
         :param _ResourceType: 资源类型，目前包含SUBNET、NETWORKINTERFACE、USERDEFINED
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceType: str
         :param _PrivateIpAddress: 源IP/网段
         :type PrivateIpAddress: str
@@ -64627,13 +64602,10 @@ class SourceIpTranslationNatRule(AbstractModel):
         :param _NatGatewaySnatId: Snat规则ID
         :type NatGatewaySnatId: str
         :param _NatGatewayId: NAT网关的ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type NatGatewayId: str
         :param _VpcId: 私有网络VPC的ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
         :param _CreatedTime: NAT网关SNAT规则创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedTime: str
         """
         self._ResourceId = None
@@ -64660,7 +64632,6 @@ class SourceIpTranslationNatRule(AbstractModel):
     @property
     def ResourceType(self):
         """资源类型，目前包含SUBNET、NETWORKINTERFACE、USERDEFINED
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceType
@@ -64716,7 +64687,6 @@ class SourceIpTranslationNatRule(AbstractModel):
     @property
     def NatGatewayId(self):
         """NAT网关的ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NatGatewayId
@@ -64728,7 +64698,6 @@ class SourceIpTranslationNatRule(AbstractModel):
     @property
     def VpcId(self):
         """私有网络VPC的ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VpcId
@@ -64740,7 +64709,6 @@ class SourceIpTranslationNatRule(AbstractModel):
     @property
     def CreatedTime(self):
         """NAT网关SNAT规则创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreatedTime
@@ -65873,10 +65841,8 @@ class Tag(AbstractModel):
     def __init__(self):
         r"""
         :param _Key: 标签键
-注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
         :param _Value: 标签值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Key = None
@@ -65885,7 +65851,6 @@ class Tag(AbstractModel):
     @property
     def Key(self):
         """标签键
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Key
@@ -65897,7 +65862,6 @@ class Tag(AbstractModel):
     @property
     def Value(self):
         """标签值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -65928,10 +65892,8 @@ class Tags(AbstractModel):
     def __init__(self):
         r"""
         :param _Key: 标签键
-注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
         :param _Value: 标签值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Key = None
@@ -65940,7 +65902,6 @@ class Tags(AbstractModel):
     @property
     def Key(self):
         """标签键
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Key
@@ -65952,7 +65913,6 @@ class Tags(AbstractModel):
     @property
     def Value(self):
         """标签值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -67129,10 +67089,8 @@ class TranslationNatRule(AbstractModel):
         :param _TranslationIp: 转换`IP`,当转换规则类型为四层时为`IP`池。
         :type TranslationIp: str
         :param _Description: 转换规则描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _OriginalIp: 源`IP`,当转换规则类型为三层时有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OriginalIp: str
         :param _CreateTime: 创建时间。
         :type CreateTime: str
@@ -67183,7 +67141,6 @@ class TranslationNatRule(AbstractModel):
     @property
     def Description(self):
         """转换规则描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -67195,7 +67152,6 @@ class TranslationNatRule(AbstractModel):
     @property
     def OriginalIp(self):
         """源`IP`,当转换规则类型为三层时有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OriginalIp
