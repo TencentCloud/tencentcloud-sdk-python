@@ -96,7 +96,9 @@ class PostgresClient(AbstractClient):
 
 
     def CloseServerlessDBExtranetAccess(self, request):
-        """【接口下线中，请勿使用】本接口（CloseServerlessDBExtranetAccess）用于关闭serverlessDB实例公网地址
+        """该产品形态需要下线，已完成客户实例全部下线、后端服务下线等
+
+        【接口下线中，请勿使用】本接口（CloseServerlessDBExtranetAccess）用于关闭serverlessDB实例公网地址
 
         :param request: Request instance for CloseServerlessDBExtranetAccess.
         :type request: :class:`tencentcloud.postgres.v20170312.models.CloseServerlessDBExtranetAccessRequest`
@@ -374,7 +376,9 @@ class PostgresClient(AbstractClient):
 
 
     def CreateServerlessDBInstance(self, request):
-        """【接口下线中，请勿使用】本接口 (CreateServerlessDBInstance) 用于创建一个ServerlessDB实例，创建成功返回实例ID。
+        """该产品形态需要下线，已完成客户实例全部下线、后端服务下线等
+
+        【接口下线中，请勿使用】本接口 (CreateServerlessDBInstance) 用于创建一个ServerlessDB实例，创建成功返回实例ID。
 
         :param request: Request instance for CreateServerlessDBInstance.
         :type request: :class:`tencentcloud.postgres.v20170312.models.CreateServerlessDBInstanceRequest`
@@ -581,7 +585,9 @@ class PostgresClient(AbstractClient):
 
 
     def DeleteServerlessDBInstance(self, request):
-        """【接口下线中，请勿使用】本接口 (DeleteServerlessDBInstance) 用于删除一个ServerlessDB实例。
+        """该产品形态需要下线，已完成客户实例全部下线、后端服务下线等
+
+        【接口下线中，请勿使用】本接口 (DeleteServerlessDBInstance) 用于删除一个ServerlessDB实例。
 
         :param request: Request instance for DeleteServerlessDBInstance.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DeleteServerlessDBInstanceRequest`
@@ -1434,7 +1440,9 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeServerlessDBInstances(self, request):
-        """【接口下线中，请勿使用】用于查询一个或多个serverlessDB实例的详细信息
+        """该产品形态需要下线，已完成客户实例全部下线、后端服务下线等
+
+        【接口下线中，请勿使用】用于查询一个或多个serverlessDB实例的详细信息
 
         :param request: Request instance for DescribeServerlessDBInstances.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeServerlessDBInstancesRequest`
@@ -2242,7 +2250,9 @@ class PostgresClient(AbstractClient):
 
 
     def OpenServerlessDBExtranetAccess(self, request):
-        """【接口下线中，请勿使用】本接口（OpenServerlessDBExtranetAccess）用于开通serverlessDB实例公网地址。
+        """该产品形态需要下线，已完成客户实例全部下线、后端服务下线等
+
+        【接口下线中，请勿使用】本接口（OpenServerlessDBExtranetAccess）用于开通serverlessDB实例公网地址。
 
         :param request: Request instance for OpenServerlessDBExtranetAccess.
         :type request: :class:`tencentcloud.postgres.v20170312.models.OpenServerlessDBExtranetAccessRequest`

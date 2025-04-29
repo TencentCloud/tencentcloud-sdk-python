@@ -13543,6 +13543,90 @@ class ModifyModelServiceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyNotebookTagsRequest(AbstractModel):
+    """ModifyNotebookTags请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Notebook Id
+        :type Id: str
+        :param _Tags: Notebook修改标签集合
+        :type Tags: list of Tag
+        """
+        self._Id = None
+        self._Tags = None
+
+    @property
+    def Id(self):
+        """Notebook Id
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Tags(self):
+        """Notebook修改标签集合
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyNotebookTagsResponse(AbstractModel):
+    """ModifyNotebookTags返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class MultiModalContent(AbstractModel):
     """多模态对话内容,支持图片与文字信息
 

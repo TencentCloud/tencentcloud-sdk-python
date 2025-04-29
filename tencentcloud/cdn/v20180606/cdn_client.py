@@ -338,7 +338,9 @@ class CdnClient(AbstractClient):
 
 
     def DescribeCcData(self, request):
-        """CC统计数据查询
+        """SCDN平台下线，接口开始预下线处理
+
+        CC统计数据查询
 
         :param request: Request instance for DescribeCcData.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeCcDataRequest`
@@ -490,7 +492,9 @@ class CdnClient(AbstractClient):
 
 
     def DescribeDDoSData(self, request):
-        """DDoS统计数据查询
+        """SCDN平台下线，接口开始预下线处理
+
+        DDoS统计数据查询
 
         :param request: Request instance for DescribeDDoSData.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeDDoSDataRequest`
@@ -630,7 +634,9 @@ class CdnClient(AbstractClient):
 
 
     def DescribeEventLogData(self, request):
-        """DescribeEventLogData 用于查询事件日志统计曲线
+        """SCDN平台下线，接口开始预下线处理
+
+        DescribeEventLogData 用于查询事件日志统计曲线
 
         :param request: Request instance for DescribeEventLogData.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeEventLogDataRequest`
@@ -1125,7 +1131,7 @@ class CdnClient(AbstractClient):
 
     def DescribeUrlViolations(self, request):
         """DescribeUrlViolations 用于查询被 CDN 系统扫描到的域名违规 URL 列表及当前状态。
-        对应内容分发网络控制台【图片鉴黄】页面。
+        对应内容分发网络控制台【内容合规】页面。
 
         :param request: Request instance for DescribeUrlViolations.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeUrlViolationsRequest`
@@ -1148,7 +1154,9 @@ class CdnClient(AbstractClient):
 
 
     def DescribeWafData(self, request):
-        """Waf统计数据查询
+        """SCDN平台下线，接口开始预下线处理
+
+        Waf统计数据查询
 
         :param request: Request instance for DescribeWafData.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeWafDataRequest`
@@ -1457,7 +1465,9 @@ class CdnClient(AbstractClient):
 
 
     def ListTopBotData(self, request):
-        """获取Bot攻击的Top信息
+        """SCDN平台下线，接口开始预下线处理
+
+        获取Bot攻击的Top信息
 
         :param request: Request instance for ListTopBotData.
         :type request: :class:`tencentcloud.cdn.v20180606.models.ListTopBotDataRequest`
@@ -1480,7 +1490,9 @@ class CdnClient(AbstractClient):
 
 
     def ListTopCcData(self, request):
-        """获取CC攻击Top数据
+        """SCDN平台下线，接口开始预下线处理
+
+        获取CC攻击Top数据
 
         :param request: Request instance for ListTopCcData.
         :type request: :class:`tencentcloud.cdn.v20180606.models.ListTopCcDataRequest`
@@ -1526,7 +1538,9 @@ class CdnClient(AbstractClient):
 
 
     def ListTopDDoSData(self, request):
-        """获取DDoS攻击Top数据
+        """SCDN平台下线，接口开始预下线处理
+
+        获取DDoS攻击Top数据
 
         :param request: Request instance for ListTopDDoSData.
         :type request: :class:`tencentcloud.cdn.v20180606.models.ListTopDDoSDataRequest`
@@ -1580,7 +1594,9 @@ class CdnClient(AbstractClient):
 
 
     def ListTopWafData(self, request):
-        """获取Waf攻击Top数据
+        """SCDN平台下线，接口开始预下线处理
+
+        获取Waf攻击Top数据
 
         :param request: Request instance for ListTopWafData.
         :type request: :class:`tencentcloud.cdn.v20180606.models.ListTopWafDataRequest`

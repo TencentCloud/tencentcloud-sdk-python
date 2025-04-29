@@ -902,6 +902,29 @@ class TioneClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyNotebookTags(self, request):
+        """修改Notebook标签
+
+        :param request: Request instance for ModifyNotebookTags.
+        :type request: :class:`tencentcloud.tione.v20211111.models.ModifyNotebookTagsRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ModifyNotebookTagsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyNotebookTags", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyNotebookTagsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def PushTrainingMetrics(self, request):
         """上报训练自定义指标
 

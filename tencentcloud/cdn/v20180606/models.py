@@ -10168,7 +10168,7 @@ class DescribeCertDomainsRequest(AbstractModel):
         r"""
         :param _Cert: PEM格式证书Base64编码后的字符串
         :type Cert: str
-        :param _CertId: 托管证书ID，Cert和CertId不能均未空，都填写时以CerId为准。
+        :param _CertId: 托管证书ID，Cert和CertId不能均未空，都填写时以CertId为准。
         :type CertId: str
         :param _Product: 域名所属产品，cdn或ecdn，默认cdn。
         :type Product: str
@@ -10190,7 +10190,7 @@ class DescribeCertDomainsRequest(AbstractModel):
 
     @property
     def CertId(self):
-        """托管证书ID，Cert和CertId不能均未空，都填写时以CerId为准。
+        """托管证书ID，Cert和CertId不能均未空，都填写时以CertId为准。
         :rtype: str
         """
         return self._CertId
@@ -22449,7 +22449,7 @@ class ListTopClsLogDataRequest(AbstractModel):
         :type Url: str
         :param _Channel: 接入渠道，cdn或者ecdn，默认值为cdn
         :type Channel: str
-        :param _Limit: 要查询的Top条数，最大值为100，默认为10
+        :param _Limit: 要查询的Top条数，建议最大值100，默认为10
         :type Limit: int
         :param _Sort: 按请求量排序， asc（升序）或者 desc（降序），默认为 desc
         :type Sort: str
@@ -22546,7 +22546,7 @@ class ListTopClsLogDataRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """要查询的Top条数，最大值为100，默认为10
+        """要查询的Top条数，建议最大值100，默认为10
         :rtype: int
         """
         return self._Limit

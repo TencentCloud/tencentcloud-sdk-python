@@ -236,6 +236,29 @@ class IssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def BatchDeleteVideoDownloadTask(self, request):
+        """用于批量删除本地录像下载失败的任务
+
+        :param request: Request instance for BatchDeleteVideoDownloadTask.
+        :type request: :class:`tencentcloud.iss.v20230517.models.BatchDeleteVideoDownloadTaskRequest`
+        :rtype: :class:`tencentcloud.iss.v20230517.models.BatchDeleteVideoDownloadTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BatchDeleteVideoDownloadTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.BatchDeleteVideoDownloadTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def BatchOperateDevice(self, request):
         """用于批量操作（启用，禁用，删除）设备
 
@@ -411,6 +434,29 @@ class IssClient(AbstractClient):
             body = self.call("ControlRecordTimeline", params, headers=headers)
             response = json.loads(body)
             model = models.ControlRecordTimelineResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateVideoDownloadTask(self, request):
+        """创建本地录像下载任务
+
+        :param request: Request instance for CreateVideoDownloadTask.
+        :type request: :class:`tencentcloud.iss.v20230517.models.CreateVideoDownloadTaskRequest`
+        :rtype: :class:`tencentcloud.iss.v20230517.models.CreateVideoDownloadTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateVideoDownloadTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateVideoDownloadTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -627,6 +673,29 @@ class IssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteTask(self, request):
+        """用于删除执行完成的任务
+
+        :param request: Request instance for DeleteTask.
+        :type request: :class:`tencentcloud.iss.v20230517.models.DeleteTaskRequest`
+        :rtype: :class:`tencentcloud.iss.v20230517.models.DeleteTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteUserDevice(self, request):
         """用于删除已添加的设备。
 
@@ -825,6 +894,29 @@ class IssClient(AbstractClient):
             body = self.call("DescribeDomainRegion", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDomainRegionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeGBDeviceAddr(self, request):
+        """用于获取国标设备的公网地址
+
+        :param request: Request instance for DescribeGBDeviceAddr.
+        :type request: :class:`tencentcloud.iss.v20230517.models.DescribeGBDeviceAddrRequest`
+        :rtype: :class:`tencentcloud.iss.v20230517.models.DescribeGBDeviceAddrResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGBDeviceAddr", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeGBDeviceAddrResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1631,6 +1723,29 @@ class IssClient(AbstractClient):
             body = self.call("ListTasks", params, headers=headers)
             response = json.loads(body)
             model = models.ListTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListVideoDownloadTask(self, request):
+        """查询本店里录像下载任务列表
+
+        :param request: Request instance for ListVideoDownloadTask.
+        :type request: :class:`tencentcloud.iss.v20230517.models.ListVideoDownloadTaskRequest`
+        :rtype: :class:`tencentcloud.iss.v20230517.models.ListVideoDownloadTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListVideoDownloadTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListVideoDownloadTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

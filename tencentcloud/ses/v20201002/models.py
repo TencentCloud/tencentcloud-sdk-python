@@ -4029,6 +4029,8 @@ class SendEmailRequest(AbstractModel):
         :type SmtpMessageId: str
         :param _SmtpHeaders: smtp头中可以设置的其它字段
         :type SmtpHeaders: str
+        :param _HeaderFrom: smtp头中的from字段，建议域名与FromEmailAddress保持一致
+        :type HeaderFrom: str
         """
         self._FromEmailAddress = None
         self._Destination = None
@@ -4043,6 +4045,7 @@ class SendEmailRequest(AbstractModel):
         self._TriggerType = None
         self._SmtpMessageId = None
         self._SmtpHeaders = None
+        self._HeaderFrom = None
 
     @property
     def FromEmailAddress(self):
@@ -4189,6 +4192,17 @@ class SendEmailRequest(AbstractModel):
     def SmtpHeaders(self, SmtpHeaders):
         self._SmtpHeaders = SmtpHeaders
 
+    @property
+    def HeaderFrom(self):
+        """smtp头中的from字段，建议域名与FromEmailAddress保持一致
+        :rtype: str
+        """
+        return self._HeaderFrom
+
+    @HeaderFrom.setter
+    def HeaderFrom(self, HeaderFrom):
+        self._HeaderFrom = HeaderFrom
+
 
     def _deserialize(self, params):
         self._FromEmailAddress = params.get("FromEmailAddress")
@@ -4213,6 +4227,7 @@ class SendEmailRequest(AbstractModel):
         self._TriggerType = params.get("TriggerType")
         self._SmtpMessageId = params.get("SmtpMessageId")
         self._SmtpHeaders = params.get("SmtpHeaders")
+        self._HeaderFrom = params.get("HeaderFrom")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

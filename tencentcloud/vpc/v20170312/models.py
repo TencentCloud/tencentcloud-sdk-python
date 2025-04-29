@@ -29387,7 +29387,6 @@ class DescribeNatGatewaySourceIpTranslationNatRulesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _SourceIpTranslationNatRuleSet: NAT网关SNAT规则对象数组。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SourceIpTranslationNatRuleSet: list of SourceIpTranslationNatRule
         :param _TotalCount: 符合条件的NAT网关端口转发规则对象数目。
         :type TotalCount: int
@@ -29401,7 +29400,6 @@ class DescribeNatGatewaySourceIpTranslationNatRulesResponse(AbstractModel):
     @property
     def SourceIpTranslationNatRuleSet(self):
         """NAT网关SNAT规则对象数组。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SourceIpTranslationNatRule
         """
         return self._SourceIpTranslationNatRuleSet

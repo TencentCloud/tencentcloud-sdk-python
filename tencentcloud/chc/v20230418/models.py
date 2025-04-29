@@ -7946,6 +7946,8 @@ class OrderStep(AbstractModel):
         :type StepName: str
         :param _OwnerName: 处理人
         :type OwnerName: str
+        :param _OwnerPhone: 处理人手机号
+        :type OwnerPhone: str
         :param _FinishTime: 完成时间
         :type FinishTime: str
         :param _StepStatus: 此步骤状态
@@ -7953,6 +7955,7 @@ class OrderStep(AbstractModel):
         """
         self._StepName = None
         self._OwnerName = None
+        self._OwnerPhone = None
         self._FinishTime = None
         self._StepStatus = None
 
@@ -7977,6 +7980,17 @@ class OrderStep(AbstractModel):
     @OwnerName.setter
     def OwnerName(self, OwnerName):
         self._OwnerName = OwnerName
+
+    @property
+    def OwnerPhone(self):
+        """处理人手机号
+        :rtype: str
+        """
+        return self._OwnerPhone
+
+    @OwnerPhone.setter
+    def OwnerPhone(self, OwnerPhone):
+        self._OwnerPhone = OwnerPhone
 
     @property
     def FinishTime(self):
@@ -8004,6 +8018,7 @@ class OrderStep(AbstractModel):
     def _deserialize(self, params):
         self._StepName = params.get("StepName")
         self._OwnerName = params.get("OwnerName")
+        self._OwnerPhone = params.get("OwnerPhone")
         self._FinishTime = params.get("FinishTime")
         self._StepStatus = params.get("StepStatus")
         memeber_set = set(params.keys())

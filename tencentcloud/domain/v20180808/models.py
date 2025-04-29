@@ -5658,13 +5658,28 @@ class DescribePreReleaseListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Keywords: 关键词
+        :param _Keywords: 单独使用Keywords：使用域名关键词进行搜索
+Keywords+DomainStart（true）：使用域名开头关键词进行搜索
+Keywords+DomainEnd（true）：使用域名结尾关键词进行搜索
+Keywords+DomainStart（true）+DomainEnd（true）：使用域名开头或结尾关键词进行搜索
         :type Keywords: str
-        :param _DomainStart: 搜索关键字，开头
+        :param _DomainStart: 是否以域名开头关键词进行搜索
+true：是
+false：否
         :type DomainStart: bool
-        :param _DomainEnd: 搜索关键字结尾
+        :param _DomainEnd: 是否以域名结尾关键词进行搜索
+true：是
+false：否
         :type DomainEnd: bool
-        :param _Sort: 排序
+        :param _Sort: 不同排序规则：
+1： 价格升序
+2： 价格降序
+3： 域名升序
+4： 结束时间升序
+5： 店铺推荐升序
+6： 结束时间降序
+15:  创建时间升序
+其他：结束时间升序
         :type Sort: int
         :param _PriceStart: 起始价格
         :type PriceStart: float
@@ -5674,33 +5689,159 @@ class DescribePreReleaseListRequest(AbstractModel):
         :type LengthStart: int
         :param _LengthEnd: 结束域名长度
         :type LengthEnd: int
-        :param _PageNumber: 页码
+        :param _PageNumber: 页码（默认为1）
         :type PageNumber: int
-        :param _PageSize: 每页显示数
+        :param _PageSize: 每页显示数（默认为20）
         :type PageSize: int
         :param _Suffix: 后缀
+1="com"
+2="net"
+4="biz"
+6="info"
+7="co"
+9="cn"
+10="com.cn"
+11="wang"
+12="vip"
+13="cc"
+14="net.cn"
+15="org.cn"
+16="top"
+17="asia"
+18="tv"
+19="club"
+20="shop"
+21 ="中国"
+23="online"
+24="xyz"
+25="网店"
+26="网址"
+27="在线"
+28="ltd"
+29="fans"
+30="ren"
+31="icu"
         :type Suffix: list of int
         :param _ClassOne: 一级分类
+1:"纯数字"
+2:"单数字"
+3:"双数字"
+4:"三数字"
+5:"四数字"
+6:"五数字"
+7:"六数字"
+9:"单字母"
+10:"双字母"
+11:"三字母"
+12:"四字母"
+13:"五字母"
+14:"单拼"
+15:"双拼"
+16:"三拼"
+17:"杂米"
+18:"两杂"
+19:"三杂"
+20:"四杂"
+
         :type ClassOne: int
         :param _ClassTwo: 二级分类
+13:"0开或带4"
+14:"非0开不带4"
+15:"不带0,4"
+0:"非全声母"
+6:"全声母"
+16:"不带0,4"
+32:"全声母"
+5010:"CVCV"
         :type ClassTwo: list of int
         :param _ClassThree: 三级分类
+111:"AAA"
+401:"3A及以上"
+402:"AA结尾"
+1122:"AABB"
+1123:"AABC"
+1212:"ABAB"
+1221:"ABBA"
+1233:"ABCC"
+501:"4A及以上"
+502:"3A及以上"
+503:"AAA开头"
+504:"AAA结尾"
+505:"AA开头"
+506:"AA结尾"
+507:"三顺子开头"
+508:"三顺子结尾"
+11223:"AABBC"
+12233:"ABBCC"
+601:"5A及以上"
+602:"4A及以上"
+603:"3A及以上"
+604:"4A开头"
+605:"4A结尾"
+606:"AAA开头"
+607:"AAA结尾"
+608:"AA开头"
+609:"AA结尾"
+610:"ABAB开头"
+611:"ABAB结尾"
+612:"AABB开头"
+613:"AABB结尾"
+614:"四顺子开头"
+615:"四顺子结尾"
+616:"三顺子开头"
+617:"三顺子结尾"
+121212:"ABABAB"
+112233:"AABBCC"
+123123:"ABCABC"
+211:"LNN"
+221:"LLN"
+121:"NLN"
+212:"LNL"
+122:"NLL"
+1112:"NNNL"
+2111:"LNNN"
+1212:"NLNL"
+2121:"LNLN"
+1222:"NLLL"
+2221:"LLLN"
+1122:"NNLL"
+2211:"LLNN"
+31:"W结尾"
+112:"AAB"
+122:"ABB"
+121:"ABA"
+41:"W结尾"
+1112:"AAAB"
+1222:"ABBB"
+1122:"AABB"
+1212:"ABAB"
         :type ClassThree: list of int
         :param _ClassFour: 四级分类
+1:"仅含2种数字"
+1:"仅含2种数字"
+2:"仅含3种数字"
+4:"仅含1种字母"
+8:"仅含1种数字"
+
         :type ClassFour: list of int
-        :param _FilterStart: 排除关键字，开头
+        :param _FilterStart: 是否以域名开头排除关键词进行搜索
         :type FilterStart: bool
-        :param _FilterEnd: 排除关键字，结尾
+        :param _FilterEnd: 是否以域名结尾排除关键词进行搜索
         :type FilterEnd: bool
-        :param _FilterWords: 排除关键字
+        :param _FilterWords: 域名排除关键词
+单独使用FilterWords：使用排除关键词进行搜索
+FilterWords+FilterStart（true）：使用域名开头排除关键词进行搜索
+FilterWords+FilterEnd（true）：使用域名结尾排除关键词进行搜索
+FilterWords+FilterStart（true）+FilterEnd（true）：使用域名开头或结尾排除关键词进行搜索
         :type FilterWords: str
-        :param _TransType: 交易类型
+        :param _TransType: 交易类型（目前只支持10）
+10: 预释放域名
         :type TransType: int
-        :param _IsTop: 搜索白金域名
+        :param _IsTop: 是否搜索白金域名
         :type IsTop: bool
-        :param _EndTimeSort: 结束时间排序啊 desc:倒序 asc:正序
+        :param _EndTimeSort: 结束时间排序 desc:倒序 asc:正序
         :type EndTimeSort: str
-        :param _EndTime: 结束时间
+        :param _EndTime: 结束时间（YYYY-MM-DD）
         :type EndTime: str
         """
         self._Keywords = None
@@ -5728,7 +5869,10 @@ class DescribePreReleaseListRequest(AbstractModel):
 
     @property
     def Keywords(self):
-        """关键词
+        """单独使用Keywords：使用域名关键词进行搜索
+Keywords+DomainStart（true）：使用域名开头关键词进行搜索
+Keywords+DomainEnd（true）：使用域名结尾关键词进行搜索
+Keywords+DomainStart（true）+DomainEnd（true）：使用域名开头或结尾关键词进行搜索
         :rtype: str
         """
         return self._Keywords
@@ -5739,7 +5883,9 @@ class DescribePreReleaseListRequest(AbstractModel):
 
     @property
     def DomainStart(self):
-        """搜索关键字，开头
+        """是否以域名开头关键词进行搜索
+true：是
+false：否
         :rtype: bool
         """
         return self._DomainStart
@@ -5750,7 +5896,9 @@ class DescribePreReleaseListRequest(AbstractModel):
 
     @property
     def DomainEnd(self):
-        """搜索关键字结尾
+        """是否以域名结尾关键词进行搜索
+true：是
+false：否
         :rtype: bool
         """
         return self._DomainEnd
@@ -5761,7 +5909,15 @@ class DescribePreReleaseListRequest(AbstractModel):
 
     @property
     def Sort(self):
-        """排序
+        """不同排序规则：
+1： 价格升序
+2： 价格降序
+3： 域名升序
+4： 结束时间升序
+5： 店铺推荐升序
+6： 结束时间降序
+15:  创建时间升序
+其他：结束时间升序
         :rtype: int
         """
         return self._Sort
@@ -5816,7 +5972,7 @@ class DescribePreReleaseListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """页码
+        """页码（默认为1）
         :rtype: int
         """
         return self._PageNumber
@@ -5827,7 +5983,7 @@ class DescribePreReleaseListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """每页显示数
+        """每页显示数（默认为20）
         :rtype: int
         """
         return self._PageSize
@@ -5839,6 +5995,33 @@ class DescribePreReleaseListRequest(AbstractModel):
     @property
     def Suffix(self):
         """后缀
+1="com"
+2="net"
+4="biz"
+6="info"
+7="co"
+9="cn"
+10="com.cn"
+11="wang"
+12="vip"
+13="cc"
+14="net.cn"
+15="org.cn"
+16="top"
+17="asia"
+18="tv"
+19="club"
+20="shop"
+21 ="中国"
+23="online"
+24="xyz"
+25="网店"
+26="网址"
+27="在线"
+28="ltd"
+29="fans"
+30="ren"
+31="icu"
         :rtype: list of int
         """
         return self._Suffix
@@ -5850,6 +6033,26 @@ class DescribePreReleaseListRequest(AbstractModel):
     @property
     def ClassOne(self):
         """一级分类
+1:"纯数字"
+2:"单数字"
+3:"双数字"
+4:"三数字"
+5:"四数字"
+6:"五数字"
+7:"六数字"
+9:"单字母"
+10:"双字母"
+11:"三字母"
+12:"四字母"
+13:"五字母"
+14:"单拼"
+15:"双拼"
+16:"三拼"
+17:"杂米"
+18:"两杂"
+19:"三杂"
+20:"四杂"
+
         :rtype: int
         """
         return self._ClassOne
@@ -5861,6 +6064,14 @@ class DescribePreReleaseListRequest(AbstractModel):
     @property
     def ClassTwo(self):
         """二级分类
+13:"0开或带4"
+14:"非0开不带4"
+15:"不带0,4"
+0:"非全声母"
+6:"全声母"
+16:"不带0,4"
+32:"全声母"
+5010:"CVCV"
         :rtype: list of int
         """
         return self._ClassTwo
@@ -5872,6 +6083,66 @@ class DescribePreReleaseListRequest(AbstractModel):
     @property
     def ClassThree(self):
         """三级分类
+111:"AAA"
+401:"3A及以上"
+402:"AA结尾"
+1122:"AABB"
+1123:"AABC"
+1212:"ABAB"
+1221:"ABBA"
+1233:"ABCC"
+501:"4A及以上"
+502:"3A及以上"
+503:"AAA开头"
+504:"AAA结尾"
+505:"AA开头"
+506:"AA结尾"
+507:"三顺子开头"
+508:"三顺子结尾"
+11223:"AABBC"
+12233:"ABBCC"
+601:"5A及以上"
+602:"4A及以上"
+603:"3A及以上"
+604:"4A开头"
+605:"4A结尾"
+606:"AAA开头"
+607:"AAA结尾"
+608:"AA开头"
+609:"AA结尾"
+610:"ABAB开头"
+611:"ABAB结尾"
+612:"AABB开头"
+613:"AABB结尾"
+614:"四顺子开头"
+615:"四顺子结尾"
+616:"三顺子开头"
+617:"三顺子结尾"
+121212:"ABABAB"
+112233:"AABBCC"
+123123:"ABCABC"
+211:"LNN"
+221:"LLN"
+121:"NLN"
+212:"LNL"
+122:"NLL"
+1112:"NNNL"
+2111:"LNNN"
+1212:"NLNL"
+2121:"LNLN"
+1222:"NLLL"
+2221:"LLLN"
+1122:"NNLL"
+2211:"LLNN"
+31:"W结尾"
+112:"AAB"
+122:"ABB"
+121:"ABA"
+41:"W结尾"
+1112:"AAAB"
+1222:"ABBB"
+1122:"AABB"
+1212:"ABAB"
         :rtype: list of int
         """
         return self._ClassThree
@@ -5883,6 +6154,12 @@ class DescribePreReleaseListRequest(AbstractModel):
     @property
     def ClassFour(self):
         """四级分类
+1:"仅含2种数字"
+1:"仅含2种数字"
+2:"仅含3种数字"
+4:"仅含1种字母"
+8:"仅含1种数字"
+
         :rtype: list of int
         """
         return self._ClassFour
@@ -5893,7 +6170,7 @@ class DescribePreReleaseListRequest(AbstractModel):
 
     @property
     def FilterStart(self):
-        """排除关键字，开头
+        """是否以域名开头排除关键词进行搜索
         :rtype: bool
         """
         return self._FilterStart
@@ -5904,7 +6181,7 @@ class DescribePreReleaseListRequest(AbstractModel):
 
     @property
     def FilterEnd(self):
-        """排除关键字，结尾
+        """是否以域名结尾排除关键词进行搜索
         :rtype: bool
         """
         return self._FilterEnd
@@ -5915,7 +6192,11 @@ class DescribePreReleaseListRequest(AbstractModel):
 
     @property
     def FilterWords(self):
-        """排除关键字
+        """域名排除关键词
+单独使用FilterWords：使用排除关键词进行搜索
+FilterWords+FilterStart（true）：使用域名开头排除关键词进行搜索
+FilterWords+FilterEnd（true）：使用域名结尾排除关键词进行搜索
+FilterWords+FilterStart（true）+FilterEnd（true）：使用域名开头或结尾排除关键词进行搜索
         :rtype: str
         """
         return self._FilterWords
@@ -5926,7 +6207,8 @@ class DescribePreReleaseListRequest(AbstractModel):
 
     @property
     def TransType(self):
-        """交易类型
+        """交易类型（目前只支持10）
+10: 预释放域名
         :rtype: int
         """
         return self._TransType
@@ -5937,7 +6219,7 @@ class DescribePreReleaseListRequest(AbstractModel):
 
     @property
     def IsTop(self):
-        """搜索白金域名
+        """是否搜索白金域名
         :rtype: bool
         """
         return self._IsTop
@@ -5948,7 +6230,7 @@ class DescribePreReleaseListRequest(AbstractModel):
 
     @property
     def EndTimeSort(self):
-        """结束时间排序啊 desc:倒序 asc:正序
+        """结束时间排序 desc:倒序 asc:正序
         :rtype: str
         """
         return self._EndTimeSort
@@ -5959,7 +6241,7 @@ class DescribePreReleaseListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间
+        """结束时间（YYYY-MM-DD）
         :rtype: str
         """
         return self._EndTime
@@ -6581,14 +6863,16 @@ class DescribeTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: 模板ID(模板列表接口可获取)
+        :param _TemplateId: 模板ID
+通过DescribeTemplateList接口获取:https://cloud.tencent.com/document/api/242/48940
         :type TemplateId: str
         """
         self._TemplateId = None
 
     @property
     def TemplateId(self):
-        """模板ID(模板列表接口可获取)
+        """模板ID
+通过DescribeTemplateList接口获取:https://cloud.tencent.com/document/api/242/48940
         :rtype: str
         """
         return self._TemplateId
@@ -8970,23 +9254,29 @@ class PreReleaseInfo(AbstractModel):
         r"""
         :param _Domain: 域名
         :type Domain: str
-        :param _ReservationTime: 预订倒计时
+        :param _ReservationTime: 预订倒计时(YYYY-MM-DD hh:mm:ss)
         :type ReservationTime: str
-        :param _RegTime: 域名注册时间
+        :param _RegTime: 域名注册时间(YYYY-MM-DD hh:mm:ss)
         :type RegTime: str
-        :param _DelTime: 域名删除时间
+        :param _DelTime: 域名删除时间(YYYY-MM-DD hh:mm:ss)
         :type DelTime: str
         :param _CurrentPeople: 当前人数
         :type CurrentPeople: int
         :param _Price: 当前价格
         :type Price: float
         :param _IsFollow: 是否收藏
+true：收藏
+false：未收藏
         :type IsFollow: bool
         :param _IsAppoint: 是否已经预约
+true：预约
+false：未预约
         :type IsAppoint: bool
         :param _BusinessId: 业务ID
         :type BusinessId: str
         :param _IsDomainUser: 是否为原持有者
+true：是原持有人
+false：非原持有人
         :type IsDomainUser: bool
         """
         self._Domain = None
@@ -9013,7 +9303,7 @@ class PreReleaseInfo(AbstractModel):
 
     @property
     def ReservationTime(self):
-        """预订倒计时
+        """预订倒计时(YYYY-MM-DD hh:mm:ss)
         :rtype: str
         """
         return self._ReservationTime
@@ -9024,7 +9314,7 @@ class PreReleaseInfo(AbstractModel):
 
     @property
     def RegTime(self):
-        """域名注册时间
+        """域名注册时间(YYYY-MM-DD hh:mm:ss)
         :rtype: str
         """
         return self._RegTime
@@ -9035,7 +9325,7 @@ class PreReleaseInfo(AbstractModel):
 
     @property
     def DelTime(self):
-        """域名删除时间
+        """域名删除时间(YYYY-MM-DD hh:mm:ss)
         :rtype: str
         """
         return self._DelTime
@@ -9069,6 +9359,8 @@ class PreReleaseInfo(AbstractModel):
     @property
     def IsFollow(self):
         """是否收藏
+true：收藏
+false：未收藏
         :rtype: bool
         """
         return self._IsFollow
@@ -9080,6 +9372,8 @@ class PreReleaseInfo(AbstractModel):
     @property
     def IsAppoint(self):
         """是否已经预约
+true：预约
+false：未预约
         :rtype: bool
         """
         return self._IsAppoint
@@ -9102,6 +9396,8 @@ class PreReleaseInfo(AbstractModel):
     @property
     def IsDomainUser(self):
         """是否为原持有者
+true：是原持有人
+false：非原持有人
         :rtype: bool
         """
         return self._IsDomainUser

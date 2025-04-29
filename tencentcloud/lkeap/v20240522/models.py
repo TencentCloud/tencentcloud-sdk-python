@@ -244,12 +244,15 @@ class ChatCompletionsRequest(AbstractModel):
         :type Temperature: float
         :param _MaxTokens: 最大生成的token数量，默认为4096，最大可设置为16384
         :type MaxTokens: int
+        :param _EnableSearch: 是否启用联网搜索
+        :type EnableSearch: bool
         """
         self._Model = None
         self._Messages = None
         self._Stream = None
         self._Temperature = None
         self._MaxTokens = None
+        self._EnableSearch = None
 
     @property
     def Model(self):
@@ -311,6 +314,17 @@ class ChatCompletionsRequest(AbstractModel):
     def MaxTokens(self, MaxTokens):
         self._MaxTokens = MaxTokens
 
+    @property
+    def EnableSearch(self):
+        """是否启用联网搜索
+        :rtype: bool
+        """
+        return self._EnableSearch
+
+    @EnableSearch.setter
+    def EnableSearch(self, EnableSearch):
+        self._EnableSearch = EnableSearch
+
 
     def _deserialize(self, params):
         self._Model = params.get("Model")
@@ -323,6 +337,7 @@ class ChatCompletionsRequest(AbstractModel):
         self._Stream = params.get("Stream")
         self._Temperature = params.get("Temperature")
         self._MaxTokens = params.get("MaxTokens")
+        self._EnableSearch = params.get("EnableSearch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2163,10 +2178,16 @@ class DocumentUsage(AbstractModel):
         :type TotalToken: int
         :param _TotalTokens: 文档拆分任务消耗的总token数
         :type TotalTokens: int
+        :param _SplitTokens: 拆分消耗的token数
+        :type SplitTokens: int
+        :param _MllmTokens: mllm消耗的token数
+        :type MllmTokens: int
         """
         self._PageNumber = None
         self._TotalToken = None
         self._TotalTokens = None
+        self._SplitTokens = None
+        self._MllmTokens = None
 
     @property
     def PageNumber(self):
@@ -2205,11 +2226,35 @@ class DocumentUsage(AbstractModel):
     def TotalTokens(self, TotalTokens):
         self._TotalTokens = TotalTokens
 
+    @property
+    def SplitTokens(self):
+        """拆分消耗的token数
+        :rtype: int
+        """
+        return self._SplitTokens
+
+    @SplitTokens.setter
+    def SplitTokens(self, SplitTokens):
+        self._SplitTokens = SplitTokens
+
+    @property
+    def MllmTokens(self):
+        """mllm消耗的token数
+        :rtype: int
+        """
+        return self._MllmTokens
+
+    @MllmTokens.setter
+    def MllmTokens(self, MllmTokens):
+        self._MllmTokens = MllmTokens
+
 
     def _deserialize(self, params):
         self._PageNumber = params.get("PageNumber")
         self._TotalToken = params.get("TotalToken")
         self._TotalTokens = params.get("TotalTokens")
+        self._SplitTokens = params.get("SplitTokens")
+        self._MllmTokens = params.get("MllmTokens")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3290,10 +3335,13 @@ class Message(AbstractModel):
         :param _ReasoningContent: 思维链内容。
 ReasoningConent参数仅支持出参，且只有deepseek-r1模型会返回。
         :type ReasoningContent: str
+        :param _SearchResults: 搜索结果
+        :type SearchResults: list of SearchResult
         """
         self._Role = None
         self._Content = None
         self._ReasoningContent = None
+        self._SearchResults = None
 
     @property
     def Role(self):
@@ -3329,11 +3377,28 @@ ReasoningConent参数仅支持出参，且只有deepseek-r1模型会返回。
     def ReasoningContent(self, ReasoningContent):
         self._ReasoningContent = ReasoningContent
 
+    @property
+    def SearchResults(self):
+        """搜索结果
+        :rtype: list of SearchResult
+        """
+        return self._SearchResults
+
+    @SearchResults.setter
+    def SearchResults(self, SearchResults):
+        self._SearchResults = SearchResults
+
 
     def _deserialize(self, params):
         self._Role = params.get("Role")
         self._Content = params.get("Content")
         self._ReasoningContent = params.get("ReasoningContent")
+        if params.get("SearchResults") is not None:
+            self._SearchResults = []
+            for item in params.get("SearchResults"):
+                obj = SearchResult()
+                obj._deserialize(item)
+                self._SearchResults.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4757,6 +4822,132 @@ class RunRerankResponse(AbstractModel):
             self._Usage = Usage()
             self._Usage._deserialize(params.get("Usage"))
         self._RequestId = params.get("RequestId")
+
+
+class SearchResult(AbstractModel):
+    """搜索结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Index: 索引
+        :type Index: int
+        :param _Url: 链接地址
+        :type Url: str
+        :param _Name: 标题
+        :type Name: str
+        :param _Snippet: 摘要
+        :type Snippet: str
+        :param _Icon: 图标
+        :type Icon: str
+        :param _Site: 站点
+        :type Site: str
+        :param _PublishedTime: 1740412800
+        :type PublishedTime: int
+        """
+        self._Index = None
+        self._Url = None
+        self._Name = None
+        self._Snippet = None
+        self._Icon = None
+        self._Site = None
+        self._PublishedTime = None
+
+    @property
+    def Index(self):
+        """索引
+        :rtype: int
+        """
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+    @property
+    def Url(self):
+        """链接地址
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Name(self):
+        """标题
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Snippet(self):
+        """摘要
+        :rtype: str
+        """
+        return self._Snippet
+
+    @Snippet.setter
+    def Snippet(self, Snippet):
+        self._Snippet = Snippet
+
+    @property
+    def Icon(self):
+        """图标
+        :rtype: str
+        """
+        return self._Icon
+
+    @Icon.setter
+    def Icon(self, Icon):
+        self._Icon = Icon
+
+    @property
+    def Site(self):
+        """站点
+        :rtype: str
+        """
+        return self._Site
+
+    @Site.setter
+    def Site(self, Site):
+        self._Site = Site
+
+    @property
+    def PublishedTime(self):
+        """1740412800
+        :rtype: int
+        """
+        return self._PublishedTime
+
+    @PublishedTime.setter
+    def PublishedTime(self, PublishedTime):
+        self._PublishedTime = PublishedTime
+
+
+    def _deserialize(self, params):
+        self._Index = params.get("Index")
+        self._Url = params.get("Url")
+        self._Name = params.get("Name")
+        self._Snippet = params.get("Snippet")
+        self._Icon = params.get("Icon")
+        self._Site = params.get("Site")
+        self._PublishedTime = params.get("PublishedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SegmentationConfig(AbstractModel):

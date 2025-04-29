@@ -1520,6 +1520,8 @@ class BankCardOCRResponse(AbstractModel):
         :param _QualityValue: 图片质量分数，请求EnableQualityValue时返回（取值范围：0-100，分数越低越模糊，建议阈值≥50）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type QualityValue: int
+        :param _CardCategory: 卡类别， 如： 标准实体银行卡、电子银行卡信息截图
+        :type CardCategory: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1532,6 +1534,7 @@ class BankCardOCRResponse(AbstractModel):
         self._CardNoImage = None
         self._WarningCode = None
         self._QualityValue = None
+        self._CardCategory = None
         self._RequestId = None
 
     @property
@@ -1644,6 +1647,17 @@ class BankCardOCRResponse(AbstractModel):
         self._QualityValue = QualityValue
 
     @property
+    def CardCategory(self):
+        """卡类别， 如： 标准实体银行卡、电子银行卡信息截图
+        :rtype: str
+        """
+        return self._CardCategory
+
+    @CardCategory.setter
+    def CardCategory(self, CardCategory):
+        self._CardCategory = CardCategory
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -1665,6 +1679,7 @@ class BankCardOCRResponse(AbstractModel):
         self._CardNoImage = params.get("CardNoImage")
         self._WarningCode = params.get("WarningCode")
         self._QualityValue = params.get("QualityValue")
+        self._CardCategory = params.get("CardCategory")
         self._RequestId = params.get("RequestId")
 
 

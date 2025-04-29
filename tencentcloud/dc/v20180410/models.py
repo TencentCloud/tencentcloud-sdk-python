@@ -25,14 +25,14 @@ class AcceptDirectConnectTunnelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DirectConnectTunnelId: 专用通道ID。可以通过[DescribeDirectConnectTunnel](https://cloud.tencent.com/document/product/216/19819)接口获取。
+        :param _DirectConnectTunnelId: 专用通道ID。可以通过[DescribeDirectConnectTunnels](https://cloud.tencent.com/document/product/216/19819)接口获取。
         :type DirectConnectTunnelId: str
         """
         self._DirectConnectTunnelId = None
 
     @property
     def DirectConnectTunnelId(self):
-        """专用通道ID。可以通过[DescribeDirectConnectTunnel](https://cloud.tencent.com/document/product/216/19819)接口获取。
+        """专用通道ID。可以通过[DescribeDirectConnectTunnels](https://cloud.tencent.com/document/product/216/19819)接口获取。
         :rtype: str
         """
         return self._DirectConnectTunnelId
@@ -532,7 +532,7 @@ class BgpPeer(AbstractModel):
     def __init__(self):
         r"""
         :param _CloudAsn: 腾讯侧BGP ASN
-        :type CloudAsn: str
+        :type CloudAsn: int
         :param _Asn: 用户侧BGP ASN
         :type Asn: int
         :param _AuthKey: 用户侧BGP密钥
@@ -545,7 +545,7 @@ class BgpPeer(AbstractModel):
     @property
     def CloudAsn(self):
         """腾讯侧BGP ASN
-        :rtype: str
+        :rtype: int
         """
         return self._CloudAsn
 
@@ -1199,7 +1199,7 @@ class CreateDirectConnectRequest(AbstractModel):
         :param _DirectConnectName: 物理专线的名称。
         :type DirectConnectName: str
         :param _AccessPointId: 物理专线所在的接入点。
-您可以通过调用 DescribeAccessPoints接口获取地域ID。所选择的接入点必须存在且处于可接入的状态。
+您可以通过调用[DescribeAccessPoints](https://cloud.tencent.com/document/product/216/34827)接口获取接入点ID。
         :type AccessPointId: str
         :param _LineOperator: 提供接入物理专线的运营商。
 ChinaTelecom：中国电信； 
@@ -1278,7 +1278,7 @@ ChinaOther：中国其他；
     @property
     def AccessPointId(self):
         """物理专线所在的接入点。
-您可以通过调用 DescribeAccessPoints接口获取地域ID。所选择的接入点必须存在且处于可接入的状态。
+您可以通过调用[DescribeAccessPoints](https://cloud.tencent.com/document/product/216/34827)接口获取接入点ID。
         :rtype: str
         """
         return self._AccessPointId
@@ -2086,8 +2086,7 @@ class DescribeAccessPointsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RegionId: 接入点所在的地域。使用DescribeRegions查询。
-您可以通过调用 DescribeRegions接口获取地域ID。
+        :param _RegionId: 接入点所在的地域。你可以通过调用[DescribeRegions](https://cloud.tencent.com/document/product/1596/77930)接口获取地域ID。
         :type RegionId: str
         :param _Offset: 偏移量，默认为0。
         :type Offset: int
@@ -2103,8 +2102,7 @@ class DescribeAccessPointsRequest(AbstractModel):
 
     @property
     def RegionId(self):
-        """接入点所在的地域。使用DescribeRegions查询。
-您可以通过调用 DescribeRegions接口获取地域ID。
+        """接入点所在的地域。你可以通过调用[DescribeRegions](https://cloud.tencent.com/document/product/1596/77930)接口获取地域ID。
         :rtype: str
         """
         return self._RegionId
@@ -2475,7 +2473,7 @@ class DescribeDirectConnectsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: 过滤条件。
+        :param _Filters: 过滤条件。direct-connect-id：物理专线ID，states：物理专线状态（AVAILABLE-就绪，PENDING-申请中，REJECTED-申请被拒绝，PENDINGPAY-待付款，PAID-付款完成，BUILDING-建设中，STOPED-建设终止，DELETED-删除完成）。
         :type Filters: list of Filter
         :param _DirectConnectIds: 物理专线 ID数组。
         :type DirectConnectIds: list of str
@@ -2491,7 +2489,7 @@ class DescribeDirectConnectsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤条件。
+        """过滤条件。direct-connect-id：物理专线ID，states：物理专线状态（AVAILABLE-就绪，PENDING-申请中，REJECTED-申请被拒绝，PENDINGPAY-待付款，PAID-付款完成，BUILDING-建设中，STOPED-建设终止，DELETED-删除完成）。
         :rtype: list of Filter
         """
         return self._Filters
@@ -3180,6 +3178,8 @@ class DirectConnect(AbstractModel):
         :type Construct: int
         :param _AccessPointName: 物理专线的接入点名称
         :type AccessPointName: str
+        :param _IsThreeArch: 是否三层架构
+        :type IsThreeArch: bool
         """
         self._DirectConnectId = None
         self._DirectConnectName = None
@@ -3215,6 +3215,7 @@ class DirectConnect(AbstractModel):
         self._MinBandwidth = None
         self._Construct = None
         self._AccessPointName = None
+        self._IsThreeArch = None
 
     @property
     def DirectConnectId(self):
@@ -3598,6 +3599,17 @@ class DirectConnect(AbstractModel):
     def AccessPointName(self, AccessPointName):
         self._AccessPointName = AccessPointName
 
+    @property
+    def IsThreeArch(self):
+        """是否三层架构
+        :rtype: bool
+        """
+        return self._IsThreeArch
+
+    @IsThreeArch.setter
+    def IsThreeArch(self, IsThreeArch):
+        self._IsThreeArch = IsThreeArch
+
 
     def _deserialize(self, params):
         self._DirectConnectId = params.get("DirectConnectId")
@@ -3639,6 +3651,7 @@ class DirectConnect(AbstractModel):
         self._MinBandwidth = params.get("MinBandwidth")
         self._Construct = params.get("Construct")
         self._AccessPointName = params.get("AccessPointName")
+        self._IsThreeArch = params.get("IsThreeArch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

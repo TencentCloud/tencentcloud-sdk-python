@@ -113,6 +113,12 @@ class AgentProcedure(AbstractModel):
         :param _ReplyIndex: 用于展示思考放在哪个回复气泡中
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReplyIndex: int
+        :param _SourceAgentName: 主agent
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceAgentName: str
+        :param _TargetAgentName: 挂号agent
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetAgentName: str
         """
         self._Index = None
         self._Name = None
@@ -125,6 +131,8 @@ class AgentProcedure(AbstractModel):
         self._Elapsed = None
         self._NodeName = None
         self._ReplyIndex = None
+        self._SourceAgentName = None
+        self._TargetAgentName = None
 
     @property
     def Index(self):
@@ -258,6 +266,30 @@ class AgentProcedure(AbstractModel):
     def ReplyIndex(self, ReplyIndex):
         self._ReplyIndex = ReplyIndex
 
+    @property
+    def SourceAgentName(self):
+        """主agent
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SourceAgentName
+
+    @SourceAgentName.setter
+    def SourceAgentName(self, SourceAgentName):
+        self._SourceAgentName = SourceAgentName
+
+    @property
+    def TargetAgentName(self):
+        """挂号agent
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetAgentName
+
+    @TargetAgentName.setter
+    def TargetAgentName(self, TargetAgentName):
+        self._TargetAgentName = TargetAgentName
+
 
     def _deserialize(self, params):
         self._Index = params.get("Index")
@@ -273,6 +305,8 @@ class AgentProcedure(AbstractModel):
         self._Elapsed = params.get("Elapsed")
         self._NodeName = params.get("NodeName")
         self._ReplyIndex = params.get("ReplyIndex")
+        self._SourceAgentName = params.get("SourceAgentName")
+        self._TargetAgentName = params.get("TargetAgentName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11660,13 +11694,13 @@ class GetMsgRecordRequest(AbstractModel):
         r"""
         :param _Type: 类型
         :type Type: int
-        :param _Count: 数量
+        :param _Count: 数量,  数量需大于2
         :type Count: int
         :param _SessionId: 会话sessionid
         :type SessionId: str
         :param _LastRecordId: 最后一条记录ID
         :type LastRecordId: str
-        :param _BotAppKey: 应用AppKey, 当Type=5[API访客]时, 该字段必填
+        :param _BotAppKey: 应用AppKey, 当Type=5[API访客]时, 该字段必填  :</br>  获取方式:</br>   1、应用发布后在应用页面[发布管理]-[调用信息]-[API管理]处获取</br>   2、参考 https://cloud.tencent.com/document/product/1759/109469 第二项
         :type BotAppKey: str
         :param _Scene: 场景, 体验: 1; 正式: 2
         :type Scene: int
@@ -11694,7 +11728,7 @@ class GetMsgRecordRequest(AbstractModel):
 
     @property
     def Count(self):
-        """数量
+        """数量,  数量需大于2
         :rtype: int
         """
         return self._Count
@@ -11727,7 +11761,7 @@ class GetMsgRecordRequest(AbstractModel):
 
     @property
     def BotAppKey(self):
-        """应用AppKey, 当Type=5[API访客]时, 该字段必填
+        """应用AppKey, 当Type=5[API访客]时, 该字段必填  :</br>  获取方式:</br>   1、应用发布后在应用页面[发布管理]-[调用信息]-[API管理]处获取</br>   2、参考 https://cloud.tencent.com/document/product/1759/109469 第二项
         :rtype: str
         """
         return self._BotAppKey
@@ -18779,6 +18813,10 @@ class ModelInfo(AbstractModel):
         :type SupportWorkflowStatus: int
         :param _ModelCategory: 模型类别 generate：生成模型，thought：思考模型
         :type ModelCategory: str
+        :param _IsDefault: 是否默认模型
+        :type IsDefault: bool
+        :param _RoleLenLimit: 角色提示词输入长度限制
+        :type RoleLenLimit: int
         """
         self._ModelName = None
         self._ModelDesc = None
@@ -18794,6 +18832,8 @@ class ModelInfo(AbstractModel):
         self._InputLenLimit = None
         self._SupportWorkflowStatus = None
         self._ModelCategory = None
+        self._IsDefault = None
+        self._RoleLenLimit = None
 
     @property
     def ModelName(self):
@@ -18959,6 +18999,28 @@ class ModelInfo(AbstractModel):
     def ModelCategory(self, ModelCategory):
         self._ModelCategory = ModelCategory
 
+    @property
+    def IsDefault(self):
+        """是否默认模型
+        :rtype: bool
+        """
+        return self._IsDefault
+
+    @IsDefault.setter
+    def IsDefault(self, IsDefault):
+        self._IsDefault = IsDefault
+
+    @property
+    def RoleLenLimit(self):
+        """角色提示词输入长度限制
+        :rtype: int
+        """
+        return self._RoleLenLimit
+
+    @RoleLenLimit.setter
+    def RoleLenLimit(self, RoleLenLimit):
+        self._RoleLenLimit = RoleLenLimit
+
 
     def _deserialize(self, params):
         self._ModelName = params.get("ModelName")
@@ -18981,6 +19043,8 @@ class ModelInfo(AbstractModel):
         self._InputLenLimit = params.get("InputLenLimit")
         self._SupportWorkflowStatus = params.get("SupportWorkflowStatus")
         self._ModelCategory = params.get("ModelCategory")
+        self._IsDefault = params.get("IsDefault")
+        self._RoleLenLimit = params.get("RoleLenLimit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

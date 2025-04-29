@@ -32118,6 +32118,8 @@ class ScanTaskResult(AbstractModel):
         :type ResultDescription: str
         :param _Suggestion: 结果建议
         :type Suggestion: str
+        :param _Progress: 扫描进度
+        :type Progress: float
         """
         self._Id = None
         self._EndTime = None
@@ -32125,6 +32127,7 @@ class ScanTaskResult(AbstractModel):
         self._Result = None
         self._ResultDescription = None
         self._Suggestion = None
+        self._Progress = None
 
     @property
     def Id(self):
@@ -32192,6 +32195,17 @@ class ScanTaskResult(AbstractModel):
     def Suggestion(self, Suggestion):
         self._Suggestion = Suggestion
 
+    @property
+    def Progress(self):
+        """扫描进度
+        :rtype: float
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -32200,6 +32214,7 @@ class ScanTaskResult(AbstractModel):
         self._Result = params.get("Result")
         self._ResultDescription = params.get("ResultDescription")
         self._Suggestion = params.get("Suggestion")
+        self._Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

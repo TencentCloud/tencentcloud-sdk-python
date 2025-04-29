@@ -11983,14 +11983,11 @@ class ModifyConsumerGroupPasswordRequest(AbstractModel):
         :type ConsumerGroupName: str
         :param _NewPassword: 新密码。字符长度不小于3，不大于32
         :type NewPassword: str
-        :param _OldPassword: 旧密码，非必选
-        :type OldPassword: str
         """
         self._SubscribeId = None
         self._AccountName = None
         self._ConsumerGroupName = None
         self._NewPassword = None
-        self._OldPassword = None
 
     @property
     def SubscribeId(self):
@@ -12036,24 +12033,12 @@ class ModifyConsumerGroupPasswordRequest(AbstractModel):
     def NewPassword(self, NewPassword):
         self._NewPassword = NewPassword
 
-    @property
-    def OldPassword(self):
-        """旧密码，非必选
-        :rtype: str
-        """
-        return self._OldPassword
-
-    @OldPassword.setter
-    def OldPassword(self, OldPassword):
-        self._OldPassword = OldPassword
-
 
     def _deserialize(self, params):
         self._SubscribeId = params.get("SubscribeId")
         self._AccountName = params.get("AccountName")
         self._ConsumerGroupName = params.get("ConsumerGroupName")
         self._NewPassword = params.get("NewPassword")
-        self._OldPassword = params.get("OldPassword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

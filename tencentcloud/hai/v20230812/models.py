@@ -180,6 +180,115 @@ class ApplicationInfo(AbstractModel):
         
 
 
+class CreateApplicationRequest(AbstractModel):
+    """CreateApplication请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 需要制作自定义应用的HAI实例ID
+        :type InstanceId: str
+        :param _ApplicationName: 自定义应用的应用名称
+        :type ApplicationName: str
+        :param _ApplicationDescription: 自定义应用的描述
+        :type ApplicationDescription: str
+        """
+        self._InstanceId = None
+        self._ApplicationName = None
+        self._ApplicationDescription = None
+
+    @property
+    def InstanceId(self):
+        """需要制作自定义应用的HAI实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ApplicationName(self):
+        """自定义应用的应用名称
+        :rtype: str
+        """
+        return self._ApplicationName
+
+    @ApplicationName.setter
+    def ApplicationName(self, ApplicationName):
+        self._ApplicationName = ApplicationName
+
+    @property
+    def ApplicationDescription(self):
+        """自定义应用的描述
+        :rtype: str
+        """
+        return self._ApplicationDescription
+
+    @ApplicationDescription.setter
+    def ApplicationDescription(self, ApplicationDescription):
+        self._ApplicationDescription = ApplicationDescription
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ApplicationName = params.get("ApplicationName")
+        self._ApplicationDescription = params.get("ApplicationDescription")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateApplicationResponse(AbstractModel):
+    """CreateApplication返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApplicationId: HAI自定义应用ID
+        :type ApplicationId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ApplicationId = None
+        self._RequestId = None
+
+    @property
+    def ApplicationId(self):
+        """HAI自定义应用ID
+        :rtype: str
+        """
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ApplicationId = params.get("ApplicationId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateMuskPromptRequest(AbstractModel):
     """CreateMuskPrompt请求参数结构体
 

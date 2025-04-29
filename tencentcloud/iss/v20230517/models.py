@@ -3185,6 +3185,70 @@ class BaseAIResultInfo(AbstractModel):
         
 
 
+class BatchDeleteVideoDownloadTaskRequest(AbstractModel):
+    """BatchDeleteVideoDownloadTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DownloadTaskIds: 本地录像下载任务 ID 列表
+        :type DownloadTaskIds: list of str
+        """
+        self._DownloadTaskIds = None
+
+    @property
+    def DownloadTaskIds(self):
+        """本地录像下载任务 ID 列表
+        :rtype: list of str
+        """
+        return self._DownloadTaskIds
+
+    @DownloadTaskIds.setter
+    def DownloadTaskIds(self, DownloadTaskIds):
+        self._DownloadTaskIds = DownloadTaskIds
+
+
+    def _deserialize(self, params):
+        self._DownloadTaskIds = params.get("DownloadTaskIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchDeleteVideoDownloadTaskResponse(AbstractModel):
+    """BatchDeleteVideoDownloadTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class BatchOperateDeviceData(AbstractModel):
     """批量操作设备返回结果
 
@@ -4724,6 +4788,177 @@ class ControlRecordTimelineResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateVideoDownloadTaskRequest(AbstractModel):
+    """CreateVideoDownloadTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChannelId: 通道ID
+        :type ChannelId: str
+        :param _BeginTime: 开始时间
+        :type BeginTime: int
+        :param _EndTime: 结束时间
+        :type EndTime: int
+        :param _Scale: 默认1倍速，支持（1,2,4,8）倍速
+        :type Scale: int
+        :param _Expire: 转码后的mp4文件过期时间（支持7,15,30,60,90,180,365）
+        :type Expire: int
+        :param _FileType: 下载文件格式，当前仅支持（1：mp4）
+        :type FileType: int
+        :param _CompletionPolicy: 完成策略（0：拉流失败但是录像不完整则认为任务失败，不生成 MP4；1：拉流失败但是录像不完整则认为任务成功，生成 mp4）
+        :type CompletionPolicy: int
+        """
+        self._ChannelId = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._Scale = None
+        self._Expire = None
+        self._FileType = None
+        self._CompletionPolicy = None
+
+    @property
+    def ChannelId(self):
+        """通道ID
+        :rtype: str
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def BeginTime(self):
+        """开始时间
+        :rtype: int
+        """
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        """结束时间
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Scale(self):
+        """默认1倍速，支持（1,2,4,8）倍速
+        :rtype: int
+        """
+        return self._Scale
+
+    @Scale.setter
+    def Scale(self, Scale):
+        self._Scale = Scale
+
+    @property
+    def Expire(self):
+        """转码后的mp4文件过期时间（支持7,15,30,60,90,180,365）
+        :rtype: int
+        """
+        return self._Expire
+
+    @Expire.setter
+    def Expire(self, Expire):
+        self._Expire = Expire
+
+    @property
+    def FileType(self):
+        """下载文件格式，当前仅支持（1：mp4）
+        :rtype: int
+        """
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def CompletionPolicy(self):
+        """完成策略（0：拉流失败但是录像不完整则认为任务失败，不生成 MP4；1：拉流失败但是录像不完整则认为任务成功，生成 mp4）
+        :rtype: int
+        """
+        return self._CompletionPolicy
+
+    @CompletionPolicy.setter
+    def CompletionPolicy(self, CompletionPolicy):
+        self._CompletionPolicy = CompletionPolicy
+
+
+    def _deserialize(self, params):
+        self._ChannelId = params.get("ChannelId")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._Scale = params.get("Scale")
+        self._Expire = params.get("Expire")
+        self._FileType = params.get("FileType")
+        self._CompletionPolicy = params.get("CompletionPolicy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateVideoDownloadTaskResponse(AbstractModel):
+    """CreateVideoDownloadTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 下载任务返回结果
+        :type Data: :class:`tencentcloud.iss.v20230517.models.VideoDownloadTaskData`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """下载任务返回结果
+        :rtype: :class:`tencentcloud.iss.v20230517.models.VideoDownloadTaskData`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = VideoDownloadTaskData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteAITaskRequest(AbstractModel):
     """DeleteAITask请求参数结构体
 
@@ -5300,6 +5535,70 @@ class DeleteRecordTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteTaskRequest(AbstractModel):
+    """DeleteTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        """任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteTaskResponse(AbstractModel):
+    """DeleteTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteUserDeviceRequest(AbstractModel):
     """DeleteUserDevice请求参数结构体
 
@@ -5742,6 +6041,47 @@ class DescribeCNAMEResponse(AbstractModel):
     def _deserialize(self, params):
         self._Data = params.get("Data")
         self._RequestId = params.get("RequestId")
+
+
+class DescribeDeviceAddrList(AbstractModel):
+    """查询国标设备地址列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RemoteAddrs: 设备地址列表
+        :type RemoteAddrs: list of RemoteAddrInfo
+        """
+        self._RemoteAddrs = None
+
+    @property
+    def RemoteAddrs(self):
+        """设备地址列表
+        :rtype: list of RemoteAddrInfo
+        """
+        return self._RemoteAddrs
+
+    @RemoteAddrs.setter
+    def RemoteAddrs(self, RemoteAddrs):
+        self._RemoteAddrs = RemoteAddrs
+
+
+    def _deserialize(self, params):
+        if params.get("RemoteAddrs") is not None:
+            self._RemoteAddrs = []
+            for item in params.get("RemoteAddrs"):
+                obj = RemoteAddrInfo()
+                obj._deserialize(item)
+                self._RemoteAddrs.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeDeviceChannelData(AbstractModel):
@@ -7069,6 +7409,87 @@ class DescribeDomainResponse(AbstractModel):
                 obj = DescribeDomainData()
                 obj._deserialize(item)
                 self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeGBDeviceAddrRequest(AbstractModel):
+    """DescribeGBDeviceAddr请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceIds: 设备ID列表
+        :type DeviceIds: list of str
+        """
+        self._DeviceIds = None
+
+    @property
+    def DeviceIds(self):
+        """设备ID列表
+        :rtype: list of str
+        """
+        return self._DeviceIds
+
+    @DeviceIds.setter
+    def DeviceIds(self, DeviceIds):
+        self._DeviceIds = DeviceIds
+
+
+    def _deserialize(self, params):
+        self._DeviceIds = params.get("DeviceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGBDeviceAddrResponse(AbstractModel):
+    """DescribeGBDeviceAddr返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 无
+        :type Data: :class:`tencentcloud.iss.v20230517.models.DescribeDeviceAddrList`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """无
+        :rtype: :class:`tencentcloud.iss.v20230517.models.DescribeDeviceAddrList`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DescribeDeviceAddrList()
+            self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 
 
@@ -14090,6 +14511,267 @@ class ListTasksResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ListVideoDownloadTaskData(AbstractModel):
+    """本地录像下载任务列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: 任务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of VideoDownloadTask
+        :param _TotalCount: 任务总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        """
+        self._List = None
+        self._TotalCount = None
+
+    @property
+    def List(self):
+        """任务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of VideoDownloadTask
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def TotalCount(self):
+        """任务总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = VideoDownloadTask()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListVideoDownloadTaskRequest(AbstractModel):
+    """ListVideoDownloadTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceName: 设备名称，用于模糊搜索
+        :type DeviceName: str
+        :param _ChannelName: 通道名称，用于模糊搜索
+        :type ChannelName: str
+        :param _Status: 任务状态（0：准备中，1：执行中，2：已完成，3：失败）
+        :type Status: int
+        :param _SortRule: 排序规则（仅支持 StartTime，EndTime，倒序为-StartTime，-EndTime）
+        :type SortRule: str
+        :param _WithPreviewUrl: 响应是否携带预览地址(0:不携带；1:携带)
+        :type WithPreviewUrl: int
+        :param _PageNumber: 分页页数
+        :type PageNumber: int
+        :param _PageSize: 分页大小
+        :type PageSize: int
+        :param _DownloadTaskId: 下载任务 ID
+        :type DownloadTaskId: str
+        :param _UrlExpires: 下载地址过期时间，单位秒，最大为 1 天， 86400秒
+        :type UrlExpires: int
+        """
+        self._DeviceName = None
+        self._ChannelName = None
+        self._Status = None
+        self._SortRule = None
+        self._WithPreviewUrl = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._DownloadTaskId = None
+        self._UrlExpires = None
+
+    @property
+    def DeviceName(self):
+        """设备名称，用于模糊搜索
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def ChannelName(self):
+        """通道名称，用于模糊搜索
+        :rtype: str
+        """
+        return self._ChannelName
+
+    @ChannelName.setter
+    def ChannelName(self, ChannelName):
+        self._ChannelName = ChannelName
+
+    @property
+    def Status(self):
+        """任务状态（0：准备中，1：执行中，2：已完成，3：失败）
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def SortRule(self):
+        """排序规则（仅支持 StartTime，EndTime，倒序为-StartTime，-EndTime）
+        :rtype: str
+        """
+        return self._SortRule
+
+    @SortRule.setter
+    def SortRule(self, SortRule):
+        self._SortRule = SortRule
+
+    @property
+    def WithPreviewUrl(self):
+        """响应是否携带预览地址(0:不携带；1:携带)
+        :rtype: int
+        """
+        return self._WithPreviewUrl
+
+    @WithPreviewUrl.setter
+    def WithPreviewUrl(self, WithPreviewUrl):
+        self._WithPreviewUrl = WithPreviewUrl
+
+    @property
+    def PageNumber(self):
+        """分页页数
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        """分页大小
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def DownloadTaskId(self):
+        """下载任务 ID
+        :rtype: str
+        """
+        return self._DownloadTaskId
+
+    @DownloadTaskId.setter
+    def DownloadTaskId(self, DownloadTaskId):
+        self._DownloadTaskId = DownloadTaskId
+
+    @property
+    def UrlExpires(self):
+        """下载地址过期时间，单位秒，最大为 1 天， 86400秒
+        :rtype: int
+        """
+        return self._UrlExpires
+
+    @UrlExpires.setter
+    def UrlExpires(self, UrlExpires):
+        self._UrlExpires = UrlExpires
+
+
+    def _deserialize(self, params):
+        self._DeviceName = params.get("DeviceName")
+        self._ChannelName = params.get("ChannelName")
+        self._Status = params.get("Status")
+        self._SortRule = params.get("SortRule")
+        self._WithPreviewUrl = params.get("WithPreviewUrl")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._DownloadTaskId = params.get("DownloadTaskId")
+        self._UrlExpires = params.get("UrlExpires")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListVideoDownloadTaskResponse(AbstractModel):
+    """ListVideoDownloadTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 本地录像下载任务列表
+        :type Data: :class:`tencentcloud.iss.v20230517.models.ListVideoDownloadTaskData`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """本地录像下载任务列表
+        :rtype: :class:`tencentcloud.iss.v20230517.models.ListVideoDownloadTaskData`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ListVideoDownloadTaskData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class Location(AbstractModel):
     """AI识别结果在画面中坐标
 
@@ -15867,6 +16549,57 @@ class RefreshDeviceChannelResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class RemoteAddrInfo(AbstractModel):
+    """设备地址返回结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceId: 设备Id
+        :type DeviceId: str
+        :param _Addr: IP地址
+        :type Addr: str
+        """
+        self._DeviceId = None
+        self._Addr = None
+
+    @property
+    def DeviceId(self):
+        """设备Id
+        :rtype: str
+        """
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+    @property
+    def Addr(self):
+        """IP地址
+        :rtype: str
+        """
+        return self._Addr
+
+    @Addr.setter
+    def Addr(self, Addr):
+        self._Addr = Addr
+
+
+    def _deserialize(self, params):
+        self._DeviceId = params.get("DeviceId")
+        self._Addr = params.get("Addr")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SetForbidPlayChannelsRequest(AbstractModel):
@@ -19413,3 +20146,353 @@ class UpgradeGatewayResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class VideoDownloadTask(AbstractModel):
+    """本地录像下载任务
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DownloadTaskId: 下载任务 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DownloadTaskId: str
+        :param _ChannelId: 通道 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChannelId: str
+        :param _ChannelName: 通道名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChannelName: str
+        :param _ChannelCode: 通道编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChannelCode: str
+        :param _DeviceName: 设备名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceName: str
+        :param _DeviceCode: 设备编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceCode: str
+        :param _Status: 任务状态（0：未执行；1：执行中；2 任务完成；
+3：任务失败）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _VideoTimeSection: 下载录像时间段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VideoTimeSection: str
+        :param _Scale: 倍速
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Scale: int
+        :param _DownloadTime: 下载时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DownloadTime: int
+        :param _VideoSize: 录像大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VideoSize: int
+        :param _StartTime: 任务开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param _EndTime: 任务结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param _FileDownloadUrl: 文件下载地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileDownloadUrl: str
+        :param _FailedReason: 失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailedReason: str
+        :param _Expire: 生命周期规则，热存天数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Expire: int
+        :param _PreviewUrl: mp4预览地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PreviewUrl: str
+        """
+        self._DownloadTaskId = None
+        self._ChannelId = None
+        self._ChannelName = None
+        self._ChannelCode = None
+        self._DeviceName = None
+        self._DeviceCode = None
+        self._Status = None
+        self._VideoTimeSection = None
+        self._Scale = None
+        self._DownloadTime = None
+        self._VideoSize = None
+        self._StartTime = None
+        self._EndTime = None
+        self._FileDownloadUrl = None
+        self._FailedReason = None
+        self._Expire = None
+        self._PreviewUrl = None
+
+    @property
+    def DownloadTaskId(self):
+        """下载任务 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DownloadTaskId
+
+    @DownloadTaskId.setter
+    def DownloadTaskId(self, DownloadTaskId):
+        self._DownloadTaskId = DownloadTaskId
+
+    @property
+    def ChannelId(self):
+        """通道 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def ChannelName(self):
+        """通道名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ChannelName
+
+    @ChannelName.setter
+    def ChannelName(self, ChannelName):
+        self._ChannelName = ChannelName
+
+    @property
+    def ChannelCode(self):
+        """通道编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ChannelCode
+
+    @ChannelCode.setter
+    def ChannelCode(self, ChannelCode):
+        self._ChannelCode = ChannelCode
+
+    @property
+    def DeviceName(self):
+        """设备名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def DeviceCode(self):
+        """设备编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DeviceCode
+
+    @DeviceCode.setter
+    def DeviceCode(self, DeviceCode):
+        self._DeviceCode = DeviceCode
+
+    @property
+    def Status(self):
+        """任务状态（0：未执行；1：执行中；2 任务完成；
+3：任务失败）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def VideoTimeSection(self):
+        """下载录像时间段
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VideoTimeSection
+
+    @VideoTimeSection.setter
+    def VideoTimeSection(self, VideoTimeSection):
+        self._VideoTimeSection = VideoTimeSection
+
+    @property
+    def Scale(self):
+        """倍速
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Scale
+
+    @Scale.setter
+    def Scale(self, Scale):
+        self._Scale = Scale
+
+    @property
+    def DownloadTime(self):
+        """下载时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DownloadTime
+
+    @DownloadTime.setter
+    def DownloadTime(self, DownloadTime):
+        self._DownloadTime = DownloadTime
+
+    @property
+    def VideoSize(self):
+        """录像大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._VideoSize
+
+    @VideoSize.setter
+    def VideoSize(self, VideoSize):
+        self._VideoSize = VideoSize
+
+    @property
+    def StartTime(self):
+        """任务开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """任务结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def FileDownloadUrl(self):
+        """文件下载地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FileDownloadUrl
+
+    @FileDownloadUrl.setter
+    def FileDownloadUrl(self, FileDownloadUrl):
+        self._FileDownloadUrl = FileDownloadUrl
+
+    @property
+    def FailedReason(self):
+        """失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FailedReason
+
+    @FailedReason.setter
+    def FailedReason(self, FailedReason):
+        self._FailedReason = FailedReason
+
+    @property
+    def Expire(self):
+        """生命周期规则，热存天数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Expire
+
+    @Expire.setter
+    def Expire(self, Expire):
+        self._Expire = Expire
+
+    @property
+    def PreviewUrl(self):
+        """mp4预览地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PreviewUrl
+
+    @PreviewUrl.setter
+    def PreviewUrl(self, PreviewUrl):
+        self._PreviewUrl = PreviewUrl
+
+
+    def _deserialize(self, params):
+        self._DownloadTaskId = params.get("DownloadTaskId")
+        self._ChannelId = params.get("ChannelId")
+        self._ChannelName = params.get("ChannelName")
+        self._ChannelCode = params.get("ChannelCode")
+        self._DeviceName = params.get("DeviceName")
+        self._DeviceCode = params.get("DeviceCode")
+        self._Status = params.get("Status")
+        self._VideoTimeSection = params.get("VideoTimeSection")
+        self._Scale = params.get("Scale")
+        self._DownloadTime = params.get("DownloadTime")
+        self._VideoSize = params.get("VideoSize")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._FileDownloadUrl = params.get("FileDownloadUrl")
+        self._FailedReason = params.get("FailedReason")
+        self._Expire = params.get("Expire")
+        self._PreviewUrl = params.get("PreviewUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoDownloadTaskData(AbstractModel):
+    """录像下载任务数据结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DownloadTaskId: 下载任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DownloadTaskId: str
+        """
+        self._DownloadTaskId = None
+
+    @property
+    def DownloadTaskId(self):
+        """下载任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DownloadTaskId
+
+    @DownloadTaskId.setter
+    def DownloadTaskId(self, DownloadTaskId):
+        self._DownloadTaskId = DownloadTaskId
+
+
+    def _deserialize(self, params):
+        self._DownloadTaskId = params.get("DownloadTaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        

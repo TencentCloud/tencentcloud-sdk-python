@@ -26,6 +26,29 @@ class HaiClient(AbstractClient):
     _service = 'hai'
 
 
+    def CreateApplication(self, request):
+        """本接口（CreateApplicaiton）用于对HAI实例制作自定义应用。
+
+        :param request: Request instance for CreateApplication.
+        :type request: :class:`tencentcloud.hai.v20230812.models.CreateApplicationRequest`
+        :rtype: :class:`tencentcloud.hai.v20230812.models.CreateApplicationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateApplication", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateApplicationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateMuskPrompt(self, request):
         """创建musk prompt 任务
 

@@ -5993,12 +5993,10 @@ class EmulateMobileParams(AbstractModel):
         :param _MobileDeviceType: 移动设备类型，
 0: 手机
 1: 平板
-注意：此字段可能返回 null，表示取不到有效值。
         :type MobileDeviceType: int
         :param _ScreenOrientation: 屏幕方向，
 0: 竖屏，
 1: 横屏
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScreenOrientation: int
         """
         self._MobileDeviceType = None
@@ -6009,7 +6007,6 @@ class EmulateMobileParams(AbstractModel):
         """移动设备类型，
 0: 手机
 1: 平板
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MobileDeviceType
@@ -6023,7 +6020,6 @@ class EmulateMobileParams(AbstractModel):
         """屏幕方向，
 0: 竖屏，
 1: 横屏
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ScreenOrientation
