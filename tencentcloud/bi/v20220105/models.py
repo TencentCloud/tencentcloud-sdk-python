@@ -4570,6 +4570,8 @@ class DescribeUserProjectListRequest(AbstractModel):
         :type IsFilterPerAuthUser: bool
         :param _IsFilterCurrentUser: 是否过滤掉当前用户
         :type IsFilterCurrentUser: bool
+        :param _Keyword: 关键字
+        :type Keyword: str
         """
         self._ProjectId = None
         self._AllPage = None
@@ -4577,6 +4579,7 @@ class DescribeUserProjectListRequest(AbstractModel):
         self._PageSize = None
         self._IsFilterPerAuthUser = None
         self._IsFilterCurrentUser = None
+        self._Keyword = None
 
     @property
     def ProjectId(self):
@@ -4644,6 +4647,17 @@ class DescribeUserProjectListRequest(AbstractModel):
     def IsFilterCurrentUser(self, IsFilterCurrentUser):
         self._IsFilterCurrentUser = IsFilterCurrentUser
 
+    @property
+    def Keyword(self):
+        """关键字
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -4652,6 +4666,7 @@ class DescribeUserProjectListRequest(AbstractModel):
         self._PageSize = params.get("PageSize")
         self._IsFilterPerAuthUser = params.get("IsFilterPerAuthUser")
         self._IsFilterCurrentUser = params.get("IsFilterCurrentUser")
+        self._Keyword = params.get("Keyword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

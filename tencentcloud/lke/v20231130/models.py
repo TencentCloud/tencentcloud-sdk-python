@@ -12404,6 +12404,7 @@ class GetWsTokenRequest(AbstractModel):
         :param _BotAppKey:   应用AppKey </br>   获取方式:</br>   1、应用发布后在应用页面[发布管理]-[调用信息]-[API管理]处获取</br>   2、参考 https://cloud.tencent.com/document/product/1759/109469 第二项
         :type BotAppKey: str
         :param _VisitorBizId: 访客ID（外部输入，建议唯一，标识当前接入会话的用户）
+长度限制： string(64)
         :type VisitorBizId: str
         :param _VisitorLabels: 知识标签，用于知识库中知识的检索过滤。该字段即将下线，请使用对话端接口中的 custom_variables 字段替代该字段。
         :type VisitorLabels: list of GetWsTokenReq_Label
@@ -12438,6 +12439,7 @@ class GetWsTokenRequest(AbstractModel):
     @property
     def VisitorBizId(self):
         """访客ID（外部输入，建议唯一，标识当前接入会话的用户）
+长度限制： string(64)
         :rtype: str
         """
         return self._VisitorBizId

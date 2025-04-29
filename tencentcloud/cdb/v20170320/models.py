@@ -4837,9 +4837,9 @@ class CheckMigrateClusterRequest(AbstractModel):
         :type Volume: int
         :param _DiskType: 磁盘类型。 CLOUD_SSD: SSD云硬盘; CLOUD_HSSD: 增强型SSD云硬盘
         :type DiskType: str
-        :param _ClusterTopology: 集群版节点拓扑配置。
+        :param _ClusterTopology: 云盘版节点拓扑配置。
         :type ClusterTopology: :class:`tencentcloud.cdb.v20170320.models.ClusterTopology`
-        :param _DeviceType: 迁移实例类型。支持值包括： "CLOUD_NATIVE_CLUSTER" - 标准型集群版实例， "CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - 加强型集群版实例。
+        :param _DeviceType: 迁移实例类型。支持值包括： "CLOUD_NATIVE_CLUSTER" - 标准型云盘版实例， "CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - 加强型云盘版实例。
         :type DeviceType: str
         :param _RoInfo: 只读实例信息
         :type RoInfo: list of MigrateClusterRoInfo
@@ -4910,7 +4910,7 @@ class CheckMigrateClusterRequest(AbstractModel):
 
     @property
     def ClusterTopology(self):
-        """集群版节点拓扑配置。
+        """云盘版节点拓扑配置。
         :rtype: :class:`tencentcloud.cdb.v20170320.models.ClusterTopology`
         """
         return self._ClusterTopology
@@ -4921,7 +4921,7 @@ class CheckMigrateClusterRequest(AbstractModel):
 
     @property
     def DeviceType(self):
-        """迁移实例类型。支持值包括： "CLOUD_NATIVE_CLUSTER" - 标准型集群版实例， "CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - 加强型集群版实例。
+        """迁移实例类型。支持值包括： "CLOUD_NATIVE_CLUSTER" - 标准型云盘版实例， "CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - 加强型云盘版实例。
         :rtype: str
         """
         return self._DeviceType
@@ -15268,11 +15268,11 @@ class DescribeClusterInfoResponse(AbstractModel):
         r"""
         :param _ClusterName: 实例名称。
         :type ClusterName: str
-        :param _ReadWriteAddress: 集群读写地址信息。
+        :param _ReadWriteAddress: 云盘版实例的读写地址信息。
         :type ReadWriteAddress: :class:`tencentcloud.cdb.v20170320.models.AddressInfo`
-        :param _ReadOnlyAddress: 集群只读地址信息。
+        :param _ReadOnlyAddress: 云盘版实例的只读地址信息。
         :type ReadOnlyAddress: list of AddressInfo
-        :param _NodeList: 集群节点列表信息。
+        :param _NodeList: 云盘版实例的节点列表信息。
         :type NodeList: list of ClusterNodeInfo
         :param _ReadonlyLimit: 只读空间保护阈值,单位GB
         :type ReadonlyLimit: int
@@ -15302,7 +15302,7 @@ class DescribeClusterInfoResponse(AbstractModel):
 
     @property
     def ReadWriteAddress(self):
-        """集群读写地址信息。
+        """云盘版实例的读写地址信息。
         :rtype: :class:`tencentcloud.cdb.v20170320.models.AddressInfo`
         """
         return self._ReadWriteAddress
@@ -15313,7 +15313,7 @@ class DescribeClusterInfoResponse(AbstractModel):
 
     @property
     def ReadOnlyAddress(self):
-        """集群只读地址信息。
+        """云盘版实例的只读地址信息。
         :rtype: list of AddressInfo
         """
         return self._ReadOnlyAddress
@@ -15324,7 +15324,7 @@ class DescribeClusterInfoResponse(AbstractModel):
 
     @property
     def NodeList(self):
-        """集群节点列表信息。
+        """云盘版实例的节点列表信息。
         :rtype: list of ClusterNodeInfo
         """
         return self._NodeList

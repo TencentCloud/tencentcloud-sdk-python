@@ -263,10 +263,8 @@ class CreateGatewayLoadBalancerResponse(AbstractModel):
         r"""
         :param _LoadBalancerIds: 由网关负载均衡实例唯一 ID 组成的数组。
 存在某些场景，如创建出现延迟时，此字段可能返回为空；此时可以根据接口返回的RequestId或DealName参数，通过[DescribeTaskStatus](https://cloud.tencent.com/document/api/1782/111700)接口查询创建的资源ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LoadBalancerIds: list of str
         :param _DealName: 订单号。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DealName: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -279,7 +277,6 @@ class CreateGatewayLoadBalancerResponse(AbstractModel):
     def LoadBalancerIds(self):
         """由网关负载均衡实例唯一 ID 组成的数组。
 存在某些场景，如创建出现延迟时，此字段可能返回为空；此时可以根据接口返回的RequestId或DealName参数，通过[DescribeTaskStatus](https://cloud.tencent.com/document/api/1782/111700)接口查询创建的资源ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._LoadBalancerIds
@@ -291,7 +288,6 @@ class CreateGatewayLoadBalancerResponse(AbstractModel):
     @property
     def DealName(self):
         """订单号。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DealName
@@ -2045,10 +2041,8 @@ class ItemPrice(AbstractModel):
     def __init__(self):
         r"""
         :param _UnitPrice: 后付费单价，单位：元。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UnitPrice: float
         :param _ChargeUnit: 后付费计价单元，可取值范围： HOUR：表示计价单元是按每小时来计算。当前涉及该计价单元的场景有：实例按小时后付费（POSTPAID_BY_HOUR）。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChargeUnit: str
         :param _OriginalPrice: 预支费用的原价，单位：元。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -2057,10 +2051,8 @@ class ItemPrice(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type DiscountPrice: float
         :param _UnitPriceDiscount: 后付费的折扣单价，单位:元。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UnitPriceDiscount: float
         :param _Discount: 折扣，如20.0代表2折。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Discount: float
         """
         self._UnitPrice = None
@@ -2073,7 +2065,6 @@ class ItemPrice(AbstractModel):
     @property
     def UnitPrice(self):
         """后付费单价，单位：元。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._UnitPrice
@@ -2085,7 +2076,6 @@ class ItemPrice(AbstractModel):
     @property
     def ChargeUnit(self):
         """后付费计价单元，可取值范围： HOUR：表示计价单元是按每小时来计算。当前涉及该计价单元的场景有：实例按小时后付费（POSTPAID_BY_HOUR）。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ChargeUnit
@@ -2121,7 +2111,6 @@ class ItemPrice(AbstractModel):
     @property
     def UnitPriceDiscount(self):
         """后付费的折扣单价，单位:元。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._UnitPriceDiscount
@@ -2133,7 +2122,6 @@ class ItemPrice(AbstractModel):
     @property
     def Discount(self):
         """折扣，如20.0代表2折。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._Discount
@@ -2457,10 +2445,8 @@ class Price(AbstractModel):
     def __init__(self):
         r"""
         :param _InstancePrice: 描述了实例价格。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstancePrice: :class:`tencentcloud.gwlb.v20240906.models.ItemPrice`
         :param _LcuPrice: 描述了GLCU的价格。
-注意：此字段可能返回 null，表示取不到有效值。
         :type LcuPrice: :class:`tencentcloud.gwlb.v20240906.models.ItemPrice`
         """
         self._InstancePrice = None
@@ -2469,7 +2455,6 @@ class Price(AbstractModel):
     @property
     def InstancePrice(self):
         """描述了实例价格。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.gwlb.v20240906.models.ItemPrice`
         """
         return self._InstancePrice
@@ -2481,7 +2466,6 @@ class Price(AbstractModel):
     @property
     def LcuPrice(self):
         """描述了GLCU的价格。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.gwlb.v20240906.models.ItemPrice`
         """
         return self._LcuPrice
@@ -2712,16 +2696,12 @@ class TargetGroupBackend(AbstractModel):
         :param _Weight: 后端服务的转发权重，取值为0或16
         :type Weight: int
         :param _PublicIpAddresses: 后端服务的外网 IP
-注意：此字段可能返回 null，表示取不到有效值。
         :type PublicIpAddresses: list of str
         :param _PrivateIpAddresses: 后端服务的内网 IP
-注意：此字段可能返回 null，表示取不到有效值。
         :type PrivateIpAddresses: list of str
         :param _InstanceName: 后端服务的实例名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceName: str
         :param _RegisteredTime: 后端服务被绑定的时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegisteredTime: str
         :param _EniId: 弹性网卡唯一ID
 注意：此字段可能返回 null，表示取不到有效值。
@@ -2800,7 +2780,6 @@ class TargetGroupBackend(AbstractModel):
     @property
     def PublicIpAddresses(self):
         """后端服务的外网 IP
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._PublicIpAddresses
@@ -2812,7 +2791,6 @@ class TargetGroupBackend(AbstractModel):
     @property
     def PrivateIpAddresses(self):
         """后端服务的内网 IP
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._PrivateIpAddresses
@@ -2824,7 +2802,6 @@ class TargetGroupBackend(AbstractModel):
     @property
     def InstanceName(self):
         """后端服务的实例名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceName
@@ -2836,7 +2813,6 @@ class TargetGroupBackend(AbstractModel):
     @property
     def RegisteredTime(self):
         """后端服务被绑定的时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RegisteredTime

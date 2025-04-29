@@ -371,7 +371,8 @@ class ImageModerationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BizType: 该字段表示策略的具体编号，用于接口调度，在内容安全控制台中可配置。若不传入Biztype参数（留空），则代表采用默认的识别策略；传入则会在审核时根据业务场景采取不同的审核策略。<br>备注：Biztype仅为数字、字母与下划线的组合，长度为3-32个字符；不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。
+        :param _BizType: 该字段表示使用的策略的具体编号，该字段需要先在[内容安全控制台](#https://console.cloud.tencent.com/cms/clouds/manage)中配置。
+备注：不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。
         :type BizType: str
         :param _DataId: 该字段表示您为待检测对象分配的数据ID，传入后可方便您对文件进行标识和管理。<br>取值：由英文字母（大小写均可）、数字及四个特殊符号（_，-，@，#）组成，**长度不超过64个字符**。
         :type DataId: str
@@ -387,7 +388,7 @@ class ImageModerationRequest(AbstractModel):
         :type User: :class:`tencentcloud.ims.v20201229.models.User`
         :param _Device: 该字段表示待检测对象对应的设备相关信息，若填入则可甄别相应违规风险设备。
         :type Device: :class:`tencentcloud.ims.v20201229.models.Device`
-        :param _Type: 该字段表示送审的数据类型，默认为通用图片，可以选择。
+        :param _Type: 该字段表示输入的图片审核类型，取值含：IMAGE（内容安全）、IMAGE_AIGC（AI生成识别）两种，默认值为IMAGE。
         :type Type: str
         """
         self._BizType = None
@@ -402,7 +403,8 @@ class ImageModerationRequest(AbstractModel):
 
     @property
     def BizType(self):
-        """该字段表示策略的具体编号，用于接口调度，在内容安全控制台中可配置。若不传入Biztype参数（留空），则代表采用默认的识别策略；传入则会在审核时根据业务场景采取不同的审核策略。<br>备注：Biztype仅为数字、字母与下划线的组合，长度为3-32个字符；不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。
+        """该字段表示使用的策略的具体编号，该字段需要先在[内容安全控制台](#https://console.cloud.tencent.com/cms/clouds/manage)中配置。
+备注：不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。
         :rtype: str
         """
         return self._BizType
@@ -490,7 +492,7 @@ class ImageModerationRequest(AbstractModel):
 
     @property
     def Type(self):
-        """该字段表示送审的数据类型，默认为通用图片，可以选择。
+        """该字段表示输入的图片审核类型，取值含：IMAGE（内容安全）、IMAGE_AIGC（AI生成识别）两种，默认值为IMAGE。
         :rtype: str
         """
         return self._Type

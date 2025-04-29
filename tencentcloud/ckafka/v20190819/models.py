@@ -7972,12 +7972,10 @@ class CvmAndIpInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _CkafkaInstanceId: ckafka集群实例Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type CkafkaInstanceId: str
         :param _InstanceId: CVM实例ID
         :type InstanceId: str
         :param _Ip: IP地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ip: str
         """
         self._CkafkaInstanceId = None
@@ -7987,7 +7985,6 @@ class CvmAndIpInfo(AbstractModel):
     @property
     def CkafkaInstanceId(self):
         """ckafka集群实例Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CkafkaInstanceId
@@ -8010,7 +8007,6 @@ class CvmAndIpInfo(AbstractModel):
     @property
     def Ip(self):
         """IP地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Ip
@@ -22431,10 +22427,8 @@ class ListCvmAndIpInfoRsp(AbstractModel):
     def __init__(self):
         r"""
         :param _CvmList: cvm和IP 列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type CvmList: list of CvmAndIpInfo
         :param _TotalCount: 实例数据量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         """
         self._CvmList = None
@@ -22443,7 +22437,6 @@ class ListCvmAndIpInfoRsp(AbstractModel):
     @property
     def CvmList(self):
         """cvm和IP 列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CvmAndIpInfo
         """
         return self._CvmList
@@ -22455,7 +22448,6 @@ class ListCvmAndIpInfoRsp(AbstractModel):
     @property
     def TotalCount(self):
         """实例数据量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount

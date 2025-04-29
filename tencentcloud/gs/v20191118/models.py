@@ -215,13 +215,16 @@ CREATE_FAIL：创建失败、CREATE_SUCCESS：创建成功）
         :type State: str
         :param _CreateTime: 安卓应用版本创建时间
         :type CreateTime: str
-        :param _Command: shell 命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
+        :param _Command: shell 安装命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
         :type Command: str
+        :param _UninstallCommand: shell 卸载命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
+        :type UninstallCommand: str
         """
         self._AndroidAppVersion = None
         self._State = None
         self._CreateTime = None
         self._Command = None
+        self._UninstallCommand = None
 
     @property
     def AndroidAppVersion(self):
@@ -260,7 +263,7 @@ CREATE_FAIL：创建失败、CREATE_SUCCESS：创建成功）
 
     @property
     def Command(self):
-        """shell 命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
+        """shell 安装命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
         :rtype: str
         """
         return self._Command
@@ -269,12 +272,24 @@ CREATE_FAIL：创建失败、CREATE_SUCCESS：创建成功）
     def Command(self, Command):
         self._Command = Command
 
+    @property
+    def UninstallCommand(self):
+        """shell 卸载命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
+        :rtype: str
+        """
+        return self._UninstallCommand
+
+    @UninstallCommand.setter
+    def UninstallCommand(self, UninstallCommand):
+        self._UninstallCommand = UninstallCommand
+
 
     def _deserialize(self, params):
         self._AndroidAppVersion = params.get("AndroidAppVersion")
         self._State = params.get("State")
         self._CreateTime = params.get("CreateTime")
         self._Command = params.get("Command")
+        self._UninstallCommand = params.get("UninstallCommand")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1569,12 +1584,15 @@ class CreateAndroidAppVersionRequest(AbstractModel):
         :type AndroidAppId: str
         :param _DownloadUrl: 应用包下载地址
         :type DownloadUrl: str
-        :param _Command: shell 命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
+        :param _Command: 应用 shell 安装命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
         :type Command: str
+        :param _UninstallCommand: 应用 shell 卸载命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
+        :type UninstallCommand: str
         """
         self._AndroidAppId = None
         self._DownloadUrl = None
         self._Command = None
+        self._UninstallCommand = None
 
     @property
     def AndroidAppId(self):
@@ -1600,7 +1618,7 @@ class CreateAndroidAppVersionRequest(AbstractModel):
 
     @property
     def Command(self):
-        """shell 命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
+        """应用 shell 安装命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
         :rtype: str
         """
         return self._Command
@@ -1609,11 +1627,23 @@ class CreateAndroidAppVersionRequest(AbstractModel):
     def Command(self, Command):
         self._Command = Command
 
+    @property
+    def UninstallCommand(self):
+        """应用 shell 卸载命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
+        :rtype: str
+        """
+        return self._UninstallCommand
+
+    @UninstallCommand.setter
+    def UninstallCommand(self, UninstallCommand):
+        self._UninstallCommand = UninstallCommand
+
 
     def _deserialize(self, params):
         self._AndroidAppId = params.get("AndroidAppId")
         self._DownloadUrl = params.get("DownloadUrl")
         self._Command = params.get("Command")
+        self._UninstallCommand = params.get("UninstallCommand")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4852,13 +4882,16 @@ class ModifyAndroidAppVersionRequest(AbstractModel):
         :type AndroidAppVersion: str
         :param _AndroidAppVersionName: 安卓应用版本名称
         :type AndroidAppVersionName: str
-        :param _Command: shell 命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
+        :param _Command: 应用 shell 安装命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
         :type Command: str
+        :param _UninstallCommand: 应用 shell 卸载命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
+        :type UninstallCommand: str
         """
         self._AndroidAppId = None
         self._AndroidAppVersion = None
         self._AndroidAppVersionName = None
         self._Command = None
+        self._UninstallCommand = None
 
     @property
     def AndroidAppId(self):
@@ -4895,7 +4928,7 @@ class ModifyAndroidAppVersionRequest(AbstractModel):
 
     @property
     def Command(self):
-        """shell 命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
+        """应用 shell 安装命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
         :rtype: str
         """
         return self._Command
@@ -4904,12 +4937,24 @@ class ModifyAndroidAppVersionRequest(AbstractModel):
     def Command(self, Command):
         self._Command = Command
 
+    @property
+    def UninstallCommand(self):
+        """应用 shell 卸载命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
+        :rtype: str
+        """
+        return self._UninstallCommand
+
+    @UninstallCommand.setter
+    def UninstallCommand(self, UninstallCommand):
+        self._UninstallCommand = UninstallCommand
+
 
     def _deserialize(self, params):
         self._AndroidAppId = params.get("AndroidAppId")
         self._AndroidAppVersion = params.get("AndroidAppVersion")
         self._AndroidAppVersionName = params.get("AndroidAppVersionName")
         self._Command = params.get("Command")
+        self._UninstallCommand = params.get("UninstallCommand")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

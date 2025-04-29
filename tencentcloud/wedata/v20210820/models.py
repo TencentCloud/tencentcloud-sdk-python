@@ -47031,7 +47031,9 @@ class GetInstanceLogRequest(AbstractModel):
         :type ProjectId: str
         :param _InstanceKey: **实例唯一标识**
         :type InstanceKey: str
-        :param _LifeRoundNum: 生命周期编号
+        :param _LifeRoundNum: **实例生命周期编号，标识实例的某一次执行**
+
+例如：周期实例第一次运行的编号为0，用户后期又重跑了该实例，第二次执行的编号为1
         :type LifeRoundNum: int
         :param _ScheduleTimeZone: **时区**
 timeZone, 默认UTC+8
@@ -47061,6 +47063,11 @@ timeZone, 默认UTC+8
         :param _EndLineCount: **获取日志的结束行 行号**
 默认 10000
         :type EndLineCount: int
+        :param _ExtInfo: **分页查询日志时使用，无具体业务含义**
+
+第一次查询时值为null 
+第二次及以后查询时使用上一次查询返回信息中的ExtInfo字段值即可
+        :type ExtInfo: str
         """
         self._ProjectId = None
         self._InstanceKey = None
@@ -47072,6 +47079,7 @@ timeZone, 默认UTC+8
         self._LogLevel = None
         self._StartLineNum = None
         self._EndLineCount = None
+        self._ExtInfo = None
 
     @property
     def ProjectId(self):
@@ -47097,7 +47105,9 @@ timeZone, 默认UTC+8
 
     @property
     def LifeRoundNum(self):
-        """生命周期编号
+        """**实例生命周期编号，标识实例的某一次执行**
+
+例如：周期实例第一次运行的编号为0，用户后期又重跑了该实例，第二次执行的编号为1
         :rtype: int
         """
         return self._LifeRoundNum
@@ -47197,6 +47207,20 @@ timeZone, 默认UTC+8
     def EndLineCount(self, EndLineCount):
         self._EndLineCount = EndLineCount
 
+    @property
+    def ExtInfo(self):
+        """**分页查询日志时使用，无具体业务含义**
+
+第一次查询时值为null 
+第二次及以后查询时使用上一次查询返回信息中的ExtInfo字段值即可
+        :rtype: str
+        """
+        return self._ExtInfo
+
+    @ExtInfo.setter
+    def ExtInfo(self, ExtInfo):
+        self._ExtInfo = ExtInfo
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -47209,6 +47233,7 @@ timeZone, 默认UTC+8
         self._LogLevel = params.get("LogLevel")
         self._StartLineNum = params.get("StartLineNum")
         self._EndLineCount = params.get("EndLineCount")
+        self._ExtInfo = params.get("ExtInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -48554,7 +48579,9 @@ class InstanceDetailVO(AbstractModel):
         :param _TotalRunNum: 累计运行次数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalRunNum: int
-        :param _LifeRoundNum: 生命周期编号
+        :param _LifeRoundNum: **实例生命周期编号，标识实例的某一次执行**
+
+例如：周期实例第一次运行的编号为0，用户后期又重跑了该实例，第二次的执行的编号为1
 注意：此字段可能返回 null，表示取不到有效值。
         :type LifeRoundNum: int
         :param _InstanceType: **实例类型**
@@ -48869,7 +48896,9 @@ class InstanceDetailVO(AbstractModel):
 
     @property
     def LifeRoundNum(self):
-        """生命周期编号
+        """**实例生命周期编号，标识实例的某一次执行**
+
+例如：周期实例第一次运行的编号为0，用户后期又重跑了该实例，第二次的执行的编号为1
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -49467,7 +49496,9 @@ class InstanceLifeCycleVO(AbstractModel):
 - [2] 表示 成功
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceState: int
-        :param _LifeRoundNum: 生命周期编号
+        :param _LifeRoundNum: **实例生命周期编号，标识实例的某一次执行**
+
+例如：周期实例第一次运行的编号为0，用户后期又重跑了该实例，第二次执行的编号为1
 注意：此字段可能返回 null，表示取不到有效值。
         :type LifeRoundNum: int
         :param _RunType: **实例运行触发类型**
@@ -49495,6 +49526,8 @@ class InstanceLifeCycleVO(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type CodeFileName: str
         :param _ExecutionJobId: **下发执行ID**
+统一执行平台下发执行到新版执行机标识某次执行的唯一ID，存量老执行机下发执行没有此ID。
+如果不知道执行机版本是否支持此ID，可以联系腾讯云运维同学
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutionJobId: str
         :param _BrokerIp: 日志所在执行节点
@@ -49561,7 +49594,9 @@ class InstanceLifeCycleVO(AbstractModel):
 
     @property
     def LifeRoundNum(self):
-        """生命周期编号
+        """**实例生命周期编号，标识实例的某一次执行**
+
+例如：周期实例第一次运行的编号为0，用户后期又重跑了该实例，第二次执行的编号为1
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -49634,6 +49669,8 @@ class InstanceLifeCycleVO(AbstractModel):
     @property
     def ExecutionJobId(self):
         """**下发执行ID**
+统一执行平台下发执行到新版执行机标识某次执行的唯一ID，存量老执行机下发执行没有此ID。
+如果不知道执行机版本是否支持此ID，可以联系腾讯云运维同学
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -49753,7 +49790,7 @@ class InstanceLifeDetailDto(AbstractModel):
 - FAILED 表示 终态-失败重试
 - EXPIRED 表示 终态-失败
 - SKIP_RUNNING 表示 终态-被上游分支节点跳过的分支
-- HISTORY 表示 兼容历史实例
+- HISTORY 表示 兼容2024-03-30之前的历史实例，之后实例无需关注次枚举类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type DetailState: str
         :param _EndTime: 该状态结束时间
@@ -49808,7 +49845,7 @@ class InstanceLifeDetailDto(AbstractModel):
 - FAILED 表示 终态-失败重试
 - EXPIRED 表示 终态-失败
 - SKIP_RUNNING 表示 终态-被上游分支节点跳过的分支
-- HISTORY 表示 兼容历史实例
+- HISTORY 表示 兼容2024-03-30之前的历史实例，之后实例无需关注次枚举类型
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -50834,7 +50871,10 @@ class InstanceLogVO(AbstractModel):
         :param _LineCount: **本次查询返回的日志行数**
 注意：此字段可能返回 null，表示取不到有效值。
         :type LineCount: int
-        :param _ExtInfo: 执行平台日志分页查询参数, 每次请求透明传入。第一页查询时值为空字符串
+        :param _ExtInfo: **分页查询日志时使用，无具体业务含义**
+
+第一次查询时值为null 
+第二次及以后查询时使用上一次查询返回信息中的ExtInfo字段值即可
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtInfo: str
         :param _IsEnd: 日志分页查询，是否最后一页
@@ -51024,7 +51064,10 @@ class InstanceLogVO(AbstractModel):
 
     @property
     def ExtInfo(self):
-        """执行平台日志分页查询参数, 每次请求透明传入。第一页查询时值为空字符串
+        """**分页查询日志时使用，无具体业务含义**
+
+第一次查询时值为null 
+第二次及以后查询时使用上一次查询返回信息中的ExtInfo字段值即可
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56029,10 +56072,10 @@ class ListInstancesRequest(AbstractModel):
         r"""
         :param _ProjectId: **项目ID**
         :type ProjectId: str
-        :param _ScheduleTimeFrom: **实例计划调度时间**
+        :param _ScheduleTimeFrom: **实例计划调度时间过滤条件**
 过滤起始时间，时间格式为 yyyy-MM-dd HH:mm:ss
         :type ScheduleTimeFrom: str
-        :param _ScheduleTimeTo: **实例计划调度时间**
+        :param _ScheduleTimeTo: **实例计划调度时间过滤条件**
 过滤截止时间，时间格式为 yyyy-MM-dd HH:mm:ss
         :type ScheduleTimeTo: str
         :param _PageNumber: **页码，整型**
@@ -56043,10 +56086,10 @@ class ListInstancesRequest(AbstractModel):
         :type PageSize: int
         :param _SortColumn: **查询结果排序字段**
 
-- SCHEDULE_DATE 表示 计划调度时间
-- START_TIME 表示 实例开始执行时间
-- END_TIME 表示 实例结束执行时间
-- COST_TIME 表示 实例执行时长
+- SCHEDULE_DATE 表示 根据计划调度时间排序
+- START_TIME 表示 根据实例开始执行时间排序
+- END_TIME 表示 根据实例结束执行时间排序
+- COST_TIME 表示 根据实例执行时长排序
         :type SortColumn: str
         :param _SortType: **实例排序方式**
 
@@ -56106,10 +56149,10 @@ class ListInstancesRequest(AbstractModel):
 可以通过接口 DescribeNormalSchedulerExecutorGroups 获取项目下的所有调度资源组列表
 可以通过接口 DescribeNormalIntegrationExecutorGroups 获取项目下的所有集成资源组列表
         :type ExecutorGroupIdList: list of str
-        :param _StartTimeFrom: **开始时间**
+        :param _StartTimeFrom: **实例执行开始时间过滤条件**
 过滤起始时间，时间格式为 yyyy-MM-dd HH:mm:ss
         :type StartTimeFrom: str
-        :param _StartTimeTo: **开始时间**
+        :param _StartTimeTo: **实例执行开始时间过滤条件**
 过滤截止时间，时间格式为 yyyy-MM-dd HH:mm:ss
         :type StartTimeTo: str
         :param _ScheduleTimeZone: **时区**
@@ -56149,7 +56192,7 @@ timeZone, 默认UTC+8
 
     @property
     def ScheduleTimeFrom(self):
-        """**实例计划调度时间**
+        """**实例计划调度时间过滤条件**
 过滤起始时间，时间格式为 yyyy-MM-dd HH:mm:ss
         :rtype: str
         """
@@ -56161,7 +56204,7 @@ timeZone, 默认UTC+8
 
     @property
     def ScheduleTimeTo(self):
-        """**实例计划调度时间**
+        """**实例计划调度时间过滤条件**
 过滤截止时间，时间格式为 yyyy-MM-dd HH:mm:ss
         :rtype: str
         """
@@ -56199,10 +56242,10 @@ timeZone, 默认UTC+8
     def SortColumn(self):
         """**查询结果排序字段**
 
-- SCHEDULE_DATE 表示 计划调度时间
-- START_TIME 表示 实例开始执行时间
-- END_TIME 表示 实例结束执行时间
-- COST_TIME 表示 实例执行时长
+- SCHEDULE_DATE 表示 根据计划调度时间排序
+- START_TIME 表示 根据实例开始执行时间排序
+- END_TIME 表示 根据实例结束执行时间排序
+- COST_TIME 表示 根据实例执行时长排序
         :rtype: str
         """
         return self._SortColumn
@@ -56361,7 +56404,7 @@ timeZone, 默认UTC+8
 
     @property
     def StartTimeFrom(self):
-        """**开始时间**
+        """**实例执行开始时间过滤条件**
 过滤起始时间，时间格式为 yyyy-MM-dd HH:mm:ss
         :rtype: str
         """
@@ -56373,7 +56416,7 @@ timeZone, 默认UTC+8
 
     @property
     def StartTimeTo(self):
-        """**开始时间**
+        """**实例执行开始时间过滤条件**
 过滤截止时间，时间格式为 yyyy-MM-dd HH:mm:ss
         :rtype: str
         """

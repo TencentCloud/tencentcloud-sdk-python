@@ -28894,6 +28894,7 @@ class DescribeMediaProcessUsageDataRequest(AbstractModel):
 <li>Transcode: 转码，包含普通转码、极速高清和视频编辑（不推荐使用）</li>
 <li>VoiceTranslation: 语音翻译</li>
 <li>JITTranscoding: 即时转码</li>
+<li>VideoSnapshot: 视频截图</li>
         :type Type: str
         """
         self._StartTime = None
@@ -28959,6 +28960,7 @@ class DescribeMediaProcessUsageDataRequest(AbstractModel):
 <li>Transcode: 转码，包含普通转码、极速高清和视频编辑（不推荐使用）</li>
 <li>VoiceTranslation: 语音翻译</li>
 <li>JITTranscoding: 即时转码</li>
+<li>VideoSnapshot: 视频截图</li>
         :rtype: str
         """
         return self._Type
@@ -70038,6 +70040,7 @@ class TaskStatData(AbstractModel):
 <li>Transcode: 转码，包含普通转码、极速高清和视频编辑（不推荐使用）</li>
 <li>VoiceTranslation: 语音翻译</li>
 <li>JITTranscoding: 即时转码</li>
+<li>VideoSnapshot: 视频截图</li>
         :type TaskType: str
         :param _Summary: 任务数统计数据概览，用量单位为秒。
         :type Summary: list of TaskStatDataItem
@@ -70101,6 +70104,10 @@ class TaskStatData(AbstractModel):
 <li>JITTranscoding.H264.2K: H.264编码方式2K即时转码</li>
 <li>JITTranscoding.Audio: 音频即时转码</li>
 <li>JITTranscoding.Copy: 转封装即时转码</li>
+视频截图规格：
+<li>SnapshotByTimeOffset: 时间点截图</li>
+<li>SampleSnapshot: 采样截图</li>
+<li>ImageSprite: 雪碧图</li>
         :type Details: list of SpecificationDataItem
         """
         self._TaskType = None
@@ -70125,6 +70132,7 @@ class TaskStatData(AbstractModel):
 <li>Transcode: 转码，包含普通转码、极速高清和视频编辑（不推荐使用）</li>
 <li>VoiceTranslation: 语音翻译</li>
 <li>JITTranscoding: 即时转码</li>
+<li>VideoSnapshot: 视频截图</li>
         :rtype: str
         """
         return self._TaskType
@@ -70206,6 +70214,10 @@ class TaskStatData(AbstractModel):
 <li>JITTranscoding.H264.2K: H.264编码方式2K即时转码</li>
 <li>JITTranscoding.Audio: 音频即时转码</li>
 <li>JITTranscoding.Copy: 转封装即时转码</li>
+视频截图规格：
+<li>SnapshotByTimeOffset: 时间点截图</li>
+<li>SampleSnapshot: 采样截图</li>
+<li>ImageSprite: 雪碧图</li>
         :rtype: list of SpecificationDataItem
         """
         return self._Details

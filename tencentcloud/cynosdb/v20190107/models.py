@@ -19946,7 +19946,6 @@ class DescribeSSLStatusResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _IsOpenSSL: yes-开启，no-关闭
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsOpenSSL: str
         :param _DownloadUrl: 证书下载地址
         :type DownloadUrl: str
@@ -19960,7 +19959,6 @@ class DescribeSSLStatusResponse(AbstractModel):
     @property
     def IsOpenSSL(self):
         """yes-开启，no-关闭
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IsOpenSSL
@@ -29799,10 +29797,8 @@ class OpenSSLResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _FlowId: 任务流ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowId: int
         :param _TaskId: 任务id
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -29814,7 +29810,6 @@ class OpenSSLResponse(AbstractModel):
     @property
     def FlowId(self):
         """任务流ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._FlowId
@@ -29826,7 +29821,6 @@ class OpenSSLResponse(AbstractModel):
     @property
     def TaskId(self):
         """任务id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TaskId

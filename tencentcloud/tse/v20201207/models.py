@@ -1398,6 +1398,8 @@ class CloudNativeAPIGatewayConfig(AbstractModel):
         :type SlaveZoneName: str
         :param _NetworkId: 网络 id
         :type NetworkId: str
+        :param _IPV6FullChain: 是否为新 ipv6 CLB
+        :type IPV6FullChain: bool
         """
         self._ConsoleType = None
         self._HttpUrl = None
@@ -1420,6 +1422,7 @@ class CloudNativeAPIGatewayConfig(AbstractModel):
         self._MasterZoneName = None
         self._SlaveZoneName = None
         self._NetworkId = None
+        self._IPV6FullChain = None
 
     @property
     def ConsoleType(self):
@@ -1653,6 +1656,17 @@ class CloudNativeAPIGatewayConfig(AbstractModel):
     def NetworkId(self, NetworkId):
         self._NetworkId = NetworkId
 
+    @property
+    def IPV6FullChain(self):
+        """是否为新 ipv6 CLB
+        :rtype: bool
+        """
+        return self._IPV6FullChain
+
+    @IPV6FullChain.setter
+    def IPV6FullChain(self, IPV6FullChain):
+        self._IPV6FullChain = IPV6FullChain
+
 
     def _deserialize(self, params):
         self._ConsoleType = params.get("ConsoleType")
@@ -1678,6 +1692,7 @@ class CloudNativeAPIGatewayConfig(AbstractModel):
         self._MasterZoneName = params.get("MasterZoneName")
         self._SlaveZoneName = params.get("SlaveZoneName")
         self._NetworkId = params.get("NetworkId")
+        self._IPV6FullChain = params.get("IPV6FullChain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26775,6 +26790,10 @@ class NativeGatewayServerGroup(AbstractModel):
         :type DefaultWeight: int
         :param _ElasticNumber: 弹性节点
         :type ElasticNumber: int
+        :param _SupportTOA: 是否支持TOA
+        :type SupportTOA: bool
+        :param _SupportIPV6: 是否支持IPV6
+        :type SupportIPV6: bool
         """
         self._GroupId = None
         self._Name = None
@@ -26790,6 +26809,8 @@ class NativeGatewayServerGroup(AbstractModel):
         self._SubnetIds = None
         self._DefaultWeight = None
         self._ElasticNumber = None
+        self._SupportTOA = None
+        self._SupportIPV6 = None
 
     @property
     def GroupId(self):
@@ -26947,6 +26968,28 @@ class NativeGatewayServerGroup(AbstractModel):
     def ElasticNumber(self, ElasticNumber):
         self._ElasticNumber = ElasticNumber
 
+    @property
+    def SupportTOA(self):
+        """是否支持TOA
+        :rtype: bool
+        """
+        return self._SupportTOA
+
+    @SupportTOA.setter
+    def SupportTOA(self, SupportTOA):
+        self._SupportTOA = SupportTOA
+
+    @property
+    def SupportIPV6(self):
+        """是否支持IPV6
+        :rtype: bool
+        """
+        return self._SupportIPV6
+
+    @SupportIPV6.setter
+    def SupportIPV6(self, SupportIPV6):
+        self._SupportIPV6 = SupportIPV6
+
 
     def _deserialize(self, params):
         self._GroupId = params.get("GroupId")
@@ -26967,6 +27010,8 @@ class NativeGatewayServerGroup(AbstractModel):
         self._SubnetIds = params.get("SubnetIds")
         self._DefaultWeight = params.get("DefaultWeight")
         self._ElasticNumber = params.get("ElasticNumber")
+        self._SupportTOA = params.get("SupportTOA")
+        self._SupportIPV6 = params.get("SupportIPV6")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
