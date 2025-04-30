@@ -2806,6 +2806,15 @@ false（默认）：发送正常请求，通过检查后直接创建实例。
         :type DisableApiTermination: bool
         :param _LaunchTemplateTagSpecification: 标签描述列表。通过指定该参数可以绑定标签到实例启动模板。
         :type LaunchTemplateTagSpecification: list of TagSpecification
+        :param _Metadata: 自定义metadata，支持创建 CVM 时添加自定义元数据键值对。
+**注：内测中**。
+        :type Metadata: :class:`tencentcloud.cvm.v20170312.models.Metadata`
+        :param _TemplateDataModifyAction: 只允许传递 Update 和 Replace 参数，在模板使用自定义 Metadata 且在 RunInstances 也传递 Metadata 时生效。默认采用 Replace。
+
+- Update：设模板 t含本参数值为Update、 metadata=[k1:v1, k2:v2] ，则RunInstances（给metadata=[k2:v3]）+ t 创建的 cvm 使用metadata=[k1:v1, k2:v3] 
+- Replace：模板 t含本参数值为Replace、 metadata=[k1:v1, k2:v2] ，则RunInstances（给metadata=[k2:v3]）+ t 创建的 cvm 使用metadata=[k2:v3] 
+**注：内测中**。
+        :type TemplateDataModifyAction: str
         """
         self._LaunchTemplateName = None
         self._Placement = None
@@ -2835,6 +2844,8 @@ false（默认）：发送正常请求，通过检查后直接创建实例。
         self._InstanceChargePrepaid = None
         self._DisableApiTermination = None
         self._LaunchTemplateTagSpecification = None
+        self._Metadata = None
+        self._TemplateDataModifyAction = None
 
     @property
     def LaunchTemplateName(self):
@@ -3149,6 +3160,33 @@ false（默认）：发送正常请求，通过检查后直接创建实例。
     def LaunchTemplateTagSpecification(self, LaunchTemplateTagSpecification):
         self._LaunchTemplateTagSpecification = LaunchTemplateTagSpecification
 
+    @property
+    def Metadata(self):
+        """自定义metadata，支持创建 CVM 时添加自定义元数据键值对。
+**注：内测中**。
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.Metadata`
+        """
+        return self._Metadata
+
+    @Metadata.setter
+    def Metadata(self, Metadata):
+        self._Metadata = Metadata
+
+    @property
+    def TemplateDataModifyAction(self):
+        """只允许传递 Update 和 Replace 参数，在模板使用自定义 Metadata 且在 RunInstances 也传递 Metadata 时生效。默认采用 Replace。
+
+- Update：设模板 t含本参数值为Update、 metadata=[k1:v1, k2:v2] ，则RunInstances（给metadata=[k2:v3]）+ t 创建的 cvm 使用metadata=[k1:v1, k2:v3] 
+- Replace：模板 t含本参数值为Replace、 metadata=[k1:v1, k2:v2] ，则RunInstances（给metadata=[k2:v3]）+ t 创建的 cvm 使用metadata=[k2:v3] 
+**注：内测中**。
+        :rtype: str
+        """
+        return self._TemplateDataModifyAction
+
+    @TemplateDataModifyAction.setter
+    def TemplateDataModifyAction(self, TemplateDataModifyAction):
+        self._TemplateDataModifyAction = TemplateDataModifyAction
+
 
     def _deserialize(self, params):
         self._LaunchTemplateName = params.get("LaunchTemplateName")
@@ -3212,6 +3250,10 @@ false（默认）：发送正常请求，通过检查后直接创建实例。
                 obj = TagSpecification()
                 obj._deserialize(item)
                 self._LaunchTemplateTagSpecification.append(obj)
+        if params.get("Metadata") is not None:
+            self._Metadata = Metadata()
+            self._Metadata._deserialize(params.get("Metadata"))
+        self._TemplateDataModifyAction = params.get("TemplateDataModifyAction")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3333,6 +3375,15 @@ false（默认）：发送正常请求，通过检查后直接创建实例。
         :type InstanceChargePrepaid: :class:`tencentcloud.cvm.v20170312.models.InstanceChargePrepaid`
         :param _DisableApiTermination: 实例销毁保护标志，表示是否允许通过api接口删除实例。取值范围：<br><li>TRUE：表示开启实例保护，不允许通过api接口删除实例</li><br><li>FALSE：表示关闭实例保护，允许通过api接口删除实例</li><br><br>默认取值：FALSE。
         :type DisableApiTermination: bool
+        :param _Metadata: 自定义metadata，支持创建 CVM 时添加自定义元数据键值对。
+**注：内测中**。
+        :type Metadata: :class:`tencentcloud.cvm.v20170312.models.Metadata`
+        :param _TemplateDataModifyAction: 只允许传递 Update 和 Replace 参数，在模板使用自定义 Metadata 且在 RunInstances 也传递 Metadata 时生效。默认采用 Replace。
+
+- Update：设模板 t含本参数值为Update、 metadata=[k1:v1, k2:v2] ，则RunInstances（给metadata=[k2:v3]）+ t 创建的 cvm 使用metadata=[k1:v1, k2:v3] 
+- Replace：模板 t含本参数值为Replace、 metadata=[k1:v1, k2:v2] ，则RunInstances（给metadata=[k2:v3]）+ t 创建的 cvm 使用metadata=[k2:v3] 
+**注：内测中**。
+        :type TemplateDataModifyAction: str
         """
         self._Placement = None
         self._LaunchTemplateId = None
@@ -3362,6 +3413,8 @@ false（默认）：发送正常请求，通过检查后直接创建实例。
         self._InstanceChargeType = None
         self._InstanceChargePrepaid = None
         self._DisableApiTermination = None
+        self._Metadata = None
+        self._TemplateDataModifyAction = None
 
     @property
     def Placement(self):
@@ -3676,6 +3729,33 @@ false（默认）：发送正常请求，通过检查后直接创建实例。
     def DisableApiTermination(self, DisableApiTermination):
         self._DisableApiTermination = DisableApiTermination
 
+    @property
+    def Metadata(self):
+        """自定义metadata，支持创建 CVM 时添加自定义元数据键值对。
+**注：内测中**。
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.Metadata`
+        """
+        return self._Metadata
+
+    @Metadata.setter
+    def Metadata(self, Metadata):
+        self._Metadata = Metadata
+
+    @property
+    def TemplateDataModifyAction(self):
+        """只允许传递 Update 和 Replace 参数，在模板使用自定义 Metadata 且在 RunInstances 也传递 Metadata 时生效。默认采用 Replace。
+
+- Update：设模板 t含本参数值为Update、 metadata=[k1:v1, k2:v2] ，则RunInstances（给metadata=[k2:v3]）+ t 创建的 cvm 使用metadata=[k1:v1, k2:v3] 
+- Replace：模板 t含本参数值为Replace、 metadata=[k1:v1, k2:v2] ，则RunInstances（给metadata=[k2:v3]）+ t 创建的 cvm 使用metadata=[k2:v3] 
+**注：内测中**。
+        :rtype: str
+        """
+        return self._TemplateDataModifyAction
+
+    @TemplateDataModifyAction.setter
+    def TemplateDataModifyAction(self, TemplateDataModifyAction):
+        self._TemplateDataModifyAction = TemplateDataModifyAction
+
 
     def _deserialize(self, params):
         if params.get("Placement") is not None:
@@ -3734,6 +3814,10 @@ false（默认）：发送正常请求，通过检查后直接创建实例。
             self._InstanceChargePrepaid = InstanceChargePrepaid()
             self._InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
         self._DisableApiTermination = params.get("DisableApiTermination")
+        if params.get("Metadata") is not None:
+            self._Metadata = Metadata()
+            self._Metadata._deserialize(params.get("Metadata"))
+        self._TemplateDataModifyAction = params.get("TemplateDataModifyAction")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12442,6 +12526,10 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
         :type TagSpecification: list of TagSpecification
         :param _InstanceMarketOptions: 实例的市场相关选项，如竞价实例相关参数
         :type InstanceMarketOptions: :class:`tencentcloud.cvm.v20170312.models.InstanceMarketOptionsRequest`
+        :param _Metadata: 自定义metadata，支持创建 CVM 时添加自定义元数据键值对。
+
+**注：内测中**。
+        :type Metadata: :class:`tencentcloud.cvm.v20170312.models.Metadata`
         :param _HpcClusterId: 高性能计算集群ID。
         :type HpcClusterId: str
         :param _CpuTopology: 描述了实例CPU拓扑结构的相关信息。若不指定该参数，则按系统资源情况决定。
@@ -12467,6 +12555,7 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
         self._HostName = None
         self._TagSpecification = None
         self._InstanceMarketOptions = None
+        self._Metadata = None
         self._HpcClusterId = None
         self._CpuTopology = None
         self._LaunchTemplate = None
@@ -12673,6 +12762,19 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
         self._InstanceMarketOptions = InstanceMarketOptions
 
     @property
+    def Metadata(self):
+        """自定义metadata，支持创建 CVM 时添加自定义元数据键值对。
+
+**注：内测中**。
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.Metadata`
+        """
+        return self._Metadata
+
+    @Metadata.setter
+    def Metadata(self, Metadata):
+        self._Metadata = Metadata
+
+    @property
     def HpcClusterId(self):
         """高性能计算集群ID。
         :rtype: str
@@ -12751,6 +12853,9 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
         if params.get("InstanceMarketOptions") is not None:
             self._InstanceMarketOptions = InstanceMarketOptionsRequest()
             self._InstanceMarketOptions._deserialize(params.get("InstanceMarketOptions"))
+        if params.get("Metadata") is not None:
+            self._Metadata = Metadata()
+            self._Metadata._deserialize(params.get("Metadata"))
         self._HpcClusterId = params.get("HpcClusterId")
         if params.get("CpuTopology") is not None:
             self._CpuTopology = CpuTopology()
@@ -16058,6 +16163,100 @@ class LoginSettings(AbstractModel):
         self._Password = params.get("Password")
         self._KeyIds = params.get("KeyIds")
         self._KeepImageLogin = params.get("KeepImageLogin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Metadata(AbstractModel):
+    """自定义metadata
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: 自定义metadata键值对列表。
+        :type Items: list of MetadataItem
+        """
+        self._Items = None
+
+    @property
+    def Items(self):
+        """自定义metadata键值对列表。
+        :rtype: list of MetadataItem
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = MetadataItem()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MetadataItem(AbstractModel):
+    """自定义metadata key和value
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 自定义metadata键，需符合正则 ^[a-zA-Z0-9_-]+$，长度 ≤128 字节（大小写敏感）；
+
+        :type Key: str
+        :param _Value: 自定义metadata值，支持任意数据（含二进制），大小 ≤256 KB（大小写敏感）；
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        """自定义metadata键，需符合正则 ^[a-zA-Z0-9_-]+$，长度 ≤128 字节（大小写敏感）；
+
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        """自定义metadata值，支持任意数据（含二进制），大小 ≤256 KB（大小写敏感）；
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21023,6 +21222,9 @@ class RunInstancesRequest(AbstractModel):
         :type InstanceMarketOptions: :class:`tencentcloud.cvm.v20170312.models.InstanceMarketOptionsRequest`
         :param _UserData: 提供给实例使用的用户数据，需要以 base64 方式编码，支持的最大数据大小为 16KB。关于获取此参数的详细介绍，请参阅[Windows](https://cloud.tencent.com/document/product/213/17526)和[Linux](https://cloud.tencent.com/document/product/213/17525)启动时运行命令。
         :type UserData: str
+        :param _Metadata: 自定义metadata，支持创建 CVM 时添加自定义元数据键值对。
+**注：内测中**。
+        :type Metadata: :class:`tencentcloud.cvm.v20170312.models.Metadata`
         :param _DryRun: 是否只预检此次请求。
 true：发送检查请求，不会创建实例。检查项包括是否填写了必需参数，请求格式，业务限制和云服务器库存。
 如果检查不通过，则返回对应错误码；
@@ -21065,6 +21267,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         self._TagSpecification = None
         self._InstanceMarketOptions = None
         self._UserData = None
+        self._Metadata = None
         self._DryRun = None
         self._CpuTopology = None
         self._CamRoleName = None
@@ -21310,6 +21513,18 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         self._UserData = UserData
 
     @property
+    def Metadata(self):
+        """自定义metadata，支持创建 CVM 时添加自定义元数据键值对。
+**注：内测中**。
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.Metadata`
+        """
+        return self._Metadata
+
+    @Metadata.setter
+    def Metadata(self, Metadata):
+        self._Metadata = Metadata
+
+    @property
     def DryRun(self):
         """是否只预检此次请求。
 true：发送检查请求，不会创建实例。检查项包括是否填写了必需参数，请求格式，业务限制和云服务器库存。
@@ -21452,6 +21667,9 @@ false（默认）：发送正常请求，通过检查后直接创建实例
             self._InstanceMarketOptions = InstanceMarketOptionsRequest()
             self._InstanceMarketOptions._deserialize(params.get("InstanceMarketOptions"))
         self._UserData = params.get("UserData")
+        if params.get("Metadata") is not None:
+            self._Metadata = Metadata()
+            self._Metadata._deserialize(params.get("Metadata"))
         self._DryRun = params.get("DryRun")
         if params.get("CpuTopology") is not None:
             self._CpuTopology = CpuTopology()

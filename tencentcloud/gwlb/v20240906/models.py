@@ -2704,10 +2704,8 @@ class TargetGroupBackend(AbstractModel):
         :param _RegisteredTime: 后端服务被绑定的时间
         :type RegisteredTime: str
         :param _EniId: 弹性网卡唯一ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type EniId: str
         :param _ZoneId: 后端服务的可用区ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneId: int
         """
         self._TargetGroupId = None
@@ -2824,7 +2822,6 @@ class TargetGroupBackend(AbstractModel):
     @property
     def EniId(self):
         """弹性网卡唯一ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EniId
@@ -2836,7 +2833,6 @@ class TargetGroupBackend(AbstractModel):
     @property
     def ZoneId(self):
         """后端服务的可用区ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ZoneId

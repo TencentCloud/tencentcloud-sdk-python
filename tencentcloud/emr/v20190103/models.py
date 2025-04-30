@@ -22775,6 +22775,8 @@ class NodeHardwareInfo(AbstractModel):
         :type TimingResource: bool
         :param _TkeClusterId: 资源类型（HardwareResourceType）为pod时，对应的TKE集群id
         :type TkeClusterId: str
+        :param _ConfigurableServices: 新挂磁盘时可支持配置的服务名称列表
+        :type ConfigurableServices: list of str
         """
         self._AppId = None
         self._SerialNo = None
@@ -22832,6 +22834,7 @@ class NodeHardwareInfo(AbstractModel):
         self._SharedClusterIdDesc = None
         self._TimingResource = None
         self._TkeClusterId = None
+        self._ConfigurableServices = None
 
     @property
     def AppId(self):
@@ -23456,6 +23459,17 @@ class NodeHardwareInfo(AbstractModel):
     def TkeClusterId(self, TkeClusterId):
         self._TkeClusterId = TkeClusterId
 
+    @property
+    def ConfigurableServices(self):
+        """新挂磁盘时可支持配置的服务名称列表
+        :rtype: list of str
+        """
+        return self._ConfigurableServices
+
+    @ConfigurableServices.setter
+    def ConfigurableServices(self, ConfigurableServices):
+        self._ConfigurableServices = ConfigurableServices
+
 
     def _deserialize(self, params):
         self._AppId = params.get("AppId")
@@ -23528,6 +23542,7 @@ class NodeHardwareInfo(AbstractModel):
         self._SharedClusterIdDesc = params.get("SharedClusterIdDesc")
         self._TimingResource = params.get("TimingResource")
         self._TkeClusterId = params.get("TkeClusterId")
+        self._ConfigurableServices = params.get("ConfigurableServices")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
