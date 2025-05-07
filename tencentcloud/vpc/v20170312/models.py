@@ -722,7 +722,6 @@ class Address(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type InternetChargeType: str
         :param _TagSet: 弹性公网IP关联的标签列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagSet: list of Tag
         :param _DeadlineDate: 到期时间。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -743,10 +742,8 @@ class Address(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type BandwidthPackageId: str
         :param _UnVpcId: 传统弹性公网IPv6所属vpc唯一ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type UnVpcId: str
         :param _DedicatedClusterId: CDC唯一ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type DedicatedClusterId: str
         """
         self._AddressId = None
@@ -990,7 +987,6 @@ class Address(AbstractModel):
     @property
     def TagSet(self):
         """弹性公网IP关联的标签列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._TagSet
@@ -1074,7 +1070,6 @@ class Address(AbstractModel):
     @property
     def UnVpcId(self):
         """传统弹性公网IPv6所属vpc唯一ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UnVpcId
@@ -1086,7 +1081,6 @@ class Address(AbstractModel):
     @property
     def DedicatedClusterId(self):
         """CDC唯一ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DedicatedClusterId
@@ -1844,33 +1838,37 @@ class AllocateAddressesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AddressCount: EIP数量。默认值：1。
+        :param _AddressCount: EIP数量。可申请的数量限制参考：[EIP 配额限制](https://cloud.tencent.com/document/product/1199/41648)。默认值：1。
         :type AddressCount: int
-        :param _InternetServiceProvider: EIP线路类型。默认值：BGP。
-<ul style="margin:0"><li>已开通静态单线IP白名单的用户，可选值：<ul><li>CMCC：中国移动</li>
+        :param _InternetServiceProvider: EIP线路类型。各种线路类型详情可参考：[EIP 的 IP 地址类型](https://cloud.tencent.com/document/product/1199/41646)。默认值：BGP。
+<ul style="margin:0"><li>BGP：常规 BGP 线路</li>
+<li>已开通静态单线IP白名单的用户，可选值：<ul><li>CMCC：中国移动</li>
 <li>CTCC：中国电信</li>
-<li>CUCC：中国联通</li></ul>注意：仅部分地域支持静态单线IP。</li></ul>
+<li>CUCC：中国联通</li></ul></li>注意：仅部分地域支持静态单线IP。</ul>
+
         :type InternetServiceProvider: str
         :param _InternetChargeType: EIP计费方式。
-<ul style="margin:0"><li>已开通标准账户类型白名单的用户，可选值：<ul><li>BANDWIDTH_PACKAGE：[共享带宽包](https://cloud.tencent.com/document/product/684/15255)付费（需额外开通共享带宽包白名单）</li>
+<ul style="margin:0"><li>标准账户类型，可选值：<ul><li>BANDWIDTH_PACKAGE：[共享带宽包](https://cloud.tencent.com/document/product/684/15255)付费</li>
 <li>BANDWIDTH_POSTPAID_BY_HOUR：带宽按小时后付费</li>
 <li>BANDWIDTH_PREPAID_BY_MONTH：包月按带宽预付费</li>
 <li>TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费</li></ul>默认值：TRAFFIC_POSTPAID_BY_HOUR。</li>
-<li>未开通标准账户类型白名单的用户，EIP计费方式与其绑定的实例的计费方式一致，无需传递此参数。</li></ul>
+<li>传统账户类型，无需传递此参数，EIP计费方式与其绑定的实例的计费方式一致，无需传递此参数。</li></ul>
         :type InternetChargeType: str
         :param _InternetMaxBandwidthOut: EIP出带宽上限，单位：Mbps。
-<ul style="margin:0"><li>已开通标准账户类型白名单的用户，可选值范围取决于EIP计费方式：<ul><li>BANDWIDTH_PACKAGE：1 Mbps 至 2000 Mbps</li>
+<ul style="margin:0"><li>标准账户类型EIP出带宽上限，可选值范围取决于EIP计费方式：<ul><li>BANDWIDTH_PACKAGE：1 Mbps 至 2000 Mbps</li>
 <li>BANDWIDTH_POSTPAID_BY_HOUR：1 Mbps 至 100 Mbps</li>
 <li>BANDWIDTH_PREPAID_BY_MONTH：1 Mbps 至 200 Mbps</li>
 <li>TRAFFIC_POSTPAID_BY_HOUR：1 Mbps 至 100 Mbps</li></ul>默认值：1 Mbps。</li>
-<li>未开通标准账户类型白名单的用户，EIP出带宽上限取决于与其绑定的实例的公网出带宽上限，无需传递此参数。</li></ul>
+<li>传统账户类型无需传递此参数，EIP出带宽上限取决于与其绑定的实例的公网出带宽上限，无需传递此参数。</li></ul>
         :type InternetMaxBandwidthOut: int
         :param _AddressChargePrepaid: 包月按带宽预付费EIP的计费参数。EIP为包月按带宽预付费时，该参数必传，其余场景不需传递
         :type AddressChargePrepaid: :class:`tencentcloud.vpc.v20170312.models.AddressChargePrepaid`
-        :param _AddressType: EIP类型。默认值：EIP。
-<ul style="margin:0"><li>已开通Anycast公网加速白名单的用户，可选值：<ul><li>AnycastEIP：加速IP，可参见 [Anycast 公网加速](https://cloud.tencent.com/document/product/644)</li></ul>注意：仅部分地域支持加速IP。</li></ul>
-<ul style="margin:0"><li>已开通精品IP白名单的用户，可选值：<ul><li>HighQualityEIP：精品IP</li></ul>注意：仅部分地域支持精品IP。</li></ul>
-<ul style="margin:0"><li>已开高防IP白名单的用户，可选值：<ul><li>AntiDDoSEIP：高防IP</li></ul>注意：仅部分地域支持高防IP。</li></ul>
+        :param _AddressType: EIP类型。各种EIP类型详情可参考：[EIP 的 IP 地址类型](https://cloud.tencent.com/document/product/1199/41646)。默认值：EIP。
+<li>EIP：弹性公网 IP。 </li>
+<li>AnycastEIP：加速 IP，已开通 [Anycast 公网加速](https://cloud.tencent.com/document/product/644)白名单的用户可选。仅部分地域支持加速IP。</li>
+<li>HighQualityEIP：精品 IP。仅部分地域支持精品IP。</li>
+<li>AntiDDoSEIP：高防 IP。仅部分地域支持高防IP。</li>
+
         :type AddressType: str
         :param _AnycastZone: Anycast发布域。
 <ul style="margin:0"><li>已开通Anycast公网加速白名单的用户，可选值：<ul><li>ANYCAST_ZONE_GLOBAL：全球发布域（需要额外开通Anycast全球加速白名单）</li><li>ANYCAST_ZONE_OVERSEAS：境外发布域</li><li><b>[已废弃]</b> ANYCAST_ZONE_A：发布域A（已更新为全球发布域）</li><li><b>[已废弃]</b> ANYCAST_ZONE_B：发布域B（已更新为全球发布域）</li></ul>默认值：ANYCAST_ZONE_OVERSEAS。</li></ul>
@@ -1923,7 +1921,7 @@ AnycastEIP是否用于绑定负载均衡。
 
     @property
     def AddressCount(self):
-        """EIP数量。默认值：1。
+        """EIP数量。可申请的数量限制参考：[EIP 配额限制](https://cloud.tencent.com/document/product/1199/41648)。默认值：1。
         :rtype: int
         """
         return self._AddressCount
@@ -1934,10 +1932,12 @@ AnycastEIP是否用于绑定负载均衡。
 
     @property
     def InternetServiceProvider(self):
-        """EIP线路类型。默认值：BGP。
-<ul style="margin:0"><li>已开通静态单线IP白名单的用户，可选值：<ul><li>CMCC：中国移动</li>
+        """EIP线路类型。各种线路类型详情可参考：[EIP 的 IP 地址类型](https://cloud.tencent.com/document/product/1199/41646)。默认值：BGP。
+<ul style="margin:0"><li>BGP：常规 BGP 线路</li>
+<li>已开通静态单线IP白名单的用户，可选值：<ul><li>CMCC：中国移动</li>
 <li>CTCC：中国电信</li>
-<li>CUCC：中国联通</li></ul>注意：仅部分地域支持静态单线IP。</li></ul>
+<li>CUCC：中国联通</li></ul></li>注意：仅部分地域支持静态单线IP。</ul>
+
         :rtype: str
         """
         return self._InternetServiceProvider
@@ -1949,11 +1949,11 @@ AnycastEIP是否用于绑定负载均衡。
     @property
     def InternetChargeType(self):
         """EIP计费方式。
-<ul style="margin:0"><li>已开通标准账户类型白名单的用户，可选值：<ul><li>BANDWIDTH_PACKAGE：[共享带宽包](https://cloud.tencent.com/document/product/684/15255)付费（需额外开通共享带宽包白名单）</li>
+<ul style="margin:0"><li>标准账户类型，可选值：<ul><li>BANDWIDTH_PACKAGE：[共享带宽包](https://cloud.tencent.com/document/product/684/15255)付费</li>
 <li>BANDWIDTH_POSTPAID_BY_HOUR：带宽按小时后付费</li>
 <li>BANDWIDTH_PREPAID_BY_MONTH：包月按带宽预付费</li>
 <li>TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费</li></ul>默认值：TRAFFIC_POSTPAID_BY_HOUR。</li>
-<li>未开通标准账户类型白名单的用户，EIP计费方式与其绑定的实例的计费方式一致，无需传递此参数。</li></ul>
+<li>传统账户类型，无需传递此参数，EIP计费方式与其绑定的实例的计费方式一致，无需传递此参数。</li></ul>
         :rtype: str
         """
         return self._InternetChargeType
@@ -1965,11 +1965,11 @@ AnycastEIP是否用于绑定负载均衡。
     @property
     def InternetMaxBandwidthOut(self):
         """EIP出带宽上限，单位：Mbps。
-<ul style="margin:0"><li>已开通标准账户类型白名单的用户，可选值范围取决于EIP计费方式：<ul><li>BANDWIDTH_PACKAGE：1 Mbps 至 2000 Mbps</li>
+<ul style="margin:0"><li>标准账户类型EIP出带宽上限，可选值范围取决于EIP计费方式：<ul><li>BANDWIDTH_PACKAGE：1 Mbps 至 2000 Mbps</li>
 <li>BANDWIDTH_POSTPAID_BY_HOUR：1 Mbps 至 100 Mbps</li>
 <li>BANDWIDTH_PREPAID_BY_MONTH：1 Mbps 至 200 Mbps</li>
 <li>TRAFFIC_POSTPAID_BY_HOUR：1 Mbps 至 100 Mbps</li></ul>默认值：1 Mbps。</li>
-<li>未开通标准账户类型白名单的用户，EIP出带宽上限取决于与其绑定的实例的公网出带宽上限，无需传递此参数。</li></ul>
+<li>传统账户类型无需传递此参数，EIP出带宽上限取决于与其绑定的实例的公网出带宽上限，无需传递此参数。</li></ul>
         :rtype: int
         """
         return self._InternetMaxBandwidthOut
@@ -1991,10 +1991,12 @@ AnycastEIP是否用于绑定负载均衡。
 
     @property
     def AddressType(self):
-        """EIP类型。默认值：EIP。
-<ul style="margin:0"><li>已开通Anycast公网加速白名单的用户，可选值：<ul><li>AnycastEIP：加速IP，可参见 [Anycast 公网加速](https://cloud.tencent.com/document/product/644)</li></ul>注意：仅部分地域支持加速IP。</li></ul>
-<ul style="margin:0"><li>已开通精品IP白名单的用户，可选值：<ul><li>HighQualityEIP：精品IP</li></ul>注意：仅部分地域支持精品IP。</li></ul>
-<ul style="margin:0"><li>已开高防IP白名单的用户，可选值：<ul><li>AntiDDoSEIP：高防IP</li></ul>注意：仅部分地域支持高防IP。</li></ul>
+        """EIP类型。各种EIP类型详情可参考：[EIP 的 IP 地址类型](https://cloud.tencent.com/document/product/1199/41646)。默认值：EIP。
+<li>EIP：弹性公网 IP。 </li>
+<li>AnycastEIP：加速 IP，已开通 [Anycast 公网加速](https://cloud.tencent.com/document/product/644)白名单的用户可选。仅部分地域支持加速IP。</li>
+<li>HighQualityEIP：精品 IP。仅部分地域支持精品IP。</li>
+<li>AntiDDoSEIP：高防 IP。仅部分地域支持高防IP。</li>
+
         :rtype: str
         """
         return self._AddressType
@@ -2233,24 +2235,27 @@ class AllocateIPv6AddressesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AddressName: EIP名称，用于申请EIP时用户自定义该EIP的个性化名称，默认值：未命名。
+        :param _AddressName: EIP名称，用于申请EIP时用户自定义该EIP的个性化名称。长度上限为128个字符，允许使用大小写字母、汉字、数字、连字符"-"和下划线"_"，不能包含空格。
+默认值：未命名
         :type AddressName: str
         :param _AddressType: 弹性公网IPv6类型，可选值：
 
-- EIPv6：普通IPv6
-- HighQualityEIPv6：精品IPv6
-注意：需联系产品开通精品IPv6白名单，且仅部分地域支持精品IPv6
+- EIPv6：弹性公网IPv6
+- HighQualityEIPv6：精品BGP线路弹性公网IPv6
+注意：弹性公网IPv6产品需开白才能使用，其中精品BGP线路仅在中国香港支持。
 
-默认值：EIPv6。
+默认值：EIPv6
         :type AddressType: str
-        :param _AddressCount: 申请的弹性公网IPv6数量，默认值：1。
+        :param _AddressCount: 申请的弹性公网IPv6数量。单次最多可以申请20个弹性公网IPv6实例，总配额请参见[弹性公网 IPv6 配额说明](https://cloud.tencent.com/document/product/1142/38369)。
+
+默认值：1
         :type AddressCount: int
         :param _InternetChargeType: 弹性公网IPv6计费方式，可选值：
 
 - BANDWIDTH_PACKAGE：[共享带宽包](https://cloud.tencent.com/document/product/684/15255)付费
 - TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费
 
-默认值：TRAFFIC_POSTPAID_BY_HOUR。
+默认值：TRAFFIC_POSTPAID_BY_HOUR
         :type InternetChargeType: str
         :param _InternetServiceProvider: 弹性公网IPv6线路类型，默认值：BGP。
 
@@ -2258,18 +2263,18 @@ class AllocateIPv6AddressesRequest(AbstractModel):
 - CMCC：中国移动
 - CTCC：中国电信
 - CUCC：中国联通
-注意：仅部分地域支持静态单线IP。
+注意：仅部分地域支持静态单线IP。具体请以控制台购买页展示为准。
         :type InternetServiceProvider: str
         :param _InternetMaxBandwidthOut: 弹性公网IPv6带宽上限，单位：Mbps。
 
 可选值范围取决于EIP计费方式：
 
-- BANDWIDTH_PACKAGE：1 Mbps 至 2000 Mbps
-- TRAFFIC_POSTPAID_BY_HOUR：1 Mbps 至 100 Mbps
+- BANDWIDTH_PACKAGE（共享带宽包付费）：1 Mbps 至 2000 Mbps
+- TRAFFIC_POSTPAID_BY_HOUR（流量按小时后付费）：1 Mbps 至 100 Mbps
 
-默认值：1 Mbps。
+默认值：1
         :type InternetMaxBandwidthOut: int
-        :param _BandwidthPackageId: 带宽包唯一ID参数。
+        :param _BandwidthPackageId: 带宽包唯一ID参数。可以使用[DescribeBandwidthPackages](https://cloud.tencent.com/document/product/215/19209)接口查询BandwidthPackageId。
 设定该参数且InternetChargeType为BANDWIDTH_PACKAGE，则表示创建的EIP加入该BGP带宽包并采用带宽包计费。
         :type BandwidthPackageId: str
         :param _Tags: 需要关联的标签列表。
@@ -2278,10 +2283,9 @@ class AllocateIPv6AddressesRequest(AbstractModel):
 
 - CENTER_EGRESS_1：中心出口一
 - CENTER_EGRESS_2：中心出口二
-- CENTER_EGRESS_3：中心出口三
-注意：不同运营商或资源类型对应的网络出口需要联系产品开白
+注意：不同地域支持的线路类型、网络出口略有差异，请以控制台展示为准。
 
-默认值：CENTER_EGRESS_1。
+默认值：CENTER_EGRESS_1
         :type Egress: str
         """
         self._AddressName = None
@@ -2296,7 +2300,8 @@ class AllocateIPv6AddressesRequest(AbstractModel):
 
     @property
     def AddressName(self):
-        """EIP名称，用于申请EIP时用户自定义该EIP的个性化名称，默认值：未命名。
+        """EIP名称，用于申请EIP时用户自定义该EIP的个性化名称。长度上限为128个字符，允许使用大小写字母、汉字、数字、连字符"-"和下划线"_"，不能包含空格。
+默认值：未命名
         :rtype: str
         """
         return self._AddressName
@@ -2309,11 +2314,11 @@ class AllocateIPv6AddressesRequest(AbstractModel):
     def AddressType(self):
         """弹性公网IPv6类型，可选值：
 
-- EIPv6：普通IPv6
-- HighQualityEIPv6：精品IPv6
-注意：需联系产品开通精品IPv6白名单，且仅部分地域支持精品IPv6
+- EIPv6：弹性公网IPv6
+- HighQualityEIPv6：精品BGP线路弹性公网IPv6
+注意：弹性公网IPv6产品需开白才能使用，其中精品BGP线路仅在中国香港支持。
 
-默认值：EIPv6。
+默认值：EIPv6
         :rtype: str
         """
         return self._AddressType
@@ -2324,7 +2329,9 @@ class AllocateIPv6AddressesRequest(AbstractModel):
 
     @property
     def AddressCount(self):
-        """申请的弹性公网IPv6数量，默认值：1。
+        """申请的弹性公网IPv6数量。单次最多可以申请20个弹性公网IPv6实例，总配额请参见[弹性公网 IPv6 配额说明](https://cloud.tencent.com/document/product/1142/38369)。
+
+默认值：1
         :rtype: int
         """
         return self._AddressCount
@@ -2340,7 +2347,7 @@ class AllocateIPv6AddressesRequest(AbstractModel):
 - BANDWIDTH_PACKAGE：[共享带宽包](https://cloud.tencent.com/document/product/684/15255)付费
 - TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费
 
-默认值：TRAFFIC_POSTPAID_BY_HOUR。
+默认值：TRAFFIC_POSTPAID_BY_HOUR
         :rtype: str
         """
         return self._InternetChargeType
@@ -2357,7 +2364,7 @@ class AllocateIPv6AddressesRequest(AbstractModel):
 - CMCC：中国移动
 - CTCC：中国电信
 - CUCC：中国联通
-注意：仅部分地域支持静态单线IP。
+注意：仅部分地域支持静态单线IP。具体请以控制台购买页展示为准。
         :rtype: str
         """
         return self._InternetServiceProvider
@@ -2372,10 +2379,10 @@ class AllocateIPv6AddressesRequest(AbstractModel):
 
 可选值范围取决于EIP计费方式：
 
-- BANDWIDTH_PACKAGE：1 Mbps 至 2000 Mbps
-- TRAFFIC_POSTPAID_BY_HOUR：1 Mbps 至 100 Mbps
+- BANDWIDTH_PACKAGE（共享带宽包付费）：1 Mbps 至 2000 Mbps
+- TRAFFIC_POSTPAID_BY_HOUR（流量按小时后付费）：1 Mbps 至 100 Mbps
 
-默认值：1 Mbps。
+默认值：1
         :rtype: int
         """
         return self._InternetMaxBandwidthOut
@@ -2386,7 +2393,7 @@ class AllocateIPv6AddressesRequest(AbstractModel):
 
     @property
     def BandwidthPackageId(self):
-        """带宽包唯一ID参数。
+        """带宽包唯一ID参数。可以使用[DescribeBandwidthPackages](https://cloud.tencent.com/document/product/215/19209)接口查询BandwidthPackageId。
 设定该参数且InternetChargeType为BANDWIDTH_PACKAGE，则表示创建的EIP加入该BGP带宽包并采用带宽包计费。
         :rtype: str
         """
@@ -2413,10 +2420,9 @@ class AllocateIPv6AddressesRequest(AbstractModel):
 
 - CENTER_EGRESS_1：中心出口一
 - CENTER_EGRESS_2：中心出口二
-- CENTER_EGRESS_3：中心出口三
-注意：不同运营商或资源类型对应的网络出口需要联系产品开白
+注意：不同地域支持的线路类型、网络出口略有差异，请以控制台展示为准。
 
-默认值：CENTER_EGRESS_1。
+默认值：CENTER_EGRESS_1
         :rtype: str
         """
         return self._Egress
@@ -3278,7 +3284,7 @@ class AssociateAddressRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AddressId: 标识 EIP 的唯一 ID。EIP 唯一 ID 形如：`eip-11112222`。
+        :param _AddressId: 标识 EIP 的唯一 ID。可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取AddressId。EIP 唯一 ID 形如：`eip-11112222`。
         :type AddressId: str
         :param _InstanceId: 要绑定的实例 ID。实例 ID 形如：`ins-11112222`、`lb-11112222`。可通过登录[控制台](https://console.cloud.tencent.com/cvm)查询，也可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的`InstanceId`获取。
         :type InstanceId: str
@@ -3300,7 +3306,7 @@ class AssociateAddressRequest(AbstractModel):
 
     @property
     def AddressId(self):
-        """标识 EIP 的唯一 ID。EIP 唯一 ID 形如：`eip-11112222`。
+        """标识 EIP 的唯一 ID。可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取AddressId。EIP 唯一 ID 形如：`eip-11112222`。
         :rtype: str
         """
         return self._AddressId
@@ -4663,7 +4669,6 @@ class BandwidthPackage(AbstractModel):
         :param _Bandwidth: 带宽包限速大小。单位：Mbps，-1表示不限速。
         :type Bandwidth: int
         :param _Egress: 网络出口
-注意：此字段可能返回 null，表示取不到有效值。
         :type Egress: str
         :param _Deadline: 带宽包到期时间，只有预付费会返回，按量计费返回为null
 注意：此字段可能返回 null，表示取不到有效值。
@@ -4783,7 +4788,6 @@ class BandwidthPackage(AbstractModel):
     @property
     def Egress(self):
         """网络出口
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Egress
@@ -34381,17 +34385,22 @@ class DescribeSpecificTrafficPackageUsedDetailsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TrafficPackageId: 共享流量包唯一ID
+        :param _TrafficPackageId: 共享流量包唯一ID。可以使用[DescribeTrafficPackages](https://cloud.tencent.com/document/product/215/80090?locationSource=from%3Ddoc-search%26scope%3Dcurrent%26keyword%3D%E6%B5%81%E9%87%8F%E5%8C%85)接口获取TrafficPackageId。
         :type TrafficPackageId: str
-        :param _Filters: 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。详细的过滤条件如下：<li> resource-id - String - 是否必填：否 - （过滤条件）按照抵扣流量资源的唯一 ID 过滤。</li><li> resource-type - String - 是否必填：否 - （过滤条件）按照资源类型过滤，资源类型包括 CVM 和 EIP </li>
+        :param _Filters: 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。详细的过滤条件如下：<ul style="margin:0"><li> resource-type - String - 是否必填：否 - （过滤条件）按照资源类型过滤，资源类型包括 EIP、BWP、LB。 </li>
+<li> resource-id - String - 是否必填：否 - （过滤条件）按照抵扣流量资源的唯一 ID 过滤。以下补充资源ID获取方式：<ul><li>EIP：可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取资源ID。</li>
+<li>BWP：可以使用[DescribeBandwidthPackages](https://cloud.tencent.com/document/product/215/19209)接口获取资源ID。</li>
+<li>LB：可以使用[DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685)接口获取资源ID。</li></ul></li></ul>
         :type Filters: list of Filter
         :param _OrderField: 排序条件。该参数仅支持根据抵扣量排序，传值为 deduction
         :type OrderField: str
         :param _OrderType: 排序类型，仅支持0和1，0-降序，1-升序。不传默认为0
         :type OrderType: int
-        :param _StartTime: 开始时间。不传默认为当前时间往前推30天
+        :param _StartTime: 开始时间。待查询的共享流量包用量开始时间。不传默认为当前时间往前推30天。
+时间格式：YYYY-MM-DD hh:mm:ss
         :type StartTime: str
-        :param _EndTime: 结束时间。不传默认为当前时间
+        :param _EndTime: 结束时间。待查询的共享流量包用量结束时间。不传默认为当前时间。
+时间格式：YYYY-MM-DD hh:mm:ss
         :type EndTime: str
         :param _Offset: 偏移量，默认为0。关于Offset的更进一步介绍请参考 API 中的相关小节
         :type Offset: int
@@ -34409,7 +34418,7 @@ class DescribeSpecificTrafficPackageUsedDetailsRequest(AbstractModel):
 
     @property
     def TrafficPackageId(self):
-        """共享流量包唯一ID
+        """共享流量包唯一ID。可以使用[DescribeTrafficPackages](https://cloud.tencent.com/document/product/215/80090?locationSource=from%3Ddoc-search%26scope%3Dcurrent%26keyword%3D%E6%B5%81%E9%87%8F%E5%8C%85)接口获取TrafficPackageId。
         :rtype: str
         """
         return self._TrafficPackageId
@@ -34420,7 +34429,10 @@ class DescribeSpecificTrafficPackageUsedDetailsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。详细的过滤条件如下：<li> resource-id - String - 是否必填：否 - （过滤条件）按照抵扣流量资源的唯一 ID 过滤。</li><li> resource-type - String - 是否必填：否 - （过滤条件）按照资源类型过滤，资源类型包括 CVM 和 EIP </li>
+        """每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。详细的过滤条件如下：<ul style="margin:0"><li> resource-type - String - 是否必填：否 - （过滤条件）按照资源类型过滤，资源类型包括 EIP、BWP、LB。 </li>
+<li> resource-id - String - 是否必填：否 - （过滤条件）按照抵扣流量资源的唯一 ID 过滤。以下补充资源ID获取方式：<ul><li>EIP：可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取资源ID。</li>
+<li>BWP：可以使用[DescribeBandwidthPackages](https://cloud.tencent.com/document/product/215/19209)接口获取资源ID。</li>
+<li>LB：可以使用[DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685)接口获取资源ID。</li></ul></li></ul>
         :rtype: list of Filter
         """
         return self._Filters
@@ -34453,7 +34465,8 @@ class DescribeSpecificTrafficPackageUsedDetailsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间。不传默认为当前时间往前推30天
+        """开始时间。待查询的共享流量包用量开始时间。不传默认为当前时间往前推30天。
+时间格式：YYYY-MM-DD hh:mm:ss
         :rtype: str
         """
         return self._StartTime
@@ -34464,7 +34477,8 @@ class DescribeSpecificTrafficPackageUsedDetailsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间。不传默认为当前时间
+        """结束时间。待查询的共享流量包用量结束时间。不传默认为当前时间。
+时间格式：YYYY-MM-DD hh:mm:ss
         :rtype: str
         """
         return self._EndTime
@@ -34851,9 +34865,9 @@ class DescribeTaskResultRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 异步任务ID。TaskId和DealName必填一个参数
+        :param _TaskId: 异步任务ID。从异步任务接口返回结果中查看。例如：[AllocateAddresses](https://cloud.tencent.com/document/product/215/16699)接口。TaskId和DealName必填一个参数。
         :type TaskId: int
-        :param _DealName: 计费订单号。TaskId和DealName必填一个参数
+        :param _DealName: 计费订单号。在控制台中的[费用中心-订单管理](https://console.cloud.tencent.com/expense/deal)中查看订单号。TaskId和DealName必填一个参数。
         :type DealName: str
         """
         self._TaskId = None
@@ -34861,7 +34875,7 @@ class DescribeTaskResultRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """异步任务ID。TaskId和DealName必填一个参数
+        """异步任务ID。从异步任务接口返回结果中查看。例如：[AllocateAddresses](https://cloud.tencent.com/document/product/215/16699)接口。TaskId和DealName必填一个参数。
         :rtype: int
         """
         return self._TaskId
@@ -34872,7 +34886,7 @@ class DescribeTaskResultRequest(AbstractModel):
 
     @property
     def DealName(self):
-        """计费订单号。TaskId和DealName必填一个参数
+        """计费订单号。在控制台中的[费用中心-订单管理](https://console.cloud.tencent.com/expense/deal)中查看订单号。TaskId和DealName必填一个参数。
         :rtype: str
         """
         return self._DealName
@@ -34904,7 +34918,7 @@ class DescribeTaskResultResponse(AbstractModel):
         r"""
         :param _TaskId: 任务ID
         :type TaskId: int
-        :param _Result: 执行结果，包括"SUCCESS", "FAILED", "RUNNING"
+        :param _Result: 执行结果，包括"SUCCESS"：异步任务执行成功, "FAILED"：异步任务执行失败, "RUNNING"：异步任务执行中
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -34926,7 +34940,7 @@ class DescribeTaskResultResponse(AbstractModel):
 
     @property
     def Result(self):
-        """执行结果，包括"SUCCESS", "FAILED", "RUNNING"
+        """执行结果，包括"SUCCESS"：异步任务执行成功, "FAILED"：异步任务执行失败, "RUNNING"：异步任务执行中
         :rtype: str
         """
         return self._Result
@@ -40068,9 +40082,9 @@ class DisassociateAddressRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AddressId: 标识 EIP 的唯一 ID。EIP 唯一 ID 形如：`eip-11112222`。
+        :param _AddressId: 标识 EIP 的唯一 ID。EIP 唯一 ID 形如：`eip-11112222`。可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取AddressId。
         :type AddressId: str
-        :param _ReallocateNormalPublicIp: 表示解绑 EIP 之后是否分配普通公网 IP。取值范围：<br><li />TRUE：表示解绑 EIP 之后分配普通公网 IP。<br><li />FALSE：表示解绑 EIP 之后不分配普通公网 IP。<br>默认取值：FALSE。<br><br>只有满足以下条件时才能指定该参数：<br><li /> 只有在解绑主网卡的主内网 IP 上的 EIP 时才能指定该参数。<br><li />解绑 EIP 后重新分配普通公网 IP 操作一个账号每天最多操作 10 次；详情可通过 [DescribeAddressQuota](https://cloud.tencent.com/document/api/213/1378) 接口获取。
+        :param _ReallocateNormalPublicIp: 表示解绑 EIP 之后是否分配普通公网 IP。取值范围：<li>TRUE：表示解绑 EIP 之后分配普通公网 IP。</li><li>FALSE：表示解绑 EIP 之后不分配普通公网 IP。</li>默认取值：FALSE。<br><br>只有满足以下条件时才能指定该参数：<li>只有在解绑主网卡的主内网 IP 上的 EIP 时才能指定该参数。</li><li>解绑 EIP 后重新分配普通公网 IP 操作一个账号每天最多操作 10 次；详情可通过 [DescribeAddressQuota](https://cloud.tencent.com/document/api/213/1378) 接口获取。</li>
         :type ReallocateNormalPublicIp: bool
         """
         self._AddressId = None
@@ -40078,7 +40092,7 @@ class DisassociateAddressRequest(AbstractModel):
 
     @property
     def AddressId(self):
-        """标识 EIP 的唯一 ID。EIP 唯一 ID 形如：`eip-11112222`。
+        """标识 EIP 的唯一 ID。EIP 唯一 ID 形如：`eip-11112222`。可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取AddressId。
         :rtype: str
         """
         return self._AddressId
@@ -40089,7 +40103,7 @@ class DisassociateAddressRequest(AbstractModel):
 
     @property
     def ReallocateNormalPublicIp(self):
-        """表示解绑 EIP 之后是否分配普通公网 IP。取值范围：<br><li />TRUE：表示解绑 EIP 之后分配普通公网 IP。<br><li />FALSE：表示解绑 EIP 之后不分配普通公网 IP。<br>默认取值：FALSE。<br><br>只有满足以下条件时才能指定该参数：<br><li /> 只有在解绑主网卡的主内网 IP 上的 EIP 时才能指定该参数。<br><li />解绑 EIP 后重新分配普通公网 IP 操作一个账号每天最多操作 10 次；详情可通过 [DescribeAddressQuota](https://cloud.tencent.com/document/api/213/1378) 接口获取。
+        """表示解绑 EIP 之后是否分配普通公网 IP。取值范围：<li>TRUE：表示解绑 EIP 之后分配普通公网 IP。</li><li>FALSE：表示解绑 EIP 之后不分配普通公网 IP。</li>默认取值：FALSE。<br><br>只有满足以下条件时才能指定该参数：<li>只有在解绑主网卡的主内网 IP 上的 EIP 时才能指定该参数。</li><li>解绑 EIP 后重新分配普通公网 IP 操作一个账号每天最多操作 10 次；详情可通过 [DescribeAddressQuota](https://cloud.tencent.com/document/api/213/1378) 接口获取。</li>
         :rtype: bool
         """
         return self._ReallocateNormalPublicIp
@@ -47409,11 +47423,12 @@ class ModifyAddressAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AddressId: 标识 EIP 的唯一 ID。EIP 唯一 ID 形如：`eip-11112222`。
+        :param _AddressId: 标识 EIP 的唯一 ID。EIP 唯一 ID 形如：`eip-11112222`。可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取AddressId。
         :type AddressId: str
-        :param _AddressName: 修改后的 EIP 名称。长度上限为128个字符。
+        :param _AddressName: 修改后的 EIP 名称。长度上限为128个字符，允许使用大小写字母、汉字、数字、连字符"-"和下划线"\_"，不能包含空格。
         :type AddressName: str
-        :param _EipDirectConnection: 设定EIP是否直通，"TRUE"表示直通，"FALSE"表示非直通。注意该参数仅对EIP直通功能可见的用户可以设定。
+        :param _EipDirectConnection: 设定EIP是否直通，"TRUE"表示直通，"FALSE"表示非直通。
+注意：该参数仅对 EIP 直通功能可见的用户可以设定，EIP 必须为绑定状态，绑定的对象为 CVM 。
         :type EipDirectConnection: str
         """
         self._AddressId = None
@@ -47422,7 +47437,7 @@ class ModifyAddressAttributeRequest(AbstractModel):
 
     @property
     def AddressId(self):
-        """标识 EIP 的唯一 ID。EIP 唯一 ID 形如：`eip-11112222`。
+        """标识 EIP 的唯一 ID。EIP 唯一 ID 形如：`eip-11112222`。可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取AddressId。
         :rtype: str
         """
         return self._AddressId
@@ -47433,7 +47448,7 @@ class ModifyAddressAttributeRequest(AbstractModel):
 
     @property
     def AddressName(self):
-        """修改后的 EIP 名称。长度上限为128个字符。
+        """修改后的 EIP 名称。长度上限为128个字符，允许使用大小写字母、汉字、数字、连字符"-"和下划线"\_"，不能包含空格。
         :rtype: str
         """
         return self._AddressName
@@ -47444,7 +47459,8 @@ class ModifyAddressAttributeRequest(AbstractModel):
 
     @property
     def EipDirectConnection(self):
-        """设定EIP是否直通，"TRUE"表示直通，"FALSE"表示非直通。注意该参数仅对EIP直通功能可见的用户可以设定。
+        """设定EIP是否直通，"TRUE"表示直通，"FALSE"表示非直通。
+注意：该参数仅对 EIP 直通功能可见的用户可以设定，EIP 必须为绑定状态，绑定的对象为 CVM 。
         :rtype: str
         """
         return self._EipDirectConnection
@@ -47503,13 +47519,16 @@ class ModifyAddressInternetChargeTypeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AddressId: 弹性公网IP的唯一ID，形如eip-xxx
+        :param _AddressId: 弹性公网IP的唯一ID，形如eip-xxx，可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取AddressId。
         :type AddressId: str
-        :param _InternetChargeType: 弹性公网IP调整目标计费模式，支持 "BANDWIDTH_PREPAID_BY_MONTH"、"TRAFFIC_POSTPAID_BY_HOUR"、"BANDWIDTH_POSTPAID_BY_HOUR"
+        :param _InternetChargeType: 弹性公网IP调整目标计费模式，支持：
+BANDWIDTH_PREPAID_BY_MONTH：包月按带宽预付费
+TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费
+BANDWIDTH_POSTPAID_BY_HOUR：带宽按小时后付费
         :type InternetChargeType: str
-        :param _InternetMaxBandwidthOut: 弹性公网IP调整目标带宽值
+        :param _InternetMaxBandwidthOut: 弹性公网IP调整目标带宽值，可调整的带宽上限值参考产品文档[带宽上限](https://cloud.tencent.com/document/product/1199/48333)。
         :type InternetMaxBandwidthOut: int
-        :param _AddressChargePrepaid: 包月带宽网络计费模式参数。弹性公网IP的调整目标计费模式是"BANDWIDTH_PREPAID_BY_MONTH"时，必传该参数。
+        :param _AddressChargePrepaid: 包月带宽网络计费模式参数。弹性公网IP的调整目标计费模式是 BANDWIDTH_PREPAID_BY_MONTH（包月按带宽预付费）时，必传该参数。
         :type AddressChargePrepaid: :class:`tencentcloud.vpc.v20170312.models.AddressChargePrepaid`
         """
         self._AddressId = None
@@ -47519,7 +47538,7 @@ class ModifyAddressInternetChargeTypeRequest(AbstractModel):
 
     @property
     def AddressId(self):
-        """弹性公网IP的唯一ID，形如eip-xxx
+        """弹性公网IP的唯一ID，形如eip-xxx，可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取AddressId。
         :rtype: str
         """
         return self._AddressId
@@ -47530,7 +47549,10 @@ class ModifyAddressInternetChargeTypeRequest(AbstractModel):
 
     @property
     def InternetChargeType(self):
-        """弹性公网IP调整目标计费模式，支持 "BANDWIDTH_PREPAID_BY_MONTH"、"TRAFFIC_POSTPAID_BY_HOUR"、"BANDWIDTH_POSTPAID_BY_HOUR"
+        """弹性公网IP调整目标计费模式，支持：
+BANDWIDTH_PREPAID_BY_MONTH：包月按带宽预付费
+TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费
+BANDWIDTH_POSTPAID_BY_HOUR：带宽按小时后付费
         :rtype: str
         """
         return self._InternetChargeType
@@ -47541,7 +47563,7 @@ class ModifyAddressInternetChargeTypeRequest(AbstractModel):
 
     @property
     def InternetMaxBandwidthOut(self):
-        """弹性公网IP调整目标带宽值
+        """弹性公网IP调整目标带宽值，可调整的带宽上限值参考产品文档[带宽上限](https://cloud.tencent.com/document/product/1199/48333)。
         :rtype: int
         """
         return self._InternetMaxBandwidthOut
@@ -47552,7 +47574,7 @@ class ModifyAddressInternetChargeTypeRequest(AbstractModel):
 
     @property
     def AddressChargePrepaid(self):
-        """包月带宽网络计费模式参数。弹性公网IP的调整目标计费模式是"BANDWIDTH_PREPAID_BY_MONTH"时，必传该参数。
+        """包月带宽网络计费模式参数。弹性公网IP的调整目标计费模式是 BANDWIDTH_PREPAID_BY_MONTH（包月按带宽预付费）时，必传该参数。
         :rtype: :class:`tencentcloud.vpc.v20170312.models.AddressChargePrepaid`
         """
         return self._AddressChargePrepaid
@@ -47822,9 +47844,10 @@ class ModifyAddressesBandwidthRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AddressIds: EIP唯一标识ID列表，形如'eip-xxxx'
+        :param _AddressIds: EIP唯一标识ID列表，形如'eip-xxxx'，可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取AddressId。
+
         :type AddressIds: list of str
-        :param _InternetMaxBandwidthOut: 调整带宽目标值
+        :param _InternetMaxBandwidthOut: 调整带宽目标值，可调整的带宽上限值参考产品文档[带宽上限](https://cloud.tencent.com/document/product/1199/48333)。
         :type InternetMaxBandwidthOut: int
         :param _StartTime: 包月带宽起始时间(已废弃，输入无效)
         :type StartTime: str
@@ -47838,7 +47861,8 @@ class ModifyAddressesBandwidthRequest(AbstractModel):
 
     @property
     def AddressIds(self):
-        """EIP唯一标识ID列表，形如'eip-xxxx'
+        """EIP唯一标识ID列表，形如'eip-xxxx'，可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取AddressId。
+
         :rtype: list of str
         """
         return self._AddressIds
@@ -47849,7 +47873,7 @@ class ModifyAddressesBandwidthRequest(AbstractModel):
 
     @property
     def InternetMaxBandwidthOut(self):
-        """调整带宽目标值
+        """调整带宽目标值，可调整的带宽上限值参考产品文档[带宽上限](https://cloud.tencent.com/document/product/1199/48333)。
         :rtype: int
         """
         return self._InternetMaxBandwidthOut
@@ -49758,9 +49782,9 @@ class ModifyIPv6AddressesAttributesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IPv6AddressIds: 弹性公网IPv6唯一ID列表。
+        :param _IPv6AddressIds: 弹性公网IPv6唯一ID列表。可以使用[DescribeIPv6Addresses](https://cloud.tencent.com/document/api/215/113677)接口获取IPv6AddressIds。
         :type IPv6AddressIds: list of str
-        :param _IPv6AddressName: 弹性公网IPv6地址名称
+        :param _IPv6AddressName: 弹性公网IPv6地址名称，长度上限为128个字符，允许使用大小写字母、汉字、数字、连字符"-"和下划线"_"，不能包含空格。
         :type IPv6AddressName: str
         """
         self._IPv6AddressIds = None
@@ -49768,7 +49792,7 @@ class ModifyIPv6AddressesAttributesRequest(AbstractModel):
 
     @property
     def IPv6AddressIds(self):
-        """弹性公网IPv6唯一ID列表。
+        """弹性公网IPv6唯一ID列表。可以使用[DescribeIPv6Addresses](https://cloud.tencent.com/document/api/215/113677)接口获取IPv6AddressIds。
         :rtype: list of str
         """
         return self._IPv6AddressIds
@@ -49779,7 +49803,7 @@ class ModifyIPv6AddressesAttributesRequest(AbstractModel):
 
     @property
     def IPv6AddressName(self):
-        """弹性公网IPv6地址名称
+        """弹性公网IPv6地址名称，长度上限为128个字符，允许使用大小写字母、汉字、数字、连字符"-"和下划线"_"，不能包含空格。
         :rtype: str
         """
         return self._IPv6AddressName
@@ -49916,11 +49940,11 @@ class ModifyIp6AddressesBandwidthRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InternetMaxBandwidthOut: 修改的目标带宽，单位Mbps
+        :param _InternetMaxBandwidthOut: 修改的目标带宽，单位Mbps。可调整的带宽上限值参考产品文档中[IPv6 计费限制说明](https://cloud.tencent.com/document/product/1142/38369)。
         :type InternetMaxBandwidthOut: int
-        :param _Ip6Addresses: IPv6地址。Ip6Addresses和Ip6AddressId必须且只能传一个
+        :param _Ip6Addresses: IPv6地址。可以使用[DescribeIp6Addresses](https://cloud.tencent.com/document/product/215/40089)接口查询Ip6Addresses。Ip6Addresses和Ip6AddressIds必须且只能传一个。
         :type Ip6Addresses: list of str
-        :param _Ip6AddressIds: IPv6地址对应的唯一ID，形如eip-xxxxxxxx。Ip6Addresses和Ip6AddressId必须且只能传一个
+        :param _Ip6AddressIds: IPv6地址对应的唯一ID，形如eip-xxxxxxxx。可以使用[DescribeIp6Addresses](https://cloud.tencent.com/document/product/215/40089)接口查询Ip6AddressIds。Ip6Addresses和Ip6AddressIds必须且只能传一个。
         :type Ip6AddressIds: list of str
         """
         self._InternetMaxBandwidthOut = None
@@ -49929,7 +49953,7 @@ class ModifyIp6AddressesBandwidthRequest(AbstractModel):
 
     @property
     def InternetMaxBandwidthOut(self):
-        """修改的目标带宽，单位Mbps
+        """修改的目标带宽，单位Mbps。可调整的带宽上限值参考产品文档中[IPv6 计费限制说明](https://cloud.tencent.com/document/product/1142/38369)。
         :rtype: int
         """
         return self._InternetMaxBandwidthOut
@@ -49940,7 +49964,7 @@ class ModifyIp6AddressesBandwidthRequest(AbstractModel):
 
     @property
     def Ip6Addresses(self):
-        """IPv6地址。Ip6Addresses和Ip6AddressId必须且只能传一个
+        """IPv6地址。可以使用[DescribeIp6Addresses](https://cloud.tencent.com/document/product/215/40089)接口查询Ip6Addresses。Ip6Addresses和Ip6AddressIds必须且只能传一个。
         :rtype: list of str
         """
         return self._Ip6Addresses
@@ -49951,7 +49975,7 @@ class ModifyIp6AddressesBandwidthRequest(AbstractModel):
 
     @property
     def Ip6AddressIds(self):
-        """IPv6地址对应的唯一ID，形如eip-xxxxxxxx。Ip6Addresses和Ip6AddressId必须且只能传一个
+        """IPv6地址对应的唯一ID，形如eip-xxxxxxxx。可以使用[DescribeIp6Addresses](https://cloud.tencent.com/document/product/215/40089)接口查询Ip6AddressIds。Ip6Addresses和Ip6AddressIds必须且只能传一个。
         :rtype: list of str
         """
         return self._Ip6AddressIds
@@ -58570,14 +58594,14 @@ class ReleaseAddressesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AddressIds: 标识 EIP 的唯一 ID 列表。EIP 唯一 ID 形如：`eip-11112222`。
+        :param _AddressIds: 标识 EIP 的唯一 ID 列表。可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取AddressId。EIP 唯一 ID 形如：`eip-11112222`。
         :type AddressIds: list of str
         """
         self._AddressIds = None
 
     @property
     def AddressIds(self):
-        """标识 EIP 的唯一 ID 列表。EIP 唯一 ID 形如：`eip-11112222`。
+        """标识 EIP 的唯一 ID 列表。可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取AddressId。EIP 唯一 ID 形如：`eip-11112222`。
         :rtype: list of str
         """
         return self._AddressIds
@@ -58713,9 +58737,9 @@ class ReleaseIp6AddressesBandwidthRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Ip6Addresses: IPv6地址。Ip6Addresses和Ip6AddressIds必须且只能传一个
+        :param _Ip6Addresses: IPv6地址。可以使用[DescribeIp6Addresses](https://cloud.tencent.com/document/product/215/40089)接口查询Ip6Addresses。Ip6Addresses和Ip6AddressIds必须且只能传一个。
         :type Ip6Addresses: list of str
-        :param _Ip6AddressIds: IPv6地址对应的唯一ID，形如eip-xxxxxxxx。Ip6Addresses和Ip6AddressIds必须且只能传一个。
+        :param _Ip6AddressIds: IPv6地址对应的唯一ID，形如eip-xxxxxxxx。可以使用[DescribeIp6Addresses](https://cloud.tencent.com/document/product/215/40089)接口查询Ip6AddressIds。Ip6Addresses和Ip6AddressIds必须且只能传一个。
         :type Ip6AddressIds: list of str
         """
         self._Ip6Addresses = None
@@ -58723,7 +58747,7 @@ class ReleaseIp6AddressesBandwidthRequest(AbstractModel):
 
     @property
     def Ip6Addresses(self):
-        """IPv6地址。Ip6Addresses和Ip6AddressIds必须且只能传一个
+        """IPv6地址。可以使用[DescribeIp6Addresses](https://cloud.tencent.com/document/product/215/40089)接口查询Ip6Addresses。Ip6Addresses和Ip6AddressIds必须且只能传一个。
         :rtype: list of str
         """
         return self._Ip6Addresses
@@ -58734,7 +58758,7 @@ class ReleaseIp6AddressesBandwidthRequest(AbstractModel):
 
     @property
     def Ip6AddressIds(self):
-        """IPv6地址对应的唯一ID，形如eip-xxxxxxxx。Ip6Addresses和Ip6AddressIds必须且只能传一个。
+        """IPv6地址对应的唯一ID，形如eip-xxxxxxxx。可以使用[DescribeIp6Addresses](https://cloud.tencent.com/document/product/215/40089)接口查询Ip6AddressIds。Ip6Addresses和Ip6AddressIds必须且只能传一个。
         :rtype: list of str
         """
         return self._Ip6AddressIds
@@ -58984,7 +59008,7 @@ class RenewAddressesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AddressIds: EIP唯一标识ID列表，形如'eip-xxxx'
+        :param _AddressIds: EIP唯一标识ID列表，形如'eip-xxxx'，可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取AddressId。
         :type AddressIds: list of str
         :param _AddressChargePrepaid: 续费参数
         :type AddressChargePrepaid: :class:`tencentcloud.vpc.v20170312.models.AddressChargePrepaid`
@@ -58994,7 +59018,7 @@ class RenewAddressesRequest(AbstractModel):
 
     @property
     def AddressIds(self):
-        """EIP唯一标识ID列表，形如'eip-xxxx'
+        """EIP唯一标识ID列表，形如'eip-xxxx'，可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取AddressId。
         :rtype: list of str
         """
         return self._AddressIds

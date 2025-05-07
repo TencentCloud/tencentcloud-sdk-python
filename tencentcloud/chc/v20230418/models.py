@@ -1995,7 +1995,7 @@ class CreateReceivingWorkOrderRequest(AbstractModel):
         :type ExpressInfo: :class:`tencentcloud.chc.v20230418.models.ExpressDelivery`
         :param _Remark: 备注
         :type Remark: str
-        :param _ServerDeviceList: 服务器收货列表
+        :param _ServerDeviceList: 服务器收货列表。最大值：200
         :type ServerDeviceList: list of ServerReceivingInfo
         :param _NetDeviceList: 网络设备收货列表
         :type NetDeviceList: list of NetReceivingInfo
@@ -2003,6 +2003,16 @@ class CreateReceivingWorkOrderRequest(AbstractModel):
         :type WireDeviceList: list of WireReceivingInfo
         :param _OtherDeviceList: 其他设备收货列表
         :type OtherDeviceList: list of OtherDevReceivingInfo
+        :param _WithRackOn: 收货后自动上架。此参数为true时，后台会自动提设备上架单
+        :type WithRackOn: bool
+        :param _DeviceRackOnList: 设备上架信息。当WithRackOn为true此参数必传，且sn需要和收货的列表一致
+        :type DeviceRackOnList: list of DeviceRackOn
+        :param _StuffOption: 上架人员 1.自行解决 2.由腾讯IDC负责
+        :type StuffOption: str
+        :param _SelfOperationInfo: 自行解决信息。当StuffOption为1时，此参数必填
+        :type SelfOperationInfo: :class:`tencentcloud.chc.v20230418.models.SelfOperation`
+        :param _WithPowerOn: 上架后自动开电。此参数为true时，后台会自动提设备开电单
+        :type WithPowerOn: bool
         """
         self._IdcId = None
         self._DeviceType = None
@@ -2015,6 +2025,11 @@ class CreateReceivingWorkOrderRequest(AbstractModel):
         self._NetDeviceList = None
         self._WireDeviceList = None
         self._OtherDeviceList = None
+        self._WithRackOn = None
+        self._DeviceRackOnList = None
+        self._StuffOption = None
+        self._SelfOperationInfo = None
+        self._WithPowerOn = None
 
     @property
     def IdcId(self):
@@ -2095,7 +2110,7 @@ class CreateReceivingWorkOrderRequest(AbstractModel):
 
     @property
     def ServerDeviceList(self):
-        """服务器收货列表
+        """服务器收货列表。最大值：200
         :rtype: list of ServerReceivingInfo
         """
         return self._ServerDeviceList
@@ -2137,6 +2152,61 @@ class CreateReceivingWorkOrderRequest(AbstractModel):
     def OtherDeviceList(self, OtherDeviceList):
         self._OtherDeviceList = OtherDeviceList
 
+    @property
+    def WithRackOn(self):
+        """收货后自动上架。此参数为true时，后台会自动提设备上架单
+        :rtype: bool
+        """
+        return self._WithRackOn
+
+    @WithRackOn.setter
+    def WithRackOn(self, WithRackOn):
+        self._WithRackOn = WithRackOn
+
+    @property
+    def DeviceRackOnList(self):
+        """设备上架信息。当WithRackOn为true此参数必传，且sn需要和收货的列表一致
+        :rtype: list of DeviceRackOn
+        """
+        return self._DeviceRackOnList
+
+    @DeviceRackOnList.setter
+    def DeviceRackOnList(self, DeviceRackOnList):
+        self._DeviceRackOnList = DeviceRackOnList
+
+    @property
+    def StuffOption(self):
+        """上架人员 1.自行解决 2.由腾讯IDC负责
+        :rtype: str
+        """
+        return self._StuffOption
+
+    @StuffOption.setter
+    def StuffOption(self, StuffOption):
+        self._StuffOption = StuffOption
+
+    @property
+    def SelfOperationInfo(self):
+        """自行解决信息。当StuffOption为1时，此参数必填
+        :rtype: :class:`tencentcloud.chc.v20230418.models.SelfOperation`
+        """
+        return self._SelfOperationInfo
+
+    @SelfOperationInfo.setter
+    def SelfOperationInfo(self, SelfOperationInfo):
+        self._SelfOperationInfo = SelfOperationInfo
+
+    @property
+    def WithPowerOn(self):
+        """上架后自动开电。此参数为true时，后台会自动提设备开电单
+        :rtype: bool
+        """
+        return self._WithPowerOn
+
+    @WithPowerOn.setter
+    def WithPowerOn(self, WithPowerOn):
+        self._WithPowerOn = WithPowerOn
+
 
     def _deserialize(self, params):
         self._IdcId = params.get("IdcId")
@@ -2172,6 +2242,18 @@ class CreateReceivingWorkOrderRequest(AbstractModel):
                 obj = OtherDevReceivingInfo()
                 obj._deserialize(item)
                 self._OtherDeviceList.append(obj)
+        self._WithRackOn = params.get("WithRackOn")
+        if params.get("DeviceRackOnList") is not None:
+            self._DeviceRackOnList = []
+            for item in params.get("DeviceRackOnList"):
+                obj = DeviceRackOn()
+                obj._deserialize(item)
+                self._DeviceRackOnList.append(obj)
+        self._StuffOption = params.get("StuffOption")
+        if params.get("SelfOperationInfo") is not None:
+            self._SelfOperationInfo = SelfOperation()
+            self._SelfOperationInfo._deserialize(params.get("SelfOperationInfo"))
+        self._WithPowerOn = params.get("WithPowerOn")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

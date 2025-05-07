@@ -8689,7 +8689,11 @@ class SnapshotGroup(AbstractModel):
         :type ContainRootSnapshot: bool
         :param _SnapshotIdSet: 快照组包含的快照ID列表。
         :type SnapshotIdSet: list of str
-        :param _SnapshotGroupState: 快照组状态。<br><li>NORMAL: 正常<br><li>CREATING:创建中<br><li>ROLLBACKING:回滚中
+        :param _SnapshotGroupState: <ul>
+    <li>NORMAL: 正常</li>
+    <li>CREATING: 创建中</li>
+    <li>ROLLBACKING: 回滚中</li>
+</ul>
         :type SnapshotGroupState: str
         :param _Percent: 快照组创建进度。
         :type Percent: int
@@ -8708,6 +8712,9 @@ class SnapshotGroup(AbstractModel):
         :param _DeadlineTime: 快照组到期时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeadlineTime: str
+        :param _AutoSnapshotPolicyId: 来源自动快照策略ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoSnapshotPolicyId: str
         """
         self._SnapshotGroupId = None
         self._SnapshotGroupType = None
@@ -8722,6 +8729,7 @@ class SnapshotGroup(AbstractModel):
         self._ImageCount = None
         self._IsPermanent = None
         self._DeadlineTime = None
+        self._AutoSnapshotPolicyId = None
 
     @property
     def SnapshotGroupId(self):
@@ -8769,7 +8777,11 @@ class SnapshotGroup(AbstractModel):
 
     @property
     def SnapshotGroupState(self):
-        """快照组状态。<br><li>NORMAL: 正常<br><li>CREATING:创建中<br><li>ROLLBACKING:回滚中
+        """<ul>
+    <li>NORMAL: 正常</li>
+    <li>CREATING: 创建中</li>
+    <li>ROLLBACKING: 回滚中</li>
+</ul>
         :rtype: str
         """
         return self._SnapshotGroupState
@@ -8867,6 +8879,18 @@ class SnapshotGroup(AbstractModel):
     def DeadlineTime(self, DeadlineTime):
         self._DeadlineTime = DeadlineTime
 
+    @property
+    def AutoSnapshotPolicyId(self):
+        """来源自动快照策略ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AutoSnapshotPolicyId
+
+    @AutoSnapshotPolicyId.setter
+    def AutoSnapshotPolicyId(self, AutoSnapshotPolicyId):
+        self._AutoSnapshotPolicyId = AutoSnapshotPolicyId
+
 
     def _deserialize(self, params):
         self._SnapshotGroupId = params.get("SnapshotGroupId")
@@ -8887,6 +8911,7 @@ class SnapshotGroup(AbstractModel):
         self._ImageCount = params.get("ImageCount")
         self._IsPermanent = params.get("IsPermanent")
         self._DeadlineTime = params.get("DeadlineTime")
+        self._AutoSnapshotPolicyId = params.get("AutoSnapshotPolicyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

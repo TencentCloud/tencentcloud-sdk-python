@@ -338,6 +338,9 @@ RESOURCENOTFOUND_BIDPRICECONFIG = 'ResourceNotFound.BidPriceConfig'
 # 域名地址有误，请输入正确的域名地址。
 RESOURCENOTFOUND_DOMAINNOTFOUND = 'ResourceNotFound.DomainNotFound'
 
+# 获取数据查找不到。
+RESOURCENOTFOUND_SEARCHINFO = 'ResourceNotFound.SearchInfo'
+
 # 模板信息有误，请输入正确的信息。
 RESOURCENOTFOUND_TEMPLATENOTFOUND = 'ResourceNotFound.TemplateNotFound'
 

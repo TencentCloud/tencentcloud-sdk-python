@@ -5656,6 +5656,8 @@ class CreateClustersRequest(AbstractModel):
         :param _Memory: 当DbMode为NORMAL或不填时必选
 普通实例内存,单位GB
         :type Memory: int
+        :param _InstanceCount: 实例数量，数量范围为(0,16]，默认值为2（即一个rw实例+一个ro实例），传递的n表示1个rw实例+n-1个ro实例（规格相同），如需要更精确的集群组成搭配，请使用InstanceInitInfos
+        :type InstanceCount: int
         :param _Storage: 该参数无实际意义，已废弃。
 存储大小，单位GB。
         :type Storage: int
@@ -5686,8 +5688,6 @@ timeRollback，时间点回档
         :param _StorageLimit: 普通实例存储上限，单位GB
 当DbType为MYSQL，且存储计费模式为预付费时，该参数需不大于cpu与memory对应存储规格上限
         :type StorageLimit: int
-        :param _InstanceCount: 实例数量，数量范围为(0,16]
-        :type InstanceCount: int
         :param _TimeSpan: 包年包月购买时长
         :type TimeSpan: int
         :param _TimeUnit: 包年包月购买时长单位，['s','d','m','y']
@@ -5749,6 +5749,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
         self._ProjectId = None
         self._Cpu = None
         self._Memory = None
+        self._InstanceCount = None
         self._Storage = None
         self._ClusterName = None
         self._AdminPassword = None
@@ -5761,7 +5762,6 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
         self._ExpectTime = None
         self._ExpectTimeThresh = None
         self._StorageLimit = None
-        self._InstanceCount = None
         self._TimeSpan = None
         self._TimeUnit = None
         self._AutoRenewFlag = None
@@ -5874,6 +5874,17 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
     @Memory.setter
     def Memory(self, Memory):
         self._Memory = Memory
+
+    @property
+    def InstanceCount(self):
+        """实例数量，数量范围为(0,16]，默认值为2（即一个rw实例+一个ro实例），传递的n表示1个rw实例+n-1个ro实例（规格相同），如需要更精确的集群组成搭配，请使用InstanceInitInfos
+        :rtype: int
+        """
+        return self._InstanceCount
+
+    @InstanceCount.setter
+    def InstanceCount(self, InstanceCount):
+        self._InstanceCount = InstanceCount
 
     @property
     def Storage(self):
@@ -6012,17 +6023,6 @@ timeRollback，时间点回档
     @StorageLimit.setter
     def StorageLimit(self, StorageLimit):
         self._StorageLimit = StorageLimit
-
-    @property
-    def InstanceCount(self):
-        """实例数量，数量范围为(0,16]
-        :rtype: int
-        """
-        return self._InstanceCount
-
-    @InstanceCount.setter
-    def InstanceCount(self, InstanceCount):
-        self._InstanceCount = InstanceCount
 
     @property
     def TimeSpan(self):
@@ -6266,6 +6266,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
         self._ProjectId = params.get("ProjectId")
         self._Cpu = params.get("Cpu")
         self._Memory = params.get("Memory")
+        self._InstanceCount = params.get("InstanceCount")
         self._Storage = params.get("Storage")
         self._ClusterName = params.get("ClusterName")
         self._AdminPassword = params.get("AdminPassword")
@@ -6278,7 +6279,6 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
         self._ExpectTime = params.get("ExpectTime")
         self._ExpectTimeThresh = params.get("ExpectTimeThresh")
         self._StorageLimit = params.get("StorageLimit")
-        self._InstanceCount = params.get("InstanceCount")
         self._TimeSpan = params.get("TimeSpan")
         self._TimeUnit = params.get("TimeUnit")
         self._AutoRenewFlag = params.get("AutoRenewFlag")

@@ -1218,30 +1218,19 @@ class CUDNN(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Version: cuDNN的版本
-        :type Version: str
         :param _Name: cuDNN的名字
         :type Name: str
-        :param _DocName: cuDNN的Doc名字
-        :type DocName: str
+        :param _Version: cuDNN的版本
+        :type Version: str
         :param _DevName: cuDNN的Dev名字
         :type DevName: str
+        :param _DocName: cuDNN的Doc名字
+        :type DocName: str
         """
-        self._Version = None
         self._Name = None
-        self._DocName = None
+        self._Version = None
         self._DevName = None
-
-    @property
-    def Version(self):
-        """cuDNN的版本
-        :rtype: str
-        """
-        return self._Version
-
-    @Version.setter
-    def Version(self, Version):
-        self._Version = Version
+        self._DocName = None
 
     @property
     def Name(self):
@@ -1255,15 +1244,15 @@ class CUDNN(AbstractModel):
         self._Name = Name
 
     @property
-    def DocName(self):
-        """cuDNN的Doc名字
+    def Version(self):
+        """cuDNN的版本
         :rtype: str
         """
-        return self._DocName
+        return self._Version
 
-    @DocName.setter
-    def DocName(self, DocName):
-        self._DocName = DocName
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
 
     @property
     def DevName(self):
@@ -1276,12 +1265,23 @@ class CUDNN(AbstractModel):
     def DevName(self, DevName):
         self._DevName = DevName
 
+    @property
+    def DocName(self):
+        """cuDNN的Doc名字
+        :rtype: str
+        """
+        return self._DocName
+
+    @DocName.setter
+    def DocName(self, DocName):
+        self._DocName = DocName
+
 
     def _deserialize(self, params):
-        self._Version = params.get("Version")
         self._Name = params.get("Name")
-        self._DocName = params.get("DocName")
+        self._Version = params.get("Version")
         self._DevName = params.get("DevName")
+        self._DocName = params.get("DocName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25771,24 +25771,13 @@ class DriverVersion(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Version: GPU驱动或者CUDA的版本
-        :type Version: str
         :param _Name: GPU驱动或者CUDA的名字
         :type Name: str
+        :param _Version: GPU驱动或者CUDA的版本
+        :type Version: str
         """
-        self._Version = None
         self._Name = None
-
-    @property
-    def Version(self):
-        """GPU驱动或者CUDA的版本
-        :rtype: str
-        """
-        return self._Version
-
-    @Version.setter
-    def Version(self, Version):
-        self._Version = Version
+        self._Version = None
 
     @property
     def Name(self):
@@ -25801,10 +25790,21 @@ class DriverVersion(AbstractModel):
     def Name(self, Name):
         self._Name = Name
 
+    @property
+    def Version(self):
+        """GPU驱动或者CUDA的版本
+        :rtype: str
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
 
     def _deserialize(self, params):
-        self._Version = params.get("Version")
         self._Name = params.get("Name")
+        self._Version = params.get("Version")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29322,44 +29322,22 @@ class GPUArgs(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MIGEnable: 是否启用MIG特性
-        :type MIGEnable: bool
-        :param _Driver: GPU驱动版本信息
-        :type Driver: :class:`tencentcloud.tke.v20180525.models.DriverVersion`
         :param _CUDA: CUDA版本信息
         :type CUDA: :class:`tencentcloud.tke.v20180525.models.DriverVersion`
         :param _CUDNN: cuDNN版本信息
         :type CUDNN: :class:`tencentcloud.tke.v20180525.models.CUDNN`
         :param _CustomDriver: 自定义GPU驱动信息
         :type CustomDriver: :class:`tencentcloud.tke.v20180525.models.CustomDriver`
+        :param _Driver: GPU驱动版本信息
+        :type Driver: :class:`tencentcloud.tke.v20180525.models.DriverVersion`
+        :param _MIGEnable: 是否启用MIG特性
+        :type MIGEnable: bool
         """
-        self._MIGEnable = None
-        self._Driver = None
         self._CUDA = None
         self._CUDNN = None
         self._CustomDriver = None
-
-    @property
-    def MIGEnable(self):
-        """是否启用MIG特性
-        :rtype: bool
-        """
-        return self._MIGEnable
-
-    @MIGEnable.setter
-    def MIGEnable(self, MIGEnable):
-        self._MIGEnable = MIGEnable
-
-    @property
-    def Driver(self):
-        """GPU驱动版本信息
-        :rtype: :class:`tencentcloud.tke.v20180525.models.DriverVersion`
-        """
-        return self._Driver
-
-    @Driver.setter
-    def Driver(self, Driver):
-        self._Driver = Driver
+        self._Driver = None
+        self._MIGEnable = None
 
     @property
     def CUDA(self):
@@ -29394,12 +29372,30 @@ class GPUArgs(AbstractModel):
     def CustomDriver(self, CustomDriver):
         self._CustomDriver = CustomDriver
 
+    @property
+    def Driver(self):
+        """GPU驱动版本信息
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DriverVersion`
+        """
+        return self._Driver
+
+    @Driver.setter
+    def Driver(self, Driver):
+        self._Driver = Driver
+
+    @property
+    def MIGEnable(self):
+        """是否启用MIG特性
+        :rtype: bool
+        """
+        return self._MIGEnable
+
+    @MIGEnable.setter
+    def MIGEnable(self, MIGEnable):
+        self._MIGEnable = MIGEnable
+
 
     def _deserialize(self, params):
-        self._MIGEnable = params.get("MIGEnable")
-        if params.get("Driver") is not None:
-            self._Driver = DriverVersion()
-            self._Driver._deserialize(params.get("Driver"))
         if params.get("CUDA") is not None:
             self._CUDA = DriverVersion()
             self._CUDA._deserialize(params.get("CUDA"))
@@ -29409,6 +29405,10 @@ class GPUArgs(AbstractModel):
         if params.get("CustomDriver") is not None:
             self._CustomDriver = CustomDriver()
             self._CustomDriver._deserialize(params.get("CustomDriver"))
+        if params.get("Driver") is not None:
+            self._Driver = DriverVersion()
+            self._Driver._deserialize(params.get("Driver"))
+        self._MIGEnable = params.get("MIGEnable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -219,8 +219,8 @@ class ClbClient(AbstractClient):
 
         限制说明
         实例属性维度限制：
-        - 支持克隆网络计费模式为按量计费与包年包月的实例，包年包月实例克隆后的新实例网络计费模式会转换为按小时带宽计费，其带宽、规格与原实例设置保持一致。
-        - 不支持克隆未关联实例计费项的 CLB。
+        - 支持克隆实例计费模式为按量计费与包年包月的实例，包年包月实例克隆后的新实例网络计费模式会转换为按小时带宽计费，其带宽、规格与原实例设置保持一致。
+        - 不支持克隆未关联实例计费项的 CLB（历史免费活动创建）。
         - 不支持克隆传统型负载均衡实例和高防 CLB。
         - 不支持克隆基础网络类型的实例。
         - 不支持克隆 Anycast 类型的实例。
@@ -280,7 +280,7 @@ class ClbClient(AbstractClient):
 
     def CreateListener(self, request):
         """在一个负载均衡实例下创建监听器。
-        本接口为异步接口，接口返回成功后，需以返回的 RequestId 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+        本接口为异步接口，接口返回成功后，需以返回的 RequestId 为入参，调用 [DescribeTaskStatus](https://cloud.tencent.com/document/product/214/30683) 接口查询本次任务是否成功。
 
         :param request: Request instance for CreateListener.
         :type request: :class:`tencentcloud.clb.v20180317.models.CreateListenerRequest`
@@ -305,7 +305,7 @@ class ClbClient(AbstractClient):
     def CreateLoadBalancer(self, request):
         """本接口(CreateLoadBalancer)用来创建负载均衡实例。为了使用负载均衡服务，您必须购买一个或多个负载均衡实例。成功调用该接口后，会返回负载均衡实例的唯一 ID。负载均衡实例的类型分为：公网、内网。详情可参考产品说明中的产品类型。
         注意：(1)可通过 [DescribeResources](https://cloud.tencent.com/document/api/214/70213) 接口查询一个地域是否支持创建IPv6实例；(2)一个账号在每个地域的默认购买配额为：公网100个，内网100个。
-        本接口为异步接口，接口成功返回后，可使用 DescribeLoadBalancers 接口查询负载均衡实例的状态（如创建中、正常），以确定是否创建成功。
+        本接口为异步接口，接口成功返回后，可使用 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口查询负载均衡实例的状态（如创建中、正常），以确定是否创建成功。
 
         :param request: Request instance for CreateLoadBalancer.
         :type request: :class:`tencentcloud.clb.v20180317.models.CreateLoadBalancerRequest`
@@ -446,7 +446,7 @@ class ClbClient(AbstractClient):
 
     def DeleteListener(self, request):
         """本接口用来删除负载均衡实例下的监听器（四层和七层）。
-        本接口为异步接口，接口返回成功后，需以得到的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+        本接口为异步接口，接口返回成功后，需以得到的 RequestID 为入参，调用  [DescribeTaskStatus](https://cloud.tencent.com/document/product/214/30683)  接口查询本次任务是否成功。
 
         :param request: Request instance for DeleteListener.
         :type request: :class:`tencentcloud.clb.v20180317.models.DeleteListenerRequest`
@@ -470,7 +470,7 @@ class ClbClient(AbstractClient):
 
     def DeleteLoadBalancer(self, request):
         """DeleteLoadBalancer 接口用以删除指定的一个或多个负载均衡实例。成功删除后，会把负载均衡实例下的监听器、转发规则一起删除，并把后端服务解绑。
-        本接口为异步接口，接口返回成功后，需以返回的 RequestId 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+        本接口为异步接口，接口返回成功后，需以返回的 RequestId 为入参，调用 [DescribeTaskStatus](https://cloud.tencent.com/document/product/214/30683) 接口查询本次任务是否成功。
 
         :param request: Request instance for DeleteLoadBalancer.
         :type request: :class:`tencentcloud.clb.v20180317.models.DeleteLoadBalancerRequest`
@@ -494,7 +494,7 @@ class ClbClient(AbstractClient):
 
     def DeleteLoadBalancerListeners(self, request):
         """该接口支持删除负载均衡的多个监听器。
-        本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+        本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用  [DescribeTaskStatus](https://cloud.tencent.com/document/product/214/30683)  接口查询本次任务是否成功。
 
         :param request: Request instance for DeleteLoadBalancerListeners.
         :type request: :class:`tencentcloud.clb.v20180317.models.DeleteLoadBalancerListenersRequest`
@@ -566,7 +566,7 @@ class ClbClient(AbstractClient):
 
     def DeleteRule(self, request):
         """DeleteRule 接口用来删除负载均衡实例七层监听器下的转发规则。
-        本接口为异步接口，本接口返回成功后需以返回的RequestID为入参，调用DescribeTaskStatus接口查询本次任务是否成功。
+        本接口为异步接口，本接口返回成功后需以返回的RequestID为入参，调用  [DescribeTaskStatus](https://cloud.tencent.com/document/product/214/30683)  接口查询本次任务是否成功。
 
         :param request: Request instance for DeleteRule.
         :type request: :class:`tencentcloud.clb.v20180317.models.DeleteRuleRequest`
@@ -1619,7 +1619,7 @@ class ClbClient(AbstractClient):
 
     def ModifyDomain(self, request):
         """ModifyDomain接口用来修改负载均衡七层监听器下的域名。
-        本接口为异步接口，本接口返回成功后需以返回的RequestID为入参，调用DescribeTaskStatus接口查询本次任务是否成功。
+        本接口为异步接口，本接口返回成功后需以返回的RequestID为入参，调用 [DescribeTaskStatus](https://cloud.tencent.com/document/product/214/30683) 接口查询本次任务是否成功。
 
         :param request: Request instance for ModifyDomain.
         :type request: :class:`tencentcloud.clb.v20180317.models.ModifyDomainRequest`
@@ -1642,8 +1642,8 @@ class ClbClient(AbstractClient):
 
 
     def ModifyDomainAttributes(self, request):
-        """ModifyDomainAttributes接口用于修改负载均衡7层监听器转发规则的域名级别属性，如修改域名、修改DefaultServer、开启/关闭Http2、修改证书。
-        本接口为异步接口，本接口返回成功后，需以返回的RequestId为入参，调用DescribeTaskStatus接口查询本次任务是否成功。
+        """ModifyDomainAttributes接口用于修改负载均衡7层监听器转发规则的域名级别属性，如修改域名、修改DefaultServer、开启/关闭Http2、修改证书
+        本接口为异步接口，本接口返回成功后，需以返回的RequestId为入参，调用 [DescribeTaskStatus](https://cloud.tencent.com/document/product/214/30683) 接口查询本次任务是否成功。
 
         :param request: Request instance for ModifyDomainAttributes.
         :type request: :class:`tencentcloud.clb.v20180317.models.ModifyDomainAttributesRequest`
@@ -1690,7 +1690,7 @@ class ClbClient(AbstractClient):
 
     def ModifyListener(self, request):
         """ModifyListener接口用来修改负载均衡监听器的属性，包括监听器名称、健康检查参数、证书信息、转发策略等。本接口不支持传统型负载均衡。
-        本接口为异步接口，本接口返回成功后需以返回的RequestID为入参，调用DescribeTaskStatus接口查询本次任务是否成功。
+        本接口为异步接口，本接口返回成功后需以返回的RequestID为入参，调用 [DescribeTaskStatus](https://cloud.tencent.com/document/product/214/30683) 接口查询本次任务是否成功。
 
         :param request: Request instance for ModifyListener.
         :type request: :class:`tencentcloud.clb.v20180317.models.ModifyListenerRequest`
@@ -1715,7 +1715,7 @@ class ClbClient(AbstractClient):
     def ModifyLoadBalancerAttributes(self, request):
         """修改负载均衡实例的属性。支持修改负载均衡实例的名称、设置负载均衡的跨域属性。
         注意：非带宽上移用户的 CLB 实例必须加入带宽包才可以设置跨域属性。
-        本接口为异步接口，接口返回成功后，需以得到的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+        本接口为异步接口，接口返回成功后，需以得到的 RequestID 为入参，调用 [DescribeTaskStatus](https://cloud.tencent.com/document/product/214/30683) 接口查询本次任务是否成功。
 
         :param request: Request instance for ModifyLoadBalancerAttributes.
         :type request: :class:`tencentcloud.clb.v20180317.models.ModifyLoadBalancerAttributesRequest`
@@ -1812,7 +1812,7 @@ class ClbClient(AbstractClient):
 
     def ModifyRule(self, request):
         """ModifyRule 接口用来修改负载均衡七层监听器下的转发规则的各项属性，包括转发路径、健康检查属性、转发策略等。
-        本接口为异步接口，本接口返回成功后需以返回的RequestID为入参，调用DescribeTaskStatus接口查询本次任务是否成功。
+        本接口为异步接口，本接口返回成功后需以返回的RequestID为入参，调用 [DescribeTaskStatus](https://cloud.tencent.com/document/product/214/30683) 接口查询本次任务是否成功。
 
         :param request: Request instance for ModifyRule.
         :type request: :class:`tencentcloud.clb.v20180317.models.ModifyRuleRequest`

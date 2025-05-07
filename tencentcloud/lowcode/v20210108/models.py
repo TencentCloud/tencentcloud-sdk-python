@@ -3752,10 +3752,12 @@ class UploadKnowledgeDocumentSetRequest(AbstractModel):
         :type DocumentDesc: str
         :param _FileTitle: 文件标题
         :type FileTitle: str
-        :param _FileMetaData: 	文件元信息，为jsonstring
+        :param _FileMetaData: 文件元信息，为jsonstring
         :type FileMetaData: str
         :param _DocumentSetId: 文件id
         :type DocumentSetId: str
+        :param _Delimiter: 使用 regex 分割文档
+        :type Delimiter: str
         """
         self._EnvId = None
         self._CollectionView = None
@@ -3766,6 +3768,7 @@ class UploadKnowledgeDocumentSetRequest(AbstractModel):
         self._FileTitle = None
         self._FileMetaData = None
         self._DocumentSetId = None
+        self._Delimiter = None
 
     @property
     def EnvId(self):
@@ -3846,7 +3849,7 @@ class UploadKnowledgeDocumentSetRequest(AbstractModel):
 
     @property
     def FileMetaData(self):
-        """	文件元信息，为jsonstring
+        """文件元信息，为jsonstring
         :rtype: str
         """
         return self._FileMetaData
@@ -3866,6 +3869,17 @@ class UploadKnowledgeDocumentSetRequest(AbstractModel):
     def DocumentSetId(self, DocumentSetId):
         self._DocumentSetId = DocumentSetId
 
+    @property
+    def Delimiter(self):
+        """使用 regex 分割文档
+        :rtype: str
+        """
+        return self._Delimiter
+
+    @Delimiter.setter
+    def Delimiter(self, Delimiter):
+        self._Delimiter = Delimiter
+
 
     def _deserialize(self, params):
         self._EnvId = params.get("EnvId")
@@ -3877,6 +3891,7 @@ class UploadKnowledgeDocumentSetRequest(AbstractModel):
         self._FileTitle = params.get("FileTitle")
         self._FileMetaData = params.get("FileMetaData")
         self._DocumentSetId = params.get("DocumentSetId")
+        self._Delimiter = params.get("Delimiter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

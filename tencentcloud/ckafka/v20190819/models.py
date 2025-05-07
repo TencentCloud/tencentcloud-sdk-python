@@ -21820,10 +21820,8 @@ class InstanceRoute(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceId: ckafka集群实例Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _RouteId: 路由Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type RouteId: int
         """
         self._InstanceId = None
@@ -21832,7 +21830,6 @@ class InstanceRoute(AbstractModel):
     @property
     def InstanceId(self):
         """ckafka集群实例Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -21844,7 +21841,6 @@ class InstanceRoute(AbstractModel):
     @property
     def RouteId(self):
         """路由Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RouteId
@@ -28523,13 +28519,10 @@ class RouteFilter(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 过滤名称,目前支持security-group-id,按安全组关联过滤
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Values: 过滤值,当过滤名称为security-group-id时仅支持传单个value
-注意：此字段可能返回 null，表示取不到有效值。
         :type Values: list of str
         :param _Relation: 过滤关系,支持IN和NOT_IN,默认为IN
-注意：此字段可能返回 null，表示取不到有效值。
         :type Relation: str
         """
         self._Name = None
@@ -28539,7 +28532,6 @@ class RouteFilter(AbstractModel):
     @property
     def Name(self):
         """过滤名称,目前支持security-group-id,按安全组关联过滤
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -28551,7 +28543,6 @@ class RouteFilter(AbstractModel):
     @property
     def Values(self):
         """过滤值,当过滤名称为security-group-id时仅支持传单个value
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Values
@@ -28563,7 +28554,6 @@ class RouteFilter(AbstractModel):
     @property
     def Relation(self):
         """过滤关系,支持IN和NOT_IN,默认为IN
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Relation
@@ -29417,19 +29407,14 @@ class SecurityGroupRoute(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceRoute: 路由信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceRoute: :class:`tencentcloud.ckafka.v20190819.models.InstanceRoute`
         :param _SecurityGroupIds: 关联的安全组列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityGroupIds: list of str
         :param _InstanceName: ckafka集群实例名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceName: str
         :param _VpcId: 路由vpcId
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
         :param _Vip: 路由vip
-注意：此字段可能返回 null，表示取不到有效值。
         :type Vip: str
         """
         self._InstanceRoute = None
@@ -29441,7 +29426,6 @@ class SecurityGroupRoute(AbstractModel):
     @property
     def InstanceRoute(self):
         """路由信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.InstanceRoute`
         """
         return self._InstanceRoute
@@ -29453,7 +29437,6 @@ class SecurityGroupRoute(AbstractModel):
     @property
     def SecurityGroupIds(self):
         """关联的安全组列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -29465,7 +29448,6 @@ class SecurityGroupRoute(AbstractModel):
     @property
     def InstanceName(self):
         """ckafka集群实例名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceName
@@ -29477,7 +29459,6 @@ class SecurityGroupRoute(AbstractModel):
     @property
     def VpcId(self):
         """路由vpcId
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VpcId
@@ -29489,7 +29470,6 @@ class SecurityGroupRoute(AbstractModel):
     @property
     def Vip(self):
         """路由vip
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Vip
@@ -29525,10 +29505,8 @@ class SecurityGroupRouteResp(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 符合条件的安全组路由信息总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _SecurityGroupRoutes: 符合条件的安全组路由信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityGroupRoutes: list of SecurityGroupRoute
         """
         self._TotalCount = None
@@ -29537,7 +29515,6 @@ class SecurityGroupRouteResp(AbstractModel):
     @property
     def TotalCount(self):
         """符合条件的安全组路由信息总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -29549,7 +29526,6 @@ class SecurityGroupRouteResp(AbstractModel):
     @property
     def SecurityGroupRoutes(self):
         """符合条件的安全组路由信息列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SecurityGroupRoute
         """
         return self._SecurityGroupRoutes

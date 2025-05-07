@@ -308,7 +308,7 @@ class BidDetailPageRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _BusinessId: 预约ID
-可通过DescribeBiddingList接口获取
+可通过[DescribeBiddingList](https://cloud.tencent.com/document/api/242/106598)接口获取
         :type BusinessId: str
         """
         self._BusinessId = None
@@ -316,7 +316,7 @@ class BidDetailPageRequest(AbstractModel):
     @property
     def BusinessId(self):
         """预约ID
-可通过DescribeBiddingList接口获取
+可通过[DescribeBiddingList](https://cloud.tencent.com/document/api/242/106598)接口获取
         :rtype: str
         """
         return self._BusinessId
@@ -675,8 +675,8 @@ class BiddingPreReleaseRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BusinessId: 业务ID
-可通过DescribeBiddingList接口获取
+        :param _BusinessId: 业务ID(竞价域名的预约ID) 
+可通过[DescribeBiddingList](https://cloud.tencent.com/document/api/242/106598)接口获取
         :type BusinessId: str
         :param _Price: 价格 单位元
         :type Price: float
@@ -686,8 +686,8 @@ class BiddingPreReleaseRequest(AbstractModel):
 
     @property
     def BusinessId(self):
-        """业务ID
-可通过DescribeBiddingList接口获取
+        """业务ID(竞价域名的预约ID) 
+可通过[DescribeBiddingList](https://cloud.tencent.com/document/api/242/106598)接口获取
         :rtype: str
         """
         return self._BusinessId
@@ -958,6 +958,7 @@ class BiddingSuccessfulResult(AbstractModel):
     def __init__(self):
         r"""
         :param _PayEndTime: 支付结束时间
+格式:YYYY-MM-DD HH:mm:ss
         :type PayEndTime: str
         """
         self._PayEndTime = None
@@ -965,6 +966,7 @@ class BiddingSuccessfulResult(AbstractModel):
     @property
     def PayEndTime(self):
         """支付结束时间
+格式:YYYY-MM-DD HH:mm:ss
         :rtype: str
         """
         return self._PayEndTime
@@ -1233,14 +1235,12 @@ class CheckBatchStatusRequest(AbstractModel):
         r"""
         :param _LogIds: 操作日志 ID数组，最多 200 个
 可通过任意批量操作接口获取，例如：
-BatchModifyDomainInfo
-ModifyDomainDNSBatch
-ModifyDomainOwnerBatch
-UpdateProhibitionBatch
-TransferProhibitionBatch
-TransferInDomainBatch
-TransferInDomainBatchBuy
-CancelTransferOutInBatch
+[BatchModifyDomainInfo](https://cloud.tencent.com/document/product/242/49197)
+[ModifyDomainDNSBatch](https://cloud.tencent.com/document/product/242/49211)
+[ModifyDomainOwnerBatch](https://cloud.tencent.com/document/product/242/49196)
+[UpdateProhibitionBatch](https://cloud.tencent.com/document/api/242/49193)
+[TransferProhibitionBatch](https://cloud.tencent.com/document/api/242/49194)
+[TransferInDomainBatch](https://cloud.tencent.com/document/api/242/49195)
         :type LogIds: list of int non-negative
         """
         self._LogIds = None
@@ -1249,14 +1249,12 @@ CancelTransferOutInBatch
     def LogIds(self):
         """操作日志 ID数组，最多 200 个
 可通过任意批量操作接口获取，例如：
-BatchModifyDomainInfo
-ModifyDomainDNSBatch
-ModifyDomainOwnerBatch
-UpdateProhibitionBatch
-TransferProhibitionBatch
-TransferInDomainBatch
-TransferInDomainBatchBuy
-CancelTransferOutInBatch
+[BatchModifyDomainInfo](https://cloud.tencent.com/document/product/242/49197)
+[ModifyDomainDNSBatch](https://cloud.tencent.com/document/product/242/49211)
+[ModifyDomainOwnerBatch](https://cloud.tencent.com/document/product/242/49196)
+[UpdateProhibitionBatch](https://cloud.tencent.com/document/api/242/49193)
+[TransferProhibitionBatch](https://cloud.tencent.com/document/api/242/49194)
+[TransferInDomainBatch](https://cloud.tencent.com/document/api/242/49195)
         :rtype: list of int non-negative
         """
         return self._LogIds
@@ -1877,7 +1875,7 @@ class CreateCustomDnsHostRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _DomainId: 域名实例ID
-可通过DescribeDomainLIst接口获取
+可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
         :type DomainId: str
         :param _DnsName: Dns名称
 例如：<>.test.com;其中<>就是Dns名称，可以是任意域名允许的格式
@@ -1893,7 +1891,7 @@ class CreateCustomDnsHostRequest(AbstractModel):
     @property
     def DomainId(self):
         """域名实例ID
-可通过DescribeDomainLIst接口获取
+可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
         :rtype: str
         """
         return self._DomainId
@@ -2538,7 +2536,7 @@ class DeleteBiddingRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _BusinessID: 预约ID
-可通过DescribeBiddingList接口获取
+可通过[DescribeBiddingList](https://cloud.tencent.com/document/api/242/106598)接口获取
         :type BusinessID: str
         """
         self._BusinessID = None
@@ -2546,7 +2544,7 @@ class DeleteBiddingRequest(AbstractModel):
     @property
     def BusinessID(self):
         """预约ID
-可通过DescribeBiddingList接口获取
+可通过[DescribeBiddingList](https://cloud.tencent.com/document/api/242/106598)接口获取
         :rtype: str
         """
         return self._BusinessID
@@ -2604,7 +2602,7 @@ class DeleteCustomDnsHostRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _DomainId: 域名实例ID
-可通过DescribeDomainList接口获取
+可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
         :type DomainId: str
         :param _DnsName: DNS名称
 例如：<>.test.com;其中<>就是Dns名称，可以是任意域名允许的格式
@@ -2616,7 +2614,7 @@ class DeleteCustomDnsHostRequest(AbstractModel):
     @property
     def DomainId(self):
         """域名实例ID
-可通过DescribeDomainList接口获取
+可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
         :rtype: str
         """
         return self._DomainId
@@ -2910,7 +2908,8 @@ class DescribeAuctionListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BusinessId: 业务ID，通过接口DescribeBiddingList返回结果中获取
+        :param _BusinessId: 业务ID 
+通过接口[DescribeBiddingList](https://cloud.tencent.com/document/api/242/106598)返回结果中获取
         :type BusinessId: str
         :param _Limit: 条数，默认10，最大100
         :type Limit: int
@@ -2923,7 +2922,8 @@ class DescribeAuctionListRequest(AbstractModel):
 
     @property
     def BusinessId(self):
-        """业务ID，通过接口DescribeBiddingList返回结果中获取
+        """业务ID 
+通过接口[DescribeBiddingList](https://cloud.tencent.com/document/api/242/106598)返回结果中获取
         :rtype: str
         """
         return self._BusinessId
@@ -3283,7 +3283,7 @@ class DescribeBiddingAppointDetailRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _BusinessID: 预约ID
-可通过DescribeBiddingList接口获取
+可通过[DescribeBiddingAppointList](https://cloud.tencent.com/document/api/242/106600)接口获取
         :type BusinessID: str
         """
         self._BusinessID = None
@@ -3291,7 +3291,7 @@ class DescribeBiddingAppointDetailRequest(AbstractModel):
     @property
     def BusinessID(self):
         """预约ID
-可通过DescribeBiddingList接口获取
+可通过[DescribeBiddingAppointList](https://cloud.tencent.com/document/api/242/106600)接口获取
         :rtype: str
         """
         return self._BusinessID
@@ -3325,14 +3325,19 @@ class DescribeBiddingAppointDetailResponse(AbstractModel):
         :param _AppointNum: 预约人数
         :type AppointNum: int
         :param _AppointStartTime: 预约开始时间
+格式:YYYY-MM-DD HH:mm:ss
         :type AppointStartTime: str
         :param _AppointEndTime: 预约结束时间
+格式:YYYY-MM-DD HH:mm:ss
         :type AppointEndTime: str
         :param _RegTime:  注册时间
+格式:YYYY-MM-DD HH:mm:ss
         :type RegTime: str
         :param _ExpireTime: 过期时间
+格式:YYYY-MM-DD HH:mm:ss
         :type ExpireTime: str
         :param _DeleteTime: 删除时间
+格式:YYYY-MM-DD HH:mm:ss
         :type DeleteTime: str
         :param _AppointPrice: 当前价格 单位元
         :type AppointPrice: int
@@ -3384,6 +3389,7 @@ yes：退回 no: 未退回
     @property
     def AppointStartTime(self):
         """预约开始时间
+格式:YYYY-MM-DD HH:mm:ss
         :rtype: str
         """
         return self._AppointStartTime
@@ -3395,6 +3401,7 @@ yes：退回 no: 未退回
     @property
     def AppointEndTime(self):
         """预约结束时间
+格式:YYYY-MM-DD HH:mm:ss
         :rtype: str
         """
         return self._AppointEndTime
@@ -3406,6 +3413,7 @@ yes：退回 no: 未退回
     @property
     def RegTime(self):
         """ 注册时间
+格式:YYYY-MM-DD HH:mm:ss
         :rtype: str
         """
         return self._RegTime
@@ -3417,6 +3425,7 @@ yes：退回 no: 未退回
     @property
     def ExpireTime(self):
         """过期时间
+格式:YYYY-MM-DD HH:mm:ss
         :rtype: str
         """
         return self._ExpireTime
@@ -3428,6 +3437,7 @@ yes：退回 no: 未退回
     @property
     def DeleteTime(self):
         """删除时间
+格式:YYYY-MM-DD HH:mm:ss
         :rtype: str
         """
         return self._DeleteTime
@@ -3516,15 +3526,22 @@ class DescribeBiddingAppointListRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _PageNumber: 页码
+默认值1
         :type PageNumber: int
         :param _PageSize: 每页数量
+默认：20 取值范围【1，200】
         :type PageSize: int
         :param _Domain: 域名
         :type Domain: str
         :param _Status: 状态：
 1 已预约，2 竞价中，3 等待出价 4 竞价失败 5 等待支付 6 等待转移，7 转移中 8 交易成功 9 预约持有者赎回 10 竞价持有者赎回 11 其他阶段持有者赎回 12 违约
         :type Status: list of int non-negative
-        :param _SortField: 排序字段：AppointEndTime 预约结束时间
+        :param _SortField: 排序字段：
+默认<空>，不排序
+可选值：
+AppointEndTime 预约结束时间
+BiddingPrice 竞价保证金
+BiddingEndTime 竞价结束时间
         :type SortField: str
         :param _SortOrder: 排序规则：asc升序，desc降序
         :type SortOrder: str
@@ -3539,6 +3556,7 @@ class DescribeBiddingAppointListRequest(AbstractModel):
     @property
     def PageNumber(self):
         """页码
+默认值1
         :rtype: int
         """
         return self._PageNumber
@@ -3550,6 +3568,7 @@ class DescribeBiddingAppointListRequest(AbstractModel):
     @property
     def PageSize(self):
         """每页数量
+默认：20 取值范围【1，200】
         :rtype: int
         """
         return self._PageSize
@@ -3583,7 +3602,12 @@ class DescribeBiddingAppointListRequest(AbstractModel):
 
     @property
     def SortField(self):
-        """排序字段：AppointEndTime 预约结束时间
+        """排序字段：
+默认<空>，不排序
+可选值：
+AppointEndTime 预约结束时间
+BiddingPrice 竞价保证金
+BiddingEndTime 竞价结束时间
         :rtype: str
         """
         return self._SortField
@@ -3692,7 +3716,7 @@ class DescribeBiddingDetailRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _BusinessID: 预约ID
-可通过DescribeBiddingList接口获取
+可通过[DescribeBiddingList](https://cloud.tencent.com/document/api/242/106598)接口获取
         :type BusinessID: str
         """
         self._BusinessID = None
@@ -3700,7 +3724,7 @@ class DescribeBiddingDetailRequest(AbstractModel):
     @property
     def BusinessID(self):
         """预约ID
-可通过DescribeBiddingList接口获取
+可通过[DescribeBiddingList](https://cloud.tencent.com/document/api/242/106598)接口获取
         :rtype: str
         """
         return self._BusinessID
@@ -3734,14 +3758,19 @@ class DescribeBiddingDetailResponse(AbstractModel):
         :param _BiddingNum: 出价次数
         :type BiddingNum: int
         :param _BiddingStartTime: 竞价开始时间
+格式:YYYY-MM-DD HH:mm:ss
         :type BiddingStartTime: str
         :param _BiddingEndTime: 竞价结束时间
+格式:YYYY-MM-DD HH:mm:ss
         :type BiddingEndTime: str
         :param _RegTime:  注册时间
+格式:YYYY-MM-DD HH:mm:ss
         :type RegTime: str
         :param _ExpireTime: 过期时间
+格式:YYYY-MM-DD HH:mm:ss
         :type ExpireTime: str
         :param _DeleteTime: 删除时间
+格式:YYYY-MM-DD HH:mm:ss
         :type DeleteTime: str
         :param _CurrentPrice: 当前价格 单位元
         :type CurrentPrice: int
@@ -3801,6 +3830,7 @@ class DescribeBiddingDetailResponse(AbstractModel):
     @property
     def BiddingStartTime(self):
         """竞价开始时间
+格式:YYYY-MM-DD HH:mm:ss
         :rtype: str
         """
         return self._BiddingStartTime
@@ -3812,6 +3842,7 @@ class DescribeBiddingDetailResponse(AbstractModel):
     @property
     def BiddingEndTime(self):
         """竞价结束时间
+格式:YYYY-MM-DD HH:mm:ss
         :rtype: str
         """
         return self._BiddingEndTime
@@ -3823,6 +3854,7 @@ class DescribeBiddingDetailResponse(AbstractModel):
     @property
     def RegTime(self):
         """ 注册时间
+格式:YYYY-MM-DD HH:mm:ss
         :rtype: str
         """
         return self._RegTime
@@ -3834,6 +3866,7 @@ class DescribeBiddingDetailResponse(AbstractModel):
     @property
     def ExpireTime(self):
         """过期时间
+格式:YYYY-MM-DD HH:mm:ss
         :rtype: str
         """
         return self._ExpireTime
@@ -3845,6 +3878,7 @@ class DescribeBiddingDetailResponse(AbstractModel):
     @property
     def DeleteTime(self):
         """删除时间
+格式:YYYY-MM-DD HH:mm:ss
         :rtype: str
         """
         return self._DeleteTime
@@ -4143,16 +4177,16 @@ class DescribeBiddingSuccessfulDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BusinessID: 预约ID
-可通过DescribeBiddingSuccessfulList接口获取
+        :param _BusinessID: 预约ID 
+可通过[DescribeBiddingSuccessfulList](https://cloud.tencent.com/document/api/242/106596)接口获取
         :type BusinessID: str
         """
         self._BusinessID = None
 
     @property
     def BusinessID(self):
-        """预约ID
-可通过DescribeBiddingSuccessfulList接口获取
+        """预约ID 
+可通过[DescribeBiddingSuccessfulList](https://cloud.tencent.com/document/api/242/106596)接口获取
         :rtype: str
         """
         return self._BusinessID
@@ -4184,16 +4218,21 @@ class DescribeBiddingSuccessfulDetailResponse(AbstractModel):
         :param _Domain: 域名
         :type Domain: str
         :param _SuccessfulTime: 得标时间
+格式:YYYY-MM-DD HH:mm:ss
         :type SuccessfulTime: str
         :param _SuccessfulPrice: 得标价格 单位元
         :type SuccessfulPrice: float
         :param _RegTime:  注册时间
+格式:YYYY-MM-DD HH:mm:ss
         :type RegTime: str
         :param _ExpireTime: 过期时间
+格式:YYYY-MM-DD HH:mm:ss
         :type ExpireTime: str
         :param _DeleteTime: 删除时间
+格式:YYYY-MM-DD HH:mm:ss
         :type DeleteTime: str
         :param _PayEndTime: 付款结束时间
+格式:YYYY-MM-DD HH:mm:ss
         :type PayEndTime: str
         :param _BiddingBondRefund: 保证金，是否退款，yes表示退款，no表示不退款
         :type BiddingBondRefund: str
@@ -4230,6 +4269,7 @@ class DescribeBiddingSuccessfulDetailResponse(AbstractModel):
     @property
     def SuccessfulTime(self):
         """得标时间
+格式:YYYY-MM-DD HH:mm:ss
         :rtype: str
         """
         return self._SuccessfulTime
@@ -4252,6 +4292,7 @@ class DescribeBiddingSuccessfulDetailResponse(AbstractModel):
     @property
     def RegTime(self):
         """ 注册时间
+格式:YYYY-MM-DD HH:mm:ss
         :rtype: str
         """
         return self._RegTime
@@ -4263,6 +4304,7 @@ class DescribeBiddingSuccessfulDetailResponse(AbstractModel):
     @property
     def ExpireTime(self):
         """过期时间
+格式:YYYY-MM-DD HH:mm:ss
         :rtype: str
         """
         return self._ExpireTime
@@ -4274,6 +4316,7 @@ class DescribeBiddingSuccessfulDetailResponse(AbstractModel):
     @property
     def DeleteTime(self):
         """删除时间
+格式:YYYY-MM-DD HH:mm:ss
         :rtype: str
         """
         return self._DeleteTime
@@ -4285,6 +4328,7 @@ class DescribeBiddingSuccessfulDetailResponse(AbstractModel):
     @property
     def PayEndTime(self):
         """付款结束时间
+格式:YYYY-MM-DD HH:mm:ss
         :rtype: str
         """
         return self._PayEndTime
@@ -4360,14 +4404,18 @@ class DescribeBiddingSuccessfulListRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _PageNumber: 页码
+默认：1
         :type PageNumber: int
         :param _PageSize: 每页数量
+默认：20 取值范围【1，200】
         :type PageSize: int
         :param _Domain: 域名
         :type Domain: str
         :param _Status: 状态：5 等待支付 6 等待转移， 7 转移中，8 交易成功，11 尾款阶段持有者索回，12 已违约
         :type Status: list of int non-negative
-        :param _SortField: 排序字段：SuccessfulTime 预约结束时间
+        :param _SortField: 排序字段：
+默认<空>，不排序
+SuccessfulTime 预约结束时间
         :type SortField: str
         :param _SortOrder: 排序规则：asc升序，desc降序
         :type SortOrder: str
@@ -4382,6 +4430,7 @@ class DescribeBiddingSuccessfulListRequest(AbstractModel):
     @property
     def PageNumber(self):
         """页码
+默认：1
         :rtype: int
         """
         return self._PageNumber
@@ -4393,6 +4442,7 @@ class DescribeBiddingSuccessfulListRequest(AbstractModel):
     @property
     def PageSize(self):
         """每页数量
+默认：20 取值范围【1，200】
         :rtype: int
         """
         return self._PageSize
@@ -4425,7 +4475,9 @@ class DescribeBiddingSuccessfulListRequest(AbstractModel):
 
     @property
     def SortField(self):
-        """排序字段：SuccessfulTime 预约结束时间
+        """排序字段：
+默认<空>，不排序
+SuccessfulTime 预约结束时间
         :rtype: str
         """
         return self._SortField
@@ -4534,7 +4586,7 @@ class DescribeCustomDnsHostSetRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _DomainId: 域名实例ID
-可通过DescribeDomainList接口获取
+可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
         :type DomainId: str
         :param _Limit: 返回数量，默认为20，取值范围[1,100]
         :type Limit: int
@@ -4548,7 +4600,7 @@ class DescribeCustomDnsHostSetRequest(AbstractModel):
     @property
     def DomainId(self):
         """域名实例ID
-可通过DescribeDomainList接口获取
+可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
         :rtype: str
         """
         return self._DomainId
@@ -4665,6 +4717,7 @@ class DescribeDomainBaseInfoRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _Domain: 域名
+可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
         :type Domain: str
         """
         self._Domain = None
@@ -4672,6 +4725,7 @@ class DescribeDomainBaseInfoRequest(AbstractModel):
     @property
     def Domain(self):
         """域名
+可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
         :rtype: str
         """
         return self._Domain
@@ -5092,16 +5146,16 @@ class DescribePayWaitDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BusinessId: 业务ID
-可通过DescribeBiddingList接口获取
+        :param _BusinessId: 业务ID(竞价域名的预约ID) 
+可通过[DescribeBiddingList](https://cloud.tencent.com/document/api/242/106598)接口获取
         :type BusinessId: str
         """
         self._BusinessId = None
 
     @property
     def BusinessId(self):
-        """业务ID
-可通过DescribeBiddingList接口获取
+        """业务ID(竞价域名的预约ID) 
+可通过[DescribeBiddingList](https://cloud.tencent.com/document/api/242/106598)接口获取
         :rtype: str
         """
         return self._BusinessId
@@ -5138,9 +5192,11 @@ sub：已经预订
 wait：等待出价
 finish：完成出价
         :type Status: str
-        :param _EndTime: 支付结束时间
+        :param _EndTime: 支付结束时间 
+格式:YYYY-MM-DD HH:mm:ss
         :type EndTime: str
-        :param _RegTime: 域名注册时间
+        :param _RegTime: 域名注册时间 
+格式:YYYY-MM-DD HH:mm:ss
         :type RegTime: str
         :param _Price: 域名成交价格 单位元
         :type Price: float
@@ -5185,7 +5241,8 @@ finish：完成出价
 
     @property
     def EndTime(self):
-        """支付结束时间
+        """支付结束时间 
+格式:YYYY-MM-DD HH:mm:ss
         :rtype: str
         """
         return self._EndTime
@@ -5196,7 +5253,8 @@ finish：完成出价
 
     @property
     def RegTime(self):
-        """域名注册时间
+        """域名注册时间 
+格式:YYYY-MM-DD HH:mm:ss
         :rtype: str
         """
         return self._RegTime
@@ -7035,11 +7093,14 @@ class DescribeUnPreDomainDetailResponse(AbstractModel):
         :type Domain: str
         :param _PreCount: 预约人数
         :type PreCount: int
-        :param _RegTime: 域名注册时间
+        :param _RegTime: 域名注册时间 
+格式:YYYY-MM-DD HH:mm:ss
         :type RegTime: str
-        :param _DeleteTime: 域名删除时间
+        :param _DeleteTime: 域名删除时间 
+格式:YYYY-MM-DD HH:mm:ss
         :type DeleteTime: str
-        :param _ExpireTime: 到期时间
+        :param _ExpireTime: 到期时间 
+格式:YYYY-MM-DD HH:mm:ss
         :type ExpireTime: str
         :param _Status: 域名状态
  bid：出价
@@ -7095,7 +7156,8 @@ noAction：无法操作
 
     @property
     def RegTime(self):
-        """域名注册时间
+        """域名注册时间 
+格式:YYYY-MM-DD HH:mm:ss
         :rtype: str
         """
         return self._RegTime
@@ -7106,7 +7168,8 @@ noAction：无法操作
 
     @property
     def DeleteTime(self):
-        """域名删除时间
+        """域名删除时间 
+格式:YYYY-MM-DD HH:mm:ss
         :rtype: str
         """
         return self._DeleteTime
@@ -7117,7 +7180,8 @@ noAction：无法操作
 
     @property
     def ExpireTime(self):
-        """到期时间
+        """到期时间 
+格式:YYYY-MM-DD HH:mm:ss
         :rtype: str
         """
         return self._ExpireTime
@@ -7239,7 +7303,7 @@ Approved：实名审核通过
 Reject：实名审核失败
 NoAudit: 无需实名认证
         :type RealNameAuditStatus: str
-        :param _RealNameAuditUnpassReason: 域名实名认证不通过原因。
+        :param _RealNameAuditUnpassReason: 域名实名认证不通过原因。<具体内容以实名审核机构返回为准>
         :type RealNameAuditUnpassReason: str
         :param _DomainNameAuditStatus: 域名命名审核状态。
 NotAudit：命名审核未上传
@@ -7248,12 +7312,14 @@ Auditing：域名命名审核中
 Approved：域名命名审核通过
 Rejected：域名命名审核拒绝
         :type DomainNameAuditStatus: str
-        :param _DomainNameAuditUnpassReason: 域名命名审核不通过原因。
+        :param _DomainNameAuditUnpassReason: 域名命名审核不通过原因。<具体内容以实名审核机构返回为准>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DomainNameAuditUnpassReason: str
         :param _CreationDate: 注册时间。
+格式:YYYY-MM-DD
         :type CreationDate: str
         :param _ExpirationDate: 到期时间
+格式:YYYY-MM-DD
         :type ExpirationDate: str
         :param _DomainStatus: 域名状态。
 ok：正常
@@ -7298,6 +7364,7 @@ xinnet: Xin Net Technology Corporation（北京新网数码信息技术有限公
 false：关闭锁定
         :type LockTransfer: bool
         :param _LockEndTime: 锁定结束时间
+格式:YYYY-MM-DD HH:mm:ss
         :type LockEndTime: str
         """
         self._DomainId = None
@@ -7355,7 +7422,7 @@ NoAudit: 无需实名认证
 
     @property
     def RealNameAuditUnpassReason(self):
-        """域名实名认证不通过原因。
+        """域名实名认证不通过原因。<具体内容以实名审核机构返回为准>
         :rtype: str
         """
         return self._RealNameAuditUnpassReason
@@ -7382,7 +7449,7 @@ Rejected：域名命名审核拒绝
 
     @property
     def DomainNameAuditUnpassReason(self):
-        """域名命名审核不通过原因。
+        """域名命名审核不通过原因。<具体内容以实名审核机构返回为准>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7395,6 +7462,7 @@ Rejected：域名命名审核拒绝
     @property
     def CreationDate(self):
         """注册时间。
+格式:YYYY-MM-DD
         :rtype: str
         """
         return self._CreationDate
@@ -7406,6 +7474,7 @@ Rejected：域名命名审核拒绝
     @property
     def ExpirationDate(self):
         """到期时间
+格式:YYYY-MM-DD
         :rtype: str
         """
         return self._ExpirationDate
@@ -7504,6 +7573,7 @@ false：关闭锁定
     @property
     def LockEndTime(self):
         """锁定结束时间
+格式:YYYY-MM-DD HH:mm:ss
         :rtype: str
         """
         return self._LockEndTime
@@ -7886,12 +7956,23 @@ false 不是
 2：设置后，关闭
         :type AutoRenew: int
         :param _CreationDate: 注册时间。
+格式:YYYY-MM-DD HH:mm:ss
         :type CreationDate: str
         :param _ExpirationDate: 到期时间。
+格式:YYYY-MM-DD HH:mm:ss
         :type ExpirationDate: str
-        :param _Tld: 域名后缀
+        :param _Tld: 域名后缀，根据具体域名确定
+例如:
+123.com 后缀则为.com
+123.com.cn 后缀则为.com.cn
+123.中国 后缀则为.中国
+
         :type Tld: str
-        :param _CodeTld: 编码后的后缀（中文会进行编码）
+        :param _CodeTld: 编码后的后缀（中文会进行Punycode编码）根据具体域名确定
+例如:
+123.com 后缀则为.com
+123.com.cn 后缀则为.com.cn
+123.中国 后缀则为.xn--fiqs8s
         :type CodeTld: str
         :param _BuyStatus: 域名购买状态。
 ok：正常
@@ -7970,6 +8051,7 @@ false 不是
     @property
     def CreationDate(self):
         """注册时间。
+格式:YYYY-MM-DD HH:mm:ss
         :rtype: str
         """
         return self._CreationDate
@@ -7981,6 +8063,7 @@ false 不是
     @property
     def ExpirationDate(self):
         """到期时间。
+格式:YYYY-MM-DD HH:mm:ss
         :rtype: str
         """
         return self._ExpirationDate
@@ -7991,7 +8074,12 @@ false 不是
 
     @property
     def Tld(self):
-        """域名后缀
+        """域名后缀，根据具体域名确定
+例如:
+123.com 后缀则为.com
+123.com.cn 后缀则为.com.cn
+123.中国 后缀则为.中国
+
         :rtype: str
         """
         return self._Tld
@@ -8002,7 +8090,11 @@ false 不是
 
     @property
     def CodeTld(self):
-        """编码后的后缀（中文会进行编码）
+        """编码后的后缀（中文会进行Punycode编码）根据具体域名确定
+例如:
+123.com 后缀则为.com
+123.com.cn 后缀则为.com.cn
+123.中国 后缀则为.xn--fiqs8s
         :rtype: str
         """
         return self._CodeTld
@@ -8504,10 +8596,11 @@ class ModifyCustomDnsHostRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _DomainId: 域名实例ID
+可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
         :type DomainId: str
-        :param _DnsName: DNS名称
+        :param _DnsName: Dns名称 例如：<>.test.com;其中<>就是Dns名称，可以是任意域名允许的格式
         :type DnsName: str
-        :param _IpSet: IP地址列表
+        :param _IpSet: IP地址列表 可选择：正常IP地址范围
         :type IpSet: list of str
         """
         self._DomainId = None
@@ -8517,6 +8610,7 @@ class ModifyCustomDnsHostRequest(AbstractModel):
     @property
     def DomainId(self):
         """域名实例ID
+可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
         :rtype: str
         """
         return self._DomainId
@@ -8527,7 +8621,7 @@ class ModifyCustomDnsHostRequest(AbstractModel):
 
     @property
     def DnsName(self):
-        """DNS名称
+        """Dns名称 例如：<>.test.com;其中<>就是Dns名称，可以是任意域名允许的格式
         :rtype: str
         """
         return self._DnsName
@@ -8538,7 +8632,7 @@ class ModifyCustomDnsHostRequest(AbstractModel):
 
     @property
     def IpSet(self):
-        """IP地址列表
+        """IP地址列表 可选择：正常IP地址范围
         :rtype: list of str
         """
         return self._IpSet
@@ -8613,8 +8707,10 @@ class ModifyDomainDNSBatchRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _Domains: 批量操作的域名。
+一次提交不超过4000个
         :type Domains: list of str
         :param _Dns: 域名DNS 数组。
+不少于2个，一般建议2-6个
         :type Dns: list of str
         """
         self._Domains = None
@@ -8623,6 +8719,7 @@ class ModifyDomainDNSBatchRequest(AbstractModel):
     @property
     def Domains(self):
         """批量操作的域名。
+一次提交不超过4000个
         :rtype: list of str
         """
         return self._Domains
@@ -8634,6 +8731,7 @@ class ModifyDomainDNSBatchRequest(AbstractModel):
     @property
     def Dns(self):
         """域名DNS 数组。
+不少于2个，一般建议2-6个
         :rtype: list of str
         """
         return self._Dns
@@ -9140,8 +9238,9 @@ class PreAuctionInfo(AbstractModel):
         :param _Domain: 域名
         :type Domain: str
         :param _BiddingTime: 竞价倒计时
+格式:YYYY-MM-DD HH:mm:ss
         :type BiddingTime: str
-        :param _BidCount: 出价次数 单位元
+        :param _BidCount: 出价次数
         :type BidCount: int
         :param _Price: 当前价格 单位元
         :type Price: float
@@ -9173,6 +9272,7 @@ noAction：无法操作
     @property
     def BiddingTime(self):
         """竞价倒计时
+格式:YYYY-MM-DD HH:mm:ss
         :rtype: str
         """
         return self._BiddingTime
@@ -9183,7 +9283,7 @@ noAction：无法操作
 
     @property
     def BidCount(self):
-        """出价次数 单位元
+        """出价次数
         :rtype: int
         """
         return self._BidCount
@@ -10139,7 +10239,8 @@ class ReservedPreDomainsRequest(AbstractModel):
         r"""
         :param _DomainList: 预约预释放域名列表
         :type DomainList: list of str
-        :param _TemplateId: 模板ID 可通过DescribeTemplates接口获取
+        :param _TemplateId: 模板ID 
+可通过[DescribeTemplateList](https://cloud.tencent.com/document/api/242/48940)接口获取
         :type TemplateId: str
         :param _IsAutoPay: 结束后是否自动支付尾款，默认1 开启 传入0关闭
         :type IsAutoPay: int
@@ -10164,7 +10265,8 @@ class ReservedPreDomainsRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """模板ID 可通过DescribeTemplates接口获取
+        """模板ID 
+可通过[DescribeTemplateList](https://cloud.tencent.com/document/api/242/48940)接口获取
         :rtype: str
         """
         return self._TemplateId
@@ -10380,7 +10482,8 @@ class SetDomainAutoRenewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DomainId: 域名ID 例如：domain-dwerewwq可通过DescribreDomainList接口获取
+        :param _DomainId: 域名实例ID
+可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
         :type DomainId: str
         :param _AutoRenew: AutoRenew 有三个可选值：
  0：不设置自动续费
@@ -10393,7 +10496,8 @@ class SetDomainAutoRenewRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """域名ID 例如：domain-dwerewwq可通过DescribreDomainList接口获取
+        """域名实例ID
+可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
         :rtype: str
         """
         return self._DomainId
@@ -10516,14 +10620,16 @@ class SyncCustomDnsHostRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DomainId: 域名实例ID，可以通过DescribeDomainList接口获取
+        :param _DomainId: 域名实例ID
+可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
         :type DomainId: str
         """
         self._DomainId = None
 
     @property
     def DomainId(self):
-        """域名实例ID，可以通过DescribeDomainList接口获取
+        """域名实例ID
+可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
         :rtype: str
         """
         return self._DomainId

@@ -3342,7 +3342,7 @@ class BindPluginResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 返回结果，成功失败
+        :param _Result: 返回结果，成功：true，失败：false。
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3352,7 +3352,7 @@ class BindPluginResponse(AbstractModel):
 
     @property
     def Result(self):
-        """返回结果，成功失败
+        """返回结果，成功：true，失败：false。
         :rtype: bool
         """
         return self._Result

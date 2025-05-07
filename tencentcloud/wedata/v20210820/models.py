@@ -46229,6 +46229,10 @@ class GenHiveTableDDLSqlRequest(AbstractModel):
         :type Env: str
         :param _WriteMode: doris写入模式配置
         :type WriteMode: str
+        :param _TaskType: 任务类型 201（实时）， 202（离线） 
+        :type TaskType: int
+        :param _SinkTableName: 目标端table名称
+        :type SinkTableName: str
         """
         self._ProjectId = None
         self._SinkDatabase = None
@@ -46256,6 +46260,8 @@ class GenHiveTableDDLSqlRequest(AbstractModel):
         self._SinkSchemaName = None
         self._Env = None
         self._WriteMode = None
+        self._TaskType = None
+        self._SinkTableName = None
 
     @property
     def ProjectId(self):
@@ -46543,6 +46549,28 @@ class GenHiveTableDDLSqlRequest(AbstractModel):
     def WriteMode(self, WriteMode):
         self._WriteMode = WriteMode
 
+    @property
+    def TaskType(self):
+        """任务类型 201（实时）， 202（离线） 
+        :rtype: int
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def SinkTableName(self):
+        """目标端table名称
+        :rtype: str
+        """
+        return self._SinkTableName
+
+    @SinkTableName.setter
+    def SinkTableName(self, SinkTableName):
+        self._SinkTableName = SinkTableName
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -46588,6 +46616,8 @@ class GenHiveTableDDLSqlRequest(AbstractModel):
         self._SinkSchemaName = params.get("SinkSchemaName")
         self._Env = params.get("Env")
         self._WriteMode = params.get("WriteMode")
+        self._TaskType = params.get("TaskType")
+        self._SinkTableName = params.get("SinkTableName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

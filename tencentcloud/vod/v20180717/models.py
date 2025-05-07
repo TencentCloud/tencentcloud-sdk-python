@@ -57554,6 +57554,8 @@ class PullUploadRequest(AbstractModel):
         :type StorageRegion: str
         :param _ClassId: 分类ID，用于对媒体进行分类管理，可通过[创建分类](https://cloud.tencent.com/document/product/266/7812)接口，创建分类，获得分类 ID。
         :type ClassId: int
+        :param _TasksPriority: 任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+        :type TasksPriority: int
         :param _SessionContext: 来源上下文，用于透传用户请求信息，当指定 Procedure 任务后，任务流状态变更回调将返回该字段值，最长 1000 个字符。
         :type SessionContext: str
         :param _SessionId: 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
@@ -57572,6 +57574,7 @@ class PullUploadRequest(AbstractModel):
         self._ExpireTime = None
         self._StorageRegion = None
         self._ClassId = None
+        self._TasksPriority = None
         self._SessionContext = None
         self._SessionId = None
         self._ExtInfo = None
@@ -57681,6 +57684,17 @@ class PullUploadRequest(AbstractModel):
         self._ClassId = ClassId
 
     @property
+    def TasksPriority(self):
+        """任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+        :rtype: int
+        """
+        return self._TasksPriority
+
+    @TasksPriority.setter
+    def TasksPriority(self, TasksPriority):
+        self._TasksPriority = TasksPriority
+
+    @property
     def SessionContext(self):
         """来源上下文，用于透传用户请求信息，当指定 Procedure 任务后，任务流状态变更回调将返回该字段值，最长 1000 个字符。
         :rtype: str
@@ -57735,6 +57749,7 @@ class PullUploadRequest(AbstractModel):
         self._ExpireTime = params.get("ExpireTime")
         self._StorageRegion = params.get("StorageRegion")
         self._ClassId = params.get("ClassId")
+        self._TasksPriority = params.get("TasksPriority")
         self._SessionContext = params.get("SessionContext")
         self._SessionId = params.get("SessionId")
         self._ExtInfo = params.get("ExtInfo")

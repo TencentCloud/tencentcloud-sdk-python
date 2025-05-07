@@ -2623,7 +2623,7 @@ class CreateKeyPairRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _KeyName: 密钥对名称，可由数字，字母和下划线组成，长度不超过25个字符。
+        :param _KeyName: 密钥对名称，可由数字、字母和下划线组成，长度不超过25个字符。密钥对名称不能和已经存在的密钥对名称重复。
         :type KeyName: str
         :param _ProjectId: 密钥对创建后所属的项目ID，ProjectId为0表示默认项目。
 可以通过以下方式获取项目ID：
@@ -2639,7 +2639,7 @@ class CreateKeyPairRequest(AbstractModel):
 
     @property
     def KeyName(self):
-        """密钥对名称，可由数字，字母和下划线组成，长度不超过25个字符。
+        """密钥对名称，可由数字、字母和下划线组成，长度不超过25个字符。密钥对名称不能和已经存在的密钥对名称重复。
         :rtype: str
         """
         return self._KeyName

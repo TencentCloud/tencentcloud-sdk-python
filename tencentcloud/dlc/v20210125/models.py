@@ -21066,12 +21066,15 @@ class DescribeUserRolesRequest(AbstractModel):
         :type SortBy: str
         :param _Sorting: 正序或者倒序，例如：desc
         :type Sorting: str
+        :param _IsDefault: 是否设置为常驻：1非常驻（默认）、2常驻（仅能设置一个常驻）
+        :type IsDefault: int
         """
         self._Limit = None
         self._Offset = None
         self._Fuzzy = None
         self._SortBy = None
         self._Sorting = None
+        self._IsDefault = None
 
     @property
     def Limit(self):
@@ -21128,6 +21131,17 @@ class DescribeUserRolesRequest(AbstractModel):
     def Sorting(self, Sorting):
         self._Sorting = Sorting
 
+    @property
+    def IsDefault(self):
+        """是否设置为常驻：1非常驻（默认）、2常驻（仅能设置一个常驻）
+        :rtype: int
+        """
+        return self._IsDefault
+
+    @IsDefault.setter
+    def IsDefault(self, IsDefault):
+        self._IsDefault = IsDefault
+
 
     def _deserialize(self, params):
         self._Limit = params.get("Limit")
@@ -21135,6 +21149,7 @@ class DescribeUserRolesRequest(AbstractModel):
         self._Fuzzy = params.get("Fuzzy")
         self._SortBy = params.get("SortBy")
         self._Sorting = params.get("Sorting")
+        self._IsDefault = params.get("IsDefault")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -35902,6 +35917,8 @@ class UserRole(AbstractModel):
         :type CosPermissionList: list of CosPermission
         :param _PermissionJson: cam策略json
         :type PermissionJson: str
+        :param _IsDefault: 是否设置为常驻：1非常驻（默认）、2常驻（仅能设置一个常驻）
+        :type IsDefault: int
         """
         self._RoleId = None
         self._AppId = None
@@ -35913,6 +35930,7 @@ class UserRole(AbstractModel):
         self._Creator = None
         self._CosPermissionList = None
         self._PermissionJson = None
+        self._IsDefault = None
 
     @property
     def RoleId(self):
@@ -36024,6 +36042,17 @@ class UserRole(AbstractModel):
     def PermissionJson(self, PermissionJson):
         self._PermissionJson = PermissionJson
 
+    @property
+    def IsDefault(self):
+        """是否设置为常驻：1非常驻（默认）、2常驻（仅能设置一个常驻）
+        :rtype: int
+        """
+        return self._IsDefault
+
+    @IsDefault.setter
+    def IsDefault(self, IsDefault):
+        self._IsDefault = IsDefault
+
 
     def _deserialize(self, params):
         self._RoleId = params.get("RoleId")
@@ -36041,6 +36070,7 @@ class UserRole(AbstractModel):
                 obj._deserialize(item)
                 self._CosPermissionList.append(obj)
         self._PermissionJson = params.get("PermissionJson")
+        self._IsDefault = params.get("IsDefault")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

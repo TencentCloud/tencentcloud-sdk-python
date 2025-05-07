@@ -14519,10 +14519,8 @@ class ListVideoDownloadTaskData(AbstractModel):
     def __init__(self):
         r"""
         :param _List: 任务列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of VideoDownloadTask
         :param _TotalCount: 任务总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         """
         self._List = None
@@ -14531,7 +14529,6 @@ class ListVideoDownloadTaskData(AbstractModel):
     @property
     def List(self):
         """任务列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of VideoDownloadTask
         """
         return self._List
@@ -14543,7 +14540,6 @@ class ListVideoDownloadTaskData(AbstractModel):
     @property
     def TotalCount(self):
         """任务总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -20156,56 +20152,39 @@ class VideoDownloadTask(AbstractModel):
     def __init__(self):
         r"""
         :param _DownloadTaskId: 下载任务 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type DownloadTaskId: str
         :param _ChannelId: 通道 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChannelId: str
         :param _ChannelName: 通道名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChannelName: str
         :param _ChannelCode: 通道编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type ChannelCode: str
         :param _DeviceName: 设备名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceName: str
         :param _DeviceCode: 设备编码
-注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceCode: str
         :param _Status: 任务状态（0：未执行；1：执行中；2 任务完成；
 3：任务失败）
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _VideoTimeSection: 下载录像时间段
-注意：此字段可能返回 null，表示取不到有效值。
         :type VideoTimeSection: str
         :param _Scale: 倍速
-注意：此字段可能返回 null，表示取不到有效值。
         :type Scale: int
         :param _DownloadTime: 下载时长
-注意：此字段可能返回 null，表示取不到有效值。
         :type DownloadTime: int
         :param _VideoSize: 录像大小
-注意：此字段可能返回 null，表示取不到有效值。
         :type VideoSize: int
         :param _StartTime: 任务开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
         :param _EndTime: 任务结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         :param _FileDownloadUrl: 文件下载地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileDownloadUrl: str
         :param _FailedReason: 失败原因
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailedReason: str
         :param _Expire: 生命周期规则，热存天数
-注意：此字段可能返回 null，表示取不到有效值。
         :type Expire: int
         :param _PreviewUrl: mp4预览地址
-注意：此字段可能返回 null，表示取不到有效值。
         :type PreviewUrl: str
         """
         self._DownloadTaskId = None
@@ -20229,7 +20208,6 @@ class VideoDownloadTask(AbstractModel):
     @property
     def DownloadTaskId(self):
         """下载任务 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DownloadTaskId
@@ -20241,7 +20219,6 @@ class VideoDownloadTask(AbstractModel):
     @property
     def ChannelId(self):
         """通道 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ChannelId
@@ -20253,7 +20230,6 @@ class VideoDownloadTask(AbstractModel):
     @property
     def ChannelName(self):
         """通道名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ChannelName
@@ -20265,7 +20241,6 @@ class VideoDownloadTask(AbstractModel):
     @property
     def ChannelCode(self):
         """通道编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ChannelCode
@@ -20277,7 +20252,6 @@ class VideoDownloadTask(AbstractModel):
     @property
     def DeviceName(self):
         """设备名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceName
@@ -20289,7 +20263,6 @@ class VideoDownloadTask(AbstractModel):
     @property
     def DeviceCode(self):
         """设备编码
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DeviceCode
@@ -20302,7 +20275,6 @@ class VideoDownloadTask(AbstractModel):
     def Status(self):
         """任务状态（0：未执行；1：执行中；2 任务完成；
 3：任务失败）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Status
@@ -20314,7 +20286,6 @@ class VideoDownloadTask(AbstractModel):
     @property
     def VideoTimeSection(self):
         """下载录像时间段
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._VideoTimeSection
@@ -20326,7 +20297,6 @@ class VideoDownloadTask(AbstractModel):
     @property
     def Scale(self):
         """倍速
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Scale
@@ -20338,7 +20308,6 @@ class VideoDownloadTask(AbstractModel):
     @property
     def DownloadTime(self):
         """下载时长
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._DownloadTime
@@ -20350,7 +20319,6 @@ class VideoDownloadTask(AbstractModel):
     @property
     def VideoSize(self):
         """录像大小
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._VideoSize
@@ -20362,7 +20330,6 @@ class VideoDownloadTask(AbstractModel):
     @property
     def StartTime(self):
         """任务开始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StartTime
@@ -20374,7 +20341,6 @@ class VideoDownloadTask(AbstractModel):
     @property
     def EndTime(self):
         """任务结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndTime
@@ -20386,7 +20352,6 @@ class VideoDownloadTask(AbstractModel):
     @property
     def FileDownloadUrl(self):
         """文件下载地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FileDownloadUrl
@@ -20398,7 +20363,6 @@ class VideoDownloadTask(AbstractModel):
     @property
     def FailedReason(self):
         """失败原因
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FailedReason
@@ -20410,7 +20374,6 @@ class VideoDownloadTask(AbstractModel):
     @property
     def Expire(self):
         """生命周期规则，热存天数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Expire
@@ -20422,7 +20385,6 @@ class VideoDownloadTask(AbstractModel):
     @property
     def PreviewUrl(self):
         """mp4预览地址
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PreviewUrl
@@ -20468,7 +20430,6 @@ class VideoDownloadTaskData(AbstractModel):
     def __init__(self):
         r"""
         :param _DownloadTaskId: 下载任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type DownloadTaskId: str
         """
         self._DownloadTaskId = None
@@ -20476,7 +20437,6 @@ class VideoDownloadTaskData(AbstractModel):
     @property
     def DownloadTaskId(self):
         """下载任务ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DownloadTaskId

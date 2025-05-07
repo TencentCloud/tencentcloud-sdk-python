@@ -5099,7 +5099,7 @@ class WedataClient(AbstractClient):
 
 
     def ModifyWorkflowSchedule(self, request):
-        """更新工作流调度
+        """更新工作流调度。本接口已废弃，请使用接口RenewWorkflowSchedulerInfoDs。
 
         :param request: Request instance for ModifyWorkflowSchedule.
         :type request: :class:`tencentcloud.wedata.v20210820.models.ModifyWorkflowScheduleRequest`
@@ -5494,7 +5494,7 @@ class WedataClient(AbstractClient):
 
     def SubmitTask(self, request):
         """<p style="color:red;">[注意：该版本只满足广州区部分白名单客户使用]</p>
-        提交任务
+        提交任务。本接口已废弃，请使用接口CreateTaskVersionDs。
 
         :param request: Request instance for SubmitTask.
         :type request: :class:`tencentcloud.wedata.v20210820.models.SubmitTaskRequest`
@@ -5540,7 +5540,7 @@ class WedataClient(AbstractClient):
 
 
     def SubmitWorkflow(self, request):
-        """提交工作流
+        """提交工作流。本接口已废弃，请使用接口BatchCreateTaskVersionAsync。
 
         :param request: Request instance for SubmitWorkflow.
         :type request: :class:`tencentcloud.wedata.v20210820.models.SubmitWorkflowRequest`
@@ -5633,7 +5633,7 @@ class WedataClient(AbstractClient):
 
     def TriggerEvent(self, request):
         """<p style="color:red;">[注意：该版本只满足广州区部分白名单客户使用]</p>
-        触发事件
+        触发事件。本接口已废弃，请使用接口TriggerDsEvent。
 
         :param request: Request instance for TriggerEvent.
         :type request: :class:`tencentcloud.wedata.v20210820.models.TriggerEventRequest`

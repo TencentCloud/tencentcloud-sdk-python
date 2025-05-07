@@ -25,15 +25,15 @@ class ChatCompletionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Messages: 会话内容，按对话时间从旧到新在数组中排列，长度受模型窗口大小限制
+        :param _Messages: 会话内容，按对话时间从旧到新在数组中排列，长度受模型窗口大小限制。
         :type Messages: list of Message
-        :param _ModelName: 模型名称
+        :param _ModelName: 模型名称，可选模型列表：hunyuan-turbo，hunyuan-large，hunyuan-large-longcontext，hunyuan-standard，hunyuan-standard-256K，deepseek-r1，deepseek-v3，deepseek-r1-distill-qwen-32b。
         :type ModelName: str
-        :param _Stream: 是否以流式接口的形式返回数据，默认true
+        :param _Stream: 是否以流式接口的形式返回数据，默认true。
         :type Stream: bool
-        :param _TopP: 取值区间为[0.0, 1.0], 非必要不建议使用, 不合理的取值会影响效果 
+        :param _TopP: 取值区间为[0.0, 1.0], 非必要不建议使用, 不合理的取值会影响效果 。
         :type TopP: float
-        :param _Temperature: 取值区间为[0.0, 2.0], 非必要不建议使用, 不合理的取值会影响效果 
+        :param _Temperature: 取值区间为[0.0, 2.0], 非必要不建议使用, 不合理的取值会影响效果 。
         :type Temperature: float
         :param _OnlineSearch: 是否开启联网搜索。默认为 false。
         :type OnlineSearch: bool
@@ -50,7 +50,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def Messages(self):
-        """会话内容，按对话时间从旧到新在数组中排列，长度受模型窗口大小限制
+        """会话内容，按对话时间从旧到新在数组中排列，长度受模型窗口大小限制。
         :rtype: list of Message
         """
         return self._Messages
@@ -61,7 +61,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def ModelName(self):
-        """模型名称
+        """模型名称，可选模型列表：hunyuan-turbo，hunyuan-large，hunyuan-large-longcontext，hunyuan-standard，hunyuan-standard-256K，deepseek-r1，deepseek-v3，deepseek-r1-distill-qwen-32b。
         :rtype: str
         """
         return self._ModelName
@@ -72,7 +72,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def Stream(self):
-        """是否以流式接口的形式返回数据，默认true
+        """是否以流式接口的形式返回数据，默认true。
         :rtype: bool
         """
         return self._Stream
@@ -83,7 +83,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def TopP(self):
-        """取值区间为[0.0, 1.0], 非必要不建议使用, 不合理的取值会影响效果 
+        """取值区间为[0.0, 1.0], 非必要不建议使用, 不合理的取值会影响效果 。
         :rtype: float
         """
         return self._TopP
@@ -94,7 +94,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def Temperature(self):
-        """取值区间为[0.0, 2.0], 非必要不建议使用, 不合理的取值会影响效果 
+        """取值区间为[0.0, 2.0], 非必要不建议使用, 不合理的取值会影响效果 。
         :rtype: float
         """
         return self._Temperature
@@ -436,9 +436,9 @@ class ChunkDocument(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileType: 文件类型
+        :param _FileType: 文件类型，支持 MD，TXT 格式。
         :type FileType: str
-        :param _FileContent: 文件的 base64值
+        :param _FileContent: 文本原文，使用字符串格式输入。
         :type FileContent: str
         """
         self._FileType = None
@@ -446,7 +446,7 @@ class ChunkDocument(AbstractModel):
 
     @property
     def FileType(self):
-        """文件类型
+        """文件类型，支持 MD，TXT 格式。
         :rtype: str
         """
         return self._FileType
@@ -457,7 +457,7 @@ class ChunkDocument(AbstractModel):
 
     @property
     def FileContent(self):
-        """文件的 base64值
+        """文本原文，使用字符串格式输入。
         :rtype: str
         """
         return self._FileContent
@@ -487,11 +487,11 @@ class ChunkDocumentAsyncRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Document: 文件信息
+        :param _Document: 文件信息。
         :type Document: :class:`tencentcloud.es.v20250101.models.Document`
-        :param _ModelName: 模型名称
+        :param _ModelName: 模型名称，可选模型列表：doc-tree-chunk。
         :type ModelName: str
-        :param _Config: 文件切片配置
+        :param _Config: 文件切片配置。
         :type Config: :class:`tencentcloud.es.v20250101.models.ChunkConfigAsync`
         """
         self._Document = None
@@ -500,7 +500,7 @@ class ChunkDocumentAsyncRequest(AbstractModel):
 
     @property
     def Document(self):
-        """文件信息
+        """文件信息。
         :rtype: :class:`tencentcloud.es.v20250101.models.Document`
         """
         return self._Document
@@ -511,7 +511,7 @@ class ChunkDocumentAsyncRequest(AbstractModel):
 
     @property
     def ModelName(self):
-        """模型名称
+        """模型名称，可选模型列表：doc-tree-chunk。
         :rtype: str
         """
         return self._ModelName
@@ -522,7 +522,7 @@ class ChunkDocumentAsyncRequest(AbstractModel):
 
     @property
     def Config(self):
-        """文件切片配置
+        """文件切片配置。
         :rtype: :class:`tencentcloud.es.v20250101.models.ChunkConfigAsync`
         """
         return self._Config
@@ -600,11 +600,11 @@ class ChunkDocumentRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Document: 文件切片文件信息
+        :param _Document: 切片文件信息。
         :type Document: :class:`tencentcloud.es.v20250101.models.ChunkDocument`
-        :param _ModelName: 模型名称
+        :param _ModelName: 模型名称，可选模型列表：doc-chunk。
         :type ModelName: str
-        :param _Config: 文件切片配置
+        :param _Config: 文件切片配置。
         :type Config: :class:`tencentcloud.es.v20250101.models.ChunkConfig`
         """
         self._Document = None
@@ -613,7 +613,7 @@ class ChunkDocumentRequest(AbstractModel):
 
     @property
     def Document(self):
-        """文件切片文件信息
+        """切片文件信息。
         :rtype: :class:`tencentcloud.es.v20250101.models.ChunkDocument`
         """
         return self._Document
@@ -624,7 +624,7 @@ class ChunkDocumentRequest(AbstractModel):
 
     @property
     def ModelName(self):
-        """模型名称
+        """模型名称，可选模型列表：doc-chunk。
         :rtype: str
         """
         return self._ModelName
@@ -635,7 +635,7 @@ class ChunkDocumentRequest(AbstractModel):
 
     @property
     def Config(self):
-        """文件切片配置
+        """文件切片配置。
         :rtype: :class:`tencentcloud.es.v20250101.models.ChunkConfig`
         """
         return self._Config
@@ -955,11 +955,11 @@ class GetDocumentChunkResultResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: 任务状态
+        :param _Status: 任务状态，-1：失败，0：运行中，1：成功。
         :type Status: int
-        :param _DocumentChunkResultUrl: 切片结果
+        :param _DocumentChunkResultUrl: 切片结果文件。
         :type DocumentChunkResultUrl: str
-        :param _Usage: 用量
+        :param _Usage: Token用量。
         :type Usage: :class:`tencentcloud.es.v20250101.models.DocumentChunkUsage`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -971,7 +971,7 @@ class GetDocumentChunkResultResponse(AbstractModel):
 
     @property
     def Status(self):
-        """任务状态
+        """任务状态，-1：失败，0：运行中，1：成功。
         :rtype: int
         """
         return self._Status
@@ -982,7 +982,7 @@ class GetDocumentChunkResultResponse(AbstractModel):
 
     @property
     def DocumentChunkResultUrl(self):
-        """切片结果
+        """切片结果文件。
         :rtype: str
         """
         return self._DocumentChunkResultUrl
@@ -993,7 +993,7 @@ class GetDocumentChunkResultResponse(AbstractModel):
 
     @property
     def Usage(self):
-        """用量
+        """Token用量。
         :rtype: :class:`tencentcloud.es.v20250101.models.DocumentChunkUsage`
         """
         return self._Usage
@@ -1066,11 +1066,11 @@ class GetDocumentParseResultResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: 任务状态
+        :param _Status: 任务状态，-1：失败，0：运行中，1：成功。
         :type Status: int
-        :param _DocumentParseResultUrl: 结果文件
+        :param _DocumentParseResultUrl: 结果文件。
         :type DocumentParseResultUrl: str
-        :param _FailedPages: 失败的页码
+        :param _FailedPages: 失败的页码。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FailedPages: list of int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1083,7 +1083,7 @@ class GetDocumentParseResultResponse(AbstractModel):
 
     @property
     def Status(self):
-        """任务状态
+        """任务状态，-1：失败，0：运行中，1：成功。
         :rtype: int
         """
         return self._Status
@@ -1094,7 +1094,7 @@ class GetDocumentParseResultResponse(AbstractModel):
 
     @property
     def DocumentParseResultUrl(self):
-        """结果文件
+        """结果文件。
         :rtype: str
         """
         return self._DocumentParseResultUrl
@@ -1105,7 +1105,7 @@ class GetDocumentParseResultResponse(AbstractModel):
 
     @property
     def FailedPages(self):
-        """失败的页码
+        """失败的页码。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
@@ -1141,9 +1141,9 @@ class GetTextEmbeddingRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ModelName: 模型名称
+        :param _ModelName: 模型名称，可选模型列表：bge-base-zh-v1.5,conan-embedding-v1,bge-m3,KaLM-embedding-multilingual-mini-v1。
         :type ModelName: str
-        :param _Texts: 需进行向量化的文本集
+        :param _Texts: 需进行向量化的文本集。
         :type Texts: list of str
         """
         self._ModelName = None
@@ -1151,7 +1151,7 @@ class GetTextEmbeddingRequest(AbstractModel):
 
     @property
     def ModelName(self):
-        """模型名称
+        """模型名称，可选模型列表：bge-base-zh-v1.5,conan-embedding-v1,bge-m3,KaLM-embedding-multilingual-mini-v1。
         :rtype: str
         """
         return self._ModelName
@@ -1162,7 +1162,7 @@ class GetTextEmbeddingRequest(AbstractModel):
 
     @property
     def Texts(self):
-        """需进行向量化的文本集
+        """需进行向量化的文本集。
         :rtype: list of str
         """
         return self._Texts
@@ -1194,7 +1194,7 @@ class GetTextEmbeddingResponse(AbstractModel):
         r"""
         :param _Data: 结果集
         :type Data: list of EmbeddingData
-        :param _Usage: 消耗token数量
+        :param _Usage: 向量化消耗的token数量。
         :type Usage: :class:`tencentcloud.es.v20250101.models.Usage`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1216,7 +1216,7 @@ class GetTextEmbeddingResponse(AbstractModel):
 
     @property
     def Usage(self):
-        """消耗token数量
+        """向量化消耗的token数量。
         :rtype: :class:`tencentcloud.es.v20250101.models.Usage`
         """
         return self._Usage
@@ -1490,9 +1490,9 @@ class ParseDocumentAsyncRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Document: 文件信息
+        :param _Document: 文件信息。
         :type Document: :class:`tencentcloud.es.v20250101.models.Document`
-        :param _ModelName: 模型名称
+        :param _ModelName: 模型名称，可选模型列表：doc-llm。
         :type ModelName: str
         """
         self._Document = None
@@ -1500,7 +1500,7 @@ class ParseDocumentAsyncRequest(AbstractModel):
 
     @property
     def Document(self):
-        """文件信息
+        """文件信息。
         :rtype: :class:`tencentcloud.es.v20250101.models.Document`
         """
         return self._Document
@@ -1511,7 +1511,7 @@ class ParseDocumentAsyncRequest(AbstractModel):
 
     @property
     def ModelName(self):
-        """模型名称
+        """模型名称，可选模型列表：doc-llm。
         :rtype: str
         """
         return self._ModelName
@@ -1588,7 +1588,7 @@ class ParseDocumentRequest(AbstractModel):
         r"""
         :param _Document: 文件信息
         :type Document: :class:`tencentcloud.es.v20250101.models.ParseDocument`
-        :param _ModelName: 模型名称
+        :param _ModelName: 模型名称，doc-llm。
         :type ModelName: str
         """
         self._Document = None
@@ -1607,7 +1607,7 @@ class ParseDocumentRequest(AbstractModel):
 
     @property
     def ModelName(self):
-        """模型名称
+        """模型名称，doc-llm。
         :rtype: str
         """
         return self._ModelName
@@ -1639,11 +1639,11 @@ class ParseDocumentResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Progress: 进度
+        :param _Progress: 进度：0-100。
         :type Progress: str
-        :param _DocumentParseResultUrl:  解析文件结果
+        :param _DocumentParseResultUrl:  解析文件结果。
         :type DocumentParseResultUrl: str
-        :param _FailedPages: 失败页码
+        :param _FailedPages: 失败页码。
         :type FailedPages: list of int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
         :type RequestId: str
@@ -1655,7 +1655,7 @@ class ParseDocumentResponse(AbstractModel):
 
     @property
     def Progress(self):
-        """进度
+        """进度：0-100。
         :rtype: str
         """
         return self._Progress
@@ -1666,7 +1666,7 @@ class ParseDocumentResponse(AbstractModel):
 
     @property
     def DocumentParseResultUrl(self):
-        """ 解析文件结果
+        """ 解析文件结果。
         :rtype: str
         """
         return self._DocumentParseResultUrl
@@ -1677,7 +1677,7 @@ class ParseDocumentResponse(AbstractModel):
 
     @property
     def FailedPages(self):
-        """失败页码
+        """失败页码。
         :rtype: list of int
         """
         return self._FailedPages
@@ -1784,15 +1784,15 @@ class RunRerankRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ModelName: 模型名称
+        :param _ModelName: 模型名称，可选模型列表：bge-reranker-large，bge-reranker-v2-m3。
         :type ModelName: str
-        :param _Query: 查询文本
+        :param _Query: 查询文本。
         :type Query: str
-        :param _Documents: 待排序的候选doc列表
+        :param _Documents: 待排序的候选doc列表。
         :type Documents: list of str
-        :param _TopN: 排序返回的top文档数量, 如果没有指定则返回全部候选doc，如果指定的top_n值大于输入的候选doc数量，返回全部doc
+        :param _TopN: 排序返回的top文档数量, 如果没有指定则返回全部候选doc，如果指定的top_n值大于输入的候选doc数量，返回全部doc。
         :type TopN: int
-        :param _ReturnDocuments: 返回的排序结果列表里面是否返回每一条document原文，默认值False
+        :param _ReturnDocuments: 返回的排序结果列表里面是否返回每一条document原文，默认值False。
         :type ReturnDocuments: bool
         """
         self._ModelName = None
@@ -1803,7 +1803,7 @@ class RunRerankRequest(AbstractModel):
 
     @property
     def ModelName(self):
-        """模型名称
+        """模型名称，可选模型列表：bge-reranker-large，bge-reranker-v2-m3。
         :rtype: str
         """
         return self._ModelName
@@ -1814,7 +1814,7 @@ class RunRerankRequest(AbstractModel):
 
     @property
     def Query(self):
-        """查询文本
+        """查询文本。
         :rtype: str
         """
         return self._Query
@@ -1825,7 +1825,7 @@ class RunRerankRequest(AbstractModel):
 
     @property
     def Documents(self):
-        """待排序的候选doc列表
+        """待排序的候选doc列表。
         :rtype: list of str
         """
         return self._Documents
@@ -1836,7 +1836,7 @@ class RunRerankRequest(AbstractModel):
 
     @property
     def TopN(self):
-        """排序返回的top文档数量, 如果没有指定则返回全部候选doc，如果指定的top_n值大于输入的候选doc数量，返回全部doc
+        """排序返回的top文档数量, 如果没有指定则返回全部候选doc，如果指定的top_n值大于输入的候选doc数量，返回全部doc。
         :rtype: int
         """
         return self._TopN
@@ -1847,7 +1847,7 @@ class RunRerankRequest(AbstractModel):
 
     @property
     def ReturnDocuments(self):
-        """返回的排序结果列表里面是否返回每一条document原文，默认值False
+        """返回的排序结果列表里面是否返回每一条document原文，默认值False。
         :rtype: bool
         """
         return self._ReturnDocuments
@@ -1880,9 +1880,9 @@ class RunRerankResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 输出结果集
+        :param _Data: 输出结果集。
         :type Data: list of RerankResult
-        :param _Usage: 消耗token数量
+        :param _Usage: 消耗token数量。
         :type Usage: :class:`tencentcloud.es.v20250101.models.Usage`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1893,7 +1893,7 @@ class RunRerankResponse(AbstractModel):
 
     @property
     def Data(self):
-        """输出结果集
+        """输出结果集。
         :rtype: list of RerankResult
         """
         return self._Data
@@ -1904,7 +1904,7 @@ class RunRerankResponse(AbstractModel):
 
     @property
     def Usage(self):
-        """消耗token数量
+        """消耗token数量。
         :rtype: :class:`tencentcloud.es.v20250101.models.Usage`
         """
         return self._Usage
