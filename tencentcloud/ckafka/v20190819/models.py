@@ -14447,6 +14447,154 @@ class DescribeRouteResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSecurityGroupRoutesRequest(AbstractModel):
+    """DescribeSecurityGroupRoutes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceRoute: 路由信息
+        :type InstanceRoute: :class:`tencentcloud.ckafka.v20190819.models.InstanceRoute`
+        :param _Filters: 过滤器
+        :type Filters: list of RouteFilter
+        :param _Offset: 分页Offset,默认0
+        :type Offset: int
+        :param _Limit: 分页Limit,默认20
+        :type Limit: int
+        :param _SearchWord: 关键词,可根据实例id/实例名称/vip模糊搜索
+        :type SearchWord: str
+        """
+        self._InstanceRoute = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+        self._SearchWord = None
+
+    @property
+    def InstanceRoute(self):
+        """路由信息
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.InstanceRoute`
+        """
+        return self._InstanceRoute
+
+    @InstanceRoute.setter
+    def InstanceRoute(self, InstanceRoute):
+        self._InstanceRoute = InstanceRoute
+
+    @property
+    def Filters(self):
+        """过滤器
+        :rtype: list of RouteFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        """分页Offset,默认0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """分页Limit,默认20
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def SearchWord(self):
+        """关键词,可根据实例id/实例名称/vip模糊搜索
+        :rtype: str
+        """
+        return self._SearchWord
+
+    @SearchWord.setter
+    def SearchWord(self, SearchWord):
+        self._SearchWord = SearchWord
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceRoute") is not None:
+            self._InstanceRoute = InstanceRoute()
+            self._InstanceRoute._deserialize(params.get("InstanceRoute"))
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = RouteFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._SearchWord = params.get("SearchWord")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSecurityGroupRoutesResponse(AbstractModel):
+    """DescribeSecurityGroupRoutes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 返回的安全组路由信息结果对象
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.SecurityGroupRouteResp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        """返回的安全组路由信息结果对象
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.SecurityGroupRouteResp`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = SecurityGroupRouteResp()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTaskStatusRequest(AbstractModel):
     """DescribeTaskStatus请求参数结构体
 
@@ -21664,6 +21812,61 @@ class InstanceResponse(AbstractModel):
         
 
 
+class InstanceRoute(AbstractModel):
+    """实例路由
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: ckafka集群实例Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _RouteId: 路由Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RouteId: int
+        """
+        self._InstanceId = None
+        self._RouteId = None
+
+    @property
+    def InstanceId(self):
+        """ckafka集群实例Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RouteId(self):
+        """路由Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RouteId
+
+    @RouteId.setter
+    def RouteId(self, RouteId):
+        self._RouteId = RouteId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._RouteId = params.get("RouteId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InstanceScalingDownRequest(AbstractModel):
     """InstanceScalingDown请求参数结构体
 
@@ -28312,6 +28515,78 @@ class RouteDTO(AbstractModel):
         
 
 
+class RouteFilter(AbstractModel):
+    """路由列表过滤器
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 过滤名称,目前支持security-group-id,按安全组关联过滤
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Values: 过滤值,当过滤名称为security-group-id时仅支持传单个value
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Values: list of str
+        :param _Relation: 过滤关系,支持IN和NOT_IN,默认为IN
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Relation: str
+        """
+        self._Name = None
+        self._Values = None
+        self._Relation = None
+
+    @property
+    def Name(self):
+        """过滤名称,目前支持security-group-id,按安全组关联过滤
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Values(self):
+        """过滤值,当过滤名称为security-group-id时仅支持传单个value
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+    @property
+    def Relation(self):
+        """过滤关系,支持IN和NOT_IN,默认为IN
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Relation
+
+    @Relation.setter
+    def Relation(self, Relation):
+        self._Relation = Relation
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Values = params.get("Values")
+        self._Relation = params.get("Relation")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RouteResponse(AbstractModel):
     """路由信息返回对象
 
@@ -29124,6 +29399,174 @@ class SecondaryAnalyseParam(AbstractModel):
 
     def _deserialize(self, params):
         self._Regex = params.get("Regex")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SecurityGroupRoute(AbstractModel):
+    """安全组路由信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceRoute: 路由信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceRoute: :class:`tencentcloud.ckafka.v20190819.models.InstanceRoute`
+        :param _SecurityGroupIds: 关联的安全组列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecurityGroupIds: list of str
+        :param _InstanceName: ckafka集群实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param _VpcId: 路由vpcId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param _Vip: 路由vip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vip: str
+        """
+        self._InstanceRoute = None
+        self._SecurityGroupIds = None
+        self._InstanceName = None
+        self._VpcId = None
+        self._Vip = None
+
+    @property
+    def InstanceRoute(self):
+        """路由信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.InstanceRoute`
+        """
+        return self._InstanceRoute
+
+    @InstanceRoute.setter
+    def InstanceRoute(self, InstanceRoute):
+        self._InstanceRoute = InstanceRoute
+
+    @property
+    def SecurityGroupIds(self):
+        """关联的安全组列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
+    @property
+    def InstanceName(self):
+        """ckafka集群实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def VpcId(self):
+        """路由vpcId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def Vip(self):
+        """路由vip
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceRoute") is not None:
+            self._InstanceRoute = InstanceRoute()
+            self._InstanceRoute._deserialize(params.get("InstanceRoute"))
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._InstanceName = params.get("InstanceName")
+        self._VpcId = params.get("VpcId")
+        self._Vip = params.get("Vip")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SecurityGroupRouteResp(AbstractModel):
+    """安全组路由信息返回结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 符合条件的安全组路由信息总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _SecurityGroupRoutes: 符合条件的安全组路由信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecurityGroupRoutes: list of SecurityGroupRoute
+        """
+        self._TotalCount = None
+        self._SecurityGroupRoutes = None
+
+    @property
+    def TotalCount(self):
+        """符合条件的安全组路由信息总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def SecurityGroupRoutes(self):
+        """符合条件的安全组路由信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SecurityGroupRoute
+        """
+        return self._SecurityGroupRoutes
+
+    @SecurityGroupRoutes.setter
+    def SecurityGroupRoutes(self, SecurityGroupRoutes):
+        self._SecurityGroupRoutes = SecurityGroupRoutes
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("SecurityGroupRoutes") is not None:
+            self._SecurityGroupRoutes = []
+            for item in params.get("SecurityGroupRoutes"):
+                obj = SecurityGroupRoute()
+                obj._deserialize(item)
+                self._SecurityGroupRoutes.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

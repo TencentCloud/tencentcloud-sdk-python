@@ -46,16 +46,22 @@ class LkeapClient(AbstractClient):
         - DeepSeek-R1（model 参数值为**deepseek-r1**）
             - DeepSeek-R1为671B模型，使用强化学习训练，推理过程包含大量反思和验证，思维链长度可达数万字。 该系列模型在数学、代码以及各种复杂逻辑推理任务上推理效果优异，并为用户展现了完整的思考过程。
             -  支持64K上下文长度，最大输出16k。
+        - DeepSeek-Prover-V2（model 参数值为**deepseek-prover-v2**）
+            - DeepSeek-Prover-V2 为671B 参数 MoE 模型，在数学定理证明和复杂计算任务中表现出色。
+            -  支持64K上下文长度，最大输出16k。
+
 
         ### 计费说明
 
         - 标准计费（2025年2月26日起生效），计费模式为后付费小时结，为保证您账户资源的正常使用，请提前[开通后付费](https://lke.cloud.tencent.com/lke#/app/system/charge/postpaid)并及时[充值](https://console.cloud.tencent.com/expense/recharge)。
 
-            -   DeepSeek-R1 模型   | 输入：0.004元/千token | 输出（含思维链）：0.016元/千token
+            -  DeepSeek-R1 模型   | 输入：0.004元/千token | 输出（含思维链）：0.016元/千token
 
             - DeepSeek-V3 模型 | 输入：0.002元/千token | 输出：0.008元/千token
 
             - DeepSeek-V3-0324 模型 | 输入：0.002元/千token | 输出：0.008元/千token
+
+            - DeepSeek-Prover-V2 模型 | 暂不计费
 
 
         ### Openai兼容协议接口

@@ -26,6 +26,9 @@ FAILEDOPERATION = 'FailedOperation'
 # 内部错误。
 INTERNALERROR = 'InternalError'
 
+# 无效的过滤器
+INVALIDFILTER = 'InvalidFilter'
+
 # 参数错误。
 INVALIDPARAMETER = 'InvalidParameter'
 

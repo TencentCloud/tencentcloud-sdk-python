@@ -1985,6 +1985,57 @@ class CfwNatDnatRule(AbstractModel):
         
 
 
+class Column(AbstractModel):
+    """日志分析的列属性
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 列的名字
+        :type Name: str
+        :param _Type: 列的属性
+        :type Type: str
+        """
+        self._Name = None
+        self._Type = None
+
+    @property
+    def Name(self):
+        """列的名字
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        """列的属性
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CommonFilter(AbstractModel):
     """通用的列表检索过滤选项
 
@@ -16362,6 +16413,292 @@ class IpStatic(AbstractModel):
         
 
 
+class LogInfo(AbstractModel):
+    """日志结果信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Time: 日志时间，单位ms
+        :type Time: int
+        :param _TopicId: 日志主题ID
+        :type TopicId: str
+        :param _TopicName: 日志主题名称
+        :type TopicName: str
+        :param _Source: 日志来源IP
+        :type Source: str
+        :param _FileName: 日志文件名称
+        :type FileName: str
+        :param _PkgId: 日志上报请求包的ID
+        :type PkgId: str
+        :param _PkgLogId: 请求包内日志的ID
+        :type PkgLogId: str
+        :param _LogJson: 日志内容的Json序列化字符串
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogJson: str
+        :param _HostName: 日志来源主机名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostName: str
+        :param _RawLog: 原始日志(仅在日志创建索引异常时有值)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RawLog: str
+        :param _IndexStatus: 日志创建索引异常原因(仅在日志创建索引异常时有值)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexStatus: str
+        """
+        self._Time = None
+        self._TopicId = None
+        self._TopicName = None
+        self._Source = None
+        self._FileName = None
+        self._PkgId = None
+        self._PkgLogId = None
+        self._LogJson = None
+        self._HostName = None
+        self._RawLog = None
+        self._IndexStatus = None
+
+    @property
+    def Time(self):
+        """日志时间，单位ms
+        :rtype: int
+        """
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def TopicId(self):
+        """日志主题ID
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def TopicName(self):
+        """日志主题名称
+        :rtype: str
+        """
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+    @property
+    def Source(self):
+        """日志来源IP
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def FileName(self):
+        """日志文件名称
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def PkgId(self):
+        """日志上报请求包的ID
+        :rtype: str
+        """
+        return self._PkgId
+
+    @PkgId.setter
+    def PkgId(self, PkgId):
+        self._PkgId = PkgId
+
+    @property
+    def PkgLogId(self):
+        """请求包内日志的ID
+        :rtype: str
+        """
+        return self._PkgLogId
+
+    @PkgLogId.setter
+    def PkgLogId(self, PkgLogId):
+        self._PkgLogId = PkgLogId
+
+    @property
+    def LogJson(self):
+        """日志内容的Json序列化字符串
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LogJson
+
+    @LogJson.setter
+    def LogJson(self, LogJson):
+        self._LogJson = LogJson
+
+    @property
+    def HostName(self):
+        """日志来源主机名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._HostName
+
+    @HostName.setter
+    def HostName(self, HostName):
+        self._HostName = HostName
+
+    @property
+    def RawLog(self):
+        """原始日志(仅在日志创建索引异常时有值)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RawLog
+
+    @RawLog.setter
+    def RawLog(self, RawLog):
+        self._RawLog = RawLog
+
+    @property
+    def IndexStatus(self):
+        """日志创建索引异常原因(仅在日志创建索引异常时有值)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._IndexStatus
+
+    @IndexStatus.setter
+    def IndexStatus(self, IndexStatus):
+        self._IndexStatus = IndexStatus
+
+
+    def _deserialize(self, params):
+        self._Time = params.get("Time")
+        self._TopicId = params.get("TopicId")
+        self._TopicName = params.get("TopicName")
+        self._Source = params.get("Source")
+        self._FileName = params.get("FileName")
+        self._PkgId = params.get("PkgId")
+        self._PkgLogId = params.get("PkgLogId")
+        self._LogJson = params.get("LogJson")
+        self._HostName = params.get("HostName")
+        self._RawLog = params.get("RawLog")
+        self._IndexStatus = params.get("IndexStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogItem(AbstractModel):
+    """日志中的KV对
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 日志Key
+        :type Key: str
+        :param _Value: 日志Value
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        """日志Key
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        """日志Value
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogItems(AbstractModel):
+    """LogItem的数组
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 分析结果返回的KV数据对
+        :type Data: list of LogItem
+        """
+        self._Data = None
+
+    @property
+    def Data(self):
+        """分析结果返回的KV数据对
+        :rtype: list of LogItem
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = LogItem()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyAcRuleRequest(AbstractModel):
     """ModifyAcRule请求参数结构体
 
@@ -20056,6 +20393,57 @@ class ModifyVpcFwSequenceRulesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class MultiTopicSearchInformation(AbstractModel):
+    """多日志主题检索相关信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: 要检索分析的日志主题ID
+        :type TopicId: str
+        :param _Context: 透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时
+        :type Context: str
+        """
+        self._TopicId = None
+        self._Context = None
+
+    @property
+    def TopicId(self):
+        """要检索分析的日志主题ID
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Context(self):
+        """透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时
+        :rtype: str
+        """
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._Context = params.get("Context")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class NatFwEipsInfo(AbstractModel):
     """Nat防火墙弹性公网ip列表
 
@@ -21951,6 +22339,710 @@ class ScanResultInfo(AbstractModel):
         self._IdpStatus = params.get("IdpStatus")
         self._LeakNum = params.get("LeakNum")
         self._PortNum = params.get("PortNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchLogErrors(AbstractModel):
+    """多日志主题检索错误信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: 日志主题ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicId: str
+        :param _ErrorMsg: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
+        :param _ErrorCodeStr: 错误码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorCodeStr: str
+        """
+        self._TopicId = None
+        self._ErrorMsg = None
+        self._ErrorCodeStr = None
+
+    @property
+    def TopicId(self):
+        """日志主题ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def ErrorMsg(self):
+        """错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def ErrorCodeStr(self):
+        """错误码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrorCodeStr
+
+    @ErrorCodeStr.setter
+    def ErrorCodeStr(self, ErrorCodeStr):
+        self._ErrorCodeStr = ErrorCodeStr
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._ErrorCodeStr = params.get("ErrorCodeStr")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchLogInfos(AbstractModel):
+    """多日志主题检索topic信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: 日志主题ID
+        :type TopicId: str
+        :param _Period: 日志存储生命周期
+        :type Period: int
+        :param _Context: 透传本次接口返回的Context值，可获取后续更多日志，过期时间1小时
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Context: str
+        """
+        self._TopicId = None
+        self._Period = None
+        self._Context = None
+
+    @property
+    def TopicId(self):
+        """日志主题ID
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Period(self):
+        """日志存储生命周期
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def Context(self):
+        """透传本次接口返回的Context值，可获取后续更多日志，过期时间1小时
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._Period = params.get("Period")
+        self._Context = params.get("Context")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchLogRequest(AbstractModel):
+    """SearchLog请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _From: 要检索分析的日志的起始时间，Unix时间戳（毫秒）
+        :type From: int
+        :param _To: 要检索分析的日志的结束时间，Unix时间戳（毫秒）
+        :type To: int
+        :param _Query: 检索分析语句，最大长度为12KB
+语句由 <a href="https://cloud.tencent.com/document/product/614/47044" target="_blank">[检索条件]</a> | <a href="https://cloud.tencent.com/document/product/614/44061" target="_blank">[SQL语句]</a>构成，无需对日志进行统计分析时，可省略其中的管道符<code> | </code>及SQL语句
+使用*或空字符串可查询所有日志
+        :type Query: str
+        :param _SyntaxRule: 检索语法规则，默认值为0，推荐使用1 。
+
+- 0：Lucene语法
+- 1：CQL语法（日志服务专用检索语法，控制台默认也使用该语法规则）。
+
+详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>
+        :type SyntaxRule: int
+        :param _TopicId: - 要检索分析的日志主题ID，仅能指定一个日志主题。
+- 如需同时检索多个日志主题，请使用Topics参数。
+- TopicId 和 Topics 不能同时使用，在一次请求中有且只能选择一个。
+        :type TopicId: str
+        :param _Topics: - 要检索分析的日志主题列表，最大支持50个日志主题。
+- 检索单个日志主题时请使用TopicId。
+- TopicId 和 Topics 不能同时使用，在一次请求中有且只能选择一个。
+        :type Topics: list of MultiTopicSearchInformation
+        :param _Sort: 原始日志是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
+注意：
+* 仅当检索分析语句(Query)不包含SQL时有效
+* SQL结果排序方式参考<a href="https://cloud.tencent.com/document/product/614/58978" target="_blank">SQL ORDER BY语法</a>
+        :type Sort: str
+        :param _Limit: 表示单次查询返回的原始日志条数，默认为100，最大值为1000。
+注意：
+* 仅当检索分析语句(Query)不包含SQL时有效
+* SQL结果条数指定方式参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
+
+可通过两种方式获取后续更多日志：
+* Context:透传上次接口返回的Context值，获取后续更多日志，总计最多可获取1万条原始日志
+* Offset:偏移量，表示从第几行开始返回原始日志，无日志条数限制
+        :type Limit: int
+        :param _Offset: 查询原始日志的偏移量，表示从第几行开始返回原始日志，默认为0。 
+注意：
+* 仅当检索分析语句(Query)不包含SQL时有效
+* 不能与Context参数同时使用
+* 仅适用于单日志主题检索
+        :type Offset: int
+        :param _Context: 透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时。
+注意：
+* 透传该参数时，请勿修改除该参数外的其它参数
+* 仅适用于单日志主题检索，检索多个日志主题时，请使用Topics中的Context
+* 仅当检索分析语句(Query)不包含SQL时有效，SQL获取后续结果参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
+        :type Context: str
+        :param _SamplingRate: 执行统计分析（Query中包含SQL）时，是否对原始日志先进行采样，再进行统计分析。
+0：自动采样;
+0～1：按指定采样率采样，例如0.02;
+1：不采样，即精确分析
+默认值为1
+        :type SamplingRate: float
+        :param _UseNewAnalysis: 为true代表使用新的检索结果返回方式，输出参数AnalysisRecords和Columns有效
+为false时代表使用老的检索结果返回方式, 输出AnalysisResults和ColNames有效
+两种返回方式在编码格式上有少量区别，建议使用true
+        :type UseNewAnalysis: bool
+        """
+        self._From = None
+        self._To = None
+        self._Query = None
+        self._SyntaxRule = None
+        self._TopicId = None
+        self._Topics = None
+        self._Sort = None
+        self._Limit = None
+        self._Offset = None
+        self._Context = None
+        self._SamplingRate = None
+        self._UseNewAnalysis = None
+
+    @property
+    def From(self):
+        """要检索分析的日志的起始时间，Unix时间戳（毫秒）
+        :rtype: int
+        """
+        return self._From
+
+    @From.setter
+    def From(self, From):
+        self._From = From
+
+    @property
+    def To(self):
+        """要检索分析的日志的结束时间，Unix时间戳（毫秒）
+        :rtype: int
+        """
+        return self._To
+
+    @To.setter
+    def To(self, To):
+        self._To = To
+
+    @property
+    def Query(self):
+        """检索分析语句，最大长度为12KB
+语句由 <a href="https://cloud.tencent.com/document/product/614/47044" target="_blank">[检索条件]</a> | <a href="https://cloud.tencent.com/document/product/614/44061" target="_blank">[SQL语句]</a>构成，无需对日志进行统计分析时，可省略其中的管道符<code> | </code>及SQL语句
+使用*或空字符串可查询所有日志
+        :rtype: str
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+    @property
+    def SyntaxRule(self):
+        """检索语法规则，默认值为0，推荐使用1 。
+
+- 0：Lucene语法
+- 1：CQL语法（日志服务专用检索语法，控制台默认也使用该语法规则）。
+
+详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>
+        :rtype: int
+        """
+        return self._SyntaxRule
+
+    @SyntaxRule.setter
+    def SyntaxRule(self, SyntaxRule):
+        self._SyntaxRule = SyntaxRule
+
+    @property
+    def TopicId(self):
+        """- 要检索分析的日志主题ID，仅能指定一个日志主题。
+- 如需同时检索多个日志主题，请使用Topics参数。
+- TopicId 和 Topics 不能同时使用，在一次请求中有且只能选择一个。
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Topics(self):
+        """- 要检索分析的日志主题列表，最大支持50个日志主题。
+- 检索单个日志主题时请使用TopicId。
+- TopicId 和 Topics 不能同时使用，在一次请求中有且只能选择一个。
+        :rtype: list of MultiTopicSearchInformation
+        """
+        return self._Topics
+
+    @Topics.setter
+    def Topics(self, Topics):
+        self._Topics = Topics
+
+    @property
+    def Sort(self):
+        """原始日志是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
+注意：
+* 仅当检索分析语句(Query)不包含SQL时有效
+* SQL结果排序方式参考<a href="https://cloud.tencent.com/document/product/614/58978" target="_blank">SQL ORDER BY语法</a>
+        :rtype: str
+        """
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+    @property
+    def Limit(self):
+        """表示单次查询返回的原始日志条数，默认为100，最大值为1000。
+注意：
+* 仅当检索分析语句(Query)不包含SQL时有效
+* SQL结果条数指定方式参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
+
+可通过两种方式获取后续更多日志：
+* Context:透传上次接口返回的Context值，获取后续更多日志，总计最多可获取1万条原始日志
+* Offset:偏移量，表示从第几行开始返回原始日志，无日志条数限制
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """查询原始日志的偏移量，表示从第几行开始返回原始日志，默认为0。 
+注意：
+* 仅当检索分析语句(Query)不包含SQL时有效
+* 不能与Context参数同时使用
+* 仅适用于单日志主题检索
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Context(self):
+        """透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时。
+注意：
+* 透传该参数时，请勿修改除该参数外的其它参数
+* 仅适用于单日志主题检索，检索多个日志主题时，请使用Topics中的Context
+* 仅当检索分析语句(Query)不包含SQL时有效，SQL获取后续结果参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
+        :rtype: str
+        """
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
+
+    @property
+    def SamplingRate(self):
+        """执行统计分析（Query中包含SQL）时，是否对原始日志先进行采样，再进行统计分析。
+0：自动采样;
+0～1：按指定采样率采样，例如0.02;
+1：不采样，即精确分析
+默认值为1
+        :rtype: float
+        """
+        return self._SamplingRate
+
+    @SamplingRate.setter
+    def SamplingRate(self, SamplingRate):
+        self._SamplingRate = SamplingRate
+
+    @property
+    def UseNewAnalysis(self):
+        """为true代表使用新的检索结果返回方式，输出参数AnalysisRecords和Columns有效
+为false时代表使用老的检索结果返回方式, 输出AnalysisResults和ColNames有效
+两种返回方式在编码格式上有少量区别，建议使用true
+        :rtype: bool
+        """
+        return self._UseNewAnalysis
+
+    @UseNewAnalysis.setter
+    def UseNewAnalysis(self, UseNewAnalysis):
+        self._UseNewAnalysis = UseNewAnalysis
+
+
+    def _deserialize(self, params):
+        self._From = params.get("From")
+        self._To = params.get("To")
+        self._Query = params.get("Query")
+        self._SyntaxRule = params.get("SyntaxRule")
+        self._TopicId = params.get("TopicId")
+        if params.get("Topics") is not None:
+            self._Topics = []
+            for item in params.get("Topics"):
+                obj = MultiTopicSearchInformation()
+                obj._deserialize(item)
+                self._Topics.append(obj)
+        self._Sort = params.get("Sort")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Context = params.get("Context")
+        self._SamplingRate = params.get("SamplingRate")
+        self._UseNewAnalysis = params.get("UseNewAnalysis")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchLogResponse(AbstractModel):
+    """SearchLog返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Context: 透传本次接口返回的Context值，可获取后续更多日志，过期时间1小时。
+注意：
+* 仅适用于单日志主题检索，检索多个日志主题时，请使用Topics中的Context
+        :type Context: str
+        :param _ListOver: 符合检索条件的日志是否已全部返回，如未全部返回可使用Context参数获取后续更多日志
+注意：仅当检索分析语句(Query)不包含SQL时有效
+        :type ListOver: bool
+        :param _Analysis: 返回的是否为统计分析（即SQL）结果
+        :type Analysis: bool
+        :param _Results: 匹配检索条件的原始日志
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Results: list of LogInfo
+        :param _ColNames: 日志统计分析结果的列名
+当UseNewAnalysis为false时生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ColNames: list of str
+        :param _AnalysisResults: 日志统计分析结果
+当UseNewAnalysis为false时生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AnalysisResults: list of LogItems
+        :param _AnalysisRecords: 日志统计分析结果
+当UseNewAnalysis为true时生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AnalysisRecords: list of str
+        :param _Columns: 日志统计分析结果的列属性
+当UseNewAnalysis为true时生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Columns: list of Column
+        :param _SamplingRate: 本次统计分析使用的采样率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SamplingRate: float
+        :param _Topics: 使用多日志主题检索时，各个日志主题的基本信息，例如报错信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Topics: :class:`tencentcloud.cfw.v20190904.models.SearchLogTopics`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Context = None
+        self._ListOver = None
+        self._Analysis = None
+        self._Results = None
+        self._ColNames = None
+        self._AnalysisResults = None
+        self._AnalysisRecords = None
+        self._Columns = None
+        self._SamplingRate = None
+        self._Topics = None
+        self._RequestId = None
+
+    @property
+    def Context(self):
+        """透传本次接口返回的Context值，可获取后续更多日志，过期时间1小时。
+注意：
+* 仅适用于单日志主题检索，检索多个日志主题时，请使用Topics中的Context
+        :rtype: str
+        """
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
+
+    @property
+    def ListOver(self):
+        """符合检索条件的日志是否已全部返回，如未全部返回可使用Context参数获取后续更多日志
+注意：仅当检索分析语句(Query)不包含SQL时有效
+        :rtype: bool
+        """
+        return self._ListOver
+
+    @ListOver.setter
+    def ListOver(self, ListOver):
+        self._ListOver = ListOver
+
+    @property
+    def Analysis(self):
+        """返回的是否为统计分析（即SQL）结果
+        :rtype: bool
+        """
+        return self._Analysis
+
+    @Analysis.setter
+    def Analysis(self, Analysis):
+        self._Analysis = Analysis
+
+    @property
+    def Results(self):
+        """匹配检索条件的原始日志
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LogInfo
+        """
+        return self._Results
+
+    @Results.setter
+    def Results(self, Results):
+        self._Results = Results
+
+    @property
+    def ColNames(self):
+        """日志统计分析结果的列名
+当UseNewAnalysis为false时生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._ColNames
+
+    @ColNames.setter
+    def ColNames(self, ColNames):
+        self._ColNames = ColNames
+
+    @property
+    def AnalysisResults(self):
+        """日志统计分析结果
+当UseNewAnalysis为false时生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LogItems
+        """
+        return self._AnalysisResults
+
+    @AnalysisResults.setter
+    def AnalysisResults(self, AnalysisResults):
+        self._AnalysisResults = AnalysisResults
+
+    @property
+    def AnalysisRecords(self):
+        """日志统计分析结果
+当UseNewAnalysis为true时生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._AnalysisRecords
+
+    @AnalysisRecords.setter
+    def AnalysisRecords(self, AnalysisRecords):
+        self._AnalysisRecords = AnalysisRecords
+
+    @property
+    def Columns(self):
+        """日志统计分析结果的列属性
+当UseNewAnalysis为true时生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Column
+        """
+        return self._Columns
+
+    @Columns.setter
+    def Columns(self, Columns):
+        self._Columns = Columns
+
+    @property
+    def SamplingRate(self):
+        """本次统计分析使用的采样率
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._SamplingRate
+
+    @SamplingRate.setter
+    def SamplingRate(self, SamplingRate):
+        self._SamplingRate = SamplingRate
+
+    @property
+    def Topics(self):
+        """使用多日志主题检索时，各个日志主题的基本信息，例如报错信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.SearchLogTopics`
+        """
+        return self._Topics
+
+    @Topics.setter
+    def Topics(self, Topics):
+        self._Topics = Topics
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Context = params.get("Context")
+        self._ListOver = params.get("ListOver")
+        self._Analysis = params.get("Analysis")
+        if params.get("Results") is not None:
+            self._Results = []
+            for item in params.get("Results"):
+                obj = LogInfo()
+                obj._deserialize(item)
+                self._Results.append(obj)
+        self._ColNames = params.get("ColNames")
+        if params.get("AnalysisResults") is not None:
+            self._AnalysisResults = []
+            for item in params.get("AnalysisResults"):
+                obj = LogItems()
+                obj._deserialize(item)
+                self._AnalysisResults.append(obj)
+        self._AnalysisRecords = params.get("AnalysisRecords")
+        if params.get("Columns") is not None:
+            self._Columns = []
+            for item in params.get("Columns"):
+                obj = Column()
+                obj._deserialize(item)
+                self._Columns.append(obj)
+        self._SamplingRate = params.get("SamplingRate")
+        if params.get("Topics") is not None:
+            self._Topics = SearchLogTopics()
+            self._Topics._deserialize(params.get("Topics"))
+        self._RequestId = params.get("RequestId")
+
+
+class SearchLogTopics(AbstractModel):
+    """多主题检索返回信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Errors: 多日志主题检索对应的错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Errors: list of SearchLogErrors
+        :param _Infos: 多日志主题检索各日志主题信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Infos: list of SearchLogInfos
+        """
+        self._Errors = None
+        self._Infos = None
+
+    @property
+    def Errors(self):
+        """多日志主题检索对应的错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SearchLogErrors
+        """
+        return self._Errors
+
+    @Errors.setter
+    def Errors(self, Errors):
+        self._Errors = Errors
+
+    @property
+    def Infos(self):
+        """多日志主题检索各日志主题信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SearchLogInfos
+        """
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+
+    def _deserialize(self, params):
+        if params.get("Errors") is not None:
+            self._Errors = []
+            for item in params.get("Errors"):
+                obj = SearchLogErrors()
+                obj._deserialize(item)
+                self._Errors.append(obj)
+        if params.get("Infos") is not None:
+            self._Infos = []
+            for item in params.get("Infos"):
+                obj = SearchLogInfos()
+                obj._deserialize(item)
+                self._Infos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

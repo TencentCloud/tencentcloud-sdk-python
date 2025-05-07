@@ -5633,6 +5633,90 @@ class ModifyAndroidInstancesUserIdResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class RebootAndroidInstanceHostsRequest(AbstractModel):
+    """RebootAndroidInstanceHosts请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HostSerialNumbers: 宿主机序列号集合
+        :type HostSerialNumbers: list of str
+        """
+        self._HostSerialNumbers = None
+
+    @property
+    def HostSerialNumbers(self):
+        """宿主机序列号集合
+        :rtype: list of str
+        """
+        return self._HostSerialNumbers
+
+    @HostSerialNumbers.setter
+    def HostSerialNumbers(self, HostSerialNumbers):
+        self._HostSerialNumbers = HostSerialNumbers
+
+
+    def _deserialize(self, params):
+        self._HostSerialNumbers = params.get("HostSerialNumbers")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RebootAndroidInstanceHostsResponse(AbstractModel):
+    """RebootAndroidInstanceHosts返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskSet: 任务 ID 集合，以供任务状态查询，其中 InstanceId 为宿主机序列号
+        :type TaskSet: list of AndroidInstanceTask
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskSet = None
+        self._RequestId = None
+
+    @property
+    def TaskSet(self):
+        """任务 ID 集合，以供任务状态查询，其中 InstanceId 为宿主机序列号
+        :rtype: list of AndroidInstanceTask
+        """
+        return self._TaskSet
+
+    @TaskSet.setter
+    def TaskSet(self, TaskSet):
+        self._TaskSet = TaskSet
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TaskSet") is not None:
+            self._TaskSet = []
+            for item in params.get("TaskSet"):
+                obj = AndroidInstanceTask()
+                obj._deserialize(item)
+                self._TaskSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class RebootAndroidInstancesRequest(AbstractModel):
     """RebootAndroidInstances请求参数结构体
 

@@ -858,6 +858,32 @@ class GsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RebootAndroidInstanceHosts(self, request):
+        """重启安卓实例宿主机。请注意：
+
+        - 当前每 15 分钟只能重启一次
+        - 一个宿主机可能有多个云手机实例，重启宿主机会影响运行在上面的所有实例，请确保该宿主机上的所有云手机实例未投入业务使用
+
+        :param request: Request instance for RebootAndroidInstanceHosts.
+        :type request: :class:`tencentcloud.gs.v20191118.models.RebootAndroidInstanceHostsRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.RebootAndroidInstanceHostsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RebootAndroidInstanceHosts", params, headers=headers)
+            response = json.loads(body)
+            model = models.RebootAndroidInstanceHostsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RebootAndroidInstances(self, request):
         """重启安卓实例
 

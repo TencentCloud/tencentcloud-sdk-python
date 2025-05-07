@@ -2543,6 +2543,32 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def SearchLog(self, request):
+        """本接口用于检索分析日志，使用该接口时请注意如下事项：
+        1. 该接口除受默认接口请求频率限制外，针对单个日志主题，查询并发数不能超过15。
+        2. 检索语法建议使用日志服务专用检索语法CQL，请使用SyntaxRule参数，将值设置为1，控制台默认也使用该语法规则。
+        3. API返回数据包最大49MB，建议启用 gzip 压缩（HTTP Request Header Accept-Encoding:gzip）。
+
+        :param request: Request instance for SearchLog.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.SearchLogRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.SearchLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SearchLog", params, headers=headers)
+            response = json.loads(body)
+            model = models.SearchLogResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def SetNatFwDnatRule(self, request):
         """配置防火墙Dnat规则
 

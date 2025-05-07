@@ -9104,14 +9104,14 @@ OPEN：公网属性， INTERNAL：内网属性。
         :type OrderType: int
         :param _SearchKey: 模糊搜索字段，模糊匹配负载均衡实例的名称、域名、负载均衡实例的 VIP 地址，负载均衡实例ID。
         :type SearchKey: str
-        :param _ProjectId: 负载均衡实例所属的项目 ID，可以通过[DescribeProject](https://cloud.tencent.com/document/api/651/78725) 接口获取，不传默认所有项目。
+        :param _ProjectId: 负载均衡实例所属的项目 ID，可以通过[DescribeProject](https://cloud.tencent.com/document/api/651/78725)接口获取，不传默认所有项目。
         :type ProjectId: int
         :param _WithRs: 负载均衡是否绑定后端服务，0：没有绑定后端服务，1：绑定后端服务，-1：查询全部。
         :type WithRs: int
-        :param _VpcId: 负载均衡实例所属私有网络唯一ID，如 vpc-bhqkbhdx，
+        :param _VpcId: 负载均衡实例所属私有网络唯一ID，如 vpc-bhqkbhdx，可以通过[DescribeVpcs](https://cloud.tencent.com/document/api/215/15778)接口获取。
 查找基础网络类型的负载均衡可传入'0'。
         :type VpcId: str
-        :param _SecurityGroup: 安全组ID，如 sg-m1cc****。
+        :param _SecurityGroup: 安全组ID，如 sg-m1cc****，可以通过接口[DescribeSecurityGroups](https://cloud.tencent.com/document/product/215/15808)获取。
         :type SecurityGroup: str
         :param _MasterZone: 主可用区ID，如 ："100001" （对应的是广州一区）。可通过[DescribeZones](https://cloud.tencent.com/document/product/213/15707)获取可用区列表。
         :type MasterZone: str
@@ -9135,10 +9135,12 @@ OPEN：公网属性， INTERNAL：内网属性。
 按照【CLB 标签的键】进行过滤，例如：tag-key。
 类型：String
 必选：否
+获取方式：[DescribeTags](https://cloud.tencent.com/document/api/651/35316)
 - tag:tag-key
 按照【CLB标签键值】进行过滤，例如：tag-test。
 类型：String
 必选：否
+获取方式：[DescribeTagKeys](https://cloud.tencent.com/document/api/651/35318)
 - function-name
 按照【后端绑定SCF云函数的函数名称】进行过滤，例如：helloworld-1744958255。
 类型：String
@@ -9340,7 +9342,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def ProjectId(self):
-        """负载均衡实例所属的项目 ID，可以通过[DescribeProject](https://cloud.tencent.com/document/api/651/78725) 接口获取，不传默认所有项目。
+        """负载均衡实例所属的项目 ID，可以通过[DescribeProject](https://cloud.tencent.com/document/api/651/78725)接口获取，不传默认所有项目。
         :rtype: int
         """
         return self._ProjectId
@@ -9362,7 +9364,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def VpcId(self):
-        """负载均衡实例所属私有网络唯一ID，如 vpc-bhqkbhdx，
+        """负载均衡实例所属私有网络唯一ID，如 vpc-bhqkbhdx，可以通过[DescribeVpcs](https://cloud.tencent.com/document/api/215/15778)接口获取。
 查找基础网络类型的负载均衡可传入'0'。
         :rtype: str
         """
@@ -9374,7 +9376,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 
     @property
     def SecurityGroup(self):
-        """安全组ID，如 sg-m1cc****。
+        """安全组ID，如 sg-m1cc****，可以通过接口[DescribeSecurityGroups](https://cloud.tencent.com/document/product/215/15808)获取。
         :rtype: str
         """
         return self._SecurityGroup
@@ -9416,10 +9418,12 @@ OPEN：公网属性， INTERNAL：内网属性。
 按照【CLB 标签的键】进行过滤，例如：tag-key。
 类型：String
 必选：否
+获取方式：[DescribeTags](https://cloud.tencent.com/document/api/651/35316)
 - tag:tag-key
 按照【CLB标签键值】进行过滤，例如：tag-test。
 类型：String
 必选：否
+获取方式：[DescribeTagKeys](https://cloud.tencent.com/document/api/651/35318)
 - function-name
 按照【后端绑定SCF云函数的函数名称】进行过滤，例如：helloworld-1744958255。
 类型：String
@@ -11198,6 +11202,7 @@ class HealthCheck(AbstractModel):
     def __init__(self):
         r"""
         :param _HealthSwitch: 是否开启健康检查：1（开启）、0（关闭）。
+默认为开启。
         :type HealthSwitch: int
         :param _TimeOut: 健康检查的响应超时时间，可选值：2~60，默认值：2，单位：秒。响应超时时间要小于检查间隔时间。
         :type TimeOut: int
@@ -11265,6 +11270,7 @@ class HealthCheck(AbstractModel):
     @property
     def HealthSwitch(self):
         """是否开启健康检查：1（开启）、0（关闭）。
+默认为开启。
         :rtype: int
         """
         return self._HealthSwitch
@@ -12133,7 +12139,14 @@ class InternetAccessible(AbstractModel):
 - 对于公网属性和内网属性的性能容量型 CLB实例，最大出带宽的范围为1Mbps-61440Mbps。
 （调用CreateLoadBalancer创建LB时不指定此参数则设置为默认值10Mbps。此上限可调整）
         :type InternetMaxBandwidthOut: int
-        :param _BandwidthpkgSubType: 带宽包的类型，如SINGLEISP（单线）、BGP（多线）。
+        :param _BandwidthpkgSubType: 带宽包的类型，如 BGP（多线）。
+类型如下：
+SINGLEISP: 单线
+BGP: 多线
+HIGH_QUALITY_BGP: 精品BGP共享带宽包
+SINGLEISP_CMCC: 中国移动共享带宽包
+SINGLEISP_CTCC: 中国电信共享带宽包
+SINGLEISP_CUCC: 中国联通共享带宽包
 注意：此字段可能返回 null，表示取不到有效值。
         :type BandwidthpkgSubType: str
         """
@@ -12168,7 +12181,14 @@ class InternetAccessible(AbstractModel):
 
     @property
     def BandwidthpkgSubType(self):
-        """带宽包的类型，如SINGLEISP（单线）、BGP（多线）。
+        """带宽包的类型，如 BGP（多线）。
+类型如下：
+SINGLEISP: 单线
+BGP: 多线
+HIGH_QUALITY_BGP: 精品BGP共享带宽包
+SINGLEISP_CMCC: 中国移动共享带宽包
+SINGLEISP_CTCC: 中国电信共享带宽包
+SINGLEISP_CUCC: 中国联通共享带宽包
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13437,7 +13457,7 @@ OPEN：公网属性， INTERNAL：内网属性；对于内网属性的负载均�
         :type AnycastZone: str
         :param _AddressIPVersion: IP版本，ipv4 | ipv6
         :type AddressIPVersion: str
-        :param _NumericalVpcId: 数值形式的私有网络 ID。
+        :param _NumericalVpcId: 数值形式的私有网络 ID，可以通过[DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)接口获取。
         :type NumericalVpcId: int
         :param _VipIsp: 负载均衡IP地址所属的运营商。
 
@@ -13858,7 +13878,7 @@ OPEN：公网属性， INTERNAL：内网属性；对于内网属性的负载均�
 
     @property
     def NumericalVpcId(self):
-        """数值形式的私有网络 ID。
+        """数值形式的私有网络 ID，可以通过[DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)接口获取。
         :rtype: int
         """
         return self._NumericalVpcId

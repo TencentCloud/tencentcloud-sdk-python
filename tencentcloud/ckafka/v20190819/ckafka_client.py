@@ -1360,6 +1360,29 @@ class CkafkaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSecurityGroupRoutes(self, request):
+        """获取安全组路由信息列表
+
+        :param request: Request instance for DescribeSecurityGroupRoutes.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeSecurityGroupRoutesRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DescribeSecurityGroupRoutesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSecurityGroupRoutes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSecurityGroupRoutesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTaskStatus(self, request):
         """查询任务状态
 
