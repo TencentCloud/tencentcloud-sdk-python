@@ -74,7 +74,11 @@ class ClbClient(AbstractClient):
 
     def AssociateTargetGroups(self, request):
         """本接口(AssociateTargetGroups)用来将目标组绑定到负载均衡的监听器（四层协议）或转发规则（七层协议）上。
-        本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+        本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用  [DescribeTaskStatus](https://cloud.tencent.com/document/product/214/30683)  接口查询本次任务是否成功。
+        限制说明：
+        - 四层监听器绑定旧版目标组需要监听器开启后端目标组。
+        - 七层绑定目标组，数据结构 TargetGroupAssosication 中 LocationId 为必填项。
+        - 负载均衡的 VPC 需要和目标组的 VPC 一致。
 
         :param request: Request instance for AssociateTargetGroups.
         :type request: :class:`tencentcloud.clb.v20180317.models.AssociateTargetGroupsRequest`
@@ -329,7 +333,7 @@ class ClbClient(AbstractClient):
 
     def CreateLoadBalancerSnatIps(self, request):
         """针对SnatPro负载均衡，这个接口用于添加SnatIp，如果负载均衡没有开启SnatPro，添加SnatIp后会自动开启。
-        本接口为异步接口，接口返回成功后，需以得到的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+        本接口为异步接口，接口返回成功后，需以得到的 RequestID 为入参，调用  [DescribeTaskStatus](https://cloud.tencent.com/document/product/214/30683)  接口查询本次任务是否成功。
 
         :param request: Request instance for CreateLoadBalancerSnatIps.
         :type request: :class:`tencentcloud.clb.v20180317.models.CreateLoadBalancerSnatIpsRequest`
@@ -353,7 +357,7 @@ class ClbClient(AbstractClient):
 
     def CreateRule(self, request):
         """CreateRule 接口用于在一个已存在的负载均衡七层监听器下创建转发规则，七层监听器中，后端服务必须绑定到规则上而非监听器上。
-        本接口为异步接口，本接口返回成功后需以返回的RequestID为入参，调用DescribeTaskStatus接口查询本次任务是否成功。
+        本接口为异步接口，本接口返回成功后需以返回的RequestID为入参，调用 [DescribeTaskStatus](https://cloud.tencent.com/document/product/214/30683) 接口查询本次任务是否成功。
 
         :param request: Request instance for CreateRule.
         :type request: :class:`tencentcloud.clb.v20180317.models.CreateRuleRequest`
@@ -518,7 +522,7 @@ class ClbClient(AbstractClient):
 
     def DeleteLoadBalancerSnatIps(self, request):
         """这个接口用于删除SnatPro的负载均衡的SnatIp。
-        本接口为异步接口，接口返回成功后，需以得到的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+        本接口为异步接口，接口返回成功后，需以得到的 RequestID 为入参，调用  [DescribeTaskStatus](https://cloud.tencent.com/document/product/214/30683)  接口查询本次任务是否成功。
 
         :param request: Request instance for DeleteLoadBalancerSnatIps.
         :type request: :class:`tencentcloud.clb.v20180317.models.DeleteLoadBalancerSnatIpsRequest`
@@ -589,7 +593,7 @@ class ClbClient(AbstractClient):
 
 
     def DeleteTargetGroups(self, request):
-        """删除目标组
+        """删除目标组，支持批量删除目标组，单次最多批量删除 20 个目标组。
 
         :param request: Request instance for DeleteTargetGroups.
         :type request: :class:`tencentcloud.clb.v20180317.models.DeleteTargetGroupsRequest`
@@ -1409,6 +1413,7 @@ class ClbClient(AbstractClient):
     def DisassociateTargetGroups(self, request):
         """解除规则的目标组关联关系。
         本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+        当解绑七层转发规则时，LocationId 为必填项。
 
         :param request: Request instance for DisassociateTargetGroups.
         :type request: :class:`tencentcloud.clb.v20180317.models.DisassociateTargetGroupsRequest`
@@ -1477,7 +1482,7 @@ class ClbClient(AbstractClient):
 
 
     def InquiryPriceRefundLoadBalancer(self, request):
-        """InquiryPriceRefundLoadBalancer接口查询负载均衡退费价格。
+        """InquiryPriceRefundLoadBalancer接口查询负载均衡退费价格，只支持预付费类型的负载均衡实例。
 
         :param request: Request instance for InquiryPriceRefundLoadBalancer.
         :type request: :class:`tencentcloud.clb.v20180317.models.InquiryPriceRefundLoadBalancerRequest`
@@ -1667,6 +1672,8 @@ class ClbClient(AbstractClient):
 
     def ModifyFunctionTargets(self, request):
         """修改负载均衡转发规则上所绑定的云函数。
+        限制说明：
+        - 仅支持绑定“Event 函数”类型的云函数。
 
         :param request: Request instance for ModifyFunctionTargets.
         :type request: :class:`tencentcloud.clb.v20180317.models.ModifyFunctionTargetsRequest`
@@ -1965,6 +1972,7 @@ class ClbClient(AbstractClient):
         - 目前仅 IPv4、IPv6 NAT64 版本的负载均衡支持绑定 SCF，IPv6 版本的暂不支持。
         - 仅七层（HTTP、HTTPS）监听器支持绑定 SCF，四层（TCP、UDP、TCP SSL）监听器和七层 QUIC 监听器不支持。
         - CLB 绑定 SCF 仅支持绑定“Event 函数”类型的云函数。
+        - 一个转发规则只支持绑定一个云函数。
 
         :param request: Request instance for RegisterFunctionTargets.
         :type request: :class:`tencentcloud.clb.v20180317.models.RegisterFunctionTargetsRequest`
@@ -2012,7 +2020,7 @@ class ClbClient(AbstractClient):
 
     def RegisterTargets(self, request):
         """RegisterTargets 接口用来将一台或多台后端服务绑定到负载均衡的监听器（或7层转发规则），在此之前您需要先行创建相关的4层监听器或7层转发规则。对于四层监听器（TCP、UDP），只需指定监听器ID即可，对于七层监听器（HTTP、HTTPS），还需通过LocationId或者Domain+Url指定转发规则。
-        本接口为异步接口，本接口返回成功后需以返回的RequestID为入参，调用DescribeTaskStatus接口查询本次任务是否成功。
+        本接口为异步接口，本接口返回成功后需以返回的RequestID为入参，调用  [DescribeTaskStatus](https://cloud.tencent.com/document/product/214/30683)  接口查询本次任务是否成功。
 
         :param request: Request instance for RegisterTargets.
         :type request: :class:`tencentcloud.clb.v20180317.models.RegisterTargetsRequest`
@@ -2130,7 +2138,7 @@ class ClbClient(AbstractClient):
 
 
     def SetLoadBalancerSecurityGroups(self, request):
-        """SetLoadBalancerSecurityGroups 接口支持对一个公网负载均衡实例执行设置（绑定、解绑）安全组操作。查询一个负载均衡实例目前已绑定的安全组，可使用 DescribeLoadBalancers 接口。本接口是set语义，
+        """SetLoadBalancerSecurityGroups 接口支持对一个公网负载均衡实例执行设置（绑定、解绑）安全组操作。查询一个负载均衡实例目前已绑定的安全组，可使用 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口。本接口是set语义，
         绑定操作时，入参需要传入负载均衡实例要绑定的所有安全组（已绑定的+新增绑定的）。
         解绑操作时，入参需要传入负载均衡实例执行解绑后所绑定的所有安全组；如果要解绑所有安全组，可不传此参数，或传入空数组。注意：内网 CLB 绑定 EIP 后，CLB 上的安全组对来自 EIP 的流量不生效，对来自内网 CLB 的流量生效。
 
@@ -2180,7 +2188,7 @@ class ClbClient(AbstractClient):
 
 
     def SetSecurityGroupForLoadbalancers(self, request):
-        """绑定或解绑一个安全组到多个公网负载均衡实例。注意：内网负载均衡不支持绑定安全组。
+        """绑定或解绑一个安全组到多个公网负载均衡实例。
 
         :param request: Request instance for SetSecurityGroupForLoadbalancers.
         :type request: :class:`tencentcloud.clb.v20180317.models.SetSecurityGroupForLoadbalancersRequest`

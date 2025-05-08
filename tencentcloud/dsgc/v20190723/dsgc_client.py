@@ -2041,6 +2041,29 @@ class DsgcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDSPADiscoveryTasks(self, request):
+        """获取分类分级任务列表
+
+        :param request: Request instance for DescribeDSPADiscoveryTasks.
+        :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPADiscoveryTasksRequest`
+        :rtype: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPADiscoveryTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDSPADiscoveryTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDSPADiscoveryTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDSPAESDataAssetByComplianceId(self, request):
         """根据合规组id，去查询ES的概览页统计数据
 

@@ -3444,9 +3444,7 @@ class CreateCmdTemplateRequest(AbstractModel):
         :type Name: str
         :param _CmdList: 命令列表，\n分隔，最大长度32768字节
         :type CmdList: str
-        :param _Encoding: 标识cmdlist字段前端是否为base64加密传值.
-0:表示非base64加密
-1:表示是base64加密
+        :param _Encoding: 标识CmdList字段前端是否为base64加密传值.0:表示非base64加密1:表示是base64加密
         :type Encoding: int
         """
         self._Name = None
@@ -3477,9 +3475,7 @@ class CreateCmdTemplateRequest(AbstractModel):
 
     @property
     def Encoding(self):
-        """标识cmdlist字段前端是否为base64加密传值.
-0:表示非base64加密
-1:表示是base64加密
+        """标识CmdList字段前端是否为base64加密传值.0:表示非base64加密1:表示是base64加密
         :rtype: int
         """
         return self._Encoding
@@ -13873,7 +13869,7 @@ class SearchCommandResult(AbstractModel):
         :type FromIp: str
         :param _SessionTime: 该命令所属会话的会话开始时间
         :type SessionTime: str
-        :param _SessTime: 该命令所属会话的会话开始时间（废弃，使用SessionTime）
+        :param _SessTime: 该命令所属会话的会话开始时间（使用SessionTime）
         :type SessTime: str
         :param _ConfirmTime: 复核时间
         :type ConfirmTime: str
@@ -14069,7 +14065,7 @@ class SearchCommandResult(AbstractModel):
 
     @property
     def SessTime(self):
-        """该命令所属会话的会话开始时间（废弃，使用SessionTime）
+        """该命令所属会话的会话开始时间（使用SessionTime）
         :rtype: str
         """
         return self._SessTime

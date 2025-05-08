@@ -12672,7 +12672,6 @@ Quality，图片质量分数，请求 Config.Quality 时返回（取值范围：
 BorderCodeValue，身份证边框不完整告警阈值分数，请求 Config.BorderCheckWarn时返回（取值范围：0 ~ 100，分数越低边框遮挡可能性越低，建议阈值≤50）;
 
 WarnInfos，告警信息，Code 告警码列表和释义：
--9100 身份证有效日期不合法告警，
 -9101 身份证边框不完整告警，
 
 -9102 身份证复印件告警（黑白及彩色复印件）,
@@ -12799,7 +12798,6 @@ Quality，图片质量分数，请求 Config.Quality 时返回（取值范围：
 BorderCodeValue，身份证边框不完整告警阈值分数，请求 Config.BorderCheckWarn时返回（取值范围：0 ~ 100，分数越低边框遮挡可能性越低，建议阈值≤50）;
 
 WarnInfos，告警信息，Code 告警码列表和释义：
--9100 身份证有效日期不合法告警，
 -9101 身份证边框不完整告警，
 
 -9102 身份证复印件告警（黑白及彩色复印件）,
@@ -27082,6 +27080,8 @@ class ResultList(AbstractModel):
         :param _Answer: 答案
 注意：此字段可能返回 null，表示取不到有效值。
         :type Answer: list of Element
+        :param _Parse: 解析
+        :type Parse: list of Element
         :param _Coord: 整题的坐标
 注意：此字段可能返回 null，表示取不到有效值。
         :type Coord: list of Polygon
@@ -27091,6 +27091,7 @@ class ResultList(AbstractModel):
         self._Figure = None
         self._Table = None
         self._Answer = None
+        self._Parse = None
         self._Coord = None
 
     @property
@@ -27154,6 +27155,17 @@ class ResultList(AbstractModel):
         self._Answer = Answer
 
     @property
+    def Parse(self):
+        """解析
+        :rtype: list of Element
+        """
+        return self._Parse
+
+    @Parse.setter
+    def Parse(self, Parse):
+        self._Parse = Parse
+
+    @property
     def Coord(self):
         """整题的坐标
 注意：此字段可能返回 null，表示取不到有效值。
@@ -27197,6 +27209,12 @@ class ResultList(AbstractModel):
                 obj = Element()
                 obj._deserialize(item)
                 self._Answer.append(obj)
+        if params.get("Parse") is not None:
+            self._Parse = []
+            for item in params.get("Parse"):
+                obj = Element()
+                obj._deserialize(item)
+                self._Parse.append(obj)
         if params.get("Coord") is not None:
             self._Coord = []
             for item in params.get("Coord"):

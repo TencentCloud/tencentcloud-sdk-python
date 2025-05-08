@@ -16487,7 +16487,6 @@ class PolicyDetail(AbstractModel):
         :param _PolicyId: 策略ID。
         :type PolicyId: int
         :param _PolicyName: 策略名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyName: str
         """
         self._PolicyId = None
@@ -16507,7 +16506,6 @@ class PolicyDetail(AbstractModel):
     @property
     def PolicyName(self):
         """策略名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PolicyName
@@ -17780,7 +17778,6 @@ class RolePolicie(AbstractModel):
     def __init__(self):
         r"""
         :param _RolePolicyId: 策略ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RolePolicyId: int
         :param _RolePolicyName: 权限策略名称
         :type RolePolicyName: str
@@ -17800,7 +17797,6 @@ class RolePolicie(AbstractModel):
     @property
     def RolePolicyId(self):
         """策略ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RolePolicyId
@@ -17886,13 +17882,10 @@ class RoleProvisioningsTask(AbstractModel):
         :param _TargetUin: 授权的集团账号目标账号的UIN
         :type TargetUin: int
         :param _TargetType: 同步的集团账号目标账号的类型，ManagerUin管理账号;MemberUin成员账号
-注意：此字段可能返回 null，表示取不到有效值。
         :type TargetType: str
         :param _TaskType: 任务类型。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskType: str
         :param _TaskStatus: 任务状态：InProgress: 进行中，Failed: 失败 3:Success: 成功
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskStatus: str
         """
         self._TaskId = None
@@ -17950,7 +17943,6 @@ class RoleProvisioningsTask(AbstractModel):
     @property
     def TargetType(self):
         """同步的集团账号目标账号的类型，ManagerUin管理账号;MemberUin成员账号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TargetType
@@ -17962,7 +17954,6 @@ class RoleProvisioningsTask(AbstractModel):
     @property
     def TaskType(self):
         """任务类型。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskType
@@ -17974,7 +17965,6 @@ class RoleProvisioningsTask(AbstractModel):
     @property
     def TaskStatus(self):
         """任务状态：InProgress: 进行中，Failed: 失败 3:Success: 成功
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TaskStatus
@@ -19237,7 +19227,6 @@ class TaskInfo(AbstractModel):
         :param _Status: InProgress：任务执行中。 Success：任务执行成功。 Failed：任务执行失败。
         :type Status: str
         :param _FailureReason: 失败原因
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailureReason: str
         """
         self._TaskId = None
@@ -19353,7 +19342,6 @@ class TaskInfo(AbstractModel):
     @property
     def FailureReason(self):
         """失败原因
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._FailureReason

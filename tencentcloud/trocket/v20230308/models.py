@@ -132,6 +132,102 @@ class ChangeMigratingTopicToNextStageResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ClientSubscriptionInfo(AbstractModel):
+    """客户端订阅详情，可用于辅助判断哪些客户端订阅关系不一致
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClientId: 客户端ID
+        :type ClientId: str
+        :param _ClientAddr: 客户端地址
+        :type ClientAddr: str
+        :param _Topic: 订阅主题
+        :type Topic: str
+        :param _SubString: 订阅表达式
+        :type SubString: str
+        :param _ExpressionType: 订阅方式
+        :type ExpressionType: str
+        """
+        self._ClientId = None
+        self._ClientAddr = None
+        self._Topic = None
+        self._SubString = None
+        self._ExpressionType = None
+
+    @property
+    def ClientId(self):
+        """客户端ID
+        :rtype: str
+        """
+        return self._ClientId
+
+    @ClientId.setter
+    def ClientId(self, ClientId):
+        self._ClientId = ClientId
+
+    @property
+    def ClientAddr(self):
+        """客户端地址
+        :rtype: str
+        """
+        return self._ClientAddr
+
+    @ClientAddr.setter
+    def ClientAddr(self, ClientAddr):
+        self._ClientAddr = ClientAddr
+
+    @property
+    def Topic(self):
+        """订阅主题
+        :rtype: str
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def SubString(self):
+        """订阅表达式
+        :rtype: str
+        """
+        return self._SubString
+
+    @SubString.setter
+    def SubString(self, SubString):
+        self._SubString = SubString
+
+    @property
+    def ExpressionType(self):
+        """订阅方式
+        :rtype: str
+        """
+        return self._ExpressionType
+
+    @ExpressionType.setter
+    def ExpressionType(self, ExpressionType):
+        self._ExpressionType = ExpressionType
+
+
+    def _deserialize(self, params):
+        self._ClientId = params.get("ClientId")
+        self._ClientAddr = params.get("ClientAddr")
+        self._Topic = params.get("Topic")
+        self._SubString = params.get("SubString")
+        self._ExpressionType = params.get("ExpressionType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ConsumeGroupItem(AbstractModel):
     """消费组信息
 
@@ -446,6 +542,8 @@ class CreateConsumerGroupRequest(AbstractModel):
         :type ConsumerGroup: str
         :param _Remark: 备注
         :type Remark: str
+        :param _TagList: 标签列表
+        :type TagList: list of Tag
         """
         self._InstanceId = None
         self._MaxRetryTimes = None
@@ -453,6 +551,7 @@ class CreateConsumerGroupRequest(AbstractModel):
         self._ConsumeMessageOrderly = None
         self._ConsumerGroup = None
         self._Remark = None
+        self._TagList = None
 
     @property
     def InstanceId(self):
@@ -521,6 +620,17 @@ class CreateConsumerGroupRequest(AbstractModel):
     def Remark(self, Remark):
         self._Remark = Remark
 
+    @property
+    def TagList(self):
+        """标签列表
+        :rtype: list of Tag
+        """
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -529,6 +639,12 @@ class CreateConsumerGroupRequest(AbstractModel):
         self._ConsumeMessageOrderly = params.get("ConsumeMessageOrderly")
         self._ConsumerGroup = params.get("ConsumerGroup")
         self._Remark = params.get("Remark")
+        if params.get("TagList") is not None:
+            self._TagList = []
+            for item in params.get("TagList"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._TagList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1738,6 +1854,8 @@ TRANSACTION:事务消息
         :type Remark: str
         :param _MsgTTL: 消息保留时长
         :type MsgTTL: int
+        :param _TagList: 标签列表
+        :type TagList: list of Tag
         """
         self._InstanceId = None
         self._Topic = None
@@ -1745,6 +1863,7 @@ TRANSACTION:事务消息
         self._QueueNum = None
         self._Remark = None
         self._MsgTTL = None
+        self._TagList = None
 
     @property
     def InstanceId(self):
@@ -1817,6 +1936,17 @@ TRANSACTION:事务消息
     def MsgTTL(self, MsgTTL):
         self._MsgTTL = MsgTTL
 
+    @property
+    def TagList(self):
+        """标签列表
+        :rtype: list of Tag
+        """
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -1825,6 +1955,12 @@ TRANSACTION:事务消息
         self._QueueNum = params.get("QueueNum")
         self._Remark = params.get("Remark")
         self._MsgTTL = params.get("MsgTTL")
+        if params.get("TagList") is not None:
+            self._TagList = []
+            for item in params.get("TagList"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._TagList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2893,7 +3029,6 @@ class DescribeConsumerGroupListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 查询总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _Data: 消费组列表
         :type Data: list of ConsumeGroupItem
@@ -2907,7 +3042,6 @@ class DescribeConsumerGroupListResponse(AbstractModel):
     @property
     def TotalCount(self):
         """查询总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -3408,7 +3542,6 @@ class DescribeFusionInstanceListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 查询总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _Data: 实例列表
         :type Data: list of FusionInstanceItem
@@ -3422,7 +3555,6 @@ class DescribeFusionInstanceListResponse(AbstractModel):
     @property
     def TotalCount(self):
         """查询总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -3564,7 +3696,6 @@ class DescribeInstanceListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 查询总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _Data: 实例列表
         :type Data: list of InstanceItem
@@ -3578,7 +3709,6 @@ class DescribeInstanceListResponse(AbstractModel):
     @property
     def TotalCount(self):
         """查询总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -6344,7 +6474,6 @@ class DescribeMessageListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 查询总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _Data: 消息记录列表
 注意：此字段可能返回 null，表示取不到有效值。
@@ -6363,7 +6492,6 @@ class DescribeMessageListResponse(AbstractModel):
     @property
     def TotalCount(self):
         """查询总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -7483,7 +7611,6 @@ class DescribeRoleListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 查询总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _Data: 角色信息列表
         :type Data: list of RoleItem
@@ -7497,7 +7624,6 @@ class DescribeRoleListResponse(AbstractModel):
     @property
     def TotalCount(self):
         """查询总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -7798,7 +7924,6 @@ class DescribeTopicListByGroupResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 查询总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _Data: 主题列表
         :type Data: list of SubscriptionData
@@ -7812,7 +7937,6 @@ class DescribeTopicListByGroupResponse(AbstractModel):
     @property
     def TotalCount(self):
         """查询总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -8856,6 +8980,9 @@ PREPAID，包年包月
         :param _DestroyTime: 预销毁时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type DestroyTime: int
+        :param _ZoneIds: 所属可用区列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneIds: list of int
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -8878,6 +9005,7 @@ PREPAID，包年包月
         self._RenewFlag = None
         self._InstanceItemExtraInfo = None
         self._DestroyTime = None
+        self._ZoneIds = None
 
     @property
     def InstanceId(self):
@@ -9136,6 +9264,18 @@ PREPAID，包年包月
     def DestroyTime(self, DestroyTime):
         self._DestroyTime = DestroyTime
 
+    @property
+    def ZoneIds(self):
+        """所属可用区列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
+        return self._ZoneIds
+
+    @ZoneIds.setter
+    def ZoneIds(self, ZoneIds):
+        self._ZoneIds = ZoneIds
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -9166,6 +9306,7 @@ PREPAID，包年包月
             self._InstanceItemExtraInfo = InstanceItemExtraInfo()
             self._InstanceItemExtraInfo._deserialize(params.get("InstanceItemExtraInfo"))
         self._DestroyTime = params.get("DestroyTime")
+        self._ZoneIds = params.get("ZoneIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9737,6 +9878,8 @@ class InstanceItemExtraInfo(AbstractModel):
         :param _InstanceStatus: 4.0共享集群状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceStatus: int
+        :param _IsFrozen: 是否已冻结
+        :type IsFrozen: bool
         """
         self._IsVip = None
         self._VipInstanceStatus = None
@@ -9747,6 +9890,7 @@ class InstanceItemExtraInfo(AbstractModel):
         self._MaxRetention = None
         self._MinRetention = None
         self._InstanceStatus = None
+        self._IsFrozen = None
 
     @property
     def IsVip(self):
@@ -9856,6 +10000,17 @@ class InstanceItemExtraInfo(AbstractModel):
     def InstanceStatus(self, InstanceStatus):
         self._InstanceStatus = InstanceStatus
 
+    @property
+    def IsFrozen(self):
+        """是否已冻结
+        :rtype: bool
+        """
+        return self._IsFrozen
+
+    @IsFrozen.setter
+    def IsFrozen(self, IsFrozen):
+        self._IsFrozen = IsFrozen
+
 
     def _deserialize(self, params):
         self._IsVip = params.get("IsVip")
@@ -9867,6 +10022,7 @@ class InstanceItemExtraInfo(AbstractModel):
         self._MaxRetention = params.get("MaxRetention")
         self._MinRetention = params.get("MinRetention")
         self._InstanceStatus = params.get("InstanceStatus")
+        self._IsFrozen = params.get("IsFrozen")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14175,6 +14331,9 @@ BROADCASTING 广播模式;
 CLUSTERING 集群模式;
 注意：此字段可能返回 null，表示取不到有效值。
         :type MessageModel: str
+        :param _ClientSubscriptionInfos: 订阅不一致的客户端列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientSubscriptionInfos: list of ClientSubscriptionInfo
         """
         self._InstanceId = None
         self._Topic = None
@@ -14191,6 +14350,7 @@ CLUSTERING 集群模式;
         self._MaxRetryTimes = None
         self._ConsumeMessageOrderly = None
         self._MessageModel = None
+        self._ClientSubscriptionInfos = None
 
     @property
     def InstanceId(self):
@@ -14374,6 +14534,18 @@ CLUSTERING 集群模式;
     def MessageModel(self, MessageModel):
         self._MessageModel = MessageModel
 
+    @property
+    def ClientSubscriptionInfos(self):
+        """订阅不一致的客户端列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ClientSubscriptionInfo
+        """
+        return self._ClientSubscriptionInfos
+
+    @ClientSubscriptionInfos.setter
+    def ClientSubscriptionInfos(self, ClientSubscriptionInfos):
+        self._ClientSubscriptionInfos = ClientSubscriptionInfos
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -14391,6 +14563,12 @@ CLUSTERING 集群模式;
         self._MaxRetryTimes = params.get("MaxRetryTimes")
         self._ConsumeMessageOrderly = params.get("ConsumeMessageOrderly")
         self._MessageModel = params.get("MessageModel")
+        if params.get("ClientSubscriptionInfos") is not None:
+            self._ClientSubscriptionInfos = []
+            for item in params.get("ClientSubscriptionInfos"):
+                obj = ClientSubscriptionInfo()
+                obj._deserialize(item)
+                self._ClientSubscriptionInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

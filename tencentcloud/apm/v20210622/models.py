@@ -754,6 +754,10 @@ class ApmInstanceDetail(AbstractModel):
 8: 账号欠费
 }
         :type StopReason: int
+        :param _IsRemoteCommandExecutionAnalysis: 是否开远程命令执行检测（0=关， 1=开）
+        :type IsRemoteCommandExecutionAnalysis: int
+        :param _IsMemoryHijackingAnalysis: 是否开内存马执行检测（0=关， 1=开）
+        :type IsMemoryHijackingAnalysis: int
         """
         self._InstanceId = None
         self._Name = None
@@ -792,6 +796,8 @@ class ApmInstanceDetail(AbstractModel):
         self._IsInstrumentationVulnerabilityScan = None
         self._IsSqlInjectionAnalysis = None
         self._StopReason = None
+        self._IsRemoteCommandExecutionAnalysis = None
+        self._IsMemoryHijackingAnalysis = None
 
     @property
     def InstanceId(self):
@@ -1206,6 +1212,28 @@ class ApmInstanceDetail(AbstractModel):
     def StopReason(self, StopReason):
         self._StopReason = StopReason
 
+    @property
+    def IsRemoteCommandExecutionAnalysis(self):
+        """是否开远程命令执行检测（0=关， 1=开）
+        :rtype: int
+        """
+        return self._IsRemoteCommandExecutionAnalysis
+
+    @IsRemoteCommandExecutionAnalysis.setter
+    def IsRemoteCommandExecutionAnalysis(self, IsRemoteCommandExecutionAnalysis):
+        self._IsRemoteCommandExecutionAnalysis = IsRemoteCommandExecutionAnalysis
+
+    @property
+    def IsMemoryHijackingAnalysis(self):
+        """是否开内存马执行检测（0=关， 1=开）
+        :rtype: int
+        """
+        return self._IsMemoryHijackingAnalysis
+
+    @IsMemoryHijackingAnalysis.setter
+    def IsMemoryHijackingAnalysis(self, IsMemoryHijackingAnalysis):
+        self._IsMemoryHijackingAnalysis = IsMemoryHijackingAnalysis
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -1250,6 +1278,8 @@ class ApmInstanceDetail(AbstractModel):
         self._IsInstrumentationVulnerabilityScan = params.get("IsInstrumentationVulnerabilityScan")
         self._IsSqlInjectionAnalysis = params.get("IsSqlInjectionAnalysis")
         self._StopReason = params.get("StopReason")
+        self._IsRemoteCommandExecutionAnalysis = params.get("IsRemoteCommandExecutionAnalysis")
+        self._IsMemoryHijackingAnalysis = params.get("IsMemoryHijackingAnalysis")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3697,6 +3727,10 @@ class ModifyApmInstanceRequest(AbstractModel):
         :type IsSqlInjectionAnalysis: int
         :param _IsInstrumentationVulnerabilityScan: 是否开启组件漏洞检测（0=关,1=开）
         :type IsInstrumentationVulnerabilityScan: int
+        :param _IsRemoteCommandExecutionAnalysis: 是否开启远程命令攻击检测
+        :type IsRemoteCommandExecutionAnalysis: int
+        :param _IsMemoryHijackingAnalysis: 是否开启内存马检测
+        :type IsMemoryHijackingAnalysis: int
         """
         self._InstanceId = None
         self._Name = None
@@ -3722,6 +3756,8 @@ class ModifyApmInstanceRequest(AbstractModel):
         self._DashboardTopicID = None
         self._IsSqlInjectionAnalysis = None
         self._IsInstrumentationVulnerabilityScan = None
+        self._IsRemoteCommandExecutionAnalysis = None
+        self._IsMemoryHijackingAnalysis = None
 
     @property
     def InstanceId(self):
@@ -3987,6 +4023,28 @@ class ModifyApmInstanceRequest(AbstractModel):
     def IsInstrumentationVulnerabilityScan(self, IsInstrumentationVulnerabilityScan):
         self._IsInstrumentationVulnerabilityScan = IsInstrumentationVulnerabilityScan
 
+    @property
+    def IsRemoteCommandExecutionAnalysis(self):
+        """是否开启远程命令攻击检测
+        :rtype: int
+        """
+        return self._IsRemoteCommandExecutionAnalysis
+
+    @IsRemoteCommandExecutionAnalysis.setter
+    def IsRemoteCommandExecutionAnalysis(self, IsRemoteCommandExecutionAnalysis):
+        self._IsRemoteCommandExecutionAnalysis = IsRemoteCommandExecutionAnalysis
+
+    @property
+    def IsMemoryHijackingAnalysis(self):
+        """是否开启内存马检测
+        :rtype: int
+        """
+        return self._IsMemoryHijackingAnalysis
+
+    @IsMemoryHijackingAnalysis.setter
+    def IsMemoryHijackingAnalysis(self, IsMemoryHijackingAnalysis):
+        self._IsMemoryHijackingAnalysis = IsMemoryHijackingAnalysis
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -4018,6 +4076,8 @@ class ModifyApmInstanceRequest(AbstractModel):
         self._DashboardTopicID = params.get("DashboardTopicID")
         self._IsSqlInjectionAnalysis = params.get("IsSqlInjectionAnalysis")
         self._IsInstrumentationVulnerabilityScan = params.get("IsInstrumentationVulnerabilityScan")
+        self._IsRemoteCommandExecutionAnalysis = params.get("IsRemoteCommandExecutionAnalysis")
+        self._IsMemoryHijackingAnalysis = params.get("IsMemoryHijackingAnalysis")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

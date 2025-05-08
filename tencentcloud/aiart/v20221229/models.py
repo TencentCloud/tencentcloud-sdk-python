@@ -1275,10 +1275,13 @@ class LogoParam(AbstractModel):
     def __init__(self):
         r"""
         :param _LogoUrl: 水印 Url
+注意：此字段可能返回 null，表示取不到有效值。
         :type LogoUrl: str
         :param _LogoImage: 水印 Base64，Url 和 Base64 二选一传入，如果都提供以 Url 为准
+注意：此字段可能返回 null，表示取不到有效值。
         :type LogoImage: str
         :param _LogoRect: 水印图片位于生成结果图中的坐标，将按照坐标对标识图片进行位置和大小的拉伸匹配
+注意：此字段可能返回 null，表示取不到有效值。
         :type LogoRect: :class:`tencentcloud.aiart.v20221229.models.LogoRect`
         """
         self._LogoUrl = None
@@ -1288,6 +1291,7 @@ class LogoParam(AbstractModel):
     @property
     def LogoUrl(self):
         """水印 Url
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LogoUrl
@@ -1299,6 +1303,7 @@ class LogoParam(AbstractModel):
     @property
     def LogoImage(self):
         """水印 Base64，Url 和 Base64 二选一传入，如果都提供以 Url 为准
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LogoImage
@@ -1310,6 +1315,7 @@ class LogoParam(AbstractModel):
     @property
     def LogoRect(self):
         """水印图片位于生成结果图中的坐标，将按照坐标对标识图片进行位置和大小的拉伸匹配
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.aiart.v20221229.models.LogoRect`
         """
         return self._LogoRect
@@ -1343,12 +1349,16 @@ class LogoRect(AbstractModel):
     def __init__(self):
         r"""
         :param _X: 左上角X坐标
+注意：此字段可能返回 null，表示取不到有效值。
         :type X: int
         :param _Y: 左上角Y坐标
+注意：此字段可能返回 null，表示取不到有效值。
         :type Y: int
         :param _Width: 方框宽度
+注意：此字段可能返回 null，表示取不到有效值。
         :type Width: int
         :param _Height: 方框高度
+注意：此字段可能返回 null，表示取不到有效值。
         :type Height: int
         """
         self._X = None
@@ -1359,6 +1369,7 @@ class LogoRect(AbstractModel):
     @property
     def X(self):
         """左上角X坐标
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._X
@@ -1370,6 +1381,7 @@ class LogoRect(AbstractModel):
     @property
     def Y(self):
         """左上角Y坐标
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Y
@@ -1381,6 +1393,7 @@ class LogoRect(AbstractModel):
     @property
     def Width(self):
         """方框宽度
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Width
@@ -1392,6 +1405,7 @@ class LogoRect(AbstractModel):
     @property
     def Height(self):
         """方框高度
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Height

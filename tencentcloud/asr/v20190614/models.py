@@ -2152,6 +2152,8 @@ class GetAsrVocabListRequest(AbstractModel):
 
     @property
     def TagInfos(self):
+        warnings.warn("parameter `TagInfos` is deprecated", DeprecationWarning) 
+
         """标签信息，格式为“$TagKey : $TagValue ”，中间分隔符为“空格”+“:”+“空格”
         :rtype: list of str
         """
@@ -2159,6 +2161,8 @@ class GetAsrVocabListRequest(AbstractModel):
 
     @TagInfos.setter
     def TagInfos(self, TagInfos):
+        warnings.warn("parameter `TagInfos` is deprecated", DeprecationWarning) 
+
         self._TagInfos = TagInfos
 
     @property
@@ -3232,6 +3236,8 @@ class Model(AbstractModel):
 
     @property
     def TagInfos(self):
+        warnings.warn("parameter `TagInfos` is deprecated", DeprecationWarning) 
+
         """标签信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
@@ -3240,6 +3246,8 @@ class Model(AbstractModel):
 
     @TagInfos.setter
     def TagInfos(self, TagInfos):
+        warnings.warn("parameter `TagInfos` is deprecated", DeprecationWarning) 
+
         self._TagInfos = TagInfos
 
 

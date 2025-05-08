@@ -26,19 +26,14 @@ class AttributeKeyDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _LabelType: 输入框类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type LabelType: str
         :param _Starter: 初始化展示
-注意：此字段可能返回 null，表示取不到有效值。
         :type Starter: str
         :param _Order: 展示排序
-注意：此字段可能返回 null，表示取不到有效值。
         :type Order: int
         :param _Value: AttributeKey值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         :param _Label: 中文标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
         """
         self._LabelType = None
@@ -50,7 +45,6 @@ class AttributeKeyDetail(AbstractModel):
     @property
     def LabelType(self):
         """输入框类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LabelType
@@ -62,7 +56,6 @@ class AttributeKeyDetail(AbstractModel):
     @property
     def Starter(self):
         """初始化展示
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Starter
@@ -74,7 +67,6 @@ class AttributeKeyDetail(AbstractModel):
     @property
     def Order(self):
         """展示排序
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Order
@@ -86,7 +78,6 @@ class AttributeKeyDetail(AbstractModel):
     @property
     def Value(self):
         """AttributeKey值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -98,7 +89,6 @@ class AttributeKeyDetail(AbstractModel):
     @property
     def Label(self):
         """中文标签
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Label
@@ -132,16 +122,12 @@ class AuditSummary(AbstractModel):
     def __init__(self):
         r"""
         :param _AuditStatus: 跟踪集状态，1：开启，0：关闭
-注意：此字段可能返回 null，表示取不到有效值。
         :type AuditStatus: int
         :param _CosBucketName: COS存储桶名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type CosBucketName: str
         :param _AuditName: 跟踪集名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type AuditName: str
         :param _LogFilePrefix: 日志前缀
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogFilePrefix: str
         """
         self._AuditStatus = None
@@ -152,7 +138,6 @@ class AuditSummary(AbstractModel):
     @property
     def AuditStatus(self):
         """跟踪集状态，1：开启，0：关闭
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AuditStatus
@@ -164,7 +149,6 @@ class AuditSummary(AbstractModel):
     @property
     def CosBucketName(self):
         """COS存储桶名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CosBucketName
@@ -176,7 +160,6 @@ class AuditSummary(AbstractModel):
     @property
     def AuditName(self):
         """跟踪集名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AuditName
@@ -188,7 +171,6 @@ class AuditSummary(AbstractModel):
     @property
     def LogFilePrefix(self):
         """日志前缀
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LogFilePrefix
@@ -221,10 +203,8 @@ class CmqRegionInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _CmqRegionName: 地域描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type CmqRegionName: str
         :param _CmqRegion: cmq地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type CmqRegion: str
         """
         self._CmqRegionName = None
@@ -233,7 +213,6 @@ class CmqRegionInfo(AbstractModel):
     @property
     def CmqRegionName(self):
         """地域描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CmqRegionName
@@ -245,7 +224,6 @@ class CmqRegionInfo(AbstractModel):
     @property
     def CmqRegion(self):
         """cmq地域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CmqRegion
@@ -1018,10 +996,8 @@ class DescribeAuditTrackResponse(AbstractModel):
         :param _CreateTime: 跟踪集创建时间
         :type CreateTime: str
         :param _TrackForAllMembers: 是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号
-注意：此字段可能返回 null，表示取不到有效值。
         :type TrackForAllMembers: int
         :param _Filters: 数据投递过滤条件
-注意：此字段可能返回 null，表示取不到有效值。
         :type Filters: :class:`tencentcloud.cloudaudit.v20190319.models.Filter`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1117,7 +1093,6 @@ class DescribeAuditTrackResponse(AbstractModel):
     @property
     def TrackForAllMembers(self):
         """是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TrackForAllMembers
@@ -1129,7 +1104,6 @@ class DescribeAuditTrackResponse(AbstractModel):
     @property
     def Filters(self):
         """数据投递过滤条件
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.Filter`
         """
         return self._Filters
@@ -1409,10 +1383,8 @@ class DescribeEventsResponse(AbstractModel):
         :param _NextToken: 查看更多日志的凭证
         :type NextToken: int
         :param _Events: 日志集合
-注意：此字段可能返回 null，表示取不到有效值。
         :type Events: list of Event
         :param _TotalCount: 此字段已经废弃。翻页请使用ListOver配合NextToken，在ListOver为false进行下一页数据读取。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1448,7 +1420,6 @@ class DescribeEventsResponse(AbstractModel):
     @property
     def Events(self):
         """日志集合
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Event
         """
         return self._Events
@@ -1460,7 +1431,6 @@ class DescribeEventsResponse(AbstractModel):
     @property
     def TotalCount(self):
         """此字段已经废弃。翻页请使用ListOver配合NextToken，在ListOver为false进行下一页数据读取。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -1516,7 +1486,6 @@ class Event(AbstractModel):
         :param _EventName: 事件名称
         :type EventName: str
         :param _SecretId: 证书ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type SecretId: str
         :param _EventSource: 请求来源
         :type EventSource: str
@@ -1527,7 +1496,6 @@ class Event(AbstractModel):
         :param _AccountID: 主账号ID
         :type AccountID: int
         :param _SourceIPAddress: 源IP
-注意：此字段可能返回 null，表示取不到有效值。
         :type SourceIPAddress: str
         :param _EventNameCn: 事件名称中文描述（此字段请按需使用，如果您是其他语言使用者，可以忽略该字段描述）
         :type EventNameCn: str
@@ -1636,7 +1604,6 @@ class Event(AbstractModel):
     @property
     def SecretId(self):
         """证书ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SecretId
@@ -1692,7 +1659,6 @@ class Event(AbstractModel):
     @property
     def SourceIPAddress(self):
         """源IP
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SourceIPAddress
@@ -1784,7 +1750,6 @@ class Filter(AbstractModel):
     def __init__(self):
         r"""
         :param _ResourceFields: 资源筛选条件
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceFields: list of ResourceField
         """
         self._ResourceFields = None
@@ -1792,7 +1757,6 @@ class Filter(AbstractModel):
     @property
     def ResourceFields(self):
         """资源筛选条件
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ResourceField
         """
         return self._ResourceFields
@@ -1960,10 +1924,8 @@ class KeyMetadata(AbstractModel):
     def __init__(self):
         r"""
         :param _Alias: 作为密钥更容易辨识，更容易被人看懂的别名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Alias: str
         :param _KeyId: CMK的全局唯一标识
-注意：此字段可能返回 null，表示取不到有效值。
         :type KeyId: str
         """
         self._Alias = None
@@ -1972,7 +1934,6 @@ class KeyMetadata(AbstractModel):
     @property
     def Alias(self):
         """作为密钥更容易辨识，更容易被人看懂的别名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Alias
@@ -1984,7 +1945,6 @@ class KeyMetadata(AbstractModel):
     @property
     def KeyId(self):
         """CMK的全局唯一标识
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._KeyId
@@ -2021,7 +1981,6 @@ class ListAuditsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _AuditSummarys: 查询跟踪集概要集合
-注意：此字段可能返回 null，表示取不到有效值。
         :type AuditSummarys: list of AuditSummary
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2032,7 +1991,6 @@ class ListAuditsResponse(AbstractModel):
     @property
     def AuditSummarys(self):
         """查询跟踪集概要集合
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AuditSummary
         """
         return self._AuditSummarys
@@ -2484,16 +2442,12 @@ class LookUpEventsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _NextToken: 查看更多日志的凭证
-注意：此字段可能返回 null，表示取不到有效值。
         :type NextToken: str
         :param _Events: 日志集合
-注意：此字段可能返回 null，表示取不到有效值。
         :type Events: list of Event
         :param _ListOver: 日志集合是否结束
-注意：此字段可能返回 null，表示取不到有效值。
         :type ListOver: bool
         :param _TotalCount: 数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2507,7 +2461,6 @@ class LookUpEventsResponse(AbstractModel):
     @property
     def NextToken(self):
         """查看更多日志的凭证
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NextToken
@@ -2519,7 +2472,6 @@ class LookUpEventsResponse(AbstractModel):
     @property
     def Events(self):
         """日志集合
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Event
         """
         return self._Events
@@ -2531,7 +2483,6 @@ class LookUpEventsResponse(AbstractModel):
     @property
     def ListOver(self):
         """日志集合是否结束
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._ListOver
@@ -2543,7 +2494,6 @@ class LookUpEventsResponse(AbstractModel):
     @property
     def TotalCount(self):
         """数量
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -2950,10 +2900,8 @@ class Resource(AbstractModel):
     def __init__(self):
         r"""
         :param _ResourceType: 资源类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceType: str
         :param _ResourceName: 资源名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceName: str
         """
         self._ResourceType = None
@@ -2962,7 +2910,6 @@ class Resource(AbstractModel):
     @property
     def ResourceType(self):
         """资源类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceType
@@ -2974,7 +2921,6 @@ class Resource(AbstractModel):
     @property
     def ResourceName(self):
         """资源名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceName
@@ -3005,13 +2951,10 @@ class ResourceField(AbstractModel):
     def __init__(self):
         r"""
         :param _ResourceType: 跟踪事件所属产品（支持全部产品或单个产品，如：cam，全部：*）
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceType: str
         :param _ActionType: 跟踪事件类型（读：Read；写：Write；全部：*）
-注意：此字段可能返回 null，表示取不到有效值。
         :type ActionType: str
         :param _EventNames: 跟踪事件接口名列表（ResourceType为 * 时，EventNames必须为全部：[""]；指定ResourceType时，支持全部接口：[""]；支持部分接口：["cos", "cls"]，接口列表上限10个）
-注意：此字段可能返回 null，表示取不到有效值。
         :type EventNames: list of str
         """
         self._ResourceType = None
@@ -3021,7 +2964,6 @@ class ResourceField(AbstractModel):
     @property
     def ResourceType(self):
         """跟踪事件所属产品（支持全部产品或单个产品，如：cam，全部：*）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceType
@@ -3033,7 +2975,6 @@ class ResourceField(AbstractModel):
     @property
     def ActionType(self):
         """跟踪事件类型（读：Read；写：Write；全部：*）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ActionType
@@ -3045,7 +2986,6 @@ class ResourceField(AbstractModel):
     @property
     def EventNames(self):
         """跟踪事件接口名列表（ResourceType为 * 时，EventNames必须为全部：[""]；指定ResourceType时，支持全部接口：[""]；支持部分接口：["cos", "cls"]，接口列表上限10个）
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._EventNames
@@ -3243,10 +3183,8 @@ class Storage(AbstractModel):
         :param _StoragePrefix: 存储目录前缀，cos日志文件前缀仅支持字母和数字的组合，3-40个字符
         :type StoragePrefix: str
         :param _StorageAccountId: 被指定存储用户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type StorageAccountId: str
         :param _StorageAppId: 被指定存储用户appid
-注意：此字段可能返回 null，表示取不到有效值。
         :type StorageAppId: str
         """
         self._StorageType = None
@@ -3303,7 +3241,6 @@ class Storage(AbstractModel):
     @property
     def StorageAccountId(self):
         """被指定存储用户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StorageAccountId
@@ -3315,7 +3252,6 @@ class Storage(AbstractModel):
     @property
     def StorageAppId(self):
         """被指定存储用户appid
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StorageAppId

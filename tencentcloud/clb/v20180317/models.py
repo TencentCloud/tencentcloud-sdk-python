@@ -218,14 +218,18 @@ class AssociateTargetGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Associations: 绑定的关系数组。一次请求最多支持20个。
+        :param _Associations: 绑定的关系数组，目标组类型需要一致。
+一次请求最多支持20个。
+
         :type Associations: list of TargetGroupAssociation
         """
         self._Associations = None
 
     @property
     def Associations(self):
-        """绑定的关系数组。一次请求最多支持20个。
+        """绑定的关系数组，目标组类型需要一致。
+一次请求最多支持20个。
+
         :rtype: list of TargetGroupAssociation
         """
         return self._Associations
@@ -1812,9 +1816,9 @@ class CertificateInput(AbstractModel):
         :type CertKey: str
         :param _CertContent: 上传服务端证书的内容，如果没有 CertId，则此项必传。
         :type CertContent: str
-        :param _CertCaName: 上传客户端 CA 证书的名称，如果 SSLMode=mutual，如果没有 CertCaId，则此项必传。
+        :param _CertCaName: 上传客户端 CA 证书的名称，如果 SSLMode=MUTUAL，如果没有 CertCaId，则此项必传。
         :type CertCaName: str
-        :param _CertCaContent: 上传客户端证书的内容，如果 SSLMode=mutual，如果没有 CertCaId，则此项必传。
+        :param _CertCaContent: 上传客户端证书的内容，如果 SSLMode=MUTUAL，如果没有 CertCaId，则此项必传。
         :type CertCaContent: str
         """
         self._SSLMode = None
@@ -1907,7 +1911,7 @@ class CertificateInput(AbstractModel):
 
     @property
     def CertCaName(self):
-        """上传客户端 CA 证书的名称，如果 SSLMode=mutual，如果没有 CertCaId，则此项必传。
+        """上传客户端 CA 证书的名称，如果 SSLMode=MUTUAL，如果没有 CertCaId，则此项必传。
         :rtype: str
         """
         return self._CertCaName
@@ -1918,7 +1922,7 @@ class CertificateInput(AbstractModel):
 
     @property
     def CertCaContent(self):
-        """上传客户端证书的内容，如果 SSLMode=mutual，如果没有 CertCaId，则此项必传。
+        """上传客户端证书的内容，如果 SSLMode=MUTUAL，如果没有 CertCaId，则此项必传。
         :rtype: str
         """
         return self._CertCaContent
@@ -3725,15 +3729,17 @@ class ConfigListItem(AbstractModel):
         r"""
         :param _UconfigId: 配置ID
         :type UconfigId: str
-        :param _ConfigType: 配置类型
+        :param _ConfigType: 配置类型， 可选值：CLB（实例维度配置）， SERVER（服务维度配置），LOCATION（规则维度配置）
         :type ConfigType: str
         :param _ConfigName: 配置名字
         :type ConfigName: str
         :param _ConfigContent: 配置内容
         :type ConfigContent: str
-        :param _CreateTimestamp: 增加配置时间
+        :param _CreateTimestamp: 配置的创建时间。
+格式：YYYY-MM-DD HH:mm:ss
         :type CreateTimestamp: str
-        :param _UpdateTimestamp: 修改配置时间
+        :param _UpdateTimestamp: 配置的修改时间。
+格式：YYYY-MM-DD HH:mm:ss
         :type UpdateTimestamp: str
         """
         self._UconfigId = None
@@ -3756,7 +3762,7 @@ class ConfigListItem(AbstractModel):
 
     @property
     def ConfigType(self):
-        """配置类型
+        """配置类型， 可选值：CLB（实例维度配置）， SERVER（服务维度配置），LOCATION（规则维度配置）
         :rtype: str
         """
         return self._ConfigType
@@ -3789,7 +3795,8 @@ class ConfigListItem(AbstractModel):
 
     @property
     def CreateTimestamp(self):
-        """增加配置时间
+        """配置的创建时间。
+格式：YYYY-MM-DD HH:mm:ss
         :rtype: str
         """
         return self._CreateTimestamp
@@ -3800,7 +3807,8 @@ class ConfigListItem(AbstractModel):
 
     @property
     def UpdateTimestamp(self):
-        """修改配置时间
+        """配置的修改时间。
+格式：YYYY-MM-DD HH:mm:ss
         :rtype: str
         """
         return self._UpdateTimestamp
@@ -4939,9 +4947,9 @@ class CreateLoadBalancerSnatIpsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerId: 负载均衡唯一性ID，例如：lb-12345678。
+        :param _LoadBalancerId: 负载均衡唯一性ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口查询。例如：lb-12345678。
         :type LoadBalancerId: str
-        :param _SnatIps: 添加的SnatIp信息，可指定IP申请，或者指定子网自动申请。单个CLB实例可申请的默认上限为10个。
+        :param _SnatIps: 添加的SnatIp信息，可指定IP申请，或者指定子网自动申请。可以通过 [DescribeSubnets](https://cloud.tencent.com/document/api/215/15784) 查询获取，单个CLB实例可申请的默认上限为10个。
         :type SnatIps: list of SnatIp
         :param _Number: 添加的SnatIp的个数，可与SnatIps一起使用，但若指定IP时，则不能指定创建的SnatIp个数。默认值为1，数量上限与用户配置有关，默认上限为10。
         :type Number: int
@@ -4952,7 +4960,7 @@ class CreateLoadBalancerSnatIpsRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """负载均衡唯一性ID，例如：lb-12345678。
+        """负载均衡唯一性ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口查询。例如：lb-12345678。
         :rtype: str
         """
         return self._LoadBalancerId
@@ -4963,7 +4971,7 @@ class CreateLoadBalancerSnatIpsRequest(AbstractModel):
 
     @property
     def SnatIps(self):
-        """添加的SnatIp信息，可指定IP申请，或者指定子网自动申请。单个CLB实例可申请的默认上限为10个。
+        """添加的SnatIp信息，可指定IP申请，或者指定子网自动申请。可以通过 [DescribeSubnets](https://cloud.tencent.com/document/api/215/15784) 查询获取，单个CLB实例可申请的默认上限为10个。
         :rtype: list of SnatIp
         """
         return self._SnatIps
@@ -5038,9 +5046,9 @@ class CreateRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerId: 负载均衡实例 ID。
+        :param _LoadBalancerId: 负载均衡实例 ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取
         :type LoadBalancerId: str
-        :param _ListenerId: 监听器 ID。
+        :param _ListenerId: 监听器 ID，可以通过 [DescribeListeners](https://cloud.tencent.com/document/product/214/30686) 接口获取
         :type ListenerId: str
         :param _Rules: 新建转发规则的信息。
         :type Rules: list of RuleInput
@@ -5051,7 +5059,7 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """负载均衡实例 ID。
+        """负载均衡实例 ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取
         :rtype: str
         """
         return self._LoadBalancerId
@@ -5062,7 +5070,7 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        """监听器 ID。
+        """监听器 ID，可以通过 [DescribeListeners](https://cloud.tencent.com/document/product/214/30686) 接口获取
         :rtype: str
         """
         return self._ListenerId
@@ -5172,10 +5180,14 @@ class CreateTargetGroupRequest(AbstractModel):
     <li>取值范围[0, 100]</li>
     <li>设置该值后，添加后端服务到目标组时， 若后端服务不单独设置权重， 则使用这里的默认权重。 </li>
 </ul>
-
+v1 目标组类型不支持设置 Weight 参数。
         :type Weight: int
         :param _FullListenSwitch: 全监听目标组标识，为true表示是全监听目标组，false表示不是全监听目标组。
         :type FullListenSwitch: bool
+        :param _KeepaliveEnable: 是否开启长连接，此参数仅适用于HTTP/HTTPS目标组，0:关闭；1:开启， 默认关闭。
+        :type KeepaliveEnable: bool
+        :param _SessionExpireTime: 会话保持时间，单位：秒。可选值：30~3600，默认 0，表示不开启。TCP/UDP目标组不支持该参数。
+        :type SessionExpireTime: int
         """
         self._TargetGroupName = None
         self._VpcId = None
@@ -5186,6 +5198,8 @@ class CreateTargetGroupRequest(AbstractModel):
         self._Tags = None
         self._Weight = None
         self._FullListenSwitch = None
+        self._KeepaliveEnable = None
+        self._SessionExpireTime = None
 
     @property
     def TargetGroupName(self):
@@ -5272,7 +5286,7 @@ class CreateTargetGroupRequest(AbstractModel):
     <li>取值范围[0, 100]</li>
     <li>设置该值后，添加后端服务到目标组时， 若后端服务不单独设置权重， 则使用这里的默认权重。 </li>
 </ul>
-
+v1 目标组类型不支持设置 Weight 参数。
         :rtype: int
         """
         return self._Weight
@@ -5291,6 +5305,28 @@ class CreateTargetGroupRequest(AbstractModel):
     @FullListenSwitch.setter
     def FullListenSwitch(self, FullListenSwitch):
         self._FullListenSwitch = FullListenSwitch
+
+    @property
+    def KeepaliveEnable(self):
+        """是否开启长连接，此参数仅适用于HTTP/HTTPS目标组，0:关闭；1:开启， 默认关闭。
+        :rtype: bool
+        """
+        return self._KeepaliveEnable
+
+    @KeepaliveEnable.setter
+    def KeepaliveEnable(self, KeepaliveEnable):
+        self._KeepaliveEnable = KeepaliveEnable
+
+    @property
+    def SessionExpireTime(self):
+        """会话保持时间，单位：秒。可选值：30~3600，默认 0，表示不开启。TCP/UDP目标组不支持该参数。
+        :rtype: int
+        """
+        return self._SessionExpireTime
+
+    @SessionExpireTime.setter
+    def SessionExpireTime(self, SessionExpireTime):
+        self._SessionExpireTime = SessionExpireTime
 
 
     def _deserialize(self, params):
@@ -5313,6 +5349,8 @@ class CreateTargetGroupRequest(AbstractModel):
                 self._Tags.append(obj)
         self._Weight = params.get("Weight")
         self._FullListenSwitch = params.get("FullListenSwitch")
+        self._KeepaliveEnable = params.get("KeepaliveEnable")
+        self._SessionExpireTime = params.get("SessionExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5379,7 +5417,7 @@ class CreateTopicRequest(AbstractModel):
         :type PartitionCount: int
         :param _TopicType: 日志类型，ACCESS：访问日志，HEALTH：健康检查日志，默认ACCESS。
         :type TopicType: str
-        :param _Period: 存储时间，单位天
+        :param _Period: 存储时间，单位天，默认为 30。
 - 日志接入标准存储时，支持1至3600天，值为3640时代表永久保存。
 - 日志接入低频存储时，支持7至3600天，值为3640时代表永久保存。
         :type Period: int
@@ -5427,7 +5465,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def Period(self):
-        """存储时间，单位天
+        """存储时间，单位天，默认为 30。
 - 日志接入标准存储时，支持1至3600天，值为3640时代表永久保存。
 - 日志接入低频存储时，支持7至3600天，值为3640时代表永久保存。
         :rtype: int
@@ -5960,9 +5998,9 @@ class DeleteLoadBalancerSnatIpsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerId: 负载均衡唯一ID，例如：lb-12345678。
+        :param _LoadBalancerId: 负载均衡唯一ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口查询。例如：lb-12345678。
         :type LoadBalancerId: str
-        :param _Ips: 删除SnatIp地址数组。
+        :param _Ips: 删除SnatIp地址数组，最大支持删除数量为20个。
         :type Ips: list of str
         """
         self._LoadBalancerId = None
@@ -5970,7 +6008,7 @@ class DeleteLoadBalancerSnatIpsRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """负载均衡唯一ID，例如：lb-12345678。
+        """负载均衡唯一ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口查询。例如：lb-12345678。
         :rtype: str
         """
         return self._LoadBalancerId
@@ -5981,7 +6019,7 @@ class DeleteLoadBalancerSnatIpsRequest(AbstractModel):
 
     @property
     def Ips(self):
-        """删除SnatIp地址数组。
+        """删除SnatIp地址数组，最大支持删除数量为20个。
         :rtype: list of str
         """
         return self._Ips
@@ -6502,7 +6540,8 @@ class DeregisterTargetGroupInstancesRequest(AbstractModel):
         r"""
         :param _TargetGroupId: 目标组ID。
         :type TargetGroupId: str
-        :param _TargetGroupInstances: 待解绑的服务器信息。
+        :param _TargetGroupInstances: 待解绑的服务器信息，支持批量解除绑定，单次批量解除数量最多为20个。
+
         :type TargetGroupInstances: list of TargetGroupInstance
         """
         self._TargetGroupId = None
@@ -6521,7 +6560,8 @@ class DeregisterTargetGroupInstancesRequest(AbstractModel):
 
     @property
     def TargetGroupInstances(self):
-        """待解绑的服务器信息。
+        """待解绑的服务器信息，支持批量解除绑定，单次批量解除数量最多为20个。
+
         :rtype: list of TargetGroupInstance
         """
         return self._TargetGroupInstances
@@ -7935,17 +7975,25 @@ class DescribeCustomizedConfigListRequest(AbstractModel):
         r"""
         :param _ConfigType: 配置类型:CLB 负载均衡维度。 SERVER 域名维度。 LOCATION 规则维度。
         :type ConfigType: str
-        :param _Offset: 拉取页偏移，默认值0
+        :param _Offset: 拉取页偏移，默认值0。
         :type Offset: int
-        :param _Limit: 拉取数目，默认值20
+        :param _Limit: 拉取数目，默认值20。
         :type Limit: int
         :param _ConfigName: 拉取指定配置名字，模糊匹配。
         :type ConfigName: str
-        :param _UconfigIds: 配置ID
+        :param _UconfigIds: 配置ID，可以通过 [DescribeCustomizedConfigList](https://cloud.tencent.com/document/api/214/60009) 接口查询。
         :type UconfigIds: list of str
         :param _Filters: 过滤条件如下：
-<li> loadbalancer-id - String - 是否必填：否 - （过滤条件）按照 负载均衡ID 过滤，如："lb-12345678"。</li>
-<li> vip - String - 是否必填：否 - （过滤条件）按照 负载均衡Vip 过滤，如："1.1.1.1","2204::22:3"。</li>
+- loadbalancer-id
+按照【负载均衡 ID】进行过滤。实例计费模式例如：lb-9vxezxza。
+类型：String
+必选：否
+获取方式：[DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459)
+- vip
+按照【负载均衡VIP】进行过滤。网络计费模式例如："1.1.1.1","2204::22:3"。
+类型：String
+必选：否
+获取方式：[DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459)
         :type Filters: list of Filter
         """
         self._ConfigType = None
@@ -7968,7 +8016,7 @@ class DescribeCustomizedConfigListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """拉取页偏移，默认值0
+        """拉取页偏移，默认值0。
         :rtype: int
         """
         return self._Offset
@@ -7979,7 +8027,7 @@ class DescribeCustomizedConfigListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """拉取数目，默认值20
+        """拉取数目，默认值20。
         :rtype: int
         """
         return self._Limit
@@ -8001,7 +8049,7 @@ class DescribeCustomizedConfigListRequest(AbstractModel):
 
     @property
     def UconfigIds(self):
-        """配置ID
+        """配置ID，可以通过 [DescribeCustomizedConfigList](https://cloud.tencent.com/document/api/214/60009) 接口查询。
         :rtype: list of str
         """
         return self._UconfigIds
@@ -8013,8 +8061,16 @@ class DescribeCustomizedConfigListRequest(AbstractModel):
     @property
     def Filters(self):
         """过滤条件如下：
-<li> loadbalancer-id - String - 是否必填：否 - （过滤条件）按照 负载均衡ID 过滤，如："lb-12345678"。</li>
-<li> vip - String - 是否必填：否 - （过滤条件）按照 负载均衡Vip 过滤，如："1.1.1.1","2204::22:3"。</li>
+- loadbalancer-id
+按照【负载均衡 ID】进行过滤。实例计费模式例如：lb-9vxezxza。
+类型：String
+必选：否
+获取方式：[DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459)
+- vip
+按照【负载均衡VIP】进行过滤。网络计费模式例如："1.1.1.1","2204::22:3"。
+类型：String
+必选：否
+获取方式：[DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459)
         :rtype: list of Filter
         """
         return self._Filters
@@ -8630,14 +8686,16 @@ class DescribeLoadBalancerListByCertIdRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CertIds: 服务端证书的ID，或客户端证书的ID
+        :param _CertIds: 服务端证书的ID，或客户端证书的ID。可以通过 [DescribeCertificate](https://cloud.tencent.com/document/api/400/41674) 接口查询。
+数组最大长度为20。
         :type CertIds: list of str
         """
         self._CertIds = None
 
     @property
     def CertIds(self):
-        """服务端证书的ID，或客户端证书的ID
+        """服务端证书的ID，或客户端证书的ID。可以通过 [DescribeCertificate](https://cloud.tencent.com/document/api/400/41674) 接口查询。
+数组最大长度为20。
         :rtype: list of str
         """
         return self._CertIds
@@ -9712,8 +9770,20 @@ class DescribeResourcesRequest(AbstractModel):
         :param _Offset: 返回可用区资源列表起始偏移量，默认0。
         :type Offset: int
         :param _Filters: 查询可用区资源列表条件，详细的过滤条件如下：
-<li>master-zone -- String - 是否必填：否 - （过滤条件）按照 地区 类型过滤，如："ap-guangzhou-2"。</li><li>ip-version -- String - 是否必填：否 - （过滤条件）按照 IP 类型过滤，可选值："IPv4"、"IPv6"、"IPv6_Nat"。</li>
-<li> isp -- String - 是否必填：否 - （过滤条件）按照 Isp 类型过滤，如："BGP","CMCC","CUCC","CTCC"。</li>
+- master-zone
+按照【地域可用区】进行过滤，例如：ap-guangzhou-2。
+类型：String
+必选：否
+- ip-version
+按照【IP 类型】进行过滤，例如：IPv4。
+类型：String
+必选：否
+可选项：IPv4、IPv6、IPv6_Nat
+- isp
+按照【ISP 类型】进行过滤，例如：BGP。
+类型：String
+必选：否
+可选项：BGP、CMCC（中国移动）、CUCC（中国联通）、CTCC（中国电信）、BGP_PRO、INTERNAL（内网）
         :type Filters: list of Filter
         """
         self._Limit = None
@@ -9745,8 +9815,20 @@ class DescribeResourcesRequest(AbstractModel):
     @property
     def Filters(self):
         """查询可用区资源列表条件，详细的过滤条件如下：
-<li>master-zone -- String - 是否必填：否 - （过滤条件）按照 地区 类型过滤，如："ap-guangzhou-2"。</li><li>ip-version -- String - 是否必填：否 - （过滤条件）按照 IP 类型过滤，可选值："IPv4"、"IPv6"、"IPv6_Nat"。</li>
-<li> isp -- String - 是否必填：否 - （过滤条件）按照 Isp 类型过滤，如："BGP","CMCC","CUCC","CTCC"。</li>
+- master-zone
+按照【地域可用区】进行过滤，例如：ap-guangzhou-2。
+类型：String
+必选：否
+- ip-version
+按照【IP 类型】进行过滤，例如：IPv4。
+类型：String
+必选：否
+可选项：IPv4、IPv6、IPv6_Nat
+- isp
+按照【ISP 类型】进行过滤，例如：BGP。
+类型：String
+必选：否
+可选项：BGP、CMCC（中国移动）、CUCC（中国联通）、CTCC（中国电信）、BGP_PRO、INTERNAL（内网）
         :rtype: list of Filter
         """
         return self._Filters
@@ -9959,7 +10041,7 @@ class DescribeTargetGroupInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: 过滤条件，当前仅支持TargetGroupId，BindIP，InstanceId过滤。
+        :param _Filters: 过滤条件，当前支持按照 TargetGroupId，BindIP，InstanceId 多个条件组合过滤。
         :type Filters: list of Filter
         :param _Limit: 显示数量限制，默认20。
         :type Limit: int
@@ -9972,7 +10054,7 @@ class DescribeTargetGroupInstancesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤条件，当前仅支持TargetGroupId，BindIP，InstanceId过滤。
+        """过滤条件，当前支持按照 TargetGroupId，BindIP，InstanceId 多个条件组合过滤。
         :rtype: list of Filter
         """
         return self._Filters
@@ -10263,7 +10345,7 @@ class DescribeTargetGroupsRequest(AbstractModel):
         :type Limit: int
         :param _Offset: 显示的偏移起始量。
         :type Offset: int
-        :param _Filters: 过滤条件数组，与TargetGroupIds互斥，支持TargetGroupVpcId和TargetGroupName。
+        :param _Filters: 过滤条件数组，与TargetGroupIds互斥，支持 TargetGroupVpcId（私有网络 ID）和 TargetGroupName（目标组名称）以及 Tag（标签）。
         :type Filters: list of Filter
         """
         self._TargetGroupIds = None
@@ -10306,7 +10388,7 @@ class DescribeTargetGroupsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤条件数组，与TargetGroupIds互斥，支持TargetGroupVpcId和TargetGroupName。
+        """过滤条件数组，与TargetGroupIds互斥，支持 TargetGroupVpcId（私有网络 ID）和 TargetGroupName（目标组名称）以及 Tag（标签）。
         :rtype: list of Filter
         """
         return self._Filters
@@ -10889,14 +10971,14 @@ class DisassociateTargetGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Associations: 待解绑的规则关系数组。
+        :param _Associations: 待解绑的规则关系数组，支持批量解绑多个监听器，单次批量解除最多20个。
         :type Associations: list of TargetGroupAssociation
         """
         self._Associations = None
 
     @property
     def Associations(self):
-        """待解绑的规则关系数组。
+        """待解绑的规则关系数组，支持批量解绑多个监听器，单次批量解除最多20个。
         :rtype: list of TargetGroupAssociation
         """
         return self._Associations
@@ -11935,7 +12017,7 @@ class InquiryPriceModifyLoadBalancerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerId: 负载均衡实例ID
+        :param _LoadBalancerId: 负载均衡实例 ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口查询。
         :type LoadBalancerId: str
         :param _InternetAccessible: 修改后的网络带宽信息
         :type InternetAccessible: :class:`tencentcloud.clb.v20180317.models.InternetAccessible`
@@ -11945,7 +12027,7 @@ class InquiryPriceModifyLoadBalancerRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """负载均衡实例ID
+        """负载均衡实例 ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口查询。
         :rtype: str
         """
         return self._LoadBalancerId
@@ -12114,7 +12196,7 @@ class InquiryPriceRenewLoadBalancerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerId: 负载均衡实例ID
+        :param _LoadBalancerId: 负载均衡实例 ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口查询。
         :type LoadBalancerId: str
         :param _LoadBalancerChargePrepaid: 续费周期
         :type LoadBalancerChargePrepaid: :class:`tencentcloud.clb.v20180317.models.LBChargePrepaid`
@@ -12124,7 +12206,7 @@ class InquiryPriceRenewLoadBalancerRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """负载均衡实例ID
+        """负载均衡实例 ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口查询。
         :rtype: str
         """
         return self._LoadBalancerId
@@ -12565,8 +12647,10 @@ class LbRsItem(AbstractModel):
     def __init__(self):
         r"""
         :param _VpcId: vpc的字符串id，只支持字符串id。
+可以通过 [DescribeVpcs](https://cloud.tencent.com/document/api/215/15778) 接口查询。
         :type VpcId: str
-        :param _PrivateIp: 需要查询后端的内网ip，可以是cvm和弹性网卡。
+        :param _PrivateIp: 需要查询后端的内网 IP，可以是 CVM 和弹性网卡。
+可以通过 [DescribeAddresses](https://cloud.tencent.com/document/product/215/16702) 接口查询。
         :type PrivateIp: str
         """
         self._VpcId = None
@@ -12575,6 +12659,7 @@ class LbRsItem(AbstractModel):
     @property
     def VpcId(self):
         """vpc的字符串id，只支持字符串id。
+可以通过 [DescribeVpcs](https://cloud.tencent.com/document/api/215/15778) 接口查询。
         :rtype: str
         """
         return self._VpcId
@@ -12585,7 +12670,8 @@ class LbRsItem(AbstractModel):
 
     @property
     def PrivateIp(self):
-        """需要查询后端的内网ip，可以是cvm和弹性网卡。
+        """需要查询后端的内网 IP，可以是 CVM 和弹性网卡。
+可以通过 [DescribeAddresses](https://cloud.tencent.com/document/product/215/16702) 接口查询。
         :rtype: str
         """
         return self._PrivateIp
@@ -13518,9 +13604,9 @@ OPEN：公网属性， INTERNAL：内网属性；对于内网属性的负载均�
         :type VpcId: str
         :param _OpenBgp: 高防 LB 的标识，1：高防负载均衡 0：非高防负载均衡。
         :type OpenBgp: int
-        :param _Snat: 在 2016 年 12 月份之前的传统型内网负载均衡都是开启了 snat 的。
+        :param _Snat: 是否开启 SNAT，在 2016 年 12 月份之前的传统型内网负载均衡都是开启了 SNAT 的。
         :type Snat: bool
-        :param _Isolation: 0：表示未被隔离，1：表示被隔离。
+        :param _Isolation: 是否被隔离，0：表示未被隔离，1：表示被隔离。
         :type Isolation: int
         :param _Log: 用户开启日志的信息，日志只有公网属性创建了 HTTP 、HTTPS 监听器的负载均衡才会有日志。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -13854,7 +13940,7 @@ OPEN：公网属性， INTERNAL：内网属性；对于内网属性的负载均�
 
     @property
     def Snat(self):
-        """在 2016 年 12 月份之前的传统型内网负载均衡都是开启了 snat 的。
+        """是否开启 SNAT，在 2016 年 12 月份之前的传统型内网负载均衡都是开启了 SNAT 的。
         :rtype: bool
         """
         return self._Snat
@@ -13865,7 +13951,7 @@ OPEN：公网属性， INTERNAL：内网属性；对于内网属性的负载均�
 
     @property
     def Isolation(self):
-        """0：表示未被隔离，1：表示被隔离。
+        """是否被隔离，0：表示未被隔离，1：表示被隔离。
         :rtype: int
         """
         return self._Isolation
@@ -16221,7 +16307,7 @@ class ModifyFunctionTargetsRequest(AbstractModel):
         :type LoadBalancerId: str
         :param _ListenerId: 负载均衡监听器ID。
         :type ListenerId: str
-        :param _FunctionTargets: 要修改的后端云函数服务列表。
+        :param _FunctionTargets: 要修改的后端云函数服务列表，仅支持 Event 函数类型。
         :type FunctionTargets: list of FunctionTarget
         :param _LocationId: 转发规则的ID，当绑定机器到七层转发规则时，必须提供此参数或Domain+Url两者之一。
         :type LocationId: str
@@ -16261,7 +16347,7 @@ class ModifyFunctionTargetsRequest(AbstractModel):
 
     @property
     def FunctionTargets(self):
-        """要修改的后端云函数服务列表。
+        """要修改的后端云函数服务列表，仅支持 Event 函数类型。
         :rtype: list of FunctionTarget
         """
         return self._FunctionTargets
@@ -16901,6 +16987,7 @@ class ModifyLoadBalancerMixIpTargetRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _LoadBalancerIds: 负载均衡实例ID数组，默认支持20个负载均衡实例ID。
+可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口查询。
         :type LoadBalancerIds: list of str
         :param _MixIpTarget: 开启/关闭IPv6FullChain负载均衡7层监听器支持混绑IPv4/IPv6目标特性。
         :type MixIpTarget: bool
@@ -16911,6 +16998,7 @@ class ModifyLoadBalancerMixIpTargetRequest(AbstractModel):
     @property
     def LoadBalancerIds(self):
         """负载均衡实例ID数组，默认支持20个负载均衡实例ID。
+可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口查询。
         :rtype: list of str
         """
         return self._LoadBalancerIds
@@ -17063,7 +17151,8 @@ class ModifyLoadBalancersProjectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerIds: 一个或多个待操作的负载均衡实例ID。
+        :param _LoadBalancerIds: 一个或多个待操作的负载均衡实例ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口查询。
+列表支持最大长度为20。
         :type LoadBalancerIds: list of str
         :param _ProjectId: 项目ID。可以通过 [DescribeProject](https://cloud.tencent.com/document/api/651/78725) 接口获取。
         :type ProjectId: int
@@ -17073,7 +17162,8 @@ class ModifyLoadBalancersProjectRequest(AbstractModel):
 
     @property
     def LoadBalancerIds(self):
-        """一个或多个待操作的负载均衡实例ID。
+        """一个或多个待操作的负载均衡实例ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口查询。
+列表支持最大长度为20。
         :rtype: list of str
         """
         return self._LoadBalancerIds
@@ -17375,12 +17465,19 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
     <li>取值范围[0, 100]</li>
     <li>设置该值后，添加后端服务到目标组时， 若后端服务不单独设置权重， 则使用这里的默认权重。 </li> 
 </ul>
+v1目标组类型不支持设置Weight参数。
         :type Weight: int
+        :param _KeepaliveEnable: 是否开启长连接，此参数仅适用于HTTP/HTTPS目标组，true:关闭；false:开启， 默认关闭。
+        :type KeepaliveEnable: bool
+        :param _SessionExpireTime: 会话保持时间，单位：秒。可选值：30~3600，默认 0，表示不开启。TCP/UDP目标组不支持该参数。
+        :type SessionExpireTime: int
         """
         self._TargetGroupId = None
         self._TargetGroupName = None
         self._Port = None
         self._Weight = None
+        self._KeepaliveEnable = None
+        self._SessionExpireTime = None
 
     @property
     def TargetGroupId(self):
@@ -17422,6 +17519,7 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
     <li>取值范围[0, 100]</li>
     <li>设置该值后，添加后端服务到目标组时， 若后端服务不单独设置权重， 则使用这里的默认权重。 </li> 
 </ul>
+v1目标组类型不支持设置Weight参数。
         :rtype: int
         """
         return self._Weight
@@ -17430,12 +17528,36 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
     def Weight(self, Weight):
         self._Weight = Weight
 
+    @property
+    def KeepaliveEnable(self):
+        """是否开启长连接，此参数仅适用于HTTP/HTTPS目标组，true:关闭；false:开启， 默认关闭。
+        :rtype: bool
+        """
+        return self._KeepaliveEnable
+
+    @KeepaliveEnable.setter
+    def KeepaliveEnable(self, KeepaliveEnable):
+        self._KeepaliveEnable = KeepaliveEnable
+
+    @property
+    def SessionExpireTime(self):
+        """会话保持时间，单位：秒。可选值：30~3600，默认 0，表示不开启。TCP/UDP目标组不支持该参数。
+        :rtype: int
+        """
+        return self._SessionExpireTime
+
+    @SessionExpireTime.setter
+    def SessionExpireTime(self, SessionExpireTime):
+        self._SessionExpireTime = SessionExpireTime
+
 
     def _deserialize(self, params):
         self._TargetGroupId = params.get("TargetGroupId")
         self._TargetGroupName = params.get("TargetGroupName")
         self._Port = params.get("Port")
         self._Weight = params.get("Weight")
+        self._KeepaliveEnable = params.get("KeepaliveEnable")
+        self._SessionExpireTime = params.get("SessionExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17483,7 +17605,7 @@ class ModifyTargetGroupInstancesPortRequest(AbstractModel):
         r"""
         :param _TargetGroupId: 目标组ID。
         :type TargetGroupId: str
-        :param _TargetGroupInstances: 待修改端口的服务器数组。
+        :param _TargetGroupInstances: 待修改端口的服务器数组，在这个接口 NewPort 和 Port 为必填项。
         :type TargetGroupInstances: list of TargetGroupInstance
         """
         self._TargetGroupId = None
@@ -17502,7 +17624,7 @@ class ModifyTargetGroupInstancesPortRequest(AbstractModel):
 
     @property
     def TargetGroupInstances(self):
-        """待修改端口的服务器数组。
+        """待修改端口的服务器数组，在这个接口 NewPort 和 Port 为必填项。
         :rtype: list of TargetGroupInstance
         """
         return self._TargetGroupInstances
@@ -17567,7 +17689,7 @@ class ModifyTargetGroupInstancesWeightRequest(AbstractModel):
         r"""
         :param _TargetGroupId: 目标组ID。
         :type TargetGroupId: str
-        :param _TargetGroupInstances: 待修改权重的服务器数组。
+        :param _TargetGroupInstances: 待修改权重的服务器数组，在这个接口 Port 为必填项。
         :type TargetGroupInstances: list of TargetGroupInstance
         """
         self._TargetGroupId = None
@@ -17586,7 +17708,7 @@ class ModifyTargetGroupInstancesWeightRequest(AbstractModel):
 
     @property
     def TargetGroupInstances(self):
-        """待修改权重的服务器数组。
+        """待修改权重的服务器数组，在这个接口 Port 为必填项。
         :rtype: list of TargetGroupInstance
         """
         return self._TargetGroupInstances
@@ -18183,8 +18305,9 @@ class Quota(AbstractModel):
 <li> TOTAL_LISTENER_QUOTA：一个CLB下的监听器配额 </li>
 <li> TOTAL_LISTENER_RULE_QUOTA：一个监听器下的转发规则配额 </li>
 <li> TOTAL_TARGET_BIND_QUOTA：一条转发规则下可绑定设备的配额 </li>
-<li> TOTAL_SNAP_IP_QUOTA： 一个CLB实例下跨地域2.0的SNAT IP配额 </li>
+<li> TOTAL_SNAT_IP_QUOTA： 一个CLB实例下跨地域2.0的SNAT IP配额 </li>
 <li>TOTAL_ISP_CLB_QUOTA：用户当前地域下的三网CLB配额 </li>
+<li>TOTAL_FULL_PORT_RANGE_LISTENER_QUOTA：一个CLB实例下的单个协议全端口段监听器配额</li>
         :type QuotaId: str
         :param _QuotaCurrent: 当前使用数量，为 null 时表示无意义。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -18204,8 +18327,9 @@ class Quota(AbstractModel):
 <li> TOTAL_LISTENER_QUOTA：一个CLB下的监听器配额 </li>
 <li> TOTAL_LISTENER_RULE_QUOTA：一个监听器下的转发规则配额 </li>
 <li> TOTAL_TARGET_BIND_QUOTA：一条转发规则下可绑定设备的配额 </li>
-<li> TOTAL_SNAP_IP_QUOTA： 一个CLB实例下跨地域2.0的SNAT IP配额 </li>
+<li> TOTAL_SNAT_IP_QUOTA： 一个CLB实例下跨地域2.0的SNAT IP配额 </li>
 <li>TOTAL_ISP_CLB_QUOTA：用户当前地域下的三网CLB配额 </li>
+<li>TOTAL_FULL_PORT_RANGE_LISTENER_QUOTA：一个CLB实例下的单个协议全端口段监听器配额</li>
         :rtype: str
         """
         return self._QuotaId
@@ -18405,7 +18529,7 @@ class RegisterTargetGroupInstancesRequest(AbstractModel):
         r"""
         :param _TargetGroupId: 目标组ID
         :type TargetGroupId: str
-        :param _TargetGroupInstances: 服务器实例数组
+        :param _TargetGroupInstances: 服务器实例数组，服务器和目标组的 VPC 需相同。
         :type TargetGroupInstances: list of TargetGroupInstance
         """
         self._TargetGroupId = None
@@ -18424,7 +18548,7 @@ class RegisterTargetGroupInstancesRequest(AbstractModel):
 
     @property
     def TargetGroupInstances(self):
-        """服务器实例数组
+        """服务器实例数组，服务器和目标组的 VPC 需相同。
         :rtype: list of TargetGroupInstance
         """
         return self._TargetGroupInstances
@@ -18493,7 +18617,7 @@ class RegisterTargetsRequest(AbstractModel):
         :type ListenerId: str
         :param _Targets: 待绑定的后端服务列表，数组长度最大支持20。
         :type Targets: list of Target
-        :param _LocationId: 转发规则的ID，当绑定后端服务到七层转发规则时，必须提供此参数或Domain+Url两者之一。
+        :param _LocationId: 转发规则的ID，可以通过 [DescribeListeners](https://cloud.tencent.com/document/product/214/30686) 接口获取，当绑定后端服务到七层转发规则时，必须提供此参数或Domain+Url两者之一。
         :type LocationId: str
         :param _Domain: 目标转发规则的域名，提供LocationId参数时本参数不生效。
         :type Domain: str
@@ -18542,7 +18666,7 @@ class RegisterTargetsRequest(AbstractModel):
 
     @property
     def LocationId(self):
-        """转发规则的ID，当绑定后端服务到七层转发规则时，必须提供此参数或Domain+Url两者之一。
+        """转发规则的ID，可以通过 [DescribeListeners](https://cloud.tencent.com/document/product/214/30686) 接口获取，当绑定后端服务到七层转发规则时，必须提供此参数或Domain+Url两者之一。
         :rtype: str
         """
         return self._LocationId
@@ -19447,7 +19571,7 @@ class RuleInput(AbstractModel):
         :param _Scheduler: 规则的请求转发方式，可选值：WRR、LEAST_CONN、IP_HASH
 分别表示按权重轮询、最小连接数、按IP哈希， 默认为 WRR。
         :type Scheduler: str
-        :param _ForwardType: 负载均衡与后端服务之间的转发协议，目前支持 HTTP/HTTPS/GRPC/TRPC，TRPC暂未对外开放，默认HTTP。
+        :param _ForwardType: 负载均衡与后端服务之间的转发协议，目前支持 HTTP/HTTPS/GRPC/GRPCS/TRPC，TRPC暂未对外开放，默认HTTP。
         :type ForwardType: str
         :param _DefaultServer: 是否将该域名设为默认域名，注意，一个监听器下只能设置一个默认域名。
         :type DefaultServer: bool
@@ -19551,7 +19675,7 @@ class RuleInput(AbstractModel):
 
     @property
     def ForwardType(self):
-        """负载均衡与后端服务之间的转发协议，目前支持 HTTP/HTTPS/GRPC/TRPC，TRPC暂未对外开放，默认HTTP。
+        """负载均衡与后端服务之间的转发协议，目前支持 HTTP/HTTPS/GRPC/GRPCS/TRPC，TRPC暂未对外开放，默认HTTP。
         :rtype: str
         """
         return self._ForwardType
@@ -20285,7 +20409,7 @@ class SetCustomizedConfigForLoadBalancerRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _OperationType: 操作类型。
-- ADD：添加
+- ADD：创建
 - DELETE：删除
 - UPDATE：修改
 - BIND：绑定
@@ -20293,11 +20417,13 @@ class SetCustomizedConfigForLoadBalancerRequest(AbstractModel):
         :type OperationType: str
         :param _UconfigId: 个性化配置ID。除了创建个性化配置外，必传此字段，如：pz-1234abcd
         :type UconfigId: str
-        :param _ConfigContent: 个性化配置内容。创建个性化配置或修改个性化配置的内容时，必传此字段
+        :param _ConfigContent: 个性化配置内容。创建个性化配置或修改个性化配置的内容时，必传此字段。
+具体限制查看 [七层个性化配置](https://cloud.tencent.com/document/product/214/15171)
         :type ConfigContent: str
-        :param _ConfigName: 个性化配置名称。创建个性化配置或修改个性化配置的名字时，必传此字段
+        :param _ConfigName: 个性化配置名称。创建个性化配置或修改个性化配置的名字时，必传此字段。
         :type ConfigName: str
-        :param _LoadBalancerIds: 负载均衡实例ID。绑定解绑时，必传此字段
+        :param _LoadBalancerIds: 负载均衡实例ID。绑定解绑时，必传此字段。
+可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口查询。
         :type LoadBalancerIds: list of str
         """
         self._OperationType = None
@@ -20309,7 +20435,7 @@ class SetCustomizedConfigForLoadBalancerRequest(AbstractModel):
     @property
     def OperationType(self):
         """操作类型。
-- ADD：添加
+- ADD：创建
 - DELETE：删除
 - UPDATE：修改
 - BIND：绑定
@@ -20335,7 +20461,8 @@ class SetCustomizedConfigForLoadBalancerRequest(AbstractModel):
 
     @property
     def ConfigContent(self):
-        """个性化配置内容。创建个性化配置或修改个性化配置的内容时，必传此字段
+        """个性化配置内容。创建个性化配置或修改个性化配置的内容时，必传此字段。
+具体限制查看 [七层个性化配置](https://cloud.tencent.com/document/product/214/15171)
         :rtype: str
         """
         return self._ConfigContent
@@ -20346,7 +20473,7 @@ class SetCustomizedConfigForLoadBalancerRequest(AbstractModel):
 
     @property
     def ConfigName(self):
-        """个性化配置名称。创建个性化配置或修改个性化配置的名字时，必传此字段
+        """个性化配置名称。创建个性化配置或修改个性化配置的名字时，必传此字段。
         :rtype: str
         """
         return self._ConfigName
@@ -20357,7 +20484,8 @@ class SetCustomizedConfigForLoadBalancerRequest(AbstractModel):
 
     @property
     def LoadBalancerIds(self):
-        """负载均衡实例ID。绑定解绑时，必传此字段
+        """负载均衡实例ID。绑定解绑时，必传此字段。
+可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口查询。
         :rtype: list of str
         """
         return self._LoadBalancerIds
@@ -20433,7 +20561,7 @@ class SetLoadBalancerClsLogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerId: 负载均衡实例 ID。
+        :param _LoadBalancerId: 负载均衡实例 ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口查询。
         :type LoadBalancerId: str
         :param _LogSetId: 日志服务(CLS)的日志集 ID。
 <li>增加和更新日志主题时可调用 [DescribeLogsets](https://cloud.tencent.com/document/product/614/58624) 接口获取日志集 ID。</li>
@@ -20456,7 +20584,7 @@ class SetLoadBalancerClsLogRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """负载均衡实例 ID。
+        """负载均衡实例 ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口查询。
         :rtype: str
         """
         return self._LoadBalancerId
@@ -20556,9 +20684,10 @@ class SetLoadBalancerSecurityGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerId: 负载均衡实例 ID
+        :param _LoadBalancerId: 负载均衡实例 ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口查询。
         :type LoadBalancerId: str
         :param _SecurityGroups: 安全组ID构成的数组，一个负载均衡实例最多可绑定50个安全组，如果要解绑所有安全组，可不传此参数。
+可以通过 [DescribeSecurityGroups](https://cloud.tencent.com/document/product/215/15808) 接口查询。
         :type SecurityGroups: list of str
         """
         self._LoadBalancerId = None
@@ -20566,7 +20695,7 @@ class SetLoadBalancerSecurityGroupsRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """负载均衡实例 ID
+        """负载均衡实例 ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口查询。
         :rtype: str
         """
         return self._LoadBalancerId
@@ -20578,6 +20707,7 @@ class SetLoadBalancerSecurityGroupsRequest(AbstractModel):
     @property
     def SecurityGroups(self):
         """安全组ID构成的数组，一个负载均衡实例最多可绑定50个安全组，如果要解绑所有安全组，可不传此参数。
+可以通过 [DescribeSecurityGroups](https://cloud.tencent.com/document/product/215/15808) 接口查询。
         :rtype: list of str
         """
         return self._SecurityGroups
@@ -20729,12 +20859,13 @@ class SetSecurityGroupForLoadbalancersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecurityGroup: 安全组ID，如 sg-12345678
+        :param _SecurityGroup: 安全组ID，如 sg-12345678。可以通过 [DescribeSecurityGroups](https://cloud.tencent.com/document/product/215/15808) 接口获取。
         :type SecurityGroup: str
         :param _OperationType: ADD 绑定安全组；
 DEL 解绑安全组
         :type OperationType: str
-        :param _LoadBalancerIds: 负载均衡实例ID数组
+        :param _LoadBalancerIds: 负载均衡实例ID数组，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口查询。
+列表支持的最大长度为20。
         :type LoadBalancerIds: list of str
         """
         self._SecurityGroup = None
@@ -20743,7 +20874,7 @@ DEL 解绑安全组
 
     @property
     def SecurityGroup(self):
-        """安全组ID，如 sg-12345678
+        """安全组ID，如 sg-12345678。可以通过 [DescribeSecurityGroups](https://cloud.tencent.com/document/product/215/15808) 接口获取。
         :rtype: str
         """
         return self._SecurityGroup
@@ -20766,7 +20897,8 @@ DEL 解绑安全组
 
     @property
     def LoadBalancerIds(self):
-        """负载均衡实例ID数组
+        """负载均衡实例ID数组，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口查询。
+列表支持的最大长度为20。
         :rtype: list of str
         """
         return self._LoadBalancerIds
@@ -20825,7 +20957,8 @@ class SlaUpdateParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerId: lb的字符串ID
+        :param _LoadBalancerId: 负载均衡实例 ID。
+可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口查询。
         :type LoadBalancerId: str
         :param _SlaType: 性能容量型规格，取值范围：
 <li> clb.c2.medium：标准型规格 </li>
@@ -20842,7 +20975,8 @@ class SlaUpdateParam(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """lb的字符串ID
+        """负载均衡实例 ID。
+可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口查询。
         :rtype: str
         """
         return self._LoadBalancerId
@@ -21704,8 +21838,8 @@ class TargetGroupInstance(AbstractModel):
         :param _Port: 目标组实例的端口，全监听目标组不支持传此字段。
         :type Port: int
         :param _Weight: 目标组实例的权重
-
 v2目标组需要配置权重，调用CreateTargetGroup接口创建目标组时该参数与创建接口中的Weight参数必填其一。
+取值范围：0-100
         :type Weight: int
         :param _NewPort: 目标组实例的新端口，全监听目标组不支持传此字段。
         :type NewPort: int
@@ -21740,8 +21874,8 @@ v2目标组需要配置权重，调用CreateTargetGroup接口创建目标组时�
     @property
     def Weight(self):
         """目标组实例的权重
-
 v2目标组需要配置权重，调用CreateTargetGroup接口创建目标组时该参数与创建接口中的Weight参数必填其一。
+取值范围：0-100
         :rtype: int
         """
         return self._Weight

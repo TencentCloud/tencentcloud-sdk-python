@@ -233,6 +233,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CloseSSL(self, request):
+        """关闭SSL加密
+
+        :param request: Request instance for CloseSSL.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.CloseSSLRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.CloseSSLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CloseSSL", params, headers=headers)
+            response = json.loads(body)
+            model = models.CloseSSLResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CloseWan(self, request):
         """本接口（CloseWan）用于关闭外网。
 

@@ -685,9 +685,9 @@ class Address(AbstractModel):
         :type InstanceId: str
         :param _CreatedTime: 创建时间。按照`ISO8601`标准表示，并且使用`UTC`时间。格式为：`YYYY-MM-DDThh:mm:ssZ`。
         :type CreatedTime: str
-        :param _NetworkInterfaceId: 绑定的弹性网卡ID
+        :param _NetworkInterfaceId: 绑定的弹性网卡ID，null表示没有绑定弹性网卡。
         :type NetworkInterfaceId: str
-        :param _PrivateAddressIp: 绑定的资源内网ip
+        :param _PrivateAddressIp: 绑定的资源内网ip，null表示没有绑定资源内网ip。
         :type PrivateAddressIp: str
         :param _IsArrears: 资源隔离状态。true表示eip处于隔离状态，false表示资源处于未隔离状态
         :type IsArrears: bool
@@ -701,9 +701,11 @@ class Address(AbstractModel):
         :type CascadeRelease: bool
         :param _EipAlgType: EIP ALG开启的协议类型。
         :type EipAlgType: :class:`tencentcloud.vpc.v20170312.models.AlgType`
-        :param _InternetServiceProvider: 弹性公网IP的运营商信息，当前可能返回值包括"CMCC","CTCC","CUCC","BGP"
+        :param _InternetServiceProvider: 弹性公网IP的运营商信息，当前可能返回值包括"CMCC"(移动),"CTCC"(电信),"CUCC"(联通),"BGP"(常规BGP)。
         :type InternetServiceProvider: str
-        :param _LocalBgp: 是否本地带宽EIP
+        :param _LocalBgp: 是否本地带宽EIP，可选值：
+<li>true：本地带宽EIP</li>
+<li>false：非本地带宽EIP</li>
         :type LocalBgp: bool
         :param _Bandwidth: 弹性公网IP的带宽值。注意，传统账户类型账户的弹性公网IP没有带宽属性，值为空。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -723,10 +725,19 @@ class Address(AbstractModel):
         :type InternetChargeType: str
         :param _TagSet: 弹性公网IP关联的标签列表。
         :type TagSet: list of Tag
-        :param _DeadlineDate: 到期时间。
+        :param _DeadlineDate: 预付费包月带宽IP到期时间。
+时间格式：YYYY-MM-DDThh:mm:ssZ
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeadlineDate: str
-        :param _InstanceType: EIP绑定的实例类型。
+        :param _InstanceType: EIP绑定的实例类型。可选值：
+<li>CVM：云服务器</li>
+<li>NAT：NAT 网关</li>
+<li>HAVIP：高可用虚拟IP</li>
+<li>ENI：弹性网卡</li>
+<li>CLB：内网CLB</li>
+<li>DHCPIP：弹性内网IP</li>
+
+
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceType: str
         :param _Egress: 静态单线IP网络出口
@@ -842,7 +853,7 @@ class Address(AbstractModel):
 
     @property
     def NetworkInterfaceId(self):
-        """绑定的弹性网卡ID
+        """绑定的弹性网卡ID，null表示没有绑定弹性网卡。
         :rtype: str
         """
         return self._NetworkInterfaceId
@@ -853,7 +864,7 @@ class Address(AbstractModel):
 
     @property
     def PrivateAddressIp(self):
-        """绑定的资源内网ip
+        """绑定的资源内网ip，null表示没有绑定资源内网ip。
         :rtype: str
         """
         return self._PrivateAddressIp
@@ -930,7 +941,7 @@ class Address(AbstractModel):
 
     @property
     def InternetServiceProvider(self):
-        """弹性公网IP的运营商信息，当前可能返回值包括"CMCC","CTCC","CUCC","BGP"
+        """弹性公网IP的运营商信息，当前可能返回值包括"CMCC"(移动),"CTCC"(电信),"CUCC"(联通),"BGP"(常规BGP)。
         :rtype: str
         """
         return self._InternetServiceProvider
@@ -941,7 +952,9 @@ class Address(AbstractModel):
 
     @property
     def LocalBgp(self):
-        """是否本地带宽EIP
+        """是否本地带宽EIP，可选值：
+<li>true：本地带宽EIP</li>
+<li>false：非本地带宽EIP</li>
         :rtype: bool
         """
         return self._LocalBgp
@@ -997,7 +1010,8 @@ class Address(AbstractModel):
 
     @property
     def DeadlineDate(self):
-        """到期时间。
+        """预付费包月带宽IP到期时间。
+时间格式：YYYY-MM-DDThh:mm:ssZ
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1009,7 +1023,15 @@ class Address(AbstractModel):
 
     @property
     def InstanceType(self):
-        """EIP绑定的实例类型。
+        """EIP绑定的实例类型。可选值：
+<li>CVM：云服务器</li>
+<li>NAT：NAT 网关</li>
+<li>HAVIP：高可用虚拟IP</li>
+<li>ENI：弹性网卡</li>
+<li>CLB：内网CLB</li>
+<li>DHCPIP：弹性内网IP</li>
+
+
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1787,9 +1809,13 @@ class AlgType(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Ftp: Ftp协议Alg功能是否开启
+        :param _Ftp: Ftp协议Alg功能是否开启，可选值：
+<li>true：开启Ftp协议Alg功能</li>
+<li>false：不开启Ftp协议Alg功能</li>
         :type Ftp: bool
-        :param _Sip: Sip协议Alg功能是否开启
+        :param _Sip: Sip协议Alg功能是否开启，可选值：
+<li>true：开启Sip协议Alg功能</li>
+<li>false：不开启Sip协议Alg功能</li>
         :type Sip: bool
         """
         self._Ftp = None
@@ -1797,7 +1823,9 @@ class AlgType(AbstractModel):
 
     @property
     def Ftp(self):
-        """Ftp协议Alg功能是否开启
+        """Ftp协议Alg功能是否开启，可选值：
+<li>true：开启Ftp协议Alg功能</li>
+<li>false：不开启Ftp协议Alg功能</li>
         :rtype: bool
         """
         return self._Ftp
@@ -1808,7 +1836,9 @@ class AlgType(AbstractModel):
 
     @property
     def Sip(self):
-        """Sip协议Alg功能是否开启
+        """Sip协议Alg功能是否开启，可选值：
+<li>true：开启Sip协议Alg功能</li>
+<li>false：不开启Sip协议Alg功能</li>
         :rtype: bool
         """
         return self._Sip
@@ -3203,7 +3233,6 @@ class AssistantCidr(AbstractModel):
         :param _AssistantType: 辅助CIDR类型（0：普通辅助CIDR，1：容器辅助CIDR），默认都是0。
         :type AssistantType: int
         :param _SubnetSet: 辅助CIDR拆分的子网。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetSet: list of Subnet
         """
         self._VpcId = None
@@ -3247,7 +3276,6 @@ class AssistantCidr(AbstractModel):
     @property
     def SubnetSet(self):
         """辅助CIDR拆分的子网。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Subnet
         """
         return self._SubnetSet
@@ -3611,11 +3639,11 @@ class AssociateIPv6AddressRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IPv6AddressId: 弹性公网IPv6唯一ID，EIPv6 唯一 ID 形如：eipv6-11112222。
+        :param _IPv6AddressId: 弹性公网IPv6唯一ID，EIPv6 唯一 ID 形如：eipv6-11112222。可以使用[DescribeIPv6Addresses](https://cloud.tencent.com/document/api/215/113677)接口获取IPv6AddressId。
         :type IPv6AddressId: str
-        :param _NetworkInterfaceId: 要绑定的弹性网卡 ID。 弹性网卡 ID 形如：eni-11112222。NetworkInterfaceId 与 InstanceId 不可同时指定。弹性网卡 ID 可通过登录控制台查询，也可通过DescribeNetworkInterfaces接口返回值中的networkInterfaceId获取。
+        :param _NetworkInterfaceId: 要绑定的弹性网卡 ID。 弹性网卡 ID 形如：eni-11112222。NetworkInterfaceId 与 InstanceId 不可同时指定。弹性网卡 ID 可通过登录[控制台](https://console.cloud.tencent.com/vpc/eni?rid=1)查询，也可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/api/215/15817)接口返回值中的networkInterfaceId获取。
         :type NetworkInterfaceId: str
-        :param _PrivateIPv6Address: 要绑定的内网 IPv6。如果指定了 NetworkInterfaceId 则也必须指定 PrivateIPv6Address ，表示将 EIP 绑定到指定弹性网卡的指定内网 IP 上。同时要确保指定的 PrivateIPv6Address 是指定的 NetworkInterfaceId 上的一个内网 IPv6。指定弹性网卡的内网 IPv6 可通过登录控制台查询，也可通过DescribeNetworkInterfaces接口返回值中的Ipv6AddressSet.Address获取。
+        :param _PrivateIPv6Address: 要绑定的内网 IPv6。如果指定了 NetworkInterfaceId 则也必须指定 PrivateIPv6Address ，表示将 EIP 绑定到指定弹性网卡的指定内网 IP 上。同时要确保指定的 PrivateIPv6Address 是指定的 NetworkInterfaceId 上的一个内网 IPv6。指定弹性网卡的内网 IPv6 可通过登录[控制台](https://console.cloud.tencent.com/vpc/eni?rid=1)查询，也可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/api/215/15817)接口返回值中的Ipv6AddressSet.Address获取。
         :type PrivateIPv6Address: str
         """
         self._IPv6AddressId = None
@@ -3624,7 +3652,7 @@ class AssociateIPv6AddressRequest(AbstractModel):
 
     @property
     def IPv6AddressId(self):
-        """弹性公网IPv6唯一ID，EIPv6 唯一 ID 形如：eipv6-11112222。
+        """弹性公网IPv6唯一ID，EIPv6 唯一 ID 形如：eipv6-11112222。可以使用[DescribeIPv6Addresses](https://cloud.tencent.com/document/api/215/113677)接口获取IPv6AddressId。
         :rtype: str
         """
         return self._IPv6AddressId
@@ -3635,7 +3663,7 @@ class AssociateIPv6AddressRequest(AbstractModel):
 
     @property
     def NetworkInterfaceId(self):
-        """要绑定的弹性网卡 ID。 弹性网卡 ID 形如：eni-11112222。NetworkInterfaceId 与 InstanceId 不可同时指定。弹性网卡 ID 可通过登录控制台查询，也可通过DescribeNetworkInterfaces接口返回值中的networkInterfaceId获取。
+        """要绑定的弹性网卡 ID。 弹性网卡 ID 形如：eni-11112222。NetworkInterfaceId 与 InstanceId 不可同时指定。弹性网卡 ID 可通过登录[控制台](https://console.cloud.tencent.com/vpc/eni?rid=1)查询，也可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/api/215/15817)接口返回值中的networkInterfaceId获取。
         :rtype: str
         """
         return self._NetworkInterfaceId
@@ -3646,7 +3674,7 @@ class AssociateIPv6AddressRequest(AbstractModel):
 
     @property
     def PrivateIPv6Address(self):
-        """要绑定的内网 IPv6。如果指定了 NetworkInterfaceId 则也必须指定 PrivateIPv6Address ，表示将 EIP 绑定到指定弹性网卡的指定内网 IP 上。同时要确保指定的 PrivateIPv6Address 是指定的 NetworkInterfaceId 上的一个内网 IPv6。指定弹性网卡的内网 IPv6 可通过登录控制台查询，也可通过DescribeNetworkInterfaces接口返回值中的Ipv6AddressSet.Address获取。
+        """要绑定的内网 IPv6。如果指定了 NetworkInterfaceId 则也必须指定 PrivateIPv6Address ，表示将 EIP 绑定到指定弹性网卡的指定内网 IP 上。同时要确保指定的 PrivateIPv6Address 是指定的 NetworkInterfaceId 上的一个内网 IPv6。指定弹性网卡的内网 IPv6 可通过登录[控制台](https://console.cloud.tencent.com/vpc/eni?rid=1)查询，也可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/api/215/15817)接口返回值中的Ipv6AddressSet.Address获取。
         :rtype: str
         """
         return self._PrivateIPv6Address
@@ -22236,14 +22264,14 @@ class DescribeAddressBandwidthRangeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AddressIds: EIP资源ID列表，单次查询上限20。
+        :param _AddressIds: EIP资源ID列表，单次查询上限20，可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取AddressId。
         :type AddressIds: list of str
         """
         self._AddressIds = None
 
     @property
     def AddressIds(self):
-        """EIP资源ID列表，单次查询上限20。
+        """EIP资源ID列表，单次查询上限20，可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取AddressId。
         :rtype: list of str
         """
         return self._AddressIds
@@ -27787,7 +27815,7 @@ class DescribeIPv6AddressesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IPv6AddressIds: 标识 IPv6 的唯一 ID 列。
+        :param _IPv6AddressIds: 标识 IPv6 的唯一 ID 列。可以使用[DescribeIPv6Addresses](https://cloud.tencent.com/document/api/215/113677)接口获取IPv6AddressId。
 
 - 传统弹性公网 IPv6 唯一 ID 形如：`eip-11112222`
 - 弹性公网 IPv6 唯一 ID 形如：`eipv6-11112222`
@@ -27803,15 +27831,18 @@ class DescribeIPv6AddressesRequest(AbstractModel):
 - charge-type - String - 是否必填：否 - （过滤条件）按照计费类型过滤。
 - private-ipv6-address - String - 是否必填：否 - （过滤条件）按照绑定的内网 IPv6 地址过滤。
 - egress - String - 是否必填：否 - （过滤条件）按照出口过滤。
-- address-type - String - 是否必填：否 - （过滤条件）按照IPv6类型 进行过滤。可选值：'EIP6'，'EIPv6'，'WanIPv6'，'HighQualityEIPv6'。默认值是'EIPv6'。
-- address-isp - String - 是否必填：否 - （过滤条件）按照 运营商类型 进行过滤。可选值：'BGP'，'CMCC'，'CUCC', 'CTCC'。
-- address-status - String - 是否必填：否 - （过滤条件）按照 EIP 的状态过滤。状态包含：'CREATING'，'BINDING'，'BIND'，'UNBINDING'，'UNBIND'，'OFFLINING'，'BIND_ENI'，'PRIVATE'。
+- address-type - String - 是否必填：否 - （过滤条件）按照IPv6类型 进行过滤。可选值：'EIP6'：传统弹性公网 IPv6，'EIPv6'：弹性公网 IPv6，'WanIPv6'：普通公网 IPv6，'HighQualityEIPv6'：精品弹性公网 IPv6。默认值是'EIPv6'。
+- address-isp - String - 是否必填：否 - （过滤条件）按照 运营商类型 进行过滤。可选值：'BGP'：常规BGP，'CMCC'：移动，'CUCC'：联通, 'CTCC'：电信。
+- address-status - String - 是否必填：否 - （过滤条件）按照 EIP 的状态过滤。状态包含：'CREATING'：创建中，'BINDING'：绑定中，'BIND'：已绑，'UNBINDING'：解绑中，'UNBIND'：未绑定，'OFFLINING'：下线中，'BIND_ENI'：绑定了ENI，'PRIVATE'：仅开通内网的IPv6。
 - address-name - String - 是否必填：否 - （过滤条件）按照 EIP 名称过滤。不支持模糊过滤。
 - tag-key - String - 是否必填：否 - （过滤条件）按照标签键进行过滤。
 - tag-value - String - 是否必填：否 - （过滤条件）按照标签值进行过滤。
 - tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。tag-key使用具体的标签键进行替换。
         :type Filters: list of Filter
-        :param _Traditional: 是否查询传统型IPv6地址信息。
+        :param _Traditional: 是否查询传统型IPv6地址信息。可选值：
+<li>True：查询传统型IPv6地址信息</li>
+<li>False：不查询传统型IPv6地址信息</li>
+默认值：False
         :type Traditional: bool
         :param _Offset: 偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/11646)中的相关小节。
         :type Offset: int
@@ -27826,7 +27857,7 @@ class DescribeIPv6AddressesRequest(AbstractModel):
 
     @property
     def IPv6AddressIds(self):
-        """标识 IPv6 的唯一 ID 列。
+        """标识 IPv6 的唯一 ID 列。可以使用[DescribeIPv6Addresses](https://cloud.tencent.com/document/api/215/113677)接口获取IPv6AddressId。
 
 - 传统弹性公网 IPv6 唯一 ID 形如：`eip-11112222`
 - 弹性公网 IPv6 唯一 ID 形如：`eipv6-11112222`
@@ -27851,9 +27882,9 @@ class DescribeIPv6AddressesRequest(AbstractModel):
 - charge-type - String - 是否必填：否 - （过滤条件）按照计费类型过滤。
 - private-ipv6-address - String - 是否必填：否 - （过滤条件）按照绑定的内网 IPv6 地址过滤。
 - egress - String - 是否必填：否 - （过滤条件）按照出口过滤。
-- address-type - String - 是否必填：否 - （过滤条件）按照IPv6类型 进行过滤。可选值：'EIP6'，'EIPv6'，'WanIPv6'，'HighQualityEIPv6'。默认值是'EIPv6'。
-- address-isp - String - 是否必填：否 - （过滤条件）按照 运营商类型 进行过滤。可选值：'BGP'，'CMCC'，'CUCC', 'CTCC'。
-- address-status - String - 是否必填：否 - （过滤条件）按照 EIP 的状态过滤。状态包含：'CREATING'，'BINDING'，'BIND'，'UNBINDING'，'UNBIND'，'OFFLINING'，'BIND_ENI'，'PRIVATE'。
+- address-type - String - 是否必填：否 - （过滤条件）按照IPv6类型 进行过滤。可选值：'EIP6'：传统弹性公网 IPv6，'EIPv6'：弹性公网 IPv6，'WanIPv6'：普通公网 IPv6，'HighQualityEIPv6'：精品弹性公网 IPv6。默认值是'EIPv6'。
+- address-isp - String - 是否必填：否 - （过滤条件）按照 运营商类型 进行过滤。可选值：'BGP'：常规BGP，'CMCC'：移动，'CUCC'：联通, 'CTCC'：电信。
+- address-status - String - 是否必填：否 - （过滤条件）按照 EIP 的状态过滤。状态包含：'CREATING'：创建中，'BINDING'：绑定中，'BIND'：已绑，'UNBINDING'：解绑中，'UNBIND'：未绑定，'OFFLINING'：下线中，'BIND_ENI'：绑定了ENI，'PRIVATE'：仅开通内网的IPv6。
 - address-name - String - 是否必填：否 - （过滤条件）按照 EIP 名称过滤。不支持模糊过滤。
 - tag-key - String - 是否必填：否 - （过滤条件）按照标签键进行过滤。
 - tag-value - String - 是否必填：否 - （过滤条件）按照标签值进行过滤。
@@ -27868,7 +27899,10 @@ class DescribeIPv6AddressesRequest(AbstractModel):
 
     @property
     def Traditional(self):
-        """是否查询传统型IPv6地址信息。
+        """是否查询传统型IPv6地址信息。可选值：
+<li>True：查询传统型IPv6地址信息</li>
+<li>False：不查询传统型IPv6地址信息</li>
+默认值：False
         :rtype: bool
         """
         return self._Traditional
@@ -40334,9 +40368,10 @@ class DisassociateIPv6AddressRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IPv6AddressId: 弹性公网IPv6唯一ID，EIPv6 唯一 ID 形如：eipv6-11112222。
+        :param _IPv6AddressId: 弹性公网IPv6唯一ID，EIPv6 唯一 ID 形如：eipv6-11112222。可以使用[DescribeIPv6Addresses](https://cloud.tencent.com/document/api/215/113677)接口获取IPv6AddressId。
         :type IPv6AddressId: str
-        :param _KeepBindWithEni: 解绑时是否保持绑定弹性网卡。
+        :param _KeepBindWithEni: 解绑时是否保持绑定弹性网卡。可选值：true、false。
+默认值：false
         :type KeepBindWithEni: bool
         """
         self._IPv6AddressId = None
@@ -40344,7 +40379,7 @@ class DisassociateIPv6AddressRequest(AbstractModel):
 
     @property
     def IPv6AddressId(self):
-        """弹性公网IPv6唯一ID，EIPv6 唯一 ID 形如：eipv6-11112222。
+        """弹性公网IPv6唯一ID，EIPv6 唯一 ID 形如：eipv6-11112222。可以使用[DescribeIPv6Addresses](https://cloud.tencent.com/document/api/215/113677)接口获取IPv6AddressId。
         :rtype: str
         """
         return self._IPv6AddressId
@@ -40355,7 +40390,8 @@ class DisassociateIPv6AddressRequest(AbstractModel):
 
     @property
     def KeepBindWithEni(self):
-        """解绑时是否保持绑定弹性网卡。
+        """解绑时是否保持绑定弹性网卡。可选值：true、false。
+默认值：false
         :rtype: bool
         """
         return self._KeepBindWithEni
@@ -41594,7 +41630,7 @@ class EndPoint(AbstractModel):
         r"""
         :param _EndPointId: 终端节点ID。
         :type EndPointId: str
-        :param _VpcId: VPCID。
+        :param _VpcId: VPC唯一ID。可通过[DescribeVpcs](https://cloud.tencent.com/document/product/1108/43663)接口获取。
         :type VpcId: str
         :param _SubnetId: 子网ID。
         :type SubnetId: str
@@ -41612,18 +41648,15 @@ class EndPoint(AbstractModel):
         :type EndPointVip: str
         :param _State: 终端节点状态，ACTIVE：可用，PENDING：待接受，ACCEPTING：接受中，REJECTED：已拒绝，FAILED：失败。
         :type State: str
-        :param _CreateTime: 创建时间。
+        :param _CreateTime: 创建时间。格式：YYYY-MM-DD HH:MM:SS。
         :type CreateTime: str
         :param _GroupSet: 终端节点绑定的安全组实例ID列表。
         :type GroupSet: list of str
         :param _ServiceName: 终端节点服务名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceName: str
         :param _CdcId: CDC 集群唯一 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type CdcId: str
         :param _TagSet: 标签键值对。	
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagSet: list of Tag
         """
         self._EndPointId = None
@@ -41655,7 +41688,7 @@ class EndPoint(AbstractModel):
 
     @property
     def VpcId(self):
-        """VPCID。
+        """VPC唯一ID。可通过[DescribeVpcs](https://cloud.tencent.com/document/product/1108/43663)接口获取。
         :rtype: str
         """
         return self._VpcId
@@ -41754,7 +41787,7 @@ class EndPoint(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间。
+        """创建时间。格式：YYYY-MM-DD HH:MM:SS。
         :rtype: str
         """
         return self._CreateTime
@@ -41777,7 +41810,6 @@ class EndPoint(AbstractModel):
     @property
     def ServiceName(self):
         """终端节点服务名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ServiceName
@@ -41789,7 +41821,6 @@ class EndPoint(AbstractModel):
     @property
     def CdcId(self):
         """CDC 集群唯一 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CdcId
@@ -41801,7 +41832,6 @@ class EndPoint(AbstractModel):
     @property
     def TagSet(self):
         """标签键值对。	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._TagSet
@@ -41859,31 +41889,25 @@ class EndPointService(AbstractModel):
         :type ServiceName: str
         :param _ServiceVip: 后端服务的VIP。
         :type ServiceVip: str
-        :param _ServiceInstanceId: 后端服务的ID，比如lb-xxx。
+        :param _ServiceInstanceId: 后端服务的ID，比如lb-lip4e6bp。
         :type ServiceInstanceId: str
         :param _AutoAcceptFlag: 是否自动接受。
         :type AutoAcceptFlag: bool
         :param _EndPointCount: 关联的终端节点个数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndPointCount: int
         :param _EndPointSet: 终端节点对象数组。
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndPointSet: list of EndPoint
-        :param _CreateTime: 创建时间。
+        :param _CreateTime: 创建时间。格式为YYYY-MM-DD HH:MM:SS字符串。
         :type CreateTime: str
-        :param _ServiceType: 挂载的PAAS服务类型，CLB,CDB,CRS
+        :param _ServiceType: 挂载的PAAS服务类型，CLB（负载均衡），CDB（云数据库 MySQL），CRS（云数据库 Redis），GWLB（网关负载均衡）。
         :type ServiceType: str
         :param _CdcId: CDC 集群唯一 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type CdcId: str
-        :param _ServiceUin: Uin
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _ServiceUin: 终端节点服务Uin。
         :type ServiceUin: str
         :param _BusinessIpType: 服务IP类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessIpType: int
         :param _TagSet: 标签键值对。	
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagSet: list of Tag
         """
         self._EndPointServiceId = None
@@ -41959,7 +41983,7 @@ class EndPointService(AbstractModel):
 
     @property
     def ServiceInstanceId(self):
-        """后端服务的ID，比如lb-xxx。
+        """后端服务的ID，比如lb-lip4e6bp。
         :rtype: str
         """
         return self._ServiceInstanceId
@@ -41982,7 +42006,6 @@ class EndPointService(AbstractModel):
     @property
     def EndPointCount(self):
         """关联的终端节点个数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._EndPointCount
@@ -41994,7 +42017,6 @@ class EndPointService(AbstractModel):
     @property
     def EndPointSet(self):
         """终端节点对象数组。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of EndPoint
         """
         return self._EndPointSet
@@ -42005,7 +42027,7 @@ class EndPointService(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间。
+        """创建时间。格式为YYYY-MM-DD HH:MM:SS字符串。
         :rtype: str
         """
         return self._CreateTime
@@ -42016,7 +42038,7 @@ class EndPointService(AbstractModel):
 
     @property
     def ServiceType(self):
-        """挂载的PAAS服务类型，CLB,CDB,CRS
+        """挂载的PAAS服务类型，CLB（负载均衡），CDB（云数据库 MySQL），CRS（云数据库 Redis），GWLB（网关负载均衡）。
         :rtype: str
         """
         return self._ServiceType
@@ -42028,7 +42050,6 @@ class EndPointService(AbstractModel):
     @property
     def CdcId(self):
         """CDC 集群唯一 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CdcId
@@ -42039,8 +42060,7 @@ class EndPointService(AbstractModel):
 
     @property
     def ServiceUin(self):
-        """Uin
-注意：此字段可能返回 null，表示取不到有效值。
+        """终端节点服务Uin。
         :rtype: str
         """
         return self._ServiceUin
@@ -42052,7 +42072,6 @@ class EndPointService(AbstractModel):
     @property
     def BusinessIpType(self):
         """服务IP类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._BusinessIpType
@@ -42064,7 +42083,6 @@ class EndPointService(AbstractModel):
     @property
     def TagSet(self):
         """标签键值对。	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._TagSet
@@ -44513,7 +44531,8 @@ class InquiryPriceAllocateAddressesRequest(AbstractModel):
 <ul style="margin:0"><li>账号为标准账户类型的用户，可选值：<ul>
 <li>BANDWIDTH_POSTPAID_BY_HOUR：带宽按小时后付费</li>
 <li>BANDWIDTH_PREPAID_BY_MONTH：包月按带宽预付费</li>
-<li>TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费</li></ul>默认值：TRAFFIC_POSTPAID_BY_HOUR。</li>
+<li>TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费</li>
+</ul></li>
 </ul>
         :type InternetChargeType: str
         :param _InternetMaxBandwidthOut: EIP出带宽上限，单位：Mbps。
@@ -44522,17 +44541,14 @@ class InquiryPriceAllocateAddressesRequest(AbstractModel):
 <li>BANDWIDTH_PREPAID_BY_MONTH：1 Mbps 至 200 Mbps</li>
 <li>TRAFFIC_POSTPAID_BY_HOUR：1 Mbps 至 100 Mbps</li></ul>默认值：1 Mbps。</li>
 <li>账号为传统账户类型的用户，EIP出带宽上限取决于与其绑定的实例的公网出带宽上限，无需传递此参数。</li></ul>
+
         :type InternetMaxBandwidthOut: int
         :param _AddressChargePrepaid: 包月按带宽预付费EIP的计费参数。EIP为包月按带宽预付费时，该参数必传，其余场景不需传递
         :type AddressChargePrepaid: :class:`tencentcloud.vpc.v20170312.models.AddressChargePrepaid`
         :param _AddressType: EIP类型。默认值：EIP。
-
-<ul style="margin:0"><li>精品IP，可选值：<ul><li>HighQualityEIP：精品IP</li></ul>注意：仅部分地域支持精品IP。</li></ul><ul style="margin:0">
-        <li>高防IP，可选值：<ul>
-                <li>AntiDDoSEIP：高防IP</li>
-            </ul>
-        </li>
-    </ul>
+<ul style="margin:0"><li>弹性公网IP，可选值：<ul><li>EIP：弹性公网IP</li></ul></li></ul>
+<ul style="margin:0"><li>精品IP，可选值：<ul><li>HighQualityEIP：精品IP</li></ul>注意：仅新加坡和中国香港支持精品IP。</li></ul>
+<ul style="margin:0"><li>高防IP，可选值：<ul><li>AntiDDoSEIP：高防IP</li></ul>注意：仅部分地域支持高防IP，详情可见弹性公网IP[产品概述](https://cloud.tencent.com/document/product/1199/41646)。</li></ul>
         :type AddressType: str
         """
         self._InternetChargeType = None
@@ -44546,7 +44562,8 @@ class InquiryPriceAllocateAddressesRequest(AbstractModel):
 <ul style="margin:0"><li>账号为标准账户类型的用户，可选值：<ul>
 <li>BANDWIDTH_POSTPAID_BY_HOUR：带宽按小时后付费</li>
 <li>BANDWIDTH_PREPAID_BY_MONTH：包月按带宽预付费</li>
-<li>TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费</li></ul>默认值：TRAFFIC_POSTPAID_BY_HOUR。</li>
+<li>TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费</li>
+</ul></li>
 </ul>
         :rtype: str
         """
@@ -44564,6 +44581,7 @@ class InquiryPriceAllocateAddressesRequest(AbstractModel):
 <li>BANDWIDTH_PREPAID_BY_MONTH：1 Mbps 至 200 Mbps</li>
 <li>TRAFFIC_POSTPAID_BY_HOUR：1 Mbps 至 100 Mbps</li></ul>默认值：1 Mbps。</li>
 <li>账号为传统账户类型的用户，EIP出带宽上限取决于与其绑定的实例的公网出带宽上限，无需传递此参数。</li></ul>
+
         :rtype: int
         """
         return self._InternetMaxBandwidthOut
@@ -44586,13 +44604,9 @@ class InquiryPriceAllocateAddressesRequest(AbstractModel):
     @property
     def AddressType(self):
         """EIP类型。默认值：EIP。
-
-<ul style="margin:0"><li>精品IP，可选值：<ul><li>HighQualityEIP：精品IP</li></ul>注意：仅部分地域支持精品IP。</li></ul><ul style="margin:0">
-        <li>高防IP，可选值：<ul>
-                <li>AntiDDoSEIP：高防IP</li>
-            </ul>
-        </li>
-    </ul>
+<ul style="margin:0"><li>弹性公网IP，可选值：<ul><li>EIP：弹性公网IP</li></ul></li></ul>
+<ul style="margin:0"><li>精品IP，可选值：<ul><li>HighQualityEIP：精品IP</li></ul>注意：仅新加坡和中国香港支持精品IP。</li></ul>
+<ul style="margin:0"><li>高防IP，可选值：<ul><li>AntiDDoSEIP：高防IP</li></ul>注意：仅部分地域支持高防IP，详情可见弹性公网IP[产品概述](https://cloud.tencent.com/document/product/1199/41646)。</li></ul>
         :rtype: str
         """
         return self._AddressType
@@ -44910,9 +44924,9 @@ class InquiryPriceRenewAddressesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AddressIds: 续费资源实例ID。
+        :param _AddressIds: 续费资源实例ID。可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取AddressId。
         :type AddressIds: list of str
-        :param _AddressChargePrepaid: 包月按带宽预付费EIP的计费参数。EIP为包月按带宽预付费时，该参数必传，其余场景不需传递。
+        :param _AddressChargePrepaid: 包月按带宽预付费EIP的计费参数。EIP为包月按带宽预付费时，该参数必传，不支持其他计费模式。
         :type AddressChargePrepaid: :class:`tencentcloud.vpc.v20170312.models.AddressChargePrepaid`
         """
         self._AddressIds = None
@@ -44920,7 +44934,7 @@ class InquiryPriceRenewAddressesRequest(AbstractModel):
 
     @property
     def AddressIds(self):
-        """续费资源实例ID。
+        """续费资源实例ID。可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取AddressId。
         :rtype: list of str
         """
         return self._AddressIds
@@ -44931,7 +44945,7 @@ class InquiryPriceRenewAddressesRequest(AbstractModel):
 
     @property
     def AddressChargePrepaid(self):
-        """包月按带宽预付费EIP的计费参数。EIP为包月按带宽预付费时，该参数必传，其余场景不需传递。
+        """包月按带宽预付费EIP的计费参数。EIP为包月按带宽预付费时，该参数必传，不支持其他计费模式。
         :rtype: :class:`tencentcloud.vpc.v20170312.models.AddressChargePrepaid`
         """
         return self._AddressChargePrepaid
@@ -45571,7 +45585,7 @@ class InternetPriceDetail(AbstractModel):
         :type UnitPrice: float
         :param _DiscountPrice: 折扣后的价格，单位：元。
         :type DiscountPrice: float
-        :param _ChargeUnit: 计价单元，可取值范围：<ul> <li>HOUR：表示计价单元是按每小时来计算。当前涉及该计价单元的场景有：流量按小时后付费（TRAFFIC_POSTPAID_BY_HOUR）、带宽按小时后付费（BANDWIDTH_POSTPAID_BY_HOUR）。</li></ul>
+        :param _ChargeUnit: 计价单元，可取值范围：<ul> <li>HOUR：表示计价单元是按每小时来计算。当前涉及该计价单元的场景有：流量按小时后付费（TRAFFIC_POSTPAID_BY_HOUR）、带宽按小时后付费（BANDWIDTH_POSTPAID_BY_HOUR）。</li><li> MONTH :表示计价单元是按月来计算。当前涉及该计价单元的场景有：包月按带宽预付费（BANDWIDTH_PREPAID_BY_MONTH）。</li></ul>
         :type ChargeUnit: str
         :param _OriginalPrice: 原价，单位：元，仅预付费价格查询返回。
         :type OriginalPrice: float
@@ -45605,7 +45619,7 @@ class InternetPriceDetail(AbstractModel):
 
     @property
     def ChargeUnit(self):
-        """计价单元，可取值范围：<ul> <li>HOUR：表示计价单元是按每小时来计算。当前涉及该计价单元的场景有：流量按小时后付费（TRAFFIC_POSTPAID_BY_HOUR）、带宽按小时后付费（BANDWIDTH_POSTPAID_BY_HOUR）。</li></ul>
+        """计价单元，可取值范围：<ul> <li>HOUR：表示计价单元是按每小时来计算。当前涉及该计价单元的场景有：流量按小时后付费（TRAFFIC_POSTPAID_BY_HOUR）、带宽按小时后付费（BANDWIDTH_POSTPAID_BY_HOUR）。</li><li> MONTH :表示计价单元是按月来计算。当前涉及该计价单元的场景有：包月按带宽预付费（BANDWIDTH_PREPAID_BY_MONTH）。</li></ul>
         :rtype: str
         """
         return self._ChargeUnit
@@ -47970,7 +47984,7 @@ class ModifyAddressesRenewFlagRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AddressIds: EIP唯一标识ID列表，形如'eip-xxxx'
+        :param _AddressIds: EIP唯一标识ID列表，形如'eip-xxxx'，可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取AddressId。
         :type AddressIds: list of str
         :param _RenewFlag: 自动续费标识。取值范围： NOTIFY_AND_AUTO_RENEW：通知过期且自动续费 NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费 DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费  若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。 示例值：NOTIFY_AND_AUTO_RENEW
         :type RenewFlag: str
@@ -47980,7 +47994,7 @@ class ModifyAddressesRenewFlagRequest(AbstractModel):
 
     @property
     def AddressIds(self):
-        """EIP唯一标识ID列表，形如'eip-xxxx'
+        """EIP唯一标识ID列表，形如'eip-xxxx'，可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取AddressId。
         :rtype: list of str
         """
         return self._AddressIds
@@ -55392,10 +55406,8 @@ NONEXTHOP：无下一跳；
 下一跳类型为NONEXTHOP，指定网络探测为无下一跳的网络探测，添加和修改时，不需要指定值，查询时值为空字符串；
         :type NextHopDestination: str
         :param _NextHopName: 下一跳网关名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type NextHopName: str
         :param _NetDetectDescription: 网络探测描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :type NetDetectDescription: str
         :param _CreateTime: 创建时间。
         :type CreateTime: str
@@ -55544,7 +55556,6 @@ NONEXTHOP：无下一跳；
     @property
     def NextHopName(self):
         """下一跳网关名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NextHopName
@@ -55556,7 +55567,6 @@ NONEXTHOP：无下一跳；
     @property
     def NetDetectDescription(self):
         """网络探测描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NetDetectDescription
@@ -56474,23 +56484,18 @@ class NetworkInterface(AbstractModel):
         :param _EniType: 网卡类型。“0”-辅助网卡，“1”-主网卡，“2”：中继网卡
         :type EniType: int
         :param _Business: 网卡绑定的子机类型：cvm（普通CVM子机），eks（弹性容器服务Elastic Kubernetes Service）， hai（高性能应用服务Hyper Application Inventor）。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Business: str
         :param _CdcId: 网卡所关联的CDC实例ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CdcId: str
         :param _AttachType: 弹性网卡类型：0:标准型/1:扩展型。默认值为0。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AttachType: int
         :param _ResourceId: 用于保留网卡主IP的资源ID用于保留网卡主IP的资源ID。用于删除网卡时作为入参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceId: str
         :param _QosLevel: 服务质量级别：
 PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
 
 可选值：PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type QosLevel: str
         """
         self._NetworkInterfaceId = None
@@ -56718,7 +56723,6 @@ PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
     @property
     def Business(self):
         """网卡绑定的子机类型：cvm（普通CVM子机），eks（弹性容器服务Elastic Kubernetes Service）， hai（高性能应用服务Hyper Application Inventor）。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Business
@@ -56730,7 +56734,6 @@ PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
     @property
     def CdcId(self):
         """网卡所关联的CDC实例ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CdcId
@@ -56742,7 +56745,6 @@ PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
     @property
     def AttachType(self):
         """弹性网卡类型：0:标准型/1:扩展型。默认值为0。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AttachType
@@ -56754,7 +56756,6 @@ PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
     @property
     def ResourceId(self):
         """用于保留网卡主IP的资源ID用于保留网卡主IP的资源ID。用于删除网卡时作为入参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceId
@@ -56770,7 +56771,6 @@ PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
 
 可选值：PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._QosLevel
@@ -58673,14 +58673,14 @@ class ReleaseIPv6AddressesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IPv6AddressIds: IPv6地址唯一ID。
+        :param _IPv6AddressIds: IPv6地址唯一ID。可以使用[DescribeIPv6Addresses](https://cloud.tencent.com/document/api/215/113677)接口获取IPv6AddressId。
         :type IPv6AddressIds: list of str
         """
         self._IPv6AddressIds = None
 
     @property
     def IPv6AddressIds(self):
-        """IPv6地址唯一ID。
+        """IPv6地址唯一ID。可以使用[DescribeIPv6Addresses](https://cloud.tencent.com/document/api/215/113677)接口获取IPv6AddressId。
         :rtype: list of str
         """
         return self._IPv6AddressIds
@@ -62132,17 +62132,14 @@ CCN：云联网路由，系统默认下发，不可编辑与删除。
         :param _RouteTableId: 路由表实例ID，例如：rtb-azd4dt1c。
         :type RouteTableId: str
         :param _DestinationIpv6CidrBlock: 创建IPv6目的网段，取值不能在私有网络网段内，例如：2402:4e00:1000:810b::/64。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DestinationIpv6CidrBlock: str
         :param _RouteItemId: 路由唯一策略ID。
         :type RouteItemId: str
         :param _PublishedToVbc: 路由策略是否发布到云联网。该字段仅做出参使用，作为入参字段时此参数不生效。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PublishedToVbc: bool
         :param _CreatedTime: 路由策略创建时间
         :type CreatedTime: str
         :param _CdcId: CDC 集群唯一 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CdcId: str
         """
         self._DestinationCidrBlock = None
@@ -62270,7 +62267,6 @@ CCN：云联网路由，系统默认下发，不可编辑与删除。
     @property
     def DestinationIpv6CidrBlock(self):
         """创建IPv6目的网段，取值不能在私有网络网段内，例如：2402:4e00:1000:810b::/64。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DestinationIpv6CidrBlock
@@ -62293,7 +62289,6 @@ CCN：云联网路由，系统默认下发，不可编辑与删除。
     @property
     def PublishedToVbc(self):
         """路由策略是否发布到云联网。该字段仅做出参使用，作为入参字段时此参数不生效。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._PublishedToVbc
@@ -62316,7 +62311,6 @@ CCN：云联网路由，系统默认下发，不可编辑与删除。
     @property
     def CdcId(self):
         """CDC 集群唯一 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CdcId
@@ -64414,7 +64408,6 @@ class SnapshotPolicy(AbstractModel):
         :param _KeepTime: 保留时间，支持1～365天。
         :type KeepTime: int
         :param _CreateNewCos: 是否创建新的cos桶，默认为False。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateNewCos: bool
         :param _CosRegion: cos桶所在地域。
         :type CosRegion: str
@@ -64423,15 +64416,12 @@ class SnapshotPolicy(AbstractModel):
         :param _SnapshotPolicyId: 快照策略Id。
         :type SnapshotPolicyId: str
         :param _BackupPolicies: 时间备份策略。
-注意：此字段可能返回 null，表示取不到有效值。
         :type BackupPolicies: list of BackupPolicy
         :param _Enable: 启用状态，True-启用，False-停用，默认为True。
         :type Enable: bool
         :param _CreateTime: 创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _TagSet: 标签键值对。	
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagSet: list of Tag
         """
         self._SnapshotPolicyName = None
@@ -64482,7 +64472,6 @@ class SnapshotPolicy(AbstractModel):
     @property
     def CreateNewCos(self):
         """是否创建新的cos桶，默认为False。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._CreateNewCos
@@ -64527,7 +64516,6 @@ class SnapshotPolicy(AbstractModel):
     @property
     def BackupPolicies(self):
         """时间备份策略。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BackupPolicy
         """
         return self._BackupPolicies
@@ -64550,7 +64538,6 @@ class SnapshotPolicy(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -64562,7 +64549,6 @@ class SnapshotPolicy(AbstractModel):
     @property
     def TagSet(self):
         """标签键值对。	
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._TagSet
@@ -68319,10 +68305,8 @@ class Vpc(AbstractModel):
         :param _TagSet: 标签键值对
         :type TagSet: list of Tag
         :param _AssistantCidrSet: 辅助CIDR
-注意：此字段可能返回 null，表示取不到有效值。
         :type AssistantCidrSet: list of AssistantCidr
         :param _Ipv6CidrBlockSet: 返回多运营商IPv6 Cidr Block
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ipv6CidrBlockSet: list of ISPIPv6CidrBlock
         """
         self._VpcName = None
@@ -68475,7 +68459,6 @@ class Vpc(AbstractModel):
     @property
     def AssistantCidrSet(self):
         """辅助CIDR
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AssistantCidr
         """
         return self._AssistantCidrSet
@@ -68487,7 +68470,6 @@ class Vpc(AbstractModel):
     @property
     def Ipv6CidrBlockSet(self):
         """返回多运营商IPv6 Cidr Block
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ISPIPv6CidrBlock
         """
         return self._Ipv6CidrBlockSet
@@ -68544,15 +68526,16 @@ class VpcEndPointServiceUser(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Owner: AppId。
+        :param _Owner: AppId。可通过登录 腾讯云账号中心控制台 获取。
         :type Owner: int
-        :param _UserUin: Uin。
+        :param _UserUin: 用户Uin。可通过登录 腾讯云账号中心控制台 获取。
         :type UserUin: str
         :param _Description: 描述信息。
         :type Description: str
-        :param _CreateTime: 创建时间。
+        :param _CreateTime: 创建时间。格式为字符串YYYY-MM-DD HH:MM:SS。
         :type CreateTime: str
-        :param _EndPointServiceId: 终端节点服务ID。
+        :param _EndPointServiceId: 终端节点服务ID。可通过[DescribeVpcEndPointService](https://cloud.tencent.com/document/product/215/54678)接口获取。
+
         :type EndPointServiceId: str
         """
         self._Owner = None
@@ -68563,7 +68546,7 @@ class VpcEndPointServiceUser(AbstractModel):
 
     @property
     def Owner(self):
-        """AppId。
+        """AppId。可通过登录 腾讯云账号中心控制台 获取。
         :rtype: int
         """
         return self._Owner
@@ -68574,7 +68557,7 @@ class VpcEndPointServiceUser(AbstractModel):
 
     @property
     def UserUin(self):
-        """Uin。
+        """用户Uin。可通过登录 腾讯云账号中心控制台 获取。
         :rtype: str
         """
         return self._UserUin
@@ -68596,7 +68579,7 @@ class VpcEndPointServiceUser(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间。
+        """创建时间。格式为字符串YYYY-MM-DD HH:MM:SS。
         :rtype: str
         """
         return self._CreateTime
@@ -68607,7 +68590,8 @@ class VpcEndPointServiceUser(AbstractModel):
 
     @property
     def EndPointServiceId(self):
-        """终端节点服务ID。
+        """终端节点服务ID。可通过[DescribeVpcEndPointService](https://cloud.tencent.com/document/product/215/54678)接口获取。
+
         :rtype: str
         """
         return self._EndPointServiceId

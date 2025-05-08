@@ -3134,6 +3134,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyInstanceAttackLogPost(self, request):
+        """修改实例攻击日志投递开关，企业版及以上版本可以开通，否则返回错误
+
+        :param request: Request instance for ModifyInstanceAttackLogPost.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyInstanceAttackLogPostRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyInstanceAttackLogPostResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstanceAttackLogPost", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstanceAttackLogPostResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyInstanceElasticMode(self, request):
         """修改实例的QPS弹性计费开关
 

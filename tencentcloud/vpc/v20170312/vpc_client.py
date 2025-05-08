@@ -3510,7 +3510,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeAddressBandwidthRange(self, request):
-        """查询指定EIP的带宽上下限范围。
+        """本接口（DescribeAddressBandwidthRange）用于查询指定EIP的带宽上下限范围。
 
         :param request: Request instance for DescribeAddressBandwidthRange.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeAddressBandwidthRangeRequest`
@@ -6923,7 +6923,7 @@ class VpcClient(AbstractClient):
 
 
     def InquiryPriceRenewAddresses(self, request):
-        """本接口（InquiryPriceRenewAddresses）用于续费预付费弹性公网IP询价。
+        """本接口（InquiryPriceRenewAddresses）用于续费预付费弹性公网IP询价，只支持包月按带宽预付费的计费模式。
 
         :param request: Request instance for InquiryPriceRenewAddresses.
         :type request: :class:`tencentcloud.vpc.v20170312.models.InquiryPriceRenewAddressesRequest`
@@ -7239,7 +7239,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyAddressesRenewFlag(self, request):
-        """调整EIP续费标识
+        """本接口（ModifyAddressesRenewFlag）用于调整EIP续费标识。
 
         :param request: Request instance for ModifyAddressesRenewFlag.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyAddressesRenewFlagRequest`

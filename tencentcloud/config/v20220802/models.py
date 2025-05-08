@@ -32,30 +32,22 @@ class AggregateResourceInfo(AbstractModel):
         :param _ResourceId: 资源ID
         :type ResourceId: str
         :param _ResourceRegion: 地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceRegion: str
         :param _ResourceStatus: 资源状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceStatus: str
         :param _ResourceDelete: 是否删除 1:已删除 0:未删除
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceDelete: int
         :param _ResourceCreateTime: 资源创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceCreateTime: str
         :param _Tags: 标签信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
         :param _ResourceZone: 可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceZone: str
         :param _ComplianceResult: 合规状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type ComplianceResult: str
         :param _ResourceOwnerId: 资源所属用户ID
         :type ResourceOwnerId: int
         :param _ResourceOwnerName: 用户昵称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceOwnerName: str
         """
         self._ResourceType = None
@@ -107,7 +99,6 @@ class AggregateResourceInfo(AbstractModel):
     @property
     def ResourceRegion(self):
         """地域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceRegion
@@ -119,7 +110,6 @@ class AggregateResourceInfo(AbstractModel):
     @property
     def ResourceStatus(self):
         """资源状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceStatus
@@ -131,7 +121,6 @@ class AggregateResourceInfo(AbstractModel):
     @property
     def ResourceDelete(self):
         """是否删除 1:已删除 0:未删除
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ResourceDelete
@@ -143,7 +132,6 @@ class AggregateResourceInfo(AbstractModel):
     @property
     def ResourceCreateTime(self):
         """资源创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceCreateTime
@@ -155,7 +143,6 @@ class AggregateResourceInfo(AbstractModel):
     @property
     def Tags(self):
         """标签信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._Tags
@@ -167,7 +154,6 @@ class AggregateResourceInfo(AbstractModel):
     @property
     def ResourceZone(self):
         """可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceZone
@@ -179,7 +165,6 @@ class AggregateResourceInfo(AbstractModel):
     @property
     def ComplianceResult(self):
         """合规状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ComplianceResult
@@ -202,7 +187,6 @@ class AggregateResourceInfo(AbstractModel):
     @property
     def ResourceOwnerName(self):
         """用户昵称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceOwnerName
@@ -248,10 +232,8 @@ class Annotation(AbstractModel):
     def __init__(self):
         r"""
         :param _Configuration: 资源当前实际配置。长度为0~256位字符，即资源不合规配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type Configuration: str
         :param _DesiredValue: 资源期望配置。长度为0~256位字符，即资源合规配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type DesiredValue: str
         :param _Operator: 资源当前配置和期望配置之间的比较运算符。长度为0~16位字符，自定义规则上报评估结果此字段可能为空
         :type Operator: str
@@ -266,7 +248,6 @@ class Annotation(AbstractModel):
     @property
     def Configuration(self):
         """资源当前实际配置。长度为0~256位字符，即资源不合规配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Configuration
@@ -278,7 +259,6 @@ class Annotation(AbstractModel):
     @property
     def DesiredValue(self):
         """资源期望配置。长度为0~256位字符，即资源合规配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DesiredValue
@@ -333,94 +313,68 @@ class ConfigRule(AbstractModel):
     def __init__(self):
         r"""
         :param _Identifier: 规则标识
-注意：此字段可能返回 null，表示取不到有效值。
         :type Identifier: str
         :param _RuleName: 规则名
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleName: str
         :param _InputParameter: 规则参数
-注意：此字段可能返回 null，表示取不到有效值。
         :type InputParameter: list of InputParameter
         :param _SourceCondition: 规则触发条件
-注意：此字段可能返回 null，表示取不到有效值。
         :type SourceCondition: list of SourceConditionForManage
         :param _ResourceType: 规则支持的资源类型，规则仅对指定资源类型的资源生效。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceType: list of str
         :param _Labels: 规则所属标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type Labels: list of str
         :param _RiskLevel: 规则风险等级
 1:低风险
 2:中风险
 3:高风险
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskLevel: int
         :param _ServiceFunction: 规则对应的函数
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceFunction: str
         :param _CreateTime: 创建时间
 格式：YYYY-MM-DD h:i:s
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _Description: 规则描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _Status: ACTIVE：启用
 NO_ACTIVE：停止
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _ComplianceResult: 合规： 'COMPLIANT'
 不合规： 'NON_COMPLIANT'
 无法应用规则： 'NOT_APPLICABLE'
-注意：此字段可能返回 null，表示取不到有效值。
         :type ComplianceResult: str
         :param _Annotation: ["",""]
-注意：此字段可能返回 null，表示取不到有效值。
         :type Annotation: :class:`tencentcloud.config.v20220802.models.Annotation`
         :param _ConfigRuleInvokedTime: 规则评估时间
 格式：YYYY-MM-DD h:i:s
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type ConfigRuleInvokedTime: str
         :param _ConfigRuleId: 规则ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ConfigRuleId: str
         :param _IdentifierType: CUSTOMIZE：自定义规则、
 SYSTEM：托管规则
-注意：此字段可能返回 null，表示取不到有效值。
         :type IdentifierType: str
         :param _CompliancePackId: 合规包ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type CompliancePackId: str
         :param _TriggerType: 触发类型
 ScheduledNotification：周期触发、
 ConfigurationItemChangeNotification：变更触发
-注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerType: list of TriggerType
         :param _ManageInputParameter: 参数详情
-注意：此字段可能返回 null，表示取不到有效值。
         :type ManageInputParameter: list of InputParameterForManage
         :param _CompliancePackName: 合规包名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type CompliancePackName: str
         :param _RegionsScope: 关联地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionsScope: list of str
         :param _TagsScope: 关联标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagsScope: list of Tag
         :param _ExcludeResourceIdsScope:  规则对指定资源ID无效，即不对该资源执行评估。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExcludeResourceIdsScope: list of str
         :param _AccountGroupId: 账号组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type AccountGroupId: str
         :param _AccountGroupName: 账号组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type AccountGroupName: str
         :param _RuleOwnerId: 规则所属用户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleOwnerId: int
         :param _ManageTriggerType: 预设规则支持的触发方式
 ScheduledNotification：周期触发
@@ -458,7 +412,6 @@ ConfigurationItemChangeNotification：变更触发
     @property
     def Identifier(self):
         """规则标识
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Identifier
@@ -470,7 +423,6 @@ ConfigurationItemChangeNotification：变更触发
     @property
     def RuleName(self):
         """规则名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RuleName
@@ -482,7 +434,6 @@ ConfigurationItemChangeNotification：变更触发
     @property
     def InputParameter(self):
         """规则参数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of InputParameter
         """
         return self._InputParameter
@@ -494,7 +445,6 @@ ConfigurationItemChangeNotification：变更触发
     @property
     def SourceCondition(self):
         """规则触发条件
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SourceConditionForManage
         """
         return self._SourceCondition
@@ -506,7 +456,6 @@ ConfigurationItemChangeNotification：变更触发
     @property
     def ResourceType(self):
         """规则支持的资源类型，规则仅对指定资源类型的资源生效。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._ResourceType
@@ -518,7 +467,6 @@ ConfigurationItemChangeNotification：变更触发
     @property
     def Labels(self):
         """规则所属标签
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Labels
@@ -533,7 +481,6 @@ ConfigurationItemChangeNotification：变更触发
 1:低风险
 2:中风险
 3:高风险
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RiskLevel
@@ -545,7 +492,6 @@ ConfigurationItemChangeNotification：变更触发
     @property
     def ServiceFunction(self):
         """规则对应的函数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ServiceFunction
@@ -558,7 +504,6 @@ ConfigurationItemChangeNotification：变更触发
     def CreateTime(self):
         """创建时间
 格式：YYYY-MM-DD h:i:s
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -570,7 +515,6 @@ ConfigurationItemChangeNotification：变更触发
     @property
     def Description(self):
         """规则描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -583,7 +527,6 @@ ConfigurationItemChangeNotification：变更触发
     def Status(self):
         """ACTIVE：启用
 NO_ACTIVE：停止
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Status
@@ -597,7 +540,6 @@ NO_ACTIVE：停止
         """合规： 'COMPLIANT'
 不合规： 'NON_COMPLIANT'
 无法应用规则： 'NOT_APPLICABLE'
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ComplianceResult
@@ -609,7 +551,6 @@ NO_ACTIVE：停止
     @property
     def Annotation(self):
         """["",""]
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.config.v20220802.models.Annotation`
         """
         return self._Annotation
@@ -623,7 +564,6 @@ NO_ACTIVE：停止
         """规则评估时间
 格式：YYYY-MM-DD h:i:s
 
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ConfigRuleInvokedTime
@@ -635,7 +575,6 @@ NO_ACTIVE：停止
     @property
     def ConfigRuleId(self):
         """规则ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ConfigRuleId
@@ -648,7 +587,6 @@ NO_ACTIVE：停止
     def IdentifierType(self):
         """CUSTOMIZE：自定义规则、
 SYSTEM：托管规则
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._IdentifierType
@@ -660,7 +598,6 @@ SYSTEM：托管规则
     @property
     def CompliancePackId(self):
         """合规包ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CompliancePackId
@@ -674,7 +611,6 @@ SYSTEM：托管规则
         """触发类型
 ScheduledNotification：周期触发、
 ConfigurationItemChangeNotification：变更触发
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TriggerType
         """
         return self._TriggerType
@@ -686,7 +622,6 @@ ConfigurationItemChangeNotification：变更触发
     @property
     def ManageInputParameter(self):
         """参数详情
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of InputParameterForManage
         """
         return self._ManageInputParameter
@@ -698,7 +633,6 @@ ConfigurationItemChangeNotification：变更触发
     @property
     def CompliancePackName(self):
         """合规包名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CompliancePackName
@@ -710,7 +644,6 @@ ConfigurationItemChangeNotification：变更触发
     @property
     def RegionsScope(self):
         """关联地域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._RegionsScope
@@ -722,7 +655,6 @@ ConfigurationItemChangeNotification：变更触发
     @property
     def TagsScope(self):
         """关联标签
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._TagsScope
@@ -734,7 +666,6 @@ ConfigurationItemChangeNotification：变更触发
     @property
     def ExcludeResourceIdsScope(self):
         """ 规则对指定资源ID无效，即不对该资源执行评估。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._ExcludeResourceIdsScope
@@ -746,7 +677,6 @@ ConfigurationItemChangeNotification：变更触发
     @property
     def AccountGroupId(self):
         """账号组ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AccountGroupId
@@ -758,7 +688,6 @@ ConfigurationItemChangeNotification：变更触发
     @property
     def AccountGroupName(self):
         """账号组名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AccountGroupName
@@ -770,7 +699,6 @@ ConfigurationItemChangeNotification：变更触发
     @property
     def RuleOwnerId(self):
         """规则所属用户ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RuleOwnerId
@@ -962,31 +890,22 @@ class DescribeAggregateDiscoveredResourceResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ResourceId: 资源Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceId: str
         :param _ResourceType: 资源类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceType: str
         :param _ResourceName: 资源名
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceName: str
         :param _ResourceRegion: 资源地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceRegion: str
         :param _ResourceZone: 资源可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceZone: str
         :param _Configuration: 资源配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type Configuration: str
         :param _ResourceCreateTime: 资源创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceCreateTime: str
         :param _Tags: 资源标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
         :param _UpdateTime: 资源更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1005,7 +924,6 @@ class DescribeAggregateDiscoveredResourceResponse(AbstractModel):
     @property
     def ResourceId(self):
         """资源Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceId
@@ -1017,7 +935,6 @@ class DescribeAggregateDiscoveredResourceResponse(AbstractModel):
     @property
     def ResourceType(self):
         """资源类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceType
@@ -1029,7 +946,6 @@ class DescribeAggregateDiscoveredResourceResponse(AbstractModel):
     @property
     def ResourceName(self):
         """资源名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceName
@@ -1041,7 +957,6 @@ class DescribeAggregateDiscoveredResourceResponse(AbstractModel):
     @property
     def ResourceRegion(self):
         """资源地域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceRegion
@@ -1053,7 +968,6 @@ class DescribeAggregateDiscoveredResourceResponse(AbstractModel):
     @property
     def ResourceZone(self):
         """资源可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceZone
@@ -1065,7 +979,6 @@ class DescribeAggregateDiscoveredResourceResponse(AbstractModel):
     @property
     def Configuration(self):
         """资源配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Configuration
@@ -1077,7 +990,6 @@ class DescribeAggregateDiscoveredResourceResponse(AbstractModel):
     @property
     def ResourceCreateTime(self):
         """资源创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceCreateTime
@@ -1089,7 +1001,6 @@ class DescribeAggregateDiscoveredResourceResponse(AbstractModel):
     @property
     def Tags(self):
         """资源标签
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._Tags
@@ -1101,7 +1012,6 @@ class DescribeAggregateDiscoveredResourceResponse(AbstractModel):
     @property
     def UpdateTime(self):
         """资源更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime
@@ -1214,31 +1124,22 @@ class DescribeDiscoveredResourceResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ResourceId: 资源Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceId: str
         :param _ResourceType: 资源类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceType: str
         :param _ResourceName: 资源名
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceName: str
         :param _ResourceRegion: 资源地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceRegion: str
         :param _ResourceZone: 资源可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceZone: str
         :param _Configuration: 资源配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type Configuration: str
         :param _ResourceCreateTime: 资源创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceCreateTime: str
         :param _Tags: 资源标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
         :param _UpdateTime: 资源更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1257,7 +1158,6 @@ class DescribeDiscoveredResourceResponse(AbstractModel):
     @property
     def ResourceId(self):
         """资源Id
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceId
@@ -1269,7 +1169,6 @@ class DescribeDiscoveredResourceResponse(AbstractModel):
     @property
     def ResourceType(self):
         """资源类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceType
@@ -1281,7 +1180,6 @@ class DescribeDiscoveredResourceResponse(AbstractModel):
     @property
     def ResourceName(self):
         """资源名
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceName
@@ -1293,7 +1191,6 @@ class DescribeDiscoveredResourceResponse(AbstractModel):
     @property
     def ResourceRegion(self):
         """资源地域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceRegion
@@ -1305,7 +1202,6 @@ class DescribeDiscoveredResourceResponse(AbstractModel):
     @property
     def ResourceZone(self):
         """资源可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceZone
@@ -1317,7 +1213,6 @@ class DescribeDiscoveredResourceResponse(AbstractModel):
     @property
     def Configuration(self):
         """资源配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Configuration
@@ -1329,7 +1224,6 @@ class DescribeDiscoveredResourceResponse(AbstractModel):
     @property
     def ResourceCreateTime(self):
         """资源创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceCreateTime
@@ -1341,7 +1235,6 @@ class DescribeDiscoveredResourceResponse(AbstractModel):
     @property
     def Tags(self):
         """资源标签
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._Tags
@@ -1353,7 +1246,6 @@ class DescribeDiscoveredResourceResponse(AbstractModel):
     @property
     def UpdateTime(self):
         """资源更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime
@@ -1563,7 +1455,6 @@ class InputParameter(AbstractModel):
         :param _Type: 参数类型。必填类型：Require，可选类型：Optional。
         :type Type: str
         :param _Value: 参数值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._ParameterKey = None
@@ -1595,7 +1486,6 @@ class InputParameter(AbstractModel):
     @property
     def Value(self):
         """参数值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Value
@@ -1627,19 +1517,14 @@ class InputParameterForManage(AbstractModel):
     def __init__(self):
         r"""
         :param _ValueType: 值类型。数值：Integer， 字符串：String
-注意：此字段可能返回 null，表示取不到有效值。
         :type ValueType: str
         :param _ParameterKey: 参数Key
-注意：此字段可能返回 null，表示取不到有效值。
         :type ParameterKey: str
         :param _Type: 参数类型。必填类型：Require，可选类型：Optional。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _DefaultValue: 默认值
-注意：此字段可能返回 null，表示取不到有效值。
         :type DefaultValue: str
         :param _Description: 描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         """
         self._ValueType = None
@@ -1651,7 +1536,6 @@ class InputParameterForManage(AbstractModel):
     @property
     def ValueType(self):
         """值类型。数值：Integer， 字符串：String
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ValueType
@@ -1663,7 +1547,6 @@ class InputParameterForManage(AbstractModel):
     @property
     def ParameterKey(self):
         """参数Key
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ParameterKey
@@ -1675,7 +1558,6 @@ class InputParameterForManage(AbstractModel):
     @property
     def Type(self):
         """参数类型。必填类型：Require，可选类型：Optional。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Type
@@ -1687,7 +1569,6 @@ class InputParameterForManage(AbstractModel):
     @property
     def DefaultValue(self):
         """默认值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DefaultValue
@@ -1699,7 +1580,6 @@ class InputParameterForManage(AbstractModel):
     @property
     def Description(self):
         """描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Description
@@ -2620,25 +2500,18 @@ class ResourceListInfo(AbstractModel):
         :param _ResourceId: 资源ID
         :type ResourceId: str
         :param _ResourceRegion: 地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceRegion: str
         :param _ResourceStatus: 资源状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceStatus: str
         :param _ResourceDelete: 1 :已删除 2：未删除
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceDelete: int
         :param _ResourceCreateTime: 资源创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceCreateTime: str
         :param _Tags: 标签信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
         :param _ResourceZone: 可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceZone: str
         :param _ComplianceResult: 合规状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type ComplianceResult: str
         """
         self._ResourceType = None
@@ -2688,7 +2561,6 @@ class ResourceListInfo(AbstractModel):
     @property
     def ResourceRegion(self):
         """地域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceRegion
@@ -2700,7 +2572,6 @@ class ResourceListInfo(AbstractModel):
     @property
     def ResourceStatus(self):
         """资源状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceStatus
@@ -2712,7 +2583,6 @@ class ResourceListInfo(AbstractModel):
     @property
     def ResourceDelete(self):
         """1 :已删除 2：未删除
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ResourceDelete
@@ -2724,7 +2594,6 @@ class ResourceListInfo(AbstractModel):
     @property
     def ResourceCreateTime(self):
         """资源创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceCreateTime
@@ -2736,7 +2605,6 @@ class ResourceListInfo(AbstractModel):
     @property
     def Tags(self):
         """标签信息
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._Tags
@@ -2748,7 +2616,6 @@ class ResourceListInfo(AbstractModel):
     @property
     def ResourceZone(self):
         """可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceZone
@@ -2760,7 +2627,6 @@ class ResourceListInfo(AbstractModel):
     @property
     def ComplianceResult(self):
         """合规状态
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ComplianceResult
@@ -2804,19 +2670,14 @@ class SourceConditionForManage(AbstractModel):
     def __init__(self):
         r"""
         :param _EmptyAs: 条件为空，合规：COMPLIANT，不合规：NON_COMPLIANT，无法应用：NOT_APPLICABLE
-注意：此字段可能返回 null，表示取不到有效值。
         :type EmptyAs: str
         :param _SelectPath: 配置路径
-注意：此字段可能返回 null，表示取不到有效值。
         :type SelectPath: str
         :param _Operator: 操作运算符
-注意：此字段可能返回 null，表示取不到有效值。
         :type Operator: str
         :param _Required: 是否必须
-注意：此字段可能返回 null，表示取不到有效值。
         :type Required: bool
         :param _DesiredValue: 期望值
-注意：此字段可能返回 null，表示取不到有效值。
         :type DesiredValue: str
         """
         self._EmptyAs = None
@@ -2828,7 +2689,6 @@ class SourceConditionForManage(AbstractModel):
     @property
     def EmptyAs(self):
         """条件为空，合规：COMPLIANT，不合规：NON_COMPLIANT，无法应用：NOT_APPLICABLE
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EmptyAs
@@ -2840,7 +2700,6 @@ class SourceConditionForManage(AbstractModel):
     @property
     def SelectPath(self):
         """配置路径
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SelectPath
@@ -2852,7 +2711,6 @@ class SourceConditionForManage(AbstractModel):
     @property
     def Operator(self):
         """操作运算符
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Operator
@@ -2864,7 +2722,6 @@ class SourceConditionForManage(AbstractModel):
     @property
     def Required(self):
         """是否必须
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Required
@@ -2876,7 +2733,6 @@ class SourceConditionForManage(AbstractModel):
     @property
     def DesiredValue(self):
         """期望值
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DesiredValue
@@ -2910,10 +2766,8 @@ class Tag(AbstractModel):
     def __init__(self):
         r"""
         :param _TagKey: 标签key
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagKey: str
         :param _TagValue: 标签value
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagValue: str
         """
         self._TagKey = None
@@ -2922,7 +2776,6 @@ class Tag(AbstractModel):
     @property
     def TagKey(self):
         """标签key
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TagKey
@@ -2934,7 +2787,6 @@ class Tag(AbstractModel):
     @property
     def TagValue(self):
         """标签value
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TagValue
@@ -2967,7 +2819,6 @@ class TriggerType(AbstractModel):
         :param _MessageType: 触发类型
         :type MessageType: str
         :param _MaximumExecutionFrequency: 触发时间周期
-注意：此字段可能返回 null，表示取不到有效值。
         :type MaximumExecutionFrequency: str
         """
         self._MessageType = None
@@ -2987,7 +2838,6 @@ class TriggerType(AbstractModel):
     @property
     def MaximumExecutionFrequency(self):
         """触发时间周期
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MaximumExecutionFrequency

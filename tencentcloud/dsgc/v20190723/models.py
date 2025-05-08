@@ -16023,6 +16023,209 @@ class DescribeDSPADiscoveryTaskTablesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDSPADiscoveryTasksRequest(AbstractModel):
+    """DescribeDSPADiscoveryTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DspaId: DSPA实例ID
+        :type DspaId: str
+        :param _DataSourceType: 数据源类型，可取值如下：
+cdb 表示云数据库 MySQL,
+dcdb 表示TDSQL MySQL版,
+mariadb 表示云数据库 MariaDB,
+postgres 表示云数据库 PostgreSQL,
+cynosdbpg 表示TDSQL-C PostgreSQL版,
+cynosdbmysql 表示TDSQL-C MySQL版,
+selfbuilt-db 表示自建数据库
+        :type DataSourceType: str
+        :param _TaskId: 任务ID
+        :type TaskId: int
+        :param _Name: 任务名称
+        :type Name: str
+        :param _StatusList: 任务扫描结果状态，可供选择的状态值有：-1待触发 0待扫描 1扫描中 2扫描终止 3扫描成功 4扫描失败
+        :type StatusList: list of int
+        :param _Offset: 偏移量，默认为0
+        :type Offset: int
+        :param _Limit: 返回结果集数量，默认值是10000，最大值为10000，根据该资源的个数限制条件，该资源的个数不会超过10000，所以如果不输入该字段，默认获取全量数据
+        :type Limit: int
+        """
+        self._DspaId = None
+        self._DataSourceType = None
+        self._TaskId = None
+        self._Name = None
+        self._StatusList = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def DspaId(self):
+        """DSPA实例ID
+        :rtype: str
+        """
+        return self._DspaId
+
+    @DspaId.setter
+    def DspaId(self, DspaId):
+        self._DspaId = DspaId
+
+    @property
+    def DataSourceType(self):
+        """数据源类型，可取值如下：
+cdb 表示云数据库 MySQL,
+dcdb 表示TDSQL MySQL版,
+mariadb 表示云数据库 MariaDB,
+postgres 表示云数据库 PostgreSQL,
+cynosdbpg 表示TDSQL-C PostgreSQL版,
+cynosdbmysql 表示TDSQL-C MySQL版,
+selfbuilt-db 表示自建数据库
+        :rtype: str
+        """
+        return self._DataSourceType
+
+    @DataSourceType.setter
+    def DataSourceType(self, DataSourceType):
+        self._DataSourceType = DataSourceType
+
+    @property
+    def TaskId(self):
+        """任务ID
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Name(self):
+        """任务名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def StatusList(self):
+        """任务扫描结果状态，可供选择的状态值有：-1待触发 0待扫描 1扫描中 2扫描终止 3扫描成功 4扫描失败
+        :rtype: list of int
+        """
+        return self._StatusList
+
+    @StatusList.setter
+    def StatusList(self, StatusList):
+        self._StatusList = StatusList
+
+    @property
+    def Offset(self):
+        """偏移量，默认为0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """返回结果集数量，默认值是10000，最大值为10000，根据该资源的个数限制条件，该资源的个数不会超过10000，所以如果不输入该字段，默认获取全量数据
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._DspaId = params.get("DspaId")
+        self._DataSourceType = params.get("DataSourceType")
+        self._TaskId = params.get("TaskId")
+        self._Name = params.get("Name")
+        self._StatusList = params.get("StatusList")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDSPADiscoveryTasksResponse(AbstractModel):
+    """DescribeDSPADiscoveryTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: 任务列表
+        :type Items: list of DspaDiscoveryTask
+        :param _TotalCount: 符合条件的任务列表数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Items = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Items(self):
+        """任务列表
+        :rtype: list of DspaDiscoveryTask
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def TotalCount(self):
+        """符合条件的任务列表数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = DspaDiscoveryTask()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDSPAESDataAssetByComplianceIdRequest(AbstractModel):
     """DescribeDSPAESDataAssetByComplianceId请求参数结构体
 
@@ -21947,6 +22150,187 @@ class DspaDiscoveryRuleDetail(AbstractModel):
             self._COSRules = DspaDiscoveryCOSRules()
             self._COSRules._deserialize(params.get("COSRules"))
         self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspaDiscoveryTask(AbstractModel):
+    """分类分级任务相关信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 任务名称
+        :type Name: str
+        :param _Description: 任务描述
+        :type Description: str
+        :param _Period: 执行周期，0单次 1每天 2每周 3每月
+        :type Period: int
+        :param _Plan: 执行计划，0立即 1定时
+        :type Plan: int
+        :param _Enable: 任务开关；1 打开，0 关闭
+        :type Enable: int
+        :param _DataSourceInfo: 元数据对象信息
+        :type DataSourceInfo: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryTaskDataSource`
+        :param _GeneralRuleSetEnable: 通用规则集开关，0 关闭，1 启用
+        :type GeneralRuleSetEnable: int
+        :param _Result: 任务最新的一次执行结果信息，该字段用于查询任务列表接口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.dsgc.v20190723.models.ScanTaskResult`
+        :param _TimingStartTime: 定时开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimingStartTime: str
+        :param _ComplianceUpdate: 关联模板是否更新
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComplianceUpdate: bool
+        """
+        self._Name = None
+        self._Description = None
+        self._Period = None
+        self._Plan = None
+        self._Enable = None
+        self._DataSourceInfo = None
+        self._GeneralRuleSetEnable = None
+        self._Result = None
+        self._TimingStartTime = None
+        self._ComplianceUpdate = None
+
+    @property
+    def Name(self):
+        """任务名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        """任务描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Period(self):
+        """执行周期，0单次 1每天 2每周 3每月
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def Plan(self):
+        """执行计划，0立即 1定时
+        :rtype: int
+        """
+        return self._Plan
+
+    @Plan.setter
+    def Plan(self, Plan):
+        self._Plan = Plan
+
+    @property
+    def Enable(self):
+        """任务开关；1 打开，0 关闭
+        :rtype: int
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def DataSourceInfo(self):
+        """元数据对象信息
+        :rtype: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryTaskDataSource`
+        """
+        return self._DataSourceInfo
+
+    @DataSourceInfo.setter
+    def DataSourceInfo(self, DataSourceInfo):
+        self._DataSourceInfo = DataSourceInfo
+
+    @property
+    def GeneralRuleSetEnable(self):
+        """通用规则集开关，0 关闭，1 启用
+        :rtype: int
+        """
+        return self._GeneralRuleSetEnable
+
+    @GeneralRuleSetEnable.setter
+    def GeneralRuleSetEnable(self, GeneralRuleSetEnable):
+        self._GeneralRuleSetEnable = GeneralRuleSetEnable
+
+    @property
+    def Result(self):
+        """任务最新的一次执行结果信息，该字段用于查询任务列表接口
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dsgc.v20190723.models.ScanTaskResult`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def TimingStartTime(self):
+        """定时开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TimingStartTime
+
+    @TimingStartTime.setter
+    def TimingStartTime(self, TimingStartTime):
+        self._TimingStartTime = TimingStartTime
+
+    @property
+    def ComplianceUpdate(self):
+        """关联模板是否更新
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._ComplianceUpdate
+
+    @ComplianceUpdate.setter
+    def ComplianceUpdate(self, ComplianceUpdate):
+        self._ComplianceUpdate = ComplianceUpdate
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Period = params.get("Period")
+        self._Plan = params.get("Plan")
+        self._Enable = params.get("Enable")
+        if params.get("DataSourceInfo") is not None:
+            self._DataSourceInfo = DspaDiscoveryTaskDataSource()
+            self._DataSourceInfo._deserialize(params.get("DataSourceInfo"))
+        self._GeneralRuleSetEnable = params.get("GeneralRuleSetEnable")
+        if params.get("Result") is not None:
+            self._Result = ScanTaskResult()
+            self._Result._deserialize(params.get("Result"))
+        self._TimingStartTime = params.get("TimingStartTime")
+        self._ComplianceUpdate = params.get("ComplianceUpdate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

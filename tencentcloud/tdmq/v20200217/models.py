@@ -5327,9 +5327,12 @@ class CreateRocketMQClusterRequest(AbstractModel):
         :type Name: str
         :param _Remark: 集群描述，128个字符以内
         :type Remark: str
+        :param _TagList: 标签列表
+        :type TagList: list of Tag
         """
         self._Name = None
         self._Remark = None
+        self._TagList = None
 
     @property
     def Name(self):
@@ -5353,10 +5356,27 @@ class CreateRocketMQClusterRequest(AbstractModel):
     def Remark(self, Remark):
         self._Remark = Remark
 
+    @property
+    def TagList(self):
+        """标签列表
+        :rtype: list of Tag
+        """
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Remark = params.get("Remark")
+        if params.get("TagList") is not None:
+            self._TagList = []
+            for item in params.get("TagList"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._TagList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6764,6 +6784,10 @@ class CreateTopicRequest(AbstractModel):
         :type MsgTTL: int
         :param _UnackPolicy: 不传默认是原生策略，DefaultPolicy表示当订阅下达到最大未确认消息数 5000 时，服务端将不再向当前订阅下的所有消费者推送消息，DynamicPolicy表示动态调整订阅下的最大未确认消息数，具体配额是在 5000 和消费者数量*20之间取最大值。每个消费者默认最大 unack 消息数为 20，超过该限制时仅影响该消费者，不影响其他消费者。
         :type UnackPolicy: str
+        :param _IsolateConsumerEnable: 是否开启异常消费者隔离
+        :type IsolateConsumerEnable: bool
+        :param _AckTimeOut: 消费者 Ack 超时时间，单位：秒，范围60-（3600*24）
+        :type AckTimeOut: int
         """
         self._EnvironmentId = None
         self._TopicName = None
@@ -6774,6 +6798,8 @@ class CreateTopicRequest(AbstractModel):
         self._PulsarTopicType = None
         self._MsgTTL = None
         self._UnackPolicy = None
+        self._IsolateConsumerEnable = None
+        self._AckTimeOut = None
 
     @property
     def EnvironmentId(self):
@@ -6883,6 +6909,28 @@ class CreateTopicRequest(AbstractModel):
     def UnackPolicy(self, UnackPolicy):
         self._UnackPolicy = UnackPolicy
 
+    @property
+    def IsolateConsumerEnable(self):
+        """是否开启异常消费者隔离
+        :rtype: bool
+        """
+        return self._IsolateConsumerEnable
+
+    @IsolateConsumerEnable.setter
+    def IsolateConsumerEnable(self, IsolateConsumerEnable):
+        self._IsolateConsumerEnable = IsolateConsumerEnable
+
+    @property
+    def AckTimeOut(self):
+        """消费者 Ack 超时时间，单位：秒，范围60-（3600*24）
+        :rtype: int
+        """
+        return self._AckTimeOut
+
+    @AckTimeOut.setter
+    def AckTimeOut(self, AckTimeOut):
+        self._AckTimeOut = AckTimeOut
+
 
     def _deserialize(self, params):
         self._EnvironmentId = params.get("EnvironmentId")
@@ -6894,6 +6942,8 @@ class CreateTopicRequest(AbstractModel):
         self._PulsarTopicType = params.get("PulsarTopicType")
         self._MsgTTL = params.get("MsgTTL")
         self._UnackPolicy = params.get("UnackPolicy")
+        self._IsolateConsumerEnable = params.get("IsolateConsumerEnable")
+        self._AckTimeOut = params.get("AckTimeOut")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11129,6 +11179,8 @@ class DescribeMqMsgTraceRequest(AbstractModel):
         :type GroupName: str
         :param _QueryDlqMsg: 查询死信时该值为true，只对Rocketmq有效
         :type QueryDlqMsg: bool
+        :param _ProduceTime: 生产时间
+        :type ProduceTime: str
         """
         self._Protocol = None
         self._MsgId = None
@@ -11138,6 +11190,7 @@ class DescribeMqMsgTraceRequest(AbstractModel):
         self._QueueName = None
         self._GroupName = None
         self._QueryDlqMsg = None
+        self._ProduceTime = None
 
     @property
     def Protocol(self):
@@ -11227,6 +11280,17 @@ class DescribeMqMsgTraceRequest(AbstractModel):
     def QueryDlqMsg(self, QueryDlqMsg):
         self._QueryDlqMsg = QueryDlqMsg
 
+    @property
+    def ProduceTime(self):
+        """生产时间
+        :rtype: str
+        """
+        return self._ProduceTime
+
+    @ProduceTime.setter
+    def ProduceTime(self, ProduceTime):
+        self._ProduceTime = ProduceTime
+
 
     def _deserialize(self, params):
         self._Protocol = params.get("Protocol")
@@ -11237,6 +11301,7 @@ class DescribeMqMsgTraceRequest(AbstractModel):
         self._QueueName = params.get("QueueName")
         self._GroupName = params.get("GroupName")
         self._QueryDlqMsg = params.get("QueryDlqMsg")
+        self._ProduceTime = params.get("ProduceTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25254,6 +25319,10 @@ class ModifyTopicRequest(AbstractModel):
         :type MsgTTL: int
         :param _UnackPolicy: 不传默认是原生策略，DefaultPolicy表示当订阅下达到最大未确认消息数 5000 时，服务端将不再向当前订阅下的所有消费者推送消息，DynamicPolicy表示动态调整订阅下的最大未确认消息数，具体配额是在 5000 和消费者数量*20之间取最大值。每个消费者默认最大 unack 消息数为 20，超过该限制时仅影响该消费者，不影响其他消费者。
         :type UnackPolicy: str
+        :param _IsolateConsumerEnable: 是否开启异常消费者隔离
+        :type IsolateConsumerEnable: bool
+        :param _AckTimeOut: 消费者 Ack 超时时间，单位：秒，范围60-（3600*24
+        :type AckTimeOut: int
         """
         self._EnvironmentId = None
         self._TopicName = None
@@ -25262,6 +25331,8 @@ class ModifyTopicRequest(AbstractModel):
         self._Remark = None
         self._MsgTTL = None
         self._UnackPolicy = None
+        self._IsolateConsumerEnable = None
+        self._AckTimeOut = None
 
     @property
     def EnvironmentId(self):
@@ -25341,6 +25412,28 @@ class ModifyTopicRequest(AbstractModel):
     def UnackPolicy(self, UnackPolicy):
         self._UnackPolicy = UnackPolicy
 
+    @property
+    def IsolateConsumerEnable(self):
+        """是否开启异常消费者隔离
+        :rtype: bool
+        """
+        return self._IsolateConsumerEnable
+
+    @IsolateConsumerEnable.setter
+    def IsolateConsumerEnable(self, IsolateConsumerEnable):
+        self._IsolateConsumerEnable = IsolateConsumerEnable
+
+    @property
+    def AckTimeOut(self):
+        """消费者 Ack 超时时间，单位：秒，范围60-（3600*24
+        :rtype: int
+        """
+        return self._AckTimeOut
+
+    @AckTimeOut.setter
+    def AckTimeOut(self, AckTimeOut):
+        self._AckTimeOut = AckTimeOut
+
 
     def _deserialize(self, params):
         self._EnvironmentId = params.get("EnvironmentId")
@@ -25350,6 +25443,8 @@ class ModifyTopicRequest(AbstractModel):
         self._Remark = params.get("Remark")
         self._MsgTTL = params.get("MsgTTL")
         self._UnackPolicy = params.get("UnackPolicy")
+        self._IsolateConsumerEnable = params.get("IsolateConsumerEnable")
+        self._AckTimeOut = params.get("AckTimeOut")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30454,18 +30549,18 @@ class ResetRocketMQConsumerOffSetRequest(AbstractModel):
         :type NamespaceId: str
         :param _GroupId: 消费组名称
         :type GroupId: str
-        :param _Topic: 主题名称
-        :type Topic: str
         :param _Type: 重置方式，0表示从最新位点开始，1表示从指定时间点开始
         :type Type: int
+        :param _Topic: 主题名称
+        :type Topic: str
         :param _ResetTimestamp: 重置指定的时间戳，仅在 Type 为1是生效，以毫秒为单位
         :type ResetTimestamp: int
         """
         self._ClusterId = None
         self._NamespaceId = None
         self._GroupId = None
-        self._Topic = None
         self._Type = None
+        self._Topic = None
         self._ResetTimestamp = None
 
     @property
@@ -30502,17 +30597,6 @@ class ResetRocketMQConsumerOffSetRequest(AbstractModel):
         self._GroupId = GroupId
 
     @property
-    def Topic(self):
-        """主题名称
-        :rtype: str
-        """
-        return self._Topic
-
-    @Topic.setter
-    def Topic(self, Topic):
-        self._Topic = Topic
-
-    @property
     def Type(self):
         """重置方式，0表示从最新位点开始，1表示从指定时间点开始
         :rtype: int
@@ -30522,6 +30606,17 @@ class ResetRocketMQConsumerOffSetRequest(AbstractModel):
     @Type.setter
     def Type(self, Type):
         self._Type = Type
+
+    @property
+    def Topic(self):
+        """主题名称
+        :rtype: str
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
 
     @property
     def ResetTimestamp(self):
@@ -30539,8 +30634,8 @@ class ResetRocketMQConsumerOffSetRequest(AbstractModel):
         self._ClusterId = params.get("ClusterId")
         self._NamespaceId = params.get("NamespaceId")
         self._GroupId = params.get("GroupId")
-        self._Topic = params.get("Topic")
         self._Type = params.get("Type")
+        self._Topic = params.get("Topic")
         self._ResetTimestamp = params.get("ResetTimestamp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -30850,6 +30945,10 @@ class RocketMQClusterConfig(AbstractModel):
         :param _TopicDistribution: topic分布
 注意：此字段可能返回 null，表示取不到有效值。
         :type TopicDistribution: list of RocketMQTopicDistribution
+        :param _MaxRoleNum: 最大角色数量
+        :type MaxRoleNum: int
+        :param _MaxTpsLimit: TPS限额
+        :type MaxTpsLimit: int
         """
         self._MaxTpsPerNamespace = None
         self._MaxNamespaceNum = None
@@ -30862,6 +30961,8 @@ class RocketMQClusterConfig(AbstractModel):
         self._MaxLatencyTime = None
         self._MaxQueuesPerTopic = None
         self._TopicDistribution = None
+        self._MaxRoleNum = None
+        self._MaxTpsLimit = None
 
     @property
     def MaxTpsPerNamespace(self):
@@ -30990,6 +31091,28 @@ class RocketMQClusterConfig(AbstractModel):
     def TopicDistribution(self, TopicDistribution):
         self._TopicDistribution = TopicDistribution
 
+    @property
+    def MaxRoleNum(self):
+        """最大角色数量
+        :rtype: int
+        """
+        return self._MaxRoleNum
+
+    @MaxRoleNum.setter
+    def MaxRoleNum(self, MaxRoleNum):
+        self._MaxRoleNum = MaxRoleNum
+
+    @property
+    def MaxTpsLimit(self):
+        """TPS限额
+        :rtype: int
+        """
+        return self._MaxTpsLimit
+
+    @MaxTpsLimit.setter
+    def MaxTpsLimit(self, MaxTpsLimit):
+        self._MaxTpsLimit = MaxTpsLimit
+
 
     def _deserialize(self, params):
         self._MaxTpsPerNamespace = params.get("MaxTpsPerNamespace")
@@ -31008,6 +31131,8 @@ class RocketMQClusterConfig(AbstractModel):
                 obj = RocketMQTopicDistribution()
                 obj._deserialize(item)
                 self._TopicDistribution.append(obj)
+        self._MaxRoleNum = params.get("MaxRoleNum")
+        self._MaxTpsLimit = params.get("MaxTpsLimit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31166,6 +31291,8 @@ class RocketMQClusterInfo(AbstractModel):
         :param _ZoneIds: 集群节点所在的可用区，若该集群为跨可用区集群，则包含该集群节点所在的多个可用区。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneIds: list of int
+        :param _IsFrozen: 是否已冻结
+        :type IsFrozen: bool
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -31192,6 +31319,7 @@ class RocketMQClusterInfo(AbstractModel):
         self._InstanceStatus = None
         self._ZoneId = None
         self._ZoneIds = None
+        self._IsFrozen = None
 
     @property
     def ClusterId(self):
@@ -31487,6 +31615,17 @@ class RocketMQClusterInfo(AbstractModel):
     def ZoneIds(self, ZoneIds):
         self._ZoneIds = ZoneIds
 
+    @property
+    def IsFrozen(self):
+        """是否已冻结
+        :rtype: bool
+        """
+        return self._IsFrozen
+
+    @IsFrozen.setter
+    def IsFrozen(self, IsFrozen):
+        self._IsFrozen = IsFrozen
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -31519,6 +31658,7 @@ class RocketMQClusterInfo(AbstractModel):
         self._InstanceStatus = params.get("InstanceStatus")
         self._ZoneId = params.get("ZoneId")
         self._ZoneIds = params.get("ZoneIds")
+        self._IsFrozen = params.get("IsFrozen")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -36194,6 +36334,10 @@ class Topic(AbstractModel):
         :param _Tenant: 用户自定义的租户别名，如果没有，会复用专业集群 ID
 
         :type Tenant: str
+        :param _IsolateConsumerEnable: 是否开启异常消费者隔离
+        :type IsolateConsumerEnable: bool
+        :param _AckTimeOut: 消费者 Ack 超时时间，单位：秒
+        :type AckTimeOut: int
         """
         self._AverageMsgSize = None
         self._ConsumerCount = None
@@ -36220,6 +36364,8 @@ class Topic(AbstractModel):
         self._MsgTTL = None
         self._ClusterId = None
         self._Tenant = None
+        self._IsolateConsumerEnable = None
+        self._AckTimeOut = None
 
     @property
     def AverageMsgSize(self):
@@ -36530,6 +36676,28 @@ class Topic(AbstractModel):
     def Tenant(self, Tenant):
         self._Tenant = Tenant
 
+    @property
+    def IsolateConsumerEnable(self):
+        """是否开启异常消费者隔离
+        :rtype: bool
+        """
+        return self._IsolateConsumerEnable
+
+    @IsolateConsumerEnable.setter
+    def IsolateConsumerEnable(self, IsolateConsumerEnable):
+        self._IsolateConsumerEnable = IsolateConsumerEnable
+
+    @property
+    def AckTimeOut(self):
+        """消费者 Ack 超时时间，单位：秒
+        :rtype: int
+        """
+        return self._AckTimeOut
+
+    @AckTimeOut.setter
+    def AckTimeOut(self, AckTimeOut):
+        self._AckTimeOut = AckTimeOut
+
 
     def _deserialize(self, params):
         self._AverageMsgSize = params.get("AverageMsgSize")
@@ -36562,6 +36730,8 @@ class Topic(AbstractModel):
         self._MsgTTL = params.get("MsgTTL")
         self._ClusterId = params.get("ClusterId")
         self._Tenant = params.get("Tenant")
+        self._IsolateConsumerEnable = params.get("IsolateConsumerEnable")
+        self._AckTimeOut = params.get("AckTimeOut")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
