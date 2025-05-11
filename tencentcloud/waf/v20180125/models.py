@@ -33734,6 +33734,51 @@ class ModifyInstanceAttackLogPostRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _AttackLogPost: 攻击日志投递开关
+        :type AttackLogPost: int
+        """
+        self._InstanceId = None
+        self._AttackLogPost = None
+
+    @property
+    def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def AttackLogPost(self):
+        """攻击日志投递开关
+        :rtype: int
+        """
+        return self._AttackLogPost
+
+    @AttackLogPost.setter
+    def AttackLogPost(self, AttackLogPost):
+        self._AttackLogPost = AttackLogPost
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._AttackLogPost = params.get("AttackLogPost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class ModifyInstanceAttackLogPostResponse(AbstractModel):
     """ModifyInstanceAttackLogPost返回参数结构体

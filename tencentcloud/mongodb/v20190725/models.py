@@ -9272,6 +9272,8 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
 
     @property
     def OplogSize(self):
+        warnings.warn("parameter `OplogSize` is deprecated", DeprecationWarning) 
+
         """(已废弃) 请使用ResizeOplog独立接口完成。
 
 实例配置变更后 Oplog 的大小。
@@ -9283,6 +9285,8 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
 
     @OplogSize.setter
     def OplogSize(self, OplogSize):
+        warnings.warn("parameter `OplogSize` is deprecated", DeprecationWarning) 
+
         self._OplogSize = OplogSize
 
     @property

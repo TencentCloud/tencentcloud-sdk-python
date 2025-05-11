@@ -188,6 +188,29 @@ class CatClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeProbeMetricTagValues(self, request):
+        """查询同个任务类型下的维度标签值，包括查询用户任务信息，具体任务下的多个维度标签信息。（通过为DescribeProbeMetricData接口的Filters参数添加维度筛选条件，可实现多维数据分析）
+
+        :param request: Request instance for DescribeProbeMetricTagValues.
+        :type request: :class:`tencentcloud.cat.v20180409.models.DescribeProbeMetricTagValuesRequest`
+        :rtype: :class:`tencentcloud.cat.v20180409.models.DescribeProbeMetricTagValuesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeProbeMetricTagValues", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeProbeMetricTagValuesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeProbeNodes(self, request):
         """查询拨测节点
 

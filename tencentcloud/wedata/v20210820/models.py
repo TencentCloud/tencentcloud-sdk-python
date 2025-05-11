@@ -6681,6 +6681,129 @@ class BatchUpdateIntegrationTasksResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class BizCatalogsInfo(AbstractModel):
+    """数据地图-数据类目信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: 应用id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: str
+        :param _Id: 类目id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        :param _Level: 类目层级
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Level: int
+        :param _Name: 类目名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _ParentId: 上级类目id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParentId: int
+        :param _Position: 类目顺序
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Position: int
+        """
+        self._AppId = None
+        self._Id = None
+        self._Level = None
+        self._Name = None
+        self._ParentId = None
+        self._Position = None
+
+    @property
+    def AppId(self):
+        """应用id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Id(self):
+        """类目id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Level(self):
+        """类目层级
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Name(self):
+        """类目名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ParentId(self):
+        """上级类目id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ParentId
+
+    @ParentId.setter
+    def ParentId(self, ParentId):
+        self._ParentId = ParentId
+
+    @property
+    def Position(self):
+        """类目顺序
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Position
+
+    @Position.setter
+    def Position(self, Position):
+        self._Position = Position
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._Id = params.get("Id")
+        self._Level = params.get("Level")
+        self._Name = params.get("Name")
+        self._ParentId = params.get("ParentId")
+        self._Position = params.get("Position")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BytesSpeed(AbstractModel):
     """实时任务同步速度 字节/s
 
@@ -20750,6 +20873,62 @@ class DescribeApproveTypeListResponse(AbstractModel):
             self._Data = []
             for item in params.get("Data"):
                 obj = ApproveType()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBaseBizCatalogsRequest(AbstractModel):
+    """DescribeBaseBizCatalogs请求参数结构体
+
+    """
+
+
+class DescribeBaseBizCatalogsResponse(AbstractModel):
+    """DescribeBaseBizCatalogs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 类目列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of BizCatalogsInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """类目列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of BizCatalogsInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = BizCatalogsInfo()
                 obj._deserialize(item)
                 self._Data.append(obj)
         self._RequestId = params.get("RequestId")

@@ -1391,10 +1391,13 @@ class Delta(AbstractModel):
 
 注意：此字段可能返回 null，表示取不到有效值。
         :type ToolCalls: list of ToolCall
+        :param _ReasoningContent: 思维链内容。用于展示模型思考过程，仅 Hunyuan-T1 系列模型可用。注意：在进行多轮对话时，请不要将此字段拼接到 messages 中。请求 messages 的请求参数中包含 reasoning_content，接口将报错。
+        :type ReasoningContent: str
         """
         self._Role = None
         self._Content = None
         self._ToolCalls = None
+        self._ReasoningContent = None
 
     @property
     def Role(self):
@@ -1433,6 +1436,17 @@ class Delta(AbstractModel):
     def ToolCalls(self, ToolCalls):
         self._ToolCalls = ToolCalls
 
+    @property
+    def ReasoningContent(self):
+        """思维链内容。用于展示模型思考过程，仅 Hunyuan-T1 系列模型可用。注意：在进行多轮对话时，请不要将此字段拼接到 messages 中。请求 messages 的请求参数中包含 reasoning_content，接口将报错。
+        :rtype: str
+        """
+        return self._ReasoningContent
+
+    @ReasoningContent.setter
+    def ReasoningContent(self, ReasoningContent):
+        self._ReasoningContent = ReasoningContent
+
 
     def _deserialize(self, params):
         self._Role = params.get("Role")
@@ -1443,6 +1457,7 @@ class Delta(AbstractModel):
                 obj = ToolCall()
                 obj._deserialize(item)
                 self._ToolCalls.append(obj)
+        self._ReasoningContent = params.get("ReasoningContent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3724,6 +3739,301 @@ class Image(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ImageMessage(AbstractModel):
+    """拍照解题内容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Role: 角色，可选值包括 system、user、assistant。
+        :type Role: str
+        :param _Content: 文本内容
+        :type Content: str
+        :param _Contents: 多种类型内容（目前支持图片和文本），仅 hunyuan-vision 和 hunyuan-turbo-vision 模型支持
+        :type Contents: list of Content
+        """
+        self._Role = None
+        self._Content = None
+        self._Contents = None
+
+    @property
+    def Role(self):
+        """角色，可选值包括 system、user、assistant。
+        :rtype: str
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def Content(self):
+        """文本内容
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Contents(self):
+        """多种类型内容（目前支持图片和文本），仅 hunyuan-vision 和 hunyuan-turbo-vision 模型支持
+        :rtype: list of Content
+        """
+        return self._Contents
+
+    @Contents.setter
+    def Contents(self, Contents):
+        self._Contents = Contents
+
+
+    def _deserialize(self, params):
+        self._Role = params.get("Role")
+        self._Content = params.get("Content")
+        if params.get("Contents") is not None:
+            self._Contents = []
+            for item in params.get("Contents"):
+                obj = Content()
+                obj._deserialize(item)
+                self._Contents.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageQuestionRequest(AbstractModel):
+    """ImageQuestion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Model: 模型名称，可选值包括 hunyuan-vision-image-question。各模型介绍请阅读 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 中的说明。注意：不同的模型计费不同，请根据 [购买指南](https://cloud.tencent.com/document/product/1729/97731) 按需调用。
+        :type Model: str
+        :param _Messages: 聊天上下文信息。说明：1. 长度最多为 40，按对话时间从旧到新在数组中排列。2. Message.Role 可选值：system、user、assistant。其中，system 角色可选，如存在则必须位于列表的最开始。user 和 assistant 需交替出现（一问一答），以 user 提问开始，user提问结束，且 Content 不能为空。Role 的顺序示例：[system（可选） user assistant user assistant user ...]。3. Messages 中 Content 总长度不能超过模型输入长度上限（可参考 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 文档），超过则会截断最前面的内容，只保留尾部内容。
+        :type Messages: list of ImageMessage
+        :param _Stream: 流式调用开关。
+说明：
+1. 未传值时默认为非流式调用（false）。
+2. 流式调用时以 SSE 协议增量返回结果（返回值取 Choices[n].Delta 中的值，需要拼接增量数据才能获得完整结果）。
+3. 非流式调用时：
+调用方式与普通 HTTP 请求无异。
+接口响应耗时较长，**如需更低时延建议设置为 true**。
+只返回一次最终结果（返回值取 Choices[n].Message 中的值）。
+
+注意：
+通过 SDK 调用时，流式和非流式调用需用**不同的方式**获取返回值，具体参考 SDK 中的注释或示例（在各语言 SDK 代码仓库的 examples/hunyuan/v20230901/ 目录中）。
+        :type Stream: bool
+        """
+        self._Model = None
+        self._Messages = None
+        self._Stream = None
+
+    @property
+    def Model(self):
+        """模型名称，可选值包括 hunyuan-vision-image-question。各模型介绍请阅读 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 中的说明。注意：不同的模型计费不同，请根据 [购买指南](https://cloud.tencent.com/document/product/1729/97731) 按需调用。
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def Messages(self):
+        """聊天上下文信息。说明：1. 长度最多为 40，按对话时间从旧到新在数组中排列。2. Message.Role 可选值：system、user、assistant。其中，system 角色可选，如存在则必须位于列表的最开始。user 和 assistant 需交替出现（一问一答），以 user 提问开始，user提问结束，且 Content 不能为空。Role 的顺序示例：[system（可选） user assistant user assistant user ...]。3. Messages 中 Content 总长度不能超过模型输入长度上限（可参考 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 文档），超过则会截断最前面的内容，只保留尾部内容。
+        :rtype: list of ImageMessage
+        """
+        return self._Messages
+
+    @Messages.setter
+    def Messages(self, Messages):
+        self._Messages = Messages
+
+    @property
+    def Stream(self):
+        """流式调用开关。
+说明：
+1. 未传值时默认为非流式调用（false）。
+2. 流式调用时以 SSE 协议增量返回结果（返回值取 Choices[n].Delta 中的值，需要拼接增量数据才能获得完整结果）。
+3. 非流式调用时：
+调用方式与普通 HTTP 请求无异。
+接口响应耗时较长，**如需更低时延建议设置为 true**。
+只返回一次最终结果（返回值取 Choices[n].Message 中的值）。
+
+注意：
+通过 SDK 调用时，流式和非流式调用需用**不同的方式**获取返回值，具体参考 SDK 中的注释或示例（在各语言 SDK 代码仓库的 examples/hunyuan/v20230901/ 目录中）。
+        :rtype: bool
+        """
+        return self._Stream
+
+    @Stream.setter
+    def Stream(self, Stream):
+        self._Stream = Stream
+
+
+    def _deserialize(self, params):
+        self._Model = params.get("Model")
+        if params.get("Messages") is not None:
+            self._Messages = []
+            for item in params.get("Messages"):
+                obj = ImageMessage()
+                obj._deserialize(item)
+                self._Messages.append(obj)
+        self._Stream = params.get("Stream")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageQuestionResponse(AbstractModel):
+    """ImageQuestion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Created: Unix 时间戳，单位为秒。
+        :type Created: int
+        :param _Usage: Token 统计信息。
+按照总 Token 数量计费。
+        :type Usage: :class:`tencentcloud.hunyuan.v20230901.models.Usage`
+        :param _Note: 免责声明。
+        :type Note: str
+        :param _Id: 本次请求的 RequestId。
+        :type Id: str
+        :param _Choices: 回复内容。
+        :type Choices: list of Choice
+        :param _ErrorMsg: 错误信息。
+如果流式返回中服务处理异常，返回该错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: :class:`tencentcloud.hunyuan.v20230901.models.ErrorMsg`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        :type RequestId: str
+        """
+        self._Created = None
+        self._Usage = None
+        self._Note = None
+        self._Id = None
+        self._Choices = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def Created(self):
+        """Unix 时间戳，单位为秒。
+        :rtype: int
+        """
+        return self._Created
+
+    @Created.setter
+    def Created(self, Created):
+        self._Created = Created
+
+    @property
+    def Usage(self):
+        """Token 统计信息。
+按照总 Token 数量计费。
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.Usage`
+        """
+        return self._Usage
+
+    @Usage.setter
+    def Usage(self, Usage):
+        self._Usage = Usage
+
+    @property
+    def Note(self):
+        """免责声明。
+        :rtype: str
+        """
+        return self._Note
+
+    @Note.setter
+    def Note(self, Note):
+        self._Note = Note
+
+    @property
+    def Id(self):
+        """本次请求的 RequestId。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Choices(self):
+        """回复内容。
+        :rtype: list of Choice
+        """
+        return self._Choices
+
+    @Choices.setter
+    def Choices(self, Choices):
+        self._Choices = Choices
+
+    @property
+    def ErrorMsg(self):
+        """错误信息。
+如果流式返回中服务处理异常，返回该错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.ErrorMsg`
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Created = params.get("Created")
+        if params.get("Usage") is not None:
+            self._Usage = Usage()
+            self._Usage._deserialize(params.get("Usage"))
+        self._Note = params.get("Note")
+        self._Id = params.get("Id")
+        if params.get("Choices") is not None:
+            self._Choices = []
+            for item in params.get("Choices"):
+                obj = Choice()
+                obj._deserialize(item)
+                self._Choices.append(obj)
+        if params.get("ErrorMsg") is not None:
+            self._ErrorMsg = ErrorMsg()
+            self._ErrorMsg._deserialize(params.get("ErrorMsg"))
+        self._RequestId = params.get("RequestId")
 
 
 class ImageUrl(AbstractModel):

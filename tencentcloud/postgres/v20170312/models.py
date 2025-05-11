@@ -5995,7 +5995,7 @@ class DatabasePrivilege(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Object: 数据库对象，当ObjectType为database时，DataseName/SchemaName/TableName可为空；当ObjectType为schema时，SchemaName/TableName可为空；当ObjectType为column时，TableName不可为空，其余情况均可为空。
+        :param _Object: 数据库对象，当ObjectType为database时，DatabaseName/SchemaName/TableName可为空；当ObjectType为schema时，SchemaName/TableName可为空；当ObjectType为column时，TableName不可为空，其余情况均可为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Object: :class:`tencentcloud.postgres.v20170312.models.DatabaseObject`
         :param _PrivilegeSet: 指定账号对数据库对象拥有的权限列表
@@ -6007,7 +6007,7 @@ class DatabasePrivilege(AbstractModel):
 
     @property
     def Object(self):
-        """数据库对象，当ObjectType为database时，DataseName/SchemaName/TableName可为空；当ObjectType为schema时，SchemaName/TableName可为空；当ObjectType为column时，TableName不可为空，其余情况均可为空。
+        """数据库对象，当ObjectType为database时，DatabaseName/SchemaName/TableName可为空；当ObjectType为schema时，SchemaName/TableName可为空；当ObjectType为column时，TableName不可为空，其余情况均可为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.postgres.v20170312.models.DatabaseObject`
         """

@@ -17788,7 +17788,7 @@ class DescribeOriginGroupRequest(AbstractModel):
         :param _Limit: 分页查询限制数目，不填默认为20，取值：1-1000。
         :type Limit: int
         :param _Filters: 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-<li>origin-group-id<br>   按照【<strong>源站组ID</strong>】进行过滤。源站组ID形如：origin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a<br>   模糊查询：不支持</li><li>origin-group-name<br>   按照【<strong>源站组名称</strong>】进行过滤<br>   模糊查询：支持。使用模糊查询时，仅支持填写一个源站组名称</li>
+<li>origin-group-id：按照源站组 ID 进行过滤，不支持模糊查询。源站组 ID 形如：origin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a；</li><li>origin-group-name： 按照源站组名称进行过滤，使用模糊查询时，仅支持填写一个源站组名称。</li>
         :type Filters: list of AdvancedFilter
         """
         self._ZoneId = None
@@ -17832,7 +17832,7 @@ class DescribeOriginGroupRequest(AbstractModel):
     @property
     def Filters(self):
         """过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-<li>origin-group-id<br>   按照【<strong>源站组ID</strong>】进行过滤。源站组ID形如：origin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a<br>   模糊查询：不支持</li><li>origin-group-name<br>   按照【<strong>源站组名称</strong>】进行过滤<br>   模糊查询：支持。使用模糊查询时，仅支持填写一个源站组名称</li>
+<li>origin-group-id：按照源站组 ID 进行过滤，不支持模糊查询。源站组 ID 形如：origin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a；</li><li>origin-group-name： 按照源站组名称进行过滤，使用模糊查询时，仅支持填写一个源站组名称。</li>
         :rtype: list of AdvancedFilter
         """
         return self._Filters
@@ -43380,14 +43380,14 @@ class VerifyOwnershipRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Domain: 站点或者加速域名。
+        :param _Domain: 站点域名或者站点下的加速域名。
         :type Domain: str
         """
         self._Domain = None
 
     @property
     def Domain(self):
-        """站点或者加速域名。
+        """站点域名或者站点下的加速域名。
         :rtype: str
         """
         return self._Domain

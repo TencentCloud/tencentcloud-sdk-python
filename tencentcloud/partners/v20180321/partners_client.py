@@ -259,6 +259,29 @@ class PartnersClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAgentDealsPriceDetailByDealName(self, request):
+        """供代理商使用名下有效普通代客的预付费子订单号查询订单费用详情
+
+        :param request: Request instance for DescribeAgentDealsPriceDetailByDealName.
+        :type request: :class:`tencentcloud.partners.v20180321.models.DescribeAgentDealsPriceDetailByDealNameRequest`
+        :rtype: :class:`tencentcloud.partners.v20180321.models.DescribeAgentDealsPriceDetailByDealNameResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAgentDealsPriceDetailByDealName", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAgentDealsPriceDetailByDealNameResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAgentPayDealsV2(self, request):
         """可以查询代理商代付的预付费订单
 

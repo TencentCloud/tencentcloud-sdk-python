@@ -3136,7 +3136,7 @@ class EssClient(AbstractClient):
 
         2.<font color="red">静默（自动）签署不支持非本企业合同签署方存在填写</font>功能
 
-        3.<font color="red">在发起签署流程之前，建议等待 [PDF合成完成的回调](https://qian.tencent.com/developers/company/callback_types_file_resources)</font>，尤其是当模板中存在动态表格等复杂填写控件时，因为合成过程可能会耗费秒级别的时间。
+        3.<font color="red">在发起签署流程之前，建议等待 [PDF合成完成的回调](https://qian.tencent.com/developers/company/callback_types_contracts_sign#%E4%B9%9D-%E5%90%88%E5%90%8C%E6%96%87%E6%A1%A3%E5%90%88%E6%88%90%E5%AE%8C%E6%88%90%E5%9B%9E%E8%B0%83)</font>，尤其是当模板中存在动态表格等复杂填写控件时，因为合成过程可能会耗费秒级别的时间。
 
         :param request: Request instance for StartFlow.
         :type request: :class:`tencentcloud.ess.v20201111.models.StartFlowRequest`

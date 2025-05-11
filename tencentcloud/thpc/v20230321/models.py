@@ -503,7 +503,7 @@ class AddQueueRequest(AbstractModel):
         r"""
         :param _ClusterId: 集群ID。
         :type ClusterId: str
-        :param _QueueName: 队列名称。<br><li>最多支持32个字符。
+        :param _QueueName: 队列名称。<br><li>最多支持32个字符。</li>
         :type QueueName: str
         """
         self._ClusterId = None
@@ -522,7 +522,7 @@ class AddQueueRequest(AbstractModel):
 
     @property
     def QueueName(self):
-        """队列名称。<br><li>最多支持32个字符。
+        """队列名称。<br><li>最多支持32个字符。</li>
         :rtype: str
         """
         return self._QueueName

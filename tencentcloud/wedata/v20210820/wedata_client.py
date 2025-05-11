@@ -1590,6 +1590,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeBaseBizCatalogs(self, request):
+        """数据地图-信息配置 数据类目列表
+
+        :param request: Request instance for DescribeBaseBizCatalogs.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeBaseBizCatalogsRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeBaseBizCatalogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBaseBizCatalogs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBaseBizCatalogsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeBatchOperateTask(self, request):
         """批量操作页面获取任务列表
 

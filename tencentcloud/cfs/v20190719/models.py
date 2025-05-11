@@ -1099,6 +1099,10 @@ class CreateCfsFileSystemRequest(AbstractModel):
         :type AutoSnapshotPolicyId: str
         :param _EnableAutoScaleUp: 是否开启默认扩容，仅Turbo类型文件存储支持
         :type EnableAutoScaleUp: bool
+        :param _CfsVersion: v1.5：创建普通版的通用文件系统；
+v3.1：创建增强版的通用文件系统
+说明：增强版的通用系统需要开通白名单才能使用，如有需要请提交工单与我们联系。
+        :type CfsVersion: str
         """
         self._Zone = None
         self._NetInterface = None
@@ -1117,6 +1121,7 @@ class CreateCfsFileSystemRequest(AbstractModel):
         self._SnapshotId = None
         self._AutoSnapshotPolicyId = None
         self._EnableAutoScaleUp = None
+        self._CfsVersion = None
 
     @property
     def Zone(self):
@@ -1305,6 +1310,19 @@ class CreateCfsFileSystemRequest(AbstractModel):
     def EnableAutoScaleUp(self, EnableAutoScaleUp):
         self._EnableAutoScaleUp = EnableAutoScaleUp
 
+    @property
+    def CfsVersion(self):
+        """v1.5：创建普通版的通用文件系统；
+v3.1：创建增强版的通用文件系统
+说明：增强版的通用系统需要开通白名单才能使用，如有需要请提交工单与我们联系。
+        :rtype: str
+        """
+        return self._CfsVersion
+
+    @CfsVersion.setter
+    def CfsVersion(self, CfsVersion):
+        self._CfsVersion = CfsVersion
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -1329,6 +1347,7 @@ class CreateCfsFileSystemRequest(AbstractModel):
         self._SnapshotId = params.get("SnapshotId")
         self._AutoSnapshotPolicyId = params.get("AutoSnapshotPolicyId")
         self._EnableAutoScaleUp = params.get("EnableAutoScaleUp")
+        self._CfsVersion = params.get("CfsVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

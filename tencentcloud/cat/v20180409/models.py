@@ -1523,6 +1523,167 @@ class DescribeProbeMetricDataResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeProbeMetricTagValuesRequest(AbstractModel):
+    """DescribeProbeMetricTagValues请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AnalyzeTaskType: 分析任务类型，支持以下几种类型：
+AnalyzeTaskType_Network：网络质量
+AnalyzeTaskType_Browse：页面性能 
+AnalyzeTaskType_Transport：端口性能
+AnalyzeTaskType_UploadDownload：文件传输
+AnalyzeTaskType_MediaStream：音视频体验
+
+        :type AnalyzeTaskType: str
+        :param _Key: 维度标签值，参考：
+host：任务域名
+errorInfo：状态类型
+area：拨测点地区
+operator：拨测点运营商
+taskId：任务ID
+        :type Key: str
+        :param _Filter: 过滤条件，可以传单个过滤条件也可以拼接多个参数，支持正则匹配
+        :type Filter: str
+        :param _Filters: 过滤条件数组
+        :type Filters: list of str
+        :param _TimeRange: 时间范围
+        :type TimeRange: str
+        """
+        self._AnalyzeTaskType = None
+        self._Key = None
+        self._Filter = None
+        self._Filters = None
+        self._TimeRange = None
+
+    @property
+    def AnalyzeTaskType(self):
+        """分析任务类型，支持以下几种类型：
+AnalyzeTaskType_Network：网络质量
+AnalyzeTaskType_Browse：页面性能 
+AnalyzeTaskType_Transport：端口性能
+AnalyzeTaskType_UploadDownload：文件传输
+AnalyzeTaskType_MediaStream：音视频体验
+
+        :rtype: str
+        """
+        return self._AnalyzeTaskType
+
+    @AnalyzeTaskType.setter
+    def AnalyzeTaskType(self, AnalyzeTaskType):
+        self._AnalyzeTaskType = AnalyzeTaskType
+
+    @property
+    def Key(self):
+        """维度标签值，参考：
+host：任务域名
+errorInfo：状态类型
+area：拨测点地区
+operator：拨测点运营商
+taskId：任务ID
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Filter(self):
+        """过滤条件，可以传单个过滤条件也可以拼接多个参数，支持正则匹配
+        :rtype: str
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+    @property
+    def Filters(self):
+        """过滤条件数组
+        :rtype: list of str
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def TimeRange(self):
+        """时间范围
+        :rtype: str
+        """
+        return self._TimeRange
+
+    @TimeRange.setter
+    def TimeRange(self, TimeRange):
+        self._TimeRange = TimeRange
+
+
+    def _deserialize(self, params):
+        self._AnalyzeTaskType = params.get("AnalyzeTaskType")
+        self._Key = params.get("Key")
+        self._Filter = params.get("Filter")
+        self._Filters = params.get("Filters")
+        self._TimeRange = params.get("TimeRange")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeProbeMetricTagValuesResponse(AbstractModel):
+    """DescribeProbeMetricTagValues返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagValueSet: 标签值序列化后的字符串
+        :type TagValueSet: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TagValueSet = None
+        self._RequestId = None
+
+    @property
+    def TagValueSet(self):
+        """标签值序列化后的字符串
+        :rtype: str
+        """
+        return self._TagValueSet
+
+    @TagValueSet.setter
+    def TagValueSet(self, TagValueSet):
+        self._TagValueSet = TagValueSet
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TagValueSet = params.get("TagValueSet")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeProbeNodesRequest(AbstractModel):
     """DescribeProbeNodes请求参数结构体
 

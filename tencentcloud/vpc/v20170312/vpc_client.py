@@ -6900,7 +6900,7 @@ class VpcClient(AbstractClient):
 
 
     def InquiryPriceModifyAddressesBandwidth(self, request):
-        """EIP修改带宽询价
+        """本接口（InquiryPriceModifyAddressesBandwidth）用于EIP修改带宽询价。
 
         :param request: Request instance for InquiryPriceModifyAddressesBandwidth.
         :type request: :class:`tencentcloud.vpc.v20170312.models.InquiryPriceModifyAddressesBandwidthRequest`
