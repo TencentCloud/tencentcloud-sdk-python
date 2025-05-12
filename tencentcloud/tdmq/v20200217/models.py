@@ -13134,7 +13134,7 @@ class DescribeRabbitMQNodeListRequest(AbstractModel):
         :type InstanceId: str
         :param _Offset: 偏移量，默认值 0
         :type Offset: int
-        :param _Limit: 一页限制,moren
+        :param _Limit: 一页限制，默认值 20
         :type Limit: int
         :param _NodeName: 模糊搜索节点名字
         :type NodeName: str
@@ -13183,7 +13183,7 @@ ascend/descend
 
     @property
     def Limit(self):
-        """一页限制,moren
+        """一页限制，默认值 20
         :rtype: int
         """
         return self._Limit
@@ -24003,9 +24003,9 @@ class ModifyRabbitMQVirtualHostRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例 ID，形如amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
         :type InstanceId: str
-        :param _VirtualHost: vhost名
+        :param _VirtualHost: VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到Vhost名称。
         :type VirtualHost: str
-        :param _Description: VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到Vhost名称。
+        :param _Description: Virtual Host 描述
         :type Description: str
         :param _TraceFlag: 消息轨迹开关,true打开,false关闭
         :type TraceFlag: bool
@@ -24028,7 +24028,7 @@ class ModifyRabbitMQVirtualHostRequest(AbstractModel):
 
     @property
     def VirtualHost(self):
-        """vhost名
+        """VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到Vhost名称。
         :rtype: str
         """
         return self._VirtualHost
@@ -24039,7 +24039,7 @@ class ModifyRabbitMQVirtualHostRequest(AbstractModel):
 
     @property
     def Description(self):
-        """VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到Vhost名称。
+        """Virtual Host 描述
         :rtype: str
         """
         return self._Description

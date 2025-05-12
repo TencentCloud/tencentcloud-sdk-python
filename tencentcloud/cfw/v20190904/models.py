@@ -9139,10 +9139,13 @@ class DescribeEnterpriseSGRuleProgressResponse(AbstractModel):
         r"""
         :param _Progress: 0-100，代表下发进度百分比
         :type Progress: int
+        :param _UserStopped: 是否用户中止 用户中止返回true
+        :type UserStopped: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Progress = None
+        self._UserStopped = None
         self._RequestId = None
 
     @property
@@ -9155,6 +9158,17 @@ class DescribeEnterpriseSGRuleProgressResponse(AbstractModel):
     @Progress.setter
     def Progress(self, Progress):
         self._Progress = Progress
+
+    @property
+    def UserStopped(self):
+        """是否用户中止 用户中止返回true
+        :rtype: bool
+        """
+        return self._UserStopped
+
+    @UserStopped.setter
+    def UserStopped(self, UserStopped):
+        self._UserStopped = UserStopped
 
     @property
     def RequestId(self):
@@ -9170,6 +9184,7 @@ class DescribeEnterpriseSGRuleProgressResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Progress = params.get("Progress")
+        self._UserStopped = params.get("UserStopped")
         self._RequestId = params.get("RequestId")
 
 
@@ -23951,7 +23966,7 @@ drop：拒绝
         :type Description: str
         :param _OrderIndex: 规则顺序，-1表示最低，1表示最高，请勿和外层Type冲突（和外层的Type配合使用，当中间插入时，指定添加位置）
         :type OrderIndex: str
-        :param _Protocol: 协议；TCP/UDP/ICMP/ANY
+        :param _Protocol: 协议；TCP/UDP/ICMP/ICMPv6/ANY
         :type Protocol: str
         :param _Port: 访问控制策略的端口。取值：
 -1/-1：全部端口
@@ -24074,7 +24089,7 @@ drop：拒绝
 
     @property
     def Protocol(self):
-        """协议；TCP/UDP/ICMP/ANY
+        """协议；TCP/UDP/ICMP/ICMPv6/ANY
         :rtype: str
         """
         return self._Protocol

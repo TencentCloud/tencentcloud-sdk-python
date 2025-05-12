@@ -601,6 +601,52 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateCodeTemplate(self, request):
+        """创建代码模版
+
+        :param request: Request instance for CreateCodeTemplate.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.CreateCodeTemplateRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.CreateCodeTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCodeTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCodeTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateCodeTemplateVersion(self, request):
+        """提交代码模版
+
+        :param request: Request instance for CreateCodeTemplateVersion.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.CreateCodeTemplateVersionRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.CreateCodeTemplateVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCodeTemplateVersion", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCodeTemplateVersionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateCustomFunction(self, request):
         """创建用户自定义函数
 
@@ -1029,6 +1075,29 @@ class WedataClient(AbstractClient):
             body = self.call("DagInstances", params, headers=headers)
             response = json.loads(body)
             model = models.DagInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteCodeTemplate(self, request):
+        """删除代码模版
+
+        :param request: Request instance for DeleteCodeTemplate.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DeleteCodeTemplateRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DeleteCodeTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCodeTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCodeTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2181,6 +2250,29 @@ class WedataClient(AbstractClient):
             body = self.call("DescribeFolderWorkflowList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeFolderWorkflowListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeFormVersionParam(self, request):
+        """查询模版关联的任务和可填充参数，为下一步代码模版提交做准备
+
+        :param request: Request instance for DescribeFormVersionParam.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeFormVersionParamRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeFormVersionParamResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFormVersionParam", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeFormVersionParamResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4083,6 +4175,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTasksForCodeTemplate(self, request):
+        """分页查询引用模板的任务列表
+
+        :param request: Request instance for DescribeTasksForCodeTemplate.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTasksForCodeTemplateRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeTasksForCodeTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTasksForCodeTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTasksForCodeTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTemplateDimCount(self, request):
         """查询规则模板维度分布情况
 
@@ -5353,6 +5468,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ReportTaskLineage(self, request):
+        """血缘上报接口
+
+        :param request: Request instance for ReportTaskLineage.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.ReportTaskLineageRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.ReportTaskLineageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ReportTaskLineage", params, headers=headers)
+            response = json.loads(body)
+            model = models.ReportTaskLineageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ResumeIntegrationTask(self, request):
         """继续集成任务
 
@@ -5807,6 +5945,29 @@ class WedataClient(AbstractClient):
             body = self.call("UnlockIntegrationTask", params, headers=headers)
             response = json.loads(body)
             model = models.UnlockIntegrationTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateCodeTemplate(self, request):
+        """更新模版
+
+        :param request: Request instance for UpdateCodeTemplate.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.UpdateCodeTemplateRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.UpdateCodeTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateCodeTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateCodeTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

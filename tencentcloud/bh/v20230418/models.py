@@ -5432,6 +5432,16 @@ class DeployResourceRequest(AbstractModel):
         :type SubnetName: str
         :param _CdcClusterId: 需要开通实例所属的CDC集群ID
         :type CdcClusterId: str
+        :param _ShareClbId: 开通堡垒机指定共享的clbId
+        :type ShareClbId: str
+        :param _WebAccess: 0-关闭web访问堡垒机，1-开启web访问堡垒机
+        :type WebAccess: int
+        :param _ClientAccess: 0-关闭客户端访问堡垒机，1-开启客户端访问堡垒机
+        :type ClientAccess: int
+        :param _IntranetAccess: 0-关闭内网访问堡垒机，1-开启内网访问堡垒机
+        :type IntranetAccess: int
+        :param _ExternalAccess: 0-关闭公网访问堡垒机，1-开启公网访问堡垒机
+        :type ExternalAccess: int
         """
         self._ResourceId = None
         self._ApCode = None
@@ -5443,6 +5453,11 @@ class DeployResourceRequest(AbstractModel):
         self._VpcCidrBlock = None
         self._SubnetName = None
         self._CdcClusterId = None
+        self._ShareClbId = None
+        self._WebAccess = None
+        self._ClientAccess = None
+        self._IntranetAccess = None
+        self._ExternalAccess = None
 
     @property
     def ResourceId(self):
@@ -5554,6 +5569,61 @@ class DeployResourceRequest(AbstractModel):
     def CdcClusterId(self, CdcClusterId):
         self._CdcClusterId = CdcClusterId
 
+    @property
+    def ShareClbId(self):
+        """开通堡垒机指定共享的clbId
+        :rtype: str
+        """
+        return self._ShareClbId
+
+    @ShareClbId.setter
+    def ShareClbId(self, ShareClbId):
+        self._ShareClbId = ShareClbId
+
+    @property
+    def WebAccess(self):
+        """0-关闭web访问堡垒机，1-开启web访问堡垒机
+        :rtype: int
+        """
+        return self._WebAccess
+
+    @WebAccess.setter
+    def WebAccess(self, WebAccess):
+        self._WebAccess = WebAccess
+
+    @property
+    def ClientAccess(self):
+        """0-关闭客户端访问堡垒机，1-开启客户端访问堡垒机
+        :rtype: int
+        """
+        return self._ClientAccess
+
+    @ClientAccess.setter
+    def ClientAccess(self, ClientAccess):
+        self._ClientAccess = ClientAccess
+
+    @property
+    def IntranetAccess(self):
+        """0-关闭内网访问堡垒机，1-开启内网访问堡垒机
+        :rtype: int
+        """
+        return self._IntranetAccess
+
+    @IntranetAccess.setter
+    def IntranetAccess(self, IntranetAccess):
+        self._IntranetAccess = IntranetAccess
+
+    @property
+    def ExternalAccess(self):
+        """0-关闭公网访问堡垒机，1-开启公网访问堡垒机
+        :rtype: int
+        """
+        return self._ExternalAccess
+
+    @ExternalAccess.setter
+    def ExternalAccess(self, ExternalAccess):
+        self._ExternalAccess = ExternalAccess
+
 
     def _deserialize(self, params):
         self._ResourceId = params.get("ResourceId")
@@ -5566,6 +5636,11 @@ class DeployResourceRequest(AbstractModel):
         self._VpcCidrBlock = params.get("VpcCidrBlock")
         self._SubnetName = params.get("SubnetName")
         self._CdcClusterId = params.get("CdcClusterId")
+        self._ShareClbId = params.get("ShareClbId")
+        self._WebAccess = params.get("WebAccess")
+        self._ClientAccess = params.get("ClientAccess")
+        self._IntranetAccess = params.get("IntranetAccess")
+        self._ExternalAccess = params.get("ExternalAccess")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6705,10 +6780,13 @@ class DescribeDeviceAccountsResponse(AbstractModel):
         r"""
         :param _TotalCount: 记录总数
         :type TotalCount: int
+        :param _DeviceAccountSet: 账号信息列表
+        :type DeviceAccountSet: list of DeviceAccount
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
+        self._DeviceAccountSet = None
         self._RequestId = None
 
     @property
@@ -6721,6 +6799,17 @@ class DescribeDeviceAccountsResponse(AbstractModel):
     @TotalCount.setter
     def TotalCount(self, TotalCount):
         self._TotalCount = TotalCount
+
+    @property
+    def DeviceAccountSet(self):
+        """账号信息列表
+        :rtype: list of DeviceAccount
+        """
+        return self._DeviceAccountSet
+
+    @DeviceAccountSet.setter
+    def DeviceAccountSet(self, DeviceAccountSet):
+        self._DeviceAccountSet = DeviceAccountSet
 
     @property
     def RequestId(self):
@@ -6736,6 +6825,12 @@ class DescribeDeviceAccountsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._TotalCount = params.get("TotalCount")
+        if params.get("DeviceAccountSet") is not None:
+            self._DeviceAccountSet = []
+            for item in params.get("DeviceAccountSet"):
+                obj = DeviceAccount()
+                obj._deserialize(item)
+                self._DeviceAccountSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -9254,6 +9349,102 @@ class Device(AbstractModel):
         
 
 
+class DeviceAccount(AbstractModel):
+    """主机账号
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 账号ID
+        :type Id: int
+        :param _DeviceId: 主机ID
+        :type DeviceId: int
+        :param _Account: 账号名
+        :type Account: str
+        :param _BoundPassword: true-已托管密码，false-未托管密码
+        :type BoundPassword: bool
+        :param _BoundPrivateKey: true-已托管私钥，false-未托管私钥
+        :type BoundPrivateKey: bool
+        """
+        self._Id = None
+        self._DeviceId = None
+        self._Account = None
+        self._BoundPassword = None
+        self._BoundPrivateKey = None
+
+    @property
+    def Id(self):
+        """账号ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def DeviceId(self):
+        """主机ID
+        :rtype: int
+        """
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+    @property
+    def Account(self):
+        """账号名
+        :rtype: str
+        """
+        return self._Account
+
+    @Account.setter
+    def Account(self, Account):
+        self._Account = Account
+
+    @property
+    def BoundPassword(self):
+        """true-已托管密码，false-未托管密码
+        :rtype: bool
+        """
+        return self._BoundPassword
+
+    @BoundPassword.setter
+    def BoundPassword(self, BoundPassword):
+        self._BoundPassword = BoundPassword
+
+    @property
+    def BoundPrivateKey(self):
+        """true-已托管私钥，false-未托管私钥
+        :rtype: bool
+        """
+        return self._BoundPrivateKey
+
+    @BoundPrivateKey.setter
+    def BoundPrivateKey(self, BoundPrivateKey):
+        self._BoundPrivateKey = BoundPrivateKey
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._DeviceId = params.get("DeviceId")
+        self._Account = params.get("Account")
+        self._BoundPassword = params.get("BoundPassword")
+        self._BoundPrivateKey = params.get("BoundPrivateKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Domain(AbstractModel):
     """网络域
 
@@ -11487,7 +11678,7 @@ class ModifyResourceRequest(AbstractModel):
         r"""
         :param _ResourceId: 需要开通服务的资源ID
         :type ResourceId: str
-        :param _Status: 已废弃
+        :param _Status: 状态
         :type Status: str
         :param _ResourceEdition: 实例版本
         :type ResourceEdition: str
@@ -11524,13 +11715,17 @@ class ModifyResourceRequest(AbstractModel):
 
     @property
     def Status(self):
-        """已废弃
+        warnings.warn("parameter `Status` is deprecated", DeprecationWarning) 
+
+        """状态
         :rtype: str
         """
         return self._Status
 
     @Status.setter
     def Status(self, Status):
+        warnings.warn("parameter `Status` is deprecated", DeprecationWarning) 
+
         self._Status = Status
 
     @property
@@ -12520,6 +12715,22 @@ class Resource(AbstractModel):
         :type IntranetVpcId: str
         :param _IntranetVpcCidr: 开通内网访问vpc的网段
         :type IntranetVpcCidr: str
+        :param _ShareClb: 是否共享clb，true-共享clb，false-独享clb
+        :type ShareClb: bool
+        :param _OpenClbId: 共享clb id
+        :type OpenClbId: str
+        :param _LbVipIsp: 运营商信息
+        :type LbVipIsp: str
+        :param _TUICmdPort: linux资产命令行运维端口
+        :type TUICmdPort: int
+        :param _TUIDirectPort: linux资产直连端口
+        :type TUIDirectPort: int
+        :param _WebAccess: 1 默认值，web访问开启，0 web访问关闭，2 web访问开通中，3 web访问关闭中
+        :type WebAccess: int
+        :param _ClientAccess: 1 默认值，客户单访问开启，0 客户端访问关闭，2 客户端访问开通中，3 客户端访问关闭中
+        :type ClientAccess: int
+        :param _ExternalAccess: 1 默认值，外网访问开启，0 外网访问关闭，2 外网访问开通中，3 外网访问关闭中
+        :type ExternalAccess: int
         """
         self._ResourceId = None
         self._ApCode = None
@@ -12561,6 +12772,14 @@ class Resource(AbstractModel):
         self._IntranetPrivateIpSet = None
         self._IntranetVpcId = None
         self._IntranetVpcCidr = None
+        self._ShareClb = None
+        self._OpenClbId = None
+        self._LbVipIsp = None
+        self._TUICmdPort = None
+        self._TUIDirectPort = None
+        self._WebAccess = None
+        self._ClientAccess = None
+        self._ExternalAccess = None
 
     @property
     def ResourceId(self):
@@ -13002,6 +13221,94 @@ class Resource(AbstractModel):
     def IntranetVpcCidr(self, IntranetVpcCidr):
         self._IntranetVpcCidr = IntranetVpcCidr
 
+    @property
+    def ShareClb(self):
+        """是否共享clb，true-共享clb，false-独享clb
+        :rtype: bool
+        """
+        return self._ShareClb
+
+    @ShareClb.setter
+    def ShareClb(self, ShareClb):
+        self._ShareClb = ShareClb
+
+    @property
+    def OpenClbId(self):
+        """共享clb id
+        :rtype: str
+        """
+        return self._OpenClbId
+
+    @OpenClbId.setter
+    def OpenClbId(self, OpenClbId):
+        self._OpenClbId = OpenClbId
+
+    @property
+    def LbVipIsp(self):
+        """运营商信息
+        :rtype: str
+        """
+        return self._LbVipIsp
+
+    @LbVipIsp.setter
+    def LbVipIsp(self, LbVipIsp):
+        self._LbVipIsp = LbVipIsp
+
+    @property
+    def TUICmdPort(self):
+        """linux资产命令行运维端口
+        :rtype: int
+        """
+        return self._TUICmdPort
+
+    @TUICmdPort.setter
+    def TUICmdPort(self, TUICmdPort):
+        self._TUICmdPort = TUICmdPort
+
+    @property
+    def TUIDirectPort(self):
+        """linux资产直连端口
+        :rtype: int
+        """
+        return self._TUIDirectPort
+
+    @TUIDirectPort.setter
+    def TUIDirectPort(self, TUIDirectPort):
+        self._TUIDirectPort = TUIDirectPort
+
+    @property
+    def WebAccess(self):
+        """1 默认值，web访问开启，0 web访问关闭，2 web访问开通中，3 web访问关闭中
+        :rtype: int
+        """
+        return self._WebAccess
+
+    @WebAccess.setter
+    def WebAccess(self, WebAccess):
+        self._WebAccess = WebAccess
+
+    @property
+    def ClientAccess(self):
+        """1 默认值，客户单访问开启，0 客户端访问关闭，2 客户端访问开通中，3 客户端访问关闭中
+        :rtype: int
+        """
+        return self._ClientAccess
+
+    @ClientAccess.setter
+    def ClientAccess(self, ClientAccess):
+        self._ClientAccess = ClientAccess
+
+    @property
+    def ExternalAccess(self):
+        """1 默认值，外网访问开启，0 外网访问关闭，2 外网访问开通中，3 外网访问关闭中
+        :rtype: int
+        """
+        return self._ExternalAccess
+
+    @ExternalAccess.setter
+    def ExternalAccess(self, ExternalAccess):
+        self._ExternalAccess = ExternalAccess
+
 
     def _deserialize(self, params):
         self._ResourceId = params.get("ResourceId")
@@ -13049,6 +13356,14 @@ class Resource(AbstractModel):
         self._IntranetPrivateIpSet = params.get("IntranetPrivateIpSet")
         self._IntranetVpcId = params.get("IntranetVpcId")
         self._IntranetVpcCidr = params.get("IntranetVpcCidr")
+        self._ShareClb = params.get("ShareClb")
+        self._OpenClbId = params.get("OpenClbId")
+        self._LbVipIsp = params.get("LbVipIsp")
+        self._TUICmdPort = params.get("TUICmdPort")
+        self._TUIDirectPort = params.get("TUIDirectPort")
+        self._WebAccess = params.get("WebAccess")
+        self._ClientAccess = params.get("ClientAccess")
+        self._ExternalAccess = params.get("ExternalAccess")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

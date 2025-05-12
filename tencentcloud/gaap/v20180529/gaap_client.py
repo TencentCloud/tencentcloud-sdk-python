@@ -304,31 +304,6 @@ class GaapClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CreateFirstLinkSession(self, request):
-        """产品功能已下线，对应的api接口下线
-
-        本接口（CreateFirstLinkSession）用于创建接入段加速会话，创建有可能成功，也可能失败，需要通过返回码来进行判断。
-
-        :param request: Request instance for CreateFirstLinkSession.
-        :type request: :class:`tencentcloud.gaap.v20180529.models.CreateFirstLinkSessionRequest`
-        :rtype: :class:`tencentcloud.gaap.v20180529.models.CreateFirstLinkSessionResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateFirstLinkSession", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateFirstLinkSessionResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def CreateGlobalDomain(self, request):
         """用来创建统一域名
 
@@ -665,31 +640,6 @@ class GaapClient(AbstractClient):
             body = self.call("DeleteDomainErrorPageInfo", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteDomainErrorPageInfoResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DeleteFirstLinkSession(self, request):
-        """产品功能已下线，下线对应的api接口
-
-        本接口（DeleteFirstLinkSession）用于删除接入段加速会话，删除加速会话后会停止加速。
-
-        :param request: Request instance for DeleteFirstLinkSession.
-        :type request: :class:`tencentcloud.gaap.v20180529.models.DeleteFirstLinkSessionRequest`
-        :rtype: :class:`tencentcloud.gaap.v20180529.models.DeleteFirstLinkSessionResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeleteFirstLinkSession", params, headers=headers)
-            response = json.loads(body)
-            model = models.DeleteFirstLinkSessionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1127,31 +1077,6 @@ class GaapClient(AbstractClient):
             body = self.call("DescribeDomainErrorPageInfoByIds", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDomainErrorPageInfoByIdsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeFirstLinkSession(self, request):
-        """产品功能已下线，下线对应的api接口
-
-        本接口（DescribeFirstLinkSession）用于查询接入段加速会话状态，包括会话状态，生效时长，加速套餐等信息。
-
-        :param request: Request instance for DescribeFirstLinkSession.
-        :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeFirstLinkSessionRequest`
-        :rtype: :class:`tencentcloud.gaap.v20180529.models.DescribeFirstLinkSessionResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeFirstLinkSession", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeFirstLinkSessionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

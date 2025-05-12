@@ -2684,6 +2684,12 @@ class ServerBaseConfig(AbstractModel):
         :type InternalAccess: str
         :param _InternalDomain: 内网域名
         :type InternalDomain: str
+        :param _OperationMode: 运行模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperationMode: str
+        :param _TimerScale: 定时扩缩容配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimerScale: list of TimerScale
         """
         self._EnvId = None
         self._ServerName = None
@@ -2708,6 +2714,8 @@ class ServerBaseConfig(AbstractModel):
         self._Tag = None
         self._InternalAccess = None
         self._InternalDomain = None
+        self._OperationMode = None
+        self._TimerScale = None
 
     @property
     def EnvId(self):
@@ -2962,6 +2970,30 @@ class ServerBaseConfig(AbstractModel):
     def InternalDomain(self, InternalDomain):
         self._InternalDomain = InternalDomain
 
+    @property
+    def OperationMode(self):
+        """运行模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OperationMode
+
+    @OperationMode.setter
+    def OperationMode(self, OperationMode):
+        self._OperationMode = OperationMode
+
+    @property
+    def TimerScale(self):
+        """定时扩缩容配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TimerScale
+        """
+        return self._TimerScale
+
+    @TimerScale.setter
+    def TimerScale(self, TimerScale):
+        self._TimerScale = TimerScale
+
 
     def _deserialize(self, params):
         self._EnvId = params.get("EnvId")
@@ -2992,6 +3024,13 @@ class ServerBaseConfig(AbstractModel):
         self._Tag = params.get("Tag")
         self._InternalAccess = params.get("InternalAccess")
         self._InternalDomain = params.get("InternalDomain")
+        self._OperationMode = params.get("OperationMode")
+        if params.get("TimerScale") is not None:
+            self._TimerScale = []
+            for item in params.get("TimerScale"):
+                obj = TimerScale()
+                obj._deserialize(item)
+                self._TimerScale.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3761,6 +3800,129 @@ class TaskStepInfo(AbstractModel):
         self._EndTime = params.get("EndTime")
         self._CostTime = params.get("CostTime")
         self._FailReason = params.get("FailReason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TimerScale(AbstractModel):
+    """定时扩缩容配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CycleType: 循环类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CycleType: str
+        :param _StartDate: 循环起始
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartDate: str
+        :param _EndDate: 循环结束
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndDate: str
+        :param _StartTime: 起始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param _EndTime: 结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param _ReplicaNum: 副本个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReplicaNum: int
+        """
+        self._CycleType = None
+        self._StartDate = None
+        self._EndDate = None
+        self._StartTime = None
+        self._EndTime = None
+        self._ReplicaNum = None
+
+    @property
+    def CycleType(self):
+        """循环类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CycleType
+
+    @CycleType.setter
+    def CycleType(self, CycleType):
+        self._CycleType = CycleType
+
+    @property
+    def StartDate(self):
+        """循环起始
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StartDate
+
+    @StartDate.setter
+    def StartDate(self, StartDate):
+        self._StartDate = StartDate
+
+    @property
+    def EndDate(self):
+        """循环结束
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EndDate
+
+    @EndDate.setter
+    def EndDate(self, EndDate):
+        self._EndDate = EndDate
+
+    @property
+    def StartTime(self):
+        """起始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ReplicaNum(self):
+        """副本个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ReplicaNum
+
+    @ReplicaNum.setter
+    def ReplicaNum(self, ReplicaNum):
+        self._ReplicaNum = ReplicaNum
+
+
+    def _deserialize(self, params):
+        self._CycleType = params.get("CycleType")
+        self._StartDate = params.get("StartDate")
+        self._EndDate = params.get("EndDate")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._ReplicaNum = params.get("ReplicaNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

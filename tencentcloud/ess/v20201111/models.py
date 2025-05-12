@@ -2944,9 +2944,9 @@ class Component(AbstractModel):
 1. 页码编号是从<font color="red">1</font>开始编号的。
 2.  <font color="red">页面编号不能超过PDF文件的页码总数</font>。如果指定的页码超过了PDF文件的页码总数，在填写和签署时会出现错误，导致无法正常进行操作。
         :type ComponentPage: int
-        :param _ComponentPosX: **在绝对定位方式和关键字定位方式下**，可以指定控件横向位置的位置，单位为pt（点）。
+        :param _ComponentPosX: **在绝对定位方式下**，可以指定控件横向位置的位置，单位为pt（点）。
         :type ComponentPosX: float
-        :param _ComponentPosY: **在绝对定位方式和关键字定位方式下**，可以指定控件纵向位置的位置，单位为pt（点）。
+        :param _ComponentPosY: **在绝对定位方式下**，可以指定控件纵向位置的位置，单位为pt（点）。
         :type ComponentPosY: float
         :param _FileIndex: <font color="red">【暂未使用】</font>控件所属文件的序号（取值为：0-N）。 目前单文件的情况下，值一直为0
         :type FileIndex: int
@@ -3286,7 +3286,7 @@ ChildrenComponent结构体定义:
 
     @property
     def ComponentPosX(self):
-        """**在绝对定位方式和关键字定位方式下**，可以指定控件横向位置的位置，单位为pt（点）。
+        """**在绝对定位方式下**，可以指定控件横向位置的位置，单位为pt（点）。
         :rtype: float
         """
         return self._ComponentPosX
@@ -3297,7 +3297,7 @@ ChildrenComponent结构体定义:
 
     @property
     def ComponentPosY(self):
-        """**在绝对定位方式和关键字定位方式下**，可以指定控件纵向位置的位置，单位为pt（点）。
+        """**在绝对定位方式下**，可以指定控件纵向位置的位置，单位为pt（点）。
         :rtype: float
         """
         return self._ComponentPosY
@@ -12294,6 +12294,8 @@ UserId必须是传入合同（FlowId）中的签署人。
 您可以通过查询合同接口（DescribeFlowInfo）查询此参数。
 若传了此参数，则可以不传 UserId, Name, Mobile等参数
         :type RecipientIds: list of str
+        :param _FlowGroupId: 合同组Id，传入此参数则可以不传FlowIds
+        :type FlowGroupId: str
         """
         self._Operator = None
         self._FlowIds = None
@@ -12302,6 +12304,7 @@ UserId必须是传入合同（FlowId）中的签署人。
         self._Name = None
         self._Mobile = None
         self._RecipientIds = None
+        self._FlowGroupId = None
 
     @property
     def Operator(self):
@@ -12397,6 +12400,17 @@ UserId必须是传入合同（FlowId）中的签署人。
     def RecipientIds(self, RecipientIds):
         self._RecipientIds = RecipientIds
 
+    @property
+    def FlowGroupId(self):
+        """合同组Id，传入此参数则可以不传FlowIds
+        :rtype: str
+        """
+        return self._FlowGroupId
+
+    @FlowGroupId.setter
+    def FlowGroupId(self, FlowGroupId):
+        self._FlowGroupId = FlowGroupId
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -12410,6 +12424,7 @@ UserId必须是传入合同（FlowId）中的签署人。
         self._Name = params.get("Name")
         self._Mobile = params.get("Mobile")
         self._RecipientIds = params.get("RecipientIds")
+        self._FlowGroupId = params.get("FlowGroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13234,6 +13249,173 @@ class CreatePersonAuthCertificateImageResponse(AbstractModel):
         self._SerialNumber = params.get("SerialNumber")
         self._ValidFrom = params.get("ValidFrom")
         self._ValidTo = params.get("ValidTo")
+        self._RequestId = params.get("RequestId")
+
+
+class CreatePrepareFlowGroupRequest(AbstractModel):
+    """CreatePrepareFlowGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _FlowGroupName: 合同（流程）组名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
+        :type FlowGroupName: str
+        :param _FlowGroupInfos: 合同（流程）组的子合同信息，支持2-50个子合同
+        :type FlowGroupInfos: list of FlowGroupInfo
+        :param _ResourceType: 资源类型，取值有： <ul><li> **1**：模板</li> <li> **2**：文件</li></ul>
+        :type ResourceType: int
+        :param _Agent: 代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        self._Operator = None
+        self._FlowGroupName = None
+        self._FlowGroupInfos = None
+        self._ResourceType = None
+        self._Agent = None
+
+    @property
+    def Operator(self):
+        """执行本接口操作的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def FlowGroupName(self):
+        """合同（流程）组名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
+        :rtype: str
+        """
+        return self._FlowGroupName
+
+    @FlowGroupName.setter
+    def FlowGroupName(self, FlowGroupName):
+        self._FlowGroupName = FlowGroupName
+
+    @property
+    def FlowGroupInfos(self):
+        """合同（流程）组的子合同信息，支持2-50个子合同
+        :rtype: list of FlowGroupInfo
+        """
+        return self._FlowGroupInfos
+
+    @FlowGroupInfos.setter
+    def FlowGroupInfos(self, FlowGroupInfos):
+        self._FlowGroupInfos = FlowGroupInfos
+
+    @property
+    def ResourceType(self):
+        """资源类型，取值有： <ul><li> **1**：模板</li> <li> **2**：文件</li></ul>
+        :rtype: int
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def Agent(self):
+        """代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._FlowGroupName = params.get("FlowGroupName")
+        if params.get("FlowGroupInfos") is not None:
+            self._FlowGroupInfos = []
+            for item in params.get("FlowGroupInfos"):
+                obj = FlowGroupInfo()
+                obj._deserialize(item)
+                self._FlowGroupInfos.append(obj)
+        self._ResourceType = params.get("ResourceType")
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePrepareFlowGroupResponse(AbstractModel):
+    """CreatePrepareFlowGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowGroupId: 合同(流程)组的合同组Id
+        :type FlowGroupId: str
+        :param _PrepareUrl: 嵌入式合同组发起链接
+        :type PrepareUrl: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowGroupId = None
+        self._PrepareUrl = None
+        self._RequestId = None
+
+    @property
+    def FlowGroupId(self):
+        """合同(流程)组的合同组Id
+        :rtype: str
+        """
+        return self._FlowGroupId
+
+    @FlowGroupId.setter
+    def FlowGroupId(self, FlowGroupId):
+        self._FlowGroupId = FlowGroupId
+
+    @property
+    def PrepareUrl(self):
+        """嵌入式合同组发起链接
+        :rtype: str
+        """
+        return self._PrepareUrl
+
+    @PrepareUrl.setter
+    def PrepareUrl(self, PrepareUrl):
+        self._PrepareUrl = PrepareUrl
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowGroupId = params.get("FlowGroupId")
+        self._PrepareUrl = params.get("PrepareUrl")
         self._RequestId = params.get("RequestId")
 
 

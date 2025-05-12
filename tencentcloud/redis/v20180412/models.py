@@ -4249,6 +4249,8 @@ class DescribeBackupUrlResponse(AbstractModel):
 
     @property
     def DownloadUrl(self):
+        warnings.warn("parameter `DownloadUrl` is deprecated", DeprecationWarning) 
+
         """外网下载地址（6小时内链接有效），该字段正在逐步废弃中。
         :rtype: list of str
         """
@@ -4256,10 +4258,14 @@ class DescribeBackupUrlResponse(AbstractModel):
 
     @DownloadUrl.setter
     def DownloadUrl(self, DownloadUrl):
+        warnings.warn("parameter `DownloadUrl` is deprecated", DeprecationWarning) 
+
         self._DownloadUrl = DownloadUrl
 
     @property
     def InnerDownloadUrl(self):
+        warnings.warn("parameter `InnerDownloadUrl` is deprecated", DeprecationWarning) 
+
         """内网下载地址（6小时内链接有效），该字段正在逐步废弃中。
         :rtype: list of str
         """
@@ -4267,10 +4273,14 @@ class DescribeBackupUrlResponse(AbstractModel):
 
     @InnerDownloadUrl.setter
     def InnerDownloadUrl(self, InnerDownloadUrl):
+        warnings.warn("parameter `InnerDownloadUrl` is deprecated", DeprecationWarning) 
+
         self._InnerDownloadUrl = InnerDownloadUrl
 
     @property
     def Filenames(self):
+        warnings.warn("parameter `Filenames` is deprecated", DeprecationWarning) 
+
         """文件名称，该字段正在逐步废弃中。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
@@ -4279,6 +4289,8 @@ class DescribeBackupUrlResponse(AbstractModel):
 
     @Filenames.setter
     def Filenames(self, Filenames):
+        warnings.warn("parameter `Filenames` is deprecated", DeprecationWarning) 
+
         self._Filenames = Filenames
 
     @property
@@ -10295,6 +10307,8 @@ class DescribeSlowLogResponse(AbstractModel):
 
     @property
     def InstanceSlowlogDetail(self):
+        warnings.warn("parameter `InstanceSlowlogDetail` is deprecated", DeprecationWarning) 
+
         """已废弃，该参数存在命名不规范问题，后续用参数InstanceSlowLogDetail取代。慢查询详情。
         :rtype: list of InstanceSlowlogDetail
         """
@@ -10302,6 +10316,8 @@ class DescribeSlowLogResponse(AbstractModel):
 
     @InstanceSlowlogDetail.setter
     def InstanceSlowlogDetail(self, InstanceSlowlogDetail):
+        warnings.warn("parameter `InstanceSlowlogDetail` is deprecated", DeprecationWarning) 
+
         self._InstanceSlowlogDetail = InstanceSlowlogDetail
 
     @property
@@ -10770,6 +10786,8 @@ class DescribeTaskListRequest(AbstractModel):
 
     @property
     def OperatorUin(self):
+        warnings.warn("parameter `OperatorUin` is deprecated", DeprecationWarning) 
+
         """该字段已废弃，使用OperateUin代替，请忽略。
         :rtype: list of int
         """
@@ -10777,6 +10795,8 @@ class DescribeTaskListRequest(AbstractModel):
 
     @OperatorUin.setter
     def OperatorUin(self, OperatorUin):
+        warnings.warn("parameter `OperatorUin` is deprecated", DeprecationWarning) 
+
         self._OperatorUin = OperatorUin
 
     @property
@@ -11459,6 +11479,8 @@ class EnableReplicaReadonlyResponse(AbstractModel):
 
     @property
     def Status(self):
+        warnings.warn("parameter `Status` is deprecated", DeprecationWarning) 
+
         """错误：ERROR，正确OK（已废弃）
         :rtype: str
         """
@@ -11466,6 +11488,8 @@ class EnableReplicaReadonlyResponse(AbstractModel):
 
     @Status.setter
     def Status(self, Status):
+        warnings.warn("parameter `Status` is deprecated", DeprecationWarning) 
+
         self._Status = Status
 
     @property
@@ -14113,6 +14137,8 @@ class InstanceSet(AbstractModel):
 
     @property
     def SizeUsed(self):
+        warnings.warn("parameter `SizeUsed` is deprecated", DeprecationWarning) 
+
         """该字段已废弃。请使用腾讯云可观测平台API 接口 [GetMonitorData](https://cloud.tencent.com/document/product/248/31014) 获取实例已使用的内存容量。
         :rtype: float
         """
@@ -14120,6 +14146,8 @@ class InstanceSet(AbstractModel):
 
     @SizeUsed.setter
     def SizeUsed(self, SizeUsed):
+        warnings.warn("parameter `SizeUsed` is deprecated", DeprecationWarning) 
+
         self._SizeUsed = SizeUsed
 
     @property
@@ -17540,6 +17568,8 @@ class ModifyInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        warnings.warn("parameter `InstanceId` is deprecated", DeprecationWarning) 
+
         """目前在废弃中，存量用户还可以使用，建议新用户使用 InstanceIds。
         :rtype: str
         """
@@ -17547,10 +17577,14 @@ class ModifyInstanceRequest(AbstractModel):
 
     @InstanceId.setter
     def InstanceId(self, InstanceId):
+        warnings.warn("parameter `InstanceId` is deprecated", DeprecationWarning) 
+
         self._InstanceId = InstanceId
 
     @property
     def InstanceName(self):
+        warnings.warn("parameter `InstanceName` is deprecated", DeprecationWarning) 
+
         """已经废弃
         :rtype: str
         """
@@ -17558,10 +17592,14 @@ class ModifyInstanceRequest(AbstractModel):
 
     @InstanceName.setter
     def InstanceName(self, InstanceName):
+        warnings.warn("parameter `InstanceName` is deprecated", DeprecationWarning) 
+
         self._InstanceName = InstanceName
 
     @property
     def AutoRenew(self):
+        warnings.warn("parameter `AutoRenew` is deprecated", DeprecationWarning) 
+
         """已经废弃。
         :rtype: int
         """
@@ -17569,6 +17607,8 @@ class ModifyInstanceRequest(AbstractModel):
 
     @AutoRenew.setter
     def AutoRenew(self, AutoRenew):
+        warnings.warn("parameter `AutoRenew` is deprecated", DeprecationWarning) 
+
         self._AutoRenew = AutoRenew
 
 
@@ -18887,6 +18927,8 @@ class ProductConf(AbstractModel):
 
     @property
     def EnableRepicaReadOnly(self):
+        warnings.warn("parameter `EnableRepicaReadOnly` is deprecated", DeprecationWarning) 
+
         """该参数名因存在拼写不规范的问题，建议使用**EnableReplicaReadOnly**参数取代。其含义为是否支持副本只读。
 - true：支持副本只读。
 - false：不支持。
@@ -18896,6 +18938,8 @@ class ProductConf(AbstractModel):
 
     @EnableRepicaReadOnly.setter
     def EnableRepicaReadOnly(self, EnableRepicaReadOnly):
+        warnings.warn("parameter `EnableRepicaReadOnly` is deprecated", DeprecationWarning) 
+
         self._EnableRepicaReadOnly = EnableRepicaReadOnly
 
     @property
@@ -21492,6 +21536,8 @@ class StartupInstanceResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        warnings.warn("parameter `TaskId` is deprecated", DeprecationWarning) 
+
         """该字段已废弃，请通过查询实例接口获取到的状态来判断实例是否已解隔离
         :rtype: int
         """
@@ -21499,6 +21545,8 @@ class StartupInstanceResponse(AbstractModel):
 
     @TaskId.setter
     def TaskId(self, TaskId):
+        warnings.warn("parameter `TaskId` is deprecated", DeprecationWarning) 
+
         self._TaskId = TaskId
 
     @property

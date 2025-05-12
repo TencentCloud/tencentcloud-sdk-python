@@ -1089,6 +1089,10 @@ class BaseFlowInfo(AbstractModel):
         :param _FlowDisplayType: 在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li><li> <b>3</b> :文书</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
 
         :type FlowDisplayType: int
+        :param _FileIds: 签署文件资源Id列表，目前仅支持单个文件
+        :type FileIds: list of str
+        :param _Approvers: 合同签署人信息
+        :type Approvers: list of CommonFlowApprover
         """
         self._FlowName = None
         self._Deadline = None
@@ -1103,6 +1107,8 @@ class BaseFlowInfo(AbstractModel):
         self._NeedCreateReview = None
         self._Components = None
         self._FlowDisplayType = None
+        self._FileIds = None
+        self._Approvers = None
 
     @property
     def FlowName(self):
@@ -1266,6 +1272,28 @@ class BaseFlowInfo(AbstractModel):
     def FlowDisplayType(self, FlowDisplayType):
         self._FlowDisplayType = FlowDisplayType
 
+    @property
+    def FileIds(self):
+        """签署文件资源Id列表，目前仅支持单个文件
+        :rtype: list of str
+        """
+        return self._FileIds
+
+    @FileIds.setter
+    def FileIds(self, FileIds):
+        self._FileIds = FileIds
+
+    @property
+    def Approvers(self):
+        """合同签署人信息
+        :rtype: list of CommonFlowApprover
+        """
+        return self._Approvers
+
+    @Approvers.setter
+    def Approvers(self, Approvers):
+        self._Approvers = Approvers
+
 
     def _deserialize(self, params):
         self._FlowName = params.get("FlowName")
@@ -1296,6 +1324,13 @@ class BaseFlowInfo(AbstractModel):
                 obj._deserialize(item)
                 self._Components.append(obj)
         self._FlowDisplayType = params.get("FlowDisplayType")
+        self._FileIds = params.get("FileIds")
+        if params.get("Approvers") is not None:
+            self._Approvers = []
+            for item in params.get("Approvers"):
+                obj = CommonFlowApprover()
+                obj._deserialize(item)
+                self._Approvers.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6263,12 +6298,15 @@ class ChannelCreateOrganizationBatchSignUrlRequest(AbstractModel):
         :type Name: str
         :param _Mobile: 员工手机号，必须与姓名一起使用。 如果OpenId为空，则此字段不能为空。同时，姓名和手机号码必须与传入合同（FlowId）中的签署人信息一致。	
         :type Mobile: str
+        :param _FlowGroupId: 合同组Id，传入此参数则可以不传FlowIds
+        :type FlowGroupId: str
         """
         self._Agent = None
         self._FlowIds = None
         self._OpenId = None
         self._Name = None
         self._Mobile = None
+        self._FlowGroupId = None
 
     @property
     def Agent(self):
@@ -6333,6 +6371,17 @@ class ChannelCreateOrganizationBatchSignUrlRequest(AbstractModel):
     def Mobile(self, Mobile):
         self._Mobile = Mobile
 
+    @property
+    def FlowGroupId(self):
+        """合同组Id，传入此参数则可以不传FlowIds
+        :rtype: str
+        """
+        return self._FlowGroupId
+
+    @FlowGroupId.setter
+    def FlowGroupId(self, FlowGroupId):
+        self._FlowGroupId = FlowGroupId
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
@@ -6342,6 +6391,7 @@ class ChannelCreateOrganizationBatchSignUrlRequest(AbstractModel):
         self._OpenId = params.get("OpenId")
         self._Name = params.get("Name")
         self._Mobile = params.get("Mobile")
+        self._FlowGroupId = params.get("FlowGroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6517,6 +6567,172 @@ class ChannelCreateOrganizationModifyQrCodeResponse(AbstractModel):
     def _deserialize(self, params):
         self._QrCodeUrl = params.get("QrCodeUrl")
         self._ExpiredTime = params.get("ExpiredTime")
+        self._RequestId = params.get("RequestId")
+
+
+class ChannelCreatePrepareFlowGroupRequest(AbstractModel):
+    """ChannelCreatePrepareFlowGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BaseFlowInfos: 合同组中每个合同签署流程的信息，合同组中最少包含2个合同，不能超过50个合同。
+        :type BaseFlowInfos: list of BaseFlowInfo
+        :param _FlowGroupName: 合同组的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
+        :type FlowGroupName: str
+        :param _ResourceType: 资源类型，取值有： <ul><li> **1**：模板</li> <li> **2**：文件</li></ul>
+        :type ResourceType: int
+        :param _Agent: 合同的发起企业和发起人信息，<a href="https://qcloudimg.tencent-cloud.cn/raw/b69f8aad306c40b7b78d096e39b2edbb.png" target="_blank">点击查看合同发起企业和人展示的位置</a>
+
+此接口下面信息必填。
+<ul>
+<li>渠道应用标识: <a href="https://qcloudimg.tencent-cloud.cn/raw/a71872de3d540d55451e3e73a2ad1a6e.png" target="_blank">Agent.AppId</a></li>
+<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId（合同的发起企业）</li>
+<li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId （合同的发起人）</li>
+</ul>
+
+合同的发起企业和发起人必需已经完成实名，并加入企业
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        """
+        self._BaseFlowInfos = None
+        self._FlowGroupName = None
+        self._ResourceType = None
+        self._Agent = None
+
+    @property
+    def BaseFlowInfos(self):
+        """合同组中每个合同签署流程的信息，合同组中最少包含2个合同，不能超过50个合同。
+        :rtype: list of BaseFlowInfo
+        """
+        return self._BaseFlowInfos
+
+    @BaseFlowInfos.setter
+    def BaseFlowInfos(self, BaseFlowInfos):
+        self._BaseFlowInfos = BaseFlowInfos
+
+    @property
+    def FlowGroupName(self):
+        """合同组的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
+        :rtype: str
+        """
+        return self._FlowGroupName
+
+    @FlowGroupName.setter
+    def FlowGroupName(self, FlowGroupName):
+        self._FlowGroupName = FlowGroupName
+
+    @property
+    def ResourceType(self):
+        """资源类型，取值有： <ul><li> **1**：模板</li> <li> **2**：文件</li></ul>
+        :rtype: int
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def Agent(self):
+        """合同的发起企业和发起人信息，<a href="https://qcloudimg.tencent-cloud.cn/raw/b69f8aad306c40b7b78d096e39b2edbb.png" target="_blank">点击查看合同发起企业和人展示的位置</a>
+
+此接口下面信息必填。
+<ul>
+<li>渠道应用标识: <a href="https://qcloudimg.tencent-cloud.cn/raw/a71872de3d540d55451e3e73a2ad1a6e.png" target="_blank">Agent.AppId</a></li>
+<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId（合同的发起企业）</li>
+<li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId （合同的发起人）</li>
+</ul>
+
+合同的发起企业和发起人必需已经完成实名，并加入企业
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+
+    def _deserialize(self, params):
+        if params.get("BaseFlowInfos") is not None:
+            self._BaseFlowInfos = []
+            for item in params.get("BaseFlowInfos"):
+                obj = BaseFlowInfo()
+                obj._deserialize(item)
+                self._BaseFlowInfos.append(obj)
+        self._FlowGroupName = params.get("FlowGroupName")
+        self._ResourceType = params.get("ResourceType")
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelCreatePrepareFlowGroupResponse(AbstractModel):
+    """ChannelCreatePrepareFlowGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowGroupId: 合同组ID，为32位字符串。
+建议开发者妥善保存此合同组ID，以便于顺利进行后续操作。
+        :type FlowGroupId: str
+        :param _PrepareUrl: 嵌入式发起链接
+        :type PrepareUrl: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowGroupId = None
+        self._PrepareUrl = None
+        self._RequestId = None
+
+    @property
+    def FlowGroupId(self):
+        """合同组ID，为32位字符串。
+建议开发者妥善保存此合同组ID，以便于顺利进行后续操作。
+        :rtype: str
+        """
+        return self._FlowGroupId
+
+    @FlowGroupId.setter
+    def FlowGroupId(self, FlowGroupId):
+        self._FlowGroupId = FlowGroupId
+
+    @property
+    def PrepareUrl(self):
+        """嵌入式发起链接
+        :rtype: str
+        """
+        return self._PrepareUrl
+
+    @PrepareUrl.setter
+    def PrepareUrl(self, PrepareUrl):
+        self._PrepareUrl = PrepareUrl
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowGroupId = params.get("FlowGroupId")
+        self._PrepareUrl = params.get("PrepareUrl")
         self._RequestId = params.get("RequestId")
 
 
@@ -12338,9 +12554,9 @@ class Component(AbstractModel):
 1. 页码编号是从<font color="red">1</font>开始编号的。
 2.  <font color="red">页面编号不能超过PDF文件的页码总数</font>。如果指定的页码超过了PDF文件的页码总数，在填写和签署时会出现错误，导致无法正常进行操作。
         :type ComponentPage: int
-        :param _ComponentPosX: **在绝对定位方式和关键字定位方式下**，可以指定控件横向位置的位置，单位为pt（点）。
+        :param _ComponentPosX: **在绝对定位方式下**，可以指定控件横向位置的位置，单位为pt（点）。
         :type ComponentPosX: float
-        :param _ComponentPosY: **在绝对定位方式和关键字定位方式下**，可以指定控件纵向位置的位置，单位为pt（点）。
+        :param _ComponentPosY: **在绝对定位方式下**，可以指定控件纵向位置的位置，单位为pt（点）。
         :type ComponentPosY: float
         :param _ComponentExtra: **在所有的定位方式下**，控件的扩展参数，为<font color="red">JSON格式</font>，不同类型的控件会有部分非通用参数。
 
@@ -12732,7 +12948,7 @@ ChildrenComponent结构体定义:
 
     @property
     def ComponentPosX(self):
-        """**在绝对定位方式和关键字定位方式下**，可以指定控件横向位置的位置，单位为pt（点）。
+        """**在绝对定位方式下**，可以指定控件横向位置的位置，单位为pt（点）。
         :rtype: float
         """
         return self._ComponentPosX
@@ -12743,7 +12959,7 @@ ChildrenComponent结构体定义:
 
     @property
     def ComponentPosY(self):
-        """**在绝对定位方式和关键字定位方式下**，可以指定控件纵向位置的位置，单位为pt（点）。
+        """**在绝对定位方式下**，可以指定控件纵向位置的位置，单位为pt（点）。
         :rtype: float
         """
         return self._ComponentPosY

@@ -998,6 +998,8 @@ class CreateRecTaskRequest(AbstractModel):
         :param _KeyWordLibIdList: 关键词识别ID列表，默认空为不进行识别，最多10个
 
         :type KeyWordLibIdList: list of str
+        :param _ReplaceTextId: 替换词汇表id,  适用于热词和自学习场景也无法解决的极端case词组,  会对识别结果强制替换。具体可参考[配置控制台](https://console.cloud.tencent.com/asr/replaceword);强制替换功能可能会影响正常识别结果，请谨慎使用
+        :type ReplaceTextId: str
         """
         self._EngineModelType = None
         self._ChannelNum = None
@@ -1022,6 +1024,7 @@ class CreateRecTaskRequest(AbstractModel):
         self._Extra = None
         self._HotwordList = None
         self._KeyWordLibIdList = None
+        self._ReplaceTextId = None
 
     @property
     def EngineModelType(self):
@@ -1421,6 +1424,17 @@ class CreateRecTaskRequest(AbstractModel):
     def KeyWordLibIdList(self, KeyWordLibIdList):
         self._KeyWordLibIdList = KeyWordLibIdList
 
+    @property
+    def ReplaceTextId(self):
+        """替换词汇表id,  适用于热词和自学习场景也无法解决的极端case词组,  会对识别结果强制替换。具体可参考[配置控制台](https://console.cloud.tencent.com/asr/replaceword);强制替换功能可能会影响正常识别结果，请谨慎使用
+        :rtype: str
+        """
+        return self._ReplaceTextId
+
+    @ReplaceTextId.setter
+    def ReplaceTextId(self, ReplaceTextId):
+        self._ReplaceTextId = ReplaceTextId
+
 
     def _deserialize(self, params):
         self._EngineModelType = params.get("EngineModelType")
@@ -1446,6 +1460,7 @@ class CreateRecTaskRequest(AbstractModel):
         self._Extra = params.get("Extra")
         self._HotwordList = params.get("HotwordList")
         self._KeyWordLibIdList = params.get("KeyWordLibIdList")
+        self._ReplaceTextId = params.get("ReplaceTextId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

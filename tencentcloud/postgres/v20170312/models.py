@@ -16689,13 +16689,10 @@ class ModifyPrivilege(AbstractModel):
     def __init__(self):
         r"""
         :param _DatabasePrivilege: 要修改的数据库对象及权限列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type DatabasePrivilege: :class:`tencentcloud.postgres.v20170312.models.DatabasePrivilege`
         :param _ModifyType: 修改的方式，当前仅支持grantObject、revokeObject、alterRole。grantObject代表授权、revokeObject代表收回权、alterRole代表修改账号类型。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyType: str
         :param _IsCascade: 当ModifyType为revokeObject才需要此参数，参数为true时，撤销权限会级联撤销。默认为false。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsCascade: bool
         """
         self._DatabasePrivilege = None
@@ -16705,7 +16702,6 @@ class ModifyPrivilege(AbstractModel):
     @property
     def DatabasePrivilege(self):
         """要修改的数据库对象及权限列表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.postgres.v20170312.models.DatabasePrivilege`
         """
         return self._DatabasePrivilege
@@ -16717,7 +16713,6 @@ class ModifyPrivilege(AbstractModel):
     @property
     def ModifyType(self):
         """修改的方式，当前仅支持grantObject、revokeObject、alterRole。grantObject代表授权、revokeObject代表收回权、alterRole代表修改账号类型。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ModifyType
@@ -16729,7 +16724,6 @@ class ModifyPrivilege(AbstractModel):
     @property
     def IsCascade(self):
         """当ModifyType为revokeObject才需要此参数，参数为true时，撤销权限会级联撤销。默认为false。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._IsCascade

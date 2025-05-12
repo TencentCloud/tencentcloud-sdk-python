@@ -3731,6 +3731,10 @@ class ModifyApmInstanceRequest(AbstractModel):
         :type IsRemoteCommandExecutionAnalysis: int
         :param _IsMemoryHijackingAnalysis: 是否开启内存马检测
         :type IsMemoryHijackingAnalysis: int
+        :param _LogIndexType: 0=全文索引，1=键值索引
+        :type LogIndexType: int
+        :param _LogTraceIdKey: traceId的索引key
+        :type LogTraceIdKey: str
         """
         self._InstanceId = None
         self._Name = None
@@ -3758,6 +3762,8 @@ class ModifyApmInstanceRequest(AbstractModel):
         self._IsInstrumentationVulnerabilityScan = None
         self._IsRemoteCommandExecutionAnalysis = None
         self._IsMemoryHijackingAnalysis = None
+        self._LogIndexType = None
+        self._LogTraceIdKey = None
 
     @property
     def InstanceId(self):
@@ -4045,6 +4051,28 @@ class ModifyApmInstanceRequest(AbstractModel):
     def IsMemoryHijackingAnalysis(self, IsMemoryHijackingAnalysis):
         self._IsMemoryHijackingAnalysis = IsMemoryHijackingAnalysis
 
+    @property
+    def LogIndexType(self):
+        """0=全文索引，1=键值索引
+        :rtype: int
+        """
+        return self._LogIndexType
+
+    @LogIndexType.setter
+    def LogIndexType(self, LogIndexType):
+        self._LogIndexType = LogIndexType
+
+    @property
+    def LogTraceIdKey(self):
+        """traceId的索引key
+        :rtype: str
+        """
+        return self._LogTraceIdKey
+
+    @LogTraceIdKey.setter
+    def LogTraceIdKey(self, LogTraceIdKey):
+        self._LogTraceIdKey = LogTraceIdKey
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -4078,6 +4106,8 @@ class ModifyApmInstanceRequest(AbstractModel):
         self._IsInstrumentationVulnerabilityScan = params.get("IsInstrumentationVulnerabilityScan")
         self._IsRemoteCommandExecutionAnalysis = params.get("IsRemoteCommandExecutionAnalysis")
         self._IsMemoryHijackingAnalysis = params.get("IsMemoryHijackingAnalysis")
+        self._LogIndexType = params.get("LogIndexType")
+        self._LogTraceIdKey = params.get("LogTraceIdKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

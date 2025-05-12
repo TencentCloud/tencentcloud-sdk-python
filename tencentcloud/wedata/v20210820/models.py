@@ -2625,6 +2625,78 @@ class AttributeItemDTO(AbstractModel):
         
 
 
+class AttributeItemDsVO(AbstractModel):
+    """AttributeItemVO参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: Key值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Value: Value值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        :param _Description: 描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        """
+        self._Key = None
+        self._Value = None
+        self._Description = None
+
+    @property
+    def Key(self):
+        """Key值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        """Value值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Description(self):
+        """描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BaseClusterInfo(AbstractModel):
     """集群基础信息
 
@@ -8402,6 +8474,167 @@ class ColumnItem(AbstractModel):
         
 
 
+class ColumnLineage(AbstractModel):
+    """列血缘节点
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DatasourceId: 数据源id
+        :type DatasourceId: str
+        :param _DatabaseName: database 名称
+        :type DatabaseName: str
+        :param _TableName: 表名称
+        :type TableName: str
+        :param _ColumnName: 列名称
+        :type ColumnName: str
+        :param _CatalogName: catalog 名称
+        :type CatalogName: str
+        :param _SchemaName: schema 名称
+        :type SchemaName: str
+        :param _ExtParams: 扩展参数
+        :type ExtParams: list of ExtParam
+        :param _TableType: 表类型
+        :type TableType: str
+        :param _ColumnType: 列类型
+        :type ColumnType: str
+        """
+        self._DatasourceId = None
+        self._DatabaseName = None
+        self._TableName = None
+        self._ColumnName = None
+        self._CatalogName = None
+        self._SchemaName = None
+        self._ExtParams = None
+        self._TableType = None
+        self._ColumnType = None
+
+    @property
+    def DatasourceId(self):
+        """数据源id
+        :rtype: str
+        """
+        return self._DatasourceId
+
+    @DatasourceId.setter
+    def DatasourceId(self, DatasourceId):
+        self._DatasourceId = DatasourceId
+
+    @property
+    def DatabaseName(self):
+        """database 名称
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def TableName(self):
+        """表名称
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def ColumnName(self):
+        """列名称
+        :rtype: str
+        """
+        return self._ColumnName
+
+    @ColumnName.setter
+    def ColumnName(self, ColumnName):
+        self._ColumnName = ColumnName
+
+    @property
+    def CatalogName(self):
+        """catalog 名称
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def SchemaName(self):
+        """schema 名称
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def ExtParams(self):
+        """扩展参数
+        :rtype: list of ExtParam
+        """
+        return self._ExtParams
+
+    @ExtParams.setter
+    def ExtParams(self, ExtParams):
+        self._ExtParams = ExtParams
+
+    @property
+    def TableType(self):
+        """表类型
+        :rtype: str
+        """
+        return self._TableType
+
+    @TableType.setter
+    def TableType(self, TableType):
+        self._TableType = TableType
+
+    @property
+    def ColumnType(self):
+        """列类型
+        :rtype: str
+        """
+        return self._ColumnType
+
+    @ColumnType.setter
+    def ColumnType(self, ColumnType):
+        self._ColumnType = ColumnType
+
+
+    def _deserialize(self, params):
+        self._DatasourceId = params.get("DatasourceId")
+        self._DatabaseName = params.get("DatabaseName")
+        self._TableName = params.get("TableName")
+        self._ColumnName = params.get("ColumnName")
+        self._CatalogName = params.get("CatalogName")
+        self._SchemaName = params.get("SchemaName")
+        if params.get("ExtParams") is not None:
+            self._ExtParams = []
+            for item in params.get("ExtParams"):
+                obj = ExtParam()
+                obj._deserialize(item)
+                self._ExtParams.append(obj)
+        self._TableType = params.get("TableType")
+        self._ColumnType = params.get("ColumnType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ColumnLineageInfo(AbstractModel):
     """血缘字段信息
 
@@ -8809,6 +9042,64 @@ class ColumnLineageInfo(AbstractModel):
                 obj._deserialize(item)
                 self._ExtParams.append(obj)
         self._TableId = params.get("TableId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ColumnLineagePair(AbstractModel):
+    """列血缘对
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Sources: 列血缘来源方
+        :type Sources: list of ColumnLineage
+        :param _Target: 列血缘目标方
+        :type Target: :class:`tencentcloud.wedata.v20210820.models.ColumnLineage`
+        """
+        self._Sources = None
+        self._Target = None
+
+    @property
+    def Sources(self):
+        """列血缘来源方
+        :rtype: list of ColumnLineage
+        """
+        return self._Sources
+
+    @Sources.setter
+    def Sources(self, Sources):
+        self._Sources = Sources
+
+    @property
+    def Target(self):
+        """列血缘目标方
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.ColumnLineage`
+        """
+        return self._Target
+
+    @Target.setter
+    def Target(self, Target):
+        self._Target = Target
+
+
+    def _deserialize(self, params):
+        if params.get("Sources") is not None:
+            self._Sources = []
+            for item in params.get("Sources"):
+                obj = ColumnLineage()
+                obj._deserialize(item)
+                self._Sources.append(obj)
+        if params.get("Target") is not None:
+            self._Target = ColumnLineage()
+            self._Target._deserialize(params.get("Target"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10408,6 +10699,325 @@ class CreateAndDDLSupport(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CreateCodeTemplateRequest(AbstractModel):
+    """CreateCodeTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目Id
+        :type ProjectId: str
+        :param _CodeTemplateName: 模版名
+        :type CodeTemplateName: str
+        :param _TaskType: 30Python，32DLC，50 DLC-PySpark
+        :type TaskType: int
+        :param _CodeTemplateDesc: 模版描述
+        :type CodeTemplateDesc: str
+        :param _FolderId: 文件夹ID
+        :type FolderId: str
+        :param _Content: 指定脚本内容
+        :type Content: str
+        """
+        self._ProjectId = None
+        self._CodeTemplateName = None
+        self._TaskType = None
+        self._CodeTemplateDesc = None
+        self._FolderId = None
+        self._Content = None
+
+    @property
+    def ProjectId(self):
+        """项目Id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def CodeTemplateName(self):
+        """模版名
+        :rtype: str
+        """
+        return self._CodeTemplateName
+
+    @CodeTemplateName.setter
+    def CodeTemplateName(self, CodeTemplateName):
+        self._CodeTemplateName = CodeTemplateName
+
+    @property
+    def TaskType(self):
+        """30Python，32DLC，50 DLC-PySpark
+        :rtype: int
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def CodeTemplateDesc(self):
+        """模版描述
+        :rtype: str
+        """
+        return self._CodeTemplateDesc
+
+    @CodeTemplateDesc.setter
+    def CodeTemplateDesc(self, CodeTemplateDesc):
+        self._CodeTemplateDesc = CodeTemplateDesc
+
+    @property
+    def FolderId(self):
+        """文件夹ID
+        :rtype: str
+        """
+        return self._FolderId
+
+    @FolderId.setter
+    def FolderId(self, FolderId):
+        self._FolderId = FolderId
+
+    @property
+    def Content(self):
+        """指定脚本内容
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._CodeTemplateName = params.get("CodeTemplateName")
+        self._TaskType = params.get("TaskType")
+        self._CodeTemplateDesc = params.get("CodeTemplateDesc")
+        self._FolderId = params.get("FolderId")
+        self._Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCodeTemplateResponse(AbstractModel):
+    """CreateCodeTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 模版id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """模版id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateCodeTemplateVersionRequest(AbstractModel):
+    """CreateCodeTemplateVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CodeTemplateId: 模版Id
+        :type CodeTemplateId: str
+        :param _ProjectId: 项目Id
+        :type ProjectId: str
+        :param _Tasks: 模版关联的任务以及调度参数设置
+        :type Tasks: list of TaskFormParams
+        :param _OriginalParams: 代码模本脚本内置参数
+        :type OriginalParams: list of str
+        :param _VersionRemark: 提交描述
+        :type VersionRemark: str
+        :param _NeedSubmitScheduleForTemplate: true表示：针对新建、已下线状态的任务仅生成开发态保存版本，您可在任务中自行提交到生产。针对调度中、已暂停、已失效的任务生成开发态保存版本并提交到生产（即本次代码模板的改动在调度中生效）； 
+false表示：针对所有状态的任务均仅生成开发态保存版本。
+        :type NeedSubmitScheduleForTemplate: bool
+        """
+        self._CodeTemplateId = None
+        self._ProjectId = None
+        self._Tasks = None
+        self._OriginalParams = None
+        self._VersionRemark = None
+        self._NeedSubmitScheduleForTemplate = None
+
+    @property
+    def CodeTemplateId(self):
+        """模版Id
+        :rtype: str
+        """
+        return self._CodeTemplateId
+
+    @CodeTemplateId.setter
+    def CodeTemplateId(self, CodeTemplateId):
+        self._CodeTemplateId = CodeTemplateId
+
+    @property
+    def ProjectId(self):
+        """项目Id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def Tasks(self):
+        """模版关联的任务以及调度参数设置
+        :rtype: list of TaskFormParams
+        """
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def OriginalParams(self):
+        """代码模本脚本内置参数
+        :rtype: list of str
+        """
+        return self._OriginalParams
+
+    @OriginalParams.setter
+    def OriginalParams(self, OriginalParams):
+        self._OriginalParams = OriginalParams
+
+    @property
+    def VersionRemark(self):
+        """提交描述
+        :rtype: str
+        """
+        return self._VersionRemark
+
+    @VersionRemark.setter
+    def VersionRemark(self, VersionRemark):
+        self._VersionRemark = VersionRemark
+
+    @property
+    def NeedSubmitScheduleForTemplate(self):
+        """true表示：针对新建、已下线状态的任务仅生成开发态保存版本，您可在任务中自行提交到生产。针对调度中、已暂停、已失效的任务生成开发态保存版本并提交到生产（即本次代码模板的改动在调度中生效）； 
+false表示：针对所有状态的任务均仅生成开发态保存版本。
+        :rtype: bool
+        """
+        return self._NeedSubmitScheduleForTemplate
+
+    @NeedSubmitScheduleForTemplate.setter
+    def NeedSubmitScheduleForTemplate(self, NeedSubmitScheduleForTemplate):
+        self._NeedSubmitScheduleForTemplate = NeedSubmitScheduleForTemplate
+
+
+    def _deserialize(self, params):
+        self._CodeTemplateId = params.get("CodeTemplateId")
+        self._ProjectId = params.get("ProjectId")
+        if params.get("Tasks") is not None:
+            self._Tasks = []
+            for item in params.get("Tasks"):
+                obj = TaskFormParams()
+                obj._deserialize(item)
+                self._Tasks.append(obj)
+        self._OriginalParams = params.get("OriginalParams")
+        self._VersionRemark = params.get("VersionRemark")
+        self._NeedSubmitScheduleForTemplate = params.get("NeedSubmitScheduleForTemplate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCodeTemplateVersionResponse(AbstractModel):
+    """CreateCodeTemplateVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 批量操作JobId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """批量操作JobId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateCustomFunctionRequest(AbstractModel):
@@ -17369,6 +17979,102 @@ class DatasourceBaseInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DeleteCodeTemplateRequest(AbstractModel):
+    """DeleteCodeTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _CodeTemplateId: 模版ID
+        :type CodeTemplateId: str
+        """
+        self._ProjectId = None
+        self._CodeTemplateId = None
+
+    @property
+    def ProjectId(self):
+        """项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def CodeTemplateId(self):
+        """模版ID
+        :rtype: str
+        """
+        return self._CodeTemplateId
+
+    @CodeTemplateId.setter
+    def CodeTemplateId(self, CodeTemplateId):
+        self._CodeTemplateId = CodeTemplateId
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._CodeTemplateId = params.get("CodeTemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCodeTemplateResponse(AbstractModel):
+    """DeleteCodeTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 是否成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """是否成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteCustomFunctionRequest(AbstractModel):
@@ -25474,10 +26180,13 @@ class DescribeEventConsumeTasksRequest(AbstractModel):
         :type PageNumber: int
         :param _PageSize: 每页数目
         :type PageSize: int
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
         """
         self._EventCaseId = None
         self._PageNumber = None
         self._PageSize = None
+        self._ProjectId = None
 
     @property
     def EventCaseId(self):
@@ -25512,11 +26221,23 @@ class DescribeEventConsumeTasksRequest(AbstractModel):
     def PageSize(self, PageSize):
         self._PageSize = PageSize
 
+    @property
+    def ProjectId(self):
+        """项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
 
     def _deserialize(self, params):
         self._EventCaseId = params.get("EventCaseId")
         self._PageNumber = params.get("PageNumber")
         self._PageSize = params.get("PageSize")
+        self._ProjectId = params.get("ProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26153,6 +26874,149 @@ class DescribeFolderWorkflowListResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Data") is not None:
             self._Data = DescribeFolderWorkflowListData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeFormVersionParamRequest(AbstractModel):
+    """DescribeFormVersionParam请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目Id
+        :type ProjectId: str
+        :param _CodeTemplateId: 模版Id
+        :type CodeTemplateId: str
+        :param _OriginalParams: 脚本中的参数
+        :type OriginalParams: list of str
+        :param _Page: 页码
+        :type Page: int
+        :param _Size: 页号
+        :type Size: int
+        """
+        self._ProjectId = None
+        self._CodeTemplateId = None
+        self._OriginalParams = None
+        self._Page = None
+        self._Size = None
+
+    @property
+    def ProjectId(self):
+        """项目Id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def CodeTemplateId(self):
+        """模版Id
+        :rtype: str
+        """
+        return self._CodeTemplateId
+
+    @CodeTemplateId.setter
+    def CodeTemplateId(self, CodeTemplateId):
+        self._CodeTemplateId = CodeTemplateId
+
+    @property
+    def OriginalParams(self):
+        """脚本中的参数
+        :rtype: list of str
+        """
+        return self._OriginalParams
+
+    @OriginalParams.setter
+    def OriginalParams(self, OriginalParams):
+        self._OriginalParams = OriginalParams
+
+    @property
+    def Page(self):
+        """页码
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def Size(self):
+        """页号
+        :rtype: int
+        """
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._CodeTemplateId = params.get("CodeTemplateId")
+        self._OriginalParams = params.get("OriginalParams")
+        self._Page = params.get("Page")
+        self._Size = params.get("Size")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFormVersionParamResponse(AbstractModel):
+    """DescribeFormVersionParam返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 结果集
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.TaskCollectionParamDTO`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """结果集
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.TaskCollectionParamDTO`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = TaskCollectionParamDTO()
             self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 
@@ -40045,6 +40909,273 @@ class DescribeTaskTableMetricOverviewResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTasksForCodeTemplatePage(AbstractModel):
+    """批量操作任务列表分页
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageCount: 总页码数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageCount: int
+        :param _Items: 内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of TaskSimpleVo
+        :param _TotalCount: 总个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        """
+        self._PageCount = None
+        self._Items = None
+        self._TotalCount = None
+
+    @property
+    def PageCount(self):
+        """总页码数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PageCount
+
+    @PageCount.setter
+    def PageCount(self, PageCount):
+        self._PageCount = PageCount
+
+    @property
+    def Items(self):
+        """内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TaskSimpleVo
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def TotalCount(self):
+        """总个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+
+    def _deserialize(self, params):
+        self._PageCount = params.get("PageCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = TaskSimpleVo()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTasksForCodeTemplateRequest(AbstractModel):
+    """DescribeTasksForCodeTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目Id
+        :type ProjectId: str
+        :param _PageNumber: 页码，最小1
+        :type PageNumber: int
+        :param _PageSize: 单页大小，最小10，最大200
+        :type PageSize: int
+        :param _TemplateId: 模板id
+        :type TemplateId: str
+        :param _WorkflowIdList: 工作流id列表
+        :type WorkflowIdList: list of str
+        :param _OwnerIdList: 责任人名列表
+        :type OwnerIdList: list of str
+        :param _TaskName: 任务名
+        :type TaskName: str
+        :param _OrderCondition: 排序提交，目前只支持workflowName
+        :type OrderCondition: :class:`tencentcloud.wedata.v20210820.models.OrderCondition`
+        """
+        self._ProjectId = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._TemplateId = None
+        self._WorkflowIdList = None
+        self._OwnerIdList = None
+        self._TaskName = None
+        self._OrderCondition = None
+
+    @property
+    def ProjectId(self):
+        """项目Id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def PageNumber(self):
+        """页码，最小1
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        """单页大小，最小10，最大200
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TemplateId(self):
+        """模板id
+        :rtype: str
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def WorkflowIdList(self):
+        """工作流id列表
+        :rtype: list of str
+        """
+        return self._WorkflowIdList
+
+    @WorkflowIdList.setter
+    def WorkflowIdList(self, WorkflowIdList):
+        self._WorkflowIdList = WorkflowIdList
+
+    @property
+    def OwnerIdList(self):
+        """责任人名列表
+        :rtype: list of str
+        """
+        return self._OwnerIdList
+
+    @OwnerIdList.setter
+    def OwnerIdList(self, OwnerIdList):
+        self._OwnerIdList = OwnerIdList
+
+    @property
+    def TaskName(self):
+        """任务名
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def OrderCondition(self):
+        """排序提交，目前只支持workflowName
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.OrderCondition`
+        """
+        return self._OrderCondition
+
+    @OrderCondition.setter
+    def OrderCondition(self, OrderCondition):
+        self._OrderCondition = OrderCondition
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._TemplateId = params.get("TemplateId")
+        self._WorkflowIdList = params.get("WorkflowIdList")
+        self._OwnerIdList = params.get("OwnerIdList")
+        self._TaskName = params.get("TaskName")
+        if params.get("OrderCondition") is not None:
+            self._OrderCondition = OrderCondition()
+            self._OrderCondition._deserialize(params.get("OrderCondition"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTasksForCodeTemplateResponse(AbstractModel):
+    """DescribeTasksForCodeTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.DescribeTasksForCodeTemplatePage`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """无
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeTasksForCodeTemplatePage`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DescribeTasksForCodeTemplatePage()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTemplateDimCountRequest(AbstractModel):
     """DescribeTemplateDimCount请求参数结构体
 
@@ -45764,6 +46895,57 @@ class EventOpsDto(AbstractModel):
                 obj = EventCaseOpsDto()
                 obj._deserialize(item)
                 self._EventCases.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExtParam(AbstractModel):
+    """扩展参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: key
+        :type Key: str
+        :param _Value: 具体值
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        """key
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        """具体值
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -56917,6 +58099,92 @@ class LineageParamRecord(AbstractModel):
         
 
 
+class LineageTask(AbstractModel):
+    """血缘任务
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务id
+        :type TaskId: str
+        :param _TaskType: 任务类型
+        :type TaskType: str
+        :param _TaskSource: 任务来源
+        :type TaskSource: str
+        :param _ExtParams: 任务扩展参数
+        :type ExtParams: list of ExtParam
+        """
+        self._TaskId = None
+        self._TaskType = None
+        self._TaskSource = None
+        self._ExtParams = None
+
+    @property
+    def TaskId(self):
+        """任务id
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskType(self):
+        """任务类型
+        :rtype: str
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def TaskSource(self):
+        """任务来源
+        :rtype: str
+        """
+        return self._TaskSource
+
+    @TaskSource.setter
+    def TaskSource(self, TaskSource):
+        self._TaskSource = TaskSource
+
+    @property
+    def ExtParams(self):
+        """任务扩展参数
+        :rtype: list of ExtParam
+        """
+        return self._ExtParams
+
+    @ExtParams.setter
+    def ExtParams(self, ExtParams):
+        self._ExtParams = ExtParams
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TaskType = params.get("TaskType")
+        self._TaskSource = params.get("TaskSource")
+        if params.get("ExtParams") is not None:
+            self._ExtParams = []
+            for item in params.get("ExtParams"):
+                obj = ExtParam()
+                obj._deserialize(item)
+                self._ExtParams.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LinkOpsDto(AbstractModel):
     """任务依赖边详情
 
@@ -65177,6 +66445,61 @@ class OpsTaskLinkInfoDto(AbstractModel):
         
 
 
+class OrderCondition(AbstractModel):
+    """通用排序字段名和排序方向
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: name
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Direction: 降序DESC; 升序ASC
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Direction: str
+        """
+        self._Name = None
+        self._Direction = None
+
+    @property
+    def Name(self):
+        """name
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Direction(self):
+        """降序DESC; 升序ASC
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Direction
+
+    @Direction.setter
+    def Direction(self, Direction):
+        self._Direction = Direction
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Direction = params.get("Direction")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OrderField(AbstractModel):
     """通用排序字段
 
@@ -66199,6 +67522,61 @@ class ParamInfoDs(AbstractModel):
     def _deserialize(self, params):
         self._ParamKey = params.get("ParamKey")
         self._ParamValue = params.get("ParamValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ParamMapDsDto(AbstractModel):
+    """ds参数map结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: k
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Value: v
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        """k
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        """v
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -69271,6 +70649,174 @@ class ReportTaskDetail(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ReportTaskLineageRequest(AbstractModel):
+    """ReportTaskLineage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChannelType: 上报渠道
+        :type ChannelType: str
+        :param _Task: 血缘任务
+        :type Task: :class:`tencentcloud.wedata.v20210820.models.LineageTask`
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _TableLineages: 表血缘关系
+        :type TableLineages: list of TableLineagePair
+        :param _ColumnLineages: 列血缘关系
+        :type ColumnLineages: list of ColumnLineagePair
+        """
+        self._ChannelType = None
+        self._Task = None
+        self._ProjectId = None
+        self._TableLineages = None
+        self._ColumnLineages = None
+
+    @property
+    def ChannelType(self):
+        """上报渠道
+        :rtype: str
+        """
+        return self._ChannelType
+
+    @ChannelType.setter
+    def ChannelType(self, ChannelType):
+        self._ChannelType = ChannelType
+
+    @property
+    def Task(self):
+        """血缘任务
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.LineageTask`
+        """
+        return self._Task
+
+    @Task.setter
+    def Task(self, Task):
+        self._Task = Task
+
+    @property
+    def ProjectId(self):
+        """项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def TableLineages(self):
+        """表血缘关系
+        :rtype: list of TableLineagePair
+        """
+        return self._TableLineages
+
+    @TableLineages.setter
+    def TableLineages(self, TableLineages):
+        self._TableLineages = TableLineages
+
+    @property
+    def ColumnLineages(self):
+        """列血缘关系
+        :rtype: list of ColumnLineagePair
+        """
+        return self._ColumnLineages
+
+    @ColumnLineages.setter
+    def ColumnLineages(self, ColumnLineages):
+        self._ColumnLineages = ColumnLineages
+
+
+    def _deserialize(self, params):
+        self._ChannelType = params.get("ChannelType")
+        if params.get("Task") is not None:
+            self._Task = LineageTask()
+            self._Task._deserialize(params.get("Task"))
+        self._ProjectId = params.get("ProjectId")
+        if params.get("TableLineages") is not None:
+            self._TableLineages = []
+            for item in params.get("TableLineages"):
+                obj = TableLineagePair()
+                obj._deserialize(item)
+                self._TableLineages.append(obj)
+        if params.get("ColumnLineages") is not None:
+            self._ColumnLineages = []
+            for item in params.get("ColumnLineages"):
+                obj = ColumnLineagePair()
+                obj._deserialize(item)
+                self._ColumnLineages.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReportTaskLineageResponse(AbstractModel):
+    """ReportTaskLineage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestFromSource: 请求来源，WEB 前端；CLIENT 客户端
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestFromSource: str
+        :param _Data: 上报结果
+        :type Data: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestFromSource = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def RequestFromSource(self):
+        """请求来源，WEB 前端；CLIENT 客户端
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RequestFromSource
+
+    @RequestFromSource.setter
+    def RequestFromSource(self, RequestFromSource):
+        self._RequestFromSource = RequestFromSource
+
+    @property
+    def Data(self):
+        """上报结果
+        :rtype: bool
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestFromSource = params.get("RequestFromSource")
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
 
 
 class ReportTaskListInfo(AbstractModel):
@@ -81885,6 +83431,137 @@ class TableInfo(AbstractModel):
         
 
 
+class TableLineage(AbstractModel):
+    """表血缘节点
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DatasourceId: 数据源id
+        :type DatasourceId: str
+        :param _DatabaseName: 库名称
+        :type DatabaseName: str
+        :param _TableName: 表名称
+        :type TableName: str
+        :param _CatalogName: catalog值
+        :type CatalogName: str
+        :param _SchemaName: schema名称
+        :type SchemaName: str
+        :param _ExtParams: 扩展参数
+        :type ExtParams: list of ExtParam
+        :param _TableType: table类型 TABLE｜VIEW
+        :type TableType: str
+        """
+        self._DatasourceId = None
+        self._DatabaseName = None
+        self._TableName = None
+        self._CatalogName = None
+        self._SchemaName = None
+        self._ExtParams = None
+        self._TableType = None
+
+    @property
+    def DatasourceId(self):
+        """数据源id
+        :rtype: str
+        """
+        return self._DatasourceId
+
+    @DatasourceId.setter
+    def DatasourceId(self, DatasourceId):
+        self._DatasourceId = DatasourceId
+
+    @property
+    def DatabaseName(self):
+        """库名称
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def TableName(self):
+        """表名称
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def CatalogName(self):
+        """catalog值
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def SchemaName(self):
+        """schema名称
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def ExtParams(self):
+        """扩展参数
+        :rtype: list of ExtParam
+        """
+        return self._ExtParams
+
+    @ExtParams.setter
+    def ExtParams(self, ExtParams):
+        self._ExtParams = ExtParams
+
+    @property
+    def TableType(self):
+        """table类型 TABLE｜VIEW
+        :rtype: str
+        """
+        return self._TableType
+
+    @TableType.setter
+    def TableType(self, TableType):
+        self._TableType = TableType
+
+
+    def _deserialize(self, params):
+        self._DatasourceId = params.get("DatasourceId")
+        self._DatabaseName = params.get("DatabaseName")
+        self._TableName = params.get("TableName")
+        self._CatalogName = params.get("CatalogName")
+        self._SchemaName = params.get("SchemaName")
+        if params.get("ExtParams") is not None:
+            self._ExtParams = []
+            for item in params.get("ExtParams"):
+                obj = ExtParam()
+                obj._deserialize(item)
+                self._ExtParams.append(obj)
+        self._TableType = params.get("TableType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TableLineageBaseInfo(AbstractModel):
     """表血缘详细信息
 
@@ -82736,6 +84413,64 @@ class TableLineageInfo(AbstractModel):
         self._DatabaseId = params.get("DatabaseId")
         self._DataFromType = params.get("DataFromType")
         self._CollectJobId = params.get("CollectJobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TableLineagePair(AbstractModel):
+    """表血缘关系对
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Sources: 血缘数据来源表
+        :type Sources: list of TableLineage
+        :param _Target: 血缘数据目标表
+        :type Target: :class:`tencentcloud.wedata.v20210820.models.TableLineage`
+        """
+        self._Sources = None
+        self._Target = None
+
+    @property
+    def Sources(self):
+        """血缘数据来源表
+        :rtype: list of TableLineage
+        """
+        return self._Sources
+
+    @Sources.setter
+    def Sources(self, Sources):
+        self._Sources = Sources
+
+    @property
+    def Target(self):
+        """血缘数据目标表
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.TableLineage`
+        """
+        return self._Target
+
+    @Target.setter
+    def Target(self, Target):
+        self._Target = Target
+
+
+    def _deserialize(self, params):
+        if params.get("Sources") is not None:
+            self._Sources = []
+            for item in params.get("Sources"):
+                obj = TableLineage()
+                obj._deserialize(item)
+                self._Sources.append(obj)
+        if params.get("Target") is not None:
+            self._Target = TableLineage()
+            self._Target._deserialize(params.get("Target"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -85639,6 +87374,187 @@ class TaskByStatus(AbstractModel):
         
 
 
+class TaskCollectionParamDTO(AbstractModel):
+    """分页数据集
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数据条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _PageCount: 总页数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageCount: int
+        :param _Items: 数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of TaskFormParams
+        """
+        self._TotalCount = None
+        self._PageCount = None
+        self._Items = None
+
+    @property
+    def TotalCount(self):
+        """总数据条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def PageCount(self):
+        """总页数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PageCount
+
+    @PageCount.setter
+    def PageCount(self, PageCount):
+        self._PageCount = PageCount
+
+    @property
+    def Items(self):
+        """数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TaskFormParams
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._PageCount = params.get("PageCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = TaskFormParams()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskExtDsVO(AbstractModel):
+    """属性配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _Properties: 任务属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Properties: list of ParamInfoDs
+        :param _DryRunExtAttributes: 任务试运行扩展业务属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DryRunExtAttributes: list of AttributeItemDsVO
+        :param _DryRunParameter: 任务试运行动态传参
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DryRunParameter: list of AttributeItemDsVO
+        """
+        self._TaskId = None
+        self._Properties = None
+        self._DryRunExtAttributes = None
+        self._DryRunParameter = None
+
+    @property
+    def TaskId(self):
+        """任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Properties(self):
+        """任务属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ParamInfoDs
+        """
+        return self._Properties
+
+    @Properties.setter
+    def Properties(self, Properties):
+        self._Properties = Properties
+
+    @property
+    def DryRunExtAttributes(self):
+        """任务试运行扩展业务属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AttributeItemDsVO
+        """
+        return self._DryRunExtAttributes
+
+    @DryRunExtAttributes.setter
+    def DryRunExtAttributes(self, DryRunExtAttributes):
+        self._DryRunExtAttributes = DryRunExtAttributes
+
+    @property
+    def DryRunParameter(self):
+        """任务试运行动态传参
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AttributeItemDsVO
+        """
+        return self._DryRunParameter
+
+    @DryRunParameter.setter
+    def DryRunParameter(self, DryRunParameter):
+        self._DryRunParameter = DryRunParameter
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        if params.get("Properties") is not None:
+            self._Properties = []
+            for item in params.get("Properties"):
+                obj = ParamInfoDs()
+                obj._deserialize(item)
+                self._Properties.append(obj)
+        if params.get("DryRunExtAttributes") is not None:
+            self._DryRunExtAttributes = []
+            for item in params.get("DryRunExtAttributes"):
+                obj = AttributeItemDsVO()
+                obj._deserialize(item)
+                self._DryRunExtAttributes.append(obj)
+        if params.get("DryRunParameter") is not None:
+            self._DryRunParameter = []
+            for item in params.get("DryRunParameter"):
+                obj = AttributeItemDsVO()
+                obj._deserialize(item)
+                self._DryRunParameter.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TaskExtInfo(AbstractModel):
     """任务扩展信息
 
@@ -85680,6 +87596,206 @@ class TaskExtInfo(AbstractModel):
     def _deserialize(self, params):
         self._Key = params.get("Key")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskFormParams(AbstractModel):
+    """任务参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _MapParamList: 参数值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MapParamList: list of ParamMapDsDto
+        :param _WorkflowId: 工作流ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowId: str
+        :param _WorkflowName: 工作流名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowName: str
+        :param _InChargeId: 负责人ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InChargeId: str
+        :param _InCharge: 负责人名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InCharge: str
+        :param _TaskName: 任务名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskName: str
+        :param _ProductName: 任务类型
+普通任务：dev
+子任务：dev_container
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductName: str
+        :param _LatestSavedVersion: 如果最新保存版本和调度版本不一致，显示最新保存版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LatestSavedVersion: str
+        :param _LatestSavedVersionId: 保存版本ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LatestSavedVersionId: str
+        """
+        self._TaskId = None
+        self._MapParamList = None
+        self._WorkflowId = None
+        self._WorkflowName = None
+        self._InChargeId = None
+        self._InCharge = None
+        self._TaskName = None
+        self._ProductName = None
+        self._LatestSavedVersion = None
+        self._LatestSavedVersionId = None
+
+    @property
+    def TaskId(self):
+        """任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def MapParamList(self):
+        """参数值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ParamMapDsDto
+        """
+        return self._MapParamList
+
+    @MapParamList.setter
+    def MapParamList(self, MapParamList):
+        self._MapParamList = MapParamList
+
+    @property
+    def WorkflowId(self):
+        """工作流ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+    @property
+    def WorkflowName(self):
+        """工作流名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkflowName
+
+    @WorkflowName.setter
+    def WorkflowName(self, WorkflowName):
+        self._WorkflowName = WorkflowName
+
+    @property
+    def InChargeId(self):
+        """负责人ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InChargeId
+
+    @InChargeId.setter
+    def InChargeId(self, InChargeId):
+        self._InChargeId = InChargeId
+
+    @property
+    def InCharge(self):
+        """负责人名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InCharge
+
+    @InCharge.setter
+    def InCharge(self, InCharge):
+        self._InCharge = InCharge
+
+    @property
+    def TaskName(self):
+        """任务名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def ProductName(self):
+        """任务类型
+普通任务：dev
+子任务：dev_container
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProductName
+
+    @ProductName.setter
+    def ProductName(self, ProductName):
+        self._ProductName = ProductName
+
+    @property
+    def LatestSavedVersion(self):
+        """如果最新保存版本和调度版本不一致，显示最新保存版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LatestSavedVersion
+
+    @LatestSavedVersion.setter
+    def LatestSavedVersion(self, LatestSavedVersion):
+        self._LatestSavedVersion = LatestSavedVersion
+
+    @property
+    def LatestSavedVersionId(self):
+        """保存版本ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LatestSavedVersionId
+
+    @LatestSavedVersionId.setter
+    def LatestSavedVersionId(self, LatestSavedVersionId):
+        self._LatestSavedVersionId = LatestSavedVersionId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        if params.get("MapParamList") is not None:
+            self._MapParamList = []
+            for item in params.get("MapParamList"):
+                obj = ParamMapDsDto()
+                obj._deserialize(item)
+                self._MapParamList.append(obj)
+        self._WorkflowId = params.get("WorkflowId")
+        self._WorkflowName = params.get("WorkflowName")
+        self._InChargeId = params.get("InChargeId")
+        self._InCharge = params.get("InCharge")
+        self._TaskName = params.get("TaskName")
+        self._ProductName = params.get("ProductName")
+        self._LatestSavedVersion = params.get("LatestSavedVersion")
+        self._LatestSavedVersionId = params.get("LatestSavedVersionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -88507,6 +90623,195 @@ class TaskScriptContent(AbstractModel):
         
 
 
+class TaskSimpleVo(AbstractModel):
+    """任务信息简易版
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务id
+        :type TaskId: str
+        :param _TaskName: 任务名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskName: str
+        :param _ProjectId: 项目id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: str
+        :param _WorkflowId: 工作流id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowId: str
+        :param _WorkflowName: 工作流名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowName: str
+        :param _InCharge: 负责人名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InCharge: str
+        :param _OwnId: 主账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnId: str
+        :param _UserId: 子账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserId: str
+        :param _TenantId: 租户id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TenantId: str
+        :param _TaskTypeId: 任务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskTypeId: int
+        """
+        self._TaskId = None
+        self._TaskName = None
+        self._ProjectId = None
+        self._WorkflowId = None
+        self._WorkflowName = None
+        self._InCharge = None
+        self._OwnId = None
+        self._UserId = None
+        self._TenantId = None
+        self._TaskTypeId = None
+
+    @property
+    def TaskId(self):
+        """任务id
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskName(self):
+        """任务名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def ProjectId(self):
+        """项目id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def WorkflowId(self):
+        """工作流id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+    @property
+    def WorkflowName(self):
+        """工作流名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkflowName
+
+    @WorkflowName.setter
+    def WorkflowName(self, WorkflowName):
+        self._WorkflowName = WorkflowName
+
+    @property
+    def InCharge(self):
+        """负责人名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InCharge
+
+    @InCharge.setter
+    def InCharge(self, InCharge):
+        self._InCharge = InCharge
+
+    @property
+    def OwnId(self):
+        """主账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OwnId
+
+    @OwnId.setter
+    def OwnId(self, OwnId):
+        self._OwnId = OwnId
+
+    @property
+    def UserId(self):
+        """子账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def TenantId(self):
+        """租户id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TenantId
+
+    @TenantId.setter
+    def TenantId(self, TenantId):
+        self._TenantId = TenantId
+
+    @property
+    def TaskTypeId(self):
+        """任务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TaskTypeId
+
+    @TaskTypeId.setter
+    def TaskTypeId(self, TaskTypeId):
+        self._TaskTypeId = TaskTypeId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TaskName = params.get("TaskName")
+        self._ProjectId = params.get("ProjectId")
+        self._WorkflowId = params.get("WorkflowId")
+        self._WorkflowName = params.get("WorkflowName")
+        self._InCharge = params.get("InCharge")
+        self._OwnId = params.get("OwnId")
+        self._UserId = params.get("UserId")
+        self._TenantId = params.get("TenantId")
+        self._TaskTypeId = params.get("TaskTypeId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TaskSubmitPreCheckDetailInfo(AbstractModel):
     """任务提交预校验详细信息
 
@@ -90301,6 +92606,239 @@ class UnlockIntegrationTaskResponse(AbstractModel):
     @property
     def Data(self):
         """操作成功与否标识
+        :rtype: bool
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateCodeTemplateRequest(AbstractModel):
+    """UpdateCodeTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目Id
+        :type ProjectId: str
+        :param _CodeTemplateId: 模版id
+        :type CodeTemplateId: str
+        :param _CodeTemplateName: 模版名	
+        :type CodeTemplateName: str
+        :param _InChargeId: 责任人列表
+        :type InChargeId: str
+        :param _InCharge: 责任人名称
+        :type InCharge: str
+        :param _Ext: 扩展属性
+        :type Ext: :class:`tencentcloud.wedata.v20210820.models.TaskExtDsVO`
+        :param _BrokerIp: 执行机ip
+        :type BrokerIp: str
+        :param _ResourceGroup: 资源组id
+        :type ResourceGroup: str
+        :param _CodeTemplateDesc: 模版描述	
+        :type CodeTemplateDesc: str
+        :param _RequestFromSource: 请求来源，WEB 前端；CLIENT 客户端
+        :type RequestFromSource: str
+        :param _ScriptChange: 脚本是否发生变化
+        :type ScriptChange: bool
+        """
+        self._ProjectId = None
+        self._CodeTemplateId = None
+        self._CodeTemplateName = None
+        self._InChargeId = None
+        self._InCharge = None
+        self._Ext = None
+        self._BrokerIp = None
+        self._ResourceGroup = None
+        self._CodeTemplateDesc = None
+        self._RequestFromSource = None
+        self._ScriptChange = None
+
+    @property
+    def ProjectId(self):
+        """项目Id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def CodeTemplateId(self):
+        """模版id
+        :rtype: str
+        """
+        return self._CodeTemplateId
+
+    @CodeTemplateId.setter
+    def CodeTemplateId(self, CodeTemplateId):
+        self._CodeTemplateId = CodeTemplateId
+
+    @property
+    def CodeTemplateName(self):
+        """模版名	
+        :rtype: str
+        """
+        return self._CodeTemplateName
+
+    @CodeTemplateName.setter
+    def CodeTemplateName(self, CodeTemplateName):
+        self._CodeTemplateName = CodeTemplateName
+
+    @property
+    def InChargeId(self):
+        """责任人列表
+        :rtype: str
+        """
+        return self._InChargeId
+
+    @InChargeId.setter
+    def InChargeId(self, InChargeId):
+        self._InChargeId = InChargeId
+
+    @property
+    def InCharge(self):
+        """责任人名称
+        :rtype: str
+        """
+        return self._InCharge
+
+    @InCharge.setter
+    def InCharge(self, InCharge):
+        self._InCharge = InCharge
+
+    @property
+    def Ext(self):
+        """扩展属性
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.TaskExtDsVO`
+        """
+        return self._Ext
+
+    @Ext.setter
+    def Ext(self, Ext):
+        self._Ext = Ext
+
+    @property
+    def BrokerIp(self):
+        """执行机ip
+        :rtype: str
+        """
+        return self._BrokerIp
+
+    @BrokerIp.setter
+    def BrokerIp(self, BrokerIp):
+        self._BrokerIp = BrokerIp
+
+    @property
+    def ResourceGroup(self):
+        """资源组id
+        :rtype: str
+        """
+        return self._ResourceGroup
+
+    @ResourceGroup.setter
+    def ResourceGroup(self, ResourceGroup):
+        self._ResourceGroup = ResourceGroup
+
+    @property
+    def CodeTemplateDesc(self):
+        """模版描述	
+        :rtype: str
+        """
+        return self._CodeTemplateDesc
+
+    @CodeTemplateDesc.setter
+    def CodeTemplateDesc(self, CodeTemplateDesc):
+        self._CodeTemplateDesc = CodeTemplateDesc
+
+    @property
+    def RequestFromSource(self):
+        """请求来源，WEB 前端；CLIENT 客户端
+        :rtype: str
+        """
+        return self._RequestFromSource
+
+    @RequestFromSource.setter
+    def RequestFromSource(self, RequestFromSource):
+        self._RequestFromSource = RequestFromSource
+
+    @property
+    def ScriptChange(self):
+        """脚本是否发生变化
+        :rtype: bool
+        """
+        return self._ScriptChange
+
+    @ScriptChange.setter
+    def ScriptChange(self, ScriptChange):
+        self._ScriptChange = ScriptChange
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._CodeTemplateId = params.get("CodeTemplateId")
+        self._CodeTemplateName = params.get("CodeTemplateName")
+        self._InChargeId = params.get("InChargeId")
+        self._InCharge = params.get("InCharge")
+        if params.get("Ext") is not None:
+            self._Ext = TaskExtDsVO()
+            self._Ext._deserialize(params.get("Ext"))
+        self._BrokerIp = params.get("BrokerIp")
+        self._ResourceGroup = params.get("ResourceGroup")
+        self._CodeTemplateDesc = params.get("CodeTemplateDesc")
+        self._RequestFromSource = params.get("RequestFromSource")
+        self._ScriptChange = params.get("ScriptChange")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateCodeTemplateResponse(AbstractModel):
+    """UpdateCodeTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """详情
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Data

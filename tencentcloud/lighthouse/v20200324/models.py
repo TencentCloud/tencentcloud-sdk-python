@@ -6587,7 +6587,7 @@ class DescribeFirewallTemplatesRequest(AbstractModel):
 <li>template-type</li>按照【防火墙模板的类型】进行过滤。
 类型：String
 必选：否
-取值: "PRIVATE"(个人模版)
+取值: "PRIVATE"(个人模板)
 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 100。参数不支持同时指定 TemplateIds 和 Filters。
         :type Filters: list of Filter
         :param _Offset: 偏移量，默认为 0。
@@ -6623,7 +6623,7 @@ class DescribeFirewallTemplatesRequest(AbstractModel):
 <li>template-type</li>按照【防火墙模板的类型】进行过滤。
 类型：String
 必选：否
-取值: "PRIVATE"(个人模版)
+取值: "PRIVATE"(个人模板)
 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 100。参数不支持同时指定 TemplateIds 和 Filters。
         :rtype: list of Filter
         """
@@ -11160,7 +11160,7 @@ class FirewallTemplate(AbstractModel):
         :type TemplateId: str
         :param _TemplateName: 模板名称。
         :type TemplateName: str
-        :param _TemplateType: 模板类型。取值: "PRIVATE"(个人模版)
+        :param _TemplateType: 模板类型。取值: "PRIVATE"(个人模板)
         :type TemplateType: str
         :param _TemplateState: 模板状态。取值: "NORMAL"(正常)
         :type TemplateState: str
@@ -11197,7 +11197,7 @@ class FirewallTemplate(AbstractModel):
 
     @property
     def TemplateType(self):
-        """模板类型。取值: "PRIVATE"(个人模版)
+        """模板类型。取值: "PRIVATE"(个人模板)
         :rtype: str
         """
         return self._TemplateType

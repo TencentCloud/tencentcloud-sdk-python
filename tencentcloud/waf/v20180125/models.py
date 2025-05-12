@@ -6519,6 +6519,8 @@ class CCRuleItems(AbstractModel):
         :type SessionApplied: list of int
         :param _CreateTime: 创建时间
         :type CreateTime: int
+        :param _LimitMethod: 限频方式
+        :type LimitMethod: str
         """
         self._Name = None
         self._Status = None
@@ -6536,6 +6538,7 @@ class CCRuleItems(AbstractModel):
         self._EventId = None
         self._SessionApplied = None
         self._CreateTime = None
+        self._LimitMethod = None
 
     @property
     def Name(self):
@@ -6713,6 +6716,17 @@ class CCRuleItems(AbstractModel):
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
 
+    @property
+    def LimitMethod(self):
+        """限频方式
+        :rtype: str
+        """
+        return self._LimitMethod
+
+    @LimitMethod.setter
+    def LimitMethod(self, LimitMethod):
+        self._LimitMethod = LimitMethod
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -6731,6 +6745,7 @@ class CCRuleItems(AbstractModel):
         self._EventId = params.get("EventId")
         self._SessionApplied = params.get("SessionApplied")
         self._CreateTime = params.get("CreateTime")
+        self._LimitMethod = params.get("LimitMethod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7349,6 +7364,10 @@ class ClbObject(AbstractModel):
         :type ObjectFlowMode: int
         :param _NumericalVpcId: 数值形式的私有网络 ID
         :type NumericalVpcId: int
+        :param _ModifyTime: 修改时间
+        :type ModifyTime: str
+        :param _AddTime: 创建时间
+        :type AddTime: str
         """
         self._ObjectId = None
         self._InstanceId = None
@@ -7373,6 +7392,8 @@ class ClbObject(AbstractModel):
         self._ApiStatus = None
         self._ObjectFlowMode = None
         self._NumericalVpcId = None
+        self._ModifyTime = None
+        self._AddTime = None
 
     @property
     def ObjectId(self):
@@ -7627,6 +7648,28 @@ class ClbObject(AbstractModel):
     def NumericalVpcId(self, NumericalVpcId):
         self._NumericalVpcId = NumericalVpcId
 
+    @property
+    def ModifyTime(self):
+        """修改时间
+        :rtype: str
+        """
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def AddTime(self):
+        """创建时间
+        :rtype: str
+        """
+        return self._AddTime
+
+    @AddTime.setter
+    def AddTime(self, AddTime):
+        self._AddTime = AddTime
+
 
     def _deserialize(self, params):
         self._ObjectId = params.get("ObjectId")
@@ -7652,6 +7695,8 @@ class ClbObject(AbstractModel):
         self._ApiStatus = params.get("ApiStatus")
         self._ObjectFlowMode = params.get("ObjectFlowMode")
         self._NumericalVpcId = params.get("NumericalVpcId")
+        self._ModifyTime = params.get("ModifyTime")
+        self._AddTime = params.get("AddTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8613,7 +8658,7 @@ class CreateHostRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Host: 防护域名配置信息
+        :param _Host: 防护域名配置信息。内网负载均衡器必须携带对应的NumericalVpcId。
         :type Host: :class:`tencentcloud.waf.v20180125.models.HostRecord`
         :param _InstanceID: 实例id
         :type InstanceID: str
@@ -8623,7 +8668,7 @@ class CreateHostRequest(AbstractModel):
 
     @property
     def Host(self):
-        """防护域名配置信息
+        """防护域名配置信息。内网负载均衡器必须携带对应的NumericalVpcId。
         :rtype: :class:`tencentcloud.waf.v20180125.models.HostRecord`
         """
         return self._Host
@@ -13997,6 +14042,8 @@ class DescribeBotSceneListRequest(AbstractModel):
         :type IsDefault: bool
         :param _IsValid: 是否仅显示生效场景
         :type IsValid: bool
+        :param _SceneId: 要查询的场景id
+        :type SceneId: str
         """
         self._Domain = None
         self._Limit = None
@@ -14005,6 +14052,7 @@ class DescribeBotSceneListRequest(AbstractModel):
         self._SceneName = None
         self._IsDefault = None
         self._IsValid = None
+        self._SceneId = None
 
     @property
     def Domain(self):
@@ -14083,6 +14131,17 @@ class DescribeBotSceneListRequest(AbstractModel):
     def IsValid(self, IsValid):
         self._IsValid = IsValid
 
+    @property
+    def SceneId(self):
+        """要查询的场景id
+        :rtype: str
+        """
+        return self._SceneId
+
+    @SceneId.setter
+    def SceneId(self, SceneId):
+        self._SceneId = SceneId
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -14092,6 +14151,7 @@ class DescribeBotSceneListRequest(AbstractModel):
         self._SceneName = params.get("SceneName")
         self._IsDefault = params.get("IsDefault")
         self._IsValid = params.get("IsValid")
+        self._SceneId = params.get("SceneId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14230,7 +14290,6 @@ class DescribeBotSceneOverviewResponse(AbstractModel):
         :param _ValidSceneCount: 生效场景数
         :type ValidSceneCount: int
         :param _CurrentGlobalScene: 当前开启的、匹配范围为全局、优先级最高的场景
-注意：此字段可能返回 null，表示取不到有效值。
         :type CurrentGlobalScene: :class:`tencentcloud.waf.v20180125.models.GlobalSceneInfo`
         :param _CustomRuleNums: 自定义规则总数，不包括BOT白名单
         :type CustomRuleNums: int
@@ -14280,7 +14339,6 @@ class DescribeBotSceneOverviewResponse(AbstractModel):
     @property
     def CurrentGlobalScene(self):
         """当前开启的、匹配范围为全局、优先级最高的场景
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.waf.v20180125.models.GlobalSceneInfo`
         """
         return self._CurrentGlobalScene
@@ -14350,6 +14408,8 @@ class DescribeBotSceneUCBRuleRequest(AbstractModel):
         :type TimerType: int
         :param _ValidStatus: 0-全部 1-生效中 2-已过期
         :type ValidStatus: int
+        :param _RuleId: 规则id
+        :type RuleId: str
         """
         self._Domain = None
         self._Skip = None
@@ -14361,6 +14421,7 @@ class DescribeBotSceneUCBRuleRequest(AbstractModel):
         self._VersionFlag = None
         self._TimerType = None
         self._ValidStatus = None
+        self._RuleId = None
 
     @property
     def Domain(self):
@@ -14472,6 +14533,17 @@ class DescribeBotSceneUCBRuleRequest(AbstractModel):
     def ValidStatus(self, ValidStatus):
         self._ValidStatus = ValidStatus
 
+    @property
+    def RuleId(self):
+        """规则id
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -14484,6 +14556,7 @@ class DescribeBotSceneUCBRuleRequest(AbstractModel):
         self._VersionFlag = params.get("VersionFlag")
         self._TimerType = params.get("TimerType")
         self._ValidStatus = params.get("ValidStatus")
+        self._RuleId = params.get("RuleId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14502,7 +14575,6 @@ class DescribeBotSceneUCBRuleResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 返回数据包
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.waf.v20180125.models.DescribeBotUCBRuleRsp`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14513,7 +14585,6 @@ class DescribeBotSceneUCBRuleResponse(AbstractModel):
     @property
     def Data(self):
         """返回数据包
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeBotUCBRuleRsp`
         """
         return self._Data
@@ -15002,7 +15073,7 @@ class DescribeCertificateVerifyResultRequest(AbstractModel):
         r"""
         :param _Domain: 域名
         :type Domain: str
-        :param _CertType: 证书类型。 0：不检测国际标准证书 1：证书来源为自有证书 2：证书来源为托管证书
+        :param _CertType: 证书类型，此参数和GmCertType不可同时为0。 0：不检测国际标准证书 1：证书来源为自有证书 2：证书来源为托管证书
         :type CertType: int
         :param _Certificate: CertType为1时，需要填充此参数，表示自有证书的证书链
         :type Certificate: str
@@ -15010,7 +15081,7 @@ class DescribeCertificateVerifyResultRequest(AbstractModel):
         :type CertID: str
         :param _PrivateKey: CertType为1时，需要填充此参数，表示自有证书的私钥
         :type PrivateKey: str
-        :param _GmCertType: 国密证书类型。0：不检测国密证书 1：证书来源为自有国密证书 2：证书来源为托管国密证书
+        :param _GmCertType: 国密证书类型，此参数和CertType不可同时为0。0：不检测国密证书 1：证书来源为自有国密证书 2：证书来源为托管国密证书
         :type GmCertType: int
         :param _GmCert: GmCertType为1时，需要填充此参数，表示自有国密证书的证书链
         :type GmCert: str
@@ -15048,7 +15119,7 @@ class DescribeCertificateVerifyResultRequest(AbstractModel):
 
     @property
     def CertType(self):
-        """证书类型。 0：不检测国际标准证书 1：证书来源为自有证书 2：证书来源为托管证书
+        """证书类型，此参数和GmCertType不可同时为0。 0：不检测国际标准证书 1：证书来源为自有证书 2：证书来源为托管证书
         :rtype: int
         """
         return self._CertType
@@ -15092,7 +15163,7 @@ class DescribeCertificateVerifyResultRequest(AbstractModel):
 
     @property
     def GmCertType(self):
-        """国密证书类型。0：不检测国密证书 1：证书来源为自有国密证书 2：证书来源为托管国密证书
+        """国密证书类型，此参数和CertType不可同时为0。0：不检测国密证书 1：证书来源为自有国密证书 2：证书来源为托管国密证书
         :rtype: int
         """
         return self._GmCertType
@@ -18691,8 +18762,14 @@ class DescribeObjectsRequest(AbstractModel):
         r"""
         :param _Filters: 支持的过滤器:	ObjectId: clb实例ID	VIP: clb实例的公网IP	InstanceId: waf实例ID	Domain: 精准域名	Status: waf防护开关状态: 0关闭，1开启	ClsStatus: waf日志开关: 0关闭，1开启   
         :type Filters: list of FiltersItemNew
+        :param _Order: 排序方式，支持asc或者desc
+        :type Order: str
+        :param _By: 根据哪个字段排序
+        :type By: str
         """
         self._Filters = None
+        self._Order = None
+        self._By = None
 
     @property
     def Filters(self):
@@ -18705,6 +18782,28 @@ class DescribeObjectsRequest(AbstractModel):
     def Filters(self, Filters):
         self._Filters = Filters
 
+    @property
+    def Order(self):
+        """排序方式，支持asc或者desc
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        """根据哪个字段排序
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
 
     def _deserialize(self, params):
         if params.get("Filters") is not None:
@@ -18713,6 +18812,8 @@ class DescribeObjectsRequest(AbstractModel):
                 obj = FiltersItemNew()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._Order = params.get("Order")
+        self._By = params.get("By")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27196,6 +27297,8 @@ class InOutputBotUCBRule(AbstractModel):
         :type BlockPageId: int
         :param _ActionList: 当Action=intercept时，此字段必填
         :type ActionList: list of UCBActionProportion
+        :param _DelayTime: 惩罚时间
+        :type DelayTime: int
         """
         self._Domain = None
         self._Name = None
@@ -27220,6 +27323,7 @@ class InOutputBotUCBRule(AbstractModel):
         self._ValidStatus = None
         self._BlockPageId = None
         self._ActionList = None
+        self._DelayTime = None
 
     @property
     def Domain(self):
@@ -27474,6 +27578,17 @@ class InOutputBotUCBRule(AbstractModel):
     def ActionList(self, ActionList):
         self._ActionList = ActionList
 
+    @property
+    def DelayTime(self):
+        """惩罚时间
+        :rtype: int
+        """
+        return self._DelayTime
+
+    @DelayTime.setter
+    def DelayTime(self, DelayTime):
+        self._DelayTime = DelayTime
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -27511,6 +27626,7 @@ class InOutputBotUCBRule(AbstractModel):
                 obj = UCBActionProportion()
                 obj._deserialize(item)
                 self._ActionList.append(obj)
+        self._DelayTime = params.get("DelayTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27546,6 +27662,8 @@ class InOutputUCBRuleEntry(AbstractModel):
         :type Areas: list of Area
         :param _Lang: 语言环境
         :type Lang: str
+        :param _ParamCompareList: 参数匹配
+        :type ParamCompareList: list of ParamCompareList
         """
         self._Key = None
         self._Op = None
@@ -27556,6 +27674,7 @@ class InOutputUCBRuleEntry(AbstractModel):
         self._Name = None
         self._Areas = None
         self._Lang = None
+        self._ParamCompareList = None
 
     @property
     def Key(self):
@@ -27656,6 +27775,17 @@ class InOutputUCBRuleEntry(AbstractModel):
     def Lang(self, Lang):
         self._Lang = Lang
 
+    @property
+    def ParamCompareList(self):
+        """参数匹配
+        :rtype: list of ParamCompareList
+        """
+        return self._ParamCompareList
+
+    @ParamCompareList.setter
+    def ParamCompareList(self, ParamCompareList):
+        self._ParamCompareList = ParamCompareList
+
 
     def _deserialize(self, params):
         self._Key = params.get("Key")
@@ -27674,6 +27804,12 @@ class InOutputUCBRuleEntry(AbstractModel):
                 obj._deserialize(item)
                 self._Areas.append(obj)
         self._Lang = params.get("Lang")
+        if params.get("ParamCompareList") is not None:
+            self._ParamCompareList = []
+            for item in params.get("ParamCompareList"):
+                obj = ParamCompareList()
+                obj._deserialize(item)
+                self._ParamCompareList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29086,8 +29222,6 @@ class LoadBalancer(AbstractModel):
         :type ListenerId: str
         :param _ListenerName: 负载均衡监听器的名称
         :type ListenerName: str
-        :param _Vip: 负载均衡实例的IP
-        :type Vip: str
         :param _Vport: 负载均衡实例的端口
         :type Vport: int
         :param _Region: 负载均衡LD的地域
@@ -29096,6 +29230,8 @@ class LoadBalancer(AbstractModel):
         :type Protocol: str
         :param _Zone: 负载均衡监听器所在的zone
         :type Zone: str
+        :param _Vip: 负载均衡实例的IP。域名化CLB VIP可填空。
+        :type Vip: str
         :param _NumericalVpcId: 负载均衡的VPCID，公网为-1，内网按实际填写
         :type NumericalVpcId: int
         :param _LoadBalancerType: 负载均衡的网络类型。OPEN： 公网 INTERNAL ：内网
@@ -29107,11 +29243,11 @@ class LoadBalancer(AbstractModel):
         self._LoadBalancerName = None
         self._ListenerId = None
         self._ListenerName = None
-        self._Vip = None
         self._Vport = None
         self._Region = None
         self._Protocol = None
         self._Zone = None
+        self._Vip = None
         self._NumericalVpcId = None
         self._LoadBalancerType = None
         self._LoadBalancerDomain = None
@@ -29161,17 +29297,6 @@ class LoadBalancer(AbstractModel):
         self._ListenerName = ListenerName
 
     @property
-    def Vip(self):
-        """负载均衡实例的IP
-        :rtype: str
-        """
-        return self._Vip
-
-    @Vip.setter
-    def Vip(self, Vip):
-        self._Vip = Vip
-
-    @property
     def Vport(self):
         """负载均衡实例的端口
         :rtype: int
@@ -29216,6 +29341,17 @@ class LoadBalancer(AbstractModel):
         self._Zone = Zone
 
     @property
+    def Vip(self):
+        """负载均衡实例的IP。域名化CLB VIP可填空。
+        :rtype: str
+        """
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
     def NumericalVpcId(self):
         """负载均衡的VPCID，公网为-1，内网按实际填写
         :rtype: int
@@ -29254,11 +29390,11 @@ class LoadBalancer(AbstractModel):
         self._LoadBalancerName = params.get("LoadBalancerName")
         self._ListenerId = params.get("ListenerId")
         self._ListenerName = params.get("ListenerName")
-        self._Vip = params.get("Vip")
         self._Vport = params.get("Vport")
         self._Region = params.get("Region")
         self._Protocol = params.get("Protocol")
         self._Zone = params.get("Zone")
+        self._Vip = params.get("Vip")
         self._NumericalVpcId = params.get("NumericalVpcId")
         self._LoadBalancerType = params.get("LoadBalancerType")
         self._LoadBalancerDomain = params.get("LoadBalancerDomain")
@@ -31664,10 +31800,13 @@ class ModifyBotSceneUCBRuleResponse(AbstractModel):
         r"""
         :param _Data: 正常情况下为null
         :type Data: str
+        :param _RuleIdList: ["1231"]
+        :type RuleIdList: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
+        self._RuleIdList = None
         self._RequestId = None
 
     @property
@@ -31680,6 +31819,17 @@ class ModifyBotSceneUCBRuleResponse(AbstractModel):
     @Data.setter
     def Data(self, Data):
         self._Data = Data
+
+    @property
+    def RuleIdList(self):
+        """["1231"]
+        :rtype: list of str
+        """
+        return self._RuleIdList
+
+    @RuleIdList.setter
+    def RuleIdList(self, RuleIdList):
+        self._RuleIdList = RuleIdList
 
     @property
     def RequestId(self):
@@ -31695,6 +31845,7 @@ class ModifyBotSceneUCBRuleResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Data = params.get("Data")
+        self._RuleIdList = params.get("RuleIdList")
         self._RequestId = params.get("RequestId")
 
 
@@ -36405,6 +36556,57 @@ class ModifyWebshellStatusResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ParamCompareList(AbstractModel):
+    """bot-自定义规则请求参数比对结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 请求参数比对的匹配参数
+        :type Key: str
+        :param _Value: 请求参数比对的匹配值
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        """请求参数比对的匹配参数
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        """请求参数比对的匹配值
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PeakPointsItem(AbstractModel):
     """PeakPoints数组项
 
@@ -39339,7 +39541,7 @@ class SpartaProtectionPort(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NginxServerId: 分配的服务器id
+        :param _NginxServerId: 分配的服务器id。首次接入的域名和端口该参数填0，已接入的域名和端口分配的id可以通过DescribeDomainDetailsSaas或DescribeDomains接口获取。
         :type NginxServerId: int
         :param _Port: 端口
         :type Port: str
@@ -39358,7 +39560,7 @@ class SpartaProtectionPort(AbstractModel):
 
     @property
     def NginxServerId(self):
-        """分配的服务器id
+        """分配的服务器id。首次接入的域名和端口该参数填0，已接入的域名和端口分配的id可以通过DescribeDomainDetailsSaas或DescribeDomains接口获取。
         :rtype: int
         """
         return self._NginxServerId
@@ -40566,7 +40768,7 @@ class UpsertCCRuleRequest(AbstractModel):
         :type Priority: int
         :param _ValidTime: 动作有效时间
         :type ValidTime: int
-        :param _OptionsArr: CC的匹配条件JSON序列化的字符串，示例：[{\"key\":\"Method\",\"args\":[\"=R0VU\"],\"match\":\"0\",\"encodeflag\":true}] Key可选值为 Method、Post、Referer、Cookie、User-Agent、CustomHeader match可选值为，当Key为Method的时候可选值为0（等于）、3（不等于）。 Key为Post的时候可选值为0（等于）、3（不等于），Key为Cookie的时候可选值为0（等于）、2（包含），3（不等于）、7（不包含）、 当Key为Referer的时候可选值为0（等于）、3（不等于）、1（前缀匹配）、6（后缀匹配）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为Cookie的时候可选值为0（等于）、3（不等于）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为User-Agent的时候可选值为0（等于）、3（不等于）、1（前缀匹配）、6（后缀匹配）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为CustomHeader的时候可选值为0（等于）、3（不等于）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）。 args用来表示匹配内容，需要设置encodeflag为true，当Key为Post、Cookie、CustomHeader时，用等号=来分别串接Key和Value，并分别用Base64编码，类似YWJj=YWJj。当Key为Referer、User-Agent时，用等号=来串接Value，类似=YWJj。
+        :param _OptionsArr: CC的匹配条件JSON序列化的字符串，示例：[{\"key\":\"Method\",\"args\":[\"=R0VU\"],\"match\":\"0\",\"encodeflag\":true}] Key可选值为 Method、Post、Referer、Cookie、User-Agent、CustomHeader match可选值为，当Key为Method的时候可选值为0（等于）、3（不等于）。 Key为Post的时候可选值为0（等于）、3（不等于），Key为Cookie的时候可选值为0（等于）、2（包含），3（不等于）、7（不包含）、 当Key为Referer的时候可选值为0（等于）、3（不等于）、1（前缀匹配）、6（后缀匹配）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为Cookie的时候可选值为0（等于）、3（不等于）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为User-Agent的时候可选值为0（等于）、3（不等于）、1（前缀匹配）、6（后缀匹配）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为CustomHeader的时候可选值为0（等于）、3（不等于）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）。 Key为IPLocation时，可选值为13（属于）、14（不属于）。args用来表示匹配内容，需要设置encodeflag为true，当Key为Post、Cookie、CustomHeader时，用等号=来分别串接Key和Value，并分别用Base64编码，类似YWJj=YWJj。当Key为Referer、User-Agent时，用等号=来串接Value，类似=YWJj。
         :type OptionsArr: str
         :param _Edition: waf版本，sparta-waf或者clb-waf
         :type Edition: str
@@ -40582,6 +40784,8 @@ class UpsertCCRuleRequest(AbstractModel):
         :type CreateTime: int
         :param _Length: url长度
         :type Length: int
+        :param _LimitMethod: 限频方式
+        :type LimitMethod: str
         """
         self._Domain = None
         self._Name = None
@@ -40602,6 +40806,7 @@ class UpsertCCRuleRequest(AbstractModel):
         self._RuleId = None
         self._CreateTime = None
         self._Length = None
+        self._LimitMethod = None
 
     @property
     def Domain(self):
@@ -40726,7 +40931,7 @@ class UpsertCCRuleRequest(AbstractModel):
 
     @property
     def OptionsArr(self):
-        """CC的匹配条件JSON序列化的字符串，示例：[{\"key\":\"Method\",\"args\":[\"=R0VU\"],\"match\":\"0\",\"encodeflag\":true}] Key可选值为 Method、Post、Referer、Cookie、User-Agent、CustomHeader match可选值为，当Key为Method的时候可选值为0（等于）、3（不等于）。 Key为Post的时候可选值为0（等于）、3（不等于），Key为Cookie的时候可选值为0（等于）、2（包含），3（不等于）、7（不包含）、 当Key为Referer的时候可选值为0（等于）、3（不等于）、1（前缀匹配）、6（后缀匹配）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为Cookie的时候可选值为0（等于）、3（不等于）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为User-Agent的时候可选值为0（等于）、3（不等于）、1（前缀匹配）、6（后缀匹配）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为CustomHeader的时候可选值为0（等于）、3（不等于）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）。 args用来表示匹配内容，需要设置encodeflag为true，当Key为Post、Cookie、CustomHeader时，用等号=来分别串接Key和Value，并分别用Base64编码，类似YWJj=YWJj。当Key为Referer、User-Agent时，用等号=来串接Value，类似=YWJj。
+        """CC的匹配条件JSON序列化的字符串，示例：[{\"key\":\"Method\",\"args\":[\"=R0VU\"],\"match\":\"0\",\"encodeflag\":true}] Key可选值为 Method、Post、Referer、Cookie、User-Agent、CustomHeader match可选值为，当Key为Method的时候可选值为0（等于）、3（不等于）。 Key为Post的时候可选值为0（等于）、3（不等于），Key为Cookie的时候可选值为0（等于）、2（包含），3（不等于）、7（不包含）、 当Key为Referer的时候可选值为0（等于）、3（不等于）、1（前缀匹配）、6（后缀匹配）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为Cookie的时候可选值为0（等于）、3（不等于）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为User-Agent的时候可选值为0（等于）、3（不等于）、1（前缀匹配）、6（后缀匹配）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为CustomHeader的时候可选值为0（等于）、3（不等于）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）。 Key为IPLocation时，可选值为13（属于）、14（不属于）。args用来表示匹配内容，需要设置encodeflag为true，当Key为Post、Cookie、CustomHeader时，用等号=来分别串接Key和Value，并分别用Base64编码，类似YWJj=YWJj。当Key为Referer、User-Agent时，用等号=来串接Value，类似=YWJj。
         :rtype: str
         """
         return self._OptionsArr
@@ -40812,6 +41017,17 @@ class UpsertCCRuleRequest(AbstractModel):
     def Length(self, Length):
         self._Length = Length
 
+    @property
+    def LimitMethod(self):
+        """限频方式
+        :rtype: str
+        """
+        return self._LimitMethod
+
+    @LimitMethod.setter
+    def LimitMethod(self, LimitMethod):
+        self._LimitMethod = LimitMethod
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -40833,6 +41049,7 @@ class UpsertCCRuleRequest(AbstractModel):
         self._RuleId = params.get("RuleId")
         self._CreateTime = params.get("CreateTime")
         self._Length = params.get("Length")
+        self._LimitMethod = params.get("LimitMethod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

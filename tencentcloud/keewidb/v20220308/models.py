@@ -1681,6 +1681,8 @@ class DescribeInstanceBackupsResponse(AbstractModel):
 
     @property
     def BackupSet(self):
+        warnings.warn("parameter `BackupSet` is deprecated", DeprecationWarning) 
+
         """废弃字段。
         :rtype: list of BinlogInfo
         """
@@ -1688,6 +1690,8 @@ class DescribeInstanceBackupsResponse(AbstractModel):
 
     @BackupSet.setter
     def BackupSet(self, BackupSet):
+        warnings.warn("parameter `BackupSet` is deprecated", DeprecationWarning) 
+
         self._BackupSet = BackupSet
 
     @property

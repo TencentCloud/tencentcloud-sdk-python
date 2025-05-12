@@ -1543,31 +1543,6 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeCpuExpandStrategy(self, request):
-        """DescribeCpuExpandStrategy
-
-        通过该 API 可以查询实例的 CPU 弹性扩容策略
-
-        :param request: Request instance for DescribeCpuExpandStrategy.
-        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeCpuExpandStrategyRequest`
-        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeCpuExpandStrategyResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeCpuExpandStrategy", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeCpuExpandStrategyResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeDBFeatures(self, request):
         """本接口（DescribeDBFeatures）用于查询云数据库版本属性，包括是否支持数据库加密、数据库审计等功能。
 

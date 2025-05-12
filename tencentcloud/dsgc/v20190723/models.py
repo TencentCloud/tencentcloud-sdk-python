@@ -22167,6 +22167,8 @@ class DspaDiscoveryTask(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TaskId: 任务ID
+        :type TaskId: int
         :param _Name: 任务名称
         :type Name: str
         :param _Description: 任务描述
@@ -22191,6 +22193,7 @@ class DspaDiscoveryTask(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type ComplianceUpdate: bool
         """
+        self._TaskId = None
         self._Name = None
         self._Description = None
         self._Period = None
@@ -22201,6 +22204,17 @@ class DspaDiscoveryTask(AbstractModel):
         self._Result = None
         self._TimingStartTime = None
         self._ComplianceUpdate = None
+
+    @property
+    def TaskId(self):
+        """任务ID
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
     @property
     def Name(self):
@@ -22317,6 +22331,7 @@ class DspaDiscoveryTask(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._Name = params.get("Name")
         self._Description = params.get("Description")
         self._Period = params.get("Period")
