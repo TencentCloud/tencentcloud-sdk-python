@@ -26,6 +26,29 @@ class BillingClient(AbstractClient):
     _service = 'billing'
 
 
+    def CreateAllocationRule(self, request):
+        """创建公摊规则
+
+        :param request: Request instance for CreateAllocationRule.
+        :type request: :class:`tencentcloud.billing.v20180709.models.CreateAllocationRuleRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.CreateAllocationRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAllocationRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAllocationRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAllocationTag(self, request):
         """批量设置分账标签
 
@@ -49,6 +72,75 @@ class BillingClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAllocationUnit(self, request):
+        """创建分账单元
+
+        :param request: Request instance for CreateAllocationUnit.
+        :type request: :class:`tencentcloud.billing.v20180709.models.CreateAllocationUnitRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.CreateAllocationUnitResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAllocationUnit", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAllocationUnitResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateGatherRule(self, request):
+        """创建归集规则
+
+        :param request: Request instance for CreateGatherRule.
+        :type request: :class:`tencentcloud.billing.v20180709.models.CreateGatherRuleRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.CreateGatherRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateGatherRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateGatherRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteAllocationRule(self, request):
+        """公摊规则删除接口
+
+        :param request: Request instance for DeleteAllocationRule.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DeleteAllocationRuleRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DeleteAllocationRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAllocationRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAllocationRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteAllocationTag(self, request):
         """批量取消设置分账标签
 
@@ -63,6 +155,52 @@ class BillingClient(AbstractClient):
             body = self.call("DeleteAllocationTag", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteAllocationTagResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteAllocationUnit(self, request):
+        """删除分账单元
+
+        :param request: Request instance for DeleteAllocationUnit.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DeleteAllocationUnitRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DeleteAllocationUnitResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAllocationUnit", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAllocationUnitResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteGatherRule(self, request):
+        """删除归集规则
+
+        :param request: Request instance for DeleteGatherRule.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DeleteGatherRuleRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DeleteGatherRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteGatherRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteGatherRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -210,6 +348,52 @@ class BillingClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAllocationRuleDetail(self, request):
+        """查询公摊规则详情
+
+        :param request: Request instance for DescribeAllocationRuleDetail.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationRuleDetailRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationRuleDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAllocationRuleDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAllocationRuleDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAllocationRuleSummary(self, request):
+        """查询所有公摊规则概览
+
+        :param request: Request instance for DescribeAllocationRuleSummary.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationRuleSummaryRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationRuleSummaryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAllocationRuleSummary", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAllocationRuleSummaryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAllocationSummaryByBusiness(self, request):
         """查询分账账单按产品汇总
 
@@ -279,6 +463,29 @@ class BillingClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAllocationTree(self, request):
+        """查询分账目录树
+
+        :param request: Request instance for DescribeAllocationTree.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationTreeRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationTreeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAllocationTree", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAllocationTreeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAllocationTrendByMonth(self, request):
         """查询分账账单费用趋势
 
@@ -293,6 +500,29 @@ class BillingClient(AbstractClient):
             body = self.call("DescribeAllocationTrendByMonth", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAllocationTrendByMonthResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAllocationUnitDetail(self, request):
+        """查询分账单元详情
+
+        :param request: Request instance for DescribeAllocationUnitDetail.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationUnitDetailRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationUnitDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAllocationUnitDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAllocationUnitDetailResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -884,6 +1114,29 @@ class BillingClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeGatherRuleDetail(self, request):
+        """查询归集规则详情
+
+        :param request: Request instance for DescribeGatherRuleDetail.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeGatherRuleDetailRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeGatherRuleDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGatherRuleDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeGatherRuleDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSavingPlanResourceInfo(self, request):
         """查询节省计划详情
 
@@ -967,6 +1220,75 @@ class BillingClient(AbstractClient):
             body = self.call("DescribeVoucherUsageDetails", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeVoucherUsageDetailsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyAllocationRule(self, request):
+        """编辑公摊规则
+
+        :param request: Request instance for ModifyAllocationRule.
+        :type request: :class:`tencentcloud.billing.v20180709.models.ModifyAllocationRuleRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.ModifyAllocationRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAllocationRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAllocationRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyAllocationUnit(self, request):
+        """修改分账单元信息
+
+        :param request: Request instance for ModifyAllocationUnit.
+        :type request: :class:`tencentcloud.billing.v20180709.models.ModifyAllocationUnitRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.ModifyAllocationUnitResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAllocationUnit", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAllocationUnitResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyGatherRule(self, request):
+        """编辑归集规则
+
+        :param request: Request instance for ModifyGatherRule.
+        :type request: :class:`tencentcloud.billing.v20180709.models.ModifyGatherRuleRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.ModifyGatherRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyGatherRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyGatherRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

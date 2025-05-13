@@ -822,7 +822,6 @@ class AclConfig(AbstractModel):
         :param _AclUserRules: 用户自定义规则。
         :type AclUserRules: list of AclUserRule
         :param _Customizes: 托管定制规则
-注意：此字段可能返回 null，表示取不到有效值。
         :type Customizes: list of AclUserRule
         """
         self._Switch = None
@@ -856,7 +855,6 @@ class AclConfig(AbstractModel):
     @property
     def Customizes(self):
         """托管定制规则
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AclUserRule
         """
         return self._Customizes
@@ -1619,7 +1617,6 @@ class AlgDetectRule(AbstractModel):
         :param _AlgConditions: 自定义规则。
         :type AlgConditions: list of AclCondition
         :param _AlgDetectSession: Cookie校验和会话行为分析。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AlgDetectSession: :class:`tencentcloud.teo.v20220901.models.AlgDetectSession`
         :param _AlgDetectJS: 客户端行为校验。
         :type AlgDetectJS: list of AlgDetectJS
@@ -1681,7 +1678,6 @@ class AlgDetectRule(AbstractModel):
     @property
     def AlgDetectSession(self):
         """Cookie校验和会话行为分析。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.AlgDetectSession`
         """
         return self._AlgDetectSession
@@ -22633,10 +22629,8 @@ class DropPageConfig(AbstractModel):
 <li>off：关闭。</li>
         :type Switch: str
         :param _WafDropPageDetail: Waf(托管规则)模块的拦截页面配置。如果为null，默认使用历史配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :type WafDropPageDetail: :class:`tencentcloud.teo.v20220901.models.DropPageDetail`
         :param _AclDropPageDetail: 自定义页面的拦截页面配置。如果为null，默认使用历史配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AclDropPageDetail: :class:`tencentcloud.teo.v20220901.models.DropPageDetail`
         """
         self._Switch = None
@@ -22659,7 +22653,6 @@ class DropPageConfig(AbstractModel):
     @property
     def WafDropPageDetail(self):
         """Waf(托管规则)模块的拦截页面配置。如果为null，默认使用历史配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.DropPageDetail`
         """
         return self._WafDropPageDetail
@@ -22671,7 +22664,6 @@ class DropPageConfig(AbstractModel):
     @property
     def AclDropPageDetail(self):
         """自定义页面的拦截页面配置。如果为null，默认使用历史配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.DropPageDetail`
         """
         return self._AclDropPageDetail
@@ -26512,10 +26504,8 @@ class IntelligenceRule(AbstractModel):
         :param _Switch: 开关，取值有：
 <li>on：开启；</li>
 <li>off：关闭。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
         :param _IntelligenceRuleItems: 规则详情。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IntelligenceRuleItems: list of IntelligenceRuleItem
         """
         self._Switch = None
@@ -26526,7 +26516,6 @@ class IntelligenceRule(AbstractModel):
         """开关，取值有：
 <li>on：开启；</li>
 <li>off：关闭。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Switch
@@ -26538,7 +26527,6 @@ class IntelligenceRule(AbstractModel):
     @property
     def IntelligenceRuleItems(self):
         """规则详情。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of IntelligenceRuleItem
         """
         return self._IntelligenceRuleItems
@@ -40923,14 +40911,12 @@ class SkipCondition(AbstractModel):
 <li>wildcard：通配符匹配，支持 * 通配。</li>
         :type MatchFromType: str
         :param _MatchFrom: 匹配Key的值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MatchFrom: list of str
         :param _MatchContentType: 匹配Content所使用的匹配方式，取值为：
 <li>equal：精准匹配，等于；</li>
 <li>wildcard：通配符匹配，支持 * 通配。</li>
         :type MatchContentType: str
         :param _MatchContent: 匹配Value的值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MatchContent: list of str
         """
         self._Type = None
@@ -40991,7 +40977,6 @@ class SkipCondition(AbstractModel):
     @property
     def MatchFrom(self):
         """匹配Key的值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._MatchFrom
@@ -41016,7 +41001,6 @@ class SkipCondition(AbstractModel):
     @property
     def MatchContent(self):
         """匹配Value的值。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._MatchContent
@@ -41171,10 +41155,8 @@ class SlowRateConfig(AbstractModel):
 <li>off：关闭。</li>
         :type Switch: str
         :param _Interval: 统计的间隔，单位是秒，即在首段包传输结束后，将数据传输轴按照本参数切分，每个分片独立计算慢速攻击。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Interval: int
         :param _Threshold: 统计时应用的速率阈值，单位是bps，即如果本分片中的传输速率没达到本参数的值，则判定为慢速攻击，应用慢速攻击的处置方式。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Threshold: int
         """
         self._Switch = None
@@ -41197,7 +41179,6 @@ class SlowRateConfig(AbstractModel):
     @property
     def Interval(self):
         """统计的间隔，单位是秒，即在首段包传输结束后，将数据传输轴按照本参数切分，每个分片独立计算慢速攻击。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Interval
@@ -41209,7 +41190,6 @@ class SlowRateConfig(AbstractModel):
     @property
     def Threshold(self):
         """统计时应用的速率阈值，单位是bps，即如果本分片中的传输速率没达到本参数的值，则判定为慢速攻击，应用慢速攻击的处置方式。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Threshold

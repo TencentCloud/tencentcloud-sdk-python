@@ -4223,14 +4223,14 @@ class DeleteLifecycleHookRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LifecycleHookId: 生命周期挂钩ID
+        :param _LifecycleHookId: 生命周期挂钩ID。可以通过调用接口 [DescribeLifecycleHooks](https://cloud.tencent.com/document/api/377/34452) ，取返回信息中的 LifecycleHookId 获取生命周期挂钩ID。
         :type LifecycleHookId: str
         """
         self._LifecycleHookId = None
 
     @property
     def LifecycleHookId(self):
-        """生命周期挂钩ID
+        """生命周期挂钩ID。可以通过调用接口 [DescribeLifecycleHooks](https://cloud.tencent.com/document/api/377/34452) ，取返回信息中的 LifecycleHookId 获取生命周期挂钩ID。
         :rtype: str
         """
         return self._LifecycleHookId
@@ -4848,8 +4848,11 @@ class DescribeAutoScalingGroupLastActivitiesRequest(AbstractModel):
         r"""
         :param _AutoScalingGroupIds: 伸缩组ID列表
         :type AutoScalingGroupIds: list of str
+        :param _ExcludeCancelledActivity: 查询时排除取消类型活动。默认值为 false，表示不排除取消类型活动。
+        :type ExcludeCancelledActivity: bool
         """
         self._AutoScalingGroupIds = None
+        self._ExcludeCancelledActivity = None
 
     @property
     def AutoScalingGroupIds(self):
@@ -4862,9 +4865,21 @@ class DescribeAutoScalingGroupLastActivitiesRequest(AbstractModel):
     def AutoScalingGroupIds(self, AutoScalingGroupIds):
         self._AutoScalingGroupIds = AutoScalingGroupIds
 
+    @property
+    def ExcludeCancelledActivity(self):
+        """查询时排除取消类型活动。默认值为 false，表示不排除取消类型活动。
+        :rtype: bool
+        """
+        return self._ExcludeCancelledActivity
+
+    @ExcludeCancelledActivity.setter
+    def ExcludeCancelledActivity(self, ExcludeCancelledActivity):
+        self._ExcludeCancelledActivity = ExcludeCancelledActivity
+
 
     def _deserialize(self, params):
         self._AutoScalingGroupIds = params.get("AutoScalingGroupIds")
+        self._ExcludeCancelledActivity = params.get("ExcludeCancelledActivity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9031,19 +9046,24 @@ class LifecycleHook(AbstractModel):
         :type LifecycleHookName: str
         :param _AutoScalingGroupId: 伸缩组ID
         :type AutoScalingGroupId: str
-        :param _DefaultResult: 生命周期挂钩默认结果
+        :param _DefaultResult: 定义伸缩组在生命周期挂钩超时或 LifecycleCommand 执行失败时应采取的操作，取值范围如下：
+- CONTINUE: 默认值，表示继续执行扩缩容活动
+- ABANDON: 针对扩容挂钩，挂钩超时或 LifecycleCommand 执行失败的 CVM 实例会直接释放或移出；而针对缩容挂钩，会继续执行缩容活动
         :type DefaultResult: str
-        :param _HeartbeatTimeout: 生命周期挂钩等待超时时间
+        :param _HeartbeatTimeout: 生命周期挂钩超时等待时间（以秒为单位），范围从 30 到 7200 秒。
         :type HeartbeatTimeout: int
-        :param _LifecycleTransition: 生命周期挂钩适用场景
+        :param _LifecycleTransition: 生命周期挂钩场景，取值范围如下:
+- INSTANCE_LAUNCHING: 扩容生命周期挂钩
+- INSTANCE_TERMINATING: 缩容生命周期挂钩
         :type LifecycleTransition: str
         :param _NotificationMetadata: 通知目标的附加信息
         :type NotificationMetadata: str
-        :param _CreatedTime: 创建时间
+        :param _CreatedTime: 创建时间，采用 UTC 标准计时
         :type CreatedTime: str
         :param _NotificationTarget: 通知目标
         :type NotificationTarget: :class:`tencentcloud.autoscaling.v20180419.models.NotificationTarget`
-        :param _LifecycleTransitionType: 生命周期挂钩适用场景
+        :param _LifecycleTransitionType: 进行生命周期挂钩的场景类型，取值范围包括 NORMAL 和 EXTENSION，默认值为 NORMAL。
+说明：设置为EXTENSION值，在AttachInstances、DetachInstances、RemoveInstances 接口时会触发生命周期挂钩操作，值为NORMAL则不会在这些接口中触发生命周期挂钩。
         :type LifecycleTransitionType: str
         :param _LifecycleCommand: 远程命令执行对象
         :type LifecycleCommand: :class:`tencentcloud.autoscaling.v20180419.models.LifecycleCommand`
@@ -9095,7 +9115,9 @@ class LifecycleHook(AbstractModel):
 
     @property
     def DefaultResult(self):
-        """生命周期挂钩默认结果
+        """定义伸缩组在生命周期挂钩超时或 LifecycleCommand 执行失败时应采取的操作，取值范围如下：
+- CONTINUE: 默认值，表示继续执行扩缩容活动
+- ABANDON: 针对扩容挂钩，挂钩超时或 LifecycleCommand 执行失败的 CVM 实例会直接释放或移出；而针对缩容挂钩，会继续执行缩容活动
         :rtype: str
         """
         return self._DefaultResult
@@ -9106,7 +9128,7 @@ class LifecycleHook(AbstractModel):
 
     @property
     def HeartbeatTimeout(self):
-        """生命周期挂钩等待超时时间
+        """生命周期挂钩超时等待时间（以秒为单位），范围从 30 到 7200 秒。
         :rtype: int
         """
         return self._HeartbeatTimeout
@@ -9117,7 +9139,9 @@ class LifecycleHook(AbstractModel):
 
     @property
     def LifecycleTransition(self):
-        """生命周期挂钩适用场景
+        """生命周期挂钩场景，取值范围如下:
+- INSTANCE_LAUNCHING: 扩容生命周期挂钩
+- INSTANCE_TERMINATING: 缩容生命周期挂钩
         :rtype: str
         """
         return self._LifecycleTransition
@@ -9139,7 +9163,7 @@ class LifecycleHook(AbstractModel):
 
     @property
     def CreatedTime(self):
-        """创建时间
+        """创建时间，采用 UTC 标准计时
         :rtype: str
         """
         return self._CreatedTime
@@ -9161,7 +9185,8 @@ class LifecycleHook(AbstractModel):
 
     @property
     def LifecycleTransitionType(self):
-        """生命周期挂钩适用场景
+        """进行生命周期挂钩的场景类型，取值范围包括 NORMAL 和 EXTENSION，默认值为 NORMAL。
+说明：设置为EXTENSION值，在AttachInstances、DetachInstances、RemoveInstances 接口时会触发生命周期挂钩操作，值为NORMAL则不会在这些接口中触发生命周期挂钩。
         :rtype: str
         """
         return self._LifecycleTransitionType
@@ -12731,9 +12756,11 @@ class ScaleInInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoScalingGroupId: 伸缩组ID。
+        :param _AutoScalingGroupId: 伸缩组ID。可以通过如下方式获取可用的伸缩组ID:
+<li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 查询伸缩组ID。</li>
+<li>通过调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
         :type AutoScalingGroupId: str
-        :param _ScaleInNumber: 希望缩容的实例数量。
+        :param _ScaleInNumber: 希望缩容的实例数量。该参数的静态取值范围是 [1,2000]，同时该参数不得大于期望数与最小值的差值。例如伸缩组期望数为 100，最小值为 20，此时可取值范围为 [1,80]。
         :type ScaleInNumber: int
         """
         self._AutoScalingGroupId = None
@@ -12741,7 +12768,9 @@ class ScaleInInstancesRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
-        """伸缩组ID。
+        """伸缩组ID。可以通过如下方式获取可用的伸缩组ID:
+<li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 查询伸缩组ID。</li>
+<li>通过调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
         :rtype: str
         """
         return self._AutoScalingGroupId
@@ -12752,7 +12781,7 @@ class ScaleInInstancesRequest(AbstractModel):
 
     @property
     def ScaleInNumber(self):
-        """希望缩容的实例数量。
+        """希望缩容的实例数量。该参数的静态取值范围是 [1,2000]，同时该参数不得大于期望数与最小值的差值。例如伸缩组期望数为 100，最小值为 20，此时可取值范围为 [1,80]。
         :rtype: int
         """
         return self._ScaleInNumber

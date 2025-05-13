@@ -82,6 +82,102 @@ class ActivateServiceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class Approximate(AbstractModel):
+    """用户位置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Country: 表示 ISO 国家代码
+        :type Country: str
+        :param _City: 表示城市名称
+        :type City: str
+        :param _Region: 表示区域名称
+        :type Region: str
+        :param _Timezone: 表示IANA时区
+        :type Timezone: str
+        :param _Address: 表示详细地址
+        :type Address: str
+        """
+        self._Country = None
+        self._City = None
+        self._Region = None
+        self._Timezone = None
+        self._Address = None
+
+    @property
+    def Country(self):
+        """表示 ISO 国家代码
+        :rtype: str
+        """
+        return self._Country
+
+    @Country.setter
+    def Country(self, Country):
+        self._Country = Country
+
+    @property
+    def City(self):
+        """表示城市名称
+        :rtype: str
+        """
+        return self._City
+
+    @City.setter
+    def City(self, City):
+        self._City = City
+
+    @property
+    def Region(self):
+        """表示区域名称
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Timezone(self):
+        """表示IANA时区
+        :rtype: str
+        """
+        return self._Timezone
+
+    @Timezone.setter
+    def Timezone(self, Timezone):
+        self._Timezone = Timezone
+
+    @property
+    def Address(self):
+        """表示详细地址
+        :rtype: str
+        """
+        return self._Address
+
+    @Address.setter
+    def Address(self, Address):
+        self._Address = Address
+
+
+    def _deserialize(self, params):
+        self._Country = params.get("Country")
+        self._City = params.get("City")
+        self._Region = params.get("Region")
+        self._Timezone = params.get("Timezone")
+        self._Address = params.get("Address")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Character(AbstractModel):
     """人物描述
 
@@ -237,6 +333,8 @@ class ChatCompletionsRequest(AbstractModel):
         :type EnableRecommendedQuestions: bool
         :param _EnableDeepRead: 是否开启深度阅读，默认是false，在值为true时，会返回深度阅读的结果信息。说明:1.深度阅读需要开启插件增强,即设置EnableEnhancement为true,当设置EnableDeepRead为true时EnableEnhancement默认为true；2.目前暂时只支持单文档单轮的深度阅读；3.深度阅读功能的文件上传可以使用FilesUploads接口，具体参数详见FilesUploads接口文档
         :type EnableDeepRead: bool
+        :param _WebSearchOptions: 知识注入相关的参数信息
+        :type WebSearchOptions: :class:`tencentcloud.hunyuan.v20230901.models.WebSearchOptions`
         """
         self._Model = None
         self._Messages = None
@@ -258,6 +356,7 @@ class ChatCompletionsRequest(AbstractModel):
         self._Stop = None
         self._EnableRecommendedQuestions = None
         self._EnableDeepRead = None
+        self._WebSearchOptions = None
 
     @property
     def Model(self):
@@ -536,6 +635,17 @@ class ChatCompletionsRequest(AbstractModel):
     def EnableDeepRead(self, EnableDeepRead):
         self._EnableDeepRead = EnableDeepRead
 
+    @property
+    def WebSearchOptions(self):
+        """知识注入相关的参数信息
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.WebSearchOptions`
+        """
+        return self._WebSearchOptions
+
+    @WebSearchOptions.setter
+    def WebSearchOptions(self, WebSearchOptions):
+        self._WebSearchOptions = WebSearchOptions
+
 
     def _deserialize(self, params):
         self._Model = params.get("Model")
@@ -570,6 +680,9 @@ class ChatCompletionsRequest(AbstractModel):
         self._Stop = params.get("Stop")
         self._EnableRecommendedQuestions = params.get("EnableRecommendedQuestions")
         self._EnableDeepRead = params.get("EnableDeepRead")
+        if params.get("WebSearchOptions") is not None:
+            self._WebSearchOptions = WebSearchOptions()
+            self._WebSearchOptions._deserialize(params.get("WebSearchOptions"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4064,6 +4177,42 @@ class ImageUrl(AbstractModel):
 
     def _deserialize(self, params):
         self._Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Knowledge(AbstractModel):
+    """外部知识
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 表示具体的知识信息文本
+        :type Text: str
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        """表示具体的知识信息文本
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7769,6 +7918,117 @@ class Usage(AbstractModel):
         self._PromptTokens = params.get("PromptTokens")
         self._CompletionTokens = params.get("CompletionTokens")
         self._TotalTokens = params.get("TotalTokens")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserLocation(AbstractModel):
+    """用户位置详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 表示位置类型
+        :type Type: str
+        :param _Approximate: 用户近似位置的详细信息
+        :type Approximate: :class:`tencentcloud.hunyuan.v20230901.models.Approximate`
+        """
+        self._Type = None
+        self._Approximate = None
+
+    @property
+    def Type(self):
+        """表示位置类型
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Approximate(self):
+        """用户近似位置的详细信息
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.Approximate`
+        """
+        return self._Approximate
+
+    @Approximate.setter
+    def Approximate(self, Approximate):
+        self._Approximate = Approximate
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        if params.get("Approximate") is not None:
+            self._Approximate = Approximate()
+            self._Approximate._deserialize(params.get("Approximate"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WebSearchOptions(AbstractModel):
+    """知识注入相关的参数信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Knowledge: 表示用户注入的知识信息
+        :type Knowledge: list of Knowledge
+        :param _UserLocation: 用户位置详细信息
+        :type UserLocation: :class:`tencentcloud.hunyuan.v20230901.models.UserLocation`
+        """
+        self._Knowledge = None
+        self._UserLocation = None
+
+    @property
+    def Knowledge(self):
+        """表示用户注入的知识信息
+        :rtype: list of Knowledge
+        """
+        return self._Knowledge
+
+    @Knowledge.setter
+    def Knowledge(self, Knowledge):
+        self._Knowledge = Knowledge
+
+    @property
+    def UserLocation(self):
+        """用户位置详细信息
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.UserLocation`
+        """
+        return self._UserLocation
+
+    @UserLocation.setter
+    def UserLocation(self, UserLocation):
+        self._UserLocation = UserLocation
+
+
+    def _deserialize(self, params):
+        if params.get("Knowledge") is not None:
+            self._Knowledge = []
+            for item in params.get("Knowledge"):
+                obj = Knowledge()
+                obj._deserialize(item)
+                self._Knowledge.append(obj)
+        if params.get("UserLocation") is not None:
+            self._UserLocation = UserLocation()
+            self._UserLocation._deserialize(params.get("UserLocation"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

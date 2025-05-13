@@ -911,7 +911,7 @@ class DescribeResourceTagsByResourceIdsRequest(AbstractModel):
         :type ResourcePrefix: str
         :param _ResourceIds: 资源ID数组，大小不超过50
         :type ResourceIds: list of str
-        :param _ResourceRegion: 资源所在地域，示例：ap-guangzhou 不区分地域的资源不需要传入该字段，区分地域的资源必填
+        :param _ResourceRegion: 资源所在地域，示例：ap-guangzhou，不区分地域的资源该字段传空字符串，区分地域的资源必填
         :type ResourceRegion: str
         :param _Offset: 数据偏移量，默认为 0, 必须为Limit参数的整数倍
         :type Offset: int
@@ -963,7 +963,7 @@ class DescribeResourceTagsByResourceIdsRequest(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        """资源所在地域，示例：ap-guangzhou 不区分地域的资源不需要传入该字段，区分地域的资源必填
+        """资源所在地域，示例：ap-guangzhou，不区分地域的资源该字段传空字符串，区分地域的资源必填
         :rtype: str
         """
         return self._ResourceRegion
@@ -1130,7 +1130,7 @@ class DescribeResourceTagsByResourceIdsSeqRequest(AbstractModel):
         :type ResourcePrefix: str
         :param _ResourceIds: 资源唯一标记
         :type ResourceIds: list of str
-        :param _ResourceRegion: 资源所在地域，示例：ap-guangzhou 不区分地域的资源不需要传入该字段，区分地域的资源必填
+        :param _ResourceRegion: 资源所在地域，示例：ap-guangzhou, 不区分地域的资源该字段传空字符串，区分地域的资源必填
         :type ResourceRegion: str
         :param _Offset: 数据偏移量，默认为 0, 必须为Limit参数的整数倍
         :type Offset: int
@@ -1179,7 +1179,7 @@ class DescribeResourceTagsByResourceIdsSeqRequest(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        """资源所在地域，示例：ap-guangzhou 不区分地域的资源不需要传入该字段，区分地域的资源必填
+        """资源所在地域，示例：ap-guangzhou, 不区分地域的资源该字段传空字符串，区分地域的资源必填
         :rtype: str
         """
         return self._ResourceRegion
@@ -4038,9 +4038,9 @@ class ModifyResourceTagsRequest(AbstractModel):
         r"""
         :param _Resource: [ 资源六段式描述 ](https://cloud.tencent.com/document/product/598/10606)
         :type Resource: str
-        :param _ReplaceTags: 需要增加或修改的标签集合。如果Resource描述的资源未关联输入的标签键，则增加关联；若已关联，则将该资源关联的键对应的标签值修改为输入值。本接口中ReplaceTags和DeleteTags二者必须存在其一，且二者不能包含相同的标签键。可以不传该参数，但不能是空数组。
+        :param _ReplaceTags: 需要增加或修改的标签集合。如果Resource描述的资源未关联输入的标签键，则增加关联；若已关联，则将该资源关联的键对应的标签值修改为输入值。本接口中ReplaceTags和DeleteTags二者必须存在其一，且二者不能包含相同的标签键。可以不传该参数，但不能是空数组。标签数量不超过10个。
         :type ReplaceTags: list of Tag
-        :param _DeleteTags: 需要解关联的标签集合。本接口中ReplaceTags和DeleteTags二者必须存在其一，且二者不能包含相同的标签键。可以不传该参数，但不能是空数组。
+        :param _DeleteTags: 需要解关联的标签集合。本接口中ReplaceTags和DeleteTags二者必须存在其一，且二者不能包含相同的标签键。可以不传该参数，但不能是空数组。标签数量不超过10个。
         :type DeleteTags: list of TagKeyObject
         """
         self._Resource = None
@@ -4060,7 +4060,7 @@ class ModifyResourceTagsRequest(AbstractModel):
 
     @property
     def ReplaceTags(self):
-        """需要增加或修改的标签集合。如果Resource描述的资源未关联输入的标签键，则增加关联；若已关联，则将该资源关联的键对应的标签值修改为输入值。本接口中ReplaceTags和DeleteTags二者必须存在其一，且二者不能包含相同的标签键。可以不传该参数，但不能是空数组。
+        """需要增加或修改的标签集合。如果Resource描述的资源未关联输入的标签键，则增加关联；若已关联，则将该资源关联的键对应的标签值修改为输入值。本接口中ReplaceTags和DeleteTags二者必须存在其一，且二者不能包含相同的标签键。可以不传该参数，但不能是空数组。标签数量不超过10个。
         :rtype: list of Tag
         """
         return self._ReplaceTags
@@ -4071,7 +4071,7 @@ class ModifyResourceTagsRequest(AbstractModel):
 
     @property
     def DeleteTags(self):
-        """需要解关联的标签集合。本接口中ReplaceTags和DeleteTags二者必须存在其一，且二者不能包含相同的标签键。可以不传该参数，但不能是空数组。
+        """需要解关联的标签集合。本接口中ReplaceTags和DeleteTags二者必须存在其一，且二者不能包含相同的标签键。可以不传该参数，但不能是空数组。标签数量不超过10个。
         :rtype: list of TagKeyObject
         """
         return self._DeleteTags

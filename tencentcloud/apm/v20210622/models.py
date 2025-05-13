@@ -758,6 +758,10 @@ class ApmInstanceDetail(AbstractModel):
         :type IsRemoteCommandExecutionAnalysis: int
         :param _IsMemoryHijackingAnalysis: 是否开内存马执行检测（0=关， 1=开）
         :type IsMemoryHijackingAnalysis: int
+        :param _LogIndexType: CLS索引类型(0=全文索引，1=键值索引)
+        :type LogIndexType: int
+        :param _LogTraceIdKey: traceId的索引key: 当CLS索引类型为键值索引时生效
+        :type LogTraceIdKey: str
         """
         self._InstanceId = None
         self._Name = None
@@ -798,6 +802,8 @@ class ApmInstanceDetail(AbstractModel):
         self._StopReason = None
         self._IsRemoteCommandExecutionAnalysis = None
         self._IsMemoryHijackingAnalysis = None
+        self._LogIndexType = None
+        self._LogTraceIdKey = None
 
     @property
     def InstanceId(self):
@@ -1234,6 +1240,28 @@ class ApmInstanceDetail(AbstractModel):
     def IsMemoryHijackingAnalysis(self, IsMemoryHijackingAnalysis):
         self._IsMemoryHijackingAnalysis = IsMemoryHijackingAnalysis
 
+    @property
+    def LogIndexType(self):
+        """CLS索引类型(0=全文索引，1=键值索引)
+        :rtype: int
+        """
+        return self._LogIndexType
+
+    @LogIndexType.setter
+    def LogIndexType(self, LogIndexType):
+        self._LogIndexType = LogIndexType
+
+    @property
+    def LogTraceIdKey(self):
+        """traceId的索引key: 当CLS索引类型为键值索引时生效
+        :rtype: str
+        """
+        return self._LogTraceIdKey
+
+    @LogTraceIdKey.setter
+    def LogTraceIdKey(self, LogTraceIdKey):
+        self._LogTraceIdKey = LogTraceIdKey
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -1280,6 +1308,8 @@ class ApmInstanceDetail(AbstractModel):
         self._StopReason = params.get("StopReason")
         self._IsRemoteCommandExecutionAnalysis = params.get("IsRemoteCommandExecutionAnalysis")
         self._IsMemoryHijackingAnalysis = params.get("IsMemoryHijackingAnalysis")
+        self._LogIndexType = params.get("LogIndexType")
+        self._LogTraceIdKey = params.get("LogTraceIdKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3731,9 +3761,9 @@ class ModifyApmInstanceRequest(AbstractModel):
         :type IsRemoteCommandExecutionAnalysis: int
         :param _IsMemoryHijackingAnalysis: 是否开启内存马检测
         :type IsMemoryHijackingAnalysis: int
-        :param _LogIndexType: 0=全文索引，1=键值索引
+        :param _LogIndexType: CLS索引类型(0=全文索引，1=键值索引)
         :type LogIndexType: int
-        :param _LogTraceIdKey: traceId的索引key
+        :param _LogTraceIdKey: traceId的索引key: 当CLS索引类型为键值索引时生效
         :type LogTraceIdKey: str
         """
         self._InstanceId = None
@@ -4053,7 +4083,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def LogIndexType(self):
-        """0=全文索引，1=键值索引
+        """CLS索引类型(0=全文索引，1=键值索引)
         :rtype: int
         """
         return self._LogIndexType
@@ -4064,7 +4094,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def LogTraceIdKey(self):
-        """traceId的索引key
+        """traceId的索引key: 当CLS索引类型为键值索引时生效
         :rtype: str
         """
         return self._LogTraceIdKey

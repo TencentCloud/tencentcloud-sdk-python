@@ -2439,6 +2439,57 @@ class AllocationOverviewTotal(AbstractModel):
         
 
 
+class AllocationRationExpression(AbstractModel):
+    """分摊比例表达式
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeId: 公摊规则所属分账单元ID
+        :type NodeId: int
+        :param _Ratio: 分账单元所占公摊比例，按占比分摊传0
+        :type Ratio: float
+        """
+        self._NodeId = None
+        self._Ratio = None
+
+    @property
+    def NodeId(self):
+        """公摊规则所属分账单元ID
+        :rtype: int
+        """
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def Ratio(self):
+        """分账单元所占公摊比例，按占比分摊传0
+        :rtype: float
+        """
+        return self._Ratio
+
+    @Ratio.setter
+    def Ratio(self, Ratio):
+        self._Ratio = Ratio
+
+
+    def _deserialize(self, params):
+        self._NodeId = params.get("NodeId")
+        self._Ratio = params.get("Ratio")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AllocationRule(AbstractModel):
     """当前资源命中公摊规则信息
 
@@ -2480,6 +2531,346 @@ class AllocationRule(AbstractModel):
     def _deserialize(self, params):
         self._RuleId = params.get("RuleId")
         self._RuleName = params.get("RuleName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AllocationRuleExpression(AbstractModel):
+    """分账规则表达式
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleKey: RuleKey：分账维度
+枚举值：
+ownerUin - 使用者UIN,
+operateUin - 操作者UIN,
+businessCode - 产品一层编码,
+productCode - 产品二层编码,
+itemCode - 产品四层编码,
+projectId - 项目ID,
+regionId - 地域ID,
+resourceId - 资源ID,
+tag - 标签键值对,
+payMode - 计费模式,
+instanceType - 实例类型,
+actionType - 交易类型
+        :type RuleKey: str
+        :param _Operator: 分账维度规则
+枚举值：
+in - 是
+not in - 不是
+        :type Operator: str
+        :param _RuleValue: 分账维度值，例如当RuleKey为businessCode时，["p_cbs","p_sqlserver"]表示产品一层是"p_cbs","p_sqlserver"的费用
+        :type RuleValue: list of str
+        :param _Connectors: 分账逻辑连接词，枚举值如下：
+and - 且
+or - 或
+        :type Connectors: str
+        :param _Children: 嵌套规则
+        :type Children: list of AllocationRuleExpression
+        """
+        self._RuleKey = None
+        self._Operator = None
+        self._RuleValue = None
+        self._Connectors = None
+        self._Children = None
+
+    @property
+    def RuleKey(self):
+        """RuleKey：分账维度
+枚举值：
+ownerUin - 使用者UIN,
+operateUin - 操作者UIN,
+businessCode - 产品一层编码,
+productCode - 产品二层编码,
+itemCode - 产品四层编码,
+projectId - 项目ID,
+regionId - 地域ID,
+resourceId - 资源ID,
+tag - 标签键值对,
+payMode - 计费模式,
+instanceType - 实例类型,
+actionType - 交易类型
+        :rtype: str
+        """
+        return self._RuleKey
+
+    @RuleKey.setter
+    def RuleKey(self, RuleKey):
+        self._RuleKey = RuleKey
+
+    @property
+    def Operator(self):
+        """分账维度规则
+枚举值：
+in - 是
+not in - 不是
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def RuleValue(self):
+        """分账维度值，例如当RuleKey为businessCode时，["p_cbs","p_sqlserver"]表示产品一层是"p_cbs","p_sqlserver"的费用
+        :rtype: list of str
+        """
+        return self._RuleValue
+
+    @RuleValue.setter
+    def RuleValue(self, RuleValue):
+        self._RuleValue = RuleValue
+
+    @property
+    def Connectors(self):
+        """分账逻辑连接词，枚举值如下：
+and - 且
+or - 或
+        :rtype: str
+        """
+        return self._Connectors
+
+    @Connectors.setter
+    def Connectors(self, Connectors):
+        self._Connectors = Connectors
+
+    @property
+    def Children(self):
+        """嵌套规则
+        :rtype: list of AllocationRuleExpression
+        """
+        return self._Children
+
+    @Children.setter
+    def Children(self, Children):
+        self._Children = Children
+
+
+    def _deserialize(self, params):
+        self._RuleKey = params.get("RuleKey")
+        self._Operator = params.get("Operator")
+        self._RuleValue = params.get("RuleValue")
+        self._Connectors = params.get("Connectors")
+        if params.get("Children") is not None:
+            self._Children = []
+            for item in params.get("Children"):
+                obj = AllocationRuleExpression()
+                obj._deserialize(item)
+                self._Children.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AllocationRuleOverview(AbstractModel):
+    """公摊规则概览
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: 公摊规则ID
+        :type RuleId: int
+        :param _RuleName: 公摊规则名称
+        :type RuleName: str
+        :param _Type: 公摊策略类型
+枚举值：
+1 - 自定义分摊占比 
+2 - 等比分摊 
+3 - 按占比分摊
+        :type Type: int
+        :param _UpdateTime: 公摊规则最后更新时间
+        :type UpdateTime: str
+        :param _AllocationNode: 分账单元概览
+        :type AllocationNode: list of AllocationUnit
+        """
+        self._RuleId = None
+        self._RuleName = None
+        self._Type = None
+        self._UpdateTime = None
+        self._AllocationNode = None
+
+    @property
+    def RuleId(self):
+        """公摊规则ID
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RuleName(self):
+        """公摊规则名称
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def Type(self):
+        """公摊策略类型
+枚举值：
+1 - 自定义分摊占比 
+2 - 等比分摊 
+3 - 按占比分摊
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def UpdateTime(self):
+        """公摊规则最后更新时间
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def AllocationNode(self):
+        """分账单元概览
+        :rtype: list of AllocationUnit
+        """
+        return self._AllocationNode
+
+    @AllocationNode.setter
+    def AllocationNode(self, AllocationNode):
+        self._AllocationNode = AllocationNode
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._RuleName = params.get("RuleName")
+        self._Type = params.get("Type")
+        self._UpdateTime = params.get("UpdateTime")
+        if params.get("AllocationNode") is not None:
+            self._AllocationNode = []
+            for item in params.get("AllocationNode"):
+                obj = AllocationUnit()
+                obj._deserialize(item)
+                self._AllocationNode.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AllocationRulesSummary(AbstractModel):
+    """公摊规则列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 新增公摊规则名称
+        :type Name: str
+        :param _Type: 公摊策略类型，枚举值如下：
+1 - 自定义分摊占比 
+2 - 等比分摊
+3 - 按占比分摊
+        :type Type: int
+        :param _RuleDetail: 公摊规则表达式
+        :type RuleDetail: :class:`tencentcloud.billing.v20180709.models.AllocationRuleExpression`
+        :param _RatioDetail: 公摊比例表达式，按占比分摊不传
+        :type RatioDetail: list of AllocationRationExpression
+        """
+        self._Name = None
+        self._Type = None
+        self._RuleDetail = None
+        self._RatioDetail = None
+
+    @property
+    def Name(self):
+        """新增公摊规则名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        """公摊策略类型，枚举值如下：
+1 - 自定义分摊占比 
+2 - 等比分摊
+3 - 按占比分摊
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def RuleDetail(self):
+        """公摊规则表达式
+        :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationRuleExpression`
+        """
+        return self._RuleDetail
+
+    @RuleDetail.setter
+    def RuleDetail(self, RuleDetail):
+        self._RuleDetail = RuleDetail
+
+    @property
+    def RatioDetail(self):
+        """公摊比例表达式，按占比分摊不传
+        :rtype: list of AllocationRationExpression
+        """
+        return self._RatioDetail
+
+    @RatioDetail.setter
+    def RatioDetail(self, RatioDetail):
+        self._RatioDetail = RatioDetail
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        if params.get("RuleDetail") is not None:
+            self._RuleDetail = AllocationRuleExpression()
+            self._RuleDetail._deserialize(params.get("RuleDetail"))
+        if params.get("RatioDetail") is not None:
+            self._RatioDetail = []
+            for item in params.get("RatioDetail"):
+                obj = AllocationRationExpression()
+                obj._deserialize(item)
+                self._RatioDetail.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4794,6 +5185,92 @@ class AllocationSummaryByResource(AbstractModel):
         
 
 
+class AllocationTree(AbstractModel):
+    """分账目录树
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 分账单元ID
+        :type Id: int
+        :param _Name: 分账单元名称
+        :type Name: str
+        :param _TreeNodeUniqKey: 分账单元唯一标识
+        :type TreeNodeUniqKey: str
+        :param _Children: 子树
+        :type Children: list of AllocationTree
+        """
+        self._Id = None
+        self._Name = None
+        self._TreeNodeUniqKey = None
+        self._Children = None
+
+    @property
+    def Id(self):
+        """分账单元ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        """分账单元名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def TreeNodeUniqKey(self):
+        """分账单元唯一标识
+        :rtype: str
+        """
+        return self._TreeNodeUniqKey
+
+    @TreeNodeUniqKey.setter
+    def TreeNodeUniqKey(self, TreeNodeUniqKey):
+        self._TreeNodeUniqKey = TreeNodeUniqKey
+
+    @property
+    def Children(self):
+        """子树
+        :rtype: list of AllocationTree
+        """
+        return self._Children
+
+    @Children.setter
+    def Children(self, Children):
+        self._Children = Children
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._TreeNodeUniqKey = params.get("TreeNodeUniqKey")
+        if params.get("Children") is not None:
+            self._Children = []
+            for item in params.get("Children"):
+                obj = AllocationTree()
+                obj._deserialize(item)
+                self._Children.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AllocationTreeNode(AbstractModel):
     """当前归属单元信息
 
@@ -4834,6 +5311,57 @@ class AllocationTreeNode(AbstractModel):
 
     def _deserialize(self, params):
         self._TreeNodeUniqKey = params.get("TreeNodeUniqKey")
+        self._TreeNodeUniqKeyName = params.get("TreeNodeUniqKeyName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AllocationUnit(AbstractModel):
+    """分账单元id和名称
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeId: 分账单元ID
+        :type NodeId: int
+        :param _TreeNodeUniqKeyName: 分账规则名称
+        :type TreeNodeUniqKeyName: str
+        """
+        self._NodeId = None
+        self._TreeNodeUniqKeyName = None
+
+    @property
+    def NodeId(self):
+        """分账单元ID
+        :rtype: int
+        """
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def TreeNodeUniqKeyName(self):
+        """分账规则名称
+        :rtype: str
+        """
+        return self._TreeNodeUniqKeyName
+
+    @TreeNodeUniqKeyName.setter
+    def TreeNodeUniqKeyName(self, TreeNodeUniqKeyName):
+        self._TreeNodeUniqKeyName = TreeNodeUniqKeyName
+
+
+    def _deserialize(self, params):
+        self._NodeId = params.get("NodeId")
         self._TreeNodeUniqKeyName = params.get("TreeNodeUniqKeyName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -12247,6 +12775,102 @@ class CostDetail(AbstractModel):
         
 
 
+class CreateAllocationRuleRequest(AbstractModel):
+    """CreateAllocationRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleList: 公摊规则列表
+        :type RuleList: :class:`tencentcloud.billing.v20180709.models.AllocationRulesSummary`
+        :param _Month: 月份，不传默认当前月
+        :type Month: str
+        """
+        self._RuleList = None
+        self._Month = None
+
+    @property
+    def RuleList(self):
+        """公摊规则列表
+        :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationRulesSummary`
+        """
+        return self._RuleList
+
+    @RuleList.setter
+    def RuleList(self, RuleList):
+        self._RuleList = RuleList
+
+    @property
+    def Month(self):
+        """月份，不传默认当前月
+        :rtype: str
+        """
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+
+    def _deserialize(self, params):
+        if params.get("RuleList") is not None:
+            self._RuleList = AllocationRulesSummary()
+            self._RuleList._deserialize(params.get("RuleList"))
+        self._Month = params.get("Month")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAllocationRuleResponse(AbstractModel):
+    """CreateAllocationRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 新增公摊规则ID
+        :type Id: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        """新增公摊规则ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateAllocationTagRequest(AbstractModel):
     """CreateAllocationTag请求参数结构体
 
@@ -12308,6 +12932,241 @@ class CreateAllocationTagResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreateAllocationUnitRequest(AbstractModel):
+    """CreateAllocationUnit请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ParentId: 新增分账单元父节点ID
+        :type ParentId: int
+        :param _Name: 新增分账单元名称
+        :type Name: str
+        :param _Month: 月份，不传默认当前月
+        :type Month: str
+        """
+        self._ParentId = None
+        self._Name = None
+        self._Month = None
+
+    @property
+    def ParentId(self):
+        """新增分账单元父节点ID
+        :rtype: int
+        """
+        return self._ParentId
+
+    @ParentId.setter
+    def ParentId(self, ParentId):
+        self._ParentId = ParentId
+
+    @property
+    def Name(self):
+        """新增分账单元名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Month(self):
+        """月份，不传默认当前月
+        :rtype: str
+        """
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+
+    def _deserialize(self, params):
+        self._ParentId = params.get("ParentId")
+        self._Name = params.get("Name")
+        self._Month = params.get("Month")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAllocationUnitResponse(AbstractModel):
+    """CreateAllocationUnit返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 新增分账单元ID
+        :type Id: int
+        :param _TreeNodeUniqKey: 分账单元唯一标识
+        :type TreeNodeUniqKey: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._TreeNodeUniqKey = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        """新增分账单元ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def TreeNodeUniqKey(self):
+        """分账单元唯一标识
+        :rtype: str
+        """
+        return self._TreeNodeUniqKey
+
+    @TreeNodeUniqKey.setter
+    def TreeNodeUniqKey(self, TreeNodeUniqKey):
+        self._TreeNodeUniqKey = TreeNodeUniqKey
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._TreeNodeUniqKey = params.get("TreeNodeUniqKey")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateGatherRuleRequest(AbstractModel):
+    """CreateGatherRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 规则所属分账单元ID
+        :type Id: int
+        :param _RuleList: 归集规则详情
+        :type RuleList: :class:`tencentcloud.billing.v20180709.models.GatherRuleSummary`
+        :param _Month: 月份，不传默认当前月
+        :type Month: str
+        """
+        self._Id = None
+        self._RuleList = None
+        self._Month = None
+
+    @property
+    def Id(self):
+        """规则所属分账单元ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def RuleList(self):
+        """归集规则详情
+        :rtype: :class:`tencentcloud.billing.v20180709.models.GatherRuleSummary`
+        """
+        return self._RuleList
+
+    @RuleList.setter
+    def RuleList(self, RuleList):
+        self._RuleList = RuleList
+
+    @property
+    def Month(self):
+        """月份，不传默认当前月
+        :rtype: str
+        """
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        if params.get("RuleList") is not None:
+            self._RuleList = GatherRuleSummary()
+            self._RuleList._deserialize(params.get("RuleList"))
+        self._Month = params.get("Month")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateGatherRuleResponse(AbstractModel):
+    """CreateGatherRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 归集规则ID
+        :type Id: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        """归集规则ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
         self._RequestId = params.get("RequestId")
 
 
@@ -12753,6 +13612,85 @@ postMoveIn 按量计费迁入资源
         
 
 
+class DeleteAllocationRuleRequest(AbstractModel):
+    """DeleteAllocationRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: 所删除公摊规则ID
+        :type RuleId: int
+        :param _Month: 月份，不传默认当前月
+        :type Month: str
+        """
+        self._RuleId = None
+        self._Month = None
+
+    @property
+    def RuleId(self):
+        """所删除公摊规则ID
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def Month(self):
+        """月份，不传默认当前月
+        :rtype: str
+        """
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._Month = params.get("Month")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAllocationRuleResponse(AbstractModel):
+    """DeleteAllocationRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteAllocationTagRequest(AbstractModel):
     """DeleteAllocationTag请求参数结构体
 
@@ -12791,6 +13729,164 @@ class DeleteAllocationTagRequest(AbstractModel):
 
 class DeleteAllocationTagResponse(AbstractModel):
     """DeleteAllocationTag返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteAllocationUnitRequest(AbstractModel):
+    """DeleteAllocationUnit请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 所删除分账单元ID
+        :type Id: int
+        :param _Month: 月份，不传默认当前月
+        :type Month: str
+        """
+        self._Id = None
+        self._Month = None
+
+    @property
+    def Id(self):
+        """所删除分账单元ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Month(self):
+        """月份，不传默认当前月
+        :rtype: str
+        """
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Month = params.get("Month")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAllocationUnitResponse(AbstractModel):
+    """DeleteAllocationUnit返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteGatherRuleRequest(AbstractModel):
+    """DeleteGatherRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: 所删除归集规则ID
+        :type RuleId: int
+        :param _Month: 月份，不传默认当前月
+        :type Month: str
+        """
+        self._RuleId = None
+        self._Month = None
+
+    @property
+    def RuleId(self):
+        """所删除归集规则ID
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def Month(self):
+        """月份，不传默认当前月
+        :rtype: str
+        """
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._Month = params.get("Month")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteGatherRuleResponse(AbstractModel):
+    """DeleteGatherRule返回参数结构体
 
     """
 
@@ -14755,6 +15851,355 @@ class DescribeAllocationOverviewResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeAllocationRuleDetailRequest(AbstractModel):
+    """DescribeAllocationRuleDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: 所查询公摊规则ID
+        :type RuleId: int
+        :param _Month: 月份，不传默认当前月
+        :type Month: str
+        """
+        self._RuleId = None
+        self._Month = None
+
+    @property
+    def RuleId(self):
+        """所查询公摊规则ID
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def Month(self):
+        """月份，不传默认当前月
+        :rtype: str
+        """
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._Month = params.get("Month")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAllocationRuleDetailResponse(AbstractModel):
+    """DescribeAllocationRuleDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 公摊规则ID
+        :type Id: int
+        :param _Uin: 公摊规则所属UIN
+        :type Uin: str
+        :param _Name: 公摊规则名称
+        :type Name: str
+        :param _Type: 公摊策略类型，枚举值如下：
+1 - 自定义分摊占比 
+2 - 等比分摊 
+3 - 按占比分摊
+        :type Type: int
+        :param _RuleDetail: 公摊规则表达式
+        :type RuleDetail: :class:`tencentcloud.billing.v20180709.models.AllocationRuleExpression`
+        :param _RatioDetail: 公摊比例表达式，Type为1和2时返回
+        :type RatioDetail: list of AllocationRationExpression
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._Uin = None
+        self._Name = None
+        self._Type = None
+        self._RuleDetail = None
+        self._RatioDetail = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        """公摊规则ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Uin(self):
+        """公摊规则所属UIN
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def Name(self):
+        """公摊规则名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        """公摊策略类型，枚举值如下：
+1 - 自定义分摊占比 
+2 - 等比分摊 
+3 - 按占比分摊
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def RuleDetail(self):
+        """公摊规则表达式
+        :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationRuleExpression`
+        """
+        return self._RuleDetail
+
+    @RuleDetail.setter
+    def RuleDetail(self, RuleDetail):
+        self._RuleDetail = RuleDetail
+
+    @property
+    def RatioDetail(self):
+        """公摊比例表达式，Type为1和2时返回
+        :rtype: list of AllocationRationExpression
+        """
+        return self._RatioDetail
+
+    @RatioDetail.setter
+    def RatioDetail(self, RatioDetail):
+        self._RatioDetail = RatioDetail
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Uin = params.get("Uin")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        if params.get("RuleDetail") is not None:
+            self._RuleDetail = AllocationRuleExpression()
+            self._RuleDetail._deserialize(params.get("RuleDetail"))
+        if params.get("RatioDetail") is not None:
+            self._RatioDetail = []
+            for item in params.get("RatioDetail"):
+                obj = AllocationRationExpression()
+                obj._deserialize(item)
+                self._RatioDetail.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAllocationRuleSummaryRequest(AbstractModel):
+    """DescribeAllocationRuleSummary请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: 每次获取数据量，最大值1000
+        :type Limit: int
+        :param _Offset: 分页偏移量
+        :type Offset: int
+        :param _Month: 月份，不传默认当前月
+        :type Month: str
+        :param _Type: 公摊策略类型，用于筛选。
+枚举值如下： 
+1 - 自定义分摊占比 
+2 - 等比分摊 
+3 - 按占比分摊
+        :type Type: int
+        :param _Name: 公摊规则名称或分账单元名称，用于模糊筛选。
+        :type Name: str
+        """
+        self._Limit = None
+        self._Offset = None
+        self._Month = None
+        self._Type = None
+        self._Name = None
+
+    @property
+    def Limit(self):
+        """每次获取数据量，最大值1000
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """分页偏移量
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Month(self):
+        """月份，不传默认当前月
+        :rtype: str
+        """
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+    @property
+    def Type(self):
+        """公摊策略类型，用于筛选。
+枚举值如下： 
+1 - 自定义分摊占比 
+2 - 等比分摊 
+3 - 按占比分摊
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        """公摊规则名称或分账单元名称，用于模糊筛选。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Month = params.get("Month")
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAllocationRuleSummaryResponse(AbstractModel):
+    """DescribeAllocationRuleSummary返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleList: 公摊规则表达式
+        :type RuleList: list of AllocationRuleOverview
+        :param _Total: 规则总数
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RuleList = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def RuleList(self):
+        """公摊规则表达式
+        :rtype: list of AllocationRuleOverview
+        """
+        return self._RuleList
+
+    @RuleList.setter
+    def RuleList(self, RuleList):
+        self._RuleList = RuleList
+
+    @property
+    def Total(self):
+        """规则总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("RuleList") is not None:
+            self._RuleList = []
+            for item in params.get("RuleList"):
+                obj = AllocationRuleOverview()
+                obj._deserialize(item)
+                self._RuleList.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeAllocationSummaryByBusinessRequest(AbstractModel):
     """DescribeAllocationSummaryByBusiness请求参数结构体
 
@@ -16028,6 +17473,135 @@ class DescribeAllocationSummaryByResourceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeAllocationTreeRequest(AbstractModel):
+    """DescribeAllocationTree请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Month: 月份，不传默认当前月
+        :type Month: str
+        """
+        self._Month = None
+
+    @property
+    def Month(self):
+        """月份，不传默认当前月
+        :rtype: str
+        """
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+
+    def _deserialize(self, params):
+        self._Month = params.get("Month")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAllocationTreeResponse(AbstractModel):
+    """DescribeAllocationTree返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 分账单元ID
+        :type Id: int
+        :param _Name: 分账单元名称
+        :type Name: str
+        :param _TreeNodeUniqKey: 分账单元唯一标识
+        :type TreeNodeUniqKey: str
+        :param _Children: 子树
+        :type Children: list of AllocationTree
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._Name = None
+        self._TreeNodeUniqKey = None
+        self._Children = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        """分账单元ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        """分账单元名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def TreeNodeUniqKey(self):
+        """分账单元唯一标识
+        :rtype: str
+        """
+        return self._TreeNodeUniqKey
+
+    @TreeNodeUniqKey.setter
+    def TreeNodeUniqKey(self, TreeNodeUniqKey):
+        self._TreeNodeUniqKey = TreeNodeUniqKey
+
+    @property
+    def Children(self):
+        """子树
+        :rtype: list of AllocationTree
+        """
+        return self._Children
+
+    @Children.setter
+    def Children(self, Children):
+        self._Children = Children
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._TreeNodeUniqKey = params.get("TreeNodeUniqKey")
+        if params.get("Children") is not None:
+            self._Children = []
+            for item in params.get("Children"):
+                obj = AllocationTree()
+                obj._deserialize(item)
+                self._Children.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeAllocationTrendByMonthRequest(AbstractModel):
     """DescribeAllocationTrendByMonth请求参数结构体
 
@@ -16173,6 +17747,220 @@ class DescribeAllocationTrendByMonthResponse(AbstractModel):
         if params.get("Stat") is not None:
             self._Stat = AllocationStat()
             self._Stat._deserialize(params.get("Stat"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAllocationUnitDetailRequest(AbstractModel):
+    """DescribeAllocationUnitDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 所查询分账单元Id
+        :type Id: int
+        :param _Month: 月份，不传默认当前月
+        :type Month: str
+        """
+        self._Id = None
+        self._Month = None
+
+    @property
+    def Id(self):
+        """所查询分账单元Id
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Month(self):
+        """月份，不传默认当前月
+        :rtype: str
+        """
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Month = params.get("Month")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAllocationUnitDetailResponse(AbstractModel):
+    """DescribeAllocationUnitDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 分账单元ID
+        :type Id: int
+        :param _Uin: 分账单元所属UIN
+        :type Uin: str
+        :param _Name: 分账单元名称
+        :type Name: str
+        :param _ParentId: 分账单元父节点ID
+        :type ParentId: int
+        :param _SourceName: 源组织名称
+        :type SourceName: str
+        :param _SourceId: 源组织ID
+        :type SourceId: str
+        :param _Remark: 备注说明
+        :type Remark: str
+        :param _TreeNodeUniqKey: 分账单元标识
+        :type TreeNodeUniqKey: str
+        :param _RuleId: 若分账单元设置归集规则，返回归集规则ID，若无分账规则，则不返回
+        :type RuleId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._Uin = None
+        self._Name = None
+        self._ParentId = None
+        self._SourceName = None
+        self._SourceId = None
+        self._Remark = None
+        self._TreeNodeUniqKey = None
+        self._RuleId = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        """分账单元ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Uin(self):
+        """分账单元所属UIN
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def Name(self):
+        """分账单元名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ParentId(self):
+        """分账单元父节点ID
+        :rtype: int
+        """
+        return self._ParentId
+
+    @ParentId.setter
+    def ParentId(self, ParentId):
+        self._ParentId = ParentId
+
+    @property
+    def SourceName(self):
+        """源组织名称
+        :rtype: str
+        """
+        return self._SourceName
+
+    @SourceName.setter
+    def SourceName(self, SourceName):
+        self._SourceName = SourceName
+
+    @property
+    def SourceId(self):
+        """源组织ID
+        :rtype: str
+        """
+        return self._SourceId
+
+    @SourceId.setter
+    def SourceId(self, SourceId):
+        self._SourceId = SourceId
+
+    @property
+    def Remark(self):
+        """备注说明
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def TreeNodeUniqKey(self):
+        """分账单元标识
+        :rtype: str
+        """
+        return self._TreeNodeUniqKey
+
+    @TreeNodeUniqKey.setter
+    def TreeNodeUniqKey(self, TreeNodeUniqKey):
+        self._TreeNodeUniqKey = TreeNodeUniqKey
+
+    @property
+    def RuleId(self):
+        """若分账单元设置归集规则，返回归集规则ID，若无分账规则，则不返回
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Uin = params.get("Uin")
+        self._Name = params.get("Name")
+        self._ParentId = params.get("ParentId")
+        self._SourceName = params.get("SourceName")
+        self._SourceId = params.get("SourceId")
+        self._Remark = params.get("Remark")
+        self._TreeNodeUniqKey = params.get("TreeNodeUniqKey")
+        self._RuleId = params.get("RuleId")
         self._RequestId = params.get("RequestId")
 
 
@@ -16839,6 +18627,8 @@ class DescribeBillDetailRequest(AbstractModel):
 
     @property
     def ProductCode(self):
+        warnings.warn("parameter `ProductCode` is deprecated", DeprecationWarning) 
+
         """已废弃参数，未开放
         :rtype: str
         """
@@ -16846,6 +18636,8 @@ class DescribeBillDetailRequest(AbstractModel):
 
     @ProductCode.setter
     def ProductCode(self, ProductCode):
+        warnings.warn("parameter `ProductCode` is deprecated", DeprecationWarning) 
+
         self._ProductCode = ProductCode
 
     @property
@@ -22172,6 +23964,147 @@ class DescribeGatherResourceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeGatherRuleDetailRequest(AbstractModel):
+    """DescribeGatherRuleDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 所查询归集规则ID
+        :type Id: int
+        :param _Month: 月份，不传默认当前月
+        :type Month: str
+        """
+        self._Id = None
+        self._Month = None
+
+    @property
+    def Id(self):
+        """所查询归集规则ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Month(self):
+        """月份，不传默认当前月
+        :rtype: str
+        """
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Month = params.get("Month")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGatherRuleDetailResponse(AbstractModel):
+    """DescribeGatherRuleDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 归集规则ID
+        :type Id: int
+        :param _Uin: 归集规则所属UIN
+        :type Uin: str
+        :param _UpdateTime: 归集规则最后更新时间
+        :type UpdateTime: str
+        :param _RuleDetail: 归集规则详情
+        :type RuleDetail: :class:`tencentcloud.billing.v20180709.models.AllocationRuleExpression`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._Uin = None
+        self._UpdateTime = None
+        self._RuleDetail = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        """归集规则ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Uin(self):
+        """归集规则所属UIN
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def UpdateTime(self):
+        """归集规则最后更新时间
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def RuleDetail(self):
+        """归集规则详情
+        :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationRuleExpression`
+        """
+        return self._RuleDetail
+
+    @RuleDetail.setter
+    def RuleDetail(self, RuleDetail):
+        self._RuleDetail = RuleDetail
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Uin = params.get("Uin")
+        self._UpdateTime = params.get("UpdateTime")
+        if params.get("RuleDetail") is not None:
+            self._RuleDetail = AllocationRuleExpression()
+            self._RuleDetail._deserialize(params.get("RuleDetail"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSavingPlanResourceInfoRequest(AbstractModel):
     """DescribeSavingPlanResourceInfo请求参数结构体
 
@@ -24327,6 +26260,44 @@ class GatherResourceSummary(AbstractModel):
         
 
 
+class GatherRuleSummary(AbstractModel):
+    """归集规则列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleDetail: 分账规则表达式
+        :type RuleDetail: :class:`tencentcloud.billing.v20180709.models.AllocationRuleExpression`
+        """
+        self._RuleDetail = None
+
+    @property
+    def RuleDetail(self):
+        """分账规则表达式
+        :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationRuleExpression`
+        """
+        return self._RuleDetail
+
+    @RuleDetail.setter
+    def RuleDetail(self, RuleDetail):
+        self._RuleDetail = RuleDetail
+
+
+    def _deserialize(self, params):
+        if params.get("RuleDetail") is not None:
+            self._RuleDetail = AllocationRuleExpression()
+            self._RuleDetail._deserialize(params.get("RuleDetail"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class JsonObject(AbstractModel):
     """Json对象
 
@@ -24376,6 +26347,387 @@ class JsonObject(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifyAllocationRuleRequest(AbstractModel):
+    """ModifyAllocationRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: 所编辑公摊规则ID
+        :type RuleId: int
+        :param _Name: 编辑后公摊规则名称
+        :type Name: str
+        :param _Type: 公摊策略类型，枚举值如下： 1 - 自定义分摊占比 2 - 等比分摊 3 - 按占比分摊
+        :type Type: int
+        :param _RuleDetail: 编辑后公摊规则表达式
+        :type RuleDetail: :class:`tencentcloud.billing.v20180709.models.AllocationRuleExpression`
+        :param _RatioDetail: 编辑后公摊比例表达式
+        :type RatioDetail: list of AllocationRationExpression
+        :param _Month: 月份，不传默认当前月
+        :type Month: str
+        """
+        self._RuleId = None
+        self._Name = None
+        self._Type = None
+        self._RuleDetail = None
+        self._RatioDetail = None
+        self._Month = None
+
+    @property
+    def RuleId(self):
+        """所编辑公摊规则ID
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def Name(self):
+        """编辑后公摊规则名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        """公摊策略类型，枚举值如下： 1 - 自定义分摊占比 2 - 等比分摊 3 - 按占比分摊
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def RuleDetail(self):
+        """编辑后公摊规则表达式
+        :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationRuleExpression`
+        """
+        return self._RuleDetail
+
+    @RuleDetail.setter
+    def RuleDetail(self, RuleDetail):
+        self._RuleDetail = RuleDetail
+
+    @property
+    def RatioDetail(self):
+        """编辑后公摊比例表达式
+        :rtype: list of AllocationRationExpression
+        """
+        return self._RatioDetail
+
+    @RatioDetail.setter
+    def RatioDetail(self, RatioDetail):
+        self._RatioDetail = RatioDetail
+
+    @property
+    def Month(self):
+        """月份，不传默认当前月
+        :rtype: str
+        """
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        if params.get("RuleDetail") is not None:
+            self._RuleDetail = AllocationRuleExpression()
+            self._RuleDetail._deserialize(params.get("RuleDetail"))
+        if params.get("RatioDetail") is not None:
+            self._RatioDetail = []
+            for item in params.get("RatioDetail"):
+                obj = AllocationRationExpression()
+                obj._deserialize(item)
+                self._RatioDetail.append(obj)
+        self._Month = params.get("Month")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAllocationRuleResponse(AbstractModel):
+    """ModifyAllocationRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyAllocationUnitRequest(AbstractModel):
+    """ModifyAllocationUnit请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 所修改分账单元ID
+        :type Id: int
+        :param _Name: 修改后分账单元名称
+        :type Name: str
+        :param _SourceName: 修改后分账单元源组织名称
+        :type SourceName: str
+        :param _SourceId: 修改后分账单元源组织ID
+        :type SourceId: str
+        :param _Remark: 分账单元备注说明
+        :type Remark: str
+        :param _Month: 月份，不传默认当前月
+        :type Month: str
+        """
+        self._Id = None
+        self._Name = None
+        self._SourceName = None
+        self._SourceId = None
+        self._Remark = None
+        self._Month = None
+
+    @property
+    def Id(self):
+        """所修改分账单元ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        """修改后分账单元名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def SourceName(self):
+        """修改后分账单元源组织名称
+        :rtype: str
+        """
+        return self._SourceName
+
+    @SourceName.setter
+    def SourceName(self, SourceName):
+        self._SourceName = SourceName
+
+    @property
+    def SourceId(self):
+        """修改后分账单元源组织ID
+        :rtype: str
+        """
+        return self._SourceId
+
+    @SourceId.setter
+    def SourceId(self, SourceId):
+        self._SourceId = SourceId
+
+    @property
+    def Remark(self):
+        """分账单元备注说明
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def Month(self):
+        """月份，不传默认当前月
+        :rtype: str
+        """
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._SourceName = params.get("SourceName")
+        self._SourceId = params.get("SourceId")
+        self._Remark = params.get("Remark")
+        self._Month = params.get("Month")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAllocationUnitResponse(AbstractModel):
+    """ModifyAllocationUnit返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyGatherRuleRequest(AbstractModel):
+    """ModifyGatherRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 所编辑归集规则ID
+        :type Id: int
+        :param _RuleDetail: 所编辑分账规则详情
+        :type RuleDetail: :class:`tencentcloud.billing.v20180709.models.AllocationRuleExpression`
+        :param _Month: 月份，不传默认当前月
+        :type Month: str
+        """
+        self._Id = None
+        self._RuleDetail = None
+        self._Month = None
+
+    @property
+    def Id(self):
+        """所编辑归集规则ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def RuleDetail(self):
+        """所编辑分账规则详情
+        :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationRuleExpression`
+        """
+        return self._RuleDetail
+
+    @RuleDetail.setter
+    def RuleDetail(self, RuleDetail):
+        self._RuleDetail = RuleDetail
+
+    @property
+    def Month(self):
+        """月份，不传默认当前月
+        :rtype: str
+        """
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        if params.get("RuleDetail") is not None:
+            self._RuleDetail = AllocationRuleExpression()
+            self._RuleDetail._deserialize(params.get("RuleDetail"))
+        self._Month = params.get("Month")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyGatherRuleResponse(AbstractModel):
+    """ModifyGatherRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class PayDealsRequest(AbstractModel):

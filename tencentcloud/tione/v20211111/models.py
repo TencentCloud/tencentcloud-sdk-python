@@ -9327,6 +9327,42 @@ class EnvVar(AbstractModel):
         
 
 
+class ExecAction(AbstractModel):
+    """执行命令探针检查行为
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Command: 执行命令列表
+        :type Command: list of str
+        """
+        self._Command = None
+
+    @property
+    def Command(self):
+        """执行命令列表
+        :rtype: list of str
+        """
+        return self._Command
+
+    @Command.setter
+    def Command(self, Command):
+        self._Command = Command
+
+
+    def _deserialize(self, params):
+        self._Command = params.get("Command")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Filter(AbstractModel):
     """过滤器
 
@@ -9753,8 +9789,11 @@ class HTTPGetAction(AbstractModel):
         r"""
         :param _Path: http 路径
         :type Path: str
+        :param _Port: 调用端口
+        :type Port: int
         """
         self._Path = None
+        self._Port = None
 
     @property
     def Path(self):
@@ -9767,9 +9806,21 @@ class HTTPGetAction(AbstractModel):
     def Path(self, Path):
         self._Path = Path
 
+    @property
+    def Port(self):
+        """调用端口
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
 
     def _deserialize(self, params):
         self._Path = params.get("Path")
+        self._Port = params.get("Port")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14979,6 +15030,57 @@ class NotebookSetItem(AbstractModel):
         
 
 
+class NumOrPercent(AbstractModel):
+    """用于表示百分比或数量
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: Num,Percent ,分别表示数量和百分比，默认为 Num
+        :type Type: str
+        :param _Value: 数值
+        :type Value: int
+        """
+        self._Type = None
+        self._Value = None
+
+    @property
+    def Type(self):
+        """Num,Percent ,分别表示数量和百分比，默认为 Num
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Value(self):
+        """数值
+        :rtype: int
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Option(AbstractModel):
     """键值对
 
@@ -15600,8 +15702,17 @@ class ProbeAction(AbstractModel):
         r"""
         :param _HTTPGet: http get 行为
         :type HTTPGet: :class:`tencentcloud.tione.v20211111.models.HTTPGetAction`
+        :param _Exec: 执行命令检查 行为
+        :type Exec: :class:`tencentcloud.tione.v20211111.models.ExecAction`
+        :param _TCPSocket: tcp socket 检查行为
+        :type TCPSocket: :class:`tencentcloud.tione.v20211111.models.TCPSocketAction`
+        :param _ActionType: 探针类型，默认 HTTPGet，可选值：HTTPGet、Exec、TCPSocket
+        :type ActionType: str
         """
         self._HTTPGet = None
+        self._Exec = None
+        self._TCPSocket = None
+        self._ActionType = None
 
     @property
     def HTTPGet(self):
@@ -15614,11 +15725,51 @@ class ProbeAction(AbstractModel):
     def HTTPGet(self, HTTPGet):
         self._HTTPGet = HTTPGet
 
+    @property
+    def Exec(self):
+        """执行命令检查 行为
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ExecAction`
+        """
+        return self._Exec
+
+    @Exec.setter
+    def Exec(self, Exec):
+        self._Exec = Exec
+
+    @property
+    def TCPSocket(self):
+        """tcp socket 检查行为
+        :rtype: :class:`tencentcloud.tione.v20211111.models.TCPSocketAction`
+        """
+        return self._TCPSocket
+
+    @TCPSocket.setter
+    def TCPSocket(self, TCPSocket):
+        self._TCPSocket = TCPSocket
+
+    @property
+    def ActionType(self):
+        """探针类型，默认 HTTPGet，可选值：HTTPGet、Exec、TCPSocket
+        :rtype: str
+        """
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
 
     def _deserialize(self, params):
         if params.get("HTTPGet") is not None:
             self._HTTPGet = HTTPGetAction()
             self._HTTPGet._deserialize(params.get("HTTPGet"))
+        if params.get("Exec") is not None:
+            self._Exec = ExecAction()
+            self._Exec._deserialize(params.get("Exec"))
+        if params.get("TCPSocket") is not None:
+            self._TCPSocket = TCPSocketAction()
+            self._TCPSocket._deserialize(params.get("TCPSocket"))
+        self._ActionType = params.get("ActionType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16478,6 +16629,61 @@ class ResourceInstanceRunningJobInfo(AbstractModel):
         self._TaskType = params.get("TaskType")
         self._TaskId = params.get("TaskId")
         self._TaskName = params.get("TaskName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RollingUpdate(AbstractModel):
+    """滚动更新策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MaxUnavailable: 滚动更新的最大不可用
+        :type MaxUnavailable: :class:`tencentcloud.tione.v20211111.models.NumOrPercent`
+        :param _MaxSurge: 滚动更新的最大新增实例
+        :type MaxSurge: :class:`tencentcloud.tione.v20211111.models.NumOrPercent`
+        """
+        self._MaxUnavailable = None
+        self._MaxSurge = None
+
+    @property
+    def MaxUnavailable(self):
+        """滚动更新的最大不可用
+        :rtype: :class:`tencentcloud.tione.v20211111.models.NumOrPercent`
+        """
+        return self._MaxUnavailable
+
+    @MaxUnavailable.setter
+    def MaxUnavailable(self, MaxUnavailable):
+        self._MaxUnavailable = MaxUnavailable
+
+    @property
+    def MaxSurge(self):
+        """滚动更新的最大新增实例
+        :rtype: :class:`tencentcloud.tione.v20211111.models.NumOrPercent`
+        """
+        return self._MaxSurge
+
+    @MaxSurge.setter
+    def MaxSurge(self, MaxSurge):
+        self._MaxSurge = MaxSurge
+
+
+    def _deserialize(self, params):
+        if params.get("MaxUnavailable") is not None:
+            self._MaxUnavailable = NumOrPercent()
+            self._MaxUnavailable._deserialize(params.get("MaxUnavailable"))
+        if params.get("MaxSurge") is not None:
+            self._MaxSurge = NumOrPercent()
+            self._MaxSurge._deserialize(params.get("MaxSurge"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17831,6 +18037,8 @@ UPDATING 更新中
         :type AuthorizationEnable: bool
         :param _AuthTokens: 限流鉴权 token 列表
         :type AuthTokens: list of AuthToken
+        :param _MonitorSource: 用于监控的创建来源字段
+        :type MonitorSource: str
         """
         self._ServiceGroupId = None
         self._ServiceGroupName = None
@@ -17854,6 +18062,7 @@ UPDATING 更新中
         self._AppId = None
         self._AuthorizationEnable = None
         self._AuthTokens = None
+        self._MonitorSource = None
 
     @property
     def ServiceGroupId(self):
@@ -18126,6 +18335,17 @@ UPDATING 更新中
     def AuthTokens(self, AuthTokens):
         self._AuthTokens = AuthTokens
 
+    @property
+    def MonitorSource(self):
+        """用于监控的创建来源字段
+        :rtype: str
+        """
+        return self._MonitorSource
+
+    @MonitorSource.setter
+    def MonitorSource(self, MonitorSource):
+        self._MonitorSource = MonitorSource
+
 
     def _deserialize(self, params):
         self._ServiceGroupId = params.get("ServiceGroupId")
@@ -18165,6 +18385,7 @@ UPDATING 更新中
                 obj = AuthToken()
                 obj._deserialize(item)
                 self._AuthTokens.append(obj)
+        self._MonitorSource = params.get("MonitorSource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18293,6 +18514,8 @@ HYBRID_PAID:
         :type GrpcEnable: bool
         :param _HealthProbe: 健康探针
         :type HealthProbe: :class:`tencentcloud.tione.v20211111.models.HealthProbe`
+        :param _RollingUpdate: 滚动更新配置
+        :type RollingUpdate: :class:`tencentcloud.tione.v20211111.models.RollingUpdate`
         """
         self._Replicas = None
         self._ImageInfo = None
@@ -18330,6 +18553,7 @@ HYBRID_PAID:
         self._PreStopCommand = None
         self._GrpcEnable = None
         self._HealthProbe = None
+        self._RollingUpdate = None
 
     @property
     def Replicas(self):
@@ -18774,6 +18998,17 @@ HYBRID_PAID:
     def HealthProbe(self, HealthProbe):
         self._HealthProbe = HealthProbe
 
+    @property
+    def RollingUpdate(self):
+        """滚动更新配置
+        :rtype: :class:`tencentcloud.tione.v20211111.models.RollingUpdate`
+        """
+        return self._RollingUpdate
+
+    @RollingUpdate.setter
+    def RollingUpdate(self, RollingUpdate):
+        self._RollingUpdate = RollingUpdate
+
 
     def _deserialize(self, params):
         self._Replicas = params.get("Replicas")
@@ -18855,6 +19090,9 @@ HYBRID_PAID:
         if params.get("HealthProbe") is not None:
             self._HealthProbe = HealthProbe()
             self._HealthProbe._deserialize(params.get("HealthProbe"))
+        if params.get("RollingUpdate") is not None:
+            self._RollingUpdate = RollingUpdate()
+            self._RollingUpdate._deserialize(params.get("RollingUpdate"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19783,6 +20021,42 @@ class StopTrainingTaskResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class TCPSocketAction(AbstractModel):
+    """tcp socket 健康探针检查行为
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Port: 调用端口
+        :type Port: int
+        """
+        self._Port = None
+
+    @property
+    def Port(self):
+        """调用端口
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+
+    def _deserialize(self, params):
+        self._Port = params.get("Port")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class TJCallInfo(AbstractModel):

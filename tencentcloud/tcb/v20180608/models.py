@@ -13559,10 +13559,16 @@ class DescribeEnvsRequest(AbstractModel):
         :type IsVisible: bool
         :param _Channels: 渠道列表，代表可见或不可见渠道由IsVisible参数指定
         :type Channels: list of str
+        :param _Limit: 分页参数，单页限制个数
+        :type Limit: int
+        :param _Offset: 分页参数，偏移量
+        :type Offset: int
         """
         self._EnvId = None
         self._IsVisible = None
         self._Channels = None
+        self._Limit = None
+        self._Offset = None
 
     @property
     def EnvId(self):
@@ -13598,11 +13604,35 @@ class DescribeEnvsRequest(AbstractModel):
     def Channels(self, Channels):
         self._Channels = Channels
 
+    @property
+    def Limit(self):
+        """分页参数，单页限制个数
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """分页参数，偏移量
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
 
     def _deserialize(self, params):
         self._EnvId = params.get("EnvId")
         self._IsVisible = params.get("IsVisible")
         self._Channels = params.get("Channels")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
