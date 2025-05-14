@@ -384,9 +384,9 @@ class ApplySnapshotRequest(AbstractModel):
         :type SnapshotId: str
         :param _DiskId: 快照原云硬盘ID，可通过[DescribeDisks](/document/product/362/16315)接口查询。
         :type DiskId: str
-        :param _AutoStopInstance: 回滚前是否执行自动关机
+        :param _AutoStopInstance: 回滚前是否执行自动关机，仅支持回滚快照至已挂载的云硬盘时传入。
         :type AutoStopInstance: bool
-        :param _AutoStartInstance: 回滚完成后是否自动开机
+        :param _AutoStartInstance: 回滚完成后是否自动开机，仅支持回滚快照至已挂载的云硬盘时传入。该参数传入时，需要同时传入AutoStopInstance参数。
         :type AutoStartInstance: bool
         """
         self._SnapshotId = None
@@ -418,7 +418,7 @@ class ApplySnapshotRequest(AbstractModel):
 
     @property
     def AutoStopInstance(self):
-        """回滚前是否执行自动关机
+        """回滚前是否执行自动关机，仅支持回滚快照至已挂载的云硬盘时传入。
         :rtype: bool
         """
         return self._AutoStopInstance
@@ -429,7 +429,7 @@ class ApplySnapshotRequest(AbstractModel):
 
     @property
     def AutoStartInstance(self):
-        """回滚完成后是否自动开机
+        """回滚完成后是否自动开机，仅支持回滚快照至已挂载的云硬盘时传入。该参数传入时，需要同时传入AutoStopInstance参数。
         :rtype: bool
         """
         return self._AutoStartInstance
@@ -2836,14 +2836,14 @@ class DescribeDiskAssociatedAutoSnapshotPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskId: 要查询的云硬盘ID。
+        :param _DiskId: 要查询的云硬盘ID，通过[DescribeDisks](https://tcloud4api.woa.com/document/product/362/15601?!preview&!document=1)接口查询。
         :type DiskId: str
         """
         self._DiskId = None
 
     @property
     def DiskId(self):
-        """要查询的云硬盘ID。
+        """要查询的云硬盘ID，通过[DescribeDisks](https://tcloud4api.woa.com/document/product/362/15601?!preview&!document=1)接口查询。
         :rtype: str
         """
         return self._DiskId
@@ -4630,7 +4630,7 @@ class Disk(AbstractModel):
         :type Shareable: bool
         :param _CreateTime: 云硬盘的创建时间。
         :type CreateTime: str
-        :param _DeleteSnapshot: 销毁云盘时删除关联的非永久保留快照。0 表示非永久快照不随云盘销毁而销毁，1表示非永久快照随云盘销毁而销毁，默认取0。快照是否永久保留可以通过DescribeSnapshots接口返回的快照详情的IsPermanent字段来判断，true表示永久快照，false表示非永久快照。
+        :param _DeleteSnapshot: 销毁云盘时删除关联的非永久保留快照。0 表示非永久快照不随云盘销毁而销毁，1表示非永久快照随云盘销毁而销毁，默认取0。快照是否永久保留可以通过[DescribeSnapshots](https://cloud.tencent.com/document/product/362/15647)接口返回的快照详情的IsPermanent字段来判断，true表示永久快照，false表示非永久快照。
         :type DeleteSnapshot: int
         :param _DiskBackupQuota: 云硬盘备份点配额。表示最大可以保留的备份点数量。
         :type DiskBackupQuota: int
@@ -5085,7 +5085,7 @@ class Disk(AbstractModel):
 
     @property
     def DeleteSnapshot(self):
-        """销毁云盘时删除关联的非永久保留快照。0 表示非永久快照不随云盘销毁而销毁，1表示非永久快照随云盘销毁而销毁，默认取0。快照是否永久保留可以通过DescribeSnapshots接口返回的快照详情的IsPermanent字段来判断，true表示永久快照，false表示非永久快照。
+        """销毁云盘时删除关联的非永久保留快照。0 表示非永久快照不随云盘销毁而销毁，1表示非永久快照随云盘销毁而销毁，默认取0。快照是否永久保留可以通过[DescribeSnapshots](https://cloud.tencent.com/document/product/362/15647)接口返回的快照详情的IsPermanent字段来判断，true表示永久快照，false表示非永久快照。
         :rtype: int
         """
         return self._DeleteSnapshot
@@ -6872,9 +6872,9 @@ class ModifyDiskBackupQuotaRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskId: 云硬盘ID。
+        :param _DiskId: 云硬盘ID。可通过[DescribeDisks](/document/product/362/16315)接口查询。
         :type DiskId: str
-        :param _DiskBackupQuota: 调整之后的云硬盘备份点配额。
+        :param _DiskBackupQuota: 调整之后的云硬盘备份点配额。取值范围为1 ~ 1024。
         :type DiskBackupQuota: int
         """
         self._DiskId = None
@@ -6882,7 +6882,7 @@ class ModifyDiskBackupQuotaRequest(AbstractModel):
 
     @property
     def DiskId(self):
-        """云硬盘ID。
+        """云硬盘ID。可通过[DescribeDisks](/document/product/362/16315)接口查询。
         :rtype: str
         """
         return self._DiskId
@@ -6893,7 +6893,7 @@ class ModifyDiskBackupQuotaRequest(AbstractModel):
 
     @property
     def DiskBackupQuota(self):
-        """调整之后的云硬盘备份点配额。
+        """调整之后的云硬盘备份点配额。取值范围为1 ~ 1024。
         :rtype: int
         """
         return self._DiskBackupQuota
@@ -6951,9 +6951,9 @@ class ModifyDiskExtraPerformanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ThroughputPerformance: 额外购买的云硬盘性能值，单位MB/s。
+        :param _ThroughputPerformance: 额外购买的云硬盘性能值，单位MiB/s。
         :type ThroughputPerformance: int
-        :param _DiskId: 需要创建快照的云硬盘ID，可通过[DescribeDisks](/document/product/362/16315)接口查询。
+        :param _DiskId: 需要购买额外性能值的云硬盘ID，可通过[DescribeDisks](/document/product/362/16315)接口查询。仅大小超过460GiB的增强型SSD（CLOUD_HSSD）和极速型SSD（CLOUD_TSSD）云硬盘才支持购买额外性能。
         :type DiskId: str
         """
         self._ThroughputPerformance = None
@@ -6961,7 +6961,7 @@ class ModifyDiskExtraPerformanceRequest(AbstractModel):
 
     @property
     def ThroughputPerformance(self):
-        """额外购买的云硬盘性能值，单位MB/s。
+        """额外购买的云硬盘性能值，单位MiB/s。
         :rtype: int
         """
         return self._ThroughputPerformance
@@ -6972,7 +6972,7 @@ class ModifyDiskExtraPerformanceRequest(AbstractModel):
 
     @property
     def DiskId(self):
-        """需要创建快照的云硬盘ID，可通过[DescribeDisks](/document/product/362/16315)接口查询。
+        """需要购买额外性能值的云硬盘ID，可通过[DescribeDisks](/document/product/362/16315)接口查询。仅大小超过460GiB的增强型SSD（CLOUD_HSSD）和极速型SSD（CLOUD_TSSD）云硬盘才支持购买额外性能。
         :rtype: str
         """
         return self._DiskId
@@ -7226,7 +7226,7 @@ class ModifySnapshotAttributeRequest(AbstractModel):
         :type IsPermanent: bool
         :param _SnapshotName: 新的快照名称。最长为60个字符。
         :type SnapshotName: str
-        :param _Deadline: 快照的到期时间；设置好快照将会被同时设置为非永久保留方式；超过到期时间后快照将会被自动删除。
+        :param _Deadline: 快照的到期时间；设置好快照将会被同时设置为非永久保留方式；超过到期时间后快照将会被自动删除。注：该参数仅在参数IsPermanent为False时生效。
         :type Deadline: str
         """
         self._SnapshotId = None
@@ -7269,7 +7269,7 @@ class ModifySnapshotAttributeRequest(AbstractModel):
 
     @property
     def Deadline(self):
-        """快照的到期时间；设置好快照将会被同时设置为非永久保留方式；超过到期时间后快照将会被自动删除。
+        """快照的到期时间；设置好快照将会被同时设置为非永久保留方式；超过到期时间后快照将会被自动删除。注：该参数仅在参数IsPermanent为False时生效。
         :rtype: str
         """
         return self._Deadline

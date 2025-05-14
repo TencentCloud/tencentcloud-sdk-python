@@ -711,7 +711,7 @@ class CreateClusterRequest(AbstractModel):
         :type ComputeNode: :class:`tencentcloud.thpc.v20211109.models.ComputeNode`
         :param _ComputeNodeCount: 指定计算节点的数量。默认取值：0。
         :type ComputeNodeCount: int
-        :param _SchedulerType: 调度器类型。<br><li>SGE：SGE调度器。</li><br><li>SLURM：SLURM调度器。</li>
+        :param _SchedulerType: 调度器类型。<br><li>SLURM：SLURM调度器。</li>
         :type SchedulerType: str
         :param _ImageId: 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前仅支持公有镜像。
         :type ImageId: str
@@ -820,7 +820,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 
     @property
     def SchedulerType(self):
-        """调度器类型。<br><li>SGE：SGE调度器。</li><br><li>SLURM：SLURM调度器。</li>
+        """调度器类型。<br><li>SLURM：SLURM调度器。</li>
         :rtype: str
         """
         return self._SchedulerType

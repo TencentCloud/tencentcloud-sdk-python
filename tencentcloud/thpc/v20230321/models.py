@@ -5331,6 +5331,85 @@ class ModifyWorkspacesAttributeResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyWorkspacesRenewFlagRequest(AbstractModel):
+    """ModifyWorkspacesRenewFlag请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceIds: 工作空间列表
+        :type SpaceIds: list of str
+        :param _RenewFlag: 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费</li><br>若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
+        :type RenewFlag: str
+        """
+        self._SpaceIds = None
+        self._RenewFlag = None
+
+    @property
+    def SpaceIds(self):
+        """工作空间列表
+        :rtype: list of str
+        """
+        return self._SpaceIds
+
+    @SpaceIds.setter
+    def SpaceIds(self, SpaceIds):
+        self._SpaceIds = SpaceIds
+
+    @property
+    def RenewFlag(self):
+        """自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费</li><br>若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
+        :rtype: str
+        """
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+
+    def _deserialize(self, params):
+        self._SpaceIds = params.get("SpaceIds")
+        self._RenewFlag = params.get("RenewFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyWorkspacesRenewFlagResponse(AbstractModel):
+    """ModifyWorkspacesRenewFlag返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class NodeActivity(AbstractModel):
     """节点活动信息。
 

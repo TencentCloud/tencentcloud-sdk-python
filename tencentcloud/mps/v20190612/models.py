@@ -34734,6 +34734,69 @@ class HighlightSegmentItem(AbstractModel):
         
 
 
+class ImageAreaBoxInfo(AbstractModel):
+    """图片框选区域信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 图片框选区域类型，可选值：
+<li>logo：图标；</li>
+<li>text：文字。</li>
+默认值：logo。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _AreaCoordSet: 图片框选区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
+示例值：[101, 85, 111, 95]
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AreaCoordSet: list of int
+        """
+        self._Type = None
+        self._AreaCoordSet = None
+
+    @property
+    def Type(self):
+        """图片框选区域类型，可选值：
+<li>logo：图标；</li>
+<li>text：文字。</li>
+默认值：logo。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def AreaCoordSet(self):
+        """图片框选区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
+示例值：[101, 85, 111, 95]
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
+        return self._AreaCoordSet
+
+    @AreaCoordSet.setter
+    def AreaCoordSet(self, AreaCoordSet):
+        self._AreaCoordSet = AreaCoordSet
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._AreaCoordSet = params.get("AreaCoordSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ImageEncodeConfig(AbstractModel):
     """图片编码格式参数
 
@@ -34741,7 +34804,7 @@ class ImageEncodeConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Format: 图片格式，取值范围：JPG、BMP、GIF、PNG、WebP，缺省为原图格式。
+        :param _Format: 图片格式，取值范围：JPEG、PNG、BMP、WebP，缺省为原图格式。不支持动画。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Format: str
         :param _Quality: 图片的相对质量，取值范围：1 - 100，数值以原图质量为标准，缺省为原图质量。
@@ -34753,7 +34816,7 @@ class ImageEncodeConfig(AbstractModel):
 
     @property
     def Format(self):
-        """图片格式，取值范围：JPG、BMP、GIF、PNG、WebP，缺省为原图格式。
+        """图片格式，取值范围：JPEG、PNG、BMP、WebP，缺省为原图格式。不支持动画。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -34799,6 +34862,9 @@ class ImageEnhanceConfig(AbstractModel):
         :param _SuperResolution: 超分配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SuperResolution: :class:`tencentcloud.mps.v20190612.models.SuperResolutionConfig`
+        :param _ImageQualityEnhance: 综合增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageQualityEnhance: :class:`tencentcloud.mps.v20190612.models.ImageQualityEnhanceConfig`
         :param _ColorEnhance: 色彩增强配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ColorEnhance: :class:`tencentcloud.mps.v20190612.models.ColorEnhanceConfig`
@@ -34810,6 +34876,7 @@ class ImageEnhanceConfig(AbstractModel):
         :type FaceEnhance: :class:`tencentcloud.mps.v20190612.models.FaceEnhanceConfig`
         """
         self._SuperResolution = None
+        self._ImageQualityEnhance = None
         self._ColorEnhance = None
         self._SharpEnhance = None
         self._FaceEnhance = None
@@ -34825,6 +34892,18 @@ class ImageEnhanceConfig(AbstractModel):
     @SuperResolution.setter
     def SuperResolution(self, SuperResolution):
         self._SuperResolution = SuperResolution
+
+    @property
+    def ImageQualityEnhance(self):
+        """综合增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ImageQualityEnhanceConfig`
+        """
+        return self._ImageQualityEnhance
+
+    @ImageQualityEnhance.setter
+    def ImageQualityEnhance(self, ImageQualityEnhance):
+        self._ImageQualityEnhance = ImageQualityEnhance
 
     @property
     def ColorEnhance(self):
@@ -34867,6 +34946,9 @@ class ImageEnhanceConfig(AbstractModel):
         if params.get("SuperResolution") is not None:
             self._SuperResolution = SuperResolutionConfig()
             self._SuperResolution._deserialize(params.get("SuperResolution"))
+        if params.get("ImageQualityEnhance") is not None:
+            self._ImageQualityEnhance = ImageQualityEnhanceConfig()
+            self._ImageQualityEnhance._deserialize(params.get("ImageQualityEnhance"))
         if params.get("ColorEnhance") is not None:
             self._ColorEnhance = ColorEnhanceConfig()
             self._ColorEnhance._deserialize(params.get("ColorEnhance"))
@@ -34876,6 +34958,114 @@ class ImageEnhanceConfig(AbstractModel):
         if params.get("FaceEnhance") is not None:
             self._FaceEnhance = FaceEnhanceConfig()
             self._FaceEnhance._deserialize(params.get("FaceEnhance"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageEraseConfig(AbstractModel):
+    """图片擦除参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageEraseLogo: 图标擦除配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageEraseLogo: :class:`tencentcloud.mps.v20190612.models.ImageEraseLogoConfig`
+        """
+        self._ImageEraseLogo = None
+
+    @property
+    def ImageEraseLogo(self):
+        """图标擦除配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ImageEraseLogoConfig`
+        """
+        return self._ImageEraseLogo
+
+    @ImageEraseLogo.setter
+    def ImageEraseLogo(self, ImageEraseLogo):
+        self._ImageEraseLogo = ImageEraseLogo
+
+
+    def _deserialize(self, params):
+        if params.get("ImageEraseLogo") is not None:
+            self._ImageEraseLogo = ImageEraseLogoConfig()
+            self._ImageEraseLogo._deserialize(params.get("ImageEraseLogo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageEraseLogoConfig(AbstractModel):
+    """图标擦除配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Switch: str
+        :param _ImageAreaBoxes: 需要擦除的多个框选区域，注意：参数数组长度最大为2。
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageAreaBoxes: list of ImageAreaBoxInfo
+        """
+        self._Switch = None
+        self._ImageAreaBoxes = None
+
+    @property
+    def Switch(self):
+        """能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def ImageAreaBoxes(self):
+        """需要擦除的多个框选区域，注意：参数数组长度最大为2。
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ImageAreaBoxInfo
+        """
+        return self._ImageAreaBoxes
+
+    @ImageAreaBoxes.setter
+    def ImageAreaBoxes(self, ImageAreaBoxes):
+        self._ImageAreaBoxes = ImageAreaBoxes
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        if params.get("ImageAreaBoxes") is not None:
+            self._ImageAreaBoxes = []
+            for item in params.get("ImageAreaBoxes"):
+                obj = ImageAreaBoxInfo()
+                obj._deserialize(item)
+                self._ImageAreaBoxes.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -35366,9 +35556,13 @@ class ImageTaskInput(AbstractModel):
         :param _EnhanceConfig: 图片增强配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnhanceConfig: :class:`tencentcloud.mps.v20190612.models.ImageEnhanceConfig`
+        :param _EraseConfig: 图片擦除配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EraseConfig: :class:`tencentcloud.mps.v20190612.models.ImageEraseConfig`
         """
         self._EncodeConfig = None
         self._EnhanceConfig = None
+        self._EraseConfig = None
 
     @property
     def EncodeConfig(self):
@@ -35394,6 +35588,18 @@ class ImageTaskInput(AbstractModel):
     def EnhanceConfig(self, EnhanceConfig):
         self._EnhanceConfig = EnhanceConfig
 
+    @property
+    def EraseConfig(self):
+        """图片擦除配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ImageEraseConfig`
+        """
+        return self._EraseConfig
+
+    @EraseConfig.setter
+    def EraseConfig(self, EraseConfig):
+        self._EraseConfig = EraseConfig
+
 
     def _deserialize(self, params):
         if params.get("EncodeConfig") is not None:
@@ -35402,6 +35608,9 @@ class ImageTaskInput(AbstractModel):
         if params.get("EnhanceConfig") is not None:
             self._EnhanceConfig = ImageEnhanceConfig()
             self._EnhanceConfig._deserialize(params.get("EnhanceConfig"))
+        if params.get("EraseConfig") is not None:
+            self._EraseConfig = ImageEraseConfig()
+            self._EraseConfig._deserialize(params.get("EraseConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -767,6 +767,29 @@ class DnspodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDomainAndRecordList(self, request):
+        """批量操作中搜索域名
+
+        :param request: Request instance for DescribeDomainAndRecordList.
+        :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeDomainAndRecordListRequest`
+        :rtype: :class:`tencentcloud.dnspod.v20210323.models.DescribeDomainAndRecordListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDomainAndRecordList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDomainAndRecordListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDomainCustomLineList(self, request):
         """获取域名的自定义线路列表
 

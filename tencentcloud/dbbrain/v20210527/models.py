@@ -1737,6 +1737,100 @@ class CancelDBAutonomyActionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CancelDBAutonomyEventRequest(AbstractModel):
+    """CancelDBAutonomyEvent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EventId: 自治事件ID。
+        :type EventId: int
+        :param _InstanceId: 实列ID。
+        :type InstanceId: str
+        :param _Product: 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
+        :type Product: str
+        """
+        self._EventId = None
+        self._InstanceId = None
+        self._Product = None
+
+    @property
+    def EventId(self):
+        """自治事件ID。
+        :rtype: int
+        """
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
+    @property
+    def InstanceId(self):
+        """实列ID。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Product(self):
+        """服务产品类型，支持值包括： "redis" - 云数据库 Redis。
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+
+    def _deserialize(self, params):
+        self._EventId = params.get("EventId")
+        self._InstanceId = params.get("InstanceId")
+        self._Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CancelDBAutonomyEventResponse(AbstractModel):
+    """CancelDBAutonomyEvent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CancelKillTaskRequest(AbstractModel):
     """CancelKillTask请求参数结构体
 
@@ -5070,6 +5164,280 @@ class DescribeAuditLogFilesResponse(AbstractModel):
                 obj = AuditLogFile()
                 obj._deserialize(item)
                 self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDBAutonomyActionRequest(AbstractModel):
+    """DescribeDBAutonomyAction请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ActionId: 自治任务ID。
+        :type ActionId: int
+        :param _InstanceId: 实列ID。
+        :type InstanceId: str
+        :param _Product: 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
+        :type Product: str
+        """
+        self._ActionId = None
+        self._InstanceId = None
+        self._Product = None
+
+    @property
+    def ActionId(self):
+        """自治任务ID。
+        :rtype: int
+        """
+        return self._ActionId
+
+    @ActionId.setter
+    def ActionId(self, ActionId):
+        self._ActionId = ActionId
+
+    @property
+    def InstanceId(self):
+        """实列ID。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Product(self):
+        """服务产品类型，支持值包括： "redis" - 云数据库 Redis。
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+
+    def _deserialize(self, params):
+        self._ActionId = params.get("ActionId")
+        self._InstanceId = params.get("InstanceId")
+        self._Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBAutonomyActionResponse(AbstractModel):
+    """DescribeDBAutonomyAction返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ActionId: 自治任务ID。
+        :type ActionId: int
+        :param _EventId: 自治事件ID。
+        :type EventId: int
+        :param _TaskId: 任务ID。
+        :type TaskId: int
+        :param _Type: 类型：支持RedisAutoScaleUp
+        :type Type: str
+        :param _TriggerTime: 自治任务触发时间。
+        :type TriggerTime: str
+        :param _CreateTime: 自治任务创建时间。
+        :type CreateTime: str
+        :param _UpdateTime: 自治任务更新时间。
+        :type UpdateTime: str
+        :param _FinishTime: 自治任务完成时间。
+        :type FinishTime: str
+        :param _ExpireTime: 剩余时间，单位：秒。
+        :type ExpireTime: int
+        :param _Reason: 触发原因。
+        :type Reason: str
+        :param _Status: 自治任务状态：支持 RUNNING，FINISHED，TERMINATED，CANCELLED
+        :type Status: str
+        :param _Info: 任务相关的图表等信息。
+        :type Info: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ActionId = None
+        self._EventId = None
+        self._TaskId = None
+        self._Type = None
+        self._TriggerTime = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._FinishTime = None
+        self._ExpireTime = None
+        self._Reason = None
+        self._Status = None
+        self._Info = None
+        self._RequestId = None
+
+    @property
+    def ActionId(self):
+        """自治任务ID。
+        :rtype: int
+        """
+        return self._ActionId
+
+    @ActionId.setter
+    def ActionId(self, ActionId):
+        self._ActionId = ActionId
+
+    @property
+    def EventId(self):
+        """自治事件ID。
+        :rtype: int
+        """
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
+    @property
+    def TaskId(self):
+        """任务ID。
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Type(self):
+        """类型：支持RedisAutoScaleUp
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def TriggerTime(self):
+        """自治任务触发时间。
+        :rtype: str
+        """
+        return self._TriggerTime
+
+    @TriggerTime.setter
+    def TriggerTime(self, TriggerTime):
+        self._TriggerTime = TriggerTime
+
+    @property
+    def CreateTime(self):
+        """自治任务创建时间。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        """自治任务更新时间。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def FinishTime(self):
+        """自治任务完成时间。
+        :rtype: str
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
+    @property
+    def ExpireTime(self):
+        """剩余时间，单位：秒。
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def Reason(self):
+        """触发原因。
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def Status(self):
+        """自治任务状态：支持 RUNNING，FINISHED，TERMINATED，CANCELLED
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Info(self):
+        """任务相关的图表等信息。
+        :rtype: str
+        """
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ActionId = params.get("ActionId")
+        self._EventId = params.get("EventId")
+        self._TaskId = params.get("TaskId")
+        self._Type = params.get("Type")
+        self._TriggerTime = params.get("TriggerTime")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._FinishTime = params.get("FinishTime")
+        self._ExpireTime = params.get("ExpireTime")
+        self._Reason = params.get("Reason")
+        self._Status = params.get("Status")
+        self._Info = params.get("Info")
         self._RequestId = params.get("RequestId")
 
 

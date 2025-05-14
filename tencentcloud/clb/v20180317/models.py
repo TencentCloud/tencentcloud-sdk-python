@@ -3998,13 +3998,16 @@ class CreateListenerRequest(AbstractModel):
         :type MaxCps: int
         :param _IdleConnectTimeout: 空闲连接超时时间，此参数仅适用于TCP监听器，单位：秒。取值范围：共享型实例和独占型实例支持：300-900，性能容量型实例支持：300-1980。如需设置请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)。
         :type IdleConnectTimeout: int
-        :param _SnatEnable: 是否开启SNAT，True（开启）、False（关闭）
+        :param _SnatEnable: 是否开启SNAT，True（开启）、False（关闭）。
+默认为关闭。
         :type SnatEnable: bool
         :param _FullEndPorts: 全端口段监听器的结束端口，端口范围：2 - 65535
         :type FullEndPorts: list of int
-        :param _H2cSwitch: 内网http监听器开启h2c开关，True（开启）、False（关闭）
+        :param _H2cSwitch: 内网http监听器开启h2c开关，True（开启）、False（关闭）。
+默认为关闭。
         :type H2cSwitch: bool
-        :param _SslCloseSwitch: TCP_SSL监听器支持关闭SSL后仍然支持混绑，此参数为关闭开关。True（关闭）、False（开启）
+        :param _SslCloseSwitch: TCP_SSL监听器支持关闭SSL后仍然支持混绑，此参数为关闭开关。True（关闭）、False（开启）.
+默认为关闭。
         :type SslCloseSwitch: bool
         :param _DataCompressMode: 数据压缩模式。可选值：transparent（透传模式）、compatibility（兼容模式）
         :type DataCompressMode: str
@@ -4240,7 +4243,8 @@ class CreateListenerRequest(AbstractModel):
 
     @property
     def SnatEnable(self):
-        """是否开启SNAT，True（开启）、False（关闭）
+        """是否开启SNAT，True（开启）、False（关闭）。
+默认为关闭。
         :rtype: bool
         """
         return self._SnatEnable
@@ -4262,7 +4266,8 @@ class CreateListenerRequest(AbstractModel):
 
     @property
     def H2cSwitch(self):
-        """内网http监听器开启h2c开关，True（开启）、False（关闭）
+        """内网http监听器开启h2c开关，True（开启）、False（关闭）。
+默认为关闭。
         :rtype: bool
         """
         return self._H2cSwitch
@@ -4273,7 +4278,8 @@ class CreateListenerRequest(AbstractModel):
 
     @property
     def SslCloseSwitch(self):
-        """TCP_SSL监听器支持关闭SSL后仍然支持混绑，此参数为关闭开关。True（关闭）、False（开启）
+        """TCP_SSL监听器支持关闭SSL后仍然支持混绑，此参数为关闭开关。True（关闭）、False（开启）.
+默认为关闭。
         :rtype: bool
         """
         return self._SslCloseSwitch
@@ -5917,7 +5923,7 @@ class DeleteLoadBalancerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerIds: 要删除的负载均衡实例 ID 数组，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取数组大小最大支持20。
+        :param _LoadBalancerIds: 要删除的负载均衡实例 ID 数组，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取，数组大小最大支持20。
         :type LoadBalancerIds: list of str
         :param _ForceDelete: 是否强制删除clb。True表示强制删除，False表示不是强制删除，需要做拦截校验。
 默认为 False
@@ -5928,7 +5934,7 @@ class DeleteLoadBalancerRequest(AbstractModel):
 
     @property
     def LoadBalancerIds(self):
-        """要删除的负载均衡实例 ID 数组，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取数组大小最大支持20。
+        """要删除的负载均衡实例 ID 数组，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取，数组大小最大支持20。
         :rtype: list of str
         """
         return self._LoadBalancerIds
@@ -6195,11 +6201,11 @@ class DeleteRuleRequest(AbstractModel):
         :type LoadBalancerId: str
         :param _ListenerId: 负载均衡监听器ID，可以通过 [DescribeListeners](https://cloud.tencent.com/document/product/214/30686) 接口查询。
         :type ListenerId: str
-        :param _LocationIds: 要删除的转发规则的ID组成的数组，可以通过 [DescribeListeners](https://cloud.tencent.com/document/product/214/30686) 接口查询。
+        :param _LocationIds: 要删除的转发规则的ID组成的数组，可以通过 [DescribeLoadBalancersDetail](https://cloud.tencent.com/document/api/214/46916) 接口查询。
         :type LocationIds: list of str
-        :param _Domain: 要删除的转发规则的域名，如果是多域名，可以指定多域名列表中的任意一个，可以通过 [DescribeListeners](https://cloud.tencent.com/document/product/214/30686) 接口查询。
+        :param _Domain: 要删除的转发规则的域名，如果是多域名，可以指定多域名列表中的任意一个，可以通过 [DescribeLoadBalancersDetail](https://cloud.tencent.com/document/api/214/46916) 接口查询。
         :type Domain: str
-        :param _Url: 要删除的转发规则的转发路径，可以通过 [DescribeListeners](https://cloud.tencent.com/document/product/214/30686) 接口查询。
+        :param _Url: 要删除的转发规则的转发路径，可以通过 [DescribeLoadBalancersDetail](https://cloud.tencent.com/document/api/214/46916) 接口查询。
         :type Url: str
         :param _NewDefaultServerDomain: 监听器下必须配置一个默认域名，当需要删除默认域名时，可以指定另一个域名作为新的默认域名，如果新的默认域名是多域名，可以指定多域名列表中的任意一个，可以通过 [DescribeListeners](https://cloud.tencent.com/document/product/214/30686) 接口查询。
         :type NewDefaultServerDomain: str
@@ -6235,7 +6241,7 @@ class DeleteRuleRequest(AbstractModel):
 
     @property
     def LocationIds(self):
-        """要删除的转发规则的ID组成的数组，可以通过 [DescribeListeners](https://cloud.tencent.com/document/product/214/30686) 接口查询。
+        """要删除的转发规则的ID组成的数组，可以通过 [DescribeLoadBalancersDetail](https://cloud.tencent.com/document/api/214/46916) 接口查询。
         :rtype: list of str
         """
         return self._LocationIds
@@ -6246,7 +6252,7 @@ class DeleteRuleRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """要删除的转发规则的域名，如果是多域名，可以指定多域名列表中的任意一个，可以通过 [DescribeListeners](https://cloud.tencent.com/document/product/214/30686) 接口查询。
+        """要删除的转发规则的域名，如果是多域名，可以指定多域名列表中的任意一个，可以通过 [DescribeLoadBalancersDetail](https://cloud.tencent.com/document/api/214/46916) 接口查询。
         :rtype: str
         """
         return self._Domain
@@ -6257,7 +6263,7 @@ class DeleteRuleRequest(AbstractModel):
 
     @property
     def Url(self):
-        """要删除的转发规则的转发路径，可以通过 [DescribeListeners](https://cloud.tencent.com/document/product/214/30686) 接口查询。
+        """要删除的转发规则的转发路径，可以通过 [DescribeLoadBalancersDetail](https://cloud.tencent.com/document/api/214/46916) 接口查询。
         :rtype: str
         """
         return self._Url
@@ -6330,14 +6336,14 @@ class DeleteTargetGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TargetGroupIds: 目标组的ID数组。
+        :param _TargetGroupIds: 目标组的ID数组，单次最多支持删除20个。
         :type TargetGroupIds: list of str
         """
         self._TargetGroupIds = None
 
     @property
     def TargetGroupIds(self):
-        """目标组的ID数组。
+        """目标组的ID数组，单次最多支持删除20个。
         :rtype: list of str
         """
         return self._TargetGroupIds
@@ -6541,7 +6547,7 @@ class DeregisterTargetGroupInstancesRequest(AbstractModel):
         :param _TargetGroupId: 目标组ID。
         :type TargetGroupId: str
         :param _TargetGroupInstances: 待解绑的服务器信息，支持批量解除绑定，单次批量解除数量最多为20个。
-
+在这个接口 Port 参数为必填项。
         :type TargetGroupInstances: list of TargetGroupInstance
         """
         self._TargetGroupId = None
@@ -6561,7 +6567,7 @@ class DeregisterTargetGroupInstancesRequest(AbstractModel):
     @property
     def TargetGroupInstances(self):
         """待解绑的服务器信息，支持批量解除绑定，单次批量解除数量最多为20个。
-
+在这个接口 Port 参数为必填项。
         :rtype: list of TargetGroupInstance
         """
         return self._TargetGroupInstances
@@ -8328,7 +8334,7 @@ class DescribeIdleLoadBalancersRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 返回负载均衡实例的数量，默认为20，最大值为100。
         :type Limit: int
-        :param _LoadBalancerRegion: 负载均衡所在地域。
+        :param _LoadBalancerRegion: 负载均衡所在地域，可以通过 [DescribeRegions](https://cloud.tencent.com/document/product/1596/77930) 查询获取。
         :type LoadBalancerRegion: str
         """
         self._Offset = None
@@ -8359,7 +8365,7 @@ class DescribeIdleLoadBalancersRequest(AbstractModel):
 
     @property
     def LoadBalancerRegion(self):
-        """负载均衡所在地域。
+        """负载均衡所在地域，可以通过 [DescribeRegions](https://cloud.tencent.com/document/product/1596/77930) 查询获取。
         :rtype: str
         """
         return self._LoadBalancerRegion
@@ -12115,14 +12121,14 @@ class InquiryPriceRefundLoadBalancerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerId: 负载均衡实例ID
+        :param _LoadBalancerId: 负载均衡实例ID。可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口查询。
         :type LoadBalancerId: str
         """
         self._LoadBalancerId = None
 
     @property
     def LoadBalancerId(self):
-        """负载均衡实例ID
+        """负载均衡实例ID。可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口查询。
         :rtype: str
         """
         return self._LoadBalancerId
@@ -16473,6 +16479,7 @@ class ModifyListenerRequest(AbstractModel):
         :type KeepaliveEnable: int
         :param _DeregisterTargetRst: 解绑后端目标时，是否发RST给客户端，此参数仅适用于TCP监听器。
 True表示发送 RST 给客户端，False表示不发送 RST 给客户端。
+不传则表示不修改。
         :type DeregisterTargetRst: bool
         :param _SessionType: 会话保持类型。NORMAL表示默认会话保持类型。QUIC_CID表示根据Quic Connection ID做会话保持。QUIC_CID只支持UDP协议。
 使用场景：适用于TCP/UDP/TCP_SSL/QUIC监听器。
@@ -16489,6 +16496,7 @@ True表示发送 RST 给客户端，False表示不发送 RST 给客户端。
         :param _IdleConnectTimeout: 空闲连接超时时间，此参数仅适用于TCP监听器，单位：秒。默认值：900，取值范围：共享型实例和独占型实例支持：300～900，性能容量型实例支持：300~1980。如需设置超过2000s，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category),最大可设置到3600s。
         :type IdleConnectTimeout: int
         :param _SnatEnable: 是否开启SNAT， True 表示开启 SNAT，False 表示不开启 SNAT。
+不传则表示不修改。
         :type SnatEnable: bool
         :param _DataCompressMode: 数据压缩模式
         :type DataCompressMode: str
@@ -16630,6 +16638,7 @@ True表示发送 RST 给客户端，False表示不发送 RST 给客户端。
     def DeregisterTargetRst(self):
         """解绑后端目标时，是否发RST给客户端，此参数仅适用于TCP监听器。
 True表示发送 RST 给客户端，False表示不发送 RST 给客户端。
+不传则表示不修改。
         :rtype: bool
         """
         return self._DeregisterTargetRst
@@ -16700,6 +16709,7 @@ True表示发送 RST 给客户端，False表示不发送 RST 给客户端。
     @property
     def SnatEnable(self):
         """是否开启SNAT， True 表示开启 SNAT，False 表示不开启 SNAT。
+不传则表示不修改。
         :rtype: bool
         """
         return self._SnatEnable
@@ -17934,23 +17944,23 @@ class ModifyTargetWeightRequest(AbstractModel):
         :type LoadBalancerId: str
         :param _ListenerId: 负载均衡监听器ID。
         :type ListenerId: str
+        :param _Targets: 要修改权重的后端服务列表。
+        :type Targets: list of Target
         :param _LocationId: 转发规则的ID，当绑定机器到七层转发规则时，必须提供此参数或Domain+Url两者之一。
         :type LocationId: str
         :param _Domain: 目标规则的域名，提供LocationId参数时本参数不生效。
         :type Domain: str
         :param _Url: 目标规则的URL，提供LocationId参数时本参数不生效。
         :type Url: str
-        :param _Targets: 要修改权重的后端服务列表。
-        :type Targets: list of Target
         :param _Weight: 后端服务新的转发权重，取值范围：0~100，默认值10。如果设置了 Targets.Weight 参数，则此参数不生效。
         :type Weight: int
         """
         self._LoadBalancerId = None
         self._ListenerId = None
+        self._Targets = None
         self._LocationId = None
         self._Domain = None
         self._Url = None
-        self._Targets = None
         self._Weight = None
 
     @property
@@ -17974,6 +17984,17 @@ class ModifyTargetWeightRequest(AbstractModel):
     @ListenerId.setter
     def ListenerId(self, ListenerId):
         self._ListenerId = ListenerId
+
+    @property
+    def Targets(self):
+        """要修改权重的后端服务列表。
+        :rtype: list of Target
+        """
+        return self._Targets
+
+    @Targets.setter
+    def Targets(self, Targets):
+        self._Targets = Targets
 
     @property
     def LocationId(self):
@@ -18009,17 +18030,6 @@ class ModifyTargetWeightRequest(AbstractModel):
         self._Url = Url
 
     @property
-    def Targets(self):
-        """要修改权重的后端服务列表。
-        :rtype: list of Target
-        """
-        return self._Targets
-
-    @Targets.setter
-    def Targets(self, Targets):
-        self._Targets = Targets
-
-    @property
     def Weight(self):
         """后端服务新的转发权重，取值范围：0~100，默认值10。如果设置了 Targets.Weight 参数，则此参数不生效。
         :rtype: int
@@ -18034,15 +18044,15 @@ class ModifyTargetWeightRequest(AbstractModel):
     def _deserialize(self, params):
         self._LoadBalancerId = params.get("LoadBalancerId")
         self._ListenerId = params.get("ListenerId")
-        self._LocationId = params.get("LocationId")
-        self._Domain = params.get("Domain")
-        self._Url = params.get("Url")
         if params.get("Targets") is not None:
             self._Targets = []
             for item in params.get("Targets"):
                 obj = Target()
                 obj._deserialize(item)
                 self._Targets.append(obj)
+        self._LocationId = params.get("LocationId")
+        self._Domain = params.get("Domain")
+        self._Url = params.get("Url")
         self._Weight = params.get("Weight")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -20767,7 +20777,7 @@ class SetLoadBalancerStartStatusRequest(AbstractModel):
         r"""
         :param _OperationType: 操作类型。Start：启动实例，Stop：停止实例。
         :type OperationType: str
-        :param _LoadBalancerId: 负载均衡实例ID。
+        :param _LoadBalancerId: 负载均衡实例ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口查询。
         :type LoadBalancerId: str
         :param _ListenerIds: 监听器ID。如果该字段为空，则表示操作负载均衡实例，如果不为空，则表示操作监听器。
         :type ListenerIds: list of str
@@ -20789,7 +20799,7 @@ class SetLoadBalancerStartStatusRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """负载均衡实例ID。
+        """负载均衡实例ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口查询。
         :rtype: str
         """
         return self._LoadBalancerId

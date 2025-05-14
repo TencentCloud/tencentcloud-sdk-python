@@ -3699,7 +3699,7 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
         :type NeedSupportIpv6: int
         :param _Name: 实例名(后续支持)
         :type Name: str
-        :param _DBVersion: 【废弃】不再需要指定，内核版本号与主实例保持一致
+        :param _DBVersion: 不再需要指定，内核版本号与主实例保持一致
         :type DBVersion: str
         :param _DedicatedClusterId: 专属集群ID
         :type DedicatedClusterId: str
@@ -3953,13 +3953,17 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
 
     @property
     def DBVersion(self):
-        """【废弃】不再需要指定，内核版本号与主实例保持一致
+        warnings.warn("parameter `DBVersion` is deprecated", DeprecationWarning) 
+
+        """不再需要指定，内核版本号与主实例保持一致
         :rtype: str
         """
         return self._DBVersion
 
     @DBVersion.setter
     def DBVersion(self, DBVersion):
+        warnings.warn("parameter `DBVersion` is deprecated", DeprecationWarning) 
+
         self._DBVersion = DBVersion
 
     @property
@@ -14012,7 +14016,7 @@ class InquiryPriceUpgradeDBInstanceRequest(AbstractModel):
         :type Memory: int
         :param _DBInstanceId: 实例ID，形如postgres-hez4fh0v
         :type DBInstanceId: str
-        :param _InstanceChargeType: 【废弃参数，不再生效】，实例计费类型。
+        :param _InstanceChargeType: 实例计费类型。
         :type InstanceChargeType: str
         :param _Cpu: 实例的Cpu大小，单位Core
         :type Cpu: int
@@ -14058,13 +14062,17 @@ class InquiryPriceUpgradeDBInstanceRequest(AbstractModel):
 
     @property
     def InstanceChargeType(self):
-        """【废弃参数，不再生效】，实例计费类型。
+        warnings.warn("parameter `InstanceChargeType` is deprecated", DeprecationWarning) 
+
+        """实例计费类型。
         :rtype: str
         """
         return self._InstanceChargeType
 
     @InstanceChargeType.setter
     def InstanceChargeType(self, InstanceChargeType):
+        warnings.warn("parameter `InstanceChargeType` is deprecated", DeprecationWarning) 
+
         self._InstanceChargeType = InstanceChargeType
 
     @property

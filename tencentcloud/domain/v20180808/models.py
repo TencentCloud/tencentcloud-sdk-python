@@ -106,10 +106,11 @@ class BatchModifyDomainInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Domains: 批量修改的域名。
+        :param _Domains: 批量修改的域名数组
+个数最大不超过4000
         :type Domains: list of str
-        :param _TemplateId: 模板ID
-可从DescribeTemplates接口获取
+        :param _TemplateId: 模板ID 
+可从[DescribeTemplateList](https://cloud.tencent.com/document/api/242/48940)接口获取
         :type TemplateId: str
         :param _LockTransfer: true： 开启60天内禁止转移注册商锁定
 false：关闭60天内禁止转移注册商锁定
@@ -122,7 +123,8 @@ false：关闭60天内禁止转移注册商锁定
 
     @property
     def Domains(self):
-        """批量修改的域名。
+        """批量修改的域名数组
+个数最大不超过4000
         :rtype: list of str
         """
         return self._Domains
@@ -133,8 +135,8 @@ false：关闭60天内禁止转移注册商锁定
 
     @property
     def TemplateId(self):
-        """模板ID
-可从DescribeTemplates接口获取
+        """模板ID 
+可从[DescribeTemplateList](https://cloud.tencent.com/document/api/242/48940)接口获取
         :rtype: str
         """
         return self._TemplateId
@@ -729,8 +731,11 @@ class BiddingPreReleaseResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _IsNeedPay: 是否需要额外支付
+true: 需要额外支付
+false: 不需要额外支付
         :type IsNeedPay: bool
-        :param _BillingParam: 计费请求参数，以类Json字符串的形式进行返回。用于计费下单
+        :param _BillingParam: 计费请求参数，以类Json字符串的形式进行返回。json字符串前有一个">"特定标识符号，去掉标识符的字符串可用于计费下单
+
         :type BillingParam: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -742,6 +747,8 @@ class BiddingPreReleaseResponse(AbstractModel):
     @property
     def IsNeedPay(self):
         """是否需要额外支付
+true: 需要额外支付
+false: 不需要额外支付
         :rtype: bool
         """
         return self._IsNeedPay
@@ -752,7 +759,8 @@ class BiddingPreReleaseResponse(AbstractModel):
 
     @property
     def BillingParam(self):
-        """计费请求参数，以类Json字符串的形式进行返回。用于计费下单
+        """计费请求参数，以类Json字符串的形式进行返回。json字符串前有一个">"特定标识符号，去掉标识符的字符串可用于计费下单
+
         :rtype: str
         """
         return self._BillingParam
@@ -1874,8 +1882,8 @@ class CreateCustomDnsHostRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DomainId: 域名实例ID
-可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
+        :param _DomainId: 域名实例ID 
+可通过[DescribeDomainNameList](https://cloud.tencent.com/document/api/242/48941)接口获取
         :type DomainId: str
         :param _DnsName: Dns名称
 例如：<>.test.com;其中<>就是Dns名称，可以是任意域名允许的格式
@@ -1890,8 +1898,8 @@ class CreateCustomDnsHostRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """域名实例ID
-可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
+        """域名实例ID 
+可通过[DescribeDomainNameList](https://cloud.tencent.com/document/api/242/48941)接口获取
         :rtype: str
         """
         return self._DomainId
@@ -2293,7 +2301,7 @@ class CreatePhoneEmailRequest(AbstractModel):
         :param _Type: 1：手机   2：邮箱
         :type Type: int
         :param _VerifyCode: 验证码
-通过调用SendPhoneEmailCode接口发送到手机或邮箱的验证码：https://cloud.tencent.com/document/api/242/62666
+通过调用[SendPhoneEmailCode](https://cloud.tencent.com/document/api/242/62666)接口发送到手机或邮箱的验证码
         :type VerifyCode: str
         """
         self._Code = None
@@ -2325,7 +2333,7 @@ class CreatePhoneEmailRequest(AbstractModel):
     @property
     def VerifyCode(self):
         """验证码
-通过调用SendPhoneEmailCode接口发送到手机或邮箱的验证码：https://cloud.tencent.com/document/api/242/62666
+通过调用[SendPhoneEmailCode](https://cloud.tencent.com/document/api/242/62666)接口发送到手机或邮箱的验证码
         :rtype: str
         """
         return self._VerifyCode
@@ -2843,7 +2851,7 @@ class DeleteTemplateRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _TemplateId: 模板ID
-可通过DescribeTemplates接口获取
+可通过[DescribeTemplateList](https://cloud.tencent.com/document/api/242/48940)接口获取
         :type TemplateId: str
         """
         self._TemplateId = None
@@ -2851,7 +2859,7 @@ class DeleteTemplateRequest(AbstractModel):
     @property
     def TemplateId(self):
         """模板ID
-可通过DescribeTemplates接口获取
+可通过[DescribeTemplateList](https://cloud.tencent.com/document/api/242/48940)接口获取
         :rtype: str
         """
         return self._TemplateId
@@ -3529,7 +3537,7 @@ class DescribeBiddingAppointListRequest(AbstractModel):
 默认值1
         :type PageNumber: int
         :param _PageSize: 每页数量
-默认：20 取值范围【1，200】
+默认：20 取值范围[1，200]
         :type PageSize: int
         :param _Domain: 域名
         :type Domain: str
@@ -3543,7 +3551,10 @@ AppointEndTime 预约结束时间
 BiddingPrice 竞价保证金
 BiddingEndTime 竞价结束时间
         :type SortField: str
-        :param _SortOrder: 排序规则：asc升序，desc降序
+        :param _SortOrder: 排序规则：
+asc:升序
+desc:降序
+默认：asc
         :type SortOrder: str
         """
         self._PageNumber = None
@@ -3568,7 +3579,7 @@ BiddingEndTime 竞价结束时间
     @property
     def PageSize(self):
         """每页数量
-默认：20 取值范围【1，200】
+默认：20 取值范围[1，200]
         :rtype: int
         """
         return self._PageSize
@@ -3618,7 +3629,10 @@ BiddingEndTime 竞价结束时间
 
     @property
     def SortOrder(self):
-        """排序规则：asc升序，desc降序
+        """排序规则：
+asc:升序
+desc:降序
+默认：asc
         :rtype: str
         """
         return self._SortOrder
@@ -4178,7 +4192,7 @@ class DescribeBiddingSuccessfulDetailRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _BusinessID: 预约ID 
-可通过[DescribeBiddingSuccessfulList](https://cloud.tencent.com/document/api/242/106596)接口获取
+可通过[DescribeBiddingList](https://cloud.tencent.com/document/api/242/106598)接口获取
         :type BusinessID: str
         """
         self._BusinessID = None
@@ -4186,7 +4200,7 @@ class DescribeBiddingSuccessfulDetailRequest(AbstractModel):
     @property
     def BusinessID(self):
         """预约ID 
-可通过[DescribeBiddingSuccessfulList](https://cloud.tencent.com/document/api/242/106596)接口获取
+可通过[DescribeBiddingList](https://cloud.tencent.com/document/api/242/106598)接口获取
         :rtype: str
         """
         return self._BusinessID
@@ -4407,7 +4421,7 @@ class DescribeBiddingSuccessfulListRequest(AbstractModel):
 默认：1
         :type PageNumber: int
         :param _PageSize: 每页数量
-默认：20 取值范围【1，200】
+默认：20 取值范围[1，200]
         :type PageSize: int
         :param _Domain: 域名
         :type Domain: str
@@ -4417,7 +4431,10 @@ class DescribeBiddingSuccessfulListRequest(AbstractModel):
 默认<空>，不排序
 SuccessfulTime 预约结束时间
         :type SortField: str
-        :param _SortOrder: 排序规则：asc升序，desc降序
+        :param _SortOrder: 排序规则：
+asc：升序
+desc：降序
+默认：asc
         :type SortOrder: str
         """
         self._PageNumber = None
@@ -4442,7 +4459,7 @@ SuccessfulTime 预约结束时间
     @property
     def PageSize(self):
         """每页数量
-默认：20 取值范围【1，200】
+默认：20 取值范围[1，200]
         :rtype: int
         """
         return self._PageSize
@@ -4488,7 +4505,10 @@ SuccessfulTime 预约结束时间
 
     @property
     def SortOrder(self):
-        """排序规则：asc升序，desc降序
+        """排序规则：
+asc：升序
+desc：降序
+默认：asc
         :rtype: str
         """
         return self._SortOrder
@@ -4717,7 +4737,7 @@ class DescribeDomainBaseInfoRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _Domain: 域名
-可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
+可通过[DescribeDomainNameList](https://cloud.tencent.com/document/api/242/48941)接口获取
         :type Domain: str
         """
         self._Domain = None
@@ -4725,7 +4745,7 @@ class DescribeDomainBaseInfoRequest(AbstractModel):
     @property
     def Domain(self):
         """域名
-可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
+可通过[DescribeDomainNameList](https://cloud.tencent.com/document/api/242/48941)接口获取
         :rtype: str
         """
         return self._Domain
@@ -6922,7 +6942,7 @@ class DescribeTemplateRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _TemplateId: 模板ID
-通过DescribeTemplateList接口获取:https://cloud.tencent.com/document/api/242/48940
+通过[DescribeTemplateList](https://cloud.tencent.com/document/api/242/48940)接口获取
         :type TemplateId: str
         """
         self._TemplateId = None
@@ -6930,7 +6950,7 @@ class DescribeTemplateRequest(AbstractModel):
     @property
     def TemplateId(self):
         """模板ID
-通过DescribeTemplateList接口获取:https://cloud.tencent.com/document/api/242/48940
+通过[DescribeTemplateList](https://cloud.tencent.com/document/api/242/48940)接口获取
         :rtype: str
         """
         return self._TemplateId
@@ -7336,7 +7356,7 @@ clientTransferProhibited：注册商禁止转移
 clientUpdateProhibited：注册商禁止更新
 clientDeleteProhibited：注册商禁止删除
 serverRenewProhibited: 注册局禁止续费
-clientRenewProhobited: 注册商禁止续费
+clientRenewProhibited: 注册商禁止续费
         :type DomainStatus: list of str
         :param _BuyStatus: 域名购买状态。
 ok：正常
@@ -7500,7 +7520,7 @@ clientTransferProhibited：注册商禁止转移
 clientUpdateProhibited：注册商禁止更新
 clientDeleteProhibited：注册商禁止删除
 serverRenewProhibited: 注册局禁止续费
-clientRenewProhobited: 注册商禁止续费
+clientRenewProhibited: 注册商禁止续费
         :rtype: list of str
         """
         return self._DomainStatus
@@ -8195,7 +8215,7 @@ clientTransferProhibited：注册商禁止转移
 clientUpdateProhibited：注册商禁止更新
 clientDeleteProhibited：注册商禁止删除
 serverRenewProhibited: 注册局禁止续费
-clientRenewProhobited: 注册商禁止续费
+clientRenewProhibited: 注册商禁止续费
         :type DomainStatus: list of str
         :param _BuyStatus: 域名购买状态。
 ok：正常
@@ -8370,7 +8390,7 @@ clientTransferProhibited：注册商禁止转移
 clientUpdateProhibited：注册商禁止更新
 clientDeleteProhibited：注册商禁止删除
 serverRenewProhibited: 注册局禁止续费
-clientRenewProhobited: 注册商禁止续费
+clientRenewProhibited: 注册商禁止续费
         :rtype: list of str
         """
         return self._DomainStatus
@@ -10483,7 +10503,7 @@ class SetDomainAutoRenewRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _DomainId: 域名实例ID
-可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
+可通过[DescribeDomainNameList](https://cloud.tencent.com/document/api/242/48941)接口获取
         :type DomainId: str
         :param _AutoRenew: AutoRenew 有三个可选值：
  0：不设置自动续费
@@ -10497,7 +10517,7 @@ class SetDomainAutoRenewRequest(AbstractModel):
     @property
     def DomainId(self):
         """域名实例ID
-可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
+可通过[DescribeDomainNameList](https://cloud.tencent.com/document/api/242/48941)接口获取
         :rtype: str
         """
         return self._DomainId
@@ -10710,9 +10730,11 @@ Approved: 已实名认证
 Reject: 实名审核失败
 NotVerified: 实名信息待修改
         :type AuditStatus: str
-        :param _CreatedOn: 创建时间
+        :param _CreatedOn: 创建时间 
+格式:YYYY-MM-DD HH:mm:ss
         :type CreatedOn: str
-        :param _UpdatedOn: 更新时间
+        :param _UpdatedOn: 更新时间 
+格式:YYYY-MM-DD HH:mm:ss
         :type UpdatedOn: str
         :param _UserUin: 用户UIN
         :type UserUin: str
@@ -10773,7 +10795,8 @@ NotVerified: 实名信息待修改
 
     @property
     def CreatedOn(self):
-        """创建时间
+        """创建时间 
+格式:YYYY-MM-DD HH:mm:ss
         :rtype: str
         """
         return self._CreatedOn
@@ -10784,7 +10807,8 @@ NotVerified: 实名信息待修改
 
     @property
     def UpdatedOn(self):
-        """更新时间
+        """更新时间 
+格式:YYYY-MM-DD HH:mm:ss
         :rtype: str
         """
         return self._UpdatedOn
@@ -10921,8 +10945,8 @@ class TransferInDomainBatchRequest(AbstractModel):
         :type Domains: list of str
         :param _PassWords: 域名转移码数组。
         :type PassWords: list of str
-        :param _TemplateId: 模板ID。
-可通过DescribeTemplates接口获取
+        :param _TemplateId: 模板ID。 
+可通过[DescribeTemplateList](https://cloud.tencent.com/document/api/242/48940)接口获取
         :type TemplateId: str
         :param _PayMode: 付费模式 0手动在线付费，1使用余额付费。
         :type PayMode: int
@@ -10982,8 +11006,8 @@ false：关闭60天内禁止转移注册商锁定
 
     @property
     def TemplateId(self):
-        """模板ID。
-可通过DescribeTemplates接口获取
+        """模板ID。 
+可通过[DescribeTemplateList](https://cloud.tencent.com/document/api/242/48940)接口获取
         :rtype: str
         """
         return self._TemplateId

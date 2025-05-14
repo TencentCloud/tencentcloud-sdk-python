@@ -446,6 +446,284 @@ class BatchRecordInfo(AbstractModel):
         
 
 
+class BatchSearchDomainInfo(AbstractModel):
+    """批量操作筛选域名信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _DomainId: 域名 ID
+        :type DomainId: int
+        :param _DomainGrade: 域名套餐等级
+        :type DomainGrade: str
+        :param _RecordList: 记录信息列表
+        :type RecordList: list of BatchSearchRecordInfo
+        """
+        self._Domain = None
+        self._DomainId = None
+        self._DomainGrade = None
+        self._RecordList = None
+
+    @property
+    def Domain(self):
+        """域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def DomainId(self):
+        """域名 ID
+        :rtype: int
+        """
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+    @property
+    def DomainGrade(self):
+        """域名套餐等级
+        :rtype: str
+        """
+        return self._DomainGrade
+
+    @DomainGrade.setter
+    def DomainGrade(self, DomainGrade):
+        self._DomainGrade = DomainGrade
+
+    @property
+    def RecordList(self):
+        """记录信息列表
+        :rtype: list of BatchSearchRecordInfo
+        """
+        return self._RecordList
+
+    @RecordList.setter
+    def RecordList(self, RecordList):
+        self._RecordList = RecordList
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._DomainId = params.get("DomainId")
+        self._DomainGrade = params.get("DomainGrade")
+        if params.get("RecordList") is not None:
+            self._RecordList = []
+            for item in params.get("RecordList"):
+                obj = BatchSearchRecordInfo()
+                obj._deserialize(item)
+                self._RecordList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchSearchRecordInfo(AbstractModel):
+    """批量操作筛选记录信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RecordId: 解析记录 ID
+        :type RecordId: int
+        :param _Area: 解析线路
+        :type Area: str
+        :param _Remark: 记录备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param _TTL: TTL(秒)
+        :type TTL: int
+        :param _RecordType: 记录类型
+        :type RecordType: str
+        :param _Enabled: 记录是否启用
+        :type Enabled: int
+        :param _Weight: 权重
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Weight: int
+        :param _GroupId: 记录分组 ID
+        :type GroupId: int
+        :param _SubDomain: 子域名
+        :type SubDomain: str
+        :param _Value: 解析值
+        :type Value: str
+        :param _MX: MX优先级
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MX: int
+        """
+        self._RecordId = None
+        self._Area = None
+        self._Remark = None
+        self._TTL = None
+        self._RecordType = None
+        self._Enabled = None
+        self._Weight = None
+        self._GroupId = None
+        self._SubDomain = None
+        self._Value = None
+        self._MX = None
+
+    @property
+    def RecordId(self):
+        """解析记录 ID
+        :rtype: int
+        """
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
+
+    @property
+    def Area(self):
+        """解析线路
+        :rtype: str
+        """
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def Remark(self):
+        """记录备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def TTL(self):
+        """TTL(秒)
+        :rtype: int
+        """
+        return self._TTL
+
+    @TTL.setter
+    def TTL(self, TTL):
+        self._TTL = TTL
+
+    @property
+    def RecordType(self):
+        """记录类型
+        :rtype: str
+        """
+        return self._RecordType
+
+    @RecordType.setter
+    def RecordType(self, RecordType):
+        self._RecordType = RecordType
+
+    @property
+    def Enabled(self):
+        """记录是否启用
+        :rtype: int
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def Weight(self):
+        """权重
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+    @property
+    def GroupId(self):
+        """记录分组 ID
+        :rtype: int
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def SubDomain(self):
+        """子域名
+        :rtype: str
+        """
+        return self._SubDomain
+
+    @SubDomain.setter
+    def SubDomain(self, SubDomain):
+        self._SubDomain = SubDomain
+
+    @property
+    def Value(self):
+        """解析值
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def MX(self):
+        """MX优先级
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MX
+
+    @MX.setter
+    def MX(self, MX):
+        self._MX = MX
+
+
+    def _deserialize(self, params):
+        self._RecordId = params.get("RecordId")
+        self._Area = params.get("Area")
+        self._Remark = params.get("Remark")
+        self._TTL = params.get("TTL")
+        self._RecordType = params.get("RecordType")
+        self._Enabled = params.get("Enabled")
+        self._Weight = params.get("Weight")
+        self._GroupId = params.get("GroupId")
+        self._SubDomain = params.get("SubDomain")
+        self._Value = params.get("Value")
+        self._MX = params.get("MX")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CheckRecordSnapshotRollbackRequest(AbstractModel):
     """CheckRecordSnapshotRollback请求参数结构体
 
@@ -5500,6 +5778,231 @@ class DescribeDomainAnalyticsResponse(AbstractModel):
                 obj = DomainAliasAnalyticsItem()
                 obj._deserialize(item)
                 self._AliasData.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDomainAndRecordListRequest(AbstractModel):
+    """DescribeDomainAndRecordList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AllDomain: 搜索所有域名。AllDomain、GroupIdList、DomainList、DomainIdList 参数传任一个即可。优先级为：AllDomain > GroupIdList  > DomainList > DomainIdList。
+        :type AllDomain: str
+        :param _DomainList: 要搜索的域名列表。
+        :type DomainList: list of str
+        :param _DomainIdList: 要搜索的域名 ID 列表。
+        :type DomainIdList: list of int non-negative
+        :param _GroupIdList: 要搜索的域名分组 ID 列表。
+        :type GroupIdList: list of int non-negative
+        :param _RecordType: 记录类型筛选
+        :type RecordType: str
+        :param _SubKeyword: 子域名筛选
+        :type SubKeyword: str
+        :param _ValueKeyword: 记录值筛选
+        :type ValueKeyword: str
+        :param _Area: 线路筛选
+        :type Area: str
+        :param _Remark: 备注筛选
+        :type Remark: str
+        :param _Enabled: 记录状态筛选
+1：正常
+0：暂停
+
+        :type Enabled: str
+        """
+        self._AllDomain = None
+        self._DomainList = None
+        self._DomainIdList = None
+        self._GroupIdList = None
+        self._RecordType = None
+        self._SubKeyword = None
+        self._ValueKeyword = None
+        self._Area = None
+        self._Remark = None
+        self._Enabled = None
+
+    @property
+    def AllDomain(self):
+        """搜索所有域名。AllDomain、GroupIdList、DomainList、DomainIdList 参数传任一个即可。优先级为：AllDomain > GroupIdList  > DomainList > DomainIdList。
+        :rtype: str
+        """
+        return self._AllDomain
+
+    @AllDomain.setter
+    def AllDomain(self, AllDomain):
+        self._AllDomain = AllDomain
+
+    @property
+    def DomainList(self):
+        """要搜索的域名列表。
+        :rtype: list of str
+        """
+        return self._DomainList
+
+    @DomainList.setter
+    def DomainList(self, DomainList):
+        self._DomainList = DomainList
+
+    @property
+    def DomainIdList(self):
+        """要搜索的域名 ID 列表。
+        :rtype: list of int non-negative
+        """
+        return self._DomainIdList
+
+    @DomainIdList.setter
+    def DomainIdList(self, DomainIdList):
+        self._DomainIdList = DomainIdList
+
+    @property
+    def GroupIdList(self):
+        """要搜索的域名分组 ID 列表。
+        :rtype: list of int non-negative
+        """
+        return self._GroupIdList
+
+    @GroupIdList.setter
+    def GroupIdList(self, GroupIdList):
+        self._GroupIdList = GroupIdList
+
+    @property
+    def RecordType(self):
+        """记录类型筛选
+        :rtype: str
+        """
+        return self._RecordType
+
+    @RecordType.setter
+    def RecordType(self, RecordType):
+        self._RecordType = RecordType
+
+    @property
+    def SubKeyword(self):
+        """子域名筛选
+        :rtype: str
+        """
+        return self._SubKeyword
+
+    @SubKeyword.setter
+    def SubKeyword(self, SubKeyword):
+        self._SubKeyword = SubKeyword
+
+    @property
+    def ValueKeyword(self):
+        """记录值筛选
+        :rtype: str
+        """
+        return self._ValueKeyword
+
+    @ValueKeyword.setter
+    def ValueKeyword(self, ValueKeyword):
+        self._ValueKeyword = ValueKeyword
+
+    @property
+    def Area(self):
+        """线路筛选
+        :rtype: str
+        """
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def Remark(self):
+        """备注筛选
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def Enabled(self):
+        """记录状态筛选
+1：正常
+0：暂停
+
+        :rtype: str
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+
+    def _deserialize(self, params):
+        self._AllDomain = params.get("AllDomain")
+        self._DomainList = params.get("DomainList")
+        self._DomainIdList = params.get("DomainIdList")
+        self._GroupIdList = params.get("GroupIdList")
+        self._RecordType = params.get("RecordType")
+        self._SubKeyword = params.get("SubKeyword")
+        self._ValueKeyword = params.get("ValueKeyword")
+        self._Area = params.get("Area")
+        self._Remark = params.get("Remark")
+        self._Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDomainAndRecordListResponse(AbstractModel):
+    """DescribeDomainAndRecordList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DetailList: 域名列表
+        :type DetailList: list of BatchSearchDomainInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DetailList = None
+        self._RequestId = None
+
+    @property
+    def DetailList(self):
+        """域名列表
+        :rtype: list of BatchSearchDomainInfo
+        """
+        return self._DetailList
+
+    @DetailList.setter
+    def DetailList(self, DetailList):
+        self._DetailList = DetailList
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DetailList") is not None:
+            self._DetailList = []
+            for item in params.get("DetailList"):
+                obj = BatchSearchDomainInfo()
+                obj._deserialize(item)
+                self._DetailList.append(obj)
         self._RequestId = params.get("RequestId")
 
 

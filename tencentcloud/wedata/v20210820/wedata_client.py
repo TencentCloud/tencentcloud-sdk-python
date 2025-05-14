@@ -4175,6 +4175,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTaskTemplates(self, request):
+        """查询项目下所有任务列表,包括虚拟任务
+
+        :param request: Request instance for DescribeTaskTemplates.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTaskTemplatesRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeTaskTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTaskTemplates", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTaskTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTasksForCodeTemplate(self, request):
         """分页查询引用模板的任务列表
 
@@ -4465,6 +4488,29 @@ class WedataClient(AbstractClient):
             body = self.call("DiagnosePro", params, headers=headers)
             response = json.loads(body)
             model = models.DiagnoseProResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DownloadLogByLine(self, request):
+        """按行下载日志信息
+
+        :param request: Request instance for DownloadLogByLine.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DownloadLogByLineRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DownloadLogByLineResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DownloadLogByLine", params, headers=headers)
+            response = json.loads(body)
+            model = models.DownloadLogByLineResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

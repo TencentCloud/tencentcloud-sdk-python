@@ -516,6 +516,29 @@ class ThpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyWorkspacesRenewFlag(self, request):
+        """本接口 (ModifyWorkspacesAttribute) 用于修改工作空间的属性（目前只支持修改工作空间的名称）。
+
+        :param request: Request instance for ModifyWorkspacesRenewFlag.
+        :type request: :class:`tencentcloud.thpc.v20230321.models.ModifyWorkspacesRenewFlagRequest`
+        :rtype: :class:`tencentcloud.thpc.v20230321.models.ModifyWorkspacesRenewFlagResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyWorkspacesRenewFlag", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyWorkspacesRenewFlagResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def SetAutoScalingConfiguration(self, request):
         """本接口(SetAutoScalingConfiguration)用于为集群设置集群弹性伸缩配置信息。
 

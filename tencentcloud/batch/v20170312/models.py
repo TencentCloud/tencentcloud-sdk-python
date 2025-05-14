@@ -35,7 +35,7 @@ class Activity(AbstractModel):
         :type EnvId: str
         :param _Cause: 起因
         :type Cause: str
-        :param _ActivityState: 活动状态
+        :param _ActivityState: 活动状态。取值范围：<br><li>SUBMITTED：已提交</li><li>PROCESSING：处理中</li><li>SUCCEED：成功</li><li>FAILED：失败</li>
         :type ActivityState: str
         :param _StateReason: 状态原因
         :type StateReason: str
@@ -114,7 +114,7 @@ class Activity(AbstractModel):
 
     @property
     def ActivityState(self):
-        """活动状态
+        """活动状态。取值范围：<br><li>SUBMITTED：已提交</li><li>PROCESSING：处理中</li><li>SUCCEED：成功</li><li>FAILED：失败</li>
         :rtype: str
         """
         return self._ActivityState
@@ -354,13 +354,13 @@ class Application(AbstractModel):
         r"""
         :param _DeliveryForm: 应用程序的交付方式，包括PACKAGE、LOCAL 两种取值，分别指远程存储的软件包、计算环境本地。
         :type DeliveryForm: str
-        :param _Command: 任务执行命令。与Commands不能同时指定。
+        :param _Command: 松耦合任务执行命令。与Commands不能同时指定，一般使用Command字段提交任务。
         :type Command: str
         :param _PackagePath: 应用程序软件包的远程存储路径
         :type PackagePath: str
         :param _Docker: 应用使用Docker的相关配置。在使用Docker配置的情况下，DeliveryForm 为 LOCAL 表示直接使用Docker镜像内部的应用软件，通过Docker方式运行；DeliveryForm 为 PACKAGE，表示将远程应用包注入到Docker镜像后，通过Docker方式运行。为避免Docker不同版本的兼容性问题，Docker安装包及相关依赖由Batch统一负责，对于已安装Docker的自定义镜像，请卸载后再使用Docker特性。
         :type Docker: :class:`tencentcloud.batch.v20170312.models.Docker`
-        :param _Commands: 任务执行命令信息。与Command不能同时指定。
+        :param _Commands: 紧耦合任务执行命令信息。与Command不能同时指定。Command和Commands必须指定一个。
         :type Commands: list of CommandLine
         """
         self._DeliveryForm = None
@@ -382,7 +382,7 @@ class Application(AbstractModel):
 
     @property
     def Command(self):
-        """任务执行命令。与Commands不能同时指定。
+        """松耦合任务执行命令。与Commands不能同时指定，一般使用Command字段提交任务。
         :rtype: str
         """
         return self._Command
@@ -415,7 +415,7 @@ class Application(AbstractModel):
 
     @property
     def Commands(self):
-        """任务执行命令信息。与Command不能同时指定。
+        """紧耦合任务执行命令信息。与Command不能同时指定。Command和Commands必须指定一个。
         :rtype: list of CommandLine
         """
         return self._Commands
@@ -455,9 +455,9 @@ class AttachInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvId: 计算环境ID
+        :param _EnvId: 计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
         :type EnvId: str
-        :param _Instances: 加入计算环境实例列表
+        :param _Instances: 加入计算环境实例列表，每次请求的实例的上限为100。
         :type Instances: list of Instance
         """
         self._EnvId = None
@@ -465,7 +465,7 @@ class AttachInstancesRequest(AbstractModel):
 
     @property
     def EnvId(self):
-        """计算环境ID
+        """计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
         :rtype: str
         """
         return self._EnvId
@@ -476,7 +476,7 @@ class AttachInstancesRequest(AbstractModel):
 
     @property
     def Instances(self):
-        """加入计算环境实例列表
+        """加入计算环境实例列表，每次请求的实例的上限为100。
         :rtype: list of Instance
         """
         return self._Instances
@@ -1091,7 +1091,7 @@ class ComputeNode(AbstractModel):
         :type ComputeNodeId: str
         :param _ComputeNodeInstanceId: 计算节点实例ID，对于CVM场景，即为CVM的InstanceId
         :type ComputeNodeInstanceId: str
-        :param _ComputeNodeState: 计算节点状态
+        :param _ComputeNodeState: 计算节点状态。取值范围：<br><li>PENDING：表示创建中</li><li>SUBMITTED：表示已提交创建</li><li>CREATING：表示创建中</li><li>CREATED：表示创建完成</li><li>CREATION_FAILED：表示创建失败。</li><li>RUNNING：表示运行中。</li><li>ABNORMAL：表示节点异常。</li><li>DELETING：表示删除中。</li>
         :type ComputeNodeState: str
         :param _Cpu: CPU核数
         :type Cpu: int
@@ -1150,7 +1150,7 @@ USER_ATTACHED：用户添加到计算环境中的实例资源。
 
     @property
     def ComputeNodeState(self):
-        """计算节点状态
+        """计算节点状态。取值范围：<br><li>PENDING：表示创建中</li><li>SUBMITTED：表示已提交创建</li><li>CREATING：表示创建中</li><li>CREATED：表示创建完成</li><li>CREATION_FAILED：表示创建失败。</li><li>RUNNING：表示运行中。</li><li>ABNORMAL：表示节点异常。</li><li>DELETING：表示删除中。</li>
         :rtype: str
         """
         return self._ComputeNodeState
@@ -1529,11 +1529,11 @@ class CreateTaskTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskTemplateName: 任务模板名称
+        :param _TaskTemplateName: 任务模板名称，最大长度限制60个字符。
         :type TaskTemplateName: str
         :param _TaskTemplateInfo: 任务模板内容，参数要求与任务一致
         :type TaskTemplateInfo: :class:`tencentcloud.batch.v20170312.models.Task`
-        :param _TaskTemplateDescription: 任务模板描述
+        :param _TaskTemplateDescription: 任务模板描述，最大长度限制200个字符。
         :type TaskTemplateDescription: str
         :param _Tags: 标签列表。通过指定该参数可以支持绑定标签到任务模板。每个任务模板最多绑定10个标签。
         :type Tags: list of Tag
@@ -1545,7 +1545,7 @@ class CreateTaskTemplateRequest(AbstractModel):
 
     @property
     def TaskTemplateName(self):
-        """任务模板名称
+        """任务模板名称，最大长度限制60个字符。
         :rtype: str
         """
         return self._TaskTemplateName
@@ -1567,7 +1567,7 @@ class CreateTaskTemplateRequest(AbstractModel):
 
     @property
     def TaskTemplateDescription(self):
-        """任务模板描述
+        """任务模板描述，最大长度限制200个字符。
         :rtype: str
         """
         return self._TaskTemplateDescription
@@ -1858,14 +1858,14 @@ class DeleteComputeEnvRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvId: 计算环境ID
+        :param _EnvId: 计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
         :type EnvId: str
         """
         self._EnvId = None
 
     @property
     def EnvId(self):
-        """计算环境ID
+        """计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
         :rtype: str
         """
         return self._EnvId
@@ -1922,14 +1922,14 @@ class DeleteJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 作业ID
+        :param _JobId: 作业ID；JobId详见[作业列表](https://cloud.tencent.com/document/product/599/15909)
         :type JobId: str
         """
         self._JobId = None
 
     @property
     def JobId(self):
-        """作业ID
+        """作业ID；JobId详见[作业列表](https://cloud.tencent.com/document/product/599/15909)
         :rtype: str
         """
         return self._JobId
@@ -1986,14 +1986,14 @@ class DeleteTaskTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskTemplateIds: 用于删除任务模板信息
+        :param _TaskTemplateIds: 用于删除任务模板信息，最大数量上限100，环境模版ID通过调用接口 [DescribeTaskTemplates](https://cloud.tencent.com/document/api/599/15902)获取。
         :type TaskTemplateIds: list of str
         """
         self._TaskTemplateIds = None
 
     @property
     def TaskTemplateIds(self):
-        """用于删除任务模板信息
+        """用于删除任务模板信息，最大数量上限100，环境模版ID通过调用接口 [DescribeTaskTemplates](https://cloud.tencent.com/document/api/599/15902)获取。
         :rtype: list of str
         """
         return self._TaskTemplateIds
@@ -2102,8 +2102,8 @@ class DescribeAvailableCvmInstanceTypesRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _Filters: 过滤条件。
-<li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
-<li> instance-family String - 是否必填：否 -（过滤条件）按照机型系列过滤。实例机型系列形如：S1、I1、M1等。</li>
+<li> zone - String - 是否必填：否 -（过滤条件）按照[可用区](https://cloud.tencent.com/document/product/213/15707)过滤。</li>
+<li> instance-family String - 是否必填：否 -（过滤条件）按照[机型系列](https://cloud.tencent.com/document/product/213/15748)过滤。实例机型系列形如：S1、I1、M1等。</li>
         :type Filters: list of Filter
         """
         self._Filters = None
@@ -2111,8 +2111,8 @@ class DescribeAvailableCvmInstanceTypesRequest(AbstractModel):
     @property
     def Filters(self):
         """过滤条件。
-<li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
-<li> instance-family String - 是否必填：否 -（过滤条件）按照机型系列过滤。实例机型系列形如：S1、I1、M1等。</li>
+<li> zone - String - 是否必填：否 -（过滤条件）按照[可用区](https://cloud.tencent.com/document/product/213/15707)过滤。</li>
+<li> instance-family String - 是否必填：否 -（过滤条件）按照[机型系列](https://cloud.tencent.com/document/product/213/15748)过滤。实例机型系列形如：S1、I1、M1等。</li>
         :rtype: list of Filter
         """
         return self._Filters
@@ -2194,11 +2194,11 @@ class DescribeComputeEnvActivitiesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvId: 计算环境ID
+        :param _EnvId: 计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
         :type EnvId: str
-        :param _Offset: 偏移量
+        :param _Offset: 偏移量，默认为0.
         :type Offset: int
-        :param _Limit: 返回数量
+        :param _Limit: 返回数量，默认值20，最大值100.
         :type Limit: int
         :param _Filters: 过滤条件
 <li> compute-node-id - String - 是否必填：否 -（过滤条件）按照计算节点ID过滤。</li>
@@ -2211,7 +2211,7 @@ class DescribeComputeEnvActivitiesRequest(AbstractModel):
 
     @property
     def EnvId(self):
-        """计算环境ID
+        """计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
         :rtype: str
         """
         return self._EnvId
@@ -2222,7 +2222,7 @@ class DescribeComputeEnvActivitiesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量
+        """偏移量，默认为0.
         :rtype: int
         """
         return self._Offset
@@ -2233,7 +2233,7 @@ class DescribeComputeEnvActivitiesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量
+        """返回数量，默认值20，最大值100.
         :rtype: int
         """
         return self._Limit
@@ -2342,14 +2342,14 @@ class DescribeComputeEnvCreateInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvId: 计算环境ID
+        :param _EnvId: 计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
         :type EnvId: str
         """
         self._EnvId = None
 
     @property
     def EnvId(self):
-        """计算环境ID
+        """计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
         :rtype: str
         """
         return self._EnvId
@@ -2600,17 +2600,13 @@ class DescribeComputeEnvCreateInfosRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvIds: 计算环境ID列表，与Filters参数不能同时指定。
+        :param _EnvIds: 计算环境ID列表，与Filters参数不能同时指定，最大限制100。环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
         :type EnvIds: list of str
-        :param _Filters: 过滤条件
-<li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
-<li> env-id - String - 是否必填：否 -（过滤条件）按照计算环境ID过滤。</li>
-<li> env-name - String - 是否必填：否 -（过滤条件）按照计算环境名称过滤。</li>
-与EnvIds参数不能同时指定。
+        :param _Filters: 过滤条件<li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤，可用区通过调用接口 [DescribeZones](https://cloud.tencent.com/document/api/213/15707)获取。</li><li> env-id - String - 是否必填：否 -（过滤条件）按照计算环境ID过滤。</li><li> env-name - String - 是否必填：否 -（过滤条件）按照计算环境名称过滤。</li>与EnvIds参数不能同时指定。
         :type Filters: list of Filter
         :param _Offset: 偏移量
         :type Offset: int
-        :param _Limit: 返回数量
+        :param _Limit: 返回数量，默认值20，最大值100。
         :type Limit: int
         """
         self._EnvIds = None
@@ -2620,7 +2616,7 @@ class DescribeComputeEnvCreateInfosRequest(AbstractModel):
 
     @property
     def EnvIds(self):
-        """计算环境ID列表，与Filters参数不能同时指定。
+        """计算环境ID列表，与Filters参数不能同时指定，最大限制100。环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
         :rtype: list of str
         """
         return self._EnvIds
@@ -2631,11 +2627,7 @@ class DescribeComputeEnvCreateInfosRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤条件
-<li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
-<li> env-id - String - 是否必填：否 -（过滤条件）按照计算环境ID过滤。</li>
-<li> env-name - String - 是否必填：否 -（过滤条件）按照计算环境名称过滤。</li>
-与EnvIds参数不能同时指定。
+        """过滤条件<li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤，可用区通过调用接口 [DescribeZones](https://cloud.tencent.com/document/api/213/15707)获取。</li><li> env-id - String - 是否必填：否 -（过滤条件）按照计算环境ID过滤。</li><li> env-name - String - 是否必填：否 -（过滤条件）按照计算环境名称过滤。</li>与EnvIds参数不能同时指定。
         :rtype: list of Filter
         """
         return self._Filters
@@ -2657,7 +2649,7 @@ class DescribeComputeEnvCreateInfosRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量
+        """返回数量，默认值20，最大值100。
         :rtype: int
         """
         return self._Limit
@@ -2793,7 +2785,7 @@ class DescribeComputeEnvResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvId: 计算环境ID
+        :param _EnvId: 计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
         :type EnvId: str
         :param _EnvName: 计算环境名称
         :type EnvName: str
@@ -2807,11 +2799,11 @@ class DescribeComputeEnvResponse(AbstractModel):
         :type ComputeNodeMetrics: :class:`tencentcloud.batch.v20170312.models.ComputeNodeMetrics`
         :param _DesiredComputeNodeCount: 计算节点期望个数
         :type DesiredComputeNodeCount: int
-        :param _EnvType: 计算环境类型
+        :param _EnvType: 计算环境管理类型，枚举如下： MANAGED: 由客户在Batch平台主动创建； THPC_QUEUE: 由thpc平台创建，关联thpc平台集群队列。
         :type EnvType: str
         :param _ResourceType: 计算环境资源类型，当前为CVM和CPM（黑石）
         :type ResourceType: str
-        :param _NextAction: 下一步动作
+        :param _NextAction: 下一步的动作，枚举如下： DELETING: 删除中
         :type NextAction: str
         :param _AttachedComputeNodeCount: 用户添加到计算环境中的计算节点个数
         :type AttachedComputeNodeCount: int
@@ -2837,7 +2829,7 @@ class DescribeComputeEnvResponse(AbstractModel):
 
     @property
     def EnvId(self):
-        """计算环境ID
+        """计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
         :rtype: str
         """
         return self._EnvId
@@ -2914,7 +2906,7 @@ class DescribeComputeEnvResponse(AbstractModel):
 
     @property
     def EnvType(self):
-        """计算环境类型
+        """计算环境管理类型，枚举如下： MANAGED: 由客户在Batch平台主动创建； THPC_QUEUE: 由thpc平台创建，关联thpc平台集群队列。
         :rtype: str
         """
         return self._EnvType
@@ -2936,7 +2928,7 @@ class DescribeComputeEnvResponse(AbstractModel):
 
     @property
     def NextAction(self):
-        """下一步动作
+        """下一步的动作，枚举如下： DELETING: 删除中
         :rtype: str
         """
         return self._NextAction
@@ -3017,21 +3009,13 @@ class DescribeComputeEnvsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvIds: 计算环境ID列表，与Filters参数不能同时指定。
+        :param _EnvIds: 计算环境ID列表，与Filters参数不能同时指定。最大数量上限100，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
         :type EnvIds: list of str
-        :param _Filters: 过滤条件
-<li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
-<li> env-id - String - 是否必填：否 -（过滤条件）按照计算环境ID过滤。</li>
-<li> env-name - String - 是否必填：否 -（过滤条件）按照计算环境名称过滤。</li>
-<li> resource-type - String - 是否必填：否 -（过滤条件）按照计算资源类型过滤，取值CVM或者CPM(黑石)。</li>
-<li> tag-key - String - 是否必填：否 -（过滤条件）按照标签键进行过滤。</li>
-<li>tag-value - String - 是否必填：否 -（过滤条件）按照标签值进行过滤。</li>
-<li>tag:tag-key - String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。</li>
-与EnvIds参数不能同时指定。
+        :param _Filters: 过滤条件<li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤，可用区通过调用接口 [DescribeZones](https://cloud.tencent.com/document/api/213/15707)获取。</li><li> env-id - String - 是否必填：否 -（过滤条件）按照计算环境ID过滤。</li><li> env-name - String - 是否必填：否 -（过滤条件）按照计算环境名称过滤。</li><li> resource-type - String - 是否必填：否 -（过滤条件）按照计算资源类型过滤，取值CVM或者CPM(黑石)。</li><li> tag-key - String - 是否必填：否 -（过滤条件）按照标签键进行过滤。</li><li>tag-value - String - 是否必填：否 -（过滤条件）按照标签值进行过滤。</li><li>tag:tag-key - String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。</li>与EnvIds参数不能同时指定。
         :type Filters: list of Filter
         :param _Offset: 偏移量
         :type Offset: int
-        :param _Limit: 返回数量
+        :param _Limit: 返回数量，默认值20，最大值100。
         :type Limit: int
         """
         self._EnvIds = None
@@ -3041,7 +3025,7 @@ class DescribeComputeEnvsRequest(AbstractModel):
 
     @property
     def EnvIds(self):
-        """计算环境ID列表，与Filters参数不能同时指定。
+        """计算环境ID列表，与Filters参数不能同时指定。最大数量上限100，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
         :rtype: list of str
         """
         return self._EnvIds
@@ -3052,15 +3036,7 @@ class DescribeComputeEnvsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤条件
-<li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
-<li> env-id - String - 是否必填：否 -（过滤条件）按照计算环境ID过滤。</li>
-<li> env-name - String - 是否必填：否 -（过滤条件）按照计算环境名称过滤。</li>
-<li> resource-type - String - 是否必填：否 -（过滤条件）按照计算资源类型过滤，取值CVM或者CPM(黑石)。</li>
-<li> tag-key - String - 是否必填：否 -（过滤条件）按照标签键进行过滤。</li>
-<li>tag-value - String - 是否必填：否 -（过滤条件）按照标签值进行过滤。</li>
-<li>tag:tag-key - String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。</li>
-与EnvIds参数不能同时指定。
+        """过滤条件<li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤，可用区通过调用接口 [DescribeZones](https://cloud.tencent.com/document/api/213/15707)获取。</li><li> env-id - String - 是否必填：否 -（过滤条件）按照计算环境ID过滤。</li><li> env-name - String - 是否必填：否 -（过滤条件）按照计算环境名称过滤。</li><li> resource-type - String - 是否必填：否 -（过滤条件）按照计算资源类型过滤，取值CVM或者CPM(黑石)。</li><li> tag-key - String - 是否必填：否 -（过滤条件）按照标签键进行过滤。</li><li>tag-value - String - 是否必填：否 -（过滤条件）按照标签值进行过滤。</li><li>tag:tag-key - String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。</li>与EnvIds参数不能同时指定。
         :rtype: list of Filter
         """
         return self._Filters
@@ -3082,7 +3058,7 @@ class DescribeComputeEnvsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量
+        """返回数量，默认值20，最大值100。
         :rtype: int
         """
         return self._Limit
@@ -3183,9 +3159,9 @@ class DescribeCvmZoneInstanceConfigInfosRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _Filters: 过滤条件。
-<li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
-<li> instance-family String - 是否必填：否 -（过滤条件）按照机型系列过滤。实例机型系列形如：S1、I1、M1等。</li>
-<li> instance-type - String - 是否必填：否 - （过滤条件）按照机型过滤。</li>
+<li> zone - String - 是否必填：否 -（过滤条件）按照[可用区](https://cloud.tencent.com/document/product/213/15707)过滤。</li>
+<li> instance-family String - 是否必填：否 -（过滤条件）按照[机型系列](https://cloud.tencent.com/document/product/213/15748)过滤。实例机型系列形如：S1、I1、M1等。</li>
+<li> instance-type - String - 是否必填：否 - （过滤条件）按照[机型](https://cloud.tencent.com/document/product/213/15749)过滤。实例机型形如：：S5.12XLARGE128、S5.12XLARGE96等。</li>
 <li> instance-charge-type - String - 是否必填：否 -（过滤条件）按照实例计费模式过滤。 ( POSTPAID_BY_HOUR：表示后付费，即按量计费机型 | SPOTPAID：表示竞价付费机型。 )  </li>
         :type Filters: list of Filter
         """
@@ -3194,9 +3170,9 @@ class DescribeCvmZoneInstanceConfigInfosRequest(AbstractModel):
     @property
     def Filters(self):
         """过滤条件。
-<li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
-<li> instance-family String - 是否必填：否 -（过滤条件）按照机型系列过滤。实例机型系列形如：S1、I1、M1等。</li>
-<li> instance-type - String - 是否必填：否 - （过滤条件）按照机型过滤。</li>
+<li> zone - String - 是否必填：否 -（过滤条件）按照[可用区](https://cloud.tencent.com/document/product/213/15707)过滤。</li>
+<li> instance-family String - 是否必填：否 -（过滤条件）按照[机型系列](https://cloud.tencent.com/document/product/213/15748)过滤。实例机型系列形如：S1、I1、M1等。</li>
+<li> instance-type - String - 是否必填：否 - （过滤条件）按照[机型](https://cloud.tencent.com/document/product/213/15749)过滤。实例机型形如：：S5.12XLARGE128、S5.12XLARGE96等。</li>
 <li> instance-charge-type - String - 是否必填：否 -（过滤条件）按照实例计费模式过滤。 ( POSTPAID_BY_HOUR：表示后付费，即按量计费机型 | SPOTPAID：表示竞价付费机型。 )  </li>
         :rtype: list of Filter
         """
@@ -3333,14 +3309,14 @@ class DescribeJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 作业标识
+        :param _JobId: 作业ID；JobId详见[作业列表](https://cloud.tencent.com/document/product/599/15909)
         :type JobId: str
         """
         self._JobId = None
 
     @property
     def JobId(self):
-        """作业标识
+        """作业ID；JobId详见[作业列表](https://cloud.tencent.com/document/product/599/15909)
         :rtype: str
         """
         return self._JobId
@@ -3379,9 +3355,9 @@ class DescribeJobResponse(AbstractModel):
         :type Priority: int
         :param _JobState: 作业状态
         :type JobState: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: 创建时间。按照ISO8601标准表示，并且使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ。
         :type CreateTime: str
-        :param _EndTime: 结束时间
+        :param _EndTime: 结束时间。按照ISO8601标准表示，并且使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ。
         :type EndTime: str
         :param _TaskSet: 任务视图信息
         :type TaskSet: list of TaskView
@@ -3474,7 +3450,7 @@ class DescribeJobResponse(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        """创建时间。按照ISO8601标准表示，并且使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ。
         :rtype: str
         """
         return self._CreateTime
@@ -3485,7 +3461,7 @@ class DescribeJobResponse(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间
+        """结束时间。按照ISO8601标准表示，并且使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ。
         :rtype: str
         """
         return self._EndTime
@@ -3820,7 +3796,17 @@ class DescribeJobsRequest(AbstractModel):
 <li> job-id - String - 是否必填：否 -（过滤条件）按照作业ID过滤。</li>
 <li> job-name - String - 是否必填：否 -（过滤条件）按照作业名称过滤。</li>
 <li> job-state - String - 是否必填：否 -（过滤条件）按照作业状态过滤。</li>
-<li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
+
+    - SUBMITTED：已提交；
+    - PENDING：等待中；
+    - RUNNABLE：可运行；
+    - STARTING：启动中；
+    - RUNNING：运行中；
+    - SUCCEED：成功；
+    - FAILED：失败；
+    - FAILED_INTERRUPTED：失败后保留实例。
+
+<li> zone - String - 是否必填：否 -（过滤条件）按照[可用区](https://cloud.tencent.com/document/product/213/15707)过滤。</li>
 <li> tag-key - String - 是否必填：否 -（过滤条件）按照标签键进行过滤。</li>
 <li> tag-value - String - 是否必填：否 -（过滤条件）按照标签值进行过滤。</li>
 <li> tag:tag-key - String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。</li>
@@ -3828,7 +3814,7 @@ class DescribeJobsRequest(AbstractModel):
         :type Filters: list of Filter
         :param _Offset: 偏移量
         :type Offset: int
-        :param _Limit: 返回数量
+        :param _Limit: 返回job数量限制，最大值: 100，默认值: 20.
         :type Limit: int
         """
         self._JobIds = None
@@ -3853,7 +3839,17 @@ class DescribeJobsRequest(AbstractModel):
 <li> job-id - String - 是否必填：否 -（过滤条件）按照作业ID过滤。</li>
 <li> job-name - String - 是否必填：否 -（过滤条件）按照作业名称过滤。</li>
 <li> job-state - String - 是否必填：否 -（过滤条件）按照作业状态过滤。</li>
-<li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
+
+    - SUBMITTED：已提交；
+    - PENDING：等待中；
+    - RUNNABLE：可运行；
+    - STARTING：启动中；
+    - RUNNING：运行中；
+    - SUCCEED：成功；
+    - FAILED：失败；
+    - FAILED_INTERRUPTED：失败后保留实例。
+
+<li> zone - String - 是否必填：否 -（过滤条件）按照[可用区](https://cloud.tencent.com/document/product/213/15707)过滤。</li>
 <li> tag-key - String - 是否必填：否 -（过滤条件）按照标签键进行过滤。</li>
 <li> tag-value - String - 是否必填：否 -（过滤条件）按照标签值进行过滤。</li>
 <li> tag:tag-key - String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。</li>
@@ -3879,7 +3875,7 @@ class DescribeJobsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回数量
+        """返回job数量限制，最大值: 100，默认值: 20.
         :rtype: int
         """
         return self._Limit
@@ -3979,15 +3975,15 @@ class DescribeTaskLogsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 作业ID
+        :param _JobId: 作业ID。JobId详见[作业列表](https://cloud.tencent.com/document/product/599/15909)。
         :type JobId: str
         :param _TaskName: 任务名称
         :type TaskName: str
-        :param _TaskInstanceIndexes: 任务实例集合
+        :param _TaskInstanceIndexes: 任务实例集合；与Offset不能同时指定。
         :type TaskInstanceIndexes: list of int non-negative
-        :param _Offset: 起始任务实例
+        :param _Offset: 起始任务实例。与TaskInstanceIndexes参数不能同时指定。
         :type Offset: int
-        :param _Limit: 最大任务实例数
+        :param _Limit: 最大任务实例数, 最大值为10.
         :type Limit: int
         """
         self._JobId = None
@@ -3998,7 +3994,7 @@ class DescribeTaskLogsRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """作业ID
+        """作业ID。JobId详见[作业列表](https://cloud.tencent.com/document/product/599/15909)。
         :rtype: str
         """
         return self._JobId
@@ -4020,7 +4016,7 @@ class DescribeTaskLogsRequest(AbstractModel):
 
     @property
     def TaskInstanceIndexes(self):
-        """任务实例集合
+        """任务实例集合；与Offset不能同时指定。
         :rtype: list of int non-negative
         """
         return self._TaskInstanceIndexes
@@ -4031,7 +4027,7 @@ class DescribeTaskLogsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """起始任务实例
+        """起始任务实例。与TaskInstanceIndexes参数不能同时指定。
         :rtype: int
         """
         return self._Offset
@@ -4042,7 +4038,7 @@ class DescribeTaskLogsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """最大任务实例数
+        """最大任务实例数, 最大值为10.
         :rtype: int
         """
         return self._Limit
@@ -4138,7 +4134,7 @@ class DescribeTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 作业ID
+        :param _JobId: 作业ID；JobId详见[作业列表](https://cloud.tencent.com/document/product/599/15909)
         :type JobId: str
         :param _TaskName: 任务名称
         :type TaskName: str
@@ -4147,7 +4143,16 @@ class DescribeTaskRequest(AbstractModel):
         :param _Limit: 返回数量。默认取值100，最大取值1000。
         :type Limit: int
         :param _Filters: 过滤条件，详情如下：
-<li> task-instance-type - String - 是否必填： 否 - 按照任务实例状态进行过滤（SUBMITTED：已提交；PENDING：等待中；RUNNABLE：可运行；STARTING：启动中；RUNNING：运行中；SUCCEED：成功；FAILED：失败；FAILED_INTERRUPTED：失败后保留实例）。</li>
+task-instance-state     - String - 是否必填： 否 - 按照任务实例状态进行过滤（
+
+- SUBMITTED：已提交；
+- PENDING：等待中；
+- RUNNABLE：可运行；
+- STARTING：启动中；
+- RUNNING：运行中；
+- SUCCEED：成功；
+- FAILED：失败；
+- FAILED_INTERRUPTED：失败后保留实例）。
         :type Filters: list of Filter
         """
         self._JobId = None
@@ -4158,7 +4163,7 @@ class DescribeTaskRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """作业ID
+        """作业ID；JobId详见[作业列表](https://cloud.tencent.com/document/product/599/15909)
         :rtype: str
         """
         return self._JobId
@@ -4203,7 +4208,16 @@ class DescribeTaskRequest(AbstractModel):
     @property
     def Filters(self):
         """过滤条件，详情如下：
-<li> task-instance-type - String - 是否必填： 否 - 按照任务实例状态进行过滤（SUBMITTED：已提交；PENDING：等待中；RUNNABLE：可运行；STARTING：启动中；RUNNING：运行中；SUCCEED：成功；FAILED：失败；FAILED_INTERRUPTED：失败后保留实例）。</li>
+task-instance-state     - String - 是否必填： 否 - 按照任务实例状态进行过滤（
+
+- SUBMITTED：已提交；
+- PENDING：等待中；
+- RUNNABLE：可运行；
+- STARTING：启动中；
+- RUNNING：运行中；
+- SUCCEED：成功；
+- FAILED：失败；
+- FAILED_INTERRUPTED：失败后保留实例）。
         :rtype: list of Filter
         """
         return self._Filters
@@ -4555,9 +4569,9 @@ class DetachInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvId: 计算环境ID
+        :param _EnvId: 计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
         :type EnvId: str
-        :param _InstanceIds: 实例ID列表
+        :param _InstanceIds: 实例ID列表，实例ID通过调用接口 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728)获取。
         :type InstanceIds: list of str
         """
         self._EnvId = None
@@ -4565,7 +4579,7 @@ class DetachInstancesRequest(AbstractModel):
 
     @property
     def EnvId(self):
-        """计算环境ID
+        """计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
         :rtype: str
         """
         return self._EnvId
@@ -4576,7 +4590,7 @@ class DetachInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """实例ID列表
+        """实例ID列表，实例ID通过调用接口 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728)获取。
         :rtype: list of str
         """
         return self._InstanceIds
@@ -6589,11 +6603,11 @@ class Job(AbstractModel):
         r"""
         :param _Tasks: 任务信息
         :type Tasks: list of Task
-        :param _JobName: 作业名称
+        :param _JobName: 作业名称; 字符串长度限制60.
         :type JobName: str
-        :param _JobDescription: 作业描述
+        :param _JobDescription: 作业描述；字符串长度限制200.
         :type JobDescription: str
-        :param _Priority: 作业优先级，任务（Task）和任务实例（TaskInstance）会继承作业优先级
+        :param _Priority: 作业优先级，任务（Task）和任务实例（TaskInstance）会继承作业优先级；范围0～100，数值越大，优先级越高。
         :type Priority: int
         :param _Dependences: 依赖信息
         :type Dependences: list of Dependence
@@ -6635,7 +6649,7 @@ TDMQ_CMQ：表示向腾讯云TDMQ_CMQ发送消息。<br/>默认值为CMQ。<br/>
 
     @property
     def JobName(self):
-        """作业名称
+        """作业名称; 字符串长度限制60.
         :rtype: str
         """
         return self._JobName
@@ -6646,7 +6660,7 @@ TDMQ_CMQ：表示向腾讯云TDMQ_CMQ发送消息。<br/>默认值为CMQ。<br/>
 
     @property
     def JobDescription(self):
-        """作业描述
+        """作业描述；字符串长度限制200.
         :rtype: str
         """
         return self._JobDescription
@@ -6657,7 +6671,7 @@ TDMQ_CMQ：表示向腾讯云TDMQ_CMQ发送消息。<br/>默认值为CMQ。<br/>
 
     @property
     def Priority(self):
-        """作业优先级，任务（Task）和任务实例（TaskInstance）会继承作业优先级
+        """作业优先级，任务（Task）和任务实例（TaskInstance）会继承作业优先级；范围0～100，数值越大，优先级越高。
         :rtype: int
         """
         return self._Priority
@@ -6784,19 +6798,27 @@ class JobView(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 作业ID
+        :param _JobId: 作业ID；JobId详见[作业列表](https://cloud.tencent.com/document/product/599/15909)
         :type JobId: str
         :param _JobName: 作业名称
         :type JobName: str
-        :param _JobState: 作业状态
+        :param _JobState: 作业状态:
+- SUBMITTED：已提交；
+- PENDING：等待中；
+- RUNNABLE：可运行；
+- STARTING：启动中；
+- RUNNING：运行中；
+- SUCCEED：成功；
+- FAILED：失败；
+- FAILED_INTERRUPTED：失败后保留实例。
         :type JobState: str
         :param _Priority: 作业优先级
         :type Priority: int
         :param _Placement: 位置信息
         :type Placement: :class:`tencentcloud.batch.v20170312.models.Placement`
-        :param _CreateTime: 创建时间
+        :param _CreateTime: 创建时间。按照ISO8601标准表示，并且使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ
         :type CreateTime: str
-        :param _EndTime: 结束时间
+        :param _EndTime: 结束时间。按照ISO8601标准表示，并且使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ
         :type EndTime: str
         :param _TaskMetrics: 任务统计指标
         :type TaskMetrics: :class:`tencentcloud.batch.v20170312.models.TaskMetrics`
@@ -6815,7 +6837,7 @@ class JobView(AbstractModel):
 
     @property
     def JobId(self):
-        """作业ID
+        """作业ID；JobId详见[作业列表](https://cloud.tencent.com/document/product/599/15909)
         :rtype: str
         """
         return self._JobId
@@ -6837,7 +6859,15 @@ class JobView(AbstractModel):
 
     @property
     def JobState(self):
-        """作业状态
+        """作业状态:
+- SUBMITTED：已提交；
+- PENDING：等待中；
+- RUNNABLE：可运行；
+- STARTING：启动中；
+- RUNNING：运行中；
+- SUCCEED：成功；
+- FAILED：失败；
+- FAILED_INTERRUPTED：失败后保留实例。
         :rtype: str
         """
         return self._JobState
@@ -6870,7 +6900,7 @@ class JobView(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        """创建时间。按照ISO8601标准表示，并且使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ
         :rtype: str
         """
         return self._CreateTime
@@ -6881,7 +6911,7 @@ class JobView(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间
+        """结束时间。按照ISO8601标准表示，并且使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ
         :rtype: str
         """
         return self._EndTime
@@ -7113,9 +7143,9 @@ class ModifyComputeEnvRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvId: 计算环境ID
+        :param _EnvId: 计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
         :type EnvId: str
-        :param _DesiredComputeNodeCount: 计算节点期望个数
+        :param _DesiredComputeNodeCount: 计算节点期望个数，最大上限2000。
         :type DesiredComputeNodeCount: int
         :param _EnvName: 计算环境名称
         :type EnvName: str
@@ -7132,7 +7162,7 @@ class ModifyComputeEnvRequest(AbstractModel):
 
     @property
     def EnvId(self):
-        """计算环境ID
+        """计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
         :rtype: str
         """
         return self._EnvId
@@ -7143,7 +7173,7 @@ class ModifyComputeEnvRequest(AbstractModel):
 
     @property
     def DesiredComputeNodeCount(self):
-        """计算节点期望个数
+        """计算节点期望个数，最大上限2000。
         :rtype: int
         """
         return self._DesiredComputeNodeCount
@@ -7239,11 +7269,11 @@ class ModifyTaskTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskTemplateId: 任务模板ID
+        :param _TaskTemplateId: 任务模板ID; 详见[任务模版](https://cloud.tencent.com/document/product/599/15902)。
         :type TaskTemplateId: str
-        :param _TaskTemplateName: 任务模板名称
+        :param _TaskTemplateName: 任务模板名称；字节长度限制60。
         :type TaskTemplateName: str
-        :param _TaskTemplateDescription: 任务模板描述
+        :param _TaskTemplateDescription: 任务模板描述；字节长度限制200。
         :type TaskTemplateDescription: str
         :param _TaskTemplateInfo: 任务模板信息
         :type TaskTemplateInfo: :class:`tencentcloud.batch.v20170312.models.Task`
@@ -7255,7 +7285,7 @@ class ModifyTaskTemplateRequest(AbstractModel):
 
     @property
     def TaskTemplateId(self):
-        """任务模板ID
+        """任务模板ID; 详见[任务模版](https://cloud.tencent.com/document/product/599/15902)。
         :rtype: str
         """
         return self._TaskTemplateId
@@ -7266,7 +7296,7 @@ class ModifyTaskTemplateRequest(AbstractModel):
 
     @property
     def TaskTemplateName(self):
-        """任务模板名称
+        """任务模板名称；字节长度限制60。
         :rtype: str
         """
         return self._TaskTemplateName
@@ -7277,7 +7307,7 @@ class ModifyTaskTemplateRequest(AbstractModel):
 
     @property
     def TaskTemplateDescription(self):
-        """任务模板描述
+        """任务模板描述；字节长度限制200。
         :rtype: str
         """
         return self._TaskTemplateDescription
@@ -7403,11 +7433,13 @@ class NamedComputeEnv(AbstractModel):
         r"""
         :param _EnvName: 计算环境名称
         :type EnvName: str
-        :param _DesiredComputeNodeCount: 计算节点期望个数
+        :param _DesiredComputeNodeCount: 计算节点期望个数，最大上限2000.
         :type DesiredComputeNodeCount: int
         :param _EnvDescription: 计算环境描述
         :type EnvDescription: str
-        :param _EnvType: 计算环境管理类型
+        :param _EnvType: 计算环境管理类型，枚举如下：
+MANAGED: 由客户在Batch平台主动创建；
+THPC_QUEUE: 由THPC平台创建，关联THPC平台的集群队列。
         :type EnvType: str
         :param _EnvData: 计算环境具体参数
         :type EnvData: :class:`tencentcloud.batch.v20170312.models.EnvData`
@@ -7461,7 +7493,7 @@ TDMQ_CMQ：表示向腾讯云TDMQ_CMQ发送消息。<br/>默认值为CMQ。<br/>
 
     @property
     def DesiredComputeNodeCount(self):
-        """计算节点期望个数
+        """计算节点期望个数，最大上限2000.
         :rtype: int
         """
         return self._DesiredComputeNodeCount
@@ -7483,7 +7515,9 @@ TDMQ_CMQ：表示向腾讯云TDMQ_CMQ发送消息。<br/>默认值为CMQ。<br/>
 
     @property
     def EnvType(self):
-        """计算环境管理类型
+        """计算环境管理类型，枚举如下：
+MANAGED: 由客户在Batch平台主动创建；
+THPC_QUEUE: 由THPC平台创建，关联THPC平台的集群队列。
         :rtype: str
         """
         return self._EnvType
@@ -8140,14 +8174,14 @@ class RetryJobsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobIds: 作业ID列表。
+        :param _JobIds: 作业ID列表。最大重试作业数100；JobId详见[作业列表](https://cloud.tencent.com/document/product/599/15909)。
         :type JobIds: list of str
         """
         self._JobIds = None
 
     @property
     def JobIds(self):
-        """作业ID列表。
+        """作业ID列表。最大重试作业数100；JobId详见[作业列表](https://cloud.tencent.com/document/product/599/15909)。
         :rtype: list of str
         """
         return self._JobIds
@@ -9316,7 +9350,14 @@ class TaskInstanceView(AbstractModel):
         r"""
         :param _TaskInstanceIndex: 任务实例索引
         :type TaskInstanceIndex: int
-        :param _TaskInstanceState: 任务实例状态
+        :param _TaskInstanceState: 任务实例状态: 
+- PENDING：等待中；
+- RUNNABLE：可运行；
+- STARTING：启动中；
+- RUNNING：运行中；
+- SUCCEED：成功；
+- FAILED：失败；
+- FAILED_INTERRUPTED：失败后保留实例。
         :type TaskInstanceState: str
         :param _ExitCode: 应用程序执行结束的exit code
         :type ExitCode: int
@@ -9324,13 +9365,13 @@ class TaskInstanceView(AbstractModel):
         :type StateReason: str
         :param _ComputeNodeInstanceId: 任务实例运行时所在计算节点（例如CVM）的InstanceId。任务实例未运行或者完结时，本字段为空。任务实例重试时，本字段会随之变化
         :type ComputeNodeInstanceId: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: 创建时间。按照ISO8601标准表示，并且使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ。
         :type CreateTime: str
-        :param _LaunchTime: 启动时间
+        :param _LaunchTime: 启动时间。按照ISO8601标准表示，并且使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ。
         :type LaunchTime: str
-        :param _RunningTime: 开始运行时间
+        :param _RunningTime: 开始运行时间。按照ISO8601标准表示，并且使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ。
         :type RunningTime: str
-        :param _EndTime: 结束时间
+        :param _EndTime: 结束时间。按照ISO8601标准表示，并且使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ。
         :type EndTime: str
         :param _RedirectInfo: 重定向信息
         :type RedirectInfo: :class:`tencentcloud.batch.v20170312.models.RedirectInfo`
@@ -9362,7 +9403,14 @@ class TaskInstanceView(AbstractModel):
 
     @property
     def TaskInstanceState(self):
-        """任务实例状态
+        """任务实例状态: 
+- PENDING：等待中；
+- RUNNABLE：可运行；
+- STARTING：启动中；
+- RUNNING：运行中；
+- SUCCEED：成功；
+- FAILED：失败；
+- FAILED_INTERRUPTED：失败后保留实例。
         :rtype: str
         """
         return self._TaskInstanceState
@@ -9406,7 +9454,7 @@ class TaskInstanceView(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间
+        """创建时间。按照ISO8601标准表示，并且使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ。
         :rtype: str
         """
         return self._CreateTime
@@ -9417,7 +9465,7 @@ class TaskInstanceView(AbstractModel):
 
     @property
     def LaunchTime(self):
-        """启动时间
+        """启动时间。按照ISO8601标准表示，并且使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ。
         :rtype: str
         """
         return self._LaunchTime
@@ -9428,7 +9476,7 @@ class TaskInstanceView(AbstractModel):
 
     @property
     def RunningTime(self):
-        """开始运行时间
+        """开始运行时间。按照ISO8601标准表示，并且使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ。
         :rtype: str
         """
         return self._RunningTime
@@ -9439,7 +9487,7 @@ class TaskInstanceView(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间
+        """结束时间。按照ISO8601标准表示，并且使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ。
         :rtype: str
         """
         return self._EndTime
@@ -9765,11 +9813,18 @@ class TaskView(AbstractModel):
         r"""
         :param _TaskName: 任务名称
         :type TaskName: str
-        :param _TaskState: 任务状态
+        :param _TaskState: 任务状态:
+- PENDING：等待中；
+- RUNNABLE：可运行；
+- STARTING：启动中；
+- RUNNING：运行中；
+- SUCCEED：成功；
+- FAILED：失败；
+- FAILED_INTERRUPTED：失败后保留实例。
         :type TaskState: str
-        :param _CreateTime: 开始时间
+        :param _CreateTime: 开始时间。按照ISO8601标准表示，并且使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ。
         :type CreateTime: str
-        :param _EndTime: 结束时间
+        :param _EndTime: 结束时间。按照ISO8601标准表示，并且使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ。
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         """
@@ -9791,7 +9846,14 @@ class TaskView(AbstractModel):
 
     @property
     def TaskState(self):
-        """任务状态
+        """任务状态:
+- PENDING：等待中；
+- RUNNABLE：可运行；
+- STARTING：启动中；
+- RUNNING：运行中；
+- SUCCEED：成功；
+- FAILED：失败；
+- FAILED_INTERRUPTED：失败后保留实例。
         :rtype: str
         """
         return self._TaskState
@@ -9802,7 +9864,7 @@ class TaskView(AbstractModel):
 
     @property
     def CreateTime(self):
-        """开始时间
+        """开始时间。按照ISO8601标准表示，并且使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ。
         :rtype: str
         """
         return self._CreateTime
@@ -9813,7 +9875,7 @@ class TaskView(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间
+        """结束时间。按照ISO8601标准表示，并且使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9846,9 +9908,9 @@ class TerminateComputeNodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvId: 计算环境ID
+        :param _EnvId: 计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
         :type EnvId: str
-        :param _ComputeNodeId: 计算节点ID
+        :param _ComputeNodeId: 计算节点ID，节点ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
         :type ComputeNodeId: str
         """
         self._EnvId = None
@@ -9856,7 +9918,7 @@ class TerminateComputeNodeRequest(AbstractModel):
 
     @property
     def EnvId(self):
-        """计算环境ID
+        """计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
         :rtype: str
         """
         return self._EnvId
@@ -9867,7 +9929,7 @@ class TerminateComputeNodeRequest(AbstractModel):
 
     @property
     def ComputeNodeId(self):
-        """计算节点ID
+        """计算节点ID，节点ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
         :rtype: str
         """
         return self._ComputeNodeId
@@ -9925,9 +9987,9 @@ class TerminateComputeNodesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvId: 计算环境ID
+        :param _EnvId: 计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
         :type EnvId: str
-        :param _ComputeNodeIds: 计算节点ID列表
+        :param _ComputeNodeIds: 计算节点ID列表，最大数量上限100，节点ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
         :type ComputeNodeIds: list of str
         """
         self._EnvId = None
@@ -9935,7 +9997,7 @@ class TerminateComputeNodesRequest(AbstractModel):
 
     @property
     def EnvId(self):
-        """计算环境ID
+        """计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
         :rtype: str
         """
         return self._EnvId
@@ -9946,7 +10008,7 @@ class TerminateComputeNodesRequest(AbstractModel):
 
     @property
     def ComputeNodeIds(self):
-        """计算节点ID列表
+        """计算节点ID列表，最大数量上限100，节点ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
         :rtype: list of str
         """
         return self._ComputeNodeIds
@@ -10004,14 +10066,14 @@ class TerminateJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 作业ID
+        :param _JobId: 作业ID；JobId详见[作业列表](https://cloud.tencent.com/document/product/599/15909)
         :type JobId: str
         """
         self._JobId = None
 
     @property
     def JobId(self):
-        """作业ID
+        """作业ID；JobId详见[作业列表](https://cloud.tencent.com/document/product/599/15909)
         :rtype: str
         """
         return self._JobId
@@ -10068,9 +10130,9 @@ class TerminateTaskInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 作业ID
+        :param _JobId: 作业ID；详见[作业列表](https://cloud.tencent.com/document/product/599/15909)。
         :type JobId: str
-        :param _TaskName: 任务名称
+        :param _TaskName: 任务名称；详见[作业提交信息](https://cloud.tencent.com/document/product/599/15910)
         :type TaskName: str
         :param _TaskInstanceIndex: 任务实例索引
         :type TaskInstanceIndex: int
@@ -10081,7 +10143,7 @@ class TerminateTaskInstanceRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """作业ID
+        """作业ID；详见[作业列表](https://cloud.tencent.com/document/product/599/15909)。
         :rtype: str
         """
         return self._JobId
@@ -10092,7 +10154,7 @@ class TerminateTaskInstanceRequest(AbstractModel):
 
     @property
     def TaskName(self):
-        """任务名称
+        """任务名称；详见[作业提交信息](https://cloud.tencent.com/document/product/599/15910)
         :rtype: str
         """
         return self._TaskName

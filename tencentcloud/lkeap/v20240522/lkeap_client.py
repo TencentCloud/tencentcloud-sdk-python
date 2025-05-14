@@ -45,7 +45,7 @@ class LkeapClient(AbstractClient):
             - 支持64K上下文长度，最大输出16k。
         - DeepSeek-R1（model 参数值为**deepseek-r1**）
             - DeepSeek-R1为671B模型，使用强化学习训练，推理过程包含大量反思和验证，思维链长度可达数万字。 该系列模型在数学、代码以及各种复杂逻辑推理任务上推理效果优异，并为用户展现了完整的思考过程。
-            -  支持64K上下文长度，最大输出16k。
+            -  支持96K上下文长度，最大输入长度64k，最大输出16k（默认4k），最大思维链输出长度32k。
         - DeepSeek-Prover-V2（model 参数值为**deepseek-prover-v2**）
             - DeepSeek-Prover-V2 为671B 参数 MoE 模型，在数学定理证明和复杂计算任务中表现出色。
             -  支持64K上下文长度，最大输出16k。

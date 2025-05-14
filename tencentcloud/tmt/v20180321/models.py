@@ -18,6 +18,87 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class BoundingBox(AbstractModel):
+    """段落文本框位置：x，y代表左上顶点，width和height代表宽高
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _X: 左上顶点x坐标
+        :type X: int
+        :param _Y: 左上顶点y坐标
+        :type Y: int
+        :param _Width: 宽
+        :type Width: int
+        :param _Height: 高
+        :type Height: int
+        """
+        self._X = None
+        self._Y = None
+        self._Width = None
+        self._Height = None
+
+    @property
+    def X(self):
+        """左上顶点x坐标
+        :rtype: int
+        """
+        return self._X
+
+    @X.setter
+    def X(self, X):
+        self._X = X
+
+    @property
+    def Y(self):
+        """左上顶点y坐标
+        :rtype: int
+        """
+        return self._Y
+
+    @Y.setter
+    def Y(self, Y):
+        self._Y = Y
+
+    @property
+    def Width(self):
+        """宽
+        :rtype: int
+        """
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        """高
+        :rtype: int
+        """
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+
+    def _deserialize(self, params):
+        self._X = params.get("X")
+        self._Y = params.get("Y")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FileTranslateRequest(AbstractModel):
     """FileTranslate请求参数结构体
 
@@ -517,6 +598,107 @@ class ImageRecord(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ImageTranslateLLMRequest(AbstractModel):
+    """ImageTranslateLLM请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: 输入图 Url。 使用Url的时候，Data参数需要传入""。 图片限制：小于 10MB，分辨率建议600*800以上，格式支持 jpg、jpeg、png。
+
+        :type Url: str
+        """
+        self._Url = None
+
+    @property
+    def Url(self):
+        """输入图 Url。 使用Url的时候，Data参数需要传入""。 图片限制：小于 10MB，分辨率建议600*800以上，格式支持 jpg、jpeg、png。
+
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageTranslateLLMResponse(AbstractModel):
+    """ImageTranslateLLM返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Angle: 逆时针图片角度，取值范围为0-359
+        :type Angle: float
+        :param _TransDetails: 翻译详情信息
+        :type TransDetails: list of TransDetail
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Angle = None
+        self._TransDetails = None
+        self._RequestId = None
+
+    @property
+    def Angle(self):
+        """逆时针图片角度，取值范围为0-359
+        :rtype: float
+        """
+        return self._Angle
+
+    @Angle.setter
+    def Angle(self, Angle):
+        self._Angle = Angle
+
+    @property
+    def TransDetails(self):
+        """翻译详情信息
+        :rtype: list of TransDetail
+        """
+        return self._TransDetails
+
+    @TransDetails.setter
+    def TransDetails(self, TransDetails):
+        self._TransDetails = TransDetails
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Angle = params.get("Angle")
+        if params.get("TransDetails") is not None:
+            self._TransDetails = []
+            for item in params.get("TransDetails"):
+                obj = TransDetail()
+                obj._deserialize(item)
+                self._TransDetails.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ImageTranslateRequest(AbstractModel):
@@ -1881,3 +2063,116 @@ class TextTranslateResponse(AbstractModel):
         self._Target = params.get("Target")
         self._UsedAmount = params.get("UsedAmount")
         self._RequestId = params.get("RequestId")
+
+
+class TransDetail(AbstractModel):
+    """大模型图片翻译详情信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SourceLineText: 当前行的原文本
+        :type SourceLineText: str
+        :param _TargetLineText: 当前行的译文
+        :type TargetLineText: str
+        :param _BoundingBox: 段落文本框位置
+        :type BoundingBox: :class:`tencentcloud.tmt.v20180321.models.BoundingBox`
+        :param _LinesCount: 行数
+        :type LinesCount: int
+        :param _LineHeight: 行高
+        :type LineHeight: int
+        :param _SpamCode: 正常段落spam_code字段为0；如果存在spam_code字段且值大于0（1: 命中垃圾检查；2: 命中安全策略；3: 其他。），则命中安全检查被过滤。
+        :type SpamCode: int
+        """
+        self._SourceLineText = None
+        self._TargetLineText = None
+        self._BoundingBox = None
+        self._LinesCount = None
+        self._LineHeight = None
+        self._SpamCode = None
+
+    @property
+    def SourceLineText(self):
+        """当前行的原文本
+        :rtype: str
+        """
+        return self._SourceLineText
+
+    @SourceLineText.setter
+    def SourceLineText(self, SourceLineText):
+        self._SourceLineText = SourceLineText
+
+    @property
+    def TargetLineText(self):
+        """当前行的译文
+        :rtype: str
+        """
+        return self._TargetLineText
+
+    @TargetLineText.setter
+    def TargetLineText(self, TargetLineText):
+        self._TargetLineText = TargetLineText
+
+    @property
+    def BoundingBox(self):
+        """段落文本框位置
+        :rtype: :class:`tencentcloud.tmt.v20180321.models.BoundingBox`
+        """
+        return self._BoundingBox
+
+    @BoundingBox.setter
+    def BoundingBox(self, BoundingBox):
+        self._BoundingBox = BoundingBox
+
+    @property
+    def LinesCount(self):
+        """行数
+        :rtype: int
+        """
+        return self._LinesCount
+
+    @LinesCount.setter
+    def LinesCount(self, LinesCount):
+        self._LinesCount = LinesCount
+
+    @property
+    def LineHeight(self):
+        """行高
+        :rtype: int
+        """
+        return self._LineHeight
+
+    @LineHeight.setter
+    def LineHeight(self, LineHeight):
+        self._LineHeight = LineHeight
+
+    @property
+    def SpamCode(self):
+        """正常段落spam_code字段为0；如果存在spam_code字段且值大于0（1: 命中垃圾检查；2: 命中安全策略；3: 其他。），则命中安全检查被过滤。
+        :rtype: int
+        """
+        return self._SpamCode
+
+    @SpamCode.setter
+    def SpamCode(self, SpamCode):
+        self._SpamCode = SpamCode
+
+
+    def _deserialize(self, params):
+        self._SourceLineText = params.get("SourceLineText")
+        self._TargetLineText = params.get("TargetLineText")
+        if params.get("BoundingBox") is not None:
+            self._BoundingBox = BoundingBox()
+            self._BoundingBox._deserialize(params.get("BoundingBox"))
+        self._LinesCount = params.get("LinesCount")
+        self._LineHeight = params.get("LineHeight")
+        self._SpamCode = params.get("SpamCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        

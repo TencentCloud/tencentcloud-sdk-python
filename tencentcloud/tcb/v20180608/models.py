@@ -7931,7 +7931,7 @@ class DescribeCbrServerVersionResponse(AbstractModel):
         :type VersionName: str
         :param _Remark: 备注
         :type Remark: str
-        :param _DockerfilePath: Dockefile的路径
+        :param _DockerfilePath: Dockerfile的路径
         :type DockerfilePath: str
         :param _BuildDir: DockerBuild的目录
         :type BuildDir: str
@@ -8049,7 +8049,7 @@ class DescribeCbrServerVersionResponse(AbstractModel):
 
     @property
     def DockerfilePath(self):
-        """Dockefile的路径
+        """Dockerfile的路径
         :rtype: str
         """
         return self._DockerfilePath
@@ -10582,7 +10582,7 @@ class DescribeCloudBaseRunServerVersionResponse(AbstractModel):
         :type VersionName: str
         :param _Remark: 备注
         :type Remark: str
-        :param _DockerfilePath: Dockefile的路径
+        :param _DockerfilePath: Dockerfile的路径
         :type DockerfilePath: str
         :param _BuildDir: DockerBuild的目录
         :type BuildDir: str
@@ -10727,7 +10727,7 @@ class DescribeCloudBaseRunServerVersionResponse(AbstractModel):
 
     @property
     def DockerfilePath(self):
-        """Dockefile的路径
+        """Dockerfile的路径
         :rtype: str
         """
         return self._DockerfilePath

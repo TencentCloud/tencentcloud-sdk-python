@@ -72,6 +72,29 @@ class DbbrainClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CancelDBAutonomyEvent(self, request):
+        """自治中心-终止自治事件
+
+        :param request: Request instance for CancelDBAutonomyEvent.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.CancelDBAutonomyEventRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.CancelDBAutonomyEventResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CancelDBAutonomyEvent", params, headers=headers)
+            response = json.loads(body)
+            model = models.CancelDBAutonomyEventResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CancelKillTask(self, request):
         """终止中断会话任务。
 
@@ -615,6 +638,29 @@ class DbbrainClient(AbstractClient):
             body = self.call("DescribeAuditLogFiles", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAuditLogFilesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDBAutonomyAction(self, request):
+        """自治中心-查询自治事件任务详情。
+
+        :param request: Request instance for DescribeDBAutonomyAction.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeDBAutonomyActionRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.DescribeDBAutonomyActionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBAutonomyAction", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBAutonomyActionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

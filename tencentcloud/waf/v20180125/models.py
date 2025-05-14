@@ -27925,6 +27925,8 @@ class InstanceInfo(AbstractModel):
         :type Last3MaxBandwidth: int
         :param _MajorEventsProPkg: 重保增强包
         :type MajorEventsProPkg: :class:`tencentcloud.waf.v20180125.models.MajorEventsProPkg`
+        :param _BasicFlag: 1是基础2025版本；0不是
+        :type BasicFlag: int
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -27970,6 +27972,7 @@ class InstanceInfo(AbstractModel):
         self._Last3MaxQPS = None
         self._Last3MaxBandwidth = None
         self._MajorEventsProPkg = None
+        self._BasicFlag = None
 
     @property
     def InstanceId(self):
@@ -28465,6 +28468,17 @@ class InstanceInfo(AbstractModel):
     def MajorEventsProPkg(self, MajorEventsProPkg):
         self._MajorEventsProPkg = MajorEventsProPkg
 
+    @property
+    def BasicFlag(self):
+        """1是基础2025版本；0不是
+        :rtype: int
+        """
+        return self._BasicFlag
+
+    @BasicFlag.setter
+    def BasicFlag(self, BasicFlag):
+        self._BasicFlag = BasicFlag
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -28533,6 +28547,7 @@ class InstanceInfo(AbstractModel):
         if params.get("MajorEventsProPkg") is not None:
             self._MajorEventsProPkg = MajorEventsProPkg()
             self._MajorEventsProPkg._deserialize(params.get("MajorEventsProPkg"))
+        self._BasicFlag = params.get("BasicFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
