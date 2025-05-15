@@ -3338,14 +3338,12 @@ class BotConfig(AbstractModel):
         :param _BotPortraitRule: 用户画像规则。如果为null，默认使用历史配置。
         :type BotPortraitRule: :class:`tencentcloud.teo.v20220901.models.BotPortraitRule`
         :param _IntelligenceRule: Bot智能分析。如果为null，默认使用历史配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IntelligenceRule: :class:`tencentcloud.teo.v20220901.models.IntelligenceRule`
         :param _BotUserRules: Bot自定义规则。如果为null，默认使用历史配置。
         :type BotUserRules: list of BotUserRule
         :param _AlgDetectRule: Bot主动特征识别规则。
         :type AlgDetectRule: list of AlgDetectRule
         :param _Customizes: Bot托管定制策略，入参可不填，仅出参使用。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Customizes: list of BotUserRule
         """
         self._Switch = None
@@ -3394,7 +3392,6 @@ class BotConfig(AbstractModel):
     @property
     def IntelligenceRule(self):
         """Bot智能分析。如果为null，默认使用历史配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.IntelligenceRule`
         """
         return self._IntelligenceRule
@@ -3428,7 +3425,6 @@ class BotConfig(AbstractModel):
     @property
     def Customizes(self):
         """Bot托管定制策略，入参可不填，仅出参使用。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BotUserRule
         """
         return self._Customizes
@@ -3494,7 +3490,6 @@ class BotExtendAction(AbstractModel):
 <li>longdelay：长时响应。</li>
         :type Action: str
         :param _Percent: 处置方式的触发概率，范围0-100。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Percent: int
         """
         self._Action = None
@@ -3521,7 +3516,6 @@ class BotExtendAction(AbstractModel):
     @property
     def Percent(self):
         """处置方式的触发概率，范围0-100。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Percent
@@ -3560,19 +3554,14 @@ class BotManagedRule(AbstractModel):
         :param _RuleID: 本规则的ID。仅出参使用。
         :type RuleID: int
         :param _TransManagedIds: 放行的规则ID。默认所有规则不配置放行。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TransManagedIds: list of int
         :param _AlgManagedIds: JS挑战的规则ID。默认所有规则不配置JS挑战。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AlgManagedIds: list of int
         :param _CapManagedIds: 数字验证码的规则ID。默认所有规则不配置数字验证码。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CapManagedIds: list of int
         :param _MonManagedIds: 观察的规则ID。默认所有规则不配置观察。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MonManagedIds: list of int
         :param _DropManagedIds: 拦截的规则ID。默认所有规则不配置拦截。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DropManagedIds: list of int
         """
         self._Action = None
@@ -3612,7 +3601,6 @@ class BotManagedRule(AbstractModel):
     @property
     def TransManagedIds(self):
         """放行的规则ID。默认所有规则不配置放行。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._TransManagedIds
@@ -3624,7 +3612,6 @@ class BotManagedRule(AbstractModel):
     @property
     def AlgManagedIds(self):
         """JS挑战的规则ID。默认所有规则不配置JS挑战。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._AlgManagedIds
@@ -3636,7 +3623,6 @@ class BotManagedRule(AbstractModel):
     @property
     def CapManagedIds(self):
         """数字验证码的规则ID。默认所有规则不配置数字验证码。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._CapManagedIds
@@ -3648,7 +3634,6 @@ class BotManagedRule(AbstractModel):
     @property
     def MonManagedIds(self):
         """观察的规则ID。默认所有规则不配置观察。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._MonManagedIds
@@ -3660,7 +3645,6 @@ class BotManagedRule(AbstractModel):
     @property
     def DropManagedIds(self):
         """拦截的规则ID。默认所有规则不配置拦截。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._DropManagedIds
@@ -3702,16 +3686,12 @@ class BotPortraitRule(AbstractModel):
         :param _RuleID: 本规则的ID。仅出参使用。
         :type RuleID: int
         :param _AlgManagedIds: JS挑战的规则ID。默认所有规则不配置JS挑战。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AlgManagedIds: list of int
         :param _CapManagedIds: 数字验证码的规则ID。默认所有规则不配置数字验证码。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CapManagedIds: list of int
         :param _MonManagedIds: 观察的规则ID。默认所有规则不配置观察。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MonManagedIds: list of int
         :param _DropManagedIds: 拦截的规则ID。默认所有规则不配置拦截。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DropManagedIds: list of int
         """
         self._Switch = None
@@ -3748,7 +3728,6 @@ class BotPortraitRule(AbstractModel):
     @property
     def AlgManagedIds(self):
         """JS挑战的规则ID。默认所有规则不配置JS挑战。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._AlgManagedIds
@@ -3760,7 +3739,6 @@ class BotPortraitRule(AbstractModel):
     @property
     def CapManagedIds(self):
         """数字验证码的规则ID。默认所有规则不配置数字验证码。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._CapManagedIds
@@ -3772,7 +3750,6 @@ class BotPortraitRule(AbstractModel):
     @property
     def MonManagedIds(self):
         """观察的规则ID。默认所有规则不配置观察。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._MonManagedIds
@@ -3784,7 +3761,6 @@ class BotPortraitRule(AbstractModel):
     @property
     def DropManagedIds(self):
         """拦截的规则ID。默认所有规则不配置拦截。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._DropManagedIds
@@ -18333,6 +18309,178 @@ class DescribeOverviewL7DataResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribePlansRequest(AbstractModel):
+    """DescribePlans请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: 过滤条件，Filters.Values 的上限为 20。详细的过滤条件如下：<li>plan-type<br>  按照【<strong>套餐类型</strong>】进行过滤。<br>  可选的类型有：<br>  plan-trial：试用版套餐；<br>  plan-personal：个人版套餐；<br>  plan-basic：基础版套餐； <br>  plan-standard：标准版套餐； <br>  plan-enterprise：企业版套餐。 </li><li>plan-id<br>  按照【<strong>套餐 ID</strong>】进行过滤。套餐 ID 形如：edgeone-268z103ob0sx。</li><li>area<br>  按照【<strong>套餐加速地域</strong>】进行过滤。</li>  服务区域，可选的类型有：<br>  mainland: 中国大陆；<br>  overseas: 全球（不包括中国大陆)；<br>  global: 全球（包括中国大陆)。<br><li>status<br>  按照【<strong>套餐状态</strong>】进行过滤。<br>  可选的状态有：<br>  normal：正常状态；<br>  expiring-soon：即将过期；<br>  expired：已到期;<br>  isolated：已隔离。</li>
+        :type Filters: list of Filter
+        :param _Order: 排序字段，取值有：
+<li> enable-time：生效时间；</li>
+<li> expire-time：过期时间。</li>不填写使用默认值 enable-time。
+        :type Order: str
+        :param _Direction: 排序方向，取值有：
+<li>asc：从小到大排序；</li>
+<li>desc：从大到小排序。</li>不填写使用默认值 desc。
+        :type Direction: str
+        :param _Limit: 分页查询限制数目。默认值：20，最大值：200。
+        :type Limit: int
+        :param _Offset: 分页查询偏移量。默认值：0。
+        :type Offset: int
+        """
+        self._Filters = None
+        self._Order = None
+        self._Direction = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def Filters(self):
+        """过滤条件，Filters.Values 的上限为 20。详细的过滤条件如下：<li>plan-type<br>  按照【<strong>套餐类型</strong>】进行过滤。<br>  可选的类型有：<br>  plan-trial：试用版套餐；<br>  plan-personal：个人版套餐；<br>  plan-basic：基础版套餐； <br>  plan-standard：标准版套餐； <br>  plan-enterprise：企业版套餐。 </li><li>plan-id<br>  按照【<strong>套餐 ID</strong>】进行过滤。套餐 ID 形如：edgeone-268z103ob0sx。</li><li>area<br>  按照【<strong>套餐加速地域</strong>】进行过滤。</li>  服务区域，可选的类型有：<br>  mainland: 中国大陆；<br>  overseas: 全球（不包括中国大陆)；<br>  global: 全球（包括中国大陆)。<br><li>status<br>  按照【<strong>套餐状态</strong>】进行过滤。<br>  可选的状态有：<br>  normal：正常状态；<br>  expiring-soon：即将过期；<br>  expired：已到期;<br>  isolated：已隔离。</li>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Order(self):
+        """排序字段，取值有：
+<li> enable-time：生效时间；</li>
+<li> expire-time：过期时间。</li>不填写使用默认值 enable-time。
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def Direction(self):
+        """排序方向，取值有：
+<li>asc：从小到大排序；</li>
+<li>desc：从大到小排序。</li>不填写使用默认值 desc。
+        :rtype: str
+        """
+        return self._Direction
+
+    @Direction.setter
+    def Direction(self, Direction):
+        self._Direction = Direction
+
+    @property
+    def Limit(self):
+        """分页查询限制数目。默认值：20，最大值：200。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """分页查询偏移量。默认值：0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Order = params.get("Order")
+        self._Direction = params.get("Direction")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePlansResponse(AbstractModel):
+    """DescribePlans返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 符合条件的套餐个数。
+        :type TotalCount: int
+        :param _Plans: 套餐信息列表。
+        :type Plans: list of Plan
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Plans = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """符合条件的套餐个数。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Plans(self):
+        """套餐信息列表。
+        :rtype: list of Plan
+        """
+        return self._Plans
+
+    @Plans.setter
+    def Plans(self, Plans):
+        self._Plans = Plans
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Plans") is not None:
+            self._Plans = []
+            for item in params.get("Plans"):
+                obj = Plan()
+                obj._deserialize(item)
+                self._Plans.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribePrefetchTasksRequest(AbstractModel):
     """DescribePrefetchTasks请求参数结构体
 
@@ -23150,7 +23298,6 @@ class ExceptConfig(AbstractModel):
 <li>off：关闭。</li>
         :type Switch: str
         :param _ExceptUserRules: 例外规则详情。如果为null，默认使用历史配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExceptUserRules: list of ExceptUserRule
         """
         self._Switch = None
@@ -23172,7 +23319,6 @@ class ExceptConfig(AbstractModel):
     @property
     def ExceptUserRules(self):
         """例外规则详情。如果为null，默认使用历史配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ExceptUserRule
         """
         return self._ExceptUserRules
@@ -23218,13 +23364,10 @@ class ExceptUserRule(AbstractModel):
         :param _RuleID: 规则ID。仅出参使用。默认由底层生成。
         :type RuleID: int
         :param _UpdateTime: 更新时间，如果为null，默认由底层按当前时间生成。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param _ExceptUserRuleConditions: 匹配条件。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExceptUserRuleConditions: list of ExceptUserRuleCondition
         :param _ExceptUserRuleScope: 规则生效的范围。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExceptUserRuleScope: :class:`tencentcloud.teo.v20220901.models.ExceptUserRuleScope`
         :param _RulePriority: 优先级，取值范围0-100。如果为null，默认由底层设置为0。
         :type RulePriority: int
@@ -23287,7 +23430,6 @@ class ExceptUserRule(AbstractModel):
     @property
     def UpdateTime(self):
         """更新时间，如果为null，默认由底层按当前时间生成。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._UpdateTime
@@ -23299,7 +23441,6 @@ class ExceptUserRule(AbstractModel):
     @property
     def ExceptUserRuleConditions(self):
         """匹配条件。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ExceptUserRuleCondition
         """
         return self._ExceptUserRuleConditions
@@ -23311,7 +23452,6 @@ class ExceptUserRule(AbstractModel):
     @property
     def ExceptUserRuleScope(self):
         """规则生效的范围。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.ExceptUserRuleScope`
         """
         return self._ExceptUserRuleScope
@@ -23510,13 +23650,10 @@ class ExceptUserRuleScope(AbstractModel):
 <li>acl：自定义规则；</li>
 <li>cc：cc攻击防护；</li>
 <li>bot：Bot防护。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type Modules: list of str
         :param _PartialModules: 跳过部分规则ID的例外规则详情。如果为null，默认使用历史配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PartialModules: list of PartialModule
         :param _SkipConditions: 跳过具体字段不去扫描的例外规则详情。如果为null，默认使用历史配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SkipConditions: list of SkipCondition
         """
         self._Type = None
@@ -23545,7 +23682,6 @@ class ExceptUserRuleScope(AbstractModel):
 <li>acl：自定义规则；</li>
 <li>cc：cc攻击防护；</li>
 <li>bot：Bot防护。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Modules
@@ -23557,7 +23693,6 @@ class ExceptUserRuleScope(AbstractModel):
     @property
     def PartialModules(self):
         """跳过部分规则ID的例外规则详情。如果为null，默认使用历史配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PartialModule
         """
         return self._PartialModules
@@ -23569,7 +23704,6 @@ class ExceptUserRuleScope(AbstractModel):
     @property
     def SkipConditions(self):
         """跳过具体字段不去扫描的例外规则详情。如果为null，默认使用历史配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SkipCondition
         """
         return self._SkipConditions
@@ -23916,10 +24050,8 @@ class FirstPartConfig(AbstractModel):
         :param _Switch: 开关，取值有：
 <li>on：开启；</li>
 <li>off：关闭。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
         :param _StatTime: 首段包的统计时长，单位是秒，即期望首段包的统计时长是多少，默认5秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :type StatTime: int
         """
         self._Switch = None
@@ -23930,7 +24062,6 @@ class FirstPartConfig(AbstractModel):
         """开关，取值有：
 <li>on：开启；</li>
 <li>off：关闭。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Switch
@@ -23942,7 +24073,6 @@ class FirstPartConfig(AbstractModel):
     @property
     def StatTime(self):
         """首段包的统计时长，单位是秒，即期望首段包的统计时长是多少，默认5秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._StatTime
@@ -26633,10 +26763,8 @@ class IpTableConfig(AbstractModel):
         :param _Switch: 开关，取值有：
 <li>on：开启；</li>
 <li>off：关闭；</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
         :param _IpTableRules: 基础管控规则。如果为null，默认使用历史配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IpTableRules: list of IpTableRule
         """
         self._Switch = None
@@ -26647,7 +26775,6 @@ class IpTableConfig(AbstractModel):
         """开关，取值有：
 <li>on：开启；</li>
 <li>off：关闭；</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Switch
@@ -26659,7 +26786,6 @@ class IpTableConfig(AbstractModel):
     @property
     def IpTableRules(self):
         """基础管控规则。如果为null，默认使用历史配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of IpTableRule
         """
         return self._IpTableRules
@@ -26731,7 +26857,6 @@ class IpTableRule(AbstractModel):
 当入参缺省时，按 on 取值。
         :type Status: str
         :param _RuleName: 规则名。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleName: str
         :param _MatchContent: 匹配内容。支持多值输入。
 <li>当输入多个匹配值时，请使用英文逗号分隔；</li>
@@ -26841,7 +26966,6 @@ class IpTableRule(AbstractModel):
     @property
     def RuleName(self):
         """规则名。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RuleName
@@ -35383,7 +35507,6 @@ class PartialModule(AbstractModel):
 <li>waf：托管规则。</li>
         :type Module: str
         :param _Include: 模块下的需要例外的具体规则ID列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Include: list of int
         """
         self._Module = None
@@ -35404,7 +35527,6 @@ class PartialModule(AbstractModel):
     @property
     def Include(self):
         """模块下的需要例外的具体规则ID列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
         return self._Include
@@ -35417,6 +35539,355 @@ class PartialModule(AbstractModel):
     def _deserialize(self, params):
         self._Module = params.get("Module")
         self._Include = params.get("Include")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Plan(AbstractModel):
+    """套餐信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PlanType: 套餐类型。取值有：
+<li>plan-trial: 试用版套餐；</li>
+<li>plan-personal: 个人版套餐；</li>
+<li>plan-basic: 基础版套餐；</li>
+<li>plan-standard: 标准版套餐；</li>
+<li>plan-enterprise-v2: 企业版套餐；</li>
+<li>plan-enterprise-model-a: 企业版 Model A 套餐。</li>
+<li>plan-enterprise: 旧企业版套餐。</li>
+        :type PlanType: str
+        :param _PlanId: 套餐 ID。形如 edgeone-2y041pblwaxe。
+        :type PlanId: str
+        :param _Area: 服务区域，取值有：
+<li>mainland: 中国大陆；</li>
+<li>overseas: 全球（不包括中国大陆)；</li>
+<li>global: 全球（包括中国大陆)。</li>
+        :type Area: str
+        :param _Status: 套餐状态，取值有：
+<li>normal：正常状态；</li>
+<li>expiring-soon：即将到期状态；</li>
+<li>expired：到期状态；</li>
+<li>isolated：隔离状态；</li>
+<li>overdue-isolated：欠费隔离状态。</li>
+        :type Status: str
+        :param _PayMode: 付费类型，取值有：
+<li>0: 后付费；</li>
+<li>1: 预付费。</li>
+        :type PayMode: int
+        :param _ZonesInfo: 套餐绑定的站点信息，包括站点id和站点名称，站点状态。
+        :type ZonesInfo: list of ZoneInfo
+        :param _SmartRequestCapacity: 套餐内智能加速请求数规格，单位：次。
+        :type SmartRequestCapacity: int
+        :param _VAUCapacity: 套餐内VAU规格，单位：个。
+        :type VAUCapacity: int
+        :param _AccTrafficCapacity: 套餐内内容加速流量规格，单位：字节。
+        :type AccTrafficCapacity: int
+        :param _SmartTrafficCapacity: 套餐内智能加速流量规格，单位：字节。
+        :type SmartTrafficCapacity: int
+        :param _DDoSTrafficCapacity: 套餐内DDoS防护流量规格，单位：字节。
+        :type DDoSTrafficCapacity: int
+        :param _SecTrafficCapacity: 套餐内安全流量规格，单位：字节。
+        :type SecTrafficCapacity: int
+        :param _SecRequestCapacity: 套餐内安全请求数规格，单位：次。
+        :type SecRequestCapacity: int
+        :param _L4TrafficCapacity: 套餐内四层加速流量规格，单位：字节。
+        :type L4TrafficCapacity: int
+        :param _CrossMLCTrafficCapacity: 套餐内中国大陆网络优化流量规格，单位：字节。
+        :type CrossMLCTrafficCapacity: int
+        :param _Bindable: 套餐是否允许绑定新站点，取值有：
+<li>true: 允许绑定新站点；</li>
+<li>false: 不允许绑定新站点。</li>
+        :type Bindable: str
+        :param _EnabledTime: 套餐生效时间。
+        :type EnabledTime: str
+        :param _ExpiredTime: 套餐过期时间。
+        :type ExpiredTime: str
+        :param _Features: 套餐所支持的功能，取值有：<li>ContentAcceleration：内容加速功能；</li><li>SmartAcceleration：智能加速功能；</li><li>L4：四层加速功能；</li><li>Waf：高级 Web 防护；</li><li>QUIC：QUIC功能；</li><li>CrossMLC：中国大陆网络优化功能；</li><li>ProcessMedia：媒体处理功能；</li><li>L4DDoS：四层DDoS防护功能；</li>L7DDoS功能只会出现以下所有规格中的一项<li>L7DDoS.CM30G；七层DDoS防护功能-中国大陆30G保底带宽规格；</li><li>L7DDoS.CM60G；七层DDoS防护功能-中国大陆60G保底带宽规格；</li><li>L7DDoS.CM100G；七层DDoS防护功能-中国大陆100G保底带宽规格；</li><li>L7DDoS.Anycast300G；七层DDoS防护功能-中国大陆以外Anycast300G保底带宽规格；</li><li>L7DDoS.AnycastUnlimited；七层DDoS防护功能-中国大陆以外Anycast无上限全力防护规格；</li><li>L7DDoS.CM30G_Anycast300G；七层DDoS防护功能-中国大陆30G保底带宽规格，中国大陆以外Anycast300G保底带宽规格；</li><li>L7DDoS.CM60G_Anycast300G；七层DDoS防护功能-中国大陆60G保底带宽规格，中国大陆以外Anycast300G保底带宽规格；</li><li>L7DDoS.CM100G_Anycast300G；七层DDoS防护功能-中国大陆100G保底带宽规格，中国大陆以外Anycast300G保底带宽规格；</li><li>L7DDoS.CM30G_AnycastUnlimited；七层DDoS防护功能-中国大陆30G保底带宽规格，中国大陆以外Anycast无上限全力防护规格；</li><li>L7DDoS.CM60G_AnycastUnlimited；七层DDoS防护功能-中国大陆60G保底带宽规格，中国大陆以外Anycast无上限全力防护规格；</li><li>L7DDoS.CM100G_AnycastUnlimited；七层DDoS防护功能-中国大陆100G保底带宽规格，中国大陆以外Anycast无上限全力防护规格；</li>
+        :type Features: list of str
+        """
+        self._PlanType = None
+        self._PlanId = None
+        self._Area = None
+        self._Status = None
+        self._PayMode = None
+        self._ZonesInfo = None
+        self._SmartRequestCapacity = None
+        self._VAUCapacity = None
+        self._AccTrafficCapacity = None
+        self._SmartTrafficCapacity = None
+        self._DDoSTrafficCapacity = None
+        self._SecTrafficCapacity = None
+        self._SecRequestCapacity = None
+        self._L4TrafficCapacity = None
+        self._CrossMLCTrafficCapacity = None
+        self._Bindable = None
+        self._EnabledTime = None
+        self._ExpiredTime = None
+        self._Features = None
+
+    @property
+    def PlanType(self):
+        """套餐类型。取值有：
+<li>plan-trial: 试用版套餐；</li>
+<li>plan-personal: 个人版套餐；</li>
+<li>plan-basic: 基础版套餐；</li>
+<li>plan-standard: 标准版套餐；</li>
+<li>plan-enterprise-v2: 企业版套餐；</li>
+<li>plan-enterprise-model-a: 企业版 Model A 套餐。</li>
+<li>plan-enterprise: 旧企业版套餐。</li>
+        :rtype: str
+        """
+        return self._PlanType
+
+    @PlanType.setter
+    def PlanType(self, PlanType):
+        self._PlanType = PlanType
+
+    @property
+    def PlanId(self):
+        """套餐 ID。形如 edgeone-2y041pblwaxe。
+        :rtype: str
+        """
+        return self._PlanId
+
+    @PlanId.setter
+    def PlanId(self, PlanId):
+        self._PlanId = PlanId
+
+    @property
+    def Area(self):
+        """服务区域，取值有：
+<li>mainland: 中国大陆；</li>
+<li>overseas: 全球（不包括中国大陆)；</li>
+<li>global: 全球（包括中国大陆)。</li>
+        :rtype: str
+        """
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def Status(self):
+        """套餐状态，取值有：
+<li>normal：正常状态；</li>
+<li>expiring-soon：即将到期状态；</li>
+<li>expired：到期状态；</li>
+<li>isolated：隔离状态；</li>
+<li>overdue-isolated：欠费隔离状态。</li>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def PayMode(self):
+        """付费类型，取值有：
+<li>0: 后付费；</li>
+<li>1: 预付费。</li>
+        :rtype: int
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def ZonesInfo(self):
+        """套餐绑定的站点信息，包括站点id和站点名称，站点状态。
+        :rtype: list of ZoneInfo
+        """
+        return self._ZonesInfo
+
+    @ZonesInfo.setter
+    def ZonesInfo(self, ZonesInfo):
+        self._ZonesInfo = ZonesInfo
+
+    @property
+    def SmartRequestCapacity(self):
+        """套餐内智能加速请求数规格，单位：次。
+        :rtype: int
+        """
+        return self._SmartRequestCapacity
+
+    @SmartRequestCapacity.setter
+    def SmartRequestCapacity(self, SmartRequestCapacity):
+        self._SmartRequestCapacity = SmartRequestCapacity
+
+    @property
+    def VAUCapacity(self):
+        """套餐内VAU规格，单位：个。
+        :rtype: int
+        """
+        return self._VAUCapacity
+
+    @VAUCapacity.setter
+    def VAUCapacity(self, VAUCapacity):
+        self._VAUCapacity = VAUCapacity
+
+    @property
+    def AccTrafficCapacity(self):
+        """套餐内内容加速流量规格，单位：字节。
+        :rtype: int
+        """
+        return self._AccTrafficCapacity
+
+    @AccTrafficCapacity.setter
+    def AccTrafficCapacity(self, AccTrafficCapacity):
+        self._AccTrafficCapacity = AccTrafficCapacity
+
+    @property
+    def SmartTrafficCapacity(self):
+        """套餐内智能加速流量规格，单位：字节。
+        :rtype: int
+        """
+        return self._SmartTrafficCapacity
+
+    @SmartTrafficCapacity.setter
+    def SmartTrafficCapacity(self, SmartTrafficCapacity):
+        self._SmartTrafficCapacity = SmartTrafficCapacity
+
+    @property
+    def DDoSTrafficCapacity(self):
+        """套餐内DDoS防护流量规格，单位：字节。
+        :rtype: int
+        """
+        return self._DDoSTrafficCapacity
+
+    @DDoSTrafficCapacity.setter
+    def DDoSTrafficCapacity(self, DDoSTrafficCapacity):
+        self._DDoSTrafficCapacity = DDoSTrafficCapacity
+
+    @property
+    def SecTrafficCapacity(self):
+        """套餐内安全流量规格，单位：字节。
+        :rtype: int
+        """
+        return self._SecTrafficCapacity
+
+    @SecTrafficCapacity.setter
+    def SecTrafficCapacity(self, SecTrafficCapacity):
+        self._SecTrafficCapacity = SecTrafficCapacity
+
+    @property
+    def SecRequestCapacity(self):
+        """套餐内安全请求数规格，单位：次。
+        :rtype: int
+        """
+        return self._SecRequestCapacity
+
+    @SecRequestCapacity.setter
+    def SecRequestCapacity(self, SecRequestCapacity):
+        self._SecRequestCapacity = SecRequestCapacity
+
+    @property
+    def L4TrafficCapacity(self):
+        """套餐内四层加速流量规格，单位：字节。
+        :rtype: int
+        """
+        return self._L4TrafficCapacity
+
+    @L4TrafficCapacity.setter
+    def L4TrafficCapacity(self, L4TrafficCapacity):
+        self._L4TrafficCapacity = L4TrafficCapacity
+
+    @property
+    def CrossMLCTrafficCapacity(self):
+        """套餐内中国大陆网络优化流量规格，单位：字节。
+        :rtype: int
+        """
+        return self._CrossMLCTrafficCapacity
+
+    @CrossMLCTrafficCapacity.setter
+    def CrossMLCTrafficCapacity(self, CrossMLCTrafficCapacity):
+        self._CrossMLCTrafficCapacity = CrossMLCTrafficCapacity
+
+    @property
+    def Bindable(self):
+        """套餐是否允许绑定新站点，取值有：
+<li>true: 允许绑定新站点；</li>
+<li>false: 不允许绑定新站点。</li>
+        :rtype: str
+        """
+        return self._Bindable
+
+    @Bindable.setter
+    def Bindable(self, Bindable):
+        self._Bindable = Bindable
+
+    @property
+    def EnabledTime(self):
+        """套餐生效时间。
+        :rtype: str
+        """
+        return self._EnabledTime
+
+    @EnabledTime.setter
+    def EnabledTime(self, EnabledTime):
+        self._EnabledTime = EnabledTime
+
+    @property
+    def ExpiredTime(self):
+        """套餐过期时间。
+        :rtype: str
+        """
+        return self._ExpiredTime
+
+    @ExpiredTime.setter
+    def ExpiredTime(self, ExpiredTime):
+        self._ExpiredTime = ExpiredTime
+
+    @property
+    def Features(self):
+        """套餐所支持的功能，取值有：<li>ContentAcceleration：内容加速功能；</li><li>SmartAcceleration：智能加速功能；</li><li>L4：四层加速功能；</li><li>Waf：高级 Web 防护；</li><li>QUIC：QUIC功能；</li><li>CrossMLC：中国大陆网络优化功能；</li><li>ProcessMedia：媒体处理功能；</li><li>L4DDoS：四层DDoS防护功能；</li>L7DDoS功能只会出现以下所有规格中的一项<li>L7DDoS.CM30G；七层DDoS防护功能-中国大陆30G保底带宽规格；</li><li>L7DDoS.CM60G；七层DDoS防护功能-中国大陆60G保底带宽规格；</li><li>L7DDoS.CM100G；七层DDoS防护功能-中国大陆100G保底带宽规格；</li><li>L7DDoS.Anycast300G；七层DDoS防护功能-中国大陆以外Anycast300G保底带宽规格；</li><li>L7DDoS.AnycastUnlimited；七层DDoS防护功能-中国大陆以外Anycast无上限全力防护规格；</li><li>L7DDoS.CM30G_Anycast300G；七层DDoS防护功能-中国大陆30G保底带宽规格，中国大陆以外Anycast300G保底带宽规格；</li><li>L7DDoS.CM60G_Anycast300G；七层DDoS防护功能-中国大陆60G保底带宽规格，中国大陆以外Anycast300G保底带宽规格；</li><li>L7DDoS.CM100G_Anycast300G；七层DDoS防护功能-中国大陆100G保底带宽规格，中国大陆以外Anycast300G保底带宽规格；</li><li>L7DDoS.CM30G_AnycastUnlimited；七层DDoS防护功能-中国大陆30G保底带宽规格，中国大陆以外Anycast无上限全力防护规格；</li><li>L7DDoS.CM60G_AnycastUnlimited；七层DDoS防护功能-中国大陆60G保底带宽规格，中国大陆以外Anycast无上限全力防护规格；</li><li>L7DDoS.CM100G_AnycastUnlimited；七层DDoS防护功能-中国大陆100G保底带宽规格，中国大陆以外Anycast无上限全力防护规格；</li>
+        :rtype: list of str
+        """
+        return self._Features
+
+    @Features.setter
+    def Features(self, Features):
+        self._Features = Features
+
+
+    def _deserialize(self, params):
+        self._PlanType = params.get("PlanType")
+        self._PlanId = params.get("PlanId")
+        self._Area = params.get("Area")
+        self._Status = params.get("Status")
+        self._PayMode = params.get("PayMode")
+        if params.get("ZonesInfo") is not None:
+            self._ZonesInfo = []
+            for item in params.get("ZonesInfo"):
+                obj = ZoneInfo()
+                obj._deserialize(item)
+                self._ZonesInfo.append(obj)
+        self._SmartRequestCapacity = params.get("SmartRequestCapacity")
+        self._VAUCapacity = params.get("VAUCapacity")
+        self._AccTrafficCapacity = params.get("AccTrafficCapacity")
+        self._SmartTrafficCapacity = params.get("SmartTrafficCapacity")
+        self._DDoSTrafficCapacity = params.get("DDoSTrafficCapacity")
+        self._SecTrafficCapacity = params.get("SecTrafficCapacity")
+        self._SecRequestCapacity = params.get("SecRequestCapacity")
+        self._L4TrafficCapacity = params.get("L4TrafficCapacity")
+        self._CrossMLCTrafficCapacity = params.get("CrossMLCTrafficCapacity")
+        self._Bindable = params.get("Bindable")
+        self._EnabledTime = params.get("EnabledTime")
+        self._ExpiredTime = params.get("ExpiredTime")
+        self._Features = params.get("Features")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -36219,13 +36690,10 @@ class RateLimitConfig(AbstractModel):
         :param _RateLimitUserRules: 速率限制-用户规则列表。如果为null，默认使用历史配置。
         :type RateLimitUserRules: list of RateLimitUserRule
         :param _RateLimitTemplate: 速率限制模板功能。如果为null，默认使用历史配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RateLimitTemplate: :class:`tencentcloud.teo.v20220901.models.RateLimitTemplate`
         :param _RateLimitIntelligence: 智能客户端过滤。如果为null，默认使用历史配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RateLimitIntelligence: :class:`tencentcloud.teo.v20220901.models.RateLimitIntelligence`
         :param _RateLimitCustomizes: 速率限制-托管定制规则。如果为null，默认使用历史配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RateLimitCustomizes: list of RateLimitUserRule
         """
         self._Switch = None
@@ -36261,7 +36729,6 @@ class RateLimitConfig(AbstractModel):
     @property
     def RateLimitTemplate(self):
         """速率限制模板功能。如果为null，默认使用历史配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.RateLimitTemplate`
         """
         return self._RateLimitTemplate
@@ -36273,7 +36740,6 @@ class RateLimitConfig(AbstractModel):
     @property
     def RateLimitIntelligence(self):
         """智能客户端过滤。如果为null，默认使用历史配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.RateLimitIntelligence`
         """
         return self._RateLimitIntelligence
@@ -36285,7 +36751,6 @@ class RateLimitConfig(AbstractModel):
     @property
     def RateLimitCustomizes(self):
         """速率限制-托管定制规则。如果为null，默认使用历史配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RateLimitUserRule
         """
         return self._RateLimitCustomizes
@@ -36497,17 +36962,14 @@ class RateLimitTemplateDetail(AbstractModel):
 <li>normal：适中；</li>
 <li>strict：严格；</li>
 <li>close：关闭，仅精准速率限制生效。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type Mode: str
         :param _ID: 唯一id。
         :type ID: int
         :param _Action: 模板处置方式，取值有：
 <li>alg：JavaScript挑战；</li>
 <li>monitor：观察。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type Action: str
         :param _PunishTime: 惩罚时间，取值范围0-2天，单位秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PunishTime: int
         :param _Threshold: 统计阈值，单位是次，取值范围0-4294967294。
         :type Threshold: int
@@ -36530,7 +36992,6 @@ class RateLimitTemplateDetail(AbstractModel):
 <li>normal：适中；</li>
 <li>strict：严格；</li>
 <li>close：关闭，仅精准速率限制生效。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Mode
@@ -36555,7 +37016,6 @@ class RateLimitTemplateDetail(AbstractModel):
         """模板处置方式，取值有：
 <li>alg：JavaScript挑战；</li>
 <li>monitor：观察。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Action
@@ -36567,7 +37027,6 @@ class RateLimitTemplateDetail(AbstractModel):
     @property
     def PunishTime(self):
         """惩罚时间，取值范围0-2天，单位秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PunishTime
@@ -40339,37 +40798,26 @@ class SecurityConfig(AbstractModel):
     def __init__(self):
         r"""
         :param _WafConfig: 托管规则。如果入参为空或不填，默认使用历史配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :type WafConfig: :class:`tencentcloud.teo.v20220901.models.WafConfig`
         :param _RateLimitConfig: 速率限制。如果入参为空或不填，默认使用历史配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RateLimitConfig: :class:`tencentcloud.teo.v20220901.models.RateLimitConfig`
         :param _AclConfig: 自定义规则。如果入参为空或不填，默认使用历史配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AclConfig: :class:`tencentcloud.teo.v20220901.models.AclConfig`
         :param _BotConfig: Bot配置。如果入参为空或不填，默认使用历史配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :type BotConfig: :class:`tencentcloud.teo.v20220901.models.BotConfig`
         :param _SwitchConfig: 七层防护总开关。如果入参为空或不填，默认使用历史配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SwitchConfig: :class:`tencentcloud.teo.v20220901.models.SwitchConfig`
         :param _IpTableConfig: 基础访问管控。如果入参为空或不填，默认使用历史配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :type IpTableConfig: :class:`tencentcloud.teo.v20220901.models.IpTableConfig`
         :param _ExceptConfig: 例外规则配置。如果入参为空或不填，默认使用历史配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExceptConfig: :class:`tencentcloud.teo.v20220901.models.ExceptConfig`
         :param _DropPageConfig: 自定义拦截页面配置。如果入参为空或不填，默认使用历史配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DropPageConfig: :class:`tencentcloud.teo.v20220901.models.DropPageConfig`
         :param _TemplateConfig: 模板配置。此处仅出参数使用。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateConfig: :class:`tencentcloud.teo.v20220901.models.TemplateConfig`
         :param _SlowPostConfig: 慢速攻击配置。如果入参为空或不填，默认使用历史配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SlowPostConfig: :class:`tencentcloud.teo.v20220901.models.SlowPostConfig`
         :param _DetectLengthLimitConfig: 检测长度限制配置。仅出参使用。
-注意：此字段可能返回 null，表示取不到有效值。
         :type DetectLengthLimitConfig: :class:`tencentcloud.teo.v20220901.models.DetectLengthLimitConfig`
         """
         self._WafConfig = None
@@ -40387,7 +40835,6 @@ class SecurityConfig(AbstractModel):
     @property
     def WafConfig(self):
         """托管规则。如果入参为空或不填，默认使用历史配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.WafConfig`
         """
         return self._WafConfig
@@ -40399,7 +40846,6 @@ class SecurityConfig(AbstractModel):
     @property
     def RateLimitConfig(self):
         """速率限制。如果入参为空或不填，默认使用历史配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.RateLimitConfig`
         """
         return self._RateLimitConfig
@@ -40411,7 +40857,6 @@ class SecurityConfig(AbstractModel):
     @property
     def AclConfig(self):
         """自定义规则。如果入参为空或不填，默认使用历史配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.AclConfig`
         """
         return self._AclConfig
@@ -40423,7 +40868,6 @@ class SecurityConfig(AbstractModel):
     @property
     def BotConfig(self):
         """Bot配置。如果入参为空或不填，默认使用历史配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.BotConfig`
         """
         return self._BotConfig
@@ -40435,7 +40879,6 @@ class SecurityConfig(AbstractModel):
     @property
     def SwitchConfig(self):
         """七层防护总开关。如果入参为空或不填，默认使用历史配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.SwitchConfig`
         """
         return self._SwitchConfig
@@ -40447,7 +40890,6 @@ class SecurityConfig(AbstractModel):
     @property
     def IpTableConfig(self):
         """基础访问管控。如果入参为空或不填，默认使用历史配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.IpTableConfig`
         """
         return self._IpTableConfig
@@ -40459,7 +40901,6 @@ class SecurityConfig(AbstractModel):
     @property
     def ExceptConfig(self):
         """例外规则配置。如果入参为空或不填，默认使用历史配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.ExceptConfig`
         """
         return self._ExceptConfig
@@ -40471,7 +40912,6 @@ class SecurityConfig(AbstractModel):
     @property
     def DropPageConfig(self):
         """自定义拦截页面配置。如果入参为空或不填，默认使用历史配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.DropPageConfig`
         """
         return self._DropPageConfig
@@ -40483,7 +40923,6 @@ class SecurityConfig(AbstractModel):
     @property
     def TemplateConfig(self):
         """模板配置。此处仅出参数使用。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.TemplateConfig`
         """
         return self._TemplateConfig
@@ -40495,7 +40934,6 @@ class SecurityConfig(AbstractModel):
     @property
     def SlowPostConfig(self):
         """慢速攻击配置。如果入参为空或不填，默认使用历史配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.SlowPostConfig`
         """
         return self._SlowPostConfig
@@ -40507,7 +40945,6 @@ class SecurityConfig(AbstractModel):
     @property
     def DetectLengthLimitConfig(self):
         """检测长度限制配置。仅出参使用。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.DetectLengthLimitConfig`
         """
         return self._DetectLengthLimitConfig
@@ -41039,18 +41476,14 @@ class SlowPostConfig(AbstractModel):
 <li>off：关闭。</li>
         :type Switch: str
         :param _FirstPartConfig: 首包配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FirstPartConfig: :class:`tencentcloud.teo.v20220901.models.FirstPartConfig`
         :param _SlowRateConfig: 基础配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SlowRateConfig: :class:`tencentcloud.teo.v20220901.models.SlowRateConfig`
         :param _Action: 慢速攻击的处置动作，取值有：
 <li>monitor：观察；</li>
 <li>drop：拦截。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type Action: str
         :param _RuleId: 本规则的Id。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleId: int
         """
         self._Switch = None
@@ -41075,7 +41508,6 @@ class SlowPostConfig(AbstractModel):
     @property
     def FirstPartConfig(self):
         """首包配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.FirstPartConfig`
         """
         return self._FirstPartConfig
@@ -41087,7 +41519,6 @@ class SlowPostConfig(AbstractModel):
     @property
     def SlowRateConfig(self):
         """基础配置。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.SlowRateConfig`
         """
         return self._SlowRateConfig
@@ -41101,7 +41532,6 @@ class SlowPostConfig(AbstractModel):
         """慢速攻击的处置动作，取值有：
 <li>monitor：观察；</li>
 <li>drop：拦截。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Action
@@ -41113,7 +41543,6 @@ class SlowPostConfig(AbstractModel):
     @property
     def RuleId(self):
         """本规则的Id。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._RuleId
@@ -44689,6 +45118,74 @@ class ZoneConfigParameters(AbstractModel):
         if params.get("ZoneConfig") is not None:
             self._ZoneConfig = ZoneConfig()
             self._ZoneConfig._deserialize(params.get("ZoneConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ZoneInfo(AbstractModel):
+    """返回站点信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点id。
+        :type ZoneId: str
+        :param _ZoneName: 站点名称。
+        :type ZoneName: str
+        :param _Paused: 站点是否停用。取值有：<li>false：非停用；</li>
+<li>true：停用。</li>
+        :type Paused: bool
+        """
+        self._ZoneId = None
+        self._ZoneName = None
+        self._Paused = None
+
+    @property
+    def ZoneId(self):
+        """站点id。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ZoneName(self):
+        """站点名称。
+        :rtype: str
+        """
+        return self._ZoneName
+
+    @ZoneName.setter
+    def ZoneName(self, ZoneName):
+        self._ZoneName = ZoneName
+
+    @property
+    def Paused(self):
+        """站点是否停用。取值有：<li>false：非停用；</li>
+<li>true：停用。</li>
+        :rtype: bool
+        """
+        return self._Paused
+
+    @Paused.setter
+    def Paused(self, Paused):
+        self._Paused = Paused
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._ZoneName = params.get("ZoneName")
+        self._Paused = params.get("Paused")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

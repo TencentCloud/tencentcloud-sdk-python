@@ -1573,10 +1573,13 @@ class AssetSyncStatus(AbstractModel):
         :type LastStatus: int
         :param _InProcess: 同步任务是否正在进行中
         :type InProcess: bool
+        :param _ErrMsg: 任务错误消息
+        :type ErrMsg: str
         """
         self._LastTime = None
         self._LastStatus = None
         self._InProcess = None
+        self._ErrMsg = None
 
     @property
     def LastTime(self):
@@ -1611,11 +1614,23 @@ class AssetSyncStatus(AbstractModel):
     def InProcess(self, InProcess):
         self._InProcess = InProcess
 
+    @property
+    def ErrMsg(self):
+        """任务错误消息
+        :rtype: str
+        """
+        return self._ErrMsg
+
+    @ErrMsg.setter
+    def ErrMsg(self, ErrMsg):
+        self._ErrMsg = ErrMsg
+
 
     def _deserialize(self, params):
         self._LastTime = params.get("LastTime")
         self._LastStatus = params.get("LastStatus")
         self._InProcess = params.get("InProcess")
+        self._ErrMsg = params.get("ErrMsg")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8772,13 +8787,17 @@ class DescribeUsersRequest(AbstractModel):
         :type AuthorizedDeviceIdSet: list of int non-negative
         :param _AuthorizedAppAssetIdSet: 查询具有指定应用资产ID访问权限的用户
         :type AuthorizedAppAssetIdSet: list of int non-negative
-        :param _AuthTypeSet: 认证方式，0 - 本地, 1 - LDAP, 2 - OAuth, 不传为全部
+        :param _AuthTypeSet: 认证方式，0 - 本地, 1 - LDAP, 2 - OAuth, 3-ioa 不传为全部
         :type AuthTypeSet: list of int non-negative
         :param _DepartmentId: 部门ID，用于过滤属于某个部门的用户
         :type DepartmentId: str
         :param _Filters: 参数过滤数组
 
         :type Filters: list of Filter
+        :param _IsCamUser: 是否获取cam用户, 0-否，1-是
+        :type IsCamUser: int
+        :param _UserFromSet: 用户来源，0-bh，1-ioa,不传为全部
+        :type UserFromSet: list of int non-negative
         """
         self._IdSet = None
         self._Name = None
@@ -8792,6 +8811,8 @@ class DescribeUsersRequest(AbstractModel):
         self._AuthTypeSet = None
         self._DepartmentId = None
         self._Filters = None
+        self._IsCamUser = None
+        self._UserFromSet = None
 
     @property
     def IdSet(self):
@@ -8895,7 +8916,7 @@ class DescribeUsersRequest(AbstractModel):
 
     @property
     def AuthTypeSet(self):
-        """认证方式，0 - 本地, 1 - LDAP, 2 - OAuth, 不传为全部
+        """认证方式，0 - 本地, 1 - LDAP, 2 - OAuth, 3-ioa 不传为全部
         :rtype: list of int non-negative
         """
         return self._AuthTypeSet
@@ -8927,6 +8948,28 @@ class DescribeUsersRequest(AbstractModel):
     def Filters(self, Filters):
         self._Filters = Filters
 
+    @property
+    def IsCamUser(self):
+        """是否获取cam用户, 0-否，1-是
+        :rtype: int
+        """
+        return self._IsCamUser
+
+    @IsCamUser.setter
+    def IsCamUser(self, IsCamUser):
+        self._IsCamUser = IsCamUser
+
+    @property
+    def UserFromSet(self):
+        """用户来源，0-bh，1-ioa,不传为全部
+        :rtype: list of int non-negative
+        """
+        return self._UserFromSet
+
+    @UserFromSet.setter
+    def UserFromSet(self, UserFromSet):
+        self._UserFromSet = UserFromSet
+
 
     def _deserialize(self, params):
         self._IdSet = params.get("IdSet")
@@ -8946,6 +8989,8 @@ class DescribeUsersRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._IsCamUser = params.get("IsCamUser")
+        self._UserFromSet = params.get("UserFromSet")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9066,6 +9111,8 @@ class Device(AbstractModel):
         :type EnableSSL: int
         :param _SSLCertName: 已上传的SSL证书名称
         :type SSLCertName: str
+        :param _IOAId: IOA侧的资源ID
+        :type IOAId: int
         """
         self._Id = None
         self._InstanceId = None
@@ -9087,6 +9134,7 @@ class Device(AbstractModel):
         self._DomainName = None
         self._EnableSSL = None
         self._SSLCertName = None
+        self._IOAId = None
 
     @property
     def Id(self):
@@ -9308,6 +9356,17 @@ class Device(AbstractModel):
     def SSLCertName(self, SSLCertName):
         self._SSLCertName = SSLCertName
 
+    @property
+    def IOAId(self):
+        """IOA侧的资源ID
+        :rtype: int
+        """
+        return self._IOAId
+
+    @IOAId.setter
+    def IOAId(self, IOAId):
+        self._IOAId = IOAId
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -9339,6 +9398,7 @@ class Device(AbstractModel):
         self._DomainName = params.get("DomainName")
         self._EnableSSL = params.get("EnableSSL")
         self._SSLCertName = params.get("SSLCertName")
+        self._IOAId = params.get("IOAId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9885,6 +9945,102 @@ class Group(AbstractModel):
             self._Department = Department()
             self._Department._deserialize(params.get("Department"))
         self._Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IOAUserGroup(AbstractModel):
+    """同步过来的ioa用户分组信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OrgId: ioa用户组织id
+        :type OrgId: int
+        :param _OrgName: ioa用户组织名称
+        :type OrgName: str
+        :param _OrgIdPath: ioa用户组织id路径	
+        :type OrgIdPath: str
+        :param _OrgNamePath: ioa用户组织名称路径	
+        :type OrgNamePath: str
+        :param _Source: ioa关联用户源类型
+        :type Source: int
+        """
+        self._OrgId = None
+        self._OrgName = None
+        self._OrgIdPath = None
+        self._OrgNamePath = None
+        self._Source = None
+
+    @property
+    def OrgId(self):
+        """ioa用户组织id
+        :rtype: int
+        """
+        return self._OrgId
+
+    @OrgId.setter
+    def OrgId(self, OrgId):
+        self._OrgId = OrgId
+
+    @property
+    def OrgName(self):
+        """ioa用户组织名称
+        :rtype: str
+        """
+        return self._OrgName
+
+    @OrgName.setter
+    def OrgName(self, OrgName):
+        self._OrgName = OrgName
+
+    @property
+    def OrgIdPath(self):
+        """ioa用户组织id路径	
+        :rtype: str
+        """
+        return self._OrgIdPath
+
+    @OrgIdPath.setter
+    def OrgIdPath(self, OrgIdPath):
+        self._OrgIdPath = OrgIdPath
+
+    @property
+    def OrgNamePath(self):
+        """ioa用户组织名称路径	
+        :rtype: str
+        """
+        return self._OrgNamePath
+
+    @OrgNamePath.setter
+    def OrgNamePath(self, OrgNamePath):
+        self._OrgNamePath = OrgNamePath
+
+    @property
+    def Source(self):
+        """ioa关联用户源类型
+        :rtype: int
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+
+    def _deserialize(self, params):
+        self._OrgId = params.get("OrgId")
+        self._OrgName = params.get("OrgName")
+        self._OrgIdPath = params.get("OrgIdPath")
+        self._OrgNamePath = params.get("OrgNamePath")
+        self._Source = params.get("Source")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12731,6 +12887,12 @@ class Resource(AbstractModel):
         :type ClientAccess: int
         :param _ExternalAccess: 1 默认值，外网访问开启，0 外网访问关闭，2 外网访问开通中，3 外网访问关闭中
         :type ExternalAccess: int
+        :param _IOAResource: 0默认值。0-免费版（试用版）ioa，1-付费版ioa
+        :type IOAResource: int
+        :param _PackageIOAUserCount: 零信任堡垒机用户扩展包个数。1个扩展包对应20个用户数
+        :type PackageIOAUserCount: int
+        :param _PackageIOABandwidth:  零信任堡垒机带宽扩展包个数。一个扩展包表示4M带宽
+        :type PackageIOABandwidth: int
         """
         self._ResourceId = None
         self._ApCode = None
@@ -12780,6 +12942,9 @@ class Resource(AbstractModel):
         self._WebAccess = None
         self._ClientAccess = None
         self._ExternalAccess = None
+        self._IOAResource = None
+        self._PackageIOAUserCount = None
+        self._PackageIOABandwidth = None
 
     @property
     def ResourceId(self):
@@ -13309,6 +13474,39 @@ class Resource(AbstractModel):
     def ExternalAccess(self, ExternalAccess):
         self._ExternalAccess = ExternalAccess
 
+    @property
+    def IOAResource(self):
+        """0默认值。0-免费版（试用版）ioa，1-付费版ioa
+        :rtype: int
+        """
+        return self._IOAResource
+
+    @IOAResource.setter
+    def IOAResource(self, IOAResource):
+        self._IOAResource = IOAResource
+
+    @property
+    def PackageIOAUserCount(self):
+        """零信任堡垒机用户扩展包个数。1个扩展包对应20个用户数
+        :rtype: int
+        """
+        return self._PackageIOAUserCount
+
+    @PackageIOAUserCount.setter
+    def PackageIOAUserCount(self, PackageIOAUserCount):
+        self._PackageIOAUserCount = PackageIOAUserCount
+
+    @property
+    def PackageIOABandwidth(self):
+        """ 零信任堡垒机带宽扩展包个数。一个扩展包表示4M带宽
+        :rtype: int
+        """
+        return self._PackageIOABandwidth
+
+    @PackageIOABandwidth.setter
+    def PackageIOABandwidth(self, PackageIOABandwidth):
+        self._PackageIOABandwidth = PackageIOABandwidth
+
 
     def _deserialize(self, params):
         self._ResourceId = params.get("ResourceId")
@@ -13364,6 +13562,9 @@ class Resource(AbstractModel):
         self._WebAccess = params.get("WebAccess")
         self._ClientAccess = params.get("ClientAccess")
         self._ExternalAccess = params.get("ExternalAccess")
+        self._IOAResource = params.get("IOAResource")
+        self._PackageIOAUserCount = params.get("PackageIOAUserCount")
+        self._PackageIOABandwidth = params.get("PackageIOABandwidth")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17096,6 +17297,10 @@ class User(AbstractModel):
         :type Status: str
         :param _AclVersion: 权限版本
         :type AclVersion: int
+        :param _UserFrom: 用户来源，0-bh,1-ioa
+        :type UserFrom: int
+        :param _IOAUserGroup: ioa同步过来的用户相关信息
+        :type IOAUserGroup: :class:`tencentcloud.bh.v20230418.models.IOAUserGroup`
         """
         self._UserName = None
         self._RealName = None
@@ -17114,6 +17319,8 @@ class User(AbstractModel):
         self._UKeyStatus = None
         self._Status = None
         self._AclVersion = None
+        self._UserFrom = None
+        self._IOAUserGroup = None
 
     @property
     def UserName(self):
@@ -17304,6 +17511,28 @@ class User(AbstractModel):
     def AclVersion(self, AclVersion):
         self._AclVersion = AclVersion
 
+    @property
+    def UserFrom(self):
+        """用户来源，0-bh,1-ioa
+        :rtype: int
+        """
+        return self._UserFrom
+
+    @UserFrom.setter
+    def UserFrom(self, UserFrom):
+        self._UserFrom = UserFrom
+
+    @property
+    def IOAUserGroup(self):
+        """ioa同步过来的用户相关信息
+        :rtype: :class:`tencentcloud.bh.v20230418.models.IOAUserGroup`
+        """
+        return self._IOAUserGroup
+
+    @IOAUserGroup.setter
+    def IOAUserGroup(self, IOAUserGroup):
+        self._IOAUserGroup = IOAUserGroup
+
 
     def _deserialize(self, params):
         self._UserName = params.get("UserName")
@@ -17330,6 +17559,10 @@ class User(AbstractModel):
         self._UKeyStatus = params.get("UKeyStatus")
         self._Status = params.get("Status")
         self._AclVersion = params.get("AclVersion")
+        self._UserFrom = params.get("UserFrom")
+        if params.get("IOAUserGroup") is not None:
+            self._IOAUserGroup = IOAUserGroup()
+            self._IOAUserGroup._deserialize(params.get("IOAUserGroup"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

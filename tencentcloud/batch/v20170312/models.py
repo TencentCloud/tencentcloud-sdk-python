@@ -3983,7 +3983,7 @@ class DescribeTaskLogsRequest(AbstractModel):
         :type TaskInstanceIndexes: list of int non-negative
         :param _Offset: 起始任务实例。与TaskInstanceIndexes参数不能同时指定。
         :type Offset: int
-        :param _Limit: 最大任务实例数, 最大值为10.
+        :param _Limit: 最大任务实例数；默认值为5， 最大值为10。
         :type Limit: int
         """
         self._JobId = None
@@ -4038,7 +4038,7 @@ class DescribeTaskLogsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """最大任务实例数, 最大值为10.
+        """最大任务实例数；默认值为5， 最大值为10。
         :rtype: int
         """
         return self._Limit

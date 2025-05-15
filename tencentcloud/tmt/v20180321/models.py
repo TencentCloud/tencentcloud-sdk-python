@@ -607,11 +607,79 @@ class ImageTranslateLLMRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Data: 图片数据的Base64字符串，经Base64编码后不超过 9M，分辨率建议600*800以上，支持PNG、JPG、JPEG格式。
+        :type Data: str
+        :param _Target: 目标语言，支持语言列表：
+
+- 中文：zh
+- 繁体（台湾）：zh-TW
+- 繁体（香港）：zh-HK
+- 英文：en
+- 日语：ja
+- 韩语：ko
+- 泰语：th
+- 越南语：vi
+- 俄语：ru
+- 德语：de
+- 法语：fr
+- 阿拉伯语：ar
+- 西班牙语：es
+- 意大利语：it
+- 印度尼西亚语：id
+- 马来西亚语：ms
+- 葡萄牙语：pt
+- 土耳其语：tr
+- 
+        :type Target: str
         :param _Url: 输入图 Url。 使用Url的时候，Data参数需要传入""。 图片限制：小于 10MB，分辨率建议600*800以上，格式支持 jpg、jpeg、png。
 
         :type Url: str
         """
+        self._Data = None
+        self._Target = None
         self._Url = None
+
+    @property
+    def Data(self):
+        """图片数据的Base64字符串，经Base64编码后不超过 9M，分辨率建议600*800以上，支持PNG、JPG、JPEG格式。
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Target(self):
+        """目标语言，支持语言列表：
+
+- 中文：zh
+- 繁体（台湾）：zh-TW
+- 繁体（香港）：zh-HK
+- 英文：en
+- 日语：ja
+- 韩语：ko
+- 泰语：th
+- 越南语：vi
+- 俄语：ru
+- 德语：de
+- 法语：fr
+- 阿拉伯语：ar
+- 西班牙语：es
+- 意大利语：it
+- 印度尼西亚语：id
+- 马来西亚语：ms
+- 葡萄牙语：pt
+- 土耳其语：tr
+- 
+        :rtype: str
+        """
+        return self._Target
+
+    @Target.setter
+    def Target(self, Target):
+        self._Target = Target
 
     @property
     def Url(self):
@@ -627,6 +695,8 @@ class ImageTranslateLLMRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._Target = params.get("Target")
         self._Url = params.get("Url")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -645,6 +715,17 @@ class ImageTranslateLLMResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Data: 图片数据的Base64字符串，输出格式为JPG。
+
+        :type Data: str
+        :param _Source: 原文本主要源语言。
+        :type Source: str
+        :param _Target: 目标翻译语言。
+        :type Target: str
+        :param _SourceText: 图片中的全部原文本。
+        :type SourceText: str
+        :param _TargetText: 图片中全部译文。
+        :type TargetText: str
         :param _Angle: 逆时针图片角度，取值范围为0-359
         :type Angle: float
         :param _TransDetails: 翻译详情信息
@@ -652,9 +733,70 @@ class ImageTranslateLLMResponse(AbstractModel):
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Data = None
+        self._Source = None
+        self._Target = None
+        self._SourceText = None
+        self._TargetText = None
         self._Angle = None
         self._TransDetails = None
         self._RequestId = None
+
+    @property
+    def Data(self):
+        """图片数据的Base64字符串，输出格式为JPG。
+
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Source(self):
+        """原文本主要源语言。
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Target(self):
+        """目标翻译语言。
+        :rtype: str
+        """
+        return self._Target
+
+    @Target.setter
+    def Target(self, Target):
+        self._Target = Target
+
+    @property
+    def SourceText(self):
+        """图片中的全部原文本。
+        :rtype: str
+        """
+        return self._SourceText
+
+    @SourceText.setter
+    def SourceText(self, SourceText):
+        self._SourceText = SourceText
+
+    @property
+    def TargetText(self):
+        """图片中全部译文。
+        :rtype: str
+        """
+        return self._TargetText
+
+    @TargetText.setter
+    def TargetText(self, TargetText):
+        self._TargetText = TargetText
 
     @property
     def Angle(self):
@@ -691,6 +833,11 @@ class ImageTranslateLLMResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._Source = params.get("Source")
+        self._Target = params.get("Target")
+        self._SourceText = params.get("SourceText")
+        self._TargetText = params.get("TargetText")
         self._Angle = params.get("Angle")
         if params.get("TransDetails") is not None:
             self._TransDetails = []

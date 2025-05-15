@@ -3301,7 +3301,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteVpcEndPointService(self, request):
-        """本接口（DeleteVpcEndPointService）用于删除终端节点服务。
+        """本接口（DeleteVpcEndPointService）用于删除终端节点服务。限制：当有终端节点关联到终端节点服务时，无法删除终端节点服务。
 
         :param request: Request instance for DeleteVpcEndPointService.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteVpcEndPointServiceRequest`

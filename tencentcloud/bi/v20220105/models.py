@@ -1498,6 +1498,8 @@ Operator 目前支持
         :type TokenType: int
         :param _TokenNum: 一次创建的token数
         :type TokenNum: int
+        :param _ConfigParam: 嵌出显示配置，目前为ChatBI嵌出场景用，TableFilter表示数据表列表过滤，SqlView表示sql查看功能
+        :type ConfigParam: str
         """
         self._ProjectId = None
         self._PageId = None
@@ -1511,6 +1513,7 @@ Operator 目前支持
         self._GlobalParam = None
         self._TokenType = None
         self._TokenNum = None
+        self._ConfigParam = None
 
     @property
     def ProjectId(self):
@@ -1685,6 +1688,17 @@ Operator 目前支持
     def TokenNum(self, TokenNum):
         self._TokenNum = TokenNum
 
+    @property
+    def ConfigParam(self):
+        """嵌出显示配置，目前为ChatBI嵌出场景用，TableFilter表示数据表列表过滤，SqlView表示sql查看功能
+        :rtype: str
+        """
+        return self._ConfigParam
+
+    @ConfigParam.setter
+    def ConfigParam(self, ConfigParam):
+        self._ConfigParam = ConfigParam
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -1699,6 +1713,7 @@ Operator 目前支持
         self._GlobalParam = params.get("GlobalParam")
         self._TokenType = params.get("TokenType")
         self._TokenNum = params.get("TokenNum")
+        self._ConfigParam = params.get("ConfigParam")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5280,6 +5295,9 @@ class EmbedTokenInfo(AbstractModel):
         :param _SingleUserMultiToken: 是否单用户多token
 注意：此字段可能返回 null，表示取不到有效值。
         :type SingleUserMultiToken: bool
+        :param _ConfigParam: 嵌出显示配置，目前为ChatBI嵌出场景用，TableFilter表示数据表列表过滤，SqlView表示sql查看功能
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigParam: str
         """
         self._Id = None
         self._BIToken = None
@@ -5300,6 +5318,7 @@ class EmbedTokenInfo(AbstractModel):
         self._TokenType = None
         self._TokenNum = None
         self._SingleUserMultiToken = None
+        self._ConfigParam = None
 
     @property
     def Id(self):
@@ -5531,6 +5550,18 @@ class EmbedTokenInfo(AbstractModel):
     def SingleUserMultiToken(self, SingleUserMultiToken):
         self._SingleUserMultiToken = SingleUserMultiToken
 
+    @property
+    def ConfigParam(self):
+        """嵌出显示配置，目前为ChatBI嵌出场景用，TableFilter表示数据表列表过滤，SqlView表示sql查看功能
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ConfigParam
+
+    @ConfigParam.setter
+    def ConfigParam(self, ConfigParam):
+        self._ConfigParam = ConfigParam
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -5552,6 +5583,7 @@ class EmbedTokenInfo(AbstractModel):
         self._TokenType = params.get("TokenType")
         self._TokenNum = params.get("TokenNum")
         self._SingleUserMultiToken = params.get("SingleUserMultiToken")
+        self._ConfigParam = params.get("ConfigParam")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

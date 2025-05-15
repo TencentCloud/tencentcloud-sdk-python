@@ -34222,11 +34222,14 @@ class UserInfoForUserManager(AbstractModel):
         :type PassWord: str
         :param _ReMark: 备注
         :type ReMark: str
+        :param _Groups: 用户副组
+        :type Groups: list of str
         """
         self._UserName = None
         self._UserGroup = None
         self._PassWord = None
         self._ReMark = None
+        self._Groups = None
 
     @property
     def UserName(self):
@@ -34272,12 +34275,24 @@ class UserInfoForUserManager(AbstractModel):
     def ReMark(self, ReMark):
         self._ReMark = ReMark
 
+    @property
+    def Groups(self):
+        """用户副组
+        :rtype: list of str
+        """
+        return self._Groups
+
+    @Groups.setter
+    def Groups(self, Groups):
+        self._Groups = Groups
+
 
     def _deserialize(self, params):
         self._UserName = params.get("UserName")
         self._UserGroup = params.get("UserGroup")
         self._PassWord = params.get("PassWord")
         self._ReMark = params.get("ReMark")
+        self._Groups = params.get("Groups")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34299,9 +34314,12 @@ class UserManagerFilter(AbstractModel):
         :type UserName: str
         :param _UserType: 用户来源
         :type UserType: str
+        :param _Groups: 组名
+        :type Groups: str
         """
         self._UserName = None
         self._UserType = None
+        self._Groups = None
 
     @property
     def UserName(self):
@@ -34325,10 +34343,22 @@ class UserManagerFilter(AbstractModel):
     def UserType(self, UserType):
         self._UserType = UserType
 
+    @property
+    def Groups(self):
+        """组名
+        :rtype: str
+        """
+        return self._Groups
+
+    @Groups.setter
+    def Groups(self, Groups):
+        self._Groups = Groups
+
 
     def _deserialize(self, params):
         self._UserName = params.get("UserName")
         self._UserType = params.get("UserType")
+        self._Groups = params.get("Groups")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -233,29 +233,6 @@ class TbaasClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def GetLatesdTransactionList(self, request):
-        """获取最新交易列表（已废弃）
-
-        :param request: Request instance for GetLatesdTransactionList.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.GetLatesdTransactionListRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetLatesdTransactionListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("GetLatesdTransactionList", params, headers=headers)
-            response = json.loads(body)
-            model = models.GetLatesdTransactionListResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def GetLatestTransactionList(self, request):
         """获取fabric最新交易列表
 

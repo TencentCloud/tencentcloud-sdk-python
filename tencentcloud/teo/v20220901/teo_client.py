@@ -1901,6 +1901,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribePlans(self, request):
+        """查询套餐信息列表，支持分页。
+
+        :param request: Request instance for DescribePlans.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribePlansRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribePlansResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePlans", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePlansResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribePrefetchTasks(self, request):
         """DescribePrefetchTasks 用于查询预热任务提交历史记录及执行进度，通过 CreatePrefetchTasks 接口提交的任务可通过此接口进行查询。
 

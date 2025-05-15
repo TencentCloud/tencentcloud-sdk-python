@@ -2553,6 +2553,100 @@ class ApproveType(AbstractModel):
         
 
 
+class AsyncResourceVO(AbstractModel):
+    """操作资源DTO
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProcessId: 处理Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProcessId: int
+        :param _ResourceId: 资源Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceId: str
+        :param _ResourceName: 资源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceName: str
+        :param _ExtraInfo: 自定义信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtraInfo: list of ParamInfo
+        """
+        self._ProcessId = None
+        self._ResourceId = None
+        self._ResourceName = None
+        self._ExtraInfo = None
+
+    @property
+    def ProcessId(self):
+        """处理Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ProcessId
+
+    @ProcessId.setter
+    def ProcessId(self, ProcessId):
+        self._ProcessId = ProcessId
+
+    @property
+    def ResourceId(self):
+        """资源Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ResourceName(self):
+        """资源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourceName
+
+    @ResourceName.setter
+    def ResourceName(self, ResourceName):
+        self._ResourceName = ResourceName
+
+    @property
+    def ExtraInfo(self):
+        """自定义信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ParamInfo
+        """
+        return self._ExtraInfo
+
+    @ExtraInfo.setter
+    def ExtraInfo(self, ExtraInfo):
+        self._ExtraInfo = ExtraInfo
+
+
+    def _deserialize(self, params):
+        self._ProcessId = params.get("ProcessId")
+        self._ResourceId = params.get("ResourceId")
+        self._ResourceName = params.get("ResourceName")
+        if params.get("ExtraInfo") is not None:
+            self._ExtraInfo = []
+            for item in params.get("ExtraInfo"):
+                obj = ParamInfo()
+                obj._deserialize(item)
+                self._ExtraInfo.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AttributeItemDTO(AbstractModel):
     """aiops基础信息
 
@@ -7538,9 +7632,12 @@ class CodeTemplateDetail(AbstractModel):
         :param _Submit: 是否提交
 注意：此字段可能返回 null，表示取不到有效值。
         :type Submit: bool
-        :param _ScriptChange: 任务脚本是否发生变化
+        :param _ScriptChange: 模版脚本是否发生变化
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScriptChange: bool
+        :param _Content: 代码模版脚本，base64编码返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: str
         """
         self._ProjectId = None
         self._CodeTemplateName = None
@@ -7559,6 +7656,7 @@ class CodeTemplateDetail(AbstractModel):
         self._ResourceGroup = None
         self._Submit = None
         self._ScriptChange = None
+        self._Content = None
 
     @property
     def ProjectId(self):
@@ -7754,7 +7852,7 @@ class CodeTemplateDetail(AbstractModel):
 
     @property
     def ScriptChange(self):
-        """任务脚本是否发生变化
+        """模版脚本是否发生变化
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -7763,6 +7861,18 @@ class CodeTemplateDetail(AbstractModel):
     @ScriptChange.setter
     def ScriptChange(self, ScriptChange):
         self._ScriptChange = ScriptChange
+
+    @property
+    def Content(self):
+        """代码模版脚本，base64编码返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
 
 
     def _deserialize(self, params):
@@ -7785,6 +7895,7 @@ class CodeTemplateDetail(AbstractModel):
         self._ResourceGroup = params.get("ResourceGroup")
         self._Submit = params.get("Submit")
         self._ScriptChange = params.get("ScriptChange")
+        self._Content = params.get("Content")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22759,6 +22870,119 @@ class DescribeBatchOperateTaskResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Data") is not None:
             self._Data = DescribeBatchOperateTaskPage()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCodeTemplateDetailRequest(AbstractModel):
+    """DescribeCodeTemplateDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目Id
+        :type ProjectId: str
+        :param _CodeTemplateId: 模版Id
+        :type CodeTemplateId: str
+        :param _NeedReturnScriptContent: 是否需要返回脚本内容，默认false。
+        :type NeedReturnScriptContent: bool
+        """
+        self._ProjectId = None
+        self._CodeTemplateId = None
+        self._NeedReturnScriptContent = None
+
+    @property
+    def ProjectId(self):
+        """项目Id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def CodeTemplateId(self):
+        """模版Id
+        :rtype: str
+        """
+        return self._CodeTemplateId
+
+    @CodeTemplateId.setter
+    def CodeTemplateId(self, CodeTemplateId):
+        self._CodeTemplateId = CodeTemplateId
+
+    @property
+    def NeedReturnScriptContent(self):
+        """是否需要返回脚本内容，默认false。
+        :rtype: bool
+        """
+        return self._NeedReturnScriptContent
+
+    @NeedReturnScriptContent.setter
+    def NeedReturnScriptContent(self, NeedReturnScriptContent):
+        self._NeedReturnScriptContent = NeedReturnScriptContent
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._CodeTemplateId = params.get("CodeTemplateId")
+        self._NeedReturnScriptContent = params.get("NeedReturnScriptContent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCodeTemplateDetailResponse(AbstractModel):
+    """DescribeCodeTemplateDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 代码详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.CodeTemplateDetail`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """代码详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.CodeTemplateDetail`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = CodeTemplateDetail()
             self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 
@@ -49652,6 +49876,117 @@ class GeneralTaskParam(AbstractModel):
         
 
 
+class GetBatchDetailErrorLogRequest(AbstractModel):
+    """GetBatchDetailErrorLog请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 批量操作ID
+        :type JobId: int
+        :param _ResourceId: 资源对象ID
+        :type ResourceId: str
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        """
+        self._JobId = None
+        self._ResourceId = None
+        self._ProjectId = None
+
+    @property
+    def JobId(self):
+        """批量操作ID
+        :rtype: int
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def ResourceId(self):
+        """资源对象ID
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ProjectId(self):
+        """项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._ResourceId = params.get("ResourceId")
+        self._ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetBatchDetailErrorLogResponse(AbstractModel):
+    """GetBatchDetailErrorLog返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 日志返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """日志返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
+
+
 class GetCosTokenRequest(AbstractModel):
     """GetCosToken请求参数结构体
 
@@ -59319,6 +59654,271 @@ class LinkOpsDto(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ListBatchDetailRequest(AbstractModel):
+    """ListBatchDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 批量操作历史Id
+        :type JobId: int
+        :param _ProjectId: 项目Id
+        :type ProjectId: str
+        """
+        self._JobId = None
+        self._ProjectId = None
+
+    @property
+    def JobId(self):
+        """批量操作历史Id
+        :rtype: int
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def ProjectId(self):
+        """项目Id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListBatchDetailResponse(AbstractModel):
+    """ListBatchDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 批量操作ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobId: int
+        :param _RunType: 运行类型：
+ASYNC-异步
+SYNC-同步
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunType: str
+        :param _SuccessResource: 成功列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SuccessResource: list of AsyncResourceVO
+        :param _FailResource: 失败列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailResource: list of AsyncResourceVO
+        :param _JobType: job类型
+BATCH_DELETE --批量删除：1、任务名称：ResourceName
+BATCH_CREATE_VERSION --批量提交：1、任务名称：ResourceId 2、资源组：GroupId
+BATCH_MODIFY_DATASOURCE --批量修改数据源：1、任务名称：ResourceName
+BATCH_MODIFY_INCHARGE --批量修改责任人：1、任务名称：ResourceName
+BATCH_MODIFY_PARAMETER --批量修改参数：1、任务名称：ResourceName
+BATCH_MODIFY_SCHEDULE --批量修改调度计划：1、任务名称：ResourceName
+BATCH_MODIFY_GROUPID --批量修改资源组：1、任务名称：ResourceName
+BATCH_MODIFY_CONFIG --批量修改高级配置：1、任务名称：ResourceName
+BATCH_MODIFY_SCHEDULE_PARAMETER --批量修改调度参数：1、任务名称：ResourceName
+FORM_CREATE_VERSION--模版提交
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobType: str
+        :param _JobStatus: CREATING("CREATING", "创建中"),
+INIT("INIT", "已被创建"),
+RUNNING("RUNNING", "运行中"),
+SUCCESS("SUCCESS", "成功"),
+FAIL("FAIL", "失败"),
+PART_SUCCESS("PART_SUCCESS", "部分成功"),
+PART_SUCCESS_WITH_ALARM("PART_SUCCESS_WITH_ALARM", "部分成功有告警"),
+SUCCESS_WITH_ALARM("SUCCESS_WITH_ALARM", "成功有告警"),
+UNKNOWN("UNKNOWN", "未知状态");
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobStatus: str
+        :param _TotalResource: 资源总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalResource: int
+        :param _NeedApprove: 批量提交是是否需要审批，其他的批量操作默认为null
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NeedApprove: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobId = None
+        self._RunType = None
+        self._SuccessResource = None
+        self._FailResource = None
+        self._JobType = None
+        self._JobStatus = None
+        self._TotalResource = None
+        self._NeedApprove = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        """批量操作ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def RunType(self):
+        """运行类型：
+ASYNC-异步
+SYNC-同步
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RunType
+
+    @RunType.setter
+    def RunType(self, RunType):
+        self._RunType = RunType
+
+    @property
+    def SuccessResource(self):
+        """成功列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AsyncResourceVO
+        """
+        return self._SuccessResource
+
+    @SuccessResource.setter
+    def SuccessResource(self, SuccessResource):
+        self._SuccessResource = SuccessResource
+
+    @property
+    def FailResource(self):
+        """失败列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AsyncResourceVO
+        """
+        return self._FailResource
+
+    @FailResource.setter
+    def FailResource(self, FailResource):
+        self._FailResource = FailResource
+
+    @property
+    def JobType(self):
+        """job类型
+BATCH_DELETE --批量删除：1、任务名称：ResourceName
+BATCH_CREATE_VERSION --批量提交：1、任务名称：ResourceId 2、资源组：GroupId
+BATCH_MODIFY_DATASOURCE --批量修改数据源：1、任务名称：ResourceName
+BATCH_MODIFY_INCHARGE --批量修改责任人：1、任务名称：ResourceName
+BATCH_MODIFY_PARAMETER --批量修改参数：1、任务名称：ResourceName
+BATCH_MODIFY_SCHEDULE --批量修改调度计划：1、任务名称：ResourceName
+BATCH_MODIFY_GROUPID --批量修改资源组：1、任务名称：ResourceName
+BATCH_MODIFY_CONFIG --批量修改高级配置：1、任务名称：ResourceName
+BATCH_MODIFY_SCHEDULE_PARAMETER --批量修改调度参数：1、任务名称：ResourceName
+FORM_CREATE_VERSION--模版提交
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._JobType
+
+    @JobType.setter
+    def JobType(self, JobType):
+        self._JobType = JobType
+
+    @property
+    def JobStatus(self):
+        """CREATING("CREATING", "创建中"),
+INIT("INIT", "已被创建"),
+RUNNING("RUNNING", "运行中"),
+SUCCESS("SUCCESS", "成功"),
+FAIL("FAIL", "失败"),
+PART_SUCCESS("PART_SUCCESS", "部分成功"),
+PART_SUCCESS_WITH_ALARM("PART_SUCCESS_WITH_ALARM", "部分成功有告警"),
+SUCCESS_WITH_ALARM("SUCCESS_WITH_ALARM", "成功有告警"),
+UNKNOWN("UNKNOWN", "未知状态");
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._JobStatus
+
+    @JobStatus.setter
+    def JobStatus(self, JobStatus):
+        self._JobStatus = JobStatus
+
+    @property
+    def TotalResource(self):
+        """资源总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalResource
+
+    @TotalResource.setter
+    def TotalResource(self, TotalResource):
+        self._TotalResource = TotalResource
+
+    @property
+    def NeedApprove(self):
+        """批量提交是是否需要审批，其他的批量操作默认为null
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._NeedApprove
+
+    @NeedApprove.setter
+    def NeedApprove(self, NeedApprove):
+        self._NeedApprove = NeedApprove
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._RunType = params.get("RunType")
+        if params.get("SuccessResource") is not None:
+            self._SuccessResource = []
+            for item in params.get("SuccessResource"):
+                obj = AsyncResourceVO()
+                obj._deserialize(item)
+                self._SuccessResource.append(obj)
+        if params.get("FailResource") is not None:
+            self._FailResource = []
+            for item in params.get("FailResource"):
+                obj = AsyncResourceVO()
+                obj._deserialize(item)
+                self._FailResource.append(obj)
+        self._JobType = params.get("JobType")
+        self._JobStatus = params.get("JobStatus")
+        self._TotalResource = params.get("TotalResource")
+        self._NeedApprove = params.get("NeedApprove")
+        self._RequestId = params.get("RequestId")
 
 
 class ListInstancesRequest(AbstractModel):

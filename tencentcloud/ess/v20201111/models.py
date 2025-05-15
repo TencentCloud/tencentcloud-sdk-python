@@ -5069,6 +5069,8 @@ class CreateBatchSignUrlRequest(AbstractModel):
 1. `请确保和合同中填入的一致`。
 2. `在生成动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入证件类型的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方，且需要和证件号参数一同传递，不能单独进行限制。`
         :type IdCardType: str
+        :param _SignatureTypes: 指定批量签署合同的签名类型，可传递以下值：<ul><li>**0**：手写签名</li><li>**1**：OCR楷体</li><li>**2**：姓名印章</li><li>**3**：图片印章</li><li>**4**：系统签名</li><li>**5**：长效手写签名（包含手写签名）</li></ul>注：<ul><li>不传值的情况则计算所有合同中个人签署区的签名类型，规则如下：<ul><li>1.如果所有合同中所有的个人签署区方式包含多种则是手写</li><li>2.如果所有合同中所有个人签名区签名类型仅为一种则就是那一种签名方式（例如合同1有多个签署区都是指定OCR楷体，合同2中也是多个签署区都是指定OCR楷体...则使用OCR楷体）</li></ul></li><li>该参数会覆盖您合同中的签名类型，若您在发起合同时限定了签名类型(赋值签名类型给ComponentTypeLimit)，请将这些签名类型赋予此参数</li><li>若签署方为企业员工，此参数无效，签名方式将以合同中为准。</li></ul>
+        :type SignatureTypes: list of int
         :param _IdCardNumber: 证件号码，应符合以下规则
 <ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
 <li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
@@ -5125,6 +5127,7 @@ class CreateBatchSignUrlRequest(AbstractModel):
         self._Mobile = None
         self._Agent = None
         self._IdCardType = None
+        self._SignatureTypes = None
         self._IdCardNumber = None
         self._NotifyType = None
         self._FlowIds = None
@@ -5211,6 +5214,17 @@ class CreateBatchSignUrlRequest(AbstractModel):
     @IdCardType.setter
     def IdCardType(self, IdCardType):
         self._IdCardType = IdCardType
+
+    @property
+    def SignatureTypes(self):
+        """指定批量签署合同的签名类型，可传递以下值：<ul><li>**0**：手写签名</li><li>**1**：OCR楷体</li><li>**2**：姓名印章</li><li>**3**：图片印章</li><li>**4**：系统签名</li><li>**5**：长效手写签名（包含手写签名）</li></ul>注：<ul><li>不传值的情况则计算所有合同中个人签署区的签名类型，规则如下：<ul><li>1.如果所有合同中所有的个人签署区方式包含多种则是手写</li><li>2.如果所有合同中所有个人签名区签名类型仅为一种则就是那一种签名方式（例如合同1有多个签署区都是指定OCR楷体，合同2中也是多个签署区都是指定OCR楷体...则使用OCR楷体）</li></ul></li><li>该参数会覆盖您合同中的签名类型，若您在发起合同时限定了签名类型(赋值签名类型给ComponentTypeLimit)，请将这些签名类型赋予此参数</li><li>若签署方为企业员工，此参数无效，签名方式将以合同中为准。</li></ul>
+        :rtype: list of int
+        """
+        return self._SignatureTypes
+
+    @SignatureTypes.setter
+    def SignatureTypes(self, SignatureTypes):
+        self._SignatureTypes = SignatureTypes
 
     @property
     def IdCardNumber(self):
@@ -5354,6 +5368,7 @@ class CreateBatchSignUrlRequest(AbstractModel):
             self._Agent = Agent()
             self._Agent._deserialize(params.get("Agent"))
         self._IdCardType = params.get("IdCardType")
+        self._SignatureTypes = params.get("SignatureTypes")
         self._IdCardNumber = params.get("IdCardNumber")
         self._NotifyType = params.get("NotifyType")
         self._FlowIds = params.get("FlowIds")

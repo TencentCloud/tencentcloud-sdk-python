@@ -1705,6 +1705,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCodeTemplateDetail(self, request):
+        """查询代码模版具体详情
+
+        :param request: Request instance for DescribeCodeTemplateDetail.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeCodeTemplateDetailRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeCodeTemplateDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCodeTemplateDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCodeTemplateDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeColumnLineage(self, request):
         """列出字段血缘信息
 
@@ -4635,6 +4658,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetBatchDetailErrorLog(self, request):
+        """获取批量操作错误日志
+
+        :param request: Request instance for GetBatchDetailErrorLog.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.GetBatchDetailErrorLogRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.GetBatchDetailErrorLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetBatchDetailErrorLog", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetBatchDetailErrorLogResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetCosToken(self, request):
         """获取cos token
 
@@ -4856,6 +4902,29 @@ class WedataClient(AbstractClient):
             body = self.call("KillScheduleInstances", params, headers=headers)
             response = json.loads(body)
             model = models.KillScheduleInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListBatchDetail(self, request):
+        """获取批量操作详情列表
+
+        :param request: Request instance for ListBatchDetail.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.ListBatchDetailRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.ListBatchDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListBatchDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListBatchDetailResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

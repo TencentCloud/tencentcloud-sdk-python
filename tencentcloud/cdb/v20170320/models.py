@@ -23440,6 +23440,8 @@ class Inbound(AbstractModel):
         :type Dir: str
         :param _AddressModule: 地址模块
         :type AddressModule: str
+        :param _Id: 规则ID，嵌套安全组的规则ID
+        :type Id: str
         :param _Desc: 规则描述
         :type Desc: str
         """
@@ -23449,6 +23451,7 @@ class Inbound(AbstractModel):
         self._IpProtocol = None
         self._Dir = None
         self._AddressModule = None
+        self._Id = None
         self._Desc = None
 
     @property
@@ -23518,6 +23521,17 @@ class Inbound(AbstractModel):
         self._AddressModule = AddressModule
 
     @property
+    def Id(self):
+        """规则ID，嵌套安全组的规则ID
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
     def Desc(self):
         """规则描述
         :rtype: str
@@ -23536,6 +23550,7 @@ class Inbound(AbstractModel):
         self._IpProtocol = params.get("IpProtocol")
         self._Dir = params.get("Dir")
         self._AddressModule = params.get("AddressModule")
+        self._Id = params.get("Id")
         self._Desc = params.get("Desc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -30150,7 +30165,7 @@ class OpenAuditServiceRequest(AbstractModel):
 7 - 一周
 30 - 一个月；
         :type HighLogExpireDay: int
-        :param _AuditRuleFilters: 审计规则。同RuleTemplateIds都不填是全审计。
+        :param _AuditRuleFilters: 审计规则（该参数已废弃，不再生效）。
         :type AuditRuleFilters: list of AuditRuleFilters
         :param _RuleTemplateIds: 规则模板ID。同AuditRuleFilters都不填是全审计。
         :type RuleTemplateIds: list of str
@@ -30208,7 +30223,7 @@ class OpenAuditServiceRequest(AbstractModel):
 
     @property
     def AuditRuleFilters(self):
-        """审计规则。同RuleTemplateIds都不填是全审计。
+        """审计规则（该参数已废弃，不再生效）。
         :rtype: list of AuditRuleFilters
         """
         return self._AuditRuleFilters
@@ -33507,6 +33522,8 @@ class RoInstanceInfo(AbstractModel):
         :type DeadlineTime: str
         :param _PayType: RO实例计费类型，可能返回值：0-包年包月，1-按量计费，2-后付费月结
         :type PayType: int
+        :param _ReplicationStatus: RO延迟复制状态。
+        :type ReplicationStatus: str
         """
         self._MasterInstanceId = None
         self._RoStatus = None
@@ -33531,6 +33548,7 @@ class RoInstanceInfo(AbstractModel):
         self._EngineVersion = None
         self._DeadlineTime = None
         self._PayType = None
+        self._ReplicationStatus = None
 
     @property
     def MasterInstanceId(self):
@@ -33785,6 +33803,17 @@ class RoInstanceInfo(AbstractModel):
     def PayType(self, PayType):
         self._PayType = PayType
 
+    @property
+    def ReplicationStatus(self):
+        """RO延迟复制状态。
+        :rtype: str
+        """
+        return self._ReplicationStatus
+
+    @ReplicationStatus.setter
+    def ReplicationStatus(self, ReplicationStatus):
+        self._ReplicationStatus = ReplicationStatus
+
 
     def _deserialize(self, params):
         self._MasterInstanceId = params.get("MasterInstanceId")
@@ -33810,6 +33839,7 @@ class RoInstanceInfo(AbstractModel):
         self._EngineVersion = params.get("EngineVersion")
         self._DeadlineTime = params.get("DeadlineTime")
         self._PayType = params.get("PayType")
+        self._ReplicationStatus = params.get("ReplicationStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

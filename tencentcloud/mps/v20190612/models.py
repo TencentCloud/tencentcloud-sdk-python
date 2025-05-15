@@ -35021,7 +35021,7 @@ class ImageEraseLogoConfig(AbstractModel):
 默认值：ON。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
-        :param _ImageAreaBoxes: 需要擦除的多个框选区域，注意：参数数组长度最大为2。
+        :param _ImageAreaBoxes: 需要擦除的多个框选区域，最多开启16个区域。
 注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageAreaBoxes: list of ImageAreaBoxInfo
@@ -35046,7 +35046,7 @@ class ImageEraseLogoConfig(AbstractModel):
 
     @property
     def ImageAreaBoxes(self):
-        """需要擦除的多个框选区域，注意：参数数组长度最大为2。
+        """需要擦除的多个框选区域，最多开启16个区域。
 注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ImageAreaBoxInfo

@@ -1563,6 +1563,8 @@ class AuditLogFile(AbstractModel):
         :type DownloadUrl: str
         :param _ErrMsg: 错误信息。
         :type ErrMsg: str
+        :param _ProgressRate: 日志下载进度。
+        :type ProgressRate: int
         """
         self._FileName = None
         self._CreateTime = None
@@ -1570,6 +1572,7 @@ class AuditLogFile(AbstractModel):
         self._FileSize = None
         self._DownloadUrl = None
         self._ErrMsg = None
+        self._ProgressRate = None
 
     @property
     def FileName(self):
@@ -1640,6 +1643,17 @@ class AuditLogFile(AbstractModel):
     def ErrMsg(self, ErrMsg):
         self._ErrMsg = ErrMsg
 
+    @property
+    def ProgressRate(self):
+        """日志下载进度。
+        :rtype: int
+        """
+        return self._ProgressRate
+
+    @ProgressRate.setter
+    def ProgressRate(self, ProgressRate):
+        self._ProgressRate = ProgressRate
+
 
     def _deserialize(self, params):
         self._FileName = params.get("FileName")
@@ -1648,6 +1662,7 @@ class AuditLogFile(AbstractModel):
         self._FileSize = params.get("FileSize")
         self._DownloadUrl = params.get("DownloadUrl")
         self._ErrMsg = params.get("ErrMsg")
+        self._ProgressRate = params.get("ProgressRate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29162,7 +29177,7 @@ class OpenAuditServiceRequest(AbstractModel):
         :type LogExpireDay: int
         :param _HighLogExpireDay: 高频日志保留时长。
         :type HighLogExpireDay: int
-        :param _AuditRuleFilters: 审计规则。同RuleTemplateIds都不填是全审计。
+        :param _AuditRuleFilters: 审计规则(废弃)。
         :type AuditRuleFilters: list of AuditRuleFilters
         :param _RuleTemplateIds: 规则模板ID。同AuditRuleFilters都不填是全审计。
         :type RuleTemplateIds: list of str
@@ -29211,13 +29226,17 @@ class OpenAuditServiceRequest(AbstractModel):
 
     @property
     def AuditRuleFilters(self):
-        """审计规则。同RuleTemplateIds都不填是全审计。
+        warnings.warn("parameter `AuditRuleFilters` is deprecated", DeprecationWarning) 
+
+        """审计规则(废弃)。
         :rtype: list of AuditRuleFilters
         """
         return self._AuditRuleFilters
 
     @AuditRuleFilters.setter
     def AuditRuleFilters(self, AuditRuleFilters):
+        warnings.warn("parameter `AuditRuleFilters` is deprecated", DeprecationWarning) 
+
         self._AuditRuleFilters = AuditRuleFilters
 
     @property

@@ -2286,22 +2286,34 @@ class ClusterAdvancedSettings(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IPVS: 是否启用IPVS
-        :type IPVS: bool
         :param _AsEnabled: 是否启用集群节点自动扩缩容(创建集群流程不支持开启此功能)
         :type AsEnabled: bool
+        :param _AuditEnabled: 是否开启审计开关
+        :type AuditEnabled: bool
+        :param _AuditLogTopicId: 审计日志上传到的topic
+        :type AuditLogTopicId: str
+        :param _AuditLogsetId: 审计日志上传到的logset日志集
+        :type AuditLogsetId: str
+        :param _BasePodNumber: 自定义模式下的基础pod数量
+        :type BasePodNumber: int
+        :param _CiliumMode: 启用 CiliumMode 的模式，空值表示不启用，“clusterIP” 表示启用 Cilium 支持 ClusterIP
+        :type CiliumMode: str
         :param _ContainerRuntime: 集群使用的runtime类型，包括"docker"和"containerd"两种类型，默认为"docker"
         :type ContainerRuntime: str
-        :param _NodeNameType: 集群中节点NodeName类型（包括 hostname,lan-ip两种形式，默认为lan-ip。如果开启了hostname模式，创建节点时需要设置HostName参数，并且InstanceName需要和HostName一致）
-        :type NodeNameType: str
-        :param _ExtraArgs: 集群自定义参数
-        :type ExtraArgs: :class:`tencentcloud.tke.v20180525.models.ClusterExtraArgs`
-        :param _NetworkType: 集群网络类型（包括GR(全局路由)和VPC-CNI两种模式，默认为GR。
-        :type NetworkType: str
-        :param _IsNonStaticIpMode: 集群VPC-CNI模式是否为非固定IP，默认: FALSE 固定IP。
-        :type IsNonStaticIpMode: bool
         :param _DeletionProtection: 是否启用集群删除保护
         :type DeletionProtection: bool
+        :param _EnableCustomizedPodCIDR: 是否开节点podCIDR大小的自定义模式
+        :type EnableCustomizedPodCIDR: bool
+        :param _EtcdOverrideConfigs: 元数据拆分存储Etcd配置
+        :type EtcdOverrideConfigs: list of EtcdOverrideConfig
+        :param _ExtraArgs: 集群自定义参数
+        :type ExtraArgs: :class:`tencentcloud.tke.v20180525.models.ClusterExtraArgs`
+        :param _IPVS: 是否启用IPVS
+        :type IPVS: bool
+        :param _IsDualStack: 集群VPC-CNI模式下是否是双栈集群，默认false，表明非双栈集群。
+        :type IsDualStack: bool
+        :param _IsNonStaticIpMode: 集群VPC-CNI模式是否为非固定IP，默认: FALSE 固定IP。
+        :type IsNonStaticIpMode: bool
         :param _KubeProxyMode: 集群的网络代理模型，目前tke集群支持的网络代理模式有三种：iptables,ipvs,ipvs-bpf，此参数仅在使用ipvs-bpf模式时使用，三种网络模式的参数设置关系如下：
 iptables模式：IPVS和KubeProxyMode都不设置
 ipvs模式: 设置IPVS为true, KubeProxyMode不设置
@@ -2310,57 +2322,37 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
 1. 集群版本必须为1.14及以上；
 2. 系统镜像必须是: Tencent Linux 2.4；
         :type KubeProxyMode: str
-        :param _AuditEnabled: 是否开启审计开关
-        :type AuditEnabled: bool
-        :param _AuditLogsetId: 审计日志上传到的logset日志集
-        :type AuditLogsetId: str
-        :param _AuditLogTopicId: 审计日志上传到的topic
-        :type AuditLogTopicId: str
-        :param _VpcCniType: 区分共享网卡多IP模式和独立网卡模式，共享网卡多 IP 模式填写"tke-route-eni"，独立网卡模式填写"tke-direct-eni"，默认为共享网卡模式
-        :type VpcCniType: str
-        :param _RuntimeVersion: 运行时版本
-        :type RuntimeVersion: str
-        :param _EnableCustomizedPodCIDR: 是否开节点podCIDR大小的自定义模式
-        :type EnableCustomizedPodCIDR: bool
-        :param _BasePodNumber: 自定义模式下的基础pod数量
-        :type BasePodNumber: int
-        :param _CiliumMode: 启用 CiliumMode 的模式，空值表示不启用，“clusterIP” 表示启用 Cilium 支持 ClusterIP
-        :type CiliumMode: str
-        :param _IsDualStack: 集群VPC-CNI模式下是否是双栈集群，默认false，表明非双栈集群。
-        :type IsDualStack: bool
+        :param _NetworkType: 集群网络类型（包括GR(全局路由)和VPC-CNI两种模式，默认为GR。
+        :type NetworkType: str
+        :param _NodeNameType: 集群中节点NodeName类型（包括 hostname,lan-ip两种形式，默认为lan-ip。如果开启了hostname模式，创建节点时需要设置HostName参数，并且InstanceName需要和HostName一致）
+        :type NodeNameType: str
         :param _QGPUShareEnable: 是否开启QGPU共享
         :type QGPUShareEnable: bool
+        :param _RuntimeVersion: 运行时版本
+        :type RuntimeVersion: str
+        :param _VpcCniType: 区分共享网卡多IP模式和独立网卡模式，共享网卡多 IP 模式填写"tke-route-eni"，独立网卡模式填写"tke-direct-eni"，默认为共享网卡模式
+        :type VpcCniType: str
         """
-        self._IPVS = None
         self._AsEnabled = None
-        self._ContainerRuntime = None
-        self._NodeNameType = None
-        self._ExtraArgs = None
-        self._NetworkType = None
-        self._IsNonStaticIpMode = None
-        self._DeletionProtection = None
-        self._KubeProxyMode = None
         self._AuditEnabled = None
-        self._AuditLogsetId = None
         self._AuditLogTopicId = None
-        self._VpcCniType = None
-        self._RuntimeVersion = None
-        self._EnableCustomizedPodCIDR = None
+        self._AuditLogsetId = None
         self._BasePodNumber = None
         self._CiliumMode = None
+        self._ContainerRuntime = None
+        self._DeletionProtection = None
+        self._EnableCustomizedPodCIDR = None
+        self._EtcdOverrideConfigs = None
+        self._ExtraArgs = None
+        self._IPVS = None
         self._IsDualStack = None
+        self._IsNonStaticIpMode = None
+        self._KubeProxyMode = None
+        self._NetworkType = None
+        self._NodeNameType = None
         self._QGPUShareEnable = None
-
-    @property
-    def IPVS(self):
-        """是否启用IPVS
-        :rtype: bool
-        """
-        return self._IPVS
-
-    @IPVS.setter
-    def IPVS(self, IPVS):
-        self._IPVS = IPVS
+        self._RuntimeVersion = None
+        self._VpcCniType = None
 
     @property
     def AsEnabled(self):
@@ -2374,89 +2366,6 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
         self._AsEnabled = AsEnabled
 
     @property
-    def ContainerRuntime(self):
-        """集群使用的runtime类型，包括"docker"和"containerd"两种类型，默认为"docker"
-        :rtype: str
-        """
-        return self._ContainerRuntime
-
-    @ContainerRuntime.setter
-    def ContainerRuntime(self, ContainerRuntime):
-        self._ContainerRuntime = ContainerRuntime
-
-    @property
-    def NodeNameType(self):
-        """集群中节点NodeName类型（包括 hostname,lan-ip两种形式，默认为lan-ip。如果开启了hostname模式，创建节点时需要设置HostName参数，并且InstanceName需要和HostName一致）
-        :rtype: str
-        """
-        return self._NodeNameType
-
-    @NodeNameType.setter
-    def NodeNameType(self, NodeNameType):
-        self._NodeNameType = NodeNameType
-
-    @property
-    def ExtraArgs(self):
-        """集群自定义参数
-        :rtype: :class:`tencentcloud.tke.v20180525.models.ClusterExtraArgs`
-        """
-        return self._ExtraArgs
-
-    @ExtraArgs.setter
-    def ExtraArgs(self, ExtraArgs):
-        self._ExtraArgs = ExtraArgs
-
-    @property
-    def NetworkType(self):
-        """集群网络类型（包括GR(全局路由)和VPC-CNI两种模式，默认为GR。
-        :rtype: str
-        """
-        return self._NetworkType
-
-    @NetworkType.setter
-    def NetworkType(self, NetworkType):
-        self._NetworkType = NetworkType
-
-    @property
-    def IsNonStaticIpMode(self):
-        """集群VPC-CNI模式是否为非固定IP，默认: FALSE 固定IP。
-        :rtype: bool
-        """
-        return self._IsNonStaticIpMode
-
-    @IsNonStaticIpMode.setter
-    def IsNonStaticIpMode(self, IsNonStaticIpMode):
-        self._IsNonStaticIpMode = IsNonStaticIpMode
-
-    @property
-    def DeletionProtection(self):
-        """是否启用集群删除保护
-        :rtype: bool
-        """
-        return self._DeletionProtection
-
-    @DeletionProtection.setter
-    def DeletionProtection(self, DeletionProtection):
-        self._DeletionProtection = DeletionProtection
-
-    @property
-    def KubeProxyMode(self):
-        """集群的网络代理模型，目前tke集群支持的网络代理模式有三种：iptables,ipvs,ipvs-bpf，此参数仅在使用ipvs-bpf模式时使用，三种网络模式的参数设置关系如下：
-iptables模式：IPVS和KubeProxyMode都不设置
-ipvs模式: 设置IPVS为true, KubeProxyMode不设置
-ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
-使用ipvs-bpf的网络模式需要满足以下条件：
-1. 集群版本必须为1.14及以上；
-2. 系统镜像必须是: Tencent Linux 2.4；
-        :rtype: str
-        """
-        return self._KubeProxyMode
-
-    @KubeProxyMode.setter
-    def KubeProxyMode(self, KubeProxyMode):
-        self._KubeProxyMode = KubeProxyMode
-
-    @property
     def AuditEnabled(self):
         """是否开启审计开关
         :rtype: bool
@@ -2466,17 +2375,6 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
     @AuditEnabled.setter
     def AuditEnabled(self, AuditEnabled):
         self._AuditEnabled = AuditEnabled
-
-    @property
-    def AuditLogsetId(self):
-        """审计日志上传到的logset日志集
-        :rtype: str
-        """
-        return self._AuditLogsetId
-
-    @AuditLogsetId.setter
-    def AuditLogsetId(self, AuditLogsetId):
-        self._AuditLogsetId = AuditLogsetId
 
     @property
     def AuditLogTopicId(self):
@@ -2490,37 +2388,15 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
         self._AuditLogTopicId = AuditLogTopicId
 
     @property
-    def VpcCniType(self):
-        """区分共享网卡多IP模式和独立网卡模式，共享网卡多 IP 模式填写"tke-route-eni"，独立网卡模式填写"tke-direct-eni"，默认为共享网卡模式
+    def AuditLogsetId(self):
+        """审计日志上传到的logset日志集
         :rtype: str
         """
-        return self._VpcCniType
+        return self._AuditLogsetId
 
-    @VpcCniType.setter
-    def VpcCniType(self, VpcCniType):
-        self._VpcCniType = VpcCniType
-
-    @property
-    def RuntimeVersion(self):
-        """运行时版本
-        :rtype: str
-        """
-        return self._RuntimeVersion
-
-    @RuntimeVersion.setter
-    def RuntimeVersion(self, RuntimeVersion):
-        self._RuntimeVersion = RuntimeVersion
-
-    @property
-    def EnableCustomizedPodCIDR(self):
-        """是否开节点podCIDR大小的自定义模式
-        :rtype: bool
-        """
-        return self._EnableCustomizedPodCIDR
-
-    @EnableCustomizedPodCIDR.setter
-    def EnableCustomizedPodCIDR(self, EnableCustomizedPodCIDR):
-        self._EnableCustomizedPodCIDR = EnableCustomizedPodCIDR
+    @AuditLogsetId.setter
+    def AuditLogsetId(self, AuditLogsetId):
+        self._AuditLogsetId = AuditLogsetId
 
     @property
     def BasePodNumber(self):
@@ -2545,6 +2421,72 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
         self._CiliumMode = CiliumMode
 
     @property
+    def ContainerRuntime(self):
+        """集群使用的runtime类型，包括"docker"和"containerd"两种类型，默认为"docker"
+        :rtype: str
+        """
+        return self._ContainerRuntime
+
+    @ContainerRuntime.setter
+    def ContainerRuntime(self, ContainerRuntime):
+        self._ContainerRuntime = ContainerRuntime
+
+    @property
+    def DeletionProtection(self):
+        """是否启用集群删除保护
+        :rtype: bool
+        """
+        return self._DeletionProtection
+
+    @DeletionProtection.setter
+    def DeletionProtection(self, DeletionProtection):
+        self._DeletionProtection = DeletionProtection
+
+    @property
+    def EnableCustomizedPodCIDR(self):
+        """是否开节点podCIDR大小的自定义模式
+        :rtype: bool
+        """
+        return self._EnableCustomizedPodCIDR
+
+    @EnableCustomizedPodCIDR.setter
+    def EnableCustomizedPodCIDR(self, EnableCustomizedPodCIDR):
+        self._EnableCustomizedPodCIDR = EnableCustomizedPodCIDR
+
+    @property
+    def EtcdOverrideConfigs(self):
+        """元数据拆分存储Etcd配置
+        :rtype: list of EtcdOverrideConfig
+        """
+        return self._EtcdOverrideConfigs
+
+    @EtcdOverrideConfigs.setter
+    def EtcdOverrideConfigs(self, EtcdOverrideConfigs):
+        self._EtcdOverrideConfigs = EtcdOverrideConfigs
+
+    @property
+    def ExtraArgs(self):
+        """集群自定义参数
+        :rtype: :class:`tencentcloud.tke.v20180525.models.ClusterExtraArgs`
+        """
+        return self._ExtraArgs
+
+    @ExtraArgs.setter
+    def ExtraArgs(self, ExtraArgs):
+        self._ExtraArgs = ExtraArgs
+
+    @property
+    def IPVS(self):
+        """是否启用IPVS
+        :rtype: bool
+        """
+        return self._IPVS
+
+    @IPVS.setter
+    def IPVS(self, IPVS):
+        self._IPVS = IPVS
+
+    @property
     def IsDualStack(self):
         """集群VPC-CNI模式下是否是双栈集群，默认false，表明非双栈集群。
         :rtype: bool
@@ -2554,6 +2496,56 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
     @IsDualStack.setter
     def IsDualStack(self, IsDualStack):
         self._IsDualStack = IsDualStack
+
+    @property
+    def IsNonStaticIpMode(self):
+        """集群VPC-CNI模式是否为非固定IP，默认: FALSE 固定IP。
+        :rtype: bool
+        """
+        return self._IsNonStaticIpMode
+
+    @IsNonStaticIpMode.setter
+    def IsNonStaticIpMode(self, IsNonStaticIpMode):
+        self._IsNonStaticIpMode = IsNonStaticIpMode
+
+    @property
+    def KubeProxyMode(self):
+        """集群的网络代理模型，目前tke集群支持的网络代理模式有三种：iptables,ipvs,ipvs-bpf，此参数仅在使用ipvs-bpf模式时使用，三种网络模式的参数设置关系如下：
+iptables模式：IPVS和KubeProxyMode都不设置
+ipvs模式: 设置IPVS为true, KubeProxyMode不设置
+ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
+使用ipvs-bpf的网络模式需要满足以下条件：
+1. 集群版本必须为1.14及以上；
+2. 系统镜像必须是: Tencent Linux 2.4；
+        :rtype: str
+        """
+        return self._KubeProxyMode
+
+    @KubeProxyMode.setter
+    def KubeProxyMode(self, KubeProxyMode):
+        self._KubeProxyMode = KubeProxyMode
+
+    @property
+    def NetworkType(self):
+        """集群网络类型（包括GR(全局路由)和VPC-CNI两种模式，默认为GR。
+        :rtype: str
+        """
+        return self._NetworkType
+
+    @NetworkType.setter
+    def NetworkType(self, NetworkType):
+        self._NetworkType = NetworkType
+
+    @property
+    def NodeNameType(self):
+        """集群中节点NodeName类型（包括 hostname,lan-ip两种形式，默认为lan-ip。如果开启了hostname模式，创建节点时需要设置HostName参数，并且InstanceName需要和HostName一致）
+        :rtype: str
+        """
+        return self._NodeNameType
+
+    @NodeNameType.setter
+    def NodeNameType(self, NodeNameType):
+        self._NodeNameType = NodeNameType
 
     @property
     def QGPUShareEnable(self):
@@ -2566,29 +2558,57 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
     def QGPUShareEnable(self, QGPUShareEnable):
         self._QGPUShareEnable = QGPUShareEnable
 
+    @property
+    def RuntimeVersion(self):
+        """运行时版本
+        :rtype: str
+        """
+        return self._RuntimeVersion
+
+    @RuntimeVersion.setter
+    def RuntimeVersion(self, RuntimeVersion):
+        self._RuntimeVersion = RuntimeVersion
+
+    @property
+    def VpcCniType(self):
+        """区分共享网卡多IP模式和独立网卡模式，共享网卡多 IP 模式填写"tke-route-eni"，独立网卡模式填写"tke-direct-eni"，默认为共享网卡模式
+        :rtype: str
+        """
+        return self._VpcCniType
+
+    @VpcCniType.setter
+    def VpcCniType(self, VpcCniType):
+        self._VpcCniType = VpcCniType
+
 
     def _deserialize(self, params):
-        self._IPVS = params.get("IPVS")
         self._AsEnabled = params.get("AsEnabled")
+        self._AuditEnabled = params.get("AuditEnabled")
+        self._AuditLogTopicId = params.get("AuditLogTopicId")
+        self._AuditLogsetId = params.get("AuditLogsetId")
+        self._BasePodNumber = params.get("BasePodNumber")
+        self._CiliumMode = params.get("CiliumMode")
         self._ContainerRuntime = params.get("ContainerRuntime")
-        self._NodeNameType = params.get("NodeNameType")
+        self._DeletionProtection = params.get("DeletionProtection")
+        self._EnableCustomizedPodCIDR = params.get("EnableCustomizedPodCIDR")
+        if params.get("EtcdOverrideConfigs") is not None:
+            self._EtcdOverrideConfigs = []
+            for item in params.get("EtcdOverrideConfigs"):
+                obj = EtcdOverrideConfig()
+                obj._deserialize(item)
+                self._EtcdOverrideConfigs.append(obj)
         if params.get("ExtraArgs") is not None:
             self._ExtraArgs = ClusterExtraArgs()
             self._ExtraArgs._deserialize(params.get("ExtraArgs"))
-        self._NetworkType = params.get("NetworkType")
-        self._IsNonStaticIpMode = params.get("IsNonStaticIpMode")
-        self._DeletionProtection = params.get("DeletionProtection")
-        self._KubeProxyMode = params.get("KubeProxyMode")
-        self._AuditEnabled = params.get("AuditEnabled")
-        self._AuditLogsetId = params.get("AuditLogsetId")
-        self._AuditLogTopicId = params.get("AuditLogTopicId")
-        self._VpcCniType = params.get("VpcCniType")
-        self._RuntimeVersion = params.get("RuntimeVersion")
-        self._EnableCustomizedPodCIDR = params.get("EnableCustomizedPodCIDR")
-        self._BasePodNumber = params.get("BasePodNumber")
-        self._CiliumMode = params.get("CiliumMode")
+        self._IPVS = params.get("IPVS")
         self._IsDualStack = params.get("IsDualStack")
+        self._IsNonStaticIpMode = params.get("IsNonStaticIpMode")
+        self._KubeProxyMode = params.get("KubeProxyMode")
+        self._NetworkType = params.get("NetworkType")
+        self._NodeNameType = params.get("NodeNameType")
         self._QGPUShareEnable = params.get("QGPUShareEnable")
+        self._RuntimeVersion = params.get("RuntimeVersion")
+        self._VpcCniType = params.get("VpcCniType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3526,6 +3546,9 @@ class ClusterExtraArgs(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Etcd: etcd自定义参数，只支持独立集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Etcd: list of str
         :param _KubeAPIServer: kube-apiserver自定义参数，参数格式为["k1=v1", "k1=v2"]， 例如["max-requests-inflight=500","feature-gates=PodShareProcessNamespace=true,DynamicKubeletConfig=true"]
 注意：此字段可能返回 null，表示取不到有效值。
         :type KubeAPIServer: list of str
@@ -3535,14 +3558,23 @@ class ClusterExtraArgs(AbstractModel):
         :param _KubeScheduler: kube-scheduler自定义参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type KubeScheduler: list of str
-        :param _Etcd: etcd自定义参数，只支持独立集群
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Etcd: list of str
         """
+        self._Etcd = None
         self._KubeAPIServer = None
         self._KubeControllerManager = None
         self._KubeScheduler = None
-        self._Etcd = None
+
+    @property
+    def Etcd(self):
+        """etcd自定义参数，只支持独立集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Etcd
+
+    @Etcd.setter
+    def Etcd(self, Etcd):
+        self._Etcd = Etcd
 
     @property
     def KubeAPIServer(self):
@@ -3580,24 +3612,12 @@ class ClusterExtraArgs(AbstractModel):
     def KubeScheduler(self, KubeScheduler):
         self._KubeScheduler = KubeScheduler
 
-    @property
-    def Etcd(self):
-        """etcd自定义参数，只支持独立集群
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: list of str
-        """
-        return self._Etcd
-
-    @Etcd.setter
-    def Etcd(self, Etcd):
-        self._Etcd = Etcd
-
 
     def _deserialize(self, params):
+        self._Etcd = params.get("Etcd")
         self._KubeAPIServer = params.get("KubeAPIServer")
         self._KubeControllerManager = params.get("KubeControllerManager")
         self._KubeScheduler = params.get("KubeScheduler")
-        self._Etcd = params.get("Etcd")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28202,6 +28222,42 @@ class EnvironmentVariable(AbstractModel):
         
 
 
+class EtcdOverrideConfig(AbstractModel):
+    """元数据拆分存储Etcd配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Resources: k8s资源，支持核心资源，控制类资源，配置及敏感资源
+        :type Resources: list of str
+        """
+        self._Resources = None
+
+    @property
+    def Resources(self):
+        """k8s资源，支持核心资源，控制类资源，配置及敏感资源
+        :rtype: list of str
+        """
+        return self._Resources
+
+    @Resources.setter
+    def Resources(self, Resources):
+        self._Resources = Resources
+
+
+    def _deserialize(self, params):
+        self._Resources = params.get("Resources")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Event(AbstractModel):
     """服务事件
 
@@ -30831,6 +30887,7 @@ class Instance(AbstractModel):
         :param _CreatedTime: 添加时间
         :type CreatedTime: str
         :param _LanIP: 节点内网IP
+注意：此字段可能返回 null，表示取不到有效值。
         :type LanIP: str
         :param _NodePoolId: 资源池ID
         :type NodePoolId: str
@@ -30928,6 +30985,7 @@ class Instance(AbstractModel):
     @property
     def LanIP(self):
         """节点内网IP
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._LanIP
