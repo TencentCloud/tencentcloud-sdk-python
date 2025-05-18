@@ -77,7 +77,7 @@ class ClbClient(AbstractClient):
         本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用  [DescribeTaskStatus](https://cloud.tencent.com/document/product/214/30683)  接口查询本次任务是否成功。
         限制说明：
         - 四层监听器绑定旧版目标组需要监听器开启后端目标组。
-        - 七层绑定目标组，数据结构 TargetGroupAssosication 中 LocationId 为必填项。
+        - 七层绑定目标组，数据结构 TargetGroupAssociation 中 LocationId 为必填项。
         - 负载均衡的 VPC 需要和目标组的 VPC 一致。
 
         :param request: Request instance for AssociateTargetGroups.

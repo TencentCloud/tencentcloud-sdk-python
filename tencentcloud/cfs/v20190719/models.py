@@ -93,7 +93,7 @@ class AutoSnapshotPolicyInfo(AbstractModel):
         r"""
         :param _AutoSnapshotPolicyId: 快照策略ID
         :type AutoSnapshotPolicyId: str
-        :param _PolicyName: 快照策略ID
+        :param _PolicyName: 快照策略名称
         :type PolicyName: str
         :param _CreationTime: 快照策略创建时间
         :type CreationTime: str
@@ -107,7 +107,7 @@ class AutoSnapshotPolicyInfo(AbstractModel):
         :type IsActivated: int
         :param _NextActiveTime: 下一次触发快照时间
         :type NextActiveTime: str
-        :param _Status: 快照策略状态，1代表快照策略状态正常。这里只有一种状态
+        :param _Status: 快照策略状态，available代表快照策略状态正常。这里只有一种状态
         :type Status: str
         :param _AppId: 账号ID
         :type AppId: int
@@ -156,7 +156,7 @@ class AutoSnapshotPolicyInfo(AbstractModel):
 
     @property
     def PolicyName(self):
-        """快照策略ID
+        """快照策略名称
         :rtype: str
         """
         return self._PolicyName
@@ -233,7 +233,7 @@ class AutoSnapshotPolicyInfo(AbstractModel):
 
     @property
     def Status(self):
-        """快照策略状态，1代表快照策略状态正常。这里只有一种状态
+        """快照策略状态，available代表快照策略状态正常。这里只有一种状态
         :rtype: str
         """
         return self._Status
@@ -685,9 +685,9 @@ class BindAutoSnapshotPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoSnapshotPolicyId: 快照策略ID
+        :param _AutoSnapshotPolicyId: 快照策略ID，通过快照策略列表获取
         :type AutoSnapshotPolicyId: str
-        :param _FileSystemIds: 文件系统列表
+        :param _FileSystemIds: 文件系统id列表，用“,”分隔，文件系统id通过查询文件系统列表获得
         :type FileSystemIds: str
         """
         self._AutoSnapshotPolicyId = None
@@ -695,7 +695,7 @@ class BindAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def AutoSnapshotPolicyId(self):
-        """快照策略ID
+        """快照策略ID，通过快照策略列表获取
         :rtype: str
         """
         return self._AutoSnapshotPolicyId
@@ -706,7 +706,7 @@ class BindAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def FileSystemIds(self):
-        """文件系统列表
+        """文件系统id列表，用“,”分隔，文件系统id通过查询文件系统列表获得
         :rtype: str
         """
         return self._FileSystemIds
@@ -832,14 +832,14 @@ class CreateAccessCertRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CertDesc: 证书描述
+        :param _CertDesc: 证书描述，不超过64字符
         :type CertDesc: str
         """
         self._CertDesc = None
 
     @property
     def CertDesc(self):
-        """证书描述
+        """证书描述，不超过64字符
         :rtype: str
         """
         return self._CertDesc
@@ -911,17 +911,17 @@ class CreateAutoSnapshotPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Hour: 快照重复时间点,0-23
+        :param _Hour: 快照重复时间点,0-23，小时
         :type Hour: str
         :param _PolicyName: 策略名称
         :type PolicyName: str
-        :param _DayOfWeek: 快照重复日期，星期一到星期日。 1代表星期一、7代表星期天
+        :param _DayOfWeek: 快照重复日期，星期一到星期日。 1代表星期一、7代表星期天，与DayOfMonth，IntervalDays 三者选一
         :type DayOfWeek: str
-        :param _AliveDays: 快照保留时长，单位天
+        :param _AliveDays: 快照保留时长，单位天，默认永久0
         :type AliveDays: int
-        :param _DayOfMonth: 快照按月重复，每月1-31号，选择一天，每月将在这一天自动创建快照。
+        :param _DayOfMonth: 快照按月重复，每月1-31号，选择一天，每月将在这一天自动创建快照。与DayOfWeek，IntervalDays 三者选一
         :type DayOfMonth: str
-        :param _IntervalDays: 间隔天数
+        :param _IntervalDays: 间隔天数，与DayOfWeek，DayOfMonth 三者选一
         :type IntervalDays: int
         """
         self._Hour = None
@@ -933,7 +933,7 @@ class CreateAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def Hour(self):
-        """快照重复时间点,0-23
+        """快照重复时间点,0-23，小时
         :rtype: str
         """
         return self._Hour
@@ -955,7 +955,7 @@ class CreateAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def DayOfWeek(self):
-        """快照重复日期，星期一到星期日。 1代表星期一、7代表星期天
+        """快照重复日期，星期一到星期日。 1代表星期一、7代表星期天，与DayOfMonth，IntervalDays 三者选一
         :rtype: str
         """
         return self._DayOfWeek
@@ -966,7 +966,7 @@ class CreateAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def AliveDays(self):
-        """快照保留时长，单位天
+        """快照保留时长，单位天，默认永久0
         :rtype: int
         """
         return self._AliveDays
@@ -977,7 +977,7 @@ class CreateAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def DayOfMonth(self):
-        """快照按月重复，每月1-31号，选择一天，每月将在这一天自动创建快照。
+        """快照按月重复，每月1-31号，选择一天，每月将在这一天自动创建快照。与DayOfWeek，IntervalDays 三者选一
         :rtype: str
         """
         return self._DayOfMonth
@@ -988,7 +988,7 @@ class CreateAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def IntervalDays(self):
-        """间隔天数
+        """间隔天数，与DayOfWeek，DayOfMonth 三者选一
         :rtype: int
         """
         return self._IntervalDays
@@ -1667,7 +1667,7 @@ class CreateCfsRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PGroupId: 权限组 ID
+        :param _PGroupId: 权限组 ID，通过创建权限组接口或者创建权限组规则接口获取
         :type PGroupId: str
         :param _AuthClientIp: 可以填写单个 IP 或者单个网段，例如 10.1.10.11 或者 10.10.1.0/24。默认来访地址为*表示允许所有。同时需要注意，此处需填写 CVM 的内网 IP。
         :type AuthClientIp: str
@@ -1691,7 +1691,7 @@ no_root_squash：与 no_all_squash 效果一致，所有访问用户（含 root 
 
     @property
     def PGroupId(self):
-        """权限组 ID
+        """权限组 ID，通过创建权限组接口或者创建权限组规则接口获取
         :rtype: str
         """
         return self._PGroupId
@@ -1891,9 +1891,9 @@ class CreateCfsSnapshotRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileSystemId: 文件系统id
+        :param _FileSystemId: 文件系统 ID，通过查询文件系统接口获取
         :type FileSystemId: str
-        :param _SnapshotName: 快照名称
+        :param _SnapshotName: 快照名称，不超过64字符
         :type SnapshotName: str
         :param _ResourceTags: 快照标签
         :type ResourceTags: list of TagInfo
@@ -1904,7 +1904,7 @@ class CreateCfsSnapshotRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        """文件系统id
+        """文件系统 ID，通过查询文件系统接口获取
         :rtype: str
         """
         return self._FileSystemId
@@ -1915,7 +1915,7 @@ class CreateCfsSnapshotRequest(AbstractModel):
 
     @property
     def SnapshotName(self):
-        """快照名称
+        """快照名称，不超过64字符
         :rtype: str
         """
         return self._SnapshotName
@@ -2452,14 +2452,14 @@ class DeleteCfsPGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PGroupId: 权限组 ID
+        :param _PGroupId: 权限组 ID，通过创建权限组接口或者创建权限组规则接口获取
         :type PGroupId: str
         """
         self._PGroupId = None
 
     @property
     def PGroupId(self):
-        """权限组 ID
+        """权限组 ID，通过创建权限组接口或者创建权限组规则接口获取
         :rtype: str
         """
         return self._PGroupId
@@ -2546,9 +2546,9 @@ class DeleteCfsRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PGroupId: 权限组 ID
+        :param _PGroupId: 权限组 ID，通过创建权限组接口或者创建权限组规则接口获取
         :type PGroupId: str
-        :param _RuleId: 规则 ID
+        :param _RuleId: 规则 ID，通过查询权限组规则接口获取
         :type RuleId: str
         """
         self._PGroupId = None
@@ -2556,7 +2556,7 @@ class DeleteCfsRuleRequest(AbstractModel):
 
     @property
     def PGroupId(self):
-        """权限组 ID
+        """权限组 ID，通过创建权限组接口或者创建权限组规则接口获取
         :rtype: str
         """
         return self._PGroupId
@@ -2567,7 +2567,7 @@ class DeleteCfsRuleRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        """规则 ID
+        """规则 ID，通过查询权限组规则接口获取
         :rtype: str
         """
         return self._RuleId
@@ -2655,9 +2655,9 @@ class DeleteCfsSnapshotRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SnapshotId: 文件系统快照id
+        :param _SnapshotId: 文件系统快照id，可通过查询快照列表接口获取
         :type SnapshotId: str
-        :param _SnapshotIds: 需要删除的文件文件系统快照ID 列表，快照ID，跟ID列表至少填一项
+        :param _SnapshotIds: 需要删除的文件系统快照ID 列表，快照ID，跟ID列表至少填一项
         :type SnapshotIds: list of str
         """
         self._SnapshotId = None
@@ -2665,7 +2665,7 @@ class DeleteCfsSnapshotRequest(AbstractModel):
 
     @property
     def SnapshotId(self):
-        """文件系统快照id
+        """文件系统快照id，可通过查询快照列表接口获取
         :rtype: str
         """
         return self._SnapshotId
@@ -2676,7 +2676,7 @@ class DeleteCfsSnapshotRequest(AbstractModel):
 
     @property
     def SnapshotIds(self):
-        """需要删除的文件文件系统快照ID 列表，快照ID，跟ID列表至少填一项
+        """需要删除的文件系统快照ID 列表，快照ID，跟ID列表至少填一项
         :rtype: list of str
         """
         return self._SnapshotIds
@@ -2892,13 +2892,13 @@ class DeleteUserQuotaRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileSystemId: 文件系统 ID
+        :param _FileSystemId: 文件系统 ID，通过查询文件系统接口获取
         :type FileSystemId: str
-        :param _UserType: 指定配额类型，包括Uid、Gid、Dir
+        :param _UserType: 指定配额类型，包括Uid（按用户ID限制）、Gid（按用户组ID限制）、Dir（按目录限制）
         :type UserType: str
-        :param _UserId: UID/GID信息
+        :param _UserId: UID/GID信息，和DirectoryPath参数，两者必须填写一个
         :type UserId: str
-        :param _DirectoryPath: 设置目录配额的目录的绝对路径
+        :param _DirectoryPath: 设置目录配额的目录的绝对路径，和UserId参数，两者必须填写一个
         :type DirectoryPath: str
         """
         self._FileSystemId = None
@@ -2908,7 +2908,7 @@ class DeleteUserQuotaRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        """文件系统 ID
+        """文件系统 ID，通过查询文件系统接口获取
         :rtype: str
         """
         return self._FileSystemId
@@ -2919,7 +2919,7 @@ class DeleteUserQuotaRequest(AbstractModel):
 
     @property
     def UserType(self):
-        """指定配额类型，包括Uid、Gid、Dir
+        """指定配额类型，包括Uid（按用户ID限制）、Gid（按用户组ID限制）、Dir（按目录限制）
         :rtype: str
         """
         return self._UserType
@@ -2930,7 +2930,7 @@ class DeleteUserQuotaRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """UID/GID信息
+        """UID/GID信息，和DirectoryPath参数，两者必须填写一个
         :rtype: str
         """
         return self._UserId
@@ -2941,7 +2941,7 @@ class DeleteUserQuotaRequest(AbstractModel):
 
     @property
     def DirectoryPath(self):
-        """设置目录配额的目录的绝对路径
+        """设置目录配额的目录的绝对路径，和UserId参数，两者必须填写一个
         :rtype: str
         """
         return self._DirectoryPath
@@ -3365,11 +3365,11 @@ class DescribeCfsFileSystemClientsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileSystemId: 文件系统 ID。
+        :param _FileSystemId: 文件系统 ID，通过查询文件系统接口获取
         :type FileSystemId: str
-        :param _Offset: Offset 分页码
+        :param _Offset: Offset 分页码，默认为0
         :type Offset: int
-        :param _Limit: Limit 页面大小
+        :param _Limit: Limit 页面大小，默认为10，最大值为100
         :type Limit: int
         """
         self._FileSystemId = None
@@ -3378,7 +3378,7 @@ class DescribeCfsFileSystemClientsRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        """文件系统 ID。
+        """文件系统 ID，通过查询文件系统接口获取
         :rtype: str
         """
         return self._FileSystemId
@@ -3389,7 +3389,7 @@ class DescribeCfsFileSystemClientsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset 分页码
+        """Offset 分页码，默认为0
         :rtype: int
         """
         return self._Offset
@@ -3400,7 +3400,7 @@ class DescribeCfsFileSystemClientsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Limit 页面大小
+        """Limit 页面大小，默认为10，最大值为100
         :rtype: int
         """
         return self._Limit
@@ -3500,9 +3500,9 @@ class DescribeCfsFileSystemsRequest(AbstractModel):
         :type VpcId: str
         :param _SubnetId: 子网 ID
         :type SubnetId: str
-        :param _Offset: Offset 分页码
+        :param _Offset: Offset 分页码,默认0
         :type Offset: int
-        :param _Limit: Limit 页面大小
+        :param _Limit: Limit 页面大小，默认10
         :type Limit: int
         :param _CreationToken: 用户自定义名称
         :type CreationToken: str
@@ -3549,7 +3549,7 @@ class DescribeCfsFileSystemsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset 分页码
+        """Offset 分页码,默认0
         :rtype: int
         """
         return self._Offset
@@ -3560,7 +3560,7 @@ class DescribeCfsFileSystemsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Limit 页面大小
+        """Limit 页面大小，默认10
         :rtype: int
         """
         return self._Limit
@@ -3722,14 +3722,14 @@ class DescribeCfsRulesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PGroupId: 权限组 ID
+        :param _PGroupId: 权限组 ID，通过创建权限组接口或者创建权限组规则接口获取
         :type PGroupId: str
         """
         self._PGroupId = None
 
     @property
     def PGroupId(self):
-        """权限组 ID
+        """权限组 ID，通过创建权限组接口或者创建权限组规则接口获取
         :rtype: str
         """
         return self._PGroupId
@@ -4296,14 +4296,14 @@ class DescribeMountTargetsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileSystemId: 文件系统 ID
+        :param _FileSystemId: 文件系统 ID，查询文件系统列表可以获得id
         :type FileSystemId: str
         """
         self._FileSystemId = None
 
     @property
     def FileSystemId(self):
-        """文件系统 ID
+        """文件系统 ID，查询文件系统列表可以获得id
         :rtype: str
         """
         return self._FileSystemId
@@ -4395,7 +4395,7 @@ class DescribeSnapshotOperationLogsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SnapshotId: 文件系统快照ID
+        :param _SnapshotId: 文件系统快照ID，通过快照创建接口获得
         :type SnapshotId: str
         :param _StartTime: 起始时间
         :type StartTime: str
@@ -4408,7 +4408,7 @@ class DescribeSnapshotOperationLogsRequest(AbstractModel):
 
     @property
     def SnapshotId(self):
-        """文件系统快照ID
+        """文件系统快照ID，通过快照创建接口获得
         :rtype: str
         """
         return self._SnapshotId
@@ -4958,7 +4958,7 @@ class FileSystemInfo(AbstractModel):
         :type BandwidthLimit: float
         :param _AutoSnapshotPolicyId: 文件系统关联的快照策略
         :type AutoSnapshotPolicyId: str
-        :param _SnapStatus: 文件系统处理快照状态
+        :param _SnapStatus: 文件系统处理快照状态,snapping：快照中，normal：正常状态
         :type SnapStatus: str
         :param _Capacity: 文件系统容量规格上限
 单位:GiB
@@ -5220,7 +5220,7 @@ Available:可用
 
     @property
     def SnapStatus(self):
-        """文件系统处理快照状态
+        """文件系统处理快照状态,snapping：快照中，normal：正常状态
         :rtype: str
         """
         return self._SnapStatus
@@ -5995,9 +5995,11 @@ class MountInfo(AbstractModel):
         :type IpAddress: str
         :param _FSID: 挂载根目录
         :type FSID: str
-        :param _LifeCycleState: 挂载点状态
+        :param _LifeCycleState: 挂载点状态，包括creating：创建中；available：运行中；
+deleting：删除中；
+create_failed： 创建失败
         :type LifeCycleState: str
-        :param _NetworkInterface: 网络类型
+        :param _NetworkInterface: 网络类型，包括VPC,CCN
         :type NetworkInterface: str
         :param _VpcId: 私有网络 ID
         :type VpcId: str
@@ -6071,7 +6073,9 @@ class MountInfo(AbstractModel):
 
     @property
     def LifeCycleState(self):
-        """挂载点状态
+        """挂载点状态，包括creating：创建中；available：运行中；
+deleting：删除中；
+create_failed： 创建失败
         :rtype: str
         """
         return self._LifeCycleState
@@ -6082,7 +6086,7 @@ class MountInfo(AbstractModel):
 
     @property
     def NetworkInterface(self):
-        """网络类型
+        """网络类型，包括VPC,CCN
         :rtype: str
         """
         return self._NetworkInterface
@@ -7122,7 +7126,7 @@ class SnapshotStatistics(AbstractModel):
         :type Region: str
         :param _SnapshotNumber: 快照总个数
         :type SnapshotNumber: int
-        :param _SnapshotSize: 快照总容量
+        :param _SnapshotSize: 快照总容量，单位是MiB
         :type SnapshotSize: int
         """
         self._Region = None
@@ -7153,7 +7157,7 @@ class SnapshotStatistics(AbstractModel):
 
     @property
     def SnapshotSize(self):
-        """快照总容量
+        """快照总容量，单位是MiB
         :rtype: int
         """
         return self._SnapshotSize
@@ -7380,9 +7384,9 @@ class UnbindAutoSnapshotPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileSystemIds: 需要解绑的文件系统ID列表，用"," 分割
+        :param _FileSystemIds: 需要解绑的文件系统ID列表，用"," 分割，文件系统id 通创建文件系统接口获得
         :type FileSystemIds: str
-        :param _AutoSnapshotPolicyId: 解绑的快照ID
+        :param _AutoSnapshotPolicyId: 解绑的快照ID，通过创建快照策略接口获得
         :type AutoSnapshotPolicyId: str
         """
         self._FileSystemIds = None
@@ -7390,7 +7394,7 @@ class UnbindAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def FileSystemIds(self):
-        """需要解绑的文件系统ID列表，用"," 分割
+        """需要解绑的文件系统ID列表，用"," 分割，文件系统id 通创建文件系统接口获得
         :rtype: str
         """
         return self._FileSystemIds
@@ -7401,7 +7405,7 @@ class UnbindAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def AutoSnapshotPolicyId(self):
-        """解绑的快照ID
+        """解绑的快照ID，通过创建快照策略接口获得
         :rtype: str
         """
         return self._AutoSnapshotPolicyId
@@ -7474,21 +7478,21 @@ class UpdateAutoSnapshotPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoSnapshotPolicyId: 快照策略ID
+        :param _AutoSnapshotPolicyId: 快照策略ID,查询快照策略列表获取
         :type AutoSnapshotPolicyId: str
-        :param _PolicyName: 快照策略名称
+        :param _PolicyName: 快照策略名称，不超过64个字符
         :type PolicyName: str
-        :param _DayOfWeek: 快照定期备份，按照星期一到星期日。 1代表星期一，7代表星期日
+        :param _DayOfWeek: 快照定期备份，按照星期一到星期日。 1代表星期一，7代表星期日，与DayOfMonth，IntervalDays 三者选一个
         :type DayOfWeek: str
         :param _Hour: 快照定期备份在一天的哪一小时
         :type Hour: str
-        :param _AliveDays: 快照保留日期
+        :param _AliveDays: 快照保留天数
         :type AliveDays: int
         :param _IsActivated: 是否激活定期快照功能；1代表激活，0代表未激活
         :type IsActivated: int
-        :param _DayOfMonth: 定期快照在每月的第几天创建快照，该参数与DayOfWeek互斥
+        :param _DayOfMonth: 定期快照在每月的第几天创建快照，该参数与DayOfWeek,IntervalDays 三者选一
         :type DayOfMonth: str
-        :param _IntervalDays: 间隔天数定期执行快照，该参数与DayOfWeek,DayOfMonth 互斥
+        :param _IntervalDays: 间隔天数定期执行快照，该参数与DayOfWeek,DayOfMonth 三者选一
         :type IntervalDays: int
         """
         self._AutoSnapshotPolicyId = None
@@ -7502,7 +7506,7 @@ class UpdateAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def AutoSnapshotPolicyId(self):
-        """快照策略ID
+        """快照策略ID,查询快照策略列表获取
         :rtype: str
         """
         return self._AutoSnapshotPolicyId
@@ -7513,7 +7517,7 @@ class UpdateAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def PolicyName(self):
-        """快照策略名称
+        """快照策略名称，不超过64个字符
         :rtype: str
         """
         return self._PolicyName
@@ -7524,7 +7528,7 @@ class UpdateAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def DayOfWeek(self):
-        """快照定期备份，按照星期一到星期日。 1代表星期一，7代表星期日
+        """快照定期备份，按照星期一到星期日。 1代表星期一，7代表星期日，与DayOfMonth，IntervalDays 三者选一个
         :rtype: str
         """
         return self._DayOfWeek
@@ -7546,7 +7550,7 @@ class UpdateAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def AliveDays(self):
-        """快照保留日期
+        """快照保留天数
         :rtype: int
         """
         return self._AliveDays
@@ -7568,7 +7572,7 @@ class UpdateAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def DayOfMonth(self):
-        """定期快照在每月的第几天创建快照，该参数与DayOfWeek互斥
+        """定期快照在每月的第几天创建快照，该参数与DayOfWeek,IntervalDays 三者选一
         :rtype: str
         """
         return self._DayOfMonth
@@ -7579,7 +7583,7 @@ class UpdateAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def IntervalDays(self):
-        """间隔天数定期执行快照，该参数与DayOfWeek,DayOfMonth 互斥
+        """间隔天数定期执行快照，该参数与DayOfWeek,DayOfMonth 三者选一
         :rtype: int
         """
         return self._IntervalDays
@@ -7782,9 +7786,9 @@ class UpdateCfsFileSystemPGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PGroupId: 权限组 ID
+        :param _PGroupId: 权限组 ID，通过创建权限组接口或者创建权限组规则接口获取
         :type PGroupId: str
-        :param _FileSystemId: 文件系统 ID
+        :param _FileSystemId: 文件系统 ID，通过查询文件系统接口获取
         :type FileSystemId: str
         """
         self._PGroupId = None
@@ -7792,7 +7796,7 @@ class UpdateCfsFileSystemPGroupRequest(AbstractModel):
 
     @property
     def PGroupId(self):
-        """权限组 ID
+        """权限组 ID，通过创建权限组接口或者创建权限组规则接口获取
         :rtype: str
         """
         return self._PGroupId
@@ -7803,7 +7807,7 @@ class UpdateCfsFileSystemPGroupRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        """文件系统 ID
+        """文件系统 ID，通过查询文件系统接口获取
         :rtype: str
         """
         return self._FileSystemId
@@ -7970,7 +7974,7 @@ class UpdateCfsPGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PGroupId: 权限组 ID
+        :param _PGroupId: 权限组 ID，通过创建权限组接口或者创建权限组规则接口获取
         :type PGroupId: str
         :param _Name: 权限组名称，1-64个字符且只能为中文，字母，数字，下划线或横线
         :type Name: str
@@ -7983,7 +7987,7 @@ class UpdateCfsPGroupRequest(AbstractModel):
 
     @property
     def PGroupId(self):
-        """权限组 ID
+        """权限组 ID，通过创建权限组接口或者创建权限组规则接口获取
         :rtype: str
         """
         return self._PGroupId
@@ -8109,22 +8113,22 @@ class UpdateCfsRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PGroupId: 权限组 ID
+        :param _PGroupId: 权限组 ID，通过创建权限组接口或者创建权限组规则接口获取
         :type PGroupId: str
-        :param _RuleId: 规则 ID
+        :param _RuleId: 规则 ID，通过查询权限组规则接口获取
         :type RuleId: str
         :param _AuthClientIp: 可以填写单个 IP 或者单个网段，例如 10.1.10.11 或者 10.10.1.0/24。默认来访地址为*表示允许所有。同时需要注意，此处需填写 CVM 的内网 IP。
         :type AuthClientIp: str
         :param _RWPermission: 读写权限, 值为RO、RW；其中 RO 为只读，RW 为读写，不填默认为只读
         :type RWPermission: str
-        :param _UserPermission: 用户权限，值为all_squash、no_all_squash、root_squash、no_root_squash。
+        :param _UserPermission: 用户权限，值为all_squash、no_all_squash、root_squash、no_root_squash，默认值为root_squash
 all_squash：所有访问用户（含 root 用户）都会被映射为匿名用户或用户组。
 no_all_squash：所有访问用户（含 root 用户）均保持原有的 UID/GID 信息。
 root_squash：将来访的 root 用户映射为匿名用户或用户组，非 root 用户保持原有的 UID/GID 信息。
 no_root_squash：与 no_all_squash 效果一致，所有访问用户（含 root 用户）均保持原有的 UID/GID 信息
 
         :type UserPermission: str
-        :param _Priority: 规则优先级，参数范围1-100。 其中 1 为最高，100为最低
+        :param _Priority: 规则优先级，参数范围1-100。 其中 1 为最高，100为最低，默认值为100
         :type Priority: int
         """
         self._PGroupId = None
@@ -8136,7 +8140,7 @@ no_root_squash：与 no_all_squash 效果一致，所有访问用户（含 root 
 
     @property
     def PGroupId(self):
-        """权限组 ID
+        """权限组 ID，通过创建权限组接口或者创建权限组规则接口获取
         :rtype: str
         """
         return self._PGroupId
@@ -8147,7 +8151,7 @@ no_root_squash：与 no_all_squash 效果一致，所有访问用户（含 root 
 
     @property
     def RuleId(self):
-        """规则 ID
+        """规则 ID，通过查询权限组规则接口获取
         :rtype: str
         """
         return self._RuleId
@@ -8180,7 +8184,7 @@ no_root_squash：与 no_all_squash 效果一致，所有访问用户（含 root 
 
     @property
     def UserPermission(self):
-        """用户权限，值为all_squash、no_all_squash、root_squash、no_root_squash。
+        """用户权限，值为all_squash、no_all_squash、root_squash、no_root_squash，默认值为root_squash
 all_squash：所有访问用户（含 root 用户）都会被映射为匿名用户或用户组。
 no_all_squash：所有访问用户（含 root 用户）均保持原有的 UID/GID 信息。
 root_squash：将来访的 root 用户映射为匿名用户或用户组，非 root 用户保持原有的 UID/GID 信息。
@@ -8196,7 +8200,7 @@ no_root_squash：与 no_all_squash 效果一致，所有访问用户（含 root 
 
     @property
     def Priority(self):
-        """规则优先级，参数范围1-100。 其中 1 为最高，100为最低
+        """规则优先级，参数范围1-100。 其中 1 为最高，100为最低，默认值为100
         :rtype: int
         """
         return self._Priority
@@ -8348,11 +8352,11 @@ class UpdateCfsSnapshotAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SnapshotId: 文件系统快照ID
+        :param _SnapshotId: 文件系统快照ID,查询文件系统快照列表获取
         :type SnapshotId: str
-        :param _SnapshotName: 文件系统快照名称
+        :param _SnapshotName: 文件系统快照名称，与AliveDays 必须填一个
         :type SnapshotName: str
-        :param _AliveDays: 文件系统快照保留天数
+        :param _AliveDays: 文件系统快照保留天数，与SnapshotName必须填一个，如果原来是永久保留时间，不允许修改成短期有效期
         :type AliveDays: int
         """
         self._SnapshotId = None
@@ -8361,7 +8365,7 @@ class UpdateCfsSnapshotAttributeRequest(AbstractModel):
 
     @property
     def SnapshotId(self):
-        """文件系统快照ID
+        """文件系统快照ID,查询文件系统快照列表获取
         :rtype: str
         """
         return self._SnapshotId
@@ -8372,7 +8376,7 @@ class UpdateCfsSnapshotAttributeRequest(AbstractModel):
 
     @property
     def SnapshotName(self):
-        """文件系统快照名称
+        """文件系统快照名称，与AliveDays 必须填一个
         :rtype: str
         """
         return self._SnapshotName
@@ -8383,7 +8387,7 @@ class UpdateCfsSnapshotAttributeRequest(AbstractModel):
 
     @property
     def AliveDays(self):
-        """文件系统快照保留天数
+        """文件系统快照保留天数，与SnapshotName必须填一个，如果原来是永久保留时间，不允许修改成短期有效期
         :rtype: int
         """
         return self._AliveDays

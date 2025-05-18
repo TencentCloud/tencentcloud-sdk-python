@@ -1459,7 +1459,7 @@ class Capabilities(AbstractModel):
 
 
 class CbsVolume(AbstractModel):
-    """EKS Instnace CBS volume
+    """EKS Instance CBS volume
 
     """
 
@@ -26864,9 +26864,9 @@ class EksCi(AbstractModel):
         :param _EipAddress: 容器实例绑定的Eip地址，注意可能为空
 注意：此字段可能返回 null，表示取不到有效值。
         :type EipAddress: str
-        :param _EksCiId: EKS Cotainer Instance Id
+        :param _EksCiId: EKS Container Instance Id
         :type EksCiId: str
-        :param _EksCiName: EKS Cotainer Instance Name
+        :param _EksCiName: EKS Container Instance Name
         :type EksCiName: str
         :param _EksCiVolume: 数据卷信息
         :type EksCiVolume: :class:`tencentcloud.tke.v20180525.models.EksCiVolume`
@@ -27008,7 +27008,7 @@ Pending是创建中，Running是 运行中。
 
     @property
     def EksCiId(self):
-        """EKS Cotainer Instance Id
+        """EKS Container Instance Id
         :rtype: str
         """
         return self._EksCiId
@@ -27019,7 +27019,7 @@ Pending是创建中，Running是 运行中。
 
     @property
     def EksCiName(self):
-        """EKS Cotainer Instance Name
+        """EKS Container Instance Name
         :rtype: str
         """
         return self._EksCiName

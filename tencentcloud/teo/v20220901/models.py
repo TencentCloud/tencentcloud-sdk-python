@@ -38932,9 +38932,9 @@ class RuleEngineAction(AbstractModel):
 <li>ErrorPage：自定义错误页面；</li>
 <li>ModifyResponseHeader：修改 HTTP 节点响应头；</li>
 <li>ModifyRequestHeader：修改 HTTP 节点请求头；</li>
-<li>ResponseSpeedLimit：单连接下载限速。</li>
-<li>SetContentIdentifierParameters：设置内容标识符。</li>
-注意：此字段可能返回 null，表示取不到有效值。
+<li>ResponseSpeedLimit：单连接下载限速；</li>
+<li>SetContentIdentifier：设置内容标识符；</li>
+<li>Vary：Vary 特性配置。该功能灰度中，如需使用，请联系腾讯云客服。</li>
         :type Name: str
         :param _CacheParameters: 节点缓存 TTL 配置参数，当 Name 取值为 Cache 时，该参数必填。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -39035,10 +39035,13 @@ class RuleEngineAction(AbstractModel):
         :param _ResponseSpeedLimitParameters: 单连接下载限速配置参数，当 Name 取值为 ResponseSpeedLimit 时，该参数必填。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResponseSpeedLimitParameters: :class:`tencentcloud.teo.v20220901.models.ResponseSpeedLimitParameters`
-        :param _SetContentIdentifierParameters: 内容标识配置参数，当 Name 取值为 HttpResponse 时，该参数必填。
+        :param _SetContentIdentifierParameters: 内容标识配置参数，当 Name 取值为 SetContentIdentifier 时，该参数必填。
 
 注意：此字段可能返回 null，表示取不到有效值。
         :type SetContentIdentifierParameters: :class:`tencentcloud.teo.v20220901.models.SetContentIdentifierParameters`
+        :param _VaryParameters: Vary 特性配置参数，当 Name 取值为 Vary 时，该参数必填。
+该功能灰度中，如需使用，请联系腾讯云客服。
+        :type VaryParameters: :class:`tencentcloud.teo.v20220901.models.VaryParameters`
         """
         self._Name = None
         self._CacheParameters = None
@@ -39075,6 +39078,7 @@ class RuleEngineAction(AbstractModel):
         self._ModifyRequestHeaderParameters = None
         self._ResponseSpeedLimitParameters = None
         self._SetContentIdentifierParameters = None
+        self._VaryParameters = None
 
     @property
     def Name(self):
@@ -39112,9 +39116,9 @@ class RuleEngineAction(AbstractModel):
 <li>ErrorPage：自定义错误页面；</li>
 <li>ModifyResponseHeader：修改 HTTP 节点响应头；</li>
 <li>ModifyRequestHeader：修改 HTTP 节点请求头；</li>
-<li>ResponseSpeedLimit：单连接下载限速。</li>
-<li>SetContentIdentifierParameters：设置内容标识符。</li>
-注意：此字段可能返回 null，表示取不到有效值。
+<li>ResponseSpeedLimit：单连接下载限速；</li>
+<li>SetContentIdentifier：设置内容标识符；</li>
+<li>Vary：Vary 特性配置。该功能灰度中，如需使用，请联系腾讯云客服。</li>
         :rtype: str
         """
         return self._Name
@@ -39521,7 +39525,7 @@ class RuleEngineAction(AbstractModel):
 
     @property
     def SetContentIdentifierParameters(self):
-        """内容标识配置参数，当 Name 取值为 HttpResponse 时，该参数必填。
+        """内容标识配置参数，当 Name 取值为 SetContentIdentifier 时，该参数必填。
 
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.SetContentIdentifierParameters`
@@ -39531,6 +39535,18 @@ class RuleEngineAction(AbstractModel):
     @SetContentIdentifierParameters.setter
     def SetContentIdentifierParameters(self, SetContentIdentifierParameters):
         self._SetContentIdentifierParameters = SetContentIdentifierParameters
+
+    @property
+    def VaryParameters(self):
+        """Vary 特性配置参数，当 Name 取值为 Vary 时，该参数必填。
+该功能灰度中，如需使用，请联系腾讯云客服。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.VaryParameters`
+        """
+        return self._VaryParameters
+
+    @VaryParameters.setter
+    def VaryParameters(self, VaryParameters):
+        self._VaryParameters = VaryParameters
 
 
     def _deserialize(self, params):
@@ -39637,6 +39653,9 @@ class RuleEngineAction(AbstractModel):
         if params.get("SetContentIdentifierParameters") is not None:
             self._SetContentIdentifierParameters = SetContentIdentifierParameters()
             self._SetContentIdentifierParameters._deserialize(params.get("SetContentIdentifierParameters"))
+        if params.get("VaryParameters") is not None:
+            self._VaryParameters = VaryParameters()
+            self._VaryParameters._deserialize(params.get("VaryParameters"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43772,6 +43791,47 @@ class VanityNameServersIps(AbstractModel):
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._IPv4 = params.get("IPv4")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VaryParameters(AbstractModel):
+    """[Vary 特性](https://cloud.tencent.com/document/product/1552/89301) 配置参数。
+    该功能灰度中，如需使用，请联系腾讯云客服。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Vary 特性配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        """Vary 特性配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
