@@ -49,6 +49,30 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def BatchProcessMedia(self, request):
+        """对 URL视频链接批量发起处理任务，功能包括：
+        智能字幕（语音全文、语音热词、语音翻译）
+
+        :param request: Request instance for BatchProcessMedia.
+        :type request: :class:`tencentcloud.mps.v20190612.models.BatchProcessMediaRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.BatchProcessMediaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BatchProcessMedia", params, headers=headers)
+            response = json.loads(body)
+            model = models.BatchProcessMediaResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def BatchStartStreamLinkFlow(self, request):
         """批量启动媒体传输流。
 
@@ -1339,6 +1363,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeBatchTaskDetail(self, request):
+        """通过任务 ID 查询任务的执行状态和结果的详细信息（最多可以查询7天之内提交的任务）。
+
+        :param request: Request instance for DescribeBatchTaskDetail.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeBatchTaskDetailRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeBatchTaskDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBatchTaskDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBatchTaskDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeContentReviewTemplates(self, request):
         """根据智能审核模板唯一标识，获取智能审核模板详情列表。返回结果包含符合条件的所有用户自定义模板及系统预置智能审核模板。
 
@@ -1399,6 +1446,29 @@ class MpsClient(AbstractClient):
             body = self.call("DescribeImageSpriteTemplates", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeImageSpriteTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeImageTaskDetail(self, request):
+        """通过任务 ID 查询任务的执行状态和结果的详细信息（最多可以查询7天之内提交的任务）。
+
+        :param request: Request instance for DescribeImageTaskDetail.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeImageTaskDetailRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeImageTaskDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeImageTaskDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeImageTaskDetailResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
