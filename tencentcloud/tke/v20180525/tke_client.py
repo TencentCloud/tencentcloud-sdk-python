@@ -4005,29 +4005,6 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def ForwardApplicationRequestV3(self, request):
-        """操作TKE集群的addon
-
-        :param request: Request instance for ForwardApplicationRequestV3.
-        :type request: :class:`tencentcloud.tke.v20180525.models.ForwardApplicationRequestV3Request`
-        :rtype: :class:`tencentcloud.tke.v20180525.models.ForwardApplicationRequestV3Response`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ForwardApplicationRequestV3", params, headers=headers)
-            response = json.loads(body)
-            model = models.ForwardApplicationRequestV3Response()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def ForwardTKEEdgeApplicationRequestV3(self, request):
         """操作TKEEdge集群的addon
 

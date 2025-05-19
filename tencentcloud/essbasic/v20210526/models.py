@@ -2593,7 +2593,7 @@ class ChannelCreateBatchQuickSignUrlRequest(AbstractModel):
         :param _FlowApproverInfo: 批量签署的流程签署人，其中姓名(ApproverName)、参与人类型(ApproverType)必传，手机号(ApproverMobile)和证件信息(ApproverIdCardType、ApproverIdCardNumber)可任选一种或全部传入。
 <ul>
 <li>若为个人参与方：ApproverType:"PERSON"</li>
-<li>若为企业参与方：ApproverType:"ORGANIZATION"。同时若签署方为saas企业员工， OrganizationName 参数需传入参与方企业名称。若签署方为渠道子客企业员工，还需要传 OpenId、OrganizationOpenId。</li>
+<li>若为企业参与方：ApproverType:"ORGANIZATION"。同时若签署方为saas企业员工， OrganizationName 参数需传入参与方企业名称。若签署方为渠道子客企业员工，除了 OrganizationName 还需要传 OpenId、OrganizationOpenId。（如果OrganizationOpenId对应子客企业已经认证激活，则可以省略OrganizationName参数）</li>
 </ul>
 
 注:
@@ -2671,7 +2671,7 @@ class ChannelCreateBatchQuickSignUrlRequest(AbstractModel):
         """批量签署的流程签署人，其中姓名(ApproverName)、参与人类型(ApproverType)必传，手机号(ApproverMobile)和证件信息(ApproverIdCardType、ApproverIdCardNumber)可任选一种或全部传入。
 <ul>
 <li>若为个人参与方：ApproverType:"PERSON"</li>
-<li>若为企业参与方：ApproverType:"ORGANIZATION"。同时若签署方为saas企业员工， OrganizationName 参数需传入参与方企业名称。若签署方为渠道子客企业员工，还需要传 OpenId、OrganizationOpenId。</li>
+<li>若为企业参与方：ApproverType:"ORGANIZATION"。同时若签署方为saas企业员工， OrganizationName 参数需传入参与方企业名称。若签署方为渠道子客企业员工，除了 OrganizationName 还需要传 OpenId、OrganizationOpenId。（如果OrganizationOpenId对应子客企业已经认证激活，则可以省略OrganizationName参数）</li>
 </ul>
 
 注:
@@ -5721,7 +5721,7 @@ class ChannelCreateFlowSignUrlRequest(AbstractModel):
         :type FlowId: str
         :param _FlowApproverInfos: 流程签署人列表，其中结构体的ApproverType必传。
 若为个人签署方或saas企业签署方，则Name，Mobile必传。OrganizationName 传对应企业名称。
-若为子客企业签署方则需传OpenId、OrganizationOpenId，OrganizationName 其他可不传。（如果对应OrganizationOpenId 子客已经认证激活了，则可以省去OrganizationName）
+若为子客企业签署方则需传OpenId、OrganizationOpenId、OrganizationName， 其他可不传。（如果对应OrganizationOpenId 子客已经认证激活了，则可以省去OrganizationName）
 
 此结构体和发起接口参与方结构体复用，除了上述参数外，可传递的参数有：
 1. RecipientId: 发起合同会返回，可以直接用于指定需要生成链接的签署方。
@@ -5792,7 +5792,7 @@ class ChannelCreateFlowSignUrlRequest(AbstractModel):
     def FlowApproverInfos(self):
         """流程签署人列表，其中结构体的ApproverType必传。
 若为个人签署方或saas企业签署方，则Name，Mobile必传。OrganizationName 传对应企业名称。
-若为子客企业签署方则需传OpenId、OrganizationOpenId，OrganizationName 其他可不传。（如果对应OrganizationOpenId 子客已经认证激活了，则可以省去OrganizationName）
+若为子客企业签署方则需传OpenId、OrganizationOpenId、OrganizationName， 其他可不传。（如果对应OrganizationOpenId 子客已经认证激活了，则可以省去OrganizationName）
 
 此结构体和发起接口参与方结构体复用，除了上述参数外，可传递的参数有：
 1. RecipientId: 发起合同会返回，可以直接用于指定需要生成链接的签署方。
@@ -7104,7 +7104,7 @@ class ChannelCreatePreparedPersonalEsignRequest(AbstractModel):
         :type SealImageCompress: bool
         :param _Mobile: 手机号码；当需要开通自动签时，该参数必传
         :type Mobile: str
-        :param _EnableAutoSign: 此字段已废弃，请勿继续使用。
+        :param _EnableAutoSign: 该字段已不再使用
         :type EnableAutoSign: bool
         :param _LicenseType: 设置用户开通自动签时是否绑定个人自动签账号许可。一旦绑定后，将扣减购买的个人自动签账号许可一次（1年有效期），不可解绑释放。不传默认为绑定自动签账号许可。 0-绑定个人自动签账号许可，开通后将扣减购买的个人自动签账号许可一次 1-不绑定，发起合同时将按标准合同套餐进行扣减	
         :type LicenseType: int
@@ -7238,7 +7238,7 @@ class ChannelCreatePreparedPersonalEsignRequest(AbstractModel):
 
     @property
     def EnableAutoSign(self):
-        """此字段已废弃，请勿继续使用。
+        """该字段已不再使用
         :rtype: bool
         """
         return self._EnableAutoSign
@@ -15959,6 +15959,9 @@ class CreateFlowOption(AbstractModel):
         :param _SignComponentConfig: 签署控件的配置信息，用在嵌入式发起的页面配置，包括 
  - 签署控件 是否默认展示日期.
         :type SignComponentConfig: :class:`tencentcloud.essbasic.v20210526.models.SignComponentConfig`
+        :param _ForbidEditWatermark: 是否禁止编辑（展示）水印控件属性
+<ul><li>（默认） false -否</li> <li> true - 禁止编辑</li></ul>
+        :type ForbidEditWatermark: bool
         """
         self._CanEditFlow = None
         self._HideShowFlowName = None
@@ -15970,6 +15973,7 @@ class CreateFlowOption(AbstractModel):
         self._ForbidEditFillComponent = None
         self._SkipUploadFile = None
         self._SignComponentConfig = None
+        self._ForbidEditWatermark = None
 
     @property
     def CanEditFlow(self):
@@ -16101,6 +16105,18 @@ class CreateFlowOption(AbstractModel):
     def SignComponentConfig(self, SignComponentConfig):
         self._SignComponentConfig = SignComponentConfig
 
+    @property
+    def ForbidEditWatermark(self):
+        """是否禁止编辑（展示）水印控件属性
+<ul><li>（默认） false -否</li> <li> true - 禁止编辑</li></ul>
+        :rtype: bool
+        """
+        return self._ForbidEditWatermark
+
+    @ForbidEditWatermark.setter
+    def ForbidEditWatermark(self, ForbidEditWatermark):
+        self._ForbidEditWatermark = ForbidEditWatermark
+
 
     def _deserialize(self, params):
         self._CanEditFlow = params.get("CanEditFlow")
@@ -16115,6 +16131,7 @@ class CreateFlowOption(AbstractModel):
         if params.get("SignComponentConfig") is not None:
             self._SignComponentConfig = SignComponentConfig()
             self._SignComponentConfig._deserialize(params.get("SignComponentConfig"))
+        self._ForbidEditWatermark = params.get("ForbidEditWatermark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20758,10 +20775,14 @@ class EmbedUrlOption(AbstractModel):
 
 注意: 此参数仅针对**EmbedType=CREATE_TEMPLATE(创建模板)有效**，
         :type SkipUploadFile: str
+        :param _ForbidEditWatermark: 是否禁止编辑（展示）水印控件属性
+<ul><li>（默认） false -否</li> <li> true - 禁止编辑</li></ul>
+        :type ForbidEditWatermark: bool
         """
         self._ShowFlowDetailComponent = None
         self._ShowTemplateComponent = None
         self._SkipUploadFile = None
+        self._ForbidEditWatermark = None
 
     @property
     def ShowFlowDetailComponent(self):
@@ -20807,11 +20828,24 @@ class EmbedUrlOption(AbstractModel):
     def SkipUploadFile(self, SkipUploadFile):
         self._SkipUploadFile = SkipUploadFile
 
+    @property
+    def ForbidEditWatermark(self):
+        """是否禁止编辑（展示）水印控件属性
+<ul><li>（默认） false -否</li> <li> true - 禁止编辑</li></ul>
+        :rtype: bool
+        """
+        return self._ForbidEditWatermark
+
+    @ForbidEditWatermark.setter
+    def ForbidEditWatermark(self, ForbidEditWatermark):
+        self._ForbidEditWatermark = ForbidEditWatermark
+
 
     def _deserialize(self, params):
         self._ShowFlowDetailComponent = params.get("ShowFlowDetailComponent")
         self._ShowTemplateComponent = params.get("ShowTemplateComponent")
         self._SkipUploadFile = params.get("SkipUploadFile")
+        self._ForbidEditWatermark = params.get("ForbidEditWatermark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

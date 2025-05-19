@@ -584,6 +584,9 @@ RESOURCENOTFOUND_KUBERESOURCENOTFOUND = 'ResourceNotFound.KubeResourceNotFound'
 # 未找到该kubernetes资源。
 RESOURCENOTFOUND_KUBERNETESRESOURCENOTFOUND = 'ResourceNotFound.KubernetesResourceNotFound'
 
+# CLS日志主题不存在。
+RESOURCENOTFOUND_LOGCOLLECTORCLSLOGTOPICNOTEXISTS = 'ResourceNotFound.LogCollectorClsLogTopicNotExists'
+
 # 资源未找到。
 RESOURCENOTFOUND_NOTFOUND = 'ResourceNotFound.NotFound'
 

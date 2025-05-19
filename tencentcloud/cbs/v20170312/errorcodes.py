@@ -113,6 +113,9 @@ LIMITEXCEEDED_AUTOSNAPSHOTPOLICYOUTOFQUOTA = 'LimitExceeded.AutoSnapshotPolicyOu
 # 实例挂载云盘数量超过限制。
 LIMITEXCEEDED_INSTANCEATTACHEDDISK = 'LimitExceeded.InstanceAttachedDisk'
 
+# 调用标签服务超过了频率限制。
+LIMITEXCEEDED_TAGQUOTALIMITEXCEEDED = 'LimitExceeded.TagQuotaLimitExceeded'
+
 # 缺少参数错误。
 MISSINGPARAMETER = 'MissingParameter'
 
@@ -152,6 +155,9 @@ RESOURCEUNAVAILABLE = 'ResourceUnavailable'
 # 云硬盘已挂载至其他云服务器上。
 RESOURCEUNAVAILABLE_ATTACHED = 'ResourceUnavailable.Attached'
 
+# 数据备份点尚未创建完成，暂时不可使用。
+RESOURCEUNAVAILABLE_DISKBACKUPCREATING = 'ResourceUnavailable.DiskBackupCreating'
+
 # 云硬盘快照链长度过长，拒绝创建快照。
 RESOURCEUNAVAILABLE_DISKSNAPSHOTCHAINTOOLARGE = 'ResourceUnavailable.DiskSnapshotChainTooLarge'
 
@@ -187,6 +193,9 @@ TRADEDEALCONFLICT = 'TradeDealConflict'
 
 # 未授权操作。
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
+
+# CAM鉴权Token不可用。
+UNAUTHORIZEDOPERATION_INVALIDTOKEN = 'UnauthorizedOperation.InvalidToken'
 
 # MFA鉴权过期，请重试。
 UNAUTHORIZEDOPERATION_MFAEXPIRED = 'UnauthorizedOperation.MFAExpired'

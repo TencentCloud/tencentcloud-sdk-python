@@ -7298,6 +7298,8 @@ class DescribeClusterFlowStatusDetailResponse(AbstractModel):
 NeedExtraDetail为true时返回
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlowExtraDetail: list of FlowExtraDetail
+        :param _FlowInfo: 流程描述
+        :type FlowInfo: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -7307,6 +7309,7 @@ NeedExtraDetail为true时返回
         self._FlowTotalProgress = None
         self._FlowTotalStatus = None
         self._FlowExtraDetail = None
+        self._FlowInfo = None
         self._RequestId = None
 
     @property
@@ -7387,6 +7390,17 @@ NeedExtraDetail为true时返回
         self._FlowExtraDetail = FlowExtraDetail
 
     @property
+    def FlowInfo(self):
+        """流程描述
+        :rtype: str
+        """
+        return self._FlowInfo
+
+    @FlowInfo.setter
+    def FlowInfo(self, FlowInfo):
+        self._FlowInfo = FlowInfo
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -7420,6 +7434,7 @@ NeedExtraDetail为true时返回
                 obj = FlowExtraDetail()
                 obj._deserialize(item)
                 self._FlowExtraDetail.append(obj)
+        self._FlowInfo = params.get("FlowInfo")
         self._RequestId = params.get("RequestId")
 
 

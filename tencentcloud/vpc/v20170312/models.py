@@ -10732,9 +10732,9 @@ class CreateFlowLogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowLogName: 流日志实例名字。长度为不超过60个字节。
+        :param _FlowLogName: 流日志实例名称。长度为不超过60个字符。
         :type FlowLogName: str
-        :param _ResourceType: 流日志所属资源类型，VPC(私有网络)，SUBNET（子网），NETWORKINTERFACE（网卡），CCN（云联网），NAT（网络地址转化），DCG（专线网关）。当选择VPC， SUBNET，CCN，DCG时，请通过工单加入白名单。
+        :param _ResourceType: 流日志所属资源类型，VPC（私有网络），SUBNET（子网），NETWORKINTERFACE（网卡），CCN（云联网），NAT（网络地址转化），DCG（专线网关）。当选择VPC，SUBNET，CCN，DCG时，请通过工单加入白名单。
         :type ResourceType: str
         :param _ResourceId: 资源唯一ID。
         :type ResourceId: str
@@ -10742,15 +10742,15 @@ class CreateFlowLogRequest(AbstractModel):
         :type TrafficType: str
         :param _VpcId: 私用网络唯一ID。当ResourceType为CCN时不填，其他类型必填。
         :type VpcId: str
-        :param _FlowLogDescription: 流日志实例描述。
+        :param _FlowLogDescription: 流日志实例描述。长度不超过512个字符。
         :type FlowLogDescription: str
         :param _CloudLogId: 流日志存储ID（cls的日志主题ID，
-可通过[DescribeTopics](https://cloud.tencent.com/document/api/1179/46086)接口获取。
+可通过[DescribeTopics](https://cloud.tencent.com/document/product/614/56454)接口获取。
 ）。当StorageType为cls时，CloudLogId为必选。
         :type CloudLogId: str
         :param _Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
         :type Tags: list of Tag
-        :param _StorageType: 消费端类型：cls、ckafka。默认值cls。当选择kafka时，请通过工单加入白名单。
+        :param _StorageType: 消费端类型：cls、ckafka。默认值cls。当选择ckafka时，请通过工单加入白名单。
         :type StorageType: str
         :param _FlowLogStorage: 流日志消费端信息，当消费端类型为ckafka时，必填。
         :type FlowLogStorage: :class:`tencentcloud.vpc.v20170312.models.FlowLogStorage`
@@ -10771,7 +10771,7 @@ class CreateFlowLogRequest(AbstractModel):
 
     @property
     def FlowLogName(self):
-        """流日志实例名字。长度为不超过60个字节。
+        """流日志实例名称。长度为不超过60个字符。
         :rtype: str
         """
         return self._FlowLogName
@@ -10782,7 +10782,7 @@ class CreateFlowLogRequest(AbstractModel):
 
     @property
     def ResourceType(self):
-        """流日志所属资源类型，VPC(私有网络)，SUBNET（子网），NETWORKINTERFACE（网卡），CCN（云联网），NAT（网络地址转化），DCG（专线网关）。当选择VPC， SUBNET，CCN，DCG时，请通过工单加入白名单。
+        """流日志所属资源类型，VPC（私有网络），SUBNET（子网），NETWORKINTERFACE（网卡），CCN（云联网），NAT（网络地址转化），DCG（专线网关）。当选择VPC，SUBNET，CCN，DCG时，请通过工单加入白名单。
         :rtype: str
         """
         return self._ResourceType
@@ -10826,7 +10826,7 @@ class CreateFlowLogRequest(AbstractModel):
 
     @property
     def FlowLogDescription(self):
-        """流日志实例描述。
+        """流日志实例描述。长度不超过512个字符。
         :rtype: str
         """
         return self._FlowLogDescription
@@ -10838,7 +10838,7 @@ class CreateFlowLogRequest(AbstractModel):
     @property
     def CloudLogId(self):
         """流日志存储ID（cls的日志主题ID，
-可通过[DescribeTopics](https://cloud.tencent.com/document/api/1179/46086)接口获取。
+可通过[DescribeTopics](https://cloud.tencent.com/document/product/614/56454)接口获取。
 ）。当StorageType为cls时，CloudLogId为必选。
         :rtype: str
         """
@@ -10861,7 +10861,7 @@ class CreateFlowLogRequest(AbstractModel):
 
     @property
     def StorageType(self):
-        """消费端类型：cls、ckafka。默认值cls。当选择kafka时，请通过工单加入白名单。
+        """消费端类型：cls、ckafka。默认值cls。当选择ckafka时，请通过工单加入白名单。
         :rtype: str
         """
         return self._StorageType
@@ -26468,9 +26468,9 @@ class DescribeFlowLogsRequest(AbstractModel):
         :type VpcId: str
         :param _FlowLogId: 流日志唯一ID。可通过[CreateFlowLog](https://cloud.tencent.com/document/product/215/35015)接口创建。
         :type FlowLogId: str
-        :param _FlowLogName: 流日志实例名字。
+        :param _FlowLogName: 流日志实例名称。长度不超过60个字符。
         :type FlowLogName: str
-        :param _ResourceType: 流日志所属资源类型：VPC(私有网络)，SUBNET（子网），NETWORKINTERFACE（网卡），CCN（云联网），NAT（网络地址转化），DCG（专线网关）。
+        :param _ResourceType: 流日志所属资源类型，VPC（私有网络），SUBNET（子网），NETWORKINTERFACE（网卡），CCN（云联网），NAT（网络地址转化），DCG（专线网关）。
 
         :type ResourceType: str
         :param _ResourceId: 资源唯一ID。
@@ -26535,7 +26535,7 @@ class DescribeFlowLogsRequest(AbstractModel):
 
     @property
     def FlowLogName(self):
-        """流日志实例名字。
+        """流日志实例名称。长度不超过60个字符。
         :rtype: str
         """
         return self._FlowLogName
@@ -26546,7 +26546,7 @@ class DescribeFlowLogsRequest(AbstractModel):
 
     @property
     def ResourceType(self):
-        """流日志所属资源类型：VPC(私有网络)，SUBNET（子网），NETWORKINTERFACE（网卡），CCN（云联网），NAT（网络地址转化），DCG（专线网关）。
+        """流日志所属资源类型，VPC（私有网络），SUBNET（子网），NETWORKINTERFACE（网卡），CCN（云联网），NAT（网络地址转化），DCG（专线网关）。
 
         :rtype: str
         """
@@ -49104,9 +49104,9 @@ class ModifyFlowLogAttributeRequest(AbstractModel):
         :type FlowLogId: str
         :param _VpcId: 私用网络唯一ID。修改云联网流日志属性时可不填，其他流日志类型必填。
         :type VpcId: str
-        :param _FlowLogName: 流日志实例名字。长度为不超过60字节。
+        :param _FlowLogName: 流日志实例名称。长度为不超过60字符。
         :type FlowLogName: str
-        :param _FlowLogDescription: 流日志实例描述。长度为不超过512字节。
+        :param _FlowLogDescription: 流日志实例描述。长度为不超过512个字符。
         :type FlowLogDescription: str
         """
         self._FlowLogId = None
@@ -49138,7 +49138,7 @@ class ModifyFlowLogAttributeRequest(AbstractModel):
 
     @property
     def FlowLogName(self):
-        """流日志实例名字。长度为不超过60字节。
+        """流日志实例名称。长度为不超过60字符。
         :rtype: str
         """
         return self._FlowLogName
@@ -49149,7 +49149,7 @@ class ModifyFlowLogAttributeRequest(AbstractModel):
 
     @property
     def FlowLogDescription(self):
-        """流日志实例描述。长度为不超过512字节。
+        """流日志实例描述。长度为不超过512个字符。
         :rtype: str
         """
         return self._FlowLogDescription

@@ -145,6 +145,7 @@ class TeoClient(AbstractClient):
 
     def CreateAliasDomain(self, request):
         """创建别称域名。
+        该功能仅企业版套餐支持，并且该功能当前仍在内测中，如需使用，请[联系我们](https://cloud.tencent.com/online-service?from=connect-us)。
 
         :param request: Request instance for CreateAliasDomain.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateAliasDomainRequest`
@@ -728,6 +729,7 @@ class TeoClient(AbstractClient):
 
     def DeleteAliasDomain(self, request):
         """删除别称域名。
+        该功能仅企业版套餐支持，并且该功能当前仍在内测中，如需使用，请[联系我们](https://cloud.tencent.com/online-service?from=connect-us)。
 
         :param request: Request instance for DeleteAliasDomain.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteAliasDomainRequest`
@@ -1190,6 +1192,7 @@ class TeoClient(AbstractClient):
 
     def DescribeAliasDomains(self, request):
         """查询别称域名信息列表。
+        该功能仅企业版套餐支持，并且该功能当前仍在内测中，如需使用，请[联系我们](https://cloud.tencent.com/online-service?from=connect-us)。
 
         :param request: Request instance for DescribeAliasDomains.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeAliasDomainsRequest`
@@ -2560,6 +2563,7 @@ class TeoClient(AbstractClient):
 
     def ModifyAliasDomain(self, request):
         """修改别称域名。
+        该功能仅企业版套餐支持，并且该功能当前仍在内测中，如需使用，请[联系我们](https://cloud.tencent.com/online-service?from=connect-us)。
 
         :param request: Request instance for ModifyAliasDomain.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyAliasDomainRequest`
@@ -2583,6 +2587,7 @@ class TeoClient(AbstractClient):
 
     def ModifyAliasDomainStatus(self, request):
         """修改别称域名状态。
+        该功能仅企业版套餐支持，并且该功能当前仍在内测中，如需使用，请[联系我们](https://cloud.tencent.com/online-service?from=connect-us)。
 
         :param request: Request instance for ModifyAliasDomainStatus.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyAliasDomainStatusRequest`

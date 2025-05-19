@@ -10954,30 +10954,40 @@ class ImportImageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Architecture: 导入镜像的操作系统架构，`x86_64` 或 `i386`
+        :param _Architecture: 导入镜像的操作系统架构。
+取值范围包括：`x86_64` 、`i386`、`arm_64`
         :type Architecture: str
-        :param _OsType: 导入镜像的操作系统类型，通过`DescribeImportImageOs`获取
+        :param _OsType: 导入镜像的操作系统类型 。
+可通过 [DescribeImportImageOs](https://cloud.tencent.com/document/api/213/15718) 接口返回值中的`ImportImageOsListSupported`获取。
         :type OsType: str
-        :param _OsVersion: 导入镜像的操作系统版本，通过`DescribeImportImageOs`获取
+        :param _OsVersion: 导入镜像的操作系统版本。
+可通过 [DescribeImportImageOs](https://cloud.tencent.com/document/api/213/15718) 接口返回值中的`ImportImageOsVersionSet`获取。
         :type OsVersion: str
         :param _ImageUrl: 导入镜像存放的cos地址
         :type ImageUrl: str
-        :param _ImageName: 镜像名称
+        :param _ImageName: 镜像名称。
+最多支持 60 个字符。
         :type ImageName: str
-        :param _ImageDescription: 镜像描述
+        :param _ImageDescription: 镜像描述。
+最多支持 256 个字符。
         :type ImageDescription: str
-        :param _DryRun: 只检查参数，不执行任务
+        :param _DryRun: 只检查参数，不执行任务。
+默认值：false
         :type DryRun: bool
         :param _Force: 是否强制导入，参考[强制导入镜像](https://cloud.tencent.com/document/product/213/12849)
+默认值：false
         :type Force: bool
         :param _TagSpecification: 标签描述列表。通过指定该参数可以同时绑定标签到自定义镜像。
         :type TagSpecification: list of TagSpecification
         :param _LicenseType: 导入镜像后，激活操作系统采用的许可证类型。
-可选项：
+默认值：TencentCloud
+取值范围：
 TencentCloud: 腾讯云官方许可
 BYOL: 自带许可（Bring Your Own License）
         :type LicenseType: str
-        :param _BootMode: 启动模式
+        :param _BootMode: 启动模式。
+取值范围：`Legacy BIOS`、`UEFI`
+默认值：Legacy BIOS
         :type BootMode: str
         :param _ImageFamily:  镜像族
         :type ImageFamily: str
@@ -11000,7 +11010,8 @@ BYOL: 自带许可（Bring Your Own License）
 
     @property
     def Architecture(self):
-        """导入镜像的操作系统架构，`x86_64` 或 `i386`
+        """导入镜像的操作系统架构。
+取值范围包括：`x86_64` 、`i386`、`arm_64`
         :rtype: str
         """
         return self._Architecture
@@ -11011,7 +11022,8 @@ BYOL: 自带许可（Bring Your Own License）
 
     @property
     def OsType(self):
-        """导入镜像的操作系统类型，通过`DescribeImportImageOs`获取
+        """导入镜像的操作系统类型 。
+可通过 [DescribeImportImageOs](https://cloud.tencent.com/document/api/213/15718) 接口返回值中的`ImportImageOsListSupported`获取。
         :rtype: str
         """
         return self._OsType
@@ -11022,7 +11034,8 @@ BYOL: 自带许可（Bring Your Own License）
 
     @property
     def OsVersion(self):
-        """导入镜像的操作系统版本，通过`DescribeImportImageOs`获取
+        """导入镜像的操作系统版本。
+可通过 [DescribeImportImageOs](https://cloud.tencent.com/document/api/213/15718) 接口返回值中的`ImportImageOsVersionSet`获取。
         :rtype: str
         """
         return self._OsVersion
@@ -11044,7 +11057,8 @@ BYOL: 自带许可（Bring Your Own License）
 
     @property
     def ImageName(self):
-        """镜像名称
+        """镜像名称。
+最多支持 60 个字符。
         :rtype: str
         """
         return self._ImageName
@@ -11055,7 +11069,8 @@ BYOL: 自带许可（Bring Your Own License）
 
     @property
     def ImageDescription(self):
-        """镜像描述
+        """镜像描述。
+最多支持 256 个字符。
         :rtype: str
         """
         return self._ImageDescription
@@ -11066,7 +11081,8 @@ BYOL: 自带许可（Bring Your Own License）
 
     @property
     def DryRun(self):
-        """只检查参数，不执行任务
+        """只检查参数，不执行任务。
+默认值：false
         :rtype: bool
         """
         return self._DryRun
@@ -11078,6 +11094,7 @@ BYOL: 自带许可（Bring Your Own License）
     @property
     def Force(self):
         """是否强制导入，参考[强制导入镜像](https://cloud.tencent.com/document/product/213/12849)
+默认值：false
         :rtype: bool
         """
         return self._Force
@@ -11100,7 +11117,8 @@ BYOL: 自带许可（Bring Your Own License）
     @property
     def LicenseType(self):
         """导入镜像后，激活操作系统采用的许可证类型。
-可选项：
+默认值：TencentCloud
+取值范围：
 TencentCloud: 腾讯云官方许可
 BYOL: 自带许可（Bring Your Own License）
         :rtype: str
@@ -11113,7 +11131,9 @@ BYOL: 自带许可（Bring Your Own License）
 
     @property
     def BootMode(self):
-        """启动模式
+        """启动模式。
+取值范围：`Legacy BIOS`、`UEFI`
+默认值：Legacy BIOS
         :rtype: str
         """
         return self._BootMode

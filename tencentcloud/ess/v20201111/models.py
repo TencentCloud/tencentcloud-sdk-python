@@ -300,9 +300,9 @@ class ApproverInfo(AbstractModel):
 
 注: `如果是用模板发起, 优先使用此处上传的, 如果不传则用模板的配置的`
         :type ApproverRoleName: str
-        :param _VerifyChannel: <font coloe="red">【已废弃】</font>签署意愿确认渠道，默认为WEIXINAPP:人脸识别
+        :param _VerifyChannel: <font color="red">【已不再使用】</font>签署意愿确认渠道，默认为WEIXINAPP:人脸识别
 
-注: 将要废弃, 用ApproverSignTypes签署人签署合同时的认证方式代替, 新客户可请用ApproverSignTypes来设置
+注: 该字段已不再使用, 请用ApproverSignTypes签署人签署合同时的认证方式代替, 新客户可请用ApproverSignTypes来设置
         :type VerifyChannel: list of str
         :param _PreReadTime: 签署方在签署合同之前，需要强制阅读合同的时长，可指定为3秒至300秒之间的任意值。
 
@@ -567,9 +567,9 @@ class ApproverInfo(AbstractModel):
 
     @property
     def VerifyChannel(self):
-        """<font coloe="red">【已废弃】</font>签署意愿确认渠道，默认为WEIXINAPP:人脸识别
+        """<font color="red">【已不再使用】</font>签署意愿确认渠道，默认为WEIXINAPP:人脸识别
 
-注: 将要废弃, 用ApproverSignTypes签署人签署合同时的认证方式代替, 新客户可请用ApproverSignTypes来设置
+注: 该字段已不再使用, 请用ApproverSignTypes签署人签署合同时的认证方式代替, 新客户可请用ApproverSignTypes来设置
         :rtype: list of str
         """
         return self._VerifyChannel
@@ -5719,7 +5719,7 @@ class CreateDocumentRequest(AbstractModel):
         :param _Agent: 代理企业和员工的信息。
 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
-        :param _ClientToken: 已废弃字段，客户端Token，保持接口幂等性,最大长度64个字符
+        :param _ClientToken: 该字段已不再使用
         :type ClientToken: str
         """
         self._Operator = None
@@ -5841,7 +5841,7 @@ class CreateDocumentRequest(AbstractModel):
 
     @property
     def ClientToken(self):
-        """已废弃字段，客户端Token，保持接口幂等性,最大长度64个字符
+        """该字段已不再使用
         :rtype: str
         """
         return self._ClientToken
@@ -9033,6 +9033,9 @@ class CreateFlowOption(AbstractModel):
         :param _SignComponentConfig: 签署控件的配置信息，用在嵌入式发起的页面配置，包括 
  - 签署控件 是否默认展示日期.
         :type SignComponentConfig: :class:`tencentcloud.ess.v20201111.models.SignComponentConfig`
+        :param _ForbidEditWatermark: 是否禁止编辑（展示）水印控件属性
+<ul><li>（默认） false -否</li> <li> true - 禁止编辑</li></ul>
+        :type ForbidEditWatermark: bool
         """
         self._CanEditFlow = None
         self._CanEditFormField = None
@@ -9050,6 +9053,7 @@ class CreateFlowOption(AbstractModel):
         self._ShowComponentTypes = None
         self._ResultPageConfig = None
         self._SignComponentConfig = None
+        self._ForbidEditWatermark = None
 
     @property
     def CanEditFlow(self):
@@ -9310,6 +9314,18 @@ class CreateFlowOption(AbstractModel):
     def SignComponentConfig(self, SignComponentConfig):
         self._SignComponentConfig = SignComponentConfig
 
+    @property
+    def ForbidEditWatermark(self):
+        """是否禁止编辑（展示）水印控件属性
+<ul><li>（默认） false -否</li> <li> true - 禁止编辑</li></ul>
+        :rtype: bool
+        """
+        return self._ForbidEditWatermark
+
+    @ForbidEditWatermark.setter
+    def ForbidEditWatermark(self, ForbidEditWatermark):
+        self._ForbidEditWatermark = ForbidEditWatermark
+
 
     def _deserialize(self, params):
         self._CanEditFlow = params.get("CanEditFlow")
@@ -9335,6 +9351,7 @@ class CreateFlowOption(AbstractModel):
         if params.get("SignComponentConfig") is not None:
             self._SignComponentConfig = SignComponentConfig()
             self._SignComponentConfig._deserialize(params.get("SignComponentConfig"))
+        self._ForbidEditWatermark = params.get("ForbidEditWatermark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9495,7 +9512,7 @@ class CreateFlowRequest(AbstractModel):
         :param _FlowType: 合同流程的类别分类（可自定义名称，如销售合同/入职合同等），最大长度为200个字符，仅限中文、字母、数字和下划线组成。
 此合同类型需要跟模板配置的合同类型保持一致。
         :type FlowType: str
-        :param _ClientToken: 已经废弃字段，客户端Token，保持接口幂等性,最大长度64个字符
+        :param _ClientToken: 该字段已不再使用
         :type ClientToken: str
         :param _DeadLine: 合同流程的签署截止时间，格式为Unix标准时间戳（秒），如果未设置签署截止时间，则默认为合同流程创建后的365天时截止。
 如果在签署截止时间前未完成签署，则合同状态会变为已过期，导致合同作废。
@@ -9650,7 +9667,7 @@ class CreateFlowRequest(AbstractModel):
 
     @property
     def ClientToken(self):
-        """已经废弃字段，客户端Token，保持接口幂等性,最大长度64个字符
+        """该字段已不再使用
         :rtype: str
         """
         return self._ClientToken
@@ -13483,7 +13500,7 @@ class CreatePrepareFlowRequest(AbstractModel):
 <ul><li> **OPEN**：开启（默认值）</li>
 <li> **CLOSE**：关闭</li></ul>
         :type IntelligentStatus: str
-        :param _Components: 该字段已废弃，请使用InitiatorComponents
+        :param _Components: 该字段已不再使用，请使用InitiatorComponents
         :type Components: :class:`tencentcloud.ess.v20201111.models.Component`
         :param _FlowOption: 发起合同个性化参数
 用于满足创建及页面操作过程中的个性化要求
@@ -13521,7 +13538,7 @@ class CreatePrepareFlowRequest(AbstractModel):
         :type InitiatorComponents: list of Component
         :param _FlowDisplayType: 在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li><li> <b>3</b> :文书</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
         :type FlowDisplayType: int
-        :param _SignComponentConfig: <font color="red">此参数已经废弃，请使用 CreateFlowOption 里面的 SignComponentConfig</font>
+        :param _SignComponentConfig: <font color="red">此字段已不再使用，请使用 CreateFlowOption 里面的 SignComponentConfig</font>
 签署控件的配置信息，用在嵌入式发起的页面配置，
 包括  
 
@@ -13684,7 +13701,7 @@ class CreatePrepareFlowRequest(AbstractModel):
 
     @property
     def Components(self):
-        """该字段已废弃，请使用InitiatorComponents
+        """该字段已不再使用，请使用InitiatorComponents
         :rtype: :class:`tencentcloud.ess.v20201111.models.Component`
         """
         return self._Components
@@ -13814,7 +13831,7 @@ class CreatePrepareFlowRequest(AbstractModel):
     def SignComponentConfig(self):
         warnings.warn("parameter `SignComponentConfig` is deprecated", DeprecationWarning) 
 
-        """<font color="red">此参数已经废弃，请使用 CreateFlowOption 里面的 SignComponentConfig</font>
+        """<font color="red">此字段已不再使用，请使用 CreateFlowOption 里面的 SignComponentConfig</font>
 签署控件的配置信息，用在嵌入式发起的页面配置，
 包括  
 
@@ -13969,15 +13986,13 @@ class CreatePreparedPersonalEsignRequest(AbstractModel):
 <li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li>
 <li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同 中国大陆居民身份证)</li></ul>
         :type IdCardType: str
-        :param _SealImage: 印章图片的base64
-注：已废弃
-请先通过UploadFiles接口上传文件，获取 FileId
+        :param _SealImage: 该字段已不再使用
         :type SealImage: str
         :param _SealImageCompress: 是否开启印章图片压缩处理，默认不开启，如需开启请设置为 true。当印章超过 2M 时建议开启，开启后图片的 hash 将发生变化。
         :type SealImageCompress: bool
         :param _Mobile: 手机号码；当需要开通自动签时，该参数必传
         :type Mobile: str
-        :param _EnableAutoSign: 此字段已废弃，请勿继续使用。
+        :param _EnableAutoSign: 该字段已不再使用
         :type EnableAutoSign: bool
         :param _SealColor: 印章颜色（参数ProcessSeal=true时生效）
 默认值：BLACK黑色
@@ -14090,9 +14105,7 @@ BLUE 蓝色。
     def SealImage(self):
         warnings.warn("parameter `SealImage` is deprecated", DeprecationWarning) 
 
-        """印章图片的base64
-注：已废弃
-请先通过UploadFiles接口上传文件，获取 FileId
+        """该字段已不再使用
         :rtype: str
         """
         return self._SealImage
@@ -14127,7 +14140,7 @@ BLUE 蓝色。
 
     @property
     def EnableAutoSign(self):
-        """此字段已废弃，请勿继续使用。
+        """该字段已不再使用
         :rtype: bool
         """
         return self._EnableAutoSign
@@ -22861,10 +22874,15 @@ class EmbedUrlOption(AbstractModel):
 
 注意: 此参数仅针对**EmbedType=CREATE_TEMPLATE(创建模板)和EmbedType=CREATE_CONTRACT_DRAFT_COOPEDIT(创建起草合同)有效**，
         :type SkipUploadFile: bool
+        :param _ForbidEditWatermark: 是否禁止编辑（展示）水印控件属性
+<ul><li>（默认） false -否</li> <li> true - 禁止编辑</li></ul>
+
+        :type ForbidEditWatermark: bool
         """
         self._ShowFlowDetailComponent = None
         self._ShowTemplateComponent = None
         self._SkipUploadFile = None
+        self._ForbidEditWatermark = None
 
     @property
     def ShowFlowDetailComponent(self):
@@ -22910,11 +22928,25 @@ class EmbedUrlOption(AbstractModel):
     def SkipUploadFile(self, SkipUploadFile):
         self._SkipUploadFile = SkipUploadFile
 
+    @property
+    def ForbidEditWatermark(self):
+        """是否禁止编辑（展示）水印控件属性
+<ul><li>（默认） false -否</li> <li> true - 禁止编辑</li></ul>
+
+        :rtype: bool
+        """
+        return self._ForbidEditWatermark
+
+    @ForbidEditWatermark.setter
+    def ForbidEditWatermark(self, ForbidEditWatermark):
+        self._ForbidEditWatermark = ForbidEditWatermark
+
 
     def _deserialize(self, params):
         self._ShowFlowDetailComponent = params.get("ShowFlowDetailComponent")
         self._ShowTemplateComponent = params.get("ShowTemplateComponent")
         self._SkipUploadFile = params.get("SkipUploadFile")
+        self._ForbidEditWatermark = params.get("ForbidEditWatermark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33868,9 +33900,7 @@ class UploadFilesRequest(AbstractModel):
 
 注: `该参数仅在关键字定位时，需要去除关键字所在的灰框场景下使用。`
         :type CoverRect: bool
-        :param _CustomIds: 用户自定义ID数组，与上传文件一一对应
-
-注: `历史遗留问题，已经废弃，调用接口时不用赋值`
+        :param _CustomIds: 该字段已不再使用
         :type CustomIds: list of str
         :param _FileUrls: 不再使用，上传文件链接数组，最多支持20个URL
         :type FileUrls: str
@@ -33965,9 +33995,7 @@ class UploadFilesRequest(AbstractModel):
 
     @property
     def CustomIds(self):
-        """用户自定义ID数组，与上传文件一一对应
-
-注: `历史遗留问题，已经废弃，调用接口时不用赋值`
+        """该字段已不再使用
         :rtype: list of str
         """
         return self._CustomIds

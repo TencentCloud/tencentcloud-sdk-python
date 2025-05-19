@@ -95,31 +95,6 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CloseServerlessDBExtranetAccess(self, request):
-        """该产品形态需要下线，已完成客户实例全部下线、后端服务下线等
-
-        【接口下线中，请勿使用】本接口（CloseServerlessDBExtranetAccess）用于关闭serverlessDB实例公网地址
-
-        :param request: Request instance for CloseServerlessDBExtranetAccess.
-        :type request: :class:`tencentcloud.postgres.v20170312.models.CloseServerlessDBExtranetAccessRequest`
-        :rtype: :class:`tencentcloud.postgres.v20170312.models.CloseServerlessDBExtranetAccessResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CloseServerlessDBExtranetAccess", params, headers=headers)
-            response = json.loads(body)
-            model = models.CloseServerlessDBExtranetAccessResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def CreateAccount(self, request):
         """此接口用于创建数据账号，返回的Oid为账号唯一标识。与数据库系统表pg_roles中记录的oid一致。
 
@@ -577,31 +552,6 @@ class PostgresClient(AbstractClient):
             body = self.call("DeleteReadOnlyGroupNetworkAccess", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteReadOnlyGroupNetworkAccessResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DeleteServerlessDBInstance(self, request):
-        """该产品形态需要下线，已完成客户实例全部下线、后端服务下线等
-
-        【接口下线中，请勿使用】本接口 (DeleteServerlessDBInstance) 用于删除一个ServerlessDB实例。
-
-        :param request: Request instance for DeleteServerlessDBInstance.
-        :type request: :class:`tencentcloud.postgres.v20170312.models.DeleteServerlessDBInstanceRequest`
-        :rtype: :class:`tencentcloud.postgres.v20170312.models.DeleteServerlessDBInstanceResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeleteServerlessDBInstance", params, headers=headers)
-            response = json.loads(body)
-            model = models.DeleteServerlessDBInstanceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

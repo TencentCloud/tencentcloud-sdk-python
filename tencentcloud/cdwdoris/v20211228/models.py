@@ -6391,6 +6391,10 @@ class DescribeInstanceStateResponse(AbstractModel):
         :type InstanceStateDesc: str
         :param _FlowMsg: 集群流程错误信息，例如：“创建失败，资源不足”
         :type FlowMsg: str
+        :param _ProcessId: 流程ProcessId
+        :type ProcessId: str
+        :param _JobName: Job名称
+        :type JobName: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -6400,6 +6404,8 @@ class DescribeInstanceStateResponse(AbstractModel):
         self._FlowProgress = None
         self._InstanceStateDesc = None
         self._FlowMsg = None
+        self._ProcessId = None
+        self._JobName = None
         self._RequestId = None
 
     @property
@@ -6469,6 +6475,28 @@ class DescribeInstanceStateResponse(AbstractModel):
         self._FlowMsg = FlowMsg
 
     @property
+    def ProcessId(self):
+        """流程ProcessId
+        :rtype: str
+        """
+        return self._ProcessId
+
+    @ProcessId.setter
+    def ProcessId(self, ProcessId):
+        self._ProcessId = ProcessId
+
+    @property
+    def JobName(self):
+        """Job名称
+        :rtype: str
+        """
+        return self._JobName
+
+    @JobName.setter
+    def JobName(self, JobName):
+        self._JobName = JobName
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -6487,6 +6515,8 @@ class DescribeInstanceStateResponse(AbstractModel):
         self._FlowProgress = params.get("FlowProgress")
         self._InstanceStateDesc = params.get("InstanceStateDesc")
         self._FlowMsg = params.get("FlowMsg")
+        self._ProcessId = params.get("ProcessId")
+        self._JobName = params.get("JobName")
         self._RequestId = params.get("RequestId")
 
 

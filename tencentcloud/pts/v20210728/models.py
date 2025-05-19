@@ -2804,11 +2804,14 @@ class CustomSampleMatrix(AbstractModel):
         :param _Streams: 指标序列数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type Streams: list of SampleStream
+        :param _Step: 两个时间点的时间间隔，单位纳秒
+        :type Step: int
         """
         self._Metric = None
         self._Aggregation = None
         self._Unit = None
         self._Streams = None
+        self._Step = None
 
     @property
     def Metric(self):
@@ -2855,6 +2858,17 @@ class CustomSampleMatrix(AbstractModel):
     def Streams(self, Streams):
         self._Streams = Streams
 
+    @property
+    def Step(self):
+        """两个时间点的时间间隔，单位纳秒
+        :rtype: int
+        """
+        return self._Step
+
+    @Step.setter
+    def Step(self, Step):
+        self._Step = Step
+
 
     def _deserialize(self, params):
         self._Metric = params.get("Metric")
@@ -2866,6 +2880,7 @@ class CustomSampleMatrix(AbstractModel):
                 obj = SampleStream()
                 obj._deserialize(item)
                 self._Streams.append(obj)
+        self._Step = params.get("Step")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

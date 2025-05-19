@@ -1222,7 +1222,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeBackupConfig(self, request):
-        """本接口(DescribeBackupConfig)用于查询数据库备份配置信息。
+        """本接口（DescribeBackupConfig）用于查询数据库备份配置信息。
 
         :param request: Request instance for DescribeBackupConfig.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeBackupConfigRequest`

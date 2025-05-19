@@ -23976,7 +23976,7 @@ drop：拒绝
         :type ServiceTemplateId: str
         :param _Id: （入参时无需填写，自动生成）规则对应的唯一id
         :type Id: str
-        :param _Enable: （入参时、Enable已弃用；由通用配置中新增规则启用状态控制）
+        :param _Enable: （入参时Enable无意义；由通用配置中新增规则启用状态控制）
 规则状态，true表示启用，false表示禁用
         :type Enable: str
         :param _Uid: 规则对应的唯一内部id
@@ -24135,7 +24135,7 @@ drop：拒绝
 
     @property
     def Enable(self):
-        """（入参时、Enable已弃用；由通用配置中新增规则启用状态控制）
+        """（入参时Enable无意义；由通用配置中新增规则启用状态控制）
 规则状态，true表示启用，false表示禁用
         :rtype: str
         """

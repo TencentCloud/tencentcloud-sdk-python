@@ -35,16 +35,16 @@ class ApplicationInfo(AbstractModel):
         :type Description: str
         :param _ConfigEnvironment: 应用的环境配置
         :type ConfigEnvironment: str
-        :param _MinSystemDiskSize: 系统盘大小下限
+        :param _MinSystemDiskSize: 系统盘大小下限，单位GB
         :type MinSystemDiskSize: int
-        :param _ApplicationType: 应用类型，目前该项取值可以为PRIVATE_APPLICATION或者PUBLIC_APPLICATION
+        :param _ApplicationType: 应用类型，目前该项取值可以为PUBLIC_APPLICATION（公共应用）；PRIVATE_APPLICATION（自定义应用）；COMMUNITY_APPLICATION（社区应用）
         :type ApplicationType: str
         :param _ApplicationState: 应用状态：CREATING-创建中；ONLINE -正常在线；DELETING -删除中；ARREARS - 欠费隔离
 示例值：ONLINE
         :type ApplicationState: str
-        :param _CreateTime: 应用创建时间
+        :param _CreateTime: 应用创建时间，格式：%Y-%m-%d %H:%M:%S
         :type CreateTime: str
-        :param _ApplicationSize: 应用大小
+        :param _ApplicationSize: 应用大小，单位GB
         :type ApplicationSize: int
         """
         self._ApplicationId = None
@@ -105,7 +105,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def MinSystemDiskSize(self):
-        """系统盘大小下限
+        """系统盘大小下限，单位GB
         :rtype: int
         """
         return self._MinSystemDiskSize
@@ -116,7 +116,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def ApplicationType(self):
-        """应用类型，目前该项取值可以为PRIVATE_APPLICATION或者PUBLIC_APPLICATION
+        """应用类型，目前该项取值可以为PUBLIC_APPLICATION（公共应用）；PRIVATE_APPLICATION（自定义应用）；COMMUNITY_APPLICATION（社区应用）
         :rtype: str
         """
         return self._ApplicationType
@@ -139,7 +139,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """应用创建时间
+        """应用创建时间，格式：%Y-%m-%d %H:%M:%S
         :rtype: str
         """
         return self._CreateTime
@@ -150,7 +150,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def ApplicationSize(self):
-        """应用大小
+        """应用大小，单位GB
         :rtype: int
         """
         return self._ApplicationSize
@@ -407,18 +407,11 @@ class DescribeApplicationsRequest(AbstractModel):
         r"""
         :param _ApplicationIds: 应用id列表
         :type ApplicationIds: list of str
-        :param _Filters: 过滤器，跟ApplicationIds不能共用，支持的filter主要有：
-application-id: 精确匹配;
-scene-id: 精确匹配;
-application-name: 模糊匹配;
-application-type: 精确匹配;
+        :param _Filters: 过滤器，跟ApplicationIds不能共用，支持的filter主要有：application-id: 精确匹配;scene-id: 精确匹配，通过调用接口 [DescribeScenes](https://cloud.tencent.com/document/api/1721/101608)获取;application-name: 模糊匹配;application-type: 精确匹配，枚举类型如下：PUBLIC_APPLICATION（公共应用）/ PRIVATE_APPLICATION（自定义应用）/ COMMUNITY_APPLICATION（社区应用）;
         :type Filters: list of Filter
-        :param _Offset: 偏移量，默认为0
+        :param _Offset: 偏移量，不得小于0，默认为0
         :type Offset: int
-        :param _Limit: 返回量，默认为20
-MC：1000
-用户：100
-
+        :param _Limit: 返回量，不得大于100，默认为20
         :type Limit: int
         :param _OrderField: 应用列表排序的依据字段。取值范围："CREATED_TIME"：依据应用的创建时间排序。 "APPLICATION_SIZE"：依据应用的大小排序。默认按应用的创建时间排序。
         :type OrderField: str
@@ -445,11 +438,7 @@ MC：1000
 
     @property
     def Filters(self):
-        """过滤器，跟ApplicationIds不能共用，支持的filter主要有：
-application-id: 精确匹配;
-scene-id: 精确匹配;
-application-name: 模糊匹配;
-application-type: 精确匹配;
+        """过滤器，跟ApplicationIds不能共用，支持的filter主要有：application-id: 精确匹配;scene-id: 精确匹配，通过调用接口 [DescribeScenes](https://cloud.tencent.com/document/api/1721/101608)获取;application-name: 模糊匹配;application-type: 精确匹配，枚举类型如下：PUBLIC_APPLICATION（公共应用）/ PRIVATE_APPLICATION（自定义应用）/ COMMUNITY_APPLICATION（社区应用）;
         :rtype: list of Filter
         """
         return self._Filters
@@ -460,7 +449,7 @@ application-type: 精确匹配;
 
     @property
     def Offset(self):
-        """偏移量，默认为0
+        """偏移量，不得小于0，默认为0
         :rtype: int
         """
         return self._Offset
@@ -471,10 +460,7 @@ application-type: 精确匹配;
 
     @property
     def Limit(self):
-        """返回量，默认为20
-MC：1000
-用户：100
-
+        """返回量，不得大于100，默认为20
         :rtype: int
         """
         return self._Limit
@@ -598,14 +584,14 @@ class DescribeInstanceNetworkStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: 实例ID数组，单次请求最多不超过100个实例
+        :param _InstanceIds: 实例ID数组，单次请求最多不超过100个实例；实例ID通过调用接口[DescribeInstances](https://cloud.tencent.com/document/api/1721/101612)获取。
         :type InstanceIds: list of str
         """
         self._InstanceIds = None
 
     @property
     def InstanceIds(self):
-        """实例ID数组，单次请求最多不超过100个实例
+        """实例ID数组，单次请求最多不超过100个实例；实例ID通过调用接口[DescribeInstances](https://cloud.tencent.com/document/api/1721/101612)获取。
         :rtype: list of str
         """
         return self._InstanceIds
@@ -697,14 +683,13 @@ class DescribeInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: 实例元组
+        :param _InstanceIds: 实例元组，数量上限100
         :type InstanceIds: list of str
-        :param _Filters: 描述键值对过滤器，用于条件过滤查询。目前支持的过滤器有：instance-id，实例id；instance-state，实例状态；charge-type，付费方式；public-ip-address，公网IP过滤
+        :param _Filters: 描述键值对过滤器，用于条件过滤查询。目前支持的过滤器有： instance-id，实例id； instance-state，实例状态：RUNNING，PENDING，STOPPED，ARREARS，STOPPED_NO_CHARGE； charge-type，付费方式：PREPAID_BY_MONTH，POSTPAID_BY_HOUR； public-ip-address，公网IP过滤
         :type Filters: list of Filter
-        :param _Offset: 偏移量，默认为0
-
+        :param _Offset: 偏移量，默认为0，不得大于100
         :type Offset: int
-        :param _Limit: 返回量，默认为20
+        :param _Limit: 返回量，默认为20，不能小于0
         :type Limit: int
         """
         self._InstanceIds = None
@@ -714,7 +699,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """实例元组
+        """实例元组，数量上限100
         :rtype: list of str
         """
         return self._InstanceIds
@@ -725,7 +710,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """描述键值对过滤器，用于条件过滤查询。目前支持的过滤器有：instance-id，实例id；instance-state，实例状态；charge-type，付费方式；public-ip-address，公网IP过滤
+        """描述键值对过滤器，用于条件过滤查询。目前支持的过滤器有： instance-id，实例id； instance-state，实例状态：RUNNING，PENDING，STOPPED，ARREARS，STOPPED_NO_CHARGE； charge-type，付费方式：PREPAID_BY_MONTH，POSTPAID_BY_HOUR； public-ip-address，公网IP过滤
         :rtype: list of Filter
         """
         return self._Filters
@@ -736,8 +721,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """偏移量，默认为0
-
+        """偏移量，默认为0，不得大于100
         :rtype: int
         """
         return self._Offset
@@ -748,7 +732,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """返回量，默认为20
+        """返回量，默认为20，不能小于0
         :rtype: int
         """
         return self._Limit
@@ -1070,14 +1054,14 @@ class DescribeScenesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SceneIds: 场景id列表
+        :param _SceneIds: 场景id列表，单次能查询100个场景id
         :type SceneIds: list of str
         """
         self._SceneIds = None
 
     @property
     def SceneIds(self):
-        """场景id列表
+        """场景id列表，单次能查询100个场景id
         :rtype: list of str
         """
         return self._SceneIds
@@ -1154,7 +1138,7 @@ class DescribeServiceLoginSettingsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例id
+        :param _InstanceId: 实例ID通过调用接口[DescribeInstances](https://cloud.tencent.com/document/api/1721/101612)获取。
         :type InstanceId: str
         :param _ServiceName: 服务名称
         :type ServiceName: str
@@ -1164,7 +1148,7 @@ class DescribeServiceLoginSettingsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例id
+        """实例ID通过调用接口[DescribeInstances](https://cloud.tencent.com/document/api/1721/101612)获取。
         :rtype: str
         """
         return self._InstanceId
@@ -1307,15 +1291,15 @@ class InquirePriceRunInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApplicationId: 应用ID
+        :param _ApplicationId: 应用ID通过调用接口[DescribeApplications](https://cloud.tencent.com/document/api/1721/101609)获取。
         :type ApplicationId: str
-        :param _BundleType: 算力套餐类型
+        :param _BundleType: 算力套餐类型, 枚举：XL,XL_2X, 3XL, 3XL_2X, 4XL, 24GB_A.
         :type BundleType: str
         :param _SystemDisk: 实例系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
         :type SystemDisk: :class:`tencentcloud.hai.v20230812.models.SystemDisk`
-        :param _InstanceCount: 购买实例数量。
+        :param _InstanceCount: 购买实例数量，单次请求实例数量上限为10。
         :type InstanceCount: int
-        :param _InstanceName: 实例显示名称
+        :param _InstanceName: 实例显示名称，名称长度限制为128个字符。
         :type InstanceName: str
         :param _ClientToken: 幂等请求token
         :type ClientToken: str
@@ -1338,7 +1322,7 @@ class InquirePriceRunInstancesRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用ID
+        """应用ID通过调用接口[DescribeApplications](https://cloud.tencent.com/document/api/1721/101609)获取。
         :rtype: str
         """
         return self._ApplicationId
@@ -1349,7 +1333,7 @@ class InquirePriceRunInstancesRequest(AbstractModel):
 
     @property
     def BundleType(self):
-        """算力套餐类型
+        """算力套餐类型, 枚举：XL,XL_2X, 3XL, 3XL_2X, 4XL, 24GB_A.
         :rtype: str
         """
         return self._BundleType
@@ -1371,7 +1355,7 @@ class InquirePriceRunInstancesRequest(AbstractModel):
 
     @property
     def InstanceCount(self):
-        """购买实例数量。
+        """购买实例数量，单次请求实例数量上限为10。
         :rtype: int
         """
         return self._InstanceCount
@@ -1382,7 +1366,7 @@ class InquirePriceRunInstancesRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        """实例显示名称
+        """实例显示名称，名称长度限制为128个字符。
         :rtype: str
         """
         return self._InstanceName
@@ -1536,11 +1520,11 @@ TERMINATED：表示已销毁
         :param _GPUPerformance: 算力
 
         :type GPUPerformance: str
-        :param _GPUMemory: 显存
+        :param _GPUMemory: 显存，单位：GB
         :type GPUMemory: str
-        :param _CPU: CPU核数
+        :param _CPU: CPU核数，单位：核
         :type CPU: str
-        :param _Memory: 内存
+        :param _Memory: 内存，单位：GB
 
         :type Memory: str
         :param _SystemDisk: 系统盘数据
@@ -1560,17 +1544,17 @@ OPERATING：表示操作执行中
 FAILED：表示操作失败
 
         :type LatestOperationState: str
-        :param _CreateTime: 实例创建时间
+        :param _CreateTime: 实例创建时间，时间格式："YYYY-MM-DD HH:MM:SS"
         :type CreateTime: str
-        :param _MaxOutBandwidth: 公网出带宽上限，默认10Mbps
+        :param _MaxOutBandwidth: 公网出带宽上限，默认10Mbps，单位：Mbps
         :type MaxOutBandwidth: str
-        :param _MaxFreeTraffic: 每月免费流量，默认500G
+        :param _MaxFreeTraffic: 每月免费流量，默认500G，单位：GB
         :type MaxFreeTraffic: str
         :param _ConfigurationEnvironment: 应用配置环境
         :type ConfigurationEnvironment: str
         :param _LoginServices: 实例包含的登录服务详情
         :type LoginServices: list of LoginService
-        :param _OSType: 应用服务的操作系统类型
+        :param _OSType: 应用服务的操作系统类型；参数：linux、windows
         :type OSType: str
         """
         self._InstanceId = None
@@ -1685,7 +1669,7 @@ TERMINATED：表示已销毁
 
     @property
     def GPUMemory(self):
-        """显存
+        """显存，单位：GB
         :rtype: str
         """
         return self._GPUMemory
@@ -1696,7 +1680,7 @@ TERMINATED：表示已销毁
 
     @property
     def CPU(self):
-        """CPU核数
+        """CPU核数，单位：核
         :rtype: str
         """
         return self._CPU
@@ -1707,7 +1691,7 @@ TERMINATED：表示已销毁
 
     @property
     def Memory(self):
-        """内存
+        """内存，单位：GB
 
         :rtype: str
         """
@@ -1790,7 +1774,7 @@ FAILED：表示操作失败
 
     @property
     def CreateTime(self):
-        """实例创建时间
+        """实例创建时间，时间格式："YYYY-MM-DD HH:MM:SS"
         :rtype: str
         """
         return self._CreateTime
@@ -1801,7 +1785,7 @@ FAILED：表示操作失败
 
     @property
     def MaxOutBandwidth(self):
-        """公网出带宽上限，默认10Mbps
+        """公网出带宽上限，默认10Mbps，单位：Mbps
         :rtype: str
         """
         return self._MaxOutBandwidth
@@ -1812,7 +1796,7 @@ FAILED：表示操作失败
 
     @property
     def MaxFreeTraffic(self):
-        """每月免费流量，默认500G
+        """每月免费流量，默认500G，单位：GB
         :rtype: str
         """
         return self._MaxFreeTraffic
@@ -1845,7 +1829,7 @@ FAILED：表示操作失败
 
     @property
     def OSType(self):
-        """应用服务的操作系统类型
+        """应用服务的操作系统类型；参数：linux、windows
         :rtype: str
         """
         return self._OSType
@@ -2587,17 +2571,16 @@ class RegionInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Region: ap-guangzhou
-
+        :param _Region: 地域
         :type Region: str
-        :param _RegionName: 华南地区(广州)
+        :param _RegionName: 地域名称
         :type RegionName: str
         :param _RegionState: 地域是否可用状态
 AVAILABLE：可用
 
         :type RegionState: str
         :param _ScholarRocketSupportState: 学术加速是否支持：
-NO_NEED_SUPPORT表示不需支持；NOT_SUPPORT_YET表示暂未支持；ALREADY_SUPPORT表示已经支持。对于ALREADY_SUPPORT的地域才需进一步调用DescribeScholarRocketStatus查看学术加速是开启还是关闭
+NO_NEED_SUPPORT表示不需支持；NOT_SUPPORT_YET表示暂未支持；ALREADY_SUPPORT表示已经支持。
         :type ScholarRocketSupportState: str
         """
         self._Region = None
@@ -2607,8 +2590,7 @@ NO_NEED_SUPPORT表示不需支持；NOT_SUPPORT_YET表示暂未支持；ALREADY_
 
     @property
     def Region(self):
-        """ap-guangzhou
-
+        """地域
         :rtype: str
         """
         return self._Region
@@ -2619,7 +2601,7 @@ NO_NEED_SUPPORT表示不需支持；NOT_SUPPORT_YET表示暂未支持；ALREADY_
 
     @property
     def RegionName(self):
-        """华南地区(广州)
+        """地域名称
         :rtype: str
         """
         return self._RegionName
@@ -2644,7 +2626,7 @@ AVAILABLE：可用
     @property
     def ScholarRocketSupportState(self):
         """学术加速是否支持：
-NO_NEED_SUPPORT表示不需支持；NOT_SUPPORT_YET表示暂未支持；ALREADY_SUPPORT表示已经支持。对于ALREADY_SUPPORT的地域才需进一步调用DescribeScholarRocketStatus查看学术加速是开启还是关闭
+NO_NEED_SUPPORT表示不需支持；NOT_SUPPORT_YET表示暂未支持；ALREADY_SUPPORT表示已经支持。
         :rtype: str
         """
         return self._ScholarRocketSupportState
@@ -2676,15 +2658,15 @@ class RunInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApplicationId: 应用ID
+        :param _ApplicationId: 应用ID通过调用接口[DescribeApplications](https://cloud.tencent.com/document/api/1721/101609)获取。
         :type ApplicationId: str
-        :param _BundleType: 算力套餐类型
+        :param _BundleType: 算力套餐类型, 枚举：XL,XL_2X, 3XL, 3XL_2X, 4XL, 24GB_A
         :type BundleType: str
         :param _SystemDisk: 实例系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
         :type SystemDisk: :class:`tencentcloud.hai.v20230812.models.SystemDisk`
-        :param _InstanceCount: 购买实例数量。
+        :param _InstanceCount: 购买实例数量，单次请求实例数量上限为10.
         :type InstanceCount: int
-        :param _InstanceName: 实例显示名称
+        :param _InstanceName: 实例显示名称，名称长度限制为128个字符.
         :type InstanceName: str
         :param _ClientToken: 幂等请求的token
         :type ClientToken: str
@@ -2701,7 +2683,7 @@ class RunInstancesRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """应用ID
+        """应用ID通过调用接口[DescribeApplications](https://cloud.tencent.com/document/api/1721/101609)获取。
         :rtype: str
         """
         return self._ApplicationId
@@ -2712,7 +2694,7 @@ class RunInstancesRequest(AbstractModel):
 
     @property
     def BundleType(self):
-        """算力套餐类型
+        """算力套餐类型, 枚举：XL,XL_2X, 3XL, 3XL_2X, 4XL, 24GB_A
         :rtype: str
         """
         return self._BundleType
@@ -2734,7 +2716,7 @@ class RunInstancesRequest(AbstractModel):
 
     @property
     def InstanceCount(self):
-        """购买实例数量。
+        """购买实例数量，单次请求实例数量上限为10.
         :rtype: int
         """
         return self._InstanceCount
@@ -2745,7 +2727,7 @@ class RunInstancesRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        """实例显示名称
+        """实例显示名称，名称长度限制为128个字符.
         :rtype: str
         """
         return self._InstanceName
@@ -2903,6 +2885,7 @@ class StartInstanceRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceId: 实例ID
+可通过DescribeInstances获取实例ID
         :type InstanceId: str
         :param _DryRun: 默认为False，True代表只验证接口连通性
         :type DryRun: bool
@@ -2913,6 +2896,7 @@ class StartInstanceRequest(AbstractModel):
     @property
     def InstanceId(self):
         """实例ID
+可通过DescribeInstances获取实例ID
         :rtype: str
         """
         return self._InstanceId
@@ -2997,6 +2981,7 @@ class StopInstanceRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceId: 实例ID
+可通过DescribeInstances获取实例ID
         :type InstanceId: str
         :param _StopMode: hai实例关机的模式，目前仅支持关机不收费：
 STOP_CHARGE -- 关闭hai实例，释放计算资源，停止收取计算资源的费用。
@@ -3012,6 +2997,7 @@ STOP_CHARGE -- 关闭hai实例，释放计算资源，停止收取计算资源�
     @property
     def InstanceId(self):
         """实例ID
+可通过DescribeInstances获取实例ID
         :rtype: str
         """
         return self._InstanceId
@@ -3111,7 +3097,7 @@ class SystemDisk(AbstractModel):
         r"""
         :param _DiskType: 系统盘类型。取值范围：<li>CLOUD_PREMIUM：高性能云硬盘</li><li>CLOUD_HSSD：增强型SSD云盘</li>默认取值：当前有库存的硬盘类型。
         :type DiskType: str
-        :param _DiskSize: 系统盘大小，单位：GB。默认值为 80
+        :param _DiskSize: 系统盘大小，单位：GB。默认值为 80，取值范围：80-1000
         :type DiskSize: int
         :param _DiskName: 系统盘分区盘符
         :type DiskName: str
@@ -3133,7 +3119,7 @@ class SystemDisk(AbstractModel):
 
     @property
     def DiskSize(self):
-        """系统盘大小，单位：GB。默认值为 80
+        """系统盘大小，单位：GB。默认值为 80，取值范围：80-1000
         :rtype: int
         """
         return self._DiskSize
@@ -3176,6 +3162,7 @@ class TerminateInstancesRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceIds: 实例ID列表
+可通过DescribeInstances接口获取ID列表.单次能查询100个InstanceId
         :type InstanceIds: list of str
         :param _DryRun: 默认为False，True代表只验证接口连通性
         :type DryRun: bool
@@ -3186,6 +3173,7 @@ class TerminateInstancesRequest(AbstractModel):
     @property
     def InstanceIds(self):
         """实例ID列表
+可通过DescribeInstances接口获取ID列表.单次能查询100个InstanceId
         :rtype: list of str
         """
         return self._InstanceIds

@@ -449,6 +449,9 @@ OPERATIONDENIED_OUTQUERYLIMIT = 'OperationDenied.OutQueryLimit'
 # 当前企业员工没有开通境外签署能力。
 OPERATIONDENIED_OVERSEAABILITYNOTOPEN = 'OperationDenied.OverseaAbilityNotOpen'
 
+# 该用户名下没有可用签名
+OPERATIONDENIED_PERSONHASNOSIGNATURE = 'OperationDenied.PersonHasNoSignature'
+
 # 该用户已关闭或者未开启自动签服务
 OPERATIONDENIED_PERSONNOOPENSERVERSIGN = 'OperationDenied.PersonNoOpenServerSign'
 

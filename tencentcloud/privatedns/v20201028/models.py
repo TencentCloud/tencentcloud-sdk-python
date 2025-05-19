@@ -25,13 +25,13 @@ class AccountVpcInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UniqVpcId: VpcId： vpc-xadsafsdasd
+        :param _UniqVpcId: VpcId
         :type UniqVpcId: str
-        :param _Region: Vpc所属地区: ap-guangzhou, ap-shanghai
+        :param _Region: Vpc所属地区
         :type Region: str
-        :param _Uin: Vpc所属账号: 123456789
+        :param _Uin: Vpc所属账号
         :type Uin: str
-        :param _VpcName: vpc资源名称：testname
+        :param _VpcName: vpc资源名称
         :type VpcName: str
         """
         self._UniqVpcId = None
@@ -41,7 +41,7 @@ class AccountVpcInfo(AbstractModel):
 
     @property
     def UniqVpcId(self):
-        """VpcId： vpc-xadsafsdasd
+        """VpcId
         :rtype: str
         """
         return self._UniqVpcId
@@ -52,7 +52,7 @@ class AccountVpcInfo(AbstractModel):
 
     @property
     def Region(self):
-        """Vpc所属地区: ap-guangzhou, ap-shanghai
+        """Vpc所属地区
         :rtype: str
         """
         return self._Region
@@ -63,7 +63,7 @@ class AccountVpcInfo(AbstractModel):
 
     @property
     def Uin(self):
-        """Vpc所属账号: 123456789
+        """Vpc所属账号
         :rtype: str
         """
         return self._Uin
@@ -74,7 +74,7 @@ class AccountVpcInfo(AbstractModel):
 
     @property
     def VpcName(self):
-        """vpc资源名称：testname
+        """vpc资源名称
         :rtype: str
         """
         return self._VpcName

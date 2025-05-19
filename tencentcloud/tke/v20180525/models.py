@@ -29033,175 +29033,6 @@ class Filter(AbstractModel):
         
 
 
-class ForwardApplicationRequestV3Request(AbstractModel):
-    """ForwardApplicationRequestV3请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Method: 请求集群addon的访问
-        :type Method: str
-        :param _Path: 请求集群addon的路径
-        :type Path: str
-        :param _Accept: 请求集群addon后允许接收的数据格式
-        :type Accept: str
-        :param _ContentType: 请求集群addon的数据格式
-        :type ContentType: str
-        :param _RequestBody: 请求集群addon的数据
-        :type RequestBody: str
-        :param _ClusterName: 集群名称
-        :type ClusterName: str
-        :param _EncodedBody: 是否编码请求内容
-        :type EncodedBody: str
-        """
-        self._Method = None
-        self._Path = None
-        self._Accept = None
-        self._ContentType = None
-        self._RequestBody = None
-        self._ClusterName = None
-        self._EncodedBody = None
-
-    @property
-    def Method(self):
-        """请求集群addon的访问
-        :rtype: str
-        """
-        return self._Method
-
-    @Method.setter
-    def Method(self, Method):
-        self._Method = Method
-
-    @property
-    def Path(self):
-        """请求集群addon的路径
-        :rtype: str
-        """
-        return self._Path
-
-    @Path.setter
-    def Path(self, Path):
-        self._Path = Path
-
-    @property
-    def Accept(self):
-        """请求集群addon后允许接收的数据格式
-        :rtype: str
-        """
-        return self._Accept
-
-    @Accept.setter
-    def Accept(self, Accept):
-        self._Accept = Accept
-
-    @property
-    def ContentType(self):
-        """请求集群addon的数据格式
-        :rtype: str
-        """
-        return self._ContentType
-
-    @ContentType.setter
-    def ContentType(self, ContentType):
-        self._ContentType = ContentType
-
-    @property
-    def RequestBody(self):
-        """请求集群addon的数据
-        :rtype: str
-        """
-        return self._RequestBody
-
-    @RequestBody.setter
-    def RequestBody(self, RequestBody):
-        self._RequestBody = RequestBody
-
-    @property
-    def ClusterName(self):
-        """集群名称
-        :rtype: str
-        """
-        return self._ClusterName
-
-    @ClusterName.setter
-    def ClusterName(self, ClusterName):
-        self._ClusterName = ClusterName
-
-    @property
-    def EncodedBody(self):
-        """是否编码请求内容
-        :rtype: str
-        """
-        return self._EncodedBody
-
-    @EncodedBody.setter
-    def EncodedBody(self, EncodedBody):
-        self._EncodedBody = EncodedBody
-
-
-    def _deserialize(self, params):
-        self._Method = params.get("Method")
-        self._Path = params.get("Path")
-        self._Accept = params.get("Accept")
-        self._ContentType = params.get("ContentType")
-        self._RequestBody = params.get("RequestBody")
-        self._ClusterName = params.get("ClusterName")
-        self._EncodedBody = params.get("EncodedBody")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ForwardApplicationRequestV3Response(AbstractModel):
-    """ForwardApplicationRequestV3返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ResponseBody: 请求集群addon后返回的数据
-        :type ResponseBody: str
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._ResponseBody = None
-        self._RequestId = None
-
-    @property
-    def ResponseBody(self):
-        """请求集群addon后返回的数据
-        :rtype: str
-        """
-        return self._ResponseBody
-
-    @ResponseBody.setter
-    def ResponseBody(self, ResponseBody):
-        self._ResponseBody = ResponseBody
-
-    @property
-    def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._ResponseBody = params.get("ResponseBody")
-        self._RequestId = params.get("RequestId")
-
-
 class ForwardTKEEdgeApplicationRequestV3Request(AbstractModel):
     """ForwardTKEEdgeApplicationRequestV3请求参数结构体
 
@@ -36743,27 +36574,16 @@ class OpenConstraintInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 策略实例名称
-        :type Name: str
         :param _EventNums: 策略实例关联事件数
         :type EventNums: int
+        :param _Name: 策略实例名称
+        :type Name: str
         :param _YamlDetail: 实例yaml详情base64编码
         :type YamlDetail: str
         """
-        self._Name = None
         self._EventNums = None
+        self._Name = None
         self._YamlDetail = None
-
-    @property
-    def Name(self):
-        """策略实例名称
-        :rtype: str
-        """
-        return self._Name
-
-    @Name.setter
-    def Name(self, Name):
-        self._Name = Name
 
     @property
     def EventNums(self):
@@ -36775,6 +36595,17 @@ class OpenConstraintInfo(AbstractModel):
     @EventNums.setter
     def EventNums(self, EventNums):
         self._EventNums = EventNums
+
+    @property
+    def Name(self):
+        """策略实例名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
 
     @property
     def YamlDetail(self):
@@ -36789,8 +36620,8 @@ class OpenConstraintInfo(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._Name = params.get("Name")
         self._EventNums = params.get("EventNums")
+        self._Name = params.get("Name")
         self._YamlDetail = params.get("YamlDetail")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

@@ -335,6 +335,10 @@ class AndroidInstance(AbstractModel):
         :type UserId: str
         :param _PrivateIP: 内网 IP
         :type PrivateIP: str
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _HostServerSerialNumber: 机箱 ID
+        :type HostServerSerialNumber: str
         """
         self._AndroidInstanceId = None
         self._AndroidInstanceRegion = None
@@ -350,6 +354,8 @@ class AndroidInstance(AbstractModel):
         self._Name = None
         self._UserId = None
         self._PrivateIP = None
+        self._CreateTime = None
+        self._HostServerSerialNumber = None
 
     @property
     def AndroidInstanceId(self):
@@ -505,6 +511,28 @@ class AndroidInstance(AbstractModel):
     def PrivateIP(self, PrivateIP):
         self._PrivateIP = PrivateIP
 
+    @property
+    def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def HostServerSerialNumber(self):
+        """机箱 ID
+        :rtype: str
+        """
+        return self._HostServerSerialNumber
+
+    @HostServerSerialNumber.setter
+    def HostServerSerialNumber(self, HostServerSerialNumber):
+        self._HostServerSerialNumber = HostServerSerialNumber
+
 
     def _deserialize(self, params):
         self._AndroidInstanceId = params.get("AndroidInstanceId")
@@ -526,6 +554,8 @@ class AndroidInstance(AbstractModel):
         self._Name = params.get("Name")
         self._UserId = params.get("UserId")
         self._PrivateIP = params.get("PrivateIP")
+        self._CreateTime = params.get("CreateTime")
+        self._HostServerSerialNumber = params.get("HostServerSerialNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

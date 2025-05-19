@@ -157,13 +157,13 @@ class ApplyDiskBackupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskBackupId: 云硬盘备份点ID，可通过 DescribeDiskBackups 查询。
+        :param _DiskBackupId: 云硬盘备份点ID，可以通过[DescribeDiskBackups](/document/product/362/80278)接口查询。
         :type DiskBackupId: str
-        :param _DiskId: 云硬盘备份点原云硬盘ID，可通过DescribeDisks接口查询。
+        :param _DiskId: 云硬盘备份点原云硬盘ID，可以通过[DescribeDisks](/document/product/362/16315)接口查。
         :type DiskId: str
         :param _AutoStopInstance: 回滚云硬盘备份点前是否自动关机，默认为FALSE，表示不自动关机
         :type AutoStopInstance: bool
-        :param _AutoStartInstance: 回滚云硬盘备份点完成后是否自动开机，默认为FALSE，表示不自动开机
+        :param _AutoStartInstance: 回滚云硬盘备份点完成后是否自动开机，默认为FALSE，表示不自动开机; AutoStartInstance参数需要在AutoStopInstance为true时才能为true。
         :type AutoStartInstance: bool
         """
         self._DiskBackupId = None
@@ -173,7 +173,7 @@ class ApplyDiskBackupRequest(AbstractModel):
 
     @property
     def DiskBackupId(self):
-        """云硬盘备份点ID，可通过 DescribeDiskBackups 查询。
+        """云硬盘备份点ID，可以通过[DescribeDiskBackups](/document/product/362/80278)接口查询。
         :rtype: str
         """
         return self._DiskBackupId
@@ -184,7 +184,7 @@ class ApplyDiskBackupRequest(AbstractModel):
 
     @property
     def DiskId(self):
-        """云硬盘备份点原云硬盘ID，可通过DescribeDisks接口查询。
+        """云硬盘备份点原云硬盘ID，可以通过[DescribeDisks](/document/product/362/16315)接口查。
         :rtype: str
         """
         return self._DiskId
@@ -206,7 +206,7 @@ class ApplyDiskBackupRequest(AbstractModel):
 
     @property
     def AutoStartInstance(self):
-        """回滚云硬盘备份点完成后是否自动开机，默认为FALSE，表示不自动开机
+        """回滚云硬盘备份点完成后是否自动开机，默认为FALSE，表示不自动开机; AutoStartInstance参数需要在AutoStopInstance为true时才能为true。
         :rtype: bool
         """
         return self._AutoStartInstance
@@ -1047,7 +1047,7 @@ class BindAutoSnapshotPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoSnapshotPolicyId: 要绑定的定期快照策略ID。
+        :param _AutoSnapshotPolicyId: 要绑定的定期快照策略ID，通过[ DescribeAutoSnapshotPolicies](https://cloud.tencent.com/document/api/362/33556)接口查询。
         :type AutoSnapshotPolicyId: str
         :param _DiskIds: 要绑定的云硬盘ID列表，一次请求最多绑定80块云盘。
         :type DiskIds: list of str
@@ -1057,7 +1057,7 @@ class BindAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def AutoSnapshotPolicyId(self):
-        """要绑定的定期快照策略ID。
+        """要绑定的定期快照策略ID，通过[ DescribeAutoSnapshotPolicies](https://cloud.tencent.com/document/api/362/33556)接口查询。
         :rtype: str
         """
         return self._AutoSnapshotPolicyId
@@ -1738,7 +1738,7 @@ class CreateDisksRequest(AbstractModel):
         :type Placement: :class:`tencentcloud.cbs.v20170312.models.Placement`
         :param _DiskChargeType: 云硬盘计费类型。<br><li>PREPAID：预付费，即包年包月</li><br><li>POSTPAID_BY_HOUR：按小时后付费</li><br><li>CDCPAID：独享集群付费<br>各类型价格请参考云硬盘[价格总览](/document/product/362/2413)。</li>
         :type DiskChargeType: str
-        :param _DiskType: 硬盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘</li><br><li>CLOUD_PREMIUM：表示高性能云硬盘</li><br><li>CLOUD_BSSD：表示通用型SSD云硬盘</li><br><li>CLOUD_SSD：表示SSD云硬盘</li><br><li>CLOUD_HSSD：表示增强型SSD云硬盘</li><br><li>CLOUD_TSSD：表示极速型SSD云硬盘。</li>
+        :param _DiskType: 硬盘介质类型。取值范围：<br><li>CLOUD_PREMIUM：表示高性能云硬盘</li><br><li>CLOUD_BSSD：表示通用型SSD云硬盘</li><br><li>CLOUD_SSD：表示SSD云硬盘</li><br><li>CLOUD_HSSD：表示增强型SSD云硬盘</li><br><li>CLOUD_TSSD：表示极速型SSD云硬盘。</li>极速型SSD云硬盘（CLOUD_TSSD）仅支持随部分实例类型一同购买，暂不支持单独创建。
         :type DiskType: str
         :param _DiskName: 云盘显示名称。不传则默认为“未命名”。最大长度不能超60个字节。
         :type DiskName: str
@@ -1748,27 +1748,27 @@ class CreateDisksRequest(AbstractModel):
         :type SnapshotId: str
         :param _DiskCount: 创建云硬盘数量，不传则默认为1。单次请求最多可创建的云盘数有限制，具体参见[云硬盘使用限制](https://cloud.tencent.com/doc/product/362/5145)。
         :type DiskCount: int
-        :param _ThroughputPerformance: 可选参数。使用此参数可给云硬盘购买额外的性能。<br>当前仅支持极速型云盘（CLOUD_TSSD）和增强型SSD云硬盘（CLOUD_HSSD）
+        :param _ThroughputPerformance: 使用此参数可给云硬盘购买额外的性能，单位MB/s。<br>当前仅支持极速型云盘（CLOUD_TSSD）和增强型SSD云硬盘（CLOUD_HSSD）。
         :type ThroughputPerformance: int
-        :param _KmsKeyId: 可选参数。购买加密盘时自定义密钥， 当传入该参数时, Encrypt入参不为空
+        :param _KmsKeyId: 购买加密盘时自定义密钥，当传入该参数时，Encrypt参数不得为空。
         :type KmsKeyId: str
         :param _DiskSize: 云硬盘大小，单位为GiB。<br><li>如果传入`SnapshotId`则可不传`DiskSize`，此时新建云盘的大小为快照大小</li><br><li>如果传入`SnapshotId`同时传入`DiskSize`，则云盘大小必须大于或等于快照大小</li><br><li>云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。</li>
         :type DiskSize: int
-        :param _Shareable: 可选参数，默认为False。传入True时，云盘将创建为共享型云盘。
+        :param _Shareable: 传入True时，云盘将创建为共享型云盘，默认为False。因共享型云盘不支持加密，此参数与Encrypt参数不可同时传入。
         :type Shareable: bool
         :param _ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
         :type ClientToken: str
-        :param _Encrypt: 传入该参数用于创建加密云盘，取值固定为ENCRYPT。
+        :param _Encrypt: 传入该参数用于创建加密云盘，取值固定为ENCRYPT。因共享型云盘不支持加密，此参数与Shareable参数不可同时传入。
         :type Encrypt: str
         :param _DiskChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数指定包年包月云盘的购买时长、是否设置自动续费等属性。<br>创建预付费云盘该参数必传，创建按小时后付费云盘无需传该参数。
         :type DiskChargePrepaid: :class:`tencentcloud.cbs.v20170312.models.DiskChargePrepaid`
-        :param _DeleteSnapshot: 销毁云盘时删除关联的非永久保留快照。0 表示非永久快照不随云盘销毁而销毁，1表示非永久快照随云盘销毁而销毁，默认取0。快照是否永久保留可以通过DescribeSnapshots接口返回的快照详情的IsPermanent字段来判断，true表示永久快照，false表示非永久快照。
+        :param _DeleteSnapshot: 销毁云盘时删除关联的非永久保留快照。0 表示非永久快照不随云盘销毁而销毁，1表示非永久快照随云盘销毁而销毁，默认取0。快照是否永久保留可以通过[DescribeSnapshots](document/api/362/15647)接口返回的快照详情的IsPermanent字段来判断，True表示永久快照，False表示非永久快照。
         :type DeleteSnapshot: int
-        :param _AutoMountConfiguration: 创建云盘时指定自动挂载并初始化该数据盘。
+        :param _AutoMountConfiguration: 创建云盘时指定自动挂载并初始化该数据盘。因加密盘不支持自动挂载及初始化，此参数与Encrypt参数不可同时传入。
         :type AutoMountConfiguration: :class:`tencentcloud.cbs.v20170312.models.AutoMountConfiguration`
         :param _DiskBackupQuota: 指定云硬盘备份点配额。
         :type DiskBackupQuota: int
-        :param _BurstPerformance: 创建云盘时是否开启性能突发
+        :param _BurstPerformance: 创建云盘时是否开启性能突发。
         :type BurstPerformance: bool
         :param _EncryptType: 指定云硬盘加密类型，取值为ENCRYPT_V1和ENCRYPT_V2，分别表示第一代和第二代加密技术，两种加密技术互不兼容。推荐优先使用第二代加密技术ENCRYPT_V2，第一代加密技术仅支持在部分老旧机型使用。该参数仅当创建加密云硬盘时有效。
         :type EncryptType: str
@@ -1817,7 +1817,7 @@ class CreateDisksRequest(AbstractModel):
 
     @property
     def DiskType(self):
-        """硬盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘</li><br><li>CLOUD_PREMIUM：表示高性能云硬盘</li><br><li>CLOUD_BSSD：表示通用型SSD云硬盘</li><br><li>CLOUD_SSD：表示SSD云硬盘</li><br><li>CLOUD_HSSD：表示增强型SSD云硬盘</li><br><li>CLOUD_TSSD：表示极速型SSD云硬盘。</li>
+        """硬盘介质类型。取值范围：<br><li>CLOUD_PREMIUM：表示高性能云硬盘</li><br><li>CLOUD_BSSD：表示通用型SSD云硬盘</li><br><li>CLOUD_SSD：表示SSD云硬盘</li><br><li>CLOUD_HSSD：表示增强型SSD云硬盘</li><br><li>CLOUD_TSSD：表示极速型SSD云硬盘。</li>极速型SSD云硬盘（CLOUD_TSSD）仅支持随部分实例类型一同购买，暂不支持单独创建。
         :rtype: str
         """
         return self._DiskType
@@ -1872,7 +1872,7 @@ class CreateDisksRequest(AbstractModel):
 
     @property
     def ThroughputPerformance(self):
-        """可选参数。使用此参数可给云硬盘购买额外的性能。<br>当前仅支持极速型云盘（CLOUD_TSSD）和增强型SSD云硬盘（CLOUD_HSSD）
+        """使用此参数可给云硬盘购买额外的性能，单位MB/s。<br>当前仅支持极速型云盘（CLOUD_TSSD）和增强型SSD云硬盘（CLOUD_HSSD）。
         :rtype: int
         """
         return self._ThroughputPerformance
@@ -1883,7 +1883,7 @@ class CreateDisksRequest(AbstractModel):
 
     @property
     def KmsKeyId(self):
-        """可选参数。购买加密盘时自定义密钥， 当传入该参数时, Encrypt入参不为空
+        """购买加密盘时自定义密钥，当传入该参数时，Encrypt参数不得为空。
         :rtype: str
         """
         return self._KmsKeyId
@@ -1905,7 +1905,7 @@ class CreateDisksRequest(AbstractModel):
 
     @property
     def Shareable(self):
-        """可选参数，默认为False。传入True时，云盘将创建为共享型云盘。
+        """传入True时，云盘将创建为共享型云盘，默认为False。因共享型云盘不支持加密，此参数与Encrypt参数不可同时传入。
         :rtype: bool
         """
         return self._Shareable
@@ -1927,7 +1927,7 @@ class CreateDisksRequest(AbstractModel):
 
     @property
     def Encrypt(self):
-        """传入该参数用于创建加密云盘，取值固定为ENCRYPT。
+        """传入该参数用于创建加密云盘，取值固定为ENCRYPT。因共享型云盘不支持加密，此参数与Shareable参数不可同时传入。
         :rtype: str
         """
         return self._Encrypt
@@ -1949,7 +1949,7 @@ class CreateDisksRequest(AbstractModel):
 
     @property
     def DeleteSnapshot(self):
-        """销毁云盘时删除关联的非永久保留快照。0 表示非永久快照不随云盘销毁而销毁，1表示非永久快照随云盘销毁而销毁，默认取0。快照是否永久保留可以通过DescribeSnapshots接口返回的快照详情的IsPermanent字段来判断，true表示永久快照，false表示非永久快照。
+        """销毁云盘时删除关联的非永久保留快照。0 表示非永久快照不随云盘销毁而销毁，1表示非永久快照随云盘销毁而销毁，默认取0。快照是否永久保留可以通过[DescribeSnapshots](document/api/362/15647)接口返回的快照详情的IsPermanent字段来判断，True表示永久快照，False表示非永久快照。
         :rtype: int
         """
         return self._DeleteSnapshot
@@ -1960,7 +1960,7 @@ class CreateDisksRequest(AbstractModel):
 
     @property
     def AutoMountConfiguration(self):
-        """创建云盘时指定自动挂载并初始化该数据盘。
+        """创建云盘时指定自动挂载并初始化该数据盘。因加密盘不支持自动挂载及初始化，此参数与Encrypt参数不可同时传入。
         :rtype: :class:`tencentcloud.cbs.v20170312.models.AutoMountConfiguration`
         """
         return self._AutoMountConfiguration
@@ -1982,7 +1982,7 @@ class CreateDisksRequest(AbstractModel):
 
     @property
     def BurstPerformance(self):
-        """创建云盘时是否开启性能突发
+        """创建云盘时是否开启性能突发。
         :rtype: bool
         """
         return self._BurstPerformance
@@ -2356,14 +2356,14 @@ class DeleteAutoSnapshotPoliciesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoSnapshotPolicyIds: 要删除的定期快照策略ID列表。
+        :param _AutoSnapshotPolicyIds: 要删除的定期快照策略ID列表，通过[ DescribeAutoSnapshotPolicies](https://cloud.tencent.com/document/api/362/33556)接口查询。
         :type AutoSnapshotPolicyIds: list of str
         """
         self._AutoSnapshotPolicyIds = None
 
     @property
     def AutoSnapshotPolicyIds(self):
-        """要删除的定期快照策略ID列表。
+        """要删除的定期快照策略ID列表，通过[ DescribeAutoSnapshotPolicies](https://cloud.tencent.com/document/api/362/33556)接口查询。
         :rtype: list of str
         """
         return self._AutoSnapshotPolicyIds
@@ -2420,14 +2420,14 @@ class DeleteDiskBackupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskBackupIds: 待删除的云硬盘备份点ID。
+        :param _DiskBackupIds: 待删除的云硬盘备份点ID，可以通过[DescribeDiskBackups](/document/product/362/80278)接口查询。
         :type DiskBackupIds: list of str
         """
         self._DiskBackupIds = None
 
     @property
     def DiskBackupIds(self):
-        """待删除的云硬盘备份点ID。
+        """待删除的云硬盘备份点ID，可以通过[DescribeDiskBackups](/document/product/362/80278)接口查询。
         :rtype: list of str
         """
         return self._DiskBackupIds
@@ -2659,15 +2659,18 @@ class DescribeAutoSnapshotPoliciesRequest(AbstractModel):
         r"""
         :param _AutoSnapshotPolicyIds: 要查询的定期快照策略ID列表。参数不支持同时指定`AutoSnapshotPolicyIds`和`Filters`。
         :type AutoSnapshotPolicyIds: list of str
-        :param _Filters: 过滤条件。参数不支持同时指定`AutoSnapshotPolicyIds`和`Filters`。<br><li>auto-snapshot-policy-id - Array of String - 是否必填：否 -（过滤条件）按定期快照策略ID进行过滤。定期快照策略ID形如：`asp-11112222`。<br><li>auto-snapshot-policy-state - Array of String - 是否必填：否 -（过滤条件）按定期快照策略的状态进行过滤。定期快照策略ID形如：`asp-11112222`。(NORMAL：正常 | ISOLATED：已隔离。)<br><li>auto-snapshot-policy-name - Array of String - 是否必填：否 -（过滤条件）按定期快照策略名称进行过滤。
+        :param _Filters: 过滤条件。参数不支持同时指定`AutoSnapshotPolicyIds`和`Filters`。<br>
+<li>auto-snapshot-policy-id - Array of String - 是否必填：否 -（过滤条件）按定期快照策略ID进行过滤。定期快照策略ID形如：`asp-3stvwfxx`。</li>
+<li>auto-snapshot-policy-state - Array of String - 是否必填：否 -（过滤条件）按定期快照策略的状态进行过滤。定期快照策略ID形如：`asp-3stvwfxx`。(NORMAL：正常 | ISOLATED：已隔离。)</li>
+<li>auto-snapshot-policy-name - Array of String - 是否必填：否 -（过滤条件）按定期快照策略名称进行过滤。</li>
         :type Filters: list of Filter
         :param _Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](/document/product/362/15633)中的相关小节。
         :type Limit: int
         :param _Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考API[简介](/document/product/362/15633)中的相关小节。
         :type Offset: int
-        :param _Order: 输出定期快照列表的排列顺序。取值范围：<br><li>ASC：升序排列<br><li>DESC：降序排列。
+        :param _Order: 输出定期快照列表的排列顺序。取值范围：<br><li>ASC：升序排列<br></li><li>DESC：降序排列。</li>
         :type Order: str
-        :param _OrderField: 定期快照列表排序的依据字段。取值范围：<br><li>CREATETIME：依据定期快照的创建时间排序<br>默认按创建时间排序。
+        :param _OrderField: 定期快照列表排序的依据字段。取值范围：<br><li>CREATE_TIME：依据定期快照的创建时间排序，默认按创建时间排序。</li>
         :type OrderField: str
         """
         self._AutoSnapshotPolicyIds = None
@@ -2690,7 +2693,10 @@ class DescribeAutoSnapshotPoliciesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤条件。参数不支持同时指定`AutoSnapshotPolicyIds`和`Filters`。<br><li>auto-snapshot-policy-id - Array of String - 是否必填：否 -（过滤条件）按定期快照策略ID进行过滤。定期快照策略ID形如：`asp-11112222`。<br><li>auto-snapshot-policy-state - Array of String - 是否必填：否 -（过滤条件）按定期快照策略的状态进行过滤。定期快照策略ID形如：`asp-11112222`。(NORMAL：正常 | ISOLATED：已隔离。)<br><li>auto-snapshot-policy-name - Array of String - 是否必填：否 -（过滤条件）按定期快照策略名称进行过滤。
+        """过滤条件。参数不支持同时指定`AutoSnapshotPolicyIds`和`Filters`。<br>
+<li>auto-snapshot-policy-id - Array of String - 是否必填：否 -（过滤条件）按定期快照策略ID进行过滤。定期快照策略ID形如：`asp-3stvwfxx`。</li>
+<li>auto-snapshot-policy-state - Array of String - 是否必填：否 -（过滤条件）按定期快照策略的状态进行过滤。定期快照策略ID形如：`asp-3stvwfxx`。(NORMAL：正常 | ISOLATED：已隔离。)</li>
+<li>auto-snapshot-policy-name - Array of String - 是否必填：否 -（过滤条件）按定期快照策略名称进行过滤。</li>
         :rtype: list of Filter
         """
         return self._Filters
@@ -2723,7 +2729,7 @@ class DescribeAutoSnapshotPoliciesRequest(AbstractModel):
 
     @property
     def Order(self):
-        """输出定期快照列表的排列顺序。取值范围：<br><li>ASC：升序排列<br><li>DESC：降序排列。
+        """输出定期快照列表的排列顺序。取值范围：<br><li>ASC：升序排列<br></li><li>DESC：降序排列。</li>
         :rtype: str
         """
         return self._Order
@@ -2734,7 +2740,7 @@ class DescribeAutoSnapshotPoliciesRequest(AbstractModel):
 
     @property
     def OrderField(self):
-        """定期快照列表排序的依据字段。取值范围：<br><li>CREATETIME：依据定期快照的创建时间排序<br>默认按创建时间排序。
+        """定期快照列表排序的依据字段。取值范围：<br><li>CREATE_TIME：依据定期快照的创建时间排序，默认按创建时间排序。</li>
         :rtype: str
         """
         return self._OrderField
@@ -2836,14 +2842,14 @@ class DescribeDiskAssociatedAutoSnapshotPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskId: 要查询的云硬盘ID，通过[DescribeDisks](https://tcloud4api.woa.com/document/product/362/15601?!preview&!document=1)接口查询。
+        :param _DiskId: 要查询的云硬盘ID，通过[DescribeDisks](https://cloud.tencent.com/document/api/362/16315)接口查询。
         :type DiskId: str
         """
         self._DiskId = None
 
     @property
     def DiskId(self):
-        """要查询的云硬盘ID，通过[DescribeDisks](https://tcloud4api.woa.com/document/product/362/15601?!preview&!document=1)接口查询。
+        """要查询的云硬盘ID，通过[DescribeDisks](https://cloud.tencent.com/document/api/362/16315)接口查询。
         :rtype: str
         """
         return self._DiskId
@@ -5944,7 +5950,7 @@ class InquirePriceModifyDiskBackupQuotaRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskId: 云硬盘ID， 通过DescribeDisks（查询云硬盘信息）接口查询。
+        :param _DiskId: 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
         :type DiskId: str
         :param _DiskBackupQuota: 修改后的云硬盘备份点配额，即云盘可以拥有的备份点数量，单位为个。
         :type DiskBackupQuota: int
@@ -5954,7 +5960,7 @@ class InquirePriceModifyDiskBackupQuotaRequest(AbstractModel):
 
     @property
     def DiskId(self):
-        """云硬盘ID， 通过DescribeDisks（查询云硬盘信息）接口查询。
+        """云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
         :rtype: str
         """
         return self._DiskId
@@ -6568,9 +6574,9 @@ class ModifyAutoSnapshotPolicyAttributeRequest(AbstractModel):
         r"""
         :param _AutoSnapshotPolicyId: 定期快照策略ID。可以通过[查询定期快照策略](https://cloud.tencent.com/document/product/362/33556)API查询。
         :type AutoSnapshotPolicyId: str
-        :param _IsActivated: 是否激活定期快照策略，FALSE表示未激活，TRUE表示激活，默认为TRUE。
+        :param _IsActivated: 是否激活定期快照策略，`false`表示未激活，`true`表示激活；默认为`true`。
         :type IsActivated: bool
-        :param _IsPermanent: 通过该定期快照策略创建的快照是否永久保留。FALSE表示非永久保留，TRUE表示永久保留，默认为FALSE。
+        :param _IsPermanent: 通过该定期快照策略创建的快照是否永久保留。`false`表示非永久保留，`true`表示永久保留，默认为`false`。
         :type IsPermanent: bool
         :param _AutoSnapshotPolicyName: 要创建的定期快照策略名。不传则默认为“未命名”。最大长度不能超60个字节。
         :type AutoSnapshotPolicyName: str
@@ -6599,7 +6605,7 @@ class ModifyAutoSnapshotPolicyAttributeRequest(AbstractModel):
 
     @property
     def IsActivated(self):
-        """是否激活定期快照策略，FALSE表示未激活，TRUE表示激活，默认为TRUE。
+        """是否激活定期快照策略，`false`表示未激活，`true`表示激活；默认为`true`。
         :rtype: bool
         """
         return self._IsActivated
@@ -6610,7 +6616,7 @@ class ModifyAutoSnapshotPolicyAttributeRequest(AbstractModel):
 
     @property
     def IsPermanent(self):
-        """通过该定期快照策略创建的快照是否永久保留。FALSE表示非永久保留，TRUE表示永久保留，默认为FALSE。
+        """通过该定期快照策略创建的快照是否永久保留。`false`表示非永久保留，`true`表示永久保留，默认为`false`。
         :rtype: bool
         """
         return self._IsPermanent
@@ -7030,7 +7036,7 @@ class ModifyDisksChargeTypeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskIds: 一个或多个待操作的云硬盘ID。每次请求批量云硬盘上限为100。
+        :param _DiskIds: 一个或多个待操作的云硬盘ID,可以通过[DescribeDisks](/document/product/362/16315)接口查询。每次请求批量云硬盘上限为100。
         :type DiskIds: list of str
         :param _DiskChargePrepaid: 设置为预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
         :type DiskChargePrepaid: :class:`tencentcloud.cbs.v20170312.models.DiskChargePrepaid`
@@ -7043,7 +7049,7 @@ class ModifyDisksChargeTypeRequest(AbstractModel):
 
     @property
     def DiskIds(self):
-        """一个或多个待操作的云硬盘ID。每次请求批量云硬盘上限为100。
+        """一个或多个待操作的云硬盘ID,可以通过[DescribeDisks](/document/product/362/16315)接口查询。每次请求批量云硬盘上限为100。
         :rtype: list of str
         """
         return self._DiskIds
@@ -7220,7 +7226,7 @@ class ModifySnapshotAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SnapshotId: 快照ID, 可通过[DescribeSnapshots](/document/product/362/15647)查询。
+        :param _SnapshotId: 快照ID, 可通过[DescribeSnapshots](https://cloud.tencent.com/document/api/362/15647)查询。
         :type SnapshotId: str
         :param _IsPermanent: 快照的保留方式，FALSE表示非永久保留，TRUE表示永久保留。
         :type IsPermanent: bool
@@ -7236,7 +7242,7 @@ class ModifySnapshotAttributeRequest(AbstractModel):
 
     @property
     def SnapshotId(self):
-        """快照ID, 可通过[DescribeSnapshots](/document/product/362/15647)查询。
+        """快照ID, 可通过[DescribeSnapshots](https://cloud.tencent.com/document/api/362/15647)查询。
         :rtype: str
         """
         return self._SnapshotId
@@ -7551,7 +7557,7 @@ class Placement(AbstractModel):
 
 
 class Policy(AbstractModel):
-    """描述了定期快照的执行策略。可理解为在DayOfWeek/DayOfMonth指定的几天中，或者是IntervalDays设定的间隔的几天，在Hour指定的时刻点执行该条定期快照策。注：DayOfWeek/DayOfMonth/IntervalDays为互斥规则，仅可设置其中一条策略规则。
+    """描述了定期快照的执行策略。可理解为在DayOfWeek/DayOfMonth指定的几天中，或者是IntervalDays设定的间隔的几天，在Hour指定的时刻点执行该条定期快照策。注：DayOfWeek/DayOfMonth/IntervalDays为互斥规则，必填且仅可设置其中一条策略规则。如果同时传入互斥规则，则只有一条生效，优先级为上文列出顺序：例如将三条规则全部设置，只有 DayOfWeek 生效。
 
     """
 
@@ -8251,13 +8257,13 @@ class Snapshot(AbstractModel):
         :type Images: list of Image
         :param _ShareReference: 快照当前被共享数。
         :type ShareReference: int
-        :param _SnapshotType: 快照类型，目前该项取值可以为PRIVATE_SNAPSHOT或者SHARED_SNAPSHOT
+        :param _SnapshotType: 快照类型，目前该项取值可以为`PRIVATE_SNAPSHOT`（私有快照）或者`SHARED_SNAPSHOT`（共享快照）
         :type SnapshotType: str
-        :param _DiskSize: 创建此快照的云硬盘大小，单位GB。
+        :param _DiskSize: 创建此快照的云硬盘大小，单位GiB。
         :type DiskSize: int
         :param _DiskId: 创建此快照的云硬盘ID。
         :type DiskId: str
-        :param _CopyingToRegions: 快照正在跨地域复制的目的地域，默认取值为[]。
+        :param _CopyingToRegions: 快照正在跨地域复制的目的地域，若没有则返回`[]`。
         :type CopyingToRegions: list of str
         :param _Encrypt: 是否为加密盘创建的快照。取值范围：
 <ul>
@@ -8421,7 +8427,7 @@ class Snapshot(AbstractModel):
 
     @property
     def SnapshotType(self):
-        """快照类型，目前该项取值可以为PRIVATE_SNAPSHOT或者SHARED_SNAPSHOT
+        """快照类型，目前该项取值可以为`PRIVATE_SNAPSHOT`（私有快照）或者`SHARED_SNAPSHOT`（共享快照）
         :rtype: str
         """
         return self._SnapshotType
@@ -8432,7 +8438,7 @@ class Snapshot(AbstractModel):
 
     @property
     def DiskSize(self):
-        """创建此快照的云硬盘大小，单位GB。
+        """创建此快照的云硬盘大小，单位GiB。
         :rtype: int
         """
         return self._DiskSize
@@ -8454,7 +8460,7 @@ class Snapshot(AbstractModel):
 
     @property
     def CopyingToRegions(self):
-        """快照正在跨地域复制的目的地域，默认取值为[]。
+        """快照正在跨地域复制的目的地域，若没有则返回`[]`。
         :rtype: list of str
         """
         return self._CopyingToRegions
@@ -9061,11 +9067,14 @@ class UnbindAutoSnapshotPolicyRequest(AbstractModel):
         r"""
         :param _AutoSnapshotPolicyId: 要解绑的定期快照策略ID。
         :type AutoSnapshotPolicyId: str
-        :param _DiskIds: 要解绑定期快照策略的云盘ID列表。
+        :param _DiskIds: 要解绑定期快照策略的云盘ID列表。此参数与 InstanceIds 参数至少需要传入一个。
         :type DiskIds: list of str
+        :param _InstanceIds: 要解绑定期快照策略的实例ID列表。此参数与 DiskIds 参数至少需要传入一个。
+        :type InstanceIds: list of str
         """
         self._AutoSnapshotPolicyId = None
         self._DiskIds = None
+        self._InstanceIds = None
 
     @property
     def AutoSnapshotPolicyId(self):
@@ -9080,7 +9089,7 @@ class UnbindAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def DiskIds(self):
-        """要解绑定期快照策略的云盘ID列表。
+        """要解绑定期快照策略的云盘ID列表。此参数与 InstanceIds 参数至少需要传入一个。
         :rtype: list of str
         """
         return self._DiskIds
@@ -9089,10 +9098,22 @@ class UnbindAutoSnapshotPolicyRequest(AbstractModel):
     def DiskIds(self, DiskIds):
         self._DiskIds = DiskIds
 
+    @property
+    def InstanceIds(self):
+        """要解绑定期快照策略的实例ID列表。此参数与 DiskIds 参数至少需要传入一个。
+        :rtype: list of str
+        """
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
 
     def _deserialize(self, params):
         self._AutoSnapshotPolicyId = params.get("AutoSnapshotPolicyId")
         self._DiskIds = params.get("DiskIds")
+        self._InstanceIds = params.get("InstanceIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

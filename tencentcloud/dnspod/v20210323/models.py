@@ -544,7 +544,6 @@ class BatchSearchRecordInfo(AbstractModel):
         :param _Area: 解析线路
         :type Area: str
         :param _Remark: 记录备注
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _TTL: TTL(秒)
         :type TTL: int
@@ -602,7 +601,6 @@ class BatchSearchRecordInfo(AbstractModel):
     @property
     def Remark(self):
         """记录备注
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark

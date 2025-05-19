@@ -5029,6 +5029,8 @@ class CreateAuditLogFileRequest(AbstractModel):
 
     @property
     def Filter(self):
+        warnings.warn("parameter `Filter` is deprecated", DeprecationWarning) 
+
         """已废弃。
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.AuditLogFilter`
         """
@@ -5036,6 +5038,8 @@ class CreateAuditLogFileRequest(AbstractModel):
 
     @Filter.setter
     def Filter(self, Filter):
+        warnings.warn("parameter `Filter` is deprecated", DeprecationWarning) 
+
         self._Filter = Filter
 
     @property
@@ -5868,6 +5872,10 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
         :type SlaveZone: str
         :param _InstanceInitInfos: 实例初始化配置信息，主要用于购买集群时选不同规格实例
         :type InstanceInitInfos: list of InstanceInitInfo
+        :param _GdnId: 全球数据库唯一标识
+        :type GdnId: str
+        :param _ProxyConfig: 数据库代理配置
+        :type ProxyConfig: :class:`tencentcloud.cynosdb.v20190107.models.ProxyConfig`
         """
         self._Zone = None
         self._VpcId = None
@@ -5910,6 +5918,8 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
         self._ParamTemplateId = None
         self._SlaveZone = None
         self._InstanceInitInfos = None
+        self._GdnId = None
+        self._ProxyConfig = None
 
     @property
     def Zone(self):
@@ -6384,6 +6394,28 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
     def InstanceInitInfos(self, InstanceInitInfos):
         self._InstanceInitInfos = InstanceInitInfos
 
+    @property
+    def GdnId(self):
+        """全球数据库唯一标识
+        :rtype: str
+        """
+        return self._GdnId
+
+    @GdnId.setter
+    def GdnId(self, GdnId):
+        self._GdnId = GdnId
+
+    @property
+    def ProxyConfig(self):
+        """数据库代理配置
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ProxyConfig`
+        """
+        return self._ProxyConfig
+
+    @ProxyConfig.setter
+    def ProxyConfig(self, ProxyConfig):
+        self._ProxyConfig = ProxyConfig
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -6442,6 +6474,10 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
                 obj = InstanceInitInfo()
                 obj._deserialize(item)
                 self._InstanceInitInfos.append(obj)
+        self._GdnId = params.get("GdnId")
+        if params.get("ProxyConfig") is not None:
+            self._ProxyConfig = ProxyConfig()
+            self._ProxyConfig._deserialize(params.get("ProxyConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7749,6 +7785,8 @@ pause
         :type Ability: :class:`tencentcloud.cynosdb.v20190107.models.Ability`
         :param _ResourcePackages: 实例绑定资源包信息（此处只返回存储资源包，即packageType=DISK）	
         :type ResourcePackages: list of ResourcePackage
+        :param _GdnId: 全球数据库唯一标识
+        :type GdnId: str
         """
         self._Status = None
         self._UpdateTime = None
@@ -7793,6 +7831,7 @@ pause
         self._OrderSource = None
         self._Ability = None
         self._ResourcePackages = None
+        self._GdnId = None
 
     @property
     def Status(self):
@@ -8278,6 +8317,17 @@ pause
     def ResourcePackages(self, ResourcePackages):
         self._ResourcePackages = ResourcePackages
 
+    @property
+    def GdnId(self):
+        """全球数据库唯一标识
+        :rtype: str
+        """
+        return self._GdnId
+
+    @GdnId.setter
+    def GdnId(self, GdnId):
+        self._GdnId = GdnId
+
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
@@ -8345,6 +8395,7 @@ pause
                 obj = ResourcePackage()
                 obj._deserialize(item)
                 self._ResourcePackages.append(obj)
+        self._GdnId = params.get("GdnId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8468,6 +8519,13 @@ pausing
         :type SlaveZoneAttr: list of SlaveZoneAttrItem
         :param _CynosVersionTag: 版本标签
         :type CynosVersionTag: str
+        :param _GdnId: 全球数据库网络唯一标识
+        :type GdnId: str
+        :param _GdnRole: 集群在全球数据网络中的角色。
+主集群- primary
+从集群 - standby
+如为空，该字段无效
+        :type GdnRole: str
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -8520,6 +8578,8 @@ pausing
         self._NetworkType = None
         self._SlaveZoneAttr = None
         self._CynosVersionTag = None
+        self._GdnId = None
+        self._GdnRole = None
 
     @property
     def ClusterId(self):
@@ -9086,6 +9146,31 @@ pausing
     def CynosVersionTag(self, CynosVersionTag):
         self._CynosVersionTag = CynosVersionTag
 
+    @property
+    def GdnId(self):
+        """全球数据库网络唯一标识
+        :rtype: str
+        """
+        return self._GdnId
+
+    @GdnId.setter
+    def GdnId(self, GdnId):
+        self._GdnId = GdnId
+
+    @property
+    def GdnRole(self):
+        """集群在全球数据网络中的角色。
+主集群- primary
+从集群 - standby
+如为空，该字段无效
+        :rtype: str
+        """
+        return self._GdnRole
+
+    @GdnRole.setter
+    def GdnRole(self, GdnRole):
+        self._GdnRole = GdnRole
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -9171,6 +9256,8 @@ pausing
                 obj._deserialize(item)
                 self._SlaveZoneAttr.append(obj)
         self._CynosVersionTag = params.get("CynosVersionTag")
+        self._GdnId = params.get("GdnId")
+        self._GdnRole = params.get("GdnRole")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9375,6 +9462,8 @@ pause
         :type CynosVersionTag: str
         :param _NodeList: libradb 节点信息
         :type NodeList: list of str
+        :param _GdnId: 全球数据库唯一标识
+        :type GdnId: str
         """
         self._Uin = None
         self._AppId = None
@@ -9434,6 +9523,7 @@ pause
         self._InstanceStorageType = None
         self._CynosVersionTag = None
         self._NodeList = None
+        self._GdnId = None
 
     @property
     def Uin(self):
@@ -10078,6 +10168,17 @@ pause
     def NodeList(self, NodeList):
         self._NodeList = NodeList
 
+    @property
+    def GdnId(self):
+        """全球数据库唯一标识
+        :rtype: str
+        """
+        return self._GdnId
+
+    @GdnId.setter
+    def GdnId(self, GdnId):
+        self._GdnId = GdnId
+
 
     def _deserialize(self, params):
         self._Uin = params.get("Uin")
@@ -10160,6 +10261,7 @@ pause
         self._InstanceStorageType = params.get("InstanceStorageType")
         self._CynosVersionTag = params.get("CynosVersionTag")
         self._NodeList = params.get("NodeList")
+        self._GdnId = params.get("GdnId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13360,6 +13462,8 @@ class DescribeAuditLogsRequest(AbstractModel):
 
     @property
     def Filter(self):
+        warnings.warn("parameter `Filter` is deprecated", DeprecationWarning) 
+
         """已废弃。
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.AuditLogFilter`
         """
@@ -13367,6 +13471,8 @@ class DescribeAuditLogsRequest(AbstractModel):
 
     @Filter.setter
     def Filter(self, Filter):
+        warnings.warn("parameter `Filter` is deprecated", DeprecationWarning) 
+
         self._Filter = Filter
 
     @property
@@ -31779,6 +31885,152 @@ class PolicyRule(AbstractModel):
         self._AddressModule = params.get("AddressModule")
         self._Id = params.get("Id")
         self._Desc = params.get("Desc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProxyConfig(AbstractModel):
+    """访问代理配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProxyCount: 数据库代理组节点个数（该参数不再建议使用，建议使用ProxyZones)
+        :type ProxyCount: int
+        :param _Cpu: cpu核数
+        :type Cpu: int
+        :param _Mem: 内存
+        :type Mem: int
+        :param _ConnectionPoolType: 连接池类型：SessionConnectionPool(会话级别连接池 )
+        :type ConnectionPoolType: str
+        :param _OpenConnectionPool: 是否开启连接池,yes-开启，no-不开启
+        :type OpenConnectionPool: str
+        :param _ConnectionPoolTimeOut: 连接池阈值：单位（秒）
+        :type ConnectionPoolTimeOut: int
+        :param _Description: 描述说明
+        :type Description: str
+        :param _ProxyZones: 数据库节点信息（该参数与ProxyCount需要任选一个输入）
+        :type ProxyZones: list of ProxyZone
+        """
+        self._ProxyCount = None
+        self._Cpu = None
+        self._Mem = None
+        self._ConnectionPoolType = None
+        self._OpenConnectionPool = None
+        self._ConnectionPoolTimeOut = None
+        self._Description = None
+        self._ProxyZones = None
+
+    @property
+    def ProxyCount(self):
+        """数据库代理组节点个数（该参数不再建议使用，建议使用ProxyZones)
+        :rtype: int
+        """
+        return self._ProxyCount
+
+    @ProxyCount.setter
+    def ProxyCount(self, ProxyCount):
+        self._ProxyCount = ProxyCount
+
+    @property
+    def Cpu(self):
+        """cpu核数
+        :rtype: int
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Mem(self):
+        """内存
+        :rtype: int
+        """
+        return self._Mem
+
+    @Mem.setter
+    def Mem(self, Mem):
+        self._Mem = Mem
+
+    @property
+    def ConnectionPoolType(self):
+        """连接池类型：SessionConnectionPool(会话级别连接池 )
+        :rtype: str
+        """
+        return self._ConnectionPoolType
+
+    @ConnectionPoolType.setter
+    def ConnectionPoolType(self, ConnectionPoolType):
+        self._ConnectionPoolType = ConnectionPoolType
+
+    @property
+    def OpenConnectionPool(self):
+        """是否开启连接池,yes-开启，no-不开启
+        :rtype: str
+        """
+        return self._OpenConnectionPool
+
+    @OpenConnectionPool.setter
+    def OpenConnectionPool(self, OpenConnectionPool):
+        self._OpenConnectionPool = OpenConnectionPool
+
+    @property
+    def ConnectionPoolTimeOut(self):
+        """连接池阈值：单位（秒）
+        :rtype: int
+        """
+        return self._ConnectionPoolTimeOut
+
+    @ConnectionPoolTimeOut.setter
+    def ConnectionPoolTimeOut(self, ConnectionPoolTimeOut):
+        self._ConnectionPoolTimeOut = ConnectionPoolTimeOut
+
+    @property
+    def Description(self):
+        """描述说明
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ProxyZones(self):
+        """数据库节点信息（该参数与ProxyCount需要任选一个输入）
+        :rtype: list of ProxyZone
+        """
+        return self._ProxyZones
+
+    @ProxyZones.setter
+    def ProxyZones(self, ProxyZones):
+        self._ProxyZones = ProxyZones
+
+
+    def _deserialize(self, params):
+        self._ProxyCount = params.get("ProxyCount")
+        self._Cpu = params.get("Cpu")
+        self._Mem = params.get("Mem")
+        self._ConnectionPoolType = params.get("ConnectionPoolType")
+        self._OpenConnectionPool = params.get("OpenConnectionPool")
+        self._ConnectionPoolTimeOut = params.get("ConnectionPoolTimeOut")
+        self._Description = params.get("Description")
+        if params.get("ProxyZones") is not None:
+            self._ProxyZones = []
+            for item in params.get("ProxyZones"):
+                obj = ProxyZone()
+                obj._deserialize(item)
+                self._ProxyZones.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
