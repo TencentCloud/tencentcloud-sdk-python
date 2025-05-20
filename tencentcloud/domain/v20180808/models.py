@@ -2610,7 +2610,7 @@ class DeleteCustomDnsHostRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _DomainId: 域名实例ID
-可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
+可通过[DescribeDomainNameList](https://cloud.tencent.com/document/api/242/48941)接口获取
         :type DomainId: str
         :param _DnsName: DNS名称
 例如：<>.test.com;其中<>就是Dns名称，可以是任意域名允许的格式
@@ -2622,7 +2622,7 @@ class DeleteCustomDnsHostRequest(AbstractModel):
     @property
     def DomainId(self):
         """域名实例ID
-可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
+可通过[DescribeDomainNameList](https://cloud.tencent.com/document/api/242/48941)接口获取
         :rtype: str
         """
         return self._DomainId
@@ -4606,7 +4606,7 @@ class DescribeCustomDnsHostSetRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _DomainId: 域名实例ID
-可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
+可通过[DescribeDomainNameList](https://cloud.tencent.com/document/api/242/48941)接口获取
         :type DomainId: str
         :param _Limit: 返回数量，默认为20，取值范围[1,100]
         :type Limit: int
@@ -4620,7 +4620,7 @@ class DescribeCustomDnsHostSetRequest(AbstractModel):
     @property
     def DomainId(self):
         """域名实例ID
-可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
+可通过[DescribeDomainNameList](https://cloud.tencent.com/document/api/242/48941)接口获取
         :rtype: str
         """
         return self._DomainId
@@ -5896,7 +5896,6 @@ false：否
         :type ClassThree: list of int
         :param _ClassFour: 四级分类
 1:"仅含2种数字"
-1:"仅含2种数字"
 2:"仅含3种数字"
 4:"仅含1种字母"
 8:"仅含1种数字"
@@ -5915,7 +5914,7 @@ FilterWords+FilterStart（true）+FilterEnd（true）：使用域名开头或结
         :param _TransType: 交易类型（目前只支持10）
 10: 预释放域名
         :type TransType: int
-        :param _IsTop: 是否搜索白金域名
+        :param _IsTop: 是否搜索白金域名（默认值为false）
         :type IsTop: bool
         :param _EndTimeSort: 结束时间排序 desc:倒序 asc:正序
         :type EndTimeSort: str
@@ -6233,7 +6232,6 @@ false：否
     def ClassFour(self):
         """四级分类
 1:"仅含2种数字"
-1:"仅含2种数字"
 2:"仅含3种数字"
 4:"仅含1种字母"
 8:"仅含1种数字"
@@ -6297,7 +6295,7 @@ FilterWords+FilterStart（true）+FilterEnd（true）：使用域名开头或结
 
     @property
     def IsTop(self):
-        """是否搜索白金域名
+        """是否搜索白金域名（默认值为false）
         :rtype: bool
         """
         return self._IsTop
@@ -8616,7 +8614,7 @@ class ModifyCustomDnsHostRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _DomainId: 域名实例ID
-可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
+可通过[DescribeDomainNameList](https://cloud.tencent.com/document/api/242/48941)接口获取
         :type DomainId: str
         :param _DnsName: Dns名称 例如：<>.test.com;其中<>就是Dns名称，可以是任意域名允许的格式
         :type DnsName: str
@@ -8630,7 +8628,7 @@ class ModifyCustomDnsHostRequest(AbstractModel):
     @property
     def DomainId(self):
         """域名实例ID
-可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
+可通过[DescribeDomainNameList](https://cloud.tencent.com/document/api/242/48941)接口获取
         :rtype: str
         """
         return self._DomainId
@@ -10641,7 +10639,7 @@ class SyncCustomDnsHostRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _DomainId: 域名实例ID
-可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
+可通过[DescribeDomainNameList](https://cloud.tencent.com/document/api/242/48941)接口获取
         :type DomainId: str
         """
         self._DomainId = None
@@ -10649,7 +10647,7 @@ class SyncCustomDnsHostRequest(AbstractModel):
     @property
     def DomainId(self):
         """域名实例ID
-可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
+可通过[DescribeDomainNameList](https://cloud.tencent.com/document/api/242/48941)接口获取
         :rtype: str
         """
         return self._DomainId

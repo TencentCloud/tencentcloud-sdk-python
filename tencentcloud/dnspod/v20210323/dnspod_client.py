@@ -676,7 +676,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeBatchTask(self, request):
-        """获取任务详情
+        """获取批量操作任务执行详情
 
         :param request: Request instance for DescribeBatchTask.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeBatchTaskRequest`

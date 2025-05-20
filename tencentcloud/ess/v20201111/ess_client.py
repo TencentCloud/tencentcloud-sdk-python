@@ -1944,6 +1944,31 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateUserNameChangeUrl(self, request):
+        """生成个人用户实名更名链接，个人用户点击此链接进入更名流程（若用户未完成实名认证，则直接进入实名页面实名后再进行更名）。此链接为通用链接，任何点击生成链接的用户将会被引导至小程序个人更名页面完成更名。
+
+        注： 调用此接口需要购买<font color="red"><b>单独的实名套餐包</b></font>。使用前请联系对接的客户经理沟通。
+
+        :param request: Request instance for CreateUserNameChangeUrl.
+        :type request: :class:`tencentcloud.ess.v20201111.models.CreateUserNameChangeUrlRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.CreateUserNameChangeUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateUserNameChangeUrl", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateUserNameChangeUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateUserVerifyUrl(self, request):
         """生成个人用户实名认证链接，个人用户点击此链接进入实名流程（若用户已完成实名认证，则直接进入成功页面）。
 

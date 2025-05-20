@@ -8767,7 +8767,11 @@ class Task(AbstractModel):
         :type EnvVars: list of EnvVar
         :param _Authentications: 授权信息
         :type Authentications: list of Authentication
-        :param _FailedAction: TaskInstance失败后处理方式，取值包括TERMINATE（默认）、INTERRUPT、FAST_INTERRUPT。
+        :param _FailedAction: TaskInstance失败后处理方式，取值包括
+
+- TERMINATE：销毁计算实例（默认）、
+- INTERRUPT：中断任务，保留计算实例、
+- FAST_INTERRUPT： 快速中断任务， 保留计算实例。
         :type FailedAction: str
         :param _MaxRetryCount: 任务失败后的最大重试次数，默认为0
         :type MaxRetryCount: int
@@ -8940,7 +8944,11 @@ class Task(AbstractModel):
 
     @property
     def FailedAction(self):
-        """TaskInstance失败后处理方式，取值包括TERMINATE（默认）、INTERRUPT、FAST_INTERRUPT。
+        """TaskInstance失败后处理方式，取值包括
+
+- TERMINATE：销毁计算实例（默认）、
+- INTERRUPT：中断任务，保留计算实例、
+- FAST_INTERRUPT： 快速中断任务， 保留计算实例。
         :rtype: str
         """
         return self._FailedAction

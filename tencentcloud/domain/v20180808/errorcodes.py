@@ -281,6 +281,9 @@ INVALIDPARAMETER_TELEPHONEISINVALID = 'InvalidParameter.TelephoneIsInvalid'
 # 仅支持已验证的手机号码，请先在控制台创建后使用。
 INVALIDPARAMETER_TELEPHONEISUNVERIFIED = 'InvalidParameter.TelephoneIsUnverified'
 
+# 模板信息地址错误，请检查后，请重新操作
+INVALIDPARAMETER_TEMPLATEADDRESSINVALID = 'InvalidParameter.TemplateAddressInvalid'
+
 # 域名数量不能超过4000个。
 INVALIDPARAMETER_UPTO4000 = 'InvalidParameter.UpTo4000'
 

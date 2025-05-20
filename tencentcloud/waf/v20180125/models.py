@@ -1751,6 +1751,8 @@ class AddCustomWhiteRuleRequest(AbstractModel):
         :type JobType: str
         :param _JobDateTime: 定时任务配置
         :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        :param _LogicalOp: 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+        :type LogicalOp: str
         """
         self._Name = None
         self._SortId = None
@@ -1760,6 +1762,7 @@ class AddCustomWhiteRuleRequest(AbstractModel):
         self._ExpireTime = None
         self._JobType = None
         self._JobDateTime = None
+        self._LogicalOp = None
 
     @property
     def Name(self):
@@ -1849,6 +1852,17 @@ class AddCustomWhiteRuleRequest(AbstractModel):
     def JobDateTime(self, JobDateTime):
         self._JobDateTime = JobDateTime
 
+    @property
+    def LogicalOp(self):
+        """匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+        :rtype: str
+        """
+        return self._LogicalOp
+
+    @LogicalOp.setter
+    def LogicalOp(self, LogicalOp):
+        self._LogicalOp = LogicalOp
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -1866,6 +1880,7 @@ class AddCustomWhiteRuleRequest(AbstractModel):
         if params.get("JobDateTime") is not None:
             self._JobDateTime = JobDateTime()
             self._JobDateTime._deserialize(params.get("JobDateTime"))
+        self._LogicalOp = params.get("LogicalOp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6521,6 +6536,10 @@ class CCRuleItems(AbstractModel):
         :type CreateTime: int
         :param _LimitMethod: 限频方式
         :type LimitMethod: str
+        :param _CelRule: cel表达式
+        :type CelRule: str
+        :param _LogicalOp: 逻辑操作符
+        :type LogicalOp: str
         """
         self._Name = None
         self._Status = None
@@ -6539,6 +6558,8 @@ class CCRuleItems(AbstractModel):
         self._SessionApplied = None
         self._CreateTime = None
         self._LimitMethod = None
+        self._CelRule = None
+        self._LogicalOp = None
 
     @property
     def Name(self):
@@ -6727,6 +6748,28 @@ class CCRuleItems(AbstractModel):
     def LimitMethod(self, LimitMethod):
         self._LimitMethod = LimitMethod
 
+    @property
+    def CelRule(self):
+        """cel表达式
+        :rtype: str
+        """
+        return self._CelRule
+
+    @CelRule.setter
+    def CelRule(self, CelRule):
+        self._CelRule = CelRule
+
+    @property
+    def LogicalOp(self):
+        """逻辑操作符
+        :rtype: str
+        """
+        return self._LogicalOp
+
+    @LogicalOp.setter
+    def LogicalOp(self, LogicalOp):
+        self._LogicalOp = LogicalOp
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -6746,6 +6789,8 @@ class CCRuleItems(AbstractModel):
         self._SessionApplied = params.get("SessionApplied")
         self._CreateTime = params.get("CreateTime")
         self._LimitMethod = params.get("LimitMethod")
+        self._CelRule = params.get("CelRule")
+        self._LogicalOp = params.get("LogicalOp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9910,7 +9955,6 @@ class DeleteBotSceneUCBRuleResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Data: 正常情况下为null
-注意：此字段可能返回 null，表示取不到有效值。
         :type Data: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9921,7 +9965,6 @@ class DeleteBotSceneUCBRuleResponse(AbstractModel):
     @property
     def Data(self):
         """正常情况下为null
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Data
@@ -32572,6 +32615,8 @@ class ModifyCustomWhiteRuleRequest(AbstractModel):
         :type JobType: str
         :param _JobDateTime: 定时任务配置
         :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        :param _LogicalOp: 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+        :type LogicalOp: str
         """
         self._Domain = None
         self._RuleId = None
@@ -32582,6 +32627,7 @@ class ModifyCustomWhiteRuleRequest(AbstractModel):
         self._Strategies = None
         self._JobType = None
         self._JobDateTime = None
+        self._LogicalOp = None
 
     @property
     def Domain(self):
@@ -32682,6 +32728,17 @@ class ModifyCustomWhiteRuleRequest(AbstractModel):
     def JobDateTime(self, JobDateTime):
         self._JobDateTime = JobDateTime
 
+    @property
+    def LogicalOp(self):
+        """匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+        :rtype: str
+        """
+        return self._LogicalOp
+
+    @LogicalOp.setter
+    def LogicalOp(self, LogicalOp):
+        self._LogicalOp = LogicalOp
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -32700,6 +32757,7 @@ class ModifyCustomWhiteRuleRequest(AbstractModel):
         if params.get("JobDateTime") is not None:
             self._JobDateTime = JobDateTime()
             self._JobDateTime._deserialize(params.get("JobDateTime"))
+        self._LogicalOp = params.get("LogicalOp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -40773,16 +40831,16 @@ class UpsertCCRuleRequest(AbstractModel):
         :type Limit: str
         :param _Interval: CC检测周期
         :type Interval: str
-        :param _Url: 检测Url
-        :type Url: str
-        :param _MatchFunc: 匹配方法，0表示等于，1表示前缀匹配，2表示包含，3表示不等于，6表示后缀匹配，7表示不包含
-        :type MatchFunc: int
         :param _ActionType: 动作，20表示观察，21表示人机识别，22表示拦截，23表示精准拦截，26表示精准人机识别，27表示JS校验
         :type ActionType: str
         :param _Priority: 优先级
         :type Priority: int
         :param _ValidTime: 动作有效时间
         :type ValidTime: int
+        :param _Url: 检测Url
+        :type Url: str
+        :param _MatchFunc: 匹配方法，0表示等于，1表示前缀匹配，2表示包含，3表示不等于，6表示后缀匹配，7表示不包含
+        :type MatchFunc: int
         :param _OptionsArr: CC的匹配条件JSON序列化的字符串，示例：[{\"key\":\"Method\",\"args\":[\"=R0VU\"],\"match\":\"0\",\"encodeflag\":true}] Key可选值为 Method、Post、Referer、Cookie、User-Agent、CustomHeader match可选值为，当Key为Method的时候可选值为0（等于）、3（不等于）。 Key为Post的时候可选值为0（等于）、3（不等于），Key为Cookie的时候可选值为0（等于）、2（包含），3（不等于）、7（不包含）、 当Key为Referer的时候可选值为0（等于）、3（不等于）、1（前缀匹配）、6（后缀匹配）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为Cookie的时候可选值为0（等于）、3（不等于）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为User-Agent的时候可选值为0（等于）、3（不等于）、1（前缀匹配）、6（后缀匹配）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为CustomHeader的时候可选值为0（等于）、3（不等于）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）。 Key为IPLocation时，可选值为13（属于）、14（不属于）。args用来表示匹配内容，需要设置encodeflag为true，当Key为Post、Cookie、CustomHeader时，用等号=来分别串接Key和Value，并分别用Base64编码，类似YWJj=YWJj。当Key为Referer、User-Agent时，用等号=来串接Value，类似=YWJj。
         :type OptionsArr: str
         :param _Edition: waf版本，sparta-waf或者clb-waf
@@ -40801,6 +40859,10 @@ class UpsertCCRuleRequest(AbstractModel):
         :type Length: int
         :param _LimitMethod: 限频方式
         :type LimitMethod: str
+        :param _CelRule: cel表达式
+        :type CelRule: str
+        :param _LogicalOp: 配置方式的逻辑操作符，and或者or
+        :type LogicalOp: str
         """
         self._Domain = None
         self._Name = None
@@ -40808,11 +40870,11 @@ class UpsertCCRuleRequest(AbstractModel):
         self._Advance = None
         self._Limit = None
         self._Interval = None
-        self._Url = None
-        self._MatchFunc = None
         self._ActionType = None
         self._Priority = None
         self._ValidTime = None
+        self._Url = None
+        self._MatchFunc = None
         self._OptionsArr = None
         self._Edition = None
         self._Type = None
@@ -40822,6 +40884,8 @@ class UpsertCCRuleRequest(AbstractModel):
         self._CreateTime = None
         self._Length = None
         self._LimitMethod = None
+        self._CelRule = None
+        self._LogicalOp = None
 
     @property
     def Domain(self):
@@ -40890,28 +40954,6 @@ class UpsertCCRuleRequest(AbstractModel):
         self._Interval = Interval
 
     @property
-    def Url(self):
-        """检测Url
-        :rtype: str
-        """
-        return self._Url
-
-    @Url.setter
-    def Url(self, Url):
-        self._Url = Url
-
-    @property
-    def MatchFunc(self):
-        """匹配方法，0表示等于，1表示前缀匹配，2表示包含，3表示不等于，6表示后缀匹配，7表示不包含
-        :rtype: int
-        """
-        return self._MatchFunc
-
-    @MatchFunc.setter
-    def MatchFunc(self, MatchFunc):
-        self._MatchFunc = MatchFunc
-
-    @property
     def ActionType(self):
         """动作，20表示观察，21表示人机识别，22表示拦截，23表示精准拦截，26表示精准人机识别，27表示JS校验
         :rtype: str
@@ -40943,6 +40985,28 @@ class UpsertCCRuleRequest(AbstractModel):
     @ValidTime.setter
     def ValidTime(self, ValidTime):
         self._ValidTime = ValidTime
+
+    @property
+    def Url(self):
+        """检测Url
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def MatchFunc(self):
+        """匹配方法，0表示等于，1表示前缀匹配，2表示包含，3表示不等于，6表示后缀匹配，7表示不包含
+        :rtype: int
+        """
+        return self._MatchFunc
+
+    @MatchFunc.setter
+    def MatchFunc(self, MatchFunc):
+        self._MatchFunc = MatchFunc
 
     @property
     def OptionsArr(self):
@@ -41043,6 +41107,28 @@ class UpsertCCRuleRequest(AbstractModel):
     def LimitMethod(self, LimitMethod):
         self._LimitMethod = LimitMethod
 
+    @property
+    def CelRule(self):
+        """cel表达式
+        :rtype: str
+        """
+        return self._CelRule
+
+    @CelRule.setter
+    def CelRule(self, CelRule):
+        self._CelRule = CelRule
+
+    @property
+    def LogicalOp(self):
+        """配置方式的逻辑操作符，and或者or
+        :rtype: str
+        """
+        return self._LogicalOp
+
+    @LogicalOp.setter
+    def LogicalOp(self, LogicalOp):
+        self._LogicalOp = LogicalOp
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -41051,11 +41137,11 @@ class UpsertCCRuleRequest(AbstractModel):
         self._Advance = params.get("Advance")
         self._Limit = params.get("Limit")
         self._Interval = params.get("Interval")
-        self._Url = params.get("Url")
-        self._MatchFunc = params.get("MatchFunc")
         self._ActionType = params.get("ActionType")
         self._Priority = params.get("Priority")
         self._ValidTime = params.get("ValidTime")
+        self._Url = params.get("Url")
+        self._MatchFunc = params.get("MatchFunc")
         self._OptionsArr = params.get("OptionsArr")
         self._Edition = params.get("Edition")
         self._Type = params.get("Type")
@@ -41065,6 +41151,8 @@ class UpsertCCRuleRequest(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._Length = params.get("Length")
         self._LimitMethod = params.get("LimitMethod")
+        self._CelRule = params.get("CelRule")
+        self._LogicalOp = params.get("LogicalOp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -9100,11 +9100,24 @@ http://www.example.com/example.txt。参数值当前必填。
         :type EncodeUrl: bool
         :param _Headers: 附带的http头部信息。
         :type Headers: list of Header
+        :param _PrefetchMediaSegments: 媒体分片预热控制，取值有：
+<li>on：开启分片预热，预热描述文件，并递归解析描述文件分片进行预热；</li>
+<li>off：仅预热提交的描述文件；</li>不填写时，默认值为 off。
+
+注意事项：
+1. 支持的描述文件为 M3U8，对应分片为 TS；
+2. 要求描述文件能正常请求，并按行业标准描述分片路径；
+3. 递归解析深度不超过 3 层；
+4. 解析获取的分片会正常累加每日预热用量，当用量超出配额时，会静默处理，不再执行预热。
+
+该参数为白名单功能，如有需要，请联系腾讯云工程师处理。
+        :type PrefetchMediaSegments: str
         """
         self._ZoneId = None
         self._Targets = None
         self._EncodeUrl = None
         self._Headers = None
+        self._PrefetchMediaSegments = None
 
     @property
     def ZoneId(self):
@@ -9157,6 +9170,27 @@ http://www.example.com/example.txt。参数值当前必填。
     def Headers(self, Headers):
         self._Headers = Headers
 
+    @property
+    def PrefetchMediaSegments(self):
+        """媒体分片预热控制，取值有：
+<li>on：开启分片预热，预热描述文件，并递归解析描述文件分片进行预热；</li>
+<li>off：仅预热提交的描述文件；</li>不填写时，默认值为 off。
+
+注意事项：
+1. 支持的描述文件为 M3U8，对应分片为 TS；
+2. 要求描述文件能正常请求，并按行业标准描述分片路径；
+3. 递归解析深度不超过 3 层；
+4. 解析获取的分片会正常累加每日预热用量，当用量超出配额时，会静默处理，不再执行预热。
+
+该参数为白名单功能，如有需要，请联系腾讯云工程师处理。
+        :rtype: str
+        """
+        return self._PrefetchMediaSegments
+
+    @PrefetchMediaSegments.setter
+    def PrefetchMediaSegments(self, PrefetchMediaSegments):
+        self._PrefetchMediaSegments = PrefetchMediaSegments
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
@@ -9168,6 +9202,7 @@ http://www.example.com/example.txt。参数值当前必填。
                 obj = Header()
                 obj._deserialize(item)
                 self._Headers.append(obj)
+        self._PrefetchMediaSegments = params.get("PrefetchMediaSegments")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31972,13 +32007,13 @@ class ModifyOriginParameters(AbstractModel):
 <li>https：使用 HTTPS 协议；</li>
 <li>follow：协议跟随。</li>
         :type OriginProtocol: str
-        :param _HTTPOriginPort: HTTP 回源端口，取值范围 1～65535。该参数仅当回源协议 OriginProtocol 为 http 或者 follow 时生效。
+        :param _HTTPOriginPort: HTTP 回源端口，取值范围 1～65535。当回源协议 OriginProtocol 为 http 或者 follow 时该参数必填。
         :type HTTPOriginPort: int
-        :param _HTTPSOriginPort: HTTPS 回源端口，取值范围 1～65535。该参数仅当回源协议 OriginProtocol 为 https 或者 follow 时生效。
+        :param _HTTPSOriginPort: HTTPS 回源端口，取值范围 1～65535。当回源协议 OriginProtocol 为 https 或者 follow 时该参数必填。
         :type HTTPSOriginPort: int
-        :param _PrivateAccess: 指定是否允许访问私有对象存储源站，该参数仅当源站类型 OriginType = COS 或 AWSS3 时会生效，取值有：
+        :param _PrivateAccess: 指定是否允许访问私有对象存储源站，当源站类型 OriginType = COS 或 AWSS3 时该参数必填，取值有：
 <li>on：使用私有鉴权；</li>
-<li>off：不使用私有鉴权。</li>不填写时，默认值为off。
+<li>off：不使用私有鉴权。</li>
         :type PrivateAccess: str
         :param _PrivateParameters: 私有鉴权使用参数，该参数仅当 OriginType = AWSS3 且 PrivateAccess = on 时会生效。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -32040,7 +32075,7 @@ class ModifyOriginParameters(AbstractModel):
 
     @property
     def HTTPOriginPort(self):
-        """HTTP 回源端口，取值范围 1～65535。该参数仅当回源协议 OriginProtocol 为 http 或者 follow 时生效。
+        """HTTP 回源端口，取值范围 1～65535。当回源协议 OriginProtocol 为 http 或者 follow 时该参数必填。
         :rtype: int
         """
         return self._HTTPOriginPort
@@ -32051,7 +32086,7 @@ class ModifyOriginParameters(AbstractModel):
 
     @property
     def HTTPSOriginPort(self):
-        """HTTPS 回源端口，取值范围 1～65535。该参数仅当回源协议 OriginProtocol 为 https 或者 follow 时生效。
+        """HTTPS 回源端口，取值范围 1～65535。当回源协议 OriginProtocol 为 https 或者 follow 时该参数必填。
         :rtype: int
         """
         return self._HTTPSOriginPort
@@ -32062,9 +32097,9 @@ class ModifyOriginParameters(AbstractModel):
 
     @property
     def PrivateAccess(self):
-        """指定是否允许访问私有对象存储源站，该参数仅当源站类型 OriginType = COS 或 AWSS3 时会生效，取值有：
+        """指定是否允许访问私有对象存储源站，当源站类型 OriginType = COS 或 AWSS3 时该参数必填，取值有：
 <li>on：使用私有鉴权；</li>
-<li>off：不使用私有鉴权。</li>不填写时，默认值为off。
+<li>off：不使用私有鉴权。</li>
         :rtype: str
         """
         return self._PrivateAccess
@@ -34067,6 +34102,8 @@ class OriginDetail(AbstractModel):
         :param _PrivateParameters: 私有鉴权使用参数，该参数仅当源站类型 PrivateAccess = on 时会生效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PrivateParameters: list of PrivateParameter
+        :param _HostHeader: 当前配置的回源 HOST 头。
+        :type HostHeader: str
         :param _VodeoSubAppId: MO 子应用 ID
         :type VodeoSubAppId: int
         :param _VodeoDistributionRange: MO 分发范围，取值有： <li>All：全部</li> <li>Bucket：存储桶</li>
@@ -34086,6 +34123,7 @@ class OriginDetail(AbstractModel):
         self._BackOriginGroupName = None
         self._PrivateAccess = None
         self._PrivateParameters = None
+        self._HostHeader = None
         self._VodeoSubAppId = None
         self._VodeoDistributionRange = None
         self._VodeoBucketId = None
@@ -34186,6 +34224,17 @@ class OriginDetail(AbstractModel):
         self._PrivateParameters = PrivateParameters
 
     @property
+    def HostHeader(self):
+        """当前配置的回源 HOST 头。
+        :rtype: str
+        """
+        return self._HostHeader
+
+    @HostHeader.setter
+    def HostHeader(self, HostHeader):
+        self._HostHeader = HostHeader
+
+    @property
     def VodeoSubAppId(self):
         warnings.warn("parameter `VodeoSubAppId` is deprecated", DeprecationWarning) 
 
@@ -34267,6 +34316,7 @@ class OriginDetail(AbstractModel):
                 obj = PrivateParameter()
                 obj._deserialize(item)
                 self._PrivateParameters.append(obj)
+        self._HostHeader = params.get("HostHeader")
         self._VodeoSubAppId = params.get("VodeoSubAppId")
         self._VodeoDistributionRange = params.get("VodeoDistributionRange")
         self._VodeoBucketId = params.get("VodeoBucketId")
@@ -34842,6 +34892,11 @@ class OriginInfo(AbstractModel):
         :type PrivateAccess: str
         :param _PrivateParameters: 私有鉴权使用参数，该参数仅当源站类型 PrivateAccess = on 时会生效。
         :type PrivateParameters: list of PrivateParameter
+        :param _HostHeader: 自定义回源 HOST 头，该参数仅当 OriginType=IP_DOMAIN 时生效。
+如果 OriginType=COS 或 AWS_S3 时，回源 HOST 头将与源站域名保持一致。
+如果OriginType=ORIGIN_GROUP 或 LB 时，回源 HOST 头遵循源站组内配置，如果没有配置则默认为加速域名。
+如果 OriginType=VOD 或 SPACE 时，无需配置该头部，按对应的回源域名生效。
+        :type HostHeader: str
         :param _VodeoSubAppId: VODEO 子应用 ID。该参数当 OriginType = VODEO 时必填。
         :type VodeoSubAppId: int
         :param _VodeoDistributionRange: VODEO 分发范围，该参数当 OriginType = VODEO 时必填。取值有： 
@@ -34861,6 +34916,7 @@ class OriginInfo(AbstractModel):
         self._BackupOrigin = None
         self._PrivateAccess = None
         self._PrivateParameters = None
+        self._HostHeader = None
         self._VodeoSubAppId = None
         self._VodeoDistributionRange = None
         self._VodeoBucketId = None
@@ -34938,6 +34994,20 @@ class OriginInfo(AbstractModel):
     @PrivateParameters.setter
     def PrivateParameters(self, PrivateParameters):
         self._PrivateParameters = PrivateParameters
+
+    @property
+    def HostHeader(self):
+        """自定义回源 HOST 头，该参数仅当 OriginType=IP_DOMAIN 时生效。
+如果 OriginType=COS 或 AWS_S3 时，回源 HOST 头将与源站域名保持一致。
+如果OriginType=ORIGIN_GROUP 或 LB 时，回源 HOST 头遵循源站组内配置，如果没有配置则默认为加速域名。
+如果 OriginType=VOD 或 SPACE 时，无需配置该头部，按对应的回源域名生效。
+        :rtype: str
+        """
+        return self._HostHeader
+
+    @HostHeader.setter
+    def HostHeader(self, HostHeader):
+        self._HostHeader = HostHeader
 
     @property
     def VodeoSubAppId(self):
@@ -35021,6 +35091,7 @@ class OriginInfo(AbstractModel):
                 obj = PrivateParameter()
                 obj._deserialize(item)
                 self._PrivateParameters.append(obj)
+        self._HostHeader = params.get("HostHeader")
         self._VodeoSubAppId = params.get("VodeoSubAppId")
         self._VodeoDistributionRange = params.get("VodeoDistributionRange")
         self._VodeoBucketId = params.get("VodeoBucketId")
@@ -38934,7 +39005,7 @@ class RuleEngineAction(AbstractModel):
 <li>ModifyRequestHeader：修改 HTTP 节点请求头；</li>
 <li>ResponseSpeedLimit：单连接下载限速；</li>
 <li>SetContentIdentifier：设置内容标识符；</li>
-<li>Vary：Vary 特性配置。该功能灰度中，如需使用，请联系腾讯云客服。</li>
+<li>Vary：Vary 特性配置。</li>
         :type Name: str
         :param _CacheParameters: 节点缓存 TTL 配置参数，当 Name 取值为 Cache 时，该参数必填。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -39040,7 +39111,6 @@ class RuleEngineAction(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type SetContentIdentifierParameters: :class:`tencentcloud.teo.v20220901.models.SetContentIdentifierParameters`
         :param _VaryParameters: Vary 特性配置参数，当 Name 取值为 Vary 时，该参数必填。
-该功能灰度中，如需使用，请联系腾讯云客服。
         :type VaryParameters: :class:`tencentcloud.teo.v20220901.models.VaryParameters`
         """
         self._Name = None
@@ -39118,7 +39188,7 @@ class RuleEngineAction(AbstractModel):
 <li>ModifyRequestHeader：修改 HTTP 节点请求头；</li>
 <li>ResponseSpeedLimit：单连接下载限速；</li>
 <li>SetContentIdentifier：设置内容标识符；</li>
-<li>Vary：Vary 特性配置。该功能灰度中，如需使用，请联系腾讯云客服。</li>
+<li>Vary：Vary 特性配置。</li>
         :rtype: str
         """
         return self._Name
@@ -39539,7 +39609,6 @@ class RuleEngineAction(AbstractModel):
     @property
     def VaryParameters(self):
         """Vary 特性配置参数，当 Name 取值为 Vary 时，该参数必填。
-该功能灰度中，如需使用，请联系腾讯云客服。
         :rtype: :class:`tencentcloud.teo.v20220901.models.VaryParameters`
         """
         return self._VaryParameters
@@ -43803,7 +43872,6 @@ class VanityNameServersIps(AbstractModel):
 
 class VaryParameters(AbstractModel):
     """[Vary 特性](https://cloud.tencent.com/document/product/1552/89301) 配置参数。
-    该功能灰度中，如需使用，请联系腾讯云客服。
 
     """
 

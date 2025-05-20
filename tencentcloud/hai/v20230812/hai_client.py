@@ -27,7 +27,7 @@ class HaiClient(AbstractClient):
 
 
     def CreateApplication(self, request):
-        """本接口（CreateApplicaiton）用于对HAI实例制作自定义应用。
+        """本接口（CreateApplication）用于对HAI实例制作自定义应用。
 
         :param request: Request instance for CreateApplication.
         :type request: :class:`tencentcloud.hai.v20230812.models.CreateApplicationRequest`

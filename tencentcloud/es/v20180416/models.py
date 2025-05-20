@@ -2114,6 +2114,10 @@ class CreateLogstashInstanceRequest(AbstractModel):
         :type TagList: list of TagInfo
         :param _OperationDuration: 可维护时间段
         :type OperationDuration: :class:`tencentcloud.es.v20180416.models.OperationDuration`
+        :param _MultiZoneInfo: 多可用区部署时可用区的详细信息
+        :type MultiZoneInfo: list of ZoneDetail
+        :param _DeployMode: 部署模式，0：单可用区、1：多可用区
+        :type DeployMode: int
         """
         self._InstanceName = None
         self._Zone = None
@@ -2133,6 +2137,8 @@ class CreateLogstashInstanceRequest(AbstractModel):
         self._LicenseType = None
         self._TagList = None
         self._OperationDuration = None
+        self._MultiZoneInfo = None
+        self._DeployMode = None
 
     @property
     def InstanceName(self):
@@ -2332,6 +2338,28 @@ class CreateLogstashInstanceRequest(AbstractModel):
     def OperationDuration(self, OperationDuration):
         self._OperationDuration = OperationDuration
 
+    @property
+    def MultiZoneInfo(self):
+        """多可用区部署时可用区的详细信息
+        :rtype: list of ZoneDetail
+        """
+        return self._MultiZoneInfo
+
+    @MultiZoneInfo.setter
+    def MultiZoneInfo(self, MultiZoneInfo):
+        self._MultiZoneInfo = MultiZoneInfo
+
+    @property
+    def DeployMode(self):
+        """部署模式，0：单可用区、1：多可用区
+        :rtype: int
+        """
+        return self._DeployMode
+
+    @DeployMode.setter
+    def DeployMode(self, DeployMode):
+        self._DeployMode = DeployMode
+
 
     def _deserialize(self, params):
         self._InstanceName = params.get("InstanceName")
@@ -2359,6 +2387,13 @@ class CreateLogstashInstanceRequest(AbstractModel):
         if params.get("OperationDuration") is not None:
             self._OperationDuration = OperationDuration()
             self._OperationDuration._deserialize(params.get("OperationDuration"))
+        if params.get("MultiZoneInfo") is not None:
+            self._MultiZoneInfo = []
+            for item in params.get("MultiZoneInfo"):
+                obj = ZoneDetail()
+                obj._deserialize(item)
+                self._MultiZoneInfo.append(obj)
+        self._DeployMode = params.get("DeployMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12652,6 +12687,10 @@ class LogstashInstanceInfo(AbstractModel):
         :param _MemSize: 内存大小
 注意：此字段可能返回 null，表示取不到有效值。
         :type MemSize: int
+        :param _DeployMode: 部署模式，0：单可用区、1：多可用区
+        :type DeployMode: int
+        :param _MultiZoneInfo: 多可用区部署时可用区的详细信息
+        :type MultiZoneInfo: list of ZoneDetail
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -12682,6 +12721,8 @@ class LogstashInstanceInfo(AbstractModel):
         self._CpuNum = None
         self._TagList = None
         self._MemSize = None
+        self._DeployMode = None
+        self._MultiZoneInfo = None
 
     @property
     def InstanceId(self):
@@ -13008,6 +13049,28 @@ class LogstashInstanceInfo(AbstractModel):
     def MemSize(self, MemSize):
         self._MemSize = MemSize
 
+    @property
+    def DeployMode(self):
+        """部署模式，0：单可用区、1：多可用区
+        :rtype: int
+        """
+        return self._DeployMode
+
+    @DeployMode.setter
+    def DeployMode(self, DeployMode):
+        self._DeployMode = DeployMode
+
+    @property
+    def MultiZoneInfo(self):
+        """多可用区部署时可用区的详细信息
+        :rtype: list of ZoneDetail
+        """
+        return self._MultiZoneInfo
+
+    @MultiZoneInfo.setter
+    def MultiZoneInfo(self, MultiZoneInfo):
+        self._MultiZoneInfo = MultiZoneInfo
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -13056,6 +13119,13 @@ class LogstashInstanceInfo(AbstractModel):
                 obj._deserialize(item)
                 self._TagList.append(obj)
         self._MemSize = params.get("MemSize")
+        self._DeployMode = params.get("DeployMode")
+        if params.get("MultiZoneInfo") is not None:
+            self._MultiZoneInfo = []
+            for item in params.get("MultiZoneInfo"):
+                obj = ZoneDetail()
+                obj._deserialize(item)
+                self._MultiZoneInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20677,9 +20747,13 @@ class ZoneDetail(AbstractModel):
         :type Zone: str
         :param _SubnetId: 子网ID
         :type SubnetId: str
+        :param _Hidden: 是否为隐藏可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Hidden: bool
         """
         self._Zone = None
         self._SubnetId = None
+        self._Hidden = None
 
     @property
     def Zone(self):
@@ -20703,10 +20777,23 @@ class ZoneDetail(AbstractModel):
     def SubnetId(self, SubnetId):
         self._SubnetId = SubnetId
 
+    @property
+    def Hidden(self):
+        """是否为隐藏可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Hidden
+
+    @Hidden.setter
+    def Hidden(self, Hidden):
+        self._Hidden = Hidden
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
         self._SubnetId = params.get("SubnetId")
+        self._Hidden = params.get("Hidden")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

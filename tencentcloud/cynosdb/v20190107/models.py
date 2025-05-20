@@ -7739,6 +7739,8 @@ deleted:已删除
         :type SubnetId: str
         :param _CynosVersion: cynos内核版本
         :type CynosVersion: str
+        :param _CynosVersionTag: cynos版本标签
+        :type CynosVersionTag: str
         :param _StorageLimit: 存储容量
         :type StorageLimit: int
         :param _RenewFlag: 续费标志
@@ -7787,6 +7789,8 @@ pause
         :type ResourcePackages: list of ResourcePackage
         :param _GdnId: 全球数据库唯一标识
         :type GdnId: str
+        :param _GdnRole: 集群角色。主集群- primary，从集群 - standby，如果 GdnId为空，该字段无效。
+        :type GdnRole: str
         """
         self._Status = None
         self._UpdateTime = None
@@ -7809,6 +7813,7 @@ pause
         self._VpcId = None
         self._SubnetId = None
         self._CynosVersion = None
+        self._CynosVersionTag = None
         self._StorageLimit = None
         self._RenewFlag = None
         self._ProcessingTask = None
@@ -7832,6 +7837,7 @@ pause
         self._Ability = None
         self._ResourcePackages = None
         self._GdnId = None
+        self._GdnRole = None
 
     @property
     def Status(self):
@@ -8072,6 +8078,17 @@ deleted:已删除
     @CynosVersion.setter
     def CynosVersion(self, CynosVersion):
         self._CynosVersion = CynosVersion
+
+    @property
+    def CynosVersionTag(self):
+        """cynos版本标签
+        :rtype: str
+        """
+        return self._CynosVersionTag
+
+    @CynosVersionTag.setter
+    def CynosVersionTag(self, CynosVersionTag):
+        self._CynosVersionTag = CynosVersionTag
 
     @property
     def StorageLimit(self):
@@ -8328,6 +8345,17 @@ pause
     def GdnId(self, GdnId):
         self._GdnId = GdnId
 
+    @property
+    def GdnRole(self):
+        """集群角色。主集群- primary，从集群 - standby，如果 GdnId为空，该字段无效。
+        :rtype: str
+        """
+        return self._GdnRole
+
+    @GdnRole.setter
+    def GdnRole(self, GdnRole):
+        self._GdnRole = GdnRole
+
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
@@ -8351,6 +8379,7 @@ pause
         self._VpcId = params.get("VpcId")
         self._SubnetId = params.get("SubnetId")
         self._CynosVersion = params.get("CynosVersion")
+        self._CynosVersionTag = params.get("CynosVersionTag")
         self._StorageLimit = params.get("StorageLimit")
         self._RenewFlag = params.get("RenewFlag")
         self._ProcessingTask = params.get("ProcessingTask")
@@ -8396,6 +8425,7 @@ pause
                 obj._deserialize(item)
                 self._ResourcePackages.append(obj)
         self._GdnId = params.get("GdnId")
+        self._GdnRole = params.get("GdnRole")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34263,9 +34293,9 @@ class RollbackData(AbstractModel):
         :type RollbackStrategy: str
         :param _SnapshotTime: 快照时间
         :type SnapshotTime: str
-        :param _MinCpu: 回档到serverlessls集群时最小CPU
+        :param _MinCpu: 回档到 Serverless 集群时最小 CPU
         :type MinCpu: int
-        :param _MaxCpu: 回档到serverlessls集群时最大CPU
+        :param _MaxCpu: 回档到 Serverless 集群时最大 CPU
         :type MaxCpu: int
         :param _SnapShotId: 快照ID
         :type SnapShotId: int
@@ -34374,7 +34404,7 @@ class RollbackData(AbstractModel):
 
     @property
     def MinCpu(self):
-        """回档到serverlessls集群时最小CPU
+        """回档到 Serverless 集群时最小 CPU
         :rtype: int
         """
         return self._MinCpu
@@ -34385,7 +34415,7 @@ class RollbackData(AbstractModel):
 
     @property
     def MaxCpu(self):
-        """回档到serverlessls集群时最大CPU
+        """回档到 Serverless 集群时最大 CPU
         :rtype: int
         """
         return self._MaxCpu

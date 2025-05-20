@@ -4159,10 +4159,12 @@ class NativeNodeInfo(AbstractModel):
         :type GPU: int
         :param _RenewFlag: 自动续费标识
         :type RenewFlag: str
-        :param _PayMode: 节点计费模式（已弃用）
+        :param _PayMode: 节点计费模式
         :type PayMode: str
         :param _Memory: 节点内存容量，单位：`GB`
         :type Memory: int
+        :param _SystemDisk: 节点系统盘配置信息
+        :type SystemDisk: :class:`tencentcloud.tke.v20220501.models.Disk`
         :param _InternetAccessible: 公网带宽相关信息设置
         :type InternetAccessible: :class:`tencentcloud.tke.v20220501.models.InternetAccessible`
         :param _InstanceFamily: 机型所属机型族
@@ -4174,6 +4176,18 @@ class NativeNodeInfo(AbstractModel):
         :param _ExpiredTime: 包年包月节点计费过期时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExpiredTime: str
+        :param _WanIp: 节点外网 IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WanIp: str
+        :param _KeyIds: 节点密钥 ID 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeyIds: list of str
+        :param _GPUParams: 节点GPU相关配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GPUParams: :class:`tencentcloud.tke.v20220501.models.GPUParams`
+        :param _DataDisks: 数据盘列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataDisks: list of DataDisk
         :param _SecurityGroupIDs: 安全组列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityGroupIDs: list of str
@@ -4184,6 +4198,11 @@ class NativeNodeInfo(AbstractModel):
         :param _OsImage: OS的名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type OsImage: str
+        :param _MachineType: **原生节点的 Machine 类型**
+
+- Native 表示 CXM 类型的原生节点
+- NativeCVM 表示 CVM 类型的原生节点
+        :type MachineType: str
         :param _InstanceId: **原生节点对应的实例 ID**
 
 - ins-q47ofw6 表示这个实例是一个 CVM 的实例
@@ -4204,15 +4223,21 @@ class NativeNodeInfo(AbstractModel):
         self._RenewFlag = None
         self._PayMode = None
         self._Memory = None
+        self._SystemDisk = None
         self._InternetAccessible = None
         self._InstanceFamily = None
         self._LanIp = None
         self._InstanceType = None
         self._ExpiredTime = None
+        self._WanIp = None
+        self._KeyIds = None
+        self._GPUParams = None
+        self._DataDisks = None
         self._SecurityGroupIDs = None
         self._VpcId = None
         self._SubnetId = None
         self._OsImage = None
+        self._MachineType = None
         self._InstanceId = None
 
     @property
@@ -4342,7 +4367,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def PayMode(self):
-        """节点计费模式（已弃用）
+        """节点计费模式
         :rtype: str
         """
         return self._PayMode
@@ -4361,6 +4386,17 @@ class NativeNodeInfo(AbstractModel):
     @Memory.setter
     def Memory(self, Memory):
         self._Memory = Memory
+
+    @property
+    def SystemDisk(self):
+        """节点系统盘配置信息
+        :rtype: :class:`tencentcloud.tke.v20220501.models.Disk`
+        """
+        return self._SystemDisk
+
+    @SystemDisk.setter
+    def SystemDisk(self, SystemDisk):
+        self._SystemDisk = SystemDisk
 
     @property
     def InternetAccessible(self):
@@ -4419,6 +4455,54 @@ class NativeNodeInfo(AbstractModel):
         self._ExpiredTime = ExpiredTime
 
     @property
+    def WanIp(self):
+        """节点外网 IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WanIp
+
+    @WanIp.setter
+    def WanIp(self, WanIp):
+        self._WanIp = WanIp
+
+    @property
+    def KeyIds(self):
+        """节点密钥 ID 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._KeyIds
+
+    @KeyIds.setter
+    def KeyIds(self, KeyIds):
+        self._KeyIds = KeyIds
+
+    @property
+    def GPUParams(self):
+        """节点GPU相关配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tke.v20220501.models.GPUParams`
+        """
+        return self._GPUParams
+
+    @GPUParams.setter
+    def GPUParams(self, GPUParams):
+        self._GPUParams = GPUParams
+
+    @property
+    def DataDisks(self):
+        """数据盘列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DataDisk
+        """
+        return self._DataDisks
+
+    @DataDisks.setter
+    def DataDisks(self, DataDisks):
+        self._DataDisks = DataDisks
+
+    @property
     def SecurityGroupIDs(self):
         """安全组列表
 注意：此字段可能返回 null，表示取不到有效值。
@@ -4465,6 +4549,20 @@ class NativeNodeInfo(AbstractModel):
         self._OsImage = OsImage
 
     @property
+    def MachineType(self):
+        """**原生节点的 Machine 类型**
+
+- Native 表示 CXM 类型的原生节点
+- NativeCVM 表示 CVM 类型的原生节点
+        :rtype: str
+        """
+        return self._MachineType
+
+    @MachineType.setter
+    def MachineType(self, MachineType):
+        self._MachineType = MachineType
+
+    @property
     def InstanceId(self):
         """**原生节点对应的实例 ID**
 
@@ -4494,6 +4592,9 @@ class NativeNodeInfo(AbstractModel):
         self._RenewFlag = params.get("RenewFlag")
         self._PayMode = params.get("PayMode")
         self._Memory = params.get("Memory")
+        if params.get("SystemDisk") is not None:
+            self._SystemDisk = Disk()
+            self._SystemDisk._deserialize(params.get("SystemDisk"))
         if params.get("InternetAccessible") is not None:
             self._InternetAccessible = InternetAccessible()
             self._InternetAccessible._deserialize(params.get("InternetAccessible"))
@@ -4501,10 +4602,22 @@ class NativeNodeInfo(AbstractModel):
         self._LanIp = params.get("LanIp")
         self._InstanceType = params.get("InstanceType")
         self._ExpiredTime = params.get("ExpiredTime")
+        self._WanIp = params.get("WanIp")
+        self._KeyIds = params.get("KeyIds")
+        if params.get("GPUParams") is not None:
+            self._GPUParams = GPUParams()
+            self._GPUParams._deserialize(params.get("GPUParams"))
+        if params.get("DataDisks") is not None:
+            self._DataDisks = []
+            for item in params.get("DataDisks"):
+                obj = DataDisk()
+                obj._deserialize(item)
+                self._DataDisks.append(obj)
         self._SecurityGroupIDs = params.get("SecurityGroupIDs")
         self._VpcId = params.get("VpcId")
         self._SubnetId = params.get("SubnetId")
         self._OsImage = params.get("OsImage")
+        self._MachineType = params.get("MachineType")
         self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

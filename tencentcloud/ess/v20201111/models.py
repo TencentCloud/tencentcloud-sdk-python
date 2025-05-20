@@ -16482,6 +16482,189 @@ class CreateUserMobileChangeUrlResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateUserNameChangeUrlRequest(AbstractModel):
+    """CreateUserNameChangeUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 操作人信息
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _Endpoint: 要跳转的链接类型
+
+<ul>
+<li><strong>HTTP</strong>：适用于短信通知或H5跳转的电子签小程序HTTP长链接</li>
+<li><strong>HTTP_SHORT_URL</strong>：适用于短信通知或H5跳转的电子签小程序HTTP短链接</li>
+<li><strong>APP</strong>：（默认类型）适用于第三方APP或小程序跳转的电子签小程序路径</li>
+</ul>
+
+注：如果不传递，默认值是 <font color="red"> HTTP </font>
+        :type Endpoint: str
+        :param _UserData: 在用户完成改名后，其自定义数据将通过[企业引导个人更名后回调](https://qian.tencent.com/developers/company/callback_types_staffs#%E5%8D%81%E5%85%AB-%E4%BC%81%E4%B8%9A%E5%BC%95%E5%AF%BC%E4%B8%AA%E4%BA%BA%E6%9B%B4%E5%90%8D%E5%90%8E%E5%9B%9E%E8%B0%83)返回，以便用户确认其个人数据信息。请注意，自定义数据的字符长度上限为1000，且必须采用base64编码格式。
+        :type UserData: str
+        """
+        self._Operator = None
+        self._Endpoint = None
+        self._UserData = None
+
+    @property
+    def Operator(self):
+        """操作人信息
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Endpoint(self):
+        """要跳转的链接类型
+
+<ul>
+<li><strong>HTTP</strong>：适用于短信通知或H5跳转的电子签小程序HTTP长链接</li>
+<li><strong>HTTP_SHORT_URL</strong>：适用于短信通知或H5跳转的电子签小程序HTTP短链接</li>
+<li><strong>APP</strong>：（默认类型）适用于第三方APP或小程序跳转的电子签小程序路径</li>
+</ul>
+
+注：如果不传递，默认值是 <font color="red"> HTTP </font>
+        :rtype: str
+        """
+        return self._Endpoint
+
+    @Endpoint.setter
+    def Endpoint(self, Endpoint):
+        self._Endpoint = Endpoint
+
+    @property
+    def UserData(self):
+        """在用户完成改名后，其自定义数据将通过[企业引导个人更名后回调](https://qian.tencent.com/developers/company/callback_types_staffs#%E5%8D%81%E5%85%AB-%E4%BC%81%E4%B8%9A%E5%BC%95%E5%AF%BC%E4%B8%AA%E4%BA%BA%E6%9B%B4%E5%90%8D%E5%90%8E%E5%9B%9E%E8%B0%83)返回，以便用户确认其个人数据信息。请注意，自定义数据的字符长度上限为1000，且必须采用base64编码格式。
+        :rtype: str
+        """
+        return self._UserData
+
+    @UserData.setter
+    def UserData(self, UserData):
+        self._UserData = UserData
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._Endpoint = params.get("Endpoint")
+        self._UserData = params.get("UserData")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateUserNameChangeUrlResponse(AbstractModel):
+    """CreateUserNameChangeUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserVerifyUrl: 腾讯电子签小程序的个人更名链接。
+如果没有传递，默认值是 HTTP。 链接的有效期均是 7 天。
+
+<strong>1.如果EndPoint是APP</strong>：
+得到的链接类似于<a href="">pages/guide/index?to=MP_PERSONAL_VERIFY&shortKey=yDCZHUyOcExAlcOvNod0</a>, 用法可以参考描述中的"跳转到小程序的实现"
+
+<strong>2.如果EndPoint是HTTP</strong>：
+得到的链接类似于 <a href="">https://res.ess.tencent.cn/cdn/h5-activity/jump-mp.html?to=TAG_VERIFY&shortKey=yDCZHUyOcChrfpaswT0d</a>，点击后会跳转到腾讯电子签小程序进行签署
+
+<strong>3.如果EndPoint是HTTP_SHORT_URL</strong>：
+得到的链接类似于<a href="">https://essurl.cn/2n**42Nd</a>，点击后会跳转到腾讯电子签小程序进行签署
+
+
+`注：` <font color="red">生成的链路后面不能再增加参数，防止出错重复参数覆盖原有的参数</font>
+        :type UserVerifyUrl: str
+        :param _ExpireTime: 链接过期时间，为Unix时间戳（单位为秒）。
+        :type ExpireTime: int
+        :param _MiniAppId: 小程序appid，用于半屏拉起电子签小程序， 仅在 Endpoint 设置为 APP 的时候返回
+        :type MiniAppId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._UserVerifyUrl = None
+        self._ExpireTime = None
+        self._MiniAppId = None
+        self._RequestId = None
+
+    @property
+    def UserVerifyUrl(self):
+        """腾讯电子签小程序的个人更名链接。
+如果没有传递，默认值是 HTTP。 链接的有效期均是 7 天。
+
+<strong>1.如果EndPoint是APP</strong>：
+得到的链接类似于<a href="">pages/guide/index?to=MP_PERSONAL_VERIFY&shortKey=yDCZHUyOcExAlcOvNod0</a>, 用法可以参考描述中的"跳转到小程序的实现"
+
+<strong>2.如果EndPoint是HTTP</strong>：
+得到的链接类似于 <a href="">https://res.ess.tencent.cn/cdn/h5-activity/jump-mp.html?to=TAG_VERIFY&shortKey=yDCZHUyOcChrfpaswT0d</a>，点击后会跳转到腾讯电子签小程序进行签署
+
+<strong>3.如果EndPoint是HTTP_SHORT_URL</strong>：
+得到的链接类似于<a href="">https://essurl.cn/2n**42Nd</a>，点击后会跳转到腾讯电子签小程序进行签署
+
+
+`注：` <font color="red">生成的链路后面不能再增加参数，防止出错重复参数覆盖原有的参数</font>
+        :rtype: str
+        """
+        return self._UserVerifyUrl
+
+    @UserVerifyUrl.setter
+    def UserVerifyUrl(self, UserVerifyUrl):
+        self._UserVerifyUrl = UserVerifyUrl
+
+    @property
+    def ExpireTime(self):
+        """链接过期时间，为Unix时间戳（单位为秒）。
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def MiniAppId(self):
+        """小程序appid，用于半屏拉起电子签小程序， 仅在 Endpoint 设置为 APP 的时候返回
+        :rtype: str
+        """
+        return self._MiniAppId
+
+    @MiniAppId.setter
+    def MiniAppId(self, MiniAppId):
+        self._MiniAppId = MiniAppId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._UserVerifyUrl = params.get("UserVerifyUrl")
+        self._ExpireTime = params.get("ExpireTime")
+        self._MiniAppId = params.get("MiniAppId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateUserVerifyUrlRequest(AbstractModel):
     """CreateUserVerifyUrl请求参数结构体
 

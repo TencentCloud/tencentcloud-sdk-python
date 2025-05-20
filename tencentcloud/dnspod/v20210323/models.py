@@ -731,7 +731,7 @@ class CheckRecordSnapshotRollbackRequest(AbstractModel):
         r"""
         :param _Domain: 域名
         :type Domain: str
-        :param _SnapshotId: 快照 ID
+        :param _SnapshotId: 快照记录 ID
         :type SnapshotId: str
         :param _Record: 解析记录信息
         :type Record: :class:`tencentcloud.dnspod.v20210323.models.SnapshotRecord`
@@ -756,7 +756,7 @@ class CheckRecordSnapshotRollbackRequest(AbstractModel):
 
     @property
     def SnapshotId(self):
-        """快照 ID
+        """快照记录 ID
         :rtype: str
         """
         return self._SnapshotId
@@ -2829,7 +2829,7 @@ class CreateRecordBatchRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DomainIdList: 域名ID，多个 domain_id 用英文逗号进行分割。
+        :param _DomainIdList: 域名ID，多个域名ID用英文逗号进行分割。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
         :type DomainIdList: list of str
         :param _RecordList: 记录数组
         :type RecordList: list of AddRecordBatch
@@ -2839,7 +2839,7 @@ class CreateRecordBatchRequest(AbstractModel):
 
     @property
     def DomainIdList(self):
-        """域名ID，多个 domain_id 用英文逗号进行分割。
+        """域名ID，多个域名ID用英文逗号进行分割。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
         :rtype: list of str
         """
         return self._DomainIdList
@@ -2952,7 +2952,7 @@ class CreateRecordGroupRequest(AbstractModel):
         :type Domain: str
         :param _GroupName: 分组名称
         :type GroupName: str
-        :param _DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+        :param _DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
         :type DomainId: int
         """
         self._Domain = None
@@ -2983,7 +2983,7 @@ class CreateRecordGroupRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+        """域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
         :rtype: int
         """
         return self._DomainId
@@ -3059,9 +3059,9 @@ class CreateRecordRequest(AbstractModel):
         r"""
         :param _Domain: 域名
         :type Domain: str
-        :param _RecordType: 记录类型，通过 API 记录类型获得，大写英文，比如：A 。
+        :param _RecordType: 记录类型，可通过接口DescribeRecordType获得，大写英文，比如：A 。
         :type RecordType: str
-        :param _RecordLine: 记录线路，通过 API 记录线路获得，中文，比如：默认。
+        :param _RecordLine: 记录线路，可以通过接口DescribeRecordLineList查看当前域名允许的线路信息，中文，比如：默认。
         :type RecordLine: str
         :param _Value: 记录值，如 IP : 200.200.200.200， CNAME : cname.dnspod.com.， MX : mail.dnspod.com.。
         :type Value: str
@@ -3069,9 +3069,9 @@ class CreateRecordRequest(AbstractModel):
         :type DomainId: int
         :param _SubDomain: 主机记录，如 www，如果不传，默认为 @。
         :type SubDomain: str
-        :param _RecordLineId: 线路的 ID，通过 API 记录线路获得，英文字符串，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。
+        :param _RecordLineId: 线路的 ID，可以通过接口DescribeRecordLineList查看当前域名允许的线路信息，英文字符串，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。
         :type RecordLineId: str
-        :param _MX: MX 优先级，当记录类型是 MX 时有效，范围1-20，MX 记录时必选。
+        :param _MX: MX 优先级，当记录类型是 MX、HTTPS、SVCB 时必填，范围1-65535。
         :type MX: int
         :param _TTL: TTL，范围1-604800，不同套餐域名最小值不同。
         :type TTL: int
@@ -3114,7 +3114,7 @@ class CreateRecordRequest(AbstractModel):
 
     @property
     def RecordType(self):
-        """记录类型，通过 API 记录类型获得，大写英文，比如：A 。
+        """记录类型，可通过接口DescribeRecordType获得，大写英文，比如：A 。
         :rtype: str
         """
         return self._RecordType
@@ -3125,7 +3125,7 @@ class CreateRecordRequest(AbstractModel):
 
     @property
     def RecordLine(self):
-        """记录线路，通过 API 记录线路获得，中文，比如：默认。
+        """记录线路，可以通过接口DescribeRecordLineList查看当前域名允许的线路信息，中文，比如：默认。
         :rtype: str
         """
         return self._RecordLine
@@ -3169,7 +3169,7 @@ class CreateRecordRequest(AbstractModel):
 
     @property
     def RecordLineId(self):
-        """线路的 ID，通过 API 记录线路获得，英文字符串，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。
+        """线路的 ID，可以通过接口DescribeRecordLineList查看当前域名允许的线路信息，英文字符串，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。
         :rtype: str
         """
         return self._RecordLineId
@@ -3180,7 +3180,7 @@ class CreateRecordRequest(AbstractModel):
 
     @property
     def MX(self):
-        """MX 优先级，当记录类型是 MX 时有效，范围1-20，MX 记录时必选。
+        """MX 优先级，当记录类型是 MX、HTTPS、SVCB 时必填，范围1-65535。
         :rtype: int
         """
         return self._MX
@@ -3688,7 +3688,7 @@ class CreateTXTRecordRequest(AbstractModel):
         r"""
         :param _Domain: 域名
         :type Domain: str
-        :param _RecordLine: 记录线路，通过 API 记录线路获得，中文，比如：默认。
+        :param _RecordLine: 记录线路
         :type RecordLine: str
         :param _Value: 记录值，如 IP : 200.200.200.200， CNAME : cname.dnspod.com.， MX : mail.dnspod.com.。
         :type Value: str
@@ -3696,7 +3696,7 @@ class CreateTXTRecordRequest(AbstractModel):
         :type DomainId: int
         :param _SubDomain: 主机记录，如 www，如果不传，默认为 @。
         :type SubDomain: str
-        :param _RecordLineId: 线路的 ID，通过 API 记录线路获得，英文字符串，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。
+        :param _RecordLineId: 线路的 ID，英文字符串，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。
         :type RecordLineId: str
         :param _TTL: TTL，范围1-604800，不同套餐域名最小值不同。
         :type TTL: int
@@ -3704,7 +3704,7 @@ class CreateTXTRecordRequest(AbstractModel):
         :type Status: str
         :param _Remark: 备注
         :type Remark: str
-        :param _GroupId: 记录分组 Id。可以通过接口 DescribeRecordGroupList 接口 GroupId 字段获取。
+        :param _GroupId: 记录分组 Id。
         :type GroupId: int
         """
         self._Domain = None
@@ -3731,7 +3731,7 @@ class CreateTXTRecordRequest(AbstractModel):
 
     @property
     def RecordLine(self):
-        """记录线路，通过 API 记录线路获得，中文，比如：默认。
+        """记录线路
         :rtype: str
         """
         return self._RecordLine
@@ -3775,7 +3775,7 @@ class CreateTXTRecordRequest(AbstractModel):
 
     @property
     def RecordLineId(self):
-        """线路的 ID，通过 API 记录线路获得，英文字符串，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。
+        """线路的 ID，英文字符串，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。
         :rtype: str
         """
         return self._RecordLineId
@@ -3819,7 +3819,7 @@ class CreateTXTRecordRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """记录分组 Id。可以通过接口 DescribeRecordGroupList 接口 GroupId 字段获取。
+        """记录分组 Id。
         :rtype: int
         """
         return self._GroupId
@@ -4819,9 +4819,9 @@ class DeleteRecordGroupRequest(AbstractModel):
         r"""
         :param _Domain: 域名
         :type Domain: str
-        :param _GroupId: 分组 ID
+        :param _GroupId: 分组 ID，可通过DescribeRecordGroupList接口获取所有记录分组
         :type GroupId: int
-        :param _DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+        :param _DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
         :type DomainId: int
         """
         self._Domain = None
@@ -4841,7 +4841,7 @@ class DeleteRecordGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """分组 ID
+        """分组 ID，可通过DescribeRecordGroupList接口获取所有记录分组
         :rtype: int
         """
         return self._GroupId
@@ -4852,7 +4852,7 @@ class DeleteRecordGroupRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+        """域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
         :rtype: int
         """
         return self._DomainId
@@ -5101,9 +5101,9 @@ class DeleteSnapshotRequest(AbstractModel):
         r"""
         :param _Domain: 域名
         :type Domain: str
-        :param _SnapshotId: 快照记录 ID
+        :param _SnapshotId: 快照 ID。可以通过接口DescribeSnapshotList查询快照 ID
         :type SnapshotId: str
-        :param _DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+        :param _DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
         :type DomainId: int
         """
         self._Domain = None
@@ -5123,7 +5123,7 @@ class DeleteSnapshotRequest(AbstractModel):
 
     @property
     def SnapshotId(self):
-        """快照记录 ID
+        """快照 ID。可以通过接口DescribeSnapshotList查询快照 ID
         :rtype: str
         """
         return self._SnapshotId
@@ -5134,7 +5134,7 @@ class DeleteSnapshotRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+        """域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
         :rtype: int
         """
         return self._DomainId
@@ -5613,7 +5613,7 @@ class DescribeDomainAnalyticsRequest(AbstractModel):
         :type EndDate: str
         :param _DnsFormat: DATE:按天维度统计 HOUR:按小时维度统计
         :type DnsFormat: str
-        :param _DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
+        :param _DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
         :type DomainId: int
         """
         self._Domain = None
@@ -5668,7 +5668,7 @@ class DescribeDomainAnalyticsRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
+        """域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
         :rtype: int
         """
         return self._DomainId
@@ -6013,7 +6013,7 @@ class DescribeDomainCustomLineListRequest(AbstractModel):
         r"""
         :param _Domain: 域名
         :type Domain: str
-        :param _DomainId: 域名ID，如果传了DomainId，系统将会忽略Domain参数，优先使用DomainId
+        :param _DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
         :type DomainId: int
         """
         self._Domain = None
@@ -6032,7 +6032,7 @@ class DescribeDomainCustomLineListRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """域名ID，如果传了DomainId，系统将会忽略Domain参数，优先使用DomainId
+        """域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
         :rtype: int
         """
         return self._DomainId
@@ -6135,7 +6135,7 @@ RECENT：最近操作过的域名
         :type Offset: int
         :param _Limit: 要获取的域名数量, 比如获取 20 个, 则为 20。默认值为 5000。如果账户中的域名数量超过了 5000, 将会强制分页并且只返回前 5000 条, 这时需要通过 Offset 和 Limit 参数去获取其它域名。
         :type Limit: int
-        :param _GroupId: 根据域名分组 id 获取域名，可通过 DescribeDomain 或 DescribeDomainList 接口 GroupId 字段获取。
+        :param _GroupId: 根据域名分组 id 获取域名
         :type GroupId: list of int
         :param _Keyword: 根据关键字获取域名。
         :type Keyword: str
@@ -6227,7 +6227,7 @@ RECENT：最近操作过的域名
 
     @property
     def GroupId(self):
-        """根据域名分组 id 获取域名，可通过 DescribeDomain 或 DescribeDomainList 接口 GroupId 字段获取。
+        """根据域名分组 id 获取域名
         :rtype: list of int
         """
         return self._GroupId
@@ -6542,7 +6542,7 @@ class DescribeDomainListRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 要获取的域名数量, 比如获取20个, 则为20。默认值为3000。
         :type Limit: int
-        :param _GroupId: 分组ID, 获取指定分组的域名
+        :param _GroupId: 分组ID, 获取指定分组的域名，可以通过接口DescribeDomainGroupList查看当前域名分组信息
         :type GroupId: int
         :param _Keyword: 根据关键字搜索域名
         :type Keyword: str
@@ -6591,7 +6591,7 @@ class DescribeDomainListRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """分组ID, 获取指定分组的域名
+        """分组ID, 获取指定分组的域名，可以通过接口DescribeDomainGroupList查看当前域名分组信息
         :rtype: int
         """
         return self._GroupId
@@ -7278,7 +7278,7 @@ class DescribeDomainShareUserListRequest(AbstractModel):
         r"""
         :param _Domain: 域名
         :type Domain: str
-        :param _DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
+        :param _DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
         :type DomainId: int
         """
         self._Domain = None
@@ -7297,7 +7297,7 @@ class DescribeDomainShareUserListRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
+        """域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
         :rtype: int
         """
         return self._DomainId
@@ -7769,7 +7769,7 @@ class DescribeRecordExistExceptDefaultNSRequest(AbstractModel):
         r"""
         :param _Domain: 域名
         :type Domain: str
-        :param _DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
+        :param _DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
         :type DomainId: int
         """
         self._Domain = None
@@ -7788,7 +7788,7 @@ class DescribeRecordExistExceptDefaultNSRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
+        """域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
         :rtype: int
         """
         return self._DomainId
@@ -7863,15 +7863,15 @@ class DescribeRecordFilterListRequest(AbstractModel):
         r"""
         :param _Domain: 要获取的解析记录所属的域名。
         :type Domain: str
-        :param _DomainId: 要获取的解析记录所属的域名 Id，如果传了 DomainId，系统将会忽略 Domain 参数。 可以通过接口 DescribeDomainList 查到所有的 Domain 以及 DomainId。
+        :param _DomainId: 要获取的解析记录所属的域名 Id，如果传了 DomainId，系统将会忽略 Domain 参数。 
         :type DomainId: int
         :param _SubDomain: 根据解析记录的主机头获取解析记录。默认模糊匹配。可以通过设置 IsExactSubdomain 参数为 true 进行精确查找。
         :type SubDomain: str
         :param _RecordType: 获取某些类型的解析记录，如 A，CNAME，NS，AAAA，显性URL，隐性URL，CAA，SPF等。
         :type RecordType: list of str
-        :param _RecordLine: 获取某些线路ID的解析记录。可以通过接口 DescribeRecordLineList 查看当前域名允许的线路信息。
+        :param _RecordLine: 获取某些线路ID的解析记录。
         :type RecordLine: list of str
-        :param _GroupId: 获取某些分组下的解析记录时，传这个分组 Id。可以通过接口 DescribeRecordGroupList 接口 GroupId 字段获取。
+        :param _GroupId: 获取某些分组下的解析记录时，传这个分组 Id。
         :type GroupId: list of int non-negative
         :param _Keyword: 通过关键字搜索解析记录，当前支持搜索主机头和记录值
         :type Keyword: str
@@ -7888,7 +7888,7 @@ UPDATED_ON：解析记录更新时间
         :type SortField: str
         :param _SortType: 排序方式，升序：ASC，降序：DESC。默认值为ASC。
         :type SortType: str
-        :param _Offset: 偏移量，默认值为0。如果入参携带"Domain","ffset","Limit" 这3个以外的参数，记录结果限制最大3000条
+        :param _Offset: 偏移量，默认值为0。如果入参携带"Domain","offset","Limit" 这3个以外的参数，记录结果限制最大3000条
         :type Offset: int
         :param _Limit: 限制数量，当前Limit最大支持3000。默认值为100。
         :type Limit: int
@@ -7959,7 +7959,7 @@ DISABLE：暂停
 
     @property
     def DomainId(self):
-        """要获取的解析记录所属的域名 Id，如果传了 DomainId，系统将会忽略 Domain 参数。 可以通过接口 DescribeDomainList 查到所有的 Domain 以及 DomainId。
+        """要获取的解析记录所属的域名 Id，如果传了 DomainId，系统将会忽略 Domain 参数。 
         :rtype: int
         """
         return self._DomainId
@@ -7992,7 +7992,7 @@ DISABLE：暂停
 
     @property
     def RecordLine(self):
-        """获取某些线路ID的解析记录。可以通过接口 DescribeRecordLineList 查看当前域名允许的线路信息。
+        """获取某些线路ID的解析记录。
         :rtype: list of str
         """
         return self._RecordLine
@@ -8003,7 +8003,7 @@ DISABLE：暂停
 
     @property
     def GroupId(self):
-        """获取某些分组下的解析记录时，传这个分组 Id。可以通过接口 DescribeRecordGroupList 接口 GroupId 字段获取。
+        """获取某些分组下的解析记录时，传这个分组 Id。
         :rtype: list of int non-negative
         """
         return self._GroupId
@@ -8056,7 +8056,7 @@ UPDATED_ON：解析记录更新时间
 
     @property
     def Offset(self):
-        """偏移量，默认值为0。如果入参携带"Domain","ffset","Limit" 这3个以外的参数，记录结果限制最大3000条
+        """偏移量，默认值为0。如果入参携带"Domain","offset","Limit" 这3个以外的参数，记录结果限制最大3000条
         :rtype: int
         """
         return self._Offset
@@ -8331,7 +8331,7 @@ class DescribeRecordGroupListRequest(AbstractModel):
         r"""
         :param _Domain: 域名
         :type Domain: str
-        :param _DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+        :param _DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
         :type DomainId: int
         :param _Offset: 分页开始位置
         :type Offset: int
@@ -8356,7 +8356,7 @@ class DescribeRecordGroupListRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+        """域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
         :rtype: int
         """
         return self._DomainId
@@ -8460,7 +8460,7 @@ class DescribeRecordLineCategoryListRequest(AbstractModel):
         r"""
         :param _Domain: 要查询线路列表的域名。
         :type Domain: str
-        :param _DomainId: 要查询线路列表的域名 ID。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain。可以通过接口 DescribeDomainList 查到所有的 Domain 以及 DomainId。
+        :param _DomainId: 要查询线路列表的域名 ID。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain。
         :type DomainId: int
         """
         self._Domain = None
@@ -8479,7 +8479,7 @@ class DescribeRecordLineCategoryListRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """要查询线路列表的域名 ID。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain。可以通过接口 DescribeDomainList 查到所有的 Domain 以及 DomainId。
+        """要查询线路列表的域名 ID。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain。
         :rtype: int
         """
         return self._DomainId
@@ -8691,9 +8691,9 @@ class DescribeRecordListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Domain: 要获取的解析记录所属的域名
+        :param _Domain: 域名
         :type Domain: str
-        :param _DomainId: 要获取的解析记录所属的域名Id，如果传了DomainId，系统将会忽略Domain参数。 可以通过接口DescribeDomainList查到所有的Domain以及DomainId
+        :param _DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
         :type DomainId: int
         :param _Subdomain: 解析记录的主机头，如果传了此参数，则只会返回此主机头对应的解析记录
         :type Subdomain: str
@@ -8703,7 +8703,7 @@ class DescribeRecordListRequest(AbstractModel):
         :type RecordLine: str
         :param _RecordLineId: 获取某个线路Id对应的解析记录，如果传RecordLineId，系统会忽略RecordLine参数。可以通过接口DescribeRecordLineList查看当前域名允许的线路信息
         :type RecordLineId: str
-        :param _GroupId: 获取某个分组下的解析记录时，传这个分组Id。
+        :param _GroupId: 获取某个分组下的解析记录时，传这个分组Id。可通过DescribeRecordGroupList接口获取所有分组
         :type GroupId: int
         :param _Keyword: 通过关键字搜索解析记录，当前支持搜索主机头和记录值
         :type Keyword: str
@@ -8731,7 +8731,7 @@ class DescribeRecordListRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """要获取的解析记录所属的域名
+        """域名
         :rtype: str
         """
         return self._Domain
@@ -8742,7 +8742,7 @@ class DescribeRecordListRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """要获取的解析记录所属的域名Id，如果传了DomainId，系统将会忽略Domain参数。 可以通过接口DescribeDomainList查到所有的Domain以及DomainId
+        """域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
         :rtype: int
         """
         return self._DomainId
@@ -8797,7 +8797,7 @@ class DescribeRecordListRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """获取某个分组下的解析记录时，传这个分组Id。
+        """获取某个分组下的解析记录时，传这个分组Id。可通过DescribeRecordGroupList接口获取所有分组
         :rtype: int
         """
         return self._GroupId
@@ -9416,7 +9416,7 @@ class DescribeSnapshotConfigRequest(AbstractModel):
         r"""
         :param _Domain: 域名
         :type Domain: str
-        :param _DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+        :param _DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
         :type DomainId: int
         """
         self._Domain = None
@@ -9435,7 +9435,7 @@ class DescribeSnapshotConfigRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+        """域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
         :rtype: int
         """
         return self._DomainId
@@ -9512,7 +9512,7 @@ class DescribeSnapshotListRequest(AbstractModel):
         r"""
         :param _Domain: 域名
         :type Domain: str
-        :param _DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+        :param _DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
         :type DomainId: int
         """
         self._Domain = None
@@ -9531,7 +9531,7 @@ class DescribeSnapshotListRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+        """域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
         :rtype: int
         """
         return self._DomainId
@@ -13319,7 +13319,7 @@ class ModifyDomainLockRequest(AbstractModel):
         r"""
         :param _Domain: 域名
         :type Domain: str
-        :param _LockDays: 域名要锁定的天数，最多可锁定的天数可以通过获取域名权限接口获取。
+        :param _LockDays: 域名要锁定的天数，最多可锁定的天数可以通过DescribeDomainPurview接口获取。
         :type LockDays: int
         :param _DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
         :type DomainId: int
@@ -13341,7 +13341,7 @@ class ModifyDomainLockRequest(AbstractModel):
 
     @property
     def LockDays(self):
-        """域名要锁定的天数，最多可锁定的天数可以通过获取域名权限接口获取。
+        """域名要锁定的天数，最多可锁定的天数可以通过DescribeDomainPurview接口获取。
         :rtype: int
         """
         return self._LockDays
@@ -13902,13 +13902,13 @@ class ModifyDynamicDNSRequest(AbstractModel):
         :type Domain: str
         :param _RecordId: 记录ID。 可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId
         :type RecordId: int
-        :param _RecordLine: 记录线路，通过 API 记录线路获得，中文，比如：默认。
+        :param _RecordLine: 记录线路，中文，比如：默认。
         :type RecordLine: str
-        :param _DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
+        :param _DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
         :type DomainId: int
         :param _SubDomain: 主机记录，如 www，如果不传，默认为 @。
         :type SubDomain: str
-        :param _RecordLineId: 线路的 ID，通过 API 记录线路获得，英文字符串，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。
+        :param _RecordLineId: 线路的 ID，英文字符串，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。
         :type RecordLineId: str
         :param _Value: IP 地址，支持 IPv4、IPv6，例如 119.29.29.29 或者 2402:4e00::
         :type Value: str
@@ -13948,7 +13948,7 @@ class ModifyDynamicDNSRequest(AbstractModel):
 
     @property
     def RecordLine(self):
-        """记录线路，通过 API 记录线路获得，中文，比如：默认。
+        """记录线路，中文，比如：默认。
         :rtype: str
         """
         return self._RecordLine
@@ -13959,7 +13959,7 @@ class ModifyDynamicDNSRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
+        """域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
         :rtype: int
         """
         return self._DomainId
@@ -13981,7 +13981,7 @@ class ModifyDynamicDNSRequest(AbstractModel):
 
     @property
     def RecordLineId(self):
-        """线路的 ID，通过 API 记录线路获得，英文字符串，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。
+        """线路的 ID，英文字符串，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。
         :rtype: str
         """
         return self._RecordLineId
@@ -14443,7 +14443,7 @@ class ModifyRecordBatchRequest(AbstractModel):
         :type ChangeTo: str
         :param _Value: 要修改到的记录值，仅当 change 字段为 “record_type” 时为必填参数。
         :type Value: str
-        :param _MX: MX记录优先级，仅当修改为 MX 记录时为必填参数。
+        :param _MX: MX 优先级，当记录类型是 MX、HTTPS、SVCB 时必填，范围1-65535。
         :type MX: str
         """
         self._RecordIdList = None
@@ -14498,7 +14498,7 @@ class ModifyRecordBatchRequest(AbstractModel):
 
     @property
     def MX(self):
-        """MX记录优先级，仅当修改为 MX 记录时为必填参数。
+        """MX 优先级，当记录类型是 MX、HTTPS、SVCB 时必填，范围1-65535。
         :rtype: str
         """
         return self._MX
@@ -14533,7 +14533,7 @@ class ModifyRecordBatchResponse(AbstractModel):
         r"""
         :param _JobId: 批量任务ID
         :type JobId: int
-        :param _DetailList: 见modifyRecordBatchDetail
+        :param _DetailList: 见ModifyRecordBatchDetail
         :type DetailList: list of ModifyRecordBatchDetail
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14555,7 +14555,7 @@ class ModifyRecordBatchResponse(AbstractModel):
 
     @property
     def DetailList(self):
-        """见modifyRecordBatchDetail
+        """见ModifyRecordBatchDetail
         :rtype: list of ModifyRecordBatchDetail
         """
         return self._DetailList
@@ -14727,9 +14727,9 @@ class ModifyRecordGroupRequest(AbstractModel):
         :type Domain: str
         :param _GroupName: 分组名称
         :type GroupName: str
-        :param _GroupId: 要修改的分组 ID
+        :param _GroupId: 要修改的分组 ID，可通过DescribeRecordGroupList接口获取所有记录分组
         :type GroupId: int
-        :param _DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+        :param _DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
         :type DomainId: int
         """
         self._Domain = None
@@ -14761,7 +14761,7 @@ class ModifyRecordGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """要修改的分组 ID
+        """要修改的分组 ID，可通过DescribeRecordGroupList接口获取所有记录分组
         :rtype: int
         """
         return self._GroupId
@@ -14772,7 +14772,7 @@ class ModifyRecordGroupRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+        """域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
         :rtype: int
         """
         return self._DomainId
@@ -14958,9 +14958,9 @@ class ModifyRecordRequest(AbstractModel):
         r"""
         :param _Domain: 域名
         :type Domain: str
-        :param _RecordType: 记录类型，通过 API 记录类型获得，大写英文，比如：A 。
+        :param _RecordType: 记录类型，可通过接口DescribeRecordType获得，大写英文，比如：A 。
         :type RecordType: str
-        :param _RecordLine: 记录线路，通过 API 记录线路获得，中文，比如：默认。
+        :param _RecordLine: 记录线路，可以通过接口DescribeRecordLineList查看当前域名允许的线路信息。比如：默认。
         :type RecordLine: str
         :param _Value: 记录值，如 IP : 200.200.200.200， CNAME : cname.dnspod.com.， MX : mail.dnspod.com.。
         :type Value: str
@@ -14970,9 +14970,9 @@ class ModifyRecordRequest(AbstractModel):
         :type DomainId: int
         :param _SubDomain: 主机记录，如 www，如果不传，默认为 @。
         :type SubDomain: str
-        :param _RecordLineId: 线路的 ID，通过 API 记录线路获得，英文字符串，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。
+        :param _RecordLineId: 线路的 ID，可以通过接口DescribeRecordLineList查看当前域名允许的线路信息，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。
         :type RecordLineId: str
-        :param _MX: MX 优先级，当记录类型是 MX 时有效，范围1-20，MX 记录时必选。
+        :param _MX: MX 优先级，当记录类型是 MX、HTTPS、SVCB 时必填，范围1-65535。
         :type MX: int
         :param _TTL: TTL，范围1-604800，不同等级域名最小值不同。
         :type TTL: int
@@ -15013,7 +15013,7 @@ class ModifyRecordRequest(AbstractModel):
 
     @property
     def RecordType(self):
-        """记录类型，通过 API 记录类型获得，大写英文，比如：A 。
+        """记录类型，可通过接口DescribeRecordType获得，大写英文，比如：A 。
         :rtype: str
         """
         return self._RecordType
@@ -15024,7 +15024,7 @@ class ModifyRecordRequest(AbstractModel):
 
     @property
     def RecordLine(self):
-        """记录线路，通过 API 记录线路获得，中文，比如：默认。
+        """记录线路，可以通过接口DescribeRecordLineList查看当前域名允许的线路信息。比如：默认。
         :rtype: str
         """
         return self._RecordLine
@@ -15079,7 +15079,7 @@ class ModifyRecordRequest(AbstractModel):
 
     @property
     def RecordLineId(self):
-        """线路的 ID，通过 API 记录线路获得，英文字符串，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。
+        """线路的 ID，可以通过接口DescribeRecordLineList查看当前域名允许的线路信息，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。
         :rtype: str
         """
         return self._RecordLineId
@@ -15090,7 +15090,7 @@ class ModifyRecordRequest(AbstractModel):
 
     @property
     def MX(self):
-        """MX 优先级，当记录类型是 MX 时有效，范围1-20，MX 记录时必选。
+        """MX 优先级，当记录类型是 MX、HTTPS、SVCB 时必填，范围1-65535。
         :rtype: int
         """
         return self._MX
@@ -15356,11 +15356,11 @@ class ModifyRecordToGroupRequest(AbstractModel):
         r"""
         :param _Domain: 域名
         :type Domain: str
-        :param _GroupId: 分组 ID
+        :param _GroupId: 分组 ID，可通过DescribeRecordGroupList接口获取所有记录分组
         :type GroupId: int
-        :param _RecordId: 记录 ID，多个 ID 用竖线“|”分割
+        :param _RecordId: 记录 ID，多个 ID 用竖线“|”分割，可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId
         :type RecordId: str
-        :param _DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+        :param _DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
         :type DomainId: int
         """
         self._Domain = None
@@ -15381,7 +15381,7 @@ class ModifyRecordToGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """分组 ID
+        """分组 ID，可通过DescribeRecordGroupList接口获取所有记录分组
         :rtype: int
         """
         return self._GroupId
@@ -15392,7 +15392,7 @@ class ModifyRecordToGroupRequest(AbstractModel):
 
     @property
     def RecordId(self):
-        """记录 ID，多个 ID 用竖线“|”分割
+        """记录 ID，多个 ID 用竖线“|”分割，可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId
         :rtype: str
         """
         return self._RecordId
@@ -15403,7 +15403,7 @@ class ModifyRecordToGroupRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+        """域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
         :rtype: int
         """
         return self._DomainId
@@ -15563,7 +15563,7 @@ class ModifySubdomainStatusRequest(AbstractModel):
         :type RecordType: str
         :param _Status: 记录状态。允许的值为disable。
         :type Status: str
-        :param _DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
+        :param _DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
         :type DomainId: int
         :param _SubDomain: 主机记录，如 www，如果不传，默认为 @。
         :type SubDomain: str
@@ -15609,7 +15609,7 @@ class ModifySubdomainStatusRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
+        """域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
         :rtype: int
         """
         return self._DomainId
@@ -15687,9 +15687,9 @@ class ModifyTXTRecordRequest(AbstractModel):
         :type RecordLine: str
         :param _Value: 记录值，如 IP : 200.200.200.200， CNAME : cname.dnspod.com.， MX : mail.dnspod.com.。
         :type Value: str
-        :param _RecordId: 记录 ID 。可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId
+        :param _RecordId: 记录 ID 。
         :type RecordId: int
-        :param _DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
+        :param _DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
         :type DomainId: int
         :param _SubDomain: 主机记录，如 www，如果不传，默认为 @。
         :type SubDomain: str
@@ -15748,7 +15748,7 @@ class ModifyTXTRecordRequest(AbstractModel):
 
     @property
     def RecordId(self):
-        """记录 ID 。可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId
+        """记录 ID 。
         :rtype: int
         """
         return self._RecordId
@@ -15759,7 +15759,7 @@ class ModifyTXTRecordRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
+        """域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
         :rtype: int
         """
         return self._DomainId
@@ -17129,13 +17129,13 @@ class RollbackRecordSnapshotRequest(AbstractModel):
         r"""
         :param _Domain: 域名
         :type Domain: str
-        :param _SnapshotId: 快照 ID
+        :param _SnapshotId: 快照 ID。可以通过接口DescribeSnapshotList查询快照 ID
         :type SnapshotId: str
         :param _RecordList: 解析记录信息
         :type RecordList: list of SnapshotRecord
-        :param _TaskId: 之前的快照回滚任务 ID
+        :param _TaskId: 之前的快照回滚任务 ID。可从RollbackSnapshot接口获取
         :type TaskId: int
-        :param _DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+        :param _DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
         :type DomainId: int
         """
         self._Domain = None
@@ -17157,7 +17157,7 @@ class RollbackRecordSnapshotRequest(AbstractModel):
 
     @property
     def SnapshotId(self):
-        """快照 ID
+        """快照 ID。可以通过接口DescribeSnapshotList查询快照 ID
         :rtype: str
         """
         return self._SnapshotId
@@ -17179,7 +17179,7 @@ class RollbackRecordSnapshotRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """之前的快照回滚任务 ID
+        """之前的快照回滚任务 ID。可从RollbackSnapshot接口获取
         :rtype: int
         """
         return self._TaskId
@@ -17190,7 +17190,7 @@ class RollbackRecordSnapshotRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+        """域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
         :rtype: int
         """
         return self._DomainId

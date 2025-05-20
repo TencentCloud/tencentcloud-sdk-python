@@ -1557,31 +1557,6 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def InitDBInstances(self, request):
-        """早期接口，不规范，已提供新接口 CreateInstances 替换
-
-        本接口（InitDBInstances）用于初始化云数据库PostgreSQL实例。本接口已废弃，推荐使用接口[CreateInstances](https://cloud.tencent.com/document/api/409/56107)替代。
-
-        :param request: Request instance for InitDBInstances.
-        :type request: :class:`tencentcloud.postgres.v20170312.models.InitDBInstancesRequest`
-        :rtype: :class:`tencentcloud.postgres.v20170312.models.InitDBInstancesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("InitDBInstances", params, headers=headers)
-            response = json.loads(body)
-            model = models.InitDBInstancesResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def InquiryPriceCreateDBInstances(self, request):
         """本接口 (InquiryPriceCreateDBInstances) 用于查询购买实例的价格信息。
 

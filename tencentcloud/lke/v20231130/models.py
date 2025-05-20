@@ -12054,25 +12054,31 @@ class GetMsgRecordRequest(AbstractModel):
         r"""
         :param _Type: 类型
         :type Type: int
-        :param _Count: 数量,  数量需大于2
+        :param _Count: 数量,  数量需大于2, 最大1000
         :type Count: int
         :param _SessionId: 会话sessionid
         :type SessionId: str
-        :param _LastRecordId: 最后一条记录ID
-        :type LastRecordId: str
         :param _BotAppKey: 应用AppKey, 当Type=5[API访客]时, 该字段必填  :</br>  获取方式:</br>   1、应用发布后在应用页面[发布管理]-[调用信息]-[API管理]处获取</br>   2、参考 https://cloud.tencent.com/document/product/1759/109469 第二项
         :type BotAppKey: str
         :param _Scene: 场景, 体验: 1; 正式: 2
         :type Scene: int
+        :param _LastRecordId: 最后一条记录ID， 消息从后往前获取
+
+MidRecordId与LastRecordId只能选择一个
+
+        :type LastRecordId: str
         :param _MidRecordId: 传该值，代表拉取该记录id的前后总共count条消息记录
+
+MidRecordId与LastRecordId只能选择一个
+
         :type MidRecordId: str
         """
         self._Type = None
         self._Count = None
         self._SessionId = None
-        self._LastRecordId = None
         self._BotAppKey = None
         self._Scene = None
+        self._LastRecordId = None
         self._MidRecordId = None
 
     @property
@@ -12088,7 +12094,7 @@ class GetMsgRecordRequest(AbstractModel):
 
     @property
     def Count(self):
-        """数量,  数量需大于2
+        """数量,  数量需大于2, 最大1000
         :rtype: int
         """
         return self._Count
@@ -12107,17 +12113,6 @@ class GetMsgRecordRequest(AbstractModel):
     @SessionId.setter
     def SessionId(self, SessionId):
         self._SessionId = SessionId
-
-    @property
-    def LastRecordId(self):
-        """最后一条记录ID
-        :rtype: str
-        """
-        return self._LastRecordId
-
-    @LastRecordId.setter
-    def LastRecordId(self, LastRecordId):
-        self._LastRecordId = LastRecordId
 
     @property
     def BotAppKey(self):
@@ -12142,8 +12137,25 @@ class GetMsgRecordRequest(AbstractModel):
         self._Scene = Scene
 
     @property
+    def LastRecordId(self):
+        """最后一条记录ID， 消息从后往前获取
+
+MidRecordId与LastRecordId只能选择一个
+
+        :rtype: str
+        """
+        return self._LastRecordId
+
+    @LastRecordId.setter
+    def LastRecordId(self, LastRecordId):
+        self._LastRecordId = LastRecordId
+
+    @property
     def MidRecordId(self):
         """传该值，代表拉取该记录id的前后总共count条消息记录
+
+MidRecordId与LastRecordId只能选择一个
+
         :rtype: str
         """
         return self._MidRecordId
@@ -12157,9 +12169,9 @@ class GetMsgRecordRequest(AbstractModel):
         self._Type = params.get("Type")
         self._Count = params.get("Count")
         self._SessionId = params.get("SessionId")
-        self._LastRecordId = params.get("LastRecordId")
         self._BotAppKey = params.get("BotAppKey")
         self._Scene = params.get("Scene")
+        self._LastRecordId = params.get("LastRecordId")
         self._MidRecordId = params.get("MidRecordId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

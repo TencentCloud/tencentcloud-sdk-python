@@ -2685,10 +2685,8 @@ class ServerBaseConfig(AbstractModel):
         :param _InternalDomain: 内网域名
         :type InternalDomain: str
         :param _OperationMode: 运行模式
-注意：此字段可能返回 null，表示取不到有效值。
         :type OperationMode: str
         :param _TimerScale: 定时扩缩容配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimerScale: list of TimerScale
         """
         self._EnvId = None
@@ -2973,7 +2971,6 @@ class ServerBaseConfig(AbstractModel):
     @property
     def OperationMode(self):
         """运行模式
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._OperationMode
@@ -2985,7 +2982,6 @@ class ServerBaseConfig(AbstractModel):
     @property
     def TimerScale(self):
         """定时扩缩容配置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TimerScale
         """
         return self._TimerScale
@@ -3818,22 +3814,16 @@ class TimerScale(AbstractModel):
     def __init__(self):
         r"""
         :param _CycleType: 循环类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type CycleType: str
         :param _StartDate: 循环起始
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartDate: str
         :param _EndDate: 循环结束
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndDate: str
         :param _StartTime: 起始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
         :param _EndTime: 结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         :param _ReplicaNum: 副本个数
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReplicaNum: int
         """
         self._CycleType = None
@@ -3846,7 +3836,6 @@ class TimerScale(AbstractModel):
     @property
     def CycleType(self):
         """循环类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CycleType
@@ -3858,7 +3847,6 @@ class TimerScale(AbstractModel):
     @property
     def StartDate(self):
         """循环起始
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StartDate
@@ -3870,7 +3858,6 @@ class TimerScale(AbstractModel):
     @property
     def EndDate(self):
         """循环结束
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndDate
@@ -3882,7 +3869,6 @@ class TimerScale(AbstractModel):
     @property
     def StartTime(self):
         """起始时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StartTime
@@ -3894,7 +3880,6 @@ class TimerScale(AbstractModel):
     @property
     def EndTime(self):
         """结束时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndTime
@@ -3906,7 +3891,6 @@ class TimerScale(AbstractModel):
     @property
     def ReplicaNum(self):
         """副本个数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ReplicaNum

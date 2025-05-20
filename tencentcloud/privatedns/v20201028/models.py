@@ -106,7 +106,7 @@ class AccountVpcInfoOut(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpcId: VpcId： vpc-xadsafsdasd
+        :param _VpcId: VpcId
         :type VpcId: str
         :param _Region: Vpc所属地区: ap-guangzhou, ap-shanghai
         :type Region: str
@@ -122,7 +122,7 @@ class AccountVpcInfoOut(AbstractModel):
 
     @property
     def VpcId(self):
-        """VpcId： vpc-xadsafsdasd
+        """VpcId
         :rtype: str
         """
         return self._VpcId
@@ -4409,7 +4409,7 @@ class VpcInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UniqVpcId: VpcId： vpc-xadsafsdasd
+        :param _UniqVpcId: VpcId
         :type UniqVpcId: str
         :param _Region: Vpc所属地区: ap-guangzhou, ap-shanghai
         :type Region: str
@@ -4419,7 +4419,7 @@ class VpcInfo(AbstractModel):
 
     @property
     def UniqVpcId(self):
-        """VpcId： vpc-xadsafsdasd
+        """VpcId
         :rtype: str
         """
         return self._UniqVpcId

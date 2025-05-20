@@ -21036,6 +21036,8 @@ class FillApproverInfo(AbstractModel):
 
         :type RecipientId: str
         :param _OpenId: 指定企业经办签署人OpenId
+
+注: `签署人OpenId未实名时，需要传入签署人姓名以及手机号码。`
         :type OpenId: str
         :param _ApproverName: 签署人姓名
         :type ApproverName: str
@@ -21094,6 +21096,8 @@ class FillApproverInfo(AbstractModel):
     @property
     def OpenId(self):
         """指定企业经办签署人OpenId
+
+注: `签署人OpenId未实名时，需要传入签署人姓名以及手机号码。`
         :rtype: str
         """
         return self._OpenId
@@ -28914,6 +28918,8 @@ class SignUrlInfo(AbstractModel):
         :param _FlowGroupId: 合同组签署链接对应的合同组id
         :type FlowGroupId: str
         :param _SignQrcodeUrl: 二维码，在生成动态签署人跳转封面页链接时返回
+
+注：`此二维码下载链接有效期为5分钟，可下载二维码后本地保存。`
         :type SignQrcodeUrl: str
         """
         self._SignUrl = None
@@ -29086,6 +29092,8 @@ class SignUrlInfo(AbstractModel):
     @property
     def SignQrcodeUrl(self):
         """二维码，在生成动态签署人跳转封面页链接时返回
+
+注：`此二维码下载链接有效期为5分钟，可下载二维码后本地保存。`
         :rtype: str
         """
         return self._SignQrcodeUrl

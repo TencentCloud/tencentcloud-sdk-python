@@ -20371,6 +20371,8 @@ class CreateTranscodeTemplateRequest(AbstractModel):
         :type TEHDConfig: :class:`tencentcloud.mps.v20190612.models.TEHDConfig`
         :param _EnhanceConfig: 音视频增强配置。
         :type EnhanceConfig: :class:`tencentcloud.mps.v20190612.models.EnhanceConfig`
+        :param _StdExtInfo: 扩展参数，序列化的 json 字符串。
+        :type StdExtInfo: str
         """
         self._Container = None
         self._Name = None
@@ -20381,6 +20383,7 @@ class CreateTranscodeTemplateRequest(AbstractModel):
         self._AudioTemplate = None
         self._TEHDConfig = None
         self._EnhanceConfig = None
+        self._StdExtInfo = None
 
     @property
     def Container(self):
@@ -20487,6 +20490,17 @@ class CreateTranscodeTemplateRequest(AbstractModel):
     def EnhanceConfig(self, EnhanceConfig):
         self._EnhanceConfig = EnhanceConfig
 
+    @property
+    def StdExtInfo(self):
+        """扩展参数，序列化的 json 字符串。
+        :rtype: str
+        """
+        return self._StdExtInfo
+
+    @StdExtInfo.setter
+    def StdExtInfo(self, StdExtInfo):
+        self._StdExtInfo = StdExtInfo
+
 
     def _deserialize(self, params):
         self._Container = params.get("Container")
@@ -20506,6 +20520,7 @@ class CreateTranscodeTemplateRequest(AbstractModel):
         if params.get("EnhanceConfig") is not None:
             self._EnhanceConfig = EnhanceConfig()
             self._EnhanceConfig._deserialize(params.get("EnhanceConfig"))
+        self._StdExtInfo = params.get("StdExtInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25167,6 +25182,9 @@ class DescribeImageTaskDetailResponse(AbstractModel):
 <li>FINISH：已完成。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
+        :param _ImageProcessTaskResultSet: 图片处理任务的执行状态与结果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageProcessTaskResultSet: list of ImageProcessTaskResult
         :param _CreateTime: 任务的创建时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
@@ -25178,6 +25196,7 @@ class DescribeImageTaskDetailResponse(AbstractModel):
         """
         self._TaskType = None
         self._Status = None
+        self._ImageProcessTaskResultSet = None
         self._CreateTime = None
         self._FinishTime = None
         self._RequestId = None
@@ -25210,6 +25229,18 @@ class DescribeImageTaskDetailResponse(AbstractModel):
     @Status.setter
     def Status(self, Status):
         self._Status = Status
+
+    @property
+    def ImageProcessTaskResultSet(self):
+        """图片处理任务的执行状态与结果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ImageProcessTaskResult
+        """
+        return self._ImageProcessTaskResultSet
+
+    @ImageProcessTaskResultSet.setter
+    def ImageProcessTaskResultSet(self, ImageProcessTaskResultSet):
+        self._ImageProcessTaskResultSet = ImageProcessTaskResultSet
 
     @property
     def CreateTime(self):
@@ -25250,6 +25281,12 @@ class DescribeImageTaskDetailResponse(AbstractModel):
     def _deserialize(self, params):
         self._TaskType = params.get("TaskType")
         self._Status = params.get("Status")
+        if params.get("ImageProcessTaskResultSet") is not None:
+            self._ImageProcessTaskResultSet = []
+            for item in params.get("ImageProcessTaskResultSet"):
+                obj = ImageProcessTaskResult()
+                obj._deserialize(item)
+                self._ImageProcessTaskResultSet.append(obj)
         self._CreateTime = params.get("CreateTime")
         self._FinishTime = params.get("FinishTime")
         self._RequestId = params.get("RequestId")
@@ -35565,6 +35602,71 @@ class ImageAreaBoxInfo(AbstractModel):
         
 
 
+class ImageDenoiseConfig(AbstractModel):
+    """图片降噪配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+        :type Switch: str
+        :param _Type: 类型，可选值：
+<li>weak</li>
+<li>strong</li>
+默认值：weak。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        """
+        self._Switch = None
+        self._Type = None
+
+    @property
+    def Switch(self):
+        """能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Type(self):
+        """类型，可选值：
+<li>weak</li>
+<li>strong</li>
+默认值：weak。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ImageEncodeConfig(AbstractModel):
     """图片编码格式参数
 
@@ -35630,6 +35732,9 @@ class ImageEnhanceConfig(AbstractModel):
         :param _SuperResolution: 超分配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SuperResolution: :class:`tencentcloud.mps.v20190612.models.SuperResolutionConfig`
+        :param _Denoise: 降噪配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Denoise: :class:`tencentcloud.mps.v20190612.models.ImageDenoiseConfig`
         :param _ImageQualityEnhance: 综合增强配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageQualityEnhance: :class:`tencentcloud.mps.v20190612.models.ImageQualityEnhanceConfig`
@@ -35642,12 +35747,17 @@ class ImageEnhanceConfig(AbstractModel):
         :param _FaceEnhance: 人脸增强配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FaceEnhance: :class:`tencentcloud.mps.v20190612.models.FaceEnhanceConfig`
+        :param _LowLightEnhance: 低光照增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LowLightEnhance: :class:`tencentcloud.mps.v20190612.models.LowLightEnhanceConfig`
         """
         self._SuperResolution = None
+        self._Denoise = None
         self._ImageQualityEnhance = None
         self._ColorEnhance = None
         self._SharpEnhance = None
         self._FaceEnhance = None
+        self._LowLightEnhance = None
 
     @property
     def SuperResolution(self):
@@ -35660,6 +35770,18 @@ class ImageEnhanceConfig(AbstractModel):
     @SuperResolution.setter
     def SuperResolution(self, SuperResolution):
         self._SuperResolution = SuperResolution
+
+    @property
+    def Denoise(self):
+        """降噪配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ImageDenoiseConfig`
+        """
+        return self._Denoise
+
+    @Denoise.setter
+    def Denoise(self, Denoise):
+        self._Denoise = Denoise
 
     @property
     def ImageQualityEnhance(self):
@@ -35709,11 +35831,26 @@ class ImageEnhanceConfig(AbstractModel):
     def FaceEnhance(self, FaceEnhance):
         self._FaceEnhance = FaceEnhance
 
+    @property
+    def LowLightEnhance(self):
+        """低光照增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.LowLightEnhanceConfig`
+        """
+        return self._LowLightEnhance
+
+    @LowLightEnhance.setter
+    def LowLightEnhance(self, LowLightEnhance):
+        self._LowLightEnhance = LowLightEnhance
+
 
     def _deserialize(self, params):
         if params.get("SuperResolution") is not None:
             self._SuperResolution = SuperResolutionConfig()
             self._SuperResolution._deserialize(params.get("SuperResolution"))
+        if params.get("Denoise") is not None:
+            self._Denoise = ImageDenoiseConfig()
+            self._Denoise._deserialize(params.get("Denoise"))
         if params.get("ImageQualityEnhance") is not None:
             self._ImageQualityEnhance = ImageQualityEnhanceConfig()
             self._ImageQualityEnhance._deserialize(params.get("ImageQualityEnhance"))
@@ -35726,6 +35863,9 @@ class ImageEnhanceConfig(AbstractModel):
         if params.get("FaceEnhance") is not None:
             self._FaceEnhance = FaceEnhanceConfig()
             self._FaceEnhance._deserialize(params.get("FaceEnhance"))
+        if params.get("LowLightEnhance") is not None:
+            self._LowLightEnhance = LowLightEnhanceConfig()
+            self._LowLightEnhance._deserialize(params.get("LowLightEnhance"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -35834,6 +35974,154 @@ class ImageEraseLogoConfig(AbstractModel):
                 obj = ImageAreaBoxInfo()
                 obj._deserialize(item)
                 self._ImageAreaBoxes.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageProcessTaskOutput(AbstractModel):
+    """图片处理结果信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Path: 输出文件的路径。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Path: str
+        :param _OutputStorage: 输出文件的存储位置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        self._Path = None
+        self._OutputStorage = None
+
+    @property
+    def Path(self):
+        """输出文件的路径。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def OutputStorage(self):
+        """输出文件的存储位置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        return self._OutputStorage
+
+    @OutputStorage.setter
+    def OutputStorage(self, OutputStorage):
+        self._OutputStorage = OutputStorage
+
+
+    def _deserialize(self, params):
+        self._Path = params.get("Path")
+        if params.get("OutputStorage") is not None:
+            self._OutputStorage = TaskOutputStorage()
+            self._OutputStorage._deserialize(params.get("OutputStorage"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageProcessTaskResult(AbstractModel):
+    """图片处理任务结果类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _Message: 错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        :param _Output: 转码任务的输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.mps.v20190612.models.ImageProcessTaskOutput`
+        :param _Progress: 转码进度，取值范围 [0-100]
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Progress: int
+        """
+        self._Status = None
+        self._Message = None
+        self._Output = None
+        self._Progress = None
+
+    @property
+    def Status(self):
+        """任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Message(self):
+        """错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Output(self):
+        """转码任务的输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ImageProcessTaskOutput`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def Progress(self):
+        """转码进度，取值范围 [0-100]
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._Message = params.get("Message")
+        if params.get("Output") is not None:
+            self._Output = ImageProcessTaskOutput()
+            self._Output._deserialize(params.get("Output"))
+        self._Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -53151,6 +53439,12 @@ class RawTranscodeParameter(AbstractModel):
         :type AudioTemplate: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfo`
         :param _TEHDConfig: 极速高清转码参数。
         :type TEHDConfig: :class:`tencentcloud.mps.v20190612.models.TEHDConfig`
+        :param _StdExtInfo: 扩展参数，序列化的 json 字符串。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StdExtInfo: str
+        :param _EnhanceConfig: 音视频增强配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnhanceConfig: :class:`tencentcloud.mps.v20190612.models.EnhanceConfig`
         """
         self._Container = None
         self._RemoveVideo = None
@@ -53158,6 +53452,8 @@ class RawTranscodeParameter(AbstractModel):
         self._VideoTemplate = None
         self._AudioTemplate = None
         self._TEHDConfig = None
+        self._StdExtInfo = None
+        self._EnhanceConfig = None
 
     @property
     def Container(self):
@@ -53231,6 +53527,30 @@ class RawTranscodeParameter(AbstractModel):
     def TEHDConfig(self, TEHDConfig):
         self._TEHDConfig = TEHDConfig
 
+    @property
+    def StdExtInfo(self):
+        """扩展参数，序列化的 json 字符串。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StdExtInfo
+
+    @StdExtInfo.setter
+    def StdExtInfo(self, StdExtInfo):
+        self._StdExtInfo = StdExtInfo
+
+    @property
+    def EnhanceConfig(self):
+        """音视频增强配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.EnhanceConfig`
+        """
+        return self._EnhanceConfig
+
+    @EnhanceConfig.setter
+    def EnhanceConfig(self, EnhanceConfig):
+        self._EnhanceConfig = EnhanceConfig
+
 
     def _deserialize(self, params):
         self._Container = params.get("Container")
@@ -53245,6 +53565,10 @@ class RawTranscodeParameter(AbstractModel):
         if params.get("TEHDConfig") is not None:
             self._TEHDConfig = TEHDConfig()
             self._TEHDConfig._deserialize(params.get("TEHDConfig"))
+        self._StdExtInfo = params.get("StdExtInfo")
+        if params.get("EnhanceConfig") is not None:
+            self._EnhanceConfig = EnhanceConfig()
+            self._EnhanceConfig._deserialize(params.get("EnhanceConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

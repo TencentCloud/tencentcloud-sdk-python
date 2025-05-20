@@ -1868,6 +1868,8 @@ class Block(AbstractModel):
         :type TextTypeListBlocks: list of TextTypeListBlock
         :param _PhysicalExamination: 体检报告信息
         :type PhysicalExamination: :class:`tencentcloud.mrs.v20200910.models.PhysicalExaminationV1`
+        :param _EndoscopyV2: 内窥镜报告V2
+        :type EndoscopyV2: list of Check
         """
         self._Check = None
         self._Pathology = None
@@ -1894,6 +1896,7 @@ class Block(AbstractModel):
         self._BirthCert = None
         self._TextTypeListBlocks = None
         self._PhysicalExamination = None
+        self._EndoscopyV2 = None
 
     @property
     def Check(self):
@@ -2170,6 +2173,17 @@ class Block(AbstractModel):
     def PhysicalExamination(self, PhysicalExamination):
         self._PhysicalExamination = PhysicalExamination
 
+    @property
+    def EndoscopyV2(self):
+        """内窥镜报告V2
+        :rtype: list of Check
+        """
+        return self._EndoscopyV2
+
+    @EndoscopyV2.setter
+    def EndoscopyV2(self, EndoscopyV2):
+        self._EndoscopyV2 = EndoscopyV2
+
 
     def _deserialize(self, params):
         if params.get("Check") is not None:
@@ -2319,6 +2333,12 @@ class Block(AbstractModel):
         if params.get("PhysicalExamination") is not None:
             self._PhysicalExamination = PhysicalExaminationV1()
             self._PhysicalExamination._deserialize(params.get("PhysicalExamination"))
+        if params.get("EndoscopyV2") is not None:
+            self._EndoscopyV2 = []
+            for item in params.get("EndoscopyV2"):
+                obj = Check()
+                obj._deserialize(item)
+                self._EndoscopyV2.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12533,6 +12553,8 @@ class IndicatorItem(AbstractModel):
         :type Coords: :class:`tencentcloud.mrs.v20200910.models.Coordinate`
         :param _InferNormal: 推测结果是否异常
         :type InferNormal: str
+        :param _Sample: 标本
+        :type Sample: str
         """
         self._Code = None
         self._Scode = None
@@ -12547,6 +12569,7 @@ class IndicatorItem(AbstractModel):
         self._Id = None
         self._Coords = None
         self._InferNormal = None
+        self._Sample = None
 
     @property
     def Code(self):
@@ -12691,6 +12714,17 @@ class IndicatorItem(AbstractModel):
     def InferNormal(self, InferNormal):
         self._InferNormal = InferNormal
 
+    @property
+    def Sample(self):
+        """标本
+        :rtype: str
+        """
+        return self._Sample
+
+    @Sample.setter
+    def Sample(self, Sample):
+        self._Sample = Sample
+
 
     def _deserialize(self, params):
         self._Code = params.get("Code")
@@ -12708,6 +12742,7 @@ class IndicatorItem(AbstractModel):
             self._Coords = Coordinate()
             self._Coords._deserialize(params.get("Coords"))
         self._InferNormal = params.get("InferNormal")
+        self._Sample = params.get("Sample")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25074,6 +25109,8 @@ class Template(AbstractModel):
         :type BirthCert: :class:`tencentcloud.mrs.v20200910.models.BirthCert`
         :param _Timeline: 时间轴
         :type Timeline: :class:`tencentcloud.mrs.v20200910.models.TimelineInformation`
+        :param _EndoscopyV2: 内窥镜报告V2
+        :type EndoscopyV2: :class:`tencentcloud.mrs.v20200910.models.Check`
         """
         self._PatientInfo = None
         self._ReportInfo = None
@@ -25104,6 +25141,7 @@ class Template(AbstractModel):
         self._Eye = None
         self._BirthCert = None
         self._Timeline = None
+        self._EndoscopyV2 = None
 
     @property
     def PatientInfo(self):
@@ -25424,6 +25462,17 @@ class Template(AbstractModel):
     def Timeline(self, Timeline):
         self._Timeline = Timeline
 
+    @property
+    def EndoscopyV2(self):
+        """内窥镜报告V2
+        :rtype: :class:`tencentcloud.mrs.v20200910.models.Check`
+        """
+        return self._EndoscopyV2
+
+    @EndoscopyV2.setter
+    def EndoscopyV2(self, EndoscopyV2):
+        self._EndoscopyV2 = EndoscopyV2
+
 
     def _deserialize(self, params):
         if params.get("PatientInfo") is not None:
@@ -25505,6 +25554,9 @@ class Template(AbstractModel):
         if params.get("Timeline") is not None:
             self._Timeline = TimelineInformation()
             self._Timeline._deserialize(params.get("Timeline"))
+        if params.get("EndoscopyV2") is not None:
+            self._EndoscopyV2 = Check()
+            self._EndoscopyV2._deserialize(params.get("EndoscopyV2"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

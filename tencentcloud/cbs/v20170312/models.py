@@ -2943,7 +2943,7 @@ class DescribeDiskBackupsRequest(AbstractModel):
         r"""
         :param _DiskBackupIds: 要查询备份点的ID列表。参数不支持同时指定 DiskBackupIds 和 Filters。
         :type DiskBackupIds: list of str
-        :param _Filters: 过滤条件，参数不支持同时指定 DiskBackupIds 和 Filters。过滤条件：<br><li>disk-backup-id - Array of String - 是否必填：否 -（过滤条件）按照备份点的ID过滤。备份点ID形如：dbp-11112222。</li><br><li>disk-id - Array of String - 是否必填：否 -（过滤条件）按照创建备份点的云硬盘ID过滤。</li><br><li>disk-usage - Array of String - 是否必填：否 -（过滤条件）按创建备份点的云硬盘类型过滤。 (SYSTEM_DISK：代表系统盘 | DATA_DISK：代表数据盘。)</li>
+        :param _Filters: 过滤条件，参数不支持同时指定 DiskBackupIds 和 Filters。过滤条件：<br><li>disk-backup-id - Array of String - 是否必填：否 -（过滤条件）按照备份点的ID过滤。备份点ID形如：dbp-11112222。</li><br><li>disk-id - Array of String - 是否必填：否 -（过滤条件）按照创建备份点的云硬盘ID过滤。云硬盘ID形如：disk-srftydert。</li><br><li>disk-usage - Array of String - 是否必填：否 -（过滤条件）按创建备份点的云硬盘类型过滤。 (SYSTEM_DISK：代表系统盘 | DATA_DISK：代表数据盘。)</li>
         :type Filters: list of Filter
         :param _Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考API[简介](/document/product/362/15633)中的相关小节。
         :type Offset: int
@@ -2974,7 +2974,7 @@ class DescribeDiskBackupsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤条件，参数不支持同时指定 DiskBackupIds 和 Filters。过滤条件：<br><li>disk-backup-id - Array of String - 是否必填：否 -（过滤条件）按照备份点的ID过滤。备份点ID形如：dbp-11112222。</li><br><li>disk-id - Array of String - 是否必填：否 -（过滤条件）按照创建备份点的云硬盘ID过滤。</li><br><li>disk-usage - Array of String - 是否必填：否 -（过滤条件）按创建备份点的云硬盘类型过滤。 (SYSTEM_DISK：代表系统盘 | DATA_DISK：代表数据盘。)</li>
+        """过滤条件，参数不支持同时指定 DiskBackupIds 和 Filters。过滤条件：<br><li>disk-backup-id - Array of String - 是否必填：否 -（过滤条件）按照备份点的ID过滤。备份点ID形如：dbp-11112222。</li><br><li>disk-id - Array of String - 是否必填：否 -（过滤条件）按照创建备份点的云硬盘ID过滤。云硬盘ID形如：disk-srftydert。</li><br><li>disk-usage - Array of String - 是否必填：否 -（过滤条件）按创建备份点的云硬盘类型过滤。 (SYSTEM_DISK：代表系统盘 | DATA_DISK：代表数据盘。)</li>
         :rtype: list of Filter
         """
         return self._Filters
@@ -3120,19 +3120,19 @@ class DescribeDiskConfigQuotaRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InquiryType: 查询类别，取值范围。<br><li>INQUIRY_CBS_CONFIG：查询云盘配置列表<br><li>INQUIRY_CVM_CONFIG：查询云盘与实例搭配的配置列表。
+        :param _InquiryType: 查询类别，取值范围。<br> INQUIRY_CBS_CONFIG：查询云盘配置列表<br> INQUIRY_CVM_CONFIG：查询云盘与实例搭配的配置列表。
         :type InquiryType: str
-        :param _DiskChargeType: 付费模式。取值范围：<br><li>PREPAID：预付费<br><li>POSTPAID_BY_HOUR：后付费。
+        :param _DiskChargeType: 付费模式。取值范围：<br> PREPAID：预付费<br> POSTPAID_BY_HOUR：后付费。
         :type DiskChargeType: str
         :param _InstanceFamilies: 按照实例机型系列过滤。实例机型系列形如：S1、I1、M1等。详见[实例类型](https://cloud.tencent.com/document/product/213/11518)
         :type InstanceFamilies: list of str
-        :param _DiskTypes: 硬盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：表示SSD云硬盘<br><li>CLOUD_HSSD：表示增强型SSD云硬盘。
+        :param _DiskTypes: 硬盘介质类型。取值范围：<br> CLOUD_BASIC：表示普通云硬盘<br> CLOUD_PREMIUM：表示高性能云硬盘<br> CLOUD_SSD：表示SSD云硬盘<br> CLOUD_HSSD：表示增强型SSD云硬盘。
         :type DiskTypes: list of str
         :param _Zones: 查询一个或多个[可用区](/document/product/213/15753#ZoneInfo)下的配置。
         :type Zones: list of str
-        :param _Memory: 实例内存大小。
+        :param _Memory: 实例内存大小,单位GB。
         :type Memory: int
-        :param _DiskUsage: 系统盘或数据盘。取值范围：<br><li>SYSTEM_DISK：表示系统盘<br><li>DATA_DISK：表示数据盘。
+        :param _DiskUsage: 系统盘或数据盘。取值范围：<br> SYSTEM_DISK：表示系统盘<br> DATA_DISK：表示数据盘。
         :type DiskUsage: str
         :param _CPU: 实例CPU核数。
         :type CPU: int
@@ -3151,7 +3151,7 @@ class DescribeDiskConfigQuotaRequest(AbstractModel):
 
     @property
     def InquiryType(self):
-        """查询类别，取值范围。<br><li>INQUIRY_CBS_CONFIG：查询云盘配置列表<br><li>INQUIRY_CVM_CONFIG：查询云盘与实例搭配的配置列表。
+        """查询类别，取值范围。<br> INQUIRY_CBS_CONFIG：查询云盘配置列表<br> INQUIRY_CVM_CONFIG：查询云盘与实例搭配的配置列表。
         :rtype: str
         """
         return self._InquiryType
@@ -3162,7 +3162,7 @@ class DescribeDiskConfigQuotaRequest(AbstractModel):
 
     @property
     def DiskChargeType(self):
-        """付费模式。取值范围：<br><li>PREPAID：预付费<br><li>POSTPAID_BY_HOUR：后付费。
+        """付费模式。取值范围：<br> PREPAID：预付费<br> POSTPAID_BY_HOUR：后付费。
         :rtype: str
         """
         return self._DiskChargeType
@@ -3184,7 +3184,7 @@ class DescribeDiskConfigQuotaRequest(AbstractModel):
 
     @property
     def DiskTypes(self):
-        """硬盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：表示SSD云硬盘<br><li>CLOUD_HSSD：表示增强型SSD云硬盘。
+        """硬盘介质类型。取值范围：<br> CLOUD_BASIC：表示普通云硬盘<br> CLOUD_PREMIUM：表示高性能云硬盘<br> CLOUD_SSD：表示SSD云硬盘<br> CLOUD_HSSD：表示增强型SSD云硬盘。
         :rtype: list of str
         """
         return self._DiskTypes
@@ -3206,7 +3206,7 @@ class DescribeDiskConfigQuotaRequest(AbstractModel):
 
     @property
     def Memory(self):
-        """实例内存大小。
+        """实例内存大小,单位GB。
         :rtype: int
         """
         return self._Memory
@@ -3217,7 +3217,7 @@ class DescribeDiskConfigQuotaRequest(AbstractModel):
 
     @property
     def DiskUsage(self):
-        """系统盘或数据盘。取值范围：<br><li>SYSTEM_DISK：表示系统盘<br><li>DATA_DISK：表示数据盘。
+        """系统盘或数据盘。取值范围：<br> SYSTEM_DISK：表示系统盘<br> DATA_DISK：表示数据盘。
         :rtype: str
         """
         return self._DiskUsage
@@ -5263,19 +5263,26 @@ class DiskBackup(AbstractModel):
         :type DiskBackupId: str
         :param _DiskId: 云硬盘备份点关联的云硬盘ID。
         :type DiskId: str
-        :param _DiskSize: 云硬盘大小，单位GB。
+        :param _DiskSize: 云硬盘大小，单位GiB。
         :type DiskSize: int
-        :param _DiskUsage: 云硬盘类型。取值范围：<br><li>SYSTEM_DISK：系统盘<br><li>DATA_DISK：数据盘。
+        :param _DiskUsage: 云硬盘类型。取值范围：<br>
+<li>SYSTEM_DISK：系统盘</li>
+<li>DATA_DISK：数据盘。</li>
         :type DiskUsage: str
         :param _DiskBackupName: 备份点名称。
         :type DiskBackupName: str
-        :param _DiskBackupState: 云硬盘备份点状态。取值范围：<br><li>NORMAL：正常<br><li>CREATING：创建中<br><li>ROLLBACKING：回滚中
+        :param _DiskBackupState: <p>云硬盘备份点状态。取值范围：</p>
+<ul>
+  <li>NORMAL：正常</li>
+  <li>CREATING：创建中</li>
+  <li>ROLLBACKING：回滚中</li>
+</ul>
         :type DiskBackupState: str
-        :param _Percent: 云硬盘创建进度百分比。
+        :param _Percent: 云硬盘备份点创建百分比。
         :type Percent: int
         :param _CreateTime: 云硬盘备份点的创建时间。
         :type CreateTime: str
-        :param _Encrypt: 云盘是否为加密盘。取值范围：<br><li>false:表示非加密盘<br><li>true:表示加密盘。
+        :param _Encrypt: 云盘是否为加密盘。取值范围：<br><li>false:表示非加密盘<br></li>true:表示加密盘。
         :type Encrypt: bool
         """
         self._DiskBackupId = None
@@ -5312,7 +5319,7 @@ class DiskBackup(AbstractModel):
 
     @property
     def DiskSize(self):
-        """云硬盘大小，单位GB。
+        """云硬盘大小，单位GiB。
         :rtype: int
         """
         return self._DiskSize
@@ -5323,7 +5330,9 @@ class DiskBackup(AbstractModel):
 
     @property
     def DiskUsage(self):
-        """云硬盘类型。取值范围：<br><li>SYSTEM_DISK：系统盘<br><li>DATA_DISK：数据盘。
+        """云硬盘类型。取值范围：<br>
+<li>SYSTEM_DISK：系统盘</li>
+<li>DATA_DISK：数据盘。</li>
         :rtype: str
         """
         return self._DiskUsage
@@ -5345,7 +5354,12 @@ class DiskBackup(AbstractModel):
 
     @property
     def DiskBackupState(self):
-        """云硬盘备份点状态。取值范围：<br><li>NORMAL：正常<br><li>CREATING：创建中<br><li>ROLLBACKING：回滚中
+        """<p>云硬盘备份点状态。取值范围：</p>
+<ul>
+  <li>NORMAL：正常</li>
+  <li>CREATING：创建中</li>
+  <li>ROLLBACKING：回滚中</li>
+</ul>
         :rtype: str
         """
         return self._DiskBackupState
@@ -5356,7 +5370,7 @@ class DiskBackup(AbstractModel):
 
     @property
     def Percent(self):
-        """云硬盘创建进度百分比。
+        """云硬盘备份点创建百分比。
         :rtype: int
         """
         return self._Percent
@@ -5378,7 +5392,7 @@ class DiskBackup(AbstractModel):
 
     @property
     def Encrypt(self):
-        """云盘是否为加密盘。取值范围：<br><li>false:表示非加密盘<br><li>true:表示加密盘。
+        """云盘是否为加密盘。取值范围：<br><li>false:表示非加密盘<br></li>true:表示加密盘。
         :rtype: bool
         """
         return self._Encrypt
@@ -5415,11 +5429,17 @@ class DiskChargePrepaid(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Period: 购买云盘的时长，默认单位为月，取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。
+        :param _Period: 购买云硬盘的时长，默认单位为月，取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。
         :type Period: int
-        :param _RenewFlag: 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费<br><br>默认取值：NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费。
+        :param _RenewFlag: 自动续费标识。取值范围：
+<ul>
+  <li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li>
+  <li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费</li>
+  <li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费</li>
+</ul>
+默认取值：NOTIFY_AND_MANUAL_RENEW。
         :type RenewFlag: str
-        :param _CurInstanceDeadline: 需要将云盘的到期时间与挂载的子机对齐时，可传入该参数。该参数表示子机当前的到期时间，此时Period如果传入，则表示子机需要续费的时长，云盘会自动按对齐到子机续费后的到期时间续费，示例取值：2018-03-30 20:15:03。
+        :param _CurInstanceDeadline: 需要将云硬盘的到期时间与挂载的子机对齐时，可传入该参数。该参数表示子机当前的到期时间，此时Period如果传入，则表示子机需要续费的时长，云盘会自动按对齐到子机续费后的到期时间续费.
         :type CurInstanceDeadline: str
         """
         self._Period = None
@@ -5428,7 +5448,7 @@ class DiskChargePrepaid(AbstractModel):
 
     @property
     def Period(self):
-        """购买云盘的时长，默认单位为月，取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。
+        """购买云硬盘的时长，默认单位为月，取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。
         :rtype: int
         """
         return self._Period
@@ -5439,7 +5459,13 @@ class DiskChargePrepaid(AbstractModel):
 
     @property
     def RenewFlag(self):
-        """自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费<br><br>默认取值：NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费。
+        """自动续费标识。取值范围：
+<ul>
+  <li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li>
+  <li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费</li>
+  <li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费</li>
+</ul>
+默认取值：NOTIFY_AND_MANUAL_RENEW。
         :rtype: str
         """
         return self._RenewFlag
@@ -5450,7 +5476,7 @@ class DiskChargePrepaid(AbstractModel):
 
     @property
     def CurInstanceDeadline(self):
-        """需要将云盘的到期时间与挂载的子机对齐时，可传入该参数。该参数表示子机当前的到期时间，此时Period如果传入，则表示子机需要续费的时长，云盘会自动按对齐到子机续费后的到期时间续费，示例取值：2018-03-30 20:15:03。
+        """需要将云硬盘的到期时间与挂载的子机对齐时，可传入该参数。该参数表示子机当前的到期时间，此时Period如果传入，则表示子机需要续费的时长，云盘会自动按对齐到子机续费后的到期时间续费.
         :rtype: str
         """
         return self._CurInstanceDeadline
@@ -5490,9 +5516,15 @@ class DiskConfig(AbstractModel):
         :param _InstanceFamily: 实例机型系列。详见[实例类型](https://cloud.tencent.com/document/product/213/11518)
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceFamily: str
-        :param _DiskType: 云盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘</li><br><li>CLOUD_PREMIUM：表示高性能云硬盘</li><br><li>CLOUD_SSD：SSD表示SSD云硬盘。</li>
+        :param _DiskType: 云盘介质类型。取值范围：<br>
+CLOUD_BASIC：表示普通云硬盘<br>
+CLOUD_PREMIUM：表示高性能云硬盘<br>
+CLOUD_BSSD：表示通用型SSD云硬盘<br>
+CLOUD_SSD：表示SSD云硬盘<br>
+CLOUD_HSSD：表示增强型SSD云硬盘<br>
+CLOUD_TSSD：表示极速型SSD云硬盘。
         :type DiskType: str
-        :param _StepSize: 云盘大小变化的最小步长，单位GB。
+        :param _StepSize: 云盘大小变化的最小步长，单位GiB。
         :type StepSize: int
         :param _ExtraPerformanceRange: 额外的性能区间。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -5502,9 +5534,9 @@ class DiskConfig(AbstractModel):
         :type DeviceClass: str
         :param _DiskUsage: 云盘类型。取值范围：<br><li>SYSTEM_DISK：表示系统盘</li><br><li>DATA_DISK：表示数据盘。</li>
         :type DiskUsage: str
-        :param _MinDiskSize: 最小可配置云盘大小，单位GB。
+        :param _MinDiskSize: 最小可配置云盘大小，单位GiB。
         :type MinDiskSize: int
-        :param _MaxDiskSize: 最大可配置云盘大小，单位GB。
+        :param _MaxDiskSize: 最大可配置云盘大小，单位GiB。
         :type MaxDiskSize: int
         :param _Price: 描述预付费或后付费云盘的价格。
         :type Price: :class:`tencentcloud.cbs.v20170312.models.Price`
@@ -5569,7 +5601,13 @@ class DiskConfig(AbstractModel):
 
     @property
     def DiskType(self):
-        """云盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘</li><br><li>CLOUD_PREMIUM：表示高性能云硬盘</li><br><li>CLOUD_SSD：SSD表示SSD云硬盘。</li>
+        """云盘介质类型。取值范围：<br>
+CLOUD_BASIC：表示普通云硬盘<br>
+CLOUD_PREMIUM：表示高性能云硬盘<br>
+CLOUD_BSSD：表示通用型SSD云硬盘<br>
+CLOUD_SSD：表示SSD云硬盘<br>
+CLOUD_HSSD：表示增强型SSD云硬盘<br>
+CLOUD_TSSD：表示极速型SSD云硬盘。
         :rtype: str
         """
         return self._DiskType
@@ -5580,7 +5618,7 @@ class DiskConfig(AbstractModel):
 
     @property
     def StepSize(self):
-        """云盘大小变化的最小步长，单位GB。
+        """云盘大小变化的最小步长，单位GiB。
         :rtype: int
         """
         return self._StepSize
@@ -5626,7 +5664,7 @@ class DiskConfig(AbstractModel):
 
     @property
     def MinDiskSize(self):
-        """最小可配置云盘大小，单位GB。
+        """最小可配置云盘大小，单位GiB。
         :rtype: int
         """
         return self._MinDiskSize
@@ -5637,7 +5675,7 @@ class DiskConfig(AbstractModel):
 
     @property
     def MaxDiskSize(self):
-        """最大可配置云盘大小，单位GB。
+        """最大可配置云盘大小，单位GiB。
         :rtype: int
         """
         return self._MaxDiskSize
@@ -6046,7 +6084,7 @@ class InquirePriceModifyDiskExtraPerformanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ThroughputPerformance: 额外购买的云硬盘性能值，单位MB/s。
+        :param _ThroughputPerformance: 额外购买的云硬盘性能值，单位MiB/s。仅大小超过460GiB的增强型SSD（CLOUD_HSSD）和极速型SSD（CLOUD_TSSD）云硬盘才支持购买额外性能。
         :type ThroughputPerformance: int
         :param _DiskId: 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
         :type DiskId: str
@@ -6056,7 +6094,7 @@ class InquirePriceModifyDiskExtraPerformanceRequest(AbstractModel):
 
     @property
     def ThroughputPerformance(self):
-        """额外购买的云硬盘性能值，单位MB/s。
+        """额外购买的云硬盘性能值，单位MiB/s。仅大小超过460GiB的增强型SSD（CLOUD_HSSD）和极速型SSD（CLOUD_TSSD）云硬盘才支持购买额外性能。
         :rtype: int
         """
         return self._ThroughputPerformance
@@ -6142,17 +6180,17 @@ class InquiryPriceCreateDisksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskChargeType: 云硬盘计费类型。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费
+        :param _DiskChargeType: 云硬盘计费类型： <ul>   <li>PREPAID：预付费，即包年包月</li>   <li>POSTPAID_BY_HOUR：按小时后付费</li> </ul>
         :type DiskChargeType: str
-        :param _DiskType: 硬盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：表示SSD云硬盘<br><li>CLOUD_HSSD：表示增强型SSD云硬盘<br><li>CLOUD_TSSD：表示极速型SSD云硬盘。
+        :param _DiskType: 硬盘介质类型。取值范围： <ul>   <li>CLOUD_PREMIUM：表示高性能云硬盘</li>   <li>CLOUD_SSD：表示SSD云硬盘</li>   <li>CLOUD_HSSD：表示增强型SSD云硬盘</li>   <li>CLOUD_TSSD：表示极速型SSD云硬盘</li> </ul>
         :type DiskType: str
-        :param _DiskSize: 云硬盘大小，单位为GB。云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
+        :param _DiskSize: 云硬盘大小，单位为GiB。云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
         :type DiskSize: int
-        :param _ProjectId: 云盘所属项目ID。
+        :param _ProjectId: 云硬盘所属项目ID。该参数可以通过调用[DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。不填为默认项目。
         :type ProjectId: int
-        :param _DiskCount: 购买云盘的数量。不填则默认为1。
+        :param _DiskCount: 购买云硬盘的数量。不填则默认为1。
         :type DiskCount: int
-        :param _ThroughputPerformance: 额外购买的云硬盘性能值，单位MB/s。<br>目前仅支持增强型SSD云硬盘（CLOUD_HSSD）和极速型SSD云硬盘（CLOUD_TSSD）
+        :param _ThroughputPerformance: 额外购买的云硬盘性能值，单位MiB/s。仅大小超过460GiB的增强型SSD（CLOUD_HSSD）和极速型SSD（CLOUD_TSSD）云硬盘才支持购买额外性能。
         :type ThroughputPerformance: int
         :param _DiskChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数指定包年包月云盘的购买时长、是否设置自动续费等属性。<br>创建预付费云盘该参数必传，创建按小时后付费云盘无需传该参数。
         :type DiskChargePrepaid: :class:`tencentcloud.cbs.v20170312.models.DiskChargePrepaid`
@@ -6170,7 +6208,7 @@ class InquiryPriceCreateDisksRequest(AbstractModel):
 
     @property
     def DiskChargeType(self):
-        """云硬盘计费类型。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费
+        """云硬盘计费类型： <ul>   <li>PREPAID：预付费，即包年包月</li>   <li>POSTPAID_BY_HOUR：按小时后付费</li> </ul>
         :rtype: str
         """
         return self._DiskChargeType
@@ -6181,7 +6219,7 @@ class InquiryPriceCreateDisksRequest(AbstractModel):
 
     @property
     def DiskType(self):
-        """硬盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：表示SSD云硬盘<br><li>CLOUD_HSSD：表示增强型SSD云硬盘<br><li>CLOUD_TSSD：表示极速型SSD云硬盘。
+        """硬盘介质类型。取值范围： <ul>   <li>CLOUD_PREMIUM：表示高性能云硬盘</li>   <li>CLOUD_SSD：表示SSD云硬盘</li>   <li>CLOUD_HSSD：表示增强型SSD云硬盘</li>   <li>CLOUD_TSSD：表示极速型SSD云硬盘</li> </ul>
         :rtype: str
         """
         return self._DiskType
@@ -6192,7 +6230,7 @@ class InquiryPriceCreateDisksRequest(AbstractModel):
 
     @property
     def DiskSize(self):
-        """云硬盘大小，单位为GB。云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
+        """云硬盘大小，单位为GiB。云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
         :rtype: int
         """
         return self._DiskSize
@@ -6203,7 +6241,7 @@ class InquiryPriceCreateDisksRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """云盘所属项目ID。
+        """云硬盘所属项目ID。该参数可以通过调用[DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。不填为默认项目。
         :rtype: int
         """
         return self._ProjectId
@@ -6214,7 +6252,7 @@ class InquiryPriceCreateDisksRequest(AbstractModel):
 
     @property
     def DiskCount(self):
-        """购买云盘的数量。不填则默认为1。
+        """购买云硬盘的数量。不填则默认为1。
         :rtype: int
         """
         return self._DiskCount
@@ -6225,7 +6263,7 @@ class InquiryPriceCreateDisksRequest(AbstractModel):
 
     @property
     def ThroughputPerformance(self):
-        """额外购买的云硬盘性能值，单位MB/s。<br>目前仅支持增强型SSD云硬盘（CLOUD_HSSD）和极速型SSD云硬盘（CLOUD_TSSD）
+        """额外购买的云硬盘性能值，单位MiB/s。仅大小超过460GiB的增强型SSD（CLOUD_HSSD）和极速型SSD（CLOUD_TSSD）云硬盘才支持购买额外性能。
         :rtype: int
         """
         return self._ThroughputPerformance
@@ -6334,9 +6372,9 @@ class InquiryPriceRenewDisksRequest(AbstractModel):
         :type DiskIds: list of str
         :param _DiskChargePrepaids: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月云盘的购买时长。如果在该参数中指定CurInstanceDeadline，则会按对齐到子机到期时间来续费。如果是批量续费询价，该参数与Disks参数一一对应，元素数量需保持一致。
         :type DiskChargePrepaids: list of DiskChargePrepaid
-        :param _NewDeadline: 指定云盘新的到期时间，形式如：2017-12-17 00:00:00。参数`NewDeadline`和`DiskChargePrepaids`是两种指定询价时长的方式，两者必传一个。
+        :param _NewDeadline: 指定云硬盘新的到期时间，形式如：2017-12-17 00:00:00。参数`NewDeadline`和`DiskChargePrepaids`是两种指定询价时长的方式，两者必传一个。
         :type NewDeadline: str
-        :param _ProjectId: 云盘所属项目ID。 如传入则仅用于鉴权。
+        :param _ProjectId: 云硬盘所属项目ID。该参数可以通过调用[DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。 如传入则仅用于鉴权。
         :type ProjectId: int
         """
         self._DiskIds = None
@@ -6368,7 +6406,7 @@ class InquiryPriceRenewDisksRequest(AbstractModel):
 
     @property
     def NewDeadline(self):
-        """指定云盘新的到期时间，形式如：2017-12-17 00:00:00。参数`NewDeadline`和`DiskChargePrepaids`是两种指定询价时长的方式，两者必传一个。
+        """指定云硬盘新的到期时间，形式如：2017-12-17 00:00:00。参数`NewDeadline`和`DiskChargePrepaids`是两种指定询价时长的方式，两者必传一个。
         :rtype: str
         """
         return self._NewDeadline
@@ -6379,7 +6417,7 @@ class InquiryPriceRenewDisksRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """云盘所属项目ID。 如传入则仅用于鉴权。
+        """云硬盘所属项目ID。该参数可以通过调用[DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。 如传入则仅用于鉴权。
         :rtype: int
         """
         return self._ProjectId
@@ -6461,11 +6499,11 @@ class InquiryPriceResizeDiskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskSize: 云硬盘扩容后的大小，单位为GB，不得小于当前云硬盘大小。云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
+        :param _DiskSize: 云硬盘扩容后的大小，单位为GiB，不得小于当前云硬盘大小。云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
         :type DiskSize: int
         :param _DiskId: 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
         :type DiskId: str
-        :param _ProjectId: 云盘所属项目ID。 如传入则仅用于鉴权。
+        :param _ProjectId: 云硬盘所属项目ID。该参数可以通过调用[DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。 如传入则仅用于鉴权。
         :type ProjectId: int
         """
         self._DiskSize = None
@@ -6474,7 +6512,7 @@ class InquiryPriceResizeDiskRequest(AbstractModel):
 
     @property
     def DiskSize(self):
-        """云硬盘扩容后的大小，单位为GB，不得小于当前云硬盘大小。云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
+        """云硬盘扩容后的大小，单位为GiB，不得小于当前云硬盘大小。云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
         :rtype: int
         """
         return self._DiskSize
@@ -6496,7 +6534,7 @@ class InquiryPriceResizeDiskRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """云盘所属项目ID。 如传入则仅用于鉴权。
+        """云硬盘所属项目ID。该参数可以通过调用[DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。 如传入则仅用于鉴权。
         :rtype: int
         """
         return self._ProjectId
@@ -7132,11 +7170,11 @@ class ModifyDisksRenewFlagRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskIds: 一个或多个待操作的云硬盘ID。
+        :param _DiskIds: 一个或多个待操作的云硬盘ID，该参数可以通过[DescribeDisks](/document/product/362/16315)接口查询。
         :type DiskIds: list of str
-        :param _RenewFlag: 	云硬盘的自动续费标识。取值范围：<ul><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费</li></ul>
+        :param _RenewFlag: 云硬盘的自动续费标识。取值范围：<ul><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费</li></ul>
         :type RenewFlag: str
-        :param _AutoRenewPeriod: 该参数支持设置云硬盘的自动续费周期，单位为月。
+        :param _AutoRenewPeriod: 该参数支持设置云硬盘的自动续费周期，单位为月。取值范围：[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36]
         :type AutoRenewPeriod: int
         """
         self._DiskIds = None
@@ -7145,7 +7183,7 @@ class ModifyDisksRenewFlagRequest(AbstractModel):
 
     @property
     def DiskIds(self):
-        """一个或多个待操作的云硬盘ID。
+        """一个或多个待操作的云硬盘ID，该参数可以通过[DescribeDisks](/document/product/362/16315)接口查询。
         :rtype: list of str
         """
         return self._DiskIds
@@ -7156,7 +7194,7 @@ class ModifyDisksRenewFlagRequest(AbstractModel):
 
     @property
     def RenewFlag(self):
-        """	云硬盘的自动续费标识。取值范围：<ul><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费</li></ul>
+        """云硬盘的自动续费标识。取值范围：<ul><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费</li></ul>
         :rtype: str
         """
         return self._RenewFlag
@@ -7167,7 +7205,7 @@ class ModifyDisksRenewFlagRequest(AbstractModel):
 
     @property
     def AutoRenewPeriod(self):
-        """该参数支持设置云硬盘的自动续费周期，单位为月。
+        """该参数支持设置云硬盘的自动续费周期，单位为月。取值范围：[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36]
         :rtype: int
         """
         return self._AutoRenewPeriod

@@ -4526,6 +4526,173 @@ class RetrievalSetting(AbstractModel):
         
 
 
+class RetrieveKnowledgeRealtimeRequest(AbstractModel):
+    """RetrieveKnowledgeRealtime请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KnowledgeBaseId: 知识库ID。
+        :type KnowledgeBaseId: str
+        :param _Query: 用于检索的文本。
+        :type Query: str
+        :param _DocIds: 实时文件ID列表。
+        :type DocIds: list of str
+        :param _RetrievalMethod: 检索方法，默认使用`HYBRID`混合检索。
+- `SEMANTIC`：语义检索
+- `FULL_TEXT`：全文检索
+- `HYBRID`：混合检索
+        :type RetrievalMethod: str
+        :param _RetrievalSetting: 检索设置。
+        :type RetrievalSetting: :class:`tencentcloud.lkeap.v20240522.models.RetrievalSetting`
+        """
+        self._KnowledgeBaseId = None
+        self._Query = None
+        self._DocIds = None
+        self._RetrievalMethod = None
+        self._RetrievalSetting = None
+
+    @property
+    def KnowledgeBaseId(self):
+        """知识库ID。
+        :rtype: str
+        """
+        return self._KnowledgeBaseId
+
+    @KnowledgeBaseId.setter
+    def KnowledgeBaseId(self, KnowledgeBaseId):
+        self._KnowledgeBaseId = KnowledgeBaseId
+
+    @property
+    def Query(self):
+        """用于检索的文本。
+        :rtype: str
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+    @property
+    def DocIds(self):
+        """实时文件ID列表。
+        :rtype: list of str
+        """
+        return self._DocIds
+
+    @DocIds.setter
+    def DocIds(self, DocIds):
+        self._DocIds = DocIds
+
+    @property
+    def RetrievalMethod(self):
+        """检索方法，默认使用`HYBRID`混合检索。
+- `SEMANTIC`：语义检索
+- `FULL_TEXT`：全文检索
+- `HYBRID`：混合检索
+        :rtype: str
+        """
+        return self._RetrievalMethod
+
+    @RetrievalMethod.setter
+    def RetrievalMethod(self, RetrievalMethod):
+        self._RetrievalMethod = RetrievalMethod
+
+    @property
+    def RetrievalSetting(self):
+        """检索设置。
+        :rtype: :class:`tencentcloud.lkeap.v20240522.models.RetrievalSetting`
+        """
+        return self._RetrievalSetting
+
+    @RetrievalSetting.setter
+    def RetrievalSetting(self, RetrievalSetting):
+        self._RetrievalSetting = RetrievalSetting
+
+
+    def _deserialize(self, params):
+        self._KnowledgeBaseId = params.get("KnowledgeBaseId")
+        self._Query = params.get("Query")
+        self._DocIds = params.get("DocIds")
+        self._RetrievalMethod = params.get("RetrievalMethod")
+        if params.get("RetrievalSetting") is not None:
+            self._RetrievalSetting = RetrievalSetting()
+            self._RetrievalSetting._deserialize(params.get("RetrievalSetting"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RetrieveKnowledgeRealtimeResponse(AbstractModel):
+    """RetrieveKnowledgeRealtime返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Records: 检索结果
+        :type Records: list of RetrievalRecord
+        :param _TotalCount: 检索结果数量
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Records = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Records(self):
+        """检索结果
+        :rtype: list of RetrievalRecord
+        """
+        return self._Records
+
+    @Records.setter
+    def Records(self, Records):
+        self._Records = Records
+
+    @property
+    def TotalCount(self):
+        """检索结果数量
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Records") is not None:
+            self._Records = []
+            for item in params.get("Records"):
+                obj = RetrievalRecord()
+                obj._deserialize(item)
+                self._Records.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class RetrieveKnowledgeRequest(AbstractModel):
     """RetrieveKnowledge请求参数结构体
 
@@ -5022,150 +5189,6 @@ class SplitDocumentFailedPage(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
-
-
-class UploadDocRealtimeRequest(AbstractModel):
-    """UploadDocRealtime请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _KnowledgeBaseId: 知识库ID
-        :type KnowledgeBaseId: str
-        :param _FileName: 文件名，可选。
-**需带文件类型后缀**，当文件名无法从传入的`FileUrl`获取时需要通过该字段来明确。
-        :type FileName: str
-        :param _FileType: 文件类型。
-**支持的文件类型：**
-- `PDF`、`DOC`、`DOCX`、`XLS`、`XLSX`、`PPT`、`PPTX`、`MD`、`TXT`、`PNG`、`JPG`、`JPEG`、`CSV`、`HTML`、`EPUB`
-
-**支持的文件大小：**
- - `PDF`、`DOCX`、`DOC`、`PPT`、`PPTX` 最大 200M 
- - `TXT`、`MD` 最大10M 
- - 其他 最大20M
-        :type FileType: str
-        :param _FileUrl: 文件的 URL 地址。
-文件存储于腾讯云的 URL 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。 非腾讯云存储的 URL 速度和稳定性可能受一定影响。
-参考：[腾讯云COS文档](https://cloud.tencent.com/document/product/436/7749)
-        :type FileUrl: str
-        :param _ExpireTime: 过期时间的秒数，最长24小时，默认24小时
-        :type ExpireTime: int
-        """
-        self._KnowledgeBaseId = None
-        self._FileName = None
-        self._FileType = None
-        self._FileUrl = None
-        self._ExpireTime = None
-
-    @property
-    def KnowledgeBaseId(self):
-        """知识库ID
-        :rtype: str
-        """
-        return self._KnowledgeBaseId
-
-    @KnowledgeBaseId.setter
-    def KnowledgeBaseId(self, KnowledgeBaseId):
-        self._KnowledgeBaseId = KnowledgeBaseId
-
-    @property
-    def FileName(self):
-        """文件名，可选。
-**需带文件类型后缀**，当文件名无法从传入的`FileUrl`获取时需要通过该字段来明确。
-        :rtype: str
-        """
-        return self._FileName
-
-    @FileName.setter
-    def FileName(self, FileName):
-        self._FileName = FileName
-
-    @property
-    def FileType(self):
-        """文件类型。
-**支持的文件类型：**
-- `PDF`、`DOC`、`DOCX`、`XLS`、`XLSX`、`PPT`、`PPTX`、`MD`、`TXT`、`PNG`、`JPG`、`JPEG`、`CSV`、`HTML`、`EPUB`
-
-**支持的文件大小：**
- - `PDF`、`DOCX`、`DOC`、`PPT`、`PPTX` 最大 200M 
- - `TXT`、`MD` 最大10M 
- - 其他 最大20M
-        :rtype: str
-        """
-        return self._FileType
-
-    @FileType.setter
-    def FileType(self, FileType):
-        self._FileType = FileType
-
-    @property
-    def FileUrl(self):
-        """文件的 URL 地址。
-文件存储于腾讯云的 URL 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。 非腾讯云存储的 URL 速度和稳定性可能受一定影响。
-参考：[腾讯云COS文档](https://cloud.tencent.com/document/product/436/7749)
-        :rtype: str
-        """
-        return self._FileUrl
-
-    @FileUrl.setter
-    def FileUrl(self, FileUrl):
-        self._FileUrl = FileUrl
-
-    @property
-    def ExpireTime(self):
-        """过期时间的秒数，最长24小时，默认24小时
-        :rtype: int
-        """
-        return self._ExpireTime
-
-    @ExpireTime.setter
-    def ExpireTime(self, ExpireTime):
-        self._ExpireTime = ExpireTime
-
-
-    def _deserialize(self, params):
-        self._KnowledgeBaseId = params.get("KnowledgeBaseId")
-        self._FileName = params.get("FileName")
-        self._FileType = params.get("FileType")
-        self._FileUrl = params.get("FileUrl")
-        self._ExpireTime = params.get("ExpireTime")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class UploadDocRealtimeResponse(AbstractModel):
-    """UploadDocRealtime返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
-        :type RequestId: str
-        """
-        self._RequestId = None
-
-    @property
-    def RequestId(self):
-        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
 
 
 class UploadDocRequest(AbstractModel):
