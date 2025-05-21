@@ -165,7 +165,9 @@ class DsgcClient(AbstractClient):
 
 
     def CreateClassificationRule(self, request):
-        """创建识别规则
+        """旧版本DSGC接口下线
+
+        创建识别规则
 
         :param request: Request instance for CreateClassificationRule.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.CreateClassificationRuleRequest`
@@ -556,7 +558,9 @@ class DsgcClient(AbstractClient):
 
 
     def CreateNewClassification(self, request):
-        """创建新分类
+        """旧版本DSGC接口下线
+
+        创建新分类
 
         :param request: Request instance for CreateNewClassification.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.CreateNewClassificationRequest`
@@ -579,7 +583,9 @@ class DsgcClient(AbstractClient):
 
 
     def CreateOrCopyStandard(self, request):
-        """创建或复制分级分类模板
+        """旧版本DSGC接口下线
+
+        创建或复制分级分类模板
 
         :param request: Request instance for CreateOrCopyStandard.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.CreateOrCopyStandardRequest`
@@ -886,7 +892,9 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeClassificationInfo(self, request):
-        """查询分类信息
+        """旧版本DSGC接口下线
+
+        查询分类信息
 
         :param request: Request instance for DescribeClassificationInfo.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeClassificationInfoRequest`
@@ -909,7 +917,9 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeClassificationRuleCount(self, request):
-        """查询标准下所有分类的识别规则数量(不算子分类下的识别规则)
+        """旧版本DSGC接口下线
+
+        查询标准下所有分类的识别规则数量(不算子分类下的识别规则)
 
         :param request: Request instance for DescribeClassificationRuleCount.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeClassificationRuleCountRequest`
@@ -2342,7 +2352,9 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeLeafClassification(self, request):
-        """查询标准下所有叶子节点分类
+        """旧版本DSGC接口下线
+
+        查询标准下所有叶子节点分类
 
         :param request: Request instance for DescribeLeafClassification.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeLeafClassificationRequest`
@@ -2457,7 +2469,9 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeRuleList(self, request):
-        """查询分类下规则列表
+        """旧版本DSGC接口下线
+
+        查询分类下规则列表
 
         :param request: Request instance for DescribeRuleList.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeRuleListRequest`
@@ -2757,7 +2771,9 @@ class DsgcClient(AbstractClient):
 
 
     def ModifyClassificationRule(self, request):
-        """编辑识别规则
+        """旧版本DSGC接口下线
+
+        编辑识别规则
 
         :param request: Request instance for ModifyClassificationRule.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.ModifyClassificationRuleRequest`
@@ -2780,7 +2796,9 @@ class DsgcClient(AbstractClient):
 
 
     def ModifyClassificationRuleState(self, request):
-        """修改识别规则状态
+        """旧版本DSGC接口下线
+
+        修改识别规则状态
 
         :param request: Request instance for ModifyClassificationRuleState.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.ModifyClassificationRuleStateRequest`
@@ -3134,7 +3152,9 @@ class DsgcClient(AbstractClient):
 
 
     def ModifyLevelInfo(self, request):
-        """修改敏感级别信息
+        """旧版本DSGC接口下线
+
+        修改敏感级别信息
 
         :param request: Request instance for ModifyLevelInfo.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.ModifyLevelInfoRequest`
@@ -3157,7 +3177,9 @@ class DsgcClient(AbstractClient):
 
 
     def ModifyLevelName(self, request):
-        """修改级别名称
+        """旧版本DSGC接口下线
+
+        修改级别名称
 
         :param request: Request instance for ModifyLevelName.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.ModifyLevelNameRequest`
@@ -3180,7 +3202,9 @@ class DsgcClient(AbstractClient):
 
 
     def ModifyLevelState(self, request):
-        """开启级别或关闭级别
+        """旧版本DSGC接口下线
+
+        开启级别或关闭级别
 
         :param request: Request instance for ModifyLevelState.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.ModifyLevelStateRequest`
@@ -3203,7 +3227,9 @@ class DsgcClient(AbstractClient):
 
 
     def ModifyMergeClassification(self, request):
-        """一个分类合并到另一个分类中（分类拖拽功能）
+        """旧版本DSGC接口下线
+
+        一个分类合并到另一个分类中（分类拖拽功能）
 
         :param request: Request instance for ModifyMergeClassification.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.ModifyMergeClassificationRequest`
@@ -3226,7 +3252,9 @@ class DsgcClient(AbstractClient):
 
 
     def ModifyNewClassification(self, request):
-        """修改分类信息
+        """旧版本DSGC接口下线
+
+        修改分类信息
 
         :param request: Request instance for ModifyNewClassification.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.ModifyNewClassificationRequest`
@@ -3249,7 +3277,9 @@ class DsgcClient(AbstractClient):
 
 
     def ModifyStandardInfo(self, request):
-        """修改分级分类模板信息
+        """旧版本DSGC接口下线
+
+        修改分级分类模板信息
 
         :param request: Request instance for ModifyStandardInfo.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.ModifyStandardInfoRequest`

@@ -29755,7 +29755,7 @@ class VisionRecognitionResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: 任务状态（1：失败；2：成功但结果为空；3：成功且结果非空）
+        :param _Status: 任务状态（1：分析失败；2：下载/读取视频/图片失败；3：成功）
         :type Status: int
         :param _DetectedClassifications: 识别到的目标类型。可能取值：
 
@@ -29769,16 +29769,19 @@ class VisionRecognitionResult(AbstractModel):
 - `license_plate`：车牌
 
         :type DetectedClassifications: list of str
-        :param _Summary: 视频摘要文本
+        :param _Summary: 摘要文本
         :type Summary: str
+        :param _AlternativeSummary: 摘要文本（次选语言）
+        :type AlternativeSummary: str
         """
         self._Status = None
         self._DetectedClassifications = None
         self._Summary = None
+        self._AlternativeSummary = None
 
     @property
     def Status(self):
-        """任务状态（1：失败；2：成功但结果为空；3：成功且结果非空）
+        """任务状态（1：分析失败；2：下载/读取视频/图片失败；3：成功）
         :rtype: int
         """
         return self._Status
@@ -29810,7 +29813,7 @@ class VisionRecognitionResult(AbstractModel):
 
     @property
     def Summary(self):
-        """视频摘要文本
+        """摘要文本
         :rtype: str
         """
         return self._Summary
@@ -29819,11 +29822,23 @@ class VisionRecognitionResult(AbstractModel):
     def Summary(self, Summary):
         self._Summary = Summary
 
+    @property
+    def AlternativeSummary(self):
+        """摘要文本（次选语言）
+        :rtype: str
+        """
+        return self._AlternativeSummary
+
+    @AlternativeSummary.setter
+    def AlternativeSummary(self, AlternativeSummary):
+        self._AlternativeSummary = AlternativeSummary
+
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
         self._DetectedClassifications = params.get("DetectedClassifications")
         self._Summary = params.get("Summary")
+        self._AlternativeSummary = params.get("AlternativeSummary")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

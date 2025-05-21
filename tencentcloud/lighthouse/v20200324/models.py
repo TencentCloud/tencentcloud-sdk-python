@@ -15794,6 +15794,8 @@ class RenewDiskChargePrepaid(AbstractModel):
     def __init__(self):
         r"""
         :param _Period: 续费周期。
+单位：月。
+取值范围: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36]
         :type Period: int
         :param _RenewFlag: 自动续费标识。
 取值范围：
@@ -15817,6 +15819,8 @@ class RenewDiskChargePrepaid(AbstractModel):
     @property
     def Period(self):
         """续费周期。
+单位：月。
+取值范围: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36]
         :rtype: int
         """
         return self._Period

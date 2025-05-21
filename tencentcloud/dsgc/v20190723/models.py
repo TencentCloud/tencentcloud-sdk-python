@@ -11777,14 +11777,19 @@ class DescribeDSPAAssessmentRiskSideListResponse(AbstractModel):
         r"""
         :param _RiskSideItmeList: 风险面列表
         :type RiskSideItmeList: list of Note
+        :param _RiskSideItemList: 风险面列表
+        :type RiskSideItemList: list of Note
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RiskSideItmeList = None
+        self._RiskSideItemList = None
         self._RequestId = None
 
     @property
     def RiskSideItmeList(self):
+        warnings.warn("parameter `RiskSideItmeList` is deprecated", DeprecationWarning) 
+
         """风险面列表
         :rtype: list of Note
         """
@@ -11792,7 +11797,20 @@ class DescribeDSPAAssessmentRiskSideListResponse(AbstractModel):
 
     @RiskSideItmeList.setter
     def RiskSideItmeList(self, RiskSideItmeList):
+        warnings.warn("parameter `RiskSideItmeList` is deprecated", DeprecationWarning) 
+
         self._RiskSideItmeList = RiskSideItmeList
+
+    @property
+    def RiskSideItemList(self):
+        """风险面列表
+        :rtype: list of Note
+        """
+        return self._RiskSideItemList
+
+    @RiskSideItemList.setter
+    def RiskSideItemList(self, RiskSideItemList):
+        self._RiskSideItemList = RiskSideItemList
 
     @property
     def RequestId(self):
@@ -11813,6 +11831,12 @@ class DescribeDSPAAssessmentRiskSideListResponse(AbstractModel):
                 obj = Note()
                 obj._deserialize(item)
                 self._RiskSideItmeList.append(obj)
+        if params.get("RiskSideItemList") is not None:
+            self._RiskSideItemList = []
+            for item in params.get("RiskSideItemList"):
+                obj = Note()
+                obj._deserialize(item)
+                self._RiskSideItemList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -22184,13 +22208,11 @@ class DspaDiscoveryTask(AbstractModel):
         :param _GeneralRuleSetEnable: 通用规则集开关，0 关闭，1 启用
         :type GeneralRuleSetEnable: int
         :param _Result: 任务最新的一次执行结果信息，该字段用于查询任务列表接口
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.dsgc.v20190723.models.ScanTaskResult`
         :param _TimingStartTime: 定时开始时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimingStartTime: str
         :param _ComplianceUpdate: 关联模板是否更新
-注意：此字段可能返回 null，表示取不到有效值。
         :type ComplianceUpdate: bool
         """
         self._TaskId = None
@@ -22296,7 +22318,6 @@ class DspaDiscoveryTask(AbstractModel):
     @property
     def Result(self):
         """任务最新的一次执行结果信息，该字段用于查询任务列表接口
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dsgc.v20190723.models.ScanTaskResult`
         """
         return self._Result
@@ -22320,7 +22341,6 @@ class DspaDiscoveryTask(AbstractModel):
     @property
     def ComplianceUpdate(self):
         """关联模板是否更新
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._ComplianceUpdate

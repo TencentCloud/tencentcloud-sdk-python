@@ -18968,6 +18968,9 @@ class GovernanceAlias(AbstractModel):
         :type Id: str
         :param _Editable: 该服务别名是否可以编辑
         :type Editable: bool
+        :param _Metadatas: 元数据信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Metadatas: list of Metadata
         """
         self._Alias = None
         self._AliasNamespace = None
@@ -18978,6 +18981,7 @@ class GovernanceAlias(AbstractModel):
         self._ModifyTime = None
         self._Id = None
         self._Editable = None
+        self._Metadatas = None
 
     @property
     def Alias(self):
@@ -19078,6 +19082,18 @@ class GovernanceAlias(AbstractModel):
     def Editable(self, Editable):
         self._Editable = Editable
 
+    @property
+    def Metadatas(self):
+        """元数据信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Metadata
+        """
+        return self._Metadatas
+
+    @Metadatas.setter
+    def Metadatas(self, Metadatas):
+        self._Metadatas = Metadatas
+
 
     def _deserialize(self, params):
         self._Alias = params.get("Alias")
@@ -19089,6 +19105,12 @@ class GovernanceAlias(AbstractModel):
         self._ModifyTime = params.get("ModifyTime")
         self._Id = params.get("Id")
         self._Editable = params.get("Editable")
+        if params.get("Metadatas") is not None:
+            self._Metadatas = []
+            for item in params.get("Metadatas"):
+                obj = Metadata()
+                obj._deserialize(item)
+                self._Metadatas.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19995,6 +20017,9 @@ class GovernanceNamespace(AbstractModel):
         :type ServiceExportTo: list of str
         :param _SyncToGlobalRegistry: 是否开启同步到全局注册中心	
         :type SyncToGlobalRegistry: bool
+        :param _Metadatas: 元数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Metadatas: list of Metadata
         """
         self._Name = None
         self._Comment = None
@@ -20011,6 +20036,7 @@ class GovernanceNamespace(AbstractModel):
         self._RemoveGroupIds = None
         self._ServiceExportTo = None
         self._SyncToGlobalRegistry = None
+        self._Metadatas = None
 
     @property
     def Name(self):
@@ -20177,6 +20203,18 @@ class GovernanceNamespace(AbstractModel):
     def SyncToGlobalRegistry(self, SyncToGlobalRegistry):
         self._SyncToGlobalRegistry = SyncToGlobalRegistry
 
+    @property
+    def Metadatas(self):
+        """元数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Metadata
+        """
+        return self._Metadatas
+
+    @Metadatas.setter
+    def Metadatas(self, Metadatas):
+        self._Metadatas = Metadatas
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -20194,6 +20232,12 @@ class GovernanceNamespace(AbstractModel):
         self._RemoveGroupIds = params.get("RemoveGroupIds")
         self._ServiceExportTo = params.get("ServiceExportTo")
         self._SyncToGlobalRegistry = params.get("SyncToGlobalRegistry")
+        if params.get("Metadatas") is not None:
+            self._Metadatas = []
+            for item in params.get("Metadatas"):
+                obj = Metadata()
+                obj._deserialize(item)
+                self._Metadatas.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20691,6 +20735,9 @@ class GovernanceServiceContract(AbstractModel):
         :type ModifyTime: str
         :param _Interfaces: 契约接口列表
         :type Interfaces: list of GovernanceInterfaceDescription
+        :param _Metadatas: 元数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Metadatas: list of Metadata
         """
         self._Name = None
         self._Namespace = None
@@ -20703,6 +20750,7 @@ class GovernanceServiceContract(AbstractModel):
         self._CreateTime = None
         self._ModifyTime = None
         self._Interfaces = None
+        self._Metadatas = None
 
     @property
     def Name(self):
@@ -20825,6 +20873,18 @@ class GovernanceServiceContract(AbstractModel):
     def Interfaces(self, Interfaces):
         self._Interfaces = Interfaces
 
+    @property
+    def Metadatas(self):
+        """元数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Metadata
+        """
+        return self._Metadatas
+
+    @Metadatas.setter
+    def Metadatas(self, Metadatas):
+        self._Metadatas = Metadatas
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -20843,6 +20903,12 @@ class GovernanceServiceContract(AbstractModel):
                 obj = GovernanceInterfaceDescription()
                 obj._deserialize(item)
                 self._Interfaces.append(obj)
+        if params.get("Metadatas") is not None:
+            self._Metadatas = []
+            for item in params.get("Metadatas"):
+                obj = Metadata()
+                obj._deserialize(item)
+                self._Metadatas.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28470,6 +28536,14 @@ class SREInstance(AbstractModel):
         :type ZookeeperRegionInfo: :class:`tencentcloud.tse.v20201207.models.ZookeeperRegionInfo`
         :param _DeployMode: 部署架构
         :type DeployMode: str
+        :param _GlobalType: 全局属性
+        :type GlobalType: str
+        :param _GroupType: 所属组类型
+        :type GroupType: str
+        :param _GroupId: 组id
+        :type GroupId: list of str
+        :param _IsMainRegion: 是否为主地域
+        :type IsMainRegion: bool
         """
         self._InstanceId = None
         self._Name = None
@@ -28507,6 +28581,10 @@ class SREInstance(AbstractModel):
         self._StorageOption = None
         self._ZookeeperRegionInfo = None
         self._DeployMode = None
+        self._GlobalType = None
+        self._GroupType = None
+        self._GroupId = None
+        self._IsMainRegion = None
 
     @property
     def InstanceId(self):
@@ -28904,6 +28982,50 @@ class SREInstance(AbstractModel):
     def DeployMode(self, DeployMode):
         self._DeployMode = DeployMode
 
+    @property
+    def GlobalType(self):
+        """全局属性
+        :rtype: str
+        """
+        return self._GlobalType
+
+    @GlobalType.setter
+    def GlobalType(self, GlobalType):
+        self._GlobalType = GlobalType
+
+    @property
+    def GroupType(self):
+        """所属组类型
+        :rtype: str
+        """
+        return self._GroupType
+
+    @GroupType.setter
+    def GroupType(self, GroupType):
+        self._GroupType = GroupType
+
+    @property
+    def GroupId(self):
+        """组id
+        :rtype: list of str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def IsMainRegion(self):
+        """是否为主地域
+        :rtype: bool
+        """
+        return self._IsMainRegion
+
+    @IsMainRegion.setter
+    def IsMainRegion(self, IsMainRegion):
+        self._IsMainRegion = IsMainRegion
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -28974,6 +29096,10 @@ class SREInstance(AbstractModel):
             self._ZookeeperRegionInfo = ZookeeperRegionInfo()
             self._ZookeeperRegionInfo._deserialize(params.get("ZookeeperRegionInfo"))
         self._DeployMode = params.get("DeployMode")
+        self._GlobalType = params.get("GlobalType")
+        self._GroupType = params.get("GroupType")
+        self._GroupId = params.get("GroupId")
+        self._IsMainRegion = params.get("IsMainRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

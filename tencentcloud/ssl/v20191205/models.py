@@ -1535,6 +1535,10 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
         :type TechEmail: str
         :param _TechTitle: 联系人职位。若没有传ManagerId， 则此字段必传
         :type TechTitle: str
+        :param _Type: 证书类型
+        :type Type: int
+        :param _CaType: 只针对Dnspod系列证书有效，ca机构类型可为sectigo和digicert
+        :type CaType: str
         """
         self._CertId = None
         self._GenCsrType = None
@@ -1574,6 +1578,8 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
         self._TechPhone = None
         self._TechEmail = None
         self._TechTitle = None
+        self._Type = None
+        self._CaType = None
 
     @property
     def CertId(self):
@@ -2019,6 +2025,28 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
     def TechTitle(self, TechTitle):
         self._TechTitle = TechTitle
 
+    @property
+    def Type(self):
+        """证书类型
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def CaType(self):
+        """只针对Dnspod系列证书有效，ca机构类型可为sectigo和digicert
+        :rtype: str
+        """
+        return self._CaType
+
+    @CaType.setter
+    def CaType(self, CaType):
+        self._CaType = CaType
+
 
     def _deserialize(self, params):
         self._CertId = params.get("CertId")
@@ -2059,6 +2087,8 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
         self._TechPhone = params.get("TechPhone")
         self._TechEmail = params.get("TechEmail")
         self._TechTitle = params.get("TechTitle")
+        self._Type = params.get("Type")
+        self._CaType = params.get("CaType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -1196,6 +1196,160 @@ class CreateFileSystemResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateFilesetRequest(AbstractModel):
+    """CreateFileset请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileSystemId: 文件系统id
+        :type FileSystemId: str
+        :param _FsetName: Fileset名称
+        :type FsetName: str
+        :param _FsetDir: Fileset目录
+        :type FsetDir: str
+        :param _QuotaSizeLimit: Fileset容量配额（需带单位G）
+        :type QuotaSizeLimit: str
+        :param _QuotaFilesLimit: Fileset文件数配额
+        :type QuotaFilesLimit: str
+        :param _AuditState: Fileset文件删除操作审计
+        :type AuditState: str
+        """
+        self._FileSystemId = None
+        self._FsetName = None
+        self._FsetDir = None
+        self._QuotaSizeLimit = None
+        self._QuotaFilesLimit = None
+        self._AuditState = None
+
+    @property
+    def FileSystemId(self):
+        """文件系统id
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+    @property
+    def FsetName(self):
+        """Fileset名称
+        :rtype: str
+        """
+        return self._FsetName
+
+    @FsetName.setter
+    def FsetName(self, FsetName):
+        self._FsetName = FsetName
+
+    @property
+    def FsetDir(self):
+        """Fileset目录
+        :rtype: str
+        """
+        return self._FsetDir
+
+    @FsetDir.setter
+    def FsetDir(self, FsetDir):
+        self._FsetDir = FsetDir
+
+    @property
+    def QuotaSizeLimit(self):
+        """Fileset容量配额（需带单位G）
+        :rtype: str
+        """
+        return self._QuotaSizeLimit
+
+    @QuotaSizeLimit.setter
+    def QuotaSizeLimit(self, QuotaSizeLimit):
+        self._QuotaSizeLimit = QuotaSizeLimit
+
+    @property
+    def QuotaFilesLimit(self):
+        """Fileset文件数配额
+        :rtype: str
+        """
+        return self._QuotaFilesLimit
+
+    @QuotaFilesLimit.setter
+    def QuotaFilesLimit(self, QuotaFilesLimit):
+        self._QuotaFilesLimit = QuotaFilesLimit
+
+    @property
+    def AuditState(self):
+        """Fileset文件删除操作审计
+        :rtype: str
+        """
+        return self._AuditState
+
+    @AuditState.setter
+    def AuditState(self, AuditState):
+        self._AuditState = AuditState
+
+
+    def _deserialize(self, params):
+        self._FileSystemId = params.get("FileSystemId")
+        self._FsetName = params.get("FsetName")
+        self._FsetDir = params.get("FsetDir")
+        self._QuotaSizeLimit = params.get("QuotaSizeLimit")
+        self._QuotaFilesLimit = params.get("QuotaFilesLimit")
+        self._AuditState = params.get("AuditState")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateFilesetResponse(AbstractModel):
+    """CreateFileset返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FsetId: Fileset id
+        :type FsetId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FsetId = None
+        self._RequestId = None
+
+    @property
+    def FsetId(self):
+        """Fileset id
+        :rtype: str
+        """
+        return self._FsetId
+
+    @FsetId.setter
+    def FsetId(self, FsetId):
+        self._FsetId = FsetId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FsetId = params.get("FsetId")
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteCrossVpcSubnetSupportForClientNodeRequest(AbstractModel):
     """DeleteCrossVpcSubnetSupportForClientNode请求参数结构体
 
@@ -1315,6 +1469,85 @@ class DeleteFileSystemRequest(AbstractModel):
 
 class DeleteFileSystemResponse(AbstractModel):
     """DeleteFileSystem返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteFilesetRequest(AbstractModel):
+    """DeleteFileset请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileSystemId: 文件系统id
+        :type FileSystemId: str
+        :param _FsetId: Fileset id
+        :type FsetId: str
+        """
+        self._FileSystemId = None
+        self._FsetId = None
+
+    @property
+    def FileSystemId(self):
+        """文件系统id
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+    @property
+    def FsetId(self):
+        """Fileset id
+        :rtype: str
+        """
+        return self._FsetId
+
+    @FsetId.setter
+    def FsetId(self, FsetId):
+        self._FsetId = FsetId
+
+
+    def _deserialize(self, params):
+        self._FileSystemId = params.get("FileSystemId")
+        self._FsetId = params.get("FsetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteFilesetResponse(AbstractModel):
+    """DeleteFileset返回参数结构体
 
     """
 
@@ -2044,6 +2277,214 @@ class DescribeFileSystemsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeFilesetGeneralConfigRequest(AbstractModel):
+    """DescribeFilesetGeneralConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileSystemId: 文件系统id
+        :type FileSystemId: str
+        """
+        self._FileSystemId = None
+
+    @property
+    def FileSystemId(self):
+        """文件系统id
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+
+    def _deserialize(self, params):
+        self._FileSystemId = params.get("FileSystemId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFilesetGeneralConfigResponse(AbstractModel):
+    """DescribeFilesetGeneralConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnforceQuotaOnRoot: 配额对root用户生效
+        :type EnforceQuotaOnRoot: str
+        :param _Status: 配置状态
+        :type Status: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._EnforceQuotaOnRoot = None
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def EnforceQuotaOnRoot(self):
+        """配额对root用户生效
+        :rtype: str
+        """
+        return self._EnforceQuotaOnRoot
+
+    @EnforceQuotaOnRoot.setter
+    def EnforceQuotaOnRoot(self, EnforceQuotaOnRoot):
+        self._EnforceQuotaOnRoot = EnforceQuotaOnRoot
+
+    @property
+    def Status(self):
+        """配置状态
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._EnforceQuotaOnRoot = params.get("EnforceQuotaOnRoot")
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeFilesetsRequest(AbstractModel):
+    """DescribeFilesets请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileSystemId: 文件系统id
+        :type FileSystemId: str
+        :param _FilesetIds: FsetId列表
+        :type FilesetIds: list of str
+        :param _FilesetDirs: FsetDir列表
+        :type FilesetDirs: list of str
+        """
+        self._FileSystemId = None
+        self._FilesetIds = None
+        self._FilesetDirs = None
+
+    @property
+    def FileSystemId(self):
+        """文件系统id
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+    @property
+    def FilesetIds(self):
+        """FsetId列表
+        :rtype: list of str
+        """
+        return self._FilesetIds
+
+    @FilesetIds.setter
+    def FilesetIds(self, FilesetIds):
+        self._FilesetIds = FilesetIds
+
+    @property
+    def FilesetDirs(self):
+        """FsetDir列表
+        :rtype: list of str
+        """
+        return self._FilesetDirs
+
+    @FilesetDirs.setter
+    def FilesetDirs(self, FilesetDirs):
+        self._FilesetDirs = FilesetDirs
+
+
+    def _deserialize(self, params):
+        self._FileSystemId = params.get("FileSystemId")
+        self._FilesetIds = params.get("FilesetIds")
+        self._FilesetDirs = params.get("FilesetDirs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFilesetsResponse(AbstractModel):
+    """DescribeFilesets返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FilesetList: Fileset列表
+        :type FilesetList: list of FilesetInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FilesetList = None
+        self._RequestId = None
+
+    @property
+    def FilesetList(self):
+        """Fileset列表
+        :rtype: list of FilesetInfo
+        """
+        return self._FilesetList
+
+    @FilesetList.setter
+    def FilesetList(self, FilesetList):
+        self._FilesetList = FilesetList
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("FilesetList") is not None:
+            self._FilesetList = []
+            for item in params.get("FilesetList"):
+                obj = FilesetInfo()
+                obj._deserialize(item)
+                self._FilesetList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DetachFileSystemBucketRequest(AbstractModel):
     """DetachFileSystemBucket请求参数结构体
 
@@ -2432,6 +2873,222 @@ class FSAttribute(AbstractModel):
         if params.get("ChargeAttribute") is not None:
             self._ChargeAttribute = ChargeAttribute()
             self._ChargeAttribute._deserialize(params.get("ChargeAttribute"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FilesetInfo(AbstractModel):
+    """Fileset信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FsetId: Fileset id
+        :type FsetId: str
+        :param _FsetName: Fileset名称
+        :type FsetName: str
+        :param _FsetDir: Fileset目录
+        :type FsetDir: str
+        :param _QuotaSizeLimit: Fileset容量配额限定值
+        :type QuotaSizeLimit: str
+        :param _QuotaSizeUsed: 已使用容量配额
+        :type QuotaSizeUsed: str
+        :param _QuotaSizeUsedPercent: 容量配额使用占比
+        :type QuotaSizeUsedPercent: str
+        :param _QuotaFilesLimit: Fileset文件数配额限定值
+        :type QuotaFilesLimit: str
+        :param _QuotaFilesUsed: 已使用文件数配额
+        :type QuotaFilesUsed: str
+        :param _QuotaFilesUsedPercent: 文件数配额使用占比
+        :type QuotaFilesUsedPercent: str
+        :param _AuditState: Fileset审计
+        :type AuditState: str
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _ModifyTime: 修改时间
+        :type ModifyTime: str
+        :param _Status: Fileset状态：creating 配置中 active 已生效 modify 修改中
+        :type Status: str
+        """
+        self._FsetId = None
+        self._FsetName = None
+        self._FsetDir = None
+        self._QuotaSizeLimit = None
+        self._QuotaSizeUsed = None
+        self._QuotaSizeUsedPercent = None
+        self._QuotaFilesLimit = None
+        self._QuotaFilesUsed = None
+        self._QuotaFilesUsedPercent = None
+        self._AuditState = None
+        self._CreateTime = None
+        self._ModifyTime = None
+        self._Status = None
+
+    @property
+    def FsetId(self):
+        """Fileset id
+        :rtype: str
+        """
+        return self._FsetId
+
+    @FsetId.setter
+    def FsetId(self, FsetId):
+        self._FsetId = FsetId
+
+    @property
+    def FsetName(self):
+        """Fileset名称
+        :rtype: str
+        """
+        return self._FsetName
+
+    @FsetName.setter
+    def FsetName(self, FsetName):
+        self._FsetName = FsetName
+
+    @property
+    def FsetDir(self):
+        """Fileset目录
+        :rtype: str
+        """
+        return self._FsetDir
+
+    @FsetDir.setter
+    def FsetDir(self, FsetDir):
+        self._FsetDir = FsetDir
+
+    @property
+    def QuotaSizeLimit(self):
+        """Fileset容量配额限定值
+        :rtype: str
+        """
+        return self._QuotaSizeLimit
+
+    @QuotaSizeLimit.setter
+    def QuotaSizeLimit(self, QuotaSizeLimit):
+        self._QuotaSizeLimit = QuotaSizeLimit
+
+    @property
+    def QuotaSizeUsed(self):
+        """已使用容量配额
+        :rtype: str
+        """
+        return self._QuotaSizeUsed
+
+    @QuotaSizeUsed.setter
+    def QuotaSizeUsed(self, QuotaSizeUsed):
+        self._QuotaSizeUsed = QuotaSizeUsed
+
+    @property
+    def QuotaSizeUsedPercent(self):
+        """容量配额使用占比
+        :rtype: str
+        """
+        return self._QuotaSizeUsedPercent
+
+    @QuotaSizeUsedPercent.setter
+    def QuotaSizeUsedPercent(self, QuotaSizeUsedPercent):
+        self._QuotaSizeUsedPercent = QuotaSizeUsedPercent
+
+    @property
+    def QuotaFilesLimit(self):
+        """Fileset文件数配额限定值
+        :rtype: str
+        """
+        return self._QuotaFilesLimit
+
+    @QuotaFilesLimit.setter
+    def QuotaFilesLimit(self, QuotaFilesLimit):
+        self._QuotaFilesLimit = QuotaFilesLimit
+
+    @property
+    def QuotaFilesUsed(self):
+        """已使用文件数配额
+        :rtype: str
+        """
+        return self._QuotaFilesUsed
+
+    @QuotaFilesUsed.setter
+    def QuotaFilesUsed(self, QuotaFilesUsed):
+        self._QuotaFilesUsed = QuotaFilesUsed
+
+    @property
+    def QuotaFilesUsedPercent(self):
+        """文件数配额使用占比
+        :rtype: str
+        """
+        return self._QuotaFilesUsedPercent
+
+    @QuotaFilesUsedPercent.setter
+    def QuotaFilesUsedPercent(self, QuotaFilesUsedPercent):
+        self._QuotaFilesUsedPercent = QuotaFilesUsedPercent
+
+    @property
+    def AuditState(self):
+        """Fileset审计
+        :rtype: str
+        """
+        return self._AuditState
+
+    @AuditState.setter
+    def AuditState(self, AuditState):
+        self._AuditState = AuditState
+
+    @property
+    def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifyTime(self):
+        """修改时间
+        :rtype: str
+        """
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def Status(self):
+        """Fileset状态：creating 配置中 active 已生效 modify 修改中
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._FsetId = params.get("FsetId")
+        self._FsetName = params.get("FsetName")
+        self._FsetDir = params.get("FsetDir")
+        self._QuotaSizeLimit = params.get("QuotaSizeLimit")
+        self._QuotaSizeUsed = params.get("QuotaSizeUsed")
+        self._QuotaSizeUsedPercent = params.get("QuotaSizeUsedPercent")
+        self._QuotaFilesLimit = params.get("QuotaFilesLimit")
+        self._QuotaFilesUsed = params.get("QuotaFilesUsed")
+        self._QuotaFilesUsedPercent = params.get("QuotaFilesUsedPercent")
+        self._AuditState = params.get("AuditState")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifyTime = params.get("ModifyTime")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3293,3 +3950,206 @@ class Tag(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UpdateFilesetGeneralConfigRequest(AbstractModel):
+    """UpdateFilesetGeneralConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileSystemId: 文件系统id
+        :type FileSystemId: str
+        :param _EnforceQuotaOnRoot: 配额对root用户生效
+        :type EnforceQuotaOnRoot: str
+        """
+        self._FileSystemId = None
+        self._EnforceQuotaOnRoot = None
+
+    @property
+    def FileSystemId(self):
+        """文件系统id
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+    @property
+    def EnforceQuotaOnRoot(self):
+        """配额对root用户生效
+        :rtype: str
+        """
+        return self._EnforceQuotaOnRoot
+
+    @EnforceQuotaOnRoot.setter
+    def EnforceQuotaOnRoot(self, EnforceQuotaOnRoot):
+        self._EnforceQuotaOnRoot = EnforceQuotaOnRoot
+
+
+    def _deserialize(self, params):
+        self._FileSystemId = params.get("FileSystemId")
+        self._EnforceQuotaOnRoot = params.get("EnforceQuotaOnRoot")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateFilesetGeneralConfigResponse(AbstractModel):
+    """UpdateFilesetGeneralConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateFilesetRequest(AbstractModel):
+    """UpdateFileset请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileSystemId: 文件系统id
+        :type FileSystemId: str
+        :param _FsetId: Fileset id
+        :type FsetId: str
+        :param _QuotaSizeLimit: 容量配额限定值
+        :type QuotaSizeLimit: str
+        :param _QuotaFilesLimit: 文件数配额限定值
+        :type QuotaFilesLimit: str
+        :param _AuditState: Fileset文件删除操作审计
+        :type AuditState: str
+        """
+        self._FileSystemId = None
+        self._FsetId = None
+        self._QuotaSizeLimit = None
+        self._QuotaFilesLimit = None
+        self._AuditState = None
+
+    @property
+    def FileSystemId(self):
+        """文件系统id
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+    @property
+    def FsetId(self):
+        """Fileset id
+        :rtype: str
+        """
+        return self._FsetId
+
+    @FsetId.setter
+    def FsetId(self, FsetId):
+        self._FsetId = FsetId
+
+    @property
+    def QuotaSizeLimit(self):
+        """容量配额限定值
+        :rtype: str
+        """
+        return self._QuotaSizeLimit
+
+    @QuotaSizeLimit.setter
+    def QuotaSizeLimit(self, QuotaSizeLimit):
+        self._QuotaSizeLimit = QuotaSizeLimit
+
+    @property
+    def QuotaFilesLimit(self):
+        """文件数配额限定值
+        :rtype: str
+        """
+        return self._QuotaFilesLimit
+
+    @QuotaFilesLimit.setter
+    def QuotaFilesLimit(self, QuotaFilesLimit):
+        self._QuotaFilesLimit = QuotaFilesLimit
+
+    @property
+    def AuditState(self):
+        """Fileset文件删除操作审计
+        :rtype: str
+        """
+        return self._AuditState
+
+    @AuditState.setter
+    def AuditState(self, AuditState):
+        self._AuditState = AuditState
+
+
+    def _deserialize(self, params):
+        self._FileSystemId = params.get("FileSystemId")
+        self._FsetId = params.get("FsetId")
+        self._QuotaSizeLimit = params.get("QuotaSizeLimit")
+        self._QuotaFilesLimit = params.get("QuotaFilesLimit")
+        self._AuditState = params.get("AuditState")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateFilesetResponse(AbstractModel):
+    """UpdateFileset返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")

@@ -2155,6 +2155,8 @@ class DstInfo(AbstractModel):
 
     @property
     def Ip(self):
+        warnings.warn("parameter `Ip` is deprecated", DeprecationWarning) 
+
         """目标实例vip。已废弃，无需填写
         :rtype: str
         """
@@ -2162,10 +2164,14 @@ class DstInfo(AbstractModel):
 
     @Ip.setter
     def Ip(self, Ip):
+        warnings.warn("parameter `Ip` is deprecated", DeprecationWarning) 
+
         self._Ip = Ip
 
     @property
     def Port(self):
+        warnings.warn("parameter `Port` is deprecated", DeprecationWarning) 
+
         """目标实例vport。已废弃，无需填写
         :rtype: int
         """
@@ -2173,6 +2179,8 @@ class DstInfo(AbstractModel):
 
     @Port.setter
     def Port(self, Port):
+        warnings.warn("parameter `Port` is deprecated", DeprecationWarning) 
+
         self._Port = Port
 
     @property

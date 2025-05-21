@@ -27868,7 +27868,7 @@ class RegionInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Region: 地域英文ID，类似ap-guanghou
+        :param _Region: 地域英文ID，类似ap-guangzhou
         :type Region: str
         :param _RegionName: 地域中文名称
         :type RegionName: str
@@ -27884,7 +27884,7 @@ class RegionInfo(AbstractModel):
 
     @property
     def Region(self):
-        """地域英文ID，类似ap-guanghou
+        """地域英文ID，类似ap-guangzhou
         :rtype: str
         """
         return self._Region

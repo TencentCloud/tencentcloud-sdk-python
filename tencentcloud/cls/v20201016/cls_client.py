@@ -2289,7 +2289,8 @@ class ClsClient(AbstractClient):
 
 
     def ModifyMachineGroup(self, request):
-        """修改机器组
+        """修改机器组。
+        注意：修改接口直接覆盖历史数据，改为本次合法入参数据，请谨慎调用此接口。
 
         :param request: Request instance for ModifyMachineGroup.
         :type request: :class:`tencentcloud.cls.v20201016.models.ModifyMachineGroupRequest`

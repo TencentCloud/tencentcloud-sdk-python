@@ -2644,10 +2644,12 @@ class DescribeInstancesRequest(AbstractModel):
         :type TypeList: list of int
         :param _MonitorVersion: 内部参数，用户可忽略。
         :type MonitorVersion: str
-        :param _InstanceTags: 根据标签的 Key 和 Value 筛选资源。该参数不配置或者数组设置为空值，则不根据标签进行过滤。
+        :param _InstanceTags: 废弃字段。请使用TagList传参。
         :type InstanceTags: :class:`tencentcloud.keewidb.v20220308.models.InstanceTagInfo`
         :param _TagKeys: 根据标签的 Key 筛选资源，该参数不配置或者数组设置为空值，则不根据标签Key进行过滤。
         :type TagKeys: list of str
+        :param _TagList: 根据标签的 Key 和 Value 筛选资源。该参数不配置或者数组设置为空值，则不根据标签进行过滤。
+        :type TagList: list of InstanceTagInfo
         """
         self._Limit = None
         self._Offset = None
@@ -2670,6 +2672,7 @@ class DescribeInstancesRequest(AbstractModel):
         self._MonitorVersion = None
         self._InstanceTags = None
         self._TagKeys = None
+        self._TagList = None
 
     @property
     def Limit(self):
@@ -2883,13 +2886,17 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def InstanceTags(self):
-        """根据标签的 Key 和 Value 筛选资源。该参数不配置或者数组设置为空值，则不根据标签进行过滤。
+        warnings.warn("parameter `InstanceTags` is deprecated", DeprecationWarning) 
+
+        """废弃字段。请使用TagList传参。
         :rtype: :class:`tencentcloud.keewidb.v20220308.models.InstanceTagInfo`
         """
         return self._InstanceTags
 
     @InstanceTags.setter
     def InstanceTags(self, InstanceTags):
+        warnings.warn("parameter `InstanceTags` is deprecated", DeprecationWarning) 
+
         self._InstanceTags = InstanceTags
 
     @property
@@ -2902,6 +2909,17 @@ class DescribeInstancesRequest(AbstractModel):
     @TagKeys.setter
     def TagKeys(self, TagKeys):
         self._TagKeys = TagKeys
+
+    @property
+    def TagList(self):
+        """根据标签的 Key 和 Value 筛选资源。该参数不配置或者数组设置为空值，则不根据标签进行过滤。
+        :rtype: list of InstanceTagInfo
+        """
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
 
 
     def _deserialize(self, params):
@@ -2928,6 +2946,12 @@ class DescribeInstancesRequest(AbstractModel):
             self._InstanceTags = InstanceTagInfo()
             self._InstanceTags._deserialize(params.get("InstanceTags"))
         self._TagKeys = params.get("TagKeys")
+        if params.get("TagList") is not None:
+            self._TagList = []
+            for item in params.get("TagList"):
+                obj = InstanceTagInfo()
+                obj._deserialize(item)
+                self._TagList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

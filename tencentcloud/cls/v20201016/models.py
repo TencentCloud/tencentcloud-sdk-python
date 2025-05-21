@@ -23891,7 +23891,9 @@ class ModifyMachineGroupRequest(AbstractModel):
         :type GroupId: str
         :param _GroupName: 机器组名称
         :type GroupName: str
-        :param _MachineGroupType: 机器组类型。Type：ip，Values中为ip字符串列表机器组；Type：label，Values中为标签字符串列表机器组。
+        :param _MachineGroupType: 机器组类型。 
+Type：ip，Values中为ip字符串列表机器组；
+Type：label，Values中为标签字符串列表机器组。
         :type MachineGroupType: :class:`tencentcloud.cls.v20201016.models.MachineGroupTypeInfo`
         :param _Tags: 标签列表
         :type Tags: list of Tag
@@ -23943,7 +23945,9 @@ class ModifyMachineGroupRequest(AbstractModel):
 
     @property
     def MachineGroupType(self):
-        """机器组类型。Type：ip，Values中为ip字符串列表机器组；Type：label，Values中为标签字符串列表机器组。
+        """机器组类型。 
+Type：ip，Values中为ip字符串列表机器组；
+Type：label，Values中为标签字符串列表机器组。
         :rtype: :class:`tencentcloud.cls.v20201016.models.MachineGroupTypeInfo`
         """
         return self._MachineGroupType
@@ -27477,6 +27481,8 @@ class ScheduledSqlTaskInfo(AbstractModel):
         :type SyntaxRule: int
         :param _HasServicesLog: 是否开启投递服务日志。1：关闭，2：开启。
         :type HasServicesLog: int
+        :param _FullQuery: 全文检索标记。1：关闭，2：打开。
+        :type FullQuery: int
         """
         self._TaskId = None
         self._Name = None
@@ -27497,6 +27503,7 @@ class ScheduledSqlTaskInfo(AbstractModel):
         self._SrcTopicRegion = None
         self._SyntaxRule = None
         self._HasServicesLog = None
+        self._FullQuery = None
 
     @property
     def TaskId(self):
@@ -27709,6 +27716,17 @@ class ScheduledSqlTaskInfo(AbstractModel):
     def HasServicesLog(self, HasServicesLog):
         self._HasServicesLog = HasServicesLog
 
+    @property
+    def FullQuery(self):
+        """全文检索标记。1：关闭，2：打开。
+        :rtype: int
+        """
+        return self._FullQuery
+
+    @FullQuery.setter
+    def FullQuery(self, FullQuery):
+        self._FullQuery = FullQuery
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -27732,6 +27750,7 @@ class ScheduledSqlTaskInfo(AbstractModel):
         self._SrcTopicRegion = params.get("SrcTopicRegion")
         self._SyntaxRule = params.get("SyntaxRule")
         self._HasServicesLog = params.get("HasServicesLog")
+        self._FullQuery = params.get("FullQuery")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

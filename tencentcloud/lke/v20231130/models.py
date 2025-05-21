@@ -6823,10 +6823,6 @@ class DescribeDocResponse(AbstractModel):
         :type AttrLabels: list of AttrLabel
         :param _CateBizId: 分类ID
         :type CateBizId: str
-        :param _CustomerKnowledgeId: 文档的用户自定义ID
-        :type CustomerKnowledgeId: str
-        :param _AttributeFlags: 文档的属性标记，0: 不做用户外部权限校验
-        :type AttributeFlags: list of int non-negative
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -6854,8 +6850,6 @@ class DescribeDocResponse(AbstractModel):
         self._AttrRange = None
         self._AttrLabels = None
         self._CateBizId = None
-        self._CustomerKnowledgeId = None
-        self._AttributeFlags = None
         self._RequestId = None
 
     @property
@@ -7123,28 +7117,6 @@ class DescribeDocResponse(AbstractModel):
         self._CateBizId = CateBizId
 
     @property
-    def CustomerKnowledgeId(self):
-        """文档的用户自定义ID
-        :rtype: str
-        """
-        return self._CustomerKnowledgeId
-
-    @CustomerKnowledgeId.setter
-    def CustomerKnowledgeId(self, CustomerKnowledgeId):
-        self._CustomerKnowledgeId = CustomerKnowledgeId
-
-    @property
-    def AttributeFlags(self):
-        """文档的属性标记，0: 不做用户外部权限校验
-        :rtype: list of int non-negative
-        """
-        return self._AttributeFlags
-
-    @AttributeFlags.setter
-    def AttributeFlags(self, AttributeFlags):
-        self._AttributeFlags = AttributeFlags
-
-    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -7186,8 +7158,6 @@ class DescribeDocResponse(AbstractModel):
                 obj._deserialize(item)
                 self._AttrLabels.append(obj)
         self._CateBizId = params.get("CateBizId")
-        self._CustomerKnowledgeId = params.get("CustomerKnowledgeId")
-        self._AttributeFlags = params.get("AttributeFlags")
         self._RequestId = params.get("RequestId")
 
 
@@ -20201,10 +20171,6 @@ class ModifyDocRequest(AbstractModel):
         :type ExpireEnd: str
         :param _CateBizId: 分类ID
         :type CateBizId: str
-        :param _CustomerKnowledgeId: 文档的用户自定义ID
-        :type CustomerKnowledgeId: str
-        :param _AttributeFlags: 文档的属性标记，0: 不做用户外部权限校验
-        :type AttributeFlags: list of int non-negative
         """
         self._BotBizId = None
         self._DocBizId = None
@@ -20218,8 +20184,6 @@ class ModifyDocRequest(AbstractModel):
         self._ExpireStart = None
         self._ExpireEnd = None
         self._CateBizId = None
-        self._CustomerKnowledgeId = None
-        self._AttributeFlags = None
 
     @property
     def BotBizId(self):
@@ -20354,28 +20318,6 @@ class ModifyDocRequest(AbstractModel):
     def CateBizId(self, CateBizId):
         self._CateBizId = CateBizId
 
-    @property
-    def CustomerKnowledgeId(self):
-        """文档的用户自定义ID
-        :rtype: str
-        """
-        return self._CustomerKnowledgeId
-
-    @CustomerKnowledgeId.setter
-    def CustomerKnowledgeId(self, CustomerKnowledgeId):
-        self._CustomerKnowledgeId = CustomerKnowledgeId
-
-    @property
-    def AttributeFlags(self):
-        """文档的属性标记，0: 不做用户外部权限校验
-        :rtype: list of int non-negative
-        """
-        return self._AttributeFlags
-
-    @AttributeFlags.setter
-    def AttributeFlags(self, AttributeFlags):
-        self._AttributeFlags = AttributeFlags
-
 
     def _deserialize(self, params):
         self._BotBizId = params.get("BotBizId")
@@ -20395,8 +20337,6 @@ class ModifyDocRequest(AbstractModel):
         self._ExpireStart = params.get("ExpireStart")
         self._ExpireEnd = params.get("ExpireEnd")
         self._CateBizId = params.get("CateBizId")
-        self._CustomerKnowledgeId = params.get("CustomerKnowledgeId")
-        self._AttributeFlags = params.get("AttributeFlags")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25078,10 +25018,6 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
         :type Opt: int
         :param _CateBizId: 分类ID
         :type CateBizId: str
-        :param _CustomerKnowledgeId: 文档的用户自定义ID
-        :type CustomerKnowledgeId: str
-        :param _AttributeFlags: 文档的属性标记，0: 不做用户外部权限校验
-        :type AttributeFlags: list of int non-negative
         """
         self._BotBizId = None
         self._FileName = None
@@ -25100,8 +25036,6 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
         self._IsRefer = None
         self._Opt = None
         self._CateBizId = None
-        self._CustomerKnowledgeId = None
-        self._AttributeFlags = None
 
     @property
     def BotBizId(self):
@@ -25300,28 +25234,6 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
     def CateBizId(self, CateBizId):
         self._CateBizId = CateBizId
 
-    @property
-    def CustomerKnowledgeId(self):
-        """文档的用户自定义ID
-        :rtype: str
-        """
-        return self._CustomerKnowledgeId
-
-    @CustomerKnowledgeId.setter
-    def CustomerKnowledgeId(self, CustomerKnowledgeId):
-        self._CustomerKnowledgeId = CustomerKnowledgeId
-
-    @property
-    def AttributeFlags(self):
-        """文档的属性标记，0: 不做用户外部权限校验
-        :rtype: list of int non-negative
-        """
-        return self._AttributeFlags
-
-    @AttributeFlags.setter
-    def AttributeFlags(self, AttributeFlags):
-        self._AttributeFlags = AttributeFlags
-
 
     def _deserialize(self, params):
         self._BotBizId = params.get("BotBizId")
@@ -25346,8 +25258,6 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
         self._IsRefer = params.get("IsRefer")
         self._Opt = params.get("Opt")
         self._CateBizId = params.get("CateBizId")
-        self._CustomerKnowledgeId = params.get("CustomerKnowledgeId")
-        self._AttributeFlags = params.get("AttributeFlags")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

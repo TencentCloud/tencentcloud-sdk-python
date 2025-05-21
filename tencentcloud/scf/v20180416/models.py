@@ -6728,7 +6728,7 @@ class ImageConfig(AbstractModel):
         :param _RegistryId: 用于企业版TCR获取镜像拉取临时凭证，ImageType为"enterprise"时必填
 注意：此字段可能返回 null，表示取不到有效值。
         :type RegistryId: str
-        :param _EntryPoint: 参数已废弃
+        :param _EntryPoint: 该参数即将下线，不推荐用户使用
 注意：此字段可能返回 null，表示取不到有效值。
         :type EntryPoint: str
         :param _Command: 容器的启动命令。该参数为可选参数，如果不填写，则默认使用 Dockerfile 中的 Entrypoint。传入规范，填写可运行的指令，例如 python
@@ -6794,7 +6794,7 @@ Job 镜像：-1
 
     @property
     def EntryPoint(self):
-        """参数已废弃
+        """该参数即将下线，不推荐用户使用
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11238,7 +11238,7 @@ class Result(AbstractModel):
         :type BillDuration: int
         :param _FunctionRequestId: 此次函数执行的Id
         :type FunctionRequestId: str
-        :param _InvokeResult: 请求 Invoke 接口，该参数已弃用。请求 InvokeFunction 接口，该参数值为请求执行[状态码](https://cloud.tencent.com/document/product/583/42611)。
+        :param _InvokeResult: 该参数不再维护，不推荐用户继续使用。
         :type InvokeResult: int
         """
         self._Log = None
@@ -11329,7 +11329,7 @@ class Result(AbstractModel):
 
     @property
     def InvokeResult(self):
-        """请求 Invoke 接口，该参数已弃用。请求 InvokeFunction 接口，该参数值为请求执行[状态码](https://cloud.tencent.com/document/product/583/42611)。
+        """该参数不再维护，不推荐用户继续使用。
         :rtype: int
         """
         return self._InvokeResult

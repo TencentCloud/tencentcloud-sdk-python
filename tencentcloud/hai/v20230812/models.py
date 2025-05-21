@@ -1895,7 +1895,7 @@ DISABLE_NOTIFY_AND_MANUAL_RENEW：表示明确不自动续费(用户设置)
 默认值：NOTIFY_AND_MANUAL_RENEW
 
         :type RenewFlag: str
-        :param _TimeUnit: 时长单位，默认值MONTH
+        :param _TimeUnit: 时长单位，枚举： MONTH, DAY, HOUR；释义：月，日，小时
         :type TimeUnit: str
         """
         self._Period = None
@@ -1931,7 +1931,7 @@ DISABLE_NOTIFY_AND_MANUAL_RENEW：表示明确不自动续费(用户设置)
 
     @property
     def TimeUnit(self):
-        """时长单位，默认值MONTH
+        """时长单位，枚举： MONTH, DAY, HOUR；释义：月，日，小时
         :rtype: str
         """
         return self._TimeUnit
@@ -1962,9 +1962,9 @@ class ItemPrice(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UnitPrice: 原单价
+        :param _UnitPrice: 原单价，元
         :type UnitPrice: float
-        :param _DiscountUnitPrice: 折扣后单价
+        :param _DiscountUnitPrice: 折扣后单价，元
         :type DiscountUnitPrice: float
         :param _Discount: 折扣
         :type Discount: float
@@ -1982,7 +1982,7 @@ class ItemPrice(AbstractModel):
 
     @property
     def UnitPrice(self):
-        """原单价
+        """原单价，元
         :rtype: float
         """
         return self._UnitPrice
@@ -1993,7 +1993,7 @@ class ItemPrice(AbstractModel):
 
     @property
     def DiscountUnitPrice(self):
-        """折扣后单价
+        """折扣后单价，元
         :rtype: float
         """
         return self._DiscountUnitPrice

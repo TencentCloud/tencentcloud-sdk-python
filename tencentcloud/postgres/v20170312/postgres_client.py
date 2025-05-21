@@ -2390,31 +2390,6 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def UpgradeDBInstance(self, request):
-        """早期接口，不规范，已提供新接口 ModifyDBInstanceSpec 替换
-
-        本接口（UpgradeDBInstance）用于升级实例配置。本接口已废弃，推荐使用接口[ModifyDBInstanceSpec](https://cloud.tencent.com/document/api/409/63689)替代。
-
-        :param request: Request instance for UpgradeDBInstance.
-        :type request: :class:`tencentcloud.postgres.v20170312.models.UpgradeDBInstanceRequest`
-        :rtype: :class:`tencentcloud.postgres.v20170312.models.UpgradeDBInstanceResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("UpgradeDBInstance", params, headers=headers)
-            response = json.loads(body)
-            model = models.UpgradeDBInstanceResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def UpgradeDBInstanceKernelVersion(self, request):
         """本接口（UpgradeDBInstanceKernelVersion）用于升级实例的内核版本号。
 

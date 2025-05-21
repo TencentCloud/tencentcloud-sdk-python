@@ -12727,11 +12727,14 @@ class ReduceInstanceRequest(AbstractModel):
         :type Type: str
         :param _HaType: 缩容后集群高可用类型：0：非高可用，1：读高可用，2：读写高可用。
         :type HaType: int
+        :param _CheckAuth: 前端鉴权使用
+        :type CheckAuth: bool
         """
         self._InstanceId = None
         self._DelHosts = None
         self._Type = None
         self._HaType = None
+        self._CheckAuth = None
 
     @property
     def InstanceId(self):
@@ -12777,12 +12780,24 @@ class ReduceInstanceRequest(AbstractModel):
     def HaType(self, HaType):
         self._HaType = HaType
 
+    @property
+    def CheckAuth(self):
+        """前端鉴权使用
+        :rtype: bool
+        """
+        return self._CheckAuth
+
+    @CheckAuth.setter
+    def CheckAuth(self, CheckAuth):
+        self._CheckAuth = CheckAuth
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._DelHosts = params.get("DelHosts")
         self._Type = params.get("Type")
         self._HaType = params.get("HaType")
+        self._CheckAuth = params.get("CheckAuth")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14071,11 +14086,14 @@ class ScaleOutInstanceRequest(AbstractModel):
         :type NodeCount: int
         :param _HaType: 扩容后集群高可用类型：0：非高可用，1：读高可用，2：读写高可用。
         :type HaType: int
+        :param _CheckAuth: 前端鉴权使用
+        :type CheckAuth: bool
         """
         self._InstanceId = None
         self._Type = None
         self._NodeCount = None
         self._HaType = None
+        self._CheckAuth = None
 
     @property
     def InstanceId(self):
@@ -14121,12 +14139,24 @@ class ScaleOutInstanceRequest(AbstractModel):
     def HaType(self, HaType):
         self._HaType = HaType
 
+    @property
+    def CheckAuth(self):
+        """前端鉴权使用
+        :rtype: bool
+        """
+        return self._CheckAuth
+
+    @CheckAuth.setter
+    def CheckAuth(self, CheckAuth):
+        self._CheckAuth = CheckAuth
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._Type = params.get("Type")
         self._NodeCount = params.get("NodeCount")
         self._HaType = params.get("HaType")
+        self._CheckAuth = params.get("CheckAuth")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14221,12 +14251,18 @@ class ScaleUpInstanceRequest(AbstractModel):
         :type InstanceId: str
         :param _SpecName: 节点规格
         :type SpecName: str
-        :param _Type: 角色（MATER/CORE），MASTER 对应 FE，CORE对应BE
+        :param _Type: 角色（MASTER/CORE），MASTER 对应 FE，CORE对应BE
         :type Type: str
+        :param _CheckAuth: 前端鉴权使用，后端API调用传false，传true不会执行变配
+        :type CheckAuth: bool
+        :param _RollingRestart: 是否滚动重启
+        :type RollingRestart: bool
         """
         self._InstanceId = None
         self._SpecName = None
         self._Type = None
+        self._CheckAuth = None
+        self._RollingRestart = None
 
     @property
     def InstanceId(self):
@@ -14252,7 +14288,7 @@ class ScaleUpInstanceRequest(AbstractModel):
 
     @property
     def Type(self):
-        """角色（MATER/CORE），MASTER 对应 FE，CORE对应BE
+        """角色（MASTER/CORE），MASTER 对应 FE，CORE对应BE
         :rtype: str
         """
         return self._Type
@@ -14261,11 +14297,35 @@ class ScaleUpInstanceRequest(AbstractModel):
     def Type(self, Type):
         self._Type = Type
 
+    @property
+    def CheckAuth(self):
+        """前端鉴权使用，后端API调用传false，传true不会执行变配
+        :rtype: bool
+        """
+        return self._CheckAuth
+
+    @CheckAuth.setter
+    def CheckAuth(self, CheckAuth):
+        self._CheckAuth = CheckAuth
+
+    @property
+    def RollingRestart(self):
+        """是否滚动重启
+        :rtype: bool
+        """
+        return self._RollingRestart
+
+    @RollingRestart.setter
+    def RollingRestart(self, RollingRestart):
+        self._RollingRestart = RollingRestart
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._SpecName = params.get("SpecName")
         self._Type = params.get("Type")
+        self._CheckAuth = params.get("CheckAuth")
+        self._RollingRestart = params.get("RollingRestart")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

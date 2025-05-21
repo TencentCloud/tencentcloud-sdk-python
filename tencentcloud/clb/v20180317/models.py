@@ -5926,7 +5926,11 @@ class DeleteLoadBalancerRequest(AbstractModel):
         :param _LoadBalancerIds: 要删除的负载均衡实例 ID 数组，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取，数组大小最大支持20。
         :type LoadBalancerIds: list of str
         :param _ForceDelete: 是否强制删除clb。True表示强制删除，False表示不是强制删除，需要做拦截校验。
-默认为 False
+默认为 False。
+以下几种情况会默认拦截删除操作，如果确认强制删除则需要传强制校验参数ForceDelete为True。
+1、删除后端绑定大于等于 20 个 RS 的实例时。
+2、删除后端有 RS 且 5 分钟 内“出/入带宽”峰值取大 > 10Mbps 的实例时。
+3、单地域内 5 分钟 内删除大于等于 30 个实例时。
         :type ForceDelete: bool
         """
         self._LoadBalancerIds = None
@@ -5946,7 +5950,11 @@ class DeleteLoadBalancerRequest(AbstractModel):
     @property
     def ForceDelete(self):
         """是否强制删除clb。True表示强制删除，False表示不是强制删除，需要做拦截校验。
-默认为 False
+默认为 False。
+以下几种情况会默认拦截删除操作，如果确认强制删除则需要传强制校验参数ForceDelete为True。
+1、删除后端绑定大于等于 20 个 RS 的实例时。
+2、删除后端有 RS 且 5 分钟 内“出/入带宽”峰值取大 > 10Mbps 的实例时。
+3、单地域内 5 分钟 内删除大于等于 30 个实例时。
         :rtype: bool
         """
         return self._ForceDelete

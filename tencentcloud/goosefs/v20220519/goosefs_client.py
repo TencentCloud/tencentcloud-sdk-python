@@ -164,6 +164,29 @@ class GoosefsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateFileset(self, request):
+        """创建Fileset
+
+        :param request: Request instance for CreateFileset.
+        :type request: :class:`tencentcloud.goosefs.v20220519.models.CreateFilesetRequest`
+        :rtype: :class:`tencentcloud.goosefs.v20220519.models.CreateFilesetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateFileset", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateFilesetResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteCrossVpcSubnetSupportForClientNode(self, request):
         """为客户端节点删除跨vpc子网访问能力
 
@@ -201,6 +224,29 @@ class GoosefsClient(AbstractClient):
             body = self.call("DeleteFileSystem", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteFileSystemResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteFileset(self, request):
+        """删除Fileset
+
+        :param request: Request instance for DeleteFileset.
+        :type request: :class:`tencentcloud.goosefs.v20220519.models.DeleteFilesetRequest`
+        :rtype: :class:`tencentcloud.goosefs.v20220519.models.DeleteFilesetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteFileset", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteFilesetResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -371,6 +417,52 @@ class GoosefsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeFilesetGeneralConfig(self, request):
+        """查询Fileset通用配置
+
+        :param request: Request instance for DescribeFilesetGeneralConfig.
+        :type request: :class:`tencentcloud.goosefs.v20220519.models.DescribeFilesetGeneralConfigRequest`
+        :rtype: :class:`tencentcloud.goosefs.v20220519.models.DescribeFilesetGeneralConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFilesetGeneralConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeFilesetGeneralConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeFilesets(self, request):
+        """查询Fileset列表
+
+        :param request: Request instance for DescribeFilesets.
+        :type request: :class:`tencentcloud.goosefs.v20220519.models.DescribeFilesetsRequest`
+        :rtype: :class:`tencentcloud.goosefs.v20220519.models.DescribeFilesetsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFilesets", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeFilesetsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DetachFileSystemBucket(self, request):
         """解绑文件系统与Bucket的映射
 
@@ -477,6 +569,52 @@ class GoosefsClient(AbstractClient):
             body = self.call("QueryDataRepositoryBandwidth", params, headers=headers)
             response = json.loads(body)
             model = models.QueryDataRepositoryBandwidthResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateFileset(self, request):
+        """修改FIleset
+
+        :param request: Request instance for UpdateFileset.
+        :type request: :class:`tencentcloud.goosefs.v20220519.models.UpdateFilesetRequest`
+        :rtype: :class:`tencentcloud.goosefs.v20220519.models.UpdateFilesetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateFileset", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateFilesetResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateFilesetGeneralConfig(self, request):
+        """修改Fileset通用配置
+
+        :param request: Request instance for UpdateFilesetGeneralConfig.
+        :type request: :class:`tencentcloud.goosefs.v20220519.models.UpdateFilesetGeneralConfigRequest`
+        :rtype: :class:`tencentcloud.goosefs.v20220519.models.UpdateFilesetGeneralConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateFilesetGeneralConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateFilesetGeneralConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
