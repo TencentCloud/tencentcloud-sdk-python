@@ -34061,6 +34061,8 @@ class PushQualityData(AbstractModel):
         :type Flux: float
         :param _ServerIp: 推流服务端 IP。
         :type ServerIp: str
+        :param _GopSize: 关键帧间隔 GOP ，单位：ms。
+        :type GopSize: int
         """
         self._Time = None
         self._PushDomain = None
@@ -34085,6 +34087,7 @@ class PushQualityData(AbstractModel):
         self._Bandwidth = None
         self._Flux = None
         self._ServerIp = None
+        self._GopSize = None
 
     @property
     def Time(self):
@@ -34341,6 +34344,17 @@ class PushQualityData(AbstractModel):
     def ServerIp(self, ServerIp):
         self._ServerIp = ServerIp
 
+    @property
+    def GopSize(self):
+        """关键帧间隔 GOP ，单位：ms。
+        :rtype: int
+        """
+        return self._GopSize
+
+    @GopSize.setter
+    def GopSize(self, GopSize):
+        self._GopSize = GopSize
+
 
     def _deserialize(self, params):
         self._Time = params.get("Time")
@@ -34366,6 +34380,7 @@ class PushQualityData(AbstractModel):
         self._Bandwidth = params.get("Bandwidth")
         self._Flux = params.get("Flux")
         self._ServerIp = params.get("ServerIp")
+        self._GopSize = params.get("GopSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

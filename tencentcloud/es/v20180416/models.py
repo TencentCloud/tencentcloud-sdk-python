@@ -13149,10 +13149,13 @@ class LogstashNodeInfo(AbstractModel):
         :type Ip: str
         :param _Port: 节点端口
         :type Port: int
+        :param _Zone: 节点所在zone
+        :type Zone: str
         """
         self._NodeId = None
         self._Ip = None
         self._Port = None
+        self._Zone = None
 
     @property
     def NodeId(self):
@@ -13187,11 +13190,23 @@ class LogstashNodeInfo(AbstractModel):
     def Port(self, Port):
         self._Port = Port
 
+    @property
+    def Zone(self):
+        """节点所在zone
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
 
     def _deserialize(self, params):
         self._NodeId = params.get("NodeId")
         self._Ip = params.get("Ip")
         self._Port = params.get("Port")
+        self._Zone = params.get("Zone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

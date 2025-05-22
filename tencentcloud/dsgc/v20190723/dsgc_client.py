@@ -164,31 +164,6 @@ class DsgcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CreateClassificationRule(self, request):
-        """旧版本DSGC接口下线
-
-        创建识别规则
-
-        :param request: Request instance for CreateClassificationRule.
-        :type request: :class:`tencentcloud.dsgc.v20190723.models.CreateClassificationRuleRequest`
-        :rtype: :class:`tencentcloud.dsgc.v20190723.models.CreateClassificationRuleResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateClassificationRule", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateClassificationRuleResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def CreateDSPAAssessmentRiskLevel(self, request):
         """风险项页面---创建风险等级
 
@@ -557,56 +532,6 @@ class DsgcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CreateNewClassification(self, request):
-        """旧版本DSGC接口下线
-
-        创建新分类
-
-        :param request: Request instance for CreateNewClassification.
-        :type request: :class:`tencentcloud.dsgc.v20190723.models.CreateNewClassificationRequest`
-        :rtype: :class:`tencentcloud.dsgc.v20190723.models.CreateNewClassificationResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateNewClassification", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateNewClassificationResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def CreateOrCopyStandard(self, request):
-        """旧版本DSGC接口下线
-
-        创建或复制分级分类模板
-
-        :param request: Request instance for CreateOrCopyStandard.
-        :type request: :class:`tencentcloud.dsgc.v20190723.models.CreateOrCopyStandardRequest`
-        :rtype: :class:`tencentcloud.dsgc.v20190723.models.CreateOrCopyStandardResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateOrCopyStandard", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateOrCopyStandardResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DecribeSuggestRiskLevelMatrix(self, request):
         """风险等级的定义页面-创建风险等级的时候生成的一个默认的矩阵
 
@@ -882,56 +807,6 @@ class DsgcClient(AbstractClient):
             body = self.call("DescribeCOSAssetSensitiveDistribution", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeCOSAssetSensitiveDistributionResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeClassificationInfo(self, request):
-        """旧版本DSGC接口下线
-
-        查询分类信息
-
-        :param request: Request instance for DescribeClassificationInfo.
-        :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeClassificationInfoRequest`
-        :rtype: :class:`tencentcloud.dsgc.v20190723.models.DescribeClassificationInfoResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeClassificationInfo", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeClassificationInfoResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeClassificationRuleCount(self, request):
-        """旧版本DSGC接口下线
-
-        查询标准下所有分类的识别规则数量(不算子分类下的识别规则)
-
-        :param request: Request instance for DescribeClassificationRuleCount.
-        :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeClassificationRuleCountRequest`
-        :rtype: :class:`tencentcloud.dsgc.v20190723.models.DescribeClassificationRuleCountResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeClassificationRuleCount", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeClassificationRuleCountResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2351,31 +2226,6 @@ class DsgcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeLeafClassification(self, request):
-        """旧版本DSGC接口下线
-
-        查询标准下所有叶子节点分类
-
-        :param request: Request instance for DescribeLeafClassification.
-        :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeLeafClassificationRequest`
-        :rtype: :class:`tencentcloud.dsgc.v20190723.models.DescribeLeafClassificationResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeLeafClassification", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeLeafClassificationResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeMongoAssetSensitiveDistribution(self, request):
         """数据资产报告-查询mongo 的敏感资产报告，包含（数据库资产，设敏级别数据库top10，资产详情）
 
@@ -2459,31 +2309,6 @@ class DsgcClient(AbstractClient):
             body = self.call("DescribeReportTasks", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeReportTasksResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeRuleList(self, request):
-        """旧版本DSGC接口下线
-
-        查询分类下规则列表
-
-        :param request: Request instance for DescribeRuleList.
-        :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeRuleListRequest`
-        :rtype: :class:`tencentcloud.dsgc.v20190723.models.DescribeRuleListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeRuleList", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeRuleListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2761,56 +2586,6 @@ class DsgcClient(AbstractClient):
             body = self.call("ListDSPAMetaResources", params, headers=headers)
             response = json.loads(body)
             model = models.ListDSPAMetaResourcesResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def ModifyClassificationRule(self, request):
-        """旧版本DSGC接口下线
-
-        编辑识别规则
-
-        :param request: Request instance for ModifyClassificationRule.
-        :type request: :class:`tencentcloud.dsgc.v20190723.models.ModifyClassificationRuleRequest`
-        :rtype: :class:`tencentcloud.dsgc.v20190723.models.ModifyClassificationRuleResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ModifyClassificationRule", params, headers=headers)
-            response = json.loads(body)
-            model = models.ModifyClassificationRuleResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def ModifyClassificationRuleState(self, request):
-        """旧版本DSGC接口下线
-
-        修改识别规则状态
-
-        :param request: Request instance for ModifyClassificationRuleState.
-        :type request: :class:`tencentcloud.dsgc.v20190723.models.ModifyClassificationRuleStateRequest`
-        :rtype: :class:`tencentcloud.dsgc.v20190723.models.ModifyClassificationRuleStateResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ModifyClassificationRuleState", params, headers=headers)
-            response = json.loads(body)
-            model = models.ModifyClassificationRuleStateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3142,156 +2917,6 @@ class DsgcClient(AbstractClient):
             body = self.call("ModifyDSPATaskResult", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyDSPATaskResultResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def ModifyLevelInfo(self, request):
-        """旧版本DSGC接口下线
-
-        修改敏感级别信息
-
-        :param request: Request instance for ModifyLevelInfo.
-        :type request: :class:`tencentcloud.dsgc.v20190723.models.ModifyLevelInfoRequest`
-        :rtype: :class:`tencentcloud.dsgc.v20190723.models.ModifyLevelInfoResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ModifyLevelInfo", params, headers=headers)
-            response = json.loads(body)
-            model = models.ModifyLevelInfoResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def ModifyLevelName(self, request):
-        """旧版本DSGC接口下线
-
-        修改级别名称
-
-        :param request: Request instance for ModifyLevelName.
-        :type request: :class:`tencentcloud.dsgc.v20190723.models.ModifyLevelNameRequest`
-        :rtype: :class:`tencentcloud.dsgc.v20190723.models.ModifyLevelNameResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ModifyLevelName", params, headers=headers)
-            response = json.loads(body)
-            model = models.ModifyLevelNameResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def ModifyLevelState(self, request):
-        """旧版本DSGC接口下线
-
-        开启级别或关闭级别
-
-        :param request: Request instance for ModifyLevelState.
-        :type request: :class:`tencentcloud.dsgc.v20190723.models.ModifyLevelStateRequest`
-        :rtype: :class:`tencentcloud.dsgc.v20190723.models.ModifyLevelStateResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ModifyLevelState", params, headers=headers)
-            response = json.loads(body)
-            model = models.ModifyLevelStateResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def ModifyMergeClassification(self, request):
-        """旧版本DSGC接口下线
-
-        一个分类合并到另一个分类中（分类拖拽功能）
-
-        :param request: Request instance for ModifyMergeClassification.
-        :type request: :class:`tencentcloud.dsgc.v20190723.models.ModifyMergeClassificationRequest`
-        :rtype: :class:`tencentcloud.dsgc.v20190723.models.ModifyMergeClassificationResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ModifyMergeClassification", params, headers=headers)
-            response = json.loads(body)
-            model = models.ModifyMergeClassificationResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def ModifyNewClassification(self, request):
-        """旧版本DSGC接口下线
-
-        修改分类信息
-
-        :param request: Request instance for ModifyNewClassification.
-        :type request: :class:`tencentcloud.dsgc.v20190723.models.ModifyNewClassificationRequest`
-        :rtype: :class:`tencentcloud.dsgc.v20190723.models.ModifyNewClassificationResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ModifyNewClassification", params, headers=headers)
-            response = json.loads(body)
-            model = models.ModifyNewClassificationResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def ModifyStandardInfo(self, request):
-        """旧版本DSGC接口下线
-
-        修改分级分类模板信息
-
-        :param request: Request instance for ModifyStandardInfo.
-        :type request: :class:`tencentcloud.dsgc.v20190723.models.ModifyStandardInfoRequest`
-        :rtype: :class:`tencentcloud.dsgc.v20190723.models.ModifyStandardInfoResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ModifyStandardInfo", params, headers=headers)
-            response = json.loads(body)
-            model = models.ModifyStandardInfoResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

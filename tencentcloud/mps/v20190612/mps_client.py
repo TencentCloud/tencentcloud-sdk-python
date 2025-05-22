@@ -2903,6 +2903,7 @@ class MpsClient(AbstractClient):
         """发起图片处理，功能包括：
         1. 格式转换；
         2. 图像增强；
+        3. 图像擦除;
 
         :param request: Request instance for ProcessImage.
         :type request: :class:`tencentcloud.mps.v20190612.models.ProcessImageRequest`

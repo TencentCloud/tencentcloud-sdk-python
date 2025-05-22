@@ -9062,6 +9062,7 @@ class ModifyTemplateRequest(AbstractModel):
         :param _ContactInfo: 联系人信息
         :type ContactInfo: :class:`tencentcloud.domain.v20180808.models.ContactInfo`
         :param _TemplateId: 模板ID
+可通过接口: [DescribeTemplateList](https://cloud.tencent.com/document/product/242/48940)
         :type TemplateId: str
         """
         self._CertificateInfo = None
@@ -9093,6 +9094,7 @@ class ModifyTemplateRequest(AbstractModel):
     @property
     def TemplateId(self):
         """模板ID
+可通过接口: [DescribeTemplateList](https://cloud.tencent.com/document/product/242/48940)
         :rtype: str
         """
         return self._TemplateId

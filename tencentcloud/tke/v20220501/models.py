@@ -2010,12 +2010,16 @@ class Disk(AbstractModel):
         :type FileSystem: str
         :param _MountTarget: 挂载目录
         :type MountTarget: str
+        :param _DiskId: 云盘ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskId: str
         """
         self._DiskType = None
         self._DiskSize = None
         self._AutoFormatAndMount = None
         self._FileSystem = None
         self._MountTarget = None
+        self._DiskId = None
 
     @property
     def DiskType(self):
@@ -2072,6 +2076,18 @@ class Disk(AbstractModel):
     def MountTarget(self, MountTarget):
         self._MountTarget = MountTarget
 
+    @property
+    def DiskId(self):
+        """云盘ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DiskId
+
+    @DiskId.setter
+    def DiskId(self, DiskId):
+        self._DiskId = DiskId
+
 
     def _deserialize(self, params):
         self._DiskType = params.get("DiskType")
@@ -2079,6 +2095,7 @@ class Disk(AbstractModel):
         self._AutoFormatAndMount = params.get("AutoFormatAndMount")
         self._FileSystem = params.get("FileSystem")
         self._MountTarget = params.get("MountTarget")
+        self._DiskId = params.get("DiskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

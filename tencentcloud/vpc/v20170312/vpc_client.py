@@ -3063,7 +3063,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteSecurityGroupPolicies(self, request):
-        """本接口（DeleteSecurityGroupPolicies）用于用于删除安全组规则（SecurityGroupPolicy）。
+        """本接口（DeleteSecurityGroupPolicies）用于删除安全组规则（SecurityGroupPolicy）。
         * SecurityGroupPolicySet.Version 用于指定要操作的安全组的版本。传入 Version 版本号若不等于当前安全组的最新版本，将返回失败；若不传 Version 则直接删除指定PolicyIndex的规则。
 
         :param request: Request instance for DeleteSecurityGroupPolicies.

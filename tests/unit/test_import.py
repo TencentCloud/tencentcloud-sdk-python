@@ -74,11 +74,6 @@ def test_import_antiddos():
     from tencentcloud.antiddos.v20200309 import models
 
 
-def test_import_apcas():
-    from tencentcloud.apcas.v20201127 import apcas_client
-    from tencentcloud.apcas.v20201127 import models
-
-
 def test_import_ape():
     from tencentcloud.ape.v20200513 import ape_client
     from tencentcloud.ape.v20200513 import models

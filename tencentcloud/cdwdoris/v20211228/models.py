@@ -11593,6 +11593,12 @@ class NodeInfo(AbstractModel):
         :type Zone: str
         :param _Id: Id
         :type Id: str
+        :param _RIp: RIP
+        :type RIp: str
+        :param _ComputeGroupId: 计算组ID
+        :type ComputeGroupId: str
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
         """
         self._Ip = None
         self._Status = None
@@ -11602,6 +11608,9 @@ class NodeInfo(AbstractModel):
         self._LastRestartTime = None
         self._Zone = None
         self._Id = None
+        self._RIp = None
+        self._ComputeGroupId = None
+        self._CreateTime = None
 
     @property
     def Ip(self):
@@ -11691,6 +11700,39 @@ class NodeInfo(AbstractModel):
     def Id(self, Id):
         self._Id = Id
 
+    @property
+    def RIp(self):
+        """RIP
+        :rtype: str
+        """
+        return self._RIp
+
+    @RIp.setter
+    def RIp(self, RIp):
+        self._RIp = RIp
+
+    @property
+    def ComputeGroupId(self):
+        """计算组ID
+        :rtype: str
+        """
+        return self._ComputeGroupId
+
+    @ComputeGroupId.setter
+    def ComputeGroupId(self, ComputeGroupId):
+        self._ComputeGroupId = ComputeGroupId
+
+    @property
+    def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
 
     def _deserialize(self, params):
         self._Ip = params.get("Ip")
@@ -11701,6 +11743,9 @@ class NodeInfo(AbstractModel):
         self._LastRestartTime = params.get("LastRestartTime")
         self._Zone = params.get("Zone")
         self._Id = params.get("Id")
+        self._RIp = params.get("RIp")
+        self._ComputeGroupId = params.get("ComputeGroupId")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

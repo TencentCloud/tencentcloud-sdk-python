@@ -25014,7 +25014,7 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
         :type ExpireEnd: str
         :param _IsRefer: 是否引用链接
         :type IsRefer: bool
-        :param _Opt: 文档操作类型：1：批量导入（批量导入问答对）；2:文档导入（正常导入单个文档） 默认为1  <br> 请注意，opt=1的时候请从知识引擎页面下载excel模板
+        :param _Opt: 文档操作类型：1：批量导入（批量导入问答对）；2:文档导入（正常导入单个文档） 默认为1  <br> 请注意，opt=1的时候请从腾讯云智能体开发平台页面下载excel模板
         :type Opt: int
         :param _CateBizId: 分类ID
         :type CateBizId: str
@@ -25214,7 +25214,7 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
 
     @property
     def Opt(self):
-        """文档操作类型：1：批量导入（批量导入问答对）；2:文档导入（正常导入单个文档） 默认为1  <br> 请注意，opt=1的时候请从知识引擎页面下载excel模板
+        """文档操作类型：1：批量导入（批量导入问答对）；2:文档导入（正常导入单个文档） 默认为1  <br> 请注意，opt=1的时候请从腾讯云智能体开发平台页面下载excel模板
         :rtype: int
         """
         return self._Opt

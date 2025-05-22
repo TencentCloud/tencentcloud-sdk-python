@@ -62,6 +62,9 @@ FAILEDOPERATION_GETNETSERVICEINFOERROR = 'FailedOperation.GetNetServiceInfoError
 # 查询主实例详情失败。
 FAILEDOPERATION_GETOSSINFOERROR = 'FailedOperation.GetOssInfoError'
 
+# 请求查询实例信息失败
+FAILEDOPERATION_INSTANCEQUERYERROR = 'FailedOperation.InstanceQueryError'
+
 # 账号余额不足。
 FAILEDOPERATION_INSUFFICIENTBALANCE = 'FailedOperation.InsufficientBalance'
 

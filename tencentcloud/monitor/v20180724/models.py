@@ -27862,9 +27862,9 @@ class MidQueryCondition(AbstractModel):
         r"""
         :param _Key: 维度
         :type Key: str
-        :param _Operator: 操作符，支持等于(eq)、不等于(ne)，以及in
+        :param _Operator: 操作符，支持=、in
         :type Operator: str
-        :param _Value: 维度值，当Op是eq、ne时，只使用第一个元素
+        :param _Value: 维度值，当Op是=时，只使用第一个元素
         :type Value: list of str
         """
         self._Key = None
@@ -27884,7 +27884,7 @@ class MidQueryCondition(AbstractModel):
 
     @property
     def Operator(self):
-        """操作符，支持等于(eq)、不等于(ne)，以及in
+        """操作符，支持=、in
         :rtype: str
         """
         return self._Operator
@@ -27895,7 +27895,7 @@ class MidQueryCondition(AbstractModel):
 
     @property
     def Value(self):
-        """维度值，当Op是eq、ne时，只使用第一个元素
+        """维度值，当Op是=时，只使用第一个元素
         :rtype: list of str
         """
         return self._Value

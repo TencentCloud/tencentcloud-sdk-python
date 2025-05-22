@@ -751,8 +751,11 @@ class CreateEmailIdentityRequest(AbstractModel):
         r"""
         :param _EmailIdentity: 您的发信域名，建议使用三级以上域名。例如：mail.qcloud.com。
         :type EmailIdentity: str
+        :param _DKIMOption: 生成的dkim密钥长度。0:1024，1:2048
+        :type DKIMOption: int
         """
         self._EmailIdentity = None
+        self._DKIMOption = None
 
     @property
     def EmailIdentity(self):
@@ -765,9 +768,21 @@ class CreateEmailIdentityRequest(AbstractModel):
     def EmailIdentity(self, EmailIdentity):
         self._EmailIdentity = EmailIdentity
 
+    @property
+    def DKIMOption(self):
+        """生成的dkim密钥长度。0:1024，1:2048
+        :rtype: int
+        """
+        return self._DKIMOption
+
+    @DKIMOption.setter
+    def DKIMOption(self, DKIMOption):
+        self._DKIMOption = DKIMOption
+
 
     def _deserialize(self, params):
         self._EmailIdentity = params.get("EmailIdentity")
+        self._DKIMOption = params.get("DKIMOption")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

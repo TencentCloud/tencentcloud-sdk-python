@@ -24936,7 +24936,7 @@ class FlowCreateApprover(AbstractModel):
         :type RecipientId: str
         :param _VerifyChannel: 签署意愿确认渠道，默认为WEIXINAPP:人脸识别
 
-注: <font color="red">将要废弃</font >, `用ApproverSignTypes签署人签署合同时的认证方式代替, 新客户可请用ApproverSignTypes来设置`
+注: <font color="red">不再使用</font >, `用ApproverSignTypes签署人签署合同时的认证方式代替, 新客户可请用ApproverSignTypes来设置`
         :type VerifyChannel: list of str
         :param _NotifyType: 通知签署方经办人的方式,  有以下途径:
 <ul><li>  **sms**  :  (默认)短信</li>
@@ -24960,7 +24960,7 @@ class FlowCreateApprover(AbstractModel):
 注： 
 如果传进来的<font color="red">UserId已经实名， 则忽略ApproverName，ApproverIdCardType，ApproverIdCardNumber，ApproverMobile这四个入参</font>（会用此UserId实名的身份证和登录的手机号覆盖）
         :type UserId: str
-        :param _Required: <font color="red">字段已经废弃</font>，当前只支持true，默认为true
+        :param _Required: <font color="red">字段不再使用</font>，当前只支持true，默认为true
         :type Required: bool
         :param _ApproverSource: 在企微场景下使用，需设置参数为**WEWORKAPP**，以表明合同来源于企微。
         :type ApproverSource: str
@@ -24969,7 +24969,7 @@ class FlowCreateApprover(AbstractModel):
 注意，在合同中，不同的或签参与人必须保证其CustomApproverTag唯一。
 如果或签签署人为本方企业微信参与人，则需要指定ApproverSource参数为WEWORKAPP。
         :type CustomApproverTag: str
-        :param _RegisterInfo: 已经废弃, 快速注册相关信息
+        :param _RegisterInfo: <font color="red">不再使用</font >, 快速注册相关信息
         :type RegisterInfo: :class:`tencentcloud.ess.v20201111.models.RegisterInfo`
         :param _ApproverOption: 签署人个性化能力值，如是否可以转发他人处理、是否可以拒签、是否为动态补充签署人等功能开关。
         :type ApproverOption: :class:`tencentcloud.ess.v20201111.models.ApproverOption`
@@ -25216,7 +25216,7 @@ class FlowCreateApprover(AbstractModel):
     def VerifyChannel(self):
         """签署意愿确认渠道，默认为WEIXINAPP:人脸识别
 
-注: <font color="red">将要废弃</font >, `用ApproverSignTypes签署人签署合同时的认证方式代替, 新客户可请用ApproverSignTypes来设置`
+注: <font color="red">不再使用</font >, `用ApproverSignTypes签署人签署合同时的认证方式代替, 新客户可请用ApproverSignTypes来设置`
         :rtype: list of str
         """
         return self._VerifyChannel
@@ -25285,7 +25285,7 @@ class FlowCreateApprover(AbstractModel):
 
     @property
     def Required(self):
-        """<font color="red">字段已经废弃</font>，当前只支持true，默认为true
+        """<font color="red">字段不再使用</font>，当前只支持true，默认为true
         :rtype: bool
         """
         return self._Required
@@ -25321,7 +25321,7 @@ class FlowCreateApprover(AbstractModel):
 
     @property
     def RegisterInfo(self):
-        """已经废弃, 快速注册相关信息
+        """<font color="red">不再使用</font >, 快速注册相关信息
         :rtype: :class:`tencentcloud.ess.v20201111.models.RegisterInfo`
         """
         return self._RegisterInfo

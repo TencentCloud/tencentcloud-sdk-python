@@ -10929,7 +10929,7 @@ class AsrHotwordsSet(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type HotwordsId: str
         :param _Status: 当前热词库状态，数值表示绑定该热词库的智能字幕模板数量。
-Status 为 0 ，表示该热词库没有被智能字幕模版引用可以删除；
+Status 为 0 ，表示该热词库没有被智能字幕模板引用可以删除；
 Status 不为 0，表示该热词库不能被删除。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
@@ -10977,7 +10977,7 @@ Status 不为 0，表示该热词库不能被删除。
     @property
     def Status(self):
         """当前热词库状态，数值表示绑定该热词库的智能字幕模板数量。
-Status 为 0 ，表示该热词库没有被智能字幕模版引用可以删除；
+Status 为 0 ，表示该热词库没有被智能字幕模板引用可以删除；
 Status 不为 0，表示该热词库不能被删除。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
@@ -35548,7 +35548,7 @@ class ImageAreaBoxInfo(AbstractModel):
         r"""
         :param _Type: 图片框选区域类型，可选值：
 <li>logo：图标；</li>
-<li>text：文字。</li>
+<li>text：文字；</li>
 默认值：logo。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
@@ -35556,15 +35556,21 @@ class ImageAreaBoxInfo(AbstractModel):
 示例值：[101, 85, 111, 95]
 注意：此字段可能返回 null，表示取不到有效值。
         :type AreaCoordSet: list of int
+        :param _BoundingBox: 图片框选区域坐标，[x1, y1, x2, y2]，即左上角坐标、右下角坐标， 当AreaCoordSet未指定时生效。
+- [0.1, 0.1, 0.3, 0.3] :  表示比例 （数值小于1）
+- [50, 50, 350, 280] : 表示像素 （数值大于等于1）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BoundingBox: list of float
         """
         self._Type = None
         self._AreaCoordSet = None
+        self._BoundingBox = None
 
     @property
     def Type(self):
         """图片框选区域类型，可选值：
 <li>logo：图标；</li>
-<li>text：文字。</li>
+<li>text：文字；</li>
 默认值：logo。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -35588,10 +35594,25 @@ class ImageAreaBoxInfo(AbstractModel):
     def AreaCoordSet(self, AreaCoordSet):
         self._AreaCoordSet = AreaCoordSet
 
+    @property
+    def BoundingBox(self):
+        """图片框选区域坐标，[x1, y1, x2, y2]，即左上角坐标、右下角坐标， 当AreaCoordSet未指定时生效。
+- [0.1, 0.1, 0.3, 0.3] :  表示比例 （数值小于1）
+- [50, 50, 350, 280] : 表示像素 （数值大于等于1）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of float
+        """
+        return self._BoundingBox
+
+    @BoundingBox.setter
+    def BoundingBox(self, BoundingBox):
+        self._BoundingBox = BoundingBox
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
         self._AreaCoordSet = params.get("AreaCoordSet")
+        self._BoundingBox = params.get("BoundingBox")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -44995,8 +45016,8 @@ class ModifyAsrHotwordsRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _HotwordsId: 热词库 id 
-如果热词库是文本热词：Name 和 Content 至少填一个 
-如果热词库是：Name、FileContent 和 FileName 至少填一个 
+如果热词库是临时热词：Name 和 Content 至少填一个 
+如果热词库是文件热词：Name、FileContent 和 FileName 至少填一个 
 
         :type HotwordsId: str
         :param _Name: 热词库名称
@@ -45020,8 +45041,8 @@ class ModifyAsrHotwordsRequest(AbstractModel):
     @property
     def HotwordsId(self):
         """热词库 id 
-如果热词库是文本热词：Name 和 Content 至少填一个 
-如果热词库是：Name、FileContent 和 FileName 至少填一个 
+如果热词库是临时热词：Name 和 Content 至少填一个 
+如果热词库是文件热词：Name、FileContent 和 FileName 至少填一个 
 
         :rtype: str
         """

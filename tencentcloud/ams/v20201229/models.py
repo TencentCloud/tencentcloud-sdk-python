@@ -867,7 +867,7 @@ class AudioSegments(AbstractModel):
         :param _Result: 该字段用于返回音频片段的具体审核结果，详细内容敬请参考AudioResult数据结构的描述。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.ams.v20201229.models.AudioResult`
-        :param _CreatedAt: 创建时间
+        :param _CreatedAt: 入库时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedAt: str
         """
@@ -901,7 +901,7 @@ class AudioSegments(AbstractModel):
 
     @property
     def CreatedAt(self):
-        """创建时间
+        """入库时间
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3696,10 +3696,8 @@ class TextResult(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
         :param _LibType: 自定义词库的类型，自定义词库相关的信息可登录控制台中查看；
-
 1：自定义黑白库；
-
-2：自定义库；
+2：公库；
         :type LibType: int
         :param _SubLabel: 该字段用于返回当前标签（Lable）下的二级标签。
 注意：此字段可能返回null，表示取不到有效值。
@@ -3798,10 +3796,8 @@ class TextResult(AbstractModel):
     @property
     def LibType(self):
         """自定义词库的类型，自定义词库相关的信息可登录控制台中查看；
-
 1：自定义黑白库；
-
-2：自定义库；
+2：公库；
         :rtype: int
         """
         return self._LibType

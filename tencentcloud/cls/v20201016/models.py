@@ -5124,7 +5124,7 @@ class CreateAlarmRequest(AbstractModel):
         :param _Status: 是否开启告警策略。
 默认值为true
         :type Status: bool
-        :param _Enable: 该参数已废弃，请使用Status参数控制是否开启告警策略。
+        :param _Enable: 请使用Status参数控制是否开启告警策略。
         :type Enable: bool
         :param _MessageTemplate: 用户自定义告警内容
         :type MessageTemplate: str
@@ -5297,13 +5297,17 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def Enable(self):
-        """该参数已废弃，请使用Status参数控制是否开启告警策略。
+        warnings.warn("parameter `Enable` is deprecated", DeprecationWarning) 
+
+        """请使用Status参数控制是否开启告警策略。
         :rtype: bool
         """
         return self._Enable
 
     @Enable.setter
     def Enable(self, Enable):
+        warnings.warn("parameter `Enable` is deprecated", DeprecationWarning) 
+
         self._Enable = Enable
 
     @property
@@ -5996,7 +6000,7 @@ class CreateConfigExtraRequest(AbstractModel):
         :type ContainerFile: :class:`tencentcloud.cls.v20201016.models.ContainerFileInfo`
         :param _ContainerStdout: 容器标准输出类型配置。
         :type ContainerStdout: :class:`tencentcloud.cls.v20201016.models.ContainerStdoutInfo`
-        :param _LogFormat: 日志格式化方式，用于容器采集场景。 - 已废弃
+        :param _LogFormat: 日志格式化方式，用于容器采集场景。
 - stdout-docker-json：用于docker容器采集场景
 - stdout-containerd：用于containerd容器采集场景
         :type LogFormat: str
@@ -6174,7 +6178,9 @@ class CreateConfigExtraRequest(AbstractModel):
 
     @property
     def LogFormat(self):
-        """日志格式化方式，用于容器采集场景。 - 已废弃
+        warnings.warn("parameter `LogFormat` is deprecated", DeprecationWarning) 
+
+        """日志格式化方式，用于容器采集场景。
 - stdout-docker-json：用于docker容器采集场景
 - stdout-containerd：用于containerd容器采集场景
         :rtype: str
@@ -6183,6 +6189,8 @@ class CreateConfigExtraRequest(AbstractModel):
 
     @LogFormat.setter
     def LogFormat(self, LogFormat):
+        warnings.warn("parameter `LogFormat` is deprecated", DeprecationWarning) 
+
         self._LogFormat = LogFormat
 
     @property
@@ -9838,16 +9846,16 @@ class DashboardNoticeMode(AbstractModel):
 <li/>WeCom: 企业微信回调
         :type ReceiverType: str
         :param _Values: 知方式对应的值。
-<br> <li/> 当ReceiverType不是 Wecom 时，Values必填。
+<br> <li/> 当ReceiverType不是 WeCom 时，Values必填。
         :type Values: list of str
         :param _ReceiverChannels: 仪表盘通知渠道。
 <br><li/> 支持：["Email","Sms","WeChat","Phone"]。
-<br><li/> 当ReceiverType是 Email 或 Wecom 时，ReceiverChannels不能赋值。
+<br><li/> 当ReceiverType是 Email 或 WeCom 时，ReceiverChannels不能赋值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReceiverChannels: list of str
         :param _Url: 回调Url。
-<br><li/> 当ReceiverType是 Wecom 时，Url必填。
-<br><li/> 当ReceiverType不是 Wecom 时，Url不能填写。
+<br><li/> 当ReceiverType是 WeCom 时，Url必填。
+<br><li/> 当ReceiverType不是 WeCom 时，Url不能填写。
         :type Url: str
         """
         self._ReceiverType = None
@@ -9873,7 +9881,7 @@ class DashboardNoticeMode(AbstractModel):
     @property
     def Values(self):
         """知方式对应的值。
-<br> <li/> 当ReceiverType不是 Wecom 时，Values必填。
+<br> <li/> 当ReceiverType不是 WeCom 时，Values必填。
         :rtype: list of str
         """
         return self._Values
@@ -9886,7 +9894,7 @@ class DashboardNoticeMode(AbstractModel):
     def ReceiverChannels(self):
         """仪表盘通知渠道。
 <br><li/> 支持：["Email","Sms","WeChat","Phone"]。
-<br><li/> 当ReceiverType是 Email 或 Wecom 时，ReceiverChannels不能赋值。
+<br><li/> 当ReceiverType是 Email 或 WeCom 时，ReceiverChannels不能赋值。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -9899,8 +9907,8 @@ class DashboardNoticeMode(AbstractModel):
     @property
     def Url(self):
         """回调Url。
-<br><li/> 当ReceiverType是 Wecom 时，Url必填。
-<br><li/> 当ReceiverType不是 Wecom 时，Url不能填写。
+<br><li/> 当ReceiverType是 WeCom 时，Url必填。
+<br><li/> 当ReceiverType不是 WeCom 时，Url不能填写。
         :rtype: str
         """
         return self._Url
@@ -21482,6 +21490,8 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def Enable(self):
+        warnings.warn("parameter `Enable` is deprecated", DeprecationWarning) 
+
         """该参数已废弃，请使用Status参数控制是否开启告警策略。
         :rtype: bool
         """
@@ -21489,6 +21499,8 @@ Classifications元素的Value长度不能超过200个字符。
 
     @Enable.setter
     def Enable(self, Enable):
+        warnings.warn("parameter `Enable` is deprecated", DeprecationWarning) 
+
         self._Enable = Enable
 
     @property
@@ -22019,7 +22031,7 @@ class ModifyConfigExtraRequest(AbstractModel):
 - multiline_fullregex_log代表：多行完全正则-文件日志（详见[使用多行-完全正则提取模式采集日志](https://cloud.tencent.com/document/product/614/52366)）；
 - user_define_log代表：组合解析（适用于多格式嵌套的日志，详见[使用组合解析提取模式采集日志](https://cloud.tencent.com/document/product/614/61310)）。
         :type LogType: str
-        :param _LogFormat: 日志格式化方式，用于容器采集场景。目前已经废弃
+        :param _LogFormat: 日志格式化方式，用于容器采集场景。
 - stdout-docker-json：用于docker容器采集场景
 - stdout-containerd：用于containerd容器采集场景
         :type LogFormat: str
@@ -22157,7 +22169,9 @@ class ModifyConfigExtraRequest(AbstractModel):
 
     @property
     def LogFormat(self):
-        """日志格式化方式，用于容器采集场景。目前已经废弃
+        warnings.warn("parameter `LogFormat` is deprecated", DeprecationWarning) 
+
+        """日志格式化方式，用于容器采集场景。
 - stdout-docker-json：用于docker容器采集场景
 - stdout-containerd：用于containerd容器采集场景
         :rtype: str
@@ -22166,6 +22180,8 @@ class ModifyConfigExtraRequest(AbstractModel):
 
     @LogFormat.setter
     def LogFormat(self, LogFormat):
+        warnings.warn("parameter `LogFormat` is deprecated", DeprecationWarning) 
+
         self._LogFormat = LogFormat
 
     @property
@@ -30354,6 +30370,8 @@ class WebCallback(AbstractModel):
 
     @property
     def Headers(self):
+        warnings.warn("parameter `Headers` is deprecated", DeprecationWarning) 
+
         """该参数已废弃，请使用NoticeContentId。
         :rtype: list of str
         """
@@ -30361,10 +30379,14 @@ class WebCallback(AbstractModel):
 
     @Headers.setter
     def Headers(self, Headers):
+        warnings.warn("parameter `Headers` is deprecated", DeprecationWarning) 
+
         self._Headers = Headers
 
     @property
     def Body(self):
+        warnings.warn("parameter `Body` is deprecated", DeprecationWarning) 
+
         """该参数已废弃，请使用NoticeContentId。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -30373,6 +30395,8 @@ class WebCallback(AbstractModel):
 
     @Body.setter
     def Body(self, Body):
+        warnings.warn("parameter `Body` is deprecated", DeprecationWarning) 
+
         self._Body = Body
 
     @property

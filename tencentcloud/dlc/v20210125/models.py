@@ -6090,6 +6090,8 @@ class CreateSparkAppRequest(AbstractModel):
         :type IsInherit: int
         :param _IsSessionStarted: 是否使用session脚本的sql运行任务：false：否，true：是
         :type IsSessionStarted: bool
+        :param _DependencyPackages: 依赖包信息
+        :type DependencyPackages: list of DependencyPackage
         """
         self._AppName = None
         self._AppType = None
@@ -6120,6 +6122,7 @@ class CreateSparkAppRequest(AbstractModel):
         self._SessionId = None
         self._IsInherit = None
         self._IsSessionStarted = None
+        self._DependencyPackages = None
 
     @property
     def AppName(self):
@@ -6440,6 +6443,17 @@ class CreateSparkAppRequest(AbstractModel):
     def IsSessionStarted(self, IsSessionStarted):
         self._IsSessionStarted = IsSessionStarted
 
+    @property
+    def DependencyPackages(self):
+        """依赖包信息
+        :rtype: list of DependencyPackage
+        """
+        return self._DependencyPackages
+
+    @DependencyPackages.setter
+    def DependencyPackages(self, DependencyPackages):
+        self._DependencyPackages = DependencyPackages
+
 
     def _deserialize(self, params):
         self._AppName = params.get("AppName")
@@ -6471,6 +6485,12 @@ class CreateSparkAppRequest(AbstractModel):
         self._SessionId = params.get("SessionId")
         self._IsInherit = params.get("IsInherit")
         self._IsSessionStarted = params.get("IsSessionStarted")
+        if params.get("DependencyPackages") is not None:
+            self._DependencyPackages = []
+            for item in params.get("DependencyPackages"):
+                obj = DependencyPackage()
+                obj._deserialize(item)
+                self._DependencyPackages.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12994,6 +13014,163 @@ class DeleteWorkGroupResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class DependencyPackage(AbstractModel):
+    """任务依赖包信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PackageSource: 依赖包类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PackageSource: str
+        :param _MavenPackage: 依赖包信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MavenPackage: str
+        :param _MavenRepository: 依赖包仓库
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MavenRepository: str
+        :param _MavenExclusion: maven包exclusion信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MavenExclusion: str
+        :param _PypiPackage: pypi包信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PypiPackage: str
+        :param _PypiIndexUrl: pypi索引地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PypiIndexUrl: str
+        :param _PackageType: 文件包的类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PackageType: str
+        :param _PackagePath: 文件包的路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PackagePath: str
+        """
+        self._PackageSource = None
+        self._MavenPackage = None
+        self._MavenRepository = None
+        self._MavenExclusion = None
+        self._PypiPackage = None
+        self._PypiIndexUrl = None
+        self._PackageType = None
+        self._PackagePath = None
+
+    @property
+    def PackageSource(self):
+        """依赖包类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PackageSource
+
+    @PackageSource.setter
+    def PackageSource(self, PackageSource):
+        self._PackageSource = PackageSource
+
+    @property
+    def MavenPackage(self):
+        """依赖包信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MavenPackage
+
+    @MavenPackage.setter
+    def MavenPackage(self, MavenPackage):
+        self._MavenPackage = MavenPackage
+
+    @property
+    def MavenRepository(self):
+        """依赖包仓库
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MavenRepository
+
+    @MavenRepository.setter
+    def MavenRepository(self, MavenRepository):
+        self._MavenRepository = MavenRepository
+
+    @property
+    def MavenExclusion(self):
+        """maven包exclusion信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MavenExclusion
+
+    @MavenExclusion.setter
+    def MavenExclusion(self, MavenExclusion):
+        self._MavenExclusion = MavenExclusion
+
+    @property
+    def PypiPackage(self):
+        """pypi包信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PypiPackage
+
+    @PypiPackage.setter
+    def PypiPackage(self, PypiPackage):
+        self._PypiPackage = PypiPackage
+
+    @property
+    def PypiIndexUrl(self):
+        """pypi索引地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PypiIndexUrl
+
+    @PypiIndexUrl.setter
+    def PypiIndexUrl(self, PypiIndexUrl):
+        self._PypiIndexUrl = PypiIndexUrl
+
+    @property
+    def PackageType(self):
+        """文件包的类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PackageType
+
+    @PackageType.setter
+    def PackageType(self, PackageType):
+        self._PackageType = PackageType
+
+    @property
+    def PackagePath(self):
+        """文件包的路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PackagePath
+
+    @PackagePath.setter
+    def PackagePath(self, PackagePath):
+        self._PackagePath = PackagePath
+
+
+    def _deserialize(self, params):
+        self._PackageSource = params.get("PackageSource")
+        self._MavenPackage = params.get("MavenPackage")
+        self._MavenRepository = params.get("MavenRepository")
+        self._MavenExclusion = params.get("MavenExclusion")
+        self._PypiPackage = params.get("PypiPackage")
+        self._PypiIndexUrl = params.get("PypiIndexUrl")
+        self._PackageType = params.get("PackageType")
+        self._PackagePath = params.get("PackagePath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeAdvancedStoreLocationRequest(AbstractModel):
@@ -25335,6 +25512,8 @@ class ModifySparkAppRequest(AbstractModel):
         :type IsInherit: int
         :param _IsSessionStarted: 是否使用session脚本的sql运行任务：false：否，true：是
         :type IsSessionStarted: bool
+        :param _DependencyPackages: 标准引擎依赖包
+        :type DependencyPackages: list of DependencyPackage
         """
         self._AppName = None
         self._AppType = None
@@ -25366,6 +25545,7 @@ class ModifySparkAppRequest(AbstractModel):
         self._SessionId = None
         self._IsInherit = None
         self._IsSessionStarted = None
+        self._DependencyPackages = None
 
     @property
     def AppName(self):
@@ -25697,6 +25877,17 @@ class ModifySparkAppRequest(AbstractModel):
     def IsSessionStarted(self, IsSessionStarted):
         self._IsSessionStarted = IsSessionStarted
 
+    @property
+    def DependencyPackages(self):
+        """标准引擎依赖包
+        :rtype: list of DependencyPackage
+        """
+        return self._DependencyPackages
+
+    @DependencyPackages.setter
+    def DependencyPackages(self, DependencyPackages):
+        self._DependencyPackages = DependencyPackages
+
 
     def _deserialize(self, params):
         self._AppName = params.get("AppName")
@@ -25729,6 +25920,12 @@ class ModifySparkAppRequest(AbstractModel):
         self._SessionId = params.get("SessionId")
         self._IsInherit = params.get("IsInherit")
         self._IsSessionStarted = params.get("IsSessionStarted")
+        if params.get("DependencyPackages") is not None:
+            self._DependencyPackages = []
+            for item in params.get("DependencyPackages"):
+                obj = DependencyPackage()
+                obj._deserialize(item)
+                self._DependencyPackages.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
