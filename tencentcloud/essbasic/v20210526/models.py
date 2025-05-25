@@ -856,6 +856,9 @@ class AutoSignConfig(AbstractModel):
         :param _CertInfoCallback: 是否回调证书信息:
 <ul><li>**false**: 不需要(默认)</li>
 <li>**true**:需要</li></ul>
+
+
+注：`该字段已经失效，请勿设置此参数。`
         :type CertInfoCallback: bool
         :param _UserDefineSeal: 是否支持用户自定义签名印章:
 <ul><li>**false**: 不能自己定义(默认)</li>
@@ -869,7 +872,7 @@ class AutoSignConfig(AbstractModel):
         :type CallbackUrl: str
         :param _VerifyChannels: 开通时候的身份验证方式, 取值为：
 <ul><li>**WEIXINAPP** : 微信人脸识别</li>
-<li>**INSIGHT** : 慧眼人脸认别</li>
+<li>**INSIGHT** : 慧眼人脸识别</li>
 <li>**TELECOM** : 运营商三要素验证</li></ul>
 注：
 <ul><li>如果是小程序开通链接，支持传 WEIXINAPP / TELECOM。为空默认 WEIXINAPP</li>
@@ -878,6 +881,8 @@ class AutoSignConfig(AbstractModel):
         :param _LicenseType: 设置用户开通自动签时是否绑定个人自动签账号许可。
 
 <ul><li><b>1</b>: (默认)不绑定自动签账号许可开通，开通后一直有效,   后续使用合同份额进行合同发起</li></ul>
+
+注：`该字段已经失效，请勿设置此参数。`
         :type LicenseType: int
         :param _JumpUrl: 开通成功后前端页面跳转的url，此字段的用法场景请联系客户经理确认。
 
@@ -916,6 +921,9 @@ class AutoSignConfig(AbstractModel):
         """是否回调证书信息:
 <ul><li>**false**: 不需要(默认)</li>
 <li>**true**:需要</li></ul>
+
+
+注：`该字段已经失效，请勿设置此参数。`
         :rtype: bool
         """
         return self._CertInfoCallback
@@ -969,7 +977,7 @@ class AutoSignConfig(AbstractModel):
     def VerifyChannels(self):
         """开通时候的身份验证方式, 取值为：
 <ul><li>**WEIXINAPP** : 微信人脸识别</li>
-<li>**INSIGHT** : 慧眼人脸认别</li>
+<li>**INSIGHT** : 慧眼人脸识别</li>
 <li>**TELECOM** : 运营商三要素验证</li></ul>
 注：
 <ul><li>如果是小程序开通链接，支持传 WEIXINAPP / TELECOM。为空默认 WEIXINAPP</li>
@@ -987,6 +995,8 @@ class AutoSignConfig(AbstractModel):
         """设置用户开通自动签时是否绑定个人自动签账号许可。
 
 <ul><li><b>1</b>: (默认)不绑定自动签账号许可开通，开通后一直有效,   后续使用合同份额进行合同发起</li></ul>
+
+注：`该字段已经失效，请勿设置此参数。`
         :rtype: int
         """
         return self._LicenseType
@@ -4360,6 +4370,8 @@ class ChannelCreateFlowByFilesRequest(AbstractModel):
 <li>数字控件</li>
 <li>图片控件</li>
 <li>数据表格等填写控件</li></ul>
+
+![image](https://qcloudimg.tencent-cloud.cn/raw/e004195ee4cb98a7f9bc12eb4a0a0b77.png)
         :type Components: list of Component
         :param _Deadline: 合同流程的签署截止时间，格式为Unix标准时间戳（秒），如果未设置签署截止时间，则默认为合同流程创建后的365天时截止。
 如果在签署截止时间前未完成签署，则合同状态会变为已过期，导致合同作废。
@@ -4548,6 +4560,8 @@ MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverM
 <li>数字控件</li>
 <li>图片控件</li>
 <li>数据表格等填写控件</li></ul>
+
+![image](https://qcloudimg.tencent-cloud.cn/raw/e004195ee4cb98a7f9bc12eb4a0a0b77.png)
         :rtype: list of Component
         """
         return self._Components
@@ -21796,6 +21810,8 @@ class FlowApproverInfo(AbstractModel):
         :param _CallbackUrl: 签署完回调url，最大长度1000个字符
         :type CallbackUrl: str
         :param _SignComponents: 使用PDF文件直接发起合同时，签署人指定的签署控件；<br/>使用模板发起合同时，指定本企业印章签署控件的印章ID: <br/>通过ComponentId或ComponenetName指定签署控件，ComponentValue为印章ID。
+
+![image](https://qcloudimg.tencent-cloud.cn/raw/91757a7f9188ccf3057a4a8979cf3f93.png)
         :type SignComponents: list of Component
         :param _ComponentLimitType: 当签署方控件类型为 <b>SIGN_SIGNATURE</b> 时，可以指定签署方签名方式。如果不指定，签署人可以使用所有的签名类型，可指定的签名类型包括：
 
@@ -21892,8 +21908,9 @@ class FlowApproverInfo(AbstractModel):
 
 具体使用说明可参考[为签署方指定填写控件](https://qian.tencent.cn/developers/partner/createFlowByFiles#为签署方指定填写控件)
 
-
 注：`此参数仅在通过文件发起合同或者合同组时生效`
+
+![image](https://qcloudimg.tencent-cloud.cn/raw/e004195ee4cb98a7f9bc12eb4a0a0b77.png)
         :type Components: list of Component
         :param _Intention: <b>只有在生成H5签署链接的情形下</b>（ 如调用<a href="https://qian.tencent.com/developers/partnerApis/operateFlows/ChannelCreateFlowSignUrl" target="_blank">获取H5签署链接</a>、<a href="https://qian.tencent.com/developers/partnerApis/operateFlows/ChannelCreateBatchQuickSignUrl" target="_blank">获取H5批量签署链接</a>等接口），该配置才会生效。
 
@@ -22112,6 +22129,8 @@ class FlowApproverInfo(AbstractModel):
     @property
     def SignComponents(self):
         """使用PDF文件直接发起合同时，签署人指定的签署控件；<br/>使用模板发起合同时，指定本企业印章签署控件的印章ID: <br/>通过ComponentId或ComponenetName指定签署控件，ComponentValue为印章ID。
+
+![image](https://qcloudimg.tencent-cloud.cn/raw/91757a7f9188ccf3057a4a8979cf3f93.png)
         :rtype: list of Component
         """
         return self._SignComponents
@@ -22325,8 +22344,9 @@ class FlowApproverInfo(AbstractModel):
 
 具体使用说明可参考[为签署方指定填写控件](https://qian.tencent.cn/developers/partner/createFlowByFiles#为签署方指定填写控件)
 
-
 注：`此参数仅在通过文件发起合同或者合同组时生效`
+
+![image](https://qcloudimg.tencent-cloud.cn/raw/e004195ee4cb98a7f9bc12eb4a0a0b77.png)
         :rtype: list of Component
         """
         return self._Components

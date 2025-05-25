@@ -22117,6 +22117,8 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
         :param _SubUinName: 任务创建者名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubUinName: str
+        :param _AppId: 任务AppId
+        :type AppId: str
         """
         self._Id = None
         self._Name = None
@@ -22144,6 +22146,7 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
         self._CallbackUrl = None
         self._SubUin = None
         self._SubUinName = None
+        self._AppId = None
 
     @property
     def Id(self):
@@ -22447,6 +22450,17 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
     def SubUinName(self, SubUinName):
         self._SubUinName = SubUinName
 
+    @property
+    def AppId(self):
+        """任务AppId
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -22489,6 +22503,7 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
         self._CallbackUrl = params.get("CallbackUrl")
         self._SubUin = params.get("SubUin")
         self._SubUinName = params.get("SubUinName")
+        self._AppId = params.get("AppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -10056,12 +10056,15 @@ class RecognizeConfig(AbstractModel):
         :type TranslationLanguage: str
         :param _HotWordList: 热词表：该参数用于提升识别准确率。 单个热词限制："热词|权重"，单个热词不超过30个字符（最多10个汉字），权重[1-11]或者100，如：“腾讯云|5” 或 “ASR|11”； 热词表限制：多个热词用英文逗号分割，最多支持300个热词，如：“腾讯云|10,语音识别|5,ASR|11”；
         :type HotWordList: str
+        :param _VadSilenceTime: 语音识别vad的时间，范围为240-2000，默认为1000，单位为ms。更小的值会让语音识别分句更快。
+        :type VadSilenceTime: int
         """
         self._Language = None
         self._AlternativeLanguage = None
         self._Model = None
         self._TranslationLanguage = None
         self._HotWordList = None
+        self._VadSilenceTime = None
 
     @property
     def Language(self):
@@ -10191,6 +10194,17 @@ class RecognizeConfig(AbstractModel):
     def HotWordList(self, HotWordList):
         self._HotWordList = HotWordList
 
+    @property
+    def VadSilenceTime(self):
+        """语音识别vad的时间，范围为240-2000，默认为1000，单位为ms。更小的值会让语音识别分句更快。
+        :rtype: int
+        """
+        return self._VadSilenceTime
+
+    @VadSilenceTime.setter
+    def VadSilenceTime(self, VadSilenceTime):
+        self._VadSilenceTime = VadSilenceTime
+
 
     def _deserialize(self, params):
         self._Language = params.get("Language")
@@ -10198,6 +10212,7 @@ class RecognizeConfig(AbstractModel):
         self._Model = params.get("Model")
         self._TranslationLanguage = params.get("TranslationLanguage")
         self._HotWordList = params.get("HotWordList")
+        self._VadSilenceTime = params.get("VadSilenceTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

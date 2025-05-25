@@ -35,27 +35,18 @@ class AddRecordBatch(AbstractModel):
         :type RecordLine: str
         :param _RecordLineId: 解析记录的线路 ID，RecordLine和RecordLineId都有时，系统优先取 RecordLineId。
         :type RecordLineId: str
-        :param _Weight: 记录权重值(暂未支持)。
-        :type Weight: int
         :param _MX: 记录的 MX 记录值，非 MX 记录类型，默认为 0，MX记录则必选。
         :type MX: int
         :param _TTL: 记录的 TTL 值，默认600。
         :type TTL: int
-        :param _Enabled: 记录状态(暂未支持)。0表示禁用，1表示启用。默认启用。
-        :type Enabled: int
-        :param _Remark: 记录备注(暂未支持)。
-        :type Remark: str
         """
         self._RecordType = None
         self._Value = None
         self._SubDomain = None
         self._RecordLine = None
         self._RecordLineId = None
-        self._Weight = None
         self._MX = None
         self._TTL = None
-        self._Enabled = None
-        self._Remark = None
 
     @property
     def RecordType(self):
@@ -113,17 +104,6 @@ class AddRecordBatch(AbstractModel):
         self._RecordLineId = RecordLineId
 
     @property
-    def Weight(self):
-        """记录权重值(暂未支持)。
-        :rtype: int
-        """
-        return self._Weight
-
-    @Weight.setter
-    def Weight(self, Weight):
-        self._Weight = Weight
-
-    @property
     def MX(self):
         """记录的 MX 记录值，非 MX 记录类型，默认为 0，MX记录则必选。
         :rtype: int
@@ -145,28 +125,6 @@ class AddRecordBatch(AbstractModel):
     def TTL(self, TTL):
         self._TTL = TTL
 
-    @property
-    def Enabled(self):
-        """记录状态(暂未支持)。0表示禁用，1表示启用。默认启用。
-        :rtype: int
-        """
-        return self._Enabled
-
-    @Enabled.setter
-    def Enabled(self, Enabled):
-        self._Enabled = Enabled
-
-    @property
-    def Remark(self):
-        """记录备注(暂未支持)。
-        :rtype: str
-        """
-        return self._Remark
-
-    @Remark.setter
-    def Remark(self, Remark):
-        self._Remark = Remark
-
 
     def _deserialize(self, params):
         self._RecordType = params.get("RecordType")
@@ -174,11 +132,8 @@ class AddRecordBatch(AbstractModel):
         self._SubDomain = params.get("SubDomain")
         self._RecordLine = params.get("RecordLine")
         self._RecordLineId = params.get("RecordLineId")
-        self._Weight = params.get("Weight")
         self._MX = params.get("MX")
         self._TTL = params.get("TTL")
-        self._Enabled = params.get("Enabled")
-        self._Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

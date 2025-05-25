@@ -29,7 +29,7 @@ class LkeapClient(AbstractClient):
     def ChatCompletions(self, request):
         """### 接口功能
 
-        调用接口，发起一次对话请求。单账号限制接口并发上限为100。
+        调用接口，发起一次对话请求。默认该接口下的单账号QPM上限为15000 ，TPM上限为1200000
         如需使用OpenAI兼容接口， 请参考文档：[Deepseek OpenAI对话接口](https://cloud.tencent.com/document/product/1772/115969)
 
         #### 在线体验

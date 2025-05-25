@@ -23,6 +23,9 @@ FAILEDOPERATION = 'FailedOperation'
 # 调用交易服务发生异常。
 FAILEDOPERATION_CALLTRADE = 'FailedOperation.CallTrade'
 
+# 第三方云服务异常，请稍后重试
+FAILEDOPERATION_CLOUDSERVICE = 'FailedOperation.CloudService'
+
 # CMQ 后台服务错误。
 FAILEDOPERATION_CMQBACKENDERROR = 'FailedOperation.CmqBackendError'
 
@@ -110,6 +113,9 @@ FAILEDOPERATION_MODIFYCLUSTER = 'FailedOperation.ModifyCluster'
 # 必须先清除关联命名空间才能继续操作。
 FAILEDOPERATION_NAMESPACEINUSE = 'FailedOperation.NamespaceInUse'
 
+# 任务进行中，请稍后重试
+FAILEDOPERATION_OPERATELATER = 'FailedOperation.OperateLater'
+
 # 产品信息不存在
 FAILEDOPERATION_PRODUCTNOTEXIST = 'FailedOperation.ProductNotExist'
 
@@ -121,6 +127,12 @@ FAILEDOPERATION_RECEIVEERROR = 'FailedOperation.ReceiveError'
 
 # 接收消息超时，请重试。
 FAILEDOPERATION_RECEIVETIMEOUT = 'FailedOperation.ReceiveTimeout'
+
+# 跨地域复制校验不通过
+FAILEDOPERATION_REPLICATIONDESTCHECKFAILEDERROR = 'FailedOperation.ReplicationDestCheckFailedError'
+
+# 跨地域复制检验不通过
+FAILEDOPERATION_REPLICATIONSOURCECHECKFAILEDERROR = 'FailedOperation.ReplicationSourceCheckFailedError'
 
 # 消息回溯设置失败。
 FAILEDOPERATION_RESETMSGSUBOFFSETBYTIMESTAMPFAILED = 'FailedOperation.ResetMsgSubOffsetByTimestampFailed'

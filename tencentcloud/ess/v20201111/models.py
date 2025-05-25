@@ -264,6 +264,8 @@ class ApproverInfo(AbstractModel):
 <ul><li> 个人签名/印章</li>
 <li> 企业印章</li>
 <li> 骑缝章等签署控件</li></ul>
+
+![image](https://qcloudimg.tencent-cloud.cn/raw/91757a7f9188ccf3057a4a8979cf3f93.png)
         :type SignComponents: list of Component
         :param _ApproverIdCardType: 签署方经办人的证件类型，支持以下类型，样式可以参考<a href="https://qian.tencent.com/developers/partner/id_card_support/" target="_blank">常见个人证件类型介绍</a>
 <ul><li>ID_CARD 中国大陆居民身份证  (默认值)</li>
@@ -385,6 +387,8 @@ class ApproverInfo(AbstractModel):
 具体使用说明可参考[为签署方指定填写控件](https://qian.tencent.cn/developers/company/createFlowByFiles/#指定签署方填写控件)
 
 注：`此参数仅在通过文件发起合同或者合同组时生效`
+
+![image](https://qcloudimg.tencent-cloud.cn/raw/e004195ee4cb98a7f9bc12eb4a0a0b77.png)
         :type Components: list of Component
         :param _SignEndpoints: 进入签署流程的限制，目前支持以下选项：
 <ul><li> <b>空值（默认）</b> :无限制，可在任何场景进入签署流程。</li><li> <b>link</b> :选择此选项后，将无法通过控制台或电子签小程序列表进入填写或签署操作，仅可预览合同。填写或签署流程只能通过短信或发起方提供的专用链接进行。</li></ul>
@@ -477,6 +481,8 @@ class ApproverInfo(AbstractModel):
 <ul><li> 个人签名/印章</li>
 <li> 企业印章</li>
 <li> 骑缝章等签署控件</li></ul>
+
+![image](https://qcloudimg.tencent-cloud.cn/raw/91757a7f9188ccf3057a4a8979cf3f93.png)
         :rtype: list of Component
         """
         return self._SignComponents
@@ -760,6 +766,8 @@ class ApproverInfo(AbstractModel):
 具体使用说明可参考[为签署方指定填写控件](https://qian.tencent.cn/developers/company/createFlowByFiles/#指定签署方填写控件)
 
 注：`此参数仅在通过文件发起合同或者合同组时生效`
+
+![image](https://qcloudimg.tencent-cloud.cn/raw/e004195ee4cb98a7f9bc12eb4a0a0b77.png)
         :rtype: list of Component
         """
         return self._Components
@@ -1609,6 +1617,8 @@ class AutoSignConfig(AbstractModel):
         :param _CertInfoCallback: 是否回调证书信息:
 <ul><li>**false**: 不需要(默认)</li>
 <li>**true**:需要</li></ul>
+
+注：`该字段已经失效，请勿设置此参数。`
         :type CertInfoCallback: bool
         :param _UserDefineSeal: 是否支持用户自定义签名印章:
 <ul><li>**false**: 不能自己定义(默认)</li>
@@ -1624,7 +1634,7 @@ class AutoSignConfig(AbstractModel):
         :type CallbackUrl: str
         :param _VerifyChannels: 开通时候的身份验证方式, 取值为：
 <ul><li>**WEIXINAPP** : 微信人脸识别</li>
-<li>**INSIGHT** : 慧眼人脸认别</li>
+<li>**INSIGHT** : 慧眼人脸识别</li>
 <li>**TELECOM** : 运营商三要素验证</li></ul>
 注：
 <ul><li>如果是小程序开通链接，支持传 WEIXINAPP / TELECOM。为空默认 WEIXINAPP</li>
@@ -1633,6 +1643,8 @@ class AutoSignConfig(AbstractModel):
         :param _LicenseType: 设置用户自动签合同的扣费方式。
 
 <ul><li><b>1</b>: (默认)使用合同份额进行扣减</li></ul>
+
+注：`该字段已经失效，请勿设置此参数。`
         :type LicenseType: int
         :param _JumpUrl: 开通成功后前端页面跳转的url，此字段的用法场景请联系客户经理确认。
 
@@ -1671,6 +1683,8 @@ class AutoSignConfig(AbstractModel):
         """是否回调证书信息:
 <ul><li>**false**: 不需要(默认)</li>
 <li>**true**:需要</li></ul>
+
+注：`该字段已经失效，请勿设置此参数。`
         :rtype: bool
         """
         return self._CertInfoCallback
@@ -1726,7 +1740,7 @@ class AutoSignConfig(AbstractModel):
     def VerifyChannels(self):
         """开通时候的身份验证方式, 取值为：
 <ul><li>**WEIXINAPP** : 微信人脸识别</li>
-<li>**INSIGHT** : 慧眼人脸认别</li>
+<li>**INSIGHT** : 慧眼人脸识别</li>
 <li>**TELECOM** : 运营商三要素验证</li></ul>
 注：
 <ul><li>如果是小程序开通链接，支持传 WEIXINAPP / TELECOM。为空默认 WEIXINAPP</li>
@@ -1744,6 +1758,8 @@ class AutoSignConfig(AbstractModel):
         """设置用户自动签合同的扣费方式。
 
 <ul><li><b>1</b>: (默认)使用合同份额进行扣减</li></ul>
+
+注：`该字段已经失效，请勿设置此参数。`
         :rtype: int
         """
         return self._LicenseType
@@ -7401,6 +7417,8 @@ class CreateFlowByFilesRequest(AbstractModel):
 <li> 图片控件          </li>
 <li> 水印控件等          </li>
 </ul>
+
+![image](https://qcloudimg.tencent-cloud.cn/raw/e004195ee4cb98a7f9bc12eb4a0a0b77.png)
         :type Components: list of Component
         :param _CcInfos: 合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。
 
@@ -7600,6 +7618,8 @@ class CreateFlowByFilesRequest(AbstractModel):
 <li> 图片控件          </li>
 <li> 水印控件等          </li>
 </ul>
+
+![image](https://qcloudimg.tencent-cloud.cn/raw/e004195ee4cb98a7f9bc12eb4a0a0b77.png)
         :rtype: list of Component
         """
         return self._Components
