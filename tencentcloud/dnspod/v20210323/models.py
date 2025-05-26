@@ -14390,7 +14390,7 @@ class ModifyRecordBatchRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RecordIdList: 记录ID数组。可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId
+        :param _RecordIdList: 记录ID数组。可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId。单次最多修改5000条记录。
         :type RecordIdList: list of int non-negative
         :param _Change: 要修改的字段，可选值为 [“sub_domain”、”record_type”、”area”、”value”、”mx”、”ttl”、”status”] 中的某一个。
         :type Change: str
@@ -14409,7 +14409,7 @@ class ModifyRecordBatchRequest(AbstractModel):
 
     @property
     def RecordIdList(self):
-        """记录ID数组。可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId
+        """记录ID数组。可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId。单次最多修改5000条记录。
         :rtype: list of int non-negative
         """
         return self._RecordIdList

@@ -4968,6 +4968,110 @@ class CreateClusterResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateGroupsSTDRequest(AbstractModel):
+    """CreateGroupsSTD请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群名称
+        :type InstanceId: str
+        :param _Groups: 批量用户组信息
+        :type Groups: list of GroupInfo
+        """
+        self._InstanceId = None
+        self._Groups = None
+
+    @property
+    def InstanceId(self):
+        """集群名称
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Groups(self):
+        """批量用户组信息
+        :rtype: list of GroupInfo
+        """
+        return self._Groups
+
+    @Groups.setter
+    def Groups(self, Groups):
+        self._Groups = Groups
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("Groups") is not None:
+            self._Groups = []
+            for item in params.get("Groups"):
+                obj = GroupInfo()
+                obj._deserialize(item)
+                self._Groups.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateGroupsSTDResponse(AbstractModel):
+    """CreateGroupsSTD返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 每个用户组的输出结果
+        :type Data: list of ResultItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """每个用户组的输出结果
+        :rtype: list of ResultItem
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = ResultItem()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class CreateInstanceRequest(AbstractModel):
     """CreateInstance请求参数结构体
 
@@ -6386,6 +6490,105 @@ class DeleteAutoScaleStrategyResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteGroupsSTDRequest(AbstractModel):
+    """DeleteGroupsSTD请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群名称
+        :type InstanceId: str
+        :param _GroupNames: 用户组名称数组
+        :type GroupNames: list of str
+        """
+        self._InstanceId = None
+        self._GroupNames = None
+
+    @property
+    def InstanceId(self):
+        """集群名称
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def GroupNames(self):
+        """用户组名称数组
+        :rtype: list of str
+        """
+        return self._GroupNames
+
+    @GroupNames.setter
+    def GroupNames(self, GroupNames):
+        self._GroupNames = GroupNames
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._GroupNames = params.get("GroupNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteGroupsSTDResponse(AbstractModel):
+    """DeleteGroupsSTD返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 删除返回结果
+        :type Data: list of ResultItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """删除返回结果
+        :rtype: list of ResultItem
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = ResultItem()
+                obj._deserialize(item)
+                self._Data.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -15781,6 +15984,72 @@ class GroupGlobalConfs(AbstractModel):
         
 
 
+class GroupInfo(AbstractModel):
+    """用户组信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupName: 组名
+        :type GroupName: str
+        :param _Description: 备注
+        :type Description: str
+        :param _Users: 用户列表
+        :type Users: list of str
+        """
+        self._GroupName = None
+        self._Description = None
+        self._Users = None
+
+    @property
+    def GroupName(self):
+        """组名
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def Description(self):
+        """备注
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Users(self):
+        """用户列表
+        :rtype: list of str
+        """
+        return self._Users
+
+    @Users.setter
+    def Users(self, Users):
+        self._Users = Users
+
+
+    def _deserialize(self, params):
+        self._GroupName = params.get("GroupName")
+        self._Description = params.get("Description")
+        self._Users = params.get("Users")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class HealthStatus(AbstractModel):
     """进程健康状态
 
@@ -21757,6 +22026,115 @@ class ModifySLInstanceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyUserGroupRequest(AbstractModel):
+    """ModifyUserGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Users: 用户信息列表
+        :type Users: list of str
+        :param _UserGroup: 用户主组，cvm集群为必填参数，tke集群选填
+        :type UserGroup: str
+        :param _Groups: 用户副组
+        :type Groups: list of str
+        :param _Remark: 备注
+        :type Remark: str
+        """
+        self._Users = None
+        self._UserGroup = None
+        self._Groups = None
+        self._Remark = None
+
+    @property
+    def Users(self):
+        """用户信息列表
+        :rtype: list of str
+        """
+        return self._Users
+
+    @Users.setter
+    def Users(self, Users):
+        self._Users = Users
+
+    @property
+    def UserGroup(self):
+        """用户主组，cvm集群为必填参数，tke集群选填
+        :rtype: str
+        """
+        return self._UserGroup
+
+    @UserGroup.setter
+    def UserGroup(self, UserGroup):
+        self._UserGroup = UserGroup
+
+    @property
+    def Groups(self):
+        """用户副组
+        :rtype: list of str
+        """
+        return self._Groups
+
+    @Groups.setter
+    def Groups(self, Groups):
+        self._Groups = Groups
+
+    @property
+    def Remark(self):
+        """备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._Users = params.get("Users")
+        self._UserGroup = params.get("UserGroup")
+        self._Groups = params.get("Groups")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyUserGroupResponse(AbstractModel):
+    """ModifyUserGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyUserManagerPwdRequest(AbstractModel):
     """ModifyUserManagerPwd请求参数结构体
 
@@ -21848,6 +22226,161 @@ class ModifyUserManagerPwdResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyUsersOfGroupSTDRequest(AbstractModel):
+    """ModifyUsersOfGroupSTD请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群名称
+        :type InstanceId: str
+        :param _Group: 用户组名
+        :type Group: str
+        :param _Users: 用户列表
+        :type Users: list of str
+        :param _Description: 用户组描述
+        :type Description: str
+        :param _OperateAction: 枚举类, ADD, DELETE, SYNC
+
+
+枚举类说明:
+- ADD: 新增的批量用户, 多次新增相同的用户不会报错
+- DELETE: 从用户组里删除的批量用户, 删除不存在的用户不会报错
+- SYNC: 用于同步整个用户组, 当列表为空时代表清空整个用户组
+默认为SYNC
+
+        :type OperateAction: str
+        """
+        self._InstanceId = None
+        self._Group = None
+        self._Users = None
+        self._Description = None
+        self._OperateAction = None
+
+    @property
+    def InstanceId(self):
+        """集群名称
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Group(self):
+        """用户组名
+        :rtype: str
+        """
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+    @property
+    def Users(self):
+        """用户列表
+        :rtype: list of str
+        """
+        return self._Users
+
+    @Users.setter
+    def Users(self, Users):
+        self._Users = Users
+
+    @property
+    def Description(self):
+        """用户组描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def OperateAction(self):
+        """枚举类, ADD, DELETE, SYNC
+
+
+枚举类说明:
+- ADD: 新增的批量用户, 多次新增相同的用户不会报错
+- DELETE: 从用户组里删除的批量用户, 删除不存在的用户不会报错
+- SYNC: 用于同步整个用户组, 当列表为空时代表清空整个用户组
+默认为SYNC
+
+        :rtype: str
+        """
+        return self._OperateAction
+
+    @OperateAction.setter
+    def OperateAction(self, OperateAction):
+        self._OperateAction = OperateAction
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Group = params.get("Group")
+        self._Users = params.get("Users")
+        self._Description = params.get("Description")
+        self._OperateAction = params.get("OperateAction")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyUsersOfGroupSTDResponse(AbstractModel):
+    """ModifyUsersOfGroupSTD返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 是否修改成功
+        :type Data: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """是否修改成功
+        :rtype: bool
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
         self._RequestId = params.get("RequestId")
 
 
@@ -28224,6 +28757,72 @@ class RestartPolicy(AbstractModel):
         self._Describe = params.get("Describe")
         self._BatchSizeRange = params.get("BatchSizeRange")
         self._IsDefault = params.get("IsDefault")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResultItem(AbstractModel):
+    """用户组的输出结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Item: 此处为用户组名
+        :type Item: str
+        :param _Result: 创建用户组是否成功
+        :type Result: bool
+        :param _Reason: 若是创建失败, 提供失败原因
+        :type Reason: str
+        """
+        self._Item = None
+        self._Result = None
+        self._Reason = None
+
+    @property
+    def Item(self):
+        """此处为用户组名
+        :rtype: str
+        """
+        return self._Item
+
+    @Item.setter
+    def Item(self, Item):
+        self._Item = Item
+
+    @property
+    def Result(self):
+        """创建用户组是否成功
+        :rtype: bool
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Reason(self):
+        """若是创建失败, 提供失败原因
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+
+    def _deserialize(self, params):
+        self._Item = params.get("Item")
+        self._Result = params.get("Result")
+        self._Reason = params.get("Reason")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

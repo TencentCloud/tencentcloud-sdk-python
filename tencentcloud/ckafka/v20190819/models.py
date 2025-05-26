@@ -4717,6 +4717,8 @@ class CreateDatahubTaskRequest(AbstractModel):
         :type TaskId: str
         :param _Tags: 标签列表
         :type Tags: list of Tag
+        :param _Description: 任务描述信息
+        :type Description: str
         """
         self._TaskName = None
         self._TaskType = None
@@ -4728,6 +4730,7 @@ class CreateDatahubTaskRequest(AbstractModel):
         self._TransformsParam = None
         self._TaskId = None
         self._Tags = None
+        self._Description = None
 
     @property
     def TaskName(self):
@@ -4786,6 +4789,8 @@ class CreateDatahubTaskRequest(AbstractModel):
 
     @property
     def PrivateLinkParam(self):
+        warnings.warn("parameter `PrivateLinkParam` is deprecated", DeprecationWarning) 
+
         """实例连接参数【已废弃】
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.PrivateLinkParam`
         """
@@ -4793,6 +4798,8 @@ class CreateDatahubTaskRequest(AbstractModel):
 
     @PrivateLinkParam.setter
     def PrivateLinkParam(self, PrivateLinkParam):
+        warnings.warn("parameter `PrivateLinkParam` is deprecated", DeprecationWarning) 
+
         self._PrivateLinkParam = PrivateLinkParam
 
     @property
@@ -4839,6 +4846,17 @@ class CreateDatahubTaskRequest(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def Description(self):
+        """任务描述信息
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
 
     def _deserialize(self, params):
         self._TaskName = params.get("TaskName")
@@ -4866,6 +4884,7 @@ class CreateDatahubTaskRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13859,6 +13878,8 @@ class DescribeInstancesDetailRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        warnings.warn("parameter `InstanceIds` is deprecated", DeprecationWarning) 
+
         """已经废弃， 使用InstanceIdList
         :rtype: str
         """
@@ -13866,6 +13887,8 @@ class DescribeInstancesDetailRequest(AbstractModel):
 
     @InstanceIds.setter
     def InstanceIds(self, InstanceIds):
+        warnings.warn("parameter `InstanceIds` is deprecated", DeprecationWarning) 
+
         self._InstanceIds = InstanceIds
 
     @property
@@ -14054,6 +14077,8 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def TagKey(self):
+        warnings.warn("parameter `TagKey` is deprecated", DeprecationWarning) 
+
         """已废弃。匹配标签key值。
         :rtype: str
         """
@@ -14061,6 +14086,8 @@ class DescribeInstancesRequest(AbstractModel):
 
     @TagKey.setter
     def TagKey(self, TagKey):
+        warnings.warn("parameter `TagKey` is deprecated", DeprecationWarning) 
+
         self._TagKey = TagKey
 
     @property
@@ -17655,7 +17682,7 @@ class FailureParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 类型，DLQ死信队列，IGNORE_ERROR保留，DROP废弃
+        :param _Type: 类型，DLQ死信队列，IGNORE_ERROR保留，DROP丢弃
         :type Type: str
         :param _KafkaParam: Ckafka类型死信队列
         :type KafkaParam: :class:`tencentcloud.ckafka.v20190819.models.KafkaParam`
@@ -17677,7 +17704,7 @@ class FailureParam(AbstractModel):
 
     @property
     def Type(self):
-        """类型，DLQ死信队列，IGNORE_ERROR保留，DROP废弃
+        """类型，DLQ死信队列，IGNORE_ERROR保留，DROP丢弃
         :rtype: str
         """
         return self._Type

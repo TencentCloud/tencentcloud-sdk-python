@@ -32748,6 +32748,8 @@ class TextVehicleBack(AbstractModel):
         :type AddressElectronic: str
         :param _IssueAuthorityElectronic: 发证机关
         :type IssueAuthorityElectronic: str
+        :param _CarBodyColor: 车身颜色
+        :type CarBodyColor: str
         """
         self._PlateNo = None
         self._FileNo = None
@@ -32763,6 +32765,7 @@ class TextVehicleBack(AbstractModel):
         self._FuelType = None
         self._AddressElectronic = None
         self._IssueAuthorityElectronic = None
+        self._CarBodyColor = None
 
     @property
     def PlateNo(self):
@@ -32931,6 +32934,17 @@ class TextVehicleBack(AbstractModel):
     def IssueAuthorityElectronic(self, IssueAuthorityElectronic):
         self._IssueAuthorityElectronic = IssueAuthorityElectronic
 
+    @property
+    def CarBodyColor(self):
+        """车身颜色
+        :rtype: str
+        """
+        return self._CarBodyColor
+
+    @CarBodyColor.setter
+    def CarBodyColor(self, CarBodyColor):
+        self._CarBodyColor = CarBodyColor
+
 
     def _deserialize(self, params):
         self._PlateNo = params.get("PlateNo")
@@ -32947,6 +32961,7 @@ class TextVehicleBack(AbstractModel):
         self._FuelType = params.get("FuelType")
         self._AddressElectronic = params.get("AddressElectronic")
         self._IssueAuthorityElectronic = params.get("IssueAuthorityElectronic")
+        self._CarBodyColor = params.get("CarBodyColor")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

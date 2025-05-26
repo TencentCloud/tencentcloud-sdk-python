@@ -5987,9 +5987,9 @@ class CVMAssetVO(AbstractModel):
         :type CWPStatus: int
         :param _AssetCreateTime: 资产创建时间
         :type AssetCreateTime: str
-        :param _PublicIp: 公网ip
+        :param _PublicIp: 公网IP
         :type PublicIp: str
-        :param _PrivateIp: 私网ip
+        :param _PrivateIp: 私网IP
         :type PrivateIp: str
         :param _VpcId: vpc id
         :type VpcId: str
@@ -6009,9 +6009,9 @@ class CVMAssetVO(AbstractModel):
         :type SubnetId: str
         :param _SubnetName: 子网名
         :type SubnetName: str
-        :param _InstanceUuid: uuid
+        :param _InstanceUuid: 主机安全Agent UUID
         :type InstanceUuid: str
-        :param _InstanceQUuid: qquid
+        :param _InstanceQUuid: 云主机 CVM UUID
         :type InstanceQUuid: str
         :param _OsName: os名
         :type OsName: str
@@ -6253,7 +6253,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def PublicIp(self):
-        """公网ip
+        """公网IP
         :rtype: str
         """
         return self._PublicIp
@@ -6264,7 +6264,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def PrivateIp(self):
-        """私网ip
+        """私网IP
         :rtype: str
         """
         return self._PrivateIp
@@ -6374,7 +6374,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def InstanceUuid(self):
-        """uuid
+        """主机安全Agent UUID
         :rtype: str
         """
         return self._InstanceUuid
@@ -6385,7 +6385,7 @@ class CVMAssetVO(AbstractModel):
 
     @property
     def InstanceQUuid(self):
-        """qquid
+        """云主机 CVM UUID
         :rtype: str
         """
         return self._InstanceQUuid
@@ -15696,7 +15696,7 @@ class DomainAssetVO(AbstractModel):
         :type Tag: list of Tag
         :param _SourceType: 关联实例类型
         :type SourceType: str
-        :param _MemberId: memberiD
+        :param _MemberId: memberId信息
         :type MemberId: str
         :param _CCAttack: cc攻击
         :type CCAttack: int
@@ -16087,7 +16087,7 @@ class DomainAssetVO(AbstractModel):
 
     @property
     def MemberId(self):
-        """memberiD
+        """memberId信息
         :rtype: str
         """
         return self._MemberId
@@ -16953,7 +16953,7 @@ class IpAssetListVO(AbstractModel):
         :type CFWStatus: int
         :param _AssetCreateTime: 资产创建时间
         :type AssetCreateTime: str
-        :param _PublicIp: 公网ip
+        :param _PublicIp: 公网IP
         :type PublicIp: str
         :param _PublicIpType: 公网ip类型
         :type PublicIpType: int
@@ -17003,7 +17003,7 @@ class IpAssetListVO(AbstractModel):
         :type Tag: list of Tag
         :param _AddressId: eip主键
         :type AddressId: str
-        :param _MemberId: memberid信息
+        :param _MemberId: MemberId信息
         :type MemberId: str
         :param _RiskExposure: 风险服务暴露
         :type RiskExposure: int
@@ -17116,7 +17116,7 @@ class IpAssetListVO(AbstractModel):
 
     @property
     def PublicIp(self):
-        """公网ip
+        """公网IP
         :rtype: str
         """
         return self._PublicIp
@@ -17391,7 +17391,7 @@ class IpAssetListVO(AbstractModel):
 
     @property
     def MemberId(self):
-        """memberid信息
+        """MemberId信息
         :rtype: str
         """
         return self._MemberId
@@ -22161,8 +22161,7 @@ class SubUserInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ID: 主键ID，无业务意义
-仅作为唯一键
+        :param _ID: 主键ID，无业务意义仅作为唯一键
         :type ID: int
         :param _AppID: 子账号Appid
         :type AppID: str
@@ -22176,7 +22175,7 @@ class SubUserInfo(AbstractModel):
         :type OwnerUin: str
         :param _OwnerNickName: 主账号名称
         :type OwnerNickName: str
-        :param _OwnerMemberID: 所属主账号memberid
+        :param _OwnerMemberID: 所属主账号memberId信息
         :type OwnerMemberID: str
         :param _CloudType: 账户类型，0为腾讯云账户，1为AWS账户
         :type CloudType: int
@@ -22220,8 +22219,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def ID(self):
-        """主键ID，无业务意义
-仅作为唯一键
+        """主键ID，无业务意义仅作为唯一键
         :rtype: int
         """
         return self._ID
@@ -22298,7 +22296,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def OwnerMemberID(self):
-        """所属主账号memberid
+        """所属主账号memberId信息
         :rtype: str
         """
         return self._OwnerMemberID

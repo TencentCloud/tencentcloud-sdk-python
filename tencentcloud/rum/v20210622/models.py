@@ -4710,6 +4710,8 @@ class DescribeDataPerformancePageRequest(AbstractModel):
         :type Env: str
         :param _NetStatus: 网络状态
         :type NetStatus: str
+        :param _WebVitals: 是否返回webvitals数据
+        :type WebVitals: bool
         """
         self._ID = None
         self._StartTime = None
@@ -4734,6 +4736,7 @@ class DescribeDataPerformancePageRequest(AbstractModel):
         self._CostType = None
         self._Env = None
         self._NetStatus = None
+        self._WebVitals = None
 
     @property
     def ID(self):
@@ -4988,6 +4991,17 @@ class DescribeDataPerformancePageRequest(AbstractModel):
     def NetStatus(self, NetStatus):
         self._NetStatus = NetStatus
 
+    @property
+    def WebVitals(self):
+        """是否返回webvitals数据
+        :rtype: bool
+        """
+        return self._WebVitals
+
+    @WebVitals.setter
+    def WebVitals(self, WebVitals):
+        self._WebVitals = WebVitals
+
 
     def _deserialize(self, params):
         self._ID = params.get("ID")
@@ -5013,6 +5027,7 @@ class DescribeDataPerformancePageRequest(AbstractModel):
         self._CostType = params.get("CostType")
         self._Env = params.get("Env")
         self._NetStatus = params.get("NetStatus")
+        self._WebVitals = params.get("WebVitals")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

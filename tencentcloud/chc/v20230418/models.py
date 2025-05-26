@@ -2668,15 +2668,23 @@ class CustomerReceipt(AbstractModel):
         :type PickUpStuff: str
         :param _PickUpStuffContact: 自提人电话
         :type PickUpStuffContact: str
-        :param _PickUpStuffIDCard: 自提人身份证号
+        :param _PickUpStuffIDCard: 自提人证件号码
         :type PickUpStuffIDCard: str
         :param _PickUpTime: 自提时间
         :type PickUpTime: str
+        :param _IDCardType: 证件类型，非必传，默认为IDENTITY_CARD。
+对应关系如下：IDENTITY_CARD: 身份证,
+HONG_KONG_AND_MACAO_PASS: 港澳通行证',
+PASSPORT: 护照,
+DRIVING_LICENSE: 驾照,
+OTHER: 其他
+        :type IDCardType: str
         """
         self._PickUpStuff = None
         self._PickUpStuffContact = None
         self._PickUpStuffIDCard = None
         self._PickUpTime = None
+        self._IDCardType = None
 
     @property
     def PickUpStuff(self):
@@ -2702,7 +2710,7 @@ class CustomerReceipt(AbstractModel):
 
     @property
     def PickUpStuffIDCard(self):
-        """自提人身份证号
+        """自提人证件号码
         :rtype: str
         """
         return self._PickUpStuffIDCard
@@ -2722,12 +2730,29 @@ class CustomerReceipt(AbstractModel):
     def PickUpTime(self, PickUpTime):
         self._PickUpTime = PickUpTime
 
+    @property
+    def IDCardType(self):
+        """证件类型，非必传，默认为IDENTITY_CARD。
+对应关系如下：IDENTITY_CARD: 身份证,
+HONG_KONG_AND_MACAO_PASS: 港澳通行证',
+PASSPORT: 护照,
+DRIVING_LICENSE: 驾照,
+OTHER: 其他
+        :rtype: str
+        """
+        return self._IDCardType
+
+    @IDCardType.setter
+    def IDCardType(self, IDCardType):
+        self._IDCardType = IDCardType
+
 
     def _deserialize(self, params):
         self._PickUpStuff = params.get("PickUpStuff")
         self._PickUpStuffContact = params.get("PickUpStuffContact")
         self._PickUpStuffIDCard = params.get("PickUpStuffIDCard")
         self._PickUpTime = params.get("PickUpTime")
+        self._IDCardType = params.get("IDCardType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4734,11 +4759,14 @@ hosting-type
         :type Filters: list of Filter
         :param _DstService: 传入目标服务，返回允许进行此服务的机架列表；可以和Filters一起使用。允许的值：('rackPowerOn', 'rackPowerOff')
         :type DstService: str
+        :param _RackName: 机架名称关键字实现模糊搜索
+        :type RackName: str
         """
         self._Offset = None
         self._Limit = None
         self._Filters = None
         self._DstService = None
+        self._RackName = None
 
     @property
     def Offset(self):
@@ -4816,6 +4844,17 @@ hosting-type
     def DstService(self, DstService):
         self._DstService = DstService
 
+    @property
+    def RackName(self):
+        """机架名称关键字实现模糊搜索
+        :rtype: str
+        """
+        return self._RackName
+
+    @RackName.setter
+    def RackName(self, RackName):
+        self._RackName = RackName
+
 
     def _deserialize(self, params):
         self._Offset = params.get("Offset")
@@ -4827,6 +4866,7 @@ hosting-type
                 obj._deserialize(item)
                 self._Filters.append(obj)
         self._DstService = params.get("DstService")
+        self._RackName = params.get("RackName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9078,17 +9118,25 @@ class SelfOperation(AbstractModel):
         r"""
         :param _StuffContact: 联系人员电话
         :type StuffContact: str
-        :param _StuffIDCard: 身份证号
+        :param _StuffIDCard: 证件号码
         :type StuffIDCard: str
         :param _StuffName: 人员姓名
         :type StuffName: str
         :param _OperationTime: 上门时间
         :type OperationTime: str
+        :param _IDCardType: 证件类型，非必传，默认为IDENTITY_CARD。
+对应关系如下：IDENTITY_CARD: 身份证,
+HONG_KONG_AND_MACAO_PASS: 港澳通行证',
+PASSPORT: 护照,
+DRIVING_LICENSE: 驾照,
+OTHER: 其他
+        :type IDCardType: str
         """
         self._StuffContact = None
         self._StuffIDCard = None
         self._StuffName = None
         self._OperationTime = None
+        self._IDCardType = None
 
     @property
     def StuffContact(self):
@@ -9103,7 +9151,7 @@ class SelfOperation(AbstractModel):
 
     @property
     def StuffIDCard(self):
-        """身份证号
+        """证件号码
         :rtype: str
         """
         return self._StuffIDCard
@@ -9134,12 +9182,29 @@ class SelfOperation(AbstractModel):
     def OperationTime(self, OperationTime):
         self._OperationTime = OperationTime
 
+    @property
+    def IDCardType(self):
+        """证件类型，非必传，默认为IDENTITY_CARD。
+对应关系如下：IDENTITY_CARD: 身份证,
+HONG_KONG_AND_MACAO_PASS: 港澳通行证',
+PASSPORT: 护照,
+DRIVING_LICENSE: 驾照,
+OTHER: 其他
+        :rtype: str
+        """
+        return self._IDCardType
+
+    @IDCardType.setter
+    def IDCardType(self, IDCardType):
+        self._IDCardType = IDCardType
+
 
     def _deserialize(self, params):
         self._StuffContact = params.get("StuffContact")
         self._StuffIDCard = params.get("StuffIDCard")
         self._StuffName = params.get("StuffName")
         self._OperationTime = params.get("OperationTime")
+        self._IDCardType = params.get("IDCardType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

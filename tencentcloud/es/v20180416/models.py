@@ -20763,7 +20763,6 @@ class ZoneDetail(AbstractModel):
         :param _SubnetId: 子网ID
         :type SubnetId: str
         :param _Hidden: 是否为隐藏可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :type Hidden: bool
         """
         self._Zone = None
@@ -20795,7 +20794,6 @@ class ZoneDetail(AbstractModel):
     @property
     def Hidden(self):
         """是否为隐藏可用区
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Hidden

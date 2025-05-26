@@ -18200,6 +18200,61 @@ class DatabaseMeta(AbstractModel):
         
 
 
+class DatabaseSchemaIInfo(AbstractModel):
+    """数据库Schema信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SchemaName: schema名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SchemaName: str
+        :param _OriginDatabaseName: 数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginDatabaseName: str
+        """
+        self._SchemaName = None
+        self._OriginDatabaseName = None
+
+    @property
+    def SchemaName(self):
+        """schema名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def OriginDatabaseName(self):
+        """数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OriginDatabaseName
+
+    @OriginDatabaseName.setter
+    def OriginDatabaseName(self, OriginDatabaseName):
+        self._OriginDatabaseName = OriginDatabaseName
+
+
+    def _deserialize(self, params):
+        self._SchemaName = params.get("SchemaName")
+        self._OriginDatabaseName = params.get("OriginDatabaseName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DatasourceBaseInfo(AbstractModel):
     """数据源对象
 
@@ -33872,6 +33927,287 @@ class DescribeRealTimeTaskSpeedResponse(AbstractModel):
         if params.get("Data") is not None:
             self._Data = RealTimeTaskSpeed()
             self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRealViewSchemaPageRequest(AbstractModel):
+    """DescribeRealViewSchemaPage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNumber: 页码
+        :type PageNumber: int
+        :param _PageSize: 每页记录数
+        :type PageSize: int
+        :param _DatabaseName: 数据库名称
+        :type DatabaseName: str
+        :param _DatasourceId: 数据源id
+        :type DatasourceId: str
+        :param _DataSourceType: 数据type
+        :type DataSourceType: str
+        :param _ProjectId: 项目id
+        :type ProjectId: str
+        :param _Env: 环境信息
+        :type Env: str
+        :param _Model: 项目model
+        :type Model: str
+        :param _DevDatasourceId: dev的数据源Id
+        :type DevDatasourceId: str
+        :param _Keyword: 过滤字段
+        :type Keyword: str
+        """
+        self._PageNumber = None
+        self._PageSize = None
+        self._DatabaseName = None
+        self._DatasourceId = None
+        self._DataSourceType = None
+        self._ProjectId = None
+        self._Env = None
+        self._Model = None
+        self._DevDatasourceId = None
+        self._Keyword = None
+
+    @property
+    def PageNumber(self):
+        """页码
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        """每页记录数
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def DatabaseName(self):
+        """数据库名称
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def DatasourceId(self):
+        """数据源id
+        :rtype: str
+        """
+        return self._DatasourceId
+
+    @DatasourceId.setter
+    def DatasourceId(self, DatasourceId):
+        self._DatasourceId = DatasourceId
+
+    @property
+    def DataSourceType(self):
+        """数据type
+        :rtype: str
+        """
+        return self._DataSourceType
+
+    @DataSourceType.setter
+    def DataSourceType(self, DataSourceType):
+        self._DataSourceType = DataSourceType
+
+    @property
+    def ProjectId(self):
+        """项目id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def Env(self):
+        """环境信息
+        :rtype: str
+        """
+        return self._Env
+
+    @Env.setter
+    def Env(self, Env):
+        self._Env = Env
+
+    @property
+    def Model(self):
+        """项目model
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def DevDatasourceId(self):
+        """dev的数据源Id
+        :rtype: str
+        """
+        return self._DevDatasourceId
+
+    @DevDatasourceId.setter
+    def DevDatasourceId(self, DevDatasourceId):
+        self._DevDatasourceId = DevDatasourceId
+
+    @property
+    def Keyword(self):
+        """过滤字段
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+
+    def _deserialize(self, params):
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._DatabaseName = params.get("DatabaseName")
+        self._DatasourceId = params.get("DatasourceId")
+        self._DataSourceType = params.get("DataSourceType")
+        self._ProjectId = params.get("ProjectId")
+        self._Env = params.get("Env")
+        self._Model = params.get("Model")
+        self._DevDatasourceId = params.get("DevDatasourceId")
+        self._Keyword = params.get("Keyword")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRealViewSchemaPageResponse(AbstractModel):
+    """DescribeRealViewSchemaPage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: 数据库schema信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of DatabaseSchemaIInfo
+        :param _PageNumber: 页码
+        :type PageNumber: int
+        :param _PageSize: 每页记录数
+        :type PageSize: int
+        :param _TotalCount: 总记录数
+        :type TotalCount: int
+        :param _TotalPage: 总页数
+        :type TotalPage: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Items = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._TotalCount = None
+        self._TotalPage = None
+        self._RequestId = None
+
+    @property
+    def Items(self):
+        """数据库schema信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DatabaseSchemaIInfo
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def PageNumber(self):
+        """页码
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        """每页记录数
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalCount(self):
+        """总记录数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TotalPage(self):
+        """总页数
+        :rtype: int
+        """
+        return self._TotalPage
+
+    @TotalPage.setter
+    def TotalPage(self, TotalPage):
+        self._TotalPage = TotalPage
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = DatabaseSchemaIInfo()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._TotalCount = params.get("TotalCount")
+        self._TotalPage = params.get("TotalPage")
         self._RequestId = params.get("RequestId")
 
 

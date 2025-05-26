@@ -3009,6 +3009,8 @@ class ChannelCreateBatchSignUrlRequest(AbstractModel):
 <li>**若为子客企业员工，请使用OpenId，OrganizationOpenId参数，此参数留空即可**</li>
 </ul>
         :type OrganizationName: str
+        :param _SignatureTypes: 指定批量签署合同的签名类型，可传递以下值：<ul><li>**0**：手写签名</li><li>**1**：OCR楷体</li><li>**2**：姓名印章</li><li>**3**：图片印章</li><li>**4**：系统签名</li><li>**5**：长效手写签名（包含手写签名）</li></ul>注：<ul><li>不传值的情况则计算所有合同中个人签署区的签名类型，规则如下：<ul><li>1.如果所有合同中所有的个人签署区方式包含多种则是手写</li><li>2.如果所有合同中所有个人签名区签名类型仅为一种则就是那一种签名方式（例如合同1有多个签署区都是指定OCR楷体，合同2中也是多个签署区都是指定OCR楷体...则使用OCR楷体）</li></ul></li><li>该参数会覆盖您合同中的签名类型，若您在发起合同时限定了签名类型(赋值签名类型给ComponentTypeLimit)，请将这些签名类型赋予此参数</li><li>若签署方为企业员工，此参数无效，签名方式将以合同中为准。</li></ul>
+        :type SignatureTypes: list of int
         :param _JumpToDetail: 是否直接跳转至合同内容页面进行签署
 <ul>
 <li>**false**: 会跳转至批量合同流程的列表,  点击需要批量签署合同后进入合同内容页面进行签署(默认)</li>
@@ -3052,6 +3054,7 @@ class ChannelCreateBatchSignUrlRequest(AbstractModel):
         self._NotifyType = None
         self._FlowIds = None
         self._OrganizationName = None
+        self._SignatureTypes = None
         self._JumpToDetail = None
         self._FlowBatchUrlInfo = None
         self._OpenId = None
@@ -3210,6 +3213,17 @@ class ChannelCreateBatchSignUrlRequest(AbstractModel):
         self._OrganizationName = OrganizationName
 
     @property
+    def SignatureTypes(self):
+        """指定批量签署合同的签名类型，可传递以下值：<ul><li>**0**：手写签名</li><li>**1**：OCR楷体</li><li>**2**：姓名印章</li><li>**3**：图片印章</li><li>**4**：系统签名</li><li>**5**：长效手写签名（包含手写签名）</li></ul>注：<ul><li>不传值的情况则计算所有合同中个人签署区的签名类型，规则如下：<ul><li>1.如果所有合同中所有的个人签署区方式包含多种则是手写</li><li>2.如果所有合同中所有个人签名区签名类型仅为一种则就是那一种签名方式（例如合同1有多个签署区都是指定OCR楷体，合同2中也是多个签署区都是指定OCR楷体...则使用OCR楷体）</li></ul></li><li>该参数会覆盖您合同中的签名类型，若您在发起合同时限定了签名类型(赋值签名类型给ComponentTypeLimit)，请将这些签名类型赋予此参数</li><li>若签署方为企业员工，此参数无效，签名方式将以合同中为准。</li></ul>
+        :rtype: list of int
+        """
+        return self._SignatureTypes
+
+    @SignatureTypes.setter
+    def SignatureTypes(self, SignatureTypes):
+        self._SignatureTypes = SignatureTypes
+
+    @property
     def JumpToDetail(self):
         """是否直接跳转至合同内容页面进行签署
 <ul>
@@ -3320,6 +3334,7 @@ class ChannelCreateBatchSignUrlRequest(AbstractModel):
         self._NotifyType = params.get("NotifyType")
         self._FlowIds = params.get("FlowIds")
         self._OrganizationName = params.get("OrganizationName")
+        self._SignatureTypes = params.get("SignatureTypes")
         self._JumpToDetail = params.get("JumpToDetail")
         if params.get("FlowBatchUrlInfo") is not None:
             self._FlowBatchUrlInfo = FlowBatchUrlInfo()

@@ -3110,6 +3110,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRealViewSchemaPage(self, request):
+        """数据集成分页获取数据库SCHEMA信息
+
+        :param request: Request instance for DescribeRealViewSchemaPage.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRealViewSchemaPageRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeRealViewSchemaPageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRealViewSchemaPage", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRealViewSchemaPageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeReportTaskDetail(self, request):
         """查询上报任务详情
 

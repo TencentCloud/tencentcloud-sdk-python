@@ -165,6 +165,29 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateGroupsSTD(self, request):
+        """用户管理-批量创建用户组
+
+        :param request: Request instance for CreateGroupsSTD.
+        :type request: :class:`tencentcloud.emr.v20190103.models.CreateGroupsSTDRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.CreateGroupsSTDResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateGroupsSTD", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateGroupsSTDResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateInstance(self, request):
         """创建EMR集群实例
 
@@ -227,6 +250,29 @@ class EmrClient(AbstractClient):
             body = self.call("DeleteAutoScaleStrategy", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteAutoScaleStrategyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteGroupsSTD(self, request):
+        """批量删除用户组
+
+        :param request: Request instance for DeleteGroupsSTD.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DeleteGroupsSTDRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DeleteGroupsSTDResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteGroupsSTD", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteGroupsSTDResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1528,6 +1574,29 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyUserGroup(self, request):
+        """用户管理-修改用户组
+
+        :param request: Request instance for ModifyUserGroup.
+        :type request: :class:`tencentcloud.emr.v20190103.models.ModifyUserGroupRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ModifyUserGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyUserGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyUserGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyUserManagerPwd(self, request):
         """修改用户密码（用户管理）
 
@@ -1542,6 +1611,29 @@ class EmrClient(AbstractClient):
             body = self.call("ModifyUserManagerPwd", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyUserManagerPwdResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyUsersOfGroupSTD(self, request):
+        """变更用户组用户信息
+
+        :param request: Request instance for ModifyUsersOfGroupSTD.
+        :type request: :class:`tencentcloud.emr.v20190103.models.ModifyUsersOfGroupSTDRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ModifyUsersOfGroupSTDResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyUsersOfGroupSTD", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyUsersOfGroupSTDResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

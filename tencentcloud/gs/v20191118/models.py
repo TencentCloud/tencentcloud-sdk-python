@@ -5966,9 +5966,12 @@ class RestartAndroidInstancesAppRequest(AbstractModel):
         :type AndroidInstanceIds: list of str
         :param _PackageName: 应用包名
         :type PackageName: str
+        :param _Activity: 启动页。建议指定启动页来启动应用，避免启动失败。如果启动页为空，系统尝试根据 PackageName 启动，但不保证成功。
+        :type Activity: str
         """
         self._AndroidInstanceIds = None
         self._PackageName = None
+        self._Activity = None
 
     @property
     def AndroidInstanceIds(self):
@@ -5992,10 +5995,22 @@ class RestartAndroidInstancesAppRequest(AbstractModel):
     def PackageName(self, PackageName):
         self._PackageName = PackageName
 
+    @property
+    def Activity(self):
+        """启动页。建议指定启动页来启动应用，避免启动失败。如果启动页为空，系统尝试根据 PackageName 启动，但不保证成功。
+        :rtype: str
+        """
+        return self._Activity
+
+    @Activity.setter
+    def Activity(self, Activity):
+        self._Activity = Activity
+
 
     def _deserialize(self, params):
         self._AndroidInstanceIds = params.get("AndroidInstanceIds")
         self._PackageName = params.get("PackageName")
+        self._Activity = params.get("Activity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6348,9 +6363,12 @@ class StartAndroidInstancesAppRequest(AbstractModel):
         :type AndroidInstanceIds: list of str
         :param _PackageName: 应用包名
         :type PackageName: str
+        :param _Activity: 启动页。建议指定启动页来启动应用，避免启动失败。如果启动页为空，系统尝试根据 PackageName 启动，但不保证成功。
+        :type Activity: str
         """
         self._AndroidInstanceIds = None
         self._PackageName = None
+        self._Activity = None
 
     @property
     def AndroidInstanceIds(self):
@@ -6374,10 +6392,22 @@ class StartAndroidInstancesAppRequest(AbstractModel):
     def PackageName(self, PackageName):
         self._PackageName = PackageName
 
+    @property
+    def Activity(self):
+        """启动页。建议指定启动页来启动应用，避免启动失败。如果启动页为空，系统尝试根据 PackageName 启动，但不保证成功。
+        :rtype: str
+        """
+        return self._Activity
+
+    @Activity.setter
+    def Activity(self, Activity):
+        self._Activity = Activity
+
 
     def _deserialize(self, params):
         self._AndroidInstanceIds = params.get("AndroidInstanceIds")
         self._PackageName = params.get("PackageName")
+        self._Activity = params.get("Activity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

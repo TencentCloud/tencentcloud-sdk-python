@@ -913,13 +913,13 @@ class CreateAutoSnapshotPolicyRequest(AbstractModel):
         r"""
         :param _Hour: 快照重复时间点,0-23，小时
         :type Hour: str
-        :param _PolicyName: 策略名称
+        :param _PolicyName: 策略名称,限制64个字符数量仅支持输入中文、字母、数字、_或-
         :type PolicyName: str
         :param _DayOfWeek: 快照重复日期，星期一到星期日。 1代表星期一、7代表星期天，与DayOfMonth，IntervalDays 三者选一
         :type DayOfWeek: str
         :param _AliveDays: 快照保留时长，单位天，默认永久0
         :type AliveDays: int
-        :param _DayOfMonth: 快照按月重复，每月1-31号，选择一天，每月将在这一天自动创建快照。与DayOfWeek，IntervalDays 三者选一
+        :param _DayOfMonth: 快照按月重复，每月1-31号，选择一天，每月将在这一天自动创建快照；例如1 代表1号；与DayOfWeek，IntervalDays 三者选一
         :type DayOfMonth: str
         :param _IntervalDays: 间隔天数，与DayOfWeek，DayOfMonth 三者选一
         :type IntervalDays: int
@@ -944,7 +944,7 @@ class CreateAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def PolicyName(self):
-        """策略名称
+        """策略名称,限制64个字符数量仅支持输入中文、字母、数字、_或-
         :rtype: str
         """
         return self._PolicyName
@@ -977,7 +977,7 @@ class CreateAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def DayOfMonth(self):
-        """快照按月重复，每月1-31号，选择一天，每月将在这一天自动创建快照。与DayOfWeek，IntervalDays 三者选一
+        """快照按月重复，每月1-31号，选择一天，每月将在这一天自动创建快照；例如1 代表1号；与DayOfWeek，IntervalDays 三者选一
         :rtype: str
         """
         return self._DayOfMonth
@@ -1069,15 +1069,17 @@ class CreateCfsFileSystemRequest(AbstractModel):
         :type Zone: str
         :param _NetInterface: 网络类型，可选值为 VPC，CCN；其中 VPC 为私有网络， CCN 为云联网。通用标准型/性能型请选择VPC，Turbo标准型/性能型请选择CCN。
         :type NetInterface: str
-        :param _PGroupId: 权限组 ID,pgroupbasic 是默认权限组
+        :param _PGroupId: 权限组 ID,pgroupbasic 是默认权限组，通过控制查询权限组列表接口获取[DescribeCfsPGroups](https://cloud.tencent.com/document/product/582/38157)
         :type PGroupId: str
         :param _Protocol: 文件系统协议类型， 值为 NFS、CIFS、TURBO ; 若留空则默认为 NFS协议，turbo系列必须选择TURBO，不支持NFS、CIFS
         :type Protocol: str
         :param _StorageType: 文件系统存储类型，默认值为 SD ；其中 SD 为通用标准型存储， HP为通用性能型存储， TB为Turbo标准型， TP 为Turbo性能型。
         :type StorageType: str
-        :param _VpcId: 私有网络（VPC） ID，若网络类型选择的是VPC，该字段为必填.通过查询私有网络接口获取
+        :param _VpcId: 私有网络（VPC） ID，若网络类型选择的是VPC，该字段为必填.通过查询私有网络接口获取，
+[DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)
         :type VpcId: str
-        :param _SubnetId: 子网 ID，若网络类型选择的是VPC，该字段为必填。通过查询子网接口获取
+        :param _SubnetId: 子网 ID，若网络类型选择的是VPC，该字段为必填。通过查询子网接口获取，
+[DescribeSubnets](https://cloud.tencent.com/document/product/215/15784)
         :type SubnetId: str
         :param _MountIP: 指定IP地址，仅VPC网络支持；若不填写、将在该子网下随机分配 IP，Turbo系列当前不支持指定
         :type MountIP: str
@@ -1087,15 +1089,19 @@ class CreateCfsFileSystemRequest(AbstractModel):
         :type ResourceTags: list of TagInfo
         :param _ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。用于保证请求幂等性的字符串失效时间为2小时。
         :type ClientToken: str
-        :param _CcnId: 云联网ID， 若网络类型选择的是CCN，该字段为必填;通过查询云联网列表接口获取
+        :param _CcnId: 云联网ID， 若网络类型选择的是CCN，该字段为必填;通过查询云联网列表接口获取，通过接口
+[DescribeCcns](https://cloud.tencent.com/document/product/215/19199)
+
         :type CcnId: str
         :param _CidrBlock: 云联网中CFS使用的网段， 若网络类型选择的是Ccn，该字段为必填，且不能和Ccn中已经绑定的网段冲突
         :type CidrBlock: str
         :param _Capacity: 文件系统容量，turbo系列必填，单位为GiB。 turbo标准型单位GB，起售20TiB，即20480 GiB；扩容步长20TiB，即20480 GiB。turbo性能型起售10TiB，即10240 GiB；扩容步长10TiB，10240 GiB。
         :type Capacity: int
-        :param _SnapshotId: 文件系统快照ID，通过查询快照列表获取该参数
+        :param _SnapshotId: 文件系统快照ID，通过查询快照列表获取该参数，
+[DescribeCfsSnapshots](https://cloud.tencent.com/document/product/582/80206)
         :type SnapshotId: str
-        :param _AutoSnapshotPolicyId: 定期快照策略ID，通过查询快照策略信息获取
+        :param _AutoSnapshotPolicyId: 定期快照策略ID，通过查询快照策略信息获取,
+[DescribeAutoSnapshotPolicies](https://cloud.tencent.com/document/product/582/38157)
         :type AutoSnapshotPolicyId: str
         :param _EnableAutoScaleUp: 是否开启默认扩容，仅turbo类型文件存储支持
         :type EnableAutoScaleUp: bool
@@ -1147,7 +1153,7 @@ v3.1：创建增强版的通用文件系统
 
     @property
     def PGroupId(self):
-        """权限组 ID,pgroupbasic 是默认权限组
+        """权限组 ID,pgroupbasic 是默认权限组，通过控制查询权限组列表接口获取[DescribeCfsPGroups](https://cloud.tencent.com/document/product/582/38157)
         :rtype: str
         """
         return self._PGroupId
@@ -1180,7 +1186,8 @@ v3.1：创建增强版的通用文件系统
 
     @property
     def VpcId(self):
-        """私有网络（VPC） ID，若网络类型选择的是VPC，该字段为必填.通过查询私有网络接口获取
+        """私有网络（VPC） ID，若网络类型选择的是VPC，该字段为必填.通过查询私有网络接口获取，
+[DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)
         :rtype: str
         """
         return self._VpcId
@@ -1191,7 +1198,8 @@ v3.1：创建增强版的通用文件系统
 
     @property
     def SubnetId(self):
-        """子网 ID，若网络类型选择的是VPC，该字段为必填。通过查询子网接口获取
+        """子网 ID，若网络类型选择的是VPC，该字段为必填。通过查询子网接口获取，
+[DescribeSubnets](https://cloud.tencent.com/document/product/215/15784)
         :rtype: str
         """
         return self._SubnetId
@@ -1246,7 +1254,9 @@ v3.1：创建增强版的通用文件系统
 
     @property
     def CcnId(self):
-        """云联网ID， 若网络类型选择的是CCN，该字段为必填;通过查询云联网列表接口获取
+        """云联网ID， 若网络类型选择的是CCN，该字段为必填;通过查询云联网列表接口获取，通过接口
+[DescribeCcns](https://cloud.tencent.com/document/product/215/19199)
+
         :rtype: str
         """
         return self._CcnId
@@ -1279,7 +1289,8 @@ v3.1：创建增强版的通用文件系统
 
     @property
     def SnapshotId(self):
-        """文件系统快照ID，通过查询快照列表获取该参数
+        """文件系统快照ID，通过查询快照列表获取该参数，
+[DescribeCfsSnapshots](https://cloud.tencent.com/document/product/582/80206)
         :rtype: str
         """
         return self._SnapshotId
@@ -1290,7 +1301,8 @@ v3.1：创建增强版的通用文件系统
 
     @property
     def AutoSnapshotPolicyId(self):
-        """定期快照策略ID，通过查询快照策略信息获取
+        """定期快照策略ID，通过查询快照策略信息获取,
+[DescribeAutoSnapshotPolicies](https://cloud.tencent.com/document/product/582/38157)
         :rtype: str
         """
         return self._AutoSnapshotPolicyId

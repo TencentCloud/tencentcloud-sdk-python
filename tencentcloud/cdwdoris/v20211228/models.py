@@ -2496,6 +2496,12 @@ class CreateInstanceNewRequest(AbstractModel):
         :type UserMultiZoneInfos: :class:`tencentcloud.cdwdoris.v20211228.models.NetworkInfo`
         :param _UserMultiZoneInfoArr: 开启多可用区后，用户的所有可用区和子网信息
         :type UserMultiZoneInfoArr: list of NetworkInfo
+        :param _IsSSC: 是否存算分离
+        :type IsSSC: bool
+        :param _SSCCU: CU数
+        :type SSCCU: int
+        :param _CacheDiskSize: 缓存盘大小
+        :type CacheDiskSize: str
         """
         self._Zone = None
         self._FeSpec = None
@@ -2513,6 +2519,9 @@ class CreateInstanceNewRequest(AbstractModel):
         self._EnableMultiZones = None
         self._UserMultiZoneInfos = None
         self._UserMultiZoneInfoArr = None
+        self._IsSSC = None
+        self._SSCCU = None
+        self._CacheDiskSize = None
 
     @property
     def Zone(self):
@@ -2697,6 +2706,39 @@ class CreateInstanceNewRequest(AbstractModel):
     def UserMultiZoneInfoArr(self, UserMultiZoneInfoArr):
         self._UserMultiZoneInfoArr = UserMultiZoneInfoArr
 
+    @property
+    def IsSSC(self):
+        """是否存算分离
+        :rtype: bool
+        """
+        return self._IsSSC
+
+    @IsSSC.setter
+    def IsSSC(self, IsSSC):
+        self._IsSSC = IsSSC
+
+    @property
+    def SSCCU(self):
+        """CU数
+        :rtype: int
+        """
+        return self._SSCCU
+
+    @SSCCU.setter
+    def SSCCU(self, SSCCU):
+        self._SSCCU = SSCCU
+
+    @property
+    def CacheDiskSize(self):
+        """缓存盘大小
+        :rtype: str
+        """
+        return self._CacheDiskSize
+
+    @CacheDiskSize.setter
+    def CacheDiskSize(self, CacheDiskSize):
+        self._CacheDiskSize = CacheDiskSize
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -2733,6 +2775,9 @@ class CreateInstanceNewRequest(AbstractModel):
                 obj = NetworkInfo()
                 obj._deserialize(item)
                 self._UserMultiZoneInfoArr.append(obj)
+        self._IsSSC = params.get("IsSSC")
+        self._SSCCU = params.get("SSCCU")
+        self._CacheDiskSize = params.get("CacheDiskSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
