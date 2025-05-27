@@ -159,6 +159,8 @@ class AccountInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        warnings.warn("parameter `CreateTime` is deprecated", DeprecationWarning) 
+
         """该值已废弃
         :rtype: str
         """
@@ -166,6 +168,8 @@ class AccountInfo(AbstractModel):
 
     @CreateTime.setter
     def CreateTime(self, CreateTime):
+        warnings.warn("parameter `CreateTime` is deprecated", DeprecationWarning) 
+
         self._CreateTime = CreateTime
 
     @property
@@ -1017,6 +1021,147 @@ class AggregationCondition(AbstractModel):
         self._AggregationField = params.get("AggregationField")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AnalysisNodeInfo(AbstractModel):
+    """分析引擎节点信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeId: 节点ID
+        :type NodeId: str
+        :param _Status: 节点状态
+        :type Status: str
+        :param _DataStatus: 数据加载状态
+        :type DataStatus: str
+        :param _Cpu: cpu核数，单位：核
+        :type Cpu: int
+        :param _Memory: 内存大小，单位: MB
+        :type Memory: int
+        :param _Storage: 磁盘大小，单位：GB
+        :type Storage: int
+        :param _Zone: 节点所在可用区
+        :type Zone: str
+        :param _Message: 数据同步错误信息
+        :type Message: str
+        """
+        self._NodeId = None
+        self._Status = None
+        self._DataStatus = None
+        self._Cpu = None
+        self._Memory = None
+        self._Storage = None
+        self._Zone = None
+        self._Message = None
+
+    @property
+    def NodeId(self):
+        """节点ID
+        :rtype: str
+        """
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def Status(self):
+        """节点状态
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def DataStatus(self):
+        """数据加载状态
+        :rtype: str
+        """
+        return self._DataStatus
+
+    @DataStatus.setter
+    def DataStatus(self, DataStatus):
+        self._DataStatus = DataStatus
+
+    @property
+    def Cpu(self):
+        """cpu核数，单位：核
+        :rtype: int
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        """内存大小，单位: MB
+        :rtype: int
+        """
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def Storage(self):
+        """磁盘大小，单位：GB
+        :rtype: int
+        """
+        return self._Storage
+
+    @Storage.setter
+    def Storage(self, Storage):
+        self._Storage = Storage
+
+    @property
+    def Zone(self):
+        """节点所在可用区
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def Message(self):
+        """数据同步错误信息
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+
+    def _deserialize(self, params):
+        self._NodeId = params.get("NodeId")
+        self._Status = params.get("Status")
+        self._DataStatus = params.get("DataStatus")
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
+        self._Storage = params.get("Storage")
+        self._Zone = params.get("Zone")
+        self._Message = params.get("Message")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15409,6 +15554,195 @@ class DescribeClusterInfoResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCpuExpandHistoryRequest(AbstractModel):
+    """DescribeCpuExpandHistory请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例 ID
+        :type InstanceId: str
+        :param _ExpandStrategy: 扩容策略，值包括：all，manual，auto
+        :type ExpandStrategy: str
+        :param _Status: 扩容状态，值包括：all，extend，reduce，extend_failed
+        :type Status: str
+        :param _StartTime: 查询的开始时间。只能查看30天内的扩容历史
+        :type StartTime: int
+        :param _EndTime: 查询的结束时间。只能查看30天内的扩容历史
+        :type EndTime: int
+        :param _Offset: 分页入参
+        :type Offset: int
+        :param _Limit: 分页入参
+        :type Limit: int
+        """
+        self._InstanceId = None
+        self._ExpandStrategy = None
+        self._Status = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def InstanceId(self):
+        """实例 ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ExpandStrategy(self):
+        """扩容策略，值包括：all，manual，auto
+        :rtype: str
+        """
+        return self._ExpandStrategy
+
+    @ExpandStrategy.setter
+    def ExpandStrategy(self, ExpandStrategy):
+        self._ExpandStrategy = ExpandStrategy
+
+    @property
+    def Status(self):
+        """扩容状态，值包括：all，extend，reduce，extend_failed
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StartTime(self):
+        """查询的开始时间。只能查看30天内的扩容历史
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """查询的结束时间。只能查看30天内的扩容历史
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Offset(self):
+        """分页入参
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """分页入参
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ExpandStrategy = params.get("ExpandStrategy")
+        self._Status = params.get("Status")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCpuExpandHistoryResponse(AbstractModel):
+    """DescribeCpuExpandHistory返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: 满足查询要求的扩容历史
+        :type Items: list of HistoryJob
+        :param _TotalCount: 总数出参
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Items = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Items(self):
+        """满足查询要求的扩容历史
+        :rtype: list of HistoryJob
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def TotalCount(self):
+        """总数出参
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = HistoryJob()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDBFeaturesRequest(AbstractModel):
     """DescribeDBFeatures请求参数结构体
 
@@ -23225,6 +23559,147 @@ class ErrlogItem(AbstractModel):
         
 
 
+class HistoryJob(AbstractModel):
+    """单条扩容历史记录
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OperationType: 操作类型
+        :type OperationType: str
+        :param _ExpandType: 扩容类型
+        :type ExpandType: str
+        :param _StartTime: 扩容开始时间
+        :type StartTime: int
+        :param _EndTime: 扩容结束时间
+        :type EndTime: int
+        :param _OldCpu: 扩容前核数
+        :type OldCpu: int
+        :param _NewCpu: 扩容后核数
+        :type NewCpu: int
+        :param _ExtendCPUNum: 增减的cpu数
+        :type ExtendCPUNum: int
+        :param _Error: extend_failed操作上报
+        :type Error: str
+        """
+        self._OperationType = None
+        self._ExpandType = None
+        self._StartTime = None
+        self._EndTime = None
+        self._OldCpu = None
+        self._NewCpu = None
+        self._ExtendCPUNum = None
+        self._Error = None
+
+    @property
+    def OperationType(self):
+        """操作类型
+        :rtype: str
+        """
+        return self._OperationType
+
+    @OperationType.setter
+    def OperationType(self, OperationType):
+        self._OperationType = OperationType
+
+    @property
+    def ExpandType(self):
+        """扩容类型
+        :rtype: str
+        """
+        return self._ExpandType
+
+    @ExpandType.setter
+    def ExpandType(self, ExpandType):
+        self._ExpandType = ExpandType
+
+    @property
+    def StartTime(self):
+        """扩容开始时间
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """扩容结束时间
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def OldCpu(self):
+        """扩容前核数
+        :rtype: int
+        """
+        return self._OldCpu
+
+    @OldCpu.setter
+    def OldCpu(self, OldCpu):
+        self._OldCpu = OldCpu
+
+    @property
+    def NewCpu(self):
+        """扩容后核数
+        :rtype: int
+        """
+        return self._NewCpu
+
+    @NewCpu.setter
+    def NewCpu(self, NewCpu):
+        self._NewCpu = NewCpu
+
+    @property
+    def ExtendCPUNum(self):
+        """增减的cpu数
+        :rtype: int
+        """
+        return self._ExtendCPUNum
+
+    @ExtendCPUNum.setter
+    def ExtendCPUNum(self, ExtendCPUNum):
+        self._ExtendCPUNum = ExtendCPUNum
+
+    @property
+    def Error(self):
+        """extend_failed操作上报
+        :rtype: str
+        """
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
+
+
+    def _deserialize(self, params):
+        self._OperationType = params.get("OperationType")
+        self._ExpandType = params.get("ExpandType")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._OldCpu = params.get("OldCpu")
+        self._NewCpu = params.get("NewCpu")
+        self._ExtendCPUNum = params.get("ExtendCPUNum")
+        self._Error = params.get("Error")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ImportRecord(AbstractModel):
     """导入任务记录
 
@@ -24339,6 +24814,10 @@ class InstanceInfo(AbstractModel):
         :type ExpandCpu: int
         :param _ClusterInfo: 实例集群版节点信息
         :type ClusterInfo: list of ClusterInfo
+        :param _AnalysisNodeInfos: 分析引擎节点列表
+        :type AnalysisNodeInfos: list of AnalysisNodeInfo
+        :param _DeviceBandwidth: 设备带宽，单位G。当DeviceClass不为空时此参数才有效。例：25-表示当前设备带宽为25G；10-表示当前设备带宽为10G。
+        :type DeviceBandwidth: int
         """
         self._WanStatus = None
         self._Zone = None
@@ -24388,6 +24867,8 @@ class InstanceInfo(AbstractModel):
         self._DiskType = None
         self._ExpandCpu = None
         self._ClusterInfo = None
+        self._AnalysisNodeInfos = None
+        self._DeviceBandwidth = None
 
     @property
     def WanStatus(self):
@@ -24917,6 +25398,28 @@ class InstanceInfo(AbstractModel):
     def ClusterInfo(self, ClusterInfo):
         self._ClusterInfo = ClusterInfo
 
+    @property
+    def AnalysisNodeInfos(self):
+        """分析引擎节点列表
+        :rtype: list of AnalysisNodeInfo
+        """
+        return self._AnalysisNodeInfos
+
+    @AnalysisNodeInfos.setter
+    def AnalysisNodeInfos(self, AnalysisNodeInfos):
+        self._AnalysisNodeInfos = AnalysisNodeInfos
+
+    @property
+    def DeviceBandwidth(self):
+        """设备带宽，单位G。当DeviceClass不为空时此参数才有效。例：25-表示当前设备带宽为25G；10-表示当前设备带宽为10G。
+        :rtype: int
+        """
+        return self._DeviceBandwidth
+
+    @DeviceBandwidth.setter
+    def DeviceBandwidth(self, DeviceBandwidth):
+        self._DeviceBandwidth = DeviceBandwidth
+
 
     def _deserialize(self, params):
         self._WanStatus = params.get("WanStatus")
@@ -24993,6 +25496,13 @@ class InstanceInfo(AbstractModel):
                 obj = ClusterInfo()
                 obj._deserialize(item)
                 self._ClusterInfo.append(obj)
+        if params.get("AnalysisNodeInfos") is not None:
+            self._AnalysisNodeInfos = []
+            for item in params.get("AnalysisNodeInfos"):
+                obj = AnalysisNodeInfo()
+                obj._deserialize(item)
+                self._AnalysisNodeInfos.append(obj)
+        self._DeviceBandwidth = params.get("DeviceBandwidth")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31376,6 +31886,61 @@ class ParameterDetail(AbstractModel):
         
 
 
+class PeriodStrategy(AbstractModel):
+    """按周期扩容策略中的所选择的周期
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TimeCycle: 扩容周期
+        :type TimeCycle: :class:`tencentcloud.cdb.v20170320.models.TImeCycle`
+        :param _TimeInterval: 时间间隔
+        :type TimeInterval: :class:`tencentcloud.cdb.v20170320.models.TimeInterval`
+        """
+        self._TimeCycle = None
+        self._TimeInterval = None
+
+    @property
+    def TimeCycle(self):
+        """扩容周期
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.TImeCycle`
+        """
+        return self._TimeCycle
+
+    @TimeCycle.setter
+    def TimeCycle(self, TimeCycle):
+        self._TimeCycle = TimeCycle
+
+    @property
+    def TimeInterval(self):
+        """时间间隔
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.TimeInterval`
+        """
+        return self._TimeInterval
+
+    @TimeInterval.setter
+    def TimeInterval(self, TimeInterval):
+        self._TimeInterval = TimeInterval
+
+
+    def _deserialize(self, params):
+        if params.get("TimeCycle") is not None:
+            self._TimeCycle = TImeCycle()
+            self._TimeCycle._deserialize(params.get("TimeCycle"))
+        if params.get("TimeInterval") is not None:
+            self._TimeInterval = TimeInterval()
+            self._TimeInterval._deserialize(params.get("TimeInterval"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ProxyAddress(AbstractModel):
     """数据库代理地址信息
 
@@ -35649,11 +36214,17 @@ class StartCpuExpandRequest(AbstractModel):
         :type ExpandCpu: int
         :param _AutoStrategy: 自动扩容策略。Type 为 auto 时必传。
         :type AutoStrategy: :class:`tencentcloud.cdb.v20170320.models.AutoStrategy`
+        :param _TimeIntervalStrategy: 按时间段扩容策略
+        :type TimeIntervalStrategy: :class:`tencentcloud.cdb.v20170320.models.TimeIntervalStrategy`
+        :param _PeriodStrategy: 按周期扩容策略
+        :type PeriodStrategy: :class:`tencentcloud.cdb.v20170320.models.PeriodStrategy`
         """
         self._InstanceId = None
         self._Type = None
         self._ExpandCpu = None
         self._AutoStrategy = None
+        self._TimeIntervalStrategy = None
+        self._PeriodStrategy = None
 
     @property
     def InstanceId(self):
@@ -35700,6 +36271,28 @@ class StartCpuExpandRequest(AbstractModel):
     def AutoStrategy(self, AutoStrategy):
         self._AutoStrategy = AutoStrategy
 
+    @property
+    def TimeIntervalStrategy(self):
+        """按时间段扩容策略
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.TimeIntervalStrategy`
+        """
+        return self._TimeIntervalStrategy
+
+    @TimeIntervalStrategy.setter
+    def TimeIntervalStrategy(self, TimeIntervalStrategy):
+        self._TimeIntervalStrategy = TimeIntervalStrategy
+
+    @property
+    def PeriodStrategy(self):
+        """按周期扩容策略
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.PeriodStrategy`
+        """
+        return self._PeriodStrategy
+
+    @PeriodStrategy.setter
+    def PeriodStrategy(self, PeriodStrategy):
+        self._PeriodStrategy = PeriodStrategy
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -35708,6 +36301,12 @@ class StartCpuExpandRequest(AbstractModel):
         if params.get("AutoStrategy") is not None:
             self._AutoStrategy = AutoStrategy()
             self._AutoStrategy._deserialize(params.get("AutoStrategy"))
+        if params.get("TimeIntervalStrategy") is not None:
+            self._TimeIntervalStrategy = TimeIntervalStrategy()
+            self._TimeIntervalStrategy._deserialize(params.get("TimeIntervalStrategy"))
+        if params.get("PeriodStrategy") is not None:
+            self._PeriodStrategy = PeriodStrategy()
+            self._PeriodStrategy._deserialize(params.get("PeriodStrategy"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -36596,6 +37195,132 @@ class SwitchForUpgradeResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class TImeCycle(AbstractModel):
+    """扩容的周期
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Monday: 周一的扩容时间段
+        :type Monday: bool
+        :param _Tuesday: 周二的扩容时间段
+        :type Tuesday: bool
+        :param _Wednesday: 周三的扩容时间段
+        :type Wednesday: bool
+        :param _Thursday: 周四的扩容时间段
+        :type Thursday: bool
+        :param _Friday: 周五的扩容时间段
+        :type Friday: bool
+        :param _Saturday: 周六的扩容时间段
+        :type Saturday: bool
+        :param _Sunday: 周日的扩容时间段
+        :type Sunday: bool
+        """
+        self._Monday = None
+        self._Tuesday = None
+        self._Wednesday = None
+        self._Thursday = None
+        self._Friday = None
+        self._Saturday = None
+        self._Sunday = None
+
+    @property
+    def Monday(self):
+        """周一的扩容时间段
+        :rtype: bool
+        """
+        return self._Monday
+
+    @Monday.setter
+    def Monday(self, Monday):
+        self._Monday = Monday
+
+    @property
+    def Tuesday(self):
+        """周二的扩容时间段
+        :rtype: bool
+        """
+        return self._Tuesday
+
+    @Tuesday.setter
+    def Tuesday(self, Tuesday):
+        self._Tuesday = Tuesday
+
+    @property
+    def Wednesday(self):
+        """周三的扩容时间段
+        :rtype: bool
+        """
+        return self._Wednesday
+
+    @Wednesday.setter
+    def Wednesday(self, Wednesday):
+        self._Wednesday = Wednesday
+
+    @property
+    def Thursday(self):
+        """周四的扩容时间段
+        :rtype: bool
+        """
+        return self._Thursday
+
+    @Thursday.setter
+    def Thursday(self, Thursday):
+        self._Thursday = Thursday
+
+    @property
+    def Friday(self):
+        """周五的扩容时间段
+        :rtype: bool
+        """
+        return self._Friday
+
+    @Friday.setter
+    def Friday(self, Friday):
+        self._Friday = Friday
+
+    @property
+    def Saturday(self):
+        """周六的扩容时间段
+        :rtype: bool
+        """
+        return self._Saturday
+
+    @Saturday.setter
+    def Saturday(self, Saturday):
+        self._Saturday = Saturday
+
+    @property
+    def Sunday(self):
+        """周日的扩容时间段
+        :rtype: bool
+        """
+        return self._Sunday
+
+    @Sunday.setter
+    def Sunday(self, Sunday):
+        self._Sunday = Sunday
+
+
+    def _deserialize(self, params):
+        self._Monday = params.get("Monday")
+        self._Tuesday = params.get("Tuesday")
+        self._Wednesday = params.get("Wednesday")
+        self._Thursday = params.get("Thursday")
+        self._Friday = params.get("Friday")
+        self._Saturday = params.get("Saturday")
+        self._Sunday = params.get("Sunday")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TablePrivilege(AbstractModel):
     """数据库表权限
 
@@ -37200,6 +37925,108 @@ class TaskDetail(AbstractModel):
                 obj = TaskAttachInfo()
                 obj._deserialize(item)
                 self._TaskAttachInfo.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TimeInterval(AbstractModel):
+    """时间段
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 开始时间
+        :type StartTime: str
+        :param _EndTime: 结束时间
+        :type EndTime: str
+        """
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def StartTime(self):
+        """开始时间
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """结束时间
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TimeIntervalStrategy(AbstractModel):
+    """按时间段扩容策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 开始扩容时间
+        :type StartTime: int
+        :param _EndTime: 结束扩容时间
+        :type EndTime: int
+        """
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def StartTime(self):
+        """开始扩容时间
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """结束扩容时间
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

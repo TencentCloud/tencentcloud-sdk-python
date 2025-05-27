@@ -15678,6 +15678,10 @@ class Pod(AbstractModel):
         :type CrossTenantENIInfo: :class:`tencentcloud.tione.v20211111.models.CrossTenantENIInfo`
         :param _Status: 实例的状态信息
         :type Status: str
+        :param _StartScheduleTime: 实例的开始调度时间
+        :type StartScheduleTime: str
+        :param _Message: 实例状态的补充信息
+        :type Message: str
         """
         self._Name = None
         self._Uid = None
@@ -15689,6 +15693,8 @@ class Pod(AbstractModel):
         self._ContainerInfos = None
         self._CrossTenantENIInfo = None
         self._Status = None
+        self._StartScheduleTime = None
+        self._Message = None
 
     @property
     def Name(self):
@@ -15813,6 +15819,28 @@ class Pod(AbstractModel):
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def StartScheduleTime(self):
+        """实例的开始调度时间
+        :rtype: str
+        """
+        return self._StartScheduleTime
+
+    @StartScheduleTime.setter
+    def StartScheduleTime(self, StartScheduleTime):
+        self._StartScheduleTime = StartScheduleTime
+
+    @property
+    def Message(self):
+        """实例状态的补充信息
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -15834,6 +15862,8 @@ class Pod(AbstractModel):
             self._CrossTenantENIInfo = CrossTenantENIInfo()
             self._CrossTenantENIInfo._deserialize(params.get("CrossTenantENIInfo"))
         self._Status = params.get("Status")
+        self._StartScheduleTime = params.get("StartScheduleTime")
+        self._Message = params.get("Message")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17542,6 +17572,9 @@ DEFAULT: 其他来源
         :param _InstancePerReplicas: 单副本下的实例数，仅在部署类型为DIST时生效，默认1
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstancePerReplicas: str
+        :param _MonitorSource: 用于监控查询的Source
+枚举值，部分情况下与CreateSource不同，通过该字段兼容
+        :type MonitorSource: str
         """
         self._ServiceGroupId = None
         self._ServiceId = None
@@ -17576,6 +17609,7 @@ DEFAULT: 其他来源
         self._ArchiveStatus = None
         self._DeployType = None
         self._InstancePerReplicas = None
+        self._MonitorSource = None
 
     @property
     def ServiceGroupId(self):
@@ -17988,6 +18022,18 @@ DEFAULT: 其他来源
     def InstancePerReplicas(self, InstancePerReplicas):
         self._InstancePerReplicas = InstancePerReplicas
 
+    @property
+    def MonitorSource(self):
+        """用于监控查询的Source
+枚举值，部分情况下与CreateSource不同，通过该字段兼容
+        :rtype: str
+        """
+        return self._MonitorSource
+
+    @MonitorSource.setter
+    def MonitorSource(self, MonitorSource):
+        self._MonitorSource = MonitorSource
+
 
     def _deserialize(self, params):
         self._ServiceGroupId = params.get("ServiceGroupId")
@@ -18034,6 +18080,7 @@ DEFAULT: 其他来源
         self._ArchiveStatus = params.get("ArchiveStatus")
         self._DeployType = params.get("DeployType")
         self._InstancePerReplicas = params.get("InstancePerReplicas")
+        self._MonitorSource = params.get("MonitorSource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18566,6 +18613,8 @@ UPDATING 更新中
         :type AuthTokens: list of AuthToken
         :param _MonitorSource: 用于监控的创建来源字段
         :type MonitorSource: str
+        :param _SubUinName: 子用户的 nickname
+        :type SubUinName: str
         """
         self._ServiceGroupId = None
         self._ServiceGroupName = None
@@ -18590,6 +18639,7 @@ UPDATING 更新中
         self._AuthorizationEnable = None
         self._AuthTokens = None
         self._MonitorSource = None
+        self._SubUinName = None
 
     @property
     def ServiceGroupId(self):
@@ -18873,6 +18923,17 @@ UPDATING 更新中
     def MonitorSource(self, MonitorSource):
         self._MonitorSource = MonitorSource
 
+    @property
+    def SubUinName(self):
+        """子用户的 nickname
+        :rtype: str
+        """
+        return self._SubUinName
+
+    @SubUinName.setter
+    def SubUinName(self, SubUinName):
+        self._SubUinName = SubUinName
+
 
     def _deserialize(self, params):
         self._ServiceGroupId = params.get("ServiceGroupId")
@@ -18913,6 +18974,7 @@ UPDATING 更新中
                 obj._deserialize(item)
                 self._AuthTokens.append(obj)
         self._MonitorSource = params.get("MonitorSource")
+        self._SubUinName = params.get("SubUinName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

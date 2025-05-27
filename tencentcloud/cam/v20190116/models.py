@@ -9655,7 +9655,6 @@ class LoginActionFlag(AbstractModel):
         :param _Mail: 0: 非邮箱校验 1: 邮箱校验
         :type Mail: int
         :param _U2FToken: 0: 非u2f硬件token 1: u2f硬件token
-注意：此字段可能返回 null，表示取不到有效值。
         :type U2FToken: int
         """
         self._Phone = None
@@ -9735,7 +9734,6 @@ class LoginActionFlag(AbstractModel):
     @property
     def U2FToken(self):
         """0: 非u2f硬件token 1: u2f硬件token
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._U2FToken
@@ -9783,7 +9781,6 @@ class LoginActionFlagIntl(AbstractModel):
         :param _Mail: 邮件
         :type Mail: int
         :param _U2FToken: u2f硬件token
-注意：此字段可能返回 null，表示取不到有效值。
         :type U2FToken: int
         """
         self._Phone = None
@@ -9863,7 +9860,6 @@ class LoginActionFlagIntl(AbstractModel):
     @property
     def U2FToken(self):
         """u2f硬件token
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._U2FToken
@@ -11508,10 +11504,8 @@ class SubAccountInfo(AbstractModel):
         :param _Email: 邮箱
         :type Email: str
         :param _CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param _NickName: 昵称
-注意：此字段可能返回 null，表示取不到有效值。
         :type NickName: str
         """
         self._Uin = None
@@ -11616,7 +11610,6 @@ class SubAccountInfo(AbstractModel):
     @property
     def CreateTime(self):
         """创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CreateTime
@@ -11628,7 +11621,6 @@ class SubAccountInfo(AbstractModel):
     @property
     def NickName(self):
         """昵称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NickName

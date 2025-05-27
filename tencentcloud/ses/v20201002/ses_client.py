@@ -441,6 +441,29 @@ class SesClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ListAddressUnsubscribeConfig(self, request):
+        """获取地址级退订配置列表
+
+        :param request: Request instance for ListAddressUnsubscribeConfig.
+        :type request: :class:`tencentcloud.ses.v20201002.models.ListAddressUnsubscribeConfigRequest`
+        :rtype: :class:`tencentcloud.ses.v20201002.models.ListAddressUnsubscribeConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListAddressUnsubscribeConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListAddressUnsubscribeConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ListBlackEmailAddress(self, request):
         """腾讯云发送的邮件一旦被收件方判断为硬退(Hard Bounce)，腾讯云会拉黑该地址，并不允许所有用户向该地址发送邮件。成为邮箱黑名单。如果业务方确认是误判，可以从黑名单中删除。
 

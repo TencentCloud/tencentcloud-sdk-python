@@ -2783,6 +2783,8 @@ class BizTaskInfo(AbstractModel):
         :type InstanceCLSDeliveryInfos: list of InstanceCLSDeliveryInfo
         :param _TaskProgressInfo: 任务进度信息
         :type TaskProgressInfo: :class:`tencentcloud.cynosdb.v20190107.models.TaskProgressInfo`
+        :param _GdnTaskInfo: 全球数据库网络任务
+        :type GdnTaskInfo: :class:`tencentcloud.cynosdb.v20190107.models.GdnTaskInfo`
         """
         self._ID = None
         self._AppId = None
@@ -2821,6 +2823,7 @@ class BizTaskInfo(AbstractModel):
         self._TaskMaintainInfo = None
         self._InstanceCLSDeliveryInfos = None
         self._TaskProgressInfo = None
+        self._GdnTaskInfo = None
 
     @property
     def ID(self):
@@ -3242,6 +3245,17 @@ class BizTaskInfo(AbstractModel):
     def TaskProgressInfo(self, TaskProgressInfo):
         self._TaskProgressInfo = TaskProgressInfo
 
+    @property
+    def GdnTaskInfo(self):
+        """全球数据库网络任务
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.GdnTaskInfo`
+        """
+        return self._GdnTaskInfo
+
+    @GdnTaskInfo.setter
+    def GdnTaskInfo(self, GdnTaskInfo):
+        self._GdnTaskInfo = GdnTaskInfo
+
 
     def _deserialize(self, params):
         self._ID = params.get("ID")
@@ -3311,6 +3325,9 @@ class BizTaskInfo(AbstractModel):
         if params.get("TaskProgressInfo") is not None:
             self._TaskProgressInfo = TaskProgressInfo()
             self._TaskProgressInfo._deserialize(params.get("TaskProgressInfo"))
+        if params.get("GdnTaskInfo") is not None:
+            self._GdnTaskInfo = GdnTaskInfo()
+            self._GdnTaskInfo._deserialize(params.get("GdnTaskInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8552,6 +8569,12 @@ pausing
 从集群 - standby
 如为空，该字段无效
         :type GdnRole: str
+        :param _UsedArchiveStorage: 二级存储使用量，单位：G
+        :type UsedArchiveStorage: int
+        :param _ArchiveStatus: 归档状态，枚举值<li>normal:正常</li><li>archiving:归档中</li><li>resuming:恢复中</li><li>archived :已归档</li>
+        :type ArchiveStatus: str
+        :param _ArchiveProgress: 归档进度，百分比。
+        :type ArchiveProgress: int
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -8606,6 +8629,9 @@ pausing
         self._CynosVersionTag = None
         self._GdnId = None
         self._GdnRole = None
+        self._UsedArchiveStorage = None
+        self._ArchiveStatus = None
+        self._ArchiveProgress = None
 
     @property
     def ClusterId(self):
@@ -9197,6 +9223,39 @@ pausing
     def GdnRole(self, GdnRole):
         self._GdnRole = GdnRole
 
+    @property
+    def UsedArchiveStorage(self):
+        """二级存储使用量，单位：G
+        :rtype: int
+        """
+        return self._UsedArchiveStorage
+
+    @UsedArchiveStorage.setter
+    def UsedArchiveStorage(self, UsedArchiveStorage):
+        self._UsedArchiveStorage = UsedArchiveStorage
+
+    @property
+    def ArchiveStatus(self):
+        """归档状态，枚举值<li>normal:正常</li><li>archiving:归档中</li><li>resuming:恢复中</li><li>archived :已归档</li>
+        :rtype: str
+        """
+        return self._ArchiveStatus
+
+    @ArchiveStatus.setter
+    def ArchiveStatus(self, ArchiveStatus):
+        self._ArchiveStatus = ArchiveStatus
+
+    @property
+    def ArchiveProgress(self):
+        """归档进度，百分比。
+        :rtype: int
+        """
+        return self._ArchiveProgress
+
+    @ArchiveProgress.setter
+    def ArchiveProgress(self, ArchiveProgress):
+        self._ArchiveProgress = ArchiveProgress
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -9284,6 +9343,9 @@ pausing
         self._CynosVersionTag = params.get("CynosVersionTag")
         self._GdnId = params.get("GdnId")
         self._GdnRole = params.get("GdnRole")
+        self._UsedArchiveStorage = params.get("UsedArchiveStorage")
+        self._ArchiveStatus = params.get("ArchiveStatus")
+        self._ArchiveProgress = params.get("ArchiveProgress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20397,6 +20459,8 @@ no
         :type AutoScaleUp: str
         :param _AutoScaleDown: 集群是否允许向下缩容，可选范围<li>yes</li><li>no</li>
         :type AutoScaleDown: str
+        :param _AutoArchive: 是否开启归档，可选范围<li>yes</li><li>no</li>默认值:yes
+        :type AutoArchive: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -20406,6 +20470,7 @@ no
         self._AutoPause = None
         self._AutoScaleUp = None
         self._AutoScaleDown = None
+        self._AutoArchive = None
         self._RequestId = None
 
     @property
@@ -20477,6 +20542,17 @@ no
         self._AutoScaleDown = AutoScaleDown
 
     @property
+    def AutoArchive(self):
+        """是否开启归档，可选范围<li>yes</li><li>no</li>默认值:yes
+        :rtype: str
+        """
+        return self._AutoArchive
+
+    @AutoArchive.setter
+    def AutoArchive(self, AutoArchive):
+        self._AutoArchive = AutoArchive
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -20495,6 +20571,7 @@ no
         self._AutoPause = params.get("AutoPause")
         self._AutoScaleUp = params.get("AutoScaleUp")
         self._AutoScaleDown = params.get("AutoScaleDown")
+        self._AutoArchive = params.get("AutoArchive")
         self._RequestId = params.get("RequestId")
 
 
@@ -21918,6 +21995,132 @@ class ExportResourcePackageDeductDetailsResponse(AbstractModel):
     def _deserialize(self, params):
         self._FileContent = params.get("FileContent")
         self._RequestId = params.get("RequestId")
+
+
+class GdnTaskInfo(AbstractModel):
+    """全球数据库任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GdnId: 全球数据库唯一标识
+        :type GdnId: str
+        :param _GdnName: 全球数据库唯一别名
+        :type GdnName: str
+        :param _PrimaryClusterId: 主集群ID
+        :type PrimaryClusterId: str
+        :param _PrimaryClusterRegion: 主集群所在地域
+        :type PrimaryClusterRegion: str
+        :param _StandbyClusterRegion: 从集群所在地域
+        :type StandbyClusterRegion: str
+        :param _StandbyClusterId: 从集群ID
+        :type StandbyClusterId: str
+        :param _StandbyClusterName: 从集群别名
+        :type StandbyClusterName: str
+        """
+        self._GdnId = None
+        self._GdnName = None
+        self._PrimaryClusterId = None
+        self._PrimaryClusterRegion = None
+        self._StandbyClusterRegion = None
+        self._StandbyClusterId = None
+        self._StandbyClusterName = None
+
+    @property
+    def GdnId(self):
+        """全球数据库唯一标识
+        :rtype: str
+        """
+        return self._GdnId
+
+    @GdnId.setter
+    def GdnId(self, GdnId):
+        self._GdnId = GdnId
+
+    @property
+    def GdnName(self):
+        """全球数据库唯一别名
+        :rtype: str
+        """
+        return self._GdnName
+
+    @GdnName.setter
+    def GdnName(self, GdnName):
+        self._GdnName = GdnName
+
+    @property
+    def PrimaryClusterId(self):
+        """主集群ID
+        :rtype: str
+        """
+        return self._PrimaryClusterId
+
+    @PrimaryClusterId.setter
+    def PrimaryClusterId(self, PrimaryClusterId):
+        self._PrimaryClusterId = PrimaryClusterId
+
+    @property
+    def PrimaryClusterRegion(self):
+        """主集群所在地域
+        :rtype: str
+        """
+        return self._PrimaryClusterRegion
+
+    @PrimaryClusterRegion.setter
+    def PrimaryClusterRegion(self, PrimaryClusterRegion):
+        self._PrimaryClusterRegion = PrimaryClusterRegion
+
+    @property
+    def StandbyClusterRegion(self):
+        """从集群所在地域
+        :rtype: str
+        """
+        return self._StandbyClusterRegion
+
+    @StandbyClusterRegion.setter
+    def StandbyClusterRegion(self, StandbyClusterRegion):
+        self._StandbyClusterRegion = StandbyClusterRegion
+
+    @property
+    def StandbyClusterId(self):
+        """从集群ID
+        :rtype: str
+        """
+        return self._StandbyClusterId
+
+    @StandbyClusterId.setter
+    def StandbyClusterId(self, StandbyClusterId):
+        self._StandbyClusterId = StandbyClusterId
+
+    @property
+    def StandbyClusterName(self):
+        """从集群别名
+        :rtype: str
+        """
+        return self._StandbyClusterName
+
+    @StandbyClusterName.setter
+    def StandbyClusterName(self, StandbyClusterName):
+        self._StandbyClusterName = StandbyClusterName
+
+
+    def _deserialize(self, params):
+        self._GdnId = params.get("GdnId")
+        self._GdnName = params.get("GdnName")
+        self._PrimaryClusterId = params.get("PrimaryClusterId")
+        self._PrimaryClusterRegion = params.get("PrimaryClusterRegion")
+        self._StandbyClusterRegion = params.get("StandbyClusterRegion")
+        self._StandbyClusterId = params.get("StandbyClusterId")
+        self._StandbyClusterName = params.get("StandbyClusterName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class GrantAccountPrivilegesRequest(AbstractModel):
@@ -28251,6 +28454,8 @@ class ModifyServerlessStrategyRequest(AbstractModel):
         :type MinRoCount: int
         :param _MaxRoCount: 只读节点最大个数
         :type MaxRoCount: int
+        :param _AutoArchive: 是否开启归档，可选范围<li>yes</li><li>no</li>默认值:yes
+        :type AutoArchive: str
         """
         self._ClusterId = None
         self._AutoPause = None
@@ -28263,6 +28468,7 @@ class ModifyServerlessStrategyRequest(AbstractModel):
         self._MaxRoCpu = None
         self._MinRoCount = None
         self._MaxRoCount = None
+        self._AutoArchive = None
 
     @property
     def ClusterId(self):
@@ -28387,6 +28593,17 @@ class ModifyServerlessStrategyRequest(AbstractModel):
     def MaxRoCount(self, MaxRoCount):
         self._MaxRoCount = MaxRoCount
 
+    @property
+    def AutoArchive(self):
+        """是否开启归档，可选范围<li>yes</li><li>no</li>默认值:yes
+        :rtype: str
+        """
+        return self._AutoArchive
+
+    @AutoArchive.setter
+    def AutoArchive(self, AutoArchive):
+        self._AutoArchive = AutoArchive
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -28400,6 +28617,7 @@ class ModifyServerlessStrategyRequest(AbstractModel):
         self._MaxRoCpu = params.get("MaxRoCpu")
         self._MinRoCount = params.get("MinRoCount")
         self._MaxRoCount = params.get("MaxRoCount")
+        self._AutoArchive = params.get("AutoArchive")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31928,17 +32146,17 @@ class ProxyConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProxyCount: 数据库代理组节点个数（该参数不再建议使用，建议使用ProxyZones)
+        :param _ProxyCount: 数据库代理组节点个数。该参数不再建议使用,建议使用ProxyZones
         :type ProxyCount: int
         :param _Cpu: cpu核数
         :type Cpu: int
         :param _Mem: 内存
         :type Mem: int
-        :param _ConnectionPoolType: 连接池类型：SessionConnectionPool(会话级别连接池 )
+        :param _ConnectionPoolType: 连接池类型:SessionConnectionPool(会话级别连接池 )
         :type ConnectionPoolType: str
         :param _OpenConnectionPool: 是否开启连接池,yes-开启，no-不开启
         :type OpenConnectionPool: str
-        :param _ConnectionPoolTimeOut: 连接池阈值：单位（秒）
+        :param _ConnectionPoolTimeOut: 连接池阈值:单位（秒）
         :type ConnectionPoolTimeOut: int
         :param _Description: 描述说明
         :type Description: str
@@ -31956,7 +32174,7 @@ class ProxyConfig(AbstractModel):
 
     @property
     def ProxyCount(self):
-        """数据库代理组节点个数（该参数不再建议使用，建议使用ProxyZones)
+        """数据库代理组节点个数。该参数不再建议使用,建议使用ProxyZones
         :rtype: int
         """
         return self._ProxyCount
@@ -31989,7 +32207,7 @@ class ProxyConfig(AbstractModel):
 
     @property
     def ConnectionPoolType(self):
-        """连接池类型：SessionConnectionPool(会话级别连接池 )
+        """连接池类型:SessionConnectionPool(会话级别连接池 )
         :rtype: str
         """
         return self._ConnectionPoolType
@@ -32011,7 +32229,7 @@ class ProxyConfig(AbstractModel):
 
     @property
     def ConnectionPoolTimeOut(self):
-        """连接池阈值：单位（秒）
+        """连接池阈值:单位（秒）
         :rtype: int
         """
         return self._ConnectionPoolTimeOut
@@ -35231,6 +35449,8 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
         :type OriginalROInstanceList: list of str
         :param _ProjectId: 项目id
         :type ProjectId: int
+        :param _AutoArchive: 是否开启归档，可选范围<li>yes</li><li>no</li>默认值:yes
+        :type AutoArchive: str
         """
         self._Zone = None
         self._OriginalClusterId = None
@@ -35259,6 +35479,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
         self._RollbackTables = None
         self._OriginalROInstanceList = None
         self._ProjectId = None
+        self._AutoArchive = None
 
     @property
     def Zone(self):
@@ -35566,6 +35787,17 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
     def ProjectId(self, ProjectId):
         self._ProjectId = ProjectId
 
+    @property
+    def AutoArchive(self):
+        """是否开启归档，可选范围<li>yes</li><li>no</li>默认值:yes
+        :rtype: str
+        """
+        return self._AutoArchive
+
+    @AutoArchive.setter
+    def AutoArchive(self, AutoArchive):
+        self._AutoArchive = AutoArchive
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -35620,6 +35852,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
                 self._RollbackTables.append(obj)
         self._OriginalROInstanceList = params.get("OriginalROInstanceList")
         self._ProjectId = params.get("ProjectId")
+        self._AutoArchive = params.get("AutoArchive")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

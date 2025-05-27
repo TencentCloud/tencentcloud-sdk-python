@@ -29227,6 +29227,8 @@ UTC时间，如'2020-01-01T12:00:00Z'。
         :param _EndTime: 统计的结束时间，默认为StartTime后一小时，最多支持查询24小时的数据。
 UTC时间，如'2020-01-01T12:00:00Z'。
         :type EndTime: str
+        :param _RemoteIp: 对端客户端或者服务端的IP地址
+        :type RemoteIp: str
         """
         self._FlowId = None
         self._Type = None
@@ -29235,6 +29237,7 @@ UTC时间，如'2020-01-01T12:00:00Z'。
         self._Period = None
         self._StartTime = None
         self._EndTime = None
+        self._RemoteIp = None
 
     @property
     def FlowId(self):
@@ -29315,6 +29318,17 @@ UTC时间，如'2020-01-01T12:00:00Z'。
     def EndTime(self, EndTime):
         self._EndTime = EndTime
 
+    @property
+    def RemoteIp(self):
+        """对端客户端或者服务端的IP地址
+        :rtype: str
+        """
+        return self._RemoteIp
+
+    @RemoteIp.setter
+    def RemoteIp(self, RemoteIp):
+        self._RemoteIp = RemoteIp
+
 
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
@@ -29324,6 +29338,7 @@ UTC时间，如'2020-01-01T12:00:00Z'。
         self._Period = params.get("Period")
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
+        self._RemoteIp = params.get("RemoteIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29615,6 +29630,8 @@ UTC时间，如'2020-01-01T12:00:00Z'。
         :type EndTime: str
         :param _Period: 查询间隔，可选[5s|1min|5min|15min]。
         :type Period: str
+        :param _RemoteIp: 对端客户端或者服务端的IP地址
+        :type RemoteIp: str
         """
         self._FlowId = None
         self._Type = None
@@ -29623,6 +29640,7 @@ UTC时间，如'2020-01-01T12:00:00Z'。
         self._StartTime = None
         self._EndTime = None
         self._Period = None
+        self._RemoteIp = None
 
     @property
     def FlowId(self):
@@ -29703,6 +29721,17 @@ UTC时间，如'2020-01-01T12:00:00Z'。
     def Period(self, Period):
         self._Period = Period
 
+    @property
+    def RemoteIp(self):
+        """对端客户端或者服务端的IP地址
+        :rtype: str
+        """
+        return self._RemoteIp
+
+    @RemoteIp.setter
+    def RemoteIp(self, RemoteIp):
+        self._RemoteIp = RemoteIp
+
 
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
@@ -29712,6 +29741,7 @@ UTC时间，如'2020-01-01T12:00:00Z'。
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
         self._Period = params.get("Period")
+        self._RemoteIp = params.get("RemoteIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29793,6 +29823,8 @@ UTC时间，如'2020-01-01T12:00:00Z'。
         :param _EndTime: 统计的结束时间，默认为StartTime后一小时，最多支持查询24小时的数据。
 UTC时间，如'2020-01-01T12:00:00Z'。
         :type EndTime: str
+        :param _RemoteIp: 对端客户端或者服务端的IP地址
+        :type RemoteIp: str
         """
         self._FlowId = None
         self._Type = None
@@ -29801,6 +29833,7 @@ UTC时间，如'2020-01-01T12:00:00Z'。
         self._Period = None
         self._StartTime = None
         self._EndTime = None
+        self._RemoteIp = None
 
     @property
     def FlowId(self):
@@ -29881,6 +29914,17 @@ UTC时间，如'2020-01-01T12:00:00Z'。
     def EndTime(self, EndTime):
         self._EndTime = EndTime
 
+    @property
+    def RemoteIp(self):
+        """对端客户端或者服务端的IP地址
+        :rtype: str
+        """
+        return self._RemoteIp
+
+    @RemoteIp.setter
+    def RemoteIp(self, RemoteIp):
+        self._RemoteIp = RemoteIp
+
 
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
@@ -29890,6 +29934,7 @@ UTC时间，如'2020-01-01T12:00:00Z'。
         self._Period = params.get("Period")
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
+        self._RemoteIp = params.get("RemoteIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

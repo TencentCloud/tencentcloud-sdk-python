@@ -2502,6 +2502,8 @@ class CreateInstanceNewRequest(AbstractModel):
         :type SSCCU: int
         :param _CacheDiskSize: 缓存盘大小
         :type CacheDiskSize: str
+        :param _CacheDataDiskSize: 缓存盘大小
+        :type CacheDataDiskSize: int
         """
         self._Zone = None
         self._FeSpec = None
@@ -2522,6 +2524,7 @@ class CreateInstanceNewRequest(AbstractModel):
         self._IsSSC = None
         self._SSCCU = None
         self._CacheDiskSize = None
+        self._CacheDataDiskSize = None
 
     @property
     def Zone(self):
@@ -2730,6 +2733,8 @@ class CreateInstanceNewRequest(AbstractModel):
 
     @property
     def CacheDiskSize(self):
+        warnings.warn("parameter `CacheDiskSize` is deprecated", DeprecationWarning) 
+
         """缓存盘大小
         :rtype: str
         """
@@ -2737,7 +2742,20 @@ class CreateInstanceNewRequest(AbstractModel):
 
     @CacheDiskSize.setter
     def CacheDiskSize(self, CacheDiskSize):
+        warnings.warn("parameter `CacheDiskSize` is deprecated", DeprecationWarning) 
+
         self._CacheDiskSize = CacheDiskSize
+
+    @property
+    def CacheDataDiskSize(self):
+        """缓存盘大小
+        :rtype: int
+        """
+        return self._CacheDataDiskSize
+
+    @CacheDataDiskSize.setter
+    def CacheDataDiskSize(self, CacheDataDiskSize):
+        self._CacheDataDiskSize = CacheDataDiskSize
 
 
     def _deserialize(self, params):
@@ -2778,6 +2796,7 @@ class CreateInstanceNewRequest(AbstractModel):
         self._IsSSC = params.get("IsSSC")
         self._SSCCU = params.get("SSCCU")
         self._CacheDiskSize = params.get("CacheDiskSize")
+        self._CacheDataDiskSize = params.get("CacheDataDiskSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

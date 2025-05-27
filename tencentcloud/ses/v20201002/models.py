@@ -18,6 +18,72 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AddressUnsubscribeConfigData(AbstractModel):
+    """地址级退订配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Address: 发信地址
+        :type Address: str
+        :param _UnsubscribeConfig: 退订链接选项 0: 不加入退订链接 1: 简体中文 2: 英文 3: 繁体中文 4: 西班牙语 5: 法语 6: 德语 7: 日语 8: 韩语 9: 阿拉伯语 10: 泰语
+        :type UnsubscribeConfig: str
+        :param _Status: 0:关闭，1:开启
+        :type Status: int
+        """
+        self._Address = None
+        self._UnsubscribeConfig = None
+        self._Status = None
+
+    @property
+    def Address(self):
+        """发信地址
+        :rtype: str
+        """
+        return self._Address
+
+    @Address.setter
+    def Address(self, Address):
+        self._Address = Address
+
+    @property
+    def UnsubscribeConfig(self):
+        """退订链接选项 0: 不加入退订链接 1: 简体中文 2: 英文 3: 繁体中文 4: 西班牙语 5: 法语 6: 德语 7: 日语 8: 韩语 9: 阿拉伯语 10: 泰语
+        :rtype: str
+        """
+        return self._UnsubscribeConfig
+
+    @UnsubscribeConfig.setter
+    def UnsubscribeConfig(self, UnsubscribeConfig):
+        self._UnsubscribeConfig = UnsubscribeConfig
+
+    @property
+    def Status(self):
+        """0:关闭，1:开启
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Address = params.get("Address")
+        self._UnsubscribeConfig = params.get("UnsubscribeConfig")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Attachment(AbstractModel):
     """附件结构，包含附件名和base64之后的附件内容。
 
@@ -2624,6 +2690,120 @@ class GetStatisticsReportResponse(AbstractModel):
         if params.get("OverallVolume") is not None:
             self._OverallVolume = Volume()
             self._OverallVolume._deserialize(params.get("OverallVolume"))
+        self._RequestId = params.get("RequestId")
+
+
+class ListAddressUnsubscribeConfigRequest(AbstractModel):
+    """ListAddressUnsubscribeConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: 偏移量
+        :type Offset: int
+        :param _Limit: 拉取最大条数，不超过100
+        :type Limit: str
+        """
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Offset(self):
+        """偏移量
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """拉取最大条数，不超过100
+        :rtype: str
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListAddressUnsubscribeConfigResponse(AbstractModel):
+    """ListAddressUnsubscribeConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AddressUnsubscribeConfigList: 地址级退订配置
+        :type AddressUnsubscribeConfigList: list of AddressUnsubscribeConfigData
+        :param _Total: 总数
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AddressUnsubscribeConfigList = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def AddressUnsubscribeConfigList(self):
+        """地址级退订配置
+        :rtype: list of AddressUnsubscribeConfigData
+        """
+        return self._AddressUnsubscribeConfigList
+
+    @AddressUnsubscribeConfigList.setter
+    def AddressUnsubscribeConfigList(self, AddressUnsubscribeConfigList):
+        self._AddressUnsubscribeConfigList = AddressUnsubscribeConfigList
+
+    @property
+    def Total(self):
+        """总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("AddressUnsubscribeConfigList") is not None:
+            self._AddressUnsubscribeConfigList = []
+            for item in params.get("AddressUnsubscribeConfigList"):
+                obj = AddressUnsubscribeConfigData()
+                obj._deserialize(item)
+                self._AddressUnsubscribeConfigList.append(obj)
+        self._Total = params.get("Total")
         self._RequestId = params.get("RequestId")
 
 

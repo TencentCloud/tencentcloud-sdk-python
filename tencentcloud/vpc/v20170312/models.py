@@ -1900,7 +1900,7 @@ class AllocateAddressesRequest(AbstractModel):
 <li>AntiDDoSEIP：高防 IP。仅部分地域支持高防IP，详情可见弹性公网IP[产品概述](https://cloud.tencent.com/document/product/1199/41646)。</li>
         :type AddressType: str
         :param _AnycastZone: Anycast发布域。
-<ul style="margin:0"><li>已开通Anycast公网加速白名单的用户，可选值：<ul><li>ANYCAST_ZONE_GLOBAL：全球发布域（需要额外开通Anycast全球加速白名单）</li><li>ANYCAST_ZONE_OVERSEAS：境外发布域</li><li><b>[已废弃]</b> ANYCAST_ZONE_A：发布域A（已更新为全球发布域）</li><li><b>[已废弃]</b> ANYCAST_ZONE_B：发布域B（已更新为全球发布域）</li></ul>默认值：ANYCAST_ZONE_OVERSEAS。</li></ul>
+<ul style="margin:0"><li>已开通Anycast公网加速白名单的用户，可选值：<ul><li>ANYCAST_ZONE_GLOBAL：全球发布域（需要额外开通Anycast全球加速白名单）</li><li>ANYCAST_ZONE_OVERSEAS：境外发布域</li></ul>默认值：ANYCAST_ZONE_OVERSEAS。</li></ul>
         :type AnycastZone: str
         :param _VipCluster: 指定IP地址申请EIP，每个账户每个月只有三次配额
         :type VipCluster: list of str
@@ -2036,7 +2036,7 @@ AnycastEIP是否用于绑定负载均衡。
     @property
     def AnycastZone(self):
         """Anycast发布域。
-<ul style="margin:0"><li>已开通Anycast公网加速白名单的用户，可选值：<ul><li>ANYCAST_ZONE_GLOBAL：全球发布域（需要额外开通Anycast全球加速白名单）</li><li>ANYCAST_ZONE_OVERSEAS：境外发布域</li><li><b>[已废弃]</b> ANYCAST_ZONE_A：发布域A（已更新为全球发布域）</li><li><b>[已废弃]</b> ANYCAST_ZONE_B：发布域B（已更新为全球发布域）</li></ul>默认值：ANYCAST_ZONE_OVERSEAS。</li></ul>
+<ul style="margin:0"><li>已开通Anycast公网加速白名单的用户，可选值：<ul><li>ANYCAST_ZONE_GLOBAL：全球发布域（需要额外开通Anycast全球加速白名单）</li><li>ANYCAST_ZONE_OVERSEAS：境外发布域</li></ul>默认值：ANYCAST_ZONE_OVERSEAS。</li></ul>
         :rtype: str
         """
         return self._AnycastZone
@@ -2058,6 +2058,8 @@ AnycastEIP是否用于绑定负载均衡。
 
     @property
     def ApplicableForCLB(self):
+        warnings.warn("parameter `ApplicableForCLB` is deprecated", DeprecationWarning) 
+
         """<b>[已废弃]</b> AnycastEIP不再区分是否负载均衡。原参数说明如下：
 AnycastEIP是否用于绑定负载均衡。
 <ul style="margin:0"><li>已开通Anycast公网加速白名单的用户，可选值：<ul><li>TRUE：AnycastEIP可绑定对象为负载均衡</li>
@@ -2068,6 +2070,8 @@ AnycastEIP是否用于绑定负载均衡。
 
     @ApplicableForCLB.setter
     def ApplicableForCLB(self, ApplicableForCLB):
+        warnings.warn("parameter `ApplicableForCLB` is deprecated", DeprecationWarning) 
+
         self._ApplicableForCLB = ApplicableForCLB
 
     @property
@@ -47932,6 +47936,8 @@ class ModifyAddressesBandwidthRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        warnings.warn("parameter `StartTime` is deprecated", DeprecationWarning) 
+
         """包月带宽起始时间(已废弃，输入无效)
         :rtype: str
         """
@@ -47939,10 +47945,14 @@ class ModifyAddressesBandwidthRequest(AbstractModel):
 
     @StartTime.setter
     def StartTime(self, StartTime):
+        warnings.warn("parameter `StartTime` is deprecated", DeprecationWarning) 
+
         self._StartTime = StartTime
 
     @property
     def EndTime(self):
+        warnings.warn("parameter `EndTime` is deprecated", DeprecationWarning) 
+
         """包月带宽结束时间(已废弃，输入无效)
         :rtype: str
         """
@@ -47950,6 +47960,8 @@ class ModifyAddressesBandwidthRequest(AbstractModel):
 
     @EndTime.setter
     def EndTime(self, EndTime):
+        warnings.warn("parameter `EndTime` is deprecated", DeprecationWarning) 
+
         self._EndTime = EndTime
 
 

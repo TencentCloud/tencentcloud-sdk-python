@@ -1693,7 +1693,6 @@ class DescribeResourceTagsResponse(AbstractModel):
         :param _Offset: 数据位移偏量
         :type Offset: int
         :param _Limit: 每页大小
-注意：此字段可能返回 null，表示取不到有效值。
         :type Limit: int
         :param _Rows: 资源标签
         :type Rows: list of TagResource
@@ -1731,7 +1730,6 @@ class DescribeResourceTagsResponse(AbstractModel):
     @property
     def Limit(self):
         """每页大小
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Limit
@@ -1934,7 +1932,6 @@ class DescribeResourcesByTagsResponse(AbstractModel):
         :param _Offset: 数据位移偏量
         :type Offset: int
         :param _Limit: 每页大小
-注意：此字段可能返回 null，表示取不到有效值。
         :type Limit: int
         :param _Rows: 资源标签
         :type Rows: list of ResourceTag
@@ -1972,7 +1969,6 @@ class DescribeResourcesByTagsResponse(AbstractModel):
     @property
     def Limit(self):
         """每页大小
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Limit
@@ -4376,10 +4372,8 @@ class ResourceIdTag(AbstractModel):
     def __init__(self):
         r"""
         :param _ResourceId: 资源唯一标识
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceId: str
         :param _TagKeyValues: 标签键值对
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagKeyValues: list of Tag
         """
         self._ResourceId = None
@@ -4388,7 +4382,6 @@ class ResourceIdTag(AbstractModel):
     @property
     def ResourceId(self):
         """资源唯一标识
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceId
@@ -4400,7 +4393,6 @@ class ResourceIdTag(AbstractModel):
     @property
     def TagKeyValues(self):
         """标签键值对
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._TagKeyValues
@@ -4436,19 +4428,14 @@ class ResourceTag(AbstractModel):
     def __init__(self):
         r"""
         :param _ResourceRegion: 资源所在地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceRegion: str
         :param _ServiceType: 业务类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceType: str
         :param _ResourcePrefix: 资源前缀
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourcePrefix: str
         :param _ResourceId: 资源唯一标记
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceId: str
         :param _Tags: 资源标签
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
         """
         self._ResourceRegion = None
@@ -4460,7 +4447,6 @@ class ResourceTag(AbstractModel):
     @property
     def ResourceRegion(self):
         """资源所在地域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceRegion
@@ -4472,7 +4458,6 @@ class ResourceTag(AbstractModel):
     @property
     def ServiceType(self):
         """业务类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ServiceType
@@ -4484,7 +4469,6 @@ class ResourceTag(AbstractModel):
     @property
     def ResourcePrefix(self):
         """资源前缀
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourcePrefix
@@ -4496,7 +4480,6 @@ class ResourceTag(AbstractModel):
     @property
     def ResourceId(self):
         """资源唯一标记
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceId
@@ -4508,7 +4491,6 @@ class ResourceTag(AbstractModel):
     @property
     def Tags(self):
         """资源标签
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
         return self._Tags
@@ -4609,7 +4591,6 @@ class Tag(AbstractModel):
         :param _TagValue: 标签值
         :type TagValue: str
         :param _Category: 标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Category: str
         """
         self._TagKey = None
@@ -4641,7 +4622,6 @@ class Tag(AbstractModel):
     @property
     def Category(self):
         """标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Category
@@ -4770,10 +4750,8 @@ class TagResource(AbstractModel):
         :param _TagValueMd5: 标签值MD5值
         :type TagValueMd5: str
         :param _ServiceType: 资源类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceType: str
         :param _Category: 标签类型。取值： Custom：自定义标签。 System：系统标签。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Category: str
         """
         self._TagKey = None
@@ -4842,7 +4820,6 @@ class TagResource(AbstractModel):
     @property
     def ServiceType(self):
         """资源类型
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ServiceType
@@ -4854,7 +4831,6 @@ class TagResource(AbstractModel):
     @property
     def Category(self):
         """标签类型。取值： Custom：自定义标签。 System：系统标签。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Category
@@ -5014,7 +4990,6 @@ class TagWithDelete(AbstractModel):
         :param _CanDelete: 是否可以删除
         :type CanDelete: int
         :param _Category: 标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Category: str
         """
         self._TagKey = None
@@ -5058,7 +5033,6 @@ class TagWithDelete(AbstractModel):
     @property
     def Category(self):
         """标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Category

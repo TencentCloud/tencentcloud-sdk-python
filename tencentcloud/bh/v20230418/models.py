@@ -1827,10 +1827,28 @@ class BindDeviceResourceRequest(AbstractModel):
         :type ResourceId: str
         :param _DomainId: 网络域ID
         :type DomainId: str
+        :param _ManageDimension: K8S集群托管账号维度。1-集群，2-命名空间，3-工作负载
+        :type ManageDimension: int
+        :param _ManageAccountId: K8S集群托管账号id
+        :type ManageAccountId: int
+        :param _ManageAccount: K8S集群托管账号名称
+        :type ManageAccount: str
+        :param _ManageKubeconfig: K8S集群托管账号凭证
+        :type ManageKubeconfig: str
+        :param _Namespace: K8S集群托管的namespace
+        :type Namespace: str
+        :param _Workload: K8S集群托管的workload
+        :type Workload: str
         """
         self._DeviceIdSet = None
         self._ResourceId = None
         self._DomainId = None
+        self._ManageDimension = None
+        self._ManageAccountId = None
+        self._ManageAccount = None
+        self._ManageKubeconfig = None
+        self._Namespace = None
+        self._Workload = None
 
     @property
     def DeviceIdSet(self):
@@ -1865,11 +1883,83 @@ class BindDeviceResourceRequest(AbstractModel):
     def DomainId(self, DomainId):
         self._DomainId = DomainId
 
+    @property
+    def ManageDimension(self):
+        """K8S集群托管账号维度。1-集群，2-命名空间，3-工作负载
+        :rtype: int
+        """
+        return self._ManageDimension
+
+    @ManageDimension.setter
+    def ManageDimension(self, ManageDimension):
+        self._ManageDimension = ManageDimension
+
+    @property
+    def ManageAccountId(self):
+        """K8S集群托管账号id
+        :rtype: int
+        """
+        return self._ManageAccountId
+
+    @ManageAccountId.setter
+    def ManageAccountId(self, ManageAccountId):
+        self._ManageAccountId = ManageAccountId
+
+    @property
+    def ManageAccount(self):
+        """K8S集群托管账号名称
+        :rtype: str
+        """
+        return self._ManageAccount
+
+    @ManageAccount.setter
+    def ManageAccount(self, ManageAccount):
+        self._ManageAccount = ManageAccount
+
+    @property
+    def ManageKubeconfig(self):
+        """K8S集群托管账号凭证
+        :rtype: str
+        """
+        return self._ManageKubeconfig
+
+    @ManageKubeconfig.setter
+    def ManageKubeconfig(self, ManageKubeconfig):
+        self._ManageKubeconfig = ManageKubeconfig
+
+    @property
+    def Namespace(self):
+        """K8S集群托管的namespace
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Workload(self):
+        """K8S集群托管的workload
+        :rtype: str
+        """
+        return self._Workload
+
+    @Workload.setter
+    def Workload(self, Workload):
+        self._Workload = Workload
+
 
     def _deserialize(self, params):
         self._DeviceIdSet = params.get("DeviceIdSet")
         self._ResourceId = params.get("ResourceId")
         self._DomainId = params.get("DomainId")
+        self._ManageDimension = params.get("ManageDimension")
+        self._ManageAccountId = params.get("ManageAccountId")
+        self._ManageAccount = params.get("ManageAccount")
+        self._ManageKubeconfig = params.get("ManageKubeconfig")
+        self._Namespace = params.get("Namespace")
+        self._Workload = params.get("Workload")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3973,6 +4063,8 @@ class CreateResourceRequest(AbstractModel):
         :type DeployZone: str
         :param _Trial: 0非试用版，1试用版
         :type Trial: int
+        :param _ShareClb: 是否共享clb，0：不共享，1：共享
+        :type ShareClb: int
         """
         self._DeployRegion = None
         self._VpcId = None
@@ -3985,6 +4077,7 @@ class CreateResourceRequest(AbstractModel):
         self._AutoRenewFlag = None
         self._DeployZone = None
         self._Trial = None
+        self._ShareClb = None
 
     @property
     def DeployRegion(self):
@@ -4107,6 +4200,17 @@ class CreateResourceRequest(AbstractModel):
     def Trial(self, Trial):
         self._Trial = Trial
 
+    @property
+    def ShareClb(self):
+        """是否共享clb，0：不共享，1：共享
+        :rtype: int
+        """
+        return self._ShareClb
+
+    @ShareClb.setter
+    def ShareClb(self, ShareClb):
+        self._ShareClb = ShareClb
+
 
     def _deserialize(self, params):
         self._DeployRegion = params.get("DeployRegion")
@@ -4120,6 +4224,7 @@ class CreateResourceRequest(AbstractModel):
         self._AutoRenewFlag = params.get("AutoRenewFlag")
         self._DeployZone = params.get("DeployZone")
         self._Trial = params.get("Trial")
+        self._ShareClb = params.get("ShareClb")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9113,6 +9218,18 @@ class Device(AbstractModel):
         :type SSLCertName: str
         :param _IOAId: IOA侧的资源ID
         :type IOAId: int
+        :param _ManageDimension: K8S集群托管维度。1-集群，2-命名空间，3-工作负载
+        :type ManageDimension: int
+        :param _ManageAccountId: K8S集群托管账号id	
+        :type ManageAccountId: int
+        :param _Namespace: K8S集群命名空间	
+        :type Namespace: str
+        :param _Workload: K8S集群工作负载	
+        :type Workload: str
+        :param _SyncPodCount: K8S集群pod已同步数量
+        :type SyncPodCount: int
+        :param _TotalPodCount: K8S集群pod总数量	
+        :type TotalPodCount: int
         """
         self._Id = None
         self._InstanceId = None
@@ -9135,6 +9252,12 @@ class Device(AbstractModel):
         self._EnableSSL = None
         self._SSLCertName = None
         self._IOAId = None
+        self._ManageDimension = None
+        self._ManageAccountId = None
+        self._Namespace = None
+        self._Workload = None
+        self._SyncPodCount = None
+        self._TotalPodCount = None
 
     @property
     def Id(self):
@@ -9367,6 +9490,72 @@ class Device(AbstractModel):
     def IOAId(self, IOAId):
         self._IOAId = IOAId
 
+    @property
+    def ManageDimension(self):
+        """K8S集群托管维度。1-集群，2-命名空间，3-工作负载
+        :rtype: int
+        """
+        return self._ManageDimension
+
+    @ManageDimension.setter
+    def ManageDimension(self, ManageDimension):
+        self._ManageDimension = ManageDimension
+
+    @property
+    def ManageAccountId(self):
+        """K8S集群托管账号id	
+        :rtype: int
+        """
+        return self._ManageAccountId
+
+    @ManageAccountId.setter
+    def ManageAccountId(self, ManageAccountId):
+        self._ManageAccountId = ManageAccountId
+
+    @property
+    def Namespace(self):
+        """K8S集群命名空间	
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Workload(self):
+        """K8S集群工作负载	
+        :rtype: str
+        """
+        return self._Workload
+
+    @Workload.setter
+    def Workload(self, Workload):
+        self._Workload = Workload
+
+    @property
+    def SyncPodCount(self):
+        """K8S集群pod已同步数量
+        :rtype: int
+        """
+        return self._SyncPodCount
+
+    @SyncPodCount.setter
+    def SyncPodCount(self, SyncPodCount):
+        self._SyncPodCount = SyncPodCount
+
+    @property
+    def TotalPodCount(self):
+        """K8S集群pod总数量	
+        :rtype: int
+        """
+        return self._TotalPodCount
+
+    @TotalPodCount.setter
+    def TotalPodCount(self, TotalPodCount):
+        self._TotalPodCount = TotalPodCount
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -9399,6 +9588,12 @@ class Device(AbstractModel):
         self._EnableSSL = params.get("EnableSSL")
         self._SSLCertName = params.get("SSLCertName")
         self._IOAId = params.get("IOAId")
+        self._ManageDimension = params.get("ManageDimension")
+        self._ManageAccountId = params.get("ManageAccountId")
+        self._Namespace = params.get("Namespace")
+        self._Workload = params.get("Workload")
+        self._SyncPodCount = params.get("SyncPodCount")
+        self._TotalPodCount = params.get("TotalPodCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9426,12 +9621,18 @@ class DeviceAccount(AbstractModel):
         :type BoundPassword: bool
         :param _BoundPrivateKey: true-已托管私钥，false-未托管私钥
         :type BoundPrivateKey: bool
+        :param _BoundKubeconfig: 是否托管凭证, true-托管，false-未托管
+        :type BoundKubeconfig: bool
+        :param _IsK8SManageAccount: 是否为k8s资产管理账号	
+        :type IsK8SManageAccount: bool
         """
         self._Id = None
         self._DeviceId = None
         self._Account = None
         self._BoundPassword = None
         self._BoundPrivateKey = None
+        self._BoundKubeconfig = None
+        self._IsK8SManageAccount = None
 
     @property
     def Id(self):
@@ -9488,6 +9689,28 @@ class DeviceAccount(AbstractModel):
     def BoundPrivateKey(self, BoundPrivateKey):
         self._BoundPrivateKey = BoundPrivateKey
 
+    @property
+    def BoundKubeconfig(self):
+        """是否托管凭证, true-托管，false-未托管
+        :rtype: bool
+        """
+        return self._BoundKubeconfig
+
+    @BoundKubeconfig.setter
+    def BoundKubeconfig(self, BoundKubeconfig):
+        self._BoundKubeconfig = BoundKubeconfig
+
+    @property
+    def IsK8SManageAccount(self):
+        """是否为k8s资产管理账号	
+        :rtype: bool
+        """
+        return self._IsK8SManageAccount
+
+    @IsK8SManageAccount.setter
+    def IsK8SManageAccount(self, IsK8SManageAccount):
+        self._IsK8SManageAccount = IsK8SManageAccount
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -9495,6 +9718,8 @@ class DeviceAccount(AbstractModel):
         self._Account = params.get("Account")
         self._BoundPassword = params.get("BoundPassword")
         self._BoundPrivateKey = params.get("BoundPrivateKey")
+        self._BoundKubeconfig = params.get("BoundKubeconfig")
+        self._IsK8SManageAccount = params.get("IsK8SManageAccount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12893,6 +13118,8 @@ class Resource(AbstractModel):
         :type PackageIOAUserCount: int
         :param _PackageIOABandwidth:  零信任堡垒机带宽扩展包个数。一个扩展包表示4M带宽
         :type PackageIOABandwidth: int
+        :param _IOAResourceId: 堡垒机实例对应的零信任实例id
+        :type IOAResourceId: str
         """
         self._ResourceId = None
         self._ApCode = None
@@ -12945,6 +13172,7 @@ class Resource(AbstractModel):
         self._IOAResource = None
         self._PackageIOAUserCount = None
         self._PackageIOABandwidth = None
+        self._IOAResourceId = None
 
     @property
     def ResourceId(self):
@@ -13507,6 +13735,17 @@ class Resource(AbstractModel):
     def PackageIOABandwidth(self, PackageIOABandwidth):
         self._PackageIOABandwidth = PackageIOABandwidth
 
+    @property
+    def IOAResourceId(self):
+        """堡垒机实例对应的零信任实例id
+        :rtype: str
+        """
+        return self._IOAResourceId
+
+    @IOAResourceId.setter
+    def IOAResourceId(self, IOAResourceId):
+        self._IOAResourceId = IOAResourceId
+
 
     def _deserialize(self, params):
         self._ResourceId = params.get("ResourceId")
@@ -13565,6 +13804,7 @@ class Resource(AbstractModel):
         self._IOAResource = params.get("IOAResource")
         self._PackageIOAUserCount = params.get("PackageIOAUserCount")
         self._PackageIOABandwidth = params.get("PackageIOABandwidth")
+        self._IOAResourceId = params.get("IOAResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14401,6 +14641,8 @@ class SearchCommandResult(AbstractModel):
         :type Size: int
         :param _SignValue: 签名值
         :type SignValue: str
+        :param _DeviceKind: 资产类型
+        :type DeviceKind: str
         """
         self._Time = None
         self._UserName = None
@@ -14424,6 +14666,7 @@ class SearchCommandResult(AbstractModel):
         self._DeviceDepartmentName = None
         self._Size = None
         self._SignValue = None
+        self._DeviceKind = None
 
     @property
     def Time(self):
@@ -14667,6 +14910,17 @@ class SearchCommandResult(AbstractModel):
     def SignValue(self, SignValue):
         self._SignValue = SignValue
 
+    @property
+    def DeviceKind(self):
+        """资产类型
+        :rtype: str
+        """
+        return self._DeviceKind
+
+    @DeviceKind.setter
+    def DeviceKind(self, DeviceKind):
+        self._DeviceKind = DeviceKind
+
 
     def _deserialize(self, params):
         self._Time = params.get("Time")
@@ -14691,6 +14945,7 @@ class SearchCommandResult(AbstractModel):
         self._DeviceDepartmentName = params.get("DeviceDepartmentName")
         self._Size = params.get("Size")
         self._SignValue = params.get("SignValue")
+        self._DeviceKind = params.get("DeviceKind")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16760,6 +17015,14 @@ class SessionResult(AbstractModel):
         :type AppAssetUrl: str
         :param _ReplayType: 回放类型 默认0, 1-rfb 2-mp4 3-ssh
         :type ReplayType: int
+        :param _DeviceKind: 会话资产类型
+        :type DeviceKind: str
+        :param _Namespace: K8S集群命名空间
+        :type Namespace: str
+        :param _Workload: K8S集群工作负载
+        :type Workload: str
+        :param _PodName: K8S集群容器名称
+        :type PodName: str
         """
         self._UserName = None
         self._RealName = None
@@ -16782,6 +17045,10 @@ class SessionResult(AbstractModel):
         self._AppAssetKind = None
         self._AppAssetUrl = None
         self._ReplayType = None
+        self._DeviceKind = None
+        self._Namespace = None
+        self._Workload = None
+        self._PodName = None
 
     @property
     def UserName(self):
@@ -17014,6 +17281,50 @@ class SessionResult(AbstractModel):
     def ReplayType(self, ReplayType):
         self._ReplayType = ReplayType
 
+    @property
+    def DeviceKind(self):
+        """会话资产类型
+        :rtype: str
+        """
+        return self._DeviceKind
+
+    @DeviceKind.setter
+    def DeviceKind(self, DeviceKind):
+        self._DeviceKind = DeviceKind
+
+    @property
+    def Namespace(self):
+        """K8S集群命名空间
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Workload(self):
+        """K8S集群工作负载
+        :rtype: str
+        """
+        return self._Workload
+
+    @Workload.setter
+    def Workload(self, Workload):
+        self._Workload = Workload
+
+    @property
+    def PodName(self):
+        """K8S集群容器名称
+        :rtype: str
+        """
+        return self._PodName
+
+    @PodName.setter
+    def PodName(self, PodName):
+        self._PodName = PodName
+
 
     def _deserialize(self, params):
         self._UserName = params.get("UserName")
@@ -17037,6 +17348,10 @@ class SessionResult(AbstractModel):
         self._AppAssetKind = params.get("AppAssetKind")
         self._AppAssetUrl = params.get("AppAssetUrl")
         self._ReplayType = params.get("ReplayType")
+        self._DeviceKind = params.get("DeviceKind")
+        self._Namespace = params.get("Namespace")
+        self._Workload = params.get("Workload")
+        self._PodName = params.get("PodName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

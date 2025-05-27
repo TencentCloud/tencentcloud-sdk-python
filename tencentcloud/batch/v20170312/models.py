@@ -455,7 +455,7 @@ class AttachInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvId: 计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
+        :param _EnvId: 计算环境ID，环境ID通过调用接口 [DescribeComputeEnvs](https://cloud.tencent.com/document/api/599/15893)获取。
         :type EnvId: str
         :param _Instances: 加入计算环境实例列表，每次请求的实例的上限为100。
         :type Instances: list of Instance
@@ -465,7 +465,7 @@ class AttachInstancesRequest(AbstractModel):
 
     @property
     def EnvId(self):
-        """计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
+        """计算环境ID，环境ID通过调用接口 [DescribeComputeEnvs](https://cloud.tencent.com/document/api/599/15893)获取。
         :rtype: str
         """
         return self._EnvId
@@ -1858,14 +1858,14 @@ class DeleteComputeEnvRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvId: 计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
+        :param _EnvId: 计算环境ID，环境ID通过调用接口 [DescribeComputeEnvs](https://cloud.tencent.com/document/api/599/15893)获取，不能对状态处于删除中或者存在计算实例未销毁的环境发起删除动作。
         :type EnvId: str
         """
         self._EnvId = None
 
     @property
     def EnvId(self):
-        """计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
+        """计算环境ID，环境ID通过调用接口 [DescribeComputeEnvs](https://cloud.tencent.com/document/api/599/15893)获取，不能对状态处于删除中或者存在计算实例未销毁的环境发起删除动作。
         :rtype: str
         """
         return self._EnvId
@@ -2194,14 +2194,13 @@ class DescribeComputeEnvActivitiesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvId: 计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
+        :param _EnvId: 计算环境ID，环境ID通过调用接口 [DescribeComputeEnvs](https://cloud.tencent.com/document/api/599/15893)获取。
         :type EnvId: str
         :param _Offset: 偏移量，默认为0.
         :type Offset: int
         :param _Limit: 返回数量，默认值20，最大值100.
         :type Limit: int
-        :param _Filters: 过滤条件
-<li> compute-node-id - String - 是否必填：否 -（过滤条件）按照计算节点ID过滤。</li>
+        :param _Filters: 过滤条件<li> compute-node-id - String - 是否必填：否 -（过滤条件）按照计算节点ID过滤，节点ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。</li>
         :type Filters: :class:`tencentcloud.batch.v20170312.models.Filter`
         """
         self._EnvId = None
@@ -2211,7 +2210,7 @@ class DescribeComputeEnvActivitiesRequest(AbstractModel):
 
     @property
     def EnvId(self):
-        """计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
+        """计算环境ID，环境ID通过调用接口 [DescribeComputeEnvs](https://cloud.tencent.com/document/api/599/15893)获取。
         :rtype: str
         """
         return self._EnvId
@@ -2244,8 +2243,7 @@ class DescribeComputeEnvActivitiesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤条件
-<li> compute-node-id - String - 是否必填：否 -（过滤条件）按照计算节点ID过滤。</li>
+        """过滤条件<li> compute-node-id - String - 是否必填：否 -（过滤条件）按照计算节点ID过滤，节点ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。</li>
         :rtype: :class:`tencentcloud.batch.v20170312.models.Filter`
         """
         return self._Filters
@@ -2600,7 +2598,7 @@ class DescribeComputeEnvCreateInfosRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvIds: 计算环境ID列表，与Filters参数不能同时指定，最大限制100。环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
+        :param _EnvIds: 计算环境ID列表，与Filters参数不能同时指定，最大限制100，环境ID通过调用接口 [DescribeComputeEnvs](https://cloud.tencent.com/document/api/599/15893)获取。
         :type EnvIds: list of str
         :param _Filters: 过滤条件<li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤，可用区通过调用接口 [DescribeZones](https://cloud.tencent.com/document/api/213/15707)获取。</li><li> env-id - String - 是否必填：否 -（过滤条件）按照计算环境ID过滤。</li><li> env-name - String - 是否必填：否 -（过滤条件）按照计算环境名称过滤。</li>与EnvIds参数不能同时指定。
         :type Filters: list of Filter
@@ -2616,7 +2614,7 @@ class DescribeComputeEnvCreateInfosRequest(AbstractModel):
 
     @property
     def EnvIds(self):
-        """计算环境ID列表，与Filters参数不能同时指定，最大限制100。环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
+        """计算环境ID列表，与Filters参数不能同时指定，最大限制100，环境ID通过调用接口 [DescribeComputeEnvs](https://cloud.tencent.com/document/api/599/15893)获取。
         :rtype: list of str
         """
         return self._EnvIds
@@ -2749,14 +2747,14 @@ class DescribeComputeEnvRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvId: 计算环境ID
+        :param _EnvId: 计算环境ID，环境ID通过调用接口 [DescribeComputeEnvs](https://cloud.tencent.com/document/api/599/15893)获取。
         :type EnvId: str
         """
         self._EnvId = None
 
     @property
     def EnvId(self):
-        """计算环境ID
+        """计算环境ID，环境ID通过调用接口 [DescribeComputeEnvs](https://cloud.tencent.com/document/api/599/15893)获取。
         :rtype: str
         """
         return self._EnvId
@@ -3009,7 +3007,7 @@ class DescribeComputeEnvsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvIds: 计算环境ID列表，与Filters参数不能同时指定。最大数量上限100，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
+        :param _EnvIds: 计算环境ID列表，与Filters参数不能同时指定。最大数量上限100。
         :type EnvIds: list of str
         :param _Filters: 过滤条件<li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤，可用区通过调用接口 [DescribeZones](https://cloud.tencent.com/document/api/213/15707)获取。</li><li> env-id - String - 是否必填：否 -（过滤条件）按照计算环境ID过滤。</li><li> env-name - String - 是否必填：否 -（过滤条件）按照计算环境名称过滤。</li><li> resource-type - String - 是否必填：否 -（过滤条件）按照计算资源类型过滤，取值CVM或者CPM(黑石)。</li><li> tag-key - String - 是否必填：否 -（过滤条件）按照标签键进行过滤。</li><li>tag-value - String - 是否必填：否 -（过滤条件）按照标签值进行过滤。</li><li>tag:tag-key - String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。</li>与EnvIds参数不能同时指定。
         :type Filters: list of Filter
@@ -3025,7 +3023,7 @@ class DescribeComputeEnvsRequest(AbstractModel):
 
     @property
     def EnvIds(self):
-        """计算环境ID列表，与Filters参数不能同时指定。最大数量上限100，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
+        """计算环境ID列表，与Filters参数不能同时指定。最大数量上限100。
         :rtype: list of str
         """
         return self._EnvIds
@@ -4569,7 +4567,7 @@ class DetachInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvId: 计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
+        :param _EnvId: 计算环境ID，环境ID通过调用接口 [DescribeComputeEnvs](https://cloud.tencent.com/document/api/599/15893)获取。
         :type EnvId: str
         :param _InstanceIds: 实例ID列表，实例ID通过调用接口 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728)获取。
         :type InstanceIds: list of str
@@ -4579,7 +4577,7 @@ class DetachInstancesRequest(AbstractModel):
 
     @property
     def EnvId(self):
-        """计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
+        """计算环境ID，环境ID通过调用接口 [DescribeComputeEnvs](https://cloud.tencent.com/document/api/599/15893)获取。
         :rtype: str
         """
         return self._EnvId
@@ -5485,9 +5483,9 @@ class Instance(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 实例ID，可通过调用接口[DescribeInstances](https://cloud.tencent.com/document/product/213/15728)获取。
         :type InstanceId: str
-        :param _ImageId: 镜像ID
+        :param _ImageId: 镜像ID，可通过调用接口[DescribeImages](https://cloud.tencent.com/document/product/213/15715)获取。
         :type ImageId: str
         :param _LoginSettings: 实例登录设置。
         :type LoginSettings: :class:`tencentcloud.batch.v20170312.models.LoginSettings`
@@ -5498,7 +5496,7 @@ class Instance(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
+        """实例ID，可通过调用接口[DescribeInstances](https://cloud.tencent.com/document/product/213/15728)获取。
         :rtype: str
         """
         return self._InstanceId
@@ -5509,7 +5507,7 @@ class Instance(AbstractModel):
 
     @property
     def ImageId(self):
-        """镜像ID
+        """镜像ID，可通过调用接口[DescribeImages](https://cloud.tencent.com/document/product/213/15715)获取。
         :rtype: str
         """
         return self._ImageId
@@ -7143,7 +7141,7 @@ class ModifyComputeEnvRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvId: 计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
+        :param _EnvId: 计算环境ID，环境ID通过调用接口 [DescribeComputeEnvs](https://cloud.tencent.com/document/api/599/15893)获取。
         :type EnvId: str
         :param _DesiredComputeNodeCount: 计算节点期望个数，最大上限2000。
         :type DesiredComputeNodeCount: int
@@ -7162,7 +7160,7 @@ class ModifyComputeEnvRequest(AbstractModel):
 
     @property
     def EnvId(self):
-        """计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
+        """计算环境ID，环境ID通过调用接口 [DescribeComputeEnvs](https://cloud.tencent.com/document/api/599/15893)获取。
         :rtype: str
         """
         return self._EnvId
@@ -9916,7 +9914,7 @@ class TerminateComputeNodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvId: 计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
+        :param _EnvId: 计算环境ID，环境ID通过调用接口 [DescribeComputeEnvs](https://cloud.tencent.com/document/api/599/15893)获取。
         :type EnvId: str
         :param _ComputeNodeId: 计算节点ID，节点ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
         :type ComputeNodeId: str
@@ -9926,7 +9924,7 @@ class TerminateComputeNodeRequest(AbstractModel):
 
     @property
     def EnvId(self):
-        """计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
+        """计算环境ID，环境ID通过调用接口 [DescribeComputeEnvs](https://cloud.tencent.com/document/api/599/15893)获取。
         :rtype: str
         """
         return self._EnvId

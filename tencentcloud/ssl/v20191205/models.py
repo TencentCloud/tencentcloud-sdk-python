@@ -3613,10 +3613,13 @@ class ClbInstanceDetail(AbstractModel):
         :type LoadBalancerName: str
         :param _Listeners: CLB监听器列表
         :type Listeners: list of ClbListener
+        :param _Forward: 负载均衡类型，0 传统型负载均衡； 1 应用型负载均衡
+        :type Forward: int
         """
         self._LoadBalancerId = None
         self._LoadBalancerName = None
         self._Listeners = None
+        self._Forward = None
 
     @property
     def LoadBalancerId(self):
@@ -3651,6 +3654,17 @@ class ClbInstanceDetail(AbstractModel):
     def Listeners(self, Listeners):
         self._Listeners = Listeners
 
+    @property
+    def Forward(self):
+        """负载均衡类型，0 传统型负载均衡； 1 应用型负载均衡
+        :rtype: int
+        """
+        return self._Forward
+
+    @Forward.setter
+    def Forward(self, Forward):
+        self._Forward = Forward
+
 
     def _deserialize(self, params):
         self._LoadBalancerId = params.get("LoadBalancerId")
@@ -3661,6 +3675,7 @@ class ClbInstanceDetail(AbstractModel):
                 obj = ClbListener()
                 obj._deserialize(item)
                 self._Listeners.append(obj)
+        self._Forward = params.get("Forward")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

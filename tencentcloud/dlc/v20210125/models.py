@@ -24117,9 +24117,9 @@ class KafkaInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: kakfa实例Id
+        :param _InstanceId: kafka实例Id
         :type InstanceId: str
-        :param _Location: kakfa数据源的网络信息
+        :param _Location: kafka数据源的网络信息
         :type Location: :class:`tencentcloud.dlc.v20210125.models.DatasourceConnectionLocation`
         """
         self._InstanceId = None
@@ -24127,7 +24127,7 @@ class KafkaInfo(AbstractModel):
 
     @property
     def InstanceId(self):
-        """kakfa实例Id
+        """kafka实例Id
         :rtype: str
         """
         return self._InstanceId
@@ -24138,7 +24138,7 @@ class KafkaInfo(AbstractModel):
 
     @property
     def Location(self):
-        """kakfa数据源的网络信息
+        """kafka数据源的网络信息
         :rtype: :class:`tencentcloud.dlc.v20210125.models.DatasourceConnectionLocation`
         """
         return self._Location
@@ -28211,26 +28211,26 @@ class Policy(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Database: 需要授权的数据库名，填*代表当前Catalog下所有数据库。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别时只允许填空，其他类型下可以任意指定数据库。
+        :param _Database: 需要授权的数据库名，填 * 代表当前Catalog下所有数据库。当授权类型为管理员级别时，只允许填 “*”，当授权类型为数据连接级别时只允许填空，其他类型下可以任意指定数据库。
         :type Database: str
-        :param _Catalog: 需要授权的数据源名称，管理员级别下只支持填*（代表该级别全部资源）；数据源级别和数据库级别鉴权的情况下，只支持填COSDataCatalog或者*；在数据表级别鉴权下可以填写用户自定义数据源。不填情况下默认为DataLakeCatalog。注意：如果是对用户自定义数据源进行鉴权，DLC能够管理的权限是用户接入数据源的时候提供的账户的子集。
+        :param _Catalog: 需要授权的数据源名称，管理员级别下只支持填  * （代表该级别全部资源）；数据源级别和数据库级别鉴权的情况下，只支持填COSDataCatalog或者*；在数据表级别鉴权下可以填写用户自定义数据源。不填情况下默认为DataLakeCatalog。注意：如果是对用户自定义数据源进行鉴权，DLC能够管理的权限是用户接入数据源的时候提供的账户的子集。
         :type Catalog: str
-        :param _Table: 需要授权的表名，填*代表当前Database下所有表。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别、数据库级别时只允许填空，其他类型下可以任意指定数据表。
+        :param _Table: 需要授权的表名，填 * 代表当前Database下所有表。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别、数据库级别时只允许填空，其他类型下可以任意指定数据表。
         :type Table: str
         :param _Operation: 授权的权限操作，对于不同级别的鉴权提供不同操作。管理员权限：ALL，不填默认为ALL；数据连接级鉴权：CREATE；数据库级别鉴权：ALL、CREATE、ALTER、DROP；数据表权限：ALL、SELECT、INSERT、ALTER、DELETE、DROP、UPDATE。注意：在数据表权限下，指定的数据源不为COSDataCatalog的时候，只支持SELECT操作。
         :type Operation: str
         :param _PolicyType: 授权类型，现在支持八种授权类型：ADMIN:管理员级别鉴权 DATASOURCE：数据连接级别鉴权 DATABASE：数据库级别鉴权 TABLE：表级别鉴权 VIEW：视图级别鉴权 FUNCTION：函数级别鉴权 COLUMN：列级别鉴权 ENGINE：数据引擎鉴权。不填默认为管理员级别鉴权。
         :type PolicyType: str
-        :param _Function: 需要授权的函数名，填*代表当前Catalog下所有函数。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别时只允许填空，其他类型下可以任意指定函数。
+        :param _Function: 需要授权的函数名，填 * 代表当前Catalog下所有函数。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别时只允许填空，其他类型下可以任意指定函数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Function: str
-        :param _View: 需要授权的视图，填*代表当前Database下所有视图。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别、数据库级别时只允许填空，其他类型下可以任意指定视图。
+        :param _View: 需要授权的视图，填 * 代表当前Database下所有视图。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别、数据库级别时只允许填空，其他类型下可以任意指定视图。
 注意：此字段可能返回 null，表示取不到有效值。
         :type View: str
-        :param _Column: 需要授权的列，填*代表当前所有列。当授权类型为管理员级别时，只允许填“*”
+        :param _Column: 需要授权的列，填 * 代表当前所有列。当授权类型为管理员级别时，只允许填“*”
 注意：此字段可能返回 null，表示取不到有效值。
         :type Column: str
-        :param _DataEngine: 需要授权的数据引擎，填*代表当前所有引擎。当授权类型为管理员级别时，只允许填“*”
+        :param _DataEngine: 需要授权的数据引擎，填 * 代表当前所有引擎。当授权类型为管理员级别时，只允许填“*”
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataEngine: str
         :param _ReAuth: 用户是否可以进行二次授权。当为true的时候，被授权的用户可以将本次获取的权限再次授权给其他子用户。默认为false
@@ -28282,7 +28282,7 @@ class Policy(AbstractModel):
 
     @property
     def Database(self):
-        """需要授权的数据库名，填*代表当前Catalog下所有数据库。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别时只允许填空，其他类型下可以任意指定数据库。
+        """需要授权的数据库名，填 * 代表当前Catalog下所有数据库。当授权类型为管理员级别时，只允许填 “*”，当授权类型为数据连接级别时只允许填空，其他类型下可以任意指定数据库。
         :rtype: str
         """
         return self._Database
@@ -28293,7 +28293,7 @@ class Policy(AbstractModel):
 
     @property
     def Catalog(self):
-        """需要授权的数据源名称，管理员级别下只支持填*（代表该级别全部资源）；数据源级别和数据库级别鉴权的情况下，只支持填COSDataCatalog或者*；在数据表级别鉴权下可以填写用户自定义数据源。不填情况下默认为DataLakeCatalog。注意：如果是对用户自定义数据源进行鉴权，DLC能够管理的权限是用户接入数据源的时候提供的账户的子集。
+        """需要授权的数据源名称，管理员级别下只支持填  * （代表该级别全部资源）；数据源级别和数据库级别鉴权的情况下，只支持填COSDataCatalog或者*；在数据表级别鉴权下可以填写用户自定义数据源。不填情况下默认为DataLakeCatalog。注意：如果是对用户自定义数据源进行鉴权，DLC能够管理的权限是用户接入数据源的时候提供的账户的子集。
         :rtype: str
         """
         return self._Catalog
@@ -28304,7 +28304,7 @@ class Policy(AbstractModel):
 
     @property
     def Table(self):
-        """需要授权的表名，填*代表当前Database下所有表。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别、数据库级别时只允许填空，其他类型下可以任意指定数据表。
+        """需要授权的表名，填 * 代表当前Database下所有表。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别、数据库级别时只允许填空，其他类型下可以任意指定数据表。
         :rtype: str
         """
         return self._Table
@@ -28337,7 +28337,7 @@ class Policy(AbstractModel):
 
     @property
     def Function(self):
-        """需要授权的函数名，填*代表当前Catalog下所有函数。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别时只允许填空，其他类型下可以任意指定函数。
+        """需要授权的函数名，填 * 代表当前Catalog下所有函数。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别时只允许填空，其他类型下可以任意指定函数。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -28349,7 +28349,7 @@ class Policy(AbstractModel):
 
     @property
     def View(self):
-        """需要授权的视图，填*代表当前Database下所有视图。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别、数据库级别时只允许填空，其他类型下可以任意指定视图。
+        """需要授权的视图，填 * 代表当前Database下所有视图。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别、数据库级别时只允许填空，其他类型下可以任意指定视图。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -28361,7 +28361,7 @@ class Policy(AbstractModel):
 
     @property
     def Column(self):
-        """需要授权的列，填*代表当前所有列。当授权类型为管理员级别时，只允许填“*”
+        """需要授权的列，填 * 代表当前所有列。当授权类型为管理员级别时，只允许填“*”
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -28373,7 +28373,7 @@ class Policy(AbstractModel):
 
     @property
     def DataEngine(self):
-        """需要授权的数据引擎，填*代表当前所有引擎。当授权类型为管理员级别时，只允许填“*”
+        """需要授权的数据引擎，填 * 代表当前所有引擎。当授权类型为管理员级别时，只允许填“*”
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

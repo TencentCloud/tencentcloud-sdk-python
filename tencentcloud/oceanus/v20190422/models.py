@@ -315,7 +315,7 @@ class Cluster(AbstractModel):
         :type OwnerUin: str
         :param _CreatorUin: 创建者 UIN
         :type CreatorUin: str
-        :param _Status: 集群状态, 1 未初始化,，3 初始化中，2 运行中
+        :param _Status: 集群状态, 1 未初始化,3 初始化中，2 运行中
         :type Status: int
         :param _Remark: 描述
         :type Remark: str
@@ -437,6 +437,9 @@ class Cluster(AbstractModel):
         :type RunningCpu: float
         :param _RunningMem: 运行的内存
         :type RunningMem: float
+        :param _Setats: setats集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Setats: :class:`tencentcloud.oceanus.v20190422.models.Setats`
         """
         self._ClusterId = None
         self._Name = None
@@ -490,6 +493,7 @@ class Cluster(AbstractModel):
         self._TotalMem = None
         self._RunningCpu = None
         self._RunningMem = None
+        self._Setats = None
 
     @property
     def ClusterId(self):
@@ -559,7 +563,7 @@ class Cluster(AbstractModel):
 
     @property
     def Status(self):
-        """集群状态, 1 未初始化,，3 初始化中，2 运行中
+        """集群状态, 1 未初始化,3 初始化中，2 运行中
         :rtype: int
         """
         return self._Status
@@ -1093,6 +1097,18 @@ class Cluster(AbstractModel):
     def RunningMem(self, RunningMem):
         self._RunningMem = RunningMem
 
+    @property
+    def Setats(self):
+        """setats集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.Setats`
+        """
+        return self._Setats
+
+    @Setats.setter
+    def Setats(self, Setats):
+        self._Setats = Setats
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -1181,6 +1197,9 @@ class Cluster(AbstractModel):
         self._TotalMem = params.get("TotalMem")
         self._RunningCpu = params.get("RunningCpu")
         self._RunningMem = params.get("RunningMem")
+        if params.get("Setats") is not None:
+            self._Setats = Setats()
+            self._Setats._deserialize(params.get("Setats"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5844,6 +5863,8 @@ class DescribeJobsRequest(AbstractModel):
         :type WorkSpaceId: str
         :param _ExtraResult: 查询额外的作业信息,例如 JobEventInfo	
         :type ExtraResult: list of str
+        :param _ConnectorOptions: 查询引用connector
+        :type ConnectorOptions: str
         """
         self._JobIds = None
         self._Filters = None
@@ -5851,6 +5872,7 @@ class DescribeJobsRequest(AbstractModel):
         self._Limit = None
         self._WorkSpaceId = None
         self._ExtraResult = None
+        self._ConnectorOptions = None
 
     @property
     def JobIds(self):
@@ -5918,6 +5940,17 @@ class DescribeJobsRequest(AbstractModel):
     def ExtraResult(self, ExtraResult):
         self._ExtraResult = ExtraResult
 
+    @property
+    def ConnectorOptions(self):
+        """查询引用connector
+        :rtype: str
+        """
+        return self._ConnectorOptions
+
+    @ConnectorOptions.setter
+    def ConnectorOptions(self, ConnectorOptions):
+        self._ConnectorOptions = ConnectorOptions
+
 
     def _deserialize(self, params):
         self._JobIds = params.get("JobIds")
@@ -5931,6 +5964,7 @@ class DescribeJobsRequest(AbstractModel):
         self._Limit = params.get("Limit")
         self._WorkSpaceId = params.get("WorkSpaceId")
         self._ExtraResult = params.get("ExtraResult")
+        self._ConnectorOptions = params.get("ConnectorOptions")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11939,6 +11973,129 @@ class ResourceRefJobInfo(AbstractModel):
         
 
 
+class ResourceRefLatest(AbstractModel):
+    """资源引用
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: 资源id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceId: str
+        :param _Version: 版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: int
+        :param _Type: 资源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: int
+        :param _Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _WorkspaceId: 空间id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkspaceId: str
+        :param _Name: 资源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        """
+        self._ResourceId = None
+        self._Version = None
+        self._Type = None
+        self._Status = None
+        self._WorkspaceId = None
+        self._Name = None
+
+    @property
+    def ResourceId(self):
+        """资源id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def Version(self):
+        """版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def Type(self):
+        """资源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Status(self):
+        """状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def WorkspaceId(self):
+        """空间id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def Name(self):
+        """资源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        self._Version = params.get("Version")
+        self._Type = params.get("Type")
+        self._Status = params.get("Status")
+        self._WorkspaceId = params.get("WorkspaceId")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ResultColumn(AbstractModel):
     """Sql Gateway返回Column类型
 
@@ -12998,6 +13155,410 @@ class SessionClusterRefItem(AbstractModel):
         self._ResourceId = params.get("ResourceId")
         self._Version = params.get("Version")
         self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Setats(AbstractModel):
+    """setats类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SetatsSerialId: setats serialId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SetatsSerialId: str
+        :param _Status: 1  // 停止
+2  // 运行中
+3  // 初始化中
+4  // 扩容中
+5  // Warehoouse未配置
+6  // Warehoouse配置中
+7  // 重启中
+-2 // 已删除(集群被销毁时更新为此状态)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _Warehouse: setats warehouse
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Warehouse: :class:`tencentcloud.oceanus.v20190422.models.Warehouse`
+        :param _MasterInfo: setats master 机器规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MasterInfo: :class:`tencentcloud.oceanus.v20190422.models.SetatsCvmInfo`
+        :param _WorkerInfo: setats worker规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkerInfo: :class:`tencentcloud.oceanus.v20190422.models.SetatsCvmInfo`
+        :param _Tags: 标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        :param _AutoRenewFlag: 自动续费
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoRenewFlag: int
+        :param _ExpireTime: 过期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireTime: str
+        :param _SecondsUntilExpiry: 过期时间 秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecondsUntilExpiry: str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _ManagerUrl: manager url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ManagerUrl: str
+        :param _IsolatedTime: 隔离时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsolatedTime: str
+        """
+        self._SetatsSerialId = None
+        self._Status = None
+        self._Warehouse = None
+        self._MasterInfo = None
+        self._WorkerInfo = None
+        self._Tags = None
+        self._AutoRenewFlag = None
+        self._ExpireTime = None
+        self._SecondsUntilExpiry = None
+        self._CreateTime = None
+        self._ManagerUrl = None
+        self._IsolatedTime = None
+
+    @property
+    def SetatsSerialId(self):
+        """setats serialId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SetatsSerialId
+
+    @SetatsSerialId.setter
+    def SetatsSerialId(self, SetatsSerialId):
+        self._SetatsSerialId = SetatsSerialId
+
+    @property
+    def Status(self):
+        """1  // 停止
+2  // 运行中
+3  // 初始化中
+4  // 扩容中
+5  // Warehoouse未配置
+6  // Warehoouse配置中
+7  // 重启中
+-2 // 已删除(集群被销毁时更新为此状态)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Warehouse(self):
+        """setats warehouse
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.Warehouse`
+        """
+        return self._Warehouse
+
+    @Warehouse.setter
+    def Warehouse(self, Warehouse):
+        self._Warehouse = Warehouse
+
+    @property
+    def MasterInfo(self):
+        """setats master 机器规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.SetatsCvmInfo`
+        """
+        return self._MasterInfo
+
+    @MasterInfo.setter
+    def MasterInfo(self, MasterInfo):
+        self._MasterInfo = MasterInfo
+
+    @property
+    def WorkerInfo(self):
+        """setats worker规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.SetatsCvmInfo`
+        """
+        return self._WorkerInfo
+
+    @WorkerInfo.setter
+    def WorkerInfo(self, WorkerInfo):
+        self._WorkerInfo = WorkerInfo
+
+    @property
+    def Tags(self):
+        """标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def AutoRenewFlag(self):
+        """自动续费
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def ExpireTime(self):
+        """过期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def SecondsUntilExpiry(self):
+        """过期时间 秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SecondsUntilExpiry
+
+    @SecondsUntilExpiry.setter
+    def SecondsUntilExpiry(self, SecondsUntilExpiry):
+        self._SecondsUntilExpiry = SecondsUntilExpiry
+
+    @property
+    def CreateTime(self):
+        """创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ManagerUrl(self):
+        """manager url
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ManagerUrl
+
+    @ManagerUrl.setter
+    def ManagerUrl(self, ManagerUrl):
+        self._ManagerUrl = ManagerUrl
+
+    @property
+    def IsolatedTime(self):
+        """隔离时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._IsolatedTime
+
+    @IsolatedTime.setter
+    def IsolatedTime(self, IsolatedTime):
+        self._IsolatedTime = IsolatedTime
+
+
+    def _deserialize(self, params):
+        self._SetatsSerialId = params.get("SetatsSerialId")
+        self._Status = params.get("Status")
+        if params.get("Warehouse") is not None:
+            self._Warehouse = Warehouse()
+            self._Warehouse._deserialize(params.get("Warehouse"))
+        if params.get("MasterInfo") is not None:
+            self._MasterInfo = SetatsCvmInfo()
+            self._MasterInfo._deserialize(params.get("MasterInfo"))
+        if params.get("WorkerInfo") is not None:
+            self._WorkerInfo = SetatsCvmInfo()
+            self._WorkerInfo._deserialize(params.get("WorkerInfo"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._ExpireTime = params.get("ExpireTime")
+        self._SecondsUntilExpiry = params.get("SecondsUntilExpiry")
+        self._CreateTime = params.get("CreateTime")
+        self._ManagerUrl = params.get("ManagerUrl")
+        self._IsolatedTime = params.get("IsolatedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetatsCvmInfo(AbstractModel):
+    """setats 机器规格
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Cpu: setats机器cpu
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cpu: float
+        :param _Mem: setats机器内存
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Mem: float
+        :param _DefaultParallelism: setats worker 并行度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultParallelism: int
+        :param _Disk: setats 机器磁盘
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Disk: :class:`tencentcloud.oceanus.v20190422.models.SetatsDisk`
+        """
+        self._Cpu = None
+        self._Mem = None
+        self._DefaultParallelism = None
+        self._Disk = None
+
+    @property
+    def Cpu(self):
+        """setats机器cpu
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Mem(self):
+        """setats机器内存
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._Mem
+
+    @Mem.setter
+    def Mem(self, Mem):
+        self._Mem = Mem
+
+    @property
+    def DefaultParallelism(self):
+        """setats worker 并行度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DefaultParallelism
+
+    @DefaultParallelism.setter
+    def DefaultParallelism(self, DefaultParallelism):
+        self._DefaultParallelism = DefaultParallelism
+
+    @property
+    def Disk(self):
+        """setats 机器磁盘
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.SetatsDisk`
+        """
+        return self._Disk
+
+    @Disk.setter
+    def Disk(self, Disk):
+        self._Disk = Disk
+
+
+    def _deserialize(self, params):
+        self._Cpu = params.get("Cpu")
+        self._Mem = params.get("Mem")
+        self._DefaultParallelism = params.get("DefaultParallelism")
+        if params.get("Disk") is not None:
+            self._Disk = SetatsDisk()
+            self._Disk._deserialize(params.get("Disk"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetatsDisk(AbstractModel):
+    """setats disk
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DiskType: 磁盘类型
+CLOUD_BSSD
+CLOUD_SSD
+CLOUD_HSSD
+CLOUD_PREMIUM
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskType: str
+        :param _DiskSize: 磁盘大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskSize: int
+        """
+        self._DiskType = None
+        self._DiskSize = None
+
+    @property
+    def DiskType(self):
+        """磁盘类型
+CLOUD_BSSD
+CLOUD_SSD
+CLOUD_HSSD
+CLOUD_PREMIUM
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def DiskSize(self):
+        """磁盘大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+
+    def _deserialize(self, params):
+        self._DiskType = params.get("DiskType")
+        self._DiskSize = params.get("DiskSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14557,6 +15118,190 @@ class TriggerJobSavepointResponse(AbstractModel):
         self._FinalSavepointPath = params.get("FinalSavepointPath")
         self._SavepointId = params.get("SavepointId")
         self._RequestId = params.get("RequestId")
+
+
+class Warehouse(AbstractModel):
+    """Setats Warehouse结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _Location: location
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Location: str
+        :param _CatalogType: catalogtype
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CatalogType: str
+        :param _Uri: uri
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uri: str
+        :param _WarehouseUrl: warehouse url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WarehouseUrl: str
+        :param _Authentication: 认证方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Authentication: str
+        :param _ResourceRefs: 资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceRefs: list of ResourceRefLatest
+        :param _HiveUri: hive warehouse uri
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HiveUri: str
+        :param _Properties: 高级参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Properties: list of Property
+        """
+        self._Status = None
+        self._Location = None
+        self._CatalogType = None
+        self._Uri = None
+        self._WarehouseUrl = None
+        self._Authentication = None
+        self._ResourceRefs = None
+        self._HiveUri = None
+        self._Properties = None
+
+    @property
+    def Status(self):
+        """状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Location(self):
+        """location
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
+    @property
+    def CatalogType(self):
+        """catalogtype
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CatalogType
+
+    @CatalogType.setter
+    def CatalogType(self, CatalogType):
+        self._CatalogType = CatalogType
+
+    @property
+    def Uri(self):
+        """uri
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Uri
+
+    @Uri.setter
+    def Uri(self, Uri):
+        self._Uri = Uri
+
+    @property
+    def WarehouseUrl(self):
+        """warehouse url
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WarehouseUrl
+
+    @WarehouseUrl.setter
+    def WarehouseUrl(self, WarehouseUrl):
+        self._WarehouseUrl = WarehouseUrl
+
+    @property
+    def Authentication(self):
+        """认证方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Authentication
+
+    @Authentication.setter
+    def Authentication(self, Authentication):
+        self._Authentication = Authentication
+
+    @property
+    def ResourceRefs(self):
+        """资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ResourceRefLatest
+        """
+        return self._ResourceRefs
+
+    @ResourceRefs.setter
+    def ResourceRefs(self, ResourceRefs):
+        self._ResourceRefs = ResourceRefs
+
+    @property
+    def HiveUri(self):
+        """hive warehouse uri
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._HiveUri
+
+    @HiveUri.setter
+    def HiveUri(self, HiveUri):
+        self._HiveUri = HiveUri
+
+    @property
+    def Properties(self):
+        """高级参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Property
+        """
+        return self._Properties
+
+    @Properties.setter
+    def Properties(self, Properties):
+        self._Properties = Properties
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._Location = params.get("Location")
+        self._CatalogType = params.get("CatalogType")
+        self._Uri = params.get("Uri")
+        self._WarehouseUrl = params.get("WarehouseUrl")
+        self._Authentication = params.get("Authentication")
+        if params.get("ResourceRefs") is not None:
+            self._ResourceRefs = []
+            for item in params.get("ResourceRefs"):
+                obj = ResourceRefLatest()
+                obj._deserialize(item)
+                self._ResourceRefs.append(obj)
+        self._HiveUri = params.get("HiveUri")
+        if params.get("Properties") is not None:
+            self._Properties = []
+            for item in params.get("Properties"):
+                obj = Property()
+                obj._deserialize(item)
+                self._Properties.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class WorkSpaceClusterItem(AbstractModel):

@@ -10217,7 +10217,7 @@ class CommonIdOpsDto(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 返回补录计划id
+        :param _Id: 返回补录计划名称_ok
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
         """
@@ -10225,7 +10225,7 @@ class CommonIdOpsDto(AbstractModel):
 
     @property
     def Id(self):
-        """返回补录计划id
+        """返回补录计划名称_ok
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13407,6 +13407,12 @@ class CreateOpsMakePlanRequest(AbstractModel):
         :type SameSelfWorkflowDependType: bool
         :param _SelfWorkflowDependency: 补录扩展属性
         :type SelfWorkflowDependency: str
+        :param _MakeType: 任务 TASK； 项目： PROJECT
+        :type MakeType: str
+        :param _StatusList: 任务状态
+        :type StatusList: str
+        :param _MakeCheckEventType: 补录是否跳过事件检查
+        :type MakeCheckEventType: str
         """
         self._ProjectId = None
         self._MakeName = None
@@ -13434,6 +13440,9 @@ class CreateOpsMakePlanRequest(AbstractModel):
         self._MakeExtList = None
         self._SameSelfWorkflowDependType = None
         self._SelfWorkflowDependency = None
+        self._MakeType = None
+        self._StatusList = None
+        self._MakeCheckEventType = None
 
     @property
     def ProjectId(self):
@@ -13724,6 +13733,39 @@ class CreateOpsMakePlanRequest(AbstractModel):
     def SelfWorkflowDependency(self, SelfWorkflowDependency):
         self._SelfWorkflowDependency = SelfWorkflowDependency
 
+    @property
+    def MakeType(self):
+        """任务 TASK； 项目： PROJECT
+        :rtype: str
+        """
+        return self._MakeType
+
+    @MakeType.setter
+    def MakeType(self, MakeType):
+        self._MakeType = MakeType
+
+    @property
+    def StatusList(self):
+        """任务状态
+        :rtype: str
+        """
+        return self._StatusList
+
+    @StatusList.setter
+    def StatusList(self, StatusList):
+        self._StatusList = StatusList
+
+    @property
+    def MakeCheckEventType(self):
+        """补录是否跳过事件检查
+        :rtype: str
+        """
+        return self._MakeCheckEventType
+
+    @MakeCheckEventType.setter
+    def MakeCheckEventType(self, MakeCheckEventType):
+        self._MakeCheckEventType = MakeCheckEventType
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -13767,6 +13809,9 @@ class CreateOpsMakePlanRequest(AbstractModel):
                 self._MakeExtList.append(obj)
         self._SameSelfWorkflowDependType = params.get("SameSelfWorkflowDependType")
         self._SelfWorkflowDependency = params.get("SelfWorkflowDependency")
+        self._MakeType = params.get("MakeType")
+        self._StatusList = params.get("StatusList")
+        self._MakeCheckEventType = params.get("MakeCheckEventType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -44720,6 +44765,10 @@ class DownloadLogByLineRequest(AbstractModel):
         :type ParseErrorTip: bool
         :param _FileType: log 0 code 1 result 2 custo 3
         :type FileType: int
+        :param _QueryFileFlag: 查询文件标志：0: 从执行机获取，1: 从cos获取，获取不到会再从执行机获取
+        :type QueryFileFlag: int
+        :param _ExtInfo: 透传字段，如果queryFileFlag为1，则ext回作为上一页的分页标识offset
+        :type ExtInfo: str
         """
         self._StartLine = None
         self._LineCount = None
@@ -44733,6 +44782,8 @@ class DownloadLogByLineRequest(AbstractModel):
         self._JobType = None
         self._ParseErrorTip = None
         self._FileType = None
+        self._QueryFileFlag = None
+        self._ExtInfo = None
 
     @property
     def StartLine(self):
@@ -44866,6 +44917,28 @@ class DownloadLogByLineRequest(AbstractModel):
     def FileType(self, FileType):
         self._FileType = FileType
 
+    @property
+    def QueryFileFlag(self):
+        """查询文件标志：0: 从执行机获取，1: 从cos获取，获取不到会再从执行机获取
+        :rtype: int
+        """
+        return self._QueryFileFlag
+
+    @QueryFileFlag.setter
+    def QueryFileFlag(self, QueryFileFlag):
+        self._QueryFileFlag = QueryFileFlag
+
+    @property
+    def ExtInfo(self):
+        """透传字段，如果queryFileFlag为1，则ext回作为上一页的分页标识offset
+        :rtype: str
+        """
+        return self._ExtInfo
+
+    @ExtInfo.setter
+    def ExtInfo(self, ExtInfo):
+        self._ExtInfo = ExtInfo
+
 
     def _deserialize(self, params):
         self._StartLine = params.get("StartLine")
@@ -44880,6 +44953,8 @@ class DownloadLogByLineRequest(AbstractModel):
         self._JobType = params.get("JobType")
         self._ParseErrorTip = params.get("ParseErrorTip")
         self._FileType = params.get("FileType")
+        self._QueryFileFlag = params.get("QueryFileFlag")
+        self._ExtInfo = params.get("ExtInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -48343,6 +48418,78 @@ class ExtResourceFlagDto(AbstractModel):
         self._DlcResourceConfig = params.get("DlcResourceConfig")
         self._Script = params.get("Script")
         self._OfflineSyncTask = params.get("OfflineSyncTask")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExtensionInfoVO(AbstractModel):
+    """key-value 键值对
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Value: value
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        :param _Description: 描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        """
+        self._Key = None
+        self._Value = None
+        self._Description = None
+
+    @property
+    def Key(self):
+        """key
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        """value
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Description(self):
+        """描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -53751,6 +53898,12 @@ class InstanceLogByLine(AbstractModel):
         :param _JobLogErrorTip: 日志sql错误信息，包含行列信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobLogErrorTip: :class:`tencentcloud.wedata.v20210820.models.JobLogErrorTip`
+        :param _ExecutionExtendedProps: 执行实例的扩展属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutionExtendedProps: list of ExtensionInfoVO
+        :param _ExtInfo: 如果queryFileFlag为1，则ext返回当前页数据的结束行信息，下一页把这个extInfo透传过来
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtInfo: str
         """
         self._Count = None
         self._Content = None
@@ -53760,6 +53913,8 @@ class InstanceLogByLine(AbstractModel):
         self._TaskId = None
         self._WorkerType = None
         self._JobLogErrorTip = None
+        self._ExecutionExtendedProps = None
+        self._ExtInfo = None
 
     @property
     def Count(self):
@@ -53857,6 +54012,30 @@ class InstanceLogByLine(AbstractModel):
     def JobLogErrorTip(self, JobLogErrorTip):
         self._JobLogErrorTip = JobLogErrorTip
 
+    @property
+    def ExecutionExtendedProps(self):
+        """执行实例的扩展属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ExtensionInfoVO
+        """
+        return self._ExecutionExtendedProps
+
+    @ExecutionExtendedProps.setter
+    def ExecutionExtendedProps(self, ExecutionExtendedProps):
+        self._ExecutionExtendedProps = ExecutionExtendedProps
+
+    @property
+    def ExtInfo(self):
+        """如果queryFileFlag为1，则ext返回当前页数据的结束行信息，下一页把这个extInfo透传过来
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExtInfo
+
+    @ExtInfo.setter
+    def ExtInfo(self, ExtInfo):
+        self._ExtInfo = ExtInfo
+
 
     def _deserialize(self, params):
         self._Count = params.get("Count")
@@ -53869,6 +54048,13 @@ class InstanceLogByLine(AbstractModel):
         if params.get("JobLogErrorTip") is not None:
             self._JobLogErrorTip = JobLogErrorTip()
             self._JobLogErrorTip._deserialize(params.get("JobLogErrorTip"))
+        if params.get("ExecutionExtendedProps") is not None:
+            self._ExecutionExtendedProps = []
+            for item in params.get("ExecutionExtendedProps"):
+                obj = ExtensionInfoVO()
+                obj._deserialize(item)
+                self._ExecutionExtendedProps.append(obj)
+        self._ExtInfo = params.get("ExtInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
