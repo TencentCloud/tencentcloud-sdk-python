@@ -5866,6 +5866,8 @@ class RabbitMQClusterSpecInfo(AbstractModel):
         :type MaxBandWidth: int
         :param _PublicNetworkTps: 公网带宽，已废弃
         :type PublicNetworkTps: int
+        :param _Features: 实例对应的功能列表，true表示支持，false 表示不支持
+        :type Features: str
         """
         self._SpecName = None
         self._MaxTps = None
@@ -5876,6 +5878,7 @@ class RabbitMQClusterSpecInfo(AbstractModel):
         self._MaxUserNum = None
         self._MaxBandWidth = None
         self._PublicNetworkTps = None
+        self._Features = None
 
     @property
     def SpecName(self):
@@ -5976,6 +5979,17 @@ class RabbitMQClusterSpecInfo(AbstractModel):
     def PublicNetworkTps(self, PublicNetworkTps):
         self._PublicNetworkTps = PublicNetworkTps
 
+    @property
+    def Features(self):
+        """实例对应的功能列表，true表示支持，false 表示不支持
+        :rtype: str
+        """
+        return self._Features
+
+    @Features.setter
+    def Features(self, Features):
+        self._Features = Features
+
 
     def _deserialize(self, params):
         self._SpecName = params.get("SpecName")
@@ -5987,6 +6001,7 @@ class RabbitMQClusterSpecInfo(AbstractModel):
         self._MaxUserNum = params.get("MaxUserNum")
         self._MaxBandWidth = params.get("MaxBandWidth")
         self._PublicNetworkTps = params.get("PublicNetworkTps")
+        self._Features = params.get("Features")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7115,6 +7130,8 @@ class RabbitMQServerlessInstance(AbstractModel):
         :type MaxStorage: int
         :param _IsolatedTime: 隔离时间
         :type IsolatedTime: int
+        :param _ServerlessExt: Serverless 扩展字段
+        :type ServerlessExt: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -7136,6 +7153,7 @@ class RabbitMQServerlessInstance(AbstractModel):
         self._NodeCount = None
         self._MaxStorage = None
         self._IsolatedTime = None
+        self._ServerlessExt = None
 
     @property
     def InstanceId(self):
@@ -7358,6 +7376,17 @@ class RabbitMQServerlessInstance(AbstractModel):
     def IsolatedTime(self, IsolatedTime):
         self._IsolatedTime = IsolatedTime
 
+    @property
+    def ServerlessExt(self):
+        """Serverless 扩展字段
+        :rtype: str
+        """
+        return self._ServerlessExt
+
+    @ServerlessExt.setter
+    def ServerlessExt(self, ServerlessExt):
+        self._ServerlessExt = ServerlessExt
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -7385,6 +7414,7 @@ class RabbitMQServerlessInstance(AbstractModel):
         self._NodeCount = params.get("NodeCount")
         self._MaxStorage = params.get("MaxStorage")
         self._IsolatedTime = params.get("IsolatedTime")
+        self._ServerlessExt = params.get("ServerlessExt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

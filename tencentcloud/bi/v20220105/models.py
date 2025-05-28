@@ -2428,8 +2428,12 @@ class Data(AbstractModel):
         r"""
         :param _Id: 项目Id
         :type Id: int
+        :param _EditUrl: url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EditUrl: str
         """
         self._Id = None
+        self._EditUrl = None
 
     @property
     def Id(self):
@@ -2442,9 +2446,22 @@ class Data(AbstractModel):
     def Id(self, Id):
         self._Id = Id
 
+    @property
+    def EditUrl(self):
+        """url
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EditUrl
+
+    @EditUrl.setter
+    def EditUrl(self, EditUrl):
+        self._EditUrl = EditUrl
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
+        self._EditUrl = params.get("EditUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5037,6 +5054,10 @@ class DescribeUserRoleProjectListRequest(AbstractModel):
         :type AllPage: bool
         :param _RoleCode: 角色编码
         :type RoleCode: str
+        :param _UserIdList: 用户id列表
+        :type UserIdList: list of str
+        :param _Keyword: 搜索关键词
+        :type Keyword: str
         """
         self._PageNo = None
         self._PageSize = None
@@ -5044,6 +5065,8 @@ class DescribeUserRoleProjectListRequest(AbstractModel):
         self._IsOnlyBindAppUser = None
         self._AllPage = None
         self._RoleCode = None
+        self._UserIdList = None
+        self._Keyword = None
 
     @property
     def PageNo(self):
@@ -5111,6 +5134,28 @@ class DescribeUserRoleProjectListRequest(AbstractModel):
     def RoleCode(self, RoleCode):
         self._RoleCode = RoleCode
 
+    @property
+    def UserIdList(self):
+        """用户id列表
+        :rtype: list of str
+        """
+        return self._UserIdList
+
+    @UserIdList.setter
+    def UserIdList(self, UserIdList):
+        self._UserIdList = UserIdList
+
+    @property
+    def Keyword(self):
+        """搜索关键词
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
 
     def _deserialize(self, params):
         self._PageNo = params.get("PageNo")
@@ -5119,6 +5164,8 @@ class DescribeUserRoleProjectListRequest(AbstractModel):
         self._IsOnlyBindAppUser = params.get("IsOnlyBindAppUser")
         self._AllPage = params.get("AllPage")
         self._RoleCode = params.get("RoleCode")
+        self._UserIdList = params.get("UserIdList")
+        self._Keyword = params.get("Keyword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8095,6 +8142,18 @@ class Project(AbstractModel):
         :param _OwnerName: 所属人
 注意：此字段可能返回 null，表示取不到有效值。
         :type OwnerName: str
+        :param _NormalCount: 仪表盘页面数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NormalCount: int
+        :param _FreeCount: 自由画布页面数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FreeCount: int
+        :param _AdhocCount: 即席分析页面数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdhocCount: int
+        :param _BriefingCount: 简报页面数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BriefingCount: int
         """
         self._Id = None
         self._Logo = None
@@ -8120,6 +8179,10 @@ class Project(AbstractModel):
         self._CreatedUserName = None
         self._Owner = None
         self._OwnerName = None
+        self._NormalCount = None
+        self._FreeCount = None
+        self._AdhocCount = None
+        self._BriefingCount = None
 
     @property
     def Id(self):
@@ -8408,6 +8471,54 @@ class Project(AbstractModel):
     def OwnerName(self, OwnerName):
         self._OwnerName = OwnerName
 
+    @property
+    def NormalCount(self):
+        """仪表盘页面数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._NormalCount
+
+    @NormalCount.setter
+    def NormalCount(self, NormalCount):
+        self._NormalCount = NormalCount
+
+    @property
+    def FreeCount(self):
+        """自由画布页面数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._FreeCount
+
+    @FreeCount.setter
+    def FreeCount(self, FreeCount):
+        self._FreeCount = FreeCount
+
+    @property
+    def AdhocCount(self):
+        """即席分析页面数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AdhocCount
+
+    @AdhocCount.setter
+    def AdhocCount(self, AdhocCount):
+        self._AdhocCount = AdhocCount
+
+    @property
+    def BriefingCount(self):
+        """简报页面数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._BriefingCount
+
+    @BriefingCount.setter
+    def BriefingCount(self, BriefingCount):
+        self._BriefingCount = BriefingCount
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -8439,6 +8550,10 @@ class Project(AbstractModel):
         self._CreatedUserName = params.get("CreatedUserName")
         self._Owner = params.get("Owner")
         self._OwnerName = params.get("OwnerName")
+        self._NormalCount = params.get("NormalCount")
+        self._FreeCount = params.get("FreeCount")
+        self._AdhocCount = params.get("AdhocCount")
+        self._BriefingCount = params.get("BriefingCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

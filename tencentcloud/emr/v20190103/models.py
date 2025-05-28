@@ -8814,6 +8814,172 @@ class DescribeGlobalConfigResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeGroupsSTDRequest(AbstractModel):
+    """DescribeGroupsSTD请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群名称
+        :type InstanceId: str
+        :param _Filters: 描述键值对过滤器，用于条件过滤查询
+        :type Filters: list of Filter
+        :param _OrderFields: 描述排序，用于排序
+        :type OrderFields: :class:`tencentcloud.emr.v20190103.models.Order`
+        :param _Limit: 返回数量
+        :type Limit: int
+        :param _Offset: 分页参数
+        :type Offset: int
+        """
+        self._InstanceId = None
+        self._Filters = None
+        self._OrderFields = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def InstanceId(self):
+        """集群名称
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Filters(self):
+        """描述键值对过滤器，用于条件过滤查询
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def OrderFields(self):
+        """描述排序，用于排序
+        :rtype: :class:`tencentcloud.emr.v20190103.models.Order`
+        """
+        return self._OrderFields
+
+    @OrderFields.setter
+    def OrderFields(self, OrderFields):
+        self._OrderFields = OrderFields
+
+    @property
+    def Limit(self):
+        """返回数量
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """分页参数
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        if params.get("OrderFields") is not None:
+            self._OrderFields = Order()
+            self._OrderFields._deserialize(params.get("OrderFields"))
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGroupsSTDResponse(AbstractModel):
+    """DescribeGroupsSTD返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 用户组信息
+        :type Data: list of GroupInfos
+        :param _TotalCount: 符合条件的用户组数量
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """用户组信息
+        :rtype: list of GroupInfos
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def TotalCount(self):
+        """符合条件的用户组数量
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = GroupInfos()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeHBaseTableOverviewRequest(AbstractModel):
     """DescribeHBaseTableOverview请求参数结构体
 
@@ -15684,6 +15850,57 @@ class FairGlobalConfig(AbstractModel):
         
 
 
+class Filter(AbstractModel):
+    """键值对过滤器，用于条件过滤查询.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 需要过滤的字段。
+        :type Name: str
+        :param _Values: 字段的过滤值。
+        :type Values: list of str
+        """
+        self._Name = None
+        self._Values = None
+
+    @property
+    def Name(self):
+        """需要过滤的字段。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Values(self):
+        """字段的过滤值。
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Filters(AbstractModel):
     """Emr集群列表实例自定义查询过滤
 
@@ -16040,6 +16257,117 @@ class GroupInfo(AbstractModel):
         self._GroupName = params.get("GroupName")
         self._Description = params.get("Description")
         self._Users = params.get("Users")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GroupInfos(AbstractModel):
+    """用户组信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupName: 用户组名称
+        :type GroupName: str
+        :param _Users: 用户名称列表
+        :type Users: list of str
+        :param _Description: 备注
+        :type Description: str
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _GroupType: 用户组类型
+        :type GroupType: int
+        :param _GroupTypeDesc: 用户组类型描述
+        :type GroupTypeDesc: str
+        """
+        self._GroupName = None
+        self._Users = None
+        self._Description = None
+        self._CreateTime = None
+        self._GroupType = None
+        self._GroupTypeDesc = None
+
+    @property
+    def GroupName(self):
+        """用户组名称
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def Users(self):
+        """用户名称列表
+        :rtype: list of str
+        """
+        return self._Users
+
+    @Users.setter
+    def Users(self, Users):
+        self._Users = Users
+
+    @property
+    def Description(self):
+        """备注
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def GroupType(self):
+        """用户组类型
+        :rtype: int
+        """
+        return self._GroupType
+
+    @GroupType.setter
+    def GroupType(self, GroupType):
+        self._GroupType = GroupType
+
+    @property
+    def GroupTypeDesc(self):
+        """用户组类型描述
+        :rtype: str
+        """
+        return self._GroupTypeDesc
+
+    @GroupTypeDesc.setter
+    def GroupTypeDesc(self, GroupTypeDesc):
+        self._GroupTypeDesc = GroupTypeDesc
+
+
+    def _deserialize(self, params):
+        self._GroupName = params.get("GroupName")
+        self._Users = params.get("Users")
+        self._Description = params.get("Description")
+        self._CreateTime = params.get("CreateTime")
+        self._GroupType = params.get("GroupType")
+        self._GroupTypeDesc = params.get("GroupTypeDesc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24807,6 +25135,57 @@ class OpScope(AbstractModel):
                 obj = ServiceBasicRestartInfo()
                 obj._deserialize(item)
                 self._ServiceInfoList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Order(AbstractModel):
+    """描述排序，用于排序.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 排序字段。
+        :type Name: str
+        :param _Direction: Desc or Asc。
+        :type Direction: str
+        """
+        self._Name = None
+        self._Direction = None
+
+    @property
+    def Name(self):
+        """排序字段。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Direction(self):
+        """Desc or Asc。
+        :rtype: str
+        """
+        return self._Direction
+
+    @Direction.setter
+    def Direction(self, Direction):
+        self._Direction = Direction
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Direction = params.get("Direction")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

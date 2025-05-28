@@ -34528,6 +34528,7 @@ cold：低频存储。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClassId: int
         :param _CosBucketName: 存储至 cos 的 bucket 桶名称。
+注：CosBucketName参数值不能包含-[appid] 部分。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CosBucketName: str
         :param _CosBucketRegion: 存储至 cos 的 bucket 区域。
@@ -34668,6 +34669,7 @@ cold：低频存储。
     @property
     def CosBucketName(self):
         """存储至 cos 的 bucket 桶名称。
+注：CosBucketName参数值不能包含-[appid] 部分。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

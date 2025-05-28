@@ -2103,12 +2103,15 @@ class CreateAndroidInstanceWebShellResponse(AbstractModel):
         :type Address: str
         :param _Zone: 连接区域
         :type Zone: str
+        :param _ConnectUrl: 访问链接，可以直接使用此链接访问 WebShell
+        :type ConnectUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Key = None
         self._Address = None
         self._Zone = None
+        self._ConnectUrl = None
         self._RequestId = None
 
     @property
@@ -2145,6 +2148,17 @@ class CreateAndroidInstanceWebShellResponse(AbstractModel):
         self._Zone = Zone
 
     @property
+    def ConnectUrl(self):
+        """访问链接，可以直接使用此链接访问 WebShell
+        :rtype: str
+        """
+        return self._ConnectUrl
+
+    @ConnectUrl.setter
+    def ConnectUrl(self, ConnectUrl):
+        self._ConnectUrl = ConnectUrl
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -2160,6 +2174,7 @@ class CreateAndroidInstanceWebShellResponse(AbstractModel):
         self._Key = params.get("Key")
         self._Address = params.get("Address")
         self._Zone = params.get("Zone")
+        self._ConnectUrl = params.get("ConnectUrl")
         self._RequestId = params.get("RequestId")
 
 

@@ -2216,7 +2216,7 @@ class CreateSnapshotRequest(AbstractModel):
         :type SnapshotName: str
         :param _Deadline: 快照的到期时间，到期后该快照将会自动删除,需要传入UTC时间下的ISO-8601标准时间格式,例如:2022-01-08T09:47:55+00:00,。到期时间最小可设置为一天后的当前时间。
         :type Deadline: str
-        :param _DiskBackupId: 云硬盘备份点ID。传入此参数时，将通过备份点创建快照。备份点 ID 可以通过[DescribeDiskBackups](document/product/362/80278)接口查询。
+        :param _DiskBackupId: 云硬盘备份点ID。传入此参数时，将通过备份点创建快照。备份点 ID 可以通过[DescribeDiskBackups](/document/product/362/80278)接口查询。
         :type DiskBackupId: str
         :param _Tags: 快照绑定的标签。
         :type Tags: list of Tag
@@ -2262,7 +2262,7 @@ class CreateSnapshotRequest(AbstractModel):
 
     @property
     def DiskBackupId(self):
-        """云硬盘备份点ID。传入此参数时，将通过备份点创建快照。备份点 ID 可以通过[DescribeDiskBackups](document/product/362/80278)接口查询。
+        """云硬盘备份点ID。传入此参数时，将通过备份点创建快照。备份点 ID 可以通过[DescribeDiskBackups](/document/product/362/80278)接口查询。
         :rtype: str
         """
         return self._DiskBackupId

@@ -3157,10 +3157,13 @@ class AvailableZoneScatterScheduleRule(AbstractModel):
         :type MaxUnbalanceQuantity: int
         :param _IsForceSchedule: -
         :type IsForceSchedule: bool
+        :param _Paths: -
+        :type Paths: list of CommonOption
         """
         self._ScatterDimension = None
         self._MaxUnbalanceQuantity = None
         self._IsForceSchedule = None
+        self._Paths = None
 
     @property
     def ScatterDimension(self):
@@ -3195,11 +3198,28 @@ class AvailableZoneScatterScheduleRule(AbstractModel):
     def IsForceSchedule(self, IsForceSchedule):
         self._IsForceSchedule = IsForceSchedule
 
+    @property
+    def Paths(self):
+        """-
+        :rtype: list of CommonOption
+        """
+        return self._Paths
+
+    @Paths.setter
+    def Paths(self, Paths):
+        self._Paths = Paths
+
 
     def _deserialize(self, params):
         self._ScatterDimension = params.get("ScatterDimension")
         self._MaxUnbalanceQuantity = params.get("MaxUnbalanceQuantity")
         self._IsForceSchedule = params.get("IsForceSchedule")
+        if params.get("Paths") is not None:
+            self._Paths = []
+            for item in params.get("Paths"):
+                obj = CommonOption()
+                obj._deserialize(item)
+                self._Paths.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

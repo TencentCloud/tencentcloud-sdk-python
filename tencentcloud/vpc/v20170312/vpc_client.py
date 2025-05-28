@@ -429,6 +429,29 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def AssociateHaVipInstance(self, request):
+        """本接口（AssociateHaVipInstance）用于HAVIP绑定子机或网卡（限制HaVip的飘移范围）。
+
+        :param request: Request instance for AssociateHaVipInstance.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.AssociateHaVipInstanceRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.AssociateHaVipInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AssociateHaVipInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.AssociateHaVipInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def AssociateIPv6Address(self, request):
         """本接口（AssociateIPv6Address）用于将弹性公网IPv6（简称EIPv6）实例绑定到 CVM 或弹性网卡配置的内网 IPv6 地址上。
 
@@ -6400,6 +6423,29 @@ class VpcClient(AbstractClient):
             body = self.call("DisassociateDirectConnectGatewayNatGateway", params, headers=headers)
             response = json.loads(body)
             model = models.DisassociateDirectConnectGatewayNatGatewayResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DisassociateHaVipInstance(self, request):
+        """本接口（DisassociateHaVipInstance）用于HAVIP解绑子机或网卡（去掉HaVip飘移范围）。
+
+        :param request: Request instance for DisassociateHaVipInstance.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DisassociateHaVipInstanceRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DisassociateHaVipInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DisassociateHaVipInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.DisassociateHaVipInstanceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

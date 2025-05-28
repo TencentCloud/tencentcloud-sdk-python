@@ -581,6 +581,29 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeGroupsSTD(self, request):
+        """查询用户组
+
+        :param request: Request instance for DescribeGroupsSTD.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeGroupsSTDRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeGroupsSTDResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGroupsSTD", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeGroupsSTDResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeHBaseTableOverview(self, request):
         """获取Hbase表级监控数据概览接口
 

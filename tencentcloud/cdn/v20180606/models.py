@@ -10922,7 +10922,7 @@ class DescribeDomainsConfigRequest(AbstractModel):
         r"""
         :param _Offset: 分页查询偏移量，默认为 0
         :type Offset: int
-        :param _Limit: 分页查询限制数目，默认为 100，最大可设置为 1000
+        :param _Limit: 分页查询限制数目，默认为 100，最大可设置为 100
         :type Limit: int
         :param _Filters: 查询条件过滤器，复杂类型
         :type Filters: list of DomainFilter
@@ -10947,7 +10947,7 @@ class DescribeDomainsConfigRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页查询限制数目，默认为 100，最大可设置为 1000
+        """分页查询限制数目，默认为 100，最大可设置为 100
         :rtype: int
         """
         return self._Limit

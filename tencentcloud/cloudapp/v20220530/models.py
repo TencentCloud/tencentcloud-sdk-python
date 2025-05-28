@@ -61,6 +61,8 @@ class License(AbstractModel):
         :type LifeSpanUnit: str
         :param _LicenseType: 授权的类型：Standard正式版/Development开发版/Trial体验版
         :type LicenseType: str
+        :param _LicenseLevel: 授权的层级：Master 主授权；Child 子授权/增强型授权
+        :type LicenseLevel: str
         """
         self._LicenseId = None
         self._LicenseMode = None
@@ -79,6 +81,7 @@ class License(AbstractModel):
         self._ExpirationDate = None
         self._LifeSpanUnit = None
         self._LicenseType = None
+        self._LicenseLevel = None
 
     @property
     def LicenseId(self):
@@ -269,6 +272,17 @@ class License(AbstractModel):
     def LicenseType(self, LicenseType):
         self._LicenseType = LicenseType
 
+    @property
+    def LicenseLevel(self):
+        """授权的层级：Master 主授权；Child 子授权/增强型授权
+        :rtype: str
+        """
+        return self._LicenseLevel
+
+    @LicenseLevel.setter
+    def LicenseLevel(self, LicenseLevel):
+        self._LicenseLevel = LicenseLevel
+
 
     def _deserialize(self, params):
         self._LicenseId = params.get("LicenseId")
@@ -293,6 +307,7 @@ class License(AbstractModel):
         self._ExpirationDate = params.get("ExpirationDate")
         self._LifeSpanUnit = params.get("LifeSpanUnit")
         self._LicenseType = params.get("LicenseType")
+        self._LicenseLevel = params.get("LicenseLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

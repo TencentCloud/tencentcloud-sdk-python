@@ -15029,12 +15029,18 @@ class DescribeCPUExpandStrategyInfoResponse(AbstractModel):
         :param _AutoStrategy: 自动扩容策略。Type 为 auto 时有效
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutoStrategy: :class:`tencentcloud.cdb.v20170320.models.AutoStrategy`
+        :param _PeriodStrategy: 按周期扩容策略。
+        :type PeriodStrategy: :class:`tencentcloud.cdb.v20170320.models.PeriodStrategy`
+        :param _TimeIntervalStrategy: 按时间段扩容策略
+        :type TimeIntervalStrategy: :class:`tencentcloud.cdb.v20170320.models.TimeIntervalStrategy`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Type = None
         self._ExpandCpu = None
         self._AutoStrategy = None
+        self._PeriodStrategy = None
+        self._TimeIntervalStrategy = None
         self._RequestId = None
 
     @property
@@ -15074,6 +15080,28 @@ class DescribeCPUExpandStrategyInfoResponse(AbstractModel):
         self._AutoStrategy = AutoStrategy
 
     @property
+    def PeriodStrategy(self):
+        """按周期扩容策略。
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.PeriodStrategy`
+        """
+        return self._PeriodStrategy
+
+    @PeriodStrategy.setter
+    def PeriodStrategy(self, PeriodStrategy):
+        self._PeriodStrategy = PeriodStrategy
+
+    @property
+    def TimeIntervalStrategy(self):
+        """按时间段扩容策略
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.TimeIntervalStrategy`
+        """
+        return self._TimeIntervalStrategy
+
+    @TimeIntervalStrategy.setter
+    def TimeIntervalStrategy(self, TimeIntervalStrategy):
+        self._TimeIntervalStrategy = TimeIntervalStrategy
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -15091,6 +15119,12 @@ class DescribeCPUExpandStrategyInfoResponse(AbstractModel):
         if params.get("AutoStrategy") is not None:
             self._AutoStrategy = AutoStrategy()
             self._AutoStrategy._deserialize(params.get("AutoStrategy"))
+        if params.get("PeriodStrategy") is not None:
+            self._PeriodStrategy = PeriodStrategy()
+            self._PeriodStrategy._deserialize(params.get("PeriodStrategy"))
+        if params.get("TimeIntervalStrategy") is not None:
+            self._TimeIntervalStrategy = TimeIntervalStrategy()
+            self._TimeIntervalStrategy._deserialize(params.get("TimeIntervalStrategy"))
         self._RequestId = params.get("RequestId")
 
 

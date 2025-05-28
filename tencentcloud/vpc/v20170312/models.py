@@ -3640,6 +3640,40 @@ class AssociateDirectConnectGatewayNatGatewayResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AssociateHaVipInstanceRequest(AbstractModel):
+    """AssociateHaVipInstance请求参数结构体
+
+    """
+
+
+class AssociateHaVipInstanceResponse(AbstractModel):
+    """AssociateHaVipInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class AssociateIPv6AddressRequest(AbstractModel):
     """AssociateIPv6Address请求参数结构体
 
@@ -40373,6 +40407,75 @@ class DisassociateDirectConnectGatewayNatGatewayRequest(AbstractModel):
 
 class DisassociateDirectConnectGatewayNatGatewayResponse(AbstractModel):
     """DisassociateDirectConnectGatewayNatGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DisassociateHaVipInstanceRequest(AbstractModel):
+    """DisassociateHaVipInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HaVipAssociationSet: HaVip解绑的子机或网卡。最多支持10个实例。
+        :type HaVipAssociationSet: list of HaVipAssociation
+        """
+        self._HaVipAssociationSet = None
+
+    @property
+    def HaVipAssociationSet(self):
+        """HaVip解绑的子机或网卡。最多支持10个实例。
+        :rtype: list of HaVipAssociation
+        """
+        return self._HaVipAssociationSet
+
+    @HaVipAssociationSet.setter
+    def HaVipAssociationSet(self, HaVipAssociationSet):
+        self._HaVipAssociationSet = HaVipAssociationSet
+
+
+    def _deserialize(self, params):
+        if params.get("HaVipAssociationSet") is not None:
+            self._HaVipAssociationSet = []
+            for item in params.get("HaVipAssociationSet"):
+                obj = HaVipAssociation()
+                obj._deserialize(item)
+                self._HaVipAssociationSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisassociateHaVipInstanceResponse(AbstractModel):
+    """DisassociateHaVipInstance返回参数结构体
 
     """
 

@@ -24999,9 +24999,9 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
         :type Size: str
         :param _AttrRange: 标签适用范围，需要传参为1
         :type AttrRange: int
-        :param _Source: 来源(0 源文件导入 1 网页导入)
+        :param _Source: 来源（0 从本地文档导入），默认值为0
         :type Source: int
-        :param _WebUrl: 网页(或自定义链接)地址
+        :param _WebUrl: 自定义链接地址, IsRefer为true的时候，该值才有意义
         :type WebUrl: str
         :param _AttrLabels: 标签引用
         :type AttrLabels: list of AttrLabelRefer
@@ -25136,7 +25136,7 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
 
     @property
     def Source(self):
-        """来源(0 源文件导入 1 网页导入)
+        """来源（0 从本地文档导入），默认值为0
         :rtype: int
         """
         return self._Source
@@ -25147,7 +25147,7 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
 
     @property
     def WebUrl(self):
-        """网页(或自定义链接)地址
+        """自定义链接地址, IsRefer为true的时候，该值才有意义
         :rtype: str
         """
         return self._WebUrl
