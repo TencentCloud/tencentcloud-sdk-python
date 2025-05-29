@@ -11261,6 +11261,7 @@ class FirewallTemplateApplyRecord(AbstractModel):
         :param _ApplyState: 应用模板的执行状态。
 
 - SUCCESS：成功
+- RUNNING：运行中
 - FAILED：失败
         :type ApplyState: str
         :param _SuccessCount: 应用成功的实例数量。
@@ -11319,6 +11320,7 @@ class FirewallTemplateApplyRecord(AbstractModel):
         """应用模板的执行状态。
 
 - SUCCESS：成功
+- RUNNING：运行中
 - FAILED：失败
         :rtype: str
         """

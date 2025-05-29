@@ -254,10 +254,8 @@ class CosRegionInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _CosRegion: cos地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type CosRegion: str
         :param _CosRegionName: 地域描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type CosRegionName: str
         """
         self._CosRegion = None
@@ -266,7 +264,6 @@ class CosRegionInfo(AbstractModel):
     @property
     def CosRegion(self):
         """cos地域
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CosRegion
@@ -278,7 +275,6 @@ class CosRegionInfo(AbstractModel):
     @property
     def CosRegionName(self):
         """地域描述
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CosRegionName

@@ -1481,7 +1481,9 @@ class EmrClient(AbstractClient):
 
 
     def ModifyResourceScheduleConfig(self, request):
-        """修改YARN资源调度的资源配置。已废弃，请使用`ModifyYarnQueueV2`来修改队列配置
+        """已废弃，请使用ModifyYarnQueueV2来修改队列配置，近一年无相关日志
+
+        修改YARN资源调度的资源配置。已废弃，请使用`ModifyYarnQueueV2`来修改队列配置
 
         :param request: Request instance for ModifyResourceScheduleConfig.
         :type request: :class:`tencentcloud.emr.v20190103.models.ModifyResourceScheduleConfigRequest`
@@ -1667,7 +1669,9 @@ class EmrClient(AbstractClient):
 
 
     def ModifyYarnDeploy(self, request):
-        """部署生效。已废弃，请使用`DeployYarnConf`接口进行部署生效
+        """该接口已废弃，请使用DeployYarnConf完成部署生效
+
+        部署生效。已废弃，请使用`DeployYarnConf`接口进行部署生效
 
         :param request: Request instance for ModifyYarnDeploy.
         :type request: :class:`tencentcloud.emr.v20190103.models.ModifyYarnDeployRequest`

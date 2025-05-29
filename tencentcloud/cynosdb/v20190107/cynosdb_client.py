@@ -923,6 +923,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeBackupDownloadRestriction(self, request):
+        """该接口用户查询当前地域用户设置的默认备份下载来源限制
+
+        :param request: Request instance for DescribeBackupDownloadRestriction.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeBackupDownloadRestrictionRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeBackupDownloadRestrictionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBackupDownloadRestriction", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBackupDownloadRestrictionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeBackupDownloadUrl(self, request):
         """本接口（DescribeBackupDownloadUrl）用于查询集群备份文件下载地址。
 
@@ -937,6 +960,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("DescribeBackupDownloadUrl", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeBackupDownloadUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeBackupDownloadUserRestriction(self, request):
+        """该接口用户查询当前地域用户级别设置的默认备份下载来源限制
+
+        :param request: Request instance for DescribeBackupDownloadUserRestriction.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeBackupDownloadUserRestrictionRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeBackupDownloadUserRestrictionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBackupDownloadUserRestriction", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBackupDownloadUserRestrictionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1282,6 +1328,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("DescribeClusterPasswordComplexity", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeClusterPasswordComplexityResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeClusterReadOnly(self, request):
+        """本接口（DescribeClusterReadOnly）用于查询集群只读开关。
+
+        :param request: Request instance for DescribeClusterReadOnly.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeClusterReadOnlyRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeClusterReadOnlyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClusterReadOnly", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeClusterReadOnlyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2418,6 +2487,52 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyBackupDownloadRestriction(self, request):
+        """该接口用于修改用户当前地域的备份文件限制下载来源，可以设置内外网均可下载、仅内网可下载，或内网指定的vpc、ip可以下载。
+
+        :param request: Request instance for ModifyBackupDownloadRestriction.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyBackupDownloadRestrictionRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyBackupDownloadRestrictionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyBackupDownloadRestriction", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyBackupDownloadRestrictionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyBackupDownloadUserRestriction(self, request):
+        """该接口用于修改用户当前地域的备份文件限制下载来源，可以设置内外网均可下载、仅内网可下载，或内网指定的vpc、ip可以下载。
+
+        :param request: Request instance for ModifyBackupDownloadUserRestriction.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyBackupDownloadUserRestrictionRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyBackupDownloadUserRestrictionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyBackupDownloadUserRestriction", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyBackupDownloadUserRestrictionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyBackupName(self, request):
         """此接口（ModifyBackupName）用于修改备份文件备注名。
 
@@ -2570,6 +2685,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("ModifyClusterPasswordComplexity", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyClusterPasswordComplexityResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyClusterReadOnly(self, request):
+        """本接口（ModifyClusterReadOnly）用于修改集群只读开关。
+
+        :param request: Request instance for ModifyClusterReadOnly.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyClusterReadOnlyRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyClusterReadOnlyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyClusterReadOnly", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyClusterReadOnlyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

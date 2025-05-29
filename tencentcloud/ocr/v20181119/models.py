@@ -4237,6 +4237,62 @@ class Coord(AbstractModel):
         
 
 
+class CustomsDeclaration(AbstractModel):
+    """海关进/出口货物报关单
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Title: 发票名称
+        :type Title: str
+        :param _Content: 识别出的字段名称(关键字)
+        :type Content: list of OtherInvoiceItem
+        """
+        self._Title = None
+        self._Content = None
+
+    @property
+    def Title(self):
+        """发票名称
+        :rtype: str
+        """
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Content(self):
+        """识别出的字段名称(关键字)
+        :rtype: list of OtherInvoiceItem
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._Title = params.get("Title")
+        if params.get("Content") is not None:
+            self._Content = []
+            for item in params.get("Content"):
+                obj = OtherInvoiceItem()
+                obj._deserialize(item)
+                self._Content.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CustomsPaymentReceipt(AbstractModel):
     """海关缴款书
 
@@ -13991,6 +14047,8 @@ FailedOperation.UnKnowError：表示识别失败；
         :type SubTypeDescription: str
         :param _ItemPolygon: 该发票中所有字段坐标信息。包括字段英文名称、字段值所在位置四点坐标、字段所属行号，具体内容请点击左侧链接。
         :type ItemPolygon: list of ItemPolygonInfo
+        :param _QRCode: 二维码数据。
+        :type QRCode: str
         """
         self._Code = None
         self._Type = None
@@ -14003,6 +14061,7 @@ FailedOperation.UnKnowError：表示识别失败；
         self._CutImage = None
         self._SubTypeDescription = None
         self._ItemPolygon = None
+        self._QRCode = None
 
     @property
     def Code(self):
@@ -14146,6 +14205,17 @@ FailedOperation.UnKnowError：表示识别失败；
     def ItemPolygon(self, ItemPolygon):
         self._ItemPolygon = ItemPolygon
 
+    @property
+    def QRCode(self):
+        """二维码数据。
+        :rtype: str
+        """
+        return self._QRCode
+
+    @QRCode.setter
+    def QRCode(self, QRCode):
+        self._QRCode = QRCode
+
 
     def _deserialize(self, params):
         self._Code = params.get("Code")
@@ -14168,6 +14238,7 @@ FailedOperation.UnKnowError：表示识别失败；
                 obj = ItemPolygonInfo()
                 obj._deserialize(item)
                 self._ItemPolygon.append(obj)
+        self._QRCode = params.get("QRCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18512,6 +18583,62 @@ class OCRResult(AbstractModel):
         
 
 
+class OnlineTaxiItinerary(AbstractModel):
+    """网约车行程单
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Title: 发票名称
+        :type Title: str
+        :param _Content: 识别出的字段名称(关键字)
+        :type Content: list of OtherInvoiceItem
+        """
+        self._Title = None
+        self._Content = None
+
+    @property
+    def Title(self):
+        """发票名称
+        :rtype: str
+        """
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Content(self):
+        """识别出的字段名称(关键字)
+        :rtype: list of OtherInvoiceItem
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._Title = params.get("Title")
+        if params.get("Content") is not None:
+            self._Content = []
+            for item in params.get("Content"):
+                obj = OtherInvoiceItem()
+                obj._deserialize(item)
+                self._Content.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OnlineTaxiItineraryInfo(AbstractModel):
     """网约车行程单识别结果
 
@@ -18921,6 +19048,62 @@ class OtherInvoiceList(AbstractModel):
                 obj = OtherInvoiceItem()
                 obj._deserialize(item)
                 self._OtherInvoiceItemList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OverseasInvoice(AbstractModel):
+    """海外发票
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Title: 发票名称
+        :type Title: str
+        :param _Content: 识别出的字段名称(关键字)
+        :type Content: list of OtherInvoiceItem
+        """
+        self._Title = None
+        self._Content = None
+
+    @property
+    def Title(self):
+        """发票名称
+        :rtype: str
+        """
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Content(self):
+        """识别出的字段名称(关键字)
+        :rtype: list of OtherInvoiceItem
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._Title = params.get("Title")
+        if params.get("Content") is not None:
+            self._Content = []
+            for item in params.get("Content"):
+                obj = OtherInvoiceItem()
+                obj._deserialize(item)
+                self._Content.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23680,6 +23863,11 @@ class RecognizeGeneralInvoiceRequest(AbstractModel):
 18：完税凭证
 19：海关缴款书
 20：银行回单
+21：网约车行程单
+22：海关进/出口货物报关单
+23：海外发票
+24：购物小票
+25：销货清单
 -1：其他发票
         :type Types: list of int
         :param _EnableOther: 是否开启其他票识别，默认值为true，开启后可支持其他发票的智能识别。	
@@ -23694,6 +23882,8 @@ class RecognizeGeneralInvoiceRequest(AbstractModel):
         :type EnableCutImage: bool
         :param _EnableItemPolygon: 是否打开字段坐标返回。默认为false。
         :type EnableItemPolygon: bool
+        :param _EnableQRCode: 是否开启二维码识别。
+        :type EnableQRCode: bool
         """
         self._ImageBase64 = None
         self._ImageUrl = None
@@ -23704,6 +23894,7 @@ class RecognizeGeneralInvoiceRequest(AbstractModel):
         self._EnableMultiplePage = None
         self._EnableCutImage = None
         self._EnableItemPolygon = None
+        self._EnableQRCode = None
 
     @property
     def ImageBase64(self):
@@ -23748,6 +23939,11 @@ class RecognizeGeneralInvoiceRequest(AbstractModel):
 18：完税凭证
 19：海关缴款书
 20：银行回单
+21：网约车行程单
+22：海关进/出口货物报关单
+23：海外发票
+24：购物小票
+25：销货清单
 -1：其他发票
         :rtype: list of int
         """
@@ -23823,6 +24019,17 @@ class RecognizeGeneralInvoiceRequest(AbstractModel):
     def EnableItemPolygon(self, EnableItemPolygon):
         self._EnableItemPolygon = EnableItemPolygon
 
+    @property
+    def EnableQRCode(self):
+        """是否开启二维码识别。
+        :rtype: bool
+        """
+        return self._EnableQRCode
+
+    @EnableQRCode.setter
+    def EnableQRCode(self, EnableQRCode):
+        self._EnableQRCode = EnableQRCode
+
 
     def _deserialize(self, params):
         self._ImageBase64 = params.get("ImageBase64")
@@ -23834,6 +24041,7 @@ class RecognizeGeneralInvoiceRequest(AbstractModel):
         self._EnableMultiplePage = params.get("EnableMultiplePage")
         self._EnableCutImage = params.get("EnableCutImage")
         self._EnableItemPolygon = params.get("EnableItemPolygon")
+        self._EnableQRCode = params.get("EnableQRCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27562,6 +27770,62 @@ class RideHailingTransportLicenseOCRResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class SaleInventory(AbstractModel):
+    """销货清单
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Title: 发票名称
+        :type Title: str
+        :param _Content: 识别出的字段名称(关键字)
+        :type Content: list of OtherInvoiceItem
+        """
+        self._Title = None
+        self._Content = None
+
+    @property
+    def Title(self):
+        """发票名称
+        :rtype: str
+        """
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Content(self):
+        """识别出的字段名称(关键字)
+        :rtype: list of OtherInvoiceItem
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._Title = params.get("Title")
+        if params.get("Content") is not None:
+            self._Content = []
+            for item in params.get("Content"):
+                obj = OtherInvoiceItem()
+                obj._deserialize(item)
+                self._Content.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SealInfo(AbstractModel):
     """印章信息
 
@@ -28319,6 +28583,62 @@ class ShippingInvoice(AbstractModel):
         
 
 
+class ShoppingReceipt(AbstractModel):
+    """购物小票
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Title: 发票名称
+        :type Title: str
+        :param _Content: 识别出的字段名称(关键字)
+        :type Content: list of OtherInvoiceItem
+        """
+        self._Title = None
+        self._Content = None
+
+    @property
+    def Title(self):
+        """发票名称
+        :rtype: str
+        """
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Content(self):
+        """识别出的字段名称(关键字)
+        :rtype: list of OtherInvoiceItem
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._Title = params.get("Title")
+        if params.get("Content") is not None:
+            self._Content = []
+            for item in params.get("Content"):
+                obj = OtherInvoiceItem()
+                obj._deserialize(item)
+                self._Content.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SingleInvoiceInfo(AbstractModel):
     """混贴票据中单张发票的内容
 
@@ -28482,6 +28802,21 @@ class SingleInvoiceItem(AbstractModel):
         :param _BankSlip: 银行回单
 注意：此字段可能返回 null，表示取不到有效值。
         :type BankSlip: :class:`tencentcloud.ocr.v20181119.models.BankSlip`
+        :param _OnlineTaxiItinerary: 网约车行程单
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OnlineTaxiItinerary: :class:`tencentcloud.ocr.v20181119.models.OnlineTaxiItinerary`
+        :param _CustomsDeclaration: 海关进/出口货物报关单
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomsDeclaration: :class:`tencentcloud.ocr.v20181119.models.CustomsDeclaration`
+        :param _OverseasInvoice: 海外发票
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OverseasInvoice: :class:`tencentcloud.ocr.v20181119.models.OverseasInvoice`
+        :param _ShoppingReceipt: 购物小票
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShoppingReceipt: :class:`tencentcloud.ocr.v20181119.models.ShoppingReceipt`
+        :param _SaleInventory: 销货清单
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SaleInventory: :class:`tencentcloud.ocr.v20181119.models.SaleInventory`
         """
         self._VatSpecialInvoice = None
         self._VatCommonInvoice = None
@@ -28513,6 +28848,11 @@ class SingleInvoiceItem(AbstractModel):
         self._TaxPayment = None
         self._CustomsPaymentReceipt = None
         self._BankSlip = None
+        self._OnlineTaxiItinerary = None
+        self._CustomsDeclaration = None
+        self._OverseasInvoice = None
+        self._ShoppingReceipt = None
+        self._SaleInventory = None
 
     @property
     def VatSpecialInvoice(self):
@@ -28874,6 +29214,66 @@ class SingleInvoiceItem(AbstractModel):
     def BankSlip(self, BankSlip):
         self._BankSlip = BankSlip
 
+    @property
+    def OnlineTaxiItinerary(self):
+        """网约车行程单
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.OnlineTaxiItinerary`
+        """
+        return self._OnlineTaxiItinerary
+
+    @OnlineTaxiItinerary.setter
+    def OnlineTaxiItinerary(self, OnlineTaxiItinerary):
+        self._OnlineTaxiItinerary = OnlineTaxiItinerary
+
+    @property
+    def CustomsDeclaration(self):
+        """海关进/出口货物报关单
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.CustomsDeclaration`
+        """
+        return self._CustomsDeclaration
+
+    @CustomsDeclaration.setter
+    def CustomsDeclaration(self, CustomsDeclaration):
+        self._CustomsDeclaration = CustomsDeclaration
+
+    @property
+    def OverseasInvoice(self):
+        """海外发票
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.OverseasInvoice`
+        """
+        return self._OverseasInvoice
+
+    @OverseasInvoice.setter
+    def OverseasInvoice(self, OverseasInvoice):
+        self._OverseasInvoice = OverseasInvoice
+
+    @property
+    def ShoppingReceipt(self):
+        """购物小票
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.ShoppingReceipt`
+        """
+        return self._ShoppingReceipt
+
+    @ShoppingReceipt.setter
+    def ShoppingReceipt(self, ShoppingReceipt):
+        self._ShoppingReceipt = ShoppingReceipt
+
+    @property
+    def SaleInventory(self):
+        """销货清单
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.SaleInventory`
+        """
+        return self._SaleInventory
+
+    @SaleInventory.setter
+    def SaleInventory(self, SaleInventory):
+        self._SaleInventory = SaleInventory
+
 
     def _deserialize(self, params):
         if params.get("VatSpecialInvoice") is not None:
@@ -28966,6 +29366,21 @@ class SingleInvoiceItem(AbstractModel):
         if params.get("BankSlip") is not None:
             self._BankSlip = BankSlip()
             self._BankSlip._deserialize(params.get("BankSlip"))
+        if params.get("OnlineTaxiItinerary") is not None:
+            self._OnlineTaxiItinerary = OnlineTaxiItinerary()
+            self._OnlineTaxiItinerary._deserialize(params.get("OnlineTaxiItinerary"))
+        if params.get("CustomsDeclaration") is not None:
+            self._CustomsDeclaration = CustomsDeclaration()
+            self._CustomsDeclaration._deserialize(params.get("CustomsDeclaration"))
+        if params.get("OverseasInvoice") is not None:
+            self._OverseasInvoice = OverseasInvoice()
+            self._OverseasInvoice._deserialize(params.get("OverseasInvoice"))
+        if params.get("ShoppingReceipt") is not None:
+            self._ShoppingReceipt = ShoppingReceipt()
+            self._ShoppingReceipt._deserialize(params.get("ShoppingReceipt"))
+        if params.get("SaleInventory") is not None:
+            self._SaleInventory = SaleInventory()
+            self._SaleInventory._deserialize(params.get("SaleInventory"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

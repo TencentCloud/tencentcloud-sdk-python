@@ -5698,7 +5698,7 @@ class CheckRepeatAssetImageRegistryResponse(AbstractModel):
 
 
 class CkafkaRouteInfo(AbstractModel):
-    """ckafkal路由详情
+    """Ckafka路由详情
 
     """
 
@@ -19732,7 +19732,7 @@ class DescribeAccessControlEventsExportResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DownloadUrl: execle下载地址
+        :param _DownloadUrl: excel下载地址
         :type DownloadUrl: str
         :param _JobId: 任务id
         :type JobId: str
@@ -19745,7 +19745,7 @@ class DescribeAccessControlEventsExportResponse(AbstractModel):
 
     @property
     def DownloadUrl(self):
-        """execle下载地址
+        """excel下载地址
         :rtype: str
         """
         return self._DownloadUrl
@@ -40759,7 +40759,7 @@ class DescribeReverseShellEventsExportResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DownloadUrl: execle下载地址
+        :param _DownloadUrl: excel下载地址
         :type DownloadUrl: str
         :param _JobId: 任务ID
         :type JobId: str
@@ -40772,7 +40772,7 @@ class DescribeReverseShellEventsExportResponse(AbstractModel):
 
     @property
     def DownloadUrl(self):
-        """execle下载地址
+        """excel下载地址
         :rtype: str
         """
         return self._DownloadUrl

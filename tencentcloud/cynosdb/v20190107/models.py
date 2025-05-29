@@ -2307,6 +2307,215 @@ class BackupFileInfo(AbstractModel):
         
 
 
+class BackupLimitClusterRestriction(AbstractModel):
+    """备份下载集群限制参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群id
+        :type ClusterId: str
+        :param _BackupLimitRestriction: 下载限制配置
+        :type BackupLimitRestriction: :class:`tencentcloud.cynosdb.v20190107.models.BackupLimitRestriction`
+        """
+        self._ClusterId = None
+        self._BackupLimitRestriction = None
+
+    @property
+    def ClusterId(self):
+        """集群id
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def BackupLimitRestriction(self):
+        """下载限制配置
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.BackupLimitRestriction`
+        """
+        return self._BackupLimitRestriction
+
+    @BackupLimitRestriction.setter
+    def BackupLimitRestriction(self, BackupLimitRestriction):
+        self._BackupLimitRestriction = BackupLimitRestriction
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        if params.get("BackupLimitRestriction") is not None:
+            self._BackupLimitRestriction = BackupLimitRestriction()
+            self._BackupLimitRestriction._deserialize(params.get("BackupLimitRestriction"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BackupLimitRestriction(AbstractModel):
+    """备份下载限制参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LimitType: 限制类型
+        :type LimitType: str
+        :param _VpcComparisonSymbol: 该参数仅支持 In， 表示 LimitVpc 指定的vpc可以下载。默认为In
+        :type VpcComparisonSymbol: str
+        :param _IpComparisonSymbol: In: 指定的ip可以下载； NotIn: 指定的ip不可以下载
+        :type IpComparisonSymbol: str
+        :param _LimitVpcs: 限制下载的vpc设置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LimitVpcs: list of BackupLimitVpcItem
+        :param _LimitIps: 限制下载的ip设置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LimitIps: list of str
+        """
+        self._LimitType = None
+        self._VpcComparisonSymbol = None
+        self._IpComparisonSymbol = None
+        self._LimitVpcs = None
+        self._LimitIps = None
+
+    @property
+    def LimitType(self):
+        """限制类型
+        :rtype: str
+        """
+        return self._LimitType
+
+    @LimitType.setter
+    def LimitType(self, LimitType):
+        self._LimitType = LimitType
+
+    @property
+    def VpcComparisonSymbol(self):
+        """该参数仅支持 In， 表示 LimitVpc 指定的vpc可以下载。默认为In
+        :rtype: str
+        """
+        return self._VpcComparisonSymbol
+
+    @VpcComparisonSymbol.setter
+    def VpcComparisonSymbol(self, VpcComparisonSymbol):
+        self._VpcComparisonSymbol = VpcComparisonSymbol
+
+    @property
+    def IpComparisonSymbol(self):
+        """In: 指定的ip可以下载； NotIn: 指定的ip不可以下载
+        :rtype: str
+        """
+        return self._IpComparisonSymbol
+
+    @IpComparisonSymbol.setter
+    def IpComparisonSymbol(self, IpComparisonSymbol):
+        self._IpComparisonSymbol = IpComparisonSymbol
+
+    @property
+    def LimitVpcs(self):
+        """限制下载的vpc设置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of BackupLimitVpcItem
+        """
+        return self._LimitVpcs
+
+    @LimitVpcs.setter
+    def LimitVpcs(self, LimitVpcs):
+        self._LimitVpcs = LimitVpcs
+
+    @property
+    def LimitIps(self):
+        """限制下载的ip设置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._LimitIps
+
+    @LimitIps.setter
+    def LimitIps(self, LimitIps):
+        self._LimitIps = LimitIps
+
+
+    def _deserialize(self, params):
+        self._LimitType = params.get("LimitType")
+        self._VpcComparisonSymbol = params.get("VpcComparisonSymbol")
+        self._IpComparisonSymbol = params.get("IpComparisonSymbol")
+        if params.get("LimitVpcs") is not None:
+            self._LimitVpcs = []
+            for item in params.get("LimitVpcs"):
+                obj = BackupLimitVpcItem()
+                obj._deserialize(item)
+                self._LimitVpcs.append(obj)
+        self._LimitIps = params.get("LimitIps")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BackupLimitVpcItem(AbstractModel):
+    """备份文件限制下载来源VPC设置项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: 限制下载来源的地域。目前仅支持当前地域
+        :type Region: str
+        :param _VpcList: 限制下载的vpc列表
+        :type VpcList: list of str
+        """
+        self._Region = None
+        self._VpcList = None
+
+    @property
+    def Region(self):
+        """限制下载来源的地域。目前仅支持当前地域
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def VpcList(self):
+        """限制下载的vpc列表
+        :rtype: list of str
+        """
+        return self._VpcList
+
+    @VpcList.setter
+    def VpcList(self, VpcList):
+        self._VpcList = VpcList
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        self._VpcList = params.get("VpcList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BillingResourceInfo(AbstractModel):
     """计费资源信息
 
@@ -4643,6 +4852,57 @@ class ClusterParamModifyLog(AbstractModel):
         
 
 
+class ClusterReadOnlyValue(AbstractModel):
+    """集群只读开关列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _ReadOnlyValue: 只读开关值
+        :type ReadOnlyValue: str
+        """
+        self._ClusterId = None
+        self._ReadOnlyValue = None
+
+    @property
+    def ClusterId(self):
+        """集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ReadOnlyValue(self):
+        """只读开关值
+        :rtype: str
+        """
+        return self._ReadOnlyValue
+
+    @ReadOnlyValue.setter
+    def ReadOnlyValue(self, ReadOnlyValue):
+        self._ReadOnlyValue = ReadOnlyValue
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._ReadOnlyValue = params.get("ReadOnlyValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClusterSlaveData(AbstractModel):
     """集群从可用区信息
 
@@ -4758,6 +5018,57 @@ class ClusterSlaveData(AbstractModel):
                 obj = SlaveZoneAttrItem()
                 obj._deserialize(item)
                 self._OldSlaveZoneAttr.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClusterTaskId(AbstractModel):
+    """集群任务ID
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        """
+        self._ClusterId = None
+        self._TaskId = None
+
+    @property
+    def ClusterId(self):
+        """集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def TaskId(self):
+        """任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._TaskId = params.get("TaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14136,6 +14447,92 @@ class DescribeBackupConfigResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeBackupDownloadRestrictionRequest(AbstractModel):
+    """DescribeBackupDownloadRestriction请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterIds: 集群ID
+        :type ClusterIds: list of str
+        """
+        self._ClusterIds = None
+
+    @property
+    def ClusterIds(self):
+        """集群ID
+        :rtype: list of str
+        """
+        return self._ClusterIds
+
+    @ClusterIds.setter
+    def ClusterIds(self, ClusterIds):
+        self._ClusterIds = ClusterIds
+
+
+    def _deserialize(self, params):
+        self._ClusterIds = params.get("ClusterIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackupDownloadRestrictionResponse(AbstractModel):
+    """DescribeBackupDownloadRestriction返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BackupLimitClusterRestrictions: 集群备份下载限制
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupLimitClusterRestrictions: list of BackupLimitClusterRestriction
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._BackupLimitClusterRestrictions = None
+        self._RequestId = None
+
+    @property
+    def BackupLimitClusterRestrictions(self):
+        """集群备份下载限制
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of BackupLimitClusterRestriction
+        """
+        return self._BackupLimitClusterRestrictions
+
+    @BackupLimitClusterRestrictions.setter
+    def BackupLimitClusterRestrictions(self, BackupLimitClusterRestrictions):
+        self._BackupLimitClusterRestrictions = BackupLimitClusterRestrictions
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("BackupLimitClusterRestrictions") is not None:
+            self._BackupLimitClusterRestrictions = []
+            for item in params.get("BackupLimitClusterRestrictions"):
+                obj = BackupLimitClusterRestriction()
+                obj._deserialize(item)
+                self._BackupLimitClusterRestrictions.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeBackupDownloadUrlRequest(AbstractModel):
     """DescribeBackupDownloadUrl请求参数结构体
 
@@ -14147,9 +14544,12 @@ class DescribeBackupDownloadUrlRequest(AbstractModel):
         :type ClusterId: str
         :param _BackupId: 备份ID
         :type BackupId: int
+        :param _DownloadRestriction: 备份下载来源限制条件
+        :type DownloadRestriction: :class:`tencentcloud.cynosdb.v20190107.models.BackupLimitRestriction`
         """
         self._ClusterId = None
         self._BackupId = None
+        self._DownloadRestriction = None
 
     @property
     def ClusterId(self):
@@ -14173,10 +14573,24 @@ class DescribeBackupDownloadUrlRequest(AbstractModel):
     def BackupId(self, BackupId):
         self._BackupId = BackupId
 
+    @property
+    def DownloadRestriction(self):
+        """备份下载来源限制条件
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.BackupLimitRestriction`
+        """
+        return self._DownloadRestriction
+
+    @DownloadRestriction.setter
+    def DownloadRestriction(self, DownloadRestriction):
+        self._DownloadRestriction = DownloadRestriction
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
         self._BackupId = params.get("BackupId")
+        if params.get("DownloadRestriction") is not None:
+            self._DownloadRestriction = BackupLimitRestriction()
+            self._DownloadRestriction._deserialize(params.get("DownloadRestriction"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14227,6 +14641,137 @@ class DescribeBackupDownloadUrlResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._DownloadUrl = params.get("DownloadUrl")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBackupDownloadUserRestrictionRequest(AbstractModel):
+    """DescribeBackupDownloadUserRestriction请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: 分页大小
+        :type Limit: int
+        :param _Offset: 偏移量
+        :type Offset: int
+        :param _OnlyUserRestriction: 是否只查询用户级别下载限制，true-是，false-否
+        :type OnlyUserRestriction: bool
+        """
+        self._Limit = None
+        self._Offset = None
+        self._OnlyUserRestriction = None
+
+    @property
+    def Limit(self):
+        """分页大小
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """偏移量
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def OnlyUserRestriction(self):
+        """是否只查询用户级别下载限制，true-是，false-否
+        :rtype: bool
+        """
+        return self._OnlyUserRestriction
+
+    @OnlyUserRestriction.setter
+    def OnlyUserRestriction(self, OnlyUserRestriction):
+        self._OnlyUserRestriction = OnlyUserRestriction
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._OnlyUserRestriction = params.get("OnlyUserRestriction")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackupDownloadUserRestrictionResponse(AbstractModel):
+    """DescribeBackupDownloadUserRestriction返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BackupLimitClusterRestrictions: 集群备份下载限制信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupLimitClusterRestrictions: list of BackupLimitClusterRestriction
+        :param _TotalCount: 总条数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._BackupLimitClusterRestrictions = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def BackupLimitClusterRestrictions(self):
+        """集群备份下载限制信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of BackupLimitClusterRestriction
+        """
+        return self._BackupLimitClusterRestrictions
+
+    @BackupLimitClusterRestrictions.setter
+    def BackupLimitClusterRestrictions(self, BackupLimitClusterRestrictions):
+        self._BackupLimitClusterRestrictions = BackupLimitClusterRestrictions
+
+    @property
+    def TotalCount(self):
+        """总条数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("BackupLimitClusterRestrictions") is not None:
+            self._BackupLimitClusterRestrictions = []
+            for item in params.get("BackupLimitClusterRestrictions"):
+                obj = BackupLimitClusterRestriction()
+                obj._deserialize(item)
+                self._BackupLimitClusterRestrictions.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -14648,9 +15193,12 @@ class DescribeBinlogDownloadUrlRequest(AbstractModel):
         :type ClusterId: str
         :param _BinlogId: Binlog文件ID
         :type BinlogId: int
+        :param _DownloadRestriction: 备份下载来源限制条件
+        :type DownloadRestriction: :class:`tencentcloud.cynosdb.v20190107.models.BackupLimitRestriction`
         """
         self._ClusterId = None
         self._BinlogId = None
+        self._DownloadRestriction = None
 
     @property
     def ClusterId(self):
@@ -14674,10 +15222,24 @@ class DescribeBinlogDownloadUrlRequest(AbstractModel):
     def BinlogId(self, BinlogId):
         self._BinlogId = BinlogId
 
+    @property
+    def DownloadRestriction(self):
+        """备份下载来源限制条件
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.BackupLimitRestriction`
+        """
+        return self._DownloadRestriction
+
+    @DownloadRestriction.setter
+    def DownloadRestriction(self, DownloadRestriction):
+        self._DownloadRestriction = DownloadRestriction
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
         self._BinlogId = params.get("BinlogId")
+        if params.get("DownloadRestriction") is not None:
+            self._DownloadRestriction = BackupLimitRestriction()
+            self._DownloadRestriction._deserialize(params.get("DownloadRestriction"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16351,6 +16913,90 @@ class DescribeClusterPasswordComplexityResponse(AbstractModel):
         if params.get("ValidatePasswordSpecialCharCount") is not None:
             self._ValidatePasswordSpecialCharCount = ParamInfo()
             self._ValidatePasswordSpecialCharCount._deserialize(params.get("ValidatePasswordSpecialCharCount"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeClusterReadOnlyRequest(AbstractModel):
+    """DescribeClusterReadOnly请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterIds: 集群ID列表
+        :type ClusterIds: list of str
+        """
+        self._ClusterIds = None
+
+    @property
+    def ClusterIds(self):
+        """集群ID列表
+        :rtype: list of str
+        """
+        return self._ClusterIds
+
+    @ClusterIds.setter
+    def ClusterIds(self, ClusterIds):
+        self._ClusterIds = ClusterIds
+
+
+    def _deserialize(self, params):
+        self._ClusterIds = params.get("ClusterIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterReadOnlyResponse(AbstractModel):
+    """DescribeClusterReadOnly返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterReadOnlyValues: 集群只读开关列表
+        :type ClusterReadOnlyValues: list of ClusterReadOnlyValue
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ClusterReadOnlyValues = None
+        self._RequestId = None
+
+    @property
+    def ClusterReadOnlyValues(self):
+        """集群只读开关列表
+        :rtype: list of ClusterReadOnlyValue
+        """
+        return self._ClusterReadOnlyValues
+
+    @ClusterReadOnlyValues.setter
+    def ClusterReadOnlyValues(self, ClusterReadOnlyValues):
+        self._ClusterReadOnlyValues = ClusterReadOnlyValues
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ClusterReadOnlyValues") is not None:
+            self._ClusterReadOnlyValues = []
+            for item in params.get("ClusterReadOnlyValues"):
+                obj = ClusterReadOnlyValue()
+                obj._deserialize(item)
+                self._ClusterReadOnlyValues.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -25664,6 +26310,279 @@ class ModifyBackupConfigResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyBackupDownloadRestrictionRequest(AbstractModel):
+    """ModifyBackupDownloadRestriction请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterIds: 集群ID
+        :type ClusterIds: list of str
+        :param _LimitType: 下载限制类型，NoLimit-不限制,LimitOnlyIntranet-限制内网 ,Customize-自定义
+        :type LimitType: str
+        :param _VpcComparisonSymbol: 该参数仅支持 In， 表示 LimitVpc 指定的vpc可以下载。默认为In
+        :type VpcComparisonSymbol: str
+        :param _IpComparisonSymbol: In: 指定的ip可以下载； NotIn: 指定的ip不可以下载
+        :type IpComparisonSymbol: str
+        :param _LimitVpcs: 限制下载的vpc设置
+        :type LimitVpcs: list of BackupLimitVpcItem
+        :param _LimitIps: 限制下载的ip设置
+        :type LimitIps: list of str
+        """
+        self._ClusterIds = None
+        self._LimitType = None
+        self._VpcComparisonSymbol = None
+        self._IpComparisonSymbol = None
+        self._LimitVpcs = None
+        self._LimitIps = None
+
+    @property
+    def ClusterIds(self):
+        """集群ID
+        :rtype: list of str
+        """
+        return self._ClusterIds
+
+    @ClusterIds.setter
+    def ClusterIds(self, ClusterIds):
+        self._ClusterIds = ClusterIds
+
+    @property
+    def LimitType(self):
+        """下载限制类型，NoLimit-不限制,LimitOnlyIntranet-限制内网 ,Customize-自定义
+        :rtype: str
+        """
+        return self._LimitType
+
+    @LimitType.setter
+    def LimitType(self, LimitType):
+        self._LimitType = LimitType
+
+    @property
+    def VpcComparisonSymbol(self):
+        """该参数仅支持 In， 表示 LimitVpc 指定的vpc可以下载。默认为In
+        :rtype: str
+        """
+        return self._VpcComparisonSymbol
+
+    @VpcComparisonSymbol.setter
+    def VpcComparisonSymbol(self, VpcComparisonSymbol):
+        self._VpcComparisonSymbol = VpcComparisonSymbol
+
+    @property
+    def IpComparisonSymbol(self):
+        """In: 指定的ip可以下载； NotIn: 指定的ip不可以下载
+        :rtype: str
+        """
+        return self._IpComparisonSymbol
+
+    @IpComparisonSymbol.setter
+    def IpComparisonSymbol(self, IpComparisonSymbol):
+        self._IpComparisonSymbol = IpComparisonSymbol
+
+    @property
+    def LimitVpcs(self):
+        """限制下载的vpc设置
+        :rtype: list of BackupLimitVpcItem
+        """
+        return self._LimitVpcs
+
+    @LimitVpcs.setter
+    def LimitVpcs(self, LimitVpcs):
+        self._LimitVpcs = LimitVpcs
+
+    @property
+    def LimitIps(self):
+        """限制下载的ip设置
+        :rtype: list of str
+        """
+        return self._LimitIps
+
+    @LimitIps.setter
+    def LimitIps(self, LimitIps):
+        self._LimitIps = LimitIps
+
+
+    def _deserialize(self, params):
+        self._ClusterIds = params.get("ClusterIds")
+        self._LimitType = params.get("LimitType")
+        self._VpcComparisonSymbol = params.get("VpcComparisonSymbol")
+        self._IpComparisonSymbol = params.get("IpComparisonSymbol")
+        if params.get("LimitVpcs") is not None:
+            self._LimitVpcs = []
+            for item in params.get("LimitVpcs"):
+                obj = BackupLimitVpcItem()
+                obj._deserialize(item)
+                self._LimitVpcs.append(obj)
+        self._LimitIps = params.get("LimitIps")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBackupDownloadRestrictionResponse(AbstractModel):
+    """ModifyBackupDownloadRestriction返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyBackupDownloadUserRestrictionRequest(AbstractModel):
+    """ModifyBackupDownloadUserRestriction请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LimitType: 下载限制类型，NoLimit-不限制,LimitOnlyIntranet-限制内网 ,Customize-自定义
+        :type LimitType: str
+        :param _VpcComparisonSymbol: 该参数仅支持 In， 表示 LimitVpc 指定的vpc可以下载。默认为In
+        :type VpcComparisonSymbol: str
+        :param _IpComparisonSymbol: In: 指定的ip可以下载； NotIn: 指定的ip不可以下载
+        :type IpComparisonSymbol: str
+        :param _LimitVpcs: 限制下载的vpc设置
+        :type LimitVpcs: list of BackupLimitVpcItem
+        :param _LimitIps: 限制下载的ip设置
+        :type LimitIps: list of str
+        """
+        self._LimitType = None
+        self._VpcComparisonSymbol = None
+        self._IpComparisonSymbol = None
+        self._LimitVpcs = None
+        self._LimitIps = None
+
+    @property
+    def LimitType(self):
+        """下载限制类型，NoLimit-不限制,LimitOnlyIntranet-限制内网 ,Customize-自定义
+        :rtype: str
+        """
+        return self._LimitType
+
+    @LimitType.setter
+    def LimitType(self, LimitType):
+        self._LimitType = LimitType
+
+    @property
+    def VpcComparisonSymbol(self):
+        """该参数仅支持 In， 表示 LimitVpc 指定的vpc可以下载。默认为In
+        :rtype: str
+        """
+        return self._VpcComparisonSymbol
+
+    @VpcComparisonSymbol.setter
+    def VpcComparisonSymbol(self, VpcComparisonSymbol):
+        self._VpcComparisonSymbol = VpcComparisonSymbol
+
+    @property
+    def IpComparisonSymbol(self):
+        """In: 指定的ip可以下载； NotIn: 指定的ip不可以下载
+        :rtype: str
+        """
+        return self._IpComparisonSymbol
+
+    @IpComparisonSymbol.setter
+    def IpComparisonSymbol(self, IpComparisonSymbol):
+        self._IpComparisonSymbol = IpComparisonSymbol
+
+    @property
+    def LimitVpcs(self):
+        """限制下载的vpc设置
+        :rtype: list of BackupLimitVpcItem
+        """
+        return self._LimitVpcs
+
+    @LimitVpcs.setter
+    def LimitVpcs(self, LimitVpcs):
+        self._LimitVpcs = LimitVpcs
+
+    @property
+    def LimitIps(self):
+        """限制下载的ip设置
+        :rtype: list of str
+        """
+        return self._LimitIps
+
+    @LimitIps.setter
+    def LimitIps(self, LimitIps):
+        self._LimitIps = LimitIps
+
+
+    def _deserialize(self, params):
+        self._LimitType = params.get("LimitType")
+        self._VpcComparisonSymbol = params.get("VpcComparisonSymbol")
+        self._IpComparisonSymbol = params.get("IpComparisonSymbol")
+        if params.get("LimitVpcs") is not None:
+            self._LimitVpcs = []
+            for item in params.get("LimitVpcs"):
+                obj = BackupLimitVpcItem()
+                obj._deserialize(item)
+                self._LimitVpcs.append(obj)
+        self._LimitIps = params.get("LimitIps")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBackupDownloadUserRestrictionResponse(AbstractModel):
+    """ModifyBackupDownloadUserRestriction返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyBackupNameRequest(AbstractModel):
     """ModifyBackupName请求参数结构体
 
@@ -26411,6 +27330,120 @@ class ModifyClusterPasswordComplexityResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyClusterReadOnlyRequest(AbstractModel):
+    """ModifyClusterReadOnly请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterIds: 集群ID列表
+        :type ClusterIds: list of str
+        :param _ReadOnlyOperation: 集群只读开关，可选值：ON，OFF
+        :type ReadOnlyOperation: str
+        :param _IsInMaintainPeriod: yes：在运维时间窗内修改，no：立即执行（默认值）
+        :type IsInMaintainPeriod: str
+        """
+        self._ClusterIds = None
+        self._ReadOnlyOperation = None
+        self._IsInMaintainPeriod = None
+
+    @property
+    def ClusterIds(self):
+        """集群ID列表
+        :rtype: list of str
+        """
+        return self._ClusterIds
+
+    @ClusterIds.setter
+    def ClusterIds(self, ClusterIds):
+        self._ClusterIds = ClusterIds
+
+    @property
+    def ReadOnlyOperation(self):
+        """集群只读开关，可选值：ON，OFF
+        :rtype: str
+        """
+        return self._ReadOnlyOperation
+
+    @ReadOnlyOperation.setter
+    def ReadOnlyOperation(self, ReadOnlyOperation):
+        self._ReadOnlyOperation = ReadOnlyOperation
+
+    @property
+    def IsInMaintainPeriod(self):
+        """yes：在运维时间窗内修改，no：立即执行（默认值）
+        :rtype: str
+        """
+        return self._IsInMaintainPeriod
+
+    @IsInMaintainPeriod.setter
+    def IsInMaintainPeriod(self, IsInMaintainPeriod):
+        self._IsInMaintainPeriod = IsInMaintainPeriod
+
+
+    def _deserialize(self, params):
+        self._ClusterIds = params.get("ClusterIds")
+        self._ReadOnlyOperation = params.get("ReadOnlyOperation")
+        self._IsInMaintainPeriod = params.get("IsInMaintainPeriod")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyClusterReadOnlyResponse(AbstractModel):
+    """ModifyClusterReadOnly返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterTaskIds: 集群任务ID列表
+        :type ClusterTaskIds: list of ClusterTaskId
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ClusterTaskIds = None
+        self._RequestId = None
+
+    @property
+    def ClusterTaskIds(self):
+        """集群任务ID列表
+        :rtype: list of ClusterTaskId
+        """
+        return self._ClusterTaskIds
+
+    @ClusterTaskIds.setter
+    def ClusterTaskIds(self, ClusterTaskIds):
+        self._ClusterTaskIds = ClusterTaskIds
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ClusterTaskIds") is not None:
+            self._ClusterTaskIds = []
+            for item in params.get("ClusterTaskIds"):
+                obj = ClusterTaskId()
+                obj._deserialize(item)
+                self._ClusterTaskIds.append(obj)
         self._RequestId = params.get("RequestId")
 
 

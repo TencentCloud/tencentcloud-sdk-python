@@ -575,6 +575,100 @@ class BlackEmailAddress(AbstractModel):
         
 
 
+class CreateAddressUnsubscribeConfigRequest(AbstractModel):
+    """CreateAddressUnsubscribeConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Address: 发信地址
+        :type Address: str
+        :param _UnsubscribeConfig: 退订链接选项 0: 不加入退订链接 1: 简体中文 2: 英文 3: 繁体中文 4: 西班牙语 5: 法语 6: 德语 7: 日语 8: 韩语 9: 阿拉伯语 10: 泰语
+        :type UnsubscribeConfig: str
+        :param _Status: 0:关闭，1:打开
+        :type Status: int
+        """
+        self._Address = None
+        self._UnsubscribeConfig = None
+        self._Status = None
+
+    @property
+    def Address(self):
+        """发信地址
+        :rtype: str
+        """
+        return self._Address
+
+    @Address.setter
+    def Address(self, Address):
+        self._Address = Address
+
+    @property
+    def UnsubscribeConfig(self):
+        """退订链接选项 0: 不加入退订链接 1: 简体中文 2: 英文 3: 繁体中文 4: 西班牙语 5: 法语 6: 德语 7: 日语 8: 韩语 9: 阿拉伯语 10: 泰语
+        :rtype: str
+        """
+        return self._UnsubscribeConfig
+
+    @UnsubscribeConfig.setter
+    def UnsubscribeConfig(self, UnsubscribeConfig):
+        self._UnsubscribeConfig = UnsubscribeConfig
+
+    @property
+    def Status(self):
+        """0:关闭，1:打开
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Address = params.get("Address")
+        self._UnsubscribeConfig = params.get("UnsubscribeConfig")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAddressUnsubscribeConfigResponse(AbstractModel):
+    """CreateAddressUnsubscribeConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateCustomBlacklistRequest(AbstractModel):
     """CreateCustomBlacklist请求参数结构体
 
@@ -1600,6 +1694,70 @@ class DNSAttributes(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DeleteAddressUnsubscribeConfigRequest(AbstractModel):
+    """DeleteAddressUnsubscribeConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Address: 需要操作的发信地址
+        :type Address: str
+        """
+        self._Address = None
+
+    @property
+    def Address(self):
+        """需要操作的发信地址
+        :rtype: str
+        """
+        return self._Address
+
+    @Address.setter
+    def Address(self, Address):
+        self._Address = Address
+
+
+    def _deserialize(self, params):
+        self._Address = params.get("Address")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAddressUnsubscribeConfigResponse(AbstractModel):
+    """DeleteAddressUnsubscribeConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteBlackListRequest(AbstractModel):
@@ -5297,6 +5455,100 @@ class TimedEmailParam(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UpdateAddressUnsubscribeConfigRequest(AbstractModel):
+    """UpdateAddressUnsubscribeConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Address: 发信地址
+        :type Address: str
+        :param _UnsubscribeConfig: 退订链接选项 0: 不加入退订链接 1: 简体中文 2: 英文 3: 繁体中文 4: 西班牙语 5: 法语 6: 德语 7: 日语 8: 韩语 9: 阿拉伯语 10: 泰语
+        :type UnsubscribeConfig: str
+        :param _Status: 0:关闭配置，1:打开配置
+        :type Status: int
+        """
+        self._Address = None
+        self._UnsubscribeConfig = None
+        self._Status = None
+
+    @property
+    def Address(self):
+        """发信地址
+        :rtype: str
+        """
+        return self._Address
+
+    @Address.setter
+    def Address(self, Address):
+        self._Address = Address
+
+    @property
+    def UnsubscribeConfig(self):
+        """退订链接选项 0: 不加入退订链接 1: 简体中文 2: 英文 3: 繁体中文 4: 西班牙语 5: 法语 6: 德语 7: 日语 8: 韩语 9: 阿拉伯语 10: 泰语
+        :rtype: str
+        """
+        return self._UnsubscribeConfig
+
+    @UnsubscribeConfig.setter
+    def UnsubscribeConfig(self, UnsubscribeConfig):
+        self._UnsubscribeConfig = UnsubscribeConfig
+
+    @property
+    def Status(self):
+        """0:关闭配置，1:打开配置
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Address = params.get("Address")
+        self._UnsubscribeConfig = params.get("UnsubscribeConfig")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateAddressUnsubscribeConfigResponse(AbstractModel):
+    """UpdateAddressUnsubscribeConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateCustomBlackListRequest(AbstractModel):

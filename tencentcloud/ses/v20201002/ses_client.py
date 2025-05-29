@@ -49,6 +49,29 @@ class SesClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAddressUnsubscribeConfig(self, request):
+        """创建地址级退订配置
+
+        :param request: Request instance for CreateAddressUnsubscribeConfig.
+        :type request: :class:`tencentcloud.ses.v20201002.models.CreateAddressUnsubscribeConfigRequest`
+        :rtype: :class:`tencentcloud.ses.v20201002.models.CreateAddressUnsubscribeConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAddressUnsubscribeConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAddressUnsubscribeConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateCustomBlacklist(self, request):
         """添加自定义黑名单
 
@@ -202,6 +225,29 @@ class SesClient(AbstractClient):
             body = self.call("CreateReceiverDetailWithData", params, headers=headers)
             response = json.loads(body)
             model = models.CreateReceiverDetailWithDataResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteAddressUnsubscribeConfig(self, request):
+        """删除地址级退订配置
+
+        :param request: Request instance for DeleteAddressUnsubscribeConfig.
+        :type request: :class:`tencentcloud.ses.v20201002.models.DeleteAddressUnsubscribeConfigRequest`
+        :rtype: :class:`tencentcloud.ses.v20201002.models.DeleteAddressUnsubscribeConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAddressUnsubscribeConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAddressUnsubscribeConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -662,6 +708,29 @@ class SesClient(AbstractClient):
             body = self.call("SendEmail", params, headers=headers)
             response = json.loads(body)
             model = models.SendEmailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateAddressUnsubscribeConfig(self, request):
+        """用于更新地址级退订配置
+
+        :param request: Request instance for UpdateAddressUnsubscribeConfig.
+        :type request: :class:`tencentcloud.ses.v20201002.models.UpdateAddressUnsubscribeConfigRequest`
+        :rtype: :class:`tencentcloud.ses.v20201002.models.UpdateAddressUnsubscribeConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateAddressUnsubscribeConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateAddressUnsubscribeConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

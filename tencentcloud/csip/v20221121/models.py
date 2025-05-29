@@ -4732,7 +4732,7 @@ class AssetViewVULRiskData(AbstractModel):
         :type HandleTaskId: str
         :param _EngineSource: 引擎来源
         :type EngineSource: str
-        :param _VulRiskId: 新的漏洞风险id(同全网漏洞表的riskid)
+        :param _VulRiskId: 新的漏洞风险id(同全网漏洞表的RiskId)
         :type VulRiskId: str
         :param _TvdID: 新版漏洞id
         :type TvdID: str
@@ -5192,7 +5192,7 @@ class AssetViewVULRiskData(AbstractModel):
 
     @property
     def VulRiskId(self):
-        """新的漏洞风险id(同全网漏洞表的riskid)
+        """新的漏洞风险id(同全网漏洞表的RiskId)
         :rtype: str
         """
         return self._VulRiskId
