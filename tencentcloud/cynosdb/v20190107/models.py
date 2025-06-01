@@ -21455,7 +21455,7 @@ class DescribeTasksRequest(AbstractModel):
         :type StartTimeBegin: str
         :param _StartTimeEnd: 任务开始时间结束值
         :type StartTimeEnd: str
-        :param _Filters: 过滤条件
+        :param _Filters: 过滤条件，支持的搜索字段："ClusterId"、"ClusterName"、"InstanceId"、"InstanceName"、"Status"、"TaskId"、"TaskType"
         :type Filters: list of QueryFilter
         :param _Limit: 查询列表长度
         :type Limit: int
@@ -21492,7 +21492,7 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤条件
+        """过滤条件，支持的搜索字段："ClusterId"、"ClusterName"、"InstanceId"、"InstanceName"、"Status"、"TaskId"、"TaskType"
         :rtype: list of QueryFilter
         """
         return self._Filters
@@ -34249,10 +34249,10 @@ class QueryFilter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Names: 搜索字段，目前支持："InstanceId", "ProjectId", "InstanceName", "Vip"
-        :type Names: list of str
         :param _Values: 搜索字符串
         :type Values: list of str
+        :param _Names: 搜索字段，目前支持："InstanceId", "ProjectId", "InstanceName", "Vip"
+        :type Names: list of str
         :param _ExactMatch: 是否精确匹配
         :type ExactMatch: bool
         :param _Name: 搜索字段
@@ -34260,22 +34260,11 @@ class QueryFilter(AbstractModel):
         :param _Operator: 操作符
         :type Operator: str
         """
-        self._Names = None
         self._Values = None
+        self._Names = None
         self._ExactMatch = None
         self._Name = None
         self._Operator = None
-
-    @property
-    def Names(self):
-        """搜索字段，目前支持："InstanceId", "ProjectId", "InstanceName", "Vip"
-        :rtype: list of str
-        """
-        return self._Names
-
-    @Names.setter
-    def Names(self, Names):
-        self._Names = Names
 
     @property
     def Values(self):
@@ -34287,6 +34276,17 @@ class QueryFilter(AbstractModel):
     @Values.setter
     def Values(self, Values):
         self._Values = Values
+
+    @property
+    def Names(self):
+        """搜索字段，目前支持："InstanceId", "ProjectId", "InstanceName", "Vip"
+        :rtype: list of str
+        """
+        return self._Names
+
+    @Names.setter
+    def Names(self, Names):
+        self._Names = Names
 
     @property
     def ExactMatch(self):
@@ -34323,8 +34323,8 @@ class QueryFilter(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._Names = params.get("Names")
         self._Values = params.get("Values")
+        self._Names = params.get("Names")
         self._ExactMatch = params.get("ExactMatch")
         self._Name = params.get("Name")
         self._Operator = params.get("Operator")

@@ -142,7 +142,7 @@ class MqttClient(AbstractClient):
 
 
     def CreateInsPublicEndpoint(self, request):
-        """为MQTT实例创建公网接入点
+        """为MQTT实例创建公网接入点，未开启公网的集群可调用。
 
         :param request: Request instance for CreateInsPublicEndpoint.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.CreateInsPublicEndpointRequest`
@@ -767,6 +767,29 @@ class MqttClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeMessageByTopic(self, request):
+        """根据订阅查询消息
+
+        :param request: Request instance for DescribeMessageByTopic.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeMessageByTopicRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.DescribeMessageByTopicResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMessageByTopic", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMessageByTopicResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeMessageList(self, request):
         """根据一级Topic查询消息列表
 
@@ -911,7 +934,7 @@ class MqttClient(AbstractClient):
 
 
     def ModifyAuthorizationPolicy(self, request):
-        """修改策略规则
+        """修改策略规则，可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)
 
         :param request: Request instance for ModifyAuthorizationPolicy.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.ModifyAuthorizationPolicyRequest`
@@ -1027,7 +1050,7 @@ class MqttClient(AbstractClient):
 
 
     def ModifyJWKSAuthenticator(self, request):
-        """修改MQTT JWKS 认证器
+        """修改MQTT JWKS 认证器，全量配置修改，需要提交完整的修改后配置。
 
         :param request: Request instance for ModifyJWKSAuthenticator.
         :type request: :class:`tencentcloud.mqtt.v20240516.models.ModifyJWKSAuthenticatorRequest`

@@ -5322,7 +5322,7 @@ class CreateStudioProductRequest(AbstractModel):
         :type CategoryId: int
         :param _ProductType: 产品类型 填写 ( 0 普通产品 ， 5 网关产品)
         :type ProductType: int
-        :param _EncryptionType: 加密类型 ，1表示证书认证，2表示秘钥认证，21表示TID认证-SE方式，22表示TID认证-软加固方式
+        :param _EncryptionType: 加密类型 ，1表示证书认证，2表示密钥认证，21表示TID认证-SE方式，22表示TID认证-软加固方式
         :type EncryptionType: str
         :param _NetType: 连接类型 可以填写 wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、else、sub_zigbee、sub_ble、sub_433mhz、sub_else、sub_blemesh
         :type NetType: str
@@ -5383,7 +5383,7 @@ class CreateStudioProductRequest(AbstractModel):
 
     @property
     def EncryptionType(self):
-        """加密类型 ，1表示证书认证，2表示秘钥认证，21表示TID认证-SE方式，22表示TID认证-软加固方式
+        """加密类型 ，1表示证书认证，2表示密钥认证，21表示TID认证-SE方式，22表示TID认证-软加固方式
         :rtype: str
         """
         return self._EncryptionType

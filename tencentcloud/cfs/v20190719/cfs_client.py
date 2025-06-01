@@ -722,7 +722,7 @@ class CfsClient(AbstractClient):
 
 
     def ModifyFileSystemAutoScaleUpRule(self, request):
-        """用来设置文件系统扩容策略，，该接口只支持turbo文件系统
+        """用来设置文件系统扩容策略，该接口只支持turbo文件系统
 
         :param request: Request instance for ModifyFileSystemAutoScaleUpRule.
         :type request: :class:`tencentcloud.cfs.v20190719.models.ModifyFileSystemAutoScaleUpRuleRequest`
@@ -814,7 +814,7 @@ class CfsClient(AbstractClient):
 
 
     def StopMigrationTask(self, request):
-        """用于终止迁移任务。
+        """用于终止迁移任务，非运行中状态不支持终止。
         此接口需提交工单，开启白名单之后才能使用。
 
         :param request: Request instance for StopMigrationTask.
