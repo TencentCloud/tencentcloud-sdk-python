@@ -1721,6 +1721,8 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def AspectRatio(self):
+        warnings.warn("parameter `AspectRatio` is deprecated", DeprecationWarning) 
+
         """画布宽高比。
 该字段已经废弃，请使用具体项目输入中的 AspectRatio 字段。
         :rtype: str
@@ -1729,6 +1731,8 @@ class CreateProjectRequest(AbstractModel):
 
     @AspectRatio.setter
     def AspectRatio(self, AspectRatio):
+        warnings.warn("parameter `AspectRatio` is deprecated", DeprecationWarning) 
+
         self._AspectRatio = AspectRatio
 
     @property
@@ -6453,6 +6457,8 @@ class ExternalMediaInfo(AbstractModel):
 
     @property
     def Definition(self):
+        warnings.warn("parameter `Definition` is deprecated", DeprecationWarning) 
+
         """该字段废弃，请勿使用。
         :rtype: int
         """
@@ -6460,6 +6466,8 @@ class ExternalMediaInfo(AbstractModel):
 
     @Definition.setter
     def Definition(self, Definition):
+        warnings.warn("parameter `Definition` is deprecated", DeprecationWarning) 
+
         self._Definition = Definition
 
     @property
@@ -8957,6 +8965,8 @@ class MaterialBasicInfo(AbstractModel):
 
     @property
     def TagInfoSet(self):
+        warnings.warn("parameter `TagInfoSet` is deprecated", DeprecationWarning) 
+
         """媒体绑定的标签信息列表 。
 该字段已废弃。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -8966,6 +8976,8 @@ class MaterialBasicInfo(AbstractModel):
 
     @TagInfoSet.setter
     def TagInfoSet(self, TagInfoSet):
+        warnings.warn("parameter `TagInfoSet` is deprecated", DeprecationWarning) 
+
         self._TagInfoSet = TagInfoSet
 
 
@@ -14062,6 +14074,8 @@ class StorageNewFileCreatedEvent(AbstractModel):
 
     @property
     def Operator(self):
+        warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
+
         """操作者 Id。（废弃，请勿使用）
         :rtype: str
         """
@@ -14069,6 +14083,8 @@ class StorageNewFileCreatedEvent(AbstractModel):
 
     @Operator.setter
     def Operator(self, Operator):
+        warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
+
         self._Operator = Operator
 
     @property

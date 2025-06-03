@@ -14393,6 +14393,100 @@ class DescribeExporterIntegrationsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeExternalClusterRegisterCommandRequest(AbstractModel):
+    """DescribeExternalClusterRegisterCommand请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例 ID
+        :type InstanceId: str
+        :param _ClusterId: 集群 ID
+        :type ClusterId: str
+        """
+        self._InstanceId = None
+        self._ClusterId = None
+
+    @property
+    def InstanceId(self):
+        """实例 ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ClusterId(self):
+        """集群 ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeExternalClusterRegisterCommandResponse(AbstractModel):
+    """DescribeExternalClusterRegisterCommand返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Command: 注册命令
+        :type Command: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Command = None
+        self._RequestId = None
+
+    @property
+    def Command(self):
+        """注册命令
+        :rtype: str
+        """
+        return self._Command
+
+    @Command.setter
+    def Command(self, Command):
+        self._Command = Command
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Command = params.get("Command")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeGrafanaChannelsRequest(AbstractModel):
     """DescribeGrafanaChannels请求参数结构体
 
@@ -32714,7 +32808,7 @@ class PrometheusClusterAgentBasic(AbstractModel):
         r"""
         :param _Region: 地域
         :type Region: str
-        :param _ClusterType: 集群类型。可填入tke、eks、tkeedge、tdcc，分别代表标准集群、弹性集群、边缘集群、注册集群
+        :param _ClusterType: 集群类型。可填入tke、eks、tkeedge、tdcc、external，分别代表标准集群、弹性集群、边缘集群、注册集群 和外部集群
         :type ClusterType: str
         :param _ClusterId: 集群 ID
         :type ClusterId: str
@@ -32757,7 +32851,7 @@ class PrometheusClusterAgentBasic(AbstractModel):
 
     @property
     def ClusterType(self):
-        """集群类型。可填入tke、eks、tkeedge、tdcc，分别代表标准集群、弹性集群、边缘集群、注册集群
+        """集群类型。可填入tke、eks、tkeedge、tdcc、external，分别代表标准集群、弹性集群、边缘集群、注册集群 和外部集群
         :rtype: str
         """
         return self._ClusterType

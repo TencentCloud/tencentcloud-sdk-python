@@ -125,7 +125,6 @@ class CmeClient(AbstractClient):
         <li>导播台项目：用于云导播台；</li>
         <li>视频拆条：用于视频拆条；</li>
         <li>录制回放项目：用于直播录制回放；</li>
-        <li>云转推项目：用于直播云转推<font color=red>（废弃，可使用媒体转推项目替代）</font>；</li>
         <li>媒体转推项目：用于媒体文件转直播输出。</li>
 
         :param request: Request instance for CreateProject.

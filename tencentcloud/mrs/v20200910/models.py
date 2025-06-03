@@ -11642,6 +11642,8 @@ class ImageMaskAsyncGetResultRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _TaskID: 异步任务ID
+1.应上传图片TaskID 仅 24 小时内有效，请于提交任务获取TaskID后24小时内调用ImageMaskAsyncGetResult接口获取结果.
+2.建议在获取到TaskID 后，5-10分钟后再调用 ImageMaskAsyncGetResult 接口获取脱敏结果。
         :type TaskID: str
         """
         self._TaskID = None
@@ -11649,6 +11651,8 @@ class ImageMaskAsyncGetResultRequest(AbstractModel):
     @property
     def TaskID(self):
         """异步任务ID
+1.应上传图片TaskID 仅 24 小时内有效，请于提交任务获取TaskID后24小时内调用ImageMaskAsyncGetResult接口获取结果.
+2.建议在获取到TaskID 后，5-10分钟后再调用 ImageMaskAsyncGetResult 接口获取脱敏结果。
         :rtype: str
         """
         return self._TaskID
@@ -11791,6 +11795,8 @@ class ImageMaskAsyncResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TaskID: 加密任务ID
+1.因此TaskID 仅 24 小时内有效，请于提交任务获取TaskID后24小时内调用ImageMaskAsyncGetResult接口获取结果.
+2.建议在获取到TaskID 后，5-10分钟后再调用 ImageMaskAsyncGetResult 接口获取脱敏结果。
         :type TaskID: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11801,6 +11807,8 @@ class ImageMaskAsyncResponse(AbstractModel):
     @property
     def TaskID(self):
         """加密任务ID
+1.因此TaskID 仅 24 小时内有效，请于提交任务获取TaskID后24小时内调用ImageMaskAsyncGetResult接口获取结果.
+2.建议在获取到TaskID 后，5-10分钟后再调用 ImageMaskAsyncGetResult 接口获取脱敏结果。
         :rtype: str
         """
         return self._TaskID

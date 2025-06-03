@@ -3251,7 +3251,6 @@ class DescribeBucketListRequest(AbstractModel):
         :param _SrcService: 数据源服务商。COS: 腾讯云COS，OSS: 阿里云OSS，OBS:华为云OBS
         :type SrcService: str
         :param _SrcSecretId: 数据源账号的SecretId
-
         :type SrcSecretId: str
         :param _SrcSecretKey: 数据源账号的SecretKey
         :type SrcSecretKey: str
@@ -3274,7 +3273,6 @@ class DescribeBucketListRequest(AbstractModel):
     @property
     def SrcSecretId(self):
         """数据源账号的SecretId
-
         :rtype: str
         """
         return self._SrcSecretId
@@ -5419,7 +5417,7 @@ class MigrationTaskInfo(AbstractModel):
         :type CreateTime: int
         :param _EndTime: 完成/终止时间
         :type EndTime: int
-        :param _Status: 迁移状态。0: 已完成；1: 进行中；2: 已终止
+        :param _Status: 迁移状态。0: 已完成；1: 创建中；2: 运行中；3: 终止中；4: 已终止；5: 创建失败；6: 运行失败；7: 结束中；8: 删除中；9: 等待中
         :type Status: int
         :param _FileTotalCount: 文件数量
         :type FileTotalCount: int
@@ -5627,7 +5625,7 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def Status(self):
-        """迁移状态。0: 已完成；1: 进行中；2: 已终止
+        """迁移状态。0: 已完成；1: 创建中；2: 运行中；3: 终止中；4: 已终止；5: 创建失败；6: 运行失败；7: 结束中；8: 删除中；9: 等待中
         :rtype: int
         """
         return self._Status
@@ -7210,7 +7208,7 @@ class StopMigrationTaskResponse(AbstractModel):
         r"""
         :param _TaskId: 迁移任务Id
         :type TaskId: str
-        :param _Status: 迁移状态。0: 已完成；1: 进行中；2: 已终止
+        :param _Status: 迁移状态。0: 已完成；1: 创建中；2: 运行中；3: 终止中；4: 已终止；5: 创建失败；6: 运行失败；7: 结束中；8: 删除中；9: 等待中
         :type Status: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7232,7 +7230,7 @@ class StopMigrationTaskResponse(AbstractModel):
 
     @property
     def Status(self):
-        """迁移状态。0: 已完成；1: 进行中；2: 已终止
+        """迁移状态。0: 已完成；1: 创建中；2: 运行中；3: 终止中；4: 已终止；5: 创建失败；6: 运行失败；7: 结束中；8: 删除中；9: 等待中
         :rtype: int
         """
         return self._Status

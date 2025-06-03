@@ -405,7 +405,7 @@ class DescribeApplicationsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApplicationIds: 应用id列表
+        :param _ApplicationIds: 应用id列表。单次请求数量上限为100个。
         :type ApplicationIds: list of str
         :param _Filters: 过滤器，跟ApplicationIds不能共用，支持的filter主要有：application-id: 精确匹配;scene-id: 精确匹配，通过调用接口 [DescribeScenes](https://cloud.tencent.com/document/api/1721/101608)获取;application-name: 模糊匹配;application-type: 精确匹配，枚举类型如下：PUBLIC_APPLICATION（公共应用）/ PRIVATE_APPLICATION（自定义应用）/ COMMUNITY_APPLICATION（社区应用）;
         :type Filters: list of Filter
@@ -427,7 +427,7 @@ class DescribeApplicationsRequest(AbstractModel):
 
     @property
     def ApplicationIds(self):
-        """应用id列表
+        """应用id列表。单次请求数量上限为100个。
         :rtype: list of str
         """
         return self._ApplicationIds
@@ -2884,8 +2884,7 @@ class StartInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
-可通过DescribeInstances获取实例ID
+        :param _InstanceId: 实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1721/101612) API获取实例ID。
         :type InstanceId: str
         :param _DryRun: 默认为False，True代表只验证接口连通性
         :type DryRun: bool
@@ -2895,8 +2894,7 @@ class StartInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例ID
-可通过DescribeInstances获取实例ID
+        """实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1721/101612) API获取实例ID。
         :rtype: str
         """
         return self._InstanceId
@@ -2980,8 +2978,7 @@ class StopInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
-可通过DescribeInstances获取实例ID
+        :param _InstanceId: 实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1721/101612) API获取实例ID。
         :type InstanceId: str
         :param _StopMode: hai实例关机的模式，目前仅支持关机不收费：
 STOP_CHARGE -- 关闭hai实例，释放计算资源，停止收取计算资源的费用。
@@ -2996,8 +2993,7 @@ STOP_CHARGE -- 关闭hai实例，释放计算资源，停止收取计算资源�
 
     @property
     def InstanceId(self):
-        """实例ID
-可通过DescribeInstances获取实例ID
+        """实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1721/101612) API获取实例ID。
         :rtype: str
         """
         return self._InstanceId
@@ -3161,8 +3157,7 @@ class TerminateInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: 实例ID列表
-可通过DescribeInstances接口获取ID列表.单次能查询100个InstanceId
+        :param _InstanceIds: 实例ID列表。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1721/101612) API获取实例ID列表。单次能查询100个InstanceId。
         :type InstanceIds: list of str
         :param _DryRun: 默认为False，True代表只验证接口连通性
         :type DryRun: bool
@@ -3172,8 +3167,7 @@ class TerminateInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """实例ID列表
-可通过DescribeInstances接口获取ID列表.单次能查询100个InstanceId
+        """实例ID列表。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1721/101612) API获取实例ID列表。单次能查询100个InstanceId。
         :rtype: list of str
         """
         return self._InstanceIds

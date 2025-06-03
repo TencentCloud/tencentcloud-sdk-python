@@ -1532,6 +1532,29 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeExternalClusterRegisterCommand(self, request):
+        """查看外部集群注册命令
+
+        :param request: Request instance for DescribeExternalClusterRegisterCommand.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeExternalClusterRegisterCommandRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeExternalClusterRegisterCommandResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeExternalClusterRegisterCommand", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeExternalClusterRegisterCommandResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeGrafanaChannels(self, request):
         """列出 Grafana 所有告警通道
 

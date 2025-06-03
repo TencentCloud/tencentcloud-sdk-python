@@ -1037,6 +1037,72 @@ class AndroidInstanceTaskStatus(AbstractModel):
         
 
 
+class AndroidInstanceUploadFile(AbstractModel):
+    """安卓实例上传文件信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AndroidInstanceId: 安卓实例 ID
+        :type AndroidInstanceId: str
+        :param _FileURL: 文件上传 URL
+        :type FileURL: str
+        :param _DestinationDirectory: 上传目标目录，只能上传到 /sdcard/ 目录或其子目录下
+        :type DestinationDirectory: str
+        """
+        self._AndroidInstanceId = None
+        self._FileURL = None
+        self._DestinationDirectory = None
+
+    @property
+    def AndroidInstanceId(self):
+        """安卓实例 ID
+        :rtype: str
+        """
+        return self._AndroidInstanceId
+
+    @AndroidInstanceId.setter
+    def AndroidInstanceId(self, AndroidInstanceId):
+        self._AndroidInstanceId = AndroidInstanceId
+
+    @property
+    def FileURL(self):
+        """文件上传 URL
+        :rtype: str
+        """
+        return self._FileURL
+
+    @FileURL.setter
+    def FileURL(self, FileURL):
+        self._FileURL = FileURL
+
+    @property
+    def DestinationDirectory(self):
+        """上传目标目录，只能上传到 /sdcard/ 目录或其子目录下
+        :rtype: str
+        """
+        return self._DestinationDirectory
+
+    @DestinationDirectory.setter
+    def DestinationDirectory(self, DestinationDirectory):
+        self._DestinationDirectory = DestinationDirectory
+
+
+    def _deserialize(self, params):
+        self._AndroidInstanceId = params.get("AndroidInstanceId")
+        self._FileURL = params.get("FileURL")
+        self._DestinationDirectory = params.get("DestinationDirectory")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BackUpAndroidInstanceToStorageRequest(AbstractModel):
     """BackUpAndroidInstanceToStorage请求参数结构体
 
@@ -4355,6 +4421,120 @@ class DestroyAndroidInstancesResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DistributeFileToAndroidInstancesRequest(AbstractModel):
+    """DistributeFileToAndroidInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AndroidInstanceIds: 安卓实例 ID 列表
+        :type AndroidInstanceIds: list of str
+        :param _FileURL: 文件下载 URL
+        :type FileURL: str
+        :param _DestinationDirectory: 上传目标目录，只能上传到 /sdcard/ 目录或其子目录下
+        :type DestinationDirectory: str
+        """
+        self._AndroidInstanceIds = None
+        self._FileURL = None
+        self._DestinationDirectory = None
+
+    @property
+    def AndroidInstanceIds(self):
+        """安卓实例 ID 列表
+        :rtype: list of str
+        """
+        return self._AndroidInstanceIds
+
+    @AndroidInstanceIds.setter
+    def AndroidInstanceIds(self, AndroidInstanceIds):
+        self._AndroidInstanceIds = AndroidInstanceIds
+
+    @property
+    def FileURL(self):
+        """文件下载 URL
+        :rtype: str
+        """
+        return self._FileURL
+
+    @FileURL.setter
+    def FileURL(self, FileURL):
+        self._FileURL = FileURL
+
+    @property
+    def DestinationDirectory(self):
+        """上传目标目录，只能上传到 /sdcard/ 目录或其子目录下
+        :rtype: str
+        """
+        return self._DestinationDirectory
+
+    @DestinationDirectory.setter
+    def DestinationDirectory(self, DestinationDirectory):
+        self._DestinationDirectory = DestinationDirectory
+
+
+    def _deserialize(self, params):
+        self._AndroidInstanceIds = params.get("AndroidInstanceIds")
+        self._FileURL = params.get("FileURL")
+        self._DestinationDirectory = params.get("DestinationDirectory")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DistributeFileToAndroidInstancesResponse(AbstractModel):
+    """DistributeFileToAndroidInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskSet: 实例任务集合
+        :type TaskSet: list of AndroidInstanceTask
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskSet = None
+        self._RequestId = None
+
+    @property
+    def TaskSet(self):
+        """实例任务集合
+        :rtype: list of AndroidInstanceTask
+        """
+        return self._TaskSet
+
+    @TaskSet.setter
+    def TaskSet(self, TaskSet):
+        self._TaskSet = TaskSet
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TaskSet") is not None:
+            self._TaskSet = []
+            for item in params.get("TaskSet"):
+                obj = AndroidInstanceTask()
+                obj._deserialize(item)
+                self._TaskSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -7754,6 +7934,95 @@ class UploadFileToAndroidInstancesRequest(AbstractModel):
 
 class UploadFileToAndroidInstancesResponse(AbstractModel):
     """UploadFileToAndroidInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskSet: 实例任务集合
+        :type TaskSet: list of AndroidInstanceTask
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskSet = None
+        self._RequestId = None
+
+    @property
+    def TaskSet(self):
+        """实例任务集合
+        :rtype: list of AndroidInstanceTask
+        """
+        return self._TaskSet
+
+    @TaskSet.setter
+    def TaskSet(self, TaskSet):
+        self._TaskSet = TaskSet
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TaskSet") is not None:
+            self._TaskSet = []
+            for item in params.get("TaskSet"):
+                obj = AndroidInstanceTask()
+                obj._deserialize(item)
+                self._TaskSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class UploadFilesToAndroidInstancesRequest(AbstractModel):
+    """UploadFilesToAndroidInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Files: 上传文件信息列表
+        :type Files: list of AndroidInstanceUploadFile
+        """
+        self._Files = None
+
+    @property
+    def Files(self):
+        """上传文件信息列表
+        :rtype: list of AndroidInstanceUploadFile
+        """
+        return self._Files
+
+    @Files.setter
+    def Files(self, Files):
+        self._Files = Files
+
+
+    def _deserialize(self, params):
+        if params.get("Files") is not None:
+            self._Files = []
+            for item in params.get("Files"):
+                obj = AndroidInstanceUploadFile()
+                obj._deserialize(item)
+                self._Files.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UploadFilesToAndroidInstancesResponse(AbstractModel):
+    """UploadFilesToAndroidInstances返回参数结构体
 
     """
 

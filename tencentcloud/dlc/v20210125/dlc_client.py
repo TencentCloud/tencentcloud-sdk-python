@@ -2096,6 +2096,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTablePartitions(self, request):
+        """本接口（DescribeTablePartitions）用于查询数据表分区信息
+
+        :param request: Request instance for DescribeTablePartitions.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeTablePartitionsRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeTablePartitionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTablePartitions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTablePartitionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTables(self, request):
         """本接口（DescribeTables）用于查询数据表列表。
 

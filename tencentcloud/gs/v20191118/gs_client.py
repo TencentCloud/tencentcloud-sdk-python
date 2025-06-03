@@ -605,6 +605,29 @@ class GsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DistributeFileToAndroidInstances(self, request):
+        """分发文件到安卓实例
+
+        :param request: Request instance for DistributeFileToAndroidInstances.
+        :type request: :class:`tencentcloud.gs.v20191118.models.DistributeFileToAndroidInstancesRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.DistributeFileToAndroidInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DistributeFileToAndroidInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DistributeFileToAndroidInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ExecuteCommandOnAndroidInstances(self, request):
         """在安卓实例上异步执行命令，命令输出结果如果内容过长会被截断
 
@@ -1312,6 +1335,29 @@ class GsClient(AbstractClient):
             body = self.call("UploadFileToAndroidInstances", params, headers=headers)
             response = json.loads(body)
             model = models.UploadFileToAndroidInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UploadFilesToAndroidInstances(self, request):
+        """批量上传文件到安卓实例
+
+        :param request: Request instance for UploadFilesToAndroidInstances.
+        :type request: :class:`tencentcloud.gs.v20191118.models.UploadFilesToAndroidInstancesRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.UploadFilesToAndroidInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UploadFilesToAndroidInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.UploadFilesToAndroidInstancesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

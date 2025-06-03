@@ -235,32 +235,6 @@ class LkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CreateReconstructDocumentFlow(self, request):
-        """本接口为异步接口的发起请求接口，用于发起文档解析任务。
-        文档解析支持将图片或PDF文件转换成Markdown格式文件，可解析包括表格、公式、图片、标题、段落、页眉、页脚等内容元素，并将内容智能转换成阅读顺序。
-
-        体验期间单账号限制qps仅为1，若有正式接入需要请与产研团队沟通开放。
-
-        :param request: Request instance for CreateReconstructDocumentFlow.
-        :type request: :class:`tencentcloud.lke.v20231130.models.CreateReconstructDocumentFlowRequest`
-        :rtype: :class:`tencentcloud.lke.v20231130.models.CreateReconstructDocumentFlowResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateReconstructDocumentFlow", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateReconstructDocumentFlowResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def CreateRejectedQuestion(self, request):
         """创建拒答问题
 

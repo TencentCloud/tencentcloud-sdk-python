@@ -217,9 +217,15 @@ class AdjustJobSpeedRequest(AbstractModel):
         :type JobId: str
         :param _TargetRequestsPerSecond: 目标 RPS。其取值应大于起始 RPS，并且小于最大 RPS
         :type TargetRequestsPerSecond: int
+        :param _ProjectId: 压测项目ID
+        :type ProjectId: str
+        :param _ScenarioId: 测试场景ID
+        :type ScenarioId: str
         """
         self._JobId = None
         self._TargetRequestsPerSecond = None
+        self._ProjectId = None
+        self._ScenarioId = None
 
     @property
     def JobId(self):
@@ -243,10 +249,34 @@ class AdjustJobSpeedRequest(AbstractModel):
     def TargetRequestsPerSecond(self, TargetRequestsPerSecond):
         self._TargetRequestsPerSecond = TargetRequestsPerSecond
 
+    @property
+    def ProjectId(self):
+        """压测项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ScenarioId(self):
+        """测试场景ID
+        :rtype: str
+        """
+        return self._ScenarioId
+
+    @ScenarioId.setter
+    def ScenarioId(self, ScenarioId):
+        self._ScenarioId = ScenarioId
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
         self._TargetRequestsPerSecond = params.get("TargetRequestsPerSecond")
+        self._ProjectId = params.get("ProjectId")
+        self._ScenarioId = params.get("ScenarioId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

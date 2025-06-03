@@ -15653,6 +15653,9 @@ class DescribeDatabasesRequest(AbstractModel):
         :type Sort: str
         :param _Asc: 排序类型：false：降序（默认）、true：升序
         :type Asc: bool
+        :param _DescribeType: 查询类型：all：全部数据（默认）、permission：有权限的数据
+注意：此字段需要开启白名单使用，如果需要使用，请提交工单联系我们。
+        :type DescribeType: str
         """
         self._Limit = None
         self._Offset = None
@@ -15660,6 +15663,7 @@ class DescribeDatabasesRequest(AbstractModel):
         self._DatasourceConnectionName = None
         self._Sort = None
         self._Asc = None
+        self._DescribeType = None
 
     @property
     def Limit(self):
@@ -15727,6 +15731,18 @@ class DescribeDatabasesRequest(AbstractModel):
     def Asc(self, Asc):
         self._Asc = Asc
 
+    @property
+    def DescribeType(self):
+        """查询类型：all：全部数据（默认）、permission：有权限的数据
+注意：此字段需要开启白名单使用，如果需要使用，请提交工单联系我们。
+        :rtype: str
+        """
+        return self._DescribeType
+
+    @DescribeType.setter
+    def DescribeType(self, DescribeType):
+        self._DescribeType = DescribeType
+
 
     def _deserialize(self, params):
         self._Limit = params.get("Limit")
@@ -15735,6 +15751,7 @@ class DescribeDatabasesRequest(AbstractModel):
         self._DatasourceConnectionName = params.get("DatasourceConnectionName")
         self._Sort = params.get("Sort")
         self._Asc = params.get("Asc")
+        self._DescribeType = params.get("DescribeType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18684,6 +18701,40 @@ class DescribeSubUserAccessPolicyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTablePartitionsRequest(AbstractModel):
+    """DescribeTablePartitions请求参数结构体
+
+    """
+
+
+class DescribeTablePartitionsResponse(AbstractModel):
+    """DescribeTablePartitions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTableRequest(AbstractModel):
     """DescribeTable请求参数结构体
 
@@ -19079,6 +19130,9 @@ table-id - String - （过滤条件）table id形如：12342。
         :type TableType: str
         :param _TableFormat: 筛选字段-表格式：不传（默认）为查全部；LAKEFS：托管表；ICEBERG：非托管iceberg表；HIVE：非托管hive表；OTHER：非托管其它；
         :type TableFormat: str
+        :param _DescribeType: 查询类型：all：全部数据（默认）、permission：有权限的数据
+注意：此字段需要开启白名单使用，如果需要使用，请提交工单联系我们。
+        :type DescribeType: str
         """
         self._DatabaseName = None
         self._Limit = None
@@ -19091,6 +19145,7 @@ table-id - String - （过滤条件）table id形如：12342。
         self._Asc = None
         self._TableType = None
         self._TableFormat = None
+        self._DescribeType = None
 
     @property
     def DatabaseName(self):
@@ -19215,6 +19270,18 @@ table-id - String - （过滤条件）table id形如：12342。
     def TableFormat(self, TableFormat):
         self._TableFormat = TableFormat
 
+    @property
+    def DescribeType(self):
+        """查询类型：all：全部数据（默认）、permission：有权限的数据
+注意：此字段需要开启白名单使用，如果需要使用，请提交工单联系我们。
+        :rtype: str
+        """
+        return self._DescribeType
+
+    @DescribeType.setter
+    def DescribeType(self, DescribeType):
+        self._DescribeType = DescribeType
+
 
     def _deserialize(self, params):
         self._DatabaseName = params.get("DatabaseName")
@@ -19233,6 +19300,7 @@ table-id - String - （过滤条件）table id形如：12342。
         self._Asc = params.get("Asc")
         self._TableType = params.get("TableType")
         self._TableFormat = params.get("TableFormat")
+        self._DescribeType = params.get("DescribeType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21685,6 +21753,9 @@ view-id - String - （过滤条件）view id形如：12342。
         :type StartTime: str
         :param _EndTime: 按视图更新时间筛选，结束时间，如2021-11-12 00:00:00
         :type EndTime: str
+        :param _DescribeType: 查询类型：all：全部数据（默认）、permission：有权限的数据
+注意：此字段需要开启白名单使用，如果需要使用，请提交工单联系我们。
+        :type DescribeType: str
         """
         self._DatabaseName = None
         self._Limit = None
@@ -21695,6 +21766,7 @@ view-id - String - （过滤条件）view id形如：12342。
         self._Asc = None
         self._StartTime = None
         self._EndTime = None
+        self._DescribeType = None
 
     @property
     def DatabaseName(self):
@@ -21797,6 +21869,18 @@ view-id - String - （过滤条件）view id形如：12342。
     def EndTime(self, EndTime):
         self._EndTime = EndTime
 
+    @property
+    def DescribeType(self):
+        """查询类型：all：全部数据（默认）、permission：有权限的数据
+注意：此字段需要开启白名单使用，如果需要使用，请提交工单联系我们。
+        :rtype: str
+        """
+        return self._DescribeType
+
+    @DescribeType.setter
+    def DescribeType(self, DescribeType):
+        self._DescribeType = DescribeType
+
 
     def _deserialize(self, params):
         self._DatabaseName = params.get("DatabaseName")
@@ -21813,6 +21897,7 @@ view-id - String - （过滤条件）view id形如：12342。
         self._Asc = params.get("Asc")
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
+        self._DescribeType = params.get("DescribeType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -187,31 +187,6 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CreateDBInstances(self, request):
-        """早期接口，不规范，已提供新接口 CreateInstances 替换
-
-        本接口（CreateDBInstances）用于创建一个或者多个PostgreSQL实例,仅发货实例不会进行初始化。本接口已废弃，推荐使用接口[CreateInstances](https://cloud.tencent.com/document/api/409/56107)替代。
-
-        :param request: Request instance for CreateDBInstances.
-        :type request: :class:`tencentcloud.postgres.v20170312.models.CreateDBInstancesRequest`
-        :rtype: :class:`tencentcloud.postgres.v20170312.models.CreateDBInstancesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateDBInstances", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateDBInstancesResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def CreateDatabase(self, request):
         """此接口用于创建数据库，需指定数据库名及所有者。
 
