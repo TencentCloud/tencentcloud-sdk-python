@@ -798,9 +798,9 @@ class TextModerationRequest(AbstractModel):
         :type User: :class:`tencentcloud.tms.v20201229.models.User`
         :param _Device: 该字段表示待检测对象对应的设备相关信息，传入后可便于甄别相应违规风险设备
         :type Device: :class:`tencentcloud.tms.v20201229.models.Device`
-        :param _SourceLanguage: 表示Content的原始语种，枚举值（"en","zh",""）en表示英文，zh表示中文，空字符表示默认语种中文，非中文场景耗时会更高，具体由送审文本内容决定，非中文场景需要联系客服确认
+        :param _SourceLanguage: 表示Content的原始语种，枚举值包括 "en" 和 "zh"。其中，"en" 表示英文，"zh" 表示中文。非中文场景的处理耗时较高，具体情况取决于送审文本长度，非中文场景需[反馈工单](#https://console.cloud.tencent.com/workorder/category?level1_id=141&level2_id=1287&source=14&data_title=%E6%96%87%E6%9C%AC%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8&step=1)确认。
         :type SourceLanguage: str
-        :param _Type: 审核的业务类型，枚举值有{"","TEXT","TEXT_AIGC"},缺省值""和"TEXT"标识传统文本审核，"TEXT_AIGC"标识文本AIGC审核
+        :param _Type: 审核的业务类型，枚举值包括 "TEXT" 和 "TEXT_AIGC"。"TEXT" 表示传统文本审核，"TEXT_AIGC" 表示文本AIGC审核。
         :type Type: str
         """
         self._Content = None
@@ -869,7 +869,7 @@ class TextModerationRequest(AbstractModel):
 
     @property
     def SourceLanguage(self):
-        """表示Content的原始语种，枚举值（"en","zh",""）en表示英文，zh表示中文，空字符表示默认语种中文，非中文场景耗时会更高，具体由送审文本内容决定，非中文场景需要联系客服确认
+        """表示Content的原始语种，枚举值包括 "en" 和 "zh"。其中，"en" 表示英文，"zh" 表示中文。非中文场景的处理耗时较高，具体情况取决于送审文本长度，非中文场景需[反馈工单](#https://console.cloud.tencent.com/workorder/category?level1_id=141&level2_id=1287&source=14&data_title=%E6%96%87%E6%9C%AC%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8&step=1)确认。
         :rtype: str
         """
         return self._SourceLanguage
@@ -880,7 +880,7 @@ class TextModerationRequest(AbstractModel):
 
     @property
     def Type(self):
-        """审核的业务类型，枚举值有{"","TEXT","TEXT_AIGC"},缺省值""和"TEXT"标识传统文本审核，"TEXT_AIGC"标识文本AIGC审核
+        """审核的业务类型，枚举值包括 "TEXT" 和 "TEXT_AIGC"。"TEXT" 表示传统文本审核，"TEXT_AIGC" 表示文本AIGC审核。
         :rtype: str
         """
         return self._Type

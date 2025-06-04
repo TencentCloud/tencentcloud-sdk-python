@@ -23605,8 +23605,10 @@ class HistoryJob(AbstractModel):
         :param _ExpandType: 扩容类型
         :type ExpandType: str
         :param _StartTime: 扩容开始时间
+说明：此项显示的格式是 int 类型的 unix 时间戳
         :type StartTime: int
         :param _EndTime: 扩容结束时间
+说明：此项显示的格式是 int 类型的 unix 时间戳
         :type EndTime: int
         :param _OldCpu: 扩容前核数
         :type OldCpu: int
@@ -23651,6 +23653,7 @@ class HistoryJob(AbstractModel):
     @property
     def StartTime(self):
         """扩容开始时间
+说明：此项显示的格式是 int 类型的 unix 时间戳
         :rtype: int
         """
         return self._StartTime
@@ -23662,6 +23665,7 @@ class HistoryJob(AbstractModel):
     @property
     def EndTime(self):
         """扩容结束时间
+说明：此项显示的格式是 int 类型的 unix 时间戳
         :rtype: int
         """
         return self._EndTime

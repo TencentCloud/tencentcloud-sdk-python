@@ -2534,6 +2534,102 @@ class DescribeQuotaUsageResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRecordRequest(AbstractModel):
+    """DescribeRecord请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 私有域ID
+        :type ZoneId: str
+        :param _RecordId: 记录ID
+        :type RecordId: str
+        """
+        self._ZoneId = None
+        self._RecordId = None
+
+    @property
+    def ZoneId(self):
+        """私有域ID
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def RecordId(self):
+        """记录ID
+        :rtype: str
+        """
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._RecordId = params.get("RecordId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRecordResponse(AbstractModel):
+    """DescribeRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RecordInfo: 记录信息
+        :type RecordInfo: :class:`tencentcloud.privatedns.v20201028.models.RecordInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RecordInfo = None
+        self._RequestId = None
+
+    @property
+    def RecordInfo(self):
+        """记录信息
+        :rtype: :class:`tencentcloud.privatedns.v20201028.models.RecordInfo`
+        """
+        return self._RecordInfo
+
+    @RecordInfo.setter
+    def RecordInfo(self, RecordInfo):
+        self._RecordInfo = RecordInfo
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("RecordInfo") is not None:
+            self._RecordInfo = RecordInfo()
+            self._RecordInfo._deserialize(params.get("RecordInfo"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRequestDataRequest(AbstractModel):
     """DescribeRequestData请求参数结构体
 
@@ -4219,6 +4315,207 @@ failed 执行失败
         self._Status = params.get("Status")
         self._ErrorMsg = params.get("ErrorMsg")
         self._RequestId = params.get("RequestId")
+
+
+class RecordInfo(AbstractModel):
+    """私有域信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RecordId: 记录id
+        :type RecordId: str
+        :param _ZoneId: 私有域id: zone-xxxxxxxx
+        :type ZoneId: str
+        :param _SubDomain: 子域名
+        :type SubDomain: str
+        :param _RecordType: 记录类型，可选的记录类型为："A", "AAAA", "CNAME", "MX", "TXT", "PTR"
+        :type RecordType: str
+        :param _RecordValue: 记录值
+        :type RecordValue: str
+        :param _TTL: 记录缓存时间，数值越小生效越快，取值1-86400s, 默认 600
+        :type TTL: int
+        :param _MX: MX优先级：记录类型为MX时必填。取值范围：5,10,15,20,30,40,50
+        :type MX: int
+        :param _Weight: 记录权重，值为1-100
+        :type Weight: int
+        :param _CreatedOn: 记录创建时间
+        :type CreatedOn: str
+        :param _UpdatedOn: 记录更新时间
+        :type UpdatedOn: str
+        :param _Enabled: 0暂停，1启用
+        :type Enabled: int
+        :param _Remark: 备注
+        :type Remark: str
+        """
+        self._RecordId = None
+        self._ZoneId = None
+        self._SubDomain = None
+        self._RecordType = None
+        self._RecordValue = None
+        self._TTL = None
+        self._MX = None
+        self._Weight = None
+        self._CreatedOn = None
+        self._UpdatedOn = None
+        self._Enabled = None
+        self._Remark = None
+
+    @property
+    def RecordId(self):
+        """记录id
+        :rtype: str
+        """
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
+
+    @property
+    def ZoneId(self):
+        """私有域id: zone-xxxxxxxx
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def SubDomain(self):
+        """子域名
+        :rtype: str
+        """
+        return self._SubDomain
+
+    @SubDomain.setter
+    def SubDomain(self, SubDomain):
+        self._SubDomain = SubDomain
+
+    @property
+    def RecordType(self):
+        """记录类型，可选的记录类型为："A", "AAAA", "CNAME", "MX", "TXT", "PTR"
+        :rtype: str
+        """
+        return self._RecordType
+
+    @RecordType.setter
+    def RecordType(self, RecordType):
+        self._RecordType = RecordType
+
+    @property
+    def RecordValue(self):
+        """记录值
+        :rtype: str
+        """
+        return self._RecordValue
+
+    @RecordValue.setter
+    def RecordValue(self, RecordValue):
+        self._RecordValue = RecordValue
+
+    @property
+    def TTL(self):
+        """记录缓存时间，数值越小生效越快，取值1-86400s, 默认 600
+        :rtype: int
+        """
+        return self._TTL
+
+    @TTL.setter
+    def TTL(self, TTL):
+        self._TTL = TTL
+
+    @property
+    def MX(self):
+        """MX优先级：记录类型为MX时必填。取值范围：5,10,15,20,30,40,50
+        :rtype: int
+        """
+        return self._MX
+
+    @MX.setter
+    def MX(self, MX):
+        self._MX = MX
+
+    @property
+    def Weight(self):
+        """记录权重，值为1-100
+        :rtype: int
+        """
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+    @property
+    def CreatedOn(self):
+        """记录创建时间
+        :rtype: str
+        """
+        return self._CreatedOn
+
+    @CreatedOn.setter
+    def CreatedOn(self, CreatedOn):
+        self._CreatedOn = CreatedOn
+
+    @property
+    def UpdatedOn(self):
+        """记录更新时间
+        :rtype: str
+        """
+        return self._UpdatedOn
+
+    @UpdatedOn.setter
+    def UpdatedOn(self, UpdatedOn):
+        self._UpdatedOn = UpdatedOn
+
+    @property
+    def Enabled(self):
+        """0暂停，1启用
+        :rtype: int
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def Remark(self):
+        """备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._RecordId = params.get("RecordId")
+        self._ZoneId = params.get("ZoneId")
+        self._SubDomain = params.get("SubDomain")
+        self._RecordType = params.get("RecordType")
+        self._RecordValue = params.get("RecordValue")
+        self._TTL = params.get("TTL")
+        self._MX = params.get("MX")
+        self._Weight = params.get("Weight")
+        self._CreatedOn = params.get("CreatedOn")
+        self._UpdatedOn = params.get("UpdatedOn")
+        self._Enabled = params.get("Enabled")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SubscribePrivateZoneServiceRequest(AbstractModel):

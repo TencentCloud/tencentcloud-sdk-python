@@ -258,6 +258,29 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateExternalCluster(self, request):
+        """注册外部集群到云上 TMP 实例
+
+        :param request: Request instance for CreateExternalCluster.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.CreateExternalClusterRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.CreateExternalClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateExternalCluster", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateExternalClusterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateGrafanaInstance(self, request):
         """本接口（CreateGrafanaInstance）用于创建 Grafana 包年包月实例，默认基础版、到期自动续费、不可使用代金券。
 
@@ -1546,6 +1569,29 @@ class MonitorClient(AbstractClient):
             body = self.call("DescribeExternalClusterRegisterCommand", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeExternalClusterRegisterCommandResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeExternalClusterUninstallCommand(self, request):
+        """查看外部集群 Agent 卸载命令
+
+        :param request: Request instance for DescribeExternalClusterUninstallCommand.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeExternalClusterUninstallCommandRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeExternalClusterUninstallCommandResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeExternalClusterUninstallCommand", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeExternalClusterUninstallCommandResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

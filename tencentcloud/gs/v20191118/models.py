@@ -219,12 +219,15 @@ CREATE_FAIL：创建失败、CREATE_SUCCESS：创建成功）
         :type Command: str
         :param _UninstallCommand: shell 卸载命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
         :type UninstallCommand: str
+        :param _CleanupMode: 应用资源清理模式（实例安装应用所用资源），取值：CLEANUP_ON_UNINSTALL（默认值），卸载 App 时清理；CLEANUP_AFTER_INSTALL，安装 App 后立即清理。普通应用只有 CLEANUP_AFTER_INSTALL 模式。
+        :type CleanupMode: str
         """
         self._AndroidAppVersion = None
         self._State = None
         self._CreateTime = None
         self._Command = None
         self._UninstallCommand = None
+        self._CleanupMode = None
 
     @property
     def AndroidAppVersion(self):
@@ -283,6 +286,17 @@ CREATE_FAIL：创建失败、CREATE_SUCCESS：创建成功）
     def UninstallCommand(self, UninstallCommand):
         self._UninstallCommand = UninstallCommand
 
+    @property
+    def CleanupMode(self):
+        """应用资源清理模式（实例安装应用所用资源），取值：CLEANUP_ON_UNINSTALL（默认值），卸载 App 时清理；CLEANUP_AFTER_INSTALL，安装 App 后立即清理。普通应用只有 CLEANUP_AFTER_INSTALL 模式。
+        :rtype: str
+        """
+        return self._CleanupMode
+
+    @CleanupMode.setter
+    def CleanupMode(self, CleanupMode):
+        self._CleanupMode = CleanupMode
+
 
     def _deserialize(self, params):
         self._AndroidAppVersion = params.get("AndroidAppVersion")
@@ -290,6 +304,7 @@ CREATE_FAIL：创建失败、CREATE_SUCCESS：创建成功）
         self._CreateTime = params.get("CreateTime")
         self._Command = params.get("Command")
         self._UninstallCommand = params.get("UninstallCommand")
+        self._CleanupMode = params.get("CleanupMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -677,6 +692,57 @@ class AndroidInstanceAppInfo(AbstractModel):
         
 
 
+class AndroidInstanceDevice(AbstractModel):
+    """安卓实例设备信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Brand: 品牌
+        :type Brand: str
+        :param _Model: 型号
+        :type Model: str
+        """
+        self._Brand = None
+        self._Model = None
+
+    @property
+    def Brand(self):
+        """品牌
+        :rtype: str
+        """
+        return self._Brand
+
+    @Brand.setter
+    def Brand(self, Brand):
+        self._Brand = Brand
+
+    @property
+    def Model(self):
+        """型号
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+
+    def _deserialize(self, params):
+        self._Brand = params.get("Brand")
+        self._Model = params.get("Model")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AndroidInstanceImage(AbstractModel):
     """安卓实例镜像信息
 
@@ -838,6 +904,57 @@ class AndroidInstanceLabel(AbstractModel):
     @property
     def Value(self):
         """标签值
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AndroidInstanceProperty(AbstractModel):
+    """安卓实例属性
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 属性键
+        :type Key: str
+        :param _Value: 属性值
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        """属性键
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        """属性值
         :rtype: str
         """
         return self._Value
@@ -1684,11 +1801,14 @@ class CreateAndroidAppVersionRequest(AbstractModel):
         :type Command: str
         :param _UninstallCommand: 应用 shell 卸载命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
         :type UninstallCommand: str
+        :param _CleanupMode: 应用资源清理模式（实例安装应用所用资源），取值：CLEANUP_ON_UNINSTALL（默认值），卸载 App 时清理；CLEANUP_AFTER_INSTALL，安装 App 后立即清理。普通应用只有 CLEANUP_AFTER_INSTALL 模式。
+        :type CleanupMode: str
         """
         self._AndroidAppId = None
         self._DownloadUrl = None
         self._Command = None
         self._UninstallCommand = None
+        self._CleanupMode = None
 
     @property
     def AndroidAppId(self):
@@ -1734,12 +1854,24 @@ class CreateAndroidAppVersionRequest(AbstractModel):
     def UninstallCommand(self, UninstallCommand):
         self._UninstallCommand = UninstallCommand
 
+    @property
+    def CleanupMode(self):
+        """应用资源清理模式（实例安装应用所用资源），取值：CLEANUP_ON_UNINSTALL（默认值），卸载 App 时清理；CLEANUP_AFTER_INSTALL，安装 App 后立即清理。普通应用只有 CLEANUP_AFTER_INSTALL 模式。
+        :rtype: str
+        """
+        return self._CleanupMode
+
+    @CleanupMode.setter
+    def CleanupMode(self, CleanupMode):
+        self._CleanupMode = CleanupMode
+
 
     def _deserialize(self, params):
         self._AndroidAppId = params.get("AndroidAppId")
         self._DownloadUrl = params.get("DownloadUrl")
         self._Command = params.get("Command")
         self._UninstallCommand = params.get("UninstallCommand")
+        self._CleanupMode = params.get("CleanupMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1790,6 +1922,145 @@ class CreateAndroidAppVersionResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._AndroidAppVersion = params.get("AndroidAppVersion")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateAndroidInstanceADBRequest(AbstractModel):
+    """CreateAndroidInstanceADB请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AndroidInstanceId: 安卓实例 ID
+        :type AndroidInstanceId: str
+        """
+        self._AndroidInstanceId = None
+
+    @property
+    def AndroidInstanceId(self):
+        """安卓实例 ID
+        :rtype: str
+        """
+        return self._AndroidInstanceId
+
+    @AndroidInstanceId.setter
+    def AndroidInstanceId(self, AndroidInstanceId):
+        self._AndroidInstanceId = AndroidInstanceId
+
+
+    def _deserialize(self, params):
+        self._AndroidInstanceId = params.get("AndroidInstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAndroidInstanceADBResponse(AbstractModel):
+    """CreateAndroidInstanceADB返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PrivateKey: 连接私钥，需要保存为文件形式，例如 private_key.pem
+        :type PrivateKey: str
+        :param _UserName: 用户名称
+        :type UserName: str
+        :param _HostName: 连接地址
+        :type HostName: str
+        :param _Port: 连接端口
+        :type Port: int
+        :param _ConnectCommand: 连接参考命令
+        :type ConnectCommand: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PrivateKey = None
+        self._UserName = None
+        self._HostName = None
+        self._Port = None
+        self._ConnectCommand = None
+        self._RequestId = None
+
+    @property
+    def PrivateKey(self):
+        """连接私钥，需要保存为文件形式，例如 private_key.pem
+        :rtype: str
+        """
+        return self._PrivateKey
+
+    @PrivateKey.setter
+    def PrivateKey(self, PrivateKey):
+        self._PrivateKey = PrivateKey
+
+    @property
+    def UserName(self):
+        """用户名称
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def HostName(self):
+        """连接地址
+        :rtype: str
+        """
+        return self._HostName
+
+    @HostName.setter
+    def HostName(self, HostName):
+        self._HostName = HostName
+
+    @property
+    def Port(self):
+        """连接端口
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def ConnectCommand(self):
+        """连接参考命令
+        :rtype: str
+        """
+        return self._ConnectCommand
+
+    @ConnectCommand.setter
+    def ConnectCommand(self, ConnectCommand):
+        self._ConnectCommand = ConnectCommand
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._PrivateKey = params.get("PrivateKey")
+        self._UserName = params.get("UserName")
+        self._HostName = params.get("HostName")
+        self._Port = params.get("Port")
+        self._ConnectCommand = params.get("ConnectCommand")
         self._RequestId = params.get("RequestId")
 
 
@@ -4926,6 +5197,107 @@ class InstallAndroidInstancesAppResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class InstallAndroidInstancesAppWithURLRequest(AbstractModel):
+    """InstallAndroidInstancesAppWithURL请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AndroidInstanceIds: 实例ID
+        :type AndroidInstanceIds: list of str
+        :param _AndroidAppURL: 安卓应用下载 URL
+        :type AndroidAppURL: str
+        """
+        self._AndroidInstanceIds = None
+        self._AndroidAppURL = None
+
+    @property
+    def AndroidInstanceIds(self):
+        """实例ID
+        :rtype: list of str
+        """
+        return self._AndroidInstanceIds
+
+    @AndroidInstanceIds.setter
+    def AndroidInstanceIds(self, AndroidInstanceIds):
+        self._AndroidInstanceIds = AndroidInstanceIds
+
+    @property
+    def AndroidAppURL(self):
+        """安卓应用下载 URL
+        :rtype: str
+        """
+        return self._AndroidAppURL
+
+    @AndroidAppURL.setter
+    def AndroidAppURL(self, AndroidAppURL):
+        self._AndroidAppURL = AndroidAppURL
+
+
+    def _deserialize(self, params):
+        self._AndroidInstanceIds = params.get("AndroidInstanceIds")
+        self._AndroidAppURL = params.get("AndroidAppURL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstallAndroidInstancesAppWithURLResponse(AbstractModel):
+    """InstallAndroidInstancesAppWithURL返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskSet: 任务集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskSet: list of AndroidInstanceTask
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskSet = None
+        self._RequestId = None
+
+    @property
+    def TaskSet(self):
+        """任务集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AndroidInstanceTask
+        """
+        return self._TaskSet
+
+    @TaskSet.setter
+    def TaskSet(self, TaskSet):
+        self._TaskSet = TaskSet
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TaskSet") is not None:
+            self._TaskSet = []
+            for item in params.get("TaskSet"):
+                obj = AndroidInstanceTask()
+                obj._deserialize(item)
+                self._TaskSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class LabelRequirement(AbstractModel):
     """标签要求
 
@@ -5594,6 +5966,107 @@ class ModifyAndroidInstancesLabelsRequest(AbstractModel):
 
 class ModifyAndroidInstancesLabelsResponse(AbstractModel):
     """ModifyAndroidInstancesLabels返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyAndroidInstancesPropertiesRequest(AbstractModel):
+    """ModifyAndroidInstancesProperties请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AndroidInstanceIds: 安卓实例 ID 列表
+        :type AndroidInstanceIds: list of str
+        :param _AndroidInstanceDevice: 安卓实例设备
+        :type AndroidInstanceDevice: :class:`tencentcloud.gs.v20191118.models.AndroidInstanceDevice`
+        :param _AndroidInstanceProperties: 安卓实例其它属性列表
+        :type AndroidInstanceProperties: list of AndroidInstanceProperty
+        """
+        self._AndroidInstanceIds = None
+        self._AndroidInstanceDevice = None
+        self._AndroidInstanceProperties = None
+
+    @property
+    def AndroidInstanceIds(self):
+        """安卓实例 ID 列表
+        :rtype: list of str
+        """
+        return self._AndroidInstanceIds
+
+    @AndroidInstanceIds.setter
+    def AndroidInstanceIds(self, AndroidInstanceIds):
+        self._AndroidInstanceIds = AndroidInstanceIds
+
+    @property
+    def AndroidInstanceDevice(self):
+        """安卓实例设备
+        :rtype: :class:`tencentcloud.gs.v20191118.models.AndroidInstanceDevice`
+        """
+        return self._AndroidInstanceDevice
+
+    @AndroidInstanceDevice.setter
+    def AndroidInstanceDevice(self, AndroidInstanceDevice):
+        self._AndroidInstanceDevice = AndroidInstanceDevice
+
+    @property
+    def AndroidInstanceProperties(self):
+        """安卓实例其它属性列表
+        :rtype: list of AndroidInstanceProperty
+        """
+        return self._AndroidInstanceProperties
+
+    @AndroidInstanceProperties.setter
+    def AndroidInstanceProperties(self, AndroidInstanceProperties):
+        self._AndroidInstanceProperties = AndroidInstanceProperties
+
+
+    def _deserialize(self, params):
+        self._AndroidInstanceIds = params.get("AndroidInstanceIds")
+        if params.get("AndroidInstanceDevice") is not None:
+            self._AndroidInstanceDevice = AndroidInstanceDevice()
+            self._AndroidInstanceDevice._deserialize(params.get("AndroidInstanceDevice"))
+        if params.get("AndroidInstanceProperties") is not None:
+            self._AndroidInstanceProperties = []
+            for item in params.get("AndroidInstanceProperties"):
+                obj = AndroidInstanceProperty()
+                obj._deserialize(item)
+                self._AndroidInstanceProperties.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAndroidInstancesPropertiesResponse(AbstractModel):
+    """ModifyAndroidInstancesProperties返回参数结构体
 
     """
 

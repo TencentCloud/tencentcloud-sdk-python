@@ -8549,6 +8549,90 @@ class DescribeLBListenersResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeLBOperateProtectRequest(AbstractModel):
+    """DescribeLBOperateProtect请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LoadBalancerIds: 负载均衡实例ID。
+        :type LoadBalancerIds: list of str
+        """
+        self._LoadBalancerIds = None
+
+    @property
+    def LoadBalancerIds(self):
+        """负载均衡实例ID。
+        :rtype: list of str
+        """
+        return self._LoadBalancerIds
+
+    @LoadBalancerIds.setter
+    def LoadBalancerIds(self, LoadBalancerIds):
+        self._LoadBalancerIds = LoadBalancerIds
+
+
+    def _deserialize(self, params):
+        self._LoadBalancerIds = params.get("LoadBalancerIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLBOperateProtectResponse(AbstractModel):
+    """DescribeLBOperateProtect返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LoadBalancerSet: 返回的负载均衡操作保护信息数组。
+        :type LoadBalancerSet: list of LBOperateProtectInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._LoadBalancerSet = None
+        self._RequestId = None
+
+    @property
+    def LoadBalancerSet(self):
+        """返回的负载均衡操作保护信息数组。
+        :rtype: list of LBOperateProtectInfo
+        """
+        return self._LoadBalancerSet
+
+    @LoadBalancerSet.setter
+    def LoadBalancerSet(self, LoadBalancerSet):
+        self._LoadBalancerSet = LoadBalancerSet
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("LoadBalancerSet") is not None:
+            self._LoadBalancerSet = []
+            for item in params.get("LoadBalancerSet"):
+                obj = LBOperateProtectInfo()
+                obj._deserialize(item)
+                self._LoadBalancerSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeListenersRequest(AbstractModel):
     """DescribeListeners请求参数结构体
 
@@ -12643,6 +12727,108 @@ class LBItem(AbstractModel):
                 obj._deserialize(item)
                 self._Listeners.append(obj)
         self._Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LBOperateProtectInfo(AbstractModel):
+    """负载均衡的操作保护信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LoadBalancerId: 负载均衡实例 ID。
+        :type LoadBalancerId: str
+        :param _ProtectState: 保护状态，true：表示开启了操作保护，false：表示未开启操作保护。
+        :type ProtectState: bool
+        :param _OperatorUin: 操作保护的设置uin。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperatorUin: str
+        :param _Description: 设置操作保护时的描述信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _ModifyTime: 最后修改时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyTime: str
+        """
+        self._LoadBalancerId = None
+        self._ProtectState = None
+        self._OperatorUin = None
+        self._Description = None
+        self._ModifyTime = None
+
+    @property
+    def LoadBalancerId(self):
+        """负载均衡实例 ID。
+        :rtype: str
+        """
+        return self._LoadBalancerId
+
+    @LoadBalancerId.setter
+    def LoadBalancerId(self, LoadBalancerId):
+        self._LoadBalancerId = LoadBalancerId
+
+    @property
+    def ProtectState(self):
+        """保护状态，true：表示开启了操作保护，false：表示未开启操作保护。
+        :rtype: bool
+        """
+        return self._ProtectState
+
+    @ProtectState.setter
+    def ProtectState(self, ProtectState):
+        self._ProtectState = ProtectState
+
+    @property
+    def OperatorUin(self):
+        """操作保护的设置uin。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OperatorUin
+
+    @OperatorUin.setter
+    def OperatorUin(self, OperatorUin):
+        self._OperatorUin = OperatorUin
+
+    @property
+    def Description(self):
+        """设置操作保护时的描述信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ModifyTime(self):
+        """最后修改时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+
+    def _deserialize(self, params):
+        self._LoadBalancerId = params.get("LoadBalancerId")
+        self._ProtectState = params.get("ProtectState")
+        self._OperatorUin = params.get("OperatorUin")
+        self._Description = params.get("Description")
+        self._ModifyTime = params.get("ModifyTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -27,7 +27,7 @@ class GsClient(AbstractClient):
 
 
     def BackUpAndroidInstanceToStorage(self, request):
-        """备份云手机到指定存储
+        """备份云手机数据到指定存储，支持 COS 和兼容 AWS S3 协议的对象存储服务。如果是备份到 COS 时，会使用公网流量，授权 COS bucket 请在控制台中操作。
 
         :param request: Request instance for BackUpAndroidInstanceToStorage.
         :type request: :class:`tencentcloud.gs.v20191118.models.BackUpAndroidInstanceToStorageRequest`
@@ -74,7 +74,7 @@ class GsClient(AbstractClient):
 
     def CopyAndroidInstance(self, request):
         """复制安卓实例：
-        1. 排除和包含文件只能指定/data下的文件，不指定时复制整个/data目录
+        1. 排除和包含文件只能指定 /data 下的文件，不指定时复制整个 /data 目录
         2. 源实例和目的实例必须在同一区域
         3. 复制时，源实例和目的实例都会停机，复制完后实例会自动启动
         4. 复制时会产生大量内网流量，请限制并发
@@ -145,6 +145,29 @@ class GsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAndroidInstanceADB(self, request):
+        """创建云手机实例 ADB 连接信息，请将返回结果的 PrivateKey 字段保存为 pem 文件，并将 pem 文件权限设置为 600，再参考返回结果的 ConnectCommand 使用 adb 连接实例。
+
+        :param request: Request instance for CreateAndroidInstanceADB.
+        :type request: :class:`tencentcloud.gs.v20191118.models.CreateAndroidInstanceADBRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.CreateAndroidInstanceADBResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAndroidInstanceADB", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAndroidInstanceADBResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAndroidInstanceImage(self, request):
         """创建安卓实例镜像
 
@@ -192,7 +215,7 @@ class GsClient(AbstractClient):
 
 
     def CreateAndroidInstanceSSH(self, request):
-        """创建安卓实例 SSH 连接
+        """创建安卓实例 SSH 连接信息，请将返回结果的 PrivateKey 字段保存为 pem 文件，并将 pem 文件权限设置为 600，再参考返回结果的 ConnectCommand 使用 ssh 连接实例。
 
         :param request: Request instance for CreateAndroidInstanceSSH.
         :type request: :class:`tencentcloud.gs.v20191118.models.CreateAndroidInstanceSSHRequest`
@@ -215,7 +238,7 @@ class GsClient(AbstractClient):
 
 
     def CreateAndroidInstanceWebShell(self, request):
-        """创建安卓实例 WebShell 连接
+        """创建安卓实例 WebShell 连接信息，返回的 ConnectUrl 可通过浏览器直接打开访问，链接有效期 1 小时，链接打开后可持续使用。
 
         :param request: Request instance for CreateAndroidInstanceWebShell.
         :type request: :class:`tencentcloud.gs.v20191118.models.CreateAndroidInstanceWebShellRequest`
@@ -606,7 +629,7 @@ class GsClient(AbstractClient):
 
 
     def DistributeFileToAndroidInstances(self, request):
-        """分发文件到安卓实例
+        """将一个文件批量分发到多个实例，一次接口调用触发一次文件分发，一次文件分发只会从公网下载一次，然后文件会走内网分发到实例列表中的实例。
 
         :param request: Request instance for DistributeFileToAndroidInstances.
         :type request: :class:`tencentcloud.gs.v20191118.models.DistributeFileToAndroidInstancesRequest`
@@ -652,7 +675,7 @@ class GsClient(AbstractClient):
 
 
     def FetchAndroidInstancesLogs(self, request):
-        """批量获取安卓实例日志
+        """批量将实例的 logcat 日志文件上传到您已授权的 COS bucket 中，授权 COS bucket 请在控制台中操作。
 
         :param request: Request instance for FetchAndroidInstancesLogs.
         :type request: :class:`tencentcloud.gs.v20191118.models.FetchAndroidInstancesLogsRequest`
@@ -688,6 +711,29 @@ class GsClient(AbstractClient):
             body = self.call("InstallAndroidInstancesApp", params, headers=headers)
             response = json.loads(body)
             model = models.InstallAndroidInstancesAppResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def InstallAndroidInstancesAppWithURL(self, request):
+        """安装安卓实例应用
+
+        :param request: Request instance for InstallAndroidInstancesAppWithURL.
+        :type request: :class:`tencentcloud.gs.v20191118.models.InstallAndroidInstancesAppWithURLRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.InstallAndroidInstancesAppWithURLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InstallAndroidInstancesAppWithURL", params, headers=headers)
+            response = json.loads(body)
+            model = models.InstallAndroidInstancesAppWithURLResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -826,6 +872,29 @@ class GsClient(AbstractClient):
             body = self.call("ModifyAndroidInstancesLabels", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyAndroidInstancesLabelsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyAndroidInstancesProperties(self, request):
+        """批量修改安卓实例属性
+
+        :param request: Request instance for ModifyAndroidInstancesProperties.
+        :type request: :class:`tencentcloud.gs.v20191118.models.ModifyAndroidInstancesPropertiesRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.ModifyAndroidInstancesPropertiesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAndroidInstancesProperties", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAndroidInstancesPropertiesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -977,7 +1046,7 @@ class GsClient(AbstractClient):
 
 
     def RestoreAndroidInstanceFromStorage(self, request):
-        """指定存储还原云手机
+        """使用指定存储数据还原云手机，支持 COS 和兼容 AWS S3 协议的对象存储服务。如果还原数据来自 COS 时，会使用公网流量，授权 COS bucket 请在控制台中操作。
 
         :param request: Request instance for RestoreAndroidInstanceFromStorage.
         :type request: :class:`tencentcloud.gs.v20191118.models.RestoreAndroidInstanceFromStorageRequest`
@@ -1322,7 +1391,7 @@ class GsClient(AbstractClient):
 
 
     def UploadFileToAndroidInstances(self, request):
-        """上传文件到安卓实例
+        """将文件下载到指定实例列表的实例上，每个实例都会从公网下载文件。如果您需要将同一个文件分发到多个实例，建议使用 DistributeFileToAndroidInstances 接口减少公网下载的流量。如果您需要将不同的文件下载到不同的实例，可考虑使用 UploadFilesToAndroidInstances 接口批量将不同文件下载到不同的实例。
 
         :param request: Request instance for UploadFileToAndroidInstances.
         :type request: :class:`tencentcloud.gs.v20191118.models.UploadFileToAndroidInstancesRequest`
@@ -1345,7 +1414,7 @@ class GsClient(AbstractClient):
 
 
     def UploadFilesToAndroidInstances(self, request):
-        """批量上传文件到安卓实例
+        """批量将不同的文件下载到不同的实例，每个实例下载文件都是从公网下载，建议只用在文件下载使用一次的场景。如果您需要将同一个文件分发到不同实例，建议使用 DistributeFileToAndroidInstances 接口。
 
         :param request: Request instance for UploadFilesToAndroidInstances.
         :type request: :class:`tencentcloud.gs.v20191118.models.UploadFilesToAndroidInstancesRequest`

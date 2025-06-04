@@ -1042,6 +1042,29 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeLBOperateProtect(self, request):
+        """查询负载均衡的操作保护信息。
+
+        :param request: Request instance for DescribeLBOperateProtect.
+        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeLBOperateProtectRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeLBOperateProtectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLBOperateProtect", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLBOperateProtectResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeListeners(self, request):
         """DescribeListeners 接口可根据负载均衡器 ID、监听器的协议或端口作为过滤条件获取监听器列表。如果不指定任何过滤条件，则返回该负载均衡实例下的所有监听器。
 

@@ -19001,6 +19001,8 @@ class InspectionTaskSettings(AbstractModel):
         :type Selected: str
         :param _Enable: 是否开启监控
         :type Enable: str
+        :param _SettingsJson: 事件Json模板
+        :type SettingsJson: str
         """
         self._TaskType = None
         self._Group = None
@@ -19008,6 +19010,7 @@ class InspectionTaskSettings(AbstractModel):
         self._TaskSettings = None
         self._Selected = None
         self._Enable = None
+        self._SettingsJson = None
 
     @property
     def TaskType(self):
@@ -19075,6 +19078,17 @@ class InspectionTaskSettings(AbstractModel):
     def Enable(self, Enable):
         self._Enable = Enable
 
+    @property
+    def SettingsJson(self):
+        """事件Json模板
+        :rtype: str
+        """
+        return self._SettingsJson
+
+    @SettingsJson.setter
+    def SettingsJson(self, SettingsJson):
+        self._SettingsJson = SettingsJson
+
 
     def _deserialize(self, params):
         self._TaskType = params.get("TaskType")
@@ -19088,6 +19102,7 @@ class InspectionTaskSettings(AbstractModel):
                 self._TaskSettings.append(obj)
         self._Selected = params.get("Selected")
         self._Enable = params.get("Enable")
+        self._SettingsJson = params.get("SettingsJson")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25521,6 +25536,8 @@ class OverviewRow(AbstractModel):
         :type StoreFileSize: float
         :param _Operation: regions，点击可跳转
         :type Operation: str
+        :param _StoreFileNum: StoreFile数量
+        :type StoreFileNum: float
         """
         self._Table = None
         self._ReadRequestCount = None
@@ -25528,6 +25545,7 @@ class OverviewRow(AbstractModel):
         self._MemstoreSize = None
         self._StoreFileSize = None
         self._Operation = None
+        self._StoreFileNum = None
 
     @property
     def Table(self):
@@ -25595,6 +25613,17 @@ class OverviewRow(AbstractModel):
     def Operation(self, Operation):
         self._Operation = Operation
 
+    @property
+    def StoreFileNum(self):
+        """StoreFile数量
+        :rtype: float
+        """
+        return self._StoreFileNum
+
+    @StoreFileNum.setter
+    def StoreFileNum(self, StoreFileNum):
+        self._StoreFileNum = StoreFileNum
+
 
     def _deserialize(self, params):
         self._Table = params.get("Table")
@@ -25603,6 +25632,7 @@ class OverviewRow(AbstractModel):
         self._MemstoreSize = params.get("MemstoreSize")
         self._StoreFileSize = params.get("StoreFileSize")
         self._Operation = params.get("Operation")
+        self._StoreFileNum = params.get("StoreFileNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

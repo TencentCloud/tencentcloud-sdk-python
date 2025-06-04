@@ -685,9 +685,9 @@ class BindAutoSnapshotPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoSnapshotPolicyId: 快照策略ID，通过快照策略列表获取
+        :param _AutoSnapshotPolicyId: 需要解绑的文件系统ID列表，用"," 分割，文件系统ID，通过查询文件系统列表获取；[DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170)
         :type AutoSnapshotPolicyId: str
-        :param _FileSystemIds: 文件系统id列表，用“,”分隔，文件系统id通过查询文件系统列表获得
+        :param _FileSystemIds: 解绑的快照策略ID，可以通过[DescribeAutoSnapshotPolicies](https://cloud.tencent.com/document/api/582/80208) 查询获取
         :type FileSystemIds: str
         """
         self._AutoSnapshotPolicyId = None
@@ -695,7 +695,7 @@ class BindAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def AutoSnapshotPolicyId(self):
-        """快照策略ID，通过快照策略列表获取
+        """需要解绑的文件系统ID列表，用"," 分割，文件系统ID，通过查询文件系统列表获取；[DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170)
         :rtype: str
         """
         return self._AutoSnapshotPolicyId
@@ -706,7 +706,7 @@ class BindAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def FileSystemIds(self):
-        """文件系统id列表，用“,”分隔，文件系统id通过查询文件系统列表获得
+        """解绑的快照策略ID，可以通过[DescribeAutoSnapshotPolicies](https://cloud.tencent.com/document/api/582/80208) 查询获取
         :rtype: str
         """
         return self._FileSystemIds
@@ -3935,7 +3935,7 @@ class DescribeCfsSnapshotsRequest(AbstractModel):
 <br>FileSystemId - Array of String - 是否必填：否 -（过滤条件）按文件系统ID过滤。
 <br>FsName - Array of String - 是否必填：否 -（过滤条件）按文件系统名过滤。
 <br>Status - Array of String - 是否必填：否 -（过滤条件）按照快照状态过滤
-(creating：表示创建中 | available：表示可用。| rollbacking：表示回滚。| rollbacking_new：表示由快照创建新文件系统中| create-failed 创建失败）
+(creating：表示创建中 | available：表示可用。rollbacking_new：表示由快照创建新文件系统中| create-failed 创建失败）
 <br>tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键进行过滤。
 <br>tag:tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。
         :type Filters: list of Filter
@@ -4004,7 +4004,7 @@ class DescribeCfsSnapshotsRequest(AbstractModel):
 <br>FileSystemId - Array of String - 是否必填：否 -（过滤条件）按文件系统ID过滤。
 <br>FsName - Array of String - 是否必填：否 -（过滤条件）按文件系统名过滤。
 <br>Status - Array of String - 是否必填：否 -（过滤条件）按照快照状态过滤
-(creating：表示创建中 | available：表示可用。| rollbacking：表示回滚。| rollbacking_new：表示由快照创建新文件系统中| create-failed 创建失败）
+(creating：表示创建中 | available：表示可用。rollbacking_new：表示由快照创建新文件系统中| create-failed 创建失败）
 <br>tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键进行过滤。
 <br>tag:tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。
         :rtype: list of Filter
@@ -7170,14 +7170,14 @@ class StopMigrationTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 迁移任务名称
+        :param _TaskId: 迁移任务Id
         :type TaskId: str
         """
         self._TaskId = None
 
     @property
     def TaskId(self):
-        """迁移任务名称
+        """迁移任务Id
         :rtype: str
         """
         return self._TaskId

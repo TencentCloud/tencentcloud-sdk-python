@@ -5179,12 +5179,16 @@ class DescribeJobEventsResponse(AbstractModel):
         :param _TotalCount: 事件的总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
+        :param _Versions: 实例对应的版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Versions: list of int non-negative
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Events = None
         self._RunningOrderIds = None
         self._TotalCount = None
+        self._Versions = None
         self._RequestId = None
 
     @property
@@ -5224,6 +5228,18 @@ class DescribeJobEventsResponse(AbstractModel):
         self._TotalCount = TotalCount
 
     @property
+    def Versions(self):
+        """实例对应的版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int non-negative
+        """
+        return self._Versions
+
+    @Versions.setter
+    def Versions(self, Versions):
+        self._Versions = Versions
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -5244,6 +5260,7 @@ class DescribeJobEventsResponse(AbstractModel):
                 self._Events.append(obj)
         self._RunningOrderIds = params.get("RunningOrderIds")
         self._TotalCount = params.get("TotalCount")
+        self._Versions = params.get("Versions")
         self._RequestId = params.get("RequestId")
 
 

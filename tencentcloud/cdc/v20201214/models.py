@@ -1489,6 +1489,8 @@ class DedicatedClusterOrder(AbstractModel):
 
     @property
     def DedicatedClusterTypeId(self):
+        warnings.warn("parameter `DedicatedClusterTypeId` is deprecated", DeprecationWarning) 
+
         """专用集群类型id（移到下一层级，已经废弃，后续将删除）
         :rtype: str
         """
@@ -1496,10 +1498,14 @@ class DedicatedClusterOrder(AbstractModel):
 
     @DedicatedClusterTypeId.setter
     def DedicatedClusterTypeId(self, DedicatedClusterTypeId):
+        warnings.warn("parameter `DedicatedClusterTypeId` is deprecated", DeprecationWarning) 
+
         self._DedicatedClusterTypeId = DedicatedClusterTypeId
 
     @property
     def SupportedStorageType(self):
+        warnings.warn("parameter `SupportedStorageType` is deprecated", DeprecationWarning) 
+
         """支持的存储类型列表（移到下一层级，已经废弃，后续将删除）
         :rtype: list of str
         """
@@ -1507,10 +1513,14 @@ class DedicatedClusterOrder(AbstractModel):
 
     @SupportedStorageType.setter
     def SupportedStorageType(self, SupportedStorageType):
+        warnings.warn("parameter `SupportedStorageType` is deprecated", DeprecationWarning) 
+
         self._SupportedStorageType = SupportedStorageType
 
     @property
     def SupportedUplinkSpeed(self):
+        warnings.warn("parameter `SupportedUplinkSpeed` is deprecated", DeprecationWarning) 
+
         """支持的上连交换机的链路传输速率(GiB)（移到下一层级，已经废弃，后续将删除）
         :rtype: list of int
         """
@@ -1518,10 +1528,14 @@ class DedicatedClusterOrder(AbstractModel):
 
     @SupportedUplinkSpeed.setter
     def SupportedUplinkSpeed(self, SupportedUplinkSpeed):
+        warnings.warn("parameter `SupportedUplinkSpeed` is deprecated", DeprecationWarning) 
+
         self._SupportedUplinkSpeed = SupportedUplinkSpeed
 
     @property
     def SupportedInstanceFamily(self):
+        warnings.warn("parameter `SupportedInstanceFamily` is deprecated", DeprecationWarning) 
+
         """支持的实例族列表（移到下一层级，已经废弃，后续将删除）
         :rtype: list of str
         """
@@ -1529,6 +1543,8 @@ class DedicatedClusterOrder(AbstractModel):
 
     @SupportedInstanceFamily.setter
     def SupportedInstanceFamily(self, SupportedInstanceFamily):
+        warnings.warn("parameter `SupportedInstanceFamily` is deprecated", DeprecationWarning) 
+
         self._SupportedInstanceFamily = SupportedInstanceFamily
 
     @property
@@ -4499,6 +4515,8 @@ class HostInfo(AbstractModel):
 
     @property
     def HostIp(self):
+        warnings.warn("parameter `HostIp` is deprecated", DeprecationWarning) 
+
         """宿主机IP（废弃）
         :rtype: str
         """
@@ -4506,6 +4524,8 @@ class HostInfo(AbstractModel):
 
     @HostIp.setter
     def HostIp(self, HostIp):
+        warnings.warn("parameter `HostIp` is deprecated", DeprecationWarning) 
+
         self._HostIp = HostIp
 
     @property

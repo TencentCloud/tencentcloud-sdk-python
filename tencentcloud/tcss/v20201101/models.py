@@ -6508,6 +6508,8 @@ class ClusterInfoItem(AbstractModel):
         :type ClusterAuditStatus: str
         :param _ClusterAuditFailedInfo: 集群审计开关失败信息
         :type ClusterAuditFailedInfo: str
+        :param _OwnerName: 所有者名称
+        :type OwnerName: str
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -6540,6 +6542,7 @@ class ClusterInfoItem(AbstractModel):
         self._CoresCnt = None
         self._ClusterAuditStatus = None
         self._ClusterAuditFailedInfo = None
+        self._OwnerName = None
 
     @property
     def ClusterId(self):
@@ -6894,6 +6897,17 @@ class ClusterInfoItem(AbstractModel):
     def ClusterAuditFailedInfo(self, ClusterAuditFailedInfo):
         self._ClusterAuditFailedInfo = ClusterAuditFailedInfo
 
+    @property
+    def OwnerName(self):
+        """所有者名称
+        :rtype: str
+        """
+        return self._OwnerName
+
+    @OwnerName.setter
+    def OwnerName(self, OwnerName):
+        self._OwnerName = OwnerName
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -6927,6 +6941,7 @@ class ClusterInfoItem(AbstractModel):
         self._CoresCnt = params.get("CoresCnt")
         self._ClusterAuditStatus = params.get("ClusterAuditStatus")
         self._ClusterAuditFailedInfo = params.get("ClusterAuditFailedInfo")
+        self._OwnerName = params.get("OwnerName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18030,8 +18045,14 @@ class DeleteMachineRequest(AbstractModel):
         r"""
         :param _Uuid: 客户端Uuid
         :type Uuid: str
+        :param _NodeUniqueIds: 超级节点唯一id
+        :type NodeUniqueIds: list of str
+        :param _UUIDs: uuid列表
+        :type UUIDs: list of str
         """
         self._Uuid = None
+        self._NodeUniqueIds = None
+        self._UUIDs = None
 
     @property
     def Uuid(self):
@@ -18044,9 +18065,33 @@ class DeleteMachineRequest(AbstractModel):
     def Uuid(self, Uuid):
         self._Uuid = Uuid
 
+    @property
+    def NodeUniqueIds(self):
+        """超级节点唯一id
+        :rtype: list of str
+        """
+        return self._NodeUniqueIds
+
+    @NodeUniqueIds.setter
+    def NodeUniqueIds(self, NodeUniqueIds):
+        self._NodeUniqueIds = NodeUniqueIds
+
+    @property
+    def UUIDs(self):
+        """uuid列表
+        :rtype: list of str
+        """
+        return self._UUIDs
+
+    @UUIDs.setter
+    def UUIDs(self, UUIDs):
+        self._UUIDs = UUIDs
+
 
     def _deserialize(self, params):
         self._Uuid = params.get("Uuid")
+        self._NodeUniqueIds = params.get("NodeUniqueIds")
+        self._UUIDs = params.get("UUIDs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19895,11 +19940,17 @@ class DescribeAccessControlEventsResponse(AbstractModel):
         :type TotalCount: int
         :param _EventSet: 访问控制事件数组
         :type EventSet: list of AccessControlEventInfo
+        :param _SupportCoreVersion: 支持的内核版本
+        :type SupportCoreVersion: str
+        :param _InterceptionFailureTip: 拦截失败可能的原因
+        :type InterceptionFailureTip: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
         self._EventSet = None
+        self._SupportCoreVersion = None
+        self._InterceptionFailureTip = None
         self._RequestId = None
 
     @property
@@ -19925,6 +19976,28 @@ class DescribeAccessControlEventsResponse(AbstractModel):
         self._EventSet = EventSet
 
     @property
+    def SupportCoreVersion(self):
+        """支持的内核版本
+        :rtype: str
+        """
+        return self._SupportCoreVersion
+
+    @SupportCoreVersion.setter
+    def SupportCoreVersion(self, SupportCoreVersion):
+        self._SupportCoreVersion = SupportCoreVersion
+
+    @property
+    def InterceptionFailureTip(self):
+        """拦截失败可能的原因
+        :rtype: str
+        """
+        return self._InterceptionFailureTip
+
+    @InterceptionFailureTip.setter
+    def InterceptionFailureTip(self, InterceptionFailureTip):
+        self._InterceptionFailureTip = InterceptionFailureTip
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -19944,6 +20017,8 @@ class DescribeAccessControlEventsResponse(AbstractModel):
                 obj = AccessControlEventInfo()
                 obj._deserialize(item)
                 self._EventSet.append(obj)
+        self._SupportCoreVersion = params.get("SupportCoreVersion")
+        self._InterceptionFailureTip = params.get("InterceptionFailureTip")
         self._RequestId = params.get("RequestId")
 
 
@@ -25030,10 +25105,13 @@ class DescribeAssetImageRegistryListExportResponse(AbstractModel):
         r"""
         :param _DownloadUrl: excel文件下载地址
         :type DownloadUrl: str
+        :param _JobId: 导出任务id
+        :type JobId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DownloadUrl = None
+        self._JobId = None
         self._RequestId = None
 
     @property
@@ -25046,6 +25124,17 @@ class DescribeAssetImageRegistryListExportResponse(AbstractModel):
     @DownloadUrl.setter
     def DownloadUrl(self, DownloadUrl):
         self._DownloadUrl = DownloadUrl
+
+    @property
+    def JobId(self):
+        """导出任务id
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
 
     @property
     def RequestId(self):
@@ -25061,6 +25150,7 @@ class DescribeAssetImageRegistryListExportResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._DownloadUrl = params.get("DownloadUrl")
+        self._JobId = params.get("JobId")
         self._RequestId = params.get("RequestId")
 
 
@@ -26554,10 +26644,13 @@ class DescribeAssetImageRegistryVirusListExportResponse(AbstractModel):
         r"""
         :param _DownloadUrl: excel文件下载地址
         :type DownloadUrl: str
+        :param _JobId: 导出任务id
+        :type JobId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DownloadUrl = None
+        self._JobId = None
         self._RequestId = None
 
     @property
@@ -26570,6 +26663,17 @@ class DescribeAssetImageRegistryVirusListExportResponse(AbstractModel):
     @DownloadUrl.setter
     def DownloadUrl(self, DownloadUrl):
         self._DownloadUrl = DownloadUrl
+
+    @property
+    def JobId(self):
+        """导出任务id
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
 
     @property
     def RequestId(self):
@@ -26585,6 +26689,7 @@ class DescribeAssetImageRegistryVirusListExportResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._DownloadUrl = params.get("DownloadUrl")
+        self._JobId = params.get("JobId")
         self._RequestId = params.get("RequestId")
 
 
@@ -26889,10 +26994,13 @@ class DescribeAssetImageRegistryVulListExportResponse(AbstractModel):
         r"""
         :param _DownloadUrl: excel文件下载地址
         :type DownloadUrl: str
+        :param _JobId: 导出任务id
+        :type JobId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DownloadUrl = None
+        self._JobId = None
         self._RequestId = None
 
     @property
@@ -26905,6 +27013,17 @@ class DescribeAssetImageRegistryVulListExportResponse(AbstractModel):
     @DownloadUrl.setter
     def DownloadUrl(self, DownloadUrl):
         self._DownloadUrl = DownloadUrl
+
+    @property
+    def JobId(self):
+        """导出任务id
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
 
     @property
     def RequestId(self):
@@ -26920,6 +27039,7 @@ class DescribeAssetImageRegistryVulListExportResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._DownloadUrl = params.get("DownloadUrl")
+        self._JobId = params.get("JobId")
         self._RequestId = params.get("RequestId")
 
 
@@ -29672,12 +29792,18 @@ PROCESSED:已完成
         :type TaskStatus: str
         :param _TaskProcess: 任务进度(百分比)
         :type TaskProcess: int
+        :param _FailedHostCount: 失败主机数
+        :type FailedHostCount: int
+        :param _TaskId: 任务id
+        :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AssetSyncLastTime = None
         self._TaskStatus = None
         self._TaskProcess = None
+        self._FailedHostCount = None
+        self._TaskId = None
         self._RequestId = None
 
     @property
@@ -29717,6 +29843,28 @@ PROCESSED:已完成
         self._TaskProcess = TaskProcess
 
     @property
+    def FailedHostCount(self):
+        """失败主机数
+        :rtype: int
+        """
+        return self._FailedHostCount
+
+    @FailedHostCount.setter
+    def FailedHostCount(self, FailedHostCount):
+        self._FailedHostCount = FailedHostCount
+
+    @property
+    def TaskId(self):
+        """任务id
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -29732,6 +29880,8 @@ PROCESSED:已完成
         self._AssetSyncLastTime = params.get("AssetSyncLastTime")
         self._TaskStatus = params.get("TaskStatus")
         self._TaskProcess = params.get("TaskProcess")
+        self._FailedHostCount = params.get("FailedHostCount")
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -30281,6 +30431,8 @@ class DescribeClusterDetailResponse(AbstractModel):
         :type IngressCount: int
         :param _MasterIps: 主节点的ip列表
         :type MasterIps: str
+        :param _OwnerName: 所有者名称
+        :type OwnerName: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -30310,6 +30462,7 @@ class DescribeClusterDetailResponse(AbstractModel):
         self._ServiceCount = None
         self._IngressCount = None
         self._MasterIps = None
+        self._OwnerName = None
         self._RequestId = None
 
     @property
@@ -30599,6 +30752,17 @@ class DescribeClusterDetailResponse(AbstractModel):
         self._MasterIps = MasterIps
 
     @property
+    def OwnerName(self):
+        """所有者名称
+        :rtype: str
+        """
+        return self._OwnerName
+
+    @OwnerName.setter
+    def OwnerName(self, OwnerName):
+        self._OwnerName = OwnerName
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -30637,6 +30801,7 @@ class DescribeClusterDetailResponse(AbstractModel):
         self._ServiceCount = params.get("ServiceCount")
         self._IngressCount = params.get("IngressCount")
         self._MasterIps = params.get("MasterIps")
+        self._OwnerName = params.get("OwnerName")
         self._RequestId = params.get("RequestId")
 
 
@@ -47266,6 +47431,8 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
         :type Namespace: str
         :param _WorkloadType: 工作负载类型
         :type WorkloadType: str
+        :param _ContainerStatus: 容器状态
+        :type ContainerStatus: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -47330,6 +47497,7 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
         self._ClusterName = None
         self._Namespace = None
         self._WorkloadType = None
+        self._ContainerStatus = None
         self._RequestId = None
 
     @property
@@ -48023,6 +48191,17 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
         self._WorkloadType = WorkloadType
 
     @property
+    def ContainerStatus(self):
+        """容器状态
+        :rtype: str
+        """
+        return self._ContainerStatus
+
+    @ContainerStatus.setter
+    def ContainerStatus(self, ContainerStatus):
+        self._ContainerStatus = ContainerStatus
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -48096,6 +48275,7 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
         self._ClusterName = params.get("ClusterName")
         self._Namespace = params.get("Namespace")
         self._WorkloadType = params.get("WorkloadType")
+        self._ContainerStatus = params.get("ContainerStatus")
         self._RequestId = params.get("RequestId")
 
 
@@ -68314,6 +68494,10 @@ EVENT_ADD_WHITE：已加白
         :type NodeUniqueID: str
         :param _ClusterName: 集群名称
         :type ClusterName: str
+        :param _ImageId: 镜像ID
+        :type ImageId: str
+        :param _ContainerId: 容器ID
+        :type ContainerId: str
         """
         self._EventID = None
         self._EventType = None
@@ -68345,6 +68529,8 @@ EVENT_ADD_WHITE：已加白
         self._NodeID = None
         self._NodeUniqueID = None
         self._ClusterName = None
+        self._ImageId = None
+        self._ContainerId = None
 
     @property
     def EventID(self):
@@ -68700,6 +68886,28 @@ EVENT_ADD_WHITE：已加白
     def ClusterName(self, ClusterName):
         self._ClusterName = ClusterName
 
+    @property
+    def ImageId(self):
+        """镜像ID
+        :rtype: str
+        """
+        return self._ImageId
+
+    @ImageId.setter
+    def ImageId(self, ImageId):
+        self._ImageId = ImageId
+
+    @property
+    def ContainerId(self):
+        """容器ID
+        :rtype: str
+        """
+        return self._ContainerId
+
+    @ContainerId.setter
+    def ContainerId(self, ContainerId):
+        self._ContainerId = ContainerId
+
 
     def _deserialize(self, params):
         self._EventID = params.get("EventID")
@@ -68732,6 +68940,8 @@ EVENT_ADD_WHITE：已加白
         self._NodeID = params.get("NodeID")
         self._NodeUniqueID = params.get("NodeUniqueID")
         self._ClusterName = params.get("ClusterName")
+        self._ImageId = params.get("ImageId")
+        self._ContainerId = params.get("ContainerId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -69816,6 +70026,8 @@ MountNamespace逃逸、
         :type Namespace: str
         :param _WorkloadType: WorkloadType
         :type WorkloadType: str
+        :param _ContainerStatus: 容器运行状态
+        :type ContainerStatus: str
         """
         self._EventId = None
         self._FoundTime = None
@@ -69848,6 +70060,7 @@ MountNamespace逃逸、
         self._HostID = None
         self._Namespace = None
         self._WorkloadType = None
+        self._ContainerStatus = None
 
     @property
     def EventId(self):
@@ -70219,6 +70432,17 @@ MountNamespace逃逸、
     def WorkloadType(self, WorkloadType):
         self._WorkloadType = WorkloadType
 
+    @property
+    def ContainerStatus(self):
+        """容器运行状态
+        :rtype: str
+        """
+        return self._ContainerStatus
+
+    @ContainerStatus.setter
+    def ContainerStatus(self, ContainerStatus):
+        self._ContainerStatus = ContainerStatus
+
 
     def _deserialize(self, params):
         self._EventId = params.get("EventId")
@@ -70252,6 +70476,7 @@ MountNamespace逃逸、
         self._HostID = params.get("HostID")
         self._Namespace = params.get("Namespace")
         self._WorkloadType = params.get("WorkloadType")
+        self._ContainerStatus = params.get("ContainerStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -75171,6 +75396,8 @@ VALIDATION: 参数非法
         :type HostID: str
         :param _ClusterName: 集群名称
         :type ClusterName: str
+        :param _HostIP: 节点内网IP，同innerIP
+        :type HostIP: str
         """
         self._FileName = None
         self._FilePath = None
@@ -75204,6 +75431,7 @@ VALIDATION: 参数非法
         self._NodeUniqueID = None
         self._HostID = None
         self._ClusterName = None
+        self._HostIP = None
 
     @property
     def FileName(self):
@@ -75601,6 +75829,17 @@ VALIDATION: 参数非法
     def ClusterName(self, ClusterName):
         self._ClusterName = ClusterName
 
+    @property
+    def HostIP(self):
+        """节点内网IP，同innerIP
+        :rtype: str
+        """
+        return self._HostIP
+
+    @HostIP.setter
+    def HostIP(self, HostIP):
+        self._HostIP = HostIP
+
 
     def _deserialize(self, params):
         self._FileName = params.get("FileName")
@@ -75635,6 +75874,7 @@ VALIDATION: 参数非法
         self._NodeUniqueID = params.get("NodeUniqueID")
         self._HostID = params.get("HostID")
         self._ClusterName = params.get("ClusterName")
+        self._HostIP = params.get("HostIP")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

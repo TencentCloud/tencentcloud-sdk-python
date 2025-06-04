@@ -10783,8 +10783,7 @@ class CreateFlowLogRequest(AbstractModel):
         :param _FlowLogDescription: 流日志实例描述。长度不超过512个字符。
         :type FlowLogDescription: str
         :param _CloudLogId: 流日志存储ID（cls的日志主题ID，
-可通过[DescribeTopics](https://cloud.tencent.com/document/product/614/56454)接口获取。
-）。当StorageType为cls时，CloudLogId为必选。
+可通过[DescribeTopics](https://cloud.tencent.com/document/product/614/56454)接口获取）。当StorageType为cls时，CloudLogId为必选。
         :type CloudLogId: str
         :param _Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
         :type Tags: list of Tag
@@ -10876,8 +10875,7 @@ class CreateFlowLogRequest(AbstractModel):
     @property
     def CloudLogId(self):
         """流日志存储ID（cls的日志主题ID，
-可通过[DescribeTopics](https://cloud.tencent.com/document/product/614/56454)接口获取。
-）。当StorageType为cls时，CloudLogId为必选。
+可通过[DescribeTopics](https://cloud.tencent.com/document/product/614/56454)接口获取）。当StorageType为cls时，CloudLogId为必选。
         :rtype: str
         """
         return self._CloudLogId
@@ -28767,7 +28765,11 @@ class DescribeLocalGatewayRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: 支持的过滤条件如下:\n<li>vpc-id:按照VPCID过滤。</li>\n<li>local-gateway-name:本地网关名称,支持模糊查询。</li>\n<li>local-gateway-id:本地网关实例ID。</li>\n<li>cdc-id:cdc实例ID。</li>
+        :param _Filters: 支持的过滤条件如下:
+<li>vpc-id:按照VPCID过滤。</li>
+<li>local-gateway-name:本地网关名称,支持模糊查询。</li>
+<li>local-gateway-id:本地网关实例ID。</li>
+<li>cdc-id:cdc实例ID。</li>
         :type Filters: list of Filter
         :param _Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/11646)中的相关小节。
         :type Offset: int
@@ -28780,7 +28782,11 @@ class DescribeLocalGatewayRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """支持的过滤条件如下:\n<li>vpc-id:按照VPCID过滤。</li>\n<li>local-gateway-name:本地网关名称,支持模糊查询。</li>\n<li>local-gateway-id:本地网关实例ID。</li>\n<li>cdc-id:cdc实例ID。</li>
+        """支持的过滤条件如下:
+<li>vpc-id:按照VPCID过滤。</li>
+<li>local-gateway-name:本地网关名称,支持模糊查询。</li>
+<li>local-gateway-id:本地网关实例ID。</li>
+<li>cdc-id:cdc实例ID。</li>
         :rtype: list of Filter
         """
         return self._Filters

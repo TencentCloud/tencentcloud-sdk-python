@@ -2174,6 +2174,12 @@ class KnowledgeDocumentSet(AbstractModel):
         :type FileMetaData: str
         :param _Author: 作者
         :type Author: str
+        :param _DocStatus: 上传文件状态
+        :type DocStatus: str
+        :param _ErrMsg: 文件上传失败的具体原因
+        :type ErrMsg: str
+        :param _FileId: Cos存储文件ID
+        :type FileId: str
         """
         self._DocumentSetId = None
         self._DocumentSetName = None
@@ -2185,6 +2191,9 @@ class KnowledgeDocumentSet(AbstractModel):
         self._FileTitle = None
         self._FileMetaData = None
         self._Author = None
+        self._DocStatus = None
+        self._ErrMsg = None
+        self._FileId = None
 
     @property
     def DocumentSetId(self):
@@ -2296,6 +2305,39 @@ class KnowledgeDocumentSet(AbstractModel):
     def Author(self, Author):
         self._Author = Author
 
+    @property
+    def DocStatus(self):
+        """上传文件状态
+        :rtype: str
+        """
+        return self._DocStatus
+
+    @DocStatus.setter
+    def DocStatus(self, DocStatus):
+        self._DocStatus = DocStatus
+
+    @property
+    def ErrMsg(self):
+        """文件上传失败的具体原因
+        :rtype: str
+        """
+        return self._ErrMsg
+
+    @ErrMsg.setter
+    def ErrMsg(self, ErrMsg):
+        self._ErrMsg = ErrMsg
+
+    @property
+    def FileId(self):
+        """Cos存储文件ID
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
 
     def _deserialize(self, params):
         self._DocumentSetId = params.get("DocumentSetId")
@@ -2312,6 +2354,9 @@ class KnowledgeDocumentSet(AbstractModel):
         self._FileTitle = params.get("FileTitle")
         self._FileMetaData = params.get("FileMetaData")
         self._Author = params.get("Author")
+        self._DocStatus = params.get("DocStatus")
+        self._ErrMsg = params.get("ErrMsg")
+        self._FileId = params.get("FileId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2851,6 +2896,12 @@ class QureyKnowledgeDocumentSet(AbstractModel):
         :type Name: str
         :param _Author: 作者
         :type Author: str
+        :param _DocStatus: 文档上传状态
+        :type DocStatus: str
+        :param _ErrMsg: 上传文件失败时具体的错误消息
+        :type ErrMsg: str
+        :param _FileId: Cos存储文件ID
+        :type FileId: str
         """
         self._DocumentSetId = None
         self._DocumentSetName = None
@@ -2861,6 +2912,9 @@ class QureyKnowledgeDocumentSet(AbstractModel):
         self._FileMetaData = None
         self._Name = None
         self._Author = None
+        self._DocStatus = None
+        self._ErrMsg = None
+        self._FileId = None
 
     @property
     def DocumentSetId(self):
@@ -2961,6 +3015,39 @@ class QureyKnowledgeDocumentSet(AbstractModel):
     def Author(self, Author):
         self._Author = Author
 
+    @property
+    def DocStatus(self):
+        """文档上传状态
+        :rtype: str
+        """
+        return self._DocStatus
+
+    @DocStatus.setter
+    def DocStatus(self, DocStatus):
+        self._DocStatus = DocStatus
+
+    @property
+    def ErrMsg(self):
+        """上传文件失败时具体的错误消息
+        :rtype: str
+        """
+        return self._ErrMsg
+
+    @ErrMsg.setter
+    def ErrMsg(self, ErrMsg):
+        self._ErrMsg = ErrMsg
+
+    @property
+    def FileId(self):
+        """Cos存储文件ID
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
 
     def _deserialize(self, params):
         self._DocumentSetId = params.get("DocumentSetId")
@@ -2976,6 +3063,9 @@ class QureyKnowledgeDocumentSet(AbstractModel):
         self._FileMetaData = params.get("FileMetaData")
         self._Name = params.get("Name")
         self._Author = params.get("Author")
+        self._DocStatus = params.get("DocStatus")
+        self._ErrMsg = params.get("ErrMsg")
+        self._FileId = params.get("FileId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

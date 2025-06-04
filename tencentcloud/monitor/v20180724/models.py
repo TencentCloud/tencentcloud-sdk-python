@@ -5536,6 +5536,180 @@ class CreateExporterIntegrationResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateExternalClusterRequest(AbstractModel):
+    """CreateExternalCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例 ID
+        :type InstanceId: str
+        :param _ClusterRegion: 集群所在地域
+        :type ClusterRegion: str
+        :param _ClusterName: 集群名称
+        :type ClusterName: str
+        :param _ClusterId: 集群 ID
+        :type ClusterId: str
+        :param _ExternalLabels: 外部标签
+        :type ExternalLabels: list of Label
+        :param _OpenDefaultRecord: 是否打开预聚合规则
+        :type OpenDefaultRecord: bool
+        :param _EnableExternal: 是否开启公网
+        :type EnableExternal: bool
+        """
+        self._InstanceId = None
+        self._ClusterRegion = None
+        self._ClusterName = None
+        self._ClusterId = None
+        self._ExternalLabels = None
+        self._OpenDefaultRecord = None
+        self._EnableExternal = None
+
+    @property
+    def InstanceId(self):
+        """实例 ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ClusterRegion(self):
+        """集群所在地域
+        :rtype: str
+        """
+        return self._ClusterRegion
+
+    @ClusterRegion.setter
+    def ClusterRegion(self, ClusterRegion):
+        self._ClusterRegion = ClusterRegion
+
+    @property
+    def ClusterName(self):
+        """集群名称
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def ClusterId(self):
+        """集群 ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ExternalLabels(self):
+        """外部标签
+        :rtype: list of Label
+        """
+        return self._ExternalLabels
+
+    @ExternalLabels.setter
+    def ExternalLabels(self, ExternalLabels):
+        self._ExternalLabels = ExternalLabels
+
+    @property
+    def OpenDefaultRecord(self):
+        """是否打开预聚合规则
+        :rtype: bool
+        """
+        return self._OpenDefaultRecord
+
+    @OpenDefaultRecord.setter
+    def OpenDefaultRecord(self, OpenDefaultRecord):
+        self._OpenDefaultRecord = OpenDefaultRecord
+
+    @property
+    def EnableExternal(self):
+        """是否开启公网
+        :rtype: bool
+        """
+        return self._EnableExternal
+
+    @EnableExternal.setter
+    def EnableExternal(self, EnableExternal):
+        self._EnableExternal = EnableExternal
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ClusterRegion = params.get("ClusterRegion")
+        self._ClusterName = params.get("ClusterName")
+        self._ClusterId = params.get("ClusterId")
+        if params.get("ExternalLabels") is not None:
+            self._ExternalLabels = []
+            for item in params.get("ExternalLabels"):
+                obj = Label()
+                obj._deserialize(item)
+                self._ExternalLabels.append(obj)
+        self._OpenDefaultRecord = params.get("OpenDefaultRecord")
+        self._EnableExternal = params.get("EnableExternal")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateExternalClusterResponse(AbstractModel):
+    """CreateExternalCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群 ID
+        :type ClusterId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ClusterId = None
+        self._RequestId = None
+
+    @property
+    def ClusterId(self):
+        """集群 ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateGrafanaInstanceRequest(AbstractModel):
     """CreateGrafanaInstance请求参数结构体
 
@@ -14462,6 +14636,100 @@ class DescribeExternalClusterRegisterCommandResponse(AbstractModel):
     @property
     def Command(self):
         """注册命令
+        :rtype: str
+        """
+        return self._Command
+
+    @Command.setter
+    def Command(self, Command):
+        self._Command = Command
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Command = params.get("Command")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeExternalClusterUninstallCommandRequest(AbstractModel):
+    """DescribeExternalClusterUninstallCommand请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例 ID
+        :type InstanceId: str
+        :param _ClusterId: 集群 ID
+        :type ClusterId: str
+        """
+        self._InstanceId = None
+        self._ClusterId = None
+
+    @property
+    def InstanceId(self):
+        """实例 ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ClusterId(self):
+        """集群 ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeExternalClusterUninstallCommandResponse(AbstractModel):
+    """DescribeExternalClusterUninstallCommand返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Command: 卸载命令
+        :type Command: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Command = None
+        self._RequestId = None
+
+    @property
+    def Command(self):
+        """卸载命令
         :rtype: str
         """
         return self._Command
