@@ -15256,7 +15256,6 @@ class CreateTrafficPackagesRequest(AbstractModel):
 <li>51200: 50TB流量，有效期一个月</li>
 <li>60: 60GB流量，有效期半年</li>
 <li>300: 300GB流量，有效期半年</li>
-<li>600: 600GB流量，有效期半年</li>
 <li>3072: 3TB流量，有效期半年</li>
 <li>6144: 6TB流量，有效期半年</li>
 <li>30720: 30TB流量，有效期半年</li>
@@ -15265,9 +15264,14 @@ class CreateTrafficPackagesRequest(AbstractModel):
         :type TrafficAmount: int
         :param _TrafficPackageCount: 流量包数量，可选范围 1~20。
         :type TrafficPackageCount: int
+        :param _DeductType: 抵扣类型，默认为 FULL_TIME，可选值: 
+<li>FULL_TIME: 全时流量包</li>
+<li>IDLE_TIME: 闲时流量包</li>
+        :type DeductType: str
         """
         self._TrafficAmount = None
         self._TrafficPackageCount = None
+        self._DeductType = None
 
     @property
     def TrafficAmount(self):
@@ -15280,7 +15284,6 @@ class CreateTrafficPackagesRequest(AbstractModel):
 <li>51200: 50TB流量，有效期一个月</li>
 <li>60: 60GB流量，有效期半年</li>
 <li>300: 300GB流量，有效期半年</li>
-<li>600: 600GB流量，有效期半年</li>
 <li>3072: 3TB流量，有效期半年</li>
 <li>6144: 6TB流量，有效期半年</li>
 <li>30720: 30TB流量，有效期半年</li>
@@ -15305,10 +15308,24 @@ class CreateTrafficPackagesRequest(AbstractModel):
     def TrafficPackageCount(self, TrafficPackageCount):
         self._TrafficPackageCount = TrafficPackageCount
 
+    @property
+    def DeductType(self):
+        """抵扣类型，默认为 FULL_TIME，可选值: 
+<li>FULL_TIME: 全时流量包</li>
+<li>IDLE_TIME: 闲时流量包</li>
+        :rtype: str
+        """
+        return self._DeductType
+
+    @DeductType.setter
+    def DeductType(self, DeductType):
+        self._DeductType = DeductType
+
 
     def _deserialize(self, params):
         self._TrafficAmount = params.get("TrafficAmount")
         self._TrafficPackageCount = params.get("TrafficPackageCount")
+        self._DeductType = params.get("DeductType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

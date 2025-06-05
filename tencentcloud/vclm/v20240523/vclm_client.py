@@ -96,6 +96,29 @@ class VclmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTemplateToVideoJob(self, request):
+        """用于查询视频特效任务。
+
+        :param request: Request instance for DescribeTemplateToVideoJob.
+        :type request: :class:`tencentcloud.vclm.v20240523.models.DescribeTemplateToVideoJobRequest`
+        :rtype: :class:`tencentcloud.vclm.v20240523.models.DescribeTemplateToVideoJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTemplateToVideoJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTemplateToVideoJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeVideoStylizationJob(self, request):
         """用于查询视频风格化任务。视频风格化支持将输入视频生成特定风格的视频。生成后的视频画面风格多样、流畅自然，能够满足社交娱乐、互动营销、视频素材制作等场景的需求。
 
@@ -157,6 +180,29 @@ class VclmClient(AbstractClient):
             body = self.call("SubmitPortraitSingJob", params, headers=headers)
             response = json.loads(body)
             model = models.SubmitPortraitSingJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SubmitTemplateToVideoJob(self, request):
+        """提交视频特效任务接口
+
+        :param request: Request instance for SubmitTemplateToVideoJob.
+        :type request: :class:`tencentcloud.vclm.v20240523.models.SubmitTemplateToVideoJobRequest`
+        :rtype: :class:`tencentcloud.vclm.v20240523.models.SubmitTemplateToVideoJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SubmitTemplateToVideoJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.SubmitTemplateToVideoJobResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

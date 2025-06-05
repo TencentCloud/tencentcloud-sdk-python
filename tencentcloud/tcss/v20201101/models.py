@@ -2830,6 +2830,8 @@ class AddAssetImageRegistryRegistryDetailRequest(AbstractModel):
         :type WebhookUrl: str
         :param _WebhookToken: webhook接入token
         :type WebhookToken: str
+        :param _InstanceId: tcr实例ID
+        :type InstanceId: str
         """
         self._Name = None
         self._Username = None
@@ -2846,6 +2848,7 @@ class AddAssetImageRegistryRegistryDetailRequest(AbstractModel):
         self._SyncMode = None
         self._WebhookUrl = None
         self._WebhookToken = None
+        self._InstanceId = None
 
     @property
     def Name(self):
@@ -3012,6 +3015,17 @@ class AddAssetImageRegistryRegistryDetailRequest(AbstractModel):
     def WebhookToken(self, WebhookToken):
         self._WebhookToken = WebhookToken
 
+    @property
+    def InstanceId(self):
+        """tcr实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -3034,6 +3048,7 @@ class AddAssetImageRegistryRegistryDetailRequest(AbstractModel):
         self._SyncMode = params.get("SyncMode")
         self._WebhookUrl = params.get("WebhookUrl")
         self._WebhookToken = params.get("WebhookToken")
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -61499,17 +61514,26 @@ class ModifyAssetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _All: 全部同步，俩参数必选一个 All优先
+        :param _All: 同步全部普通节点
         :type All: bool
-        :param _Hosts: 要同步的主机列表uuid ，俩参数必选一个 All优先
+        :param _Hosts: 要同步的主机列表uuid 
         :type Hosts: list of str
+        :param _AllSuperHost: 同步全部超级节点
+        :type AllSuperHost: bool
+        :param _NodeUniqueIds: 要同步的超级节点唯一id
+        :type NodeUniqueIds: list of str
+        :param _TimeoutSec: 超时时间(秒) 最低3600s
+        :type TimeoutSec: int
         """
         self._All = None
         self._Hosts = None
+        self._AllSuperHost = None
+        self._NodeUniqueIds = None
+        self._TimeoutSec = None
 
     @property
     def All(self):
-        """全部同步，俩参数必选一个 All优先
+        """同步全部普通节点
         :rtype: bool
         """
         return self._All
@@ -61520,7 +61544,7 @@ class ModifyAssetRequest(AbstractModel):
 
     @property
     def Hosts(self):
-        """要同步的主机列表uuid ，俩参数必选一个 All优先
+        """要同步的主机列表uuid 
         :rtype: list of str
         """
         return self._Hosts
@@ -61529,10 +61553,46 @@ class ModifyAssetRequest(AbstractModel):
     def Hosts(self, Hosts):
         self._Hosts = Hosts
 
+    @property
+    def AllSuperHost(self):
+        """同步全部超级节点
+        :rtype: bool
+        """
+        return self._AllSuperHost
+
+    @AllSuperHost.setter
+    def AllSuperHost(self, AllSuperHost):
+        self._AllSuperHost = AllSuperHost
+
+    @property
+    def NodeUniqueIds(self):
+        """要同步的超级节点唯一id
+        :rtype: list of str
+        """
+        return self._NodeUniqueIds
+
+    @NodeUniqueIds.setter
+    def NodeUniqueIds(self, NodeUniqueIds):
+        self._NodeUniqueIds = NodeUniqueIds
+
+    @property
+    def TimeoutSec(self):
+        """超时时间(秒) 最低3600s
+        :rtype: int
+        """
+        return self._TimeoutSec
+
+    @TimeoutSec.setter
+    def TimeoutSec(self, TimeoutSec):
+        self._TimeoutSec = TimeoutSec
+
 
     def _deserialize(self, params):
         self._All = params.get("All")
         self._Hosts = params.get("Hosts")
+        self._AllSuperHost = params.get("AllSuperHost")
+        self._NodeUniqueIds = params.get("NodeUniqueIds")
+        self._TimeoutSec = params.get("TimeoutSec")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -61552,10 +61612,13 @@ class ModifyAssetResponse(AbstractModel):
         r"""
         :param _Status: 同步任务发送结果
         :type Status: str
+        :param _TaskId: 任务id
+        :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Status = None
+        self._TaskId = None
         self._RequestId = None
 
     @property
@@ -61568,6 +61631,17 @@ class ModifyAssetResponse(AbstractModel):
     @Status.setter
     def Status(self, Status):
         self._Status = Status
+
+    @property
+    def TaskId(self):
+        """任务id
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
     @property
     def RequestId(self):
@@ -61583,6 +61657,7 @@ class ModifyAssetResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -74195,6 +74270,8 @@ class UpdateAssetImageRegistryRegistryDetailRequest(AbstractModel):
         :type SyncMode: int
         :param _NeedScan: 是否自动授权&扫描，选择增量同步时参数生效，包含所有新增镜像
         :type NeedScan: bool
+        :param _InstanceId: tcr实例ID
+        :type InstanceId: str
         """
         self._Name = None
         self._Username = None
@@ -74210,6 +74287,7 @@ class UpdateAssetImageRegistryRegistryDetailRequest(AbstractModel):
         self._RegistryId = None
         self._SyncMode = None
         self._NeedScan = None
+        self._InstanceId = None
 
     @property
     def Name(self):
@@ -74365,6 +74443,17 @@ class UpdateAssetImageRegistryRegistryDetailRequest(AbstractModel):
     def NeedScan(self, NeedScan):
         self._NeedScan = NeedScan
 
+    @property
+    def InstanceId(self):
+        """tcr实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -74386,6 +74475,7 @@ class UpdateAssetImageRegistryRegistryDetailRequest(AbstractModel):
         self._RegistryId = params.get("RegistryId")
         self._SyncMode = params.get("SyncMode")
         self._NeedScan = params.get("NeedScan")
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

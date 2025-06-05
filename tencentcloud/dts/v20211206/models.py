@@ -963,7 +963,7 @@ class CompareOptions(AbstractModel):
         :type Method: str
         :param _SampleRate: 抽样比例;范围0,100。默认为100
         :type SampleRate: int
-        :param _ThreadCount: 线程数，取值1-5，默认为1
+        :param _ThreadCount: 线程数，取值1-8，默认为1
         :type ThreadCount: int
         """
         self._Method = None
@@ -994,7 +994,7 @@ class CompareOptions(AbstractModel):
 
     @property
     def ThreadCount(self):
-        """线程数，取值1-5，默认为1
+        """线程数，取值1-8，默认为1
         :rtype: int
         """
         return self._ThreadCount
@@ -9221,7 +9221,7 @@ class DynamicOptions(AbstractModel):
         r"""
         :param _OpTypes: 所要同步的DML和DDL的选项，Insert(插入操作)、Update(更新操作)、Delete(删除操作)、DDL(结构同步)，PartialDDL(自定义,和DdlOptions一起起作用 )；必填、dts会用该值覆盖原有的值
         :type OpTypes: list of str
-        :param _DdlOptions: DDL同步选项，具体描述要同步那些DDL; 当OpTypes取值PartialDDL时、字段不能为空；必填、dts会用该值覆盖原有的值
+        :param _DdlOptions: DDL同步选项，具体描述要同步哪些DDL; 当OpTypes取值PartialDDL时、字段不能为空；必填、dts会用该值覆盖原有的值
         :type DdlOptions: list of DdlOption
         :param _ConflictHandleType: 冲突处理选项，ReportError(报错)、Ignore(忽略)、Cover(覆盖)、ConditionCover(条件覆盖); 目前目标端为kafka的链路不支持修改该配置
         :type ConflictHandleType: str
@@ -9261,7 +9261,7 @@ class DynamicOptions(AbstractModel):
 
     @property
     def DdlOptions(self):
-        """DDL同步选项，具体描述要同步那些DDL; 当OpTypes取值PartialDDL时、字段不能为空；必填、dts会用该值覆盖原有的值
+        """DDL同步选项，具体描述要同步哪些DDL; 当OpTypes取值PartialDDL时、字段不能为空；必填、dts会用该值覆盖原有的值
         :rtype: list of DdlOption
         """
         return self._DdlOptions
@@ -13498,7 +13498,7 @@ class Options(AbstractModel):
         :type OpTypes: list of str
         :param _ConflictHandleOption: 冲突处理的详细选项，如条件覆盖中的条件行和条件操作
         :type ConflictHandleOption: :class:`tencentcloud.dts.v20211206.models.ConflictHandleOption`
-        :param _DdlOptions: DDL同步选项，具体描述要同步那些DDL
+        :param _DdlOptions: DDL同步选项，具体描述要同步哪些DDL
 注意：此字段可能返回 null，表示取不到有效值。
         :type DdlOptions: list of DdlOption
         :param _KafkaOption: kafka同步选项
@@ -13597,7 +13597,7 @@ class Options(AbstractModel):
 
     @property
     def DdlOptions(self):
-        """DDL同步选项，具体描述要同步那些DDL
+        """DDL同步选项，具体描述要同步哪些DDL
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DdlOption
         """

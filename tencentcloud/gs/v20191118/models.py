@@ -743,6 +743,59 @@ class AndroidInstanceDevice(AbstractModel):
         
 
 
+class AndroidInstanceError(AbstractModel):
+    """安卓实例错误信息，用于批量安卓实例操作中返回部分操作错误的情况
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AndroidInstanceId: 安卓实例 ID
+        :type AndroidInstanceId: str
+        :param _Error: 错误信息
+        :type Error: :class:`tencentcloud.gs.v20191118.models.Error`
+        """
+        self._AndroidInstanceId = None
+        self._Error = None
+
+    @property
+    def AndroidInstanceId(self):
+        """安卓实例 ID
+        :rtype: str
+        """
+        return self._AndroidInstanceId
+
+    @AndroidInstanceId.setter
+    def AndroidInstanceId(self, AndroidInstanceId):
+        self._AndroidInstanceId = AndroidInstanceId
+
+    @property
+    def Error(self):
+        """错误信息
+        :rtype: :class:`tencentcloud.gs.v20191118.models.Error`
+        """
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
+
+
+    def _deserialize(self, params):
+        self._AndroidInstanceId = params.get("AndroidInstanceId")
+        if params.get("Error") is not None:
+            self._Error = Error()
+            self._Error._deserialize(params.get("Error"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AndroidInstanceImage(AbstractModel):
     """安卓实例镜像信息
 
@@ -1442,6 +1495,105 @@ class COSOptions(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CleanAndroidInstancesAppDataRequest(AbstractModel):
+    """CleanAndroidInstancesAppData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AndroidInstanceIds: 安卓实例 ID 列表（最大100条数据）
+        :type AndroidInstanceIds: list of str
+        :param _PackageName: 应用包名
+        :type PackageName: str
+        """
+        self._AndroidInstanceIds = None
+        self._PackageName = None
+
+    @property
+    def AndroidInstanceIds(self):
+        """安卓实例 ID 列表（最大100条数据）
+        :rtype: list of str
+        """
+        return self._AndroidInstanceIds
+
+    @AndroidInstanceIds.setter
+    def AndroidInstanceIds(self, AndroidInstanceIds):
+        self._AndroidInstanceIds = AndroidInstanceIds
+
+    @property
+    def PackageName(self):
+        """应用包名
+        :rtype: str
+        """
+        return self._PackageName
+
+    @PackageName.setter
+    def PackageName(self, PackageName):
+        self._PackageName = PackageName
+
+
+    def _deserialize(self, params):
+        self._AndroidInstanceIds = params.get("AndroidInstanceIds")
+        self._PackageName = params.get("PackageName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CleanAndroidInstancesAppDataResponse(AbstractModel):
+    """CleanAndroidInstancesAppData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AndroidInstanceErrors: 错误列表。如果实例操作都成功，则响应没有这个字段；如果有实例操作失败，该字段包含了实例操作的错误信息
+        :type AndroidInstanceErrors: list of AndroidInstanceError
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AndroidInstanceErrors = None
+        self._RequestId = None
+
+    @property
+    def AndroidInstanceErrors(self):
+        """错误列表。如果实例操作都成功，则响应没有这个字段；如果有实例操作失败，该字段包含了实例操作的错误信息
+        :rtype: list of AndroidInstanceError
+        """
+        return self._AndroidInstanceErrors
+
+    @AndroidInstanceErrors.setter
+    def AndroidInstanceErrors(self, AndroidInstanceErrors):
+        self._AndroidInstanceErrors = AndroidInstanceErrors
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("AndroidInstanceErrors") is not None:
+            self._AndroidInstanceErrors = []
+            for item in params.get("AndroidInstanceErrors"):
+                obj = AndroidInstanceError()
+                obj._deserialize(item)
+                self._AndroidInstanceErrors.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ConnectAndroidInstanceRequest(AbstractModel):
@@ -4695,6 +4847,105 @@ class DestroyAndroidInstancesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DisableAndroidInstancesAppRequest(AbstractModel):
+    """DisableAndroidInstancesApp请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AndroidInstanceIds: 安卓实例 ID 列表（最大100条数据）
+        :type AndroidInstanceIds: list of str
+        :param _PackageName: 应用包名
+        :type PackageName: str
+        """
+        self._AndroidInstanceIds = None
+        self._PackageName = None
+
+    @property
+    def AndroidInstanceIds(self):
+        """安卓实例 ID 列表（最大100条数据）
+        :rtype: list of str
+        """
+        return self._AndroidInstanceIds
+
+    @AndroidInstanceIds.setter
+    def AndroidInstanceIds(self, AndroidInstanceIds):
+        self._AndroidInstanceIds = AndroidInstanceIds
+
+    @property
+    def PackageName(self):
+        """应用包名
+        :rtype: str
+        """
+        return self._PackageName
+
+    @PackageName.setter
+    def PackageName(self, PackageName):
+        self._PackageName = PackageName
+
+
+    def _deserialize(self, params):
+        self._AndroidInstanceIds = params.get("AndroidInstanceIds")
+        self._PackageName = params.get("PackageName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisableAndroidInstancesAppResponse(AbstractModel):
+    """DisableAndroidInstancesApp返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AndroidInstanceErrors: 错误列表。如果实例操作都成功，则响应没有这个字段；如果有实例操作失败，该字段包含了实例操作的错误信息
+        :type AndroidInstanceErrors: list of AndroidInstanceError
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AndroidInstanceErrors = None
+        self._RequestId = None
+
+    @property
+    def AndroidInstanceErrors(self):
+        """错误列表。如果实例操作都成功，则响应没有这个字段；如果有实例操作失败，该字段包含了实例操作的错误信息
+        :rtype: list of AndroidInstanceError
+        """
+        return self._AndroidInstanceErrors
+
+    @AndroidInstanceErrors.setter
+    def AndroidInstanceErrors(self, AndroidInstanceErrors):
+        self._AndroidInstanceErrors = AndroidInstanceErrors
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("AndroidInstanceErrors") is not None:
+            self._AndroidInstanceErrors = []
+            for item in params.get("AndroidInstanceErrors"):
+                obj = AndroidInstanceError()
+                obj._deserialize(item)
+                self._AndroidInstanceErrors.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DistributeFileToAndroidInstancesRequest(AbstractModel):
     """DistributeFileToAndroidInstances请求参数结构体
 
@@ -4807,6 +5058,156 @@ class DistributeFileToAndroidInstancesResponse(AbstractModel):
                 obj._deserialize(item)
                 self._TaskSet.append(obj)
         self._RequestId = params.get("RequestId")
+
+
+class EnableAndroidInstancesAppRequest(AbstractModel):
+    """EnableAndroidInstancesApp请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AndroidInstanceIds: 安卓实例 ID 列表（最大100条数据）
+        :type AndroidInstanceIds: list of str
+        :param _PackageName: 应用包名
+        :type PackageName: str
+        """
+        self._AndroidInstanceIds = None
+        self._PackageName = None
+
+    @property
+    def AndroidInstanceIds(self):
+        """安卓实例 ID 列表（最大100条数据）
+        :rtype: list of str
+        """
+        return self._AndroidInstanceIds
+
+    @AndroidInstanceIds.setter
+    def AndroidInstanceIds(self, AndroidInstanceIds):
+        self._AndroidInstanceIds = AndroidInstanceIds
+
+    @property
+    def PackageName(self):
+        """应用包名
+        :rtype: str
+        """
+        return self._PackageName
+
+    @PackageName.setter
+    def PackageName(self, PackageName):
+        self._PackageName = PackageName
+
+
+    def _deserialize(self, params):
+        self._AndroidInstanceIds = params.get("AndroidInstanceIds")
+        self._PackageName = params.get("PackageName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnableAndroidInstancesAppResponse(AbstractModel):
+    """EnableAndroidInstancesApp返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AndroidInstanceErrors: 错误列表。如果实例操作都成功，则响应没有这个字段；如果有实例操作失败，该字段包含了实例操作的错误信息
+        :type AndroidInstanceErrors: list of AndroidInstanceError
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AndroidInstanceErrors = None
+        self._RequestId = None
+
+    @property
+    def AndroidInstanceErrors(self):
+        """错误列表。如果实例操作都成功，则响应没有这个字段；如果有实例操作失败，该字段包含了实例操作的错误信息
+        :rtype: list of AndroidInstanceError
+        """
+        return self._AndroidInstanceErrors
+
+    @AndroidInstanceErrors.setter
+    def AndroidInstanceErrors(self, AndroidInstanceErrors):
+        self._AndroidInstanceErrors = AndroidInstanceErrors
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("AndroidInstanceErrors") is not None:
+            self._AndroidInstanceErrors = []
+            for item in params.get("AndroidInstanceErrors"):
+                obj = AndroidInstanceError()
+                obj._deserialize(item)
+                self._AndroidInstanceErrors.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class Error(AbstractModel):
+    """错误信息，用于批量接口中返回部分操作错误
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Code: 错误码
+        :type Code: str
+        :param _Message: 错误详细信息
+        :type Message: str
+        """
+        self._Code = None
+        self._Message = None
+
+    @property
+    def Code(self):
+        """错误码
+        :rtype: str
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Message(self):
+        """错误详细信息
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+
+    def _deserialize(self, params):
+        self._Code = params.get("Code")
+        self._Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ExecuteCommandOnAndroidInstancesRequest(AbstractModel):

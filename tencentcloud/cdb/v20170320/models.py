@@ -7855,6 +7855,10 @@ class CreateCloneInstanceRequest(AbstractModel):
         :type Period: int
         :param _ClusterTopology: 集群版节点拓扑配置。
         :type ClusterTopology: :class:`tencentcloud.cdb.v20170320.models.ClusterTopology`
+        :param _SrcRegion: 原实例所在地域名，当传入异地备份时为必选项，例：ap-guangzhou
+        :type SrcRegion: str
+        :param _SpecifiedSubBackupId: 异地数据备份id
+        :type SpecifiedSubBackupId: int
         """
         self._InstanceId = None
         self._SpecifiedRollbackTime = None
@@ -7880,6 +7884,8 @@ class CreateCloneInstanceRequest(AbstractModel):
         self._PayType = None
         self._Period = None
         self._ClusterTopology = None
+        self._SrcRegion = None
+        self._SpecifiedSubBackupId = None
 
     @property
     def InstanceId(self):
@@ -8147,6 +8153,28 @@ class CreateCloneInstanceRequest(AbstractModel):
     def ClusterTopology(self, ClusterTopology):
         self._ClusterTopology = ClusterTopology
 
+    @property
+    def SrcRegion(self):
+        """原实例所在地域名，当传入异地备份时为必选项，例：ap-guangzhou
+        :rtype: str
+        """
+        return self._SrcRegion
+
+    @SrcRegion.setter
+    def SrcRegion(self, SrcRegion):
+        self._SrcRegion = SrcRegion
+
+    @property
+    def SpecifiedSubBackupId(self):
+        """异地数据备份id
+        :rtype: int
+        """
+        return self._SpecifiedSubBackupId
+
+    @SpecifiedSubBackupId.setter
+    def SpecifiedSubBackupId(self, SpecifiedSubBackupId):
+        self._SpecifiedSubBackupId = SpecifiedSubBackupId
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -8180,6 +8208,8 @@ class CreateCloneInstanceRequest(AbstractModel):
         if params.get("ClusterTopology") is not None:
             self._ClusterTopology = ClusterTopology()
             self._ClusterTopology._deserialize(params.get("ClusterTopology"))
+        self._SrcRegion = params.get("SrcRegion")
+        self._SpecifiedSubBackupId = params.get("SpecifiedSubBackupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -11265,6 +11265,8 @@ class AsrFullTextConfigureInfo(AbstractModel):
 
     @property
     def SubtitleFormat(self):
+        warnings.warn("parameter `SubtitleFormat` is deprecated", DeprecationWarning) 
+
         """生成的字幕文件格式，不填或者填空字符串表示不生成字幕文件，可选值：
 <li>vtt：生成 WebVTT 字幕文件；</li>
 <li>srt：生成 SRT 字幕文件。</li>
@@ -11275,6 +11277,8 @@ class AsrFullTextConfigureInfo(AbstractModel):
 
     @SubtitleFormat.setter
     def SubtitleFormat(self, SubtitleFormat):
+        warnings.warn("parameter `SubtitleFormat` is deprecated", DeprecationWarning) 
+
         self._SubtitleFormat = SubtitleFormat
 
     @property
@@ -11381,6 +11385,8 @@ class AsrFullTextConfigureInfoForUpdate(AbstractModel):
 
     @property
     def SubtitleFormat(self):
+        warnings.warn("parameter `SubtitleFormat` is deprecated", DeprecationWarning) 
+
         """生成的字幕文件格式，<font color='red'>填空字符串</font>表示不生成字幕文件，可选值：
 <li>vtt：生成 WebVTT 字幕文件；</li>
 <li>srt：生成 SRT 字幕文件。</li>
@@ -11391,6 +11397,8 @@ class AsrFullTextConfigureInfoForUpdate(AbstractModel):
 
     @SubtitleFormat.setter
     def SubtitleFormat(self, SubtitleFormat):
+        warnings.warn("parameter `SubtitleFormat` is deprecated", DeprecationWarning) 
+
         self._SubtitleFormat = SubtitleFormat
 
     @property
@@ -30183,6 +30191,8 @@ class DescribeRoundPlaysRequest(AbstractModel):
 
     @property
     def Offset(self):
+        warnings.warn("parameter `Offset` is deprecated", DeprecationWarning) 
+
         """分页偏移量，默认值：0。已经废弃，请根据 ScrollToken 参数进行分批次查询。
         :rtype: int
         """
@@ -30190,6 +30200,8 @@ class DescribeRoundPlaysRequest(AbstractModel):
 
     @Offset.setter
     def Offset(self, Offset):
+        warnings.warn("parameter `Offset` is deprecated", DeprecationWarning) 
+
         self._Offset = Offset
 
     @property
@@ -30250,6 +30262,8 @@ class DescribeRoundPlaysResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        warnings.warn("parameter `TotalCount` is deprecated", DeprecationWarning) 
+
         """符合过滤条件的轮播播单总数。已经废弃，分批次查询请请使用 ScrollToken 参数。
         :rtype: int
         """
@@ -30257,6 +30271,8 @@ class DescribeRoundPlaysResponse(AbstractModel):
 
     @TotalCount.setter
     def TotalCount(self, TotalCount):
+        warnings.warn("parameter `TotalCount` is deprecated", DeprecationWarning) 
+
         self._TotalCount = TotalCount
 
     @property
@@ -36646,6 +36662,8 @@ class ExtractTraceWatermarkTaskOutput(AbstractModel):
 
     @property
     def Uid(self):
+        warnings.warn("parameter `Uid` is deprecated", DeprecationWarning) 
+
         """该字段已废弃。
         :rtype: str
         """
@@ -36653,6 +36671,8 @@ class ExtractTraceWatermarkTaskOutput(AbstractModel):
 
     @Uid.setter
     def Uid(self, Uid):
+        warnings.warn("parameter `Uid` is deprecated", DeprecationWarning) 
+
         self._Uid = Uid
 
 
@@ -42468,6 +42488,8 @@ military：
 
     @property
     def PicUrlExpireTimeStamp(self):
+        warnings.warn("parameter `PicUrlExpireTimeStamp` is deprecated", DeprecationWarning) 
+
         """该字段已废弃，请使用 PicUrlExpireTime。
         :rtype: int
         """
@@ -42475,6 +42497,8 @@ military：
 
     @PicUrlExpireTimeStamp.setter
     def PicUrlExpireTimeStamp(self, PicUrlExpireTimeStamp):
+        warnings.warn("parameter `PicUrlExpireTimeStamp` is deprecated", DeprecationWarning) 
+
         self._PicUrlExpireTimeStamp = PicUrlExpireTimeStamp
 
     @property
@@ -63544,6 +63568,8 @@ class RestoreMediaTask(AbstractModel):
 
     @property
     def Status(self):
+        warnings.warn("parameter `Status` is deprecated", DeprecationWarning) 
+
         """该字段已废弃。
         :rtype: int
         """
@@ -63551,10 +63577,14 @@ class RestoreMediaTask(AbstractModel):
 
     @Status.setter
     def Status(self, Status):
+        warnings.warn("parameter `Status` is deprecated", DeprecationWarning) 
+
         self._Status = Status
 
     @property
     def Message(self):
+        warnings.warn("parameter `Message` is deprecated", DeprecationWarning) 
+
         """该字段已废弃。
         :rtype: str
         """
@@ -63562,6 +63592,8 @@ class RestoreMediaTask(AbstractModel):
 
     @Message.setter
     def Message(self, Message):
+        warnings.warn("parameter `Message` is deprecated", DeprecationWarning) 
+
         self._Message = Message
 
 
@@ -64478,6 +64510,8 @@ class ReviewImageResponse(AbstractModel):
 
     @property
     def ReviewResultSet(self):
+        warnings.warn("parameter `ReviewResultSet` is deprecated", DeprecationWarning) 
+
         """图片审核任务结果。
 <font color=red>注意：该字段已废弃，建议使用 MediaReviewResult。</font> 
         :rtype: list of ContentReviewResult
@@ -64486,6 +64520,8 @@ class ReviewImageResponse(AbstractModel):
 
     @ReviewResultSet.setter
     def ReviewResultSet(self, ReviewResultSet):
+        warnings.warn("parameter `ReviewResultSet` is deprecated", DeprecationWarning) 
+
         self._ReviewResultSet = ReviewResultSet
 
     @property
@@ -71222,6 +71258,8 @@ class TraceWatermarkInput(AbstractModel):
 
     @property
     def Definition(self):
+        warnings.warn("parameter `Definition` is deprecated", DeprecationWarning) 
+
         """该字段已废弃，请勿使用。
         :rtype: int
         """
@@ -71229,6 +71267,8 @@ class TraceWatermarkInput(AbstractModel):
 
     @Definition.setter
     def Definition(self, Definition):
+        warnings.warn("parameter `Definition` is deprecated", DeprecationWarning) 
+
         self._Definition = Definition
 
 

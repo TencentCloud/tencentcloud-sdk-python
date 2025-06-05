@@ -49,6 +49,29 @@ class GsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CleanAndroidInstancesAppData(self, request):
+        """批量清理安卓实例应用数据
+
+        :param request: Request instance for CleanAndroidInstancesAppData.
+        :type request: :class:`tencentcloud.gs.v20191118.models.CleanAndroidInstancesAppDataRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.CleanAndroidInstancesAppDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CleanAndroidInstancesAppData", params, headers=headers)
+            response = json.loads(body)
+            model = models.CleanAndroidInstancesAppDataResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ConnectAndroidInstance(self, request):
         """连接安卓实例
 
@@ -169,7 +192,7 @@ class GsClient(AbstractClient):
 
 
     def CreateAndroidInstanceImage(self, request):
-        """创建安卓实例镜像
+        """使用指定的安卓实例创建镜像，创建镜像时指定的实例会关机，镜像创建完成后实例会自动开机。当镜像的 AndroidInstanceImageState 为 NORMAL 时，镜像创建完成处于可用状态。
 
         :param request: Request instance for CreateAndroidInstanceImage.
         :type request: :class:`tencentcloud.gs.v20191118.models.CreateAndroidInstanceImageRequest`
@@ -491,7 +514,7 @@ class GsClient(AbstractClient):
 
 
     def DescribeAndroidInstanceImages(self, request):
-        """查询安卓实例镜像
+        """查询安卓实例镜像信息，当镜像的 AndroidInstanceImageState 为 NORMAL 时，镜像处于可用状态。
 
         :param request: Request instance for DescribeAndroidInstanceImages.
         :type request: :class:`tencentcloud.gs.v20191118.models.DescribeAndroidInstanceImagesRequest`
@@ -628,6 +651,29 @@ class GsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DisableAndroidInstancesApp(self, request):
+        """批量禁用安卓实例应用
+
+        :param request: Request instance for DisableAndroidInstancesApp.
+        :type request: :class:`tencentcloud.gs.v20191118.models.DisableAndroidInstancesAppRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.DisableAndroidInstancesAppResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DisableAndroidInstancesApp", params, headers=headers)
+            response = json.loads(body)
+            model = models.DisableAndroidInstancesAppResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DistributeFileToAndroidInstances(self, request):
         """将一个文件批量分发到多个实例，一次接口调用触发一次文件分发，一次文件分发只会从公网下载一次，然后文件会走内网分发到实例列表中的实例。
 
@@ -642,6 +688,29 @@ class GsClient(AbstractClient):
             body = self.call("DistributeFileToAndroidInstances", params, headers=headers)
             response = json.loads(body)
             model = models.DistributeFileToAndroidInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def EnableAndroidInstancesApp(self, request):
+        """批量启用安卓实例应用
+
+        :param request: Request instance for EnableAndroidInstancesApp.
+        :type request: :class:`tencentcloud.gs.v20191118.models.EnableAndroidInstancesAppRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.EnableAndroidInstancesAppResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EnableAndroidInstancesApp", params, headers=headers)
+            response = json.loads(body)
+            model = models.EnableAndroidInstancesAppResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1299,7 +1368,7 @@ class GsClient(AbstractClient):
 
 
     def SyncAndroidInstanceImage(self, request):
-        """同步安卓实例镜像
+        """同步安卓实例镜像到其他区域，当镜像的 AndroidInstanceImageState 为 NORMAL 时，镜像已经同步完成处于可用状态。
 
         :param request: Request instance for SyncAndroidInstanceImage.
         :type request: :class:`tencentcloud.gs.v20191118.models.SyncAndroidInstanceImageRequest`

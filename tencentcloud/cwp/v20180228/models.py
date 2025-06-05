@@ -71881,11 +71881,14 @@ class FileTamperRule(AbstractModel):
 <li>write 修改文件</li>
 <li>read-write 读取修改文件</li>
         :type FileAction: str
+        :param _Args: 命令行参数 没有填*
+        :type Args: str
         """
         self._ProcessPath = None
         self._Target = None
         self._Action = None
         self._FileAction = None
+        self._Args = None
 
     @property
     def ProcessPath(self):
@@ -71934,12 +71937,24 @@ class FileTamperRule(AbstractModel):
     def FileAction(self, FileAction):
         self._FileAction = FileAction
 
+    @property
+    def Args(self):
+        """命令行参数 没有填*
+        :rtype: str
+        """
+        return self._Args
+
+    @Args.setter
+    def Args(self, Args):
+        self._Args = Args
+
 
     def _deserialize(self, params):
         self._ProcessPath = params.get("ProcessPath")
         self._Target = params.get("Target")
         self._Action = params.get("Action")
         self._FileAction = params.get("FileAction")
+        self._Args = params.get("Args")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -103520,6 +103535,16 @@ class VulEffectHostList(AbstractModel):
         :type CloudTags: list of Tags
         :param _MachineExtraInfo: 主机额外信息
         :type MachineExtraInfo: :class:`tencentcloud.cwp.v20180228.models.MachineExtraInfo`
+        :param _MachineType: 主机类型
+        :type MachineType: str
+        :param _RegionId: 可用区ID
+        :type RegionId: int
+        :param _HasSnapshot: 修复任务是否创建了快照： 0-未创建，其他-已创建
+        :type HasSnapshot: int
+        :param _LatestFixTime: 最后修复时间
+        :type LatestFixTime: str
+        :param _DescriptionEn: 说明
+        :type DescriptionEn: str
         """
         self._EventId = None
         self._Status = None
@@ -103539,6 +103564,11 @@ class VulEffectHostList(AbstractModel):
         self._PublicIpAddresses = None
         self._CloudTags = None
         self._MachineExtraInfo = None
+        self._MachineType = None
+        self._RegionId = None
+        self._HasSnapshot = None
+        self._LatestFixTime = None
+        self._DescriptionEn = None
 
     @property
     def EventId(self):
@@ -103738,6 +103768,61 @@ class VulEffectHostList(AbstractModel):
     def MachineExtraInfo(self, MachineExtraInfo):
         self._MachineExtraInfo = MachineExtraInfo
 
+    @property
+    def MachineType(self):
+        """主机类型
+        :rtype: str
+        """
+        return self._MachineType
+
+    @MachineType.setter
+    def MachineType(self, MachineType):
+        self._MachineType = MachineType
+
+    @property
+    def RegionId(self):
+        """可用区ID
+        :rtype: int
+        """
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def HasSnapshot(self):
+        """修复任务是否创建了快照： 0-未创建，其他-已创建
+        :rtype: int
+        """
+        return self._HasSnapshot
+
+    @HasSnapshot.setter
+    def HasSnapshot(self, HasSnapshot):
+        self._HasSnapshot = HasSnapshot
+
+    @property
+    def LatestFixTime(self):
+        """最后修复时间
+        :rtype: str
+        """
+        return self._LatestFixTime
+
+    @LatestFixTime.setter
+    def LatestFixTime(self, LatestFixTime):
+        self._LatestFixTime = LatestFixTime
+
+    @property
+    def DescriptionEn(self):
+        """说明
+        :rtype: str
+        """
+        return self._DescriptionEn
+
+    @DescriptionEn.setter
+    def DescriptionEn(self, DescriptionEn):
+        self._DescriptionEn = DescriptionEn
+
 
     def _deserialize(self, params):
         self._EventId = params.get("EventId")
@@ -103765,6 +103850,11 @@ class VulEffectHostList(AbstractModel):
         if params.get("MachineExtraInfo") is not None:
             self._MachineExtraInfo = MachineExtraInfo()
             self._MachineExtraInfo._deserialize(params.get("MachineExtraInfo"))
+        self._MachineType = params.get("MachineType")
+        self._RegionId = params.get("RegionId")
+        self._HasSnapshot = params.get("HasSnapshot")
+        self._LatestFixTime = params.get("LatestFixTime")
+        self._DescriptionEn = params.get("DescriptionEn")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -104245,10 +104335,12 @@ class VulFixStatusSnapshotInfo(AbstractModel):
         :type SnapshotId: str
         :param _Id: 记录唯一id
         :type Id: int
-        :param _Status: 快照状态 0-初始状态1-快照创建成功；2-快照创建失败；
+        :param _Status: 快照状态 0-初始状态1-快照创建成功；2-快照创建失败；10-不支持，11-无需创建
         :type Status: int
         :param _FailReason: 快照创建失败原因
         :type FailReason: str
+        :param _MachineType: 主机类型
+        :type MachineType: str
         """
         self._Quuid = None
         self._HostName = None
@@ -104259,6 +104351,7 @@ class VulFixStatusSnapshotInfo(AbstractModel):
         self._Id = None
         self._Status = None
         self._FailReason = None
+        self._MachineType = None
 
     @property
     def Quuid(self):
@@ -104339,7 +104432,7 @@ class VulFixStatusSnapshotInfo(AbstractModel):
 
     @property
     def Status(self):
-        """快照状态 0-初始状态1-快照创建成功；2-快照创建失败；
+        """快照状态 0-初始状态1-快照创建成功；2-快照创建失败；10-不支持，11-无需创建
         :rtype: int
         """
         return self._Status
@@ -104359,6 +104452,17 @@ class VulFixStatusSnapshotInfo(AbstractModel):
     def FailReason(self, FailReason):
         self._FailReason = FailReason
 
+    @property
+    def MachineType(self):
+        """主机类型
+        :rtype: str
+        """
+        return self._MachineType
+
+    @MachineType.setter
+    def MachineType(self, MachineType):
+        self._MachineType = MachineType
+
 
     def _deserialize(self, params):
         self._Quuid = params.get("Quuid")
@@ -104370,6 +104474,7 @@ class VulFixStatusSnapshotInfo(AbstractModel):
         self._Id = params.get("Id")
         self._Status = params.get("Status")
         self._FailReason = params.get("FailReason")
+        self._MachineType = params.get("MachineType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -104538,6 +104643,8 @@ class VulInfoHostInfo(AbstractModel):
         :type Uuid: str
         :param _InstanceId: 主机InstanceId
         :type InstanceId: str
+        :param _MachineType: 主机类型
+        :type MachineType: str
         """
         self._HostName = None
         self._HostIp = None
@@ -104546,6 +104653,7 @@ class VulInfoHostInfo(AbstractModel):
         self._IsSupportAutoFix = None
         self._Uuid = None
         self._InstanceId = None
+        self._MachineType = None
 
     @property
     def HostName(self):
@@ -104624,6 +104732,17 @@ class VulInfoHostInfo(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def MachineType(self):
+        """主机类型
+        :rtype: str
+        """
+        return self._MachineType
+
+    @MachineType.setter
+    def MachineType(self, MachineType):
+        self._MachineType = MachineType
+
 
     def _deserialize(self, params):
         self._HostName = params.get("HostName")
@@ -104633,6 +104752,7 @@ class VulInfoHostInfo(AbstractModel):
         self._IsSupportAutoFix = params.get("IsSupportAutoFix")
         self._Uuid = params.get("Uuid")
         self._InstanceId = params.get("InstanceId")
+        self._MachineType = params.get("MachineType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -104712,6 +104832,8 @@ class VulInfoList(AbstractModel):
         :type Method: int
         :param _VulFixSwitch: 漏洞是否支持修复 0不支持，1支持
         :type VulFixSwitch: int
+        :param _LatestFixTime: 最近修复时间
+        :type LatestFixTime: str
         """
         self._Ids = None
         self._Name = None
@@ -104740,6 +104862,7 @@ class VulInfoList(AbstractModel):
         self._FixNoNeedRestart = None
         self._Method = None
         self._VulFixSwitch = None
+        self._LatestFixTime = None
 
     @property
     def Ids(self):
@@ -105046,6 +105169,17 @@ class VulInfoList(AbstractModel):
     def VulFixSwitch(self, VulFixSwitch):
         self._VulFixSwitch = VulFixSwitch
 
+    @property
+    def LatestFixTime(self):
+        """最近修复时间
+        :rtype: str
+        """
+        return self._LatestFixTime
+
+    @LatestFixTime.setter
+    def LatestFixTime(self, LatestFixTime):
+        self._LatestFixTime = LatestFixTime
+
 
     def _deserialize(self, params):
         self._Ids = params.get("Ids")
@@ -105075,6 +105209,7 @@ class VulInfoList(AbstractModel):
         self._FixNoNeedRestart = params.get("FixNoNeedRestart")
         self._Method = params.get("Method")
         self._VulFixSwitch = params.get("VulFixSwitch")
+        self._LatestFixTime = params.get("LatestFixTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

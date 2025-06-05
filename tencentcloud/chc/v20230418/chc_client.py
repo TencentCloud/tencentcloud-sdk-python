@@ -854,6 +854,29 @@ class ChcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ExportCustomerWorkOrderDetail(self, request):
+        """导出工单详情
+
+        :param request: Request instance for ExportCustomerWorkOrderDetail.
+        :type request: :class:`tencentcloud.chc.v20230418.models.ExportCustomerWorkOrderDetailRequest`
+        :rtype: :class:`tencentcloud.chc.v20230418.models.ExportCustomerWorkOrderDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ExportCustomerWorkOrderDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.ExportCustomerWorkOrderDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyWorkOrderTypeCollectFlag(self, request):
         """如果当前该工单类型是收藏状态，调用接口后变成未收藏状态，如果是未收藏状态，调用该接口变为收藏状态
 

@@ -1708,13 +1708,13 @@ class CreateDedicatedClusterDBInstanceRequest(AbstractModel):
         :type Storage: int
         :param _ClusterId: 独享集群集群uuid
         :type ClusterId: str
-        :param _Zone: （废弃）可用区
+        :param _Zone: 可用区
         :type Zone: str
         :param _ProjectId: 项目ID
         :type ProjectId: int
-        :param _Pid: （废弃）Pid，可通过获取独享集群售卖配置接口得到
+        :param _Pid: Pid，可通过获取独享集群售卖配置接口得到
         :type Pid: int
-        :param _Machine: （废弃）机型
+        :param _Machine: 机型
         :type Machine: str
         :param _VpcId: 网络Id
         :type VpcId: str
@@ -1722,9 +1722,9 @@ class CreateDedicatedClusterDBInstanceRequest(AbstractModel):
         :type SubnetId: str
         :param _DbVersionId: db类型，不传默认8.0
         :type DbVersionId: str
-        :param _Manual: （废弃）是否手动指定一组服务器分配, 运维使用
+        :param _Manual: 是否手动指定一组服务器分配, 运维使用
         :type Manual: int
-        :param _DeviceNo: （废弃）DeviceNo参数
+        :param _DeviceNo: DeviceNo参数
         :type DeviceNo: str
         :param _SecurityGroupIds: 安全组ID
         :type SecurityGroupIds: list of str
@@ -1826,13 +1826,17 @@ class CreateDedicatedClusterDBInstanceRequest(AbstractModel):
 
     @property
     def Zone(self):
-        """（废弃）可用区
+        warnings.warn("parameter `Zone` is deprecated", DeprecationWarning) 
+
+        """可用区
         :rtype: str
         """
         return self._Zone
 
     @Zone.setter
     def Zone(self, Zone):
+        warnings.warn("parameter `Zone` is deprecated", DeprecationWarning) 
+
         self._Zone = Zone
 
     @property
@@ -1848,24 +1852,32 @@ class CreateDedicatedClusterDBInstanceRequest(AbstractModel):
 
     @property
     def Pid(self):
-        """（废弃）Pid，可通过获取独享集群售卖配置接口得到
+        warnings.warn("parameter `Pid` is deprecated", DeprecationWarning) 
+
+        """Pid，可通过获取独享集群售卖配置接口得到
         :rtype: int
         """
         return self._Pid
 
     @Pid.setter
     def Pid(self, Pid):
+        warnings.warn("parameter `Pid` is deprecated", DeprecationWarning) 
+
         self._Pid = Pid
 
     @property
     def Machine(self):
-        """（废弃）机型
+        warnings.warn("parameter `Machine` is deprecated", DeprecationWarning) 
+
+        """机型
         :rtype: str
         """
         return self._Machine
 
     @Machine.setter
     def Machine(self, Machine):
+        warnings.warn("parameter `Machine` is deprecated", DeprecationWarning) 
+
         self._Machine = Machine
 
     @property
@@ -1903,24 +1915,32 @@ class CreateDedicatedClusterDBInstanceRequest(AbstractModel):
 
     @property
     def Manual(self):
-        """（废弃）是否手动指定一组服务器分配, 运维使用
+        warnings.warn("parameter `Manual` is deprecated", DeprecationWarning) 
+
+        """是否手动指定一组服务器分配, 运维使用
         :rtype: int
         """
         return self._Manual
 
     @Manual.setter
     def Manual(self, Manual):
+        warnings.warn("parameter `Manual` is deprecated", DeprecationWarning) 
+
         self._Manual = Manual
 
     @property
     def DeviceNo(self):
-        """（废弃）DeviceNo参数
+        warnings.warn("parameter `DeviceNo` is deprecated", DeprecationWarning) 
+
+        """DeviceNo参数
         :rtype: str
         """
         return self._DeviceNo
 
     @DeviceNo.setter
     def DeviceNo(self, DeviceNo):
+        warnings.warn("parameter `DeviceNo` is deprecated", DeprecationWarning) 
+
         self._DeviceNo = DeviceNo
 
     @property

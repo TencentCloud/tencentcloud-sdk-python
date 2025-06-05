@@ -16317,6 +16317,8 @@ class SearchSessionRequest(AbstractModel):
         :type AppAssetKindSet: list of int non-negative
         :param _AppAssetUrl: 应用资产Url
         :type AppAssetUrl: str
+        :param _DeviceKind: 资产类型
+        :type DeviceKind: str
         """
         self._PrivateIp = None
         self._PublicIp = None
@@ -16334,6 +16336,7 @@ class SearchSessionRequest(AbstractModel):
         self._Id = None
         self._AppAssetKindSet = None
         self._AppAssetUrl = None
+        self._DeviceKind = None
 
     @property
     def PrivateIp(self):
@@ -16511,6 +16514,17 @@ class SearchSessionRequest(AbstractModel):
     def AppAssetUrl(self, AppAssetUrl):
         self._AppAssetUrl = AppAssetUrl
 
+    @property
+    def DeviceKind(self):
+        """资产类型
+        :rtype: str
+        """
+        return self._DeviceKind
+
+    @DeviceKind.setter
+    def DeviceKind(self, DeviceKind):
+        self._DeviceKind = DeviceKind
+
 
     def _deserialize(self, params):
         self._PrivateIp = params.get("PrivateIp")
@@ -16529,6 +16543,7 @@ class SearchSessionRequest(AbstractModel):
         self._Id = params.get("Id")
         self._AppAssetKindSet = params.get("AppAssetKindSet")
         self._AppAssetUrl = params.get("AppAssetUrl")
+        self._DeviceKind = params.get("DeviceKind")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

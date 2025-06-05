@@ -6772,6 +6772,115 @@ class Distribution(AbstractModel):
         
 
 
+class ExportCustomerWorkOrderDetailRequest(AbstractModel):
+    """ExportCustomerWorkOrderDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkOrderType: 服务工单类型
+        :type WorkOrderType: list of str
+        :param _BeginDateTime: 要导出的工单的起始时间
+        :type BeginDateTime: str
+        :param _EndDateTime: 要导出的工单的结束时间
+        :type EndDateTime: str
+        """
+        self._WorkOrderType = None
+        self._BeginDateTime = None
+        self._EndDateTime = None
+
+    @property
+    def WorkOrderType(self):
+        """服务工单类型
+        :rtype: list of str
+        """
+        return self._WorkOrderType
+
+    @WorkOrderType.setter
+    def WorkOrderType(self, WorkOrderType):
+        self._WorkOrderType = WorkOrderType
+
+    @property
+    def BeginDateTime(self):
+        """要导出的工单的起始时间
+        :rtype: str
+        """
+        return self._BeginDateTime
+
+    @BeginDateTime.setter
+    def BeginDateTime(self, BeginDateTime):
+        self._BeginDateTime = BeginDateTime
+
+    @property
+    def EndDateTime(self):
+        """要导出的工单的结束时间
+        :rtype: str
+        """
+        return self._EndDateTime
+
+    @EndDateTime.setter
+    def EndDateTime(self, EndDateTime):
+        self._EndDateTime = EndDateTime
+
+
+    def _deserialize(self, params):
+        self._WorkOrderType = params.get("WorkOrderType")
+        self._BeginDateTime = params.get("BeginDateTime")
+        self._EndDateTime = params.get("EndDateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExportCustomerWorkOrderDetailResponse(AbstractModel):
+    """ExportCustomerWorkOrderDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DownloadUrl: 返回下载地址
+        :type DownloadUrl: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DownloadUrl = None
+        self._RequestId = None
+
+    @property
+    def DownloadUrl(self):
+        """返回下载地址
+        :rtype: str
+        """
+        return self._DownloadUrl
+
+    @DownloadUrl.setter
+    def DownloadUrl(self, DownloadUrl):
+        self._DownloadUrl = DownloadUrl
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DownloadUrl = params.get("DownloadUrl")
+        self._RequestId = params.get("RequestId")
+
+
 class ExpressDelivery(AbstractModel):
     """快递寄件信息,快递寄件必填
 

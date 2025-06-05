@@ -484,6 +484,130 @@ class DescribePortraitSingJobResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTemplateToVideoJobRequest(AbstractModel):
+    """DescribeTemplateToVideoJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 任务ID。
+        :type JobId: str
+        """
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        """任务ID。
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTemplateToVideoJobResponse(AbstractModel):
+    """DescribeTemplateToVideoJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功
+        :type Status: str
+        :param _ErrorCode: 任务执行错误码。当任务状态不为 FAIL 时，该值为""。
+        :type ErrorCode: str
+        :param _ErrorMessage: 任务执行错误信息。当任务状态不为 FAIL 时，该值为""。
+        :type ErrorMessage: str
+        :param _ResultVideoUrl: 结果视频 URL。有效期 24 小时。
+        :type ResultVideoUrl: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._ErrorCode = None
+        self._ErrorMessage = None
+        self._ResultVideoUrl = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        """任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrorCode(self):
+        """任务执行错误码。当任务状态不为 FAIL 时，该值为""。
+        :rtype: str
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def ErrorMessage(self):
+        """任务执行错误信息。当任务状态不为 FAIL 时，该值为""。
+        :rtype: str
+        """
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+    @property
+    def ResultVideoUrl(self):
+        """结果视频 URL。有效期 24 小时。
+        :rtype: str
+        """
+        return self._ResultVideoUrl
+
+    @ResultVideoUrl.setter
+    def ResultVideoUrl(self, ResultVideoUrl):
+        self._ResultVideoUrl = ResultVideoUrl
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrorCode = params.get("ErrorCode")
+        self._ErrorMessage = params.get("ErrorMessage")
+        self._ResultVideoUrl = params.get("ResultVideoUrl")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeVideoStylizationJobRequest(AbstractModel):
     """DescribeVideoStylizationJob请求参数结构体
 
@@ -626,6 +750,57 @@ JobSuccess: "处理完成"。
         self._StatusMsg = params.get("StatusMsg")
         self._ResultVideoUrl = params.get("ResultVideoUrl")
         self._RequestId = params.get("RequestId")
+
+
+class Image(AbstractModel):
+    """图片
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Base64: 图片Base64
+        :type Base64: str
+        :param _Url: 图片Url
+        :type Url: str
+        """
+        self._Base64 = None
+        self._Url = None
+
+    @property
+    def Base64(self):
+        """图片Base64
+        :rtype: str
+        """
+        return self._Base64
+
+    @Base64.setter
+    def Base64(self, Base64):
+        self._Base64 = Base64
+
+    @property
+    def Url(self):
+        """图片Url
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._Base64 = params.get("Base64")
+        self._Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class LogoParam(AbstractModel):
@@ -1202,6 +1377,181 @@ class SubmitPortraitSingJobResponse(AbstractModel):
     @property
     def JobId(self):
         """任务ID。任务有效期为48小时。
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._RequestId = params.get("RequestId")
+
+
+class SubmitTemplateToVideoJobRequest(AbstractModel):
+    """SubmitTemplateToVideoJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Template: 特效模板名称。
+枚举值：
+hug ：拥抱
+kiss ：亲吻
+heart ： 比心
+fuzzy ： 毛茸茸
+befigure：变手办风
+longhair：金色长发
+morphlab：膨胀
+bloom：万物生花
+pinch：捏捏
+balloonfly：飞走了
+dragme：被拽走了
+
+        :type Template: str
+        :param _Images: 参考图像，最多输入2张图。
+- 支持传入图片Base64编码或图片URL（确保可访问）
+- 图片格式：支持png、jpg、jpeg、webp、bmp、tiff
+- 图片文件：大小不能超过10MB（base64后），图片分辨率不小于300\*300px，不大于4096\*4096，图片宽高比应在1:4 ~ 4:1之间
+
+        :type Images: list of Image
+        :param _LogoAdd: 为生成视频添加标识的开关，默认为1。
+1：添加标识。
+0：不添加标识。
+其他数值：默认按1处理。
+建议您使用显著标识来提示，该视频是 AI 生成的视频。
+        :type LogoAdd: int
+        :param _LogoParam: 标识内容设置。
+默认在生成视频的右下角添加“视频由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+        :type LogoParam: :class:`tencentcloud.vclm.v20240523.models.LogoParam`
+        """
+        self._Template = None
+        self._Images = None
+        self._LogoAdd = None
+        self._LogoParam = None
+
+    @property
+    def Template(self):
+        """特效模板名称。
+枚举值：
+hug ：拥抱
+kiss ：亲吻
+heart ： 比心
+fuzzy ： 毛茸茸
+befigure：变手办风
+longhair：金色长发
+morphlab：膨胀
+bloom：万物生花
+pinch：捏捏
+balloonfly：飞走了
+dragme：被拽走了
+
+        :rtype: str
+        """
+        return self._Template
+
+    @Template.setter
+    def Template(self, Template):
+        self._Template = Template
+
+    @property
+    def Images(self):
+        """参考图像，最多输入2张图。
+- 支持传入图片Base64编码或图片URL（确保可访问）
+- 图片格式：支持png、jpg、jpeg、webp、bmp、tiff
+- 图片文件：大小不能超过10MB（base64后），图片分辨率不小于300\*300px，不大于4096\*4096，图片宽高比应在1:4 ~ 4:1之间
+
+        :rtype: list of Image
+        """
+        return self._Images
+
+    @Images.setter
+    def Images(self, Images):
+        self._Images = Images
+
+    @property
+    def LogoAdd(self):
+        """为生成视频添加标识的开关，默认为1。
+1：添加标识。
+0：不添加标识。
+其他数值：默认按1处理。
+建议您使用显著标识来提示，该视频是 AI 生成的视频。
+        :rtype: int
+        """
+        return self._LogoAdd
+
+    @LogoAdd.setter
+    def LogoAdd(self, LogoAdd):
+        self._LogoAdd = LogoAdd
+
+    @property
+    def LogoParam(self):
+        """标识内容设置。
+默认在生成视频的右下角添加“视频由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+        :rtype: :class:`tencentcloud.vclm.v20240523.models.LogoParam`
+        """
+        return self._LogoParam
+
+    @LogoParam.setter
+    def LogoParam(self, LogoParam):
+        self._LogoParam = LogoParam
+
+
+    def _deserialize(self, params):
+        self._Template = params.get("Template")
+        if params.get("Images") is not None:
+            self._Images = []
+            for item in params.get("Images"):
+                obj = Image()
+                obj._deserialize(item)
+                self._Images.append(obj)
+        self._LogoAdd = params.get("LogoAdd")
+        if params.get("LogoParam") is not None:
+            self._LogoParam = LogoParam()
+            self._LogoParam._deserialize(params.get("LogoParam"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubmitTemplateToVideoJobResponse(AbstractModel):
+    """SubmitTemplateToVideoJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 任务ID。
+        :type JobId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobId = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        """任务ID。
         :rtype: str
         """
         return self._JobId
