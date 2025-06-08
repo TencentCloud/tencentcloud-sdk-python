@@ -2236,6 +2236,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeExecutorGroupMetric(self, request):
+        """商业化版本：根据id查询执行资源组指标
+
+        :param request: Request instance for DescribeExecutorGroupMetric.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeExecutorGroupMetricRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeExecutorGroupMetricResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeExecutorGroupMetric", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeExecutorGroupMetricResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeFieldBasicInfo(self, request):
         """元数据模型-字段基础信息查询接口
 

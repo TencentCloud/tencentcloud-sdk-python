@@ -27127,6 +27127,194 @@ class DescribeExecStrategyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeExecutorGroupMetricRequest(AbstractModel):
+    """DescribeExecutorGroupMetric请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExecutorGroupId: 执行资源组id
+        :type ExecutorGroupId: str
+        :param _TrendStartTime: 使用趋势开始时间(毫秒)
+        :type TrendStartTime: int
+        :param _TrendEndTime: 使用趋势结束时间(毫秒)
+        :type TrendEndTime: int
+        :param _ExecutorGroupType: 执行资源组类型
+        :type ExecutorGroupType: str
+        :param _ExecutorResourceType: 执行资源类型
+        :type ExecutorResourceType: str
+        :param _LoaderId: 执行机ID
+        :type LoaderId: str
+        :param _MetricType: 指标维度
+        :type MetricType: str
+        :param _Granularity: 指标采集粒度
+        :type Granularity: int
+        """
+        self._ExecutorGroupId = None
+        self._TrendStartTime = None
+        self._TrendEndTime = None
+        self._ExecutorGroupType = None
+        self._ExecutorResourceType = None
+        self._LoaderId = None
+        self._MetricType = None
+        self._Granularity = None
+
+    @property
+    def ExecutorGroupId(self):
+        """执行资源组id
+        :rtype: str
+        """
+        return self._ExecutorGroupId
+
+    @ExecutorGroupId.setter
+    def ExecutorGroupId(self, ExecutorGroupId):
+        self._ExecutorGroupId = ExecutorGroupId
+
+    @property
+    def TrendStartTime(self):
+        """使用趋势开始时间(毫秒)
+        :rtype: int
+        """
+        return self._TrendStartTime
+
+    @TrendStartTime.setter
+    def TrendStartTime(self, TrendStartTime):
+        self._TrendStartTime = TrendStartTime
+
+    @property
+    def TrendEndTime(self):
+        """使用趋势结束时间(毫秒)
+        :rtype: int
+        """
+        return self._TrendEndTime
+
+    @TrendEndTime.setter
+    def TrendEndTime(self, TrendEndTime):
+        self._TrendEndTime = TrendEndTime
+
+    @property
+    def ExecutorGroupType(self):
+        """执行资源组类型
+        :rtype: str
+        """
+        return self._ExecutorGroupType
+
+    @ExecutorGroupType.setter
+    def ExecutorGroupType(self, ExecutorGroupType):
+        self._ExecutorGroupType = ExecutorGroupType
+
+    @property
+    def ExecutorResourceType(self):
+        """执行资源类型
+        :rtype: str
+        """
+        return self._ExecutorResourceType
+
+    @ExecutorResourceType.setter
+    def ExecutorResourceType(self, ExecutorResourceType):
+        self._ExecutorResourceType = ExecutorResourceType
+
+    @property
+    def LoaderId(self):
+        """执行机ID
+        :rtype: str
+        """
+        return self._LoaderId
+
+    @LoaderId.setter
+    def LoaderId(self, LoaderId):
+        self._LoaderId = LoaderId
+
+    @property
+    def MetricType(self):
+        """指标维度
+        :rtype: str
+        """
+        return self._MetricType
+
+    @MetricType.setter
+    def MetricType(self, MetricType):
+        self._MetricType = MetricType
+
+    @property
+    def Granularity(self):
+        """指标采集粒度
+        :rtype: int
+        """
+        return self._Granularity
+
+    @Granularity.setter
+    def Granularity(self, Granularity):
+        self._Granularity = Granularity
+
+
+    def _deserialize(self, params):
+        self._ExecutorGroupId = params.get("ExecutorGroupId")
+        self._TrendStartTime = params.get("TrendStartTime")
+        self._TrendEndTime = params.get("TrendEndTime")
+        self._ExecutorGroupType = params.get("ExecutorGroupType")
+        self._ExecutorResourceType = params.get("ExecutorResourceType")
+        self._LoaderId = params.get("LoaderId")
+        self._MetricType = params.get("MetricType")
+        self._Granularity = params.get("Granularity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeExecutorGroupMetricResponse(AbstractModel):
+    """DescribeExecutorGroupMetric返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 执行组指标信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.ExecutorResourceGroupInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """执行组指标信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.ExecutorResourceGroupInfo`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ExecutorResourceGroupInfo()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeFieldBasicInfoRequest(AbstractModel):
     """DescribeFieldBasicInfo请求参数结构体
 
@@ -48271,6 +48459,1461 @@ class EventOpsDto(AbstractModel):
         
 
 
+class ExecutorResourceGroupInfo(AbstractModel):
+    """资源组详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExecutorGroupId: 执行组id, 仅更新资源时需要传
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutorGroupId: str
+        :param _ExecutorGroupName: 执行组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutorGroupName: str
+        :param _ExecutorGroupDesc: 执行组描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutorGroupDesc: str
+        :param _ExecutorResourceType: SCHEDULER （标准调度资源组），CUSTOM_SCHEDULER （自定义调度资源），INTEGRATION（集成资源组），DATA_SERVICE（数据服务资源组）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutorResourceType: int
+        :param _Region: 区域中文
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param _VpcId: vpcId, 托管服务时需要传递
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param _SubnetId: subnetId, 托管服务时需要传递
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
+        :param _ProjectId: 项目id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: str
+        :param _BasicResourcePackage: 基础资源包，资源组至少包含一个基础资源包
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BasicResourcePackage: :class:`tencentcloud.wedata.v20210820.models.ExecutorResourcePackageInfo`
+        :param _AdvanceResourcePackage: 增强资源包
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdvanceResourcePackage: :class:`tencentcloud.wedata.v20210820.models.ExecutorResourcePackageInfo`
+        :param _AutoRenewFlag: 是否自动续费
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoRenewFlag: int
+        :param _RegionEn: 区域英文
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionEn: str
+        :param _RegionId: 区域Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionId: int
+        :param _ProjectName: 项目名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectName: str
+        :param _ProjectDisplayName: 项目展示名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectDisplayName: str
+        :param _AssociateProjectNums: 资源组关联项目数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssociateProjectNums: int
+        :param _IsLocked: 是否锁定，false为未锁定，true为锁定
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsLocked: bool
+        :param _SourceType: 来源类型，0为系统默认，1为自定义
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceType: int
+        :param _MQPackageVO: 队列资源包
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MQPackageVO: :class:`tencentcloud.wedata.v20210820.models.MQPackageVO`
+        :param _FirstChoice: 是否首选
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FirstChoice: bool
+        :param _PythonSubVersions: 资源组python版本绑定详情
+        :type PythonSubVersions: list of str
+        """
+        self._ExecutorGroupId = None
+        self._ExecutorGroupName = None
+        self._ExecutorGroupDesc = None
+        self._ExecutorResourceType = None
+        self._Region = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._ProjectId = None
+        self._BasicResourcePackage = None
+        self._AdvanceResourcePackage = None
+        self._AutoRenewFlag = None
+        self._RegionEn = None
+        self._RegionId = None
+        self._ProjectName = None
+        self._ProjectDisplayName = None
+        self._AssociateProjectNums = None
+        self._IsLocked = None
+        self._SourceType = None
+        self._MQPackageVO = None
+        self._FirstChoice = None
+        self._PythonSubVersions = None
+
+    @property
+    def ExecutorGroupId(self):
+        """执行组id, 仅更新资源时需要传
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecutorGroupId
+
+    @ExecutorGroupId.setter
+    def ExecutorGroupId(self, ExecutorGroupId):
+        self._ExecutorGroupId = ExecutorGroupId
+
+    @property
+    def ExecutorGroupName(self):
+        """执行组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecutorGroupName
+
+    @ExecutorGroupName.setter
+    def ExecutorGroupName(self, ExecutorGroupName):
+        self._ExecutorGroupName = ExecutorGroupName
+
+    @property
+    def ExecutorGroupDesc(self):
+        """执行组描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecutorGroupDesc
+
+    @ExecutorGroupDesc.setter
+    def ExecutorGroupDesc(self, ExecutorGroupDesc):
+        self._ExecutorGroupDesc = ExecutorGroupDesc
+
+    @property
+    def ExecutorResourceType(self):
+        """SCHEDULER （标准调度资源组），CUSTOM_SCHEDULER （自定义调度资源），INTEGRATION（集成资源组），DATA_SERVICE（数据服务资源组）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ExecutorResourceType
+
+    @ExecutorResourceType.setter
+    def ExecutorResourceType(self, ExecutorResourceType):
+        self._ExecutorResourceType = ExecutorResourceType
+
+    @property
+    def Region(self):
+        """区域中文
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def VpcId(self):
+        """vpcId, 托管服务时需要传递
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        """subnetId, 托管服务时需要传递
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def ProjectId(self):
+        """项目id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def BasicResourcePackage(self):
+        """基础资源包，资源组至少包含一个基础资源包
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.ExecutorResourcePackageInfo`
+        """
+        return self._BasicResourcePackage
+
+    @BasicResourcePackage.setter
+    def BasicResourcePackage(self, BasicResourcePackage):
+        self._BasicResourcePackage = BasicResourcePackage
+
+    @property
+    def AdvanceResourcePackage(self):
+        """增强资源包
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.ExecutorResourcePackageInfo`
+        """
+        return self._AdvanceResourcePackage
+
+    @AdvanceResourcePackage.setter
+    def AdvanceResourcePackage(self, AdvanceResourcePackage):
+        self._AdvanceResourcePackage = AdvanceResourcePackage
+
+    @property
+    def AutoRenewFlag(self):
+        """是否自动续费
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def RegionEn(self):
+        """区域英文
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RegionEn
+
+    @RegionEn.setter
+    def RegionEn(self, RegionEn):
+        self._RegionEn = RegionEn
+
+    @property
+    def RegionId(self):
+        """区域Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def ProjectName(self):
+        """项目名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+    @property
+    def ProjectDisplayName(self):
+        """项目展示名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProjectDisplayName
+
+    @ProjectDisplayName.setter
+    def ProjectDisplayName(self, ProjectDisplayName):
+        self._ProjectDisplayName = ProjectDisplayName
+
+    @property
+    def AssociateProjectNums(self):
+        """资源组关联项目数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AssociateProjectNums
+
+    @AssociateProjectNums.setter
+    def AssociateProjectNums(self, AssociateProjectNums):
+        self._AssociateProjectNums = AssociateProjectNums
+
+    @property
+    def IsLocked(self):
+        """是否锁定，false为未锁定，true为锁定
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsLocked
+
+    @IsLocked.setter
+    def IsLocked(self, IsLocked):
+        self._IsLocked = IsLocked
+
+    @property
+    def SourceType(self):
+        """来源类型，0为系统默认，1为自定义
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+    @property
+    def MQPackageVO(self):
+        """队列资源包
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.MQPackageVO`
+        """
+        return self._MQPackageVO
+
+    @MQPackageVO.setter
+    def MQPackageVO(self, MQPackageVO):
+        self._MQPackageVO = MQPackageVO
+
+    @property
+    def FirstChoice(self):
+        """是否首选
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._FirstChoice
+
+    @FirstChoice.setter
+    def FirstChoice(self, FirstChoice):
+        self._FirstChoice = FirstChoice
+
+    @property
+    def PythonSubVersions(self):
+        """资源组python版本绑定详情
+        :rtype: list of str
+        """
+        return self._PythonSubVersions
+
+    @PythonSubVersions.setter
+    def PythonSubVersions(self, PythonSubVersions):
+        self._PythonSubVersions = PythonSubVersions
+
+
+    def _deserialize(self, params):
+        self._ExecutorGroupId = params.get("ExecutorGroupId")
+        self._ExecutorGroupName = params.get("ExecutorGroupName")
+        self._ExecutorGroupDesc = params.get("ExecutorGroupDesc")
+        self._ExecutorResourceType = params.get("ExecutorResourceType")
+        self._Region = params.get("Region")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._ProjectId = params.get("ProjectId")
+        if params.get("BasicResourcePackage") is not None:
+            self._BasicResourcePackage = ExecutorResourcePackageInfo()
+            self._BasicResourcePackage._deserialize(params.get("BasicResourcePackage"))
+        if params.get("AdvanceResourcePackage") is not None:
+            self._AdvanceResourcePackage = ExecutorResourcePackageInfo()
+            self._AdvanceResourcePackage._deserialize(params.get("AdvanceResourcePackage"))
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._RegionEn = params.get("RegionEn")
+        self._RegionId = params.get("RegionId")
+        self._ProjectName = params.get("ProjectName")
+        self._ProjectDisplayName = params.get("ProjectDisplayName")
+        self._AssociateProjectNums = params.get("AssociateProjectNums")
+        self._IsLocked = params.get("IsLocked")
+        self._SourceType = params.get("SourceType")
+        if params.get("MQPackageVO") is not None:
+            self._MQPackageVO = MQPackageVO()
+            self._MQPackageVO._deserialize(params.get("MQPackageVO"))
+        self._FirstChoice = params.get("FirstChoice")
+        self._PythonSubVersions = params.get("PythonSubVersions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExecutorResourcePackageExtInfo(AbstractModel):
+    """执行资源包额外信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InlongGroupId: 集成资源组：InLong集群id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InlongGroupId: str
+        :param _OceanusClusterId: 集成资源组：oceanus集群id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OceanusClusterId: str
+        :param _ProductResourceIdList: 计费相关：产品资源id列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductResourceIdList: list of str
+        :param _BillingSuccess: 当前资源包对应订单是否发货成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BillingSuccess: bool
+        :param _ApigwServiceId: apigw服务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApigwServiceId: str
+        :param _ApigwServiceName: apigw服务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApigwServiceName: str
+        :param _DataProxySpec: 数据集成相关：dataProxy配置规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataProxySpec: int
+        :param _DataProxyNum: dataProxy数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataProxyNum: int
+        :param _DataProxyStatus: dataProxy状态，同ExecutorGroupStatus
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataProxyStatus: int
+        :param _InLongManagerUrl: inlongManager地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InLongManagerUrl: str
+        :param _InLongVersion: inlong版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InLongVersion: str
+        :param _ExecutorMachineIpList: 私有化资源组相关: 执行及机器ip列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutorMachineIpList: str
+        """
+        self._InlongGroupId = None
+        self._OceanusClusterId = None
+        self._ProductResourceIdList = None
+        self._BillingSuccess = None
+        self._ApigwServiceId = None
+        self._ApigwServiceName = None
+        self._DataProxySpec = None
+        self._DataProxyNum = None
+        self._DataProxyStatus = None
+        self._InLongManagerUrl = None
+        self._InLongVersion = None
+        self._ExecutorMachineIpList = None
+
+    @property
+    def InlongGroupId(self):
+        """集成资源组：InLong集群id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InlongGroupId
+
+    @InlongGroupId.setter
+    def InlongGroupId(self, InlongGroupId):
+        self._InlongGroupId = InlongGroupId
+
+    @property
+    def OceanusClusterId(self):
+        """集成资源组：oceanus集群id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OceanusClusterId
+
+    @OceanusClusterId.setter
+    def OceanusClusterId(self, OceanusClusterId):
+        self._OceanusClusterId = OceanusClusterId
+
+    @property
+    def ProductResourceIdList(self):
+        """计费相关：产品资源id列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._ProductResourceIdList
+
+    @ProductResourceIdList.setter
+    def ProductResourceIdList(self, ProductResourceIdList):
+        self._ProductResourceIdList = ProductResourceIdList
+
+    @property
+    def BillingSuccess(self):
+        """当前资源包对应订单是否发货成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._BillingSuccess
+
+    @BillingSuccess.setter
+    def BillingSuccess(self, BillingSuccess):
+        self._BillingSuccess = BillingSuccess
+
+    @property
+    def ApigwServiceId(self):
+        """apigw服务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ApigwServiceId
+
+    @ApigwServiceId.setter
+    def ApigwServiceId(self, ApigwServiceId):
+        self._ApigwServiceId = ApigwServiceId
+
+    @property
+    def ApigwServiceName(self):
+        """apigw服务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ApigwServiceName
+
+    @ApigwServiceName.setter
+    def ApigwServiceName(self, ApigwServiceName):
+        self._ApigwServiceName = ApigwServiceName
+
+    @property
+    def DataProxySpec(self):
+        """数据集成相关：dataProxy配置规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DataProxySpec
+
+    @DataProxySpec.setter
+    def DataProxySpec(self, DataProxySpec):
+        self._DataProxySpec = DataProxySpec
+
+    @property
+    def DataProxyNum(self):
+        """dataProxy数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DataProxyNum
+
+    @DataProxyNum.setter
+    def DataProxyNum(self, DataProxyNum):
+        self._DataProxyNum = DataProxyNum
+
+    @property
+    def DataProxyStatus(self):
+        """dataProxy状态，同ExecutorGroupStatus
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DataProxyStatus
+
+    @DataProxyStatus.setter
+    def DataProxyStatus(self, DataProxyStatus):
+        self._DataProxyStatus = DataProxyStatus
+
+    @property
+    def InLongManagerUrl(self):
+        """inlongManager地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InLongManagerUrl
+
+    @InLongManagerUrl.setter
+    def InLongManagerUrl(self, InLongManagerUrl):
+        self._InLongManagerUrl = InLongManagerUrl
+
+    @property
+    def InLongVersion(self):
+        """inlong版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InLongVersion
+
+    @InLongVersion.setter
+    def InLongVersion(self, InLongVersion):
+        self._InLongVersion = InLongVersion
+
+    @property
+    def ExecutorMachineIpList(self):
+        """私有化资源组相关: 执行及机器ip列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecutorMachineIpList
+
+    @ExecutorMachineIpList.setter
+    def ExecutorMachineIpList(self, ExecutorMachineIpList):
+        self._ExecutorMachineIpList = ExecutorMachineIpList
+
+
+    def _deserialize(self, params):
+        self._InlongGroupId = params.get("InlongGroupId")
+        self._OceanusClusterId = params.get("OceanusClusterId")
+        self._ProductResourceIdList = params.get("ProductResourceIdList")
+        self._BillingSuccess = params.get("BillingSuccess")
+        self._ApigwServiceId = params.get("ApigwServiceId")
+        self._ApigwServiceName = params.get("ApigwServiceName")
+        self._DataProxySpec = params.get("DataProxySpec")
+        self._DataProxyNum = params.get("DataProxyNum")
+        self._DataProxyStatus = params.get("DataProxyStatus")
+        self._InLongManagerUrl = params.get("InLongManagerUrl")
+        self._InLongVersion = params.get("InLongVersion")
+        self._ExecutorMachineIpList = params.get("ExecutorMachineIpList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExecutorResourcePackageInfo(AbstractModel):
+    """执行资源包
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourcePackageNum: 资源包规格相关：资源包个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourcePackageNum: int
+        :param _CpuNum: 资源包规格相关：cpu个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CpuNum: int
+        :param _ExecutorResourcePackageId: 资源包id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutorResourcePackageId: str
+        :param _MemSize: 资源包规格相关：内存大小，单位:G
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemSize: int
+        :param _Status: 资源包状态， /**
+     * 初始化中
+     */
+    INIT(0),
+    /**
+     * 运行中
+     */
+    RUNNING(1),
+    /**
+     * 运行异常
+     */
+    RUNNING_FAILED(2),
+    /**
+     * 释放中
+     */
+    DELETEING(3),
+    /**
+     * 已释放
+     */
+    DELETED(4),
+    /**
+     * 创建中
+     */
+    CREATING(5),
+    /**
+     * 创建失败
+     */
+    CREATE_FAILED(6),
+    /**
+     * 更新中
+     */
+    UPDATING(7),
+    /**
+     * 更新失败
+     */
+    UPDATE_FAILED(8),
+    /**
+     * 已到期
+     */
+    EXPIRED(9);
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _StatusDescription: 资源包状态描述：保存创建失败，运行异常和更新失败的原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatusDescription: str
+        :param _ExpireTime: 资源包到期时间，时间戳毫秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireTime: int
+        :param _ExtInfo: 资源包额外属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtInfo: :class:`tencentcloud.wedata.v20210820.models.ExecutorResourcePackageExtInfo`
+        :param _ProjectId: 绑定的项目id，可为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: str
+        :param _ProjectBindTime: 资源组绑定的时间，时间戳毫秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectBindTime: int
+        :param _ResourcePackageUsage: 资源包使用状态: cpu使用，内存使用及趋势
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourcePackageUsage: :class:`tencentcloud.wedata.v20210820.models.ExecutorResourcePackageUsageInfo`
+        :param _ProductResourceIdList: 计费相关：产品资源id列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductResourceIdList: list of int
+        :param _LifeTime: 生命周期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LifeTime: int
+        :param _VpcId: 私有网络Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param _VpcName: 私有网络名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcName: str
+        :param _SubnetId: 子网Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
+        :param _SubnetName: 子网名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetName: str
+        :param _ResourceStandard: 执行资源相关：资源规格描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceStandard: str
+        :param _TotalMemory: 内存总数
+        :type TotalMemory: int
+        """
+        self._ResourcePackageNum = None
+        self._CpuNum = None
+        self._ExecutorResourcePackageId = None
+        self._MemSize = None
+        self._Status = None
+        self._StatusDescription = None
+        self._ExpireTime = None
+        self._ExtInfo = None
+        self._ProjectId = None
+        self._ProjectBindTime = None
+        self._ResourcePackageUsage = None
+        self._ProductResourceIdList = None
+        self._LifeTime = None
+        self._VpcId = None
+        self._VpcName = None
+        self._SubnetId = None
+        self._SubnetName = None
+        self._ResourceStandard = None
+        self._TotalMemory = None
+
+    @property
+    def ResourcePackageNum(self):
+        """资源包规格相关：资源包个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ResourcePackageNum
+
+    @ResourcePackageNum.setter
+    def ResourcePackageNum(self, ResourcePackageNum):
+        self._ResourcePackageNum = ResourcePackageNum
+
+    @property
+    def CpuNum(self):
+        """资源包规格相关：cpu个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CpuNum
+
+    @CpuNum.setter
+    def CpuNum(self, CpuNum):
+        self._CpuNum = CpuNum
+
+    @property
+    def ExecutorResourcePackageId(self):
+        """资源包id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecutorResourcePackageId
+
+    @ExecutorResourcePackageId.setter
+    def ExecutorResourcePackageId(self, ExecutorResourcePackageId):
+        self._ExecutorResourcePackageId = ExecutorResourcePackageId
+
+    @property
+    def MemSize(self):
+        """资源包规格相关：内存大小，单位:G
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MemSize
+
+    @MemSize.setter
+    def MemSize(self, MemSize):
+        self._MemSize = MemSize
+
+    @property
+    def Status(self):
+        """资源包状态， /**
+     * 初始化中
+     */
+    INIT(0),
+    /**
+     * 运行中
+     */
+    RUNNING(1),
+    /**
+     * 运行异常
+     */
+    RUNNING_FAILED(2),
+    /**
+     * 释放中
+     */
+    DELETEING(3),
+    /**
+     * 已释放
+     */
+    DELETED(4),
+    /**
+     * 创建中
+     */
+    CREATING(5),
+    /**
+     * 创建失败
+     */
+    CREATE_FAILED(6),
+    /**
+     * 更新中
+     */
+    UPDATING(7),
+    /**
+     * 更新失败
+     */
+    UPDATE_FAILED(8),
+    /**
+     * 已到期
+     */
+    EXPIRED(9);
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StatusDescription(self):
+        """资源包状态描述：保存创建失败，运行异常和更新失败的原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StatusDescription
+
+    @StatusDescription.setter
+    def StatusDescription(self, StatusDescription):
+        self._StatusDescription = StatusDescription
+
+    @property
+    def ExpireTime(self):
+        """资源包到期时间，时间戳毫秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def ExtInfo(self):
+        """资源包额外属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.ExecutorResourcePackageExtInfo`
+        """
+        return self._ExtInfo
+
+    @ExtInfo.setter
+    def ExtInfo(self, ExtInfo):
+        self._ExtInfo = ExtInfo
+
+    @property
+    def ProjectId(self):
+        """绑定的项目id，可为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ProjectBindTime(self):
+        """资源组绑定的时间，时间戳毫秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ProjectBindTime
+
+    @ProjectBindTime.setter
+    def ProjectBindTime(self, ProjectBindTime):
+        self._ProjectBindTime = ProjectBindTime
+
+    @property
+    def ResourcePackageUsage(self):
+        """资源包使用状态: cpu使用，内存使用及趋势
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.ExecutorResourcePackageUsageInfo`
+        """
+        return self._ResourcePackageUsage
+
+    @ResourcePackageUsage.setter
+    def ResourcePackageUsage(self, ResourcePackageUsage):
+        self._ResourcePackageUsage = ResourcePackageUsage
+
+    @property
+    def ProductResourceIdList(self):
+        """计费相关：产品资源id列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
+        return self._ProductResourceIdList
+
+    @ProductResourceIdList.setter
+    def ProductResourceIdList(self, ProductResourceIdList):
+        self._ProductResourceIdList = ProductResourceIdList
+
+    @property
+    def LifeTime(self):
+        """生命周期
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._LifeTime
+
+    @LifeTime.setter
+    def LifeTime(self, LifeTime):
+        self._LifeTime = LifeTime
+
+    @property
+    def VpcId(self):
+        """私有网络Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def VpcName(self):
+        """私有网络名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VpcName
+
+    @VpcName.setter
+    def VpcName(self, VpcName):
+        self._VpcName = VpcName
+
+    @property
+    def SubnetId(self):
+        """子网Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def SubnetName(self):
+        """子网名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SubnetName
+
+    @SubnetName.setter
+    def SubnetName(self, SubnetName):
+        self._SubnetName = SubnetName
+
+    @property
+    def ResourceStandard(self):
+        """执行资源相关：资源规格描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourceStandard
+
+    @ResourceStandard.setter
+    def ResourceStandard(self, ResourceStandard):
+        self._ResourceStandard = ResourceStandard
+
+    @property
+    def TotalMemory(self):
+        """内存总数
+        :rtype: int
+        """
+        return self._TotalMemory
+
+    @TotalMemory.setter
+    def TotalMemory(self, TotalMemory):
+        self._TotalMemory = TotalMemory
+
+
+    def _deserialize(self, params):
+        self._ResourcePackageNum = params.get("ResourcePackageNum")
+        self._CpuNum = params.get("CpuNum")
+        self._ExecutorResourcePackageId = params.get("ExecutorResourcePackageId")
+        self._MemSize = params.get("MemSize")
+        self._Status = params.get("Status")
+        self._StatusDescription = params.get("StatusDescription")
+        self._ExpireTime = params.get("ExpireTime")
+        if params.get("ExtInfo") is not None:
+            self._ExtInfo = ExecutorResourcePackageExtInfo()
+            self._ExtInfo._deserialize(params.get("ExtInfo"))
+        self._ProjectId = params.get("ProjectId")
+        self._ProjectBindTime = params.get("ProjectBindTime")
+        if params.get("ResourcePackageUsage") is not None:
+            self._ResourcePackageUsage = ExecutorResourcePackageUsageInfo()
+            self._ResourcePackageUsage._deserialize(params.get("ResourcePackageUsage"))
+        self._ProductResourceIdList = params.get("ProductResourceIdList")
+        self._LifeTime = params.get("LifeTime")
+        self._VpcId = params.get("VpcId")
+        self._VpcName = params.get("VpcName")
+        self._SubnetId = params.get("SubnetId")
+        self._SubnetName = params.get("SubnetName")
+        self._ResourceStandard = params.get("ResourceStandard")
+        self._TotalMemory = params.get("TotalMemory")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExecutorResourcePackageUsageInfo(AbstractModel):
+    """执行资源包使用情况
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CpuUsagePercent: CPU占用百分比
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CpuUsagePercent: float
+        :param _MemUsagePercent: 内存占用百分比
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemUsagePercent: float
+        :param _Status: 资源包状态, /**
+     * 初始化中
+     */
+    INIT(0),
+    /**
+     * 运行中
+     */
+    RUNNING(1),
+    /**
+     * 运行异常
+     */
+    RUNNING_FAILED(2),
+    /**
+     * 释放中
+     */
+    DELETEING(3),
+    /**
+     * 已释放
+     */
+    DELETED(4),
+    /**
+     * 创建中
+     */
+    CREATING(5),
+    /**
+     * 创建失败
+     */
+    CREATE_FAILED(6),
+    /**
+     * 更新中
+     */
+    UPDATING(7),
+    /**
+     * 更新失败
+     */
+    UPDATE_FAILED(8),
+    /**
+     * 已到期
+     */
+    EXPIRED(9);
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: float
+        :param _RunningTaskNum: /**
+     * 初始化中
+     */
+    INIT(0),
+    /**
+     * 运行中
+     */
+    RUNNING(1),
+    /**
+     * 运行异常
+     */
+    RUNNING_FAILED(2),
+    /**
+     * 释放中
+     */
+    DELETEING(3),
+    /**
+     * 已释放
+     */
+    DELETED(4),
+    /**
+     * 创建中
+     */
+    CREATING(5),
+    /**
+     * 创建失败
+     */
+    CREATE_FAILED(6),
+    /**
+     * 更新中
+     */
+    UPDATING(7),
+    /**
+     * 更新失败
+     */
+    UPDATE_FAILED(8),
+    /**
+     * 已到期
+     */
+运行中的任务数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunningTaskNum: int
+        :param _WaitingTaskNum: 等待中的任务数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WaitingTaskNum: int
+        :param _UsageTrendStartTime: 资源使用趋势: 开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsageTrendStartTime: str
+        :param _UsageTrendEndTime: 资源使用趋势: 结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsageTrendEndTime: str
+        :param _UsageTrendList: 资源使用趋势列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsageTrendList: list of ExecutorUsageTrendInfo
+        """
+        self._CpuUsagePercent = None
+        self._MemUsagePercent = None
+        self._Status = None
+        self._RunningTaskNum = None
+        self._WaitingTaskNum = None
+        self._UsageTrendStartTime = None
+        self._UsageTrendEndTime = None
+        self._UsageTrendList = None
+
+    @property
+    def CpuUsagePercent(self):
+        """CPU占用百分比
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._CpuUsagePercent
+
+    @CpuUsagePercent.setter
+    def CpuUsagePercent(self, CpuUsagePercent):
+        self._CpuUsagePercent = CpuUsagePercent
+
+    @property
+    def MemUsagePercent(self):
+        """内存占用百分比
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._MemUsagePercent
+
+    @MemUsagePercent.setter
+    def MemUsagePercent(self, MemUsagePercent):
+        self._MemUsagePercent = MemUsagePercent
+
+    @property
+    def Status(self):
+        """资源包状态, /**
+     * 初始化中
+     */
+    INIT(0),
+    /**
+     * 运行中
+     */
+    RUNNING(1),
+    /**
+     * 运行异常
+     */
+    RUNNING_FAILED(2),
+    /**
+     * 释放中
+     */
+    DELETEING(3),
+    /**
+     * 已释放
+     */
+    DELETED(4),
+    /**
+     * 创建中
+     */
+    CREATING(5),
+    /**
+     * 创建失败
+     */
+    CREATE_FAILED(6),
+    /**
+     * 更新中
+     */
+    UPDATING(7),
+    /**
+     * 更新失败
+     */
+    UPDATE_FAILED(8),
+    /**
+     * 已到期
+     */
+    EXPIRED(9);
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RunningTaskNum(self):
+        """/**
+     * 初始化中
+     */
+    INIT(0),
+    /**
+     * 运行中
+     */
+    RUNNING(1),
+    /**
+     * 运行异常
+     */
+    RUNNING_FAILED(2),
+    /**
+     * 释放中
+     */
+    DELETEING(3),
+    /**
+     * 已释放
+     */
+    DELETED(4),
+    /**
+     * 创建中
+     */
+    CREATING(5),
+    /**
+     * 创建失败
+     */
+    CREATE_FAILED(6),
+    /**
+     * 更新中
+     */
+    UPDATING(7),
+    /**
+     * 更新失败
+     */
+    UPDATE_FAILED(8),
+    /**
+     * 已到期
+     */
+运行中的任务数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RunningTaskNum
+
+    @RunningTaskNum.setter
+    def RunningTaskNum(self, RunningTaskNum):
+        self._RunningTaskNum = RunningTaskNum
+
+    @property
+    def WaitingTaskNum(self):
+        """等待中的任务数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._WaitingTaskNum
+
+    @WaitingTaskNum.setter
+    def WaitingTaskNum(self, WaitingTaskNum):
+        self._WaitingTaskNum = WaitingTaskNum
+
+    @property
+    def UsageTrendStartTime(self):
+        """资源使用趋势: 开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UsageTrendStartTime
+
+    @UsageTrendStartTime.setter
+    def UsageTrendStartTime(self, UsageTrendStartTime):
+        self._UsageTrendStartTime = UsageTrendStartTime
+
+    @property
+    def UsageTrendEndTime(self):
+        """资源使用趋势: 结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UsageTrendEndTime
+
+    @UsageTrendEndTime.setter
+    def UsageTrendEndTime(self, UsageTrendEndTime):
+        self._UsageTrendEndTime = UsageTrendEndTime
+
+    @property
+    def UsageTrendList(self):
+        """资源使用趋势列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ExecutorUsageTrendInfo
+        """
+        return self._UsageTrendList
+
+    @UsageTrendList.setter
+    def UsageTrendList(self, UsageTrendList):
+        self._UsageTrendList = UsageTrendList
+
+
+    def _deserialize(self, params):
+        self._CpuUsagePercent = params.get("CpuUsagePercent")
+        self._MemUsagePercent = params.get("MemUsagePercent")
+        self._Status = params.get("Status")
+        self._RunningTaskNum = params.get("RunningTaskNum")
+        self._WaitingTaskNum = params.get("WaitingTaskNum")
+        self._UsageTrendStartTime = params.get("UsageTrendStartTime")
+        self._UsageTrendEndTime = params.get("UsageTrendEndTime")
+        if params.get("UsageTrendList") is not None:
+            self._UsageTrendList = []
+            for item in params.get("UsageTrendList"):
+                obj = ExecutorUsageTrendInfo()
+                obj._deserialize(item)
+                self._UsageTrendList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExecutorUsageTrendInfo(AbstractModel):
+    """资源组/资源包使用趋势
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Timestamp: 时间戳，单位：毫秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timestamp: int
+        :param _CpuUsagePercent: CPU占用百分比
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CpuUsagePercent: float
+        :param _MemUsagePercent: 内存占用百分比
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemUsagePercent: float
+        :param _ConcurrencyUsage: 当前并发度使用百分比
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConcurrencyUsage: float
+        :param _OceanusCuUsage: oceanus CU使用百分比
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OceanusCuUsage: float
+        """
+        self._Timestamp = None
+        self._CpuUsagePercent = None
+        self._MemUsagePercent = None
+        self._ConcurrencyUsage = None
+        self._OceanusCuUsage = None
+
+    @property
+    def Timestamp(self):
+        """时间戳，单位：毫秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def CpuUsagePercent(self):
+        """CPU占用百分比
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._CpuUsagePercent
+
+    @CpuUsagePercent.setter
+    def CpuUsagePercent(self, CpuUsagePercent):
+        self._CpuUsagePercent = CpuUsagePercent
+
+    @property
+    def MemUsagePercent(self):
+        """内存占用百分比
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._MemUsagePercent
+
+    @MemUsagePercent.setter
+    def MemUsagePercent(self, MemUsagePercent):
+        self._MemUsagePercent = MemUsagePercent
+
+    @property
+    def ConcurrencyUsage(self):
+        """当前并发度使用百分比
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._ConcurrencyUsage
+
+    @ConcurrencyUsage.setter
+    def ConcurrencyUsage(self, ConcurrencyUsage):
+        self._ConcurrencyUsage = ConcurrencyUsage
+
+    @property
+    def OceanusCuUsage(self):
+        """oceanus CU使用百分比
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._OceanusCuUsage
+
+    @OceanusCuUsage.setter
+    def OceanusCuUsage(self, OceanusCuUsage):
+        self._OceanusCuUsage = OceanusCuUsage
+
+
+    def _deserialize(self, params):
+        self._Timestamp = params.get("Timestamp")
+        self._CpuUsagePercent = params.get("CpuUsagePercent")
+        self._MemUsagePercent = params.get("MemUsagePercent")
+        self._ConcurrencyUsage = params.get("ConcurrencyUsage")
+        self._OceanusCuUsage = params.get("OceanusCuUsage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ExtParam(AbstractModel):
     """扩展参数
 
@@ -61154,6 +62797,265 @@ class LogContentInfo(AbstractModel):
         self._PkgLogId = params.get("PkgLogId")
         self._Time = params.get("Time")
         self._ContainerName = params.get("ContainerName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MQPackageVO(AbstractModel):
+    """MQPackageVO
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: ckafka消息队列
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _InstanceId: 实例Id/集群Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _InstanceName: 实例名称/集群名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param _VpcId: 局域网Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param _SubnetId: 子网Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
+        :param _Status: 资源状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _StatusDescription: 资源状态描述：保存创建失败，运行异常和更新失败的原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatusDescription: str
+        :param _DataProxySpec: DataProxy规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataProxySpec: str
+        :param _DataProxyNum: DataProxy数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataProxyNum: int
+        :param _DataProxyStatus: DataProxy状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataProxyStatus: int
+        :param _DataProxyStatusDescription: DataProxy状态描述：保存创建失败，运行异常和更新失败的原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataProxyStatusDescription: str
+        :param _BillingType: 计费类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BillingType: str
+        :param _ExpireTime: 资源到期时间，时间戳毫秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireTime: int
+        :param _LifeTime: 资源生命周期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LifeTime: int
+        """
+        self._Type = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._Status = None
+        self._StatusDescription = None
+        self._DataProxySpec = None
+        self._DataProxyNum = None
+        self._DataProxyStatus = None
+        self._DataProxyStatusDescription = None
+        self._BillingType = None
+        self._ExpireTime = None
+        self._LifeTime = None
+
+    @property
+    def Type(self):
+        """ckafka消息队列
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def InstanceId(self):
+        """实例Id/集群Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        """实例名称/集群名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def VpcId(self):
+        """局域网Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        """子网Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def Status(self):
+        """资源状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StatusDescription(self):
+        """资源状态描述：保存创建失败，运行异常和更新失败的原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StatusDescription
+
+    @StatusDescription.setter
+    def StatusDescription(self, StatusDescription):
+        self._StatusDescription = StatusDescription
+
+    @property
+    def DataProxySpec(self):
+        """DataProxy规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DataProxySpec
+
+    @DataProxySpec.setter
+    def DataProxySpec(self, DataProxySpec):
+        self._DataProxySpec = DataProxySpec
+
+    @property
+    def DataProxyNum(self):
+        """DataProxy数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DataProxyNum
+
+    @DataProxyNum.setter
+    def DataProxyNum(self, DataProxyNum):
+        self._DataProxyNum = DataProxyNum
+
+    @property
+    def DataProxyStatus(self):
+        """DataProxy状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DataProxyStatus
+
+    @DataProxyStatus.setter
+    def DataProxyStatus(self, DataProxyStatus):
+        self._DataProxyStatus = DataProxyStatus
+
+    @property
+    def DataProxyStatusDescription(self):
+        """DataProxy状态描述：保存创建失败，运行异常和更新失败的原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DataProxyStatusDescription
+
+    @DataProxyStatusDescription.setter
+    def DataProxyStatusDescription(self, DataProxyStatusDescription):
+        self._DataProxyStatusDescription = DataProxyStatusDescription
+
+    @property
+    def BillingType(self):
+        """计费类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BillingType
+
+    @BillingType.setter
+    def BillingType(self, BillingType):
+        self._BillingType = BillingType
+
+    @property
+    def ExpireTime(self):
+        """资源到期时间，时间戳毫秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def LifeTime(self):
+        """资源生命周期
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._LifeTime
+
+    @LifeTime.setter
+    def LifeTime(self, LifeTime):
+        self._LifeTime = LifeTime
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._Status = params.get("Status")
+        self._StatusDescription = params.get("StatusDescription")
+        self._DataProxySpec = params.get("DataProxySpec")
+        self._DataProxyNum = params.get("DataProxyNum")
+        self._DataProxyStatus = params.get("DataProxyStatus")
+        self._DataProxyStatusDescription = params.get("DataProxyStatusDescription")
+        self._BillingType = params.get("BillingType")
+        self._ExpireTime = params.get("ExpireTime")
+        self._LifeTime = params.get("LifeTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -878,7 +878,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DeleteProject(self, request):
-        """提供删除某个项目的能力
+        """提供删除某个项目的能力。
 
         :param request: Request instance for DeleteProject.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DeleteProjectRequest`
@@ -3180,7 +3180,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def ModifyProject(self, request):
-        """修改项目
+        """修改项目。
 
         :param request: Request instance for ModifyProject.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ModifyProjectRequest`

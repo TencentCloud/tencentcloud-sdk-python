@@ -1290,6 +1290,74 @@ class Action(AbstractModel):
         
 
 
+class AdaptiveFrequencyControl(AbstractModel):
+    """自适应频控
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: 自适应频控是否开启。取值有：<li>on：开启；</li><li>off：关闭。</li>
+        :type Enabled: str
+        :param _Sensitivity: 自适应频控的限制等级，当 Enabled 为 on 时，此字段必填。取值有：<li>Loose：宽松；</li><li>Moderate：适中；</li><li>Strict：严格。</li>
+        :type Sensitivity: str
+        :param _Action: 自适应频控的处置方式，当 Enabled 为 on 时，此字段必填。SecurityAction 的 Name 取值支持：<li>Monitor：观察；</li><li>Deny：拦截；</li><li>Challenge：挑战，其中ChallengeActionParameters.Name仅支持JSChallenge。</li>
+        :type Action: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
+        """
+        self._Enabled = None
+        self._Sensitivity = None
+        self._Action = None
+
+    @property
+    def Enabled(self):
+        """自适应频控是否开启。取值有：<li>on：开启；</li><li>off：关闭。</li>
+        :rtype: str
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def Sensitivity(self):
+        """自适应频控的限制等级，当 Enabled 为 on 时，此字段必填。取值有：<li>Loose：宽松；</li><li>Moderate：适中；</li><li>Strict：严格。</li>
+        :rtype: str
+        """
+        return self._Sensitivity
+
+    @Sensitivity.setter
+    def Sensitivity(self, Sensitivity):
+        self._Sensitivity = Sensitivity
+
+    @property
+    def Action(self):
+        """自适应频控的处置方式，当 Enabled 为 on 时，此字段必填。SecurityAction 的 Name 取值支持：<li>Monitor：观察；</li><li>Deny：拦截；</li><li>Challenge：挑战，其中ChallengeActionParameters.Name仅支持JSChallenge。</li>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        self._Sensitivity = params.get("Sensitivity")
+        if params.get("Action") is not None:
+            self._Action = SecurityAction()
+            self._Action._deserialize(params.get("Action"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AdvancedFilter(AbstractModel):
     """描述键值对过滤器，用于条件过滤查询，支持模糊查询。例如过滤ID、名称、状态等。
     若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
@@ -2803,6 +2871,59 @@ class AuthenticationParameters(AbstractModel):
         self._AuthParam = params.get("AuthParam")
         self._TimeParam = params.get("TimeParam")
         self._TimeFormat = params.get("TimeFormat")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BandwidthAbuseDefense(AbstractModel):
+    """流量防盗刷（仅适用中国大陆地区）的具体配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: 流量防盗刷（仅适用中国大陆地区）是否开启。取值有：<li>on：开启；</li><li>off：关闭。</li>
+        :type Enabled: str
+        :param _Action: 流量防盗刷（仅适用中国大陆地区）的处置方式，当 Enabled 为 on 时，此字段必填。SecurityAction 的 Name 取值支持：<li>Monitor：观察；</li><li>Deny：拦截；</li><li>Challenge：挑战，其中ChallengeActionParameters.Name仅支持JSChallenge。</li>
+        :type Action: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
+        """
+        self._Enabled = None
+        self._Action = None
+
+    @property
+    def Enabled(self):
+        """流量防盗刷（仅适用中国大陆地区）是否开启。取值有：<li>on：开启；</li><li>off：关闭。</li>
+        :rtype: str
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def Action(self):
+        """流量防盗刷（仅适用中国大陆地区）的处置方式，当 Enabled 为 on 时，此字段必填。SecurityAction 的 Name 取值支持：<li>Monitor：观察；</li><li>Deny：拦截；</li><li>Challenge：挑战，其中ChallengeActionParameters.Name仅支持JSChallenge。</li>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        if params.get("Action") is not None:
+            self._Action = SecurityAction()
+            self._Action._deserialize(params.get("Action"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5392,6 +5513,74 @@ class CertificateInfo(AbstractModel):
         
 
 
+class ChallengeActionParameters(AbstractModel):
+    """Web 安全 Challenge 挑战的附加参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChallengeOption: 安全执行的具体挑战动作。取值有：<li> InterstitialChallenge：插页式挑战；</li><li> InlineChallenge：内嵌式挑战；</li><li> JSChallenge：JavaScript 挑战；</li><li> ManagedChallenge：托管挑战。</li>
+        :type ChallengeOption: str
+        :param _Interval: 重复挑战的时间间隔，当 Name 为 InterstitialChallenge/InlineChallenge 时，该字段必填。默认值为 300s。支持的单位有：<li>s：秒，取值范围1～60；</li><li>m：分，取值范围1～60；</li><li>h：小时，取值范围1～24。</li>
+
+        :type Interval: str
+        :param _AttesterId: 客户端认证方式 ID 。当 Name 为 InterstitialChallenge/InlineChallenge 时，该字段必填。
+        :type AttesterId: str
+        """
+        self._ChallengeOption = None
+        self._Interval = None
+        self._AttesterId = None
+
+    @property
+    def ChallengeOption(self):
+        """安全执行的具体挑战动作。取值有：<li> InterstitialChallenge：插页式挑战；</li><li> InlineChallenge：内嵌式挑战；</li><li> JSChallenge：JavaScript 挑战；</li><li> ManagedChallenge：托管挑战。</li>
+        :rtype: str
+        """
+        return self._ChallengeOption
+
+    @ChallengeOption.setter
+    def ChallengeOption(self, ChallengeOption):
+        self._ChallengeOption = ChallengeOption
+
+    @property
+    def Interval(self):
+        """重复挑战的时间间隔，当 Name 为 InterstitialChallenge/InlineChallenge 时，该字段必填。默认值为 300s。支持的单位有：<li>s：秒，取值范围1～60；</li><li>m：分，取值范围1～60；</li><li>h：小时，取值范围1～24。</li>
+
+        :rtype: str
+        """
+        return self._Interval
+
+    @Interval.setter
+    def Interval(self, Interval):
+        self._Interval = Interval
+
+    @property
+    def AttesterId(self):
+        """客户端认证方式 ID 。当 Name 为 InterstitialChallenge/InlineChallenge 时，该字段必填。
+        :rtype: str
+        """
+        return self._AttesterId
+
+    @AttesterId.setter
+    def AttesterId(self, AttesterId):
+        self._AttesterId = AttesterId
+
+
+    def _deserialize(self, params):
+        self._ChallengeOption = params.get("ChallengeOption")
+        self._Interval = params.get("Interval")
+        self._AttesterId = params.get("AttesterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CheckCnameStatusRequest(AbstractModel):
     """CheckCnameStatus请求参数结构体
 
@@ -5558,6 +5747,59 @@ class CheckRegionHealthStatus(AbstractModel):
                 obj = OriginHealthStatus()
                 obj._deserialize(item)
                 self._OriginHealthStatus.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClientFiltering(AbstractModel):
+    """智能客户端过滤
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: 智能客户端过滤是否开启。取值有：<li>on：开启；</li><li>off：关闭。</li>
+        :type Enabled: str
+        :param _Action: 智能客户端过滤的处置方式，当 Enabled 为 on 时，此字段必填。SecurityAction 的 Name 取值支持：<li>Monitor：观察；</li><li>Deny：拦截；</li><li>Challenge：挑战，其中ChallengeActionParameters.Name仅支持JSChallenge。</li>
+        :type Action: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
+        """
+        self._Enabled = None
+        self._Action = None
+
+    @property
+    def Enabled(self):
+        """智能客户端过滤是否开启。取值有：<li>on：开启；</li><li>off：关闭。</li>
+        :rtype: str
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def Action(self):
+        """智能客户端过滤的处置方式，当 Enabled 为 on 时，此字段必填。SecurityAction 的 Name 取值支持：<li>Monitor：观察；</li><li>Deny：拦截；</li><li>Challenge：挑战，其中ChallengeActionParameters.Name仅支持JSChallenge。</li>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        if params.get("Action") is not None:
+            self._Action = SecurityAction()
+            self._Action._deserialize(params.get("Action"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13163,6 +13405,143 @@ class DeliveryCondition(AbstractModel):
                 obj = QueryCondition()
                 obj._deserialize(item)
                 self._Conditions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DenyActionParameters(AbstractModel):
+    """安全执行动作为封禁的附加参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BlockIp: 是否对来源 IP 延长封禁。取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+启用后，对触发规则的客户端 IP 持续拦截。当启用该选项时，必须同时指定 BlockIpDuration 参数。
+注意：该选项不可与 ReturnCustomPage 或 Stall 选项同时启用。
+        :type BlockIp: str
+        :param _BlockIpDuration: 当 BlockIP 为 on 时IP 的封禁时长。
+        :type BlockIpDuration: str
+        :param _ReturnCustomPage: 是否使用自定义页面。取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+启用后，使用自定义页面内容拦截（响应）请求，当启用该选项时，必须同时指定 ResponseCode 和 ErrorPageId 参数。
+注意：该选项不可与 BlockIp 或 Stall 选项同时启用。
+
+        :type ReturnCustomPage: str
+        :param _ResponseCode: 自定义页面的状态码。
+        :type ResponseCode: str
+        :param _ErrorPageId: 自定义页面的PageId。
+        :type ErrorPageId: str
+        :param _Stall: 是否对请求来源挂起不予处理。取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+启用后，不再响应当前连接会话内请求，且不会主动断开连接。用于爬虫对抗时，消耗客户端连接资源。
+注意：该选项不可与 BlockIp 或 ReturnCustomPage 选项同时启用。
+        :type Stall: str
+        """
+        self._BlockIp = None
+        self._BlockIpDuration = None
+        self._ReturnCustomPage = None
+        self._ResponseCode = None
+        self._ErrorPageId = None
+        self._Stall = None
+
+    @property
+    def BlockIp(self):
+        """是否对来源 IP 延长封禁。取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+启用后，对触发规则的客户端 IP 持续拦截。当启用该选项时，必须同时指定 BlockIpDuration 参数。
+注意：该选项不可与 ReturnCustomPage 或 Stall 选项同时启用。
+        :rtype: str
+        """
+        return self._BlockIp
+
+    @BlockIp.setter
+    def BlockIp(self, BlockIp):
+        self._BlockIp = BlockIp
+
+    @property
+    def BlockIpDuration(self):
+        """当 BlockIP 为 on 时IP 的封禁时长。
+        :rtype: str
+        """
+        return self._BlockIpDuration
+
+    @BlockIpDuration.setter
+    def BlockIpDuration(self, BlockIpDuration):
+        self._BlockIpDuration = BlockIpDuration
+
+    @property
+    def ReturnCustomPage(self):
+        """是否使用自定义页面。取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+启用后，使用自定义页面内容拦截（响应）请求，当启用该选项时，必须同时指定 ResponseCode 和 ErrorPageId 参数。
+注意：该选项不可与 BlockIp 或 Stall 选项同时启用。
+
+        :rtype: str
+        """
+        return self._ReturnCustomPage
+
+    @ReturnCustomPage.setter
+    def ReturnCustomPage(self, ReturnCustomPage):
+        self._ReturnCustomPage = ReturnCustomPage
+
+    @property
+    def ResponseCode(self):
+        """自定义页面的状态码。
+        :rtype: str
+        """
+        return self._ResponseCode
+
+    @ResponseCode.setter
+    def ResponseCode(self, ResponseCode):
+        self._ResponseCode = ResponseCode
+
+    @property
+    def ErrorPageId(self):
+        """自定义页面的PageId。
+        :rtype: str
+        """
+        return self._ErrorPageId
+
+    @ErrorPageId.setter
+    def ErrorPageId(self, ErrorPageId):
+        self._ErrorPageId = ErrorPageId
+
+    @property
+    def Stall(self):
+        """是否对请求来源挂起不予处理。取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+启用后，不再响应当前连接会话内请求，且不会主动断开连接。用于爬虫对抗时，消耗客户端连接资源。
+注意：该选项不可与 BlockIp 或 ReturnCustomPage 选项同时启用。
+        :rtype: str
+        """
+        return self._Stall
+
+    @Stall.setter
+    def Stall(self, Stall):
+        self._Stall = Stall
+
+
+    def _deserialize(self, params):
+        self._BlockIp = params.get("BlockIp")
+        self._BlockIpDuration = params.get("BlockIpDuration")
+        self._ReturnCustomPage = params.get("ReturnCustomPage")
+        self._ResponseCode = params.get("ResponseCode")
+        self._ErrorPageId = params.get("ErrorPageId")
+        self._Stall = params.get("Stall")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23773,6 +24152,223 @@ class ExceptUserRuleScope(AbstractModel):
         
 
 
+class ExceptionRule(AbstractModel):
+    """Web安全的例外规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 例外规则的 ID。<br>通过规则 ID 可支持不同的规则配置操作：<br> <li> <b>增加</b>新规则：ID 为空或不指定 ID 参数；</li><li> <b>修改</b>已有规则：指定需要更新/修改的规则 ID；</li><li> <b>删除</b>已有规则：ExceptionRules 参数中，Rules 列表中未包含的已有规则将被删除。</li>
+        :type Id: str
+        :param _Name: 例外规则的名称。
+        :type Name: str
+        :param _Condition: 例外规则的具体内容，需符合表达式语法，详细规范参见产品文档。
+        :type Condition: str
+        :param _SkipScope: 例外规则执行选项，取值有：<li>WebSecurityModules: 指定例外规则的安全防护模块。</li><li>ManagedRules：指定托管规则。</li>
+        :type SkipScope: str
+        :param _SkipOption: 跳过请求的具体类型，取值有：<li>SkipOnAllRequestFields: 跳过所有请求；</li><li>SkipOnSpecifiedRequestFields: 跳过指定请求字段。</li>仅当 SkipScope 为 ManagedRules 时有效。
+        :type SkipOption: str
+        :param _WebSecurityModulesForException: 指定例外规则的安全防护模块，仅当 SkipScope 为 WebSecurityModules 时有效。取值有：<li>websec-mod-managed-rules：托管规则；</li><li>websec-mod-rate-limiting：速率限制；</li><li>websec-mod-custom-rules：自定义规则；</li><li>websec-mod-adaptive-control：自适应频控、智能客户端过滤、慢速攻击防护、流量盗刷防护；</li><li>websec-mod-bot：Bot管理。</li>
+        :type WebSecurityModulesForException: list of str
+        :param _ManagedRulesForException: 指定例外规则的具体托管规则，仅当 SkipScope 为 ManagedRules 时有效，且此时不能指定 ManagedRuleGroupsForException 。
+        :type ManagedRulesForException: list of str
+        :param _ManagedRuleGroupsForException: 指定例外规则的托管规则组，仅当 SkipScope 为 ManagedRules 时有效，且此时不能指定 ManagedRulesForException 。
+        :type ManagedRuleGroupsForException: list of str
+        :param _RequestFieldsForException: 指定例外规则跳过指定请求字段的具体配置，仅当 SkipScope 为 ManagedRules 并且 SkipOption 为 SkipOnSpecifiedRequestFields 时有效。
+        :type RequestFieldsForException: list of RequestFieldsForException
+        :param _Enabled: 例外规则是否开启。取值有：<li>on：开启</li><li>off：关闭</li>
+        :type Enabled: str
+        """
+        self._Id = None
+        self._Name = None
+        self._Condition = None
+        self._SkipScope = None
+        self._SkipOption = None
+        self._WebSecurityModulesForException = None
+        self._ManagedRulesForException = None
+        self._ManagedRuleGroupsForException = None
+        self._RequestFieldsForException = None
+        self._Enabled = None
+
+    @property
+    def Id(self):
+        """例外规则的 ID。<br>通过规则 ID 可支持不同的规则配置操作：<br> <li> <b>增加</b>新规则：ID 为空或不指定 ID 参数；</li><li> <b>修改</b>已有规则：指定需要更新/修改的规则 ID；</li><li> <b>删除</b>已有规则：ExceptionRules 参数中，Rules 列表中未包含的已有规则将被删除。</li>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        """例外规则的名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Condition(self):
+        """例外规则的具体内容，需符合表达式语法，详细规范参见产品文档。
+        :rtype: str
+        """
+        return self._Condition
+
+    @Condition.setter
+    def Condition(self, Condition):
+        self._Condition = Condition
+
+    @property
+    def SkipScope(self):
+        """例外规则执行选项，取值有：<li>WebSecurityModules: 指定例外规则的安全防护模块。</li><li>ManagedRules：指定托管规则。</li>
+        :rtype: str
+        """
+        return self._SkipScope
+
+    @SkipScope.setter
+    def SkipScope(self, SkipScope):
+        self._SkipScope = SkipScope
+
+    @property
+    def SkipOption(self):
+        """跳过请求的具体类型，取值有：<li>SkipOnAllRequestFields: 跳过所有请求；</li><li>SkipOnSpecifiedRequestFields: 跳过指定请求字段。</li>仅当 SkipScope 为 ManagedRules 时有效。
+        :rtype: str
+        """
+        return self._SkipOption
+
+    @SkipOption.setter
+    def SkipOption(self, SkipOption):
+        self._SkipOption = SkipOption
+
+    @property
+    def WebSecurityModulesForException(self):
+        """指定例外规则的安全防护模块，仅当 SkipScope 为 WebSecurityModules 时有效。取值有：<li>websec-mod-managed-rules：托管规则；</li><li>websec-mod-rate-limiting：速率限制；</li><li>websec-mod-custom-rules：自定义规则；</li><li>websec-mod-adaptive-control：自适应频控、智能客户端过滤、慢速攻击防护、流量盗刷防护；</li><li>websec-mod-bot：Bot管理。</li>
+        :rtype: list of str
+        """
+        return self._WebSecurityModulesForException
+
+    @WebSecurityModulesForException.setter
+    def WebSecurityModulesForException(self, WebSecurityModulesForException):
+        self._WebSecurityModulesForException = WebSecurityModulesForException
+
+    @property
+    def ManagedRulesForException(self):
+        """指定例外规则的具体托管规则，仅当 SkipScope 为 ManagedRules 时有效，且此时不能指定 ManagedRuleGroupsForException 。
+        :rtype: list of str
+        """
+        return self._ManagedRulesForException
+
+    @ManagedRulesForException.setter
+    def ManagedRulesForException(self, ManagedRulesForException):
+        self._ManagedRulesForException = ManagedRulesForException
+
+    @property
+    def ManagedRuleGroupsForException(self):
+        """指定例外规则的托管规则组，仅当 SkipScope 为 ManagedRules 时有效，且此时不能指定 ManagedRulesForException 。
+        :rtype: list of str
+        """
+        return self._ManagedRuleGroupsForException
+
+    @ManagedRuleGroupsForException.setter
+    def ManagedRuleGroupsForException(self, ManagedRuleGroupsForException):
+        self._ManagedRuleGroupsForException = ManagedRuleGroupsForException
+
+    @property
+    def RequestFieldsForException(self):
+        """指定例外规则跳过指定请求字段的具体配置，仅当 SkipScope 为 ManagedRules 并且 SkipOption 为 SkipOnSpecifiedRequestFields 时有效。
+        :rtype: list of RequestFieldsForException
+        """
+        return self._RequestFieldsForException
+
+    @RequestFieldsForException.setter
+    def RequestFieldsForException(self, RequestFieldsForException):
+        self._RequestFieldsForException = RequestFieldsForException
+
+    @property
+    def Enabled(self):
+        """例外规则是否开启。取值有：<li>on：开启</li><li>off：关闭</li>
+        :rtype: str
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Condition = params.get("Condition")
+        self._SkipScope = params.get("SkipScope")
+        self._SkipOption = params.get("SkipOption")
+        self._WebSecurityModulesForException = params.get("WebSecurityModulesForException")
+        self._ManagedRulesForException = params.get("ManagedRulesForException")
+        self._ManagedRuleGroupsForException = params.get("ManagedRuleGroupsForException")
+        if params.get("RequestFieldsForException") is not None:
+            self._RequestFieldsForException = []
+            for item in params.get("RequestFieldsForException"):
+                obj = RequestFieldsForException()
+                obj._deserialize(item)
+                self._RequestFieldsForException.append(obj)
+        self._Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExceptionRules(AbstractModel):
+    """Web安全的例外规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Rules: 例外规则的定义列表。使用 ModifySecurityPolicy 修改 Web 防护配置时: <li>若未指定 Rules 参数，或 Rules 参数长度为零：清空所有例外规则配置。</li><li>若 SecurityPolicy 参数中，未指定 ExceptionRules 参数值：保持已有例外规则配置，不做修改。</li>
+        :type Rules: list of ExceptionRule
+        """
+        self._Rules = None
+
+    @property
+    def Rules(self):
+        """例外规则的定义列表。使用 ModifySecurityPolicy 修改 Web 防护配置时: <li>若未指定 Rules 参数，或 Rules 参数长度为零：清空所有例外规则配置。</li><li>若 SecurityPolicy 参数中，未指定 ExceptionRules 参数值：保持已有例外规则配置，不做修改。</li>
+        :rtype: list of ExceptionRule
+        """
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+
+    def _deserialize(self, params):
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = ExceptionRule()
+                obj._deserialize(item)
+                self._Rules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ExportZoneConfigRequest(AbstractModel):
     """ExportZoneConfig请求参数结构体
 
@@ -25718,6 +26314,95 @@ class Hsts(AbstractModel):
         self._MaxAge = params.get("MaxAge")
         self._IncludeSubDomains = params.get("IncludeSubDomains")
         self._Preload = params.get("Preload")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HttpDDoSProtection(AbstractModel):
+    """HTTP DDOS防护配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AdaptiveFrequencyControl: 自适应频控的具体配置。
+        :type AdaptiveFrequencyControl: :class:`tencentcloud.teo.v20220901.models.AdaptiveFrequencyControl`
+        :param _ClientFiltering: 智能客户端过滤的具体配置。
+        :type ClientFiltering: :class:`tencentcloud.teo.v20220901.models.ClientFiltering`
+        :param _BandwidthAbuseDefense: 流量防盗刷的具体配置。
+        :type BandwidthAbuseDefense: :class:`tencentcloud.teo.v20220901.models.BandwidthAbuseDefense`
+        :param _SlowAttackDefense: 慢速攻击防护的具体配置。
+        :type SlowAttackDefense: :class:`tencentcloud.teo.v20220901.models.SlowAttackDefense`
+        """
+        self._AdaptiveFrequencyControl = None
+        self._ClientFiltering = None
+        self._BandwidthAbuseDefense = None
+        self._SlowAttackDefense = None
+
+    @property
+    def AdaptiveFrequencyControl(self):
+        """自适应频控的具体配置。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.AdaptiveFrequencyControl`
+        """
+        return self._AdaptiveFrequencyControl
+
+    @AdaptiveFrequencyControl.setter
+    def AdaptiveFrequencyControl(self, AdaptiveFrequencyControl):
+        self._AdaptiveFrequencyControl = AdaptiveFrequencyControl
+
+    @property
+    def ClientFiltering(self):
+        """智能客户端过滤的具体配置。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ClientFiltering`
+        """
+        return self._ClientFiltering
+
+    @ClientFiltering.setter
+    def ClientFiltering(self, ClientFiltering):
+        self._ClientFiltering = ClientFiltering
+
+    @property
+    def BandwidthAbuseDefense(self):
+        """流量防盗刷的具体配置。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.BandwidthAbuseDefense`
+        """
+        return self._BandwidthAbuseDefense
+
+    @BandwidthAbuseDefense.setter
+    def BandwidthAbuseDefense(self, BandwidthAbuseDefense):
+        self._BandwidthAbuseDefense = BandwidthAbuseDefense
+
+    @property
+    def SlowAttackDefense(self):
+        """慢速攻击防护的具体配置。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.SlowAttackDefense`
+        """
+        return self._SlowAttackDefense
+
+    @SlowAttackDefense.setter
+    def SlowAttackDefense(self, SlowAttackDefense):
+        self._SlowAttackDefense = SlowAttackDefense
+
+
+    def _deserialize(self, params):
+        if params.get("AdaptiveFrequencyControl") is not None:
+            self._AdaptiveFrequencyControl = AdaptiveFrequencyControl()
+            self._AdaptiveFrequencyControl._deserialize(params.get("AdaptiveFrequencyControl"))
+        if params.get("ClientFiltering") is not None:
+            self._ClientFiltering = ClientFiltering()
+            self._ClientFiltering._deserialize(params.get("ClientFiltering"))
+        if params.get("BandwidthAbuseDefense") is not None:
+            self._BandwidthAbuseDefense = BandwidthAbuseDefense()
+            self._BandwidthAbuseDefense._deserialize(params.get("BandwidthAbuseDefense"))
+        if params.get("SlowAttackDefense") is not None:
+            self._SlowAttackDefense = SlowAttackDefense()
+            self._SlowAttackDefense._deserialize(params.get("SlowAttackDefense"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28946,6 +29631,72 @@ class MaxAgeParameters(AbstractModel):
     def _deserialize(self, params):
         self._FollowOrigin = params.get("FollowOrigin")
         self._CacheTime = params.get("CacheTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MinimalRequestBodyTransferRate(AbstractModel):
+    """正文传输最小速率阈值的具体配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MinimalAvgTransferRateThreshold: 正文传输最小速率阈值，单位仅支持bps。
+        :type MinimalAvgTransferRateThreshold: str
+        :param _CountingPeriod: 正文传输最小速率统计时间范围，取值有：<li>10s：10秒；</li><li>30s：30秒；</li><li>60s：60秒；</li><li>120s：120秒。</li> 
+        :type CountingPeriod: str
+        :param _Enabled: 正文传输最小速率阈值是否开启。取值有：<li>on：开启；</li><li>off：关闭。</li>
+        :type Enabled: str
+        """
+        self._MinimalAvgTransferRateThreshold = None
+        self._CountingPeriod = None
+        self._Enabled = None
+
+    @property
+    def MinimalAvgTransferRateThreshold(self):
+        """正文传输最小速率阈值，单位仅支持bps。
+        :rtype: str
+        """
+        return self._MinimalAvgTransferRateThreshold
+
+    @MinimalAvgTransferRateThreshold.setter
+    def MinimalAvgTransferRateThreshold(self, MinimalAvgTransferRateThreshold):
+        self._MinimalAvgTransferRateThreshold = MinimalAvgTransferRateThreshold
+
+    @property
+    def CountingPeriod(self):
+        """正文传输最小速率统计时间范围，取值有：<li>10s：10秒；</li><li>30s：30秒；</li><li>60s：60秒；</li><li>120s：120秒。</li> 
+        :rtype: str
+        """
+        return self._CountingPeriod
+
+    @CountingPeriod.setter
+    def CountingPeriod(self, CountingPeriod):
+        self._CountingPeriod = CountingPeriod
+
+    @property
+    def Enabled(self):
+        """正文传输最小速率阈值是否开启。取值有：<li>on：开启；</li><li>off：关闭。</li>
+        :rtype: str
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+
+    def _deserialize(self, params):
+        self._MinimalAvgTransferRateThreshold = params.get("MinimalAvgTransferRateThreshold")
+        self._CountingPeriod = params.get("CountingPeriod")
+        self._Enabled = params.get("Enabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32831,9 +33582,9 @@ class ModifySecurityPolicyRequest(AbstractModel):
         r"""
         :param _ZoneId: 站点 ID。
         :type ZoneId: str
-        :param _SecurityConfig: 安全策略配置。<li>当 SecurityPolicy 参数中的 CustomRule 被设置时，SecurityConfig 参数中的 AclConfg、 IpTableConfg 将被忽略；</li><li>当 SecurityPolicy 参数中的 ManagedRule 被设置时，SecurityConfig 参数中的 WafConfig 将被忽略。</li><li>对于自定义规则以及托管规则策略配置建议使用 SecurityPolicy 参数进行设置。</li>
+        :param _SecurityConfig: 安全策略配置。<li>当 SecurityPolicy 参数中的 ExceptionRules 被设置时，SecurityConfig 参数中的 ExceptConfig 将被忽略；</li><li>当 SecurityPolicy 参数中的 CustomRules 被设置时，SecurityConfig 参数中的 AclConfig、 IpTableConfig 将被忽略；</li><li>当 SecurityPolicy 参数中的 HttpDDoSProtection 和 RateLimitingRules 被设置时，SecurityConfig 参数中的 RateLimitConfig 将被忽略；</li><li>当 SecurityPolicy 参数中的 ManagedRule 被设置时，SecurityConfig 参数中的 WafConfig 将被忽略；</li><li>对于例外规则、自定义规则、速率限制以及托管规则策略配置建议使用 SecurityPolicy 参数进行设置。</li>
         :type SecurityConfig: :class:`tencentcloud.teo.v20220901.models.SecurityConfig`
-        :param _SecurityPolicy: 安全策略配置。对 Web 防护自定义策略和托管规则配置建议使用，支持表达式语法对安全策略进行配置。
+        :param _SecurityPolicy: 安全策略配置。对 Web 例外规则、防护自定义策略、速率规则和托管规则配置建议使用，支持表达式语法对安全策略进行配置。
         :type SecurityPolicy: :class:`tencentcloud.teo.v20220901.models.SecurityPolicy`
         :param _Entity: 安全策略类型，可使用以下参数值： <li>ZoneDefaultPolicy：用于指定站点级策略；</li><li>Template：用于指定策略模板，需要同时指定 TemplateId 参数；</li><li>Host：用于指定域名级策略（注意：当使用域名来指定域名服务策略时，仅支持已经应用了域名级策略的域名服务或者策略模板）。</li>
         :type Entity: str
@@ -32862,7 +33613,7 @@ class ModifySecurityPolicyRequest(AbstractModel):
 
     @property
     def SecurityConfig(self):
-        """安全策略配置。<li>当 SecurityPolicy 参数中的 CustomRule 被设置时，SecurityConfig 参数中的 AclConfg、 IpTableConfg 将被忽略；</li><li>当 SecurityPolicy 参数中的 ManagedRule 被设置时，SecurityConfig 参数中的 WafConfig 将被忽略。</li><li>对于自定义规则以及托管规则策略配置建议使用 SecurityPolicy 参数进行设置。</li>
+        """安全策略配置。<li>当 SecurityPolicy 参数中的 ExceptionRules 被设置时，SecurityConfig 参数中的 ExceptConfig 将被忽略；</li><li>当 SecurityPolicy 参数中的 CustomRules 被设置时，SecurityConfig 参数中的 AclConfig、 IpTableConfig 将被忽略；</li><li>当 SecurityPolicy 参数中的 HttpDDoSProtection 和 RateLimitingRules 被设置时，SecurityConfig 参数中的 RateLimitConfig 将被忽略；</li><li>当 SecurityPolicy 参数中的 ManagedRule 被设置时，SecurityConfig 参数中的 WafConfig 将被忽略；</li><li>对于例外规则、自定义规则、速率限制以及托管规则策略配置建议使用 SecurityPolicy 参数进行设置。</li>
         :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityConfig`
         """
         return self._SecurityConfig
@@ -32873,7 +33624,7 @@ class ModifySecurityPolicyRequest(AbstractModel):
 
     @property
     def SecurityPolicy(self):
-        """安全策略配置。对 Web 防护自定义策略和托管规则配置建议使用，支持表达式语法对安全策略进行配置。
+        """安全策略配置。对 Web 例外规则、防护自定义策略、速率规则和托管规则配置建议使用，支持表达式语法对安全策略进行配置。
         :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityPolicy`
         """
         return self._SecurityPolicy
@@ -37447,6 +38198,220 @@ class RateLimitUserRule(AbstractModel):
         
 
 
+class RateLimitingRule(AbstractModel):
+    """速率限制的具体配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 精准速率限制的 ID。<br>通过规则 ID 可支持不同的规则配置操作：<br> <li> <b>增加</b>新规则：ID 为空或不指定 ID 参数；</li><li><b>修改</b>已有规则：指定需要更新/修改的规则 ID；</li><li><b>删除</b>已有规则：RateLimitingRules 参数中，Rules 列表中未包含的已有规则将被删除。</li>
+        :type Id: str
+        :param _Name: 精准速率限制的名称。
+        :type Name: str
+        :param _Condition: 精准速率限制的具体内容，需符合表达式语法，详细规范参见产品文档。
+        :type Condition: str
+        :param _CountBy: 速率阈值请求特征的匹配方式， 当 Enabled 为 on 时，此字段必填。<br /><br />当条件有多个时，将组合多个条件共同进行统计计算，条件最多不可超过5条。取值有：<br/><li><b>http.request.ip</b>：客户端 IP；</li><li><b>http.request.xff_header_ip</b>：客户端 IP（优先匹配 XFF 头部）；</li><li><b>http.request.uri.path</b>：请求的访问路径；</li><li><b>http.request.cookies['session']</b>：名称为session的Cookie，其中session可替换为自己指定的参数；</li><li><b>http.request.headers['user-agent']</b>：名称为user-agent的HTTP头部，其中user-agent可替换为自己指定的参数；</li><li><b>http.request.ja3</b>：请求的JA3指纹；</li><li><b>http.request.uri.query['test']</b>：名称为test的URL查询参数，其中test可替换为自己指定的参数。</li> 
+        :type CountBy: list of str
+        :param _MaxRequestThreshold: 精准速率限制在时间范围内的累计拦截次数，取值范围 1 ~ 100000。
+        :type MaxRequestThreshold: int
+        :param _CountingPeriod: 统计的时间窗口，取值有：<li>1s：1秒；</li><li>5s：5秒；</li><li>10s：10秒；</li><li>20s：20秒；</li><li>30s：30秒；</li><li>40s：40秒；</li><li>50s：50秒；</li><li>1m：1分钟；</li><li>2m：2分钟；</li><li>5m：5分钟；</li><li>10m：10分钟；</li><li>1h：1小时。</li> 
+        :type CountingPeriod: str
+        :param _ActionDuration: Action 动作的持续时长，单位仅支持：<li>s：秒，取值 1 ~ 120；</li><li>m：分钟，取值 1 ~ 120；</li><li>h：小时，取值 1 ~ 48；</li><li>d：天，取值 1 ~ 30。</li>
+        :type ActionDuration: str
+        :param _Action: 精准速率限制的处置方式。取值有：<li>Monitor：观察；</li><li>Deny：拦截，其中DenyActionParameters.Name支持Deny和ReturnCustomPage；</li><li>Challenge：挑战，其中ChallengeActionParameters.Name支持JSChallenge和ManagedChallenge；</li><li>Redirect：重定向至URL；</li>
+        :type Action: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
+        :param _Priority: 精准速率限制的优先级，范围是 0 ~ 100，默认为 0。
+        :type Priority: int
+        :param _Enabled: 精准速率限制规则是否开启。取值有：<li>on：开启；</li><li>off：关闭。</li>
+        :type Enabled: str
+        """
+        self._Id = None
+        self._Name = None
+        self._Condition = None
+        self._CountBy = None
+        self._MaxRequestThreshold = None
+        self._CountingPeriod = None
+        self._ActionDuration = None
+        self._Action = None
+        self._Priority = None
+        self._Enabled = None
+
+    @property
+    def Id(self):
+        """精准速率限制的 ID。<br>通过规则 ID 可支持不同的规则配置操作：<br> <li> <b>增加</b>新规则：ID 为空或不指定 ID 参数；</li><li><b>修改</b>已有规则：指定需要更新/修改的规则 ID；</li><li><b>删除</b>已有规则：RateLimitingRules 参数中，Rules 列表中未包含的已有规则将被删除。</li>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        """精准速率限制的名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Condition(self):
+        """精准速率限制的具体内容，需符合表达式语法，详细规范参见产品文档。
+        :rtype: str
+        """
+        return self._Condition
+
+    @Condition.setter
+    def Condition(self, Condition):
+        self._Condition = Condition
+
+    @property
+    def CountBy(self):
+        """速率阈值请求特征的匹配方式， 当 Enabled 为 on 时，此字段必填。<br /><br />当条件有多个时，将组合多个条件共同进行统计计算，条件最多不可超过5条。取值有：<br/><li><b>http.request.ip</b>：客户端 IP；</li><li><b>http.request.xff_header_ip</b>：客户端 IP（优先匹配 XFF 头部）；</li><li><b>http.request.uri.path</b>：请求的访问路径；</li><li><b>http.request.cookies['session']</b>：名称为session的Cookie，其中session可替换为自己指定的参数；</li><li><b>http.request.headers['user-agent']</b>：名称为user-agent的HTTP头部，其中user-agent可替换为自己指定的参数；</li><li><b>http.request.ja3</b>：请求的JA3指纹；</li><li><b>http.request.uri.query['test']</b>：名称为test的URL查询参数，其中test可替换为自己指定的参数。</li> 
+        :rtype: list of str
+        """
+        return self._CountBy
+
+    @CountBy.setter
+    def CountBy(self, CountBy):
+        self._CountBy = CountBy
+
+    @property
+    def MaxRequestThreshold(self):
+        """精准速率限制在时间范围内的累计拦截次数，取值范围 1 ~ 100000。
+        :rtype: int
+        """
+        return self._MaxRequestThreshold
+
+    @MaxRequestThreshold.setter
+    def MaxRequestThreshold(self, MaxRequestThreshold):
+        self._MaxRequestThreshold = MaxRequestThreshold
+
+    @property
+    def CountingPeriod(self):
+        """统计的时间窗口，取值有：<li>1s：1秒；</li><li>5s：5秒；</li><li>10s：10秒；</li><li>20s：20秒；</li><li>30s：30秒；</li><li>40s：40秒；</li><li>50s：50秒；</li><li>1m：1分钟；</li><li>2m：2分钟；</li><li>5m：5分钟；</li><li>10m：10分钟；</li><li>1h：1小时。</li> 
+        :rtype: str
+        """
+        return self._CountingPeriod
+
+    @CountingPeriod.setter
+    def CountingPeriod(self, CountingPeriod):
+        self._CountingPeriod = CountingPeriod
+
+    @property
+    def ActionDuration(self):
+        """Action 动作的持续时长，单位仅支持：<li>s：秒，取值 1 ~ 120；</li><li>m：分钟，取值 1 ~ 120；</li><li>h：小时，取值 1 ~ 48；</li><li>d：天，取值 1 ~ 30。</li>
+        :rtype: str
+        """
+        return self._ActionDuration
+
+    @ActionDuration.setter
+    def ActionDuration(self, ActionDuration):
+        self._ActionDuration = ActionDuration
+
+    @property
+    def Action(self):
+        """精准速率限制的处置方式。取值有：<li>Monitor：观察；</li><li>Deny：拦截，其中DenyActionParameters.Name支持Deny和ReturnCustomPage；</li><li>Challenge：挑战，其中ChallengeActionParameters.Name支持JSChallenge和ManagedChallenge；</li><li>Redirect：重定向至URL；</li>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def Priority(self):
+        """精准速率限制的优先级，范围是 0 ~ 100，默认为 0。
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def Enabled(self):
+        """精准速率限制规则是否开启。取值有：<li>on：开启；</li><li>off：关闭。</li>
+        :rtype: str
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Condition = params.get("Condition")
+        self._CountBy = params.get("CountBy")
+        self._MaxRequestThreshold = params.get("MaxRequestThreshold")
+        self._CountingPeriod = params.get("CountingPeriod")
+        self._ActionDuration = params.get("ActionDuration")
+        if params.get("Action") is not None:
+            self._Action = SecurityAction()
+            self._Action._deserialize(params.get("Action"))
+        self._Priority = params.get("Priority")
+        self._Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RateLimitingRules(AbstractModel):
+    """精准速率限制的配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Rules: 精准速率限制的定义列表。使用 ModifySecurityPolicy 修改 Web 防护配置时: <br> <li>  若未指定 Rules 参数，或 Rules 参数长度为零：清空所有精准速率限制配置。</li> <li> 若 SecurityPolicy 参数中，未指定 RateLimitingRules 参数值：保持已有自定义规则配置，不做修改。</li>
+        :type Rules: list of RateLimitingRule
+        """
+        self._Rules = None
+
+    @property
+    def Rules(self):
+        """精准速率限制的定义列表。使用 ModifySecurityPolicy 修改 Web 防护配置时: <br> <li>  若未指定 Rules 参数，或 Rules 参数长度为零：清空所有精准速率限制配置。</li> <li> 若 SecurityPolicy 参数中，未指定 RateLimitingRules 参数值：保持已有自定义规则配置，不做修改。</li>
+        :rtype: list of RateLimitingRule
+        """
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+
+    def _deserialize(self, params):
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = RateLimitingRule()
+                obj._deserialize(item)
+                self._Rules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RealtimeLogDeliveryTask(AbstractModel):
     """实时日志投递任务。
 
@@ -37936,6 +38901,151 @@ class RenewPlanResponse(AbstractModel):
     def _deserialize(self, params):
         self._DealName = params.get("DealName")
         self._RequestId = params.get("RequestId")
+
+
+class RequestBodyTransferTimeout(AbstractModel):
+    """正文传输超时时长的具体配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IdleTimeout: 正文传输超时时长，取值 5 ~ 120，单位仅支持秒（s）。
+        :type IdleTimeout: str
+        :param _Enabled: 正文传输超时时长是否开启。取值有：<li>on：开启；</li><li>off：关闭。</li>
+        :type Enabled: str
+        """
+        self._IdleTimeout = None
+        self._Enabled = None
+
+    @property
+    def IdleTimeout(self):
+        """正文传输超时时长，取值 5 ~ 120，单位仅支持秒（s）。
+        :rtype: str
+        """
+        return self._IdleTimeout
+
+    @IdleTimeout.setter
+    def IdleTimeout(self, IdleTimeout):
+        self._IdleTimeout = IdleTimeout
+
+    @property
+    def Enabled(self):
+        """正文传输超时时长是否开启。取值有：<li>on：开启；</li><li>off：关闭。</li>
+        :rtype: str
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+
+    def _deserialize(self, params):
+        self._IdleTimeout = params.get("IdleTimeout")
+        self._Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RequestFieldsForException(AbstractModel):
+    """例外规则中的跳过字段配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Scope: 跳过的具体字段。取值支持：<br/>
+<li>body.json：JSON 请求内容；此时 Condition 支持 key、value,  TargetField 支持 key、value，例如 { "Scope": "body.json",  "Condition": "", "TargetField": "key" }，表示 JSON 请求内容所有参数跳过 WAF 扫描；</li>
+<li style="margin-top:5px">cookie：Cookie；此时 Condition 支持 key、value,  TargetField 支持 key、value，例如 { "Scope": "cookie",  "Condition": "${key} in ['account-id'] and ${value} like ['prefix-*']", "TargetField": "value" }，表示 Cookie 参数名称等于account-id 并且参数值通配符匹配 prefix-* 跳过 WAF 扫描；</li>
+<li style="margin-top:5px">header：HTTP 头部参数；此时 Condition 支持 key、value,  TargetField 支持 key、value，例如 { "Scope": "header",  "Condition": "${key} like ['x-auth-*']", "TargetField": "value" }，表示 header 参数名称通配符匹配 x-auth-* 跳过 WAF 扫描；</li>
+<li style="margin-top:5px">uri.query：URL 编码内容/查询参数；此时 Condition 支持 key、value,  TargetField 支持 key、value，例如 { "Scope": "uri.query",  "Condition": "${key} in ['action'] and ${value} in ['upload', 'delete']", "TargetField": "value" }，表示 URL 编码内容/查询参数的参数名称等于 action 并且参数值等于 upload 或 delete 跳过 WAF 扫描；</li>
+<li style="margin-top:5px">uri：请求路径URI；此时 Condition 必须为空， TargetField 支持 query、path、fullpath，例如 { "Scope": "uri",  "Condition": "", "TargetField": "query" }，表示请求路径 URI 仅查询参数跳过 WAF 扫描；</li>
+<li style="margin-top:5px">body：请求正文内容。此时 Condition 必须为空， TargetField 支持 fullbody、multipart，例如 { "Scope": "body",  "Condition": "", "TargetField": "fullbody" }，表示请求正文内容为完整请求正文跳过 WAF 扫描；</li>
+        :type Scope: str
+        :param _Condition: 跳过的具体字段的表达式，需要符合表达式语法。<br />
+Condition  支持表达式配置语法：<li> 按规则的匹配条件表达式语法编写，支持引用 key、value。</li><li> 支持 in、like 操作符，以及 and 逻辑组合。</li>
+例如：<li>${key} in ['x-trace-id']：参数名称等于x-trace-id。</li><li>${key} in ['x-trace-id'] and ${value} like ['Bearer *']：参数名称等于x-trace-id并且参数值通配符匹配Bearer *。</li>
+        :type Condition: str
+        :param _TargetField: Scope 参数使用不同取值时，TargetField 表达式中支持的值如下：
+<li> body.json：支持 key、value</li>
+<li> cookie：支持 key、value</li>
+<li> header：支持 key、value</li>
+<li> uri.query：支持 key、value</li>
+<li> uri：支持 path、query、fullpath</li>
+<li> body：支持 fullbody、multipart</li>
+        :type TargetField: str
+        """
+        self._Scope = None
+        self._Condition = None
+        self._TargetField = None
+
+    @property
+    def Scope(self):
+        """跳过的具体字段。取值支持：<br/>
+<li>body.json：JSON 请求内容；此时 Condition 支持 key、value,  TargetField 支持 key、value，例如 { "Scope": "body.json",  "Condition": "", "TargetField": "key" }，表示 JSON 请求内容所有参数跳过 WAF 扫描；</li>
+<li style="margin-top:5px">cookie：Cookie；此时 Condition 支持 key、value,  TargetField 支持 key、value，例如 { "Scope": "cookie",  "Condition": "${key} in ['account-id'] and ${value} like ['prefix-*']", "TargetField": "value" }，表示 Cookie 参数名称等于account-id 并且参数值通配符匹配 prefix-* 跳过 WAF 扫描；</li>
+<li style="margin-top:5px">header：HTTP 头部参数；此时 Condition 支持 key、value,  TargetField 支持 key、value，例如 { "Scope": "header",  "Condition": "${key} like ['x-auth-*']", "TargetField": "value" }，表示 header 参数名称通配符匹配 x-auth-* 跳过 WAF 扫描；</li>
+<li style="margin-top:5px">uri.query：URL 编码内容/查询参数；此时 Condition 支持 key、value,  TargetField 支持 key、value，例如 { "Scope": "uri.query",  "Condition": "${key} in ['action'] and ${value} in ['upload', 'delete']", "TargetField": "value" }，表示 URL 编码内容/查询参数的参数名称等于 action 并且参数值等于 upload 或 delete 跳过 WAF 扫描；</li>
+<li style="margin-top:5px">uri：请求路径URI；此时 Condition 必须为空， TargetField 支持 query、path、fullpath，例如 { "Scope": "uri",  "Condition": "", "TargetField": "query" }，表示请求路径 URI 仅查询参数跳过 WAF 扫描；</li>
+<li style="margin-top:5px">body：请求正文内容。此时 Condition 必须为空， TargetField 支持 fullbody、multipart，例如 { "Scope": "body",  "Condition": "", "TargetField": "fullbody" }，表示请求正文内容为完整请求正文跳过 WAF 扫描；</li>
+        :rtype: str
+        """
+        return self._Scope
+
+    @Scope.setter
+    def Scope(self, Scope):
+        self._Scope = Scope
+
+    @property
+    def Condition(self):
+        """跳过的具体字段的表达式，需要符合表达式语法。<br />
+Condition  支持表达式配置语法：<li> 按规则的匹配条件表达式语法编写，支持引用 key、value。</li><li> 支持 in、like 操作符，以及 and 逻辑组合。</li>
+例如：<li>${key} in ['x-trace-id']：参数名称等于x-trace-id。</li><li>${key} in ['x-trace-id'] and ${value} like ['Bearer *']：参数名称等于x-trace-id并且参数值通配符匹配Bearer *。</li>
+        :rtype: str
+        """
+        return self._Condition
+
+    @Condition.setter
+    def Condition(self, Condition):
+        self._Condition = Condition
+
+    @property
+    def TargetField(self):
+        """Scope 参数使用不同取值时，TargetField 表达式中支持的值如下：
+<li> body.json：支持 key、value</li>
+<li> cookie：支持 key、value</li>
+<li> header：支持 key、value</li>
+<li> uri.query：支持 key、value</li>
+<li> uri：支持 path、query、fullpath</li>
+<li> body：支持 fullbody、multipart</li>
+        :rtype: str
+        """
+        return self._TargetField
+
+    @TargetField.setter
+    def TargetField(self, TargetField):
+        self._TargetField = TargetField
+
+
+    def _deserialize(self, params):
+        self._Scope = params.get("Scope")
+        self._Condition = params.get("Condition")
+        self._TargetField = params.get("TargetField")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Resource(AbstractModel):
@@ -40797,24 +41907,48 @@ class SecurityAction(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 安全执行的具体动作。取值有：
-<li>Deny：拦截；</li><li>Monitor：观察；</li><li>ReturnCustomPage：使用指定页面拦截；</li><li>Redirect：重定向至 URL；</li><li>BlockIP：IP 封禁；</li><li>JSChallenge：JavaScript 挑战；</li><li>ManagedChallenge：托管挑战；</li><li>Disabled：未启用；</li><li>Allow：放行。</li>
+<li>Deny：拦截，阻止请求访问站点资源；</li>
+<li>Monitor：观察，仅记录日志；</li>
+<li>Redirect：重定向至 URL；</li>
+<li>Disabled：未启用，不启用指定规则；</li>
+<li>Allow：允许访问，但延迟处理请求；</li>
+<li>Challenge：挑战，响应挑战内容；</li>
+<li>BlockIP：待废弃，IP 封禁；</li>
+<li>ReturnCustomPage：待废弃，使用指定页面拦截；</li>
+<li>JSChallenge：待废弃，JavaScript 挑战；</li>
+<li>ManagedChallenge：待废弃，托管挑战。</li>
         :type Name: str
-        :param _BlockIPActionParameters: 当 Name 为 BlockIP 时的附加参数。
-        :type BlockIPActionParameters: :class:`tencentcloud.teo.v20220901.models.BlockIPActionParameters`
-        :param _ReturnCustomPageActionParameters: 当 Name 为 ReturnCustomPage 时的附加参数。
-        :type ReturnCustomPageActionParameters: :class:`tencentcloud.teo.v20220901.models.ReturnCustomPageActionParameters`
+        :param _DenyActionParameters: 当 Name 为 Deny 时的附加参数。
+        :type DenyActionParameters: :class:`tencentcloud.teo.v20220901.models.DenyActionParameters`
         :param _RedirectActionParameters: 当 Name 为 Redirect 时的附加参数。
         :type RedirectActionParameters: :class:`tencentcloud.teo.v20220901.models.RedirectActionParameters`
+        :param _ChallengeActionParameters: 当 Name 为 Challenge 时的附加参数。
+        :type ChallengeActionParameters: :class:`tencentcloud.teo.v20220901.models.ChallengeActionParameters`
+        :param _BlockIPActionParameters: 待废弃，当 Name 为 BlockIP 时的附加参数。
+        :type BlockIPActionParameters: :class:`tencentcloud.teo.v20220901.models.BlockIPActionParameters`
+        :param _ReturnCustomPageActionParameters: 待废弃，当 Name 为 ReturnCustomPage 时的附加参数。
+        :type ReturnCustomPageActionParameters: :class:`tencentcloud.teo.v20220901.models.ReturnCustomPageActionParameters`
         """
         self._Name = None
+        self._DenyActionParameters = None
+        self._RedirectActionParameters = None
+        self._ChallengeActionParameters = None
         self._BlockIPActionParameters = None
         self._ReturnCustomPageActionParameters = None
-        self._RedirectActionParameters = None
 
     @property
     def Name(self):
         """安全执行的具体动作。取值有：
-<li>Deny：拦截；</li><li>Monitor：观察；</li><li>ReturnCustomPage：使用指定页面拦截；</li><li>Redirect：重定向至 URL；</li><li>BlockIP：IP 封禁；</li><li>JSChallenge：JavaScript 挑战；</li><li>ManagedChallenge：托管挑战；</li><li>Disabled：未启用；</li><li>Allow：放行。</li>
+<li>Deny：拦截，阻止请求访问站点资源；</li>
+<li>Monitor：观察，仅记录日志；</li>
+<li>Redirect：重定向至 URL；</li>
+<li>Disabled：未启用，不启用指定规则；</li>
+<li>Allow：允许访问，但延迟处理请求；</li>
+<li>Challenge：挑战，响应挑战内容；</li>
+<li>BlockIP：待废弃，IP 封禁；</li>
+<li>ReturnCustomPage：待废弃，使用指定页面拦截；</li>
+<li>JSChallenge：待废弃，JavaScript 挑战；</li>
+<li>ManagedChallenge：待废弃，托管挑战。</li>
         :rtype: str
         """
         return self._Name
@@ -40824,26 +41958,15 @@ class SecurityAction(AbstractModel):
         self._Name = Name
 
     @property
-    def BlockIPActionParameters(self):
-        """当 Name 为 BlockIP 时的附加参数。
-        :rtype: :class:`tencentcloud.teo.v20220901.models.BlockIPActionParameters`
+    def DenyActionParameters(self):
+        """当 Name 为 Deny 时的附加参数。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DenyActionParameters`
         """
-        return self._BlockIPActionParameters
+        return self._DenyActionParameters
 
-    @BlockIPActionParameters.setter
-    def BlockIPActionParameters(self, BlockIPActionParameters):
-        self._BlockIPActionParameters = BlockIPActionParameters
-
-    @property
-    def ReturnCustomPageActionParameters(self):
-        """当 Name 为 ReturnCustomPage 时的附加参数。
-        :rtype: :class:`tencentcloud.teo.v20220901.models.ReturnCustomPageActionParameters`
-        """
-        return self._ReturnCustomPageActionParameters
-
-    @ReturnCustomPageActionParameters.setter
-    def ReturnCustomPageActionParameters(self, ReturnCustomPageActionParameters):
-        self._ReturnCustomPageActionParameters = ReturnCustomPageActionParameters
+    @DenyActionParameters.setter
+    def DenyActionParameters(self, DenyActionParameters):
+        self._DenyActionParameters = DenyActionParameters
 
     @property
     def RedirectActionParameters(self):
@@ -40856,18 +41979,57 @@ class SecurityAction(AbstractModel):
     def RedirectActionParameters(self, RedirectActionParameters):
         self._RedirectActionParameters = RedirectActionParameters
 
+    @property
+    def ChallengeActionParameters(self):
+        """当 Name 为 Challenge 时的附加参数。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ChallengeActionParameters`
+        """
+        return self._ChallengeActionParameters
+
+    @ChallengeActionParameters.setter
+    def ChallengeActionParameters(self, ChallengeActionParameters):
+        self._ChallengeActionParameters = ChallengeActionParameters
+
+    @property
+    def BlockIPActionParameters(self):
+        """待废弃，当 Name 为 BlockIP 时的附加参数。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.BlockIPActionParameters`
+        """
+        return self._BlockIPActionParameters
+
+    @BlockIPActionParameters.setter
+    def BlockIPActionParameters(self, BlockIPActionParameters):
+        self._BlockIPActionParameters = BlockIPActionParameters
+
+    @property
+    def ReturnCustomPageActionParameters(self):
+        """待废弃，当 Name 为 ReturnCustomPage 时的附加参数。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ReturnCustomPageActionParameters`
+        """
+        return self._ReturnCustomPageActionParameters
+
+    @ReturnCustomPageActionParameters.setter
+    def ReturnCustomPageActionParameters(self, ReturnCustomPageActionParameters):
+        self._ReturnCustomPageActionParameters = ReturnCustomPageActionParameters
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
+        if params.get("DenyActionParameters") is not None:
+            self._DenyActionParameters = DenyActionParameters()
+            self._DenyActionParameters._deserialize(params.get("DenyActionParameters"))
+        if params.get("RedirectActionParameters") is not None:
+            self._RedirectActionParameters = RedirectActionParameters()
+            self._RedirectActionParameters._deserialize(params.get("RedirectActionParameters"))
+        if params.get("ChallengeActionParameters") is not None:
+            self._ChallengeActionParameters = ChallengeActionParameters()
+            self._ChallengeActionParameters._deserialize(params.get("ChallengeActionParameters"))
         if params.get("BlockIPActionParameters") is not None:
             self._BlockIPActionParameters = BlockIPActionParameters()
             self._BlockIPActionParameters._deserialize(params.get("BlockIPActionParameters"))
         if params.get("ReturnCustomPageActionParameters") is not None:
             self._ReturnCustomPageActionParameters = ReturnCustomPageActionParameters()
             self._ReturnCustomPageActionParameters._deserialize(params.get("ReturnCustomPageActionParameters"))
-        if params.get("RedirectActionParameters") is not None:
-            self._RedirectActionParameters = RedirectActionParameters()
-            self._RedirectActionParameters._deserialize(params.get("RedirectActionParameters"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -41097,9 +42259,18 @@ class SecurityPolicy(AbstractModel):
         :type CustomRules: :class:`tencentcloud.teo.v20220901.models.CustomRules`
         :param _ManagedRules: 托管规则配置。
         :type ManagedRules: :class:`tencentcloud.teo.v20220901.models.ManagedRules`
+        :param _HttpDDoSProtection: HTTP DDOS防护配置。
+        :type HttpDDoSProtection: :class:`tencentcloud.teo.v20220901.models.HttpDDoSProtection`
+        :param _RateLimitingRules: 速率限制规则配置。
+        :type RateLimitingRules: :class:`tencentcloud.teo.v20220901.models.RateLimitingRules`
+        :param _ExceptionRules: 例外规则配置。
+        :type ExceptionRules: :class:`tencentcloud.teo.v20220901.models.ExceptionRules`
         """
         self._CustomRules = None
         self._ManagedRules = None
+        self._HttpDDoSProtection = None
+        self._RateLimitingRules = None
+        self._ExceptionRules = None
 
     @property
     def CustomRules(self):
@@ -41123,6 +42294,39 @@ class SecurityPolicy(AbstractModel):
     def ManagedRules(self, ManagedRules):
         self._ManagedRules = ManagedRules
 
+    @property
+    def HttpDDoSProtection(self):
+        """HTTP DDOS防护配置。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.HttpDDoSProtection`
+        """
+        return self._HttpDDoSProtection
+
+    @HttpDDoSProtection.setter
+    def HttpDDoSProtection(self, HttpDDoSProtection):
+        self._HttpDDoSProtection = HttpDDoSProtection
+
+    @property
+    def RateLimitingRules(self):
+        """速率限制规则配置。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.RateLimitingRules`
+        """
+        return self._RateLimitingRules
+
+    @RateLimitingRules.setter
+    def RateLimitingRules(self, RateLimitingRules):
+        self._RateLimitingRules = RateLimitingRules
+
+    @property
+    def ExceptionRules(self):
+        """例外规则配置。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ExceptionRules`
+        """
+        return self._ExceptionRules
+
+    @ExceptionRules.setter
+    def ExceptionRules(self, ExceptionRules):
+        self._ExceptionRules = ExceptionRules
+
 
     def _deserialize(self, params):
         if params.get("CustomRules") is not None:
@@ -41131,6 +42335,15 @@ class SecurityPolicy(AbstractModel):
         if params.get("ManagedRules") is not None:
             self._ManagedRules = ManagedRules()
             self._ManagedRules._deserialize(params.get("ManagedRules"))
+        if params.get("HttpDDoSProtection") is not None:
+            self._HttpDDoSProtection = HttpDDoSProtection()
+            self._HttpDDoSProtection._deserialize(params.get("HttpDDoSProtection"))
+        if params.get("RateLimitingRules") is not None:
+            self._RateLimitingRules = RateLimitingRules()
+            self._RateLimitingRules._deserialize(params.get("RateLimitingRules"))
+        if params.get("ExceptionRules") is not None:
+            self._ExceptionRules = ExceptionRules()
+            self._ExceptionRules._deserialize(params.get("ExceptionRules"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -41542,6 +42755,93 @@ class SkipCondition(AbstractModel):
         self._MatchFrom = params.get("MatchFrom")
         self._MatchContentType = params.get("MatchContentType")
         self._MatchContent = params.get("MatchContent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SlowAttackDefense(AbstractModel):
+    """慢速攻击防护的具体配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: 慢速攻击防护是否开启。取值有：<li>on：开启；</li><li>off：关闭。</li>
+        :type Enabled: str
+        :param _Action: 慢速攻击防护的处置方式，当 Enabled 为 on 时，此字段必填。SecurityAction 的 Name 取值支持：<li>Monitor：观察；</li><li>Deny：拦截；</li>
+        :type Action: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
+        :param _MinimalRequestBodyTransferRate: 正文传输最小速率阈值的具体配置，当 Enabled 为 on 时，此字段必填。
+        :type MinimalRequestBodyTransferRate: :class:`tencentcloud.teo.v20220901.models.MinimalRequestBodyTransferRate`
+        :param _RequestBodyTransferTimeout: 正文传输超时时长的具体配置，当 Enabled 为 on 时，此字段必填。
+        :type RequestBodyTransferTimeout: :class:`tencentcloud.teo.v20220901.models.RequestBodyTransferTimeout`
+        """
+        self._Enabled = None
+        self._Action = None
+        self._MinimalRequestBodyTransferRate = None
+        self._RequestBodyTransferTimeout = None
+
+    @property
+    def Enabled(self):
+        """慢速攻击防护是否开启。取值有：<li>on：开启；</li><li>off：关闭。</li>
+        :rtype: str
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def Action(self):
+        """慢速攻击防护的处置方式，当 Enabled 为 on 时，此字段必填。SecurityAction 的 Name 取值支持：<li>Monitor：观察；</li><li>Deny：拦截；</li>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def MinimalRequestBodyTransferRate(self):
+        """正文传输最小速率阈值的具体配置，当 Enabled 为 on 时，此字段必填。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.MinimalRequestBodyTransferRate`
+        """
+        return self._MinimalRequestBodyTransferRate
+
+    @MinimalRequestBodyTransferRate.setter
+    def MinimalRequestBodyTransferRate(self, MinimalRequestBodyTransferRate):
+        self._MinimalRequestBodyTransferRate = MinimalRequestBodyTransferRate
+
+    @property
+    def RequestBodyTransferTimeout(self):
+        """正文传输超时时长的具体配置，当 Enabled 为 on 时，此字段必填。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.RequestBodyTransferTimeout`
+        """
+        return self._RequestBodyTransferTimeout
+
+    @RequestBodyTransferTimeout.setter
+    def RequestBodyTransferTimeout(self, RequestBodyTransferTimeout):
+        self._RequestBodyTransferTimeout = RequestBodyTransferTimeout
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        if params.get("Action") is not None:
+            self._Action = SecurityAction()
+            self._Action._deserialize(params.get("Action"))
+        if params.get("MinimalRequestBodyTransferRate") is not None:
+            self._MinimalRequestBodyTransferRate = MinimalRequestBodyTransferRate()
+            self._MinimalRequestBodyTransferRate._deserialize(params.get("MinimalRequestBodyTransferRate"))
+        if params.get("RequestBodyTransferTimeout") is not None:
+            self._RequestBodyTransferTimeout = RequestBodyTransferTimeout()
+            self._RequestBodyTransferTimeout._deserialize(params.get("RequestBodyTransferTimeout"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

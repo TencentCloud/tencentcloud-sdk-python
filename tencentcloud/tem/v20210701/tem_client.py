@@ -995,6 +995,29 @@ class TemClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyGatewayIngress(self, request):
+        """修改网关的转发配置
+
+        :param request: Request instance for ModifyGatewayIngress.
+        :type request: :class:`tencentcloud.tem.v20210701.models.ModifyGatewayIngressRequest`
+        :rtype: :class:`tencentcloud.tem.v20210701.models.ModifyGatewayIngressResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyGatewayIngress", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyGatewayIngressResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyIngress(self, request):
         """此接口没有被使用了
 

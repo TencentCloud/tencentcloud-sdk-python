@@ -5499,6 +5499,159 @@ class CreateBatchSignUrlResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateContractDiffTaskWebUrlRequest(AbstractModel):
+    """CreateContractDiffTaskWebUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _SkipFileUpload: 是否跳过文件上传确认页。
+当该参数值为`false`时，`OriginalFileResourceId`和`DiffFileResourceId`参数不需要传值，需要在生成的web页面中上传对比文件；
+当该参数值为`true`时，`OriginalFileResourceId`和`DiffFileResourceId`参数必填，生成的web页面将跳过上传页面显示对比结果。
+        :type SkipFileUpload: bool
+        :param _OriginalFileResourceId: 需要对比的原合同文件资源ID，通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">UploadFiles</a>接口获取文件资源ID。
+        :type OriginalFileResourceId: str
+        :param _DiffFileResourceId: 需要对比的新合同文件资源ID，通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">UploadFiles</a>接口获取文件资源ID。
+        :type DiffFileResourceId: str
+        """
+        self._Operator = None
+        self._SkipFileUpload = None
+        self._OriginalFileResourceId = None
+        self._DiffFileResourceId = None
+
+    @property
+    def Operator(self):
+        """执行本接口操作的员工信息。使用此接口时，必须填写userId。
+
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def SkipFileUpload(self):
+        """是否跳过文件上传确认页。
+当该参数值为`false`时，`OriginalFileResourceId`和`DiffFileResourceId`参数不需要传值，需要在生成的web页面中上传对比文件；
+当该参数值为`true`时，`OriginalFileResourceId`和`DiffFileResourceId`参数必填，生成的web页面将跳过上传页面显示对比结果。
+        :rtype: bool
+        """
+        return self._SkipFileUpload
+
+    @SkipFileUpload.setter
+    def SkipFileUpload(self, SkipFileUpload):
+        self._SkipFileUpload = SkipFileUpload
+
+    @property
+    def OriginalFileResourceId(self):
+        """需要对比的原合同文件资源ID，通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">UploadFiles</a>接口获取文件资源ID。
+        :rtype: str
+        """
+        return self._OriginalFileResourceId
+
+    @OriginalFileResourceId.setter
+    def OriginalFileResourceId(self, OriginalFileResourceId):
+        self._OriginalFileResourceId = OriginalFileResourceId
+
+    @property
+    def DiffFileResourceId(self):
+        """需要对比的新合同文件资源ID，通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">UploadFiles</a>接口获取文件资源ID。
+        :rtype: str
+        """
+        return self._DiffFileResourceId
+
+    @DiffFileResourceId.setter
+    def DiffFileResourceId(self, DiffFileResourceId):
+        self._DiffFileResourceId = DiffFileResourceId
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._SkipFileUpload = params.get("SkipFileUpload")
+        self._OriginalFileResourceId = params.get("OriginalFileResourceId")
+        self._DiffFileResourceId = params.get("DiffFileResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateContractDiffTaskWebUrlResponse(AbstractModel):
+    """CreateContractDiffTaskWebUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 接口返回的合同对比任务ID，可以调用接口<a href="https://qian.tencent.com/developers/companyApis/embedPages/DescribeContractDiffTaskWebUrl" target="_blank">获取合同对比结果web页面</a>查看对比任务的结果。
+当`SkipFileUpload`参数为`true`时才会返回值，否则为空。
+        :type TaskId: str
+        :param _WebUrl: 合同对比嵌入式web页面链接，有效期：5分钟
+链接仅能使用一次
+        :type WebUrl: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._WebUrl = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        """接口返回的合同对比任务ID，可以调用接口<a href="https://qian.tencent.com/developers/companyApis/embedPages/DescribeContractDiffTaskWebUrl" target="_blank">获取合同对比结果web页面</a>查看对比任务的结果。
+当`SkipFileUpload`参数为`true`时才会返回值，否则为空。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def WebUrl(self):
+        """合同对比嵌入式web页面链接，有效期：5分钟
+链接仅能使用一次
+        :rtype: str
+        """
+        return self._WebUrl
+
+    @WebUrl.setter
+    def WebUrl(self, WebUrl):
+        self._WebUrl = WebUrl
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._WebUrl = params.get("WebUrl")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateConvertTaskApiRequest(AbstractModel):
     """CreateConvertTaskApi请求参数结构体
 
@@ -18804,6 +18957,108 @@ class DescribeCancelFlowsTaskResponse(AbstractModel):
                 obj = CancelFailureFlow()
                 obj._deserialize(item)
                 self._FailureFlows.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeContractDiffTaskWebUrlRequest(AbstractModel):
+    """DescribeContractDiffTaskWebUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _TaskId: 合同对比任务ID，该参数通过调用接口<a href="https://qian.tencent.com/developers/companyApis/embedPages/CreateContractDiffTaskWebUrl" target="_blank">创建合同对比web页面</a>获取。
+        :type TaskId: str
+        """
+        self._Operator = None
+        self._TaskId = None
+
+    @property
+    def Operator(self):
+        """执行本接口操作的员工信息。使用此接口时，必须填写userId。
+
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def TaskId(self):
+        """合同对比任务ID，该参数通过调用接口<a href="https://qian.tencent.com/developers/companyApis/embedPages/CreateContractDiffTaskWebUrl" target="_blank">创建合同对比web页面</a>获取。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeContractDiffTaskWebUrlResponse(AbstractModel):
+    """DescribeContractDiffTaskWebUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WebUrl: 合同对比嵌入式web页面链接，有效期：5分钟
+链接仅能使用一次
+        :type WebUrl: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._WebUrl = None
+        self._RequestId = None
+
+    @property
+    def WebUrl(self):
+        """合同对比嵌入式web页面链接，有效期：5分钟
+链接仅能使用一次
+        :rtype: str
+        """
+        return self._WebUrl
+
+    @WebUrl.setter
+    def WebUrl(self, WebUrl):
+        self._WebUrl = WebUrl
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._WebUrl = params.get("WebUrl")
         self._RequestId = params.get("RequestId")
 
 

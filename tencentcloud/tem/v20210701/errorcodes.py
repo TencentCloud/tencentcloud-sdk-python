@@ -110,6 +110,9 @@ INTERNALERROR_DESCRIBESERVICELISTERROR = 'InternalError.DescribeServiceListError
 # 修改配置失败。
 INTERNALERROR_MODIFYCONFIGDATAERROR = 'InternalError.ModifyConfigDataError'
 
+# 修改网关的转发配置失败。
+INTERNALERROR_MODIFYGATEWAYINGRESSERROR = 'InternalError.ModifyGatewayIngressError'
+
 # 修改 LogConfig 错误。
 INTERNALERROR_MODIFYLOGCONFIGERROR = 'InternalError.ModifyLogConfigError'
 
@@ -208,6 +211,9 @@ INVALIDPARAMETERVALUE_HPATHRESHOLDINVALID = 'InvalidParameterValue.HpaThresholdI
 
 # 访问配置重定向需要启用 HTTPS。
 INVALIDPARAMETERVALUE_INGRESSREWRITEREQUIREDHTTPSENABLE = 'InvalidParameterValue.IngressRewriteRequiredHttpsEnable'
+
+# 自动重定向规则冲突，请检查是否存在同一个path的http/https转发。
+INVALIDPARAMETERVALUE_INGRESSRULESCONFLICT = 'InvalidParameterValue.IngressRulesConflict'
 
 # 无效的定时伸缩周期。
 INVALIDPARAMETERVALUE_INVALIDCRONSCALERPERIOD = 'InvalidParameterValue.InvalidCronScalerPeriod'

@@ -9691,13 +9691,9 @@ class GeneralAccurateOCRRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageBase64: 图片的 Base64 值。
-要求图片经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP格式。
-图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :param _ImageBase64: 图片/PDF的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :type ImageBase64: str
-        :param _ImageUrl: 图片的 Url 地址。
-要求图片经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP格式。图片下载时间不超过 3 秒。
-图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :param _ImageUrl: 图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :type ImageUrl: str
         :param _IsWords: 是否返回单字信息，默认关
         :type IsWords: bool
@@ -9720,9 +9716,7 @@ class GeneralAccurateOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """图片的 Base64 值。
-要求图片经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP格式。
-图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        """图片/PDF的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :rtype: str
         """
         return self._ImageBase64
@@ -9733,9 +9727,7 @@ class GeneralAccurateOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """图片的 Url 地址。
-要求图片经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP格式。图片下载时间不超过 3 秒。
-图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        """图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :rtype: str
         """
         return self._ImageUrl
@@ -14035,7 +14027,7 @@ FailedOperation.UnKnowError：表示识别失败；
         :type Angle: float
         :param _SingleInvoiceInfos: 识别到的内容。
         :type SingleInvoiceInfos: :class:`tencentcloud.ocr.v20181119.models.SingleInvoiceItem`
-        :param _Page: 发票处于识别图片或PDF文件中的页教，默认从1开始。
+        :param _Page: 发票处于识别图片或PDF文件中的页码，默认从1开始。
         :type Page: int
         :param _SubType: 发票详细类型，详见票据识别（高级版）接口文档说明中 SubType 返回值说明
         :type SubType: str
@@ -14049,6 +14041,8 @@ FailedOperation.UnKnowError：表示识别失败；
         :type ItemPolygon: list of ItemPolygonInfo
         :param _QRCode: 二维码数据。
         :type QRCode: str
+        :param _InvoiceSealInfo: 印章信息
+        :type InvoiceSealInfo: :class:`tencentcloud.ocr.v20181119.models.InvoiceSealInfo`
         """
         self._Code = None
         self._Type = None
@@ -14062,6 +14056,7 @@ FailedOperation.UnKnowError：表示识别失败；
         self._SubTypeDescription = None
         self._ItemPolygon = None
         self._QRCode = None
+        self._InvoiceSealInfo = None
 
     @property
     def Code(self):
@@ -14141,7 +14136,7 @@ FailedOperation.UnKnowError：表示识别失败；
 
     @property
     def Page(self):
-        """发票处于识别图片或PDF文件中的页教，默认从1开始。
+        """发票处于识别图片或PDF文件中的页码，默认从1开始。
         :rtype: int
         """
         return self._Page
@@ -14216,6 +14211,17 @@ FailedOperation.UnKnowError：表示识别失败；
     def QRCode(self, QRCode):
         self._QRCode = QRCode
 
+    @property
+    def InvoiceSealInfo(self):
+        """印章信息
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.InvoiceSealInfo`
+        """
+        return self._InvoiceSealInfo
+
+    @InvoiceSealInfo.setter
+    def InvoiceSealInfo(self, InvoiceSealInfo):
+        self._InvoiceSealInfo = InvoiceSealInfo
+
 
     def _deserialize(self, params):
         self._Code = params.get("Code")
@@ -14239,6 +14245,90 @@ FailedOperation.UnKnowError：表示识别失败；
                 obj._deserialize(item)
                 self._ItemPolygon.append(obj)
         self._QRCode = params.get("QRCode")
+        if params.get("InvoiceSealInfo") is not None:
+            self._InvoiceSealInfo = InvoiceSealInfo()
+            self._InvoiceSealInfo._deserialize(params.get("InvoiceSealInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InvoiceSealInfo(AbstractModel):
+    """印章信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CompanySealMark: 是否有公司印章（0：没有，1：有）
+        :type CompanySealMark: str
+        :param _SupervisionSealMark: 是否有监制印章（0：没有，1：有）
+        :type SupervisionSealMark: str
+        :param _CompanySealMarkInfo: 公司印章信息
+        :type CompanySealMarkInfo: list of str
+        :param _SupervisionSealMarkInfo: 监制印章信息
+        :type SupervisionSealMarkInfo: list of str
+        """
+        self._CompanySealMark = None
+        self._SupervisionSealMark = None
+        self._CompanySealMarkInfo = None
+        self._SupervisionSealMarkInfo = None
+
+    @property
+    def CompanySealMark(self):
+        """是否有公司印章（0：没有，1：有）
+        :rtype: str
+        """
+        return self._CompanySealMark
+
+    @CompanySealMark.setter
+    def CompanySealMark(self, CompanySealMark):
+        self._CompanySealMark = CompanySealMark
+
+    @property
+    def SupervisionSealMark(self):
+        """是否有监制印章（0：没有，1：有）
+        :rtype: str
+        """
+        return self._SupervisionSealMark
+
+    @SupervisionSealMark.setter
+    def SupervisionSealMark(self, SupervisionSealMark):
+        self._SupervisionSealMark = SupervisionSealMark
+
+    @property
+    def CompanySealMarkInfo(self):
+        """公司印章信息
+        :rtype: list of str
+        """
+        return self._CompanySealMarkInfo
+
+    @CompanySealMarkInfo.setter
+    def CompanySealMarkInfo(self, CompanySealMarkInfo):
+        self._CompanySealMarkInfo = CompanySealMarkInfo
+
+    @property
+    def SupervisionSealMarkInfo(self):
+        """监制印章信息
+        :rtype: list of str
+        """
+        return self._SupervisionSealMarkInfo
+
+    @SupervisionSealMarkInfo.setter
+    def SupervisionSealMarkInfo(self, SupervisionSealMarkInfo):
+        self._SupervisionSealMarkInfo = SupervisionSealMarkInfo
+
+
+    def _deserialize(self, params):
+        self._CompanySealMark = params.get("CompanySealMark")
+        self._SupervisionSealMark = params.get("SupervisionSealMark")
+        self._CompanySealMarkInfo = params.get("CompanySealMarkInfo")
+        self._SupervisionSealMarkInfo = params.get("SupervisionSealMarkInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16140,7 +16230,9 @@ class MainlandPermitOCRRequest(AbstractModel):
         :param _RetProfile: 是否返回头像。默认不返回。
         :type RetProfile: bool
         :param _CardSide: 图片正反面
-FRONT：正面、BACK：反面，默认为FRONT
+FRONT：正面
+BACK：反面
+默认为FRONT
         :type CardSide: str
         """
         self._ImageBase64 = None
@@ -16191,7 +16283,9 @@ FRONT：正面、BACK：反面，默认为FRONT
     @property
     def CardSide(self):
         """图片正反面
-FRONT：正面、BACK：反面，默认为FRONT
+FRONT：正面
+BACK：反面
+默认为FRONT
         :rtype: str
         """
         return self._CardSide
@@ -16241,7 +16335,7 @@ class MainlandPermitOCRResponse(AbstractModel):
         :type IssueAddress: str
         :param _IssueNumber: 签发次数
         :type IssueNumber: str
-        :param _Type: 证件类别， 如：台湾居民来往大陆通行证、港澳居民来往内地通行证。
+        :param _Type: 证件类别， 如：台湾居民来往大陆通行证、港澳居民来往内地通行证、往来港澳通行证。
         :type Type: str
         :param _Profile: RetProfile为True时返回头像字段， Base64编码
         :type Profile: str
@@ -16368,7 +16462,7 @@ class MainlandPermitOCRResponse(AbstractModel):
 
     @property
     def Type(self):
-        """证件类别， 如：台湾居民来往大陆通行证、港澳居民来往内地通行证。
+        """证件类别， 如：台湾居民来往大陆通行证、港澳居民来往内地通行证、往来港澳通行证。
         :rtype: str
         """
         return self._Type
@@ -23884,6 +23978,8 @@ class RecognizeGeneralInvoiceRequest(AbstractModel):
         :type EnableItemPolygon: bool
         :param _EnableQRCode: 是否开启二维码识别。
         :type EnableQRCode: bool
+        :param _EnableSeal: 是否开启印章识别，默认为false
+        :type EnableSeal: bool
         """
         self._ImageBase64 = None
         self._ImageUrl = None
@@ -23895,6 +23991,7 @@ class RecognizeGeneralInvoiceRequest(AbstractModel):
         self._EnableCutImage = None
         self._EnableItemPolygon = None
         self._EnableQRCode = None
+        self._EnableSeal = None
 
     @property
     def ImageBase64(self):
@@ -24030,6 +24127,17 @@ class RecognizeGeneralInvoiceRequest(AbstractModel):
     def EnableQRCode(self, EnableQRCode):
         self._EnableQRCode = EnableQRCode
 
+    @property
+    def EnableSeal(self):
+        """是否开启印章识别，默认为false
+        :rtype: bool
+        """
+        return self._EnableSeal
+
+    @EnableSeal.setter
+    def EnableSeal(self, EnableSeal):
+        self._EnableSeal = EnableSeal
+
 
     def _deserialize(self, params):
         self._ImageBase64 = params.get("ImageBase64")
@@ -24042,6 +24150,7 @@ class RecognizeGeneralInvoiceRequest(AbstractModel):
         self._EnableCutImage = params.get("EnableCutImage")
         self._EnableItemPolygon = params.get("EnableItemPolygon")
         self._EnableQRCode = params.get("EnableQRCode")
+        self._EnableSeal = params.get("EnableSeal")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29881,6 +29990,8 @@ DispatchWeightNote -- 磅单发货单识别模板
 ReceiptWeightNote -- 磅单收货单识别模板
 ArticalRecognize -- 手写作文模版
 Table -- 表格模版
+SteelLabel -- 实物标签识别模板
+CarInsurance -- 车辆保险单识别模板
         :type ConfigId: str
         :param _EnableCoord: 是否开启全文字段坐标值的识别
         :type EnableCoord: bool
@@ -29987,6 +30098,8 @@ DispatchWeightNote -- 磅单发货单识别模板
 ReceiptWeightNote -- 磅单收货单识别模板
 ArticalRecognize -- 手写作文模版
 Table -- 表格模版
+SteelLabel -- 实物标签识别模板
+CarInsurance -- 车辆保险单识别模板
         :rtype: str
         """
         return self._ConfigId

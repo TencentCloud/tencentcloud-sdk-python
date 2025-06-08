@@ -9491,6 +9491,206 @@ class ModifyEnvironmentResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyGatewayIngressRequest(AbstractModel):
+    """ModifyGatewayIngress请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvironmentId: 环境 ID
+        :type EnvironmentId: str
+        :param _GatewayName: 网关名称
+        :type GatewayName: str
+        :param _GatewayType: 网关类型，如 clb
+        :type GatewayType: str
+        :param _Name: 转发配置名称
+        :type Name: str
+        :param _Rules: rules 配置
+        :type Rules: list of IngressRule
+        :param _Mixed: 是否混合 https，默认 false，可选值 true 代表有 https 协议监听
+        :type Mixed: bool
+        :param _Tls: tls 配置
+        :type Tls: list of IngressTls
+        :param _RewriteType: 重定向模式，可选值：
+- AUTO（自动重定向http到https）
+- NONE（不使用重定向）
+        :type RewriteType: str
+        """
+        self._EnvironmentId = None
+        self._GatewayName = None
+        self._GatewayType = None
+        self._Name = None
+        self._Rules = None
+        self._Mixed = None
+        self._Tls = None
+        self._RewriteType = None
+
+    @property
+    def EnvironmentId(self):
+        """环境 ID
+        :rtype: str
+        """
+        return self._EnvironmentId
+
+    @EnvironmentId.setter
+    def EnvironmentId(self, EnvironmentId):
+        self._EnvironmentId = EnvironmentId
+
+    @property
+    def GatewayName(self):
+        """网关名称
+        :rtype: str
+        """
+        return self._GatewayName
+
+    @GatewayName.setter
+    def GatewayName(self, GatewayName):
+        self._GatewayName = GatewayName
+
+    @property
+    def GatewayType(self):
+        """网关类型，如 clb
+        :rtype: str
+        """
+        return self._GatewayType
+
+    @GatewayType.setter
+    def GatewayType(self, GatewayType):
+        self._GatewayType = GatewayType
+
+    @property
+    def Name(self):
+        """转发配置名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Rules(self):
+        """rules 配置
+        :rtype: list of IngressRule
+        """
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+    @property
+    def Mixed(self):
+        """是否混合 https，默认 false，可选值 true 代表有 https 协议监听
+        :rtype: bool
+        """
+        return self._Mixed
+
+    @Mixed.setter
+    def Mixed(self, Mixed):
+        self._Mixed = Mixed
+
+    @property
+    def Tls(self):
+        """tls 配置
+        :rtype: list of IngressTls
+        """
+        return self._Tls
+
+    @Tls.setter
+    def Tls(self, Tls):
+        self._Tls = Tls
+
+    @property
+    def RewriteType(self):
+        """重定向模式，可选值：
+- AUTO（自动重定向http到https）
+- NONE（不使用重定向）
+        :rtype: str
+        """
+        return self._RewriteType
+
+    @RewriteType.setter
+    def RewriteType(self, RewriteType):
+        self._RewriteType = RewriteType
+
+
+    def _deserialize(self, params):
+        self._EnvironmentId = params.get("EnvironmentId")
+        self._GatewayName = params.get("GatewayName")
+        self._GatewayType = params.get("GatewayType")
+        self._Name = params.get("Name")
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = IngressRule()
+                obj._deserialize(item)
+                self._Rules.append(obj)
+        self._Mixed = params.get("Mixed")
+        if params.get("Tls") is not None:
+            self._Tls = []
+            for item in params.get("Tls"):
+                obj = IngressTls()
+                obj._deserialize(item)
+                self._Tls.append(obj)
+        self._RewriteType = params.get("RewriteType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyGatewayIngressResponse(AbstractModel):
+    """ModifyGatewayIngress返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 是否成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        """是否成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyIngressRequest(AbstractModel):
     """ModifyIngress请求参数结构体
 

@@ -605,6 +605,52 @@ class GsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAndroidInstancesAppBlacklist(self, request):
+        """查询安卓实例黑名单
+
+        :param request: Request instance for DescribeAndroidInstancesAppBlacklist.
+        :type request: :class:`tencentcloud.gs.v20191118.models.DescribeAndroidInstancesAppBlacklistRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.DescribeAndroidInstancesAppBlacklistResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAndroidInstancesAppBlacklist", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAndroidInstancesAppBlacklistResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAndroidInstancesByApps(self, request):
+        """查询安装指定应用的安卓实例
+
+        :param request: Request instance for DescribeAndroidInstancesByApps.
+        :type request: :class:`tencentcloud.gs.v20191118.models.DescribeAndroidInstancesByAppsRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.DescribeAndroidInstancesByAppsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAndroidInstancesByApps", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAndroidInstancesByAppsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeInstancesCount(self, request):
         """获取并发总数和运行数
 
@@ -766,6 +812,29 @@ class GsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ImportAndroidInstanceImage(self, request):
+        """导入安卓实例镜像，当镜像的 AndroidInstanceImageState 为 NORMAL 时，镜像导入完成处于可用状态。
+
+        :param request: Request instance for ImportAndroidInstanceImage.
+        :type request: :class:`tencentcloud.gs.v20191118.models.ImportAndroidInstanceImageRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.ImportAndroidInstanceImageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ImportAndroidInstanceImage", params, headers=headers)
+            response = json.loads(body)
+            model = models.ImportAndroidInstanceImageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def InstallAndroidInstancesApp(self, request):
         """安装安卓实例应用
 
@@ -904,6 +973,29 @@ class GsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyAndroidInstancesAppBlacklist(self, request):
+        """修改安卓实例应用黑名单
+
+        :param request: Request instance for ModifyAndroidInstancesAppBlacklist.
+        :type request: :class:`tencentcloud.gs.v20191118.models.ModifyAndroidInstancesAppBlacklistRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.ModifyAndroidInstancesAppBlacklistResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAndroidInstancesAppBlacklist", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAndroidInstancesAppBlacklistResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyAndroidInstancesInformation(self, request):
         """批量修改安卓实例信息
 
@@ -987,6 +1079,29 @@ class GsClient(AbstractClient):
             body = self.call("ModifyAndroidInstancesResolution", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyAndroidInstancesResolutionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyAndroidInstancesResources(self, request):
+        """批量修改安卓实例资源限制
+
+        :param request: Request instance for ModifyAndroidInstancesResources.
+        :type request: :class:`tencentcloud.gs.v20191118.models.ModifyAndroidInstancesResourcesRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.ModifyAndroidInstancesResourcesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAndroidInstancesResources", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAndroidInstancesResourcesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1151,6 +1266,52 @@ class GsClient(AbstractClient):
             body = self.call("SaveGameArchive", params, headers=headers)
             response = json.loads(body)
             model = models.SaveGameArchiveResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SetAndroidInstancesBGAppKeepAlive(self, request):
+        """批量设置安卓实例应用后台保活，开启应用保活，只是降低应用被杀死或回收的优先级，并不能保证应用不会被杀死或回收（如出现内存不足等资源限制时，应用也有概率被杀死或回收）
+
+        :param request: Request instance for SetAndroidInstancesBGAppKeepAlive.
+        :type request: :class:`tencentcloud.gs.v20191118.models.SetAndroidInstancesBGAppKeepAliveRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.SetAndroidInstancesBGAppKeepAliveResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SetAndroidInstancesBGAppKeepAlive", params, headers=headers)
+            response = json.loads(body)
+            model = models.SetAndroidInstancesBGAppKeepAliveResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SetAndroidInstancesFGAppKeepAlive(self, request):
+        """批量设置安卓实例应用前台保活，开启应用保活，只是降低应用被杀死或回收的优先级，并不能保证应用不会被杀死或回收（如出现内存不足等资源限制时，应用也有概率被杀死或回收）
+
+        :param request: Request instance for SetAndroidInstancesFGAppKeepAlive.
+        :type request: :class:`tencentcloud.gs.v20191118.models.SetAndroidInstancesFGAppKeepAliveRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.SetAndroidInstancesFGAppKeepAliveResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SetAndroidInstancesFGAppKeepAlive", params, headers=headers)
+            response = json.loads(body)
+            model = models.SetAndroidInstancesFGAppKeepAliveResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

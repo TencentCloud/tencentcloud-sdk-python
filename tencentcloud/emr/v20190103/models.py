@@ -1011,6 +1011,44 @@ class AttachDisksResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AutoScaleGroupAdvanceAttrs(AbstractModel):
+    """自动伸缩组高级设置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ComputeResourceAdvanceParams: 计算资源高级设置
+        :type ComputeResourceAdvanceParams: :class:`tencentcloud.emr.v20190103.models.ComputeResourceAdvanceParams`
+        """
+        self._ComputeResourceAdvanceParams = None
+
+    @property
+    def ComputeResourceAdvanceParams(self):
+        """计算资源高级设置
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ComputeResourceAdvanceParams`
+        """
+        return self._ComputeResourceAdvanceParams
+
+    @ComputeResourceAdvanceParams.setter
+    def ComputeResourceAdvanceParams(self, ComputeResourceAdvanceParams):
+        self._ComputeResourceAdvanceParams = ComputeResourceAdvanceParams
+
+
+    def _deserialize(self, params):
+        if params.get("ComputeResourceAdvanceParams") is not None:
+            self._ComputeResourceAdvanceParams = ComputeResourceAdvanceParams()
+            self._ComputeResourceAdvanceParams._deserialize(params.get("ComputeResourceAdvanceParams"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AutoScaleRecord(AbstractModel):
     """弹性扩缩容记录
 
@@ -1274,7 +1312,7 @@ class AutoScaleResourceConf(AbstractModel):
         :type ScaleUpperBound: int
         :param _StrategyType: 扩容规则类型，1为按负载指标扩容规则，2为按时间扩容规则
         :type StrategyType: int
-        :param _NextTimeCanScale: 下次能可扩容时间。
+        :param _NextTimeCanScale: 下次可扩容时间。
         :type NextTimeCanScale: int
         :param _GraceDownFlag: 优雅缩容开关
         :type GraceDownFlag: bool
@@ -1284,7 +1322,7 @@ class AutoScaleResourceConf(AbstractModel):
         :type PayMode: str
         :param _PostPayPercentMin: 竞价实例优先的场景下，按量计费资源数量的最低百分比，整数
         :type PostPayPercentMin: int
-        :param _ChangeToPod: 预设资源类型为HOST时，支持勾选“资源不足时切换POD”；支持取消勾选；默认不勾选（0），勾选（1)
+        :param _ChangeToPod: 预设资源类型为HOST时，支持勾选“资源不足时切换POD”；支持取消勾选；0表示默认不勾选（0），1表示勾选
         :type ChangeToPod: int
         :param _GroupName: 伸缩组名
         :type GroupName: str
@@ -1296,6 +1334,8 @@ class AutoScaleResourceConf(AbstractModel):
         :type Parallel: int
         :param _EnableMNode: 是否支持MNode
         :type EnableMNode: int
+        :param _ExtraAdvanceAttrs: 伸缩组更多设置
+        :type ExtraAdvanceAttrs: :class:`tencentcloud.emr.v20190103.models.AutoScaleGroupAdvanceAttrs`
         """
         self._Id = None
         self._ClusterId = None
@@ -1313,6 +1353,7 @@ class AutoScaleResourceConf(AbstractModel):
         self._GroupStatus = None
         self._Parallel = None
         self._EnableMNode = None
+        self._ExtraAdvanceAttrs = None
 
     @property
     def Id(self):
@@ -1371,7 +1412,7 @@ class AutoScaleResourceConf(AbstractModel):
 
     @property
     def NextTimeCanScale(self):
-        """下次能可扩容时间。
+        """下次可扩容时间。
         :rtype: int
         """
         return self._NextTimeCanScale
@@ -1426,7 +1467,7 @@ class AutoScaleResourceConf(AbstractModel):
 
     @property
     def ChangeToPod(self):
-        """预设资源类型为HOST时，支持勾选“资源不足时切换POD”；支持取消勾选；默认不勾选（0），勾选（1)
+        """预设资源类型为HOST时，支持勾选“资源不足时切换POD”；支持取消勾选；0表示默认不勾选（0），1表示勾选
         :rtype: int
         """
         return self._ChangeToPod
@@ -1490,6 +1531,17 @@ class AutoScaleResourceConf(AbstractModel):
     def EnableMNode(self, EnableMNode):
         self._EnableMNode = EnableMNode
 
+    @property
+    def ExtraAdvanceAttrs(self):
+        """伸缩组更多设置
+        :rtype: :class:`tencentcloud.emr.v20190103.models.AutoScaleGroupAdvanceAttrs`
+        """
+        return self._ExtraAdvanceAttrs
+
+    @ExtraAdvanceAttrs.setter
+    def ExtraAdvanceAttrs(self, ExtraAdvanceAttrs):
+        self._ExtraAdvanceAttrs = ExtraAdvanceAttrs
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -1508,6 +1560,9 @@ class AutoScaleResourceConf(AbstractModel):
         self._GroupStatus = params.get("GroupStatus")
         self._Parallel = params.get("Parallel")
         self._EnableMNode = params.get("EnableMNode")
+        if params.get("ExtraAdvanceAttrs") is not None:
+            self._ExtraAdvanceAttrs = AutoScaleGroupAdvanceAttrs()
+            self._ExtraAdvanceAttrs._deserialize(params.get("ExtraAdvanceAttrs"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3773,6 +3828,97 @@ class ComponentBasicRestartInfo(AbstractModel):
     def _deserialize(self, params):
         self._ComponentName = params.get("ComponentName")
         self._IpList = params.get("IpList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComputeResourceAdvanceParams(AbstractModel):
+    """计算资源高级设置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Labels: 节点Label数组
+        :type Labels: list of TkeLabel
+        :param _Taints: 节点污点
+        :type Taints: list of Taint
+        :param _PreStartUserScript: base64 编码的用户脚本，在初始化节点之前执行
+        :type PreStartUserScript: str
+        :param _UserScript: base64 编码的用户脚本, 此脚本会在 k8s 组件运行后执行, 需要用户保证脚本的可重入及重试逻辑, 脚本及其生成的日志文件可在节点的 /data/ccs_userscript/ 路径查看
+        :type UserScript: str
+        """
+        self._Labels = None
+        self._Taints = None
+        self._PreStartUserScript = None
+        self._UserScript = None
+
+    @property
+    def Labels(self):
+        """节点Label数组
+        :rtype: list of TkeLabel
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+    @property
+    def Taints(self):
+        """节点污点
+        :rtype: list of Taint
+        """
+        return self._Taints
+
+    @Taints.setter
+    def Taints(self, Taints):
+        self._Taints = Taints
+
+    @property
+    def PreStartUserScript(self):
+        """base64 编码的用户脚本，在初始化节点之前执行
+        :rtype: str
+        """
+        return self._PreStartUserScript
+
+    @PreStartUserScript.setter
+    def PreStartUserScript(self, PreStartUserScript):
+        self._PreStartUserScript = PreStartUserScript
+
+    @property
+    def UserScript(self):
+        """base64 编码的用户脚本, 此脚本会在 k8s 组件运行后执行, 需要用户保证脚本的可重入及重试逻辑, 脚本及其生成的日志文件可在节点的 /data/ccs_userscript/ 路径查看
+        :rtype: str
+        """
+        return self._UserScript
+
+    @UserScript.setter
+    def UserScript(self, UserScript):
+        self._UserScript = UserScript
+
+
+    def _deserialize(self, params):
+        if params.get("Labels") is not None:
+            self._Labels = []
+            for item in params.get("Labels"):
+                obj = TkeLabel()
+                obj._deserialize(item)
+                self._Labels.append(obj)
+        if params.get("Taints") is not None:
+            self._Taints = []
+            for item in params.get("Taints"):
+                obj = Taint()
+                obj._deserialize(item)
+                self._Taints.append(obj)
+        self._PreStartUserScript = params.get("PreStartUserScript")
+        self._UserScript = params.get("UserScript")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30430,6 +30576,8 @@ class ScaleOutInstanceRequest(AbstractModel):
         :type ResourceBaseType: str
         :param _ComputeResourceId: 计算资源id
         :type ComputeResourceId: str
+        :param _ComputeResourceAdvanceParams: 计算资源高级设置
+        :type ComputeResourceAdvanceParams: :class:`tencentcloud.emr.v20190103.models.ComputeResourceAdvanceParams`
         """
         self._TimeUnit = None
         self._TimeSpan = None
@@ -30459,6 +30607,7 @@ class ScaleOutInstanceRequest(AbstractModel):
         self._AutoRenew = None
         self._ResourceBaseType = None
         self._ComputeResourceId = None
+        self._ComputeResourceAdvanceParams = None
 
     @property
     def TimeUnit(self):
@@ -30779,6 +30928,17 @@ class ScaleOutInstanceRequest(AbstractModel):
     def ComputeResourceId(self, ComputeResourceId):
         self._ComputeResourceId = ComputeResourceId
 
+    @property
+    def ComputeResourceAdvanceParams(self):
+        """计算资源高级设置
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ComputeResourceAdvanceParams`
+        """
+        return self._ComputeResourceAdvanceParams
+
+    @ComputeResourceAdvanceParams.setter
+    def ComputeResourceAdvanceParams(self, ComputeResourceAdvanceParams):
+        self._ComputeResourceAdvanceParams = ComputeResourceAdvanceParams
+
 
     def _deserialize(self, params):
         self._TimeUnit = params.get("TimeUnit")
@@ -30823,6 +30983,9 @@ class ScaleOutInstanceRequest(AbstractModel):
         self._AutoRenew = params.get("AutoRenew")
         self._ResourceBaseType = params.get("ResourceBaseType")
         self._ComputeResourceId = params.get("ComputeResourceId")
+        if params.get("ComputeResourceAdvanceParams") is not None:
+            self._ComputeResourceAdvanceParams = ComputeResourceAdvanceParams()
+            self._ComputeResourceAdvanceParams._deserialize(params.get("ComputeResourceAdvanceParams"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33833,6 +33996,72 @@ class Tag(AbstractModel):
         
 
 
+class Taint(AbstractModel):
+    """Kubernetes Taint
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: Taint Key
+        :type Key: str
+        :param _Value: Taint Value
+        :type Value: str
+        :param _Effect: Taint Effect
+        :type Effect: str
+        """
+        self._Key = None
+        self._Value = None
+        self._Effect = None
+
+    @property
+    def Key(self):
+        """Taint Key
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        """Taint Value
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Effect(self):
+        """Taint Effect
+        :rtype: str
+        """
+        return self._Effect
+
+    @Effect.setter
+    def Effect(self, Effect):
+        self._Effect = Effect
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        self._Effect = params.get("Effect")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TaskSettings(AbstractModel):
     """巡检任务参数
 
@@ -34372,6 +34601,8 @@ class TimeAutoScaleStrategy(AbstractModel):
         :type CompensateFlag: int
         :param _GroupId: 伸缩组id
         :type GroupId: int
+        :param _GraceDownLabel: 优雅缩容业务pod标签，当node不存在上述pod或超过优雅缩容时间时，缩容节点
+        :type GraceDownLabel: list of TkeLabel
         """
         self._StrategyName = None
         self._IntervalTime = None
@@ -34393,6 +34624,7 @@ class TimeAutoScaleStrategy(AbstractModel):
         self._ServiceNodeInfo = None
         self._CompensateFlag = None
         self._GroupId = None
+        self._GraceDownLabel = None
 
     @property
     def StrategyName(self):
@@ -34622,6 +34854,17 @@ class TimeAutoScaleStrategy(AbstractModel):
     def GroupId(self, GroupId):
         self._GroupId = GroupId
 
+    @property
+    def GraceDownLabel(self):
+        """优雅缩容业务pod标签，当node不存在上述pod或超过优雅缩容时间时，缩容节点
+        :rtype: list of TkeLabel
+        """
+        return self._GraceDownLabel
+
+    @GraceDownLabel.setter
+    def GraceDownLabel(self, GraceDownLabel):
+        self._GraceDownLabel = GraceDownLabel
+
 
     def _deserialize(self, params):
         self._StrategyName = params.get("StrategyName")
@@ -34651,6 +34894,63 @@ class TimeAutoScaleStrategy(AbstractModel):
         self._ServiceNodeInfo = params.get("ServiceNodeInfo")
         self._CompensateFlag = params.get("CompensateFlag")
         self._GroupId = params.get("GroupId")
+        if params.get("GraceDownLabel") is not None:
+            self._GraceDownLabel = []
+            for item in params.get("GraceDownLabel"):
+                obj = TkeLabel()
+                obj._deserialize(item)
+                self._GraceDownLabel.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TkeLabel(AbstractModel):
+    """Kubernetes Label
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Label Name
+        :type Name: str
+        :param _Value: Label Value
+        :type Value: str
+        """
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        """Label Name
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        """Label Value
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

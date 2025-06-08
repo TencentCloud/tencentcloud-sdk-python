@@ -376,6 +376,35 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateContractDiffTaskWebUrl(self, request):
+        """接口（CreateContractDiffTaskWebUrl）用于创建合同对比的可嵌入web页面链接（此web页面可以通过iframe方式嵌入到贵方系统的网页中）。
+        注：本接口生成的web页面暂不支持<a href="https://qian.tencent.com/developers/companyApis/embedPages/CreateWebThemeConfig" target="_blank">设置本企业嵌入式页面主题配置</a>
+
+        未跳过上传确认的嵌入页面长相如下：
+        ![image](https://qcloudimg.tencent-cloud.cn/raw/32f3526ad7152757202a7e4e760356db.jpg)
+        跳过上传确认的嵌入页面长相如下：
+        ![image](https://qcloudimg.tencent-cloud.cn/raw/c68047feddbc106e261870687b6ab89d.jpg)
+
+        :param request: Request instance for CreateContractDiffTaskWebUrl.
+        :type request: :class:`tencentcloud.ess.v20201111.models.CreateContractDiffTaskWebUrlRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.CreateContractDiffTaskWebUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateContractDiffTaskWebUrl", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateContractDiffTaskWebUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateConvertTaskApi(self, request):
         """此接口（CreateConvertTaskApi）用来将word、excel、html、图片、txt类型文件转换为PDF文件。<br />
         前提条件：源文件已经通过 <a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">文件上传接口</a>完成上传，并得到了源文件的资源Id。<br />
@@ -2270,6 +2299,33 @@ class EssClient(AbstractClient):
             body = self.call("DescribeCancelFlowsTask", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeCancelFlowsTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeContractDiffTaskWebUrl(self, request):
+        """接口（DescribeContractDiffTaskWebUrl）用于获取合同对比结果可嵌入的web页面链接（此web页面可以通过iframe方式嵌入到贵方系统的网页中）。
+        注：本接口生成的web页面暂不支持<a href="https://qian.tencent.com/developers/companyApis/embedPages/CreateWebThemeConfig" target="_blank">设置本企业嵌入式页面主题配置</a>
+
+        嵌入页面长相如下：
+        ![image](https://qcloudimg.tencent-cloud.cn/raw/c68047feddbc106e261870687b6ab89d.jpg)
+
+        :param request: Request instance for DescribeContractDiffTaskWebUrl.
+        :type request: :class:`tencentcloud.ess.v20201111.models.DescribeContractDiffTaskWebUrlRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.DescribeContractDiffTaskWebUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeContractDiffTaskWebUrl", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeContractDiffTaskWebUrlResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -1756,8 +1756,10 @@ class DescribeApmInstancesRequest(AbstractModel):
         r"""
         :param _Tags: Tag 列表
         :type Tags: list of ApmTag
-        :param _InstanceName: 按业务系统名过滤
+        :param _InstanceName: 按业务系统名过滤，支持模糊检索
         :type InstanceName: str
+        :param _InstanceId: 按业务系统 ID 过滤，支持模糊检索
+        :type InstanceId: str
         :param _InstanceIds: 按业务系统 ID 过滤
         :type InstanceIds: list of str
         :param _DemoInstanceFlag: 是否查询官方 Demo 业务系统（0=非 Demo 业务系统，1=Demo 业务系统，默认为0）
@@ -1767,6 +1769,7 @@ class DescribeApmInstancesRequest(AbstractModel):
         """
         self._Tags = None
         self._InstanceName = None
+        self._InstanceId = None
         self._InstanceIds = None
         self._DemoInstanceFlag = None
         self._AllRegionsFlag = None
@@ -1784,7 +1787,7 @@ class DescribeApmInstancesRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        """按业务系统名过滤
+        """按业务系统名过滤，支持模糊检索
         :rtype: str
         """
         return self._InstanceName
@@ -1792,6 +1795,17 @@ class DescribeApmInstancesRequest(AbstractModel):
     @InstanceName.setter
     def InstanceName(self, InstanceName):
         self._InstanceName = InstanceName
+
+    @property
+    def InstanceId(self):
+        """按业务系统 ID 过滤，支持模糊检索
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
     @property
     def InstanceIds(self):
@@ -1835,6 +1849,7 @@ class DescribeApmInstancesRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._InstanceName = params.get("InstanceName")
+        self._InstanceId = params.get("InstanceId")
         self._InstanceIds = params.get("InstanceIds")
         self._DemoInstanceFlag = params.get("DemoInstanceFlag")
         self._AllRegionsFlag = params.get("AllRegionsFlag")

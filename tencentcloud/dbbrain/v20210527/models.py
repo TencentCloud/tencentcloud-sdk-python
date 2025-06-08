@@ -7347,9 +7347,9 @@ class DescribeIndexRecommendAggregationSlowLogsRequest(AbstractModel):
         :type InstanceId: str
         :param _Db: 数据库名称。
         :type Db: str
-        :param _Collection: 表明。
+        :param _Collection: 表名。
         :type Collection: str
-        :param _Signs: 签名。
+        :param _Signs: 签名。这个值是DescribelndexRecommendInfo接口返回
         :type Signs: list of str
         """
         self._Product = None
@@ -7393,7 +7393,7 @@ class DescribeIndexRecommendAggregationSlowLogsRequest(AbstractModel):
 
     @property
     def Collection(self):
-        """表明。
+        """表名。
         :rtype: str
         """
         return self._Collection
@@ -7404,7 +7404,7 @@ class DescribeIndexRecommendAggregationSlowLogsRequest(AbstractModel):
 
     @property
     def Signs(self):
-        """签名。
+        """签名。这个值是DescribelndexRecommendInfo接口返回
         :rtype: list of str
         """
         return self._Signs

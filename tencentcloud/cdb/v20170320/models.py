@@ -7813,7 +7813,7 @@ class CreateCloneInstanceRequest(AbstractModel):
         :param _SpecifiedBackupId: 如果需要克隆实例回档到指定备份集，则指定该值为备份文件的 Id。请使用 [查询数据备份文件列表](/document/api/236/15842)。
 说明：如果是克隆双节点、三节点实例，备份文件为物理备份，如果是克隆单节点、集群版实例，备份文件为快照备份。
         :type SpecifiedBackupId: int
-        :param _UniqVpcId: 私有网络 ID，如果不传则默认选择基础网络，请使用 [查询私有网络列表](/document/api/215/15778) 。
+        :param _UniqVpcId: 私有网络 ID，请使用 [查询私有网络列表](/document/api/215/15778)。
         :type UniqVpcId: str
         :param _UniqSubnetId: 私有网络下的子网 ID，如果设置了 UniqVpcId，则 UniqSubnetId 必填，请使用 [查询子网列表](/document/api/215/15784)。
         :type UniqSubnetId: str
@@ -7924,7 +7924,7 @@ class CreateCloneInstanceRequest(AbstractModel):
 
     @property
     def UniqVpcId(self):
-        """私有网络 ID，如果不传则默认选择基础网络，请使用 [查询私有网络列表](/document/api/215/15778) 。
+        """私有网络 ID，请使用 [查询私有网络列表](/document/api/215/15778)。
         :rtype: str
         """
         return self._UniqVpcId
@@ -8433,7 +8433,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :param _EngineVersion: MySQL 版本，值包括：5.5、5.6、5.7和8.0，请使用 [获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229) 接口获取可创建的实例版本。
 说明：创建非集群版实例时，请根据需要指定实例版本（推荐5.7或8.0），若此参数不填，则默认值为5.6；若创建的是集群版实例，则此参数仅能指定为5.7或8.0。
         :type EngineVersion: str
-        :param _UniqVpcId: 私有网络 ID，如果不传则默认选择基础网络，请使用 [查询私有网络列表](/document/api/215/15778) 。
+        :param _UniqVpcId: 私有网络 ID，请使用 [查询私有网络列表](/document/api/215/15778)。
 说明：如果创建的是集群版实例，此参数为必填且为私有网络类型。
         :type UniqVpcId: str
         :param _UniqSubnetId: 私有网络下的子网 ID，如果设置了 UniqVpcId，则 UniqSubnetId 必填，请使用 [查询子网列表](/document/api/215/15784)。
@@ -8607,7 +8607,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def UniqVpcId(self):
-        """私有网络 ID，如果不传则默认选择基础网络，请使用 [查询私有网络列表](/document/api/215/15778) 。
+        """私有网络 ID，请使用 [查询私有网络列表](/document/api/215/15778)。
 说明：如果创建的是集群版实例，此参数为必填且为私有网络类型。
         :rtype: str
         """
@@ -9165,7 +9165,7 @@ class CreateDBInstanceRequest(AbstractModel):
         :param _Zone: 可用区信息，请使用 [获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229) 接口获取可创建的可用区。
 说明：若您创建单节点、双节点、三节点实例，此参数为必填项，请指定可用区，若不指定可用区，则系统会自动选择一个可用区（可能不是您希望部署的可用区）；若您创建集群版实例，此参数不填，请通过参数 ClusterTopology 进行读写节点和只读节点的可用区配置。
         :type Zone: str
-        :param _UniqVpcId: 私有网络 ID，如果不传则默认选择基础网络，请使用 [查询私有网络列表](/document/api/215/15778)。
+        :param _UniqVpcId: 私有网络 ID，请使用 [查询私有网络列表](/document/api/215/15778)。
 说明：如果创建的是集群版实例，此参数为必填且为私有网络类型。
         :type UniqVpcId: str
         :param _UniqSubnetId: 私有网络下的子网 ID，如果设置了 UniqVpcId，则 UniqSubnetId 必填，请使用 [查询子网列表](/document/api/215/15784)。
@@ -9349,7 +9349,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def UniqVpcId(self):
-        """私有网络 ID，如果不传则默认选择基础网络，请使用 [查询私有网络列表](/document/api/215/15778)。
+        """私有网络 ID，请使用 [查询私有网络列表](/document/api/215/15778)。
 说明：如果创建的是集群版实例，此参数为必填且为私有网络类型。
         :rtype: str
         """

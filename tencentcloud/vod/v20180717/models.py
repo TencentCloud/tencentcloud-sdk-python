@@ -42643,6 +42643,8 @@ class MediaContentReviewSegmentItem(AbstractModel):
 
     @property
     def PicUrlExpireTimeStamp(self):
+        warnings.warn("parameter `PicUrlExpireTimeStamp` is deprecated", DeprecationWarning) 
+
         """该字段已废弃，请使用 PicUrlExpireTime。
         :rtype: int
         """
@@ -42650,6 +42652,8 @@ class MediaContentReviewSegmentItem(AbstractModel):
 
     @PicUrlExpireTimeStamp.setter
     def PicUrlExpireTimeStamp(self, PicUrlExpireTimeStamp):
+        warnings.warn("parameter `PicUrlExpireTimeStamp` is deprecated", DeprecationWarning) 
+
         self._PicUrlExpireTimeStamp = PicUrlExpireTimeStamp
 
     @property
