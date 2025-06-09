@@ -985,7 +985,6 @@ class CbsClient(AbstractClient):
         """本接口 (ModifyDisksChargeType) 用于切换云硬盘的计费模式。
 
         非弹性云硬盘不支持此接口，请通过修改实例计费模式接口将实例连同非弹性云硬盘一起转换。
-        默认接口请求频率限制：10次/秒。
 
         :param request: Request instance for ModifyDisksChargeType.
         :type request: :class:`tencentcloud.cbs.v20170312.models.ModifyDisksChargeTypeRequest`

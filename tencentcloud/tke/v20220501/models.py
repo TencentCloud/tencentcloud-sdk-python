@@ -1100,6 +1100,115 @@ class DataDisk(AbstractModel):
         
 
 
+class DeleteClusterMachinesRequest(AbstractModel):
+    """DeleteClusterMachines请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群 ID
+        :type ClusterId: str
+        :param _MachineNames: 节点名列表
+        :type MachineNames: list of str
+        :param _EnableScaleDown: 删除节点时是否缩容节点池，true为缩容
+        :type EnableScaleDown: bool
+        :param _InstanceDeleteMode: 集群实例删除时的策略：terminate（销毁实例，仅支持按量计费云主机实例）retain（仅移除，保留实例）
+        :type InstanceDeleteMode: str
+        """
+        self._ClusterId = None
+        self._MachineNames = None
+        self._EnableScaleDown = None
+        self._InstanceDeleteMode = None
+
+    @property
+    def ClusterId(self):
+        """集群 ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def MachineNames(self):
+        """节点名列表
+        :rtype: list of str
+        """
+        return self._MachineNames
+
+    @MachineNames.setter
+    def MachineNames(self, MachineNames):
+        self._MachineNames = MachineNames
+
+    @property
+    def EnableScaleDown(self):
+        """删除节点时是否缩容节点池，true为缩容
+        :rtype: bool
+        """
+        return self._EnableScaleDown
+
+    @EnableScaleDown.setter
+    def EnableScaleDown(self, EnableScaleDown):
+        self._EnableScaleDown = EnableScaleDown
+
+    @property
+    def InstanceDeleteMode(self):
+        """集群实例删除时的策略：terminate（销毁实例，仅支持按量计费云主机实例）retain（仅移除，保留实例）
+        :rtype: str
+        """
+        return self._InstanceDeleteMode
+
+    @InstanceDeleteMode.setter
+    def InstanceDeleteMode(self, InstanceDeleteMode):
+        self._InstanceDeleteMode = InstanceDeleteMode
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._MachineNames = params.get("MachineNames")
+        self._EnableScaleDown = params.get("EnableScaleDown")
+        self._InstanceDeleteMode = params.get("InstanceDeleteMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteClusterMachinesResponse(AbstractModel):
+    """DeleteClusterMachines返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteHealthCheckPolicyRequest(AbstractModel):
     """DeleteHealthCheckPolicy请求参数结构体
 

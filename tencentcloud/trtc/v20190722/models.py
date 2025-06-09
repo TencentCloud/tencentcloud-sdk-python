@@ -207,6 +207,10 @@ class AgentConfig(AbstractModel):
 5：英文花括号{}
 默认值为空，表示不进行过滤。
         :type FilterBracketsContent: int
+        :param _AmbientSound: 环境音设置
+        :type AmbientSound: :class:`tencentcloud.trtc.v20190722.models.AmbientSound`
+        :param _VoicePrint: 声纹配置
+        :type VoicePrint: :class:`tencentcloud.trtc.v20190722.models.VoicePrint`
         """
         self._UserId = None
         self._UserSig = None
@@ -219,6 +223,8 @@ class AgentConfig(AbstractModel):
         self._FilterOneWord = None
         self._WelcomeMessagePriority = None
         self._FilterBracketsContent = None
+        self._AmbientSound = None
+        self._VoicePrint = None
 
     @property
     def UserId(self):
@@ -349,6 +355,28 @@ class AgentConfig(AbstractModel):
     def FilterBracketsContent(self, FilterBracketsContent):
         self._FilterBracketsContent = FilterBracketsContent
 
+    @property
+    def AmbientSound(self):
+        """环境音设置
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.AmbientSound`
+        """
+        return self._AmbientSound
+
+    @AmbientSound.setter
+    def AmbientSound(self, AmbientSound):
+        self._AmbientSound = AmbientSound
+
+    @property
+    def VoicePrint(self):
+        """声纹配置
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.VoicePrint`
+        """
+        return self._VoicePrint
+
+    @VoicePrint.setter
+    def VoicePrint(self, VoicePrint):
+        self._VoicePrint = VoicePrint
+
 
     def _deserialize(self, params):
         self._UserId = params.get("UserId")
@@ -362,6 +390,12 @@ class AgentConfig(AbstractModel):
         self._FilterOneWord = params.get("FilterOneWord")
         self._WelcomeMessagePriority = params.get("WelcomeMessagePriority")
         self._FilterBracketsContent = params.get("FilterBracketsContent")
+        if params.get("AmbientSound") is not None:
+            self._AmbientSound = AmbientSound()
+            self._AmbientSound._deserialize(params.get("AmbientSound"))
+        if params.get("VoicePrint") is not None:
+            self._VoicePrint = VoicePrint()
+            self._VoicePrint._deserialize(params.get("VoicePrint"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -428,6 +462,61 @@ class AgentParams(AbstractModel):
         self._UserId = params.get("UserId")
         self._UserSig = params.get("UserSig")
         self._MaxIdleTime = params.get("MaxIdleTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AmbientSound(AbstractModel):
+    """背景音设置，将在通话中添加环境音效，使体验更加逼真。目前支持以下选项：
+    coffee_shop: 咖啡店氛围，背景中有人聊天。
+    busy_office: 客服中心
+    street_traffic: 户外街道
+    evening_mountain: 户外山林
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Scene: 环境场景选择
+        :type Scene: str
+        :param _Volume: 控制环境音的音量。取值的范围是 [0,2]。值越低，环境音越小；值越高，环境音越响亮。如果未设置，则使用默认值 1。
+        :type Volume: float
+        """
+        self._Scene = None
+        self._Volume = None
+
+    @property
+    def Scene(self):
+        """环境场景选择
+        :rtype: str
+        """
+        return self._Scene
+
+    @Scene.setter
+    def Scene(self, Scene):
+        self._Scene = Scene
+
+    @property
+    def Volume(self):
+        """控制环境音的音量。取值的范围是 [0,2]。值越低，环境音越小；值越高，环境音越响亮。如果未设置，则使用默认值 1。
+        :rtype: float
+        """
+        return self._Volume
+
+    @Volume.setter
+    def Volume(self, Volume):
+        self._Volume = Volume
+
+
+    def _deserialize(self, params):
+        self._Scene = params.get("Scene")
+        self._Volume = params.get("Volume")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1916,6 +2005,70 @@ class DeletePictureRequest(AbstractModel):
 
 class DeletePictureResponse(AbstractModel):
     """DeletePicture返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteVoicePrintRequest(AbstractModel):
+    """DeleteVoicePrint请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VoicePrintId: 声纹信息ID
+        :type VoicePrintId: str
+        """
+        self._VoicePrintId = None
+
+    @property
+    def VoicePrintId(self):
+        """声纹信息ID
+        :rtype: str
+        """
+        return self._VoicePrintId
+
+    @VoicePrintId.setter
+    def VoicePrintId(self, VoicePrintId):
+        self._VoicePrintId = VoicePrintId
+
+
+    def _deserialize(self, params):
+        self._VoicePrintId = params.get("VoicePrintId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteVoicePrintResponse(AbstractModel):
+    """DeleteVoicePrint返回参数结构体
 
     """
 
@@ -5681,6 +5834,150 @@ class DescribeUserInfoResponse(AbstractModel):
                 obj = UserInformation()
                 obj._deserialize(item)
                 self._UserList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeVoicePrintRequest(AbstractModel):
+    """DescribeVoicePrint请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DescribeMode: 查询方式，0表示查询特定VoicePrintId，1表示分页查询
+        :type DescribeMode: int
+        :param _VoicePrintIdList: 声纹ID
+        :type VoicePrintIdList: list of str
+        :param _PageIndex: 当前页码,从1开始,DescribeMode为1时填写
+        :type PageIndex: int
+        :param _PageSize: 每页条数 最少20,DescribeMode为1时填写
+        :type PageSize: int
+        """
+        self._DescribeMode = None
+        self._VoicePrintIdList = None
+        self._PageIndex = None
+        self._PageSize = None
+
+    @property
+    def DescribeMode(self):
+        """查询方式，0表示查询特定VoicePrintId，1表示分页查询
+        :rtype: int
+        """
+        return self._DescribeMode
+
+    @DescribeMode.setter
+    def DescribeMode(self, DescribeMode):
+        self._DescribeMode = DescribeMode
+
+    @property
+    def VoicePrintIdList(self):
+        """声纹ID
+        :rtype: list of str
+        """
+        return self._VoicePrintIdList
+
+    @VoicePrintIdList.setter
+    def VoicePrintIdList(self, VoicePrintIdList):
+        self._VoicePrintIdList = VoicePrintIdList
+
+    @property
+    def PageIndex(self):
+        """当前页码,从1开始,DescribeMode为1时填写
+        :rtype: int
+        """
+        return self._PageIndex
+
+    @PageIndex.setter
+    def PageIndex(self, PageIndex):
+        self._PageIndex = PageIndex
+
+    @property
+    def PageSize(self):
+        """每页条数 最少20,DescribeMode为1时填写
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._DescribeMode = params.get("DescribeMode")
+        self._VoicePrintIdList = params.get("VoicePrintIdList")
+        self._PageIndex = params.get("PageIndex")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVoicePrintResponse(AbstractModel):
+    """DescribeVoicePrint返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总的条数
+        :type TotalCount: int
+        :param _Data: 声纹信息
+        :type Data: list of VoicePrintInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """总的条数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Data(self):
+        """声纹信息
+        :rtype: list of VoicePrintInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = VoicePrintInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -10495,6 +10792,145 @@ class RecordUsage(AbstractModel):
         
 
 
+class RegisterVoicePrintRequest(AbstractModel):
+    """RegisterVoicePrint请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Audio: 整个wav音频文件的base64字符串,其中wav文件限定为16k或8k采样率, 16bit位深, 单声道, 8到18秒有效音频时长,编码数据大小不超过2M
+        :type Audio: str
+        :param _ReqTimestamp: 毫秒时间戳
+        :type ReqTimestamp: int
+        :param _AudioFormat: 音频格式,目前只支持0,代表wav
+        :type AudioFormat: int
+        :param _AudioName: 音频名称,长度不要超过32
+        :type AudioName: str
+        :param _AudioMetaInfo: 和声纹绑定的MetaInfo，长度最大不超过512
+        :type AudioMetaInfo: str
+        """
+        self._Audio = None
+        self._ReqTimestamp = None
+        self._AudioFormat = None
+        self._AudioName = None
+        self._AudioMetaInfo = None
+
+    @property
+    def Audio(self):
+        """整个wav音频文件的base64字符串,其中wav文件限定为16k或8k采样率, 16bit位深, 单声道, 8到18秒有效音频时长,编码数据大小不超过2M
+        :rtype: str
+        """
+        return self._Audio
+
+    @Audio.setter
+    def Audio(self, Audio):
+        self._Audio = Audio
+
+    @property
+    def ReqTimestamp(self):
+        """毫秒时间戳
+        :rtype: int
+        """
+        return self._ReqTimestamp
+
+    @ReqTimestamp.setter
+    def ReqTimestamp(self, ReqTimestamp):
+        self._ReqTimestamp = ReqTimestamp
+
+    @property
+    def AudioFormat(self):
+        """音频格式,目前只支持0,代表wav
+        :rtype: int
+        """
+        return self._AudioFormat
+
+    @AudioFormat.setter
+    def AudioFormat(self, AudioFormat):
+        self._AudioFormat = AudioFormat
+
+    @property
+    def AudioName(self):
+        """音频名称,长度不要超过32
+        :rtype: str
+        """
+        return self._AudioName
+
+    @AudioName.setter
+    def AudioName(self, AudioName):
+        self._AudioName = AudioName
+
+    @property
+    def AudioMetaInfo(self):
+        """和声纹绑定的MetaInfo，长度最大不超过512
+        :rtype: str
+        """
+        return self._AudioMetaInfo
+
+    @AudioMetaInfo.setter
+    def AudioMetaInfo(self, AudioMetaInfo):
+        self._AudioMetaInfo = AudioMetaInfo
+
+
+    def _deserialize(self, params):
+        self._Audio = params.get("Audio")
+        self._ReqTimestamp = params.get("ReqTimestamp")
+        self._AudioFormat = params.get("AudioFormat")
+        self._AudioName = params.get("AudioName")
+        self._AudioMetaInfo = params.get("AudioMetaInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RegisterVoicePrintResponse(AbstractModel):
+    """RegisterVoicePrint返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VoicePrintId: 声纹信息ID
+        :type VoicePrintId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._VoicePrintId = None
+        self._RequestId = None
+
+    @property
+    def VoicePrintId(self):
+        """声纹信息ID
+        :rtype: str
+        """
+        return self._VoicePrintId
+
+    @VoicePrintId.setter
+    def VoicePrintId(self, VoicePrintId):
+        self._VoicePrintId = VoicePrintId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._VoicePrintId = params.get("VoicePrintId")
+        self._RequestId = params.get("RequestId")
+
+
 class RemoveUserByStrRoomIdRequest(AbstractModel):
     """RemoveUserByStrRoomId请求参数结构体
 
@@ -15014,6 +15450,130 @@ class UpdateStreamIngestResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class UpdateVoicePrintRequest(AbstractModel):
+    """UpdateVoicePrint请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VoicePrintId: 声纹信息ID
+        :type VoicePrintId: str
+        :param _ReqTimestamp: 毫秒时间戳
+        :type ReqTimestamp: int
+        :param _AudioFormat: 音频格式,目前只支持0,代表wav
+        :type AudioFormat: int
+        :param _Audio: 整个wav音频文件的base64字符串,其中wav文件限定为16k或8k采样率, 16bit位深, 单声道, 8到18秒有效音频时长,编码数据大小不超过2M
+        :type Audio: str
+        :param _AudioMetaInfo: 和声纹绑定的MetaInfo，长度最大不超过512
+        :type AudioMetaInfo: str
+        """
+        self._VoicePrintId = None
+        self._ReqTimestamp = None
+        self._AudioFormat = None
+        self._Audio = None
+        self._AudioMetaInfo = None
+
+    @property
+    def VoicePrintId(self):
+        """声纹信息ID
+        :rtype: str
+        """
+        return self._VoicePrintId
+
+    @VoicePrintId.setter
+    def VoicePrintId(self, VoicePrintId):
+        self._VoicePrintId = VoicePrintId
+
+    @property
+    def ReqTimestamp(self):
+        """毫秒时间戳
+        :rtype: int
+        """
+        return self._ReqTimestamp
+
+    @ReqTimestamp.setter
+    def ReqTimestamp(self, ReqTimestamp):
+        self._ReqTimestamp = ReqTimestamp
+
+    @property
+    def AudioFormat(self):
+        """音频格式,目前只支持0,代表wav
+        :rtype: int
+        """
+        return self._AudioFormat
+
+    @AudioFormat.setter
+    def AudioFormat(self, AudioFormat):
+        self._AudioFormat = AudioFormat
+
+    @property
+    def Audio(self):
+        """整个wav音频文件的base64字符串,其中wav文件限定为16k或8k采样率, 16bit位深, 单声道, 8到18秒有效音频时长,编码数据大小不超过2M
+        :rtype: str
+        """
+        return self._Audio
+
+    @Audio.setter
+    def Audio(self, Audio):
+        self._Audio = Audio
+
+    @property
+    def AudioMetaInfo(self):
+        """和声纹绑定的MetaInfo，长度最大不超过512
+        :rtype: str
+        """
+        return self._AudioMetaInfo
+
+    @AudioMetaInfo.setter
+    def AudioMetaInfo(self, AudioMetaInfo):
+        self._AudioMetaInfo = AudioMetaInfo
+
+
+    def _deserialize(self, params):
+        self._VoicePrintId = params.get("VoicePrintId")
+        self._ReqTimestamp = params.get("ReqTimestamp")
+        self._AudioFormat = params.get("AudioFormat")
+        self._Audio = params.get("Audio")
+        self._AudioMetaInfo = params.get("AudioMetaInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateVoicePrintResponse(AbstractModel):
+    """UpdateVoicePrint返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class UserInformation(AbstractModel):
     """用户信息，包括用户进房时间，退房时间等
 
@@ -15486,6 +16046,198 @@ class VideoParams(AbstractModel):
         self._Fps = params.get("Fps")
         self._BitRate = params.get("BitRate")
         self._Gop = params.get("Gop")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoicePrint(AbstractModel):
+    """声纹配置参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Mode: 默认为0，表示不启用声纹。1表示使用固定声纹，且需要填写voiceprint id。2表示使用动态声纹，不需要使用voiceprint id，内部动态选择主讲人声纹
+        :type Mode: int
+        :param _IdList: 只有当VoicePrint Mode为1时需要填写，目前仅支持填写一个声纹id
+        :type IdList: list of str
+        """
+        self._Mode = None
+        self._IdList = None
+
+    @property
+    def Mode(self):
+        """默认为0，表示不启用声纹。1表示使用固定声纹，且需要填写voiceprint id。2表示使用动态声纹，不需要使用voiceprint id，内部动态选择主讲人声纹
+        :rtype: int
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def IdList(self):
+        """只有当VoicePrint Mode为1时需要填写，目前仅支持填写一个声纹id
+        :rtype: list of str
+        """
+        return self._IdList
+
+    @IdList.setter
+    def IdList(self, IdList):
+        self._IdList = IdList
+
+
+    def _deserialize(self, params):
+        self._Mode = params.get("Mode")
+        self._IdList = params.get("IdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoicePrintInfo(AbstractModel):
+    """声纹查询数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VoicePrintId: 声纹ID
+        :type VoicePrintId: str
+        :param _AppId: 应用id
+        :type AppId: int
+        :param _VoicePrintMetaInfo: 和声纹绑定的MetaInfo
+        :type VoicePrintMetaInfo: str
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _UpdateTime: 更新时间
+        :type UpdateTime: str
+        :param _AudioFormat: 音频格式,当前只有0(代表wav)
+        :type AudioFormat: int
+        :param _AudioName: 音频名称
+        :type AudioName: str
+        :param _ReqTimestamp: 请求毫秒时间戳
+        :type ReqTimestamp: int
+        """
+        self._VoicePrintId = None
+        self._AppId = None
+        self._VoicePrintMetaInfo = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._AudioFormat = None
+        self._AudioName = None
+        self._ReqTimestamp = None
+
+    @property
+    def VoicePrintId(self):
+        """声纹ID
+        :rtype: str
+        """
+        return self._VoicePrintId
+
+    @VoicePrintId.setter
+    def VoicePrintId(self, VoicePrintId):
+        self._VoicePrintId = VoicePrintId
+
+    @property
+    def AppId(self):
+        """应用id
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def VoicePrintMetaInfo(self):
+        """和声纹绑定的MetaInfo
+        :rtype: str
+        """
+        return self._VoicePrintMetaInfo
+
+    @VoicePrintMetaInfo.setter
+    def VoicePrintMetaInfo(self, VoicePrintMetaInfo):
+        self._VoicePrintMetaInfo = VoicePrintMetaInfo
+
+    @property
+    def CreateTime(self):
+        """创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        """更新时间
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def AudioFormat(self):
+        """音频格式,当前只有0(代表wav)
+        :rtype: int
+        """
+        return self._AudioFormat
+
+    @AudioFormat.setter
+    def AudioFormat(self, AudioFormat):
+        self._AudioFormat = AudioFormat
+
+    @property
+    def AudioName(self):
+        """音频名称
+        :rtype: str
+        """
+        return self._AudioName
+
+    @AudioName.setter
+    def AudioName(self, AudioName):
+        self._AudioName = AudioName
+
+    @property
+    def ReqTimestamp(self):
+        """请求毫秒时间戳
+        :rtype: int
+        """
+        return self._ReqTimestamp
+
+    @ReqTimestamp.setter
+    def ReqTimestamp(self, ReqTimestamp):
+        self._ReqTimestamp = ReqTimestamp
+
+
+    def _deserialize(self, params):
+        self._VoicePrintId = params.get("VoicePrintId")
+        self._AppId = params.get("AppId")
+        self._VoicePrintMetaInfo = params.get("VoicePrintMetaInfo")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._AudioFormat = params.get("AudioFormat")
+        self._AudioName = params.get("AudioName")
+        self._ReqTimestamp = params.get("ReqTimestamp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

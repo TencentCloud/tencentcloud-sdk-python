@@ -2480,6 +2480,8 @@ null：用户上传证书（没有套餐类型），
         :param _HostingConfig: 托管配置信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type HostingConfig: :class:`tencentcloud.ssl.v20191205.models.HostingConfig`
+        :param _IsHostingUploadRenewCert: 是否是上传托管续费证书
+        :type IsHostingUploadRenewCert: bool
         """
         self._OwnerUin = None
         self._ProjectId = None
@@ -2537,6 +2539,7 @@ null：用户上传证书（没有套餐类型），
         self._CertRevokedTime = None
         self._HostingResourceTypes = None
         self._HostingConfig = None
+        self._IsHostingUploadRenewCert = None
 
     @property
     def OwnerUin(self):
@@ -3243,6 +3246,17 @@ null：用户上传证书（没有套餐类型），
     def HostingConfig(self, HostingConfig):
         self._HostingConfig = HostingConfig
 
+    @property
+    def IsHostingUploadRenewCert(self):
+        """是否是上传托管续费证书
+        :rtype: bool
+        """
+        return self._IsHostingUploadRenewCert
+
+    @IsHostingUploadRenewCert.setter
+    def IsHostingUploadRenewCert(self, IsHostingUploadRenewCert):
+        self._IsHostingUploadRenewCert = IsHostingUploadRenewCert
+
 
     def _deserialize(self, params):
         self._OwnerUin = params.get("OwnerUin")
@@ -3316,6 +3330,7 @@ null：用户上传证书（没有套餐类型），
         if params.get("HostingConfig") is not None:
             self._HostingConfig = HostingConfig()
             self._HostingConfig._deserialize(params.get("HostingConfig"))
+        self._IsHostingUploadRenewCert = params.get("IsHostingUploadRenewCert")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7816,6 +7831,10 @@ null：用户上传证书（没有套餐类型），
         :param _CertChainInfo: 证书链信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertChainInfo: list of CertBasicInfo
+        :param _DomainType: 证书域名类型， 1（单域名）；2（多域名）；3（泛域名）；4（多泛域名）
+        :type DomainType: int
+        :param _CertType: 证书类型，DV（域名型）；OV（企业型）；EV（增强型）
+        :type CertType: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -7861,6 +7880,8 @@ null：用户上传证书（没有套餐类型），
         self._EncryptAlgorithm = None
         self._DvRevokeAuthDetail = None
         self._CertChainInfo = None
+        self._DomainType = None
+        self._CertType = None
         self._RequestId = None
 
     @property
@@ -8444,6 +8465,28 @@ null：用户上传证书（没有套餐类型），
         self._CertChainInfo = CertChainInfo
 
     @property
+    def DomainType(self):
+        """证书域名类型， 1（单域名）；2（多域名）；3（泛域名）；4（多泛域名）
+        :rtype: int
+        """
+        return self._DomainType
+
+    @DomainType.setter
+    def DomainType(self, DomainType):
+        self._DomainType = DomainType
+
+    @property
+    def CertType(self):
+        """证书类型，DV（域名型）；OV（企业型）；EV（增强型）
+        :rtype: str
+        """
+        return self._CertType
+
+    @CertType.setter
+    def CertType(self, CertType):
+        self._CertType = CertType
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -8521,6 +8564,8 @@ null：用户上传证书（没有套餐类型），
                 obj = CertBasicInfo()
                 obj._deserialize(item)
                 self._CertChainInfo.append(obj)
+        self._DomainType = params.get("DomainType")
+        self._CertType = params.get("CertType")
         self._RequestId = params.get("RequestId")
 
 
@@ -15279,6 +15324,72 @@ class ManagerInfo(AbstractModel):
         
 
 
+class ManagerPreAuditDomain(AbstractModel):
+    """管理人预审核的域名列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 预审核域名信息
+        :type Domain: str
+        :param _CreateTime: 预审核域名创建时间
+        :type CreateTime: str
+        :param _ExpireTime: 预审核域名过期时间
+        :type ExpireTime: str
+        """
+        self._Domain = None
+        self._CreateTime = None
+        self._ExpireTime = None
+
+    @property
+    def Domain(self):
+        """预审核域名信息
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def CreateTime(self):
+        """预审核域名创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ExpireTime(self):
+        """预审核域名过期时间
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._CreateTime = params.get("CreateTime")
+        self._ExpireTime = params.get("ExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ManagerStatusInfo(AbstractModel):
     """管理人的四种审核状态
 
@@ -15294,11 +15405,14 @@ class ManagerStatusInfo(AbstractModel):
         :type CreateTime: str
         :param _ExpireTime: 过期时间
         :type ExpireTime: str
+        :param _ManagerPreAuditDomains: 管理人预审核的域名列表
+        :type ManagerPreAuditDomains: list of ManagerPreAuditDomain
         """
         self._Type = None
         self._Status = None
         self._CreateTime = None
         self._ExpireTime = None
+        self._ManagerPreAuditDomains = None
 
     @property
     def Type(self):
@@ -15344,12 +15458,29 @@ class ManagerStatusInfo(AbstractModel):
     def ExpireTime(self, ExpireTime):
         self._ExpireTime = ExpireTime
 
+    @property
+    def ManagerPreAuditDomains(self):
+        """管理人预审核的域名列表
+        :rtype: list of ManagerPreAuditDomain
+        """
+        return self._ManagerPreAuditDomains
+
+    @ManagerPreAuditDomains.setter
+    def ManagerPreAuditDomains(self, ManagerPreAuditDomains):
+        self._ManagerPreAuditDomains = ManagerPreAuditDomains
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
         self._Status = params.get("Status")
         self._CreateTime = params.get("CreateTime")
         self._ExpireTime = params.get("ExpireTime")
+        if params.get("ManagerPreAuditDomains") is not None:
+            self._ManagerPreAuditDomains = []
+            for item in params.get("ManagerPreAuditDomains"):
+                obj = ManagerPreAuditDomain()
+                obj._deserialize(item)
+                self._ManagerPreAuditDomains.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -2016,6 +2016,57 @@ class CarrierPrivilegeNumberApplicant(AbstractModel):
         
 
 
+class Client(AbstractModel):
+    """座席登录的终端信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClientType: 登录的端类型，"Web"表示web工作台，"WeChatMiniProgram"表示微信小程序
+        :type ClientType: str
+        :param _IsConnected: 当前登录的端是否在前台。若登录的端是Web，则该值为true；若登录的端是WeChatMiniProgram，true表示打开着微信小程序，false表示微信小程序退到后台
+        :type IsConnected: bool
+        """
+        self._ClientType = None
+        self._IsConnected = None
+
+    @property
+    def ClientType(self):
+        """登录的端类型，"Web"表示web工作台，"WeChatMiniProgram"表示微信小程序
+        :rtype: str
+        """
+        return self._ClientType
+
+    @ClientType.setter
+    def ClientType(self, ClientType):
+        self._ClientType = ClientType
+
+    @property
+    def IsConnected(self):
+        """当前登录的端是否在前台。若登录的端是Web，则该值为true；若登录的端是WeChatMiniProgram，true表示打开着微信小程序，false表示微信小程序退到后台
+        :rtype: bool
+        """
+        return self._IsConnected
+
+    @IsConnected.setter
+    def IsConnected(self, IsConnected):
+        self._IsConnected = IsConnected
+
+
+    def _deserialize(self, params):
+        self._ClientType = params.get("ClientType")
+        self._IsConnected = params.get("IsConnected")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CompanyApplyInfo(AbstractModel):
     """企业资质申请信息
 
@@ -15247,6 +15298,8 @@ class StaffStatusMetrics(AbstractModel):
         :param _LastStatusTimestamp: 最近一次状态时间戳
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastStatusTimestamp: int
+        :param _ClientInfo: 客服登录的端信息
+        :type ClientInfo: list of Client
         """
         self._Email = None
         self._Status = None
@@ -15264,6 +15317,7 @@ class StaffStatusMetrics(AbstractModel):
         self._UseMobileCallOut = None
         self._LastOnlineTimestamp = None
         self._LastStatusTimestamp = None
+        self._ClientInfo = None
 
     @property
     def Email(self):
@@ -15443,6 +15497,17 @@ class StaffStatusMetrics(AbstractModel):
     def LastStatusTimestamp(self, LastStatusTimestamp):
         self._LastStatusTimestamp = LastStatusTimestamp
 
+    @property
+    def ClientInfo(self):
+        """客服登录的端信息
+        :rtype: list of Client
+        """
+        return self._ClientInfo
+
+    @ClientInfo.setter
+    def ClientInfo(self, ClientInfo):
+        self._ClientInfo = ClientInfo
+
 
     def _deserialize(self, params):
         self._Email = params.get("Email")
@@ -15463,6 +15528,12 @@ class StaffStatusMetrics(AbstractModel):
         self._UseMobileCallOut = params.get("UseMobileCallOut")
         self._LastOnlineTimestamp = params.get("LastOnlineTimestamp")
         self._LastStatusTimestamp = params.get("LastStatusTimestamp")
+        if params.get("ClientInfo") is not None:
+            self._ClientInfo = []
+            for item in params.get("ClientInfo"):
+                obj = Client()
+                obj._deserialize(item)
+                self._ClientInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

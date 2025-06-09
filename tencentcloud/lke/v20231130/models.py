@@ -2026,6 +2026,62 @@ class AttributeLabel(AbstractModel):
         
 
 
+class AttributeLabelRefByWorkflow(AbstractModel):
+    """标签值引用的工作流详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AttributeLabelBizId: 标签值id
+        :type AttributeLabelBizId: str
+        :param _WorkflowList: 标签值引用的工作流列表
+        :type WorkflowList: list of WorkflowRef
+        """
+        self._AttributeLabelBizId = None
+        self._WorkflowList = None
+
+    @property
+    def AttributeLabelBizId(self):
+        """标签值id
+        :rtype: str
+        """
+        return self._AttributeLabelBizId
+
+    @AttributeLabelBizId.setter
+    def AttributeLabelBizId(self, AttributeLabelBizId):
+        self._AttributeLabelBizId = AttributeLabelBizId
+
+    @property
+    def WorkflowList(self):
+        """标签值引用的工作流列表
+        :rtype: list of WorkflowRef
+        """
+        return self._WorkflowList
+
+    @WorkflowList.setter
+    def WorkflowList(self, WorkflowList):
+        self._WorkflowList = WorkflowList
+
+
+    def _deserialize(self, params):
+        self._AttributeLabelBizId = params.get("AttributeLabelBizId")
+        if params.get("WorkflowList") is not None:
+            self._WorkflowList = []
+            for item in params.get("WorkflowList"):
+                obj = WorkflowRef()
+                obj._deserialize(item)
+                self._WorkflowList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BaseConfig(AbstractModel):
     """应用基础配置
 
@@ -2735,10 +2791,14 @@ class CheckAttributeLabelReferResponse(AbstractModel):
         r"""
         :param _IsRefer: 是否引用
         :type IsRefer: bool
+        :param _List: 引用的工作流详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of AttributeLabelRefByWorkflow
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._IsRefer = None
+        self._List = None
         self._RequestId = None
 
     @property
@@ -2751,6 +2811,18 @@ class CheckAttributeLabelReferResponse(AbstractModel):
     @IsRefer.setter
     def IsRefer(self, IsRefer):
         self._IsRefer = IsRefer
+
+    @property
+    def List(self):
+        """引用的工作流详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AttributeLabelRefByWorkflow
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
 
     @property
     def RequestId(self):
@@ -2766,6 +2838,12 @@ class CheckAttributeLabelReferResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._IsRefer = params.get("IsRefer")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = AttributeLabelRefByWorkflow()
+                obj._deserialize(item)
+                self._List.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -3260,9 +3338,12 @@ class CreateAppRequest(AbstractModel):
         :type AppType: str
         :param _BaseConfig: 应用基础配置
         :type BaseConfig: :class:`tencentcloud.lke.v20231130.models.BaseConfig`
+        :param _Pattern: 应用模式 standard:标准模式, agent: agent模式，single_workflow：单工作流模式
+        :type Pattern: str
         """
         self._AppType = None
         self._BaseConfig = None
+        self._Pattern = None
 
     @property
     def AppType(self):
@@ -3286,12 +3367,24 @@ class CreateAppRequest(AbstractModel):
     def BaseConfig(self, BaseConfig):
         self._BaseConfig = BaseConfig
 
+    @property
+    def Pattern(self):
+        """应用模式 standard:标准模式, agent: agent模式，single_workflow：单工作流模式
+        :rtype: str
+        """
+        return self._Pattern
+
+    @Pattern.setter
+    def Pattern(self, Pattern):
+        self._Pattern = Pattern
+
 
     def _deserialize(self, params):
         self._AppType = params.get("AppType")
         if params.get("BaseConfig") is not None:
             self._BaseConfig = BaseConfig()
             self._BaseConfig._deserialize(params.get("BaseConfig"))
+        self._Pattern = params.get("Pattern")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4442,11 +4535,17 @@ class CreateVarRequest(AbstractModel):
         :type VarDesc: str
         :param _VarType: 变量类型定义，支持类型如下：(STRING,INT,FLOAT,BOOL,OBJECT,ARRAY_STRING,ARRAY_INT,ARRAY_FLOAT,ARRAY_BOOL,ARRAY_OBJECT,FILE,DOCUMENT,IMAGE,AUDIO);传输过程是json字符串，标签中仅支持"STRING"类型使用
         :type VarType: str
+        :param _VarDefaultValue: 自定义变量默认值
+        :type VarDefaultValue: str
+        :param _VarDefaultFileName: 自定义变量文件默认名称
+        :type VarDefaultFileName: str
         """
         self._AppBizId = None
         self._VarName = None
         self._VarDesc = None
         self._VarType = None
+        self._VarDefaultValue = None
+        self._VarDefaultFileName = None
 
     @property
     def AppBizId(self):
@@ -4492,12 +4591,36 @@ class CreateVarRequest(AbstractModel):
     def VarType(self, VarType):
         self._VarType = VarType
 
+    @property
+    def VarDefaultValue(self):
+        """自定义变量默认值
+        :rtype: str
+        """
+        return self._VarDefaultValue
+
+    @VarDefaultValue.setter
+    def VarDefaultValue(self, VarDefaultValue):
+        self._VarDefaultValue = VarDefaultValue
+
+    @property
+    def VarDefaultFileName(self):
+        """自定义变量文件默认名称
+        :rtype: str
+        """
+        return self._VarDefaultFileName
+
+    @VarDefaultFileName.setter
+    def VarDefaultFileName(self, VarDefaultFileName):
+        self._VarDefaultFileName = VarDefaultFileName
+
 
     def _deserialize(self, params):
         self._AppBizId = params.get("AppBizId")
         self._VarName = params.get("VarName")
         self._VarDesc = params.get("VarDesc")
         self._VarType = params.get("VarType")
+        self._VarDefaultValue = params.get("VarDefaultValue")
+        self._VarDefaultFileName = params.get("VarDefaultFileName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5796,6 +5919,8 @@ class DescribeCallStatsGraphRequest(AbstractModel):
         :type AppBizIds: list of str
         :param _SubScenes: 筛选子场景(文档解析场景使用)
         :type SubScenes: list of str
+        :param _AppType: 应用类型(knowledge_qa应用管理， shared_knowlege 共享知识库)
+        :type AppType: str
         """
         self._UinAccount = None
         self._LoginUin = None
@@ -5806,6 +5931,7 @@ class DescribeCallStatsGraphRequest(AbstractModel):
         self._EndTime = None
         self._AppBizIds = None
         self._SubScenes = None
+        self._AppType = None
 
     @property
     def UinAccount(self):
@@ -5906,6 +6032,17 @@ class DescribeCallStatsGraphRequest(AbstractModel):
     def SubScenes(self, SubScenes):
         self._SubScenes = SubScenes
 
+    @property
+    def AppType(self):
+        """应用类型(knowledge_qa应用管理， shared_knowlege 共享知识库)
+        :rtype: str
+        """
+        return self._AppType
+
+    @AppType.setter
+    def AppType(self, AppType):
+        self._AppType = AppType
+
 
     def _deserialize(self, params):
         self._UinAccount = params.get("UinAccount")
@@ -5917,6 +6054,7 @@ class DescribeCallStatsGraphRequest(AbstractModel):
         self._EndTime = params.get("EndTime")
         self._AppBizIds = params.get("AppBizIds")
         self._SubScenes = params.get("SubScenes")
+        self._AppType = params.get("AppType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6594,6 +6732,8 @@ class DescribeDocResponse(AbstractModel):
         :type AttrLabels: list of AttrLabel
         :param _CateBizId: 分类ID
         :type CateBizId: str
+        :param _IsDisabled: 文档是否停用，false:未停用，true:已停用
+        :type IsDisabled: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -6621,6 +6761,7 @@ class DescribeDocResponse(AbstractModel):
         self._AttrRange = None
         self._AttrLabels = None
         self._CateBizId = None
+        self._IsDisabled = None
         self._RequestId = None
 
     @property
@@ -6888,6 +7029,17 @@ class DescribeDocResponse(AbstractModel):
         self._CateBizId = CateBizId
 
     @property
+    def IsDisabled(self):
+        """文档是否停用，false:未停用，true:已停用
+        :rtype: bool
+        """
+        return self._IsDisabled
+
+    @IsDisabled.setter
+    def IsDisabled(self, IsDisabled):
+        self._IsDisabled = IsDisabled
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -6929,6 +7081,7 @@ class DescribeDocResponse(AbstractModel):
                 obj._deserialize(item)
                 self._AttrLabels.append(obj)
         self._CateBizId = params.get("CateBizId")
+        self._IsDisabled = params.get("IsDisabled")
         self._RequestId = params.get("RequestId")
 
 
@@ -7243,6 +7396,8 @@ class DescribeQAResponse(AbstractModel):
         :type VideoAuditStatus: int
         :param _QuestionDesc: 问题描述
         :type QuestionDesc: str
+        :param _IsDisabled: 问答是否停用，false:未停用，true已停用
+        :type IsDisabled: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -7275,6 +7430,7 @@ class DescribeQAResponse(AbstractModel):
         self._PicAuditStatus = None
         self._VideoAuditStatus = None
         self._QuestionDesc = None
+        self._IsDisabled = None
         self._RequestId = None
 
     @property
@@ -7612,6 +7768,17 @@ class DescribeQAResponse(AbstractModel):
         self._QuestionDesc = QuestionDesc
 
     @property
+    def IsDisabled(self):
+        """问答是否停用，false:未停用，true已停用
+        :rtype: bool
+        """
+        return self._IsDisabled
+
+    @IsDisabled.setter
+    def IsDisabled(self, IsDisabled):
+        self._IsDisabled = IsDisabled
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -7668,6 +7835,7 @@ class DescribeQAResponse(AbstractModel):
         self._PicAuditStatus = params.get("PicAuditStatus")
         self._VideoAuditStatus = params.get("VideoAuditStatus")
         self._QuestionDesc = params.get("QuestionDesc")
+        self._IsDisabled = params.get("IsDisabled")
         self._RequestId = params.get("RequestId")
 
 
@@ -8718,6 +8886,8 @@ class DescribeTokenUsageGraphRequest(AbstractModel):
         :type EndTime: str
         :param _AppBizIds: 应用id列表
         :type AppBizIds: list of str
+        :param _AppType: 应用类型(knowledge_qa应用管理， shared_knowlege 共享知识库)
+        :type AppType: str
         """
         self._UinAccount = None
         self._SubBizType = None
@@ -8725,6 +8895,7 @@ class DescribeTokenUsageGraphRequest(AbstractModel):
         self._StartTime = None
         self._EndTime = None
         self._AppBizIds = None
+        self._AppType = None
 
     @property
     def UinAccount(self):
@@ -8792,6 +8963,17 @@ class DescribeTokenUsageGraphRequest(AbstractModel):
     def AppBizIds(self, AppBizIds):
         self._AppBizIds = AppBizIds
 
+    @property
+    def AppType(self):
+        """应用类型(knowledge_qa应用管理， shared_knowlege 共享知识库)
+        :rtype: str
+        """
+        return self._AppType
+
+    @AppType.setter
+    def AppType(self, AppType):
+        self._AppType = AppType
+
 
     def _deserialize(self, params):
         self._UinAccount = params.get("UinAccount")
@@ -8800,6 +8982,7 @@ class DescribeTokenUsageGraphRequest(AbstractModel):
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
         self._AppBizIds = params.get("AppBizIds")
+        self._AppType = params.get("AppType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8923,6 +9106,8 @@ class DescribeTokenUsageRequest(AbstractModel):
         :type AppBizIds: list of str
         :param _SubScenes: 筛选子场景(文档解析场景使用)
         :type SubScenes: list of str
+        :param _AppType: 应用类型(knowledge_qa应用管理， shared_knowlege 共享知识库)
+        :type AppType: str
         """
         self._UinAccount = None
         self._LoginUin = None
@@ -8933,6 +9118,7 @@ class DescribeTokenUsageRequest(AbstractModel):
         self._EndTime = None
         self._AppBizIds = None
         self._SubScenes = None
+        self._AppType = None
 
     @property
     def UinAccount(self):
@@ -9033,6 +9219,17 @@ class DescribeTokenUsageRequest(AbstractModel):
     def SubScenes(self, SubScenes):
         self._SubScenes = SubScenes
 
+    @property
+    def AppType(self):
+        """应用类型(knowledge_qa应用管理， shared_knowlege 共享知识库)
+        :rtype: str
+        """
+        return self._AppType
+
+    @AppType.setter
+    def AppType(self, AppType):
+        self._AppType = AppType
+
 
     def _deserialize(self, params):
         self._UinAccount = params.get("UinAccount")
@@ -9044,6 +9241,7 @@ class DescribeTokenUsageRequest(AbstractModel):
         self._EndTime = params.get("EndTime")
         self._AppBizIds = params.get("AppBizIds")
         self._SubScenes = params.get("SubScenes")
+        self._AppType = params.get("AppType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9361,10 +9559,13 @@ class DigitalHumanConfig(AbstractModel):
         :type Name: str
         :param _Avatar: 图像
         :type Avatar: str
+        :param _PreviewUrl: 预览图
+        :type PreviewUrl: str
         """
         self._AssetKey = None
         self._Name = None
         self._Avatar = None
+        self._PreviewUrl = None
 
     @property
     def AssetKey(self):
@@ -9399,11 +9600,23 @@ class DigitalHumanConfig(AbstractModel):
     def Avatar(self, Avatar):
         self._Avatar = Avatar
 
+    @property
+    def PreviewUrl(self):
+        """预览图
+        :rtype: str
+        """
+        return self._PreviewUrl
+
+    @PreviewUrl.setter
+    def PreviewUrl(self, PreviewUrl):
+        self._PreviewUrl = PreviewUrl
+
 
     def _deserialize(self, params):
         self._AssetKey = params.get("AssetKey")
         self._Name = params.get("Name")
         self._Avatar = params.get("Avatar")
+        self._PreviewUrl = params.get("PreviewUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13672,6 +13885,8 @@ class KnowledgeQaConfig(AbstractModel):
         :param _AiCall: 配置语音通话参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type AiCall: :class:`tencentcloud.lke.v20231130.models.AICallConfig`
+        :param _ShareKnowledgeBases: 共享知识库关联配置
+        :type ShareKnowledgeBases: list of ShareKnowledgeBase
         """
         self._Greeting = None
         self._RoleDescription = None
@@ -13688,6 +13903,7 @@ class KnowledgeQaConfig(AbstractModel):
         self._IntentAchievements = None
         self._ImageTextRetrieval = None
         self._AiCall = None
+        self._ShareKnowledgeBases = None
 
     @property
     def Greeting(self):
@@ -13881,6 +14097,17 @@ class KnowledgeQaConfig(AbstractModel):
     def AiCall(self, AiCall):
         self._AiCall = AiCall
 
+    @property
+    def ShareKnowledgeBases(self):
+        """共享知识库关联配置
+        :rtype: list of ShareKnowledgeBase
+        """
+        return self._ShareKnowledgeBases
+
+    @ShareKnowledgeBases.setter
+    def ShareKnowledgeBases(self, ShareKnowledgeBases):
+        self._ShareKnowledgeBases = ShareKnowledgeBases
+
 
     def _deserialize(self, params):
         self._Greeting = params.get("Greeting")
@@ -13929,6 +14156,12 @@ class KnowledgeQaConfig(AbstractModel):
         if params.get("AiCall") is not None:
             self._AiCall = AICallConfig()
             self._AiCall._deserialize(params.get("AiCall"))
+        if params.get("ShareKnowledgeBases") is not None:
+            self._ShareKnowledgeBases = []
+            for item in params.get("ShareKnowledgeBases"):
+                obj = ShareKnowledgeBase()
+                obj._deserialize(item)
+                self._ShareKnowledgeBases.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14234,7 +14467,7 @@ class KnowledgeQaSearch(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 知识来源 doc：文档，qa：问答  taskflow：业务流程，search：搜索增强
+        :param _Type: 知识来源 doc：文档，qa：问答  taskflow：业务流程，search：搜索增强，database:数据库
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _ReplyFlexibility: 问答-回复灵活度 1：已采纳答案直接回复 2：已采纳润色后回复
@@ -14274,7 +14507,7 @@ class KnowledgeQaSearch(AbstractModel):
 
     @property
     def Type(self):
-        """知识来源 doc：文档，qa：问答  taskflow：业务流程，search：搜索增强
+        """知识来源 doc：文档，qa：问答  taskflow：业务流程，search：搜索增强，database:数据库
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15472,6 +15705,8 @@ class ListDocItem(AbstractModel):
         :type CustomerKnowledgeId: str
         :param _AttributeFlags: 文档的属性标记，0: 不做用户外部权限校验
         :type AttributeFlags: list of int non-negative
+        :param _IsDisabled: false:未停用，ture:已停用
+        :type IsDisabled: bool
         """
         self._DocBizId = None
         self._FileName = None
@@ -15507,6 +15742,7 @@ class ListDocItem(AbstractModel):
         self._CateBizId = None
         self._CustomerKnowledgeId = None
         self._AttributeFlags = None
+        self._IsDisabled = None
 
     @property
     def DocBizId(self):
@@ -15913,6 +16149,17 @@ class ListDocItem(AbstractModel):
     def AttributeFlags(self, AttributeFlags):
         self._AttributeFlags = AttributeFlags
 
+    @property
+    def IsDisabled(self):
+        """false:未停用，ture:已停用
+        :rtype: bool
+        """
+        return self._IsDisabled
+
+    @IsDisabled.setter
+    def IsDisabled(self, IsDisabled):
+        self._IsDisabled = IsDisabled
+
 
     def _deserialize(self, params):
         self._DocBizId = params.get("DocBizId")
@@ -15954,6 +16201,7 @@ class ListDocItem(AbstractModel):
         self._CateBizId = params.get("CateBizId")
         self._CustomerKnowledgeId = params.get("CustomerKnowledgeId")
         self._AttributeFlags = params.get("AttributeFlags")
+        self._IsDisabled = params.get("IsDisabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15978,6 +16226,8 @@ class ListDocRequest(AbstractModel):
         :param _PageSize: 每页数量
         :type PageSize: int
         :param _Query: 查询内容
+
+输入特定标识 lke:system:untagged  将查询所有未关联标签的文档
         :type Query: str
         :param _Status: 文档状态： 1-未生成 2-生成中 3-生成成功 4-生成失败 5-删除中 6-删除成功  7-审核中  8-审核失败 9-审核成功  10-待发布  11-发布中  12-已发布  13-学习中  14-学习失败  15-更新中  16-更新失败  17-解析中  18-解析失败  19-导入失败   20-已过期 21-超量失效 22-超量失效恢复
         :type Status: list of int
@@ -15989,6 +16239,8 @@ class ListDocRequest(AbstractModel):
         :type FileTypes: list of str
         :param _FilterFlag: 文档列表筛选标识位
         :type FilterFlag: list of DocFilterFlag
+        :param _ShowCurrCate: 是否只展示当前分类的数据 0不是，1是
+        :type ShowCurrCate: int
         """
         self._BotBizId = None
         self._PageNumber = None
@@ -15999,6 +16251,7 @@ class ListDocRequest(AbstractModel):
         self._CateBizId = None
         self._FileTypes = None
         self._FilterFlag = None
+        self._ShowCurrCate = None
 
     @property
     def BotBizId(self):
@@ -16036,6 +16289,8 @@ class ListDocRequest(AbstractModel):
     @property
     def Query(self):
         """查询内容
+
+输入特定标识 lke:system:untagged  将查询所有未关联标签的文档
         :rtype: str
         """
         return self._Query
@@ -16099,6 +16354,17 @@ class ListDocRequest(AbstractModel):
     def FilterFlag(self, FilterFlag):
         self._FilterFlag = FilterFlag
 
+    @property
+    def ShowCurrCate(self):
+        """是否只展示当前分类的数据 0不是，1是
+        :rtype: int
+        """
+        return self._ShowCurrCate
+
+    @ShowCurrCate.setter
+    def ShowCurrCate(self, ShowCurrCate):
+        self._ShowCurrCate = ShowCurrCate
+
 
     def _deserialize(self, params):
         self._BotBizId = params.get("BotBizId")
@@ -16115,6 +16381,7 @@ class ListDocRequest(AbstractModel):
                 obj = DocFilterFlag()
                 obj._deserialize(item)
                 self._FilterFlag.append(obj)
+        self._ShowCurrCate = params.get("ShowCurrCate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16430,6 +16697,8 @@ class ListQARequest(AbstractModel):
         :param _PageSize: 每页大小
         :type PageSize: int
         :param _Query: 查询问题
+
+输入特定标识 lke:system:untagged  将查询所有未关联标签的问答
         :type Query: str
         :param _AcceptStatus: 校验状态(1未校验2采纳3不采纳)
         :type AcceptStatus: list of int
@@ -16447,6 +16716,8 @@ class ListQARequest(AbstractModel):
         :type QaBizIds: list of str
         :param _QueryType: 查询类型 filename 名称、 attribute 标签
         :type QueryType: str
+        :param _ShowCurrCate: 是否只展示当前分类的数据 0不是，1是
+        :type ShowCurrCate: int
         """
         self._BotBizId = None
         self._PageNumber = None
@@ -16460,6 +16731,7 @@ class ListQARequest(AbstractModel):
         self._CateBizId = None
         self._QaBizIds = None
         self._QueryType = None
+        self._ShowCurrCate = None
 
     @property
     def BotBizId(self):
@@ -16497,6 +16769,8 @@ class ListQARequest(AbstractModel):
     @property
     def Query(self):
         """查询问题
+
+输入特定标识 lke:system:untagged  将查询所有未关联标签的问答
         :rtype: str
         """
         return self._Query
@@ -16593,6 +16867,17 @@ class ListQARequest(AbstractModel):
     def QueryType(self, QueryType):
         self._QueryType = QueryType
 
+    @property
+    def ShowCurrCate(self):
+        """是否只展示当前分类的数据 0不是，1是
+        :rtype: int
+        """
+        return self._ShowCurrCate
+
+    @ShowCurrCate.setter
+    def ShowCurrCate(self, ShowCurrCate):
+        self._ShowCurrCate = ShowCurrCate
+
 
     def _deserialize(self, params):
         self._BotBizId = params.get("BotBizId")
@@ -16607,6 +16892,7 @@ class ListQARequest(AbstractModel):
         self._CateBizId = params.get("CateBizId")
         self._QaBizIds = params.get("QaBizIds")
         self._QueryType = params.get("QueryType")
+        self._ShowCurrCate = params.get("ShowCurrCate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16791,6 +17077,8 @@ class ListQaItem(AbstractModel):
         :type SimilarQuestionNum: int
         :param _SimilarQuestionTips: 返回问答关联的相似问,联动搜索,仅展示一条
         :type SimilarQuestionTips: str
+        :param _IsDisabled: 问答是否停用，false:未停用，ture:已停用
+        :type IsDisabled: bool
         """
         self._QaBizId = None
         self._Question = None
@@ -16814,6 +17102,7 @@ class ListQaItem(AbstractModel):
         self._AttrLabels = None
         self._SimilarQuestionNum = None
         self._SimilarQuestionTips = None
+        self._IsDisabled = None
 
     @property
     def QaBizId(self):
@@ -17057,6 +17346,17 @@ class ListQaItem(AbstractModel):
     def SimilarQuestionTips(self, SimilarQuestionTips):
         self._SimilarQuestionTips = SimilarQuestionTips
 
+    @property
+    def IsDisabled(self):
+        """问答是否停用，false:未停用，ture:已停用
+        :rtype: bool
+        """
+        return self._IsDisabled
+
+    @IsDisabled.setter
+    def IsDisabled(self, IsDisabled):
+        self._IsDisabled = IsDisabled
+
 
     def _deserialize(self, params):
         self._QaBizId = params.get("QaBizId")
@@ -17086,6 +17386,7 @@ class ListQaItem(AbstractModel):
                 self._AttrLabels.append(obj)
         self._SimilarQuestionNum = params.get("SimilarQuestionNum")
         self._SimilarQuestionTips = params.get("SimilarQuestionTips")
+        self._IsDisabled = params.get("IsDisabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18709,6 +19010,8 @@ class ListUsageCallDetailRequest(AbstractModel):
         :type CallType: str
         :param _SubScenes: 筛选子场景
         :type SubScenes: list of str
+        :param _AppType: 应用类型(knowledge_qa应用管理， shared_knowlege 共享知识库)
+        :type AppType: str
         """
         self._ModelName = None
         self._StartTime = None
@@ -18719,6 +19022,7 @@ class ListUsageCallDetailRequest(AbstractModel):
         self._AppBizIds = None
         self._CallType = None
         self._SubScenes = None
+        self._AppType = None
 
     @property
     def ModelName(self):
@@ -18819,6 +19123,17 @@ class ListUsageCallDetailRequest(AbstractModel):
     def SubScenes(self, SubScenes):
         self._SubScenes = SubScenes
 
+    @property
+    def AppType(self):
+        """应用类型(knowledge_qa应用管理， shared_knowlege 共享知识库)
+        :rtype: str
+        """
+        return self._AppType
+
+    @AppType.setter
+    def AppType(self, AppType):
+        self._AppType = AppType
+
 
     def _deserialize(self, params):
         self._ModelName = params.get("ModelName")
@@ -18830,6 +19145,7 @@ class ListUsageCallDetailRequest(AbstractModel):
         self._AppBizIds = params.get("AppBizIds")
         self._CallType = params.get("CallType")
         self._SubScenes = params.get("SubScenes")
+        self._AppType = params.get("AppType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19015,6 +19331,8 @@ class ModelInfo(AbstractModel):
         :type IsExclusive: bool
         :param _SupportAiCallStatus: 模型支持智能通话效果
         :type SupportAiCallStatus: int
+        :param _Concurrency: 专属并发数
+        :type Concurrency: int
         """
         self._ModelName = None
         self._ModelDesc = None
@@ -19034,6 +19352,7 @@ class ModelInfo(AbstractModel):
         self._RoleLenLimit = None
         self._IsExclusive = None
         self._SupportAiCallStatus = None
+        self._Concurrency = None
 
     @property
     def ModelName(self):
@@ -19243,6 +19562,17 @@ class ModelInfo(AbstractModel):
     def SupportAiCallStatus(self, SupportAiCallStatus):
         self._SupportAiCallStatus = SupportAiCallStatus
 
+    @property
+    def Concurrency(self):
+        """专属并发数
+        :rtype: int
+        """
+        return self._Concurrency
+
+    @Concurrency.setter
+    def Concurrency(self, Concurrency):
+        self._Concurrency = Concurrency
+
 
     def _deserialize(self, params):
         self._ModelName = params.get("ModelName")
@@ -19269,6 +19599,7 @@ class ModelInfo(AbstractModel):
         self._RoleLenLimit = params.get("RoleLenLimit")
         self._IsExclusive = params.get("IsExclusive")
         self._SupportAiCallStatus = params.get("SupportAiCallStatus")
+        self._Concurrency = params.get("Concurrency")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23169,6 +23500,8 @@ class ReferDetail(AbstractModel):
         :param _DocBizId: 文档ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type DocBizId: str
+        :param _KnowledgeBizId: 知识库ID
+        :type KnowledgeBizId: str
         """
         self._ReferBizId = None
         self._DocType = None
@@ -23183,6 +23516,7 @@ class ReferDetail(AbstractModel):
         self._PageInfos = None
         self._SheetInfos = None
         self._DocBizId = None
+        self._KnowledgeBizId = None
 
     @property
     def ReferBizId(self):
@@ -23340,6 +23674,17 @@ class ReferDetail(AbstractModel):
     def DocBizId(self, DocBizId):
         self._DocBizId = DocBizId
 
+    @property
+    def KnowledgeBizId(self):
+        """知识库ID
+        :rtype: str
+        """
+        return self._KnowledgeBizId
+
+    @KnowledgeBizId.setter
+    def KnowledgeBizId(self, KnowledgeBizId):
+        self._KnowledgeBizId = KnowledgeBizId
+
 
     def _deserialize(self, params):
         self._ReferBizId = params.get("ReferBizId")
@@ -23360,6 +23705,7 @@ class ReferDetail(AbstractModel):
         self._PageInfos = params.get("PageInfos")
         self._SheetInfos = params.get("SheetInfos")
         self._DocBizId = params.get("DocBizId")
+        self._KnowledgeBizId = params.get("KnowledgeBizId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25242,6 +25588,59 @@ class SearchStrategy(AbstractModel):
         
 
 
+class ShareKnowledgeBase(AbstractModel):
+    """共享知识库配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KnowledgeBizId: 共享知识库ID
+        :type KnowledgeBizId: str
+        :param _SearchRange: 检索范围
+        :type SearchRange: :class:`tencentcloud.lke.v20231130.models.SearchRange`
+        """
+        self._KnowledgeBizId = None
+        self._SearchRange = None
+
+    @property
+    def KnowledgeBizId(self):
+        """共享知识库ID
+        :rtype: str
+        """
+        return self._KnowledgeBizId
+
+    @KnowledgeBizId.setter
+    def KnowledgeBizId(self, KnowledgeBizId):
+        self._KnowledgeBizId = KnowledgeBizId
+
+    @property
+    def SearchRange(self):
+        """检索范围
+        :rtype: :class:`tencentcloud.lke.v20231130.models.SearchRange`
+        """
+        return self._SearchRange
+
+    @SearchRange.setter
+    def SearchRange(self, SearchRange):
+        self._SearchRange = SearchRange
+
+
+    def _deserialize(self, params):
+        self._KnowledgeBizId = params.get("KnowledgeBizId")
+        if params.get("SearchRange") is not None:
+            self._SearchRange = SearchRange()
+            self._SearchRange._deserialize(params.get("SearchRange"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SimilarQuestion(AbstractModel):
     """相似问信息
 
@@ -25868,11 +26267,17 @@ class TaskFLowVar(AbstractModel):
         :param _VarType: 变量类型 (STRING,INT,FLOAT,BOOL,OBJECT,ARRAY_STRING,ARRAY_INT,ARRAY_FLOAT,ARRAY_BOOL,ARRAY_OBJECT,FILE,DOCUMENT,IMAGE,AUDIO)
 
         :type VarType: str
+        :param _VarDefaultValue: 自定义变量默认值
+        :type VarDefaultValue: str
+        :param _VarDefaultFileName: 自定义变量文件默认名称
+        :type VarDefaultFileName: str
         """
         self._VarId = None
         self._VarName = None
         self._VarDesc = None
         self._VarType = None
+        self._VarDefaultValue = None
+        self._VarDefaultFileName = None
 
     @property
     def VarId(self):
@@ -25921,12 +26326,36 @@ class TaskFLowVar(AbstractModel):
     def VarType(self, VarType):
         self._VarType = VarType
 
+    @property
+    def VarDefaultValue(self):
+        """自定义变量默认值
+        :rtype: str
+        """
+        return self._VarDefaultValue
+
+    @VarDefaultValue.setter
+    def VarDefaultValue(self, VarDefaultValue):
+        self._VarDefaultValue = VarDefaultValue
+
+    @property
+    def VarDefaultFileName(self):
+        """自定义变量文件默认名称
+        :rtype: str
+        """
+        return self._VarDefaultFileName
+
+    @VarDefaultFileName.setter
+    def VarDefaultFileName(self, VarDefaultFileName):
+        self._VarDefaultFileName = VarDefaultFileName
+
 
     def _deserialize(self, params):
         self._VarId = params.get("VarId")
         self._VarName = params.get("VarName")
         self._VarDesc = params.get("VarDesc")
         self._VarType = params.get("VarType")
+        self._VarDefaultValue = params.get("VarDefaultValue")
+        self._VarDefaultFileName = params.get("VarDefaultFileName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27460,6 +27889,102 @@ class WorkflowInfo(AbstractModel):
         self._OptionCards = params.get("OptionCards")
         self._Outputs = params.get("Outputs")
         self._WorkflowReleaseTime = params.get("WorkflowReleaseTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WorkflowRef(AbstractModel):
+    """WorkflowRef详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkflowId: 任务流ID
+        :type WorkflowId: str
+        :param _WorkflowName: 任务流名称
+        :type WorkflowName: str
+        :param _WorkflowDesc: 任务流描述
+        :type WorkflowDesc: str
+        :param _AppBizId: 应用ID
+        :type AppBizId: str
+        :param _UpdateTime: 更新时间
+        :type UpdateTime: int
+        """
+        self._WorkflowId = None
+        self._WorkflowName = None
+        self._WorkflowDesc = None
+        self._AppBizId = None
+        self._UpdateTime = None
+
+    @property
+    def WorkflowId(self):
+        """任务流ID
+        :rtype: str
+        """
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+    @property
+    def WorkflowName(self):
+        """任务流名称
+        :rtype: str
+        """
+        return self._WorkflowName
+
+    @WorkflowName.setter
+    def WorkflowName(self, WorkflowName):
+        self._WorkflowName = WorkflowName
+
+    @property
+    def WorkflowDesc(self):
+        """任务流描述
+        :rtype: str
+        """
+        return self._WorkflowDesc
+
+    @WorkflowDesc.setter
+    def WorkflowDesc(self, WorkflowDesc):
+        self._WorkflowDesc = WorkflowDesc
+
+    @property
+    def AppBizId(self):
+        """应用ID
+        :rtype: str
+        """
+        return self._AppBizId
+
+    @AppBizId.setter
+    def AppBizId(self, AppBizId):
+        self._AppBizId = AppBizId
+
+    @property
+    def UpdateTime(self):
+        """更新时间
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._WorkflowId = params.get("WorkflowId")
+        self._WorkflowName = params.get("WorkflowName")
+        self._WorkflowDesc = params.get("WorkflowDesc")
+        self._AppBizId = params.get("AppBizId")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

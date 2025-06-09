@@ -14,4 +14,4 @@
 # limitations under the License.
 
 
-__version__ = '3.0.1396'
+__version__ = '3.0.1397'

@@ -215,7 +215,7 @@ class GsClient(AbstractClient):
 
 
     def CreateAndroidInstanceLabel(self, request):
-        """创建安卓实例
+        """创建安卓实例标签
 
         :param request: Request instance for CreateAndroidInstanceLabel.
         :type request: :class:`tencentcloud.gs.v20191118.models.CreateAndroidInstanceLabelRequest`
@@ -445,7 +445,7 @@ class GsClient(AbstractClient):
 
 
     def DeleteAndroidInstanceLabel(self, request):
-        """创建安卓实例
+        """删除安卓实例标签
 
         :param request: Request instance for DeleteAndroidInstanceLabel.
         :type request: :class:`tencentcloud.gs.v20191118.models.DeleteAndroidInstanceLabelRequest`
@@ -537,7 +537,7 @@ class GsClient(AbstractClient):
 
 
     def DescribeAndroidInstanceLabels(self, request):
-        """创建安卓实例
+        """查询安卓实例标签
 
         :param request: Request instance for DescribeAndroidInstanceLabels.
         :type request: :class:`tencentcloud.gs.v20191118.models.DescribeAndroidInstanceLabelsRequest`
@@ -743,6 +743,29 @@ class GsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DistributePhotoToAndroidInstances(self, request):
+        """将一张照片批量分发到多个实例的相册中，一次接口调用触发一次照片分发，一次照片分发只会从公网下载一次，然后照片会走内网分发到实例列表中的实例。
+
+        :param request: Request instance for DistributePhotoToAndroidInstances.
+        :type request: :class:`tencentcloud.gs.v20191118.models.DistributePhotoToAndroidInstancesRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.DistributePhotoToAndroidInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DistributePhotoToAndroidInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DistributePhotoToAndroidInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def EnableAndroidInstancesApp(self, request):
         """批量启用安卓实例应用
 
@@ -859,7 +882,7 @@ class GsClient(AbstractClient):
 
 
     def InstallAndroidInstancesAppWithURL(self, request):
-        """安装安卓实例应用
+        """通过 URL 安装安卓实例应用
 
         :param request: Request instance for InstallAndroidInstancesAppWithURL.
         :type request: :class:`tencentcloud.gs.v20191118.models.InstallAndroidInstancesAppWithURLRequest`
@@ -1020,7 +1043,7 @@ class GsClient(AbstractClient):
 
 
     def ModifyAndroidInstancesLabels(self, request):
-        """修改安卓实例分辨率。需要注意的是该接口可能导致正在运行的应用出现闪退，所以建议在实例维护时期才进行调用。
+        """批量修改安卓实例的标签
 
         :param request: Request instance for ModifyAndroidInstancesLabels.
         :type request: :class:`tencentcloud.gs.v20191118.models.ModifyAndroidInstancesLabelsRequest`
@@ -1207,7 +1230,7 @@ class GsClient(AbstractClient):
 
 
     def RestartAndroidInstancesApp(self, request):
-        """启动安卓实例应用
+        """重启安卓实例应用
 
         :param request: Request instance for RestartAndroidInstancesApp.
         :type request: :class:`tencentcloud.gs.v20191118.models.RestartAndroidInstancesAppRequest`
@@ -1322,7 +1345,7 @@ class GsClient(AbstractClient):
 
 
     def StartAndroidInstances(self, request):
-        """重启安卓实例
+        """开机安卓实例
 
         :param request: Request instance for StartAndroidInstances.
         :type request: :class:`tencentcloud.gs.v20191118.models.StartAndroidInstancesRequest`
@@ -1414,7 +1437,7 @@ class GsClient(AbstractClient):
 
 
     def StopAndroidInstances(self, request):
-        """重启安卓实例
+        """关机安卓实例
 
         :param request: Request instance for StopAndroidInstances.
         :type request: :class:`tencentcloud.gs.v20191118.models.StopAndroidInstancesRequest`

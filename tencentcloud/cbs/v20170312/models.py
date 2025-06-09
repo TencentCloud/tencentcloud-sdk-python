@@ -385,6 +385,7 @@ class ApplySnapshotRequest(AbstractModel):
         :param _DiskId: 快照原云硬盘ID，可通过[DescribeDisks](/document/product/362/16315)接口查询。
         :type DiskId: str
         :param _AutoStopInstance: 回滚前是否执行自动关机，仅支持回滚快照至已挂载的云硬盘时传入。
+此参数为true时，AutoStartInstance才能为true。
         :type AutoStopInstance: bool
         :param _AutoStartInstance: 回滚完成后是否自动开机，仅支持回滚快照至已挂载的云硬盘时传入。该参数传入时，需要同时传入AutoStopInstance参数。
         :type AutoStartInstance: bool
@@ -419,6 +420,7 @@ class ApplySnapshotRequest(AbstractModel):
     @property
     def AutoStopInstance(self):
         """回滚前是否执行自动关机，仅支持回滚快照至已挂载的云硬盘时传入。
+此参数为true时，AutoStartInstance才能为true。
         :rtype: bool
         """
         return self._AutoStopInstance
@@ -731,6 +733,7 @@ class AutoSnapshotPolicy(AbstractModel):
     def __init__(self):
         r"""
         :param _DiskIdSet: 已绑定当前定期快照策略的云盘ID列表。
+DescribeDiskAssociatedAutoSnapshotPolicy场景下该字段返回为空。
         :type DiskIdSet: list of str
         :param _IsActivated: 定期快照策略是否激活。
         :type IsActivated: bool
@@ -740,7 +743,7 @@ class AutoSnapshotPolicy(AbstractModel):
   <li>ISOLATED：已隔离</li>
 </ul>
         :type AutoSnapshotPolicyState: str
-        :param _IsCopyToRemote: 是否是跨账号复制快照快照, 1：是, 0: 不是
+        :param _IsCopyToRemote: 是否是跨账号复制快照, 1：是, 0: 不是
         :type IsCopyToRemote: int
         :param _IsPermanent: 使用该定期快照策略创建出来的快照是否永久保留。
         :type IsPermanent: bool
@@ -796,6 +799,7 @@ class AutoSnapshotPolicy(AbstractModel):
     @property
     def DiskIdSet(self):
         """已绑定当前定期快照策略的云盘ID列表。
+DescribeDiskAssociatedAutoSnapshotPolicy场景下该字段返回为空。
         :rtype: list of str
         """
         return self._DiskIdSet
@@ -832,7 +836,7 @@ class AutoSnapshotPolicy(AbstractModel):
 
     @property
     def IsCopyToRemote(self):
-        """是否是跨账号复制快照快照, 1：是, 0: 不是
+        """是否是跨账号复制快照, 1：是, 0: 不是
         :rtype: int
         """
         return self._IsCopyToRemote
@@ -1768,7 +1772,7 @@ class CreateDisksRequest(AbstractModel):
         :type AutoMountConfiguration: :class:`tencentcloud.cbs.v20170312.models.AutoMountConfiguration`
         :param _DiskBackupQuota: 指定云硬盘备份点配额。
         :type DiskBackupQuota: int
-        :param _BurstPerformance: 创建云盘时是否开启性能突发。当前仅支持极速型云盘（CLOUD_TSSD）和增强型SSD云硬盘（CLOUD_HSSD）。
+        :param _BurstPerformance: 创建云盘时是否开启性能突发。当前仅支持极速型云盘（CLOUD_TSSD）和增强型SSD云硬盘（CLOUD_HSSD）且云盘大小不小于460GiB。
         :type BurstPerformance: bool
         :param _EncryptType: 指定云硬盘加密类型，取值为ENCRYPT_V1和ENCRYPT_V2，分别表示第一代和第二代加密技术，两种加密技术互不兼容。推荐优先使用第二代加密技术ENCRYPT_V2，第一代加密技术仅支持在部分老旧机型使用。该参数仅当创建加密云硬盘时有效。
         :type EncryptType: str
@@ -1982,7 +1986,7 @@ class CreateDisksRequest(AbstractModel):
 
     @property
     def BurstPerformance(self):
-        """创建云盘时是否开启性能突发。当前仅支持极速型云盘（CLOUD_TSSD）和增强型SSD云硬盘（CLOUD_HSSD）。
+        """创建云盘时是否开启性能突发。当前仅支持极速型云盘（CLOUD_TSSD）和增强型SSD云硬盘（CLOUD_HSSD）且云盘大小不小于460GiB。
         :rtype: bool
         """
         return self._BurstPerformance
@@ -2949,7 +2953,7 @@ class DescribeDiskBackupsRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](/document/product/362/15633)中的相关小节。
         :type Limit: int
-        :param _Order: 输出云硬盘备份点列表的排列顺序。取值范围：<br><li>ASC：升序排列</li><br><li>DESC：降序排列。</li>
+        :param _Order: 输出云硬盘备份点列表的排列顺序，默认排序：ASC。取值范围：<br><li>ASC：升序排列</li><br><li>DESC：降序排列。</li>
         :type Order: str
         :param _OrderField: 云硬盘备份点列表排序的依据字段。取值范围：<br><li>CREATE_TIME：依据云硬盘备份点的创建时间排序</li><br>默认按创建时间排序。
         :type OrderField: str
@@ -3007,7 +3011,7 @@ class DescribeDiskBackupsRequest(AbstractModel):
 
     @property
     def Order(self):
-        """输出云硬盘备份点列表的排列顺序。取值范围：<br><li>ASC：升序排列</li><br><li>DESC：降序排列。</li>
+        """输出云硬盘备份点列表的排列顺序，默认排序：ASC。取值范围：<br><li>ASC：升序排列</li><br><li>DESC：降序排列。</li>
         :rtype: str
         """
         return self._Order
@@ -7469,7 +7473,7 @@ class Placement(AbstractModel):
         r"""
         :param _Zone: 云硬盘所属的[可用区](/document/product/213/15753#ZoneInfo)。该参数也可以通过调用  [DescribeZones](/document/product/213/15707) 的返回值中的Zone字段来获取。
         :type Zone: str
-        :param _CageId: 围笼Id。作为入参时，表示对指定的CageId的资源进行操作，可为空。 作为出参时，表示资源所属围笼ID，可为空。
+        :param _CageId: 围笼Id，可通过 [DescribeDiskStoragePool](https://cloud.tencent.com/document/api/362/62143) 获取。作为入参时，表示对指定的CageId的资源进行操作，可为空。 作为出参时，表示资源所属围笼ID，可为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CageId: str
         :param _ProjectId: 实例所属项目ID，可通过[DescribeProject](/document/api/651/78725)获取。不填默认为0，表示默认项目。
@@ -7480,7 +7484,7 @@ class Placement(AbstractModel):
         :param _CdcName: 独享集群名字。作为入参时，忽略。作为出参时，表示云硬盘所属的独享集群名，可为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CdcName: str
-        :param _CdcId: 实例所属的独享集群ID。作为入参时，表示对指定的CdcId独享集群的资源进行操作，可为空。 作为出参时，表示资源所属的独享集群的ID，可为空。
+        :param _CdcId: 实例所属的独享集群ID。可通过 [DescribeDiskStoragePool](https://cloud.tencent.com/document/api/362/62143) 获取。作为入参时，表示对指定的CdcId独享集群的资源进行操作，可为空。 作为出参时，表示资源所属的独享集群的ID，可为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CdcId: str
         :param _DedicatedClusterId: 独享集群id。
@@ -7507,7 +7511,7 @@ class Placement(AbstractModel):
 
     @property
     def CageId(self):
-        """围笼Id。作为入参时，表示对指定的CageId的资源进行操作，可为空。 作为出参时，表示资源所属围笼ID，可为空。
+        """围笼Id，可通过 [DescribeDiskStoragePool](https://cloud.tencent.com/document/api/362/62143) 获取。作为入参时，表示对指定的CageId的资源进行操作，可为空。 作为出参时，表示资源所属围笼ID，可为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7554,7 +7558,7 @@ class Placement(AbstractModel):
 
     @property
     def CdcId(self):
-        """实例所属的独享集群ID。作为入参时，表示对指定的CdcId独享集群的资源进行操作，可为空。 作为出参时，表示资源所属的独享集群的ID，可为空。
+        """实例所属的独享集群ID。可通过 [DescribeDiskStoragePool](https://cloud.tencent.com/document/api/362/62143) 获取。作为入参时，表示对指定的CdcId独享集群的资源进行操作，可为空。 作为出参时，表示资源所属的独享集群的ID，可为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

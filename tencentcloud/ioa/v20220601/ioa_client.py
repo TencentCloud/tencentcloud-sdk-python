@@ -141,6 +141,29 @@ class IoaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDeviceHardwareInfoList(self, request):
+        """查询满足条件的查询终端硬件信息列表，私有化调用path为：/capi/Assets/Device/DescribeDeviceHardwareInfoList
+
+        :param request: Request instance for DescribeDeviceHardwareInfoList.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.DescribeDeviceHardwareInfoListRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeDeviceHardwareInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDeviceHardwareInfoList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDeviceHardwareInfoListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDevices(self, request):
         """查询满足条件的终端数据详情，私有化调用path为：/capi/Assets/Device/DescribeDevices
 

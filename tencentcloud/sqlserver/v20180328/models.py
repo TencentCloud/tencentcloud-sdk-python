@@ -9530,8 +9530,10 @@ class DescribeBackupFilesRequest(AbstractModel):
         :type Offset: int
         :param _DatabaseName: 按照备份的库名称筛选，不填则不筛选此项
         :type DatabaseName: str
-        :param _OrderBy: 列表项排序，目前只按照备份大小排序（desc-降序，asc-升序），默认desc
+        :param _OrderBy: 列表项排序，desc-降序、asc-升序，按size排序默认desc，按database排序默认asc
         :type OrderBy: str
+        :param _OrderByType: 排序字段（Size-按备份大小排序，DBs-按数据库名称排序），默认size
+        :type OrderByType: str
         """
         self._InstanceId = None
         self._GroupId = None
@@ -9539,6 +9541,7 @@ class DescribeBackupFilesRequest(AbstractModel):
         self._Offset = None
         self._DatabaseName = None
         self._OrderBy = None
+        self._OrderByType = None
 
     @property
     def InstanceId(self):
@@ -9597,7 +9600,7 @@ class DescribeBackupFilesRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        """列表项排序，目前只按照备份大小排序（desc-降序，asc-升序），默认desc
+        """列表项排序，desc-降序、asc-升序，按size排序默认desc，按database排序默认asc
         :rtype: str
         """
         return self._OrderBy
@@ -9605,6 +9608,17 @@ class DescribeBackupFilesRequest(AbstractModel):
     @OrderBy.setter
     def OrderBy(self, OrderBy):
         self._OrderBy = OrderBy
+
+    @property
+    def OrderByType(self):
+        """排序字段（Size-按备份大小排序，DBs-按数据库名称排序），默认size
+        :rtype: str
+        """
+        return self._OrderByType
+
+    @OrderByType.setter
+    def OrderByType(self, OrderByType):
+        self._OrderByType = OrderByType
 
 
     def _deserialize(self, params):
@@ -9614,6 +9628,7 @@ class DescribeBackupFilesRequest(AbstractModel):
         self._Offset = params.get("Offset")
         self._DatabaseName = params.get("DatabaseName")
         self._OrderBy = params.get("OrderBy")
+        self._OrderByType = params.get("OrderByType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13179,6 +13194,8 @@ class DescribeDBsRequest(AbstractModel):
         :type OrderByType: str
         :param _Encryption: 是否已开启TDE加密，enable-已加密，disable-未加密
         :type Encryption: str
+        :param _OrderBy: 排序字段（Name-按名称排序，CreateTime-按创建时间排序），默认CreateTime
+        :type OrderBy: str
         """
         self._InstanceIdSet = None
         self._Limit = None
@@ -13186,6 +13203,7 @@ class DescribeDBsRequest(AbstractModel):
         self._Name = None
         self._OrderByType = None
         self._Encryption = None
+        self._OrderBy = None
 
     @property
     def InstanceIdSet(self):
@@ -13253,6 +13271,17 @@ class DescribeDBsRequest(AbstractModel):
     def Encryption(self, Encryption):
         self._Encryption = Encryption
 
+    @property
+    def OrderBy(self):
+        """排序字段（Name-按名称排序，CreateTime-按创建时间排序），默认CreateTime
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
 
     def _deserialize(self, params):
         self._InstanceIdSet = params.get("InstanceIdSet")
@@ -13261,6 +13290,7 @@ class DescribeDBsRequest(AbstractModel):
         self._Name = params.get("Name")
         self._OrderByType = params.get("OrderByType")
         self._Encryption = params.get("Encryption")
+        self._OrderBy = params.get("OrderBy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13561,6 +13591,8 @@ class DescribeDatabasesRequest(AbstractModel):
         :type OrderByType: str
         :param _Encryption: 是否已开启TDE加密，enable-已加密，disable-未加密
         :type Encryption: str
+        :param _OrderBy: 排序字段（Name-按名称排序，CreateTime-按创建时间排序），默认CreateTime
+        :type OrderBy: str
         """
         self._InstanceIdSet = None
         self._Limit = None
@@ -13568,6 +13600,7 @@ class DescribeDatabasesRequest(AbstractModel):
         self._Name = None
         self._OrderByType = None
         self._Encryption = None
+        self._OrderBy = None
 
     @property
     def InstanceIdSet(self):
@@ -13635,6 +13668,17 @@ class DescribeDatabasesRequest(AbstractModel):
     def Encryption(self, Encryption):
         self._Encryption = Encryption
 
+    @property
+    def OrderBy(self):
+        """排序字段（Name-按名称排序，CreateTime-按创建时间排序），默认CreateTime
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
 
     def _deserialize(self, params):
         self._InstanceIdSet = params.get("InstanceIdSet")
@@ -13643,6 +13687,7 @@ class DescribeDatabasesRequest(AbstractModel):
         self._Name = params.get("Name")
         self._OrderByType = params.get("OrderByType")
         self._Encryption = params.get("Encryption")
+        self._OrderBy = params.get("OrderBy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

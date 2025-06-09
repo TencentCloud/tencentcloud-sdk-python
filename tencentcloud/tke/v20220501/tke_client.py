@@ -72,6 +72,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteClusterMachines(self, request):
+        """删除原生节点池节点
+
+        :param request: Request instance for DeleteClusterMachines.
+        :type request: :class:`tencentcloud.tke.v20220501.models.DeleteClusterMachinesRequest`
+        :rtype: :class:`tencentcloud.tke.v20220501.models.DeleteClusterMachinesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteClusterMachines", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteClusterMachinesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteHealthCheckPolicy(self, request):
         """删除健康检测策略
 

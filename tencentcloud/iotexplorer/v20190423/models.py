@@ -15921,6 +15921,89 @@ class DevicesItem(AbstractModel):
         
 
 
+class DiarySHLConfig(AbstractModel):
+    """Diary Simple Highlight 配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartOffset: 每个视频偏移时长，单位秒
+        :type StartOffset: int
+        :param _PlaySpeed: 视频浓缩倍数，支持1,2,4之间
+        :type PlaySpeed: int
+        :param _MiniExtract: 单个视频最小提取时长，单位秒
+        :type MiniExtract: int
+        :param _OutDuration: 每天最终输出视频时长，单位秒
+注：免费版固定10s
+        :type OutDuration: int
+        """
+        self._StartOffset = None
+        self._PlaySpeed = None
+        self._MiniExtract = None
+        self._OutDuration = None
+
+    @property
+    def StartOffset(self):
+        """每个视频偏移时长，单位秒
+        :rtype: int
+        """
+        return self._StartOffset
+
+    @StartOffset.setter
+    def StartOffset(self, StartOffset):
+        self._StartOffset = StartOffset
+
+    @property
+    def PlaySpeed(self):
+        """视频浓缩倍数，支持1,2,4之间
+        :rtype: int
+        """
+        return self._PlaySpeed
+
+    @PlaySpeed.setter
+    def PlaySpeed(self, PlaySpeed):
+        self._PlaySpeed = PlaySpeed
+
+    @property
+    def MiniExtract(self):
+        """单个视频最小提取时长，单位秒
+        :rtype: int
+        """
+        return self._MiniExtract
+
+    @MiniExtract.setter
+    def MiniExtract(self, MiniExtract):
+        self._MiniExtract = MiniExtract
+
+    @property
+    def OutDuration(self):
+        """每天最终输出视频时长，单位秒
+注：免费版固定10s
+        :rtype: int
+        """
+        return self._OutDuration
+
+    @OutDuration.setter
+    def OutDuration(self, OutDuration):
+        self._OutDuration = OutDuration
+
+
+    def _deserialize(self, params):
+        self._StartOffset = params.get("StartOffset")
+        self._PlaySpeed = params.get("PlaySpeed")
+        self._MiniExtract = params.get("MiniExtract")
+        self._OutDuration = params.get("OutDuration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DirectBindDeviceInFamilyRequest(AbstractModel):
     """DirectBindDeviceInFamily请求参数结构体
 
@@ -22769,6 +22852,7 @@ class ModifyCloudStorageAIServiceRequest(AbstractModel):
         :param _ServiceType: 云存 AI 服务类型。可选值：
 - `RealtimeObjectDetect`：目标检测
 - `Highlight`：视频浓缩
+- `SimpleHighlight`：TrueX SimpleHighlight
         :type ServiceType: str
         :param _Enabled: 视频分析启用状态
         :type Enabled: bool
@@ -22776,6 +22860,8 @@ class ModifyCloudStorageAIServiceRequest(AbstractModel):
         :type ROI: str
         :param _Config: 视频分析配置参数
         :type Config: str
+        :param _SHLConfig: SimpleHighlight 算法配置参数
+        :type SHLConfig: :class:`tencentcloud.iotexplorer.v20190423.models.DiarySHLConfig`
         """
         self._ProductId = None
         self._DeviceName = None
@@ -22783,6 +22869,7 @@ class ModifyCloudStorageAIServiceRequest(AbstractModel):
         self._Enabled = None
         self._ROI = None
         self._Config = None
+        self._SHLConfig = None
 
     @property
     def ProductId(self):
@@ -22811,6 +22898,7 @@ class ModifyCloudStorageAIServiceRequest(AbstractModel):
         """云存 AI 服务类型。可选值：
 - `RealtimeObjectDetect`：目标检测
 - `Highlight`：视频浓缩
+- `SimpleHighlight`：TrueX SimpleHighlight
         :rtype: str
         """
         return self._ServiceType
@@ -22852,6 +22940,17 @@ class ModifyCloudStorageAIServiceRequest(AbstractModel):
     def Config(self, Config):
         self._Config = Config
 
+    @property
+    def SHLConfig(self):
+        """SimpleHighlight 算法配置参数
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DiarySHLConfig`
+        """
+        return self._SHLConfig
+
+    @SHLConfig.setter
+    def SHLConfig(self, SHLConfig):
+        self._SHLConfig = SHLConfig
+
 
     def _deserialize(self, params):
         self._ProductId = params.get("ProductId")
@@ -22860,6 +22959,9 @@ class ModifyCloudStorageAIServiceRequest(AbstractModel):
         self._Enabled = params.get("Enabled")
         self._ROI = params.get("ROI")
         self._Config = params.get("Config")
+        if params.get("SHLConfig") is not None:
+            self._SHLConfig = DiarySHLConfig()
+            self._SHLConfig._deserialize(params.get("SHLConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

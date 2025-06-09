@@ -199,6 +199,29 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteVoicePrint(self, request):
+        """传入声纹ID，删除之前注册的声纹信息
+
+        :param request: Request instance for DeleteVoicePrint.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DeleteVoicePrintRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DeleteVoicePrintResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteVoicePrint", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteVoicePrintResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAIConversation(self, request):
         """查询AI对话任务状态。
 
@@ -899,6 +922,29 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeVoicePrint(self, request):
+        """查询先前注册的声纹信息
+
+        :param request: Request instance for DescribeVoicePrint.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeVoicePrintRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeVoicePrintResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVoicePrint", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVoicePrintResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeWebRecord(self, request):
         """查询页面录制任务
 
@@ -1005,6 +1051,29 @@ class TrtcClient(AbstractClient):
             body = self.call("ModifyPicture", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyPictureResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RegisterVoicePrint(self, request):
+        """传入音频base64串，注册声纹信息，返回声纹ID
+
+        :param request: Request instance for RegisterVoicePrint.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.RegisterVoicePrintRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.RegisterVoicePrintResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RegisterVoicePrint", params, headers=headers)
+            response = json.loads(body)
+            model = models.RegisterVoicePrintResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1505,6 +1574,29 @@ class TrtcClient(AbstractClient):
             body = self.call("UpdateStreamIngest", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateStreamIngestResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateVoicePrint(self, request):
+        """传入声纹ID以及对应音频信息，更新对应声纹信息
+
+        :param request: Request instance for UpdateVoicePrint.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.UpdateVoicePrintRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.UpdateVoicePrintResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateVoicePrint", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateVoicePrintResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -12661,6 +12661,8 @@ Config = {"CropIdCard":true,"CropPortrait":true}
 
     @property
     def EnableDateVerify(self):
+        warnings.warn("parameter `EnableDateVerify` is deprecated", DeprecationWarning) 
+
         """用于控制是否开启日期校验，默认值为true，打开会进行日期校验。
         :rtype: bool
         """
@@ -12668,6 +12670,8 @@ Config = {"CropIdCard":true,"CropPortrait":true}
 
     @EnableDateVerify.setter
     def EnableDateVerify(self, EnableDateVerify):
+        warnings.warn("parameter `EnableDateVerify` is deprecated", DeprecationWarning) 
+
         self._EnableDateVerify = EnableDateVerify
 
 

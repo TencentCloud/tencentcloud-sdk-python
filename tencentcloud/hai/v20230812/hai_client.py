@@ -256,6 +256,29 @@ class HaiClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ResetInstancesPassword(self, request):
+        """本接口 (ResetInstancesPassword) 用于重置实例的用户密码。
+
+        :param request: Request instance for ResetInstancesPassword.
+        :type request: :class:`tencentcloud.hai.v20230812.models.ResetInstancesPasswordRequest`
+        :rtype: :class:`tencentcloud.hai.v20230812.models.ResetInstancesPasswordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResetInstancesPassword", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResetInstancesPasswordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RunInstances(self, request):
         """本接口 (RunInstances) 用于创建一个或多个指定配置的实例。
 

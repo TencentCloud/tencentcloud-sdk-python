@@ -1384,6 +1384,453 @@ class DescribeDLPFileDetectResultResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDeviceHardwareInfoItem(AbstractModel):
+    """终端硬件信息列表Item数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 设备ID
+        :type Id: int
+        :param _Mid: 设备唯一标识符
+        :type Mid: str
+        :param _OsType: OS平台 0 Windows 1 Linux 2 macOS 4 Android 5 iOS
+        :type OsType: int
+        :param _Name: 终端名
+        :type Name: str
+        :param _UserName: 终端用户名
+        :type UserName: str
+        :param _Status: 授权状态（ 4未授权 5已授权）
+        :type Status: int
+        :param _GroupId: 设备所属分组ID
+        :type GroupId: int
+        :param _GroupName: 设备所属分组名
+        :type GroupName: str
+        :param _GroupNamePath: 设备所属分组路径
+        :type GroupNamePath: str
+        :param _AccountName: 最近登录账户的姓名
+        :type AccountName: str
+        :param _Ip: 出口IP
+        :type Ip: str
+        :param _MacAddr: MAC地址
+        :type MacAddr: str
+        :param _Cpu: CPU品牌型号
+        :type Cpu: str
+        :param _Memory: 内存信息
+        :type Memory: str
+        :param _HardDiskSize: 硬盘信息
+        :type HardDiskSize: str
+        :param _Monitor: 显示器品牌型号
+        :type Monitor: str
+        """
+        self._Id = None
+        self._Mid = None
+        self._OsType = None
+        self._Name = None
+        self._UserName = None
+        self._Status = None
+        self._GroupId = None
+        self._GroupName = None
+        self._GroupNamePath = None
+        self._AccountName = None
+        self._Ip = None
+        self._MacAddr = None
+        self._Cpu = None
+        self._Memory = None
+        self._HardDiskSize = None
+        self._Monitor = None
+
+    @property
+    def Id(self):
+        """设备ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Mid(self):
+        """设备唯一标识符
+        :rtype: str
+        """
+        return self._Mid
+
+    @Mid.setter
+    def Mid(self, Mid):
+        self._Mid = Mid
+
+    @property
+    def OsType(self):
+        """OS平台 0 Windows 1 Linux 2 macOS 4 Android 5 iOS
+        :rtype: int
+        """
+        return self._OsType
+
+    @OsType.setter
+    def OsType(self, OsType):
+        self._OsType = OsType
+
+    @property
+    def Name(self):
+        """终端名
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def UserName(self):
+        """终端用户名
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Status(self):
+        """授权状态（ 4未授权 5已授权）
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def GroupId(self):
+        """设备所属分组ID
+        :rtype: int
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupName(self):
+        """设备所属分组名
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def GroupNamePath(self):
+        """设备所属分组路径
+        :rtype: str
+        """
+        return self._GroupNamePath
+
+    @GroupNamePath.setter
+    def GroupNamePath(self, GroupNamePath):
+        self._GroupNamePath = GroupNamePath
+
+    @property
+    def AccountName(self):
+        """最近登录账户的姓名
+        :rtype: str
+        """
+        return self._AccountName
+
+    @AccountName.setter
+    def AccountName(self, AccountName):
+        self._AccountName = AccountName
+
+    @property
+    def Ip(self):
+        """出口IP
+        :rtype: str
+        """
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def MacAddr(self):
+        """MAC地址
+        :rtype: str
+        """
+        return self._MacAddr
+
+    @MacAddr.setter
+    def MacAddr(self, MacAddr):
+        self._MacAddr = MacAddr
+
+    @property
+    def Cpu(self):
+        """CPU品牌型号
+        :rtype: str
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        """内存信息
+        :rtype: str
+        """
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def HardDiskSize(self):
+        """硬盘信息
+        :rtype: str
+        """
+        return self._HardDiskSize
+
+    @HardDiskSize.setter
+    def HardDiskSize(self, HardDiskSize):
+        self._HardDiskSize = HardDiskSize
+
+    @property
+    def Monitor(self):
+        """显示器品牌型号
+        :rtype: str
+        """
+        return self._Monitor
+
+    @Monitor.setter
+    def Monitor(self, Monitor):
+        self._Monitor = Monitor
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Mid = params.get("Mid")
+        self._OsType = params.get("OsType")
+        self._Name = params.get("Name")
+        self._UserName = params.get("UserName")
+        self._Status = params.get("Status")
+        self._GroupId = params.get("GroupId")
+        self._GroupName = params.get("GroupName")
+        self._GroupNamePath = params.get("GroupNamePath")
+        self._AccountName = params.get("AccountName")
+        self._Ip = params.get("Ip")
+        self._MacAddr = params.get("MacAddr")
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
+        self._HardDiskSize = params.get("HardDiskSize")
+        self._Monitor = params.get("Monitor")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDeviceHardwareInfoListRequest(AbstractModel):
+    """DescribeDeviceHardwareInfoList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: 【必填】设备分组id（需要和OsType匹配），下面是私有化场景下默认id：id-名称-操作系统1	全网终端	Win2	未分组终端	Win30000000	服务器	Win40000101	全网终端	Linux40000102	未分组终端	Linux40000103	服务器	Linux40000201	全网终端	macOS40000202	未分组终端	macOS40000203	服务器	macOS40000401	全网终端	Android40000402	未分组终端	Android40000501	全网终端	iOS40000502	未分组终端	iOSSaaS需要调用分组接口DescribeDeviceChildGroups获取对应分组id
+        :type GroupId: int
+        :param _OsType: 【必填】操作系统类型（0: win，1：linux，2: mac，4：android，5：ios   默认值0），需要和GroupId或者GroupIds匹配
+        :type OsType: int
+        :param _DomainInstanceId: 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+        :type DomainInstanceId: str
+        :param _Condition: 过滤条件参数（字段含义请参考接口返回值） - Name, 类型String，支持操作：【eq，like，ilike】，支持排序 - UserName, 类型String，支持操作：【eq，like，ilike】，支持排序 - IoaUserName，类型String，支持操作：【eq，like，ilike】，支持排序 - MacAddr, 类型String，支持操作：【eq，like，ilike】，支持排序 - Ip, 类型String，支持操作：【eq，like，ilike】，支持排序 ，支持排序分页参数- PageNum 从1开始，小于等于0时使用默认参数- PageSize 最大值5000，最好不超过100
+        :type Condition: :class:`tencentcloud.ioa.v20220601.models.Condition`
+        """
+        self._GroupId = None
+        self._OsType = None
+        self._DomainInstanceId = None
+        self._Condition = None
+
+    @property
+    def GroupId(self):
+        """【必填】设备分组id（需要和OsType匹配），下面是私有化场景下默认id：id-名称-操作系统1	全网终端	Win2	未分组终端	Win30000000	服务器	Win40000101	全网终端	Linux40000102	未分组终端	Linux40000103	服务器	Linux40000201	全网终端	macOS40000202	未分组终端	macOS40000203	服务器	macOS40000401	全网终端	Android40000402	未分组终端	Android40000501	全网终端	iOS40000502	未分组终端	iOSSaaS需要调用分组接口DescribeDeviceChildGroups获取对应分组id
+        :rtype: int
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def OsType(self):
+        """【必填】操作系统类型（0: win，1：linux，2: mac，4：android，5：ios   默认值0），需要和GroupId或者GroupIds匹配
+        :rtype: int
+        """
+        return self._OsType
+
+    @OsType.setter
+    def OsType(self, OsType):
+        self._OsType = OsType
+
+    @property
+    def DomainInstanceId(self):
+        """管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+        :rtype: str
+        """
+        return self._DomainInstanceId
+
+    @DomainInstanceId.setter
+    def DomainInstanceId(self, DomainInstanceId):
+        self._DomainInstanceId = DomainInstanceId
+
+    @property
+    def Condition(self):
+        """过滤条件参数（字段含义请参考接口返回值） - Name, 类型String，支持操作：【eq，like，ilike】，支持排序 - UserName, 类型String，支持操作：【eq，like，ilike】，支持排序 - IoaUserName，类型String，支持操作：【eq，like，ilike】，支持排序 - MacAddr, 类型String，支持操作：【eq，like，ilike】，支持排序 - Ip, 类型String，支持操作：【eq，like，ilike】，支持排序 ，支持排序分页参数- PageNum 从1开始，小于等于0时使用默认参数- PageSize 最大值5000，最好不超过100
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.Condition`
+        """
+        return self._Condition
+
+    @Condition.setter
+    def Condition(self, Condition):
+        self._Condition = Condition
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        self._OsType = params.get("OsType")
+        self._DomainInstanceId = params.get("DomainInstanceId")
+        if params.get("Condition") is not None:
+            self._Condition = Condition()
+            self._Condition._deserialize(params.get("Condition"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDeviceHardwareInfoListResponse(AbstractModel):
+    """DescribeDeviceHardwareInfoList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 分页的data数据
+        :type Data: :class:`tencentcloud.ioa.v20220601.models.DescribeDeviceHardwareInfoListRspData`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """分页的data数据
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeDeviceHardwareInfoListRspData`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DescribeDeviceHardwareInfoListRspData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDeviceHardwareInfoListRspData(AbstractModel):
+    """终端硬件信息列表响应详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Page: 分页数据
+        :type Page: :class:`tencentcloud.ioa.v20220601.models.Paging`
+        :param _Items: 终端硬件信息数据数组
+        :type Items: list of DescribeDeviceHardwareInfoItem
+        """
+        self._Page = None
+        self._Items = None
+
+    @property
+    def Page(self):
+        """分页数据
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.Paging`
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def Items(self):
+        """终端硬件信息数据数组
+        :rtype: list of DescribeDeviceHardwareInfoItem
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        if params.get("Page") is not None:
+            self._Page = Paging()
+            self._Page._deserialize(params.get("Page"))
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = DescribeDeviceHardwareInfoItem()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeDevicesPageRsp(AbstractModel):
     """分页的data数据
 
