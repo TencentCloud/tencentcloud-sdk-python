@@ -103,7 +103,7 @@ def test_ai_domain_override_by_options():
 
         with mock_requests() as req_args:
             try:
-                cli.call_sse("ParseDocument", {}, options={"Host": expected_host})
+                cli.call_sse("ParseDocument", {}, options={"Endpoint": "https://" + expected_host})
             except TencentCloudSDKException:
                 pass
 

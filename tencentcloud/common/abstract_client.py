@@ -28,8 +28,10 @@ import logging.handlers
 
 try:
     from urllib.parse import urlencode
+    from urllib.parse import urlparse
 except ImportError:
     from urllib import urlencode
+    from urlparse import urlparse
 
 import tencentcloud
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
@@ -349,7 +351,7 @@ class AbstractClient(object):
     def _get_endpoint(self, options=None):
         endpoint = self.profile.httpProfile.endpoint
         if not endpoint and options:
-            endpoint = options.get("Host")
+            endpoint = urlparse(options.get("Endpoint")).hostname
         if endpoint is None:
             endpoint = self._get_service_domain()
         return endpoint
