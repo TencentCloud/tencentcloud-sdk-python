@@ -11,7 +11,7 @@ from tencentcloud.es.v20250101 import es_client, models
 
 # patch requests.Session.request to get underlying request we send
 @contextmanager
-def _mock_requests():
+def mock_requests():
     import requests
     real_request = requests.Session.request
 
@@ -52,7 +52,7 @@ def test_ai_domain_by_default():
         cpf.httpProfile.reqMethod = req_method
         cli = es_client.EsClient(cred, "", cpf)
 
-        with _mock_requests() as req_args:
+        with mock_requests() as req_args:
             req = models.ParseDocumentRequest()
             try:
                 cli.ParseDocument(req)
@@ -77,7 +77,7 @@ def test_ai_domain_override_by_endpoint():
         cpf.httpProfile.reqMethod = req_method
         cli = es_client.EsClient(cred, "", cpf)
 
-        with _mock_requests() as req_args:
+        with mock_requests() as req_args:
             req = models.ParseDocumentRequest()
             try:
                 cli.ParseDocument(req)
@@ -89,7 +89,7 @@ def test_ai_domain_override_by_endpoint():
 
 
 def test_ai_domain_override_by_options():
-    """sse API use ClientProfile.HttpProfile.Endpoint instead of ai-domain if specified"""
+    """sse API use domain specified by options["Endpoint"]"""
     sign_methods = ["TC3-HMAC-SHA256", "HmacSHA1", "HmacSHA256"]
     req_methods = ["GET", "POST"]
     expected_host = "es.ai.tencentcloudapi.com"
@@ -101,7 +101,7 @@ def test_ai_domain_override_by_options():
         cpf.httpProfile.reqMethod = req_method
         cli = common_client.CommonClient("cvm", '2017-03-12', cred, "ap-shanghai", profile=cpf)
 
-        with _mock_requests() as req_args:
+        with mock_requests() as req_args:
             try:
                 cli.call_sse("ParseDocument", {}, options={"Endpoint": expected_host})
             except TencentCloudSDKException:
