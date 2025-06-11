@@ -254,3 +254,26 @@ class IoaClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSoftwareInformation(self, request):
+        """查看指定终端的软件详情列表,私有化调用path为：capi/Software/DescribeSoftwareInformation
+
+        :param request: Request instance for DescribeSoftwareInformation.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.DescribeSoftwareInformationRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeSoftwareInformationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSoftwareInformation", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSoftwareInformationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))

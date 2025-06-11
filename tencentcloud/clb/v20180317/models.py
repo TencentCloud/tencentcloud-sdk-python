@@ -3998,6 +3998,8 @@ class CreateListenerRequest(AbstractModel):
         :type MaxCps: int
         :param _IdleConnectTimeout: 空闲连接超时时间，此参数仅适用于TCP监听器，单位：秒。取值范围：共享型实例和独占型实例支持：300-900，性能容量型实例支持：300-1980。如需设置请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)。
         :type IdleConnectTimeout: int
+        :param _ProxyProtocol: TCP_SSL和QUIC是否支持PP
+        :type ProxyProtocol: bool
         :param _SnatEnable: 是否开启SNAT，True（开启）、False（关闭）。
 默认为关闭。
         :type SnatEnable: bool
@@ -4030,6 +4032,7 @@ class CreateListenerRequest(AbstractModel):
         self._MaxConn = None
         self._MaxCps = None
         self._IdleConnectTimeout = None
+        self._ProxyProtocol = None
         self._SnatEnable = None
         self._FullEndPorts = None
         self._H2cSwitch = None
@@ -4242,6 +4245,17 @@ class CreateListenerRequest(AbstractModel):
         self._IdleConnectTimeout = IdleConnectTimeout
 
     @property
+    def ProxyProtocol(self):
+        """TCP_SSL和QUIC是否支持PP
+        :rtype: bool
+        """
+        return self._ProxyProtocol
+
+    @ProxyProtocol.setter
+    def ProxyProtocol(self, ProxyProtocol):
+        self._ProxyProtocol = ProxyProtocol
+
+    @property
     def SnatEnable(self):
         """是否开启SNAT，True（开启）、False（关闭）。
 默认为关闭。
@@ -4325,6 +4339,7 @@ class CreateListenerRequest(AbstractModel):
         self._MaxConn = params.get("MaxConn")
         self._MaxCps = params.get("MaxCps")
         self._IdleConnectTimeout = params.get("IdleConnectTimeout")
+        self._ProxyProtocol = params.get("ProxyProtocol")
         self._SnatEnable = params.get("SnatEnable")
         self._FullEndPorts = params.get("FullEndPorts")
         self._H2cSwitch = params.get("H2cSwitch")
@@ -16689,6 +16704,8 @@ True表示发送 RST 给客户端，False表示不发送 RST 给客户端。
         :type MaxCps: int
         :param _IdleConnectTimeout: 空闲连接超时时间，此参数仅适用于TCP监听器，单位：秒。默认值：900，取值范围：共享型实例和独占型实例支持：300～900，性能容量型实例支持：300~1980。如需设置超过2000s，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category),最大可设置到3600s。
         :type IdleConnectTimeout: int
+        :param _ProxyProtocol: TCP_SSL和QUIC是否支持PP
+        :type ProxyProtocol: bool
         :param _SnatEnable: 是否开启SNAT， True 表示开启 SNAT，False 表示不开启 SNAT。
 不传则表示不修改。
         :type SnatEnable: bool
@@ -16711,6 +16728,7 @@ True表示发送 RST 给客户端，False表示不发送 RST 给客户端。
         self._MaxConn = None
         self._MaxCps = None
         self._IdleConnectTimeout = None
+        self._ProxyProtocol = None
         self._SnatEnable = None
         self._DataCompressMode = None
 
@@ -16901,6 +16919,17 @@ True表示发送 RST 给客户端，False表示不发送 RST 给客户端。
         self._IdleConnectTimeout = IdleConnectTimeout
 
     @property
+    def ProxyProtocol(self):
+        """TCP_SSL和QUIC是否支持PP
+        :rtype: bool
+        """
+        return self._ProxyProtocol
+
+    @ProxyProtocol.setter
+    def ProxyProtocol(self, ProxyProtocol):
+        self._ProxyProtocol = ProxyProtocol
+
+    @property
     def SnatEnable(self):
         """是否开启SNAT， True 表示开启 SNAT，False 表示不开启 SNAT。
 不传则表示不修改。
@@ -16947,6 +16976,7 @@ True表示发送 RST 给客户端，False表示不发送 RST 给客户端。
         self._MaxConn = params.get("MaxConn")
         self._MaxCps = params.get("MaxCps")
         self._IdleConnectTimeout = params.get("IdleConnectTimeout")
+        self._ProxyProtocol = params.get("ProxyProtocol")
         self._SnatEnable = params.get("SnatEnable")
         self._DataCompressMode = params.get("DataCompressMode")
         memeber_set = set(params.keys())

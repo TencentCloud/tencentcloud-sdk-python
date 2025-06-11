@@ -1265,6 +1265,102 @@ class AutoCalloutTaskInfo(AbstractModel):
         
 
 
+class BindNumberCallInInterfaceRequest(AbstractModel):
+    """BindNumberCallInInterface请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :type SdkAppId: int
+        :param _Number: 待绑定的号码
+        :type Number: str
+        :param _CallInInterface: 待绑定的回调地址
+        :type CallInInterface: :class:`tencentcloud.ccc.v20200210.models.Interface`
+        """
+        self._SdkAppId = None
+        self._Number = None
+        self._CallInInterface = None
+
+    @property
+    def SdkAppId(self):
+        """应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def Number(self):
+        """待绑定的号码
+        :rtype: str
+        """
+        return self._Number
+
+    @Number.setter
+    def Number(self, Number):
+        self._Number = Number
+
+    @property
+    def CallInInterface(self):
+        """待绑定的回调地址
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.Interface`
+        """
+        return self._CallInInterface
+
+    @CallInInterface.setter
+    def CallInInterface(self, CallInInterface):
+        self._CallInInterface = CallInInterface
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._Number = params.get("Number")
+        if params.get("CallInInterface") is not None:
+            self._CallInInterface = Interface()
+            self._CallInInterface._deserialize(params.get("CallInInterface"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindNumberCallInInterfaceResponse(AbstractModel):
+    """BindNumberCallInInterface返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class BindNumberCallOutSkillGroupRequest(AbstractModel):
     """BindNumberCallOutSkillGroup请求参数结构体
 
@@ -2016,7 +2112,7 @@ class CarrierPrivilegeNumberApplicant(AbstractModel):
         
 
 
-class Client(AbstractModel):
+class ClientInfo(AbstractModel):
     """座席登录的终端信息
 
     """
@@ -12143,6 +12239,42 @@ class IVRKeyPressedElement(AbstractModel):
         
 
 
+class Interface(AbstractModel):
+    """回调接口
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _URL: 接口地址
+        :type URL: str
+        """
+        self._URL = None
+
+    @property
+    def URL(self):
+        """接口地址
+        :rtype: str
+        """
+        return self._URL
+
+    @URL.setter
+    def URL(self, URL):
+        self._URL = URL
+
+
+    def _deserialize(self, params):
+        self._URL = params.get("URL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Message(AbstractModel):
     """单条消息
 
@@ -15299,7 +15431,7 @@ class StaffStatusMetrics(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastStatusTimestamp: int
         :param _ClientInfo: 客服登录的端信息
-        :type ClientInfo: list of Client
+        :type ClientInfo: list of ClientInfo
         """
         self._Email = None
         self._Status = None
@@ -15500,7 +15632,7 @@ class StaffStatusMetrics(AbstractModel):
     @property
     def ClientInfo(self):
         """客服登录的端信息
-        :rtype: list of Client
+        :rtype: list of ClientInfo
         """
         return self._ClientInfo
 
@@ -15531,7 +15663,7 @@ class StaffStatusMetrics(AbstractModel):
         if params.get("ClientInfo") is not None:
             self._ClientInfo = []
             for item in params.get("ClientInfo"):
-                obj = Client()
+                obj = ClientInfo()
                 obj._deserialize(item)
                 self._ClientInfo.append(obj)
         memeber_set = set(params.keys())

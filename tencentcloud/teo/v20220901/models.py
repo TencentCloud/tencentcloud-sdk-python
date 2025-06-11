@@ -28745,7 +28745,7 @@ class LoadBalancer(AbstractModel):
 <li>Deleting：删除中；</li>
 <li>Running：已生效。</li>
         :type Status: str
-        :param _L4UsedList: 该负载均衡实例绑的定四层层代理实例的列表。
+        :param _L4UsedList: 该负载均衡实例绑的四层代理实例的列表。
         :type L4UsedList: list of str
         :param _L7UsedList: 该负载均衡实例绑定的七层域名列表。
         :type L7UsedList: list of str
@@ -28859,7 +28859,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def L4UsedList(self):
-        """该负载均衡实例绑的定四层层代理实例的列表。
+        """该负载均衡实例绑的四层代理实例的列表。
         :rtype: list of str
         """
         return self._L4UsedList

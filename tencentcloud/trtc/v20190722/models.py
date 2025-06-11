@@ -16067,9 +16067,9 @@ class VoicePrint(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Mode: 默认为0，表示不启用声纹。1表示使用固定声纹，且需要填写voiceprint id。2表示使用动态声纹，不需要使用voiceprint id，内部动态选择主讲人声纹
+        :param _Mode: 默认为0，表示不启用声纹。1表示启用声纹，此时需要填写voiceprint id。
         :type Mode: int
-        :param _IdList: 只有当VoicePrint Mode为1时需要填写，目前仅支持填写一个声纹id
+        :param _IdList: VoicePrint Mode为1时需要填写，目前仅支持填写一个声纹id
         :type IdList: list of str
         """
         self._Mode = None
@@ -16077,7 +16077,7 @@ class VoicePrint(AbstractModel):
 
     @property
     def Mode(self):
-        """默认为0，表示不启用声纹。1表示使用固定声纹，且需要填写voiceprint id。2表示使用动态声纹，不需要使用voiceprint id，内部动态选择主讲人声纹
+        """默认为0，表示不启用声纹。1表示启用声纹，此时需要填写voiceprint id。
         :rtype: int
         """
         return self._Mode
@@ -16088,7 +16088,7 @@ class VoicePrint(AbstractModel):
 
     @property
     def IdList(self):
-        """只有当VoicePrint Mode为1时需要填写，目前仅支持填写一个声纹id
+        """VoicePrint Mode为1时需要填写，目前仅支持填写一个声纹id
         :rtype: list of str
         """
         return self._IdList

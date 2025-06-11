@@ -998,6 +998,29 @@ class DnspodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDomainVipList(self, request):
+        """获取套餐列表
+
+        :param request: Request instance for DescribeDomainVipList.
+        :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeDomainVipListRequest`
+        :rtype: :class:`tencentcloud.dnspod.v20210323.models.DescribeDomainVipListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDomainVipList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDomainVipListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDomainWhois(self, request):
         """获取域名Whois信息
 
@@ -1478,6 +1501,29 @@ class DnspodClient(AbstractClient):
             body = self.call("DescribeVASStatistic", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeVASStatisticResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeVasList(self, request):
+        """获取增值服务列表
+
+        :param request: Request instance for DescribeVasList.
+        :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeVasListRequest`
+        :rtype: :class:`tencentcloud.dnspod.v20210323.models.DescribeVasListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVasList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVasListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

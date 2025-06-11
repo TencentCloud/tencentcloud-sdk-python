@@ -13094,7 +13094,7 @@ class DescribePurgeTasksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PurgeLogs: 详细刷新记录
+        :param _PurgeLogs: 详细刷新纪录
         :type PurgeLogs: list of PurgeTask
         :param _TotalCount: 任务总数，用于分页
         :type TotalCount: int
@@ -13107,7 +13107,7 @@ class DescribePurgeTasksResponse(AbstractModel):
 
     @property
     def PurgeLogs(self):
-        """详细刷新记录
+        """详细刷新纪录
         :rtype: list of PurgeTask
         """
         return self._PurgeLogs

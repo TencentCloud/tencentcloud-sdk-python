@@ -1041,6 +1041,59 @@ class ApiVarAttrInfo(AbstractModel):
         
 
 
+class AppBaseInfo(AbstractModel):
+    """应用基础信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppBizId: 应用ID
+        :type AppBizId: str
+        :param _AppName: 应用名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppName: str
+        """
+        self._AppBizId = None
+        self._AppName = None
+
+    @property
+    def AppBizId(self):
+        """应用ID
+        :rtype: str
+        """
+        return self._AppBizId
+
+    @AppBizId.setter
+    def AppBizId(self, AppBizId):
+        self._AppBizId = AppBizId
+
+    @property
+    def AppName(self):
+        """应用名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+
+    def _deserialize(self, params):
+        self._AppBizId = params.get("AppBizId")
+        self._AppName = params.get("AppName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AppConfig(AbstractModel):
     """应用配置
 
@@ -4520,6 +4573,115 @@ class CreateReleaseResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateSharedKnowledgeRequest(AbstractModel):
+    """CreateSharedKnowledge请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KnowledgeName: 共享知识库名称，字符数量范围：[1, 50]
+        :type KnowledgeName: str
+        :param _KnowledgeDescription: 共享知识库描述，字符数量上限2000
+        :type KnowledgeDescription: str
+        :param _EmbeddingModel: Embedding模型，字符数量上限128
+        :type EmbeddingModel: str
+        """
+        self._KnowledgeName = None
+        self._KnowledgeDescription = None
+        self._EmbeddingModel = None
+
+    @property
+    def KnowledgeName(self):
+        """共享知识库名称，字符数量范围：[1, 50]
+        :rtype: str
+        """
+        return self._KnowledgeName
+
+    @KnowledgeName.setter
+    def KnowledgeName(self, KnowledgeName):
+        self._KnowledgeName = KnowledgeName
+
+    @property
+    def KnowledgeDescription(self):
+        """共享知识库描述，字符数量上限2000
+        :rtype: str
+        """
+        return self._KnowledgeDescription
+
+    @KnowledgeDescription.setter
+    def KnowledgeDescription(self, KnowledgeDescription):
+        self._KnowledgeDescription = KnowledgeDescription
+
+    @property
+    def EmbeddingModel(self):
+        """Embedding模型，字符数量上限128
+        :rtype: str
+        """
+        return self._EmbeddingModel
+
+    @EmbeddingModel.setter
+    def EmbeddingModel(self, EmbeddingModel):
+        self._EmbeddingModel = EmbeddingModel
+
+
+    def _deserialize(self, params):
+        self._KnowledgeName = params.get("KnowledgeName")
+        self._KnowledgeDescription = params.get("KnowledgeDescription")
+        self._EmbeddingModel = params.get("EmbeddingModel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSharedKnowledgeResponse(AbstractModel):
+    """CreateSharedKnowledge返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KnowledgeBizId: 共享知识库业务ID
+        :type KnowledgeBizId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._KnowledgeBizId = None
+        self._RequestId = None
+
+    @property
+    def KnowledgeBizId(self):
+        """共享知识库业务ID
+        :rtype: str
+        """
+        return self._KnowledgeBizId
+
+    @KnowledgeBizId.setter
+    def KnowledgeBizId(self, KnowledgeBizId):
+        self._KnowledgeBizId = KnowledgeBizId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._KnowledgeBizId = params.get("KnowledgeBizId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateVarRequest(AbstractModel):
     """CreateVar请求参数结构体
 
@@ -5349,6 +5511,85 @@ class DeleteRejectedQuestionResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteSharedKnowledgeRequest(AbstractModel):
+    """DeleteSharedKnowledge请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KnowledgeBizId: 共享知识库业务ID
+        :type KnowledgeBizId: str
+        """
+        self._KnowledgeBizId = None
+
+    @property
+    def KnowledgeBizId(self):
+        """共享知识库业务ID
+        :rtype: str
+        """
+        return self._KnowledgeBizId
+
+    @KnowledgeBizId.setter
+    def KnowledgeBizId(self, KnowledgeBizId):
+        self._KnowledgeBizId = KnowledgeBizId
+
+
+    def _deserialize(self, params):
+        self._KnowledgeBizId = params.get("KnowledgeBizId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteSharedKnowledgeResponse(AbstractModel):
+    """DeleteSharedKnowledge返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KnowledgeBizId: 共享知识库业务ID
+        :type KnowledgeBizId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._KnowledgeBizId = None
+        self._RequestId = None
+
+    @property
+    def KnowledgeBizId(self):
+        """共享知识库业务ID
+        :rtype: str
+        """
+        return self._KnowledgeBizId
+
+    @KnowledgeBizId.setter
+    def KnowledgeBizId(self, KnowledgeBizId):
+        self._KnowledgeBizId = KnowledgeBizId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._KnowledgeBizId = params.get("KnowledgeBizId")
         self._RequestId = params.get("RequestId")
 
 
@@ -8601,6 +8842,89 @@ class DescribeSegmentsResponse(AbstractModel):
                 obj = DocSegment()
                 obj._deserialize(item)
                 self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSharedKnowledgeRequest(AbstractModel):
+    """DescribeSharedKnowledge请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KnowledgeBizId: 共享知识库业务ID
+        :type KnowledgeBizId: str
+        """
+        self._KnowledgeBizId = None
+
+    @property
+    def KnowledgeBizId(self):
+        """共享知识库业务ID
+        :rtype: str
+        """
+        return self._KnowledgeBizId
+
+    @KnowledgeBizId.setter
+    def KnowledgeBizId(self, KnowledgeBizId):
+        self._KnowledgeBizId = KnowledgeBizId
+
+
+    def _deserialize(self, params):
+        self._KnowledgeBizId = params.get("KnowledgeBizId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSharedKnowledgeResponse(AbstractModel):
+    """DescribeSharedKnowledge返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Info: 知识库列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Info: :class:`tencentcloud.lke.v20231130.models.KnowledgeDetailInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Info = None
+        self._RequestId = None
+
+    @property
+    def Info(self):
+        """知识库列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.lke.v20231130.models.KnowledgeDetailInfo`
+        """
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self._Info = KnowledgeDetailInfo()
+            self._Info._deserialize(params.get("Info"))
         self._RequestId = params.get("RequestId")
 
 
@@ -13660,6 +13984,125 @@ class IsTransferIntentResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class KnowledgeBaseInfo(AbstractModel):
+    """共享知识库基础信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KnowledgeBizId: 共享知识库业务ID
+        :type KnowledgeBizId: str
+        :param _KnowledgeName: 共享知识库名称
+        :type KnowledgeName: str
+        :param _KnowledgeDescription: 共享知识库描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KnowledgeDescription: str
+        :param _EmbeddingModel: Embedding模型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EmbeddingModel: str
+        :param _QaExtractModel: 问答提取模型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QaExtractModel: str
+        :param _UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        """
+        self._KnowledgeBizId = None
+        self._KnowledgeName = None
+        self._KnowledgeDescription = None
+        self._EmbeddingModel = None
+        self._QaExtractModel = None
+        self._UpdateTime = None
+
+    @property
+    def KnowledgeBizId(self):
+        """共享知识库业务ID
+        :rtype: str
+        """
+        return self._KnowledgeBizId
+
+    @KnowledgeBizId.setter
+    def KnowledgeBizId(self, KnowledgeBizId):
+        self._KnowledgeBizId = KnowledgeBizId
+
+    @property
+    def KnowledgeName(self):
+        """共享知识库名称
+        :rtype: str
+        """
+        return self._KnowledgeName
+
+    @KnowledgeName.setter
+    def KnowledgeName(self, KnowledgeName):
+        self._KnowledgeName = KnowledgeName
+
+    @property
+    def KnowledgeDescription(self):
+        """共享知识库描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._KnowledgeDescription
+
+    @KnowledgeDescription.setter
+    def KnowledgeDescription(self, KnowledgeDescription):
+        self._KnowledgeDescription = KnowledgeDescription
+
+    @property
+    def EmbeddingModel(self):
+        """Embedding模型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EmbeddingModel
+
+    @EmbeddingModel.setter
+    def EmbeddingModel(self, EmbeddingModel):
+        self._EmbeddingModel = EmbeddingModel
+
+    @property
+    def QaExtractModel(self):
+        """问答提取模型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._QaExtractModel
+
+    @QaExtractModel.setter
+    def QaExtractModel(self, QaExtractModel):
+        self._QaExtractModel = QaExtractModel
+
+    @property
+    def UpdateTime(self):
+        """更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._KnowledgeBizId = params.get("KnowledgeBizId")
+        self._KnowledgeName = params.get("KnowledgeName")
+        self._KnowledgeDescription = params.get("KnowledgeDescription")
+        self._EmbeddingModel = params.get("EmbeddingModel")
+        self._QaExtractModel = params.get("QaExtractModel")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class KnowledgeCapacityPieGraphDetail(AbstractModel):
     """知识库容量饼图详情
 
@@ -13811,6 +14254,87 @@ class KnowledgeDetail(AbstractModel):
         self._UsedCharSize = params.get("UsedCharSize")
         self._Proportion = params.get("Proportion")
         self._ExceedCharSize = params.get("ExceedCharSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KnowledgeDetailInfo(AbstractModel):
+    """知识库详情信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Knowledge: 知识库信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Knowledge: :class:`tencentcloud.lke.v20231130.models.KnowledgeBaseInfo`
+        :param _AppList: 应用列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppList: list of AppBaseInfo
+        :param _User: 用户信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type User: :class:`tencentcloud.lke.v20231130.models.UserBaseInfo`
+        """
+        self._Knowledge = None
+        self._AppList = None
+        self._User = None
+
+    @property
+    def Knowledge(self):
+        """知识库信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.lke.v20231130.models.KnowledgeBaseInfo`
+        """
+        return self._Knowledge
+
+    @Knowledge.setter
+    def Knowledge(self, Knowledge):
+        self._Knowledge = Knowledge
+
+    @property
+    def AppList(self):
+        """应用列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AppBaseInfo
+        """
+        return self._AppList
+
+    @AppList.setter
+    def AppList(self, AppList):
+        self._AppList = AppList
+
+    @property
+    def User(self):
+        """用户信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.lke.v20231130.models.UserBaseInfo`
+        """
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+
+    def _deserialize(self, params):
+        if params.get("Knowledge") is not None:
+            self._Knowledge = KnowledgeBaseInfo()
+            self._Knowledge._deserialize(params.get("Knowledge"))
+        if params.get("AppList") is not None:
+            self._AppList = []
+            for item in params.get("AppList"):
+                obj = AppBaseInfo()
+                obj._deserialize(item)
+                self._AppList.append(obj)
+        if params.get("User") is not None:
+            self._User = UserBaseInfo()
+            self._User._deserialize(params.get("User"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14790,6 +15314,93 @@ class KnowledgeSummary(AbstractModel):
     def _deserialize(self, params):
         self._Type = params.get("Type")
         self._Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KnowledgeUpdateInfo(AbstractModel):
+    """共享知识库更新信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KnowledgeName: 共享知识库名称
+        :type KnowledgeName: str
+        :param _KnowledgeDescription: 共享知识库描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KnowledgeDescription: str
+        :param _EmbeddingModel: Embedding模型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EmbeddingModel: str
+        :param _QaExtractModel: 问答提取模型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QaExtractModel: str
+        """
+        self._KnowledgeName = None
+        self._KnowledgeDescription = None
+        self._EmbeddingModel = None
+        self._QaExtractModel = None
+
+    @property
+    def KnowledgeName(self):
+        """共享知识库名称
+        :rtype: str
+        """
+        return self._KnowledgeName
+
+    @KnowledgeName.setter
+    def KnowledgeName(self, KnowledgeName):
+        self._KnowledgeName = KnowledgeName
+
+    @property
+    def KnowledgeDescription(self):
+        """共享知识库描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._KnowledgeDescription
+
+    @KnowledgeDescription.setter
+    def KnowledgeDescription(self, KnowledgeDescription):
+        self._KnowledgeDescription = KnowledgeDescription
+
+    @property
+    def EmbeddingModel(self):
+        """Embedding模型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EmbeddingModel
+
+    @EmbeddingModel.setter
+    def EmbeddingModel(self, EmbeddingModel):
+        self._EmbeddingModel = EmbeddingModel
+
+    @property
+    def QaExtractModel(self):
+        """问答提取模型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._QaExtractModel
+
+    @QaExtractModel.setter
+    def QaExtractModel(self, QaExtractModel):
+        self._QaExtractModel = QaExtractModel
+
+
+    def _deserialize(self, params):
+        self._KnowledgeName = params.get("KnowledgeName")
+        self._KnowledgeDescription = params.get("KnowledgeDescription")
+        self._EmbeddingModel = params.get("EmbeddingModel")
+        self._QaExtractModel = params.get("QaExtractModel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17397,6 +18008,120 @@ class ListQaItem(AbstractModel):
         
 
 
+class ListReferShareKnowledgeRequest(AbstractModel):
+    """ListReferShareKnowledge请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppBizId: 应用业务id
+        :type AppBizId: str
+        :param _LoginUin: 登录用户主账号(集成商模式必填)
+        :type LoginUin: str
+        :param _LoginSubAccountUin: 登录用户子账号(集成商模式必填)
+        :type LoginSubAccountUin: str
+        """
+        self._AppBizId = None
+        self._LoginUin = None
+        self._LoginSubAccountUin = None
+
+    @property
+    def AppBizId(self):
+        """应用业务id
+        :rtype: str
+        """
+        return self._AppBizId
+
+    @AppBizId.setter
+    def AppBizId(self, AppBizId):
+        self._AppBizId = AppBizId
+
+    @property
+    def LoginUin(self):
+        """登录用户主账号(集成商模式必填)
+        :rtype: str
+        """
+        return self._LoginUin
+
+    @LoginUin.setter
+    def LoginUin(self, LoginUin):
+        self._LoginUin = LoginUin
+
+    @property
+    def LoginSubAccountUin(self):
+        """登录用户子账号(集成商模式必填)
+        :rtype: str
+        """
+        return self._LoginSubAccountUin
+
+    @LoginSubAccountUin.setter
+    def LoginSubAccountUin(self, LoginSubAccountUin):
+        self._LoginSubAccountUin = LoginSubAccountUin
+
+
+    def _deserialize(self, params):
+        self._AppBizId = params.get("AppBizId")
+        self._LoginUin = params.get("LoginUin")
+        self._LoginSubAccountUin = params.get("LoginSubAccountUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListReferShareKnowledgeResponse(AbstractModel):
+    """ListReferShareKnowledge返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: 共享知识库信息列表
+        :type List: list of KnowledgeBaseInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        """共享知识库信息列表
+        :rtype: list of KnowledgeBaseInfo
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = KnowledgeBaseInfo()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class ListRejectedQuestionPreviewRequest(AbstractModel):
     """ListRejectedQuestionPreview请求参数结构体
 
@@ -18791,6 +19516,137 @@ class ListSelectDocResponse(AbstractModel):
                 obj = Option()
                 obj._deserialize(item)
                 self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class ListSharedKnowledgeRequest(AbstractModel):
+    """ListSharedKnowledge请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNumber: 分页序号，编码从1开始
+        :type PageNumber: int
+        :param _PageSize: 分页大小，有效范围为[1,200]
+        :type PageSize: int
+        :param _Keyword: 搜索关键字
+        :type Keyword: str
+        """
+        self._PageNumber = None
+        self._PageSize = None
+        self._Keyword = None
+
+    @property
+    def PageNumber(self):
+        """分页序号，编码从1开始
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        """分页大小，有效范围为[1,200]
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Keyword(self):
+        """搜索关键字
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+
+    def _deserialize(self, params):
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._Keyword = params.get("Keyword")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListSharedKnowledgeResponse(AbstractModel):
+    """ListSharedKnowledge返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 累计数量
+        :type Total: int
+        :param _KnowledgeList: 知识库列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KnowledgeList: list of KnowledgeDetailInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._KnowledgeList = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        """累计数量
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def KnowledgeList(self):
+        """知识库列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of KnowledgeDetailInfo
+        """
+        return self._KnowledgeList
+
+    @KnowledgeList.setter
+    def KnowledgeList(self, KnowledgeList):
+        self._KnowledgeList = KnowledgeList
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("KnowledgeList") is not None:
+            self._KnowledgeList = []
+            for item in params.get("KnowledgeList"):
+                obj = KnowledgeDetailInfo()
+                obj._deserialize(item)
+                self._KnowledgeList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -23716,6 +24572,115 @@ class ReferDetail(AbstractModel):
         
 
 
+class ReferShareKnowledgeRequest(AbstractModel):
+    """ReferShareKnowledge请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppBizId: 应用业务id
+        :type AppBizId: str
+        :param _KnowledgeBizId: 共享知识库业务id列表
+        :type KnowledgeBizId: list of str
+        :param _LoginUin: 登录用户主账号(集成商模式必填)
+        :type LoginUin: str
+        :param _LoginSubAccountUin: 登录用户子账号(集成商模式必填)
+        :type LoginSubAccountUin: str
+        """
+        self._AppBizId = None
+        self._KnowledgeBizId = None
+        self._LoginUin = None
+        self._LoginSubAccountUin = None
+
+    @property
+    def AppBizId(self):
+        """应用业务id
+        :rtype: str
+        """
+        return self._AppBizId
+
+    @AppBizId.setter
+    def AppBizId(self, AppBizId):
+        self._AppBizId = AppBizId
+
+    @property
+    def KnowledgeBizId(self):
+        """共享知识库业务id列表
+        :rtype: list of str
+        """
+        return self._KnowledgeBizId
+
+    @KnowledgeBizId.setter
+    def KnowledgeBizId(self, KnowledgeBizId):
+        self._KnowledgeBizId = KnowledgeBizId
+
+    @property
+    def LoginUin(self):
+        """登录用户主账号(集成商模式必填)
+        :rtype: str
+        """
+        return self._LoginUin
+
+    @LoginUin.setter
+    def LoginUin(self, LoginUin):
+        self._LoginUin = LoginUin
+
+    @property
+    def LoginSubAccountUin(self):
+        """登录用户子账号(集成商模式必填)
+        :rtype: str
+        """
+        return self._LoginSubAccountUin
+
+    @LoginSubAccountUin.setter
+    def LoginSubAccountUin(self, LoginSubAccountUin):
+        self._LoginSubAccountUin = LoginSubAccountUin
+
+
+    def _deserialize(self, params):
+        self._AppBizId = params.get("AppBizId")
+        self._KnowledgeBizId = params.get("KnowledgeBizId")
+        self._LoginUin = params.get("LoginUin")
+        self._LoginSubAccountUin = params.get("LoginSubAccountUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReferShareKnowledgeResponse(AbstractModel):
+    """ReferShareKnowledge返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class RejectedQuestion(AbstractModel):
     """发布拒答
 
@@ -26953,6 +27918,102 @@ class UnsatisfiedReply(AbstractModel):
         
 
 
+class UpdateSharedKnowledgeRequest(AbstractModel):
+    """UpdateSharedKnowledge请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KnowledgeBizId: 共享知识库业务ID
+        :type KnowledgeBizId: str
+        :param _Info: 共享知识库更新信息
+        :type Info: :class:`tencentcloud.lke.v20231130.models.KnowledgeUpdateInfo`
+        """
+        self._KnowledgeBizId = None
+        self._Info = None
+
+    @property
+    def KnowledgeBizId(self):
+        """共享知识库业务ID
+        :rtype: str
+        """
+        return self._KnowledgeBizId
+
+    @KnowledgeBizId.setter
+    def KnowledgeBizId(self, KnowledgeBizId):
+        self._KnowledgeBizId = KnowledgeBizId
+
+    @property
+    def Info(self):
+        """共享知识库更新信息
+        :rtype: :class:`tencentcloud.lke.v20231130.models.KnowledgeUpdateInfo`
+        """
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+
+    def _deserialize(self, params):
+        self._KnowledgeBizId = params.get("KnowledgeBizId")
+        if params.get("Info") is not None:
+            self._Info = KnowledgeUpdateInfo()
+            self._Info._deserialize(params.get("Info"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateSharedKnowledgeResponse(AbstractModel):
+    """UpdateSharedKnowledge返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KnowledgeBizId: 共享知识库业务ID
+        :type KnowledgeBizId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._KnowledgeBizId = None
+        self._RequestId = None
+
+    @property
+    def KnowledgeBizId(self):
+        """共享知识库业务ID
+        :rtype: str
+        """
+        return self._KnowledgeBizId
+
+    @KnowledgeBizId.setter
+    def KnowledgeBizId(self, KnowledgeBizId):
+        self._KnowledgeBizId = KnowledgeBizId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._KnowledgeBizId = params.get("KnowledgeBizId")
+        self._RequestId = params.get("RequestId")
+
+
 class UploadAttributeLabelRequest(AbstractModel):
     """UploadAttributeLabel请求参数结构体
 
@@ -27223,6 +28284,59 @@ class Usage(AbstractModel):
         self._InputTokens = params.get("InputTokens")
         self._OutputTokens = params.get("OutputTokens")
         self._TotalTokens = params.get("TotalTokens")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserBaseInfo(AbstractModel):
+    """用户基础信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserBizId: 用户ID
+        :type UserBizId: str
+        :param _UserName: 用户名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        """
+        self._UserBizId = None
+        self._UserName = None
+
+    @property
+    def UserBizId(self):
+        """用户ID
+        :rtype: str
+        """
+        return self._UserBizId
+
+    @UserBizId.setter
+    def UserBizId(self, UserBizId):
+        self._UserBizId = UserBizId
+
+    @property
+    def UserName(self):
+        """用户名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+
+    def _deserialize(self, params):
+        self._UserBizId = params.get("UserBizId")
+        self._UserName = params.get("UserName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

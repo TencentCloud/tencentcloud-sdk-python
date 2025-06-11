@@ -3553,7 +3553,7 @@ class CreateSubdomainValidateTXTValueResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Domain: 需要添加 TXT 记录的域名。
+        :param _Domain: 需要添加 TXT 记录的主域名。
         :type Domain: str
         :param _Subdomain: 需要添加 TXT 记录的主机记录。
         :type Subdomain: str
@@ -3561,6 +3561,8 @@ class CreateSubdomainValidateTXTValueResponse(AbstractModel):
         :type RecordType: str
         :param _Value: 需要添加 TXT 记录的记录值。
         :type Value: str
+        :param _ParentDomain: 需要添加 TXT 记录的上级域名(可选，主域名和上级域名任选一个添加即可)。
+        :type ParentDomain: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3568,11 +3570,12 @@ class CreateSubdomainValidateTXTValueResponse(AbstractModel):
         self._Subdomain = None
         self._RecordType = None
         self._Value = None
+        self._ParentDomain = None
         self._RequestId = None
 
     @property
     def Domain(self):
-        """需要添加 TXT 记录的域名。
+        """需要添加 TXT 记录的主域名。
         :rtype: str
         """
         return self._Domain
@@ -3615,6 +3618,17 @@ class CreateSubdomainValidateTXTValueResponse(AbstractModel):
         self._Value = Value
 
     @property
+    def ParentDomain(self):
+        """需要添加 TXT 记录的上级域名(可选，主域名和上级域名任选一个添加即可)。
+        :rtype: str
+        """
+        return self._ParentDomain
+
+    @ParentDomain.setter
+    def ParentDomain(self, ParentDomain):
+        self._ParentDomain = ParentDomain
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -3631,6 +3645,7 @@ class CreateSubdomainValidateTXTValueResponse(AbstractModel):
         self._Subdomain = params.get("Subdomain")
         self._RecordType = params.get("RecordType")
         self._Value = params.get("Value")
+        self._ParentDomain = params.get("ParentDomain")
         self._RequestId = params.get("RequestId")
 
 
@@ -7323,6 +7338,180 @@ class DescribeDomainShareUserListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDomainVipListRequest(AbstractModel):
+    """DescribeDomainVipList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: 偏移量，默认值为0。
+        :type Offset: int
+        :param _Limit: 限制数量，默认值为20。
+        :type Limit: int
+        :param _Keyword: 通过关键字搜索域名关联的套餐，默认值为空，为空时不作为筛选条件。
+        :type Keyword: str
+        :param _ResourceIdList: 使用资源ID列表查询
+        :type ResourceIdList: list of str
+        :param _GradeList: 需要筛选的套餐版本
+        :type GradeList: list of str
+        :param _GetUnbindResource: 是否只获取未绑定域名套餐
+        :type GetUnbindResource: bool
+        """
+        self._Offset = None
+        self._Limit = None
+        self._Keyword = None
+        self._ResourceIdList = None
+        self._GradeList = None
+        self._GetUnbindResource = None
+
+    @property
+    def Offset(self):
+        """偏移量，默认值为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """限制数量，默认值为20。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Keyword(self):
+        """通过关键字搜索域名关联的套餐，默认值为空，为空时不作为筛选条件。
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def ResourceIdList(self):
+        """使用资源ID列表查询
+        :rtype: list of str
+        """
+        return self._ResourceIdList
+
+    @ResourceIdList.setter
+    def ResourceIdList(self, ResourceIdList):
+        self._ResourceIdList = ResourceIdList
+
+    @property
+    def GradeList(self):
+        """需要筛选的套餐版本
+        :rtype: list of str
+        """
+        return self._GradeList
+
+    @GradeList.setter
+    def GradeList(self, GradeList):
+        self._GradeList = GradeList
+
+    @property
+    def GetUnbindResource(self):
+        """是否只获取未绑定域名套餐
+        :rtype: bool
+        """
+        return self._GetUnbindResource
+
+    @GetUnbindResource.setter
+    def GetUnbindResource(self, GetUnbindResource):
+        self._GetUnbindResource = GetUnbindResource
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Keyword = params.get("Keyword")
+        self._ResourceIdList = params.get("ResourceIdList")
+        self._GradeList = params.get("GradeList")
+        self._GetUnbindResource = params.get("GetUnbindResource")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDomainVipListResponse(AbstractModel):
+    """DescribeDomainVipList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 符合筛选条件的套餐总数
+        :type TotalCount: int
+        :param _PackageList: 套餐信息列表
+        :type PackageList: list of PackageListItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._PackageList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """符合筛选条件的套餐总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def PackageList(self):
+        """套餐信息列表
+        :rtype: list of PackageListItem
+        """
+        return self._PackageList
+
+    @PackageList.setter
+    def PackageList(self, PackageList):
+        self._PackageList = PackageList
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("PackageList") is not None:
+            self._PackageList = []
+            for item in params.get("PackageList"):
+                obj = PackageListItem()
+                obj._deserialize(item)
+                self._PackageList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDomainWhoisRequest(AbstractModel):
     """DescribeDomainWhois请求参数结构体
 
@@ -10409,6 +10598,165 @@ class DescribeVASStatisticResponse(AbstractModel):
                 obj = VASStatisticItem()
                 obj._deserialize(item)
                 self._VASList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeVasListRequest(AbstractModel):
+    """DescribeVasList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: 偏移量，默认值为0。
+        :type Offset: int
+        :param _Limit: 限制数量，默认值为20。
+        :type Limit: int
+        :param _DomainId: 域名ID
+        :type DomainId: int
+        :param _ResourceIdList: 使用资源 ID 列表查询
+        :type ResourceIdList: list of str
+        :param _LimitType: 增值服务类型
+        :type LimitType: str
+        """
+        self._Offset = None
+        self._Limit = None
+        self._DomainId = None
+        self._ResourceIdList = None
+        self._LimitType = None
+
+    @property
+    def Offset(self):
+        """偏移量，默认值为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """限制数量，默认值为20。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def DomainId(self):
+        """域名ID
+        :rtype: int
+        """
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+    @property
+    def ResourceIdList(self):
+        """使用资源 ID 列表查询
+        :rtype: list of str
+        """
+        return self._ResourceIdList
+
+    @ResourceIdList.setter
+    def ResourceIdList(self, ResourceIdList):
+        self._ResourceIdList = ResourceIdList
+
+    @property
+    def LimitType(self):
+        """增值服务类型
+        :rtype: str
+        """
+        return self._LimitType
+
+    @LimitType.setter
+    def LimitType(self, LimitType):
+        self._LimitType = LimitType
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._DomainId = params.get("DomainId")
+        self._ResourceIdList = params.get("ResourceIdList")
+        self._LimitType = params.get("LimitType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVasListResponse(AbstractModel):
+    """DescribeVasList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 符合筛选条件的套餐总数
+        :type TotalCount: int
+        :param _VasList: 增值服务信息列表
+        :type VasList: list of VasListItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._VasList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """符合筛选条件的套餐总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def VasList(self):
+        """增值服务信息列表
+        :rtype: list of VasListItem
+        """
+        return self._VasList
+
+    @VasList.setter
+    def VasList(self, VasList):
+        self._VasList = VasList
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("VasList") is not None:
+            self._VasList = []
+            for item in params.get("VasList"):
+                obj = VasListItem()
+                obj._deserialize(item)
+                self._VasList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -16108,6 +16456,262 @@ class PackageDetailItem(AbstractModel):
         
 
 
+class PackageListItem(AbstractModel):
+    """套餐列表元素
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DomainId: 域名ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DomainId: int
+        :param _Domain: 域名的原始格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Domain: str
+        :param _Grade: 套餐等级代码
+        :type Grade: str
+        :param _GradeTitle: 套餐名称
+        :type GradeTitle: str
+        :param _VipStartAt: 付费套餐开通时间
+        :type VipStartAt: str
+        :param _VipEndAt: 付费套餐到期时间
+        :type VipEndAt: str
+        :param _VipAutoRenew: 域名是否开通VIP自动续费，是：YES，否：NO，默认：DEFAULT
+        :type VipAutoRenew: str
+        :param _RemainTimes: 套餐剩余换绑/绑定域名次数
+        :type RemainTimes: int
+        :param _ResourceId: 套餐资源ID
+        :type ResourceId: str
+        :param _GradeLevel: 域名等级代号
+        :type GradeLevel: int
+        :param _Status: 套餐绑定的域名的状态
+        :type Status: str
+        :param _IsGracePeriod: 套餐是否处于宽限期
+        :type IsGracePeriod: str
+        :param _Downgrade: 是否降级
+        :type Downgrade: bool
+        :param _SecurityInfo: 关联安全防护信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecurityInfo: :class:`tencentcloud.dnspod.v20210323.models.SecurityInfo`
+        :param _IsSubDomain: 套餐绑定的域名是否为子域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsSubDomain: bool
+        """
+        self._DomainId = None
+        self._Domain = None
+        self._Grade = None
+        self._GradeTitle = None
+        self._VipStartAt = None
+        self._VipEndAt = None
+        self._VipAutoRenew = None
+        self._RemainTimes = None
+        self._ResourceId = None
+        self._GradeLevel = None
+        self._Status = None
+        self._IsGracePeriod = None
+        self._Downgrade = None
+        self._SecurityInfo = None
+        self._IsSubDomain = None
+
+    @property
+    def DomainId(self):
+        """域名ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+    @property
+    def Domain(self):
+        """域名的原始格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Grade(self):
+        """套餐等级代码
+        :rtype: str
+        """
+        return self._Grade
+
+    @Grade.setter
+    def Grade(self, Grade):
+        self._Grade = Grade
+
+    @property
+    def GradeTitle(self):
+        """套餐名称
+        :rtype: str
+        """
+        return self._GradeTitle
+
+    @GradeTitle.setter
+    def GradeTitle(self, GradeTitle):
+        self._GradeTitle = GradeTitle
+
+    @property
+    def VipStartAt(self):
+        """付费套餐开通时间
+        :rtype: str
+        """
+        return self._VipStartAt
+
+    @VipStartAt.setter
+    def VipStartAt(self, VipStartAt):
+        self._VipStartAt = VipStartAt
+
+    @property
+    def VipEndAt(self):
+        """付费套餐到期时间
+        :rtype: str
+        """
+        return self._VipEndAt
+
+    @VipEndAt.setter
+    def VipEndAt(self, VipEndAt):
+        self._VipEndAt = VipEndAt
+
+    @property
+    def VipAutoRenew(self):
+        """域名是否开通VIP自动续费，是：YES，否：NO，默认：DEFAULT
+        :rtype: str
+        """
+        return self._VipAutoRenew
+
+    @VipAutoRenew.setter
+    def VipAutoRenew(self, VipAutoRenew):
+        self._VipAutoRenew = VipAutoRenew
+
+    @property
+    def RemainTimes(self):
+        """套餐剩余换绑/绑定域名次数
+        :rtype: int
+        """
+        return self._RemainTimes
+
+    @RemainTimes.setter
+    def RemainTimes(self, RemainTimes):
+        self._RemainTimes = RemainTimes
+
+    @property
+    def ResourceId(self):
+        """套餐资源ID
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def GradeLevel(self):
+        """域名等级代号
+        :rtype: int
+        """
+        return self._GradeLevel
+
+    @GradeLevel.setter
+    def GradeLevel(self, GradeLevel):
+        self._GradeLevel = GradeLevel
+
+    @property
+    def Status(self):
+        """套餐绑定的域名的状态
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def IsGracePeriod(self):
+        """套餐是否处于宽限期
+        :rtype: str
+        """
+        return self._IsGracePeriod
+
+    @IsGracePeriod.setter
+    def IsGracePeriod(self, IsGracePeriod):
+        self._IsGracePeriod = IsGracePeriod
+
+    @property
+    def Downgrade(self):
+        """是否降级
+        :rtype: bool
+        """
+        return self._Downgrade
+
+    @Downgrade.setter
+    def Downgrade(self, Downgrade):
+        self._Downgrade = Downgrade
+
+    @property
+    def SecurityInfo(self):
+        """关联安全防护信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dnspod.v20210323.models.SecurityInfo`
+        """
+        return self._SecurityInfo
+
+    @SecurityInfo.setter
+    def SecurityInfo(self, SecurityInfo):
+        self._SecurityInfo = SecurityInfo
+
+    @property
+    def IsSubDomain(self):
+        """套餐绑定的域名是否为子域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsSubDomain
+
+    @IsSubDomain.setter
+    def IsSubDomain(self, IsSubDomain):
+        self._IsSubDomain = IsSubDomain
+
+
+    def _deserialize(self, params):
+        self._DomainId = params.get("DomainId")
+        self._Domain = params.get("Domain")
+        self._Grade = params.get("Grade")
+        self._GradeTitle = params.get("GradeTitle")
+        self._VipStartAt = params.get("VipStartAt")
+        self._VipEndAt = params.get("VipEndAt")
+        self._VipAutoRenew = params.get("VipAutoRenew")
+        self._RemainTimes = params.get("RemainTimes")
+        self._ResourceId = params.get("ResourceId")
+        self._GradeLevel = params.get("GradeLevel")
+        self._Status = params.get("Status")
+        self._IsGracePeriod = params.get("IsGracePeriod")
+        self._Downgrade = params.get("Downgrade")
+        if params.get("SecurityInfo") is not None:
+            self._SecurityInfo = SecurityInfo()
+            self._SecurityInfo._deserialize(params.get("SecurityInfo"))
+        self._IsSubDomain = params.get("IsSubDomain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PayOrderWithBalanceRequest(AbstractModel):
     """PayOrderWithBalance请求参数结构体
 
@@ -17348,6 +17952,72 @@ class RollbackSnapshotResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class SecurityInfo(AbstractModel):
+    """套餐中安全防护信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsDefendFree: 是否是免费赠送：yes-是；no-不是
+        :type IsDefendFree: str
+        :param _Key: 防护类型
+        :type Key: str
+        :param _ResourceId: 资源 ID
+        :type ResourceId: str
+        """
+        self._IsDefendFree = None
+        self._Key = None
+        self._ResourceId = None
+
+    @property
+    def IsDefendFree(self):
+        """是否是免费赠送：yes-是；no-不是
+        :rtype: str
+        """
+        return self._IsDefendFree
+
+    @IsDefendFree.setter
+    def IsDefendFree(self, IsDefendFree):
+        self._IsDefendFree = IsDefendFree
+
+    @property
+    def Key(self):
+        """防护类型
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def ResourceId(self):
+        """资源 ID
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+
+    def _deserialize(self, params):
+        self._IsDefendFree = params.get("IsDefendFree")
+        self._Key = params.get("Key")
+        self._ResourceId = params.get("ResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SnapshotConfig(AbstractModel):
     """域名解析快照配置
 
@@ -18407,6 +19077,192 @@ class VASStatisticItem(AbstractModel):
         self._Key = params.get("Key")
         self._LimitCount = params.get("LimitCount")
         self._UseCount = params.get("UseCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VasListItem(AbstractModel):
+    """增值服务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LimitNumber: 规格总数
+        :type LimitNumber: int
+        :param _StartedAt: 购买时间
+        :type StartedAt: str
+        :param _EndedAt: 到期时间
+        :type EndedAt: str
+        :param _ResourceId: 资源唯一 ID
+        :type ResourceId: str
+        :param _AutoRenew: 自动续费标识
+        :type AutoRenew: str
+        :param _Domain: 已绑定的域名
+        :type Domain: str
+        :param _BindType: 绑定类型
+        :type BindType: str
+        :param _Key: 增值服务类型
+        :type Key: str
+        :param _Name: 增值服务名
+        :type Name: str
+        :param _CanRenew: 是否可续费
+        :type CanRenew: bool
+        :param _VipDomain: 是否只允许付费套餐域名可购买
+        :type VipDomain: bool
+        """
+        self._LimitNumber = None
+        self._StartedAt = None
+        self._EndedAt = None
+        self._ResourceId = None
+        self._AutoRenew = None
+        self._Domain = None
+        self._BindType = None
+        self._Key = None
+        self._Name = None
+        self._CanRenew = None
+        self._VipDomain = None
+
+    @property
+    def LimitNumber(self):
+        """规格总数
+        :rtype: int
+        """
+        return self._LimitNumber
+
+    @LimitNumber.setter
+    def LimitNumber(self, LimitNumber):
+        self._LimitNumber = LimitNumber
+
+    @property
+    def StartedAt(self):
+        """购买时间
+        :rtype: str
+        """
+        return self._StartedAt
+
+    @StartedAt.setter
+    def StartedAt(self, StartedAt):
+        self._StartedAt = StartedAt
+
+    @property
+    def EndedAt(self):
+        """到期时间
+        :rtype: str
+        """
+        return self._EndedAt
+
+    @EndedAt.setter
+    def EndedAt(self, EndedAt):
+        self._EndedAt = EndedAt
+
+    @property
+    def ResourceId(self):
+        """资源唯一 ID
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def AutoRenew(self):
+        """自动续费标识
+        :rtype: str
+        """
+        return self._AutoRenew
+
+    @AutoRenew.setter
+    def AutoRenew(self, AutoRenew):
+        self._AutoRenew = AutoRenew
+
+    @property
+    def Domain(self):
+        """已绑定的域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def BindType(self):
+        """绑定类型
+        :rtype: str
+        """
+        return self._BindType
+
+    @BindType.setter
+    def BindType(self, BindType):
+        self._BindType = BindType
+
+    @property
+    def Key(self):
+        """增值服务类型
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Name(self):
+        """增值服务名
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def CanRenew(self):
+        """是否可续费
+        :rtype: bool
+        """
+        return self._CanRenew
+
+    @CanRenew.setter
+    def CanRenew(self, CanRenew):
+        self._CanRenew = CanRenew
+
+    @property
+    def VipDomain(self):
+        """是否只允许付费套餐域名可购买
+        :rtype: bool
+        """
+        return self._VipDomain
+
+    @VipDomain.setter
+    def VipDomain(self, VipDomain):
+        self._VipDomain = VipDomain
+
+
+    def _deserialize(self, params):
+        self._LimitNumber = params.get("LimitNumber")
+        self._StartedAt = params.get("StartedAt")
+        self._EndedAt = params.get("EndedAt")
+        self._ResourceId = params.get("ResourceId")
+        self._AutoRenew = params.get("AutoRenew")
+        self._Domain = params.get("Domain")
+        self._BindType = params.get("BindType")
+        self._Key = params.get("Key")
+        self._Name = params.get("Name")
+        self._CanRenew = params.get("CanRenew")
+        self._VipDomain = params.get("VipDomain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

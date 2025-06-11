@@ -281,6 +281,29 @@ class LkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateSharedKnowledge(self, request):
+        """创建共享知识库。
+
+        :param request: Request instance for CreateSharedKnowledge.
+        :type request: :class:`tencentcloud.lke.v20231130.models.CreateSharedKnowledgeRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.CreateSharedKnowledgeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSharedKnowledge", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSharedKnowledgeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateVar(self, request):
         """创建变量
 
@@ -456,6 +479,29 @@ class LkeClient(AbstractClient):
             body = self.call("DeleteRejectedQuestion", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteRejectedQuestionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteSharedKnowledge(self, request):
+        """删除共享知识库。
+
+        :param request: Request instance for DeleteSharedKnowledge.
+        :type request: :class:`tencentcloud.lke.v20231130.models.DeleteSharedKnowledgeRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.DeleteSharedKnowledgeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteSharedKnowledge", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteSharedKnowledgeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -824,6 +870,29 @@ class LkeClient(AbstractClient):
             body = self.call("DescribeSegments", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSegmentsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSharedKnowledge(self, request):
+        """查询共享知识库。
+
+        :param request: Request instance for DescribeSharedKnowledge.
+        :type request: :class:`tencentcloud.lke.v20231130.models.DescribeSharedKnowledgeRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.DescribeSharedKnowledgeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSharedKnowledge", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSharedKnowledgeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1572,6 +1641,29 @@ class LkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ListReferShareKnowledge(self, request):
+        """查看应用引用了哪些共享知识库，可以看到共享知识库的基础信息，包括名称，id等
+
+        :param request: Request instance for ListReferShareKnowledge.
+        :type request: :class:`tencentcloud.lke.v20231130.models.ListReferShareKnowledgeRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.ListReferShareKnowledgeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListReferShareKnowledge", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListReferShareKnowledgeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ListRejectedQuestion(self, request):
         """获取拒答问题
 
@@ -1724,6 +1816,29 @@ class LkeClient(AbstractClient):
             body = self.call("ListSelectDoc", params, headers=headers)
             response = json.loads(body)
             model = models.ListSelectDocResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListSharedKnowledge(self, request):
+        """列举共享知识库。
+
+        :param request: Request instance for ListSharedKnowledge.
+        :type request: :class:`tencentcloud.lke.v20231130.models.ListSharedKnowledgeRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.ListSharedKnowledgeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListSharedKnowledge", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListSharedKnowledgeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2058,6 +2173,29 @@ class LkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ReferShareKnowledge(self, request):
+        """应用引用共享知识库，可以引用一个或多个，每次都是全量覆盖
+
+        :param request: Request instance for ReferShareKnowledge.
+        :type request: :class:`tencentcloud.lke.v20231130.models.ReferShareKnowledgeRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.ReferShareKnowledgeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ReferShareKnowledge", params, headers=headers)
+            response = json.loads(body)
+            model = models.ReferShareKnowledgeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RenameDoc(self, request):
         """文档重命名
 
@@ -2215,6 +2353,29 @@ class LkeClient(AbstractClient):
             body = self.call("StopDocParse", params, headers=headers)
             response = json.loads(body)
             model = models.StopDocParseResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateSharedKnowledge(self, request):
+        """更新共享知识库。
+
+        :param request: Request instance for UpdateSharedKnowledge.
+        :type request: :class:`tencentcloud.lke.v20231130.models.UpdateSharedKnowledgeRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.UpdateSharedKnowledgeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateSharedKnowledge", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateSharedKnowledgeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

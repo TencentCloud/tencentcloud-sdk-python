@@ -1658,7 +1658,7 @@ class DescribeDeviceHardwareInfoListRequest(AbstractModel):
         :type OsType: int
         :param _DomainInstanceId: 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
         :type DomainInstanceId: str
-        :param _Condition: 过滤条件参数（字段含义请参考接口返回值） - Name, 类型String，支持操作：【eq，like，ilike】，支持排序 - UserName, 类型String，支持操作：【eq，like，ilike】，支持排序 - IoaUserName，类型String，支持操作：【eq，like，ilike】，支持排序 - MacAddr, 类型String，支持操作：【eq，like，ilike】，支持排序 - Ip, 类型String，支持操作：【eq，like，ilike】，支持排序 ，支持排序分页参数- PageNum 从1开始，小于等于0时使用默认参数- PageSize 最大值5000，最好不超过100
+        :param _Condition: 过滤条件参数（字段含义请参考接口返回值）  - Name, 类型String，支持操作：【eq，like，ilike】，支持排序  - UserName, 类型String，支持操作：【eq，like，ilike】，支持排序  - IoaUserName，类型String，支持操作：【eq，like，ilike】，支持排序  - MacAddr, 类型String，支持操作：【eq，like，ilike】，支持排序  - Ip, 类型String，支持操作：【eq，like，ilike】，支持排序  - Mid, 类型String，支持操作：【eq，like，ilike】，支持排序  ，支持排序分页参数  - PageNum 从1开始，小于等于0时使用默认参数 - PageSize 最大值5000，最好不超过100
         :type Condition: :class:`tencentcloud.ioa.v20220601.models.Condition`
         """
         self._GroupId = None
@@ -1701,7 +1701,7 @@ class DescribeDeviceHardwareInfoListRequest(AbstractModel):
 
     @property
     def Condition(self):
-        """过滤条件参数（字段含义请参考接口返回值） - Name, 类型String，支持操作：【eq，like，ilike】，支持排序 - UserName, 类型String，支持操作：【eq，like，ilike】，支持排序 - IoaUserName，类型String，支持操作：【eq，like，ilike】，支持排序 - MacAddr, 类型String，支持操作：【eq，like，ilike】，支持排序 - Ip, 类型String，支持操作：【eq，like，ilike】，支持排序 ，支持排序分页参数- PageNum 从1开始，小于等于0时使用默认参数- PageSize 最大值5000，最好不超过100
+        """过滤条件参数（字段含义请参考接口返回值）  - Name, 类型String，支持操作：【eq，like，ilike】，支持排序  - UserName, 类型String，支持操作：【eq，like，ilike】，支持排序  - IoaUserName，类型String，支持操作：【eq，like，ilike】，支持排序  - MacAddr, 类型String，支持操作：【eq，like，ilike】，支持排序  - Ip, 类型String，支持操作：【eq，like，ilike】，支持排序  - Mid, 类型String，支持操作：【eq，like，ilike】，支持排序  ，支持排序分页参数  - PageNum 从1开始，小于等于0时使用默认参数 - PageSize 最大值5000，最好不超过100
         :rtype: :class:`tencentcloud.ioa.v20220601.models.Condition`
         """
         return self._Condition
@@ -3252,6 +3252,164 @@ class DescribeSoftCensusListByDeviceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSoftwareInformationPageData(AbstractModel):
+    """业务响应数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: 软件详情响应对象集合
+        :type Items: list of SoftwareInformationData
+        :param _Page: 分页公共对象
+        :type Page: :class:`tencentcloud.ioa.v20220601.models.Paging`
+        """
+        self._Items = None
+        self._Page = None
+
+    @property
+    def Items(self):
+        """软件详情响应对象集合
+        :rtype: list of SoftwareInformationData
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def Page(self):
+        """分页公共对象
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.Paging`
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = SoftwareInformationData()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        if params.get("Page") is not None:
+            self._Page = Paging()
+            self._Page._deserialize(params.get("Page"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSoftwareInformationRequest(AbstractModel):
+    """DescribeSoftwareInformation请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Mid: 终端唯一标识Mid
+        :type Mid: str
+        :param _Condition: 过滤条件、分页参数
+<li>Name - String - 过滤支持：是 - 操作符:eq,like - 排序支持：是 。</li>
+        :type Condition: :class:`tencentcloud.ioa.v20220601.models.Condition`
+        """
+        self._Mid = None
+        self._Condition = None
+
+    @property
+    def Mid(self):
+        """终端唯一标识Mid
+        :rtype: str
+        """
+        return self._Mid
+
+    @Mid.setter
+    def Mid(self, Mid):
+        self._Mid = Mid
+
+    @property
+    def Condition(self):
+        """过滤条件、分页参数
+<li>Name - String - 过滤支持：是 - 操作符:eq,like - 排序支持：是 。</li>
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.Condition`
+        """
+        return self._Condition
+
+    @Condition.setter
+    def Condition(self, Condition):
+        self._Condition = Condition
+
+
+    def _deserialize(self, params):
+        self._Mid = params.get("Mid")
+        if params.get("Condition") is not None:
+            self._Condition = Condition()
+            self._Condition._deserialize(params.get("Condition"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSoftwareInformationResponse(AbstractModel):
+    """DescribeSoftwareInformation返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 业务响应数据
+        :type Data: :class:`tencentcloud.ioa.v20220601.models.DescribeSoftwareInformationPageData`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """业务响应数据
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeSoftwareInformationPageData`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DescribeSoftwareInformationPageData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class DeviceDetail(AbstractModel):
     """业务响应数据
 
@@ -4580,6 +4738,147 @@ class SimpleRule(AbstractModel):
                 obj._deserialize(item)
                 self._Expressions.append(obj)
         self._Relation = params.get("Relation")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SoftwareInformationData(AbstractModel):
+    """软件详情响应对象集合
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 软件名称
+        :type Name: str
+        :param _InstallDate: 安装时间
+        :type InstallDate: str
+        :param _SoftwareId: 软件列表id(只支持32位)
+        :type SoftwareId: int
+        :param _Mid: 唯一标识Mid
+        :type Mid: str
+        :param _Version: 软件版本
+        :type Version: str
+        :param _CorpName: 公司名
+        :type CorpName: str
+        :param _Id: 列表Id(只支持32位)
+        :type Id: int
+        :param _PiracyRisk: 盗版风险（0:未支持，1:风险，2:未发现，3:未开启）
+        :type PiracyRisk: int
+        """
+        self._Name = None
+        self._InstallDate = None
+        self._SoftwareId = None
+        self._Mid = None
+        self._Version = None
+        self._CorpName = None
+        self._Id = None
+        self._PiracyRisk = None
+
+    @property
+    def Name(self):
+        """软件名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def InstallDate(self):
+        """安装时间
+        :rtype: str
+        """
+        return self._InstallDate
+
+    @InstallDate.setter
+    def InstallDate(self, InstallDate):
+        self._InstallDate = InstallDate
+
+    @property
+    def SoftwareId(self):
+        """软件列表id(只支持32位)
+        :rtype: int
+        """
+        return self._SoftwareId
+
+    @SoftwareId.setter
+    def SoftwareId(self, SoftwareId):
+        self._SoftwareId = SoftwareId
+
+    @property
+    def Mid(self):
+        """唯一标识Mid
+        :rtype: str
+        """
+        return self._Mid
+
+    @Mid.setter
+    def Mid(self, Mid):
+        self._Mid = Mid
+
+    @property
+    def Version(self):
+        """软件版本
+        :rtype: str
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def CorpName(self):
+        """公司名
+        :rtype: str
+        """
+        return self._CorpName
+
+    @CorpName.setter
+    def CorpName(self, CorpName):
+        self._CorpName = CorpName
+
+    @property
+    def Id(self):
+        """列表Id(只支持32位)
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def PiracyRisk(self):
+        """盗版风险（0:未支持，1:风险，2:未发现，3:未开启）
+        :rtype: int
+        """
+        return self._PiracyRisk
+
+    @PiracyRisk.setter
+    def PiracyRisk(self, PiracyRisk):
+        self._PiracyRisk = PiracyRisk
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._InstallDate = params.get("InstallDate")
+        self._SoftwareId = params.get("SoftwareId")
+        self._Mid = params.get("Mid")
+        self._Version = params.get("Version")
+        self._CorpName = params.get("CorpName")
+        self._Id = params.get("Id")
+        self._PiracyRisk = params.get("PiracyRisk")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

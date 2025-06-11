@@ -2526,6 +2526,8 @@ ENABLED 已启用
         :type UpdateTime: str
         :param _Meta: 知识库的meta信息
         :type Meta: str
+        :param _TotalSize: 知识库容量,单位字节
+        :type TotalSize: str
         """
         self._Name = None
         self._Title = None
@@ -2534,6 +2536,7 @@ ENABLED 已启用
         self._CreateTime = None
         self._UpdateTime = None
         self._Meta = None
+        self._TotalSize = None
 
     @property
     def Name(self):
@@ -2614,6 +2617,17 @@ ENABLED 已启用
     def Meta(self, Meta):
         self._Meta = Meta
 
+    @property
+    def TotalSize(self):
+        """知识库容量,单位字节
+        :rtype: str
+        """
+        return self._TotalSize
+
+    @TotalSize.setter
+    def TotalSize(self, TotalSize):
+        self._TotalSize = TotalSize
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -2623,6 +2637,7 @@ ENABLED 已启用
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         self._Meta = params.get("Meta")
+        self._TotalSize = params.get("TotalSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3316,6 +3331,8 @@ class SearchDocInfo(AbstractModel):
         :type DocDesc: str
         :param _FileSize: 文档大小
         :type FileSize: int
+        :param _FileId: Cos存储文件ID
+        :type FileId: str
         """
         self._CollectionViewName = None
         self._DocSetId = None
@@ -3325,6 +3342,7 @@ class SearchDocInfo(AbstractModel):
         self._FileMetaData = None
         self._DocDesc = None
         self._FileSize = None
+        self._FileId = None
 
     @property
     def CollectionViewName(self):
@@ -3414,6 +3432,17 @@ class SearchDocInfo(AbstractModel):
     def FileSize(self, FileSize):
         self._FileSize = FileSize
 
+    @property
+    def FileId(self):
+        """Cos存储文件ID
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
 
     def _deserialize(self, params):
         self._CollectionViewName = params.get("CollectionViewName")
@@ -3424,6 +3453,7 @@ class SearchDocInfo(AbstractModel):
         self._FileMetaData = params.get("FileMetaData")
         self._DocDesc = params.get("DocDesc")
         self._FileSize = params.get("FileSize")
+        self._FileId = params.get("FileId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3848,6 +3878,8 @@ class UploadKnowledgeDocumentSetRequest(AbstractModel):
         :type DocumentSetId: str
         :param _Delimiter: 使用 regex 分割文档
         :type Delimiter: str
+        :param _FileId: Cos存储文件ID
+        :type FileId: str
         """
         self._EnvId = None
         self._CollectionView = None
@@ -3859,6 +3891,7 @@ class UploadKnowledgeDocumentSetRequest(AbstractModel):
         self._FileMetaData = None
         self._DocumentSetId = None
         self._Delimiter = None
+        self._FileId = None
 
     @property
     def EnvId(self):
@@ -3970,6 +4003,17 @@ class UploadKnowledgeDocumentSetRequest(AbstractModel):
     def Delimiter(self, Delimiter):
         self._Delimiter = Delimiter
 
+    @property
+    def FileId(self):
+        """Cos存储文件ID
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
 
     def _deserialize(self, params):
         self._EnvId = params.get("EnvId")
@@ -3982,6 +4026,7 @@ class UploadKnowledgeDocumentSetRequest(AbstractModel):
         self._FileMetaData = params.get("FileMetaData")
         self._DocumentSetId = params.get("DocumentSetId")
         self._Delimiter = params.get("Delimiter")
+        self._FileId = params.get("FileId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4052,14 +4097,19 @@ class UploadKnowledgeDocumentSetRsp(AbstractModel):
         :type FileTitle: str
         :param _FileMetaData: 文件元信息，为jsonstring
         :type FileMetaData: str
+        :param _FileId: Cos存储文件ID
+        :type FileId: str
         """
         self._DocumentSetId = None
         self._DocumentSetName = None
         self._FileTitle = None
         self._FileMetaData = None
+        self._FileId = None
 
     @property
     def DocumentSetId(self):
+        warnings.warn("parameter `DocumentSetId` is deprecated", DeprecationWarning) 
+
         """给文件分配的 ID 信息。
         :rtype: str
         """
@@ -4067,6 +4117,8 @@ class UploadKnowledgeDocumentSetRsp(AbstractModel):
 
     @DocumentSetId.setter
     def DocumentSetId(self, DocumentSetId):
+        warnings.warn("parameter `DocumentSetId` is deprecated", DeprecationWarning) 
+
         self._DocumentSetId = DocumentSetId
 
     @property
@@ -4102,12 +4154,24 @@ class UploadKnowledgeDocumentSetRsp(AbstractModel):
     def FileMetaData(self, FileMetaData):
         self._FileMetaData = FileMetaData
 
+    @property
+    def FileId(self):
+        """Cos存储文件ID
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
 
     def _deserialize(self, params):
         self._DocumentSetId = params.get("DocumentSetId")
         self._DocumentSetName = params.get("DocumentSetName")
         self._FileTitle = params.get("FileTitle")
         self._FileMetaData = params.get("FileMetaData")
+        self._FileId = params.get("FileId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

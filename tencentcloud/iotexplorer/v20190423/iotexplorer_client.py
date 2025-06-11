@@ -96,7 +96,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def BindProducts(self, request):
-        """批量绑定子产品
+        """批量绑定子产品。
 
         :param request: Request instance for BindProducts.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.BindProductsRequest`
@@ -1869,7 +1869,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeGatewaySubProducts(self, request):
-        """用于获取网关可绑定或解绑的子产品
+        """用于获取网关可绑定或解绑的子产品。
 
         :param request: Request instance for DescribeGatewaySubProducts.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeGatewaySubProductsRequest`
@@ -3736,7 +3736,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def UnbindProducts(self, request):
-        """批量解绑子产品
+        """批量解绑子产品。
 
         :param request: Request instance for UnbindProducts.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.UnbindProductsRequest`

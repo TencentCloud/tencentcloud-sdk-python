@@ -72,6 +72,29 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def BindNumberCallInInterface(self, request):
+        """绑定号码呼入回调接口
+
+        :param request: Request instance for BindNumberCallInInterface.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.BindNumberCallInInterfaceRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.BindNumberCallInInterfaceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BindNumberCallInInterface", params, headers=headers)
+            response = json.loads(body)
+            model = models.BindNumberCallInInterfaceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def BindNumberCallOutSkillGroup(self, request):
         """绑定号码外呼技能组
 
