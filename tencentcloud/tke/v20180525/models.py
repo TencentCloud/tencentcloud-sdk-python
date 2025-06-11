@@ -5385,6 +5385,8 @@ InternetMaxBandwidthOut含义：最大出带宽，单位Mbps，范围支持0到2
 VipIsp含义：CMCC | CTCC | CUCC，分别对应 移动 | 电信 | 联通，如果不指定本参数，则默认使用BGP。可通过 DescribeSingleIsp 接口查询一个地域所支持的Isp。如果指定运营商，则网络计费式只能使用按带宽包计费BANDWIDTH_PACKAGE。
 BandwidthPackageId含义：带宽包ID，指定此参数时，网络计费方式InternetAccessible.InternetChargeType只支持按带宽包计费BANDWIDTH_PACKAGE。
         :type ExtensiveParameters: str
+        :param _ExistedLoadBalancerId: 使用已有clb开启内网或外网访问
+        :type ExistedLoadBalancerId: str
         """
         self._ClusterId = None
         self._SubnetId = None
@@ -5392,6 +5394,7 @@ BandwidthPackageId含义：带宽包ID，指定此参数时，网络计费方式
         self._Domain = None
         self._SecurityGroup = None
         self._ExtensiveParameters = None
+        self._ExistedLoadBalancerId = None
 
     @property
     def ClusterId(self):
@@ -5464,6 +5467,17 @@ BandwidthPackageId含义：带宽包ID，指定此参数时，网络计费方式
     def ExtensiveParameters(self, ExtensiveParameters):
         self._ExtensiveParameters = ExtensiveParameters
 
+    @property
+    def ExistedLoadBalancerId(self):
+        """使用已有clb开启内网或外网访问
+        :rtype: str
+        """
+        return self._ExistedLoadBalancerId
+
+    @ExistedLoadBalancerId.setter
+    def ExistedLoadBalancerId(self, ExistedLoadBalancerId):
+        self._ExistedLoadBalancerId = ExistedLoadBalancerId
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -5472,6 +5486,7 @@ BandwidthPackageId含义：带宽包ID，指定此参数时，网络计费方式
         self._Domain = params.get("Domain")
         self._SecurityGroup = params.get("SecurityGroup")
         self._ExtensiveParameters = params.get("ExtensiveParameters")
+        self._ExistedLoadBalancerId = params.get("ExistedLoadBalancerId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -44756,12 +44771,24 @@ class SuperNodeResource(AbstractModel):
         :type Memory: float
         :param _Gpu: 节点上的总 GPU 卡数
         :type Gpu: float
+        :param _QuotaType: 节点资源的配额类型，exact表示精确配额，fuzzy 表示模糊配额。
+        :type QuotaType: str
+        :param _ChargeType: 配额的计费类型，PREPAID表示包月，POSTPAID_BY_HOUR表示按量。
+        :type ChargeType: str
+        :param _ResourceType: QuotaType为 exact 时，此字段有效，表示精确配额的资源类型。
+        :type ResourceType: str
+        :param _DisasterRecoverGroupId: 置放群组 ID
+        :type DisasterRecoverGroupId: str
         """
         self._NodeName = None
         self._Num = None
         self._Cpu = None
         self._Memory = None
         self._Gpu = None
+        self._QuotaType = None
+        self._ChargeType = None
+        self._ResourceType = None
+        self._DisasterRecoverGroupId = None
 
     @property
     def NodeName(self):
@@ -44818,6 +44845,50 @@ class SuperNodeResource(AbstractModel):
     def Gpu(self, Gpu):
         self._Gpu = Gpu
 
+    @property
+    def QuotaType(self):
+        """节点资源的配额类型，exact表示精确配额，fuzzy 表示模糊配额。
+        :rtype: str
+        """
+        return self._QuotaType
+
+    @QuotaType.setter
+    def QuotaType(self, QuotaType):
+        self._QuotaType = QuotaType
+
+    @property
+    def ChargeType(self):
+        """配额的计费类型，PREPAID表示包月，POSTPAID_BY_HOUR表示按量。
+        :rtype: str
+        """
+        return self._ChargeType
+
+    @ChargeType.setter
+    def ChargeType(self, ChargeType):
+        self._ChargeType = ChargeType
+
+    @property
+    def ResourceType(self):
+        """QuotaType为 exact 时，此字段有效，表示精确配额的资源类型。
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def DisasterRecoverGroupId(self):
+        """置放群组 ID
+        :rtype: str
+        """
+        return self._DisasterRecoverGroupId
+
+    @DisasterRecoverGroupId.setter
+    def DisasterRecoverGroupId(self, DisasterRecoverGroupId):
+        self._DisasterRecoverGroupId = DisasterRecoverGroupId
+
 
     def _deserialize(self, params):
         self._NodeName = params.get("NodeName")
@@ -44825,6 +44896,10 @@ class SuperNodeResource(AbstractModel):
         self._Cpu = params.get("Cpu")
         self._Memory = params.get("Memory")
         self._Gpu = params.get("Gpu")
+        self._QuotaType = params.get("QuotaType")
+        self._ChargeType = params.get("ChargeType")
+        self._ResourceType = params.get("ResourceType")
+        self._DisasterRecoverGroupId = params.get("DisasterRecoverGroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

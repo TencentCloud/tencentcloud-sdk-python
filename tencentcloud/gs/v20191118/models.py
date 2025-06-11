@@ -4714,6 +4714,8 @@ class DescribeAndroidInstancesRequest(AbstractModel):
         :param _Filters: 字段过滤器。Filter 的 Name 有以下值：
 Name：实例名称
 UserId：实例用户ID
+HostSerialNumber：宿主机序列号
+HostServerSerialNumber：机箱序列号
         :type Filters: list of Filter
         """
         self._Offset = None
@@ -4807,6 +4809,8 @@ UserId：实例用户ID
         """字段过滤器。Filter 的 Name 有以下值：
 Name：实例名称
 UserId：实例用户ID
+HostSerialNumber：宿主机序列号
+HostServerSerialNumber：机箱序列号
         :rtype: list of Filter
         """
         return self._Filters

@@ -23646,9 +23646,12 @@ class ModifyDatahubTaskRequest(AbstractModel):
         :type TaskId: str
         :param _TaskName: 任务名称
         :type TaskName: str
+        :param _Description: 任务描述信息
+        :type Description: str
         """
         self._TaskId = None
         self._TaskName = None
+        self._Description = None
 
     @property
     def TaskId(self):
@@ -23672,10 +23675,22 @@ class ModifyDatahubTaskRequest(AbstractModel):
     def TaskName(self, TaskName):
         self._TaskName = TaskName
 
+    @property
+    def Description(self):
+        """任务描述信息
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
         self._TaskName = params.get("TaskName")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -279,6 +279,29 @@ class HaiClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ResizeInstanceDisk(self, request):
+        """本接口（ResizeInstanceDisk）用于对指定HAI实例进行扩容云硬盘操作。
+
+        :param request: Request instance for ResizeInstanceDisk.
+        :type request: :class:`tencentcloud.hai.v20230812.models.ResizeInstanceDiskRequest`
+        :rtype: :class:`tencentcloud.hai.v20230812.models.ResizeInstanceDiskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResizeInstanceDisk", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResizeInstanceDiskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RunInstances(self, request):
         """本接口 (RunInstances) 用于创建一个或多个指定配置的实例。
 

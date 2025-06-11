@@ -47,8 +47,14 @@ INVALIDPARAMETERVALUE_APPLICATIONIDNOTFOUND = 'InvalidParameterValue.Application
 # 算力套餐类型不存在
 INVALIDPARAMETERVALUE_BUNDLETYPENOTFOUND = 'InvalidParameterValue.BundleTypeNotFound'
 
+# 云盘大小设置必须大于实例当前的云盘大小
+INVALIDPARAMETERVALUE_DISKSIZEMUSTLARGETHANCURRENTDISKSIZE = 'InvalidParameterValue.DiskSizeMustLargeThanCurrentDiskSize'
+
 # 云盘大小需要大于应用所需云盘最小大小
 INVALIDPARAMETERVALUE_DISKSIZEMUSTLARGERTHANAPPLICATIONMINREQUIREDSIZE = 'InvalidParameterValue.DiskSizeMustLargerThanApplicationMinRequiredSize'
+
+# 云盘大小达到上限值
+INVALIDPARAMETERVALUE_DISKSIZEREACHLIMIT = 'InvalidParameterValue.DiskSizeReachLimit'
 
 # 列表入参中存在重复值
 INVALIDPARAMETERVALUE_DUPLICATED = 'InvalidParameterValue.Duplicated'

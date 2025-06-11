@@ -947,7 +947,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DeleteTopicRule(self, request):
-        """删除规则
+        """删除规则。
 
         :param request: Request instance for DeleteTopicRule.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DeleteTopicRuleRequest`

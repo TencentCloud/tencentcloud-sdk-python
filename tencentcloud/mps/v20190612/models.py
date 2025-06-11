@@ -35999,9 +35999,15 @@ class ImageEraseLogoConfig(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageAreaBoxes: list of ImageAreaBoxInfo
+        :param _DetectTypes: 图片框选区域类型，可选值：
+<li>logo：图标；</li>
+<li>text：文字；</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DetectTypes: list of str
         """
         self._Switch = None
         self._ImageAreaBoxes = None
+        self._DetectTypes = None
 
     @property
     def Switch(self):
@@ -36031,6 +36037,20 @@ class ImageEraseLogoConfig(AbstractModel):
     def ImageAreaBoxes(self, ImageAreaBoxes):
         self._ImageAreaBoxes = ImageAreaBoxes
 
+    @property
+    def DetectTypes(self):
+        """图片框选区域类型，可选值：
+<li>logo：图标；</li>
+<li>text：文字；</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._DetectTypes
+
+    @DetectTypes.setter
+    def DetectTypes(self, DetectTypes):
+        self._DetectTypes = DetectTypes
+
 
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
@@ -36040,6 +36060,7 @@ class ImageEraseLogoConfig(AbstractModel):
                 obj = ImageAreaBoxInfo()
                 obj._deserialize(item)
                 self._ImageAreaBoxes.append(obj)
+        self._DetectTypes = params.get("DetectTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

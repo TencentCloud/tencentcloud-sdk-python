@@ -1291,6 +1291,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteLink(self, request):
+        """删除任务连接
+
+        :param request: Request instance for DeleteLink.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DeleteLinkRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DeleteLinkResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteLink", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteLinkResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteOfflineTask(self, request):
         """删除任务
 
@@ -1361,7 +1384,7 @@ class WedataClient(AbstractClient):
 
 
     def DeleteResource(self, request):
-        """资源管理删除资源
+        """资源管理删除资源。本接口已废弃，请使用接口DeleteResourceFile。
 
         :param request: Request instance for DeleteResource.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DeleteResourceRequest`
@@ -2949,6 +2972,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeParentTask(self, request):
+        """查询任务父依赖
+
+        :param request: Request instance for DescribeParentTask.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeParentTaskRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeParentTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeParentTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeParentTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribePendingSubmitTaskList(self, request):
         """获取待提交任务预提交校验信息（注意：工作流编号或者任务编号列表，必须填一项）
 
@@ -3147,6 +3193,29 @@ class WedataClient(AbstractClient):
             body = self.call("DescribeRealViewSchemaPage", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeRealViewSchemaPageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRelatedTasksByTaskId(self, request):
+        """根据任务ID分页查询任务绑定监听的事件
+
+        :param request: Request instance for DescribeRelatedTasksByTaskId.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRelatedTasksByTaskIdRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeRelatedTasksByTaskIdResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRelatedTasksByTaskId", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRelatedTasksByTaskIdResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4129,6 +4198,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTaskDetailDs(self, request):
+        """查询任务具体详情【新】
+
+        :param request: Request instance for DescribeTaskDetailDs.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTaskDetailDsRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeTaskDetailDsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTaskDetailDs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTaskDetailDsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTaskLineage(self, request):
         """通过任务查询表的血缘关系
 
@@ -4396,6 +4488,29 @@ class WedataClient(AbstractClient):
             body = self.call("DescribeTrendStat", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeTrendStatResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeWorkflowByFordIds(self, request):
+        """根据文件夹查询工作流
+
+        :param request: Request instance for DescribeWorkflowByFordIds.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeWorkflowByFordIdsRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeWorkflowByFordIdsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeWorkflowByFordIds", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeWorkflowByFordIdsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -5304,7 +5419,7 @@ class WedataClient(AbstractClient):
 
     def ModifyTaskInfo(self, request):
         """<p style="color:red;">[注意：该版本只满足广州区部分白名单客户使用]</p>
-        更新任务
+        更新任务。本接口已废弃，请使用接口ModifyTaskInfoDs。
 
         :param request: Request instance for ModifyTaskInfo.
         :type request: :class:`tencentcloud.wedata.v20210820.models.ModifyTaskInfoRequest`
@@ -5512,6 +5627,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RegisterDsEventListener(self, request):
+        """注册事件监听者
+
+        :param request: Request instance for RegisterDsEventListener.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.RegisterDsEventListenerRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.RegisterDsEventListenerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RegisterDsEventListener", params, headers=headers)
+            response = json.loads(body)
+            model = models.RegisterDsEventListenerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RegisterEvent(self, request):
         """<p style="color:red;">[注意：该版本只满足广州区部分白名单客户使用]</p>
         注册事件。本接口已废弃，请使用接口RegisterDsEvent。
@@ -5538,7 +5676,7 @@ class WedataClient(AbstractClient):
 
     def RegisterEventListener(self, request):
         """<p style="color:red;">[注意：该版本只满足广州区部分白名单客户使用]</p>
-        注册事件监听器
+        注册事件监听器。本接口已废弃，请使用接口RegisterDsEventListener。
 
         :param request: Request instance for RegisterEventListener.
         :type request: :class:`tencentcloud.wedata.v20210820.models.RegisterEventListenerRequest`

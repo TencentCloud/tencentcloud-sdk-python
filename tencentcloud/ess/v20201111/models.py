@@ -5141,6 +5141,8 @@ class CreateBatchSignUrlRequest(AbstractModel):
         :param _CanBatchReject: 是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>
 注：`1. 合同组暂不支持批量拒签功能。2. 如果是链接直接跳转至详情页（JumpToDetail参数为true），也不支持批量拒签功能`
         :type CanBatchReject: bool
+        :param _CanSkipReadFlow: 是否允许此链接中签署方批量确认已读文件。 <ul><li>false (默认): 批量确认已读文件。</li> <li>true : 允许批量确认已读文件。</li></ul>注：`1. 此功能为白名单功能，使用前请联系对应客户经理进行开通。2. 使用此功能时，FlowIds参数必传。3. 对于企业签署方，如果有签名控件，则会使用用户首次选择的签名类型签署所有含有签名控件的合同。`
+        :type CanSkipReadFlow: bool
         """
         self._Operator = None
         self._Name = None
@@ -5157,6 +5159,7 @@ class CreateBatchSignUrlRequest(AbstractModel):
         self._AutoJumpBack = None
         self._UrlUseEnv = None
         self._CanBatchReject = None
+        self._CanSkipReadFlow = None
 
     @property
     def Operator(self):
@@ -5377,6 +5380,17 @@ class CreateBatchSignUrlRequest(AbstractModel):
     def CanBatchReject(self, CanBatchReject):
         self._CanBatchReject = CanBatchReject
 
+    @property
+    def CanSkipReadFlow(self):
+        """是否允许此链接中签署方批量确认已读文件。 <ul><li>false (默认): 批量确认已读文件。</li> <li>true : 允许批量确认已读文件。</li></ul>注：`1. 此功能为白名单功能，使用前请联系对应客户经理进行开通。2. 使用此功能时，FlowIds参数必传。3. 对于企业签署方，如果有签名控件，则会使用用户首次选择的签名类型签署所有含有签名控件的合同。`
+        :rtype: bool
+        """
+        return self._CanSkipReadFlow
+
+    @CanSkipReadFlow.setter
+    def CanSkipReadFlow(self, CanSkipReadFlow):
+        self._CanSkipReadFlow = CanSkipReadFlow
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -5400,6 +5414,7 @@ class CreateBatchSignUrlRequest(AbstractModel):
         self._AutoJumpBack = params.get("AutoJumpBack")
         self._UrlUseEnv = params.get("UrlUseEnv")
         self._CanBatchReject = params.get("CanBatchReject")
+        self._CanSkipReadFlow = params.get("CanSkipReadFlow")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -176,6 +176,9 @@ LIMITEXCEEDED_FILTERVALUEEXCEEDED = 'LimitExceeded.FilterValueExceeded'
 # 缺少参数错误。
 MISSINGPARAMETER = 'MissingParameter'
 
+# 操作被拒绝。
+OPERATIONDENIED = 'OperationDenied'
+
 # 资源不存在。
 RESOURCENOTFOUND = 'ResourceNotFound'
 

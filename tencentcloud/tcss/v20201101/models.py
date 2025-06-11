@@ -62914,6 +62914,159 @@ class ModifyReverseShellStatusResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyRiskDnsEventStatusRequest(AbstractModel):
+    """ModifyRiskDnsEventStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EventIDSet: 恶意请求事件ID数组。加白时必需，否则Filters和EventIDSet二者选其一。
+        :type EventIDSet: list of int non-negative
+        :param _EventStatus: 标记事件的状态：
+EVENT_UNDEAL:未处理（取消忽略），
+EVENT_DEALED:已处理，
+EVENT_IGNORE:忽略，
+EVENT_DELETE：已删除
+EVENT_ADD_WHITE：加白
+EVENT_ISOLATE_CONTAINER：隔离容器
+EVENT_RESOTRE_CONTAINER：恢复容器
+        :type EventStatus: str
+        :param _Address: 白名单域名/IP
+        :type Address: str
+        :param _Remark: 备注
+        :type Remark: str
+        :param _AllSameEventAddWhite: 相同的请求域名/IP事件加白处理
+        :type AllSameEventAddWhite: bool
+        :param _AddWhiteEventType: 加白的事件类型，恶意域名请求：DOMAIN，恶意IP请求：IP
+        :type AddWhiteEventType: str
+        """
+        self._EventIDSet = None
+        self._EventStatus = None
+        self._Address = None
+        self._Remark = None
+        self._AllSameEventAddWhite = None
+        self._AddWhiteEventType = None
+
+    @property
+    def EventIDSet(self):
+        """恶意请求事件ID数组。加白时必需，否则Filters和EventIDSet二者选其一。
+        :rtype: list of int non-negative
+        """
+        return self._EventIDSet
+
+    @EventIDSet.setter
+    def EventIDSet(self, EventIDSet):
+        self._EventIDSet = EventIDSet
+
+    @property
+    def EventStatus(self):
+        """标记事件的状态：
+EVENT_UNDEAL:未处理（取消忽略），
+EVENT_DEALED:已处理，
+EVENT_IGNORE:忽略，
+EVENT_DELETE：已删除
+EVENT_ADD_WHITE：加白
+EVENT_ISOLATE_CONTAINER：隔离容器
+EVENT_RESOTRE_CONTAINER：恢复容器
+        :rtype: str
+        """
+        return self._EventStatus
+
+    @EventStatus.setter
+    def EventStatus(self, EventStatus):
+        self._EventStatus = EventStatus
+
+    @property
+    def Address(self):
+        """白名单域名/IP
+        :rtype: str
+        """
+        return self._Address
+
+    @Address.setter
+    def Address(self, Address):
+        self._Address = Address
+
+    @property
+    def Remark(self):
+        """备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def AllSameEventAddWhite(self):
+        """相同的请求域名/IP事件加白处理
+        :rtype: bool
+        """
+        return self._AllSameEventAddWhite
+
+    @AllSameEventAddWhite.setter
+    def AllSameEventAddWhite(self, AllSameEventAddWhite):
+        self._AllSameEventAddWhite = AllSameEventAddWhite
+
+    @property
+    def AddWhiteEventType(self):
+        """加白的事件类型，恶意域名请求：DOMAIN，恶意IP请求：IP
+        :rtype: str
+        """
+        return self._AddWhiteEventType
+
+    @AddWhiteEventType.setter
+    def AddWhiteEventType(self, AddWhiteEventType):
+        self._AddWhiteEventType = AddWhiteEventType
+
+
+    def _deserialize(self, params):
+        self._EventIDSet = params.get("EventIDSet")
+        self._EventStatus = params.get("EventStatus")
+        self._Address = params.get("Address")
+        self._Remark = params.get("Remark")
+        self._AllSameEventAddWhite = params.get("AllSameEventAddWhite")
+        self._AddWhiteEventType = params.get("AddWhiteEventType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRiskDnsEventStatusResponse(AbstractModel):
+    """ModifyRiskDnsEventStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyRiskSyscallStatusRequest(AbstractModel):
     """ModifyRiskSyscallStatus请求参数结构体
 

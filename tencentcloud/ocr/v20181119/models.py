@@ -23797,6 +23797,14 @@ MainlandPermit：港澳台来往内地通行证
         :type Reflection: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
         :param _Reprint: 翻拍件信息
         :type Reprint: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        :param _Screenshot: 是否截图
+        :type Screenshot: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        :param _Cover: 是否遮挡
+        :type Cover: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        :param _Overlap: 是否重叠
+        :type Overlap: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        :param _Watermark: 是否水印
+        :type Watermark: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -23807,6 +23815,10 @@ MainlandPermit：港澳台来往内地通行证
         self._Ps = None
         self._Reflection = None
         self._Reprint = None
+        self._Screenshot = None
+        self._Cover = None
+        self._Overlap = None
+        self._Watermark = None
         self._RequestId = None
 
     @property
@@ -23897,6 +23909,50 @@ MainlandPermit：港澳台来往内地通行证
         self._Reprint = Reprint
 
     @property
+    def Screenshot(self):
+        """是否截图
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        """
+        return self._Screenshot
+
+    @Screenshot.setter
+    def Screenshot(self, Screenshot):
+        self._Screenshot = Screenshot
+
+    @property
+    def Cover(self):
+        """是否遮挡
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        """
+        return self._Cover
+
+    @Cover.setter
+    def Cover(self, Cover):
+        self._Cover = Cover
+
+    @property
+    def Overlap(self):
+        """是否重叠
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        """
+        return self._Overlap
+
+    @Overlap.setter
+    def Overlap(self, Overlap):
+        self._Overlap = Overlap
+
+    @property
+    def Watermark(self):
+        """是否水印
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        """
+        return self._Watermark
+
+    @Watermark.setter
+    def Watermark(self, Watermark):
+        self._Watermark = Watermark
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -23928,6 +23984,18 @@ MainlandPermit：港澳台来往内地通行证
         if params.get("Reprint") is not None:
             self._Reprint = GeneralCardWarnInfo()
             self._Reprint._deserialize(params.get("Reprint"))
+        if params.get("Screenshot") is not None:
+            self._Screenshot = GeneralCardWarnInfo()
+            self._Screenshot._deserialize(params.get("Screenshot"))
+        if params.get("Cover") is not None:
+            self._Cover = GeneralCardWarnInfo()
+            self._Cover._deserialize(params.get("Cover"))
+        if params.get("Overlap") is not None:
+            self._Overlap = GeneralCardWarnInfo()
+            self._Overlap._deserialize(params.get("Overlap"))
+        if params.get("Watermark") is not None:
+            self._Watermark = GeneralCardWarnInfo()
+            self._Watermark._deserialize(params.get("Watermark"))
         self._RequestId = params.get("RequestId")
 
 

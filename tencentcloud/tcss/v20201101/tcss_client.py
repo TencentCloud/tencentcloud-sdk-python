@@ -7000,6 +7000,29 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyRiskDnsEventStatus(self, request):
+        """编辑恶意请求事件状态
+
+        :param request: Request instance for ModifyRiskDnsEventStatus.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyRiskDnsEventStatusRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.ModifyRiskDnsEventStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRiskDnsEventStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyRiskDnsEventStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyRiskSyscallStatus(self, request):
         """修改高危系统调用事件的状态信息
 

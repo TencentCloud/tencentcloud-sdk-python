@@ -3551,8 +3551,12 @@ class DetectInfoVideoData(AbstractModel):
         :param _LivenessVideo: 活体视频的base64编码。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LivenessVideo: str
+        :param _LivenessVideos: 当次token中所有用户活体视频的COS存储路径，仅当您开启数据存储服务且“IsReturnAllVideo”入参取值为true 时返回。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LivenessVideos: list of VideoDetailData
         """
         self._LivenessVideo = None
+        self._LivenessVideos = None
 
     @property
     def LivenessVideo(self):
@@ -3566,9 +3570,27 @@ class DetectInfoVideoData(AbstractModel):
     def LivenessVideo(self, LivenessVideo):
         self._LivenessVideo = LivenessVideo
 
+    @property
+    def LivenessVideos(self):
+        """当次token中所有用户活体视频的COS存储路径，仅当您开启数据存储服务且“IsReturnAllVideo”入参取值为true 时返回。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of VideoDetailData
+        """
+        return self._LivenessVideos
+
+    @LivenessVideos.setter
+    def LivenessVideos(self, LivenessVideos):
+        self._LivenessVideos = LivenessVideos
+
 
     def _deserialize(self, params):
         self._LivenessVideo = params.get("LivenessVideo")
+        if params.get("LivenessVideos") is not None:
+            self._LivenessVideos = []
+            for item in params.get("LivenessVideos"):
+                obj = VideoDetailData()
+                obj._deserialize(item)
+                self._LivenessVideos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4111,6 +4133,8 @@ class GetDetectInfoEnhancedRequest(AbstractModel):
         :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         :param _IsEncryptResponse: 是否对回包整体进行加密。
         :type IsEncryptResponse: bool
+        :param _IsReturnAllVideo: 是否需要返回认证中间过程的刷脸重试视频，默认不开启，多段视频需要存储到COS空间中，因此开启后还需要额外开启数据存储服务才可生效。详见[数据存储指引](https://cloud.tencent.com/document/product/1007/104229)。
+        :type IsReturnAllVideo: bool
         """
         self._BizToken = None
         self._RuleId = None
@@ -4121,6 +4145,7 @@ class GetDetectInfoEnhancedRequest(AbstractModel):
         self._IsEncrypt = None
         self._Encryption = None
         self._IsEncryptResponse = None
+        self._IsReturnAllVideo = None
 
     @property
     def BizToken(self):
@@ -4233,6 +4258,17 @@ class GetDetectInfoEnhancedRequest(AbstractModel):
     def IsEncryptResponse(self, IsEncryptResponse):
         self._IsEncryptResponse = IsEncryptResponse
 
+    @property
+    def IsReturnAllVideo(self):
+        """是否需要返回认证中间过程的刷脸重试视频，默认不开启，多段视频需要存储到COS空间中，因此开启后还需要额外开启数据存储服务才可生效。详见[数据存储指引](https://cloud.tencent.com/document/product/1007/104229)。
+        :rtype: bool
+        """
+        return self._IsReturnAllVideo
+
+    @IsReturnAllVideo.setter
+    def IsReturnAllVideo(self, IsReturnAllVideo):
+        self._IsReturnAllVideo = IsReturnAllVideo
+
 
     def _deserialize(self, params):
         self._BizToken = params.get("BizToken")
@@ -4246,6 +4282,7 @@ class GetDetectInfoEnhancedRequest(AbstractModel):
             self._Encryption = Encryption()
             self._Encryption._deserialize(params.get("Encryption"))
         self._IsEncryptResponse = params.get("IsEncryptResponse")
+        self._IsReturnAllVideo = params.get("IsReturnAllVideo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10773,6 +10810,61 @@ class RuleIdConfig(AbstractModel):
         self._IntentionType = params.get("IntentionType")
         self._MouthOpenRecognition = params.get("MouthOpenRecognition")
         self._Speed = params.get("Speed")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoDetailData(AbstractModel):
+    """核身过程视频信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Seq: 本次活体一比一请求的唯一标记。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Seq: str
+        :param _Video: 活体视频的base64编码。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Video: str
+        """
+        self._Seq = None
+        self._Video = None
+
+    @property
+    def Seq(self):
+        """本次活体一比一请求的唯一标记。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Seq
+
+    @Seq.setter
+    def Seq(self, Seq):
+        self._Seq = Seq
+
+    @property
+    def Video(self):
+        """活体视频的base64编码。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Video
+
+    @Video.setter
+    def Video(self, Video):
+        self._Video = Video
+
+
+    def _deserialize(self, params):
+        self._Seq = params.get("Seq")
+        self._Video = params.get("Video")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

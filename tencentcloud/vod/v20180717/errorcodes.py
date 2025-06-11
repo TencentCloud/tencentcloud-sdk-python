@@ -488,6 +488,9 @@ INVALIDPARAMETERVALUE_SAMPLERATE = 'InvalidParameterValue.SampleRate'
 # 参数值错误：SampleType。
 INVALIDPARAMETERVALUE_SAMPLETYPE = 'InvalidParameterValue.SampleType'
 
+# 场景类型参数取值无效。
+INVALIDPARAMETERVALUE_SCENARIOTYPE = 'InvalidParameterValue.ScenarioType'
+
 # 参数错误：Scheme 无效。
 INVALIDPARAMETERVALUE_SCHEME = 'InvalidParameterValue.Scheme'
 

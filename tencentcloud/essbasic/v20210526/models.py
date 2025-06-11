@@ -3044,6 +3044,8 @@ class ChannelCreateBatchSignUrlRequest(AbstractModel):
         :param _CanBatchReject: 是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>
 注：`1. 合同组暂不支持批量拒签功能。2. 如果是链接直接跳转至详情页（JumpToDetail参数为true），也不支持批量拒签功能`
         :type CanBatchReject: bool
+        :param _CanSkipReadFlow: 是否允许此链接中签署方批量确认已读文件。 <ul><li>false (默认): 批量确认已读文件。</li> <li>true : 允许批量确认已读文件。</li></ul>注：`1. 此功能为白名单功能，使用前请联系对应客户经理进行开通。2. 使用此功能时，FlowIds参数必传。3. 对于企业签署方，如果有签名控件，则会使用用户首次选择的签名类型签署所有含有签名控件的合同。`
+        :type CanSkipReadFlow: bool
         """
         self._Agent = None
         self._Name = None
@@ -3062,6 +3064,7 @@ class ChannelCreateBatchSignUrlRequest(AbstractModel):
         self._AutoJumpBack = None
         self._UrlUseEnv = None
         self._CanBatchReject = None
+        self._CanSkipReadFlow = None
 
     @property
     def Agent(self):
@@ -3319,6 +3322,17 @@ class ChannelCreateBatchSignUrlRequest(AbstractModel):
     def CanBatchReject(self, CanBatchReject):
         self._CanBatchReject = CanBatchReject
 
+    @property
+    def CanSkipReadFlow(self):
+        """是否允许此链接中签署方批量确认已读文件。 <ul><li>false (默认): 批量确认已读文件。</li> <li>true : 允许批量确认已读文件。</li></ul>注：`1. 此功能为白名单功能，使用前请联系对应客户经理进行开通。2. 使用此功能时，FlowIds参数必传。3. 对于企业签署方，如果有签名控件，则会使用用户首次选择的签名类型签署所有含有签名控件的合同。`
+        :rtype: bool
+        """
+        return self._CanSkipReadFlow
+
+    @CanSkipReadFlow.setter
+    def CanSkipReadFlow(self, CanSkipReadFlow):
+        self._CanSkipReadFlow = CanSkipReadFlow
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
@@ -3344,6 +3358,7 @@ class ChannelCreateBatchSignUrlRequest(AbstractModel):
         self._AutoJumpBack = params.get("AutoJumpBack")
         self._UrlUseEnv = params.get("UrlUseEnv")
         self._CanBatchReject = params.get("CanBatchReject")
+        self._CanSkipReadFlow = params.get("CanSkipReadFlow")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6797,7 +6812,7 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
         :type ResourceId: str
         :param _FlowOption: 合同流程配置信息，用于配置发起合同时定制化如是否允许修改，某些按钮的隐藏等逻辑
         :type FlowOption: :class:`tencentcloud.essbasic.v20210526.models.CreateFlowOption`
-        :param _FlowApproverList: 合同签署人信息
+        :param _FlowApproverList: 已废弃，请用FlowInfo.Approvers
         :type FlowApproverList: list of CommonFlowApprover
         :param _FlowId: 合同Id：用于通过一个已发起的合同快速生成一个发起流程web链接
 注: `该参数必须是一个待发起审核的合同id，并且还未审核通过`
@@ -6898,13 +6913,17 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
 
     @property
     def FlowApproverList(self):
-        """合同签署人信息
+        warnings.warn("parameter `FlowApproverList` is deprecated", DeprecationWarning) 
+
+        """已废弃，请用FlowInfo.Approvers
         :rtype: list of CommonFlowApprover
         """
         return self._FlowApproverList
 
     @FlowApproverList.setter
     def FlowApproverList(self, FlowApproverList):
+        warnings.warn("parameter `FlowApproverList` is deprecated", DeprecationWarning) 
+
         self._FlowApproverList = FlowApproverList
 
     @property

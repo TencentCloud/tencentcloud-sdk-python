@@ -2760,6 +2760,85 @@ class ResetInstancesPasswordResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ResizeInstanceDiskRequest(AbstractModel):
+    """ResizeInstanceDisk请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 需要扩容云盘的HAI实例ID
+        :type InstanceId: str
+        :param _DiskSize: 扩容云硬盘大小，单位为GB，必须大于当前云硬盘大小。
+        :type DiskSize: int
+        """
+        self._InstanceId = None
+        self._DiskSize = None
+
+    @property
+    def InstanceId(self):
+        """需要扩容云盘的HAI实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DiskSize(self):
+        """扩容云硬盘大小，单位为GB，必须大于当前云硬盘大小。
+        :rtype: int
+        """
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._DiskSize = params.get("DiskSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResizeInstanceDiskResponse(AbstractModel):
+    """ResizeInstanceDisk返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class RunInstancesRequest(AbstractModel):
     """RunInstances请求参数结构体
 
