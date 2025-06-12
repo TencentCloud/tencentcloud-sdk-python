@@ -29093,9 +29093,9 @@ class DescribeNatGatewayDirectConnectGatewayRouteRequest(AbstractModel):
         :type NatGatewayId: str
         :param _VpcId: vpc的唯一标识
         :type VpcId: str
-        :param _Limit: 0到200之间
+        :param _Limit: 查询NAT网关绑定的路由数量，可选值0-200，默认为10
         :type Limit: int
-        :param _Offset: 大于0
+        :param _Offset: 数据偏移量，默认为0
         :type Offset: int
         """
         self._NatGatewayId = None
@@ -29127,7 +29127,7 @@ class DescribeNatGatewayDirectConnectGatewayRouteRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """0到200之间
+        """查询NAT网关绑定的路由数量，可选值0-200，默认为10
         :rtype: int
         """
         return self._Limit
@@ -29138,7 +29138,7 @@ class DescribeNatGatewayDirectConnectGatewayRouteRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """大于0
+        """数据偏移量，默认为0
         :rtype: int
         """
         return self._Offset

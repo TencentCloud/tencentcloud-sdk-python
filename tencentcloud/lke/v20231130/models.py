@@ -4836,6 +4836,215 @@ class CreateVarResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateWorkflowRunRequest(AbstractModel):
+    """CreateWorkflowRun请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RunEnv: 运行环境。0: 测试环境； 1: 正式环境
+        :type RunEnv: int
+        :param _AppBizId: 应用ID
+        :type AppBizId: str
+        :param _Query: 用户输入的内容
+        :type Query: str
+        :param _CustomVariables: API参数配置
+        :type CustomVariables: list of CustomVariable
+        """
+        self._RunEnv = None
+        self._AppBizId = None
+        self._Query = None
+        self._CustomVariables = None
+
+    @property
+    def RunEnv(self):
+        """运行环境。0: 测试环境； 1: 正式环境
+        :rtype: int
+        """
+        return self._RunEnv
+
+    @RunEnv.setter
+    def RunEnv(self, RunEnv):
+        self._RunEnv = RunEnv
+
+    @property
+    def AppBizId(self):
+        """应用ID
+        :rtype: str
+        """
+        return self._AppBizId
+
+    @AppBizId.setter
+    def AppBizId(self, AppBizId):
+        self._AppBizId = AppBizId
+
+    @property
+    def Query(self):
+        """用户输入的内容
+        :rtype: str
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+    @property
+    def CustomVariables(self):
+        """API参数配置
+        :rtype: list of CustomVariable
+        """
+        return self._CustomVariables
+
+    @CustomVariables.setter
+    def CustomVariables(self, CustomVariables):
+        self._CustomVariables = CustomVariables
+
+
+    def _deserialize(self, params):
+        self._RunEnv = params.get("RunEnv")
+        self._AppBizId = params.get("AppBizId")
+        self._Query = params.get("Query")
+        if params.get("CustomVariables") is not None:
+            self._CustomVariables = []
+            for item in params.get("CustomVariables"):
+                obj = CustomVariable()
+                obj._deserialize(item)
+                self._CustomVariables.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateWorkflowRunResponse(AbstractModel):
+    """CreateWorkflowRun返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppBizId: 应用ID
+        :type AppBizId: str
+        :param _WorkflowRunId: 工作流运行实例的ID
+        :type WorkflowRunId: str
+        :param _RunEnv: 运行环境。0: 测试环境； 1: 正式环境
+        :type RunEnv: int
+        :param _Query: 用户输入的内容
+        :type Query: str
+        :param _CustomVariables: API参数配置
+        :type CustomVariables: list of CustomVariable
+        :param _CreateTime: 创建时间（毫秒时间戳）
+        :type CreateTime: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AppBizId = None
+        self._WorkflowRunId = None
+        self._RunEnv = None
+        self._Query = None
+        self._CustomVariables = None
+        self._CreateTime = None
+        self._RequestId = None
+
+    @property
+    def AppBizId(self):
+        """应用ID
+        :rtype: str
+        """
+        return self._AppBizId
+
+    @AppBizId.setter
+    def AppBizId(self, AppBizId):
+        self._AppBizId = AppBizId
+
+    @property
+    def WorkflowRunId(self):
+        """工作流运行实例的ID
+        :rtype: str
+        """
+        return self._WorkflowRunId
+
+    @WorkflowRunId.setter
+    def WorkflowRunId(self, WorkflowRunId):
+        self._WorkflowRunId = WorkflowRunId
+
+    @property
+    def RunEnv(self):
+        """运行环境。0: 测试环境； 1: 正式环境
+        :rtype: int
+        """
+        return self._RunEnv
+
+    @RunEnv.setter
+    def RunEnv(self, RunEnv):
+        self._RunEnv = RunEnv
+
+    @property
+    def Query(self):
+        """用户输入的内容
+        :rtype: str
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+    @property
+    def CustomVariables(self):
+        """API参数配置
+        :rtype: list of CustomVariable
+        """
+        return self._CustomVariables
+
+    @CustomVariables.setter
+    def CustomVariables(self, CustomVariables):
+        self._CustomVariables = CustomVariables
+
+    @property
+    def CreateTime(self):
+        """创建时间（毫秒时间戳）
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AppBizId = params.get("AppBizId")
+        self._WorkflowRunId = params.get("WorkflowRunId")
+        self._RunEnv = params.get("RunEnv")
+        self._Query = params.get("Query")
+        if params.get("CustomVariables") is not None:
+            self._CustomVariables = []
+            for item in params.get("CustomVariables"):
+                obj = CustomVariable()
+                obj._deserialize(item)
+                self._CustomVariables.append(obj)
+        self._CreateTime = params.get("CreateTime")
+        self._RequestId = params.get("RequestId")
+
+
 class Credentials(AbstractModel):
     """临时密钥结构
 
@@ -4915,6 +5124,57 @@ class Credentials(AbstractModel):
         self._TmpSecretId = params.get("TmpSecretId")
         self._TmpSecretKey = params.get("TmpSecretKey")
         self._AppId = params.get("AppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomVariable(AbstractModel):
+    """工作流的API参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 参数名称
+        :type Name: str
+        :param _Value: 参数的值
+        :type Value: str
+        """
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        """参数名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        """参数的值
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7504,6 +7764,87 @@ class DescribeKnowledgeUsageResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeNodeRunRequest(AbstractModel):
+    """DescribeNodeRun请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeRunId: 节点运行实例ID
+        :type NodeRunId: str
+        """
+        self._NodeRunId = None
+
+    @property
+    def NodeRunId(self):
+        """节点运行实例ID
+        :rtype: str
+        """
+        return self._NodeRunId
+
+    @NodeRunId.setter
+    def NodeRunId(self, NodeRunId):
+        self._NodeRunId = NodeRunId
+
+
+    def _deserialize(self, params):
+        self._NodeRunId = params.get("NodeRunId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNodeRunResponse(AbstractModel):
+    """DescribeNodeRun返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeRun: 节点运行实例详情
+        :type NodeRun: :class:`tencentcloud.lke.v20231130.models.NodeRunDetail`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._NodeRun = None
+        self._RequestId = None
+
+    @property
+    def NodeRun(self):
+        """节点运行实例详情
+        :rtype: :class:`tencentcloud.lke.v20231130.models.NodeRunDetail`
+        """
+        return self._NodeRun
+
+    @NodeRun.setter
+    def NodeRun(self, NodeRun):
+        self._NodeRun = NodeRun
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("NodeRun") is not None:
+            self._NodeRun = NodeRunDetail()
+            self._NodeRun._deserialize(params.get("NodeRun"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeQARequest(AbstractModel):
     """DescribeQA请求参数结构体
 
@@ -9867,6 +10208,107 @@ class DescribeUnsatisfiedReplyContextResponse(AbstractModel):
                 obj = Context()
                 obj._deserialize(item)
                 self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeWorkflowRunRequest(AbstractModel):
+    """DescribeWorkflowRun请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkflowRunId: 工作流运行实例ID
+        :type WorkflowRunId: str
+        """
+        self._WorkflowRunId = None
+
+    @property
+    def WorkflowRunId(self):
+        """工作流运行实例ID
+        :rtype: str
+        """
+        return self._WorkflowRunId
+
+    @WorkflowRunId.setter
+    def WorkflowRunId(self, WorkflowRunId):
+        self._WorkflowRunId = WorkflowRunId
+
+
+    def _deserialize(self, params):
+        self._WorkflowRunId = params.get("WorkflowRunId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeWorkflowRunResponse(AbstractModel):
+    """DescribeWorkflowRun返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkflowRun: 总数
+        :type WorkflowRun: :class:`tencentcloud.lke.v20231130.models.WorkflowRunDetail`
+        :param _NodeRuns: 节点列表
+        :type NodeRuns: list of NodeRunBase
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._WorkflowRun = None
+        self._NodeRuns = None
+        self._RequestId = None
+
+    @property
+    def WorkflowRun(self):
+        """总数
+        :rtype: :class:`tencentcloud.lke.v20231130.models.WorkflowRunDetail`
+        """
+        return self._WorkflowRun
+
+    @WorkflowRun.setter
+    def WorkflowRun(self, WorkflowRun):
+        self._WorkflowRun = WorkflowRun
+
+    @property
+    def NodeRuns(self):
+        """节点列表
+        :rtype: list of NodeRunBase
+        """
+        return self._NodeRuns
+
+    @NodeRuns.setter
+    def NodeRuns(self, NodeRuns):
+        self._NodeRuns = NodeRuns
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("WorkflowRun") is not None:
+            self._WorkflowRun = WorkflowRunDetail()
+            self._WorkflowRun._deserialize(params.get("WorkflowRun"))
+        if params.get("NodeRuns") is not None:
+            self._NodeRuns = []
+            for item in params.get("NodeRuns"):
+                obj = NodeRunBase()
+                obj._deserialize(item)
+                self._NodeRuns.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -20075,6 +20517,180 @@ class ListUsageCallDetailResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ListWorkflowRunsRequest(AbstractModel):
+    """ListWorkflowRuns请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RunEnv: 运行环境。0: 测试环境； 1: 正式环境
+        :type RunEnv: int
+        :param _AppBizId: 应用ID
+        :type AppBizId: str
+        :param _Page: 页码
+        :type Page: int
+        :param _PageSize: 每页数量
+        :type PageSize: int
+        :param _LoginUin: 登录用户主账号(集成商模式必填)
+        :type LoginUin: str
+        :param _LoginSubAccountUin: 登录用户子账号(集成商模式必填)
+        :type LoginSubAccountUin: str
+        """
+        self._RunEnv = None
+        self._AppBizId = None
+        self._Page = None
+        self._PageSize = None
+        self._LoginUin = None
+        self._LoginSubAccountUin = None
+
+    @property
+    def RunEnv(self):
+        """运行环境。0: 测试环境； 1: 正式环境
+        :rtype: int
+        """
+        return self._RunEnv
+
+    @RunEnv.setter
+    def RunEnv(self, RunEnv):
+        self._RunEnv = RunEnv
+
+    @property
+    def AppBizId(self):
+        """应用ID
+        :rtype: str
+        """
+        return self._AppBizId
+
+    @AppBizId.setter
+    def AppBizId(self, AppBizId):
+        self._AppBizId = AppBizId
+
+    @property
+    def Page(self):
+        """页码
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        """每页数量
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def LoginUin(self):
+        """登录用户主账号(集成商模式必填)
+        :rtype: str
+        """
+        return self._LoginUin
+
+    @LoginUin.setter
+    def LoginUin(self, LoginUin):
+        self._LoginUin = LoginUin
+
+    @property
+    def LoginSubAccountUin(self):
+        """登录用户子账号(集成商模式必填)
+        :rtype: str
+        """
+        return self._LoginSubAccountUin
+
+    @LoginSubAccountUin.setter
+    def LoginSubAccountUin(self, LoginSubAccountUin):
+        self._LoginSubAccountUin = LoginSubAccountUin
+
+
+    def _deserialize(self, params):
+        self._RunEnv = params.get("RunEnv")
+        self._AppBizId = params.get("AppBizId")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        self._LoginUin = params.get("LoginUin")
+        self._LoginSubAccountUin = params.get("LoginSubAccountUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListWorkflowRunsResponse(AbstractModel):
+    """ListWorkflowRuns返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 总数
+        :type Total: int
+        :param _WorkflowRuns: 工作流运行列表
+        :type WorkflowRuns: list of WorkflowRunBase
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._WorkflowRuns = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        """总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def WorkflowRuns(self):
+        """工作流运行列表
+        :rtype: list of WorkflowRunBase
+        """
+        return self._WorkflowRuns
+
+    @WorkflowRuns.setter
+    def WorkflowRuns(self, WorkflowRuns):
+        self._WorkflowRuns = WorkflowRuns
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("WorkflowRuns") is not None:
+            self._WorkflowRuns = []
+            for item in params.get("WorkflowRuns"):
+                obj = WorkflowRunBase()
+                obj._deserialize(item)
+                self._WorkflowRuns.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class Message(AbstractModel):
     """一条message代表一条对话记录
     role表示角色  user或者assistant
@@ -22578,6 +23194,594 @@ class MsgRecordReference(AbstractModel):
         self._Type = params.get("Type")
         self._Name = params.get("Name")
         self._DocId = params.get("DocId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NodeRunBase(AbstractModel):
+    """节点运行的基本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeRunId: 节点运行的ID
+        :type NodeRunId: str
+        :param _NodeId: 节点ID
+        :type NodeId: str
+        :param _WorkflowRunId: 工作流运行实例的ID
+        :type WorkflowRunId: str
+        :param _NodeName: 节点名称
+        :type NodeName: str
+        :param _NodeType: 节点类型。
+1： 开始节点
+2：参数提取节点
+3：大模型节点
+4：知识问答节点
+5：知识检索节点
+6：标签提取节点
+7：代码执行节点
+8：工具节点
+9：逻辑判断节点
+10：回复节点
+11：选项卡节点
+12：循环节点
+13：意图识别节点
+14：工作流节点
+15：插件节点
+16：结束节点
+17: 变量聚合节点数据
+18: 批处理节点
+19: 消息队列节点
+        :type NodeType: int
+        :param _State: 运行状态。0: 初始状态；1: 运行中；2: 运行成功； 3: 运行失败； 4: 已取消
+        :type State: int
+        :param _FailCode: 错误码
+        :type FailCode: str
+        :param _FailMessage: 错误信息
+        :type FailMessage: str
+        :param _CostMilliseconds: 消耗时间（毫秒）
+        :type CostMilliseconds: int
+        :param _TotalTokens: 消耗的token总数
+        :type TotalTokens: int
+        """
+        self._NodeRunId = None
+        self._NodeId = None
+        self._WorkflowRunId = None
+        self._NodeName = None
+        self._NodeType = None
+        self._State = None
+        self._FailCode = None
+        self._FailMessage = None
+        self._CostMilliseconds = None
+        self._TotalTokens = None
+
+    @property
+    def NodeRunId(self):
+        """节点运行的ID
+        :rtype: str
+        """
+        return self._NodeRunId
+
+    @NodeRunId.setter
+    def NodeRunId(self, NodeRunId):
+        self._NodeRunId = NodeRunId
+
+    @property
+    def NodeId(self):
+        """节点ID
+        :rtype: str
+        """
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def WorkflowRunId(self):
+        """工作流运行实例的ID
+        :rtype: str
+        """
+        return self._WorkflowRunId
+
+    @WorkflowRunId.setter
+    def WorkflowRunId(self, WorkflowRunId):
+        self._WorkflowRunId = WorkflowRunId
+
+    @property
+    def NodeName(self):
+        """节点名称
+        :rtype: str
+        """
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+    @property
+    def NodeType(self):
+        """节点类型。
+1： 开始节点
+2：参数提取节点
+3：大模型节点
+4：知识问答节点
+5：知识检索节点
+6：标签提取节点
+7：代码执行节点
+8：工具节点
+9：逻辑判断节点
+10：回复节点
+11：选项卡节点
+12：循环节点
+13：意图识别节点
+14：工作流节点
+15：插件节点
+16：结束节点
+17: 变量聚合节点数据
+18: 批处理节点
+19: 消息队列节点
+        :rtype: int
+        """
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def State(self):
+        """运行状态。0: 初始状态；1: 运行中；2: 运行成功； 3: 运行失败； 4: 已取消
+        :rtype: int
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def FailCode(self):
+        """错误码
+        :rtype: str
+        """
+        return self._FailCode
+
+    @FailCode.setter
+    def FailCode(self, FailCode):
+        self._FailCode = FailCode
+
+    @property
+    def FailMessage(self):
+        """错误信息
+        :rtype: str
+        """
+        return self._FailMessage
+
+    @FailMessage.setter
+    def FailMessage(self, FailMessage):
+        self._FailMessage = FailMessage
+
+    @property
+    def CostMilliseconds(self):
+        """消耗时间（毫秒）
+        :rtype: int
+        """
+        return self._CostMilliseconds
+
+    @CostMilliseconds.setter
+    def CostMilliseconds(self, CostMilliseconds):
+        self._CostMilliseconds = CostMilliseconds
+
+    @property
+    def TotalTokens(self):
+        """消耗的token总数
+        :rtype: int
+        """
+        return self._TotalTokens
+
+    @TotalTokens.setter
+    def TotalTokens(self, TotalTokens):
+        self._TotalTokens = TotalTokens
+
+
+    def _deserialize(self, params):
+        self._NodeRunId = params.get("NodeRunId")
+        self._NodeId = params.get("NodeId")
+        self._WorkflowRunId = params.get("WorkflowRunId")
+        self._NodeName = params.get("NodeName")
+        self._NodeType = params.get("NodeType")
+        self._State = params.get("State")
+        self._FailCode = params.get("FailCode")
+        self._FailMessage = params.get("FailMessage")
+        self._CostMilliseconds = params.get("CostMilliseconds")
+        self._TotalTokens = params.get("TotalTokens")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NodeRunDetail(AbstractModel):
+    """工作流节点运行详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeRunId: 节点运行的ID
+        :type NodeRunId: str
+        :param _NodeId: 节点ID
+        :type NodeId: str
+        :param _WorkflowRunId: 工作流运行实例的ID
+        :type WorkflowRunId: str
+        :param _NodeName: 节点名称
+        :type NodeName: str
+        :param _NodeType: 节点类型。
+1： 开始节点
+2：参数提取节点
+3：大模型节点
+4：知识问答节点
+5：知识检索节点
+6：标签提取节点
+7：代码执行节点
+8：工具节点
+9：逻辑判断节点
+10：回复节点
+11：选项卡节点
+12：循环节点
+13：意图识别节点
+14：工作流节点
+15：插件节点
+16：结束节点
+17: 变量聚合节点数据
+18: 批处理节点
+19: 消息队列节点
+        :type NodeType: int
+        :param _State: 运行状态。0: 初始状态；1: 运行中；2: 运行成功； 3: 运行失败； 4: 已取消
+        :type State: int
+        :param _FailCode: 错误码
+        :type FailCode: str
+        :param _FailMessage: 错误信息
+        :type FailMessage: str
+        :param _CostMilliseconds: 消耗时间（毫秒）
+        :type CostMilliseconds: int
+        :param _TotalTokens: 消耗的token总数
+        :type TotalTokens: int
+        :param _Input: 输入变量信息
+        :type Input: str
+        :param _InputRef: 节点的输入的完整内容的链接。（当Input内容超过限制的时候此字段才有值）
+        :type InputRef: str
+        :param _Output: 输出变量信息
+        :type Output: str
+        :param _OutputRef: 节点的输出的完整内容的链接。（当Output内容超过限制的时候此字段才有值）
+        :type OutputRef: str
+        :param _TaskOutput: 原始输出信息。部分节点才有值，如工具节点、代码节点
+        :type TaskOutput: str
+        :param _TaskOutputRef: 任务的原始输出的完整内容的链接。（当TaskOutput内容超过限制的时候此字段才有值）
+        :type TaskOutputRef: str
+        :param _Log: 节点的日志
+        :type Log: str
+        :param _LogRef: 节点的日志的完整内容的链接志（当Log内容超过限制的时候才有值）
+        :type LogRef: str
+        :param _StartTime: 开始时间戳（毫秒）
+        :type StartTime: str
+        :param _EndTime: 结束时间戳（毫秒）
+        :type EndTime: str
+        :param _StatisticInfos: LLM统计信息。
+        :type StatisticInfos: list of StatisticInfo
+        """
+        self._NodeRunId = None
+        self._NodeId = None
+        self._WorkflowRunId = None
+        self._NodeName = None
+        self._NodeType = None
+        self._State = None
+        self._FailCode = None
+        self._FailMessage = None
+        self._CostMilliseconds = None
+        self._TotalTokens = None
+        self._Input = None
+        self._InputRef = None
+        self._Output = None
+        self._OutputRef = None
+        self._TaskOutput = None
+        self._TaskOutputRef = None
+        self._Log = None
+        self._LogRef = None
+        self._StartTime = None
+        self._EndTime = None
+        self._StatisticInfos = None
+
+    @property
+    def NodeRunId(self):
+        """节点运行的ID
+        :rtype: str
+        """
+        return self._NodeRunId
+
+    @NodeRunId.setter
+    def NodeRunId(self, NodeRunId):
+        self._NodeRunId = NodeRunId
+
+    @property
+    def NodeId(self):
+        """节点ID
+        :rtype: str
+        """
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def WorkflowRunId(self):
+        """工作流运行实例的ID
+        :rtype: str
+        """
+        return self._WorkflowRunId
+
+    @WorkflowRunId.setter
+    def WorkflowRunId(self, WorkflowRunId):
+        self._WorkflowRunId = WorkflowRunId
+
+    @property
+    def NodeName(self):
+        """节点名称
+        :rtype: str
+        """
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+    @property
+    def NodeType(self):
+        """节点类型。
+1： 开始节点
+2：参数提取节点
+3：大模型节点
+4：知识问答节点
+5：知识检索节点
+6：标签提取节点
+7：代码执行节点
+8：工具节点
+9：逻辑判断节点
+10：回复节点
+11：选项卡节点
+12：循环节点
+13：意图识别节点
+14：工作流节点
+15：插件节点
+16：结束节点
+17: 变量聚合节点数据
+18: 批处理节点
+19: 消息队列节点
+        :rtype: int
+        """
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def State(self):
+        """运行状态。0: 初始状态；1: 运行中；2: 运行成功； 3: 运行失败； 4: 已取消
+        :rtype: int
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def FailCode(self):
+        """错误码
+        :rtype: str
+        """
+        return self._FailCode
+
+    @FailCode.setter
+    def FailCode(self, FailCode):
+        self._FailCode = FailCode
+
+    @property
+    def FailMessage(self):
+        """错误信息
+        :rtype: str
+        """
+        return self._FailMessage
+
+    @FailMessage.setter
+    def FailMessage(self, FailMessage):
+        self._FailMessage = FailMessage
+
+    @property
+    def CostMilliseconds(self):
+        """消耗时间（毫秒）
+        :rtype: int
+        """
+        return self._CostMilliseconds
+
+    @CostMilliseconds.setter
+    def CostMilliseconds(self, CostMilliseconds):
+        self._CostMilliseconds = CostMilliseconds
+
+    @property
+    def TotalTokens(self):
+        """消耗的token总数
+        :rtype: int
+        """
+        return self._TotalTokens
+
+    @TotalTokens.setter
+    def TotalTokens(self, TotalTokens):
+        self._TotalTokens = TotalTokens
+
+    @property
+    def Input(self):
+        """输入变量信息
+        :rtype: str
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def InputRef(self):
+        """节点的输入的完整内容的链接。（当Input内容超过限制的时候此字段才有值）
+        :rtype: str
+        """
+        return self._InputRef
+
+    @InputRef.setter
+    def InputRef(self, InputRef):
+        self._InputRef = InputRef
+
+    @property
+    def Output(self):
+        """输出变量信息
+        :rtype: str
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def OutputRef(self):
+        """节点的输出的完整内容的链接。（当Output内容超过限制的时候此字段才有值）
+        :rtype: str
+        """
+        return self._OutputRef
+
+    @OutputRef.setter
+    def OutputRef(self, OutputRef):
+        self._OutputRef = OutputRef
+
+    @property
+    def TaskOutput(self):
+        """原始输出信息。部分节点才有值，如工具节点、代码节点
+        :rtype: str
+        """
+        return self._TaskOutput
+
+    @TaskOutput.setter
+    def TaskOutput(self, TaskOutput):
+        self._TaskOutput = TaskOutput
+
+    @property
+    def TaskOutputRef(self):
+        """任务的原始输出的完整内容的链接。（当TaskOutput内容超过限制的时候此字段才有值）
+        :rtype: str
+        """
+        return self._TaskOutputRef
+
+    @TaskOutputRef.setter
+    def TaskOutputRef(self, TaskOutputRef):
+        self._TaskOutputRef = TaskOutputRef
+
+    @property
+    def Log(self):
+        """节点的日志
+        :rtype: str
+        """
+        return self._Log
+
+    @Log.setter
+    def Log(self, Log):
+        self._Log = Log
+
+    @property
+    def LogRef(self):
+        """节点的日志的完整内容的链接志（当Log内容超过限制的时候才有值）
+        :rtype: str
+        """
+        return self._LogRef
+
+    @LogRef.setter
+    def LogRef(self, LogRef):
+        self._LogRef = LogRef
+
+    @property
+    def StartTime(self):
+        """开始时间戳（毫秒）
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """结束时间戳（毫秒）
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def StatisticInfos(self):
+        """LLM统计信息。
+        :rtype: list of StatisticInfo
+        """
+        return self._StatisticInfos
+
+    @StatisticInfos.setter
+    def StatisticInfos(self, StatisticInfos):
+        self._StatisticInfos = StatisticInfos
+
+
+    def _deserialize(self, params):
+        self._NodeRunId = params.get("NodeRunId")
+        self._NodeId = params.get("NodeId")
+        self._WorkflowRunId = params.get("WorkflowRunId")
+        self._NodeName = params.get("NodeName")
+        self._NodeType = params.get("NodeType")
+        self._State = params.get("State")
+        self._FailCode = params.get("FailCode")
+        self._FailMessage = params.get("FailMessage")
+        self._CostMilliseconds = params.get("CostMilliseconds")
+        self._TotalTokens = params.get("TotalTokens")
+        self._Input = params.get("Input")
+        self._InputRef = params.get("InputRef")
+        self._Output = params.get("Output")
+        self._OutputRef = params.get("OutputRef")
+        self._TaskOutput = params.get("TaskOutput")
+        self._TaskOutputRef = params.get("TaskOutputRef")
+        self._Log = params.get("Log")
+        self._LogRef = params.get("LogRef")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        if params.get("StatisticInfos") is not None:
+            self._StatisticInfos = []
+            for item in params.get("StatisticInfos"):
+                obj = StatisticInfo()
+                obj._deserialize(item)
+                self._StatisticInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27011,6 +28215,70 @@ class StopDocParseResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class StopWorkflowRunRequest(AbstractModel):
+    """StopWorkflowRun请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkflowRunId: 工作流运行实例ID
+        :type WorkflowRunId: str
+        """
+        self._WorkflowRunId = None
+
+    @property
+    def WorkflowRunId(self):
+        """工作流运行实例ID
+        :rtype: str
+        """
+        return self._WorkflowRunId
+
+    @WorkflowRunId.setter
+    def WorkflowRunId(self, WorkflowRunId):
+        self._WorkflowRunId = WorkflowRunId
+
+
+    def _deserialize(self, params):
+        self._WorkflowRunId = params.get("WorkflowRunId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopWorkflowRunResponse(AbstractModel):
+    """StopWorkflowRun返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class StrValue(AbstractModel):
     """字符串KV信息
 
@@ -29099,6 +30367,443 @@ class WorkflowRef(AbstractModel):
         self._WorkflowDesc = params.get("WorkflowDesc")
         self._AppBizId = params.get("AppBizId")
         self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WorkflowRunBase(AbstractModel):
+    """工作流运行实例的基本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RunEnv: 运行环境。0: 测试环境； 1: 正式环境
+        :type RunEnv: int
+        :param _AppBizId: 应用ID
+        :type AppBizId: str
+        :param _WorkflowRunId: 工作流运行实例的ID
+        :type WorkflowRunId: str
+        :param _WorkflowId: 所属工作流ID
+        :type WorkflowId: str
+        :param _Name: 名称
+        :type Name: str
+        :param _State: 运行状态。0: 排队中；1: 运行中；2: 运行成功；3: 运行失败； 4: 已取消
+        :type State: int
+        :param _FailMessage: 错误信息
+        :type FailMessage: str
+        :param _TotalTokens: 消耗的token总数
+        :type TotalTokens: int
+        :param _CreateTime: 创建时间（毫秒时间戳）
+        :type CreateTime: str
+        :param _StartTime: 开始时间（毫秒时间戳）
+        :type StartTime: str
+        :param _EndTime: 结束时间（毫秒时间戳）
+        :type EndTime: str
+        """
+        self._RunEnv = None
+        self._AppBizId = None
+        self._WorkflowRunId = None
+        self._WorkflowId = None
+        self._Name = None
+        self._State = None
+        self._FailMessage = None
+        self._TotalTokens = None
+        self._CreateTime = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def RunEnv(self):
+        """运行环境。0: 测试环境； 1: 正式环境
+        :rtype: int
+        """
+        return self._RunEnv
+
+    @RunEnv.setter
+    def RunEnv(self, RunEnv):
+        self._RunEnv = RunEnv
+
+    @property
+    def AppBizId(self):
+        """应用ID
+        :rtype: str
+        """
+        return self._AppBizId
+
+    @AppBizId.setter
+    def AppBizId(self, AppBizId):
+        self._AppBizId = AppBizId
+
+    @property
+    def WorkflowRunId(self):
+        """工作流运行实例的ID
+        :rtype: str
+        """
+        return self._WorkflowRunId
+
+    @WorkflowRunId.setter
+    def WorkflowRunId(self, WorkflowRunId):
+        self._WorkflowRunId = WorkflowRunId
+
+    @property
+    def WorkflowId(self):
+        """所属工作流ID
+        :rtype: str
+        """
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+    @property
+    def Name(self):
+        """名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def State(self):
+        """运行状态。0: 排队中；1: 运行中；2: 运行成功；3: 运行失败； 4: 已取消
+        :rtype: int
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def FailMessage(self):
+        """错误信息
+        :rtype: str
+        """
+        return self._FailMessage
+
+    @FailMessage.setter
+    def FailMessage(self, FailMessage):
+        self._FailMessage = FailMessage
+
+    @property
+    def TotalTokens(self):
+        """消耗的token总数
+        :rtype: int
+        """
+        return self._TotalTokens
+
+    @TotalTokens.setter
+    def TotalTokens(self, TotalTokens):
+        self._TotalTokens = TotalTokens
+
+    @property
+    def CreateTime(self):
+        """创建时间（毫秒时间戳）
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def StartTime(self):
+        """开始时间（毫秒时间戳）
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """结束时间（毫秒时间戳）
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._RunEnv = params.get("RunEnv")
+        self._AppBizId = params.get("AppBizId")
+        self._WorkflowRunId = params.get("WorkflowRunId")
+        self._WorkflowId = params.get("WorkflowId")
+        self._Name = params.get("Name")
+        self._State = params.get("State")
+        self._FailMessage = params.get("FailMessage")
+        self._TotalTokens = params.get("TotalTokens")
+        self._CreateTime = params.get("CreateTime")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WorkflowRunDetail(AbstractModel):
+    """工作流运行实例详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RunEnv: 运行环境。0: 测试环境； 1: 正式环境
+        :type RunEnv: int
+        :param _AppBizId: 应用ID
+        :type AppBizId: str
+        :param _WorkflowRunId: 工作流运行实例的ID
+        :type WorkflowRunId: str
+        :param _WorkflowId: 所属工作流ID
+        :type WorkflowId: str
+        :param _Name: 名称
+        :type Name: str
+        :param _State: 运行状态。0: 排队中；1: 运行中；2: 运行成功；3: 运行失败； 4: 已取消
+        :type State: int
+        :param _FailMessage: 错误信息
+        :type FailMessage: str
+        :param _TotalTokens: 消耗的token总数
+        :type TotalTokens: int
+        :param _CreateTime: 创建时间（毫秒时间戳）
+        :type CreateTime: str
+        :param _StartTime: 开始时间（毫秒时间戳）
+        :type StartTime: str
+        :param _EndTime: 结束时间（毫秒时间戳）
+        :type EndTime: str
+        :param _DialogJson: 工作流画布Json
+        :type DialogJson: str
+        :param _Query: 用户的输入
+        :type Query: str
+        :param _MainModelName: 主模型名称
+        :type MainModelName: str
+        :param _CustomVariables: API参数配置
+        :type CustomVariables: list of CustomVariable
+        """
+        self._RunEnv = None
+        self._AppBizId = None
+        self._WorkflowRunId = None
+        self._WorkflowId = None
+        self._Name = None
+        self._State = None
+        self._FailMessage = None
+        self._TotalTokens = None
+        self._CreateTime = None
+        self._StartTime = None
+        self._EndTime = None
+        self._DialogJson = None
+        self._Query = None
+        self._MainModelName = None
+        self._CustomVariables = None
+
+    @property
+    def RunEnv(self):
+        """运行环境。0: 测试环境； 1: 正式环境
+        :rtype: int
+        """
+        return self._RunEnv
+
+    @RunEnv.setter
+    def RunEnv(self, RunEnv):
+        self._RunEnv = RunEnv
+
+    @property
+    def AppBizId(self):
+        """应用ID
+        :rtype: str
+        """
+        return self._AppBizId
+
+    @AppBizId.setter
+    def AppBizId(self, AppBizId):
+        self._AppBizId = AppBizId
+
+    @property
+    def WorkflowRunId(self):
+        """工作流运行实例的ID
+        :rtype: str
+        """
+        return self._WorkflowRunId
+
+    @WorkflowRunId.setter
+    def WorkflowRunId(self, WorkflowRunId):
+        self._WorkflowRunId = WorkflowRunId
+
+    @property
+    def WorkflowId(self):
+        """所属工作流ID
+        :rtype: str
+        """
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+    @property
+    def Name(self):
+        """名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def State(self):
+        """运行状态。0: 排队中；1: 运行中；2: 运行成功；3: 运行失败； 4: 已取消
+        :rtype: int
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def FailMessage(self):
+        """错误信息
+        :rtype: str
+        """
+        return self._FailMessage
+
+    @FailMessage.setter
+    def FailMessage(self, FailMessage):
+        self._FailMessage = FailMessage
+
+    @property
+    def TotalTokens(self):
+        """消耗的token总数
+        :rtype: int
+        """
+        return self._TotalTokens
+
+    @TotalTokens.setter
+    def TotalTokens(self, TotalTokens):
+        self._TotalTokens = TotalTokens
+
+    @property
+    def CreateTime(self):
+        """创建时间（毫秒时间戳）
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def StartTime(self):
+        """开始时间（毫秒时间戳）
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """结束时间（毫秒时间戳）
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def DialogJson(self):
+        """工作流画布Json
+        :rtype: str
+        """
+        return self._DialogJson
+
+    @DialogJson.setter
+    def DialogJson(self, DialogJson):
+        self._DialogJson = DialogJson
+
+    @property
+    def Query(self):
+        """用户的输入
+        :rtype: str
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+    @property
+    def MainModelName(self):
+        """主模型名称
+        :rtype: str
+        """
+        return self._MainModelName
+
+    @MainModelName.setter
+    def MainModelName(self, MainModelName):
+        self._MainModelName = MainModelName
+
+    @property
+    def CustomVariables(self):
+        """API参数配置
+        :rtype: list of CustomVariable
+        """
+        return self._CustomVariables
+
+    @CustomVariables.setter
+    def CustomVariables(self, CustomVariables):
+        self._CustomVariables = CustomVariables
+
+
+    def _deserialize(self, params):
+        self._RunEnv = params.get("RunEnv")
+        self._AppBizId = params.get("AppBizId")
+        self._WorkflowRunId = params.get("WorkflowRunId")
+        self._WorkflowId = params.get("WorkflowId")
+        self._Name = params.get("Name")
+        self._State = params.get("State")
+        self._FailMessage = params.get("FailMessage")
+        self._TotalTokens = params.get("TotalTokens")
+        self._CreateTime = params.get("CreateTime")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._DialogJson = params.get("DialogJson")
+        self._Query = params.get("Query")
+        self._MainModelName = params.get("MainModelName")
+        if params.get("CustomVariables") is not None:
+            self._CustomVariables = []
+            for item in params.get("CustomVariables"):
+                obj = CustomVariable()
+                obj._deserialize(item)
+                self._CustomVariables.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

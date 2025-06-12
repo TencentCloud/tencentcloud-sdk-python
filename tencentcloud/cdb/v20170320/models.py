@@ -15014,14 +15014,14 @@ class DescribeCPUExpandStrategyInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID 。
+        :param _InstanceId: 实例 ID。
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """实例 ID 。
+        """实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -15050,18 +15050,18 @@ class DescribeCPUExpandStrategyInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 策略类型。可选值 auto、manual。如果返回为NULL说明尚未开通弹性扩容策略
+        :param _Type: 策略类型。输出值 auto、manual。如果返回为 NULL 说明尚未开通弹性扩容策略。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
-        :param _ExpandCpu: 手动扩容的 CPU 。Type为 manual 时有效。
+        :param _ExpandCpu: 手动扩容的 CPU 。Type 为 manual 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExpandCpu: int
-        :param _AutoStrategy: 自动扩容策略。Type 为 auto 时有效
+        :param _AutoStrategy: 自动扩容策略。Type 为 auto 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutoStrategy: :class:`tencentcloud.cdb.v20170320.models.AutoStrategy`
         :param _PeriodStrategy: 按周期扩容策略。
         :type PeriodStrategy: :class:`tencentcloud.cdb.v20170320.models.PeriodStrategy`
-        :param _TimeIntervalStrategy: 按时间段扩容策略
+        :param _TimeIntervalStrategy: 按时间段扩容策略。
         :type TimeIntervalStrategy: :class:`tencentcloud.cdb.v20170320.models.TimeIntervalStrategy`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15075,7 +15075,7 @@ class DescribeCPUExpandStrategyInfoResponse(AbstractModel):
 
     @property
     def Type(self):
-        """策略类型。可选值 auto、manual。如果返回为NULL说明尚未开通弹性扩容策略
+        """策略类型。输出值 auto、manual。如果返回为 NULL 说明尚未开通弹性扩容策略。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15087,7 +15087,7 @@ class DescribeCPUExpandStrategyInfoResponse(AbstractModel):
 
     @property
     def ExpandCpu(self):
-        """手动扩容的 CPU 。Type为 manual 时有效。
+        """手动扩容的 CPU 。Type 为 manual 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -15099,7 +15099,7 @@ class DescribeCPUExpandStrategyInfoResponse(AbstractModel):
 
     @property
     def AutoStrategy(self):
-        """自动扩容策略。Type 为 auto 时有效
+        """自动扩容策略。Type 为 auto 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdb.v20170320.models.AutoStrategy`
         """
@@ -15122,7 +15122,7 @@ class DescribeCPUExpandStrategyInfoResponse(AbstractModel):
 
     @property
     def TimeIntervalStrategy(self):
-        """按时间段扩容策略
+        """按时间段扩容策略。
         :rtype: :class:`tencentcloud.cdb.v20170320.models.TimeIntervalStrategy`
         """
         return self._TimeIntervalStrategy
@@ -36273,18 +36273,19 @@ class StartCpuExpandRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID 。
+        :param _InstanceId: 实例 ID。
         :type InstanceId: str
-        :param _Type: 扩容类型。auto 自动  manual 立即生效 timeInterval 按时间段 period 按周期
+        :param _Type: 扩容类型。auto 自动  manual 立即生效 timeInterval 按时间段 period 按周期。
+
         :type Type: str
         :param _ExpandCpu: 手动扩容时，扩容的 CPU 核心数。
 说明：1. Type 为 manual 时必传。2. 扩容的 CPU 核心数上限为当前实例 CPU 核心数，比如8核16G最大可手动扩容的 CPU 核心数为8，即范围为1 - 8。
         :type ExpandCpu: int
         :param _AutoStrategy: 自动扩容策略。Type 为 auto 时必传。
         :type AutoStrategy: :class:`tencentcloud.cdb.v20170320.models.AutoStrategy`
-        :param _TimeIntervalStrategy: 按时间段扩容策略
+        :param _TimeIntervalStrategy: 按时间段扩容策略。
         :type TimeIntervalStrategy: :class:`tencentcloud.cdb.v20170320.models.TimeIntervalStrategy`
-        :param _PeriodStrategy: 按周期扩容策略
+        :param _PeriodStrategy: 按周期扩容策略。
         :type PeriodStrategy: :class:`tencentcloud.cdb.v20170320.models.PeriodStrategy`
         """
         self._InstanceId = None
@@ -36296,7 +36297,7 @@ class StartCpuExpandRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例 ID 。
+        """实例 ID。
         :rtype: str
         """
         return self._InstanceId
@@ -36307,7 +36308,8 @@ class StartCpuExpandRequest(AbstractModel):
 
     @property
     def Type(self):
-        """扩容类型。auto 自动  manual 立即生效 timeInterval 按时间段 period 按周期
+        """扩容类型。auto 自动  manual 立即生效 timeInterval 按时间段 period 按周期。
+
         :rtype: str
         """
         return self._Type
@@ -36341,7 +36343,7 @@ class StartCpuExpandRequest(AbstractModel):
 
     @property
     def TimeIntervalStrategy(self):
-        """按时间段扩容策略
+        """按时间段扩容策略。
         :rtype: :class:`tencentcloud.cdb.v20170320.models.TimeIntervalStrategy`
         """
         return self._TimeIntervalStrategy
@@ -36352,7 +36354,7 @@ class StartCpuExpandRequest(AbstractModel):
 
     @property
     def PeriodStrategy(self):
-        """按周期扩容策略
+        """按周期扩容策略。
         :rtype: :class:`tencentcloud.cdb.v20170320.models.PeriodStrategy`
         """
         return self._PeriodStrategy
@@ -37270,19 +37272,26 @@ class TImeCycle(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Monday: 周一的扩容时间段
+        :param _Monday: 按周期扩容时，是否选择周一扩容。
+说明：取值 true，表示选择，取值 false，表示不选择。
         :type Monday: bool
-        :param _Tuesday: 周二的扩容时间段
+        :param _Tuesday: 按周期扩容时，是否选择周二扩容。
+说明：取值 true，表示选择，取值 false，表示不选择。
         :type Tuesday: bool
-        :param _Wednesday: 周三的扩容时间段
+        :param _Wednesday: 按周期扩容时，是否选择周三扩容。
+说明：取值 true，表示选择，取值 false，表示不选择。
         :type Wednesday: bool
-        :param _Thursday: 周四的扩容时间段
+        :param _Thursday: 按周期扩容时，是否选择周四扩容。
+说明：取值 true，表示选择，取值 false，表示不选择。
         :type Thursday: bool
-        :param _Friday: 周五的扩容时间段
+        :param _Friday: 按周期扩容时，是否选择周五扩容。
+说明：取值 true，表示选择，取值 false，表示不选择。
         :type Friday: bool
-        :param _Saturday: 周六的扩容时间段
+        :param _Saturday: 按周期扩容时，是否选择周六扩容。
+说明：取值 true，表示选择，取值 false，表示不选择。
         :type Saturday: bool
-        :param _Sunday: 周日的扩容时间段
+        :param _Sunday: 按周期扩容时，是否选择周日扩容。
+说明：取值 true，表示选择，取值 false，表示不选择。
         :type Sunday: bool
         """
         self._Monday = None
@@ -37295,7 +37304,8 @@ class TImeCycle(AbstractModel):
 
     @property
     def Monday(self):
-        """周一的扩容时间段
+        """按周期扩容时，是否选择周一扩容。
+说明：取值 true，表示选择，取值 false，表示不选择。
         :rtype: bool
         """
         return self._Monday
@@ -37306,7 +37316,8 @@ class TImeCycle(AbstractModel):
 
     @property
     def Tuesday(self):
-        """周二的扩容时间段
+        """按周期扩容时，是否选择周二扩容。
+说明：取值 true，表示选择，取值 false，表示不选择。
         :rtype: bool
         """
         return self._Tuesday
@@ -37317,7 +37328,8 @@ class TImeCycle(AbstractModel):
 
     @property
     def Wednesday(self):
-        """周三的扩容时间段
+        """按周期扩容时，是否选择周三扩容。
+说明：取值 true，表示选择，取值 false，表示不选择。
         :rtype: bool
         """
         return self._Wednesday
@@ -37328,7 +37340,8 @@ class TImeCycle(AbstractModel):
 
     @property
     def Thursday(self):
-        """周四的扩容时间段
+        """按周期扩容时，是否选择周四扩容。
+说明：取值 true，表示选择，取值 false，表示不选择。
         :rtype: bool
         """
         return self._Thursday
@@ -37339,7 +37352,8 @@ class TImeCycle(AbstractModel):
 
     @property
     def Friday(self):
-        """周五的扩容时间段
+        """按周期扩容时，是否选择周五扩容。
+说明：取值 true，表示选择，取值 false，表示不选择。
         :rtype: bool
         """
         return self._Friday
@@ -37350,7 +37364,8 @@ class TImeCycle(AbstractModel):
 
     @property
     def Saturday(self):
-        """周六的扩容时间段
+        """按周期扩容时，是否选择周六扩容。
+说明：取值 true，表示选择，取值 false，表示不选择。
         :rtype: bool
         """
         return self._Saturday
@@ -37361,7 +37376,8 @@ class TImeCycle(AbstractModel):
 
     @property
     def Sunday(self):
-        """周日的扩容时间段
+        """按周期扩容时，是否选择周日扩容。
+说明：取值 true，表示选择，取值 false，表示不选择。
         :rtype: bool
         """
         return self._Sunday
@@ -38010,9 +38026,9 @@ class TimeInterval(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: 开始时间
+        :param _StartTime: 开始时间。
         :type StartTime: str
-        :param _EndTime: 结束时间
+        :param _EndTime: 结束时间。
         :type EndTime: str
         """
         self._StartTime = None
@@ -38020,7 +38036,7 @@ class TimeInterval(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始时间
+        """开始时间。
         :rtype: str
         """
         return self._StartTime
@@ -38031,7 +38047,7 @@ class TimeInterval(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束时间
+        """结束时间。
         :rtype: str
         """
         return self._EndTime
@@ -38061,9 +38077,11 @@ class TimeIntervalStrategy(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: 开始扩容时间
+        :param _StartTime: 开始扩容时间。
+说明：此值的格式为 Integer 的时间戳。
         :type StartTime: int
-        :param _EndTime: 结束扩容时间
+        :param _EndTime: 结束扩容时间。
+说明：此值的格式为 Integer 的时间戳。
         :type EndTime: int
         """
         self._StartTime = None
@@ -38071,7 +38089,8 @@ class TimeIntervalStrategy(AbstractModel):
 
     @property
     def StartTime(self):
-        """开始扩容时间
+        """开始扩容时间。
+说明：此值的格式为 Integer 的时间戳。
         :rtype: int
         """
         return self._StartTime
@@ -38082,7 +38101,8 @@ class TimeIntervalStrategy(AbstractModel):
 
     @property
     def EndTime(self):
-        """结束扩容时间
+        """结束扩容时间。
+说明：此值的格式为 Integer 的时间戳。
         :rtype: int
         """
         return self._EndTime

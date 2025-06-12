@@ -3176,6 +3176,29 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def OperateSeals(self, request):
+        """修改印章状态（停用、启用）
+
+        :param request: Request instance for OperateSeals.
+        :type request: :class:`tencentcloud.ess.v20201111.models.OperateSealsRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.OperateSealsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OperateSeals", params, headers=headers)
+            response = json.loads(body)
+            model = models.OperateSealsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def OperateTemplate(self, request):
         """此接口（OperateTemplate）用于对企业自有模板进行管理操作，所有操作都会有对应的回调触发，具体参考回调文档 <a href="https://qian.tencent.com/developers/company/callback_types_templates" target="_blank">模板操作相关回调</a>
 

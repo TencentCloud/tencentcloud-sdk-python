@@ -327,6 +327,30 @@ class LkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateWorkflowRun(self, request):
+        """本接口用来创建工作流的异步运行实例，创建成功后工作流会在后台异步运行，接口返回工作流运行实例ID（WorkflowRunId）等信息。后面可通过调用DescribeWorkflowRun接口查工作流运行的详情。
+        注意：工作流的异步运行是基于应用的，需要先把对应的应用配置成“单工作流模式”，并且打开“异步调用”的开关，才能创建成功。
+
+        :param request: Request instance for CreateWorkflowRun.
+        :type request: :class:`tencentcloud.lke.v20231130.models.CreateWorkflowRunRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.CreateWorkflowRunResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateWorkflowRun", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateWorkflowRunResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteApp(self, request):
         """删除应用
 
@@ -718,6 +742,29 @@ class LkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeNodeRun(self, request):
+        """通过DescribeWorkflowRun接口获取了工作流异步运行的整体内容，其中包含了基本的节点信息，再通用本接口可查看节点的运行详情（包括输入、输出、日志等）。
+
+        :param request: Request instance for DescribeNodeRun.
+        :type request: :class:`tencentcloud.lke.v20231130.models.DescribeNodeRunRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.DescribeNodeRunResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNodeRun", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeNodeRunResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeQA(self, request):
         """问答详情
 
@@ -985,6 +1032,29 @@ class LkeClient(AbstractClient):
             body = self.call("DescribeUnsatisfiedReplyContext", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeUnsatisfiedReplyContextResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeWorkflowRun(self, request):
+        """创建了工作流的异步运行实例后，通过本接口可以查询整体的运行详情。
+
+        :param request: Request instance for DescribeWorkflowRun.
+        :type request: :class:`tencentcloud.lke.v20231130.models.DescribeWorkflowRunRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.DescribeWorkflowRunResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeWorkflowRun", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeWorkflowRunResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1894,6 +1964,29 @@ class LkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ListWorkflowRuns(self, request):
+        """此接口可查询已创建的所有工作流异步运行实例。
+
+        :param request: Request instance for ListWorkflowRuns.
+        :type request: :class:`tencentcloud.lke.v20231130.models.ListWorkflowRunsRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.ListWorkflowRunsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListWorkflowRuns", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListWorkflowRunsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyApp(self, request):
         """修改应用请求结构体
 
@@ -2353,6 +2446,29 @@ class LkeClient(AbstractClient):
             body = self.call("StopDocParse", params, headers=headers)
             response = json.loads(body)
             model = models.StopDocParseResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StopWorkflowRun(self, request):
+        """此接口用来停止正在进行的工作流异步运行实例。
+
+        :param request: Request instance for StopWorkflowRun.
+        :type request: :class:`tencentcloud.lke.v20231130.models.StopWorkflowRunRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.StopWorkflowRunResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopWorkflowRun", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopWorkflowRunResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

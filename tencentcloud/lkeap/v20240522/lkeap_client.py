@@ -148,8 +148,7 @@ class LkeapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            options = {"Endpoint": "%s://lkeap.ai.tencentcloudapi.com" % self.profile.httpProfile.scheme}
-            return self._call_and_deserialize("ChatCompletions", params, models.ChatCompletionsResponse, headers=request.headers, options=options)
+            return self._call_and_deserialize("ChatCompletions", params, models.ChatCompletionsResponse, headers=request.headers)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -655,8 +654,7 @@ class LkeapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            options = {"Endpoint": "%s://lkeap.ai.tencentcloudapi.com" % self.profile.httpProfile.scheme}
-            return self._call_and_deserialize("ReconstructDocumentSSE", params, models.ReconstructDocumentSSEResponse, headers=request.headers, options=options)
+            return self._call_and_deserialize("ReconstructDocumentSSE", params, models.ReconstructDocumentSSEResponse, headers=request.headers)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise

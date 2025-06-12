@@ -1414,7 +1414,7 @@ class SslClient(AbstractClient):
 
 
     def UploadConfirmLetter(self, request):
-        """本接口（UploadConfirmLetter）用于上传证书确认函。
+        """本接口（UploadConfirmLetter）上传证书确认函，不再维护其功能，请用户前往腾讯云证书控制台上传证书确认函
 
         :param request: Request instance for UploadConfirmLetter.
         :type request: :class:`tencentcloud.ssl.v20191205.models.UploadConfirmLetterRequest`
@@ -1437,7 +1437,7 @@ class SslClient(AbstractClient):
 
 
     def UploadRevokeLetter(self, request):
-        """本接口（UploadRevokeLetter）用于上传证书吊销确认函。
+        """本接口（UploadRevokeLetter）上传证书吊销确认函，不再维护其功能，请用户前往腾讯云证书控制台上传证书吊销确认函
 
         :param request: Request instance for UploadRevokeLetter.
         :type request: :class:`tencentcloud.ssl.v20191205.models.UploadRevokeLetterRequest`

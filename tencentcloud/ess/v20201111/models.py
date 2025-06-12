@@ -29680,6 +29680,123 @@ class OccupiedSeal(AbstractModel):
         
 
 
+class OperateSealsRequest(AbstractModel):
+    """OperateSeals请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。 注: 在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _Agent: 代理企业和员工的信息。 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param _Act: 操作类型，int，目前支持传入以下类型：
+<ul><li>1：启用印章</li></ul>
+<ul><li>2：停用印章</li></ul>
+        :type Act: int
+        :param _SealIds: 需要操作的印章ID，数组形式，印章ID可从【web控制台->印章 】获取。
+        :type SealIds: list of str
+        """
+        self._Operator = None
+        self._Agent = None
+        self._Act = None
+        self._SealIds = None
+
+    @property
+    def Operator(self):
+        """执行本接口操作的员工信息。 注: 在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Agent(self):
+        """代理企业和员工的信息。 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def Act(self):
+        """操作类型，int，目前支持传入以下类型：
+<ul><li>1：启用印章</li></ul>
+<ul><li>2：停用印章</li></ul>
+        :rtype: int
+        """
+        return self._Act
+
+    @Act.setter
+    def Act(self, Act):
+        self._Act = Act
+
+    @property
+    def SealIds(self):
+        """需要操作的印章ID，数组形式，印章ID可从【web控制台->印章 】获取。
+        :rtype: list of str
+        """
+        return self._SealIds
+
+    @SealIds.setter
+    def SealIds(self, SealIds):
+        self._SealIds = SealIds
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._Act = params.get("Act")
+        self._SealIds = params.get("SealIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OperateSealsResponse(AbstractModel):
+    """OperateSeals返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class OperateTemplateRequest(AbstractModel):
     """OperateTemplate请求参数结构体
 

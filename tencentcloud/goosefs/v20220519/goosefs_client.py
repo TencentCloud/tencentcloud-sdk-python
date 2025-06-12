@@ -326,7 +326,9 @@ class GoosefsClient(AbstractClient):
 
 
     def DescribeClusterRoles(self, request):
-        """查询GooseFS集群角色
+        """接口废弃
+
+        查询GooseFS集群角色
 
         :param request: Request instance for DescribeClusterRoles.
         :type request: :class:`tencentcloud.goosefs.v20220519.models.DescribeClusterRolesRequest`

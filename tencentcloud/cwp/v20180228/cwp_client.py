@@ -50,7 +50,9 @@ class CwpClient(AbstractClient):
 
 
     def CancelIgnoreVul(self, request):
-        """取消漏洞忽略
+        """产品变动切换到了\\n切换到 AddVulIgnoreRule / ModifyVulIgnoreRule  CancelVulIgnoreRule\\n相关接口
+
+        取消漏洞忽略
 
         :param request: Request instance for CancelIgnoreVul.
         :type request: :class:`tencentcloud.cwp.v20180228.models.CancelIgnoreVulRequest`
@@ -9828,7 +9830,9 @@ class CwpClient(AbstractClient):
 
 
     def IgnoreImpactedHosts(self, request):
-        """本接口 (IgnoreImpactedHosts) 用于忽略漏洞。
+        """产品变动切换到了\\n切换到 AddVulIgnoreRule / ModifyVulIgnoreRule  CancelVulIgnoreRule\\n相关接口
+
+        本接口 (IgnoreImpactedHosts) 用于忽略漏洞。
 
         :param request: Request instance for IgnoreImpactedHosts.
         :type request: :class:`tencentcloud.cwp.v20180228.models.IgnoreImpactedHostsRequest`

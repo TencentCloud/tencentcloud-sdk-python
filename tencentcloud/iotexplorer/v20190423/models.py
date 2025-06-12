@@ -127,7 +127,7 @@ class ActivateTWeCallLicenseRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PkgType: TWecall类型：0-体验套餐；1-家庭安防场景； 2-穿戴类场景； 3-生活娱乐场景； 4-对讲及其它场景
+        :param _PkgType: TWecall类型：0-体验套餐；1-基础版；3-高级版；
         :type PkgType: int
         :param _MiniProgramAppId: 参数已弃用，不用传参
         :type MiniProgramAppId: str
@@ -140,7 +140,7 @@ class ActivateTWeCallLicenseRequest(AbstractModel):
 
     @property
     def PkgType(self):
-        """TWecall类型：0-体验套餐；1-家庭安防场景； 2-穿戴类场景； 3-生活娱乐场景； 4-对讲及其它场景
+        """TWecall类型：0-体验套餐；1-基础版；3-高级版；
         :rtype: int
         """
         return self._PkgType

@@ -115,6 +115,8 @@ class AccessPoint(AbstractModel):
         :type AvailablePortInfo: list of PortSpecification
         :param _Address: 接入点地址。
         :type Address: str
+        :param _IsMacSec: 是否MACsec
+        :type IsMacSec: bool
         """
         self._AccessPointName = None
         self._AccessPointId = None
@@ -129,6 +131,7 @@ class AccessPoint(AbstractModel):
         self._AccessPointType = None
         self._AvailablePortInfo = None
         self._Address = None
+        self._IsMacSec = None
 
     @property
     def AccessPointName(self):
@@ -273,6 +276,17 @@ class AccessPoint(AbstractModel):
     def Address(self, Address):
         self._Address = Address
 
+    @property
+    def IsMacSec(self):
+        """是否MACsec
+        :rtype: bool
+        """
+        return self._IsMacSec
+
+    @IsMacSec.setter
+    def IsMacSec(self, IsMacSec):
+        self._IsMacSec = IsMacSec
+
 
     def _deserialize(self, params):
         self._AccessPointName = params.get("AccessPointName")
@@ -295,6 +309,7 @@ class AccessPoint(AbstractModel):
                 obj._deserialize(item)
                 self._AvailablePortInfo.append(obj)
         self._Address = params.get("Address")
+        self._IsMacSec = params.get("IsMacSec")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1244,6 +1259,8 @@ ChinaOther：中国其他；
         :type SignLaw: bool
         :param _Tags: 标签键值对
         :type Tags: list of Tag
+        :param _IsMacSec: 是否MACsec需求
+        :type IsMacSec: bool
         """
         self._DirectConnectName = None
         self._AccessPointId = None
@@ -1263,6 +1280,7 @@ ChinaOther：中国其他；
         self._FaultReportContactNumber = None
         self._SignLaw = None
         self._Tags = None
+        self._IsMacSec = None
 
     @property
     def DirectConnectName(self):
@@ -1474,6 +1492,17 @@ ChinaOther：中国其他；
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def IsMacSec(self):
+        """是否MACsec需求
+        :rtype: bool
+        """
+        return self._IsMacSec
+
+    @IsMacSec.setter
+    def IsMacSec(self, IsMacSec):
+        self._IsMacSec = IsMacSec
+
 
     def _deserialize(self, params):
         self._DirectConnectName = params.get("DirectConnectName")
@@ -1499,6 +1528,7 @@ ChinaOther：中国其他；
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._IsMacSec = params.get("IsMacSec")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3180,6 +3210,10 @@ class DirectConnect(AbstractModel):
         :type AccessPointName: str
         :param _IsThreeArch: 是否三层架构
         :type IsThreeArch: bool
+        :param _IsMacSec: 是否MACsec
+        :type IsMacSec: bool
+        :param _PortSpecification: 端口规格(Mbps)
+        :type PortSpecification: int
         """
         self._DirectConnectId = None
         self._DirectConnectName = None
@@ -3216,6 +3250,8 @@ class DirectConnect(AbstractModel):
         self._Construct = None
         self._AccessPointName = None
         self._IsThreeArch = None
+        self._IsMacSec = None
+        self._PortSpecification = None
 
     @property
     def DirectConnectId(self):
@@ -3610,6 +3646,28 @@ class DirectConnect(AbstractModel):
     def IsThreeArch(self, IsThreeArch):
         self._IsThreeArch = IsThreeArch
 
+    @property
+    def IsMacSec(self):
+        """是否MACsec
+        :rtype: bool
+        """
+        return self._IsMacSec
+
+    @IsMacSec.setter
+    def IsMacSec(self, IsMacSec):
+        self._IsMacSec = IsMacSec
+
+    @property
+    def PortSpecification(self):
+        """端口规格(Mbps)
+        :rtype: int
+        """
+        return self._PortSpecification
+
+    @PortSpecification.setter
+    def PortSpecification(self, PortSpecification):
+        self._PortSpecification = PortSpecification
+
 
     def _deserialize(self, params):
         self._DirectConnectId = params.get("DirectConnectId")
@@ -3652,6 +3710,8 @@ class DirectConnect(AbstractModel):
         self._Construct = params.get("Construct")
         self._AccessPointName = params.get("AccessPointName")
         self._IsThreeArch = params.get("IsThreeArch")
+        self._IsMacSec = params.get("IsMacSec")
+        self._PortSpecification = params.get("PortSpecification")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -999,6 +999,10 @@ class CreateRecTaskRequest(AbstractModel):
 
         :type KeyWordLibIdList: list of str
         :param _ReplaceTextId: 替换词汇表id,  适用于热词和自学习场景也无法解决的极端case词组,  会对识别结果强制替换。具体可参考[配置控制台](https://console.cloud.tencent.com/asr/replaceword);强制替换功能可能会影响正常识别结果，请谨慎使用
+
+注意：
+1. 本功能配置完成后，预计在10分钟后生效
+
         :type ReplaceTextId: str
         """
         self._EngineModelType = None
@@ -1427,6 +1431,10 @@ class CreateRecTaskRequest(AbstractModel):
     @property
     def ReplaceTextId(self):
         """替换词汇表id,  适用于热词和自学习场景也无法解决的极端case词组,  会对识别结果强制替换。具体可参考[配置控制台](https://console.cloud.tencent.com/asr/replaceword);强制替换功能可能会影响正常识别结果，请谨慎使用
+
+注意：
+1. 本功能配置完成后，预计在10分钟后生效
+
         :rtype: str
         """
         return self._ReplaceTextId

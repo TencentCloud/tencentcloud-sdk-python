@@ -1520,11 +1520,10 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
         :type ContactEmail: str
         :param _AutoRenewFlag: 是否开启自动续费： 0， 不开启；  1， 开启； 默认为0
         :type AutoRenewFlag: int
-        :param _CsrKeyParameter: 密钥对参数，RSA支持2048，4096。ECC仅支持prime256v1。加密算法选择ECC时，此参数必填
-国密证书类型本字段不用传
+        :param _CsrKeyParameter: 密钥对参数，RSA支持2048，4096。ECC仅支持prime256v1。当 CSR 生成方式为online的时候，此参数必填。
+
         :type CsrKeyParameter: str
-        :param _CsrEncryptAlgo: 加密算法，取值为ECC、RSA， 默认为RSA
-国密证书类型本字段不用传
+        :param _CsrEncryptAlgo: 加密算法，取值为ECC、RSA， 默认为RSA。当 CSR 生成方式为online的时候，此参数必填。
         :type CsrEncryptAlgo: str
         :param _ManagerId: 管理人ID，在 [腾讯云控制台](https://console.cloud.tencent.com/ssl/info) 可进行查看，若无满足的管理人信息， 则本参数传0 ； 若存在满足当前订单的管理人信息， 可以根据 [DescribeManagers](https://cloud.tencent.com/document/product/400/52672) 查看管理人ID； 若传了管理人ID，则Org开头、Admin开头、Tech开头的参数可不传； 管理人ID会包含公司信息
 
@@ -1958,8 +1957,8 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
     @property
     def CsrKeyParameter(self):
-        """密钥对参数，RSA支持2048，4096。ECC仅支持prime256v1。加密算法选择ECC时，此参数必填
-国密证书类型本字段不用传
+        """密钥对参数，RSA支持2048，4096。ECC仅支持prime256v1。当 CSR 生成方式为online的时候，此参数必填。
+
         :rtype: str
         """
         return self._CsrKeyParameter
@@ -1970,8 +1969,7 @@ FILE：手动添加域名文件验证。 需要用户手动在域名站点根目
 
     @property
     def CsrEncryptAlgo(self):
-        """加密算法，取值为ECC、RSA， 默认为RSA
-国密证书类型本字段不用传
+        """加密算法，取值为ECC、RSA， 默认为RSA。当 CSR 生成方式为online的时候，此参数必填。
         :rtype: str
         """
         return self._CsrEncryptAlgo

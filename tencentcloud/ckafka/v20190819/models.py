@@ -8475,6 +8475,8 @@ class DatahubTaskInfo(AbstractModel):
         :type DatahubId: str
         :param _StepList: 步骤列表
         :type StepList: list of str
+        :param _Description: 任务描述信息
+        :type Description: str
         """
         self._TaskId = None
         self._TaskName = None
@@ -8488,6 +8490,7 @@ class DatahubTaskInfo(AbstractModel):
         self._TaskCurrentStep = None
         self._DatahubId = None
         self._StepList = None
+        self._Description = None
 
     @property
     def TaskId(self):
@@ -8621,6 +8624,17 @@ class DatahubTaskInfo(AbstractModel):
     def StepList(self, StepList):
         self._StepList = StepList
 
+    @property
+    def Description(self):
+        """任务描述信息
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -8639,6 +8653,7 @@ class DatahubTaskInfo(AbstractModel):
         self._TaskCurrentStep = params.get("TaskCurrentStep")
         self._DatahubId = params.get("DatahubId")
         self._StepList = params.get("StepList")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
