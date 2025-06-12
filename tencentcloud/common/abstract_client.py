@@ -351,7 +351,7 @@ class AbstractClient(object):
     def _get_endpoint(self, options=None):
         endpoint = self.profile.httpProfile.endpoint
         if not endpoint and options:
-            endpoint = urlparse(options.get("Endpoint")).hostname
+            endpoint = urlparse(options.get("Endpoint", "")).hostname
         if endpoint is None:
             endpoint = self._get_service_domain()
         return endpoint
