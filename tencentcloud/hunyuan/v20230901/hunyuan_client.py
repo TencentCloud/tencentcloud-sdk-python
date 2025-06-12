@@ -66,7 +66,8 @@ class HunyuanClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            return self._call_and_deserialize("ChatCompletions", params, models.ChatCompletionsResponse, headers=request.headers)
+            options = {"Endpoint": "%s://hunyuan.ai.tencentcloudapi.com" % self.profile.httpProfile.scheme}
+            return self._call_and_deserialize("ChatCompletions", params, models.ChatCompletionsResponse, headers=request.headers, options=options)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -89,7 +90,8 @@ class HunyuanClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            return self._call_and_deserialize("ChatTranslations", params, models.ChatTranslationsResponse, headers=request.headers)
+            options = {"Endpoint": "%s://hunyuan.ai.tencentcloudapi.com" % self.profile.httpProfile.scheme}
+            return self._call_and_deserialize("ChatTranslations", params, models.ChatTranslationsResponse, headers=request.headers, options=options)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -112,7 +114,8 @@ class HunyuanClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            return self._call_and_deserialize("CreateThread", params, models.CreateThreadResponse, headers=request.headers)
+            options = {"Endpoint": "%s://hunyuan.ai.tencentcloudapi.com" % self.profile.httpProfile.scheme}
+            return self._call_and_deserialize("CreateThread", params, models.CreateThreadResponse, headers=request.headers, options=options)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -130,7 +133,8 @@ class HunyuanClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            return self._call_and_deserialize("FilesDeletions", params, models.FilesDeletionsResponse, headers=request.headers)
+            options = {"Endpoint": "%s://hunyuan.ai.tencentcloudapi.com" % self.profile.httpProfile.scheme}
+            return self._call_and_deserialize("FilesDeletions", params, models.FilesDeletionsResponse, headers=request.headers, options=options)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -148,7 +152,8 @@ class HunyuanClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            return self._call_and_deserialize("FilesList", params, models.FilesListResponse, headers=request.headers)
+            options = {"Endpoint": "%s://hunyuan.ai.tencentcloudapi.com" % self.profile.httpProfile.scheme}
+            return self._call_and_deserialize("FilesList", params, models.FilesListResponse, headers=request.headers, options=options)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -167,7 +172,8 @@ class HunyuanClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            return self._call_and_deserialize("FilesUploads", params, models.FilesUploadsResponse, headers=request.headers)
+            options = {"Endpoint": "%s://hunyuan.ai.tencentcloudapi.com" % self.profile.httpProfile.scheme}
+            return self._call_and_deserialize("FilesUploads", params, models.FilesUploadsResponse, headers=request.headers, options=options)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -213,7 +219,8 @@ class HunyuanClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            return self._call_and_deserialize("GetThread", params, models.GetThreadResponse, headers=request.headers)
+            options = {"Endpoint": "%s://hunyuan.ai.tencentcloudapi.com" % self.profile.httpProfile.scheme}
+            return self._call_and_deserialize("GetThread", params, models.GetThreadResponse, headers=request.headers, options=options)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -236,7 +243,8 @@ class HunyuanClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            return self._call_and_deserialize("GetThreadMessage", params, models.GetThreadMessageResponse, headers=request.headers)
+            options = {"Endpoint": "%s://hunyuan.ai.tencentcloudapi.com" % self.profile.httpProfile.scheme}
+            return self._call_and_deserialize("GetThreadMessage", params, models.GetThreadMessageResponse, headers=request.headers, options=options)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -259,7 +267,8 @@ class HunyuanClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            return self._call_and_deserialize("GetThreadMessageList", params, models.GetThreadMessageListResponse, headers=request.headers)
+            options = {"Endpoint": "%s://hunyuan.ai.tencentcloudapi.com" % self.profile.httpProfile.scheme}
+            return self._call_and_deserialize("GetThreadMessageList", params, models.GetThreadMessageListResponse, headers=request.headers, options=options)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -307,7 +316,8 @@ class HunyuanClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            return self._call_and_deserialize("GroupChatCompletions", params, models.GroupChatCompletionsResponse, headers=request.headers)
+            options = {"Endpoint": "%s://hunyuan.ai.tencentcloudapi.com" % self.profile.httpProfile.scheme}
+            return self._call_and_deserialize("GroupChatCompletions", params, models.GroupChatCompletionsResponse, headers=request.headers, options=options)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -332,7 +342,8 @@ class HunyuanClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            return self._call_and_deserialize("ImageQuestion", params, models.ImageQuestionResponse, headers=request.headers)
+            options = {"Endpoint": "%s://hunyuan.ai.tencentcloudapi.com" % self.profile.httpProfile.scheme}
+            return self._call_and_deserialize("ImageQuestion", params, models.ImageQuestionResponse, headers=request.headers, options=options)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -430,7 +441,8 @@ class HunyuanClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            return self._call_and_deserialize("RunThread", params, models.RunThreadResponse, headers=request.headers)
+            options = {"Endpoint": "%s://hunyuan.ai.tencentcloudapi.com" % self.profile.httpProfile.scheme}
+            return self._call_and_deserialize("RunThread", params, models.RunThreadResponse, headers=request.headers, options=options)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
