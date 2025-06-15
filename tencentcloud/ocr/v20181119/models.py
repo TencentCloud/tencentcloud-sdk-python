@@ -34640,11 +34640,11 @@ class TextVehicleFront(AbstractModel):
         :param _Seal: 印章
 注意：此字段可能返回 null，表示取不到有效值。
         :type Seal: str
-        :param _StateElectronic: 状态
+        :param _StateElectronic: 状态，该字段仅支持电子行驶证返回
         :type StateElectronic: str
-        :param _InspectionValidityTimeElectronic: 检验有效期
+        :param _InspectionValidityTimeElectronic: 检验有效期，该字段仅支持电子行驶证返回
         :type InspectionValidityTimeElectronic: str
-        :param _GenerationTimeElectronic: 生成时间
+        :param _GenerationTimeElectronic: 生成时间，该字段仅支持电子行驶证返回
         :type GenerationTimeElectronic: str
         """
         self._PlateNo = None
@@ -34796,7 +34796,7 @@ class TextVehicleFront(AbstractModel):
 
     @property
     def StateElectronic(self):
-        """状态
+        """状态，该字段仅支持电子行驶证返回
         :rtype: str
         """
         return self._StateElectronic
@@ -34807,7 +34807,7 @@ class TextVehicleFront(AbstractModel):
 
     @property
     def InspectionValidityTimeElectronic(self):
-        """检验有效期
+        """检验有效期，该字段仅支持电子行驶证返回
         :rtype: str
         """
         return self._InspectionValidityTimeElectronic
@@ -34818,7 +34818,7 @@ class TextVehicleFront(AbstractModel):
 
     @property
     def GenerationTimeElectronic(self):
-        """生成时间
+        """生成时间，该字段仅支持电子行驶证返回
         :rtype: str
         """
         return self._GenerationTimeElectronic

@@ -864,11 +864,14 @@ class AndroidInstanceImage(AbstractModel):
         :type AndroidInstanceImageState: str
         :param _AndroidInstanceImageZone: 镜像可用区
         :type AndroidInstanceImageZone: str
+        :param _AndroidVersion: 安卓10
+        :type AndroidVersion: str
         """
         self._AndroidInstanceImageId = None
         self._AndroidInstanceImageName = None
         self._AndroidInstanceImageState = None
         self._AndroidInstanceImageZone = None
+        self._AndroidVersion = None
 
     @property
     def AndroidInstanceImageId(self):
@@ -914,12 +917,24 @@ class AndroidInstanceImage(AbstractModel):
     def AndroidInstanceImageZone(self, AndroidInstanceImageZone):
         self._AndroidInstanceImageZone = AndroidInstanceImageZone
 
+    @property
+    def AndroidVersion(self):
+        """安卓10
+        :rtype: str
+        """
+        return self._AndroidVersion
+
+    @AndroidVersion.setter
+    def AndroidVersion(self, AndroidVersion):
+        self._AndroidVersion = AndroidVersion
+
 
     def _deserialize(self, params):
         self._AndroidInstanceImageId = params.get("AndroidInstanceImageId")
         self._AndroidInstanceImageName = params.get("AndroidInstanceImageName")
         self._AndroidInstanceImageState = params.get("AndroidInstanceImageState")
         self._AndroidInstanceImageZone = params.get("AndroidInstanceImageZone")
+        self._AndroidVersion = params.get("AndroidVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2720,6 +2735,135 @@ class CreateAndroidInstanceWebShellResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateAndroidInstancesAccessTokenRequest(AbstractModel):
+    """CreateAndroidInstancesAccessToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AndroidInstanceIds: 实例 ID 列表。每次请求的实例的上限为 500。
+        :type AndroidInstanceIds: list of str
+        :param _ExpirationDuration: 有效期，默认为 12 小时，最大为 24 小时。支持 s（秒）、m（分）、h（小时）等单位，比如 12h 表示 12 小时，1h2m3s 表示一小时两分三秒
+        :type ExpirationDuration: str
+        """
+        self._AndroidInstanceIds = None
+        self._ExpirationDuration = None
+
+    @property
+    def AndroidInstanceIds(self):
+        """实例 ID 列表。每次请求的实例的上限为 500。
+        :rtype: list of str
+        """
+        return self._AndroidInstanceIds
+
+    @AndroidInstanceIds.setter
+    def AndroidInstanceIds(self, AndroidInstanceIds):
+        self._AndroidInstanceIds = AndroidInstanceIds
+
+    @property
+    def ExpirationDuration(self):
+        """有效期，默认为 12 小时，最大为 24 小时。支持 s（秒）、m（分）、h（小时）等单位，比如 12h 表示 12 小时，1h2m3s 表示一小时两分三秒
+        :rtype: str
+        """
+        return self._ExpirationDuration
+
+    @ExpirationDuration.setter
+    def ExpirationDuration(self, ExpirationDuration):
+        self._ExpirationDuration = ExpirationDuration
+
+
+    def _deserialize(self, params):
+        self._AndroidInstanceIds = params.get("AndroidInstanceIds")
+        self._ExpirationDuration = params.get("ExpirationDuration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAndroidInstancesAccessTokenResponse(AbstractModel):
+    """CreateAndroidInstancesAccessToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Token: token
+        :type Token: str
+        :param _AccessInfo: 访问信息
+        :type AccessInfo: str
+        :param _AndroidInstanceErrors: 安卓实例错误列表。列表包含有问题的安卓实例 ID，生成的 Token 对这些有问题的实例无效。
+        :type AndroidInstanceErrors: list of AndroidInstanceError
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Token = None
+        self._AccessInfo = None
+        self._AndroidInstanceErrors = None
+        self._RequestId = None
+
+    @property
+    def Token(self):
+        """token
+        :rtype: str
+        """
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+    @property
+    def AccessInfo(self):
+        """访问信息
+        :rtype: str
+        """
+        return self._AccessInfo
+
+    @AccessInfo.setter
+    def AccessInfo(self, AccessInfo):
+        self._AccessInfo = AccessInfo
+
+    @property
+    def AndroidInstanceErrors(self):
+        """安卓实例错误列表。列表包含有问题的安卓实例 ID，生成的 Token 对这些有问题的实例无效。
+        :rtype: list of AndroidInstanceError
+        """
+        return self._AndroidInstanceErrors
+
+    @AndroidInstanceErrors.setter
+    def AndroidInstanceErrors(self, AndroidInstanceErrors):
+        self._AndroidInstanceErrors = AndroidInstanceErrors
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Token = params.get("Token")
+        self._AccessInfo = params.get("AccessInfo")
+        if params.get("AndroidInstanceErrors") is not None:
+            self._AndroidInstanceErrors = []
+            for item in params.get("AndroidInstanceErrors"):
+                obj = AndroidInstanceError()
+                obj._deserialize(item)
+                self._AndroidInstanceErrors.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class CreateAndroidInstancesRequest(AbstractModel):
     """CreateAndroidInstances请求参数结构体
 
@@ -3651,6 +3795,134 @@ class DeleteAndroidAppVersionRequest(AbstractModel):
 
 class DeleteAndroidAppVersionResponse(AbstractModel):
     """DeleteAndroidAppVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteAndroidInstanceBackupFilesRequest(AbstractModel):
+    """DeleteAndroidInstanceBackupFiles请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ObjectKeys: 文件对象键列表
+        :type ObjectKeys: list of str
+        :param _StorageType: 存储服务器类型，如 COS、S3。注意：使用 COS 和 S3 都将占用外网带宽。
+        :type StorageType: str
+        :param _COSOptions: COS协议选项
+        :type COSOptions: :class:`tencentcloud.gs.v20191118.models.COSOptions`
+        :param _S3Options: S3存储协议选项
+        :type S3Options: :class:`tencentcloud.gs.v20191118.models.S3Options`
+        :param _AndroidInstanceZone: 安卓实例可用区。StorageType 为 S3 时，需要填写该字段；StorageType 为 COS 时，不需要填写该字段
+        :type AndroidInstanceZone: str
+        """
+        self._ObjectKeys = None
+        self._StorageType = None
+        self._COSOptions = None
+        self._S3Options = None
+        self._AndroidInstanceZone = None
+
+    @property
+    def ObjectKeys(self):
+        """文件对象键列表
+        :rtype: list of str
+        """
+        return self._ObjectKeys
+
+    @ObjectKeys.setter
+    def ObjectKeys(self, ObjectKeys):
+        self._ObjectKeys = ObjectKeys
+
+    @property
+    def StorageType(self):
+        """存储服务器类型，如 COS、S3。注意：使用 COS 和 S3 都将占用外网带宽。
+        :rtype: str
+        """
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
+
+    @property
+    def COSOptions(self):
+        """COS协议选项
+        :rtype: :class:`tencentcloud.gs.v20191118.models.COSOptions`
+        """
+        return self._COSOptions
+
+    @COSOptions.setter
+    def COSOptions(self, COSOptions):
+        self._COSOptions = COSOptions
+
+    @property
+    def S3Options(self):
+        """S3存储协议选项
+        :rtype: :class:`tencentcloud.gs.v20191118.models.S3Options`
+        """
+        return self._S3Options
+
+    @S3Options.setter
+    def S3Options(self, S3Options):
+        self._S3Options = S3Options
+
+    @property
+    def AndroidInstanceZone(self):
+        """安卓实例可用区。StorageType 为 S3 时，需要填写该字段；StorageType 为 COS 时，不需要填写该字段
+        :rtype: str
+        """
+        return self._AndroidInstanceZone
+
+    @AndroidInstanceZone.setter
+    def AndroidInstanceZone(self, AndroidInstanceZone):
+        self._AndroidInstanceZone = AndroidInstanceZone
+
+
+    def _deserialize(self, params):
+        self._ObjectKeys = params.get("ObjectKeys")
+        self._StorageType = params.get("StorageType")
+        if params.get("COSOptions") is not None:
+            self._COSOptions = COSOptions()
+            self._COSOptions._deserialize(params.get("COSOptions"))
+        if params.get("S3Options") is not None:
+            self._S3Options = S3Options()
+            self._S3Options._deserialize(params.get("S3Options"))
+        self._AndroidInstanceZone = params.get("AndroidInstanceZone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAndroidInstanceBackupFilesResponse(AbstractModel):
+    """DeleteAndroidInstanceBackupFiles返回参数结构体
 
     """
 
@@ -7103,10 +7375,24 @@ class ModifyAndroidInstancesPropertiesResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _AndroidInstanceErrors: 安卓实例错误列表
+        :type AndroidInstanceErrors: list of AndroidInstanceError
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._AndroidInstanceErrors = None
         self._RequestId = None
+
+    @property
+    def AndroidInstanceErrors(self):
+        """安卓实例错误列表
+        :rtype: list of AndroidInstanceError
+        """
+        return self._AndroidInstanceErrors
+
+    @AndroidInstanceErrors.setter
+    def AndroidInstanceErrors(self, AndroidInstanceErrors):
+        self._AndroidInstanceErrors = AndroidInstanceErrors
 
     @property
     def RequestId(self):
@@ -7121,6 +7407,12 @@ class ModifyAndroidInstancesPropertiesResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("AndroidInstanceErrors") is not None:
+            self._AndroidInstanceErrors = []
+            for item in params.get("AndroidInstanceErrors"):
+                obj = AndroidInstanceError()
+                obj._deserialize(item)
+                self._AndroidInstanceErrors.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -7262,10 +7554,24 @@ class ModifyAndroidInstancesResolutionResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _AndroidInstanceErrors: 安卓实例错误列表
+        :type AndroidInstanceErrors: list of AndroidInstanceError
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._AndroidInstanceErrors = None
         self._RequestId = None
+
+    @property
+    def AndroidInstanceErrors(self):
+        """安卓实例错误列表
+        :rtype: list of AndroidInstanceError
+        """
+        return self._AndroidInstanceErrors
+
+    @AndroidInstanceErrors.setter
+    def AndroidInstanceErrors(self, AndroidInstanceErrors):
+        self._AndroidInstanceErrors = AndroidInstanceErrors
 
     @property
     def RequestId(self):
@@ -7280,6 +7586,12 @@ class ModifyAndroidInstancesResolutionResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("AndroidInstanceErrors") is not None:
+            self._AndroidInstanceErrors = []
+            for item in params.get("AndroidInstanceErrors"):
+                obj = AndroidInstanceError()
+                obj._deserialize(item)
+                self._AndroidInstanceErrors.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -7626,6 +7938,85 @@ class RebootAndroidInstancesResponse(AbstractModel):
                 obj = AndroidInstanceTask()
                 obj._deserialize(item)
                 self._TaskSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class RenewAndroidInstancesAccessTokenRequest(AbstractModel):
+    """RenewAndroidInstancesAccessToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AccessToken: token
+        :type AccessToken: str
+        :param _ExpirationDuration: 有效期，默认为 12 小时，最大为 24 小时。支持 s（秒）、m（分）、h（小时）等单位，比如 12h 表示 12 小时，1h2m3s 表示一小时两分三秒
+        :type ExpirationDuration: str
+        """
+        self._AccessToken = None
+        self._ExpirationDuration = None
+
+    @property
+    def AccessToken(self):
+        """token
+        :rtype: str
+        """
+        return self._AccessToken
+
+    @AccessToken.setter
+    def AccessToken(self, AccessToken):
+        self._AccessToken = AccessToken
+
+    @property
+    def ExpirationDuration(self):
+        """有效期，默认为 12 小时，最大为 24 小时。支持 s（秒）、m（分）、h（小时）等单位，比如 12h 表示 12 小时，1h2m3s 表示一小时两分三秒
+        :rtype: str
+        """
+        return self._ExpirationDuration
+
+    @ExpirationDuration.setter
+    def ExpirationDuration(self, ExpirationDuration):
+        self._ExpirationDuration = ExpirationDuration
+
+
+    def _deserialize(self, params):
+        self._AccessToken = params.get("AccessToken")
+        self._ExpirationDuration = params.get("ExpirationDuration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RenewAndroidInstancesAccessTokenResponse(AbstractModel):
+    """RenewAndroidInstancesAccessToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 

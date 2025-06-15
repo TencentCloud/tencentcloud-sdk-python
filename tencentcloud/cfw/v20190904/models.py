@@ -8811,7 +8811,7 @@ class DescribeCfwEipsRequest(AbstractModel):
         :type Mode: int
         :param _NatGatewayId: ALL：查询所有弹性公网ip; nat-xxxxx：接入模式场景指定网关的弹性公网ip
         :type NatGatewayId: str
-        :param _CfwInstance: 防火墙实例id，当前仅支持接入模式的实例
+        :param _CfwInstance: 防火墙实例id，当前仅支持接入模式的实例，该字段必填
         :type CfwInstance: str
         """
         self._Mode = None
@@ -8842,7 +8842,7 @@ class DescribeCfwEipsRequest(AbstractModel):
 
     @property
     def CfwInstance(self):
-        """防火墙实例id，当前仅支持接入模式的实例
+        """防火墙实例id，当前仅支持接入模式的实例，该字段必填
         :rtype: str
         """
         return self._CfwInstance

@@ -363,6 +363,70 @@ class CreateDLPFileDetectionTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateDeviceTaskRequest(AbstractModel):
+    """CreateDeviceTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Mid: 终端id
+        :type Mid: str
+        """
+        self._Mid = None
+
+    @property
+    def Mid(self):
+        """终端id
+        :rtype: str
+        """
+        return self._Mid
+
+    @Mid.setter
+    def Mid(self, Mid):
+        self._Mid = Mid
+
+
+    def _deserialize(self, params):
+        self._Mid = params.get("Mid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDeviceTaskResponse(AbstractModel):
+    """CreateDeviceTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateDeviceVirtualGroupRequest(AbstractModel):
     """CreateDeviceVirtualGroup请求参数结构体
 
@@ -1821,6 +1885,191 @@ class DescribeDeviceHardwareInfoListRspData(AbstractModel):
                 obj = DescribeDeviceHardwareInfoItem()
                 obj._deserialize(item)
                 self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDeviceInfoRequest(AbstractModel):
+    """DescribeDeviceInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Mid: 终端id
+        :type Mid: str
+        :param _Type: 查询类型  process_list network_list service_list
+        :type Type: str
+        """
+        self._Mid = None
+        self._Type = None
+
+    @property
+    def Mid(self):
+        """终端id
+        :rtype: str
+        """
+        return self._Mid
+
+    @Mid.setter
+    def Mid(self, Mid):
+        self._Mid = Mid
+
+    @property
+    def Type(self):
+        """查询类型  process_list network_list service_list
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Mid = params.get("Mid")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDeviceInfoResponse(AbstractModel):
+    """DescribeDeviceInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 业务响应数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.ioa.v20220601.models.DescribeDeviceInfoRspData`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """业务响应数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeDeviceInfoRspData`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DescribeDeviceInfoRspData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDeviceInfoRspData(AbstractModel):
+    """业务响应数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProcessList: 分页的具体数据对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProcessList: list of DeviceProcessInfo
+        :param _NetworkList: 分页的具体数据对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetworkList: list of DeviceNetworkInfo
+        :param _ServiceList: 分页的具体数据对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceList: list of DeviceServiceInfo
+        """
+        self._ProcessList = None
+        self._NetworkList = None
+        self._ServiceList = None
+
+    @property
+    def ProcessList(self):
+        """分页的具体数据对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DeviceProcessInfo
+        """
+        return self._ProcessList
+
+    @ProcessList.setter
+    def ProcessList(self, ProcessList):
+        self._ProcessList = ProcessList
+
+    @property
+    def NetworkList(self):
+        """分页的具体数据对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DeviceNetworkInfo
+        """
+        return self._NetworkList
+
+    @NetworkList.setter
+    def NetworkList(self, NetworkList):
+        self._NetworkList = NetworkList
+
+    @property
+    def ServiceList(self):
+        """分页的具体数据对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DeviceServiceInfo
+        """
+        return self._ServiceList
+
+    @ServiceList.setter
+    def ServiceList(self, ServiceList):
+        self._ServiceList = ServiceList
+
+
+    def _deserialize(self, params):
+        if params.get("ProcessList") is not None:
+            self._ProcessList = []
+            for item in params.get("ProcessList"):
+                obj = DeviceProcessInfo()
+                obj._deserialize(item)
+                self._ProcessList.append(obj)
+        if params.get("NetworkList") is not None:
+            self._NetworkList = []
+            for item in params.get("NetworkList"):
+                obj = DeviceNetworkInfo()
+                obj._deserialize(item)
+                self._NetworkList.append(obj)
+        if params.get("ServiceList") is not None:
+            self._ServiceList = []
+            for item in params.get("ServiceList"):
+                obj = DeviceServiceInfo()
+                obj._deserialize(item)
+                self._ServiceList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4081,6 +4330,426 @@ class DeviceDetail(AbstractModel):
         self._AccountName = params.get("AccountName")
         self._AccountGroupId = params.get("AccountGroupId")
         self._RemarkName = params.get("RemarkName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeviceNetworkInfo(AbstractModel):
+    """分页的具体数据对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LocalAddr: 本地地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LocalAddr: str
+        :param _LocalPort: 本地端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LocalPort: int
+        :param _ProcessId: 进程id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProcessId: int
+        :param _ProcessName: 进程名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProcessName: str
+        :param _Protocol: 协议
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Protocol: str
+        :param _RemoteAddr: 远程地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RemoteAddr: str
+        :param _RemotePort: 远程端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RemotePort: int
+        :param _State: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type State: int
+        """
+        self._LocalAddr = None
+        self._LocalPort = None
+        self._ProcessId = None
+        self._ProcessName = None
+        self._Protocol = None
+        self._RemoteAddr = None
+        self._RemotePort = None
+        self._State = None
+
+    @property
+    def LocalAddr(self):
+        """本地地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LocalAddr
+
+    @LocalAddr.setter
+    def LocalAddr(self, LocalAddr):
+        self._LocalAddr = LocalAddr
+
+    @property
+    def LocalPort(self):
+        """本地端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._LocalPort
+
+    @LocalPort.setter
+    def LocalPort(self, LocalPort):
+        self._LocalPort = LocalPort
+
+    @property
+    def ProcessId(self):
+        """进程id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ProcessId
+
+    @ProcessId.setter
+    def ProcessId(self, ProcessId):
+        self._ProcessId = ProcessId
+
+    @property
+    def ProcessName(self):
+        """进程名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProcessName
+
+    @ProcessName.setter
+    def ProcessName(self, ProcessName):
+        self._ProcessName = ProcessName
+
+    @property
+    def Protocol(self):
+        """协议
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def RemoteAddr(self):
+        """远程地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RemoteAddr
+
+    @RemoteAddr.setter
+    def RemoteAddr(self, RemoteAddr):
+        self._RemoteAddr = RemoteAddr
+
+    @property
+    def RemotePort(self):
+        """远程端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RemotePort
+
+    @RemotePort.setter
+    def RemotePort(self, RemotePort):
+        self._RemotePort = RemotePort
+
+    @property
+    def State(self):
+        """状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+
+    def _deserialize(self, params):
+        self._LocalAddr = params.get("LocalAddr")
+        self._LocalPort = params.get("LocalPort")
+        self._ProcessId = params.get("ProcessId")
+        self._ProcessName = params.get("ProcessName")
+        self._Protocol = params.get("Protocol")
+        self._RemoteAddr = params.get("RemoteAddr")
+        self._RemotePort = params.get("RemotePort")
+        self._State = params.get("State")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeviceProcessInfo(AbstractModel):
+    """分页的具体数据对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CmdLine: 命令行
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CmdLine: str
+        :param _Memory: 内存
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Memory: str
+        :param _Name: 名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Path: 路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Path: str
+        :param _ProcessId: 进程id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProcessId: int
+        :param _User: 启动用户
+注意：此字段可能返回 null，表示取不到有效值。
+        :type User: str
+        """
+        self._CmdLine = None
+        self._Memory = None
+        self._Name = None
+        self._Path = None
+        self._ProcessId = None
+        self._User = None
+
+    @property
+    def CmdLine(self):
+        """命令行
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CmdLine
+
+    @CmdLine.setter
+    def CmdLine(self, CmdLine):
+        self._CmdLine = CmdLine
+
+    @property
+    def Memory(self):
+        """内存
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def Name(self):
+        """名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Path(self):
+        """路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def ProcessId(self):
+        """进程id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ProcessId
+
+    @ProcessId.setter
+    def ProcessId(self, ProcessId):
+        self._ProcessId = ProcessId
+
+    @property
+    def User(self):
+        """启动用户
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+
+    def _deserialize(self, params):
+        self._CmdLine = params.get("CmdLine")
+        self._Memory = params.get("Memory")
+        self._Name = params.get("Name")
+        self._Path = params.get("Path")
+        self._ProcessId = params.get("ProcessId")
+        self._User = params.get("User")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeviceServiceInfo(AbstractModel):
+    """分页的具体数据对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CmdLine: 命令行
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CmdLine: str
+        :param _Description: 内存
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _Name: 名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _ProcessId: 进程id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProcessId: int
+        :param _StartType: 启动类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartType: int
+        :param _State: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type State: int
+        :param _User: 启动用户
+注意：此字段可能返回 null，表示取不到有效值。
+        :type User: str
+        """
+        self._CmdLine = None
+        self._Description = None
+        self._Name = None
+        self._ProcessId = None
+        self._StartType = None
+        self._State = None
+        self._User = None
+
+    @property
+    def CmdLine(self):
+        """命令行
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CmdLine
+
+    @CmdLine.setter
+    def CmdLine(self, CmdLine):
+        self._CmdLine = CmdLine
+
+    @property
+    def Description(self):
+        """内存
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Name(self):
+        """名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ProcessId(self):
+        """进程id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ProcessId
+
+    @ProcessId.setter
+    def ProcessId(self, ProcessId):
+        self._ProcessId = ProcessId
+
+    @property
+    def StartType(self):
+        """启动类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._StartType
+
+    @StartType.setter
+    def StartType(self, StartType):
+        self._StartType = StartType
+
+    @property
+    def State(self):
+        """状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def User(self):
+        """启动用户
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+
+    def _deserialize(self, params):
+        self._CmdLine = params.get("CmdLine")
+        self._Description = params.get("Description")
+        self._Name = params.get("Name")
+        self._ProcessId = params.get("ProcessId")
+        self._StartType = params.get("StartType")
+        self._State = params.get("State")
+        self._User = params.get("User")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

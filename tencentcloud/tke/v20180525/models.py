@@ -20010,6 +20010,115 @@ class DescribeLogSwitchesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeMasterComponentRequest(AbstractModel):
+    """DescribeMasterComponent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _Component: master组件名称，支持kube-apiserver、kube-scheduler、kube-controller-manager
+        :type Component: str
+        """
+        self._ClusterId = None
+        self._Component = None
+
+    @property
+    def ClusterId(self):
+        """集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Component(self):
+        """master组件名称，支持kube-apiserver、kube-scheduler、kube-controller-manager
+        :rtype: str
+        """
+        return self._Component
+
+    @Component.setter
+    def Component(self, Component):
+        self._Component = Component
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._Component = params.get("Component")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMasterComponentResponse(AbstractModel):
+    """DescribeMasterComponent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Component: master组件名称
+        :type Component: str
+        :param _Status: master组件状态，三种状态：running、updating、shutdown
+        :type Status: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Component = None
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Component(self):
+        """master组件名称
+        :rtype: str
+        """
+        return self._Component
+
+    @Component.setter
+    def Component(self, Component):
+        self._Component = Component
+
+    @property
+    def Status(self):
+        """master组件状态，三种状态：running、updating、shutdown
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Component = params.get("Component")
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeOSImagesRequest(AbstractModel):
     """DescribeOSImages请求参数结构体
 
@@ -34466,6 +34575,115 @@ class ModifyClusterVirtualNodePoolRequest(AbstractModel):
 
 class ModifyClusterVirtualNodePoolResponse(AbstractModel):
     """ModifyClusterVirtualNodePool返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyMasterComponentRequest(AbstractModel):
+    """ModifyMasterComponent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _Component: master组件名称，支持kube-apiserver、kube-scheduler、kube-controller-manager
+        :type Component: str
+        :param _Operation: 停机或恢复，值只能为：shutdown或restore
+        :type Operation: str
+        :param _DryRun: 为true时，不真正执行停机或恢复操作	
+        :type DryRun: bool
+        """
+        self._ClusterId = None
+        self._Component = None
+        self._Operation = None
+        self._DryRun = None
+
+    @property
+    def ClusterId(self):
+        """集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Component(self):
+        """master组件名称，支持kube-apiserver、kube-scheduler、kube-controller-manager
+        :rtype: str
+        """
+        return self._Component
+
+    @Component.setter
+    def Component(self, Component):
+        self._Component = Component
+
+    @property
+    def Operation(self):
+        """停机或恢复，值只能为：shutdown或restore
+        :rtype: str
+        """
+        return self._Operation
+
+    @Operation.setter
+    def Operation(self, Operation):
+        self._Operation = Operation
+
+    @property
+    def DryRun(self):
+        """为true时，不真正执行停机或恢复操作	
+        :rtype: bool
+        """
+        return self._DryRun
+
+    @DryRun.setter
+    def DryRun(self, DryRun):
+        self._DryRun = DryRun
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._Component = params.get("Component")
+        self._Operation = params.get("Operation")
+        self._DryRun = params.get("DryRun")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyMasterComponentResponse(AbstractModel):
+    """ModifyMasterComponent返回参数结构体
 
     """
 

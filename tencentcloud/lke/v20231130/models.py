@@ -2250,6 +2250,8 @@ class CallDetail(AbstractModel):
         :param _SubScene: 筛选子场景
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubScene: str
+        :param _BillingTag: 账单明细对应的自定义tag
+        :type BillingTag: str
         """
         self._Id = None
         self._CallTime = None
@@ -2263,6 +2265,7 @@ class CallDetail(AbstractModel):
         self._AppName = None
         self._PageUsage = None
         self._SubScene = None
+        self._BillingTag = None
 
     @property
     def Id(self):
@@ -2408,6 +2411,17 @@ class CallDetail(AbstractModel):
     def SubScene(self, SubScene):
         self._SubScene = SubScene
 
+    @property
+    def BillingTag(self):
+        """账单明细对应的自定义tag
+        :rtype: str
+        """
+        return self._BillingTag
+
+    @BillingTag.setter
+    def BillingTag(self, BillingTag):
+        self._BillingTag = BillingTag
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -2422,6 +2436,7 @@ class CallDetail(AbstractModel):
         self._AppName = params.get("AppName")
         self._PageUsage = params.get("PageUsage")
         self._SubScene = params.get("SubScene")
+        self._BillingTag = params.get("BillingTag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5952,6 +5967,8 @@ class DescribeAppResponse(AbstractModel):
         :type AppStatus: int
         :param _AppStatusDesc: 状态说明
         :type AppStatusDesc: str
+        :param _IsCopying: 应用是否在复制中
+        :type IsCopying: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5968,6 +5985,7 @@ class DescribeAppResponse(AbstractModel):
         self._AppKey = None
         self._AppStatus = None
         self._AppStatusDesc = None
+        self._IsCopying = None
         self._RequestId = None
 
     @property
@@ -6114,6 +6132,17 @@ class DescribeAppResponse(AbstractModel):
         self._AppStatusDesc = AppStatusDesc
 
     @property
+    def IsCopying(self):
+        """应用是否在复制中
+        :rtype: bool
+        """
+        return self._IsCopying
+
+    @IsCopying.setter
+    def IsCopying(self, IsCopying):
+        self._IsCopying = IsCopying
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -6143,6 +6172,7 @@ class DescribeAppResponse(AbstractModel):
         self._AppKey = params.get("AppKey")
         self._AppStatus = params.get("AppStatus")
         self._AppStatusDesc = params.get("AppStatusDesc")
+        self._IsCopying = params.get("IsCopying")
         self._RequestId = params.get("RequestId")
 
 
@@ -20296,9 +20326,9 @@ class ListUsageCallDetailRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: 结束时间
         :type EndTime: str
-        :param _PageNumber: 页码
+        :param _PageNumber: 页码（从1开始）
         :type PageNumber: int
-        :param _PageSize: 分页数量
+        :param _PageSize: 分页数量(最大值1000)
         :type PageSize: int
         :param _UinAccount: uin列表
         :type UinAccount: list of str
@@ -20310,6 +20340,8 @@ class ListUsageCallDetailRequest(AbstractModel):
         :type SubScenes: list of str
         :param _AppType: 应用类型(knowledge_qa应用管理， shared_knowlege 共享知识库)
         :type AppType: str
+        :param _BillingTag: 账单明细对应的自定义tag
+        :type BillingTag: str
         """
         self._ModelName = None
         self._StartTime = None
@@ -20321,6 +20353,7 @@ class ListUsageCallDetailRequest(AbstractModel):
         self._CallType = None
         self._SubScenes = None
         self._AppType = None
+        self._BillingTag = None
 
     @property
     def ModelName(self):
@@ -20357,7 +20390,7 @@ class ListUsageCallDetailRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """页码
+        """页码（从1开始）
         :rtype: int
         """
         return self._PageNumber
@@ -20368,7 +20401,7 @@ class ListUsageCallDetailRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """分页数量
+        """分页数量(最大值1000)
         :rtype: int
         """
         return self._PageSize
@@ -20432,6 +20465,17 @@ class ListUsageCallDetailRequest(AbstractModel):
     def AppType(self, AppType):
         self._AppType = AppType
 
+    @property
+    def BillingTag(self):
+        """账单明细对应的自定义tag
+        :rtype: str
+        """
+        return self._BillingTag
+
+    @BillingTag.setter
+    def BillingTag(self, BillingTag):
+        self._BillingTag = BillingTag
+
 
     def _deserialize(self, params):
         self._ModelName = params.get("ModelName")
@@ -20444,6 +20488,7 @@ class ListUsageCallDetailRequest(AbstractModel):
         self._CallType = params.get("CallType")
         self._SubScenes = params.get("SubScenes")
         self._AppType = params.get("AppType")
+        self._BillingTag = params.get("BillingTag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

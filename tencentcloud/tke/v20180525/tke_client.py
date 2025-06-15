@@ -2855,6 +2855,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeMasterComponent(self, request):
+        """进行master组件停机故障演练时，获取master组件运行状态，支持kube-apiserver、kube-scheduler、kube-controller-manager
+
+        :param request: Request instance for DescribeMasterComponent.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeMasterComponentRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeMasterComponentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMasterComponent", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMasterComponentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeOSImages(self, request):
         """获取OS聚合信息
 
@@ -4456,6 +4479,29 @@ class TkeClient(AbstractClient):
             body = self.call("ModifyClusterVirtualNodePool", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyClusterVirtualNodePoolResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyMasterComponent(self, request):
+        """修改master组件，支持kube-apiserver、kube-scheduler、kube-controller-manager副本数调整为0和恢复
+
+        :param request: Request instance for ModifyMasterComponent.
+        :type request: :class:`tencentcloud.tke.v20180525.models.ModifyMasterComponentRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.ModifyMasterComponentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyMasterComponent", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyMasterComponentResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

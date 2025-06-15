@@ -14,6 +14,9 @@
 # limitations under the License.
 
 
+# 操作未授权，请检查CAM策略。
+AUTHFAILURE_UNAUTHORIZEDOPERATION = 'AuthFailure.UnauthorizedOperation'
+
 # 操作失败。
 FAILEDOPERATION = 'FailedOperation'
 

@@ -49,6 +49,29 @@ class IoaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateDeviceTask(self, request):
+        """创建获取终端进程网络服务信息任务，私有化调用path为：capi/Assets/Device/DescribeDeviceInfo
+
+        :param request: Request instance for CreateDeviceTask.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.CreateDeviceTaskRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.CreateDeviceTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDeviceTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDeviceTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateDeviceVirtualGroup(self, request):
         """创建终端自定义分组，私有化调用path为：/capi/Assets/Device/CreateDeviceVirtualGroup
 
@@ -155,6 +178,29 @@ class IoaClient(AbstractClient):
             body = self.call("DescribeDeviceHardwareInfoList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDeviceHardwareInfoListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDeviceInfo(self, request):
+        """获取终端进程网络服务信息，私有化调用path为：capi/Assets/Device/DescribeDeviceInfo
+
+        :param request: Request instance for DescribeDeviceInfo.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.DescribeDeviceInfoRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeDeviceInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDeviceInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDeviceInfoResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

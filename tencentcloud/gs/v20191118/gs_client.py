@@ -306,6 +306,29 @@ class GsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAndroidInstancesAccessToken(self, request):
+        """创建安卓实例访问Token
+
+        :param request: Request instance for CreateAndroidInstancesAccessToken.
+        :type request: :class:`tencentcloud.gs.v20191118.models.CreateAndroidInstancesAccessTokenRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.CreateAndroidInstancesAccessTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAndroidInstancesAccessToken", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAndroidInstancesAccessTokenResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAndroidInstancesScreenshot(self, request):
         """安卓实例截图
 
@@ -412,6 +435,29 @@ class GsClient(AbstractClient):
             body = self.call("DeleteAndroidAppVersion", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteAndroidAppVersionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteAndroidInstanceBackupFiles(self, request):
+        """删除安卓实例备份文件
+
+        :param request: Request instance for DeleteAndroidInstanceBackupFiles.
+        :type request: :class:`tencentcloud.gs.v20191118.models.DeleteAndroidInstanceBackupFilesRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.DeleteAndroidInstanceBackupFilesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAndroidInstanceBackupFiles", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAndroidInstanceBackupFilesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1197,6 +1243,29 @@ class GsClient(AbstractClient):
             body = self.call("RebootAndroidInstances", params, headers=headers)
             response = json.loads(body)
             model = models.RebootAndroidInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RenewAndroidInstancesAccessToken(self, request):
+        """续期安卓实例访问Token
+
+        :param request: Request instance for RenewAndroidInstancesAccessToken.
+        :type request: :class:`tencentcloud.gs.v20191118.models.RenewAndroidInstancesAccessTokenRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.RenewAndroidInstancesAccessTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RenewAndroidInstancesAccessToken", params, headers=headers)
+            response = json.loads(body)
+            model = models.RenewAndroidInstancesAccessTokenResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -10168,7 +10168,7 @@ class DescribeCertDomainsRequest(AbstractModel):
         r"""
         :param _Cert: PEM格式证书Base64编码后的字符串
         :type Cert: str
-        :param _CertId: 托管证书ID，Cert和CertId不能均未空，都填写时以CertId为准。
+        :param _CertId: 托管证书ID，Cert和CertId不能均为空，都填写时以CertId为准。
         :type CertId: str
         :param _Product: 域名所属产品，cdn或ecdn，默认cdn。
         :type Product: str
@@ -10190,7 +10190,7 @@ class DescribeCertDomainsRequest(AbstractModel):
 
     @property
     def CertId(self):
-        """托管证书ID，Cert和CertId不能均未空，都填写时以CertId为准。
+        """托管证书ID，Cert和CertId不能均为空，都填写时以CertId为准。
         :rtype: str
         """
         return self._CertId
@@ -12387,7 +12387,7 @@ min：1 分钟粒度，指定查询区间 24 小时内（含 24 小时），可�
 hour：1 小时粒度，指定查询区间 31 天内（含 31 天），可返回 1 小时粒度明细数据
 day：天粒度，指定查询区间大于 31 天，可返回天粒度明细数据
         :type Interval: str
-        :param _Detail: Domains 传入多个时，默认（false)返回多个域名的汇总数据
+        :param _Detail: Domains 传入多个时，默认(false)返回多个域名的汇总数据
 可按需指定为 true，返回每一个 Domain 的明细数据（statusCode、2xx、3xx、4xx、5xx 指标暂不支持）
         :type Detail: bool
         :param _Area: 指定服务地域查询，不填充表示查询中国境内 CDN 数据
@@ -12496,7 +12496,7 @@ day：天粒度，指定查询区间大于 31 天，可返回天粒度明细数�
 
     @property
     def Detail(self):
-        """Domains 传入多个时，默认（false)返回多个域名的汇总数据
+        """Domains 传入多个时，默认(false)返回多个域名的汇总数据
 可按需指定为 true，返回每一个 Domain 的明细数据（statusCode、2xx、3xx、4xx、5xx 指标暂不支持）
         :rtype: bool
         """

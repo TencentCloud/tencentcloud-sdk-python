@@ -50,7 +50,9 @@ class BmvpcClient(AbstractClient):
 
 
     def AsyncRegisterIps(self, request):
-        """批量注册虚拟IP，异步接口。通过接口来查询任务进度。每次请求最多注册256个IP
+        """黑石1.0接口，业务已下线，90天无调用
+
+        批量注册虚拟IP，异步接口。通过接口来查询任务进度。每次请求最多注册256个IP
 
         :param request: Request instance for AsyncRegisterIps.
         :type request: :class:`tencentcloud.bmvpc.v20180625.models.AsyncRegisterIpsRequest`
@@ -96,7 +98,9 @@ class BmvpcClient(AbstractClient):
 
 
     def BindIpsToNatGateway(self, request):
-        """可用于将子网的部分IP绑定到NAT网关
+        """黑石1.0接口，业务已下线，90天无调用
+
+        可用于将子网的部分IP绑定到NAT网关
 
         :param request: Request instance for BindIpsToNatGateway.
         :type request: :class:`tencentcloud.bmvpc.v20180625.models.BindIpsToNatGatewayRequest`
@@ -119,7 +123,9 @@ class BmvpcClient(AbstractClient):
 
 
     def BindSubnetsToNatGateway(self, request):
-        """NAT网关绑定子网后，该子网内全部IP可出公网
+        """黑石1.0接口，业务已下线，90天无调用
+
+        NAT网关绑定子网后，该子网内全部IP可出公网
 
         :param request: Request instance for BindSubnetsToNatGateway.
         :type request: :class:`tencentcloud.bmvpc.v20180625.models.BindSubnetsToNatGatewayRequest`
@@ -142,7 +148,9 @@ class BmvpcClient(AbstractClient):
 
 
     def CreateCustomerGateway(self, request):
-        """本接口（CreateCustomerGateway）用于创建对端网关。
+        """90天无调用
+
+        本接口（CreateCustomerGateway）用于创建对端网关。
 
         :param request: Request instance for CreateCustomerGateway.
         :type request: :class:`tencentcloud.bmvpc.v20180625.models.CreateCustomerGatewayRequest`
@@ -188,7 +196,9 @@ class BmvpcClient(AbstractClient):
 
 
     def CreateHostedInterface(self, request):
-        """本接口（CreateHostedInterface）用于黑石托管机器加入带VLANID不为5的子网。
+        """黑石1.0接口，业务已下线，90天无调用
+
+        本接口（CreateHostedInterface）用于黑石托管机器加入带VLANID不为5的子网。
 
         1) 不能加入vlanId 为5的子网，只能加入VLANID范围为2000-2999的子网。
         2) 每台托管机器最多可以加入20个子网。
@@ -238,7 +248,9 @@ class BmvpcClient(AbstractClient):
 
 
     def CreateNatGateway(self, request):
-        """创建NAT网关接口，可针对网段方式、子网全部IP、子网部分IP这三种方式创建NAT网关
+        """黑石1.0接口，业务已下线，90天无调用
+
+        创建NAT网关接口，可针对网段方式、子网全部IP、子网部分IP这三种方式创建NAT网关
 
         :param request: Request instance for CreateNatGateway.
         :type request: :class:`tencentcloud.bmvpc.v20180625.models.CreateNatGatewayRequest`
@@ -261,7 +273,9 @@ class BmvpcClient(AbstractClient):
 
 
     def CreateRoutePolicies(self, request):
-        """创建黑石路由表的路由规则
+        """黑石1.0接口，业务已下线，90天无调用
+
+        创建黑石路由表的路由规则
 
         :param request: Request instance for CreateRoutePolicies.
         :type request: :class:`tencentcloud.bmvpc.v20180625.models.CreateRoutePoliciesRequest`
@@ -331,7 +345,9 @@ class BmvpcClient(AbstractClient):
 
 
     def CreateVpc(self, request):
-        """创建黑石私有网络
+        """黑石1.0接口，业务已下线，90天无调用
+
+        创建黑石私有网络
 
         :param request: Request instance for CreateVpc.
         :type request: :class:`tencentcloud.bmvpc.v20180625.models.CreateVpcRequest`
@@ -354,7 +370,9 @@ class BmvpcClient(AbstractClient):
 
 
     def CreateVpcPeerConnection(self, request):
-        """创建对等连接
+        """黑石1.0接口，业务已下线，90天无调用
+
+        创建对等连接
 
         :param request: Request instance for CreateVpcPeerConnection.
         :type request: :class:`tencentcloud.bmvpc.v20180625.models.CreateVpcPeerConnectionRequest`
@@ -471,7 +489,9 @@ class BmvpcClient(AbstractClient):
 
 
     def DeleteNatGateway(self, request):
-        """删除NAT网关
+        """黑石1.0接口，业务已下线，90天无调用
+
+        删除NAT网关
 
         :param request: Request instance for DeleteNatGateway.
         :type request: :class:`tencentcloud.bmvpc.v20180625.models.DeleteNatGatewayRequest`
@@ -494,7 +514,9 @@ class BmvpcClient(AbstractClient):
 
 
     def DeleteRoutePolicy(self, request):
-        """删除黑石路由表路由规则
+        """黑石1.0接口，业务已下线，90天无调用
+
+        删除黑石路由表路由规则
 
         :param request: Request instance for DeleteRoutePolicy.
         :type request: :class:`tencentcloud.bmvpc.v20180625.models.DeleteRoutePolicyRequest`
@@ -658,7 +680,9 @@ class BmvpcClient(AbstractClient):
 
 
     def DeregisterIps(self, request):
-        """注销私有网络IP为空闲
+        """黑石1.0接口，业务已下线，90天无调用
+
+        注销私有网络IP为空闲
 
         :param request: Request instance for DeregisterIps.
         :type request: :class:`tencentcloud.bmvpc.v20180625.models.DeregisterIpsRequest`
@@ -1073,7 +1097,9 @@ class BmvpcClient(AbstractClient):
 
 
     def DownloadCustomerGatewayConfiguration(self, request):
-        """本接口(DownloadCustomerGatewayConfiguration)用于下载VPN通道配置。
+        """90天无调用
+
+        本接口(DownloadCustomerGatewayConfiguration)用于下载VPN通道配置。
 
         :param request: Request instance for DownloadCustomerGatewayConfiguration.
         :type request: :class:`tencentcloud.bmvpc.v20180625.models.DownloadCustomerGatewayConfigurationRequest`
@@ -1119,7 +1145,9 @@ class BmvpcClient(AbstractClient):
 
 
     def ModifyRoutePolicy(self, request):
-        """修改自定义路由
+        """黑石1.0接口，业务已下线，90天无调用
+
+        修改自定义路由
 
         :param request: Request instance for ModifyRoutePolicy.
         :type request: :class:`tencentcloud.bmvpc.v20180625.models.ModifyRoutePolicyRequest`
@@ -1142,7 +1170,9 @@ class BmvpcClient(AbstractClient):
 
 
     def ModifyRouteTable(self, request):
-        """修改路由表
+        """黑石1.0接口，业务已下线，90天无调用
+
+        修改路由表
 
         :param request: Request instance for ModifyRouteTable.
         :type request: :class:`tencentcloud.bmvpc.v20180625.models.ModifyRouteTableRequest`
@@ -1372,7 +1402,9 @@ class BmvpcClient(AbstractClient):
 
 
     def UnbindIpsFromNatGateway(self, request):
-        """NAT网关解绑IP接口，可将子网的部分IP从NAT网关中解绑
+        """黑石1.0接口，业务已下线，90天无调用
+
+        NAT网关解绑IP接口，可将子网的部分IP从NAT网关中解绑
 
         :param request: Request instance for UnbindIpsFromNatGateway.
         :type request: :class:`tencentcloud.bmvpc.v20180625.models.UnbindIpsFromNatGatewayRequest`
@@ -1395,7 +1427,9 @@ class BmvpcClient(AbstractClient):
 
 
     def UnbindSubnetsFromNatGateway(self, request):
-        """NAT网关解绑子网接口，可将子网解绑NAT网关
+        """黑石1.0接口，业务已下线，90天无调用
+
+        NAT网关解绑子网接口，可将子网解绑NAT网关
 
         :param request: Request instance for UnbindSubnetsFromNatGateway.
         :type request: :class:`tencentcloud.bmvpc.v20180625.models.UnbindSubnetsFromNatGatewayRequest`
@@ -1418,7 +1452,9 @@ class BmvpcClient(AbstractClient):
 
 
     def UpgradeNatGateway(self, request):
-        """升级NAT网关接口，可NAT网关修改为小型NAT网关、中型NAT网关、以及大型NAT网关
+        """黑石1.0接口，业务已下线，90天无调用
+
+        升级NAT网关接口，可NAT网关修改为小型NAT网关、中型NAT网关、以及大型NAT网关
 
         :param request: Request instance for UpgradeNatGateway.
         :type request: :class:`tencentcloud.bmvpc.v20180625.models.UpgradeNatGatewayRequest`
