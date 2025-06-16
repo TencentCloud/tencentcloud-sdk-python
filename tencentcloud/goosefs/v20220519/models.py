@@ -378,6 +378,100 @@ class BatchDeleteClientNodesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class BuildClientNodeMountCommandRequest(AbstractModel):
+    """BuildClientNodeMountCommand请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileSystemId: 文件系统ID
+        :type FileSystemId: str
+        :param _CustomMountDir: 自定义挂载目录的绝对路径, 如果未指定, 则会使用默认值, 格式/goosefsx/${fs_id}-proxy. 比如/goosefsx/x-c60-a2b3d4-proxy
+        :type CustomMountDir: str
+        """
+        self._FileSystemId = None
+        self._CustomMountDir = None
+
+    @property
+    def FileSystemId(self):
+        """文件系统ID
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+    @property
+    def CustomMountDir(self):
+        """自定义挂载目录的绝对路径, 如果未指定, 则会使用默认值, 格式/goosefsx/${fs_id}-proxy. 比如/goosefsx/x-c60-a2b3d4-proxy
+        :rtype: str
+        """
+        return self._CustomMountDir
+
+    @CustomMountDir.setter
+    def CustomMountDir(self, CustomMountDir):
+        self._CustomMountDir = CustomMountDir
+
+
+    def _deserialize(self, params):
+        self._FileSystemId = params.get("FileSystemId")
+        self._CustomMountDir = params.get("CustomMountDir")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BuildClientNodeMountCommandResponse(AbstractModel):
+    """BuildClientNodeMountCommand返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Command: 挂载命令
+        :type Command: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Command = None
+        self._RequestId = None
+
+    @property
+    def Command(self):
+        """挂载命令
+        :rtype: str
+        """
+        return self._Command
+
+    @Command.setter
+    def Command(self, Command):
+        self._Command = Command
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Command = params.get("Command")
+        self._RequestId = params.get("RequestId")
+
+
 class ChargeAttribute(AbstractModel):
     """付费信息详情
 

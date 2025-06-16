@@ -1095,7 +1095,7 @@ class CreateCfsFileSystemRequest(AbstractModel):
         :type CcnId: str
         :param _CidrBlock: 云联网中CFS使用的网段， 若网络类型选择的是Ccn，该字段为必填，且不能和Ccn中已经绑定的网段冲突
         :type CidrBlock: str
-        :param _Capacity: 文件系统容量，turbo系列必填，单位为GiB。 turbo标准型单位GB，起售20TiB，即20480 GiB；扩容步长20TiB，即20480 GiB。turbo性能型起售10TiB，即10240 GiB；扩容步长10TiB，10240 GiB。
+        :param _Capacity: 文件系统容量，turbo系列必填，单位为GiB。 turbo标准型单位GB，起售20TiB，即20480 GiB；扩容步长10TiB，即10240 GiB。turbo性能型起售10TiB，即10240 GiB；扩容步长10TiB，10240 GiB。
         :type Capacity: int
         :param _SnapshotId: 文件系统快照ID，通过查询快照列表获取该参数，
 [DescribeCfsSnapshots](https://cloud.tencent.com/document/product/582/80206)
@@ -1278,7 +1278,7 @@ v3.1：创建增强版的通用文件系统
 
     @property
     def Capacity(self):
-        """文件系统容量，turbo系列必填，单位为GiB。 turbo标准型单位GB，起售20TiB，即20480 GiB；扩容步长20TiB，即20480 GiB。turbo性能型起售10TiB，即10240 GiB；扩容步长10TiB，10240 GiB。
+        """文件系统容量，turbo系列必填，单位为GiB。 turbo标准型单位GB，起售20TiB，即20480 GiB；扩容步长10TiB，即10240 GiB。turbo性能型起售10TiB，即10240 GiB；扩容步长10TiB，10240 GiB。
         :rtype: int
         """
         return self._Capacity

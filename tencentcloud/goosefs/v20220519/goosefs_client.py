@@ -118,6 +118,29 @@ class GoosefsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def BuildClientNodeMountCommand(self, request):
+        """生成客户端的挂载命令
+
+        :param request: Request instance for BuildClientNodeMountCommand.
+        :type request: :class:`tencentcloud.goosefs.v20220519.models.BuildClientNodeMountCommandRequest`
+        :rtype: :class:`tencentcloud.goosefs.v20220519.models.BuildClientNodeMountCommandResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BuildClientNodeMountCommand", params, headers=headers)
+            response = json.loads(body)
+            model = models.BuildClientNodeMountCommandResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateDataRepositoryTask(self, request):
         """创建数据流通任务,包括从将文件系统的数据上传到存储桶下, 以及从存储桶下载到文件系统里。
 

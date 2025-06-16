@@ -211,6 +211,8 @@ class AgentConfig(AbstractModel):
         :type AmbientSound: :class:`tencentcloud.trtc.v20190722.models.AmbientSound`
         :param _VoicePrint: 声纹配置
         :type VoicePrint: :class:`tencentcloud.trtc.v20190722.models.VoicePrint`
+        :param _TurnDetection: 语义断句检测
+        :type TurnDetection: :class:`tencentcloud.trtc.v20190722.models.TurnDetection`
         """
         self._UserId = None
         self._UserSig = None
@@ -225,6 +227,7 @@ class AgentConfig(AbstractModel):
         self._FilterBracketsContent = None
         self._AmbientSound = None
         self._VoicePrint = None
+        self._TurnDetection = None
 
     @property
     def UserId(self):
@@ -377,6 +380,17 @@ class AgentConfig(AbstractModel):
     def VoicePrint(self, VoicePrint):
         self._VoicePrint = VoicePrint
 
+    @property
+    def TurnDetection(self):
+        """语义断句检测
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.TurnDetection`
+        """
+        return self._TurnDetection
+
+    @TurnDetection.setter
+    def TurnDetection(self, TurnDetection):
+        self._TurnDetection = TurnDetection
+
 
     def _deserialize(self, params):
         self._UserId = params.get("UserId")
@@ -396,6 +410,9 @@ class AgentConfig(AbstractModel):
         if params.get("VoicePrint") is not None:
             self._VoicePrint = VoicePrint()
             self._VoicePrint._deserialize(params.get("VoicePrint"))
+        if params.get("TurnDetection") is not None:
+            self._TurnDetection = TurnDetection()
+            self._TurnDetection._deserialize(params.get("TurnDetection"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10803,7 +10820,7 @@ class RegisterVoicePrintRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Audio: 整个wav音频文件的base64字符串,其中wav文件限定为16k或8k采样率, 16bit位深, 单声道, 8到18秒有效音频时长,编码数据大小不超过2M
+        :param _Audio: 整个wav音频文件的base64字符串,其中wav文件限定为16k采样率, 16bit位深, 单声道, 8到18秒音频时长,有效音频不小于6秒(不能有太多静音段),编码数据大小不超过2M
         :type Audio: str
         :param _ReqTimestamp: 毫秒时间戳
         :type ReqTimestamp: int
@@ -10822,7 +10839,7 @@ class RegisterVoicePrintRequest(AbstractModel):
 
     @property
     def Audio(self):
-        """整个wav音频文件的base64字符串,其中wav文件限定为16k或8k采样率, 16bit位深, 单声道, 8到18秒有效音频时长,编码数据大小不超过2M
+        """整个wav音频文件的base64字符串,其中wav文件限定为16k采样率, 16bit位深, 单声道, 8到18秒音频时长,有效音频不小于6秒(不能有太多静音段),编码数据大小不超过2M
         :rtype: str
         """
         return self._Audio
@@ -14942,6 +14959,76 @@ class TrtcUsage(AbstractModel):
         
 
 
+class TurnDetection(AbstractModel):
+    """断句配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SemanticEagerness: TurnDetectionMode为3时生效，语义断句的灵敏程度
+
+
+功能简介：根据用户所说的话来判断其已完成发言来分割音频
+
+
+可选: "low" | "medium" | "high" | "auto"
+
+
+auto 是默认值，与 medium 相同。
+low 将让用户有足够的时间说话。
+high 将尽快对音频进行分块。
+
+
+如果您希望模型在对话模式下更频繁地响应，可以将 SemanticEagerness 设置为 high
+如果您希望在用户停顿时，AI能够等待片刻，可以将 SemanticEagerness 设置为 low
+无论什么模式，最终都会分割送个大模型进行回复
+
+        :type SemanticEagerness: str
+        """
+        self._SemanticEagerness = None
+
+    @property
+    def SemanticEagerness(self):
+        """TurnDetectionMode为3时生效，语义断句的灵敏程度
+
+
+功能简介：根据用户所说的话来判断其已完成发言来分割音频
+
+
+可选: "low" | "medium" | "high" | "auto"
+
+
+auto 是默认值，与 medium 相同。
+low 将让用户有足够的时间说话。
+high 将尽快对音频进行分块。
+
+
+如果您希望模型在对话模式下更频繁地响应，可以将 SemanticEagerness 设置为 high
+如果您希望在用户停顿时，AI能够等待片刻，可以将 SemanticEagerness 设置为 low
+无论什么模式，最终都会分割送个大模型进行回复
+
+        :rtype: str
+        """
+        return self._SemanticEagerness
+
+    @SemanticEagerness.setter
+    def SemanticEagerness(self, SemanticEagerness):
+        self._SemanticEagerness = SemanticEagerness
+
+
+    def _deserialize(self, params):
+        self._SemanticEagerness = params.get("SemanticEagerness")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class UpdateAIConversationRequest(AbstractModel):
     """UpdateAIConversation请求参数结构体
 
@@ -15467,7 +15554,7 @@ class UpdateVoicePrintRequest(AbstractModel):
         :type ReqTimestamp: int
         :param _AudioFormat: 音频格式,目前只支持0,代表wav
         :type AudioFormat: int
-        :param _Audio: 整个wav音频文件的base64字符串,其中wav文件限定为16k或8k采样率, 16bit位深, 单声道, 8到18秒有效音频时长,编码数据大小不超过2M
+        :param _Audio: 整个wav音频文件的base64字符串,其中wav文件限定为16k采样率, 16bit位深, 单声道, 8到18秒音频时长,有效音频不小于6秒(不能有太多静音段),编码数据大小不超过2M
         :type Audio: str
         :param _AudioMetaInfo: 和声纹绑定的MetaInfo，长度最大不超过512
         :type AudioMetaInfo: str
@@ -15513,7 +15600,7 @@ class UpdateVoicePrintRequest(AbstractModel):
 
     @property
     def Audio(self):
-        """整个wav音频文件的base64字符串,其中wav文件限定为16k或8k采样率, 16bit位深, 单声道, 8到18秒有效音频时长,编码数据大小不超过2M
+        """整个wav音频文件的base64字符串,其中wav文件限定为16k采样率, 16bit位深, 单声道, 8到18秒音频时长,有效音频不小于6秒(不能有太多静音段),编码数据大小不超过2M
         :rtype: str
         """
         return self._Audio

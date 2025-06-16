@@ -10783,6 +10783,185 @@ class DescribeDomainAssetsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeExposuresRequest(AbstractModel):
+    """DescribeExposures请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Filters: 过滤内容
+        :type Filters: list of Filters
+        :param _Limit: 分页大小
+        :type Limit: int
+        :param _Offset: 偏移量
+        :type Offset: int
+        :param _Order: 排序类型
+        :type Order: str
+        :param _By: 排序字段
+        :type By: str
+        """
+        self._MemberId = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+        self._Order = None
+        self._By = None
+
+    @property
+    def MemberId(self):
+        """集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filters(self):
+        """过滤内容
+        :rtype: list of Filters
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        """分页大小
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """偏移量
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Order(self):
+        """排序类型
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        """排序字段
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeExposuresResponse(AbstractModel):
+    """DescribeExposures返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 互联网暴露资产数量
+        :type TotalCount: int
+        :param _ExposeList: 互联网暴露资产列表
+        :type ExposeList: list of ExposesItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ExposeList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """互联网暴露资产数量
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ExposeList(self):
+        """互联网暴露资产列表
+        :rtype: list of ExposesItem
+        """
+        return self._ExposeList
+
+    @ExposeList.setter
+    def ExposeList(self, ExposeList):
+        self._ExposeList = ExposeList
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ExposeList") is not None:
+            self._ExposeList = []
+            for item in params.get("ExposeList"):
+                obj = ExposesItem()
+                obj._deserialize(item)
+                self._ExposeList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeGatewayAssetsRequest(AbstractModel):
     """DescribeGatewayAssets请求参数结构体
 
@@ -14617,13 +14796,61 @@ class DescribeTopAttackInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _StartTime: 起始时间
+        :type StartTime: str
+        :param _EndTime: 结束时间
+        :type EndTime: str
+        :param _QueryType: 1:攻击类型 2:攻击者
+        :type QueryType: int
         :param _MemberId: 集团账号的成员id
         :type MemberId: list of str
         :param _OperatedMemberId: 被调用的集团账号的成员id
         :type OperatedMemberId: list of str
+        :param _AssetName: 资产名称
+        :type AssetName: str
+        :param _AssetType: 0: 默认全部 1:资产ID 2:域名
+        :type AssetType: int
         """
+        self._StartTime = None
+        self._EndTime = None
+        self._QueryType = None
         self._MemberId = None
         self._OperatedMemberId = None
+        self._AssetName = None
+        self._AssetType = None
+
+    @property
+    def StartTime(self):
+        """起始时间
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """结束时间
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def QueryType(self):
+        """1:攻击类型 2:攻击者
+        :rtype: int
+        """
+        return self._QueryType
+
+    @QueryType.setter
+    def QueryType(self, QueryType):
+        self._QueryType = QueryType
 
     @property
     def MemberId(self):
@@ -14647,10 +14874,37 @@ class DescribeTopAttackInfoRequest(AbstractModel):
     def OperatedMemberId(self, OperatedMemberId):
         self._OperatedMemberId = OperatedMemberId
 
+    @property
+    def AssetName(self):
+        """资产名称
+        :rtype: str
+        """
+        return self._AssetName
+
+    @AssetName.setter
+    def AssetName(self, AssetName):
+        self._AssetName = AssetName
+
+    @property
+    def AssetType(self):
+        """0: 默认全部 1:资产ID 2:域名
+        :rtype: int
+        """
+        return self._AssetType
+
+    @AssetType.setter
+    def AssetType(self, AssetType):
+        self._AssetType = AssetType
+
 
     def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._QueryType = params.get("QueryType")
         self._MemberId = params.get("MemberId")
         self._OperatedMemberId = params.get("OperatedMemberId")
+        self._AssetName = params.get("AssetName")
+        self._AssetType = params.get("AssetType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16291,6 +16545,447 @@ class Element(AbstractModel):
         
 
 
+class ExposesItem(AbstractModel):
+    """暴露资产
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Provider: 云厂商
+        :type Provider: str
+        :param _CloudAccountName: 云账号名称
+        :type CloudAccountName: str
+        :param _CloudAccountId: 云账号
+        :type CloudAccountId: str
+        :param _Domain: 域名
+        :type Domain: str
+        :param _Ip: IP
+        :type Ip: str
+        :param _Port: 端口或者端口范围
+        :type Port: str
+        :param _Status: 开放
+        :type Status: str
+        :param _RiskType: 风险类型
+        :type RiskType: str
+        :param _AclType: acl类型
+        :type AclType: str
+        :param _AclList: acl列表
+        :type AclList: str
+        :param _AssetId: 资产ID
+        :type AssetId: str
+        :param _InstanceName: 实例名称
+        :type InstanceName: str
+        :param _AssetType: 资产类型
+        :type AssetType: str
+        :param _PortServiceCount: 端口服务数量
+        :type PortServiceCount: int
+        :param _HighRiskPortServiceCount: 高危端口数量
+        :type HighRiskPortServiceCount: int
+        :param _WebAppCount: web应用数量
+        :type WebAppCount: int
+        :param _RiskWebAppCount: 有风险web应用数量
+        :type RiskWebAppCount: int
+        :param _WeakPasswordCount: 弱口令数量
+        :type WeakPasswordCount: int
+        :param _VulCount: 漏洞数量
+        :type VulCount: int
+        :param _CreateTime: 首次发现时间
+        :type CreateTime: str
+        :param _UpdateTime: 最近更新时间
+        :type UpdateTime: str
+        :param _AssetTypeName: 实例类型名称
+        :type AssetTypeName: str
+        :param _DisplayStatus: 开放状态
+        :type DisplayStatus: str
+        :param _DisplayRiskType: 端口状态
+        :type DisplayRiskType: str
+        :param _ScanTaskStatus: 扫描任务状态
+        :type ScanTaskStatus: str
+        :param _Uuid: uuid
+        :type Uuid: str
+        :param _HasScan: 是否进行过安全体检
+        :type HasScan: str
+        :param _AppId: 租户ID
+        :type AppId: int
+        """
+        self._Provider = None
+        self._CloudAccountName = None
+        self._CloudAccountId = None
+        self._Domain = None
+        self._Ip = None
+        self._Port = None
+        self._Status = None
+        self._RiskType = None
+        self._AclType = None
+        self._AclList = None
+        self._AssetId = None
+        self._InstanceName = None
+        self._AssetType = None
+        self._PortServiceCount = None
+        self._HighRiskPortServiceCount = None
+        self._WebAppCount = None
+        self._RiskWebAppCount = None
+        self._WeakPasswordCount = None
+        self._VulCount = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._AssetTypeName = None
+        self._DisplayStatus = None
+        self._DisplayRiskType = None
+        self._ScanTaskStatus = None
+        self._Uuid = None
+        self._HasScan = None
+        self._AppId = None
+
+    @property
+    def Provider(self):
+        """云厂商
+        :rtype: str
+        """
+        return self._Provider
+
+    @Provider.setter
+    def Provider(self, Provider):
+        self._Provider = Provider
+
+    @property
+    def CloudAccountName(self):
+        """云账号名称
+        :rtype: str
+        """
+        return self._CloudAccountName
+
+    @CloudAccountName.setter
+    def CloudAccountName(self, CloudAccountName):
+        self._CloudAccountName = CloudAccountName
+
+    @property
+    def CloudAccountId(self):
+        """云账号
+        :rtype: str
+        """
+        return self._CloudAccountId
+
+    @CloudAccountId.setter
+    def CloudAccountId(self, CloudAccountId):
+        self._CloudAccountId = CloudAccountId
+
+    @property
+    def Domain(self):
+        """域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Ip(self):
+        """IP
+        :rtype: str
+        """
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def Port(self):
+        """端口或者端口范围
+        :rtype: str
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def Status(self):
+        """开放
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RiskType(self):
+        """风险类型
+        :rtype: str
+        """
+        return self._RiskType
+
+    @RiskType.setter
+    def RiskType(self, RiskType):
+        self._RiskType = RiskType
+
+    @property
+    def AclType(self):
+        """acl类型
+        :rtype: str
+        """
+        return self._AclType
+
+    @AclType.setter
+    def AclType(self, AclType):
+        self._AclType = AclType
+
+    @property
+    def AclList(self):
+        """acl列表
+        :rtype: str
+        """
+        return self._AclList
+
+    @AclList.setter
+    def AclList(self, AclList):
+        self._AclList = AclList
+
+    @property
+    def AssetId(self):
+        """资产ID
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def InstanceName(self):
+        """实例名称
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def AssetType(self):
+        """资产类型
+        :rtype: str
+        """
+        return self._AssetType
+
+    @AssetType.setter
+    def AssetType(self, AssetType):
+        self._AssetType = AssetType
+
+    @property
+    def PortServiceCount(self):
+        """端口服务数量
+        :rtype: int
+        """
+        return self._PortServiceCount
+
+    @PortServiceCount.setter
+    def PortServiceCount(self, PortServiceCount):
+        self._PortServiceCount = PortServiceCount
+
+    @property
+    def HighRiskPortServiceCount(self):
+        """高危端口数量
+        :rtype: int
+        """
+        return self._HighRiskPortServiceCount
+
+    @HighRiskPortServiceCount.setter
+    def HighRiskPortServiceCount(self, HighRiskPortServiceCount):
+        self._HighRiskPortServiceCount = HighRiskPortServiceCount
+
+    @property
+    def WebAppCount(self):
+        """web应用数量
+        :rtype: int
+        """
+        return self._WebAppCount
+
+    @WebAppCount.setter
+    def WebAppCount(self, WebAppCount):
+        self._WebAppCount = WebAppCount
+
+    @property
+    def RiskWebAppCount(self):
+        """有风险web应用数量
+        :rtype: int
+        """
+        return self._RiskWebAppCount
+
+    @RiskWebAppCount.setter
+    def RiskWebAppCount(self, RiskWebAppCount):
+        self._RiskWebAppCount = RiskWebAppCount
+
+    @property
+    def WeakPasswordCount(self):
+        """弱口令数量
+        :rtype: int
+        """
+        return self._WeakPasswordCount
+
+    @WeakPasswordCount.setter
+    def WeakPasswordCount(self, WeakPasswordCount):
+        self._WeakPasswordCount = WeakPasswordCount
+
+    @property
+    def VulCount(self):
+        """漏洞数量
+        :rtype: int
+        """
+        return self._VulCount
+
+    @VulCount.setter
+    def VulCount(self, VulCount):
+        self._VulCount = VulCount
+
+    @property
+    def CreateTime(self):
+        """首次发现时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        """最近更新时间
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def AssetTypeName(self):
+        """实例类型名称
+        :rtype: str
+        """
+        return self._AssetTypeName
+
+    @AssetTypeName.setter
+    def AssetTypeName(self, AssetTypeName):
+        self._AssetTypeName = AssetTypeName
+
+    @property
+    def DisplayStatus(self):
+        """开放状态
+        :rtype: str
+        """
+        return self._DisplayStatus
+
+    @DisplayStatus.setter
+    def DisplayStatus(self, DisplayStatus):
+        self._DisplayStatus = DisplayStatus
+
+    @property
+    def DisplayRiskType(self):
+        """端口状态
+        :rtype: str
+        """
+        return self._DisplayRiskType
+
+    @DisplayRiskType.setter
+    def DisplayRiskType(self, DisplayRiskType):
+        self._DisplayRiskType = DisplayRiskType
+
+    @property
+    def ScanTaskStatus(self):
+        """扫描任务状态
+        :rtype: str
+        """
+        return self._ScanTaskStatus
+
+    @ScanTaskStatus.setter
+    def ScanTaskStatus(self, ScanTaskStatus):
+        self._ScanTaskStatus = ScanTaskStatus
+
+    @property
+    def Uuid(self):
+        """uuid
+        :rtype: str
+        """
+        return self._Uuid
+
+    @Uuid.setter
+    def Uuid(self, Uuid):
+        self._Uuid = Uuid
+
+    @property
+    def HasScan(self):
+        """是否进行过安全体检
+        :rtype: str
+        """
+        return self._HasScan
+
+    @HasScan.setter
+    def HasScan(self, HasScan):
+        self._HasScan = HasScan
+
+    @property
+    def AppId(self):
+        """租户ID
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+
+    def _deserialize(self, params):
+        self._Provider = params.get("Provider")
+        self._CloudAccountName = params.get("CloudAccountName")
+        self._CloudAccountId = params.get("CloudAccountId")
+        self._Domain = params.get("Domain")
+        self._Ip = params.get("Ip")
+        self._Port = params.get("Port")
+        self._Status = params.get("Status")
+        self._RiskType = params.get("RiskType")
+        self._AclType = params.get("AclType")
+        self._AclList = params.get("AclList")
+        self._AssetId = params.get("AssetId")
+        self._InstanceName = params.get("InstanceName")
+        self._AssetType = params.get("AssetType")
+        self._PortServiceCount = params.get("PortServiceCount")
+        self._HighRiskPortServiceCount = params.get("HighRiskPortServiceCount")
+        self._WebAppCount = params.get("WebAppCount")
+        self._RiskWebAppCount = params.get("RiskWebAppCount")
+        self._WeakPasswordCount = params.get("WeakPasswordCount")
+        self._VulCount = params.get("VulCount")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._AssetTypeName = params.get("AssetTypeName")
+        self._DisplayStatus = params.get("DisplayStatus")
+        self._DisplayRiskType = params.get("DisplayRiskType")
+        self._ScanTaskStatus = params.get("ScanTaskStatus")
+        self._Uuid = params.get("Uuid")
+        self._HasScan = params.get("HasScan")
+        self._AppId = params.get("AppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Filter(AbstractModel):
     """列表查询接口采用新filter 接口，直接传给后台供后台查询过滤
 
@@ -16463,6 +17158,78 @@ class FilterDataObject(AbstractModel):
     def _deserialize(self, params):
         self._Value = params.get("Value")
         self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Filters(AbstractModel):
+    """filter过滤条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Values: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Values: list of str
+        :param _ExactMatch: 模糊匹配
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExactMatch: str
+        """
+        self._Name = None
+        self._Values = None
+        self._ExactMatch = None
+
+    @property
+    def Name(self):
+        """无
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Values(self):
+        """无
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+    @property
+    def ExactMatch(self):
+        """模糊匹配
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExactMatch
+
+    @ExactMatch.setter
+    def ExactMatch(self, ExactMatch):
+        self._ExactMatch = ExactMatch
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Values = params.get("Values")
+        self._ExactMatch = params.get("ExactMatch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

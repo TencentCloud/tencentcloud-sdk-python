@@ -221,6 +221,8 @@ CREATE_FAIL：创建失败、CREATE_SUCCESS：创建成功）
         :type UninstallCommand: str
         :param _CleanupMode: 应用资源清理模式（实例安装应用所用资源），取值：CLEANUP_ON_UNINSTALL（默认值），卸载 App 时清理；CLEANUP_AFTER_INSTALL，安装 App 后立即清理。普通应用只有 CLEANUP_AFTER_INSTALL 模式。
         :type CleanupMode: str
+        :param _AndroidAppVersionName: 安卓应用版本名称
+        :type AndroidAppVersionName: str
         """
         self._AndroidAppVersion = None
         self._State = None
@@ -228,6 +230,7 @@ CREATE_FAIL：创建失败、CREATE_SUCCESS：创建成功）
         self._Command = None
         self._UninstallCommand = None
         self._CleanupMode = None
+        self._AndroidAppVersionName = None
 
     @property
     def AndroidAppVersion(self):
@@ -297,6 +300,17 @@ CREATE_FAIL：创建失败、CREATE_SUCCESS：创建成功）
     def CleanupMode(self, CleanupMode):
         self._CleanupMode = CleanupMode
 
+    @property
+    def AndroidAppVersionName(self):
+        """安卓应用版本名称
+        :rtype: str
+        """
+        return self._AndroidAppVersionName
+
+    @AndroidAppVersionName.setter
+    def AndroidAppVersionName(self, AndroidAppVersionName):
+        self._AndroidAppVersionName = AndroidAppVersionName
+
 
     def _deserialize(self, params):
         self._AndroidAppVersion = params.get("AndroidAppVersion")
@@ -305,6 +319,7 @@ CREATE_FAIL：创建失败、CREATE_SUCCESS：创建成功）
         self._Command = params.get("Command")
         self._UninstallCommand = params.get("UninstallCommand")
         self._CleanupMode = params.get("CleanupMode")
+        self._AndroidAppVersionName = params.get("AndroidAppVersionName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4105,7 +4120,7 @@ class DescribeAndroidAppsRequest(AbstractModel):
         :type Limit: int
         :param _AndroidAppIds: 应用ID数组
         :type AndroidAppIds: list of str
-        :param _Filters: 过滤条件
+        :param _Filters: 过滤条件，支持过滤的字段有：UserId
         :type Filters: list of Filter
         """
         self._Offset = None
@@ -4148,7 +4163,7 @@ class DescribeAndroidAppsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤条件
+        """过滤条件，支持过滤的字段有：UserId
         :rtype: list of Filter
         """
         return self._Filters

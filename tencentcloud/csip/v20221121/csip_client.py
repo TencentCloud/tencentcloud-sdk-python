@@ -371,6 +371,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeExposures(self, request):
+        """互联网暴露资产列表
+
+        :param request: Request instance for DescribeExposures.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeExposuresRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeExposuresResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeExposures", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeExposuresResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeGatewayAssets(self, request):
         """获取网关列表
 

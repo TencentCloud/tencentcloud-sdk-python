@@ -335,6 +335,8 @@ class ChatCompletionsRequest(AbstractModel):
         :type EnableDeepRead: bool
         :param _WebSearchOptions: 知识注入相关的参数信息
         :type WebSearchOptions: :class:`tencentcloud.hunyuan.v20230901.models.WebSearchOptions`
+        :param _TopicChoice: 用户传入Topic
+        :type TopicChoice: str
         """
         self._Model = None
         self._Messages = None
@@ -357,6 +359,7 @@ class ChatCompletionsRequest(AbstractModel):
         self._EnableRecommendedQuestions = None
         self._EnableDeepRead = None
         self._WebSearchOptions = None
+        self._TopicChoice = None
 
     @property
     def Model(self):
@@ -646,6 +649,17 @@ class ChatCompletionsRequest(AbstractModel):
     def WebSearchOptions(self, WebSearchOptions):
         self._WebSearchOptions = WebSearchOptions
 
+    @property
+    def TopicChoice(self):
+        """用户传入Topic
+        :rtype: str
+        """
+        return self._TopicChoice
+
+    @TopicChoice.setter
+    def TopicChoice(self, TopicChoice):
+        self._TopicChoice = TopicChoice
+
 
     def _deserialize(self, params):
         self._Model = params.get("Model")
@@ -683,6 +697,7 @@ class ChatCompletionsRequest(AbstractModel):
         if params.get("WebSearchOptions") is not None:
             self._WebSearchOptions = WebSearchOptions()
             self._WebSearchOptions._deserialize(params.get("WebSearchOptions"))
+        self._TopicChoice = params.get("TopicChoice")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -726,6 +741,8 @@ class ChatCompletionsResponse(AbstractModel):
         :type Replaces: list of Replace
         :param _RecommendedQuestions: 推荐问答。
         :type RecommendedQuestions: list of str
+        :param _Processes: AI搜索返回状态
+        :type Processes: :class:`tencentcloud.hunyuan.v20230901.models.Processes`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
         :type RequestId: str
         """
@@ -739,6 +756,7 @@ class ChatCompletionsResponse(AbstractModel):
         self._SearchInfo = None
         self._Replaces = None
         self._RecommendedQuestions = None
+        self._Processes = None
         self._RequestId = None
 
     @property
@@ -862,6 +880,17 @@ class ChatCompletionsResponse(AbstractModel):
         self._RecommendedQuestions = RecommendedQuestions
 
     @property
+    def Processes(self):
+        """AI搜索返回状态
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.Processes`
+        """
+        return self._Processes
+
+    @Processes.setter
+    def Processes(self, Processes):
+        self._Processes = Processes
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
         :rtype: str
@@ -900,6 +929,9 @@ class ChatCompletionsResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Replaces.append(obj)
         self._RecommendedQuestions = params.get("RecommendedQuestions")
+        if params.get("Processes") is not None:
+            self._Processes = Processes()
+            self._Processes._deserialize(params.get("Processes"))
         self._RequestId = params.get("RequestId")
 
 
@@ -4735,6 +4767,78 @@ class Multimedia(AbstractModel):
         
 
 
+class Processes(AbstractModel):
+    """大模型执行状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Message: 输出信息
+        :type Message: str
+        :param _State: plan:开始获取资料…
+recall:找到 n 篇相关资料
+quote:引用 n 篇资料作为参考
+
+        :type State: str
+        :param _Num: 当状态是recall和quote，会给出来相关数量
+        :type Num: int
+        """
+        self._Message = None
+        self._State = None
+        self._Num = None
+
+    @property
+    def Message(self):
+        """输出信息
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def State(self):
+        """plan:开始获取资料…
+recall:找到 n 篇相关资料
+quote:引用 n 篇资料作为参考
+
+        :rtype: str
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def Num(self):
+        """当状态是recall和quote，会给出来相关数量
+        :rtype: int
+        """
+        return self._Num
+
+    @Num.setter
+    def Num(self, Num):
+        self._Num = Num
+
+
+    def _deserialize(self, params):
+        self._Message = params.get("Message")
+        self._State = params.get("State")
+        self._Num = params.get("Num")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class QueryHunyuanImageChatJobRequest(AbstractModel):
     """QueryHunyuanImageChatJob请求参数结构体
 
@@ -7992,9 +8096,12 @@ class WebSearchOptions(AbstractModel):
         :type Knowledge: list of Knowledge
         :param _UserLocation: 用户位置详细信息
         :type UserLocation: :class:`tencentcloud.hunyuan.v20230901.models.UserLocation`
+        :param _Processes: 打开开关，会返回搜索状态
+        :type Processes: bool
         """
         self._Knowledge = None
         self._UserLocation = None
+        self._Processes = None
 
     @property
     def Knowledge(self):
@@ -8018,6 +8125,17 @@ class WebSearchOptions(AbstractModel):
     def UserLocation(self, UserLocation):
         self._UserLocation = UserLocation
 
+    @property
+    def Processes(self):
+        """打开开关，会返回搜索状态
+        :rtype: bool
+        """
+        return self._Processes
+
+    @Processes.setter
+    def Processes(self, Processes):
+        self._Processes = Processes
+
 
     def _deserialize(self, params):
         if params.get("Knowledge") is not None:
@@ -8029,6 +8147,7 @@ class WebSearchOptions(AbstractModel):
         if params.get("UserLocation") is not None:
             self._UserLocation = UserLocation()
             self._UserLocation._deserialize(params.get("UserLocation"))
+        self._Processes = params.get("Processes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
