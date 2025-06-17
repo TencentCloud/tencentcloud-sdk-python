@@ -2342,56 +2342,6 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def SmartStructuralOCRV2(self, request):
-        """本接口支持识别并提取制式卡证、票据、表单等结构化场景的字段信息。无需任何配置，灵活高效。适用于各类结构化信息录入场景。点击[立即体验](https://ocrdemo.cloud.tencent.com/)。
-
-        默认接口请求频率限制：5次/秒。
-
-        :param request: Request instance for SmartStructuralOCRV2.
-        :type request: :class:`tencentcloud.ocr.v20181119.models.SmartStructuralOCRV2Request`
-        :rtype: :class:`tencentcloud.ocr.v20181119.models.SmartStructuralOCRV2Response`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("SmartStructuralOCRV2", params, headers=headers)
-            response = json.loads(body)
-            model = models.SmartStructuralOCRV2Response()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def SmartStructuralPro(self, request):
-        """本接口支持识别并提取场景复杂、版式多等结构化场景的字段信息。重点场景包括：金融、医疗、交通、出行、保险。点击[立即体验](https://ocrdemo.cloud.tencent.com/)。
-
-        默认接口请求频率限制：5次/秒。
-
-        :param request: Request instance for SmartStructuralPro.
-        :type request: :class:`tencentcloud.ocr.v20181119.models.SmartStructuralProRequest`
-        :rtype: :class:`tencentcloud.ocr.v20181119.models.SmartStructuralProResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("SmartStructuralPro", params, headers=headers)
-            response = json.loads(body)
-            model = models.SmartStructuralProResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def TableOCR(self, request):
         """<b>此接口为表格识别的旧版本服务，不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/49525">新版表格识别</a>。</b>
 

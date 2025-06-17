@@ -1753,6 +1753,69 @@ class AdaptiveStreamTemplate(AbstractModel):
         
 
 
+class AddBlindWatermarkConfig(AbstractModel):
+    """增加盲水印配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Switch: str
+        :param _EmbedInfo: 盲水印嵌入数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EmbedInfo: :class:`tencentcloud.mps.v20190612.models.BlindWatermarkEmbedInfo`
+        """
+        self._Switch = None
+        self._EmbedInfo = None
+
+    @property
+    def Switch(self):
+        """能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def EmbedInfo(self):
+        """盲水印嵌入数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.BlindWatermarkEmbedInfo`
+        """
+        return self._EmbedInfo
+
+    @EmbedInfo.setter
+    def EmbedInfo(self, EmbedInfo):
+        self._EmbedInfo = EmbedInfo
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        if params.get("EmbedInfo") is not None:
+            self._EmbedInfo = BlindWatermarkEmbedInfo()
+            self._EmbedInfo._deserialize(params.get("EmbedInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AddOnSubtitle(AbstractModel):
     """外挂字幕。
 
@@ -12788,6 +12851,122 @@ class BatchSubTaskResult(AbstractModel):
         if params.get("SmartSubtitlesTaskResult") is not None:
             self._SmartSubtitlesTaskResult = BatchSmartSubtitlesResult()
             self._SmartSubtitlesTaskResult._deserialize(params.get("SmartSubtitlesTaskResult"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BlindWatermarkConfig(AbstractModel):
+    """盲水印配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AddBlindWatermark: 增加盲水印
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AddBlindWatermark: :class:`tencentcloud.mps.v20190612.models.AddBlindWatermarkConfig`
+        :param _ExtractBlindWatermark: 提取盲水印
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtractBlindWatermark: :class:`tencentcloud.mps.v20190612.models.ExtractBlindWatermarkConfig`
+        :param _RemoveBlindWatermark: 移除盲水印
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RemoveBlindWatermark: :class:`tencentcloud.mps.v20190612.models.RemoveBlindWatermarkConfig`
+        """
+        self._AddBlindWatermark = None
+        self._ExtractBlindWatermark = None
+        self._RemoveBlindWatermark = None
+
+    @property
+    def AddBlindWatermark(self):
+        """增加盲水印
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AddBlindWatermarkConfig`
+        """
+        return self._AddBlindWatermark
+
+    @AddBlindWatermark.setter
+    def AddBlindWatermark(self, AddBlindWatermark):
+        self._AddBlindWatermark = AddBlindWatermark
+
+    @property
+    def ExtractBlindWatermark(self):
+        """提取盲水印
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ExtractBlindWatermarkConfig`
+        """
+        return self._ExtractBlindWatermark
+
+    @ExtractBlindWatermark.setter
+    def ExtractBlindWatermark(self, ExtractBlindWatermark):
+        self._ExtractBlindWatermark = ExtractBlindWatermark
+
+    @property
+    def RemoveBlindWatermark(self):
+        """移除盲水印
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.RemoveBlindWatermarkConfig`
+        """
+        return self._RemoveBlindWatermark
+
+    @RemoveBlindWatermark.setter
+    def RemoveBlindWatermark(self, RemoveBlindWatermark):
+        self._RemoveBlindWatermark = RemoveBlindWatermark
+
+
+    def _deserialize(self, params):
+        if params.get("AddBlindWatermark") is not None:
+            self._AddBlindWatermark = AddBlindWatermarkConfig()
+            self._AddBlindWatermark._deserialize(params.get("AddBlindWatermark"))
+        if params.get("ExtractBlindWatermark") is not None:
+            self._ExtractBlindWatermark = ExtractBlindWatermarkConfig()
+            self._ExtractBlindWatermark._deserialize(params.get("ExtractBlindWatermark"))
+        if params.get("RemoveBlindWatermark") is not None:
+            self._RemoveBlindWatermark = RemoveBlindWatermarkConfig()
+            self._RemoveBlindWatermark._deserialize(params.get("RemoveBlindWatermark"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BlindWatermarkEmbedInfo(AbstractModel):
+    """嵌入盲水印配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EmbedText: 盲水印文字，需要经过 URL 安全的 Base64 编码。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EmbedText: str
+        """
+        self._EmbedText = None
+
+    @property
+    def EmbedText(self):
+        """盲水印文字，需要经过 URL 安全的 Base64 编码。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EmbedText
+
+    @EmbedText.setter
+    def EmbedText(self, EmbedText):
+        self._EmbedText = EmbedText
+
+
+    def _deserialize(self, params):
+        self._EmbedText = params.get("EmbedText")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33208,6 +33387,50 @@ class ExpressionConfigInfo(AbstractModel):
         
 
 
+class ExtractBlindWatermarkConfig(AbstractModel):
+    """提取盲水印配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        """能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FaceConfigureInfo(AbstractModel):
     """人脸识别任务控制参数
 
@@ -36702,10 +36925,14 @@ class ImageTaskInput(AbstractModel):
         :param _EraseConfig: 图片擦除配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type EraseConfig: :class:`tencentcloud.mps.v20190612.models.ImageEraseConfig`
+        :param _BlindWatermarkConfig: 盲水印配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlindWatermarkConfig: :class:`tencentcloud.mps.v20190612.models.BlindWatermarkConfig`
         """
         self._EncodeConfig = None
         self._EnhanceConfig = None
         self._EraseConfig = None
+        self._BlindWatermarkConfig = None
 
     @property
     def EncodeConfig(self):
@@ -36743,6 +36970,18 @@ class ImageTaskInput(AbstractModel):
     def EraseConfig(self, EraseConfig):
         self._EraseConfig = EraseConfig
 
+    @property
+    def BlindWatermarkConfig(self):
+        """盲水印配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.BlindWatermarkConfig`
+        """
+        return self._BlindWatermarkConfig
+
+    @BlindWatermarkConfig.setter
+    def BlindWatermarkConfig(self, BlindWatermarkConfig):
+        self._BlindWatermarkConfig = BlindWatermarkConfig
+
 
     def _deserialize(self, params):
         if params.get("EncodeConfig") is not None:
@@ -36754,6 +36993,9 @@ class ImageTaskInput(AbstractModel):
         if params.get("EraseConfig") is not None:
             self._EraseConfig = ImageEraseConfig()
             self._EraseConfig._deserialize(params.get("EraseConfig"))
+        if params.get("BlindWatermarkConfig") is not None:
+            self._BlindWatermarkConfig = BlindWatermarkConfig()
+            self._BlindWatermarkConfig._deserialize(params.get("BlindWatermarkConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -53923,6 +54165,50 @@ class RegionInfo(AbstractModel):
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RemoveBlindWatermarkConfig(AbstractModel):
+    """移除盲水印配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        """能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

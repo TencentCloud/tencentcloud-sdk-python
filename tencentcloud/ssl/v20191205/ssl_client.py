@@ -1459,6 +1459,29 @@ class SslClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def UploadUpdateCertificateInstance(self, request):
+        """更新证书内容（证书ID不变）并更新关联的云资源，本接口为异步接口， 调用之后DeployRecordId为0表示任务进行中， 重复请求这个接口， 当返回DeployRecordId大于0则表示任务创建成功。 未创建成功则会抛出异常
+
+        :param request: Request instance for UploadUpdateCertificateInstance.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.UploadUpdateCertificateInstanceRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.UploadUpdateCertificateInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UploadUpdateCertificateInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.UploadUpdateCertificateInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def VerifyManager(self, request):
         """重新核验管理人
 

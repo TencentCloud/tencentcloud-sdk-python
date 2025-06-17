@@ -25152,7 +25152,7 @@ class RateMsgRecordRequest(AbstractModel):
         r"""
         :param _BotAppKey: 应用appKey
         :type BotAppKey: str
-        :param _RecordId: 消息ID
+        :param _RecordId: 消息ID 【大模型回复答案的RecordID】
         :type RecordId: str
         :param _Score: 1点赞2点踩
         :type Score: int
@@ -25177,7 +25177,7 @@ class RateMsgRecordRequest(AbstractModel):
 
     @property
     def RecordId(self):
-        """消息ID
+        """消息ID 【大模型回复答案的RecordID】
         :rtype: str
         """
         return self._RecordId

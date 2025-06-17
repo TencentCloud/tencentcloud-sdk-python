@@ -5887,7 +5887,7 @@ class ModifyFileSystemAutoScaleUpRuleResponse(AbstractModel):
         :type Status: int
         :param _ScaleUpThreshold: 扩容阈值,范围[10-90]
         :type ScaleUpThreshold: int
-        :param _TargetThreshold: 扩容后达到阈值,范围[10-90]
+        :param _TargetThreshold: 扩容后达到阈值,范围[1-90]
         :type TargetThreshold: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5933,7 +5933,7 @@ class ModifyFileSystemAutoScaleUpRuleResponse(AbstractModel):
 
     @property
     def TargetThreshold(self):
-        """扩容后达到阈值,范围[10-90]
+        """扩容后达到阈值,范围[1-90]
         :rtype: int
         """
         return self._TargetThreshold

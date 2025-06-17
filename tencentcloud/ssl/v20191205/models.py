@@ -21323,6 +21323,187 @@ class UploadRevokeLetterResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class UploadUpdateCertificateInstanceRequest(AbstractModel):
+    """UploadUpdateCertificateInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OldCertificateId: 一键更新的旧证书ID。 通过查询该证书ID绑定的云资源，然后使用新证书对这些云资源进行更新
+        :type OldCertificateId: str
+        :param _ResourceTypes: 需要部署的资源类型，参数值可选（小写）：clb
+        :type ResourceTypes: list of str
+        :param _CertificatePublicKey: 公钥证书
+        :type CertificatePublicKey: str
+        :param _CertificatePrivateKey: 私钥证书
+        :type CertificatePrivateKey: str
+        :param _ResourceTypesRegions: 云资源需要部署的地域列表，支持地域的云资源类型必传，取值：clb
+        :type ResourceTypesRegions: list of ResourceTypeRegions
+        """
+        self._OldCertificateId = None
+        self._ResourceTypes = None
+        self._CertificatePublicKey = None
+        self._CertificatePrivateKey = None
+        self._ResourceTypesRegions = None
+
+    @property
+    def OldCertificateId(self):
+        """一键更新的旧证书ID。 通过查询该证书ID绑定的云资源，然后使用新证书对这些云资源进行更新
+        :rtype: str
+        """
+        return self._OldCertificateId
+
+    @OldCertificateId.setter
+    def OldCertificateId(self, OldCertificateId):
+        self._OldCertificateId = OldCertificateId
+
+    @property
+    def ResourceTypes(self):
+        """需要部署的资源类型，参数值可选（小写）：clb
+        :rtype: list of str
+        """
+        return self._ResourceTypes
+
+    @ResourceTypes.setter
+    def ResourceTypes(self, ResourceTypes):
+        self._ResourceTypes = ResourceTypes
+
+    @property
+    def CertificatePublicKey(self):
+        """公钥证书
+        :rtype: str
+        """
+        return self._CertificatePublicKey
+
+    @CertificatePublicKey.setter
+    def CertificatePublicKey(self, CertificatePublicKey):
+        self._CertificatePublicKey = CertificatePublicKey
+
+    @property
+    def CertificatePrivateKey(self):
+        """私钥证书
+        :rtype: str
+        """
+        return self._CertificatePrivateKey
+
+    @CertificatePrivateKey.setter
+    def CertificatePrivateKey(self, CertificatePrivateKey):
+        self._CertificatePrivateKey = CertificatePrivateKey
+
+    @property
+    def ResourceTypesRegions(self):
+        """云资源需要部署的地域列表，支持地域的云资源类型必传，取值：clb
+        :rtype: list of ResourceTypeRegions
+        """
+        return self._ResourceTypesRegions
+
+    @ResourceTypesRegions.setter
+    def ResourceTypesRegions(self, ResourceTypesRegions):
+        self._ResourceTypesRegions = ResourceTypesRegions
+
+
+    def _deserialize(self, params):
+        self._OldCertificateId = params.get("OldCertificateId")
+        self._ResourceTypes = params.get("ResourceTypes")
+        self._CertificatePublicKey = params.get("CertificatePublicKey")
+        self._CertificatePrivateKey = params.get("CertificatePrivateKey")
+        if params.get("ResourceTypesRegions") is not None:
+            self._ResourceTypesRegions = []
+            for item in params.get("ResourceTypesRegions"):
+                obj = ResourceTypeRegions()
+                obj._deserialize(item)
+                self._ResourceTypesRegions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UploadUpdateCertificateInstanceResponse(AbstractModel):
+    """UploadUpdateCertificateInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeployRecordId: 云资源更新任务ID， DeployRecordId为0表示任务进行中， 重复请求这个接口， 当返回DeployRecordId大于0则表示任务创建成功。 未创建成功则会抛出异常
+        :type DeployRecordId: int
+        :param _DeployStatus: 更新任务创建状态；1表示创建成功； 0表示当前存在更新中的任务，未创建新的更新任务；返回值DeployRecordId为更新中的任务ID
+        :type DeployStatus: int
+        :param _UpdateSyncProgress: 更新异步创建任务进度详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateSyncProgress: list of UpdateSyncProgress
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DeployRecordId = None
+        self._DeployStatus = None
+        self._UpdateSyncProgress = None
+        self._RequestId = None
+
+    @property
+    def DeployRecordId(self):
+        """云资源更新任务ID， DeployRecordId为0表示任务进行中， 重复请求这个接口， 当返回DeployRecordId大于0则表示任务创建成功。 未创建成功则会抛出异常
+        :rtype: int
+        """
+        return self._DeployRecordId
+
+    @DeployRecordId.setter
+    def DeployRecordId(self, DeployRecordId):
+        self._DeployRecordId = DeployRecordId
+
+    @property
+    def DeployStatus(self):
+        """更新任务创建状态；1表示创建成功； 0表示当前存在更新中的任务，未创建新的更新任务；返回值DeployRecordId为更新中的任务ID
+        :rtype: int
+        """
+        return self._DeployStatus
+
+    @DeployStatus.setter
+    def DeployStatus(self, DeployStatus):
+        self._DeployStatus = DeployStatus
+
+    @property
+    def UpdateSyncProgress(self):
+        """更新异步创建任务进度详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of UpdateSyncProgress
+        """
+        return self._UpdateSyncProgress
+
+    @UpdateSyncProgress.setter
+    def UpdateSyncProgress(self, UpdateSyncProgress):
+        self._UpdateSyncProgress = UpdateSyncProgress
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DeployRecordId = params.get("DeployRecordId")
+        self._DeployStatus = params.get("DeployStatus")
+        if params.get("UpdateSyncProgress") is not None:
+            self._UpdateSyncProgress = []
+            for item in params.get("UpdateSyncProgress"):
+                obj = UpdateSyncProgress()
+                obj._deserialize(item)
+                self._UpdateSyncProgress.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class VODInstanceList(AbstractModel):
     """vod实例详情 - 异步关联云资源数据结构
 
