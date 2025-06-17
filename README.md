@@ -102,7 +102,6 @@ try:
     cred = credential.Credential(
         os.environ.get("TENCENTCLOUD_SECRET_ID"),
         os.environ.get("TENCENTCLOUD_SECRET_KEY"))
-    cred = credential.Credential("SecretId", "SecretKey")
 
     # 实例化一个http选项，可选的，没有特殊需求可以跳过。
     http_profile = HttpProfile()
