@@ -5800,13 +5800,13 @@ class ModifyFileSystemAutoScaleUpRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileSystemId: 文件系统ID，通过查询文件系统列表获取；[DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170)
+        :param _FileSystemId: 文件系统 ID，通过查询文件系统列表获取；[DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170)
         :type FileSystemId: str
         :param _ScaleUpThreshold: 扩容阈值，范围[10-90]
         :type ScaleUpThreshold: int
-        :param _TargetThreshold: 扩容后目标阈值,范围[10-90],该值要小于ScaleUpThreshold
+        :param _TargetThreshold: 扩容后目标阈值，范围[1-90]，该值要小于 ScaleUpThreshold
         :type TargetThreshold: int
-        :param _Status: 规则状态0:关闭，1 开启；不传保留原状态
+        :param _Status: 规则状态 0：关闭，1：开启；不传保留原状态
         :type Status: int
         """
         self._FileSystemId = None
@@ -5816,7 +5816,7 @@ class ModifyFileSystemAutoScaleUpRuleRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        """文件系统ID，通过查询文件系统列表获取；[DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170)
+        """文件系统 ID，通过查询文件系统列表获取；[DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170)
         :rtype: str
         """
         return self._FileSystemId
@@ -5838,7 +5838,7 @@ class ModifyFileSystemAutoScaleUpRuleRequest(AbstractModel):
 
     @property
     def TargetThreshold(self):
-        """扩容后目标阈值,范围[10-90],该值要小于ScaleUpThreshold
+        """扩容后目标阈值，范围[1-90]，该值要小于 ScaleUpThreshold
         :rtype: int
         """
         return self._TargetThreshold
@@ -5849,7 +5849,7 @@ class ModifyFileSystemAutoScaleUpRuleRequest(AbstractModel):
 
     @property
     def Status(self):
-        """规则状态0:关闭，1 开启；不传保留原状态
+        """规则状态 0：关闭，1：开启；不传保留原状态
         :rtype: int
         """
         return self._Status
@@ -5881,13 +5881,13 @@ class ModifyFileSystemAutoScaleUpRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileSystemId: 文件系统id
+        :param _FileSystemId: 文件系统 ID
         :type FileSystemId: str
-        :param _Status: 规则状态0:关闭，1 开启
+        :param _Status: 规则状态 0：关闭，1：开启
         :type Status: int
-        :param _ScaleUpThreshold: 扩容阈值,范围[10-90]
+        :param _ScaleUpThreshold: 扩容阈值，范围[10-90]
         :type ScaleUpThreshold: int
-        :param _TargetThreshold: 扩容后达到阈值,范围[1-90]
+        :param _TargetThreshold: 扩容后达到阈值，范围[1-90]
         :type TargetThreshold: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5900,7 +5900,7 @@ class ModifyFileSystemAutoScaleUpRuleResponse(AbstractModel):
 
     @property
     def FileSystemId(self):
-        """文件系统id
+        """文件系统 ID
         :rtype: str
         """
         return self._FileSystemId
@@ -5911,7 +5911,7 @@ class ModifyFileSystemAutoScaleUpRuleResponse(AbstractModel):
 
     @property
     def Status(self):
-        """规则状态0:关闭，1 开启
+        """规则状态 0：关闭，1：开启
         :rtype: int
         """
         return self._Status
@@ -5922,7 +5922,7 @@ class ModifyFileSystemAutoScaleUpRuleResponse(AbstractModel):
 
     @property
     def ScaleUpThreshold(self):
-        """扩容阈值,范围[10-90]
+        """扩容阈值，范围[10-90]
         :rtype: int
         """
         return self._ScaleUpThreshold
@@ -5933,7 +5933,7 @@ class ModifyFileSystemAutoScaleUpRuleResponse(AbstractModel):
 
     @property
     def TargetThreshold(self):
-        """扩容后达到阈值,范围[1-90]
+        """扩容后达到阈值，范围[1-90]
         :rtype: int
         """
         return self._TargetThreshold

@@ -8773,6 +8773,146 @@ class ProjectListData(AbstractModel):
         
 
 
+class UserGroupDTO(AbstractModel):
+    """用户组
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        :param _GroupName: 用户组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupName: str
+        :param _ParentId: 父节点id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParentId: int
+        :param _IsDefault: 是否为默认
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsDefault: int
+        :param _AdminUserId: 管理员用户id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdminUserId: str
+        :param _Description: 描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _Location: 定位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Location: int
+        """
+        self._Id = None
+        self._GroupName = None
+        self._ParentId = None
+        self._IsDefault = None
+        self._AdminUserId = None
+        self._Description = None
+        self._Location = None
+
+    @property
+    def Id(self):
+        """id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def GroupName(self):
+        """用户组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def ParentId(self):
+        """父节点id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ParentId
+
+    @ParentId.setter
+    def ParentId(self, ParentId):
+        self._ParentId = ParentId
+
+    @property
+    def IsDefault(self):
+        """是否为默认
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._IsDefault
+
+    @IsDefault.setter
+    def IsDefault(self, IsDefault):
+        self._IsDefault = IsDefault
+
+    @property
+    def AdminUserId(self):
+        """管理员用户id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AdminUserId
+
+    @AdminUserId.setter
+    def AdminUserId(self, AdminUserId):
+        self._AdminUserId = AdminUserId
+
+    @property
+    def Description(self):
+        """描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Location(self):
+        """定位
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._GroupName = params.get("GroupName")
+        self._ParentId = params.get("ParentId")
+        self._IsDefault = params.get("IsDefault")
+        self._AdminUserId = params.get("AdminUserId")
+        self._Description = params.get("Description")
+        self._Location = params.get("Location")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class UserIdAndUserName(AbstractModel):
     """用户ID和用户名
 
@@ -9589,6 +9729,9 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
         :param _EmailActivationStatus: 邮箱激活状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type EmailActivationStatus: int
+        :param _UserGroupList: 用户组信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserGroupList: list of UserGroupDTO
         """
         self._Id = None
         self._RoleList = None
@@ -9613,6 +9756,7 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
         self._InValidateAppRange = None
         self._AppOpenUserId = None
         self._EmailActivationStatus = None
+        self._UserGroupList = None
 
     @property
     def Id(self):
@@ -9886,6 +10030,18 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
     def EmailActivationStatus(self, EmailActivationStatus):
         self._EmailActivationStatus = EmailActivationStatus
 
+    @property
+    def UserGroupList(self):
+        """用户组信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of UserGroupDTO
+        """
+        return self._UserGroupList
+
+    @UserGroupList.setter
+    def UserGroupList(self, UserGroupList):
+        self._UserGroupList = UserGroupList
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -9916,6 +10072,12 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
         self._InValidateAppRange = params.get("InValidateAppRange")
         self._AppOpenUserId = params.get("AppOpenUserId")
         self._EmailActivationStatus = params.get("EmailActivationStatus")
+        if params.get("UserGroupList") is not None:
+            self._UserGroupList = []
+            for item in params.get("UserGroupList"):
+                obj = UserGroupDTO()
+                obj._deserialize(item)
+                self._UserGroupList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -22022,7 +22022,7 @@ class DescribeTableColumnsRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同，可使用[查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
         :type InstanceId: str
-        :param _Database: 数据库名称，可使用[查询数据库](https://cloud.tencent.com/document/api/253/7167)接口获得。
+        :param _Database: 数据库名称，可使用[查询数据库](https://cloud.tencent.com/document/api/236/17493)接口获得。
         :type Database: str
         :param _Table: 数据库中的表的名称。
         :type Table: str
@@ -22044,7 +22044,7 @@ class DescribeTableColumnsRequest(AbstractModel):
 
     @property
     def Database(self):
-        """数据库名称，可使用[查询数据库](https://cloud.tencent.com/document/api/253/7167)接口获得。
+        """数据库名称，可使用[查询数据库](https://cloud.tencent.com/document/api/236/17493)接口获得。
         :rtype: str
         """
         return self._Database

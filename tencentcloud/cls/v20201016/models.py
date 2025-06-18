@@ -8107,9 +8107,12 @@ class CreateLogsetRequest(AbstractModel):
         :type LogsetName: str
         :param _Tags: 标签描述列表。最大支持10个标签键值对，并且不能有重复的键值对
         :type Tags: list of Tag
+        :param _LogsetId: 日志集ID，格式为：用户自定义部分-用户appid，用户自定义部分仅支持小写字母、数字和-，且不能以-开头和结尾，长度为3至40字符，尾部需要使用-拼接用户appid
+        :type LogsetId: str
         """
         self._LogsetName = None
         self._Tags = None
+        self._LogsetId = None
 
     @property
     def LogsetName(self):
@@ -8133,6 +8136,17 @@ class CreateLogsetRequest(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def LogsetId(self):
+        """日志集ID，格式为：用户自定义部分-用户appid，用户自定义部分仅支持小写字母、数字和-，且不能以-开头和结尾，长度为3至40字符，尾部需要使用-拼接用户appid
+        :rtype: str
+        """
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
 
     def _deserialize(self, params):
         self._LogsetName = params.get("LogsetName")
@@ -8142,6 +8156,7 @@ class CreateLogsetRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._LogsetId = params.get("LogsetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

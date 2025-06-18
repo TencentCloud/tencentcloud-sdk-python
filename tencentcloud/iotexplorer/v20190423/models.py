@@ -18,6 +18,77 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AISearchInfo(AbstractModel):
+    """AI视频搜索结果结构体。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Summary: 基于搜索结果的总结
+        :type Summary: str
+        :param _Targets: 视频结果集
+        :type Targets: list of TargetInfo
+        :param _VideoURL: 视频回放URL
+        :type VideoURL: str
+        """
+        self._Summary = None
+        self._Targets = None
+        self._VideoURL = None
+
+    @property
+    def Summary(self):
+        """基于搜索结果的总结
+        :rtype: str
+        """
+        return self._Summary
+
+    @Summary.setter
+    def Summary(self, Summary):
+        self._Summary = Summary
+
+    @property
+    def Targets(self):
+        """视频结果集
+        :rtype: list of TargetInfo
+        """
+        return self._Targets
+
+    @Targets.setter
+    def Targets(self, Targets):
+        self._Targets = Targets
+
+    @property
+    def VideoURL(self):
+        """视频回放URL
+        :rtype: str
+        """
+        return self._VideoURL
+
+    @VideoURL.setter
+    def VideoURL(self, VideoURL):
+        self._VideoURL = VideoURL
+
+
+    def _deserialize(self, params):
+        self._Summary = params.get("Summary")
+        if params.get("Targets") is not None:
+            self._Targets = []
+            for item in params.get("Targets"):
+                obj = TargetInfo()
+                obj._deserialize(item)
+                self._Targets.append(obj)
+        self._VideoURL = params.get("VideoURL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ActivateDeviceInfo(AbstractModel):
     """设备激活详情信息
 
@@ -3009,6 +3080,145 @@ class CountDataInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CreateAISearchTaskAsyncRequest(AbstractModel):
+    """CreateAISearchTaskAsync请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品ID
+        :type ProductId: str
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        :param _Query: 自然语言查询
+        :type Query: str
+        :param _SummaryLang: 搜索结果总结的语言类型，支持的类型有：en-US、zh-CN、id-ID、th-TH
+        :type SummaryLang: str
+        :param _ChannelId: 通道ID
+        :type ChannelId: int
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._Query = None
+        self._SummaryLang = None
+        self._ChannelId = None
+
+    @property
+    def ProductId(self):
+        """产品ID
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        """设备名称
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def Query(self):
+        """自然语言查询
+        :rtype: str
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+    @property
+    def SummaryLang(self):
+        """搜索结果总结的语言类型，支持的类型有：en-US、zh-CN、id-ID、th-TH
+        :rtype: str
+        """
+        return self._SummaryLang
+
+    @SummaryLang.setter
+    def SummaryLang(self, SummaryLang):
+        self._SummaryLang = SummaryLang
+
+    @property
+    def ChannelId(self):
+        """通道ID
+        :rtype: int
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._Query = params.get("Query")
+        self._SummaryLang = params.get("SummaryLang")
+        self._ChannelId = params.get("ChannelId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAISearchTaskAsyncResponse(AbstractModel):
+    """CreateAISearchTaskAsync返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        """任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateBatchProductionRequest(AbstractModel):
@@ -7040,6 +7250,102 @@ class DeleteTopicRuleResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAISearchTaskAsyncRequest(AbstractModel):
+    """DescribeAISearchTaskAsync请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        """任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAISearchTaskAsyncResponse(AbstractModel):
+    """DescribeAISearchTaskAsync返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 状态。0-初始状态；1-正在处理；2-处理失败；3-成功
+        :type Status: int
+        :param _Data: 任务处理结果数据
+        :type Data: :class:`tencentcloud.iotexplorer.v20190423.models.AISearchInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        """状态。0-初始状态；1-正在处理；2-处理失败；3-成功
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Data(self):
+        """任务处理结果数据
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.AISearchInfo`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        if params.get("Data") is not None:
+            self._Data = AISearchInfo()
+            self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 
 

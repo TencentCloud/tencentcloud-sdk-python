@@ -2688,6 +2688,10 @@ class ServerBaseConfig(AbstractModel):
         :type OperationMode: str
         :param _TimerScale: 定时扩缩容配置
         :type TimerScale: list of TimerScale
+        :param _EntryPoint: Dockerfile EntryPoint 参数
+        :type EntryPoint: list of str
+        :param _Cmd: Dockerfile Cmd 参数
+        :type Cmd: list of str
         """
         self._EnvId = None
         self._ServerName = None
@@ -2714,6 +2718,8 @@ class ServerBaseConfig(AbstractModel):
         self._InternalDomain = None
         self._OperationMode = None
         self._TimerScale = None
+        self._EntryPoint = None
+        self._Cmd = None
 
     @property
     def EnvId(self):
@@ -2990,6 +2996,28 @@ class ServerBaseConfig(AbstractModel):
     def TimerScale(self, TimerScale):
         self._TimerScale = TimerScale
 
+    @property
+    def EntryPoint(self):
+        """Dockerfile EntryPoint 参数
+        :rtype: list of str
+        """
+        return self._EntryPoint
+
+    @EntryPoint.setter
+    def EntryPoint(self, EntryPoint):
+        self._EntryPoint = EntryPoint
+
+    @property
+    def Cmd(self):
+        """Dockerfile Cmd 参数
+        :rtype: list of str
+        """
+        return self._Cmd
+
+    @Cmd.setter
+    def Cmd(self, Cmd):
+        self._Cmd = Cmd
+
 
     def _deserialize(self, params):
         self._EnvId = params.get("EnvId")
@@ -3027,6 +3055,8 @@ class ServerBaseConfig(AbstractModel):
                 obj = TimerScale()
                 obj._deserialize(item)
                 self._TimerScale.append(obj)
+        self._EntryPoint = params.get("EntryPoint")
+        self._Cmd = params.get("Cmd")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

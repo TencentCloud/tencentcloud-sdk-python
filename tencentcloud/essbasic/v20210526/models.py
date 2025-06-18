@@ -29548,7 +29548,7 @@ class SyncProxyOrganizationOperatorsRequest(AbstractModel):
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param _OperatorType: 操作类型，对应的操作
 <ul><li> **CREATE** :新增员工</li>
-<li> **UPDATE** :修改员工</li>
+<li> **UPDATE** :修改员工（仅支持修改未实名员工的信息，如果已经实名并加入企业的员工基础信息修改需要到小程序中进行）</li>
 <li> **RESIGN** :离职员工</li></ul>
         :type OperatorType: str
         :param _ProxyOrganizationOperators: 员工信息列表，最多支持200个
@@ -29583,7 +29583,7 @@ class SyncProxyOrganizationOperatorsRequest(AbstractModel):
     def OperatorType(self):
         """操作类型，对应的操作
 <ul><li> **CREATE** :新增员工</li>
-<li> **UPDATE** :修改员工</li>
+<li> **UPDATE** :修改员工（仅支持修改未实名员工的信息，如果已经实名并加入企业的员工基础信息修改需要到小程序中进行）</li>
 <li> **RESIGN** :离职员工</li></ul>
         :rtype: str
         """

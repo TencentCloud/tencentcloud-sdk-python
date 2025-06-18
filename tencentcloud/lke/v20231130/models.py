@@ -14666,11 +14666,15 @@ class KnowledgeDetail(AbstractModel):
         :param _ExceedCharSize: 超量字符数
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExceedCharSize: str
+        :param _IsSharedKnowledge: 是否共享知识库类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsSharedKnowledge: bool
         """
         self._AppName = None
         self._UsedCharSize = None
         self._Proportion = None
         self._ExceedCharSize = None
+        self._IsSharedKnowledge = None
 
     @property
     def AppName(self):
@@ -14720,12 +14724,25 @@ class KnowledgeDetail(AbstractModel):
     def ExceedCharSize(self, ExceedCharSize):
         self._ExceedCharSize = ExceedCharSize
 
+    @property
+    def IsSharedKnowledge(self):
+        """是否共享知识库类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsSharedKnowledge
+
+    @IsSharedKnowledge.setter
+    def IsSharedKnowledge(self, IsSharedKnowledge):
+        self._IsSharedKnowledge = IsSharedKnowledge
+
 
     def _deserialize(self, params):
         self._AppName = params.get("AppName")
         self._UsedCharSize = params.get("UsedCharSize")
         self._Proportion = params.get("Proportion")
         self._ExceedCharSize = params.get("ExceedCharSize")
+        self._IsSharedKnowledge = params.get("IsSharedKnowledge")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21771,7 +21788,7 @@ class ModifyDocRequest(AbstractModel):
         :type DocBizId: str
         :param _IsRefer: 是否引用链接
         :type IsRefer: bool
-        :param _AttrRange: 标签适用范围 1：全部，2：按条件
+        :param _AttrRange: 标签适用范围，需要传参为1
         :type AttrRange: int
         :param _LoginUin: 登录用户主账号(集成商模式必填)
         :type LoginUin: str
@@ -21790,6 +21807,8 @@ class ModifyDocRequest(AbstractModel):
         :type ExpireEnd: str
         :param _CateBizId: 分类ID
         :type CateBizId: str
+        :param _IsDownload: 是否可下载，IsRefer为true并且ReferUrlType为0时，该值才有意义
+        :type IsDownload: bool
         """
         self._BotBizId = None
         self._DocBizId = None
@@ -21803,6 +21822,7 @@ class ModifyDocRequest(AbstractModel):
         self._ExpireStart = None
         self._ExpireEnd = None
         self._CateBizId = None
+        self._IsDownload = None
 
     @property
     def BotBizId(self):
@@ -21839,7 +21859,7 @@ class ModifyDocRequest(AbstractModel):
 
     @property
     def AttrRange(self):
-        """标签适用范围 1：全部，2：按条件
+        """标签适用范围，需要传参为1
         :rtype: int
         """
         return self._AttrRange
@@ -21937,6 +21957,17 @@ class ModifyDocRequest(AbstractModel):
     def CateBizId(self, CateBizId):
         self._CateBizId = CateBizId
 
+    @property
+    def IsDownload(self):
+        """是否可下载，IsRefer为true并且ReferUrlType为0时，该值才有意义
+        :rtype: bool
+        """
+        return self._IsDownload
+
+    @IsDownload.setter
+    def IsDownload(self, IsDownload):
+        self._IsDownload = IsDownload
+
 
     def _deserialize(self, params):
         self._BotBizId = params.get("BotBizId")
@@ -21956,6 +21987,7 @@ class ModifyDocRequest(AbstractModel):
         self._ExpireStart = params.get("ExpireStart")
         self._ExpireEnd = params.get("ExpireEnd")
         self._CateBizId = params.get("CateBizId")
+        self._IsDownload = params.get("IsDownload")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

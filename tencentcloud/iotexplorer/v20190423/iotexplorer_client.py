@@ -256,6 +256,29 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAISearchTaskAsync(self, request):
+        """创建视频语义异步搜索任务
+
+        :param request: Request instance for CreateAISearchTaskAsync.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreateAISearchTaskAsyncRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.CreateAISearchTaskAsyncResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAISearchTaskAsync", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAISearchTaskAsyncResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateBatchProduction(self, request):
         """用于新建批量生产设备
 
@@ -960,6 +983,29 @@ class IotexplorerClient(AbstractClient):
             body = self.call("DeleteTopicRule", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteTopicRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAISearchTaskAsync(self, request):
+        """获取视频语义异步搜索任务详情
+
+        :param request: Request instance for DescribeAISearchTaskAsync.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeAISearchTaskAsyncRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeAISearchTaskAsyncResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAISearchTaskAsync", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAISearchTaskAsyncResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

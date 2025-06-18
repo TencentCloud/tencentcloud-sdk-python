@@ -723,6 +723,29 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteAlarmShields(self, request):
+        """删除告警屏蔽规则
+
+        :param request: Request instance for DeleteAlarmShields.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DeleteAlarmShieldsRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DeleteAlarmShieldsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAlarmShields", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAlarmShieldsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteAlertRules(self, request):
         """批量删除 Prometheus 报警规则
 
