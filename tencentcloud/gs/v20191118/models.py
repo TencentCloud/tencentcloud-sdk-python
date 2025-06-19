@@ -39,6 +39,8 @@ class AndroidApp(AbstractModel):
         :type UserId: str
         :param _AppMode: 应用模式（NORMAL : 普通模式；ADVANCED : 高级模式）
         :type AppMode: str
+        :param _UpdateState: 应用更新状态，取值：UPLOADING 上传中、CREATING 创建中、CREATE_FAIL 创建失败、CREATE_SUCCESS 创建成功、NORMAL 默认状态
+        :type UpdateState: str
         """
         self._AndroidAppId = None
         self._Name = None
@@ -47,6 +49,7 @@ class AndroidApp(AbstractModel):
         self._CreateTime = None
         self._UserId = None
         self._AppMode = None
+        self._UpdateState = None
 
     @property
     def AndroidAppId(self):
@@ -125,6 +128,17 @@ class AndroidApp(AbstractModel):
     def AppMode(self, AppMode):
         self._AppMode = AppMode
 
+    @property
+    def UpdateState(self):
+        """应用更新状态，取值：UPLOADING 上传中、CREATING 创建中、CREATE_FAIL 创建失败、CREATE_SUCCESS 创建成功、NORMAL 默认状态
+        :rtype: str
+        """
+        return self._UpdateState
+
+    @UpdateState.setter
+    def UpdateState(self, UpdateState):
+        self._UpdateState = UpdateState
+
 
     def _deserialize(self, params):
         self._AndroidAppId = params.get("AndroidAppId")
@@ -139,6 +153,7 @@ class AndroidApp(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._UserId = params.get("UserId")
         self._AppMode = params.get("AppMode")
+        self._UpdateState = params.get("UpdateState")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4120,7 +4135,7 @@ class DescribeAndroidAppsRequest(AbstractModel):
         :type Limit: int
         :param _AndroidAppIds: 应用ID数组
         :type AndroidAppIds: list of str
-        :param _Filters: 过滤条件，支持过滤的字段有：UserId
+        :param _Filters: 过滤条件，支持过滤的字段有：UserId、State、UpdateState、Name、AppMode 。其中 Name 为模糊匹配，其他参数为精确匹配。
         :type Filters: list of Filter
         """
         self._Offset = None
@@ -4163,7 +4178,7 @@ class DescribeAndroidAppsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤条件，支持过滤的字段有：UserId
+        """过滤条件，支持过滤的字段有：UserId、State、UpdateState、Name、AppMode 。其中 Name 为模糊匹配，其他参数为精确匹配。
         :rtype: list of Filter
         """
         return self._Filters

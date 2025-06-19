@@ -578,7 +578,7 @@ class BackupStatus(AbstractModel):
         :type Timeout: int
         :param _BackupJobId: 备份实例id
         :type BackupJobId: int
-        :param _TaskId: 实例对应snapshoit的id
+        :param _TaskId: 实例对应Snapshot的id
         :type TaskId: int
         """
         self._JobId = None
@@ -765,7 +765,7 @@ class BackupStatus(AbstractModel):
 
     @property
     def TaskId(self):
-        """实例对应snapshoit的id
+        """实例对应Snapshot的id
         :rtype: int
         """
         return self._TaskId
@@ -15546,7 +15546,7 @@ class ZoneInfo(AbstractModel):
         :type Desc: str
         :param _ZoneId: 可用区唯一标记
         :type ZoneId: int
-        :param _Encrypt: Encryptid
+        :param _Encrypt: Encrypted
         :type Encrypt: int
         :param _Main: 是否为主力园区
         :type Main: bool
@@ -15595,7 +15595,7 @@ class ZoneInfo(AbstractModel):
 
     @property
     def Encrypt(self):
-        """Encryptid
+        """Encrypted
         :rtype: int
         """
         return self._Encrypt

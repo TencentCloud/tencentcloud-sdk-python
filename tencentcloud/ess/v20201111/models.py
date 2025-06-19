@@ -4526,11 +4526,22 @@ class CreateBatchOrganizationRegistrationTasksRequest(AbstractModel):
 <li>SHORT_H5：生成H5跳转短链</li>
 </ul>
         :type Endpoint: str
+        :param _BatchAuthMethod: 认证链接使用单链接还是多链接模式
+
+<ul>
+<li>0 - 多链接(默认)，指批量生成链接， 每一个企业会拥有一个认证链接，然后分别认证</li>
+<li>1 - 单链接 ， 指批量生成链接，然后会将多个链接聚合成一个链接，进行认证</li>
+</ul>
+
+p.s.
+请注意， 如果使用单链接的模式并且认证方式是授权书方式的时候，必须在接口中传递超管授权书。
+        :type BatchAuthMethod: int
         """
         self._Operator = None
         self._RegistrationOrganizations = None
         self._Agent = None
         self._Endpoint = None
+        self._BatchAuthMethod = None
 
     @property
     def Operator(self):
@@ -4587,6 +4598,25 @@ class CreateBatchOrganizationRegistrationTasksRequest(AbstractModel):
     def Endpoint(self, Endpoint):
         self._Endpoint = Endpoint
 
+    @property
+    def BatchAuthMethod(self):
+        """认证链接使用单链接还是多链接模式
+
+<ul>
+<li>0 - 多链接(默认)，指批量生成链接， 每一个企业会拥有一个认证链接，然后分别认证</li>
+<li>1 - 单链接 ， 指批量生成链接，然后会将多个链接聚合成一个链接，进行认证</li>
+</ul>
+
+p.s.
+请注意， 如果使用单链接的模式并且认证方式是授权书方式的时候，必须在接口中传递超管授权书。
+        :rtype: int
+        """
+        return self._BatchAuthMethod
+
+    @BatchAuthMethod.setter
+    def BatchAuthMethod(self, BatchAuthMethod):
+        self._BatchAuthMethod = BatchAuthMethod
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -4602,6 +4632,7 @@ class CreateBatchOrganizationRegistrationTasksRequest(AbstractModel):
             self._Agent = Agent()
             self._Agent._deserialize(params.get("Agent"))
         self._Endpoint = params.get("Endpoint")
+        self._BatchAuthMethod = params.get("BatchAuthMethod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

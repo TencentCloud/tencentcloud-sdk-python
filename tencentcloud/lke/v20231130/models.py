@@ -5868,6 +5868,85 @@ class DeleteSharedKnowledgeResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteVarRequest(AbstractModel):
+    """DeleteVar请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppBizId: 应用ID
+        :type AppBizId: str
+        :param _VarId: 变量ID
+        :type VarId: str
+        """
+        self._AppBizId = None
+        self._VarId = None
+
+    @property
+    def AppBizId(self):
+        """应用ID
+        :rtype: str
+        """
+        return self._AppBizId
+
+    @AppBizId.setter
+    def AppBizId(self, AppBizId):
+        self._AppBizId = AppBizId
+
+    @property
+    def VarId(self):
+        """变量ID
+        :rtype: str
+        """
+        return self._VarId
+
+    @VarId.setter
+    def VarId(self, VarId):
+        self._VarId = VarId
+
+
+    def _deserialize(self, params):
+        self._AppBizId = params.get("AppBizId")
+        self._VarId = params.get("VarId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteVarResponse(AbstractModel):
+    """DeleteVar返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeAppRequest(AbstractModel):
     """DescribeApp请求参数结构体
 
@@ -29356,6 +29435,175 @@ class UpdateSharedKnowledgeResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._KnowledgeBizId = params.get("KnowledgeBizId")
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateVarRequest(AbstractModel):
+    """UpdateVar请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppBizId: 应用ID
+        :type AppBizId: str
+        :param _VarId: 变量ID
+        :type VarId: str
+        :param _VarName: 变量名称，最大支持50个字符
+        :type VarName: str
+        :param _VarDesc: 参数描述
+        :type VarDesc: str
+        :param _VarType: 参数类型
+        :type VarType: str
+        :param _VarDefaultValue: 自定义变量默认值
+        :type VarDefaultValue: str
+        :param _VarDefaultFileName: 自定义变量文件默认名称
+        :type VarDefaultFileName: str
+        """
+        self._AppBizId = None
+        self._VarId = None
+        self._VarName = None
+        self._VarDesc = None
+        self._VarType = None
+        self._VarDefaultValue = None
+        self._VarDefaultFileName = None
+
+    @property
+    def AppBizId(self):
+        """应用ID
+        :rtype: str
+        """
+        return self._AppBizId
+
+    @AppBizId.setter
+    def AppBizId(self, AppBizId):
+        self._AppBizId = AppBizId
+
+    @property
+    def VarId(self):
+        """变量ID
+        :rtype: str
+        """
+        return self._VarId
+
+    @VarId.setter
+    def VarId(self, VarId):
+        self._VarId = VarId
+
+    @property
+    def VarName(self):
+        """变量名称，最大支持50个字符
+        :rtype: str
+        """
+        return self._VarName
+
+    @VarName.setter
+    def VarName(self, VarName):
+        self._VarName = VarName
+
+    @property
+    def VarDesc(self):
+        """参数描述
+        :rtype: str
+        """
+        return self._VarDesc
+
+    @VarDesc.setter
+    def VarDesc(self, VarDesc):
+        self._VarDesc = VarDesc
+
+    @property
+    def VarType(self):
+        """参数类型
+        :rtype: str
+        """
+        return self._VarType
+
+    @VarType.setter
+    def VarType(self, VarType):
+        self._VarType = VarType
+
+    @property
+    def VarDefaultValue(self):
+        """自定义变量默认值
+        :rtype: str
+        """
+        return self._VarDefaultValue
+
+    @VarDefaultValue.setter
+    def VarDefaultValue(self, VarDefaultValue):
+        self._VarDefaultValue = VarDefaultValue
+
+    @property
+    def VarDefaultFileName(self):
+        """自定义变量文件默认名称
+        :rtype: str
+        """
+        return self._VarDefaultFileName
+
+    @VarDefaultFileName.setter
+    def VarDefaultFileName(self, VarDefaultFileName):
+        self._VarDefaultFileName = VarDefaultFileName
+
+
+    def _deserialize(self, params):
+        self._AppBizId = params.get("AppBizId")
+        self._VarId = params.get("VarId")
+        self._VarName = params.get("VarName")
+        self._VarDesc = params.get("VarDesc")
+        self._VarType = params.get("VarType")
+        self._VarDefaultValue = params.get("VarDefaultValue")
+        self._VarDefaultFileName = params.get("VarDefaultFileName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateVarResponse(AbstractModel):
+    """UpdateVar返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VarId: 变量ID
+        :type VarId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._VarId = None
+        self._RequestId = None
+
+    @property
+    def VarId(self):
+        """变量ID
+        :rtype: str
+        """
+        return self._VarId
+
+    @VarId.setter
+    def VarId(self, VarId):
+        self._VarId = VarId
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._VarId = params.get("VarId")
         self._RequestId = params.get("RequestId")
 
 

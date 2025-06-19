@@ -3266,6 +3266,8 @@ EvilLevel=100 请求有恶意
         :param _DeviceRiskCategory: 设备风险大类
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceRiskCategory: str
+        :param _Score: 验证码评分
+        :type Score: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3276,6 +3278,7 @@ EvilLevel=100 请求有恶意
         self._EvilBitmap = None
         self._SubmitCaptchaTime = None
         self._DeviceRiskCategory = None
+        self._Score = None
         self._RequestId = None
 
     @property
@@ -3367,6 +3370,17 @@ EvilLevel=100 请求有恶意
         self._DeviceRiskCategory = DeviceRiskCategory
 
     @property
+    def Score(self):
+        """验证码评分
+        :rtype: int
+        """
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -3386,6 +3400,7 @@ EvilLevel=100 请求有恶意
         self._EvilBitmap = params.get("EvilBitmap")
         self._SubmitCaptchaTime = params.get("SubmitCaptchaTime")
         self._DeviceRiskCategory = params.get("DeviceRiskCategory")
+        self._Score = params.get("Score")
         self._RequestId = params.get("RequestId")
 
 

@@ -16608,6 +16608,8 @@ class ExposesItem(AbstractModel):
         :type HasScan: str
         :param _AppId: 租户ID
         :type AppId: int
+        :param _AppIdStr: 租户ID字符串
+        :type AppIdStr: str
         """
         self._Provider = None
         self._CloudAccountName = None
@@ -16637,6 +16639,7 @@ class ExposesItem(AbstractModel):
         self._Uuid = None
         self._HasScan = None
         self._AppId = None
+        self._AppIdStr = None
 
     @property
     def Provider(self):
@@ -16946,6 +16949,17 @@ class ExposesItem(AbstractModel):
     def AppId(self, AppId):
         self._AppId = AppId
 
+    @property
+    def AppIdStr(self):
+        """租户ID字符串
+        :rtype: str
+        """
+        return self._AppIdStr
+
+    @AppIdStr.setter
+    def AppIdStr(self, AppIdStr):
+        self._AppIdStr = AppIdStr
+
 
     def _deserialize(self, params):
         self._Provider = params.get("Provider")
@@ -16976,6 +16990,7 @@ class ExposesItem(AbstractModel):
         self._Uuid = params.get("Uuid")
         self._HasScan = params.get("HasScan")
         self._AppId = params.get("AppId")
+        self._AppIdStr = params.get("AppIdStr")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

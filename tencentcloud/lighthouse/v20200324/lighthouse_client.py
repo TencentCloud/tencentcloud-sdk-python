@@ -2594,6 +2594,35 @@ class LighthouseClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def SyncBlueprint(self, request):
+        """本接口 (SyncBlueprint) 用于将自定义镜像同步到其它地域。
+
+        * 支持向多个地域同步。最多10个地域。
+        * 不支持向源地域同步。
+        * 只支持NORMAL状态的镜像进行同步。
+        * 不支持中国大陆地域和非中国大陆地域之间同步。
+        * 可以通过[DescribeBlueprints](https://cloud.tencent.com/document/api/1207/47689)查询镜像状态，当镜像状态为NORMAL时表示源地域同步结束。
+
+        :param request: Request instance for SyncBlueprint.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.SyncBlueprintRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.SyncBlueprintResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SyncBlueprint", params, headers=headers)
+            response = json.loads(body)
+            model = models.SyncBlueprintResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def TerminateDisks(self, request):
         """本接口（TerminateDisks）用于销毁一个或多个云硬盘。
         云硬盘状态必须处于SHUTDOWN（已隔离）状态。

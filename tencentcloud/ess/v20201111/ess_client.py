@@ -917,6 +917,8 @@ class EssClient(AbstractClient):
     def CreateFlowEvidenceReport(self, request):
         """提交申请出证报告任务并返回报告ID。
 
+        出证报告的示例样式可以参考 [出征报告.PDF](https://qcloudimg.tencent-cloud.cn/raw/a55214fcddaebbd1582cc9c57cc6cf1b.pdf)
+
         注意：
         <ul><li>使用此功能`需搭配出证套餐` ，使用前请联系对接的客户经理沟通。</li>
         <li>操作人必须是`发起方或者签署方企业的(非走授权书认证)法人或者超管`。</li>

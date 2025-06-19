@@ -98,6 +98,29 @@ class TioneClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateModelServiceAuthToken(self, request):
+        """创建一个 AuthToken
+
+        :param request: Request instance for CreateModelServiceAuthToken.
+        :type request: :class:`tencentcloud.tione.v20211111.models.CreateModelServiceAuthTokenRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CreateModelServiceAuthTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateModelServiceAuthToken", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateModelServiceAuthTokenResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateNotebook(self, request):
         """创建Notebook
 
@@ -227,6 +250,29 @@ class TioneClient(AbstractClient):
             body = self.call("DeleteModelService", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteModelServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteModelServiceAuthToken(self, request):
+        """删除一个 AuthToken
+
+        :param request: Request instance for DeleteModelServiceAuthToken.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DeleteModelServiceAuthTokenRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DeleteModelServiceAuthTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteModelServiceAuthToken", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteModelServiceAuthTokenResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -919,6 +965,52 @@ class TioneClient(AbstractClient):
             body = self.call("ModifyModelService", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyModelServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyModelServiceAuthToken(self, request):
+        """修改一个 AuthToken
+
+        :param request: Request instance for ModifyModelServiceAuthToken.
+        :type request: :class:`tencentcloud.tione.v20211111.models.ModifyModelServiceAuthTokenRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ModifyModelServiceAuthTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyModelServiceAuthToken", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyModelServiceAuthTokenResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyModelServiceAuthorization(self, request):
+        """修改服务鉴权配置
+
+        :param request: Request instance for ModifyModelServiceAuthorization.
+        :type request: :class:`tencentcloud.tione.v20211111.models.ModifyModelServiceAuthorizationRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ModifyModelServiceAuthorizationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyModelServiceAuthorization", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyModelServiceAuthorizationResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -18096,6 +18096,85 @@ BUNDLE_BANDWIDTH_NOT_SUPPORT: 套餐带宽不支持
         
 
 
+class SyncBlueprintRequest(AbstractModel):
+    """SyncBlueprint请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BlueprintId: 镜像ID。
+        :type BlueprintId: str
+        :param _DestinationRegions: 同步镜像的目的地域列表。
+        :type DestinationRegions: list of str
+        """
+        self._BlueprintId = None
+        self._DestinationRegions = None
+
+    @property
+    def BlueprintId(self):
+        """镜像ID。
+        :rtype: str
+        """
+        return self._BlueprintId
+
+    @BlueprintId.setter
+    def BlueprintId(self, BlueprintId):
+        self._BlueprintId = BlueprintId
+
+    @property
+    def DestinationRegions(self):
+        """同步镜像的目的地域列表。
+        :rtype: list of str
+        """
+        return self._DestinationRegions
+
+    @DestinationRegions.setter
+    def DestinationRegions(self, DestinationRegions):
+        self._DestinationRegions = DestinationRegions
+
+
+    def _deserialize(self, params):
+        self._BlueprintId = params.get("BlueprintId")
+        self._DestinationRegions = params.get("DestinationRegions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SyncBlueprintResponse(AbstractModel):
+    """SyncBlueprint返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class SystemDisk(AbstractModel):
     """描述了操作系统所在块设备即系统盘的信息。
 

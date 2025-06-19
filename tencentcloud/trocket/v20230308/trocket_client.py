@@ -1041,6 +1041,33 @@ class TrocketClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeMigrationTaskList(self, request):
+        """获取数据迁移任务列表，Filter参数使用说明如下：
+
+        TaskId，根据任务ID精确查找
+        InstanceId，根据实例ID精确查找
+        Type，根据任务类型精确查找
+
+        :param request: Request instance for DescribeMigrationTaskList.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeMigrationTaskListRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.DescribeMigrationTaskListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMigrationTaskList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMigrationTaskListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeProductSKUs(self, request):
         """查询产品售卖规格，针对 RocketMQ 5.x 集群。
 

@@ -535,6 +535,29 @@ class LkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteVar(self, request):
+        """删除变量
+
+        :param request: Request instance for DeleteVar.
+        :type request: :class:`tencentcloud.lke.v20231130.models.DeleteVarRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.DeleteVarResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteVar", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteVarResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeApp(self, request):
         """获取企业下应用详情
 
@@ -2492,6 +2515,29 @@ class LkeClient(AbstractClient):
             body = self.call("UpdateSharedKnowledge", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateSharedKnowledgeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateVar(self, request):
+        """更新变量
+
+        :param request: Request instance for UpdateVar.
+        :type request: :class:`tencentcloud.lke.v20231130.models.UpdateVarRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.UpdateVarResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateVar", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateVarResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

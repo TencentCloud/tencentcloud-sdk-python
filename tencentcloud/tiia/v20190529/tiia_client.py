@@ -370,32 +370,6 @@ class TiiaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DetectLabelBeta(self, request):
-        """图像标签测试接口
-
-        >
-        - 公共参数中的签名方式必须指定为V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
-
-        :param request: Request instance for DetectLabelBeta.
-        :type request: :class:`tencentcloud.tiia.v20190529.models.DetectLabelBetaRequest`
-        :rtype: :class:`tencentcloud.tiia.v20190529.models.DetectLabelBetaResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DetectLabelBeta", params, headers=headers)
-            response = json.loads(body)
-            model = models.DetectLabelBetaResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DetectLabelPro(self, request):
         """通用图像标签可识别数千种常见物体或场景，覆盖日常物品、场景、动物、植物、食物、饮品、交通工具等多个大类，返回主体的标签名称和所属细分类目等。
 

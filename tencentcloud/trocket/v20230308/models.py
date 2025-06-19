@@ -7461,6 +7461,142 @@ class DescribeMigratingTopicStatsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeMigrationTaskListRequest(AbstractModel):
+    """DescribeMigrationTaskList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: 查询条件列表
+        :type Filters: list of Filter
+        :param _Offset: 查询起始位置
+        :type Offset: int
+        :param _Limit: 查询结果限制数量
+        :type Limit: int
+        """
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Filters(self):
+        """查询条件列表
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        """查询起始位置
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """查询结果限制数量
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMigrationTaskListResponse(AbstractModel):
+    """DescribeMigrationTaskList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 查询总数
+        :type TotalCount: int
+        :param _Tasks: 迁移任务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tasks: list of MigrationTaskItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Tasks = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """查询总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Tasks(self):
+        """迁移任务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MigrationTaskItem
+        """
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Tasks") is not None:
+            self._Tasks = []
+            for item in params.get("Tasks"):
+                obj = MigrationTaskItem()
+                obj._deserialize(item)
+                self._Tasks.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeProductSKUsRequest(AbstractModel):
     """DescribeProductSKUs请求参数结构体
 
@@ -11388,7 +11524,12 @@ class MigratingTopic(AbstractModel):
         r"""
         :param _TopicName: 主题名称
         :type TopicName: str
-        :param _MigrationStatus: 迁移状态 S_RW_D_NA 源集群读写 S_RW_D_R 源集群读写目标集群读 S_RW_D_RW 源集群读写目标集群读写 S_R_D_RW 源集群读目标集群读写 S_NA_D_RW 目标集群读写
+        :param _MigrationStatus: 迁移状态 
+S_RW_D_NA 源集群读写，
+S_RW_D_R 源集群读写目标集群读，
+S_RW_D_RW 源集群读写目标集群读写，
+S_R_D_RW 源集群读目标集群读写，
+S_NA_D_RW 目标集群读写
         :type MigrationStatus: str
         :param _HealthCheckPassed: 是否完成健康检查	
         :type HealthCheckPassed: bool
@@ -11431,7 +11572,12 @@ class MigratingTopic(AbstractModel):
 
     @property
     def MigrationStatus(self):
-        """迁移状态 S_RW_D_NA 源集群读写 S_RW_D_R 源集群读写目标集群读 S_RW_D_RW 源集群读写目标集群读写 S_R_D_RW 源集群读目标集群读写 S_NA_D_RW 目标集群读写
+        """迁移状态 
+S_RW_D_NA 源集群读写，
+S_RW_D_R 源集群读写目标集群读，
+S_RW_D_RW 源集群读写目标集群读写，
+S_R_D_RW 源集群读目标集群读写，
+S_NA_D_RW 目标集群读写
         :rtype: str
         """
         return self._MigrationStatus
@@ -11531,6 +11677,134 @@ class MigratingTopic(AbstractModel):
         self._TopicNameV4 = params.get("TopicNameV4")
         self._FullNamespaceV4 = params.get("FullNamespaceV4")
         self._HealthCheckErrorList = params.get("HealthCheckErrorList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MigrationTaskItem(AbstractModel):
+    """迁移任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _Type: 0 - 未指定（存量）
+1 - 元数据导入
+        :type Type: int
+        :param _TopicNum: 主题总数
+        :type TopicNum: int
+        :param _GroupNum: 消费组总数
+        :type GroupNum: int
+        :param _Status: 任务状态： 0，迁移中 1，迁移成功 2，迁移完成，只有部分数据完成迁移
+        :type Status: int
+        :param _CreateTime: 创建时间
+        :type CreateTime: int
+        """
+        self._TaskId = None
+        self._InstanceId = None
+        self._Type = None
+        self._TopicNum = None
+        self._GroupNum = None
+        self._Status = None
+        self._CreateTime = None
+
+    @property
+    def TaskId(self):
+        """任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def InstanceId(self):
+        """实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Type(self):
+        """0 - 未指定（存量）
+1 - 元数据导入
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def TopicNum(self):
+        """主题总数
+        :rtype: int
+        """
+        return self._TopicNum
+
+    @TopicNum.setter
+    def TopicNum(self, TopicNum):
+        self._TopicNum = TopicNum
+
+    @property
+    def GroupNum(self):
+        """消费组总数
+        :rtype: int
+        """
+        return self._GroupNum
+
+    @GroupNum.setter
+    def GroupNum(self, GroupNum):
+        self._GroupNum = GroupNum
+
+    @property
+    def Status(self):
+        """任务状态： 0，迁移中 1，迁移成功 2，迁移完成，只有部分数据完成迁移
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        """创建时间
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._InstanceId = params.get("InstanceId")
+        self._Type = params.get("Type")
+        self._TopicNum = params.get("TopicNum")
+        self._GroupNum = params.get("GroupNum")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

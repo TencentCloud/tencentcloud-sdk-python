@@ -12946,7 +12946,7 @@ class BlindWatermarkEmbedInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EmbedText: 盲水印文字，需要经过 URL 安全的 Base64 编码。
+        :param _EmbedText: 盲水印文字，经过URL安全的Base64编码的4Byte数据。Base64解码之后，少于4Byte将会填充0x00到4Byte，超过4Byte将会截断为4Byte。
 注意：此字段可能返回 null，表示取不到有效值。
         :type EmbedText: str
         """
@@ -12954,7 +12954,7 @@ class BlindWatermarkEmbedInfo(AbstractModel):
 
     @property
     def EmbedText(self):
-        """盲水印文字，需要经过 URL 安全的 Base64 编码。
+        """盲水印文字，经过URL安全的Base64编码的4Byte数据。Base64解码之后，少于4Byte将会填充0x00到4Byte，超过4Byte将会截断为4Byte。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -17765,6 +17765,8 @@ class CreateInputSRTSettings(AbstractModel):
         :type PbKeyLen: int
         :param _SourceAddresses: SRT对端地址，当Mode为CALLER时必填，且只能填1组。
         :type SourceAddresses: list of SRTSourceAddressReq
+        :param _FEC: SRT FEC 设置
+        :type FEC: :class:`tencentcloud.mps.v20190612.models.SRTFECSimpleOptions`
         """
         self._Mode = None
         self._StreamId = None
@@ -17775,6 +17777,7 @@ class CreateInputSRTSettings(AbstractModel):
         self._Passphrase = None
         self._PbKeyLen = None
         self._SourceAddresses = None
+        self._FEC = None
 
     @property
     def Mode(self):
@@ -17875,6 +17878,17 @@ class CreateInputSRTSettings(AbstractModel):
     def SourceAddresses(self, SourceAddresses):
         self._SourceAddresses = SourceAddresses
 
+    @property
+    def FEC(self):
+        """SRT FEC 设置
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SRTFECSimpleOptions`
+        """
+        return self._FEC
+
+    @FEC.setter
+    def FEC(self, FEC):
+        self._FEC = FEC
+
 
     def _deserialize(self, params):
         self._Mode = params.get("Mode")
@@ -17891,6 +17905,9 @@ class CreateInputSRTSettings(AbstractModel):
                 obj = SRTSourceAddressReq()
                 obj._deserialize(item)
                 self._SourceAddresses.append(obj)
+        if params.get("FEC") is not None:
+            self._FEC = SRTFECSimpleOptions()
+            self._FEC._deserialize(params.get("FEC"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18607,6 +18624,8 @@ class CreateOutputSRTSettings(AbstractModel):
         :type PbKeyLen: int
         :param _Mode: SRT模式，可选[LISTENER|CALLER]，默认为CALLER。
         :type Mode: str
+        :param _FEC: SRT FEC 设置
+        :type FEC: :class:`tencentcloud.mps.v20190612.models.SRTFECFullOptions`
         """
         self._Destinations = None
         self._StreamId = None
@@ -18617,6 +18636,7 @@ class CreateOutputSRTSettings(AbstractModel):
         self._Passphrase = None
         self._PbKeyLen = None
         self._Mode = None
+        self._FEC = None
 
     @property
     def Destinations(self):
@@ -18717,6 +18737,17 @@ class CreateOutputSRTSettings(AbstractModel):
     def Mode(self, Mode):
         self._Mode = Mode
 
+    @property
+    def FEC(self):
+        """SRT FEC 设置
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SRTFECFullOptions`
+        """
+        return self._FEC
+
+    @FEC.setter
+    def FEC(self, FEC):
+        self._FEC = FEC
+
 
     def _deserialize(self, params):
         if params.get("Destinations") is not None:
@@ -18733,6 +18764,9 @@ class CreateOutputSRTSettings(AbstractModel):
         self._Passphrase = params.get("Passphrase")
         self._PbKeyLen = params.get("PbKeyLen")
         self._Mode = params.get("Mode")
+        if params.get("FEC") is not None:
+            self._FEC = SRTFECFullOptions()
+            self._FEC._deserialize(params.get("FEC"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26145,6 +26179,8 @@ class DescribeInputSRTSettings(AbstractModel):
         :param _SourceAddresses: SRT对端地址。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SourceAddresses: list of SRTSourceAddressResp
+        :param _FEC: FEC  设置
+        :type FEC: :class:`tencentcloud.mps.v20190612.models.SRTFECSimpleOptions`
         """
         self._Mode = None
         self._StreamId = None
@@ -26155,6 +26191,7 @@ class DescribeInputSRTSettings(AbstractModel):
         self._Passphrase = None
         self._PbKeyLen = None
         self._SourceAddresses = None
+        self._FEC = None
 
     @property
     def Mode(self):
@@ -26257,6 +26294,17 @@ class DescribeInputSRTSettings(AbstractModel):
     def SourceAddresses(self, SourceAddresses):
         self._SourceAddresses = SourceAddresses
 
+    @property
+    def FEC(self):
+        """FEC  设置
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SRTFECSimpleOptions`
+        """
+        return self._FEC
+
+    @FEC.setter
+    def FEC(self, FEC):
+        self._FEC = FEC
+
 
     def _deserialize(self, params):
         self._Mode = params.get("Mode")
@@ -26273,6 +26321,9 @@ class DescribeInputSRTSettings(AbstractModel):
                 obj = SRTSourceAddressResp()
                 obj._deserialize(item)
                 self._SourceAddresses.append(obj)
+        if params.get("FEC") is not None:
+            self._FEC = SRTFECSimpleOptions()
+            self._FEC._deserialize(params.get("FEC"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27446,6 +27497,8 @@ class DescribeOutputSRTSettings(AbstractModel):
         :param _SourceAddresses: 服务器监听地址，SRT模式为LISTENER时使用。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SourceAddresses: list of OutputSRTSourceAddressResp
+        :param _FEC: FEC 配置
+        :type FEC: :class:`tencentcloud.mps.v20190612.models.SRTFECFullOptions`
         """
         self._Destinations = None
         self._StreamId = None
@@ -27457,6 +27510,7 @@ class DescribeOutputSRTSettings(AbstractModel):
         self._PbKeyLen = None
         self._Mode = None
         self._SourceAddresses = None
+        self._FEC = None
 
     @property
     def Destinations(self):
@@ -27578,6 +27632,17 @@ class DescribeOutputSRTSettings(AbstractModel):
     def SourceAddresses(self, SourceAddresses):
         self._SourceAddresses = SourceAddresses
 
+    @property
+    def FEC(self):
+        """FEC 配置
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SRTFECFullOptions`
+        """
+        return self._FEC
+
+    @FEC.setter
+    def FEC(self, FEC):
+        self._FEC = FEC
+
 
     def _deserialize(self, params):
         if params.get("Destinations") is not None:
@@ -27600,6 +27665,9 @@ class DescribeOutputSRTSettings(AbstractModel):
                 obj = OutputSRTSourceAddressResp()
                 obj._deserialize(item)
                 self._SourceAddresses.append(obj)
+        if params.get("FEC") is not None:
+            self._FEC = SRTFECFullOptions()
+            self._FEC._deserialize(params.get("FEC"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -54746,6 +54814,138 @@ class SRTAddressDestination(AbstractModel):
     def _deserialize(self, params):
         self._Ip = params.get("Ip")
         self._Port = params.get("Port")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SRTFECFullOptions(AbstractModel):
+    """SRT FEC 高级配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enable: 是否开启 FEC
+        :type Enable: bool
+        :param _Cols: FEC 数据包 Layout 列数量. 取值范围>0
+        :type Cols: int
+        :param _Rows: FEC 数据包 Layout 行数量. 取值范围 >=2 或者 <=-2
+        :type Rows: int
+        :param _ARQ: FEC 开启的情况下，ARQ的策略。取值 "always", "onreq", "never"
+        :type ARQ: str
+        :param _Layout: FEC 数据包 Layout 组织形式，取值 "even", "staircase" 
+        :type Layout: str
+        """
+        self._Enable = None
+        self._Cols = None
+        self._Rows = None
+        self._ARQ = None
+        self._Layout = None
+
+    @property
+    def Enable(self):
+        """是否开启 FEC
+        :rtype: bool
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def Cols(self):
+        """FEC 数据包 Layout 列数量. 取值范围>0
+        :rtype: int
+        """
+        return self._Cols
+
+    @Cols.setter
+    def Cols(self, Cols):
+        self._Cols = Cols
+
+    @property
+    def Rows(self):
+        """FEC 数据包 Layout 行数量. 取值范围 >=2 或者 <=-2
+        :rtype: int
+        """
+        return self._Rows
+
+    @Rows.setter
+    def Rows(self, Rows):
+        self._Rows = Rows
+
+    @property
+    def ARQ(self):
+        """FEC 开启的情况下，ARQ的策略。取值 "always", "onreq", "never"
+        :rtype: str
+        """
+        return self._ARQ
+
+    @ARQ.setter
+    def ARQ(self, ARQ):
+        self._ARQ = ARQ
+
+    @property
+    def Layout(self):
+        """FEC 数据包 Layout 组织形式，取值 "even", "staircase" 
+        :rtype: str
+        """
+        return self._Layout
+
+    @Layout.setter
+    def Layout(self, Layout):
+        self._Layout = Layout
+
+
+    def _deserialize(self, params):
+        self._Enable = params.get("Enable")
+        self._Cols = params.get("Cols")
+        self._Rows = params.get("Rows")
+        self._ARQ = params.get("ARQ")
+        self._Layout = params.get("Layout")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SRTFECSimpleOptions(AbstractModel):
+    """SRT FEC 设置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enable: 是否开启 FEC
+        :type Enable: bool
+        """
+        self._Enable = None
+
+    @property
+    def Enable(self):
+        """是否开启 FEC
+        :rtype: bool
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+
+    def _deserialize(self, params):
+        self._Enable = params.get("Enable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

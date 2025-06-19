@@ -1323,6 +1323,100 @@ class CreateDatasetResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateModelServiceAuthTokenRequest(AbstractModel):
+    """CreateModelServiceAuthToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceGroupId: 服务组 id
+        :type ServiceGroupId: str
+        :param _Name: token 名称
+        :type Name: str
+        :param _Description: Description 描述
+        :type Description: str
+        """
+        self._ServiceGroupId = None
+        self._Name = None
+        self._Description = None
+
+    @property
+    def ServiceGroupId(self):
+        """服务组 id
+        :rtype: str
+        """
+        return self._ServiceGroupId
+
+    @ServiceGroupId.setter
+    def ServiceGroupId(self, ServiceGroupId):
+        self._ServiceGroupId = ServiceGroupId
+
+    @property
+    def Name(self):
+        """token 名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        """Description 描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._ServiceGroupId = params.get("ServiceGroupId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateModelServiceAuthTokenResponse(AbstractModel):
+    """CreateModelServiceAuthToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateModelServiceRequest(AbstractModel):
     """CreateModelService请求参数结构体
 
@@ -5474,6 +5568,85 @@ class DeleteDatasetResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._DatasetId = params.get("DatasetId")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteModelServiceAuthTokenRequest(AbstractModel):
+    """DeleteModelServiceAuthToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceGroupId: 服务组 id
+        :type ServiceGroupId: str
+        :param _AuthTokenValue: token 值
+        :type AuthTokenValue: str
+        """
+        self._ServiceGroupId = None
+        self._AuthTokenValue = None
+
+    @property
+    def ServiceGroupId(self):
+        """服务组 id
+        :rtype: str
+        """
+        return self._ServiceGroupId
+
+    @ServiceGroupId.setter
+    def ServiceGroupId(self, ServiceGroupId):
+        self._ServiceGroupId = ServiceGroupId
+
+    @property
+    def AuthTokenValue(self):
+        """token 值
+        :rtype: str
+        """
+        return self._AuthTokenValue
+
+    @AuthTokenValue.setter
+    def AuthTokenValue(self, AuthTokenValue):
+        self._AuthTokenValue = AuthTokenValue
+
+
+    def _deserialize(self, params):
+        self._ServiceGroupId = params.get("ServiceGroupId")
+        self._AuthTokenValue = params.get("AuthTokenValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteModelServiceAuthTokenResponse(AbstractModel):
+    """DeleteModelServiceAuthToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -13457,6 +13630,181 @@ class ModelSource(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifyModelServiceAuthTokenRequest(AbstractModel):
+    """ModifyModelServiceAuthToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceGroupId: 服务组 id
+        :type ServiceGroupId: str
+        :param _NeedReset: 是否需要重置，如果为 true，重置 token 值
+        :type NeedReset: bool
+        :param _AuthToken: AuthToken 数据
+        :type AuthToken: :class:`tencentcloud.tione.v20211111.models.AuthToken`
+        """
+        self._ServiceGroupId = None
+        self._NeedReset = None
+        self._AuthToken = None
+
+    @property
+    def ServiceGroupId(self):
+        """服务组 id
+        :rtype: str
+        """
+        return self._ServiceGroupId
+
+    @ServiceGroupId.setter
+    def ServiceGroupId(self, ServiceGroupId):
+        self._ServiceGroupId = ServiceGroupId
+
+    @property
+    def NeedReset(self):
+        """是否需要重置，如果为 true，重置 token 值
+        :rtype: bool
+        """
+        return self._NeedReset
+
+    @NeedReset.setter
+    def NeedReset(self, NeedReset):
+        self._NeedReset = NeedReset
+
+    @property
+    def AuthToken(self):
+        """AuthToken 数据
+        :rtype: :class:`tencentcloud.tione.v20211111.models.AuthToken`
+        """
+        return self._AuthToken
+
+    @AuthToken.setter
+    def AuthToken(self, AuthToken):
+        self._AuthToken = AuthToken
+
+
+    def _deserialize(self, params):
+        self._ServiceGroupId = params.get("ServiceGroupId")
+        self._NeedReset = params.get("NeedReset")
+        if params.get("AuthToken") is not None:
+            self._AuthToken = AuthToken()
+            self._AuthToken._deserialize(params.get("AuthToken"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyModelServiceAuthTokenResponse(AbstractModel):
+    """ModifyModelServiceAuthToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyModelServiceAuthorizationRequest(AbstractModel):
+    """ModifyModelServiceAuthorization请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceGroupId: 服务组Id
+        :type ServiceGroupId: str
+        :param _AuthorizationEnable: 是否开启鉴权,true表示开启
+        :type AuthorizationEnable: bool
+        """
+        self._ServiceGroupId = None
+        self._AuthorizationEnable = None
+
+    @property
+    def ServiceGroupId(self):
+        """服务组Id
+        :rtype: str
+        """
+        return self._ServiceGroupId
+
+    @ServiceGroupId.setter
+    def ServiceGroupId(self, ServiceGroupId):
+        self._ServiceGroupId = ServiceGroupId
+
+    @property
+    def AuthorizationEnable(self):
+        """是否开启鉴权,true表示开启
+        :rtype: bool
+        """
+        return self._AuthorizationEnable
+
+    @AuthorizationEnable.setter
+    def AuthorizationEnable(self, AuthorizationEnable):
+        self._AuthorizationEnable = AuthorizationEnable
+
+
+    def _deserialize(self, params):
+        self._ServiceGroupId = params.get("ServiceGroupId")
+        self._AuthorizationEnable = params.get("AuthorizationEnable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyModelServiceAuthorizationResponse(AbstractModel):
+    """ModifyModelServiceAuthorization返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyModelServiceRequest(AbstractModel):

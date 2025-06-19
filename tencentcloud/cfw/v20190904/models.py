@@ -2726,9 +2726,12 @@ class CreateAlertCenterOmitRequest(AbstractModel):
         :param _TableType: 忽略数据来源：
 AlertTable 告警中心  InterceptionTable拦截列表
         :type TableType: str
+        :param _HandleEventIdList: 处置对象,事件ID列表
+        :type HandleEventIdList: list of str
         """
         self._HandleIdList = None
         self._TableType = None
+        self._HandleEventIdList = None
 
     @property
     def HandleIdList(self):
@@ -2753,10 +2756,22 @@ AlertTable 告警中心  InterceptionTable拦截列表
     def TableType(self, TableType):
         self._TableType = TableType
 
+    @property
+    def HandleEventIdList(self):
+        """处置对象,事件ID列表
+        :rtype: list of str
+        """
+        return self._HandleEventIdList
+
+    @HandleEventIdList.setter
+    def HandleEventIdList(self, HandleEventIdList):
+        self._HandleEventIdList = HandleEventIdList
+
 
     def _deserialize(self, params):
         self._HandleIdList = params.get("HandleIdList")
         self._TableType = params.get("TableType")
+        self._HandleEventIdList = params.get("HandleEventIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

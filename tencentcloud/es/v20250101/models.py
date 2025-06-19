@@ -857,6 +857,44 @@ class DocumentChunkUsage(AbstractModel):
         
 
 
+class DocumentParseConfig(AbstractModel):
+    """文档解析配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageResponseType: 0:图片以链接形式返回
+1:返回图片中提取的文本内容
+        :type ImageResponseType: int
+        """
+        self._ImageResponseType = None
+
+    @property
+    def ImageResponseType(self):
+        """0:图片以链接形式返回
+1:返回图片中提取的文本内容
+        :rtype: int
+        """
+        return self._ImageResponseType
+
+    @ImageResponseType.setter
+    def ImageResponseType(self, ImageResponseType):
+        self._ImageResponseType = ImageResponseType
+
+
+    def _deserialize(self, params):
+        self._ImageResponseType = params.get("ImageResponseType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EmbeddingData(AbstractModel):
     """向量内容
 
@@ -1423,10 +1461,19 @@ class ParseDocument(AbstractModel):
 支持的文件大小：所下载文件经Base64编码后不超过 8M。文件下载时间不超过3秒。
 支持的图片像素：单边介于20-10000px之间。
         :type FileContent: str
+        :param _DocumentParseConfig: 文档解析配置
+        :type DocumentParseConfig: :class:`tencentcloud.es.v20250101.models.DocumentParseConfig`
+        :param _FileStartPageNumber: 文档的起始页码
+        :type FileStartPageNumber: int
+        :param _FileEndPageNumber: 文档的结束页码
+        :type FileEndPageNumber: int
         """
         self._FileType = None
         self._FileUrl = None
         self._FileContent = None
+        self._DocumentParseConfig = None
+        self._FileStartPageNumber = None
+        self._FileEndPageNumber = None
 
     @property
     def FileType(self):
@@ -1468,11 +1515,49 @@ class ParseDocument(AbstractModel):
     def FileContent(self, FileContent):
         self._FileContent = FileContent
 
+    @property
+    def DocumentParseConfig(self):
+        """文档解析配置
+        :rtype: :class:`tencentcloud.es.v20250101.models.DocumentParseConfig`
+        """
+        return self._DocumentParseConfig
+
+    @DocumentParseConfig.setter
+    def DocumentParseConfig(self, DocumentParseConfig):
+        self._DocumentParseConfig = DocumentParseConfig
+
+    @property
+    def FileStartPageNumber(self):
+        """文档的起始页码
+        :rtype: int
+        """
+        return self._FileStartPageNumber
+
+    @FileStartPageNumber.setter
+    def FileStartPageNumber(self, FileStartPageNumber):
+        self._FileStartPageNumber = FileStartPageNumber
+
+    @property
+    def FileEndPageNumber(self):
+        """文档的结束页码
+        :rtype: int
+        """
+        return self._FileEndPageNumber
+
+    @FileEndPageNumber.setter
+    def FileEndPageNumber(self, FileEndPageNumber):
+        self._FileEndPageNumber = FileEndPageNumber
+
 
     def _deserialize(self, params):
         self._FileType = params.get("FileType")
         self._FileUrl = params.get("FileUrl")
         self._FileContent = params.get("FileContent")
+        if params.get("DocumentParseConfig") is not None:
+            self._DocumentParseConfig = DocumentParseConfig()
+            self._DocumentParseConfig._deserialize(params.get("DocumentParseConfig"))
+        self._FileStartPageNumber = params.get("FileStartPageNumber")
+        self._FileEndPageNumber = params.get("FileEndPageNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

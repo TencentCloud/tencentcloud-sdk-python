@@ -9772,6 +9772,8 @@ class CreateApplicationRequest(AbstractModel):
 
     @property
     def ApplicationLogConfig(self):
+        warnings.warn("parameter `ApplicationLogConfig` is deprecated", DeprecationWarning) 
+
         """应用日志配置项，废弃参数
         :rtype: str
         """
@@ -9779,10 +9781,14 @@ class CreateApplicationRequest(AbstractModel):
 
     @ApplicationLogConfig.setter
     def ApplicationLogConfig(self, ApplicationLogConfig):
+        warnings.warn("parameter `ApplicationLogConfig` is deprecated", DeprecationWarning) 
+
         self._ApplicationLogConfig = ApplicationLogConfig
 
     @property
     def ApplicationResourceType(self):
+        warnings.warn("parameter `ApplicationResourceType` is deprecated", DeprecationWarning) 
+
         """应用资源类型，废弃参数
         :rtype: str
         """
@@ -9790,6 +9796,8 @@ class CreateApplicationRequest(AbstractModel):
 
     @ApplicationResourceType.setter
     def ApplicationResourceType(self, ApplicationResourceType):
+        warnings.warn("parameter `ApplicationResourceType` is deprecated", DeprecationWarning) 
+
         self._ApplicationResourceType = ApplicationResourceType
 
     @property

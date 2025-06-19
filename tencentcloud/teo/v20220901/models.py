@@ -35645,7 +35645,7 @@ class OriginInfo(AbstractModel):
         :type PrivateParameters: list of PrivateParameter
         :param _HostHeader: 自定义回源 HOST 头，该参数仅当 OriginType=IP_DOMAIN 时生效。
 如果 OriginType=COS 或 AWS_S3 时，回源 HOST 头将与源站域名保持一致。
-如果OriginType=ORIGIN_GROUP 或 LB 时，回源 HOST 头遵循源站组内配置，如果没有配置则默认为加速域名。
+如果OriginType=ORIGIN_GROUP 时，回源 HOST 头遵循源站组内配置，如果没有配置则默认为加速域名。
 如果 OriginType=VOD 或 SPACE 时，无需配置该头部，按对应的回源域名生效。
         :type HostHeader: str
         :param _VodeoSubAppId: VODEO 子应用 ID。该参数当 OriginType = VODEO 时必填。
@@ -35750,7 +35750,7 @@ class OriginInfo(AbstractModel):
     def HostHeader(self):
         """自定义回源 HOST 头，该参数仅当 OriginType=IP_DOMAIN 时生效。
 如果 OriginType=COS 或 AWS_S3 时，回源 HOST 头将与源站域名保持一致。
-如果OriginType=ORIGIN_GROUP 或 LB 时，回源 HOST 头遵循源站组内配置，如果没有配置则默认为加速域名。
+如果OriginType=ORIGIN_GROUP 时，回源 HOST 头遵循源站组内配置，如果没有配置则默认为加速域名。
 如果 OriginType=VOD 或 SPACE 时，无需配置该头部，按对应的回源域名生效。
         :rtype: str
         """

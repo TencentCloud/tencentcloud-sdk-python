@@ -8816,7 +8816,7 @@ class DescribeBizTrendRequest(AbstractModel):
         :type Domain: str
         :param _ProtoInfo: 协议及端口列表，协议可取值TCP, UDP, HTTP, HTTPS，仅统计纬度为连接数时有效
         :type ProtoInfo: list of ProtocolPort
-        :param _BusinessType: 业务类型可取值domain, port
+        :param _BusinessType: 业务类型：</br>
 port：端口业务
 domain：域名业务
         :type BusinessType: str
@@ -8933,7 +8933,7 @@ domain：域名业务
 
     @property
     def BusinessType(self):
-        """业务类型可取值domain, port
+        """业务类型：</br>
 port：端口业务
 domain：域名业务
         :rtype: str
@@ -11734,7 +11734,7 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         :type FilterPlanCntFlag: int
         :param _FilterTransRegionFlag: 是否跨区域产品 0: 不包含跨区域产品 1: 中国大陆跨区域产品 2: 非中国大陆跨区域产品 3: 包含全部
         :type FilterTransRegionFlag: int
-        :param _FilterZoneIdList: zoenid列表
+        :param _FilterZoneIdList: ZoneID列表
         :type FilterZoneIdList: list of int
         """
         self._Offset = None
@@ -11993,7 +11993,7 @@ class DescribeListBGPInstancesRequest(AbstractModel):
 
     @property
     def FilterZoneIdList(self):
-        """zoenid列表
+        """ZoneID列表
         :rtype: list of int
         """
         return self._FilterZoneIdList

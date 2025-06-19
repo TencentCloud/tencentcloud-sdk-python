@@ -13497,9 +13497,9 @@ class DescribeRabbitMQQueueDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例Id
+        :param _InstanceId: 实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询
         :type InstanceId: str
-        :param _VirtualHost: Vhost参数
+        :param _VirtualHost: VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到 Vhost 名称
         :type VirtualHost: str
         :param _QueueName: 队列名称
         :type QueueName: str
@@ -13510,7 +13510,7 @@ class DescribeRabbitMQQueueDetailRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例Id
+        """实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询
         :rtype: str
         """
         return self._InstanceId
@@ -13521,7 +13521,7 @@ class DescribeRabbitMQQueueDetailRequest(AbstractModel):
 
     @property
     def VirtualHost(self):
-        """Vhost参数
+        """VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到 Vhost 名称
         :rtype: str
         """
         return self._VirtualHost
@@ -13645,6 +13645,10 @@ class DescribeRabbitMQQueueDetailResponse(AbstractModel):
         :type Policy: str
         :param _Arguments: 扩展参数 key-value
         :type Arguments: str
+        :param _CreateTs: 创建时间时间戳
+        :type CreateTs: int
+        :param _ModifyTs: 修改时间时间戳
+        :type ModifyTs: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -13678,6 +13682,8 @@ class DescribeRabbitMQQueueDetailResponse(AbstractModel):
         self._Exclusive = None
         self._Policy = None
         self._Arguments = None
+        self._CreateTs = None
+        self._ModifyTs = None
         self._RequestId = None
 
     @property
@@ -14033,6 +14039,28 @@ class DescribeRabbitMQQueueDetailResponse(AbstractModel):
         self._Arguments = Arguments
 
     @property
+    def CreateTs(self):
+        """创建时间时间戳
+        :rtype: int
+        """
+        return self._CreateTs
+
+    @CreateTs.setter
+    def CreateTs(self, CreateTs):
+        self._CreateTs = CreateTs
+
+    @property
+    def ModifyTs(self):
+        """修改时间时间戳
+        :rtype: int
+        """
+        return self._ModifyTs
+
+    @ModifyTs.setter
+    def ModifyTs(self, ModifyTs):
+        self._ModifyTs = ModifyTs
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -14075,6 +14103,8 @@ class DescribeRabbitMQQueueDetailResponse(AbstractModel):
         self._Exclusive = params.get("Exclusive")
         self._Policy = params.get("Policy")
         self._Arguments = params.get("Arguments")
+        self._CreateTs = params.get("CreateTs")
+        self._ModifyTs = params.get("ModifyTs")
         self._RequestId = params.get("RequestId")
 
 
@@ -14085,17 +14115,17 @@ class DescribeRabbitMQQueuesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例Id
+        :param _InstanceId: 实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
         :type InstanceId: str
-        :param _VirtualHost: Vhost参数
+        :param _VirtualHost: VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到Vhost名称。
         :type VirtualHost: str
-        :param _Offset: 分页Offset
+        :param _Offset: 分页 Offset，默认 0
         :type Offset: int
-        :param _Limit: 分页Limit
+        :param _Limit: 分页 Limit，默认 20
         :type Limit: int
         :param _SearchWord: 搜索关键词
         :type SearchWord: str
-        :param _QueueType: 队列类型筛选，不填或 "all"：classic 和 quorum 队列；"classic"：筛选 classic 队列；"quorum"：筛选 quorum 队列
+        :param _QueueType: 队列类型筛选，不填或 "all"：筛选普通队列 和 quorum 队列；"classic"：筛选 classic(普通) 队列；"quorum"：筛选 quorum 队列
         :type QueueType: str
         :param _SortElement: 排序依据的字段：
 ConsumerNumber - 在线消费者数量；
@@ -14105,6 +14135,8 @@ MessageRateIn - 生产速率；
 MessageRateOut - 消费速率；
         :type SortElement: str
         :param _SortOrder: 排序顺序，ascend 或 descend
+ascend：升序
+descend：降序
         :type SortOrder: str
         """
         self._InstanceId = None
@@ -14118,7 +14150,7 @@ MessageRateOut - 消费速率；
 
     @property
     def InstanceId(self):
-        """实例Id
+        """实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
         :rtype: str
         """
         return self._InstanceId
@@ -14129,7 +14161,7 @@ MessageRateOut - 消费速率；
 
     @property
     def VirtualHost(self):
-        """Vhost参数
+        """VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到Vhost名称。
         :rtype: str
         """
         return self._VirtualHost
@@ -14140,7 +14172,7 @@ MessageRateOut - 消费速率；
 
     @property
     def Offset(self):
-        """分页Offset
+        """分页 Offset，默认 0
         :rtype: int
         """
         return self._Offset
@@ -14151,7 +14183,7 @@ MessageRateOut - 消费速率；
 
     @property
     def Limit(self):
-        """分页Limit
+        """分页 Limit，默认 20
         :rtype: int
         """
         return self._Limit
@@ -14173,7 +14205,7 @@ MessageRateOut - 消费速率；
 
     @property
     def QueueType(self):
-        """队列类型筛选，不填或 "all"：classic 和 quorum 队列；"classic"：筛选 classic 队列；"quorum"：筛选 quorum 队列
+        """队列类型筛选，不填或 "all"：筛选普通队列 和 quorum 队列；"classic"：筛选 classic(普通) 队列；"quorum"：筛选 quorum 队列
         :rtype: str
         """
         return self._QueueType
@@ -14201,6 +14233,8 @@ MessageRateOut - 消费速率；
     @property
     def SortOrder(self):
         """排序顺序，ascend 或 descend
+ascend：升序
+descend：降序
         :rtype: str
         """
         return self._SortOrder
@@ -14236,9 +14270,9 @@ class DescribeRabbitMQQueuesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _QueueInfoList: 列表信息
+        :param _QueueInfoList: 队列列表信息
         :type QueueInfoList: list of RabbitMQQueueListInfo
-        :param _TotalCount: 数量
+        :param _TotalCount: 队列数量
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14249,7 +14283,7 @@ class DescribeRabbitMQQueuesResponse(AbstractModel):
 
     @property
     def QueueInfoList(self):
-        """列表信息
+        """队列列表信息
         :rtype: list of RabbitMQQueueListInfo
         """
         return self._QueueInfoList
@@ -14260,7 +14294,7 @@ class DescribeRabbitMQQueuesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """数量
+        """队列数量
         :rtype: int
         """
         return self._TotalCount
@@ -27416,7 +27450,7 @@ class QueueQuota(AbstractModel):
 
 
 class RabbitMQBindingListInfo(AbstractModel):
-    """Rabbitmq路由关系列表成员
+    """RabbitMQ 路由关系列表成员
 
     """
 
@@ -27424,7 +27458,7 @@ class RabbitMQBindingListInfo(AbstractModel):
         r"""
         :param _BindingId: 路由关系id
         :type BindingId: int
-        :param _VirtualHost: Vhost参数
+        :param _VirtualHost: VhostName
         :type VirtualHost: str
         :param _Source: 源exchange名称
         :type Source: str
@@ -27440,6 +27474,10 @@ class RabbitMQBindingListInfo(AbstractModel):
         :type CreateTime: str
         :param _ModifyTime: 修改时间
         :type ModifyTime: str
+        :param _CreateTs: 创建时间时间戳
+        :type CreateTs: int
+        :param _ModifyTs: 修改时间时间戳
+        :type ModifyTs: int
         """
         self._BindingId = None
         self._VirtualHost = None
@@ -27450,6 +27488,8 @@ class RabbitMQBindingListInfo(AbstractModel):
         self._SourceExchangeType = None
         self._CreateTime = None
         self._ModifyTime = None
+        self._CreateTs = None
+        self._ModifyTs = None
 
     @property
     def BindingId(self):
@@ -27464,7 +27504,7 @@ class RabbitMQBindingListInfo(AbstractModel):
 
     @property
     def VirtualHost(self):
-        """Vhost参数
+        """VhostName
         :rtype: str
         """
         return self._VirtualHost
@@ -27550,6 +27590,28 @@ class RabbitMQBindingListInfo(AbstractModel):
     def ModifyTime(self, ModifyTime):
         self._ModifyTime = ModifyTime
 
+    @property
+    def CreateTs(self):
+        """创建时间时间戳
+        :rtype: int
+        """
+        return self._CreateTs
+
+    @CreateTs.setter
+    def CreateTs(self, CreateTs):
+        self._CreateTs = CreateTs
+
+    @property
+    def ModifyTs(self):
+        """修改时间时间戳
+        :rtype: int
+        """
+        return self._ModifyTs
+
+    @ModifyTs.setter
+    def ModifyTs(self, ModifyTs):
+        self._ModifyTs = ModifyTs
+
 
     def _deserialize(self, params):
         self._BindingId = params.get("BindingId")
@@ -27561,6 +27623,8 @@ class RabbitMQBindingListInfo(AbstractModel):
         self._SourceExchangeType = params.get("SourceExchangeType")
         self._CreateTime = params.get("CreateTime")
         self._ModifyTime = params.get("ModifyTime")
+        self._CreateTs = params.get("CreateTs")
+        self._ModifyTs = params.get("ModifyTs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28446,14 +28510,14 @@ class RabbitMQExchangeListInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ExchangeName: exchange 名
+        :param _ExchangeName: exchange 名称
         :type ExchangeName: str
         :param _Remark: 备注说明
 注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _ExchangeType: exchange 类型, 支持 "fanout","direct","topic","headers"
         :type ExchangeType: str
-        :param _VirtualHost: VHost参数
+        :param _VirtualHost: 交换机所属 Virtual Host 名称
         :type VirtualHost: str
         :param _ExchangeCreator: exchange 创建者, "system":"系统创建", "user":"用户创建"
         :type ExchangeCreator: str
@@ -28483,6 +28547,10 @@ class RabbitMQExchangeListInfo(AbstractModel):
         :param _MessagesDelayed: 未调度的延时消息数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type MessagesDelayed: int
+        :param _CreateTs: 创建时间时间戳
+        :type CreateTs: int
+        :param _ModifyTs: 修改时间时间戳
+        :type ModifyTs: int
         """
         self._ExchangeName = None
         self._Remark = None
@@ -28500,10 +28568,12 @@ class RabbitMQExchangeListInfo(AbstractModel):
         self._Policy = None
         self._Arguments = None
         self._MessagesDelayed = None
+        self._CreateTs = None
+        self._ModifyTs = None
 
     @property
     def ExchangeName(self):
-        """exchange 名
+        """exchange 名称
         :rtype: str
         """
         return self._ExchangeName
@@ -28537,7 +28607,7 @@ class RabbitMQExchangeListInfo(AbstractModel):
 
     @property
     def VirtualHost(self):
-        """VHost参数
+        """交换机所属 Virtual Host 名称
         :rtype: str
         """
         return self._VirtualHost
@@ -28682,6 +28752,28 @@ class RabbitMQExchangeListInfo(AbstractModel):
     def MessagesDelayed(self, MessagesDelayed):
         self._MessagesDelayed = MessagesDelayed
 
+    @property
+    def CreateTs(self):
+        """创建时间时间戳
+        :rtype: int
+        """
+        return self._CreateTs
+
+    @CreateTs.setter
+    def CreateTs(self, CreateTs):
+        self._CreateTs = CreateTs
+
+    @property
+    def ModifyTs(self):
+        """修改时间时间戳
+        :rtype: int
+        """
+        return self._ModifyTs
+
+    @ModifyTs.setter
+    def ModifyTs(self, ModifyTs):
+        self._ModifyTs = ModifyTs
+
 
     def _deserialize(self, params):
         self._ExchangeName = params.get("ExchangeName")
@@ -28700,6 +28792,8 @@ class RabbitMQExchangeListInfo(AbstractModel):
         self._Policy = params.get("Policy")
         self._Arguments = params.get("Arguments")
         self._MessagesDelayed = params.get("MessagesDelayed")
+        self._CreateTs = params.get("CreateTs")
+        self._ModifyTs = params.get("ModifyTs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28717,11 +28811,11 @@ class RabbitMQPermission(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群实例Id
+        :param _InstanceId: 实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
         :type InstanceId: str
-        :param _User: 用户名，权限关联的用户
+        :param _User: 用户名，形如 admin。有效的 User 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，点击集群列表中的集群，进入集群详情，并在用户与权限页签中找到用户列表，从而找到用户名称。
         :type User: str
-        :param _VirtualHost: vhost名
+        :param _VirtualHost: VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到 Vhost 名称。
         :type VirtualHost: str
         :param _ConfigRegexp: 权限类型，declare相关操作，该用户可操作该vhost下的资源名称正则表达式
         :type ConfigRegexp: str
@@ -28733,6 +28827,10 @@ class RabbitMQPermission(AbstractModel):
         :type CreateTime: str
         :param _ModifyTime: 修改时间
         :type ModifyTime: str
+        :param _CreateTs: 创建时间时间戳
+        :type CreateTs: int
+        :param _ModifyTs: 修改时间时间戳
+        :type ModifyTs: int
         """
         self._InstanceId = None
         self._User = None
@@ -28742,10 +28840,12 @@ class RabbitMQPermission(AbstractModel):
         self._ReadRegexp = None
         self._CreateTime = None
         self._ModifyTime = None
+        self._CreateTs = None
+        self._ModifyTs = None
 
     @property
     def InstanceId(self):
-        """集群实例Id
+        """实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
         :rtype: str
         """
         return self._InstanceId
@@ -28756,7 +28856,7 @@ class RabbitMQPermission(AbstractModel):
 
     @property
     def User(self):
-        """用户名，权限关联的用户
+        """用户名，形如 admin。有效的 User 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，点击集群列表中的集群，进入集群详情，并在用户与权限页签中找到用户列表，从而找到用户名称。
         :rtype: str
         """
         return self._User
@@ -28767,7 +28867,7 @@ class RabbitMQPermission(AbstractModel):
 
     @property
     def VirtualHost(self):
-        """vhost名
+        """VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到 Vhost 名称。
         :rtype: str
         """
         return self._VirtualHost
@@ -28831,6 +28931,28 @@ class RabbitMQPermission(AbstractModel):
     def ModifyTime(self, ModifyTime):
         self._ModifyTime = ModifyTime
 
+    @property
+    def CreateTs(self):
+        """创建时间时间戳
+        :rtype: int
+        """
+        return self._CreateTs
+
+    @CreateTs.setter
+    def CreateTs(self, CreateTs):
+        self._CreateTs = CreateTs
+
+    @property
+    def ModifyTs(self):
+        """修改时间时间戳
+        :rtype: int
+        """
+        return self._ModifyTs
+
+    @ModifyTs.setter
+    def ModifyTs(self, ModifyTs):
+        self._ModifyTs = ModifyTs
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -28841,6 +28963,8 @@ class RabbitMQPermission(AbstractModel):
         self._ReadRegexp = params.get("ReadRegexp")
         self._CreateTime = params.get("CreateTime")
         self._ModifyTime = params.get("ModifyTime")
+        self._CreateTs = params.get("CreateTs")
+        self._ModifyTs = params.get("ModifyTs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29058,6 +29182,10 @@ class RabbitMQQueueListInfo(AbstractModel):
         :type Arguments: str
         :param _Exclusive: 是否独占队列
         :type Exclusive: bool
+        :param _CreateTs: 创建时间时间戳
+        :type CreateTs: int
+        :param _ModifyTs: 修改时间时间戳
+        :type ModifyTs: int
         """
         self._QueueName = None
         self._Remark = None
@@ -29076,6 +29204,8 @@ class RabbitMQQueueListInfo(AbstractModel):
         self._Policy = None
         self._Arguments = None
         self._Exclusive = None
+        self._CreateTs = None
+        self._ModifyTs = None
 
     @property
     def QueueName(self):
@@ -29269,6 +29399,28 @@ class RabbitMQQueueListInfo(AbstractModel):
     def Exclusive(self, Exclusive):
         self._Exclusive = Exclusive
 
+    @property
+    def CreateTs(self):
+        """创建时间时间戳
+        :rtype: int
+        """
+        return self._CreateTs
+
+    @CreateTs.setter
+    def CreateTs(self, CreateTs):
+        self._CreateTs = CreateTs
+
+    @property
+    def ModifyTs(self):
+        """修改时间时间戳
+        :rtype: int
+        """
+        return self._ModifyTs
+
+    @ModifyTs.setter
+    def ModifyTs(self, ModifyTs):
+        self._ModifyTs = ModifyTs
+
 
     def _deserialize(self, params):
         self._QueueName = params.get("QueueName")
@@ -29290,6 +29442,8 @@ class RabbitMQQueueListInfo(AbstractModel):
         self._Policy = params.get("Policy")
         self._Arguments = params.get("Arguments")
         self._Exclusive = params.get("Exclusive")
+        self._CreateTs = params.get("CreateTs")
+        self._ModifyTs = params.get("ModifyTs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29307,7 +29461,7 @@ class RabbitMQUser(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群实例Id
+        :param _InstanceId: 实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
         :type InstanceId: str
         :param _User: 用户名，登录时使用
         :type User: str
@@ -29329,6 +29483,10 @@ class RabbitMQUser(AbstractModel):
         :param _MaxChannels: 单个用户最大可用通道数
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxChannels: int
+        :param _CreateTs: 创建时间时间戳
+        :type CreateTs: int
+        :param _ModifyTs: 修改时间时间戳
+        :type ModifyTs: int
         """
         self._InstanceId = None
         self._User = None
@@ -29340,10 +29498,12 @@ class RabbitMQUser(AbstractModel):
         self._Type = None
         self._MaxConnections = None
         self._MaxChannels = None
+        self._CreateTs = None
+        self._ModifyTs = None
 
     @property
     def InstanceId(self):
-        """集群实例Id
+        """实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
         :rtype: str
         """
         return self._InstanceId
@@ -29453,6 +29613,28 @@ class RabbitMQUser(AbstractModel):
     def MaxChannels(self, MaxChannels):
         self._MaxChannels = MaxChannels
 
+    @property
+    def CreateTs(self):
+        """创建时间时间戳
+        :rtype: int
+        """
+        return self._CreateTs
+
+    @CreateTs.setter
+    def CreateTs(self, CreateTs):
+        self._CreateTs = CreateTs
+
+    @property
+    def ModifyTs(self):
+        """修改时间时间戳
+        :rtype: int
+        """
+        return self._ModifyTs
+
+    @ModifyTs.setter
+    def ModifyTs(self, ModifyTs):
+        self._ModifyTs = ModifyTs
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -29465,6 +29647,8 @@ class RabbitMQUser(AbstractModel):
         self._Type = params.get("Type")
         self._MaxConnections = params.get("MaxConnections")
         self._MaxChannels = params.get("MaxChannels")
+        self._CreateTs = params.get("CreateTs")
+        self._ModifyTs = params.get("ModifyTs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29855,6 +30039,10 @@ class RabbitMQVirtualHostInfo(AbstractModel):
         :type MessageRateOut: float
         :param _MirrorQueuePolicyFlag: 是否存在镜像队列策略，true 为存在，false 为不存
         :type MirrorQueuePolicyFlag: bool
+        :param _CreateTs: 创建时间时间戳
+        :type CreateTs: int
+        :param _ModifyTs: 修改时间时间戳
+        :type ModifyTs: int
         """
         self._InstanceId = None
         self._VirtualHost = None
@@ -29869,6 +30057,8 @@ class RabbitMQVirtualHostInfo(AbstractModel):
         self._MessageRateIn = None
         self._MessageRateOut = None
         self._MirrorQueuePolicyFlag = None
+        self._CreateTs = None
+        self._ModifyTs = None
 
     @property
     def InstanceId(self):
@@ -30013,6 +30203,28 @@ class RabbitMQVirtualHostInfo(AbstractModel):
     def MirrorQueuePolicyFlag(self, MirrorQueuePolicyFlag):
         self._MirrorQueuePolicyFlag = MirrorQueuePolicyFlag
 
+    @property
+    def CreateTs(self):
+        """创建时间时间戳
+        :rtype: int
+        """
+        return self._CreateTs
+
+    @CreateTs.setter
+    def CreateTs(self, CreateTs):
+        self._CreateTs = CreateTs
+
+    @property
+    def ModifyTs(self):
+        """修改时间时间戳
+        :rtype: int
+        """
+        return self._ModifyTs
+
+    @ModifyTs.setter
+    def ModifyTs(self, ModifyTs):
+        self._ModifyTs = ModifyTs
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -30030,6 +30242,8 @@ class RabbitMQVirtualHostInfo(AbstractModel):
         self._MessageRateIn = params.get("MessageRateIn")
         self._MessageRateOut = params.get("MessageRateOut")
         self._MirrorQueuePolicyFlag = params.get("MirrorQueuePolicyFlag")
+        self._CreateTs = params.get("CreateTs")
+        self._ModifyTs = params.get("ModifyTs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
