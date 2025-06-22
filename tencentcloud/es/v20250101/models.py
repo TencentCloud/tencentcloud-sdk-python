@@ -353,9 +353,12 @@ class ChunkConfig(AbstractModel):
         :type MaxChunkSize: int
         :param _Delimiters: 分隔符列表
         :type Delimiters: list of str
+        :param _ChunkOverlap: 相邻切片重合字符数，需要小于分片长度
+        :type ChunkOverlap: int
         """
         self._MaxChunkSize = None
         self._Delimiters = None
+        self._ChunkOverlap = None
 
     @property
     def MaxChunkSize(self):
@@ -379,10 +382,22 @@ class ChunkConfig(AbstractModel):
     def Delimiters(self, Delimiters):
         self._Delimiters = Delimiters
 
+    @property
+    def ChunkOverlap(self):
+        """相邻切片重合字符数，需要小于分片长度
+        :rtype: int
+        """
+        return self._ChunkOverlap
+
+    @ChunkOverlap.setter
+    def ChunkOverlap(self, ChunkOverlap):
+        self._ChunkOverlap = ChunkOverlap
+
 
     def _deserialize(self, params):
         self._MaxChunkSize = params.get("MaxChunkSize")
         self._Delimiters = params.get("Delimiters")
+        self._ChunkOverlap = params.get("ChunkOverlap")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -672,10 +687,13 @@ class ChunkDocumentResponse(AbstractModel):
         r"""
         :param _Chunks: 无
         :type Chunks: list of Chunk
+        :param _Usage: token消耗量
+        :type Usage: :class:`tencentcloud.es.v20250101.models.Usage`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Chunks = None
+        self._Usage = None
         self._RequestId = None
 
     @property
@@ -688,6 +706,17 @@ class ChunkDocumentResponse(AbstractModel):
     @Chunks.setter
     def Chunks(self, Chunks):
         self._Chunks = Chunks
+
+    @property
+    def Usage(self):
+        """token消耗量
+        :rtype: :class:`tencentcloud.es.v20250101.models.Usage`
+        """
+        return self._Usage
+
+    @Usage.setter
+    def Usage(self, Usage):
+        self._Usage = Usage
 
     @property
     def RequestId(self):
@@ -708,6 +737,9 @@ class ChunkDocumentResponse(AbstractModel):
                 obj = Chunk()
                 obj._deserialize(item)
                 self._Chunks.append(obj)
+        if params.get("Usage") is not None:
+            self._Usage = Usage()
+            self._Usage._deserialize(params.get("Usage"))
         self._RequestId = params.get("RequestId")
 
 

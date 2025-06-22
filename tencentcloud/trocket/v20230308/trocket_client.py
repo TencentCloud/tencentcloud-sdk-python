@@ -1117,6 +1117,35 @@ class TrocketClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSmoothMigrationTaskList(self, request):
+        """用于查询平滑迁移任务列表
+
+        查询参数Filters， 支持的字段如下：
+        TaskStatus, 支持多选
+        ConnectionType，支持多选
+        InstanceId，精确搜索
+        TaskName，支持模糊搜索
+
+        :param request: Request instance for DescribeSmoothMigrationTaskList.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeSmoothMigrationTaskListRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.DescribeSmoothMigrationTaskListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSmoothMigrationTaskList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSmoothMigrationTaskListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSourceClusterGroupList(self, request):
         """平滑迁移过程获取源集群group列表接口
 

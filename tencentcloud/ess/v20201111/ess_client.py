@@ -1416,6 +1416,32 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateModifyAdminAuthorizationUrl(self, request):
+        """本接口（CreateModifyAdminAuthorizationUrl）用于重新上传超管授权书。
+
+        注意:
+        1. 重新上传超管授权书，必须是审核失败的情况下才能重新上传,可以通过回调[!授权书认证审核结果回调](https://qian.tencent.com/developers/company/callback_types_staffs#%E5%8D%81%E5%85%AD-%E6%8E%88%E6%9D%83%E4%B9%A6%E8%AE%A4%E8%AF%81%E5%AE%A1%E6%A0%B8%E7%BB%93%E6%9E%9C%E5%9B%9E%E8%B0%83)得到
+
+        :param request: Request instance for CreateModifyAdminAuthorizationUrl.
+        :type request: :class:`tencentcloud.ess.v20201111.models.CreateModifyAdminAuthorizationUrlRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.CreateModifyAdminAuthorizationUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateModifyAdminAuthorizationUrl", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateModifyAdminAuthorizationUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateMultiFlowSignQRCode(self, request):
         """此接口（CreateMultiFlowSignQRCode）用于创建一码多签签署码。
 
@@ -2206,6 +2232,29 @@ class EssClient(AbstractClient):
             body = self.call("DeleteSealPolicies", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteSealPoliciesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeBatchOrganizationRegistrationTasks(self, request):
+        """本接口（DescribeBatchOrganizationRegistrationTasks）用于查询企业批量认证任务状态。
+
+        :param request: Request instance for DescribeBatchOrganizationRegistrationTasks.
+        :type request: :class:`tencentcloud.ess.v20201111.models.DescribeBatchOrganizationRegistrationTasksRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.DescribeBatchOrganizationRegistrationTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBatchOrganizationRegistrationTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBatchOrganizationRegistrationTasksResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

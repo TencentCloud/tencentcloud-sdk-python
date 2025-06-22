@@ -2146,6 +2146,29 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeLiveCloudEffectList(self, request):
+        """使用该接口查询云端特效列表，特效列表中包含一部分官方精品特效，同时包含用户自定义生成的特效。
+
+        :param request: Request instance for DescribeLiveCloudEffectList.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveCloudEffectListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLiveCloudEffectListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLiveCloudEffectList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLiveCloudEffectListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeLiveDelayInfoList(self, request):
         """获取直播延播列表。
 
@@ -2417,6 +2440,29 @@ class LiveClient(AbstractClient):
             body = self.call("DescribeLivePadRules", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeLivePadRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLivePadStreamList(self, request):
+        """使用该接口查询垫片流列表。垫片流状态更新存在一定延迟，可间隔30秒以上查询，避免频繁查询该接口。
+
+        :param request: Request instance for DescribeLivePadStreamList.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLivePadStreamListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLivePadStreamListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLivePadStreamList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLivePadStreamListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4391,6 +4437,52 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def SendLiveCloudEffect(self, request):
+        """使用该接口发送云端特效到线上正活跃的直播流，观众可在播放端看到特效从直播流画面中展示。
+
+        :param request: Request instance for SendLiveCloudEffect.
+        :type request: :class:`tencentcloud.live.v20180801.models.SendLiveCloudEffectRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.SendLiveCloudEffectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SendLiveCloudEffect", params, headers=headers)
+            response = json.loads(body)
+            model = models.SendLiveCloudEffectResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StartLivePadStream(self, request):
+        """使用该接口将直播流开始切入垫片。
+
+        :param request: Request instance for StartLivePadStream.
+        :type request: :class:`tencentcloud.live.v20180801.models.StartLivePadStreamRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.StartLivePadStreamResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartLivePadStream", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartLivePadStreamResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def StartLiveStreamMonitor(self, request):
         """该接口用来启动直播流监播任务。
 
@@ -4475,6 +4567,29 @@ class LiveClient(AbstractClient):
             body = self.call("StopLivePadProcessor", params, headers=headers)
             response = json.loads(body)
             model = models.StopLivePadProcessorResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StopLivePadStream(self, request):
+        """使用该接口将直播流停止切入垫片。
+
+        :param request: Request instance for StopLivePadStream.
+        :type request: :class:`tencentcloud.live.v20180801.models.StopLivePadStreamRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.StopLivePadStreamResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopLivePadStream", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopLivePadStreamResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

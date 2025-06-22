@@ -236,7 +236,9 @@ class ChatCompletionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Model: 模型名称，可选值包括 hunyuan-lite、hunyuan-standard、hunyuan-standard-256K、hunyuan-code、hunyuan-role、hunyuan-functioncall、hunyuan-vision、hunyuan-turbo、hunyuan-turbo-latest、hunyuan-turbo-20241223、hunyuan-turbo-20241120、hunyuan-large、hunyuan-large-longcontext、hunyuan-turbo-vision、hunyuan-standard-vision、hunyuan-lite-vision、hunyuan-turbos-20250226、hunyuan-turbos-latest、hunyuan-t1-20250321、hunyuan-t1-latest、hunyuan-turbos-role-plus。各模型介绍请阅读 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 中的说明。注意：不同的模型计费不同，请根据 [购买指南](https://cloud.tencent.com/document/product/1729/97731) 按需调用。
+        :param _Model: 模型名称，可选值参考 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 中混元生文模型列表。
+示例值：hunyuan-turbos-latest
+各模型介绍请阅读 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 中的说明。注意：不同的模型计费不同，请根据 [购买指南](https://cloud.tencent.com/document/product/1729/97731) 按需调用。
         :type Model: str
         :param _Messages: 聊天上下文信息。
 说明：
@@ -363,7 +365,9 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def Model(self):
-        """模型名称，可选值包括 hunyuan-lite、hunyuan-standard、hunyuan-standard-256K、hunyuan-code、hunyuan-role、hunyuan-functioncall、hunyuan-vision、hunyuan-turbo、hunyuan-turbo-latest、hunyuan-turbo-20241223、hunyuan-turbo-20241120、hunyuan-large、hunyuan-large-longcontext、hunyuan-turbo-vision、hunyuan-standard-vision、hunyuan-lite-vision、hunyuan-turbos-20250226、hunyuan-turbos-latest、hunyuan-t1-20250321、hunyuan-t1-latest、hunyuan-turbos-role-plus。各模型介绍请阅读 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 中的说明。注意：不同的模型计费不同，请根据 [购买指南](https://cloud.tencent.com/document/product/1729/97731) 按需调用。
+        """模型名称，可选值参考 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 中混元生文模型列表。
+示例值：hunyuan-turbos-latest
+各模型介绍请阅读 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 中的说明。注意：不同的模型计费不同，请根据 [购买指南](https://cloud.tencent.com/document/product/1729/97731) 按需调用。
         :rtype: str
         """
         return self._Model
@@ -1340,7 +1344,7 @@ tool_calls 标识函数调用。
 
 
 class Content(AbstractModel):
-    """可以传入多种类型的内容，如图片或文本。
+    """可以传入多种类型的内容，如图片、文本。
 
     """
 
@@ -1348,7 +1352,7 @@ class Content(AbstractModel):
         r"""
         :param _Type: 内容类型
 注意：
-需包含至少一个 Type 为"text"的参数及至少一个 Type 为"image_url"的参数。
+需包含至少一个 Type 为"text"的参数。
 参数值可选范围：[text", "image_url"]
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
@@ -1368,7 +1372,7 @@ class Content(AbstractModel):
     def Type(self):
         """内容类型
 注意：
-需包含至少一个 Type 为"text"的参数及至少一个 Type 为"image_url"的参数。
+需包含至少一个 Type 为"text"的参数。
 参数值可选范围：[text", "image_url"]
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str

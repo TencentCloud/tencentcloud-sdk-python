@@ -4194,6 +4194,138 @@ class ClientIpPlaySumInfo(AbstractModel):
         
 
 
+class CloudEffectInfo(AbstractModel):
+    """云端特效信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 云端特效 ID。
+        :type Id: str
+        :param _Prompt: 云端特效描述词。
+        :type Prompt: str
+        :param _Flag: 云端特效标签。
+        :type Flag: str
+        :param _PreviewImageUrl: 云端特效预览图片。
+        :type PreviewImageUrl: str
+        :param _Type: 云端特效类型。
+PGC : 官方精品特效。
+AIGC : AI生成的特效。
+UGC : 用户上传特效。
+        :type Type: str
+        :param _CreateTime: 云端特效创建时间。
+        :type CreateTime: str
+        :param _UpdateTime: 云端特效更新时间。
+        :type UpdateTime: str
+        """
+        self._Id = None
+        self._Prompt = None
+        self._Flag = None
+        self._PreviewImageUrl = None
+        self._Type = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def Id(self):
+        """云端特效 ID。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Prompt(self):
+        """云端特效描述词。
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+    @property
+    def Flag(self):
+        """云端特效标签。
+        :rtype: str
+        """
+        return self._Flag
+
+    @Flag.setter
+    def Flag(self, Flag):
+        self._Flag = Flag
+
+    @property
+    def PreviewImageUrl(self):
+        """云端特效预览图片。
+        :rtype: str
+        """
+        return self._PreviewImageUrl
+
+    @PreviewImageUrl.setter
+    def PreviewImageUrl(self, PreviewImageUrl):
+        self._PreviewImageUrl = PreviewImageUrl
+
+    @property
+    def Type(self):
+        """云端特效类型。
+PGC : 官方精品特效。
+AIGC : AI生成的特效。
+UGC : 用户上传特效。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def CreateTime(self):
+        """云端特效创建时间。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        """云端特效更新时间。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Prompt = params.get("Prompt")
+        self._Flag = params.get("Flag")
+        self._PreviewImageUrl = params.get("PreviewImageUrl")
+        self._Type = params.get("Type")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CommonMixControlParams(AbstractModel):
     """通用混流控制参数
 
@@ -15262,6 +15394,135 @@ class DescribeLiveCertsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeLiveCloudEffectListRequest(AbstractModel):
+    """DescribeLiveCloudEffectList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 云端特效ID。
+        :type Id: str
+        :param _Prompt: 云端特效描述词。由用户原始输入的描述词。
+        :type Prompt: str
+        :param _Flag: 云端特效标签。对云端特效进行分类标签，可用于分类搜索。
+        :type Flag: str
+        :param _Type: 云端特效类型, 默认不填，返回全部。PGC: 特效库中的特效；AICG : AI生成的特效；UGC：用户自定义上传的特效；
+        :type Type: str
+        """
+        self._Id = None
+        self._Prompt = None
+        self._Flag = None
+        self._Type = None
+
+    @property
+    def Id(self):
+        """云端特效ID。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Prompt(self):
+        """云端特效描述词。由用户原始输入的描述词。
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+    @property
+    def Flag(self):
+        """云端特效标签。对云端特效进行分类标签，可用于分类搜索。
+        :rtype: str
+        """
+        return self._Flag
+
+    @Flag.setter
+    def Flag(self, Flag):
+        self._Flag = Flag
+
+    @property
+    def Type(self):
+        """云端特效类型, 默认不填，返回全部。PGC: 特效库中的特效；AICG : AI生成的特效；UGC：用户自定义上传的特效；
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Prompt = params.get("Prompt")
+        self._Flag = params.get("Flag")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLiveCloudEffectListResponse(AbstractModel):
+    """DescribeLiveCloudEffectList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InfoList: 云端特效信息列表。
+        :type InfoList: list of CloudEffectInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InfoList = None
+        self._RequestId = None
+
+    @property
+    def InfoList(self):
+        """云端特效信息列表。
+        :rtype: list of CloudEffectInfo
+        """
+        return self._InfoList
+
+    @InfoList.setter
+    def InfoList(self, InfoList):
+        self._InfoList = InfoList
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("InfoList") is not None:
+            self._InfoList = []
+            for item in params.get("InfoList"):
+                obj = CloudEffectInfo()
+                obj._deserialize(item)
+                self._InfoList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeLiveDelayInfoListRequest(AbstractModel):
     """DescribeLiveDelayInfoList请求参数结构体
 
@@ -16892,6 +17153,210 @@ class DescribeLivePadRulesResponse(AbstractModel):
                 obj = RuleInfo()
                 obj._deserialize(item)
                 self._Rules.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLivePadStreamListRequest(AbstractModel):
+    """DescribeLivePadStreamList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+        :type AppName: str
+        :param _DomainName: 您的推流域名。
+        :type DomainName: str
+        :param _StreamName: 流名称。
+        :type StreamName: str
+        :param _PageNum: 分页页数。
+        :type PageNum: int
+        :param _PageSize: 每页个数。
+        :type PageSize: int
+        """
+        self._AppName = None
+        self._DomainName = None
+        self._StreamName = None
+        self._PageNum = None
+        self._PageSize = None
+
+    @property
+    def AppName(self):
+        """推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+        :rtype: str
+        """
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def DomainName(self):
+        """您的推流域名。
+        :rtype: str
+        """
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def StreamName(self):
+        """流名称。
+        :rtype: str
+        """
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
+
+    @property
+    def PageNum(self):
+        """分页页数。
+        :rtype: int
+        """
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        """每页个数。
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._AppName = params.get("AppName")
+        self._DomainName = params.get("DomainName")
+        self._StreamName = params.get("StreamName")
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLivePadStreamListResponse(AbstractModel):
+    """DescribeLivePadStreamList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StreamInfoList: 当前正在拉取垫片的流信息列表。
+        :type StreamInfoList: list of PadStreamInfo
+        :param _PageNum: 传入的分页页数。
+        :type PageNum: int
+        :param _PageSize: 传入的分页个数。
+        :type PageSize: int
+        :param _TotalNum: 查询到的总个数。
+        :type TotalNum: int
+        :param _TotalPage: 可以分的总页数。
+        :type TotalPage: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._StreamInfoList = None
+        self._PageNum = None
+        self._PageSize = None
+        self._TotalNum = None
+        self._TotalPage = None
+        self._RequestId = None
+
+    @property
+    def StreamInfoList(self):
+        """当前正在拉取垫片的流信息列表。
+        :rtype: list of PadStreamInfo
+        """
+        return self._StreamInfoList
+
+    @StreamInfoList.setter
+    def StreamInfoList(self, StreamInfoList):
+        self._StreamInfoList = StreamInfoList
+
+    @property
+    def PageNum(self):
+        """传入的分页页数。
+        :rtype: int
+        """
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        """传入的分页个数。
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalNum(self):
+        """查询到的总个数。
+        :rtype: int
+        """
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def TotalPage(self):
+        """可以分的总页数。
+        :rtype: int
+        """
+        return self._TotalPage
+
+    @TotalPage.setter
+    def TotalPage(self, TotalPage):
+        self._TotalPage = TotalPage
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("StreamInfoList") is not None:
+            self._StreamInfoList = []
+            for item in params.get("StreamInfoList"):
+                obj = PadStreamInfo()
+                obj._deserialize(item)
+                self._StreamInfoList.append(obj)
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        self._TotalNum = params.get("TotalNum")
+        self._TotalPage = params.get("TotalPage")
         self._RequestId = params.get("RequestId")
 
 
@@ -31902,6 +32367,106 @@ class MonitorStreamPlayInfo(AbstractModel):
         
 
 
+class PadStreamInfo(AbstractModel):
+    """查询当前垫片流的信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StreamName: 流名称。
+        :type StreamName: str
+        :param _AppName: 应用名称。
+        :type AppName: str
+        :param _DomainName: 推流域名。
+        :type DomainName: str
+        :param _PadStreamType: 垫片流类型。
+0-自动垫片；
+1-手动切入垫片。
+        :type PadStreamType: str
+        :param _PublishTime: 垫片流开始时间。UTC时间，示例：2025-04-10T00:01:00Z。注意：该时间与北京时间相差八小时。
+        :type PublishTime: str
+        """
+        self._StreamName = None
+        self._AppName = None
+        self._DomainName = None
+        self._PadStreamType = None
+        self._PublishTime = None
+
+    @property
+    def StreamName(self):
+        """流名称。
+        :rtype: str
+        """
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
+
+    @property
+    def AppName(self):
+        """应用名称。
+        :rtype: str
+        """
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def DomainName(self):
+        """推流域名。
+        :rtype: str
+        """
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def PadStreamType(self):
+        """垫片流类型。
+0-自动垫片；
+1-手动切入垫片。
+        :rtype: str
+        """
+        return self._PadStreamType
+
+    @PadStreamType.setter
+    def PadStreamType(self, PadStreamType):
+        self._PadStreamType = PadStreamType
+
+    @property
+    def PublishTime(self):
+        """垫片流开始时间。UTC时间，示例：2025-04-10T00:01:00Z。注意：该时间与北京时间相差八小时。
+        :rtype: str
+        """
+        return self._PublishTime
+
+    @PublishTime.setter
+    def PublishTime(self, PublishTime):
+        self._PublishTime = PublishTime
+
+
+    def _deserialize(self, params):
+        self._StreamName = params.get("StreamName")
+        self._AppName = params.get("AppName")
+        self._DomainName = params.get("DomainName")
+        self._PadStreamType = params.get("PadStreamType")
+        self._PublishTime = params.get("PublishTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PadTemplate(AbstractModel):
     """直播垫片模板。
 
@@ -35788,6 +36353,181 @@ class ScreenshotTask(AbstractModel):
         
 
 
+class SendLiveCloudEffectRequest(AbstractModel):
+    """SendLiveCloudEffect请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+        :type AppName: str
+        :param _PushDomainName: 您的推流域名。
+        :type PushDomainName: str
+        :param _StreamName: 流名称。
+        :type StreamName: str
+        :param _Id: 云端特效 ID。
+        :type Id: str
+        :param _Operator: 操作人备注信息。
+        :type Operator: str
+        :param _ZoomFactor: 缩小比例，默认0 不缩放。
+可选值：0-9， 值越大，越缩小。
+        :type ZoomFactor: int
+        :param _XPosition: 指定云端特效渲染位置百分比。默认居中显示。
+原点为画面左上角，该参数指定特效渲染离原点的横向比例，可选值 0 - 100。
+        :type XPosition: str
+        :param _YPosition: 指定云端特效渲染位置百分比。默认居中显示。
+原点为画面左上角，该参数指定特效渲染离原点的纵向比例，可选值 0 - 100。
+        :type YPosition: str
+        """
+        self._AppName = None
+        self._PushDomainName = None
+        self._StreamName = None
+        self._Id = None
+        self._Operator = None
+        self._ZoomFactor = None
+        self._XPosition = None
+        self._YPosition = None
+
+    @property
+    def AppName(self):
+        """推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+        :rtype: str
+        """
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def PushDomainName(self):
+        """您的推流域名。
+        :rtype: str
+        """
+        return self._PushDomainName
+
+    @PushDomainName.setter
+    def PushDomainName(self, PushDomainName):
+        self._PushDomainName = PushDomainName
+
+    @property
+    def StreamName(self):
+        """流名称。
+        :rtype: str
+        """
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
+
+    @property
+    def Id(self):
+        """云端特效 ID。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Operator(self):
+        """操作人备注信息。
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def ZoomFactor(self):
+        """缩小比例，默认0 不缩放。
+可选值：0-9， 值越大，越缩小。
+        :rtype: int
+        """
+        return self._ZoomFactor
+
+    @ZoomFactor.setter
+    def ZoomFactor(self, ZoomFactor):
+        self._ZoomFactor = ZoomFactor
+
+    @property
+    def XPosition(self):
+        """指定云端特效渲染位置百分比。默认居中显示。
+原点为画面左上角，该参数指定特效渲染离原点的横向比例，可选值 0 - 100。
+        :rtype: str
+        """
+        return self._XPosition
+
+    @XPosition.setter
+    def XPosition(self, XPosition):
+        self._XPosition = XPosition
+
+    @property
+    def YPosition(self):
+        """指定云端特效渲染位置百分比。默认居中显示。
+原点为画面左上角，该参数指定特效渲染离原点的纵向比例，可选值 0 - 100。
+        :rtype: str
+        """
+        return self._YPosition
+
+    @YPosition.setter
+    def YPosition(self, YPosition):
+        self._YPosition = YPosition
+
+
+    def _deserialize(self, params):
+        self._AppName = params.get("AppName")
+        self._PushDomainName = params.get("PushDomainName")
+        self._StreamName = params.get("StreamName")
+        self._Id = params.get("Id")
+        self._Operator = params.get("Operator")
+        self._ZoomFactor = params.get("ZoomFactor")
+        self._XPosition = params.get("XPosition")
+        self._YPosition = params.get("YPosition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SendLiveCloudEffectResponse(AbstractModel):
+    """SendLiveCloudEffect返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class SnapshotTemplateInfo(AbstractModel):
     """截图模板信息。
 
@@ -35995,6 +36735,115 @@ class SnapshotTemplateInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class StartLivePadStreamRequest(AbstractModel):
+    """StartLivePadStream请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+        :type AppName: str
+        :param _PushDomainName: 您的推流域名。
+        :type PushDomainName: str
+        :param _StreamName: 流名称。
+        :type StreamName: str
+        :param _Operator: 操作人备注信息。
+        :type Operator: str
+        """
+        self._AppName = None
+        self._PushDomainName = None
+        self._StreamName = None
+        self._Operator = None
+
+    @property
+    def AppName(self):
+        """推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+        :rtype: str
+        """
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def PushDomainName(self):
+        """您的推流域名。
+        :rtype: str
+        """
+        return self._PushDomainName
+
+    @PushDomainName.setter
+    def PushDomainName(self, PushDomainName):
+        self._PushDomainName = PushDomainName
+
+    @property
+    def StreamName(self):
+        """流名称。
+        :rtype: str
+        """
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
+
+    @property
+    def Operator(self):
+        """操作人备注信息。
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+
+    def _deserialize(self, params):
+        self._AppName = params.get("AppName")
+        self._PushDomainName = params.get("PushDomainName")
+        self._StreamName = params.get("StreamName")
+        self._Operator = params.get("Operator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartLivePadStreamResponse(AbstractModel):
+    """StartLivePadStream返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class StartLiveStreamMonitorRequest(AbstractModel):
@@ -36329,6 +37178,115 @@ class StopLivePadProcessorResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._ResultMessage = params.get("ResultMessage")
+        self._RequestId = params.get("RequestId")
+
+
+class StopLivePadStreamRequest(AbstractModel):
+    """StopLivePadStream请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+        :type AppName: str
+        :param _PushDomainName: 您的推流域名。
+        :type PushDomainName: str
+        :param _StreamName: 流名称。
+        :type StreamName: str
+        :param _Operator: 操作人备注信息。
+        :type Operator: str
+        """
+        self._AppName = None
+        self._PushDomainName = None
+        self._StreamName = None
+        self._Operator = None
+
+    @property
+    def AppName(self):
+        """推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+        :rtype: str
+        """
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def PushDomainName(self):
+        """您的推流域名。
+        :rtype: str
+        """
+        return self._PushDomainName
+
+    @PushDomainName.setter
+    def PushDomainName(self, PushDomainName):
+        self._PushDomainName = PushDomainName
+
+    @property
+    def StreamName(self):
+        """流名称。
+        :rtype: str
+        """
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
+
+    @property
+    def Operator(self):
+        """操作人备注信息。
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+
+    def _deserialize(self, params):
+        self._AppName = params.get("AppName")
+        self._PushDomainName = params.get("PushDomainName")
+        self._StreamName = params.get("StreamName")
+        self._Operator = params.get("Operator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopLivePadStreamResponse(AbstractModel):
+    """StopLivePadStream返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 

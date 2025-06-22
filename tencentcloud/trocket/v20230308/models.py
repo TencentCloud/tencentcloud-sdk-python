@@ -7802,6 +7802,144 @@ class DescribeRoleListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSmoothMigrationTaskListRequest(AbstractModel):
+    """DescribeSmoothMigrationTaskList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: 查询起始位置
+        :type Offset: int
+        :param _Limit: 查询结果限制数量
+        :type Limit: int
+        :param _Filters: 查询条件列表
+        :type Filters: list of Filter
+        """
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def Offset(self):
+        """查询起始位置
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """查询结果限制数量
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        """查询条件列表
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSmoothMigrationTaskListResponse(AbstractModel):
+    """DescribeSmoothMigrationTaskList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 查询总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _Data: 任务列表	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of SmoothMigrationTaskItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """查询总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Data(self):
+        """任务列表	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SmoothMigrationTaskItem
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = SmoothMigrationTaskItem()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSourceClusterGroupListRequest(AbstractModel):
     """DescribeSourceClusterGroupList请求参数结构体
 
@@ -14102,6 +14240,173 @@ class RollbackMigratingTopicStageResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class SmoothMigrationTaskItem(AbstractModel):
+    """平滑迁移任务
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _TaskName: 任务名称	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskName: str
+        :param _SourceClusterName: 源集群名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceClusterName: str
+        :param _InstanceId: 目标集群实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _ConnectionType: 网络连接类型， 
+PUBLIC 公网 
+VPC 私有网络 
+OTHER 其他
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConnectionType: str
+        :param _SourceNameServer: 源集群NameServer地址	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceNameServer: str
+        :param _TaskStatus: 任务状态 Configuration 迁移配置 SourceConnecting 连接源集群中 MetaDataImport 元数据导入 EndpointSetup 切换接入点 ServiceMigration 切流中 Completed 已完成 Cancelled 已取消
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskStatus: str
+        :param _InstanceVersion: 目标集群实例版本，
+4 表示4.x版本
+5 表示5.x版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceVersion: str
+        """
+        self._TaskId = None
+        self._TaskName = None
+        self._SourceClusterName = None
+        self._InstanceId = None
+        self._ConnectionType = None
+        self._SourceNameServer = None
+        self._TaskStatus = None
+        self._InstanceVersion = None
+
+    @property
+    def TaskId(self):
+        """任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskName(self):
+        """任务名称	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def SourceClusterName(self):
+        """源集群名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SourceClusterName
+
+    @SourceClusterName.setter
+    def SourceClusterName(self, SourceClusterName):
+        self._SourceClusterName = SourceClusterName
+
+    @property
+    def InstanceId(self):
+        """目标集群实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ConnectionType(self):
+        """网络连接类型， 
+PUBLIC 公网 
+VPC 私有网络 
+OTHER 其他
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ConnectionType
+
+    @ConnectionType.setter
+    def ConnectionType(self, ConnectionType):
+        self._ConnectionType = ConnectionType
+
+    @property
+    def SourceNameServer(self):
+        """源集群NameServer地址	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SourceNameServer
+
+    @SourceNameServer.setter
+    def SourceNameServer(self, SourceNameServer):
+        self._SourceNameServer = SourceNameServer
+
+    @property
+    def TaskStatus(self):
+        """任务状态 Configuration 迁移配置 SourceConnecting 连接源集群中 MetaDataImport 元数据导入 EndpointSetup 切换接入点 ServiceMigration 切流中 Completed 已完成 Cancelled 已取消
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskStatus
+
+    @TaskStatus.setter
+    def TaskStatus(self, TaskStatus):
+        self._TaskStatus = TaskStatus
+
+    @property
+    def InstanceVersion(self):
+        """目标集群实例版本，
+4 表示4.x版本
+5 表示5.x版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceVersion
+
+    @InstanceVersion.setter
+    def InstanceVersion(self, InstanceVersion):
+        self._InstanceVersion = InstanceVersion
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TaskName = params.get("TaskName")
+        self._SourceClusterName = params.get("SourceClusterName")
+        self._InstanceId = params.get("InstanceId")
+        self._ConnectionType = params.get("ConnectionType")
+        self._SourceNameServer = params.get("SourceNameServer")
+        self._TaskStatus = params.get("TaskStatus")
+        self._InstanceVersion = params.get("InstanceVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SourceClusterGroupConfig(AbstractModel):
