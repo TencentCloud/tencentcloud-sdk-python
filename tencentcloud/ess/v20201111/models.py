@@ -3138,9 +3138,11 @@ class Component(AbstractModel):
 
 <font color="red">ComponentType为WATERMARK时</font>，支持以下参数：
 <ul><li> <b>Font</b>：目前只支持黑体、宋体、仿宋</li>
-<li> <b>FontSize</b>： 范围6 :24</li>
+<li> <b>FontSize</b>： 范围6 :72</li>
 <li> <b>Opacity</b>： 透明度，范围0 :1</li>
+<li> <b>Rotate</b>： 水印旋转角度，范围0 :359</li>
 <li> <b>Density</b>： 水印样式，1-宽松，2-标准（默认值），3-密集，</li>
+<li> <b>Position</b>： 水印位置，None-平铺（默认值），LeftTop-左上，LeftBottom-左下，RightTop-右上，RightBottom-右下，Center-居中</li>
 <li> <b>SubType</b>： 水印类型：CUSTOM_WATERMARK-自定义内容，PERSON_INFO_WATERMARK-访问者信息</li></ul>
 <b>参数样例</b>：`"{\"Font\":\"黑体\",\"FontSize\":20,\"Opacity\":0.1,\"Density\":2,\"SubType\":\"PERSON_INFO_WATERMARK\"}"`
 
@@ -3557,9 +3559,11 @@ ChildrenComponent结构体定义:
 
 <font color="red">ComponentType为WATERMARK时</font>，支持以下参数：
 <ul><li> <b>Font</b>：目前只支持黑体、宋体、仿宋</li>
-<li> <b>FontSize</b>： 范围6 :24</li>
+<li> <b>FontSize</b>： 范围6 :72</li>
 <li> <b>Opacity</b>： 透明度，范围0 :1</li>
+<li> <b>Rotate</b>： 水印旋转角度，范围0 :359</li>
 <li> <b>Density</b>： 水印样式，1-宽松，2-标准（默认值），3-密集，</li>
+<li> <b>Position</b>： 水印位置，None-平铺（默认值），LeftTop-左上，LeftBottom-左下，RightTop-右上，RightBottom-右下，Center-居中</li>
 <li> <b>SubType</b>： 水印类型：CUSTOM_WATERMARK-自定义内容，PERSON_INFO_WATERMARK-访问者信息</li></ul>
 <b>参数样例</b>：`"{\"Font\":\"黑体\",\"FontSize\":20,\"Opacity\":0.1,\"Density\":2,\"SubType\":\"PERSON_INFO_WATERMARK\"}"`
 
@@ -12301,9 +12305,8 @@ class CreateOrganizationAuthUrlRequest(AbstractModel):
         :param _AuthorizationTypes: 指定授权方式 支持多选:
 
 <ul>
-<li><strong>1</strong>:上传授权书方式</li>
 <li><strong>2</strong>: 法人授权方式</li>
-<li><strong>3</strong>: 法人身份认证方式</li>
+<li><strong>5</strong>: 授权书+对公打款方式</li>
 </ul>
         :type AuthorizationTypes: list of int non-negative
         :param _OrganizationName: 认证企业名称，请确认该名称与企业营业执照中注册的名称一致。
@@ -12425,9 +12428,8 @@ p.s. 如果上传授权书 ，需遵循以下条件
         """指定授权方式 支持多选:
 
 <ul>
-<li><strong>1</strong>:上传授权书方式</li>
 <li><strong>2</strong>: 法人授权方式</li>
-<li><strong>3</strong>: 法人身份认证方式</li>
+<li><strong>5</strong>: 授权书+对公打款方式</li>
 </ul>
         :rtype: list of int non-negative
         """
@@ -25690,7 +25692,7 @@ class FlowCreateApprover(AbstractModel):
 注意，在合同中，不同的或签参与人必须保证其CustomApproverTag唯一。
 如果或签签署人为本方企业微信参与人，则需要指定ApproverSource参数为WEWORKAPP。
         :type CustomApproverTag: str
-        :param _RegisterInfo: <font color="red">不再使用</font >, 快速注册相关信息
+        :param _RegisterInfo: 快速注册相关信息
         :type RegisterInfo: :class:`tencentcloud.ess.v20201111.models.RegisterInfo`
         :param _ApproverOption: 签署人个性化能力值，如是否可以转发他人处理、是否可以拒签、是否为动态补充签署人等功能开关。
         :type ApproverOption: :class:`tencentcloud.ess.v20201111.models.ApproverOption`
@@ -26042,7 +26044,7 @@ class FlowCreateApprover(AbstractModel):
 
     @property
     def RegisterInfo(self):
-        """<font color="red">不再使用</font >, 快速注册相关信息
+        """快速注册相关信息
         :rtype: :class:`tencentcloud.ess.v20201111.models.RegisterInfo`
         """
         return self._RegisterInfo
@@ -29742,6 +29744,189 @@ class ModifyIntegrationRoleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyPartnerAutoSignAuthUrlRequest(AbstractModel):
+    """ModifyPartnerAutoSignAuthUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Agent: 代理企业和员工的信息。<br/>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param _Operator: 执行本接口操作的员工信息。<br/>注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _AuthorizedOrganizationId: 被授企业id/授权方企业id（即OrganizationId），和AuthorizedOrganizationName二选一传入
+        :type AuthorizedOrganizationId: str
+        :param _AuthorizedOrganizationName: 被授企业名称/授权方企业的名字，和AuthorizedOrganizationId二选一传入即可。请确认该名称与企业营业执照中注册的名称一致。
+注: `如果名称中包含英文括号()，请使用中文括号（）代替。`
+        :type AuthorizedOrganizationName: str
+        :param _AuthToMe: 在处理授权关系时，授权的方向
+<ul>
+<li><strong>false</strong>（默认值）：表示我方授权他方。在这种情况下，<code>AuthorizedOrganizationName</code> 代表的是【被授权方】的企业名称，即接收授权的企业。</li>
+<li><strong>true</strong>：表示他方授权我方。在这种情况下，<code>AuthorizedOrganizationName</code> 代表的是【授权方】的企业名称，即提供授权的企业。</li>
+</ul>
+        :type AuthToMe: bool
+        """
+        self._Agent = None
+        self._Operator = None
+        self._AuthorizedOrganizationId = None
+        self._AuthorizedOrganizationName = None
+        self._AuthToMe = None
+
+    @property
+    def Agent(self):
+        """代理企业和员工的信息。<br/>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def Operator(self):
+        """执行本接口操作的员工信息。<br/>注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def AuthorizedOrganizationId(self):
+        """被授企业id/授权方企业id（即OrganizationId），和AuthorizedOrganizationName二选一传入
+        :rtype: str
+        """
+        return self._AuthorizedOrganizationId
+
+    @AuthorizedOrganizationId.setter
+    def AuthorizedOrganizationId(self, AuthorizedOrganizationId):
+        self._AuthorizedOrganizationId = AuthorizedOrganizationId
+
+    @property
+    def AuthorizedOrganizationName(self):
+        """被授企业名称/授权方企业的名字，和AuthorizedOrganizationId二选一传入即可。请确认该名称与企业营业执照中注册的名称一致。
+注: `如果名称中包含英文括号()，请使用中文括号（）代替。`
+        :rtype: str
+        """
+        return self._AuthorizedOrganizationName
+
+    @AuthorizedOrganizationName.setter
+    def AuthorizedOrganizationName(self, AuthorizedOrganizationName):
+        self._AuthorizedOrganizationName = AuthorizedOrganizationName
+
+    @property
+    def AuthToMe(self):
+        """在处理授权关系时，授权的方向
+<ul>
+<li><strong>false</strong>（默认值）：表示我方授权他方。在这种情况下，<code>AuthorizedOrganizationName</code> 代表的是【被授权方】的企业名称，即接收授权的企业。</li>
+<li><strong>true</strong>：表示他方授权我方。在这种情况下，<code>AuthorizedOrganizationName</code> 代表的是【授权方】的企业名称，即提供授权的企业。</li>
+</ul>
+        :rtype: bool
+        """
+        return self._AuthToMe
+
+    @AuthToMe.setter
+    def AuthToMe(self, AuthToMe):
+        self._AuthToMe = AuthToMe
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._AuthorizedOrganizationId = params.get("AuthorizedOrganizationId")
+        self._AuthorizedOrganizationName = params.get("AuthorizedOrganizationName")
+        self._AuthToMe = params.get("AuthToMe")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyPartnerAutoSignAuthUrlResponse(AbstractModel):
+    """ModifyPartnerAutoSignAuthUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: 授权链接，以短链形式返回，短链的有效期参考回参中的 ExpiredTime。
+        :type Url: str
+        :param _MiniAppPath: 从客户小程序或者客户APP跳转至腾讯电子签小程序进行批量签署的跳转路径
+        :type MiniAppPath: str
+        :param _ExpireTime: 链接过期时间以 Unix 时间戳格式表示，从生成链接时间起，往后7天有效期。过期后短链将失效，无法打开。
+        :type ExpireTime: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Url = None
+        self._MiniAppPath = None
+        self._ExpireTime = None
+        self._RequestId = None
+
+    @property
+    def Url(self):
+        """授权链接，以短链形式返回，短链的有效期参考回参中的 ExpiredTime。
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def MiniAppPath(self):
+        """从客户小程序或者客户APP跳转至腾讯电子签小程序进行批量签署的跳转路径
+        :rtype: str
+        """
+        return self._MiniAppPath
+
+    @MiniAppPath.setter
+    def MiniAppPath(self, MiniAppPath):
+        self._MiniAppPath = MiniAppPath
+
+    @property
+    def ExpireTime(self):
+        """链接过期时间以 Unix 时间戳格式表示，从生成链接时间起，往后7天有效期。过期后短链将失效，无法打开。
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
+        self._MiniAppPath = params.get("MiniAppPath")
+        self._ExpireTime = params.get("ExpireTime")
+        self._RequestId = params.get("RequestId")
+
+
 class NeedReviewApproverInfo(AbstractModel):
     """需要进行签署审核的签署人信息
 
@@ -31948,10 +32133,18 @@ class RegisterInfo(AbstractModel):
         :type Uscc: str
         :param _UnifiedSocialCreditCode: 社会统一信用代码
         :type UnifiedSocialCreditCode: str
+        :param _AuthorizationTypes: 指定企业认证的授权方式 支持多选:
+
+<ul>
+<li><strong>2</strong>: 法人授权方式</li>
+<li><strong>5</strong>: 授权书+对公打款方式</li>
+</ul>
+        :type AuthorizationTypes: list of int non-negative
         """
         self._LegalName = None
         self._Uscc = None
         self._UnifiedSocialCreditCode = None
+        self._AuthorizationTypes = None
 
     @property
     def LegalName(self):
@@ -31991,11 +32184,28 @@ class RegisterInfo(AbstractModel):
     def UnifiedSocialCreditCode(self, UnifiedSocialCreditCode):
         self._UnifiedSocialCreditCode = UnifiedSocialCreditCode
 
+    @property
+    def AuthorizationTypes(self):
+        """指定企业认证的授权方式 支持多选:
+
+<ul>
+<li><strong>2</strong>: 法人授权方式</li>
+<li><strong>5</strong>: 授权书+对公打款方式</li>
+</ul>
+        :rtype: list of int non-negative
+        """
+        return self._AuthorizationTypes
+
+    @AuthorizationTypes.setter
+    def AuthorizationTypes(self, AuthorizationTypes):
+        self._AuthorizationTypes = AuthorizationTypes
+
 
     def _deserialize(self, params):
         self._LegalName = params.get("LegalName")
         self._Uscc = params.get("Uscc")
         self._UnifiedSocialCreditCode = params.get("UnifiedSocialCreditCode")
+        self._AuthorizationTypes = params.get("AuthorizationTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

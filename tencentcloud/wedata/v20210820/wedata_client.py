@@ -2788,6 +2788,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeManualTriggerRecordPage(self, request):
+        """查询手动任务触发记录
+
+        :param request: Request instance for DescribeManualTriggerRecordPage.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeManualTriggerRecordPageRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeManualTriggerRecordPageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeManualTriggerRecordPage", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeManualTriggerRecordPageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeOfflineTaskToken(self, request):
         """获取离线任务长连接Token
 
@@ -5432,6 +5455,29 @@ class WedataClient(AbstractClient):
             body = self.call("ModifyTaskInfo", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyTaskInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyTaskInfoDs(self, request):
+        """更新任务Ds
+
+        :param request: Request instance for ModifyTaskInfoDs.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.ModifyTaskInfoDsRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.ModifyTaskInfoDsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyTaskInfoDs", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyTaskInfoDsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

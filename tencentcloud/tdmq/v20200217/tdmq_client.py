@@ -1777,7 +1777,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRabbitMQVipInstance(self, request):
-        """获取单个RabbitMQ专享实例信息
+        """获取单个 RabbitMQ 托管版实例信息
 
         :param request: Request instance for DescribeRabbitMQVipInstance.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRabbitMQVipInstanceRequest`
@@ -1800,7 +1800,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRabbitMQVipInstances(self, request):
-        """查询用户已购的RabbitMQ专享实例列表
+        """查询用户已购的 RabbitMQ 托管版实例列表
 
         :param request: Request instance for DescribeRabbitMQVipInstances.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRabbitMQVipInstancesRequest`

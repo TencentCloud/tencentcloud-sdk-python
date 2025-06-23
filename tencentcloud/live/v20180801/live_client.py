@@ -2403,29 +2403,6 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeLivePadProcessorList(self, request):
-        """使用该接口查询垫片流。垫片流状态更新存在一定延迟，可间隔30秒以上查询，避免频繁查询该接口。
-
-        :param request: Request instance for DescribeLivePadProcessorList.
-        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLivePadProcessorListRequest`
-        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLivePadProcessorListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeLivePadProcessorList", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeLivePadProcessorListResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeLivePadRules(self, request):
         """获取直播垫片规则列表。
 
@@ -4544,29 +4521,6 @@ class LiveClient(AbstractClient):
             body = self.call("StopCasterPvw", params, headers=headers)
             response = json.loads(body)
             model = models.StopCasterPvwResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def StopLivePadProcessor(self, request):
-        """使用该接口停止垫片流。
-
-        :param request: Request instance for StopLivePadProcessor.
-        :type request: :class:`tencentcloud.live.v20180801.models.StopLivePadProcessorRequest`
-        :rtype: :class:`tencentcloud.live.v20180801.models.StopLivePadProcessorResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("StopLivePadProcessor", params, headers=headers)
-            response = json.loads(body)
-            model = models.StopLivePadProcessorResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

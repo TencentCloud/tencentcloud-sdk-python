@@ -31770,6 +31770,211 @@ class DescribeIntegrationVersionNodesInfoResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeManualTriggerRecordPageRequest(AbstractModel):
+    """DescribeManualTriggerRecordPage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _TriggerName: 触发运行名称
+        :type TriggerName: str
+        :param _WorkflowKeyword: 工作流过滤关键字，工作流名称 or 工作流ID
+        :type WorkflowKeyword: str
+        :param _Creator: 触发运行提交人过滤，多个提交人用英文逗号分割
+        :type Creator: str
+        :param _TriggerStartTime: 触发提交创建时间过滤，起始时间
+        :type TriggerStartTime: str
+        :param _TriggerEndTime: 触发提交创建时间过滤，结束时间
+        :type TriggerEndTime: str
+        :param _PageNumber: 页码，整型
+        :type PageNumber: int
+        :param _PageSize: 每页数目，整型
+        :type PageSize: int
+        """
+        self._ProjectId = None
+        self._TriggerName = None
+        self._WorkflowKeyword = None
+        self._Creator = None
+        self._TriggerStartTime = None
+        self._TriggerEndTime = None
+        self._PageNumber = None
+        self._PageSize = None
+
+    @property
+    def ProjectId(self):
+        """项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def TriggerName(self):
+        """触发运行名称
+        :rtype: str
+        """
+        return self._TriggerName
+
+    @TriggerName.setter
+    def TriggerName(self, TriggerName):
+        self._TriggerName = TriggerName
+
+    @property
+    def WorkflowKeyword(self):
+        """工作流过滤关键字，工作流名称 or 工作流ID
+        :rtype: str
+        """
+        return self._WorkflowKeyword
+
+    @WorkflowKeyword.setter
+    def WorkflowKeyword(self, WorkflowKeyword):
+        self._WorkflowKeyword = WorkflowKeyword
+
+    @property
+    def Creator(self):
+        """触发运行提交人过滤，多个提交人用英文逗号分割
+        :rtype: str
+        """
+        return self._Creator
+
+    @Creator.setter
+    def Creator(self, Creator):
+        self._Creator = Creator
+
+    @property
+    def TriggerStartTime(self):
+        """触发提交创建时间过滤，起始时间
+        :rtype: str
+        """
+        return self._TriggerStartTime
+
+    @TriggerStartTime.setter
+    def TriggerStartTime(self, TriggerStartTime):
+        self._TriggerStartTime = TriggerStartTime
+
+    @property
+    def TriggerEndTime(self):
+        """触发提交创建时间过滤，结束时间
+        :rtype: str
+        """
+        return self._TriggerEndTime
+
+    @TriggerEndTime.setter
+    def TriggerEndTime(self, TriggerEndTime):
+        self._TriggerEndTime = TriggerEndTime
+
+    @property
+    def PageNumber(self):
+        """页码，整型
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        """每页数目，整型
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._TriggerName = params.get("TriggerName")
+        self._WorkflowKeyword = params.get("WorkflowKeyword")
+        self._Creator = params.get("Creator")
+        self._TriggerStartTime = params.get("TriggerStartTime")
+        self._TriggerEndTime = params.get("TriggerEndTime")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeManualTriggerRecordPageResponse(AbstractModel):
+    """DescribeManualTriggerRecordPage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestFromSource: 请求来源，WEB 前端；CLIENT 客户端
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestFromSource: str
+        :param _Data: 详情结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.ManualTriggerRecordOpsDtoPage`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestFromSource = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def RequestFromSource(self):
+        """请求来源，WEB 前端；CLIENT 客户端
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RequestFromSource
+
+    @RequestFromSource.setter
+    def RequestFromSource(self, RequestFromSource):
+        self._RequestFromSource = RequestFromSource
+
+    @property
+    def Data(self):
+        """详情结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.ManualTriggerRecordOpsDtoPage`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestFromSource = params.get("RequestFromSource")
+        if params.get("Data") is not None:
+            self._Data = ManualTriggerRecordOpsDtoPage()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeOfflineTaskTokenRequest(AbstractModel):
     """DescribeOfflineTaskToken请求参数结构体
 
@@ -40880,7 +41085,110 @@ class DescribeTableMetasRequest(AbstractModel):
         :type PageNumber: int
         :param _PageSize: 分页大小
         :type PageSize: int
-        :param _Filters: 过滤字段
+        :param _Filters: 过滤字段:
+dbName-数据库名称
+bizCatalogIds-资产目录ID
+DataLayerUuid-数仓分层ID
+ownerAccount-负责人ID
+assetStatus-资产状态：1-已上架 0-未上架
+assetLevel-资产等级：40-核心30-重要 20-一般 10-临时 
+msTypes-数据源类型：例如TENCENT_MYSQL-腾讯云MySQL，数据源类型ID可参考
+[
+  {
+    "DisplayName": "TCHouse-P",
+    "Id": "TCHOUSE_P"
+  },
+  {
+    "DisplayName": "Iceberg",
+    "Id": "ICEBERG"
+  },
+  {
+    "DisplayName": "Hive",
+    "Id": "HIVE"
+  },
+  {
+    "DisplayName": "HBase",
+    "Id": "HBASE"
+  },
+  {
+    "DisplayName": "DLC",
+    "Id": "DLC"
+  },
+  {
+    "DisplayName": "腾讯云MySQL",
+    "Id": "TENCENT_MYSQL"
+  },
+  {
+    "DisplayName": "TCHouse-D",
+    "Id": "TCHOUSE_D"
+  },
+  {
+    "DisplayName": "TCHouse-C",
+    "Id": "TCHOUSE_C"
+  },
+  {
+    "DisplayName": "EMR StarRocks",
+    "Id": "EMR_STARROCKS"
+  },
+  {
+    "DisplayName": "Doris",
+    "Id": "DORIS"
+  },
+  {
+    "DisplayName": "MySQL",
+    "Id": "MYSQL"
+  },
+  {
+    "DisplayName": "Oracle",
+    "Id": "ORACLE"
+  },
+  {
+    "DisplayName": "PostgreSQL",
+    "Id": "POSTGRE"
+  },
+  {
+    "DisplayName": "SQL Server",
+    "Id": "SQLSERVER"
+  },
+  {
+    "DisplayName": "TDSQL PostgreSQL",
+    "Id": "TDSQL_POSTGRE"
+  },
+  {
+    "DisplayName": "Greenplum",
+    "Id": "GREENPLUM"
+  },
+  {
+    "DisplayName": "StarRocks",
+    "Id": "STARROCKS"
+  },
+  {
+    "DisplayName": "ClickHouse",
+    "Id": "CLICKHOUSE"
+  },
+  {
+    "DisplayName": "INFLUXDB",
+    "Id": "INFLUXDB"
+  },
+  {
+    "DisplayName": "达梦DM",
+    "Id": "DM"
+  },
+  {
+    "DisplayName": "OceanBase",
+    "Id": "OCEANBASE"
+  },
+  {
+    "DisplayName": "TDSQL MySQL",
+    "Id": "TDSQL_MYSQL"
+  },
+  {
+    "DisplayName": "GaussDB",
+    "Id": "GAUSSDB"
+  }
+]
+projectIds-归属项目ID
+keyword-关键字，支持表名/表中文名/数据库名
         :type Filters: list of Filter
         :param _OrderFields: 排序字段
         :type OrderFields: list of OrderField
@@ -40914,7 +41222,110 @@ class DescribeTableMetasRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """过滤字段
+        """过滤字段:
+dbName-数据库名称
+bizCatalogIds-资产目录ID
+DataLayerUuid-数仓分层ID
+ownerAccount-负责人ID
+assetStatus-资产状态：1-已上架 0-未上架
+assetLevel-资产等级：40-核心30-重要 20-一般 10-临时 
+msTypes-数据源类型：例如TENCENT_MYSQL-腾讯云MySQL，数据源类型ID可参考
+[
+  {
+    "DisplayName": "TCHouse-P",
+    "Id": "TCHOUSE_P"
+  },
+  {
+    "DisplayName": "Iceberg",
+    "Id": "ICEBERG"
+  },
+  {
+    "DisplayName": "Hive",
+    "Id": "HIVE"
+  },
+  {
+    "DisplayName": "HBase",
+    "Id": "HBASE"
+  },
+  {
+    "DisplayName": "DLC",
+    "Id": "DLC"
+  },
+  {
+    "DisplayName": "腾讯云MySQL",
+    "Id": "TENCENT_MYSQL"
+  },
+  {
+    "DisplayName": "TCHouse-D",
+    "Id": "TCHOUSE_D"
+  },
+  {
+    "DisplayName": "TCHouse-C",
+    "Id": "TCHOUSE_C"
+  },
+  {
+    "DisplayName": "EMR StarRocks",
+    "Id": "EMR_STARROCKS"
+  },
+  {
+    "DisplayName": "Doris",
+    "Id": "DORIS"
+  },
+  {
+    "DisplayName": "MySQL",
+    "Id": "MYSQL"
+  },
+  {
+    "DisplayName": "Oracle",
+    "Id": "ORACLE"
+  },
+  {
+    "DisplayName": "PostgreSQL",
+    "Id": "POSTGRE"
+  },
+  {
+    "DisplayName": "SQL Server",
+    "Id": "SQLSERVER"
+  },
+  {
+    "DisplayName": "TDSQL PostgreSQL",
+    "Id": "TDSQL_POSTGRE"
+  },
+  {
+    "DisplayName": "Greenplum",
+    "Id": "GREENPLUM"
+  },
+  {
+    "DisplayName": "StarRocks",
+    "Id": "STARROCKS"
+  },
+  {
+    "DisplayName": "ClickHouse",
+    "Id": "CLICKHOUSE"
+  },
+  {
+    "DisplayName": "INFLUXDB",
+    "Id": "INFLUXDB"
+  },
+  {
+    "DisplayName": "达梦DM",
+    "Id": "DM"
+  },
+  {
+    "DisplayName": "OceanBase",
+    "Id": "OCEANBASE"
+  },
+  {
+    "DisplayName": "TDSQL MySQL",
+    "Id": "TDSQL_MYSQL"
+  },
+  {
+    "DisplayName": "GaussDB",
+    "Id": "GAUSSDB"
+  }
+]
+projectIds-归属项目ID
+keyword-关键字，支持表名/表中文名/数据库名
         :rtype: list of Filter
         """
         return self._Filters
@@ -65839,6 +66250,134 @@ class ManualTriggerRecordOpsDto(AbstractModel):
         
 
 
+class ManualTriggerRecordOpsDtoPage(AbstractModel):
+    """手动工作流触发运行记录分页查询
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNumber: 页号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageNumber: int
+        :param _PageSize: 页大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageSize: int
+        :param _Items: 手动工作流触发运行记录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of ManualTriggerRecordOpsDto
+        :param _TotalPage: 总页数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalPage: int
+        :param _PageCount: 页数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageCount: int
+        :param _TotalCount: 总条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        """
+        self._PageNumber = None
+        self._PageSize = None
+        self._Items = None
+        self._TotalPage = None
+        self._PageCount = None
+        self._TotalCount = None
+
+    @property
+    def PageNumber(self):
+        """页号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        """页大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Items(self):
+        """手动工作流触发运行记录
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ManualTriggerRecordOpsDto
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def TotalPage(self):
+        """总页数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalPage
+
+    @TotalPage.setter
+    def TotalPage(self, TotalPage):
+        self._TotalPage = TotalPage
+
+    @property
+    def PageCount(self):
+        """页数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PageCount
+
+    @PageCount.setter
+    def PageCount(self, PageCount):
+        self._PageCount = PageCount
+
+    @property
+    def TotalCount(self):
+        """总条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+
+    def _deserialize(self, params):
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = ManualTriggerRecordOpsDto()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._TotalPage = params.get("TotalPage")
+        self._PageCount = params.get("PageCount")
+        self._TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyApproveStatusRequest(AbstractModel):
     """ModifyApproveStatus请求参数结构体
 
@@ -68248,6 +68787,627 @@ class ModifyTaskAlarmRegularResponse(AbstractModel):
     def Data(self):
         """判断是否修改成功
 注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyTaskInfoDsRequest(AbstractModel):
+    """ModifyTaskInfoDs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目Id
+        :type ProjectId: str
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        :param _DelayTime: 执行时间，单位分钟，天/周/月/年调度才有。比如天调度，每天的02:00点执行一次，delayTime就是120分钟
+        :type DelayTime: int
+        :param _StartupTime: 启动时间：该字段已废弃，无需填写
+        :type StartupTime: int
+        :param _SelfDepend: 自依赖类型  1:有序串行 一次一个 排队  2: 无序串行 一次一个 不排队 3:并行 一次多个；暂不支持其他值
+        :type SelfDepend: int
+        :param _StartTime: 生效开始时间，格式 yyyy-MM-dd HH:mm:ss
+        :type StartTime: str
+        :param _EndTime: 生效结束时间，格式 yyyy-MM-dd HH:mm:ss
+        :type EndTime: str
+        :param _TaskAction: 调度配置-弹性周期配置，小时/周/月/年调度才有，小时任务指定每天的0点3点4点跑，则为 0,3,4。设置该值时，请把CycleStep字段设置为1（如果原始值不为1）。
+        :type TaskAction: str
+        :param _CycleType: 周期类型  0:crontab类型, 1:分钟，2:小时，3:天，4:周，5:月，6:一次性，7:用户驱动，10:弹性周期 周,11:弹性周期 月,12:年,13:即时触发Instant类型，与正常周期调度任务逻辑隔离
+        :type CycleType: int
+        :param _CycleStep: 小时和分钟任务才有；分钟任务：5、10、15、20、30，表示每隔5【或其他值】分钟执行一次；小时任务：1、2、3、4、5、6、7、8、9、10、11、12，表示每隔1【或其他值】小时执行一次。该值大于1时，请把TaskAction字段设置为空字符串。
+        :type CycleStep: int
+        :param _CrontabExpression: cron表达式  周期类型为crontab调度才需要
+        :type CrontabExpression: str
+        :param _ExecutionStartTime: 执行时间左闭区间，格式：HH:mm  小时调度才有，例如小时任务, 每日固定区间生效
+        :type ExecutionStartTime: str
+        :param _ExecutionEndTime: 执行时间右闭区间，格式：HH:mm  小时调度才有，例如小时任务, 每日固定区间生效
+        :type ExecutionEndTime: str
+        :param _TaskName: 任务名，该字段废弃，请勿使用该字段重命名任务
+        :type TaskName: str
+        :param _RetryWait: 失败重试间隔,单位分钟，创建任务的时候已经给了默认值
+        :type RetryWait: int
+        :param _TryLimit: 失败重试次数，创建任务的时候已经给了默认值
+        :type TryLimit: int
+        :param _Retriable: 是否可重试，0代码不可重试，1代表可以重试；暂不支持其他值
+        :type Retriable: int
+        :param _RunPriority: 运行优先级，4高 5中 6低；暂不支持其他值
+        :type RunPriority: int
+        :param _TaskExt: 任务的扩展配置
+        :type TaskExt: list of TaskExtInfo
+        :param _ResourceGroup: 执行资源组Id，需要去资源管理服务上创建调度资源组，并且绑定cvm机器
+        :type ResourceGroup: str
+        :param _YarnQueue: 资源池队列名称
+        :type YarnQueue: str
+        :param _BrokerIp: 资源组下具体执行机，any 表示可以跑在任意一台。
+        :type BrokerIp: str
+        :param _InCharge: 责任人，多个责任人请用分号隔开
+        :type InCharge: str
+        :param _Notes: 任务备注
+        :type Notes: str
+        :param _TaskParamInfos: 任务参数
+        :type TaskParamInfos: list of ParamInfo
+        :param _SourceServer: 源数据源Id
+        :type SourceServer: str
+        :param _TargetServer: 目标数据源Id
+        :type TargetServer: str
+        :param _DependencyWorkflow: 是否支持工作流依赖 yes / no 默认 no
+        :type DependencyWorkflow: str
+        :param _DependencyConfigDTOs: 依赖配置,仅可修改上游任务实例配置方法
+        :type DependencyConfigDTOs: list of DependencyConfig
+        :param _ExecutionTTL: 运行耗时超时时间分钟数
+        :type ExecutionTTL: int
+        :param _ScriptChange: 脚本是否改变
+        :type ScriptChange: bool
+        :param _ScheduleTimeZone: 任务时区，仅支持整数时区配置
+        :type ScheduleTimeZone: str
+        :param _ScheduleRunType: 0 正常调度 1 空跑调度；暂不支持其他值
+        :type ScheduleRunType: int
+        :param _ConcurrentStrategy: 0 并发度达到上限时，本次排队等待 1 并发度达到上限时，本次不执行，直接kill；暂不支持其他值
+        :type ConcurrentStrategy: int
+        :param _RegisterDsEventPublisherRequest: shell任务发布事件
+        :type RegisterDsEventPublisherRequest: :class:`tencentcloud.wedata.v20210820.models.RegisterDsEventPublisherReq`
+        :param _Content: base64编码后脚本内容
+        :type Content: str
+        """
+        self._ProjectId = None
+        self._TaskId = None
+        self._DelayTime = None
+        self._StartupTime = None
+        self._SelfDepend = None
+        self._StartTime = None
+        self._EndTime = None
+        self._TaskAction = None
+        self._CycleType = None
+        self._CycleStep = None
+        self._CrontabExpression = None
+        self._ExecutionStartTime = None
+        self._ExecutionEndTime = None
+        self._TaskName = None
+        self._RetryWait = None
+        self._TryLimit = None
+        self._Retriable = None
+        self._RunPriority = None
+        self._TaskExt = None
+        self._ResourceGroup = None
+        self._YarnQueue = None
+        self._BrokerIp = None
+        self._InCharge = None
+        self._Notes = None
+        self._TaskParamInfos = None
+        self._SourceServer = None
+        self._TargetServer = None
+        self._DependencyWorkflow = None
+        self._DependencyConfigDTOs = None
+        self._ExecutionTTL = None
+        self._ScriptChange = None
+        self._ScheduleTimeZone = None
+        self._ScheduleRunType = None
+        self._ConcurrentStrategy = None
+        self._RegisterDsEventPublisherRequest = None
+        self._Content = None
+
+    @property
+    def ProjectId(self):
+        """项目Id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def TaskId(self):
+        """任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def DelayTime(self):
+        """执行时间，单位分钟，天/周/月/年调度才有。比如天调度，每天的02:00点执行一次，delayTime就是120分钟
+        :rtype: int
+        """
+        return self._DelayTime
+
+    @DelayTime.setter
+    def DelayTime(self, DelayTime):
+        self._DelayTime = DelayTime
+
+    @property
+    def StartupTime(self):
+        """启动时间：该字段已废弃，无需填写
+        :rtype: int
+        """
+        return self._StartupTime
+
+    @StartupTime.setter
+    def StartupTime(self, StartupTime):
+        self._StartupTime = StartupTime
+
+    @property
+    def SelfDepend(self):
+        """自依赖类型  1:有序串行 一次一个 排队  2: 无序串行 一次一个 不排队 3:并行 一次多个；暂不支持其他值
+        :rtype: int
+        """
+        return self._SelfDepend
+
+    @SelfDepend.setter
+    def SelfDepend(self, SelfDepend):
+        self._SelfDepend = SelfDepend
+
+    @property
+    def StartTime(self):
+        """生效开始时间，格式 yyyy-MM-dd HH:mm:ss
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """生效结束时间，格式 yyyy-MM-dd HH:mm:ss
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def TaskAction(self):
+        """调度配置-弹性周期配置，小时/周/月/年调度才有，小时任务指定每天的0点3点4点跑，则为 0,3,4。设置该值时，请把CycleStep字段设置为1（如果原始值不为1）。
+        :rtype: str
+        """
+        return self._TaskAction
+
+    @TaskAction.setter
+    def TaskAction(self, TaskAction):
+        self._TaskAction = TaskAction
+
+    @property
+    def CycleType(self):
+        """周期类型  0:crontab类型, 1:分钟，2:小时，3:天，4:周，5:月，6:一次性，7:用户驱动，10:弹性周期 周,11:弹性周期 月,12:年,13:即时触发Instant类型，与正常周期调度任务逻辑隔离
+        :rtype: int
+        """
+        return self._CycleType
+
+    @CycleType.setter
+    def CycleType(self, CycleType):
+        self._CycleType = CycleType
+
+    @property
+    def CycleStep(self):
+        """小时和分钟任务才有；分钟任务：5、10、15、20、30，表示每隔5【或其他值】分钟执行一次；小时任务：1、2、3、4、5、6、7、8、9、10、11、12，表示每隔1【或其他值】小时执行一次。该值大于1时，请把TaskAction字段设置为空字符串。
+        :rtype: int
+        """
+        return self._CycleStep
+
+    @CycleStep.setter
+    def CycleStep(self, CycleStep):
+        self._CycleStep = CycleStep
+
+    @property
+    def CrontabExpression(self):
+        """cron表达式  周期类型为crontab调度才需要
+        :rtype: str
+        """
+        return self._CrontabExpression
+
+    @CrontabExpression.setter
+    def CrontabExpression(self, CrontabExpression):
+        self._CrontabExpression = CrontabExpression
+
+    @property
+    def ExecutionStartTime(self):
+        """执行时间左闭区间，格式：HH:mm  小时调度才有，例如小时任务, 每日固定区间生效
+        :rtype: str
+        """
+        return self._ExecutionStartTime
+
+    @ExecutionStartTime.setter
+    def ExecutionStartTime(self, ExecutionStartTime):
+        self._ExecutionStartTime = ExecutionStartTime
+
+    @property
+    def ExecutionEndTime(self):
+        """执行时间右闭区间，格式：HH:mm  小时调度才有，例如小时任务, 每日固定区间生效
+        :rtype: str
+        """
+        return self._ExecutionEndTime
+
+    @ExecutionEndTime.setter
+    def ExecutionEndTime(self, ExecutionEndTime):
+        self._ExecutionEndTime = ExecutionEndTime
+
+    @property
+    def TaskName(self):
+        """任务名，该字段废弃，请勿使用该字段重命名任务
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def RetryWait(self):
+        """失败重试间隔,单位分钟，创建任务的时候已经给了默认值
+        :rtype: int
+        """
+        return self._RetryWait
+
+    @RetryWait.setter
+    def RetryWait(self, RetryWait):
+        self._RetryWait = RetryWait
+
+    @property
+    def TryLimit(self):
+        """失败重试次数，创建任务的时候已经给了默认值
+        :rtype: int
+        """
+        return self._TryLimit
+
+    @TryLimit.setter
+    def TryLimit(self, TryLimit):
+        self._TryLimit = TryLimit
+
+    @property
+    def Retriable(self):
+        """是否可重试，0代码不可重试，1代表可以重试；暂不支持其他值
+        :rtype: int
+        """
+        return self._Retriable
+
+    @Retriable.setter
+    def Retriable(self, Retriable):
+        self._Retriable = Retriable
+
+    @property
+    def RunPriority(self):
+        """运行优先级，4高 5中 6低；暂不支持其他值
+        :rtype: int
+        """
+        return self._RunPriority
+
+    @RunPriority.setter
+    def RunPriority(self, RunPriority):
+        self._RunPriority = RunPriority
+
+    @property
+    def TaskExt(self):
+        """任务的扩展配置
+        :rtype: list of TaskExtInfo
+        """
+        return self._TaskExt
+
+    @TaskExt.setter
+    def TaskExt(self, TaskExt):
+        self._TaskExt = TaskExt
+
+    @property
+    def ResourceGroup(self):
+        """执行资源组Id，需要去资源管理服务上创建调度资源组，并且绑定cvm机器
+        :rtype: str
+        """
+        return self._ResourceGroup
+
+    @ResourceGroup.setter
+    def ResourceGroup(self, ResourceGroup):
+        self._ResourceGroup = ResourceGroup
+
+    @property
+    def YarnQueue(self):
+        """资源池队列名称
+        :rtype: str
+        """
+        return self._YarnQueue
+
+    @YarnQueue.setter
+    def YarnQueue(self, YarnQueue):
+        self._YarnQueue = YarnQueue
+
+    @property
+    def BrokerIp(self):
+        """资源组下具体执行机，any 表示可以跑在任意一台。
+        :rtype: str
+        """
+        return self._BrokerIp
+
+    @BrokerIp.setter
+    def BrokerIp(self, BrokerIp):
+        self._BrokerIp = BrokerIp
+
+    @property
+    def InCharge(self):
+        """责任人，多个责任人请用分号隔开
+        :rtype: str
+        """
+        return self._InCharge
+
+    @InCharge.setter
+    def InCharge(self, InCharge):
+        self._InCharge = InCharge
+
+    @property
+    def Notes(self):
+        """任务备注
+        :rtype: str
+        """
+        return self._Notes
+
+    @Notes.setter
+    def Notes(self, Notes):
+        self._Notes = Notes
+
+    @property
+    def TaskParamInfos(self):
+        """任务参数
+        :rtype: list of ParamInfo
+        """
+        return self._TaskParamInfos
+
+    @TaskParamInfos.setter
+    def TaskParamInfos(self, TaskParamInfos):
+        self._TaskParamInfos = TaskParamInfos
+
+    @property
+    def SourceServer(self):
+        """源数据源Id
+        :rtype: str
+        """
+        return self._SourceServer
+
+    @SourceServer.setter
+    def SourceServer(self, SourceServer):
+        self._SourceServer = SourceServer
+
+    @property
+    def TargetServer(self):
+        """目标数据源Id
+        :rtype: str
+        """
+        return self._TargetServer
+
+    @TargetServer.setter
+    def TargetServer(self, TargetServer):
+        self._TargetServer = TargetServer
+
+    @property
+    def DependencyWorkflow(self):
+        """是否支持工作流依赖 yes / no 默认 no
+        :rtype: str
+        """
+        return self._DependencyWorkflow
+
+    @DependencyWorkflow.setter
+    def DependencyWorkflow(self, DependencyWorkflow):
+        self._DependencyWorkflow = DependencyWorkflow
+
+    @property
+    def DependencyConfigDTOs(self):
+        """依赖配置,仅可修改上游任务实例配置方法
+        :rtype: list of DependencyConfig
+        """
+        return self._DependencyConfigDTOs
+
+    @DependencyConfigDTOs.setter
+    def DependencyConfigDTOs(self, DependencyConfigDTOs):
+        self._DependencyConfigDTOs = DependencyConfigDTOs
+
+    @property
+    def ExecutionTTL(self):
+        """运行耗时超时时间分钟数
+        :rtype: int
+        """
+        return self._ExecutionTTL
+
+    @ExecutionTTL.setter
+    def ExecutionTTL(self, ExecutionTTL):
+        self._ExecutionTTL = ExecutionTTL
+
+    @property
+    def ScriptChange(self):
+        """脚本是否改变
+        :rtype: bool
+        """
+        return self._ScriptChange
+
+    @ScriptChange.setter
+    def ScriptChange(self, ScriptChange):
+        self._ScriptChange = ScriptChange
+
+    @property
+    def ScheduleTimeZone(self):
+        """任务时区，仅支持整数时区配置
+        :rtype: str
+        """
+        return self._ScheduleTimeZone
+
+    @ScheduleTimeZone.setter
+    def ScheduleTimeZone(self, ScheduleTimeZone):
+        self._ScheduleTimeZone = ScheduleTimeZone
+
+    @property
+    def ScheduleRunType(self):
+        """0 正常调度 1 空跑调度；暂不支持其他值
+        :rtype: int
+        """
+        return self._ScheduleRunType
+
+    @ScheduleRunType.setter
+    def ScheduleRunType(self, ScheduleRunType):
+        self._ScheduleRunType = ScheduleRunType
+
+    @property
+    def ConcurrentStrategy(self):
+        """0 并发度达到上限时，本次排队等待 1 并发度达到上限时，本次不执行，直接kill；暂不支持其他值
+        :rtype: int
+        """
+        return self._ConcurrentStrategy
+
+    @ConcurrentStrategy.setter
+    def ConcurrentStrategy(self, ConcurrentStrategy):
+        self._ConcurrentStrategy = ConcurrentStrategy
+
+    @property
+    def RegisterDsEventPublisherRequest(self):
+        """shell任务发布事件
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.RegisterDsEventPublisherReq`
+        """
+        return self._RegisterDsEventPublisherRequest
+
+    @RegisterDsEventPublisherRequest.setter
+    def RegisterDsEventPublisherRequest(self, RegisterDsEventPublisherRequest):
+        self._RegisterDsEventPublisherRequest = RegisterDsEventPublisherRequest
+
+    @property
+    def Content(self):
+        """base64编码后脚本内容
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._TaskId = params.get("TaskId")
+        self._DelayTime = params.get("DelayTime")
+        self._StartupTime = params.get("StartupTime")
+        self._SelfDepend = params.get("SelfDepend")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._TaskAction = params.get("TaskAction")
+        self._CycleType = params.get("CycleType")
+        self._CycleStep = params.get("CycleStep")
+        self._CrontabExpression = params.get("CrontabExpression")
+        self._ExecutionStartTime = params.get("ExecutionStartTime")
+        self._ExecutionEndTime = params.get("ExecutionEndTime")
+        self._TaskName = params.get("TaskName")
+        self._RetryWait = params.get("RetryWait")
+        self._TryLimit = params.get("TryLimit")
+        self._Retriable = params.get("Retriable")
+        self._RunPriority = params.get("RunPriority")
+        if params.get("TaskExt") is not None:
+            self._TaskExt = []
+            for item in params.get("TaskExt"):
+                obj = TaskExtInfo()
+                obj._deserialize(item)
+                self._TaskExt.append(obj)
+        self._ResourceGroup = params.get("ResourceGroup")
+        self._YarnQueue = params.get("YarnQueue")
+        self._BrokerIp = params.get("BrokerIp")
+        self._InCharge = params.get("InCharge")
+        self._Notes = params.get("Notes")
+        if params.get("TaskParamInfos") is not None:
+            self._TaskParamInfos = []
+            for item in params.get("TaskParamInfos"):
+                obj = ParamInfo()
+                obj._deserialize(item)
+                self._TaskParamInfos.append(obj)
+        self._SourceServer = params.get("SourceServer")
+        self._TargetServer = params.get("TargetServer")
+        self._DependencyWorkflow = params.get("DependencyWorkflow")
+        if params.get("DependencyConfigDTOs") is not None:
+            self._DependencyConfigDTOs = []
+            for item in params.get("DependencyConfigDTOs"):
+                obj = DependencyConfig()
+                obj._deserialize(item)
+                self._DependencyConfigDTOs.append(obj)
+        self._ExecutionTTL = params.get("ExecutionTTL")
+        self._ScriptChange = params.get("ScriptChange")
+        self._ScheduleTimeZone = params.get("ScheduleTimeZone")
+        self._ScheduleRunType = params.get("ScheduleRunType")
+        self._ConcurrentStrategy = params.get("ConcurrentStrategy")
+        if params.get("RegisterDsEventPublisherRequest") is not None:
+            self._RegisterDsEventPublisherRequest = RegisterDsEventPublisherReq()
+            self._RegisterDsEventPublisherRequest._deserialize(params.get("RegisterDsEventPublisherRequest"))
+        self._Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyTaskInfoDsResponse(AbstractModel):
+    """ModifyTaskInfoDs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 执行结果
+        :type Data: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """执行结果
         :rtype: bool
         """
         return self._Data
@@ -75468,6 +76628,107 @@ class RegisterDsEventListenerResponse(AbstractModel):
             self._Data = EventListenerDTO()
             self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
+
+
+class RegisterDsEventPublisherReq(AbstractModel):
+    """RegisterDsEventPublisher注册事件发布者参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目id
+        :type ProjectId: str
+        :param _Key: 任务id
+        :type Key: str
+        :param _Type: 类型 REST_API、KAFKA
+        :type Type: str
+        :param _Properties: 配置信息
+        :type Properties: list of ParamInfoDs
+        :param _Description: 描述信息
+        :type Description: str
+        """
+        self._ProjectId = None
+        self._Key = None
+        self._Type = None
+        self._Properties = None
+        self._Description = None
+
+    @property
+    def ProjectId(self):
+        """项目id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def Key(self):
+        """任务id
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Type(self):
+        """类型 REST_API、KAFKA
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Properties(self):
+        """配置信息
+        :rtype: list of ParamInfoDs
+        """
+        return self._Properties
+
+    @Properties.setter
+    def Properties(self, Properties):
+        self._Properties = Properties
+
+    @property
+    def Description(self):
+        """描述信息
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._Key = params.get("Key")
+        self._Type = params.get("Type")
+        if params.get("Properties") is not None:
+            self._Properties = []
+            for item in params.get("Properties"):
+                obj = ParamInfoDs()
+                obj._deserialize(item)
+                self._Properties.append(obj)
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class RegisterDsEventRequest(AbstractModel):
@@ -93087,6 +94348,9 @@ class TaskAlarmInfo(AbstractModel):
         :param _AlarmMessageRule: alarm message rule
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlarmMessageRule: str
+        :param _ReportTarget:  0- wedata, 1-inlong
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReportTarget: int
         """
         self._TaskId = None
         self._RegularName = None
@@ -93123,6 +94387,7 @@ class TaskAlarmInfo(AbstractModel):
         self._DingDingWebHooks = None
         self._BusinessType = None
         self._AlarmMessageRule = None
+        self._ReportTarget = None
 
     @property
     def TaskId(self):
@@ -93536,6 +94801,18 @@ class TaskAlarmInfo(AbstractModel):
     def AlarmMessageRule(self, AlarmMessageRule):
         self._AlarmMessageRule = AlarmMessageRule
 
+    @property
+    def ReportTarget(self):
+        """ 0- wedata, 1-inlong
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ReportTarget
+
+    @ReportTarget.setter
+    def ReportTarget(self, ReportTarget):
+        self._ReportTarget = ReportTarget
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -93583,6 +94860,7 @@ class TaskAlarmInfo(AbstractModel):
         self._DingDingWebHooks = params.get("DingDingWebHooks")
         self._BusinessType = params.get("BusinessType")
         self._AlarmMessageRule = params.get("AlarmMessageRule")
+        self._ReportTarget = params.get("ReportTarget")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

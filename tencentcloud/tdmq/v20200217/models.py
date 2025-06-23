@@ -12686,19 +12686,19 @@ class DescribeRabbitMQBindingsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例Id
+        :param _InstanceId: 实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
         :type InstanceId: str
-        :param _VirtualHost: Vhost名称
+        :param _VirtualHost: VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到Vhost名称。
         :type VirtualHost: str
-        :param _Offset: 分页offset
+        :param _Offset: 分页 offset，默认 0
         :type Offset: int
-        :param _Limit: 分页limit
+        :param _Limit: 分页 limit，默认 20
         :type Limit: int
         :param _SearchWord: 搜索关键词，根据源exchange名称/目标资源名称/绑定key进行模糊搜索
         :type SearchWord: str
         :param _SourceExchange: 根据源Exchange精准搜索过滤
         :type SourceExchange: str
-        :param _QueueName: 根据目标QueueName精准搜索过滤，和DestinationExchange过滤不可同时设置
+        :param _QueueName: 根据目标队列名精准搜索过滤，和 DestinationExchange 过滤不可同时设置
         :type QueueName: str
         :param _DestinationExchange: 根据目标Exchange精准搜索过滤，和QueueName过滤不可同时设置
         :type DestinationExchange: str
@@ -12714,7 +12714,7 @@ class DescribeRabbitMQBindingsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例Id
+        """实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
         :rtype: str
         """
         return self._InstanceId
@@ -12725,7 +12725,7 @@ class DescribeRabbitMQBindingsRequest(AbstractModel):
 
     @property
     def VirtualHost(self):
-        """Vhost名称
+        """VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到Vhost名称。
         :rtype: str
         """
         return self._VirtualHost
@@ -12736,7 +12736,7 @@ class DescribeRabbitMQBindingsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页offset
+        """分页 offset，默认 0
         :rtype: int
         """
         return self._Offset
@@ -12747,7 +12747,7 @@ class DescribeRabbitMQBindingsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页limit
+        """分页 limit，默认 20
         :rtype: int
         """
         return self._Limit
@@ -12780,7 +12780,7 @@ class DescribeRabbitMQBindingsRequest(AbstractModel):
 
     @property
     def QueueName(self):
-        """根据目标QueueName精准搜索过滤，和DestinationExchange过滤不可同时设置
+        """根据目标队列名精准搜索过滤，和 DestinationExchange 过滤不可同时设置
         :rtype: str
         """
         return self._QueueName
@@ -12829,7 +12829,7 @@ class DescribeRabbitMQBindingsResponse(AbstractModel):
         r"""
         :param _BindingInfoList: 路由关系列表
         :type BindingInfoList: list of RabbitMQBindingListInfo
-        :param _TotalCount: 数量
+        :param _TotalCount: 路由关系数量
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12851,7 +12851,7 @@ class DescribeRabbitMQBindingsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """数量
+        """路由关系数量
         :rtype: int
         """
         return self._TotalCount
@@ -12890,17 +12890,17 @@ class DescribeRabbitMQExchangesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 id
+        :param _InstanceId: 实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
         :type InstanceId: str
-        :param _VirtualHost: vhost 参数
+        :param _VirtualHost: VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到Vhost名称。
         :type VirtualHost: str
-        :param _Offset: 分页 offset
+        :param _Offset: 分页 offset，默认 0
         :type Offset: int
-        :param _Limit: 分页 limit
+        :param _Limit: 分页 limit，默认 20
         :type Limit: int
         :param _SearchWord: 搜索关键词, 支持模糊匹配 
         :type SearchWord: str
-        :param _ExchangeTypeFilters: 筛选 exchange 类型, 数组中每个元素为选中的过滤类型
+        :param _ExchangeTypeFilters: 筛选 exchange 类型, 数组中每个元素为选中的过滤类型，仅支持 direct、fanout、topic、header
         :type ExchangeTypeFilters: list of str
         :param _ExchangeCreatorFilters: 筛选 exchange 创建来源,  "system":"系统创建", "user":"用户创建"
         :type ExchangeCreatorFilters: list of str
@@ -12912,6 +12912,8 @@ MessageRateIn - 生产速率；
 MessageRateOut - 消费速率；
         :type SortElement: str
         :param _SortOrder: 排序顺序，ascend 或 descend
+ascend：升序
+descend：降序
         :type SortOrder: str
         """
         self._InstanceId = None
@@ -12927,7 +12929,7 @@ MessageRateOut - 消费速率；
 
     @property
     def InstanceId(self):
-        """实例 id
+        """实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
         :rtype: str
         """
         return self._InstanceId
@@ -12938,7 +12940,7 @@ MessageRateOut - 消费速率；
 
     @property
     def VirtualHost(self):
-        """vhost 参数
+        """VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到Vhost名称。
         :rtype: str
         """
         return self._VirtualHost
@@ -12949,7 +12951,7 @@ MessageRateOut - 消费速率；
 
     @property
     def Offset(self):
-        """分页 offset
+        """分页 offset，默认 0
         :rtype: int
         """
         return self._Offset
@@ -12960,7 +12962,7 @@ MessageRateOut - 消费速率；
 
     @property
     def Limit(self):
-        """分页 limit
+        """分页 limit，默认 20
         :rtype: int
         """
         return self._Limit
@@ -12982,7 +12984,7 @@ MessageRateOut - 消费速率；
 
     @property
     def ExchangeTypeFilters(self):
-        """筛选 exchange 类型, 数组中每个元素为选中的过滤类型
+        """筛选 exchange 类型, 数组中每个元素为选中的过滤类型，仅支持 direct、fanout、topic、header
         :rtype: list of str
         """
         return self._ExchangeTypeFilters
@@ -13030,6 +13032,8 @@ MessageRateOut - 消费速率；
     @property
     def SortOrder(self):
         """排序顺序，ascend 或 descend
+ascend：升序
+descend：降序
         :rtype: str
         """
         return self._SortOrder
@@ -13338,15 +13342,15 @@ class DescribeRabbitMQPermissionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群实例id
+        :param _InstanceId: 实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
         :type InstanceId: str
-        :param _User: 用户名，用于查询过滤，不传则查询全部
+        :param _User: 用户名，形如 admin。有效的 User 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，点击集群列表中的集群，进入集群详情，并在用户与权限页签中找到用户列表，从而找到用户名称。
         :type User: str
-        :param _VirtualHost: vhost名，用于查询过滤，不传则查询全部
+        :param _VirtualHost: VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到 Vhost 名称。
         :type VirtualHost: str
-        :param _Offset: 分页Offset
+        :param _Offset: 分页 Offset，默认 0
         :type Offset: int
-        :param _Limit: 分页Limit
+        :param _Limit: 分页 Limit，默认 20
         :type Limit: int
         """
         self._InstanceId = None
@@ -13357,7 +13361,7 @@ class DescribeRabbitMQPermissionRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群实例id
+        """实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
         :rtype: str
         """
         return self._InstanceId
@@ -13368,7 +13372,7 @@ class DescribeRabbitMQPermissionRequest(AbstractModel):
 
     @property
     def User(self):
-        """用户名，用于查询过滤，不传则查询全部
+        """用户名，形如 admin。有效的 User 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，点击集群列表中的集群，进入集群详情，并在用户与权限页签中找到用户列表，从而找到用户名称。
         :rtype: str
         """
         return self._User
@@ -13379,7 +13383,7 @@ class DescribeRabbitMQPermissionRequest(AbstractModel):
 
     @property
     def VirtualHost(self):
-        """vhost名，用于查询过滤，不传则查询全部
+        """VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到 Vhost 名称。
         :rtype: str
         """
         return self._VirtualHost
@@ -13390,7 +13394,7 @@ class DescribeRabbitMQPermissionRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页Offset
+        """分页 Offset，默认 0
         :rtype: int
         """
         return self._Offset
@@ -13401,7 +13405,7 @@ class DescribeRabbitMQPermissionRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页Limit
+        """分页 Limit，默认 20
         :rtype: int
         """
         return self._Limit
@@ -14333,17 +14337,18 @@ class DescribeRabbitMQUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群实例Id
+        :param _InstanceId: 实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
         :type InstanceId: str
         :param _SearchUser: 用户名检索，支持前缀匹配，后缀匹配
         :type SearchUser: str
-        :param _Offset: 分页Offset
+        :param _Offset: 分页 Offset，默认 0
         :type Offset: int
-        :param _Limit: 分页Limit
+        :param _Limit: 分页 Limit，默认 20
         :type Limit: int
         :param _User: 用户名，精确查询
         :type User: str
-        :param _Tags: 用户标签，根据标签过滤列表
+        :param _Tags: 用户标签，用于决定改用户访问 RabbitMQ Management 的权限范围
+management：普通控制台用户，monitoring：管理型控制台用户，其他值：非控制台用户
         :type Tags: list of str
         """
         self._InstanceId = None
@@ -14355,7 +14360,7 @@ class DescribeRabbitMQUserRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """集群实例Id
+        """实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
         :rtype: str
         """
         return self._InstanceId
@@ -14377,7 +14382,7 @@ class DescribeRabbitMQUserRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """分页Offset
+        """分页 Offset，默认 0
         :rtype: int
         """
         return self._Offset
@@ -14388,7 +14393,7 @@ class DescribeRabbitMQUserRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """分页Limit
+        """分页 Limit，默认 20
         :rtype: int
         """
         return self._Limit
@@ -14410,7 +14415,8 @@ class DescribeRabbitMQUserRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """用户标签，根据标签过滤列表
+        """用户标签，用于决定改用户访问 RabbitMQ Management 的权限范围
+management：普通控制台用户，monitoring：管理型控制台用户，其他值：非控制台用户
         :rtype: list of str
         """
         return self._Tags
@@ -14507,14 +14513,14 @@ class DescribeRabbitMQVipInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: 集群 ID
         :type ClusterId: str
         """
         self._ClusterId = None
 
     @property
     def ClusterId(self):
-        """集群ID
+        """集群 ID
         :rtype: str
         """
         return self._ClusterId
@@ -14692,9 +14698,9 @@ class DescribeRabbitMQVipInstancesRequest(AbstractModel):
         r"""
         :param _Filters: 查询条件过滤器
         :type Filters: list of Filter
-        :param _Limit: 查询数目上限，默认20
+        :param _Limit: 查询数目上限，默认 20
         :type Limit: int
-        :param _Offset: 查询起始位置
+        :param _Offset: 查询起始位置，默认 0
         :type Offset: int
         """
         self._Filters = None
@@ -14714,7 +14720,7 @@ class DescribeRabbitMQVipInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """查询数目上限，默认20
+        """查询数目上限，默认 20
         :rtype: int
         """
         return self._Limit
@@ -14725,7 +14731,7 @@ class DescribeRabbitMQVipInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """查询起始位置
+        """查询起始位置，默认 0
         :rtype: int
         """
         return self._Offset
@@ -24544,11 +24550,14 @@ class ModifyRocketMQInstanceRequest(AbstractModel):
         :type Remark: str
         :param _MessageRetention: 实例消息保留时间，小时为单位
         :type MessageRetention: int
+        :param _EnableDeletionProtection: 是否开启删除保护
+        :type EnableDeletionProtection: bool
         """
         self._InstanceId = None
         self._Name = None
         self._Remark = None
         self._MessageRetention = None
+        self._EnableDeletionProtection = None
 
     @property
     def InstanceId(self):
@@ -24594,12 +24603,24 @@ class ModifyRocketMQInstanceRequest(AbstractModel):
     def MessageRetention(self, MessageRetention):
         self._MessageRetention = MessageRetention
 
+    @property
+    def EnableDeletionProtection(self):
+        """是否开启删除保护
+        :rtype: bool
+        """
+        return self._EnableDeletionProtection
+
+    @EnableDeletionProtection.setter
+    def EnableDeletionProtection(self, EnableDeletionProtection):
+        self._EnableDeletionProtection = EnableDeletionProtection
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._Name = params.get("Name")
         self._Remark = params.get("Remark")
         self._MessageRetention = params.get("MessageRetention")
+        self._EnableDeletionProtection = params.get("EnableDeletionProtection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27875,19 +27896,19 @@ OFF/ON/CREATING/DELETING
 
 
 class RabbitMQClusterInfo(AbstractModel):
-    """RabbiteMQ集群基本信息
+    """RabbitMQ 集群基本信息
 
     """
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: 集群 ID
         :type ClusterId: str
         :param _ClusterName: 集群名称
         :type ClusterName: str
         :param _Region: 地域信息
         :type Region: str
-        :param _CreateTime: 创建时间，毫秒为单位
+        :param _CreateTime: 创建时间，毫秒为单位。unix 时间戳
         :type CreateTime: int
         :param _Remark: 集群说明信息
         :type Remark: str
@@ -27903,7 +27924,7 @@ class RabbitMQClusterInfo(AbstractModel):
         :type MessagePublishRate: float
         :param _MessageStackNumber: 堆积消息数 单位：条
         :type MessageStackNumber: int
-        :param _ExpireTime: 过期时间
+        :param _ExpireTime: 实例到期时间，按量付费的资源该值为 0，毫秒为单位。unix 时间戳
         :type ExpireTime: int
         :param _ChannelNumber: Channel数量
         :type ChannelNumber: int
@@ -27930,7 +27951,7 @@ class RabbitMQClusterInfo(AbstractModel):
         :type PayMode: int
         :param _InstanceType: 实例类型，0 专享版、1 Serverless 版
         :type InstanceType: int
-        :param _IsolatedTime: 开始隔离时间
+        :param _IsolatedTime: 开始隔离时间。unix 时间戳
         :type IsolatedTime: int
         :param _Container: 是否为容器实例，默认 true
         :type Container: bool
@@ -27964,7 +27985,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def ClusterId(self):
-        """集群ID
+        """集群 ID
         :rtype: str
         """
         return self._ClusterId
@@ -27997,7 +28018,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间，毫秒为单位
+        """创建时间，毫秒为单位。unix 时间戳
         :rtype: int
         """
         return self._CreateTime
@@ -28085,7 +28106,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """过期时间
+        """实例到期时间，按量付费的资源该值为 0，毫秒为单位。unix 时间戳
         :rtype: int
         """
         return self._ExpireTime
@@ -28229,7 +28250,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def IsolatedTime(self):
-        """开始隔离时间
+        """开始隔离时间。unix 时间戳
         :rtype: int
         """
         return self._IsolatedTime
@@ -29660,13 +29681,13 @@ class RabbitMQUser(AbstractModel):
 
 
 class RabbitMQVipInstance(AbstractModel):
-    """RabbitMQ专享实例信息
+    """RabbitMQ 托管版实例信息
 
     """
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例id
+        :param _InstanceId: 实例 ID
         :type InstanceId: str
         :param _InstanceName: 实例名称
         :type InstanceName: str
@@ -29684,17 +29705,26 @@ class RabbitMQVipInstance(AbstractModel):
         :type MaxBandWidth: int
         :param _MaxStorage: 存储容量，GB为单位
         :type MaxStorage: int
-        :param _ExpireTime: 实例到期时间，毫秒为单位
+        :param _ExpireTime: 实例到期时间，按量付费的资源该值为 0，毫秒为单位。unix 时间戳
         :type ExpireTime: int
         :param _AutoRenewFlag: 自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)
         :type AutoRenewFlag: int
-        :param _PayMode: 0-后付费，1-预付费
+        :param _PayMode: 1 表示预付费，0 表示后付费
         :type PayMode: int
         :param _Remark: 备注信息
         :type Remark: str
-        :param _SpecName: 实例配置ID
+        :param _SpecName: 集群的节点规格，需要输入对应的规格标识：
+2C8G：rabbit-vip-basic-2c8g
+4C16G：rabbit-vip-basic-4c16g
+8C32G：rabbit-vip-basic-8c32g
+16C32G：rabbit-vip-basic-4
+16C64G：rabbit-vip-basic-16c64g
+2C4G：rabbit-vip-basic-5
+4C8G：rabbit-vip-basic-1
+8C16G（已售罄）：rabbit-vip-basic-2
+不传默认为4C8G：rabbit-vip-basic-1
         :type SpecName: str
-        :param _ExceptionInformation: 集群异常。
+        :param _ExceptionInformation: 集群异常信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExceptionInformation: str
         :param _ClusterStatus: 实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败
@@ -29705,7 +29735,7 @@ class RabbitMQVipInstance(AbstractModel):
         :type PublicAccessEndpoint: str
         :param _Vpcs: VPC 接入点列表
         :type Vpcs: list of VpcEndpointInfo
-        :param _CreateTime: 创建时间，毫秒为单位
+        :param _CreateTime: 创建时间，毫秒为单位。unix 时间戳
         :type CreateTime: int
         :param _InstanceType: 实例类型，0 专享版、1 Serverless 版
         :type InstanceType: int
@@ -29736,7 +29766,7 @@ class RabbitMQVipInstance(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例id
+        """实例 ID
         :rtype: str
         """
         return self._InstanceId
@@ -29835,7 +29865,7 @@ class RabbitMQVipInstance(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """实例到期时间，毫秒为单位
+        """实例到期时间，按量付费的资源该值为 0，毫秒为单位。unix 时间戳
         :rtype: int
         """
         return self._ExpireTime
@@ -29857,7 +29887,7 @@ class RabbitMQVipInstance(AbstractModel):
 
     @property
     def PayMode(self):
-        """0-后付费，1-预付费
+        """1 表示预付费，0 表示后付费
         :rtype: int
         """
         return self._PayMode
@@ -29879,7 +29909,16 @@ class RabbitMQVipInstance(AbstractModel):
 
     @property
     def SpecName(self):
-        """实例配置ID
+        """集群的节点规格，需要输入对应的规格标识：
+2C8G：rabbit-vip-basic-2c8g
+4C16G：rabbit-vip-basic-4c16g
+8C32G：rabbit-vip-basic-8c32g
+16C32G：rabbit-vip-basic-4
+16C64G：rabbit-vip-basic-16c64g
+2C4G：rabbit-vip-basic-5
+4C8G：rabbit-vip-basic-1
+8C16G（已售罄）：rabbit-vip-basic-2
+不传默认为4C8G：rabbit-vip-basic-1
         :rtype: str
         """
         return self._SpecName
@@ -29890,7 +29929,7 @@ class RabbitMQVipInstance(AbstractModel):
 
     @property
     def ExceptionInformation(self):
-        """集群异常。
+        """集群异常信息
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -29937,7 +29976,7 @@ class RabbitMQVipInstance(AbstractModel):
 
     @property
     def CreateTime(self):
-        """创建时间，毫秒为单位
+        """创建时间，毫秒为单位。unix 时间戳
         :rtype: int
         """
         return self._CreateTime

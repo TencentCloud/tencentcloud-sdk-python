@@ -762,6 +762,8 @@ class ApmInstanceDetail(AbstractModel):
         :type LogIndexType: int
         :param _LogTraceIdKey: traceId的索引key: 当CLS索引类型为键值索引时生效
         :type LogTraceIdKey: str
+        :param _Token: 业务系统鉴权 token
+        :type Token: str
         """
         self._InstanceId = None
         self._Name = None
@@ -804,6 +806,7 @@ class ApmInstanceDetail(AbstractModel):
         self._IsMemoryHijackingAnalysis = None
         self._LogIndexType = None
         self._LogTraceIdKey = None
+        self._Token = None
 
     @property
     def InstanceId(self):
@@ -1262,6 +1265,17 @@ class ApmInstanceDetail(AbstractModel):
     def LogTraceIdKey(self, LogTraceIdKey):
         self._LogTraceIdKey = LogTraceIdKey
 
+    @property
+    def Token(self):
+        """业务系统鉴权 token
+        :rtype: str
+        """
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -1310,6 +1324,7 @@ class ApmInstanceDetail(AbstractModel):
         self._IsMemoryHijackingAnalysis = params.get("IsMemoryHijackingAnalysis")
         self._LogIndexType = params.get("LogIndexType")
         self._LogTraceIdKey = params.get("LogTraceIdKey")
+        self._Token = params.get("Token")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

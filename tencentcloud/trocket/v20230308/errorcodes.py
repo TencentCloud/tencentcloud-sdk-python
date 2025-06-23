@@ -44,6 +44,9 @@ RESOURCENOTFOUND_INSTANCE = 'ResourceNotFound.Instance'
 # 消息不存在。
 RESOURCENOTFOUND_MESSAGE = 'ResourceNotFound.Message'
 
+# 迁移任务不存在，请检查后重试。
+RESOURCENOTFOUND_MIGRATIONTASK = 'ResourceNotFound.MigrationTask'
+
 # 角色不存在，请检查后重试。
 RESOURCENOTFOUND_ROLE = 'ResourceNotFound.Role'
 

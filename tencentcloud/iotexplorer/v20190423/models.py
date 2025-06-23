@@ -8094,6 +8094,8 @@ class DescribeCloudStorageAIServiceResponse(AbstractModel):
         :type Config: str
         :param _ROI: 视频分析识别区域
         :type ROI: str
+        :param _PackageId: 云存 AI 套餐 ID
+        :type PackageId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -8104,6 +8106,7 @@ class DescribeCloudStorageAIServiceResponse(AbstractModel):
         self._Enabled = None
         self._Config = None
         self._ROI = None
+        self._PackageId = None
         self._RequestId = None
 
     @property
@@ -8191,6 +8194,17 @@ class DescribeCloudStorageAIServiceResponse(AbstractModel):
         self._ROI = ROI
 
     @property
+    def PackageId(self):
+        """云存 AI 套餐 ID
+        :rtype: str
+        """
+        return self._PackageId
+
+    @PackageId.setter
+    def PackageId(self, PackageId):
+        self._PackageId = PackageId
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -8210,6 +8224,7 @@ class DescribeCloudStorageAIServiceResponse(AbstractModel):
         self._Enabled = params.get("Enabled")
         self._Config = params.get("Config")
         self._ROI = params.get("ROI")
+        self._PackageId = params.get("PackageId")
         self._RequestId = params.get("RequestId")
 
 
@@ -20419,12 +20434,38 @@ class InvokeAISearchServiceRequest(AbstractModel):
         :type SummaryLang: str
         :param _ChannelId: 通道ID
         :type ChannelId: int
+        :param _EnableSummary: 是否需要返回总结，默认为False；  开启后会加大接口响应时长
+        :type EnableSummary: bool
+        :param _StartTimeMs: 开始时间。
+
+注：
+1. 单位为毫秒（ms）
+2. 如果同时指定了StartTimeMs与EndTimeMs，时间区间不能大于7天；如果只指定其中一个（例如只指定StartTimeMs，则查询自StartTimeMs后7天内的数据， 反之EndTimeMs也一样）
+3. 只要指定了其中一个参数，接口则会忽略Query参数中关于时间的描述；（例如Query为"过去三天关于猫咪的视频"， 则会将"过去三天忽略"）
+        :type StartTimeMs: int
+        :param _EndTimeMs: 结束时间。
+
+注：
+1. 单位为毫秒（ms）
+2. 如果同时指定了StartTimeMs与EndTimeMs，时间区间不能大于7天；如果只指定其中一个（例如只指定StartTimeMs，则查询自StartTimeMs后7天内的数据， 反之EndTimeMs也一样）
+3. 只要指定了其中一个参数，接口则会忽略Query参数中关于时间的描述；（例如Query为"过去三天关于猫咪的视频"， 则会将"过去三天忽略"）
+        :type EndTimeMs: int
+        :param _TimeZone: 时区。默认值：Asia/Shanghai
+
+注：
+符合iana标准 https://www.iana.org/time-zones，例如Asia/Shanghai、Asia/Bangkok
+
+        :type TimeZone: str
         """
         self._ProductId = None
         self._DeviceName = None
         self._Query = None
         self._SummaryLang = None
         self._ChannelId = None
+        self._EnableSummary = None
+        self._StartTimeMs = None
+        self._EndTimeMs = None
+        self._TimeZone = None
 
     @property
     def ProductId(self):
@@ -20481,6 +20522,64 @@ class InvokeAISearchServiceRequest(AbstractModel):
     def ChannelId(self, ChannelId):
         self._ChannelId = ChannelId
 
+    @property
+    def EnableSummary(self):
+        """是否需要返回总结，默认为False；  开启后会加大接口响应时长
+        :rtype: bool
+        """
+        return self._EnableSummary
+
+    @EnableSummary.setter
+    def EnableSummary(self, EnableSummary):
+        self._EnableSummary = EnableSummary
+
+    @property
+    def StartTimeMs(self):
+        """开始时间。
+
+注：
+1. 单位为毫秒（ms）
+2. 如果同时指定了StartTimeMs与EndTimeMs，时间区间不能大于7天；如果只指定其中一个（例如只指定StartTimeMs，则查询自StartTimeMs后7天内的数据， 反之EndTimeMs也一样）
+3. 只要指定了其中一个参数，接口则会忽略Query参数中关于时间的描述；（例如Query为"过去三天关于猫咪的视频"， 则会将"过去三天忽略"）
+        :rtype: int
+        """
+        return self._StartTimeMs
+
+    @StartTimeMs.setter
+    def StartTimeMs(self, StartTimeMs):
+        self._StartTimeMs = StartTimeMs
+
+    @property
+    def EndTimeMs(self):
+        """结束时间。
+
+注：
+1. 单位为毫秒（ms）
+2. 如果同时指定了StartTimeMs与EndTimeMs，时间区间不能大于7天；如果只指定其中一个（例如只指定StartTimeMs，则查询自StartTimeMs后7天内的数据， 反之EndTimeMs也一样）
+3. 只要指定了其中一个参数，接口则会忽略Query参数中关于时间的描述；（例如Query为"过去三天关于猫咪的视频"， 则会将"过去三天忽略"）
+        :rtype: int
+        """
+        return self._EndTimeMs
+
+    @EndTimeMs.setter
+    def EndTimeMs(self, EndTimeMs):
+        self._EndTimeMs = EndTimeMs
+
+    @property
+    def TimeZone(self):
+        """时区。默认值：Asia/Shanghai
+
+注：
+符合iana标准 https://www.iana.org/time-zones，例如Asia/Shanghai、Asia/Bangkok
+
+        :rtype: str
+        """
+        return self._TimeZone
+
+    @TimeZone.setter
+    def TimeZone(self, TimeZone):
+        self._TimeZone = TimeZone
+
 
     def _deserialize(self, params):
         self._ProductId = params.get("ProductId")
@@ -20488,6 +20587,10 @@ class InvokeAISearchServiceRequest(AbstractModel):
         self._Query = params.get("Query")
         self._SummaryLang = params.get("SummaryLang")
         self._ChannelId = params.get("ChannelId")
+        self._EnableSummary = params.get("EnableSummary")
+        self._StartTimeMs = params.get("StartTimeMs")
+        self._EndTimeMs = params.get("EndTimeMs")
+        self._TimeZone = params.get("TimeZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21290,6 +21393,161 @@ class InvokeTWeSeeRecognitionTaskResponse(AbstractModel):
         if params.get("Result") is not None:
             self._Result = VisionRecognitionResult()
             self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class InvokeVideosKeywordsAnalyzerRequest(AbstractModel):
+    """InvokeVideosKeywordsAnalyzer请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品ID
+        :type ProductId: str
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        :param _StartTimeMs: 开始时间。
+
+注：
+1. 单位为毫秒（ms）
+2. 时间区间必须控制在某一个自然天内，不支持跨天
+        :type StartTimeMs: int
+        :param _EndTimeMs: 结束时间。
+
+注：
+1. 单位为毫秒（ms）
+2. 时间区间必须控制在某一个自然天内，不支持跨天
+        :type EndTimeMs: int
+        :param _KeywordsMaxNum: 返回的关键字最大数量，默认为5；最大不能超过10
+        :type KeywordsMaxNum: int
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._StartTimeMs = None
+        self._EndTimeMs = None
+        self._KeywordsMaxNum = None
+
+    @property
+    def ProductId(self):
+        """产品ID
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        """设备名称
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def StartTimeMs(self):
+        """开始时间。
+
+注：
+1. 单位为毫秒（ms）
+2. 时间区间必须控制在某一个自然天内，不支持跨天
+        :rtype: int
+        """
+        return self._StartTimeMs
+
+    @StartTimeMs.setter
+    def StartTimeMs(self, StartTimeMs):
+        self._StartTimeMs = StartTimeMs
+
+    @property
+    def EndTimeMs(self):
+        """结束时间。
+
+注：
+1. 单位为毫秒（ms）
+2. 时间区间必须控制在某一个自然天内，不支持跨天
+        :rtype: int
+        """
+        return self._EndTimeMs
+
+    @EndTimeMs.setter
+    def EndTimeMs(self, EndTimeMs):
+        self._EndTimeMs = EndTimeMs
+
+    @property
+    def KeywordsMaxNum(self):
+        """返回的关键字最大数量，默认为5；最大不能超过10
+        :rtype: int
+        """
+        return self._KeywordsMaxNum
+
+    @KeywordsMaxNum.setter
+    def KeywordsMaxNum(self, KeywordsMaxNum):
+        self._KeywordsMaxNum = KeywordsMaxNum
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._StartTimeMs = params.get("StartTimeMs")
+        self._EndTimeMs = params.get("EndTimeMs")
+        self._KeywordsMaxNum = params.get("KeywordsMaxNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InvokeVideosKeywordsAnalyzerResponse(AbstractModel):
+    """InvokeVideosKeywordsAnalyzer返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Keywords: 基于搜索结果的总结
+        :type Keywords: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Keywords = None
+        self._RequestId = None
+
+    @property
+    def Keywords(self):
+        """基于搜索结果的总结
+        :rtype: list of str
+        """
+        return self._Keywords
+
+    @Keywords.setter
+    def Keywords(self, Keywords):
+        self._Keywords = Keywords
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Keywords = params.get("Keywords")
         self._RequestId = params.get("RequestId")
 
 

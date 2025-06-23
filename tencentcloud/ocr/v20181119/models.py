@@ -30003,6 +30003,12 @@ class SingleInvoiceItem(AbstractModel):
         :param _SaleInventory: 销货清单
 注意：此字段可能返回 null，表示取不到有效值。
         :type SaleInventory: :class:`tencentcloud.ocr.v20181119.models.SaleInventory`
+        :param _MotorVehicleSaleInvoiceElectronic: 机动车销售统一发票（电子）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MotorVehicleSaleInvoiceElectronic: :class:`tencentcloud.ocr.v20181119.models.MotorVehicleSaleInvoice`
+        :param _UsedCarPurchaseInvoiceElectronic: 二手车销售统一发票（电子）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsedCarPurchaseInvoiceElectronic: :class:`tencentcloud.ocr.v20181119.models.UsedCarPurchaseInvoice`
         """
         self._VatSpecialInvoice = None
         self._VatCommonInvoice = None
@@ -30039,6 +30045,8 @@ class SingleInvoiceItem(AbstractModel):
         self._OverseasInvoice = None
         self._ShoppingReceipt = None
         self._SaleInventory = None
+        self._MotorVehicleSaleInvoiceElectronic = None
+        self._UsedCarPurchaseInvoiceElectronic = None
 
     @property
     def VatSpecialInvoice(self):
@@ -30460,6 +30468,30 @@ class SingleInvoiceItem(AbstractModel):
     def SaleInventory(self, SaleInventory):
         self._SaleInventory = SaleInventory
 
+    @property
+    def MotorVehicleSaleInvoiceElectronic(self):
+        """机动车销售统一发票（电子）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.MotorVehicleSaleInvoice`
+        """
+        return self._MotorVehicleSaleInvoiceElectronic
+
+    @MotorVehicleSaleInvoiceElectronic.setter
+    def MotorVehicleSaleInvoiceElectronic(self, MotorVehicleSaleInvoiceElectronic):
+        self._MotorVehicleSaleInvoiceElectronic = MotorVehicleSaleInvoiceElectronic
+
+    @property
+    def UsedCarPurchaseInvoiceElectronic(self):
+        """二手车销售统一发票（电子）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.UsedCarPurchaseInvoice`
+        """
+        return self._UsedCarPurchaseInvoiceElectronic
+
+    @UsedCarPurchaseInvoiceElectronic.setter
+    def UsedCarPurchaseInvoiceElectronic(self, UsedCarPurchaseInvoiceElectronic):
+        self._UsedCarPurchaseInvoiceElectronic = UsedCarPurchaseInvoiceElectronic
+
 
     def _deserialize(self, params):
         if params.get("VatSpecialInvoice") is not None:
@@ -30567,6 +30599,12 @@ class SingleInvoiceItem(AbstractModel):
         if params.get("SaleInventory") is not None:
             self._SaleInventory = SaleInventory()
             self._SaleInventory._deserialize(params.get("SaleInventory"))
+        if params.get("MotorVehicleSaleInvoiceElectronic") is not None:
+            self._MotorVehicleSaleInvoiceElectronic = MotorVehicleSaleInvoice()
+            self._MotorVehicleSaleInvoiceElectronic._deserialize(params.get("MotorVehicleSaleInvoiceElectronic"))
+        if params.get("UsedCarPurchaseInvoiceElectronic") is not None:
+            self._UsedCarPurchaseInvoiceElectronic = UsedCarPurchaseInvoice()
+            self._UsedCarPurchaseInvoiceElectronic._deserialize(params.get("UsedCarPurchaseInvoiceElectronic"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -3439,6 +3439,8 @@ MongoDB可定义如下的参数：
         :type DatabaseNetEnv: str
         :param _ConnectType: tdsql连接方式：proxy-通过tdsql proxy主机访问各个set节点，注意只有在自研上云的网络环境下才能通过这种方式连接，Info中只需要提供proxy主机信息。set-直连set节点，如选择直连set方式，Info中需要正确填写proxy主机信息及所有set节点信息。源端是tdsqlmysql类型必填。
         :type ConnectType: str
+        :param _CcnOwnerUin: 云联网网关所属账号，如果云联网网关为其他账号资源需要填写
+        :type CcnOwnerUin: str
         """
         self._Region = None
         self._AccessType = None
@@ -3449,6 +3451,7 @@ MongoDB可定义如下的参数：
         self._ExtraAttr = None
         self._DatabaseNetEnv = None
         self._ConnectType = None
+        self._CcnOwnerUin = None
 
     @property
     def Region(self):
@@ -3559,6 +3562,17 @@ MongoDB可定义如下的参数：
     def ConnectType(self, ConnectType):
         self._ConnectType = ConnectType
 
+    @property
+    def CcnOwnerUin(self):
+        """云联网网关所属账号，如果云联网网关为其他账号资源需要填写
+        :rtype: str
+        """
+        return self._CcnOwnerUin
+
+    @CcnOwnerUin.setter
+    def CcnOwnerUin(self, CcnOwnerUin):
+        self._CcnOwnerUin = CcnOwnerUin
+
 
     def _deserialize(self, params):
         self._Region = params.get("Region")
@@ -3580,6 +3594,7 @@ MongoDB可定义如下的参数：
                 self._ExtraAttr.append(obj)
         self._DatabaseNetEnv = params.get("DatabaseNetEnv")
         self._ConnectType = params.get("ConnectType")
+        self._CcnOwnerUin = params.get("CcnOwnerUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

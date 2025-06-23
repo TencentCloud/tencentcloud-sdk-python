@@ -1029,7 +1029,7 @@ class DescribeTargetGroupInstancesRequest(AbstractModel):
 - BindIP - String - 是否必填：否 - （过滤条件）目标组绑定实例的内网IP地址，如“10.1.1.1”。
 - InstanceId - String - 是否必填：否 - （过滤条件）目标组绑定实例的名称，如“ins-mxzlf9ke”。可通过[DescribeInstances](https://cloud.tencent.com/document/product/213/15728) 接口获取。
         :type Filters: list of Filter
-        :param _Limit: 显示数量限制，默认20，最大1000。
+        :param _Limit: 显示数量限制，默认20，最大100。
         :type Limit: int
         :param _Offset: 显示的偏移量，默认为0。
         :type Offset: int
@@ -1055,7 +1055,7 @@ class DescribeTargetGroupInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """显示数量限制，默认20，最大1000。
+        """显示数量限制，默认20，最大100。
         :rtype: int
         """
         return self._Limit

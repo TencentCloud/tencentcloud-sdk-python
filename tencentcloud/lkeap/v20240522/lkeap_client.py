@@ -685,29 +685,6 @@ class LkeapClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def RetrieveKnowledgeRealtime(self, request):
-        """用于实时检索在UploadDocRealtime接口上传的实时文档内容。 使用场景：适用于在会话中对文档进行问答的场景
-
-        :param request: Request instance for RetrieveKnowledgeRealtime.
-        :type request: :class:`tencentcloud.lkeap.v20240522.models.RetrieveKnowledgeRealtimeRequest`
-        :rtype: :class:`tencentcloud.lkeap.v20240522.models.RetrieveKnowledgeRealtimeResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("RetrieveKnowledgeRealtime", params, headers=headers)
-            response = json.loads(body)
-            model = models.RetrieveKnowledgeRealtimeResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def RunRerank(self, request):
         """基于知识引擎精调模型技术的rerank模型，支持对多路召回的结果进行重排序，根据query与切片内容的相关性，按分数由高到低对切片进行排序，并输出对应的打分结果。
 

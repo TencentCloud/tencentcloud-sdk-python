@@ -2981,6 +2981,38 @@ class EssbasicClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyPartnerAutoSignAuthUrl(self, request):
+        """创建一个用于更新他方自动签授权的链接（可选择他方授权或我方授权）。通过这个链接，合作方企业可以直接进入小程序，进行自动签更新授权（印章）操作。
+
+        如果授权企业尚未开通企业自动签功能，该链接还将引导他们首先开通本企业的自动签服务
+
+
+        注:
+        1. <font color='red'>所在企业的超管、法人才有权限调用此接口</font>(Agent.ProxyOperator.OpenId 需要传递超管或者法人的OpenId)
+        2. 2. 只能更新授权的印章，被授权的企业无法更新
+        3. 授权企业和被授权企业必须都是已认证企业
+        4. <font color='red'>需要授权企业或被授权企业的超管或者法人打开链接</font>走开通逻辑。
+
+        :param request: Request instance for ModifyPartnerAutoSignAuthUrl.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.ModifyPartnerAutoSignAuthUrlRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.ModifyPartnerAutoSignAuthUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyPartnerAutoSignAuthUrl", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyPartnerAutoSignAuthUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def OperateChannelTemplate(self, request):
         """此接口（OperateChannelTemplate）用于针对第三方应用平台模板库中的模板对子客企业发布授权的查询和设置。
         平台模板库中的模板的位置在控制台 企业应用管理 中下面的应用模板库管理目录, 可以参照下图位置

@@ -3700,6 +3700,16 @@ class DeviceDetail(AbstractModel):
         :type GroupNamePath: str
         :param _CriticalVulListCount: 未修复高危漏洞数(只支持32位)
         :type CriticalVulListCount: int
+        :param _Os: 操作系统名称
+        :type Os: str
+        :param _OsBits: 操作系统位数
+        :type OsBits: int
+        :param _OsVersion: 操作系统版本
+        :type OsVersion: str
+        :param _OsLanguage: 操作系统语言
+        :type OsLanguage: str
+        :param _OsInstallDate: 操作系统安装时间
+        :type OsInstallDate: str
         :param _ComputerName: 设备名，和Name相同
         :type ComputerName: str
         :param _DomainName: 登录域名
@@ -3772,6 +3782,11 @@ class DeviceDetail(AbstractModel):
         self._GroupName = None
         self._GroupNamePath = None
         self._CriticalVulListCount = None
+        self._Os = None
+        self._OsBits = None
+        self._OsVersion = None
+        self._OsLanguage = None
+        self._OsInstallDate = None
         self._ComputerName = None
         self._DomainName = None
         self._MacAddr = None
@@ -3986,6 +4001,61 @@ class DeviceDetail(AbstractModel):
     @CriticalVulListCount.setter
     def CriticalVulListCount(self, CriticalVulListCount):
         self._CriticalVulListCount = CriticalVulListCount
+
+    @property
+    def Os(self):
+        """操作系统名称
+        :rtype: str
+        """
+        return self._Os
+
+    @Os.setter
+    def Os(self, Os):
+        self._Os = Os
+
+    @property
+    def OsBits(self):
+        """操作系统位数
+        :rtype: int
+        """
+        return self._OsBits
+
+    @OsBits.setter
+    def OsBits(self, OsBits):
+        self._OsBits = OsBits
+
+    @property
+    def OsVersion(self):
+        """操作系统版本
+        :rtype: str
+        """
+        return self._OsVersion
+
+    @OsVersion.setter
+    def OsVersion(self, OsVersion):
+        self._OsVersion = OsVersion
+
+    @property
+    def OsLanguage(self):
+        """操作系统语言
+        :rtype: str
+        """
+        return self._OsLanguage
+
+    @OsLanguage.setter
+    def OsLanguage(self, OsLanguage):
+        self._OsLanguage = OsLanguage
+
+    @property
+    def OsInstallDate(self):
+        """操作系统安装时间
+        :rtype: str
+        """
+        return self._OsInstallDate
+
+    @OsInstallDate.setter
+    def OsInstallDate(self, OsInstallDate):
+        self._OsInstallDate = OsInstallDate
 
     @property
     def ComputerName(self):
@@ -4303,6 +4373,11 @@ class DeviceDetail(AbstractModel):
         self._GroupName = params.get("GroupName")
         self._GroupNamePath = params.get("GroupNamePath")
         self._CriticalVulListCount = params.get("CriticalVulListCount")
+        self._Os = params.get("Os")
+        self._OsBits = params.get("OsBits")
+        self._OsVersion = params.get("OsVersion")
+        self._OsLanguage = params.get("OsLanguage")
+        self._OsInstallDate = params.get("OsInstallDate")
         self._ComputerName = params.get("ComputerName")
         self._DomainName = params.get("DomainName")
         self._MacAddr = params.get("MacAddr")

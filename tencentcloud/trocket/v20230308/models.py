@@ -25,11 +25,13 @@ class ChangeMigratingTopicToNextStageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID
+        :param _TaskId: 任务ID，可在[DescribeSmoothMigrationTaskList](https://cloud.tencent.com/document/api/1493/119997)接口返回的[SmoothMigrationTaskItem](https://cloud.tencent.com/document/api/1493/96031#SmoothMigrationTaskItem)或控制台中获得。
+
         :type TaskId: str
-        :param _TopicNameList: 主题名称列表
+        :param _TopicNameList: 主题名称列表，主题名称可在[DescribeMigratingTopicList](https://cloud.tencent.com/document/api/1493/118007)接口返回的[MigratingTopic](https://cloud.tencent.com/document/api/1493/96031#MigratingTopic)数据结构中获得。
+
         :type TopicNameList: list of str
-        :param _NamespaceList: 命名空间列表，仅4.x集群有效，与TopicNameList一一对应
+        :param _NamespaceList: 命名空间列表，仅4.x集群有效，与TopicNameList一一对应，可在[DescribeMigratingTopicList](https://cloud.tencent.com/document/api/1493/118007)接口返回的[MigratingTopic](https://cloud.tencent.com/document/api/1493/96031#MigratingTopic)数据结构中获得。
         :type NamespaceList: list of str
         """
         self._TaskId = None
@@ -38,7 +40,8 @@ class ChangeMigratingTopicToNextStageRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        """任务ID，可在[DescribeSmoothMigrationTaskList](https://cloud.tencent.com/document/api/1493/119997)接口返回的[SmoothMigrationTaskItem](https://cloud.tencent.com/document/api/1493/96031#SmoothMigrationTaskItem)或控制台中获得。
+
         :rtype: str
         """
         return self._TaskId
@@ -49,7 +52,8 @@ class ChangeMigratingTopicToNextStageRequest(AbstractModel):
 
     @property
     def TopicNameList(self):
-        """主题名称列表
+        """主题名称列表，主题名称可在[DescribeMigratingTopicList](https://cloud.tencent.com/document/api/1493/118007)接口返回的[MigratingTopic](https://cloud.tencent.com/document/api/1493/96031#MigratingTopic)数据结构中获得。
+
         :rtype: list of str
         """
         return self._TopicNameList
@@ -60,7 +64,7 @@ class ChangeMigratingTopicToNextStageRequest(AbstractModel):
 
     @property
     def NamespaceList(self):
-        """命名空间列表，仅4.x集群有效，与TopicNameList一一对应
+        """命名空间列表，仅4.x集群有效，与TopicNameList一一对应，可在[DescribeMigratingTopicList](https://cloud.tencent.com/document/api/1493/118007)接口返回的[MigratingTopic](https://cloud.tencent.com/document/api/1493/96031#MigratingTopic)数据结构中获得。
         :rtype: list of str
         """
         return self._NamespaceList
@@ -2599,14 +2603,16 @@ class DeleteSmoothMigrationTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID
+        :param _TaskId: 任务ID，可在[DescribeSmoothMigrationTaskList](https://cloud.tencent.com/document/api/1493/119997)接口返回的[SmoothMigrationTaskItem](https://cloud.tencent.com/document/api/1493/96031#SmoothMigrationTaskItem)或控制台中获得。
+
         :type TaskId: str
         """
         self._TaskId = None
 
     @property
     def TaskId(self):
-        """任务ID
+        """任务ID，可在[DescribeSmoothMigrationTaskList](https://cloud.tencent.com/document/api/1493/119997)接口返回的[SmoothMigrationTaskItem](https://cloud.tencent.com/document/api/1493/96031#SmoothMigrationTaskItem)或控制台中获得。
+
         :rtype: str
         """
         return self._TaskId
@@ -7001,11 +7007,12 @@ class DescribeMigratingGroupStatsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 迁移任务ID
+        :param _TaskId: 任务ID，可在[DescribeSmoothMigrationTaskList](https://cloud.tencent.com/document/api/1493/119997)接口返回的[SmoothMigrationTaskItem](https://cloud.tencent.com/document/api/1493/96031#SmoothMigrationTaskItem)或控制台中获得。
         :type TaskId: str
-        :param _GroupName: 消费组名称
+        :param _GroupName: 消费组名称，可在[DescribeSourceClusterGroupList](https://cloud.tencent.com/document/api/1493/118006)接口返回的[SourceClusterGroupConfig](https://cloud.tencent.com/document/api/1493/96031#SourceClusterGroupConfig)或控制台中获取。
+
         :type GroupName: str
-        :param _Namespace: 命名空间
+        :param _Namespace: 命名空间，仅迁移至4.x集群有效，可在[DescribeSourceClusterGroupList](https://cloud.tencent.com/document/api/1493/118006)接口返回的[SourceClusterGroupConfig](https://cloud.tencent.com/document/api/1493/96031#SourceClusterGroupConfig)或控制台中获取。
         :type Namespace: str
         """
         self._TaskId = None
@@ -7014,7 +7021,7 @@ class DescribeMigratingGroupStatsRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """迁移任务ID
+        """任务ID，可在[DescribeSmoothMigrationTaskList](https://cloud.tencent.com/document/api/1493/119997)接口返回的[SmoothMigrationTaskItem](https://cloud.tencent.com/document/api/1493/96031#SmoothMigrationTaskItem)或控制台中获得。
         :rtype: str
         """
         return self._TaskId
@@ -7025,7 +7032,8 @@ class DescribeMigratingGroupStatsRequest(AbstractModel):
 
     @property
     def GroupName(self):
-        """消费组名称
+        """消费组名称，可在[DescribeSourceClusterGroupList](https://cloud.tencent.com/document/api/1493/118006)接口返回的[SourceClusterGroupConfig](https://cloud.tencent.com/document/api/1493/96031#SourceClusterGroupConfig)或控制台中获取。
+
         :rtype: str
         """
         return self._GroupName
@@ -7036,7 +7044,7 @@ class DescribeMigratingGroupStatsRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """命名空间
+        """命名空间，仅迁移至4.x集群有效，可在[DescribeSourceClusterGroupList](https://cloud.tencent.com/document/api/1493/118006)接口返回的[SourceClusterGroupConfig](https://cloud.tencent.com/document/api/1493/96031#SourceClusterGroupConfig)或控制台中获取。
         :rtype: str
         """
         return self._Namespace
@@ -7165,23 +7173,25 @@ class DescribeMigratingTopicListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID
+        :param _TaskId: 任务ID，可在[DescribeSmoothMigrationTaskList](https://cloud.tencent.com/document/api/1493/119997)接口返回的[SmoothMigrationTaskItem](https://cloud.tencent.com/document/api/1493/96031#SmoothMigrationTaskItem)或控制台中获得。
+
         :type TaskId: str
-        :param _Filters: 查询条件列表
-        :type Filters: list of Filter
-        :param _Offset: 查询起始位置
-        :type Offset: int
-        :param _Limit: 查询结果限制数量
+        :param _Limit: 查询结果限制数量，默认20。
         :type Limit: int
+        :param _Offset: 查询起始位置，默认为0。
+        :type Offset: int
+        :param _Filters: 过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
+        :type Filters: list of Filter
         """
         self._TaskId = None
-        self._Filters = None
-        self._Offset = None
         self._Limit = None
+        self._Offset = None
+        self._Filters = None
 
     @property
     def TaskId(self):
-        """任务ID
+        """任务ID，可在[DescribeSmoothMigrationTaskList](https://cloud.tencent.com/document/api/1493/119997)接口返回的[SmoothMigrationTaskItem](https://cloud.tencent.com/document/api/1493/96031#SmoothMigrationTaskItem)或控制台中获得。
+
         :rtype: str
         """
         return self._TaskId
@@ -7191,19 +7201,19 @@ class DescribeMigratingTopicListRequest(AbstractModel):
         self._TaskId = TaskId
 
     @property
-    def Filters(self):
-        """查询条件列表
-        :rtype: list of Filter
+    def Limit(self):
+        """查询结果限制数量，默认20。
+        :rtype: int
         """
-        return self._Filters
+        return self._Limit
 
-    @Filters.setter
-    def Filters(self, Filters):
-        self._Filters = Filters
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
     @property
     def Offset(self):
-        """查询起始位置
+        """查询起始位置，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -7213,27 +7223,27 @@ class DescribeMigratingTopicListRequest(AbstractModel):
         self._Offset = Offset
 
     @property
-    def Limit(self):
-        """查询结果限制数量
-        :rtype: int
+    def Filters(self):
+        """过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
+        :rtype: list of Filter
         """
-        return self._Limit
+        return self._Filters
 
-    @Limit.setter
-    def Limit(self, Limit):
-        self._Limit = Limit
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         if params.get("Filters") is not None:
             self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
-        self._Offset = params.get("Offset")
-        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7314,11 +7324,13 @@ class DescribeMigratingTopicStatsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID
+        :param _TaskId: 任务ID，可在[DescribeSmoothMigrationTaskList](https://cloud.tencent.com/document/api/1493/119997)接口返回的[SmoothMigrationTaskItem](https://cloud.tencent.com/document/api/1493/96031#SmoothMigrationTaskItem)或控制台中获得。
+
         :type TaskId: str
-        :param _TopicName: 主题名称
+        :param _TopicName: 主题名称，可在[DescribeMigratingTopicList](https://cloud.tencent.com/document/api/1493/118007)接口返回的[MigratingTopic](https://cloud.tencent.com/document/api/1493/96031#MigratingTopic)数据结构中获得。
+
         :type TopicName: str
-        :param _Namespace: 命名空间，仅4.x集群有效
+        :param _Namespace: 命名空间，仅迁移至4.x集群有效，可在[DescribeMigratingTopicList](https://cloud.tencent.com/document/api/1493/118007)接口返回的[MigratingTopic](https://cloud.tencent.com/document/api/1493/96031#MigratingTopic)数据结构中获得。
         :type Namespace: str
         """
         self._TaskId = None
@@ -7327,7 +7339,8 @@ class DescribeMigratingTopicStatsRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        """任务ID，可在[DescribeSmoothMigrationTaskList](https://cloud.tencent.com/document/api/1493/119997)接口返回的[SmoothMigrationTaskItem](https://cloud.tencent.com/document/api/1493/96031#SmoothMigrationTaskItem)或控制台中获得。
+
         :rtype: str
         """
         return self._TaskId
@@ -7338,7 +7351,8 @@ class DescribeMigratingTopicStatsRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        """主题名称
+        """主题名称，可在[DescribeMigratingTopicList](https://cloud.tencent.com/document/api/1493/118007)接口返回的[MigratingTopic](https://cloud.tencent.com/document/api/1493/96031#MigratingTopic)数据结构中获得。
+
         :rtype: str
         """
         return self._TopicName
@@ -7349,7 +7363,7 @@ class DescribeMigratingTopicStatsRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """命名空间，仅4.x集群有效
+        """命名空间，仅迁移至4.x集群有效，可在[DescribeMigratingTopicList](https://cloud.tencent.com/document/api/1493/118007)接口返回的[MigratingTopic](https://cloud.tencent.com/document/api/1493/96031#MigratingTopic)数据结构中获得。
         :rtype: str
         """
         return self._Namespace
@@ -7809,31 +7823,20 @@ class DescribeSmoothMigrationTaskListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: 查询起始位置
-        :type Offset: int
-        :param _Limit: 查询结果限制数量
+        :param _Limit: 查询结果限制数量，默认20。
         :type Limit: int
-        :param _Filters: 查询条件列表
+        :param _Offset: 查询起始位置，默认为0。
+        :type Offset: int
+        :param _Filters: 过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
         :type Filters: list of Filter
         """
-        self._Offset = None
         self._Limit = None
+        self._Offset = None
         self._Filters = None
 
     @property
-    def Offset(self):
-        """查询起始位置
-        :rtype: int
-        """
-        return self._Offset
-
-    @Offset.setter
-    def Offset(self, Offset):
-        self._Offset = Offset
-
-    @property
     def Limit(self):
-        """查询结果限制数量
+        """查询结果限制数量，默认20。
         :rtype: int
         """
         return self._Limit
@@ -7843,8 +7846,19 @@ class DescribeSmoothMigrationTaskListRequest(AbstractModel):
         self._Limit = Limit
 
     @property
+    def Offset(self):
+        """查询起始位置，默认为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
     def Filters(self):
-        """查询条件列表
+        """过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
         :rtype: list of Filter
         """
         return self._Filters
@@ -7855,8 +7869,8 @@ class DescribeSmoothMigrationTaskListRequest(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         if params.get("Filters") is not None:
             self._Filters = []
             for item in params.get("Filters"):
@@ -7881,7 +7895,6 @@ class DescribeSmoothMigrationTaskListResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: 查询总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _Data: 任务列表	
 注意：此字段可能返回 null，表示取不到有效值。
@@ -7896,7 +7909,6 @@ class DescribeSmoothMigrationTaskListResponse(AbstractModel):
     @property
     def TotalCount(self):
         """查询总数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TotalCount
@@ -7947,23 +7959,25 @@ class DescribeSourceClusterGroupListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID
+        :param _TaskId: 任务ID，可在[DescribeSmoothMigrationTaskList](https://cloud.tencent.com/document/api/1493/119997)接口返回的[SmoothMigrationTaskItem](https://cloud.tencent.com/document/api/1493/96031#SmoothMigrationTaskItem)或控制台中获得。
+
         :type TaskId: str
-        :param _Filters: 查询条件列表
-        :type Filters: list of Filter
-        :param _Offset: 查询起始位置
-        :type Offset: int
-        :param _Limit: 查询结果限制数量
+        :param _Limit: 查询结果限制数量，默认20。
         :type Limit: int
+        :param _Offset: 查询起始位置，默认为0。
+        :type Offset: int
+        :param _Filters: 过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
+        :type Filters: list of Filter
         """
         self._TaskId = None
-        self._Filters = None
-        self._Offset = None
         self._Limit = None
+        self._Offset = None
+        self._Filters = None
 
     @property
     def TaskId(self):
-        """任务ID
+        """任务ID，可在[DescribeSmoothMigrationTaskList](https://cloud.tencent.com/document/api/1493/119997)接口返回的[SmoothMigrationTaskItem](https://cloud.tencent.com/document/api/1493/96031#SmoothMigrationTaskItem)或控制台中获得。
+
         :rtype: str
         """
         return self._TaskId
@@ -7973,19 +7987,19 @@ class DescribeSourceClusterGroupListRequest(AbstractModel):
         self._TaskId = TaskId
 
     @property
-    def Filters(self):
-        """查询条件列表
-        :rtype: list of Filter
+    def Limit(self):
+        """查询结果限制数量，默认20。
+        :rtype: int
         """
-        return self._Filters
+        return self._Limit
 
-    @Filters.setter
-    def Filters(self, Filters):
-        self._Filters = Filters
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
     @property
     def Offset(self):
-        """查询起始位置
+        """查询起始位置，默认为0。
         :rtype: int
         """
         return self._Offset
@@ -7995,27 +8009,27 @@ class DescribeSourceClusterGroupListRequest(AbstractModel):
         self._Offset = Offset
 
     @property
-    def Limit(self):
-        """查询结果限制数量
-        :rtype: int
+    def Filters(self):
+        """过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
+        :rtype: list of Filter
         """
-        return self._Limit
+        return self._Filters
 
-    @Limit.setter
-    def Limit(self, Limit):
-        self._Limit = Limit
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         if params.get("Filters") is not None:
             self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
-        self._Offset = params.get("Offset")
-        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8784,13 +8798,15 @@ class DoHealthCheckOnMigratingTopicRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID
+        :param _TaskId: 任务ID，可在[DescribeSmoothMigrationTaskList](https://cloud.tencent.com/document/api/1493/119997)接口返回的[SmoothMigrationTaskItem](https://cloud.tencent.com/document/api/1493/96031#SmoothMigrationTaskItem)或控制台中获得。
+
         :type TaskId: str
-        :param _TopicName: 主题名称
+        :param _TopicName: 主题名称，可在[DescribeMigratingTopicList](https://cloud.tencent.com/document/api/1493/118007)接口返回的[MigratingTopic](https://cloud.tencent.com/document/api/1493/96031#MigratingTopic)数据结构中获得。
+
         :type TopicName: str
-        :param _IgnoreCheck: 是否忽略当前检查
+        :param _IgnoreCheck: 必填，是否忽略当前检查
         :type IgnoreCheck: bool
-        :param _Namespace: 命名空间，仅4.x集群有效
+        :param _Namespace: 命名空间，仅迁移至4.x集群有效，可在[DescribeMigratingTopicList](https://cloud.tencent.com/document/api/1493/118007)接口返回的[MigratingTopic](https://cloud.tencent.com/document/api/1493/96031#MigratingTopic)数据结构中获得。
         :type Namespace: str
         """
         self._TaskId = None
@@ -8800,7 +8816,8 @@ class DoHealthCheckOnMigratingTopicRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        """任务ID，可在[DescribeSmoothMigrationTaskList](https://cloud.tencent.com/document/api/1493/119997)接口返回的[SmoothMigrationTaskItem](https://cloud.tencent.com/document/api/1493/96031#SmoothMigrationTaskItem)或控制台中获得。
+
         :rtype: str
         """
         return self._TaskId
@@ -8811,7 +8828,8 @@ class DoHealthCheckOnMigratingTopicRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        """主题名称
+        """主题名称，可在[DescribeMigratingTopicList](https://cloud.tencent.com/document/api/1493/118007)接口返回的[MigratingTopic](https://cloud.tencent.com/document/api/1493/96031#MigratingTopic)数据结构中获得。
+
         :rtype: str
         """
         return self._TopicName
@@ -8822,7 +8840,7 @@ class DoHealthCheckOnMigratingTopicRequest(AbstractModel):
 
     @property
     def IgnoreCheck(self):
-        """是否忽略当前检查
+        """必填，是否忽略当前检查
         :rtype: bool
         """
         return self._IgnoreCheck
@@ -8833,7 +8851,7 @@ class DoHealthCheckOnMigratingTopicRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """命名空间，仅4.x集群有效
+        """命名空间，仅迁移至4.x集群有效，可在[DescribeMigratingTopicList](https://cloud.tencent.com/document/api/1493/118007)接口返回的[MigratingTopic](https://cloud.tencent.com/document/api/1493/96031#MigratingTopic)数据结构中获得。
         :rtype: str
         """
         return self._Namespace
@@ -8868,7 +8886,18 @@ class DoHealthCheckOnMigratingTopicResponse(AbstractModel):
         :param _Passed: 是否通过	
         :type Passed: bool
         :param _Reason: 健康检查返回的错误信息
-NotChecked 未执行检查， Unknown 未知错误, TopicNotImported 主题未导入, TopicNotExistsInSourceCluster 主题在源集群中不存在, TopicNotExistsInTargetCluster 主题在目标集群中不存在, ConsumerConnectedOnTarget 目标集群上存在消费者连接, SourceTopicHasNewMessagesIn5Minutes 源集群主题前5分钟内有新消息写入, TargetTopicHasNewMessagesIn5Minutes 目标集群主题前5分钟内有新消息写入, SourceTopicHasNoMessagesIn5Minutes 源集群前5分钟内没有新消息写入, TargetTopicHasNoMessagesIn5Minutes 源集群前5分钟内没有新消息写入, ConsumerGroupCountNotMatch 订阅组数量不一致, SourceTopicHasUnconsumedMessages 源集群主题存在未消费消息,
+NotChecked 未执行检查， 
+Unknown 未知错误, 
+TopicNotImported 主题未导入,
+TopicNotExistsInSourceCluster 主题在源集群中不存在, 
+TopicNotExistsInTargetCluster 主题在目标集群中不存在, 
+ConsumerConnectedOnTarget 目标集群上存在消费者连接, 
+SourceTopicHasNewMessagesIn5Minutes 源集群主题前5分钟内有新消息写入, 
+TargetTopicHasNewMessagesIn5Minutes 目标集群主题前5分钟内有新消息写入, 
+SourceTopicHasNoMessagesIn5Minutes 源集群前5分钟内没有新消息写入, 
+TargetTopicHasNoMessagesIn5Minutes 源集群前5分钟内没有新消息写入, 
+ConsumerGroupCountNotMatch 订阅组数量不一致, 
+SourceTopicHasUnconsumedMessages 源集群主题存在未消费消息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Reason: str
         :param _ReasonList: 健康检查返回的错误信息列表
@@ -8896,7 +8925,18 @@ NotChecked 未执行检查， Unknown 未知错误, TopicNotImported 主题未�
     @property
     def Reason(self):
         """健康检查返回的错误信息
-NotChecked 未执行检查， Unknown 未知错误, TopicNotImported 主题未导入, TopicNotExistsInSourceCluster 主题在源集群中不存在, TopicNotExistsInTargetCluster 主题在目标集群中不存在, ConsumerConnectedOnTarget 目标集群上存在消费者连接, SourceTopicHasNewMessagesIn5Minutes 源集群主题前5分钟内有新消息写入, TargetTopicHasNewMessagesIn5Minutes 目标集群主题前5分钟内有新消息写入, SourceTopicHasNoMessagesIn5Minutes 源集群前5分钟内没有新消息写入, TargetTopicHasNoMessagesIn5Minutes 源集群前5分钟内没有新消息写入, ConsumerGroupCountNotMatch 订阅组数量不一致, SourceTopicHasUnconsumedMessages 源集群主题存在未消费消息,
+NotChecked 未执行检查， 
+Unknown 未知错误, 
+TopicNotImported 主题未导入,
+TopicNotExistsInSourceCluster 主题在源集群中不存在, 
+TopicNotExistsInTargetCluster 主题在目标集群中不存在, 
+ConsumerConnectedOnTarget 目标集群上存在消费者连接, 
+SourceTopicHasNewMessagesIn5Minutes 源集群主题前5分钟内有新消息写入, 
+TargetTopicHasNewMessagesIn5Minutes 目标集群主题前5分钟内有新消息写入, 
+SourceTopicHasNoMessagesIn5Minutes 源集群前5分钟内没有新消息写入, 
+TargetTopicHasNoMessagesIn5Minutes 源集群前5分钟内没有新消息写入, 
+ConsumerGroupCountNotMatch 订阅组数量不一致, 
+SourceTopicHasUnconsumedMessages 源集群主题存在未消费消息。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9257,6 +9297,8 @@ PREPAID，包年包月
         :param _ZoneIds: 所属可用区列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneIds: list of int
+        :param _EnableDeletionProtection: 是否开启删除保护
+        :type EnableDeletionProtection: bool
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -9280,6 +9322,7 @@ PREPAID，包年包月
         self._InstanceItemExtraInfo = None
         self._DestroyTime = None
         self._ZoneIds = None
+        self._EnableDeletionProtection = None
 
     @property
     def InstanceId(self):
@@ -9550,6 +9593,17 @@ PREPAID，包年包月
     def ZoneIds(self, ZoneIds):
         self._ZoneIds = ZoneIds
 
+    @property
+    def EnableDeletionProtection(self):
+        """是否开启删除保护
+        :rtype: bool
+        """
+        return self._EnableDeletionProtection
+
+    @EnableDeletionProtection.setter
+    def EnableDeletionProtection(self, EnableDeletionProtection):
+        self._EnableDeletionProtection = EnableDeletionProtection
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -9581,6 +9635,7 @@ PREPAID，包年包月
             self._InstanceItemExtraInfo._deserialize(params.get("InstanceItemExtraInfo"))
         self._DestroyTime = params.get("DestroyTime")
         self._ZoneIds = params.get("ZoneIds")
+        self._EnableDeletionProtection = params.get("EnableDeletionProtection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9598,7 +9653,8 @@ class ImportSourceClusterConsumerGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID
+        :param _TaskId: 任务ID，可在[DescribeSmoothMigrationTaskList](https://cloud.tencent.com/document/api/1493/119997)接口返回的[SmoothMigrationTaskItem](https://cloud.tencent.com/document/api/1493/96031#SmoothMigrationTaskItem)或控制台中获得。
+
         :type TaskId: str
         :param _GroupList: 待导入的消费组列表
         :type GroupList: list of SourceClusterGroupConfig
@@ -9608,7 +9664,8 @@ class ImportSourceClusterConsumerGroupsRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        """任务ID，可在[DescribeSmoothMigrationTaskList](https://cloud.tencent.com/document/api/1493/119997)接口返回的[SmoothMigrationTaskItem](https://cloud.tencent.com/document/api/1493/96031#SmoothMigrationTaskItem)或控制台中获得。
+
         :rtype: str
         """
         return self._TaskId
@@ -9682,7 +9739,8 @@ class ImportSourceClusterTopicsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID
+        :param _TaskId: 任务ID，可在[DescribeSmoothMigrationTaskList](https://cloud.tencent.com/document/api/1493/119997)接口返回的[SmoothMigrationTaskItem](https://cloud.tencent.com/document/api/1493/96031#SmoothMigrationTaskItem)或控制台中获得。
+
         :type TaskId: str
         :param _TopicList: 待导入的主题列表
         :type TopicList: list of SourceClusterTopicConfig
@@ -9692,7 +9750,8 @@ class ImportSourceClusterTopicsRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        """任务ID，可在[DescribeSmoothMigrationTaskList](https://cloud.tencent.com/document/api/1493/119997)接口返回的[SmoothMigrationTaskItem](https://cloud.tencent.com/document/api/1493/96031#SmoothMigrationTaskItem)或控制台中获得。
+
         :rtype: str
         """
         return self._TaskId
@@ -12252,6 +12311,8 @@ class ModifyInstanceRequest(AbstractModel):
         :type MaxTopicNum: int
         :param _ExtraTopicNum: 免费额度之外的主题个数
         :type ExtraTopicNum: str
+        :param _EnableDeletionProtection: 是否开启删除保护
+        :type EnableDeletionProtection: bool
         """
         self._InstanceId = None
         self._Name = None
@@ -12263,6 +12324,7 @@ class ModifyInstanceRequest(AbstractModel):
         self._AclEnabled = None
         self._MaxTopicNum = None
         self._ExtraTopicNum = None
+        self._EnableDeletionProtection = None
 
     @property
     def InstanceId(self):
@@ -12374,6 +12436,17 @@ class ModifyInstanceRequest(AbstractModel):
     def ExtraTopicNum(self, ExtraTopicNum):
         self._ExtraTopicNum = ExtraTopicNum
 
+    @property
+    def EnableDeletionProtection(self):
+        """是否开启删除保护
+        :rtype: bool
+        """
+        return self._EnableDeletionProtection
+
+    @EnableDeletionProtection.setter
+    def EnableDeletionProtection(self, EnableDeletionProtection):
+        self._EnableDeletionProtection = EnableDeletionProtection
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -12386,6 +12459,7 @@ class ModifyInstanceRequest(AbstractModel):
         self._AclEnabled = params.get("AclEnabled")
         self._MaxTopicNum = params.get("MaxTopicNum")
         self._ExtraTopicNum = params.get("ExtraTopicNum")
+        self._EnableDeletionProtection = params.get("EnableDeletionProtection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13285,15 +13359,15 @@ class PacketStatistics(AbstractModel):
 
 
 class PriceTag(AbstractModel):
-    """价格标签信息
+    """价格标签信息，一个完整的价格标签包含计价类别和计费项标签。
 
     """
 
     def __init__(self):
         r"""
-        :param _Name: 计价名称
+        :param _Name: 计价名称（枚举值：tps：TPS基础价；stepTps：TPS步长）
         :type Name: str
-        :param _Step: 步长
+        :param _Step: 计费项对应的步长数
 注意：此字段可能返回 null，表示取不到有效值。
         :type Step: int
         """
@@ -13302,7 +13376,7 @@ class PriceTag(AbstractModel):
 
     @property
     def Name(self):
-        """计价名称
+        """计价名称（枚举值：tps：TPS基础价；stepTps：TPS步长）
         :rtype: str
         """
         return self._Name
@@ -13313,7 +13387,7 @@ class PriceTag(AbstractModel):
 
     @property
     def Step(self):
-        """步长
+        """计费项对应的步长数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -13663,11 +13737,11 @@ class RemoveMigratingTopicRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID
+        :param _TaskId: 任务ID，可在[DescribeSmoothMigrationTaskList](https://cloud.tencent.com/document/api/1493/119997)接口返回的[SmoothMigrationTaskItem](https://cloud.tencent.com/document/api/1493/96031#SmoothMigrationTaskItem)或控制台中获得。
         :type TaskId: str
-        :param _TopicName: 主题名称
+        :param _TopicName: 消费组名称，可在[DescribeSourceClusterGroupList](https://cloud.tencent.com/document/api/1493/118006)接口返回的[SourceClusterGroupConfig](https://cloud.tencent.com/document/api/1493/96031#SourceClusterGroupConfig)或控制台中获取。
         :type TopicName: str
-        :param _Namespace: 命名空间，仅迁移至4.x集群有效
+        :param _Namespace: 命名空间，仅迁移至4.x集群有效，可在[DescribeMigratingTopicList](https://cloud.tencent.com/document/api/1493/118007)接口返回的[MigratingTopic](https://cloud.tencent.com/document/api/1493/96031#MigratingTopic)数据结构中获得。
         :type Namespace: str
         """
         self._TaskId = None
@@ -13676,7 +13750,7 @@ class RemoveMigratingTopicRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        """任务ID，可在[DescribeSmoothMigrationTaskList](https://cloud.tencent.com/document/api/1493/119997)接口返回的[SmoothMigrationTaskItem](https://cloud.tencent.com/document/api/1493/96031#SmoothMigrationTaskItem)或控制台中获得。
         :rtype: str
         """
         return self._TaskId
@@ -13687,7 +13761,7 @@ class RemoveMigratingTopicRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        """主题名称
+        """消费组名称，可在[DescribeSourceClusterGroupList](https://cloud.tencent.com/document/api/1493/118006)接口返回的[SourceClusterGroupConfig](https://cloud.tencent.com/document/api/1493/96031#SourceClusterGroupConfig)或控制台中获取。
         :rtype: str
         """
         return self._TopicName
@@ -13698,7 +13772,7 @@ class RemoveMigratingTopicRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """命名空间，仅迁移至4.x集群有效
+        """命名空间，仅迁移至4.x集群有效，可在[DescribeMigratingTopicList](https://cloud.tencent.com/document/api/1493/118007)接口返回的[MigratingTopic](https://cloud.tencent.com/document/api/1493/96031#MigratingTopic)数据结构中获得。
         :rtype: str
         """
         return self._Namespace
@@ -14155,11 +14229,13 @@ class RollbackMigratingTopicStageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID
+        :param _TaskId: 任务ID，可在[DescribeSmoothMigrationTaskList](https://cloud.tencent.com/document/api/1493/119997)接口返回的[SmoothMigrationTaskItem](https://cloud.tencent.com/document/api/1493/96031#SmoothMigrationTaskItem)或控制台中获得。
+
         :type TaskId: str
-        :param _TopicName: 主题名称
+        :param _TopicName: 主题名称，可在[DescribeMigratingTopicList](https://cloud.tencent.com/document/api/1493/118007)接口返回的[MigratingTopic](https://cloud.tencent.com/document/api/1493/96031#MigratingTopic)数据结构中获得。
+
         :type TopicName: str
-        :param _Namespace: 命名空间，仅4.x集群有效
+        :param _Namespace: 命名空间，仅迁移至4.x集群有效，可在[DescribeMigratingTopicList](https://cloud.tencent.com/document/api/1493/118007)接口返回的[MigratingTopic](https://cloud.tencent.com/document/api/1493/96031#MigratingTopic)数据结构中获得。
         :type Namespace: str
         """
         self._TaskId = None
@@ -14168,7 +14244,8 @@ class RollbackMigratingTopicStageRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """任务ID
+        """任务ID，可在[DescribeSmoothMigrationTaskList](https://cloud.tencent.com/document/api/1493/119997)接口返回的[SmoothMigrationTaskItem](https://cloud.tencent.com/document/api/1493/96031#SmoothMigrationTaskItem)或控制台中获得。
+
         :rtype: str
         """
         return self._TaskId
@@ -14179,7 +14256,8 @@ class RollbackMigratingTopicStageRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        """主题名称
+        """主题名称，可在[DescribeMigratingTopicList](https://cloud.tencent.com/document/api/1493/118007)接口返回的[MigratingTopic](https://cloud.tencent.com/document/api/1493/96031#MigratingTopic)数据结构中获得。
+
         :rtype: str
         """
         return self._TopicName
@@ -14190,7 +14268,7 @@ class RollbackMigratingTopicStageRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """命名空间，仅4.x集群有效
+        """命名空间，仅迁移至4.x集群有效，可在[DescribeMigratingTopicList](https://cloud.tencent.com/document/api/1493/118007)接口返回的[MigratingTopic](https://cloud.tencent.com/document/api/1493/96031#MigratingTopic)数据结构中获得。
         :rtype: str
         """
         return self._Namespace
@@ -14270,7 +14348,14 @@ OTHER 其他
         :param _SourceNameServer: 源集群NameServer地址	
 注意：此字段可能返回 null，表示取不到有效值。
         :type SourceNameServer: str
-        :param _TaskStatus: 任务状态 Configuration 迁移配置 SourceConnecting 连接源集群中 MetaDataImport 元数据导入 EndpointSetup 切换接入点 ServiceMigration 切流中 Completed 已完成 Cancelled 已取消
+        :param _TaskStatus: 任务状态:
+Configuration 迁移配置,
+SourceConnecting 连接源集群中,
+ MetaDataImport 元数据导入,
+EndpointSetup 切换接入点,
+ServiceMigration 切流中,
+Completed 已完成,
+Cancelled 已取消
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskStatus: str
         :param _InstanceVersion: 目标集群实例版本，
@@ -14365,7 +14450,14 @@ OTHER 其他
 
     @property
     def TaskStatus(self):
-        """任务状态 Configuration 迁移配置 SourceConnecting 连接源集群中 MetaDataImport 元数据导入 EndpointSetup 切换接入点 ServiceMigration 切流中 Completed 已完成 Cancelled 已取消
+        """任务状态:
+Configuration 迁移配置,
+SourceConnecting 连接源集群中,
+ MetaDataImport 元数据导入,
+EndpointSetup 切换接入点,
+ServiceMigration 切流中,
+Completed 已完成,
+Cancelled 已取消
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14416,7 +14508,7 @@ class SourceClusterGroupConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupName: 消费组名称
+        :param _GroupName: 消费组名称，可在[DescribeSourceClusterGroupList](https://cloud.tencent.com/document/api/1493/118006)接口返回的[SourceClusterGroupConfig](https://cloud.tencent.com/document/api/1493/96031#SourceClusterGroupConfig)数据中获取。
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupName: str
         :param _Remark: 备注信息
@@ -14433,6 +14525,8 @@ Unknown 未知
 Success 成功
 Failure 失败
 AlreadyExists 已存在
+
+仅作为出参时使用
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImportStatus: str
         :param _NamespaceV4: 4.x的命名空间，出参使用
@@ -14460,7 +14554,7 @@ AlreadyExists 已存在
 
     @property
     def GroupName(self):
-        """消费组名称
+        """消费组名称，可在[DescribeSourceClusterGroupList](https://cloud.tencent.com/document/api/1493/118006)接口返回的[SourceClusterGroupConfig](https://cloud.tencent.com/document/api/1493/96031#SourceClusterGroupConfig)数据中获取。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14513,6 +14607,8 @@ Unknown 未知
 Success 成功
 Failure 失败
 AlreadyExists 已存在
+
+仅作为出参时使用
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14598,7 +14694,7 @@ class SourceClusterTopicConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicName: 主题名称
+        :param _TopicName: 主题名称，可在[DescribeMigratingTopicList](https://cloud.tencent.com/document/api/1493/118007)接口返回的[MigratingTopic](https://cloud.tencent.com/document/api/1493/96031#MigratingTopic)数据结构中获得。
         :type TopicName: str
         :param _TopicType: 主题类型，
 5.x版本
@@ -14628,6 +14724,8 @@ Unknown 未知，
 AlreadyExists 已存在，
 Success 成功，
 Failure 失败
+
+仅作为出参可用
         :type ImportStatus: str
         :param _NamespaceV4: 4.x的命名空间，出参使用
         :type NamespaceV4: str
@@ -14649,7 +14747,7 @@ Failure 失败
 
     @property
     def TopicName(self):
-        """主题名称
+        """主题名称，可在[DescribeMigratingTopicList](https://cloud.tencent.com/document/api/1493/118007)接口返回的[MigratingTopic](https://cloud.tencent.com/document/api/1493/96031#MigratingTopic)数据结构中获得。
         :rtype: str
         """
         return self._TopicName
@@ -14733,6 +14831,8 @@ Unknown 未知，
 AlreadyExists 已存在，
 Success 成功，
 Failure 失败
+
+仅作为出参可用
         :rtype: str
         """
         return self._ImportStatus

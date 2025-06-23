@@ -2692,6 +2692,9 @@ class ServerBaseConfig(AbstractModel):
         :type EntryPoint: list of str
         :param _Cmd: Dockerfile Cmd 参数
         :type Cmd: list of str
+        :param _SessionAffinity: 会话亲和性开关
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionAffinity: str
         """
         self._EnvId = None
         self._ServerName = None
@@ -2720,6 +2723,7 @@ class ServerBaseConfig(AbstractModel):
         self._TimerScale = None
         self._EntryPoint = None
         self._Cmd = None
+        self._SessionAffinity = None
 
     @property
     def EnvId(self):
@@ -3018,6 +3022,18 @@ class ServerBaseConfig(AbstractModel):
     def Cmd(self, Cmd):
         self._Cmd = Cmd
 
+    @property
+    def SessionAffinity(self):
+        """会话亲和性开关
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SessionAffinity
+
+    @SessionAffinity.setter
+    def SessionAffinity(self, SessionAffinity):
+        self._SessionAffinity = SessionAffinity
+
 
     def _deserialize(self, params):
         self._EnvId = params.get("EnvId")
@@ -3057,6 +3073,7 @@ class ServerBaseConfig(AbstractModel):
                 self._TimerScale.append(obj)
         self._EntryPoint = params.get("EntryPoint")
         self._Cmd = params.get("Cmd")
+        self._SessionAffinity = params.get("SessionAffinity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

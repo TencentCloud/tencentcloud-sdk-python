@@ -999,6 +999,52 @@ class SslClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeHostUploadUpdateRecord(self, request):
+        """查询证书云资源更新（证书ID不变）记录列表
+
+        :param request: Request instance for DescribeHostUploadUpdateRecord.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeHostUploadUpdateRecordRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.DescribeHostUploadUpdateRecordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHostUploadUpdateRecord", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeHostUploadUpdateRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeHostUploadUpdateRecordDetail(self, request):
+        """查询证书更新（证书ID不变）部署记录详情
+
+        :param request: Request instance for DescribeHostUploadUpdateRecordDetail.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeHostUploadUpdateRecordDetailRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.DescribeHostUploadUpdateRecordDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHostUploadUpdateRecordDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeHostUploadUpdateRecordDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeHostVodInstanceList(self, request):
         """查询证书Vod云资源部署实例列表
 
@@ -1473,6 +1519,52 @@ class SslClient(AbstractClient):
             body = self.call("UploadUpdateCertificateInstance", params, headers=headers)
             response = json.loads(body)
             model = models.UploadUpdateCertificateInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UploadUpdateCertificateRecordRetry(self, request):
+        """云资源更新（证书ID不变）重试部署记录
+
+        :param request: Request instance for UploadUpdateCertificateRecordRetry.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.UploadUpdateCertificateRecordRetryRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.UploadUpdateCertificateRecordRetryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UploadUpdateCertificateRecordRetry", params, headers=headers)
+            response = json.loads(body)
+            model = models.UploadUpdateCertificateRecordRetryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UploadUpdateCertificateRecordRollback(self, request):
+        """云资源更新成功（证书ID不变）记录回滚， 会对全量任务进行回滚
+
+        :param request: Request instance for UploadUpdateCertificateRecordRollback.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.UploadUpdateCertificateRecordRollbackRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.UploadUpdateCertificateRecordRollbackResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UploadUpdateCertificateRecordRollback", params, headers=headers)
+            response = json.loads(body)
+            model = models.UploadUpdateCertificateRecordRollbackResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -11949,6 +11949,8 @@ class DescribeCloudNativeAPIGatewayResult(AbstractModel):
         :type LoadBalancerType: str
         :param _PublicIpAddresses: 公网IP地址列表
         :type PublicIpAddresses: list of str
+        :param _DeleteProtect: 是否开启删除保护
+        :type DeleteProtect: bool
         """
         self._GatewayId = None
         self._Status = None
@@ -11975,6 +11977,7 @@ class DescribeCloudNativeAPIGatewayResult(AbstractModel):
         self._InstancePort = None
         self._LoadBalancerType = None
         self._PublicIpAddresses = None
+        self._DeleteProtect = None
 
     @property
     def GatewayId(self):
@@ -12254,6 +12257,17 @@ class DescribeCloudNativeAPIGatewayResult(AbstractModel):
     def PublicIpAddresses(self, PublicIpAddresses):
         self._PublicIpAddresses = PublicIpAddresses
 
+    @property
+    def DeleteProtect(self):
+        """是否开启删除保护
+        :rtype: bool
+        """
+        return self._DeleteProtect
+
+    @DeleteProtect.setter
+    def DeleteProtect(self, DeleteProtect):
+        self._DeleteProtect = DeleteProtect
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
@@ -12292,6 +12306,7 @@ class DescribeCloudNativeAPIGatewayResult(AbstractModel):
             self._InstancePort._deserialize(params.get("InstancePort"))
         self._LoadBalancerType = params.get("LoadBalancerType")
         self._PublicIpAddresses = params.get("PublicIpAddresses")
+        self._DeleteProtect = params.get("DeleteProtect")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24405,12 +24420,15 @@ class ModifyCloudNativeAPIGatewayRequest(AbstractModel):
         :type EnableCls: bool
         :param _InternetPayMode: 公网计费模式。可选取值 BANDWIDTH | TRAFFIC ，表示按带宽和按流量计费。
         :type InternetPayMode: str
+        :param _DeleteProtect: 是否开启实例删除保护,默认false
+        :type DeleteProtect: bool
         """
         self._GatewayId = None
         self._Name = None
         self._Description = None
         self._EnableCls = None
         self._InternetPayMode = None
+        self._DeleteProtect = None
 
     @property
     def GatewayId(self):
@@ -24467,6 +24485,17 @@ class ModifyCloudNativeAPIGatewayRequest(AbstractModel):
     def InternetPayMode(self, InternetPayMode):
         self._InternetPayMode = InternetPayMode
 
+    @property
+    def DeleteProtect(self):
+        """是否开启实例删除保护,默认false
+        :rtype: bool
+        """
+        return self._DeleteProtect
+
+    @DeleteProtect.setter
+    def DeleteProtect(self, DeleteProtect):
+        self._DeleteProtect = DeleteProtect
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
@@ -24474,6 +24503,7 @@ class ModifyCloudNativeAPIGatewayRequest(AbstractModel):
         self._Description = params.get("Description")
         self._EnableCls = params.get("EnableCls")
         self._InternetPayMode = params.get("InternetPayMode")
+        self._DeleteProtect = params.get("DeleteProtect")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

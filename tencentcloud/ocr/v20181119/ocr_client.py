@@ -1812,6 +1812,16 @@ class OcrClient(AbstractClient):
                   <td> 12 </td>
                 </tr>
                 <tr>
+                  <td> MotorVehicleSaleInvoiceElectronic </td>
+                  <td> 机动车销售统一发票（电子）</td>
+                  <td> 12 </td>
+                </tr>
+                <tr>
+                  <td> UsedCarPurchaseInvoiceElectronic </td>
+                  <td> 二手车销售统一发票（电子）</td>
+                  <td> 12 </td>
+                </tr>
+                <tr>
                   <td> VatInvoiceRoll </td>
                   <td> 增值税普通发票(卷票) </td>
                   <td> 11 </td>

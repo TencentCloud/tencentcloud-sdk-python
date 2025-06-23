@@ -221,7 +221,7 @@ class AddTimeWindowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+        :param _InstanceId: 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
         :type InstanceId: str
         :param _Monday: 星期一的可维护时间段，其中每一个时间段的格式形如：10:00-12:00；起始时间按半个小时对齐；最短半个小时，最长三个小时；可设置多个时间段。 一周中应至少设置一天的时间窗。下同。
         :type Monday: list of str
@@ -237,7 +237,7 @@ class AddTimeWindowRequest(AbstractModel):
         :type Saturday: list of str
         :param _Sunday: 星期日的可维护时间窗口。 一周中应至少设置一天的时间窗。
         :type Sunday: list of str
-        :param _MaxDelayTime: 最大延迟阈值，仅对主实例和灾备实例有效。
+        :param _MaxDelayTime: 最大延迟阈值（秒），仅对主实例和灾备实例有效。默认值：10，取值范围：1-10的整数。
         :type MaxDelayTime: int
         """
         self._InstanceId = None
@@ -252,7 +252,7 @@ class AddTimeWindowRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+        """实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -340,7 +340,7 @@ class AddTimeWindowRequest(AbstractModel):
 
     @property
     def MaxDelayTime(self):
-        """最大延迟阈值，仅对主实例和灾备实例有效。
+        """最大延迟阈值（秒），仅对主实例和灾备实例有效。默认值：10，取值范围：1-10的整数。
         :rtype: int
         """
         return self._MaxDelayTime
@@ -3043,9 +3043,9 @@ class AutoStrategy(AbstractModel):
         :param _ShrinkPeriod: 自动缩容观测周期，单位是分钟，可选值5、10、15、30。后台会按照配置的周期进行缩容判断。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ShrinkPeriod: int
-        :param _ExpandSecondPeriod: 弹性扩容观测周期（秒级）
+        :param _ExpandSecondPeriod: 弹性扩容观测周期（秒级），可取值为：5，30，45，60，180，300，600，900，1800。
         :type ExpandSecondPeriod: int
-        :param _ShrinkSecondPeriod: 缩容观测周期（秒级）
+        :param _ShrinkSecondPeriod: 缩容观测周期（秒级），可取值为：300。
         :type ShrinkSecondPeriod: int
         """
         self._ExpandThreshold = None
@@ -3111,7 +3111,7 @@ class AutoStrategy(AbstractModel):
 
     @property
     def ExpandSecondPeriod(self):
-        """弹性扩容观测周期（秒级）
+        """弹性扩容观测周期（秒级），可取值为：5，30，45，60，180，300，600，900，1800。
         :rtype: int
         """
         return self._ExpandSecondPeriod
@@ -3122,7 +3122,7 @@ class AutoStrategy(AbstractModel):
 
     @property
     def ShrinkSecondPeriod(self):
-        """缩容观测周期（秒级）
+        """缩容观测周期（秒级），可取值为：300。
         :rtype: int
         """
         return self._ShrinkSecondPeriod
@@ -3866,14 +3866,14 @@ class BalanceRoGroupLoadRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RoGroupId: RO 组的 ID，格式如：cdbrg-c1nl9rpv。
+        :param _RoGroupId: RO 组的 ID，格式如：cdbrg-c1nl9rpv。可通过 [DescribeRoGroups](https://cloud.tencent.com/document/api/236/40939) 获取。
         :type RoGroupId: str
         """
         self._RoGroupId = None
 
     @property
     def RoGroupId(self):
-        """RO 组的 ID，格式如：cdbrg-c1nl9rpv。
+        """RO 组的 ID，格式如：cdbrg-c1nl9rpv。可通过 [DescribeRoGroups](https://cloud.tencent.com/document/api/236/40939) 获取。
         :rtype: str
         """
         return self._RoGroupId
@@ -5755,9 +5755,9 @@ class CloseWanServiceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
+        :param _InstanceId: 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。可传入只读组 ID 关闭只读组外网访问。 
         :type InstanceId: str
-        :param _OpResourceId: 变更集群版实例只读组时，InstanceId传实例id，需要额外指定该参数表示操作只读组。 如果操作读写节点则不需指定该参数。
+        :param _OpResourceId: 变更云盘版实例只读组时，InstanceId 传实例 ID，需要额外指定该参数表示操作只读组。如果操作读写节点则不需指定该参数。
         :type OpResourceId: str
         """
         self._InstanceId = None
@@ -5765,7 +5765,7 @@ class CloseWanServiceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
+        """实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。可传入只读组 ID 关闭只读组外网访问。 
         :rtype: str
         """
         return self._InstanceId
@@ -5776,7 +5776,7 @@ class CloseWanServiceRequest(AbstractModel):
 
     @property
     def OpResourceId(self):
-        """变更集群版实例只读组时，InstanceId传实例id，需要额外指定该参数表示操作只读组。 如果操作读写节点则不需指定该参数。
+        """变更云盘版实例只读组时，InstanceId 传实例 ID，需要额外指定该参数表示操作只读组。如果操作读写节点则不需指定该参数。
         :rtype: str
         """
         return self._OpResourceId
@@ -29018,6 +29018,7 @@ class ModifyDBInstanceProjectRequest(AbstractModel):
   ]
         :type InstanceIds: list of str
         :param _NewProjectId: 实例所属项目的 ID，可在账号中心下的项目管理页面查询。
+说明：此项为必填。
         :type NewProjectId: int
         """
         self._InstanceIds = None
@@ -29042,6 +29043,7 @@ class ModifyDBInstanceProjectRequest(AbstractModel):
     @property
     def NewProjectId(self):
         """实例所属项目的 ID，可在账号中心下的项目管理页面查询。
+说明：此项为必填。
         :rtype: int
         """
         return self._NewProjectId
@@ -29291,9 +29293,9 @@ class ModifyDBInstanceVipVportRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c2nl9rpv 或者 cdbrg-c3nl9rpv，与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
         :type InstanceId: str
-        :param _DstIp: 目标 IP。该参数和 DstPort 参数，两者必传一个。
+        :param _DstIp: 目标 IP。
         :type DstIp: str
-        :param _DstPort: 目标端口，支持范围为：[1024-65535]。该参数和 DstIp 参数，两者必传一个。
+        :param _DstPort: 目标端口，支持范围为：[1024-65535]。
         :type DstPort: int
         :param _UniqVpcId: 私有网络统一 ID。
         :type UniqVpcId: str
@@ -29325,7 +29327,7 @@ class ModifyDBInstanceVipVportRequest(AbstractModel):
 
     @property
     def DstIp(self):
-        """目标 IP。该参数和 DstPort 参数，两者必传一个。
+        """目标 IP。
         :rtype: str
         """
         return self._DstIp
@@ -29336,7 +29338,7 @@ class ModifyDBInstanceVipVportRequest(AbstractModel):
 
     @property
     def DstPort(self):
-        """目标端口，支持范围为：[1024-65535]。该参数和 DstIp 参数，两者必传一个。
+        """目标端口，支持范围为：[1024-65535]。
         :rtype: int
         """
         return self._DstPort
@@ -30507,7 +30509,7 @@ class ModifyTimeWindowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+        :param _InstanceId: 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
         :type InstanceId: str
         :param _TimeRanges: 修改后的可维护时间段，其中每一个时间段的格式形如：10:00-12:00；起止时间按半个小时对齐；最短半个小时，最长三个小时；最多设置两个时间段；起止时间范围为：[00:00, 24:00]。
 说明：设置两个时间段的 json 示例如下。
@@ -30523,7 +30525,7 @@ class ModifyTimeWindowRequest(AbstractModel):
     "tuesday"
   ]
         :type Weekdays: list of str
-        :param _MaxDelayTime: 数据延迟阈值，仅对主实例和灾备实例有效，不传默认修改为10
+        :param _MaxDelayTime: 数据延迟阈值（秒），仅对主实例和灾备实例有效。不传默认不修改，保持原来的阈值，取值范围：1-10的整数。
         :type MaxDelayTime: int
         """
         self._InstanceId = None
@@ -30533,7 +30535,7 @@ class ModifyTimeWindowRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+        """实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -30576,7 +30578,7 @@ class ModifyTimeWindowRequest(AbstractModel):
 
     @property
     def MaxDelayTime(self):
-        """数据延迟阈值，仅对主实例和灾备实例有效，不传默认修改为10
+        """数据延迟阈值（秒），仅对主实例和灾备实例有效。不传默认不修改，保持原来的阈值，取值范围：1-10的整数。
         :rtype: int
         """
         return self._MaxDelayTime
@@ -33777,12 +33779,13 @@ class RoGroup(AbstractModel):
         :param _RoGroupMode: 只读组模式，可选值为：alone-系统自动分配只读组；allinone-新建只读组；join-使用现有只读组。
         :type RoGroupMode: str
         :param _RoGroupId: 只读组 ID。
+说明：若此数据结构在购买实例操作中被使用，则当只读组模式选择 join 时，此项为必填。
         :type RoGroupId: str
         :param _RoGroupName: 只读组名称。
         :type RoGroupName: str
         :param _RoOfflineDelay: 是否启用延迟超限剔除功能，启用该功能后，只读实例与主实例的延迟超过延迟阈值，只读实例将被隔离。可选值：1-启用；0-不启用。
         :type RoOfflineDelay: int
-        :param _RoMaxDelayTime: 延迟阈值。
+        :param _RoMaxDelayTime: 延迟阈值。单位：秒。值范围：1-10000，整数。
         :type RoMaxDelayTime: int
         :param _MinRoInGroup: 最少实例保留个数，若购买只读实例数量小于设置数量将不做剔除。
         :type MinRoInGroup: int
@@ -33804,7 +33807,7 @@ class RoGroup(AbstractModel):
         :type RoGroupRegion: str
         :param _RoGroupZone: 只读组所在的可用区。
         :type RoGroupZone: str
-        :param _DelayReplicationTime: 延迟复制时间。
+        :param _DelayReplicationTime: 延迟复制时间。单位：秒。值范围：1-259200，整数。
         :type DelayReplicationTime: int
         """
         self._RoGroupMode = None
@@ -33838,6 +33841,7 @@ class RoGroup(AbstractModel):
     @property
     def RoGroupId(self):
         """只读组 ID。
+说明：若此数据结构在购买实例操作中被使用，则当只读组模式选择 join 时，此项为必填。
         :rtype: str
         """
         return self._RoGroupId
@@ -33870,7 +33874,7 @@ class RoGroup(AbstractModel):
 
     @property
     def RoMaxDelayTime(self):
-        """延迟阈值。
+        """延迟阈值。单位：秒。值范围：1-10000，整数。
         :rtype: int
         """
         return self._RoMaxDelayTime
@@ -33991,7 +33995,7 @@ class RoGroup(AbstractModel):
 
     @property
     def DelayReplicationTime(self):
-        """延迟复制时间。
+        """延迟复制时间。单位：秒。值范围：1-259200，整数。
         :rtype: int
         """
         return self._DelayReplicationTime
@@ -36439,14 +36443,14 @@ class StartReplicationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID。仅支持只读实例。
+        :param _InstanceId: 实例 ID。仅支持只读实例。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """实例 ID。仅支持只读实例。
+        """实例 ID。仅支持只读实例。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -36518,14 +36522,14 @@ class StopCpuExpandRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID 。
+        :param _InstanceId: 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """实例 ID 。
+        """实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -36554,7 +36558,7 @@ class StopCpuExpandResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AsyncRequestId: 异步任务 ID 。可以调用DescribeAsyncRequest 传入该 ID ，进行任务执行进度的查询
+        :param _AsyncRequestId: 异步任务 ID。在调用 [DescribeAsyncRequestInfo](https://cloud.tencent.com/document/api/236/20410) 进行任务执行进度的查询时，可以传入该 ID。
         :type AsyncRequestId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -36564,7 +36568,7 @@ class StopCpuExpandResponse(AbstractModel):
 
     @property
     def AsyncRequestId(self):
-        """异步任务 ID 。可以调用DescribeAsyncRequest 传入该 ID ，进行任务执行进度的查询
+        """异步任务 ID。在调用 [DescribeAsyncRequestInfo](https://cloud.tencent.com/document/api/236/20410) 进行任务执行进度的查询时，可以传入该 ID。
         :rtype: str
         """
         return self._AsyncRequestId
@@ -36661,14 +36665,14 @@ class StopReplicationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID。仅支持只读实例。
+        :param _InstanceId: 实例 ID。仅支持只读实例。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """实例 ID。仅支持只读实例。
+        """实例 ID。仅支持只读实例。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -38080,10 +38084,10 @@ class TimeIntervalStrategy(AbstractModel):
     def __init__(self):
         r"""
         :param _StartTime: 开始扩容时间。
-说明：此值的格式为 Integer 的时间戳。
+说明：此值的格式为 Integer 的时间戳（秒级）。
         :type StartTime: int
         :param _EndTime: 结束扩容时间。
-说明：此值的格式为 Integer 的时间戳。
+说明：此值的格式为 Integer 的时间戳（秒级）。
         :type EndTime: int
         """
         self._StartTime = None
@@ -38092,7 +38096,7 @@ class TimeIntervalStrategy(AbstractModel):
     @property
     def StartTime(self):
         """开始扩容时间。
-说明：此值的格式为 Integer 的时间戳。
+说明：此值的格式为 Integer 的时间戳（秒级）。
         :rtype: int
         """
         return self._StartTime
@@ -38104,7 +38108,7 @@ class TimeIntervalStrategy(AbstractModel):
     @property
     def EndTime(self):
         """结束扩容时间。
-说明：此值的格式为 Integer 的时间戳。
+说明：此值的格式为 Integer 的时间戳（秒级）。
         :rtype: int
         """
         return self._EndTime

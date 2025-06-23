@@ -744,9 +744,21 @@ class CosBackup(AbstractModel):
         :type IsAutoBackup: bool
         :param _BackupTime: 自动备份执行时间（精确到小时）, e.g. "22:00"
         :type BackupTime: str
+        :param _EsRepositoryType: 0 腾讯云仓库; 1 客户仓库
+        :type EsRepositoryType: int
+        :param _UserEsRepository: 客户快照仓库名称
+        :type UserEsRepository: str
+        :param _StorageDuration: 快照存储周期 单位天
+        :type StorageDuration: int
+        :param _AutoBackupInterval: 自动备份频率单位小时
+        :type AutoBackupInterval: int
         """
         self._IsAutoBackup = None
         self._BackupTime = None
+        self._EsRepositoryType = None
+        self._UserEsRepository = None
+        self._StorageDuration = None
+        self._AutoBackupInterval = None
 
     @property
     def IsAutoBackup(self):
@@ -770,10 +782,58 @@ class CosBackup(AbstractModel):
     def BackupTime(self, BackupTime):
         self._BackupTime = BackupTime
 
+    @property
+    def EsRepositoryType(self):
+        """0 腾讯云仓库; 1 客户仓库
+        :rtype: int
+        """
+        return self._EsRepositoryType
+
+    @EsRepositoryType.setter
+    def EsRepositoryType(self, EsRepositoryType):
+        self._EsRepositoryType = EsRepositoryType
+
+    @property
+    def UserEsRepository(self):
+        """客户快照仓库名称
+        :rtype: str
+        """
+        return self._UserEsRepository
+
+    @UserEsRepository.setter
+    def UserEsRepository(self, UserEsRepository):
+        self._UserEsRepository = UserEsRepository
+
+    @property
+    def StorageDuration(self):
+        """快照存储周期 单位天
+        :rtype: int
+        """
+        return self._StorageDuration
+
+    @StorageDuration.setter
+    def StorageDuration(self, StorageDuration):
+        self._StorageDuration = StorageDuration
+
+    @property
+    def AutoBackupInterval(self):
+        """自动备份频率单位小时
+        :rtype: int
+        """
+        return self._AutoBackupInterval
+
+    @AutoBackupInterval.setter
+    def AutoBackupInterval(self, AutoBackupInterval):
+        self._AutoBackupInterval = AutoBackupInterval
+
 
     def _deserialize(self, params):
         self._IsAutoBackup = params.get("IsAutoBackup")
         self._BackupTime = params.get("BackupTime")
+        self._EsRepositoryType = params.get("EsRepositoryType")
+        self._UserEsRepository = params.get("UserEsRepository")
+        self._StorageDuration = params.get("StorageDuration")
+        self._AutoBackupInterval = params.get("AutoBackupInterval")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17373,6 +17433,9 @@ class Snapshots(AbstractModel):
         :param _Uuid: 快照Uuid
 注意：此字段可能返回 null，表示取不到有效值。
         :type Uuid: str
+        :param _Repository: 仓库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Repository: str
         :param _Version: 该快照所属集群的版本号
 注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
@@ -17420,6 +17483,7 @@ SUCCESS     备份成功
         """
         self._SnapshotName = None
         self._Uuid = None
+        self._Repository = None
         self._Version = None
         self._Indices = None
         self._DataStreams = None
@@ -17456,6 +17520,18 @@ SUCCESS     备份成功
     @Uuid.setter
     def Uuid(self, Uuid):
         self._Uuid = Uuid
+
+    @property
+    def Repository(self):
+        """仓库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Repository
+
+    @Repository.setter
+    def Repository(self, Repository):
+        self._Repository = Repository
 
     @property
     def Version(self):
@@ -17613,6 +17689,7 @@ SUCCESS     备份成功
     def _deserialize(self, params):
         self._SnapshotName = params.get("SnapshotName")
         self._Uuid = params.get("Uuid")
+        self._Repository = params.get("Repository")
         self._Version = params.get("Version")
         self._Indices = params.get("Indices")
         self._DataStreams = params.get("DataStreams")

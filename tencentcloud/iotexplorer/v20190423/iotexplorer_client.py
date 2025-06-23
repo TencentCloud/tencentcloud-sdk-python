@@ -418,7 +418,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def CreateFenceBind(self, request):
-        """创建围栏绑定信息
+        """> 创建围栏绑定信息。
 
         :param request: Request instance for CreateFenceBind.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreateFenceBindRequest`
@@ -533,7 +533,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def CreatePositionFence(self, request):
-        """创建围栏
+        """创建围栏。
 
         :param request: Request instance for CreatePositionFence.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreatePositionFenceRequest`
@@ -786,7 +786,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DeleteFenceBind(self, request):
-        """删除围栏绑定信息
+        """删除围栏绑定信息。
 
         :param request: Request instance for DeleteFenceBind.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DeleteFenceBindRequest`
@@ -855,7 +855,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DeletePositionFence(self, request):
-        """删除围栏
+        """删除围栏。
 
         :param request: Request instance for DeletePositionFence.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DeletePositionFenceRequest`
@@ -878,7 +878,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DeletePositionSpace(self, request):
-        """删除位置空间
+        """删除位置空间。
 
         :param request: Request instance for DeletePositionSpace.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DeletePositionSpaceRequest`
@@ -1731,7 +1731,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeFenceBindList(self, request):
-        """获取围栏绑定信息列表
+        """获取围栏绑定信息列表。
 
         :param request: Request instance for DescribeFenceBindList.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeFenceBindListRequest`
@@ -1754,7 +1754,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeFenceEventList(self, request):
-        """获取围栏告警事件列表
+        """获取围栏告警事件列表。
 
         :param request: Request instance for DescribeFenceEventList.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeFenceEventListRequest`
@@ -2145,7 +2145,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeSpaceFenceEventList(self, request):
-        """获取位置空间中围栏告警事件列表
+        """获取位置空间中围栏告警事件列表。
 
         :param request: Request instance for DescribeSpaceFenceEventList.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeSpaceFenceEventListRequest`
@@ -2926,6 +2926,29 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def InvokeVideosKeywordsAnalyzer(self, request):
+        """获取某个时间段的视频内容关键字
+
+        :param request: Request instance for InvokeVideosKeywordsAnalyzer.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.InvokeVideosKeywordsAnalyzerRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.InvokeVideosKeywordsAnalyzerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InvokeVideosKeywordsAnalyzer", params, headers=headers)
+            response = json.loads(body)
+            model = models.InvokeVideosKeywordsAnalyzerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ListEventHistory(self, request):
         """获取设备的历史事件
 
@@ -3065,7 +3088,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def ModifyFenceBind(self, request):
-        """更新围栏绑定信息
+        """更新围栏绑定信息。
 
         :param request: Request instance for ModifyFenceBind.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ModifyFenceBindRequest`
@@ -3157,7 +3180,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def ModifyPositionFence(self, request):
-        """更新围栏
+        """更新围栏。
 
         :param request: Request instance for ModifyPositionFence.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ModifyPositionFenceRequest`
@@ -3180,7 +3203,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def ModifyPositionSpace(self, request):
-        """更新位置空间
+        """更新位置空间。
 
         :param request: Request instance for ModifyPositionSpace.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ModifyPositionSpaceRequest`

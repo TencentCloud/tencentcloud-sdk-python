@@ -11775,6 +11775,155 @@ class ForceMemberOfflineResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ForwardingConfig(AbstractModel):
+    """呼转配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: 是否启用
+        :type Enabled: bool
+        :param _Condition: 1 无条件呼转 2 有条件呼转
+        :type Condition: int
+        :param _Target: 呼转目标
+        :type Target: :class:`tencentcloud.ccc.v20200210.models.ForwardingTarget`
+        """
+        self._Enabled = None
+        self._Condition = None
+        self._Target = None
+
+    @property
+    def Enabled(self):
+        """是否启用
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def Condition(self):
+        """1 无条件呼转 2 有条件呼转
+        :rtype: int
+        """
+        return self._Condition
+
+    @Condition.setter
+    def Condition(self, Condition):
+        self._Condition = Condition
+
+    @property
+    def Target(self):
+        """呼转目标
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.ForwardingTarget`
+        """
+        return self._Target
+
+    @Target.setter
+    def Target(self, Target):
+        self._Target = Target
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        self._Condition = params.get("Condition")
+        if params.get("Target") is not None:
+            self._Target = ForwardingTarget()
+            self._Target._deserialize(params.get("Target"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ForwardingTarget(AbstractModel):
+    """呼转目标
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 呼转目标类型 1 座席 2 技能组 3 分机
+        :type Type: int
+        :param _StaffUserId: 呼转目标为座席的账号 Type 为 1 时填写
+        :type StaffUserId: str
+        :param _SkillGroupId: 呼转目标为技能组的 ID，Type 为 2 时填写
+        :type SkillGroupId: int
+        :param _Extension: 呼转目标为分机的账号，Type 为 3 时填写
+        :type Extension: str
+        """
+        self._Type = None
+        self._StaffUserId = None
+        self._SkillGroupId = None
+        self._Extension = None
+
+    @property
+    def Type(self):
+        """呼转目标类型 1 座席 2 技能组 3 分机
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def StaffUserId(self):
+        """呼转目标为座席的账号 Type 为 1 时填写
+        :rtype: str
+        """
+        return self._StaffUserId
+
+    @StaffUserId.setter
+    def StaffUserId(self, StaffUserId):
+        self._StaffUserId = StaffUserId
+
+    @property
+    def SkillGroupId(self):
+        """呼转目标为技能组的 ID，Type 为 2 时填写
+        :rtype: int
+        """
+        return self._SkillGroupId
+
+    @SkillGroupId.setter
+    def SkillGroupId(self, SkillGroupId):
+        self._SkillGroupId = SkillGroupId
+
+    @property
+    def Extension(self):
+        """呼转目标为分机的账号，Type 为 3 时填写
+        :rtype: str
+        """
+        return self._Extension
+
+    @Extension.setter
+    def Extension(self, Extension):
+        self._Extension = Extension
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._StaffUserId = params.get("StaffUserId")
+        self._SkillGroupId = params.get("SkillGroupId")
+        self._Extension = params.get("Extension")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class HangUpCallRequest(AbstractModel):
     """HangUpCall请求参数结构体
 
@@ -15103,8 +15252,7 @@ class StaffInfo(AbstractModel):
         :type Nick: str
         :param _StaffNumber: 座席工号
         :type StaffNumber: str
-        :param _RoleId: 用户角色id
-一个用户绑定了多个角色时以RoleIdList为准
+        :param _RoleId: 用户角色 ID，一个用户绑定了多个角色时以RoleIdList为准
         :type RoleId: int
         :param _RoleIdList: 用户角色id列表
         :type RoleIdList: int
@@ -15116,6 +15264,8 @@ class StaffInfo(AbstractModel):
         :type LastModifyTimestamp: int
         :param _ExtensionNumber: 座席分机号（1 到 8 打头，4 - 6 位）
         :type ExtensionNumber: str
+        :param _ForwardingConfig: 呼叫转移配置
+        :type ForwardingConfig: :class:`tencentcloud.ccc.v20200210.models.ForwardingConfig`
         """
         self._Name = None
         self._Mail = None
@@ -15128,6 +15278,7 @@ class StaffInfo(AbstractModel):
         self._SkillGroupList = None
         self._LastModifyTimestamp = None
         self._ExtensionNumber = None
+        self._ForwardingConfig = None
 
     @property
     def Name(self):
@@ -15188,8 +15339,7 @@ class StaffInfo(AbstractModel):
     def RoleId(self):
         warnings.warn("parameter `RoleId` is deprecated", DeprecationWarning) 
 
-        """用户角色id
-一个用户绑定了多个角色时以RoleIdList为准
+        """用户角色 ID，一个用户绑定了多个角色时以RoleIdList为准
         :rtype: int
         """
         return self._RoleId
@@ -15259,6 +15409,17 @@ class StaffInfo(AbstractModel):
     def ExtensionNumber(self, ExtensionNumber):
         self._ExtensionNumber = ExtensionNumber
 
+    @property
+    def ForwardingConfig(self):
+        """呼叫转移配置
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.ForwardingConfig`
+        """
+        return self._ForwardingConfig
+
+    @ForwardingConfig.setter
+    def ForwardingConfig(self, ForwardingConfig):
+        self._ForwardingConfig = ForwardingConfig
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -15277,6 +15438,9 @@ class StaffInfo(AbstractModel):
                 self._SkillGroupList.append(obj)
         self._LastModifyTimestamp = params.get("LastModifyTimestamp")
         self._ExtensionNumber = params.get("ExtensionNumber")
+        if params.get("ForwardingConfig") is not None:
+            self._ForwardingConfig = ForwardingConfig()
+            self._ForwardingConfig._deserialize(params.get("ForwardingConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

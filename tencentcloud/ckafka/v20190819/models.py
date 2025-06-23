@@ -20460,6 +20460,8 @@ class InstanceAttributesResponse(AbstractModel):
         :type CustomCertId: str
         :param _UncleanLeaderElectionEnable: 集群topic默认 unclean.leader.election.enable配置: 1 开启 0 关闭
         :type UncleanLeaderElectionEnable: int
+        :param _DeleteProtectionEnable: 实例删除保护开关: 1 开启 0 关闭
+        :type DeleteProtectionEnable: int
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -20502,6 +20504,7 @@ class InstanceAttributesResponse(AbstractModel):
         self._ElasticFloatBandwidth = None
         self._CustomCertId = None
         self._UncleanLeaderElectionEnable = None
+        self._DeleteProtectionEnable = None
 
     @property
     def InstanceId(self):
@@ -20954,6 +20957,17 @@ class InstanceAttributesResponse(AbstractModel):
     def UncleanLeaderElectionEnable(self, UncleanLeaderElectionEnable):
         self._UncleanLeaderElectionEnable = UncleanLeaderElectionEnable
 
+    @property
+    def DeleteProtectionEnable(self):
+        """实例删除保护开关: 1 开启 0 关闭
+        :rtype: int
+        """
+        return self._DeleteProtectionEnable
+
+    @DeleteProtectionEnable.setter
+    def DeleteProtectionEnable(self, DeleteProtectionEnable):
+        self._DeleteProtectionEnable = DeleteProtectionEnable
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -21013,6 +21027,7 @@ class InstanceAttributesResponse(AbstractModel):
         self._ElasticFloatBandwidth = params.get("ElasticFloatBandwidth")
         self._CustomCertId = params.get("CustomCertId")
         self._UncleanLeaderElectionEnable = params.get("UncleanLeaderElectionEnable")
+        self._DeleteProtectionEnable = params.get("DeleteProtectionEnable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24171,6 +24186,8 @@ class ModifyInstanceAttributesRequest(AbstractModel):
         :type MaxMessageByte: int
         :param _UncleanLeaderElectionEnable: 集群topic默认 unclean.leader.election.enable配置: 1 开启  0 关闭
         :type UncleanLeaderElectionEnable: int
+        :param _DeleteProtectionEnable: 实例删除保护开关: 1 开启  0 关闭
+        :type DeleteProtectionEnable: int
         """
         self._InstanceId = None
         self._MsgRetentionTime = None
@@ -24182,6 +24199,7 @@ class ModifyInstanceAttributesRequest(AbstractModel):
         self._DynamicDiskConfig = None
         self._MaxMessageByte = None
         self._UncleanLeaderElectionEnable = None
+        self._DeleteProtectionEnable = None
 
     @property
     def InstanceId(self):
@@ -24297,6 +24315,17 @@ class ModifyInstanceAttributesRequest(AbstractModel):
     def UncleanLeaderElectionEnable(self, UncleanLeaderElectionEnable):
         self._UncleanLeaderElectionEnable = UncleanLeaderElectionEnable
 
+    @property
+    def DeleteProtectionEnable(self):
+        """实例删除保护开关: 1 开启  0 关闭
+        :rtype: int
+        """
+        return self._DeleteProtectionEnable
+
+    @DeleteProtectionEnable.setter
+    def DeleteProtectionEnable(self, DeleteProtectionEnable):
+        self._DeleteProtectionEnable = DeleteProtectionEnable
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -24315,6 +24344,7 @@ class ModifyInstanceAttributesRequest(AbstractModel):
             self._DynamicDiskConfig._deserialize(params.get("DynamicDiskConfig"))
         self._MaxMessageByte = params.get("MaxMessageByte")
         self._UncleanLeaderElectionEnable = params.get("UncleanLeaderElectionEnable")
+        self._DeleteProtectionEnable = params.get("DeleteProtectionEnable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

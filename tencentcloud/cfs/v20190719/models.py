@@ -1109,6 +1109,10 @@ class CreateCfsFileSystemRequest(AbstractModel):
 v3.1：创建增强版的通用文件系统
 说明：增强版的通用系统需要开通白名单才能使用，如有需要请提交工单与我们联系。
         :type CfsVersion: str
+        :param _MetaType: turbo文件系统元数据属性
+basic：创建标准型的元数据
+enhanced：创建增强型的元数据
+        :type MetaType: str
         """
         self._Zone = None
         self._NetInterface = None
@@ -1128,6 +1132,7 @@ v3.1：创建增强版的通用文件系统
         self._AutoSnapshotPolicyId = None
         self._EnableAutoScaleUp = None
         self._CfsVersion = None
+        self._MetaType = None
 
     @property
     def Zone(self):
@@ -1335,6 +1340,19 @@ v3.1：创建增强版的通用文件系统
     def CfsVersion(self, CfsVersion):
         self._CfsVersion = CfsVersion
 
+    @property
+    def MetaType(self):
+        """turbo文件系统元数据属性
+basic：创建标准型的元数据
+enhanced：创建增强型的元数据
+        :rtype: str
+        """
+        return self._MetaType
+
+    @MetaType.setter
+    def MetaType(self, MetaType):
+        self._MetaType = MetaType
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -1360,6 +1378,7 @@ v3.1：创建增强版的通用文件系统
         self._AutoSnapshotPolicyId = params.get("AutoSnapshotPolicyId")
         self._EnableAutoScaleUp = params.get("EnableAutoScaleUp")
         self._CfsVersion = params.get("CfsVersion")
+        self._MetaType = params.get("MetaType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

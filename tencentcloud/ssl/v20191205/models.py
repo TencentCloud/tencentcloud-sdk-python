@@ -6509,6 +6509,152 @@ class DeployCertificateRecordRollbackResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeployRecord(AbstractModel):
+    """托管记录
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数
+        :type TotalCount: int
+        :param _SuccessTotalCount: 成功总数
+        :type SuccessTotalCount: int
+        :param _FailedTotalCount: 失败总数
+        :type FailedTotalCount: int
+        :param _RunningTotalCount: 部署中总数
+        :type RunningTotalCount: int
+        :param _Type: 部署记录类型 0 为部署， 1 为回滚
+        :type Type: int
+        :param _RecordDetailList: 部署记录详情列表
+        :type RecordDetailList: list of DeployRecordList
+        :param _Status: 托管资源部署状态：0 等待部署， 1 部署成功， 2 部署失败 3 部署中， 4 回滚成功， 5 回滚失败
+        :type Status: int
+        :param _CreateTime: 托管资源创建时间
+        :type CreateTime: str
+        """
+        self._TotalCount = None
+        self._SuccessTotalCount = None
+        self._FailedTotalCount = None
+        self._RunningTotalCount = None
+        self._Type = None
+        self._RecordDetailList = None
+        self._Status = None
+        self._CreateTime = None
+
+    @property
+    def TotalCount(self):
+        """总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def SuccessTotalCount(self):
+        """成功总数
+        :rtype: int
+        """
+        return self._SuccessTotalCount
+
+    @SuccessTotalCount.setter
+    def SuccessTotalCount(self, SuccessTotalCount):
+        self._SuccessTotalCount = SuccessTotalCount
+
+    @property
+    def FailedTotalCount(self):
+        """失败总数
+        :rtype: int
+        """
+        return self._FailedTotalCount
+
+    @FailedTotalCount.setter
+    def FailedTotalCount(self, FailedTotalCount):
+        self._FailedTotalCount = FailedTotalCount
+
+    @property
+    def RunningTotalCount(self):
+        """部署中总数
+        :rtype: int
+        """
+        return self._RunningTotalCount
+
+    @RunningTotalCount.setter
+    def RunningTotalCount(self, RunningTotalCount):
+        self._RunningTotalCount = RunningTotalCount
+
+    @property
+    def Type(self):
+        """部署记录类型 0 为部署， 1 为回滚
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def RecordDetailList(self):
+        """部署记录详情列表
+        :rtype: list of DeployRecordList
+        """
+        return self._RecordDetailList
+
+    @RecordDetailList.setter
+    def RecordDetailList(self, RecordDetailList):
+        self._RecordDetailList = RecordDetailList
+
+    @property
+    def Status(self):
+        """托管资源部署状态：0 等待部署， 1 部署成功， 2 部署失败 3 部署中， 4 回滚成功， 5 回滚失败
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        """托管资源创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._SuccessTotalCount = params.get("SuccessTotalCount")
+        self._FailedTotalCount = params.get("FailedTotalCount")
+        self._RunningTotalCount = params.get("RunningTotalCount")
+        self._Type = params.get("Type")
+        if params.get("RecordDetailList") is not None:
+            self._RecordDetailList = []
+            for item in params.get("RecordDetailList"):
+                obj = DeployRecordList()
+                obj._deserialize(item)
+                self._RecordDetailList.append(obj)
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeployRecordDetail(AbstractModel):
     """部署记录详情
 
@@ -6976,6 +7122,415 @@ class DeployRecordInfo(AbstractModel):
         self._Status = params.get("Status")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeployRecordItem(AbstractModel):
+    """部署记录详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 部署记录详情ID
+        :type Id: int
+        :param _OldCertId: 原绑定证书ID
+        :type OldCertId: str
+        :param _InstanceId: 部署实例ID
+        :type InstanceId: str
+        :param _InstanceName: 部署实例名称
+        :type InstanceName: str
+        :param _ListenerId: 部署监听器ID
+        :type ListenerId: str
+        :param _Domains: 部署域名列表
+        :type Domains: list of str
+        :param _Protocol: 部署监听器协议
+        :type Protocol: str
+        :param _Status: 部署状态
+        :type Status: int
+        :param _ErrorMsg: 部署错误信息
+        :type ErrorMsg: str
+        :param _CreateTime: 部署记录详情创建时间
+        :type CreateTime: str
+        :param _UpdateTime: 部署记录详情最后一次更新时间
+        :type UpdateTime: str
+        :param _ListenerName: 部署监听器名称
+        :type ListenerName: str
+        :param _SniSwitch: 是否开启SNI
+        :type SniSwitch: int
+        :param _Bucket: COS存储桶名称
+        :type Bucket: str
+        :param _Namespace: 命名空间名称
+        :type Namespace: str
+        :param _SecretName: secret名称
+        :type SecretName: str
+        :param _Port: 端口
+        :type Port: int
+        :param _Region: 部署的TCB地域
+        :type Region: str
+        :param _Forward: 负载均衡类型，0 传统型负载均衡； 1 应用型负载均衡
+        :type Forward: int
+        :param _SSLMode: 证书认证模式：UNIDIRECTIONAL单向认证，MUTUAL双向认证
+        :type SSLMode: str
+        :param _ResourceType: 部署资源类型
+        :type ResourceType: str
+        """
+        self._Id = None
+        self._OldCertId = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._ListenerId = None
+        self._Domains = None
+        self._Protocol = None
+        self._Status = None
+        self._ErrorMsg = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._ListenerName = None
+        self._SniSwitch = None
+        self._Bucket = None
+        self._Namespace = None
+        self._SecretName = None
+        self._Port = None
+        self._Region = None
+        self._Forward = None
+        self._SSLMode = None
+        self._ResourceType = None
+
+    @property
+    def Id(self):
+        """部署记录详情ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def OldCertId(self):
+        """原绑定证书ID
+        :rtype: str
+        """
+        return self._OldCertId
+
+    @OldCertId.setter
+    def OldCertId(self, OldCertId):
+        self._OldCertId = OldCertId
+
+    @property
+    def InstanceId(self):
+        """部署实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        """部署实例名称
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def ListenerId(self):
+        """部署监听器ID
+        :rtype: str
+        """
+        return self._ListenerId
+
+    @ListenerId.setter
+    def ListenerId(self, ListenerId):
+        self._ListenerId = ListenerId
+
+    @property
+    def Domains(self):
+        """部署域名列表
+        :rtype: list of str
+        """
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+    @property
+    def Protocol(self):
+        """部署监听器协议
+        :rtype: str
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def Status(self):
+        """部署状态
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrorMsg(self):
+        """部署错误信息
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def CreateTime(self):
+        """部署记录详情创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        """部署记录详情最后一次更新时间
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def ListenerName(self):
+        """部署监听器名称
+        :rtype: str
+        """
+        return self._ListenerName
+
+    @ListenerName.setter
+    def ListenerName(self, ListenerName):
+        self._ListenerName = ListenerName
+
+    @property
+    def SniSwitch(self):
+        """是否开启SNI
+        :rtype: int
+        """
+        return self._SniSwitch
+
+    @SniSwitch.setter
+    def SniSwitch(self, SniSwitch):
+        self._SniSwitch = SniSwitch
+
+    @property
+    def Bucket(self):
+        """COS存储桶名称
+        :rtype: str
+        """
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def Namespace(self):
+        """命名空间名称
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def SecretName(self):
+        """secret名称
+        :rtype: str
+        """
+        return self._SecretName
+
+    @SecretName.setter
+    def SecretName(self, SecretName):
+        self._SecretName = SecretName
+
+    @property
+    def Port(self):
+        """端口
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def Region(self):
+        """部署的TCB地域
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Forward(self):
+        """负载均衡类型，0 传统型负载均衡； 1 应用型负载均衡
+        :rtype: int
+        """
+        return self._Forward
+
+    @Forward.setter
+    def Forward(self, Forward):
+        self._Forward = Forward
+
+    @property
+    def SSLMode(self):
+        """证书认证模式：UNIDIRECTIONAL单向认证，MUTUAL双向认证
+        :rtype: str
+        """
+        return self._SSLMode
+
+    @SSLMode.setter
+    def SSLMode(self, SSLMode):
+        self._SSLMode = SSLMode
+
+    @property
+    def ResourceType(self):
+        """部署资源类型
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._OldCertId = params.get("OldCertId")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._ListenerId = params.get("ListenerId")
+        self._Domains = params.get("Domains")
+        self._Protocol = params.get("Protocol")
+        self._Status = params.get("Status")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._ListenerName = params.get("ListenerName")
+        self._SniSwitch = params.get("SniSwitch")
+        self._Bucket = params.get("Bucket")
+        self._Namespace = params.get("Namespace")
+        self._SecretName = params.get("SecretName")
+        self._Port = params.get("Port")
+        self._Region = params.get("Region")
+        self._Forward = params.get("Forward")
+        self._SSLMode = params.get("SSLMode")
+        self._ResourceType = params.get("ResourceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeployRecordList(AbstractModel):
+    """托管记录详情信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceType: 部署资源类型
+        :type ResourceType: str
+        :param _List: 部署资源详情列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of DeployRecordItem
+        :param _TotalCount: 该部署资源总数
+        :type TotalCount: int
+        """
+        self._ResourceType = None
+        self._List = None
+        self._TotalCount = None
+
+    @property
+    def ResourceType(self):
+        """部署资源类型
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def List(self):
+        """部署资源详情列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DeployRecordItem
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def TotalCount(self):
+        """该部署资源总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+
+    def _deserialize(self, params):
+        self._ResourceType = params.get("ResourceType")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = DeployRecordItem()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._TotalCount = params.get("TotalCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12915,6 +13470,249 @@ class DescribeHostUpdateRecordResponse(AbstractModel):
             self._DeployRecordList = []
             for item in params.get("DeployRecordList"):
                 obj = UpdateRecordInfo()
+                obj._deserialize(item)
+                self._DeployRecordList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeHostUploadUpdateRecordDetailRequest(AbstractModel):
+    """DescribeHostUploadUpdateRecordDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeployRecordId: 托管记录ID
+        :type DeployRecordId: int
+        :param _Limit: 每页数量，默认为10，最大为200， 超过200则为200
+        :type Limit: int
+        :param _Offset: 偏移量，默认为0
+        :type Offset: int
+        """
+        self._DeployRecordId = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def DeployRecordId(self):
+        """托管记录ID
+        :rtype: int
+        """
+        return self._DeployRecordId
+
+    @DeployRecordId.setter
+    def DeployRecordId(self, DeployRecordId):
+        self._DeployRecordId = DeployRecordId
+
+    @property
+    def Limit(self):
+        """每页数量，默认为10，最大为200， 超过200则为200
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """偏移量，默认为0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._DeployRecordId = params.get("DeployRecordId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHostUploadUpdateRecordDetailResponse(AbstractModel):
+    """DescribeHostUploadUpdateRecordDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeployRecordDetail: 托管记录详情列表
+        :type DeployRecordDetail: list of DeployRecord
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DeployRecordDetail = None
+        self._RequestId = None
+
+    @property
+    def DeployRecordDetail(self):
+        """托管记录详情列表
+        :rtype: list of DeployRecord
+        """
+        return self._DeployRecordDetail
+
+    @DeployRecordDetail.setter
+    def DeployRecordDetail(self, DeployRecordDetail):
+        self._DeployRecordDetail = DeployRecordDetail
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DeployRecordDetail") is not None:
+            self._DeployRecordDetail = []
+            for item in params.get("DeployRecordDetail"):
+                obj = DeployRecord()
+                obj._deserialize(item)
+                self._DeployRecordDetail.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeHostUploadUpdateRecordRequest(AbstractModel):
+    """DescribeHostUploadUpdateRecord请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: 分页偏移量，从0开始。
+        :type Offset: int
+        :param _Limit: 每页数量，默认10。
+        :type Limit: int
+        :param _OldCertificateId: 原证书ID
+        :type OldCertificateId: str
+        """
+        self._Offset = None
+        self._Limit = None
+        self._OldCertificateId = None
+
+    @property
+    def Offset(self):
+        """分页偏移量，从0开始。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """每页数量，默认10。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def OldCertificateId(self):
+        """原证书ID
+        :rtype: str
+        """
+        return self._OldCertificateId
+
+    @OldCertificateId.setter
+    def OldCertificateId(self, OldCertificateId):
+        self._OldCertificateId = OldCertificateId
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._OldCertificateId = params.get("OldCertificateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHostUploadUpdateRecordResponse(AbstractModel):
+    """DescribeHostUploadUpdateRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数
+        :type TotalCount: int
+        :param _DeployRecordList: 证书部署记录列表
+        :type DeployRecordList: list of UploadUpdateRecordInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._DeployRecordList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def DeployRecordList(self):
+        """证书部署记录列表
+        :rtype: list of UploadUpdateRecordInfo
+        """
+        return self._DeployRecordList
+
+    @DeployRecordList.setter
+    def DeployRecordList(self, DeployRecordList):
+        self._DeployRecordList = DeployRecordList
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("DeployRecordList") is not None:
+            self._DeployRecordList = []
+            for item in params.get("DeployRecordList"):
+                obj = UploadUpdateRecordInfo()
                 obj._deserialize(item)
                 self._DeployRecordList.append(obj)
         self._RequestId = params.get("RequestId")
@@ -21502,6 +22300,260 @@ class UploadUpdateCertificateInstanceResponse(AbstractModel):
                 obj._deserialize(item)
                 self._UpdateSyncProgress.append(obj)
         self._RequestId = params.get("RequestId")
+
+
+class UploadUpdateCertificateRecordRetryRequest(AbstractModel):
+    """UploadUpdateCertificateRecordRetry请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeployRecordId: 待重试部署记录ID,通过UpdateCertificateInstance得到部署记录ID。 本参数不传的话，则DeployRecordDetailId必传
+        :type DeployRecordId: int
+        :param _DeployRecordDetailId: 待重试部署记录详情ID,通过DescribeHostUpdateRecordDetail接口获得， 本参数不传的话， 则DeployRecordId必传
+        :type DeployRecordDetailId: int
+        """
+        self._DeployRecordId = None
+        self._DeployRecordDetailId = None
+
+    @property
+    def DeployRecordId(self):
+        """待重试部署记录ID,通过UpdateCertificateInstance得到部署记录ID。 本参数不传的话，则DeployRecordDetailId必传
+        :rtype: int
+        """
+        return self._DeployRecordId
+
+    @DeployRecordId.setter
+    def DeployRecordId(self, DeployRecordId):
+        self._DeployRecordId = DeployRecordId
+
+    @property
+    def DeployRecordDetailId(self):
+        """待重试部署记录详情ID,通过DescribeHostUpdateRecordDetail接口获得， 本参数不传的话， 则DeployRecordId必传
+        :rtype: int
+        """
+        return self._DeployRecordDetailId
+
+    @DeployRecordDetailId.setter
+    def DeployRecordDetailId(self, DeployRecordDetailId):
+        self._DeployRecordDetailId = DeployRecordDetailId
+
+
+    def _deserialize(self, params):
+        self._DeployRecordId = params.get("DeployRecordId")
+        self._DeployRecordDetailId = params.get("DeployRecordDetailId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UploadUpdateCertificateRecordRetryResponse(AbstractModel):
+    """UploadUpdateCertificateRecordRetry返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UploadUpdateCertificateRecordRollbackRequest(AbstractModel):
+    """UploadUpdateCertificateRecordRollback请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeployRecordId: 更新证书待回滚的记录ID, 通过UpdateCertificateInstance获得
+        :type DeployRecordId: int
+        """
+        self._DeployRecordId = None
+
+    @property
+    def DeployRecordId(self):
+        """更新证书待回滚的记录ID, 通过UpdateCertificateInstance获得
+        :rtype: int
+        """
+        return self._DeployRecordId
+
+    @DeployRecordId.setter
+    def DeployRecordId(self, DeployRecordId):
+        self._DeployRecordId = DeployRecordId
+
+
+    def _deserialize(self, params):
+        self._DeployRecordId = params.get("DeployRecordId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UploadUpdateCertificateRecordRollbackResponse(AbstractModel):
+    """UploadUpdateCertificateRecordRollback返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UploadUpdateRecordInfo(AbstractModel):
+    """部署记录列表信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 记录ID
+        :type Id: int
+        :param _OldCertId: 原证书ID
+        :type OldCertId: str
+        :param _ResourceTypes: 部署资源类型列表
+        :type ResourceTypes: list of str
+        :param _Status: 部署状态
+        :type Status: int
+        :param _CreateTime: 部署时间
+        :type CreateTime: str
+        :param _UpdateTime: 最后一次更新时间
+        :type UpdateTime: str
+        """
+        self._Id = None
+        self._OldCertId = None
+        self._ResourceTypes = None
+        self._Status = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def Id(self):
+        """记录ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def OldCertId(self):
+        """原证书ID
+        :rtype: str
+        """
+        return self._OldCertId
+
+    @OldCertId.setter
+    def OldCertId(self, OldCertId):
+        self._OldCertId = OldCertId
+
+    @property
+    def ResourceTypes(self):
+        """部署资源类型列表
+        :rtype: list of str
+        """
+        return self._ResourceTypes
+
+    @ResourceTypes.setter
+    def ResourceTypes(self, ResourceTypes):
+        self._ResourceTypes = ResourceTypes
+
+    @property
+    def Status(self):
+        """部署状态
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        """部署时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        """最后一次更新时间
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._OldCertId = params.get("OldCertId")
+        self._ResourceTypes = params.get("ResourceTypes")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class VODInstanceList(AbstractModel):
