@@ -4364,12 +4364,15 @@ class DescribeAndroidInstanceImagesRequest(AbstractModel):
         r"""
         :param _AndroidInstanceImageIds: 镜像 ID 列表
         :type AndroidInstanceImageIds: list of str
+        :param _AndroidInstanceImageZones: 镜像可用区列表
+        :type AndroidInstanceImageZones: list of str
         :param _Offset: 偏移量，默认为0
         :type Offset: int
         :param _Limit: 限制量，默认为20，最大值为100
         :type Limit: int
         """
         self._AndroidInstanceImageIds = None
+        self._AndroidInstanceImageZones = None
         self._Offset = None
         self._Limit = None
 
@@ -4383,6 +4386,17 @@ class DescribeAndroidInstanceImagesRequest(AbstractModel):
     @AndroidInstanceImageIds.setter
     def AndroidInstanceImageIds(self, AndroidInstanceImageIds):
         self._AndroidInstanceImageIds = AndroidInstanceImageIds
+
+    @property
+    def AndroidInstanceImageZones(self):
+        """镜像可用区列表
+        :rtype: list of str
+        """
+        return self._AndroidInstanceImageZones
+
+    @AndroidInstanceImageZones.setter
+    def AndroidInstanceImageZones(self, AndroidInstanceImageZones):
+        self._AndroidInstanceImageZones = AndroidInstanceImageZones
 
     @property
     def Offset(self):
@@ -4409,6 +4423,7 @@ class DescribeAndroidInstanceImagesRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._AndroidInstanceImageIds = params.get("AndroidInstanceImageIds")
+        self._AndroidInstanceImageZones = params.get("AndroidInstanceImageZones")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         memeber_set = set(params.keys())

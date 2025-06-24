@@ -12529,6 +12529,165 @@ class DescribeServiceNodeInfosResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSparkApplicationsRequest(AbstractModel):
+    """DescribeSparkApplications请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        :param _StartTime: 查询开始时间
+        :type StartTime: int
+        :param _EndTime: 查询结束时间
+        :type EndTime: int
+        :param _PageSize: 每一页条数
+        :type PageSize: int
+        :param _Page: 第几页
+        :type Page: int
+        """
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._PageSize = None
+        self._Page = None
+
+    @property
+    def InstanceId(self):
+        """集群id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        """查询开始时间
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """查询结束时间
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def PageSize(self):
+        """每一页条数
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Page(self):
+        """第几页
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._PageSize = params.get("PageSize")
+        self._Page = params.get("Page")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSparkApplicationsResponse(AbstractModel):
+    """DescribeSparkApplications返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 返回数量
+        :type TotalCount: int
+        :param _ResultList: spark应用列表
+        :type ResultList: list of SparkApplicationsList
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ResultList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """返回数量
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ResultList(self):
+        """spark应用列表
+        :rtype: list of SparkApplicationsList
+        """
+        return self._ResultList
+
+    @ResultList.setter
+    def ResultList(self, ResultList):
+        self._ResultList = ResultList
+
+    @property
+    def RequestId(self):
+        """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ResultList") is not None:
+            self._ResultList = []
+            for item in params.get("ResultList"):
+                obj = SparkApplicationsList()
+                obj._deserialize(item)
+                self._ResultList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSparkQueriesRequest(AbstractModel):
     """DescribeSparkQueries请求参数结构体
 
@@ -32438,6 +32597,192 @@ class SoftDependInfo(AbstractModel):
     def _deserialize(self, params):
         self._SoftName = params.get("SoftName")
         self._Required = params.get("Required")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SparkApplicationsList(AbstractModel):
+    """spark任务列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 应用id
+        :type ID: str
+        :param _Name: 应用名称
+        :type Name: str
+        :param _User: 用户
+        :type User: str
+        :param _StartTime: 起始时间
+        :type StartTime: int
+        :param _EndTime: 结束时间
+        :type EndTime: int
+        :param _Duration: 持续时间
+        :type Duration: int
+        :param _State: 状态
+        :type State: str
+        :param _ApplicationType: 类型
+        :type ApplicationType: str
+        :param _CoreSeconds: 核数*秒
+        :type CoreSeconds: int
+        :param _MemorySeconds: 内存MB*秒
+        :type MemorySeconds: str
+        :param _Insight: 洞察结果
+        :type Insight: str
+        """
+        self._ID = None
+        self._Name = None
+        self._User = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Duration = None
+        self._State = None
+        self._ApplicationType = None
+        self._CoreSeconds = None
+        self._MemorySeconds = None
+        self._Insight = None
+
+    @property
+    def ID(self):
+        """应用id
+        :rtype: str
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Name(self):
+        """应用名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def User(self):
+        """用户
+        :rtype: str
+        """
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def StartTime(self):
+        """起始时间
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """结束时间
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Duration(self):
+        """持续时间
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def State(self):
+        """状态
+        :rtype: str
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def ApplicationType(self):
+        """类型
+        :rtype: str
+        """
+        return self._ApplicationType
+
+    @ApplicationType.setter
+    def ApplicationType(self, ApplicationType):
+        self._ApplicationType = ApplicationType
+
+    @property
+    def CoreSeconds(self):
+        """核数*秒
+        :rtype: int
+        """
+        return self._CoreSeconds
+
+    @CoreSeconds.setter
+    def CoreSeconds(self, CoreSeconds):
+        self._CoreSeconds = CoreSeconds
+
+    @property
+    def MemorySeconds(self):
+        """内存MB*秒
+        :rtype: str
+        """
+        return self._MemorySeconds
+
+    @MemorySeconds.setter
+    def MemorySeconds(self, MemorySeconds):
+        self._MemorySeconds = MemorySeconds
+
+    @property
+    def Insight(self):
+        """洞察结果
+        :rtype: str
+        """
+        return self._Insight
+
+    @Insight.setter
+    def Insight(self, Insight):
+        self._Insight = Insight
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Name = params.get("Name")
+        self._User = params.get("User")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Duration = params.get("Duration")
+        self._State = params.get("State")
+        self._ApplicationType = params.get("ApplicationType")
+        self._CoreSeconds = params.get("CoreSeconds")
+        self._MemorySeconds = params.get("MemorySeconds")
+        self._Insight = params.get("Insight")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

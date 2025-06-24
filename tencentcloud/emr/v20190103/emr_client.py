@@ -1018,6 +1018,29 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSparkApplications(self, request):
+        """获取spark应用列表
+
+        :param request: Request instance for DescribeSparkApplications.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeSparkApplicationsRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeSparkApplicationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSparkApplications", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSparkApplicationsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSparkQueries(self, request):
         """查询Spark查询信息列表
 

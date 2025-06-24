@@ -7519,6 +7519,7 @@ db-instance-id：按照实例ID过滤，类型为string。
 db-instance-name：按照实例名过滤，类型为string。
 db-instance-ip：按照实例私有网络IP地址过滤，类型为string。
 base-backup-id：按照备份集ID过滤，类型为string。
+db-instance-status：按实例状态过滤，类型为string。取值参考DBInstance结构的DBInstanceStatus字段。
         :type Filters: list of Filter
         :param _Limit: 每页显示数量，取值范围为1-100，默认为返回10条。
         :type Limit: int
@@ -7566,6 +7567,7 @@ db-instance-id：按照实例ID过滤，类型为string。
 db-instance-name：按照实例名过滤，类型为string。
 db-instance-ip：按照实例私有网络IP地址过滤，类型为string。
 base-backup-id：按照备份集ID过滤，类型为string。
+db-instance-status：按实例状态过滤，类型为string。取值参考DBInstance结构的DBInstanceStatus字段。
         :rtype: list of Filter
         """
         return self._Filters
@@ -10130,6 +10132,7 @@ class DescribeLogBackupsRequest(AbstractModel):
 db-instance-id：按照实例ID过滤，类型为string。
 db-instance-name：按照实例名过滤，类型为string。
 db-instance-ip：按照实例私有网络IP地址过滤，类型为string。
+db-instance-status：按实例状态过滤，类型为string。取值参考DBInstance结构的DBInstanceStatus字段。
         :type Filters: list of Filter
         :param _Limit: 每页显示数量，取值范围为1-100，默认为返回10条。
         :type Limit: int
@@ -10176,6 +10179,7 @@ db-instance-ip：按照实例私有网络IP地址过滤，类型为string。
 db-instance-id：按照实例ID过滤，类型为string。
 db-instance-name：按照实例名过滤，类型为string。
 db-instance-ip：按照实例私有网络IP地址过滤，类型为string。
+db-instance-status：按实例状态过滤，类型为string。取值参考DBInstance结构的DBInstanceStatus字段。
         :rtype: list of Filter
         """
         return self._Filters

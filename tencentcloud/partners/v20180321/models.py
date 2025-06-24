@@ -2862,9 +2862,9 @@ class DescribeAgentDealsByCacheRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 限制数目 最大200
         :type Limit: int
-        :param _CreatTimeRangeStart: 下单时间范围起始点【请保持时间范围最大90天】
+        :param _CreatTimeRangeStart: 下单时间范围起始点【*请必传并控制时间范围最大90天，避免出现超时】
         :type CreatTimeRangeStart: str
-        :param _CreatTimeRangeEnd: 下单时间范围终止点【请保持时间范围最大90天】
+        :param _CreatTimeRangeEnd: 下单时间范围终止点【*请必传并控制时间范围最大90天，避免出现超时】
         :type CreatTimeRangeEnd: str
         :param _Order: 0:下单时间降序；其他：下单时间升序
         :type Order: int
@@ -2914,7 +2914,7 @@ class DescribeAgentDealsByCacheRequest(AbstractModel):
 
     @property
     def CreatTimeRangeStart(self):
-        """下单时间范围起始点【请保持时间范围最大90天】
+        """下单时间范围起始点【*请必传并控制时间范围最大90天，避免出现超时】
         :rtype: str
         """
         return self._CreatTimeRangeStart
@@ -2925,7 +2925,7 @@ class DescribeAgentDealsByCacheRequest(AbstractModel):
 
     @property
     def CreatTimeRangeEnd(self):
-        """下单时间范围终止点【请保持时间范围最大90天】
+        """下单时间范围终止点【*请必传并控制时间范围最大90天，避免出现超时】
         :rtype: str
         """
         return self._CreatTimeRangeEnd

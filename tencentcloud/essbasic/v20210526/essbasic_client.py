@@ -356,6 +356,7 @@ class EssbasicClient(AbstractClient):
         <li>此接口需要保证：渠道应用已开启：动态签署人2.0能力</li>
         <li>此接口需要保证：合同发起时指定开启了动态合同</li>
         <li>此接口补充的动态签署人传参规则，请参考接口：<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowByFiles" target="_blank">用PDF文件创建签署流程</a>的签署人传参规则</li>
+        <li>此接口补充的动态签署人暂不支持他方企业自动签署。</li>
         </ul>
 
         :param request: Request instance for ChannelCreateDynamicFlowApprover.

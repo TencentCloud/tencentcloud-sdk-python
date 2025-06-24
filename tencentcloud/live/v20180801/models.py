@@ -36260,6 +36260,8 @@ class SendLiveCloudEffectRequest(AbstractModel):
         :type StreamName: str
         :param _Id: 云端特效 ID。
         :type Id: str
+        :param _LoopTimes: 默认随系统配置，云端特效循环 少于5次。可自定义指定礼物循环次数，不超过100次。
+        :type LoopTimes: int
         :param _Operator: 操作人备注信息。
         :type Operator: str
         :param _ZoomFactor: 缩小比例，默认0 不缩放。
@@ -36276,6 +36278,7 @@ class SendLiveCloudEffectRequest(AbstractModel):
         self._PushDomainName = None
         self._StreamName = None
         self._Id = None
+        self._LoopTimes = None
         self._Operator = None
         self._ZoomFactor = None
         self._XPosition = None
@@ -36324,6 +36327,17 @@ class SendLiveCloudEffectRequest(AbstractModel):
     @Id.setter
     def Id(self, Id):
         self._Id = Id
+
+    @property
+    def LoopTimes(self):
+        """默认随系统配置，云端特效循环 少于5次。可自定义指定礼物循环次数，不超过100次。
+        :rtype: int
+        """
+        return self._LoopTimes
+
+    @LoopTimes.setter
+    def LoopTimes(self, LoopTimes):
+        self._LoopTimes = LoopTimes
 
     @property
     def Operator(self):
@@ -36378,6 +36392,7 @@ class SendLiveCloudEffectRequest(AbstractModel):
         self._PushDomainName = params.get("PushDomainName")
         self._StreamName = params.get("StreamName")
         self._Id = params.get("Id")
+        self._LoopTimes = params.get("LoopTimes")
         self._Operator = params.get("Operator")
         self._ZoomFactor = params.get("ZoomFactor")
         self._XPosition = params.get("XPosition")

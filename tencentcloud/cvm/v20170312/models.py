@@ -12000,12 +12000,15 @@ class InquiryPriceResetInstanceRequest(AbstractModel):
         :type LoginSettings: :class:`tencentcloud.cvm.v20170312.models.LoginSettings`
         :param _EnhancedService: 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认开启云监控、云安全服务。
         :type EnhancedService: :class:`tencentcloud.cvm.v20170312.models.EnhancedService`
+        :param _UserData: 提供给实例使用的用户数据，需要以 base64 方式编码，支持的最大数据大小为 16KB。关于获取此参数的详细介绍，请参阅[Windows](https://cloud.tencent.com/document/product/213/17526)和[Linux](https://cloud.tencent.com/document/product/213/17525)启动时运行命令。
+        :type UserData: str
         """
         self._InstanceId = None
         self._ImageId = None
         self._SystemDisk = None
         self._LoginSettings = None
         self._EnhancedService = None
+        self._UserData = None
 
     @property
     def InstanceId(self):
@@ -12062,6 +12065,17 @@ class InquiryPriceResetInstanceRequest(AbstractModel):
     def EnhancedService(self, EnhancedService):
         self._EnhancedService = EnhancedService
 
+    @property
+    def UserData(self):
+        """提供给实例使用的用户数据，需要以 base64 方式编码，支持的最大数据大小为 16KB。关于获取此参数的详细介绍，请参阅[Windows](https://cloud.tencent.com/document/product/213/17526)和[Linux](https://cloud.tencent.com/document/product/213/17525)启动时运行命令。
+        :rtype: str
+        """
+        return self._UserData
+
+    @UserData.setter
+    def UserData(self, UserData):
+        self._UserData = UserData
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -12075,6 +12089,7 @@ class InquiryPriceResetInstanceRequest(AbstractModel):
         if params.get("EnhancedService") is not None:
             self._EnhancedService = EnhancedService()
             self._EnhancedService._deserialize(params.get("EnhancedService"))
+        self._UserData = params.get("UserData")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

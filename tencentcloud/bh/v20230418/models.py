@@ -2115,6 +2115,8 @@ class ChangePwdTaskInfo(AbstractModel):
         :type FirstTime: str
         :param _NextTime: 下次执行时间
         :type NextTime: str
+        :param _LastTime: 上次执行时间
+        :type LastTime: str
         """
         self._Id = None
         self._OperationId = None
@@ -2137,6 +2139,7 @@ class ChangePwdTaskInfo(AbstractModel):
         self._Period = None
         self._FirstTime = None
         self._NextTime = None
+        self._LastTime = None
 
     @property
     def Id(self):
@@ -2369,6 +2372,17 @@ class ChangePwdTaskInfo(AbstractModel):
     def NextTime(self, NextTime):
         self._NextTime = NextTime
 
+    @property
+    def LastTime(self):
+        """上次执行时间
+        :rtype: str
+        """
+        return self._LastTime
+
+    @LastTime.setter
+    def LastTime(self, LastTime):
+        self._LastTime = LastTime
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -2399,6 +2413,7 @@ class ChangePwdTaskInfo(AbstractModel):
         self._Period = params.get("Period")
         self._FirstTime = params.get("FirstTime")
         self._NextTime = params.get("NextTime")
+        self._LastTime = params.get("LastTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

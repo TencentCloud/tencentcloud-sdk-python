@@ -12497,7 +12497,6 @@ class DescribeExposePathResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Content: 暴露路径节点内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type Content: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12508,7 +12507,6 @@ class DescribeExposePathResponse(AbstractModel):
     @property
     def Content(self):
         """暴露路径节点内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Content
@@ -13498,13 +13496,27 @@ class DescribeOtherCloudAssetsRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
         :param _Filter: -
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
         :param _AssetTypes: 资产类型:MYSQL/MARIADB/REDIS/MONGODB/POSTGRES/CTS/ES/KAFKA/COS/CBS/CFS
         :type AssetTypes: list of str
         """
+        self._MemberId = None
         self._Filter = None
         self._AssetTypes = None
+
+    @property
+    def MemberId(self):
+        """集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
 
     @property
     def Filter(self):
@@ -13530,6 +13542,7 @@ class DescribeOtherCloudAssetsRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
         if params.get("Filter") is not None:
             self._Filter = Filter()
             self._Filter._deserialize(params.get("Filter"))
@@ -13962,10 +13975,24 @@ class DescribeRepositoryImageAssetsRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
         :param _Filter: filter过滤条件
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
+        self._MemberId = None
         self._Filter = None
+
+    @property
+    def MemberId(self):
+        """集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
 
     @property
     def Filter(self):
@@ -13980,6 +14007,7 @@ class DescribeRepositoryImageAssetsRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
         if params.get("Filter") is not None:
             self._Filter = Filter()
             self._Filter._deserialize(params.get("Filter"))
@@ -15049,10 +15077,24 @@ class DescribeRiskCenterCFGViewCFGRiskListRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
         :param _Filter: 过滤内容
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
+        self._MemberId = None
         self._Filter = None
+
+    @property
+    def MemberId(self):
+        """集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
 
     @property
     def Filter(self):
@@ -15067,6 +15109,7 @@ class DescribeRiskCenterCFGViewCFGRiskListRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
         if params.get("Filter") is not None:
             self._Filter = Filter()
             self._Filter._deserialize(params.get("Filter"))
@@ -16280,7 +16323,6 @@ class DescribeRiskRuleDetailResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _RiskRuleId: 风险规则ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type RiskRuleId: str
         :param _Provider: 云厂商
         :type Provider: str
@@ -16303,7 +16345,6 @@ class DescribeRiskRuleDetailResponse(AbstractModel):
     @property
     def RiskRuleId(self):
         """风险规则ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._RiskRuleId

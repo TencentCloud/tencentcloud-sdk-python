@@ -4736,6 +4736,14 @@ API：通过API手动注册
         :type MaxSubscription: int
         :param _AuthorizationPolicy: 授权策略开关
         :type AuthorizationPolicy: bool
+        :param _SharedSubscriptionGroupLimit: 共享订阅组数最大限制
+        :type SharedSubscriptionGroupLimit: int
+        :param _MaxTopicFilterPerSharedSubscriptionGroup: 单个共享订阅组TopicFilter数限制
+        :type MaxTopicFilterPerSharedSubscriptionGroup: int
+        :param _AutoSubscriptionPolicyLimit: 自动订阅规则条数限制
+        :type AutoSubscriptionPolicyLimit: int
+        :param _MaxTopicFilterPerAutoSubscriptionPolicy: 单条自动订阅规则TopicFilter数限制
+        :type MaxTopicFilterPerAutoSubscriptionPolicy: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4763,6 +4771,10 @@ API：通过API手动注册
         self._RegistrationCode = None
         self._MaxSubscription = None
         self._AuthorizationPolicy = None
+        self._SharedSubscriptionGroupLimit = None
+        self._MaxTopicFilterPerSharedSubscriptionGroup = None
+        self._AutoSubscriptionPolicyLimit = None
+        self._MaxTopicFilterPerAutoSubscriptionPolicy = None
         self._RequestId = None
 
     @property
@@ -5035,6 +5047,50 @@ API：通过API手动注册
         self._AuthorizationPolicy = AuthorizationPolicy
 
     @property
+    def SharedSubscriptionGroupLimit(self):
+        """共享订阅组数最大限制
+        :rtype: int
+        """
+        return self._SharedSubscriptionGroupLimit
+
+    @SharedSubscriptionGroupLimit.setter
+    def SharedSubscriptionGroupLimit(self, SharedSubscriptionGroupLimit):
+        self._SharedSubscriptionGroupLimit = SharedSubscriptionGroupLimit
+
+    @property
+    def MaxTopicFilterPerSharedSubscriptionGroup(self):
+        """单个共享订阅组TopicFilter数限制
+        :rtype: int
+        """
+        return self._MaxTopicFilterPerSharedSubscriptionGroup
+
+    @MaxTopicFilterPerSharedSubscriptionGroup.setter
+    def MaxTopicFilterPerSharedSubscriptionGroup(self, MaxTopicFilterPerSharedSubscriptionGroup):
+        self._MaxTopicFilterPerSharedSubscriptionGroup = MaxTopicFilterPerSharedSubscriptionGroup
+
+    @property
+    def AutoSubscriptionPolicyLimit(self):
+        """自动订阅规则条数限制
+        :rtype: int
+        """
+        return self._AutoSubscriptionPolicyLimit
+
+    @AutoSubscriptionPolicyLimit.setter
+    def AutoSubscriptionPolicyLimit(self, AutoSubscriptionPolicyLimit):
+        self._AutoSubscriptionPolicyLimit = AutoSubscriptionPolicyLimit
+
+    @property
+    def MaxTopicFilterPerAutoSubscriptionPolicy(self):
+        """单条自动订阅规则TopicFilter数限制
+        :rtype: int
+        """
+        return self._MaxTopicFilterPerAutoSubscriptionPolicy
+
+    @MaxTopicFilterPerAutoSubscriptionPolicy.setter
+    def MaxTopicFilterPerAutoSubscriptionPolicy(self, MaxTopicFilterPerAutoSubscriptionPolicy):
+        self._MaxTopicFilterPerAutoSubscriptionPolicy = MaxTopicFilterPerAutoSubscriptionPolicy
+
+    @property
     def RequestId(self):
         """唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -5071,6 +5127,10 @@ API：通过API手动注册
         self._RegistrationCode = params.get("RegistrationCode")
         self._MaxSubscription = params.get("MaxSubscription")
         self._AuthorizationPolicy = params.get("AuthorizationPolicy")
+        self._SharedSubscriptionGroupLimit = params.get("SharedSubscriptionGroupLimit")
+        self._MaxTopicFilterPerSharedSubscriptionGroup = params.get("MaxTopicFilterPerSharedSubscriptionGroup")
+        self._AutoSubscriptionPolicyLimit = params.get("AutoSubscriptionPolicyLimit")
+        self._MaxTopicFilterPerAutoSubscriptionPolicy = params.get("MaxTopicFilterPerAutoSubscriptionPolicy")
         self._RequestId = params.get("RequestId")
 
 
@@ -7042,6 +7102,14 @@ DELETING，删除中
         :type MaxCaNum: int
         :param _MaxSubscription: 最大订阅数
         :type MaxSubscription: int
+        :param _SharedSubscriptionGroupLimit: 共享订阅组数最大限制
+        :type SharedSubscriptionGroupLimit: int
+        :param _MaxTopicFilterPerSharedSubscriptionGroup: 单个共享订阅组TopicFilter数限制
+        :type MaxTopicFilterPerSharedSubscriptionGroup: int
+        :param _AutoSubscriptionPolicyLimit: 自动订阅规则条数限制
+        :type AutoSubscriptionPolicyLimit: int
+        :param _MaxTopicFilterPerAutoSubscriptionPolicy: 单条自动订阅规则TopicFilter数限制
+        :type MaxTopicFilterPerAutoSubscriptionPolicy: int
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -7063,6 +7131,10 @@ DELETING，删除中
         self._AuthorizationPolicyLimit = None
         self._MaxCaNum = None
         self._MaxSubscription = None
+        self._SharedSubscriptionGroupLimit = None
+        self._MaxTopicFilterPerSharedSubscriptionGroup = None
+        self._AutoSubscriptionPolicyLimit = None
+        self._MaxTopicFilterPerAutoSubscriptionPolicy = None
 
     @property
     def InstanceId(self):
@@ -7298,6 +7370,50 @@ DELETING，删除中
     def MaxSubscription(self, MaxSubscription):
         self._MaxSubscription = MaxSubscription
 
+    @property
+    def SharedSubscriptionGroupLimit(self):
+        """共享订阅组数最大限制
+        :rtype: int
+        """
+        return self._SharedSubscriptionGroupLimit
+
+    @SharedSubscriptionGroupLimit.setter
+    def SharedSubscriptionGroupLimit(self, SharedSubscriptionGroupLimit):
+        self._SharedSubscriptionGroupLimit = SharedSubscriptionGroupLimit
+
+    @property
+    def MaxTopicFilterPerSharedSubscriptionGroup(self):
+        """单个共享订阅组TopicFilter数限制
+        :rtype: int
+        """
+        return self._MaxTopicFilterPerSharedSubscriptionGroup
+
+    @MaxTopicFilterPerSharedSubscriptionGroup.setter
+    def MaxTopicFilterPerSharedSubscriptionGroup(self, MaxTopicFilterPerSharedSubscriptionGroup):
+        self._MaxTopicFilterPerSharedSubscriptionGroup = MaxTopicFilterPerSharedSubscriptionGroup
+
+    @property
+    def AutoSubscriptionPolicyLimit(self):
+        """自动订阅规则条数限制
+        :rtype: int
+        """
+        return self._AutoSubscriptionPolicyLimit
+
+    @AutoSubscriptionPolicyLimit.setter
+    def AutoSubscriptionPolicyLimit(self, AutoSubscriptionPolicyLimit):
+        self._AutoSubscriptionPolicyLimit = AutoSubscriptionPolicyLimit
+
+    @property
+    def MaxTopicFilterPerAutoSubscriptionPolicy(self):
+        """单条自动订阅规则TopicFilter数限制
+        :rtype: int
+        """
+        return self._MaxTopicFilterPerAutoSubscriptionPolicy
+
+    @MaxTopicFilterPerAutoSubscriptionPolicy.setter
+    def MaxTopicFilterPerAutoSubscriptionPolicy(self, MaxTopicFilterPerAutoSubscriptionPolicy):
+        self._MaxTopicFilterPerAutoSubscriptionPolicy = MaxTopicFilterPerAutoSubscriptionPolicy
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -7320,6 +7436,10 @@ DELETING，删除中
         self._AuthorizationPolicyLimit = params.get("AuthorizationPolicyLimit")
         self._MaxCaNum = params.get("MaxCaNum")
         self._MaxSubscription = params.get("MaxSubscription")
+        self._SharedSubscriptionGroupLimit = params.get("SharedSubscriptionGroupLimit")
+        self._MaxTopicFilterPerSharedSubscriptionGroup = params.get("MaxTopicFilterPerSharedSubscriptionGroup")
+        self._AutoSubscriptionPolicyLimit = params.get("AutoSubscriptionPolicyLimit")
+        self._MaxTopicFilterPerAutoSubscriptionPolicy = params.get("MaxTopicFilterPerAutoSubscriptionPolicy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

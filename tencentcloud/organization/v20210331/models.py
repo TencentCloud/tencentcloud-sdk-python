@@ -21343,6 +21343,8 @@ class UserInfo(AbstractModel):
         :type UpdateTime: str
         :param _IsSelected: 是否选中
         :type IsSelected: bool
+        :param _Password: 用户密码
+        :type Password: str
         """
         self._UserName = None
         self._FirstName = None
@@ -21356,6 +21358,7 @@ class UserInfo(AbstractModel):
         self._CreateTime = None
         self._UpdateTime = None
         self._IsSelected = None
+        self._Password = None
 
     @property
     def UserName(self):
@@ -21489,6 +21492,17 @@ class UserInfo(AbstractModel):
     def IsSelected(self, IsSelected):
         self._IsSelected = IsSelected
 
+    @property
+    def Password(self):
+        """用户密码
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
 
     def _deserialize(self, params):
         self._UserName = params.get("UserName")
@@ -21503,6 +21517,7 @@ class UserInfo(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         self._IsSelected = params.get("IsSelected")
+        self._Password = params.get("Password")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
